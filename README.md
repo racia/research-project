@@ -41,20 +41,6 @@ Authors: [@ivakhnenko](https://gitlab.cl.uni-heidelberg.de/ivakhnenko),
 * [fine-tuning](./fine-tuning) — scripts (models + data)
     * [results](./fine-tuning/results)
 
-* [logs](./logs) — logs for scripts
-    * [baseline](./logs/baseline)
-        * [runs](./logs/baseline/runs)
-        * [interpretability](./logs/baseline/interpretability)
-        * [evaluation](./logs/baseline/evaluation)
-    * [prompting-experiments](./logs/prompting-experiments)
-        * [runs](./logs/prompting-experiments/runs)
-        * [interpretability](./logs/prompting-experiments/interpretability)
-        * [evaluation](./logs/prompting-experiments/evaluation)
-    * [fine-tuning](./logs/fine-tuning)
-        * [runs](./logs/fine-tuning/runs)
-        * [interpretability](./logs/fine-tuning/interpretability)
-        * [evaluation](./logs/fine-tuning/evaluation)
-
 * [tests](./tests) — tests for all the methods
     * [baseline](./tests/baseline)
     * [data](./tests/data)
@@ -90,12 +76,25 @@ your https://huggingface.com profile.
 
 1. Save your token as an environment variable in bash:
 
+
+# Research Project
+
+## Running the baseline
+
+After git cloning the repository:
+1. Create a virtual environment: `python3 -m venv venv`
+2. Install all dependencies: `pip install -r requirements.txt`
+3. Activate environment: `source /venv/bin/activate`
+
+Running models from the Hugging Face hub requires an access token, which you can obtain via the website on your https://huggingface.com profile.  
+
+4. Save your token as an environment variable in bash:
 ```
 export HUGGINGFACE="<<your-token>>"
 ```
 
-2. Change directory to the baseline folder: `cd /baseline`
-3. Submit the batch job: `sbatch initial_baseline.sh`, which will run script.py and save the outputs to "init_bl.txt"
+5. Change directory to the baseline folder: `cd /baseline`
+6. Submit the batch job: `sbatch initial_baseline.sh`, which will run script.py and save the outputs to "init_bl.txt"
 
 ### Data
 
@@ -114,7 +113,5 @@ export HUGGINGFACE="<<your-token>>"
 ### Evaluation
 
 ### Fine-Tuning
-
-### Logs
 
 ### Tests
