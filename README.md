@@ -1,8 +1,17 @@
-# Sample GitLab Project
+# Research Project
 
-This sample project shows how a project in GitLab looks for demonstration purposes. It contains issues, merge requests and Markdown files in many branches,
-named and filled with lorem ipsum.
+## Running the baseline
 
-You can look around to get an idea how to structure your project and, when done, you can safely delete this project.
+After git cloning the repository:
+1. Create a virtual environment: `python3 -m venv venv`
+2. Install all dependencies: `pip install -r requirements.txt`
+3. Activate environment: `source /venv/bin/activate`
 
-[Learn more about creating GitLab projects.](https://docs.gitlab.com/ee/gitlab-basics/create-project.html)
+Running models from the Hugging Face hub requires an access token, which you can obtain via the website on your https://huggingface.com profile.
+4. Save your token as an environment variable  in bash, optionally: update your shell:
+```
+export HUGGINGFACE="<<your-token>>"
+(source ~/.bashrc)
+```
+
+5. Submit batch job `sbatch initial_baseline.sh`, which will run script.py and save the outputs to "init_bl.txt"
