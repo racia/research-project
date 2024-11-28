@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import re
+from pathlib import Path
 from typing import List, Dict
 import torch
 # Load model directly
@@ -10,8 +11,8 @@ from sklearn.metrics import accuracy_score
 
 class QATaskIterate():
     def __init__(self):
-
-        self.data_dir = "tasks_1-20_v1-2/en/"
+        self.home_dir = Path.home()
+        self.data_dir = f"{self.home_dir}/tasks_1-20_v1-2/en/"
 
         self.token = os.getenv("HUGGINGFACE")
 
@@ -26,11 +27,12 @@ class QATaskIterate():
         correct answer. For example: The correct answer to: John is on the playground. 
         Mary is in the kitchen. Where is John? is: Playground"""},]
         
-        self.y_true = []
-        self.y_pred = []
+#        self.y_true, self.y_pred = [], []
+
 
     def get_prompt(self):
         return self.prompt
+
 
     def make_test_data(self):
         test_data = {}
@@ -43,6 +45,7 @@ class QATaskIterate():
                 test_data[i] = {}
                 test_data[i]["test"] = test[0]
         return test_data
+
     
     def make_train_data(self):
         train_data = {}
@@ -57,28 +60,29 @@ class QATaskIterate():
         return train_data
 
     def make_task_data(self, data, task_id):
-        task_data = []
+        self.y_true, self.y_pred = [], []
+        self.task_data = []
         # Returns a list of dict of one sequence of context sentences
         with open(self.data_dir+data[task_id]["test"], "r") as f:
             d = 0
-            task_data.append({})
+            self.task_data.append({})
             lines = f.readlines()
             for i, line in enumerate(lines):
                 line = line.strip()
                 iter, cont = re.split(" ", line, maxsplit=1) # Remove newline
                 if len(cont.split("\t"))>2:
-                    task_data[d][int(iter)] = cont.split("\t")
+                    self.task_data[d][int(iter)] = cont.split("\t")
                 else:
-                    task_data[d][int(iter)] = cont
+                    self.task_data[d][int(iter)] = cont
                 if "?" in line and i!=(len(lines)-1):
-                    task_data.append({})
+                    self.task_data.append({})
                     d+=1
-        return task_data
+        return self.task_data
 
-    def make_task_example(self, task_data, exp_id):
+    def make_task_example(self, exp_id):
         # Return a dict with "role" - "content" with one entry of context sentence sequence 
         # to append to current pipeline
-        sample = list(task_data[exp_id].values())
+        sample = list(self.task_data[exp_id].values())
         context = sample[:-1] # Strings of context
         answer = sample[-1] # List with question and final answer
         x = " ".join(context)
@@ -86,10 +90,10 @@ class QATaskIterate():
         self.y_true.append(answer[1])
         return {"role": "user", "content": x+" "+y}
 
-    def iterate_context(self, prompt, task_data):
+    def iterate_context(self, prompt):
         for i in range(5):
             # 1. Add sample
-            prompt.append(self.make_task_example(task_data, i))
+            prompt.append(self.make_task_example(i))
             # 2. Create generation prompt
             formatted_prompt = self.tokenizer.apply_chat_template(prompt, tokenize=False, add_generation_prompt=True)
             print("Formatted prompt:\n", formatted_prompt)
@@ -111,11 +115,12 @@ class QATaskIterate():
 
 
 if __name__ == "__main__":
+
     qa_task_iterate = QATaskIterate()
     prompt = qa_task_iterate.get_prompt()
     train_data, test_data = qa_task_iterate.make_train_data(), qa_task_iterate.make_test_data()
     assert len(train_data.items()) == len(test_data.items())
     #print(test)
-    for i in range(1, 3):    
-        task_data = qa_task_iterate.make_task_data(test_data, i) # Task n°1
-        qa_task_iterate.iterate_context(prompt, task_data)
+    for i in range(1, 21):
+        qa_task_iterate.make_task_data(test_data, i) # Task n°1
+        qa_task_iterate.iterate_context(prompt)
