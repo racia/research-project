@@ -168,6 +168,7 @@ Correct answer: Playground"""},]
             # TODO into config: number of tasks
             total_tasks = samples_per_task * 20
             print(f"\n\n-* TASK {task_id} | SAMPLE {sample_inx+1} | ID {self.sample_id}/{total_tasks} *-\n\n")
+
             # 1. Add sample
             sample_parts = self.format_sample(sample_inx, to_enumerate=False)
             """sample parts = [{"role": "user", "content": part+"?"}, {"role": "user", "content": part+"?"}]"""
