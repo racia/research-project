@@ -70,7 +70,8 @@ To get started, log into the Heidelberg University Computational Linguistics clu
 1. Create a virtual environment: `python3 -m venv venv`
 2. Install all dependencies: `pip install -r requirements.txt`
 3. Activate environment: `source ~/venv/bin/activate`  
-After git cloning the repository, change direcory to it. `cd research-project/`
+
+After git cloning the repository, change direcory to it: `cd research-project/`
 #### ! Important
 Please note, that the scripts expect the bAbI data on your home directory of the uni cluster, e.g. `~/tasks_1-20_v1-2/`
 
