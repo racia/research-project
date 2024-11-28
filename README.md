@@ -1,8 +1,104 @@
-# Sample GitLab Project
+# Reasoning Research Project
 
-This sample project shows how a project in GitLab looks for demonstration purposes. It contains issues, merge requests and Markdown files in many branches,
-named and filled with lorem ipsum.
+This repository serves to implement the research project on reasoning capabilities 
+of language models and the efforts to improve them through a series of prompting 
+and fine-tuning experiments.
 
-You can look around to get an idea how to structure your project and, when done, you can safely delete this project.
+The project is held as part of the research module. 
+More information in [the main document](https://docs.google.com/document/d/1f44Xf9sQiklHzP1T34o62FgyKT4NHdeNGCIkNRJR7vY/edit?usp=sharing).
 
-[Learn more about creating GitLab projects.](https://docs.gitlab.com/ee/gitlab-basics/create-project.html)
+Authors: [@ivakhnenko](https://gitlab.cl.uni-heidelberg.de/ivakhnenko), 
+[@lingemann](https://gitlab.cl.uni-heidelberg.de/lingemann),
+[@Motmem](https://gitlab.cl.uni-heidelberg.de/Motmem), 
+[@sari](https://gitlab.cl.uni-heidelberg.de/sari)
+
+---
+
+## Repository Structure
+  * [baseline](./baseline) — methods for running baseline and skyline 
+
+  * [data](./data) 
+    * golden evaluation dataset
+    * methods for data processing
+    * methods to load and save data
+
+  * [prompts](./prompts) — prompt files
+
+  * [settings](./settings)
+    * [feedback](./settings/feedback) — methods
+    * [speculative-decoding](./settings/speculative-decoding) — methods
+
+  * [interpretability](./interpretability) — methods
+
+  * [prompting-experiments](./prompting-experiments) — scripts (prompts and settings combined)
+    * [results](./prompting-experiments/results)
+
+  * [evaluation](./evaluation)
+    * [interpretability](./evaluation/interpretability) — scripts (methods + data)
+    * [testing](./evaluation/testing) — scripts (predicted data + golden data)
+
+  * [fine-tuning](./fine-tuning) — scripts (models + data)
+    * [results](./fine-tuning/results)
+
+  * [logs](./logs) — logs for scripts
+    * [baseline](./logs/baseline)
+      * [runs](./logs/baseline/runs)
+      * [interpretability](./logs/baseline/interpretability)
+      * [evaluation](./logs/baseline/evaluation)
+    * [prompting-experiments](./logs/prompting-experiments)
+      * [runs](./logs/prompting-experiments/runs)
+      * [interpretability](./logs/prompting-experiments/interpretability)
+      * [evaluation](./logs/prompting-experiments/evaluation)
+    * [fine-tuning](./logs/fine-tuning)
+      * [runs](./logs/fine-tuning/runs)
+      * [interpretability](./logs/fine-tuning/interpretability)
+      * [evaluation](./logs/fine-tuning/evaluation)
+
+  * [tests](./tests) — tests for all the methods
+    * [baseline](./tests/baseline)
+    * [data](./tests/data)
+    * [evaluation](./tests/evaluation)
+    * [fine-tuning](./tests/fine-tuning)
+    * [prompting-experiments](./tests/prompting-experiments)
+    * [settings](./tests/settings)
+      * [feedback](./tests/settings/feedback)
+      * [speculative-decoding](./tests/settings/speculative-decoding)
+
+---
+
+## Docs
+
+### Baseline
+
+
+### Data
+
+
+### Prompts
+
+
+### Settings
+
+
+#### Feedback
+
+
+#### Speculative Decoding
+
+
+### Interpretability
+
+
+### Prompting Experiments
+
+
+### Evaluation
+
+
+### Fine-Tuning
+
+
+### Logs
+
+
+### Tests
