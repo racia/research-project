@@ -1,0 +1,32 @@
+prompt_0
+You will be given a sequence of context sentences with questions included. Please answer each such question by only providing the correct answer. For example: The correct answer to: John is on the playground. Mary is in the kitchen. Where is John? is: Playground
+prompt_1
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground
+prompt_2
+You will be given a sequence of context sentences and then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground
+prompt_3
+You will be given a sequence of context sentences and then asked questions about them. Please answer each question concisely and to your best abilities. If a question starts with 'who', answer a name; if with 'what' you should answer an object; if with 'where', provide a location. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground
+prompt_4
+You will be given a sequence of context sentences and then asked questions about them. Please answer each question concisely and to your best abilities. In the answers, use only the words mentioned in the context sentences. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground
+prompt_5
+You will be given a sequence of context sentences and then asked questions about them. Please answer each question concisely and to your best abilities. In the answers, use only the words mentioned in the context sentences. Whenever possible, give one-word answers. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground
+prompt_6
+You will be given a sequence of context sentences and then asked questions about them. Please answer each question concisely and to your best abilities. In the answers, use only the words mentioned in the context sentences. Whenever possible, give one-word answers. If you are not sure what is the correct answer, say "I don't know". For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground
