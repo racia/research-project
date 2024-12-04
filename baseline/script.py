@@ -26,12 +26,10 @@ class QATaskIterate:
         # pipe = pipeline("text-generation", model=model_name, torch_dtype=torch.bfloat16, device_map="auto")
 
         # into config: prompt
-        self.prompt = [{"role": "system", "content": """You will be given a sequence of context sentences 
-        with questions included. Please answer each such question by only providing the 
-        correct answer. For example: The correct answer to: John is on the playground. 
-        Mary is in the kitchen. Where is John? is: Playground""",
-            },
-        ]
+        self.prompt = [{"role": "system", "content": """You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground"""},]
 
     #        self.y_true, self.y_pred = [], []
 

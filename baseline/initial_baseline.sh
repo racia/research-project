@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-#SBATCH --job-name=prompt_0
-#SBATCH --output=prompt_0.txt
+#SBATCH --job-name=prompt_1
+#SBATCH --output=prompt_1.txt
 #SBATCH --gres=gpu:2
 #SBATCH --mem=32000
 #SBATCH --ntasks=1
