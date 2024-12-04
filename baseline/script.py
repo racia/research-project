@@ -16,8 +16,8 @@ class QATaskIterate:
 
         self.token = os.getenv("HUGGINGFACE")
 
-        self.model_name = "meta-llama/Meta-Llama-3-8B-Instruct"  # Use the appropriate model name from the Hugging
-        # Face Hub
+        # into config
+        self.model_name = "meta-llama/Meta-Llama-3-8B-Instruct"  # Use the appropriate model name from the Hugging Face Hub
         self.model = AutoModelForCausalLM.from_pretrained(
             self.model_name, device_map="auto", torch_dtype=torch.bfloat16
         )
@@ -25,10 +25,8 @@ class QATaskIterate:
 
         # pipe = pipeline("text-generation", model=model_name, torch_dtype=torch.bfloat16, device_map="auto")
 
-        self.prompt = [
-            {
-                "role": "system",
-                "content": """You will be given a sequence of context sentences 
+        # into config: prompt
+        self.prompt = [{"role": "system", "content": """You will be given a sequence of context sentences 
         with questions included. Please answer each such question by only providing the 
         correct answer. For example: The correct answer to: John is on the playground. 
         Mary is in the kitchen. Where is John? is: Playground""",
@@ -142,7 +140,8 @@ if __name__ == "__main__":
         qa_task_iterate.make_test_data(),
     )
     assert len(train_data.items()) == len(test_data.items())
-    # print(test)
+    #print(test)
+    # into config: task ids
     for i in range(1, 21):
         qa_task_iterate.make_task_data(test_data, i)  # Task n°1
         qa_task_iterate.iterate_context(prompt)
