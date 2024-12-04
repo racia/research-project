@@ -11,7 +11,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 class QATaskIterate:
     def __init__(self):
         self.home_dir = Path.home()
-        self.data_dir = f"{self.home_dir}/tasks_1-20_v1-2/en/"
+        self.data_dir = "data/tasks_1-20_v1-2/en/"
 
         self.token = os.getenv("HUGGINGFACE")
 
