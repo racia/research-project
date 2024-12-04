@@ -1,0 +1,13 @@
+name: research-project
+channels:
+  - defaults
+dependencies:
+  - python
+  - torchvision
+  - scikit-learn
+  - pytorch::pytorch
+  - torchaudio
+  - numpy
+  - transformers
+  - matplotlib
+prefix: /Users/uni/opt/anaconda3/envs/research-project
