@@ -264,7 +264,7 @@ if __name__ == "__main__":
     # TODO: separate loading the model
     print("The model is loaded successfully")
     # into config: run level
-    train_data, test_data = (
+        train_data, test_data = (
         qa_task_iterate.make_train_data(),
         qa_task_iterate.make_test_data(),
     )
