@@ -1,3 +1,4 @@
+import json
 import os
 import re
 from pathlib import Path
@@ -11,12 +12,12 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 class QATaskIterate:
     def __init__(self):
         self.home_dir = Path.home()
-        # into config
+        # TODO into config
         self.data_dir = f"{self.home_dir}/tasks_1-20_v1-2/en/"
 
         self.token = os.getenv("HUGGINGFACE")
 
-        # into config
+        # TODO into config
         self.model_name = "meta-llama/Meta-Llama-3-8B-Instruct"  # Use the appropriate model name from the Hugging Face Hub
         self.model = AutoModelForCausalLM.from_pretrained(
             self.model_name, device_map="auto", torch_dtype=torch.bfloat16
@@ -25,9 +26,9 @@ class QATaskIterate:
 
         # pipe = pipeline("text-generation", model=model_name, torch_dtype=torch.bfloat16, device_map="auto")
 
-        # into config: prompt
+        # TODO into config: prompt
         self.prompt = [{"role": "system", "content": """You will be given a sequence of context sentences and \
-        then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+then asked questions about them. Please answer each question concisely and to your best abilities. For example:
 Context sentences: John is on the playground. Mary is in the kitchen.
 Question: Where is John?
 Answer: Playground"""},]
@@ -86,25 +87,37 @@ Answer: Playground"""},]
         sample = list(self.task_data[exp_id].values())
         context = sample[:-1]  # Strings of context
         answer = sample[-1]  # List with question and final answer
-        x = "\n".join(context)
+        try:
+            x = "\n".join(context)
+        except TypeError:
+            print("ACHTUNG")
+            print(context, "\n")
+            import functools
+            import operator
+            x = "\n".join(functools.reduce(operator.iconcat, context, []))
+        else:
+            x = "\n".join(context)
         y = answer[0]  # Take only question
         self.y_true.append(answer[1])
         return {"role": "user", "content": x + "\n" + y}
 
-    def iterate_context(self, prompt):
+    def iterate_context(self, prompt, task_num):
+        task_results = []
         print("Starting to query the model")
-        results = []
-        # into config: sample
-        for i in range(5):
-            result = []
-            print("Task data:", list(self.task_data[i].items())[0])
-            task_n = "?"
-            print(f"*TASK {task_n} | SAMPLE {i}*")
+        sample_i = 0
+        # TODO into config: sample
+        samples_per_task = 5
+        for i in range(samples_per_task):
+            sample_i += 1
+            sample_result = []
+            # TODO into config: number of tasks
+            total_tasks = samples_per_task * 20
+            print(f"\n-* TASK {task_num} | SAMPLE {i} | ID {sample_i}/{total_tasks} *-\n\n")
             # 1. Add sample
             task_example = self.make_task_example(i)
             prompt.append(task_example)
-            result.append(task_example)
-            results.append(result)
+            sample_result.append(task_example)
+            task_results.append(sample_result)
             # 2. Create generation prompt
             formatted_prompt = self.tokenizer.apply_chat_template(
                 prompt, tokenize=False, add_generation_prompt=True
@@ -117,7 +130,7 @@ Answer: Playground"""},]
             inputs = {
                 key: tensor.to(self.model.device) for key, tensor in inputs.items()
             }
-            print("Tokenized inputs:\n", inputs, end="\n")
+            print("Tokenized inputs:\n", json.dumps(inputs, indent=4), end="\n\n")
             # 4. Generate text
             outputs = self.model.generate(
                 **inputs,
@@ -128,21 +141,24 @@ Answer: Playground"""},]
             # print(outputs)
             # 5. Decode output back to string
             decoded_output = self.tokenizer.decode(
-                outputs[0][inputs["input_ids"].size(1) :], skip_special_tokens=True
-            )
+                outputs[0][inputs["input_ids"].size(1):], skip_special_tokens=True
+            ).strip()
             # ans = response[0]["generated_text"][-1]["content"] # Obtain answer
             self.y_pred.append(decoded_output.lower())
-            print("Model's output:\n", prompt[-1]["content"], decoded_output, end="\n\n")  # Print qa
+            print("Model's output:\n", decoded_output, end="\n\n")  # Print qa
             # prompt = decoded_output #Update history
+            print("______________________________")
+
         print(self.y_true, self.y_pred)
         accuracy = accuracy_score(self.y_true, self.y_pred)
         print("Accuracy score:", accuracy)
-        [result.extend([true, pred]) for true, pred, result in zip(self.y_true, self.y_pred, results)]
-        # into config: task name
-        with open("prompt_2.csv", "w", encoding="utf-8") as file:
-            writer = csv.writer(file, delimiter="\t")
-            writer.writerow(["task", "true_result", "model_result", "accuracy", accuracy])
-            writer.writerows(results)
+
+        [result.extend([true, pred]) for true, pred, result in zip(self.y_true, self.y_pred, task_results)]
+        # TODO into config: task name
+        with open("prompt_2.csv", "a+", encoding="utf-8") as f:
+            writer = csv.writer(f, delimiter="\t")
+            task_results[0].append(accuracy)
+            writer.writerows(task_results)
 
         print("The run is finished successfully")
 
@@ -160,8 +176,11 @@ if __name__ == "__main__":
     )
     print("The data is loaded successfully")
     assert len(train_data.items()) == len(test_data.items())
-    #print(test)
-    # into config: task ids
-    for i in range(1, 21):
-        qa_task_iterate.make_task_data(test_data, i)  # Task n°1
-        qa_task_iterate.iterate_context(prompt)
+
+    with open("prompt_2.csv", "a+", encoding="utf-8") as file:
+        writer = csv.writer(file, delimiter="\t")
+        writer.writerow(["task", "true_result", "model_result", "accuracy"])
+    # TODO into config: task ids
+    for task_num in range(1, 21):
+        qa_task_iterate.make_task_data(test_data, task_num)  # Task n°1
+        qa_task_iterate.iterate_context(prompt, task_num)
