@@ -101,18 +101,17 @@ Answer: Playground"""},]
         self.y_true.append(answer[1])
         return {"role": "user", "content": x + "\n" + y}
 
-    def iterate_context(self, prompt, task_num):
+    def iterate_context(self, prompt, task_num, sample_id):
         task_results = []
         print("Starting to query the model")
-        sample_i = 0
         # TODO into config: sample
         samples_per_task = 5
         for i in range(samples_per_task):
-            sample_i += 1
+            sample_id += 1
             sample_result = []
             # TODO into config: number of tasks
             total_tasks = samples_per_task * 20
-            print(f"\n-* TASK {task_num} | SAMPLE {i} | ID {sample_i}/{total_tasks} *-\n\n")
+            print(f"\n\n-* TASK {task_num} | SAMPLE {i} | ID {sample_id}/{total_tasks} *-\n\n")
             # 1. Add sample
             task_example = self.make_task_example(i)
             prompt.append(task_example)
@@ -130,7 +129,6 @@ Answer: Playground"""},]
             inputs = {
                 key: tensor.to(self.model.device) for key, tensor in inputs.items()
             }
-            # print(inputs['input_ids'][0])
             display_inputs = {k: v[0].tolist() for k, v in inputs.items()}
             print("Tokenized inputs:\n", json.dumps(display_inputs, indent=4), end="\n\n")
             # 4. Generate text
@@ -144,10 +142,10 @@ Answer: Playground"""},]
             # 5. Decode output back to string
             decoded_output = self.tokenizer.decode(
                 outputs[0][inputs["input_ids"].size(1):], skip_special_tokens=True
-            ).strip()
+            )
             # ans = response[0]["generated_text"][-1]["content"] # Obtain answer
             self.y_pred.append(decoded_output.lower())
-            print("Model's output:\n", decoded_output, end="\n\n")  # Print qa
+            print("Model's output:", decoded_output, end="\n\n")  # Print qa
             # prompt = decoded_output #Update history
             print("______________________________")
 
@@ -162,7 +160,7 @@ Answer: Playground"""},]
             task_results[0].append(accuracy)
             writer.writerows(task_results)
 
-        print("The run is finished successfully")
+        return sample_id
 
 
 if __name__ == "__main__":
@@ -182,7 +180,13 @@ if __name__ == "__main__":
     with open("prompt_2.csv", "a+", encoding="utf-8") as file:
         writer = csv.writer(file, delimiter="\t")
         writer.writerow(["task", "true_result", "model_result", "accuracy"])
+
+    sample_id = 0
+
     # TODO into config: task ids
     for task_num in range(1, 21):
         qa_task_iterate.make_task_data(test_data, task_num)  # Task n°1
-        qa_task_iterate.iterate_context(prompt, task_num)
+        sample_id = qa_task_iterate.iterate_context(prompt, task_num, sample_id)
+        print(f"The work on task {task_num} is finished successfully")
+
+    print("The run is finished successfully")
