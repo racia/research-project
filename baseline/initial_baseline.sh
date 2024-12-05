@@ -8,8 +8,7 @@
 #SBATCH --partition=students
 
 # JOB STEPS
-bash
-conda init
+source ~/miniconda3/etc/profile.d/conda.sh
 conda activate research
 srun python3 script.py
 conda deactivate
