@@ -1,6 +1,0 @@
-task	true_result	model_result	accuracy	0.4
-{'role': 'user', 'content': 'Mary got the milk there.\nJohn moved to the bedroom.\nSandra went back to the kitchen.\nMary travelled to the hallway.\nWhere is the milk? '}	hallway	hallway.
-{'role': 'user', 'content': 'Daniel went back to the bathroom.\nJohn moved to the bedroom.\nJohn got the football there.\nJohn went to the hallway.\nWhere is the football? '}	bathroom	kitchen
-{'role': 'user', 'content': 'John went to the hallway.\nSandra journeyed to the kitchen.\nJohn put down the football.\nMary went to the garden.\nWhere is the football? '}	kitchen	kitchen
-{'role': 'user', 'content': 'Sandra travelled to the hallway.\nJohn went to the garden.\nJohn went to the kitchen.\nSandra travelled to the hallway.\nWhere is the football? '}	hallway	hallway
-{'role': 'user', 'content': 'Sandra went back to the bathroom.\nSandra moved to the kitchen.\nDaniel went to the hallway.\nMary discarded the milk.\nWhere is the milk? '}	kitchen	kitchen
