@@ -11,7 +11,7 @@ Context sentences: John is on the playground. Mary is in the kitchen.
 Question: Where is John?
 Answer: Playground
 prompt_3
-You will be given a sequence of context sentences and then asked questions about them. Please answer each question concisely and to your best abilities. If a question starts with 'who', answer a name; if with 'what' you should answer an object; if with 'where', provide a location. For example:
+You will be given a sequence of context sentences and then asked questions about them. Please answer each question concisely and to your best abilities. If a question starts with 'who', answer only a name; if with 'what' you should answer an object; if with 'where', provide only a location; if with 'how many', provide only a number. Don't use the articles. For example:
 Context sentences: John is on the playground. Mary is in the kitchen.
 Question: Where is John?
 Answer: Playground
@@ -27,6 +27,11 @@ Question: Where is John?
 Answer: Playground
 prompt_6
 You will be given a sequence of context sentences and then asked questions about them. Please answer each question concisely and to your best abilities. In the answers, use only the words mentioned in the context sentences. Whenever possible, give one-word answers. If you are not sure what is the correct answer, say "I don't know". For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground
+prompt_7
+You will be given a sequence of context sentences and then asked questions about them. Please answer each question concisely and to your best abilities. In the answers, use only the words mentioned in the context sentences. Whenever possible, give one-word answers. You might need to inspect the whole conversation history to find the answer. If you are not sure what is the correct answer, say "I don't know". For example:
 Context sentences: John is on the playground. Mary is in the kitchen.
 Question: Where is John?
 Answer: Playground

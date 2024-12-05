@@ -1,7 +1,7 @@
 import os
 import re
 from pathlib import Path
-
+import csv
 import torch
 from sklearn.metrics import accuracy_score
 # Load model directly
@@ -26,12 +26,14 @@ class QATaskIterate:
         # pipe = pipeline("text-generation", model=model_name, torch_dtype=torch.bfloat16, device_map="auto")
 
         # into config: prompt
-        self.prompt = [{"role": "system", "content": """You will be given a sequence of context sentences and then asked questions about them. For example:
+        self.prompt = [{"role": "system", "content": """You will be given a sequence of context sentences and \
+        then asked questions about them. Please answer each question concisely and to your best abilities. For example:
 Context sentences: John is on the playground. Mary is in the kitchen.
 Question: Where is John?
 Answer: Playground"""},]
 
-    #        self.y_true, self.y_pred = [], []
+        self.y_true, self.y_pred = [], []
+        self.task_data = []
 
     def get_prompt(self):
         return self.prompt
@@ -61,8 +63,6 @@ Answer: Playground"""},]
         return train_data
 
     def make_task_data(self, data, task_id):
-        self.y_true, self.y_pred = [], []
-        self.task_data = []
         # Returns a list of dict of one sequence of context sentences
         with open(self.data_dir + data[task_id]["test"], "r") as f:
             d = 0
@@ -86,21 +86,30 @@ Answer: Playground"""},]
         sample = list(self.task_data[exp_id].values())
         context = sample[:-1]  # Strings of context
         answer = sample[-1]  # List with question and final answer
-        x = " ".join(context)
+        x = "\n".join(context)
         y = answer[0]  # Take only question
         self.y_true.append(answer[1])
-        return {"role": "user", "content": x + " " + y}
+        return {"role": "user", "content": x + "\n" + y}
 
     def iterate_context(self, prompt):
+        print("Starting to query the model")
+        results = []
         # into config: sample
         for i in range(5):
+            result = []
+            print("Task data:", list(self.task_data[i].items())[0])
+            task_n = "?"
+            print(f"*TASK {task_n} | SAMPLE {i}*")
             # 1. Add sample
-            prompt.append(self.make_task_example(i))
+            task_example = self.make_task_example(i)
+            prompt.append(task_example)
+            result.append(task_example)
+            results.append(result)
             # 2. Create generation prompt
             formatted_prompt = self.tokenizer.apply_chat_template(
                 prompt, tokenize=False, add_generation_prompt=True
             )
-            print("Formatted prompt:\n", formatted_prompt)
+            print("Formatted prompt:\n", formatted_prompt, end="\n")
             # 3. Tokenize
             inputs = self.tokenizer(
                 formatted_prompt, return_tensors="pt", add_special_tokens=True
@@ -108,7 +117,7 @@ Answer: Playground"""},]
             inputs = {
                 key: tensor.to(self.model.device) for key, tensor in inputs.items()
             }
-            print("Tokenized inputs:\n", inputs)
+            print("Tokenized inputs:\n", inputs, end="\n")
             # 4. Generate text
             outputs = self.model.generate(
                 **inputs,
@@ -123,20 +132,33 @@ Answer: Playground"""},]
             )
             # ans = response[0]["generated_text"][-1]["content"] # Obtain answer
             self.y_pred.append(decoded_output.lower())
-            print(prompt[-1]["content"], decoded_output)  # Print qa
+            print("Model's output:\n", prompt[-1]["content"], decoded_output, end="\n\n")  # Print qa
             # prompt = decoded_output #Update history
         print(self.y_true, self.y_pred)
-        print(accuracy_score(self.y_true, self.y_pred))
+        accuracy = accuracy_score(self.y_true, self.y_pred)
+        print("Accuracy score:", accuracy)
+        [result.extend([true, pred]) for true, pred, result in zip(self.y_true, self.y_pred, results)]
+        # into config: task name
+        with open("prompt_1.csv", "w", encoding="utf-8") as file:
+            writer = csv.writer(file, delimiter="\t")
+            writer.writerow(["task", "true_result", "model_result", "accuracy", accuracy])
+            writer.writerows(results)
+
+        print("The run is finished successfully")
 
 
 if __name__ == "__main__":
+    # TODO: add more description to the outputs
+    # TODO: add to config if we want to print certain data (level of messages: INFO, CRITICAL and so on)
 
     qa_task_iterate = QATaskIterate()
+    print("The model is loaded successfully")
     prompt = qa_task_iterate.get_prompt()
     train_data, test_data = (
         qa_task_iterate.make_train_data(),
         qa_task_iterate.make_test_data(),
     )
+    print("The data is loaded successfully")
     assert len(train_data.items()) == len(test_data.items())
     #print(test)
     # into config: task ids
