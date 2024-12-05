@@ -1,0 +1,1088 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:00,  9.96it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:00<00:00, 10.12it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 10.39it/s]
+Starting from v4.46, the `logits` model output will have the same type as the model (except at train time, where it will always be FP32)
+The model is loaded successfully
+Loaded Train Data: qa1_single-supporting-fact_train.txt
+
+Loaded Train Data: qa2_two-supporting-facts_train.txt
+
+Loaded Train Data: qa3_three-supporting-facts_train.txt
+
+Loaded Train Data: qa4_two-arg-relations_train.txt
+
+Loaded Train Data: qa5_three-arg-relations_train.txt
+
+Loaded Train Data: qa6_yes-no-questions_train.txt
+
+Loaded Train Data: qa7_counting_train.txt
+
+Loaded Train Data: qa8_lists-sets_train.txt
+
+Loaded Train Data: qa9_simple-negation_train.txt
+
+Loaded Train Data: qa10_indefinite-knowledge_train.txt
+
+Loaded Train Data: qa11_basic-coreference_train.txt
+
+Loaded Train Data: qa12_conjunction_train.txt
+
+Loaded Train Data: qa13_compound-coreference_train.txt
+
+Loaded Train Data: qa14_time-reasoning_train.txt
+
+Loaded Train Data: qa15_basic-deduction_train.txt
+
+Loaded Train Data: qa16_basic-induction_train.txt
+
+Loaded Train Data: qa17_positional-reasoning_train.txt
+
+Loaded Train Data: qa18_size-reasoning_train.txt
+
+Loaded Train Data: qa19_path-finding_train.txt
+
+Loaded Train Data: qa20_agents-motivations_train.txt
+
+Loaded Test Data: qa1_single-supporting-fact_test.txt
+
+Loaded Test Data: qa2_two-supporting-facts_test.txt
+
+Loaded Test Data: qa3_three-supporting-facts_test.txt
+
+Loaded Test Data: qa4_two-arg-relations_test.txt
+
+Loaded Test Data: qa5_three-arg-relations_test.txt
+
+Loaded Test Data: qa6_yes-no-questions_test.txt
+
+Loaded Test Data: qa7_counting_test.txt
+
+Loaded Test Data: qa8_lists-sets_test.txt
+
+Loaded Test Data: qa9_simple-negation_test.txt
+
+Loaded Test Data: qa10_indefinite-knowledge_test.txt
+
+Loaded Test Data: qa11_basic-coreference_test.txt
+
+Loaded Test Data: qa12_conjunction_test.txt
+
+Loaded Test Data: qa13_compound-coreference_test.txt
+
+Loaded Test Data: qa14_time-reasoning_test.txt
+
+Loaded Test Data: qa15_basic-deduction_test.txt
+
+Loaded Test Data: qa16_basic-induction_test.txt
+
+Loaded Test Data: qa17_positional-reasoning_test.txt
+
+Loaded Test Data: qa18_size-reasoning_test.txt
+
+Loaded Test Data: qa19_path-finding_test.txt
+
+Loaded Test Data: qa20_agents-motivations_test.txt
+
+The data is loaded successfully
+Starting to query the model
+Task data: (1, 'John travelled to the hallway.')
+*TASK ? | SAMPLE 0*
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and         then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Tokenized inputs:
+ {'input_ids': tensor([[128000, 128000, 128006,   9125, 128007,    271,   2675,    690,    387,
+           2728,    264,   8668,    315,   2317,  23719,    323,    260,   1243,
+           4691,   4860,    922,   1124,     13,   5321,   4320,   1855,   3488,
+           3613,    285,    989,    323,    311,    701,   1888,  18000,     13,
+           1789,   3187,    512,   2014,  23719,     25,   3842,    374,    389,
+            279,  42715,     13,  10455,    374,    304,    279,   9979,    627,
+          14924,     25,  11208,    374,   3842,   5380,  16533,     25,  89692,
+         128009, 128006,    882, 128007,    271,  13379,  46368,    311,    279,
+          51902,    627,  42584,  11879,    291,    311,    279,  15197,    627,
+           9241,    374,   3842,     30, 128009, 128006,  78191, 128007,    271]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])}
+Model's output:
+ John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John?  Hallway.
+
+Task data: (4, 'Daniel went back to the bathroom.')
+*TASK ? | SAMPLE 1*
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and         then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+Where is Mary?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Tokenized inputs:
+ {'input_ids': tensor([[128000, 128000, 128006,   9125, 128007,    271,   2675,    690,    387,
+           2728,    264,   8668,    315,   2317,  23719,    323,    260,   1243,
+           4691,   4860,    922,   1124,     13,   5321,   4320,   1855,   3488,
+           3613,    285,    989,    323,    311,    701,   1888,  18000,     13,
+           1789,   3187,    512,   2014,  23719,     25,   3842,    374,    389,
+            279,  42715,     13,  10455,    374,    304,    279,   9979,    627,
+          14924,     25,  11208,    374,   3842,   5380,  16533,     25,  89692,
+         128009, 128006,    882, 128007,    271,  13379,  46368,    311,    279,
+          51902,    627,  42584,  11879,    291,    311,    279,  15197,    627,
+           9241,    374,   3842,     30, 128009, 128006,    882, 128007,    271,
+          41686,   4024,   1203,    311,    279,  15197,    627,  13379,   7882,
+            311,    279,  14150,    627,   9241,    374,  10455,     30, 128009,
+         128006,  78191, 128007,    271]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])}
+Model's output:
+ Daniel went back to the bathroom.
+John moved to the bedroom.
+Where is Mary?  Kitchen
+
+Task data: (7, 'John went to the hallway.')
+*TASK ? | SAMPLE 2*
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and         then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+Where is Mary?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Tokenized inputs:
+ {'input_ids': tensor([[128000, 128000, 128006,   9125, 128007,    271,   2675,    690,    387,
+           2728,    264,   8668,    315,   2317,  23719,    323,    260,   1243,
+           4691,   4860,    922,   1124,     13,   5321,   4320,   1855,   3488,
+           3613,    285,    989,    323,    311,    701,   1888,  18000,     13,
+           1789,   3187,    512,   2014,  23719,     25,   3842,    374,    389,
+            279,  42715,     13,  10455,    374,    304,    279,   9979,    627,
+          14924,     25,  11208,    374,   3842,   5380,  16533,     25,  89692,
+         128009, 128006,    882, 128007,    271,  13379,  46368,    311,    279,
+          51902,    627,  42584,  11879,    291,    311,    279,  15197,    627,
+           9241,    374,   3842,     30, 128009, 128006,    882, 128007,    271,
+          41686,   4024,   1203,    311,    279,  15197,    627,  13379,   7882,
+            311,    279,  14150,    627,   9241,    374,  10455,     30, 128009,
+         128006,    882, 128007,    271,  13379,   4024,    311,    279,  51902,
+            627,     50,  24155,  11879,    291,    311,    279,   9979,    627,
+           9241,    374,  56786,     30, 128009, 128006,  78191, 128007,    271]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])}
+Model's output:
+ John went to the hallway.
+Sandra journeyed to the kitchen.
+Where is Sandra?  Kitchen
+
+Task data: (10, 'Sandra travelled to the hallway.')
+*TASK ? | SAMPLE 3*
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and         then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+Where is Mary?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra travelled to the hallway.
+John went to the garden.
+Where is Sandra?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Tokenized inputs:
+ {'input_ids': tensor([[128000, 128000, 128006,   9125, 128007,    271,   2675,    690,    387,
+           2728,    264,   8668,    315,   2317,  23719,    323,    260,   1243,
+           4691,   4860,    922,   1124,     13,   5321,   4320,   1855,   3488,
+           3613,    285,    989,    323,    311,    701,   1888,  18000,     13,
+           1789,   3187,    512,   2014,  23719,     25,   3842,    374,    389,
+            279,  42715,     13,  10455,    374,    304,    279,   9979,    627,
+          14924,     25,  11208,    374,   3842,   5380,  16533,     25,  89692,
+         128009, 128006,    882, 128007,    271,  13379,  46368,    311,    279,
+          51902,    627,  42584,  11879,    291,    311,    279,  15197,    627,
+           9241,    374,   3842,     30, 128009, 128006,    882, 128007,    271,
+          41686,   4024,   1203,    311,    279,  15197,    627,  13379,   7882,
+            311,    279,  14150,    627,   9241,    374,  10455,     30, 128009,
+         128006,    882, 128007,    271,  13379,   4024,    311,    279,  51902,
+            627,     50,  24155,  11879,    291,    311,    279,   9979,    627,
+           9241,    374,  56786,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,  46368,    311,    279,  51902,    627,  13379,   4024,
+            311,    279,  13863,    627,   9241,    374,  56786,     30, 128009,
+         128006,  78191, 128007,    271]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])}
+Model's output:
+ Sandra travelled to the hallway.
+John went to the garden.
+Where is Sandra?  Hallway
+
+Task data: (13, 'Sandra went back to the bathroom.')
+*TASK ? | SAMPLE 4*
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and         then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+Where is Mary?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra travelled to the hallway.
+John went to the garden.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra went back to the bathroom.
+Sandra moved to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Tokenized inputs:
+ {'input_ids': tensor([[128000, 128000, 128006,   9125, 128007,    271,   2675,    690,    387,
+           2728,    264,   8668,    315,   2317,  23719,    323,    260,   1243,
+           4691,   4860,    922,   1124,     13,   5321,   4320,   1855,   3488,
+           3613,    285,    989,    323,    311,    701,   1888,  18000,     13,
+           1789,   3187,    512,   2014,  23719,     25,   3842,    374,    389,
+            279,  42715,     13,  10455,    374,    304,    279,   9979,    627,
+          14924,     25,  11208,    374,   3842,   5380,  16533,     25,  89692,
+         128009, 128006,    882, 128007,    271,  13379,  46368,    311,    279,
+          51902,    627,  42584,  11879,    291,    311,    279,  15197,    627,
+           9241,    374,   3842,     30, 128009, 128006,    882, 128007,    271,
+          41686,   4024,   1203,    311,    279,  15197,    627,  13379,   7882,
+            311,    279,  14150,    627,   9241,    374,  10455,     30, 128009,
+         128006,    882, 128007,    271,  13379,   4024,    311,    279,  51902,
+            627,     50,  24155,  11879,    291,    311,    279,   9979,    627,
+           9241,    374,  56786,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,  46368,    311,    279,  51902,    627,  13379,   4024,
+            311,    279,  13863,    627,   9241,    374,  56786,     30, 128009,
+         128006,    882, 128007,    271,     50,  24155,   4024,   1203,    311,
+            279,  15197,    627,     50,  24155,   7882,    311,    279,   9979,
+            627,   9241,    374,  56786,     30, 128009, 128006,  78191, 128007,
+            271]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])}
+Model's output:
+ Sandra went back to the bathroom.
+Sandra moved to the kitchen.
+Where is Sandra?  Kitchen
+
+['hallway', 'bathroom', 'kitchen', 'hallway', 'kitchen'] ['hallway.', 'kitchen', 'kitchen', 'hallway', 'kitchen']
+Accuracy score: 0.6
+The run is finished successfully
+Starting to query the model
+Task data: (1, 'Mary got the milk there.')
+*TASK ? | SAMPLE 0*
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and         then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+Where is Mary?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra travelled to the hallway.
+John went to the garden.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra went back to the bathroom.
+Sandra moved to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Mary got the milk there.
+John moved to the bedroom.
+Sandra went back to the kitchen.
+Mary travelled to the hallway.
+Where is the milk?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Tokenized inputs:
+ {'input_ids': tensor([[128000, 128000, 128006,   9125, 128007,    271,   2675,    690,    387,
+           2728,    264,   8668,    315,   2317,  23719,    323,    260,   1243,
+           4691,   4860,    922,   1124,     13,   5321,   4320,   1855,   3488,
+           3613,    285,    989,    323,    311,    701,   1888,  18000,     13,
+           1789,   3187,    512,   2014,  23719,     25,   3842,    374,    389,
+            279,  42715,     13,  10455,    374,    304,    279,   9979,    627,
+          14924,     25,  11208,    374,   3842,   5380,  16533,     25,  89692,
+         128009, 128006,    882, 128007,    271,  13379,  46368,    311,    279,
+          51902,    627,  42584,  11879,    291,    311,    279,  15197,    627,
+           9241,    374,   3842,     30, 128009, 128006,    882, 128007,    271,
+          41686,   4024,   1203,    311,    279,  15197,    627,  13379,   7882,
+            311,    279,  14150,    627,   9241,    374,  10455,     30, 128009,
+         128006,    882, 128007,    271,  13379,   4024,    311,    279,  51902,
+            627,     50,  24155,  11879,    291,    311,    279,   9979,    627,
+           9241,    374,  56786,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,  46368,    311,    279,  51902,    627,  13379,   4024,
+            311,    279,  13863,    627,   9241,    374,  56786,     30, 128009,
+         128006,    882, 128007,    271,     50,  24155,   4024,   1203,    311,
+            279,  15197,    627,     50,  24155,   7882,    311,    279,   9979,
+            627,   9241,    374,  56786,     30, 128009, 128006,    882, 128007,
+            271,  42584,   2751,    279,  14403,   1070,    627,  13379,   7882,
+            311,    279,  14150,    627,     50,  24155,   4024,   1203,    311,
+            279,   9979,    627,  42584,  46368,    311,    279,  51902,    627,
+           9241,    374,    279,  14403,     30, 128009, 128006,  78191, 128007,
+            271]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1]])}
+Model's output:
+ Mary got the milk there.
+John moved to the bedroom.
+Sandra went back to the kitchen.
+Mary travelled to the hallway.
+Where is the milk?  In the kitchen.
+
+Task data: (4, 'Daniel went back to the bathroom.')
+*TASK ? | SAMPLE 1*
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and         then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+Where is Mary?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra travelled to the hallway.
+John went to the garden.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra went back to the bathroom.
+Sandra moved to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Mary got the milk there.
+John moved to the bedroom.
+Sandra went back to the kitchen.
+Mary travelled to the hallway.
+Where is the milk?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+John got the football there.
+John went to the hallway.
+Where is the football?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Tokenized inputs:
+ {'input_ids': tensor([[128000, 128000, 128006,   9125, 128007,    271,   2675,    690,    387,
+           2728,    264,   8668,    315,   2317,  23719,    323,    260,   1243,
+           4691,   4860,    922,   1124,     13,   5321,   4320,   1855,   3488,
+           3613,    285,    989,    323,    311,    701,   1888,  18000,     13,
+           1789,   3187,    512,   2014,  23719,     25,   3842,    374,    389,
+            279,  42715,     13,  10455,    374,    304,    279,   9979,    627,
+          14924,     25,  11208,    374,   3842,   5380,  16533,     25,  89692,
+         128009, 128006,    882, 128007,    271,  13379,  46368,    311,    279,
+          51902,    627,  42584,  11879,    291,    311,    279,  15197,    627,
+           9241,    374,   3842,     30, 128009, 128006,    882, 128007,    271,
+          41686,   4024,   1203,    311,    279,  15197,    627,  13379,   7882,
+            311,    279,  14150,    627,   9241,    374,  10455,     30, 128009,
+         128006,    882, 128007,    271,  13379,   4024,    311,    279,  51902,
+            627,     50,  24155,  11879,    291,    311,    279,   9979,    627,
+           9241,    374,  56786,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,  46368,    311,    279,  51902,    627,  13379,   4024,
+            311,    279,  13863,    627,   9241,    374,  56786,     30, 128009,
+         128006,    882, 128007,    271,     50,  24155,   4024,   1203,    311,
+            279,  15197,    627,     50,  24155,   7882,    311,    279,   9979,
+            627,   9241,    374,  56786,     30, 128009, 128006,    882, 128007,
+            271,  42584,   2751,    279,  14403,   1070,    627,  13379,   7882,
+            311,    279,  14150,    627,     50,  24155,   4024,   1203,    311,
+            279,   9979,    627,  42584,  46368,    311,    279,  51902,    627,
+           9241,    374,    279,  14403,     30, 128009, 128006,    882, 128007,
+            271,  41686,   4024,   1203,    311,    279,  15197,    627,  13379,
+           7882,    311,    279,  14150,    627,  13379,   2751,    279,   9141,
+           1070,    627,  13379,   4024,    311,    279,  51902,    627,   9241,
+            374,    279,   9141,     30, 128009, 128006,  78191, 128007,    271]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])}
+Model's output:
+ Daniel went back to the bathroom.
+John moved to the bedroom.
+John got the football there.
+John went to the hallway.
+Where is the football?  Bedroom
+
+Task data: (7, 'John went to the hallway.')
+*TASK ? | SAMPLE 2*
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and         then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+Where is Mary?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra travelled to the hallway.
+John went to the garden.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra went back to the bathroom.
+Sandra moved to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Mary got the milk there.
+John moved to the bedroom.
+Sandra went back to the kitchen.
+Mary travelled to the hallway.
+Where is the milk?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+John got the football there.
+John went to the hallway.
+Where is the football?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+John put down the football.
+Mary went to the garden.
+Where is the football?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Tokenized inputs:
+ {'input_ids': tensor([[128000, 128000, 128006,   9125, 128007,    271,   2675,    690,    387,
+           2728,    264,   8668,    315,   2317,  23719,    323,    260,   1243,
+           4691,   4860,    922,   1124,     13,   5321,   4320,   1855,   3488,
+           3613,    285,    989,    323,    311,    701,   1888,  18000,     13,
+           1789,   3187,    512,   2014,  23719,     25,   3842,    374,    389,
+            279,  42715,     13,  10455,    374,    304,    279,   9979,    627,
+          14924,     25,  11208,    374,   3842,   5380,  16533,     25,  89692,
+         128009, 128006,    882, 128007,    271,  13379,  46368,    311,    279,
+          51902,    627,  42584,  11879,    291,    311,    279,  15197,    627,
+           9241,    374,   3842,     30, 128009, 128006,    882, 128007,    271,
+          41686,   4024,   1203,    311,    279,  15197,    627,  13379,   7882,
+            311,    279,  14150,    627,   9241,    374,  10455,     30, 128009,
+         128006,    882, 128007,    271,  13379,   4024,    311,    279,  51902,
+            627,     50,  24155,  11879,    291,    311,    279,   9979,    627,
+           9241,    374,  56786,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,  46368,    311,    279,  51902,    627,  13379,   4024,
+            311,    279,  13863,    627,   9241,    374,  56786,     30, 128009,
+         128006,    882, 128007,    271,     50,  24155,   4024,   1203,    311,
+            279,  15197,    627,     50,  24155,   7882,    311,    279,   9979,
+            627,   9241,    374,  56786,     30, 128009, 128006,    882, 128007,
+            271,  42584,   2751,    279,  14403,   1070,    627,  13379,   7882,
+            311,    279,  14150,    627,     50,  24155,   4024,   1203,    311,
+            279,   9979,    627,  42584,  46368,    311,    279,  51902,    627,
+           9241,    374,    279,  14403,     30, 128009, 128006,    882, 128007,
+            271,  41686,   4024,   1203,    311,    279,  15197,    627,  13379,
+           7882,    311,    279,  14150,    627,  13379,   2751,    279,   9141,
+           1070,    627,  13379,   4024,    311,    279,  51902,    627,   9241,
+            374,    279,   9141,     30, 128009, 128006,    882, 128007,    271,
+          13379,   4024,    311,    279,  51902,    627,     50,  24155,  11879,
+            291,    311,    279,   9979,    627,  13379,   2231,   1523,    279,
+           9141,    627,  42584,   4024,    311,    279,  13863,    627,   9241,
+            374,    279,   9141,     30, 128009, 128006,  78191, 128007,    271]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])}
+Model's output:
+ John went to the hallway.
+Sandra journeyed to the kitchen.
+John put down the football.
+Mary went to the garden.
+Where is the football?  Hallway
+
+Task data: (10, 'Sandra travelled to the hallway.')
+*TASK ? | SAMPLE 3*
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and         then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+Where is Mary?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra travelled to the hallway.
+John went to the garden.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra went back to the bathroom.
+Sandra moved to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Mary got the milk there.
+John moved to the bedroom.
+Sandra went back to the kitchen.
+Mary travelled to the hallway.
+Where is the milk?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+John got the football there.
+John went to the hallway.
+Where is the football?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+John put down the football.
+Mary went to the garden.
+Where is the football?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra travelled to the hallway.
+John went to the garden.
+John went to the kitchen.
+Sandra travelled to the hallway.
+Where is the football?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Tokenized inputs:
+ {'input_ids': tensor([[128000, 128000, 128006,   9125, 128007,    271,   2675,    690,    387,
+           2728,    264,   8668,    315,   2317,  23719,    323,    260,   1243,
+           4691,   4860,    922,   1124,     13,   5321,   4320,   1855,   3488,
+           3613,    285,    989,    323,    311,    701,   1888,  18000,     13,
+           1789,   3187,    512,   2014,  23719,     25,   3842,    374,    389,
+            279,  42715,     13,  10455,    374,    304,    279,   9979,    627,
+          14924,     25,  11208,    374,   3842,   5380,  16533,     25,  89692,
+         128009, 128006,    882, 128007,    271,  13379,  46368,    311,    279,
+          51902,    627,  42584,  11879,    291,    311,    279,  15197,    627,
+           9241,    374,   3842,     30, 128009, 128006,    882, 128007,    271,
+          41686,   4024,   1203,    311,    279,  15197,    627,  13379,   7882,
+            311,    279,  14150,    627,   9241,    374,  10455,     30, 128009,
+         128006,    882, 128007,    271,  13379,   4024,    311,    279,  51902,
+            627,     50,  24155,  11879,    291,    311,    279,   9979,    627,
+           9241,    374,  56786,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,  46368,    311,    279,  51902,    627,  13379,   4024,
+            311,    279,  13863,    627,   9241,    374,  56786,     30, 128009,
+         128006,    882, 128007,    271,     50,  24155,   4024,   1203,    311,
+            279,  15197,    627,     50,  24155,   7882,    311,    279,   9979,
+            627,   9241,    374,  56786,     30, 128009, 128006,    882, 128007,
+            271,  42584,   2751,    279,  14403,   1070,    627,  13379,   7882,
+            311,    279,  14150,    627,     50,  24155,   4024,   1203,    311,
+            279,   9979,    627,  42584,  46368,    311,    279,  51902,    627,
+           9241,    374,    279,  14403,     30, 128009, 128006,    882, 128007,
+            271,  41686,   4024,   1203,    311,    279,  15197,    627,  13379,
+           7882,    311,    279,  14150,    627,  13379,   2751,    279,   9141,
+           1070,    627,  13379,   4024,    311,    279,  51902,    627,   9241,
+            374,    279,   9141,     30, 128009, 128006,    882, 128007,    271,
+          13379,   4024,    311,    279,  51902,    627,     50,  24155,  11879,
+            291,    311,    279,   9979,    627,  13379,   2231,   1523,    279,
+           9141,    627,  42584,   4024,    311,    279,  13863,    627,   9241,
+            374,    279,   9141,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,  46368,    311,    279,  51902,    627,  13379,   4024,
+            311,    279,  13863,    627,  13379,   4024,    311,    279,   9979,
+            627,     50,  24155,  46368,    311,    279,  51902,    627,   9241,
+            374,    279,   9141,     30, 128009, 128006,  78191, 128007,    271]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])}
+Model's output:
+ Sandra travelled to the hallway.
+John went to the garden.
+John went to the kitchen.
+Sandra travelled to the hallway.
+Where is the football?  It is in the hallway.
+
+Task data: (13, 'Sandra went back to the bathroom.')
+*TASK ? | SAMPLE 4*
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and         then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+Where is Mary?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra travelled to the hallway.
+John went to the garden.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra went back to the bathroom.
+Sandra moved to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Mary got the milk there.
+John moved to the bedroom.
+Sandra went back to the kitchen.
+Mary travelled to the hallway.
+Where is the milk?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+John got the football there.
+John went to the hallway.
+Where is the football?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+John put down the football.
+Mary went to the garden.
+Where is the football?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra travelled to the hallway.
+John went to the garden.
+John went to the kitchen.
+Sandra travelled to the hallway.
+Where is the football?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra went back to the bathroom.
+Sandra moved to the kitchen.
+Daniel went to the hallway.
+Mary discarded the milk.
+Where is the milk?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Tokenized inputs:
+ {'input_ids': tensor([[128000, 128000, 128006,   9125, 128007,    271,   2675,    690,    387,
+           2728,    264,   8668,    315,   2317,  23719,    323,    260,   1243,
+           4691,   4860,    922,   1124,     13,   5321,   4320,   1855,   3488,
+           3613,    285,    989,    323,    311,    701,   1888,  18000,     13,
+           1789,   3187,    512,   2014,  23719,     25,   3842,    374,    389,
+            279,  42715,     13,  10455,    374,    304,    279,   9979,    627,
+          14924,     25,  11208,    374,   3842,   5380,  16533,     25,  89692,
+         128009, 128006,    882, 128007,    271,  13379,  46368,    311,    279,
+          51902,    627,  42584,  11879,    291,    311,    279,  15197,    627,
+           9241,    374,   3842,     30, 128009, 128006,    882, 128007,    271,
+          41686,   4024,   1203,    311,    279,  15197,    627,  13379,   7882,
+            311,    279,  14150,    627,   9241,    374,  10455,     30, 128009,
+         128006,    882, 128007,    271,  13379,   4024,    311,    279,  51902,
+            627,     50,  24155,  11879,    291,    311,    279,   9979,    627,
+           9241,    374,  56786,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,  46368,    311,    279,  51902,    627,  13379,   4024,
+            311,    279,  13863,    627,   9241,    374,  56786,     30, 128009,
+         128006,    882, 128007,    271,     50,  24155,   4024,   1203,    311,
+            279,  15197,    627,     50,  24155,   7882,    311,    279,   9979,
+            627,   9241,    374,  56786,     30, 128009, 128006,    882, 128007,
+            271,  42584,   2751,    279,  14403,   1070,    627,  13379,   7882,
+            311,    279,  14150,    627,     50,  24155,   4024,   1203,    311,
+            279,   9979,    627,  42584,  46368,    311,    279,  51902,    627,
+           9241,    374,    279,  14403,     30, 128009, 128006,    882, 128007,
+            271,  41686,   4024,   1203,    311,    279,  15197,    627,  13379,
+           7882,    311,    279,  14150,    627,  13379,   2751,    279,   9141,
+           1070,    627,  13379,   4024,    311,    279,  51902,    627,   9241,
+            374,    279,   9141,     30, 128009, 128006,    882, 128007,    271,
+          13379,   4024,    311,    279,  51902,    627,     50,  24155,  11879,
+            291,    311,    279,   9979,    627,  13379,   2231,   1523,    279,
+           9141,    627,  42584,   4024,    311,    279,  13863,    627,   9241,
+            374,    279,   9141,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,  46368,    311,    279,  51902,    627,  13379,   4024,
+            311,    279,  13863,    627,  13379,   4024,    311,    279,   9979,
+            627,     50,  24155,  46368,    311,    279,  51902,    627,   9241,
+            374,    279,   9141,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,   4024,   1203,    311,    279,  15197,    627,     50,
+          24155,   7882,    311,    279,   9979,    627,  41686,   4024,    311,
+            279,  51902,    627,  42584,  44310,    279,  14403,    627,   9241,
+            374,    279,  14403,     30, 128009, 128006,  78191, 128007,    271]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])}
+Model's output:
+ Sandra went back to the bathroom.
+Sandra moved to the kitchen.
+Daniel went to the hallway.
+Mary discarded the milk.
+Where is the milk?  Discarded means thrown away or gotten rid of. Since Mary
+
+['hallway', 'bathroom', 'kitchen', 'hallway', 'kitchen', 'hallway', 'hallway', 'hallway', 'hallway', 'garden'] ['hallway.', 'kitchen', 'kitchen', 'hallway', 'kitchen', 'in the kitchen.', 'bedroom', 'hallway', 'it is in the hallway.', 'discarded means thrown away or gotten rid of. since mary']
+Accuracy score: 0.4
+The run is finished successfully
+Starting to query the model
+Task data: (1, 'Mary got the milk.')
+*TASK ? | SAMPLE 0*
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and         then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+Where is Mary?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra travelled to the hallway.
+John went to the garden.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra went back to the bathroom.
+Sandra moved to the kitchen.
+Where is Sandra?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Mary got the milk there.
+John moved to the bedroom.
+Sandra went back to the kitchen.
+Mary travelled to the hallway.
+Where is the milk?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Daniel went back to the bathroom.
+John moved to the bedroom.
+John got the football there.
+John went to the hallway.
+Where is the football?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+John went to the hallway.
+Sandra journeyed to the kitchen.
+John put down the football.
+Mary went to the garden.
+Where is the football?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra travelled to the hallway.
+John went to the garden.
+John went to the kitchen.
+Sandra travelled to the hallway.
+Where is the football?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Sandra went back to the bathroom.
+Sandra moved to the kitchen.
+Daniel went to the hallway.
+Mary discarded the milk.
+Where is the milk?<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Mary got the milk.
+John moved to the bedroom.
+Daniel journeyed to the office.
+John grabbed the apple there.
+John got the football.
+John journeyed to the garden.
+Mary left the milk.
+John left the football.
+Daniel moved to the garden.
+Daniel grabbed the football.
+Mary moved to the hallway.
+Mary went to the kitchen.
+John put down the apple there.
+John picked up the apple.
+Sandra moved to the hallway.
+Daniel left the football there.
+Daniel took the football.
+John travelled to the kitchen.
+Daniel dropped the football.
+John dropped the apple.
+John grabbed the apple.
+John went to the office.
+Sandra went back to the bedroom.
+Sandra took the milk.
+John journeyed to the bathroom.
+John travelled to the office.
+Sandra left the milk.
+Mary went to the bedroom.
+Mary moved to the office.
+John travelled to the hallway.
+Sandra moved to the garden.
+Mary moved to the kitchen.
+Daniel took the football.
+Mary journeyed to the bedroom.
+Mary grabbed the milk there.
+Mary discarded the milk.
+John went to the garden.
+John discarded the apple there.
+Where was the apple before the bathroom?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Tokenized inputs:
+ {'input_ids': tensor([[128000, 128000, 128006,   9125, 128007,    271,   2675,    690,    387,
+           2728,    264,   8668,    315,   2317,  23719,    323,    260,   1243,
+           4691,   4860,    922,   1124,     13,   5321,   4320,   1855,   3488,
+           3613,    285,    989,    323,    311,    701,   1888,  18000,     13,
+           1789,   3187,    512,   2014,  23719,     25,   3842,    374,    389,
+            279,  42715,     13,  10455,    374,    304,    279,   9979,    627,
+          14924,     25,  11208,    374,   3842,   5380,  16533,     25,  89692,
+         128009, 128006,    882, 128007,    271,  13379,  46368,    311,    279,
+          51902,    627,  42584,  11879,    291,    311,    279,  15197,    627,
+           9241,    374,   3842,     30, 128009, 128006,    882, 128007,    271,
+          41686,   4024,   1203,    311,    279,  15197,    627,  13379,   7882,
+            311,    279,  14150,    627,   9241,    374,  10455,     30, 128009,
+         128006,    882, 128007,    271,  13379,   4024,    311,    279,  51902,
+            627,     50,  24155,  11879,    291,    311,    279,   9979,    627,
+           9241,    374,  56786,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,  46368,    311,    279,  51902,    627,  13379,   4024,
+            311,    279,  13863,    627,   9241,    374,  56786,     30, 128009,
+         128006,    882, 128007,    271,     50,  24155,   4024,   1203,    311,
+            279,  15197,    627,     50,  24155,   7882,    311,    279,   9979,
+            627,   9241,    374,  56786,     30, 128009, 128006,    882, 128007,
+            271,  42584,   2751,    279,  14403,   1070,    627,  13379,   7882,
+            311,    279,  14150,    627,     50,  24155,   4024,   1203,    311,
+            279,   9979,    627,  42584,  46368,    311,    279,  51902,    627,
+           9241,    374,    279,  14403,     30, 128009, 128006,    882, 128007,
+            271,  41686,   4024,   1203,    311,    279,  15197,    627,  13379,
+           7882,    311,    279,  14150,    627,  13379,   2751,    279,   9141,
+           1070,    627,  13379,   4024,    311,    279,  51902,    627,   9241,
+            374,    279,   9141,     30, 128009, 128006,    882, 128007,    271,
+          13379,   4024,    311,    279,  51902,    627,     50,  24155,  11879,
+            291,    311,    279,   9979,    627,  13379,   2231,   1523,    279,
+           9141,    627,  42584,   4024,    311,    279,  13863,    627,   9241,
+            374,    279,   9141,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,  46368,    311,    279,  51902,    627,  13379,   4024,
+            311,    279,  13863,    627,  13379,   4024,    311,    279,   9979,
+            627,     50,  24155,  46368,    311,    279,  51902,    627,   9241,
+            374,    279,   9141,     30, 128009, 128006,    882, 128007,    271,
+             50,  24155,   4024,   1203,    311,    279,  15197,    627,     50,
+          24155,   7882,    311,    279,   9979,    627,  41686,   4024,    311,
+            279,  51902,    627,  42584,  44310,    279,  14403,    627,   9241,
+            374,    279,  14403,     30, 128009, 128006,    882, 128007,    271,
+          42584,   2751,    279,  14403,    627,  13379,   7882,    311,    279,
+          14150,    627,  41686,  11879,    291,    311,    279,   5274,    627,
+          13379,  30418,    279,  24149,   1070,    627,  13379,   2751,    279,
+           9141,    627,  13379,  11879,    291,    311,    279,  13863,    627,
+          42584,   2163,    279,  14403,    627,  13379,   2163,    279,   9141,
+            627,  41686,   7882,    311,    279,  13863,    627,  41686,  30418,
+            279,   9141,    627,  42584,   7882,    311,    279,  51902,    627,
+          42584,   4024,    311,    279,   9979,    627,  13379,   2231,   1523,
+            279,  24149,   1070,    627,  13379,  13061,    709,    279,  24149,
+            627,     50,  24155,   7882,    311,    279,  51902,    627,  41686,
+           2163,    279,   9141,   1070,    627,  41686,   3952,    279,   9141,
+            627,  13379,  46368,    311,    279,   9979,    627,  41686,  12504,
+            279,   9141,    627,  13379,  12504,    279,  24149,    627,  13379,
+          30418,    279,  24149,    627,  13379,   4024,    311,    279,   5274,
+            627,     50,  24155,   4024,   1203,    311,    279,  14150,    627,
+             50,  24155,   3952,    279,  14403,    627,  13379,  11879,    291,
+            311,    279,  15197,    627,  13379,  46368,    311,    279,   5274,
+            627,     50,  24155,   2163,    279,  14403,    627,  42584,   4024,
+            311,    279,  14150,    627,  42584,   7882,    311,    279,   5274,
+            627,  13379,  46368,    311,    279,  51902,    627,     50,  24155,
+           7882,    311,    279,  13863,    627,  42584,   7882,    311,    279,
+           9979,    627,  41686,   3952,    279,   9141,    627,  42584,  11879,
+            291,    311,    279,  14150,    627,  42584,  30418,    279,  14403,
+           1070,    627,  42584,  44310,    279,  14403,    627,  13379,   4024,
+            311,    279,  13863,    627,  13379,  44310,    279,  24149,   1070,
+            627,   9241,    574,    279,  24149,   1603,    279,  15197,     30,
+         128009, 128006,  78191, 128007,    271]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])}
+Model's output:
+ Mary got the milk.
+John moved to the bedroom.
+Daniel journeyed to the office.
+John grabbed the apple there.
+John got the football.
+John journeyed to the garden.
+Mary left the milk.
+John left the football.
+Daniel moved to the garden.
+Daniel grabbed the football.
+Mary moved to the hallway.
+Mary went to the kitchen.
+John put down the apple there.
+John picked up the apple.
+Sandra moved to the hallway.
+Daniel left the football there.
+Daniel took the football.
+John travelled to the kitchen.
+Daniel dropped the football.
+John dropped the apple.
+John grabbed the apple.
+John went to the office.
+Sandra went back to the bedroom.
+Sandra took the milk.
+John journeyed to the bathroom.
+John travelled to the office.
+Sandra left the milk.
+Mary went to the bedroom.
+Mary moved to the office.
+John travelled to the hallway.
+Sandra moved to the garden.
+Mary moved to the kitchen.
+Daniel took the football.
+Mary journeyed to the bedroom.
+Mary grabbed the milk there.
+Mary discarded the milk.
+John went to the garden.
+John discarded the apple there.
+Where was the apple before the bathroom?  The apple was in the kitchen.
+
+Task data: (4, 'Daniel went back to the bathroom.')
+*TASK ? | SAMPLE 1*
+Traceback (most recent call last):
+  File "/home/students/ivakhnenko/research-project/baseline/script.py", line 167, in <module>
+    qa_task_iterate.iterate_context(prompt)
+  File "/home/students/ivakhnenko/research-project/baseline/script.py", line 104, in iterate_context
+    task_example = self.make_task_example(i)
+  File "/home/students/ivakhnenko/research-project/baseline/script.py", line 89, in make_task_example
+    x = "\n".join(context)
+TypeError: sequence item 4: expected str instance, list found
+srun: error: gpu08: task 0: Exited with exit code 1

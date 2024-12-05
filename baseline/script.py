@@ -116,7 +116,7 @@ Answer: Playground"""},]
             # 1. Add sample
             task_example = self.make_task_example(i)
             prompt.append(task_example)
-            sample_result.append(task_example)
+            sample_result.append(task_example["content"])
             task_results.append(sample_result)
             # 2. Create generation prompt
             formatted_prompt = self.tokenizer.apply_chat_template(
