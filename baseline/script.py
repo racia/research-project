@@ -139,7 +139,7 @@ Answer: Playground"""},]
         print("Accuracy score:", accuracy)
         [result.extend([true, pred]) for true, pred, result in zip(self.y_true, self.y_pred, results)]
         # into config: task name
-        with open("prompt_1.csv", "w", encoding="utf-8") as file:
+        with open("prompt_2.csv", "w", encoding="utf-8") as file:
             writer = csv.writer(file, delimiter="\t")
             writer.writerow(["task", "true_result", "model_result", "accuracy", accuracy])
             writer.writerows(results)
