@@ -130,7 +130,9 @@ Answer: Playground"""},]
             inputs = {
                 key: tensor.to(self.model.device) for key, tensor in inputs.items()
             }
-            print("Tokenized inputs:\n", json.dumps(inputs, indent=4), end="\n\n")
+            # print(inputs['input_ids'][0])
+            display_inputs = {k: v[0].tolist() for k, v in inputs.items()}
+            print("Tokenized inputs:\n", json.dumps(display_inputs, indent=4), end="\n\n")
             # 4. Generate text
             outputs = self.model.generate(
                 **inputs,
