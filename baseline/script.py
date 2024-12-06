@@ -32,8 +32,10 @@ class QATaskIterate:
         # pipe = pipeline("text-generation", model=model_name, torch_dtype=torch.bfloat16, device_map="auto")
 
         # TODO into config: prompt
-        self.prompt = [{"role": "system", "content": """You will be given a sequence of context sentences and \
-then asked questions about them. Please answer each question concisely and to your best abilities. For example:
+        self.prompt = [{"role": "system", "content": """You will be given a sequence of context sentences and then \
+asked questions about them. Please answer each question concisely and to your best abilities. If a question starts \
+with 'who', answer only a name; if with 'what' you should answer an object; if with 'where', provide only a location; \
+if with 'how many', provide only a number. Don't use the articles. For example:
 Context sentences: John is on the playground. Mary is in the kitchen.
 Question: Where is John?
 Answer: Playground"""},]
@@ -186,7 +188,7 @@ Answer: Playground"""},]
 
         [result.extend([true, pred]) for true, pred, result in zip(self.y_true, self.y_pred, task_results)]
         # TODO into config: task name
-        with open("prompt_2.csv", "a+", encoding="utf-8") as f:
+        with open("prompt_3.csv", "a+", encoding="utf-8") as f:
             writer = csv.writer(f, delimiter="\t")
             task_results[0].append(accuracy)
             writer.writerows(task_results)
@@ -208,7 +210,7 @@ if __name__ == "__main__":
     print("The data is loaded successfully")
     assert len(train_data.items()) == len(test_data.items())
 
-    with open("prompt_2.csv", "a+", encoding="utf-8") as file:
+    with open("prompt_3.csv", "a+", encoding="utf-8") as file:
         writer = csv.writer(file, delimiter="\t")
         writer.writerow(["task", "true_result", "model_result", "accuracy"])
 
