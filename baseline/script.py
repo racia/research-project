@@ -7,9 +7,14 @@ import torch
 from sklearn.metrics import accuracy_score
 # Load model directly
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from typing import List, Dict
 
 
 class QATaskIterate:
+    # TODO: add documentation for the class and the methods
+    """
+
+    """
     def __init__(self):
         self.home_dir = Path.home()
         # TODO into config
@@ -36,10 +41,11 @@ Answer: Playground"""},]
         self.y_true, self.y_pred = [], []
         self.task_data = []
 
-    def get_prompt(self):
+    def get_prompt(self) -> List[Dict[str, str]]:
         return self.prompt
 
-    def make_test_data(self):
+    # TODO: generalize the three functions into one (make_data with possible parameters: train, eval, test)
+    def make_test_data(self) -> Dict[int, Dict[str, List[str]]]:
         test_data = {}
         for r, d, f in os.walk(self.data_dir):
             #        print(r,d,f)
@@ -51,7 +57,10 @@ Answer: Playground"""},]
                 test_data[i]["test"] = test[0]
         return test_data
 
-    def make_train_data(self):
+    def make_eval_data(self):
+        pass
+
+    def make_train_data(self) -> Dict[int, Dict[str, List[str]]]:
         train_data = {}
         for r, d, f in os.walk(self.data_dir):
             #        print(r,d,f)
@@ -63,45 +72,67 @@ Answer: Playground"""},]
                 train_data[i]["train"] = train[0]
         return train_data
 
-    def make_task_data(self, data, task_id):
-        # Returns a list of dict of one sequence of context sentences
-        with open(self.data_dir + data[task_id]["test"], "r") as f:
-            d = 0
-            self.task_data.append({})
+    # turns a task into samples?
+    # TODO: add simple data examples to each function (what goes in and out + data types in the definitions)
+    def make_task_data(self, data: dict, task_id: int) -> List[Dict[int, str]]:
+        """
+        Adds samples of a task to the all the task data as a list of dicts of one sequence of context sentences
+
+        :param data:
+        :param task_id:
+        :return:
+        """
+        # as far as I understood, "test" should be a parameter
+        self.task_data = []
+        with open(self.data_dir + data[task_id]["test"], "r", encoding="utf-8") as f:
             lines = f.readlines()
+            self.task_data.append({})
             for i, line in enumerate(lines):
-                line = line.strip()
-                iter, cont = re.split(" ", line, maxsplit=1)  # Remove newline
-                if len(cont.split("\t")) > 2:
-                    self.task_data[d][int(iter)] = cont.split("\t")
+                line = line.strip()  # Remove newlines
+                sentence_id, sentence = line.split(maxsplit=1)
+                sentence_is_question = "\t" in sentence
+                if sentence_is_question:
+                    question_line = sentence.split("\t")
+                    self.task_data[-1][int(sentence_id)] = question_line.pop(0)  # add the question to the sample
+                    # sentence ids start from 1, so we can reserve 0 for question answers
+                    self.task_data[-1][0] = question_line  # add the answer and the references with a separate key 0
                 else:
-                    self.task_data[d][int(iter)] = cont
-                if "?" in line and i != (len(lines) - 1):
+                    self.task_data[-1][int(sentence_id)] = sentence
+                if sentence_is_question and i != (len(lines) - 1):
                     self.task_data.append({})
-                    d += 1
         return self.task_data
 
-    def make_task_example(self, exp_id):
-        # Return a dict with "role" - "content" with one entry of context sentence sequence
-        # to append to current pipeline
-        sample = list(self.task_data[exp_id].values())
-        context = sample[:-1]  # Strings of context
-        answer = sample[-1]  # List with question and final answer
-        try:
-            x = "\n".join(context)
-        except TypeError:
-            print("ACHTUNG")
-            print(context, "\n")
-            import functools
-            import operator
-            x = "\n".join(functools.reduce(operator.iconcat, context, []))
+    def make_task_example(self, exp_id: int, to_enumerate:bool=True) -> Dict[str, str]:
+        """
+
+        Unused value - references
+
+        :param exp_id:
+        :param to_enumerate:
+        :return: a dict with "role" - "content" with one entry of context sentence sequence
+        """
+        sample = self.task_data[exp_id]  # context sentences and the question in the end
+        references = sample.pop(0)  # Removes the line with the answer and the references from the sample dict
+        answer = references.pop(0)  # Separates the answer from the references, the references now contains only refs
+
+        if to_enumerate:
+            x = "\n".join([". ".join(i_sentence) for i_sentence in list(sample.items())])
         else:
-            x = "\n".join(context)
-        y = answer[0]  # Take only question
-        self.y_true.append(answer[1])
-        return {"role": "user", "content": x + "\n" + y}
+            sample = list(sample.values())  # Strings of context and the question
+            x = "\n".join(sample)
+
+        print("Sample:\n", sample, "\n")
+        self.y_true.append(answer)  # Add the answer to y_true (without the references)
+        return {"role": "user", "content": x}
 
     def iterate_context(self, prompt, task_num, sample_id):
+        """
+
+        :param prompt:
+        :param task_num:
+        :param sample_id:
+        :return:
+        """
         task_results = []
         print("Starting to query the model")
         # TODO into config: sample
