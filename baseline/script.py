@@ -32,7 +32,7 @@ class QATaskIterate:
         # pipe = pipeline("text-generation", model=model_name, torch_dtype=torch.bfloat16, device_map="auto")
 
         # TODO into config: prompt
-        self.prompt = [{"role": "system", "content": """You will be given a sequence of context sentences and then \
+        self.prompt_ = [{"role": "system", "content": """You will be given a sequence of context sentences and then \
 asked questions about them. Please answer each question concisely and to your best abilities. For example:
 Context sentences: John is on the playground. Mary is in the kitchen.
 Question: Where is John?
@@ -42,7 +42,7 @@ Answer: Playground"""},]
         self.task_data = []
 
     def get_prompt(self) -> List[Dict[str, str]]:
-        return self.prompt
+        return self.prompt_
 
     # TODO: generalize the three functions into one (make_data with possible parameters: train, eval, test)
     def make_test_data(self) -> Dict[int, Dict[str, List[str]]]:
@@ -125,10 +125,9 @@ Answer: Playground"""},]
         self.y_true.append(answer)  # Add the answer to y_true (without the references)
         return {"role": "user", "content": x}
 
-    def iterate_context(self, prompt, task_num, sample_id):
+    def iterate_context(self, task_num, sample_id):
         """
 
-        :param prompt:
         :param task_num:
         :param sample_id:
         :return:
@@ -145,12 +144,12 @@ Answer: Playground"""},]
             print(f"\n\n-* TASK {task_num} | SAMPLE {i} | ID {sample_id}/{total_tasks} *-\n\n")
             # 1. Add sample
             task_example = self.make_task_example(i)
-            prompt.append(task_example)
+            sample_prompt = self.get_prompt() + [task_example]
             sample_result.append(task_example["content"])
             task_results.append(sample_result)
             # 2. Create generation prompt
             formatted_prompt = self.tokenizer.apply_chat_template(
-                prompt, tokenize=False, add_generation_prompt=True
+                sample_prompt, tokenize=False, add_generation_prompt=True
             )
             print("Formatted prompt:\n", formatted_prompt, end="\n")
             # 3. Tokenize
@@ -160,8 +159,8 @@ Answer: Playground"""},]
             inputs = {
                 key: tensor.to(self.model.device) for key, tensor in inputs.items()
             }
-            display_inputs = {k: str(v[0].tolist()) for k, v in inputs.items()}
-            print("Tokenized inputs:\n", json.dumps(display_inputs, indent=4), end="\n\n")
+            # display_inputs = {k: str(v[0].tolist()) for k, v in inputs.items()}
+            # print("Tokenized inputs:\n", json.dumps(display_inputs, indent=4), end="\n\n")
             # 4. Generate text
             outputs = self.model.generate(
                 **inputs,
@@ -180,9 +179,12 @@ Answer: Playground"""},]
             # prompt = decoded_output #Update history
             print("______________________________")
 
-        print(self.y_true, self.y_pred)
-        accuracy = accuracy_score(self.y_true, self.y_pred)
+        print("Model's predictions for the sample:\ngolden\tpredicted")
+        [print(f"{golden}\t{predicted}") for golden, predicted in zip(self.y_true, self.y_pred)]
+
+        accuracy = round(accuracy_score(self.y_true, self.y_pred), 2)
         print("Accuracy score:", accuracy)
+        print("______________________________")
 
         [result.extend([true, pred]) for true, pred, result in zip(self.y_true, self.y_pred, task_results)]
         # TODO into config: task name
@@ -200,7 +202,6 @@ if __name__ == "__main__":
 
     qa_task_iterate = QATaskIterate()
     print("The model is loaded successfully")
-    prompt = qa_task_iterate.get_prompt()
     train_data, test_data = (
         qa_task_iterate.make_train_data(),
         qa_task_iterate.make_test_data(),
@@ -217,7 +218,7 @@ if __name__ == "__main__":
     # TODO into config: task ids
     for task_num in range(1, 21):
         qa_task_iterate.make_task_data(test_data, task_num)  # Task n°1
-        sample_id = qa_task_iterate.iterate_context(prompt, task_num, sample_id)
+        sample_id = qa_task_iterate.iterate_context(task_num, sample_id)
         print(f"The work on task {task_num} is finished successfully")
 
     print("The run is finished successfully")
