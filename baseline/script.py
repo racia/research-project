@@ -33,9 +33,7 @@ class QATaskIterate:
 
         # TODO into config: prompt
         self.prompt = [{"role": "system", "content": """You will be given a sequence of context sentences and then \
-asked questions about them. Please answer each question concisely and to your best abilities. If a question starts \
-with 'who', answer only a name; if with 'what' you should answer an object; if with 'where', provide only a location; \
-if with 'how many', provide only a number. Don't use the articles. For example:
+asked questions about them. Please answer each question concisely and to your best abilities. For example:
 Context sentences: John is on the playground. Mary is in the kitchen.
 Question: Where is John?
 Answer: Playground"""},]
@@ -104,7 +102,7 @@ Answer: Playground"""},]
                     self.task_data.append({})
         return self.task_data
 
-    def make_task_example(self, exp_id: int, to_enumerate:bool=True) -> Dict[str, str]:
+    def make_task_example(self, exp_id: int, to_enumerate: bool = True) -> Dict[str, str]:
         """
 
         Unused value - references
@@ -118,7 +116,7 @@ Answer: Playground"""},]
         answer = references.pop(0)  # Separates the answer from the references, the references now contains only refs
 
         if to_enumerate:
-            x = "\n".join([". ".join(i_sentence) for i_sentence in list(sample.items())])
+            x = "\n".join([". ".join((str(i), sentence)) for i, sentence in list(sample.items())])
         else:
             sample = list(sample.values())  # Strings of context and the question
             x = "\n".join(sample)
@@ -188,7 +186,7 @@ Answer: Playground"""},]
 
         [result.extend([true, pred]) for true, pred, result in zip(self.y_true, self.y_pred, task_results)]
         # TODO into config: task name
-        with open("prompt_3.csv", "a+", encoding="utf-8") as f:
+        with open("prompt_2.csv", "a+", encoding="utf-8") as f:
             writer = csv.writer(f, delimiter="\t")
             task_results[0].append(accuracy)
             writer.writerows(task_results)
@@ -210,7 +208,7 @@ if __name__ == "__main__":
     print("The data is loaded successfully")
     assert len(train_data.items()) == len(test_data.items())
 
-    with open("prompt_3.csv", "a+", encoding="utf-8") as file:
+    with open("prompt_2.csv", "a+", encoding="utf-8") as file:
         writer = csv.writer(file, delimiter="\t")
         writer.writerow(["task", "true_result", "model_result", "accuracy"])
 
