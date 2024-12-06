@@ -32,11 +32,13 @@ class QATaskIterate:
         # pipe = pipeline("text-generation", model=model_name, torch_dtype=torch.bfloat16, device_map="auto")
 
         # TODO into config: prompt
-        self.prompt_ = [{"role": "system", "content": """You will be given a sequence of context sentences and then \
-asked questions about them. Please answer each question concisely and to your best abilities. For example:
-Context sentences: John is on the playground. Mary is in the kitchen.
+        self.prompt_ = [{"role": "system", "content": """You will be given a sequence of context sentences and \
+then asked questions about them. Please answer each such question to your best abilities. Example:
+Context sentences:
+John is on the playground.
+Mary is in the kitchen.
 Question: Where is John?
-Answer: Playground"""},]
+Correct answer: Playground"""},]
 
         self.y_true, self.y_pred = [], []
         self.task_data = []
@@ -143,7 +145,7 @@ Answer: Playground"""},]
             total_tasks = samples_per_task * 20
             print(f"\n\n-* TASK {task_num} | SAMPLE {i} | ID {sample_id}/{total_tasks} *-\n\n")
             # 1. Add sample
-            task_example = self.make_task_example(i)
+            task_example = self.make_task_example(i, to_enumerate=False)
             sample_prompt = self.get_prompt() + [task_example]
             sample_result.append(task_example["content"])
             task_results.append(sample_result)
@@ -179,8 +181,9 @@ Answer: Playground"""},]
             # prompt = decoded_output #Update history
             print("______________________________")
 
-        print("Model's predictions for the sample:\ngolden\tpredicted")
-        [print(f"{golden}\t{predicted}") for golden, predicted in zip(self.y_true, self.y_pred)]
+        print("\n\nModel's predictions for the sample:\n\n\tGOLDEN\t\tPREDICTED\n")
+        y_pred_joined = [prediction.replace("\n", " ") for prediction in self.y_pred]
+        [print(f"\t{golden}\t\t{prediction}") for golden, prediction in zip(self.y_true, y_pred_joined)]
 
         accuracy = round(accuracy_score(self.y_true, self.y_pred), 2)
         print("Accuracy score:", accuracy)
@@ -188,7 +191,7 @@ Answer: Playground"""},]
 
         [result.extend([true, pred]) for true, pred, result in zip(self.y_true, self.y_pred, task_results)]
         # TODO into config: task name
-        with open("prompt_2.csv", "a+", encoding="utf-8") as f:
+        with open("results/prompt_11.csv", "a+", encoding="utf-8") as f:
             writer = csv.writer(f, delimiter="\t")
             task_results[0].append(accuracy)
             writer.writerows(task_results)
@@ -209,7 +212,8 @@ if __name__ == "__main__":
     print("The data is loaded successfully")
     assert len(train_data.items()) == len(test_data.items())
 
-    with open("prompt_2.csv", "a+", encoding="utf-8") as file:
+    # into config: output path
+    with open("results/prompt_11.csv", "a+", encoding="utf-8") as file:
         writer = csv.writer(file, delimiter="\t")
         writer.writerow(["task", "true_result", "model_result", "accuracy"])
 

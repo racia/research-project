@@ -35,3 +35,26 @@ You will be given a sequence of context sentences and then asked questions about
 Context sentences: John is on the playground. Mary is in the kitchen.
 Question: Where is John?
 Answer: Playground
+prompt_8
+You will be given a sequence of context sentences and then asked questions about them. Please answer each such question by only providing the correct answer. For example: John is on the playground. Mary is in the kitchen. The correct answer to "Where is John?" is "Playground".
+prompt_9
+You will be given a sequence of context sentences and then asked questions about them. Please answer each such question by only providing the correct answer. Example:
+Context sentences:
+1. John is on the playground.
+2. Mary is in the kitchen.
+Question: Where is John?
+Correct answer: Playground
+prompt_10
+You will be given a sequence of context sentences and then asked questions about them. Please answer each such question by only providing the correct answer. Example:
+Context sentences:
+John is on the playground.
+Mary is in the kitchen.
+Question: Where is John?
+Correct answer: Playground
+prompt_11
+You will be given a sequence of context sentences and then asked questions about them. Please answer each such question to your best abilities. Example:
+Context sentences:
+John is on the playground.
+Mary is in the kitchen.
+Question: Where is John?
+Correct answer: Playground

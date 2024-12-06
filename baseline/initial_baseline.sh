@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-#SBATCH --job-name=prompt_2
-#SBATCH --output=prompt_2.txt
+#SBATCH --job-name=prompt_11
+#SBATCH --output=results/prompt_11.txt
 #SBATCH --gres=gpu:2
 #SBATCH --mem=32000
 #SBATCH --ntasks=1
@@ -11,4 +11,4 @@
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate research
 srun python3 script.py
-conda deactivate
+conda activate

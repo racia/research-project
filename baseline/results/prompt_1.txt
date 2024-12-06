@@ -1,0 +1,4084 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.43s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.41s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:04<00:01,  1.41s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.00it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.15s/it]
+Starting from v4.46, the `logits` model output will have the same type as the model (except at train time, where it will always be FP32)
+The model is loaded successfully
+Loaded Train Data: qa1_single-supporting-fact_train.txt
+
+Loaded Train Data: qa2_two-supporting-facts_train.txt
+
+Loaded Train Data: qa3_three-supporting-facts_train.txt
+
+Loaded Train Data: qa4_two-arg-relations_train.txt
+
+Loaded Train Data: qa5_three-arg-relations_train.txt
+
+Loaded Train Data: qa6_yes-no-questions_train.txt
+
+Loaded Train Data: qa7_counting_train.txt
+
+Loaded Train Data: qa8_lists-sets_train.txt
+
+Loaded Train Data: qa9_simple-negation_train.txt
+
+Loaded Train Data: qa10_indefinite-knowledge_train.txt
+
+Loaded Train Data: qa11_basic-coreference_train.txt
+
+Loaded Train Data: qa12_conjunction_train.txt
+
+Loaded Train Data: qa13_compound-coreference_train.txt
+
+Loaded Train Data: qa14_time-reasoning_train.txt
+
+Loaded Train Data: qa15_basic-deduction_train.txt
+
+Loaded Train Data: qa16_basic-induction_train.txt
+
+Loaded Train Data: qa17_positional-reasoning_train.txt
+
+Loaded Train Data: qa18_size-reasoning_train.txt
+
+Loaded Train Data: qa19_path-finding_train.txt
+
+Loaded Train Data: qa20_agents-motivations_train.txt
+
+Loaded Test Data: qa1_single-supporting-fact_test.txt
+
+Loaded Test Data: qa2_two-supporting-facts_test.txt
+
+Loaded Test Data: qa3_three-supporting-facts_test.txt
+
+Loaded Test Data: qa4_two-arg-relations_test.txt
+
+Loaded Test Data: qa5_three-arg-relations_test.txt
+
+Loaded Test Data: qa6_yes-no-questions_test.txt
+
+Loaded Test Data: qa7_counting_test.txt
+
+Loaded Test Data: qa8_lists-sets_test.txt
+
+Loaded Test Data: qa9_simple-negation_test.txt
+
+Loaded Test Data: qa10_indefinite-knowledge_test.txt
+
+Loaded Test Data: qa11_basic-coreference_test.txt
+
+Loaded Test Data: qa12_conjunction_test.txt
+
+Loaded Test Data: qa13_compound-coreference_test.txt
+
+Loaded Test Data: qa14_time-reasoning_test.txt
+
+Loaded Test Data: qa15_basic-deduction_test.txt
+
+Loaded Test Data: qa16_basic-induction_test.txt
+
+Loaded Test Data: qa17_positional-reasoning_test.txt
+
+Loaded Test Data: qa18_size-reasoning_test.txt
+
+Loaded Test Data: qa19_path-finding_test.txt
+
+Loaded Test Data: qa20_agents-motivations_test.txt
+
+The data is loaded successfully
+Starting to query the model
+
+
+-* TASK 1 | SAMPLE 0 | ID 1/100 *-
+
+
+Sample:
+ {1: 'John travelled to the hallway.', 2: 'Mary journeyed to the bathroom.', 3: 'Where is John? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. John travelled to the hallway.
+2. Mary journeyed to the bathroom.
+3. Where is John?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Answer: Hallway
+
+______________________________
+
+
+-* TASK 1 | SAMPLE 1 | ID 2/100 *-
+
+
+Sample:
+ {4: 'Daniel went back to the bathroom.', 5: 'John moved to the bedroom.', 6: 'Where is Mary? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+4. Daniel went back to the bathroom.
+5. John moved to the bedroom.
+6. Where is Mary?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, we know that:
+
+1.
+
+______________________________
+
+
+-* TASK 1 | SAMPLE 2 | ID 3/100 *-
+
+
+Sample:
+ {7: 'John went to the hallway.', 8: 'Sandra journeyed to the kitchen.', 9: 'Where is Sandra? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+7. John went to the hallway.
+8. Sandra journeyed to the kitchen.
+9. Where is Sandra?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentence 8: Sandra journeyed to
+
+______________________________
+
+
+-* TASK 1 | SAMPLE 3 | ID 4/100 *-
+
+
+Sample:
+ {10: 'Sandra travelled to the hallway.', 11: 'John went to the garden.', 12: 'Where is Sandra? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+10. Sandra travelled to the hallway.
+11. John went to the garden.
+12. Where is Sandra?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentence 10, Sandra travelled to the
+
+______________________________
+
+
+-* TASK 1 | SAMPLE 4 | ID 5/100 *-
+
+
+Sample:
+ {13: 'Sandra went back to the bathroom.', 14: 'Sandra moved to the kitchen.', 15: 'Where is Sandra? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+13. Sandra went back to the bathroom.
+14. Sandra moved to the kitchen.
+15. Where is Sandra?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, Sandra is in the kitchen.
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+Accuracy score: 0.0
+______________________________
+The work on task 1 is finished successfully
+Starting to query the model
+
+
+-* TASK 2 | SAMPLE 0 | ID 6/100 *-
+
+
+Sample:
+ {1: 'Mary got the milk there.', 2: 'John moved to the bedroom.', 3: 'Sandra went back to the kitchen.', 4: 'Mary travelled to the hallway.', 5: 'Where is the milk? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Mary got the milk there.
+2. John moved to the bedroom.
+3. Sandra went back to the kitchen.
+4. Mary travelled to the hallway.
+5. Where is the milk?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences, here are the answers to the
+
+______________________________
+
+
+-* TASK 2 | SAMPLE 1 | ID 7/100 *-
+
+
+Sample:
+ {6: 'John got the football there.', 7: 'John went to the hallway.', 8: 'Where is the football? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+6. John got the football there.
+7. John went to the hallway.
+8. Where is the football?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, the football is with John,
+
+______________________________
+
+
+-* TASK 2 | SAMPLE 2 | ID 8/100 *-
+
+
+Sample:
+ {9: 'John put down the football.', 10: 'Mary went to the garden.', 11: 'Where is the football? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+9. John put down the football.
+10. Mary went to the garden.
+11. Where is the football?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, the answer is: On the
+
+______________________________
+
+
+-* TASK 2 | SAMPLE 3 | ID 9/100 *-
+
+
+Sample:
+ {12: 'John went to the kitchen.', 13: 'Sandra travelled to the hallway.', 14: 'Where is the football? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+12. John went to the kitchen.
+13. Sandra travelled to the hallway.
+14. Where is the football?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences:
+
+12. John went to the
+
+______________________________
+
+
+-* TASK 2 | SAMPLE 4 | ID 10/100 *-
+
+
+Sample:
+ {15: 'Daniel went to the hallway.', 16: 'Mary discarded the milk.', 17: 'Where is the milk? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+15. Daniel went to the hallway.
+16. Mary discarded the milk.
+17. Where is the milk?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, the milk was discarded, so
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+Accuracy score: 0.0
+______________________________
+The work on task 2 is finished successfully
+Starting to query the model
+
+
+-* TASK 3 | SAMPLE 0 | ID 11/100 *-
+
+
+Sample:
+ {1: 'Mary got the milk.', 2: 'John moved to the bedroom.', 3: 'Daniel journeyed to the office.', 4: 'John grabbed the apple there.', 5: 'John got the football.', 6: 'John journeyed to the garden.', 7: 'Mary left the milk.', 8: 'John left the football.', 9: 'Daniel moved to the garden.', 10: 'Daniel grabbed the football.', 11: 'Mary moved to the hallway.', 12: 'Mary went to the kitchen.', 13: 'John put down the apple there.', 14: 'John picked up the apple.', 15: 'Sandra moved to the hallway.', 16: 'Daniel left the football there.', 17: 'Daniel took the football.', 18: 'John travelled to the kitchen.', 19: 'Daniel dropped the football.', 20: 'John dropped the apple.', 21: 'John grabbed the apple.', 22: 'John went to the office.', 23: 'Sandra went back to the bedroom.', 24: 'Sandra took the milk.', 25: 'John journeyed to the bathroom.', 26: 'John travelled to the office.', 27: 'Sandra left the milk.', 28: 'Mary went to the bedroom.', 29: 'Mary moved to the office.', 30: 'John travelled to the hallway.', 31: 'Sandra moved to the garden.', 32: 'Mary moved to the kitchen.', 33: 'Daniel took the football.', 34: 'Mary journeyed to the bedroom.', 35: 'Mary grabbed the milk there.', 36: 'Mary discarded the milk.', 37: 'John went to the garden.', 38: 'John discarded the apple there.', 39: 'Where was the apple before the bathroom? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Mary got the milk.
+2. John moved to the bedroom.
+3. Daniel journeyed to the office.
+4. John grabbed the apple there.
+5. John got the football.
+6. John journeyed to the garden.
+7. Mary left the milk.
+8. John left the football.
+9. Daniel moved to the garden.
+10. Daniel grabbed the football.
+11. Mary moved to the hallway.
+12. Mary went to the kitchen.
+13. John put down the apple there.
+14. John picked up the apple.
+15. Sandra moved to the hallway.
+16. Daniel left the football there.
+17. Daniel took the football.
+18. John travelled to the kitchen.
+19. Daniel dropped the football.
+20. John dropped the apple.
+21. John grabbed the apple.
+22. John went to the office.
+23. Sandra went back to the bedroom.
+24. Sandra took the milk.
+25. John journeyed to the bathroom.
+26. John travelled to the office.
+27. Sandra left the milk.
+28. Mary went to the bedroom.
+29. Mary moved to the office.
+30. John travelled to the hallway.
+31. Sandra moved to the garden.
+32. Mary moved to the kitchen.
+33. Daniel took the football.
+34. Mary journeyed to the bedroom.
+35. Mary grabbed the milk there.
+36. Mary discarded the milk.
+37. John went to the garden.
+38. John discarded the apple there.
+39. Where was the apple before the bathroom?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences, I'll answer the question:
+
+
+
+______________________________
+
+
+-* TASK 3 | SAMPLE 1 | ID 12/100 *-
+
+
+Sample:
+ {40: 'Sandra travelled to the bedroom.', 41: 'Daniel moved to the bathroom.', 42: 'Where was the apple before the hallway? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+40. Sandra travelled to the bedroom.
+41. Daniel moved to the bathroom.
+42. Where was the apple before the hallway?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: There is no mention of an apple or a hallway in the
+
+______________________________
+
+
+-* TASK 3 | SAMPLE 2 | ID 13/100 *-
+
+
+Sample:
+ {43: 'Sandra got the milk.', 44: 'Daniel travelled to the garden.', 45: 'Where was the apple before the hallway? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+43. Sandra got the milk.
+44. Daniel travelled to the garden.
+45. Where was the apple before the hallway?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: There is no mention of an apple or a hallway in the
+
+______________________________
+
+
+-* TASK 3 | SAMPLE 3 | ID 14/100 *-
+
+
+Sample:
+ {46: 'Sandra went back to the bathroom.', 47: 'Daniel took the apple there.', 48: 'Mary went back to the hallway.', 49: 'Daniel went to the hallway.', 50: 'Sandra went to the kitchen.', 51: 'Mary journeyed to the bedroom.', 52: 'Sandra journeyed to the hallway.', 53: 'Daniel put down the apple.', 54: 'Daniel put down the football there.', 55: 'Sandra journeyed to the garden.', 56: 'Where was the football before the garden? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+46. Sandra went back to the bathroom.
+47. Daniel took the apple there.
+48. Mary went back to the hallway.
+49. Daniel went to the hallway.
+50. Sandra went to the kitchen.
+51. Mary journeyed to the bedroom.
+52. Sandra journeyed to the hallway.
+53. Daniel put down the apple.
+54. Daniel put down the football there.
+55. Sandra journeyed to the garden.
+56. Where was the football before the garden?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, the football was in the hallway
+
+______________________________
+
+
+-* TASK 3 | SAMPLE 4 | ID 15/100 *-
+
+
+Sample:
+ {57: 'Mary travelled to the office.', 58: 'Sandra dropped the milk.', 59: 'Where was the football before the garden? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+57. Mary travelled to the office.
+58. Sandra dropped the milk.
+59. Where was the football before the garden?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I think there might be a mistake in the question! There
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+Accuracy score: 0.0
+______________________________
+The work on task 3 is finished successfully
+Starting to query the model
+
+
+-* TASK 4 | SAMPLE 0 | ID 16/100 *-
+
+
+Sample:
+ {1: 'The hallway is east of the bathroom.', 2: 'The bedroom is west of the bathroom.', 3: 'What is the bathroom east of?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. The hallway is east of the bathroom.
+2. The bedroom is west of the bathroom.
+3. What is the bathroom east of?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, the bathroom is between the hallway
+
+______________________________
+
+
+-* TASK 4 | SAMPLE 1 | ID 17/100 *-
+
+
+Sample:
+ {1: 'The bedroom is west of the kitchen.', 2: 'The hallway is west of the bedroom.', 3: 'What is west of the kitchen?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. The bedroom is west of the kitchen.
+2. The hallway is west of the bedroom.
+3. What is west of the kitchen?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, west of the kitchen is the
+
+______________________________
+
+
+-* TASK 4 | SAMPLE 2 | ID 18/100 *-
+
+
+Sample:
+ {1: 'The bathroom is north of the garden.', 2: 'The hallway is north of the bathroom.', 3: 'What is north of the garden?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. The bathroom is north of the garden.
+2. The hallway is north of the bathroom.
+3. What is north of the garden?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, the answer is: The bathroom
+
+______________________________
+
+
+-* TASK 4 | SAMPLE 3 | ID 19/100 *-
+
+
+Sample:
+ {1: 'The kitchen is south of the bathroom.', 2: 'The bedroom is south of the kitchen.', 3: 'What is south of the kitchen?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. The kitchen is south of the bathroom.
+2. The bedroom is south of the kitchen.
+3. What is south of the kitchen?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, the answer is: The bedroom
+
+______________________________
+
+
+-* TASK 4 | SAMPLE 4 | ID 20/100 *-
+
+
+Sample:
+ {1: 'The bedroom is east of the kitchen.', 2: 'The office is east of the bedroom.', 3: 'What is east of the kitchen?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. The bedroom is east of the kitchen.
+2. The office is east of the bedroom.
+3. What is east of the kitchen?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, the bedroom is east of the
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+Accuracy score: 0.0
+______________________________
+The work on task 4 is finished successfully
+Starting to query the model
+
+
+-* TASK 5 | SAMPLE 0 | ID 21/100 *-
+
+
+Sample:
+ {1: 'Fred picked up the football there.', 2: 'Fred gave the football to Jeff.', 3: 'What did Fred give to Jeff? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Fred picked up the football there.
+2. Fred gave the football to Jeff.
+3. What did Fred give to Jeff?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: The answer is: Football.
+
+______________________________
+
+
+-* TASK 5 | SAMPLE 1 | ID 22/100 *-
+
+
+Sample:
+ {4: 'Bill went back to the bathroom.', 5: 'Jeff grabbed the milk there.', 6: 'Who gave the football to Jeff? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+4. Bill went back to the bathroom.
+5. Jeff grabbed the milk there.
+6. Who gave the football to Jeff?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: There is no context sentence about someone giving a football to Jeff
+
+______________________________
+
+
+-* TASK 5 | SAMPLE 2 | ID 23/100 *-
+
+
+Sample:
+ {7: 'Jeff gave the football to Fred.', 8: 'Fred handed the football to Jeff.', 9: 'What did Fred give to Jeff? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+7. Jeff gave the football to Fred.
+8. Fred handed the football to Jeff.
+9. What did Fred give to Jeff?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, Fred handed the football to Jeff
+
+______________________________
+
+
+-* TASK 5 | SAMPLE 3 | ID 24/100 *-
+
+
+Sample:
+ {10: 'Jeff handed the football to Fred.', 11: 'Fred gave the football to Jeff.', 12: 'Who did Fred give the football to? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+10. Jeff handed the football to Fred.
+11. Fred gave the football to Jeff.
+12. Who did Fred give the football to?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Fred gave the football to Jeff.
+
+______________________________
+
+
+-* TASK 5 | SAMPLE 4 | ID 25/100 *-
+
+
+Sample:
+ {13: 'Jeff gave the football to Fred.', 14: 'Jeff put down the milk.', 15: 'Who did Jeff give the football to? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+13. Jeff gave the football to Fred.
+14. Jeff put down the milk.
+15. Who did Jeff give the football to?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Fred.
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+Accuracy score: 0.0
+______________________________
+The work on task 5 is finished successfully
+Starting to query the model
+
+
+-* TASK 6 | SAMPLE 0 | ID 26/100 *-
+
+
+Sample:
+ {1: 'Mary got the milk there.', 2: 'John moved to the bedroom.', 3: 'Is John in the kitchen? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Mary got the milk there.
+2. John moved to the bedroom.
+3. Is John in the kitchen?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences:
+
+1. Mary got the milk
+
+______________________________
+
+
+-* TASK 6 | SAMPLE 1 | ID 27/100 *-
+
+
+Sample:
+ {4: 'Mary discarded the milk.', 5: 'John went to the garden.', 6: 'Is John in the kitchen? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+4. Mary discarded the milk.
+5. John went to the garden.
+6. Is John in the kitchen?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Answer: No
+
+______________________________
+
+
+-* TASK 6 | SAMPLE 2 | ID 28/100 *-
+
+
+Sample:
+ {7: 'Daniel moved to the bedroom.', 8: 'Daniel went to the garden.', 9: 'Is John in the garden? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+7. Daniel moved to the bedroom.
+8. Daniel went to the garden.
+9. Is John in the garden?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Answer: No
+
+______________________________
+
+
+-* TASK 6 | SAMPLE 3 | ID 29/100 *-
+
+
+Sample:
+ {10: 'Daniel travelled to the bathroom.', 11: 'Sandra travelled to the bedroom.', 12: 'Is Daniel in the bathroom? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+10. Daniel travelled to the bathroom.
+11. Sandra travelled to the bedroom.
+12. Is Daniel in the bathroom?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Yes, Daniel is in the bathroom.
+
+______________________________
+
+
+-* TASK 6 | SAMPLE 4 | ID 30/100 *-
+
+
+Sample:
+ {13: 'Mary took the football there.', 14: 'Sandra grabbed the milk there.', 15: 'Is Daniel in the bedroom? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+13. Mary took the football there.
+14. Sandra grabbed the milk there.
+15. Is Daniel in the bedroom?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: There is no mention of Daniel in the given context sentences.
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+Accuracy score: 0.0
+______________________________
+The work on task 6 is finished successfully
+Starting to query the model
+
+
+-* TASK 7 | SAMPLE 0 | ID 31/100 *-
+
+
+Sample:
+ {1: 'Mary got the milk there.', 2: 'John moved to the bedroom.', 3: 'How many objects is Mary carrying? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Mary got the milk there.
+2. John moved to the bedroom.
+3. How many objects is Mary carrying?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences:
+
+1. Mary got the milk
+
+______________________________
+
+
+-* TASK 7 | SAMPLE 1 | ID 32/100 *-
+
+
+Sample:
+ {4: 'Sandra went back to the bathroom.', 5: 'John got the football there.', 6: 'How many objects is Mary carrying? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+4. Sandra went back to the bathroom.
+5. John got the football there.
+6. How many objects is Mary carrying?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: There is no mention of Mary carrying any objects in the given
+
+______________________________
+
+
+-* TASK 7 | SAMPLE 2 | ID 33/100 *-
+
+
+Sample:
+ {7: 'Mary journeyed to the bathroom.', 8: 'Mary gave the milk to Sandra.', 9: 'How many objects is Mary carrying? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+7. Mary journeyed to the bathroom.
+8. Mary gave the milk to Sandra.
+9. How many objects is Mary carrying?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, Mary is only mentioned in sentences
+
+______________________________
+
+
+-* TASK 7 | SAMPLE 3 | ID 34/100 *-
+
+
+Sample:
+ {10: 'John went back to the bathroom.', 11: 'John left the football.', 12: 'How many objects is John carrying? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+10. John went back to the bathroom.
+11. John left the football.
+12. How many objects is John carrying?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, John is only carrying one object
+
+______________________________
+
+
+-* TASK 7 | SAMPLE 4 | ID 35/100 *-
+
+
+Sample:
+ {13: 'Sandra gave the milk to John.', 14: 'John journeyed to the garden.', 15: 'How many objects is John carrying? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+13. Sandra gave the milk to John.
+14. John journeyed to the garden.
+15. How many objects is John carrying?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences, we can infer that John is
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+Accuracy score: 0.0
+______________________________
+The work on task 7 is finished successfully
+Starting to query the model
+
+
+-* TASK 8 | SAMPLE 0 | ID 36/100 *-
+
+
+Sample:
+ {1: 'Mary got the milk there.', 2: 'John moved to the bedroom.', 3: 'What is Mary carrying? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Mary got the milk there.
+2. John moved to the bedroom.
+3. What is Mary carrying?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences:
+
+1. Mary got the milk
+
+______________________________
+
+
+-* TASK 8 | SAMPLE 1 | ID 37/100 *-
+
+
+Sample:
+ {4: 'John picked up the football there.', 5: 'John journeyed to the bathroom.', 6: 'What is John carrying? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+4. John picked up the football there.
+5. John journeyed to the bathroom.
+6. What is John carrying?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, John picked up the football in
+
+______________________________
+
+
+-* TASK 8 | SAMPLE 2 | ID 38/100 *-
+
+
+Sample:
+ {7: 'John went to the garden.', 8: 'Daniel went back to the hallway.', 9: 'What is John carrying? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+7. John went to the garden.
+8. Daniel went back to the hallway.
+9. What is John carrying?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: We don't have any information about John carrying anything. The
+
+______________________________
+
+
+-* TASK 8 | SAMPLE 3 | ID 39/100 *-
+
+
+Sample:
+ {10: 'John went back to the bathroom.', 11: 'Mary went to the office.', 12: 'Sandra went back to the kitchen.', 13: 'Mary travelled to the hallway.', 14: 'John travelled to the bedroom.', 15: 'John picked up the apple there.', 16: 'What is John carrying? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+10. John went back to the bathroom.
+11. Mary went to the office.
+12. Sandra went back to the kitchen.
+13. Mary travelled to the hallway.
+14. John travelled to the bedroom.
+15. John picked up the apple there.
+16. What is John carrying?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: The answer is: Apple
+
+______________________________
+
+
+-* TASK 8 | SAMPLE 4 | ID 40/100 *-
+
+
+Sample:
+ {17: 'Sandra travelled to the bedroom.', 18: 'Sandra journeyed to the kitchen.', 19: 'What is John carrying? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+17. Sandra travelled to the bedroom.
+18. Sandra journeyed to the kitchen.
+19. What is John carrying?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: There is no information about John carrying anything in the given context
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+Accuracy score: 0.0
+______________________________
+The work on task 8 is finished successfully
+Starting to query the model
+
+
+-* TASK 9 | SAMPLE 0 | ID 41/100 *-
+
+
+Sample:
+ {1: 'John is in the hallway.', 2: 'Sandra is in the kitchen.', 3: 'Is Sandra in the bedroom? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. John is in the hallway.
+2. Sandra is in the kitchen.
+3. Is Sandra in the bedroom?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Answer: No
+
+______________________________
+
+
+-* TASK 9 | SAMPLE 1 | ID 42/100 *-
+
+
+Sample:
+ {4: 'Sandra journeyed to the bedroom.', 5: 'Mary travelled to the garden.', 6: 'Is Sandra in the bedroom? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+4. Sandra journeyed to the bedroom.
+5. Mary travelled to the garden.
+6. Is Sandra in the bedroom?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Yes, Sandra is in the bedroom.
+
+______________________________
+
+
+-* TASK 9 | SAMPLE 2 | ID 43/100 *-
+
+
+Sample:
+ {7: 'Mary went back to the bathroom.', 8: 'Sandra is no longer in the bedroom.', 9: 'Is Sandra in the bedroom? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+7. Mary went back to the bathroom.
+8. Sandra is no longer in the bedroom.
+9. Is Sandra in the bedroom?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Answer: No
+
+______________________________
+
+
+-* TASK 9 | SAMPLE 3 | ID 44/100 *-
+
+
+Sample:
+ {10: 'John is in the office.', 11: 'Mary is not in the bathroom.', 12: 'Is Mary in the bathroom? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+10. John is in the office.
+11. Mary is not in the bathroom.
+12. Is Mary in the bathroom?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Answer: No
+
+______________________________
+
+
+-* TASK 9 | SAMPLE 4 | ID 45/100 *-
+
+
+Sample:
+ {13: 'John is in the hallway.', 14: 'Mary journeyed to the garden.', 15: 'Is Mary in the kitchen? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+13. John is in the hallway.
+14. Mary journeyed to the garden.
+15. Is Mary in the kitchen?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Answer: No
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+no	answer: no
+yes	yes, sandra is in the bedroom.
+no	answer: no
+no	answer: no
+no	answer: no
+Accuracy score: 0.0
+______________________________
+The work on task 9 is finished successfully
+Starting to query the model
+
+
+-* TASK 10 | SAMPLE 0 | ID 46/100 *-
+
+
+Sample:
+ {1: 'Mary is in the school.', 2: 'Bill is in the kitchen.', 3: 'Is Bill in the bedroom? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Mary is in the school.
+2. Bill is in the kitchen.
+3. Is Bill in the bedroom?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Answer: No
+
+______________________________
+
+
+-* TASK 10 | SAMPLE 1 | ID 47/100 *-
+
+
+Sample:
+ {4: 'Bill journeyed to the bedroom.', 5: 'Fred travelled to the cinema.', 6: 'Is Bill in the bedroom? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+4. Bill journeyed to the bedroom.
+5. Fred travelled to the cinema.
+6. Is Bill in the bedroom?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Answer: Yes
+
+______________________________
+
+
+-* TASK 10 | SAMPLE 2 | ID 48/100 *-
+
+
+Sample:
+ {7: 'Fred went back to the park.', 8: 'Bill is either in the school or the office.', 9: 'Is Bill in the park? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+7. Fred went back to the park.
+8. Bill is either in the school or the office.
+9. Is Bill in the park?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences, I would answer:
+
+9.
+
+______________________________
+
+
+-* TASK 10 | SAMPLE 3 | ID 49/100 *-
+
+
+Sample:
+ {10: 'Mary went to the cinema.', 11: 'Julie is either in the school or the office.', 12: 'Is Fred in the park? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+10. Mary went to the cinema.
+11. Julie is either in the school or the office.
+12. Is Fred in the park?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences, here are the answers to the
+
+______________________________
+
+
+-* TASK 10 | SAMPLE 4 | ID 50/100 *-
+
+
+Sample:
+ {13: 'Julie is either in the park or the school.', 14: 'Bill went back to the office.', 15: 'Is Bill in the office? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+13. Julie is either in the park or the school.
+14. Bill went back to the office.
+15. Is Bill in the office?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Answer: Yes
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+no	answer: no
+yes	yes, sandra is in the bedroom.
+no	answer: no
+no	answer: no
+no	answer: no
+no	answer: no
+yes	answer: yes
+no	based on the context sentences, i would answer:
+
+9.
+yes	based on the context sentences, here are the answers to the
+yes	answer: yes
+Accuracy score: 0.0
+______________________________
+The work on task 10 is finished successfully
+Starting to query the model
+
+
+-* TASK 11 | SAMPLE 0 | ID 51/100 *-
+
+
+Sample:
+ {1: 'John journeyed to the hallway.', 2: 'After that he journeyed to the garden.', 3: 'Where is John? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. John journeyed to the hallway.
+2. After that he journeyed to the garden.
+3. Where is John?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, John is in the garden.
+
+______________________________
+
+
+-* TASK 11 | SAMPLE 1 | ID 52/100 *-
+
+
+Sample:
+ {4: 'John moved to the office.', 5: 'Following that he went to the hallway.', 6: 'Where is John? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+4. John moved to the office.
+5. Following that he went to the hallway.
+6. Where is John?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, John is in the hallway.
+
+______________________________
+
+
+-* TASK 11 | SAMPLE 2 | ID 53/100 *-
+
+
+Sample:
+ {7: 'Sandra travelled to the bedroom.', 8: 'Then she moved to the hallway.', 9: 'Where is Sandra? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+7. Sandra travelled to the bedroom.
+8. Then she moved to the hallway.
+9. Where is Sandra?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, Sandra is currently in the hallway
+
+______________________________
+
+
+-* TASK 11 | SAMPLE 3 | ID 54/100 *-
+
+
+Sample:
+ {10: 'Mary travelled to the hallway.', 11: 'Afterwards she went to the bathroom.', 12: 'Where is Sandra? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+10. Mary travelled to the hallway.
+11. Afterwards she went to the bathroom.
+12. Where is Sandra?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: The context sentences don't mention Sandra, so we can't
+
+______________________________
+
+
+-* TASK 11 | SAMPLE 4 | ID 55/100 *-
+
+
+Sample:
+ {13: 'John went back to the office.', 14: 'After that he moved to the bathroom.', 15: 'Where is Mary? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+13. John went back to the office.
+14. After that he moved to the bathroom.
+15. Where is Mary?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: The answer is: Not mentioned.
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+no	answer: no
+yes	yes, sandra is in the bedroom.
+no	answer: no
+no	answer: no
+no	answer: no
+no	answer: no
+yes	answer: yes
+no	based on the context sentences, i would answer:
+
+9.
+yes	based on the context sentences, here are the answers to the
+yes	answer: yes
+garden	according to the context sentences, john is in the garden.
+hallway	according to the context sentences, john is in the hallway.
+hallway	according to the context sentences, sandra is currently in the hallway
+hallway	the context sentences don't mention sandra, so we can't
+bathroom	the answer is: not mentioned.
+Accuracy score: 0.0
+______________________________
+The work on task 11 is finished successfully
+Starting to query the model
+
+
+-* TASK 12 | SAMPLE 0 | ID 56/100 *-
+
+
+Sample:
+ {1: 'John and Mary travelled to the hallway.', 2: 'Sandra and Mary journeyed to the bedroom.', 3: 'Where is Mary? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. John and Mary travelled to the hallway.
+2. Sandra and Mary journeyed to the bedroom.
+3. Where is Mary?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, Mary is in the hallway (
+
+______________________________
+
+
+-* TASK 12 | SAMPLE 1 | ID 57/100 *-
+
+
+Sample:
+ {4: 'Mary and Daniel travelled to the bathroom.', 5: 'Daniel and Sandra journeyed to the office.', 6: 'Where is Mary? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+4. Mary and Daniel travelled to the bathroom.
+5. Daniel and Sandra journeyed to the office.
+6. Where is Mary?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, Mary is in the bathroom.
+
+______________________________
+
+
+-* TASK 12 | SAMPLE 2 | ID 58/100 *-
+
+
+Sample:
+ {7: 'Daniel and Mary went to the bedroom.', 8: 'Daniel and Sandra travelled to the hallway.', 9: 'Where is Sandra? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+7. Daniel and Mary went to the bedroom.
+8. Daniel and Sandra travelled to the hallway.
+9. Where is Sandra?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, Sandra is in the hallway.
+
+______________________________
+
+
+-* TASK 12 | SAMPLE 3 | ID 59/100 *-
+
+
+Sample:
+ {10: 'Mary and Sandra journeyed to the garden.', 11: 'Sandra and Mary travelled to the hallway.', 12: 'Where is Mary? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+10. Mary and Sandra journeyed to the garden.
+11. Sandra and Mary travelled to the hallway.
+12. Where is Mary?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, Mary is in the garden (
+
+______________________________
+
+
+-* TASK 12 | SAMPLE 4 | ID 60/100 *-
+
+
+Sample:
+ {13: 'Daniel and John journeyed to the bathroom.', 14: 'Daniel and Mary went back to the office.', 15: 'Where is John? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+13. Daniel and John journeyed to the bathroom.
+14. Daniel and Mary went back to the office.
+15. Where is John?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, John is in the bathroom.
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+no	answer: no
+yes	yes, sandra is in the bedroom.
+no	answer: no
+no	answer: no
+no	answer: no
+no	answer: no
+yes	answer: yes
+no	based on the context sentences, i would answer:
+
+9.
+yes	based on the context sentences, here are the answers to the
+yes	answer: yes
+garden	according to the context sentences, john is in the garden.
+hallway	according to the context sentences, john is in the hallway.
+hallway	according to the context sentences, sandra is currently in the hallway
+hallway	the context sentences don't mention sandra, so we can't
+bathroom	the answer is: not mentioned.
+bedroom	according to the context sentences, mary is in the hallway (
+bathroom	according to the context sentences, mary is in the bathroom.
+hallway	according to the context sentences, sandra is in the hallway.
+hallway	according to the context sentences, mary is in the garden (
+bathroom	according to the context sentences, john is in the bathroom.
+Accuracy score: 0.0
+______________________________
+The work on task 12 is finished successfully
+Starting to query the model
+
+
+-* TASK 13 | SAMPLE 0 | ID 61/100 *-
+
+
+Sample:
+ {1: 'John and Mary went back to the hallway.', 2: 'Then they went to the bathroom.', 3: 'Where is John? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. John and Mary went back to the hallway.
+2. Then they went to the bathroom.
+3. Where is John?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Answer: Hallway
+
+______________________________
+
+
+-* TASK 13 | SAMPLE 1 | ID 62/100 *-
+
+
+Sample:
+ {4: 'Mary and John moved to the hallway.', 5: 'Following that they moved to the kitchen.', 6: 'Where is John? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+4. Mary and John moved to the hallway.
+5. Following that they moved to the kitchen.
+6. Where is John?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, John was previously in the hallway
+
+______________________________
+
+
+-* TASK 13 | SAMPLE 2 | ID 63/100 *-
+
+
+Sample:
+ {7: 'Daniel and Sandra went to the office.', 8: 'Following that they went back to the kitchen.', 9: 'Where is John? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+7. Daniel and Sandra went to the office.
+8. Following that they went back to the kitchen.
+9. Where is John?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: There is no information about John in the given context sentences.
+
+______________________________
+
+
+-* TASK 13 | SAMPLE 3 | ID 64/100 *-
+
+
+Sample:
+ {10: 'John and Daniel journeyed to the office.', 11: 'Following that they travelled to the hallway.', 12: 'Where is Sandra? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+10. John and Daniel journeyed to the office.
+11. Following that they travelled to the hallway.
+12. Where is Sandra?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: The context sentences do not mention Sandra, so it is not
+
+______________________________
+
+
+-* TASK 13 | SAMPLE 4 | ID 65/100 *-
+
+
+Sample:
+ {13: 'Mary and Sandra travelled to the garden.', 14: 'After that they went back to the kitchen.', 15: 'Where is Sandra? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+13. Mary and Sandra travelled to the garden.
+14. After that they went back to the kitchen.
+15. Where is Sandra?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, Sandra is in the garden.
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+no	answer: no
+yes	yes, sandra is in the bedroom.
+no	answer: no
+no	answer: no
+no	answer: no
+no	answer: no
+yes	answer: yes
+no	based on the context sentences, i would answer:
+
+9.
+yes	based on the context sentences, here are the answers to the
+yes	answer: yes
+garden	according to the context sentences, john is in the garden.
+hallway	according to the context sentences, john is in the hallway.
+hallway	according to the context sentences, sandra is currently in the hallway
+hallway	the context sentences don't mention sandra, so we can't
+bathroom	the answer is: not mentioned.
+bedroom	according to the context sentences, mary is in the hallway (
+bathroom	according to the context sentences, mary is in the bathroom.
+hallway	according to the context sentences, sandra is in the hallway.
+hallway	according to the context sentences, mary is in the garden (
+bathroom	according to the context sentences, john is in the bathroom.
+bathroom	answer: hallway
+kitchen	according to the context sentences, john was previously in the hallway
+kitchen	there is no information about john in the given context sentences.
+kitchen	the context sentences do not mention sandra, so it is not
+kitchen	according to the context sentences, sandra is in the garden.
+Accuracy score: 0.0
+______________________________
+The work on task 13 is finished successfully
+Starting to query the model
+
+
+-* TASK 14 | SAMPLE 0 | ID 66/100 *-
+
+
+Sample:
+ {1: 'This morning Mary moved to the kitchen.', 2: 'This afternoon Mary moved to the cinema.', 3: 'Yesterday Bill went to the bedroom.', 4: 'Yesterday Mary journeyed to the school.', 5: 'Where was Mary before the cinema? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. This morning Mary moved to the kitchen.
+2. This afternoon Mary moved to the cinema.
+3. Yesterday Bill went to the bedroom.
+4. Yesterday Mary journeyed to the school.
+5. Where was Mary before the cinema?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, Mary was in the kitchen before
+
+______________________________
+
+
+-* TASK 14 | SAMPLE 1 | ID 67/100 *-
+
+
+Sample:
+ {6: 'Yesterday Fred went back to the cinema.', 7: 'Bill journeyed to the office this morning.', 8: 'Where was Bill before the office? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+6. Yesterday Fred went back to the cinema.
+7. Bill journeyed to the office this morning.
+8. Where was Bill before the office?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to sentence 7, Bill journeyed to the office
+
+______________________________
+
+
+-* TASK 14 | SAMPLE 2 | ID 68/100 *-
+
+
+Sample:
+ {9: 'Mary went to the school this evening.', 10: 'This afternoon Bill journeyed to the kitchen.', 11: 'Where was Bill before the office? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+9. Mary went to the school this evening.
+10. This afternoon Bill journeyed to the kitchen.
+11. Where was Bill before the office?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: The answer is: Not mentioned. The context sentences only mention
+
+______________________________
+
+
+-* TASK 14 | SAMPLE 3 | ID 69/100 *-
+
+
+Sample:
+ {12: 'Julie went to the office yesterday.', 13: 'This morning Fred journeyed to the office.', 14: 'Where was Mary before the school? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+12. Julie went to the office yesterday.
+13. This morning Fred journeyed to the office.
+14. Where was Mary before the school?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences:
+
+12. Julie went to the
+
+______________________________
+
+
+-* TASK 14 | SAMPLE 4 | ID 70/100 *-
+
+
+Sample:
+ {15: 'This evening Fred journeyed to the school.', 16: 'This afternoon Fred journeyed to the bedroom.', 17: 'Where was Mary before the school? '} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+15. This evening Fred journeyed to the school.
+16. This afternoon Fred journeyed to the bedroom.
+17. Where was Mary before the school?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: We don't have any information about Mary's location before the
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+no	answer: no
+yes	yes, sandra is in the bedroom.
+no	answer: no
+no	answer: no
+no	answer: no
+no	answer: no
+yes	answer: yes
+no	based on the context sentences, i would answer:
+
+9.
+yes	based on the context sentences, here are the answers to the
+yes	answer: yes
+garden	according to the context sentences, john is in the garden.
+hallway	according to the context sentences, john is in the hallway.
+hallway	according to the context sentences, sandra is currently in the hallway
+hallway	the context sentences don't mention sandra, so we can't
+bathroom	the answer is: not mentioned.
+bedroom	according to the context sentences, mary is in the hallway (
+bathroom	according to the context sentences, mary is in the bathroom.
+hallway	according to the context sentences, sandra is in the hallway.
+hallway	according to the context sentences, mary is in the garden (
+bathroom	according to the context sentences, john is in the bathroom.
+bathroom	answer: hallway
+kitchen	according to the context sentences, john was previously in the hallway
+kitchen	there is no information about john in the given context sentences.
+kitchen	the context sentences do not mention sandra, so it is not
+kitchen	according to the context sentences, sandra is in the garden.
+kitchen	according to the context sentences, mary was in the kitchen before
+bedroom	according to sentence 7, bill journeyed to the office
+bedroom	the answer is: not mentioned. the context sentences only mention
+cinema	based on the context sentences:
+
+12. julie went to the
+cinema	we don't have any information about mary's location before the
+Accuracy score: 0.0
+______________________________
+The work on task 14 is finished successfully
+Starting to query the model
+
+
+-* TASK 15 | SAMPLE 0 | ID 71/100 *-
+
+
+Sample:
+ {1: 'Wolves are afraid of mice.', 2: 'Sheep are afraid of mice.', 3: 'Winona is a sheep.', 4: 'Mice are afraid of cats.', 5: 'Cats are afraid of wolves.', 6: 'Jessica is a mouse.', 7: 'Emily is a cat.', 8: 'Gertrude is a wolf.', 9: 'What is emily afraid of?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Wolves are afraid of mice.
+2. Sheep are afraid of mice.
+3. Winona is a sheep.
+4. Mice are afraid of cats.
+5. Cats are afraid of wolves.
+6. Jessica is a mouse.
+7. Emily is a cat.
+8. Gertrude is a wolf.
+9. What is emily afraid of?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences, we can infer that Emily is
+
+______________________________
+
+
+-* TASK 15 | SAMPLE 1 | ID 72/100 *-
+
+
+Sample:
+ {10: 'What is winona afraid of?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+10. What is winona afraid of?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I apologize, but there is no mention of Winona in
+
+______________________________
+
+
+-* TASK 15 | SAMPLE 2 | ID 73/100 *-
+
+
+Sample:
+ {11: 'What is gertrude afraid of?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+11. What is gertrude afraid of?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I apologize, but there is no mention of Gertrude
+
+______________________________
+
+
+-* TASK 15 | SAMPLE 3 | ID 74/100 *-
+
+
+Sample:
+ {12: 'What is jessica afraid of?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+12. What is jessica afraid of?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I apologize, but there is no context sentence provided about Jessica
+
+______________________________
+
+
+-* TASK 15 | SAMPLE 4 | ID 75/100 *-
+
+
+Sample:
+ {1: 'Cats are afraid of wolves.', 2: 'Mice are afraid of cats.', 3: 'Sheep are afraid of mice.', 4: 'Gertrude is a cat.', 5: 'Wolves are afraid of sheep.', 6: 'Jessica is a mouse.', 7: 'Emily is a wolf.', 8: 'Winona is a cat.', 9: 'What is emily afraid of?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Cats are afraid of wolves.
+2. Mice are afraid of cats.
+3. Sheep are afraid of mice.
+4. Gertrude is a cat.
+5. Wolves are afraid of sheep.
+6. Jessica is a mouse.
+7. Emily is a wolf.
+8. Winona is a cat.
+9. What is emily afraid of?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentences, Emily is a wolf, and
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+no	answer: no
+yes	yes, sandra is in the bedroom.
+no	answer: no
+no	answer: no
+no	answer: no
+no	answer: no
+yes	answer: yes
+no	based on the context sentences, i would answer:
+
+9.
+yes	based on the context sentences, here are the answers to the
+yes	answer: yes
+garden	according to the context sentences, john is in the garden.
+hallway	according to the context sentences, john is in the hallway.
+hallway	according to the context sentences, sandra is currently in the hallway
+hallway	the context sentences don't mention sandra, so we can't
+bathroom	the answer is: not mentioned.
+bedroom	according to the context sentences, mary is in the hallway (
+bathroom	according to the context sentences, mary is in the bathroom.
+hallway	according to the context sentences, sandra is in the hallway.
+hallway	according to the context sentences, mary is in the garden (
+bathroom	according to the context sentences, john is in the bathroom.
+bathroom	answer: hallway
+kitchen	according to the context sentences, john was previously in the hallway
+kitchen	there is no information about john in the given context sentences.
+kitchen	the context sentences do not mention sandra, so it is not
+kitchen	according to the context sentences, sandra is in the garden.
+kitchen	according to the context sentences, mary was in the kitchen before
+bedroom	according to sentence 7, bill journeyed to the office
+bedroom	the answer is: not mentioned. the context sentences only mention
+cinema	based on the context sentences:
+
+12. julie went to the
+cinema	we don't have any information about mary's location before the
+wolf	based on the context sentences, we can infer that emily is
+mouse	i apologize, but there is no mention of winona in
+mouse	i apologize, but there is no mention of gertrude
+cat	i apologize, but there is no context sentence provided about jessica
+sheep	according to the context sentences, emily is a wolf, and
+Accuracy score: 0.0
+______________________________
+The work on task 15 is finished successfully
+Starting to query the model
+
+
+-* TASK 16 | SAMPLE 0 | ID 76/100 *-
+
+
+Sample:
+ {1: 'Lily is a swan.', 2: 'Bernhard is a lion.', 3: 'Greg is a swan.', 4: 'Bernhard is white.', 5: 'Brian is a lion.', 6: 'Lily is gray.', 7: 'Julius is a rhino.', 8: 'Julius is gray.', 9: 'Greg is gray.', 10: 'What color is Brian?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Lily is a swan.
+2. Bernhard is a lion.
+3. Greg is a swan.
+4. Bernhard is white.
+5. Brian is a lion.
+6. Lily is gray.
+7. Julius is a rhino.
+8. Julius is gray.
+9. Greg is gray.
+10. What color is Brian?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences, we can answer the question:
+
+
+
+______________________________
+
+
+-* TASK 16 | SAMPLE 1 | ID 77/100 *-
+
+
+Sample:
+ {1: 'Lily is a rhino.', 2: 'Brian is a swan.', 3: 'Bernhard is a swan.', 4: 'Lily is gray.', 5: 'Brian is white.', 6: 'Bernhard is white.', 7: 'Julius is a frog.', 8: 'Julius is white.', 9: 'Greg is a frog.', 10: 'What color is Greg?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Lily is a rhino.
+2. Brian is a swan.
+3. Bernhard is a swan.
+4. Lily is gray.
+5. Brian is white.
+6. Bernhard is white.
+7. Julius is a frog.
+8. Julius is white.
+9. Greg is a frog.
+10. What color is Greg?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I'm ready to answer your questions based on the context sentences
+
+______________________________
+
+
+-* TASK 16 | SAMPLE 2 | ID 78/100 *-
+
+
+Sample:
+ {1: 'Bernhard is a rhino.', 2: 'Brian is a rhino.', 3: 'Bernhard is white.', 4: 'Brian is white.', 5: 'Lily is a lion.', 6: 'Lily is yellow.', 7: 'Greg is a rhino.', 8: 'Greg is green.', 9: 'Julius is a rhino.', 10: 'What color is Julius?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Bernhard is a rhino.
+2. Brian is a rhino.
+3. Bernhard is white.
+4. Brian is white.
+5. Lily is a lion.
+6. Lily is yellow.
+7. Greg is a rhino.
+8. Greg is green.
+9. Julius is a rhino.
+10. What color is Julius?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences, I'll answer the question:
+
+
+
+______________________________
+
+
+-* TASK 16 | SAMPLE 3 | ID 79/100 *-
+
+
+Sample:
+ {1: 'Greg is a frog.', 2: 'Bernhard is a swan.', 3: 'Julius is a frog.', 4: 'Bernhard is white.', 5: 'Julius is green.', 6: 'Lily is a frog.', 7: 'Brian is a frog.', 8: 'Lily is gray.', 9: 'Brian is gray.', 10: 'What color is Greg?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Greg is a frog.
+2. Bernhard is a swan.
+3. Julius is a frog.
+4. Bernhard is white.
+5. Julius is green.
+6. Lily is a frog.
+7. Brian is a frog.
+8. Lily is gray.
+9. Brian is gray.
+10. What color is Greg?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: The answer is: Not mentioned.
+
+______________________________
+
+
+-* TASK 16 | SAMPLE 4 | ID 80/100 *-
+
+
+Sample:
+ {1: 'Julius is a swan.', 2: 'Julius is gray.', 3: 'Bernhard is a swan.', 4: 'Bernhard is yellow.', 5: 'Brian is a lion.', 6: 'Greg is a lion.', 7: 'Brian is white.', 8: 'Lily is a frog.', 9: 'Lily is gray.', 10: 'What color is Greg?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Julius is a swan.
+2. Julius is gray.
+3. Bernhard is a swan.
+4. Bernhard is yellow.
+5. Brian is a lion.
+6. Greg is a lion.
+7. Brian is white.
+8. Lily is a frog.
+9. Lily is gray.
+10. What color is Greg?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences, I can answer the question:
+
+
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+no	answer: no
+yes	yes, sandra is in the bedroom.
+no	answer: no
+no	answer: no
+no	answer: no
+no	answer: no
+yes	answer: yes
+no	based on the context sentences, i would answer:
+
+9.
+yes	based on the context sentences, here are the answers to the
+yes	answer: yes
+garden	according to the context sentences, john is in the garden.
+hallway	according to the context sentences, john is in the hallway.
+hallway	according to the context sentences, sandra is currently in the hallway
+hallway	the context sentences don't mention sandra, so we can't
+bathroom	the answer is: not mentioned.
+bedroom	according to the context sentences, mary is in the hallway (
+bathroom	according to the context sentences, mary is in the bathroom.
+hallway	according to the context sentences, sandra is in the hallway.
+hallway	according to the context sentences, mary is in the garden (
+bathroom	according to the context sentences, john is in the bathroom.
+bathroom	answer: hallway
+kitchen	according to the context sentences, john was previously in the hallway
+kitchen	there is no information about john in the given context sentences.
+kitchen	the context sentences do not mention sandra, so it is not
+kitchen	according to the context sentences, sandra is in the garden.
+kitchen	according to the context sentences, mary was in the kitchen before
+bedroom	according to sentence 7, bill journeyed to the office
+bedroom	the answer is: not mentioned. the context sentences only mention
+cinema	based on the context sentences:
+
+12. julie went to the
+cinema	we don't have any information about mary's location before the
+wolf	based on the context sentences, we can infer that emily is
+mouse	i apologize, but there is no mention of winona in
+mouse	i apologize, but there is no mention of gertrude
+cat	i apologize, but there is no context sentence provided about jessica
+sheep	according to the context sentences, emily is a wolf, and
+white	based on the context sentences, we can answer the question:
+
+
+white	i'm ready to answer your questions based on the context sentences
+green	based on the context sentences, i'll answer the question:
+
+
+gray	the answer is: not mentioned.
+white	based on the context sentences, i can answer the question:
+
+
+Accuracy score: 0.0
+______________________________
+The work on task 16 is finished successfully
+Starting to query the model
+
+
+-* TASK 17 | SAMPLE 0 | ID 81/100 *-
+
+
+Sample:
+ {1: 'The pink rectangle is to the left of the triangle.', 2: 'The triangle is to the left of the red square.', 3: 'Is the pink rectangle to the right of the red square?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. The pink rectangle is to the left of the triangle.
+2. The triangle is to the left of the red square.
+3. Is the pink rectangle to the right of the red square?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Based on the context sentences, we can deduce the following
+
+______________________________
+
+
+-* TASK 17 | SAMPLE 1 | ID 82/100 *-
+
+
+Sample:
+ {4: 'Is the pink rectangle to the left of the red square?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+4. Is the pink rectangle to the left of the red square?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I apologize, but there are no context sentences provided. Please
+
+______________________________
+
+
+-* TASK 17 | SAMPLE 2 | ID 83/100 *-
+
+
+Sample:
+ {5: 'Is the pink rectangle to the left of the red square?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+5. Is the pink rectangle to the left of the red square?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I apologize, but there are no context sentences provided. Please
+
+______________________________
+
+
+-* TASK 17 | SAMPLE 3 | ID 84/100 *-
+
+
+Sample:
+ {6: 'Is the pink rectangle to the left of the red square?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+6. Is the pink rectangle to the left of the red square?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I apologize, but there are no context sentences provided. Please
+
+______________________________
+
+
+-* TASK 17 | SAMPLE 4 | ID 85/100 *-
+
+
+Sample:
+ {7: 'Is the pink rectangle to the right of the red square?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+7. Is the pink rectangle to the right of the red square?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I apologize, but there are no context sentences provided. Please
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+no	answer: no
+yes	yes, sandra is in the bedroom.
+no	answer: no
+no	answer: no
+no	answer: no
+no	answer: no
+yes	answer: yes
+no	based on the context sentences, i would answer:
+
+9.
+yes	based on the context sentences, here are the answers to the
+yes	answer: yes
+garden	according to the context sentences, john is in the garden.
+hallway	according to the context sentences, john is in the hallway.
+hallway	according to the context sentences, sandra is currently in the hallway
+hallway	the context sentences don't mention sandra, so we can't
+bathroom	the answer is: not mentioned.
+bedroom	according to the context sentences, mary is in the hallway (
+bathroom	according to the context sentences, mary is in the bathroom.
+hallway	according to the context sentences, sandra is in the hallway.
+hallway	according to the context sentences, mary is in the garden (
+bathroom	according to the context sentences, john is in the bathroom.
+bathroom	answer: hallway
+kitchen	according to the context sentences, john was previously in the hallway
+kitchen	there is no information about john in the given context sentences.
+kitchen	the context sentences do not mention sandra, so it is not
+kitchen	according to the context sentences, sandra is in the garden.
+kitchen	according to the context sentences, mary was in the kitchen before
+bedroom	according to sentence 7, bill journeyed to the office
+bedroom	the answer is: not mentioned. the context sentences only mention
+cinema	based on the context sentences:
+
+12. julie went to the
+cinema	we don't have any information about mary's location before the
+wolf	based on the context sentences, we can infer that emily is
+mouse	i apologize, but there is no mention of winona in
+mouse	i apologize, but there is no mention of gertrude
+cat	i apologize, but there is no context sentence provided about jessica
+sheep	according to the context sentences, emily is a wolf, and
+white	based on the context sentences, we can answer the question:
+
+
+white	i'm ready to answer your questions based on the context sentences
+green	based on the context sentences, i'll answer the question:
+
+
+gray	the answer is: not mentioned.
+white	based on the context sentences, i can answer the question:
+
+
+no	based on the context sentences, we can deduce the following
+yes	i apologize, but there are no context sentences provided. please
+yes	i apologize, but there are no context sentences provided. please
+yes	i apologize, but there are no context sentences provided. please
+no	i apologize, but there are no context sentences provided. please
+Accuracy score: 0.0
+______________________________
+The work on task 17 is finished successfully
+Starting to query the model
+
+
+-* TASK 18 | SAMPLE 0 | ID 86/100 *-
+
+
+Sample:
+ {1: 'The suitcase fits inside the box.', 2: 'The chocolate fits inside the box.', 3: 'The container is bigger than the box of chocolates.', 4: 'The container is bigger than the suitcase.', 5: 'The box is bigger than the box of chocolates.', 6: 'The container is bigger than the chocolate.', 7: 'The chocolate fits inside the container.', 8: 'The chocolate fits inside the suitcase.', 9: 'The chocolate fits inside the chest.', 10: 'The suitcase fits inside the container.', 11: 'Does the box fit in the chocolate?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. The suitcase fits inside the box.
+2. The chocolate fits inside the box.
+3. The container is bigger than the box of chocolates.
+4. The container is bigger than the suitcase.
+5. The box is bigger than the box of chocolates.
+6. The container is bigger than the chocolate.
+7. The chocolate fits inside the container.
+8. The chocolate fits inside the suitcase.
+9. The chocolate fits inside the chest.
+10. The suitcase fits inside the container.
+11. Does the box fit in the chocolate?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Here are the answers to the questions:
+
+1. The suitcase
+
+______________________________
+
+
+-* TASK 18 | SAMPLE 1 | ID 87/100 *-
+
+
+Sample:
+ {12: 'Is the chocolate bigger than the box?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+12. Is the chocolate bigger than the box?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I apologize, but there is no context provided about the chocolate
+
+______________________________
+
+
+-* TASK 18 | SAMPLE 2 | ID 88/100 *-
+
+
+Sample:
+ {13: 'Does the box fit in the chocolate?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+13. Does the box fit in the chocolate?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I apologize, but there are no context sentences provided. The
+
+______________________________
+
+
+-* TASK 18 | SAMPLE 3 | ID 89/100 *-
+
+
+Sample:
+ {14: 'Does the box fit in the chocolate?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+14. Does the box fit in the chocolate?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I apologize, but there are no context sentences provided. The
+
+______________________________
+
+
+-* TASK 18 | SAMPLE 4 | ID 90/100 *-
+
+
+Sample:
+ {15: 'Is the chocolate bigger than the box?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+15. Is the chocolate bigger than the box?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: I apologize, but there is no context provided about the chocolate
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+no	answer: no
+yes	yes, sandra is in the bedroom.
+no	answer: no
+no	answer: no
+no	answer: no
+no	answer: no
+yes	answer: yes
+no	based on the context sentences, i would answer:
+
+9.
+yes	based on the context sentences, here are the answers to the
+yes	answer: yes
+garden	according to the context sentences, john is in the garden.
+hallway	according to the context sentences, john is in the hallway.
+hallway	according to the context sentences, sandra is currently in the hallway
+hallway	the context sentences don't mention sandra, so we can't
+bathroom	the answer is: not mentioned.
+bedroom	according to the context sentences, mary is in the hallway (
+bathroom	according to the context sentences, mary is in the bathroom.
+hallway	according to the context sentences, sandra is in the hallway.
+hallway	according to the context sentences, mary is in the garden (
+bathroom	according to the context sentences, john is in the bathroom.
+bathroom	answer: hallway
+kitchen	according to the context sentences, john was previously in the hallway
+kitchen	there is no information about john in the given context sentences.
+kitchen	the context sentences do not mention sandra, so it is not
+kitchen	according to the context sentences, sandra is in the garden.
+kitchen	according to the context sentences, mary was in the kitchen before
+bedroom	according to sentence 7, bill journeyed to the office
+bedroom	the answer is: not mentioned. the context sentences only mention
+cinema	based on the context sentences:
+
+12. julie went to the
+cinema	we don't have any information about mary's location before the
+wolf	based on the context sentences, we can infer that emily is
+mouse	i apologize, but there is no mention of winona in
+mouse	i apologize, but there is no mention of gertrude
+cat	i apologize, but there is no context sentence provided about jessica
+sheep	according to the context sentences, emily is a wolf, and
+white	based on the context sentences, we can answer the question:
+
+
+white	i'm ready to answer your questions based on the context sentences
+green	based on the context sentences, i'll answer the question:
+
+
+gray	the answer is: not mentioned.
+white	based on the context sentences, i can answer the question:
+
+
+no	based on the context sentences, we can deduce the following
+yes	i apologize, but there are no context sentences provided. please
+yes	i apologize, but there are no context sentences provided. please
+yes	i apologize, but there are no context sentences provided. please
+no	i apologize, but there are no context sentences provided. please
+no	here are the answers to the questions:
+
+1. the suitcase
+no	i apologize, but there is no context provided about the chocolate
+no	i apologize, but there are no context sentences provided. the
+no	i apologize, but there are no context sentences provided. the
+no	i apologize, but there is no context provided about the chocolate
+Accuracy score: 0.0
+______________________________
+The work on task 18 is finished successfully
+Starting to query the model
+
+
+-* TASK 19 | SAMPLE 0 | ID 91/100 *-
+
+
+Sample:
+ {1: 'The garden is west of the bathroom.', 2: 'The bedroom is north of the hallway.', 3: 'The office is south of the hallway.', 4: 'The bathroom is north of the bedroom.', 5: 'The kitchen is east of the bedroom.', 6: 'How do you go from the bathroom to the hallway?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. The garden is west of the bathroom.
+2. The bedroom is north of the hallway.
+3. The office is south of the hallway.
+4. The bathroom is north of the bedroom.
+5. The kitchen is east of the bedroom.
+6. How do you go from the bathroom to the hallway?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: To get from the bathroom to the hallway, you would need
+
+______________________________
+
+
+-* TASK 19 | SAMPLE 1 | ID 92/100 *-
+
+
+Sample:
+ {1: 'The hallway is west of the bathroom.', 2: 'The office is south of the bedroom.', 3: 'The garden is north of the bedroom.', 4: 'The kitchen is east of the bedroom.', 5: 'The hallway is east of the kitchen.', 6: 'How do you go from the bedroom to the hallway?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. The hallway is west of the bathroom.
+2. The office is south of the bedroom.
+3. The garden is north of the bedroom.
+4. The kitchen is east of the bedroom.
+5. The hallway is east of the kitchen.
+6. How do you go from the bedroom to the hallway?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: To get from the bedroom to the hallway, you would go
+
+______________________________
+
+
+-* TASK 19 | SAMPLE 2 | ID 93/100 *-
+
+
+Sample:
+ {1: 'The garden is west of the hallway.', 2: 'The kitchen is west of the garden.', 3: 'The garden is north of the bathroom.', 4: 'The bedroom is east of the bathroom.', 5: 'The hallway is west of the office.', 6: 'How do you go from the bathroom to the hallway?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. The garden is west of the hallway.
+2. The kitchen is west of the garden.
+3. The garden is north of the bathroom.
+4. The bedroom is east of the bathroom.
+5. The hallway is west of the office.
+6. How do you go from the bathroom to the hallway?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: To get from the bathroom to the hallway, you would go
+
+______________________________
+
+
+-* TASK 19 | SAMPLE 3 | ID 94/100 *-
+
+
+Sample:
+ {1: 'The hallway is south of the bathroom.', 2: 'The kitchen is west of the garden.', 3: 'The kitchen is south of the bedroom.', 4: 'The office is north of the bedroom.', 5: 'The bedroom is east of the bathroom.', 6: 'How do you go from the kitchen to the bathroom?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. The hallway is south of the bathroom.
+2. The kitchen is west of the garden.
+3. The kitchen is south of the bedroom.
+4. The office is north of the bedroom.
+5. The bedroom is east of the bathroom.
+6. How do you go from the kitchen to the bathroom?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: To get from the kitchen to the bathroom, you would need
+
+______________________________
+
+
+-* TASK 19 | SAMPLE 4 | ID 95/100 *-
+
+
+Sample:
+ {1: 'The bedroom is east of the bathroom.', 2: 'The hallway is east of the bedroom.', 3: 'The kitchen is west of the garden.', 4: 'The office is south of the bedroom.', 5: 'The office is north of the kitchen.', 6: 'How do you go from the bedroom to the kitchen?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. The bedroom is east of the bathroom.
+2. The hallway is east of the bedroom.
+3. The kitchen is west of the garden.
+4. The office is south of the bedroom.
+5. The office is north of the kitchen.
+6. How do you go from the bedroom to the kitchen?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: To get from the bedroom to the kitchen, you would need
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+no	answer: no
+yes	yes, sandra is in the bedroom.
+no	answer: no
+no	answer: no
+no	answer: no
+no	answer: no
+yes	answer: yes
+no	based on the context sentences, i would answer:
+
+9.
+yes	based on the context sentences, here are the answers to the
+yes	answer: yes
+garden	according to the context sentences, john is in the garden.
+hallway	according to the context sentences, john is in the hallway.
+hallway	according to the context sentences, sandra is currently in the hallway
+hallway	the context sentences don't mention sandra, so we can't
+bathroom	the answer is: not mentioned.
+bedroom	according to the context sentences, mary is in the hallway (
+bathroom	according to the context sentences, mary is in the bathroom.
+hallway	according to the context sentences, sandra is in the hallway.
+hallway	according to the context sentences, mary is in the garden (
+bathroom	according to the context sentences, john is in the bathroom.
+bathroom	answer: hallway
+kitchen	according to the context sentences, john was previously in the hallway
+kitchen	there is no information about john in the given context sentences.
+kitchen	the context sentences do not mention sandra, so it is not
+kitchen	according to the context sentences, sandra is in the garden.
+kitchen	according to the context sentences, mary was in the kitchen before
+bedroom	according to sentence 7, bill journeyed to the office
+bedroom	the answer is: not mentioned. the context sentences only mention
+cinema	based on the context sentences:
+
+12. julie went to the
+cinema	we don't have any information about mary's location before the
+wolf	based on the context sentences, we can infer that emily is
+mouse	i apologize, but there is no mention of winona in
+mouse	i apologize, but there is no mention of gertrude
+cat	i apologize, but there is no context sentence provided about jessica
+sheep	according to the context sentences, emily is a wolf, and
+white	based on the context sentences, we can answer the question:
+
+
+white	i'm ready to answer your questions based on the context sentences
+green	based on the context sentences, i'll answer the question:
+
+
+gray	the answer is: not mentioned.
+white	based on the context sentences, i can answer the question:
+
+
+no	based on the context sentences, we can deduce the following
+yes	i apologize, but there are no context sentences provided. please
+yes	i apologize, but there are no context sentences provided. please
+yes	i apologize, but there are no context sentences provided. please
+no	i apologize, but there are no context sentences provided. please
+no	here are the answers to the questions:
+
+1. the suitcase
+no	i apologize, but there is no context provided about the chocolate
+no	i apologize, but there are no context sentences provided. the
+no	i apologize, but there are no context sentences provided. the
+no	i apologize, but there is no context provided about the chocolate
+s,s	to get from the bathroom to the hallway, you would need
+e,e	to get from the bedroom to the hallway, you would go
+n,e	to get from the bathroom to the hallway, you would go
+n,w	to get from the kitchen to the bathroom, you would need
+s,s	to get from the bedroom to the kitchen, you would need
+Accuracy score: 0.0
+______________________________
+The work on task 19 is finished successfully
+Starting to query the model
+
+
+-* TASK 20 | SAMPLE 0 | ID 96/100 *-
+
+
+Sample:
+ {1: 'Jason is thirsty.', 2: 'Where will jason go?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+1. Jason is thirsty.
+2. Where will jason go?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: Answer: Jason will go to get a drink.
+
+______________________________
+
+
+-* TASK 20 | SAMPLE 1 | ID 97/100 *-
+
+
+Sample:
+ {3: 'Antoine is bored.', 4: 'Where will antoine go?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+3. Antoine is bored.
+4. Where will antoine go?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: We don't have enough information to determine where Antoine will go
+
+______________________________
+
+
+-* TASK 20 | SAMPLE 2 | ID 98/100 *-
+
+
+Sample:
+ {5: 'Jason went to the kitchen.', 6: 'Why did jason go to the kitchen?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+5. Jason went to the kitchen.
+6. Why did jason go to the kitchen?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: The answer is: Not given (the context sentences do not
+
+______________________________
+
+
+-* TASK 20 | SAMPLE 3 | ID 99/100 *-
+
+
+Sample:
+ {7: 'Antoine journeyed to the garden.', 8: 'Why did antoine go to the garden?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+7. Antoine journeyed to the garden.
+8. Why did antoine go to the garden?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: The answer is: Not provided (the context sentence only mentions
+
+______________________________
+
+
+-* TASK 20 | SAMPLE 4 | ID 100/100 *-
+
+
+Sample:
+ {9: 'Sumit is hungry.', 10: 'Where will sumit go?'} 
+
+Formatted prompt:
+ <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You will be given a sequence of context sentences and then asked questions about them. For example:
+Context sentences: John is on the playground. Mary is in the kitchen.
+Question: Where is John?
+Answer: Playground<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+9. Sumit is hungry.
+10. Where will sumit go?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+Model's output: According to the context sentence, Sumit is hungry, so
+
+______________________________
+
+
+Model's predictions for the sample:
+golden	predicted
+hallway	answer: hallway
+bathroom	according to the context sentences, we know that:
+
+1.
+kitchen	according to the context sentence 8: sandra journeyed to
+hallway	according to the context sentence 10, sandra travelled to the
+kitchen	according to the context sentences, sandra is in the kitchen.
+hallway	based on the context sentences, here are the answers to the
+hallway	according to the context sentences, the football is with john,
+hallway	according to the context sentences, the answer is: on the
+hallway	based on the context sentences:
+
+12. john went to the
+garden	according to the context sentences, the milk was discarded, so
+office	based on the context sentences, i'll answer the question:
+
+
+office	there is no mention of an apple or a hallway in the
+office	there is no mention of an apple or a hallway in the
+bathroom	according to the context sentences, the football was in the hallway
+bathroom	i think there might be a mistake in the question! there
+bedroom	according to the context sentences, the bathroom is between the hallway
+bedroom	according to the context sentences, west of the kitchen is the
+bathroom	according to the context sentences, the answer is: the bathroom
+bedroom	according to the context sentences, the answer is: the bedroom
+bedroom	according to the context sentences, the bedroom is east of the
+football	the answer is: football.
+Fred	there is no context sentence about someone giving a football to jeff
+football	according to the context sentences, fred handed the football to jeff
+Jeff	fred gave the football to jeff.
+Fred	fred.
+no	based on the context sentences:
+
+1. mary got the milk
+no	answer: no
+yes	answer: no
+yes	yes, daniel is in the bathroom.
+no	there is no mention of daniel in the given context sentences.
+one	based on the context sentences:
+
+1. mary got the milk
+one	there is no mention of mary carrying any objects in the given
+none	according to the context sentences, mary is only mentioned in sentences
+none	according to the context sentences, john is only carrying one object
+one	based on the context sentences, we can infer that john is
+milk	based on the context sentences:
+
+1. mary got the milk
+football	according to the context sentences, john picked up the football in
+football	we don't have any information about john carrying anything. the
+football,apple	the answer is: apple
+football,apple	there is no information about john carrying anything in the given context
+no	answer: no
+yes	yes, sandra is in the bedroom.
+no	answer: no
+no	answer: no
+no	answer: no
+no	answer: no
+yes	answer: yes
+no	based on the context sentences, i would answer:
+
+9.
+yes	based on the context sentences, here are the answers to the
+yes	answer: yes
+garden	according to the context sentences, john is in the garden.
+hallway	according to the context sentences, john is in the hallway.
+hallway	according to the context sentences, sandra is currently in the hallway
+hallway	the context sentences don't mention sandra, so we can't
+bathroom	the answer is: not mentioned.
+bedroom	according to the context sentences, mary is in the hallway (
+bathroom	according to the context sentences, mary is in the bathroom.
+hallway	according to the context sentences, sandra is in the hallway.
+hallway	according to the context sentences, mary is in the garden (
+bathroom	according to the context sentences, john is in the bathroom.
+bathroom	answer: hallway
+kitchen	according to the context sentences, john was previously in the hallway
+kitchen	there is no information about john in the given context sentences.
+kitchen	the context sentences do not mention sandra, so it is not
+kitchen	according to the context sentences, sandra is in the garden.
+kitchen	according to the context sentences, mary was in the kitchen before
+bedroom	according to sentence 7, bill journeyed to the office
+bedroom	the answer is: not mentioned. the context sentences only mention
+cinema	based on the context sentences:
+
+12. julie went to the
+cinema	we don't have any information about mary's location before the
+wolf	based on the context sentences, we can infer that emily is
+mouse	i apologize, but there is no mention of winona in
+mouse	i apologize, but there is no mention of gertrude
+cat	i apologize, but there is no context sentence provided about jessica
+sheep	according to the context sentences, emily is a wolf, and
+white	based on the context sentences, we can answer the question:
+
+
+white	i'm ready to answer your questions based on the context sentences
+green	based on the context sentences, i'll answer the question:
+
+
+gray	the answer is: not mentioned.
+white	based on the context sentences, i can answer the question:
+
+
+no	based on the context sentences, we can deduce the following
+yes	i apologize, but there are no context sentences provided. please
+yes	i apologize, but there are no context sentences provided. please
+yes	i apologize, but there are no context sentences provided. please
+no	i apologize, but there are no context sentences provided. please
+no	here are the answers to the questions:
+
+1. the suitcase
+no	i apologize, but there is no context provided about the chocolate
+no	i apologize, but there are no context sentences provided. the
+no	i apologize, but there are no context sentences provided. the
+no	i apologize, but there is no context provided about the chocolate
+s,s	to get from the bathroom to the hallway, you would need
+e,e	to get from the bedroom to the hallway, you would go
+n,e	to get from the bathroom to the hallway, you would go
+n,w	to get from the kitchen to the bathroom, you would need
+s,s	to get from the bedroom to the kitchen, you would need
+kitchen	answer: jason will go to get a drink.
+garden	we don't have enough information to determine where antoine will go
+thirsty	the answer is: not given (the context sentences do not
+bored	the answer is: not provided (the context sentence only mentions
+kitchen	according to the context sentence, sumit is hungry, so
+Accuracy score: 0.0
+______________________________
+The work on task 20 is finished successfully
+The run is finished successfully

@@ -1,0 +1,396 @@
+task	true_result	model_result	accuracy
+"John travelled to the hallway.
+Mary journeyed to the bathroom.
+Where is John? "	hallway	hallway.	0.0
+"Daniel went back to the bathroom.
+John moved to the bedroom.
+Where is Mary? "	bathroom	the context sentences only mention john and daniel, but not mary
+"John went to the hallway.
+Sandra journeyed to the kitchen.
+Where is Sandra? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"Sandra travelled to the hallway.
+John went to the garden.
+Where is Sandra? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"Sandra went back to the bathroom.
+Sandra moved to the kitchen.
+Where is Sandra? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"Mary got the milk there.
+John moved to the bedroom.
+Sandra went back to the kitchen.
+Mary travelled to the hallway.
+Where is the milk? "	hallway	hallway.	0.0
+"John got the football there.
+John went to the hallway.
+Where is the football? "	bathroom	the context sentences only mention john and daniel, but not mary
+"John put down the football.
+Mary went to the garden.
+Where is the football? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"John went to the kitchen.
+Sandra travelled to the hallway.
+Where is the football? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"Daniel went to the hallway.
+Mary discarded the milk.
+Where is the milk? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"Mary got the milk.
+John moved to the bedroom.
+Daniel journeyed to the office.
+John grabbed the apple there.
+John got the football.
+John journeyed to the garden.
+Mary left the milk.
+John left the football.
+Daniel moved to the garden.
+Daniel grabbed the football.
+Mary moved to the hallway.
+Mary went to the kitchen.
+John put down the apple there.
+John picked up the apple.
+Sandra moved to the hallway.
+Daniel left the football there.
+Daniel took the football.
+John travelled to the kitchen.
+Daniel dropped the football.
+John dropped the apple.
+John grabbed the apple.
+John went to the office.
+Sandra went back to the bedroom.
+Sandra took the milk.
+John journeyed to the bathroom.
+John travelled to the office.
+Sandra left the milk.
+Mary went to the bedroom.
+Mary moved to the office.
+John travelled to the hallway.
+Sandra moved to the garden.
+Mary moved to the kitchen.
+Daniel took the football.
+Mary journeyed to the bedroom.
+Mary grabbed the milk there.
+Mary discarded the milk.
+John went to the garden.
+John discarded the apple there.
+Where was the apple before the bathroom? "	hallway	hallway.	0.0
+"Sandra travelled to the bedroom.
+Daniel moved to the bathroom.
+Where was the apple before the hallway? "	bathroom	the context sentences only mention john and daniel, but not mary
+"Sandra got the milk.
+Daniel travelled to the garden.
+Where was the apple before the hallway? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"Sandra went back to the bathroom.
+Daniel took the apple there.
+Mary went back to the hallway.
+Daniel went to the hallway.
+Sandra went to the kitchen.
+Mary journeyed to the bedroom.
+Sandra journeyed to the hallway.
+Daniel put down the apple.
+Daniel put down the football there.
+Sandra journeyed to the garden.
+Where was the football before the garden? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"Mary travelled to the office.
+Sandra dropped the milk.
+Where was the football before the garden? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"The hallway is east of the bathroom.
+The bedroom is west of the bathroom.
+What is the bathroom east of?"	hallway	hallway.	0.0
+"The bedroom is west of the kitchen.
+The hallway is west of the bedroom.
+What is west of the kitchen?"	bathroom	the context sentences only mention john and daniel, but not mary
+"The bathroom is north of the garden.
+The hallway is north of the bathroom.
+What is north of the garden?"	kitchen	according to the context sentence, sandra is in the kitchen.
+"The kitchen is south of the bathroom.
+The bedroom is south of the kitchen.
+What is south of the kitchen?"	hallway	according to the context sentence, sandra travelled to the hallway,
+"The bedroom is east of the kitchen.
+The office is east of the bedroom.
+What is east of the kitchen?"	kitchen	according to the context sentences, sandra is in the kitchen.
+"Fred picked up the football there.
+Fred gave the football to Jeff.
+What did Fred give to Jeff? "	hallway	hallway.	0.0
+"Bill went back to the bathroom.
+Jeff grabbed the milk there.
+Who gave the football to Jeff? "	bathroom	the context sentences only mention john and daniel, but not mary
+"Jeff gave the football to Fred.
+Fred handed the football to Jeff.
+What did Fred give to Jeff? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"Jeff handed the football to Fred.
+Fred gave the football to Jeff.
+Who did Fred give the football to? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"Jeff gave the football to Fred.
+Jeff put down the milk.
+Who did Jeff give the football to? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"Mary got the milk there.
+John moved to the bedroom.
+Is John in the kitchen? "	hallway	hallway.	0.0
+"Mary discarded the milk.
+John went to the garden.
+Is John in the kitchen? "	bathroom	the context sentences only mention john and daniel, but not mary
+"Daniel moved to the bedroom.
+Daniel went to the garden.
+Is John in the garden? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"Daniel travelled to the bathroom.
+Sandra travelled to the bedroom.
+Is Daniel in the bathroom? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"Mary took the football there.
+Sandra grabbed the milk there.
+Is Daniel in the bedroom? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"Mary got the milk there.
+John moved to the bedroom.
+How many objects is Mary carrying? "	hallway	hallway.	0.0
+"Sandra went back to the bathroom.
+John got the football there.
+How many objects is Mary carrying? "	bathroom	the context sentences only mention john and daniel, but not mary
+"Mary journeyed to the bathroom.
+Mary gave the milk to Sandra.
+How many objects is Mary carrying? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"John went back to the bathroom.
+John left the football.
+How many objects is John carrying? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"Sandra gave the milk to John.
+John journeyed to the garden.
+How many objects is John carrying? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"Mary got the milk there.
+John moved to the bedroom.
+What is Mary carrying? "	hallway	hallway.	0.0
+"John picked up the football there.
+John journeyed to the bathroom.
+What is John carrying? "	bathroom	the context sentences only mention john and daniel, but not mary
+"John went to the garden.
+Daniel went back to the hallway.
+What is John carrying? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"John went back to the bathroom.
+Mary went to the office.
+Sandra went back to the kitchen.
+Mary travelled to the hallway.
+John travelled to the bedroom.
+John picked up the apple there.
+What is John carrying? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"Sandra travelled to the bedroom.
+Sandra journeyed to the kitchen.
+What is John carrying? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"John is in the hallway.
+Sandra is in the kitchen.
+Is Sandra in the bedroom? "	hallway	hallway.	0.0
+"Sandra journeyed to the bedroom.
+Mary travelled to the garden.
+Is Sandra in the bedroom? "	bathroom	the context sentences only mention john and daniel, but not mary
+"Mary went back to the bathroom.
+Sandra is no longer in the bedroom.
+Is Sandra in the bedroom? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"John is in the office.
+Mary is not in the bathroom.
+Is Mary in the bathroom? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"John is in the hallway.
+Mary journeyed to the garden.
+Is Mary in the kitchen? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"Mary is in the school.
+Bill is in the kitchen.
+Is Bill in the bedroom? "	hallway	hallway.	0.0
+"Bill journeyed to the bedroom.
+Fred travelled to the cinema.
+Is Bill in the bedroom? "	bathroom	the context sentences only mention john and daniel, but not mary
+"Fred went back to the park.
+Bill is either in the school or the office.
+Is Bill in the park? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"Mary went to the cinema.
+Julie is either in the school or the office.
+Is Fred in the park? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"Julie is either in the park or the school.
+Bill went back to the office.
+Is Bill in the office? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"John journeyed to the hallway.
+After that he journeyed to the garden.
+Where is John? "	hallway	hallway.	0.0
+"John moved to the office.
+Following that he went to the hallway.
+Where is John? "	bathroom	the context sentences only mention john and daniel, but not mary
+"Sandra travelled to the bedroom.
+Then she moved to the hallway.
+Where is Sandra? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"Mary travelled to the hallway.
+Afterwards she went to the bathroom.
+Where is Sandra? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"John went back to the office.
+After that he moved to the bathroom.
+Where is Mary? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"John and Mary travelled to the hallway.
+Sandra and Mary journeyed to the bedroom.
+Where is Mary? "	hallway	hallway.	0.0
+"Mary and Daniel travelled to the bathroom.
+Daniel and Sandra journeyed to the office.
+Where is Mary? "	bathroom	the context sentences only mention john and daniel, but not mary
+"Daniel and Mary went to the bedroom.
+Daniel and Sandra travelled to the hallway.
+Where is Sandra? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"Mary and Sandra journeyed to the garden.
+Sandra and Mary travelled to the hallway.
+Where is Mary? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"Daniel and John journeyed to the bathroom.
+Daniel and Mary went back to the office.
+Where is John? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"John and Mary went back to the hallway.
+Then they went to the bathroom.
+Where is John? "	hallway	hallway.	0.0
+"Mary and John moved to the hallway.
+Following that they moved to the kitchen.
+Where is John? "	bathroom	the context sentences only mention john and daniel, but not mary
+"Daniel and Sandra went to the office.
+Following that they went back to the kitchen.
+Where is John? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"John and Daniel journeyed to the office.
+Following that they travelled to the hallway.
+Where is Sandra? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"Mary and Sandra travelled to the garden.
+After that they went back to the kitchen.
+Where is Sandra? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"This morning Mary moved to the kitchen.
+This afternoon Mary moved to the cinema.
+Yesterday Bill went to the bedroom.
+Yesterday Mary journeyed to the school.
+Where was Mary before the cinema? "	hallway	hallway.	0.0
+"Yesterday Fred went back to the cinema.
+Bill journeyed to the office this morning.
+Where was Bill before the office? "	bathroom	the context sentences only mention john and daniel, but not mary
+"Mary went to the school this evening.
+This afternoon Bill journeyed to the kitchen.
+Where was Bill before the office? "	kitchen	according to the context sentence, sandra is in the kitchen.
+"Julie went to the office yesterday.
+This morning Fred journeyed to the office.
+Where was Mary before the school? "	hallway	according to the context sentence, sandra travelled to the hallway,
+"This evening Fred journeyed to the school.
+This afternoon Fred journeyed to the bedroom.
+Where was Mary before the school? "	kitchen	according to the context sentences, sandra is in the kitchen.
+"Wolves are afraid of mice.
+Sheep are afraid of mice.
+Winona is a sheep.
+Mice are afraid of cats.
+Cats are afraid of wolves.
+Jessica is a mouse.
+Emily is a cat.
+Gertrude is a wolf.
+What is emily afraid of?"	hallway	hallway.	0.0
+What is winona afraid of?	bathroom	the context sentences only mention john and daniel, but not mary
+What is gertrude afraid of?	kitchen	according to the context sentence, sandra is in the kitchen.
+What is jessica afraid of?	hallway	according to the context sentence, sandra travelled to the hallway,
+"Cats are afraid of wolves.
+Mice are afraid of cats.
+Sheep are afraid of mice.
+Gertrude is a cat.
+Wolves are afraid of sheep.
+Jessica is a mouse.
+Emily is a wolf.
+Winona is a cat.
+What is emily afraid of?"	kitchen	according to the context sentences, sandra is in the kitchen.
+"Lily is a swan.
+Bernhard is a lion.
+Greg is a swan.
+Bernhard is white.
+Brian is a lion.
+Lily is gray.
+Julius is a rhino.
+Julius is gray.
+Greg is gray.
+What color is Brian?"	hallway	hallway.	0.0
+"Lily is a rhino.
+Brian is a swan.
+Bernhard is a swan.
+Lily is gray.
+Brian is white.
+Bernhard is white.
+Julius is a frog.
+Julius is white.
+Greg is a frog.
+What color is Greg?"	bathroom	the context sentences only mention john and daniel, but not mary
+"Bernhard is a rhino.
+Brian is a rhino.
+Bernhard is white.
+Brian is white.
+Lily is a lion.
+Lily is yellow.
+Greg is a rhino.
+Greg is green.
+Julius is a rhino.
+What color is Julius?"	kitchen	according to the context sentence, sandra is in the kitchen.
+"Greg is a frog.
+Bernhard is a swan.
+Julius is a frog.
+Bernhard is white.
+Julius is green.
+Lily is a frog.
+Brian is a frog.
+Lily is gray.
+Brian is gray.
+What color is Greg?"	hallway	according to the context sentence, sandra travelled to the hallway,
+"Julius is a swan.
+Julius is gray.
+Bernhard is a swan.
+Bernhard is yellow.
+Brian is a lion.
+Greg is a lion.
+Brian is white.
+Lily is a frog.
+Lily is gray.
+What color is Greg?"	kitchen	according to the context sentences, sandra is in the kitchen.
+"The pink rectangle is to the left of the triangle.
+The triangle is to the left of the red square.
+Is the pink rectangle to the right of the red square?"	hallway	hallway.	0.0
+Is the pink rectangle to the left of the red square?	bathroom	the context sentences only mention john and daniel, but not mary
+Is the pink rectangle to the left of the red square?	kitchen	according to the context sentence, sandra is in the kitchen.
+Is the pink rectangle to the left of the red square?	hallway	according to the context sentence, sandra travelled to the hallway,
+Is the pink rectangle to the right of the red square?	kitchen	according to the context sentences, sandra is in the kitchen.
+"The suitcase fits inside the box.
+The chocolate fits inside the box.
+The container is bigger than the box of chocolates.
+The container is bigger than the suitcase.
+The box is bigger than the box of chocolates.
+The container is bigger than the chocolate.
+The chocolate fits inside the container.
+The chocolate fits inside the suitcase.
+The chocolate fits inside the chest.
+The suitcase fits inside the container.
+Does the box fit in the chocolate?"	hallway	hallway.	0.0
+Is the chocolate bigger than the box?	bathroom	the context sentences only mention john and daniel, but not mary
+Does the box fit in the chocolate?	kitchen	according to the context sentence, sandra is in the kitchen.
+Does the box fit in the chocolate?	hallway	according to the context sentence, sandra travelled to the hallway,
+Is the chocolate bigger than the box?	kitchen	according to the context sentences, sandra is in the kitchen.
+"The garden is west of the bathroom.
+The bedroom is north of the hallway.
+The office is south of the hallway.
+The bathroom is north of the bedroom.
+The kitchen is east of the bedroom.
+How do you go from the bathroom to the hallway?"	hallway	hallway.	0.0
+"The hallway is west of the bathroom.
+The office is south of the bedroom.
+The garden is north of the bedroom.
+The kitchen is east of the bedroom.
+The hallway is east of the kitchen.
+How do you go from the bedroom to the hallway?"	bathroom	the context sentences only mention john and daniel, but not mary
+"The garden is west of the hallway.
+The kitchen is west of the garden.
+The garden is north of the bathroom.
+The bedroom is east of the bathroom.
+The hallway is west of the office.
+How do you go from the bathroom to the hallway?"	kitchen	according to the context sentence, sandra is in the kitchen.
+"The hallway is south of the bathroom.
+The kitchen is west of the garden.
+The kitchen is south of the bedroom.
+The office is north of the bedroom.
+The bedroom is east of the bathroom.
+How do you go from the kitchen to the bathroom?"	hallway	according to the context sentence, sandra travelled to the hallway,
+"The bedroom is east of the bathroom.
+The hallway is east of the bedroom.
+The kitchen is west of the garden.
+The office is south of the bedroom.
+The office is north of the kitchen.
+How do you go from the bedroom to the kitchen?"	kitchen	according to the context sentences, sandra is in the kitchen.
+"Jason is thirsty.
+Where will jason go?"	hallway	hallway.	0.0
+"Antoine is bored.
+Where will antoine go?"	bathroom	the context sentences only mention john and daniel, but not mary
+"Jason went to the kitchen.
+Why did jason go to the kitchen?"	kitchen	according to the context sentence, sandra is in the kitchen.
+"Antoine journeyed to the garden.
+Why did antoine go to the garden?"	hallway	according to the context sentence, sandra travelled to the hallway,
+"Sumit is hungry.
+Where will sumit go?"	kitchen	according to the context sentences, sandra is in the kitchen.
