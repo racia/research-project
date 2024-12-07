@@ -187,7 +187,7 @@ Correct answer: Playground"""},]
                 # ans = response[0]["generated_text"][-1]["content"] # Obtain answer
                 # the model is asked question by question, so that we don't need to parse the answer
                 self.y_pred[-1].append(decoded_output.lower())
-                print("Model's output:", decoded_output, end="\n\n")  # Print qa
+                print("Model's output:", decoded_output, end="\n\n\n")  # Print qa
                 # 6. Add the model's output for a sample part to conversation
                 sample_prompt += [{"role": "assistant", "content": decoded_output}]
             [result.extend([true, pred]) for result, true, pred in
@@ -213,7 +213,9 @@ Correct answer: Playground"""},]
         print(f"The model's output containing the correct one:", in_accuracy)
         # print("Generally, the model's output contains the correct one:",
         # round(sum(self.all_in_accuracies) / len(self.all_in_accuracies), 2))
-        print("______________________________")
+
+        print(f"The work on task {task_num} is finished successfully")
+
         # [result.extend([true, pred]) for true, pred, result in zip(self.y_true[-1], self.y_pred[-1], task_results)]
         # TODO into config: task name
         # TODO: add checking the true answer "in" in the predicted one
@@ -221,6 +223,9 @@ Correct answer: Playground"""},]
             writer = csv.writer(f, delimiter="\t")
             task_results[0].extend([accuracy, in_accuracy])
             writer.writerows(task_results)
+
+        print(f"The results of task {task_num} are saved successfully")
+
 
 if __name__ == "__main__":
     # TODO: add more description to the outputs
@@ -233,19 +238,20 @@ if __name__ == "__main__":
         qa_task_iterate.make_train_data(),
         qa_task_iterate.make_test_data(),
     )
-    print("The data is loaded successfully", end="\n")
+    print("The data is loaded successfully", end="\n\n")
     assert len(train_data.items()) == len(test_data.items())
     # into config: output path
     headers = ["task_id", "sample_no", "task", "true_result", "model_result", "accuracy", "in_accuracy"]
     with open("results/prompt_11_.csv", "a+", encoding="utf-8") as file:
         writer = csv.writer(file, delimiter="\t")
-        writer.writerow(headers)
-    print("Starting to query the model", end="\n")
+
+    print("Starting to query the model", end="\n\n")
     # TODO into config: task ids
     for task_num in range(1, 21):
         qa_task_iterate.make_task_data(test_data, task_num)  # Task n°1
         qa_task_iterate.iterate_context(task_num)
-        print(f"The work on task {task_num} is finished successfully")
+        print("______________________________", end="\n\n")
+
     with open("results/prompt_11_.csv", "a+", encoding="utf-8") as f:
         writer = csv.writer(f, delimiter="\t")
         row = [""] * (len(headers) - 2)
@@ -254,4 +260,3 @@ if __name__ == "__main__":
         general_in_accuracy = round(sum(qa_task_iterate.all_in_accuracies) / len(qa_task_iterate.all_in_accuracies), 2)
         print("Generally, the model's output contains the correct one:", general_in_accuracy)
         writer.writerow(row + [general_accuracy, general_in_accuracy])
-    print("The run is finished successfully")
