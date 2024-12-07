@@ -1,0 +1,1929 @@
+id,task_id,sample_no,task,true_result,model_result,accuracy,soft_accuracy
+1,12,0,"1. Mary and John journeyed to the office.
+2. John and Sandra went to the hallway.
+3. Where is Mary?",office,office,0.6,0.72
+2,12,0,"4. Daniel and Mary journeyed to the bedroom.
+5. Mary and Sandra moved to the bathroom.
+6. Where is Daniel?",bedroom,bedroom,-0.0,-0.0
+3,12,0,"7. Mary and John travelled to the office.
+8. Sandra and Mary went back to the bedroom.
+9. Where is Mary?",bedroom,office,-0.0,-0.0
+4,12,0,"10. Daniel and Mary went to the hallway.
+11. John and Sandra travelled to the garden.
+12. Where is Daniel?",hallway,hallway,-0.0,-0.0
+5,12,0,"13. Sandra and John moved to the office.
+14. John and Mary went back to the bedroom.
+15. Where is John?",bedroom,office,-0.0,-0.0
+6,12,1,"1. Daniel and Sandra went back to the kitchen.
+2. Daniel and John went back to the hallway.
+3. Where is Daniel?",hallway,kitchen,-0.0,-0.0
+7,12,1,"4. Daniel and John moved to the bathroom.
+5. Sandra and Mary travelled to the office.
+6. Where is Daniel?",bathroom,bathroom,-0.0,-0.0
+8,12,1,"7. John and Mary travelled to the hallway.
+8. Sandra and Mary journeyed to the garden.
+9. Where is Mary?",garden,hallway or garden,-0.0,-0.0
+9,12,1,"10. Daniel and Sandra went back to the bedroom.
+11. Daniel and John went back to the kitchen.
+12. Where is Mary?",garden,hallway or garden,-0.0,-0.0
+10,12,1,"13. Sandra and John journeyed to the hallway.
+14. John and Sandra journeyed to the bathroom.
+15. Where is John?",bathroom,hallway or bathroom,-0.0,-0.0
+11,12,2,"1. John and Daniel moved to the hallway.
+2. Mary and Sandra travelled to the hallway.
+3. Where is Daniel?",hallway,hallway,-0.0,-0.0
+12,12,2,"4. Daniel and John moved to the kitchen.
+5. John and Daniel travelled to the garden.
+6. Where is John?",garden,kitchen,-0.0,-0.0
+13,12,2,"7. Sandra and John moved to the bedroom.
+8. Sandra and Daniel went back to the kitchen.
+9. Where is Sandra?",kitchen,bedroom,-0.0,-0.0
+14,12,2,"10. Sandra and John journeyed to the hallway.
+11. John and Daniel went back to the bedroom.
+12. Where is Daniel?",bedroom,bedroom,-0.0,-0.0
+15,12,2,"13. John and Sandra went back to the kitchen.
+14. Daniel and Sandra travelled to the bathroom.
+15. Where is Daniel?",bathroom,bathroom,-0.0,-0.0
+16,12,3,"1. Mary and Sandra journeyed to the kitchen.
+2. Daniel and Mary went to the hallway.
+3. Where is Daniel?",hallway,hallway,-0.0,-0.0
+17,12,3,"4. John and Mary went back to the kitchen.
+5. Mary and Daniel went to the bedroom.
+6. Where is Daniel?",bedroom,bedroom,-0.0,-0.0
+18,12,3,"7. Sandra and Daniel went to the garden.
+8. Daniel and John went to the bathroom.
+9. Where is Daniel?",bathroom,garden,-0.0,-0.0
+19,12,3,"10. Daniel and Sandra moved to the kitchen.
+11. John and Sandra travelled to the garden.
+12. Where is John?",garden,garden,-0.0,-0.0
+20,12,3,"13. John and Mary moved to the kitchen.
+14. Sandra and Daniel went to the office.
+15. Where is Daniel?",office,office,-0.0,-0.0
+21,12,4,"1. Sandra and Daniel journeyed to the bedroom.
+2. Mary and John moved to the bathroom.
+3. Where is John?",bathroom,bathroom,-0.0,-0.0
+22,12,4,"4. John and Sandra moved to the office.
+5. Daniel and Sandra travelled to the hallway.
+6. Where is John?",office,office,-0.0,-0.0
+23,12,4,"7. Sandra and Mary went to the bedroom.
+8. Sandra and Mary went back to the office.
+9. Where is Mary?",office,office,-0.0,-0.0
+24,12,4,"10. Mary and Sandra journeyed to the kitchen.
+11. Mary and Daniel went to the bedroom.
+12. Where is Daniel?",bedroom,bedroom,-0.0,-0.0
+25,12,4,"13. Mary and Sandra moved to the garden.
+14. Sandra and Daniel journeyed to the hallway.
+15. Where is Sandra?",hallway,garden,-0.0,-0.0
+26,13,0,"1. John and Mary went back to the kitchen.
+2. After that they journeyed to the bathroom.
+3. Where is John?",bathroom,kitchen,0.24,0.24
+27,13,0,"4. John and Mary moved to the bedroom.
+5. Afterwards they moved to the office.
+6. Where is Mary?",office,bedroom,-0.0,-0.0
+28,13,0,"7. Daniel and Mary journeyed to the hallway.
+8. After that they travelled to the kitchen.
+9. Where is Daniel?",kitchen,not mentioned,-0.0,-0.0
+29,13,0,"10. Daniel and John journeyed to the hallway.
+11. Following that they travelled to the kitchen.
+12. Where is Daniel?",kitchen,hallway,-0.0,-0.0
+30,13,0,"13. Daniel and Mary moved to the bathroom.
+14. After that they travelled to the office.
+15. Where is Daniel?",office,bathroom,-0.0,-0.0
+31,13,1,"1. Sandra and Mary went to the bedroom.
+2. Then they travelled to the hallway.
+3. Where is Sandra?",hallway,bedroom,-0.0,-0.0
+32,13,1,"4. Mary and Daniel went to the bathroom.
+5. Following that they went to the office.
+6. Where is Mary?",office,bathroom,-0.0,-0.0
+33,13,1,"7. John and Sandra journeyed to the kitchen.
+8. After that they moved to the bedroom.
+9. Where is Sandra?",bedroom,kitchen,-0.0,-0.0
+34,13,1,"10. John and Mary journeyed to the bathroom.
+11. Following that they travelled to the kitchen.
+12. Where is John?",kitchen,bathroom,-0.0,-0.0
+35,13,1,"13. Sandra and Mary journeyed to the bathroom.
+14. Following that they travelled to the bedroom.
+15. Where is Sandra?",bedroom,bathroom,-0.0,-0.0
+36,13,2,"1. Mary and John moved to the office.
+2. Following that they travelled to the hallway.
+3. Where is Mary?",hallway,office,-0.0,-0.0
+37,13,2,"4. John and Sandra went back to the garden.
+5. Then they moved to the kitchen.
+6. Where is John?",kitchen,garden,-0.0,-0.0
+38,13,2,"7. Sandra and Mary went back to the bathroom.
+8. Following that they went back to the kitchen.
+9. Where is Sandra?",kitchen,bathroom,-0.0,-0.0
+39,13,2,"10. Sandra and John journeyed to the office.
+11. After that they journeyed to the bedroom.
+12. Where is Sandra?",bedroom,office,-0.0,-0.0
+40,13,2,"13. Sandra and John went to the hallway.
+14. Then they journeyed to the kitchen.
+15. Where is Sandra?",kitchen,hallway,-0.0,-0.0
+41,13,3,"1. Sandra and Mary travelled to the garden.
+2. Then they went back to the office.
+3. Where is Mary?",office,office,-0.0,-0.0
+42,13,3,"4. John and Sandra went to the bathroom.
+5. Then they went back to the office.
+6. Where is John?",office,office,-0.0,-0.0
+43,13,3,"7. Sandra and Mary journeyed to the bathroom.
+8. Following that they moved to the hallway.
+9. Where is Mary?",hallway,hallway,-0.0,-0.0
+44,13,3,"10. John and Sandra journeyed to the bathroom.
+11. After that they journeyed to the office.
+12. Where is John?",office,office,-0.0,-0.0
+45,13,3,"13. Daniel and Sandra went back to the bedroom.
+14. Following that they travelled to the garden.
+15. Where is Sandra?",garden,bedroom,-0.0,-0.0
+46,13,4,"1. Sandra and Mary went back to the bathroom.
+2. Then they went back to the hallway.
+3. Where is Mary?",hallway,hallway,-0.0,-0.0
+47,13,4,"4. Mary and Sandra went to the office.
+5. Then they went back to the bedroom.
+6. Where is Mary?",bedroom,bedroom,-0.0,-0.0
+48,13,4,"7. Daniel and John went back to the kitchen.
+8. Afterwards they went back to the office.
+9. Where is Sandra?",bedroom,not mentioned,-0.0,-0.0
+49,13,4,"10. Sandra and John journeyed to the garden.
+11. Afterwards they went back to the office.
+12. Where is Sandra?",office,garden,-0.0,-0.0
+50,13,4,"13. Sandra and Daniel travelled to the hallway.
+14. Following that they journeyed to the bathroom.
+15. Where is Sandra?",bathroom,hallway,-0.0,-0.0
+51,9,0,"1. Sandra travelled to the garden.
+2. John journeyed to the kitchen.
+3. Is John in the bedroom?",no,kitchen,0.64,0.64
+52,9,0,"4. Sandra journeyed to the bathroom.
+5. John travelled to the office.
+6. Is John in the office?",yes,yes,-0.0,-0.0
+53,9,0,"7. John moved to the hallway.
+8. John is in the office.
+9. Is John in the office?",yes,yes,-0.0,-0.0
+54,9,0,"10. Mary moved to the hallway.
+11. Mary went to the bedroom.
+12. Is Mary in the bedroom?",yes,yes,-0.0,-0.0
+55,9,0,"13. Daniel is in the bathroom.
+14. Daniel travelled to the hallway.
+15. Is Mary in the office?",no,no,-0.0,-0.0
+56,9,1,"1. Mary is not in the garden.
+2. Sandra is in the hallway.
+3. Is Mary in the garden?",no,no,-0.0,-0.0
+57,9,1,"4. Daniel is not in the bathroom.
+5. Mary travelled to the hallway.
+6. Is Sandra in the hallway?",yes,yes,-0.0,-0.0
+58,9,1,"7. Sandra is no longer in the hallway.
+8. Daniel is in the hallway.
+9. Is Daniel in the kitchen?",no,no,-0.0,-0.0
+59,9,1,"10. John went back to the bedroom.
+11. Mary went to the garden.
+12. Is Mary in the garden?",yes,yes,-0.0,-0.0
+60,9,1,"13. Sandra travelled to the kitchen.
+14. Daniel is in the garden.
+15. Is Sandra in the bedroom?",no,no,-0.0,-0.0
+61,9,2,"1. Sandra travelled to the bedroom.
+2. Mary is in the bathroom.
+3. Is Sandra in the bathroom?",no,bathroom,-0.0,-0.0
+62,9,2,"4. Sandra travelled to the kitchen.
+5. Sandra is in the hallway.
+6. Is Sandra in the hallway?",yes,no,-0.0,-0.0
+63,9,2,"7. John is no longer in the office.
+8. Sandra is no longer in the hallway.
+9. Is John in the office?",no,no,-0.0,-0.0
+64,9,2,"10. John is not in the hallway.
+11. Daniel is no longer in the bathroom.
+12. Is Sandra in the hallway?",no,no,-0.0,-0.0
+65,9,2,"13. Mary is no longer in the bathroom.
+14. Daniel travelled to the bedroom.
+15. Is Sandra in the hallway?",no,no,-0.0,-0.0
+66,9,3,"1. John is in the kitchen.
+2. Sandra went to the hallway.
+3. Is John in the office?",no,office,-0.0,-0.0
+67,9,3,"4. Sandra went to the bedroom.
+5. Mary is no longer in the kitchen.
+6. Is Sandra in the bedroom?",yes,yes,-0.0,-0.0
+68,9,3,"7. Mary is in the kitchen.
+8. Mary is in the bathroom.
+9. Is Mary in the bathroom?",yes,yes,-0.0,-0.0
+69,9,3,"10. Daniel is not in the garden.
+11. Mary is in the kitchen.
+12. Is Mary in the kitchen?",yes,yes,-0.0,-0.0
+70,9,3,"13. Daniel went back to the bathroom.
+14. Sandra is in the hallway.
+15. Is Mary in the office?",no,no,-0.0,-0.0
+71,9,4,"1. John went back to the bedroom.
+2. John is in the garden.
+3. Is John in the garden?",yes,garden,-0.0,-0.0
+72,9,4,"4. John went back to the hallway.
+5. Sandra went to the bathroom.
+6. Is John in the hallway?",yes,hallway,-0.0,-0.0
+73,9,4,"7. Mary is not in the bathroom.
+8. John journeyed to the bedroom.
+9. Is John in the bedroom?",yes,bedroom,-0.0,-0.0
+74,9,4,"10. Mary is in the office.
+11. Sandra went back to the hallway.
+12. Is Mary in the bedroom?",no,office,-0.0,-0.0
+75,9,4,"13. Sandra moved to the bedroom.
+14. Sandra went to the bathroom.
+15. Is Sandra in the bathroom?",yes,bedroom,-0.0,-0.0
+76,7,0,"1. Sandra went to the bedroom.
+2. Mary went to the office.
+3. Mary took the apple there.
+4. Mary put down the apple.
+5. How many objects is Mary carrying?",none,0,0.0,0.0
+77,7,0,"6. Mary went back to the bedroom.
+7. Mary travelled to the bathroom.
+8. How many objects is Mary carrying?",none,0,-0.0,-0.0
+78,7,0,"9. John went to the hallway.
+10. John got the football there.
+11. How many objects is John carrying?",one,1,-0.0,-0.0
+79,7,0,"12. Mary moved to the hallway.
+13. John went to the office.
+14. How many objects is John carrying?",one,1,-0.0,-0.0
+80,7,0,"15. Mary went back to the garden.
+16. John grabbed the apple there.
+17. How many objects is John carrying?",two,2,-0.0,-0.0
+81,7,1,"1. John journeyed to the hallway.
+2. Mary grabbed the milk there.
+3. How many objects is Mary carrying?",one,1,-0.0,-0.0
+82,7,1,"4. John got the football there.
+5. Sandra journeyed to the hallway.
+6. How many objects is Mary carrying?",one,1,-0.0,-0.0
+83,7,1,"7. Mary dropped the milk.
+8. Daniel journeyed to the hallway.
+9. How many objects is John carrying?",one,0,-0.0,-0.0
+84,7,1,"10. John journeyed to the bedroom.
+11. Daniel took the milk there.
+12. How many objects is Mary carrying?",none,0,-0.0,-0.0
+85,7,1,"13. Daniel handed the milk to Mary.
+14. Sandra journeyed to the garden.
+15. How many objects is Daniel carrying?",none,0,-0.0,-0.0
+86,7,2,"1. Mary journeyed to the garden.
+2. John journeyed to the bathroom.
+3. Mary got the apple there.
+4. Sandra grabbed the milk there.
+5. How many objects is Mary carrying?",one,0,-0.0,-0.0
+87,7,2,"6. Sandra went to the office.
+7. Daniel travelled to the bathroom.
+8. How many objects is Mary carrying?",one,0,-0.0,-0.0
+88,7,2,"9. Mary dropped the apple.
+10. Daniel travelled to the bedroom.
+11. How many objects is Mary carrying?",none,0,-0.0,-0.0
+89,7,2,"12. Mary picked up the apple there.
+13. John went back to the office.
+14. How many objects is Mary carrying?",one,1,-0.0,-0.0
+90,7,2,"15. Daniel went back to the hallway.
+16. Sandra handed the milk to John.
+17. How many objects is Sandra carrying?",none,0,-0.0,-0.0
+91,7,3,"1. Sandra journeyed to the kitchen.
+2. Sandra took the football there.
+3. How many objects is Sandra carrying?",one,1,-0.0,-0.0
+92,7,3,"4. Sandra journeyed to the office.
+5. Sandra gave the football to John.
+6. How many objects is Sandra carrying?",none,1,-0.0,-0.0
+93,7,3,"7. John went back to the garden.
+8. John passed the football to Mary.
+9. How many objects is John carrying?",none,0,-0.0,-0.0
+94,7,3,"10. Mary passed the football to John.
+11. John passed the football to Mary.
+12. How many objects is Sandra carrying?",none,0,-0.0,-0.0
+95,7,3,"13. John went to the office.
+14. Daniel journeyed to the kitchen.
+15. How many objects is John carrying?",none,0,-0.0,-0.0
+96,7,4,"1. John grabbed the apple there.
+2. John passed the apple to Mary.
+3. How many objects is John carrying?",none,1 object,-0.0,-0.0
+97,7,4,"4. Mary discarded the apple.
+5. Mary grabbed the apple there.
+6. How many objects is Mary carrying?",one,1 object,-0.0,-0.0
+98,7,4,"7. Mary went back to the kitchen.
+8. John went to the hallway.
+9. How many objects is John carrying?",none,0 objects,-0.0,-0.0
+99,7,4,"10. John moved to the bedroom.
+11. Daniel went back to the bathroom.
+12. How many objects is Mary carrying?",one,1 object,-0.0,-0.0
+100,7,4,"13. Sandra moved to the kitchen.
+14. Mary passed the apple to Sandra.
+15. How many objects is Mary carrying?",none,0 objects,-0.0,-0.0
+101,15,0,"1. Wolves are afraid of cats.
+2. Mice are afraid of sheep.
+3. Emily is a mouse.
+4. Cats are afraid of wolves.
+5. Gertrude is a cat.
+6. Sheep are afraid of mice.
+7. Winona is a mouse.
+8. Jessica is a cat.
+9. What is jessica afraid of?",wolf,wolves.,0.0,0.35
+102,15,0,10. What is winona afraid of?,sheep,sheep.,-0.0,-0.0
+103,15,0,11. What is gertrude afraid of?,wolf,wolves.,-0.0,-0.0
+104,15,0,12. What is winona afraid of?,sheep,sheep.,-0.0,-0.0
+105,15,1,"1. Wolves are afraid of mice.
+2. Cats are afraid of sheep.
+3. Sheep are afraid of cats.
+4. Jessica is a sheep.
+5. Mice are afraid of wolves.
+6. Winona is a sheep.
+7. Emily is a sheep.
+8. Gertrude is a mouse.
+9. What is winona afraid of?",cat,cats,-0.0,-0.0
+106,15,1,10. What is winona afraid of?,cat,cats,-0.0,-0.0
+107,15,1,11. What is jessica afraid of?,cat,cats,-0.0,-0.0
+108,15,1,12. What is jessica afraid of?,cat,cats,-0.0,-0.0
+109,15,2,"1. Wolves are afraid of sheep.
+2. Winona is a wolf.
+3. Cats are afraid of sheep.
+4. Jessica is a wolf.
+5. Sheep are afraid of cats.
+6. Emily is a sheep.
+7. Mice are afraid of wolves.
+8. Gertrude is a mouse.
+9. What is emily afraid of?",cat,cats,-0.0,-0.0
+110,15,2,10. What is jessica afraid of?,sheep,cats,-0.0,-0.0
+111,15,2,11. What is gertrude afraid of?,wolf,wolves,-0.0,-0.0
+112,15,2,12. What is gertrude afraid of?,wolf,wolves,-0.0,-0.0
+113,15,3,"1. Cats are afraid of wolves.
+2. Emily is a cat.
+3. Wolves are afraid of mice.
+4. Sheep are afraid of wolves.
+5. Mice are afraid of wolves.
+6. Gertrude is a sheep.
+7. Winona is a sheep.
+8. Jessica is a mouse.
+9. What is gertrude afraid of?",wolf,wolves.,-0.0,-0.0
+114,15,3,10. What is gertrude afraid of?,wolf,wolves,-0.0,-0.0
+115,15,3,11. What is emily afraid of?,wolf,wolves,-0.0,-0.0
+116,15,3,12. What is winona afraid of?,wolf,wolves,-0.0,-0.0
+117,15,4,"1. Cats are afraid of mice.
+2. Jessica is a cat.
+3. Sheep are afraid of mice.
+4. Mice are afraid of sheep.
+5. Wolves are afraid of mice.
+6. Emily is a cat.
+7. Winona is a sheep.
+8. Gertrude is a wolf.
+9. What is emily afraid of?",mouse,mice,-0.0,-0.0
+118,15,4,10. What is gertrude afraid of?,mouse,mice,-0.0,-0.0
+119,15,4,11. What is emily afraid of?,mouse,mice,-0.0,-0.0
+120,15,4,12. What is jessica afraid of?,mouse,mice,-0.0,-0.0
+121,2,0,"1. John travelled to the office.
+2. Daniel travelled to the office.
+3. Mary grabbed the football there.
+4. Daniel went back to the hallway.
+5. Mary left the football.
+6. Sandra grabbed the apple there.
+7. Mary went to the bedroom.
+8. Sandra journeyed to the bedroom.
+9. Where is the apple?",bedroom,there,0.08,0.16
+122,2,0,"10. Daniel journeyed to the bathroom.
+11. Mary went back to the office.
+12. Where is the apple?",bedroom,there,-0.0,-0.0
+123,2,0,"13. Sandra took the milk there.
+14. Sandra dropped the milk.
+15. Where is the milk?",bedroom,there,-0.0,-0.0
+124,2,0,"16. Mary went back to the bathroom.
+17. Daniel took the football there.
+18. Where is the milk?",bedroom,there,-0.0,-0.0
+125,2,0,"19. Sandra picked up the milk there.
+20. Mary went back to the bedroom.
+21. John moved to the bedroom.
+22. Daniel discarded the football there.
+23. Where is the football?",bathroom,there,-0.0,-0.0
+126,2,1,"1. Sandra moved to the hallway.
+2. Daniel journeyed to the garden.
+3. Daniel went back to the office.
+4. Sandra got the apple there.
+5. Sandra discarded the apple.
+6. Daniel travelled to the kitchen.
+7. Where is the apple?",hallway,5. there,-0.0,-0.0
+127,2,1,"8. John journeyed to the hallway.
+9. Mary went back to the garden.
+10. Where is the apple?",hallway,5,-0.0,-0.0
+128,2,1,"11. Sandra grabbed the apple there.
+12. Sandra dropped the apple there.
+13. Where is the apple?",hallway,5,-0.0,-0.0
+129,2,1,"14. Daniel grabbed the football there.
+15. Daniel discarded the football.
+16. Where is the apple?",hallway,5,-0.0,-0.0
+130,2,1,"17. Mary went back to the office.
+18. Daniel took the football there.
+19. Where is the apple?",hallway,5,-0.0,-0.0
+131,2,2,"1. Sandra grabbed the milk there.
+2. Sandra moved to the garden.
+3. Where is the milk?",garden,there,-0.0,-0.0
+132,2,2,"4. Sandra grabbed the football there.
+5. Sandra dropped the milk.
+6. Where is the milk?",garden,garden,-0.0,-0.0
+133,2,2,"7. Sandra discarded the football.
+8. Sandra went to the hallway.
+9. Where is the milk?",garden,hallway,-0.0,-0.0
+134,2,2,"10. John went to the office.
+11. Mary travelled to the office.
+12. Where is the milk?",garden,not mentioned,-0.0,-0.0
+135,2,2,"13. Sandra went to the bedroom.
+14. Daniel went to the bathroom.
+15. John travelled to the garden.
+16. Daniel got the apple there.
+17. John picked up the milk there.
+18. John dropped the milk.
+19. Where is the milk?",garden,garden,-0.0,-0.0
+136,2,3,"1. Mary went back to the bathroom.
+2. John travelled to the office.
+3. Mary moved to the bedroom.
+4. Daniel travelled to the bathroom.
+5. Daniel went to the hallway.
+6. Mary got the milk there.
+7. John went to the garden.
+8. John travelled to the bedroom.
+9. Mary left the milk.
+10. John went back to the garden.
+11. Where is the milk?",bedroom,"here are the answers to the questions:
+
+1. bathroom
+",-0.0,-0.0
+137,2,3,"12. Daniel travelled to the bathroom.
+13. Sandra grabbed the milk there.
+14. Sandra left the milk.
+15. John travelled to the kitchen.
+16. Daniel got the apple there.
+17. Mary got the milk there.
+18. Mary went to the office.
+19. Daniel moved to the bedroom.
+20. Where is the apple?",bedroom,"here are the answers to the questions:
+
+12. bathroom
+",-0.0,-0.0
+138,2,3,"21. John went to the bathroom.
+22. Daniel dropped the apple.
+23. Where is the apple?",bedroom,"here are the answers to the questions:
+
+21. bathroom",-0.0,-0.0
+139,2,3,"24. Daniel picked up the apple there.
+25. Mary went back to the garden.
+26. Daniel moved to the kitchen.
+27. Sandra journeyed to the bathroom.
+28. Where is the apple?",kitchen,"here are the answers to the questions:
+
+24. kitchen",-0.0,-0.0
+140,2,3,"29. Mary got the football there.
+30. Daniel dropped the apple.
+31. Where is the apple?",kitchen,"here are the answers to the questions:
+
+29. kitchen",-0.0,-0.0
+141,2,4,"1. Daniel went to the bathroom.
+2. Mary picked up the football there.
+3. Mary travelled to the hallway.
+4. Sandra moved to the garden.
+5. Where is the football?",hallway,there,-0.0,-0.0
+142,2,4,"6. Daniel journeyed to the kitchen.
+7. Mary travelled to the bedroom.
+8. Where is the football?",bedroom,there,-0.0,-0.0
+143,2,4,"9. Mary got the apple there.
+10. John went back to the bathroom.
+11. Daniel went back to the office.
+12. John moved to the hallway.
+13. John journeyed to the bathroom.
+14. Sandra moved to the bathroom.
+15. Sandra moved to the kitchen.
+16. John travelled to the kitchen.
+17. Mary left the apple.
+18. Mary travelled to the garden.
+19. Where is the apple?",bedroom,there,-0.0,-0.0
+144,2,4,"20. Sandra travelled to the bedroom.
+21. Daniel journeyed to the bedroom.
+22. Where is the apple?",bedroom,there,-0.0,-0.0
+145,2,4,"23. Mary went back to the kitchen.
+24. Sandra picked up the apple there.
+25. Mary discarded the football.
+26. John took the football there.
+27. John discarded the football there.
+28. John went to the office.
+29. Where is the football?",kitchen,there,-0.0,-0.0
+146,19,0,"1. The bedroom is east of the kitchen.
+2. The bathroom is south of the hallway.
+3. The office is west of the kitchen.
+4. The hallway is south of the garden.
+5. The kitchen is south of the bathroom.
+6. How do you go from the hallway to the kitchen?	s,s",2,you go south.,0.0,0.0
+147,19,1,"1. The office is north of the garden.
+2. The kitchen is north of the hallway.
+3. The garden is north of the kitchen.
+4. The bathroom is east of the kitchen.
+5. The bedroom is west of the kitchen.
+6. How do you go from the bedroom to the garden?	e,n",5,you go east then north.,-0.0,-0.0
+148,19,2,"1. The bedroom is west of the bathroom.
+2. The kitchen is east of the office.
+3. The hallway is west of the bedroom.
+4. The garden is east of the kitchen.
+5. The kitchen is north of the bedroom.
+6. How do you go from the bedroom to the office?	n,w",5,the correct answer is: west,-0.0,-0.0
+149,19,3,"1. The office is east of the garden.
+2. The hallway is south of the bathroom.
+3. The hallway is east of the kitchen.
+4. The bedroom is south of the hallway.
+5. The bedroom is west of the garden.
+6. How do you go from the hallway to the garden?	s,e",4,east,-0.0,-0.0
+150,19,4,"1. The hallway is west of the bedroom.
+2. The garden is north of the bedroom.
+3. The kitchen is north of the office.
+4. The bathroom is north of the hallway.
+5. The hallway is east of the kitchen.
+6. How do you go from the bedroom to the kitchen?	w,w",1,"to get from the bedroom to the kitchen, you would go",-0.0,-0.0
+151,4,0,"1. The kitchen is west of the garden.
+2. The hallway is west of the kitchen.
+3. What is the garden east of?",kitchen,east of the kitchen.,0.2,0.4
+152,4,1,"1. The bathroom is south of the bedroom.
+2. The kitchen is north of the bedroom.
+3. What is the bedroom south of?",kitchen,bathroom,-0.0,-0.0
+153,4,2,"1. The bedroom is south of the kitchen.
+2. The kitchen is south of the hallway.
+3. What is south of the kitchen?",bedroom,bedroom,-0.0,-0.0
+154,4,3,"1. The hallway is west of the bedroom.
+2. The hallway is east of the garden.
+3. What is the bedroom east of?",hallway,garden,-0.0,-0.0
+155,4,4,"1. The kitchen is south of the bedroom.
+2. The garden is north of the bedroom.
+3. What is the bedroom north of?",kitchen,garden,-0.0,-0.0
+156,10,0,"1. Mary travelled to the kitchen.
+2. Fred is in the school.
+3. Is Mary in the school?",no,no,0.6,0.6
+157,10,0,"4. Fred went back to the office.
+5. Julie is either in the park or the office.
+6. Is Mary in the cinema?",no,no,-0.0,-0.0
+158,10,0,"7. Fred is either in the school or the bedroom.
+8. Julie journeyed to the bedroom.
+9. Is Fred in the school?",maybe,yes,-0.0,-0.0
+159,10,0,"10. Fred went to the kitchen.
+11. Fred travelled to the cinema.
+12. Is Fred in the cinema?",yes,yes,-0.0,-0.0
+160,10,0,"13. Bill is in the cinema.
+14. Bill travelled to the bedroom.
+15. Is Bill in the bedroom?",yes,yes,-0.0,-0.0
+161,10,1,"1. Julie went to the kitchen.
+2. Julie moved to the school.
+3. Is Julie in the school?",yes,school,-0.0,-0.0
+162,10,1,"4. Julie is either in the office or the kitchen.
+5. Julie went to the park.
+6. Is Julie in the kitchen?",no,no,-0.0,-0.0
+163,10,1,"7. Mary is in the office.
+8. Julie travelled to the kitchen.
+9. Is Julie in the kitchen?",yes,no,-0.0,-0.0
+164,10,1,"10. Julie is either in the cinema or the bedroom.
+11. Bill is either in the office or the office.
+12. Is Bill in the bedroom?",no,no,-0.0,-0.0
+165,10,1,"13. Fred is either in the school or the school.
+14. Bill travelled to the kitchen.
+15. Is Julie in the bedroom?",maybe,no,-0.0,-0.0
+166,10,2,"1. Bill is in the cinema.
+2. Fred is either in the cinema or the school.
+3. Is Fred in the cinema?",maybe,yes,-0.0,-0.0
+167,10,2,"4. Julie travelled to the school.
+5. Bill went back to the park.
+6. Is Bill in the park?",yes,yes,-0.0,-0.0
+168,10,2,"7. Fred moved to the kitchen.
+8. Mary moved to the school.
+9. Is Fred in the bedroom?",no,no,-0.0,-0.0
+169,10,2,"10. Julie is either in the park or the park.
+11. Fred is either in the park or the office.
+12. Is Mary in the bedroom?",no,no,-0.0,-0.0
+170,10,2,"13. Julie is in the school.
+14. Mary went to the bedroom.
+15. Is Julie in the kitchen?",no,no,-0.0,-0.0
+171,10,3,"1. Mary moved to the office.
+2. Mary is either in the kitchen or the cinema.
+3. Is Mary in the kitchen?",maybe,no,-0.0,-0.0
+172,10,3,"4. Fred journeyed to the bedroom.
+5. Fred is either in the kitchen or the park.
+6. Is Fred in the park?",maybe,yes,-0.0,-0.0
+173,10,3,"7. Fred is either in the office or the cinema.
+8. Mary is in the office.
+9. Is Mary in the school?",no,no,-0.0,-0.0
+174,10,3,"10. Mary is in the bedroom.
+11. Fred went to the kitchen.
+12. Is Mary in the bedroom?",yes,yes,-0.0,-0.0
+175,10,3,"13. Fred is in the school.
+14. Mary moved to the park.
+15. Is Mary in the park?",yes,yes,-0.0,-0.0
+176,10,4,"1. Fred went back to the school.
+2. Bill is in the bedroom.
+3. Is Fred in the school?",yes,school,-0.0,-0.0
+177,10,4,"4. Bill is either in the school or the park.
+5. Julie is either in the kitchen or the school.
+6. Is Bill in the park?",maybe,no,-0.0,-0.0
+178,10,4,"7. Bill is in the bedroom.
+8. Fred went back to the bedroom.
+9. Is Bill in the kitchen?",no,no,-0.0,-0.0
+179,10,4,"10. Bill moved to the park.
+11. Julie is in the office.
+12. Is Julie in the office?",yes,yes,-0.0,-0.0
+180,10,4,"13. Fred is either in the office or the bedroom.
+14. Fred is in the park.
+15. Is Bill in the park?",yes,no,-0.0,-0.0
+181,16,0,"1. Julius is a lion.
+2. Lily is a rhino.
+3. Bernhard is a swan.
+4. Lily is white.
+5. Bernhard is green.
+6. Greg is a rhino.
+7. Greg is gray.
+8. Julius is white.
+9. Brian is a lion.
+10. What color is Brian?",white,"based on the given information, the answer to the question """,0.4,0.4
+182,16,1,"1. Lily is a frog.
+2. Bernhard is a lion.
+3. Brian is a frog.
+4. Bernhard is yellow.
+5. Julius is a lion.
+6. Julius is white.
+7. Greg is a swan.
+8. Greg is gray.
+9. Brian is white.
+10. What color is Lily?",white,"the answer is: frog (since lily is a frog,",-0.0,-0.0
+183,16,2,"1. Brian is a rhino.
+2. Lily is a frog.
+3. Greg is a lion.
+4. Lily is gray.
+5. Julius is a swan.
+6. Greg is yellow.
+7. Brian is green.
+8. Bernhard is a swan.
+9. Bernhard is gray.
+10. What color is Julius?",gray,yellow,-0.0,-0.0
+184,16,3,"1. Julius is a lion.
+2. Julius is white.
+3. Greg is a frog.
+4. Bernhard is a frog.
+5. Bernhard is green.
+6. Brian is a swan.
+7. Brian is white.
+8. Greg is green.
+9. Lily is a swan.
+10. What color is Lily?",white,white,-0.0,-0.0
+185,16,4,"1. Greg is a rhino.
+2. Bernhard is a swan.
+3. Bernhard is yellow.
+4. Greg is white.
+5. Brian is a swan.
+6. Brian is yellow.
+7. Lily is a frog.
+8. Julius is a rhino.
+9. Lily is green.
+10. What color is Julius?",white,white,-0.0,-0.0
+186,14,0,"1. Julie went to the park this morning.
+2. Julie moved to the kitchen yesterday.
+3. Where was Julie before the park?",kitchen,kitchen,0.48,0.48
+187,14,0,"4. Julie moved to the bedroom this afternoon.
+5. Mary journeyed to the school yesterday.
+6. Where was Julie before the bedroom?",park,kitchen,-0.0,-0.0
+188,14,0,"7. This morning Bill moved to the park.
+8. Yesterday Bill travelled to the kitchen.
+9. Where was Julie before the park?",kitchen,"note: the question is asking about julie, not bill.",-0.0,-0.0
+189,14,0,"10. This morning Mary moved to the office.
+11. This evening Julie journeyed to the kitchen.
+12. Where was Julie before the kitchen?",bedroom,office,-0.0,-0.0
+190,14,0,"13. This afternoon Mary moved to the cinema.
+14. This afternoon Bill travelled to the kitchen.
+15. Where was Bill before the kitchen?",park,not mentioned,-0.0,-0.0
+191,14,1,"1. Mary travelled to the cinema yesterday.
+2. Yesterday Julie travelled to the cinema.
+3. This morning Julie travelled to the bedroom.
+4. Yesterday Bill moved to the park.
+5. Where was Julie before the bedroom?",cinema,yesterday,-0.0,-0.0
+192,14,1,"6. Mary moved to the school this morning.
+7. Julie moved to the kitchen this afternoon.
+8. Where was Julie before the kitchen?",bedroom,bedroom,-0.0,-0.0
+193,14,1,"9. Julie went back to the park this evening.
+10. This morning Bill went back to the office.
+11. Where was Mary before the school?",cinema,cinema,-0.0,-0.0
+194,14,1,"12. Yesterday Fred journeyed to the cinema.
+13. Mary journeyed to the office this afternoon.
+14. Where was Bill before the office?",park,park,-0.0,-0.0
+195,14,1,"15. Fred went back to the park this morning.
+16. Mary went back to the school this evening.
+17. Where was Julie before the park?",kitchen,bedroom,-0.0,-0.0
+196,14,2,"1. Fred moved to the park yesterday.
+2. This morning Julie journeyed to the bedroom.
+3. Julie went back to the park this afternoon.
+4. Julie moved to the park yesterday.
+5. Where was Julie before the park?",bedroom,bedroom,-0.0,-0.0
+197,14,2,"6. Bill journeyed to the park this morning.
+7. Bill went to the bedroom yesterday.
+8. Where was Bill before the park?",bedroom,bedroom,-0.0,-0.0
+198,14,2,"9. Mary journeyed to the school yesterday.
+10. Julie journeyed to the school this evening.
+11. Where was Julie before the park?",bedroom,note: the question asks about julie's location before the park,-0.0,-0.0
+199,14,2,"12. Bill went to the bedroom this afternoon.
+13. This morning Fred moved to the kitchen.
+14. Where was Bill before the bedroom?",park,bedroom,-0.0,-0.0
+200,14,2,"15. This morning Mary travelled to the kitchen.
+16. Fred moved to the bedroom this afternoon.
+17. Where was Fred before the bedroom?",kitchen,kitchen,-0.0,-0.0
+201,14,3,"1. Yesterday Mary journeyed to the kitchen.
+2. This morning Fred went back to the cinema.
+3. Yesterday Julie journeyed to the cinema.
+4. Fred journeyed to the bedroom yesterday.
+5. Where was Fred before the cinema?",bedroom,back,-0.0,-0.0
+202,14,3,"6. Julie went back to the bedroom this morning.
+7. Fred journeyed to the school this afternoon.
+8. Where was Julie before the bedroom?",cinema,cinema,-0.0,-0.0
+203,14,3,"9. Mary travelled to the bedroom this morning.
+10. This afternoon Julie went back to the park.
+11. Where was Fred before the school?",cinema,cinema,-0.0,-0.0
+204,14,3,"12. Mary went back to the kitchen this afternoon.
+13. This evening Julie moved to the kitchen.
+14. Where was Mary before the kitchen?",bedroom,bedroom,-0.0,-0.0
+205,14,3,"15. Yesterday Bill went to the cinema.
+16. Mary went back to the cinema this evening.
+17. Where was Julie before the kitchen?",park,bedroom,-0.0,-0.0
+206,14,4,"1. Yesterday Julie went to the bedroom.
+2. Yesterday Bill travelled to the kitchen.
+3. This morning Julie went back to the kitchen.
+4. Yesterday Mary went to the park.
+5. Fred went back to the bedroom yesterday.
+6. Fred went to the cinema this morning.
+7. Where was Fred before the cinema?",bedroom,bedroom,-0.0,-0.0
+207,14,4,"8. Fred went to the office this evening.
+9. Fred travelled to the bedroom this afternoon.
+10. Where was Fred before the bedroom?",cinema,office,-0.0,-0.0
+208,14,4,"11. This afternoon Julie moved to the bedroom.
+12. Mary journeyed to the school this morning.
+13. Where was Fred before the bedroom?",cinema,office,-0.0,-0.0
+209,14,4,"14. This evening Mary journeyed to the bedroom.
+15. This afternoon Mary went to the kitchen.
+16. Where was Mary before the bedroom?",kitchen,kitchen,-0.0,-0.0
+210,14,4,"17. Bill moved to the bedroom this afternoon.
+18. Bill moved to the cinema this morning.
+19. Where was Bill before the cinema?",kitchen,bedroom,-0.0,-0.0
+211,20,0,"1. Antoine is tired.
+2. Where will antoine go?",bedroom,bed,0.24,0.67
+212,20,0,"3. Yann is tired.
+4. Where will yann go?",bedroom,bed,-0.0,-0.0
+213,20,0,"5. Antoine went to the bedroom.
+6. Why did antoine go to the bedroom?",tired,he is tired,-0.0,-0.0
+214,20,0,"7. Sumit is bored.
+8. Where will sumit go?",garden,outdoors,-0.0,-0.0
+215,20,0,"9. Jason is thirsty.
+10. Where will jason go?",kitchen,kitchen,-0.0,-0.0
+216,20,0,"11. Yann moved to the bedroom.
+12. Why did yann go to the bedroom?",tired,he is tired,-0.0,-0.0
+217,20,0,"13. Antoine grabbed the pajamas there.
+14. Why did antoine get the pajamas?",tired,he is tired,-0.0,-0.0
+218,20,0,"15. Sumit went back to the garden.
+16. Why did sumit go to the garden?",bored,he is bored,-0.0,-0.0
+219,20,0,"17. Sumit took the football there.
+18. Why did sumit get the football?",bored,he is bored,-0.0,-0.0
+220,20,0,"19. Jason went back to the kitchen.
+20. Why did jason go to the kitchen?",thirsty,he is thirsty,-0.0,-0.0
+221,20,0,"21. Jason grabbed the milk there.
+22. Why did jason get the milk?",thirsty,he is thirsty,-0.0,-0.0
+222,20,1,"1. Sumit is tired.
+2. Where will sumit go?",bedroom,bed,-0.0,-0.0
+223,20,1,"3. Antoine is thirsty.
+4. Where will antoine go?",kitchen,kitchen,-0.0,-0.0
+224,20,1,"5. Antoine travelled to the kitchen.
+6. Why did antoine go to the kitchen?",thirsty,thirsty,-0.0,-0.0
+225,20,1,"7. Antoine got the milk there.
+8. Why did antoine get the milk?",thirsty,thirsty,-0.0,-0.0
+226,20,1,"9. Yann is hungry.
+10. Where will yann go?",kitchen,kitchen,-0.0,-0.0
+227,20,1,"11. Jason is hungry.
+12. Where will jason go?",kitchen,kitchen,-0.0,-0.0
+228,20,1,"13. Yann moved to the kitchen.
+14. Why did yann go to the kitchen?",hungry,hungry,-0.0,-0.0
+229,20,1,"15. Jason went back to the kitchen.
+16. Why did jason go to the kitchen?",hungry,hungry,-0.0,-0.0
+230,20,1,"17. Jason picked up the apple there.
+18. Why did jason get the apple?",hungry,hungry,-0.0,-0.0
+231,20,1,"19. Sumit journeyed to the bedroom.
+20. Why did sumit go to the bedroom?",tired,tired,-0.0,-0.0
+232,20,1,"21. Sumit took the pajamas there.
+22. Why did sumit get the pajamas?",tired,tired,-0.0,-0.0
+233,20,2,"1. Sumit is hungry.
+2. Where will sumit go?",kitchen,canteen,-0.0,-0.0
+234,20,2,"3. Sumit journeyed to the kitchen.
+4. Why did sumit go to the kitchen?",hungry,because he is hungry.,-0.0,-0.0
+235,20,2,"5. Sumit got the apple there.
+6. Why did sumit get the apple?",hungry,because he is hungry.,-0.0,-0.0
+236,20,2,"7. Yann is bored.
+8. Where will yann go?",garden,park,-0.0,-0.0
+237,20,2,"9. Yann went back to the garden.
+10. Why did yann go to the garden?",bored,because he is bored.,-0.0,-0.0
+238,20,2,"11. Antoine is hungry.
+12. Where will antoine go?",kitchen,kitchen,-0.0,-0.0
+239,20,2,"13. Jason is tired.
+14. Where will jason go?",bedroom,bed,-0.0,-0.0
+240,20,2,"15. Antoine travelled to the kitchen.
+16. Why did antoine go to the kitchen?",hungry,because he is hungry.,-0.0,-0.0
+241,20,2,"17. Yann got the football there.
+18. Why did yann get the football?",bored,"there is no context about yann getting the football earlier,",-0.0,-0.0
+242,20,2,"19. Jason moved to the bedroom.
+20. Why did jason go to the bedroom?",tired,because he is tired.,-0.0,-0.0
+243,20,2,"21. Jason grabbed the pajamas there.
+22. Why did jason get the pajamas?",tired,because he is tired.,-0.0,-0.0
+244,20,3,"1. Jason is bored.
+2. Where will jason go?",garden,park,-0.0,-0.0
+245,20,3,"3. Yann is bored.
+4. Where will yann go?",garden,park,-0.0,-0.0
+246,20,3,"5. Yann travelled to the garden.
+6. Why did yann go to the garden?",bored,because he was bored,-0.0,-0.0
+247,20,3,"7. Antoine is hungry.
+8. Where will antoine go?",kitchen,kitchen,-0.0,-0.0
+248,20,3,"9. Jason travelled to the garden.
+10. Why did jason go to the garden?",bored,because he was bored,-0.0,-0.0
+249,20,3,"11. Yann picked up the football there.
+12. Why did yann get the football?",bored,"there is no context about yann getting the football, so",-0.0,-0.0
+250,20,3,"13. Sumit is bored.
+14. Where will sumit go?",garden,park,-0.0,-0.0
+251,20,3,"15. Sumit went back to the garden.
+16. Why did sumit go to the garden?",bored,because he was bored,-0.0,-0.0
+252,20,3,"17. Antoine moved to the kitchen.
+18. Why did antoine go to the kitchen?",hungry,because he is hungry,-0.0,-0.0
+253,20,3,"19. Antoine took the apple there.
+20. Why did antoine get the apple?",hungry,because he is hungry,-0.0,-0.0
+254,20,4,"1. Yann is tired.
+2. Where will yann go?",bedroom,bed,-0.0,-0.0
+255,20,4,"3. Sumit is bored.
+4. Where will sumit go?",garden,park,-0.0,-0.0
+256,20,4,"5. Antoine is tired.
+6. Where will antoine go?",bedroom,home,-0.0,-0.0
+257,20,4,"7. Jason is bored.
+8. Where will jason go?",garden,library,-0.0,-0.0
+258,20,4,"9. Antoine journeyed to the bedroom.
+10. Why did antoine go to the bedroom?",tired,to sleep,-0.0,-0.0
+259,20,4,"11. Sumit went back to the garden.
+12. Why did sumit go to the garden?",bored,because he was bored,-0.0,-0.0
+260,20,4,"13. Sumit grabbed the football there.
+14. Why did sumit get the football?",bored,because he was bored,-0.0,-0.0
+261,20,4,"15. Yann went to the bedroom.
+16. Why did yann go to the bedroom?",tired,because he was tired,-0.0,-0.0
+262,20,4,"17. Antoine got the pajamas there.
+18. Why did antoine get the pajamas?",tired,because he was tired,-0.0,-0.0
+263,20,4,"19. Jason moved to the garden.
+20. Why did jason go to the garden?",bored,because he was bored,-0.0,-0.0
+264,1,0,"1. Daniel journeyed to the kitchen.
+2. Daniel journeyed to the bedroom.
+3. Where is Daniel?",bedroom,bedroom,0.84,0.84
+265,1,0,"4. Sandra moved to the garden.
+5. Sandra went back to the kitchen.
+6. Where is Sandra?",kitchen,garden,-0.0,-0.0
+266,1,0,"7. Daniel travelled to the office.
+8. Sandra went back to the hallway.
+9. Where is Sandra?",hallway,hallway,-0.0,-0.0
+267,1,0,"10. Daniel journeyed to the hallway.
+11. Daniel went to the bathroom.
+12. Where is Sandra?",hallway,hallway,-0.0,-0.0
+268,1,0,"13. John travelled to the garden.
+14. Daniel moved to the hallway.
+15. Where is Daniel?",hallway,hallway,-0.0,-0.0
+269,1,1,"1. John went back to the bathroom.
+2. Mary travelled to the bathroom.
+3. Where is John?",bathroom,bathroom,-0.0,-0.0
+270,1,1,"4. Mary went to the garden.
+5. Sandra moved to the garden.
+6. Where is John?",bathroom,not mentioned,-0.0,-0.0
+271,1,1,"7. John went to the kitchen.
+8. Daniel moved to the bathroom.
+9. Where is John?",kitchen,kitchen,-0.0,-0.0
+272,1,1,"10. Daniel went back to the hallway.
+11. Mary went to the kitchen.
+12. Where is Mary?",kitchen,kitchen,-0.0,-0.0
+273,1,1,"13. Daniel went to the garden.
+14. Daniel travelled to the hallway.
+15. Where is Daniel?",hallway,hallway,-0.0,-0.0
+274,1,2,"1. Mary went back to the bedroom.
+2. Mary travelled to the bathroom.
+3. Where is Mary?",bathroom,bedroom,-0.0,-0.0
+275,1,2,"4. John travelled to the office.
+5. Mary travelled to the bedroom.
+6. Where is Mary?",bedroom,bedroom,-0.0,-0.0
+276,1,2,"7. John journeyed to the kitchen.
+8. John moved to the hallway.
+9. Where is Mary?",bedroom,bedroom,-0.0,-0.0
+277,1,2,"10. Daniel moved to the hallway.
+11. Mary went back to the garden.
+12. Where is Mary?",garden,garden,-0.0,-0.0
+278,1,2,"13. Daniel went back to the office.
+14. Daniel travelled to the kitchen.
+15. Where is Daniel?",kitchen,office,-0.0,-0.0
+279,1,3,"1. Daniel moved to the garden.
+2. Mary went back to the bathroom.
+3. Where is Daniel?",garden,garden,-0.0,-0.0
+280,1,3,"4. Daniel travelled to the kitchen.
+5. Sandra went to the kitchen.
+6. Where is Sandra?",kitchen,kitchen,-0.0,-0.0
+281,1,3,"7. Daniel journeyed to the garden.
+8. Mary journeyed to the kitchen.
+9. Where is Mary?",kitchen,kitchen,-0.0,-0.0
+282,1,3,"10. Mary moved to the hallway.
+11. John went back to the bedroom.
+12. Where is Mary?",hallway,hallway,-0.0,-0.0
+283,1,3,"13. John moved to the office.
+14. John travelled to the bathroom.
+15. Where is Mary?",hallway,hallway,-0.0,-0.0
+284,1,4,"1. John went to the office.
+2. Daniel journeyed to the kitchen.
+3. Where is Daniel?",kitchen,kitchen,-0.0,-0.0
+285,1,4,"4. John travelled to the bedroom.
+5. John moved to the garden.
+6. Where is Daniel?",kitchen,kitchen,-0.0,-0.0
+286,1,4,"7. Daniel journeyed to the bathroom.
+8. John journeyed to the bedroom.
+9. Where is John?",bedroom,bedroom,-0.0,-0.0
+287,1,4,"10. Sandra journeyed to the kitchen.
+11. Mary moved to the garden.
+12. Where is John?",bedroom,bedroom,-0.0,-0.0
+288,1,4,"13. Sandra journeyed to the bathroom.
+14. Sandra went back to the bedroom.
+15. Where is Sandra?",bedroom,bedroom,-0.0,-0.0
+289,18,0,"1. The box is bigger than the box of chocolates.
+2. The box of chocolates is bigger than the chocolate.
+3. The suitcase is bigger than the chocolate.
+4. The box of chocolates fits inside the container.
+5. The box of chocolates is bigger than the chocolate.
+6. Does the box fit in the chocolate?",no,"1. no
+2. yes
+3. yes
+",0.36,0.72
+290,18,0,7. Is the chocolate bigger than the box?,no,no,-0.0,-0.0
+291,18,0,8. Is the chocolate bigger than the box?,no,no,-0.0,-0.0
+292,18,0,9. Is the box bigger than the chocolate?,yes,yes,-0.0,-0.0
+293,18,0,10. Is the chocolate bigger than the box?,no,no,-0.0,-0.0
+294,18,1,"1. The box fits inside the suitcase.
+2. The box fits inside the container.
+3. The chest is bigger than the box.
+4. The container is bigger than the box of chocolates.
+5. The box of chocolates is bigger than the chocolate.
+6. Does the container fit in the chocolate?",no,the correct answer is: no,-0.0,-0.0
+295,18,1,7. Is the container bigger than the chocolate?,yes,the correct answer is: no,-0.0,-0.0
+296,18,1,8. Is the container bigger than the chocolate?,yes,the correct answer is: no,-0.0,-0.0
+297,18,1,9. Does the chocolate fit in the container?,yes,the correct answer is: yes,-0.0,-0.0
+298,18,1,10. Is the chocolate bigger than the container?,no,the correct answer is: no,-0.0,-0.0
+299,18,2,"1. The box of chocolates is bigger than the chocolate.
+2. The chocolate fits inside the container.
+3. The container is bigger than the chest.
+4. The chest fits inside the suitcase.
+5. The container is bigger than the box.
+6. The container is bigger than the box of chocolates.
+7. The box fits inside the suitcase.
+8. The box fits inside the chest.
+9. The box of chocolates fits inside the suitcase.
+10. The chocolate fits inside the box of chocolates.
+11. Does the container fit in the box?",no,11. no,-0.0,-0.0
+300,18,2,12. Is the container bigger than the chocolate?,yes,yes,-0.0,-0.0
+301,18,2,13. Does the container fit in the box?,no,yes,-0.0,-0.0
+302,18,2,14. Does the container fit in the box?,no,yes,-0.0,-0.0
+303,18,2,15. Does the chocolate fit in the suitcase?,yes,no,-0.0,-0.0
+304,18,3,"1. The suitcase is bigger than the box of chocolates.
+2. The box of chocolates fits inside the suitcase.
+3. The chocolate fits inside the chest.
+4. The box is bigger than the box of chocolates.
+5. The chest is bigger than the chocolate.
+6. The box of chocolates fits inside the suitcase.
+7. The box is bigger than the box of chocolates.
+8. The chest is bigger than the container.
+9. The suitcase is bigger than the box.
+10. The chocolate fits inside the container.
+11. Does the chest fit in the chocolate?",no,11. no,-0.0,-0.0
+305,18,3,12. Is the chest bigger than the chocolate?,yes,5. no,-0.0,-0.0
+306,18,3,13. Does the box of chocolates fit in the suitcase?,yes,2. yes,-0.0,-0.0
+307,18,3,14. Is the chocolate bigger than the chest?,no,3. no,-0.0,-0.0
+308,18,3,15. Is the chest bigger than the chocolate?,yes,5. yes,-0.0,-0.0
+309,18,4,"1. The suitcase is bigger than the chocolate.
+2. The chest is bigger than the chocolate.
+3. The container fits inside the chest.
+4. The chocolate fits inside the box.
+5. The box fits inside the suitcase.
+6. Is the chocolate bigger than the suitcase?",no,no,-0.0,-0.0
+310,18,4,7. Does the chocolate fit in the suitcase?,yes,no,-0.0,-0.0
+311,18,4,8. Is the suitcase bigger than the chocolate?,yes,yes,-0.0,-0.0
+312,18,4,9. Is the chocolate bigger than the suitcase?,no,no,-0.0,-0.0
+313,18,4,10. Is the suitcase bigger than the chocolate?,yes,yes,-0.0,-0.0
+314,17,0,"1. The triangle is above the pink rectangle.
+2. The blue square is to the left of the triangle.
+3. Is the pink rectangle to the right of the blue square?",yes,no,0.55,0.55
+315,17,0,4. Is the blue square below the pink rectangle?,no,no,-0.0,-0.0
+316,17,0,5. Is the blue square to the right of the pink rectangle?,no,no,-0.0,-0.0
+317,17,0,6. Is the blue square below the pink rectangle?,no,no,-0.0,-0.0
+318,17,0,7. Is the blue square below the pink rectangle?,no,no,-0.0,-0.0
+319,17,0,8. Is the pink rectangle to the left of the blue square?,no,yes,-0.0,-0.0
+320,17,0,9. Is the blue square to the left of the pink rectangle?,yes,yes,-0.0,-0.0
+321,17,0,10. Is the pink rectangle to the right of the blue square?,yes,no,-0.0,-0.0
+322,17,1,"1. The triangle is below the red square.
+2. The triangle is to the left of the blue square.
+3. Is the red square to the right of the blue square?",no,no,-0.0,-0.0
+323,17,1,4. Is the blue square below the red square?,yes,no,-0.0,-0.0
+324,17,1,5. Is the red square below the blue square?,no,no,-0.0,-0.0
+325,17,1,6. Is the blue square above the red square?,no,no,-0.0,-0.0
+326,17,1,7. Is the red square to the right of the blue square?,no,yes,-0.0,-0.0
+327,17,1,8. Is the red square to the right of the blue square?,no,yes,-0.0,-0.0
+328,17,1,9. Is the red square to the left of the blue square?,yes,no,-0.0,-0.0
+329,17,1,10. Is the red square below the blue square?,no,no,-0.0,-0.0
+330,17,2,"1. The red sphere is to the right of the blue square.
+2. The blue square is below the yellow square.
+3. Is the red sphere above the yellow square?",no,no,-0.0,-0.0
+331,17,2,4. Is the red sphere above the yellow square?,no,no,-0.0,-0.0
+332,17,2,5. Is the yellow square below the red sphere?,no,no,-0.0,-0.0
+333,17,2,6. Is the yellow square to the left of the red sphere?,yes,no,-0.0,-0.0
+334,17,2,7. Is the red sphere to the right of the yellow square?,yes,yes,-0.0,-0.0
+335,17,2,8. Is the red sphere below the yellow square?,yes,no,-0.0,-0.0
+336,17,2,9. Is the red sphere above the yellow square?,no,no,-0.0,-0.0
+337,17,2,10. Is the red sphere below the yellow square?,yes,no,-0.0,-0.0
+338,17,3,"1. The triangle is to the right of the yellow square.
+2. The pink rectangle is above the triangle.
+3. Is the yellow square to the left of the pink rectangle?",yes,no,-0.0,-0.0
+339,17,3,4. Is the pink rectangle above the yellow square?,yes,yes,-0.0,-0.0
+340,17,3,5. Is the pink rectangle to the right of the yellow square?,yes,no,-0.0,-0.0
+341,17,3,6. Is the yellow square above the pink rectangle?,no,no,-0.0,-0.0
+342,17,3,7. Is the pink rectangle below the yellow square?,no,no,-0.0,-0.0
+343,17,3,8. Is the pink rectangle to the left of the yellow square?,no,no,-0.0,-0.0
+344,17,3,9. Is the yellow square below the pink rectangle?,yes,no,-0.0,-0.0
+345,17,3,10. Is the yellow square above the pink rectangle?,no,no,-0.0,-0.0
+346,17,4,"1. The red sphere is below the pink rectangle.
+2. The red sphere is to the left of the red square.
+3. Is the red square to the left of the pink rectangle?",no,no,-0.0,-0.0
+347,17,4,4. Is the pink rectangle above the red square?,yes,no,-0.0,-0.0
+348,17,4,5. Is the pink rectangle to the left of the red square?,yes,no,-0.0,-0.0
+349,17,4,6. Is the red square below the pink rectangle?,yes,no,-0.0,-0.0
+350,17,4,7. Is the pink rectangle to the left of the red square?,yes,no,-0.0,-0.0
+351,17,4,8. Is the red square to the right of the pink rectangle?,yes,yes,-0.0,-0.0
+352,17,4,9. Is the pink rectangle above the red square?,yes,no,-0.0,-0.0
+353,17,4,10. Is the red square above the pink rectangle?,no,no,-0.0,-0.0
+354,6,0,"1. Sandra moved to the office.
+2. John went back to the garden.
+3. Is Sandra in the office?",yes,office,0.6,0.6
+355,6,0,"4. Sandra went to the hallway.
+5. Sandra went to the kitchen.
+6. Is Sandra in the bathroom?",no,no,-0.0,-0.0
+356,6,0,"7. Mary went to the office.
+8. Sandra got the apple there.
+9. Is Sandra in the kitchen?",yes,no,-0.0,-0.0
+357,6,0,"10. Mary journeyed to the hallway.
+11. Mary journeyed to the bedroom.
+12. Is Mary in the bedroom?",yes,yes,-0.0,-0.0
+358,6,0,"13. Mary journeyed to the garden.
+14. Mary went to the kitchen.
+15. Is Mary in the kitchen?",yes,yes,-0.0,-0.0
+359,6,1,"1. Sandra grabbed the football there.
+2. Sandra went back to the hallway.
+3. Is Sandra in the garden?",no,no,-0.0,-0.0
+360,6,1,"4. Mary journeyed to the kitchen.
+5. Mary moved to the office.
+6. Is Mary in the office?",yes,yes,-0.0,-0.0
+361,6,1,"7. John moved to the kitchen.
+8. Sandra put down the football there.
+9. Is John in the bathroom?",no,no,-0.0,-0.0
+362,6,1,"10. Mary took the apple there.
+11. John travelled to the hallway.
+12. Is John in the garden?",no,no,-0.0,-0.0
+363,6,1,"13. Daniel moved to the hallway.
+14. Mary travelled to the kitchen.
+15. Is John in the garden?",no,no,-0.0,-0.0
+364,6,2,"1. Daniel journeyed to the hallway.
+2. Mary went back to the kitchen.
+3. Is Mary in the kitchen?",yes,yes,-0.0,-0.0
+365,6,2,"4. John moved to the hallway.
+5. John picked up the apple there.
+6. Is Daniel in the kitchen?",no,no,-0.0,-0.0
+366,6,2,"7. Daniel moved to the bathroom.
+8. John went to the garden.
+9. Is Mary in the kitchen?",yes,no,-0.0,-0.0
+367,6,2,"10. Mary moved to the hallway.
+11. John dropped the apple.
+12. Is John in the bedroom?",no,no,-0.0,-0.0
+368,6,2,"13. Sandra grabbed the apple there.
+14. Sandra left the apple.
+15. Is John in the garden?",yes,no,-0.0,-0.0
+369,6,3,"1. John went to the hallway.
+2. Sandra picked up the apple there.
+3. Is John in the hallway?",yes,hallway,-0.0,-0.0
+370,6,3,"4. Daniel moved to the garden.
+5. Mary journeyed to the bedroom.
+6. Is Mary in the bedroom?",yes,no,-0.0,-0.0
+371,6,3,"7. Mary moved to the bathroom.
+8. Sandra left the apple.
+9. Is Daniel in the bedroom?",no,no,-0.0,-0.0
+372,6,3,"10. Mary grabbed the milk there.
+11. Daniel moved to the office.
+12. Is Mary in the bedroom?",no,no,-0.0,-0.0
+373,6,3,"13. John took the football there.
+14. John moved to the bedroom.
+15. Is John in the bedroom?",yes,yes,-0.0,-0.0
+374,6,4,"1. Mary went back to the hallway.
+2. John grabbed the apple there.
+3. Is Mary in the hallway?",yes,hallway,-0.0,-0.0
+375,6,4,"4. John put down the apple.
+5. John took the apple there.
+6. Is Mary in the hallway?",yes,hallway,-0.0,-0.0
+376,6,4,"7. John put down the apple there.
+8. Mary moved to the kitchen.
+9. Is Mary in the kitchen?",yes,kitchen,-0.0,-0.0
+377,6,4,"10. Mary travelled to the bathroom.
+11. Sandra went back to the garden.
+12. Is Sandra in the garden?",yes,garden,-0.0,-0.0
+378,6,4,"13. Daniel went to the bedroom.
+14. Mary took the milk there.
+15. Is Sandra in the bedroom?",no,no,-0.0,-0.0
+379,11,0,"1. Daniel went back to the office.
+2. Then he went back to the bathroom.
+3. Where is Daniel?",bathroom,office,0.48,0.48
+380,11,0,"4. Sandra went back to the bedroom.
+5. After that she moved to the kitchen.
+6. Where is Daniel?",bathroom,office,-0.0,-0.0
+381,11,0,"7. John journeyed to the bedroom.
+8. After that he journeyed to the hallway.
+9. Where is Sandra?",kitchen,bedroom,-0.0,-0.0
+382,11,0,"10. Sandra journeyed to the garden.
+11. Following that she went back to the hallway.
+12. Where is John?",hallway,bedroom,-0.0,-0.0
+383,11,0,"13. Mary travelled to the office.
+14. After that she went back to the kitchen.
+15. Where is Mary?",kitchen,office,-0.0,-0.0
+384,11,1,"1. Daniel moved to the office.
+2. Following that he journeyed to the hallway.
+3. Where is Daniel?",hallway,office,-0.0,-0.0
+385,11,1,"4. John travelled to the office.
+5. Then he went back to the kitchen.
+6. Where is John?",kitchen,office,-0.0,-0.0
+386,11,1,"7. Sandra went to the office.
+8. Following that she went to the hallway.
+9. Where is Sandra?",hallway,hallway,-0.0,-0.0
+387,11,1,"10. Daniel travelled to the kitchen.
+11. Afterwards he moved to the office.
+12. Where is Sandra?",hallway,hallway,-0.0,-0.0
+388,11,1,"13. Sandra journeyed to the office.
+14. Afterwards she moved to the hallway.
+15. Where is Daniel?",office,office,-0.0,-0.0
+389,11,2,"1. John moved to the kitchen.
+2. Afterwards he journeyed to the hallway.
+3. Where is John?",hallway,hallway,-0.0,-0.0
+390,11,2,"4. Daniel moved to the hallway.
+5. Then he moved to the garden.
+6. Where is John?",hallway,kitchen,-0.0,-0.0
+391,11,2,"7. Sandra journeyed to the hallway.
+8. Afterwards she travelled to the bedroom.
+9. Where is Sandra?",bedroom,bedroom,-0.0,-0.0
+392,11,2,"10. Mary journeyed to the kitchen.
+11. Then she went to the bathroom.
+12. Where is Sandra?",bedroom,bedroom,-0.0,-0.0
+393,11,2,"13. Mary travelled to the office.
+14. Then she journeyed to the hallway.
+15. Where is Mary?",hallway,hallway,-0.0,-0.0
+394,11,3,"1. Sandra went to the bathroom.
+2. Following that she went back to the kitchen.
+3. Where is Sandra?",kitchen,kitchen,-0.0,-0.0
+395,11,3,"4. Daniel went to the garden.
+5. Then he went back to the kitchen.
+6. Where is Sandra?",kitchen,kitchen,-0.0,-0.0
+396,11,3,"7. John went back to the hallway.
+8. Afterwards he journeyed to the kitchen.
+9. Where is Daniel?",kitchen,garden,-0.0,-0.0
+397,11,3,"10. Sandra went to the office.
+11. Then she went back to the bathroom.
+12. Where is Daniel?",kitchen,garden,-0.0,-0.0
+398,11,3,"13. John went to the office.
+14. After that he journeyed to the hallway.
+15. Where is Sandra?",bathroom,bathroom,-0.0,-0.0
+399,11,4,"1. Sandra moved to the office.
+2. Afterwards she moved to the bathroom.
+3. Where is Sandra?",bathroom,office,-0.0,-0.0
+400,11,4,"4. Daniel journeyed to the kitchen.
+5. Then he went to the bathroom.
+6. Where is Daniel?",bathroom,kitchen,-0.0,-0.0
+401,11,4,"7. Sandra went to the hallway.
+8. Afterwards she went back to the office.
+9. Where is Sandra?",office,office,-0.0,-0.0
+402,11,4,"10. Daniel moved to the garden.
+11. Following that he moved to the hallway.
+12. Where is Sandra?",office,office,-0.0,-0.0
+403,11,4,"13. John travelled to the bedroom.
+14. Following that he moved to the kitchen.
+15. Where is John?",kitchen,not mentioned,-0.0,-0.0
+404,8,0,"1. Daniel journeyed to the bathroom.
+2. Daniel went back to the bedroom.
+3. Mary journeyed to the bedroom.
+4. Mary picked up the milk there.
+5. What is Mary carrying?",milk,milk,0.76,0.76
+405,8,0,"6. Mary dropped the milk.
+7. Daniel grabbed the football there.
+8. What is Mary carrying?",nothing,nothing,-0.0,-0.0
+406,8,0,"9. Mary took the milk there.
+10. Mary left the milk.
+11. What is Daniel carrying?",football,football,-0.0,-0.0
+407,8,0,"12. Daniel discarded the football.
+13. Daniel picked up the football there.
+14. What is Daniel carrying?",football,football,-0.0,-0.0
+408,8,0,"15. Mary grabbed the milk there.
+16. Mary left the milk.
+17. What is Daniel carrying?",football,football,-0.0,-0.0
+409,8,1,"1. Daniel went to the kitchen.
+2. Daniel journeyed to the hallway.
+3. Mary went back to the garden.
+4. Daniel picked up the apple there.
+5. What is Daniel carrying?",apple,apple,-0.0,-0.0
+410,8,1,"6. John moved to the bathroom.
+7. Sandra went back to the hallway.
+8. What is Daniel carrying?",apple,apple,-0.0,-0.0
+411,8,1,"9. Mary took the football there.
+10. Daniel put down the apple.
+11. What is Daniel carrying?",nothing,nothing,-0.0,-0.0
+412,8,1,"12. John moved to the office.
+13. Mary left the football.
+14. What is Mary carrying?",nothing,nothing,-0.0,-0.0
+413,8,1,"15. Sandra took the apple there.
+16. Mary moved to the bathroom.
+17. What is Daniel carrying?",nothing,nothing,-0.0,-0.0
+414,8,2,"1. Sandra journeyed to the hallway.
+2. John moved to the kitchen.
+3. Sandra moved to the bathroom.
+4. Daniel picked up the football there.
+5. What is Daniel carrying?",football,football,-0.0,-0.0
+415,8,2,"6. Daniel dropped the football there.
+7. Mary grabbed the football there.
+8. What is Mary carrying?",football,football,-0.0,-0.0
+416,8,2,"9. Mary travelled to the office.
+10. Mary took the apple there.
+11. What is Mary carrying? 	football,apple",7,apple,-0.0,-0.0
+417,8,2,"12. Daniel went back to the bedroom.
+13. Mary left the football.
+14. What is Mary carrying?",apple,apple,-0.0,-0.0
+418,8,2,"15. Mary grabbed the football there.
+16. Daniel got the milk there.
+17. What is Mary carrying? 	football,apple",7,"football, apple",-0.0,-0.0
+419,8,3,"1. Mary took the milk there.
+2. Mary went to the office.
+3. What is Mary carrying?",milk,milk,-0.0,-0.0
+420,8,3,"4. Mary took the apple there.
+5. Sandra journeyed to the bedroom.
+6. What is Mary carrying? 	milk,apple",1,"milk, apple",-0.0,-0.0
+421,8,3,"7. Mary put down the milk.
+8. Mary discarded the apple.
+9. What is Mary carrying?",nothing,nothing,-0.0,-0.0
+422,8,3,"10. Sandra picked up the football there.
+11. Sandra journeyed to the office.
+12. What is Mary carrying?",nothing,nothing,-0.0,-0.0
+423,8,3,"13. Sandra took the apple there.
+14. Daniel got the milk there.
+15. What is Sandra carrying? 	football,apple",10,"football, apple",-0.0,-0.0
+424,8,4,"1. Sandra travelled to the garden.
+2. Sandra went back to the hallway.
+3. Sandra travelled to the bathroom.
+4. Daniel moved to the garden.
+5. Mary went back to the office.
+6. Mary moved to the garden.
+7. Mary went back to the bedroom.
+8. Mary travelled to the office.
+9. Sandra went back to the hallway.
+10. Sandra went back to the bathroom.
+11. Mary went to the kitchen.
+12. Mary went to the office.
+13. Daniel went to the kitchen.
+14. Sandra moved to the office.
+15. Mary moved to the kitchen.
+16. Daniel travelled to the hallway.
+17. Daniel took the football there.
+18. Daniel picked up the milk there.
+19. What is Daniel carrying? 	football,milk",17,football,-0.0,-0.0
+425,8,4,"20. John went to the kitchen.
+21. Daniel discarded the milk.
+22. What is Daniel carrying?",football,nothing,-0.0,-0.0
+426,8,4,"23. Mary journeyed to the hallway.
+24. Daniel left the football there.
+25. What is Daniel carrying?",nothing,nothing,-0.0,-0.0
+427,8,4,"26. Daniel picked up the milk there.
+27. Daniel moved to the bedroom.
+28. What is Daniel carrying?",milk,milk,-0.0,-0.0
+428,8,4,"29. Daniel dropped the milk.
+30. John journeyed to the bedroom.
+31. What is Daniel carrying?",nothing,nothing,-0.0,-0.0
+429,3,0,"1. Mary moved to the bathroom.
+2. Sandra journeyed to the bedroom.
+3. Mary got the football there.
+4. John went back to the bedroom.
+5. Mary journeyed to the office.
+6. John journeyed to the office.
+7. John took the milk.
+8. Daniel went back to the kitchen.
+9. John moved to the bedroom.
+10. Daniel went back to the hallway.
+11. Daniel took the apple.
+12. John left the milk there.
+13. John travelled to the kitchen.
+14. Sandra went back to the bathroom.
+15. Daniel journeyed to the bathroom.
+16. John journeyed to the bathroom.
+17. Mary journeyed to the bathroom.
+18. Sandra went back to the garden.
+19. Sandra went to the office.
+20. Daniel went to the garden.
+21. Sandra went back to the hallway.
+22. Daniel journeyed to the office.
+23. Mary dropped the football.
+24. John moved to the bedroom.
+25. Where was the football before the bathroom?",office,the correct answer is: there,0.04,0.2
+430,3,0,"26. John travelled to the office.
+27. John travelled to the bedroom.
+28. Where was the football before the bathroom?",office,the correct answer is: there,-0.0,-0.0
+431,3,0,"29. Daniel left the apple.
+30. Sandra travelled to the kitchen.
+31. Where was the apple before the garden?",bathroom,the correct answer is: there,-0.0,-0.0
+432,3,0,"32. Sandra went to the bedroom.
+33. Daniel moved to the bedroom.
+34. Where was the apple before the garden?",bathroom,the correct answer is: there,-0.0,-0.0
+433,3,0,"35. John went to the hallway.
+36. Mary got the football.
+37. John went back to the bedroom.
+38. Sandra took the milk.
+39. Daniel travelled to the office.
+40. Sandra left the milk there.
+41. Daniel travelled to the hallway.
+42. Sandra picked up the milk.
+43. Mary left the football.
+44. Sandra travelled to the hallway.
+45. John journeyed to the hallway.
+46. Sandra went to the kitchen.
+47. Where was the milk before the kitchen?",hallway,the correct answer is: there,-0.0,-0.0
+434,3,1,"1. Sandra moved to the hallway.
+2. Sandra went back to the garden.
+3. Daniel journeyed to the kitchen.
+4. Daniel took the football.
+5. Daniel put down the football there.
+6. Mary went back to the hallway.
+7. Sandra picked up the apple.
+8. Sandra left the apple.
+9. Daniel went to the garden.
+10. Sandra picked up the apple.
+11. John went back to the hallway.
+12. Sandra dropped the apple.
+13. Sandra got the apple there.
+14. Sandra dropped the apple.
+15. Daniel went back to the kitchen.
+16. Sandra went back to the bathroom.
+17. John went to the garden.
+18. Daniel travelled to the garden.
+19. John got the apple there.
+20. John discarded the apple.
+21. Daniel moved to the kitchen.
+22. Daniel picked up the football.
+23. Sandra went back to the hallway.
+24. Daniel moved to the garden.
+25. Daniel discarded the football.
+26. Daniel got the football there.
+27. Mary went back to the kitchen.
+28. Daniel went back to the bathroom.
+29. Daniel put down the football.
+30. Sandra travelled to the garden.
+31. Mary moved to the garden.
+32. Daniel took the football.
+33. Sandra went to the bathroom.
+34. Sandra went back to the hallway.
+35. John picked up the apple there.
+36. John discarded the apple.
+37. Mary picked up the apple.
+38. Mary dropped the apple.
+39. Mary took the apple.
+40. Daniel journeyed to the garden.
+41. Sandra went to the garden.
+42. Mary travelled to the hallway.
+43. Mary went to the kitchen.
+44. Daniel left the football.
+45. Mary put down the apple.
+46. Sandra grabbed the football.
+47. Where was the apple before the kitchen?",hallway,garden,-0.0,-0.0
+435,3,1,"48. John went to the kitchen.
+49. Sandra left the football there.
+50. Where was the apple before the kitchen?",hallway,garden,-0.0,-0.0
+436,3,1,"51. Daniel picked up the football.
+52. John picked up the apple.
+53. John put down the apple.
+54. Mary grabbed the apple.
+55. Mary dropped the apple.
+56. Mary moved to the office.
+57. Daniel discarded the football.
+58. John journeyed to the garden.
+59. Daniel got the football.
+60. Daniel travelled to the kitchen.
+61. Daniel picked up the apple.
+62. Daniel dropped the apple.
+63. Mary moved to the kitchen.
+64. Daniel grabbed the apple there.
+65. Sandra went back to the bedroom.
+66. Daniel went to the hallway.
+67. John moved to the hallway.
+68. Daniel discarded the apple there.
+69. Daniel picked up the apple.
+70. Daniel moved to the office.
+71. Daniel went back to the bedroom.
+72. Daniel dropped the football.
+73. Where was the apple before the bedroom?",office,kitchen,-0.0,-0.0
+437,3,1,"74. Mary moved to the office.
+75. Mary went to the garden.
+76. Where was the football before the office?",hallway,kitchen,-0.0,-0.0
+438,3,1,"77. Daniel grabbed the football.
+78. Daniel left the apple.
+79. Where was the apple before the bedroom?",office,kitchen,-0.0,-0.0
+439,3,2,"1. John travelled to the kitchen.
+2. Sandra went to the garden.
+3. John went back to the office.
+4. Sandra went to the bathroom.
+5. Mary moved to the bedroom.
+6. Mary grabbed the football.
+7. Sandra moved to the office.
+8. Daniel went to the office.
+9. Sandra moved to the garden.
+10. Mary discarded the football.
+11. Mary grabbed the football there.
+12. Sandra picked up the apple there.
+13. Mary left the football.
+14. Sandra dropped the apple.
+15. Sandra moved to the office.
+16. John went to the kitchen.
+17. John travelled to the bedroom.
+18. Mary picked up the football.
+19. Mary travelled to the hallway.
+20. Mary picked up the milk.
+21. Mary discarded the football.
+22. Sandra went to the bedroom.
+23. Daniel went back to the bathroom.
+24. John travelled to the office.
+25. Daniel went back to the bedroom.
+26. Daniel went back to the office.
+27. John went back to the garden.
+28. John travelled to the hallway.
+29. Mary went back to the kitchen.
+30. Daniel went back to the kitchen.
+31. Sandra moved to the garden.
+32. Mary went to the office.
+33. Mary moved to the bathroom.
+34. Sandra went back to the kitchen.
+35. Mary dropped the milk.
+36. Mary grabbed the milk.
+37. Mary dropped the milk.
+38. Sandra travelled to the bathroom.
+39. Sandra got the milk.
+40. Daniel went back to the office.
+41. Sandra moved to the hallway.
+42. Mary travelled to the garden.
+43. John went back to the garden.
+44. Mary travelled to the bathroom.
+45. Mary went to the bedroom.
+46. John went back to the bathroom.
+47. Daniel journeyed to the garden.
+48. John journeyed to the garden.
+49. Mary journeyed to the office.
+50. Sandra put down the milk there.
+51. Sandra journeyed to the kitchen.
+52. Mary went back to the kitchen.
+53. John moved to the kitchen.
+54. Mary moved to the garden.
+55. Mary grabbed the apple.
+56. Mary put down the apple.
+57. Daniel went back to the bathroom.
+58. Sandra moved to the garden.
+59. Mary grabbed the apple.
+60. Sandra went to the hallway.
+61. Daniel went to the kitchen.
+62. John journeyed to the office.
+63. John moved to the hallway.
+64. Mary dropped the apple there.
+65. Mary got the apple.
+66. Mary put down the apple.
+67. John went to the bathroom.
+68. Sandra took the football.
+69. Sandra journeyed to the office.
+70. Daniel travelled to the bedroom.
+71. Mary journeyed to the hallway.
+72. Mary picked up the milk.
+73. Mary put down the milk.
+74. Mary went back to the bathroom.
+75. Sandra left the football.
+76. Sandra grabbed the football there.
+77. John travelled to the bedroom.
+78. Mary went back to the kitchen.
+79. Sandra journeyed to the hallway.
+80. Sandra moved to the garden.
+81. Where was the football before the garden?",hallway,office,-0.0,-0.0
+440,3,2,"82. Sandra put down the football there.
+83. Mary travelled to the garden.
+84. Where was the football before the garden?",hallway,office,-0.0,-0.0
+441,3,2,"85. Sandra picked up the apple there.
+86. Sandra went back to the bathroom.
+87. Where was the football before the garden?",hallway,office,-0.0,-0.0
+442,3,2,"88. Daniel went to the garden.
+89. Daniel got the football.
+90. Mary travelled to the bathroom.
+91. Mary went back to the kitchen.
+92. Daniel put down the football.
+93. Daniel journeyed to the kitchen.
+94. Mary moved to the hallway.
+95. Sandra dropped the apple.
+96. Mary got the milk.
+97. Mary went to the office.
+98. John travelled to the bathroom.
+99. Sandra took the apple.
+100. Sandra discarded the apple.
+101. John journeyed to the kitchen.
+102. Mary left the milk there.
+103. Sandra took the apple.
+104. Sandra dropped the apple.
+105. Mary picked up the milk.
+106. Sandra grabbed the apple.
+107. John moved to the bedroom.
+108. Mary left the milk.
+109. Daniel travelled to the bedroom.
+110. Sandra moved to the office.
+111. Sandra left the apple there.
+112. Sandra moved to the bedroom.
+113. Mary journeyed to the bathroom.
+114. John journeyed to the bathroom.
+115. Sandra went to the kitchen.
+116. Daniel travelled to the garden.
+117. Daniel travelled to the bedroom.
+118. Mary moved to the kitchen.
+119. Sandra went back to the bedroom.
+120. John moved to the office.
+121. Sandra journeyed to the bathroom.
+122. Mary moved to the hallway.
+123. Daniel went back to the garden.
+124. John took the milk there.
+125. John moved to the bedroom.
+126. John discarded the milk.
+127. Daniel took the football.
+128. John took the milk there.
+129. Sandra went back to the garden.
+130. John put down the milk.
+131. John travelled to the bathroom.
+132. Mary journeyed to the bedroom.
+133. John travelled to the bedroom.
+134. Sandra moved to the bedroom.
+135. Daniel put down the football.
+136. Sandra moved to the bathroom.
+137. Mary went to the hallway.
+138. Daniel picked up the football.
+139. Sandra travelled to the garden.
+140. Mary moved to the garden.
+141. Daniel dropped the football.
+142. Sandra went back to the bathroom.
+143. Daniel journeyed to the bedroom.
+144. John moved to the bathroom.
+145. Daniel moved to the hallway.
+146. Daniel journeyed to the bathroom.
+147. Daniel went back to the bedroom.
+148. Mary moved to the bathroom.
+149. Daniel travelled to the office.
+150. Daniel went to the kitchen.
+151. Sandra moved to the kitchen.
+152. Mary journeyed to the office.
+153. Daniel went back to the bedroom.
+154. John journeyed to the bedroom.
+155. Mary journeyed to the hallway.
+156. Sandra travelled to the office.
+157. Sandra picked up the apple.
+158. Daniel moved to the hallway.
+159. John went to the bathroom.
+160. Sandra discarded the apple.
+161. John moved to the garden.
+162. Sandra moved to the bedroom.
+163. Daniel journeyed to the kitchen.
+164. Sandra went back to the kitchen.
+165. John picked up the football.
+166. Mary went back to the bathroom.
+167. John dropped the football.
+168. John took the football.
+169. Sandra went back to the office.
+170. John discarded the football there.
+171. John journeyed to the bathroom.
+172. Mary went back to the hallway.
+173. Mary went to the kitchen.
+174. Sandra travelled to the kitchen.
+175. Daniel went back to the garden.
+176. Daniel journeyed to the bathroom.
+177. Daniel moved to the bedroom.
+178. John went back to the garden.
+179. Mary went to the bathroom.
+180. John travelled to the kitchen.
+181. Sandra went back to the office.
+182. Daniel travelled to the kitchen.
+183. John went to the office.
+184. John went back to the bathroom.
+185. Sandra journeyed to the bedroom.
+186. John went to the kitchen.
+187. Sandra got the milk.
+188. John went to the bathroom.
+189. Daniel journeyed to the bathroom.
+190. John journeyed to the kitchen.
+191. Mary journeyed to the office.
+192. Sandra left the milk.
+193. Sandra picked up the milk.
+194. Sandra put down the milk there.
+195. Sandra moved to the office.
+196. Sandra moved to the bathroom.
+197. Mary moved to the garden.
+198. John moved to the office.
+199. Mary travelled to the office.
+200. John grabbed the apple there.
+201. John dropped the apple.
+202. Mary went back to the bathroom.
+203. John went back to the bedroom.
+204. Daniel went back to the office.
+205. John picked up the milk.
+206. John journeyed to the bathroom.
+207. Daniel went back to the bathroom.
+208. Mary travelled to the kitchen.
+209. John travelled to the garden.
+210. Where was the milk before the garden?",bathroom,office,-0.0,-0.0
+443,3,2,"211. Sandra went to the bedroom.
+212. Sandra moved to the bathroom.
+213. Mary moved to the office.
+214. John went back to the kitchen.
+215. Mary went back to the garden.
+216. Mary moved to the bedroom.
+217. John discarded the milk.
+218. Daniel journeyed to the garden.
+219. Where was the milk before the kitchen?",garden,office,-0.0,-0.0
+444,3,3,"1. Daniel moved to the office.
+2. Mary got the apple.
+3. Sandra picked up the football.
+4. Daniel went back to the garden.
+5. Mary travelled to the kitchen.
+6. Sandra left the football.
+7. Sandra got the football.
+8. Daniel journeyed to the bathroom.
+9. Daniel travelled to the office.
+10. Sandra went to the kitchen.
+11. Daniel journeyed to the hallway.
+12. Mary left the apple.
+13. John went back to the office.
+14. Sandra dropped the football.
+15. John went to the bathroom.
+16. Mary took the football.
+17. Mary picked up the apple.
+18. Daniel grabbed the milk.
+19. Daniel put down the milk there.
+20. John travelled to the kitchen.
+21. Daniel got the milk.
+22. Daniel journeyed to the garden.
+23. Mary put down the apple.
+24. Mary discarded the football.
+25. Daniel journeyed to the hallway.
+26. Sandra got the football there.
+27. Mary journeyed to the office.
+28. John got the apple.
+29. Sandra moved to the garden.
+30. Daniel moved to the bedroom.
+31. John dropped the apple.
+32. Sandra travelled to the office.
+33. Sandra went back to the bathroom.
+34. Daniel moved to the kitchen.
+35. Daniel discarded the milk.
+36. Sandra travelled to the hallway.
+37. Where was the milk before the bedroom?",hallway,office,-0.0,-0.0
+445,3,3,"38. Mary went to the hallway.
+39. Daniel went to the bathroom.
+40. Where was the milk before the hallway?",garden,kitchen,-0.0,-0.0
+446,3,3,"41. John picked up the milk.
+42. Sandra dropped the football there.
+43. Where was the football before the hallway?",bathroom,garden,-0.0,-0.0
+447,3,3,"44. John put down the milk there.
+45. Daniel went to the bedroom.
+46. Where was the football before the office?",garden,garden,-0.0,-0.0
+448,3,3,"47. Daniel went back to the bathroom.
+48. Sandra took the football there.
+49. John picked up the apple there.
+50. Daniel went back to the hallway.
+51. Mary went back to the bedroom.
+52. Sandra put down the football there.
+53. Sandra journeyed to the bathroom.
+54. John dropped the apple.
+55. Daniel moved to the garden.
+56. Sandra went back to the bedroom.
+57. John picked up the milk.
+58. Mary journeyed to the garden.
+59. John travelled to the hallway.
+60. John moved to the bathroom.
+61. Where was the milk before the bathroom?",hallway,kitchen,-0.0,-0.0
+449,3,4,"1. Sandra journeyed to the bathroom.
+2. John went to the office.
+3. Daniel went to the office.
+4. Daniel got the milk.
+5. John went to the bedroom.
+6. John got the football.
+7. Daniel travelled to the hallway.
+8. John went to the hallway.
+9. John took the apple.
+10. Mary travelled to the office.
+11. Mary moved to the kitchen.
+12. John left the apple.
+13. John journeyed to the garden.
+14. John put down the football.
+15. Where was the football before the garden?",hallway,the correct answer is: hallway,-0.0,-0.0
+450,3,4,"16. Daniel travelled to the kitchen.
+17. Mary went back to the bathroom.
+18. Where was the football before the garden?",hallway,the correct answer is: hallway,-0.0,-0.0
+451,3,4,"19. Mary went to the garden.
+20. Daniel left the milk.
+21. Where was the football before the garden?",hallway,the correct answer is: hallway,-0.0,-0.0
+452,3,4,"22. John picked up the football.
+23. John moved to the bathroom.
+24. Where was the milk before the kitchen?",hallway,the correct answer is: office,-0.0,-0.0
+453,3,4,"25. Daniel grabbed the milk.
+26. Daniel dropped the milk.
+27. Daniel went to the office.
+28. John put down the football.
+29. John journeyed to the bedroom.
+30. John went back to the garden.
+31. John journeyed to the kitchen.
+32. Mary moved to the bathroom.
+33. Mary moved to the kitchen.
+34. John got the milk.
+35. Daniel went back to the hallway.
+36. Sandra took the football.
+37. Mary journeyed to the office.
+38. Daniel grabbed the apple there.
+39. Daniel put down the apple.
+40. John went back to the bathroom.
+41. John put down the milk.
+42. Daniel took the apple.
+43. Mary travelled to the kitchen.
+44. John went to the bedroom.
+45. Sandra dropped the football.
+46. John journeyed to the garden.
+47. John moved to the office.
+48. Sandra journeyed to the kitchen.
+49. Mary moved to the garden.
+50. Daniel journeyed to the garden.
+51. Daniel left the apple.
+52. Daniel picked up the apple.
+53. Daniel travelled to the kitchen.
+54. Daniel put down the apple there.
+55. Sandra took the apple.
+56. Daniel journeyed to the bathroom.
+57. Sandra discarded the apple.
+58. Sandra journeyed to the bedroom.
+59. Sandra went to the office.
+60. Daniel grabbed the milk there.
+61. Sandra went to the bathroom.
+62. Daniel got the football.
+63. Daniel moved to the garden.
+64. Mary travelled to the bedroom.
+65. Daniel dropped the milk there.
+66. Mary travelled to the garden.
+67. Mary travelled to the bedroom.
+68. John went back to the kitchen.
+69. John picked up the apple there.
+70. John put down the apple.
+71. Daniel went to the hallway.
+72. Sandra travelled to the kitchen.
+73. John went back to the bathroom.
+74. Daniel put down the football.
+75. Where was the football before the hallway?",garden,the correct answer is: garden,-0.0,-0.0
+454,5,0,"1. Mary travelled to the garden.
+2. Mary journeyed to the kitchen.
+3. Bill went back to the office.
+4. Bill journeyed to the hallway.
+5. Jeff went back to the bedroom.
+6. Fred moved to the hallway.
+7. Bill moved to the bathroom.
+8. Jeff went back to the garden.
+9. Jeff went back to the kitchen.
+10. Fred went back to the garden.
+11. Mary got the football there.
+12. Mary handed the football to Jeff.
+13. What did Mary give to Jeff?",football,13. football,0.48,0.88
+455,5,0,"14. Bill went back to the hallway.
+15. Jeff went back to the bedroom.
+16. What did Mary give to Jeff?",football,16. football,-0.0,-0.0
+456,5,0,"17. Fred moved to the bathroom.
+18. Mary picked up the milk there.
+19. What did Mary give to Jeff?",football,19. football,-0.0,-0.0
+457,5,0,"20. Fred travelled to the kitchen.
+21. Mary handed the milk to Fred.
+22. Who gave the milk to Fred?",mary,22. mary,-0.0,-0.0
+458,5,0,"23. Fred moved to the hallway.
+24. Jeff went to the office.
+25. Who did Mary give the milk to?",fred,25. fred,-0.0,-0.0
+459,5,1,"1. Jeff went to the bedroom.
+2. Mary journeyed to the kitchen.
+3. Mary journeyed to the bathroom.
+4. Bill moved to the kitchen.
+5. Mary moved to the garden.
+6. Bill went back to the office.
+7. Bill went to the kitchen.
+8. Mary went back to the bathroom.
+9. Mary travelled to the kitchen.
+10. Jeff moved to the office.
+11. Fred went to the hallway.
+12. Fred went back to the garden.
+13. Mary travelled to the office.
+14. Jeff took the apple there.
+15. Jeff discarded the apple.
+16. Mary went to the garden.
+17. Bill went back to the bathroom.
+18. Mary went to the office.
+19. Bill grabbed the milk there.
+20. Mary picked up the apple there.
+21. Jeff moved to the garden.
+22. Fred moved to the office.
+23. Mary dropped the apple.
+24. Fred took the football there.
+25. Fred handed the football to Mary.
+26. Fred picked up the apple there.
+27. Who received the football?",mary,mary,-0.0,-0.0
+460,5,1,"28. Mary travelled to the garden.
+29. Jeff journeyed to the hallway.
+30. What did Fred give to Mary?",football,football,-0.0,-0.0
+461,5,1,"31. Bill travelled to the bedroom.
+32. Mary put down the football.
+33. Fred went back to the garden.
+34. Fred handed the apple to Mary.
+35. Who received the apple?",mary,mary,-0.0,-0.0
+462,5,1,"36. Bill left the milk.
+37. Mary handed the apple to Fred.
+38. Who did Mary give the apple to?",fred,fred,-0.0,-0.0
+463,5,1,"39. Fred gave the apple to Mary.
+40. Fred travelled to the bathroom.
+41. What did Fred give to Mary?",apple,apple,-0.0,-0.0
+464,5,2,"1. Bill grabbed the apple there.
+2. Bill got the football there.
+3. Jeff journeyed to the bathroom.
+4. Bill handed the apple to Jeff.
+5. What did Bill give to Jeff?",apple,apple,-0.0,-0.0
+465,5,2,"6. Jeff handed the apple to Bill.
+7. Bill handed the apple to Jeff.
+8. What did Bill give to Jeff?",apple,apple,-0.0,-0.0
+466,5,2,"9. Jeff handed the apple to Bill.
+10. Bill handed the apple to Jeff.
+11. What did Bill give to Jeff?",apple,apple,-0.0,-0.0
+467,5,2,"12. Jeff put down the apple.
+13. Bill passed the football to Jeff.
+14. What did Bill give to Jeff?",apple,football,-0.0,-0.0
+468,5,2,"15. Jeff passed the football to Bill.
+16. Mary got the milk there.
+17. What did Bill give to Jeff?",apple,football,-0.0,-0.0
+469,5,3,"1. Mary took the football there.
+2. Bill went to the garden.
+3. Fred journeyed to the office.
+4. Mary put down the football there.
+5. Jeff journeyed to the kitchen.
+6. Mary took the football there.
+7. Mary passed the football to Jeff.
+8. Jeff travelled to the hallway.
+9. What did Mary give to Jeff?",football,football,-0.0,-0.0
+470,5,3,"10. Jeff journeyed to the garden.
+11. Bill journeyed to the office.
+12. Who received the football?",jeff,jeff,-0.0,-0.0
+471,5,3,"13. Fred went to the hallway.
+14. Fred grabbed the apple there.
+15. Mary journeyed to the bedroom.
+16. Mary went to the office.
+17. Mary moved to the hallway.
+18. Mary journeyed to the bathroom.
+19. Jeff discarded the football.
+20. Bill went to the garden.
+21. Fred journeyed to the garden.
+22. Jeff grabbed the football there.
+23. Fred left the apple.
+24. Jeff discarded the football.
+25. Mary got the milk there.
+26. Jeff got the apple there.
+27. Bill picked up the football there.
+28. Mary left the milk.
+29. Jeff journeyed to the kitchen.
+30. Fred moved to the bedroom.
+31. Bill travelled to the kitchen.
+32. Jeff discarded the apple.
+33. Bill passed the football to Jeff.
+34. Mary went to the garden.
+35. Who received the football?",jeff,jeff,-0.0,-0.0
+472,5,3,"36. Mary travelled to the office.
+37. Jeff passed the football to Bill.
+38. What did Jeff give to Bill?",football,football,-0.0,-0.0
+473,5,3,"39. Bill picked up the apple there.
+40. Bill handed the apple to Jeff.
+41. Who received the football?",bill,jeff,-0.0,-0.0
+474,5,4,"1. Jeff moved to the bathroom.
+2. Jeff moved to the garden.
+3. Fred journeyed to the bathroom.
+4. Jeff travelled to the hallway.
+5. Fred moved to the office.
+6. Jeff travelled to the bedroom.
+7. Jeff picked up the football there.
+8. Mary journeyed to the office.
+9. Fred moved to the kitchen.
+10. Fred travelled to the hallway.
+11. Jeff took the milk there.
+12. Fred travelled to the kitchen.
+13. Mary journeyed to the bathroom.
+14. Mary picked up the apple there.
+15. Jeff travelled to the kitchen.
+16. Jeff handed the football to Fred.
+17. What did Jeff give to Fred?",football,the answer is: football,-0.0,-0.0
+475,5,4,"18. Mary dropped the apple.
+19. Fred handed the football to Bill.
+20. What did Fred give to Bill?",football,the answer is: football,-0.0,-0.0
+476,5,4,"21. Fred travelled to the hallway.
+22. Bill handed the football to Jeff.
+23. Who gave the football?",bill,the answer is: bill,-0.0,-0.0
+477,5,4,"24. Mary went back to the kitchen.
+25. Jeff handed the football to Mary.
+26. Who received the football?",mary,the answer is: mary,-0.0,-0.0
+478,5,4,"27. Mary passed the football to Bill.
+28. Bill passed the football to Mary.
+29. What did Bill give to Mary?",football,the answer is: football,-0.0,-0.0
+,,,,,,0.40376569037656906,0.5271966527196653

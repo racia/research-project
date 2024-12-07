@@ -1,22 +1,11 @@
 import os
-
 import matplotlib.pyplot as plt
-
 from data.DataHandler import DataHandler
 
 
 class Statistics:
     def __init__(self):
         self.dh = DataHandler()
-
-    def check_or_create_directory(self, path: str):
-        """
-        Check if the directory exists, if not create it.
-
-        :param path: path to the directory
-        """
-        if not os.path.exists(path):
-            os.makedirs(path)
 
     def get_data_stats(self, data_path: str):
         """
@@ -25,7 +14,7 @@ class Statistics:
         :param data_path: path to the data
         :return:
         """
-        all_data = self.dh.read_data(path=data_path, train=True)
+        all_data = self.dh.read_data(path=data_path, split="train")
         processed_data = self.dh.process_data(all_data)
 
         self.analyse_task_questions(processed_data)
@@ -36,7 +25,7 @@ class Statistics:
 
         :param data: dictionary containing the data
         """
-        self.check_or_create_directory("../plots")
+        self.dh.check_or_create_directory("../plots")
         q_stats = {}
         c_stats = {}
         c_before_q = {}
@@ -44,10 +33,10 @@ class Statistics:
             q_stats[task] = []
             c_stats[task] = []
             c_before_q[task] = []
-            for id in data[task].keys():
-                q_stats[task].append(len(data[task][id]["question"]))
-                c_stats[task].append(len(data[task][id]["context"]))
-                for ix, line_num in enumerate(list(data[task][id]["question"].keys())):
+            for id_ in data[task].keys():
+                q_stats[task].append(len(data[task][id_]["question"]))
+                c_stats[task].append(len(data[task][id_]["context"]))
+                for ix, line_num in enumerate(list(data[task][id_]["question"].keys())):
                     if ix == 0:
                         c_before_q[task].append(line_num - 1)  # first question
                     else:

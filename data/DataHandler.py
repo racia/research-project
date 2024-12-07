@@ -1,5 +1,7 @@
+import csv
 import os
 import re
+from typing import List, Dict, Union, Literal
 
 
 class DataHandler:
@@ -7,8 +9,13 @@ class DataHandler:
     Class to handle data preprocessing.
     """
 
+    DataSplits = Literal["train", "valid", "test"]
+
     def __init__(self):
         self.task_map = {}
+        # would be useful to trace progress on runs when we take all samples per task,
+        # otherwise very hard to calculate
+        self.question_counter = 0
 
     def get_task_mapping(self, path) -> None:
         """
@@ -22,8 +29,8 @@ class DataHandler:
         for dir_path, dir_names, files in os.walk(path):
             for file in files:
                 if file.startswith("qa"):
-                    task_num = file.split("_")[0]
-                    if not task_num in self.task_map.keys():
+                    task_num = int(file.split("_")[0][2:])
+                    if task_num not in self.task_map.keys():
                         self.task_map[task_num] = []
                     self.task_map[task_num].append(os.path.join(dir_path, file))
 
@@ -34,65 +41,59 @@ class DataHandler:
         Parameters
         ----------
         :param file: file path
+
+        Returns
+        -------
+        :return: data = {id: lines}
         """
         data = {}
         line_count = 0
-        id = 0
+        id_ = 0
         with open(file, "rt", encoding="UTF-8") as f:
             lines = f.readlines()
             for line in lines:
                 curr_line_count = int(line.split(" ")[0])
                 if curr_line_count == line_count + 1:
-                    if id not in data.keys():
-                        data[id] = []
-                    data[id].append(line)
+                    if id_ not in data.keys():
+                        data[id_] = []
+                    data[id_].append(line)
                 else:
-                    id += 1
-                    if id not in data.keys():
-                        data[id] = []
-                    data[id].append(line)
+                    id_ += 1
+                    if id_ not in data.keys():
+                        data[id_] = []
+                    data[id_].append(line)
                 line_count = curr_line_count
         return data
 
-    def read_data(self, path: str, task=None, train=False) -> dict:
+    # into config
+    def read_data(self, path: str, split: DataSplits, tasks=None) -> Dict[str, dict]:
         """
         Read data from file.
 
         Parameters
         ----------
         :param path: path to the data
-        :param task: task number
-        :param train: training or testing data
+        :param split: should be of type DataSplits ("train", "valid", or "test")
+        :param tasks: list of task numbers to read
 
         Returns
         -------
-        :return: data
+        :return: data = {task_num: {task data}}
         """
         self.get_task_mapping(path)
 
-        if task is None:
-            all_lines = {}
-            for task_num in self.task_map.keys():
-                for file in self.task_map[task_num]:
-                    split = file.split("_")
-                    # training
-                    if split[-1] == "train.txt" and train:
-                        all_lines[task_num] = self.read_file(file)
-                    # testing
-                    elif split[-1] == "test.txt" and not train:
-                        all_lines[task_num] = self.read_file(file)
-            return all_lines
-        else:
-            lines = {task: []}
-            for file in self.task_map[task]:
-                split = file.split("_")
-                # training
-                if split[-1] == "train.txt" and train:
-                    lines[task] = self.read_file(file)
-                # testing
-                elif split[-1] == "test.txt" and not train:
-                    lines[task] = self.read_file(file)
-            return lines
+        all_tasks = {}
+        for task, files in self.task_map.items():
+            if tasks and task not in tasks:
+                continue
+            for file in files:
+                data_ext = file.split("_")[-1]
+                # split should be a string of DataSplits["train", "valid", "test"]
+                if split in data_ext:
+                    all_tasks[task] = self.read_file(file)
+                    print(f"File {file} is read.")
+
+        return all_tasks
 
     def process_data(self, data) -> dict:
         """
@@ -109,14 +110,14 @@ class DataHandler:
         processed_data = {}
         for task in data:
             processed_data[task] = {}
-            for id in data[task].keys():
-                processed_data[task][id] = {
+            for id_ in data[task].keys():
+                processed_data[task][id_] = {
                     "context": {},
                     "question": {},
                     "answer": {},
                     "supporting_fact": [],
                 }
-                for line in data[task][id]:
+                for line in data[task][id_]:
                     cleaned = line.strip()
                     # regex: group 1: line number: \d+\s+
                     # no group: space: \s+
@@ -132,31 +133,68 @@ class DataHandler:
                     context_match = re.match(context_line_pattern, cleaned)
                     if question_match:
                         line_num = int(question_match.group(1))
-                        processed_data[task][id]["question"][line_num] = (
+                        processed_data[task][id_]["question"][line_num] = (
                             question_match.group(2)
                         )
-                        processed_data[task][id]["answer"][line_num] = (
+                        processed_data[task][id_]["answer"][line_num] = (
                             question_match.group(3)
                         )
                         supporting_list = [
                             int(x) for x in question_match.group(4).split(" ")
                         ]
-                        processed_data[task][id]["supporting_fact"].append(
+                        processed_data[task][id_]["supporting_fact"].append(
                             supporting_list
                         )
                     elif context_match:
                         line_num = int(context_match.group(1))
-                        processed_data[task][id]["context"][line_num] = (
+                        processed_data[task][id_]["context"][line_num] = (
                             context_match.group(2)
                         )
                     else:
                         print("No match found for line: ", cleaned)
+                self.question_counter += len(processed_data[task][id_]["question"])
 
         return processed_data
+
+    @staticmethod
+    def check_or_create_directory(path: str):
+        """
+        Check if the directory exists, if not create it.
+
+        :param path: path to the directory
+        """
+        if not os.path.exists(path):
+            os.makedirs(path)
+
+    @staticmethod
+    def is_empty_file(file_path):
+        return os.path.isfile(file_path) and os.path.getsize(file_path) == 0
+
+    def save_output(self, path: str, headers: Union[list, tuple], data: list) -> None:
+        path = f"{path}.csv"
+        # with open(path, "a+", encoding="utf-8") as file:
+        #     writer = csv.writer(file, delimiter="\t")
+        #     if self.is_empty_file(path):
+        #         writer.writerow("\t".join(headers))
+        #     if type(data) is List[List]:
+        #         writer.writerows(data)
+        #     else:
+        #         writer.writerow("\t".join(data))
+
+        with open(path, "a+", encoding="utf-8") as file:
+            """
+            headers = ['first_name', 'last_name']
+            row = {'first_name': 'Lovely', 'last_name': 'Spam'}
+            writer.writerow(row)
+            """
+            writer = csv.DictWriter(file, fieldnames=headers)
+            if self.is_empty_file(path):
+                writer.writeheader()
+            [writer.writerow(row) for row in data]
 
 
 if __name__ == "__main__":
     dh = DataHandler()
-    data = dh.read_data("data/tasks_1-20_v1-2/en", task="qa3", train=True)
+    data = dh.read_data("data/tasks_1-20_v1-2/en", split="train", tasks=["qa3"])
     processed = dh.process_data(data)
     print(processed)
