@@ -23,7 +23,8 @@ class QATaskIterate:
         self.token = os.getenv("HUGGINGFACE")
 
         # TODO into config
-        self.model_name = "meta-llama/Meta-Llama-3-8B-Instruct"  # Use the appropriate model name from the Hugging Face Hub
+        # Use the appropriate model name from the Hugging Face Hub
+        self.model_name = "meta-llama/Meta-Llama-3-8B-Instruct"
         self.model = AutoModelForCausalLM.from_pretrained(
             self.model_name, device_map="auto", torch_dtype=torch.bfloat16
         )
@@ -32,7 +33,7 @@ class QATaskIterate:
         # pipe = pipeline("text-generation", model=model_name, torch_dtype=torch.bfloat16, device_map="auto")
 
         # TODO into config: prompt
-        self.prompt_ = [{"role": "system", "content": """You will be given a sequence of context sentences and \
+        self.system_prompt_ = [{"role": "system", "content": """You will be given a sequence of context sentences and \
 then asked questions about them. Please answer each such question to your best abilities. Example:
 Context sentences:
 John is on the playground.
@@ -47,8 +48,8 @@ Correct answer: Playground"""},]
         self.all_accuracies = []
         self.all_in_accuracies = []
 
-    def get_prompt(self) -> List[Dict[str, str]]:
-        return self.prompt_
+    def get_system_prompt(self) -> List[Dict[str, str]]:
+        return self.system_prompt_
 
     # TODO: generalize the three functions into one (make_data with possible parameters: train, eval, test)
     def make_test_data(self) -> Dict[int, Dict[str, List[str]]]:
@@ -60,7 +61,7 @@ Correct answer: Playground"""},]
         for r, d, f in os.walk(self.data_dir):
             #        print(r,d,f)
             for task_id in range(1, 21):
-                pattern_test = re.compile(f"qa{task_id}_[\w-]+_test\.txt")
+                pattern_test = re.compile(f"qa{task_id}_[\\w-]+_test\\.txt")
                 test = list(filter(lambda x: re.findall(pattern_test, x), f))
                 print(f"Loaded Test Data: {test[0]}\n")
                 test_data[task_id] = {}
@@ -75,7 +76,7 @@ Correct answer: Playground"""},]
         for r, d, f in os.walk(self.data_dir):
             #        print(r,d,f)
             for i in range(1, 21):
-                pattern_train = re.compile(f"qa{i}_[\w-]+_train\.txt")
+                pattern_train = re.compile(f"qa{i}_[\\w-]+_train\\.txt")
                 train = list(filter(lambda x: re.findall(pattern_train, x), f))
                 print(f"Loaded Train Data: {train[0]}\n")
                 train_data[i] = {}
@@ -131,16 +132,16 @@ Correct answer: Playground"""},]
         # 'references' now contains only refs
 
         if to_enumerate:
-            x = "\n".join([". ".join((str(i), sentence)) for i, sentence in list(sample.items())])
+            sample = "\n".join([". ".join((str(i), sentence)) for i, sentence in list(sample.items())])
         else:
             sample = list(sample.values())  # Strings of context and the question
-            x = "\n".join(sample)
+            sample = "\n".join(sample)
 
-        x = [{"role": "user", "content": part+"?"} for part in x.split("?") if part.strip()]
+        sample_parts = [{"role": "user", "content": part+"?"} for part in sample.split("?") if part.strip()]
 
-        print("Formatted sample in parts:\n", json.dumps(x, indent=2), "\n")
+        print("Formatted sample in parts:\n", json.dumps(sample_parts, indent=2), "\n")
         self.y_true.append(answers)  # Add the answer to y_true (without the references)
-        return x
+        return sample_parts
 
     @staticmethod
     def in_accuracy_score(true_values, predicted_values):
@@ -159,7 +160,6 @@ Correct answer: Playground"""},]
         task_results = []
         accuracy_task = []
         in_accuracy_task = []
-        print("Starting to query the model")
         # TODO into config: sample
         samples_per_task = 5
         for sample_inx in range(samples_per_task):
@@ -171,19 +171,22 @@ Correct answer: Playground"""},]
             # 1. Add sample
             sample_parts = self.format_sample(sample_inx, to_enumerate=False)
             """sample parts = [{"role": "user", "content": part+"?"}, {"role": "user", "content": part+"?"}]"""
+            # TODO move into format_sample
             [sample_results.append([task_id, sample_inx+1, sample_part["content"]]) for sample_part in sample_parts]
-            """sample_prompts = [[prompt, {"role": "user", "content": part+"?"}], 
-                                [prompt, {"role": "user", "content": part+"?"}]]"""
-            sample_prompts = [self.get_prompt() + [part] for part in sample_parts]
-            # 2. Create generation prompt
-            formatted_prompts = [self.tokenizer.apply_chat_template(
-                part, tokenize=False, add_generation_prompt=True
-            )
-                for part in sample_prompts]
+            """sample_prompt = [system_prompt, 
+                                {"role": "user", "content": part+"?"},
+                                {"role": "assistant", "content": answer}]"""
+            sample_prompt = self.get_system_prompt().copy()
 
             self.y_pred.append([])
-            for formatted_prompt in formatted_prompts:
-                print("Formatted prompt:\n", formatted_prompt, end="\n")
+            for sample_part in sample_parts:
+                # 2. Create generation prompt
+                sample_prompt += [sample_part]
+                # TODO try with continue_final_message instead of add_generation_prompt
+                formatted_prompt = self.tokenizer.apply_chat_template(
+                    sample_prompt, tokenize=False, add_generation_prompt=True
+                )
+                print("Formatted prompt:", formatted_prompt, sep="\n", end="\n")
                 # 3. Tokenize
                 inputs = self.tokenizer(
                     formatted_prompt, return_tensors="pt", add_special_tokens=True
@@ -191,8 +194,6 @@ Correct answer: Playground"""},]
                 inputs = {
                     key: tensor.to(self.model.device) for key, tensor in inputs.items()
                 }
-                # display_inputs = {k: str(v[0].tolist()) for k, v in inputs.items()}
-                # print("Tokenized inputs:\n", json.dumps(display_inputs, indent=4), end="\n\n")
                 # 4. Generate text
                 outputs = self.model.generate(
                     **inputs,
@@ -206,15 +207,17 @@ Correct answer: Playground"""},]
                 #     outputs[0][inputs["input_ids"].size(1):], skip_special_tokens=True
                 # )
                 decoded_output = "\n".join([self.tokenizer.decode(outputs[i][inputs["input_ids"].size(1):],
-                                                                   skip_special_tokens=True)
+                                                                  skip_special_tokens=True)
                                             for i in range(len(outputs))])
                 # ans = response[0]["generated_text"][-1]["content"] # Obtain answer
                 # the model is asked question by question, so that we don't need to parse the answer
                 self.y_pred[-1].append(decoded_output.lower())
                 print("Model's output:", decoded_output, end="\n\n")  # Print qa
-                # prompt = decoded_output #Update history
+                # 6. Add the model's output for a sample part to conversation
+                sample_prompt += [{"role": "assistant", "content": decoded_output}]
 
-            [result.extend([true, pred]) for result, true, pred in zip(sample_results, self.y_true[-1], self.y_pred[-1])]
+            [result.extend([true, pred]) for result, true, pred in
+             zip(sample_results, self.y_true[-1], self.y_pred[-1])]
             task_results.extend(sample_results)
 
             accuracy_sample = accuracy_score(self.y_true[-1], self.y_pred[-1])
@@ -229,7 +232,7 @@ Correct answer: Playground"""},]
 
             print("______________________________")
 
-        print("\n\nModel's predictions for the sample:\n\n\tGOLDEN\t\tPREDICTED\n")
+        print("\n\nModel's predictions for the sample:", "\tGOLDEN\t\tPREDICTED\n", sep="\n\n")
         y_pred_joined = [[prediction.replace("\n", " ") for prediction in part_predictions]
                          for part_predictions in self.y_pred]
         [print(f"\t{golden}\t\t{prediction}") for golden, prediction in zip(self.y_true[-1], y_pred_joined[-1])]
@@ -240,7 +243,8 @@ Correct answer: Playground"""},]
 
         in_accuracy = round(sum(in_accuracy_task) / len(in_accuracy_task), 2)
         print(f"The model's output containing the correct one:", in_accuracy)
-        # print("Generally, the model's output contains the correct one:", round(sum(self.all_in_accuracies) / len(self.all_in_accuracies), 2))
+        # print("Generally, the model's output contains the correct one:",
+        # round(sum(self.all_in_accuracies) / len(self.all_in_accuracies), 2))
 
         print("______________________________")
 
@@ -265,7 +269,7 @@ if __name__ == "__main__":
         qa_task_iterate.make_train_data(),
         qa_task_iterate.make_test_data(),
     )
-    print("The data is loaded successfully")
+    print("The data is loaded successfully", end="\n")
     assert len(train_data.items()) == len(test_data.items())
 
     # into config: output path
@@ -274,6 +278,7 @@ if __name__ == "__main__":
         writer = csv.writer(file, delimiter="\t")
         writer.writerow(headers)
 
+    print("Starting to query the model", end="\n")
     # TODO into config: task ids
     for task_num in range(1, 21):
         qa_task_iterate.make_task_data(test_data, task_num)  # Task n°1
