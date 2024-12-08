@@ -52,6 +52,9 @@ class QATasksBaseline:
         for true, prediction in zip(true_values, predicted_values):
             if true.lower() in prediction.lower():
                 true_in_predicted += 1
+            # for partial answer of questions with two supporting facts
+            elif prediction.lower() in true.lower():
+                true_in_predicted += 0.5
         if true_in_predicted == 0:
             return 0
         return true_in_predicted / len(true_values)
@@ -160,27 +163,25 @@ class QATasksBaseline:
             part = "\n".join(part)
         return {"role": role, "content": part}
 
-    @staticmethod
-    def is_question(sentence):
-        return "?" in sentence
-
     def sample_into_parts(self, sample: Dict[str, Dict[int, str]]) -> List[List[str]]:
         """
 
         :param sample:
         :return:
         """
+
         sample_ordered = sorted(list(sample["context"].items()) + list(sample["question"].items()))
+        is_question = (lambda sentence: "?" in sentence)
         parts = [[]]
 
         for line_id, line in sample_ordered:
-            if not self.is_question(line) and self.to_enumerate["context"]:
+            if not is_question(line) and self.to_enumerate["context"]:
                 line = f"{line_id}. {line}"
-            elif self.is_question(line) and self.to_enumerate["question"]:
+            elif is_question(line) and self.to_enumerate["question"]:
                 line = f"{line_id}. {line}"
 
             parts[-1].append(line)
-            if self.is_question(line) and line_id != len(sample_ordered):
+            if is_question(line) and line_id != len(sample_ordered):
                 parts.append([])
 
         return parts
@@ -321,8 +322,8 @@ class QATasksBaseline:
             # y_pred_task.extend(y_pred_sample)
             self.y_pred.extend(y_pred_sample)
 
-            print("Model's predictions for the sample:", "\t{:<14s} PREDICTED".format("GOLDEN"), sep="\n\n", end="\n\n")
-            [print("\t{0:<14s} {1}".format(true, predicted.replace("\n", "\t")))
+            print("Model's predictions for the sample:", "\t{:<18s} PREDICTED".format("GOLDEN"), sep="\n\n", end="\n\n")
+            [print("\t{0:<18s} {1}".format(true, predicted.replace("\n", "\t")))
              for true, predicted in zip(y_true_sample, y_pred_sample)]
             print()
 
@@ -332,7 +333,7 @@ class QATasksBaseline:
 
             soft_accuracy_sample = self.soft_accuracy_score(y_true_sample, y_pred_sample)
             soft_accuracies_task.append(soft_accuracy_sample)
-            print(f"Soft accuracy per task {sample_id_}:", soft_accuracy_sample, end="\n\n")
+            print(f"Soft accuracy per sample {sample_id_}:", soft_accuracy_sample, end="\n\n\n")
 
         print("\n- TASK RESULTS -", end="\n\n")
 
@@ -480,7 +481,7 @@ is: Playground""",
             "soft_accuracy",
         ],
         "run_splits": {"train": False, "valid": True, "test": False},
-        "task_ids": [8],  # list(range(1, 21)),  # List[str]|None to get all
+        "task_ids": list(range(1, 21)),  # List[str]|None to get all
         "samples_per_task": 5,
         # if to add line numbers to the sentences in the prompt
         "to_enumerate": {"context": True, "question": False},
