@@ -17,17 +17,13 @@ class QATasksBaseline:
 
     """
     def __init__(self):
-        # self.home_dir = Path.home()
-        # self.data_dir = f"{self.home_dir}/tasks_1-20_v1-2/en/"
-
         self.token = os.getenv("HUGGINGFACE")
         self.model = None
         self.tokenizer = None
         self.system_prompt_: list = []
-
-        # self.task_data = []
-        self.to_enumerate: bool = True  # add to config
         self.y_true, self.y_pred = [], []
+
+        self.to_enumerate: dict = {}
         self.question_id = 0
         self.total_samples = 0
         self.total_tasks = 0
@@ -164,6 +160,10 @@ class QATasksBaseline:
             part = "\n".join(part)
         return {"role": role, "content": part}
 
+    @staticmethod
+    def is_question(sentence):
+        return "?" in sentence
+
     def sample_into_parts(self, sample: Dict[str, Dict[int, str]]) -> List[List[str]]:
         """
 
@@ -172,11 +172,15 @@ class QATasksBaseline:
         """
         sample_ordered = sorted(list(sample["context"].items()) + list(sample["question"].items()))
         parts = [[]]
+
         for line_id, line in sample_ordered:
-            if self.to_enumerate:
+            if not self.is_question(line) and self.to_enumerate["context"]:
                 line = f"{line_id}. {line}"
+            elif self.is_question(line) and self.to_enumerate["question"]:
+                line = f"{line_id}. {line}"
+
             parts[-1].append(line)
-            if "?" in line and line_id != len(sample_ordered):
+            if self.is_question(line) and line_id != len(sample_ordered):
                 parts.append([])
 
         return parts
@@ -239,17 +243,15 @@ class QATasksBaseline:
         """
         # results to save into the csv file
         task_results = []
-        # y_true_task = []
-        # y_pred_task = []
         accuracies_task = []
         soft_accuracies_task = []
 
         # run per sample
         for sample_id, sample_data in list(task_data.items())[:no_samples]:
-            y_true_sample = [true.lower() for true in sample_data["answer"].values()]
-            # y_true_task.extend(y_true_sample)
+            y_true_sample = [", ".join(true).lower() for true in sample_data["answer"].values()]
             self.y_true.extend(y_true_sample)
             y_pred_sample = []
+            sample_id_ = sample_id + 1
 
             # 1. Reformat the data into chunks
             sample_parts = self.sample_into_parts(sample_data)
@@ -264,7 +266,7 @@ class QATasksBaseline:
                 print(
                     "\n-* "
                     f"TASK {task_id}/{self.total_tasks} | "
-                    f"SAMPLE {sample_id + 1}/{no_samples} | "
+                    f"SAMPLE {sample_id_}/{no_samples} | "
                     f"PART {part_id}/{len(sample_parts)} | "
                     f"Run ID {self.question_id}"
                     " *-",
@@ -304,18 +306,13 @@ class QATasksBaseline:
                 # the model is asked question by question, so that we don't need to parse the answer
                 y_pred_sample.append(decoded_output)
 
-                print("sample_part", sample_part)
-                print("\n".join(sample_part), "\n".join(sample_part))
-
                 part_result = {
                     "id": self.question_id,
                     "task_id": task_id,
-                    "sample_no": sample_id,
+                    "sample_no": sample_id_,
                     "task": "\n".join(sample_part),
                     "true_result": y_true,
                     "model_result": decoded_output,
-                    "accuracy": -0.0,
-                    "soft_accuracy": -0.0,
                 }
                 # part_result = [self.question_id, task_id, sample_id,
                 #                "\n".join(sample_part), y_true, decoded_output,]
@@ -331,11 +328,11 @@ class QATasksBaseline:
 
             accuracy_sample = accuracy_score(y_true_sample, y_pred_sample)
             accuracies_task.append(accuracy_sample)
-            print(f"Accuracy score per sample {sample_id}:", accuracy_sample)
+            print(f"Accuracy score per sample {sample_id_}:", accuracy_sample)
 
             soft_accuracy_sample = self.soft_accuracy_score(y_true_sample, y_pred_sample)
             soft_accuracies_task.append(soft_accuracy_sample)
-            print(f"Soft accuracy per task {sample_id}:", soft_accuracy_sample, end="\n\n")
+            print(f"Soft accuracy per task {sample_id_}:", soft_accuracy_sample, end="\n\n")
 
         print("\n- TASK RESULTS -", end="\n\n")
 
@@ -471,7 +468,7 @@ Please answer each such question by only providing the correct answer. \
 For example: The correct answer to: John is on the playground. Mary is in the kitchen. Where is John? \
 is: Playground""",
         "results_path": "results/",
-        # into variables
+        # into variables?
         "headers": [
             "id",
             "task_id",
@@ -483,20 +480,21 @@ is: Playground""",
             "soft_accuracy",
         ],
         "run_splits": {"train": False, "valid": True, "test": False},
-        "task_ids": list(range(1, 21)),  # List[str]|None to get all
+        "task_ids": [8],  # list(range(1, 21)),  # List[str]|None to get all
         "samples_per_task": 5,
-        "to_enumerate": True,
+        # if to add line numbers to the sentences in the prompt
+        "to_enumerate": {"context": True, "question": False},
 
     }
 
-    qa_task_baseline = QATasksBaseline()
-    qa_task_baseline.set_system_prompt(conf["prompt_text"])
-    qa_task_baseline.load_model(model_name=conf["model_name"])
+    baseline = QATasksBaseline()
+    baseline.set_system_prompt(conf["prompt_text"])
+    baseline.load_model(model_name=conf["model_name"])
     print("The model is loaded successfully")
 
     data = DataHandler()
 
-    qa_task_baseline.total_tasks = 0
+    baseline.total_tasks = 0
     data_in_splits = {}
 
     for split, to_fetch in conf["run_splits"].items():
@@ -505,17 +503,17 @@ is: Playground""",
                 conf["home_dir"] + conf["data_path"], split=split, tasks=conf["task_ids"]
             )
             processed_data = data.process_data(data_tasks)
-            qa_task_baseline.total_tasks += len(data_tasks)
+            baseline.total_tasks += len(data_tasks)
             data_in_splits[split] = processed_data
 
     print("The data is loaded successfully", end="\n\n")
     print("Starting to query the model", end="\n\n")
 
+    baseline.to_enumerate = conf["to_enumerate"]
     for split, tasks in data_in_splits.items():
         for task_id, task in tasks.items():
-            task_result = qa_task_baseline.iterate_task(task_id=task_id, task_data=task,
-                                                         no_samples=conf["samples_per_task"])
-            print("task_result", json.dumps(task_result, indent=4))
+            task_result = baseline.iterate_task(task_id=task_id, task_data=task,
+                                                no_samples=conf["samples_per_task"])
             data.save_output(
                 path=conf["results_path"] + conf["prompt_num"],
                 headers=conf["headers"], data=task_result
@@ -535,19 +533,18 @@ is: Playground""",
 
     print("\n- RUN RESULTS -", end="\n\n")
 
-    print("Processed", qa_task_baseline.total_tasks, "tasks in total with", conf["samples_per_task"], "samples in each")
-    print("Total samples processed", qa_task_baseline.total_tasks * conf["samples_per_task"], end="\n\n")
+    print("Processed", baseline.total_tasks, "tasks in total with", conf["samples_per_task"], "samples in each")
+    print("Total samples processed", baseline.total_tasks * conf["samples_per_task"], end="\n\n")
 
-    qa_task_baseline.accuracy = accuracy_score(qa_task_baseline.y_true, qa_task_baseline.y_pred)
-    print("General accuracy:", qa_task_baseline.accuracy)
+    baseline.accuracy = accuracy_score(baseline.y_true, baseline.y_pred)
+    print("General accuracy:", baseline.accuracy)
 
-    qa_task_baseline.soft_accuracy = qa_task_baseline.soft_accuracy_score(qa_task_baseline.y_true,
-                                                                          qa_task_baseline.y_pred)
-    print("General soft accuracy:", qa_task_baseline.soft_accuracy)
+    baseline.soft_accuracy = baseline.soft_accuracy_score(baseline.y_true, baseline.y_pred)
+    print("General soft accuracy:", baseline.soft_accuracy)
 
     # row = [""] * (len(conf["headers"]) - 2) + [qa_task_baseline.accuracy, qa_task_baseline.soft_accuracy]
-    row = [{"accuracy": qa_task_baseline.accuracy,
-            "soft_accuracy": qa_task_baseline.soft_accuracy}]
+    row = [{"accuracy": baseline.accuracy,
+            "soft_accuracy": baseline.soft_accuracy}]
     data.save_output(
         path=conf["results_path"] + conf["prompt_num"],
         headers=conf["headers"], data=row

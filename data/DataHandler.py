@@ -105,7 +105,35 @@ class DataHandler:
 
         Returns
         -------
-        :return: processed data
+        :return: processed data of type
+        Dict[str, Dict[str, Dict[str, Union[Dict[str, str], Dict[str, List[str]], List[List[int]]]]]:
+        {
+            task_id: str
+                {
+                sample_id: str = 0-n
+                    {
+                    "context"
+                        {
+                        line_num: str
+                        sentence: str
+                        }
+                    "question"
+                        {
+                        line_num: str
+                        question: str
+                        }
+                    "answer"
+                        {
+                        line_num: str
+                        answers: List[str]
+                        }
+                    "supporting_fact"
+                        [
+                        [int], [int, int]
+                        ]
+                    }
+                }
+        }
         """
         processed_data = {}
         for task in data:
@@ -123,10 +151,10 @@ class DataHandler:
                     # no group: space: \s+
                     # group 2: question: .+?
                     # no group: space: \s+
-                    # group 3: answer: \w+
+                    # group 3: answer: \w+(?:,\w+)?     # there might be two answers (see task 8)
                     # no group: space: \s+
                     # group 4: supporting fact: ((?:\d+\s*)+)
-                    question_line_pattern = r"^(\d+)\s+(.+?)\s+(\w+)\s+((?:\d+\s*)+)$"
+                    question_line_pattern = r"^(\d+)\s+(.+?)\s+(\w+(?:,\w+)?)\s+((?:\d+\s*)+)$"
                     question_match = re.match(question_line_pattern, cleaned)
 
                     context_line_pattern = r"^(\d+\s+)(.+)$"
@@ -137,7 +165,8 @@ class DataHandler:
                             question_match.group(2)
                         )
                         processed_data[task][id_]["answer"][line_num] = (
-                            question_match.group(3)
+                            # there might be two answers
+                            question_match.group(3).split(",")
                         )
                         supporting_list = [
                             int(x) for x in question_match.group(4).split(" ")
@@ -187,7 +216,7 @@ class DataHandler:
             row = {'first_name': 'Lovely', 'last_name': 'Spam'}
             writer.writerow(row)
             """
-            writer = csv.DictWriter(file, fieldnames=headers)
+            writer = csv.DictWriter(file, fieldnames=headers, delimiter="\t")
             if self.is_empty_file(path):
                 writer.writeheader()
             [writer.writerow(row) for row in data]
