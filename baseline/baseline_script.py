@@ -7,6 +7,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from typing import List, Dict, Union
 
 import sys
+
 sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
 from data.DataHandler import DataHandler
 
@@ -16,6 +17,7 @@ class QATasksBaseline:
     """
 
     """
+
     def __init__(self):
         self.token = os.getenv("HUGGINGFACE")
         self.model = None
@@ -41,7 +43,7 @@ class QATasksBaseline:
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
 
     def set_system_prompt(self, prompt):
-        self.system_prompt_ = [{"role": "system", "content": prompt},]
+        self.system_prompt_ = [{"role": "system", "content": prompt}, ]
 
     def get_system_prompt(self) -> List[Dict[str, str]]:
         return self.system_prompt_
@@ -213,8 +215,28 @@ class QATasksBaseline:
         #
         # return parts
 
-    def iterate_task(self, task_id: Union[int, str],
-                     task_data: Dict[int, Dict[str, Dict[int, str]]], no_samples: int = -1) -> list:
+    @staticmethod
+    def expand_cardinal_points(abbr_news: List[str]) -> List[str]:
+        expanded_news = []
+        for abbr in abbr_news:
+            match abbr:
+                case "n":
+                    expanded_news.append("north")
+                case "e":
+                    expanded_news.append("east")
+                case "w":
+                    expanded_news.append("west")
+                case "s":
+                    expanded_news.append("south")
+                case _:
+                    expanded_news.append(abbr)
+        return expanded_news
+
+    def iterate_task(
+            self, task_id: int,
+            task_data: Dict[int, Dict[str, Dict[int, str] | Dict[int, List[str]] | Dict[int, List[List[int]]]]],
+            no_samples: int = -1
+    ) -> list:
         """
 
 
@@ -231,8 +253,8 @@ class QATasksBaseline:
                             line_number: line,
                             line_number: line, ...}
                         "answer": {
-                            line_number: answer,
-                            line_number: answer, ...}
+                            line_number: [answers],
+                            line_number: [answers], ...}
                         "supporting_fact": [[line_number_first_answer, ...],
                                             [line_number_second_answer, ...],
                                             ...]
@@ -249,7 +271,8 @@ class QATasksBaseline:
 
         # run per sample
         for sample_id, sample_data in list(task_data.items())[:no_samples]:
-            y_true_sample = [", ".join(true).lower() for true in sample_data["answer"].values()]
+            expanded_answers = [self.expand_cardinal_points(ans) for ans in sample_data["answer"].values()]
+            y_true_sample = [", ".join(true).lower() for true in expanded_answers]
             self.y_true.extend(y_true_sample)
             y_pred_sample = []
             sample_id_ = sample_id + 1
@@ -261,7 +284,6 @@ class QATasksBaseline:
 
             # run a conversation with one question at a time
             for sample_part, y_true in zip(sample_parts, y_true_sample):
-
                 self.question_id += 1
                 part_id += 1
                 print(
@@ -481,7 +503,7 @@ is: Playground""",
             "soft_accuracy",
         ],
         "run_splits": {"train": False, "valid": True, "test": False},
-        "task_ids": list(range(1, 21)),  # List[str]|None to get all
+        "task_ids": [19],  # list(range(1, 21)),  # List[str]|None to get all
         "samples_per_task": 5,
         # if to add line numbers to the sentences in the prompt
         "to_enumerate": {"context": True, "question": False},
