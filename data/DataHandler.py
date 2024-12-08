@@ -1,7 +1,7 @@
 import csv
 import os
 import re
-from typing import List, Dict, Union, Literal
+from typing import Dict, Union, Literal
 
 
 class DataHandler:
@@ -13,8 +13,7 @@ class DataHandler:
 
     def __init__(self):
         self.task_map = {}
-        # would be useful to trace progress on runs when we take all samples per task,
-        # otherwise very hard to calculate
+        # very hard to calculate when in another place
         self.question_counter = 0
 
     def get_task_mapping(self, path) -> None:
@@ -200,22 +199,21 @@ class DataHandler:
         return os.path.isfile(file_path) and os.path.getsize(file_path) == 0
 
     def save_output(self, path: str, headers: Union[list, tuple], data: list) -> None:
-        path = f"{path}.csv"
-        # with open(path, "a+", encoding="utf-8") as file:
-        #     writer = csv.writer(file, delimiter="\t")
-        #     if self.is_empty_file(path):
-        #         writer.writerow("\t".join(headers))
-        #     if type(data) is List[List]:
-        #         writer.writerows(data)
-        #     else:
-        #         writer.writerow("\t".join(data))
+        """
 
-        with open(path, "a+", encoding="utf-8") as file:
-            """
+        This is how DictWriter works:
             headers = ['first_name', 'last_name']
             row = {'first_name': 'Lovely', 'last_name': 'Spam'}
             writer.writerow(row)
-            """
+
+        :param path:
+        :param headers:
+        :param data:
+        :return:
+        """
+        path = f"{path}.csv"
+
+        with open(path, "a+", encoding="utf-8") as file:
             writer = csv.DictWriter(file, fieldnames=headers, delimiter="\t")
             if self.is_empty_file(path):
                 writer.writeheader()
