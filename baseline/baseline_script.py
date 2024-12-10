@@ -1,21 +1,27 @@
 from __future__ import annotations
+
 import os
+import sys
 from pathlib import Path
+from typing import List, Dict
+from argparse import ArgumentParser
+
 import torch
+from hydra import compose, initialize
+from hydra.core.config_store import ConfigStore
 from sklearn.metrics import accuracy_score
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from typing import List, Dict
-
-import sys
 
 sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
 from data.DataHandler import DataHandler
+from data.Statistics import Statistics as St
+from config.baseline_config import BaselineConfig
 
 
 class QATasksBaseline:
     # TODO: add documentation for the class and the methods
     """
-
+    QATasksBaseline runs the model
     """
 
     def __init__(self):
@@ -47,19 +53,6 @@ class QATasksBaseline:
 
     def get_system_prompt(self) -> List[Dict[str, str]]:
         return self.system_prompt_
-
-    @staticmethod
-    def soft_accuracy_score(true_values: List[str], predicted_values: List[str]) -> float:
-        true_in_predicted = 0
-        for true, prediction in zip(true_values, predicted_values):
-            if true.lower() in prediction.lower():
-                true_in_predicted += 1
-            # for partial answer of questions with two supporting facts
-            elif prediction.lower() in true.lower():
-                true_in_predicted += 0.5
-        if true_in_predicted == 0:
-            return 0.0
-        return true_in_predicted / len(true_values)
 
     @staticmethod
     def format_prompt_part(part: list | str, role: str) -> dict:
@@ -115,7 +108,9 @@ class QATasksBaseline:
     def iterate_task(
             self, task_id: int,
             task_data: Dict[int, Dict[str, Dict[int, str] | Dict[int, List[str]] | Dict[int, List[List[int]]]]],
-            no_samples: int = -1
+            no_samples: int,
+            max_new_tokens: int,
+            temperature: float
     ) -> List[Dict[str, int | str]]:
         """
 
@@ -141,6 +136,8 @@ class QATasksBaseline:
             }
         }
         :param no_samples: number of samples to run per task
+        :param max_new_tokens: the maximum number of tokens the model will produce in its answer (cut-off)
+        :param temperature: adjust the consistency of model's answers (0.1 by default)
 
         :return:
         """
@@ -191,8 +188,8 @@ class QATasksBaseline:
                 # 4. Generate text
                 outputs = self.model.generate(
                     **inputs,
-                    max_new_tokens=12,
-                    temperature=0.1,
+                    max_new_tokens=max_new_tokens,
+                    temperature=temperature,
                     pad_token_id=self.tokenizer.eos_token_id,
                 )
 
@@ -230,7 +227,7 @@ class QATasksBaseline:
             accuracies_task.append(accuracy_sample)
             print(f"Accuracy score per sample {sample_id_}:", accuracy_sample)
 
-            soft_accuracy_sample = round(self.soft_accuracy_score(y_true_sample, y_pred_sample), 2)
+            soft_accuracy_sample = round(St.soft_accuracy_score(y_true_sample, y_pred_sample), 2)
             soft_accuracies_task.append(soft_accuracy_sample)
             print(f"Soft accuracy per sample {sample_id_}:", soft_accuracy_sample, end="\n\n\n")
 
@@ -251,92 +248,95 @@ class QATasksBaseline:
         print(f"The work on task {task_id} is finished successfully")
         return task_results
 
+    def run(self, cfg: BaselineConfig) -> None:
+        data = DataHandler()
+
+        results_path = cfg.repository.path + cfg.results.path + cfg.prompt.name
+
+        if cfg.results.print_to_file:
+            log_file, results_path = data.redirect_printing_to_file(path=results_path)
+
+        data.set_results_details(results_path=results_path, headers=cfg.results.headers)
+
+        self.set_system_prompt(prompt=cfg.prompt.text)
+        self.load_model(model_name=cfg.model.name)
+        print("The model is loaded successfully")
+
+        self.total_tasks = 0
+        data_in_splits = {}
+
+        for split, to_fetch in cfg.data.splits.items():
+            if to_fetch:
+                data_tasks = data.read_data(path=cfg.data.path, split=split,
+                                            tasks=cfg.data.task_ids)
+                processed_data = data.process_data(data=data_tasks)
+                self.total_tasks += len(data_tasks)
+                data_in_splits[split] = processed_data
+
+        print("The data is loaded successfully", end="\n\n")
+        print("Starting to query the model", end="\n\n")
+
+        self.to_enumerate = cfg.data.to_enumerate
+        for split, tasks in data_in_splits.items():
+            for task_id, task in tasks.items():
+                task_result = self.iterate_task(
+                    task_id=task_id, task_data=task,
+                    no_samples=cfg.data.samples_per_task,
+                    max_new_tokens=cfg.model.max_new_tokens,
+                    temperature=cfg.model.temperature
+                )
+                data.save_output(data=task_result)
+                print("______________________________", end="\n\n")
+
+        print("The run is finished successfully")
+
+        print("\n- RUN RESULTS -", end="\n\n")
+
+        print("Processed", self.total_tasks, "tasks in total with",
+              cfg.data.samples_per_task, "samples in each")
+        print("Total samples processed",
+              self.total_tasks * cfg.data.samples_per_task, end="\n\n")
+
+        self.accuracy = round(accuracy_score(self.y_true, self.y_pred), 2)
+        print("General accuracy:", self.accuracy)
+
+        self.soft_accuracy = round(St.soft_accuracy_score(self.y_true, self.y_pred), 2)
+        print("General soft accuracy:", self.soft_accuracy)
+
+        row = [{"accuracy": self.accuracy,
+                "soft_accuracy": self.soft_accuracy}]
+        data.save_output(data=row)
+
+        if cfg.results.print_to_file:
+            # console printing must be returned
+            # if printing was redirected to logs created at the beginning of the script
+            # 'log_file' will exist in that case as well
+            data.return_console_printing(log_file)
+
 
 if __name__ == "__main__":
-    # TODO?: move prompt into files
-    # TODO: add to config if we want to print certain data (level of messages: INFO, CRITICAL and so on)
-    # TODO: add dataclasses for defining complex structures of data
+    # TODO: add to config if we want to print certain data
+    #  (level of messages: INFO, CRITICAL and so on)
 
-    # config dict
-    conf = {
-        "model_name": "meta-llama/Meta-Llama-3-8B-Instruct",
-        "home_dir": str(Path(Path.cwd()).parents[1]),  # for data to be stored next to the research project
-        "data_path": "/tasks_1-20_v1-2/en-valid/",
-        "prompt_num": "prompt_1",
-        "prompt_text": """You will be given a sequence of context sentences and then asked questions about them. \
-For example:
-Context sentences: John is on the playground. Mary is in the kitchen.
-Question: Where is John?
-Answer: Playground""",
-        "results_path": "results/",
-        # TODO into variables?
-        "headers": [
-            "id",
-            "task_id",
-            "sample_no",
-            "task",
-            "true_result",
-            "model_result",
-            "accuracy",
-            "soft_accuracy",
-        ],
-        "run_splits": {"train": False, "valid": True, "test": False},
-        "task_ids": list(range(1, 21)),  # List[str]|None to get all
-        "samples_per_task": 5,
-        # if to add line numbers to the sentences in the prompt
-        "to_enumerate": {"context": True, "question": False},
+    parser = ArgumentParser()
+    parser.add_argument("-c", "--config", dest="config",
+                        help="use the settings from the config file of given name "
+                             "(with relative path from the config directory)",
+                        metavar="CONFIG")
+    args = parser.parse_args()
 
-    }
+    cs = ConfigStore.instance()
+    cs.store(name="config", node=BaselineConfig)
 
-    baseline = QATasksBaseline()
-    baseline.set_system_prompt(conf["prompt_text"])
-    baseline.load_model(model_name=conf["model_name"])
-    print("The model is loaded successfully")
+    with initialize(version_base=None, config_path="../config"):
+        # possible TODO: to change output directory to relative:
+        # ${hydra:runtime.cwd}/desired/output/directory
+        if args.config:
+            cfg = compose(config_name=args.config)
+        else:
+            # for cases of running the script interactively
+            cfg = compose(config_name="baseline_config")
 
-    data = DataHandler()
+        baseline = QATasksBaseline()
+        baseline.run(cfg)
 
-    baseline.total_tasks = 0
-    data_in_splits = {}
-
-    for split, to_fetch in conf["run_splits"].items():
-        if to_fetch:
-            data_tasks = data.read_data(
-                conf["home_dir"] + conf["data_path"], split=split, tasks=conf["task_ids"]
-            )
-            processed_data = data.process_data(data_tasks)
-            baseline.total_tasks += len(data_tasks)
-            data_in_splits[split] = processed_data
-
-    print("The data is loaded successfully", end="\n\n")
-    print("Starting to query the model", end="\n\n")
-
-    baseline.to_enumerate = conf["to_enumerate"]
-    for split, tasks in data_in_splits.items():
-        for task_id, task in tasks.items():
-            task_result = baseline.iterate_task(task_id=task_id, task_data=task,
-                                                no_samples=conf["samples_per_task"])
-            data.save_output(
-                path=conf["results_path"] + conf["prompt_num"],
-                headers=conf["headers"], data=task_result
-            )
-            print("______________________________", end="\n\n")
-
-    print("The run is finished successfully")
-
-    print("\n- RUN RESULTS -", end="\n\n")
-
-    print("Processed", baseline.total_tasks, "tasks in total with", conf["samples_per_task"], "samples in each")
-    print("Total samples processed", baseline.total_tasks * conf["samples_per_task"], end="\n\n")
-
-    baseline.accuracy = round(accuracy_score(baseline.y_true, baseline.y_pred), 2)
-    print("General accuracy:", baseline.accuracy)
-
-    baseline.soft_accuracy = round(baseline.soft_accuracy_score(baseline.y_true, baseline.y_pred), 2)
-    print("General soft accuracy:", baseline.soft_accuracy)
-
-    row = [{"accuracy": baseline.accuracy,
-            "soft_accuracy": baseline.soft_accuracy}]
-    data.save_output(
-        path=conf["results_path"] + conf["prompt_num"],
-        headers=conf["headers"], data=row
-    )
