@@ -2,7 +2,7 @@ name: research-project
 channels:
   - defaults
 dependencies:
-  - python
+  - python=3.12.7
   - torchvision
   - scikit-learn
   - pytorch::pytorch
@@ -10,4 +10,6 @@ dependencies:
   - numpy
   - transformers
   - matplotlib
+  - accelerate
+  - hydra-core
 prefix: /Users/uni/opt/anaconda3/envs/research-project
