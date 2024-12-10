@@ -114,31 +114,25 @@ class DataHandler:
         :return: processed data of type
         Dict[str, Dict[str, Dict[str, Union[Dict[str, str], Dict[str, List[str]], List[List[int]]]]]:
         {
-            task_id: str
-                {
-                sample_id: str = 0-n
-                    {
-                    "context"
-                        {
+            task_id: str: {
+                sample_id: str = 0-n: {
+                    "context": {
                         line_num: str
                         sentence: str
-                        }
-                    "question"
-                        {
+                    }
+                    "question": {
                         line_num: str
                         question: str
-                        }
-                    "answer"
-                        {
+                    }
+                    "answer": {
                         line_num: str
                         answers: List[str]
-                        }
-                    "supporting_fact"
-                        [
-                        [int], [int, int]
-                        ]
                     }
+                    "supporting_fact": [
+                        [int], [int, int]
+                    ]
                 }
+            }
         }
         """
         processed_data = {}
@@ -263,6 +257,6 @@ class DataHandler:
 
 if __name__ == "__main__":
     dh = DataHandler()
-    data = dh.read_data("data/tasks_1-20_v1-2/en", split="train", tasks=["qa3"])
+    data = dh.read_data("../../tasks_1-20_v1-2/en", split="train", tasks=[3])
     processed = dh.process_data(data)
     print(processed)

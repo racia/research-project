@@ -1,5 +1,5 @@
 model:
-  name: meta-llama/Meta-Llama-3-8B-Instruct
+  name: 'meta-llama/Meta-Llama-3-8B-Instruct'
   max_new_tokens: 12
   # with temperature==0.0 the model will use log probability
   # to automatically increase the temperature until certain thresholds are hit.
@@ -8,10 +8,10 @@ model:
 
 data:
   # small data with validation
-  path: /tasks_1-20_v1-2/en-valid/
+  path: '../../tasks_1-20_v1-2/en-valid/'
   # Order: train, valid, test
   splits:
-    train: False
+    train: True
     valid: True
     test: False
   # to get all tasks use (will be converted to None)
@@ -35,15 +35,15 @@ prompt:
     Answer: Playground
 
 repository:
-  # possible TODO: to change output directory to relative: ${hydra:runtime.cwd}/desired/output/directory
-  path: ~/../../../workspace/students/reasoning/
+   # path should be relative to the working directory (where the script is)
+   path: "../../../../../workspace/students/reasoning/"
 
 results:
   # here, csv results and logs will be stored
   # change it for yourself but make sure to create the folders beforehand
-  # should be relative to 'repo_path'!
-  path: baseline/
-  print_to_file: True
+  # should be relative to 'repo_path'! don't forget the trailing '/'!
+  path: 'baseline/'
+  print_to_file: False
   headers:
     - id
     - task_id

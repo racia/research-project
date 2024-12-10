@@ -1,7 +1,6 @@
 #!/bin/bash
 #
 #SBATCH --job-name=baseline
-#SBATCH --output=baseline_run.txt
 #SBATCH --gres=gpu:2
 #SBATCH --mem=32000
 #SBATCH --ntasks=1
@@ -14,7 +13,7 @@ conda activate research-project
 
 # run the script a required number of times with various settings
 # example of a list: "baseline_config_1 baseline_config_2 baseline_config_2"
-CONFIGS="baseline_config"
+CONFIGS="prompt_0_shot prompt_1_shot prompt_2_shot prompt_3_shot prompt_4_shot prompt_5_shot"
 
 for CONFIG in $CONFIGS
 do

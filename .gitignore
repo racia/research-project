@@ -26,5 +26,8 @@ plots/*
 baseline/init_bl.txt
 baseline/prompts/*
 
-#Results
+# Results
 results/
+
+# Prompts
+config/prompt_*_shot*

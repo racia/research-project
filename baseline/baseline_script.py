@@ -7,6 +7,8 @@ from typing import List, Dict
 from argparse import ArgumentParser
 
 import torch
+import hydra
+from hydra.utils import to_absolute_path
 from hydra import compose, initialize
 from hydra.core.config_store import ConfigStore
 from sklearn.metrics import accuracy_score
@@ -249,8 +251,9 @@ class QATasksBaseline:
         return task_results
 
     def run(self, cfg: BaselineConfig) -> None:
-        data = DataHandler()
+        print("Config data for the run:", cfg)
 
+        data = DataHandler()
         results_path = cfg.repository.path + cfg.results.path + cfg.prompt.name
 
         if cfg.results.print_to_file:
