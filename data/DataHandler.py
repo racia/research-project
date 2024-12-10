@@ -1,7 +1,9 @@
 import csv
 import os
+import sys
 import re
-from typing import Dict, Union, Literal
+from pathlib import Path
+from typing import Dict, Literal, TextIO, List, Tuple
 
 
 class DataHandler:
@@ -15,6 +17,11 @@ class DataHandler:
         self.task_map = {}
         # very hard to calculate when in another place
         self.question_counter = 0
+
+        self.old_stdout: TextIO = sys.stdout
+
+        self.results_path: str = ""
+        self.results_headers: List[str] = []
 
     def get_task_mapping(self, path) -> None:
         """
@@ -198,7 +205,11 @@ class DataHandler:
     def is_empty_file(file_path):
         return os.path.isfile(file_path) and os.path.getsize(file_path) == 0
 
-    def save_output(self, path: str, headers: Union[list, tuple], data: list) -> None:
+    def set_results_details(self, results_path, headers):
+        self.results_path = results_path
+        self.results_headers = headers
+
+    def save_output(self, data: list) -> None:
         """
 
         This is how DictWriter works:
@@ -211,13 +222,43 @@ class DataHandler:
         :param data:
         :return:
         """
-        path = f"{path}.csv"
+        path = Path(f"{self.results_path}.csv")
 
         with open(path, "a+", encoding="utf-8") as file:
-            writer = csv.DictWriter(file, fieldnames=headers, delimiter="\t")
+            writer = csv.DictWriter(file, fieldnames=self.results_headers, delimiter="\t")
             if self.is_empty_file(path):
                 writer.writeheader()
             [writer.writerow(row) for row in data]
+
+    def return_console_printing(self, file_to_close):
+        file_to_close.close()
+        sys.stdout = self.old_stdout
+
+    @staticmethod
+    def redirect_printing_to_file(path: str) -> Tuple[TextIO, Path]:
+        """
+        Allows to redirect printing during the script run into a log file.
+        Can be used to replace --output file in the batch script.
+
+        Old 'sys.stdout' that must be returned in place after the run by calling DataHandler.return_console_printing!
+
+        :param path: the path to the result directory with a file name (no extension required)
+        :return: old 'sys.stdout' that must be returned in place after the run
+        """
+        file_created = False
+        for i in range(1, 6):
+            file_path_name = Path(f"{path}_{i}")
+            if not os.path.isfile(f"{file_path_name}.log"):
+                log_file = open(f"{file_path_name}.log", "w")
+                file_created = True
+                break
+        if not file_created:
+            file_path_name = Path(f"{path}_0")
+            log_file = open(f"{file_path_name}.log", "w")
+        # 'log_file' and 'file_name' will surely be created:
+        # if files_1-5 already exist, then a default file_0 would be created/overwritten
+        sys.stdout = log_file
+        return log_file, file_path_name
 
 
 if __name__ == "__main__":
