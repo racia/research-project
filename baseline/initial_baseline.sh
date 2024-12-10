@@ -7,7 +7,8 @@
 #SBATCH --ntasks=1
 #SBATCH --partition=students
 # JOB STEPS
-source ~/miniconda3/etc/profile.d/conda.sh
-conda activate research
+#source ~/miniconda3/etc/profile.d/conda.sh
+#conda activate research
+source ../venv/bin/activate
 srun python3 baseline_script.py
-conda activate
+#conda activate

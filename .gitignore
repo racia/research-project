@@ -24,3 +24,7 @@ plots/*
 
 # Baseline
 baseline/init_bl.txt
+baseline/prompts/*
+
+#Results
+results

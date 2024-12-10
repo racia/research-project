@@ -14,9 +14,9 @@ class QATaskIterate:
     """
     """
     def __init__(self):
-        self.home_dir = Path.home()
         # TODO into config
-        self.data_dir = f"{self.home_dir}/tasks_1-20_v1-2/en/"
+        self.data_dir = f"../data/tasks_1-20_v1-2/en/"
+
         self.token = os.getenv("HUGGINGFACE")
         # TODO into config
         # Use the appropriate model name from the Hugging Face Hub
@@ -83,23 +83,28 @@ Correct answer: Playground"""},]
         self.task_data.clear()
         """{task_id: {train|eval|test: [file_names]}}"""
         path = self.data_dir + data[task_id]["test"]
+        print(path)
         with open(path, "r", encoding="utf-8") as f:
             lines = f.readlines()
             # self.task_data.append({})
+            d = -1
             for i, line in enumerate(lines):
                 line = line.strip()  # Remove newlines
                 sentence_id, sentence = line.split(maxsplit=1)
                 sentence_is_question = "\t" in sentence
                 if sentence_id == "1":  # and i != (len(lines) - 1)
+                    d += 1
                     self.task_data.append({})
-                    self.task_data[-1][0] = []
+                    self.task_data[d][sentence_id] = sentence
+                    assert self.task_data[d][sentence_id] == sentence
                 if sentence_is_question:
                     question_line = sentence.split("\t")
-                    self.task_data[-1][int(sentence_id)] = question_line.pop(0)  # add the question to the sample
+                    self.task_data[d][int(sentence_id)] = question_line#.pop(0)  # add the question to the sample
                     # sentence ids start from 1, so we can reserve 0 for question answers
-                    self.task_data[-1][0].append(question_line)  # add the answer and references with a separate key 0
+                    #self.task_data[d][0].append(question_line)  # add the answer and references with a separate key 0
                 else:
-                    self.task_data[-1][int(sentence_id)] = sentence
+                    self.task_data[d][int(sentence_id)] = sentence
+            print(self.task_data)
         return self.task_data
     def format_sample(self, sample_inx: int, to_enumerate: bool = True) -> List[Dict[str, str]]:
         """
