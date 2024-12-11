@@ -44,7 +44,14 @@ class QATasksBaseline:
         self.accuracy: int = 0
         self.soft_accuracy: int = 0
 
-    def load_model(self, model_name):
+    def load_model(self, model_name: str):
+    """
+    Load the model.
+
+    Parameters
+    ----------
+    :param model_name: the name of the model
+    """
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name, device_map="auto", torch_dtype=torch.bfloat16
         )
