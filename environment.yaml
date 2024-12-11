@@ -2,7 +2,7 @@ name: research-project
 channels:
   - defaults
 dependencies:
-  - python=3.12.7
+  - python>=3.11
   - torchvision
   - scikit-learn
   - pytorch::pytorch
