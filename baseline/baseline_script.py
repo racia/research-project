@@ -26,10 +26,15 @@ class QATasksBaseline:
     QATasksBaseline runs the model
     """
 
-    def __init__(self):
+    def __init__(self, model_name: str, max_new_tokens: int, temperature: float):
+        self.model_name = model_name
+        self.max_new_tokens = max_new_tokens
+        self.temperature = temperature
+
         self.token = os.getenv("HUGGINGFACE")
         self.model = None
         self.tokenizer = None
+
         self.system_prompt_: list = []
         self.y_true, self.y_pred = [], []
 
@@ -39,23 +44,20 @@ class QATasksBaseline:
         self.total_tasks = 0
 
         self.accuracies_per_task: list = []
-        self.soft_accuracies_per_task: list = []
+        self.soft_match_accuracies_per_task: list = []
 
         self.accuracy: int = 0
-        self.soft_accuracy: int = 0
+        self.soft_match_accuracy: int = 0
 
-    def load_model(self, model_name: str) -> None:
+
+    def load_model(self) -> None:
         """
         Load the model.
-
-        Parameters
-        ----------
-        :param model_name: the name of the model
         """
         self.model = AutoModelForCausalLM.from_pretrained(
-            model_name, device_map="auto", torch_dtype=torch.bfloat16
+            self.model_name, device_map="auto", torch_dtype=torch.bfloat16
         )
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
 
     def set_system_prompt(self, prompt):
         self.system_prompt_ = [{"role": "system", "content": prompt}, ]
@@ -114,12 +116,32 @@ class QATasksBaseline:
                 expanded_news.append(abbr)
         return expanded_news
 
+    def call_model(self, prompt: str) -> str:
+        # 3. Tokenize
+        inputs = self.tokenizer(prompt, return_tensors="pt", add_special_tokens=True)
+        inputs = {key: tensor.to(self.model.device) for key, tensor in inputs.items()}
+
+        # 4. Generate text
+        outputs = self.model.generate(
+            **inputs,
+            max_new_tokens=self.max_new_tokens,
+            temperature=self.temperature,
+            pad_token_id=self.tokenizer.eos_token_id,
+        )
+
+        # 5. Decode output back to string
+        decoded_output = "\n".join(
+            [self.tokenizer.decode(outputs[i][inputs["input_ids"].size(1):],
+                                   skip_special_tokens=True)
+             for i in range(len(outputs))]
+        ).lower()
+        return decoded_output
+
     def iterate_task(
             self, task_id: int,
             task_data: Dict[int, Dict[str, Dict[int, str] | Dict[int, List[str]] | Dict[int, List[List[int]]]]],
             no_samples: int,
-            max_new_tokens: int,
-            temperature: float
+            to_continue: bool
     ) -> List[Dict[str, int | str]]:
         """
 
@@ -145,15 +167,14 @@ class QATasksBaseline:
             }
         }
         :param no_samples: number of samples to run per task
-        :param max_new_tokens: the maximum number of tokens the model will produce in its answer (cut-off)
-        :param temperature: adjust the consistency of model's answers (0.1 by default)
+        :param to_continue: if we want the model to continue on the last message rather than create a separate answer
 
         :return:
         """
         # results to save into the csv file
         task_results = []
         accuracies_task = []
-        soft_accuracies_task = []
+        soft_match_accuracies_task = []
 
         # run per sample
         for sample_id, sample_data in list(task_data.items())[:no_samples]:
@@ -184,30 +205,17 @@ class QATasksBaseline:
 
                 # 2. Create and format the prompt
                 prompt.append(self.format_prompt_part(sample_part, "user"))
-                # TODO try with continue_final_message instead of add_generation_prompt
-                formatted_prompt = self.tokenizer.apply_chat_template(
-                    prompt, tokenize=False, add_generation_prompt=True
-                )
+                if to_continue:
+                    formatted_prompt = self.tokenizer.apply_chat_template(
+                        prompt, tokenize=False, continue_final_message=True
+                    )
+                else:
+                    formatted_prompt = self.tokenizer.apply_chat_template(
+                        prompt, tokenize=False, add_generation_prompt=True
+                    )
                 print("Formatted prompt:", formatted_prompt, sep="\n", end="\n")
 
-                # 3. Tokenize
-                inputs = self.tokenizer(formatted_prompt, return_tensors="pt", add_special_tokens=True)
-                inputs = {key: tensor.to(self.model.device) for key, tensor in inputs.items()}
-
-                # 4. Generate text
-                outputs = self.model.generate(
-                    **inputs,
-                    max_new_tokens=max_new_tokens,
-                    temperature=temperature,
-                    pad_token_id=self.tokenizer.eos_token_id,
-                )
-
-                # 5. Decode output back to string
-                decoded_output = "\n".join(
-                    [self.tokenizer.decode(outputs[i][inputs["input_ids"].size(1):],
-                                           skip_special_tokens=True)
-                     for i in range(len(outputs))]
-                ).lower()
+                decoded_output = self.call_model(prompt=formatted_prompt)
                 print("Model's output:", decoded_output, end="\n\n\n")
 
                 # 6. Add the model's output to conversation
@@ -236,9 +244,9 @@ class QATasksBaseline:
             accuracies_task.append(accuracy_sample)
             print(f"Accuracy score per sample {sample_id_}:", accuracy_sample)
 
-            soft_accuracy_sample = round(St.soft_accuracy_score(y_true_sample, y_pred_sample), 2)
-            soft_accuracies_task.append(soft_accuracy_sample)
-            print(f"Soft accuracy per sample {sample_id_}:", soft_accuracy_sample, end="\n\n\n")
+            soft_match_accuracy_sample = round(St.soft_match_accuracy_score(y_true_sample, y_pred_sample), 2)
+            soft_match_accuracies_task.append(soft_match_accuracy_sample)
+            print(f"Soft accuracy per sample {sample_id_}:", soft_match_accuracy_sample, end="\n\n\n")
 
         print("\n- TASK RESULTS -", end="\n\n")
 
@@ -248,11 +256,11 @@ class QATasksBaseline:
         print(f"Accuracy score per task {task_id}:", accuracy_task)
         task_results[0]["accuracy"] = accuracy_task
 
-        soft_accuracy_task = round(sum(soft_accuracies_task) / len(soft_accuracies_task), 2)
-        self.soft_accuracies_per_task.append(soft_accuracy_task)
+        soft_match_accuracy_task = round(sum(soft_match_accuracies_task) / len(soft_match_accuracies_task), 2)
+        self.soft_match_accuracies_per_task.append(soft_match_accuracy_task)
 
-        print(f"Soft accuracy per task {task_id}:", soft_accuracy_task, end="\n\n")
-        task_results[0]["soft_accuracy"] = soft_accuracy_task
+        print(f"Soft accuracy per task {task_id}:", soft_match_accuracy_task, end="\n\n")
+        task_results[0]["soft_match_accuracy"] = soft_match_accuracy_task
 
         print(f"The work on task {task_id} is finished successfully")
         return task_results
@@ -268,8 +276,8 @@ class QATasksBaseline:
 
         data.set_results_details(results_path=results_path, headers=cfg.results.headers)
 
+        self.load_model()
         self.set_system_prompt(prompt=cfg.prompt.text)
-        self.load_model(model_name=cfg.model.name)
         print("The model is loaded successfully")
 
         self.total_tasks = 0
@@ -291,9 +299,7 @@ class QATasksBaseline:
             for task_id, task in tasks.items():
                 task_result = self.iterate_task(
                     task_id=task_id, task_data=task,
-                    no_samples=cfg.data.samples_per_task,
-                    max_new_tokens=cfg.model.max_new_tokens,
-                    temperature=cfg.model.temperature
+                    no_samples=cfg.data.samples_per_task
                 )
                 data.save_output(data=task_result)
                 print("______________________________", end="\n\n")
@@ -310,11 +316,11 @@ class QATasksBaseline:
         self.accuracy = round(accuracy_score(self.y_true, self.y_pred), 2)
         print("General accuracy:", self.accuracy)
 
-        self.soft_accuracy = round(St.soft_accuracy_score(self.y_true, self.y_pred), 2)
-        print("General soft accuracy:", self.soft_accuracy)
+        self.soft_match_accuracy = round(St.soft_match_accuracy_score(self.y_true, self.y_pred), 2)
+        print("General soft accuracy:", self.soft_match_accuracy)
 
         row = [{"accuracy": self.accuracy,
-                "soft_accuracy": self.soft_accuracy}]
+                "soft_match_accuracy": self.soft_match_accuracy}]
         data.save_output(data=row)
 
         if cfg.results.print_to_file:
@@ -339,14 +345,24 @@ if __name__ == "__main__":
     cs.store(name="config", node=BaselineConfig)
 
     with initialize(version_base=None, config_path="../config"):
-        # possible TODO: to change output directory to relative:
-        # ${hydra:runtime.cwd}/desired/output/directory
         if args.config:
             cfg = compose(config_name=args.config)
         else:
             # for cases of running the script interactively
             cfg = compose(config_name="baseline_config")
 
-        baseline = QATasksBaseline()
+        baseline = QATasksBaseline(
+            model_name=cfg.model.name,
+            max_new_tokens=cfg.model.max_new_tokens,
+            temperature=cfg.model.temperature)
         baseline.run(cfg)
 
+def function(math):
+    """
+    kgfulygiytgi;ugylhg
+    jfluyfluyfl;i
+
+    :param math: number of samples to run per task
+    :return: jhfgluyl7it
+    """
+    print(math)

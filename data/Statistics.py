@@ -76,7 +76,7 @@ class Statistics:
         plt.savefig("plots/num_context_per_task.png")
 
     @staticmethod
-    def soft_accuracy_score(true_values: List[str], predicted_values: List[str]) -> float:
+    def soft_match_accuracy_score(true_values: List[str], predicted_values: List[str]) -> float:
         true_in_predicted = 0
         for true, prediction in zip(true_values, predicted_values):
             if true.lower() in prediction.lower():
