@@ -1,15 +1,17 @@
 name: research-project
 channels:
-  - defaults
+  - conda-forge
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
 dependencies:
-  - python>=3.11
-  - torchvision
-  - scikit-learn
-  - pytorch::pytorch
-  - torchaudio
-  - numpy
-  - transformers
-  - matplotlib
   - accelerate
+  - matplotlib
+  - numpy
+  - python
+  - pytorch::pytorch
+  - scikit-learn
+  - torchaudio
+  - torchvision
+  - transformers
   - hydra-core
-prefix: /Users/uni/opt/anaconda3/envs/research-project
+prefix: /opt/miniconda3/envs/research-project
