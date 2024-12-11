@@ -27,7 +27,7 @@ def run(cfg: BaselineConfig, model) -> None:
 
     data.set_results_details(results_path=results_path, headers=cfg.results.headers)
 
-    # model.load_model()
+    model.load_model()
     model.set_system_prompt(prompt=cfg.prompt.text)
     print("The model is loaded successfully")
 
