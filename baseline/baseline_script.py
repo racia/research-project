@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 import sys
 from pathlib import Path
 from argparse import ArgumentParser
@@ -12,12 +11,24 @@ from sklearn.metrics import accuracy_score
 sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
 from data.DataHandler import DataHandler
 from data.Statistics import Statistics as St
-import Model
-from baseline.config.baseline_config import BaselineConfig
+from Model import Baseline
+from baseline.config.config import Config
 
 
-def run(cfg: BaselineConfig, model) -> None:
+def run_model(cfg: Config) -> None:
+    """
+    The function to run a model without modifications
+    over the task data with the given config
+
+    :param cfg: a
+    :param model: a model instance of Baseline datatype (see Model.py)
+    """
     print("Config data for the run:", cfg)
+
+    model = Baseline(
+        model_name=cfg.model.name,
+        max_new_tokens=cfg.model.max_new_tokens,
+        temperature=cfg.model.temperature)
 
     data = DataHandler()
     results_path = cfg.repository.path + cfg.results.path + cfg.prompt.name
@@ -29,7 +40,7 @@ def run(cfg: BaselineConfig, model) -> None:
 
     model.load_model()
     model.set_system_prompt(prompt=cfg.prompt.text)
-    print("The model is loaded successfully")
+    print(f"The model {cfg.model.name} is loaded successfully")
 
     model.total_tasks = 0
     data_in_splits = {}
@@ -93,18 +104,13 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     cs = ConfigStore.instance()
-    cs.store(name="config", node=BaselineConfig)
+    cs.store(name="config", node=Config)
 
     with initialize(version_base=None, config_path="config"):
         if args.config:
-            cfg = compose(config_name=args.config)
+            config = compose(config_name=args.config)
         else:
             # for cases of running the script interactively
-            cfg = compose(config_name="baseline_config")
+            config = compose(config_name="baseline_config")
 
-        baseline = Model.Baseline(
-            model_name=cfg.model.name,
-            max_new_tokens=cfg.model.max_new_tokens,
-            temperature=cfg.model.temperature)
-        print(os.getcwd())
-        run(cfg=cfg, model=baseline)
+    run_model(cfg=args.config)

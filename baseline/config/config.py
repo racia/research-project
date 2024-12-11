@@ -62,7 +62,7 @@ class Results:
 
 
 @dataclass
-class BaselineConfig:
+class Config:
     model: Model
     data: Data
     prompt: Prompt

@@ -11,7 +11,7 @@ data:
   path: '../../../tasks_1-20_v1-2/en-valid/'
   # Order: train, valid, test
   splits:
-    train: True
+    train: False
     valid: True
     test: False
   # to get all tasks use (will be converted to None)
