@@ -18,6 +18,8 @@ Authors: [@ivakhnenko](https://gitlab.cl.uni-heidelberg.de/ivakhnenko),
 ## Repository Structure
 
 * [baseline](./baseline) — methods for running baseline and skyline
+  * [config](baseline/config) - config files for running scripts
+
 * [data](./data)
     * golden evaluation dataset
     * methods for data processing
@@ -141,8 +143,13 @@ which you can obtain via the website on your https://huggingface.com profile.
 Save it as an environment variable in bash:
     ```
     export HUGGINGFACE="<<your-token>>"
-    ``` 
+    ```
 
+If you need to update the environment file with new dependencies, use this command
+```commandline
+conda env export --from-history > environment.yaml
+```
+Otherwise, automatic installation of packages will not work.
 
 #### Alternative environment setup with pip3
 
@@ -152,6 +159,7 @@ To get started, log into the Heidelberg University Computational Linguistics clu
 2. Install all dependencies: `pip install -r requirements.txt`
 3. Activate environment: `source ~/venv/bin/activate`
 
+---
 
 ### Baseline
 

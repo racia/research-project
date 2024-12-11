@@ -7,8 +7,6 @@ from typing import List, Dict
 from argparse import ArgumentParser
 
 import torch
-import hydra
-from hydra.utils import to_absolute_path
 from hydra import compose, initialize
 from hydra.core.config_store import ConfigStore
 from sklearn.metrics import accuracy_score
@@ -17,7 +15,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
 from data.DataHandler import DataHandler
 from data.Statistics import Statistics as St
-from config.baseline_config import BaselineConfig
+from baseline.config.baseline_config import BaselineConfig
 
 
 class QATasksBaseline:
@@ -276,7 +274,7 @@ class QATasksBaseline:
 
         data.set_results_details(results_path=results_path, headers=cfg.results.headers)
 
-        self.load_model()
+        # self.load_model()
         self.set_system_prompt(prompt=cfg.prompt.text)
         print("The model is loaded successfully")
 
@@ -344,7 +342,7 @@ if __name__ == "__main__":
     cs = ConfigStore.instance()
     cs.store(name="config", node=BaselineConfig)
 
-    with initialize(version_base=None, config_path="../config"):
+    with initialize(version_base=None, config_path="config"):
         if args.config:
             cfg = compose(config_name=args.config)
         else:
@@ -355,14 +353,5 @@ if __name__ == "__main__":
             model_name=cfg.model.name,
             max_new_tokens=cfg.model.max_new_tokens,
             temperature=cfg.model.temperature)
+        print(os.getcwd())
         baseline.run(cfg)
-
-def function(math):
-    """
-    kgfulygiytgi;ugylhg
-    jfluyfluyfl;i
-
-    :param math: number of samples to run per task
-    :return: jhfgluyl7it
-    """
-    print(math)

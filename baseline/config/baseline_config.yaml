@@ -8,7 +8,7 @@ model:
 
 data:
   # small data with validation
-  path: '../../tasks_1-20_v1-2/en-valid/'
+  path: '../../../tasks_1-20_v1-2/en-valid/'
   # Order: train, valid, test
   splits:
     train: True
@@ -26,6 +26,7 @@ data:
     question: False
 
 prompt:
+  # name of the prompt serves as a basis for logging and result files
   name: prompt_1
   # '|' insures multiline string
   text: |
@@ -36,7 +37,7 @@ prompt:
 
 repository:
    # path should be relative to the working directory (where the script is)
-   path: "../../../../../workspace/students/reasoning/"
+   path: "../../../../../../workspace/students/reasoning/"
 
 results:
   # here, csv results and logs will be stored

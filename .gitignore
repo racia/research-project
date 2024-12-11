@@ -30,4 +30,4 @@ baseline/prompts/*
 results/
 
 # Prompts
-config/prompt_*_shot*
+baseline/config/prompt_*_shot*
