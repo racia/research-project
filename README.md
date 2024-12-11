@@ -56,48 +56,151 @@ Authors: [@ivakhnenko](https://gitlab.cl.uni-heidelberg.de/ivakhnenko),
 ## Docs
 
 ### Getting started
+
+First, you need to get the data, the project repository, 
+and create an environment for the project.
+
+**Important!** The structure of files that the scripts currently expect:
+
+`root` (might be just a project folder)
+* `tasks_1-20_v1-2` (bAbI tasks)
+* `research-project`
+
+The data repository on the cluster is located here: `/workspace/students/reasoning`.
+
+#### Setting up the project
+
+0. [optional] Connect to the cluster with `ssh your_surname@cluster.cl.uni-heidelberg.de`.
+
+
+1. Make sure you are in the correct directory
+   * if you are on the cluster, go to your root repository: `cd ~`, 
+   * otherwise to your project directory: `cd path/to/project/dir`
+
+
+2. Install miniconda3:
+    ```commandline
+    mkdir -p ~/miniconda3
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+    bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+    rm ~/miniconda3/miniconda.sh
+    ```
+
+
+3. Download the [bAbI task data](https://www.kaggle.com/datasets/roblexnana/the-babi-tasks-for-nlp-qa-system) from Kaggle
+    * by importing kaggle:
+    ```python
+    import kagglehub
+    
+    # Download latest version
+    path = kagglehub.dataset_download("roblexnana/the-babi-tasks-for-nlp-qa-system")
+    
+    print("Path to dataset files:", path)
+    ```
+    * by downloading a zip file and transferring the files to the cluster from your local machine with `rsync` or `sftp`.
+      
+      * You can run this example from another commandline tab **locally**:
+      ```commandline
+      sftp your_surname@cluster.cl.uni-heidelberg.de
+      ```
+      Commands for the cluster: `pwd`, `cd`, `ls`. 
+
+      Commands for your local machine: `lpwd`, `lcd`, `lls`.
+        
+      To move the files from your local machine to the cluster:
+      ```commandline
+      put local_path remote_path
+      ```
+      To move the files from the cluster to your local machine:
+      ```commandline
+      get remote_path local_path
+      ```
+      To move the directory, add `-r`, for example `put -r local_path remote_path`.
+
+
+4. Clone the `research-project repository` with
+    ```commandline
+    git clone https://gitlab.cl.uni-heidelberg.de/sari/research-project.git
+    ```
+
+5. Create a conda environment for the project:
+    ```commandline
+    cd research-project
+    source ~/miniconda3/etc/profile.d/conda.sh
+    conda env create -f environment.yaml
+    ```
+   
+6. Activate the environment: `conda activate research-project`.
+
+
+7. Install other dependencies, if any.
+
+
+8. Running models from the Hugging Face hub requires an access token, 
+which you can obtain via the website on your https://huggingface.com profile. 
+Save it as an environment variable in bash:
+    ```
+    export HUGGINGFACE="<<your-token>>"
+    ``` 
+
+
+#### Alternative environment setup with pip3
+
 To get started, log into the Heidelberg University Computational Linguistics cluster and in your home directory:
 
 1. Create a virtual environment: `python3 -m venv venv`
 2. Install all dependencies: `pip install -r requirements.txt`
 3. Activate environment: `source ~/venv/bin/activate`
 
-After git cloning the repository, change direcory to it: `cd research-project/`
-
-#### ! Important
-
-Please note, that the scripts expect the bAbI data on your home directory of the uni cluster, e.g. `~/tasks_1-20_v1-2/`
 
 ### Baseline
 
-#### Getting started
+#### Running the baseline on the cluster
 
-1. Create a virtual environment: `python3 -m venv venv`
-2. Install all dependencies: `pip install -r requirements.txt`
-3. Activate environment: `source ~/venv/bin/activate`
-
-After git cloning the repository, change direcory to it. `cd research-project/`
-
-#### ! Important
-
-Please note, that the scripts expect the bAbI data on your home directory of the uni cluster, e.g. `~/tasks_1-20_v1-2/`
+1. Change directory to the subproject folder: `cd ~research-project/baseline`.
 
 
-### Baseline
+2. Create your `yaml` files with configs in `research-project/config`. 
+If you use defaults, you can only specify a detail or two, 
+and the rest will be taken from the default config file.
 
-#### Running the baseline
 
-Running models from the Hugging Face hub requires an access token, which you can obtain via the website on
-your https://huggingface.com profile.
+3. Create your bash script from the default `baseline.sh`. You can specify:
+    * the name of the job
+    * name of the output file ()
+    * number of CPU's
+    * memory to allocate (if too big, longer waiting time)
+    * patrition (default — `students`)
+    * most importantly, the list of config files you want to run the script with: 
+      ``` 
+      CONFIGS="prompt_0_shot prompt_1_shot"
+      ```
+      The script runs with each config separately.
 
-1. Save your token as an environment variable in bash:
 
-```
-export HUGGINGFACE="<<your-token>>"
-```
+4. Submit a batch job: `sbatch name_of_script.sh`.
 
-2. Change directory to the baseline folder: `cd /baseline`
-3. Submit the batch job: `sbatch initial_baseline.sh`, which will run script.py and save the outputs to "init_bl.txt"
+
+5. Check the status with `squeue`.
+
+
+#### Running the baseline locally
+
+1. Change directory to the subproject folder: `cd ~research-project/baseline`.
+
+
+2. Create your `yaml` files with configs in `research-project/config`. 
+If you use defaults, you can only specify a detail or two, 
+and the rest will be taken from the default config file.
+
+
+3. Run the script with a config file, for example `baseline_config`:
+    ```commandline
+    python3 baseline_script.py --config baseline_config
+    ```
+   If no config specified, the script will run with the default `baseline_config` 
+(will through an error of not finding `/workspace/students/reasoning`).
+    
 
 ### Data
 
