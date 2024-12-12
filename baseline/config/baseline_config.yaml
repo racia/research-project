@@ -5,6 +5,9 @@ model:
   # to automatically increase the temperature until certain thresholds are hit.
   # I.e., in need of lowest temperature, set it to something like 0.00000001
   temperature: 0.1
+  # if we want the model to continue on the last message rather
+  # than create a separate answer
+  to_continue: False
 
 data:
   # small data with validation

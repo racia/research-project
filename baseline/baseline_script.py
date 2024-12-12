@@ -1,27 +1,31 @@
 from __future__ import annotations
 
-import sys
-from pathlib import Path
 from argparse import ArgumentParser
-
 from hydra import compose, initialize
 from hydra.core.config_store import ConfigStore
+from omegaconf import DictConfig
+
 from sklearn.metrics import accuracy_score
 
-sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
 from data.DataHandler import DataHandler
 from data.Statistics import Statistics as St
 from Model import Baseline
-from baseline.config.config import Config
+from baseline.config.baseline_config import Config
 
 
-def run_model(cfg: Config) -> None:
+def run_model(cfg: Config | DictConfig) -> None:
     """
     The function to run a model without modifications
-    over the task data with the given config
+    over the task data with the given config with such steps:
+    1. initiate instances of model and data classes
+    2. [optional] redirect system output into the logging file
+    3. load the model and the data, set the configurations
+    4. loop through all desired tasks of desired data splits
+    5. save the results after each cycle
+    6. report and save accuracy for the run
+    7. [optional*] return the system output in place
 
-    :param cfg: a
-    :param model: a model instance of Baseline datatype (see Model.py)
+    :param cfg: config instance
     """
     print("Config data for the run:", cfg)
 
@@ -32,6 +36,7 @@ def run_model(cfg: Config) -> None:
 
     data = DataHandler()
     results_path = cfg.repository.path + cfg.results.path + cfg.prompt.name
+    log_file = None
 
     if cfg.results.print_to_file:
         log_file, results_path = data.redirect_printing_to_file(path=results_path)
@@ -56,12 +61,13 @@ def run_model(cfg: Config) -> None:
     print("The data is loaded successfully", end="\n\n")
     print("Starting to query the model", end="\n\n")
 
-    model.to_enumerate = cfg.data.to_enumerate
     for split, tasks in data_in_splits.items():
         for task_id, task in tasks.items():
             task_result = model.iterate_task(
                 task_id=task_id, task_data=task,
-                no_samples=cfg.data.samples_per_task
+                no_samples=cfg.data.samples_per_task,
+                to_enumerate=cfg.data.to_enumerate,
+                to_continue=cfg.model.to_continue
             )
             data.save_output(data=task_result)
             print("______________________________", end="\n\n")
@@ -93,9 +99,6 @@ def run_model(cfg: Config) -> None:
 
 
 if __name__ == "__main__":
-    # TODO: add to config if we want to print certain data
-    #  (level of messages: INFO, CRITICAL and so on)
-
     parser = ArgumentParser()
     parser.add_argument("-c", "--config", dest="config",
                         help="use the settings from the config file of given name "
@@ -106,11 +109,11 @@ if __name__ == "__main__":
     cs = ConfigStore.instance()
     cs.store(name="config", node=Config)
 
-    with initialize(version_base=None, config_path="config"):
+    with initialize(version_base=None, config_path="config/"):
         if args.config:
             config = compose(config_name=args.config)
         else:
-            # for cases of running the script interactively
+            # for cases of running the script in the IDE
             config = compose(config_name="baseline_config")
 
-    run_model(cfg=args.config)
+    run_model(cfg=config)

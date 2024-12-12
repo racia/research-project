@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
 from typing import Dict, List
 
@@ -7,6 +9,7 @@ class Model:
     name: str
     max_new_tokens: int
     temperature: float
+    to_continue: bool
 
 
 @dataclass
