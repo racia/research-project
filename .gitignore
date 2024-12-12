@@ -21,7 +21,13 @@ plots/*
 */.DS_Store
 */*/.DS_Store
 .DS_Store
-.idea/
 
 # Baseline
 baseline/init_bl.txt
+baseline/prompts/*
+
+# Results
+results/
+
+# Prompts
+baseline/config/prompt_*_shot*

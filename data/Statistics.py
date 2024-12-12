@@ -1,22 +1,12 @@
-import os
+from typing import List
 
 import matplotlib.pyplot as plt
-
 from data.DataHandler import DataHandler
 
 
 class Statistics:
     def __init__(self):
         self.dh = DataHandler()
-
-    def check_or_create_directory(self, path: str):
-        """
-        Check if the directory exists, if not create it.
-
-        :param path: path to the directory
-        """
-        if not os.path.exists(path):
-            os.makedirs(path)
 
     def get_data_stats(self, data_path: str):
         """
@@ -25,7 +15,7 @@ class Statistics:
         :param data_path: path to the data
         :return:
         """
-        all_data = self.dh.read_data(path=data_path, train=True)
+        all_data = self.dh.read_data(path=data_path, split="train")
         processed_data = self.dh.process_data(all_data)
 
         self.analyse_task_questions(processed_data)
@@ -36,7 +26,7 @@ class Statistics:
 
         :param data: dictionary containing the data
         """
-        self.check_or_create_directory("../plots")
+        self.dh.check_or_create_directory("../plots")
         q_stats = {}
         c_stats = {}
         c_before_q = {}
@@ -44,10 +34,10 @@ class Statistics:
             q_stats[task] = []
             c_stats[task] = []
             c_before_q[task] = []
-            for id in data[task].keys():
-                q_stats[task].append(len(data[task][id]["question"]))
-                c_stats[task].append(len(data[task][id]["context"]))
-                for ix, line_num in enumerate(list(data[task][id]["question"].keys())):
+            for id_ in data[task].keys():
+                q_stats[task].append(len(data[task][id_]["question"]))
+                c_stats[task].append(len(data[task][id_]["context"]))
+                for ix, line_num in enumerate(list(data[task][id_]["question"].keys())):
                     if ix == 0:
                         c_before_q[task].append(line_num - 1)  # first question
                     else:
@@ -84,6 +74,19 @@ class Statistics:
         plt.ylabel("Total Lines of Context")
         plt.title("Total Lines of Context per Task")
         plt.savefig("plots/num_context_per_task.png")
+
+    @staticmethod
+    def soft_match_accuracy_score(true_values: List[str], predicted_values: List[str]) -> float:
+        true_in_predicted = 0
+        for true, prediction in zip(true_values, predicted_values):
+            if true.lower() in prediction.lower():
+                true_in_predicted += 1
+            # for partial answer of questions with two supporting facts
+            elif prediction.lower() in true.lower():
+                true_in_predicted += 0.5
+        if true_in_predicted == 0:
+            return 0.0
+        return true_in_predicted / len(true_values)
 
 
 if __name__ == "__main__":
