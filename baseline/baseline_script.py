@@ -31,24 +31,27 @@ def run_model(cfg: Config | DictConfig) -> None:
     :param cfg: config instance
     """
     print("Config data for the run:", cfg)
-
-    model = Baseline(
-        model_name=cfg.model.name,
-        max_new_tokens=cfg.model.max_new_tokens,
-        temperature=cfg.model.temperature)
+    print("Running the script...")
 
     data = DataHandler()
     results_path = cfg.repository.path + cfg.results.path + cfg.prompt.name
-    log_file = None
+    log_file = sys.stdout
 
     if cfg.results.print_to_file:
         log_file, results_path = data.redirect_printing_to_file(path=results_path)
 
     data.set_results_details(results_path=results_path, headers=cfg.results.headers)
 
+    model = Baseline(
+        model_name=cfg.model.name,
+        max_new_tokens=cfg.model.max_new_tokens,
+        temperature=cfg.model.temperature,
+        log_file=log_file
+    )
+
     model.load_model()
     model.set_system_prompt(prompt=cfg.prompt.text)
-    print(f"The model {cfg.model.name} is loaded successfully")
+    print(f"The model {cfg.model.name} is loaded successfully", file=log_file)
 
     model.total_tasks = 0
     data_in_splits = {}
@@ -61,8 +64,8 @@ def run_model(cfg: Config | DictConfig) -> None:
             model.total_tasks += len(data_tasks)
             data_in_splits[split] = processed_data
 
-    print("The data is loaded successfully", end="\n\n")
-    print("Starting to query the model", end="\n\n")
+    print("The data is loaded successfully", end="\n\n", file=log_file)
+    print("Starting to query the model", end="\n\n", file=log_file)
 
     for split, tasks in data_in_splits.items():
         for task_id, task in tasks.items():
@@ -73,22 +76,23 @@ def run_model(cfg: Config | DictConfig) -> None:
                 to_continue=cfg.model.to_continue
             )
             data.save_output(data=task_result)
-            print("______________________________", end="\n\n")
+            print("______________________________", end="\n\n", file=log_file)
 
-    print("The run is finished successfully")
+    print("The run is finished successfully", file=log_file)
 
-    print("\n- RUN RESULTS -", end="\n\n")
+    print("\n- RUN RESULTS -", end="\n\n", file=log_file)
 
     print("Processed", model.total_tasks, "tasks in total with",
-          cfg.data.samples_per_task, "samples in each")
+          cfg.data.samples_per_task, "samples in each", file=log_file)
     print("Total samples processed",
-          model.total_tasks * cfg.data.samples_per_task, end="\n\n")
+          model.total_tasks * cfg.data.samples_per_task,
+          end="\n\n", file=log_file)
 
     model.accuracy = round(accuracy_score(model.y_true, model.y_pred), 2)
-    print("General accuracy:", model.accuracy)
+    print("General accuracy:", model.accuracy, file=log_file)
 
     model.soft_match_accuracy = round(St.soft_match_accuracy_score(model.y_true, model.y_pred), 2)
-    print("General soft accuracy:", model.soft_match_accuracy)
+    print("General soft match accuracy:", model.soft_match_accuracy, file=log_file)
 
     row = [{"accuracy": model.accuracy,
             "soft_match_accuracy": model.soft_match_accuracy}]
