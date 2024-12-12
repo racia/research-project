@@ -1,4 +1,4 @@
-# Research Project
+# Reasoning Research Project
 
 This repository serves to implement the research project on reasoning capabilities
 of language models and the efforts to improve them through a series of prompting
