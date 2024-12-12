@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
-from typing import List, Dict, Union
+from typing import List, Dict, Union, TextIO
 
 import torch
 from sklearn.metrics import accuracy_score
@@ -20,18 +20,22 @@ class Role:
 
 
 class Baseline:
-    def __init__(self, model_name: str, max_new_tokens: int, temperature: float):
+    def __init__(self, model_name: str, max_new_tokens: int,
+                 temperature: float, log_file: TextIO):
         """
         Baseline class manages model runs and data flows around it.
         It is intended to use in the further settings.
 
         :param model_name: official name of the model to run
-        :param max_new_tokens: maximum number of tokens the model would be able to answer (cut-off)
+        :param max_new_tokens: maximum number of tokens the model would be able
+                               to answer (cut-off)
         :param temperature: the temperature of the model
+        :param log_file: 'sys.stdout' or a log file (if printing was redirected)
         """
         self.model_name = model_name
         self.max_new_tokens = max_new_tokens
         self.temperature = temperature
+        self.log = log_file
 
         self.token = os.getenv("HUGGINGFACE")
         self.model = None
@@ -125,7 +129,8 @@ class Baseline:
         The following steps apply:
         1. iterate through tasks
         2. reformat the data into parts
-           Hint: a part is defined as a list with context sentences finished with a question.
+           Hint: a part is defined as a list with context sentences finished with 
+                 a question.
         3. iterate through parts
         4. create and format the prompt
         5. call the model and yield the response
@@ -133,7 +138,7 @@ class Baseline:
         7. report the results for a sample: answers and accuracy
         8. report the results for the task:  accuracy
         
-        :param task_id: task id that corresponds to the task name in the original dataset
+        :param task_id: task id corresponding to task name in original dataset
         :param task_data: task data of the following structure:
         {
             sample_id: {
@@ -155,8 +160,8 @@ class Baseline:
         }
         :param no_samples: number of samples to run per task
         :param to_enumerate: config adding line numbers to the beginning of lines
-        :param to_continue: if we want the model to continue on the last message rather 
-                            than create a separate answer
+        :param to_continue: if we want the model to continue on the last message 
+                            rather than create a separate answer
         :return: results for the task in a list of dicts with each dict representing 
                  one call to the model and will end up as one row of the table
         """
@@ -191,11 +196,12 @@ class Baseline:
                     f"PART {part_id}/{len(sample_parts)} | "
                     f"Run ID {self.question_id}"
                     " *-",
-                    end="\n\n\n"
+                    end="\n\n\n", file=self.log
                 )
 
                 # 4. Create and format the prompt
-                prompt.append(self.format_prompt_part(part=sample_part, role="user"))
+                prompt.append(self.format_prompt_part(part=sample_part,
+                                                      role="user"))
                 if to_continue:
                     formatted_prompt = self.tokenizer.apply_chat_template(
                         prompt, tokenize=False, continue_final_message=True
@@ -204,11 +210,13 @@ class Baseline:
                     formatted_prompt = self.tokenizer.apply_chat_template(
                         prompt, tokenize=False, add_generation_prompt=True
                     )
-                print("Formatted prompt:", formatted_prompt, sep="\n", end="\n")
+                print("Formatted prompt:", formatted_prompt, sep="\n",
+                      end="\n", file=self.log)
 
                 # 5. Call the model and yield the response
                 decoded_output = self.call_model(prompt=formatted_prompt)
-                print("Model's output:", decoded_output, end="\n\n\n")
+                print("Model's output:", decoded_output, end="\n\n\n",
+                      file=self.log)
 
                 # 6. Add the model's output to conversation
                 prompt.append(self.format_prompt_part(part=decoded_output,
@@ -228,37 +236,40 @@ class Baseline:
             self.y_pred.extend(y_pred_sample)
 
             # 7. Report the results for the sample: answers and accuracy
-            print("Model's predictions for the sample:", "\t{:<18s} PREDICTED".format("GOLDEN"),
-                  sep="\n\n", end="\n\n")
-            [print("\t{0:<18s} {1}".format(true, predicted.replace("\n", "\t")))
+            print("Model's predictions for the sample:",
+                  "\t{:<18s} PREDICTED".format("GOLDEN"),
+                  sep="\n\n", end="\n\n", file=self.log)
+            [print("\t{0:<18s} {1}".format(true,
+                                           predicted.replace("\n", "\t")), file=self.log)
              for true, predicted in zip(y_true_sample, y_pred_sample)]
-            print()
+            print(file=self.log)
 
             accuracy_sample = round(accuracy_score(y_true_sample, y_pred_sample), 2)
             accuracies_task.append(accuracy_sample)
-            print(f"Accuracy score per sample {sample_id_}:", accuracy_sample)
+            print(f"Accuracy score per sample {sample_id_}:", accuracy_sample, file=self.log)
 
             soft_match_accuracy_sample = round(St.soft_match_accuracy_score(y_true_sample,
                                                                             y_pred_sample), 2)
             soft_match_accuracies_task.append(soft_match_accuracy_sample)
             print(f"Soft accuracy per sample {sample_id_}:", soft_match_accuracy_sample,
-                  end="\n\n\n")
+                  end="\n\n\n", file=self.log)
 
         # 8. Report the results for the task: accuracy
-        print("\n- TASK RESULTS -", end="\n\n")
+        print("\n- TASK RESULTS -", end="\n\n", file=self.log)
 
         accuracy_task = round(sum(accuracies_task) / len(accuracies_task), 2)
         self.accuracies_per_task.append(accuracy_task)
 
-        print(f"Accuracy score per task {task_id}:", accuracy_task)
+        print(f"Accuracy score per task {task_id}:", accuracy_task, file=self.log)
         task_results[0]["accuracy"] = accuracy_task
 
         soft_match_accuracy_task = round(sum(soft_match_accuracies_task) /
                                          len(soft_match_accuracies_task), 2)
         self.soft_match_accuracies_per_task.append(soft_match_accuracy_task)
 
-        print(f"Soft accuracy per task {task_id}:", soft_match_accuracy_task, end="\n\n")
+        print(f"Soft match accuracy per task {task_id}:", soft_match_accuracy_task,
+              end="\n\n", file=self.log)
         task_results[0]["soft_match_accuracy"] = soft_match_accuracy_task
 
-        print(f"The work on task {task_id} is finished successfully")
+        print(f"The work on task {task_id} is finished successfully", file=self.log)
         return task_results
