@@ -7,6 +7,9 @@ from omegaconf import DictConfig
 
 from sklearn.metrics import accuracy_score
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
 from data.DataHandler import DataHandler
 from data.Statistics import Statistics as St
 from Model import Baseline
