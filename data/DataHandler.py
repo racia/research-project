@@ -64,7 +64,6 @@ class DataHandler:
                 line_count = curr_line_count
         return data
 
-    # into config
     def read_data(self, path: str,
                   split: Union[DataSplits.train, DataSplits.valid, DataSplits.test], tasks=None) -> Dict[str, dict]:
         """

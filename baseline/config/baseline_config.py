@@ -49,7 +49,7 @@ class CSVHeaders:
     true_result: str = "true_result"
     model_result: str = "model_result"
     accuracy: str = "accuracy"
-    soft_accuracy: str = "soft_accuracy"
+    soft_match_accuracy: str = "soft_match_accuracy"
 
 
 @dataclass
