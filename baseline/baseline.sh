@@ -1,7 +1,11 @@
 #!/bin/bash
 #
 #SBATCH --job-name=baseline
+
+# using printing to a log file instead of '--output'
+# allows to create individual log files for each config
 #SBATCH --output=baseline_run.txt
+
 #SBATCH --gres=gpu:2
 #SBATCH --mem=32000
 #SBATCH --ntasks=1

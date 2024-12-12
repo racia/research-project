@@ -166,9 +166,9 @@ class Baseline:
 
         # 1. Iterate through samples
         for sample_id, sample_data in list(task_data.items())[:no_samples]:
-            expanded_answers = utils.expand_cardinal_points(
-                list(sample_data["answer"].values())
-            )
+            # it actually gets a list of strings, not just a string
+            expanded_answers = [utils.expand_cardinal_points(answers)
+                                for answers in sample_data["answer"].values()]
             y_true_sample = [", ".join(true).lower() for true in expanded_answers]
             self.y_true.extend(y_true_sample)
             y_pred_sample = []
