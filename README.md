@@ -132,6 +132,12 @@ The data repository on the cluster is located here: `/workspace/students/reasoni
     conda env create -f environment.yaml
     ```
    
+    If you run into `CondaMemoryError: The conda process ran out of memory`, try a manual version 
+(slower but seems to work):
+    ```
+   conda create -n research-project python torchvision scikit-learn pytorch::pytorch torchaudio numpy transformers matplotlib black accelerate hydra-core -c conda-forge -c pytorch
+    ```
+   
 6. Activate the environment: `conda activate research-project`.
 
 
