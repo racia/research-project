@@ -56,7 +56,8 @@ Authors: [@ivakhnenko](https://gitlab.cl.uni-heidelberg.de/ivakhnenko),
 ---
 
 ## Getting started
-### Using CLuster
+
+### Set up the project
 
 First, you need to get the data, the project repository, 
 and create an environment for the project.
@@ -69,9 +70,9 @@ and create an environment for the project.
 
 The data repository on the cluster is located here: `/workspace/students/reasoning`.
 
-#### Setting up the project
+#### Steps locally or on CLuster
 
-0. [optional] Connect to the cluster with `ssh your_surname@cluster.cl.uni-heidelberg.de`.
+0. [if CLuster is your destination] Connect to the cluster with `ssh {your_surname}@cluster.cl.uni-heidelberg.de`.
 
 
 1. Make sure you are in the correct directory
@@ -133,7 +134,7 @@ The data repository on the cluster is located here: `/workspace/students/reasoni
    
     If you run into `CondaMemoryError: The conda process ran out of memory`, try a manual version 
 (slower but seems to work):
-    ```
+    ```commandline
    conda create -n research-project python torchvision scikit-learn pytorch::pytorch torchaudio numpy transformers matplotlib black accelerate hydra-core -c conda-forge -c pytorch
     ```
    
@@ -146,7 +147,7 @@ The data repository on the cluster is located here: `/workspace/students/reasoni
 8. Running models from the Hugging Face hub requires an access token, 
 which you can obtain via the website on your https://huggingface.com profile. 
 Save it as an environment variable in bash:
-    ```
+    ```commandline
     export HUGGINGFACE="<<your-token>>"
     ```
 
@@ -156,7 +157,7 @@ conda env export --from-history > environment.yaml
 ```
 Otherwise, automatic installation of packages will not work.
 
-#### Alternative environment setup with pip3
+##### Alternative environment setup with pip3
 
 To get started, log into the Heidelberg University Computational Linguistics cluster and in your home directory:
 
@@ -164,11 +165,53 @@ To get started, log into the Heidelberg University Computational Linguistics clu
 2. Install all dependencies: `pip install -r requirements.txt`
 3. Activate environment: `source ~/venv/bin/activate`
 
+
+#### Steps on bwUniCluster
+
+0. Connect to the bwUniCluster using ssh with the following command:
+`ssh hd_{uni_id}@bwunicluster.scc.kit.edu`.
+
+1. Clone the GitHub repository. This can be done via HTTPS, so you do not need to setup an ssh token.
+    ```commandline
+    git clone https://gitlab.cl.uni-heidelberg.de/sari/research-project.git
+    ```
+    The repository will be created in your home directory.
+
+2. In a new terminal, navigate to the local folder where the data is located. Then run the following command to copy the data to the remote home directory:
+`scp -r tasks_1-20_v1-2 hd_{uni_id}@bwunicluster.scc.kit.edu:.`
+
+3. Activate the necessary modules:
+    ```commandline
+    module load devel/miniconda/4.9.2
+    module load devel/cuda/11.8
+    ```
+    
+    You can check the available modules using `module avail`.
+
+4. Create the conda environment by running the following command:  
+    ```commandline
+    conda create -n research-project "python>=3.9" torchvision scikit-learn "pytorch::pytorch>=2.0" torchaudio numpy transformers matplotlib black accelerate "hydra-core>1" cudatoolkit=11.8 -c conda-forge -c pytorch
+    ```
+    
+    In theory, this should also be possible using the `environment.yaml` file:
+    ```commandline
+    conda env create -f research-project/environment.yaml
+    ```
+
+5. Sometimes, the shell needs to be configured to use `conda activate`. If so, run `conda init bash`, and reload the shell, i.e. by closing the connection to the server and reconnecting again.
+
+6. Activate the conda environment: `conda activate research-project`
+
+7. To run the scripts with a Llama-3 model, you need to add a Huggingface access token:
+    ```commandline
+    export HF_TOKEN="<<your-token>>"
+    ```
+
 ---
 
 ### Baseline
 
-#### Running the baseline on the cluster
+#### Running the baseline on the CLuster and bwUniCluster
 
 1. Change directory to the subproject folder: `cd ~research-project/baseline`.
 
@@ -214,33 +257,6 @@ and the rest will be taken from the default config file.
    If no config specified, the script will run with the default `baseline_config` 
 (will through an error of not finding `/workspace/students/reasoning`).
 
-### Using bwUniCluster
-
-0. Connect to the bwUniCluster using ssh with the following command:
-`ssh hd_{uni_id}@bwunicluster.scc.kit.edu`.
-
-1. Clone the GitHub repository. This can be done via HTTPS, so you do not need to setup an ssh token.
-`git clone https://gitlab.cl.uni-heidelberg.de/sari/research-project.git`.
-The repository will be created in your home directory.
-
-2. In a new terminal, navigate to the folder where the data is located. Then run the following command to copy the data to the research-project's data folder:
-`scp -r tasks_1-20_v1-2 hd_{uni_id}@bwunicluster.scc.kit.edu:.`
-
-3. Activate the necessary modules. 
-`module load devel/miniconda/4.9.2`
-`module load devel/cuda/11.8`
-You can check the available modules using `module avail`.
-
-4. Create the conda environment by running the following command:
-`conda create -n research-project "python>=3.9" torchvision scikit-learn "pytorch::pytorch>=2.0" torchaudio numpy transformers matplotlib black accelerate "hydra-core>1" cudatoolkit=11.8 -c conda-forge -c pytorch`.
-In theory, this should also be possible using the `environment.yaml` file: `conda env create -f research-project/environment.yaml`
-
-5. Sometimes, the shell needs to be configured to use `conda activate`. If so, run `conda init bash`, and reload the shell, i.e. by closing the connection to the server and reconnecting again.
-
-6. Activate the conda environment: `conda activate research-project`
-
-7. To run the scripts with a Llama-3 model, you need to add a Huggingface access token:
-`export HF_TOKEN="<<your-token>>"`.
 
 ### Data
 
