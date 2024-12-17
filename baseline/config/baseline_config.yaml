@@ -43,6 +43,7 @@ repository:
    path: "../../../../../../workspace/students/reasoning/"
 
 results:
+  parse: True
   # here, csv results and logs will be stored
   # change it for yourself but make sure to create the folders beforehand
   # should be relative to 'repo_path'! don't forget the trailing '/'!

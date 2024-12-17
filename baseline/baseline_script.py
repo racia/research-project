@@ -73,7 +73,8 @@ def run_model(cfg: Config | DictConfig) -> None:
                 task_id=task_id, task_data=task,
                 no_samples=cfg.data.samples_per_task,
                 to_enumerate=cfg.data.to_enumerate,
-                to_continue=cfg.model.to_continue
+                to_continue=cfg.model.to_continue,
+                parse_output=cfg.results.parse,
             )
             data.save_output(data=task_result)
             print("______________________________", end="\n\n", file=log_file)
