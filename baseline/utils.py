@@ -1,3 +1,4 @@
+import re
 from typing import List, Dict
 from baseline.config.baseline_config import Enumerate
 
@@ -56,3 +57,32 @@ def sample_into_parts(sample: Dict[str, Dict[int, str]], to_enumerate: dict[Enum
             parts.append([])
 
     return parts
+
+
+def parse_output(output: str) -> Dict[str, str]:
+    """
+    Parses the output of the model to extract the answer and reasoning.
+
+    :param output: parsed output of the model
+    """
+    answer_pattern = re.compile(r"(?i)(?<=answer:)[\s ]*.+")
+    reasoning_pattern = re.compile(r"(?i)(?<=reasoning:)[\s ]*.+")
+
+    answer = answer_pattern.search(output)
+    if not answer:
+        answer = "None"
+        print("DEBUG: Answer not found in the output")
+        print("OUTPUT:\n", output, end="\n\n")
+    else:
+        answer = answer.group(0).strip()
+
+    reasoning = reasoning_pattern.search(output)
+    if not reasoning:
+        reasoning = "None"
+        print("DEBUG: Reasoning not found in the output")
+        print("OUTPUT:\n", output, end="\n\n")
+    else:
+        reasoning = reasoning.group(0).strip()
+
+    parsed_output = {"answer": answer, "reasoning": reasoning}
+    return parsed_output

@@ -119,8 +119,9 @@ class Baseline:
             task_data:
             Dict[int, Dict[str, Dict[int, str] | Dict[int, List[str]] | Dict[int, List[List[int]]]]],
             no_samples: int,
-            to_enumerate: dict[Enumerate, bool],
-            to_continue: bool
+            to_enumerate: Dict[Enumerate, bool],
+            to_continue: bool,
+            parse_output: bool,
     ) -> List[Dict[str, int | str]]:
         """
         Manages the data flow in and out of the model, iteratively going through 
@@ -162,6 +163,7 @@ class Baseline:
         :param to_enumerate: config adding line numbers to the beginning of lines
         :param to_continue: if we want the model to continue on the last message 
                             rather than create a separate answer
+        :param parse_output: if we want to parse the output of the model (currently looks for 'answer' and 'reasoning')
         :return: results for the task in a list of dicts with each dict representing 
                  one call to the model and will end up as one row of the table
         """
@@ -229,6 +231,11 @@ class Baseline:
                     "true_result": y_true,
                     "model_result": decoded_output,
                 }
+
+                if parse_output:
+                    parsed_output = utils.parse_output(output=decoded_output)
+                    part_result["model_answer"] = parsed_output["answer"]
+                    part_result["model_reasoning"] = parsed_output["reasoning"]
 
                 task_results.append(part_result)
                 y_pred_sample.append(decoded_output)

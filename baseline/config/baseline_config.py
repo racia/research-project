@@ -59,6 +59,7 @@ class Repository:
 
 @dataclass
 class Results:
+    parse: bool
     print_to_file: bool
     path: str
     headers: List[CSVHeaders]
