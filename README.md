@@ -55,9 +55,8 @@ Authors: [@ivakhnenko](https://gitlab.cl.uni-heidelberg.de/ivakhnenko),
 
 ---
 
-## Docs
-
-### Getting started
+## Getting started
+### Using CLuster
 
 First, you need to get the data, the project repository, 
 and create an environment for the project.
@@ -214,7 +213,34 @@ and the rest will be taken from the default config file.
     ```
    If no config specified, the script will run with the default `baseline_config` 
 (will through an error of not finding `/workspace/students/reasoning`).
-    
+
+### Using bwUniCluster
+
+0. Connect to the bwUniCluster using ssh with the following command:
+`ssh hd_{uni_id}@bwunicluster.scc.kit.edu`.
+
+1. Clone the GitHub repository. This can be done via HTTPS, so you do not need to setup an ssh token.
+`git clone https://gitlab.cl.uni-heidelberg.de/sari/research-project.git`.
+The repository will be created in your home directory.
+
+2. In a new terminal, navigate to the folder where the data is located. Then run the following command to copy the data to the research-project's data folder:
+`scp -r tasks_1-20_v1-2 hd_{uni_id}@bwunicluster.scc.kit.edu:.`
+
+3. Activate the necessary modules. 
+`module load devel/miniconda/4.9.2`
+`module load devel/cuda/11.8`
+You can check the available modules using `module avail`.
+
+4. Create the conda environment by running the following command:
+`conda create -n research-project "python>=3.9" torchvision scikit-learn "pytorch::pytorch>=2.0" torchaudio numpy transformers matplotlib black accelerate "hydra-core>1" cudatoolkit=11.8 -c conda-forge -c pytorch`.
+In theory, this should also be possible using the `environment.yaml` file: `conda env create -f research-project/environment.yaml`
+
+5. Sometimes, the shell needs to be configured to use `conda activate`. If so, run `conda init bash`, and reload the shell, i.e. by closing the connection to the server and reconnecting again.
+
+6. Activate the conda environment: `conda activate research-project`
+
+7. To run the scripts with a Llama-3 model, you need to add a Huggingface access token:
+`export HF_TOKEN="<<your-token>>"`.
 
 ### Data
 
