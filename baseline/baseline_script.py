@@ -1,16 +1,18 @@
 from __future__ import annotations
 
+import sys
 from argparse import ArgumentParser
+from pathlib import Path
+
 from hydra import compose, initialize
 from hydra.core.config_store import ConfigStore
 from omegaconf import DictConfig
-
 from sklearn.metrics import accuracy_score
 
-import sys
-from pathlib import Path
 sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
-from data.DataHandler import DataHandler
+from data.DataSaver import DataSaver
+from data.DataProcessor import DataProcessor
+from data.DataLoader import DataLoader
 from data.Statistics import Statistics as St
 from Model import Baseline
 from baseline.config.baseline_config import Config
@@ -33,20 +35,22 @@ def run_model(cfg: Config | DictConfig) -> None:
     print("Config data for the run:", cfg)
     print("Running the script...")
 
-    data = DataHandler()
+    saver = DataSaver()
+    processor = DataProcessor()
+    loader = DataLoader()
     results_path = cfg.repository.path + cfg.results.path + cfg.prompt.name
     log_file = sys.stdout
 
     if cfg.results.print_to_file:
-        log_file, results_path = data.redirect_printing_to_file(path=results_path)
+        log_file, results_path = saver.redirect_printing_to_file(path=results_path)
 
-    data.set_results_details(results_path=results_path, headers=cfg.results.headers)
+    saver.set_results_details(results_path=results_path, headers=cfg.results.headers)
 
     model = Baseline(
         model_name=cfg.model.name,
         max_new_tokens=cfg.model.max_new_tokens,
         temperature=cfg.model.temperature,
-        log_file=log_file
+        log_file=log_file,
     )
 
     model.load_model()
@@ -58,9 +62,10 @@ def run_model(cfg: Config | DictConfig) -> None:
 
     for split, to_fetch in cfg.data.splits.items():
         if to_fetch:
-            data_tasks = data.read_data(path=cfg.data.path, split=split,
-                                        tasks=cfg.data.task_ids)
-            processed_data = data.process_data(data=data_tasks)
+            data_tasks = loader.load_data(
+                path=cfg.data.path, split=split, tasks=cfg.data.task_ids
+            )
+            processed_data = processor.process_data(data=data_tasks)
             model.total_tasks += len(data_tasks)
             data_in_splits[split] = processed_data
 
@@ -70,48 +75,65 @@ def run_model(cfg: Config | DictConfig) -> None:
     for split, tasks in data_in_splits.items():
         for task_id, task in tasks.items():
             task_result = model.iterate_task(
-                task_id=task_id, task_data=task,
+                task_id=task_id,
+                task_data=task,
                 no_samples=cfg.data.samples_per_task,
                 to_enumerate=cfg.data.to_enumerate,
                 to_continue=cfg.model.to_continue,
                 parse_output=cfg.results.parse,
             )
-            data.save_output(data=task_result)
+            saver.save_output(data=task_result)
             print("______________________________", end="\n\n", file=log_file)
 
     print("The run is finished successfully", file=log_file)
 
     print("\n- RUN RESULTS -", end="\n\n", file=log_file)
 
-    print("Processed", model.total_tasks, "tasks in total with",
-          cfg.data.samples_per_task, "samples in each", file=log_file)
-    print("Total samples processed",
-          model.total_tasks * cfg.data.samples_per_task,
-          end="\n\n", file=log_file)
+    print(
+        "Processed",
+        model.total_tasks,
+        "tasks in total with",
+        cfg.data.samples_per_task,
+        "samples in each",
+        file=log_file,
+    )
+    print(
+        "Total samples processed",
+        model.total_tasks * cfg.data.samples_per_task,
+        end="\n\n",
+        file=log_file,
+    )
 
     model.accuracy = round(accuracy_score(model.y_true, model.y_pred), 2)
     print("General accuracy:", model.accuracy, file=log_file)
 
-    model.soft_match_accuracy = round(St.soft_match_accuracy_score(model.y_true, model.y_pred), 2)
+    model.soft_match_accuracy = round(
+        St.soft_match_accuracy_score(model.y_true, model.y_pred), 2
+    )
     print("General soft match accuracy:", model.soft_match_accuracy, file=log_file)
 
-    row = [{"accuracy": model.accuracy,
-            "soft_match_accuracy": model.soft_match_accuracy}]
-    data.save_output(data=row)
+    row = [
+        {"accuracy": model.accuracy, "soft_match_accuracy": model.soft_match_accuracy}
+    ]
+    saver.save_output(data=row)
 
     if cfg.results.print_to_file:
         # console printing must be returned
         # if printing was redirected to logs created at the beginning of the script
         # 'log_file' will exist in that case as well
-        data.return_console_printing(log_file)
+        saver.return_console_printing(log_file)
 
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument("-c", "--config", dest="config",
-                        help="use the settings from the config file of given name "
-                             "(with relative path from the config directory)",
-                        metavar="CONFIG")
+    parser.add_argument(
+        "-c",
+        "--config",
+        dest="config",
+        help="use the settings from the config file of given name "
+        "(with relative path from the config directory)",
+        metavar="CONFIG",
+    )
     args = parser.parse_args()
 
     cs = ConfigStore.instance()

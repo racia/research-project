@@ -1,12 +1,16 @@
 from typing import List
 
 import matplotlib.pyplot as plt
-from data.DataHandler import DataHandler
+
+from data.DataLoader import DataLoader
+from data.DataProcessor import DataProcessor
+from data_utils import check_or_create_directory
 
 
 class Statistics:
     def __init__(self):
-        self.dh = DataHandler()
+        self.loader = DataLoader()
+        self.processor = DataProcessor()
 
     def get_data_stats(self, data_path: str):
         """
@@ -15,8 +19,8 @@ class Statistics:
         :param data_path: path to the data
         :return:
         """
-        all_data = self.dh.read_data(path=data_path, split="train")
-        processed_data = self.dh.process_data(all_data)
+        all_data = self.loader.load_data(path=data_path, split="train")
+        processed_data = self.processor.process_data(all_data)
 
         self.analyse_task_questions(processed_data)
 
@@ -26,7 +30,7 @@ class Statistics:
 
         :param data: dictionary containing the data
         """
-        self.dh.check_or_create_directory("../plots")
+        check_or_create_directory("../plots")
         q_stats = {}
         c_stats = {}
         c_before_q = {}
@@ -76,7 +80,9 @@ class Statistics:
         plt.savefig("plots/num_context_per_task.png")
 
     @staticmethod
-    def soft_match_accuracy_score(true_values: List[str], predicted_values: List[str]) -> float:
+    def soft_match_accuracy_score(
+        true_values: List[str], predicted_values: List[str]
+    ) -> float:
         true_in_predicted = 0
         for true, prediction in zip(true_values, predicted_values):
             if true.lower() in prediction.lower():
