@@ -15,8 +15,11 @@ venv.bak/
 .idea/
 .vscode/
 
-data/*
-plots/*
+data/tasks_1-20_v1-2/*
+data/*.zip
+data/*.tar.gz
+data/*.txt
+plots/*.png
 
 */.DS_Store
 */*/.DS_Store

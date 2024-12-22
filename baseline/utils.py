@@ -1,9 +1,9 @@
 import re
-from typing import List, Dict
+
 from baseline.config.baseline_config import Enumerate
 
 
-def expand_cardinal_points(abbr_news: List[str]) -> List[str]:
+def expand_cardinal_points(abbr_news: list[str]) -> list[str]:
     """
     Expands the abbreviations of cardinal points into full words by checking
     if any word as a list item belongs to possible abbreviations.
@@ -11,12 +11,7 @@ def expand_cardinal_points(abbr_news: List[str]) -> List[str]:
     :param abbr_news: list of possible abbreviations
     :return: list of words with cardinal points expanded
     """
-    cardinal_points = {
-        "n": "north",
-        "e": "east",
-        "w": "west",
-        "s": "south"
-    }
+    cardinal_points = {"n": "north", "e": "east", "w": "west", "s": "south"}
     expanded_news = []
     for abbr in abbr_news:
         if abbr in cardinal_points.keys():
@@ -26,8 +21,9 @@ def expand_cardinal_points(abbr_news: List[str]) -> List[str]:
     return expanded_news
 
 
-def sample_into_parts(sample: Dict[str, Dict[int, str]], to_enumerate: dict[Enumerate, bool]) \
-        -> List[List[str]]:
+def sample_into_parts(
+    sample: dict[str, dict[int, str]], to_enumerate: dict[Enumerate, bool]
+) -> list[list[str]]:
     """
     Goes through the joined sample lines in ascending order and
     partitions in after a question was encountered. Context lines
@@ -39,9 +35,10 @@ def sample_into_parts(sample: Dict[str, Dict[int, str]], to_enumerate: dict[Enum
     :return: sample separated into parts of context lines finished with a question each
     """
 
-    sample_ordered = sorted(list(sample["context"].items()) +
-                            list(sample["question"].items()))
-    is_question = (lambda sentence: "?" in sentence)
+    sample_ordered = sorted(
+        list(sample["context"].items()) + list(sample["question"].items())
+    )
+    is_question = lambda sentence: "?" in sentence
     parts = [[]]
 
     for line_id, line in sample_ordered:
@@ -59,7 +56,7 @@ def sample_into_parts(sample: Dict[str, Dict[int, str]], to_enumerate: dict[Enum
     return parts
 
 
-def parse_output(output: str) -> Dict[str, str]:
+def parse_output(output: str) -> dict[str, str]:
     """
     Parses the output of the model to extract the answer and reasoning.
 
