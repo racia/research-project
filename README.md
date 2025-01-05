@@ -248,6 +248,7 @@ and the rest will be taken from the default config file.
 2. Create your `yaml` files with configs in `research-project/config`. 
 If you use defaults, you can only specify a detail or two, 
 and the rest will be taken from the default config file.
+! You need to adjust the result directory for each run! Otherwise your old results will be overwritten!
 
 
 3. Run the script with a config file, for example `baseline_config`:
