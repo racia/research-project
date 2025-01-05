@@ -1,7 +1,6 @@
 import nltk
-from nltk.tokenize import word_tokenize
-
 from DataHandler import DataHandler
+from nltk.tokenize import word_tokenize
 
 
 class Scenery:
