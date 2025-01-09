@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List, Dict, Union, TextIO
 
 import torch
@@ -61,8 +62,14 @@ class Baseline:
         )
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
 
-    def set_system_prompt(self, prompt):
-        """Set the system prompt in a formatted way."""
+    def set_system_prompt(self, prompt_file_path: Path) -> None:
+        """
+        Set the system prompt in a formatted way.
+
+        :param prompt_file_path: path to the prompt file
+        """
+        with open(prompt_file_path, "r", encoding="utf-8") as f:
+            prompt = f.read().strip
         self.system_prompt_ = [{"role": "system", "content": prompt},]
 
     def get_system_prompt(self) -> List[Dict[str, str]]:

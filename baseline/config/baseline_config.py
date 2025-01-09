@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Dict, List
 
 
 @dataclass
@@ -28,16 +27,16 @@ class Enumerate:
 @dataclass
 class Data:
     path: str
-    splits: Dict[DataSplits, bool]
-    task_ids: bool | List[int]
+    splits: dict[DataSplits, bool]
+    task_ids: bool | list[int]
     samples_per_task: int
-    to_enumerate: Dict[Enumerate, bool]
+    to_enumerate: dict[Enumerate, bool]
 
 
 @dataclass
-class Prompt:
-    name: str
-    text: str
+class Prompts:
+    names: list[str]
+    paths: list[str]
 
 
 @dataclass
@@ -62,13 +61,13 @@ class Results:
     parse: bool
     print_to_file: bool
     path: str
-    headers: List[CSVHeaders]
+    headers: list[CSVHeaders]
 
 
 @dataclass
 class Config:
     model: Model
     data: Data
-    prompt: Prompt
+    prompt: Prompts
     repository: Repository
     results: Results

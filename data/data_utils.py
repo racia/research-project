@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 
 def check_or_create_directory(path: str) -> None:

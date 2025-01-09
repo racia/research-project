@@ -27,11 +27,17 @@ class Plotter:
             x_label: str = "Task",
             y_label: str = "Accuracy",
             plot_name=None,
-    ):
+            plot_name_add: str = "",
+    ) -> None:
         """
         Plot the accuracy per task.
 
         :param acc_per_task: list of accuracies per task. We assume that the list is ordered ascending by task.
+        :param x_label: label for the x-axis
+        :param y_label: label for the y-axis
+        :param plot_name: name of the plot
+        :param plot_name_add: addition to the plot name
+        :return: None
         """
         plt.figure(figsize=(10, 5))
 
@@ -46,35 +52,39 @@ class Plotter:
         if plot_name is not None:
             plt.savefig(plot_name)
         else:
+            label = y_label.lower().replace(" ", "_")
             plt.savefig(
-                f"{self.result_path}/acc_per_task_no{self.plot_counter_task}.png"
+                f"{self.result_path}/{plot_name_add}{label}_per_task_no{self.plot_counter_task}.png"
             )
 
         self.plot_counter_task += 1
 
     def plot_acc_per_task_and_prompt(
             self,
-            acc_per_task: dict,
+            acc_per_prompt_task: dict,
             x_label: str = "Task",
             y_label: str = "Accuracy",
             plot_name=None,
+            plot_name_add: str = "",
     ) -> None:
         """
         Plot the accuracy per task and prompt.
 
-        :param acc_per_task: dict of accuracies. The keys are the prompts, the values a list of accuracies per task.
+        :param acc_per_prompt_task: dict of accuracies. The keys are the prompts, the values a list of accuracies per task.
         :param x_label: label for the x-axis
         :param y_label: label for the y-axis
+        :param plot_name: name of the plot
+        :param plot_name_add: addition to the plot name
         :return: None
         """
         plt.figure(figsize=(10, 5))
 
         # make the plots prettier
-        colors = self.cmap(np.linspace(0, 1, len(acc_per_task)))
+        colors = self.cmap(np.linspace(0, 1, len(acc_per_prompt_task)))
 
         max_x_len = 0
 
-        for (prompt, acc), color in zip(acc_per_task.items(), colors):
+        for (prompt, acc), color in zip(acc_per_prompt_task.items(), colors):
             if len(acc) > max_x_len:
                 max_x_len = len(acc)
             plt.plot(range(1, len(acc) + 1), acc, label=prompt, color=color)
@@ -88,8 +98,9 @@ class Plotter:
         if plot_name is not None:
             plt.savefig(plot_name)
         else:
+            label = y_label.lower().replace(" ", "_")
             plt.savefig(
-                f"{self.result_path}/acc_per_task_and_prompt_no{self.plot_counter_prompt}.png"
+                f"{self.result_path}/{plot_name_add}{label}_per_and_prompt_no{self.plot_counter_task}.png"
             )
 
         self.plot_counter_prompt += 1

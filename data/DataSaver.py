@@ -6,8 +6,7 @@ import sys
 from pathlib import Path
 from typing import TextIO
 
-from baseline.config.baseline_config import CSVHeaders
-from data_utils import is_empty_file
+from data.data_utils import is_empty_file
 
 
 class DataSaver:
@@ -15,24 +14,35 @@ class DataSaver:
     This class handles everything related to saving data.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initialize the DataSaver.
         The datasaver handles everything related to saving data.
         """
         self.old_stdout: TextIO = sys.stdout
-
-        self.results_path: str = ""
-        self.results_headers: list[str] = []
-
-    def set_results_details(self, results_path: str, headers: list[CSVHeaders]) -> None:
-        """
-        Allows to set the path for saving results and headers for the csv file.
-        """
         self.results_path = results_path
-        self.results_headers = headers
 
-    def save_output(self, data: list[dict[str, str | int | float]]) -> None:
+    def create_path_files(self, results_path: Path, prompt_name: str, run_number: int) \
+            -> tuple[Path, Path, dict[str, Path]]:
+        self.results_path = results_path / prompt_name / f"run_{run_number}"
+
+        if not os.path.exists(self.results_path):
+            os.makedirs(self.results_path)
+
+        log_file_path = self.results_path / f"{prompt_name}.log"
+        results_file_path = self.results_path / f"{prompt_name}_results.csv"
+
+        accuracy_file_paths = {
+            "train": self.results_path / f"{prompt_name}_train_accuracies.csv",
+            "valid": self.results_path / f"{prompt_name}_valid_accuracies.csv",
+            "test": self.results_path / f"{prompt_name}_test_accuracies.csv"
+        }
+
+        return log_file_path, results_file_path, accuracy_file_paths
+
+    @staticmethod
+    def save_output(data: list[dict[str, str | int | float]],
+                    headers: list | tuple, file_path: Path) -> None:
         """
         This function allows to save the data continuously throughout the run.
         The headers are added once at the beginning, and the data is appended
@@ -44,17 +54,31 @@ class DataSaver:
             writer.writerow(row)
 
         :param data: one row as list of strings or multiple such rows
+        :param headers: the headers for the csv file
+        :param file_path: the name of the file to save the data
         :return: None
         """
-        path = Path(f"{self.results_path}.csv")
-
-        with open(path, "a+", encoding="utf-8") as file:
+        with open(file_path, "a+", encoding="utf-8") as file:
             writer = csv.DictWriter(
-                file, fieldnames=self.results_headers, delimiter="\t"
+                file, fieldnames=headers, delimiter="\t"
             )
-            if is_empty_file(path):
+            if is_empty_file(file_path):
                 writer.writeheader()
             [writer.writerow(row) for row in data]
+
+    @staticmethod
+    def redirect_printing_to_log_file(file_name) -> TextIO:
+        """
+        Allows to redirect printing during the script run from console into a log file.
+        Old 'sys.stdout' that must be returned in place after the run by calling
+        DataHandler.return_console_printing!
+
+        :param file_name: the path and name of the file to redirect the printing
+        :return: log file to write into
+        """
+        log_file = open(file_name, "w")
+        sys.stdout = log_file
+        return log_file
 
     def return_console_printing(self, file_to_close):
         """
@@ -65,32 +89,3 @@ class DataSaver:
         """
         file_to_close.close()
         sys.stdout = self.old_stdout
-
-    def redirect_printing_to_file(self, path: str) -> tuple[TextIO, Path]:
-        """
-        Allows to redirect printing during the script run from console into a log file.
-        Old 'sys.stdout' that must be returned in place after the run by calling
-        DataHandler.return_console_printing!
-
-        :param path: the path to the result directory with a file name (no extension required)
-        :return: log fine to write into and Path to the updated result file
-        """
-        # 'log_file' and 'file_name' will surely be created:
-        # if files_1-5 already exist, then a default file_0 would be created/overwritten
-        log_file = None
-        file_path_name = Path("")
-
-        file_created = False
-        for i in range(1, 6):
-            file_path_name = Path(f"{path}_{i}")
-            if not os.path.isfile(f"{file_path_name}.log"):
-                log_file = open(f"{file_path_name}.log", "w")
-                file_created = True
-                break
-
-        if not file_created:
-            file_path_name = Path(f"{path}_0")
-            log_file = open(f"{file_path_name}.log", "w")
-
-        sys.stdout = log_file
-        return log_file, file_path_name
