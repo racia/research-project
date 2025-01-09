@@ -1,0 +1,1130 @@
+entry_id	line_id	part_id	task_id	sample_id	context/question	human_subjects	non_human_subjects	subj_attributes	relations	generalized_relations	locations	direct_objects	obj_attributes	indirect_objects	result_relation	reasoning	implicit_object	implicit_relation	implicit_location	golden_answer	golden_supporting_facts
+1	1	1	1	18	John went to the kitchen.	John			go	move	kitchen				be						
+2	2	1	1	18	John journeyed to the office.	John			journey	move	office				be						
+3	3	1	1	18	Where is John?	John			be	be					be					office	2
+4	4	2	1	18	Daniel travelled to the bedroom.	Daniel			travel	move	bedroom				be						
+5	5	2	1	18	John journeyed to the kitchen.	John			journey	move	kitchen				be						
+6	6	2	1	18	Where is John?	John			be	be					be					kitchen	5
+7	7	3	1	18	John journeyed to the office.	John			journey	move	office				be						
+8	8	3	1	18	Mary went back to the bathroom.	Mary			go	move	bathroom				be						
+9	9	3	1	18	Where is Mary?	Mary			be	be					be					bathroom	8
+10	10	4	1	18	John journeyed to the garden.	John			journey	move	garden				be						
+11	11	4	1	18	Sandra went to the bathroom.	Sandra			go	move	bathroom				be						
+12	12	4	1	18	Where is John?	John			be	be					be					garden	10
+13	13	5	1	18	Sandra journeyed to the office.	Sandra			journey	move	office				be						
+14	14	5	1	18	John went back to the bathroom.	John			go	move	bathroom				be						
+15	15	5	1	18	Where is Sandra?	Sandra			be	be					be					office	13
+16	1	1	1	19	Mary travelled to the kitchen.	Mary			travel	move	kitchen				be						
+17	2	1	1	19	Sandra moved to the office.	Sandra			move	move	office				be						
+18	3	1	1	19	Where is Sandra?	Sandra			be	be					be					office	2
+19	4	2	1	19	Mary went back to the bedroom.	Mary			go	move	bedroom				be						
+20	5	2	1	19	Mary journeyed to the kitchen.	Mary			journey	move	kitchen				be						
+21	6	2	1	19	Where is Mary?	Mary			be	be					be					kitchen	5
+22	7	3	1	19	John travelled to the bedroom.	John			travel	move	bedroom				be						
+23	8	3	1	19	Daniel went to the bedroom.	Daniel			go	move	bedroom				be						
+24	9	3	1	19	Where is Mary?	Mary			be	be					be					kitchen	5
+25	10	4	1	19	Sandra journeyed to the garden.	Sandra			journey	move	garden				be						
+26	11	4	1	19	Sandra travelled to the office.	Sandra			travel	move	office				be						
+27	12	4	1	19	Where is Sandra?	Sandra			be	be					be					office	11
+28	13	5	1	19	Mary travelled to the office.	Mary			travel	move	office				be						
+29	14	5	1	19	Mary journeyed to the kitchen.	Mary			journey	move	kitchen				be						
+30	15	5	1	19	Where is Sandra?	Sandra			be	be					be					office	11
+31	1	1	1	20	Sandra went to the kitchen.	Sandra			go	move	kitchen				be						
+32	2	1	1	20	John journeyed to the kitchen.	John			journey	move	kitchen				be						
+33	3	1	1	20	Where is Sandra?	Sandra			be	be					be					kitchen	1
+34	4	2	1	20	Sandra went back to the garden.	Sandra			go	move	garden				be						
+35	5	2	1	20	Mary travelled to the hallway.	Mary			travel	move	hallway				be						
+36	6	2	1	20	Where is John?	John			be	be					be					kitchen	2
+37	7	3	1	20	Sandra went back to the bathroom.	Sandra			go	move	bathroom				be						
+38	8	3	1	20	Daniel journeyed to the garden.	Daniel			journey	move	garden				be						
+39	9	3	1	20	Where is Daniel?	Daniel			be	be					be					garden	8
+40	10	4	1	20	John moved to the hallway.	John			move	move	hallway				be						
+41	11	4	1	20	Mary moved to the bathroom.	Mary			move	move	bathroom				be						
+42	12	4	1	20	Where is Sandra?	Sandra			be	be					be					bathroom	7
+43	13	5	1	20	John went back to the office.	John			go	move	office				be						
+44	14	5	1	20	Mary went to the kitchen.	Mary			go	move	kitchen				be						
+45	15	5	1	20	Where is Mary?	Mary			be	be					be					kitchen	14
+46	1	1	2	18	Sandra travelled to the kitchen.	Sandra			travel	move	kitchen				be						
+47	2	1	2	18	Daniel grabbed the football there.	Daniel			grab	take	there	football			have						
+48	3	1	2	18	Daniel took the milk there.	Daniel			take	take	there	milk			have						
+49	4	1	2	18	John went to the bathroom.	John			go	move	bathroom				be						
+50	5	1	2	18	Daniel travelled to the hallway.	Daniel			travel	move	hallway				be						
+51	6	1	2	18	Daniel dropped the milk.	Daniel			drop	put		milk			not have						
+52	7	1	2	18	Where is the milk?		milk		be	be					be					hallway	6 5
+53	8	2	2	18	Daniel grabbed the milk there.	Daniel			grab	take	there	milk			have						
+54	9	2	2	18	Daniel journeyed to the garden.	Daniel			journey	move	garden				be						
+55	10	2	2	18	Where is the milk?		milk		be	be					be					garden	8 9
+56	11	3	2	18	Daniel dropped the football.	Daniel			drop	put		football			not have						
+57	12	3	2	18	Mary went to the kitchen.	Mary			go	move	kitchen				be						
+58	13	3	2	18	Where is the milk?		milk		be	be					be					garden	8 9
+59	14	4	2	18	Mary travelled to the bedroom.	Mary			travel	move	bedroom				be						
+60	15	4	2	18	Daniel picked up the football there.	Daniel			pick up	take	there	football			have						
+61	16	4	2	18	Daniel left the milk.	Daniel			leave	put		milk			not have						
+62	17	4	2	18	Daniel took the milk there.	Daniel			take	take	there	milk			have						
+63	18	4	2	18	Sandra moved to the garden.	Sandra			move	move	garden				be						
+64	19	4	2	18	Daniel went back to the office.	Daniel			go	move	office				be						
+65	20	4	2	18	Where is the milk?		milk		be	be					be					office	17 19
+66	21	5	2	18	Daniel took the apple there.	Daniel			take	take	there	apple			have						
+67	22	5	2	18	Daniel put down the football there.	Daniel			put down	put	there	football			not have						
+68	23	5	2	18	Where is the milk?		milk		be	be					be					office	17 19
+69	1	1	2	19	Sandra journeyed to the bathroom.	Sandra			journey	move	bathroom				be						
+70	2	1	2	19	Daniel picked up the apple there.	Daniel			pick up	take	there	apple			have						
+71	3	1	2	19	Daniel journeyed to the kitchen.	Daniel			journey	move	kitchen				be						
+72	4	1	2	19	Daniel put down the apple.	Daniel			put down	put		apple			not have						
+73	5	1	2	19	Where is the apple?		apple		be	be					be					kitchen	4 3
+74	6	2	2	19	Daniel grabbed the apple there.	Daniel			grab	take	there	apple			have						
+75	7	2	2	19	Sandra moved to the bedroom.	Sandra			move	move	bedroom				be						
+76	8	2	2	19	Daniel went back to the hallway.	Daniel			go	move	hallway				be						
+77	9	2	2	19	Sandra went back to the hallway.	Sandra			go	move	hallway				be						
+78	10	2	2	19	Where is the apple?		apple		be	be					be					hallway	6 8
+79	11	3	2	19	Sandra went to the office.	Sandra			go	move	office				be						
+80	12	3	2	19	Daniel took the football there.	Daniel			take	take	there	football			have						
+81	13	3	2	19	Mary moved to the office.	Mary			move	move	office				be						
+82	14	3	2	19	Daniel went to the garden.	Daniel			go	move	garden				be						
+83	15	3	2	19	Where is the football?		football		be	be					be					garden	12 14
+84	16	4	2	19	Daniel put down the football.	Daniel			put down	put		football			not have						
+85	17	4	2	19	Sandra journeyed to the kitchen.	Sandra			journey	move	kitchen				be						
+86	18	4	2	19	Where is the football?		football		be	be					be					garden	16 14
+87	19	5	2	19	Daniel grabbed the football there.	Daniel			grab	take	there	football			have						
+88	20	5	2	19	Daniel discarded the football.	Daniel			discard	put		football			not have						
+89	21	5	2	19	Where is the football?		football		be	be					be					garden	20 14
+90	1	1	2	20	Mary travelled to the kitchen.	Mary			travel	move	kitchen				be						
+91	2	1	2	20	Sandra moved to the office.	Sandra			move	move	office				be						
+92	3	1	2	20	Mary went to the hallway.	Mary			go	move	hallway				be						
+93	4	1	2	20	John went to the bathroom.	John			go	move	bathroom				be						
+94	5	1	2	20	Daniel moved to the garden.	Daniel			move	move	garden				be						
+95	6	1	2	20	Sandra got the apple there.	Sandra			get	take	there	apple			have						
+96	7	1	2	20	John journeyed to the kitchen.	John			journey	move	kitchen				be						
+97	8	1	2	20	Sandra dropped the apple.	Sandra			drop	put		apple			not have						
+98	9	1	2	20	Where is the apple?		apple		be	be					be					office	8 2
+99	10	2	2	20	Mary went to the bathroom.	Mary			go	move	bathroom				be						
+100	11	2	2	20	Mary went back to the office.	Mary			go	move	office				be						
+101	12	2	2	20	Where is the apple?		apple		be	be					be					office	8 2
+102	13	3	2	20	Mary grabbed the apple there.	Mary			grab	take	there	apple			have						
+103	14	3	2	20	John went back to the bedroom.	John			go	move	bedroom				be						
+104	15	3	2	20	John moved to the hallway.	John			move	move	hallway				be						
+105	16	3	2	20	John journeyed to the garden.	John			journey	move	garden				be						
+106	17	3	2	20	Mary dropped the apple there.	Mary			drop	put	there	apple			not have						
+107	18	3	2	20	Mary got the apple there.	Mary			get	take	there	apple			have						
+108	19	3	2	20	Sandra travelled to the bathroom.	Sandra			travel	move	bathroom				be						
+109	20	3	2	20	Mary put down the apple.	Mary			put down	put		apple			not have						
+110	21	3	2	20	Where is the apple?		apple		be	be					be					office	20 11
+111	22	4	2	20	Mary travelled to the hallway.	Mary			travel	move	hallway				be						
+112	23	4	2	20	Daniel went to the office.	Daniel			go	move	office				be						
+113	24	4	2	20	Where is the apple?		apple		be	be					be					office	20 11
+114	25	5	2	20	Sandra journeyed to the bedroom.	Sandra			journey	move	bedroom				be						
+115	26	5	2	20	Sandra got the milk there.	Sandra			get	take	there	milk			have						
+116	27	5	2	20	Where is the apple?		apple		be	be					be					office	20 11
+117	1	1	3	18	John moved to the kitchen.	John			move	move	kitchen				be						
+118	2	1	3	18	Daniel travelled to the office.	Daniel			travel	move	office				be						
+119	3	1	3	18	Daniel moved to the kitchen.	Daniel			move	move	kitchen				be						
+120	4	1	3	18	Mary moved to the kitchen.	Mary			move	move	kitchen				be						
+121	5	1	3	18	Sandra journeyed to the bedroom.	Sandra			journey	move	bedroom				be						
+122	6	1	3	18	John went to the office.	John			go	move	office				be						
+123	7	1	3	18	Daniel travelled to the garden.	Daniel			travel	move	garden				be						
+124	8	1	3	18	Daniel picked up the milk.	Daniel			pick up	take		milk			have						
+125	9	1	3	18	Mary journeyed to the garden.	Mary			journey	move	garden				be						
+126	10	1	3	18	Sandra moved to the garden.	Sandra			move	move	garden				be						
+127	11	1	3	18	John journeyed to the garden.	John			journey	move	garden				be						
+128	12	1	3	18	John travelled to the office.	John			travel	move	office				be						
+129	13	1	3	18	Daniel travelled to the kitchen.	Daniel			travel	move	kitchen				be						
+130	14	1	3	18	John went back to the garden.	John			go	move	garden				be						
+131	15	1	3	18	Daniel travelled to the bedroom.	Daniel			travel	move	bedroom				be						
+132	16	1	3	18	John travelled to the kitchen.	John			travel	move	kitchen				be						
+133	17	1	3	18	Daniel got the apple there.	Daniel			get	take	there	apple			have						
+134	18	1	3	18	Daniel left the apple.	Daniel			leave	put		apple			not have						
+135	19	1	3	18	Daniel grabbed the apple.	Daniel			grab	take		apple			have						
+136	20	1	3	18	Daniel left the apple.	Daniel			leave	put		apple			not have						
+137	21	1	3	18	Sandra travelled to the hallway.	Sandra			travel	move	hallway				be						
+138	22	1	3	18	Mary moved to the office.	Mary			move	move	office				be						
+139	23	1	3	18	Mary took the football.	Mary			take	take		football			have						
+140	24	1	3	18	Mary put down the football.	Mary			put down	put		football			not have						
+141	25	1	3	18	Daniel picked up the apple.	Daniel			pick up	take		apple			have						
+142	26	1	3	18	Daniel dropped the apple there.	Daniel			drop	put	there	apple			not have						
+143	27	1	3	18	Daniel journeyed to the bathroom.	Daniel			journey	move	bathroom				be						
+144	28	1	3	18	John went to the bathroom.	John			go	move	bathroom				be						
+145	29	1	3	18	Mary journeyed to the bedroom.	Mary			journey	move	bedroom				be						
+146	30	1	3	18	Daniel dropped the milk there.	Daniel			drop	put	there	milk			not have						
+147	31	1	3	18	Where was the milk before the bathroom?		milk		be	be					be					bedroom	30 27 15
+148	32	2	3	18	Daniel moved to the garden.	Daniel			move	move	garden				be						
+149	33	2	3	18	John moved to the kitchen.	John			move	move	kitchen				be						
+150	34	2	3	18	Where was the milk before the bedroom?		milk		be	be					be					kitchen	30 15 13
+151	35	3	3	18	Daniel went to the hallway.	Daniel			go	move	hallway				be						
+152	36	3	3	18	John went back to the garden.	John			go	move	garden				be						
+153	37	3	3	18	Where was the milk before the bathroom?		milk		be	be					be					bedroom	30 27 15
+154	38	4	3	18	Daniel moved to the office.	Daniel			move	move	office				be						
+155	39	4	3	18	John travelled to the bedroom.	John			travel	move	bedroom				be						
+156	40	4	3	18	Mary grabbed the apple.	Mary			grab	take		apple			have						
+157	41	4	3	18	Mary went to the office.	Mary			go	move	office				be						
+158	42	4	3	18	Daniel went to the kitchen.	Daniel			go	move	kitchen				be						
+159	43	4	3	18	Mary got the football.	Mary			get	take		football			have						
+160	44	4	3	18	Sandra travelled to the kitchen.	Sandra			travel	move	kitchen				be						
+161	45	4	3	18	John journeyed to the garden.	John			journey	move	garden				be						
+162	46	4	3	18	Mary went to the garden.	Mary			go	move	garden				be						
+163	47	4	3	18	Sandra went to the bedroom.	Sandra			go	move	bedroom				be						
+164	48	4	3	18	Sandra travelled to the garden.	Sandra			travel	move	garden				be						
+165	49	4	3	18	John went to the kitchen.	John			go	move	kitchen				be						
+166	50	4	3	18	Mary went to the hallway.	Mary			go	move	hallway				be						
+167	51	4	3	18	Daniel travelled to the hallway.	Daniel			travel	move	hallway				be						
+168	52	4	3	18	Daniel went back to the office.	Daniel			go	move	office				be						
+169	53	4	3	18	Mary went back to the kitchen.	Mary			go	move	kitchen				be						
+170	54	4	3	18	Mary moved to the bathroom.	Mary			move	move	bathroom				be						
+171	55	4	3	18	Mary got the milk.	Mary			get	take		milk			have						
+172	56	4	3	18	Mary put down the milk.	Mary			put down	put		milk			not have						
+173	57	4	3	18	Mary left the football.	Mary			leave	put		football			not have						
+174	58	4	3	18	Where was the football before the bathroom?		football		be	be					be					kitchen	57 54 53
+175	59	5	3	18	Daniel went back to the bedroom.	Daniel			go	move	bedroom				be						
+176	60	5	3	18	Sandra journeyed to the bathroom.	Sandra			journey	move	bathroom				be						
+177	61	5	3	18	Where was the football before the hallway?		football		be	be	hallway				be					garden	57 50 46
+178	1	1	3	19	Sandra picked up the apple there.	Sandra			pick up	take	there	apple			have						
+179	2	1	3	19	Mary travelled to the hallway.	Mary			travel	move	hallway				be						
+180	3	1	3	19	Mary went back to the office.	Mary			go	move	office				be						
+181	4	1	3	19	Sandra journeyed to the hallway.	Sandra			journey	move	hallway				be						
+182	5	1	3	19	Daniel moved to the hallway.	Daniel			move	move	hallway				be						
+183	6	1	3	19	Mary moved to the hallway.	Mary			move	move	hallway				be						
+184	7	1	3	19	John went to the hallway.	John			go	move	hallway				be						
+185	8	1	3	19	Sandra went to the office.	Sandra			go	move	office				be						
+186	9	1	3	19	Mary journeyed to the bedroom.	Mary			journey	move	bedroom				be						
+187	10	1	3	19	Sandra left the apple.	Sandra			leave	put		apple			not have						
+188	11	1	3	19	Where was the apple before the office?		apple		be	be					be					hallway	10 8 4
+189	12	2	3	19	John went to the bathroom.	John			go	move	bathroom				be						
+190	13	2	3	19	John went to the kitchen.	John			go	move	kitchen				be						
+191	14	2	3	19	Where was the apple before the office?		apple		be	be					be					hallway	10 8 4
+192	15	3	3	19	Sandra went to the kitchen.	Sandra			go	move	kitchen				be						
+193	16	3	3	19	Sandra moved to the hallway.	Sandra			move	move	hallway				be						
+194	17	3	3	19	Where was the apple before the office?		apple		be	be					be					hallway	10 8 4
+195	18	4	3	19	John travelled to the office.	John			travel	move	office				be						
+196	19	4	3	19	Daniel travelled to the bedroom.	Daniel			travel	move	bedroom				be						
+197	20	4	3	19	John went to the garden.	John			go	move	garden				be						
+198	21	4	3	19	John journeyed to the bedroom.	John			journey	move	bedroom				be						
+199	22	4	3	19	Sandra travelled to the bathroom.	Sandra			travel	move	bathroom				be						
+200	23	4	3	19	Sandra journeyed to the garden.	Sandra			journey	move	garden				be						
+201	24	4	3	19	Mary moved to the kitchen.	Mary			move	move	kitchen				be						
+202	25	4	3	19	Daniel travelled to the kitchen.	Daniel			travel	move	kitchen				be						
+203	26	4	3	19	Sandra travelled to the hallway.	Sandra			travel	move	hallway				be						
+204	27	4	3	19	John travelled to the kitchen.	John			travel	move	kitchen				be						
+205	28	4	3	19	Sandra went back to the office.	Sandra			go	move	office				be						
+206	29	4	3	19	John went to the bedroom.	John			go	move	bedroom				be						
+207	30	4	3	19	Daniel journeyed to the bathroom.	Daniel			journey	move	bathroom				be						
+208	31	4	3	19	John went back to the bathroom.	John			go	move	bathroom				be						
+209	32	4	3	19	Sandra moved to the hallway.	Sandra			move	move	hallway				be						
+210	33	4	3	19	Daniel got the football.	Daniel			get	take		football			have						
+211	34	4	3	19	Mary moved to the bathroom.	Mary			move	move	bathroom				be						
+212	35	4	3	19	Daniel went to the office.	Daniel			go	move	office				be						
+213	36	4	3	19	Sandra went back to the garden.	Sandra			go	move	garden				be						
+214	37	4	3	19	Sandra took the milk.	Sandra			take	take		milk			have						
+215	38	4	3	19	Sandra dropped the milk.	Sandra			drop	put		milk			not have						
+216	39	4	3	19	Daniel travelled to the hallway.	Daniel			travel	move	hallway				be						
+217	40	4	3	19	Daniel went back to the kitchen.	Daniel			go	move	kitchen				be						
+218	41	4	3	19	Daniel dropped the football.	Daniel			drop	put		football			not have						
+219	42	4	3	19	Where was the football before the kitchen?		football		be	be					be					hallway	41 40 39
+220	43	5	3	19	John moved to the hallway.	John			move	move	hallway				be						
+221	44	5	3	19	Daniel journeyed to the hallway.	Daniel			journey	move	hallway				be						
+222	45	5	3	19	Where was the football before the kitchen?		football		be	be					be					hallway	41 40 39
+223	1	1	3	20	Sandra took the football.	Sandra			take	take		football			have						
+224	2	1	3	20	Sandra travelled to the garden.	Sandra			travel	move	garden				be						
+225	3	1	3	20	Mary journeyed to the office.	Mary			journey	move	office				be						
+226	4	1	3	20	Mary went to the bathroom.	Mary			go	move	bathroom				be						
+227	5	1	3	20	Sandra put down the football.	Sandra			put down	put		football			not have						
+228	6	1	3	20	Sandra went back to the bathroom.	Sandra			go	move	bathroom				be						
+229	7	1	3	20	Daniel went to the garden.	Daniel			go	move	garden				be						
+230	8	1	3	20	John went to the hallway.	John			go	move	hallway				be						
+231	9	1	3	20	Sandra journeyed to the hallway.	Sandra			journey	move	hallway				be						
+232	10	1	3	20	Daniel got the football there.	Daniel			get	take	there	football			have						
+233	11	1	3	20	John got the apple.	John			get	take		apple			have						
+234	12	1	3	20	Mary went back to the kitchen.	Mary			go	move	kitchen				be						
+235	13	1	3	20	Daniel discarded the football there.	Daniel			discard	put	there	football			not have						
+236	14	1	3	20	John left the apple.	John			leave	put		apple			not have						
+237	15	1	3	20	Sandra journeyed to the bedroom.	Sandra			journey	move	bedroom				be						
+238	16	1	3	20	John grabbed the apple.	John			grab	take		apple			have						
+239	17	1	3	20	John moved to the kitchen.	John			move	move	kitchen				be						
+240	18	1	3	20	John discarded the apple.	John			discard	put		apple			not have						
+241	19	1	3	20	Mary grabbed the apple.	Mary			grab	take		apple			have						
+242	20	1	3	20	Daniel got the football.	Daniel			get	take		football			have						
+243	21	1	3	20	Daniel went to the kitchen.	Daniel			go	move	kitchen				be						
+244	22	1	3	20	Daniel went back to the bathroom.	Daniel			go	move	bathroom				be						
+245	23	1	3	20	Where was the football before the bathroom?		football		be	be					be					kitchen	20 22 21
+246	24	2	3	20	Sandra went back to the kitchen.	Sandra			go	move	kitchen				be						
+247	25	2	3	20	Daniel dropped the football.	Daniel			drop	put		football			not have						
+248	26	2	3	20	Where was the football before the bathroom?		football		be	be					be					kitchen	25 22 21
+249	27	3	3	20	Daniel took the football there.	Daniel			take	take	there	football			have						
+250	28	3	3	20	Mary left the apple.	Mary			leave	put		apple			not have						
+251	29	3	3	20	Daniel journeyed to the kitchen.	Daniel			journey	move	kitchen				be						
+252	30	3	3	20	John journeyed to the hallway.	John			journey	move	hallway				be						
+253	31	3	3	20	Daniel picked up the apple.	Daniel			pick up	take		apple			have						
+254	32	3	3	20	John went back to the garden.	John			go	move	garden				be						
+255	33	3	3	20	Daniel dropped the football.	Daniel			drop	put		football			not have						
+256	34	3	3	20	Daniel travelled to the hallway.	Daniel			travel	move	hallway				be						
+257	35	3	3	20	John went to the bathroom.	John			go	move	bathroom				be						
+258	36	3	3	20	Daniel went to the kitchen.	Daniel			go	move	kitchen				be						
+259	37	3	3	20	Daniel grabbed the football.	Daniel			grab	take		football			have						
+260	38	3	3	20	John travelled to the garden.	John			travel	move	garden				be						
+261	39	3	3	20	Daniel went back to the bedroom.	Daniel			go	move	bedroom				be						
+262	40	3	3	20	Sandra journeyed to the bedroom.	Sandra			journey	move	bedroom				be						
+263	41	3	3	20	Daniel journeyed to the garden.	Daniel			journey	move	garden				be						
+264	42	3	3	20	Daniel moved to the office.	Daniel			move	move	office				be						
+265	43	3	3	20	Daniel dropped the football there.	Daniel			drop	put	there	football			not have						
+266	44	3	3	20	John journeyed to the bedroom.	John			journey	move	bedroom				be						
+267	45	3	3	20	Where was the football before the garden?		football		be	be	garden				be					bedroom	43 41 39
+268	46	4	3	20	Daniel left the apple.	Daniel			leave	put		apple			not have						
+269	47	4	3	20	Daniel went back to the garden.	Daniel			go	move	garden				be						
+270	48	4	3	20	Where was the apple before the kitchen?		apple		be	be					be					hallway	46 36 34
+271	49	5	3	20	Mary went to the office.	Mary			go	move	office				be						
+272	50	5	3	20	Daniel travelled to the office.	Daniel			travel	move	office				be						
+273	51	5	3	20	Where was the apple before the bedroom?		apple		be	be	bedroom				be					kitchen	46 39 36
+274	1	1	4	98	The office is east of the kitchen.		office		"be
+east"	east				kitchen							
+275	2	1	4	98	The office is west of the hallway.		office		"be
+west"	west				hallway							
+276	3	1	4	98	What is the hallway east of?	East	hallway		be	be					be					office	2
+277	1	1	4	99	The office is south of the bathroom.		office		be	be				bathroom	be						
+278	2	1	4	99	The office is north of the bedroom.		office		"be
+north"	north				bedroom							
+279	3	1	4	99	What is the bedroom south of?		bedroom		be	be					be					office	2
+280	1	1	4	100	The bedroom is east of the bathroom.		bedroom		"be
+east"	east				bathroom							
+281	2	1	4	100	The office is west of the bathroom.		office		"be
+west"	west				bathroom							
+282	3	1	4	100	What is east of the bathroom?				"be
+east"	east				bathroom						bedroom	1
+283	1	1	5	18	Mary travelled to the hallway.	Mary			travel	move	hallway				be						
+284	2	1	5	18	Mary went back to the bathroom.	Mary			go	move	bathroom				be						
+285	3	1	5	18	Bill journeyed to the bathroom.	Bill			journey	move	bathroom				be						
+286	4	1	5	18	Jeff went to the office.	Jeff			go	move	office				be						
+287	5	1	5	18	Mary went to the hallway.	Mary			go	move	hallway				be						
+288	6	1	5	18	Jeff grabbed the football there.	Jeff			grab	take	there	football			have						
+289	7	1	5	18	Jeff grabbed the milk there.	Jeff			grab	take	there	milk			have						
+290	8	1	5	18	Mary went back to the garden.	Mary			go	move	garden				be						
+291	9	1	5	18	Bill moved to the garden.	Bill			move	move	garden				be						
+292	10	1	5	18	Jeff left the football there.	Jeff			leave	put	there	football			not have						
+293	11	1	5	18	Jeff put down the milk.	Jeff			put down	put		milk			not have						
+294	12	1	5	18	Jeff moved to the garden.	Jeff			move	move	garden				be						
+295	13	1	5	18	Fred went back to the garden.	Fred			go	move	garden				be						
+296	14	1	5	18	Bill went back to the hallway.	Bill			go	move	hallway				be						
+297	15	1	5	18	Bill journeyed to the bathroom.	Bill			journey	move	bathroom				be						
+298	16	1	5	18	Bill moved to the kitchen.	Bill			move	move	kitchen				be						
+299	17	1	5	18	Bill moved to the bathroom.	Bill			move	move	bathroom				be						
+300	18	1	5	18	Mary journeyed to the kitchen.	Mary			journey	move	kitchen				be						
+301	19	1	5	18	Fred went back to the kitchen.	Fred			go	move	kitchen				be						
+302	20	1	5	18	Jeff travelled to the hallway.	Jeff			travel	move	hallway				be						
+303	21	1	5	18	Jeff travelled to the garden.	Jeff			travel	move	garden				be						
+304	22	1	5	18	Fred moved to the garden.	Fred			move	move	garden				be						
+305	23	1	5	18	Bill moved to the office.	Bill			move	move	office				be						
+306	24	1	5	18	Bill got the football there.	Bill			get	take	there	football			have						
+307	25	1	5	18	Bill moved to the hallway.	Bill			move	move	hallway				be						
+308	26	1	5	18	Fred went back to the office.	Fred			go	move	office				be						
+309	27	1	5	18	Fred travelled to the bathroom.	Fred			travel	move	bathroom				be						
+310	28	1	5	18	Fred went to the office.	Fred			go	move	office				be						
+311	29	1	5	18	Fred journeyed to the kitchen.	Fred			journey	move	kitchen				be						
+312	30	1	5	18	Bill dropped the football.	Bill			drop	put		football			not have						
+313	31	1	5	18	Bill grabbed the football there.	Bill			grab	take	there	football			have						
+314	32	1	5	18	Bill travelled to the bathroom.	Bill			travel	move	bathroom				be						
+315	33	1	5	18	Bill travelled to the bedroom.	Bill			travel	move	bedroom				be						
+316	34	1	5	18	Bill went back to the bathroom.	Bill			go	move	bathroom				be						
+317	35	1	5	18	Mary went back to the office.	Mary			go	move	office				be						
+318	36	1	5	18	Bill left the football.	Bill			leave	put		football			not have						
+319	37	1	5	18	Mary grabbed the milk there.	Mary			grab	take	there	milk			have						
+320	38	1	5	18	Fred moved to the bedroom.	Fred			move	move	bedroom				be						
+321	39	1	5	18	Jeff travelled to the bedroom.	Jeff			travel	move	bedroom				be						
+322	40	1	5	18	Bill went to the hallway.	Bill			go	move	hallway				be						
+323	41	1	5	18	Jeff got the apple there.	Jeff			get	take	there	apple			have						
+324	42	1	5	18	Jeff passed the apple to Fred.	Jeff			pass	give		apple		Fred	not have			have			
+325	43	1	5	18	What did Jeff give to Fred?	Jeff			give	give				Fred	not have			have		apple	42
+326	44	2	5	18	Mary left the milk.	Mary			leave	put		milk			not have						
+327	45	2	5	18	Mary went to the bathroom.	Mary			go	move	bathroom				be						
+328	46	2	5	18	Who did Jeff give the apple to?	Jeff			give	give		apple			not have			have		Fred	42
+329	47	3	5	18	Fred dropped the apple.	Fred			drop	put		apple			not have						
+330	48	3	5	18	Mary grabbed the football there.	Mary			grab	take	there	football			have						
+331	49	3	5	18	Who did Jeff give the apple to?	Jeff			give	give		apple			not have			have		Fred	42
+332	50	4	5	18	Fred picked up the apple there.	Fred			pick up	take	there	apple			have						
+333	51	4	5	18	Jeff travelled to the bathroom.	Jeff			travel	move	bathroom				be						
+334	52	4	5	18	Mary moved to the kitchen.	Mary			move	move	kitchen				be						
+335	53	4	5	18	Mary discarded the football.	Mary			discard	put		football			not have						
+336	54	4	5	18	Bill moved to the office.	Bill			move	move	office				be						
+337	55	4	5	18	Jeff journeyed to the hallway.	Jeff			journey	move	hallway				be						
+338	56	4	5	18	Mary grabbed the football there.	Mary			grab	take	there	football			have						
+339	57	4	5	18	Fred dropped the apple there.	Fred			drop	put	there	apple			not have						
+340	58	4	5	18	Mary journeyed to the bathroom.	Mary			journey	move	bathroom				be						
+341	59	4	5	18	Fred went to the kitchen.	Fred			go	move	kitchen				be						
+342	60	4	5	18	Bill grabbed the milk there.	Bill			grab	take	there	milk			have						
+343	61	4	5	18	Mary journeyed to the office.	Mary			journey	move	office				be						
+344	62	4	5	18	Mary gave the football to Bill.	Mary			give	give		football		Bill	not have			have			
+345	63	4	5	18	Bill gave the football to Mary.	Bill			give	give		football		Mary	not have			have			
+346	64	4	5	18	Who did Bill give the football to?	Bill			give	give		football			not have			have		Mary	63
+347	65	5	5	18	Jeff journeyed to the garden.	Jeff			journey	move	garden				be						
+348	66	5	5	18	Mary handed the football to Bill.	Mary			hand	give		football		Bill	not have			have			
+349	67	5	5	18	Who received the football?	who			receive	have		football			have					Bill	66
+350	1	1	5	19	Fred moved to the bedroom.	Fred			move	move	bedroom				be						
+351	2	1	5	19	Mary travelled to the bedroom.	Mary			travel	move	bedroom				be						
+352	3	1	5	19	Bill took the apple there.	Bill			take	take	there	apple			have						
+353	4	1	5	19	Bill journeyed to the garden.	Bill			journey	move	garden				be						
+354	5	1	5	19	Jeff grabbed the milk there.	Jeff			grab	take	there	milk			have						
+355	6	1	5	19	Bill dropped the apple.	Bill			drop	put		apple			not have						
+356	7	1	5	19	Mary went to the hallway.	Mary			go	move	hallway				be						
+357	8	1	5	19	Fred journeyed to the office.	Fred			journey	move	office				be						
+358	9	1	5	19	Mary went back to the kitchen.	Mary			go	move	kitchen				be						
+359	10	1	5	19	Jeff handed the milk to Mary.	Jeff			hand	give		milk		Mary	not have			have			
+360	11	1	5	19	Who received the milk?	who			receive	have		milk			have					Mary	10
+361	12	2	5	19	Mary travelled to the office.	Mary			travel	move	office				be						
+362	13	2	5	19	Bill grabbed the apple there.	Bill			grab	take	there	apple			have						
+363	14	2	5	19	Who received the milk?	who			receive	have		milk			have					Mary	10
+364	15	3	5	19	Mary gave the milk to Fred.	Mary			give	give		milk		Fred	not have			have			
+365	16	3	5	19	Fred passed the milk to Mary.	Fred			pass	give		milk		Mary	not have			have			
+366	17	3	5	19	What did Fred give to Mary?	Fred			give	give				Mary	not have			have		milk	16
+367	18	4	5	19	Mary left the milk.	Mary			leave	put		milk			not have						
+368	19	4	5	19	Jeff went to the bedroom.	Jeff			go	move	bedroom				be						
+369	20	4	5	19	Who gave the milk?	who			give	give		milk			not have			have		Fred	16
+370	21	5	5	19	Mary travelled to the garden.	Mary			travel	move	garden				be						
+371	22	5	5	19	Mary got the football there.	Mary			get	take	there	football			have						
+372	23	5	5	19	Who gave the milk?	who			give	give		milk			not have			have		Fred	16
+373	1	1	5	20	Jeff went to the bedroom.	Jeff			go	move	bedroom				be						
+374	2	1	5	20	Bill moved to the garden.	Bill			move	move	garden				be						
+375	3	1	5	20	Fred got the apple there.	Fred			get	take	there	apple			have						
+376	4	1	5	20	Mary went to the office.	Mary			go	move	office				be						
+377	5	1	5	20	Fred passed the apple to Mary.	Fred			pass	give		apple		Mary	not have			have			
+378	6	1	5	20	Mary passed the apple to Fred.	Mary			pass	give		apple		Fred	not have			have			
+379	7	1	5	20	What did Mary give to Fred?	Mary			give	give				Fred	not have			have		apple	6
+380	8	2	5	20	Fred gave the apple to Mary.	Fred			give	give		apple		Mary	not have			have			
+381	9	2	5	20	Mary handed the apple to Fred.	Mary			hand	give		apple		Fred	not have			have			
+382	10	2	5	20	Who gave the apple to Fred?	who			give	give		apple		Fred	not have			have		Mary	9
+383	11	3	5	20	Fred journeyed to the bathroom.	Fred			journey	move	bathroom				be						
+384	12	3	5	20	Mary went back to the garden.	Mary			go	move	garden				be						
+385	13	3	5	20	What did Mary give to Fred?	Mary			give	give				Fred	not have			have		apple	9
+386	14	4	5	20	Bill went back to the bedroom.	Bill			go	move	bedroom				be						
+387	15	4	5	20	Fred grabbed the football there.	Fred			grab	take	there	football			have						
+388	16	4	5	20	What did Mary give to Fred?	Mary			give	give				Fred	not have			have		apple	9
+389	17	5	5	20	Fred went to the hallway.	Fred			go	move	hallway				be						
+390	18	5	5	20	Bill moved to the garden.	Bill			move	move	garden				be						
+391	19	5	5	20	Jeff travelled to the bathroom.	Jeff			travel	move	bathroom				be						
+392	20	5	5	20	Fred moved to the bathroom.	Fred			move	move	bathroom				be						
+393	21	5	5	20	Fred handed the apple to Jeff.	Fred			hand	give		apple		Jeff	not have			have			
+394	22	5	5	20	Jeff handed the apple to Fred.	Jeff			hand	give		apple		Fred	not have			have			
+395	23	5	5	20	Who did Jeff give the apple to?	Jeff			give	give		apple			not have			have		Fred	22
+396	1	1	6	18	John went back to the bedroom.	John			go	move	bedroom				be						
+397	2	1	6	18	Daniel grabbed the milk there.	Daniel			grab	take	there	milk			have						
+398	3	1	6	18	Is John in the bathroom?	John			be	be	bathroom				be					no	1
+399	4	2	6	18	John journeyed to the bathroom.	John			journey	move	bathroom				be						
+400	5	2	6	18	Mary went to the garden.	Mary			go	move	garden				be						
+401	6	2	6	18	Is John in the bathroom?	John			be	be	bathroom				be					yes	4
+402	7	3	6	18	Daniel dropped the milk.	Daniel			drop	put		milk			not have						
+403	8	3	6	18	Sandra went to the bathroom.	Sandra			go	move	bathroom				be						
+404	9	3	6	18	Is Sandra in the bathroom?	Sandra			be	be	bathroom				be					yes	8
+405	10	4	6	18	Daniel got the milk there.	Daniel			get	take	there	milk			have						
+406	11	4	6	18	Daniel went to the office.	Daniel			go	move	office				be						
+407	12	4	6	18	Is Mary in the garden?	Mary			be	be	garden				be					yes	5
+408	13	5	6	18	Mary went to the kitchen.	Mary			go	move	kitchen				be						
+409	14	5	6	18	John took the football there.	John			take	take	there	football			have						
+410	15	5	6	18	Is Daniel in the office?	Daniel			be	be	office				be					yes	11
+411	1	1	6	19	Mary went back to the office.	Mary			go	move	office				be						
+412	2	1	6	19	Mary got the milk there.	Mary			get	take	there	milk			have						
+413	3	1	6	19	Is Mary in the garden?	Mary			be	be	garden				be					no	1
+414	4	2	6	19	Daniel grabbed the apple there.	Daniel			grab	take	there	apple			have						
+415	5	2	6	19	Daniel journeyed to the kitchen.	Daniel			journey	move	kitchen				be						
+416	6	2	6	19	Is Mary in the office?	Mary			be	be	office				be					yes	1
+417	7	3	6	19	Mary travelled to the garden.	Mary			travel	move	garden				be						
+418	8	3	6	19	Mary travelled to the bedroom.	Mary			travel	move	bedroom				be						
+419	9	3	6	19	Is Mary in the kitchen?	Mary			be	be	kitchen				be					no	8
+420	10	4	6	19	Mary grabbed the football there.	Mary			grab	take	there	football			have						
+421	11	4	6	19	Mary left the milk there.	Mary			leave	put	there	milk			not have						
+422	12	4	6	19	Is Daniel in the garden?	Daniel			be	be	garden				be					no	5
+423	13	5	6	19	Sandra travelled to the hallway.	Sandra			travel	move	hallway				be						
+424	14	5	6	19	John journeyed to the bedroom.	John			journey	move	bedroom				be						
+425	15	5	6	19	Is John in the office?	John			be	be	office				be					no	14
+426	1	1	6	20	Daniel journeyed to the office.	Daniel			journey	move	office				be						
+427	2	1	6	20	Daniel picked up the football there.	Daniel			pick up	take	there	football			have						
+428	3	1	6	20	Is Daniel in the kitchen?	Daniel			be	be	kitchen				be					no	1
+429	4	2	6	20	Daniel put down the football.	Daniel			put down	put		football			not have						
+430	5	2	6	20	Daniel travelled to the bathroom.	Daniel			travel	move	bathroom				be						
+431	6	2	6	20	Is Daniel in the garden?	Daniel			be	be	garden				be					no	5
+432	7	3	6	20	John took the milk there.	John			take	take	there	milk			have						
+433	8	3	6	20	John went to the office.	John			go	move	office				be						
+434	9	3	6	20	Is John in the hallway?	John			be	be	hallway				be					no	8
+435	10	4	6	20	Daniel went to the kitchen.	Daniel			go	move	kitchen				be						
+436	11	4	6	20	John discarded the milk.	John			discard	put		milk			not have						
+437	12	4	6	20	Is John in the garden?	John			be	be	garden				be					no	8
+438	13	5	6	20	Daniel journeyed to the bedroom.	Daniel			journey	move	bedroom				be						
+439	14	5	6	20	Mary went back to the bathroom.	Mary			go	move	bathroom				be						
+440	15	5	6	20	Is Daniel in the hallway?	Daniel			be	be	hallway				be					no	13
+441	1	1	7	18	Mary went back to the office.	Mary			go	move	office				be						
+442	2	1	7	18	John journeyed to the garden.	John			journey	move	garden				be						
+443	3	1	7	18	Daniel went back to the office.	Daniel			go	move	office				be						
+444	4	1	7	18	Daniel went back to the bathroom.	Daniel			go	move	bathroom				be						
+445	5	1	7	18	Mary journeyed to the bedroom.	Mary			journey	move	bedroom				be						
+446	6	1	7	18	Sandra moved to the hallway.	Sandra			move	move	hallway				be						
+447	7	1	7	18	Mary picked up the football there.	Mary			pick up	take	there	football			have						
+448	8	1	7	18	John journeyed to the bathroom.	John			journey	move	bathroom				be						
+449	9	1	7	18	How many objects is Mary carrying?	Mary	object	many	be	be					be					one	7
+450	10	2	7	18	John went to the kitchen.	John			go	move	kitchen				be						
+451	11	2	7	18	Mary left the football.	Mary			leave	put		football			not have						
+452	12	2	7	18	How many objects is Mary carrying?	Mary	object	many	be	be					be					none	7 11
+453	13	3	7	18	John grabbed the milk there.	John			grab	take	there	milk			have						
+454	14	3	7	18	Sandra moved to the garden.	Sandra			move	move	garden				be						
+455	15	3	7	18	How many objects is John carrying?	John		object	be	be					be					one	13
+456	16	4	7	18	John discarded the milk.	John			discard	put		milk			not have						
+457	17	4	7	18	Mary picked up the football there.	Mary			pick up	take	there	football			have						
+458	18	4	7	18	How many objects is John carrying?	John		object	be	be					be					none	13 16
+459	19	5	7	18	Sandra went to the hallway.	Sandra			go	move	hallway				be						
+460	20	5	7	18	John picked up the milk there.	John			pick up	take	there	milk			have						
+461	21	5	7	18	How many objects is John carrying?	John		object	be	be					be					one	13 16 20
+462	1	1	7	19	Mary moved to the bathroom.	Mary			move	move	bathroom				be						
+463	2	1	7	19	Mary picked up the milk there.	Mary			pick up	take	there	milk			have						
+464	3	1	7	19	How many objects is Mary carrying?	Mary	object	many	be	be					be					one	2
+465	4	2	7	19	Mary discarded the milk.	Mary			discard	put		milk			not have						
+466	5	2	7	19	Sandra moved to the office.	Sandra			move	move	office				be						
+467	6	2	7	19	How many objects is Mary carrying?	Mary	object	many	be	be					be					none	2 4
+468	7	3	7	19	Mary got the milk there.	Mary			get	take	there	milk			have						
+469	8	3	7	19	Mary put down the milk.	Mary			put down	put		milk			not have						
+470	9	3	7	19	How many objects is Mary carrying?	Mary	object	many	be	be					be					none	2 4 7 8
+471	10	4	7	19	Mary grabbed the milk there.	Mary			grab	take	there	milk			have						
+472	11	4	7	19	John travelled to the garden.	John			travel	move	garden				be						
+473	12	4	7	19	How many objects is Mary carrying?	Mary	object	many	be	be					be					one	2 4 7 8 10
+474	13	5	7	19	Mary journeyed to the hallway.	Mary			journey	move	hallway				be						
+475	14	5	7	19	Daniel went back to the office.	Daniel			go	move	office				be						
+476	15	5	7	19	How many objects is Mary carrying?	Mary	object	many	be	be					be					one	2 4 7 8 10
+477	1	1	7	20	Mary moved to the garden.	Mary			move	move	garden				be						
+478	2	1	7	20	Mary moved to the kitchen.	Mary			move	move	kitchen				be						
+479	3	1	7	20	John grabbed the football there.	John			grab	take	there	football			have						
+480	4	1	7	20	John handed the football to Mary.	John			hand	give		football		Mary	not have			have			
+481	5	1	7	20	How many objects is John carrying?	John		object	be	be					be					none	3 4
+482	6	2	7	20	Mary put down the football.	Mary			put down	put		football			not have						
+483	7	2	7	20	Mary took the football there.	Mary			take	take	there	football			have						
+484	8	2	7	20	How many objects is Mary carrying?	Mary	object	many	be	be					be					one	4 6 7
+485	9	3	7	20	John journeyed to the garden.	John			journey	move	garden				be						
+486	10	3	7	20	Sandra got the apple there.	Sandra			get	take	there	apple			have						
+487	11	3	7	20	How many objects is John carrying?	John		object	be	be					be					none	3 4
+488	12	4	7	20	Sandra went back to the bedroom.	Sandra			go	move	bedroom				be						
+489	13	4	7	20	Mary moved to the garden.	Mary			move	move	garden				be						
+490	14	4	7	20	How many objects is Sandra carrying?	Sandra	object	many	be	be					be					one	10
+491	15	5	7	20	Sandra gave the apple to Daniel.	Sandra			give	give		apple		Daniel	not have			have			
+492	16	5	7	20	Daniel dropped the apple.	Daniel			drop	put		apple			not have						
+493	17	5	7	20	How many objects is Daniel carrying?	Daniel	object	many	be	be					be					none	15 16
+494	1	1	8	18	Daniel went to the office.	Daniel			go	move	office				be						
+495	2	1	8	18	Daniel went back to the bathroom.	Daniel			go	move	bathroom				be						
+496	3	1	8	18	Mary travelled to the garden.	Mary			travel	move	garden				be						
+497	4	1	8	18	John went back to the garden.	John			go	move	garden				be						
+498	5	1	8	18	John took the football there.	John			take	take	there	football			have						
+499	6	1	8	18	Mary grabbed the apple there.	Mary			grab	take	there	apple			have						
+500	7	1	8	18	What is Mary carrying?	Mary			carry	have					have					apple	6
+501	8	2	8	18	Daniel travelled to the bedroom.	Daniel			travel	move	bedroom				be						
+502	9	2	8	18	Sandra went to the garden.	Sandra			go	move	garden				be						
+503	10	2	8	18	What is John carrying?	John			carry	have					have					football	5
+504	11	3	8	18	Mary grabbed the milk there.	Mary			grab	take	there	milk			have						
+505	12	3	8	18	Daniel went to the bathroom.	Daniel			go	move	bathroom				be						
+506	13	3	8	18	What is Mary carrying?	Mary			carry	have					have					apple milk	6 11
+507	14	4	8	18	Sandra went back to the office.	Sandra			go	move	office				be						
+508	15	4	8	18	John left the football.	John			leave	put		football			not have						
+509	16	4	8	18	What is Mary carrying?	Mary			carry	have					have					apple milk	6 11
+510	17	5	8	18	John travelled to the bedroom.	John			travel	move	bedroom				be						
+511	18	5	8	18	John went to the garden.	John			go	move	garden				be						
+512	19	5	8	18	What is John carrying?	John			carry	have					have					nothing	5 15
+513	1	1	8	19	Mary travelled to the garden.	Mary			travel	move	garden				be						
+514	2	1	8	19	Mary went to the kitchen.	Mary			go	move	kitchen				be						
+515	3	1	8	19	Mary moved to the garden.	Mary			move	move	garden				be						
+516	4	1	8	19	Sandra journeyed to the hallway.	Sandra			journey	move	hallway				be						
+517	5	1	8	19	John journeyed to the bathroom.	John			journey	move	bathroom				be						
+518	6	1	8	19	Daniel went back to the garden.	Daniel			go	move	garden				be						
+519	7	1	8	19	Mary travelled to the bedroom.	Mary			travel	move	bedroom				be						
+520	8	1	8	19	Sandra journeyed to the garden.	Sandra			journey	move	garden				be						
+521	9	1	8	19	John took the football there.	John			take	take	there	football			have						
+522	10	1	8	19	John moved to the hallway.	John			move	move	hallway				be						
+523	11	1	8	19	What is John carrying?	John			carry	have					have					football	9
+524	12	2	8	19	John put down the football.	John			put down	put		football			not have						
+525	13	2	8	19	Sandra journeyed to the kitchen.	Sandra			journey	move	kitchen				be						
+526	14	2	8	19	What is John carrying?	John			carry	have					have					nothing	9 12
+527	15	3	8	19	John grabbed the apple there.	John			grab	take	there	apple			have						
+528	16	3	8	19	John grabbed the football there.	John			grab	take	there	football			have						
+529	17	3	8	19	What is John carrying?	John			carry	have					have					football apple	9 12 16 15
+530	18	4	8	19	Mary moved to the office.	Mary			move	move	office				be						
+531	19	4	8	19	John moved to the bedroom.	John			move	move	bedroom				be						
+532	20	4	8	19	What is John carrying?	John			carry	have					have					football apple	9 12 16 15
+533	21	5	8	19	John dropped the football.	John			drop	put		football			not have						
+534	22	5	8	19	Sandra travelled to the bathroom.	Sandra			travel	move	bathroom				be						
+535	23	5	8	19	What is John carrying?	John			carry	have					have					apple	9 12 16 21 15
+536	1	1	8	20	John picked up the milk there.	John			pick up	take	there	milk			have						
+537	2	1	8	20	Mary went back to the bedroom.	Mary			go	move	bedroom				be						
+538	3	1	8	20	What is John carrying?	John			carry	have					have					milk	1
+539	4	2	8	20	John dropped the milk.	John			drop	put		milk			not have						
+540	5	2	8	20	Sandra went back to the bathroom.	Sandra			go	move	bathroom				be						
+541	6	2	8	20	What is John carrying?	John			carry	have					have					nothing	1 4
+542	7	3	8	20	John went back to the office.	John			go	move	office				be						
+543	8	3	8	20	Daniel travelled to the hallway.	Daniel			travel	move	hallway				be						
+544	9	3	8	20	What is John carrying?	John			carry	have					have					nothing	1 4
+545	10	4	8	20	John travelled to the garden.	John			travel	move	garden				be						
+546	11	4	8	20	John got the milk there.	John			get	take	there	milk			have						
+547	12	4	8	20	What is John carrying?	John			carry	have					have					milk	1 4 11
+548	13	5	8	20	Daniel picked up the apple there.	Daniel			pick up	take	there	apple			have						
+549	14	5	8	20	John moved to the bathroom.	John			move	move	bathroom				be						
+550	15	5	8	20	What is John carrying?	John			carry	have					have					milk	1 4 11
+551	1	1	9	18	Sandra is not in the garden.	Sandra			be	be	garden				be						
+552	2	1	9	18	Daniel travelled to the kitchen.	Daniel			travel	move	kitchen				be						
+553	3	1	9	18	Is Daniel in the bedroom?	Daniel			be	be	bedroom				be					no	2
+554	4	2	9	18	Daniel went back to the garden.	Daniel			go	move	garden				be						
+555	5	2	9	18	Mary journeyed to the hallway.	Mary			journey	move	hallway				be						
+556	6	2	9	18	Is Mary in the bathroom?	Mary			be	be	bathroom				be					no	5
+557	7	3	9	18	John went to the garden.	John			go	move	garden				be						
+558	8	3	9	18	John journeyed to the bedroom.	John			journey	move	bedroom				be						
+559	9	3	9	18	Is Daniel in the office?	Daniel			be	be	office				be					no	4
+560	10	4	9	18	Daniel moved to the bathroom.	Daniel			move	move	bathroom				be						
+561	11	4	9	18	Daniel went back to the bedroom.	Daniel			go	move	bedroom				be						
+562	12	4	9	18	Is Mary in the kitchen?	Mary			be	be	kitchen				be					no	5
+563	13	5	9	18	Daniel is no longer in the bedroom.	Daniel			be	be	bedroom				be						
+564	14	5	9	18	Mary is not in the hallway.	Mary			be	be	hallway				be						
+565	15	5	9	18	Is John in the garden?	John			be	be	garden				be					no	8
+566	1	1	9	19	Sandra journeyed to the bedroom.	Sandra			journey	move	bedroom				be						
+567	2	1	9	19	Daniel is in the bathroom.	Daniel			be	be	bathroom				be						
+568	3	1	9	19	Is Daniel in the bedroom?	Daniel			be	be	bedroom				be					no	2
+569	4	2	9	19	John is in the hallway.	John			be	be	hallway				be						
+570	5	2	9	19	John is in the bathroom.	John			be	be	bathroom				be						
+571	6	2	9	19	Is Sandra in the bedroom?	Sandra			be	be	bedroom				be					yes	1
+572	7	3	9	19	Mary moved to the hallway.	Mary			move	move	hallway				be						
+573	8	3	9	19	Daniel went back to the garden.	Daniel			go	move	garden				be						
+574	9	3	9	19	Is Daniel in the garden?	Daniel			be	be	garden				be					yes	8
+575	10	4	9	19	Daniel is in the hallway.	Daniel			be	be	hallway				be						
+576	11	4	9	19	Daniel is no longer in the hallway.	Daniel			be	be	hallway				be						
+577	12	4	9	19	Is Daniel in the hallway?	Daniel			be	be	hallway				be					no	11
+578	13	5	9	19	John moved to the bedroom.	John			move	move	bedroom				be						
+579	14	5	9	19	John journeyed to the bathroom.	John			journey	move	bathroom				be						
+580	15	5	9	19	Is Daniel in the hallway?	Daniel			be	be	hallway				be					no	11
+581	1	1	9	20	Sandra is no longer in the bedroom.	Sandra			be	be	bedroom				be						
+582	2	1	9	20	Daniel journeyed to the bathroom.	Daniel			journey	move	bathroom				be						
+583	3	1	9	20	Is Daniel in the office?	Daniel			be	be	office				be					no	2
+584	4	2	9	20	Sandra moved to the hallway.	Sandra			move	move	hallway				be						
+585	5	2	9	20	Sandra is not in the hallway.	Sandra			be	be	hallway				be						
+586	6	2	9	20	Is Sandra in the hallway?	Sandra			be	be	hallway				be					no	5
+587	7	3	9	20	Sandra is no longer in the garden.	Sandra			be	be	garden				be						
+588	8	3	9	20	Daniel travelled to the hallway.	Daniel			travel	move	hallway				be						
+589	9	3	9	20	Is Sandra in the garden?	Sandra			be	be	garden				be					no	7
+590	10	4	9	20	Mary went back to the office.	Mary			go	move	office				be						
+591	11	4	9	20	Daniel went to the bedroom.	Daniel			go	move	bedroom				be						
+592	12	4	9	20	Is Daniel in the garden?	Daniel			be	be	garden				be					no	11
+593	13	5	9	20	Sandra is in the bathroom.	Sandra			be	be	bathroom				be						
+594	14	5	9	20	Daniel went to the garden.	Daniel			go	move	garden				be						
+595	15	5	9	20	Is Daniel in the hallway?	Daniel			be	be	hallway				be					no	14
+596	1	1	10	18	Fred moved to the bedroom.	Fred			move	move	bedroom				be						
+597	2	1	10	18	Julie is in the school.	Julie			be	be	school				be						
+598	3	1	10	18	Is Fred in the office?	Fred			be	be	office				be					no	1
+599	4	2	10	18	Fred is in the school.	Fred			be	be	school				be						
+600	5	2	10	18	Mary travelled to the kitchen.	Mary			travel	move	kitchen				be						
+601	6	2	10	18	Is Julie in the school?	Julie			be	be	school				be					yes	2
+602	7	3	10	18	Mary is in the office.	Mary			be	be	office				be						
+603	8	3	10	18	Fred moved to the bedroom.	Fred			move	move	bedroom				be						
+604	9	3	10	18	Is Fred in the bedroom?	Fred			be	be	bedroom				be					yes	8
+605	10	4	10	18	Bill is either in the cinema or the bedroom.	Bill			be	be	"cinema
+bedroom"				be						
+606	11	4	10	18	Fred is in the school.	Fred			be	be	school				be						
+607	12	4	10	18	Is Fred in the office?	Fred			be	be	office				be					no	11
+608	13	5	10	18	Fred is in the bedroom.	Fred			be	be	bedroom				be						
+609	14	5	10	18	Fred is either in the kitchen or the office.	Fred			be	be	"kitchen
+office"				be						
+610	15	5	10	18	Is Bill in the kitchen?	Bill			be	be	kitchen				be					no	10
+611	1	1	10	19	Mary is either in the cinema or the park.	Mary			be	be	"cinema
+park"				be						
+612	2	1	10	19	Fred moved to the bedroom.	Fred			move	move	bedroom				be						
+613	3	1	10	19	Is Mary in the school?	Mary			be	be	school				be					no	1
+614	4	2	10	19	Bill is in the office.	Bill			be	be	office				be						
+615	5	2	10	19	Mary is in the school.	Mary			be	be	school				be						
+616	6	2	10	19	Is Mary in the kitchen?	Mary			be	be	kitchen				be					no	5
+617	7	3	10	19	Fred is in the park.	Fred			be	be	park				be						
+618	8	3	10	19	Fred is either in the kitchen or the cinema.	Fred			be	be	"kitchen
+cinema"				be						
+619	9	3	10	19	Is Fred in the bedroom?	Fred			be	be	bedroom				be					no	8
+620	10	4	10	19	Bill is either in the kitchen or the kitchen.	Bill			be	be	"kitchen
+kitchen"				be						
+621	11	4	10	19	Fred moved to the bedroom.	Fred			move	move	bedroom				be						
+622	12	4	10	19	Is Mary in the kitchen?	Mary			be	be	kitchen				be					no	5
+623	13	5	10	19	Mary journeyed to the park.	Mary			journey	move	park				be						
+624	14	5	10	19	Julie went back to the cinema.	Julie			go	move	cinema				be						
+625	15	5	10	19	Is Fred in the bedroom?	Fred			be	be	bedroom				be					yes	11
+626	1	1	10	20	Bill moved to the office.	Bill			move	move	office				be						
+627	2	1	10	20	Bill journeyed to the cinema.	Bill			journey	move	cinema				be						
+628	3	1	10	20	Is Bill in the cinema?	Bill			be	be	cinema				be					yes	2
+629	4	2	10	20	Julie is in the bedroom.	Julie			be	be	bedroom				be						
+630	5	2	10	20	Mary is either in the kitchen or the kitchen.	Mary			be	be	"kitchen
+kitchen"				be						
+631	6	2	10	20	Is Mary in the kitchen?	Mary			be	be	kitchen				be					maybe	5
+632	7	3	10	20	Julie travelled to the cinema.	Julie			travel	move	cinema				be						
+633	8	3	10	20	Fred moved to the kitchen.	Fred			move	move	kitchen				be						
+634	9	3	10	20	Is Julie in the park?	Julie			be	be					be					no	7
+635	10	4	10	20	Fred is either in the school or the office.	Fred			be	be	"school
+office"				be						
+636	11	4	10	20	Fred is in the cinema.	Fred			be	be	cinema				be						
+637	12	4	10	20	Is Mary in the bedroom?	Mary			be	be	bedroom				be					no	5
+638	13	5	10	20	Fred travelled to the school.	Fred			travel	move	school				be						
+639	14	5	10	20	Fred went to the park.	Fred			go	move	park				be						
+640	15	5	10	20	Is Fred in the park?	Fred			be	be	park				be					yes	14
+641	1	1	11	18	John moved to the office.	John			move	move	office				be						
+642	2	1	11	18	Following that he went to the hallway.	he			follow	move	hallway				be						
+643	3	1	11	18	Where is John?	John			be	be					be					hallway	1 2
+644	4	2	11	18	Sandra journeyed to the bedroom.	Sandra			journey	move	bedroom				be						
+645	5	2	11	18	Afterwards she moved to the garden.	she			move	move	garden				be						
+646	6	2	11	18	Where is John?	John			be	be					be					hallway	1 2
+647	7	3	11	18	Mary went back to the bathroom.	Mary			go	move	bathroom				be						
+648	8	3	11	18	After that she went back to the office.	she			go	move	office				be						
+649	9	3	11	18	Where is Mary?	Mary			be	be					be					office	7 8
+650	10	4	11	18	Mary went back to the kitchen.	Mary			go	move	kitchen				be						
+651	11	4	11	18	After that she went back to the bathroom.	she			go	move	bathroom				be						
+652	12	4	11	18	Where is Mary?	Mary			be	be					be					bathroom	10 11
+653	13	5	11	18	Daniel went to the office.	Daniel			go	move	office				be						
+654	14	5	11	18	Following that he travelled to the bathroom.	he			follow	move	bathroom				be						
+655	15	5	11	18	Where is Mary?	Mary			be	be					be					bathroom	10 11
+656	1	1	11	19	Sandra moved to the office.	Sandra			move	move	office				be						
+657	2	1	11	19	Then she travelled to the garden.	she			travel	move	garden				be						
+658	3	1	11	19	Where is Sandra?	Sandra			be	be					be					garden	1 2
+659	4	2	11	19	Sandra moved to the kitchen.	Sandra			move	move	kitchen				be						
+660	5	2	11	19	Afterwards she went to the office.	she			go	move	office				be						
+661	6	2	11	19	Where is Sandra?	Sandra			be	be					be					office	4 5
+662	7	3	11	19	Mary went to the garden.	Mary			go	move	garden				be						
+663	8	3	11	19	Afterwards she went to the office.	she			go	move	office				be						
+664	9	3	11	19	Where is Sandra?	Sandra			be	be					be					office	4 5
+665	10	4	11	19	Mary journeyed to the kitchen.	Mary			journey	move	kitchen				be						
+666	11	4	11	19	Following that she moved to the hallway.	she			follow	move	hallway				be						
+667	12	4	11	19	Where is Mary?	Mary			be	be					be					hallway	10 11
+668	13	5	11	19	Daniel moved to the bathroom.	Daniel			move	move	bathroom				be						
+669	14	5	11	19	Then he journeyed to the garden.	he			journey	move	garden				be						
+670	15	5	11	19	Where is Mary?	Mary			be	be					be					hallway	10 11
+671	1	1	11	20	Mary went to the kitchen.	Mary			go	move	kitchen				be						
+672	2	1	11	20	Then she moved to the office.	she			move	move	office				be						
+673	3	1	11	20	Where is Mary?	Mary			be	be					be					office	1 2
+674	4	2	11	20	Sandra travelled to the hallway.	Sandra			travel	move	hallway				be						
+675	5	2	11	20	Following that she went back to the bedroom.	she			follow	move	bedroom				be						
+676	6	2	11	20	Where is Sandra?	Sandra			be	be					be					bedroom	4 5
+677	7	3	11	20	John journeyed to the bedroom.	John			journey	move	bedroom				be						
+678	8	3	11	20	Following that he journeyed to the garden.	he			follow	move	garden				be						
+679	9	3	11	20	Where is Sandra?	Sandra			be	be					be					bedroom	4 5
+680	10	4	11	20	Sandra went back to the garden.	Sandra			go	move	garden				be						
+681	11	4	11	20	Afterwards she travelled to the bathroom.	she			travel	move	bathroom				be						
+682	12	4	11	20	Where is Sandra?	Sandra			be	be					be					bathroom	10 11
+683	13	5	11	20	Sandra journeyed to the bedroom.	Sandra			journey	move	bedroom				be						
+684	14	5	11	20	After that she journeyed to the bathroom.	she			journey	move	bathroom				be						
+685	15	5	11	20	Where is John?	John			be	be					be					garden	7 8
+686	1	1	12	18	Sandra and John travelled to the office.	"Sandra
+John"			travel	move	office				be						
+687	2	1	12	18	Daniel and John journeyed to the garden.	"Daniel
+John"			journey	move	garden				be						
+688	3	1	12	18	Where is John?	John			be	be					be					garden	2
+689	4	2	12	18	John and Daniel went to the bathroom.	"John
+Daniel"			go	move	bathroom				be						
+690	5	2	12	18	John and Sandra moved to the garden.	"John
+Sandra"			move	move	garden				be						
+691	6	2	12	18	Where is Daniel?	Daniel			be	be					be					bathroom	4
+692	7	3	12	18	Sandra and Mary went to the kitchen.	"Sandra
+Mary"			go	move	kitchen				be						
+693	8	3	12	18	John and Mary travelled to the office.	"John
+Mary"			travel	move	office				be						
+694	9	3	12	18	Where is Sandra?	Sandra			be	be					be					kitchen	7
+695	10	4	12	18	John and Sandra went to the bedroom.	"John
+Sandra"			go	move	bedroom				be						
+696	11	4	12	18	Daniel and John went to the hallway.	"Daniel
+John"			go	move	hallway				be						
+697	12	4	12	18	Where is Daniel?	Daniel			be	be					be					hallway	11
+698	13	5	12	18	Daniel and Sandra travelled to the kitchen.	"Daniel
+Sandra"			travel	move	kitchen				be						
+699	14	5	12	18	John and Sandra journeyed to the office.	"John
+Sandra"			journey	move	office				be						
+700	15	5	12	18	Where is John?	John			be	be					be					office	14
+701	1	1	12	19	John and Mary travelled to the kitchen.	"John
+Mary"			travel	move	kitchen				be						
+702	2	1	12	19	Sandra and Daniel went to the bedroom.	"Sandra
+Daniel"			go	move	bedroom				be						
+703	3	1	12	19	Where is Mary?	Mary			be	be					be					kitchen	1
+704	4	2	12	19	Sandra and Daniel went to the kitchen.	"Sandra
+Daniel"			go	move	kitchen				be						
+705	5	2	12	19	Sandra and Daniel moved to the bathroom.	"Sandra
+Daniel"			move	move	bathroom				be						
+706	6	2	12	19	Where is Daniel?	Daniel			be	be					be					bathroom	5
+707	7	3	12	19	Mary and Daniel went to the office.	"Mary
+Daniel"			go	move	office				be						
+708	8	3	12	19	Daniel and Mary went to the kitchen.	"Daniel
+Mary"			go	move	kitchen				be						
+709	9	3	12	19	Where is Daniel?	Daniel			be	be					be					kitchen	8
+710	10	4	12	19	John and Mary moved to the garden.	"John
+Mary"			move	move	garden				be						
+711	11	4	12	19	Mary and John travelled to the bedroom.	"Mary
+John"			travel	move	bedroom				be						
+712	12	4	12	19	Where is John?	John			be	be					be					bedroom	11
+713	13	5	12	19	John and Sandra went to the hallway.	"John
+Sandra"			go	move	hallway				be						
+714	14	5	12	19	Sandra and Mary went back to the bathroom.	"Sandra
+Mary"			go	move	bathroom				be						
+715	15	5	12	19	Where is Sandra?	Sandra			be	be					be					bathroom	14
+716	1	1	12	20	John and Daniel moved to the bathroom.	"John
+Daniel"			move	move	bathroom				be						
+717	2	1	12	20	Mary and John went to the kitchen.	"Mary
+John"			go	move	kitchen				be						
+718	3	1	12	20	Where is John?	John			be	be					be					kitchen	2
+719	4	2	12	20	Mary and John journeyed to the hallway.	"Mary
+John"			journey	move	hallway				be						
+720	5	2	12	20	Sandra and Daniel travelled to the garden.	"Sandra
+Daniel"			travel	move	garden				be						
+721	6	2	12	20	Where is Mary?	Mary			be	be					be					hallway	4
+722	7	3	12	20	Sandra and Daniel went to the office.	"Sandra
+Daniel"			go	move	office				be						
+723	8	3	12	20	Mary and John went back to the bedroom.	"Mary
+John"			go	move	bedroom				be						
+724	9	3	12	20	Where is Daniel?	Daniel			be	be					be					office	7
+725	10	4	12	20	John and Daniel went back to the hallway.	"John
+Daniel"			go	move	hallway				be						
+726	11	4	12	20	Mary and Daniel journeyed to the bathroom.	"Mary
+Daniel"			journey	move	bathroom				be						
+727	12	4	12	20	Where is Daniel?	Daniel			be	be					be					bathroom	11
+728	13	5	12	20	Sandra and Daniel moved to the bedroom.	"Sandra
+Daniel"			move	move	bedroom				be						
+729	14	5	12	20	Daniel and Sandra moved to the garden.	"Daniel
+Sandra"			move	move	garden				be						
+730	15	5	12	20	Where is Daniel?	Daniel			be	be					be					garden	14
+731	1	1	13	18	Daniel and Sandra went to the kitchen.	"Daniel
+Sandra"			go	move	kitchen				be						
+732	2	1	13	18	Afterwards they moved to the garden.	they			move	move	garden				be						
+733	3	1	13	18	Where is Sandra?	Sandra			be	be					be					garden	1 2
+734	4	2	13	18	Sandra and Daniel travelled to the bathroom.	"Sandra
+Daniel"			travel	move	bathroom				be						
+735	5	2	13	18	Afterwards they went back to the kitchen.	they			go	move	kitchen				be						
+736	6	2	13	18	Where is Daniel?	Daniel			be	be					be					kitchen	4 5
+737	7	3	13	18	John and Mary moved to the bathroom.	"John
+Mary"			move	move	bathroom				be						
+738	8	3	13	18	After that they journeyed to the hallway.	they			journey	move	hallway				be						
+739	9	3	13	18	Where is John?	John			be	be					be					hallway	7 8
+740	10	4	13	18	Sandra and John moved to the office.	"Sandra
+John"			move	move	office				be						
+741	11	4	13	18	Following that they travelled to the hallway.	they			follow	move	hallway				be						
+742	12	4	13	18	Where is John?	John			be	be					be					hallway	10 11
+743	13	5	13	18	John and Sandra journeyed to the garden.	"John
+Sandra"			journey	move	garden				be						
+744	14	5	13	18	Afterwards they travelled to the kitchen.	they			travel	move	kitchen				be						
+745	15	5	13	18	Where is John?	John			be	be					be					kitchen	13 14
+746	1	1	13	19	John and Mary travelled to the kitchen.	"John
+Mary"			travel	move	kitchen				be						
+747	2	1	13	19	Following that they travelled to the bathroom.	they			follow	move	bathroom				be						
+748	3	1	13	19	Where is Mary?	Mary			be	be					be					bathroom	1 2
+749	4	2	13	19	Daniel and Sandra went back to the kitchen.	"Daniel
+Sandra"			go	move	kitchen				be						
+750	5	2	13	19	After that they went back to the office.	they			go	move	office				be						
+751	6	2	13	19	Where is Mary?	Mary			be	be					be					bathroom	1 2
+752	7	3	13	19	Mary and Sandra went back to the bedroom.	"Mary
+Sandra"			go	move	bedroom				be						
+753	8	3	13	19	Then they travelled to the garden.	they			travel	move	garden				be						
+754	9	3	13	19	Where is Mary?	Mary			be	be					be					garden	7 8
+755	10	4	13	19	John and Daniel journeyed to the hallway.	"John
+Daniel"			journey	move	hallway				be						
+756	11	4	13	19	Afterwards they moved to the office.	they			move	move	office				be						
+757	12	4	13	19	Where is John?	John			be	be					be					office	10 11
+758	13	5	13	19	Sandra and John travelled to the hallway.	"Sandra
+John"			travel	move	hallway				be						
+759	14	5	13	19	Then they went to the kitchen.	they			go	move	kitchen				be						
+760	15	5	13	19	Where is John?	John			be	be					be					kitchen	13 14
+761	1	1	13	20	Mary and John went to the bathroom.	"Mary
+John"			go	move	bathroom				be						
+762	2	1	13	20	Afterwards they went to the bedroom.	they			go	move	bedroom				be						
+763	3	1	13	20	Where is John?	John			be	be					be					bedroom	1 2
+764	4	2	13	20	Daniel and John travelled to the bathroom.	"Daniel
+John"			travel	move	bathroom				be						
+765	5	2	13	20	Then they journeyed to the bedroom.	they			journey	move	bedroom				be						
+766	6	2	13	20	Where is John?	John			be	be					be					bedroom	4 5
+767	7	3	13	20	Sandra and Daniel journeyed to the office.	"Sandra
+Daniel"			journey	move	office				be						
+768	8	3	13	20	Then they moved to the bedroom.	they			move	move	bedroom				be						
+769	9	3	13	20	Where is Sandra?	Sandra			be	be					be					bedroom	7 8
+770	10	4	13	20	Sandra and Mary went to the bathroom.	"Sandra
+Mary"			go	move	bathroom				be						
+771	11	4	13	20	After that they moved to the garden.	they			move	move	garden				be						
+772	12	4	13	20	Where is Mary?	Mary			be	be					be					garden	10 11
+773	13	5	13	20	Mary and John went back to the hallway.	"Mary
+John"			go	move	hallway				be						
+774	14	5	13	20	After that they went to the garden.	they			go	move	garden				be						
+775	15	5	13	20	Where is Mary?	Mary			be	be					be					garden	13 14
+776	1	1	14	18	This morning Mary journeyed to the office.	Mary			journey	move	office				be						
+777	2	1	14	18	Mary travelled to the kitchen yesterday.	Mary			travel	move	kitchen				be						
+778	3	1	14	18	Bill travelled to the school yesterday.	Bill			travel	move	school				be						
+779	4	1	14	18	Yesterday Fred travelled to the office.	Fred			travel	move	office				be						
+780	5	1	14	18	Where was Mary before the office?	Mary			be	be	office				be					kitchen	1 2
+781	6	2	14	18	This morning Fred journeyed to the school.	Fred			journey	move	school				be						
+782	7	2	14	18	Julie moved to the cinema yesterday.	Julie			move	move	cinema				be						
+783	8	2	14	18	Where was Fred before the school?	Fred			be	be	school				be					office	6 4
+784	9	3	14	18	This morning Bill went to the park.	Bill			go	move	park				be						
+785	10	3	14	18	This afternoon Fred went back to the kitchen.	Fred			go	move	kitchen				be						
+786	11	3	14	18	Where was Bill before the park?	Bill			be	be	park				be					school	9 3
+787	12	4	14	18	Mary journeyed to the park this afternoon.	Mary			journey	move	park				be						
+788	13	4	14	18	This evening Fred moved to the cinema.	Fred			move	move	cinema				be						
+789	14	4	14	18	Where was Fred before the cinema?	Fred			be	be	cinema				be					kitchen	13 10
+790	15	5	14	18	Julie went back to the school this morning.	Julie			go	move	school				be						
+791	16	5	14	18	Mary went to the kitchen this evening.	Mary			go	move	kitchen				be						
+792	17	5	14	18	Where was Fred before the cinema?	Fred			be	be	cinema				be					kitchen	13 10
+793	1	1	14	19	This morning Julie journeyed to the school.	Julie			journey	move	school				be						
+794	2	1	14	19	Yesterday Mary journeyed to the bedroom.	Mary			journey	move	bedroom				be						
+795	3	1	14	19	Yesterday Julie journeyed to the kitchen.	Julie			journey	move	kitchen				be						
+796	4	1	14	19	Yesterday Bill went to the park.	Bill			go	move	park				be						
+797	5	1	14	19	Where was Julie before the school?	Julie			be	be	school				be					kitchen	1 3
+798	6	2	14	19	This afternoon Julie went back to the park.	Julie			go	move	park				be						
+799	7	2	14	19	Mary went back to the park this morning.	Mary			go	move	park				be						
+800	8	2	14	19	Where was Julie before the park?	Julie			be	be	park				be					school	6 1
+801	9	3	14	19	Mary travelled to the school this afternoon.	Mary			travel	move	school				be						
+802	10	3	14	19	This evening Julie moved to the school.	Julie			move	move	school				be						
+803	11	3	14	19	Where was Julie before the school?	Julie			be	be	school				be					park	10 6
+804	12	4	14	19	Bill journeyed to the kitchen this morning.	Bill			journey	move	kitchen				be						
+805	13	4	14	19	This evening Mary went back to the kitchen.	Mary			go	move	kitchen				be						
+806	14	4	14	19	Where was Bill before the kitchen?	Bill			be	be	kitchen				be					park	12 4
+807	15	5	14	19	Bill went back to the cinema this afternoon.	Bill			go	move	cinema				be						
+808	16	5	14	19	Fred travelled to the kitchen yesterday.	Fred			travel	move	kitchen				be						
+809	17	5	14	19	Where was Bill before the kitchen?	Bill			be	be	kitchen				be					park	12 4
+810	1	1	14	20	Bill went back to the cinema yesterday.	Bill			go	move	cinema				be						
+811	2	1	14	20	Mary journeyed to the bedroom yesterday.	Mary			journey	move	bedroom				be						
+812	3	1	14	20	Mary travelled to the kitchen this morning.	Mary			travel	move	kitchen				be						
+813	4	1	14	20	Yesterday Fred moved to the school.	Fred			move	move	school				be						
+814	5	1	14	20	Where was Mary before the kitchen?	Mary			be	be	kitchen				be					bedroom	3 2
+815	6	2	14	20	Julie went to the kitchen this morning.	Julie			go	move	kitchen				be						
+816	7	2	14	20	Julie journeyed to the school yesterday.	Julie			journey	move	school				be						
+817	8	2	14	20	Where was Julie before the kitchen?	Julie			be	be	kitchen				be					school	6 7
+818	9	3	14	20	This morning Bill travelled to the school.	Bill			travel	move	school				be						
+819	10	3	14	20	Fred went to the office this morning.	Fred			go	move	office				be						
+820	11	3	14	20	Where was Mary before the kitchen?	Mary			be	be	kitchen				be					bedroom	3 2
+821	12	4	14	20	Fred moved to the office this evening.	Fred			move	move	office				be						
+822	13	4	14	20	This afternoon Fred went to the kitchen.	Fred			go	move	kitchen				be						
+823	14	4	14	20	Where was Fred before the office?	Fred			be	be	office				be					kitchen	12 13
+824	15	5	14	20	This afternoon Mary travelled to the school.	Mary			travel	move	school				be						
+825	16	5	14	20	Julie moved to the office this afternoon.	Julie			move	move	office				be						
+826	17	5	14	20	Where was Julie before the office?	Julie			be	be	office				be					kitchen	16 6
+827	1	1	15	23	Cats are afraid of wolves.		cat	afraid	be	be				wolf	be						
+828	2	1	15	23	Gertrude is a cat.	Gertrude		cat	be	be					be						
+829	3	1	15	23	Wolves are afraid of mice.		wolf	afraid	be	be				mouse	be						
+830	4	1	15	23	Sheep are afraid of wolves.		sheep	afraid	be	be				wolf	be						
+831	5	1	15	23	Mice are afraid of sheep.		mouse	afraid	be	be				sheep	be						
+832	6	1	15	23	Winona is a sheep.	Winona		sheep	be	be					be						
+833	7	1	15	23	Emily is a sheep.	Emily		sheep	be	be					be						
+834	8	1	15	23	Jessica is a sheep.	Jessica		sheep	be	be					be						
+835	9	1	15	23	What is winona afraid of?	winona		afraid	be	be					be					wolf	6 4
+836	10	2	15	23	What is emily afraid of?	Emily		afraid	be	be		what			be					wolf	7 4
+837	11	3	15	23	What is jessica afraid of?	jessica		afraid	be	be					be					wolf	8 4
+838	12	4	15	23	What is emily afraid of?	Emily		afraid	be	be		what			be					wolf	7 4
+839	1	1	15	24	Mice are afraid of wolves.		mouse	afraid	be	be				wolf	be						
+840	2	1	15	24	Wolves are afraid of cats.		wolf	afraid	be	be				cat	be						
+841	3	1	15	24	Cats are afraid of mice.		cat	afraid	be	be				mouse	be						
+842	4	1	15	24	Emily is a wolf.	Emily		wolf	be	be					be						
+843	5	1	15	24	Sheep are afraid of cats.		sheep	afraid	be	be				cat	be						
+844	6	1	15	24	Winona is a cat.	Winona		cat	be	be					be						
+845	7	1	15	24	Jessica is a sheep.	Jessica		sheep	be	be					be						
+846	8	1	15	24	Gertrude is a cat.	Gertrude		cat	be	be					be						
+847	9	1	15	24	What is emily afraid of?	Emily		afraid	be	be		what			be					cat	4 2
+848	10	2	15	24	What is emily afraid of?	Emily		afraid	be	be		what			be					cat	4 2
+849	11	3	15	24	What is jessica afraid of?	jessica		afraid	be	be					be					cat	7 5
+850	12	4	15	24	What is emily afraid of?	Emily		afraid	be	be		what			be					cat	4 2
+851	1	1	15	25	Cats are afraid of wolves.		cat	afraid	be	be				wolf	be						
+852	2	1	15	25	Jessica is a cat.	Jessica		cat	be	be					be						
+853	3	1	15	25	Wolves are afraid of mice.		wolf	afraid	be	be				mouse	be						
+854	4	1	15	25	Mice are afraid of wolves.		mouse	afraid	be	be				wolf	be						
+855	5	1	15	25	Sheep are afraid of cats.		sheep	afraid	be	be				cat	be						
+856	6	1	15	25	Emily is a mouse.	Emily		mouse	be	be					be						
+857	7	1	15	25	Gertrude is a sheep.	Gertrude		sheep	be	be					be						
+858	8	1	15	25	Winona is a mouse.	Winona		mouse	be	be					be						
+859	9	1	15	25	What is emily afraid of?	Emily		afraid	be	be		what			be					wolf	6 4
+860	10	2	15	25	What is winona afraid of?	winona		afraid	be	be					be					wolf	8 4
+861	11	3	15	25	What is emily afraid of?	Emily		afraid	be	be		what			be					wolf	6 4
+862	12	4	15	25	What is winona afraid of?	winona		afraid	be	be					be					wolf	8 4
+863	1	1	16	98	Greg is a rhino.	Greg		rhino	be	be					be						
+864	2	1	16	98	Bernhard is a frog.	Bernhard		frog	be	be					be						
+865	3	1	16	98	Greg is white.	Greg		white	be	be					be						
+866	4	1	16	98	Lily is a lion.	Lily		lion	be	be					be						
+867	5	1	16	98	Brian is a lion.	Brian		lion	be	be					be						
+868	6	1	16	98	Bernhard is green.	Bernhard		green	be	be					be						
+869	7	1	16	98	Julius is a rhino.	Julius		rhino	be	be					be						
+870	8	1	16	98	Brian is white.	Brian		white	be	be					be						
+871	9	1	16	98	Lily is white.	Lily		white	be	be					be						
+872	10	1	16	98	What color is Julius?			color	be	be					be					white	7 1 3
+873	1	1	16	99	Julius is a lion.	Julius		lion	be	be					be						
+874	2	1	16	99	Lily is a frog.	Lily		frog	be	be					be						
+875	3	1	16	99	Brian is a frog.	Brian		frog	be	be					be						
+876	4	1	16	99	Greg is a rhino.	Greg		rhino	be	be					be						
+877	5	1	16	99	Brian is white.	Brian		white	be	be					be						
+878	6	1	16	99	Julius is gray.	Julius		gray	be	be					be						
+879	7	1	16	99	Greg is green.	Greg		green	be	be					be						
+880	8	1	16	99	Bernhard is a lion.	Bernhard		lion	be	be					be						
+881	9	1	16	99	Bernhard is green.	Bernhard		green	be	be					be						
+882	10	1	16	99	What color is Lily?			"color
+lily"	be	be					be					white	2 3 5
+883	1	1	16	100	Greg is a frog.	Greg		frog	be	be					be						
+884	2	1	16	100	Brian is a rhino.	Brian		rhino	be	be					be						
+885	3	1	16	100	Bernhard is a rhino.	Bernhard		rhino	be	be					be						
+886	4	1	16	100	Julius is a lion.	Julius		lion	be	be					be						
+887	5	1	16	100	Julius is yellow.	Julius		yellow	be	be					be						
+888	6	1	16	100	Greg is white.	Greg		white	be	be					be						
+889	7	1	16	100	Bernhard is gray.	Bernhard		gray	be	be					be						
+890	8	1	16	100	Lily is a frog.	Lily		frog	be	be					be						
+891	9	1	16	100	Brian is gray.	Brian		gray	be	be					be						
+892	10	1	16	100	What color is Lily?			"color
+lily"	be	be					be					white	8 1 6
+893	1	1	17	10	The pink rectangle is above the blue square.		rectangle	pink	be	be	square		blue		be						
+894	2	1	17	10	The yellow square is above the pink rectangle.		square	yellow	be	be	rectangle		pink		be						
+895	3	1	17	10	Is the yellow square to the left of the blue square?		square	yellow	"be
+left"	left			blue	square						no	2 1
+896	4	2	17	10	Is the blue square below the yellow square?		square	blue	be	be			yellow		be					yes	1 2
+897	5	3	17	10	Is the blue square to the right of the yellow square?		square	blue	"be
+right"	right			yellow	square						no	1 2
+898	6	4	17	10	Is the yellow square to the right of the blue square?		square	yellow	"be
+right"	right			blue	square						no	2 1
+899	7	5	17	10	Is the blue square above the yellow square?		square	blue	be	be			yellow		be					no	1 2
+900	8	6	17	10	Is the blue square to the left of the yellow square?		square	blue	"be
+left"	left			yellow	square						no	1 2
+901	9	7	17	10	Is the yellow square below the blue square?		square	yellow	be	be			blue		be					no	2 1
+902	10	8	17	10	Is the blue square above the yellow square?		square	blue	be	be			yellow		be					no	1 2
+903	1	1	17	11	The blue square is above the pink rectangle.		square	blue	be	be	rectangle		pink		be						
+904	2	1	17	11	The yellow square is below the pink rectangle.		square	yellow	be	be	rectangle		pink		be						
+905	3	1	17	11	Is the yellow square below the blue square?		square	yellow	be	be			blue		be					yes	2 1
+906	4	2	17	11	Is the yellow square to the left of the blue square?		square	yellow	"be
+left"	left			blue	square						no	2 1
+907	5	3	17	11	Is the yellow square to the left of the blue square?		square	yellow	"be
+left"	left			blue	square						no	2 1
+908	6	4	17	11	Is the blue square to the left of the yellow square?		square	blue	"be
+left"	left			yellow	square						no	1 2
+909	7	5	17	11	Is the yellow square above the blue square?		square	yellow	be	be			blue		be					no	2 1
+910	8	6	17	11	Is the yellow square below the blue square?		square	yellow	be	be			blue		be					yes	2 1
+911	9	7	17	11	Is the blue square to the right of the yellow square?		square	blue	"be
+right"	right			yellow	square						no	1 2
+912	10	8	17	11	Is the blue square to the right of the yellow square?		square	blue	"be
+right"	right			yellow	square						no	1 2
+913	1	1	17	12	The yellow square is to the right of the blue square.		square	yellow	"be
+right"	right			blue	square							
+914	2	1	17	12	The yellow square is below the red sphere.		square	yellow	be	be	sphere		red		be						
+915	3	1	17	12	Is the red sphere below the blue square?		sphere	red	be	be			blue		be					no	2 1
+916	4	2	17	12	Is the red sphere below the blue square?		sphere	red	be	be			blue		be					no	2 1
+917	5	3	17	12	Is the red sphere to the left of the blue square?		sphere	red	"be
+left"	left			blue	square						no	2 1
+918	6	4	17	12	Is the red sphere to the right of the blue square?		sphere	red	"be
+right"	right			blue	square						yes	2 1
+919	7	5	17	12	Is the red sphere above the blue square?		sphere	red	be	be			blue		be					yes	2 1
+920	8	6	17	12	Is the red sphere above the blue square?		sphere	red	be	be			blue		be					yes	2 1
+921	9	7	17	12	Is the red sphere below the blue square?		sphere	red	be	be			blue		be					no	2 1
+922	10	8	17	12	Is the blue square above the red sphere?		square	blue	be	be			red		be					no	1 2
+923	1	1	18	17	The box fits inside the suitcase.		box		fit	fit	suitcase										
+924	2	1	18	17	The box is bigger than the chocolate.		box		"be
+bigger"	bigger	chocolate										
+925	3	1	18	17	The container fits inside the suitcase.		container		fit	fit	suitcase										
+926	4	1	18	17	The box fits inside the chest.		box		fit	fit	chest										
+927	5	1	18	17	The suitcase is bigger than the box.		suitcase		"be
+bigger"	bigger	box										
+928	6	1	18	17	Does the suitcase fit in the chocolate?		suitcase		fit	fit	chocolate									no	2 1
+929	7	2	18	17	Is the chocolate bigger than the suitcase?		chocolate	big	be	be	suitcase				be					no	2 1
+930	8	3	18	17	Is the chocolate bigger than the suitcase?		chocolate	big	be	be	suitcase				be					no	2 1
+931	9	4	18	17	Does the suitcase fit in the chocolate?		suitcase		fit	fit	chocolate									no	2 1
+932	10	5	18	17	Is the chocolate bigger than the suitcase?		chocolate	big	be	be	suitcase				be					no	2 1
+933	1	1	18	18	The box is bigger than the box of chocolates.		box		"be
+bigger"	bigger	box			chocolate							
+934	2	1	18	18	The chest is bigger than the container.		chest		"be
+bigger"	bigger	container										
+935	3	1	18	18	The suitcase fits inside the chest.		suitcase		fit	fit	chest										
+936	4	1	18	18	The container fits inside the suitcase.		container		fit	fit	suitcase										
+937	5	1	18	18	The container is bigger than the box of chocolates.		container		"be
+bigger"	bigger	box			chocolate							
+938	6	1	18	18	Does the chest fit in the box of chocolates?		chest				box			chocolate						no	5 2
+939	7	2	18	18	Is the box of chocolates bigger than the chest?		box of chocolates		be	be	chest		big	chocolate	be					no	5 2
+940	8	3	18	18	Does the chest fit in the container?		chest				container									no	4 3
+941	9	4	18	18	Is the box of chocolates bigger than the chest?		box of chocolates		be	be	chest		big	chocolate	be					no	5 2
+942	10	5	18	18	Is the chest bigger than the container?		chest	big	be	be	container				be					yes	3 4
+943	1	1	18	19	The box is bigger than the chest.		box		"be
+bigger"	bigger	chest										
+944	2	1	18	19	The chest fits inside the box.		chest		fit	fit	box										
+945	3	1	18	19	The chocolate fits inside the chest.		chocolate		fit	fit	chest										
+946	4	1	18	19	The chest fits inside the container.		chest		fit	fit	container										
+947	5	1	18	19	The box fits inside the container.		box		fit	fit	container										
+948	6	1	18	19	Is the chocolate bigger than the box?		chocolate	big	be	be	box				be					no	3 1
+949	7	2	18	19	Is the container bigger than the chest?		container	big	be	be	chest				be					yes	5 1
+950	8	3	18	19	Is the chocolate bigger than the box?		chocolate	big	be	be	box				be					no	3 1
+951	9	4	18	19	Does the chest fit in the container?		chest				container									yes	5 1
+952	10	5	18	19	Does the chest fit in the container?		chest				container									yes	5 1
+953	1	1	19	98	The office is east of the kitchen.		office		"be
+east"	east				kitchen							
+954	2	1	19	98	The bathroom is west of the kitchen.		bathroom		"be
+west"	west				kitchen							
+955	3	1	19	98	The bedroom is north of the kitchen.		bedroom		"be
+north"	north				kitchen							
+956	4	1	19	98	The hallway is south of the kitchen.		hallway		"be
+south"	south				kitchen							
+957	5	1	19	98	The bathroom is north of the garden.		bathroom		"be
+north"	north				garden							
+958	6	1	19	98	How do you go from the bathroom to the office?	you			go	move	"bathroom
+office"				be					e e	2 1
+959	1	1	19	99	The kitchen is west of the bathroom.		kitchen		"be
+west"	west				bathroom							
+960	2	1	19	99	The hallway is west of the bedroom.		hallway		"be
+west"	west				bedroom							
+961	3	1	19	99	The garden is north of the office.		garden		"be
+north"	north				office							
+962	4	1	19	99	The bathroom is west of the office.		bathroom		"be
+west"	west				office							
+963	5	1	19	99	The bedroom is north of the bathroom.		bedroom		"be
+north"	north				bathroom							
+964	6	1	19	99	How do you go from the bedroom to the office?	you			go	move	"bedroom
+office"				be					s e	5 4
+965	1	1	19	100	The bedroom is south of the garden.		bedroom		be	be				garden	be						
+966	2	1	19	100	The hallway is west of the bathroom.		hallway		"be
+west"	west				bathroom							
+967	3	1	19	100	The kitchen is east of the garden.		kitchen		"be
+east"	east				garden							
+968	4	1	19	100	The bathroom is north of the kitchen.		bathroom		"be
+north"	north				kitchen							
+969	5	1	19	100	The office is south of the kitchen.		office		"be
+south"	south				kitchen							
+970	6	1	19	100	How do you go from the garden to the bathroom?	you			go	move	"garden
+bathroom"				be					e n	3 4
+971	1	1	20	7	Sumit is tired.		sumit	tired	be	be					be						
+972	2	1	20	7	Where will sumit go?				sumit											bedroom	1
+973	3	2	20	7	Jason is tired.	Jason		tired	be	be					be						
+974	4	2	20	7	Where will jason go?	jason			go	move					be					bedroom	3
+975	5	3	20	7	Yann is hungry.	Yann		hungry	be	be					be						
+976	6	3	20	7	Where will yann go?	yann			go	move					be					kitchen	5
+977	7	4	20	7	Antoine is tired.	Antoine		tired	be	be					be						
+978	8	4	20	7	Where will antoine go?				go	move					be					bedroom	7
+979	9	5	20	7	Jason went back to the bedroom.	Jason			go	move	bedroom				be						
+980	10	5	20	7	Why did jason go to the bedroom?	jason			go	move	bedroom				be					tired	3
+981	11	6	20	7	Jason picked up the pajamas there.	Jason			pick up	take	there	pajama			have						
+982	12	6	20	7	Why did jason get the pajamas?	jason			get	take		pajama			have					tired	3
+983	13	7	20	7	Yann journeyed to the kitchen.	Yann			journey	move	kitchen				be						
+984	14	7	20	7	Why did yann go to the kitchen?	Antoine			go	move	kitchen				be					hungry	5
+985	15	8	20	7	Antoine moved to the bedroom.	Antoine			move	move	bedroom				be						
+986	16	8	20	7	Why did antoine go to the bedroom?	Antoine			go	move	bedroom				be					tired	7
+987	17	9	20	7	Sumit went back to the bedroom.		sumit		go	move	bedroom				be						
+988	18	9	20	7	Why did sumit go to the bedroom?				go	move	bedroom				be					tired	1
+989	19	10	20	7	Yann got the apple there.	Yann			get	take	there	apple			have						
+990	20	10	20	7	Why did yann get the apple?	Antoine			get	take		apple			have					hungry	5
+991	1	1	20	8	Yann is hungry.	Yann		hungry	be	be					be						
+992	2	1	20	8	Where will yann go?	yann			go	move					be					kitchen	1
+993	3	2	20	8	Jason is thirsty.	Jason		thirsty	be	be					be						
+994	4	2	20	8	Where will jason go?	jason			go	move					be					kitchen	3
+995	5	3	20	8	Jason went to the kitchen.	Jason			go	move	kitchen				be						
+996	6	3	20	8	Why did jason go to the kitchen?	jason			go	move	kitchen				be					thirsty	3
+997	7	4	20	8	Sumit is hungry.		sumit	hungry	be	be					be						
+998	8	4	20	8	Where will sumit go?				sumit											kitchen	7
+999	9	5	20	8	Sumit moved to the kitchen.		sumit		move	move	kitchen				be						
+1000	10	5	20	8	Why did sumit go to the kitchen?				go	move	kitchen				be					hungry	7
+1001	11	6	20	8	Sumit took the apple there.		sumit		take	take	there	apple			have						
+1002	12	6	20	8	Why did sumit get the apple?				get sumit			apple								hungry	7
+1003	13	7	20	8	Jason picked up the milk there.	Jason			pick up	take	there	milk			have						
+1004	14	7	20	8	Why did jason get the milk?	jason			get	take		milk			have					thirsty	3
+1005	15	8	20	8	Yann journeyed to the kitchen.	Yann			journey	move	kitchen				be						
+1006	16	8	20	8	Why did yann go to the kitchen?	Antoine			go	move	kitchen				be					hungry	1
+1007	17	9	20	8	Antoine is bored.	Antoine			be	be					be						
+1008	18	9	20	8	Where will antoine go?				go	move					be					garden	17
+1009	19	10	20	8	Antoine travelled to the garden.	Antoine			travel	move	garden				be						
+1010	20	10	20	8	Why did antoine go to the garden?	Antoine			go	move	garden				be					bored	17
+1011	21	11	20	8	Antoine picked up the football there.	Antoine			pick up	take	there	football			have						
+1012	22	11	20	8	Why did antoine get the football?	Antoine			get	take		football			have					bored	17
+1013	1	1	20	9	Yann is bored.	Yann			be	be					be						
+1014	2	1	20	9	Where will yann go?	yann			go	move					be					garden	1
+1015	3	2	20	9	Jason is thirsty.	Jason		thirsty	be	be					be						
+1016	4	2	20	9	Where will jason go?	jason			go	move					be					kitchen	3
+1017	5	3	20	9	Sumit is tired.		sumit	tired	be	be					be						
+1018	6	3	20	9	Where will sumit go?				sumit											bedroom	5
+1019	7	4	20	9	Antoine is tired.	Antoine		tired	be	be					be						
+1020	8	4	20	9	Where will antoine go?				go	move					be					bedroom	7
+1021	9	5	20	9	Sumit went to the bedroom.		sumit		go	move	bedroom				be						
+1022	10	5	20	9	Why did sumit go to the bedroom?				go	move	bedroom				be					tired	5
+1023	11	6	20	9	Yann journeyed to the garden.	Yann			journey	move	garden				be						
+1024	12	6	20	9	Why did yann go to the garden?	Antoine			go	move	garden				be					bored	1
+1025	13	7	20	9	Jason journeyed to the kitchen.	Jason			journey	move	kitchen				be						
+1026	14	7	20	9	Why did jason go to the kitchen?	jason			go	move	kitchen				be					thirsty	3
+1027	15	8	20	9	Sumit picked up the pajamas there.	Sumit			pick up	take	there	pajama			have						
+1028	16	8	20	9	Why did sumit get the pajamas?				get	take		pajama			have					tired	5
+1029	17	9	20	9	Antoine travelled to the bedroom.	Antoine			travel	move	bedroom				be						
+1030	18	9	20	9	Why did antoine go to the bedroom?	Antoine			go	move	bedroom				be					tired	7
+1031	19	10	20	9	Jason picked up the milk there.	Jason			pick up	take	there	milk			have						
+1032	20	10	20	9	Why did jason get the milk?	jason			get	take		milk			have					thirsty	3
+1033	21	11	20	9	Yann grabbed the football there.	Yann			grab	take	there	football			have						
+1034	22	11	20	9	Why did yann get the football?	Antoine			get	take		football			have					bored	1

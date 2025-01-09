@@ -4,6 +4,7 @@ import os
 from typing import Union
 
 from baseline.config.baseline_config import DataSplits
+from data.DataProcessor import DataProcessor
 
 
 class DataLoader:
@@ -61,7 +62,7 @@ class DataLoader:
                 line_count = curr_line_count
         return data
 
-    def load_data(
+    def load_raw_data(
         self,
         path: str,
         split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
@@ -87,4 +88,22 @@ class DataLoader:
                     all_tasks[task] = self.read_file(file)
                     print(f"File {file} is read.")
 
-        return all_tasks
+        sorted_all_tasks = dict(sorted(all_tasks.items(), key=lambda x: int(x[0])))
+
+        return sorted_all_tasks
+
+    def load_data(
+            self, path: str,
+            split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
+            tasks=None) -> dict:
+        """
+        Prepare the data: load raw data and process it.
+
+        :param path: path to the data
+        :param split: should be of type DataSplits ("train", "valid", or "test")
+        :param tasks: list of task numbers to read
+        :return: processed data
+        """
+        processor = DataProcessor()
+        raw_data = self.load_raw_data(path=path, split=split, tasks=tasks)
+        return processor.process_data(raw_data)

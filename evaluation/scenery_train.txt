@@ -1,0 +1,921 @@
+1:
+-----------------
+Human Subjects:
+Daniel
+John
+Mary
+Sandra
+
+Non-Human Subjects:
+-
+
+Direct Objects:
+-
+
+Indirect Objects:
+-
+
+Relations:
+be
+go
+journey
+move
+travel
+
+Locations:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+2:
+-----------------
+Human Subjects:
+Daniel
+John
+Mary
+Sandra
+
+Non-Human Subjects:
+apple
+football
+milk
+
+Direct Objects:
+apple
+football
+milk
+
+Indirect Objects:
+-
+
+Relations:
+be
+discard
+drop
+get
+go
+grab
+journey
+leave
+move
+pick up
+put down
+take
+travel
+
+Locations:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+there
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+3:
+-----------------
+Human Subjects:
+Daniel
+John
+Mary
+Sandra
+
+Non-Human Subjects:
+apple
+football
+milk
+
+Direct Objects:
+apple
+football
+milk
+
+Indirect Objects:
+-
+
+Relations:
+be
+discard
+drop
+get
+go
+grab
+journey
+leave
+move
+pick up
+put down
+take
+travel
+
+Locations:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+there
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+4:
+-----------------
+Human Subjects:
+East
+West
+
+Non-Human Subjects:
+bathroom
+bedroom
+bedroom west of
+east
+garden
+garden south of
+hallway
+kitchen
+kitchen east of
+kitchen south of
+north
+office
+west
+
+Direct Objects:
+what
+
+Indirect Objects:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+
+Relations:
+be
+east
+north
+south
+west
+
+Locations:
+-
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+5:
+-----------------
+Human Subjects:
+Bill
+Fred
+Jeff
+Mary
+who
+
+Non-Human Subjects:
+-
+
+Direct Objects:
+apple
+football
+milk
+
+Indirect Objects:
+Bill
+Fred
+Jeff
+Mary
+
+Relations:
+discard
+drop
+get
+give
+go
+grab
+hand
+journey
+leave
+move
+pass
+pick up
+put down
+receive
+take
+travel
+
+Locations:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+there
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+6:
+-----------------
+Human Subjects:
+Daniel
+John
+Mary
+Sandra
+
+Non-Human Subjects:
+-
+
+Direct Objects:
+apple
+football
+milk
+
+Indirect Objects:
+-
+
+Relations:
+be
+discard
+drop
+get
+go
+grab
+journey
+leave
+move
+pick up
+put down
+take
+travel
+
+Locations:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+there
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+7:
+-----------------
+Human Subjects:
+Daniel
+John
+Mary
+Sandra
+
+Non-Human Subjects:
+object
+
+Direct Objects:
+apple
+football
+milk
+
+Indirect Objects:
+Daniel
+John
+Mary
+Sandra
+
+Relations:
+be
+discard
+drop
+get
+give
+go
+grab
+hand
+journey
+leave
+move
+pass
+pick up
+put down
+take
+travel
+
+Locations:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+there
+
+Subjects Attributes:
+many
+object
+
+Object Attributes:
+-
+
+
+8:
+-----------------
+Human Subjects:
+Daniel
+John
+Mary
+Sandra
+
+Non-Human Subjects:
+-
+
+Direct Objects:
+apple
+apple football ,
+apple milk ,
+football
+milk
+
+Indirect Objects:
+-
+
+Relations:
+carry
+discard
+drop
+get
+go
+grab
+journey
+leave
+move
+pick up
+put down
+take
+travel
+
+Locations:
+bathroom
+bedroom
+football
+garden
+hallway
+kitchen
+milk
+office
+there
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+9:
+-----------------
+Human Subjects:
+Daniel
+John
+Mary
+Sandra
+
+Non-Human Subjects:
+-
+
+Direct Objects:
+-
+
+Indirect Objects:
+-
+
+Relations:
+be
+go
+journey
+move
+travel
+
+Locations:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+10:
+-----------------
+Human Subjects:
+Bill
+Fred
+Julie
+Mary
+
+Non-Human Subjects:
+-
+
+Direct Objects:
+-
+
+Indirect Objects:
+-
+
+Relations:
+be
+go
+journey
+move
+travel
+
+Locations:
+bedroom
+cinema
+kitchen
+office
+park
+school
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+11:
+-----------------
+Human Subjects:
+Daniel
+John
+Mary
+Sandra
+he
+she
+
+Non-Human Subjects:
+-
+
+Direct Objects:
+-
+
+Indirect Objects:
+-
+
+Relations:
+be
+follow
+go
+journey
+move
+travel
+
+Locations:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+12:
+-----------------
+Human Subjects:
+Daniel
+John
+Mary
+Sandra
+
+Non-Human Subjects:
+-
+
+Direct Objects:
+-
+
+Indirect Objects:
+-
+
+Relations:
+be
+go
+journey
+move
+travel
+
+Locations:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+13:
+-----------------
+Human Subjects:
+Daniel
+John
+Mary
+Sandra
+they
+
+Non-Human Subjects:
+-
+
+Direct Objects:
+-
+
+Indirect Objects:
+-
+
+Relations:
+be
+follow
+go
+journey
+move
+travel
+
+Locations:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+14:
+-----------------
+Human Subjects:
+Bill
+Fred
+Julie
+Mary
+
+Non-Human Subjects:
+-
+
+Direct Objects:
+-
+
+Indirect Objects:
+-
+
+Relations:
+be
+go
+journey
+move
+travel
+
+Locations:
+bedroom
+cinema
+kitchen
+office
+park
+school
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+15:
+-----------------
+Human Subjects:
+Emily
+Gertrude
+Jessica
+Winona
+jessica
+winona
+
+Non-Human Subjects:
+cat
+mouse
+sheep
+wolf
+
+Direct Objects:
+what
+
+Indirect Objects:
+cat
+mouse
+sheep
+wolf
+
+Relations:
+be
+
+Locations:
+-
+
+Subjects Attributes:
+afraid
+cat
+mouse
+sheep
+wolf
+
+Object Attributes:
+-
+
+
+16:
+-----------------
+Human Subjects:
+Bernhard
+Brian
+Greg
+Julius
+Lily
+
+Non-Human Subjects:
+-
+
+Direct Objects:
+-
+
+Indirect Objects:
+-
+
+Relations:
+be
+
+Locations:
+-
+
+Subjects Attributes:
+color
+frog
+gray
+green
+lily
+lion
+rhino
+swan
+white
+yellow
+
+Object Attributes:
+-
+
+
+17:
+-----------------
+Human Subjects:
+-
+
+Non-Human Subjects:
+rectangle
+sphere
+square
+triangle
+
+Direct Objects:
+-
+
+Indirect Objects:
+rectangle
+sphere
+square
+triangle
+
+Relations:
+be
+left
+rectangle
+right
+
+Locations:
+rectangle
+sphere
+square
+triangle
+
+Subjects Attributes:
+blue
+pink
+red
+yellow
+
+Object Attributes:
+blue
+pink
+red
+yellow
+
+
+18:
+-----------------
+Human Subjects:
+-
+
+Non-Human Subjects:
+box
+box of chocolates
+chest
+chocolate
+container
+suitcase
+
+Direct Objects:
+-
+
+Indirect Objects:
+chocolate
+
+Relations:
+be
+bigger
+fit
+
+Locations:
+box
+chest
+chocolate
+container
+suitcase
+
+Subjects Attributes:
+big
+
+Object Attributes:
+big
+
+
+19:
+-----------------
+Human Subjects:
+you
+
+Non-Human Subjects:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+
+Direct Objects:
+-
+
+Indirect Objects:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+
+Relations:
+be
+east
+go
+north
+south
+west
+
+Locations:
+bathroom
+bedroom
+garden
+hallway
+kitchen
+office
+
+Subjects Attributes:
+-
+
+Object Attributes:
+-
+
+
+20:
+-----------------
+Human Subjects:
+Antoine
+Jason
+Sumit
+Yann
+jason
+yann
+
+Non-Human Subjects:
+sumit
+
+Direct Objects:
+apple
+football
+milk
+pajama
+
+Indirect Objects:
+-
+
+Relations:
+be
+bore
+get
+get sumit
+go
+grab
+journey
+move
+pick up
+sumit
+take
+travel
+
+Locations:
+bedroom
+garden
+kitchen
+there
+
+Subjects Attributes:
+hungry
+thirsty
+tired
+
+Object Attributes:
+-
+
+
+
+
+POS Tags:
+CCONJ, PART, ADP, AUX, NUM, PROPN, PRON, DET, VERB, PUNCT, INTJ, SPACE, SCONJ, ADV, NOUN, ADJ, 
+
+Lemmas:
+?, garden, 	, lily, Sandra, box, a, many, put, down, gertrude, evening, bore, jessica, hand, take, swan, Antoine, Greg, kitchen, up, office, yesterday, football, fred, follow, Mary, Jeff, pass, do, what, winona, color, yellow, south, cinema, maybe, after, carry, e, sumit, the, left, there, to, two, sheep, inside, pink, travel, then, rhino, green, Bill, Sheep, get, lion, either, not, in, grab, 1, you, from, white, journey, she, Jessica, w, before, milk, he, below, Emily, and, rectangle, of, 4, ., s, square, Sumit, no, where, morning, afterwards, Bernhard, hallway, triangle, n, go, be, sphere, east, north, receive, emily, red, nothing, thirsty, antoine, they, than, or, how, none, Yann, object, bathroom, above, bill, Jason, who, Gertrude, move, park, ,, pajama, drop, will, back, pick, that, three, leave, blue, Julius, big, suitcase, yann, Daniel, Julie, Brian, wolf, why, frog, discard, bedroom, give, jason, John, afraid, Lily, chest, Winona, container, afternoon, west, Fred, right, mouse, chocolate, school, yes, one, cat, tired, long, apple, gray, hungry, fit, this, 
+
+
