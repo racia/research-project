@@ -71,9 +71,8 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
             data_tasks = loader.load_data(
                 path=cfg.data.path, split=split, tasks=cfg.data.task_ids
             )
-            processed_data = processor.process_data(data=data_tasks)
             model.total_tasks += len(data_tasks)
-            data_in_splits[split] = processed_data
+            data_in_splits[split] = data_tasks
 
     print("The data is loaded successfully", end="\n\n", file=log_file)
     print("Starting to query the model", end="\n\n", file=log_file)

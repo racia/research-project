@@ -14,7 +14,7 @@ class DataSaver:
     This class handles everything related to saving data.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, results_path: Path = Path("./")) -> None:
         """
         Initialize the DataSaver.
         The datasaver handles everything related to saving data.
