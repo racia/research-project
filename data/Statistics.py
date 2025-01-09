@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 from data.DataLoader import DataLoader
 from data.DataProcessor import DataProcessor
-from data_utils import check_or_create_directory
+from data.data_utils import check_or_create_directory
 
 
 class Statistics:

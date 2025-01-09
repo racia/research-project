@@ -1,5 +1,5 @@
 model:
-  name: 'meta-llama/Meta-Llama-3-8B-Instruct'
+  name: "meta-llama/Meta-Llama-3-8B-Instruct"
   max_new_tokens: 12
   # with temperature==0.0 the model will use log probability
   # to automatically increase the temperature until certain thresholds are hit.
@@ -11,7 +11,7 @@ model:
 
 data:
   # small data with validation
-  path: '../../tasks_1-20_v1-2/en-valid/'
+  path: "../../tasks_1-20_v1-2/en-valid/"
   # Order: train, valid, test
   splits:
     train: False
@@ -28,15 +28,12 @@ data:
     context: True
     question: False
 
-prompt:
+prompts:
   # name of the prompt serves as a basis for logging and result files
-  name: prompt_1
-  # '|' insures multiline string
-  text: |
-    You will be given a sequence of context sentences and then asked questions about them. For example:
-    Context sentences: John is on the playground. Mary is in the kitchen.
-    Question: Where is John?
-    Answer: Playground
+  names:
+    - prompt_1
+  paths:
+    - "baseline/prompts/basic_prompt.txt"
 
 repository:
    # path should be relative to the working directory (where the script is)
@@ -47,7 +44,7 @@ results:
   # here, csv results and logs will be stored
   # change it for yourself but make sure to create the folders beforehand
   # should be relative to 'repo_path'! don't forget the trailing '/'!
-  path: 'baseline/'
+  path: "baseline/"
   print_to_file: True
   headers:
     - id
