@@ -182,15 +182,18 @@ To get started, log into the Heidelberg University Computational Linguistics clu
 
 3. Activate the necessary modules:
     ```commandline
-    module load devel/miniconda/4.9.2
+    module load devel/miniconda/23.9.0-py3.9.15
     module load devel/cuda/11.8
     ```
     
     You can check the available modules using `module avail`.
 
-4. Create the conda environment by running the following command:  
+4. Create the conda environment by running the following commands.
+
+- First, we need to change the solver: `conda config --set solver libmamba`
+- Then, we can actually create the environment:
     ```commandline
-    conda create -n research-project "python>=3.9" torchvision scikit-learn "pytorch::pytorch>=2.0" torchaudio numpy transformers matplotlib black accelerate "hydra-core>1" cudatoolkit=11.8 -c conda-forge -c pytorch
+    conda create -n research-project "python>=3.9" scikit-learn numpy transformers matplotlib black "hydra-core>1" "pytorch::pytorch>=2.0" torchvision torchaudio pytorch-cuda=11.8 "conda-forge::accelerate>=0.26.0" -c pytorch -c nvidia -c conda-forge
     ```
     
     In theory, this should also be possible using the `environment.yaml` file:
@@ -257,6 +260,23 @@ and the rest will be taken from the default config file.
     ```
    If no config specified, the script will run with the default `baseline_config` 
 (will through an error of not finding `/workspace/students/reasoning`).
+
+### Settings
+As the settings load two Llama models, it not possible to run these settings on CLuster or locally.
+
+#### Running the settings on the bwUniCluster
+Make sure to activate the conda module and the CUDA module. Furthermore, check that your pytorch version supports GPU usage.
+The code will stop executing if no GPU is available to use.
+
+We are now using two GPUs, `cuda:0` and `cuda:1`.
+The student model is loaded on `cuda:0`, the teacher on `cuda:1`.
+This is done because we otherwise do not have enough GPU memory to do any computations.
+If we now want to generate something, we need the input to the model to be on the same device as the model that should generate.
+So if we want to generate the initial CoT of the student, the input to the model (in this case the encoded prompt) needs to be moved to `cuda:0` as well. This can simply be done by adding `.to("cuda:0")` to the tensor.
+We can then happily do some stuff with this, until we want to get the teacher to do something. Then we need to again move the input to the teacher (e.g. the prompt to provide feedback + the CoT of the student) to `cuda:1`, where the teacher is located.
+
+Therefore you need to make sure that the batch script specifies to use two GPUs. 
+This also requires that the data is moved correctly in the code as explained above. If you want to change something, make sure that the necessary data is on the same GPU as the device that should use it!
 
 
 ### Data
