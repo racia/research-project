@@ -28,6 +28,8 @@ class DataSaver:
 
         if not os.path.exists(self.results_path):
             os.makedirs(self.results_path)
+        elif os.path.exists(self.results_path) and os.listdir(self.results_path):
+            raise FileExistsError(f"Directory {self.results_path} already exists and is not empty. Please choose another results_path or empty the directory.")
 
         log_file_path = self.results_path / f"{prompt_name}.log"
         results_file_path = self.results_path / f"{prompt_name}_results.csv"

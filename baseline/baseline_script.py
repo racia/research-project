@@ -39,14 +39,7 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
     loader = DataLoader()
     log_file = sys.stdout
     saver = DataSaver()
-    log_file_path, results_file_path, accuracy_file_paths = (
-        saver.create_path_files(results_path=Path(cfg.repository.path, cfg.results.path),
-                                prompt_name=cfg.prompt.name,
-                                run_number=run_number))
     plotter = Plotter(result_path=str(saver.results_path))
-
-    if cfg.results.print_to_file:
-        log_file = saver.redirect_printing_to_log_file(log_file_path)
 
     all_accuracies = {
         "strict": {},
@@ -61,8 +54,6 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
     )
 
     model.load_model()
-    print(f"The model {cfg.model.name} is loaded successfully", file=log_file)
-
     model.total_tasks = 0
     data_in_splits = {}
 
@@ -74,12 +65,7 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
             model.total_tasks += len(data_tasks)
             data_in_splits[split] = data_tasks
 
-    print("The data is loaded successfully", end="\n\n", file=log_file)
-    print("Starting to query the model", end="\n\n", file=log_file)
-
     for prompt_name, prompt_path in zip(cfg.prompt.names, cfg.prompt.paths):
-        print(f"Prompt: {prompt_name}, path: {prompt_path}")
-
         log_file_path, results_file_path, accuracy_file_paths = (
             saver.create_path_files(results_path=Path(cfg.repository.path, cfg.results.path),
                                     prompt_name=prompt_name,
@@ -87,6 +73,12 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
 
         if cfg.results.print_to_file:
             log_file = saver.redirect_printing_to_log_file(log_file_path)
+            model.log_file = log_file
+
+        print(f"The model {cfg.model.name} is loaded successfully", file=log_file)
+        print("The data is loaded successfully", end="\n\n", file=log_file)
+        print(f"Prompt: {prompt_name}, path: {prompt_path}", file=log_file)
+        print("Starting to query the model", end="\n\n", file=log_file)
 
         model.set_system_prompt(prompt_file_path=prompt_path)
 

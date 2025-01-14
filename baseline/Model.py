@@ -69,7 +69,7 @@ class Baseline:
         :param prompt_file_path: path to the prompt file
         """
         with open(prompt_file_path, "r", encoding="utf-8") as f:
-            prompt = f.read().strip
+            prompt = f.read().strip()
         self.system_prompt_ = [{"role": "system", "content": prompt},]
 
     def get_system_prompt(self) -> List[Dict[str, str]]:
