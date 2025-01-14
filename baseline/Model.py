@@ -6,7 +6,6 @@ from pathlib import Path
 from typing import List, Dict, Union, TextIO
 
 import torch
-from sklearn.metrics import accuracy_score
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from baseline.config.baseline_config import Enumerate
@@ -258,7 +257,7 @@ class Baseline:
              for true, predicted in zip(y_true_sample, y_pred_sample)]
             print(file=self.log)
 
-            accuracy_sample = round(accuracy_score(y_true_sample, y_pred_sample), 2)
+            accuracy_sample = round(St.accuracy_score(y_true_sample, y_pred_sample), 2)
             accuracies_task.append(accuracy_sample)
             print(f"Accuracy score per sample {sample_id_}:", accuracy_sample, file=self.log)
 

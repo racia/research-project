@@ -1,6 +1,7 @@
 from typing import List
 
 import matplotlib.pyplot as plt
+from sklearn.metrics import accuracy_score
 
 from data.DataLoader import DataLoader
 from data.DataProcessor import DataProcessor
@@ -80,19 +81,71 @@ class Statistics:
         plt.savefig("plots/num_context_per_task.png")
 
     @staticmethod
-    def soft_match_accuracy_score(
-        true_values: List[str], predicted_values: List[str]
-    ) -> float:
+    def answer_into_set(answer: str) -> set:
+        """
+        Convert the answer into a set of words.
+
+        :param answer: the answer
+        :return: set of words
+        """
+        answer_set = set([t.strip("-,.:;!?") for t in answer.split(" ")])
+        return answer_set
+
+    def accuracy_score(self, true_values: list[str], predicted_values: list[str]) -> float:
+        """
+        Compute the accuracy score that also considers the order of the answers.
+
+        :param true_values: list of true values
+        :param predicted_values: list of predicted values
+        :return: accuracy score
+        """
+        if len(true_values) == 0 or len(predicted_values) == 0:
+            return 0.0
+
         true_in_predicted = 0
         for true, prediction in zip(true_values, predicted_values):
-            if true.lower() in prediction.lower():
+            true = true.lower()
+            prediction = prediction.lower()
+
+            if true == prediction or true == prediction.replace(", ", " "):
                 true_in_predicted += 1
+
+            elif self.answer_into_set(true) == self.answer_into_set(prediction):
+                # this is needed for cases where the order of answer doesn't matter
+                # e.g. the routes "east, south" and "south, east" should be both
+                # considered correct because they lead to the same destination
+                # or for longer answers
+                true_in_predicted += 1
+
+        return true_in_predicted / len(true_values) if true_in_predicted else 0.0
+
+    def soft_match_accuracy_score(
+        self, true_values: List[str], predicted_values: List[str]
+    ) -> float:
+        """
+        Compute the accuracy score that also considers the order of the answers,
+        and partial or wordy answers.
+
+        :param true_values: list of true values
+        :param predicted_values: list of predicted values
+        :return: soft-match accuracy score
+        """
+        if len(true_values) == 0 or len(predicted_values) == 0:
+            return 0.0
+
+        true_in_predicted = 0
+        for true, prediction in zip(true_values, predicted_values):
+            if self.accuracy_score([true], [prediction]) == 1:
+                true_in_predicted += 1
+
+            elif true.lower() in prediction.lower():
+                true_in_predicted += 0.75
+
             # for partial answer of questions with two supporting facts
             elif prediction.lower() in true.lower():
                 true_in_predicted += 0.5
-        if true_in_predicted == 0:
-            return 0.0
-        return true_in_predicted / len(true_values)
+
+        return true_in_predicted / len(true_values) if true_in_predicted else 0.0
 
 
 if __name__ == "__main__":
