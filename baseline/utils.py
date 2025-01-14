@@ -1,4 +1,7 @@
 import re
+from typing import TextIO
+
+import torch
 
 from baseline.config.baseline_config import Enumerate
 
@@ -83,3 +86,23 @@ def parse_output(output: str) -> dict[str, str]:
 
     parsed_output = {"answer": answer, "reasoning": reasoning}
     return parsed_output
+
+
+def set_device(logfile: TextIO) -> torch.device:
+    """
+    Sets the device to use for the model.
+    If no GPU is available, an error will be raised.
+
+    :return: device to use
+    """
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    print("Torch version: ", torch.__version__, file=logfile)
+    print("CUDA version: ", torch.version.cuda, file=logfile)
+    print("CUDA available: ", torch.cuda.is_available(), file=logfile)
+    print(f"Device: {device}", file=logfile, flush=True)
+
+    if not torch.cuda.is_available():
+        raise Exception("CUDA is not available. This will be using the CPU.")
+
+    return device
