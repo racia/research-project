@@ -5,6 +5,7 @@ import os
 import sys
 from pathlib import Path
 from typing import TextIO
+from datetime import datetime
 
 from data.data_utils import is_empty_file
 
@@ -21,16 +22,43 @@ class DataSaver:
         """
         self.old_stdout: TextIO = sys.stdout
         self.results_path = results_path
+        self.run = self.compose_run_name()
 
-    def create_path_files(self, results_path: Path, prompt_name: str, run_number: int) \
+    @staticmethod
+    def compose_run_name() -> str:
+        """
+        Compose the name for the run based on the current date and time.
+        Example: '2025-01-14_21-48-48'
+
+        :return: the name of the run
+        """
+        date = str(datetime.now()).split(".")[0]
+        date = date.replace(" ", "_")
+        date = date.replace(":", "-")
+        return date
+
+    def create_path_files(self, results_path: Path, prompt_name: str) \
             -> tuple[Path, Path, dict[str, Path]]:
-        self.results_path = results_path / prompt_name / f"run_{run_number}"
+        """
+        Create the unique results path for the run and the files to save the data:
+        log file, results file, and accuracy files.
 
-        if not os.path.exists(self.results_path):
+        :param results_path: the path to the results directory
+        :param prompt_name: the name of the prompt
+        :return: the paths to the log file, results file, and accuracy files in a tuple
+        """
+        self.results_path = results_path / prompt_name / self.run
+
+        try:
             os.makedirs(self.results_path)
-        elif os.path.exists(self.results_path) and os.listdir(self.results_path):
-            raise FileExistsError(f"Directory {self.results_path} already exists and is not empty. Please choose another results_path or empty the directory.")
+        except FileExistsError:
+            print(f"Directory {self.results_path} already exists and is not empty. "
+                  "Please choose another results_path or empty the directory.")
+            self.results_path = Path("./results") / prompt_name / self.run
+            os.makedirs(self.results_path)
 
+        print(f"Saving the results to {self.results_path}")
+        
         log_file_path = self.results_path / f"{prompt_name}.log"
         results_file_path = self.results_path / f"{prompt_name}_results.csv"
 

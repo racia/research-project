@@ -11,13 +11,13 @@ from omegaconf import DictConfig
 sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
 from data.DataSaver import DataSaver
 from data.DataLoader import DataLoader
-from data.Statistics import Statistics as St
+from data.Statistics import Statistics
 from data.Plotter import Plotter
 from Model import Baseline
 from baseline.config.baseline_config import Config
 
 
-def run_model(cfg: Config | DictConfig, run_number: int) -> None:
+def run_model(cfg: Config | DictConfig) -> None:
     """
     The function to run a model without modifications
     over the task data with the given config with such steps:
@@ -30,7 +30,7 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
     7. [optional*] return the system output in place
 
     :param cfg: config instance
-    :param run_number: run number for the given prompt(s)
+    :return: None
     """
     print("Config data for the run:", cfg)
     print("Running the script...")
@@ -38,6 +38,7 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
     loader = DataLoader()
     log_file = sys.stdout
     saver = DataSaver()
+    stats = Statistics()
     plotter = Plotter(result_path=str(saver.results_path))
 
     all_accuracies = {
@@ -50,6 +51,7 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
         max_new_tokens=cfg.model.max_new_tokens,
         temperature=cfg.model.temperature,
         log_file=log_file,
+        statistics=stats,
     )
 
     model.load_model()
@@ -65,10 +67,10 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
             data_in_splits[split] = data_tasks
 
     for prompt_name, prompt_path in zip(cfg.prompt.names, cfg.prompt.paths):
-        log_file_path, results_file_path, accuracy_file_paths = (
-            saver.create_path_files(results_path=Path(cfg.repository.path, cfg.results.path),
-                                    prompt_name=prompt_name,
-                                    run_number=run_number))
+        log_file_path, results_file_path, accuracy_file_paths = saver.create_path_files(
+            results_path=Path(cfg.repository.path, cfg.results.path),
+            prompt_name=prompt_name,
+        )
 
         if cfg.results.print_to_file:
             log_file = saver.redirect_printing_to_log_file(log_file_path)
@@ -98,39 +100,57 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
                     parse_output=cfg.results.parse,
                 )
                 saver.save_output(
-                    data=task_result, headers=cfg.results.headers, file_path=results_file_path
+                    data=task_result,
+                    headers=cfg.results.headers,
+                    file_path=results_file_path,
                 )
                 print("______________________________", end="\n\n", file=log_file)
 
             print(f"The run for {split} data is finished successfully", file=log_file)
 
             all_accuracies = {
-                "prompt": {"split":
-                               {"task": {"accuracy": 0, "soft_match_accuracy": 0}}
-                           },
+                "prompt": {
+                    "split": {"task": {"accuracy": 0, "soft_match_accuracy": 0}}
+                },
             }
 
             accuracies_to_save = []
-            for task_id, accuracy, soft_match_accuracy in zip(tasks.keys(), model.accuracies_per_task,
-                                                              model.soft_match_accuracies_per_task):
-                accuracies_to_save.append({"task": task_id,
-                                           "accuracy": accuracy,
-                                           "soft_match_accuracy": soft_match_accuracy})
+            for task_id, accuracy, soft_match_accuracy in zip(
+                tasks.keys(),
+                model.accuracies_per_task,
+                model.soft_match_accuracies_per_task,
+            ):
+                accuracies_to_save.append(
+                    {
+                        "task": task_id,
+                        "accuracy": accuracy,
+                        "soft_match_accuracy": soft_match_accuracy,
+                    }
+                )
 
-            saver.save_output(data=accuracies_to_save,
-                              headers=["task", "accuracy", "soft_match_accuracy"],
-                              file_path=accuracy_file_paths[str(split)])
+            saver.save_output(
+                data=accuracies_to_save,
+                headers=["task", "accuracy", "soft_match_accuracy"],
+                file_path=accuracy_file_paths[str(split)],
+            )
 
-            plotter.plot_acc_per_task(acc_per_task=model.accuracies_per_task,
-                                      y_label="Accuracy",
-                                      plot_name_add=f"{prompt_name}_{str(split)}_")
-            plotter.plot_acc_per_task(acc_per_task=model.soft_match_accuracies_per_task,
-                                      y_label="Soft Match Accuracy",
-                                      plot_name_add=f"{prompt_name}_{str(split)}_")
+            plotter.plot_acc_per_task(
+                acc_per_task=model.accuracies_per_task,
+                y_label="Accuracy",
+                plot_name_add=f"{prompt_name}_{str(split)}_",
+            )
+            plotter.plot_acc_per_task(
+                acc_per_task=model.soft_match_accuracies_per_task,
+                y_label="Soft Match Accuracy",
+                plot_name_add=f"{prompt_name}_{str(split)}_",
+            )
 
-            all_accuracies["strict"][str(split)][prompt_name] = [task["accuracy"] for task in accuracies_to_save]
-            all_accuracies["soft_match"][str(split)][prompt_name] = [task["soft_match_accuracy"]
-                                                                for task in accuracies_to_save]
+            all_accuracies["strict"][str(split)][prompt_name] = [
+                task["accuracy"] for task in accuracies_to_save
+            ]
+            all_accuracies["soft_match"][str(split)][prompt_name] = [
+                task["soft_match_accuracy"] for task in accuracies_to_save
+            ]
 
         print("\n- RUN RESULTS -", end="\n\n", file=log_file)
 
@@ -149,19 +169,25 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
             file=log_file,
         )
 
-        model.accuracy = round(St.accuracy_score(model.y_true, model.y_pred), 2)
+        model.accuracy = round(stats.accuracy_score(model.y_true, model.y_pred), 2)
         print("General accuracy:", model.accuracy, file=log_file)
 
         model.soft_match_accuracy = round(
-            St.soft_match_accuracy_score(model.y_true, model.y_pred), 2
+            stats.soft_match_accuracy_score(model.y_true, model.y_pred), 2
         )
         print("General soft match accuracy:", model.soft_match_accuracy, file=log_file)
 
         row = [
-            {"accuracy": model.accuracy, "soft_match_accuracy": model.soft_match_accuracy}
+            {
+                "accuracy": model.accuracy,
+                "soft_match_accuracy": model.soft_match_accuracy,
+            }
         ]
-        saver.save_output(data=row, headers=["accuracy", "soft_match_accuracy"],
-                          file_path=results_file_path)
+        saver.save_output(
+            data=row,
+            headers=["accuracy", "soft_match_accuracy"],
+            file_path=results_file_path,
+        )
 
         if cfg.results.print_to_file:
             # console printing must be returned
@@ -172,12 +198,16 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
     # Plot accuracies for all prompts the model ran with
     if len(cfg.prompt.names) > 1:
         for split in data_in_splits.keys():
-            plotter.plot_acc_per_task_and_prompt(acc_per_prompt_task=all_accuracies["strict"][split],
-                                                 y_label="Accuracy",
-                                                 plot_name_add=f"{str(split)}_")
-            plotter.plot_acc_per_task_and_prompt(acc_per_prompt_task=all_accuracies["soft_match"][split],
-                                                 y_label="Soft Match Accuracy",
-                                                 plot_name_add=f"{str(split)}_")
+            plotter.plot_acc_per_task_and_prompt(
+                acc_per_prompt_task=all_accuracies["strict"][split],
+                y_label="Accuracy",
+                plot_name_add=f"{str(split)}_",
+            )
+            plotter.plot_acc_per_task_and_prompt(
+                acc_per_prompt_task=all_accuracies["soft_match"][split],
+                y_label="Soft Match Accuracy",
+                plot_name_add=f"{str(split)}_",
+            )
 
 
 if __name__ == "__main__":
@@ -189,13 +219,6 @@ if __name__ == "__main__":
         help="use the settings from the config file of given name "
         "(with relative path from the config directory)",
         metavar="CONFIG",
-    )
-    parser.add_argument(
-        "-r",
-        "--run",
-        dest="run",
-        help="run number for the given prompt(s)",
-        metavar="RUN",
     )
     args = parser.parse_args()
 
@@ -209,7 +232,4 @@ if __name__ == "__main__":
             # for cases of running the script in the IDE
             config = compose(config_name="baseline_config")
 
-    if not args.run:
-        args.run = 1
-
-    run_model(cfg=config, run_number=args.run)
+    run_model(cfg=config)
