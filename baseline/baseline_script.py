@@ -7,7 +7,6 @@ from pathlib import Path
 from hydra import compose, initialize
 from hydra.core.config_store import ConfigStore
 from omegaconf import DictConfig
-from sklearn.metrics import accuracy_score
 
 sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
 from data.DataSaver import DataSaver
@@ -129,8 +128,8 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
                                       y_label="Soft Match Accuracy",
                                       plot_name_add=f"{prompt_name}_{str(split)}_")
 
-            all_accuracies["strict"][split][prompt_name] = [task["accuracy"] for task in accuracies_to_save]
-            all_accuracies["soft_match"][split][prompt_name] = [task["soft_match_accuracy"]
+            all_accuracies["strict"][str(split)][prompt_name] = [task["accuracy"] for task in accuracies_to_save]
+            all_accuracies["soft_match"][str(split)][prompt_name] = [task["soft_match_accuracy"]
                                                                 for task in accuracies_to_save]
 
         print("\n- RUN RESULTS -", end="\n\n", file=log_file)
@@ -150,7 +149,7 @@ def run_model(cfg: Config | DictConfig, run_number: int) -> None:
             file=log_file,
         )
 
-        model.accuracy = round(accuracy_score(model.y_true, model.y_pred), 2)
+        model.accuracy = round(St.accuracy_score(model.y_true, model.y_pred), 2)
         print("General accuracy:", model.accuracy, file=log_file)
 
         model.soft_match_accuracy = round(
