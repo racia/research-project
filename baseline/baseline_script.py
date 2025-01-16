@@ -8,6 +8,8 @@ from hydra import compose, initialize
 from hydra.core.config_store import ConfigStore
 from omegaconf import DictConfig
 
+from baseline.utils import set_device
+
 sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
 from data.DataSaver import DataSaver
 from data.DataLoader import DataLoader
@@ -34,6 +36,7 @@ def run_model(cfg: Config | DictConfig) -> None:
     """
     print("Config data for the run:", cfg)
     print("Running the script...")
+    set_device()
 
     loader = DataLoader()
     log_file = sys.stdout
