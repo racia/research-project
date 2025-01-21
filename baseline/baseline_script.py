@@ -53,11 +53,6 @@ def run_model(cfg: DictConfig) -> None:
     log_file = sys.stdout
 
     if cfg.repository.save:
-        # TODO: should we check if the path exists?
-        # if not Path(cfg.repository.path).exists():
-        #     raise FileNotFoundError(
-        #         f"The repository path {cfg.repository.path} does not exist. Make sure that the path is correct."
-        #     )
         saver = DataSaver(
             project_dir=cfg.repository.path,
             subproject_dir=cfg.results.path,

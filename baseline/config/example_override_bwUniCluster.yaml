@@ -1,6 +1,6 @@
 defaults:
   # running this script will pull the prompt in this file over the prompt in baseline_config file
-  - baseline_config_bwUniCluster.yaml
+  - baseline_config_bwUniCluster
   - _self_
 
 prompt:

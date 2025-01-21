@@ -71,7 +71,7 @@ def save_example(
     print(f"Example {example_num} for task {task} saved.")
 
 
-def produce_example_files(directory: Path) -> None:
+def produce_example_files(directory: str) -> None:
     """
     Produce example files for all the tasks.
 
@@ -79,10 +79,11 @@ def produce_example_files(directory: Path) -> None:
     """
     data_loader = DataLoader()
     data = data_loader.load_result_data(
-        directory / "task_examples.csv",
+        f"{directory}task_examples.csv",
         ["line_id", "context/question", "golden_answer"],
         list_output=True,
     )
+    directory = Path(directory)
 
     for task, rows in data.items():
         example_num = 1
@@ -186,9 +187,7 @@ class TaskExamples(Task):
 
 
 if __name__ == "__main__":
-    path = Path(
-        "/Users/bohdana.ivakhnenko/PycharmProjects/research-project/data/examples/"
-    )
+    # path = "/Users/bohdana.ivakhnenko/PycharmProjects/research-project/data/examples/"
     # to reproduce the example files
     # produce_example_files(directory=path)
 

@@ -1,3 +1,0 @@
-You will be given a sequence of context sentences with a question about them.
-Use one word to answer the question. If there's no single definite answer possible, say "maybe".
-If the necessary information wasn't mentioned, say "I don't know".

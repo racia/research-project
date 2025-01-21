@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from pathlib import Path
 
 from baseline.config.baseline_config import Wrapper, Enumerate
 from baseline.utils import structure_part
@@ -128,6 +129,6 @@ class Prompt:
 
         :param file_path: the path to the file that contains the prompt
         """
-        with open(file_path, "r", encoding="UTF-8") as file:
+        with open(Path(file_path), "r", encoding="UTF-8") as file:
             text = file.read().strip()
         return text

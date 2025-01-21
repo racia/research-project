@@ -21,28 +21,31 @@ class DataLoader:
         The dataloader handles the reading and loading of data, as well as the mapping of tasks to
         their respective data.
         """
-        self.task_map = {}
         self.number_of_parts = 0
         self.samples_per_task = samples_per_task
 
-    def get_task_mapping(self, path: str) -> None:
+    @staticmethod
+    def get_task_mapping(path: Path) -> dict[int, list[Path]]:
         """
         Get the paths for each task.
 
         :param path: path to the data
         :return: None
         """
-        path = os.path.abspath(path)
+        task_map = {}
+
         for dir_path, dir_names, files in os.walk(path):
             for file in files:
                 if file.startswith("qa"):
                     task_num = int(file.split("_")[0][2:])
-                    if task_num not in self.task_map.keys():
-                        self.task_map[task_num] = []
-                    self.task_map[task_num].append(os.path.join(dir_path, file))
+                    if task_num not in task_map.keys():
+                        task_map[task_num] = []
+                    task_map[task_num].append(path / file)
+
+        return task_map
 
     @staticmethod
-    def read_task_file(file: str) -> dict:
+    def read_task_file(file: Path) -> dict:
         """
         Read the file for a task.
 
@@ -70,10 +73,10 @@ class DataLoader:
 
     def load_raw_task_data(
         self,
-        path: str,
+        path: Path,
         split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
         tasks=None,
-    ) -> dict[str, dict]:
+    ) -> dict[int, dict]:
         """
         Read data from file for a split.
 
@@ -82,14 +85,14 @@ class DataLoader:
         :param tasks: list of task numbers to read
         :return: data = {task_num: {task data}}
         """
-        self.get_task_mapping(path)
+        task_map = self.get_task_mapping(path)
 
         all_tasks = {}
-        for task, files in self.task_map.items():
+        for task, files in task_map.items():
             if tasks and task not in tasks:
                 continue
             for file in files:
-                data_ext = file.split("_")[-1]
+                data_ext = file.stem.split("_")[-1]
                 if split in data_ext:
                     all_tasks[task] = self.read_task_file(file)
                     print(f"File {file} is read.")
@@ -113,14 +116,14 @@ class DataLoader:
         :return: processed data
         """
         processor = DataProcessor()
-        raw_data = self.load_raw_task_data(path=path, split=split, tasks=tasks)
+        raw_data = self.load_raw_task_data(path=Path(path), split=split, tasks=tasks)
         processed_data = processor.process_data(raw_data, self.samples_per_task)
         self.number_of_parts = processor.part_counter
         return processed_data
 
     @staticmethod
     def load_result_data(
-        result_file_path: Path,
+        result_file_path: str,
         headers: list[str],
         list_output: bool = False,
     ) -> (

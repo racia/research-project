@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass
 
 import torch
 from torch.cuda.amp import autocast
@@ -9,15 +8,9 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 import utils
 from baseline.config.baseline_config import Enumerate
-from data.Chat import Chat
 from data.Statistics import Statistics
+from prompts.Chat import Chat, Source
 from prompts.Prompt import Prompt
-
-
-@dataclass
-class Source:
-    user: str = "user"
-    assistant: str = "assistant"
 
 
 class Baseline:
@@ -224,7 +217,7 @@ class Baseline:
                     part=sample_part, to_enumerate=self.to_enumerate
                 )
                 # 4. Create and format the prompt
-                chat.add_message(part=formatted_part, source="user")
+                chat.add_message(part=formatted_part, source=Source.user)
 
                 if self.to_continue:
                     formatted_prompt = self.tokenizer.apply_chat_template(
@@ -251,7 +244,7 @@ class Baseline:
                 )
 
                 # 6. Add the model's output to conversation
-                chat.add_message(part=decoded_output, source="assistant")
+                chat.add_message(part=decoded_output, source=Source.assistant)
 
                 part_result = {
                     "id": self.question_id,
