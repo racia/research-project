@@ -1,3 +1,0 @@
-You will be given a sequence of context sentences with a question about them.
-Please answer the question with only the words mentioned in the context sentences.
-Use one word to answer the question.

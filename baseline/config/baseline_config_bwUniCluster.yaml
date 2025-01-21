@@ -33,6 +33,7 @@ prompt:
   paths:
     - "${oc.env:HOME}/research-project/prompts/init_prompt.txt"
   wrapper:
+    # if to wrap the part prompt with the task description
     context: |
       Here are the context sentences:
       {context}
@@ -43,6 +44,8 @@ prompt:
 repository:
   # path should be relative to the working directory (where the script is)
   path: "${oc.env:HOME}/research-project/"
+  # if to save the results in the repository,
+  # if False, the results will be saved in the 'output' folder
   save_here: True
 
 results:

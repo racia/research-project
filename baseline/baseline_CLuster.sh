@@ -57,31 +57,12 @@ declare -a CONFIGS=(
   "$HOME/research-project/baseline/config baseline_config_CLuster"
 )
 
-# OUTPUT_DIR will be re-declared in the script for each config,
-# here it is just to be on the safe side
-OUTPUT_DIR="$HOME/research-project/output"
-LOCAL_MACHINE_USER="bohdana.ivakhnenko"
-# there should be no VPN connection, otherwise the following command will yield two IP addresses
-LOCAL_MACHINE_IP=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2)
-LOCAL_DESTINATION_PATH="/Users/bohdana.ivakhnenko/PycharmProjects/research-project/baseline"
-
 for CONFIG in "${CONFIGS[@]}"
 do
   CONFIG_PATH=$(echo $CONFIG | cut -d ' ' -f 1)
   CONFIG_NAME=$(echo $CONFIG | cut -d ' ' -f 2)
   echo "Running the script with config: CONFIG_PATH=$CONFIG_PATH, CONFIG_NAME=$CONFIG_NAME"
   srun python3 "$SCRIPT" --config-path $CONFIG_PATH --config-name $CONFIG_NAME hydra/job_logging=none
-
-  echo "Copying output folder of CONFIG_NAME=$CONFIG_NAME to local machine..."
-  # OUTPUT_DIR is declared in the script
-  scp -r "$OUTPUT_DIR" "$LOCAL_MACHINE_USER@$LOCAL_MACHINE_IP:$LOCAL_DESTINATION_PATH"
-
-  if [ $? -eq 0 ]; then
-      echo "Output folder copied successfully."
-  else
-      echo "Error: Failed to copy the output folder."
-      exit 1
-  fi
 done
 
 # Verify if the script executed successfully

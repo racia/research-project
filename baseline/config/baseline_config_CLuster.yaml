@@ -32,6 +32,7 @@ prompt:
   paths:
     - "./prompts/basic.txt"
   wrapper:
+    # if to wrap the part prompt with the task description
     context: |
       *TASK*
       Here are the context sentences:
@@ -43,6 +44,8 @@ prompt:
 repository:
   # path should be relative to the working directory (where the script is)
   path: "./../../../../../workspace/students/reasoning/"
+  # if to save the results in the repository,
+  # if False, the results will be saved in the 'output' folder
   save_here: True
 
 results:

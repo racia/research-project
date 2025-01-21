@@ -18,8 +18,8 @@ class DataSaver:
 
     def __init__(
         self,
-        project_dir: Union[str, Path],
-        subproject_dir: Union[str, Path] = "",
+        project_dir: str,
+        subproject_dir: str = "",
         save_to_repo: bool = False,
     ) -> None:
         """
@@ -134,7 +134,7 @@ class DataSaver:
             [writer.writerow(row) for row in data]
 
     @staticmethod
-    def redirect_printing_to_log_file(file_name) -> TextIO:
+    def redirect_printing_to_log_file(file_name: Path) -> TextIO:
         """
         Allows to redirect printing during the script run from console into a log file.
         Old 'sys.stdout' that must be returned in place after the run by calling
@@ -147,7 +147,7 @@ class DataSaver:
         sys.stdout = log_file
         return log_file
 
-    def return_console_printing(self, file_to_close):
+    def return_console_printing(self, file_to_close: TextIO) -> None:
         """
         This function allows to return the console printing to the original state.
 

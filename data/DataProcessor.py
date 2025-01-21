@@ -16,7 +16,7 @@ class DataProcessor:
         """
         self.part_counter = 0
 
-    def process_data(self, data: dict[str, dict], samples_per_task: int) -> dict:
+    def process_data(self, data: dict[int, dict], samples_per_task: int) -> dict:
         """
         Process the data from a split.
 
@@ -27,7 +27,7 @@ class DataProcessor:
 
                  Example:
                  {
-                     task_id: str: {
+                     task_id: int: {
                          sample_id: str = 0-n: [
                          # there might be multiple parts for one sample
                          {
