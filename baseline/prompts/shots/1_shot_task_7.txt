@@ -1,0 +1,38 @@
+You will be given a sequence of context sentences and then asked questions about them.
+Please answer the questions in one word.
+
+*EXAMPLE*
+Context sentences:
+1. Mary moved to the bathroom.
+2. Mary picked up the milk there.
+Question:
+3. How many objects is Mary carrying?
+Answer: one
+
+Context sentences:
+4. Mary discarded the milk.
+5. Sandra moved to the office.
+Question:
+6. How many objects is Mary carrying?
+Answer: none
+
+Context sentences:
+7. Mary got the milk there.
+8. Mary put down the milk.
+Question:
+9. How many objects is Mary carrying?
+Answer: none
+
+Context sentences:
+10. Mary grabbed the milk there.
+11. John travelled to the garden.
+Question:
+12. How many objects is Mary carrying?
+Answer: one
+
+Context sentences:
+13. Mary journeyed to the hallway.
+14. Daniel went back to the office.
+Question:
+15. How many objects is Mary carrying?
+Answer: one

@@ -1,0 +1,29 @@
+Context sentences:
+1. Sandra is not in the garden.
+Question:
+3. Is Daniel in the bedroom?
+Answer: no
+
+Context sentences:
+2. Daniel travelled to the kitchen.
+Question:
+6. Is Mary in the bathroom?
+Answer: no
+
+Context sentences:
+4. Daniel went back to the garden.
+Question:
+9. Is Daniel in the office?
+Answer: no
+
+Context sentences:
+5. Mary journeyed to the hallway.
+Question:
+12. Is Mary in the kitchen?
+Answer: no
+
+Context sentences:
+7. John went to the garden.
+Question:
+15. Is John in the garden?
+Answer: no

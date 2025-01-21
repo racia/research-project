@@ -2,59 +2,77 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
-from pathlib import Path
-from typing import List, Dict, Union, TextIO
 
 import torch
+from torch.cuda.amp import autocast
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 import utils
 from baseline.config.baseline_config import Enumerate
+from data.Chat import Chat
 from data.Statistics import Statistics
+from prompts.Prompt import Prompt
 
 
 @dataclass
-class Role:
-    user = "user"
-    assistant = "assistant"
+class Source:
+    user: str = "user"
+    assistant: str = "assistant"
 
 
 class Baseline:
+    """
+    The baseline class.
+    """
+
     def __init__(
         self,
         model_name: str,
         max_new_tokens: int,
         temperature: float,
-        log_file: TextIO,
+        to_enumerate: dict[Enumerate, bool],
+        to_continue: bool,
+        parse_output: bool,
         statistics: Statistics,
+        prompt: Prompt = None,
+        samples_per_task: int = 5,
     ):
         """
         Baseline class manages model runs and data flows around it.
         It is intended to use in the further settings.
 
         :param model_name: official name of the model to run
-        :param max_new_tokens: maximum number of tokens the model would be able
-                               to answer (cut-off)
+        :param max_new_tokens: maximum number of tokens the model would be able to answer (cut-off)
         :param temperature: the temperature of the model
-        :param log_file: 'sys.stdout' or a log file (if printing was redirected)
+        :param to_enumerate: config adding line numbers to the beginning of lines
+        :param to_continue: if we want the model to continue on the last message
+                            rather than create a separate answer
+        :param parse_output: if we want to parse the output of the model (currently looks for 'answer' and 'reasoning')
+        :param statistics: class for statistics
+        :param prompt: system prompt to start conversations
+        :param samples_per_task: number of samples per task for logging
         """
+        self.token = os.getenv("HUGGINGFACE")
+
+        self.model = None
         self.model_name = model_name
         self.max_new_tokens = max_new_tokens
         self.temperature = temperature
-        self.log = log_file
+        self.to_continue = to_continue
 
-        self.stats = statistics
-
-        self.token = os.getenv("HUGGINGFACE")
-        self.model = None
         self.tokenizer = None
 
-        self.system_prompt_: list = []
-        self.y_true, self.y_pred = [], []
+        self.prompt = prompt
+        self.to_enumerate = to_enumerate
+        self.parse_output = parse_output
+
+        self.stats = statistics
 
         self.question_id = 0
         self.total_samples = 0
         self.total_tasks = 0
+        self.total_parts = 0
+        self.samples_per_task = samples_per_task
 
         self.accuracies_per_task: list = []
         self.soft_match_accuracies_per_task: list = []
@@ -63,43 +81,17 @@ class Baseline:
         self.soft_match_accuracy: int = 0
 
     def load_model(self) -> None:
-        """Load the model and the tokenizer for the instance model name."""
+        """
+        Load the model and the tokenizer for the instance model name.
+        """
+        os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
         self.model = AutoModelForCausalLM.from_pretrained(
-            self.model_name, device_map="auto", torch_dtype=torch.bfloat16
+            self.model_name,
+            device_map="auto",
+            torch_dtype=torch.bfloat16,
         )
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-
-    def set_system_prompt(self, prompt_file_path: Path) -> None:
-        """
-        Set the system prompt in a formatted way.
-
-        :param prompt_file_path: path to the prompt file
-        """
-        with open(prompt_file_path, "r", encoding="utf-8") as f:
-            prompt = f.read().strip()
-        self.system_prompt_ = [
-            {"role": "system", "content": prompt},
-        ]
-
-    def get_system_prompt(self) -> List[Dict[str, str]]:
-        """Get the system prompt."""
-        return self.system_prompt_
-
-    @staticmethod
-    def format_prompt_part(
-        part: str | List[str], role: Union[Role.user, Role.assistant]
-    ) -> Dict[str, str]:
-        """
-        Formats the prompt by managing the data type and putting in into
-        a dictionary the model expects.
-
-        :param part: part of a sample as a string or a list of strings
-        :param role: the producer of the message
-        :return: prompt formatted as a dict
-        """
-        if type(part) is list:
-            part = "\n".join(part)
-        return {"role": role, "content": part}
+        torch.cuda.empty_cache()
 
     def call_model(self, prompt: str) -> str:
         """
@@ -111,43 +103,52 @@ class Baseline:
         :param prompt: tokenized prompt, prepared to feed into the model
         :return: response of the model
         """
-        # 1. Tokenize
-        inputs = self.tokenizer(prompt, return_tensors="pt", add_special_tokens=True)
-        inputs = {key: tensor.to(self.model.device) for key, tensor in inputs.items()}
+        # no_grad context manager to disable gradient calculation during inference (speeds up)
+        with torch.no_grad():
+            # 1. Tokenize
+            inputs = self.tokenizer(
+                prompt, return_tensors="pt", add_special_tokens=True
+            )
+            inputs = {
+                key: tensor.to(self.model.device) for key, tensor in inputs.items()
+            }
 
-        # 2. Generate text
-        outputs = self.model.generate(
-            **inputs,
-            max_new_tokens=self.max_new_tokens,
-            temperature=self.temperature,
-            pad_token_id=self.tokenizer.eos_token_id,
-        )
-
-        # 3. Decode output back to string
-        decoded_output = "\n".join(
-            [
-                self.tokenizer.decode(
-                    outputs[i][inputs["input_ids"].size(1) :], skip_special_tokens=True
+            # autocast enables mixed precision for computational efficiency
+            with autocast():
+                # 2. Generate text
+                outputs = self.model.generate(
+                    **inputs,
+                    max_new_tokens=self.max_new_tokens,
+                    temperature=self.temperature,
+                    pad_token_id=self.tokenizer.eos_token_id,
                 )
-                for i in range(len(outputs))
-            ]
-        ).lower()
-        return decoded_output
+
+                # 3. Decode output back to string
+                decoded_output = "\n".join(
+                    [
+                        self.tokenizer.decode(
+                            outputs[i][inputs["input_ids"].size(1) :],
+                            skip_special_tokens=True,
+                        )
+                        for i in range(len(outputs))
+                    ]
+                ).lower()
+            return decoded_output
 
     def iterate_task(
         self,
         task_id: int,
-        task_data: Dict[
+        task_data: dict[
             int,
-            Dict[
-                str, Dict[int, str] | Dict[int, List[str]] | Dict[int, List[List[int]]]
+            list[
+                dict[
+                    str,
+                    dict[int, str] | dict[int, list[str]] | dict[int, list[list[int]]],
+                ]
             ],
         ],
-        no_samples: int,
-        to_enumerate: Dict[Enumerate, bool],
-        to_continue: bool,
-        parse_output: bool,
-    ) -> List[Dict[str, int | str]]:
+        prompt_name: str,
+    ) -> list[dict[str, int | str]]:
         """
         Manages the data flow in and out of the model, iteratively going through
         each part of each sample in a given task, recoding the results to report.
@@ -184,78 +185,74 @@ class Baseline:
                ]
             }
         }
-        :param no_samples: number of samples to run per task
-        :param to_enumerate: config adding line numbers to the beginning of lines
-        :param to_continue: if we want the model to continue on the last message
-                            rather than create a separate answer
-        :param parse_output: if we want to parse the output of the model (currently looks for 'answer' and 'reasoning')
+        :param prompt_name: name of the prompt
         :return: results for the task in a list of dicts with each dict representing
                  one call to the model and will end up as one row of the table
         """
         task_results = []
-        accuracies_task = []
-        soft_match_accuracies_task = []
+        sample_accuracies = []
+        sample_soft_match_accuracies = []
 
         # 1. Iterate through samples
-        for sample_id, sample_data in list(task_data.items())[:no_samples]:
-            # it actually gets a list of strings, not just a string
-            expanded_answers = [
-                utils.expand_cardinal_points(answers)
-                for answers in sample_data["answer"].values()
+        for sample_id, sample_parts in list(task_data.items()):
+            # each sample is a new conversation
+            chat = Chat(system_prompt=self.prompt.text)
+            # collect the true answers
+            y_true_sample = [
+                ", ".join(list(part["answer"].values())[0]) for part in sample_parts
             ]
-            y_true_sample = [", ".join(true).lower() for true in expanded_answers]
-            self.y_true.extend(y_true_sample)
             y_pred_sample = []
             sample_id_ = sample_id + 1
-
-            # 2. Reformat the data into parts
-            sample_parts = utils.sample_into_parts(
-                sample=sample_data, to_enumerate=to_enumerate
-            )
-            prompt = self.get_system_prompt().copy()
             part_id = 0
 
-            # 3. Iterate through parts (one question at a time)
+            # 2. Iterate through parts (one question at a time)
             for sample_part, y_true in zip(sample_parts, y_true_sample):
                 self.question_id += 1
                 part_id += 1
                 print(
                     "\n-* "
                     f"TASK {task_id}/{self.total_tasks} | "
-                    f"SAMPLE {sample_id_}/{no_samples} | "
+                    f"SAMPLE {sample_id_}/{self.samples_per_task} | "
                     f"PART {part_id}/{len(sample_parts)} | "
-                    f"Run ID {self.question_id}"
-                    " *-",
+                    f"{prompt_name} | "
+                    f"RUN ID {self.question_id}/{self.total_parts} "
+                    "*-",
                     end="\n\n\n",
-                    file=self.log,
                 )
-
+                # 3. Prepare the part to be in the next prompt
+                formatted_part = self.prompt.format_part(
+                    part=sample_part, to_enumerate=self.to_enumerate
+                )
                 # 4. Create and format the prompt
-                prompt.append(self.format_prompt_part(part=sample_part, role="user"))
-                if to_continue:
+                chat.add_message(part=formatted_part, source="user")
+
+                if self.to_continue:
                     formatted_prompt = self.tokenizer.apply_chat_template(
-                        prompt, tokenize=False, continue_final_message=True
+                        chat.messages, tokenize=False, continue_final_message=True
                     )
                 else:
                     formatted_prompt = self.tokenizer.apply_chat_template(
-                        prompt, tokenize=False, add_generation_prompt=True
+                        chat.messages, tokenize=False, add_generation_prompt=True
                     )
                 print(
                     "Formatted prompt:",
                     formatted_prompt,
                     sep="\n",
                     end="\n",
-                    file=self.log,
                 )
 
                 # 5. Call the model and yield the response
                 decoded_output = self.call_model(prompt=formatted_prompt)
-                print("Model's output:", decoded_output, end="\n\n\n", file=self.log)
+                print(
+                    "Model's output:",
+                    decoded_output,
+                    end="\n\n\n",
+                    flush=True,
+                )
 
                 # 6. Add the model's output to conversation
-                prompt.append(
-                    self.format_prompt_part(part=decoded_output, role="assistant")
-                )
+                chat.add_message(part=decoded_output, source="assistant")
+
                 part_result = {
                     "id": self.question_id,
                     "task_id": task_id,
@@ -265,7 +262,7 @@ class Baseline:
                     "model_result": decoded_output,
                 }
 
-                if parse_output:
+                if self.parse_output:
                     parsed_output = utils.parse_output(output=decoded_output)
                     part_result["model_answer"] = parsed_output["answer"]
                     part_result["model_reasoning"] = parsed_output["reasoning"]
@@ -273,65 +270,63 @@ class Baseline:
                 task_results.append(part_result)
                 y_pred_sample.append(decoded_output)
 
-            self.y_pred.extend(y_pred_sample)
-
             # 7. Report the results for the sample: answers and accuracy
             print(
                 "Model's predictions for the sample:",
                 "\t{:<18s} PREDICTED".format("GOLDEN"),
                 sep="\n\n",
                 end="\n\n",
-                file=self.log,
             )
             [
                 print(
                     "\t{0:<18s} {1}".format(true, predicted.replace("\n", "\t")),
-                    file=self.log,
                 )
                 for true, predicted in zip(y_true_sample, y_pred_sample)
             ]
-            print(file=self.log)
 
-            accuracy_sample = round(self.stats.accuracy_score(y_true_sample, y_pred_sample), 2)
-            accuracies_task.append(accuracy_sample)
+            sample_accuracy = round(
+                self.stats.accuracy_score(y_true_sample, y_pred_sample), 2
+            )
+            sample_accuracies.append(sample_accuracy)
             print(
-                f"Accuracy score per sample {sample_id_}:",
-                accuracy_sample,
-                file=self.log,
+                f"\nAccuracy score for sample {sample_id_}:",
+                sample_accuracy,
             )
 
-            soft_match_accuracy_sample = round(
+            sample_soft_match_accuracy = round(
                 self.stats.soft_match_accuracy_score(y_true_sample, y_pred_sample), 2
             )
-            soft_match_accuracies_task.append(soft_match_accuracy_sample)
+            sample_soft_match_accuracies.append(sample_soft_match_accuracy)
             print(
-                f"Soft accuracy per sample {sample_id_}:",
-                soft_match_accuracy_sample,
+                f"Soft accuracy for sample {sample_id_}:",
+                sample_soft_match_accuracy,
                 end="\n\n\n",
-                file=self.log,
             )
 
         # 8. Report the results for the task: accuracy
-        print("\n- TASK RESULTS -", end="\n\n", file=self.log)
+        print("\n- TASK RESULTS -", end="\n\n")
 
-        accuracy_task = round(sum(accuracies_task) / len(accuracies_task), 2)
-        self.accuracies_per_task.append(accuracy_task)
+        task_accuracy = round(sum(sample_accuracies) / len(sample_accuracies), 2)
+        self.accuracies_per_task.append(task_accuracy)
 
-        print(f"Accuracy score per task {task_id}:", accuracy_task, file=self.log)
-        task_results[0]["accuracy"] = accuracy_task
+        print(f"Accuracy score for task {task_id}:", task_accuracy)
+        task_results[0]["accuracy"] = task_accuracy
 
-        soft_match_accuracy_task = round(
-            sum(soft_match_accuracies_task) / len(soft_match_accuracies_task), 2
+        task_soft_match_accuracy = round(
+            sum(sample_soft_match_accuracies) / len(sample_soft_match_accuracies), 2
         )
-        self.soft_match_accuracies_per_task.append(soft_match_accuracy_task)
+        self.soft_match_accuracies_per_task.append(task_soft_match_accuracy)
 
         print(
-            f"Soft match accuracy per task {task_id}:",
-            soft_match_accuracy_task,
+            f"Soft match accuracy for task {task_id}:",
+            task_soft_match_accuracy,
             end="\n\n",
-            file=self.log,
         )
-        task_results[0]["soft_match_accuracy"] = soft_match_accuracy_task
+        task_results[0]["soft_match_accuracy"] = task_soft_match_accuracy
 
-        print(f"The work on task {task_id} is finished successfully", file=self.log)
+        print(f"The work on task {task_id} is finished successfully")
+
+        # Clear the cache
+        torch.cuda.empty_cache()
+
         return task_results

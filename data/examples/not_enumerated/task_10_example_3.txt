@@ -1,0 +1,29 @@
+Context sentences:
+1. Bill moved to the office.
+Question:
+3. Is Bill in the cinema?
+Answer: yes
+
+Context sentences:
+2. Bill journeyed to the cinema.
+Question:
+6. Is Mary in the kitchen?
+Answer: maybe
+
+Context sentences:
+4. Julie is in the bedroom.
+Question:
+9. Is Julie in the park?
+Answer: no
+
+Context sentences:
+5. Mary is either in the kitchen or the kitchen.
+Question:
+12. Is Mary in the bedroom?
+Answer: no
+
+Context sentences:
+7. Julie travelled to the cinema.
+Question:
+15. Is Fred in the park?
+Answer: yes

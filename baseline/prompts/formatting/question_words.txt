@@ -1,0 +1,7 @@
+You will be given a sequence of context sentences and then asked a question about them.
+Please answer the question in one word without articles:
+- if a question starts with 'who', answer only a name;
+- if with 'what' you should answer an object;
+- if with 'where', provide only a location;
+- if with 'how many', provide only a number;
+- if asked about directions, use only 'left', 'right', 'north', 'south' etc., depending on the context.

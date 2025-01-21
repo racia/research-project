@@ -1,17 +1,14 @@
 from typing import List
 
 import matplotlib.pyplot as plt
-from sklearn.metrics import accuracy_score
 
 from data.DataLoader import DataLoader
-from data.DataProcessor import DataProcessor
 from data.data_utils import check_or_create_directory
 
 
 class Statistics:
     def __init__(self):
         self.loader = DataLoader()
-        self.processor = DataProcessor()
 
     def get_data_stats(self, data_path: str):
         """
@@ -20,10 +17,8 @@ class Statistics:
         :param data_path: path to the data
         :return:
         """
-        all_data = self.loader.load_data(path=data_path, split="train")
-        processed_data = self.processor.process_data(all_data)
-
-        self.analyse_task_questions(processed_data)
+        data = self.loader.load_task_data(path=data_path, split="train")
+        self.analyse_task_questions(data)
 
     def analyse_task_questions(self, data: dict):
         """
@@ -39,16 +34,19 @@ class Statistics:
             q_stats[task] = []
             c_stats[task] = []
             c_before_q[task] = []
-            for id_ in data[task].keys():
-                q_stats[task].append(len(data[task][id_]["question"]))
-                c_stats[task].append(len(data[task][id_]["context"]))
-                for ix, line_num in enumerate(list(data[task][id_]["question"].keys())):
-                    if ix == 0:
-                        c_before_q[task].append(line_num - 1)  # first question
-                    else:
-                        c_before_q[task].append(
-                            line_num - ix
-                        )  # subtract amount of questions before this one
+            for sample in data[task].keys():
+                # given that each part contains one question, number of parts = number of questions
+                q_stats[task].append(len(data[task][sample]))
+                num_of_contexts = [len(part["context"]) for part in data[task][sample]]
+                c_stats[task].append(sum(num_of_contexts))
+                for part in sample:
+                    for ix, line_num in enumerate(list(part["question"].keys())):
+                        if ix == 0:
+                            c_before_q[task].append(line_num - 1)  # first question
+                        else:
+                            c_before_q[task].append(
+                                line_num - ix
+                            )  # subtract amount of questions before this one
 
         plt.figure(figsize=(10, 5))
         plt.bar(q_stats.keys(), [sum(q_stats[task]) for task in q_stats.keys()])
@@ -91,7 +89,9 @@ class Statistics:
         answer_set = set([t.strip("-,.:;!?") for t in answer.split(" ")])
         return answer_set
 
-    def accuracy_score(self, true_values: list[str], predicted_values: list[str]) -> float:
+    def accuracy_score(
+        self, true_values: list[str], predicted_values: list[str]
+    ) -> float:
         """
         Compute the accuracy score that also considers the order of the answers.
 

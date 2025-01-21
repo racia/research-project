@@ -34,9 +34,15 @@ class Data:
 
 
 @dataclass
-class Prompts:
-    names: list[str]
+class Wrapper:
+    context: str = "context"
+    question: str = "question"
+
+
+@dataclass
+class Prompt:
     paths: list[str]
+    wrapper: dict[Wrapper, str]
 
 
 @dataclass
@@ -54,6 +60,7 @@ class CSVHeaders:
 @dataclass
 class Repository:
     path: str
+    save_here: bool
 
 
 @dataclass
@@ -68,6 +75,6 @@ class Results:
 class Config:
     model: Model
     data: Data
-    prompt: Prompts
+    prompt: Prompt
     repository: Repository
     results: Results

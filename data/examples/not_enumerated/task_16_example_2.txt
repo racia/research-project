@@ -1,0 +1,5 @@
+Context sentences:
+1. Julius is a lion.
+Question:
+10. What color is Lily?
+Answer: white

@@ -1,0 +1,29 @@
+Context sentences:
+1. John moved to the kitchen.
+Question:
+31. Where was the milk before the bathroom?
+Answer: bedroom
+
+Context sentences:
+2. Daniel travelled to the office.
+Question:
+34. Where was the milk before the bedroom?
+Answer: kitchen
+
+Context sentences:
+3. Daniel moved to the kitchen.
+Question:
+37. Where was the milk before the bathroom?
+Answer: bedroom
+
+Context sentences:
+4. Mary moved to the kitchen.
+Question:
+58. Where was the football before the bathroom?
+Answer: kitchen
+
+Context sentences:
+5. Sandra journeyed to the bedroom.
+Question:
+61. Where was the football before the hallway?
+Answer: garden

@@ -1,0 +1,29 @@
+Context sentences:
+1. Sandra picked up the apple there.
+Question:
+11. Where was the apple before the office?
+Answer: hallway
+
+Context sentences:
+2. Mary travelled to the hallway.
+Question:
+14. Where was the apple before the office?
+Answer: hallway
+
+Context sentences:
+3. Mary went back to the office.
+Question:
+17. Where was the apple before the office?
+Answer: hallway
+
+Context sentences:
+4. Sandra journeyed to the hallway.
+Question:
+42. Where was the football before the kitchen?
+Answer: hallway
+
+Context sentences:
+5. Daniel moved to the hallway.
+Question:
+45. Where was the football before the kitchen?
+Answer: hallway

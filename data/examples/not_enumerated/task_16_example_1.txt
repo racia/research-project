@@ -1,0 +1,5 @@
+Context sentences:
+1. Greg is a rhino.
+Question:
+10. What color is Julius?
+Answer: white

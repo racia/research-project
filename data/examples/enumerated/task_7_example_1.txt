@@ -1,0 +1,29 @@
+Context sentences:
+1. Mary went back to the office.
+Question:
+9. How many objects is Mary carrying?
+Answer: one
+
+Context sentences:
+2. John journeyed to the garden.
+Question:
+12. How many objects is Mary carrying?
+Answer: none
+
+Context sentences:
+3. Daniel went back to the office.
+Question:
+15. How many objects is John carrying?
+Answer: one
+
+Context sentences:
+4. Daniel went back to the bathroom.
+Question:
+18. How many objects is John carrying?
+Answer: none
+
+Context sentences:
+5. Mary journeyed to the bedroom.
+Question:
+21. How many objects is John carrying?
+Answer: one

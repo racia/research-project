@@ -1,0 +1,29 @@
+Context sentences:
+1. Daniel went to the office.
+Question:
+7. What is Mary carrying?
+Answer: apple
+
+Context sentences:
+2. Daniel went back to the bathroom.
+Question:
+10. What is John carrying?
+Answer: football
+
+Context sentences:
+3. Mary travelled to the garden.
+Question:
+13. What is Mary carrying?
+Answer: apple, milk
+
+Context sentences:
+4. John went back to the garden.
+Question:
+16. What is Mary carrying?
+Answer: apple, milk
+
+Context sentences:
+5. John took the football there.
+Question:
+19. What is John carrying?
+Answer: nothing
