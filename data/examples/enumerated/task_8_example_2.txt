@@ -1,0 +1,29 @@
+Context sentences:
+1. Mary travelled to the garden.
+Question:
+11. What is John carrying?
+Answer: football
+
+Context sentences:
+2. Mary went to the kitchen.
+Question:
+14. What is John carrying?
+Answer: nothing
+
+Context sentences:
+3. Mary moved to the garden.
+Question:
+17. What is John carrying?
+Answer: football, apple
+
+Context sentences:
+4. Sandra journeyed to the hallway.
+Question:
+20. What is John carrying?
+Answer: football, apple
+
+Context sentences:
+5. John journeyed to the bathroom.
+Question:
+23. What is John carrying?
+Answer: apple

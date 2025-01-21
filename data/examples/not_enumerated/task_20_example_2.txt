@@ -1,0 +1,65 @@
+Context sentences:
+1. Yann is hungry.
+Question:
+2. Where will yann go?
+Answer: kitchen
+
+Context sentences:
+3. Jason is thirsty.
+Question:
+4. Where will jason go?
+Answer: kitchen
+
+Context sentences:
+5. Jason went to the kitchen.
+Question:
+6. Why did jason go to the kitchen?
+Answer: thirsty
+
+Context sentences:
+7. Sumit is hungry.
+Question:
+8. Where will sumit go?
+Answer: kitchen
+
+Context sentences:
+9. Sumit moved to the kitchen.
+Question:
+10. Why did sumit go to the kitchen?
+Answer: hungry
+
+Context sentences:
+11. Sumit took the apple there.
+Question:
+12. Why did sumit get the apple?
+Answer: hungry
+
+Context sentences:
+13. Jason picked up the milk there.
+Question:
+14. Why did jason get the milk?
+Answer: thirsty
+
+Context sentences:
+15. Yann journeyed to the kitchen.
+Question:
+16. Why did yann go to the kitchen?
+Answer: hungry
+
+Context sentences:
+17. Antoine is bored.
+Question:
+18. Where will antoine go?
+Answer: garden
+
+Context sentences:
+19. Antoine travelled to the garden.
+Question:
+20. Why did antoine go to the garden?
+Answer: bored
+
+Context sentences:
+21. Antoine picked up the football there.
+Question:
+22. Why did antoine get the football?
+Answer: bored

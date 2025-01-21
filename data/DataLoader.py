@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import csv
 import os
+from collections import defaultdict
+from pathlib import Path
 from typing import Union
 
 from baseline.config.baseline_config import DataSplits
@@ -12,13 +15,15 @@ class DataLoader:
     This class handles loading the data.
     """
 
-    def __init__(self):
+    def __init__(self, samples_per_task: int = -1):
         """
         Initialize the DataLoader.
         The dataloader handles the reading and loading of data, as well as the mapping of tasks to
         their respective data.
         """
         self.task_map = {}
+        self.number_of_parts = 0
+        self.samples_per_task = samples_per_task
 
     def get_task_mapping(self, path: str) -> None:
         """
@@ -36,9 +41,10 @@ class DataLoader:
                         self.task_map[task_num] = []
                     self.task_map[task_num].append(os.path.join(dir_path, file))
 
-    def read_file(self, file: str) -> dict:
+    @staticmethod
+    def read_task_file(file: str) -> dict:
         """
-        Read the file.
+        Read the file for a task.
 
         :param file: file path
         :return: data = {id: lines}
@@ -62,14 +68,14 @@ class DataLoader:
                 line_count = curr_line_count
         return data
 
-    def load_raw_data(
+    def load_raw_task_data(
         self,
         path: str,
         split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
         tasks=None,
     ) -> dict[str, dict]:
         """
-        Read data from file.
+        Read data from file for a split.
 
         :param path: path to the data
         :param split: should be of type DataSplits ("train", "valid", or "test")
@@ -85,25 +91,82 @@ class DataLoader:
             for file in files:
                 data_ext = file.split("_")[-1]
                 if split in data_ext:
-                    all_tasks[task] = self.read_file(file)
+                    all_tasks[task] = self.read_task_file(file)
                     print(f"File {file} is read.")
 
         sorted_all_tasks = dict(sorted(all_tasks.items(), key=lambda x: int(x[0])))
 
         return sorted_all_tasks
 
-    def load_data(
-            self, path: str,
-            split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
-            tasks=None) -> dict:
+    def load_task_data(
+        self,
+        path: str,
+        split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
+        tasks: int = None,
+    ) -> dict:
         """
         Prepare the data: load raw data and process it.
 
         :param path: path to the data
         :param split: should be of type DataSplits ("train", "valid", or "test")
-        :param tasks: list of task numbers to read
+        :param tasks: list of task numbers to read, use None to read all tasks
         :return: processed data
         """
         processor = DataProcessor()
-        raw_data = self.load_raw_data(path=path, split=split, tasks=tasks)
-        return processor.process_data(raw_data)
+        raw_data = self.load_raw_task_data(path=path, split=split, tasks=tasks)
+        processed_data = processor.process_data(raw_data, self.samples_per_task)
+        self.number_of_parts = processor.part_counter
+        return processed_data
+
+    @staticmethod
+    def load_result_data(
+        result_file_path: Path,
+        headers: list[str],
+        list_output: bool = False,
+    ) -> (
+        dict[str, list[Union[int, float]]]
+        or dict[int, list[dict[str, Union[int, float, str]]]]
+    ):
+        """
+        Read the accuracy from a file.
+
+        :param result_file_path: path to the file
+        :param headers: list of headers in the file
+        :param list_output: if the output should be a list of dictionaries or a dictionary of lists
+        :return: dictionary with the task, accuracy, and soft match accuracy lists
+        """
+        data = defaultdict(list)
+        with open(Path(result_file_path), "rt", encoding="UTF-8") as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            for row in reader:
+                if list_output:
+                    task_id = int(row["task_id"])
+                    row_ = {}
+                    for k, v in row.items():
+                        if k in headers and v:
+                            if v.isdigit():
+                                row_[k] = int(v)
+                            elif v.replace(".", "", 1).isdigit():
+                                row_[k] = float(v)
+                            else:
+                                row_[k] = v
+                    data[task_id].append(row_)
+                else:
+                    for header in headers:
+                        value = row[header]
+                        if value.isdigit():
+                            data[header].append(int(value))
+                        elif value.replace(".", "", 1).isdigit():
+                            data[header].append(float(value))
+                        else:
+                            data[header].append(row[header])
+        return data
+
+
+if __name__ == "__main__":
+    data_loader = DataLoader(samples_per_task=5)
+    data = data_loader.load_task_data(
+        path="../../tasks_1-20_v1-2/en-valid/",
+        split=DataSplits.valid,
+    )
+    print(data_loader.number_of_parts)

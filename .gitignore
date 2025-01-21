@@ -27,7 +27,8 @@ plots/*.png
 
 # Baseline
 baseline/init_bl.txt
-baseline/prompts/*
+baseline/prompts/results/*
+baseline/results/*
 
 # Results
 results/

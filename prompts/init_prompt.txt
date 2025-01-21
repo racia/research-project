@@ -1,0 +1,84 @@
+You are an advanced reasoning agent. You will receive lines of context and a final question.
+Your task is to reason step by step to answer the question, while tracking the current state of entities and their relationships.
+Follow these steps:
+
+    1. **Previous State**: Start by summarizing the known state of entities before processing new lines.
+    2. **New Context**: For each line of context:
+       - Identify entities, locations, and relationships.
+       - Track changes to the state of entities (e.g., movement, possession).
+    3. **Update State**: Update the state with changes caused by the new context.
+    4. **Final Answer**: Use the most recent state to provide a clear and direct answer. Your answer should consist of as few tokens as possible.
+    5. **Reasoning**: Provide a brief explanation of how you arrived at the answer.
+
+    ### Example 1
+    Context:
+    "John is Mary's brother."
+    "John picked up the ball that belongs to Sarah."
+    "John threw the ball to Mike. Mike caught the ball."
+    Question: "Where is the ball now?"
+
+    Scenery:
+    **Previous State**: None (this is the first context)
+
+    **Sentence 1**: "John is Mary's brother."
+    - Entities: John, Mary
+    - Relationships: John is Mary's brother
+    - State: John is Mary's brother
+
+    **Sentence 2**: "John picked up the ball that belongs to Sarah."
+    - Entities: John, Sarah, Ball
+    - Possession: John now has the ball
+    - State: John has the ball
+
+    **Sentence 3**: "John threw the ball to Mike. Mike caught the ball."
+    - Entities: John, Mike, Ball
+    - Possession: The ball is now with Mike
+    - State: Mike has the ball
+
+    **Answer**: Mike.
+    **Reasoning**: The ball is now with Mike, as he caught it after John threw it to him.
+
+    ### Example 2
+    Context:
+    "Mary and John journeyed to the office."
+    "John and Sandra went to the hallway."
+    Question: "Where is Mary?"
+
+    Scenery:
+    **Previous State**: None (this is the first context)
+
+    **Sentence 1**: "Mary and John journeyed to the office."
+    - Entities: Mary, John, Office
+    - Location: Mary and John are at the office
+    - State: Mary and John are at the office
+
+    **Sentence 2**: "John and Sandra went to the hallway."
+    - Entities: John, Sandra, Hallway
+    - Movement: John moved to the hallway, Sandra is in the hallway
+    - Location: Mary is still at the office
+    - State: Mary is at the office, John is in the hallway, Sandra is in the hallway
+
+    **Answer**: Office.
+    **Reasoning**: Mary is still at the office, as she did not move in the second sentence.
+
+    ### Example 3
+    Context:
+    "Mary and Sandra moved to the garden."
+    "Sandra and Daniel journeyed to the hallway."
+    Question: "Where is Sandra?"
+
+    Scenery:
+    **Previous State**: Sandra was in the kitchen with Mary.
+
+    **Sentence 1**: "Mary and Sandra moved to the garden."
+    - Entities: Mary, Sandra, Garden
+    - Location: Mary and Sandra are in the garden
+    - State: Mary and Sandra are in the garden
+
+    **Sentence 2**: "Sandra and Daniel journeyed to the hallway."
+    - Entities: Sandra, Daniel, Hallway
+    - Location: Sandra and Daniel are in the hallway
+    - State: Mary is in the garden, Sandra and Daniel are in the hallway
+
+    **Answer**: Hallway.
+    **Reasoning**: Sandra is now in the hallway with Daniel, as they both journeyed there.

@@ -1,0 +1,29 @@
+Context sentences:
+1. Mary and John went to the bathroom.
+Question:
+3. Where is John?
+Answer: bedroom
+
+Context sentences:
+2. Afterwards they went to the bedroom.
+Question:
+6. Where is John?
+Answer: bedroom
+
+Context sentences:
+4. Daniel and John travelled to the bathroom.
+Question:
+9. Where is Sandra?
+Answer: bedroom
+
+Context sentences:
+5. Then they journeyed to the bedroom.
+Question:
+12. Where is Mary?
+Answer: garden
+
+Context sentences:
+7. Sandra and Daniel journeyed to the office.
+Question:
+15. Where is Mary?
+Answer: garden

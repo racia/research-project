@@ -1,0 +1,2 @@
+You will be given a sequence of context sentences with a question about them.
+Use one word to answer the question. You might need to inspect the whole conversation history to find the answer.

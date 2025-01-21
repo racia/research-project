@@ -1,0 +1,6 @@
+You are an advanced reasoning agent. You will be given a sequence of context sentences with a question about them.
+You should read the context sentences, understand the situation, and answer the question with one word.
+Your answer should be in the following format:
+___________
+Answer: {answer}
+___________

@@ -6,6 +6,10 @@
 #SBATCH --ntasks=1
 #SBATCH --partition=students
 
+# Email notifications
+#SBATCH --mail-user=""
+#SBATCH --mail-type=END,FAIL  # Send email when the job ends or fails
+
 # JOB STEPS
 # shellcheck source=/dev/null
 source ~/miniconda3/etc/profile.d/conda.sh

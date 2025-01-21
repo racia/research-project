@@ -1,0 +1,29 @@
+Context sentences:
+1. John went back to the bedroom.
+Question:
+3. Is John in the bathroom?
+Answer: no
+
+Context sentences:
+2. Daniel grabbed the milk there.
+Question:
+6. Is John in the bathroom?
+Answer: yes
+
+Context sentences:
+4. John journeyed to the bathroom.
+Question:
+9. Is Sandra in the bathroom?
+Answer: yes
+
+Context sentences:
+5. Mary went to the garden.
+Question:
+12. Is Mary in the garden?
+Answer: yes
+
+Context sentences:
+7. Daniel dropped the milk.
+Question:
+15. Is Daniel in the office?
+Answer: yes

@@ -1,25 +1,28 @@
 from __future__ import annotations
 
+import os
+import statistics
 import sys
-from argparse import ArgumentParser
 from pathlib import Path
 
-from hydra import compose, initialize
-from hydra.core.config_store import ConfigStore
-from omegaconf import DictConfig
+import hydra
+from hydra.core.hydra_config import HydraConfig
+from omegaconf import DictConfig, OmegaConf
 
 from baseline.utils import set_device
 
 sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
+
+from prompts.Prompt import Prompt
 from data.DataSaver import DataSaver
 from data.DataLoader import DataLoader
 from data.Statistics import Statistics
-from data.Plotter import Plotter
+from plots.Plotter import Plotter
 from Model import Baseline
-from baseline.config.baseline_config import Config
 
 
-def run_model(cfg: Config | DictConfig) -> None:
+@hydra.main(version_base=None)
+def run_model(cfg: DictConfig) -> None:
     """
     The function to run a model without modifications
     over the task data with the given config with such steps:
@@ -34,89 +37,152 @@ def run_model(cfg: Config | DictConfig) -> None:
     :param cfg: config instance
     :return: None
     """
-    print("Config data for the run:", cfg)
-    print("Running the script...")
+    OmegaConf.resolve(cfg)
     set_device()
 
-    loader = DataLoader()
-    log_file = sys.stdout
-    saver = DataSaver()
-    stats = Statistics()
-    plotter = Plotter(result_path=str(saver.results_path))
+    print(
+        "Config data for the run:",
+        OmegaConf.to_yaml(cfg),
+        end="\n\n",
+        flush=True,
+        sep="\n",
+    )
+    print("Running the script...")
 
-    all_accuracies = {
-        "strict": {},
-        "soft_match": {},
-    }
+    loader = DataLoader(samples_per_task=cfg.data.samples_per_task)
+    log_file = sys.stdout
+
+    if cfg.repository.save:
+        # TODO: should we check if the path exists?
+        # if not Path(cfg.repository.path).exists():
+        #     raise FileNotFoundError(
+        #         f"The repository path {cfg.repository.path} does not exist. Make sure that the path is correct."
+        #     )
+        saver = DataSaver(
+            project_dir=cfg.repository.path,
+            subproject_dir=cfg.results.path,
+            save_to_repo=True,
+        )
+    else:
+        saver = DataSaver(
+            project_dir=HydraConfig.get().runtime.output_dir,
+            save_to_repo=False,
+        )
+    print(f"Results will be saved to: {saver.run_results_path}")
+    plotter = Plotter(result_path=saver.run_results_path)
+    os.environ["OUTPUT_DIR"] = str(saver.run_results_path)
+
+    stats = Statistics()
+    strict_accuracies = {}
+    soft_match_accuracies = {}
 
     model = Baseline(
         model_name=cfg.model.name,
         max_new_tokens=cfg.model.max_new_tokens,
         temperature=cfg.model.temperature,
-        log_file=log_file,
         statistics=stats,
+        samples_per_task=cfg.data.samples_per_task,
+        to_enumerate=cfg.data.to_enumerate,
+        to_continue=cfg.model.to_continue,
+        parse_output=cfg.results.parse,
     )
 
+    print("The model is being loaded...", end="\n\n")
     model.load_model()
     model.total_tasks = 0
     data_in_splits = {}
+    print(f"The model {cfg.model.name} is loaded successfully", flush=True)
 
-    for split, to_fetch in cfg.data.splits.items():
-        if to_fetch:
-            data_tasks = loader.load_data(
-                path=cfg.data.path, split=split, tasks=cfg.data.task_ids
-            )
-            model.total_tasks += len(data_tasks)
-            data_in_splits[split] = data_tasks
+    data_splits = [split for split, to_use in cfg.data.splits.items() if to_use]
 
-    for prompt_name, prompt_path in zip(cfg.prompt.names, cfg.prompt.paths):
-        log_file_path, results_file_path, accuracy_file_paths = saver.create_path_files(
-            results_path=Path(cfg.repository.path, cfg.results.path),
-            prompt_name=prompt_name,
+    for split in data_splits:
+        data_tasks = loader.load_task_data(
+            path=cfg.data.path,
+            split=split,
+            tasks=cfg.data.task_ids,
         )
+        data_in_splits[split] = data_tasks
+        model.total_tasks += len(data_tasks)
+    model.total_parts = loader.number_of_parts
+    print("The data is loaded successfully", end="\n\n")
 
+    for prompt_num, prompt_path in enumerate(cfg.prompt.paths, 1):
+        prompt_name = f"prompt_{Path(prompt_path).stem}"
+        log_file_path, results_file_paths, accuracy_file_paths = (
+            saver.create_result_paths(prompt_name=prompt_name, splits=data_splits)
+        )
+        plotter.result_path = saver.run_results_path / prompt_name
+
+        # Once the printing is redirected to the log file,
+        # the system output will be saved there without additional actions
         if cfg.results.print_to_file:
+            # Print the prompt data to the output file
+            # so that it was clear which prompt was used last
+            print(f"Starting to query with the prompt: {prompt_name}")
+            print(f"Prompt path: {prompt_path}", end="\n\n")
+            print(
+                f"Redirecting the system output to the log file: {log_file_path}",
+                flush=True,
+            )
+
             log_file = saver.redirect_printing_to_log_file(log_file_path)
             model.log_file = log_file
 
-        print(f"The model {cfg.model.name} is loaded successfully", file=log_file)
-        print("The data is loaded successfully", end="\n\n", file=log_file)
-        print(f"Prompt: {prompt_name}, path: {prompt_path}", file=log_file)
-        print("Starting to query the model", end="\n\n", file=log_file)
+            # Print the config data to the log file
+            print(f"Using the model: {cfg.model.name}")
 
-        model.set_system_prompt(prompt_file_path=prompt_path)
+        if cfg.prompt.wrapper:
+            prompt = Prompt(
+                prompt_path=prompt_path,
+                wrapper=cfg.prompt.wrapper,
+            )
+        else:
+            prompt = Prompt(prompt_path=prompt_path)
+        model.prompt = prompt
+        print(f"Prompt: {prompt_name}, path: {prompt_path}")
+
+        print("- THE SYSTEM SPROMPT -")
+        print("______________________________")
+        print(prompt.text)
+        print("______________________________", end="\n\n")
+        model.question_id = 0
 
         for split, tasks in data_in_splits.items():
+            print(
+                f"Starting to query the model with {split.upper()} data...", end="\n\n"
+            )
+            if split not in strict_accuracies.keys():
+                strict_accuracies[split] = {}
+                soft_match_accuracies[split] = {}
+
             model.accuracies_per_task = []
             model.soft_match_accuracies_per_task = []
-            if split not in all_accuracies.keys():
-                all_accuracies[split] = {}
-            all_accuracies[split][prompt_name] = {}
 
             for task_id, task in sorted(tasks.items()):
                 task_result = model.iterate_task(
                     task_id=task_id,
                     task_data=task,
-                    no_samples=cfg.data.samples_per_task,
-                    to_enumerate=cfg.data.to_enumerate,
-                    to_continue=cfg.model.to_continue,
-                    parse_output=cfg.results.parse,
+                    prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.prompt.names)}",
                 )
                 saver.save_output(
                     data=task_result,
                     headers=cfg.results.headers,
-                    file_path=results_file_path,
+                    file_path=results_file_paths[split],
                 )
-                print("______________________________", end="\n\n", file=log_file)
+                print("______________________________", end="\n\n")
 
-            print(f"The run for {split} data is finished successfully", file=log_file)
+            if len(model.accuracies_per_task) != len(tasks):
+                raise ValueError(
+                    f"Number of tasks and number of accuracies do not match: "
+                    f"{len(tasks)} != {len(model.accuracies_per_task)}"
+                )
 
-            all_accuracies = {
-                "prompt": {
-                    "split": {"task": {"accuracy": 0, "soft_match_accuracy": 0}}
-                },
-            }
+            print(
+                f"==> The run for {split.upper()} data is finished successfully <==",
+                end="\n\n",
+            )
 
+            # Prepare the prompt accuracies for saving
             accuracies_to_save = []
             for task_id, accuracy, soft_match_accuracy in zip(
                 tasks.keys(),
@@ -130,32 +196,43 @@ def run_model(cfg: Config | DictConfig) -> None:
                         "soft_match_accuracy": soft_match_accuracy,
                     }
                 )
+            # "zero task" stores the mean accuracy for all tasks
+            accuracies_to_save.append(
+                {
+                    "task": 0,
+                    "accuracy": statistics.mean(model.accuracies_per_task),
+                    "soft_match_accuracy": statistics.mean(
+                        model.soft_match_accuracies_per_task
+                    ),
+                }
+            )
 
+            # Save the prompt accuracies for the split
             saver.save_output(
                 data=accuracies_to_save,
                 headers=["task", "accuracy", "soft_match_accuracy"],
-                file_path=accuracy_file_paths[str(split)],
+                file_path=accuracy_file_paths[split],
             )
 
+            # Save the prompt accuracies for the split
             plotter.plot_acc_per_task(
                 acc_per_task=model.accuracies_per_task,
                 y_label="Accuracy",
-                plot_name_add=f"{prompt_name}_{str(split)}_",
+                plot_name_add=f"{prompt_name}_{split}_",
             )
             plotter.plot_acc_per_task(
                 acc_per_task=model.soft_match_accuracies_per_task,
                 y_label="Soft Match Accuracy",
-                plot_name_add=f"{prompt_name}_{str(split)}_",
+                plot_name_add=f"{prompt_name}_{split}_",
             )
 
-            all_accuracies["strict"][str(split)][prompt_name] = [
-                task["accuracy"] for task in accuracies_to_save
-            ]
-            all_accuracies["soft_match"][str(split)][prompt_name] = [
-                task["soft_match_accuracy"] for task in accuracies_to_save
-            ]
+            # Save prompt accuracies generally
+            strict_accuracies[split][prompt_name] = model.accuracies_per_task
+            soft_match_accuracies[split][
+                prompt_name
+            ] = model.soft_match_accuracies_per_task
 
-        print("\n- RUN RESULTS -", end="\n\n", file=log_file)
+        print("\n- RUN RESULTS -", end="\n\n")
 
         print(
             "Processed",
@@ -163,33 +240,11 @@ def run_model(cfg: Config | DictConfig) -> None:
             "tasks in total with",
             cfg.data.samples_per_task,
             "samples in each",
-            file=log_file,
         )
         print(
             "Total samples processed",
             model.total_tasks * cfg.data.samples_per_task,
             end="\n\n",
-            file=log_file,
-        )
-
-        model.accuracy = round(stats.accuracy_score(model.y_true, model.y_pred), 2)
-        print("General accuracy:", model.accuracy, file=log_file)
-
-        model.soft_match_accuracy = round(
-            stats.soft_match_accuracy_score(model.y_true, model.y_pred), 2
-        )
-        print("General soft match accuracy:", model.soft_match_accuracy, file=log_file)
-
-        row = [
-            {
-                "accuracy": model.accuracy,
-                "soft_match_accuracy": model.soft_match_accuracy,
-            }
-        ]
-        saver.save_output(
-            data=row,
-            headers=["accuracy", "soft_match_accuracy"],
-            file_path=results_file_path,
         )
 
         if cfg.results.print_to_file:
@@ -198,41 +253,97 @@ def run_model(cfg: Config | DictConfig) -> None:
             # 'log_file' will exist in that case as well
             saver.return_console_printing(log_file)
 
+        print("The run is finished successfully")
+        print("______________________________")
+
+    plotter.result_path = saver.run_results_path
+
     # Plot accuracies for all prompts the model ran with
     if len(cfg.prompt.names) > 1:
         for split in data_in_splits.keys():
             plotter.plot_acc_per_task_and_prompt(
-                acc_per_prompt_task=all_accuracies["strict"][split],
+                acc_per_prompt_task=strict_accuracies[split],
                 y_label="Accuracy",
-                plot_name_add=f"{str(split)}_",
+                plot_name_add=f"{split}_",
             )
             plotter.plot_acc_per_task_and_prompt(
-                acc_per_prompt_task=all_accuracies["soft_match"][split],
+                acc_per_prompt_task=soft_match_accuracies[split],
                 y_label="Soft Match Accuracy",
-                plot_name_add=f"{str(split)}_",
+                plot_name_add=f"{split}_",
             )
+
+            gen_accuracies_to_save = {}
+            gen_headers = ["task"]
+
+            for prompt_name, strict_accuracies, soft_match_accuracies in zip(
+                strict_accuracies[split].keys(),
+                strict_accuracies[split].values(),
+                soft_match_accuracies[split].values(),
+            ):
+                prompt_name_ = prompt_name.replace("prompt_", "")
+                prompt_headers = {
+                    "strict": f"{prompt_name_}_strict_accuracy",
+                    "soft_match": f"{prompt_name_}_soft_match_accuracy",
+                }
+                for task_id, (
+                    strict_accuracy,
+                    soft_match_accuracy,
+                ) in enumerate(zip(strict_accuracies, soft_match_accuracies), 1):
+
+                    if gen_accuracies_to_save.get(task_id) is None:
+                        gen_accuracies_to_save[task_id] = {"task": task_id}
+
+                    gen_accuracies_to_save[task_id].update(
+                        {
+                            prompt_headers["strict"]: strict_accuracy,
+                            prompt_headers["soft_match"]: soft_match_accuracy,
+                        }
+                    )
+                if gen_accuracies_to_save.get(0) is None:
+                    gen_accuracies_to_save[0] = {"task": 0}
+
+                gen_accuracies_to_save[0].update(
+                    {
+                        prompt_headers["strict"]: statistics.mean(strict_accuracies),
+                        prompt_headers["soft_match"]: statistics.mean(
+                            soft_match_accuracies
+                        ),
+                    }
+                )
+                gen_headers.extend(prompt_headers.values())
+
+            for task_id, accuracies in gen_accuracies_to_save.items():
+                gen_accuracies_to_save[task_id].update(
+                    {
+                        "mean_strict_accuracy": statistics.mean(
+                            [
+                                value
+                                for name, value in accuracies.items()
+                                if "strict" in name
+                            ]
+                        ),
+                        "mean_soft_match_accuracy": statistics.mean(
+                            [
+                                value
+                                for name, value in accuracies.items()
+                                if "soft_match" in name
+                            ]
+                        ),
+                    }
+                )
+
+            gen_headers.extend(["mean_strict_accuracy", "mean_soft_match_accuracy"])
+
+            saver.save_output(
+                data=list(gen_accuracies_to_save.values()),
+                headers=gen_headers,
+                file_path=saver.run_results_path / f"{split}_accuracies.csv",
+            )
+
+    print("Plots are saved successfully and general accuracies are saved", end="\n\n")
+
+    print("The script has finished running successfully")
 
 
 if __name__ == "__main__":
-    parser = ArgumentParser()
-    parser.add_argument(
-        "-c",
-        "--config",
-        dest="config",
-        help="use the settings from the config file of given name "
-        "(with relative path from the config directory)",
-        metavar="CONFIG",
-    )
-    args = parser.parse_args()
-
-    cs = ConfigStore.instance()
-    cs.store(name="config", node=Config)
-
-    with initialize(version_base=None, config_path="config/"):
-        if args.config:
-            config = compose(config_name=args.config)
-        else:
-            # for cases of running the script in the IDE
-            config = compose(config_name="baseline_config")
-
-    run_model(cfg=config)
+    run_model()

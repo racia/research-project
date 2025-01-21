@@ -1,4 +1,5 @@
 import en_core_web_sm
+
 nlp = en_core_web_sm.load()
 
 from data.DataLoader import DataLoader
@@ -10,15 +11,52 @@ class Scenery:
     """
 
     base_phrasal_verbs = (
-        "base", "beat", "break", "bring", "call",
-        "calm", "catch", "check", "cheer", "count",
-        "cut", "deal", "do", "drop", "eat", "end",
-        "figure", "fill", "find", "get", "give",
-        "go", "grow", "hang", "hit", "hold", "keep",
-        "look", "make", "mess", "pass", "pick",
-        "point", "put", "rip", "run", "set", "show",
-        "shut", "sleep", "speak", "stand", "take",
-        "think", "tie", "work"
+        "base",
+        "beat",
+        "break",
+        "bring",
+        "call",
+        "calm",
+        "catch",
+        "check",
+        "cheer",
+        "count",
+        "cut",
+        "deal",
+        "do",
+        "drop",
+        "eat",
+        "end",
+        "figure",
+        "fill",
+        "find",
+        "get",
+        "give",
+        "go",
+        "grow",
+        "hang",
+        "hit",
+        "hold",
+        "keep",
+        "look",
+        "make",
+        "mess",
+        "pass",
+        "pick",
+        "point",
+        "put",
+        "rip",
+        "run",
+        "set",
+        "show",
+        "shut",
+        "sleep",
+        "speak",
+        "stand",
+        "take",
+        "think",
+        "tie",
+        "work",
     )
 
     def __init__(self):
@@ -40,10 +78,14 @@ class Scenery:
 
         :param DO_head: the head of the direct object
         """
-        children = [[child.text] + [child.text for child in child.children if child.dep_ != "det"]
-                    for child in DO_head.children
-                    if child.pos_ not in ["ADJ"] and child.lemma_ not in
-                    ["before", "after", "to", "right", "left", "below", "above"]]
+        children = [
+            [child.text]
+            + [child.text for child in child.children if child.dep_ != "det"]
+            for child in DO_head.children
+            if child.pos_ not in ["ADJ"]
+            and child.lemma_
+            not in ["before", "after", "to", "right", "left", "below", "above"]
+        ]
         children = [child for child in children if child[0] != child[-1]]
         if children:
             longest_child = max(children, key=lambda x: len(x))
@@ -74,7 +116,10 @@ class Scenery:
 
             # Extract the human subjects: Jason, Mary, etc.
             # As an exception, "what", a direct objects, is also caught here.
-            if token.dep_ in ["nsubj", "agent", "conj"] and token.pos_ in ["PROPN", "PRON"]:
+            if token.dep_ in ["nsubj", "agent", "conj"] and token.pos_ in [
+                "PROPN",
+                "PRON",
+            ]:
                 if token.text.lower() == "what":
                     direct_objects.append(token.lemma_)
                 else:
@@ -83,8 +128,9 @@ class Scenery:
                     else:
                         human_subjects.append(token.lemma_)
             # Catch human subjects mistakes when they look like adverbs: Emily, Lily, etc.
-            elif ((token.dep_ == "nsubj" and token.pos_ == "ADV") or
-                  (token.dep_ == "advmod" and token.text in ["emily", "lily"])):
+            elif (token.dep_ == "nsubj" and token.pos_ == "ADV") or (
+                token.dep_ == "advmod" and token.text in ["emily", "lily"]
+            ):
                 human_subjects.append(token.lemma_.capitalize())
             # Extract the other human and non-human subjects.
             elif token.dep_ == "nsubj" and token.pos_ == "NOUN":
@@ -100,8 +146,12 @@ class Scenery:
                     non_human_subjects.append(token.lemma_.lower())
             # Extract the relations: go, bring, etc.
             elif token.dep_ == "ROOT" and token.pos_ == "VERB":
-                particle = [child for child in token.children
-                            if child.dep_ in ["prt", "advmod", "neg"] and child.pos_ not in ["SCONJ", "ADV"]]
+                particle = [
+                    child
+                    for child in token.children
+                    if child.dep_ in ["prt", "advmod", "neg"]
+                    and child.pos_ not in ["SCONJ", "ADV"]
+                ]
                 # Extract the particles of phrasal verbs: go up, bring down, etc.
                 if token.lemma_ in Scenery.base_phrasal_verbs and particle:
                     relations.append((token.lemma_, particle[0].text))
@@ -121,10 +171,20 @@ class Scenery:
             # Extract various parts associated with attribution.
             elif token.dep_ in ["attr", "acomp"] and token.pos_ in ["NOUN", "ADJ"]:
                 # Catch exceptional relations: bigger, smaller, north, south, east, west, etc.
-                if token.text in ["bigger", "smaller", "north", "south", "east", "west"]:
+                if token.text in [
+                    "bigger",
+                    "smaller",
+                    "north",
+                    "south",
+                    "east",
+                    "west",
+                ]:
                     relations.append(token.text)
                 # Additionally catch "to be" as a relation.
-                elif token.head.head.lemma_ == "be" and token.head.head.lemma_ == parsed_line[0].lemma_:
+                elif (
+                    token.head.head.lemma_ == "be"
+                    and token.head.head.lemma_ == parsed_line[0].lemma_
+                ):
                     relations.append(token.text)
                 else:
                     # Otherwise, it is a subject attribute: tired, hungry etc.
@@ -137,7 +197,10 @@ class Scenery:
                 else:
                     direct_objects.append(token.lemma_)
             # Extract the indirect objects that are usually humans here: Mary etc.
-            elif token.dep_ in ["dobj", "pobj", "nsubjpass", "conj"] and token.pos_ == "PROPN":
+            elif (
+                token.dep_ in ["dobj", "pobj", "nsubjpass", "conj"]
+                and token.pos_ == "PROPN"
+            ):
                 indirect_objects.append(token.lemma_)
             # Catch various parts as objects of prepositions
             # and conjunctions (could be a second part of a compound subject).
@@ -168,7 +231,7 @@ class Scenery:
             "relations": relations,
             "locations": locations,
             "subj_attributes": subj_attributes,
-            "obj_attributes": obj_attributes
+            "obj_attributes": obj_attributes,
         }
 
         return line_scenery
@@ -181,9 +244,13 @@ class Scenery:
         for task in sorted(list(self.data.keys())):
             self.task_sceneries[task] = []
             for sample in self.data[task].values():
-                sample_sentences = (list(sample["context"].values()) +
-                                    list(sample["question"].values()) +
-                                    list(sample["answer"].values()))
+                sample_sentences = []
+                for part in sample.values():
+                    sample_sentences.extend(
+                        list(part["context"].values())
+                        + list(part["question"].values())
+                        + list(part["answer"].values())
+                    )
                 for line in sample_sentences:
                     if type(line) is list:
                         line = " ".join(line)
@@ -201,8 +268,10 @@ class Scenery:
         for sample in self.task_sceneries[task]:
             unique_scenery.update(sample[scenery_type])
 
-        unique_scenery = [" ".join(list(scenery)) if type(scenery) is tuple else scenery
-                          for scenery in unique_scenery]
+        unique_scenery = [
+            " ".join(list(scenery)) if type(scenery) is tuple else scenery
+            for scenery in unique_scenery
+        ]
         sorted_unique_scenery = sorted(list(unique_scenery))
         return sorted_unique_scenery
 
@@ -220,7 +289,7 @@ class Scenery:
             "Relations:\n": "relations",
             "Locations:\n": "locations",
             "Subjects Attributes:\n": "subj_attributes",
-            "Object Attributes:\n": "obj_attributes"
+            "Object Attributes:\n": "obj_attributes",
         }
         with open(save_path, "wt", encoding="UTF-8") as file:
             for task in self.task_sceneries:
@@ -249,6 +318,8 @@ class Scenery:
 if __name__ == "__main__":
     scenery = Scenery()
     loader = DataLoader()
-    scenery.data = loader.load_data(path="../../tasks_1-20_v1-2/en-valid", split="train")
+    scenery.data = loader.load_task_data(
+        path="../../tasks_1-20_v1-2/en-valid", split="train"
+    )
     scenery.extract_scenery()
     scenery.save_scenery("../evaluation/scenery_train.txt")

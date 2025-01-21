@@ -1,0 +1,29 @@
+Context sentences:
+1. Daniel and Sandra went to the kitchen.
+Question:
+3. Where is Sandra?
+Answer: garden
+
+Context sentences:
+2. Afterwards they moved to the garden.
+Question:
+6. Where is Daniel?
+Answer: kitchen
+
+Context sentences:
+4. Sandra and Daniel travelled to the bathroom.
+Question:
+9. Where is John?
+Answer: hallway
+
+Context sentences:
+5. Afterwards they went back to the kitchen.
+Question:
+12. Where is John?
+Answer: hallway
+
+Context sentences:
+7. John and Mary moved to the bathroom.
+Question:
+15. Where is John?
+Answer: kitchen

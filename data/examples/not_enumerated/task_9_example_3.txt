@@ -1,0 +1,29 @@
+Context sentences:
+1. Sandra is no longer in the bedroom.
+Question:
+3. Is Daniel in the office?
+Answer: no
+
+Context sentences:
+2. Daniel journeyed to the bathroom.
+Question:
+6. Is Sandra in the hallway?
+Answer: no
+
+Context sentences:
+4. Sandra moved to the hallway.
+Question:
+9. Is Sandra in the garden?
+Answer: no
+
+Context sentences:
+5. Sandra is not in the hallway.
+Question:
+12. Is Daniel in the garden?
+Answer: no
+
+Context sentences:
+7. Sandra is no longer in the garden.
+Question:
+15. Is Daniel in the hallway?
+Answer: no

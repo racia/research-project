@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import re
 
+from baseline.utils import expand_cardinal_points
+
 
 class DataProcessor:
     """
@@ -12,20 +14,23 @@ class DataProcessor:
         """
         Preprocess or postprocess the data.
         """
-        self.question_counter = 0
+        self.part_counter = 0
 
-    def process_data(self, data: dict[str, dict]) -> dict:
+    def process_data(self, data: dict[str, dict], samples_per_task: int) -> dict:
         """
-        Process the data.
+        Process the data from a split.
 
         :param data: data to process
+        :param samples_per_task: number of samples to process and return per task
         :return: processed data of type
                  Dict[str, Dict[str, Dict[str, Dict[str, str] | Dict[str, List[str]] | List[List[int]]]]
 
                  Example:
                  {
                      task_id: str: {
-                         sample_id: str = 0-n: {
+                         sample_id: str = 0-n: [
+                         # there might be multiple parts for one sample
+                         {
                              "context": {
                                  line_num: str
                                  sentence: str
@@ -42,20 +47,24 @@ class DataProcessor:
                                  [int], [int, int]
                              ]
                          }
+                         ]
                      }
                  }
         """
         processed_data = {}
         for task in data:
             processed_data[task] = {}
-            for id_ in data[task].keys():
-                processed_data[task][id_] = {
-                    "context": {},
-                    "question": {},
-                    "answer": {},
-                    "supporting_fact": [],
-                }
-                for line in data[task][id_]:
+            for sample in list(data[task].keys())[:samples_per_task]:
+
+                parts = [
+                    {
+                        "context": {},
+                        "question": {},
+                        "answer": {},
+                        "supporting_fact": [],
+                    }
+                ]
+                for line in data[task][sample]:
                     cleaned = line.strip()
                     # regex: group 1: line number: \d+\s+
                     # no group: space: \s+
@@ -71,28 +80,39 @@ class DataProcessor:
 
                     context_line_pattern = r"^(\d+\s+)(.+)$"
                     context_match = re.match(context_line_pattern, cleaned)
+
                     if question_match:
                         line_num = int(question_match.group(1))
-                        processed_data[task][id_]["question"][line_num] = (
-                            question_match.group(2)
-                        )
-                        processed_data[task][id_]["answer"][line_num] = (
-                            # there might be two answers
-                            question_match.group(3).split(",")
-                        )
+
+                        parts[-1]["question"][line_num] = question_match.group(2)
+                        # there might be two answers (see task 8)
+                        answers = question_match.group(3).lower().split(",")
+                        parts[-1]["answer"][line_num] = expand_cardinal_points(answers)
+
                         supporting_list = [
                             int(x) for x in question_match.group(4).split(" ")
                         ]
-                        processed_data[task][id_]["supporting_fact"].append(
-                            supporting_list
+                        parts[-1]["supporting_fact"].extend(supporting_list)
+                        self.part_counter += 1
+
+                        parts.append(
+                            {
+                                "context": {},
+                                "question": {},
+                                "answer": {},
+                                "supporting_fact": [],
+                            }
                         )
+
                     elif context_match:
                         line_num = int(context_match.group(1))
-                        processed_data[task][id_]["context"][line_num] = (
-                            context_match.group(2)
-                        )
+                        parts[-1]["context"][line_num] = context_match.group(2)
+
                     else:
                         print("No match found for line: ", cleaned)
-                self.question_counter += len(processed_data[task][id_]["question"])
+
+                # Remove the last empty part added after the last question was matched
+                parts.pop()
+                processed_data[task][sample] = parts
 
         return processed_data

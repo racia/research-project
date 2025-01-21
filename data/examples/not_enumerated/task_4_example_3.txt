@@ -1,0 +1,5 @@
+Context sentences:
+1. The bedroom is east of the bathroom.
+Question:
+3. What is east of the bathroom?
+Answer: bedroom

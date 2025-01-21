@@ -1,0 +1,29 @@
+Context sentences:
+1. Mary travelled to the hallway.
+Question:
+43. What did Jeff give to Fred?
+Answer: apple
+
+Context sentences:
+2. Mary went back to the bathroom.
+Question:
+46. Who did Jeff give the apple to?
+Answer: Fred
+
+Context sentences:
+3. Bill journeyed to the bathroom.
+Question:
+49. Who did Jeff give the apple to?
+Answer: Fred
+
+Context sentences:
+4. Jeff went to the office.
+Question:
+64. Who did Bill give the football to?
+Answer: Mary
+
+Context sentences:
+5. Mary went to the hallway.
+Question:
+67. Who received the football?
+Answer: Bill

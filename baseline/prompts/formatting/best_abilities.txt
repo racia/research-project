@@ -1,0 +1,2 @@
+You will be given a sequence of context sentences and then asked a question about them.
+Please answer the question in one word and to your best abilities.

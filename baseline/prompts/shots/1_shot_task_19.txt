@@ -1,0 +1,18 @@
+You will be given a sequence of context sentences and then asked questions about them.
+Please answer the questions in one word.
+
+*EXAMPLE*
+Context sentences:
+1. The kitchen is west of the bathroom.
+2. The hallway is west of the bedroom.
+3. The garden is north of the office.
+4. The bathroom is west of the office.
+5. The bedroom is north of the bathroom.
+Question:
+6. How do you go from the bedroom to the office?
+Reasoning step by step:
+- The bedroom is north of the bathroom. So, to go from the bedroom to the bathroom, you go south.
+- The bathroom is west of the office. So, to go from the bathroom to the office, you go east.
+Chain of thought step by step:
+- To go from the bedroom to the office, you go south and then east.
+Answer: south, east

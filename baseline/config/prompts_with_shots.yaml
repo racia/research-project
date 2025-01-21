@@ -1,0 +1,36 @@
+defaults:
+  # running this script will pull the prompt in this file over the prompt in baseline_config file
+  - baseline_config_CLuster
+  - _self_
+
+model:
+  max_new_tokens: 30
+
+prompt:
+  paths:
+    #    - "prompts/shots/0_shot.txt"
+    #    - "prompts/shots/1_shot_task_2.txt"
+    #    - "prompts/shots/1_shot_task_4.txt"
+    #    - "prompts/shots/1_shot_task_7.txt"
+    #    - "prompts/shots/1_shot_task_10.txt"
+    #    - "prompts/shots/1_shot_task_14.txt"
+    #    - "prompts/shots/1_shot_task_15.txt"
+    #    - "prompts/shots/1_shot_task_19.txt"
+    #    - "prompts/shots/2_shot_task_4.txt"
+    #    - "prompts/shots/2_shot_task_15.txt"
+    #    - "prompts/shots/2_shot.txt"
+    - "prompts/shots/3_shot.txt"
+    - "prompts/shots/4_shot.txt"
+    - "prompts/shots/5_shot.txt"
+    - "prompts/shots/6_shot.txt"
+
+data:
+  to_enumerate:
+    context: True
+    question: True
+
+repository:
+  save_here: False
+
+results:
+  parse: False
