@@ -1,4 +1,5 @@
 import re
+import sys
 from typing import TextIO
 
 import torch
@@ -88,7 +89,7 @@ def parse_output(output: str) -> dict[str, str]:
     return parsed_output
 
 
-def set_device(logfile: TextIO) -> torch.device:
+def set_device(logfile: TextIO = sys.stdout) -> torch.device:
     """
     Sets the device to use for the model.
     If no GPU is available, an error will be raised.
