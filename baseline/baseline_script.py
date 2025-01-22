@@ -268,7 +268,7 @@ def run_model(cfg: DictConfig) -> None:
             )
 
             gen_accuracies_to_save = {}
-            gen_headers = ["task"]
+            gen_headers = ["task_id"]
 
             for prompt_name, strict_accuracies, soft_match_accuracies in zip(
                 strict_accuracies[split].keys(),
@@ -286,7 +286,7 @@ def run_model(cfg: DictConfig) -> None:
                 ) in enumerate(zip(strict_accuracies, soft_match_accuracies), 1):
 
                     if gen_accuracies_to_save.get(task_id) is None:
-                        gen_accuracies_to_save[task_id] = {"task": task_id}
+                        gen_accuracies_to_save[task_id] = {"task_id": task_id}
 
                     gen_accuracies_to_save[task_id].update(
                         {
@@ -295,7 +295,7 @@ def run_model(cfg: DictConfig) -> None:
                         }
                     )
                 if gen_accuracies_to_save.get(0) is None:
-                    gen_accuracies_to_save[0] = {"task": 0}
+                    gen_accuracies_to_save[0] = {"task_id": 0}
 
                 gen_accuracies_to_save[0].update(
                     {
