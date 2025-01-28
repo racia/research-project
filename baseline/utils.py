@@ -3,7 +3,7 @@ from typing import Union
 
 import torch
 
-from baseline.config.baseline_config import Enumerate
+from config.baseline_config import Enumerate
 
 
 def expand_cardinal_points(abbr_news: list[str]) -> list[str]:
