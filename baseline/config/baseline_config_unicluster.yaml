@@ -1,0 +1,61 @@
+model:
+  name: 'meta-llama/Meta-Llama-3-8B-Instruct'
+  max_new_tokens: 12
+  # with temperature==0.0 the model will use log probability
+  # to automatically increase the temperature until certain thresholds are hit.
+  # I.e., in need of lowest temperature, set it to something like 0.00000001
+  temperature: 0.1
+  # if we want the model to continue on the last message rather
+  # than create a separate answer
+  to_continue: False
+
+data:
+  # small data with validation
+  path: '${oc.env:HOME}/tasks_1-20_v1-2/en-valid/'
+  # Order: train, valid, test
+  splits:
+    train: False
+    valid: True
+    test: False
+  # to get all tasks use (will be converted to None)
+  task_ids: ~
+  # to get specific tasks use:
+  # task_ids: [1, 2, ...]
+  samples_per_task: 5
+  # if to add line numbers to the sentences in the prompt
+  # Order: context, question
+  to_enumerate:
+    context: True
+    question: False
+
+prompt:
+  # name of the prompt serves as a basis for logging and result files
+  name: prompt_1
+  # '|' insures multiline string
+  text: |
+    You will be given a sequence of context sentences and then asked questions about them. For example:
+    Context sentences: John is on the playground. Mary is in the kitchen.
+    Question: Where is John?
+    Answer: Playground
+  path: "${oc.env:HOME}/research-project/prompts/init_prompt.txt"
+
+repository:
+  # path should be relative to the working directory (where the script is)
+  path: "${oc.env:HOME}/research-project/"
+
+results:
+  parse: True
+  # here, csv results and logs will be stored
+  # change it for yourself but make sure to create the folders beforehand
+  # should be relative to 'repo_path'! don't forget the trailing '/'!
+  path: 'baseline/'
+  print_to_file: True
+  headers:
+    - id
+    - task_id
+    - sample_no
+    - task
+    - true_result
+    - model_result
+    - accuracy
+    - soft_match_accuracy
