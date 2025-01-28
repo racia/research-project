@@ -237,9 +237,9 @@ To get started, log into the Heidelberg University Computational Linguistics clu
     * memory to allocate (if too big, longer waiting time)
     * patrition (default — `students`)
     * most importantly, the list of config files you want to run the script with:
-       ``` 
-       CONFIGS="prompt_0_shot prompt_1_shot"
-       ```
+      ``` 
+      CONFIGS="prompt_0_shot prompt_1_shot"
+      ```
       The script runs with each config separately.
 
 
