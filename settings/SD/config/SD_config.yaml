@@ -1,0 +1,66 @@
+teacher:
+  name: "meta-llama/Meta-Llama-3-8B-Instruct"
+  max_new_tokens: 12
+  temperature: 0.1
+
+student:
+  name: "meta-llama/Meta-Llama-3-8B-Instruct"
+  max_new_tokens: 12
+  temperature: 0.1
+
+data:
+  # small data with validation
+  path: '${oc.env:HOME}/tasks_1-20_v1-2/en-valid/'
+  # Order: train, valid, test
+  splits:
+    train: False
+    valid: True
+    test: False
+  # to get all tasks use (will be converted to None)
+  task_ids: ~
+  # to get specific tasks use:
+  # task_ids: [1, 2, ...]
+  samples_per_task: 5
+  # if to add line numbers to the sentences in the prompt
+  # Order: context, question
+  to_enumerate:
+    context: True
+    question: False
+
+init_prompt:
+  name: init_prompt
+  path: "${oc.env:HOME}/research-project/prompts/init_prompt.txt"
+
+eval_prompt:
+  name: eval_prompt
+  path: "${oc.env:HOME}/research-project/prompts/eval_prompt.txt"
+
+resume_prompt:
+  name: resume_prompt
+  path: "${oc.env:HOME}/research-project/prompts/resume_prompt.txt"
+
+SD:
+  k: xxx
+  min_prob: xxx
+
+repository:
+  # path should be relative to the working directory (where the script is)
+  path: "${oc.env:HOME}/research-project/"
+
+results:
+  parse: True
+  # here, csv results and logs will be stored
+  # change it for yourself but make sure to create the folders beforehand
+  # should be relative to 'repo_path'!
+  path: 'settings/SD/'
+  filename: 'SD_results'
+  print_to_file: True
+  headers:
+    - id
+    - task_id
+    - sample_no
+    - task
+    - true_result
+    - model_result
+    - accuracy
+    - soft_match_accuracy
