@@ -3,7 +3,7 @@ import sys
 from abc import ABC
 from pathlib import Path
 
-from baseline.utils import expand_cardinal_points
+from settings.baseline.utils import expand_cardinal_points
 
 sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
 from data.DataLoader import DataLoader

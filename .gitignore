@@ -26,12 +26,12 @@ plots/*.png
 .DS_Store
 
 # Baseline
-baseline/init_bl.txt
-baseline/prompts/results/*
-baseline/results/*
+settings/baseline/init_bl.txt
+settings/baseline/prompts/results/*
+settings/baseline/results/*
 
 # Results
 results/
 
 # Prompts
-baseline/config/prompt_*_shot*
+settings/baseline/config/prompt_*_shot*

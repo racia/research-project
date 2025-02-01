@@ -2,9 +2,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Union
 
-from baseline.config.baseline_config import DataSplits
 from data.DataLoader import DataLoader
 from plots.Plotter import Plotter
+from settings.baseline.config.baseline_config import DataSplits
 
 
 @dataclass

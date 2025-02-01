@@ -9,6 +9,9 @@ model:
   # than create a separate answer
   to_continue: False
 
+setting:
+  name: 'Baseline'
+
 data:
   # small data with validation
   path: '${oc.env:HOME}/tasks_1-20_v1-2/en-valid/'
@@ -61,6 +64,8 @@ results:
     - sample_no
     - task
     - true_result
+    - model_answer
+    - model_reasoning
     - model_result
     - accuracy
     - soft_match_accuracy

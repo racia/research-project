@@ -1,9 +1,33 @@
-import re
+from dataclasses import dataclass
 from typing import Union
 
 import torch
 
-from config.baseline_config import Enumerate
+
+@dataclass
+class Enumerate:
+    context: str = "context"
+    question: str = "question"
+
+
+def set_device() -> torch.device:
+    """
+    Sets the device to use for the model.
+    If no GPU is available, an error will be raised.
+
+    :return: device to use
+    """
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    print("Torch version: ", torch.__version__)
+    print("CUDA version: ", torch.version.cuda)
+    print("CUDA available: ", torch.cuda.is_available())
+    print(f"Device: {device}", flush=True)
+
+    if not torch.cuda.is_available():
+        raise Exception("CUDA is not available. This will be using the CPU.")
+
+    return device
 
 
 def expand_cardinal_points(abbr_news: list[str]) -> list[str]:
@@ -57,52 +81,3 @@ def structure_part(
     else:
         question.extend(list(part["question"].values()))
     return "\n".join(context), "\n".join(question)
-
-
-def parse_output(output: str) -> dict[str, str]:
-    """
-    Parses the output of the model to extract the answer and reasoning.
-
-    :param output: parsed output of the model
-    """
-    answer_pattern = re.compile(r"(?i)(?<=answer:)[\s ]*.+")
-    reasoning_pattern = re.compile(r"(?i)(?<=reasoning:)[\s ]*.+")
-
-    answer = answer_pattern.search(output)
-    if not answer:
-        answer = "None"
-        print("DEBUG: Answer not found in the output")
-        print("OUTPUT:\n", output, end="\n\n")
-    else:
-        answer = answer.group(0).strip()
-
-    reasoning = reasoning_pattern.search(output)
-    if not reasoning:
-        reasoning = "None"
-        print("DEBUG: Reasoning not found in the output")
-        print("OUTPUT:\n", output, end="\n\n")
-    else:
-        reasoning = reasoning.group(0).strip()
-
-    parsed_output = {"answer": answer, "reasoning": reasoning}
-    return parsed_output
-
-
-def set_device() -> torch.device:
-    """
-    Sets the device to use for the model.
-    If no GPU is available, an error will be raised.
-
-    :return: device to use
-    """
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-    print("Torch version: ", torch.__version__)
-    print("CUDA version: ", torch.version.cuda)
-    print("CUDA available: ", torch.cuda.is_available())
-    print(f"Device: {device}", flush=True)
-
-    if not torch.cuda.is_available():
-        raise Exception("CUDA is not available. This will be using the CPU.")
-
-    return device

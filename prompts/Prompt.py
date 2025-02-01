@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from pathlib import Path
 
-from baseline.config.baseline_config import Wrapper, Enumerate
-from baseline.utils import structure_part
+from settings.baseline.config.baseline_config import Enumerate, Wrapper
+from settings.utils import structure_part
 
 
 @dataclass
