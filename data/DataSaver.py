@@ -7,8 +7,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import TextIO, Union
 
-from baseline.config.baseline_config import DataSplits
 from data.data_utils import is_empty_file
+from settings.baseline.config.baseline_config import DataSplits
 
 
 class DataSaver:

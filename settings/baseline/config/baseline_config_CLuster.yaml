@@ -61,6 +61,8 @@ results:
     - sample_no
     - task
     - true_result
+    - model_answer
+    - model_reasoning
     - model_result
     - accuracy
     - soft_match_accuracy

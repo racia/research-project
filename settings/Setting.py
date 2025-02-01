@@ -1,30 +1,24 @@
-from __future__ import annotations
-
-import os
+from abc import ABC, abstractmethod
 
 import torch
-from torch.cuda.amp import autocast
-from transformers import AutoModelForCausalLM, AutoTokenizer
 
-import utils
-from baseline.config.baseline_config import Enumerate
 from data.Statistics import Statistics
 from prompts.Chat import Chat, Source
 from prompts.Prompt import Prompt
+from settings.Model import Model
+from settings.utils import Enumerate
 
 
-class Baseline:
+class Setting(ABC):
     """
-    The baseline class.
+    Abstract class for settings
     """
 
+    @abstractmethod
     def __init__(
         self,
-        model_name: str,
-        max_new_tokens: int,
-        temperature: float,
+        model: Model,
         to_enumerate: dict[Enumerate, bool],
-        to_continue: bool,
         parse_output: bool,
         statistics: Statistics,
         prompt: Prompt = None,
@@ -34,26 +28,12 @@ class Baseline:
         Baseline class manages model runs and data flows around it.
         It is intended to use in the further settings.
 
-        :param model_name: official name of the model to run
-        :param max_new_tokens: maximum number of tokens the model would be able to answer (cut-off)
-        :param temperature: the temperature of the model
-        :param to_enumerate: config adding line numbers to the beginning of lines
-        :param to_continue: if we want the model to continue on the last message
-                            rather than create a separate answer
         :param parse_output: if we want to parse the output of the model (currently looks for 'answer' and 'reasoning')
         :param statistics: class for statistics
         :param prompt: system prompt to start conversations
         :param samples_per_task: number of samples per task for logging
         """
-        self.token = os.getenv("HUGGINGFACE")
-
-        self.model = None
-        self.model_name = model_name
-        self.max_new_tokens = max_new_tokens
-        self.temperature = temperature
-        self.to_continue = to_continue
-
-        self.tokenizer = None
+        self.model = model
 
         self.prompt = prompt
         self.to_enumerate = to_enumerate
@@ -73,60 +53,28 @@ class Baseline:
         self.accuracy: int = 0
         self.soft_match_accuracy: int = 0
 
-    def load_model(self) -> None:
+    @abstractmethod
+    def prepare_prompt(self, sample_part: list[str], chat: Chat) -> str:
         """
-        Load the model and the tokenizer for the instance model name.
+        Prepares the prompt to include the current part of the sample.
+        :param sample_part:
+        :param chat:
+        :return: prompt with the task and the current part
         """
-        os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
-        self.model = AutoModelForCausalLM.from_pretrained(
-            self.model_name,
-            device_map="auto",
-            torch_dtype=torch.bfloat16,
-        )
-        self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-        torch.cuda.empty_cache()
+        raise NotImplementedError
 
-    def call_model(self, prompt: str) -> str:
+    @abstractmethod
+    def apply_setting(self, decoded_output: str) -> dict[str, str]:
         """
-        Calls that model in the following steps:
-        1. tokenizes the prompt
-        2. generates the answer from the inputs
-        3. decodes and lowercases the answer
+        Apply setting-specific postprocessing of the inital model output.
+        For the baseline and skyline, this consists of parsing the output.
+        For the SD and feedback setting, this entails the main idea of these settings.
 
-        :param prompt: tokenized prompt, prepared to feed into the model
-        :return: response of the model
+        :param decoded_output: the decoded output
+        :return: parsed output
         """
-        # no_grad context manager to disable gradient calculation during inference (speeds up)
-        with torch.no_grad():
-            # 1. Tokenize
-            inputs = self.tokenizer(
-                prompt, return_tensors="pt", add_special_tokens=True
-            )
-            inputs = {
-                key: tensor.to(self.model.device) for key, tensor in inputs.items()
-            }
-
-            # autocast enables mixed precision for computational efficiency
-            with autocast():
-                # 2. Generate text
-                outputs = self.model.generate(
-                    **inputs,
-                    max_new_tokens=self.max_new_tokens,
-                    temperature=self.temperature,
-                    pad_token_id=self.tokenizer.eos_token_id,
-                )
-
-                # 3. Decode output back to string
-                decoded_output = "\n".join(
-                    [
-                        self.tokenizer.decode(
-                            outputs[i][inputs["input_ids"].size(1) :],
-                            skip_special_tokens=True,
-                        )
-                        for i in range(len(outputs))
-                    ]
-                ).lower()
-            return decoded_output
+        # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
+        raise NotImplementedError
 
     def iterate_task(
         self,
@@ -212,30 +160,19 @@ class Baseline:
                     "*-",
                     end="\n\n\n",
                 )
-                # 3. Prepare the part to be in the next prompt
+
                 formatted_part = self.prompt.format_part(
                     part=sample_part, to_enumerate=self.to_enumerate
                 )
-                # 4. Create and format the prompt
+
                 chat.add_message(part=formatted_part, source=Source.user)
 
-                if self.to_continue:
-                    formatted_prompt = self.tokenizer.apply_chat_template(
-                        chat.messages, tokenize=False, continue_final_message=True
-                    )
-                else:
-                    formatted_prompt = self.tokenizer.apply_chat_template(
-                        chat.messages, tokenize=False, add_generation_prompt=True
-                    )
-                print(
-                    "Formatted prompt:",
-                    formatted_prompt,
-                    sep="\n",
-                    end="\n",
+                formatted_prompt = self.prepare_prompt(
+                    sample_part=sample_part, chat=chat
                 )
 
                 # 5. Call the model and yield the response
-                decoded_output = self.call_model(prompt=formatted_prompt)
+                decoded_output = self.model.call(prompt=formatted_prompt)
                 print(
                     "Model's output:",
                     decoded_output,
@@ -246,21 +183,19 @@ class Baseline:
                 # 6. Add the model's output to conversation
                 chat.add_message(part=decoded_output, source=Source.assistant)
 
+                model_output = self.apply_setting(decoded_output=decoded_output)
+
                 part_result = {
                     "id": self.question_id,
                     "task_id": task_id,
                     "sample_no": sample_id_,
                     "task": "\n".join(sample_part),
                     "true_result": y_true,
-                    "model_result": decoded_output,
                 }
-
-                if self.parse_output:
-                    parsed_output = utils.parse_output(output=decoded_output)
-                    part_result["model_answer"] = parsed_output["answer"]
-                    part_result["model_reasoning"] = parsed_output["reasoning"]
+                part_result.update(model_output)
 
                 task_results.append(part_result)
+
                 y_pred_sample.append(decoded_output)
 
             # 7. Report the results for the sample: answers and accuracy
@@ -315,6 +250,7 @@ class Baseline:
             task_soft_match_accuracy,
             end="\n\n",
         )
+
         task_results[0]["soft_match_accuracy"] = task_soft_match_accuracy
 
         print(f"The work on task {task_id} is finished successfully")

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 
-from baseline.utils import expand_cardinal_points
+from settings.utils import expand_cardinal_points
 
 
 class DataProcessor:

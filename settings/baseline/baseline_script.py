@@ -9,7 +9,7 @@ import hydra
 from hydra.core.hydra_config import HydraConfig
 from omegaconf import DictConfig, OmegaConf
 
-from baseline.utils import set_device
+from settings.baseline.utils import set_device
 
 sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
 
@@ -18,7 +18,7 @@ from data.DataSaver import DataSaver
 from data.DataLoader import DataLoader
 from data.Statistics import Statistics
 from plots.Plotter import Plotter
-from Model import Baseline
+from Baseline import Baseline
 
 
 @hydra.main(version_base=None)

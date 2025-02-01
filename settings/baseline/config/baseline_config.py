@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from settings.utils import Enumerate
+
 
 @dataclass
 class Model:
@@ -16,12 +18,6 @@ class DataSplits:
     train: str = "train"
     valid: str = "valid"
     test: str = "test"
-
-
-@dataclass
-class Enumerate:
-    context: str = "context"
-    question: str = "question"
 
 
 @dataclass

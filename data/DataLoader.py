@@ -6,8 +6,8 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Union
 
-from baseline.config.baseline_config import DataSplits
 from data.DataProcessor import DataProcessor
+from settings.baseline.config.baseline_config import DataSplits
 
 
 class DataLoader:
