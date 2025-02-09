@@ -1,0 +1,49 @@
+Context sentences:
+Fred moved to the bedroom.
+Mary travelled to the bedroom.
+Bill took the apple there.
+Bill journeyed to the garden.
+Jeff grabbed the milk there.
+Bill dropped the apple.
+Mary went to the hallway.
+Fred journeyed to the office.
+Mary went back to the kitchen.
+Jeff handed the milk to Mary.
+Question:
+Who received the milk?
+Answer: Mary
+
+Context sentences:
+Mary travelled to the office.
+Bill grabbed the apple there.
+Question:
+Who received the milk?
+Answer: Mary
+
+Context sentences:
+Mary gave the milk to Fred.
+Fred passed the milk to Mary.
+Question:
+What did Fred give to Mary?
+Answer: milk
+
+Context sentences:
+Mary left the milk.
+Jeff went to the bedroom.
+Question:
+Who gave the milk?
+Answer: Fred
+
+Context sentences:
+Mary travelled to the garden.
+Mary got the football there.
+Question:
+Who gave the milk?
+Answer: Fred
+
+Context sentences:
+Mary moved to the hallway.
+Mary handed the football.
+Question:
+Who received the football?
+Answer: not mentioned

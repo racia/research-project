@@ -1,0 +1,42 @@
+Context sentences:
+1. Sandra travelled to the kitchen.
+2. Daniel grabbed the football there.
+3. Daniel took the milk there.
+4. John went to the bathroom.
+5. Daniel travelled to the hallway.
+6. Daniel dropped the milk.
+Question:
+7. Where is the milk?
+Answer: hallway
+
+Context sentences:
+8. Daniel grabbed the milk there.
+9. Daniel journeyed to the garden.
+Question:
+10. Where is the milk?
+Answer: garden
+
+Context sentences:
+11. Daniel dropped the football.
+12. Mary went to the kitchen.
+Question:
+13. Where is the milk?
+Answer: garden
+
+Context sentences:
+14. Mary travelled to the bedroom.
+15. Daniel picked up the football there.
+16. Daniel left the milk.
+17. Daniel took the milk there.
+18. Sandra moved to the garden.
+19. Daniel went back to the office.
+Question:
+20. Where is the milk?
+Answer: office
+
+Context sentences:
+21. Daniel took the apple there.
+22. Daniel put down the football there.
+Question:
+23. Where is the milk?
+Answer: office

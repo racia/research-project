@@ -1,0 +1,34 @@
+Context sentences:
+1. Mary went back to the office.
+2. Mary got the milk there.
+Question:
+3. Is Mary in the garden?
+Answer: no
+
+Context sentences:
+4. Daniel grabbed the apple there.
+5. Daniel journeyed to the kitchen.
+Question:
+6. Is Mary in the office?
+Answer: yes
+
+Context sentences:
+7. Mary travelled to the garden.
+8. Mary travelled to the bedroom.
+Question:
+9. Is Mary in the kitchen?
+Answer: no
+
+Context sentences:
+10. Mary grabbed the football there.
+11. Mary left the milk there.
+Question:
+12. Is Daniel in the garden?
+Answer: no
+
+Context sentences:
+13. Sandra travelled to the hallway.
+14. John journeyed to the bedroom.
+Question:
+15. Is John in the office?
+Answer: no

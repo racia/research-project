@@ -1,0 +1,34 @@
+Context sentences:
+1. Sandra journeyed to the bedroom.
+2. Daniel is in the bathroom.
+Question:
+3. Is Daniel in the bedroom?
+Answer: no
+
+Context sentences:
+4. John is in the hallway.
+5. John is in the bathroom.
+Question:
+6. Is Sandra in the bedroom?
+Answer: yes
+
+Context sentences:
+7. Mary moved to the hallway.
+8. Daniel went back to the garden.
+Question:
+9. Is Daniel in the garden?
+Answer: yes
+
+Context sentences:
+10. Daniel is in the hallway.
+11. Daniel is no longer in the hallway.
+Question:
+12. Is Daniel in the hallway?
+Answer: no
+
+Context sentences:
+13. John moved to the bedroom.
+14. John journeyed to the bathroom.
+Question:
+15. Is Daniel in the hallway?
+Answer: no

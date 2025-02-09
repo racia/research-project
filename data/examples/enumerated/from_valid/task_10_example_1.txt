@@ -1,0 +1,34 @@
+Context sentences:
+1. Fred moved to the bedroom.
+2. Julie is in the school.
+Question:
+3. Is Fred in the office?
+Answer: no
+
+Context sentences:
+4. Fred is in the school.
+5. Mary travelled to the kitchen.
+Question:
+6. Is Julie in the school?
+Answer: yes
+
+Context sentences:
+7. Mary is in the office.
+8. Fred moved to the bedroom.
+Question:
+9. Is Fred in the bedroom?
+Answer: yes
+
+Context sentences:
+10. Bill is either in the cinema or the bedroom.
+11. Fred is in the school.
+Question:
+12. Is Fred in the office?
+Answer: no
+
+Context sentences:
+13. Fred is in the bedroom.
+14. Fred is either in the kitchen or the office.
+Question:
+15. Is Bill in the kitchen?
+Answer: no

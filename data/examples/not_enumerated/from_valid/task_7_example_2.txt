@@ -1,0 +1,34 @@
+Context sentences:
+Mary moved to the bathroom.
+Mary picked up the milk there.
+Question:
+How many objects is Mary carrying?
+Answer: one
+
+Context sentences:
+Mary discarded the milk.
+Sandra moved to the office.
+Question:
+How many objects is Mary carrying?
+Answer: none
+
+Context sentences:
+Mary got the milk there.
+Mary put down the milk.
+Question:
+How many objects is Mary carrying?
+Answer: none
+
+Context sentences:
+Mary grabbed the milk there.
+John travelled to the garden.
+Question:
+How many objects is Mary carrying?
+Answer: one
+
+Context sentences:
+Mary journeyed to the hallway.
+Daniel went back to the office.
+Question:
+How many objects is Mary carrying?
+Answer: one

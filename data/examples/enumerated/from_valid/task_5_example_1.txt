@@ -1,0 +1,86 @@
+Context sentences:
+1. Mary travelled to the hallway.
+2. Mary went back to the bathroom.
+3. Bill journeyed to the bathroom.
+4. Jeff went to the office.
+5. Mary went to the hallway.
+6. Jeff grabbed the football there.
+7. Jeff grabbed the milk there.
+8. Mary went back to the garden.
+9. Bill moved to the garden.
+10. Jeff left the football there.
+11. Jeff put down the milk.
+12. Jeff moved to the garden.
+13. Fred went back to the garden.
+14. Bill went back to the hallway.
+15. Bill journeyed to the bathroom.
+16. Bill moved to the kitchen.
+17. Bill moved to the bathroom.
+18. Mary journeyed to the kitchen.
+19. Fred went back to the kitchen.
+20. Jeff travelled to the hallway.
+21. Jeff travelled to the garden.
+22. Fred moved to the garden.
+23. Bill moved to the office.
+24. Bill got the football there.
+25. Bill moved to the hallway.
+26. Fred went back to the office.
+27. Fred travelled to the bathroom.
+28. Fred went to the office.
+29. Fred journeyed to the kitchen.
+30. Bill dropped the football.
+31. Bill grabbed the football there.
+32. Bill travelled to the bathroom.
+33. Bill travelled to the bedroom.
+34. Bill went back to the bathroom.
+35. Mary went back to the office.
+36. Bill left the football.
+37. Mary grabbed the milk there.
+38. Fred moved to the bedroom.
+39. Jeff travelled to the bedroom.
+40. Bill went to the hallway.
+41. Jeff got the apple there.
+42. Jeff passed the apple to Fred.
+Question:
+43. What did Jeff give to Fred?
+Answer: apple
+
+Context sentences:
+44. Mary left the milk.
+45. Mary went to the bathroom.
+Question:
+46. Who did Jeff give the apple to?
+Answer: Fred
+
+Context sentences:
+47. Fred dropped the apple.
+48. Mary grabbed the football there.
+Question:
+49. Who did Jeff give the apple to?
+Answer: Fred
+
+Context sentences:
+50. Fred picked up the apple there.
+51. Jeff travelled to the bathroom.
+52. Mary moved to the kitchen.
+53. Mary discarded the football.
+54. Bill moved to the office.
+55. Jeff journeyed to the hallway.
+56. Mary grabbed the football there.
+57. Fred dropped the apple there.
+58. Mary journeyed to the bathroom.
+59. Fred went to the kitchen.
+60. Bill grabbed the milk there.
+61. Mary journeyed to the office.
+62. Mary gave the football to Bill.
+63. Bill gave the football to Mary.
+Question:
+64. Who did Bill give the football to?
+Answer: Mary
+
+Context sentences:
+65. Jeff journeyed to the garden.
+66. Mary handed the football to Bill.
+Question:
+67. Who received the football?
+Answer: Bill

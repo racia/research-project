@@ -1,0 +1,13 @@
+Context sentences:
+1. The bedroom is east of the bathroom.
+2. The office is west of the bathroom.
+Question:
+3. What is east of the bathroom?
+Answer: bedroom
+
+Context sentences:
+4. The kitchen is north of the hallway.
+5. The hallway is north of the garden.
+Question:
+6. What is west of the hallway?
+Answer: not mentioned

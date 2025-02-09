@@ -1,0 +1,34 @@
+Context sentences:
+John and Mary travelled to the kitchen.
+Following that they travelled to the bathroom.
+Question:
+Where is Mary?
+Answer: bathroom
+
+Context sentences:
+Daniel and Sandra went back to the kitchen.
+After that they went back to the office.
+Question:
+Where is Mary?
+Answer: bathroom
+
+Context sentences:
+Mary and Sandra went back to the bedroom.
+Then they travelled to the garden.
+Question:
+Where is Mary?
+Answer: garden
+
+Context sentences:
+John and Daniel journeyed to the hallway.
+Afterwards they moved to the office.
+Question:
+Where is John?
+Answer: office
+
+Context sentences:
+Sandra and John travelled to the hallway.
+Then they went to the kitchen.
+Question:
+Where is John?
+Answer: kitchen

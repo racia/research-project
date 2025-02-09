@@ -1,0 +1,34 @@
+Context sentences:
+Sandra moved to the office.
+Then she travelled to the garden.
+Question:
+Where is Sandra?
+Answer: garden
+
+Context sentences:
+Sandra moved to the kitchen.
+Afterwards she went to the office.
+Question:
+Where is Sandra?
+Answer: office
+
+Context sentences:
+Mary went to the garden.
+Afterwards she went to the office.
+Question:
+Where is Sandra?
+Answer: office
+
+Context sentences:
+Mary journeyed to the kitchen.
+Following that she moved to the hallway.
+Question:
+Where is Mary?
+Answer: hallway
+
+Context sentences:
+Daniel moved to the bathroom.
+Then he journeyed to the garden.
+Question:
+Where is Mary?
+Answer: hallway

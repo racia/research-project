@@ -1,0 +1,42 @@
+Context sentences:
+1. Mary travelled to the garden.
+2. Mary went to the kitchen.
+3. Mary moved to the garden.
+4. Sandra journeyed to the hallway.
+5. John journeyed to the bathroom.
+6. Daniel went back to the garden.
+7. Mary travelled to the bedroom.
+8. Sandra journeyed to the garden.
+9. John took the football there.
+10. John moved to the hallway.
+Question:
+11. What is John carrying?
+Answer: football
+
+Context sentences:
+12. John put down the football.
+13. Sandra journeyed to the kitchen.
+Question:
+14. What is John carrying?
+Answer: nothing
+
+Context sentences:
+15. John grabbed the apple there.
+16. John grabbed the football there.
+Question:
+17. What is John carrying?
+Answer: football, apple
+
+Context sentences:
+18. Mary moved to the office.
+19. John moved to the bedroom.
+Question:
+20. What is John carrying?
+Answer: football, apple
+
+Context sentences:
+21. John dropped the football.
+22. Sandra travelled to the bathroom.
+Question:
+23. What is John carrying?
+Answer: apple

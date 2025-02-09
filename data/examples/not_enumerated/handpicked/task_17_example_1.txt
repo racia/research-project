@@ -1,0 +1,34 @@
+Context sentences:
+The pink rectangle is above the blue square.
+The yellow square is above the pink rectangle.
+Question:
+Is the yellow square to the left of the blue square?
+Answer: no
+
+Question:
+Is the blue square below the yellow square?
+Answer: yes
+
+Question:
+Is the blue square to the right of the yellow square?
+Answer: no
+
+Question:
+Is the yellow square to the right of the blue square?
+Answer: no
+
+Question:
+Is the blue square above the yellow square?
+Answer: no
+
+Question:
+Is the blue square to the left of the yellow square?
+Answer: no
+
+Question:
+Is the yellow square below the blue square?
+Answer: no
+
+Question:
+Is the blue square above the yellow square?
+Answer: no

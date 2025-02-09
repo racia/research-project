@@ -1,0 +1,80 @@
+Context sentences:
+1. John moved to the kitchen.
+2. Daniel travelled to the office.
+3. Daniel moved to the kitchen.
+4. Mary moved to the kitchen.
+5. Sandra journeyed to the bedroom.
+6. John went to the office.
+7. Daniel travelled to the garden.
+8. Daniel picked up the milk.
+9. Mary journeyed to the garden.
+10. Sandra moved to the garden.
+11. John journeyed to the garden.
+12. John travelled to the office.
+13. Daniel travelled to the kitchen.
+14. John went back to the garden.
+15. Daniel travelled to the bedroom.
+16. John travelled to the kitchen.
+17. Daniel got the apple there.
+18. Daniel left the apple.
+19. Daniel grabbed the apple.
+20. Daniel left the apple.
+21. Sandra travelled to the hallway.
+22. Mary moved to the office.
+23. Mary took the football.
+24. Mary put down the football.
+25. Daniel picked up the apple.
+26. Daniel dropped the apple there.
+27. Daniel journeyed to the bathroom.
+28. John went to the bathroom.
+29. Mary journeyed to the bedroom.
+30. Daniel dropped the milk there.
+Question:
+31. Where was the milk before the bathroom?
+Answer: bedroom
+
+Context sentences:
+32. Daniel moved to the garden.
+33. John moved to the kitchen.
+Question:
+34. Where was the milk before the bedroom?
+Answer: kitchen
+
+Context sentences:
+35. Daniel went to the hallway.
+36. John went back to the garden.
+Question:
+37. Where was the milk before the bathroom?
+Answer: bedroom
+
+Context sentences:
+38. Daniel moved to the office.
+39. John travelled to the bedroom.
+40. Mary grabbed the apple.
+41. Mary went to the office.
+42. Daniel went to the kitchen.
+43. Mary got the football.
+44. Sandra travelled to the kitchen.
+45. John journeyed to the garden.
+46. Mary went to the garden.
+47. Sandra went to the bedroom.
+48. Sandra travelled to the garden.
+49. John went to the kitchen.
+50. Mary went to the hallway.
+51. Daniel travelled to the hallway.
+52. Daniel went back to the office.
+53. Mary went back to the kitchen.
+54. Mary moved to the bathroom.
+55. Mary got the milk.
+56. Mary put down the milk.
+57. Mary left the football.
+Question:
+58. Where was the football before the bathroom?
+Answer: kitchen
+
+Context sentences:
+59. Daniel went back to the bedroom.
+60. Sandra journeyed to the bathroom.
+Question:
+61. Where was the football before the hallway?
+Answer: garden

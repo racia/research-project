@@ -1,0 +1,34 @@
+Context sentences:
+John went to the kitchen.
+John journeyed to the office.
+Question:
+Where is John?
+Answer: office
+
+Context sentences:
+Daniel travelled to the bedroom.
+John journeyed to the kitchen.
+Question:
+Where is John?
+Answer: kitchen
+
+Context sentences:
+John journeyed to the office.
+Mary went back to the bathroom.
+Question:
+Where is Mary?
+Answer: bathroom
+
+Context sentences:
+John journeyed to the garden.
+Sandra went to the bathroom.
+Question:
+Where is John?
+Answer: garden
+
+Context sentences:
+Sandra journeyed to the office.
+John went back to the bathroom.
+Question:
+Where is Sandra?
+Answer: office

@@ -1,0 +1,87 @@
+Context sentences:
+John moved to the kitchen.
+Daniel travelled to the office.
+Daniel moved to the kitchen.
+Mary moved to the kitchen.
+Sandra journeyed to the bedroom.
+John went to the office.
+Daniel travelled to the garden.
+Daniel picked up the milk.
+Mary journeyed to the garden.
+Sandra moved to the garden.
+John journeyed to the garden.
+John travelled to the office.
+Daniel travelled to the kitchen.
+John went back to the garden.
+Daniel travelled to the bedroom.
+John travelled to the kitchen.
+Daniel got the apple there.
+Daniel left the apple.
+Daniel grabbed the apple.
+Daniel left the apple.
+Sandra travelled to the hallway.
+Mary moved to the office.
+Mary took the football.
+Mary put down the football.
+Daniel picked up the apple.
+Daniel dropped the apple there.
+Daniel journeyed to the bathroom.
+John went to the bathroom.
+Mary journeyed to the bedroom.
+Daniel dropped the milk there.
+Question:
+Where was the milk before the bathroom?
+Answer: bedroom
+
+Context sentences:
+Daniel moved to the garden.
+John moved to the kitchen.
+Question:
+Where was the milk before the bedroom?
+Answer: kitchen
+
+Context sentences:
+Daniel went to the hallway.
+John went back to the garden.
+Question:
+Where was the milk before the bathroom?
+Answer: bedroom
+
+Context sentences:
+Daniel moved to the office.
+John travelled to the bedroom.
+Mary grabbed the apple.
+Mary went to the office.
+Daniel went to the kitchen.
+Mary got the football.
+Sandra travelled to the kitchen.
+John journeyed to the garden.
+Mary went to the garden.
+Sandra went to the bedroom.
+Sandra travelled to the garden.
+John went to the kitchen.
+Mary went to the hallway.
+Daniel travelled to the hallway.
+Daniel went back to the office.
+Mary went back to the kitchen.
+Mary moved to the bathroom.
+Mary got the milk.
+Mary put down the milk.
+Mary left the football.
+Question:
+Where was the football before the bathroom?
+Answer: kitchen
+
+Context sentences:
+Daniel went back to the bedroom.
+Sandra journeyed to the bathroom.
+Question:
+Where was the football before the hallway?
+Answer: garden
+
+Context sentences:
+Sandra picked up the bread.
+John went to the garden.
+Question:
+Where was the bread before the bathroom?
+Answer: not mentioned

@@ -1,0 +1,24 @@
+Context sentences:
+Mice are afraid of wolves.
+Wolves are afraid of cats.
+Cats are afraid of mice.
+Emily is a wolf.
+Sheep are afraid of cats.
+Winona is a cat.
+Jessica is a sheep.
+Gertrude is a cat.
+Question:
+What is emily afraid of?
+Answer: cat
+
+Question:
+What is emily afraid of?
+Answer: cat
+
+Question:
+What is jessica afraid of?
+Answer: cat
+
+Question:
+What is emily afraid of?
+Answer: cat

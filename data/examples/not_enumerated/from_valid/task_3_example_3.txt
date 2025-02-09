@@ -1,0 +1,70 @@
+Context sentences:
+Sandra took the football.
+Sandra travelled to the garden.
+Mary journeyed to the office.
+Mary went to the bathroom.
+Sandra put down the football.
+Sandra went back to the bathroom.
+Daniel went to the garden.
+John went to the hallway.
+Sandra journeyed to the hallway.
+Daniel got the football there.
+John got the apple.
+Mary went back to the kitchen.
+Daniel discarded the football there.
+John left the apple.
+Sandra journeyed to the bedroom.
+John grabbed the apple.
+John moved to the kitchen.
+John discarded the apple.
+Mary grabbed the apple.
+Daniel got the football.
+Daniel went to the kitchen.
+Daniel went back to the bathroom.
+Question:
+Where was the football before the bathroom?
+Answer: kitchen
+
+Context sentences:
+Sandra went back to the kitchen.
+Daniel dropped the football.
+Question:
+Where was the football before the bathroom?
+Answer: kitchen
+
+Context sentences:
+Daniel took the football there.
+Mary left the apple.
+Daniel journeyed to the kitchen.
+John journeyed to the hallway.
+Daniel picked up the apple.
+John went back to the garden.
+Daniel dropped the football.
+Daniel travelled to the hallway.
+John went to the bathroom.
+Daniel went to the kitchen.
+Daniel grabbed the football.
+John travelled to the garden.
+Daniel went back to the bedroom.
+Sandra journeyed to the bedroom.
+Daniel journeyed to the garden.
+Daniel moved to the office.
+Daniel dropped the football there.
+John journeyed to the bedroom.
+Question:
+Where was the football before the garden?
+Answer: bedroom
+
+Context sentences:
+Daniel left the apple.
+Daniel went back to the garden.
+Question:
+Where was the apple before the kitchen?
+Answer: hallway
+
+Context sentences:
+Mary went to the office.
+Daniel travelled to the office.
+Question:
+Where was the apple before the bedroom?
+Answer: kitchen

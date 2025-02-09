@@ -1,0 +1,34 @@
+Context sentences:
+1. Sandra and John travelled to the office.
+2. Daniel and John journeyed to the garden.
+Question:
+3. Where is John?
+Answer: garden
+
+Context sentences:
+4. John and Daniel went to the bathroom.
+5. John and Sandra moved to the garden.
+Question:
+6. Where is Daniel?
+Answer: bathroom
+
+Context sentences:
+7. Sandra and Mary went to the kitchen.
+8. John and Mary travelled to the office.
+Question:
+9. Where is Sandra?
+Answer: kitchen
+
+Context sentences:
+10. John and Sandra went to the bedroom.
+11. Daniel and John went to the hallway.
+Question:
+12. Where is Daniel?
+Answer: hallway
+
+Context sentences:
+13. Daniel and Sandra travelled to the kitchen.
+14. John and Sandra journeyed to the office.
+Question:
+15. Where is John?
+Answer: office

@@ -1,0 +1,34 @@
+Context sentences:
+Daniel journeyed to the office.
+Daniel picked up the football there.
+Question:
+Is Daniel in the kitchen?
+Answer: no
+
+Context sentences:
+Daniel put down the football.
+Daniel travelled to the bathroom.
+Question:
+Is Daniel in the garden?
+Answer: no
+
+Context sentences:
+John took the milk there.
+John went to the office.
+Question:
+Is John in the hallway?
+Answer: no
+
+Context sentences:
+Daniel went to the kitchen.
+John discarded the milk.
+Question:
+Is John in the garden?
+Answer: no
+
+Context sentences:
+Daniel journeyed to the bedroom.
+Mary went back to the bathroom.
+Question:
+Is Daniel in the hallway?
+Answer: no

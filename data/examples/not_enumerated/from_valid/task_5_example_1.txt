@@ -1,0 +1,86 @@
+Context sentences:
+Mary travelled to the hallway.
+Mary went back to the bathroom.
+Bill journeyed to the bathroom.
+Jeff went to the office.
+Mary went to the hallway.
+Jeff grabbed the football there.
+Jeff grabbed the milk there.
+Mary went back to the garden.
+Bill moved to the garden.
+Jeff left the football there.
+Jeff put down the milk.
+Jeff moved to the garden.
+Fred went back to the garden.
+Bill went back to the hallway.
+Bill journeyed to the bathroom.
+Bill moved to the kitchen.
+Bill moved to the bathroom.
+Mary journeyed to the kitchen.
+Fred went back to the kitchen.
+Jeff travelled to the hallway.
+Jeff travelled to the garden.
+Fred moved to the garden.
+Bill moved to the office.
+Bill got the football there.
+Bill moved to the hallway.
+Fred went back to the office.
+Fred travelled to the bathroom.
+Fred went to the office.
+Fred journeyed to the kitchen.
+Bill dropped the football.
+Bill grabbed the football there.
+Bill travelled to the bathroom.
+Bill travelled to the bedroom.
+Bill went back to the bathroom.
+Mary went back to the office.
+Bill left the football.
+Mary grabbed the milk there.
+Fred moved to the bedroom.
+Jeff travelled to the bedroom.
+Bill went to the hallway.
+Jeff got the apple there.
+Jeff passed the apple to Fred.
+Question:
+What did Jeff give to Fred?
+Answer: apple
+
+Context sentences:
+Mary left the milk.
+Mary went to the bathroom.
+Question:
+Who did Jeff give the apple to?
+Answer: Fred
+
+Context sentences:
+Fred dropped the apple.
+Mary grabbed the football there.
+Question:
+Who did Jeff give the apple to?
+Answer: Fred
+
+Context sentences:
+Fred picked up the apple there.
+Jeff travelled to the bathroom.
+Mary moved to the kitchen.
+Mary discarded the football.
+Bill moved to the office.
+Jeff journeyed to the hallway.
+Mary grabbed the football there.
+Fred dropped the apple there.
+Mary journeyed to the bathroom.
+Fred went to the kitchen.
+Bill grabbed the milk there.
+Mary journeyed to the office.
+Mary gave the football to Bill.
+Bill gave the football to Mary.
+Question:
+Who did Bill give the football to?
+Answer: Mary
+
+Context sentences:
+Jeff journeyed to the garden.
+Mary handed the football to Bill.
+Question:
+Who received the football?
+Answer: Bill

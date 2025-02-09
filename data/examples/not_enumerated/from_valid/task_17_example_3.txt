@@ -1,0 +1,34 @@
+Context sentences:
+The yellow square is to the right of the blue square.
+The yellow square is below the red sphere.
+Question:
+Is the red sphere below the blue square?
+Answer: no
+
+Question:
+Is the red sphere below the blue square?
+Answer: no
+
+Question:
+Is the red sphere to the left of the blue square?
+Answer: no
+
+Question:
+Is the red sphere to the right of the blue square?
+Answer: yes
+
+Question:
+Is the red sphere above the blue square?
+Answer: yes
+
+Question:
+Is the red sphere above the blue square?
+Answer: yes
+
+Question:
+Is the red sphere below the blue square?
+Answer: no
+
+Question:
+Is the blue square above the red sphere?
+Answer: no

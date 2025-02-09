@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Union
 
 from settings.utils import Enumerate
 
@@ -36,9 +37,20 @@ class Wrapper:
 
 
 @dataclass
+class Examples:
+    add: bool
+    enumerated: bool
+    handpicked: bool
+    not_mentioned: bool
+    number: int
+    wrapper: str
+
+
+@dataclass
 class Prompt:
     paths: list[str]
     wrapper: dict[Wrapper, str]
+    examples: dict[Examples, Union[bool, int, str]]
 
 
 @dataclass

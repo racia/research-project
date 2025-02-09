@@ -144,7 +144,7 @@ def run_model(cfg: DictConfig) -> None:
             print(f"Starting to query with the prompt: {prompt_name}")
             print(f"Prompt path: {prompt_path}", end="\n\n")
             print(
-                f"Redirecting the system output to the log file: {log_file_path}",
+                f"Redirecting the system output to: {log_file_path}",
                 flush=True,
             )
 
@@ -184,10 +184,17 @@ def run_model(cfg: DictConfig) -> None:
             setting.model.soft_match_accuracies_per_task = []
 
             for task_id, task in sorted(tasks.items()):
+                if cfg.prompt.examples.add:
+                    setting.prompt.add_examples(
+                        task_id=task_id, example_config=cfg.prompt.examples
+                    )
+                else:
+                    setting.prompt.use_original_prompt()
+
                 task_result = setting.iterate_task(
                     task_id=task_id,
                     task_data=task,
-                    prompt_name=f"'{prompt_name}' {prompt_num}/{len(prompt_name)}",
+                    prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.prompt.paths)}",
                 )
                 saver.save_output(
                     data=task_result,

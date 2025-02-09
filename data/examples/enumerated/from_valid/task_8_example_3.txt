@@ -1,0 +1,34 @@
+Context sentences:
+1. John picked up the milk there.
+2. Mary went back to the bedroom.
+Question:
+3. What is John carrying?
+Answer: milk
+
+Context sentences:
+4. John dropped the milk.
+5. Sandra went back to the bathroom.
+Question:
+6. What is John carrying?
+Answer: nothing
+
+Context sentences:
+7. John went back to the office.
+8. Daniel travelled to the hallway.
+Question:
+9. What is John carrying?
+Answer: nothing
+
+Context sentences:
+10. John travelled to the garden.
+11. John got the milk there.
+Question:
+12. What is John carrying?
+Answer: milk
+
+Context sentences:
+13. Daniel picked up the apple there.
+14. John moved to the bathroom.
+Question:
+15. What is John carrying?
+Answer: milk
