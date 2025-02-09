@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 from pathlib import Path
 
-from settings.baseline.config.baseline_config import Enumerate, Wrapper
+from data.TaskExamples import TaskExample, TaskExamples, Task
+from settings.baseline.config.baseline_config import Enumerate, Wrapper, Examples
 from settings.utils import structure_part
 
 
@@ -51,6 +52,8 @@ class Prompt:
             self.text = self.read_prompt_from_file(prompt_path)
         else:
             self.text = "At some point, here will be a default prompt."
+
+        self.original_text = self.text
 
         self.wrapper = wrapper
 
@@ -132,3 +135,69 @@ class Prompt:
         with open(Path(file_path), "r", encoding="UTF-8") as file:
             text = file.read().strip()
         return text
+
+    @staticmethod
+    def format_example(example: Task, number: int, wrapper: str) -> str:
+        """
+        Format the example with the wrapper.
+
+        :param example: the example that should be wrapped
+        :param number: the number of the example, if 0, no enumeration is added
+        :param wrapper: the wrapper for the example
+
+        :return: the formatted example
+        """
+        # if there is only one examples, no enumeration is needed
+        number = f" {number}" if number > 1 else ""
+        wrapped_example = wrapper.format(number=number, example=example)
+
+        return f"\n\n{wrapped_example}"
+
+    def use_original_prompt(self):
+        """
+        Use the original prompt.
+        """
+        self.text = self.original_text
+
+    def add_examples(self, task_id: int, example_config: Examples) -> None:
+        """
+        Adds one or multiple examples to the prompt under the hood
+        but also returns the prompt with the examples.
+
+        :param task_id: the task id
+        :param example_config: the example configuration with
+                        - the number of examples,
+                        - if they are handpicked,
+                        - if they should be enumerated,
+                        - the example wrapper
+        """
+        self.use_original_prompt()
+
+        if example_config.number == 1:
+            example = TaskExample(
+                number=task_id,
+                to_enumerate=example_config.enumerated,
+                handpicked=example_config.handpicked,
+                not_mentioned=example_config.not_mentioned,
+            )
+            self.text += self.format_example(
+                example=example, number=0, wrapper=example_config.wrapper
+            )
+        else:
+            if example_config.handpicked:
+                raise NotImplementedError(
+                    "Getting multiple handpicked examples is not implemented, use TaskExample class."
+                )
+            counter = 1
+            for example in TaskExamples(
+                number=task_id,
+                to_enumerate=example_config.enumerated,
+                handpicked=example_config.handpicked,
+                not_mentioned=example_config.not_mentioned,
+            ):
+                self.text += self.format_example(
+                    example=example, number=counter, wrapper=example_config.wrapper
+                )
+                counter += 1
+                if counter > example_config.number:
+                    break

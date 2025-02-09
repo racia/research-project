@@ -1,0 +1,25 @@
+Context sentences:
+1. The box is bigger than the box of chocolates.
+2. The chest is bigger than the container.
+3. The suitcase fits inside the chest.
+4. The container fits inside the suitcase.
+5. The container is bigger than the box of chocolates.
+Question:
+6. Does the chest fit in the box of chocolates?
+Answer: no
+
+Question:
+7. Is the box of chocolates bigger than the chest?
+Answer: no
+
+Question:
+8. Does the chest fit in the container?
+Answer: no
+
+Question:
+9. Is the box of chocolates bigger than the chest?
+Answer: no
+
+Question:
+10. Is the chest bigger than the container?
+Answer: yes

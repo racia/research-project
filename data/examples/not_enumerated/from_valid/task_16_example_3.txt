@@ -1,0 +1,13 @@
+Context sentences:
+Greg is a frog.
+Brian is a rhino.
+Bernhard is a rhino.
+Julius is a lion.
+Julius is yellow.
+Greg is white.
+Bernhard is gray.
+Lily is a frog.
+Brian is gray.
+Question:
+What color is Lily?
+Answer: white

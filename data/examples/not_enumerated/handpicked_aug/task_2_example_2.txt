@@ -1,0 +1,47 @@
+Context sentences:
+Sandra journeyed to the bathroom.
+Daniel picked up the apple there.
+Daniel journeyed to the kitchen.
+Daniel put down the apple.
+Question:
+Where is the apple?
+Answer: kitchen
+
+Context sentences:
+Daniel grabbed the apple there.
+Sandra moved to the bedroom.
+Daniel went back to the hallway.
+Sandra went back to the hallway.
+Question:
+Where is the apple?
+Answer: hallway
+
+Context sentences:
+Sandra went to the office.
+Daniel took the football there.
+Mary moved to the office.
+Daniel went to the garden.
+Question:
+Where is the football?
+Answer: garden
+
+Context sentences:
+Daniel put down the football.
+Sandra journeyed to the kitchen.
+Question:
+Where is the football?
+Answer: garden
+
+Context sentences:
+Daniel grabbed the football there.
+Daniel discarded the football.
+Question:
+Where is the football?
+Answer: garden
+
+Context sentences:
+Mary travelled to the garden.
+Sandra went to the office.
+Question:
+Where is the banana?
+Answer: not mentioned

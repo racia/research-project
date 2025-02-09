@@ -6,5 +6,5 @@ Please answer questions in one word and to your best abilities.
 As a basis for your answer, use only the context sentences provided.
 Aim to give a specific and objective answer rather than a subjective one.
 For example, 'kitchen' as a specific location is better than 'there'.
+If you need to make an assumption, please make it as logical as possible.
 You might need to inspect the whole conversation history to find the correct answer.
-If no relevant information was provided, please answer with "not mentioned".

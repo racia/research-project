@@ -1,0 +1,46 @@
+Context sentences:
+1. Mary travelled to the kitchen.
+2. Sandra moved to the office.
+3. Mary went to the hallway.
+4. John went to the bathroom.
+5. Daniel moved to the garden.
+6. Sandra got the apple there.
+7. John journeyed to the kitchen.
+8. Sandra dropped the apple.
+Question:
+9. Where is the apple?
+Answer: office
+
+Context sentences:
+10. Mary went to the bathroom.
+11. Mary went back to the office.
+Question:
+12. Where is the apple?
+Answer: office
+
+Context sentences:
+13. Mary grabbed the apple there.
+14. John went back to the bedroom.
+15. John moved to the hallway.
+16. John journeyed to the garden.
+17. Mary dropped the apple there.
+18. Mary got the apple there.
+19. Sandra travelled to the bathroom.
+20. Mary put down the apple.
+Question:
+21. Where is the apple?
+Answer: office
+
+Context sentences:
+22. Mary travelled to the hallway.
+23. Daniel went to the office.
+Question:
+24. Where is the apple?
+Answer: office
+
+Context sentences:
+25. Sandra journeyed to the bedroom.
+26. Sandra got the milk there.
+Question:
+27. Where is the apple?
+Answer: office

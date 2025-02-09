@@ -1,0 +1,70 @@
+Context sentences:
+1. Sandra took the football.
+2. Sandra travelled to the garden.
+3. Mary journeyed to the office.
+4. Mary went to the bathroom.
+5. Sandra put down the football.
+6. Sandra went back to the bathroom.
+7. Daniel went to the garden.
+8. John went to the hallway.
+9. Sandra journeyed to the hallway.
+10. Daniel got the football there.
+11. John got the apple.
+12. Mary went back to the kitchen.
+13. Daniel discarded the football there.
+14. John left the apple.
+15. Sandra journeyed to the bedroom.
+16. John grabbed the apple.
+17. John moved to the kitchen.
+18. John discarded the apple.
+19. Mary grabbed the apple.
+20. Daniel got the football.
+21. Daniel went to the kitchen.
+22. Daniel went back to the bathroom.
+Question:
+23. Where was the football before the bathroom?
+Answer: kitchen
+
+Context sentences:
+24. Sandra went back to the kitchen.
+25. Daniel dropped the football.
+Question:
+26. Where was the football before the bathroom?
+Answer: kitchen
+
+Context sentences:
+27. Daniel took the football there.
+28. Mary left the apple.
+29. Daniel journeyed to the kitchen.
+30. John journeyed to the hallway.
+31. Daniel picked up the apple.
+32. John went back to the garden.
+33. Daniel dropped the football.
+34. Daniel travelled to the hallway.
+35. John went to the bathroom.
+36. Daniel went to the kitchen.
+37. Daniel grabbed the football.
+38. John travelled to the garden.
+39. Daniel went back to the bedroom.
+40. Sandra journeyed to the bedroom.
+41. Daniel journeyed to the garden.
+42. Daniel moved to the office.
+43. Daniel dropped the football there.
+44. John journeyed to the bedroom.
+Question:
+45. Where was the football before the garden?
+Answer: bedroom
+
+Context sentences:
+46. Daniel left the apple.
+47. Daniel went back to the garden.
+Question:
+48. Where was the apple before the kitchen?
+Answer: hallway
+
+Context sentences:
+49. Mary went to the office.
+50. Daniel travelled to the office.
+Question:
+51. Where was the apple before the bedroom?
+Answer: kitchen

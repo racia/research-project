@@ -1,5 +1,0 @@
-Context sentences:
-1. Greg is a frog.
-Question:
-10. What color is Lily?
-Answer: white

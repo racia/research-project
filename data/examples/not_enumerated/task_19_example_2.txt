@@ -1,5 +1,0 @@
-Context sentences:
-1. The kitchen is west of the bathroom.
-Question:
-6. How do you go from the bedroom to the office?
-Answer: south, east

@@ -1,0 +1,40 @@
+Context sentences:
+1. Mary went back to the office.
+2. John journeyed to the garden.
+3. Daniel went back to the office.
+4. Daniel went back to the bathroom.
+5. Mary journeyed to the bedroom.
+6. Sandra moved to the hallway.
+7. Mary picked up the football there.
+8. John journeyed to the bathroom.
+Question:
+9. How many objects is Mary carrying?
+Answer: one
+
+Context sentences:
+10. John went to the kitchen.
+11. Mary left the football.
+Question:
+12. How many objects is Mary carrying?
+Answer: none
+
+Context sentences:
+13. John grabbed the milk there.
+14. Sandra moved to the garden.
+Question:
+15. How many objects is John carrying?
+Answer: one
+
+Context sentences:
+16. John discarded the milk.
+17. Mary picked up the football there.
+Question:
+18. How many objects is John carrying?
+Answer: none
+
+Context sentences:
+19. Sandra went to the hallway.
+20. John picked up the milk there.
+Question:
+21. How many objects is John carrying?
+Answer: one

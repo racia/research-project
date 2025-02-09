@@ -1,0 +1,59 @@
+Context sentences:
+Sumit is tired.
+Question:
+Where will sumit go?
+Answer: bedroom
+
+Context sentences:
+Jason is tired.
+Question:
+Where will jason go?
+Answer: bedroom
+
+Context sentences:
+Yann is hungry.
+Question:
+Where will yann go?
+Answer: kitchen
+
+Context sentences:
+Antoine is tired.
+Question:
+Where will antoine go?
+Answer: bedroom
+
+Context sentences:
+Jason went back to the bedroom.
+Question:
+Why did jason go to the bedroom?
+Answer: tired
+
+Context sentences:
+Jason picked up the pajamas there.
+Question:
+Why did jason get the pajamas?
+Answer: tired
+
+Context sentences:
+Yann journeyed to the kitchen.
+Question:
+Why did yann go to the kitchen?
+Answer: hungry
+
+Context sentences:
+Antoine moved to the bedroom.
+Question:
+Why did antoine go to the bedroom?
+Answer: tired
+
+Context sentences:
+Sumit went back to the bedroom.
+Question:
+Why did sumit go to the bedroom?
+Answer: tired
+
+Context sentences:
+Yann got the apple there.
+Question:
+Why did yann get the apple?
+Answer: hungry

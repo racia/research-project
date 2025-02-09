@@ -1,0 +1,38 @@
+Context sentences:
+John and Daniel moved to the bathroom.
+Mary and John went to the kitchen.
+Question:
+Where is John?
+Answer: kitchen
+
+Context sentences:
+Mary and John journeyed to the hallway.
+Sandra and Daniel travelled to the garden.
+Question:
+Where is Mary?
+Answer: hallway
+
+Context sentences:
+Sandra and Daniel went to the office.
+Mary and John went back to the bedroom.
+Question:
+Where is Daniel?
+Answer: office
+
+Context sentences:
+John and Daniel went back to the hallway.
+Mary and Daniel journeyed to the bathroom.
+Question:
+Where is Daniel?
+Answer: bathroom
+
+Context sentences:
+Sandra and Daniel moved to the bedroom.
+Daniel and Sandra moved to the garden.
+Question:
+Where is Daniel?
+Answer: garden
+
+Question:
+Where is Lily?
+Answer: not mentioned

@@ -1,0 +1,6 @@
+Context sentences:
+1. The office is south of the bathroom.
+2. The office is north of the bedroom.
+Question:
+3. What is the bedroom south of?
+Answer: office

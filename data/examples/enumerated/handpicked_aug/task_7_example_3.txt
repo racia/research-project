@@ -1,0 +1,43 @@
+Context sentences:
+1. Mary moved to the garden.
+2. Mary moved to the kitchen.
+3. John grabbed the football there.
+4. John handed the football to Mary.
+Question:
+5. How many objects is John carrying?
+Answer: none
+
+Context sentences:
+6. Mary put down the football.
+7. Mary took the football there.
+Question:
+8. How many objects is Mary carrying?
+Answer: one
+
+Context sentences:
+9. John journeyed to the garden.
+10. Sandra got the apple there.
+Question:
+11. How many objects is John carrying?
+Answer: none
+
+Context sentences:
+12. Sandra went back to the bedroom.
+13. Mary moved to the garden.
+Question:
+14. How many objects is Sandra carrying?
+Answer: one
+
+Context sentences:
+15. Sandra gave the apple to Daniel.
+16. Daniel dropped the apple.
+Question:
+17. How many objects is Daniel carrying?
+Answer: none
+
+Context sentences:
+18. Lily went to the hallway.
+19. Lily travelled to the office.
+Question:
+20. How many objects is Lily carrying?
+Answer: not mentioned

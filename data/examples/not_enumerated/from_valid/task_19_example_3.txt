@@ -1,0 +1,9 @@
+Context sentences:
+The bedroom is south of the garden.
+The hallway is west of the bathroom.
+The kitchen is east of the garden.
+The bathroom is north of the kitchen.
+The office is south of the kitchen.
+Question:
+How do you go from the garden to the bathroom?
+Answer: east, north

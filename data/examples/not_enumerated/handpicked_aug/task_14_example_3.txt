@@ -1,0 +1,43 @@
+Context sentences:
+Bill went back to the cinema yesterday.
+Mary journeyed to the bedroom yesterday.
+Mary travelled to the kitchen this morning.
+Yesterday Fred moved to the school.
+Question:
+Where was Mary before the kitchen?
+Answer: bedroom
+
+Context sentences:
+Julie went to the kitchen this morning.
+Julie journeyed to the school yesterday.
+Question:
+Where was Julie before the kitchen?
+Answer: school
+
+Context sentences:
+This morning Bill travelled to the school.
+Fred went to the office this morning.
+Question:
+Where was Mary before the kitchen?
+Answer: bedroom
+
+Context sentences:
+Fred moved to the office this evening.
+This afternoon Fred went to the kitchen.
+Question:
+Where was Fred before the office?
+Answer: kitchen
+
+Context sentences:
+This afternoon Mary travelled to the school.
+Julie moved to the office this afternoon.
+Question:
+Where was Julie before the office?
+Answer: kitchen
+
+Context sentences:
+Yesterday Lily went to the school.
+This evening Lily journeyed to the cinema.
+Question:
+Where was Lily before the school?
+Answer: not mentioned

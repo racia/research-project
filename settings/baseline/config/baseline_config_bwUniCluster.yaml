@@ -43,6 +43,15 @@ prompt:
     question: |
       Now, answer the following question:
       {question}
+  examples:
+    to_add: True
+    enumerated: True
+    handpicked: True
+    not_mentioned: False
+    number: 1
+    wrapper: |
+      *EXAMPLE{number}*
+      {example}
 
 repository:
   # path should be relative to the working directory (where the script is)

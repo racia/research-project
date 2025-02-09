@@ -1,0 +1,6 @@
+Context sentences:
+1. The office is east of the kitchen.
+2. The office is west of the hallway.
+Question:
+3. What is the hallway east of?
+Answer: office

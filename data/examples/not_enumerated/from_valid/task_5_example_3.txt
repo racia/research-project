@@ -1,0 +1,42 @@
+Context sentences:
+Jeff went to the bedroom.
+Bill moved to the garden.
+Fred got the apple there.
+Mary went to the office.
+Fred passed the apple to Mary.
+Mary passed the apple to Fred.
+Question:
+What did Mary give to Fred?
+Answer: apple
+
+Context sentences:
+Fred gave the apple to Mary.
+Mary handed the apple to Fred.
+Question:
+Who gave the apple to Fred?
+Answer: Mary
+
+Context sentences:
+Fred journeyed to the bathroom.
+Mary went back to the garden.
+Question:
+What did Mary give to Fred?
+Answer: apple
+
+Context sentences:
+Bill went back to the bedroom.
+Fred grabbed the football there.
+Question:
+What did Mary give to Fred?
+Answer: apple
+
+Context sentences:
+Fred went to the hallway.
+Bill moved to the garden.
+Jeff travelled to the bathroom.
+Fred moved to the bathroom.
+Fred handed the apple to Jeff.
+Jeff handed the apple to Fred.
+Question:
+Who did Jeff give the apple to?
+Answer: Fred
