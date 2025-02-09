@@ -59,7 +59,7 @@ class Plotter:
         y_label: str,
         max_x_len: int,
         plot_name_add: str,
-        compare: bool = False,
+        number_of_prompts: int = 1,
     ) -> None:
         """
         Plot the general details of the plot, e.g. labels, title, and legend.
@@ -68,26 +68,36 @@ class Plotter:
         :param y_label: label for the y-axis
         :param max_x_len: maximum length of the x-axis
         :param plot_name_add: addition to the plot name
-        :param compare: whether the data is compared
+        :param number_of_prompts: number of prompts to plot, if more than 6,
+                                  the legend is placed outside the plot
         :return: None
         """
         plt.xticks(range(1, max_x_len + 1))
         plt.xlabel(x_label)
 
+        y_ticks = np.arange(0, 1.1, 0.1)
+        plt.yticks(y_ticks)
+        plt.ylim(bottom=0, top=1.1)
+
         plt.ylim(bottom=0, top=1)
         type_of_data = " ".join([part.capitalize() for part in y_label.split("_")])
         plt.ylabel(type_of_data)
 
+        plt.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
+
         title = f"{type_of_data} per {x_label}"
-        if compare:
+        if number_of_prompts > 1:
             title += " and prompt"
         if plot_name_add:
             title += f" ({plot_name_add.strip('_')})"
         plt.title(title)
 
-        plt.legend(
-            loc="center left", bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True
-        )
+        if number_of_prompts > 6:
+            plt.legend(
+                loc="center left", bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True
+            )
+        else:
+            plt.legend(bbox_to_anchor=(1.1, 1.05))
 
     def plot_acc_per_task(
         self,
@@ -111,9 +121,7 @@ class Plotter:
         colors = self.cmap(np.linspace(0, 1, len(acc_per_task)))
         plt.plot(range(1, len(acc_per_task) + 1), acc_per_task, color=colors[0])
 
-        self._plot_general_details(
-            x_label, y_label, len(acc_per_task), plot_name_add, compare=False
-        )
+        self._plot_general_details(x_label, y_label, len(acc_per_task), plot_name_add)
         self._save_plot(y_label, x_label, file_name, plot_name_add)
 
     def plot_acc_per_task_and_prompt(
@@ -138,13 +146,51 @@ class Plotter:
         plt.figure(figsize=(15, 5))
         colors = self.cmap(np.linspace(0, 1, len(acc_per_prompt_task)))
 
+        number_of_prompts = 0
         max_x_len = 0
         for (prompt, acc), color in zip(acc_per_prompt_task.items(), colors):
+            number_of_prompts += 1
             if len(acc) > max_x_len:
                 max_x_len = len(acc)
             plt.plot(range(1, len(acc) + 1), acc, label=prompt, color=color)
 
         self._plot_general_details(
-            x_label, y_label, len(acc_per_prompt_task), plot_name_add, compare=True
+            x_label,
+            y_label,
+            max_x_len,
+            plot_name_add,
+            number_of_prompts=number_of_prompts,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
+
+    def plot_accuracies(
+        self,
+        accuracies,
+        soft_match_accuracies,
+        additional_info="",
+        compare_prompts=False,
+    ):
+        if compare_prompts:
+            # Save accuracies of all prompts
+            self.plot_acc_per_task_and_prompt(
+                acc_per_prompt_task=accuracies,
+                y_label="Accuracy",
+                plot_name_add=additional_info,
+            )
+            self.plot_acc_per_task_and_prompt(
+                acc_per_prompt_task=soft_match_accuracies,
+                y_label="Soft Match Accuracy",
+                plot_name_add=additional_info,
+            )
+        else:
+            # Save accuracies of one prompts
+            self.plot_acc_per_task(
+                acc_per_task=accuracies,
+                y_label="Accuracy",
+                plot_name_add=additional_info,
+            )
+            self.plot_acc_per_task(
+                acc_per_task=soft_match_accuracies,
+                y_label="Soft Match Accuracy",
+                plot_name_add=additional_info,
+            )

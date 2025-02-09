@@ -51,7 +51,7 @@ class Baseline(Setting):
         self.accuracy: int = 0
         self.soft_match_accuracy: int = 0
 
-    def prepare_prompt(self, sample_part: list[str], chat: Chat) -> str:
+    def prepare_prompt(self, sample_part: dict[str, dict], chat: Chat) -> str:
         """
         Prepares the prompt to include the current part of the sample.
 
