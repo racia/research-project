@@ -23,30 +23,30 @@ class DataProcessor:
         :param data: data to process
         :param samples_per_task: number of samples to process and return per task
         :return: processed data of type
-                 Dict[str, Dict[str, Dict[str, Dict[str, str] | Dict[str, List[str]] | List[List[int]]]]
+                 dict[int, dict[str, dict[str, dict[str, str] | dict[str, list[str]] | list[list[int]]]]
 
                  Example:
                  {
                      task_id: int: {
-                         sample_id: str = 0-n: [
-                         # there might be multiple parts for one sample
-                         {
-                             "context": {
-                                 line_num: str
-                                 sentence: str
+                        sample_id: str = 0-n:
+                        [ # there might be multiple parts for one sample
+                             {
+                                 "context": {
+                                     line_num: str
+                                     sentence: str
+                                 }
+                                 "question": {
+                                     line_num: str
+                                     question: str
+                                 }
+                                 "answer": {
+                                     line_num: str
+                                     answers: list[str]
+                                 }
+                                 "supporting_fact": [
+                                     [int], [int, int]
+                                 ]
                              }
-                             "question": {
-                                 line_num: str
-                                 question: str
-                             }
-                             "answer": {
-                                 line_num: str
-                                 answers: List[str]
-                             }
-                             "supporting_fact": [
-                                 [int], [int, int]
-                             ]
-                         }
                          ]
                      }
                  }

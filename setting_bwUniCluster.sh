@@ -1,22 +1,25 @@
 #!/bin/bash
 #
+# Job name
+#SBATCH --job-name=setting               # TODO: adjust job name
+
 #SBATCH --time=00:30:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=1            # Number of CPU cores per task
-
-# Email notifications
-#SBATCH --mail-user=""
-#SBATCH --mail-type=END,FAIL  # Send email when the job ends or fails
+#SBATCH --partition=dev_gpu_4
 
 # Output and error logs
 #SBATCH --output="setting_out.txt"        # TODO: adjust standard output log
 #SBATCH --error="setting_err.txt"         # TODO: adjust error log
 
-# Job name
-#SBATCH --job-name=setting         # TODO: adjust job name
+# Email notifications
+#SBATCH --mail-user=""
+#SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
+# initialize shell to work with bash
+source ~/.bashrc
 
 # Verify conda availability
 if ! command -v conda &> /dev/null; then
@@ -25,9 +28,6 @@ if ! command -v conda &> /dev/null; then
 else
     echo "Conda is available."
 fi
-
-# initialize shell to work with bash
-source ~/.bashrc
 
 # Activate the conda environment
 ENV_NAME="research-project"

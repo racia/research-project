@@ -1,24 +1,22 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=setting         # TODO: adjust job name
-
-# using printing to a log file instead of '--output'
-# allows to create individual log files for each config
-# Output and error logs
-#SBATCH --output="setting_out.txt"        # TODO: adjust standard output log
-#SBATCH --error="setting_err.txt"         # TODO: adjust error log
+#SBATCH --job-name=setting               # TODO: adjust job name
 
 #SBATCH --gres=gpu:2
 #SBATCH --mem=32000
 #SBATCH --ntasks=1
 #SBATCH --partition=students
 
+# Output and error logs
+#SBATCH --output="setting_out.txt"        # TODO: adjust standard output log
+#SBATCH --error="setting_err.txt"         # TODO: adjust error log
+
 # Email notifications
 #SBATCH --mail-user=""
-#SBATCH --mail-type=END,FAIL  # Send email when the job ends or fails
+#SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
-# JOB STEPS
+### JOB STEPS START HERE ###
 # shellcheck source=/dev/null
 source ~/miniconda3/etc/profile.d/conda.sh
 
@@ -30,6 +28,7 @@ else
     echo "Conda is available."
 fi
 
+# Activate the conda environment
 ENV_NAME="research-project"
 echo "Activating conda environment: $ENV_NAME"
 if ! conda activate "$ENV_NAME"; then

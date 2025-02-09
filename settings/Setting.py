@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 
 import torch
@@ -54,7 +56,7 @@ class Setting(ABC):
         self.soft_match_accuracy: int = 0
 
     @abstractmethod
-    def prepare_prompt(self, sample_part: list[str], chat: Chat) -> str:
+    def prepare_prompt(self, sample_part: dict[str, dict], chat: Chat) -> str:
         """
         Prepares the prompt to include the current part of the sample.
         :param sample_part:
@@ -79,15 +81,7 @@ class Setting(ABC):
     def iterate_task(
         self,
         task_id: int,
-        task_data: dict[
-            int,
-            list[
-                dict[
-                    str,
-                    dict[int, str] | dict[int, list[str]] | dict[int, list[list[int]]],
-                ]
-            ],
-        ],
+        task_data: dict[int, list[dict[str, dict]]],
         prompt_name: str,
     ) -> list[dict[str, int | str]]:
         """
@@ -109,23 +103,27 @@ class Setting(ABC):
         :param task_id: task id corresponding to task name in original dataset
         :param task_data: task data of the following structure:
         {
-            sample_id: {
-               "context": {
-                   line_number: line,
-                   ...
-               },
-               "question": {
-                   line_number: line,
-                   ...
-               },
-               "answer": {
-                   line_number: [answer, ...],
-               },
-               "supporting_fact": [
-                   [line_number_first_answer, ...],
-               ]
-            }
-        }
+            sample_id: str = 0-n:
+            [ # there might be multiple parts for one sample
+                 {
+                     "context": {
+                         line_num: str
+                         sentence: str
+                     }
+                     "question": {
+                         line_num: str
+                         question: str
+                     }
+                     "answer": {
+                         line_num: str
+                         answers: list[str]
+                     }
+                     "supporting_fact": [
+                         [int], [int, int]
+                     ]
+                 }
+             ]
+         }
         :param prompt_name: name of the prompt
         :return: results for the task in a list of dicts with each dict representing
                  one call to the model and will end up as one row of the table
@@ -189,7 +187,7 @@ class Setting(ABC):
                     "id": self.question_id,
                     "task_id": task_id,
                     "sample_no": sample_id_,
-                    "task": "\n".join(sample_part),
+                    "task": formatted_part,
                     "true_result": y_true,
                 }
                 part_result.update(model_output)

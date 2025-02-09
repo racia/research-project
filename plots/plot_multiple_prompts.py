@@ -13,9 +13,9 @@ class Accuracy:
     soft_match: str = "soft_match_accuracy"
 
 
-def get_paths(directory: str, keyword: str) -> list[Path]:
+def get_paths(directory: str, keyword: str) -> list[str]:
     """
-    Get all paths that contain a keyword in the name from the run subdirectories.
+    Get all paths that contain a keyword in the name from all the run subdirectories.
 
     :param directory: path to the directory containing the run subdirectories
     :param keyword: keyword to search for in the path names
@@ -23,20 +23,16 @@ def get_paths(directory: str, keyword: str) -> list[Path]:
     :return: list of paths containing the keyword
     """
     paths = []
-    time_runs = [subdir for subdir in Path(directory).iterdir() if subdir.is_dir()]
-
-    for time_run in time_runs:
-        prompt_runs = [subdir for subdir in time_run.iterdir() if subdir.is_dir()]
-
-        for prompt_run in prompt_runs:
-            for path in prompt_run.glob(f"*{keyword}*"):
-                paths.append(path)
-
+    for item in Path(directory).iterdir():
+        if item.is_dir():
+            paths.extend(get_paths(item, keyword))
+        elif keyword in item.name:
+            paths.append(str(item))
     return paths
 
 
-def plot_multiple_prompts(
-    directory: str,
+def plot_from_paths(
+    paths: list[str],
     accuracy_types: list[Union[Accuracy.strict, Accuracy.soft_match]],
     result_path: str,
     prompt_type: str,
@@ -46,12 +42,11 @@ def plot_multiple_prompts(
 ) -> None:
     """
     Plot the accuracies for multiple prompts to compare them.
-    It is expected that the paths and prompt names are in the same order.
-    Furthermore, the accuracy files should be in the same format:
+    The accuracy files should be in the same format:
     - The first line should contain the average accuracy for the "zero task".
     - The following lines should contain the strict and soft-match accuracies for each task.
 
-    :param directory: list of paths to the accuracy files
+    :param paths: list of paths to the accuracy files
     :param accuracy_types: list of accuracy types to plot (a plot for each type)
     :param result_path: path to save the plots
     :param split: split of the data to plot for
@@ -59,17 +54,15 @@ def plot_multiple_prompts(
 
     :return: None
     """
-    paths = get_paths(directory, keyword="accuracies")
-    print("Found the following paths:")
-    print(*paths, end="\n\n", sep="\n")
     plotter = Plotter(result_path=Path(result_path))
+    loader = DataLoader()
 
     for accuracy_type in accuracy_types:
         accuracies = {}
         for path in paths:
-            data = DataLoader.load_result_data(
-                path,
-                headers=["task_id", "accuracy", "soft_match_accuracy"],
+            data = loader.load_result_data(
+                result_file_path=path,
+                headers=["task", "accuracy", "soft_match_accuracy"],
             )
             prompt_accuracies = data[accuracy_type]
             # remove the average accuracy on the first position ("zero task")
@@ -92,15 +85,94 @@ def plot_multiple_prompts(
         )
 
 
-if __name__ == "__main__":
-    # Model of usage
-    directories = []
-    types = []
-    for dir, type_ in zip(directories, types):
-        plot_multiple_prompts(
-            directory=dir,
-            split=DataSplits.valid,
-            accuracy_types=[Accuracy.strict, Accuracy.soft_match],
-            result_path=dir,
-            prompt_type=type_,
+def plot_from_directory(
+    directory: str,
+    accuracy_types: list[Union[Accuracy.strict, Accuracy.soft_match]],
+    result_path: str,
+    prompt_type: str,
+    split: Union[
+        DataSplits.train, DataSplits.valid, DataSplits.test
+    ] = DataSplits.valid,
+) -> None:
+    """
+    Plot the accuracies for multiple prompts to compare them.
+    The accuracy files should be in the same format:
+    - The first line should contain the average accuracy for the "zero task".
+    - The following lines should contain the strict and soft-match accuracies for each task.
+
+    :param directory: directory with results that contain the runs with the desired accuracy files
+    :param accuracy_types: list of accuracy types to plot (a plot for each type)
+    :param result_path: path to save the plots
+    :param split: split of the data to plot for
+    :param prompt_type: type of prompt (e.g. "ICL")
+
+    :return: None
+    """
+    paths = get_paths(directory, keyword="accuracies")
+    print("Found the following paths:")
+    print(*paths, end="\n\n", sep="\n")
+
+    plot_from_paths(paths, accuracy_types, result_path, prompt_type, split)
+
+
+def run(
+    paths: list[str],
+    split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
+    accuracy_types: list[Union[Accuracy.strict, Accuracy.soft_match]],
+    result_path: str,
+    prompt_type: str,
+) -> None:
+    """
+    Run the plotting for multiple prompts.
+    The paths can be either directories or files. If directories are provided, the function will plot the accuracies
+    for each prompt in the directory. If files are provided, the function will plot the accuracies for each file.
+    Paths should be either directories or files containing the accuracy files, *not mixed*.
+
+    :param paths: list of paths to directories or files
+    :param split: split of the data to plot for
+    :param accuracy_types: list of accuracy types to plot (a plot for each type)
+    :param result_path: path to save the plots
+    :param prompt_type: type of prompt (e.g. "ICL")
+    :return: None
+    """
+    if not paths:
+        raise ValueError("No paths provided.")
+
+    print("Running the plotting for multiple prompts.")
+
+    if Path(paths[0]).is_dir():
+        for path in paths:
+            print(f"Plotting from directory: {path}")
+            plot_from_directory(
+                directory=path,
+                split=split,
+                accuracy_types=accuracy_types,
+                prompt_type=prompt_type,
+                result_path=result_path,
+            )
+    elif Path(paths[0]).is_file():
+        plot_from_paths(
+            paths=paths,
+            split=split,
+            accuracy_types=accuracy_types,
+            prompt_type=prompt_type,
+            result_path=result_path,
         )
+    else:
+        raise ValueError("Invalid paths provided.")
+
+    print("Plots have been saved.")
+
+
+if __name__ == "__main__":
+    paths = [
+        "path/to/accuracy/file/1",
+        "or/path/to/directory",
+    ]
+    run(
+        paths=paths,
+        split=DataSplits.train,
+        accuracy_types=[Accuracy.strict, Accuracy.soft_match],
+        prompt_type="type",
+        result_path="result/path",
+    )
