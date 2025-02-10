@@ -66,6 +66,7 @@ def run_model(cfg: DictConfig) -> None:
     print(f"Results will be saved to: {saver.run_results_path}")
     plotter = Plotter(result_path=saver.run_results_path)
     os.environ["OUTPUT_DIR"] = str(saver.run_results_path)
+    os.environ["INTERP_DIR"] = cfg.repository.path+cfg.interpretability.path
 
     stats = Statistics()
     strict_accuracies = {}
@@ -158,6 +159,7 @@ def run_model(cfg: DictConfig) -> None:
                     task_id=task_id,
                     task_data=task,
                     prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.prompt.names)}",
+                    interpr = cfg.interpretability
                 )
                 saver.save_output(
                     data=task_result,

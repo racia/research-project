@@ -1,0 +1,30 @@
+journey
+be
+move
+go
+travel
+grab
+leave
+take
+drop
+pick up
+discard
+get
+put down
+before
+west
+east
+south
+north
+hand
+give
+receive
+pass
+carry
+follow
+left
+right
+below
+above
+bigger
+fit

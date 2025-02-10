@@ -1,13 +1,16 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+import os
 
 import torch
 
 from data.Statistics import Statistics
+from interpretability.Interpretability import Interpretability
 from prompts.Chat import Chat, Source
 from prompts.Prompt import Prompt
 from settings.Model import Model
+from settings.baseline import utils
 from settings.utils import Enumerate
 
 
@@ -58,15 +61,16 @@ class Setting(ABC):
     @abstractmethod
     def prepare_prompt(self, sample_part: dict[str, dict], chat: Chat) -> str:
         """
+        @TODO: self.to_continue check, default: add_generation_prompt
         Prepares the prompt to include the current part of the sample.
         :param sample_part:
         :param chat:
         :return: prompt with the task and the current part
         """
-        raise NotImplementedError
+        return self.model.tokenizer.apply_chat_template(self.chat.messages, tokenize=False, add_generation_prompt=True)
 
     @abstractmethod
-    def apply_setting(self, decoded_output: str) -> dict[str, str]:
+    def apply_setting(self, decoded_output: str, fine_tune: bool = False, task_id: int = None, formatted_part: str = None) -> dict[str, str]:
         """
         Apply setting-specific postprocessing of the inital model output.
         For the baseline and skyline, this consists of parsing the output.
@@ -76,13 +80,20 @@ class Setting(ABC):
         :return: parsed output
         """
         # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
-        raise NotImplementedError
 
+        if fine_tune:
+            # Save decoded output to task_id file for fine-tuning
+            with open(os.environ["OUTPUT_DIR"]+"/"+f"{task_id}.txt", "a") as f:
+                f.write("\n".join(formatted_part.split("\n\n"))) # Part
+                f.write(decoded_output.split("\n\n")[0].split("Reason: ")[-1]) # Only Model Reason
+                f.write("\n\n") # Add new line at the end
+                
     def iterate_task(
         self,
         task_id: int,
         task_data: dict[int, list[dict[str, dict]]],
         prompt_name: str,
+        iterpr: Interpretability = None
     ) -> list[dict[str, int | str]]:
         """
         Manages the data flow in and out of the model, iteratively going through
@@ -96,9 +107,12 @@ class Setting(ABC):
         3. iterate through parts
         4. create and format the prompt
         5. call the model and yield the response
+        <<NEW>> 5.1 Write model output to task_id files
         6. add the model's output to conversation
-        7. report the results for a sample: answers and accuracy
-        8. report the results for the task:  accuracy
+        <<NEW>> 7. Call interpretability attention score method
+        8. Call interpretability attention score method
+        9. report the results for a sample: answers and accuracy
+        10. report the results for the task:  accuracy
 
         :param task_id: task id corresponding to task name in original dataset
         :param task_data: task data of the following structure:
@@ -132,10 +146,16 @@ class Setting(ABC):
         sample_accuracies = []
         sample_soft_match_accuracies = []
 
+        if not interpr.switch:
+            interpr = None
+        else:
+            # Initialize interpretability for each new sample - since new chat
+            interpretability1 = Interpretability(self.model, self.model.tokenizer, task_id)
+
         # 1. Iterate through samples
         for sample_id, sample_parts in list(task_data.items()):
             # each sample is a new conversation
-            chat = Chat(system_prompt=self.prompt.text)
+            self.chat = Chat(system_prompt=self.prompt.text)
             # collect the true answers
             y_true_sample = [
                 ", ".join(list(part["answer"].values())[0]) for part in sample_parts
@@ -163,40 +183,63 @@ class Setting(ABC):
                     part=sample_part, to_enumerate=self.to_enumerate
                 )
 
-                chat.add_message(part=formatted_part, source=Source.user)
+                self.chat.add_message(part=formatted_part, source=Source.user, interpretability=interpr)
 
                 formatted_prompt = self.prepare_prompt(
-                    sample_part=sample_part, chat=chat
+                    sample_part=sample_part, chat=self.chat
+                )
+
+                print(
+                    "Formatted prompt:",
+                    formatted_prompt,
+                    sep="\n",
+                    end="\n",
                 )
 
                 # 5. Call the model and yield the response
                 decoded_output = self.model.call(prompt=formatted_prompt)
                 print(
                     "Model's output:",
-                    decoded_output,
+                    decoded_output.lower(),
                     end="\n\n\n",
                     flush=True,
                 )
 
                 # 6. Add the model's output to conversation
-                chat.add_message(part=decoded_output, source=Source.assistant)
+                self.chat.add_message(part=decoded_output, source=Source.assistant, interpretability=interpr)
 
-                model_output = self.apply_setting(decoded_output=decoded_output)
+                # 7. Write output in task_id files for fine_tuning  
+                model_output = self.apply_setting(decoded_output=decoded_output, fine_tune=True, task_id=task_id, formatted_part=formatted_part)
 
                 part_result = {
+                    "part_id": part_id,
                     "id": self.question_id,
                     "task_id": task_id,
                     "sample_no": sample_id_,
                     "task": formatted_part,
                     "true_result": y_true,
+                    "model_result": decoded_output,
                 }
-                part_result.update(model_output)
+                #part_result.update(model_output)
+
+                if self.parse_output:
+                    parsed_output = utils.parse_output(output=decoded_output)
+                    part_result["model_answer"] = parsed_output["answer"]
+                    part_result["model_reasoning"] = parsed_output["reasoning"]
 
                 task_results.append(part_result)
 
                 y_pred_sample.append(decoded_output)
 
-            # 7. Report the results for the sample: answers and accuracy
+                # 8. Call interpretability attention score method
+                if interpr:
+                    interpretability1.cal_attn(part_id=part_id, question=formatted_part, reason=part_result["model_reasoning"], answer=part_result["model_answer"], msg = self.chat.get_message())
+                    
+                    # Put model back into training mode
+                    self.model.train()
+
+
+            # 9. Report the results for the sample: answers and accuracy
             print(
                 "Model's predictions for the sample:",
                 "\t{:<18s} PREDICTED".format("GOLDEN"),
@@ -229,7 +272,7 @@ class Setting(ABC):
                 end="\n\n\n",
             )
 
-        # 8. Report the results for the task: accuracy
+        # 10. Report the results for the task: accuracy
         print("\n- TASK RESULTS -", end="\n\n")
 
         task_accuracy = round(sum(sample_accuracies) / len(sample_accuracies), 2)
