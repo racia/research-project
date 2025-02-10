@@ -9,16 +9,18 @@ import hydra
 from hydra.core.hydra_config import HydraConfig
 from omegaconf import DictConfig, OmegaConf
 
-from settings.baseline.utils import set_device
 
-sys.path.insert(0, str(Path(Path.cwd()).parents[0]))
+sys.path.insert(0, str(Path(Path.cwd()).parents[0].parents[0]))
+print(sys.path)
+
+from settings.utils import set_device
 
 from prompts.Prompt import Prompt
 from data.DataSaver import DataSaver
 from data.DataLoader import DataLoader
 from data.Statistics import Statistics
 from plots.Plotter import Plotter
-from Baseline import Baseline
+from settings.baseline.Baseline import Baseline
 
 
 @hydra.main(version_base=None)
@@ -73,7 +75,7 @@ def run_model(cfg: DictConfig) -> None:
     soft_match_accuracies = {}
 
     model = Baseline(
-        model_name=cfg.model.name,
+        model=cfg.model.name,
         max_new_tokens=cfg.model.max_new_tokens,
         temperature=cfg.model.temperature,
         statistics=stats,
@@ -84,7 +86,7 @@ def run_model(cfg: DictConfig) -> None:
     )
 
     print("The model is being loaded...", end="\n\n")
-    model.load_model()
+    #model.load_model()
     model.total_tasks = 0
     data_in_splits = {}
     print(f"The model {cfg.model.name} is loaded successfully", flush=True)
@@ -158,7 +160,7 @@ def run_model(cfg: DictConfig) -> None:
                 task_result = model.iterate_task(
                     task_id=task_id,
                     task_data=task,
-                    prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.prompt.names)}",
+                    prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.prompt.paths)}",
                     interpr = cfg.interpretability
                 )
                 saver.save_output(

@@ -51,7 +51,7 @@ def run_model(cfg: DictConfig) -> None:
     loader = DataLoader(samples_per_task=cfg.data.samples_per_task)
     log_file = sys.stdout
 
-    if cfg.repository.save_here:
+    if cfg.repository.save:
         saver = DataSaver(
             project_dir=cfg.repository.path,
             subproject_dir=cfg.results.path,

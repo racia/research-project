@@ -67,10 +67,10 @@ class Setting(ABC):
         :param chat:
         :return: prompt with the task and the current part
         """
-        return self.model.tokenizer.apply_chat_template(self.chat.messages, tokenize=False, add_generation_prompt=True)
+        raise NotImplementedError
 
     @abstractmethod
-    def apply_setting(self, decoded_output: str, fine_tune: bool = False, task_id: int = None, formatted_part: str = None) -> dict[str, str]:
+    def apply_setting(self, decoded_output: str) -> dict[str, str]:
         """
         Apply setting-specific postprocessing of the inital model output.
         For the baseline and skyline, this consists of parsing the output.
@@ -80,20 +80,14 @@ class Setting(ABC):
         :return: parsed output
         """
         # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
-
-        if fine_tune:
-            # Save decoded output to task_id file for fine-tuning
-            with open(os.environ["OUTPUT_DIR"]+"/"+f"{task_id}.txt", "a") as f:
-                f.write("\n".join(formatted_part.split("\n\n"))) # Part
-                f.write(decoded_output.split("\n\n")[0].split("Reason: ")[-1]) # Only Model Reason
-                f.write("\n\n") # Add new line at the end
+        raise NotImplementedError
                 
     def iterate_task(
         self,
         task_id: int,
         task_data: dict[int, list[dict[str, dict]]],
         prompt_name: str,
-        iterpr: Interpretability = None
+        interpr: Interpretability = None
     ) -> list[dict[str, int | str]]:
         """
         Manages the data flow in and out of the model, iteratively going through
@@ -208,8 +202,8 @@ class Setting(ABC):
                 # 6. Add the model's output to conversation
                 self.chat.add_message(part=decoded_output, source=Source.assistant, interpretability=interpr)
 
-                # 7. Write output in task_id files for fine_tuning  
-                model_output = self.apply_setting(decoded_output=decoded_output, fine_tune=True, task_id=task_id, formatted_part=formatted_part)
+                # 7. Write output in task_id files for fine_tuning
+                model_output = self.apply_setting(decoded_output=decoded_output, fine_tune=False)
 
                 part_result = {
                     "part_id": part_id,
@@ -220,12 +214,7 @@ class Setting(ABC):
                     "true_result": y_true,
                     "model_result": decoded_output,
                 }
-                #part_result.update(model_output)
-
-                if self.parse_output:
-                    parsed_output = utils.parse_output(output=decoded_output)
-                    part_result["model_answer"] = parsed_output["answer"]
-                    part_result["model_reasoning"] = parsed_output["reasoning"]
+                part_result.update(model_output)
 
                 task_results.append(part_result)
 
