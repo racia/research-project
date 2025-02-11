@@ -88,8 +88,10 @@ class Plotter:
         title = f"{type_of_data} per {x_label}"
         if number_of_prompts > 1:
             title += " and prompt"
+
         if plot_name_add:
             title += f" ({plot_name_add.strip('_')})"
+
         plt.title(title)
 
         if number_of_prompts > 6:

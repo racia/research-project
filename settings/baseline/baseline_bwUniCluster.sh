@@ -4,10 +4,11 @@
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=1            # Number of CPU cores per task
+#SBATCH --partition=dev_gpu_4
 
 # Email notifications
 #SBATCH --mail-user=""
-#SBATCH --mail-type=END,FAIL  # Send email when the job ends or fails
+#SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 # Output and error logs
 #SBATCH --output="baseline_out.txt"        # Standard output log

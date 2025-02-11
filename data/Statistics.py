@@ -1,14 +1,16 @@
 from typing import List
 
 import matplotlib.pyplot as plt
+from nltk.stem import WordNetLemmatizer
 
 from data.DataLoader import DataLoader
-from data.data_utils import check_or_create_directory
+from data.data_utils import *
 
 
 class Statistics:
     def __init__(self):
         self.loader = DataLoader()
+        self.lemmatize = WordNetLemmatizer().lemmatize
 
     def get_data_stats(self, data_path: str):
         """
@@ -20,7 +22,8 @@ class Statistics:
         data = self.loader.load_task_data(path=data_path, split="train")
         self.analyse_task_questions(data)
 
-    def analyse_task_questions(self, data: dict):
+    @staticmethod
+    def analyse_task_questions(data: dict):
         """
         Plot the number of questions for each task.
 
@@ -78,22 +81,62 @@ class Statistics:
         plt.title("Total Lines of Context per Task")
         plt.savefig("plots/num_context_per_task.png")
 
-    @staticmethod
-    def answer_into_set(answer: str) -> set:
+    def are_identical(self, true, prediction) -> bool:
         """
-        Convert the answer into a set of words.
+        Check if the prediction is correct in a rather strict way:
+        - the answers are the identical in lower case OR
+        - the answers are the identical after lemmatization OR
+        - the answers are the same set of words OR
+        - the answers are the same set of words after lemmatization
 
-        :param answer: the answer
-        :return: set of words
+        :param true: true answer
+        :param prediction: predicted answer
+        :return: True if the prediction is correct, False otherwise
         """
-        answer_set = set([t.strip("-,.:;!?") for t in answer.split(" ")])
-        return answer_set
+        true, prediction = normalize_token(true), normalize_token(prediction)
+
+        true_list = answer_into_list(true)
+        prediction_list = answer_into_list(prediction)
+
+        true_set, prediction_set = set(true_list), set(prediction_list)
+        lemma_true_set = set(self.lemmatize(t) for t in true_set)
+        lemma_pred_set = set(self.lemmatize(t) for t in prediction_set)
+
+        if true == prediction:
+            return True
+
+        if two_true_one_pred(true_list, prediction_list):
+            # this is for cases of two identical answers, like "east, east"
+            # if the model outputs "east", it is not correct
+            return False
+
+        if true_set == prediction_set or lemma_true_set == lemma_pred_set:
+            # this is needed for cases where the order of answer doesn't matter
+            # e.g. the routes "east, south" and "south, east" should be both
+            # considered correct because they lead to the same destination
+            return True
+
+        if true == normalize_numbers(prediction):
+            return True
+
+        return False
+
+    @staticmethod
+    def accuracy_score_by_bools(bool_predicted) -> float:
+        """
+        Compute the accuracy score by the proportion of True values.
+
+        :param bool_predicted: boolean value
+        :return: accuracy score
+        """
+        true_in_predicted = bool_predicted.count(True)
+        return true_in_predicted / len(bool_predicted) if true_in_predicted else 0.0
 
     def accuracy_score(
         self, true_values: list[str], predicted_values: list[str]
     ) -> float:
         """
-        Compute the accuracy score that also considers the order of the answers.
+        Compute the accuracy score that also considers the order of the answers and lemmatization.
 
         :param true_values: list of true values
         :param predicted_values: list of predicted values
@@ -104,17 +147,7 @@ class Statistics:
 
         true_in_predicted = 0
         for true, prediction in zip(true_values, predicted_values):
-            true = true.lower()
-            prediction = prediction.lower()
-
-            if true == prediction or true == prediction.replace(", ", " "):
-                true_in_predicted += 1
-
-            elif self.answer_into_set(true) == self.answer_into_set(prediction):
-                # this is needed for cases where the order of answer doesn't matter
-                # e.g. the routes "east, south" and "south, east" should be both
-                # considered correct because they lead to the same destination
-                # or for longer answers
+            if self.are_identical(true, prediction):
                 true_in_predicted += 1
 
         return true_in_predicted / len(true_values) if true_in_predicted else 0.0
@@ -135,14 +168,22 @@ class Statistics:
 
         true_in_predicted = 0
         for true, prediction in zip(true_values, predicted_values):
-            if self.accuracy_score([true], [prediction]) == 1:
+            true = normalize_token(true)
+            prediction = normalize_token(prediction)
+            true_set = set(answer_into_list(true))
+            prediction_set = set(answer_into_list(prediction))
+
+            if misleading_no(true_set, prediction_set):
+                continue
+
+            if self.are_identical(true, prediction):
                 true_in_predicted += 1
 
-            elif true.lower() in prediction.lower():
+            elif true in prediction:
                 true_in_predicted += 0.75
 
             # for partial answer of questions with two supporting facts
-            elif prediction.lower() in true.lower():
+            elif prediction in true or prediction_set.intersection(true_set):
                 true_in_predicted += 0.5
 
         return true_in_predicted / len(true_values) if true_in_predicted else 0.0
@@ -150,4 +191,11 @@ class Statistics:
 
 if __name__ == "__main__":
     stats = Statistics()
-    stats.get_data_stats(data_path="tasks_1-20_v1-2/en")
+    # stats.get_data_stats(data_path="tasks_1-20_v1-2/en")
+    print(stats.are_identical("east, north", "east, then north"))
+    print("Accuracy score:", stats.accuracy_score(["south, south"], ["south"]))
+    print(
+        "Sort-math accuracy score",
+        stats.soft_match_accuracy_score(["south, south"], ["south"]),
+    )
+    print(stats.soft_match_accuracy_score(["one"], ["not mentioned"]))
