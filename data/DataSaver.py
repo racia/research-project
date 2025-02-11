@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import csv
 import os
+import statistics
 import sys
 from datetime import datetime
 from pathlib import Path
 from typing import TextIO, Union
 
-from data.data_utils import is_empty_file
+from data.data_utils import is_empty_file, prepare_accuracy_headers, add_accuracies
 from settings.baseline.config.baseline_config import DataSplits
 
 
@@ -25,6 +26,10 @@ class DataSaver:
         """
         Initialize the DataSaver.
         The datasaver handles everything related to saving data.
+
+        :param project_dir: the name of the project
+        :param subproject_dir: the name of the subproject
+        :param save_to_repo: whether to save the results to the repository
         """
         self.old_stdout: TextIO = sys.stdout
         self.run_results_path = Path(project_dir)
@@ -132,6 +137,107 @@ class DataSaver:
             if is_empty_file(file_path):
                 writer.writeheader()
             [writer.writerow(row) for row in data]
+
+    def save_task_accuracies(
+        self,
+        task_ids: list[int],
+        strict_accuracies: list[float],
+        soft_match_accuracies: list[float],
+        file_path: Path,
+    ) -> [float, float]:
+        """
+        Save the accuracies for the split,
+        including the mean accuracy for all tasks if get_mean_accuracies() was called.
+
+        :param task_ids: the task ids (including 0 if mean accuracies are calculated)
+        :param strict_accuracies: the accuracies per task
+        :param soft_match_accuracies: the soft match accuracies per task
+        :param file_path: the path to the file to save the accuracies
+        :return: the mean accuracies of all tasks
+        """
+        accuracies_to_save = []
+        zipped_data = zip(task_ids, strict_accuracies, soft_match_accuracies)
+        for task_id, accuracy, soft_match_accuracy in zipped_data:
+            accuracies_to_save.append(
+                {
+                    "task_id": "mean" if task_id == 0 else task_id,
+                    "accuracy": accuracy,
+                    "soft_match_accuracy": soft_match_accuracy,
+                }
+            )
+        # Save the prompt accuracies for the split
+        self.save_output(
+            data=accuracies_to_save,
+            headers=["task_id", "accuracy", "soft_match_accuracy"],
+            file_path=file_path,
+        )
+
+    def save_run_accuracies(
+        self,
+        task_ids: list[int],
+        strict_accuracies: dict[str, dict],
+        soft_match_accuracies: dict[str, dict],
+        split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
+    ) -> None:
+        """
+        Save the accuracies for the run, including the mean accuracy for all tasks.
+
+        :param task_ids: the task ids (including 0 if mean accuracies are calculated)
+        :param strict_accuracies: the strict accuracies per split and prompt
+        :param soft_match_accuracies: the soft match accuracies per split and prompt
+        :param split: the split of the data
+        :return: None
+        """
+        run_accuracies = {}
+        run_headers = ["task_id"]
+
+        split_data = zip(
+            strict_accuracies[split].keys(),
+            strict_accuracies[split].values(),
+            soft_match_accuracies[split].values(),
+        )
+        # calculate accuracies of each prompt (for all tasks)
+        for prompt_name, strict_accuracies, soft_match_accuracies in split_data:
+            prompt_headers = prepare_accuracy_headers(prompt_name)
+            # by index 0 are the mean accuracies of all tasks
+            prompt_data = zip(task_ids, strict_accuracies, soft_match_accuracies)
+
+            for task_id, (strict_acc, soft_match_acc) in prompt_data:
+                run_accuracies = add_accuracies(
+                    accuracies=run_accuracies,
+                    strict_acc_to_add=strict_acc,
+                    soft_match_acc_to_add=soft_match_acc,
+                    task_id="mean" if task_id == 0 else task_id,
+                    headers=prompt_headers,
+                )
+            run_headers.extend(prompt_headers.values())
+
+        mean_headers = prepare_accuracy_headers("mean")
+        run_headers.extend(mean_headers.values())
+
+        # calculate mean accuracies of all tasks (for all prompts)
+        for task_id, accuracies in run_accuracies.items():
+            strict_accuracies_ = [
+                value for name, value in accuracies.items() if "strict" in name
+            ]
+            soft_match_accuracies_ = [
+                value for name, value in accuracies.items() if "soft_match" in name
+            ]
+            mean_strict_acc_ = round(statistics.mean(strict_accuracies_), 2)
+            mean_soft_match_acc_ = round(statistics.mean(soft_match_accuracies_), 2)
+            run_accuracies = add_accuracies(
+                accuracies=run_accuracies,
+                strict_acc_to_add=mean_strict_acc_,
+                soft_match_acc_to_add=mean_soft_match_acc_,
+                task_id=task_id,
+                headers=mean_headers,
+            )
+
+        self.save_output(
+            data=list(run_accuracies.values()),
+            headers=run_headers,
+            file_path=self.run_results_path / f"{split}_accuracies.csv",
+        )
 
     @staticmethod
     def redirect_printing_to_log_file(file_name: Path) -> TextIO:

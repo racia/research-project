@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import statistics
 from abc import ABC, abstractmethod
 
 import torch
@@ -44,8 +45,8 @@ class Setting(ABC):
         self.stats = statistics
 
         self.question_id = 0
-        self.total_samples = 0
         self.total_tasks = 0
+        self.total_samples = 0
         self.total_parts = 0
         self.samples_per_task = samples_per_task
 
@@ -77,6 +78,76 @@ class Setting(ABC):
         """
         # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
         raise NotImplementedError
+
+    @staticmethod
+    def print_sample_predictions(trues, preds):
+        """
+        Print the model's predictions to compare with true values.
+
+        :param trues: list of true values
+        :param preds: list of predicted values
+        """
+        print(
+            "Model's predictions for the sample:",
+            "\t{:<18s} PREDICTED".format("GOLDEN"),
+            sep="\n\n",
+            end="\n\n",
+        )
+        [
+            print(
+                "\t{0:<18s} {1}".format(true, predicted.replace("\n", "\t")),
+            )
+            for true, predicted in zip(trues, preds)
+        ]
+
+    def calculate_and_print_accuracies(
+        self,
+        id_: int,
+        what: str,
+        trues_preds: tuple[list[str], list[str]] = None,
+        str_acc_soft_acc: tuple[list[float], list[float]] = None,
+        to_print: bool = True,
+    ) -> tuple[float, float]:
+        """
+        Calculate the accuracy scores for the sample and print them.
+
+        :param id_: id of the sample
+        :param what: what is being evaluated
+        :param trues_preds: true and predicted values
+        :param str_acc_soft_acc: strict and soft-match accuracies
+        :param to_print: whether to print the results
+        :return: accuracy, soft-match accuracy
+        """
+        accuracy, soft_match_accuracy = 0.0, 0.0
+        if (trues_preds and str_acc_soft_acc) or not (trues_preds or str_acc_soft_acc):
+            raise ValueError(
+                "The function requires either true and predicted values or strict and soft-match accuracies."
+            )
+
+        if trues_preds:
+            trues, preds = trues_preds
+            accuracy = self.stats.accuracy_score(trues, preds)
+            soft_match_accuracy = self.stats.soft_match_accuracy_score(trues, preds)
+
+        elif str_acc_soft_acc:
+            accuracies, soft_match_accuracies = str_acc_soft_acc
+            accuracy = statistics.mean(accuracies)
+            soft_match_accuracy = statistics.mean(soft_match_accuracies)
+
+        accuracy = round(accuracy, 2)
+        soft_match_accuracy = round(soft_match_accuracy, 2)
+
+        if to_print:
+            print(
+                f"\nAccuracy score for {what} {id_}:",
+                accuracy,
+            )
+            print(
+                f"Soft-match accuracy score for {what} {id_}:",
+                soft_match_accuracy,
+                end="\n\n\n",
+            )
+        return accuracy, soft_match_accuracy
 
     def iterate_task(
         self,
@@ -193,63 +264,43 @@ class Setting(ABC):
                 part_result.update(model_output)
 
                 task_results.append(part_result)
-
-                y_pred_sample.append(decoded_output)
+                y_pred_sample.append(part_result["model_answer"])
 
             # 7. Report the results for the sample: answers and accuracy
-            print(
-                "Model's predictions for the sample:",
-                "\t{:<18s} PREDICTED".format("GOLDEN"),
-                sep="\n\n",
-                end="\n\n",
-            )
-            [
-                print(
-                    "\t{0:<18s} {1}".format(true, predicted.replace("\n", "\t")),
-                )
-                for true, predicted in zip(y_true_sample, y_pred_sample)
-            ]
+            self.print_sample_predictions(trues=y_true_sample, preds=y_pred_sample)
 
-            sample_accuracy = round(
-                self.stats.accuracy_score(y_true_sample, y_pred_sample), 2
+            strict_sample, soft_sample = self.calculate_and_print_accuracies(
+                trues_preds=(y_true_sample, y_pred_sample),
+                id_=sample_id,
+                what="sample",
             )
-            sample_accuracies.append(sample_accuracy)
-            print(
-                f"\nAccuracy score for sample {sample_id_}:",
-                sample_accuracy,
-            )
-
-            sample_soft_match_accuracy = round(
-                self.stats.soft_match_accuracy_score(y_true_sample, y_pred_sample), 2
-            )
-            sample_soft_match_accuracies.append(sample_soft_match_accuracy)
-            print(
-                f"Soft accuracy for sample {sample_id_}:",
-                sample_soft_match_accuracy,
-                end="\n\n\n",
-            )
+            sample_accuracies.append(strict_sample)
+            sample_soft_match_accuracies.append(soft_sample)
 
         # 8. Report the results for the task: accuracy
         print("\n- TASK RESULTS -", end="\n\n")
 
-        task_accuracy = round(sum(sample_accuracies) / len(sample_accuracies), 2)
-        self.accuracies_per_task.append(task_accuracy)
-
-        print(f"Accuracy score for task {task_id}:", task_accuracy)
-        task_results[0]["accuracy"] = task_accuracy
-
-        task_soft_match_accuracy = round(
-            sum(sample_soft_match_accuracies) / len(sample_soft_match_accuracies), 2
+        strict_task, soft_task = self.calculate_and_print_accuracies(
+            str_acc_soft_acc=(sample_accuracies, sample_soft_match_accuracies),
+            id_=task_id,
+            what="task",
+            to_print=True,
         )
-        self.soft_match_accuracies_per_task.append(task_soft_match_accuracy)
-
+        print(
+            f"Strict accuracy for task {task_id}:",
+            strict_task,
+            end="\n\n",
+        )
         print(
             f"Soft match accuracy for task {task_id}:",
-            task_soft_match_accuracy,
+            soft_task,
             end="\n\n",
         )
 
-        task_results[0]["soft_match_accuracy"] = task_soft_match_accuracy
+        task_results[0]["accuracy"] = strict_task
+        task_results[0]["soft_match_accuracy"] = soft_task
+        self.accuracies_per_task.append(strict_task)
+        self.soft_match_accuracies_per_task.append(soft_task)
 
         print(f"The work on task {task_id} is finished successfully")
 
@@ -257,3 +308,17 @@ class Setting(ABC):
         torch.cuda.empty_cache()
 
         return task_results
+
+    def get_mean_accuracies(self) -> [float, float]:
+        """
+        Calculate the mean accuracies for the tasks, insert them into the list of accuracies on the first position.
+
+        :return: mean strict accuracy, mean soft match accuracy
+        """
+        mean_strict_accuracy = round(statistics.mean(self.accuracies_per_task), 2)
+        mean_soft_match_accuracy = round(
+            statistics.mean(self.soft_match_accuracies_per_task), 2
+        )
+        self.accuracies_per_task.insert(0, mean_strict_accuracy)
+        self.soft_match_accuracies_per_task.insert(0, mean_soft_match_accuracy)
+        return mean_strict_accuracy, mean_soft_match_accuracy

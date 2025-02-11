@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 from pathlib import Path
 
@@ -21,3 +23,130 @@ def is_empty_file(file_path: Path) -> bool:
              False if file is non-empty
     """
     return os.path.isfile(file_path) and os.path.getsize(file_path) == 0
+
+
+def normalize_token(token: str) -> str:
+    """
+    Normalize the token by removing punctuation and converting to lowercase.
+
+    :param token: the token to clean
+    :return: the normalized token
+    """
+    return token.strip("-,.:;!?").lower()
+
+
+def answer_into_list(answer: str) -> list[str]:
+    """
+    Convert the answer into a list of words.
+
+    :param answer: the answer
+    :return: list of words
+    """
+    answer_list = [normalize_token(t) for t in answer.split(" ")]
+    return answer_list
+
+
+def two_true_one_pred(true: list, pred: list) -> bool:
+    """
+    Check if the prediction could be misleadingly correct due to
+    true answer containing two equal values.
+
+    :param true: the true answer
+    :param pred: the predicted answer
+    :return: True if the prediction is misleadingly correct, False otherwise
+    """
+    if len(true) == 2 and len(pred) != 2 and true[0] == true[1]:
+        return True
+    return False
+
+
+def misleading_no(true: set[str], pred: set[str]) -> bool:
+    """
+    Check if the prediction could misleadingly match as correct due to word boundaries.
+
+    :param true: the true answer
+    :param pred: the predicted answer
+    :return: True if the prediction is misleadingly correct, False otherwise
+    """
+    if "none" in true and {"no", "one"}.intersection(pred):
+        return True
+    if {"no", "one"}.intersection(true) and {"none", "mentioned"}.intersection(pred):
+        return True
+    if "no" in true and "not" in pred:
+        return True
+    return False
+
+
+def normalize_numbers(number_s: int | str | list[int | str]) -> str | list[str]:
+    """
+    Normalize numbers to a word. For example, "1" -> "one".
+
+    :param number_s: the number to normalize, can be a string, int or a list of such items
+    :return: the normalized number
+    """
+    normalize = {
+        "0": "none",
+        "1": "one",
+        "2": "two",
+        "3": "three",
+        "4": "four",
+        "5": "five",
+        "6": "six",
+        "7": "seven",
+        "8": "eight",
+        "9": "nine",
+    }
+    if type(number_s) == int:
+        return normalize[str(number_s)]
+    if type(number_s) in [str, int]:
+        if not number_s.isdigit():
+            raise ValueError(f"Expected a number, got {number_s}")
+        if number_s == "zero":
+            return "none"
+        return normalize[number_s]
+    elif number_s and type(number_s) == list:
+        return [normalize_numbers(number) for number in number_s]
+    else:
+        raise TypeError(
+            f"Expected int, str or list of int or str, got {type(number_s)}"
+        )
+
+
+def prepare_accuracy_headers(prompt_name):
+    """
+    Prepare the headers for the accuracies.
+
+    :param prompt_name: the name of the prompt
+    :return: the headers for the accuracies
+    """
+    prompt_name_ = prompt_name.replace("prompt_", "")
+    return {
+        "strict": f"{prompt_name_}_strict_accuracy",
+        "soft_match": f"{prompt_name_}_soft_match_accuracy",
+    }
+
+
+def add_accuracies(
+    accuracies, strict_acc_to_add, soft_match_acc_to_add, task_id, headers
+):
+    """
+    Add the accuracies to the dictionary.
+
+    :param accuracies: the accuracies dictionary
+    :param strict_acc_to_add: the strict accuracy to add
+    :param soft_match_acc_to_add: the soft match accuracy to add
+    :param task_id: the task id
+    :param headers: the headers for the accuracies
+    """
+
+    if accuracies.get(task_id) is None:
+        accuracies[task_id] = {"task_id": task_id}
+
+    accuracies[task_id].update(
+        {
+            headers["strict"]: strict_acc_to_add,
+            headers["soft_match"]: soft_match_acc_to_add,
+        }
+    )
+
+    return accuracies
