@@ -1,5 +1,4 @@
 import os
-from typing import Tuple
 
 import torch
 from torch.amp import autocast
@@ -26,7 +25,7 @@ class Model:
         self.temperature = temperature
         self.to_continue = to_continue
 
-    def load(self) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
+    def load(self) -> tuple[AutoModelForCausalLM, AutoTokenizer]:
         """
         Load the model and the tokenizer for the instance model name.
 

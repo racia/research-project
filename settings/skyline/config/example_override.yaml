@@ -1,0 +1,9 @@
+defaults:
+  # running this script will pull the prompt in this file over the prompt in skyline_config file
+  - skyline_config
+  - _self_
+
+prompt:
+  paths:
+    - "where/ever/the/prompts/will/be"
+  

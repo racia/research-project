@@ -4,7 +4,7 @@ from typing import Union
 
 from data.DataLoader import DataLoader
 from plots.Plotter import Plotter
-from settings.baseline.config.baseline_config import DataSplits
+from settings.config import DataSplits
 
 
 @dataclass

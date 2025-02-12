@@ -20,8 +20,9 @@ class Task:
         """
         self.number = number
         self.to_enumerate = to_enumerate
-        self.wrapper = "*EXAMPLE{number}*\n{example}\n"
-        self.folder = Path("enumerated" if to_enumerate else "not_enumerated")
+        self.folder = (
+            Path("data/examples") / "enumerated" if to_enumerate else "not_enumerated"
+        )
 
         self.handpicked = handpicked
         if self.handpicked and not_mentioned:
@@ -57,7 +58,7 @@ class TaskExample(Task):
             if i.name.startswith(f"task_{self.number}_")
         ]
         with open(paths[0], "r", encoding="utf-8") as file:
-            return self.wrapper.format(number="", example=file.read())
+            return file.read()
 
 
 class TaskExamples(Task):
@@ -83,9 +84,7 @@ class TaskExamples(Task):
         for i, file in enumerate(all_files, 1):
             path = self.folder / f"task_{self.number}_example_{i}.txt"
             with open(path, "r", encoding="utf-8") as file:
-                all_examples.append(
-                    self.wrapper.format(number=f" {i}", example=file.read())
-                )
+                all_examples.append(file.read())
         return iter(all_examples)
 
 

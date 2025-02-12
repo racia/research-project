@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from nltk.stem import WordNetLemmatizer
 
 from data.DataLoader import DataLoader
-from data.data_utils import *
+from data.utils import *
 
 
 class Statistics:

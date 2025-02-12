@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 import sys
 from pathlib import Path
 
@@ -15,11 +14,12 @@ from plots.Plotter import Plotter
 from prompts.Prompt import Prompt
 from settings.Model import Model
 from settings.baseline.Baseline import Baseline
+from settings.skyline.Skyline import Skyline
 from settings.utils import set_device
 
 
 @hydra.main(version_base=None)
-def run_model(cfg: DictConfig) -> None:
+def run_setting(cfg: DictConfig) -> None:
     """
     The function to run a model without modifications
     over the task data with the given config with such steps:
@@ -50,20 +50,9 @@ def run_model(cfg: DictConfig) -> None:
     loader = DataLoader(samples_per_task=cfg.data.samples_per_task)
     log_file = sys.stdout
 
-    if cfg.repository.save_here:
-        saver = DataSaver(
-            project_dir=cfg.repository.path,
-            subproject_dir=cfg.results.path,
-            save_to_repo=True,
-        )
-    else:
-        saver = DataSaver(
-            project_dir=HydraConfig.get().runtime.output_dir,
-            save_to_repo=False,
-        )
-    print(f"Results will be saved to: {saver.run_results_path}")
-    plotter = Plotter(result_path=saver.run_results_path)
-    os.environ["OUTPUT_DIR"] = str(saver.run_results_path)
+    saver = DataSaver(save_to=HydraConfig.get().run.dir)
+    print(f"Results will be saved to: {saver.results_path}")
+    plotter = Plotter(result_path=saver.results_path)
 
     stats = Statistics()
     strict_accuracies = {}
@@ -91,8 +80,7 @@ def run_model(cfg: DictConfig) -> None:
             model = Model(
                 cfg.model_name, cfg.max_new_tokens, cfg.temperature, cfg.to_continue
             )
-
-            setting = Baseline(
+            setting = Skyline(
                 model=model,
                 to_enumerate=cfg.data.to_enumerate,
                 parse_output=cfg.results.parse,
@@ -108,7 +96,7 @@ def run_model(cfg: DictConfig) -> None:
             pass
     except KeyError:
         raise ValueError(
-            f"Setting {cfg.setting} is not supported. "
+            f"Setting {cfg.setting.name} is not supported. "
             f"Please choose one of the following: Baseline, Skyline, Feedback, SD"
         )
 
@@ -135,11 +123,11 @@ def run_model(cfg: DictConfig) -> None:
         log_file_path, results_file_paths, accuracy_file_paths = (
             saver.create_result_paths(prompt_name=prompt_name, splits=data_splits)
         )
-        plotter.result_path = saver.run_results_path / prompt_name
+        plotter.result_path = saver.results_path / prompt_name
 
         # Once the printing is redirected to the log file,
         # the system output will be saved there without additional actions
-        if cfg.results.print_to_file:
+        if cfg.logging.print_to_file:
             # Print the prompt data to the output file
             # so that it was clear which prompt was used last
             print(f"Starting to query with the prompt: {prompt_name}")
@@ -148,6 +136,7 @@ def run_model(cfg: DictConfig) -> None:
                 f"Redirecting the system output to: {log_file_path}",
                 flush=True,
             )
+
             log_file = saver.redirect_printing_to_log_file(log_file_path)
 
             # Print the config data to the log file
@@ -183,7 +172,7 @@ def run_model(cfg: DictConfig) -> None:
             setting.soft_match_accuracies_per_task = []
 
             for task_id, task in sorted(tasks.items()):
-                if cfg.prompt.examples.add:
+                if cfg.prompt.examples.to_add:
                     setting.prompt.add_examples(
                         task_id=task_id, example_config=cfg.prompt.examples
                     )
@@ -266,7 +255,7 @@ def run_model(cfg: DictConfig) -> None:
             end="\n\n",
         )
 
-        if cfg.results.print_to_file:
+        if cfg.logging.print_to_file:
             # console printing must be returned
             # if printing was redirected to logs created at the beginning of the script
             # 'log_file' will exist in that case as well
@@ -275,7 +264,7 @@ def run_model(cfg: DictConfig) -> None:
         print("The run is finished successfully")
         print("______________________________")
 
-    plotter.result_path = saver.run_results_path
+    plotter.result_path = saver.results_path
 
     if len(cfg.prompt.paths) > 1:
         for split in data_in_splits.keys():
@@ -299,4 +288,4 @@ def run_model(cfg: DictConfig) -> None:
 
 
 if __name__ == "__main__":
-    run_model()
+    run_setting()

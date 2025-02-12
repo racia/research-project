@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 
+from data.utils import select_samples
 from settings.utils import expand_cardinal_points
 
 
@@ -16,7 +17,7 @@ class DataProcessor:
         """
         self.part_counter = 0
 
-    def process_data(self, data: dict[int, dict], samples_per_task: int) -> dict:
+    def process_data(self, data: dict[int, dict], samples_per_task: int = None) -> dict:
         """
         Process the data from a split.
 
@@ -53,8 +54,9 @@ class DataProcessor:
         """
         processed_data = {}
         for task in data:
+            samples = select_samples(list(data[task].keys()), samples_per_task)
             processed_data[task] = {}
-            for sample in list(data[task].keys())[:samples_per_task]:
+            for sample in samples:
 
                 parts = [
                     {

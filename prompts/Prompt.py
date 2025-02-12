@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from data.TaskExamples import TaskExample, TaskExamples, Task
-from settings.baseline.config.baseline_config import Enumerate, Wrapper, Examples
+from settings.config import Enumerate, Wrapper, Examples
 from settings.utils import structure_part
 
 

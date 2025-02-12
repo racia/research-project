@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import statistics
 from abc import ABC, abstractmethod
 
@@ -285,16 +283,6 @@ class Setting(ABC):
             id_=task_id,
             what="task",
             to_print=True,
-        )
-        print(
-            f"Strict accuracy for task {task_id}:",
-            strict_task,
-            end="\n\n",
-        )
-        print(
-            f"Soft match accuracy for task {task_id}:",
-            soft_task,
-            end="\n\n",
         )
 
         task_results[0]["accuracy"] = strict_task
