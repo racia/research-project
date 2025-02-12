@@ -25,6 +25,20 @@ def is_empty_file(file_path: Path) -> bool:
     return os.path.isfile(file_path) and os.path.getsize(file_path) == 0
 
 
+def select_samples(samples: list, samples_per_task: int | None) -> list:
+    """
+    Selects sample ids to select in each task.
+
+    :param samples: samples to select from
+    :param samples_per_task: number of samples per task
+    :return: selected samples
+    """
+    if samples_per_task and len(samples) > samples_per_task:
+        return samples[:samples_per_task]
+    else:
+        return samples
+
+
 def normalize_token(token: str) -> str:
     """
     Normalize the token by removing punctuation and converting to lowercase.
@@ -98,9 +112,9 @@ def normalize_numbers(number_s: int | str | list[int | str]) -> str | list[str]:
     }
     if type(number_s) == int:
         return normalize[str(number_s)]
-    if type(number_s) in [str, int]:
+    if type(number_s) == str:
         if not number_s.isdigit():
-            raise ValueError(f"Expected a number, got {number_s}")
+            return number_s
         if number_s == "zero":
             return "none"
         return normalize[number_s]
@@ -150,3 +164,31 @@ def add_accuracies(
     )
 
     return accuracies
+
+
+def is_hidden(path: Path) -> bool:
+    """
+    Check if a given path is hidden.
+
+    :param path: Path to check
+    :return: True if the path is hidden, False otherwise
+    """
+    return path.name.startswith(".")
+
+
+def contains_only_hidden_folders(directory: Path) -> bool:
+    """
+    Check if the directory contains only hidden non-empty folders at most with hidden files but no visible files.
+
+    :param directory: Path to the directory to check
+    :return: True if the directory contains only hidden non-empty folders, False otherwise
+    """
+    for item in directory.iterdir():
+        if item.is_dir():
+            if not is_hidden(item) or not contains_only_hidden_folders(item):
+                return False
+        else:
+            if not is_hidden(item):
+                return False
+
+    return True

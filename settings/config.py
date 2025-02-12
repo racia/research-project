@@ -66,17 +66,15 @@ class CSVHeaders:
 
 
 @dataclass
-class Repository:
-    path: str
-    save_here: bool
+class Logging:
+    print_to_file: bool
 
 
 @dataclass
 class Results:
     parse: bool
-    print_to_file: bool
-    path: str
     headers: list[CSVHeaders]
+    save_to: str
 
 
 @dataclass
@@ -84,5 +82,5 @@ class Config:
     model: Model
     data: Data
     prompt: Prompt
-    repository: Repository
+    logging: Logging
     results: Results

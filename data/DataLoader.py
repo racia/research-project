@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Union
 
 from data.DataProcessor import DataProcessor
-from settings.baseline.config.baseline_config import DataSplits
+from settings.config import DataSplits
 
 
 class DataLoader:
