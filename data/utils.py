@@ -164,31 +164,3 @@ def add_accuracies(
     )
 
     return accuracies
-
-
-def is_hidden(path: Path) -> bool:
-    """
-    Check if a given path is hidden.
-
-    :param path: Path to check
-    :return: True if the path is hidden, False otherwise
-    """
-    return path.name.startswith(".")
-
-
-def contains_only_hidden_folders(directory: Path) -> bool:
-    """
-    Check if the directory contains only hidden non-empty folders at most with hidden files but no visible files.
-
-    :param directory: Path to the directory to check
-    :return: True if the directory contains only hidden non-empty folders, False otherwise
-    """
-    for item in directory.iterdir():
-        if item.is_dir():
-            if not is_hidden(item) or not contains_only_hidden_folders(item):
-                return False
-        else:
-            if not is_hidden(item):
-                return False
-
-    return True
