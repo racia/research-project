@@ -258,11 +258,13 @@ class Setting(ABC):
                     "sample_no": sample_id_,
                     "task": formatted_part,
                     "true_result": y_true,
+                    "model_result": decoded_output
                 }
                 part_result.update(model_output)
 
                 task_results.append(part_result)
-                y_pred_sample.append(part_result["model_answer"])
+
+                y_pred_sample.append(model_output['model_answer'])
 
             # 7. Report the results for the sample: answers and accuracy
             self.print_sample_predictions(trues=y_true_sample, preds=y_pred_sample)
