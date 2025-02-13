@@ -1,8 +1,9 @@
 defaults:
   # running this script will pull the prompt in this file over the prompt in baseline_config file
-  - baseline_config_CLuster
+  - baseline_config
   - _self_
 
 prompt:
   paths:
-    - "${oc.env:HOME}/workspace/students/reasoning/prompts/new.txt"
+    - "where/ever/the/prompts/will/be"
+  

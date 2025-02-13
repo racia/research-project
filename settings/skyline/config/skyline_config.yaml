@@ -1,5 +1,5 @@
 model:
-  name: 'meta-llama/Meta-Llama-3-8B-Instruct'
+  name: "meta-llama/Meta-Llama-3-8B-Instruct"
   max_new_tokens: 12
   # with temperature==0.0 the model will use log probability
   # to automatically increase the temperature until certain thresholds are hit.
@@ -10,20 +10,11 @@ model:
   to_continue: False
 
 setting:
-  name: 'Baseline'
-
-
-interpretability:
-  switch: False
-  path: 'interpretability/'
-  setting:
-    sample: False # sample-wise
-    part: True # part-wise
-
+  name: "Skyline"
 
 data:
   # small data with validation
-  path: '${oc.env:HOME}/tasks_1-20_v1-2/en-valid/'
+  path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
   # Order: train, valid, test
   splits:
     train: False
@@ -33,7 +24,8 @@ data:
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
   task_ids: ~
-  # to get all samples use ~
+  # to get all samples use ~ (will be converted to None)
+  # to set a specific number of samples use an int
   samples_per_task: 5
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
@@ -44,43 +36,26 @@ data:
 prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
-    - "${oc.env:HOME}/research-project/prompts/init_prompt.txt"
+    - "${oc.env:HOME}/research-project/prompts/init_prompt_direct_answer.txt"
   wrapper:
     # if to wrap the part prompt with the task description
     context: |
+      *TASK*
       Here are the context sentences:
       {context}
     question: |
       Now, answer the following question:
       {question}
-  examples:
-    to_add: True
-    enumerated: True
-    handpicked: True
-    not_mentioned: False
-    number: 1
-    wrapper: |
-      *EXAMPLE{number}*
-      {example}
 
-repository:
-  # path should be relative to the working directory (where the script is)
-  path: "${oc.env:HOME}/research-project/"
-  # if to save the results in the repository,
-  # if False, the results will be saved in the 'output' folder
-  save: True
+logging:
+  # if to print the results to a log file, otherwise will print to console
+  print_to_file: True
 
 results:
   parse: True
-  # here, csv results and logs will be stored
-  # change it for yourself but make sure to create the folders beforehand
-  # should be relative to 'repo_path'! don't forget the trailing '/'!
-  path: 'baseline/'
-  print_to_file: True
   headers:
     - id
     - task_id
-    - part_id
     - sample_no
     - task
     - true_result
@@ -89,3 +64,9 @@ results:
     - model_result
     - accuracy
     - soft_match_accuracy
+  
+hydra:
+  run:
+    # the run directory with logs, plots, and csv results will be created here
+    # use more folders if needed for distinguishing between different experiments
+    dir: "${oc.env:HOME}/research-project/outputs/${now:%d-%m-%Y}/${now:%H-%M-%S}"

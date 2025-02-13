@@ -36,5 +36,8 @@ baseline/
 # Results
 results/
 
+# Outputs
+outputs/
+
 # Prompts
 settings/baseline/config/prompt_*_shot*
