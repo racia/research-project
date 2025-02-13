@@ -20,9 +20,7 @@ class Task:
         """
         self.number = number
         self.to_enumerate = to_enumerate
-        self.folder = (
-            Path("data/examples") / "enumerated" if to_enumerate else "not_enumerated"
-        )
+        self.folder = Path("data/examples") / ("enumerated" if to_enumerate else "not_enumerated")
 
         self.handpicked = handpicked
         if self.handpicked and not_mentioned:
@@ -61,6 +59,7 @@ class TaskExample(Task):
             return file.read()
 
 
+
 class TaskExamples(Task):
     """
     A class to represent all examples for a task.
@@ -83,8 +82,9 @@ class TaskExamples(Task):
         all_examples = []
         for i, file in enumerate(all_files, 1):
             path = self.folder / f"task_{self.number}_example_{i}.txt"
-            with open(path, "r", encoding="utf-8") as file:
-                all_examples.append(file.read())
+            with open(path, "r", encoding="utf-8") as f:
+                all_examples.append(f.read())
+
         return iter(all_examples)
 
 
