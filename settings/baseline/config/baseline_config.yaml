@@ -1,6 +1,6 @@
 model:
-  name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 12
+  name: 'meta-llama/Meta-Llama-3-8B-Instruct'
+  max_new_tokens: 100
   # with temperature==0.0 the model will use log probability
   # to automatically increase the temperature until certain thresholds are hit.
   # I.e., in need of lowest temperature, set it to something like 0.00000001
@@ -12,13 +12,22 @@ model:
 setting:
   name: "Baseline"
 
+
+interpretability:
+  switch: False
+  path: 'interpretability/'
+  setting:
+    sample: False # sample-wise
+    part: True # part-wise
+
+
 data:
   # small data with validation
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
   # Order: train, valid, test
   splits:
-    train: False
-    valid: True
+    train: True
+    valid: False
     test: False
   # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
@@ -44,10 +53,9 @@ prompt:
       Here are the context sentences:
       {context}
     question: |
-      Now, answer the following question:
       {question}
   examples:
-    to_add: True
+    to_add: False # True for default
     enumerated: True
     handpicked: True
     not_mentioned: False
@@ -65,6 +73,7 @@ results:
   headers:
     - id
     - task_id
+    - part_id
     - sample_no
     - task
     - true_result

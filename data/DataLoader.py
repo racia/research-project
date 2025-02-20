@@ -104,7 +104,7 @@ class DataLoader:
     def load_task_data(
         self,
         path: str,
-        split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
+        split: Union[DataSplits.train, DataSplits.valid, DataSplits.test], # type: ignore
         tasks: int = None,
     ) -> dict:
         """

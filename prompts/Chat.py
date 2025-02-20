@@ -3,6 +3,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Union
 
+from interpretability.Interpretability import Interpretability
+
+
 
 @dataclass
 class Source:
@@ -41,7 +44,7 @@ class Chat:
 
     @staticmethod
     def format_message(
-        part: str | list[str], role: Union[Source.user, Source.assistant]
+        part: str | list[str], role: Union[Source.user, Source.assistant] # type: ignore
     ) -> dict[str, str]:
         """
         Formats the prompt by managing the data type and putting in into
@@ -54,12 +57,18 @@ class Chat:
         if type(part) is list:
             part = "\n".join(part)
         return {"role": role, "content": part}
+    
+
+    def get_message(self):
+        return self.messages
+
 
     def add_message(
         self,
         part: str | list[str],
-        source: Union[Source.user, Source.assistant],
+        source: Union[Source.user, Source.assistant], # type: ignore
         model_role: str = "student",
+        interpretability: Interpretability = None  # type: ignore
     ) -> None:
         """
         Add a message to the messages list.
@@ -71,4 +80,10 @@ class Chat:
         if self.multi_system:
             self.messages[model_role].append(self.format_message(part, source))
         else:
+            if interpretability: # @TODO Check whether part-wise
+                if source == "assistant":
+                    return
+                if len(self.messages) > 1: # Consider all previous context
+                    #self.messages.pop()
+                    pass
             self.messages.append(self.format_message(part, source))

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import os
+import statistics
 import sys
 from pathlib import Path
 
@@ -14,12 +16,11 @@ from plots.Plotter import Plotter
 from prompts.Prompt import Prompt
 from settings.Model import Model
 from settings.baseline.Baseline import Baseline
-from settings.skyline.Skyline import Skyline
 from settings.utils import set_device
 
 
 @hydra.main(version_base=None)
-def run_setting(cfg: DictConfig) -> None:
+def run_model(cfg: DictConfig) -> None:
     """
     The function to run a model without modifications
     over the task data with the given config with such steps:
@@ -51,15 +52,13 @@ def run_setting(cfg: DictConfig) -> None:
     log_file = sys.stdout
 
     saver = DataSaver(save_to=HydraConfig.get().run.dir)
-    print(f"Results will be saved to: {saver.results_path}")
     plotter = Plotter(result_path=saver.results_path)
+    os.environ["INTERP_DIR"] = os.path.join("/research-project/", cfg.interpretability.path)
 
     stats = Statistics()
     strict_accuracies = {}
     soft_match_accuracies = {}
 
-    setting = None
-    print("The model is being loaded...", end="\n\n")
     try:
         if cfg.setting.name == "Baseline":
             model = Model(
@@ -80,7 +79,8 @@ def run_setting(cfg: DictConfig) -> None:
             model = Model(
                 cfg.model_name, cfg.max_new_tokens, cfg.temperature, cfg.to_continue
             )
-            setting = Skyline(
+
+            setting = Baseline(
                 model=model,
                 to_enumerate=cfg.data.to_enumerate,
                 parse_output=cfg.results.parse,
@@ -96,12 +96,12 @@ def run_setting(cfg: DictConfig) -> None:
             pass
     except KeyError:
         raise ValueError(
-            f"Setting {cfg.setting.name} is not supported. "
+            f"Setting {cfg.setting} is not supported. "
             f"Please choose one of the following: Baseline, Skyline, Feedback, SD"
         )
 
     print("The model is being loaded...", end="\n\n")
-    setting.total_tasks = 0
+    setting.model.total_tasks = 0
     data_in_splits = {}
     print(f"The model {cfg.model.name} is loaded successfully", flush=True)
 
@@ -114,8 +114,8 @@ def run_setting(cfg: DictConfig) -> None:
             tasks=cfg.data.task_ids,
         )
         data_in_splits[split] = data_tasks
-        setting.total_tasks += len(data_tasks)
-    setting.total_parts = loader.number_of_parts
+        setting.model.total_tasks += len(data_tasks)
+    setting.model.total_parts = loader.number_of_parts
     print("The data is loaded successfully", end="\n\n")
 
     for prompt_num, prompt_path in enumerate(cfg.prompt.paths, 1):
@@ -138,6 +138,7 @@ def run_setting(cfg: DictConfig) -> None:
             )
 
             log_file = saver.redirect_printing_to_log_file(log_file_path)
+            setting.model.log_file = log_file
 
             # Print the config data to the log file
             print(f"Using the model: {cfg.model.name}")
@@ -183,6 +184,7 @@ def run_setting(cfg: DictConfig) -> None:
                     task_id=task_id,
                     task_data=task,
                     prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.prompt.paths)}",
+                    interpr = cfg.interpretability
                 )
                 saver.save_output(
                     data=task_result,
@@ -202,25 +204,35 @@ def run_setting(cfg: DictConfig) -> None:
                 end="\n\n",
             )
 
-            mean_strict_accuracy, mean_soft_match_accuracy = (
-                setting.get_mean_accuracies()
+            # Prepare the prompt accuracies for saving
+            accuracies_to_save = []
+            for task_id, accuracy, soft_match_accuracy in zip(
+                tasks.keys(),
+                setting.accuracies_per_task,
+                setting.soft_match_accuracies_per_task,
+            ):
+                accuracies_to_save.append(
+                    {
+                        "task": task_id,
+                        "accuracy": accuracy,
+                        "soft_match_accuracy": soft_match_accuracy,
+                    }
+                )
+            # "zero task" stores the mean accuracy for all tasks
+            accuracies_to_save.append(
+                {
+                    "task": 0,
+                    "accuracy": statistics.mean(setting.accuracies_per_task),
+                    "soft_match_accuracy": statistics.mean(
+                        setting.soft_match_accuracies_per_task
+                    ),
+                }
             )
 
-            metrics = {
-                "accuracy": mean_strict_accuracy,
-                "soft_match_accuracy": mean_soft_match_accuracy,
-            }
-            # Save the metrics for the split with prompts results
-            saver.save_output(
-                data=[metrics],
-                headers=list(metrics.keys()),
-                file_path=results_file_paths[split],
-            )
             # Save the prompt accuracies for the split
-            saver.save_task_accuracies(
-                task_ids=[0] + list(tasks.keys()),
-                strict_accuracies=setting.accuracies_per_task,
-                soft_match_accuracies=setting.soft_match_accuracies_per_task,
+            saver.save_output(
+                data=accuracies_to_save,
+                headers=["task", "accuracy", "soft_match_accuracy"],
                 file_path=accuracy_file_paths[split],
             )
 
@@ -230,7 +242,6 @@ def run_setting(cfg: DictConfig) -> None:
                 prompt_name
             ] = setting.soft_match_accuracies_per_task
 
-            # Plot the prompt accuracies for the split
             plotter.plot_acc_per_task_and_prompt(
                 acc_per_prompt_task={
                     "accuracy": setting.accuracies_per_task,
@@ -264,16 +275,10 @@ def run_setting(cfg: DictConfig) -> None:
         print("The run is finished successfully")
         print("______________________________")
 
-    plotter.result_path = saver.results_path
+    #plotter.result_path = saver.results_path
 
     if len(cfg.prompt.paths) > 1:
         for split in data_in_splits.keys():
-            saver.save_run_accuracies(
-                task_ids=[0] + cfg.data.task_ids,
-                strict_accuracies=strict_accuracies,
-                soft_match_accuracies=soft_match_accuracies,
-                split=split,
-            )
             # Plot accuracies for all prompts the model ran with
             plotter.plot_accuracies(
                 accuracies=strict_accuracies[split],
@@ -282,10 +287,78 @@ def run_setting(cfg: DictConfig) -> None:
                 compare_prompts=True,
             )
 
+            gen_accuracies_to_save = {}
+            gen_headers = ["task_id"]
+
+            for prompt_name, strict_accuracies, soft_match_accuracies in zip(
+                strict_accuracies[split].keys(),
+                strict_accuracies[split].values(),
+                soft_match_accuracies[split].values(),
+            ):
+                prompt_name_ = prompt_name.replace("prompt_", "")
+                prompt_headers = {
+                    "strict": f"{prompt_name_}_strict_accuracy",
+                    "soft_match": f"{prompt_name_}_soft_match_accuracy",
+                }
+                for task_id, (
+                    strict_accuracy,
+                    soft_match_accuracy,
+                ) in enumerate(zip(strict_accuracies, soft_match_accuracies), 1):
+
+                    if gen_accuracies_to_save.get(task_id) is None:
+                        gen_accuracies_to_save[task_id] = {"task_id": task_id}
+
+                    gen_accuracies_to_save[task_id].update(
+                        {
+                            prompt_headers["strict"]: strict_accuracy,
+                            prompt_headers["soft_match"]: soft_match_accuracy,
+                        }
+                    )
+                if gen_accuracies_to_save.get(0) is None:
+                    gen_accuracies_to_save[0] = {"task_id": 0}
+
+                gen_accuracies_to_save[0].update(
+                    {
+                        prompt_headers["strict"]: statistics.mean(strict_accuracies),
+                        prompt_headers["soft_match"]: statistics.mean(
+                            soft_match_accuracies
+                        ),
+                    }
+                )
+                gen_headers.extend(prompt_headers.values())
+
+            for task_id, accuracies in gen_accuracies_to_save.items():
+                gen_accuracies_to_save[task_id].update(
+                    {
+                        "mean_strict_accuracy": statistics.mean(
+                            [
+                                value
+                                for name, value in accuracies.items()
+                                if "strict" in name
+                            ]
+                        ),
+                        "mean_soft_match_accuracy": statistics.mean(
+                            [
+                                value
+                                for name, value in accuracies.items()
+                                if "soft_match" in name
+                            ]
+                        ),
+                    }
+                )
+
+            gen_headers.extend(["mean_strict_accuracy", "mean_soft_match_accuracy"])
+
+            saver.save_output(
+                data=list(gen_accuracies_to_save.values()),
+                headers=gen_headers,
+                file_path=saver.run_results_path / f"{split}_accuracies.csv",
+            )
+
     print("Plots are saved successfully and general accuracies are saved", end="\n\n")
 
     print("The script has finished running successfully")
 
 
 if __name__ == "__main__":
-    run_setting()
+    run_model()
