@@ -60,7 +60,7 @@ def numerate_lines(lines: dict[int, str]) -> list[str]:
 
 def structure_part(
     part: dict[str, dict[int, str]],
-    to_enumerate: dict[Union[Enumerate.context, Enumerate.question], bool],
+    to_enumerate: dict[Union[Enumerate.context, Enumerate.question], bool], # type: ignore
 ) -> tuple[str, str]:
     """
     Structures the lines into a readable format.
