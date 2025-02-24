@@ -1,16 +1,12 @@
-
-from __future__ import annotations
-
 import statistics
 from abc import ABC, abstractmethod
+
 import torch
 
 from data.Statistics import Statistics
-from interpretability.Interpretability import Interpretability
 from prompts.Chat import Chat, Source
 from prompts.Prompt import Prompt
 from settings.Model import Model
-from settings.baseline import utils
 from settings.utils import Enumerate
 
 
@@ -27,7 +23,7 @@ class Setting(ABC):
         parse_output: bool,
         statistics: Statistics,
         prompt: Prompt = None,
-        samples_per_task: int = -1,
+        samples_per_task: int = 5,
     ):
         """
         Baseline class manages model runs and data flows around it.
@@ -61,7 +57,6 @@ class Setting(ABC):
     @abstractmethod
     def prepare_prompt(self, sample_part: dict[str, dict], chat: Chat) -> str:
         """
-        @TODO: self.to_continue check, default: add_generation_prompt
         Prepares the prompt to include the current part of the sample.
         :param sample_part:
         :param chat:
@@ -70,7 +65,7 @@ class Setting(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def apply_setting(self, decoded_output: str, fine_tue: bool = False) -> dict[str, str]:
+    def apply_setting(self, decoded_output: str) -> dict[str, str]:
         """
         Apply setting-specific postprocessing of the inital model output.
         For the baseline and skyline, this consists of parsing the output.
@@ -157,7 +152,6 @@ class Setting(ABC):
         task_id: int,
         task_data: dict[int, list[dict[str, dict]]],
         prompt_name: str,
-        interpr: Interpretability = None
     ) -> list[dict[str, int | str]]:
         """
         Manages the data flow in and out of the model, iteratively going through
@@ -172,10 +166,8 @@ class Setting(ABC):
         4. create and format the prompt
         5. call the model and yield the response
         6. add the model's output to conversation
-        7. Parse output (and save for fine-tuning)
-        8. Call interpretability attention score method
-        9. report the results for a sample: answers and accuracy
-        10. report the results for the task:  accuracy
+        7. report the results for a sample: answers and accuracy
+        8. report the results for the task:  accuracy
 
         :param task_id: task id corresponding to task name in original dataset
         :param task_data: task data of the following structure:
@@ -209,12 +201,6 @@ class Setting(ABC):
         sample_accuracies = []
         sample_soft_match_accuracies = []
 
-        if not interpr.switch:
-            interpr = None
-        else:
-            # Initialize interpretability for each new sample - since new chat
-            interpretability1 = Interpretability(self.model, self.model.tokenizer, task_id)
-
         # 1. Iterate through samples
         for sample_id, sample_parts in list(task_data.items()):
             # each sample is a new conversation
@@ -246,7 +232,7 @@ class Setting(ABC):
                     part=sample_part, to_enumerate=self.to_enumerate
                 )
 
-                chat.add_message(part=formatted_part, source=Source.user, interpretability=interpr)
+                chat.add_message(part=formatted_part, source=Source.user)
 
                 formatted_prompt = self.prepare_prompt(
                     sample_part=sample_part, chat=chat
@@ -256,19 +242,17 @@ class Setting(ABC):
                 decoded_output = self.model.call(prompt=formatted_prompt)
                 print(
                     "Model's output:",
-                    decoded_output.lower(),
+                    decoded_output,
                     end="\n\n\n",
                     flush=True,
                 )
 
                 # 6. Add the model's output to conversation
-                chat.add_message(part=decoded_output, source=Source.assistant, interpretability=interpr)
+                chat.add_message(part=decoded_output, source=Source.assistant)
 
-                # 7. Parse output (and if fune-tuning: write in task_id files)
-                model_output = self.apply_setting(decoded_output=decoded_output, fine_tune=False, task_id=task_id, formatted_part=formatted_part)
+                model_output = self.apply_setting(decoded_output=decoded_output)
 
                 part_result = {
-                    "part_id": part_id,
                     "id": self.question_id,
                     "task_id": task_id,
                     "sample_no": sample_id_,
@@ -282,15 +266,7 @@ class Setting(ABC):
 
                 y_pred_sample.append(model_output['model_answer'])
 
-                # 8. Call interpretability attention score method
-                if interpr:
-                    interpretability1.cal_attn(part_id=part_id, question=formatted_part, reason=part_result["model_reasoning"], answer=part_result["model_answer"], msg = chat.get_message())
-                    
-                    # Put model back into training mode
-                    self.model.train()
-
-
-            # 9. Report the results for the sample: answers and accuracy
+            # 7. Report the results for the sample: answers and accuracy
             self.print_sample_predictions(trues=y_true_sample, preds=y_pred_sample)
 
             strict_sample, soft_sample = self.calculate_and_print_accuracies(
@@ -301,7 +277,7 @@ class Setting(ABC):
             sample_accuracies.append(strict_sample)
             sample_soft_match_accuracies.append(soft_sample)
 
-        # 10. Report the results for the task: accuracy
+        # 8. Report the results for the task: accuracy
         print("\n- TASK RESULTS -", end="\n\n")
 
         strict_task, soft_task = self.calculate_and_print_accuracies(

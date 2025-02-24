@@ -22,7 +22,7 @@ class DataProcessor:
         Process the data from a split.
 
         :param data: data to process
-        :param samples_per_task: number of samples to process and return per task, default processes all
+        :param samples_per_task: number of samples to process and return per task
         :return: processed data of type
                  dict[int, dict[str, dict[str, dict[str, str] | dict[str, list[str]] | list[list[int]]]]
 

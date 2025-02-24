@@ -79,5 +79,5 @@ class Model:
                         )
                         for i in range(len(outputs))
                     ]
-                )
+                ).lower()
             return decoded_output
