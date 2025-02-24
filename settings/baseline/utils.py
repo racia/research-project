@@ -9,7 +9,7 @@ def parse_output(output: str) -> dict[str, str]:
     :return: dictionary with the model answer and reasoning
     """
     answer_pattern = re.compile(r"(?i)(?<=answer:)[\s ]*.+")
-    reasoning_pattern = re.compile(r"(?i)((?<=reasoning)|(?<=reason)):[\s ]*.+")
+    reasoning_pattern = re.compile(r"(?i)(?<=reasoning:)[\s ]*.+")
 
     answer = answer_pattern.search(output)
     if not answer:
