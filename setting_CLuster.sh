@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=setting               # TODO: adjust job name
+#SBATCH --job-name=setting         # TODO: adjust job name
 
 #SBATCH --gres=gpu:2
 #SBATCH --mem=32000
@@ -57,7 +57,7 @@ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 # declare array of config paths and names, e.g. "/path/to/config config_name"
 # TODO: add config(s) to array
 declare -a CONFIGS=(
-  "$HOME/research-project/baseline/config baseline_config"
+  "$HOME/research-project/settings/baseline/config baseline_config"
 )
 
 for CONFIG in "${CONFIGS[@]}"

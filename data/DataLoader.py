@@ -15,7 +15,7 @@ class DataLoader:
     This class handles loading the data.
     """
 
-    def __init__(self, samples_per_task: int = -1):
+    def __init__(self, samples_per_task: int = None):
         """
         Initialize the DataLoader.
         The dataloader handles the reading and loading of data, as well as the mapping of tasks to
@@ -23,6 +23,8 @@ class DataLoader:
         """
         self.number_of_parts = 0
         self.samples_per_task = samples_per_task
+        self.number_of_tasks = 0
+        self.tasks = []
 
     @staticmethod
     def get_task_mapping(path: Path) -> dict[int, list[Path]]:
@@ -75,7 +77,7 @@ class DataLoader:
         self,
         path: Path,
         split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
-        tasks=None,
+        tasks: list[int] = None,
     ) -> dict[int, dict]:
         """
         Read data from file for a split.
@@ -105,7 +107,7 @@ class DataLoader:
         self,
         path: str,
         split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
-        tasks: int = None,
+        tasks: list[int] = None,
     ) -> dict:
         """
         Prepare the data: load raw data and process it.
@@ -116,9 +118,13 @@ class DataLoader:
         :return: processed data
         """
         processor = DataProcessor()
+        self.number_of_tasks = len(tasks) if tasks else 20
+        self.tasks = tasks if tasks else list(range(1, 21))
         raw_data = self.load_raw_task_data(path=Path(path), split=split, tasks=tasks)
         processed_data = processor.process_data(raw_data, self.samples_per_task)
         self.number_of_parts = processor.part_counter
+        if not self.samples_per_task:
+            self.samples_per_task = processor.sample_counter
         return processed_data
 
     @staticmethod
@@ -139,30 +145,31 @@ class DataLoader:
         :return: dictionary with the task, accuracy, and soft match accuracy lists
         """
         data = defaultdict(list)
-        with open(Path(result_file_path), "rt", encoding="UTF-8") as f:
+        with open(Path(result_file_path), "rt", encoding="UTF-8", errors="ignore") as f:
             reader = csv.DictReader(f, delimiter="\t")
             for row in reader:
-                if list_output:
-                    task_id = int(row["task_id"])
-                    row_ = {}
-                    for k, v in row.items():
-                        if k in headers and v:
-                            if v.isdigit():
-                                row_[k] = int(v)
-                            elif v.replace(".", "", 1).isdigit():
-                                row_[k] = float(v)
+                if row["task_id"].isdigit():
+                    if list_output:
+                        task_id = int(row["task_id"])
+                        row_ = {}
+                        for k, v in row.items():
+                            if k in headers and v:
+                                if v.isdigit():
+                                    row_[k] = int(v)
+                                elif v.replace(".", "", 1).isdigit():
+                                    row_[k] = float(v)
+                                else:
+                                    row_[k] = v
+                        data[task_id].append(row_)
+                    else:
+                        for header in headers:
+                            value = row[header]
+                            if value.isdigit():
+                                data[header].append(int(value))
+                            elif value.replace(".", "", 1).isdigit():
+                                data[header].append(float(value))
                             else:
-                                row_[k] = v
-                    data[task_id].append(row_)
-                else:
-                    for header in headers:
-                        value = row[header]
-                        if value.isdigit():
-                            data[header].append(int(value))
-                        elif value.replace(".", "", 1).isdigit():
-                            data[header].append(float(value))
-                        else:
-                            data[header].append(row[header])
+                                data[header].append(row[header])
         return data
 
 
