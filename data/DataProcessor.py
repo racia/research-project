@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 import re
-
-from data.utils import select_samples
+from collections import defaultdict
 from settings.utils import expand_cardinal_points
 
 
@@ -16,6 +15,7 @@ class DataProcessor:
         Preprocess or postprocess the data.
         """
         self.part_counter = 0
+        self.sample_counter = 0
 
     def process_data(self, data: dict[int, dict], samples_per_task: int = None) -> dict:
         """
@@ -52,12 +52,12 @@ class DataProcessor:
                      }
                  }
         """
-        processed_data = {}
-        for task in data:
-            samples = select_samples(list(data[task].keys()), samples_per_task)
-            processed_data[task] = {}
-            for sample in samples:
+        processed_data = defaultdict(dict)
+        for task_id, task in data.items():
+            samples = list(data[task_id].keys())[:samples_per_task]
+            self.sample_counter += len(samples)
 
+            for sample in samples:
                 parts = [
                     {
                         "context": {},
@@ -66,7 +66,7 @@ class DataProcessor:
                         "supporting_fact": [],
                     }
                 ]
-                for line in data[task][sample]:
+                for line in task[sample]:
                     cleaned = line.strip()
                     # regex: group 1: line number: \d+\s+
                     # no group: space: \s+
@@ -115,6 +115,6 @@ class DataProcessor:
 
                 # Remove the last empty part added after the last question was matched
                 parts.pop()
-                processed_data[task][sample] = parts
+                processed_data[task_id][sample] = parts
 
         return processed_data

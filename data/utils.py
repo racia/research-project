@@ -3,15 +3,8 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-
-def check_or_create_directory(path: str) -> None:
-    """
-    Check if the directory exists, if not create it.
-
-    :param path: path to the directory
-    """
-    if not os.path.exists(path):
-        os.makedirs(path)
+from evaluation.Accuracy import Accuracy
+from evaluation.Evaluator import MetricEvaluator
 
 
 def is_empty_file(file_path: Path) -> bool:
@@ -25,108 +18,7 @@ def is_empty_file(file_path: Path) -> bool:
     return os.path.isfile(file_path) and os.path.getsize(file_path) == 0
 
 
-def select_samples(samples: list, samples_per_task: int | None) -> list:
-    """
-    Selects sample ids to select in each task.
-
-    :param samples: samples to select from
-    :param samples_per_task: number of samples per task
-    :return: selected samples
-    """
-    if samples_per_task and len(samples) > samples_per_task:
-        return samples[:samples_per_task]
-    else:
-        return samples
-
-
-def normalize_token(token: str) -> str:
-    """
-    Normalize the token by removing punctuation and converting to lowercase.
-
-    :param token: the token to clean
-    :return: the normalized token
-    """
-    return token.strip("-,.:;!?").lower()
-
-
-def answer_into_list(answer: str) -> list[str]:
-    """
-    Convert the answer into a list of words.
-
-    :param answer: the answer
-    :return: list of words
-    """
-    answer_list = [normalize_token(t) for t in answer.split(" ")]
-    return answer_list
-
-
-def two_true_one_pred(true: list, pred: list) -> bool:
-    """
-    Check if the prediction could be misleadingly correct due to
-    true answer containing two equal values.
-
-    :param true: the true answer
-    :param pred: the predicted answer
-    :return: True if the prediction is misleadingly correct, False otherwise
-    """
-    if len(true) == 2 and len(pred) != 2 and true[0] == true[1]:
-        return True
-    return False
-
-
-def misleading_no(true: set[str], pred: set[str]) -> bool:
-    """
-    Check if the prediction could misleadingly match as correct due to word boundaries.
-
-    :param true: the true answer
-    :param pred: the predicted answer
-    :return: True if the prediction is misleadingly correct, False otherwise
-    """
-    if "none" in true and {"no", "one"}.intersection(pred):
-        return True
-    if {"no", "one"}.intersection(true) and {"none", "mentioned"}.intersection(pred):
-        return True
-    if "no" in true and "not" in pred:
-        return True
-    return False
-
-
-def normalize_numbers(number_s: int | str | list[int | str]) -> str | list[str]:
-    """
-    Normalize numbers to a word. For example, "1" -> "one".
-
-    :param number_s: the number to normalize, can be a string, int or a list of such items
-    :return: the normalized number
-    """
-    normalize = {
-        "0": "none",
-        "1": "one",
-        "2": "two",
-        "3": "three",
-        "4": "four",
-        "5": "five",
-        "6": "six",
-        "7": "seven",
-        "8": "eight",
-        "9": "nine",
-    }
-    if type(number_s) == int:
-        return normalize[str(number_s)]
-    if type(number_s) == str:
-        if not number_s.isdigit():
-            return number_s
-        if number_s == "zero":
-            return "none"
-        return normalize[number_s]
-    elif number_s and type(number_s) == list:
-        return [normalize_numbers(number) for number in number_s]
-    else:
-        raise TypeError(
-            f"Expected int, str or list of int or str, got {type(number_s)}"
-        )
-
-
-def prepare_accuracy_headers(prompt_name):
+def prepare_accuracy_headers(prompt_name: str = ""):
     """
     Prepare the headers for the accuracies.
 
@@ -135,32 +27,151 @@ def prepare_accuracy_headers(prompt_name):
     """
     prompt_name_ = prompt_name.replace("prompt_", "")
     return {
-        "strict": f"{prompt_name_}_strict_accuracy",
-        "soft_match": f"{prompt_name_}_soft_match_accuracy",
+        "exact_match": f"{prompt_name_}_exact_match_accuracy".strip("_"),
+        "soft_match": f"{prompt_name_}_soft_match_accuracy".strip("_"),
     }
 
 
-def add_accuracies(
-    accuracies, strict_acc_to_add, soft_match_acc_to_add, task_id, headers
-):
+def format_task_metrics(
+    evaluator: MetricEvaluator, headers: dict, metrics_to_save: dict
+) -> dict[str, dict]:
     """
-    Add the accuracies to the dictionary.
+    Format the metrics for the split to save them later.
 
-    :param accuracies: the accuracies dictionary
-    :param strict_acc_to_add: the strict accuracy to add
-    :param soft_match_acc_to_add: the soft match accuracy to add
-    :param task_id: the task id
+    :param evaluator: the evaluator instance
+    :param headers: accuracy headers
+    :param metrics_to_save: the accuracies to save
+    :return: the metrics to save
+    """
+    metrics = {
+        "there": evaluator.there,
+        "verbs": evaluator.verbs,
+        "pronouns": evaluator.pronouns,
+        "not_mentioned": evaluator.not_mentioned,
+    }
+    for metric, value in metrics.items():
+        if metric not in metrics_to_save:
+            metrics_to_save[metric] = {"task_id": metric}
+        metrics_to_save[metric].update({headers["exact_match"]: value})
+    return metrics_to_save
+
+
+def format_accuracy_metrics(
+    exact_match_accuracies: Accuracy,
+    soft_match_accuracies: Accuracy,
+    headers: dict = None,
+    accuracies_to_save: dict[str, dict] = None,
+) -> dict[str, dict]:
+    """
+    Format the accuracy metrics for the split to save them later:
+    - mean accuracy for all tasks
+    - standard deviation for all tasks
+
+    :param accuracies_to_save: the accuracies to save
+    :param exact_match_accuracies: the exact-match accuracies
+    :param soft_match_accuracies: the soft-match accuracies
     :param headers: the headers for the accuracies
     """
+    accuracy_metrics = {
+        "mean": {
+            "task_id": "mean",
+            (
+                headers["exact_match"] if headers else "exact_match_accuracy"
+            ): exact_match_accuracies.get_mean(),
+            (
+                headers["soft_match"] if headers else "soft_match_accuracy"
+            ): soft_match_accuracies.get_mean(),
+        },
+        "std": {
+            "task_id": "std",
+            (
+                headers["exact_match"] if headers else "exact_match_accuracy"
+            ): exact_match_accuracies.get_std(),
+            (
+                headers["soft_match"] if headers else "soft_match_accuracy"
+            ): soft_match_accuracies.get_std(),
+        },
+    }
+    accuracies_to_save = accuracies_to_save if accuracies_to_save else {}
+    for task, metrics in accuracy_metrics.items():
+        if not accuracies_to_save.get(task):
+            accuracies_to_save[task] = {"task_id": task}
+        accuracies_to_save[task].update(metrics)
+    return accuracies_to_save
 
-    if accuracies.get(task_id) is None:
-        accuracies[task_id] = {"task_id": task_id}
 
-    accuracies[task_id].update(
-        {
-            headers["strict"]: strict_acc_to_add,
-            headers["soft_match"]: soft_match_acc_to_add,
-        }
+def format_task_accuracies(
+    accuracies_to_save: dict[str, dict],
+    task_ids: list[str | int],
+    exact_match_accuracies: Accuracy,
+    soft_match_accuracies: Accuracy,
+    headers: list | dict = None,
+) -> dict[str | int, dict]:
+    """
+    Format accuracies for the split to save them later,
+    including the mean accuracy for all tasks
+
+    :param accuracies_to_save: the accuracies to save
+    :param task_ids: the task ids
+    :param exact_match_accuracies: the exact-match accuracies
+    :param soft_match_accuracies: the soft-match accuracies
+    :param headers: the headers for the accuracies
+    :return: the mean accuracies of all tasks
+    """
+    zipped_data = zip(task_ids, exact_match_accuracies.all, soft_match_accuracies.all)
+
+    for row, exact_match_accuracy, soft_match_accuracy in zipped_data:
+        if str(row) not in accuracies_to_save.keys():
+            accuracies_to_save[str(row)] = {"task_id": row}
+
+        accuracies_to_save[str(row)].update(
+            {
+                headers["exact_match"]: exact_match_accuracy,
+                headers["soft_match"]: soft_match_accuracy,
+            }
+        )
+
+    accuracies_to_save = format_accuracy_metrics(
+        exact_match_accuracies, soft_match_accuracies, headers, accuracies_to_save
     )
+    return accuracies_to_save
 
-    return accuracies
+
+def _select_metric(metric_values: dict[str, float], keyword: str) -> list[float]:
+    """
+    Select accuracies from a dictionary of accuracies based on the keyword.
+
+    :param metric_values: the accuracies
+    :param keyword: the keyword to select the accuracies
+    :return: a list of accuracies by the keyword
+    """
+    return [value for type_, value in metric_values.items() if keyword in type_]
+
+
+def calculate_mean_accuracies(
+    accuracies_to_save: dict,
+    mean_headers: dict,
+) -> dict[str, dict]:
+    """
+    Calculate mean accuracies for all tasks and update accuracies.
+
+    :param accuracies_to_save: the split accuracies
+    :param mean_headers: the headers for the mean accuracies
+    :return: None
+    """
+    for task_id, accuracies in accuracies_to_save.items():
+        exact_match_accuracies = Accuracy(
+            "exact_match", _select_metric(accuracies, "exact_match")
+        )
+        soft_match_accuracies = Accuracy(
+            "soft_match", _select_metric(accuracies, "soft_match")
+        )
+
+        accuracies_to_save[task_id].update(
+            {mean_headers["exact_match"]: exact_match_accuracies.get_mean()}
+        )
+        if len(soft_match_accuracies) > 1:
+            accuracies_to_save[task_id].update(
+                {mean_headers["soft_match"]: soft_match_accuracies.get_std()}
+            )
+    return accuracies_to_save

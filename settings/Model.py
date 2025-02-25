@@ -25,7 +25,7 @@ class Model:
         self.temperature = temperature
         self.to_continue = to_continue
 
-    def load(self) -> tuple[AutoModelForCausalLM, AutoTokenizer]:
+    def load(self) -> tuple:
         """
         Load the model and the tokenizer for the instance model name.
 

@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from data.TaskExamples import TaskExample, TaskExamples, Task
+
 from settings.config import Enumerate, Wrapper, Examples
 from settings.utils import structure_part
 
@@ -28,6 +29,7 @@ class Prompt:
         prompt: str = None,
         prompt_path: str = None,
         wrapper: dict[Wrapper, str] = None,
+        name: str = None,
     ):
         """
         Create a prompt.
@@ -39,6 +41,7 @@ class Prompt:
         type is used.
         :param prompt_path: str, the path to the prompt file
         :param wrapper: str, the wrapper for the prompt that we want to pass with each call to the model
+        :param name: str, the name of the prompt
         """
         # if no prompt is given, use default prompt
         if prompt:
@@ -54,8 +57,8 @@ class Prompt:
             self.text = "At some point, here will be a default prompt."
 
         self.original_text = self.text
-
         self.wrapper = wrapper
+        self.name = name
 
     def format_part(
         self, part: dict[str, dict[int, str]], to_enumerate: dict[Enumerate, bool]
@@ -75,11 +78,11 @@ class Prompt:
             # there are parts that have no context lines, only a question
             if context:
                 wrapped_context = self.wrapper.context.format(context=context)
-                return f"{wrapped_context}\n{wrapped_question}"
+                return f"{wrapped_context}\n{wrapped_question}\n{self.wrapper.answer}"
             else:
-                return wrapped_question
+                return f"{wrapped_question}\n{self.wrapper.answer}"
         else:
-            return f"{context}\n{question}"
+            return f"{context}\n{question}\n{self.wrapper.answer}"
 
     def formulate_init_prompt(self, input_str: str) -> str:
         """

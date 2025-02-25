@@ -3,8 +3,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Union
 
-from settings.utils import Enumerate
-
 
 @dataclass
 class Model:
@@ -22,6 +20,12 @@ class DataSplits:
 
 
 @dataclass
+class Enumerate:
+    context: str = "context"
+    question: str = "question"
+
+
+@dataclass
 class Data:
     path: str
     splits: dict[DataSplits, bool]
@@ -34,6 +38,7 @@ class Data:
 class Wrapper:
     context: str = "context"
     question: str = "question"
+    answer: str = "answer"
 
 
 @dataclass
@@ -59,10 +64,17 @@ class CSVHeaders:
     task_id: str = "task_id"
     sample_no: str = "sample_no"
     task: str = "task"
-    true_result: str = "true_result"
-    model_result: str = "model_result"
-    accuracy: str = "accuracy"
+    true_answer: str = "true_answer"
+    model_answer: str = "model_answer"
+    correct: str = "correct"
+    model_reasoning: str = "model_reasoning"
+    model_output: str = "model_output"
+    exact_match_accuracy: str = "exact_match_accuracy"
     soft_match_accuracy: str = "soft_match_accuracy"
+    there: str = "there"
+    verbs: str = "verbs"
+    pronouns: str = "pronouns"
+    not_mentioned: str = "not_mentioned"
 
 
 @dataclass
@@ -72,7 +84,6 @@ class Logging:
 
 @dataclass
 class Results:
-    parse: bool
     headers: list[CSVHeaders]
     save_to: str
 

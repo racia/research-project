@@ -46,25 +46,38 @@ prompt:
     question: |
       Now, answer the following question:
       {question}
+  examples:
+    to_add: True
+    enumerated: True
+    handpicked: True
+    not_mentioned: True
+    number: 1
+    wrapper: |
+      *EXAMPLE{number}*
+      {example}
 
 logging:
   # if to print the results to a log file, otherwise will print to console
   print_to_file: True
 
 results:
-  parse: True
   headers:
     - id
     - task_id
     - sample_no
     - task
-    - true_result
+    - true_answer
     - model_answer
+    - correct?
     - model_reasoning
-    - model_result
-    - accuracy
+    - model_output
+    - exact_match_accuracy
     - soft_match_accuracy
-  
+    - there
+    - verbs
+    - pronouns
+    - not_mentioned
+
 hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
