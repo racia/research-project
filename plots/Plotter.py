@@ -3,6 +3,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
+from evaluation.Accuracy import Accuracy
+
 
 class Plotter:
     """
@@ -103,7 +105,7 @@ class Plotter:
 
     def plot_acc_per_task(
         self,
-        acc_per_task: list,
+        acc_per_task: Accuracy,
         x_label: str = "Task",
         y_label: str = "Accuracy",
         file_name=None,
@@ -121,14 +123,14 @@ class Plotter:
         """
         plt.figure(figsize=(10, 5))
         colors = self.cmap(np.linspace(0, 1, len(acc_per_task)))
-        plt.plot(range(1, len(acc_per_task) + 1), acc_per_task, color=colors[0])
+        plt.plot(range(1, len(acc_per_task) + 1), acc_per_task.all, color=colors[0])
 
         self._plot_general_details(x_label, y_label, len(acc_per_task), plot_name_add)
         self._save_plot(y_label, x_label, file_name, plot_name_add)
 
     def plot_acc_per_task_and_prompt(
         self,
-        acc_per_prompt_task: dict[str, list],
+        acc_per_prompt_task: dict[str, Accuracy],
         x_label: str = "Task",
         y_label: str = "Accuracy",
         file_name=None,
@@ -154,7 +156,15 @@ class Plotter:
             number_of_prompts += 1
             if len(acc) > max_x_len:
                 max_x_len = len(acc)
-            plt.plot(range(1, len(acc) + 1), acc, label=prompt, color=color)
+
+            x_data = range(1, len(acc.all) + 1)
+            y_data = acc.all
+            if len(x_data) != len(y_data):
+                raise ValueError(
+                    f"x and y must have the same first dimension, but have shapes {len(x_data)} and {len(y_data)}"
+                )
+
+            plt.plot(x_data, y_data, label=prompt, color=color)
 
         self._plot_general_details(
             x_label,

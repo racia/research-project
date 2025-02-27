@@ -1,13 +1,11 @@
-from dataclasses import dataclass
+from __future__ import annotations
+
+import re
 from typing import Union
 
 import torch
 
-
-@dataclass
-class Enumerate:
-    context: str = "context"
-    question: str = "question"
+from settings.config import Enumerate
 
 
 def set_device() -> torch.device:
@@ -81,3 +79,43 @@ def structure_part(
     else:
         question.extend(list(part["question"].values()))
     return "\n".join(context), "\n".join(question)
+
+
+def parse_output(output: str) -> dict[str, str | None]:
+    """
+    Parses the output of the model to extract the answer and reasoning.
+
+    :param output: parsed output of the model
+    :return: dictionary with the model answer and reasoning
+    """
+    answer_pattern = re.compile(r"(?i)answer:[\s ]*(.+)")
+    reasoning_pattern = re.compile(r"(?i)reasoning:[\s ]*(.+)")
+
+    answer_search = answer_pattern.search(output)
+    answer = answer_search[1].strip() if answer_search else None
+    if not answer:
+        print("DEBUG: Answer not found in the output")
+
+    reasoning_search = reasoning_pattern.search(output)
+    reasoning = reasoning_search[1].strip() if reasoning_search else None
+    if not reasoning:
+        print("DEBUG: Reasoning not found in the output")
+
+    if not (answer or reasoning):
+        if len(output.split()) <= 3:
+            answer = output
+        else:
+            reasoning = output
+        print(
+            "Saving the whole output as the answer:",
+            output,
+            sep="\n",
+            end="\n\n",
+        )
+
+    parsed_output = {
+        "model_output": output,
+        "model_answer": answer,
+        "model_reasoning": reasoning,
+    }
+    return parsed_output

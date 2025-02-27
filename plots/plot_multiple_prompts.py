@@ -3,13 +3,14 @@ from pathlib import Path
 from typing import Union
 
 from data.DataLoader import DataLoader
+from evaluation.Accuracy import Accuracy
 from plots.Plotter import Plotter
 from settings.config import DataSplits
 
 
 @dataclass
-class Accuracy:
-    strict: str = "accuracy"
+class AccuracyType:
+    exact_match: str = "exact_match_accuracy"
     soft_match: str = "soft_match_accuracy"
 
 
@@ -26,14 +27,14 @@ def get_paths(directory: str, keyword: str) -> list[str]:
     for item in Path(directory).iterdir():
         if item.is_dir():
             paths.extend(get_paths(item, keyword))
-        elif keyword in item.name:
+        elif keyword in item.name and item.name.endswith(".csv"):
             paths.append(str(item))
     return paths
 
 
 def plot_from_paths(
     paths: list[str],
-    accuracy_types: list[Union[Accuracy.strict, Accuracy.soft_match]],
+    accuracy_types: list[Union[AccuracyType.exact_match, AccuracyType.soft_match]],
     result_path: str,
     prompt_type: str,
     split: Union[
@@ -54,6 +55,8 @@ def plot_from_paths(
 
     :return: None
     """
+    if not Path(result_path).exists():
+        Path(result_path).mkdir(parents=True, exist_ok=True)
     plotter = Plotter(result_path=Path(result_path))
     loader = DataLoader()
 
@@ -62,13 +65,10 @@ def plot_from_paths(
         for path in paths:
             data = loader.load_result_data(
                 result_file_path=path,
-                headers=["task", "accuracy", "soft_match_accuracy"],
+                headers=["task_id", "exact_match_accuracy", "soft_match_accuracy"],
             )
-            prompt_accuracies = data[accuracy_type]
-            # remove the average accuracy on the first position ("zero task")
-            prompt_accuracies.pop(0)
             prompt_name = Path(path).stem.replace("prompt_", "")
-            accuracies[prompt_name] = data[accuracy_type]
+            accuracies[prompt_name] = Accuracy(accuracy_type, data[accuracy_type])
 
         plotter.plot_acc_per_task_and_prompt(
             acc_per_prompt_task=accuracies,
@@ -87,7 +87,7 @@ def plot_from_paths(
 
 def plot_from_directory(
     directory: str,
-    accuracy_types: list[Union[Accuracy.strict, Accuracy.soft_match]],
+    accuracy_types: list[Union[AccuracyType.exact_match, AccuracyType.soft_match]],
     result_path: str,
     prompt_type: str,
     split: Union[
@@ -118,7 +118,7 @@ def plot_from_directory(
 def run(
     paths: list[str],
     split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
-    accuracy_types: list[Union[Accuracy.strict, Accuracy.soft_match]],
+    accuracy_types: list[Union[AccuracyType.exact_match, AccuracyType.soft_match]],
     result_path: str,
     prompt_type: str,
 ) -> None:

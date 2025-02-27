@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import csv
-import statistics
 import sys
 from typing import TextIO, Union
 
 from data.utils import *
+from evaluation.Evaluator import MetricEvaluator
+from prompts.Prompt import Prompt
 from settings.config import DataSplits
 
 
@@ -25,8 +26,9 @@ class DataSaver:
         :param save_to: the path to save the data
         """
         self.old_stdout: TextIO = sys.stdout
+        # self.results_path is updated in create_result_paths
         self.results_path = Path(save_to)
-        self.run = self.results_path.parent
+        self.run_path = Path(save_to)
 
     def create_result_paths(
         self,
@@ -35,47 +37,47 @@ class DataSaver:
     ) -> tuple[Path, dict[str, Path], dict[str, Path]]:
         """
         Create the unique results path for the run and the files to save the data:
-        log file, results file, and accuracy files.
+        log file, results file, and metrics files. The results path is also updated to match the current prompt.
 
         :param prompt_name: the name of the prompt
         :param splits: splits of the data
-        :return: the paths to the log file, results file, and accuracy files in a tuple
+        :return: the paths to the log file, results file, and metrics files in a tuple
         """
-        prompt_results_path = self.results_path / prompt_name
+        self.results_path = self.run_path / prompt_name
 
         try:
-            os.makedirs(prompt_results_path)
+            os.makedirs(self.results_path)
         except FileExistsError:
             print(
-                f"Directory {prompt_results_path} already exists and is not empty. "
+                f"Directory {self.results_path} already exists and is not empty. "
                 "Please choose another results_path or empty the directory."
             )
-            prompt_results_path = Path("./outputs") / prompt_results_path
-            os.makedirs(prompt_results_path)
+            self.results_path = Path("./outputs") / prompt_name
+            os.makedirs(self.results_path)
         except OSError:
             print(
-                f"Creation of the directory {prompt_results_path} failed due "
+                f"Creation of the directory {self.results_path} failed due "
                 f"to lack of writing rights. Please check the path."
             )
-            prompt_results_path = Path("./outputs") / prompt_results_path
-            os.makedirs(prompt_results_path)
+            self.results_path = Path("./outputs") / prompt_name
+            os.makedirs(self.results_path)
 
-        print(f"\nThe results will be saved to {prompt_results_path}\n")
+        print(f"\nThe results will be saved to {self.results_path}\n")
 
         results_file_paths = {}
-        accuracy_file_paths = {}
+        metrics_file_paths = {}
 
         for split in splits:
             results_file_paths[split] = (
-                prompt_results_path / f"{split}_{prompt_name}_results.csv"
+                self.results_path / f"{split}_{prompt_name}_results.csv"
             )
-            accuracy_file_paths[split] = (
-                prompt_results_path / f"{split}_{prompt_name}_accuracies.csv"
+            metrics_file_paths[split] = (
+                self.results_path / f"{split}_{prompt_name}_metrics.csv"
             )
 
-        log_file_path = prompt_results_path / f"{prompt_name}.log"
+        log_file_path = self.results_path / f"{prompt_name}.log"
 
-        return log_file_path, results_file_paths, accuracy_file_paths
+        return log_file_path, results_file_paths, metrics_file_paths
 
     @staticmethod
     def save_output(
@@ -96,110 +98,131 @@ class DataSaver:
         :param file_path: the name of the file to save the data
         :return: None
         """
-        with open(file_path, "a+", encoding="utf-8") as file:
+        with open(file_path, "a+", encoding="UTF-8") as file:
             writer = csv.DictWriter(file, fieldnames=headers, delimiter="\t")
             if is_empty_file(file_path):
                 writer.writeheader()
             [writer.writerow(row) for row in data]
 
-    def save_task_accuracies(
+    def save_task_accuracy(
         self,
-        task_ids: list[int],
-        strict_accuracies: list[float],
-        soft_match_accuracies: list[float],
-        file_path: Path,
+        evaluator: MetricEvaluator,
+        accuracy_path: Path,
     ) -> [float, float]:
         """
         Save the accuracies for the split,
-        including the mean accuracy for all tasks if get_mean_accuracies() was called.
+        including the mean accuracy for all tasks
 
-        :param task_ids: the task ids (including 0 if mean accuracies are calculated)
-        :param strict_accuracies: the accuracies per task
-        :param soft_match_accuracies: the soft match accuracies per task
-        :param file_path: the path to the file to save the accuracies
+        :param evaluator: the evaluator
+        :param accuracy_path: the path to the file to save the accuracies
         :return: the mean accuracies of all tasks
         """
-        accuracies_to_save = []
-        zipped_data = zip(task_ids, strict_accuracies, soft_match_accuracies)
-        for task_id, accuracy, soft_match_accuracy in zipped_data:
-            accuracies_to_save.append(
-                {
-                    "task_id": "mean" if task_id == 0 else task_id,
-                    "accuracy": accuracy,
-                    "soft_match_accuracy": soft_match_accuracy,
-                }
-            )
-        # Save the prompt accuracies for the split
+        accuracies_to_save = list(
+            format_accuracy_metrics(
+                evaluator.exact_match_accuracy, evaluator.soft_match_accuracy
+            ).values()
+        )
+        headers = list(accuracies_to_save[0].keys())
         self.save_output(
             data=accuracies_to_save,
-            headers=["task_id", "accuracy", "soft_match_accuracy"],
-            file_path=file_path,
+            headers=headers,
+            file_path=accuracy_path,
         )
 
-    def save_run_accuracies(
+    def save_task_metrics(
+        self, evaluator: MetricEvaluator, results_paths: list[Path]
+    ) -> None:
+        """
+        Save the metrics for the task.
+
+        :param evaluator: the evaluator
+        :param results_paths: the path to save the results
+        :return: None
+        """
+        headers = ["id", "task_id"]
+        metrics = {
+            "there": evaluator.there,
+            "verbs": evaluator.verbs,
+            "pronouns": evaluator.pronouns,
+            "not_mentioned": evaluator.not_mentioned,
+        }
+        data = [{h: m for h, m in zip(headers, metric)} for metric in metrics.items()]
+        for results_path in results_paths:
+            self.save_output(
+                data=data,
+                headers=headers,
+                file_path=results_path,
+            )
+
+    def save_task_result(
+        self, task_id, task_result, task_evaluator, headers, results_path, metrics_path
+    ):
+        """
+        Save the results for the task and the accuracy for the task to the separate files.
+
+        :param task_id: the task id
+        :param task_result: the result of the task
+        :param task_evaluator: the evaluator for the task
+        :param headers: the headers for the results
+        :param results_path: the path to save the results
+        :param metrics_path: the path to save the accuracy
+        :return: None
+        """
+        self.save_output(
+            data=task_result,
+            headers=headers,
+            file_path=results_path,
+        )
+        # get accuracy for the last task
+        task_accuracy = {
+            "task_id": task_id,
+            "exact_match_accuracy": task_evaluator.exact_match_accuracy[-1],
+            "soft_match_accuracy": task_evaluator.soft_match_accuracy[-1],
+        }
+        self.save_output(
+            data=[task_accuracy],
+            headers=list(task_accuracy.keys()),
+            file_path=metrics_path,
+        )
+
+    def save_split_accuracy(
         self,
         task_ids: list[int],
-        strict_accuracies: dict[str, dict],
-        soft_match_accuracies: dict[str, dict],
-        split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
+        prompt_evaluators: dict[Prompt, MetricEvaluator],
+        split: DataSplits,
     ) -> None:
         """
         Save the accuracies for the run, including the mean accuracy for all tasks.
 
-        :param task_ids: the task ids (including 0 if mean accuracies are calculated)
-        :param strict_accuracies: the strict accuracies per split and prompt
-        :param soft_match_accuracies: the soft match accuracies per split and prompt
+        :param task_ids: the task ids
+        :param prompt_evaluators: the evaluators per prompt
         :param split: the split of the data
         :return: None
         """
-        run_accuracies = {}
-        run_headers = ["task_id"]
+        split_metrics = {}
+        split_headers = ["task_id"]
 
-        split_data = zip(
-            strict_accuracies[split].keys(),
-            strict_accuracies[split].values(),
-            soft_match_accuracies[split].values(),
-        )
-        # calculate accuracies of each prompt (for all tasks)
-        for prompt_name, strict_accuracies, soft_match_accuracies in split_data:
-            prompt_headers = prepare_accuracy_headers(prompt_name)
-            # by index 0 are the mean accuracies of all tasks
-            prompt_data = zip(task_ids, strict_accuracies, soft_match_accuracies)
-
-            for task_id, (strict_acc, soft_match_acc) in prompt_data:
-                run_accuracies = add_accuracies(
-                    accuracies=run_accuracies,
-                    strict_acc_to_add=strict_acc,
-                    soft_match_acc_to_add=soft_match_acc,
-                    task_id="mean" if task_id == 0 else task_id,
-                    headers=prompt_headers,
-                )
-            run_headers.extend(prompt_headers.values())
+        for prompt, evaluator in prompt_evaluators.items():
+            prompt_headers = prepare_accuracy_headers(prompt.name)
+            split_metrics = format_task_accuracies(
+                accuracies_to_save=split_metrics,
+                task_ids=task_ids,
+                exact_match_accuracies=evaluator.exact_match_accuracy,
+                soft_match_accuracies=evaluator.soft_match_accuracy,
+                headers=prompt_headers,
+            )
+            split_metrics = format_task_metrics(
+                evaluator, prompt_headers, split_metrics
+            )
+            split_headers.extend(prompt_headers.values())
 
         mean_headers = prepare_accuracy_headers("mean")
-        run_headers.extend(mean_headers.values())
-
-        # calculate mean accuracies of all tasks (for all prompts)
-        for task_id, accuracies in run_accuracies.items():
-            strict_accuracies_ = [
-                value for name, value in accuracies.items() if "strict" in name
-            ]
-            soft_match_accuracies_ = [
-                value for name, value in accuracies.items() if "soft_match" in name
-            ]
-            mean_strict_acc_ = round(statistics.mean(strict_accuracies_), 2)
-            mean_soft_match_acc_ = round(statistics.mean(soft_match_accuracies_), 2)
-            run_accuracies = add_accuracies(
-                accuracies=run_accuracies,
-                strict_acc_to_add=mean_strict_acc_,
-                soft_match_acc_to_add=mean_soft_match_acc_,
-                task_id=task_id,
-                headers=mean_headers,
-            )
+        split_headers.extend(mean_headers.values())
+        split_metrics = calculate_mean_accuracies(split_metrics, mean_headers)
 
         self.save_output(
-            data=list(run_accuracies.values()),
-            headers=run_headers,
+            data=list(split_metrics.values()),
+            headers=split_headers,
             file_path=self.results_path / f"{split}_accuracies.csv",
         )
 
@@ -213,7 +236,7 @@ class DataSaver:
         :param file_name: the path and name of the file to redirect the printing
         :return: log file to write into
         """
-        log_file = open(file_name, "w")
+        log_file = open(file_name, "w", encoding="UTF-8")
         sys.stdout = log_file
         return log_file
 

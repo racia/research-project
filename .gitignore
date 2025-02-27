@@ -35,9 +35,15 @@ baseline/
 
 # Results
 results/
+outputs/
 
 # Outputs
 outputs/
 
 # Prompts
 settings/baseline/config/prompt_*_shot*
+
+# Testing scripts
+test*.sh
+
+fine-tuning/

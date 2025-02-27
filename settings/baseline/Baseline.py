@@ -1,8 +1,7 @@
 from __future__ import annotations
 import os
 
-import settings.baseline.utils as utils
-from data.Statistics import Statistics
+import settings.utils as utils
 from prompts.Chat import Chat
 from prompts.Prompt import Prompt
 from settings.Model import Model
@@ -21,19 +20,20 @@ class Baseline(Setting):
         max_new_tokens: int,
         temperature: float,
         to_enumerate: dict[Enumerate, bool],
-        to_continue: bool,
-        parse_output: bool,
-        statistics: Statistics,
-        prompt: Prompt = None,
+        total_tasks: int,
+        total_parts: int,
         samples_per_task: int = 5,
+        prompt: Prompt = None,
     ):
         """
         Baseline class manages model runs and data flows around it.
 
-        :param parse_output: if we want to parse the output of the model (currently looks for 'answer' and 'reasoning')
-        :param statistics: class for statistics
-        :param prompt: system prompt to start conversations
+        :param model: the model to use
+        :param to_enumerate: dictionary with the settings to enumerate
+        :param total_tasks: total number of tasks
+        :param total_parts: total number of parts
         :param samples_per_task: number of samples per task for logging
+        :param prompt: system prompt to start conversations
         """
         
         model = Model(model, max_new_tokens, temperature, to_continue)
@@ -47,28 +47,17 @@ class Baseline(Setting):
 
         self.prompt = prompt
         self.to_enumerate = to_enumerate
-        self.parse_output = parse_output
-
-        self.stats = statistics
 
         self.question_id = 0
-        self.total_samples = 0
-        self.total_tasks = 0
-        self.total_parts = 0
+        self.total_tasks = total_tasks
+        self.total_parts = total_parts
         self.samples_per_task = samples_per_task
 
-        self.accuracies_per_task: list = []
-        self.soft_match_accuracies_per_task: list = []
-
-        self.accuracy: int = 0
-        self.soft_match_accuracy: int = 0
-
-    def prepare_prompt(self, sample_part: dict[str, dict], chat: Chat) -> str:
+    def prepare_prompt(self, chat: Chat) -> str:
         """
         Prepares the prompt to include the current part of the sample.
 
-        :param sample_part: the current part of the sample
-        :param chat: the chat
+        :param chat: the chat object
         :return: the formatted prompt with the chat template applied
         """
         if self.model.to_continue:
@@ -96,15 +85,5 @@ class Baseline(Setting):
         :param decoded_output: the decoded output
         :return: dictionary with either the parsed model answer or just the model answer
         """
-        if self.parse_output:
-            parsed_output = utils.parse_output(output=decoded_output)
-            return parsed_output
-        if fine_tune:
-            # Save decoded output to task_id file for fine-tuning
-            with open(os.environ["OUTPUT_DIR"]+"/"+f"{task_id}.txt", "a") as f:
-                f.write("\n".join(formatted_part.split("\n\n"))) # Part
-                f.write(decoded_output.split("\n\n")[0].split("Reason: ")[-1]) # Only Model Reason
-                f.write("\n\n") # Add new line at the end
-
-        return {"model_answer": decoded_output}
-    
+        parsed_output = utils.parse_output(output=decoded_output)
+        return parsed_output

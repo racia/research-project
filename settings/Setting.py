@@ -1,16 +1,15 @@
-import statistics
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 import os
 
 import torch
 
-from data.Statistics import Statistics
-from interpretability.Interpretability import Interpretability
+from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from prompts.Chat import Chat, Source
 from prompts.Prompt import Prompt
 from settings.Model import Model
-from settings.baseline import utils
-from settings.utils import Enumerate
+from settings.config import Enumerate
 
 
 class Setting(ABC):
@@ -24,16 +23,16 @@ class Setting(ABC):
         model: Model,
         to_enumerate: dict[Enumerate, bool],
         parse_output: bool,
-        statistics: Statistics,
-        prompt: Prompt = None,
+        total_tasks: int,
+        total_parts: int,
         samples_per_task: int = 5,
+        prompt: Prompt = None,
     ):
         """
         Baseline class manages model runs and data flows around it.
         It is intended to use in the further settings.
 
         :param parse_output: if we want to parse the output of the model (currently looks for 'answer' and 'reasoning')
-        :param statistics: class for statistics
         :param prompt: system prompt to start conversations
         :param samples_per_task: number of samples per task for logging
         """
@@ -43,27 +42,17 @@ class Setting(ABC):
         self.to_enumerate = to_enumerate
         self.parse_output = parse_output
 
-        self.stats = statistics
-
         self.question_id = 0
-        self.total_tasks = 0
-        self.total_samples = 0
-        self.total_parts = 0
+        self.total_tasks = total_tasks
+        self.total_parts = total_parts
         self.samples_per_task = samples_per_task
 
-        self.accuracies_per_task: list = []
-        self.soft_match_accuracies_per_task: list = []
-
-        self.accuracy: int = 0
-        self.soft_match_accuracy: int = 0
-
     @abstractmethod
-    def prepare_prompt(self, sample_part: dict[str, dict], chat: Chat) -> str:
+    def prepare_prompt(self, chat: Chat) -> str:
         """
         @TODO: self.to_continue check, default: add_generation_prompt
         Prepares the prompt to include the current part of the sample.
-        :param sample_part:
-        :param chat:
+        :param chat: the chat object
         :return: prompt with the task and the current part
         """
         raise NotImplementedError
@@ -102,61 +91,12 @@ class Setting(ABC):
             for true, predicted in zip(trues, preds)
         ]
 
-    def calculate_and_print_accuracies(
-        self,
-        id_: int,
-        what: str,
-        trues_preds: tuple[list[str], list[str]] = None,
-        str_acc_soft_acc: tuple[list[float], list[float]] = None,
-        to_print: bool = True,
-    ) -> tuple[float, float]:
-        """
-        Calculate the accuracy scores for the sample and print them.
-
-        :param id_: id of the sample
-        :param what: what is being evaluated
-        :param trues_preds: true and predicted values
-        :param str_acc_soft_acc: strict and soft-match accuracies
-        :param to_print: whether to print the results
-        :return: accuracy, soft-match accuracy
-        """
-        accuracy, soft_match_accuracy = 0.0, 0.0
-        if (trues_preds and str_acc_soft_acc) or not (trues_preds or str_acc_soft_acc):
-            raise ValueError(
-                "The function requires either true and predicted values or strict and soft-match accuracies."
-            )
-
-        if trues_preds:
-            trues, preds = trues_preds
-            accuracy = self.stats.accuracy_score(trues, preds)
-            soft_match_accuracy = self.stats.soft_match_accuracy_score(trues, preds)
-
-        elif str_acc_soft_acc:
-            accuracies, soft_match_accuracies = str_acc_soft_acc
-            accuracy = statistics.mean(accuracies)
-            soft_match_accuracy = statistics.mean(soft_match_accuracies)
-
-        accuracy = round(accuracy, 2)
-        soft_match_accuracy = round(soft_match_accuracy, 2)
-
-        if to_print:
-            print(
-                f"\nAccuracy score for {what} {id_}:",
-                accuracy,
-            )
-            print(
-                f"Soft-match accuracy score for {what} {id_}:",
-                soft_match_accuracy,
-                end="\n\n\n",
-            )
-        return accuracy, soft_match_accuracy
-
     def iterate_task(
         self,
         task_id: int,
         task_data: dict[int, list[dict[str, dict]]],
         prompt_name: str,
-        interpr: Interpretability = None
+        task_evaluator: MetricEvaluator,
     ) -> list[dict[str, int | str]]:
         """
         Manages the data flow in and out of the model, iteratively going through
@@ -201,12 +141,12 @@ class Setting(ABC):
              ]
          }
         :param prompt_name: name of the prompt
+        :param task_evaluator: the evaluator for the task
         :return: results for the task in a list of dicts with each dict representing
                  one call to the model and will end up as one row of the table
         """
         task_results = []
-        sample_accuracies = []
-        sample_soft_match_accuracies = []
+        sample_eval = AnswerEvaluator(level="sample")
 
         if not interpr.switch:
             interpr = None
@@ -219,15 +159,15 @@ class Setting(ABC):
             # each sample is a new conversation
             self.chat = Chat(system_prompt=self.prompt.text)
             # collect the true answers
-            y_true_sample = [
-                ", ".join(list(part["answer"].values())[0]) for part in sample_parts
+            sample_eval.true_values = [
+                " ".join(list(part["answer"].values())[0]) for part in sample_parts
             ]
-            y_pred_sample = []
+            sample_eval.predicted_values = []
             sample_id_ = sample_id + 1
             part_id = 0
 
             # 2. Iterate through parts (one question at a time)
-            for sample_part, y_true in zip(sample_parts, y_true_sample):
+            for sample_part, y_true in zip(sample_parts, sample_eval.true_values):
                 self.question_id += 1
                 part_id += 1
                 print(
@@ -247,19 +187,11 @@ class Setting(ABC):
 
                 self.chat.add_message(part=formatted_part, source=Source.user, interpretability=interpr)
 
-                formatted_prompt = self.prepare_prompt(
-                    sample_part=sample_part, chat=self.chat
-                )
-
-                print(
-                    "Formatted prompt:",
-                    formatted_prompt,
-                    sep="\n",
-                    end="\n",
-                )
+                formatted_prompt = self.prepare_prompt(chat=chat)
 
                 # 5. Call the model and yield the response
                 decoded_output = self.model.call(prompt=formatted_prompt)
+
                 print(
                     "Model's output:",
                     decoded_output.lower(),
@@ -278,49 +210,41 @@ class Setting(ABC):
                     "id": self.question_id,
                     "task_id": task_id,
                     "sample_no": sample_id_,
-                    "task": formatted_part,
-                    "true_result": y_true,
-                    "model_result": decoded_output
+                    "task": formatted_part.strip(),
+                    "true_answer": y_true,
                 }
                 part_result.update(model_output)
+                part_result.update(
+                    sample_eval.evaluate(y_true, model_output["model_answer"])
+                )
 
                 task_results.append(part_result)
 
-                y_pred_sample.append(model_output['model_answer'])
-
-                # 8. Call interpretability attention score method
-                if interpr:
-                    interpretability1.cal_attn(part_id=part_id, question=formatted_part, reason=part_result["model_reasoning"], answer=part_result["model_answer"], msg = self.chat.get_message())
-                    
-                    # Put model back into training mode
-                    self.model.train()
-
-
-            # 9. Report the results for the sample: answers and accuracy
-            self.print_sample_predictions(trues=y_true_sample, preds=y_pred_sample)
-
-            strict_sample, soft_sample = self.calculate_and_print_accuracies(
-                trues_preds=(y_true_sample, y_pred_sample),
-                id_=sample_id,
-                what="sample",
+                sample_eval.predicted_values.append(part_result["model_answer"])
+            # 7. Report the results for the sample: answers and accuracy
+            self.print_sample_predictions(
+                trues=sample_eval.true_values, preds=sample_eval.predicted_values
             )
-            sample_accuracies.append(strict_sample)
-            sample_soft_match_accuracies.append(soft_sample)
+
+            exact_match_acc, soft_match_acc = sample_eval.calculate_accuracies()
+            sample_eval.print_accuracies(
+                id_=sample_id,
+                exact_match_acc=exact_match_acc,
+                soft_match_acc=soft_match_acc,
+            )
+
+        task_evaluator.update(sample_eval)
 
         # 10. Report the results for the task: accuracy
         print("\n- TASK RESULTS -", end="\n\n")
 
-        strict_task, soft_task = self.calculate_and_print_accuracies(
-            str_acc_soft_acc=(sample_accuracies, sample_soft_match_accuracies),
-            id_=task_id,
-            what="task",
-            to_print=True,
-        )
-
-        task_results[0]["accuracy"] = strict_task
-        task_results[0]["soft_match_accuracy"] = soft_task
-        self.accuracies_per_task.append(strict_task)
-        self.soft_match_accuracies_per_task.append(soft_task)
+        task_evaluator.print_accuracies(id_=task_id)
+        task_results[0][
+            "exact_match_accuracy"
+        ] = task_evaluator.exact_match_accuracy.get_mean()
+        task_results[0][
+            "soft_match_accuracy"
+        ] = task_evaluator.soft_match_accuracy.get_mean()
 
         print(f"The work on task {task_id} is finished successfully")
 
@@ -328,17 +252,3 @@ class Setting(ABC):
         torch.cuda.empty_cache()
 
         return task_results
-
-    def get_mean_accuracies(self) -> [float, float]:
-        """
-        Calculate the mean accuracies for the tasks, insert them into the list of accuracies on the first position.
-
-        :return: mean strict accuracy, mean soft match accuracy
-        """
-        mean_strict_accuracy = round(statistics.mean(self.accuracies_per_task), 2)
-        mean_soft_match_accuracy = round(
-            statistics.mean(self.soft_match_accuracies_per_task), 2
-        )
-        self.accuracies_per_task.insert(0, mean_strict_accuracy)
-        self.soft_match_accuracies_per_task.insert(0, mean_soft_match_accuracy)
-        return mean_strict_accuracy, mean_soft_match_accuracy

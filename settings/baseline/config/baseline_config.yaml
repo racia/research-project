@@ -55,11 +55,12 @@ prompt:
     question: |
       Now, answer the following question:
       {question}
+    answer: ""
   examples:
     to_add: True
     enumerated: True
     handpicked: True
-    not_mentioned: False
+    not_mentioned: True
     number: 1
     wrapper: |
       *EXAMPLE{number}*
@@ -77,19 +78,23 @@ logging:
   print_to_file: True
 
 results:
-  parse: True
   headers:
     - id
     - task_id
     - part_id
     - sample_no
     - task
-    - true_result
+    - true_answer
     - model_answer
+    - correct?
     - model_reasoning
-    - model_result
-    - accuracy
+    - model_output
+    - exact_match_accuracy
     - soft_match_accuracy
+    - there
+    - verbs
+    - pronouns
+    - not_mentioned
 
 hydra:
   run:
