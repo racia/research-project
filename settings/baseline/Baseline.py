@@ -1,6 +1,6 @@
 from __future__ import annotations
-import os
 
+from interpretability.Interpretability import Interpretability
 import settings.utils as utils
 from prompts.Chat import Chat
 from prompts.Prompt import Prompt
@@ -17,13 +17,12 @@ class Baseline(Setting):
     def __init__(
         self,
         model: Model,
-        max_new_tokens: int,
-        temperature: float,
         to_enumerate: dict[Enumerate, bool],
         total_tasks: int,
         total_parts: int,
         samples_per_task: int = 5,
         prompt: Prompt = None,
+        interpretability: Interpretability = None
     ):
         """
         Baseline class manages model runs and data flows around it.
@@ -35,15 +34,7 @@ class Baseline(Setting):
         :param samples_per_task: number of samples per task for logging
         :param prompt: system prompt to start conversations
         """
-        
-        model = Model(model, max_new_tokens, temperature, to_continue)
         self.model = model
-    
-        self.max_new_tokens = max_new_tokens
-        self.temperature = temperature
-        self.to_continue = to_continue
-
-        self.tokenizer = None
 
         self.prompt = prompt
         self.to_enumerate = to_enumerate
@@ -52,6 +43,8 @@ class Baseline(Setting):
         self.total_tasks = total_tasks
         self.total_parts = total_parts
         self.samples_per_task = samples_per_task
+
+        self.interpretability = interpretability
 
     def prepare_prompt(self, chat: Chat) -> str:
         """
@@ -77,7 +70,7 @@ class Baseline(Setting):
 
         return formatted_prompt
 
-    def apply_setting(self, decoded_output: str, fine_tune: bool = False, task_id: int = None, formatted_part: str = None) -> dict[str, str]:
+    def apply_setting(self, decoded_output: str) -> dict[str, str]:
         """
         Postprocesses the output of the model.
         For the baseline model, this postprocessing just parses the output.

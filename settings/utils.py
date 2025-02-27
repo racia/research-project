@@ -88,16 +88,16 @@ def parse_output(output: str) -> dict[str, str | None]:
     :param output: parsed output of the model
     :return: dictionary with the model answer and reasoning
     """
-    answer_pattern = re.compile(r"(?i)answer:[\s ]*(.+)")
-    reasoning_pattern = re.compile(r"(?i)reasoning:[\s ]*(.+)")
+    answer_pattern = re.compile(r"(?i)(answer:)?[\s ]*(.+)")
+    reasoning_pattern = re.compile(r"(?i)(reasoning:)?[\s ]*(.+)")
 
     answer_search = answer_pattern.search(output)
-    answer = answer_search[1].strip() if answer_search else None
+    answer = answer_search[2].strip() if answer_search else None
     if not answer:
         print("DEBUG: Answer not found in the output")
 
     reasoning_search = reasoning_pattern.search(output)
-    reasoning = reasoning_search[1].strip() if reasoning_search else None
+    reasoning = reasoning_search[2].strip() if reasoning_search else None
     if not reasoning:
         print("DEBUG: Reasoning not found in the output")
 

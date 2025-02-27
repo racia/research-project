@@ -18,6 +18,8 @@ from settings.Model import Model
 from settings.baseline.Baseline import Baseline
 from settings.skyline.Skyline import Skyline
 from settings.utils import set_device
+from interpretability.Interpretability import Interpretability
+
 
 
 @hydra.main(version_base=None)
@@ -80,6 +82,13 @@ def run_setting(cfg: DictConfig) -> None:
                 cfg.model.temperature,
                 cfg.model.to_continue,
             )
+          
+            interpretability = Interpretability (
+                cfg.setting.interpretability,
+                model,
+                cfg.interpretability.path
+            )
+
             setting = Baseline(
                 model=model,
                 to_enumerate=cfg.data.to_enumerate,
@@ -87,6 +96,7 @@ def run_setting(cfg: DictConfig) -> None:
                 total_parts=loader.number_of_parts,
                 samples_per_task=loader.samples_per_task,
                 prompt=None,
+                interpretability=interpretability
             )
         elif cfg.setting.name == "Skyline":
             model = Model(
@@ -192,6 +202,13 @@ def run_setting(cfg: DictConfig) -> None:
                     results_path=results_file_paths[split],
                     metrics_path=metrics_file_paths[split],
                 )
+
+                if cfg.interpretability.save_data:
+                    saver.save_fine_tune_data(
+                        task_id = task_id,
+                        task_data = task_result
+                    )
+
                 print("______________________________", end="\n\n")
 
             if len(task_evaluator.exact_match_accuracy) != len(tasks):

@@ -63,7 +63,7 @@ class CSVHeaders:
     id_: str = "id"
     task_id: str = "task_id"
     sample_no: str = "sample_no"
-    task: str = "task"
+    part: str = "part"
     true_answer: str = "true_answer"
     model_answer: str = "model_answer"
     correct: str = "correct"
@@ -95,3 +95,8 @@ class Config:
     prompt: Prompt
     logging: Logging
     results: Results
+
+@dataclass
+class Interpretability:
+    model: Model
+    path: str

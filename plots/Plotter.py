@@ -1,6 +1,8 @@
+import os
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 
 from evaluation.Accuracy import Accuracy
@@ -102,6 +104,34 @@ class Plotter:
             )
         else:
             plt.legend(bbox_to_anchor=(1.1, 1.05))
+
+    def draw_heat(self, index, scores, x, y, path):
+        """
+        Draw a heat map with the interpretability attention scores
+        
+        :param x: x values
+        :param y: y values
+        :param index: the index, here: x values
+        :param result_path: path to save the results to
+        :return: None
+        """
+        plt.figure(figsize=(12, 6)) 
+        ax=sns.heatmap(scores, cmap="RdBu_r", center=0)
+        x_ticks, y_ticks = list(range(len(x))), list(range(len(y)))
+        x_ticks, y_ticks = [i+0.5 for i in x_ticks], [i+0.5 for i in y_ticks]
+        plt.ylabel('Answer tokens', fontdict={'size':10})
+        plt.xlabel('Question tokens', fontdict={'size':10})
+        plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0) # Cot
+        plt.xticks(ticks=x_ticks, labels=index, fontsize=5, rotation=30, ha="right") # Options
+        plt.subplots_adjust(left=0.15, right=0.99, top=0.98, bottom=0.15)
+        cbar = ax.collections[0].colorbar
+        cbar.ax.tick_params(labelsize=5)
+        cbarlabels = cbar.ax.get_yticklabels() 
+        print(path)
+        os.makedirs("/".join(path.split("/")[:-1]), exist_ok=True)
+        plt.savefig(path)
+        plt.close()
+        
 
     def plot_acc_per_task(
         self,

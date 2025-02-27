@@ -11,15 +11,11 @@ model:
 
 setting:
   name: "Baseline"
-
+  interpretability: True
 
 interpretability:
-  switch: False
-  path: 'interpretability/'
-  setting:
-    sample: False # sample-wise
-    part: True # part-wise
-
+  path: "${oc.env:HOME}/research-project/interpretability/"
+  save_data: False
 
 data:
   # small data with validation
@@ -66,13 +62,6 @@ prompt:
       *EXAMPLE{number}*
       {example}
 
-repository:
-  # path should be relative to the working directory (where the script is)
-  path: "${oc.env:HOME}/research-project/"
-  # if to save the results in the repository,
-  # if False, the results will be saved in the 'output' folder
-  save: True
-
 logging:
   # if to print the results to a log file, otherwise will print to console
   print_to_file: True
@@ -83,7 +72,7 @@ results:
     - task_id
     - part_id
     - sample_no
-    - task
+    - part
     - true_answer
     - model_answer
     - correct?

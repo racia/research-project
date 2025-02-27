@@ -10,6 +10,8 @@ from prompts.Chat import Chat, Source
 from prompts.Prompt import Prompt
 from settings.Model import Model
 from settings.config import Enumerate
+from interpretability.Interpretability import Interpretability
+
 
 
 class Setting(ABC):
@@ -27,6 +29,7 @@ class Setting(ABC):
         total_parts: int,
         samples_per_task: int = 5,
         prompt: Prompt = None,
+        interpretability: Interpretability = None
     ):
         """
         Baseline class manages model runs and data flows around it.
@@ -46,6 +49,9 @@ class Setting(ABC):
         self.total_tasks = total_tasks
         self.total_parts = total_parts
         self.samples_per_task = samples_per_task
+
+        self.interpretability = interpretability
+
 
     @abstractmethod
     def prepare_prompt(self, chat: Chat) -> str:
@@ -111,8 +117,8 @@ class Setting(ABC):
         4. create and format the prompt
         5. call the model and yield the response
         6. add the model's output to conversation
-        7. Parse output <<NEW>> (if fine-tune: write to task_id files)
-        <<NEW>> 8. Call interpretability attention score method
+        7. parse output
+        8. call interpretability attention score method
         9. report the results for a sample: answers and accuracy
         10. report the results for the task:  accuracy
 
@@ -148,16 +154,10 @@ class Setting(ABC):
         task_results = []
         sample_eval = AnswerEvaluator(level="sample")
 
-        if not interpr.switch:
-            interpr = None
-        else:
-            # Initialize interpretability for each new sample - since new chat
-            interpretability1 = Interpretability(self.model, self.model.tokenizer, task_id)
-
         # 1. Iterate through samples
         for sample_id, sample_parts in list(task_data.items()):
             # each sample is a new conversation
-            self.chat = Chat(system_prompt=self.prompt.text)
+            chat = Chat(system_prompt=self.prompt.text)
             # collect the true answers
             sample_eval.true_values = [
                 " ".join(list(part["answer"].values())[0]) for part in sample_parts
@@ -185,7 +185,7 @@ class Setting(ABC):
                     part=sample_part, to_enumerate=self.to_enumerate
                 )
 
-                self.chat.add_message(part=formatted_part, source=Source.user, interpretability=interpr)
+                chat.add_message(part=formatted_part, source=Source.user, interpretability=self.interpretability)
 
                 formatted_prompt = self.prepare_prompt(chat=chat)
 
@@ -200,17 +200,17 @@ class Setting(ABC):
                 )
 
                 # 6. Add the model's output to conversation
-                self.chat.add_message(part=decoded_output, source=Source.assistant, interpretability=interpr)
+                chat.add_message(part=decoded_output, source=Source.assistant, interpretability=self.interpretability)
 
-                # 7. Parse output (if fine-tune: write to task_id files)
-                model_output = self.apply_setting(decoded_output=decoded_output, fine_tune=False)
+                # 7. Parse output
+                model_output = self.apply_setting(decoded_output=decoded_output)
 
                 part_result = {
                     "part_id": part_id,
                     "id": self.question_id,
                     "task_id": task_id,
                     "sample_no": sample_id_,
-                    "task": formatted_part.strip(),
+                    "part": formatted_part.strip(),
                     "true_answer": y_true,
                 }
                 part_result.update(model_output)
@@ -221,7 +221,16 @@ class Setting(ABC):
                 task_results.append(part_result)
 
                 sample_eval.predicted_values.append(part_result["model_answer"])
-            # 7. Report the results for the sample: answers and accuracy
+
+
+                # 8. Call interpretability attention score method
+                if self.interpretability:
+                    self.interpretability.cal_attn(task_id=task_id, part_id=part_id, question=formatted_part, reason=part_result["model_reasoning"], answer=part_result["model_answer"], msg = chat.get_messages())
+                    
+                    # Put model back into training mode
+                    self.model.model.train()
+
+            # 9. Report the results for the sample: answers and accuracy
             self.print_sample_predictions(
                 trues=sample_eval.true_values, preds=sample_eval.predicted_values
             )

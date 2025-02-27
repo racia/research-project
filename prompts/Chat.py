@@ -44,7 +44,7 @@ class Chat:
 
     @staticmethod
     def format_message(
-        part: str | list[str], role: Union[Source.user, Source.assistant] # type: ignore
+        part: str | list[str], role: Union[Source.user, Source.assistant]
     ) -> dict[str, str]:
         """
         Formats the prompt by managing the data type and putting in into
@@ -59,16 +59,16 @@ class Chat:
         return {"role": role, "content": part}
     
 
-    def get_message(self):
+    def get_messages(self):
         return self.messages
 
 
     def add_message(
         self,
         part: str | list[str],
-        source: Union[Source.user, Source.assistant], # type: ignore
+        source: Union[Source.user, Source.assistant],
         model_role: str = "student",
-        interpretability: Interpretability = None  # type: ignore
+        interpretability: Interpretability = None
     ) -> None:
         """
         Add a message to the messages list.
@@ -80,10 +80,7 @@ class Chat:
         if self.multi_system:
             self.messages[model_role].append(self.format_message(part, source))
         else:
-            if interpretability: # @TODO Check whether part-wise
+            if interpretability:
                 if source == "assistant":
                     return
-                if len(self.messages) > 1: # Consider all previous context
-                    #self.messages.pop()
-                    pass
             self.messages.append(self.format_message(part, source))
