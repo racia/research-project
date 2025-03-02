@@ -14,20 +14,37 @@ from settings.Model import Model
 
 @dataclass
 class Interpretability:
+
     model: Model
     path: str
     
     def __init__(self, interpretability: bool = False, model: Model = None, path: str = None):
+        """
+        Interpretability class
+        :param interpretability: whether to instantiate the interpretability class
+        :param model: Model object 
+        :path: results saving path @TODO: Add to DataSaver
+        """
         if interpretability:
             self.model = model
             self.path = path
         else: 
             return 
 
-    def check_tok(self, dist_toks, tok):
-        return tok in dist_toks
+    def check_tok(self, tokens, tok):
+        """
+        Checks whether token is in set of relevant tokens .txt files
+        :param dist_toks: token sets
+        """
+        return tok in tokens
       
     def parse_messages(self, messages, split_role="user"):
+        """
+        Parses messages by appending user content as new round to rounds after initial system content
+        :param messages: prompt messages 
+        :param split_role: system/user
+        :return: system message and rounds list
+        """
         system, rounds = "", []
         round = []
         for i, message in enumerate(messages):
@@ -45,6 +62,9 @@ class Interpretability:
 
 
     def build_chat_input(self, messages: List[dict], max_new_tokens: int=0):
+        """
+        As taken by CoT repo.        
+        """
         max_new_tokens = 500 or self.model.generation_config.max_new_tokens
         assert max_new_tokens is not None
         max_length = 2000 or self.model.config.max_length
@@ -77,6 +97,12 @@ class Interpretability:
             
 
     def cal_attn(self, task_id: int, part_id: int, question: str, reason: str, answer: str, msg: list) -> str:
+        """
+        Taken by CoT repo with changes:
+
+        Obtains attention values through output attention weights as scores for CoT and Question for each part answer.
+        @TODO: Remove top_k_attetion since every token in answer is considered.
+        """
         question_len = len(self.model.tokenizer(question, return_tensors="pt").input_ids[0])
         question_msg = msg
         question_ids = self.build_chat_input(question_msg)

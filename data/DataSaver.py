@@ -106,11 +106,15 @@ class DataSaver:
 
 
     def save_fine_tune_data(self, task_id: int, task_data: list):
-    # Save decoded output to task_id file for fine-tuning
+        """
+        Save decoded output to a file for each task for fine-tuning
+        :param task_id: the current task
+        :param task_data: the model output data to be saved
+        """
         with open(f"{self.results_path/str(task_id)}.txt", "a") as f:
             for part in task_data:
-                f.write("\n".join(part["part"].split("\n\n"))) # Part
-                f.write(part["model_reasoning"]) # Only Model Reason - .split("\n\n")[0].split("Reason: ")[-1]
+                f.write("\n".join(part["part"].split("\n\n"))) # Take according part context sentences
+                f.write(part["model_reasoning"]) # Then add model reasoning
                 f.write("\n\n") # Add new line at the end
 
 
