@@ -1,24 +1,25 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=setting         # TODO: adjust job name
+#SBATCH --job-name=SD
 
-#SBATCH --gres=gpu:2
-#SBATCH --mem=32000
-#SBATCH --ntasks=1
-#SBATCH --partition=students
+#SBATCH --time=00:30:00              # Job time limit (30 minutes)
+#SBATCH --ntasks=1                   # Total number of tasks
+#SBATCH --gres=gpu:2                 # Request 2 GPUs
+#SBATCH --cpus-per-task=1            # Number of CPU cores per task
+#SBATCH --partition=dev_gpu_4
 
 # Output and error logs
-#SBATCH --output="setting_out.txt"        # TODO: adjust standard output log
-#SBATCH --error="setting_err.txt"         # TODO: adjust error log
+#SBATCH --output="SD_out.txt"
+#SBATCH --error="SD_err.txt"
 
 # Email notifications
-#SBATCH --mail-user=""
+#SBATCH --mail-user=""              # TODO: Add your email address
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
-# shellcheck source=/dev/null
-source ~/miniconda3/etc/profile.d/conda.sh
+# initialize shell to work with bash
+source ~/.bashrc 2>/dev/null || source ~/miniconda3/etc/profile.d/conda.sh
 
 # Verify conda availability
 if ! command -v conda &> /dev/null; then
@@ -57,7 +58,7 @@ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 # declare array of config paths and names, e.g. "/path/to/config config_name"
 # TODO: add config(s) to array
 declare -a CONFIGS=(
-  "$HOME/research-project/settings/baseline/config baseline_config"
+  "$HOME/research-project/settings/SD/config SD_config"
 )
 
 for CONFIG in "${CONFIGS[@]}"
