@@ -1,7 +1,6 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import os
 import re
 from typing import List
@@ -10,33 +9,21 @@ import torch
 
 from plots.Plotter import Plotter
 from settings.Model import Model
+from .utils import get_attn_toks
 
 
-@dataclass
 class Interpretability:
-
-    model: Model
-    path: str
-    
-    def __init__(self, interpretability: bool = False, model: Model = None, path: str = None):
+    def __init__(self, model: Model = None, interpr_path: str = None, plotter: Plotter = None):
         """
         Interpretability class
-        :param interpretability: whether to instantiate the interpretability class
-        :param model: Model object 
-        :path: results saving path @TODO: Add to DataSaver
+        :param model: instance of Model
+        :param interpr_path: interpretability path
+        :param plotter: instance of Plotter
         """
-        if interpretability:
-            self.model = model
-            self.path = path
-        else: 
-            return 
 
-    def check_tok(self, tokens, tok):
-        """
-        Checks whether token is in set of relevant tokens .txt files
-        :param dist_toks: token sets
-        """
-        return tok in tokens
+        self.model = model
+        self.interpr_path = interpr_path
+        self.plotter = plotter
       
     def parse_messages(self, messages, split_role="user"):
         """
@@ -45,12 +32,12 @@ class Interpretability:
         :param split_role: system/user
         :return: system message and rounds list
         """
-        system, rounds = "", []
+        system_msg, rounds = "", []
         round = []
         for i, message in enumerate(messages):
             if message["role"] == "system":
                 assert i == 0
-                system = message["content"]
+                system_msg = message["content"]
                 continue
             if message["role"] == split_role and round:
                 rounds.append(round)
@@ -58,17 +45,15 @@ class Interpretability:
             round.append(message)
         if round:
             rounds.append(round)
-        return system, rounds
+        return system_msg, rounds
 
 
     def build_chat_input(self, messages: List[dict], max_new_tokens: int=0):
         """
         As taken by CoT repo.        
         """
-        max_new_tokens = 500 or self.model.generation_config.max_new_tokens
-        assert max_new_tokens is not None
-        max_length = 2000 or self.model.config.max_length
-        assert max_length is not None
+        max_new_tokens = 500 or self.model.max_new_tokens
+        max_length = 2000 or self.model.model.config.max_length
         max_input_tokens = max_length - max_new_tokens
         system, rounds = self.parse_messages(messages, split_role="user")
         system_tokens = self.model.tokenizer.encode(system)
@@ -101,7 +86,13 @@ class Interpretability:
         Taken by CoT repo with changes:
 
         Obtains attention values through output attention weights as scores for CoT and Question for each part answer.
-        @TODO: Remove top_k_attetion since every token in answer is considered.
+        :param task_id: Current task id
+        :param part_id: Current sample part
+        :param question: The question of sample part
+        :param reason: According reason of sample part
+        :param answer: According model answer                                                                                                        
+        :msg: Chat history as list of messages
+        :return: attention scores, tokenized x and y tokens
         """
         question_len = len(self.model.tokenizer(question, return_tensors="pt").input_ids[0])
         question_msg = msg
@@ -138,45 +129,34 @@ class Interpretability:
         attn_scores = attn_scores[:, question_len-prompt_len:cot_len-prompt_len, :question_len-prompt_len].mean(axis=0) # Mean over 40 heads
         attn_scores = attn_scores/attn_scores.sum(axis=-1, keepdims=True) # Normalize attention over tokens
 
-        # Sum attention scores for each token over all Cot tokens to get top k cand. 
+        # Old: Sum attention scores for each token over all Cot tokens to get top k cand. 
         top_k_attn_indices = np.argpartition(attn_scores.sum(axis=0), -20, axis=0)[-20:].squeeze() # Take top attended word from options given CoT (1, 10)
         np.sort(top_k_attn_indices) # Sort in ascending order
         
-        top_k_attn_scores = attn_scores[:, top_k_attn_indices] # Take top attended word from options given CoT (41, 10)
-        np.sort(top_k_attn_scores) # Sort ascending
+        # Old: top_k_attn_scores = attn_scores[:, top_k_attn_indices] # Take top attended word from options given CoT (41, 10)
+        # Old: np.sort(top_k_attn_scores) # Sort ascending
 
-        dist_categories = ["subj", "obj", "relation", "location", "nh-subj", "subj_attr", "attributes", "other"]
-        dist_toks = []
-        for cat in dist_categories:
-            with open (f"{self.path+cat}.txt", "r") as f:
-                for line in f.readlines():
-                    dist_toks.append(line.strip())
-    
-        print("Attn scores shape: ", attn_scores.shape)
+        print("Attn. scores shape: ", attn_scores.shape)
         not_att = []
         for i, cot_tok in enumerate(attn_scores):
-            for ind, attn in enumerate(attn_scores[i]): # Attention for first Cot token - top_k_…; attn, ind; 
+            for ind, attn in enumerate(attn_scores[i]): # Attention for first Cot token - (old: top_k_…); attn, ind; 
                 tok = self.model.tokenizer.batch_decode(input_ids)[ind] # convert ids to natural text.
                 tok = tok.strip()
-                if re.match("([^A-Za-z]+)|INST", tok) or not self.check_tok(dist_toks, tok): # Remove unneccessary tokens
+                attn_tokens = get_attn_toks()
+                if re.match("([^A-Za-z]+)|INST", tok) or tok not in attn_tokens: # Remove unneccessary tokens
                     not_att.append(ind)
         
-        top_k_attn_indices = list(filter(lambda x: x not in not_att, list(range(attn_scores.shape[1])))) #top_k_attn_indices
+        attn_indices = list(filter(lambda x: x not in not_att, list(range(attn_scores.shape[1])))) # Old: top_k_attn_indices
 
-        top_k_attn_scores = attn_scores[:, top_k_attn_indices]
+        attn_scores = attn_scores[:, attn_indices]
 
         y_tokens = self.model.tokenizer.batch_decode(input_ids[question_len-prompt_len:cot_len-prompt_len])
-        x_tokens = self.model.tokenizer.batch_decode(input_ids[top_k_attn_indices]) # Take options
+        x_tokens = self.model.tokenizer.batch_decode(input_ids[attn_indices]) # Take options
 
-        del attn_values, attn_scores, input_ids
-        torch.cuda.empty_cache()
-        del outputs
+        self.plotter.draw_heat(index=x_tokens, x=x_tokens, y=y_tokens, scores=attn_scores, task_id=task_id, part_id=part_id)
         torch.cuda.empty_cache()
 
-        #return top_k_attn_scores, x_tokens, y_tokens
-        fig_path = os.path.join(str(self.path), "results", f'task-{task_id}-{part_id}.pdf')
+        interpr_results = {"attn_scores": attn_scores, "x_tokens": x_tokens, "y_tokens": y_tokens}
 
-        plotter = Plotter(fig_path)
-        plotter.draw_heat(index=x_tokens, scores=top_k_attn_scores, x=x_tokens, y=y_tokens, path=fig_path)
-
-    
+        return interpr_results
+   

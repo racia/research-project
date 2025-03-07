@@ -73,22 +73,34 @@ def run_setting(cfg: DictConfig) -> None:
 
     setting = None
 
+    saver = DataSaver(save_to=HydraConfig.get().run.dir)
+    print(f"Results will be saved to: {saver.results_path}")
+
+    plotter = Plotter(result_path=saver.results_path)
+
     print("The model is being loaded...", end="\n\n")
+    
+    model = Model(
+    cfg.model.name,
+    cfg.model.max_new_tokens,
+    cfg.model.temperature,
+    cfg.model.to_continue,
+    )
+    
+    print("Model is put into Eval mode...")
+    model.model.eval()
+
+    if cfg.setting.interpretability:
+        plotter.result_path = saver.results_path / "interpretability"
+        interpretability = Interpretability(
+        model,
+        cfg.interpretability.path,
+        plotter
+        )
+    else:
+        interpretability = None
     try:
         if cfg.setting.name == "Baseline":
-            model = Model(
-                cfg.model.name,
-                cfg.model.max_new_tokens,
-                cfg.model.temperature,
-                cfg.model.to_continue,
-            )
-          
-            interpretability = Interpretability (
-                cfg.setting.interpretability,
-                model,
-                cfg.interpretability.path
-            )
-
             setting = Baseline(
                 model=model,
                 to_enumerate=cfg.data.to_enumerate,
@@ -99,12 +111,6 @@ def run_setting(cfg: DictConfig) -> None:
                 interpretability=interpretability
             )
         elif cfg.setting.name == "Skyline":
-            model = Model(
-                cfg.model.name,
-                cfg.model.max_new_tokens,
-                cfg.model.temperature,
-                cfg.model.to_continue,
-            )
             setting = Skyline(
                 model=model,
                 to_enumerate=cfg.data.to_enumerate,
@@ -127,11 +133,6 @@ def run_setting(cfg: DictConfig) -> None:
 
     print(f"The model {cfg.model.name} is loaded successfully", flush=True)
 
-    saver = DataSaver(save_to=HydraConfig.get().run.dir)
-    print(f"Results will be saved to: {saver.results_path}")
-
-    plotter = Plotter(result_path=saver.results_path)
-
     for prompt_num, prompt_path in enumerate(cfg.prompt.paths, 1):
         prompt_name = f"prompt_{Path(prompt_path).stem}"
         prompt_evaluator = MetricEvaluator(level="prompt")
@@ -139,8 +140,6 @@ def run_setting(cfg: DictConfig) -> None:
         log_file_path, results_file_paths, metrics_file_paths = (
             saver.create_result_paths(prompt_name=prompt_name, splits=data_splits)
         )
-        # update result paths
-        plotter.result_path = saver.results_path
 
         # Once the printing is redirected to the log file,
         # the system output will be saved there without additional actions
@@ -194,6 +193,10 @@ def run_setting(cfg: DictConfig) -> None:
                     prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.prompt.paths)}",
                     task_evaluator=task_evaluator,
                 )
+
+                # update result paths
+                plotter.result_path = saver.results_path
+
                 saver.save_task_result(
                     task_id=task_id,
                     task_result=task_result,

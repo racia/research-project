@@ -56,7 +56,6 @@ class Setting(ABC):
     @abstractmethod
     def prepare_prompt(self, chat: Chat) -> str:
         """
-        @TODO: self.to_continue check, default: add_generation_prompt
         Prepares the prompt to include the current part of the sample.
         :param chat: the chat object
         :return: prompt with the task and the current part
@@ -225,10 +224,8 @@ class Setting(ABC):
 
                 # 8. Call interpretability attention score method
                 if self.interpretability:
-                    self.interpretability.cal_attn(task_id=task_id, part_id=part_id, question=formatted_part, reason=part_result["model_reasoning"], answer=part_result["model_answer"], msg = chat.get_messages())
-                    
-                    # Put model back into training mode
-                    self.model.model.train()
+                    interpr_scores = self.interpretability.cal_attn(task_id=task_id, part_id=part_id, question=formatted_part, reason=part_result["model_reasoning"], answer=part_result["model_answer"], msg = chat.get_messages())
+                    part_result.update(interpr_scores)
 
             # 9. Report the results for the sample: answers and accuracy
             self.print_sample_predictions(

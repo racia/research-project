@@ -78,6 +78,9 @@ results:
     - correct?
     - model_reasoning
     - model_output
+    - attn_scores
+    - x_tokens
+    - y_tokens
     - exact_match_accuracy
     - soft_match_accuracy
     - there
