@@ -1,5 +1,5 @@
 model:
-  name: "meta-llama/Meta-Llama-3-8B-Instruct"
+  name: "meta-llama/Meta-Llama-3-70B-Instruct"
   max_new_tokens: 12
   # with temperature==0.0 the model will use log probability
   # to automatically increase the temperature until certain thresholds are hit.
@@ -46,6 +46,7 @@ prompt:
     question: |
       Now, answer the following question:
       {question}
+    answer: ""
   examples:
     to_add: True
     enumerated: True
