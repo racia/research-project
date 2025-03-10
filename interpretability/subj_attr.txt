@@ -14,7 +14,7 @@ gray
 color
 frog
 yellow
-"color
+color
 lily
 blue
 pink

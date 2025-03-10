@@ -7,6 +7,7 @@ from typing import Union
 @dataclass
 class Model:
     name: str
+    mode: str
     max_new_tokens: int
     temperature: float
     to_continue: bool
@@ -75,7 +76,9 @@ class CSVHeaders:
     verbs: str = "verbs"
     pronouns: str = "pronouns"
     not_mentioned: str = "not_mentioned"
-
+    attn_scores: str = "attn_scores"
+    x_tokens: str = "x_tokens"
+    y_tokens: str = "y_tokens"
 
 @dataclass
 class Logging:

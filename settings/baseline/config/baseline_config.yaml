@@ -1,5 +1,6 @@
 model:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
+  mode: "eval"
   max_new_tokens: 100
   # with temperature==0.0 the model will use log probability
   # to automatically increase the temperature until certain thresholds are hit.
@@ -14,7 +15,6 @@ setting:
   interpretability: True
 
 interpretability:
-  path: "${oc.env:HOME}/research-project/interpretability/"
   save_data: False
 
 data:

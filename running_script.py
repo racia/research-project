@@ -78,23 +78,19 @@ def run_setting(cfg: DictConfig) -> None:
 
     plotter = Plotter(result_path=saver.results_path)
 
-    print("The model is being loaded...", end="\n\n")
+    print(f"The model is being loaded in mode: {cfg.model.mode}...", end="\n\n")
     
     model = Model(
     cfg.model.name,
+    cfg.model.mode,
     cfg.model.max_new_tokens,
     cfg.model.temperature,
     cfg.model.to_continue,
     )
-    
-    print("Model is put into Eval mode...")
-    model.model.eval()
 
     if cfg.setting.interpretability:
-        plotter.result_path = saver.results_path / "interpretability"
         interpretability = Interpretability(
         model,
-        cfg.interpretability.path,
         plotter
         )
     else:
@@ -140,6 +136,9 @@ def run_setting(cfg: DictConfig) -> None:
         log_file_path, results_file_paths, metrics_file_paths = (
             saver.create_result_paths(prompt_name=prompt_name, splits=data_splits)
         )
+        
+        # update result paths
+        plotter.result_path = saver.results_path
 
         # Once the printing is redirected to the log file,
         # the system output will be saved there without additional actions
@@ -193,10 +192,6 @@ def run_setting(cfg: DictConfig) -> None:
                     prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.prompt.paths)}",
                     task_evaluator=task_evaluator,
                 )
-
-                # update result paths
-                plotter.result_path = saver.results_path
-
                 saver.save_task_result(
                     task_id=task_id,
                     task_result=task_result,

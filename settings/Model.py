@@ -13,21 +13,22 @@ class Model:
     def __init__(
         self,
         model_name: str,
+        mode: str,
         max_new_tokens: int,
         temperature: float,
         to_continue: bool,
     ):
         self.token = os.getenv("HUGGINGFACE")
         self.model_name = model_name
-        self.model, self.tokenizer = self.load()
+        self.model, self.tokenizer = self.load(mode=mode)
 
         self.max_new_tokens = max_new_tokens
         self.temperature = temperature
         self.to_continue = to_continue
 
-    def load(self) -> tuple:
+    def load(self, mode) -> tuple:
         """
-        Load the model and the tokenizer for the instance model name.
+        Load the model and the tokenizer for the instance model name. Set the model in one of "eval" or "train" modes.
 
         :return the model and the tokenizer
         """
@@ -37,6 +38,11 @@ class Model:
             torch_dtype=torch.bfloat16,
         )
 
+        if mode == "eval":
+            model.eval()
+        else:
+            model.train()
+          
         tokenizer = AutoTokenizer.from_pretrained(self.model_name)
 
         torch.cuda.empty_cache()

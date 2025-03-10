@@ -224,7 +224,7 @@ class Setting(ABC):
 
                 # 8. Call interpretability attention score method
                 if self.interpretability:
-                    interpr_scores = self.interpretability.cal_attn(task_id=task_id, part_id=part_id, question=formatted_part, reason=part_result["model_reasoning"], answer=part_result["model_answer"], msg = chat.get_messages())
+                    interpr_scores = self.interpretability.calculate_attention(task_id=task_id, part_id=part_id, question=formatted_part, reasoning=part_result["model_reasoning"], answer=part_result["model_answer"], chat=chat.get_messages())
                     part_result.update(interpr_scores)
 
             # 9. Report the results for the sample: answers and accuracy

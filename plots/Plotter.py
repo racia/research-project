@@ -128,8 +128,9 @@ class Plotter:
         cbar = ax.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
         cbarlabels = cbar.ax.get_yticklabels() 
-        self.result_path.mkdir(exist_ok=True)
-        plt.savefig(os.path.join(str(self.result_path), f"task-{task_id}-{part_id}.pdf"))
+        # Set result path
+        Path.mkdir(self.result_path / "interpretability", exist_ok=True)
+        plt.savefig(self.result_path / "interpretability" / f"task-{task_id}-{part_id}.pdf")
         plt.close()
         
 
