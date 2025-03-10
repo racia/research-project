@@ -155,7 +155,7 @@ class AnswerEvaluator(Evaluator):
         :param answer: the answer
         :return: bool
         """
-        if re.search(r"\b((?:now|t)?here)\b", answer):
+        if answer and re.search(r"\b((?:now|t)?here)\b", answer):
             self.there += 1
             return True
         return False
@@ -165,7 +165,7 @@ class AnswerEvaluator(Evaluator):
         Check if a verb is in the answer.
         """
         answer = nlp(answer)
-        if answer[0].tag_.startswith("VB"):
+        if answer and answer[0].tag_.startswith("VB"):
             self.verbs += 1
             return True
         return False
@@ -177,7 +177,7 @@ class AnswerEvaluator(Evaluator):
         :param answer: the answer
         :return: bool
         """
-        if re.search(r"\b(?:he|she|it|her|him|they|them)\b", answer):
+        if answer and re.search(r"\b(?:he|she|it|her|him|they|them)\b", answer):
             self.pronouns += 1
             return True
         return False
@@ -192,7 +192,7 @@ class AnswerEvaluator(Evaluator):
         :param answer: the answer
         :return: bool
         """
-        if re.search(r"\bmention|information|unknown", answer):
+        if answer and re.search(r"\bmention|information|unknown", answer):
             self.not_mentioned += 1
             return True
         return False

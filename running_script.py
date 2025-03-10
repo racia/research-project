@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import gc
 import sys
 from collections import defaultdict
 from pathlib import Path
 
 import hydra
+import torch
 from hydra.core.hydra_config import HydraConfig
 from omegaconf import DictConfig, OmegaConf
 
@@ -35,6 +37,9 @@ def run_setting(cfg: DictConfig) -> None:
     :param cfg: config instance
     :return: None
     """
+    torch.cuda.empty_cache()
+    gc.collect()
+
     OmegaConf.resolve(cfg)
 
     set_device()

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import gc
 from abc import ABC, abstractmethod
 
 import torch
@@ -192,7 +193,8 @@ class Setting(ABC):
                 # 6. Add the model's output to conversation
                 chat.add_message(part=decoded_output, source=Source.assistant)
 
-                model_output = self.apply_setting(decoded_output=decoded_output)
+                with torch.no_grad():
+                    model_output = self.apply_setting(decoded_output=decoded_output)
 
                 part_result = {
                     "id": self.question_id,
@@ -238,5 +240,6 @@ class Setting(ABC):
 
         # Clear the cache
         torch.cuda.empty_cache()
+        gc.collect()
 
         return task_results
