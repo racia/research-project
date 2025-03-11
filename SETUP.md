@@ -93,9 +93,16 @@ The data repository on the cluster is located here: `/workspace/students/reasoni
 
 
 7. Install other dependencies, if any.
+8. Install the model and cuda for Spacy:
+   ```commandline
+   python -m venv .env
+   source .env/bin/activate
+   pip install -U pip setuptools wheel
+   pip install -U 'spacy[cuda11x]'
+   python -m spacy download en_core_web_sm
+   ```
 
-
-8. Running models from the Hugging Face hub requires an access token,
+9. Running models from the Hugging Face hub requires an access token,
    which you can obtain via the website on your https://huggingface.com profile.
    Save it as an environment variable in bash:
     ```commandline
@@ -132,6 +139,11 @@ To get started, log into the Heidelberg University Computational Linguistics clu
 2. In a new terminal, navigate to the local folder where the data is located. Then run the following command to copy the
    data to the remote home directory:
    `scp -r tasks_1-20_v1-2 hd_{uni_id}@bwunicluster.scc.kit.edu:.`
+3. Add this command to `~/.bashrc` in order to activate the conda environment
+
+```commandline
+   source ~/miniconda3/etc/profile.d/conda.sh
+ ```
 
 3. Activate the necessary modules:
     ```commandline
@@ -148,6 +160,14 @@ To get started, log into the Heidelberg University Computational Linguistics clu
     ```commandline
     conda create -n research-project "python>=3.9" scikit-learn numpy transformers matplotlib black "hydra-core>1" "pytorch::pytorch>=2.0" torchvision torchaudio pytorch-cuda=11.8 "conda-forge::accelerate>=0.26.0" -c pytorch -c nvidia -c conda-forge
     ```
+  Install the model and cuda for Spacy:
+   ```commandline
+   python -m venv .env
+   source .env/bin/activate
+   pip install -U pip setuptools wheel
+   pip install -U 'spacy[cuda11x]'
+   python -m spacy download en_core_web_sm
+   ```
 
   In theory, this should also be possible using the `environment.yaml` file:
     ```commandline

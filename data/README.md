@@ -1,22 +1,13 @@
 # Data
 
-This README will contain information about how we handle the data.
-We will probably describe the process from reading the data in to processing it so the models can actually use it.
-Furthermore, we should probably give a brief overview of the structure of this folder/what each of the classes does.
-Note that this is also already contained in the docstrings of the classes, so the README should focus more on how these
-different classes work together and how a pipeline would look like.
+For the project, it is necessary to read, process and save data. These processes are handles with the files within this
+directory.
 
-## The text below is proobably outdated and should be updated
+## Pipeline
 
-### Data
-
-The data can be read and preprocessed using the datahandler. The preprocessing includes:
-
-* Splitting the text files into samples. The ID of each sample is used as a key in the data dictionary.
-* For each sample, split the sample in context lines, questions, answers, and supporting facts.
-* For each line, remove newlines as well as trailing and leading whitespaces.
-
-The preprocessed data is saved as a dictionary of the following format:
+The DataLoader is responsible for reading in the data from the the files that it was provided in.
+The DataProcessor then handles everything related to proceesing it.
+The preprocessed data is saved as dictionary of the following format:
 
 ```
 {sample_id:
@@ -69,3 +60,6 @@ Below is an example:
     }
 }
 ```
+
+Finally, the DataSaver is used to save all the generated data into some files.
+
