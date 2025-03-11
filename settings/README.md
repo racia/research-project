@@ -1,15 +1,47 @@
 # The Settings
 
-At some point, here should be some detailed information about the different settings that can be run.
+This project has four different settings. A baseline and a skyline setting, which are used to compare the performance of
+our approaches. The other settings, which are the main focus of this work, are the feedback setting and the speculative
+decoding setting.
 
-I imagine, we would include some basic instruction on how to run a setting and some more detailed information about the
-settings and their structure.
+## Baseline
 
-## The information below is not up-to-date and will be revised at some point.
+The baseline consists of the Llama-3-8b model.
 
-### Baseline
+## Skyline
 
-#### Running the baseline on the CLuster and bwUniCluster
+The skyline consists of the Llama-3-70b model.
+
+## Feedback
+
+In the Feedback setting, the student starts by generating an initial chain-of-thought and an answer to the question.
+
+This CoT and the answer are then given to the teacher. The teacher now reads the generated CoT and provides some
+feedback for the student. This feedback can be either that the student needs to further refine its CoT or that the CoT
+is plausible as it is.
+
+In the case that the teacher found that some further refinement is necessary, the student receives its own CoT again as
+well as the feedback that was provided by the teacher. Based on this, it is then prompted to refine its CoT.
+
+This refined CoT is then again given to the teacher in order to get some feedback on it. This process of the student
+refining its CoT based on some feedback and the teacher given feedback on this new CoT is repeated until the teacher
+accepts the CoT.
+
+## Speculative Decoding
+
+In the Speculative Decoding setting, the student starts by generating a whole initial chain-of-thought and an answer to
+the question.
+
+This CoT is then given to the teacher. The teacher goes through the chain of thought TOKEN BY TOKEN? REASONING STEP BY
+REASONING STEP? CHUNK BY CHUNK?. As soon as the teacher deems a x incorrect, it provides a correction for the faulty x.
+
+The students correct part of the CoT as well as the intervention x by the teacher is then given back to the student.
+Based on the correction, it is then prompted to continue its CoT, starting after the intervention x.
+
+## Running a setting on the CLuster and bwUniCluster
+
+Due to the size of the big Llama model, it is only possible to run the baseline on CLuster. On the bwUniCluster, all of
+our settings can be run.
 
 1. Change directory to the subproject folder: `cd ~research-project/baseline`.
 
@@ -19,25 +51,28 @@ settings and their structure.
    and the rest will be taken from the default config file.
 
 
-3. Create your bash script from the default `baseline.sh`. You can specify:
+3. Use the default `setting_{server}.sh`. You should specify:
     * the name of the job
-    * name of the output file ()
+    * name of the output file
     * number of CPU's
     * memory to allocate (if too big, longer waiting time)
-    * patrition (default — `students`)
-    * most importantly, the list of config files you want to run the script with:
-      ``` 
-      CONFIGS="prompt_0_shot prompt_1_shot"
-      ```
+    * partition
+    * your email adress to receive notifications
+    * the list of config files you want to run the script with:
+       ``` 
+       "$HOME/research-project/settings/baseline/config baseline_config_bwUniCluster"
+       ```
       The script runs with each config separately.
 
 
-4. Submit a batch job: `sbatch name_of_script.sh`.
+4. Submit a batch job: `sbatch setting_{server}.sh`.
 
 
 5. Check the status with `squeue`.
 
-#### Running the baseline locally
+## Running a setting locally
+
+Due to the size of the Llama models, it is only possible to run the baseline locally.
 
 1. Change directory to the subproject folder: `cd ~research-project/baseline`.
 
@@ -55,13 +90,18 @@ settings and their structure.
    If no config specified, the script will run with the default `baseline_config`
    (will through an error of not finding `/workspace/students/reasoning`).
 
-### Settings
-
-As the settings load two Llama models, it not possible to run these settings on CLuster or locally.
+### Notes
 
 #### Running the settings on the bwUniCluster
 
-Make sure to activate the conda module and the CUDA module. Furthermore, check that your pytorch version supports GPU
+Make sure to activate the conda module and the CUDA module.
+
+```commandline
+module load devel/miniconda/23.9.0-py3.9.15
+module load devel/cuda/11.8
+``` 
+
+Furthermore, check that your pytorch version supports GPU
 usage.
 The code will stop executing if no GPU is available to use.
 

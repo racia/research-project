@@ -1,3 +1,8 @@
+# Description: Plot the accuracies for multiple prompts  by given paths to compare them.
+# Furthermore, the accuracy files should be in the same format:
+# - The first line should contain the average accuracy for the "zero task".
+# - The following lines should contain the strict and soft-match accuracies for each task.
+
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Union
