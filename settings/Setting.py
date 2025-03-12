@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import gc
 from abc import ABC, abstractmethod
 import os
 
 import torch
 
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
+from interpretability import Interpretability
 from prompts.Chat import Chat, Source
 from prompts.Prompt import Prompt
 from settings.Model import Model
@@ -202,8 +204,8 @@ class Setting(ABC):
                 # 6. Add the model's output to conversation
                 self.chat.add_message(part=decoded_output, source=Source.assistant, interpretability=interpr)
 
-                # 7. Parse output (if fine-tune: write to task_id files)
-                model_output = self.apply_setting(decoded_output=decoded_output, fine_tune=False)
+                with torch.no_grad():
+                    model_output = self.apply_setting(decoded_output=decoded_output)
 
                 part_result = {
                     "part_id": part_id,
@@ -250,5 +252,6 @@ class Setting(ABC):
 
         # Clear the cache
         torch.cuda.empty_cache()
+        gc.collect()
 
         return task_results
