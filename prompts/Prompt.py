@@ -1,9 +1,8 @@
 from dataclasses import dataclass
 from pathlib import Path
 
-from data.TaskExamples import TaskExample, TaskExamples, Task
-
-from settings.config import Enumerate, Wrapper, Examples
+from data.TaskExamples import Task, TaskExample, TaskExamples
+from settings.config import Enumerate, Examples, Wrapper
 from settings.utils import structure_part
 
 

@@ -8,6 +8,7 @@
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
 #SBATCH --mem=32G                    # Total memory requested
+#SBATCH --partition=dev_gpu_4
 
 # Output and error logs
 #SBATCH --output="skyline_out.txt"
@@ -28,8 +29,6 @@ if command -v module >/dev/null 2>&1; then
 else
     echo "Module util is not available. Using manually installed miniconda and CUDA..."
 fi
-
-
 
 # Verify conda availability
 if ! command -v conda &> /dev/null; then
@@ -68,8 +67,6 @@ fi
     done
 ) > gpu_monitor.log &
 MONITOR_PID=$!#
-
-
 
 # Run the Python script
 SCRIPT="running_script.py"

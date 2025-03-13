@@ -108,14 +108,14 @@ class DataSaver:
         self,
         evaluator: MetricEvaluator,
         accuracy_path: Path,
-    ) -> [float, float]:
+    ) -> None:
         """
         Save the accuracies for the split,
         including the mean accuracy for all tasks
 
         :param evaluator: the evaluator
         :param accuracy_path: the path to the file to save the accuracies
-        :return: the mean accuracies of all tasks
+        :return: None
         """
         accuracies_to_save = list(
             format_accuracy_metrics(
@@ -156,7 +156,7 @@ class DataSaver:
 
     def save_task_result(
         self, task_id, task_result, task_evaluator, headers, results_path, metrics_path
-    ):
+    ) -> None:
         """
         Save the results for the task and the accuracy for the task to the separate files.
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 from collections import defaultdict
+
 from settings.utils import expand_cardinal_points
 
 

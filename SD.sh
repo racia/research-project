@@ -8,6 +8,7 @@
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
 #SBATCH --mem=32G                    # Total memory requested
+#SBATCH --partition=dev_gpu_4
 
 # Output and error logs
 #SBATCH --output="SD_out.txt"

@@ -30,13 +30,19 @@ class Evaluator:
         self.pronouns = 0
         self.not_mentioned = 0
 
+    def __repr__(self):
+        return (
+            f"({self.level.capitalize()} Evaluator: "
+            f"exact_match={self.exact_match_accuracy.get_mean()}, "
+            f"soft_match={self.soft_match_accuracy.get_mean()})"
+        )
+
     def print_accuracies(self, id_, exact_match_acc=None, soft_match_acc=None) -> None:
         """
         Print the accuracy scores for the level and id.
 
         :return: None
         """
-        id_ = id_ + 1 if type(id_) == int else id_
         if exact_match_acc and soft_match_acc:
             print(
                 f"\nExact-match accuracy score for {self.level} {id_}:",

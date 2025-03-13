@@ -249,7 +249,7 @@ def run_setting(cfg: DictConfig) -> None:
         )
         print(
             "Total samples processed",
-            setting.total_tasks * cfg.data.samples_per_task,
+            loader.number_of_tasks * loader.samples_per_task,
             end="\n\n",
         )
 
