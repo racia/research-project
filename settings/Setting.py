@@ -70,24 +70,29 @@ class Setting(ABC):
         raise NotImplementedError
 
     @staticmethod
-    def print_sample_predictions(trues, preds):
+    def print_sample_predictions(
+        trues: list[str], preds: list[str], reasonings: list[str]
+    ):
         """
         Print the model's predictions to compare with true values.
 
         :param trues: list of true values
         :param preds: list of predicted values
+        :param reasonings: list of reasonings for the predictions
         """
         print(
             "Model's predictions for the sample:",
-            "\t{:<18s} PREDICTED".format("GOLDEN"),
+            "\t{0:<18s} {1:<18s} REASONING".format("GOLDEN", "PREDICTED"),
             sep="\n\n",
             end="\n\n",
         )
         [
             print(
-                "\t{0:<18s} {1}".format(true, predicted.replace("\n", "\t")),
+                "\t{0:<18s} {1:<18s} {2}".format(
+                    true, predicted.replace("\n", "\t"), reasoning
+                ),
             )
-            for true, predicted in zip(trues, preds)
+            for true, predicted, reasoning in zip(trues, preds, reasonings)
         ]
 
     def iterate_task(
@@ -154,6 +159,7 @@ class Setting(ABC):
                 " ".join(list(part["answer"].values())[0]) for part in sample_parts
             ]
             sample_eval.predicted_values = []
+            sample_eval.reasonings = []
             sample_id_ = sample_id + 1
             part_id = 0
 
@@ -211,9 +217,13 @@ class Setting(ABC):
                 task_results.append(part_result)
 
                 sample_eval.predicted_values.append(part_result["model_answer"])
+                sample_eval.reasonings.append(part_result["model_reasoning"])
+
             # 7. Report the results for the sample: answers and accuracy
             self.print_sample_predictions(
-                trues=sample_eval.true_values, preds=sample_eval.predicted_values
+                trues=sample_eval.true_values,
+                preds=sample_eval.predicted_values,
+                reasonings=sample_eval.reasonings,
             )
 
             exact_match_acc, soft_match_acc = sample_eval.calculate_accuracies()

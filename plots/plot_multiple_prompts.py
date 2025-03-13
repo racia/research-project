@@ -113,9 +113,12 @@ def plot_from_directory(
 
     :return: None
     """
-    paths = get_paths(directory, keyword="accuracies")
+    paths = get_paths(directory, keyword="metrics")
     print("Found the following paths:")
     print(*paths, end="\n\n", sep="\n")
+
+    if not paths:
+        raise ValueError("No accuracy files found.")
 
     plot_from_paths(paths, accuracy_types, result_path, prompt_type, split)
 
@@ -176,8 +179,8 @@ if __name__ == "__main__":
     ]
     run(
         paths=paths,
-        split=DataSplits.train,
-        accuracy_types=[Accuracy.strict, Accuracy.soft_match],
+        split=DataSplits.valid,
+        accuracy_types=[AccuracyType.exact_match, AccuracyType.soft_match],
         prompt_type="type",
         result_path="result/path",
     )

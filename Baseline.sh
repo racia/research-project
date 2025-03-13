@@ -29,7 +29,6 @@ else
     echo "Module util is not available. Using manually installed miniconda and CUDA..."
 fi
 
-
 # Verify conda availability
 if ! command -v conda &> /dev/null; then
     echo "Error: Conda is not available after loading the module."
@@ -67,8 +66,6 @@ fi
     done
 ) > gpu_monitor.log &
 MONITOR_PID=$!#
-
-
 
 # Run the Python script
 SCRIPT="running_script.py"

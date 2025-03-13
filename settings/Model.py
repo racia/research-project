@@ -7,7 +7,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 class Model:
     """
-    Class for the model.
+    Class for the model with memory optimizations.
     """
 
     def __init__(
