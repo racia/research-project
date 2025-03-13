@@ -37,6 +37,39 @@ def get_paths(directory: str, keyword: str) -> list[str]:
     return paths
 
 
+def find_difference_in_paths(paths: list[Path]) -> list[str]:
+    """
+    Find the difference in the paths to disambiguate them.
+
+    :param paths: list of paths to the files
+
+    :return: difference in the paths
+    """
+    names = [path.parent.name for path in paths]
+    if len(set(names)) != len(names):
+        return find_difference_in_paths([path.parent for path in paths])
+    return names
+
+
+def create_disambiguators(paths: list[Path]) -> list[str]:
+    """
+    Create disambiguators for the paths.
+
+    :param paths: list of paths to the files
+
+    :return: list of disambiguators
+    """
+    differences = find_difference_in_paths(paths)
+    disambiguators = []
+    names = [path.name for path in paths]
+    for path, difference in zip(paths, differences):
+        if names.count(path.name) > 1:
+            disambiguators.append(difference)
+        else:
+            disambiguators.append("")
+    return disambiguators
+
+
 def plot_from_paths(
     paths: list[str],
     accuracy_types: list[Union[AccuracyType.exact_match, AccuracyType.soft_match]],
@@ -60,19 +93,26 @@ def plot_from_paths(
 
     :return: None
     """
-    if not Path(result_path).exists():
-        Path(result_path).mkdir(parents=True, exist_ok=True)
+    Path(result_path).mkdir(parents=True, exist_ok=True)
     plotter = Plotter(result_path=Path(result_path))
     loader = DataLoader()
 
+    paths = [Path(path) for path in paths]
+    disambiguators = create_disambiguators(paths)
+    unique_disambiguators = set(
+        [disambiguator for disambiguator in disambiguators if disambiguator]
+    )
+    if len(unique_disambiguators) > 1:
+        print("Disambiguators found:", *unique_disambiguators, sep="\n", end="\n\n")
+
     for accuracy_type in accuracy_types:
         accuracies = {}
-        for path in paths:
+        for path, disambiguator in zip(paths, disambiguators):
             data = loader.load_result_data(
-                result_file_path=path,
+                result_file_path=str(path),
                 headers=["task_id", "exact_match_accuracy", "soft_match_accuracy"],
             )
-            prompt_name = Path(path).stem.replace("prompt_", "")
+            prompt_name = Path(path).stem.replace("prompt_", f"{disambiguator}_", 1)
             accuracies[prompt_name] = Accuracy(accuracy_type, data[accuracy_type])
 
         plotter.plot_acc_per_task_and_prompt(
@@ -118,7 +158,7 @@ def plot_from_directory(
     print(*paths, end="\n\n", sep="\n")
 
     if not paths:
-        raise ValueError("No accuracy files found.")
+        raise ValueError("No files with metrics found.")
 
     plot_from_paths(paths, accuracy_types, result_path, prompt_type, split)
 
