@@ -1,6 +1,5 @@
 model:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  mode: "eval"
   max_new_tokens: 100
   # with temperature==0.0 the model will use log probability
   # to automatically increase the temperature until certain thresholds are hit.
@@ -9,6 +8,10 @@ model:
   # if we want the model to continue on the last message rather
   # than create a separate answer
   to_continue: False
+
+mode:
+  train: False
+  eval: True
 
 setting:
   name: "Baseline"
@@ -41,7 +44,7 @@ data:
 prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
-    - "${oc.env:HOME}/research-project/prompts/init_prompt_direct_answer.txt"
+    - "${oc.env:HOME}/research-project/prompts/init_prompt_reasoning.txt"
   wrapper:
     # if to wrap the part prompt with the task description
     context: |

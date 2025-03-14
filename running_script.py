@@ -77,24 +77,19 @@ def run_setting(cfg: DictConfig) -> None:
     print(f"Results will be saved to: {saver.results_path}")
 
     plotter = Plotter(result_path=saver.results_path)
-
-    print(f"The model is being loaded in mode: {cfg.model.mode}...", end="\n\n")
     
+    mode = "eval" if cfg.mode.eval else "train"
+
     model = Model(
     cfg.model.name,
-    cfg.model.mode,
     cfg.model.max_new_tokens,
     cfg.model.temperature,
     cfg.model.to_continue,
+    mode
     )
 
-    if cfg.setting.interpretability:
-        interpretability = Interpretability(
-        model,
-        plotter
-        )
-    else:
-        interpretability = None
+    interpretability = Interpretability(model, plotter) if cfg.setting.interpretability else None
+
     try:
         if cfg.setting.name == "Baseline":
             setting = Baseline(
@@ -127,7 +122,7 @@ def run_setting(cfg: DictConfig) -> None:
             f"Please choose one of the following: Baseline, Skyline, Feedback, SD or SpeculativeDecoding"
         )
 
-    print(f"The model {cfg.model.name} is loaded successfully", flush=True)
+    print(f"The model {cfg.model.name} is loaded successfully in mode {mode}", flush=True)
 
     for prompt_num, prompt_path in enumerate(cfg.prompt.paths, 1):
         prompt_name = f"prompt_{Path(prompt_path).stem}"
@@ -295,4 +290,5 @@ def run_setting(cfg: DictConfig) -> None:
 
 
 if __name__ == "__main__":
+
     run_setting()

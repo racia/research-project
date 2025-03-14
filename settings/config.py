@@ -7,10 +7,15 @@ from typing import Union
 @dataclass
 class Model:
     name: str
-    mode: str
     max_new_tokens: int
     temperature: float
     to_continue: bool
+    mode: Mode
+
+@dataclass
+class Mode:
+    train: str = "train"
+    eval: str = "eval"
 
 
 @dataclass
@@ -80,6 +85,7 @@ class CSVHeaders:
     x_tokens: str = "x_tokens"
     y_tokens: str = "y_tokens"
 
+
 @dataclass
 class Logging:
     print_to_file: bool
@@ -92,14 +98,29 @@ class Results:
 
 
 @dataclass
+class Interpretability:
+    pass
+
+
+@dataclass
+class Setting:
+    model: Model
+    to_enumerate: dict[Enumerate, bool]
+    parse_output: bool
+    total_tasks: int
+    total_parts: int
+    samples_per_task: int
+    prompt: Prompt
+    interpretability: Interpretability
+
+
+@dataclass
 class Config:
     model: Model
     data: Data
     prompt: Prompt
     logging: Logging
     results: Results
-
-@dataclass
-class Interpretability:
-    model: Model
-    path: str
+    Interpretability: Interpretability
+    setting: Setting
+    mode: Mode

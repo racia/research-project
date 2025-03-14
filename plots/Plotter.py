@@ -105,17 +105,15 @@ class Plotter:
         else:
             plt.legend(bbox_to_anchor=(1.1, 1.05))
 
-    def draw_heat(self, index, x, y, scores, task_id, part_id):
+    def draw_heat(self, index, x, y, scores, task_id, sample_id, part_id):
         """
         Draw a heat map with the interpretability attention scores
         
         :param x: x values
         :param y: y values
         :param index: the index, here: x values
-        :param result_path: path to save the results to
         :return: None
         """
-
         plt.figure(figsize=(12, 6)) 
         ax=sns.heatmap(scores, cmap="RdBu_r", center=0)
         x_ticks, y_ticks = list(range(len(x))), list(range(len(y)))
@@ -130,7 +128,7 @@ class Plotter:
         cbarlabels = cbar.ax.get_yticklabels() 
         # Set result path
         Path.mkdir(self.result_path / "interpretability", exist_ok=True)
-        plt.savefig(self.result_path / "interpretability" / f"task-{task_id}-{part_id}.pdf")
+        plt.savefig(self.result_path / "interpretability" / f"task-{task_id}-{sample_id}-{part_id}.pdf")
         plt.close()
         
 

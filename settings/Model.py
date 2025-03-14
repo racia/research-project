@@ -4,6 +4,8 @@ import torch
 from torch.amp import autocast
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+from settings.config import Mode
+
 
 class Model:
     """
@@ -13,22 +15,23 @@ class Model:
     def __init__(
         self,
         model_name: str,
-        mode: str,
         max_new_tokens: int,
         temperature: float,
         to_continue: bool,
+        mode: Mode = "eval"
     ):
         self.token = os.getenv("HUGGINGFACE")
         self.model_name = model_name
-        self.model, self.tokenizer = self.load(mode=mode)
+        self.mode = mode
+        self.model, self.tokenizer = self.load()
 
         self.max_new_tokens = max_new_tokens
         self.temperature = temperature
         self.to_continue = to_continue
 
-    def load(self, mode) -> tuple:
+    def load(self) -> tuple:
         """
-        Load the model and the tokenizer for the instance model name. Set the model in one of "eval" or "train" modes.
+        Load the model and the tokenizer for the instance model name and one of "eval" or "train" mode.
 
         :return the model and the tokenizer
         """
@@ -38,10 +41,12 @@ class Model:
             torch_dtype=torch.bfloat16,
         )
 
-        if mode == "eval":
+        if self.mode == "eval":
             model.eval()
-        else:
+        elif model == "train":
             model.train()
+        else:
+            raise Exception("You are trying to load the model in an unrecognized mode.")
           
         tokenizer = AutoTokenizer.from_pretrained(self.model_name)
 

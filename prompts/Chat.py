@@ -1,10 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Union
-
-from interpretability.Interpretability import Interpretability
-
+from typing import List, Union
+import torch
 
 
 @dataclass
@@ -57,18 +55,13 @@ class Chat:
         if type(part) is list:
             part = "\n".join(part)
         return {"role": role, "content": part}
-    
-
-    def get_messages(self):
-        return self.messages
 
 
     def add_message(
         self,
         part: str | list[str],
         source: Union[Source.user, Source.assistant],
-        model_role: str = "student",
-        interpretability: Interpretability = None
+        model_role: str = "student"
     ) -> None:
         """
         Add a message to the messages list.
@@ -80,7 +73,90 @@ class Chat:
         if self.multi_system:
             self.messages[model_role].append(self.format_message(part, source))
         else:
-            if interpretability:
-                if source == "assistant":
-                    return
             self.messages.append(self.format_message(part, source))
+
+
+    def interpr_parse_messages(self, messages, split_role="user"):
+        """
+        Parses messages by appending new message in message_round list to message_rounds after initial system message.
+        :param messages: prompt messages 
+        :param split_role: one of system/user
+        :return: system message and message_rounds list
+        """
+        system_msg, message_rounds = "", []
+        message_round = []
+        for i, message in enumerate(messages):
+            if message["role"] == "system":
+                assert i == 0
+                system_msg = message["content"]
+                continue
+            if message["role"] == split_role and message_round:
+                message_rounds.append(message_round)
+                message_round = []
+            message_round.append(message)
+        if message_round:
+            message_rounds.append(message_round)
+        return system_msg, message_rounds
+
+
+    def interp_build_chat_input(self, messages: List[dict], max_new_tokens: int=100, max_length: int=200, tokenizer=None):
+        """
+        As taken by CoT repo: Builds chat input by concatenating it left-wise to current chat messages excluding last concatenated model output.
+        :param messages: List containing chat hisory
+        :param max_new_tokens: max_new_tokens model config
+        :param max_length: default max_length of model config 
+        :return: tensor of input tokens
+        """        
+        max_input_tokens = max_length - max_new_tokens
+        system, rounds = self.interpr_parse_messages(messages, split_role="user") # Exclude last model answer, i.e. assistant msg
+        system_tokens = tokenizer.encode(system)
+        max_history_tokens = max_input_tokens - len(system_tokens)
+
+        history_tokens = []
+        for round in rounds[::-1]:
+            round_tokens = []
+            for message in round:
+                if message["role"] == "user":
+                    round_tokens.append(tokenizer.convert_tokens_to_ids("user"))
+                else:
+                    round_tokens.append(tokenizer.convert_tokens_to_ids("assistant"))
+                round_tokens.extend(tokenizer.encode(message["content"]))
+            if len(history_tokens) == 0 or len(history_tokens) + len(round_tokens) <= max_history_tokens:
+                history_tokens = round_tokens + history_tokens  # concat left
+                if len(history_tokens) < max_history_tokens:
+                    continue
+            break
+
+        input_tokens = system_tokens + history_tokens
+        if messages[-1]["role"] != "assistant":
+            input_tokens.append(tokenizer.convert_tokens_to_ids("assistant")) #model.generation_config.assistant_token_id
+        input_tokens = input_tokens[-max_input_tokens:]  # truncate left
+        return torch.LongTensor([input_tokens])
+    
+
+    def interpr_parse_chat(self, question: str, reasoning: str, answer: str, model, tokenizer):
+        
+        """
+        Parses chat by providing contents and lengths of its parts.
+        :param question: model question
+        :param reasoning: model reasoninging
+        :param answer: model answer
+        :param chat: chat history
+        :return: info dict of chat parts
+        """
+        question_len = len(tokenizer(question, return_tensors="pt").input_ids[0])
+        question_msg = self.messages[:-1] # old chat is self.messages
+        print("Q msg", question_msg)
+        question_ids = self.interp_build_chat_input(question_msg, tokenizer=tokenizer)
+        prompt_len = len(question_ids[0]) - question_len - 1
+        question_len = len(question_ids[0])
+        assistant_msg = [{'role':'assistant', 'content':f'Reasoning: {reasoning}\nAnswer: {answer}'}]
+        input_msg = question_msg + assistant_msg
+        question_len = question_len - prompt_len
+        stem_len = len(tokenizer(question.split('\n')[0],return_tensors="pt").input_ids[0])
+        stem_len = prompt_len + stem_len
+        cot_msg = question_msg + [{'role':'assistant', 'content':f'{reasoning}'}]
+        cot_len = len(self.interp_build_chat_input(input_msg, tokenizer=tokenizer)[0]) # Get reasoning - Answer paired output
+        cot_len = cot_len - prompt_len
+        print("COT", cot_len)
+        return {"question_len": question_len, "prompt_len": prompt_len, "input_msg": input_msg, "cot_len": cot_len}

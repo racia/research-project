@@ -20,7 +20,10 @@ def normalize_token(token: str) -> str:
     :param token: the token to clean
     :return: the normalized token
     """
-    return token.strip("-,.:;!?").lower()
+    try:
+        return token.strip("-,.:;!?").lower()
+    except: # In case token is None
+        return
 
 
 def answer_into_list(answer: str) -> list[str]:

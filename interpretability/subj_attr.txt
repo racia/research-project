@@ -15,7 +15,6 @@ color
 frog
 yellow
 color
-lily
 blue
 pink
 red

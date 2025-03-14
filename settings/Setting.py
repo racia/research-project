@@ -184,7 +184,7 @@ class Setting(ABC):
                     part=sample_part, to_enumerate=self.to_enumerate
                 )
 
-                chat.add_message(part=formatted_part, source=Source.user, interpretability=self.interpretability)
+                chat.add_message(part=formatted_part, source=Source.user)
 
                 formatted_prompt = self.prepare_prompt(chat=chat)
 
@@ -199,7 +199,7 @@ class Setting(ABC):
                 )
 
                 # 6. Add the model's output to conversation
-                chat.add_message(part=decoded_output, source=Source.assistant, interpretability=self.interpretability)
+                chat.add_message(part=decoded_output, source=Source.assistant)
 
                 # 7. Parse output
                 model_output = self.apply_setting(decoded_output=decoded_output)
@@ -224,7 +224,8 @@ class Setting(ABC):
 
                 # 8. Call interpretability attention score method
                 if self.interpretability:
-                    interpr_scores = self.interpretability.calculate_attention(task_id=task_id, part_id=part_id, question=formatted_part, reasoning=part_result["model_reasoning"], answer=part_result["model_answer"], chat=chat.get_messages())
+                    print("res", model_output["model_answer"], model_output["model_reasoning"])
+                    interpr_scores = self.interpretability.calculate_attention(part_result, chat=chat)
                     part_result.update(interpr_scores)
 
             # 9. Report the results for the sample: answers and accuracy

@@ -10,7 +10,7 @@ in [the main document](https://docs.google.com/document/d/1f44Xf9sQiklHzP1T34o62
 
 Authors: [@ivakhnenko](https://gitlab.cl.uni-heidelberg.de/ivakhnenko),
 [@lingemann](https://gitlab.cl.uni-heidelberg.de/lingemann),
-[@Motmem](https://gitlab.cl.uni-heidelberg.de/Motmem),
+[@motmem](https://gitlab.cl.uni-heidelberg.de/Motmem),
 [@sari](https://gitlab.cl.uni-heidelberg.de/sari)
 
 ## Structure

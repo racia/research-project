@@ -46,6 +46,7 @@ prompt:
     question: |
       Now, answer the following question:
       {question}
+    answer: ""
   examples:
     to_add: True
     enumerated: True
