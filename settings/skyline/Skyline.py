@@ -18,7 +18,7 @@ class Skyline(Baseline):
         total_tasks: int,
         total_parts: int,
         samples_per_task: int = 5,
-        prompt: Prompt = None,
+        init_prompt: Prompt = None,
     ):
         """
         Class Skyline manages the experiment with the big model. It is a subclass of Baseline, as the needs are similar.
@@ -28,7 +28,7 @@ class Skyline(Baseline):
         :param total_tasks: total number of tasks
         :param total_parts: total number of parts
         :param samples_per_task: number of samples per task for logging
-        :param prompt: system prompt to start conversations
+        :param init_prompt: system prompt to start conversations
         """
 
         super().__init__(
@@ -37,5 +37,5 @@ class Skyline(Baseline):
             total_tasks,
             total_parts,
             samples_per_task,
-            prompt,
+            init_prompt,
         )

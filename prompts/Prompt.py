@@ -60,7 +60,9 @@ class Prompt:
         self.name = name
 
     def format_part(
-        self, part: dict[str, dict[int, str]], to_enumerate: dict[Enumerate, bool]
+        self,
+        part: dict[str, dict[int, str]],
+        to_enumerate: dict[Enumerate, bool],
     ) -> str:
         """
         Format the prompt part with the wrapper.
@@ -70,48 +72,62 @@ class Prompt:
 
         :return: the formatted prompt part
         """
+        formatted_string = ""
+
         context, question = structure_part(part, to_enumerate)
 
+        # there are parts that have no context lines, only a question
         if self.wrapper:
-            wrapped_question = self.wrapper.question.format(question=question)
-            # there are parts that have no context lines, only a question
             if context:
                 wrapped_context = self.wrapper.context.format(context=context)
-                return f"{wrapped_context}\n{wrapped_question}\n{self.wrapper.answer}"
-            else:
-                return f"{wrapped_question}\n{self.wrapper.answer}"
+                formatted_string += f"\n{wrapped_context}"
+            if question:
+                wrapped_question = self.wrapper.question.format(question=question)
+                formatted_string += f"{wrapped_question}"
+
+        if not formatted_string:
+            return f"{context}\n{question}"
         else:
-            return f"{context}\n{question}\n{self.wrapper.answer}"
+            return formatted_string
 
-    def formulate_init_prompt(self, input_str: str) -> str:
+    def format_teacher_part(self, student_out: str):
         """
-        Formulate the init prompt for the teacher model.
+        Add the students current output into the instruction for the teacher.
 
-        :param input_str: the task and the questions the model should answer
+        :param student_out: str, the current output of the student
 
-        :return: the formulated evaluation prompt
+        :return: str, the instruction with the student output inserted
         """
-        prompt = self.text.format(task=input_str)
+        formatted_string = ""
+        if student_out:
+            wrapped_out = self.wrapper.instruction.format(student_output=student_out)
+        else:
+            wrapped_out = self.wrapper.instruction.format(student_output=" ")
+        formatted_string += f"\n{wrapped_out}"
 
-        return prompt
+        return formatted_string
 
-    def formulate_eval_prompt(self, curr_cot: str, current_task: str) -> str:
+    def format_teacher_sys(self, student_sys: str, student_chat: list[dict]) -> str:
         """
-        Formulate the evaluation prompt for the teacher model.
+        Format the teacher's system prompt by inserting the student's init prompt and the parts of the sample the
+        student has solved so far.
+        This prompt is only applicable per part (NOT per sample).
 
-        Use the general evaluation prompt and insert the current chain of thought to be evaluated.
-        This prompt is then used to prompt the teacher model to evaluate the student model's chain of thought.
+        :param student_sys: str, the student's system prompt
+        :param student_chat: list[dict], the chat of the student
 
-        :param curr_cot: the current CoT that should be evaluated
-        :param current_task: str, the current task of the model
-
-        :return: the formulated evaluation prompt
+        :return: str, the formatted teacher's system prompt
         """
-        prompt = self.text.format(task=current_task, reasoning=curr_cot)
+        parts_so_far = ""
+        parts_set = set()
+        for message in student_chat:
+            if message["role"] == "user" and message["content"] not in parts_set:
+                parts_so_far += message["content"] + "\n"
+                parts_set.add(message["content"] + "\n")
 
-        return prompt
+        return self.text.format(init_prompt=student_sys, parts_so_far=parts_so_far)
 
-    def formulate_resume_prompt(self, curr_cot: str) -> str:
+    def format_resume_message(self, corrected_in: str) -> str:
         """
         Formulate the resume prompt for the student model.
 
@@ -119,13 +135,16 @@ class Prompt:
         This prompt is then used to prompt the student model to resume the chain of thought with the corrections by
         the teacher.
 
-        :param curr_cot: the current CoT that should be resumed
+        :param corrected_in: the correct part of the student's previous output with the teacher's suggestion
 
         :return: the formulated resume prompt
         """
-        prompt = self.text.format(new_cot=curr_cot)
+        if corrected_in:
+            wrapped_out = self.wrapper.instruction.format(to_continue=corrected_in)
+        else:
+            wrapped_out = self.wrapper.instruction.format(to_continue=" ")
 
-        return prompt
+        return wrapped_out
 
     @staticmethod
     def read_prompt_from_file(file_path: str):

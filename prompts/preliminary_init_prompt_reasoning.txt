@@ -1,0 +1,58 @@
+You are an advanced reasoning agent. You will receive lines of context and a final question. Your task is to reason step by step to answer the question while keeping track of the overall situation. Summarize the reasoning for each step based on the context without repeating sentences unnecessarily. Focus on relevant relationships, logical connections, and any changes over time.
+Process:
+1. Previous State: Briefly summarize the known state of entities, relationships, locations, and times from earlier context.
+2. New Context: For each new line of context (S1, S2, etc.), update the situation by extracting relevant information, including changes in locations, relationships, and time. Avoid repeating full sentences; instead, summarize logical updates.
+3. Final Answer: Use the latest state to give a concise, one-word or step-by-step direct answer.
+
+Example 1:
+Context:
+Yesterday Mary journeyed to the kitchen.
+This morning Fred went back to the cinema.
+Yesterday Julie journeyed to the cinema.
+Fred journeyed to the bedroom yesterday.
+Question: Where was Fred before the cinema?
+
+Reasoning:
+Previous State: None (first context).
+S1: Mary was in the kitchen yesterday.
+S2: Fred was at the cinema this morning.
+S3: Julie was at the cinema yesterday.
+S4: Fred was in the bedroom yesterday before going to the cinema.
+Answer: bedroom
+
+Example 2:
+Context:
+Yesterday Mary journeyed to the kitchen.
+This morning Fred went back to the cinema.
+Mary and Julie met at the cinema this afternoon.
+Fred journeyed from the cinema to the office this afternoon.
+Question: Where is Mary now?
+
+Reasoning:
+Previous State: Mary was in the kitchen yesterday, and Fred was at the cinema this morning.
+S1: Mary was still in the kitchen yesterday.
+S2: Fred was at the cinema this morning.
+S3: Mary and Julie met at the cinema this afternoon, so Mary is now at the cinema.
+S4: Fred moved from the cinema to the office this afternoon, but this does not affect Mary’s location.
+Answer: cinema
+
+Example 3:
+Context:
+1. The office is east of the garden.
+2. The hallway is south of the bathroom.
+3. The hallway is east of the kitchen.
+4. The bedroom is south of the hallway.
+5. The bedroom is west of the garden.
+Question: How do you go from the hallway to the garden?
+
+Reasoning:
+- Previous State: None (first context).
+- S1-S5: Relationships:
+  - The hallway is south of the bathroom.
+  - The hallway is east of the kitchen.
+  - The garden is west of the office.
+  - The bedroom is south of the hallway and west of the garden.
+  - From the hallway to the garden: Move south to the bedroom, then east to the garden.
+Answer: south, east
+
+You have to reason step by step.

@@ -1,31 +1,30 @@
-model:
+teacher:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 12
-  # with temperature==0.0 the model will use log probability
-  # to automatically increase the temperature until certain thresholds are hit.
-  # I.e., in need of lowest temperature, set it to something like 0.00000001
-  temperature: 0.1
-  # if we want the model to continue on the last message rather
-  # than create a separate answer
-  to_continue: False
+  max_new_tokens: 100
+  temperature: 0.2
+  to_continue: false
+
+student:
+  name: "meta-llama/Meta-Llama-3-8B-Instruct"
+  max_new_tokens: 200
+  temperature: 0.2
+  to_continue: false
 
 setting:
-  name: "Baseline"
+  name: 'SD'
 
 data:
   # small data with validation
-  path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
+  path: '${oc.env:HOME}/tasks_1-20_v1-2/en-valid/'
   # Order: train, valid, test
   splits:
     train: False
     valid: True
     test: False
-  # to get all tasks use ~ (will be converted to None)
+  # to get all tasks use (will be converted to None)
+  task_ids: ~
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  task_ids: ~
-  # to get all samples use ~ (will be converted to None)
-  # to set a specific number of samples use an int
   samples_per_task: 5
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
@@ -34,18 +33,18 @@ data:
     question: False
 
 init_prompt:
+  # name of the prompt files serves as a basis for logging and result files
   paths:
-    - "${oc.env:HOME}/research-project/prompts/init_prompt_direct_answer.txt"
+    - "${oc.env:HOME}/research-project/prompts/init_prompt_reasoning.txt"
   wrapper:
     # if to wrap the part prompt with the task description
     context: |
-      *TASK*
       Here are the context sentences:
       {context}
     question: |
       Now, answer the following question:
       {question}
-  examples:
+    examples:
     to_add: True
     enumerated: True
     handpicked: True
@@ -54,6 +53,24 @@ init_prompt:
     wrapper: |
       *EXAMPLE{number}*
       {example}
+
+eval_prompt:
+  # name of the prompt files serves as a basis for logging and result files
+  paths:
+    - "${oc.env:HOME}/research-project/prompts/eval_prompt.txt"
+  wrapper:
+    # if to wrap the part prompt with the task description
+    instruction: |
+      The student's response was:
+      {student_output}
+
+
+resume_prompt:
+  # name of the prompt files serves as a basis for logging and result files
+  paths:
+    - "${oc.env:HOME}/research-project/prompts/resume_prompt.txt"
+  wrapper:
+    instruction: "{to_continue}"
 
 logging:
   # if to print the results to a log file, otherwise will print to console

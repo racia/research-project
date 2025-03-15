@@ -24,6 +24,8 @@ class Model:
         self.to_continue = to_continue
         self.model, self.tokenizer = self.load()
 
+        self.curr_sample_part = None
+
     def load(self) -> tuple:
         """
         Load the model and the tokenizer.
@@ -31,6 +33,8 @@ class Model:
 
         :return: tuple: model, tokenizer
         """
+        print(f"The model {self.model_name} is being loaded...", end="\n\n", flush=True)
+
         # create an offload folder
         if not os.path.exists("offload_folder"):
             os.makedirs("offload_folder")
@@ -60,6 +64,9 @@ class Model:
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
         torch.cuda.empty_cache()
+
+        print(f"The model {self.model_name} was  loaded successfully", flush=True)
+
         return model, tokenizer
 
     def call(self, prompt: str) -> str:
@@ -98,3 +105,20 @@ class Model:
 
             torch.cuda.empty_cache()
         return decoded_output
+
+    def call_probs(self, input_ids: torch.Tensor) -> torch.Tensor:
+        """
+        Call the model and get its logit output.
+        Using these logits, the probabilities are calculated.
+
+        :param input_ids: the input ids of the model
+
+        :return: the probabilities of the model
+        """
+        with torch.no_grad():
+            teacher_outputs = self.model(input_ids)
+            teacher_logits = teacher_outputs.logits
+            teacher_probs = torch.nn.functional.softmax(
+                teacher_logits[:, -1, :], dim=-1
+            )
+        return teacher_probs

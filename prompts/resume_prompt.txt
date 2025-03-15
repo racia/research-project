@@ -1,0 +1,5 @@
+Your teacher evaluated your answer and reasoning and found them to be flawed.
+
+You will receive the correct part of your previous answer and the next token the teacher proposes.
+Continue the reasoning and answer of the question from this point on.
+Follow the instructions and formatting of the task you received earlier.

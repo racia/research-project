@@ -3,7 +3,12 @@ defaults:
   - baseline_config
   - _self_
 
-prompt:
+init_prompt:
   paths:
     - "where/ever/the/prompts/will/be"
-  
+
+hydra:
+  run:
+    # the run directory with logs, plots, and csv results will be created here
+    # use more folders if needed for distinguishing between different experiments
+    dir: "${oc.env:HOME}/research-project/outputs/${now:%d-%m-%Y}/${now:%H-%M-%S}"

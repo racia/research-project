@@ -13,6 +13,31 @@ class Model:
 
 
 @dataclass
+class Student(Model):
+    name: str
+    max_new_tokens: int
+    temperature: float
+    to_continue: bool
+
+
+@dataclass
+class Teacher(Model):
+    name: str
+    max_new_tokens: int
+    temperature: float
+    to_continue: bool
+
+
+@dataclass
+class Setting:
+    name: str
+    teacher: Teacher
+    student: Student
+    init_prompt: Prompt
+    resume_prompt: Prompt
+
+
+@dataclass
 class DataSplits:
     train: str = "train"
     valid: str = "valid"
@@ -38,7 +63,7 @@ class Data:
 class Wrapper:
     context: str = "context"
     question: str = "question"
-    answer: str = "answer"
+    instruction: str = "instruction"
 
 
 @dataclass
