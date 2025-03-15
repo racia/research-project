@@ -20,7 +20,7 @@ class Baseline(Setting):
         total_tasks: int,
         total_parts: int,
         samples_per_task: int = 5,
-        prompt: Prompt = None,
+        init_prompt: Prompt = None,
     ):
         """
         Baseline class manages model runs and data flows around it.
@@ -34,7 +34,7 @@ class Baseline(Setting):
         """
         self.model = model
 
-        self.prompt = prompt
+        self.prompt = init_prompt
         self.to_enumerate = to_enumerate
 
         self.question_id = 0

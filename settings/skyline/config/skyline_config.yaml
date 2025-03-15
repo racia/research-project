@@ -33,7 +33,7 @@ data:
     context: True
     question: False
 
-prompt:
+init_prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/prompts/init_prompt_direct_answer.txt"

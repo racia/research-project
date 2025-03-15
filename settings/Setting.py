@@ -22,48 +22,51 @@ class Setting(ABC):
         self,
         model: Model,
         to_enumerate: dict[Enumerate, bool],
-        parse_output: bool,
         total_tasks: int,
         total_parts: int,
         samples_per_task: int = 5,
-        prompt: Prompt = None,
+        init_prompt: Prompt = None,
+        multi_system: bool = False,
     ):
         """
-        Baseline class manages model runs and data flows around it.
-        It is intended to use in the further settings.
+         The setting class is an abstract class for all settings.
 
-        :param parse_output: if we want to parse the output of the model (currently looks for 'answer' and 'reasoning')
-        :param prompt: system prompt to start conversations
+        :param init_prompt: system prompt to start conversations
         :param samples_per_task: number of samples per task for logging
         """
         self.model = model
 
-        self.prompt = prompt
+        self.init_prompt = init_prompt
         self.to_enumerate = to_enumerate
-        self.parse_output = parse_output
 
         self.question_id = 0
         self.total_tasks = total_tasks
         self.total_parts = total_parts
         self.samples_per_task = samples_per_task
 
+        self.multi_system = multi_system
+
     @abstractmethod
-    def prepare_prompt(self, chat: Chat) -> str:
+    def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
         """
         Prepares the prompt to include the current part of the sample.
-        :param chat: the chat object
+
+        :param model_role: role of the model in the conversation
+        :param resume_gen: whether to resume the generation
+        :param chat: the current chat
         :return: prompt with the task and the current part
         """
         raise NotImplementedError
 
     @abstractmethod
-    def apply_setting(self, decoded_output: str) -> dict[str, str]:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> dict[str, str]:
         """
         Apply setting-specific postprocessing of the inital model output.
         For the baseline and skyline, this consists of parsing the output.
         For the SD and feedback setting, this entails the main idea of these settings.
 
         :param decoded_output: the decoded output
+        :param chat: the current chat, only necessary in the SD and feedback setting
         :return: parsed output
         """
         # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
@@ -153,7 +156,9 @@ class Setting(ABC):
         # 1. Iterate through samples
         for sample_id, sample_parts in list(task_data.items()):
             # each sample is a new conversation
-            chat = Chat(system_prompt=self.prompt.text)
+            chat = Chat(
+                system_prompt=self.init_prompt.text, multi_system=self.multi_system
+            )
             # collect the true answers
             sample_eval.true_values = [
                 " ".join(list(part["answer"].values())[0]) for part in sample_parts
@@ -166,6 +171,7 @@ class Setting(ABC):
             # 2. Iterate through parts (one question at a time)
             for sample_part, y_true in zip(sample_parts, sample_eval.true_values):
                 self.question_id += 1
+                self.model.curr_sample_part = sample_part
                 part_id += 1
                 print(
                     "\n-* "
@@ -178,8 +184,29 @@ class Setting(ABC):
                     end="\n\n\n",
                 )
 
-                formatted_part = self.prompt.format_part(
+                print(
+                    (
+                        f" ---- Student ---- "
+                        if self.multi_system
+                        else " ---- Model ---- "
+                    ),
+                    end="\n\n\n",
+                    flush=True,
+                )
+
+                formatted_part = self.init_prompt.format_part(
                     part=sample_part, to_enumerate=self.to_enumerate
+                )
+
+                print(
+                    (
+                        f"Formatted student prompt:"
+                        if self.multi_system
+                        else f"Formatted model prompt:"
+                    ),
+                    formatted_part,
+                    sep="\n",
+                    end="\n",
                 )
 
                 chat.add_message(part=formatted_part, source=Source.user)
@@ -188,10 +215,14 @@ class Setting(ABC):
 
                 # 5. Call the model and yield the response
                 decoded_output = self.model.call(prompt=formatted_prompt)
-
                 print(
-                    "Model's output:",
+                    (
+                        f"Formatted student prompt: \n"
+                        if self.multi_system
+                        else f"Formatted model prompt: \n"
+                    ),
                     decoded_output,
+                    "\n ------------- ",
                     end="\n\n\n",
                     flush=True,
                 )
@@ -200,7 +231,9 @@ class Setting(ABC):
                 chat.add_message(part=decoded_output, source=Source.assistant)
 
                 with torch.no_grad():
-                    model_output = self.apply_setting(decoded_output=decoded_output)
+                    model_output = self.apply_setting(
+                        decoded_output=decoded_output, chat=chat
+                    )
 
                 part_result = {
                     "id": self.question_id,
