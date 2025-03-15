@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from data.TaskExamples import TaskExample, TaskExamples, Task
-
 from settings.config import Enumerate, Wrapper, Examples
 from settings.utils import structure_part
 
@@ -62,7 +61,7 @@ class Prompt:
 
     def format_part(
         self, part: dict[str, dict[int, str]], to_enumerate: dict[Enumerate, bool]
-    ) -> str:
+    ) -> tuple:
         """
         Format the prompt part with the wrapper.
 
@@ -74,15 +73,14 @@ class Prompt:
         context, question = structure_part(part, to_enumerate)
 
         if self.wrapper:
+            wrapped_context = (
+                self.wrapper.context.format(context=context) if context else ""
+            )
             wrapped_question = self.wrapper.question.format(question=question)
-            # there are parts that have no context lines, only a question
-            if context:
-                wrapped_context = self.wrapper.context.format(context=context)
-                return f"{wrapped_context}\n{wrapped_question}\n{self.wrapper.answer}"
-            else:
-                return f"{wrapped_question}\n{self.wrapper.answer}"
-        else:
-            return f"{context}\n{question}\n{self.wrapper.answer}"
+            wrapped_cot = self.wrapper.cot.format(cot=part["reasoning"])
+            wrapped_answer = self.wrapper.answer.format(answer=part["answer"])
+            return wrapped_context, wrapped_question, wrapped_cot, wrapped_answer
+        return context, question, "", ""
 
     def formulate_init_prompt(self, input_str: str) -> str:
         """

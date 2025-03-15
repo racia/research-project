@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from interpretability.Interpretability import Interpretability
 import settings.utils as utils
+from interpretability.Interpretability import Interpretability
 from prompts.Chat import Chat
 from prompts.Prompt import Prompt
 from settings.Model import Model
@@ -22,7 +22,7 @@ class Baseline(Setting):
         total_parts: int,
         samples_per_task: int = 5,
         prompt: Prompt = None,
-        interpretability: Interpretability = None
+        interpretability: Interpretability = None,
     ):
         """
         Baseline class manages model runs and data flows around it.
@@ -70,13 +70,12 @@ class Baseline(Setting):
 
         return formatted_prompt
 
-    def apply_setting(self, decoded_output: str) -> dict[str, str]:
+    def apply_setting(self, decoded_output: str) -> tuple:
         """
         Postprocesses the output of the model.
         For the baseline model, this postprocessing just parses the output.
 
         :param decoded_output: the decoded output
-        :return: dictionary with either the parsed model answer or just the model answer
+        :return: model's answer and reasoning
         """
-        parsed_output = utils.parse_output(output=decoded_output)
-        return parsed_output
+        return utils.parse_output(output=decoded_output)

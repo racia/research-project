@@ -1,11 +1,5 @@
-
 from __future__ import annotations
 
-import os
-import re
-from typing import List
-import numpy as np
-from prompts.Chat import Chat
 import torch
 
 from plots.Plotter import Plotter
@@ -133,7 +127,11 @@ class Interpretability:
         self.plotter.draw_heat(index=x_tokens, x=x_tokens, y=y_tokens, scores=attn_scores, task_id=task_id, sample_id=sample_id, part_id=part_id)
         torch.cuda.empty_cache()
 
-        interpr_results = {"attn_scores": attn_scores, "x_tokens": x_tokens, "y_tokens": y_tokens}
-
+        # TO DISCUSS: would be better to save the interpretability in files
+        interpr_results = {
+            "attn_scores": attn_scores,
+            "x_tokens": x_tokens,
+            "y_tokens": y_tokens,
+        }
+        
         return interpr_results
-   

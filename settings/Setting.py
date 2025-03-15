@@ -1,17 +1,15 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-import os
 
 import torch
 
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
-from prompts.Chat import Chat, Source
+from interpretability.Interpretability import Interpretability
+from prompts.Chat import Chat, Source, SamplePart
 from prompts.Prompt import Prompt
 from settings.Model import Model
 from settings.config import Enumerate
-from interpretability.Interpretability import Interpretability
-
 
 
 class Setting(ABC):
@@ -29,7 +27,7 @@ class Setting(ABC):
         total_parts: int,
         samples_per_task: int = 5,
         prompt: Prompt = None,
-        interpretability: Interpretability = None
+        interpretability: Interpretability = None,
     ):
         """
         Baseline class manages model runs and data flows around it.
@@ -51,7 +49,6 @@ class Setting(ABC):
         self.samples_per_task = samples_per_task
 
         self.interpretability = interpretability
-
 
     @abstractmethod
     def prepare_prompt(self, chat: Chat) -> str:
@@ -180,47 +177,49 @@ class Setting(ABC):
                     end="\n\n\n",
                 )
 
-                formatted_part = self.prompt.format_part(
+                context, question, pre_reasoning, pre_answer = self.prompt.format_part(
                     part=sample_part, to_enumerate=self.to_enumerate
                 )
+                current_part = SamplePart(
+                    id_=self.question_id,
+                    task_id=task_id,
+                    sample_id=sample_id_,
+                    part_id=part_id,
+                    context=context,
+                    question=question,
+                    reasoning=pre_reasoning,
+                    answer=pre_answer,
+                    golden_answer=y_true,
+                )
 
-                chat.add_message(part=formatted_part, source=Source.user)
+                chat.add_message(part=current_part.text, source=Source.user)
 
                 formatted_prompt = self.prepare_prompt(chat=chat)
 
                 # 5. Call the model and yield the response
-                decoded_output = self.model.call(prompt=formatted_prompt)
+                current_part.model_output = self.model.call(prompt=formatted_prompt)
 
                 print(
                     "Model's output:",
-                    decoded_output.lower(),
+                    current_part.model_output.lower(),
                     end="\n\n\n",
                     flush=True,
                 )
 
                 # 6. Add the model's output to conversation
-                chat.add_message(part=decoded_output, source=Source.assistant)
-
-                # 7. Parse output
-                model_output = self.apply_setting(decoded_output=decoded_output)
-
-                part_result = {
-                    "part_id": part_id,
-                    "id": self.question_id,
-                    "task_id": task_id,
-                    "sample_no": sample_id_,
-                    "part": formatted_part.strip(),
-                    "true_answer": y_true,
-                }
-                part_result.update(model_output)
-                part_result.update(
-                    sample_eval.evaluate(y_true, model_output["model_answer"])
+                chat.add_message(
+                    part=current_part.model_output, source=Source.assistant
                 )
 
-                task_results.append(part_result)
+                # 7. Parse output
+                current_part.answer, current_part.reasoning = self.apply_setting(
+                    decoded_output=current_part.model_output
+                )
 
-                sample_eval.predicted_values.append(part_result["model_answer"])
+                part_evaluation = sample_eval.evaluate(y_true, current_part.answer)
+                task_results.append(current_part.get_result() + part_evaluation)
 
+                sample_eval.predicted_values.append(current_part.answer)
 
                 # 8. Call interpretability attention score method
                 if self.interpretability:

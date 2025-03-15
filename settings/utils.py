@@ -58,7 +58,7 @@ def numerate_lines(lines: dict[int, str]) -> list[str]:
 
 def structure_part(
     part: dict[str, dict[int, str]],
-    to_enumerate: dict[Union[Enumerate.context, Enumerate.question], bool], # type: ignore
+    to_enumerate: dict[Union[Enumerate.context, Enumerate.question], bool],  # type: ignore
 ) -> tuple[str, str]:
     """
     Structures the lines into a readable format.
@@ -81,12 +81,12 @@ def structure_part(
     return "\n".join(context), "\n".join(question)
 
 
-def parse_output(output: str) -> dict[str, str | None]:
+def parse_output(output: str) -> tuple:
     """
     Parses the output of the model to extract the answer and reasoning.
 
     :param output: parsed output of the model
-    :return: dictionary with the model answer and reasoning
+    :return: model's answer and reasoning
     """
     answer_pattern = re.compile(r"(?i)(answer:)[\s ]*(.+)")
     reasoning_pattern = re.compile(r"(?i)(reasoning:)[\s ]*(.+)")
@@ -114,9 +114,4 @@ def parse_output(output: str) -> dict[str, str | None]:
             end="\n\n",
         )
 
-    parsed_output = {
-        "model_output": output,
-        "model_answer": answer,
-        "model_reasoning": reasoning,
-    }
-    return parsed_output
+    return answer, reasoning

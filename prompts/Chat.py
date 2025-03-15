@@ -16,6 +16,69 @@ class Source:
     assistant = "assistant"
 
 
+class SamplePart:
+    def __init__(
+        self,
+        id_: int,
+        task_id: int,
+        sample_id: int,
+        part_id: int,
+        context: str,
+        question: str,
+        reasoning: str,
+        answer: str,
+        golden_answer: str,
+        silver_reasoning=None,
+        tokenizer=None,
+    ):
+        self.id_ = id_
+        self.task_id = task_id
+        self.sample_id = sample_id
+        self.part_id = part_id
+
+        self.context = context
+        self.question = question
+        self.reasoning = reasoning
+        self.answer = answer
+
+        self.golden_answer = golden_answer
+        self.silver_reasoning = silver_reasoning
+
+        self.model_output = None
+        self.text = f"{context}\n{question}\n{reasoning}\n{answer}".strip()
+
+        self.tokenizer = tokenizer
+
+        if self.tokenizer:
+            self.context_ids = self.tokenize(self.context)
+            self.question_ids = self.tokenize(self.question)
+            self.reasoning_ids = self.tokenize(self.reasoning)
+            self.answer_ids = self.tokenize(self.answer)
+
+            self.context_ids_len = len(self.context_ids)
+            self.question_ids_len = len(self.question_ids)
+            self.reasoning_ids_len = len(self.reasoning_ids)
+            self.answer_ids_len = len(self.answer_ids)
+
+    def tokenize(self, sentence: str):
+        return self.tokenizer(sentence, return_tensors="pt").input_ids[0]
+
+    def get_result(self):
+        return {
+            "id": self.id_,
+            "task_id": self.task_id,
+            "sample_id": self.sample_id,
+            "part_id": self.part_id,
+            "context": self.context,
+            "question": self.question,
+            "reasoning": self.reasoning,
+            "answer": self.answer,
+            "golden_answer": self.golden_answer,
+            "silver_reasoning": self.silver_reasoning,
+            "model_output": self.model_output,
+        }
+
+
 class Chat:
     """
     This class handles the chats with the model.
@@ -54,14 +117,16 @@ class Chat:
         """
         if type(part) is list:
             part = "\n".join(part)
-        return {"role": role, "content": part}
-
+        return {
+            "role": role,
+            "content": part,
+        }
 
     def add_message(
         self,
         part: str | list[str],
         source: Union[Source.user, Source.assistant],
-        model_role: str = "student"
+        model_role: str = "student",
     ) -> None:
         """
         Add a message to the messages list.
@@ -103,9 +168,9 @@ class Chat:
         
         :param messages: List containing chat hisory
         :param max_new_tokens: max_new_tokens model config
-        :param max_length: default max_length of model config 
+        :param max_length: default max_length of model config
         :return: tensor of input tokens
-        """        
+        """
         max_input_tokens = max_length - max_new_tokens
         system_msg, msg_rounds = self.interpr_parse_messages(messages, split_role="user") 
         system_tokens = tokenizer.encode(system_msg) # TODO: Our caes: add_special_tokens = True
