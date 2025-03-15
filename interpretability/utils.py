@@ -15,6 +15,13 @@ def get_attn_toks():
     attn_toks = [tok for tok_l in attn_toks for tok in tok_l]
     return attn_toks
 
-def is_stop_word(tok, attn_tokens):
-    return not tok.isalpha() or tok not in attn_tokens
-
+def get_stop_words(tokenizer, input_ids, attn_scores):
+    stop_words = []
+    attn_tokens = get_attn_toks()
+    for cot_row in attn_scores:
+        for ind in enumerate(cot_row):
+            tok = tokenizer.batch_decode(input_ids)[ind[0]] 
+            tok = tok.strip()
+            if not (tok.isalpha() or tok in attn_tokens):
+                stop_words.append(ind[0])
+    return stop_words

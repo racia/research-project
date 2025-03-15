@@ -224,7 +224,6 @@ class Setting(ABC):
 
                 # 8. Call interpretability attention score method
                 if self.interpretability:
-                    print("res", model_output["model_answer"], model_output["model_reasoning"])
                     interpr_scores = self.interpretability.calculate_attention(part_result, chat=chat)
                     part_result.update(interpr_scores)
 
