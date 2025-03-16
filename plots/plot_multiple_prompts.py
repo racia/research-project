@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Union
 
 from data.DataLoader import DataLoader
-from evaluation.Accuracy import Accuracy
+from evaluation.Metrics import Accuracy
 from plots.Plotter import Plotter
 from settings.config import DataSplits
 

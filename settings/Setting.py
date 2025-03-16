@@ -6,10 +6,11 @@ from abc import ABC, abstractmethod
 import torch
 
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
-from prompts.Chat import Chat, Source
-from prompts.Prompt import Prompt
+from inference.Chat import Chat, Source
+from inference.DataLevels import SamplePart, Task, Sample
+from inference.Prompt import Prompt
 from settings.Model import Model
-from settings.config import Enumerate
+from settings.config import Enumerate, Wrapper
 
 
 class Setting(ABC):
@@ -27,6 +28,7 @@ class Setting(ABC):
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
         multi_system: bool = False,
+        wrapper: Wrapper = None,
     ):
         """
          The setting class is an abstract class for all settings.
@@ -43,6 +45,7 @@ class Setting(ABC):
         self.total_tasks = total_tasks
         self.total_parts = total_parts
         self.samples_per_task = samples_per_task
+        self.wrapper = wrapper
 
         self.multi_system = multi_system
 
@@ -59,52 +62,25 @@ class Setting(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> dict[str, str]:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple:
         """
         Apply setting-specific postprocessing of the inital model output.
         For the baseline and skyline, this consists of parsing the output.
         For the SD and feedback setting, this entails the main idea of these settings.
 
-        :param decoded_output: the decoded output
+        :param decoded_output: the current output of the student
         :param chat: the current chat, only necessary in the SD and feedback setting
         :return: parsed output
         """
         # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
         raise NotImplementedError
 
-    @staticmethod
-    def print_sample_predictions(
-        trues: list[str], preds: list[str], reasonings: list[str]
-    ):
-        """
-        Print the model's predictions to compare with true values.
-
-        :param trues: list of true values
-        :param preds: list of predicted values
-        :param reasonings: list of reasonings for the predictions
-        """
-        print(
-            "Model's predictions for the sample:",
-            "\t{0:<18s} {1:<18s} REASONING".format("GOLDEN", "PREDICTED"),
-            sep="\n\n",
-            end="\n\n",
-        )
-        [
-            print(
-                "\t{0:<18s} {1:<18s} {2}".format(
-                    true, predicted.replace("\n", "\t"), reasoning
-                ),
-            )
-            for true, predicted, reasoning in zip(trues, preds, reasonings)
-        ]
-
     def iterate_task(
         self,
         task_id: int,
         task_data: dict[int, list[dict[str, dict]]],
         prompt_name: str,
-        task_evaluator: MetricEvaluator,
-    ) -> list[dict[str, int | str]]:
+    ) -> Task:
         """
         Manages the data flow in and out of the model, iteratively going through
         each part of each sample in a given task, recoding the results to report.
@@ -146,37 +122,38 @@ class Setting(ABC):
              ]
          }
         :param prompt_name: name of the prompt
-        :param task_evaluator: the evaluator for the task
         :return: results for the task in a list of dicts with each dict representing
                  one call to the model and will end up as one row of the table
         """
-        task_results = []
-        sample_eval = AnswerEvaluator(level="sample")
+        task_evaluator = MetricEvaluator(level="task")
+        task = Task(task_id=task_id, evaluator=task_evaluator)
 
         # 1. Iterate through samples
-        for sample_id, sample_parts in list(task_data.items()):
+        for sample_id_, sample_parts in task_data.items():
+            sample_id = sample_id_ + 1
+            part_id = 0
+
+            sample_eval = AnswerEvaluator(level="sample")
+            sample_eval.golden_answers = [
+                " ".join(list(part["answer"].values())[0]) for part in sample_parts
+            ]
+            # TODO: add silver reasoning
+            sample_eval.silver_reasonings = []
+            sample = Sample(task_id=task_id, sample_id=sample_id, evaluator=sample_eval)
+
             # each sample is a new conversation
             chat = Chat(
                 system_prompt=self.init_prompt.text, multi_system=self.multi_system
             )
-            # collect the true answers
-            sample_eval.true_values = [
-                " ".join(list(part["answer"].values())[0]) for part in sample_parts
-            ]
-            sample_eval.predicted_values = []
-            sample_eval.reasonings = []
-            sample_id_ = sample_id + 1
-            part_id = 0
 
             # 2. Iterate through parts (one question at a time)
-            for sample_part, y_true in zip(sample_parts, sample_eval.true_values):
+            for sample_part, y_true in zip(sample_parts, sample_eval.golden_answers):
                 self.question_id += 1
-                self.model.curr_sample_part = sample_part
                 part_id += 1
                 print(
                     "\n-* "
                     f"TASK {task_id}/{self.total_tasks} | "
-                    f"SAMPLE {sample_id_}/{self.samples_per_task} | "
+                    f"SAMPLE {sample_id}/{self.samples_per_task if self.samples_per_task < 500 else len(task_data)} | "
                     f"PART {part_id}/{len(sample_parts)} | "
                     f"{prompt_name} | "
                     f"RUN ID {self.question_id}/{self.total_parts} "
@@ -194,9 +171,16 @@ class Setting(ABC):
                     flush=True,
                 )
 
-                formatted_part = self.init_prompt.format_part(
-                    part=sample_part, to_enumerate=self.to_enumerate
+                current_part = SamplePart(
+                    id_=self.question_id,
+                    task_id=task_id,
+                    sample_id=sample_id,
+                    part_id=part_id,
+                    raw=sample_part,
+                    golden_answer=y_true,
+                    wrapper=self.wrapper,
                 )
+                self.model.curr_sample_part = current_part
 
                 print(
                     (
@@ -204,12 +188,12 @@ class Setting(ABC):
                         if self.multi_system
                         else f"Formatted model prompt:"
                     ),
-                    formatted_part,
+                    current_part.task,
                     sep="\n",
                     end="\n",
                 )
 
-                chat.add_message(part=formatted_part, source=Source.user)
+                chat.add_message(part=current_part.task, source=Source.user)
 
                 formatted_prompt = self.prepare_prompt(chat=chat)
 
@@ -231,33 +215,14 @@ class Setting(ABC):
                 chat.add_message(part=decoded_output, source=Source.assistant)
 
                 with torch.no_grad():
-                    model_output = self.apply_setting(
-                        decoded_output=decoded_output, chat=chat
+                    answer, reasoning = self.apply_setting(
+                        decoded_output=decoded_output
                     )
 
-                part_result = {
-                    "id": self.question_id,
-                    "task_id": task_id,
-                    "sample_no": sample_id_,
-                    "task": formatted_part.strip(),
-                    "true_answer": y_true,
-                }
-                part_result.update(model_output)
-                part_result.update(
-                    sample_eval.evaluate(y_true, model_output["model_answer"])
-                )
+                current_part.set_output(decoded_output, answer, reasoning)
+                sample.add_part(current_part)
 
-                task_results.append(part_result)
-
-                sample_eval.predicted_values.append(part_result["model_answer"])
-                sample_eval.reasonings.append(part_result["model_reasoning"])
-
-            # 7. Report the results for the sample: answers and accuracy
-            self.print_sample_predictions(
-                trues=sample_eval.true_values,
-                preds=sample_eval.predicted_values,
-                reasonings=sample_eval.reasonings,
-            )
+            sample.print_sample_predictions()
 
             exact_match_acc, soft_match_acc = sample_eval.calculate_accuracies()
             sample_eval.print_accuracies(
@@ -266,18 +231,12 @@ class Setting(ABC):
                 soft_match_acc=soft_match_acc,
             )
 
-        task_evaluator.update(sample_eval)
+            task.add_sample(sample)
 
         # 8. Report the results for the task: accuracy
         print("\n- TASK RESULTS -", end="\n\n")
-
         task_evaluator.print_accuracies(id_=task_id)
-        task_results[0][
-            "exact_match_accuracy"
-        ] = task_evaluator.exact_match_accuracy.get_mean()
-        task_results[0][
-            "soft_match_accuracy"
-        ] = task_evaluator.soft_match_accuracy.get_mean()
+        task.set_results()
 
         print(f"The work on task {task_id} is finished successfully")
 
@@ -285,4 +244,4 @@ class Setting(ABC):
         torch.cuda.empty_cache()
         gc.collect()
 
-        return task_results
+        return task

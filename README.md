@@ -20,7 +20,7 @@ Authors: [@ivakhnenko](https://gitlab.cl.uni-heidelberg.de/ivakhnenko),
     * methods for data processing
     * methods to load and save data
 
-* [prompts](./prompts) — the prompts used in the experiments as text files
+* [prompts](./inference) — the prompts used in the experiments as text files
 
 * [settings](./settings)
     * [baseline](./settings/baseline) — contains the baseline setting

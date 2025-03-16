@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from Scenery import Scenery
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
+from evaluation.Scenery import Scenery
 
 general_relations = {
     "be": "be",
@@ -53,7 +53,7 @@ def create_dataset(split="valid"):
     scenery = Scenery()
     loader = DataLoader()
     current_path = Path.cwd() / ".." / "evaluation"
-    saver = DataSaver(project_dir=current_path)
+    saver = DataSaver(save_to=str(current_path))
 
     # Create the evaluation set
     data_path = f"../../tasks_1-20_v1-2/en-{split}"
@@ -147,7 +147,9 @@ def create_dataset(split="valid"):
                     line["context/question"] = sentence
                     print(sentence)
 
-                    line_scenery = scenery.extract_from_line(line=sentence).items()
+                    line_scenery = (
+                        scenery.extract_from_line(line=sentence).get().items()
+                    )
                     print(line_scenery)
 
                     line_scenery = {
@@ -173,13 +175,13 @@ def create_dataset(split="valid"):
                     saver.save_output(
                         data=[line],
                         headers=headers,
-                        file_path=saver.run_results_path / saver.results_name,
+                        file_path=saver.results_path / saver.results_name,
                     )
                     print(line)
 
     print("Data processing complete.")
 
-    print("Data is saved in", saver.run_results_path / saver.results_name)
+    print("Data is saved in", saver.results_path / saver.results_name)
 
 
 if __name__ == "__main__":

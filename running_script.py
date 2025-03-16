@@ -13,8 +13,9 @@ from omegaconf import DictConfig, OmegaConf
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from evaluation.Evaluator import MetricEvaluator
+from inference.DataLevels import Split
+from inference.Prompt import Prompt
 from plots.Plotter import Plotter
-from prompts.Prompt import Prompt
 from settings.Model import Model
 from settings.SD.SpeculativeDecoding import SpeculativeDecoding
 from settings.baseline.Baseline import Baseline
@@ -73,6 +74,8 @@ def run_setting(cfg: DictConfig) -> None:
     run_evaluators = defaultdict(dict)
     run_em_accuracies = defaultdict(dict)
     run_sm_accuracies = defaultdict(dict)
+    run_em_std = defaultdict(dict)
+    run_sm_std = defaultdict(dict)
 
     setting = None
 
@@ -92,6 +95,7 @@ def run_setting(cfg: DictConfig) -> None:
                 total_parts=loader.number_of_parts,
                 samples_per_task=loader.samples_per_task,
                 init_prompt=None,
+                wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
             )
         elif cfg.setting.name == "Skyline":
             model = Model(
@@ -107,6 +111,7 @@ def run_setting(cfg: DictConfig) -> None:
                 total_parts=loader.number_of_parts,
                 samples_per_task=loader.samples_per_task,
                 init_prompt=None,
+                wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
             )
         elif cfg.setting.name == "Feedback":
             # TODO: add feedback
@@ -134,6 +139,7 @@ def run_setting(cfg: DictConfig) -> None:
                 eval_prompt=None,
                 resume_prompt=None,
                 samples_per_task=cfg.data.samples_per_task,
+                wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
             )
 
     except KeyError:
@@ -176,15 +182,7 @@ def run_setting(cfg: DictConfig) -> None:
                 print(f"Using the student model: {cfg.student.name}")
                 print(f"Using the teacher model: {cfg.teacher.name}")
 
-        if cfg.init_prompt.wrapper:
-            init_prompt = Prompt(
-                prompt_path=prompt_path,
-                wrapper=cfg.init_prompt.wrapper,
-                name=prompt_name,
-            )
-        else:
-            init_prompt = Prompt(prompt_path=prompt_path, name=prompt_name)
-
+        init_prompt = Prompt(prompt_path=prompt_path, name=prompt_name)
         setting.init_prompt = init_prompt
 
         print(f"Prompt: {prompt_name}, path: {prompt_path}")
@@ -220,8 +218,9 @@ def run_setting(cfg: DictConfig) -> None:
             print(
                 f"Starting to query the model with {split.upper()} data...", end="\n\n"
             )
+            split_evaluator = MetricEvaluator(level="split")
+            split_ = Split(evaluator=split_evaluator, name=split)
 
-            task_evaluator = MetricEvaluator(level="task")
             for task_id, task in sorted(tasks.items()):
                 if (
                     cfg.init_prompt.get("examples", None)
@@ -237,59 +236,64 @@ def run_setting(cfg: DictConfig) -> None:
                     task_id=task_id,
                     task_data=task,
                     prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.init_prompt.paths)}",
-                    task_evaluator=task_evaluator,
                 )
+                split_.add_task(task_result)
                 saver.save_task_result(
                     task_id=task_id,
-                    task_result=task_result,
-                    task_evaluator=task_evaluator,
+                    task_result=task_result.results,
+                    task_evaluator=task_result.evaluator,
                     headers=cfg.results.headers,
                     results_path=results_file_paths[split],
                     metrics_path=metrics_file_paths[split],
                 )
                 print("______________________________", end="\n\n")
 
-            if len(task_evaluator.exact_match_accuracy) != len(tasks):
+            if len(split_evaluator.exact_match_accuracy) != len(tasks):
                 raise ValueError(
                     f"Number of tasks and number of accuracies do not match: "
-                    f"{len(tasks)} != {len(task_evaluator.exact_match_accuracy)}"
+                    f"{len(tasks)} != {len(split_evaluator.exact_match_accuracy)}"
                 )
 
             print(
                 f"==> The run for {split.upper()} data is finished successfully <==",
                 end="\n\n",
             )
-            task_evaluator.print_accuracies(id_=split)
+            split_.features.print()
+            split_evaluator.print_accuracies(id_=split)
+            prompt_evaluator.update(split_evaluator)
 
-            saver.save_task_accuracy(
-                evaluator=task_evaluator,
+            saver.save_split_accuracy(
+                evaluator=split_evaluator,
                 accuracy_path=metrics_file_paths[split],
             )
-
-            saver.save_task_metrics(
-                evaluator=task_evaluator,
+            saver.save_split_metrics(
+                data=split_,
                 results_paths=[metrics_file_paths[split], results_file_paths[split]],
             )
 
             # Plot the prompt accuracies for the split
             plotter.plot_acc_per_task_and_prompt(
                 acc_per_prompt_task={
-                    "exact_match_accuracy": task_evaluator.exact_match_accuracy,
-                    "soft_match_accuracy": task_evaluator.soft_match_accuracy,
+                    "exact_match_accuracy": split_evaluator.exact_match_accuracy,
+                    "soft_match_accuracy": split_evaluator.soft_match_accuracy,
+                    "exact_match_std": split_evaluator.exact_match_std,
+                    "soft_match_std": split_evaluator.soft_match_std,
                 },
-                y_label="Accuracies",
+                y_label="Accuracies and Standard Deviations",
                 plot_name_add=f"{prompt_name}_{split}_",
             )
 
-            prompt_evaluator.update(task_evaluator)
-
-            run_evaluators[split][init_prompt] = task_evaluator
-            run_em_accuracies[split][prompt_name] = task_evaluator.exact_match_accuracy
-            run_sm_accuracies[split][prompt_name] = task_evaluator.soft_match_accuracy
+            run_evaluators[split_][init_prompt] = split_evaluator
+            run_em_accuracies[split_][
+                init_prompt
+            ] = split_evaluator.exact_match_accuracy
+            run_sm_accuracies[split_][init_prompt] = split_evaluator.soft_match_accuracy
+            run_em_std[split_][init_prompt] = split_evaluator.exact_match_std
+            run_sm_std[split_][init_prompt] = split_evaluator.soft_match_std
 
         print("\n- RUN RESULTS -", end="\n\n")
 
-        prompt_evaluator.print_metrics(id_=prompt_name)
+        prompt_evaluator.print_accuracies(id_=init_prompt.name)
 
         print(
             "Processed",
@@ -315,18 +319,26 @@ def run_setting(cfg: DictConfig) -> None:
 
     if len(cfg.init_prompt.paths) > 1:
         for split in data_in_splits.keys():
-            saver.save_split_accuracy(
+            # save and plot the accuracies for the same split of all prompts
+            saver.save_run_accuracy(
                 task_ids=loader.tasks,
                 prompt_evaluators=run_evaluators[split],
                 split=split,
             )
-            # Plot accuracies for all prompts the model ran with
             plotter.result_path = saver.run_path
             plotter.plot_accuracies(
-                accuracies=run_em_accuracies[split],
+                exact_match_accuracies=run_em_accuracies[split],
                 soft_match_accuracies=run_sm_accuracies[split],
                 additional_info=f"{split}_",
                 compare_prompts=True,
+                label="Accuracy",
+            )
+            plotter.plot_accuracies(
+                exact_match_accuracies=run_em_std[split],
+                soft_match_accuracies=run_sm_std[split],
+                additional_info=f"{split}_",
+                compare_prompts=True,
+                label="Standard Deviation",
             )
 
     print("Plots are saved successfully and general accuracies are saved", end="\n\n")

@@ -1,12 +1,15 @@
+from __future__ import annotations
+
 import re
 from typing import Any
 
 import torch
 
-from prompts.Chat import Chat, Source
-from prompts.Prompt import Prompt
+from inference.Chat import Chat, Source
+from inference.Prompt import Prompt
 from settings.Model import Model
 from settings.Setting import Setting
+from settings.config import Wrapper
 from settings.utils import Enumerate, parse_output
 
 
@@ -22,11 +25,12 @@ class SpeculativeDecoding(Setting):
         to_enumerate: dict[Enumerate, bool],
         total_tasks: int,
         total_parts: int,
-        init_prompt: Prompt,
-        eval_prompt: Prompt,
-        resume_prompt: Prompt,
+        init_prompt: Prompt = None,
+        eval_prompt: Prompt = None,
+        resume_prompt: Prompt = None,
         samples_per_task: int = 5,
         multi_system: bool = True,
+        wrapper: Wrapper = None,
     ):
         """
         Initialize the speculative decoding setting.
@@ -44,18 +48,18 @@ class SpeculativeDecoding(Setting):
         """
         super().__init__(
             model=student,
-            to_enumerate=to_enumerate,
             total_tasks=total_tasks,
             total_parts=total_parts,
             init_prompt=init_prompt,
             samples_per_task=samples_per_task,
             multi_system=multi_system,
+            to_enumerate=to_enumerate,
+            wrapper=wrapper,
         )
         self.teacher = teacher
         self.student = student
         self.tokenizer = student.tokenizer
 
-        self.init_prompt = init_prompt
         self.eval_prompt = eval_prompt
         self.resume_prompt = resume_prompt
 
@@ -124,6 +128,7 @@ class SpeculativeDecoding(Setting):
         :param chat: the current chat
         :param k: the number of top candidates to consider from the teacher model
         :param last_err_ix: the index of the last error
+        :param student_str: the output of the student model as a string
 
         :return: A tuple containing a boolean indicating whether the current CoT is valid, an integer or None indicating
         the error index and the teacher's intervention or None
@@ -169,7 +174,7 @@ class SpeculativeDecoding(Setting):
             else:
                 student_out = " "
 
-            formatted_prompt = self.eval_prompt.format_teacher_part(
+            formatted_prompt = self.eval_prompt.format_teacher_message(
                 student_out=student_out
             )
 
@@ -358,6 +363,7 @@ class SpeculativeDecoding(Setting):
         :return: the corrected chain as a list and the corrected chain as a string
         """
         prev_output = [token.strip() if token else token for token in prev_output]
+        corrected_str = ""
 
         if prev_output:
             student_chain = prev_output + student_tokens[:error_id]
@@ -411,7 +417,7 @@ class SpeculativeDecoding(Setting):
 
         return match
 
-    def apply_setting(self, decoded_output: str, chat: Chat) -> dict[str, str]:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple:
         """
         Run the speculative decoding for one instance.
 
@@ -422,10 +428,12 @@ class SpeculativeDecoding(Setting):
         4. Repeat steps 2 and 3 until the teacher model agrees with the chain of thought.
 
         :param decoded_output: the current output of the student
-        :param chat: the current chat
-
-        :return: The decoded output
+        :param chat: the current chat, only necessary in the SD and feedback setting
+        :return: parsed output
         """
+        if not chat:
+            raise ValueError("Chat is required for speculative decoding.")
+
         # save the initial student output as a fallback solution
         self.initial_student_output = decoded_output
 

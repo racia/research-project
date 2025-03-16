@@ -31,11 +31,6 @@ data:
   to_enumerate:
     context: True
     question: False
-
-init_prompt:
-  # name of the prompt files serves as a basis for logging and result files
-  paths:
-    - "${oc.env:HOME}/research-project/prompts/init_prompt_reasoning.txt"
   wrapper:
     # if to wrap the part prompt with the task description
     context: |
@@ -44,7 +39,14 @@ init_prompt:
     question: |
       Now, answer the following question:
       {question}
-    examples:
+    reasoning: ""
+    answer: ""
+
+init_prompt:
+  # name of the prompt files serves as a basis for logging and result files
+  paths:
+    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
+  examples:
     to_add: True
     enumerated: True
     handpicked: True
@@ -57,20 +59,16 @@ init_prompt:
 eval_prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
-    - "${oc.env:HOME}/research-project/prompts/eval_prompt.txt"
-  wrapper:
-    # if to wrap the part prompt with the task description
-    instruction: |
-      The student's response was:
-      {student_output}
-
+    - "${oc.env:HOME}/research-project/inference/prompts/eval_prompt.txt"
+  wrapper: | # if to wrap the part prompt with the task description
+    The student's response was:
+    {student_output}
 
 resume_prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
-    - "${oc.env:HOME}/research-project/prompts/resume_prompt.txt"
-  wrapper:
-    instruction: "{to_continue}"
+    - "${oc.env:HOME}/research-project/inference/prompts/resume_prompt.txt"
+  wrapper: "{to_continue}"
 
 logging:
   # if to print the results to a log file, otherwise will print to console
@@ -80,12 +78,14 @@ results:
   headers:
     - id
     - task_id
-    - sample_no
+    - sample_id
+    - part_id
     - task
-    - true_answer
+    - golden_answer
     - model_answer
-    - correct?
+    - correct
     - model_reasoning
+    - silver_reasoning
     - model_output
     - exact_match_accuracy
     - soft_match_accuracy
