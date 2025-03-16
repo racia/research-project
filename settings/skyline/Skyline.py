@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from prompts.Prompt import Prompt
+from inference.Prompt import Prompt
 from settings.Model import Model
 from settings.baseline.Baseline import Baseline
-from settings.config import Enumerate
+from settings.config import Enumerate, Wrapper
 
 
 class Skyline(Baseline):
@@ -19,6 +19,7 @@ class Skyline(Baseline):
         total_parts: int,
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
+        wrapper: Wrapper = None,
     ):
         """
         Class Skyline manages the experiment with the big model. It is a subclass of Baseline, as the needs are similar.
@@ -32,10 +33,11 @@ class Skyline(Baseline):
         """
 
         super().__init__(
-            model,
-            to_enumerate,
-            total_tasks,
-            total_parts,
-            samples_per_task,
-            init_prompt,
+            model=model,
+            total_tasks=total_tasks,
+            total_parts=total_parts,
+            samples_per_task=samples_per_task,
+            init_prompt=init_prompt,
+            to_enumerate=to_enumerate,
+            wrapper=wrapper,
         )

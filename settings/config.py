@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Union
+from typing import Union, Optional
 
 
 @dataclass
@@ -31,39 +31,37 @@ class Teacher(Model):
 @dataclass
 class Setting:
     name: str
-    teacher: Teacher
-    student: Student
-    init_prompt: Prompt
-    resume_prompt: Prompt
 
 
 @dataclass
 class DataSplits:
-    train: str = "train"
-    valid: str = "valid"
-    test: str = "test"
+    train: bool
+    valid: bool
+    test: bool
 
 
 @dataclass
 class Enumerate:
-    context: str = "context"
-    question: str = "question"
+    context: bool
+    question: bool
+
+
+@dataclass
+class Wrapper:
+    context: str
+    question: str
+    reasoning: str
+    answer: str
 
 
 @dataclass
 class Data:
     path: str
-    splits: dict[DataSplits, bool]
+    splits: DataSplits
     task_ids: bool | list[int]
     samples_per_task: int
-    to_enumerate: dict[Enumerate, bool]
-
-
-@dataclass
-class Wrapper:
-    context: str = "context"
-    question: str = "question"
-    instruction: str = "instruction"
+    to_enumerate: Enumerate
+    wrapper: Wrapper
 
 
 @dataclass
@@ -79,20 +77,28 @@ class Examples:
 @dataclass
 class Prompt:
     paths: list[str]
-    wrapper: dict[Wrapper, str]
+
+
+class InitPrompt:
     examples: dict[Examples, Union[bool, int, str]]
+
+
+class FurtherPrompt(Prompt):
+    wrapper: str
 
 
 @dataclass
 class CSVHeaders:
     id_: str = "id"
     task_id: str = "task_id"
-    sample_no: str = "sample_no"
+    sample_id: str = "sample_id"
+    part_id: str = "part_id"
     task: str = "task"
-    true_answer: str = "true_answer"
     model_answer: str = "model_answer"
     correct: str = "correct"
+    golden_answer: str = "golden_answer"
     model_reasoning: str = "model_reasoning"
+    silver_reasoning: str = "silver_reasoning"
     model_output: str = "model_output"
     exact_match_accuracy: str = "exact_match_accuracy"
     soft_match_accuracy: str = "soft_match_accuracy"
@@ -109,14 +115,18 @@ class Logging:
 
 @dataclass
 class Results:
-    headers: list[CSVHeaders]
-    save_to: str
+    headers: CSVHeaders
 
 
 @dataclass
 class Config:
-    model: Model
+    model: Optional[Model]
+    student: Optional[Student]
+    teacher: Optional[Teacher]
+    setting: Setting
     data: Data
-    prompt: Prompt
+    init_prompt: Prompt
+    eval_prompt: Optional[FurtherPrompt]
+    resume_prompt: Optional[FurtherPrompt]
     logging: Logging
     results: Results

@@ -2,8 +2,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from data.TaskExamples import Task, TaskExample, TaskExamples
-from settings.config import Enumerate, Examples, Wrapper
-from settings.utils import structure_part
+from settings.config import Examples
 
 
 @dataclass
@@ -24,10 +23,10 @@ class Prompt:
 
     def __init__(
         self,
-        prompt_type: str = None,
         prompt: str = None,
         prompt_path: str = None,
-        wrapper: dict[Wrapper, str] = None,
+        prompt_type: PromptType = "init",
+        wrapper: str = None,
         name: str = None,
     ):
         """
@@ -35,13 +34,17 @@ class Prompt:
         A prompt can be added by either providing the prompt type which will then be read from the default prompt file,
         by providing the prompt as a string itself or by providing the path to a text file containing the prompt.
 
-        :param prompt_type: the type of the prompt. This can be "init", "eval" or "resume"
-        :param prompt: str, the prompt that should be used. If no prompt is given, the default prompt according to the
-        type is used.
-        :param prompt_path: str, the path to the prompt file
+        :param prompt: str, the text of the prompt to use.
+                       If no prompt is given, the default prompt according to the type is used.
+        :param prompt_path: str, the path to the prompt file as an alternative to the prompt to read the prompt from a file.
+        :param prompt_type: the type of the prompt. This can be "init", "eval" or "resume".
+                            Can be used instead of prompt or prompt_path to load the default prompt.
         :param wrapper: str, the wrapper for the prompt that we want to pass with each call to the model
         :param name: str, the name of the prompt
         """
+        if not (prompt or prompt_path or prompt_type):
+            raise ValueError("Please provide a prompt, a prompt path or a prompt type.")
+
         # if no prompt is given, use default prompt
         if prompt:
             self.text = prompt
@@ -59,54 +62,6 @@ class Prompt:
         self.wrapper = wrapper
         self.name = name
 
-    def format_part(
-        self,
-        part: dict[str, dict[int, str]],
-        to_enumerate: dict[Enumerate, bool],
-    ) -> str:
-        """
-        Format the prompt part with the wrapper.
-
-        :param part: the part of the prompt that should be formatted
-        :param to_enumerate: if to add line numbers to the beginning of lines
-
-        :return: the formatted prompt part
-        """
-        formatted_string = ""
-
-        context, question = structure_part(part, to_enumerate)
-
-        # there are parts that have no context lines, only a question
-        if self.wrapper:
-            if context:
-                wrapped_context = self.wrapper.context.format(context=context)
-                formatted_string += f"\n{wrapped_context}"
-            if question:
-                wrapped_question = self.wrapper.question.format(question=question)
-                formatted_string += f"{wrapped_question}"
-
-        if not formatted_string:
-            return f"{context}\n{question}"
-        else:
-            return formatted_string
-
-    def format_teacher_part(self, student_out: str):
-        """
-        Add the students current output into the instruction for the teacher.
-
-        :param student_out: str, the current output of the student
-
-        :return: str, the instruction with the student output inserted
-        """
-        formatted_string = ""
-        if student_out:
-            wrapped_out = self.wrapper.instruction.format(student_output=student_out)
-        else:
-            wrapped_out = self.wrapper.instruction.format(student_output=" ")
-        formatted_string += f"\n{wrapped_out}"
-
-        return formatted_string
-
     def format_teacher_sys(self, student_sys: str, student_chat: list[dict]) -> str:
         """
         Format the teacher's system prompt by inserting the student's init prompt and the parts of the sample the
@@ -118,14 +73,28 @@ class Prompt:
 
         :return: str, the formatted teacher's system prompt
         """
-        parts_so_far = ""
         parts_set = set()
         for message in student_chat:
             if message["role"] == "user" and message["content"] not in parts_set:
-                parts_so_far += message["content"] + "\n"
                 parts_set.add(message["content"] + "\n")
 
+        parts_so_far = "\n".join(parts_set)
         return self.text.format(init_prompt=student_sys, parts_so_far=parts_so_far)
+
+    def format_teacher_message(self, student_out: str):
+        """
+        Add the students current output into the instruction for the teacher.
+
+        :param student_out: str, the current output of the student
+
+        :return: str, the instruction with the student output inserted
+        """
+        if student_out:
+            wrapped_out = self.wrapper.format(student_output=student_out)
+        else:
+            wrapped_out = self.wrapper.format(student_output=" ")
+
+        return f"\n{wrapped_out}"
 
     def format_resume_message(self, corrected_in: str) -> str:
         """
@@ -140,9 +109,9 @@ class Prompt:
         :return: the formulated resume prompt
         """
         if corrected_in:
-            wrapped_out = self.wrapper.instruction.format(to_continue=corrected_in)
+            wrapped_out = self.wrapper.format(to_continue=corrected_in)
         else:
-            wrapped_out = self.wrapper.instruction.format(to_continue=" ")
+            wrapped_out = self.wrapper.format(to_continue=" ")
 
         return wrapped_out
 

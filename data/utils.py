@@ -3,8 +3,8 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-from evaluation.Accuracy import Accuracy
-from evaluation.Evaluator import MetricEvaluator
+from evaluation.Metrics import Accuracy, Metric
+from inference.DataLevels import Split
 
 
 def is_empty_file(file_path: Path) -> bool:
@@ -32,22 +32,22 @@ def prepare_accuracy_headers(prompt_name: str = ""):
     }
 
 
-def format_task_metrics(
-    evaluator: MetricEvaluator, headers: dict, metrics_to_save: dict
+def format_split_metrics(
+    split_data: Split, headers: dict, metrics_to_save: dict
 ) -> dict[str, dict]:
     """
     Format the metrics for the split to save them later.
 
-    :param evaluator: the evaluator instance
+    :param split_data: the split data
     :param headers: accuracy headers
     :param metrics_to_save: the accuracies to save
     :return: the metrics to save
     """
     metrics = {
-        "there": evaluator.there,
-        "verbs": evaluator.verbs,
-        "pronouns": evaluator.pronouns,
-        "not_mentioned": evaluator.not_mentioned,
+        "there": split_data.features.there,
+        "verbs": split_data.features.verbs,
+        "pronouns": split_data.features.pronouns,
+        "not_mentioned": split_data.features.not_mentioned,
     }
     for metric, value in metrics.items():
         if metric not in metrics_to_save:
@@ -59,6 +59,8 @@ def format_task_metrics(
 def format_accuracy_metrics(
     exact_match_accuracies: Accuracy,
     soft_match_accuracies: Accuracy,
+    exact_match_std: Metric,
+    soft_match_std: Metric,
     headers: dict = None,
     accuracies_to_save: dict[str, dict] = None,
 ) -> dict[str, dict]:
@@ -70,17 +72,25 @@ def format_accuracy_metrics(
     :param accuracies_to_save: the accuracies to save
     :param exact_match_accuracies: the exact-match accuracies
     :param soft_match_accuracies: the soft-match accuracies
+    :param exact_match_std: the standard deviation for the exact-match accuracies (per task)
+    :param soft_match_std: the standard deviation for the soft-match accuracies (per task)
     :param headers: the headers for the accuracies
     """
     accuracy_metrics = {
         "mean": {
             "task_id": "mean",
             (
-                headers["exact_match"] if headers else "exact_match_accuracy"
+                headers["exact_match_acc"] if headers else "exact_match_accuracy"
             ): exact_match_accuracies.get_mean(),
             (
-                headers["soft_match"] if headers else "soft_match_accuracy"
+                headers["soft_match_acc"] if headers else "soft_match_accuracy"
             ): soft_match_accuracies.get_mean(),
+            (
+                headers["exact_match_std"] if headers else "exact_match_std"
+            ): exact_match_std.get_mean(),
+            (
+                headers["soft_match_std"] if headers else "soft_match_std"
+            ): soft_match_std.get_mean(),
         },
         "std": {
             "task_id": "std",
@@ -105,6 +115,8 @@ def format_task_accuracies(
     task_ids: list[str | int],
     exact_match_accuracies: Accuracy,
     soft_match_accuracies: Accuracy,
+    exact_match_std: Metric,
+    soft_match_std: Metric,
     headers: list | dict = None,
 ) -> dict[str | int, dict]:
     """
@@ -115,24 +127,39 @@ def format_task_accuracies(
     :param task_ids: the task ids
     :param exact_match_accuracies: the exact-match accuracies
     :param soft_match_accuracies: the soft-match accuracies
+    :param exact_match_std: the standard deviation for the exact-match accuracies (per task)
+    :param soft_match_std: the standard deviation for the soft-match accuracies (per task)
     :param headers: the headers for the accuracies
     :return: the mean accuracies of all tasks
     """
-    zipped_data = zip(task_ids, exact_match_accuracies.all, soft_match_accuracies.all)
+    zipped_data = zip(
+        task_ids,
+        exact_match_accuracies.all,
+        soft_match_accuracies.all,
+        exact_match_std.all,
+        soft_match_std.all,
+    )
 
-    for row, exact_match_accuracy, soft_match_accuracy in zipped_data:
+    for row, em_acc, sm_acc, em_std, sm_std in zipped_data:
         if str(row) not in accuracies_to_save.keys():
             accuracies_to_save[str(row)] = {"task_id": row}
 
         accuracies_to_save[str(row)].update(
             {
-                headers["exact_match"]: exact_match_accuracy,
-                headers["soft_match"]: soft_match_accuracy,
+                headers["exact_match_acc"]: em_acc,
+                headers["soft_match_acc"]: sm_acc,
+                headers["exact_match_std"]: em_std,
+                headers["soft_match_std"]: sm_std,
             }
         )
 
     accuracies_to_save = format_accuracy_metrics(
-        exact_match_accuracies, soft_match_accuracies, headers, accuracies_to_save
+        exact_match_accuracies,
+        soft_match_accuracies,
+        exact_match_std,
+        soft_match_std,
+        headers,
+        accuracies_to_save,
     )
     return accuracies_to_save
 

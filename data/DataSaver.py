@@ -6,7 +6,8 @@ from typing import TextIO, Union
 
 from data.utils import *
 from evaluation.Evaluator import MetricEvaluator
-from prompts.Prompt import Prompt
+from inference.DataLevels import Split
+from inference.Prompt import Prompt
 from settings.config import DataSplits
 
 
@@ -98,20 +99,23 @@ class DataSaver:
         :param file_path: the name of the file to save the data
         :return: None
         """
+        if file_path.suffix != ".csv":
+            raise ValueError("The file should be saved in a .csv format.")
+
         with open(file_path, "a+", encoding="UTF-8") as file:
             writer = csv.DictWriter(file, fieldnames=headers, delimiter="\t")
             if is_empty_file(file_path):
                 writer.writeheader()
             [writer.writerow(row) for row in data]
 
-    def save_task_accuracy(
+    def save_split_accuracy(
         self,
         evaluator: MetricEvaluator,
         accuracy_path: Path,
     ) -> None:
         """
         Save the accuracies for the split,
-        including the mean accuracy for all tasks
+        including the mean accuracy for all tasks.
 
         :param evaluator: the evaluator
         :param accuracy_path: the path to the file to save the accuracies
@@ -119,7 +123,10 @@ class DataSaver:
         """
         accuracies_to_save = list(
             format_accuracy_metrics(
-                evaluator.exact_match_accuracy, evaluator.soft_match_accuracy
+                evaluator.exact_match_accuracy,
+                evaluator.soft_match_accuracy,
+                evaluator.exact_match_std,
+                evaluator.soft_match_std,
             ).values()
         )
         headers = list(accuracies_to_save[0].keys())
@@ -129,24 +136,19 @@ class DataSaver:
             file_path=accuracy_path,
         )
 
-    def save_task_metrics(
-        self, evaluator: MetricEvaluator, results_paths: list[Path]
-    ) -> None:
+    def save_split_metrics(self, data: Split, results_paths: list[Path]) -> None:
         """
-        Save the metrics for the task.
+        Save the metrics for all the tasks in a split.
 
-        :param evaluator: the evaluator
+        :param data: the prompt data level
         :param results_paths: the path to save the results
         :return: None
         """
         headers = ["id", "task_id"]
-        metrics = {
-            "there": evaluator.there,
-            "verbs": evaluator.verbs,
-            "pronouns": evaluator.pronouns,
-            "not_mentioned": evaluator.not_mentioned,
-        }
-        data = [{h: m for h, m in zip(headers, metric)} for metric in metrics.items()]
+        data = [
+            {h: m for h, m in zip(headers, metric)}
+            for metric in data.features.get().items()
+        ]
         for results_path in results_paths:
             self.save_output(
                 data=data,
@@ -155,7 +157,13 @@ class DataSaver:
             )
 
     def save_task_result(
-        self, task_id, task_result, task_evaluator, headers, results_path, metrics_path
+        self,
+        task_id: int,
+        task_result: list[dict],
+        task_evaluator: MetricEvaluator,
+        headers: list[str],
+        results_path: Path,
+        metrics_path: Path,
     ) -> None:
         """
         Save the results for the task and the accuracy for the task to the separate files.
@@ -176,8 +184,10 @@ class DataSaver:
         # get accuracy for the last task
         task_accuracy = {
             "task_id": task_id,
-            "exact_match_accuracy": task_evaluator.exact_match_accuracy[-1],
-            "soft_match_accuracy": task_evaluator.soft_match_accuracy[-1],
+            "exact_match_accuracy": task_evaluator.exact_match_accuracy.get_mean(),
+            "soft_match_accuracy": task_evaluator.soft_match_accuracy.get_mean(),
+            "exact_match_std": task_evaluator.exact_match_accuracy.get_std(),
+            "soft_match_std": task_evaluator.soft_match_accuracy.get_std(),
         }
         self.save_output(
             data=[task_accuracy],
@@ -185,45 +195,45 @@ class DataSaver:
             file_path=metrics_path,
         )
 
-    def save_split_accuracy(
+    def save_run_accuracy(
         self,
         task_ids: list[int],
         prompt_evaluators: dict[Prompt, MetricEvaluator],
-        split: DataSplits,
+        split: Split,
     ) -> None:
         """
-        Save the accuracies for the run, including the mean accuracy for all tasks.
+        Save the accuracies for the split run, including the mean accuracy for all tasks.
 
         :param task_ids: the task ids
         :param prompt_evaluators: the evaluators per prompt
-        :param split: the split of the data
+        :param split: the split data
         :return: None
         """
-        split_metrics = {}
-        split_headers = ["task_id"]
+        run_metrics = {}
+        run_headers = ["task_id"]
 
         for prompt, evaluator in prompt_evaluators.items():
             prompt_headers = prepare_accuracy_headers(prompt.name)
-            split_metrics = format_task_accuracies(
-                accuracies_to_save=split_metrics,
+            run_metrics = format_task_accuracies(
+                accuracies_to_save=run_metrics,
                 task_ids=task_ids,
                 exact_match_accuracies=evaluator.exact_match_accuracy,
                 soft_match_accuracies=evaluator.soft_match_accuracy,
+                exact_match_std=evaluator.exact_match_std,
+                soft_match_std=evaluator.soft_match_std,
                 headers=prompt_headers,
             )
-            split_metrics = format_task_metrics(
-                evaluator, prompt_headers, split_metrics
-            )
-            split_headers.extend(prompt_headers.values())
+            run_metrics = format_split_metrics(split, prompt_headers, run_metrics)
+            run_headers.extend(prompt_headers.values())
 
         mean_headers = prepare_accuracy_headers("mean")
-        split_headers.extend(mean_headers.values())
-        split_metrics = calculate_mean_accuracies(split_metrics, mean_headers)
+        run_headers.extend(mean_headers.values())
+        run_metrics = calculate_mean_accuracies(run_metrics, mean_headers)
 
         self.save_output(
-            data=list(split_metrics.values()),
-            headers=split_headers,
-            file_path=self.results_path / f"{split}_accuracies.csv",
+            data=list(run_metrics.values()),
+            headers=run_headers,
+            file_path=self.results_path / f"{split.name}_accuracies.csv",
         )
 
     @staticmethod

@@ -3,7 +3,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-from evaluation.Accuracy import Accuracy
+from evaluation.Metrics import Accuracy
 
 
 class Plotter:
@@ -177,32 +177,33 @@ class Plotter:
 
     def plot_accuracies(
         self,
-        accuracies,
+        exact_match_accuracies,
         soft_match_accuracies,
         additional_info="",
         compare_prompts=False,
+        label="",
     ):
         if compare_prompts:
             # Save accuracies of all prompts
             self.plot_acc_per_task_and_prompt(
-                acc_per_prompt_task=accuracies,
-                y_label="Accuracy",
+                acc_per_prompt_task=exact_match_accuracies,
+                y_label=f"Exact-Match {label}",
                 plot_name_add=additional_info,
             )
             self.plot_acc_per_task_and_prompt(
                 acc_per_prompt_task=soft_match_accuracies,
-                y_label="Soft Match Accuracy",
+                y_label=f"Soft Match {label}",
                 plot_name_add=additional_info,
             )
         else:
             # Save accuracies of one prompts
             self.plot_acc_per_task(
-                acc_per_task=accuracies,
-                y_label="Accuracy",
+                acc_per_task=exact_match_accuracies,
+                y_label=f"Exact-Match {label}",
                 plot_name_add=additional_info,
             )
             self.plot_acc_per_task(
                 acc_per_task=soft_match_accuracies,
-                y_label="Soft Match Accuracy",
+                y_label=f"Soft Match {label}",
                 plot_name_add=additional_info,
             )
