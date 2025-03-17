@@ -148,6 +148,7 @@ class SamplePart(DataLevel):
             not_mentioned=0,
         )
         self.result = None
+        self.interpretability = None
 
     def wrap(self, attr: str, replacements: dict[str, str]) -> str:
         """

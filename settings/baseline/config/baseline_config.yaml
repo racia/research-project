@@ -17,9 +17,6 @@ setting:
   name: "Baseline"
   interpretability: True
 
-interpretability:
-  save_data: False
-
 data:
   # small data with validation
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
@@ -71,6 +68,7 @@ logging:
   print_to_file: True
 
 results:
+  save_heatmaps: False
   headers:
     - id
     - task_id
@@ -83,9 +81,6 @@ results:
     - model_reasoning
     - silver_reasoning
     - model_output
-    - attn_scores
-    - x_tokens
-    - y_tokens
     - exact_match_accuracy
     - soft_match_accuracy
     - there

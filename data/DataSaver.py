@@ -6,7 +6,7 @@ from typing import TextIO, Union
 
 from data.utils import *
 from evaluation.Evaluator import MetricEvaluator
-from inference.DataLevels import Split
+from inference.DataLevels import Split, SamplePart
 from inference.Prompt import Prompt
 from settings.config import DataSplits
 
@@ -155,6 +155,15 @@ class DataSaver:
                 headers=headers,
                 file_path=results_path,
             )
+
+    def save_interpretability(self, sample_part: SamplePart):
+        """
+        Save the interpretability result.
+
+        :param sample_part: the sample part
+        """
+        interpretability_result = sample_part.interpretability.get()
+        pass
 
     def save_task_result(
         self,

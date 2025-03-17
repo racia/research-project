@@ -1,9 +1,8 @@
-import os
 from pathlib import Path
 
 import matplotlib.pyplot as plt
-import seaborn as sns
 import numpy as np
+import seaborn as sns
 
 from evaluation.Metrics import Accuracy
 
@@ -105,32 +104,47 @@ class Plotter:
         else:
             plt.legend(bbox_to_anchor=(1.1, 1.05))
 
-    def draw_heat(self, index, x, y, scores, task_id, sample_id, part_id):
+    def draw_heat(
+        self,
+        x: list[str],
+        y: list[str],
+        scores: np.ndarray,
+        task_id: int,
+        sample_id: int,
+        part_id: int,
+    ) -> None:
         """
-        Draw a heat map with the interpretability attention scores
-        
-        :param x: x values
-        :param y: y values
-        :param index: the index, here: x values
+        Draw a heat map with the interpretability attention scores for the current task.
+
+        :param x: the current task tokens
+        :param y: the model output tokens
+        :param scores: attention scores
+        :param task_id: task id
+        :param sample_id: sample id
+        :param part_id: part id
         :return: None
         """
-        plt.figure(figsize=(12, 6)) 
-        ax=sns.heatmap(scores, cmap="RdBu_r", center=0)
-        x_ticks, y_ticks = list(range(len(x))), list(range(len(y)))
-        x_ticks, y_ticks = [i+0.5 for i in x_ticks], [i+0.5 for i in y_ticks]
-        plt.ylabel('Answer tokens', fontdict={'size':10})
-        plt.xlabel('Question tokens', fontdict={'size':10})
-        plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0) # Cot
-        plt.xticks(ticks=x_ticks, labels=index, fontsize=5, rotation=30, ha="right") # Options
+        plt.figure(figsize=(12, 6))
+        axis = sns.heatmap(scores, cmap="RdBu_r", center=0)
+        x_ticks = [i + 0.5 for i in range(len(x))]
+        y_ticks = [i + 0.5 for i in range(len(y))]
+
+        plt.xlabel("Task Tokens", fontdict={"size": 10})
+        plt.ylabel("Model Output Tokens", fontdict={"size": 10})
+
+        plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=30, ha="right")
+        plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
+
         plt.subplots_adjust(left=0.15, right=0.99, top=0.98, bottom=0.15)
-        cbar = ax.collections[0].colorbar
+
+        cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
-        cbarlabels = cbar.ax.get_yticklabels() 
-        # Set result path
-        Path.mkdir(self.result_path / "interpretability", exist_ok=True)
-        plt.savefig(self.result_path / "interpretability" / f"task-{task_id}-{sample_id}-{part_id}.pdf")
+
+        plot_subdirectory = self.result_path / "interpretability" / "plots"
+        Path.mkdir(plot_subdirectory, exist_ok=True)
+        plt.savefig(plot_subdirectory / f"attn_map-{task_id}-{sample_id}-{part_id}.pdf")
+
         plt.close()
-        
 
     def plot_acc_per_task(
         self,

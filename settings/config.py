@@ -5,17 +5,18 @@ from typing import Union, Optional
 
 
 @dataclass
+class Mode:
+    train: str = "train"
+    eval: str = "eval"
+
+
+@dataclass
 class Model:
     name: str
     max_new_tokens: int
     temperature: float
     to_continue: bool
     mode: Mode
-
-@dataclass
-class Mode:
-    train: str = "train"
-    eval: str = "eval"
 
 
 @dataclass
@@ -24,6 +25,7 @@ class Student(Model):
     max_new_tokens: int
     temperature: float
     to_continue: bool
+    mode: Mode
 
 
 @dataclass
@@ -32,11 +34,13 @@ class Teacher(Model):
     max_new_tokens: int
     temperature: float
     to_continue: bool
+    mode: Mode
 
 
 @dataclass
 class Setting:
     name: str
+    interpretability: bool
 
 
 @dataclass
@@ -118,9 +122,6 @@ class CSVHeaders:
     verbs: str = "verbs"
     pronouns: str = "pronouns"
     not_mentioned: str = "not_mentioned"
-    attn_scores: str = "attn_scores"
-    x_tokens: str = "x_tokens"
-    y_tokens: str = "y_tokens"
 
 
 @dataclass
@@ -131,23 +132,6 @@ class Logging:
 @dataclass
 class Results:
     headers: CSVHeaders
-
-
-@dataclass
-class Interpretability:
-    pass
-
-
-@dataclass
-class Setting:
-    model: Model
-    to_enumerate: dict[Enumerate, bool]
-    parse_output: bool
-    total_tasks: int
-    total_parts: int
-    samples_per_task: int
-    prompt: Prompt
-    interpretability: Interpretability
 
 
 @dataclass
@@ -162,6 +146,3 @@ class Config:
     resume_prompt: Optional[FurtherPrompt]
     logging: Logging
     results: Results
-    Interpretability: Interpretability
-    setting: Setting
-    mode: Mode

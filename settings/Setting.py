@@ -6,10 +6,10 @@ from abc import ABC, abstractmethod
 import torch
 
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
-from interpretability.Interpretability import Interpretability
 from inference.Chat import Chat, Source
 from inference.DataLevels import SamplePart, Task, Sample
 from inference.Prompt import Prompt
+from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.config import Enumerate, Wrapper
 
@@ -179,24 +179,12 @@ class Setting(ABC):
                 current_part = SamplePart(
                     id_=self.question_id,
                     task_id=task_id,
-                    sample_id=sample_id_,
-                    part_id=part_id,
-                    context=context,
-                    question=question,
-                    reasoning=pre_reasoning,
-                    answer=pre_answer,
-                    golden_answer=y_true,
-                )
-
-                current_part = SamplePart(
-                    id_=self.question_id,
-                    task_id=task_id,
                     sample_id=sample_id,
                     part_id=part_id,
                     raw=sample_part,
                     golden_answer=y_true,
                     wrapper=self.wrapper,
-                    to_enumerate=self.to_enumerate
+                    to_enumerate=self.to_enumerate,
                 )
                 self.model.curr_sample_part = current_part
 
@@ -230,7 +218,10 @@ class Setting(ABC):
                 )
 
                 # 6. Add the model's output to conversation
-                self.chat.add_message(part=decoded_output, source=Source.assistant, interpretability=interpr)
+                chat.add_message(
+                    part=decoded_output,
+                    source=Source.assistant,
+                )
 
                 with torch.no_grad():
                     answer, reasoning = self.apply_setting(
@@ -239,12 +230,12 @@ class Setting(ABC):
 
                 current_part.set_output(decoded_output, answer, reasoning)
                 sample.add_part(current_part)
-                
+
                 # 7. Call interpretability attention score method
                 if self.interpretability:
-                    interpr_scores = self.interpretability.calculate_attention(current_part, chat=chat)
-                    # TODO part_result.update(interpr_scores)
-
+                    current_part.interpretability = self.interpretability.get_attention(
+                        current_part, chat=chat
+                    )
 
             sample.print_sample_predictions()
 

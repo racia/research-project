@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 import gc
 import sys
 from collections import defaultdict
@@ -16,14 +15,13 @@ from data.DataSaver import DataSaver
 from evaluation.Evaluator import MetricEvaluator
 from inference.DataLevels import Split
 from inference.Prompt import Prompt
+from interpretability.Interpretability import Interpretability
 from plots.Plotter import Plotter
 from settings.Model import Model
 from settings.SD.SpeculativeDecoding import SpeculativeDecoding
 from settings.baseline.Baseline import Baseline
 from settings.skyline.Skyline import Skyline
 from settings.utils import set_device
-from interpretability.Interpretability import Interpretability
-
 
 
 @hydra.main(version_base=None)
@@ -74,6 +72,10 @@ def run_setting(cfg: DictConfig) -> None:
 
     print("The data is loaded successfully", end="\n\n")
 
+    saver = DataSaver(save_to=HydraConfig.get().run.dir)
+    print(f"Results will be saved to: {saver.results_path}")
+    plotter = Plotter(result_path=saver.results_path)
+
     run_evaluators = defaultdict(dict)
     run_em_accuracies = defaultdict(dict)
     run_sm_accuracies = defaultdict(dict)
@@ -103,6 +105,16 @@ def run_setting(cfg: DictConfig) -> None:
     else:
         raise ValueError("No base model is provided in the config.")
 
+    interpretability = (
+        Interpretability(
+            model=model,
+            plotter=plotter,
+            save_heatmaps=cfg.results.save_heatmaps,
+        )
+        if cfg.setting.interpretability
+        else None
+    )
+
     print(f"The model {cfg.model.name} is loaded successfully", flush=True)
     if cfg.setting.name == "Baseline":
         setting = Baseline(
@@ -113,6 +125,7 @@ def run_setting(cfg: DictConfig) -> None:
             samples_per_task=loader.samples_per_task,
             init_prompt=None,
             wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
+            interpretability=interpretability,
         )
     elif cfg.setting.name == "Skyline":
         setting = Skyline(
@@ -123,6 +136,7 @@ def run_setting(cfg: DictConfig) -> None:
             samples_per_task=loader.samples_per_task,
             init_prompt=None,
             wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
+            interpretability=interpretability,
         )
     elif cfg.setting.name == "Feedback":
         # TODO: add feedback
@@ -145,6 +159,7 @@ def run_setting(cfg: DictConfig) -> None:
             resume_prompt=None,
             samples_per_task=cfg.data.samples_per_task,
             wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
+            interpretability=interpretability,
         )
     else:
         raise ValueError(
@@ -154,11 +169,6 @@ def run_setting(cfg: DictConfig) -> None:
 
     setting.total_tasks = 0
 
-    saver = DataSaver(save_to=HydraConfig.get().run.dir)
-    print(f"Results will be saved to: {saver.results_path}")
-
-    plotter = Plotter(result_path=saver.results_path)
-
     for prompt_num, prompt_path in enumerate(cfg.init_prompt.paths, 1):
         prompt_name = f"prompt_{Path(prompt_path).stem}"
         prompt_evaluator = MetricEvaluator(level="prompt")
@@ -166,7 +176,7 @@ def run_setting(cfg: DictConfig) -> None:
         log_file_path, results_file_paths, metrics_file_paths = (
             saver.create_result_paths(prompt_name=prompt_name, splits=data_splits)
         )
-        
+
         # update result paths
         plotter.result_path = saver.results_path
 
@@ -251,12 +261,6 @@ def run_setting(cfg: DictConfig) -> None:
                     results_path=results_file_paths[split],
                     metrics_path=metrics_file_paths[split],
                 )
-
-                if cfg.interpretability.save_data:
-                    saver.save_fine_tune_data(
-                        task_id = task_id,
-                        task_data = task_result
-                    )
 
                 print("______________________________", end="\n\n")
 

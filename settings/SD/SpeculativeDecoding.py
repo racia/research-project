@@ -7,6 +7,7 @@ import torch
 
 from inference.Chat import Chat, Source
 from inference.Prompt import Prompt
+from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
 from settings.config import Wrapper
@@ -22,7 +23,7 @@ class SpeculativeDecoding(Setting):
         self,
         student: Model,
         teacher: Model,
-        to_enumerate: dict[Enumerate, bool],
+        to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
         init_prompt: Prompt = None,
@@ -31,6 +32,7 @@ class SpeculativeDecoding(Setting):
         samples_per_task: int = 5,
         multi_system: bool = True,
         wrapper: Wrapper = None,
+        interpretability: Interpretability = None,
     ):
         """
         Initialize the speculative decoding setting.
@@ -55,6 +57,7 @@ class SpeculativeDecoding(Setting):
             multi_system=multi_system,
             to_enumerate=to_enumerate,
             wrapper=wrapper,
+            interpretability=interpretability,
         )
         self.teacher = teacher
         self.student = student
