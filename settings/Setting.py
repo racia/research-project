@@ -1,15 +1,17 @@
 from __future__ import annotations
 
+import gc
 from abc import ABC, abstractmethod
 
 import torch
 
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from interpretability.Interpretability import Interpretability
-from prompts.Chat import Chat, Source, SamplePart
-from prompts.Prompt import Prompt
+from inference.Chat import Chat, Source
+from inference.DataLevels import SamplePart, Task, Sample
+from inference.Prompt import Prompt
 from settings.Model import Model
-from settings.config import Enumerate
+from settings.config import Enumerate, Wrapper
 
 
 class Setting(ABC):
@@ -21,85 +23,68 @@ class Setting(ABC):
     def __init__(
         self,
         model: Model,
-        to_enumerate: dict[Enumerate, bool],
-        parse_output: bool,
+        to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
         samples_per_task: int = 5,
-        prompt: Prompt = None,
+        init_prompt: Prompt = None,
+        multi_system: bool = False,
+        wrapper: Wrapper = None,
         interpretability: Interpretability = None,
     ):
         """
-        Baseline class manages model runs and data flows around it.
-        It is intended to use in the further settings.
+         The setting class is an abstract class for all settings.
 
-        :param parse_output: if we want to parse the output of the model (currently looks for 'answer' and 'reasoning')
-        :param prompt: system prompt to start conversations
+        :param init_prompt: system prompt to start conversations
         :param samples_per_task: number of samples per task for logging
         """
         self.model = model
 
-        self.prompt = prompt
+        self.init_prompt = init_prompt
         self.to_enumerate = to_enumerate
-        self.parse_output = parse_output
 
         self.question_id = 0
         self.total_tasks = total_tasks
         self.total_parts = total_parts
         self.samples_per_task = samples_per_task
+        self.wrapper = wrapper
+
+        self.multi_system = multi_system
 
         self.interpretability = interpretability
 
     @abstractmethod
-    def prepare_prompt(self, chat: Chat) -> str:
+    def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
         """
         Prepares the prompt to include the current part of the sample.
-        :param chat: the chat object
+
+        :param model_role: role of the model in the conversation
+        :param resume_gen: whether to resume the generation
+        :param chat: the current chat
         :return: prompt with the task and the current part
         """
         raise NotImplementedError
 
     @abstractmethod
-    def apply_setting(self, decoded_output: str) -> dict[str, str]:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple:
         """
         Apply setting-specific postprocessing of the inital model output.
         For the baseline and skyline, this consists of parsing the output.
         For the SD and feedback setting, this entails the main idea of these settings.
 
-        :param decoded_output: the decoded output
+        :param decoded_output: the current output of the student
+        :param chat: the current chat, only necessary in the SD and feedback setting
         :return: parsed output
         """
         # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
         raise NotImplementedError
-
-    @staticmethod
-    def print_sample_predictions(trues, preds):
-        """
-        Print the model's predictions to compare with true values.
-
-        :param trues: list of true values
-        :param preds: list of predicted values
-        """
-        print(
-            "Model's predictions for the sample:",
-            "\t{:<18s} PREDICTED".format("GOLDEN"),
-            sep="\n\n",
-            end="\n\n",
-        )
-        [
-            print(
-                "\t{0:<18s} {1}".format(true, predicted.replace("\n", "\t")),
-            )
-            for true, predicted in zip(trues, preds)
-        ]
 
     def iterate_task(
         self,
         task_id: int,
         task_data: dict[int, list[dict[str, dict]]],
         prompt_name: str,
-        task_evaluator: MetricEvaluator,
-    ) -> list[dict[str, int | str]]:
+    ) -> Task:
         """
         Manages the data flow in and out of the model, iteratively going through
         each part of each sample in a given task, recoding the results to report.
@@ -143,33 +128,38 @@ class Setting(ABC):
              ]
          }
         :param prompt_name: name of the prompt
-        :param task_evaluator: the evaluator for the task
         :return: results for the task in a list of dicts with each dict representing
                  one call to the model and will end up as one row of the table
         """
-        task_results = []
-        sample_eval = AnswerEvaluator(level="sample")
+        task_evaluator = MetricEvaluator(level="task")
+        task = Task(task_id=task_id, evaluator=task_evaluator)
 
         # 1. Iterate through samples
-        for sample_id, sample_parts in list(task_data.items()):
-            # each sample is a new conversation
-            chat = Chat(system_prompt=self.prompt.text)
-            # collect the true answers
-            sample_eval.true_values = [
-                " ".join(list(part["answer"].values())[0]) for part in sample_parts
-            ]
-            sample_eval.predicted_values = []
-            sample_id_ = sample_id + 1
+        for sample_id_, sample_parts in task_data.items():
+            sample_id = sample_id_ + 1
             part_id = 0
 
+            sample_eval = AnswerEvaluator(level="sample")
+            sample_eval.golden_answers = [
+                " ".join(list(part["answer"].values())[0]) for part in sample_parts
+            ]
+            # TODO: add silver reasoning
+            sample_eval.silver_reasonings = []
+            sample = Sample(task_id=task_id, sample_id=sample_id, evaluator=sample_eval)
+
+            # each sample is a new conversation
+            chat = Chat(
+                system_prompt=self.init_prompt.text, multi_system=self.multi_system
+            )
+
             # 2. Iterate through parts (one question at a time)
-            for sample_part, y_true in zip(sample_parts, sample_eval.true_values):
+            for sample_part, y_true in zip(sample_parts, sample_eval.golden_answers):
                 self.question_id += 1
                 part_id += 1
                 print(
                     "\n-* "
                     f"TASK {task_id}/{self.total_tasks} | "
-                    f"SAMPLE {sample_id_}/{self.samples_per_task} | "
+                    f"SAMPLE {sample_id}/{self.samples_per_task if self.samples_per_task < 500 else len(task_data)} | "
                     f"PART {part_id}/{len(sample_parts)} | "
                     f"{prompt_name} | "
                     f"RUN ID {self.question_id}/{self.total_parts} "
@@ -177,8 +167,14 @@ class Setting(ABC):
                     end="\n\n\n",
                 )
 
-                context, question, pre_reasoning, pre_answer = self.prompt.format_part(
-                    part=sample_part, to_enumerate=self.to_enumerate
+                print(
+                    (
+                        f" ---- Student ---- "
+                        if self.multi_system
+                        else " ---- Model ---- "
+                    ),
+                    end="\n\n\n",
+                    flush=True,
                 )
                 current_part = SamplePart(
                     id_=self.question_id,
@@ -192,44 +188,65 @@ class Setting(ABC):
                     golden_answer=y_true,
                 )
 
-                chat.add_message(part=current_part.text, source=Source.user)
+                current_part = SamplePart(
+                    id_=self.question_id,
+                    task_id=task_id,
+                    sample_id=sample_id,
+                    part_id=part_id,
+                    raw=sample_part,
+                    golden_answer=y_true,
+                    wrapper=self.wrapper,
+                    to_enumerate=self.to_enumerate
+                )
+                self.model.curr_sample_part = current_part
+
+                print(
+                    (
+                        f"Formatted student prompt:"
+                        if self.multi_system
+                        else f"Formatted model prompt:"
+                    ),
+                    current_part.task,
+                    sep="\n",
+                    end="\n",
+                )
+
+                chat.add_message(part=current_part.task, source=Source.user)
 
                 formatted_prompt = self.prepare_prompt(chat=chat)
 
                 # 5. Call the model and yield the response
-                current_part.model_output = self.model.call(prompt=formatted_prompt)
-
+                decoded_output = self.model.call(prompt=formatted_prompt)
                 print(
-                    "Model's output:",
-                    current_part.model_output.lower(),
+                    (
+                        f"Formatted student prompt: \n"
+                        if self.multi_system
+                        else f"Formatted model prompt: \n"
+                    ),
+                    decoded_output,
+                    "\n ------------- ",
                     end="\n\n\n",
                     flush=True,
                 )
 
                 # 6. Add the model's output to conversation
-                chat.add_message(
-                    part=current_part.model_output, source=Source.assistant
-                )
+                self.chat.add_message(part=decoded_output, source=Source.assistant, interpretability=interpr)
 
-                # 7. Parse output
-                current_part.answer, current_part.reasoning = self.apply_setting(
-                    decoded_output=current_part.model_output
-                )
+                with torch.no_grad():
+                    answer, reasoning = self.apply_setting(
+                        decoded_output=decoded_output
+                    )
 
-                part_evaluation = sample_eval.evaluate(y_true, current_part.answer)
-                task_results.append(current_part.get_result() + part_evaluation)
-
-                sample_eval.predicted_values.append(current_part.answer)
-
-                # 8. Call interpretability attention score method
+                current_part.set_output(decoded_output, answer, reasoning)
+                sample.add_part(current_part)
+                
+                # 7. Call interpretability attention score method
                 if self.interpretability:
-                    interpr_scores = self.interpretability.calculate_attention(part_result, chat=chat)
-                    part_result.update(interpr_scores)
+                    interpr_scores = self.interpretability.calculate_attention(current_part, chat=chat)
+                    # TODO part_result.update(interpr_scores)
 
-            # 9. Report the results for the sample: answers and accuracy
-            self.print_sample_predictions(
-                trues=sample_eval.true_values, preds=sample_eval.predicted_values
-            )
+
+            sample.print_sample_predictions()
 
             exact_match_acc, soft_match_acc = sample_eval.calculate_accuracies()
             sample_eval.print_accuracies(
@@ -238,22 +255,17 @@ class Setting(ABC):
                 soft_match_acc=soft_match_acc,
             )
 
-        task_evaluator.update(sample_eval)
+            task.add_sample(sample)
 
         # 10. Report the results for the task: accuracy
         print("\n- TASK RESULTS -", end="\n\n")
-
         task_evaluator.print_accuracies(id_=task_id)
-        task_results[0][
-            "exact_match_accuracy"
-        ] = task_evaluator.exact_match_accuracy.get_mean()
-        task_results[0][
-            "soft_match_accuracy"
-        ] = task_evaluator.soft_match_accuracy.get_mean()
+        task.set_results()
 
         print(f"The work on task {task_id} is finished successfully")
 
         # Clear the cache
         torch.cuda.empty_cache()
+        gc.collect()
 
-        return task_results
+        return task

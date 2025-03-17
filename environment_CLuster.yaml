@@ -14,8 +14,8 @@ dependencies:
   - pandas
   - scikit-learn
   - matplotlib
-  - huggingface_hub
   - nltk
+  - huggingface_hub
   - pyarrow
   - ffmpeg
   - openblas-devel

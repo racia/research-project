@@ -1,8 +1,48 @@
+from dataclasses import dataclass
+
 import en_core_web_sm
 
 nlp = en_core_web_sm.load()
 
 from data.DataLoader import DataLoader
+
+
+@dataclass
+class SentenceScenery:
+    sentence: str
+    human_subjects: list[str]
+    non_human_subjects: list[str]
+    direct_objects: list[str]
+    indirect_objects: list[str]
+    locations: list[str]
+    relations: list[str]
+    subj_attributes: list[str]
+    obj_attributes: list[str]
+
+    def __repr__(self):
+        return (
+            f"Sentence: {self.sentence}"
+            f"Human Subjects: {self.human_subjects}\n"
+            f"Non-Human Subjects: {self.non_human_subjects}\n"
+            f"Direct Objects: {self.direct_objects}\n"
+            f"Indirect Objects: {self.indirect_objects}\n"
+            f"Locations: {self.locations}\n"
+            f"Relations: {self.relations}\n"
+            f"Subjects Attributes: {self.subj_attributes}\n"
+            f"Object Attributes: {self.obj_attributes}\n"
+        )
+
+    def get(self):
+        return {
+            "human_subjects": self.human_subjects,
+            "non_human_subjects": self.non_human_subjects,
+            "direct_objects": self.direct_objects,
+            "indirect_objects": self.indirect_objects,
+            "locations": self.locations,
+            "relations": self.relations,
+            "subj_attributes": self.subj_attributes,
+            "obj_attributes": self.obj_attributes,
+        }
 
 
 class Scenery:
@@ -92,7 +132,7 @@ class Scenery:
             if len(longest_child) >= 2:
                 return longest_child
 
-    def extract_from_line(self, line: str) -> dict:
+    def extract_from_line(self, line: str) -> SentenceScenery:
         """
         Extracts the agents, locations, objects and relations from a context line or a question.
 
@@ -223,18 +263,17 @@ class Scenery:
             elif token.dep_ == "advmod" and token.text in ["here", "there", "where"]:
                 locations.append(token.lemma_.lower())
 
-        line_scenery = {
-            "human_subjects": human_subjects,
-            "non_human_subjects": non_human_subjects,
-            "direct_objects": direct_objects,
-            "indirect_objects": indirect_objects,
-            "relations": relations,
-            "locations": locations,
-            "subj_attributes": subj_attributes,
-            "obj_attributes": obj_attributes,
-        }
-
-        return line_scenery
+        return SentenceScenery(
+            sentence=line,
+            human_subjects=human_subjects,
+            non_human_subjects=non_human_subjects,
+            direct_objects=direct_objects,
+            indirect_objects=indirect_objects,
+            relations=relations,
+            locations=locations,
+            subj_attributes=subj_attributes,
+            obj_attributes=obj_attributes,
+        )
 
     def extract_scenery(self):
         """

@@ -1,24 +1,35 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=setting         # TODO: adjust job name
+#SBATCH --job-name=feedback
 
-#SBATCH --gres=gpu:2
-#SBATCH --mem=32000
-#SBATCH --ntasks=1
-#SBATCH --partition=students
+#SBATCH --time=00:30:00              # Job time limit (30 minutes)
+#SBATCH --ntasks=1                   # Total number of tasks
+#SBATCH --gres=gpu:2                 # Request 2 GPUs
+#SBATCH --cpus-per-task=2            # Number of CPU cores per task
+#SBATCH --mem=32G                    # Total memory requested
+#SBATCH --partition=dev_gpu_4
 
 # Output and error logs
-#SBATCH --output="setting_out.txt"        # TODO: adjust standard output log
-#SBATCH --error="setting_err.txt"         # TODO: adjust error log
+#SBATCH --output="feedback_out.txt"
+#SBATCH --error="feedback_err.txt"
 
 # Email notifications
-#SBATCH --mail-user=""
+#SBATCH --mail-user=""              # TODO: Add your email address
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
-# shellcheck source=/dev/null
-source ~/miniconda3/etc/profile.d/conda.sh
+
+if command -v module >/dev/null 2>&1; then
+    echo "Module util is available. Loading miniconda and CUDA..."
+    module load devel/miniconda/23.9.0-py3.9.15
+    module load devel/cuda/11.8
+else
+    echo "Module util is not available. Using manually installed miniconda and CUDA..."
+fi
+
+# initialize shell to work with bash
+source ~/.bashrc 2>/dev/null || source ~/miniconda3/etc/profile.d/conda.sh
 
 # Verify conda availability
 if ! command -v conda &> /dev/null; then
@@ -27,6 +38,9 @@ if ! command -v conda &> /dev/null; then
 else
     echo "Conda is available."
 fi
+
+#reinitialize conda
+source ~/miniconda3/etc/profile.d/conda.sh
 
 # Activate the conda environment
 ENV_NAME="research-project"
@@ -48,16 +62,27 @@ else
     exit 1
 fi
 
+# Monitor GPU usage in background
+(
+    while true; do
+        echo "== GPU Status: $(date) =="
+        nvidia-smi --query-gpu=index,memory.used,memory.total,utilization.gpu --format=csv
+        sleep 30
+    done
+) > gpu_monitor.log &
+MONITOR_PID=$!#
+
 # Run the Python script
 SCRIPT="running_script.py"
 
 # Set the environment variable to allow PyTorch to allocate more memory
-export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
+
 
 # declare array of config paths and names, e.g. "/path/to/config config_name"
 # TODO: add config(s) to array
 declare -a CONFIGS=(
-  "$HOME/research-project/settings/baseline/config baseline_config"
+  "$HOME/research-project/settings/feedback/config feedback_config"
 )
 
 for CONFIG in "${CONFIGS[@]}"
@@ -65,7 +90,7 @@ do
   CONFIG_PATH=$(echo $CONFIG | cut -d ' ' -f 1)
   CONFIG_NAME=$(echo $CONFIG | cut -d ' ' -f 2)
   echo "Running the script with config: CONFIG_PATH=$CONFIG_PATH, CONFIG_NAME=$CONFIG_NAME"
-  srun python3 "$SCRIPT" --config-path $CONFIG_PATH --config-name $CONFIG_NAME hydra/job_logging=none
+  python3 "$SCRIPT" --config-path $CONFIG_PATH --config-name $CONFIG_NAME hydra/job_logging=none
 done
 
 # Verify if the script executed successfully

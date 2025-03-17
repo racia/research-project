@@ -2,14 +2,14 @@ import os
 
 import torch
 from torch.amp import autocast
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 from settings.config import Mode
 
 
 class Model:
     """
-    Class for the model.
+    Class for the model with memory optimizations.
     """
 
     def __init__(
@@ -22,73 +22,106 @@ class Model:
     ):
         self.token = os.getenv("HUGGINGFACE")
         self.model_name = model_name
-        self.mode = mode
-        self.model, self.tokenizer = self.load()
-
         self.max_new_tokens = max_new_tokens
         self.temperature = temperature
         self.to_continue = to_continue
+        self.model, self.tokenizer = self.load()
+
+        self.curr_sample_part = None
 
     def load(self) -> tuple:
         """
-        Load the model and the tokenizer for the instance model name and one of "eval" or "train" mode.
+        Load the model and the tokenizer.
+        The model is loaded with memory optimizations.
 
-        :return the model and the tokenizer
+        :return: tuple: model, tokenizer
         """
-        model = AutoModelForCausalLM.from_pretrained(
-            self.model_name,
-            device_map="auto",
-            torch_dtype=torch.bfloat16,
+        print(f"The model {self.model_name} is being loaded...", end="\n\n", flush=True)
+
+        # create an offload folder
+        if not os.path.exists("offload_folder"):
+            os.makedirs("offload_folder")
+
+        # quantisation config for memory optimizations
+        quantization_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.bfloat16,
+            bnb_4bit_use_double_quant=True,
+            bnb_4bit_quant_type="nf4",
         )
 
-        if self.mode == "eval":
-            model.eval()
-        elif model == "train":
-            model.train()
-        else:
-            raise Exception("You are trying to load the model in an unrecognized mode.")
-          
+        # set model kwargs for more memory optimizations
+        model_kwargs = {
+            "device_map": "auto",
+            "torch_dtype": torch.bfloat16,
+            "quantization_config": quantization_config,
+            "low_cpu_mem_usage": True,
+            "offload_folder": "offload_folder",
+            "offload_state_dict": True,
+        }
+
+        model = AutoModelForCausalLM.from_pretrained(self.model_name, **model_kwargs)
+
         tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+        tokenizer.padding_side = "left"
+        tokenizer.pad_token_id = tokenizer.eos_token_id
 
         torch.cuda.empty_cache()
+
+        print(f"The model {self.model_name} was  loaded successfully", flush=True)
 
         return model, tokenizer
 
     def call(self, prompt: str) -> str:
         """
-        Calls that model in the following steps:
-        1. tokenizes the prompt
-        2. generates the answer from the inputs
-        3. decodes and lowercases the answer
-
-        :param prompt: tokenized prompt, prepared to feed into the model
-        :return: response of the model
+        Calls the model with memory optimizations.
         """
-        # no_grad context manager to disable gradient calculation during inference (speeds up)
         with torch.no_grad():
             inputs = self.tokenizer(
-                prompt, return_tensors="pt", add_special_tokens=True
+                prompt,
+                return_tensors="pt",
+                padding="longest",
+                truncation=True,
+                max_length=2048,
+                add_special_tokens=True,
             )
-            inputs = {
-                key: tensor.to(self.model.device) for key, tensor in inputs.items()
-            }
+            device = next(self.model.parameters()).device
+            inputs = {k: v.to(device) for k, v in inputs.items()}
 
-            # autocast enables mixed precision for computational efficiency
+            torch.cuda.empty_cache()
+
             with autocast("cuda"):
                 outputs = self.model.generate(
                     **inputs,
                     max_new_tokens=self.max_new_tokens,
                     temperature=self.temperature,
                     pad_token_id=self.tokenizer.eos_token_id,
+                    do_sample=True if self.temperature > 0 else False,
+                    use_cache=True,
+                    num_beams=1,  # no beam search, reduce GPU memory usage
                 )
+                input_length = inputs["input_ids"].size(1)
+                decoded_output = self.tokenizer.decode(
+                    outputs[0][input_length:],
+                    skip_special_tokens=True,
+                ).lower()
 
-                decoded_output = "\n".join(
-                    [
-                        self.tokenizer.decode(
-                            outputs[i][inputs["input_ids"].size(1) :],
-                            skip_special_tokens=True,
-                        )
-                        for i in range(len(outputs))
-                    ]
-                )
-            return decoded_output
+            torch.cuda.empty_cache()
+        return decoded_output
+
+    def call_probs(self, input_ids: torch.Tensor) -> torch.Tensor:
+        """
+        Call the model and get its logit output.
+        Using these logits, the probabilities are calculated.
+
+        :param input_ids: the input ids of the model
+
+        :return: the probabilities of the model
+        """
+        with torch.no_grad():
+            teacher_outputs = self.model(input_ids)
+            teacher_logits = teacher_outputs.logits
+            teacher_probs = torch.nn.functional.softmax(
+                teacher_logits[:, -1, :], dim=-1
+            )
+        return teacher_probs

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import re
-from typing import Union
 
 import torch
 
@@ -58,7 +57,7 @@ def numerate_lines(lines: dict[int, str]) -> list[str]:
 
 def structure_part(
     part: dict[str, dict[int, str]],
-    to_enumerate: dict[Union[Enumerate.context, Enumerate.question], bool],  # type: ignore
+    to_enumerate: Enumerate,
 ) -> tuple[str, str]:
     """
     Structures the lines into a readable format.
@@ -92,13 +91,12 @@ def parse_output(output: str) -> tuple:
     reasoning_pattern = re.compile(r"(?i)(reasoning:)[\s ]*(.+)")
 
     answer_search = answer_pattern.search(output)
-    
-    answer = answer_search[2].strip() if answer_search else None
+    answer = answer_search[1].strip() if answer_search else ""
     if not answer:
         print("DEBUG: Answer not found in the output")
 
     reasoning_search = reasoning_pattern.search(output)
-    reasoning = reasoning_search[2].strip() if reasoning_search else None
+    reasoning = reasoning_search[1].strip() if reasoning_search else ""
     if not reasoning:
         print("DEBUG: Reasoning not found in the output")
 
@@ -108,7 +106,7 @@ def parse_output(output: str) -> tuple:
         else:
             reasoning = output
         print(
-            "Saving the whole output as the answer:",
+            f"Saving the whole output as the {'answer' if answer else 'reasoning'}:",
             output,
             sep="\n",
             end="\n\n",

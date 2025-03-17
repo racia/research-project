@@ -20,24 +20,17 @@ Authors: [@ivakhnenko](https://gitlab.cl.uni-heidelberg.de/ivakhnenko),
     * methods for data processing
     * methods to load and save data
 
-* [prompts](./prompts) — prompt files
+* [prompts](./inference) — the prompts used in the experiments as text files
 
 * [settings](./settings)
-    * [baseline](.settings/baseline) — methods
-    * [feedback](./settings/feedback) — methods
-    * [speculative-decoding](./settings/speculative-decoding) — methods
+    * [baseline](./settings/baseline) — contains the baseline setting
+    * [skyline](./settings/skyline) — contains the skyline setting
+    * [feedback](./settings/feedback) — contains the feedback setting
+    * [speculative-decoding](./settings/speculative-decoding) — contains the SD setting
 
 * [interpretability](./interpretability) — methods
 
-* [prompting-experiments](./prompting-experiments) — scripts (prompts and settings combined)
-    * [results](./prompting-experiments/results)
-
-* [evaluation](./evaluation)
-    * [interpretability](./evaluation/interpretability) — scripts (methods + data)
-    * [testing](./evaluation/testing) — scripts (predicted data + golden data)
-
-* [fine-tuning](./fine-tuning) — scripts (models + data)
-    * [results](./fine-tuning/results)
+* [evaluation](./evaluation) - contains everything related to evaluation
 
 ## Getting started
 
@@ -46,16 +39,15 @@ detailed information about the general setup, please refer to [SETUP.md](SETUP.m
 
 ## Settings
 
-Imagine some general information about the settings being here.
+This project focuses on two approaches aimed at improving chain-of-thought reasoning: "Feedback" and "Speculative
+Decoding."
 For more detailed information about the settings, please refer to this [README.md](settings/README.md).
 
-### Feedback
+To run one of the settings, you can use the following command:
 
-As this is one of the main ideas of our paper, we should mention it here.
-
-### Speculative Decoding
-
-As this is one of the main ideas of our paper, we should mention it here.
+```bash
+bash <setting_name>.sh
+```
 
 ## Results
 
