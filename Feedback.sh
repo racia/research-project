@@ -19,8 +19,6 @@
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
-# initialize shell to work with bash
-source ~/.bashrc 2>/dev/null || source ~/miniconda3/etc/profile.d/conda.sh
 
 if command -v module >/dev/null 2>&1; then
     echo "Module util is available. Loading miniconda and CUDA..."
@@ -30,6 +28,9 @@ else
     echo "Module util is not available. Using manually installed miniconda and CUDA..."
 fi
 
+# initialize shell to work with bash
+source ~/.bashrc 2>/dev/null || source ~/miniconda3/etc/profile.d/conda.sh
+
 # Verify conda availability
 if ! command -v conda &> /dev/null; then
     echo "Error: Conda is not available after loading the module."
@@ -37,6 +38,9 @@ if ! command -v conda &> /dev/null; then
 else
     echo "Conda is available."
 fi
+
+#reinitialize conda
+source ~/miniconda3/etc/profile.d/conda.sh
 
 # Activate the conda environment
 ENV_NAME="research-project"
