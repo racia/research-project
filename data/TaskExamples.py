@@ -20,7 +20,9 @@ class Task:
         """
         self.number = number
         self.to_enumerate = to_enumerate
-        self.folder = Path("data/examples") / ("enumerated" if to_enumerate else "not_enumerated")
+        self.folder = Path("data/examples") / (
+            "enumerated" if to_enumerate else "not_enumerated"
+        )
 
         self.handpicked = handpicked
         if self.handpicked and not_mentioned:
@@ -57,7 +59,6 @@ class TaskExample(Task):
         ]
         with open(paths[0], "r", encoding="utf-8") as file:
             return file.read()
-
 
 
 class TaskExamples(Task):

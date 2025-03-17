@@ -1,0 +1,25 @@
+defaults:
+  # running this script will pull the prompt in this file over the prompt in baseline_config file
+  - SD_config
+  - _self_
+
+init_prompt:
+  # name of the prompt files serves as a basis for logging and result files
+  paths:
+    - "${oc.env:HOME}/research-project/prompts/init_prompt_reasoning.txt"
+
+eval_prompt:
+  # name of the prompt files serves as a basis for logging and result files
+  paths:
+    - "${oc.env:HOME}/research-project/prompts/eval_prompt.txt"
+
+resume_prompt:
+  # name of the prompt files serves as a basis for logging and result files
+  paths:
+    - "${oc.env:HOME}/research-project/prompts/resume_prompt.txt"
+
+hydra:
+  run:
+    # the run directory with logs, plots, and csv results will be created here
+    # use more folders if needed for distinguishing between different experiments
+    dir: "${oc.env:HOME}/research-project/outputs/${now:%d-%m-%Y}/${now:%H-%M-%S}"

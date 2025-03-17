@@ -1,4 +1,4 @@
-name: research-project-test
+name: research-project
 channels:
   - conda-forge
   - defaults

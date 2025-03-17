@@ -32,11 +32,6 @@ data:
   to_enumerate:
     context: True
     question: False
-
-prompt:
-  # name of the prompt files serves as a basis for logging and result files
-  paths:
-    - "${oc.env:HOME}/research-project/prompts/init_prompt_direct_answer.txt"
   wrapper:
     # if to wrap the part prompt with the task description
     context: |
@@ -46,7 +41,13 @@ prompt:
     question: |
       Now, answer the following question:
       {question}
+    reasoning: ""
     answer: ""
+
+init_prompt:
+  # name of the prompt files serves as a basis for logging and result files
+  paths:
+    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_direct_answer.txt"
   examples:
     to_add: True
     enumerated: True
@@ -56,6 +57,7 @@ prompt:
     wrapper: |
       *EXAMPLE{number}*
       {example}
+      *END OF EXAMPLE{number}*
 
 logging:
   # if to print the results to a log file, otherwise will print to console
@@ -65,12 +67,14 @@ results:
   headers:
     - id
     - task_id
-    - sample_no
+    - sample_id
+    - part_id
     - task
-    - true_answer
+    - golden_answer
     - model_answer
-    - correct?
+    - correct
     - model_reasoning
+    - silver_reasoning
     - model_output
     - exact_match_accuracy
     - soft_match_accuracy
