@@ -141,30 +141,23 @@ class Chat:
             self.messages.append(self.format_message(part, source))
 
 
-    def interpr_parse_messages(self, messages, split_role="user") -> Tuple[str, list]:
+    def filter_messages(self, split_role="user") -> Tuple[str, list[str]]:
         """
-        (Taken by CoT repo) Parses messages by appending new message in message_round list to message_rounds after initial system message.
+        Filters messages by role and gets system message
         
-        :param messages: prompt messages 
-        :param split_role: one of system/user
-        :return: system message and message_rounds list
+        :param split_role: message role
+        :return: system message and filtered messages
         """
-        message_round, message_rounds = [], []
-        system_msg = messages[0]["content"]
+        
+        system_msg = self.messages[0]["content"]
+        message_rounds = [m["content"] for m in self.messages[1:] if m["role"] == split_role]
 
-        for i, message in enumerate(messages):
-            if message["role"] == split_role and message_round:
-                message_rounds.append(message_round)
-                message_round = []
-            message_round.append(message)
-        if message_round:
-            message_rounds.append(message_round)
         return system_msg, message_rounds
 
 
-    def interp_build_chat_input(self, messages: List[dict], max_new_tokens: int=100, max_length: int=200, tokenizer=None) -> torch.LongTensor[List]:
+    def convert_into_ids(self, max_new_tokens: int=100, max_length: int=2048, tokenizer=None) -> torch.LongTensor[List]:
         """
-        (Taken by CoT repo) Builds chat input by extending msg_tokens list and updating history_tokens count. Adds "assistant" tok at the end.
+        Converts current chat messages into ids by  Builds chat input by extending msg_tokens list and updating history_tokens count. Adds "assistant" tok at the end.
         
         :param messages: List containing chat hisory
         :param max_new_tokens: max_new_tokens model config
@@ -172,28 +165,37 @@ class Chat:
         :return: tensor of input tokens
         """
         max_input_tokens = max_length - max_new_tokens
-        system_msg, msg_rounds = self.interpr_parse_messages(messages, split_role="user") 
-        system_tokens = tokenizer.encode(system_msg) # TODO: Our caes: add_special_tokens = True
-        max_history_tokens = max_input_tokens - len(system_tokens)
+        system_msg, msg_rounds = self.filter_messages(split_role="user") 
+        system_msg_ids = tokenizer.encode(system_msg) # TODO: Our case: add_special_tokens = True
+        max_history_tokens = max_input_tokens - len(system_msg_ids)
 
         history_tokens = []
-        for msg_round in msg_rounds[::-1]:
-            msg_tokens = []
-            for message in msg_round:
-                if message["role"] == "user":
-                    msg_tokens.append(tokenizer.convert_tokens_to_ids("user"))
-                else:
-                    msg_tokens.append(tokenizer.convert_tokens_to_ids("assistant"))
-                msg_tokens.extend(tokenizer.encode(message["content"]))
-            if len(history_tokens) == 0 or len(history_tokens) + len(msg_tokens) <= max_history_tokens:
-                history_tokens = msg_tokens + history_tokens  # concat left
-                if len(history_tokens) < max_history_tokens:
-                    continue
-            break
-
-        input_tokens = system_tokens + history_tokens
-        if messages[-1]["role"] != "assistant":
-            input_tokens.append(tokenizer.convert_tokens_to_ids("assistant")) 
+        for message in msg_rounds[::-1]:
+            message_ids = []
+        #for message in msg_round:
+            if message["role"] == "user":
+                message_ids.append(tokenizer.convert_tokens_to_ids("user"))
+            else:
+                message_ids.append(tokenizer.convert_tokens_to_ids("assistant"))
+            message_ids.extend(tokenizer.encode(message["content"]))
+            
+            if len(history_tokens) + len(message_ids) <= max_history_tokens:
+                history_tokens = message_ids + history_tokens  # concat left
+            else:
+                input_tokens = system_tokens + history_tokens
+                if self.messages[-1]["role"] != "assistant":
+                    input_tokens.append(tokenizer.convert_tokens_to_ids("assistant")) 
+                break
         input_tokens = input_tokens[-max_input_tokens:]  # truncate left
         return torch.LongTensor([input_tokens])
+
+
+    def get_ids_and_lengths(self, chat_part) -> tuple[torch.LongTensor, int]:
+        ids_ = self.convert_into_ids(chat_part, max_new_tokens=self.max_new_tokens, tokenizer=self.tokenizer)
+        len_ = len(ids_[0])
+        return ids_, len_
+    
+        
+
+ 
     

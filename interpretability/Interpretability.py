@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import torch
 
+from inference.Chat import Chat, SamplePart
 from plots.Plotter import Plotter
 from prompts.Prompt import Prompt
 from settings.Model import Model
@@ -20,6 +21,7 @@ class Interpretability:
         self.model = model.model
         self.tokenizer = model.tokenizer
         self.plotter = plotter
+        self.max_new_tokens = model.max_new_tokens
     
             
     def get_attention_scores(self, outputs, prompt_len, question_len, cot_len) -> np.ndarray:
@@ -40,40 +42,9 @@ class Interpretability:
 
         return attn_scores
     
-    
-    def get_input_part_info(self, part_result:dict, chat:Chat) -> dict[int]:
-        """
-        Creates input_ids from the current part and provides length info for different parts.
-        :param part_result: The dict containing current part
-        :param tokenizer: The Model tokenizer
-        :param chat: Current chat instance
-        :return: A dictionary containing the necessary info on parts for calculating attention
-        """
-        question = part_result["part"]
-        reasoning = part_result["model_reasoning"]
-        answer = part_result["model_answer"]
 
-        question_msg = [chat.messages[-2]]
-        question_len = len(self.tokenizer(question, return_tensors="pt").input_ids[0])
-        question_ids = chat.interp_build_chat_input(question_msg, tokenizer=self.tokenizer)
 
-        # @TODO: Use our code
-        # prompt = Prompt()
-        # formatted_question = prompt.format_part(part=question, to_enumerate=True)
-        # formatted_question_len = len(self.tokenizer(formatted_question, return_tensorts="pt").input_ids[0])
-
-        prompt_len = len(question_ids[0]) - question_len - 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-        question_len = len(question_ids[0])
-
-        assistant_msg = chat.format_message(part=f"Reasoning: {reasoning}\nAnswer: {answer}", role="assistant")
-        input_msg = question_msg + [assistant_msg]
-        input_ids = chat.interp_build_chat_input(input_msg, tokenizer=self.tokenizer)
-        cot_len = len(input_ids[0])
-        
-        return {"input_ids": input_ids, "question_len": question_len, "cot_len": cot_len, "prompt_len": prompt_len}
-    
-
-    def calculate_attention(self, part_result: dict, chat: Chat) ->  dict[List]:
+    def calculate_attention(self, part: SamplePart, chat: Chat) ->  dict[list]:
         """
         (Taken by CoT repo) Obtains attention scores through output attention weights as scores for CoT and question for each part answer.
         :param task_id: Current task id
@@ -85,22 +56,15 @@ class Interpretability:
         :return: attention scores, tokenized x and y tokens
         """
 
-        task_id = part_result["task_id"]
-        sample_id = part_result["sample_no"]
-        part_id = part_result["part_id"]
+        task_id = part.task_id
+        sample_id = part.sample_id
+        part_id = part.part_id
         
         # Obtain input_ids and lengths of current part
-        ids_dict = self.get_input_part_info(part_result=part_result, chat=chat)
-        input_ids = ids_dict["input_ids"]
+        curr_task_ids, curr_task_len = chat.get_ids_and_lengths(chat.messages[-2], max_new_tokens=self.max_new_tokens, tokenizer=self.tokenizer)
+        prev_hist_ids, prev_hist_len = chat.get_ids_and_lengths(chat.messages[:-3], max_new_tokens=self.max_new_tokens, tokenizer=self.tokenizer)
+        input_ids, input_len = chat.get_ids_and_lengths(chat.messages[:-2], max_new_tokens=self.max_new_tokens, tokenizer=self.tokenizer)
 
-        # Obtain info on part lengths
-        question_len = ids_dict["question_len"]
-        cot_len = ids_dict["cot_len"]
-        prompt_len = ids_dict["prompt_len"]
-        
-        # Substract prompt_len to obtain actual length of current part
-        question_len = question_len - prompt_len
-        cot_len = cot_len - prompt_len
 
         # Feed to the model
         outputs = self.model(
@@ -111,8 +75,8 @@ class Interpretability:
         )
 
         # Obtain attention scores from model output 
-        input_ids = input_ids[0, prompt_len:].detach().cpu().numpy()
-        attn_scores = self.get_attention_scores(outputs, prompt_len, question_len, cot_len)
+        input_ids = input_ids[0, prev_hist_len:].detach().cpu().numpy()
+        attn_scores = self.get_attention_scores(outputs, prev_hist_len, curr_task_len, input_len)
 
         # Filter for most import model answer tokens
         stop_words_indices = get_stop_words(self.tokenizer, input_ids, attn_scores)
@@ -120,7 +84,7 @@ class Interpretability:
         attn_scores = attn_scores[:, attn_indices] # Shape: (Cot; Y_tokens i.e. indices)
         
         # Decode
-        y_tokens = self.tokenizer.batch_decode(input_ids[question_len:cot_len]) #Cot tokens
+        y_tokens = self.tokenizer.batch_decode(input_ids[curr_task_len:input_len]) #Cot tokens
         x_tokens = self.tokenizer.batch_decode(input_ids[attn_indices]) # model answer tokens
 
         # Call plotter
