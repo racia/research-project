@@ -129,12 +129,7 @@ class SamplePart(DataLevel):
         self.context = context.split("\n")
         self.question = question
 
-        self.task = "{context}\n{question}\n{reasoning}\n{answer}".format(
-            context=context,
-            question=question,
-            reasoning=pre_reasoning,
-            answer=pre_answer,
-        ).strip()
+        self.task = "\n".join((context, question, pre_reasoning, pre_answer)).strip()
 
         self.golden_answer = golden_answer
         self.silver_reasoning = silver_reasoning
@@ -154,30 +149,38 @@ class SamplePart(DataLevel):
         )
         self.result = None
 
-    def format_part(self) -> tuple[str, str, str, str]:
+    def wrap(self, attr: str, replacements: dict[str, str]) -> str:
+        """
+        Wrap the attribute with the wrapper, allowing flexible placeholders.
+
+        :param attr: The name of the attribute to wrap (e.g., 'context', 'question')
+        :param replacements: A dictionary of placeholders to replace in the template
+        :return: The formatted attribute if it exists, otherwise None
+        """
+        if hasattr(self.wrapper, attr):
+            wrapped_attr = getattr(self.wrapper, attr)
+            try:
+                return wrapped_attr.format(**replacements) if wrapped_attr else ""
+            except KeyError as e:
+                raise ValueError(f"Missing placeholder in replacements: {e}")
+        else:
+            raise AttributeError(f"Wrapper has no attribute '{attr}': {self.wrapper}")
+
+    def format_part(self) -> tuple[str, ...] | tuple[str, str, str, str]:
         """
         Format the prompt part with the wrapper.
 
         :return: the formatted prompt part
         """
         context, question = structure_part(self.raw, self.to_enumerate)
-
+        replacements = {
+            "context": context,
+            "question": question,
+            "reasoning": "",
+            "answer": "",
+        }
         if self.wrapper:
-            wrapped_context = (
-                self.wrapper.context.format(context=context) if context else ""
-            )
-            wrapped_question = self.wrapper.question.format(question=question)
-            wrapped_reasoning = (
-                self.wrapper.reasoning.format(reasoning=self.raw["reasoning"])
-                if self.wrapper.reasoning
-                else ""
-            )
-            wrapped_answer = (
-                self.wrapper.answer.format(answer=self.raw["answer"])
-                if self.wrapper.answer
-                else ""
-            )
-            return wrapped_context, wrapped_question, wrapped_reasoning, wrapped_answer
+            return tuple(self.wrap(attr, replacements) for attr in replacements.keys())
         return context, question, "", ""
 
     def __str__(self) -> str:
