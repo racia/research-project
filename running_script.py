@@ -80,70 +80,71 @@ def run_setting(cfg: DictConfig) -> None:
 
     setting = None
 
-    print("The model is being loaded...", end="\n\n")
-    try:
-        if cfg.setting.name == "Baseline":
-            model = Model(
-                cfg.model.name,
-                cfg.model.max_new_tokens,
-                cfg.model.temperature,
-                cfg.model.to_continue,
-            )
-            setting = Baseline(
-                model=model,
-                to_enumerate=cfg.data.to_enumerate,
-                total_tasks=loader.number_of_tasks,
-                total_parts=loader.number_of_parts,
-                samples_per_task=loader.samples_per_task,
-                init_prompt=None,
-                wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
-            )
-        elif cfg.setting.name == "Skyline":
-            model = Model(
-                cfg.model.name,
-                cfg.model.max_new_tokens,
-                cfg.model.temperature,
-                cfg.model.to_continue,
-            )
-            setting = Skyline(
-                model=model,
-                to_enumerate=cfg.data.to_enumerate,
-                total_tasks=loader.number_of_tasks,
-                total_parts=loader.number_of_parts,
-                samples_per_task=loader.samples_per_task,
-                init_prompt=None,
-                wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
-            )
-        elif cfg.setting.name == "Feedback":
-            # TODO: add feedback
-            pass
-        elif cfg.setting.name == "SD" or "SpeculativeDecoding":
-            student = Model(
-                cfg.student.name,
-                cfg.student.max_new_tokens,
-                cfg.student.temperature,
-                cfg.student.to_continue,
-            )
-            teacher = Model(
-                cfg.teacher.name,
-                cfg.teacher.max_new_tokens,
-                cfg.teacher.temperature,
-                cfg.teacher.to_continue,
-            )
-            setting = SpeculativeDecoding(
-                student=student,
-                teacher=teacher,
-                to_enumerate=cfg.data.to_enumerate,
-                total_tasks=loader.number_of_tasks,
-                total_parts=loader.number_of_parts,
-                init_prompt=None,
-                eval_prompt=None,
-                resume_prompt=None,
-                samples_per_task=cfg.data.samples_per_task,
-                wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
-            )
+    if not hasattr(cfg.setting, "name"):
+        raise ValueError("The setting name is not provided in the config file")
 
-    except KeyError:
+    print("The model is being loaded...", end="\n\n")
+    if hasattr(cfg, "model"):
+        model = Model(
+            cfg.model.name,
+            cfg.model.max_new_tokens,
+            cfg.model.temperature,
+            cfg.model.to_continue,
+        )
+    elif hasattr(cfg, "student"):
+        model = Model(
+            cfg.student.name,
+            cfg.student.max_new_tokens,
+            cfg.student.temperature,
+            cfg.student.to_continue,
+        )
+    else:
+        raise ValueError("No base model is provided in the config.")
+
+    print(f"The model {cfg.model.name} is loaded successfully", flush=True)
+    if cfg.setting.name == "Baseline":
+        setting = Baseline(
+            model=model,
+            to_enumerate=cfg.data.to_enumerate,
+            total_tasks=loader.number_of_tasks,
+            total_parts=loader.number_of_parts,
+            samples_per_task=loader.samples_per_task,
+            init_prompt=None,
+            wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
+        )
+    elif cfg.setting.name == "Skyline":
+        setting = Skyline(
+            model=model,
+            to_enumerate=cfg.data.to_enumerate,
+            total_tasks=loader.number_of_tasks,
+            total_parts=loader.number_of_parts,
+            samples_per_task=loader.samples_per_task,
+            init_prompt=None,
+            wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
+        )
+    elif cfg.setting.name == "Feedback":
+        # TODO: add feedback
+        pass
+    elif cfg.setting.name in ["SD", "SpeculativeDecoding"]:
+        teacher = Model(
+            cfg.teacher.name,
+            cfg.teacher.max_new_tokens,
+            cfg.teacher.temperature,
+            cfg.teacher.to_continue,
+        )
+        setting = SpeculativeDecoding(
+            student=model,
+            teacher=teacher,
+            to_enumerate=cfg.data.to_enumerate,
+            total_tasks=loader.number_of_tasks,
+            total_parts=loader.number_of_parts,
+            init_prompt=None,
+            eval_prompt=None,
+            resume_prompt=None,
+            samples_per_task=cfg.data.samples_per_task,
+            wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
+        )
+    else:
         raise ValueError(
             f"Setting {cfg.setting.name} is not supported. "
             f"Please choose one of the following: Baseline, Skyline, Feedback, SD or SpeculativeDecoding"

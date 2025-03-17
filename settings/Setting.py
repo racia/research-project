@@ -29,7 +29,7 @@ class Setting(ABC):
     def __init__(
         self,
         model: Model,
-        to_enumerate: dict[Enumerate, bool],
+        to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
         samples_per_task: int = 5,
@@ -195,6 +195,7 @@ class Setting(ABC):
                     raw=sample_part,
                     golden_answer=y_true,
                     wrapper=self.wrapper,
+                    to_enumerate=self.to_enumerate
                 )
                 self.model.curr_sample_part = current_part
 

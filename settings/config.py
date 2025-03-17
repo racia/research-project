@@ -53,6 +53,12 @@ class Wrapper:
     reasoning: str
     answer: str
 
+    def __repr__(self):
+        return (
+            f"Wrapper(context={self.context}, question={self.question}, "
+            f"reasoning={self.reasoning}, answer={self.answer})"
+        )
+
 
 @dataclass
 class Data:
