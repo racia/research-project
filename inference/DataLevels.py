@@ -2,9 +2,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from numpy import ndarray
+
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
 from inference.utils import *
+from interpretability.Interpretability import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
 from settings.utils import structure_part
 
@@ -148,7 +151,11 @@ class SamplePart(DataLevel):
             not_mentioned=0,
         )
         self.result = None
-        self.interpretability = None
+        self.interpretability: InterResult = InterResult(
+            attn_scores=ndarray([]),
+            x_tokens=[],
+            y_tokens=[],
+        )
 
     def wrap(self, attr: str, replacements: dict[str, str]) -> str:
         """
@@ -199,10 +206,7 @@ class SamplePart(DataLevel):
 
         :return: the string representation of the part
         """
-        return (
-            f"<SamplePart {self.id_} of task {self.task_id}, sample {self.sample_id}, part {self.part_id}>"
-            f"\n{self.task}"
-        )
+        return f"<SamplePart: id={self.id_}, task_id={self.task_id}, sample_id={self.sample_id}, part_id={self.part_id}>"
 
     def inspect_answer(self) -> Features:
         """
@@ -326,6 +330,7 @@ class Task(DataLevel):
         super().__init__(task_id)
 
         self.samples: list[Sample] = []
+        self.parts: list[SamplePart] = []
 
         self.evaluator = evaluator
         self.results: list[dict[str, int | str]] = []
@@ -348,7 +353,8 @@ class Task(DataLevel):
 
         :return: None
         """
-        self.results = [part.result for sample in self.samples for part in sample.parts]
+        self.parts = [part for sample in self.samples for part in sample.parts]
+        self.results = [part.result for part in self.parts]
 
         self.results[0][
             "exact_match_accuracy"
