@@ -12,16 +12,19 @@ class Plotter:
     This class plots the data.
     """
 
-    def __init__(self, result_path: Path, color_map: str = None):
+    def __init__(self, results_path: Path, color_map: str = None):
         """
         Initialize the plotter.
+
+        :param results_path: path to save the results
+        :param color_map: color map for the plots
         """
         if color_map is None:
             self.cmap = plt.get_cmap("tab10")
         else:
             self.cmap = plt.get_cmap(color_map)
 
-        self.result_path: Path = result_path
+        self.results_path: Path = results_path
 
         self.plot_counter_task = 0
         self.plot_counter_prompt = 0
@@ -48,7 +51,7 @@ class Plotter:
         else:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
-                self.result_path
+                self.results_path
                 / f"{plot_name_add}{label}_per_{x_label.lower()}_no_{self.plot_counter_task}.png",
                 bbox_inches="tight",
             )
@@ -140,8 +143,8 @@ class Plotter:
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
 
-        plot_subdirectory = self.result_path / "interpretability" / "plots"
-        Path.mkdir(plot_subdirectory, parents=True, exist_ok=True)
+        plot_subdirectory = self.results_path / "interpretability" / "plots"
+        Path.mkdir(plot_subdirectory, exist_ok=True, parents=True)
         plt.savefig(plot_subdirectory / f"attn_map-{task_id}-{sample_id}-{part_id}.pdf")
 
         plt.close()

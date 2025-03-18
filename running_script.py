@@ -74,7 +74,7 @@ def run_setting(cfg: DictConfig) -> None:
 
     saver = DataSaver(save_to=HydraConfig.get().run.dir)
     print(f"Results will be saved to: {saver.results_path}")
-    plotter = Plotter(result_path=saver.results_path)
+    plotter = Plotter(results_path=saver.results_path)
 
     run_evaluators = defaultdict(dict)
     run_em_accuracies = defaultdict(dict)
@@ -255,11 +255,10 @@ def run_setting(cfg: DictConfig) -> None:
                 split_.add_task(task_result)
                 saver.save_task_result(
                     task_id=task_id,
-                    task_result=task_result.results,
-                    task_evaluator=task_result.evaluator,
+                    task_data=task_result,
                     headers=cfg.results.headers,
-                    results_path=results_file_paths[split],
-                    metrics_path=metrics_file_paths[split],
+                    split_results_path=results_file_paths[split],
+                    split_metrics_path=metrics_file_paths[split],
                 )
 
                 print("______________________________", end="\n\n")

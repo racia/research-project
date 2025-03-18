@@ -2,11 +2,11 @@ from __future__ import annotations
 
 import csv
 import sys
-from typing import TextIO, Union
+from typing import TextIO, Union, Iterable
 
 from data.utils import *
 from evaluation.Evaluator import MetricEvaluator
-from inference.DataLevels import Split, SamplePart
+from inference.DataLevels import Split, Task
 from inference.Prompt import Prompt
 from settings.config import DataSplits
 
@@ -156,53 +156,92 @@ class DataSaver:
                 file_path=results_path,
             )
 
-    def save_interpretability(self, sample_part: SamplePart):
+    def save_with_separator(self, file_path: Path, data: Iterable, sep="\n") -> None:
         """
-        Save the interpretability result.
+        Save the separator between the data.
 
-        :param sample_part: the sample part
+        :param file_path: the path to the file
+        :param data: the data to save
+        :param sep: the separator, a newline by default
+        :return: None
         """
-        interpretability_result = sample_part.interpretability.get()
-        pass
+        with open(file_path, "w", encoding="UTF-8") as file:
+            file.write(sep.join(data))
+
+    def save_interpretability(self, task_data: Task) -> None:
+        """
+        Save the interpretability result per sample part.
+
+        :param task_data: the task instance with the results
+        :return: None
+        """
+        attn_scores_subdir = self.results_path / "interpretability" / "attn_scores"
+        Path.mkdir(attn_scores_subdir, exist_ok=True, parents=True)
+
+        for part in task_data.parts:
+            part_result = part.interpretability.result
+            try:
+                file_name = (
+                    f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
+                )
+                attn_scores = [
+                    "\t".join(map(str, row)) for row in part_result.attn_scores.tolist()
+                ]
+                self.save_with_separator(
+                    file_path=attn_scores_subdir / file_name, data=attn_scores
+                )
+                for tokens in ("x_tokens", "y_tokens"):
+                    file_name = (
+                        f"{tokens}-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
+                    )
+                    self.save_with_separator(
+                        file_path=attn_scores_subdir / file_name,
+                        data=part_result.tokens,
+                    )
+            except AttributeError as e:
+                print(f"AttributeError: {e} in {part_result}")
+
+        print(
+            f"Interpretability results for task {task_data.task_id} saved to {attn_scores_subdir}"
+        )
 
     def save_task_result(
         self,
         task_id: int,
-        task_result: list[dict],
-        task_evaluator: MetricEvaluator,
+        task_data: Task,
         headers: list[str],
-        results_path: Path,
-        metrics_path: Path,
+        split_results_path: Path,
+        split_metrics_path: Path,
     ) -> None:
         """
         Save the results for the task and the accuracy for the task to the separate files.
 
         :param task_id: the task id
-        :param task_result: the result of the task
-        :param task_evaluator: the evaluator for the task
+        :param task_data: the result of the task
         :param headers: the headers for the results
-        :param results_path: the path to save the results
-        :param metrics_path: the path to save the accuracy
+        :param split_results_path: the path to save the results specific to the split
+        :param split_metrics_path: the path to save the accuracy specific to the split
         :return: None
         """
         self.save_output(
-            data=task_result,
+            data=task_data.results,
             headers=headers,
-            file_path=results_path,
+            file_path=split_results_path,
         )
         # get accuracy for the last task
         task_accuracy = {
             "task_id": task_id,
-            "exact_match_accuracy": task_evaluator.exact_match_accuracy.get_mean(),
-            "soft_match_accuracy": task_evaluator.soft_match_accuracy.get_mean(),
-            "exact_match_std": task_evaluator.exact_match_accuracy.get_std(),
-            "soft_match_std": task_evaluator.soft_match_accuracy.get_std(),
+            "exact_match_accuracy": task_data.evaluator.exact_match_accuracy.get_mean(),
+            "soft_match_accuracy": task_data.evaluator.soft_match_accuracy.get_mean(),
+            "exact_match_std": task_data.evaluator.exact_match_accuracy.get_std(),
+            "soft_match_std": task_data.evaluator.soft_match_accuracy.get_std(),
         }
         self.save_output(
             data=[task_accuracy],
             headers=list(task_accuracy.keys()),
-            file_path=metrics_path,
+            file_path=split_metrics_path,
         )
+        self.save_interpretability(task_data)
 
     def save_run_accuracy(
         self,
