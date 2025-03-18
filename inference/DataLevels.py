@@ -78,8 +78,8 @@ class DataLevel:
     """
 
     def __init__(self, task_id: int):
-        self.task_id = task_id
-        self.features = Features(
+        self.task_id: int = task_id
+        self.features: Features = Features(
             there=0,
             verbs=0,
             pronouns=0,
@@ -92,7 +92,7 @@ class SamplePart(DataLevel):
     This class handles the parts of the samples, dividing it by questions.
     """
 
-    result_attrs = [
+    result_attrs: list[str] = [
         "id_",
         "task_id",
         "sample_id",
@@ -119,45 +119,45 @@ class SamplePart(DataLevel):
         to_enumerate: Enumerate = None,
     ):
         super().__init__(task_id)
-        self.id_ = id_
-        self.sample_id = sample_id
-        self.part_id = part_id
+        self.id_: int = id_
+        self.sample_id: int = sample_id
+        self.part_id: int = part_id
 
-        self.raw = raw
-        self.wrapper = wrapper
-        self.to_enumerate = to_enumerate
+        self.raw: dict = raw
+        self.wrapper: Wrapper = wrapper
+        self.to_enumerate: Enumerate = to_enumerate
 
         self.structured_context, self.structured_question = structure_part(
             self.raw, self.to_enumerate
         )
-        self.unwrapped_task = "\n".join(
+        self.unwrapped_task: str = "\n".join(
             (self.structured_context, self.structured_question)
         ).strip()
 
         wrapped_context, wrapped_question, reasoning_wrapper, answer_wrapper = (
-            self.format_part()
+            self.wrap_part()
         )
-        self.task = "\n".join(
+        self.task: str = "\n".join(
             (wrapped_context, wrapped_question, reasoning_wrapper, answer_wrapper)
         ).strip()
 
-        self.golden_answer = golden_answer
-        self.silver_reasoning = silver_reasoning
+        self.golden_answer: str = golden_answer
+        self.silver_reasoning: str = silver_reasoning
 
-        self.model_output = None
-        self.model_reasoning = None
-        self.model_answer = None
+        self.model_output: str = ""
+        self.model_reasoning: str = ""
+        self.model_answer: str = ""
 
-        self.correct = None
+        self.correct: bool = None
 
-        self.stats = Statistics()
-        self.features = Features(
+        self.stats: Statistics = Statistics()
+        self.features: Features = Features(
             there=0,
             verbs=0,
             pronouns=0,
             not_mentioned=0,
         )
-        self.result = None
+        self.result: dict = {}
         self.interpretability: InterResult = InterResult(
             attn_scores=ndarray([]),
             x_tokens=[],
@@ -181,7 +181,7 @@ class SamplePart(DataLevel):
         else:
             raise AttributeError(f"Wrapper has no attribute '{attr}': {self.wrapper}")
 
-    def format_part(self) -> tuple[str, ...] | tuple[str, str, str, str]:
+    def wrap_part(self) -> tuple[str, ...] | tuple[str, str, str, str]:
         """
         Format the prompt part with the wrapper.
 
@@ -282,11 +282,11 @@ class Sample(DataLevel):
         evaluator: AnswerEvaluator,
     ):
         super().__init__(task_id)
-        self.sample_id = sample_id
+        self.sample_id: int = sample_id
 
         self.parts: list[SamplePart] = []
 
-        self.evaluator = evaluator
+        self.evaluator: AnswerEvaluator = evaluator
 
     def add_part(self, part: SamplePart) -> None:
         """
@@ -338,7 +338,7 @@ class Task(DataLevel):
         self.samples: list[Sample] = []
         self.parts: list[SamplePart] = []
 
-        self.evaluator = evaluator
+        self.evaluator: MetricEvaluator = evaluator
         self.results: list[dict[str, int | str]] = []
 
     def add_sample(self, sample: Sample) -> None:
@@ -377,10 +377,10 @@ class Split(DataLevel):
 
     def __init__(self, name: str, evaluator: MetricEvaluator):
         super().__init__(task_id=0)
-        self.name = name
+        self.name: str = name
         self.tasks: list[Task] = []
 
-        self.evaluator = evaluator
+        self.evaluator: MetricEvaluator = evaluator
 
     def add_task(self, task: Task) -> None:
         """

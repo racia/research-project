@@ -15,7 +15,7 @@ class Skyline(Baseline):
     def __init__(
         self,
         model: Model,
-        to_enumerate: dict[Enumerate, bool],
+        to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
         samples_per_task: int = 5,

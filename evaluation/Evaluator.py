@@ -13,14 +13,18 @@ class Evaluator:
 
         :param level: the level of evaluation
         """
-        self.level = level
-        self.stats = Statistics()
+        self.level: str = level
+        self.stats: Statistics = Statistics()
 
-        self.exact_match_accuracy = Accuracy("Exact-Match Accuracy")
-        self.soft_match_accuracy = Accuracy("Soft-Match Accuracy")
+        self.exact_match_accuracy: Accuracy = Accuracy("Exact-Match Accuracy")
+        self.soft_match_accuracy: Accuracy = Accuracy("Soft-Match Accuracy")
 
-        self.exact_match_std = Metric("Standard Deviation for Exact-Match Accuracy")
-        self.soft_match_std = Metric("Standard Deviation for Soft-Match Accuracy")
+        self.exact_match_std: Metric = Metric(
+            "Standard Deviation for Exact-Match Accuracy"
+        )
+        self.soft_match_std: Metric = Metric(
+            "Standard Deviation for Soft-Match Accuracy"
+        )
 
     def __repr__(self):
         return (
@@ -107,10 +111,10 @@ class AnswerEvaluator(Evaluator):
         """
         super().__init__(level)
 
-        self.golden_answers = []
-        self.pred_answers = []
-        self.silver_reasonings = []
-        self.pred_reasonings = []
+        self.golden_answers: list[str] = []
+        self.pred_answers: list[str] = []
+        self.silver_reasonings: list[str] = []
+        self.pred_reasonings: list[str] = []
 
     def calculate_accuracies(self) -> tuple[float, float]:
         """

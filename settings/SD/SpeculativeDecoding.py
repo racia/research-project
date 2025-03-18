@@ -58,14 +58,14 @@ class SpeculativeDecoding(Setting):
             wrapper=wrapper,
             interpretability=interpretability,
         )
-        self.teacher = teacher
-        self.student = student
+        self.teacher: Model = teacher
+        self.student: Model = student
         self.tokenizer = student.tokenizer
 
-        self.eval_prompt = eval_prompt
-        self.resume_prompt = resume_prompt
+        self.eval_prompt: Prompt = eval_prompt
+        self.resume_prompt: Prompt = resume_prompt
 
-        self.initial_student_output = None
+        self.initial_student_output: str = ""
 
     def generate_student(self, corrected_in: str, chat: Chat) -> str:
         """

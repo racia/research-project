@@ -2,34 +2,37 @@ from __future__ import annotations
 
 import numpy as np
 import torch
+
 from inference.Chat import Chat, Source
 from inference.DataLevels import SamplePart
-from interpretability.utils import get_scenery_words
+from interpretability.utils import InterpretabilityResult
 from plots.Plotter import Plotter
 from settings.Model import Model
-from interpretability.utils import InterpretabilityResult
-
 
 
 class Interpretability:
     def __init__(
-        self, model: Model = None, plotter: Plotter = None, save_heatmaps: bool = False
+        self,
+        model: Model = None,
+        plotter: Plotter = None,
+        save_heatmaps: bool = False,
+        scenery_words: list[str] = None,
     ):
         """
         Interpretability class
         :param model: instance of Model
         :param plotter: instance of Plotter
         :param save_heatmaps: if to create and save heatmaps
+        :param scenery_words: list of scenery words
         """
         self.model = model.model
         self.tokenizer = model.tokenizer
-        self.max_new_tokens = model.max_new_tokens
+        self.max_new_tokens: int = model.max_new_tokens
 
-        self.plotter = plotter
-        self.save_heatmaps = save_heatmaps
+        self.plotter: Plotter = plotter
+        self.save_heatmaps: bool = save_heatmaps
 
-        self.scenery_words = get_scenery_words()
-
+        self.scenery_words: list[str] = scenery_words
 
     def get_stop_word_idxs(
         self, part_task_out_ids: torch.LongTensor, attn_scores: np.ndarray
@@ -53,7 +56,6 @@ class Interpretability:
     @staticmethod
     def get_attention_scores(
         output_tensor: torch.LongTensor,
-        prev_hist_len: int,
         part_task_len: int,
         part_task_out_len: int,
     ) -> np.ndarray:
@@ -64,8 +66,6 @@ class Interpretability:
 
         @TODO cite (Taken by CoT repo)
 
-        :param part_task_out_ids: current sample part ids (task and model's output) @TODO fix the type
-        :param prev_hist_len: prompt length
         :param part_task_len: question length
         :param part_task_out_len: CoT length
 
@@ -102,7 +102,7 @@ class Interpretability:
         print(part_task_ids, part_task_len)
 
         prev_hist_ids = chat.convert_into_ids(
-            chat_part=chat.messages[:-3], # take everything except last 3
+            chat_part=chat.messages[:-3],  # take everything except last 3
             max_new_tokens=self.max_new_tokens,
             tokenizer=self.tokenizer,
         )
@@ -123,14 +123,13 @@ class Interpretability:
             output_attentions=True,
             output_hidden_states=False,
         )
-        
-         # TODO: this now removes all the ids apart from the current part
+
+        # TODO: this now removes all the ids apart from the current part
         part_task_out_ids = part_task_out_ids[0, :].detach().cpu().numpy()
 
         # Obtain attention scores from model output
         attn_scores = self.get_attention_scores(
             output_tensor=output_tensor,
-            prev_hist_len=prev_hist_len,
             part_task_len=part_task_len,
             part_task_out_len=part_task_out_len,
         )
@@ -144,7 +143,7 @@ class Interpretability:
             filter(lambda x: x not in stop_words_indices, range(attn_scores.shape[1]))
         )
         print("stop", stop_words_indices)
-        #print(attn_indices)
+        # print(attn_indices)
         # Shape: (Cot; Y_tokens i.e. indices)
         attn_scores = attn_scores[:, attn_indices]
 

@@ -4,7 +4,7 @@ import torch
 from torch.amp import autocast
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
-from settings.config import Mode
+from inference.DataLevels import SamplePart
 
 
 class Model:
@@ -18,16 +18,15 @@ class Model:
         max_new_tokens: int,
         temperature: float,
         to_continue: bool,
-        mode: Mode = "eval"
     ):
-        self.token = os.getenv("HUGGINGFACE")
-        self.model_name = model_name
-        self.max_new_tokens = max_new_tokens
-        self.temperature = temperature
-        self.to_continue = to_continue
+        self.token: str = os.getenv("HUGGINGFACE")
+        self.model_name: str = model_name
+        self.max_new_tokens: int = max_new_tokens
+        self.temperature: float = temperature
+        self.to_continue: bool = to_continue
         self.model, self.tokenizer = self.load()
 
-        self.curr_sample_part = None
+        self.curr_sample_part: SamplePart = None
 
     def load(self) -> tuple:
         """
@@ -54,7 +53,7 @@ class Model:
         model_kwargs = {
             "device_map": "auto",
             "torch_dtype": torch.bfloat16,
-            #"quantization_config": quantization_config,
+            # "quantization_config": quantization_config,
             "low_cpu_mem_usage": True,
             "offload_folder": "offload_folder",
             "offload_state_dict": True,
