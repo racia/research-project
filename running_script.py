@@ -228,7 +228,7 @@ def run_setting(cfg: DictConfig) -> None:
                     and cfg.init_prompt.examples.add
                 ):
                     setting.init_prompt.add_examples(
-                        task_id=task_id, example_config=cfg.prompt.examples
+                        task_id=task_id, example_config=cfg.init_prompt.examples
                     )
                 else:
                     setting.init_prompt.use_original_prompt()
