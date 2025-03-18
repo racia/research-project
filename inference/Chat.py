@@ -6,6 +6,9 @@ from typing import Tuple, Union
 import torch
 from transformers import AutoTokenizer
 
+from inference.Prompt import Prompt
+from inference.utils import generation_token
+
 
 @dataclass
 class Source:

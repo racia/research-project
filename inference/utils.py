@@ -52,3 +52,19 @@ def contains_not_mentioned(answer) -> bool:
     if answer and re.search(r"\bmention|information|unknown", answer):
         return True
     return False
+
+
+def generation_token(tokenizer, role) -> int:
+    """
+    Returns the token id for the role of the message.
+
+    :param tokenizer: tokenizer to use
+    :param role: role of the message
+    :return: token id
+    """
+    if role == "user":
+        return tokenizer.convert_tokens_to_ids("user")
+    elif role == "assistant":
+        return tokenizer.convert_tokens_to_ids("assistant")
+    else:
+        raise ValueError(f"Unknown role: {role}")

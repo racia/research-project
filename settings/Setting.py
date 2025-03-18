@@ -148,9 +148,7 @@ class Setting(ABC):
             sample = Sample(task_id=task_id, sample_id=sample_id, evaluator=sample_eval)
 
             # each sample is a new conversation
-            chat = Chat(
-                system_prompt=self.init_prompt.text, multi_system=self.multi_system
-            )
+            chat = Chat(system_prompt=self.init_prompt, multi_system=self.multi_system)
 
             # 2. Iterate through parts (one question at a time)
             for sample_part, y_true in zip(sample_parts, sample_eval.golden_answers):
