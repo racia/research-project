@@ -9,7 +9,7 @@ from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
-from settings.config import Wrapper
+from settings.config import Mode, Wrapper
 from settings.utils import Enumerate, parse_output
 
 
@@ -46,6 +46,8 @@ class SpeculativeDecoding(Setting):
         :param student: The student model
         :param eval_prompt: the evaluation prompt for the teacher
         :param resume_prompt: the resume prompt for the student
+        :param interpretability: optional interpretability instance
+        :param mode: The model mode
         """
         super().__init__(
             model=student,

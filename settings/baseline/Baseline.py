@@ -6,7 +6,7 @@ from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
-from settings.config import Wrapper
+from settings.config import Mode, Wrapper
 from settings.utils import Enumerate
 
 

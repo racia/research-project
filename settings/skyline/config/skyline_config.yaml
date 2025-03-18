@@ -8,7 +8,8 @@ model:
   # if we want the model to continue on the last message rather
   # than create a separate answer
   to_continue: False
-
+  mode: "eval"
+  
 setting:
   name: "Skyline"
   interpretability: True
