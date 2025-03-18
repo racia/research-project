@@ -118,7 +118,8 @@ class Plotter:
     ) -> None:
         """
         Draw a heat map with the interpretability attention scores for the current task.
-
+        (Partly taken from https://arxiv.org/abs/2402.18344)
+        
         :param x: the current task tokens
         :param y: the model output tokens
         :param scores: attention scores

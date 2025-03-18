@@ -94,6 +94,7 @@ def run_setting(cfg: DictConfig) -> None:
             cfg.model.max_new_tokens,
             cfg.model.temperature,
             cfg.model.to_continue,
+            cfg.model.mode
         )
     elif hasattr(cfg, "student"):
         model = Model(
@@ -101,6 +102,7 @@ def run_setting(cfg: DictConfig) -> None:
             cfg.student.max_new_tokens,
             cfg.student.temperature,
             cfg.student.to_continue,
+            cfg.model.mode
         )
     else:
         raise ValueError("No base model is provided in the config.")
@@ -110,6 +112,7 @@ def run_setting(cfg: DictConfig) -> None:
             model=model,
             plotter=plotter,
             save_heatmaps=cfg.results.save_heatmaps,
+            scenery_words = loader.load_scenery()
         )
         if cfg.setting.interpretability
         else None
@@ -147,6 +150,7 @@ def run_setting(cfg: DictConfig) -> None:
             cfg.teacher.max_new_tokens,
             cfg.teacher.temperature,
             cfg.teacher.to_continue,
+            cfg.model.mode
         )
         setting = SpeculativeDecoding(
             student=model,

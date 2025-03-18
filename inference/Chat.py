@@ -113,6 +113,8 @@ class Chat:
         Converts either all the chat messages or the specified ones into ids ensuring that the input does not exceed
         the max_length. The system prompt is always included in the input, regardless of the chat_part.
         The assistant token id is always added at the end of the input.
+        
+        (Partly taken from https://arxiv.org/abs/2402.18344)
 
         :param tokenizer: tokenizer to use
         :param chat_part: chat part to convert into ids, if None, all messages are used

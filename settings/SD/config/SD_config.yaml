@@ -3,13 +3,15 @@ teacher:
   max_new_tokens: 100
   temperature: 0.2
   to_continue: false
+  mode: "eval"
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
   max_new_tokens: 200
   temperature: 0.2
   to_continue: false
-
+  mode: "eval"
+  
 setting:
   name: 'SD'
   interpretability: True

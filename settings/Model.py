@@ -25,18 +25,20 @@ class Model:
         self.max_new_tokens = max_new_tokens
         self.temperature = temperature
         self.to_continue = to_continue
+        self.mode: Mode = mode
         self.model, self.tokenizer = self.load()
 
         self.curr_sample_part = None
 
     def load(self) -> tuple:
         """
-        Load the model and the tokenizer.
+        Load the model and the tokenizer. 
+        Set the model in mode.
         The model is loaded with memory optimizations.
 
         :return: tuple: model, tokenizer
         """
-        print(f"The model {self.model_name} is being loaded...", end="\n\n", flush=True)
+        print(f"The model {self.model_name} is being loaded in mode {self.mode}", end="\n\n", flush=True)
 
         # create an offload folder
         if not os.path.exists("offload_folder"):
@@ -61,6 +63,11 @@ class Model:
         }
 
         model = AutoModelForCausalLM.from_pretrained(self.model_name, **model_kwargs)
+        
+        if self.mode == "eval":
+            model.eval()
+        elif self.mode == "train":
+            model.train()
 
         tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         tokenizer.padding_side = "left"

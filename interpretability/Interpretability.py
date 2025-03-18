@@ -4,16 +4,16 @@ import numpy as np
 import torch
 from inference.Chat import Chat, Source
 from inference.DataLevels import SamplePart
-from interpretability.utils import get_scenery_words
 from plots.Plotter import Plotter
 from settings.Model import Model
 from interpretability.utils import InterpretabilityResult
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 
 class Interpretability:
     def __init__(
-        self, model: Model = None, plotter: Plotter = None, save_heatmaps: bool = False
+        self, model: Model = None, plotter: Plotter = None, save_heatmaps: bool = False, scenery_words: list[str] = None
     ):
         """
         Interpretability class
@@ -21,18 +21,18 @@ class Interpretability:
         :param plotter: instance of Plotter
         :param save_heatmaps: if to create and save heatmaps
         """
-        self.model = model.model
-        self.tokenizer = model.tokenizer
-        self.max_new_tokens = model.max_new_tokens
+        self.model: AutoModelForCausalLM = model.model
+        self.tokenizer: AutoTokenizer = model.tokenizer
+        self.max_new_tokens: int = model.max_new_tokens
 
-        self.plotter = plotter
-        self.save_heatmaps = save_heatmaps
+        self.plotter: Plotter = plotter
+        self.save_heatmaps: bool = save_heatmaps
 
-        self.scenery_words = get_scenery_words()
+        self.scenery_words = scenery_words
 
 
     def get_stop_word_idxs(
-        self, part_task_out_ids: torch.LongTensor, attn_scores: np.ndarray
+        self, attn_scores: np.ndarray, part_task_out_ids: torch.LongTensor
     ) -> list[int]:
         """
         Get indices of stop words in the current task.
@@ -53,7 +53,6 @@ class Interpretability:
     @staticmethod
     def get_attention_scores(
         output_tensor: torch.LongTensor,
-        prev_hist_len: int,
         part_task_len: int,
         part_task_out_len: int,
     ) -> np.ndarray:
@@ -61,11 +60,8 @@ class Interpretability:
         Obtains the attention scores from a tensor of attention weights of current sample part.
         The function calculates the attention scores for current task tokens by averaging over layers,
         heads and normalizing over the sum of all token attention scores.
+        (Partly taken from https://arxiv.org/abs/2402.18344)
 
-        @TODO cite (Taken by CoT repo)
-
-        :param part_task_out_ids: current sample part ids (task and model's output) @TODO fix the type
-        :param prev_hist_len: prompt length
         :param part_task_len: question length
         :param part_task_out_len: CoT length
 
@@ -83,16 +79,39 @@ class Interpretability:
         # Normalize the attention scores by the sum of all token attention scores
         attn_scores = attn_scores / attn_scores.sum(axis=-1, keepdims=True)
         return attn_scores
+    
+    
+    def filter_attention_scores(self, attention_scores: np.ndarray, part_task_out_ids: torch.LongTensor) -> tuple[np.ndarray, list]:
+        """
+        Filter context and question attention scores for scenery words 
+        by their indices in each row of the output attention scores.
+        Removes message role tokens.
+        
+        :param attention_scores: The attention scores
+        :param part_task_out_ids: The input ids of last part task and model output
+        :return: filtered attention scores with the according attention_indices
+        """
+        
+        stop_words_indices = self.get_stop_word_idxs(attention_scores, part_task_out_ids)
+        attention_indices = list(
+            filter(lambda x: x not in stop_words_indices, range(attention_scores.shape[1]))
+        )
+        return attention_scores[:, attention_indices], attention_indices
+
 
     def get_attention(self, part: SamplePart, chat: Chat) -> InterpretabilityResult:
         """
-        (Taken by CoT repo) Obtains attention scores through output attention weights as scores for CoT and question for each part answer.
+        1. Defines structural parts of the current chat and gets their input ids and lengths.
+        2. Gets the relevant attention scores, filters them.
+        3. Constructs x and y tokens and optionally creates heatmaps.
+         
+        (Partly taken from https://arxiv.org/abs/2402.18344)
 
         :param part: part of the sample
         :param chat: Chat history as list of messages
         :return: attention scores, tokenized x and y tokens
         """
-        # Obtain input_ids and lengths of current part
+        
         part_task_ids = chat.convert_into_ids(
             chat_part=[chat.messages[-2]],
             max_new_tokens=self.max_new_tokens,
@@ -128,43 +147,29 @@ class Interpretability:
         part_task_out_ids = part_task_out_ids[0, :].detach().cpu().numpy()
 
         # Obtain attention scores from model output
-        attn_scores = self.get_attention_scores(
+        attention_scores = self.get_attention_scores(
             output_tensor=output_tensor,
-            prev_hist_len=prev_hist_len,
             part_task_len=part_task_len,
             part_task_out_len=part_task_out_len,
         )
-        print(attn_scores.shape)
-
-        # Filter for most import model answer tokens
-        stop_words_indices = self.get_stop_word_idxs(part_task_out_ids, attn_scores)
-        # Filters out the stop words from the task tokens (context and question)
-        # by their indices in each row of the output attention scores
-        attn_indices = list(
-            filter(lambda x: x not in stop_words_indices, range(attn_scores.shape[1]))
-        )
-        print("stop", stop_words_indices)
-        #print(attn_indices)
-        # Shape: (Cot; Y_tokens i.e. indices)
-        attn_scores = attn_scores[:, attn_indices]
+        
+        attention_scores, attention_indices = self.filter_attention_scores(attention_scores, part_task_out_ids)
 
         # Decode the task tokens
-        x_tokens = self.tokenizer.batch_decode(part_task_out_ids[attn_indices])
-        print(x_tokens)
+        x_tokens = self.tokenizer.batch_decode(part_task_out_ids[attention_indices])
+
         # Decode the model output tokens
         y_tokens = self.tokenizer.batch_decode(
             part_task_out_ids[
                 part_task_len:part_task_out_len
             ]  # TODO: can we remove part_task_out_len from here?
-        )
-        print(y_tokens)
-        print(attn_scores.shape)
+        )        
 
         if self.save_heatmaps:
             self.plotter.draw_heat(
                 x=x_tokens,
                 y=y_tokens,
-                scores=attn_scores,
+                scores=attention_scores,
                 task_id=part.task_id,
                 sample_id=part.sample_id,
                 part_id=part.part_id,
@@ -172,4 +177,4 @@ class Interpretability:
 
         torch.cuda.empty_cache()
 
-        return InterpretabilityResult(attn_scores, x_tokens, y_tokens)
+        return InterpretabilityResult(attention_scores, x_tokens, y_tokens)

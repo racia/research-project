@@ -8,10 +8,7 @@ model:
   # if we want the model to continue on the last message rather
   # than create a separate answer
   to_continue: False
-
-mode:
-  train: False
-  eval: True
+  mode: "eval"
 
 setting:
   name: "Baseline"
@@ -51,7 +48,7 @@ data:
 
 init_prompt:
   paths:
-    - "${oc.env:HOME}/research-project/inference/prompts/reasoning.txt"
+    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
   examples:
     add: True
     enumerated: True
