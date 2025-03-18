@@ -2,32 +2,13 @@ from __future__ import annotations
 
 import numpy as np
 import torch
-
-from inference.Chat import Chat, SamplePart
+from inference.Chat import Chat, Source
+from inference.DataLevels import SamplePart
 from interpretability.utils import get_scenery_words
 from plots.Plotter import Plotter
 from settings.Model import Model
+from interpretability.utils import InterpretabilityResult
 
-
-class InterpretabilityResult:
-    def __init__(
-        self, attn_scores: np.ndarray, x_tokens: list[str], y_tokens: list[str]
-    ):
-        """
-        Interpretability result class
-        :param attn_scores: attention scores
-        :param x_tokens: tokenized x tokens
-        :param y_tokens: tokenized y tokens
-        """
-        self.attn_scores = attn_scores
-        self.x_tokens = x_tokens
-        self.y_tokens = y_tokens
-
-        self.result = {
-            "attn_scores": self.attn_scores,
-            "x_tokens": self.x_tokens,
-            "y_tokens": self.y_tokens,
-        }
 
 
 class Interpretability:
@@ -49,6 +30,7 @@ class Interpretability:
 
         self.scenery_words = get_scenery_words()
 
+
     def get_stop_word_idxs(
         self, part_task_out_ids: torch.LongTensor, attn_scores: np.ndarray
     ) -> list[int]:
@@ -63,10 +45,8 @@ class Interpretability:
         for output_row in attn_scores:
             for task_inx in enumerate(output_row):
                 token = self.tokenizer.batch_decode(part_task_out_ids)[task_inx[0]]
-                #print(token)
                 token = token.strip()
-                if not (token.isalpha() or token in self.scenery_words):
-                    print(token)
+                if token not in self.scenery_words or token in Source.options:
                     stop_words_ids.append(task_inx[0])
         return stop_words_ids
 

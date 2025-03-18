@@ -20,6 +20,8 @@ class Source:
     user = "user"
     assistant = "assistant"
 
+    options = [system, user, assistant]
+    
 
 class Chat:
     """
@@ -165,4 +167,4 @@ class Chat:
 
         # take all the tokens that could fit
         # input_tokens = system_prompt_ids + history_ids[-input_tokens_left:]
-        return torch.LongTensor([history_ids[-input_tokens_left:]])
+        return torch.LongTensor([history_ids[-input_tokens_left-1:]])

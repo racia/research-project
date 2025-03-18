@@ -66,5 +66,7 @@ def generation_token(tokenizer: AutoTokenizer, role: str) -> int:
         return tokenizer.convert_tokens_to_ids("user")
     elif role == "assistant":
         return tokenizer.convert_tokens_to_ids("assistant")
+    elif role == "system":
+        return tokenizer.convert_tokens_to_ids("system")
     else:
         raise ValueError(f"Unknown role: {role}")

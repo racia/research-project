@@ -7,7 +7,7 @@ from numpy import ndarray
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
 from inference.utils import *
-from interpretability.Interpretability import InterpretabilityResult as InterResult
+from interpretability.utils import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
 from settings.utils import structure_part
 

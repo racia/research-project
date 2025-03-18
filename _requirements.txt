@@ -14,6 +14,7 @@ libjpeg-turbo==2.0.0
 pytorch==2.5.1
 pytorch-cuda==12.4
 pytorch-mutex==1.0
+seaborn==0.13.0
 torchaudio==2.5.1
 torchtriton==3.1.0
 torchvision==0.20.1
