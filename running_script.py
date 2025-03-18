@@ -112,7 +112,7 @@ def run_setting(cfg: DictConfig) -> None:
             model=model,
             plotter=plotter,
             save_heatmaps=cfg.results.save_heatmaps,
-            scenery_words = loader.load_scenery()
+            scenery_words = loader.load_scenery(["attr", "loc", "nh-subj", "obj", "part", "rel", "subj-attr", "subj"])
         )
         if cfg.setting.interpretability
         else None

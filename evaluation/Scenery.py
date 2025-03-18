@@ -4,7 +4,6 @@ import en_core_web_sm
 
 nlp = en_core_web_sm.load()
 
-from data.DataLoader import DataLoader
 
 
 @dataclass
@@ -355,6 +354,9 @@ class Scenery:
 
 
 if __name__ == "__main__":
+
+    from data.DataLoader import DataLoader
+
     scenery = Scenery()
     loader = DataLoader()
     scenery.data = loader.load_task_data(

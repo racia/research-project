@@ -7,6 +7,7 @@ from inference.DataLevels import SamplePart
 from plots.Plotter import Plotter
 from settings.Model import Model
 from interpretability.utils import InterpretabilityResult
+from evaluation.Scenery import nlp, Scenery
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
@@ -46,7 +47,9 @@ class Interpretability:
             for task_inx in enumerate(output_row):
                 token = self.tokenizer.batch_decode(part_task_out_ids)[task_inx[0]]
                 token = token.strip()
-                if token not in self.scenery_words or token in Source.options:
+                for lemmatize in nlp(token):
+                    lemmatized = lemmatize.lemma_
+                if token not in self.scenery_words or lemmatized not in self.scenery_words or token in Source.options:
                     stop_words_ids.append(task_inx[0])
         return stop_words_ids
 
@@ -60,7 +63,7 @@ class Interpretability:
         Obtains the attention scores from a tensor of attention weights of current sample part.
         The function calculates the attention scores for current task tokens by averaging over layers,
         heads and normalizing over the sum of all token attention scores.
-        (Partly taken from https://arxiv.org/abs/2402.18344)
+        (This code is based on the implementation in https://arxiv.org/abs/2402.18344)
 
         :param part_task_len: question length
         :param part_task_out_len: CoT length
@@ -105,7 +108,7 @@ class Interpretability:
         2. Gets the relevant attention scores, filters them.
         3. Constructs x and y tokens and optionally creates heatmaps.
          
-        (Partly taken from https://arxiv.org/abs/2402.18344)
+        (This code is based on the implementation in https://arxiv.org/abs/2402.18344)
 
         :param part: part of the sample
         :param chat: Chat history as list of messages
@@ -117,7 +120,7 @@ class Interpretability:
             max_new_tokens=self.max_new_tokens,
             tokenizer=self.tokenizer,
         )
-        part_task_len = len(part_task_ids[0])
+        part_task_len = len(part_task_ids[0])+2
         print(part_task_ids, part_task_len)
 
         prev_hist_ids = chat.convert_into_ids(

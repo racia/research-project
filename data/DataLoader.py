@@ -5,9 +5,9 @@ import os
 from collections import defaultdict
 from pathlib import Path
 from typing import Union
-
 from data.DataProcessor import DataProcessor
 from settings.config import DataSplits
+from evaluation.Scenery import Scenery
 
 
 class DataLoader:
@@ -173,17 +173,20 @@ class DataLoader:
         return data
 
 
-    def load_scenery(self):
+    def load_scenery(self, word_types: list[str]) -> list:
         """
         Get scenery words from the scenery_words folder.
+        Additionally adds Scenery base phrasal words.
 
         :return: list of scenery words for filtering attention scores
         """
         scenery_words = []
         for entry in os.scandir("interpretability/scenery_words"):
-            if entry.is_file and entry.name.endswith(".txt"):
+            word_type = entry.name.strip(".txt")
+            if word_type in word_types:
                 with open(entry.path, "r", encoding="UTF-8") as f:
                     scenery_words.extend(f.read().splitlines())
+        scenery_words.extend(Scenery.base_phrasal_verbs)
         return scenery_words
 
 

@@ -47,3 +47,6 @@ settings/baseline/config/prompt_*_shot*
 test*.sh
 
 fine-tuning/
+
+# Other
+inference/prompts/*reasoning*
