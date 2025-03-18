@@ -141,7 +141,7 @@ class Plotter:
         cbar.ax.tick_params(labelsize=5)
 
         plot_subdirectory = self.result_path / "interpretability" / "plots"
-        Path.mkdir(plot_subdirectory, exist_ok=True)
+        Path.mkdir(plot_subdirectory, parents=True, exist_ok=True)
         plt.savefig(plot_subdirectory / f"attn_map-{task_id}-{sample_id}-{part_id}.pdf")
 
         plt.close()

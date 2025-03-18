@@ -48,7 +48,7 @@ init_prompt:
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
   examples:
-    to_add: True
+    add: True
     enumerated: True
     handpicked: True
     not_mentioned: True

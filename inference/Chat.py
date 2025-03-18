@@ -183,31 +183,31 @@ class Chat:
         max_history_len = input_tokens_left - len(system_prompt_ids)
 
         # take all the messages except the system prompt backwards if we go through all the messages
-        if not chat_part or len(chat_part) == len(self.messages):
-            messages = self.messages[:0:-1]
-        else:
-            messages = chat_part[::-1]
 
         history_ids = []
-        for message in messages:
-            message_ids = []
+        for message in chat_part:
+            message_ids = [generation_token(tokenizer, message["role"])]
             if message["role"] == "user":
                 message_ids.append(tokenizer.convert_tokens_to_ids("user"))
             elif message["role"] == "assistant":
                 message_ids.append(tokenizer.convert_tokens_to_ids("assistant"))
             else:
                 raise ValueError(f"Unknown role: {message['role']}")
-
-            message_ids.extend(tokenizer.encode(message["content"]))
+            
+            message_ids.extend(tokenizer.encode(message["original_content" if message["role"]=="system" else "content"]))
 
             if len(history_ids) + len(message_ids) <= max_history_len:
                 history_ids += message_ids
-            else:
+            elif message["role"] == "assistant":
+                history_ids.append(tokenizer.convert_tokens_to_ids("assistant"))
                 break
+            elif message["role"] == "user":
+                break
+            else:
+                raise Exception("Unexpected error for message:", message)
 
         input_tokens = system_prompt_ids + history_ids
-        input_tokens.append(tokenizer.convert_tokens_to_ids("assistant"))
 
         # take all the tokens that could fit
-        input_tokens = input_tokens[-input_tokens_left:]
+        input_tokens = system_prompt_ids + history_ids[-input_tokens_left:]
         return torch.LongTensor([input_tokens])

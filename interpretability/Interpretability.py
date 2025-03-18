@@ -63,14 +63,16 @@ class Interpretability:
         for output_row in attn_scores:
             for task_inx in enumerate(output_row):
                 token = self.tokenizer.batch_decode(part_task_out_ids)[task_inx[0]]
+                #print(token)
                 token = token.strip()
                 if not (token.isalpha() or token in self.scenery_words):
+                    print(token)
                     stop_words_ids.append(task_inx[0])
         return stop_words_ids
 
     @staticmethod
     def get_attention_scores(
-        part_task_out_ids: torch.LongTensor,
+        output_tensor: torch.LongTensor,
         prev_hist_len: int,
         part_task_len: int,
         part_task_out_len: int,
@@ -89,17 +91,11 @@ class Interpretability:
 
         :return: 2D normalized attention scores averaged over layers and heads for the tokens of the current task.
         """
-        attn_tensor = torch.stack(part_task_out_ids["attentions"], dim=0).squeeze(1)
+        attn_tensor = torch.stack(output_tensor["attentions"], dim=0).squeeze(1)
         # Mean over model layers
         attn_tensor = attn_tensor.mean(dim=0)
-        attn_scores = (
-            # dimensions, current task, current task (w/o system prompt)
-            attn_tensor[:, prev_hist_len:, prev_hist_len:]
-            .float()
-            .detach()
-            .cpu()
-            .numpy()
-        )
+        attn_scores = attn_tensor.float().detach().cpu().numpy()
+
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o system prompt)
         attn_scores = attn_scores[
             :, part_task_len:part_task_out_len, :part_task_len
@@ -118,24 +114,28 @@ class Interpretability:
         """
         # Obtain input_ids and lengths of current part
         part_task_ids = chat.convert_into_ids(
-            chat_part=chat.messages[-2],
+            chat_part=[chat.messages[-2]],
             max_new_tokens=self.max_new_tokens,
             tokenizer=self.tokenizer,
         )
         part_task_len = len(part_task_ids[0])
+        print(part_task_ids, part_task_len)
+
         prev_hist_ids = chat.convert_into_ids(
-            chat_part=chat.messages[-3:],
+            chat_part=chat.messages[:-3], # take everything except last 3
             max_new_tokens=self.max_new_tokens,
             tokenizer=self.tokenizer,
         )
         prev_hist_len = len(prev_hist_ids[0])
+        print(prev_hist_ids, prev_hist_len)
+
         part_task_out_ids = chat.convert_into_ids(
             chat_part=chat.messages[-2:],
             max_new_tokens=self.max_new_tokens,
             tokenizer=self.tokenizer,
         )
         part_task_out_len = len(part_task_out_ids[0])
-
+        print(part_task_out_ids, part_task_out_len)
         # Feed to the model
         output_tensor = self.model(
             input_ids=part_task_out_ids.to(self.model.device),
@@ -143,16 +143,18 @@ class Interpretability:
             output_attentions=True,
             output_hidden_states=False,
         )
+        
+         # TODO: this now removes all the ids apart from the current part
+        part_task_out_ids = part_task_out_ids[0, :].detach().cpu().numpy()
 
         # Obtain attention scores from model output
-        # TODO: this now removes all the ids apart from the current part
-        part_task_out_ids = output_tensor[0, prev_hist_len:].detach().cpu().numpy()
         attn_scores = self.get_attention_scores(
-            part_task_out_ids=part_task_out_ids,
+            output_tensor=output_tensor,
             prev_hist_len=prev_hist_len,
             part_task_len=part_task_len,
             part_task_out_len=part_task_out_len,
         )
+        print(attn_scores.shape)
 
         # Filter for most import model answer tokens
         stop_words_indices = self.get_stop_word_idxs(part_task_out_ids, attn_scores)
@@ -161,17 +163,22 @@ class Interpretability:
         attn_indices = list(
             filter(lambda x: x not in stop_words_indices, range(attn_scores.shape[1]))
         )
+        print("stop", stop_words_indices)
+        #print(attn_indices)
         # Shape: (Cot; Y_tokens i.e. indices)
         attn_scores = attn_scores[:, attn_indices]
 
         # Decode the task tokens
         x_tokens = self.tokenizer.batch_decode(part_task_out_ids[attn_indices])
+        print(x_tokens)
         # Decode the model output tokens
         y_tokens = self.tokenizer.batch_decode(
             part_task_out_ids[
                 part_task_len:part_task_out_len
             ]  # TODO: can we remove part_task_out_len from here?
         )
+        print(y_tokens)
+        print(attn_scores.shape)
 
         if self.save_heatmaps:
             self.plotter.draw_heat(

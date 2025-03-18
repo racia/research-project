@@ -207,7 +207,7 @@ def run_setting(cfg: DictConfig) -> None:
         print(init_prompt.text)
         print("______________________________", end="\n\n")
 
-        if cfg.setting.name == "SD" or "SpeculativeDecoding":
+        if cfg.setting.name in ["SD", "SpeculativeDecoding"]:
             setting.eval_prompt = Prompt(
                 prompt_path=cfg.eval_prompt.paths[0], wrapper=cfg.eval_prompt.wrapper
             )
@@ -242,7 +242,7 @@ def run_setting(cfg: DictConfig) -> None:
                     and cfg.init_prompt.examples.add
                 ):
                     setting.init_prompt.add_examples(
-                        task_id=task_id, example_config=cfg.prompt.examples
+                        task_id=task_id, example_config=cfg.init_prompt.examples
                     )
                 else:
                     setting.init_prompt.use_original_prompt()
