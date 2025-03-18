@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import re
-from typing import Any
 
 import torch
 
@@ -120,7 +119,7 @@ class SpeculativeDecoding(Setting):
 
     def verify_output(
         self, student_tokens, chat: Chat, k=10, last_err_ix=0, student_str=None
-    ) -> tuple[bool, int | None, Any | None]:
+    ) -> tuple[bool, int | None, str | None]:
         """
         Verify the candidates using the teacher model.
 

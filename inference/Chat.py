@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Tuple, Union
+from typing import Union
 
 import torch
 from transformers import AutoTokenizer
 
+from inference.DataLevels import SamplePart
 from inference.Prompt import Prompt
 from inference.utils import generation_token
 
@@ -20,8 +21,8 @@ class Source:
     user = "user"
     assistant = "assistant"
 
-    options = [system, user, assistant]
-    
+    options = (system, user, assistant)
+
 
 class Chat:
     """
@@ -37,7 +38,7 @@ class Chat:
         :param system_prompt: the first prompt the model is prompted with
         :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
         """
-        self.multi_system = multi_system
+        self.multi_system: bool = multi_system
 
         if multi_system:
             self.messages = {
@@ -61,7 +62,7 @@ class Chat:
 
     @staticmethod
     def format_message(
-        part: str | list[str], role: Union[Source.user, Source.assistant]
+        part: SamplePart | str, role: Union[Source.user, Source.assistant]
     ) -> dict[str, str]:
         """
         Formats the prompt by managing the data type and putting in into
@@ -71,16 +72,21 @@ class Chat:
         :param role: the producer of the message
         :return: prompt formatted as a dict
         """
-        if type(part) is list:
-            part = "\n".join(part)
+        if isinstance(part, str):
+            return {
+                "role": role,
+                "content": part,
+                "original_content": part,
+            }
         return {
             "role": role,
-            "content": part,
+            "content": part.task,
+            "original_content": part.unwrapped_task,
         }
 
     def add_message(
         self,
-        part: str | list[str],
+        part: SamplePart | str,
         source: Union[Source.user, Source.assistant],
         model_role: str = "student",
     ) -> None:
@@ -95,23 +101,6 @@ class Chat:
             self.messages[model_role].append(self.format_message(part, source))
         else:
             self.messages.append(self.format_message(part, source))
-
-    def filter_messages(
-        self, split_role="user", messages: list[dict] = None
-    ) -> Tuple[str, list[str]]:
-        """
-        Filters messages by role and gets system message
-
-        :param split_role: message role
-        :param messages: list of messages to filter
-        :return: system message and filtered messages
-        """
-        if not messages:
-            messages = self.messages
-        system_msg = self.messages[0]["content"]
-        message_rounds = [m["content"] for m in messages[1:] if m["role"] == split_role]
-
-        return system_msg, message_rounds
 
     def convert_into_ids(
         self,
