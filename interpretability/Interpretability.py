@@ -3,7 +3,8 @@ from __future__ import annotations
 import numpy as np
 import torch
 
-from inference.Chat import Chat, SamplePart
+from inference.Chat import Chat, Source
+from inference.DataLevels import SamplePart
 from interpretability.utils import get_scenery_words
 from plots.Plotter import Plotter
 from settings.Model import Model
@@ -64,7 +65,7 @@ class Interpretability:
             for task_inx in enumerate(output_row):
                 token = self.tokenizer.batch_decode(part_task_out_ids)[task_inx[0]]
                 token = token.strip()
-                if not (token.isalpha() or token in self.scenery_words):
+                if token not in self.scenery_words or token in Source.options:
                     stop_words_ids.append(task_inx[0])
         return stop_words_ids
 

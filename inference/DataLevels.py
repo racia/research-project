@@ -127,12 +127,19 @@ class SamplePart(DataLevel):
         self.wrapper = wrapper
         self.to_enumerate = to_enumerate
 
-        context, question, pre_reasoning, pre_answer = self.format_part()
+        self.structured_context, self.structured_question = structure_part(
+            self.raw, self.to_enumerate
+        )
+        self.unwrapped_task = "\n".join(
+            (self.structured_context, self.structured_question)
+        ).strip()
 
-        self.context = context.split("\n")
-        self.question = question
-
-        self.task = "\n".join((context, question, pre_reasoning, pre_answer)).strip()
+        wrapped_context, wrapped_question, reasoning_wrapper, answer_wrapper = (
+            self.format_part()
+        )
+        self.task = "\n".join(
+            (wrapped_context, wrapped_question, reasoning_wrapper, answer_wrapper)
+        ).strip()
 
         self.golden_answer = golden_answer
         self.silver_reasoning = silver_reasoning
@@ -180,16 +187,15 @@ class SamplePart(DataLevel):
 
         :return: the formatted prompt part
         """
-        context, question = structure_part(self.raw, self.to_enumerate)
         replacements = {
-            "context": context,
-            "question": question,
+            "context": self.structured_context,
+            "question": self.structured_question,
             "reasoning": "",
             "answer": "",
         }
         if self.wrapper:
             return tuple(self.wrap(attr, replacements) for attr in replacements.keys())
-        return context, question, "", ""
+        return self.structured_context, self.structured_question, "", ""
 
     def __str__(self) -> str:
         """

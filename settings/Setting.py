@@ -197,7 +197,7 @@ class Setting(ABC):
                     end="\n",
                 )
 
-                chat.add_message(part=current_part.task, source=Source.user)
+                chat.add_message(part=current_part, source=Source.user)
 
                 formatted_prompt = self.prepare_prompt(chat=chat)
 
