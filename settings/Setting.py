@@ -186,32 +186,33 @@ class Setting(ABC):
                 )
                 self.model.curr_sample_part = current_part
 
+                chat.add_message(part=current_part.task, source=Source.user)
+
+                formatted_prompt = self.prepare_prompt(chat=chat)
+
                 print(
                     (
                         f"Formatted student prompt:"
                         if self.multi_system
                         else f"Formatted model prompt:"
                     ),
-                    current_part.task,
+                    formatted_prompt,
                     sep="\n",
                     end="\n",
                 )
-
-                chat.add_message(part=current_part, source=Source.user)
-
-                formatted_prompt = self.prepare_prompt(chat=chat)
 
                 # 5. Call the model and yield the response
                 decoded_output = self.model.call(prompt=formatted_prompt)
                 print(
                     (
-                        f"Formatted student prompt: \n"
+                        f"The output of the student:"
                         if self.multi_system
-                        else f"Formatted model prompt: \n"
+                        else f"The output of the model:"
                     ),
                     decoded_output,
                     "\n ------------- ",
                     end="\n\n\n",
+                    sep="\n",
                     flush=True,
                 )
 
