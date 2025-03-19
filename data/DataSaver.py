@@ -6,7 +6,7 @@ from typing import TextIO, Union, Iterable
 
 from data.utils import *
 from evaluation.Evaluator import MetricEvaluator
-from inference.DataLevels import Split, Task, Features
+from inference.DataLevels import Task, Features
 from inference.Prompt import Prompt
 from settings.config import DataSplits
 
@@ -276,14 +276,16 @@ class DataSaver:
         self,
         task_ids: list[int],
         split_evaluators: dict[Prompt, MetricEvaluator],
-        split: Split,
+        features: Features,
+        split_name: str,
     ) -> None:
         """
         Save the accuracies for the split run, including the mean accuracy for all tasks.
 
         :param task_ids: the task ids
         :param split_evaluators: the evaluators per prompt
-        :param split: the split data
+        :param features: the features to save
+        :param split_name: the name of the split
         :return: None
         """
         run_metrics = {}
@@ -300,7 +302,7 @@ class DataSaver:
                 soft_match_std=evaluator.soft_match_std,
                 headers=prompt_headers,
             )
-            run_metrics = format_split_metrics(split, prompt_headers, run_metrics)
+            run_metrics = format_split_metrics(features, prompt_headers, run_metrics)
             run_headers.extend(prompt_headers.values())
 
         mean_headers = prepare_accuracy_headers("mean")
@@ -310,7 +312,7 @@ class DataSaver:
         self.save_output(
             data=list(run_metrics.values()),
             headers=run_headers,
-            file_name=self.run_path / f"{split.name}_accuracies.csv",
+            file_name=self.run_path / f"{split_name}_accuracies.csv",
         )
 
     @staticmethod

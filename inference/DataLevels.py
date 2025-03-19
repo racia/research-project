@@ -7,13 +7,10 @@ from numpy import ndarray
 
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
-from inference.utils import *
-from interpretability.utils import (
-    InterpretabilityResult as InterResult,
-    InterpretabilityResult,
-)
+from interpretability.utils import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
 from settings.utils import structure_part
+from utils import *
 
 stats = Statistics()
 
@@ -279,7 +276,7 @@ class SamplePart:
         model_output: str,
         answer: str,
         reasoning: str,
-        interpretability: InterpretabilityResult,
+        interpretability: InterResult,
         after: bool = True,
     ) -> None:
         """

@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 
 import torch
 
-from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
+from evaluation.Evaluator import AnswerEvaluator
 from inference.Chat import Chat, Source
 from inference.DataLevels import SamplePart, Task, Sample
 from inference.Prompt import Prompt
@@ -132,8 +132,7 @@ class Setting(ABC):
         :return: results for the task in a list of dicts with each dict representing
                  one call to the model and will end up as one row of the table
         """
-        task_evaluator = MetricEvaluator(level="task")
-        task = Task(task_id=task_id, evaluator=task_evaluator)
+        task = Task(task_id=task_id)
 
         # 1. Iterate through samples
         for sample_id_, sample_parts in task_data.items():

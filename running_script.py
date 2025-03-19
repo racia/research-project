@@ -412,7 +412,8 @@ def run_setting(cfg: DictConfig) -> None:
                 saver.save_run_accuracy(
                     task_ids=loader.tasks,
                     split_evaluators=run_evaluators["before"][split],
-                    split=split,
+                    features=split.features_before,
+                    split_name=split.name,
                 )
                 plotter.result_path = saver.run_path
                 plotter.plot_accuracies(
@@ -432,7 +433,8 @@ def run_setting(cfg: DictConfig) -> None:
             saver.save_run_accuracy(
                 task_ids=loader.tasks,
                 split_evaluators=run_evaluators["after"][split],
-                split=split,
+                features=split.features_after,
+                split_name=split.name,
             )
             plotter.result_path = saver.run_path
             plotter.plot_accuracies(
