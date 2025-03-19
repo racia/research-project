@@ -12,6 +12,7 @@ from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.config import Enumerate, Wrapper
+from settings.utils import parse_output
 
 
 class Setting(ABC):
@@ -221,10 +222,19 @@ class Setting(ABC):
                     source=Source.assistant,
                 )
 
-                if self.multi_system and self.interpretability:
-                    current_part.interpretability_before = (
-                        self.interpretability.get_attention(current_part, chat=chat)
-                    )
+                interpretability_before = (
+                    self.interpretability.get_attention(current_part, chat=chat)
+                    if self.multi_system and self.interpretability
+                    else None
+                )
+                answer, reasoning = parse_output(output=decoded_output)
+                current_part.set_output(
+                    decoded_output,
+                    answer,
+                    reasoning,
+                    interpretability_before,
+                    after=False,
+                )
 
                 # 7. Applying the changes that are specific to each setting
                 with torch.no_grad():
@@ -232,14 +242,17 @@ class Setting(ABC):
                         decoded_output=decoded_output
                     )
 
-                current_part.set_output(decoded_output, answer, reasoning)
                 sample.add_part(current_part)
 
                 # 8. Call interpretability attention score method
-                if self.interpretability:
-                    current_part.interpretability = self.interpretability.get_attention(
-                        current_part, chat=chat
-                    )
+                interpretability_after = (
+                    self.interpretability.get_attention(current_part, chat=chat)
+                    if self.interpretability
+                    else None
+                )
+                current_part.set_output(
+                    decoded_output, answer, reasoning, interpretability_after
+                )
 
             sample.print_sample_predictions()
 

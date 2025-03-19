@@ -8,7 +8,10 @@ from numpy import ndarray
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
 from inference.utils import *
-from interpretability.utils import InterpretabilityResult as InterResult
+from interpretability.utils import (
+    InterpretabilityResult as InterResult,
+    InterpretabilityResult,
+)
 from settings.config import Enumerate, Wrapper
 from settings.utils import structure_part
 
@@ -272,7 +275,12 @@ class SamplePart:
         return f"<SamplePart: id={self.id_}, task_id={self.task_id}, sample_id={self.sample_id}, part_id={self.part_id}>"
 
     def set_output(
-        self, model_output: str, answer: str, reasoning: str, after: bool = True
+        self,
+        model_output: str,
+        answer: str,
+        reasoning: str,
+        interpretability: InterpretabilityResult,
+        after: bool = True,
     ) -> None:
         """
         Set the output of the model.
@@ -280,7 +288,8 @@ class SamplePart:
         :param model_output: the output of the model
         :param answer: the answer to the question
         :param reasoning: the reasoning for the answer
-        :param after: whether the output is after the the setting was applied to the model's output
+        :param interpretability: the interpretability result
+        :param after: whether the output is after the setting was applied to the model's output
 
         :return: None
         """
@@ -294,6 +303,7 @@ class SamplePart:
                 answer, self.golden_answer
             )
             # TODO: add the score for reasoning
+            self.result_before.interpretability = interpretability
         else:
             self.result_after = Results(
                 model_output=model_output,
@@ -304,6 +314,7 @@ class SamplePart:
             self.result_after.answer_correct = stats.are_identical(
                 answer, self.golden_answer
             )
+            self.result_after.interpretability = interpretability
 
     def get_result(self) -> dict[str, int | str]:
         """
