@@ -10,7 +10,7 @@ from evaluation.Statistics import Statistics
 from interpretability.utils import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
 from settings.utils import structure_part
-from utils import *
+from inference.utils import *
 
 stats = Statistics()
 
