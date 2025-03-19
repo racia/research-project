@@ -123,29 +123,13 @@ class Chat:
         :return: tensor of input tokens
         """
         input_tokens_left = max_length - max_new_tokens
-        # TODO: Our case: add_special_tokens = True
-        # system_prompt_ids = tokenizer.encode(self.messages[0]["original_content"])
-        # max_history_len = input_tokens_left - len(system_prompt_ids)
-
-        # take all the messages except the system prompt backwards if we go through all the messages
-        # messages = (
-        #     chat_part[1:]
-        #     if chat_part and chat_part[0]["role"] == Source.system
-        #     else chat_part
-        # )
 
         history_ids = []
-        for message in chat_part:
+        for message in chat_part if chat_part else self.messages:
             message_ids = [generation_token(tokenizer, message["role"])]
 
-            message_ids.extend(
-                tokenizer.encode(
-                    message[
-                        "original_content" if message["role"] == "system" else "content"
-                    ]
-                )
-            )
-
+            message_ids.extend(tokenizer.encode(message["original_content"], add_special_tokens=False))
+            
             if len(history_ids) + len(message_ids) <= input_tokens_left:
                 history_ids += message_ids
             elif message["role"] == "assistant":
@@ -158,4 +142,4 @@ class Chat:
 
         # take all the tokens that could fit
         # input_tokens = system_prompt_ids + history_ids[-input_tokens_left:]
-        return torch.LongTensor([history_ids[-input_tokens_left - 1 :]])
+        return torch.LongTensor([history_ids[-input_tokens_left:]])

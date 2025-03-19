@@ -9,7 +9,7 @@ from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
-from settings.config import Mode, Wrapper
+from settings.config import Wrapper
 from settings.utils import Enumerate, parse_output
 
 
@@ -25,13 +25,13 @@ class SpeculativeDecoding(Setting):
         to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
+        interpretability: Interpretability,
         init_prompt: Prompt = None,
         eval_prompt: Prompt = None,
         resume_prompt: Prompt = None,
         samples_per_task: int = 5,
         multi_system: bool = True,
         wrapper: Wrapper = None,
-        interpretability: Interpretability = None,
     ):
         """
         Initialize the speculative decoding setting.
@@ -47,7 +47,6 @@ class SpeculativeDecoding(Setting):
         :param eval_prompt: the evaluation prompt for the teacher
         :param resume_prompt: the resume prompt for the student
         :param interpretability: optional interpretability instance
-        :param mode: The model mode
         """
         super().__init__(
             model=student,

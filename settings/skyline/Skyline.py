@@ -4,7 +4,7 @@ from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.baseline.Baseline import Baseline
-from settings.config import Enumerate, Mode, Wrapper
+from settings.config import Enumerate, Wrapper
 
 
 class Skyline(Baseline):
@@ -18,11 +18,10 @@ class Skyline(Baseline):
         to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
+        interpretability: Interpretability,
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
         wrapper: Wrapper = None,
-        interpretability: Interpretability = None,
-        mode: Mode = "eval"
     ):
         """
         Class Skyline manages the experiment with the big model. It is a subclass of Baseline, as the needs are similar.
@@ -35,7 +34,6 @@ class Skyline(Baseline):
         :param init_prompt: system prompt to start conversations
         :param wrapper: wrapper for the model
         :param interpretability: optional interpretability instance
-        :param mode: The model mode
         """
 
         super().__init__(

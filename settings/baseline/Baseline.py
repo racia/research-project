@@ -6,7 +6,7 @@ from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
-from settings.config import Mode, Wrapper
+from settings.config import Wrapper
 from settings.utils import Enumerate
 
 
@@ -21,10 +21,10 @@ class Baseline(Setting):
         to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
+        interpretability: Interpretability,
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
         wrapper: Wrapper = None,
-        interpretability: Interpretability = None,
     ):
         """
         Baseline class manages model runs and data flows around it.

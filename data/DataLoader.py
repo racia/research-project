@@ -7,7 +7,6 @@ from pathlib import Path
 from typing import Union
 from data.DataProcessor import DataProcessor
 from settings.config import DataSplits
-from evaluation.Scenery import Scenery
 
 
 class DataLoader:
@@ -173,20 +172,19 @@ class DataLoader:
         return data
 
 
-    def load_scenery(self, word_types: list[str]) -> list:
+    def load_scenery(self, word_types: tuple[str, ...] = ("attr", "loc", "nh-subj", "obj", "part", "rel", "subj-attr", "subj", "other", "base_phrasal_verbs")) -> set:
         """
-        Get scenery words from the scenery_words folder.
+        Get scenery words from the scenery_words folder and the Scenery base phrases verbs.
         Additionally adds Scenery base phrasal words.
 
-        :return: list of scenery words for filtering attention scores
+        :return: set of scenery words for filtering attention scores
         """
-        scenery_words = []
-        for entry in os.scandir("interpretability/scenery_words"):
+        scenery_words = set()
+        for entry in os.scandir("data/scenery_words"):
             word_type = entry.name.strip(".txt")
             if word_type in word_types:
                 with open(entry.path, "r", encoding="UTF-8") as f:
-                    scenery_words.extend(f.read().splitlines())
-        scenery_words.extend(Scenery.base_phrasal_verbs)
+                    scenery_words.update(f.read().splitlines())
         return scenery_words
 
 

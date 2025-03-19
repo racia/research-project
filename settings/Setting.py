@@ -98,10 +98,10 @@ class Setting(ABC):
         4. create and format the prompt
         5. call the model and yield the response
         6. add the model's output to conversation
-        7. parse output
+        7. applying the changes that are specific to each setting
         8. call interpretability attention score method
-        9. report the results for a sample: answers and accuracy
-        10. report the results for the task:  accuracy
+        9. initially evaluate the result for a sample and aggregate results
+        10. report the results for the task and aggregate results
 
         :param task_id: task id corresponding to task name in original dataset
         :param task_data: task data of the following structure:
@@ -221,6 +221,7 @@ class Setting(ABC):
                     source=Source.assistant,
                 )
 
+                # 7. Applying the changes that are specific to each setting 
                 with torch.no_grad():
                     answer, reasoning = self.apply_setting(
                         decoded_output=decoded_output
@@ -229,7 +230,7 @@ class Setting(ABC):
                 current_part.set_output(decoded_output, answer, reasoning)
                 sample.add_part(current_part)
 
-                # 7. Call interpretability attention score method
+                # 8. Call interpretability attention score method
                 if self.interpretability:
                     current_part.interpretability = self.interpretability.get_attention(
                         current_part, chat=chat
@@ -237,6 +238,7 @@ class Setting(ABC):
 
             sample.print_sample_predictions()
 
+            # 9. Initially evaluate the result for a sample and aggregate results
             exact_match_acc, soft_match_acc = sample_eval.calculate_accuracies()
             sample_eval.print_accuracies(
                 id_=sample_id,
@@ -246,7 +248,7 @@ class Setting(ABC):
 
             task.add_sample(sample)
 
-        # 10. Report the results for the task: accuracy
+        # 10. Report the results for the task and aggregate results
         print("\n- TASK RESULTS -", end="\n\n")
         task_evaluator.print_accuracies(id_=task_id)
         task.set_results()

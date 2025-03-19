@@ -107,12 +107,15 @@ def run_setting(cfg: DictConfig) -> None:
     else:
         raise ValueError("No base model is provided in the config.")
 
+    # Load scenery words
+    scenery_words = loader.load_scenery()
+
     interpretability = (
         Interpretability(
             model=model,
             plotter=plotter,
             save_heatmaps=cfg.results.save_heatmaps,
-            scenery_words = loader.load_scenery(["attr", "loc", "nh-subj", "obj", "part", "rel", "subj-attr", "subj"])
+            scenery_words=scenery_words,
         )
         if cfg.setting.interpretability
         else None
