@@ -111,10 +111,11 @@ class AnswerEvaluator(Evaluator):
         """
         super().__init__(level)
 
-        self.golden_answers: list[str] = []
         self.pred_answers: list[str] = []
-        self.silver_reasonings: list[str] = []
         self.pred_reasonings: list[str] = []
+
+        self.golden_answers: list[str] = []
+        self.silver_reasonings: list[str] = []
 
     def calculate_accuracies(self) -> tuple[float, float]:
         """

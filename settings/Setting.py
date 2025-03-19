@@ -221,7 +221,12 @@ class Setting(ABC):
                     source=Source.assistant,
                 )
 
-                # 7. Applying the changes that are specific to each setting 
+                if self.multi_system and self.interpretability:
+                    current_part.interpretability_before = (
+                        self.interpretability.get_attention(current_part, chat=chat)
+                    )
+
+                # 7. Applying the changes that are specific to each setting
                 with torch.no_grad():
                     answer, reasoning = self.apply_setting(
                         decoded_output=decoded_output
@@ -239,8 +244,23 @@ class Setting(ABC):
             sample.print_sample_predictions()
 
             # 9. Initially evaluate the result for a sample and aggregate results
+            if self.multi_system:
+                print("Before the setting was applied:")
+                exact_match_acc_before, soft_match_acc_before = (
+                    sample.evaluator_before.calculate_accuracies()
+                )
+                sample.evaluator_before.print_accuracies(
+                    id_=sample_id,
+                    exact_match_acc=exact_match_acc_before,
+                    soft_match_acc=soft_match_acc_before,
+                )
             exact_match_acc, soft_match_acc = sample_eval.calculate_accuracies()
-            sample_eval.print_accuracies(
+            sample.evaluator_after.print_accuracies(
+                id_=sample_id,
+                exact_match_acc=exact_match_acc,
+                soft_match_acc=soft_match_acc,
+            )
+            sample.evaluator_after.print_accuracies(
                 id_=sample_id,
                 exact_match_acc=exact_match_acc,
                 soft_match_acc=soft_match_acc,
@@ -250,7 +270,10 @@ class Setting(ABC):
 
         # 10. Report the results for the task and aggregate results
         print("\n- TASK RESULTS -", end="\n\n")
-        task_evaluator.print_accuracies(id_=task_id)
+        if self.multi_system:
+            print("Before the setting was applied:")
+            task.evaluator_before.print_accuracies(id_=task_id)
+        task.evaluator_after.print_accuracies(id_=task_id)
         task.set_results()
 
         print(f"The work on task {task_id} is finished successfully")
