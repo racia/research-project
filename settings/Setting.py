@@ -40,18 +40,18 @@ class Setting(ABC):
         """
         self.model = model
 
-        self.init_prompt = init_prompt
-        self.to_enumerate = to_enumerate
+        self.init_prompt: Prompt = init_prompt
+        self.to_enumerate: Enumerate = to_enumerate
 
-        self.question_id = 0
-        self.total_tasks = total_tasks
-        self.total_parts = total_parts
-        self.samples_per_task = samples_per_task
-        self.wrapper = wrapper
+        self.question_id: int = 0
+        self.total_tasks: int = total_tasks
+        self.total_parts: int = total_parts
+        self.samples_per_task: int = samples_per_task
+        self.wrapper: Wrapper = wrapper
 
-        self.multi_system = multi_system
+        self.multi_system: bool = multi_system
 
-        self.interpretability = interpretability
+        self.interpretability: Interpretability = interpretability
 
     @abstractmethod
     def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:

@@ -21,10 +21,10 @@ class DataLoader:
         The dataloader handles the reading and loading of data, as well as the mapping of tasks to
         their respective data.
         """
-        self.number_of_parts = 0
-        self.samples_per_task = samples_per_task
-        self.number_of_tasks = 0
-        self.tasks = []
+        self.number_of_parts: int = 0
+        self.samples_per_task: int = samples_per_task
+        self.number_of_tasks: int = 0
+        self.tasks: list[int] = []
 
     @staticmethod
     def get_task_mapping(path: Path) -> dict[int, list[Path]]:

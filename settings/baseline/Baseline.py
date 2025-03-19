@@ -18,7 +18,7 @@ class Baseline(Setting):
     def __init__(
         self,
         model: Model,
-        to_enumerate: dict[Enumerate, bool],
+        to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
         samples_per_task: int = 5,
@@ -45,8 +45,8 @@ class Baseline(Setting):
             to_enumerate=to_enumerate,
             wrapper=wrapper,
         )
-        self.question_id = 0
-        self.interpretability = interpretability
+        self.question_id: int = 0
+        self.interpretability: Interpretability = interpretability
 
     def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
         """

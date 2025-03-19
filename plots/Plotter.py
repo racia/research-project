@@ -26,8 +26,8 @@ class Plotter:
 
         self.results_path: Path = results_path
 
-        self.plot_counter_task = 0
-        self.plot_counter_prompt = 0
+        self.plot_counter_task: int = 0
+        self.plot_counter_prompt: int = 0
 
     def _save_plot(
         self,

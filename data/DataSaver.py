@@ -16,10 +16,7 @@ class DataSaver:
     This class handles everything related to saving data.
     """
 
-    def __init__(
-        self,
-        save_to: str,
-    ) -> None:
+    def __init__(self, save_to: str) -> None:
         """
         Initialize the DataSaver.
         The datasaver handles everything related to saving data.
@@ -28,8 +25,8 @@ class DataSaver:
         """
         self.old_stdout: TextIO = sys.stdout
         # self.results_path is updated in create_result_paths
-        self.results_path = Path(save_to)
-        self.run_path = Path(save_to)
+        self.results_path: Path = Path(save_to)
+        self.run_path: Path = Path(save_to)
 
     def create_result_paths(
         self,
@@ -156,7 +153,8 @@ class DataSaver:
                 file_path=results_path,
             )
 
-    def save_with_separator(self, file_path: Path, data: Iterable, sep="\n") -> None:
+    @staticmethod
+    def save_with_separator(file_path: Path, data: Iterable, sep="\n") -> None:
         """
         Save the separator between the data.
 

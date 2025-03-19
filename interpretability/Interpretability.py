@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import numpy as np
 import torch
+
 from inference.Chat import Chat, Source
 from inference.DataLevels import SamplePart
+from interpretability.utils import InterpretabilityResult
 from plots.Plotter import Plotter
 from settings.Model import Model
 from interpretability.utils import InterpretabilityResult
@@ -14,13 +16,18 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 class Interpretability:
     def __init__(
-        self, model: Model = None, plotter: Plotter = None, save_heatmaps: bool = False, scenery_words: list[str] = None
+        self,
+        model: Model = None,
+        plotter: Plotter = None,
+        save_heatmaps: bool = False,
+        scenery_words: list[str] = None,
     ):
         """
         Interpretability class
         :param model: instance of Model
         :param plotter: instance of Plotter
         :param save_heatmaps: if to create and save heatmaps
+        :param scenery_words: list of scenery words
         """
         self.model: AutoModelForCausalLM = model.model
         self.tokenizer: AutoTokenizer = model.tokenizer
@@ -29,8 +36,7 @@ class Interpretability:
         self.plotter: Plotter = plotter
         self.save_heatmaps: bool = save_heatmaps
 
-        self.scenery_words = scenery_words
-
+        self.scenery_words: list[str] = scenery_words
 
     def get_stop_word_idxs(
         self, attn_scores: np.ndarray, part_task_out_ids: torch.LongTensor
@@ -82,25 +88,22 @@ class Interpretability:
         # Normalize the attention scores by the sum of all token attention scores
         attn_scores = attn_scores / attn_scores.sum(axis=-1, keepdims=True)
         return attn_scores
-    
-    
+
     def filter_attention_scores(self, attention_scores: np.ndarray, part_task_out_ids: torch.LongTensor) -> tuple[np.ndarray, list]:
         """
-        Filter context and question attention scores for scenery words 
+        Filter context and question attention scores for scenery words
         by their indices in each row of the output attention scores.
         Removes message role tokens.
-        
+
         :param attention_scores: The attention scores
         :param part_task_out_ids: The input ids of last part task and model output
         :return: filtered attention scores with the according attention_indices
         """
-        
         stop_words_indices = self.get_stop_word_idxs(attention_scores, part_task_out_ids)
         attention_indices = list(
             filter(lambda x: x not in stop_words_indices, range(attention_scores.shape[1]))
         )
         return attention_scores[:, attention_indices], attention_indices
-
 
     def get_attention(self, part: SamplePart, chat: Chat) -> InterpretabilityResult:
         """
@@ -114,7 +117,6 @@ class Interpretability:
         :param chat: Chat history as list of messages
         :return: attention scores, tokenized x and y tokens
         """
-        
         part_task_ids = chat.convert_into_ids(
             chat_part=[chat.messages[-2]],
             max_new_tokens=self.max_new_tokens,
@@ -124,7 +126,8 @@ class Interpretability:
         print(part_task_ids, part_task_len)
 
         prev_hist_ids = chat.convert_into_ids(
-            chat_part=chat.messages[:-3], # take everything except last 3
+            # take everything except last 3
+            chat_part=chat.messages[:-3],
             max_new_tokens=self.max_new_tokens,
             tokenizer=self.tokenizer,
         )
@@ -145,8 +148,8 @@ class Interpretability:
             output_attentions=True,
             output_hidden_states=False,
         )
-        
-         # TODO: this now removes all the ids apart from the current part
+
+        # TODO: this now removes all the ids apart from the current part
         part_task_out_ids = part_task_out_ids[0, :].detach().cpu().numpy()
 
         # Obtain attention scores from model output
@@ -155,7 +158,7 @@ class Interpretability:
             part_task_len=part_task_len,
             part_task_out_len=part_task_out_len,
         )
-        
+
         attention_scores, attention_indices = self.filter_attention_scores(attention_scores, part_task_out_ids)
 
         # Decode the task tokens
@@ -166,7 +169,7 @@ class Interpretability:
             part_task_out_ids[
                 part_task_len:part_task_out_len
             ]  # TODO: can we remove part_task_out_len from here?
-        )        
+        )
 
         if self.save_heatmaps:
             self.plotter.draw_heat(

@@ -15,8 +15,8 @@ class DataProcessor:
         """
         Preprocess or postprocess the data.
         """
-        self.part_counter = 0
-        self.sample_counter = 0
+        self.part_counter: int = 0
+        self.sample_counter: int = 0
 
     def process_data(self, data: dict[int, dict], samples_per_task: int = None) -> dict:
         """

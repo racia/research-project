@@ -17,9 +17,9 @@ class Source:
     This class handles the roles of the participants in the conversation.
     """
 
-    system = "system"
-    user = "user"
-    assistant = "assistant"
+    system: str = "system"
+    user: str = "user"
+    assistant: str = "assistant"
 
     options = (system, user, assistant)
 
@@ -158,4 +158,4 @@ class Chat:
 
         # take all the tokens that could fit
         # input_tokens = system_prompt_ids + history_ids[-input_tokens_left:]
-        return torch.LongTensor([history_ids[-input_tokens_left-1:]])
+        return torch.LongTensor([history_ids[-input_tokens_left - 1 :]])
