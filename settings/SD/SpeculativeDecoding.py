@@ -440,8 +440,6 @@ class SpeculativeDecoding(Setting):
         # save the initial student output as a fallback solution
         self.initial_student_output = decoded_output
 
-        self.teacher.curr_sample_part = self.student.curr_sample_part
-
         self.set_teacher_system_prompt(chat=chat)
 
         print(

@@ -5,7 +5,9 @@ import os
 from collections import defaultdict
 from pathlib import Path
 from typing import Union
+
 from data.DataProcessor import DataProcessor
+from data.utils import convert_true
 from settings.config import DataSplits
 
 
@@ -143,36 +145,47 @@ class DataLoader:
         :param list_output: if the output should be a list of dictionaries or a dictionary of lists
         :return: dictionary with the task, accuracy, and soft match accuracy lists
         """
-        data = defaultdict(list)
         with open(Path(result_file_path), "rt", encoding="UTF-8", errors="ignore") as f:
             reader = csv.DictReader(f, delimiter="\t")
+            data = [] if list_output else defaultdict(list)
+            printed = False
             for row in reader:
+                # to make sure we are reading a row containing data
                 if row["task_id"].isdigit():
                     if list_output:
-                        task_id = int(row["task_id"])
                         row_ = {}
-                        for k, v in row.items():
-                            if k in headers and v:
-                                if v.isdigit():
-                                    row_[k] = int(v)
-                                elif v.replace(".", "", 1).isdigit():
-                                    row_[k] = float(v)
-                                else:
-                                    row_[k] = v
-                        data[task_id].append(row_)
+                        for header, value in row.items():
+                            if header in headers:
+                                row_[header] = convert_true(value)
+                            else:
+                                if not printed:
+                                    print(f"Header {header} not found in headers.")
+                        data.append(row_)
+                        printed = True
                     else:
                         for header in headers:
+                            if header not in row.keys():
+                                print(f"Header {header} not found in row.")
+                                continue
                             value = row[header]
-                            if value.isdigit():
-                                data[header].append(int(value))
-                            elif value.replace(".", "", 1).isdigit():
-                                data[header].append(float(value))
-                            else:
-                                data[header].append(row[header])
+                            data[header].append(convert_true(value))
         return data
 
-
-    def load_scenery(self, word_types: tuple[str, ...] = ("attr", "loc", "nh-subj", "obj", "part", "rel", "subj-attr", "subj", "other", "base_phrasal_verbs")) -> set:
+    def load_scenery(
+        self,
+        word_types: tuple[str, ...] = (
+            "attr",
+            "loc",
+            "nh-subj",
+            "obj",
+            "part",
+            "rel",
+            "subj-attr",
+            "subj",
+            "other",
+            "base_phrasal_verbs",
+        ),
+    ) -> set:
         """
         Get scenery words from the scenery_words folder and the Scenery base phrases verbs.
         Additionally adds Scenery base phrasal words.

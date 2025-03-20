@@ -7,10 +7,10 @@ from numpy import ndarray
 
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
+from inference.utils import *
 from interpretability.utils import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
 from settings.utils import structure_part
-from inference.utils import *
 
 stats = Statistics()
 
@@ -21,10 +21,11 @@ class Features:
     This class handles the tracking of features.
     """
 
-    there: int
-    verbs: int
-    pronouns: int
-    not_mentioned: int
+    def __init__(self, there: int, verbs: int, pronouns: int, not_mentioned: int):
+        self.there: int = there
+        self.verbs: int = verbs
+        self.pronouns: int = pronouns
+        self.not_mentioned: int = not_mentioned
 
     def __add__(self, other: Features) -> Features:
         """
@@ -81,20 +82,24 @@ class Results:
     """
 
     def __init__(
-        self, model_output: str, answer: str, reasoning: str, after: bool = True
+        self,
+        model_output: str,
+        model_answer: str,
+        model_reasoning: str,
+        after: bool = True,
     ):
         """
         Initialize the Results class.
 
         :param model_output: the output of the model
-        :param answer: the answer to the question
-        :param reasoning: the reasoning for the answer
+        :param model_answer: the answer to the question
+        :param model_reasoning: the reasoning for the answer
         """
         self.after = after
 
         self.model_output: str = model_output
-        self.model_answer: str = answer
-        self.model_reasoning: str = reasoning
+        self.model_answer: str = model_answer
+        self.model_reasoning: str = model_reasoning
 
         self.answer_correct: bool = None
         self.reasoning_correct: bool = None
@@ -115,6 +120,9 @@ class Results:
         ]
 
         self.dict: dict = self.get_result()
+
+    def __repr__(self):
+        return f"<Results: {self.dict}>"
 
     def inspect_answer(self) -> Features:
         """
@@ -159,7 +167,7 @@ class SamplePart:
     """
 
     result_attrs: list[str] = [
-        "id_",
+        "id",
         "task_id",
         "sample_id",
         "part_id",
@@ -174,48 +182,78 @@ class SamplePart:
         task_id: int,
         sample_id: int,
         part_id: int,
-        raw: dict,
         golden_answer: str,
         silver_reasoning=None,
+        raw: dict = None,
+        task: str = None,
         wrapper: Wrapper = None,
         to_enumerate: Enumerate = None,
     ):
+        """
+        Initialize the part.
+
+        :param id_: the id of the part
+        :param task_id: the id of the task
+        :param sample_id: the id of the sample
+        :param part_id: the id of the part
+        :param golden_answer: the golden answer
+        :param silver_reasoning: the silver reasoning
+        :param raw: the raw data of the part to format it into a task (used only for inference)
+        :param task: the task for the model (used only for evaluation)
+        :param wrapper: the wrapper for the task
+        :param to_enumerate: if to enumerate the context sentences and the question
+        """
         self.id_: int = id_
         self.task_id: int = task_id
         self.sample_id: int = sample_id
         self.part_id: int = part_id
 
-        self.raw: dict = raw
-        self.wrapper: Wrapper = wrapper
-        self.to_enumerate: Enumerate = to_enumerate
+        if raw and task or not (raw or task):
+            raise ValueError(
+                "Either 'raw' or 'task' should be provided, not both or neither."
+            )
 
-        self.structured_context, self.structured_question = structure_part(
-            self.raw, self.to_enumerate
-        )
-        self.unwrapped_task: str = "\n".join(
-            (self.structured_context, self.structured_question)
-        ).strip()
+        if raw:
+            if not (wrapper and to_enumerate):
+                raise ValueError(
+                    "'Wrapper' and 'to_enumerate' should be provided when creating tasks from scratch."
+                )
 
-        wrapped_context, wrapped_question, reasoning_wrapper, answer_wrapper = (
-            self.wrap_part()
-        )
-        self.task: str = "\n".join(
-            (wrapped_context, wrapped_question, reasoning_wrapper, answer_wrapper)
-        ).strip()
+            self.raw: dict = raw
+
+            self.wrapper: Wrapper = wrapper
+            self.to_enumerate: Enumerate = to_enumerate
+
+            self.structured_context, self.structured_question = structure_part(
+                self.raw, self.to_enumerate
+            )
+            self.unwrapped_task: str = "\n".join(
+                (self.structured_context, self.structured_question)
+            ).strip()
+
+            wrapped_context, wrapped_question, reasoning_wrapper, answer_wrapper = (
+                self.wrap_part()
+            )
+            self.task: str = "\n".join(
+                (wrapped_context, wrapped_question, reasoning_wrapper, answer_wrapper)
+            ).strip()
+
+        elif task:
+            self.task: str = task
 
         self.golden_answer: str = golden_answer
         self.silver_reasoning: str = silver_reasoning
 
         self.result_before: Results = Results(
             model_output="",
-            answer="",
-            reasoning="",
+            model_answer="",
+            model_reasoning="",
             after=False,
         )
         self.result_after: Results = Results(
             model_output="",
-            answer="",
-            reasoning="",
+            model_answer="",
+            model_reasoning="",
             after=True,
         )
 
@@ -293,8 +331,8 @@ class SamplePart:
         if after:
             self.result_before = Results(
                 model_output=model_output,
-                answer=answer,
-                reasoning=reasoning,
+                model_answer=answer,
+                model_reasoning=reasoning,
             )
             self.result_before.answer_correct = stats.are_identical(
                 answer, self.golden_answer
@@ -304,8 +342,8 @@ class SamplePart:
         else:
             self.result_after = Results(
                 model_output=model_output,
-                answer=answer,
-                reasoning=reasoning,
+                model_answer=answer,
+                model_reasoning=reasoning,
                 after=False,
             )
             self.result_after.answer_correct = stats.are_identical(

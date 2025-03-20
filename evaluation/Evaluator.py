@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from evaluation.Metrics import Accuracy, Metric
 from evaluation.Statistics import Statistics
 

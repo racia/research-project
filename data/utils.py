@@ -202,3 +202,20 @@ def calculate_mean_accuracies(
                 {mean_headers["soft_match"]: soft_match_accuracies.get_std()}
             )
     return accuracies_to_save
+
+
+def convert_true(value: str) -> str | int | float:
+    """
+    Convert the value to its correct type.
+
+    :param value: the value to convert
+    :return: the converted value
+    """
+    if value.isdigit():
+        return int(value)
+    elif value.replace(".", "", 1).isdigit():
+        return float(value)
+    elif value:
+        return value
+    else:
+        return ""

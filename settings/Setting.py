@@ -184,7 +184,6 @@ class Setting(ABC):
                     wrapper=self.wrapper,
                     to_enumerate=self.to_enumerate,
                 )
-                self.model.curr_sample_part = current_part
 
                 chat.add_message(part=current_part.task, source=Source.user)
 
@@ -267,7 +266,9 @@ class Setting(ABC):
                     exact_match_acc=exact_match_acc_before,
                     soft_match_acc=soft_match_acc_before,
                 )
-            exact_match_acc, soft_match_acc = sample_eval.calculate_accuracies()
+            exact_match_acc, soft_match_acc = (
+                sample.evaluator_after.calculate_accuracies()
+            )
             sample.evaluator_after.print_accuracies(
                 id_=sample_id,
                 exact_match_acc=exact_match_acc,

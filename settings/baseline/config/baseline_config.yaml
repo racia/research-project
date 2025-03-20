@@ -67,7 +67,7 @@ logging:
 results:
   save_heatmaps: True
   headers:
-    - id
+    - id_
     - task_id
     - sample_id
     - part_id
