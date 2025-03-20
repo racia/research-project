@@ -5,7 +5,6 @@ import os
 from collections import defaultdict
 from pathlib import Path
 from typing import Union
-
 from data.DataProcessor import DataProcessor
 from settings.config import DataSplits
 
@@ -21,10 +20,10 @@ class DataLoader:
         The dataloader handles the reading and loading of data, as well as the mapping of tasks to
         their respective data.
         """
-        self.number_of_parts = 0
-        self.samples_per_task = samples_per_task
-        self.number_of_tasks = 0
-        self.tasks = []
+        self.number_of_parts: int = 0
+        self.samples_per_task: int = samples_per_task
+        self.number_of_tasks: int = 0
+        self.tasks: list[int] = []
 
     @staticmethod
     def get_task_mapping(path: Path) -> dict[int, list[Path]]:
@@ -171,6 +170,22 @@ class DataLoader:
                             else:
                                 data[header].append(row[header])
         return data
+
+
+    def load_scenery(self, word_types: tuple[str, ...] = ("attr", "loc", "nh-subj", "obj", "part", "rel", "subj-attr", "subj", "other", "base_phrasal_verbs")) -> set:
+        """
+        Get scenery words from the scenery_words folder and the Scenery base phrases verbs.
+        Additionally adds Scenery base phrasal words.
+
+        :return: set of scenery words for filtering attention scores
+        """
+        scenery_words = set()
+        for entry in os.scandir("data/scenery_words"):
+            word_type = entry.name.strip(".txt")
+            if word_type in word_types:
+                with open(entry.path, "r", encoding="UTF-8") as f:
+                    scenery_words.update(f.read().splitlines())
+        return scenery_words
 
 
 if __name__ == "__main__":

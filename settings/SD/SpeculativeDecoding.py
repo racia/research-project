@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 import re
-from typing import Any
 
 import torch
 
 from inference.Chat import Chat, Source
 from inference.Prompt import Prompt
+from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
 from settings.config import Wrapper
@@ -22,9 +22,10 @@ class SpeculativeDecoding(Setting):
         self,
         student: Model,
         teacher: Model,
-        to_enumerate: dict[Enumerate, bool],
+        to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
+        interpretability: Interpretability,
         init_prompt: Prompt = None,
         eval_prompt: Prompt = None,
         resume_prompt: Prompt = None,
@@ -45,6 +46,7 @@ class SpeculativeDecoding(Setting):
         :param student: The student model
         :param eval_prompt: the evaluation prompt for the teacher
         :param resume_prompt: the resume prompt for the student
+        :param interpretability: optional interpretability instance
         """
         super().__init__(
             model=student,
@@ -55,15 +57,16 @@ class SpeculativeDecoding(Setting):
             multi_system=multi_system,
             to_enumerate=to_enumerate,
             wrapper=wrapper,
+            interpretability=interpretability,
         )
-        self.teacher = teacher
-        self.student = student
+        self.teacher: Model = teacher
+        self.student: Model = student
         self.tokenizer = student.tokenizer
 
-        self.eval_prompt = eval_prompt
-        self.resume_prompt = resume_prompt
+        self.eval_prompt: Prompt = eval_prompt
+        self.resume_prompt: Prompt = resume_prompt
 
-        self.initial_student_output = None
+        self.initial_student_output: str = ""
 
     def generate_student(self, corrected_in: str, chat: Chat) -> str:
         """
@@ -117,7 +120,7 @@ class SpeculativeDecoding(Setting):
 
     def verify_output(
         self, student_tokens, chat: Chat, k=10, last_err_ix=0, student_str=None
-    ) -> tuple[bool, int | None, Any | None]:
+    ) -> tuple[bool, int | None, str | None]:
         """
         Verify the candidates using the teacher model.
 

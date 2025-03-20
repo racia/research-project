@@ -30,8 +30,14 @@ settings/baseline/init_bl.txt
 settings/baseline/prompts/results/*
 settings/baseline/results/*
 
+# Old baseline
+baseline/
+
 # Results
 results/
+outputs/
+
+# Outputs
 outputs/
 
 # Prompts
@@ -39,3 +45,9 @@ settings/baseline/config/prompt_*_shot*
 
 # Testing scripts
 test*.sh
+
+fine-tuning/
+
+# Other
+inference/prompts/*reasoning*
+*.log

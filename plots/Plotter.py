@@ -2,6 +2,7 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
+import seaborn as sns
 
 from evaluation.Metrics import Accuracy
 
@@ -11,19 +12,22 @@ class Plotter:
     This class plots the data.
     """
 
-    def __init__(self, result_path: Path, color_map: str = None):
+    def __init__(self, results_path: Path, color_map: str = None):
         """
         Initialize the plotter.
+
+        :param results_path: path to save the results
+        :param color_map: color map for the plots
         """
         if color_map is None:
             self.cmap = plt.get_cmap("tab10")
         else:
             self.cmap = plt.get_cmap(color_map)
 
-        self.result_path: Path = result_path
+        self.results_path: Path = results_path
 
-        self.plot_counter_task = 0
-        self.plot_counter_prompt = 0
+        self.plot_counter_task: int = 0
+        self.plot_counter_prompt: int = 0
 
     def _save_plot(
         self,
@@ -47,7 +51,7 @@ class Plotter:
         else:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
-                self.result_path
+                self.results_path
                 / f"{plot_name_add}{label}_per_{x_label.lower()}_no_{self.plot_counter_task}.png",
                 bbox_inches="tight",
             )
@@ -102,6 +106,49 @@ class Plotter:
             )
         else:
             plt.legend(bbox_to_anchor=(1.1, 1.05))
+
+    def draw_heat(
+        self,
+        x: list[str],
+        y: list[str],
+        scores: np.ndarray,
+        task_id: int,
+        sample_id: int,
+        part_id: int,
+    ) -> None:
+        """
+        Draw a heat map with the interpretability attention scores for the current task.
+        (Partly taken from https://arxiv.org/abs/2402.18344)
+        
+        :param x: the current task tokens
+        :param y: the model output tokens
+        :param scores: attention scores
+        :param task_id: task id
+        :param sample_id: sample id
+        :param part_id: part id
+        :return: None
+        """
+        plt.figure(figsize=(12, 6))
+        axis = sns.heatmap(scores, cmap="RdBu_r", center=0)
+        x_ticks = [i + 0.5 for i in range(len(x))]
+        y_ticks = [i + 0.5 for i in range(len(y))]
+
+        plt.xlabel("Task Tokens", fontdict={"size": 10})
+        plt.ylabel("Model Output Tokens", fontdict={"size": 10})
+
+        plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=30, ha="right")
+        plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
+
+        plt.subplots_adjust(left=0.15, right=0.99, top=0.98, bottom=0.15)
+
+        cbar = axis.collections[0].colorbar
+        cbar.ax.tick_params(labelsize=5)
+
+        plot_subdirectory = self.results_path / "interpretability" / "plots"
+        Path.mkdir(plot_subdirectory, exist_ok=True, parents=True)
+        plt.savefig(plot_subdirectory / f"attn_map-{task_id}-{sample_id}-{part_id}.pdf")
+
+        plt.close()
 
     def plot_acc_per_task(
         self,

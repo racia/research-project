@@ -5,12 +5,14 @@ from abc import ABC, abstractmethod
 
 import torch
 
-from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
+from evaluation.Evaluator import AnswerEvaluator
 from inference.Chat import Chat, Source
 from inference.DataLevels import SamplePart, Task, Sample
 from inference.Prompt import Prompt
+from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.config import Enumerate, Wrapper
+from settings.utils import parse_output
 
 
 class Setting(ABC):
@@ -29,6 +31,7 @@ class Setting(ABC):
         init_prompt: Prompt = None,
         multi_system: bool = False,
         wrapper: Wrapper = None,
+        interpretability: Interpretability = None,
     ):
         """
          The setting class is an abstract class for all settings.
@@ -38,16 +41,18 @@ class Setting(ABC):
         """
         self.model = model
 
-        self.init_prompt = init_prompt
-        self.to_enumerate = to_enumerate
+        self.init_prompt: Prompt = init_prompt
+        self.to_enumerate: Enumerate = to_enumerate
 
-        self.question_id = 0
-        self.total_tasks = total_tasks
-        self.total_parts = total_parts
-        self.samples_per_task = samples_per_task
-        self.wrapper = wrapper
+        self.question_id: int = 0
+        self.total_tasks: int = total_tasks
+        self.total_parts: int = total_parts
+        self.samples_per_task: int = samples_per_task
+        self.wrapper: Wrapper = wrapper
 
-        self.multi_system = multi_system
+        self.multi_system: bool = multi_system
+
+        self.interpretability: Interpretability = interpretability
 
     @abstractmethod
     def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
@@ -94,8 +99,10 @@ class Setting(ABC):
         4. create and format the prompt
         5. call the model and yield the response
         6. add the model's output to conversation
-        7. report the results for a sample: answers and accuracy
-        8. report the results for the task:  accuracy
+        7. applying the changes that are specific to each setting
+        8. call interpretability attention score method
+        9. initially evaluate the result for a sample and aggregate results
+        10. report the results for the task and aggregate results
 
         :param task_id: task id corresponding to task name in original dataset
         :param task_data: task data of the following structure:
@@ -125,8 +132,7 @@ class Setting(ABC):
         :return: results for the task in a list of dicts with each dict representing
                  one call to the model and will end up as one row of the table
         """
-        task_evaluator = MetricEvaluator(level="task")
-        task = Task(task_id=task_id, evaluator=task_evaluator)
+        task = Task(task_id=task_id)
 
         # 1. Iterate through samples
         for sample_id_, sample_parts in task_data.items():
@@ -142,9 +148,7 @@ class Setting(ABC):
             sample = Sample(task_id=task_id, sample_id=sample_id, evaluator=sample_eval)
 
             # each sample is a new conversation
-            chat = Chat(
-                system_prompt=self.init_prompt.text, multi_system=self.multi_system
-            )
+            chat = Chat(system_prompt=self.init_prompt, multi_system=self.multi_system)
 
             # 2. Iterate through parts (one question at a time)
             for sample_part, y_true in zip(sample_parts, sample_eval.golden_answers):
@@ -170,7 +174,6 @@ class Setting(ABC):
                     end="\n\n\n",
                     flush=True,
                 )
-
                 current_part = SamplePart(
                     id_=self.question_id,
                     task_id=task_id,
@@ -179,9 +182,13 @@ class Setting(ABC):
                     raw=sample_part,
                     golden_answer=y_true,
                     wrapper=self.wrapper,
-                    to_enumerate=self.to_enumerate
+                    to_enumerate=self.to_enumerate,
                 )
                 self.model.curr_sample_part = current_part
+
+                chat.add_message(part=current_part.task, source=Source.user)
+
+                formatted_prompt = self.prepare_prompt(chat=chat)
 
                 print(
                     (
@@ -189,44 +196,84 @@ class Setting(ABC):
                         if self.multi_system
                         else f"Formatted model prompt:"
                     ),
-                    current_part.task,
+                    formatted_prompt,
                     sep="\n",
                     end="\n",
                 )
-
-                chat.add_message(part=current_part.task, source=Source.user)
-
-                formatted_prompt = self.prepare_prompt(chat=chat)
 
                 # 5. Call the model and yield the response
                 decoded_output = self.model.call(prompt=formatted_prompt)
                 print(
                     (
-                        f"Formatted student prompt: \n"
+                        f"The output of the student:"
                         if self.multi_system
-                        else f"Formatted model prompt: \n"
+                        else f"The output of the model:"
                     ),
                     decoded_output,
                     "\n ------------- ",
                     end="\n\n\n",
+                    sep="\n",
                     flush=True,
                 )
 
                 # 6. Add the model's output to conversation
-                chat.add_message(part=decoded_output, source=Source.assistant)
+                chat.add_message(
+                    part=decoded_output,
+                    source=Source.assistant,
+                )
 
+                interpretability_before = (
+                    self.interpretability.get_attention(current_part, chat=chat)
+                    if self.multi_system and self.interpretability
+                    else None
+                )
+                answer, reasoning = parse_output(output=decoded_output)
+                current_part.set_output(
+                    decoded_output,
+                    answer,
+                    reasoning,
+                    interpretability_before,
+                    after=False,
+                )
+
+                # 7. Applying the changes that are specific to each setting
                 with torch.no_grad():
                     answer, reasoning = self.apply_setting(
-                        decoded_output=decoded_output
+                        decoded_output=decoded_output, chat=chat
                     )
 
-                current_part.set_output(decoded_output, answer, reasoning)
                 sample.add_part(current_part)
+
+                # 8. Call interpretability attention score method
+                interpretability_after = (
+                    self.interpretability.get_attention(current_part, chat=chat)
+                    if self.interpretability
+                    else None
+                )
+                current_part.set_output(
+                    decoded_output, answer, reasoning, interpretability_after
+                )
 
             sample.print_sample_predictions()
 
+            # 9. Initially evaluate the result for a sample and aggregate results
+            if self.multi_system:
+                print("Before the setting was applied:")
+                exact_match_acc_before, soft_match_acc_before = (
+                    sample.evaluator_before.calculate_accuracies()
+                )
+                sample.evaluator_before.print_accuracies(
+                    id_=sample_id,
+                    exact_match_acc=exact_match_acc_before,
+                    soft_match_acc=soft_match_acc_before,
+                )
             exact_match_acc, soft_match_acc = sample_eval.calculate_accuracies()
-            sample_eval.print_accuracies(
+            sample.evaluator_after.print_accuracies(
+                id_=sample_id,
+                exact_match_acc=exact_match_acc,
+                soft_match_acc=soft_match_acc,
+            )
+            sample.evaluator_after.print_accuracies(
                 id_=sample_id,
                 exact_match_acc=exact_match_acc,
                 soft_match_acc=soft_match_acc,
@@ -234,9 +281,12 @@ class Setting(ABC):
 
             task.add_sample(sample)
 
-        # 8. Report the results for the task: accuracy
+        # 10. Report the results for the task and aggregate results
         print("\n- TASK RESULTS -", end="\n\n")
-        task_evaluator.print_accuracies(id_=task_id)
+        if self.multi_system:
+            print("Before the setting was applied:")
+            task.evaluator_before.print_accuracies(id_=task_id)
+        task.evaluator_after.print_accuracies(id_=task_id)
         task.set_results()
 
         print(f"The work on task {task_id} is finished successfully")

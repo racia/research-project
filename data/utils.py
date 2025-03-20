@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 
 from evaluation.Metrics import Accuracy, Metric
-from inference.DataLevels import Split
+from inference.DataLevels import Features
 
 
 def is_empty_file(file_path: Path) -> bool:
@@ -33,21 +33,21 @@ def prepare_accuracy_headers(prompt_name: str = ""):
 
 
 def format_split_metrics(
-    split_data: Split, headers: dict, metrics_to_save: dict
+    features: Features, headers: dict, metrics_to_save: dict
 ) -> dict[str, dict]:
     """
     Format the metrics for the split to save them later.
 
-    :param split_data: the split data
+    :param features: the features of the split
     :param headers: accuracy headers
     :param metrics_to_save: the accuracies to save
     :return: the metrics to save
     """
     metrics = {
-        "there": split_data.features.there,
-        "verbs": split_data.features.verbs,
-        "pronouns": split_data.features.pronouns,
-        "not_mentioned": split_data.features.not_mentioned,
+        "there": features.there,
+        "verbs": features.verbs,
+        "pronouns": features.pronouns,
+        "not_mentioned": features.not_mentioned,
     }
     for metric, value in metrics.items():
         if metric not in metrics_to_save:

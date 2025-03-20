@@ -3,6 +3,7 @@ from __future__ import annotations
 import settings.utils as utils
 from inference.Chat import Chat
 from inference.Prompt import Prompt
+from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
 from settings.config import Wrapper
@@ -17,9 +18,10 @@ class Baseline(Setting):
     def __init__(
         self,
         model: Model,
-        to_enumerate: dict[Enumerate, bool],
+        to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
+        interpretability: Interpretability,
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
         wrapper: Wrapper = None,
@@ -43,7 +45,8 @@ class Baseline(Setting):
             to_enumerate=to_enumerate,
             wrapper=wrapper,
         )
-        self.question_id = 0
+        self.question_id: int = 0
+        self.interpretability: Interpretability = interpretability
 
     def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
         """

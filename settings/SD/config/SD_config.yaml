@@ -1,17 +1,20 @@
 teacher:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 100
-  temperature: 0.2
+  max_new_tokens: 12
+  temperature: 0.1
   to_continue: false
+  mode: "eval"
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 200
-  temperature: 0.2
+  max_new_tokens: 12
+  temperature: 0.1
   to_continue: false
+  mode: "eval"
 
 setting:
   name: 'SD'
+  interpretability: True
 
 data:
   # small data with validation
@@ -47,7 +50,7 @@ init_prompt:
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
   examples:
-    to_add: True
+    add: True
     enumerated: True
     handpicked: True
     not_mentioned: True
@@ -75,6 +78,7 @@ logging:
   print_to_file: True
 
 results:
+  save_heatmaps: False
   headers:
     - id
     - task_id
@@ -82,17 +86,27 @@ results:
     - part_id
     - task
     - golden_answer
-    - model_answer
-    - correct
-    - model_reasoning
     - silver_reasoning
-    - model_output
-    - exact_match_accuracy
-    - soft_match_accuracy
-    - there
-    - verbs
-    - pronouns
-    - not_mentioned
+    - model_answer_after
+    - correct_after
+    - model_reasoning_after
+    - model_output_after
+    - exact_match_accuracy_after
+    - soft_match_accuracy_after
+    - there_after
+    - verbs_after
+    - pronouns_after
+    - not_mentioned_after
+    - model_answer_before
+    - correct_before
+    - model_reasoning_before
+    - model_output_before
+    - exact_match_accuracy_before
+    - soft_match_accuracy_before
+    - there_before
+    - verbs_before
+    - pronouns_before
+    - not_mentioned_before
 
 hydra:
   run:
