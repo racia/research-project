@@ -94,7 +94,7 @@ def run_setting(cfg: DictConfig) -> None:
             cfg.model.max_new_tokens,
             cfg.model.temperature,
             cfg.model.to_continue,
-            cfg.model.mode,
+            cfg.model.mode
         )
     elif hasattr(cfg, "student"):
         model = Model(
@@ -102,7 +102,7 @@ def run_setting(cfg: DictConfig) -> None:
             cfg.student.max_new_tokens,
             cfg.student.temperature,
             cfg.student.to_continue,
-            cfg.model.mode,
+            cfg.student.mode
         )
     else:
         raise ValueError("No base model is provided in the config.")
@@ -120,8 +120,6 @@ def run_setting(cfg: DictConfig) -> None:
         if cfg.setting.interpretability
         else None
     )
-
-    print(f"The model {cfg.model.name} is loaded successfully", flush=True)
 
     multi_system = False
 
@@ -157,7 +155,7 @@ def run_setting(cfg: DictConfig) -> None:
             cfg.teacher.max_new_tokens,
             cfg.teacher.temperature,
             cfg.teacher.to_continue,
-            cfg.model.mode,
+            cfg.teacher.mode,
         )
         setting = SpeculativeDecoding(
             student=model,
