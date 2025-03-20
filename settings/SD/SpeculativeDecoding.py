@@ -237,7 +237,7 @@ class SpeculativeDecoding(Setting):
 
         # student's CoT is not empty and no disagreement was found
         if is_eos and ix == len(student_tokens) - 1:
-            return True, None, ""#,None
+            return True, None, None
 
         return False, ix, suggested_token
 
@@ -585,10 +585,11 @@ class SpeculativeDecoding(Setting):
                 last_err_ix=error_id,
                 student_str=decoded_output,
             )
-
-            chat.add_message(
-                part=teacher_intervention, source="assistant", model_role="teacher"
-            )
+            
+            if teacher_intervention:
+                chat.add_message(
+                    part=teacher_intervention, source="assistant", model_role="teacher"
+                )
 
             print(
                 "Teacher's evaluation:",
