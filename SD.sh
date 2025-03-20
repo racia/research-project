@@ -3,12 +3,12 @@
 # Job name
 #SBATCH --job-name=SD
 
-#SBATCH --time=00:30:00              # Job time limit (30 minutes)
+#SBATCH --time=00:10:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
 #SBATCH --mem=32G                    # Total memory requested
-#SBATCH --partition=dev_gpu_4
+#SBATCH --partition=dev_gpu_4_a100
 
 # Output and error logs
 #SBATCH --output="SD_out.txt"

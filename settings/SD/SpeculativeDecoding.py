@@ -133,8 +133,8 @@ class SpeculativeDecoding(Setting):
         :param last_err_ix: the index of the last error
         :param student_str: the output of the student model as a string
 
-        :return: A tuple containing a boolean indicating whether the current CoT is valid, an integer or None indicating
-        the error index and the teacher's intervention or None
+        :return: A tuple containing a boolean indicating whether the current CoT is valid,
+        an integer or None indicating the error index and the teacher's intervention or None
         """
         suggested_token = None
         ix = 0
@@ -207,6 +207,7 @@ class SpeculativeDecoding(Setting):
             )
 
             suggested_token = str(top_tokens_decoded[0])
+            print("suggested_token", suggested_token)
 
             try:
                 student_token_id = self.tokenizer.encode(
@@ -236,7 +237,7 @@ class SpeculativeDecoding(Setting):
 
         # student's CoT is not empty and no disagreement was found
         if is_eos and ix == len(student_tokens) - 1:
-            return True, None, None
+            return True, None, ""#,None
 
         return False, ix, suggested_token
 
@@ -441,6 +442,7 @@ class SpeculativeDecoding(Setting):
         self.initial_student_output = decoded_output
 
         self.teacher.curr_sample_part = self.student.curr_sample_part
+        print("curr_sam_part", self.teacher.curr_sample_part, self.student.curr_sample_part)
 
         self.set_teacher_system_prompt(chat=chat)
 
