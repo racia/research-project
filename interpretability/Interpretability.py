@@ -12,7 +12,6 @@ from evaluation.Scenery import nlp
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
-
 class Interpretability:
     def __init__(
         self,
@@ -36,6 +35,7 @@ class Interpretability:
         self.save_heatmaps: bool = save_heatmaps
 
         self.scenery_words: set[str] = scenery_words
+
 
     def get_stop_word_idxs(
         self, attn_scores: np.ndarray, chat_ids: torch.LongTensor
@@ -111,15 +111,18 @@ class Interpretability:
         :param chat: Chat history as list of messages
         :return: attention scores, tokenized x and y tokens
         """
+
+        chat_messages = chat.messages["student"] if chat.multi_system else chat.messages
+
         model_output_ids = chat.convert_into_ids(
-            chat_part=[chat.messages[-1]],
+            chat_part=[chat_messages[-1]],
             max_new_tokens=self.max_new_tokens,
             tokenizer=self.tokenizer,
         )
         model_output_len = len(model_output_ids[0])
 
         chat_ids = chat.convert_into_ids(
-            chat_part=chat.messages[1:],
+            chat_part=chat_messages[1:],
             max_new_tokens=self.max_new_tokens,
             tokenizer=self.tokenizer,
         )

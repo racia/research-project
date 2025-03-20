@@ -239,7 +239,7 @@ class Setting(ABC):
                 # 7. Applying the changes that are specific to each setting
                 with torch.no_grad():
                     answer, reasoning = self.apply_setting(
-                        decoded_output=decoded_output
+                        decoded_output=decoded_output, chat=chat
                     )
 
                 sample.add_part(current_part)
