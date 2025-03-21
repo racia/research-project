@@ -73,10 +73,10 @@ results:
     - part_id
     - task
     - golden_answer
+    - silver_reasoning
     - model_answer_after
     - correct_after
     - model_reasoning_after
-    - silver_reasoning
     - model_output_after
     - exact_match_accuracy_after
     - soft_match_accuracy_after
