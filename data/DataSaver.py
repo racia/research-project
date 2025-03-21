@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 import csv
-import os
-from pathlib import Path
 import sys
 from typing import TextIO, Union, Iterable
 
@@ -99,7 +97,7 @@ class DataSaver:
         """
         if isinstance(file_name, str):
             file_name = self.results_path / file_name
-            if file_name.suffix == ".csv":
+            if file_name.suffix != ".csv":
                 raise ValueError("The file should be saved in a .csv format.")
         else:
             file_name = Path(file_name)
