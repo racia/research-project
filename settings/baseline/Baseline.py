@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import settings.utils as utils
 from inference.Chat import Chat
 from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
@@ -68,7 +67,7 @@ class Baseline(Setting):
 
         return formatted_prompt
 
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> str:
         """
         Postprocesses the output of the model.
         For the baseline model, this postprocessing just parses the output.
@@ -77,4 +76,4 @@ class Baseline(Setting):
         :param chat: the current chat, only necessary in the SD and feedback setting
         :return: parsed output
         """
-        return utils.parse_output(output=decoded_output)
+        return decoded_output
