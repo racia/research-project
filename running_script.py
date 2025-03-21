@@ -190,7 +190,7 @@ def run_setting(cfg: DictConfig) -> None:
         )
 
         # update result paths
-        plotter.result_path = saver.results_path
+        plotter.results_path = saver.results_path
 
         # Once the printing is redirected to the log file,
         # the system output will be saved there without additional actions
@@ -406,6 +406,7 @@ def run_setting(cfg: DictConfig) -> None:
 
     if len(cfg.init_prompt.paths) > 1:
         for split in data_in_splits.keys():
+            plotter.results_path = saver.run_path
             if multi_system:
                 # save and plot the accuracies for the same split of all prompts
                 saver.save_run_accuracy(
@@ -415,7 +416,6 @@ def run_setting(cfg: DictConfig) -> None:
                     split_name=split.name,
                     after=False,
                 )
-                plotter.result_path = saver.run_path
                 plotter.plot_accuracies(
                     exact_match_accuracies=run_em_accuracies["before"][split],
                     soft_match_accuracies=run_sm_accuracies["before"][split],
@@ -437,7 +437,6 @@ def run_setting(cfg: DictConfig) -> None:
                 split_name=split.name,
                 after=True,
             )
-            plotter.result_path = saver.run_path
             plotter.plot_accuracies(
                 exact_match_accuracies=run_em_accuracies["after"][split],
                 soft_match_accuracies=run_sm_accuracies["after"][split],
