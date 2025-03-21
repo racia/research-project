@@ -363,17 +363,17 @@ def run_setting(cfg: DictConfig) -> None:
                 plot_name_add=f"{prompt_name}_{split}_after_",
             )
 
-            run_evaluators["after"][split_][init_prompt] = split_.evaluator_after
-            run_em_accuracies["after"][split_][
+            run_evaluators["after"][split][init_prompt] = split_.evaluator_after
+            run_em_accuracies["after"][split][
                 init_prompt
             ] = split_.evaluator_before.exact_match_accuracy
-            run_sm_accuracies["after"][split_][
+            run_sm_accuracies["after"][split][
                 init_prompt
             ] = split_.evaluator_after.soft_match_accuracy
-            run_em_std["after"][split_][
+            run_em_std["after"][split][
                 init_prompt
             ] = split_.evaluator_after.exact_match_std
-            run_sm_std["after"][split_][
+            run_sm_std["after"][split][
                 init_prompt
             ] = split_.evaluator_after.soft_match_std
 
