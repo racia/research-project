@@ -228,6 +228,7 @@ class DataSaver:
         results_file_name: str,
         metrics_file_name: str,
         setting: str,
+        multi_system: bool = False,
     ) -> None:
         """
         Save the results for the task and the accuracy for the task to the separate files.
@@ -238,6 +239,7 @@ class DataSaver:
         :param results_file_name: the name of the file to save the results specific to the split
         :param metrics_file_name: the name of the file to save the accuracy specific to the split
         :param setting: the setting name
+        :param multi_system: if the setting uses two models
 
         :return: None
         """
@@ -249,19 +251,19 @@ class DataSaver:
         # get accuracy for the last task
         task_accuracy = {
             "task_id": task_id,
-            "exact_match_accuracy": task_data.evaluator_after.exact_match_accuracy.get_mean(),
-            "soft_match_accuracy": task_data.evaluator_after.soft_match_accuracy.get_mean(),
-            "exact_match_std": task_data.evaluator_after.exact_match_accuracy.get_std(),
-            "soft_match_std": task_data.evaluator_after.soft_match_accuracy.get_std(),
+            "exact_match_accuracy_after": task_data.evaluator_after.exact_match_accuracy.get_mean(),
+            "soft_match_accuracy_after": task_data.evaluator_after.soft_match_accuracy.get_mean(),
+            "exact_match_std_after": task_data.evaluator_after.exact_match_accuracy.get_std(),
+            "soft_match_std_after": task_data.evaluator_after.soft_match_accuracy.get_std(),
         }
 
-        if setting not in ["SD", "SpeculativeDecoding", "Feedback"]:
+        if multi_system:
             task_accuracy_before = {
                 "task_id": task_id,
-                "exact_match_accuracy": task_data.evaluator_before.exact_match_accuracy.get_mean(),
-                "soft_match_accuracy": task_data.evaluator_before.soft_match_accuracy.get_mean(),
-                "exact_match_std": task_data.evaluator_before.exact_match_std.get_mean(),
-                "soft_match_std": task_data.evaluator_before.soft_match_std.get_mean(),
+                "exact_match_accuracy_before": task_data.evaluator_before.exact_match_accuracy.get_mean(),
+                "soft_match_accuracy_before": task_data.evaluator_before.soft_match_accuracy.get_mean(),
+                "exact_match_std_before": task_data.evaluator_before.exact_match_std.get_mean(),
+                "soft_match_std_before": task_data.evaluator_before.soft_match_std.get_mean(),
             }
             task_accuracy.update(task_accuracy_before)
             self.save_interpretability(task_data, after=False)

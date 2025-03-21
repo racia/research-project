@@ -7,10 +7,10 @@ from numpy import ndarray
 
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
+from inference.utils import *
 from interpretability.utils import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
 from settings.utils import structure_part
-from inference.utils import *
 
 stats = Statistics()
 
@@ -219,8 +219,6 @@ class SamplePart:
             after=True,
         )
 
-        self.result = self.get_result()
-
     def wrap(self, attr: str, replacements: dict[str, str]) -> str:
         """
         Wrap the attribute with the wrapper, allowing flexible placeholders.
@@ -313,10 +311,11 @@ class SamplePart:
             )
             self.result_after.interpretability = interpretability
 
-    def get_result(self) -> dict[str, int | str]:
+    def get_result(self, multi_system: bool = True) -> dict[str, int | str]:
         """
         Get the result of the part.
 
+        :param multi_system: whether the part is for the setting with two models
         :return: the result of the part
         """
         try:
@@ -328,7 +327,10 @@ class SamplePart:
         except AttributeError as error:
             print(f"Error accessing attribute: {error}")
             attributes = {}
-        return {**attributes, **self.result_before.dict, **self.result_after.dict}
+
+        if multi_system:
+            return {**attributes, **self.result_before.dict, **self.result_after.dict}
+        return {**attributes, **self.result_after.dict}
 
 
 class Sample:
@@ -441,15 +443,16 @@ class Task:
         self.evaluator_before.update(sample.evaluator_before)
         self.evaluator_after.update(sample.evaluator_after)
 
-    def set_results(self) -> None:
+    def set_results(self, multi_system: bool) -> None:
         """
         Set the results for the task by combining the results from the parts of all samples.
         Additionally, calculate the mean of the accuracy metrics and add them to the results.
 
+        :param multi_system: whether the task is for the setting with two models
         :return: None
         """
         self.parts = [part for sample in self.samples for part in sample.parts]
-        self.results = [part.result for part in self.parts]
+        self.results = [part.get_result(multi_system) for part in self.parts]
 
         self.features_before = sum(
             [part.result_before.features for part in self.parts], self.features_before
