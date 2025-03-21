@@ -53,17 +53,17 @@ class Features:
         self.not_mentioned += other.not_mentioned
         return self
 
-    def get(self) -> dict[str, int]:
+    def get(self, after: bool = True) -> dict[str, int]:
         """
         Get the features as a dictionary.
 
         :return: the features as a dictionary
         """
         return {
-            "there": self.there,
-            "verbs": self.verbs,
-            "pronouns": self.pronouns,
-            "not_mentioned": self.not_mentioned,
+            f"there_{'after' if after else 'before'}": self.there,
+            f"verbs_{'after' if after else 'before'}": self.verbs,
+            f"pronouns_{'after' if after else 'before'}": self.pronouns,
+            f"not_mentioned_{'after' if after else 'before'}": self.not_mentioned,
         }
 
     def __repr__(self) -> str:
@@ -150,7 +150,7 @@ class Results:
         except AttributeError as error:
             print(f"Error accessing attribute: {error}")
             attributes = {}
-        return {**attributes, **self.features.get()}
+        return {**attributes, **self.features.get(self.after)}
 
 
 class SamplePart:
@@ -454,20 +454,21 @@ class Task:
         self.parts = [part for sample in self.samples for part in sample.parts]
         self.results = [part.get_result(multi_system) for part in self.parts]
 
-        self.features_before = sum(
-            [part.result_before.features for part in self.parts], self.features_before
-        )
+        if multi_system:
+            self.features_before = sum(
+                [part.result_before.features for part in self.parts],
+                self.features_before,
+            )
+            self.results[0][
+                "exact_match_accuracy_before"
+            ] = self.evaluator_before.exact_match_accuracy.get_mean()
+            self.results[0][
+                "soft_match_accuracy_before"
+            ] = self.evaluator_before.soft_match_accuracy.get_mean()
+
         self.features_after = sum(
             [part.result_after.features for part in self.parts], self.features_after
         )
-
-        self.results[0][
-            "exact_match_accuracy_before"
-        ] = self.evaluator_before.exact_match_accuracy.get_mean()
-        self.results[0][
-            "soft_match_accuracy_before"
-        ] = self.evaluator_before.soft_match_accuracy.get_mean()
-
         self.results[0][
             "exact_match_accuracy_after"
         ] = self.evaluator_after.exact_match_accuracy.get_mean()
