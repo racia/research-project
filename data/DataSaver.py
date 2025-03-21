@@ -125,8 +125,10 @@ class DataSaver:
         """
         if after:
             accuracy_file_name = self.results_path / "after" / accuracy_file_name
+            Path(accuracy_file_name).mkdir(parents=True, exist_ok=True)
         else:
             accuracy_file_name = self.results_path / "before" / accuracy_file_name
+            Path(accuracy_file_name).mkdir(parents=True, exist_ok=True)
 
         accuracies_to_save = list(
             format_accuracy_metrics(
