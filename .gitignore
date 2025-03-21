@@ -19,6 +19,7 @@ data/tasks_1-20_v1-2/*
 data/*.zip
 data/*.tar.gz
 data/*.txt
+data/examples/*
 plots/*.png
 
 */.DS_Store
@@ -45,6 +46,7 @@ settings/baseline/config/prompt_*_shot*
 
 # Testing scripts
 test*.sh
+test
 
 fine-tuning/
 
