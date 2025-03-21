@@ -124,11 +124,11 @@ class DataSaver:
         :return: None
         """
         if after:
-            accuracy_file_name = self.results_path / "after" / accuracy_file_name
-            Path(accuracy_file_name).mkdir(parents=True, exist_ok=True)
+            subdirectory = self.results_path / "after"
         else:
-            accuracy_file_name = self.results_path / "before" / accuracy_file_name
-            Path(accuracy_file_name).mkdir(parents=True, exist_ok=True)
+            subdirectory = self.results_path / "before"
+        Path(subdirectory).mkdir(parents=True, exist_ok=True)
+        accuracy_file_name = subdirectory / accuracy_file_name
 
         accuracies_to_save = list(
             format_accuracy_metrics(
@@ -197,12 +197,15 @@ class DataSaver:
             else:
                 part_result = part.result_before.interpretability.result
 
+            assert type(part_result) is dict
+
             try:
                 file_name = (
                     f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
                 )
                 attn_scores = [
-                    "\t".join(map(str, row)) for row in part_result.attn_scores.tolist()
+                    "\t".join(map(str, row))
+                    for row in part_result["attn_scores"].tolist()
                 ]
                 self.save_with_separator(
                     file_path=attn_scores_subdir / file_name, data=attn_scores
@@ -213,7 +216,7 @@ class DataSaver:
                     )
                     self.save_with_separator(
                         file_path=attn_scores_subdir / file_name,
-                        data=part_result.tokens,
+                        data=part_result[tokens],
                     )
             except AttributeError as e:
                 print(f"AttributeError: {e} in {part_result}")
