@@ -65,12 +65,6 @@ class Baseline(Setting):
             formatted_prompt = self.model.tokenizer.apply_chat_template(
                 chat.messages, tokenize=False, add_generation_prompt=True
             )
-        print(
-            "Formatted prompt:",
-            formatted_prompt,
-            sep="\n",
-            end="\n",
-        )
 
         return formatted_prompt
 
