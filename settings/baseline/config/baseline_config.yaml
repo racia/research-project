@@ -83,6 +83,9 @@ results:
     - exact_match_accuracy_after
     - soft_match_accuracy_after
     - not_mentioned_after
+    - verbs_after
+    - there_after
+    - pronouns_after
 
 hydra:
   run:

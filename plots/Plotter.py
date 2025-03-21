@@ -136,7 +136,7 @@ class Plotter:
         plt.xlabel("Task Tokens", fontdict={"size": 10})
         plt.ylabel("Model Output Tokens", fontdict={"size": 10})
 
-        plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=30, ha="right")
+        plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=90, ha="right")
         plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
 
         plt.subplots_adjust(left=0.15, right=0.99, top=0.98, bottom=0.15)
