@@ -258,7 +258,7 @@ class Setting(ABC):
                     after=True,
                 )
 
-                sample.add_part(current_part)
+                sample.add_part(current_part, multi_system=self.multi_system)
 
             sample.print_sample_predictions()
 

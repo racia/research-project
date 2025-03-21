@@ -352,65 +352,91 @@ class Sample:
         self.evaluator_before: AnswerEvaluator = evaluator
         self.evaluator_after: AnswerEvaluator = copy.deepcopy(evaluator)
 
-    def add_part(self, part: SamplePart, after: bool = True) -> None:
+    def add_part(self, part: SamplePart, multi_system: bool = False) -> None:
         """
         Add a part to the sample.
         Should be called after the output of the part is set with SamplePart.set_output().
 
         :param part: the part to add
-        :param after: whether the part is after the setting was applied to the model's output
+        :param multi_system: whether the part is for the setting with two models
         :return: None
         """
         self.parts.append(part)
 
-        if after:
-            self.evaluator_after.pred_answers.append(part.result_after.model_answer)
-            self.evaluator_after.pred_reasonings.append(
-                part.result_after.model_reasoning
-            )
-        else:
+        if multi_system:
             self.evaluator_before.pred_answers.append(part.result_before.model_answer)
             self.evaluator_before.pred_reasonings.append(
                 part.result_before.model_reasoning
             )
+        self.evaluator_after.pred_answers.append(part.result_after.model_answer)
+        self.evaluator_after.pred_reasonings.append(part.result_after.model_reasoning)
 
-    def print_sample_predictions(self) -> None:
+    def print_sample_predictions(self, multi_system: bool = False) -> None:
         """
         Print the model's predictions to compare with true values.
 
         :return: None
         """
-        attributes = zip(
-            self.evaluator_before.golden_answers,
-            self.evaluator_before.pred_answers,
-            self.evaluator_after.pred_answers,
-            self.evaluator_before.pred_reasonings,
-            self.evaluator_after.pred_reasonings,
-        )
-        print(
-            "Model's predictions for the sample:",
-            "\t{0:<18s} PREDICTED-{1:<18s} PREDICTED-{2:<18s} REASONING-{1:<36s} REASONING-{2:<36s}".format(
-                "GOLDEN", "Bef", "Aft"
-            ),
-            sep="\n\n",
-            end="\n\n",
-        )
-        for (
-            golden_answer,
-            pred_answer_bef,
-            pred_answer_aft,
-            pred_reasoning_bef,
-            pred_reasoning_aft,
-        ) in attributes:
-            print(
-                "\t{0:<18s} {1:<18s} {2:<18s} {3:<18s} {4:<18s}".format(
-                    golden_answer,
-                    pred_answer_bef.replace("\n", "\t"),
-                    pred_answer_aft.replace("\n", "\t"),
-                    pred_reasoning_bef.replace("\n", "\t"),
-                    pred_reasoning_aft.replace("\n", "\t"),
-                ),
+        if multi_system:
+            attributes = zip(
+                self.evaluator_after.golden_answers,
+                self.evaluator_before.pred_answers,
+                self.evaluator_after.pred_answers,
+                self.evaluator_before.pred_reasonings,
+                self.evaluator_after.pred_reasonings,
             )
+            print(
+                "Model's predictions for the sample:",
+                "\t{0:<18s} PREDICTED-{1:<18s} PREDICTED-{2:<18s} REASONING-{1:<36s} REASONING-{2:<36s}".format(
+                    "GOLDEN", "Bef", "Aft"
+                ),
+                sep="\n\n",
+                end="\n\n",
+            )
+            for (
+                golden_answer,
+                pred_answer_bef,
+                pred_answer_aft,
+                pred_reasoning_bef,
+                pred_reasoning_aft,
+            ) in attributes:
+                print(
+                    "\t{0:<18s} {1:<18s} {2:<18s} {3:<18s} {4:<18s}".format(
+                        golden_answer,
+                        pred_answer_bef.replace("\n", "\t"),
+                        pred_answer_aft.replace("\n", "\t"),
+                        pred_reasoning_bef.replace("\n", "\t"),
+                        pred_reasoning_aft.replace("\n", "\t"),
+                    ),
+                )
+        else:
+            attributes = zip(
+                self.evaluator_after.golden_answers,
+                self.evaluator_after.pred_answers,
+                self.evaluator_after.pred_reasonings,
+            )
+            print(
+                "Model's predictions for the sample:",
+                "\t{0:<18s} PREDICTED-{1:<18s} REASONING-{1:<36s} ".format(
+                    "GOLDEN", "Aft"
+                ),
+                sep="\n\n",
+                end="\n\n",
+            )
+            for (
+                golden_answer,
+                pred_answer_bef,
+                pred_answer_aft,
+                pred_reasoning_bef,
+                pred_reasoning_aft,
+            ) in attributes:
+                print(
+                    "\t{0:<18s} {1:<18s} {2:<18s}".format(
+                        golden_answer,
+                        pred_answer_aft.replace("\n", "\t"),
+                        pred_reasoning_aft.replace("\n", "\t"),
+                    ),
+                )
 
 
 class Task:

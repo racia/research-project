@@ -1,5 +1,5 @@
-import os
 import numpy as np
+
 
 class InterpretabilityResult:
     def __init__(
@@ -11,13 +11,12 @@ class InterpretabilityResult:
         :param x_tokens: tokenized x tokens
         :param y_tokens: tokenized y tokens
         """
-        self.attn_scores = attn_scores
-        self.x_tokens = x_tokens
-        self.y_tokens = y_tokens
+        self.attn_scores: np.ndarray = attn_scores
+        self.x_tokens: list[str] = x_tokens
+        self.y_tokens: list[str] = y_tokens
 
         self.result = {
             "attn_scores": self.attn_scores,
             "x_tokens": self.x_tokens,
             "y_tokens": self.y_tokens,
         }
-
