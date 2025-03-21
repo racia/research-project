@@ -10,7 +10,7 @@ from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
 from settings.config import Wrapper
-from settings.utils import Enumerate, parse_output
+from settings.utils import Enumerate
 
 
 class SpeculativeDecoding(Setting):
@@ -420,7 +420,7 @@ class SpeculativeDecoding(Setting):
 
         return match
 
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> str:
         """
         Run the speculative decoding for one instance.
 
@@ -432,7 +432,7 @@ class SpeculativeDecoding(Setting):
 
         :param decoded_output: the current output of the student
         :param chat: the current chat, only necessary in the SD and feedback setting
-        :return: parsed output
+        :return: decoded model output
         """
         if not chat:
             raise ValueError("Chat is required for speculative decoding.")
@@ -482,9 +482,7 @@ class SpeculativeDecoding(Setting):
                 student_tokens, is_valid, error_id, teacher_intervention, chat
             )
 
-        model_out_parsed = parse_output(decoded_output)
-
-        return model_out_parsed
+        return decoded_output
 
     def speculative_decode(
         self,

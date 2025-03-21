@@ -67,7 +67,7 @@ class Setting(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> str:
         """
         Apply setting-specific postprocessing of the inital model output.
         For the baseline and skyline, this consists of parsing the output.
@@ -222,27 +222,27 @@ class Setting(ABC):
                     source=Source.assistant,
                 )
 
-                interpretability_before = (
-                    self.interpretability.get_attention(current_part, chat=chat)
-                    if self.multi_system and self.interpretability
-                    else None
-                )
-                answer, reasoning = parse_output(output=decoded_output)
-                current_part.set_output(
-                    decoded_output,
-                    answer,
-                    reasoning,
-                    interpretability_before,
-                    after=False,
-                )
+                if self.multi_system:
+                    interpretability_before = (
+                        self.interpretability.get_attention(current_part, chat=chat)
+                        if self.multi_system and self.interpretability
+                        else None
+                    )
+                    answer, reasoning = parse_output(output=decoded_output)
+                    current_part.set_output(
+                        model_output=decoded_output,
+                        answer=answer,
+                        reasoning=reasoning,
+                        interpretability=interpretability_before,
+                        after=False,
+                    )
 
                 # 7. Applying the changes that are specific to each setting
                 with torch.no_grad():
-                    answer, reasoning = self.apply_setting(
+                    decoded_output = self.apply_setting(
                         decoded_output=decoded_output, chat=chat
                     )
-
-                sample.add_part(current_part)
+                    answer, reasoning = parse_output(output=decoded_output)
 
                 # 8. Call interpretability attention score method
                 interpretability_after = (
@@ -251,8 +251,14 @@ class Setting(ABC):
                     else None
                 )
                 current_part.set_output(
-                    decoded_output, answer, reasoning, interpretability_after
+                    decoded_output,
+                    answer,
+                    reasoning,
+                    interpretability_after,
+                    after=True,
                 )
+
+                sample.add_part(current_part)
 
             sample.print_sample_predictions()
 

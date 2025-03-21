@@ -2,14 +2,14 @@ from __future__ import annotations
 
 import numpy as np
 import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from inference.Chat import Chat, Source
+from evaluation.Scenery import nlp
+from inference.Chat import Chat
 from inference.DataLevels import SamplePart
 from interpretability.utils import InterpretabilityResult
 from plots.Plotter import Plotter
 from settings.Model import Model
-from evaluation.Scenery import nlp
-from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 class Interpretability:
@@ -35,7 +35,6 @@ class Interpretability:
         self.save_heatmaps: bool = save_heatmaps
 
         self.scenery_words: set[str] = scenery_words
-
 
     def get_stop_word_idxs(
         self, attn_scores: np.ndarray, chat_ids: torch.LongTensor
@@ -79,12 +78,16 @@ class Interpretability:
         attn_scores = attn_tensor.float().detach().cpu().numpy()
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o system prompt)
-        attn_scores = attn_scores[:, -model_output_len:, :-model_output_len].mean(axis=0)
+        attn_scores = attn_scores[:, -model_output_len:, :-model_output_len].mean(
+            axis=0
+        )
         # Normalize the attention scores by the sum of all token attention scores
         attn_scores = attn_scores / attn_scores.sum(axis=-1, keepdims=True)
         return attn_scores
 
-    def filter_attention_scores(self, attention_scores: np.ndarray, chat_ids: torch.LongTensor) -> tuple[np.ndarray, list]:
+    def filter_attention_scores(
+        self, attention_scores: np.ndarray, chat_ids: torch.LongTensor
+    ) -> tuple[np.ndarray, list]:
         """
         Filter context and question attention scores for scenery words
         by their indices in each row of the output attention scores.
@@ -95,7 +98,9 @@ class Interpretability:
         """
         stop_words_indices = self.get_stop_word_idxs(attention_scores, chat_ids)
         attention_indices = list(
-            filter(lambda x: x not in stop_words_indices, range(attention_scores.shape[1]))
+            filter(
+                lambda x: x not in stop_words_indices, range(attention_scores.shape[1])
+            )
         )
         return attention_scores[:, attention_indices], attention_indices
 
@@ -104,10 +109,10 @@ class Interpretability:
         1. Defines structural parts of the current chat and gets their input ids and lengths.
         2. Gets the relevant attention scores, filters them.
         3. Constructs x and y tokens and optionally creates heatmaps.
-         
+
         (This code is based on the implementation in https://arxiv.org/abs/2402.18344)
 
-        :param part: part of the sample
+        :param part: part of the sample with the output before the setting is applied
         :param chat: Chat history as list of messages
         :return: attention scores, tokenized x and y tokens
         """
@@ -143,7 +148,9 @@ class Interpretability:
             model_output_len=model_output_len,
         )
 
-        attention_scores, attention_indices = self.filter_attention_scores(attention_scores, chat_ids)
+        attention_scores, attention_indices = self.filter_attention_scores(
+            attention_scores, chat_ids
+        )
 
         # Decode the task tokens
         x_tokens = self.tokenizer.batch_decode(chat_ids[attention_indices])
