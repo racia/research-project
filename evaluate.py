@@ -52,13 +52,17 @@ def run(da_path: str, reasoning_path: str, headers: dict[str, list[str]]):
         reasoning_path, headers=all_headers, list_output=True
     )
 
+    if len(da_data) != len(reasoning_data):
+        raise ValueError("The number of rows in the data files should be the same.")
+
     # TODO: load silver reasoning
 
     # TODO: load the interpretability results
 
     parts = []
-    for row in data:
-        assert type(row) == dict
+    for row_da, row_reasoning in (da_data, reasoning_data):
+        assert type(row_da) == dict
+        assert type(row_reasoning) == dict
 
         # Add missing columns
         row["part_id"] = 0 if "part_id" not in row else row["part_id"]
