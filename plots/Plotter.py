@@ -1,10 +1,13 @@
+from __future__ import annotations
+
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-from evaluation.Metrics import Accuracy
+from evaluation.Metrics import Accuracy, Metric
+from inference.Prompt import Prompt
 
 
 class Plotter:
@@ -119,7 +122,7 @@ class Plotter:
         """
         Draw a heat map with the interpretability attention scores for the current task.
         (Partly taken from https://arxiv.org/abs/2402.18344)
-        
+
         :param x: the current task tokens
         :param y: the model output tokens
         :param scores: attention scores
@@ -177,7 +180,7 @@ class Plotter:
 
     def plot_acc_per_task_and_prompt(
         self,
-        acc_per_prompt_task: dict[str, Accuracy],
+        acc_per_prompt_task: dict[str | Prompt, Accuracy | Metric],
         x_label: str = "Task",
         y_label: str = "Accuracy",
         file_name=None,
@@ -211,7 +214,7 @@ class Plotter:
                     f"x and y must have the same first dimension, but have shapes {len(x_data)} and {len(y_data)}"
                 )
 
-            plt.plot(x_data, y_data, label=prompt, color=color)
+            plt.plot(x_data, y_data, label=prompt.name, color=color)
 
         self._plot_general_details(
             x_label,
@@ -224,12 +227,22 @@ class Plotter:
 
     def plot_accuracies(
         self,
-        exact_match_accuracies,
-        soft_match_accuracies,
-        additional_info="",
-        compare_prompts=False,
-        label="",
-    ):
+        exact_match_accuracies: Accuracy | Metric | dict[Prompt, Accuracy | Metric],
+        soft_match_accuracies: Accuracy | Metric | dict[Prompt, Accuracy | Metric],
+        additional_info: str = "",
+        compare_prompts: bool = False,
+        label: str = "",
+    ) -> None:
+        """
+        Plot the accuracies or standard deviations.
+
+        :param exact_match_accuracies: the exact-match accuracies or standard deviations
+        :param soft_match_accuracies: the soft-match accuracies or standard deviations
+        :param additional_info: additional information for the plot name
+        :param compare_prompts: whether to compare the prompts
+        :param label: label for the plot
+        :return: None
+        """
         if compare_prompts:
             # Save accuracies of all prompts
             self.plot_acc_per_task_and_prompt(

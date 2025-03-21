@@ -6,7 +6,7 @@ from typing import TextIO, Union, Iterable
 
 from data.utils import *
 from evaluation.Evaluator import MetricEvaluator
-from inference.DataLevels import Task, Features
+from inference.DataLevels import Task, Features, Split
 from inference.Prompt import Prompt
 from settings.config import DataSplits
 
@@ -284,7 +284,7 @@ class DataSaver:
     def save_run_accuracy(
         self,
         task_ids: list[int],
-        split_evaluators: dict[Prompt, MetricEvaluator],
+        splits: dict[Prompt, Split],
         features: Features,
         split_name: str,
         after: bool = True,
@@ -293,7 +293,7 @@ class DataSaver:
         Save the accuracies for the split run, including the mean accuracy for all tasks.
 
         :param task_ids: the task ids
-        :param split_evaluators: the evaluators per prompt
+        :param splits: the split objects of the data
         :param features: the features to save
         :param split_name: the name of the split
         :param after: if to save the accuracy for after the setting was applied
@@ -302,8 +302,14 @@ class DataSaver:
         run_metrics = {}
         run_headers = ["task_id"]
 
-        for prompt, evaluator in split_evaluators.items():
+        for prompt, split in splits.items():
             prompt_headers = prepare_accuracy_headers(prompt.name, after=after)
+
+            if after:
+                evaluator = split.evaluator_after
+            else:
+                evaluator = split.evaluator_before
+
             run_metrics = format_task_accuracies(
                 accuracies_to_save=run_metrics,
                 task_ids=task_ids,
@@ -313,6 +319,7 @@ class DataSaver:
                 soft_match_std=evaluator.soft_match_std,
                 headers=prompt_headers,
             )
+
             run_metrics = format_split_metrics(
                 features, prompt_headers, run_metrics, after=True if after else False
             )
