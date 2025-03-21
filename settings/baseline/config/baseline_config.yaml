@@ -73,22 +73,15 @@ results:
     - part_id
     - task
     - golden_answer
-    - model_answer_before
+    - silver_reasoning
     - model_answer_after
     - correct_after
     - model_reasoning_before
     - model_reasoning_after
     - silver_reasoning
-    - model_output_before
     - model_output_after
-    - exact_match_accuracy_before
     - exact_match_accuracy_after
-    - soft_match_accuracy_before
     - soft_match_accuracy_after
-    - there
-    - verbs
-    - pronouns
-    - not_mentioned_before
     - not_mentioned_after
 
 hydra:

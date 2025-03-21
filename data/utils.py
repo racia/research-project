@@ -33,7 +33,7 @@ def prepare_accuracy_headers(prompt_name: str = ""):
 
 
 def format_split_metrics(
-    features: Features, headers: dict, metrics_to_save: dict
+    features: Features, headers: dict, metrics_to_save: dict, after: bool = True
 ) -> dict[str, dict]:
     """
     Format the metrics for the split to save them later.
@@ -41,13 +41,14 @@ def format_split_metrics(
     :param features: the features of the split
     :param headers: accuracy headers
     :param metrics_to_save: the accuracies to save
+    :param after: if the metrics are calculated after the setting was applied
     :return: the metrics to save
     """
     metrics = {
-        "there": features.there,
-        "verbs": features.verbs,
-        "pronouns": features.pronouns,
-        "not_mentioned": features.not_mentioned,
+        f"there_{'after' if after else 'before'}": features.there,
+        f"verbs_{'after' if after else 'before'}": features.verbs,
+        f"pronouns_{'after' if after else 'before'}": features.pronouns,
+        f"not_mentioned_{'after' if after else 'before'}": features.not_mentioned,
     }
     for metric, value in metrics.items():
         if metric not in metrics_to_save:

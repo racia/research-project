@@ -278,6 +278,7 @@ class DataSaver:
         split_evaluators: dict[Prompt, MetricEvaluator],
         features: Features,
         split_name: str,
+        after: bool = True,
     ) -> None:
         """
         Save the accuracies for the split run, including the mean accuracy for all tasks.
@@ -286,6 +287,7 @@ class DataSaver:
         :param split_evaluators: the evaluators per prompt
         :param features: the features to save
         :param split_name: the name of the split
+        :param after: if to save the accuracy for after the setting was applied
         :return: None
         """
         run_metrics = {}
@@ -302,7 +304,9 @@ class DataSaver:
                 soft_match_std=evaluator.soft_match_std,
                 headers=prompt_headers,
             )
-            run_metrics = format_split_metrics(features, prompt_headers, run_metrics)
+            run_metrics = format_split_metrics(
+                features, prompt_headers, run_metrics, after=True if after else False
+            )
             run_headers.extend(prompt_headers.values())
 
         mean_headers = prepare_accuracy_headers("mean")
