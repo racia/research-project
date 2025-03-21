@@ -25,11 +25,12 @@ def remove_unnecessary_columns(row: dict) -> None:
             del row[col]
 
 
-def run(data_path: str, headers: dict[str, list[str]]):
+def run(da_path: str, reasoning_path: str, headers: dict[str, list[str]]):
     """
     Run the evaluation pipeline.
 
-    :param data_path: Path to the result data file.
+    :param da_path: Path to the data for direct answer run
+    :param reasoning_path: Path to the data for reasoning run
     :return: None
     """
     loader = DataLoader()
@@ -43,7 +44,13 @@ def run(data_path: str, headers: dict[str, list[str]]):
         + headers_results_after
     )
 
-    data = loader.load_result_data(data_path, headers=all_headers, list_output=True)
+    if not (da_path or reasoning_path):
+        raise ValueError("Both paths should be provided.")
+
+    da_data = loader.load_result_data(da_path, headers=all_headers, list_output=True)
+    reasoning_data = loader.load_result_data(
+        reasoning_path, headers=all_headers, list_output=True
+    )
 
     # TODO: load silver reasoning
 
@@ -93,6 +100,20 @@ def run(data_path: str, headers: dict[str, list[str]]):
     samples = []
     tasks = []
     for idx, part in enumerate(parts):
+        if part.part_id == 1:
+            sample_evaluator = AnswerEvaluator(level="sample")
+            sample = Sample(
+                task_id=part.task_id,
+                sample_id=part.sample_id,
+                evaluator=sample_evaluator,
+            )
+            samples.append(sample)
+
+            if part.sample_id == 1:
+                task = Task(part.task_id)
+                tasks.append(task)
+
+            task.add_sample(sample)
         # if the first part or the sample id is different from the previous part or it is the first sample
         if idx == 0 or parts[idx - 1].sample_id != parts[idx].sample_id:
             sample_evaluator = AnswerEvaluator(level="sample")
@@ -115,9 +136,10 @@ def run(data_path: str, headers: dict[str, list[str]]):
 
 
 if __name__ == "__main__":
-    data_path = (
+    da_data_path = (
         "test/test_join/joined_data/valid_prompt_init_prompt_da_reasoning_results.csv"
     )
+    reasoning_data_path = ""
     headers = {
         "general": [
             "id_",
@@ -134,4 +156,4 @@ if __name__ == "__main__":
             "model_output",
         ],
     }
-    run(data_path=data_path, headers=headers)
+    run(da_path=da_data_path, reasoning_path=reasoning_data_path, headers=headers)
