@@ -203,6 +203,7 @@ class DataSaver:
                 file_name = (
                     f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
                 )
+                print(part_result["attn_scores"].shape)
                 attn_scores = [
                     "\t".join(map(str, row))
                     for row in part_result["attn_scores"].tolist()
