@@ -13,6 +13,7 @@ from omegaconf import DictConfig, OmegaConf
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from evaluation.Evaluator import MetricEvaluator
+from evaluation.Metrics import Accuracy, Metric
 from inference.DataLevels import Split
 from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
@@ -76,11 +77,11 @@ def run_setting(cfg: DictConfig) -> None:
     print(f"Results will be saved to: {saver.results_path}")
     plotter = Plotter(results_path=saver.results_path)
 
-    run_evaluators = defaultdict(dict)
-    run_em_accuracies = defaultdict(dict)
-    run_sm_accuracies = defaultdict(dict)
-    run_em_std = defaultdict(dict)
-    run_sm_std = defaultdict(dict)
+    run_evaluators = defaultdict(dict[str, dict[Prompt, MetricEvaluator]])
+    run_em_accuracies = defaultdict(dict[str, dict[Prompt, Accuracy]])
+    run_sm_accuracies = defaultdict(dict[str, dict[Prompt, Accuracy]])
+    run_em_std = defaultdict(dict[str, dict[Prompt, Metric]])
+    run_sm_std = defaultdict(dict[str, dict[Prompt, Metric]])
 
     setting = None
 
@@ -326,17 +327,17 @@ def run_setting(cfg: DictConfig) -> None:
                     y_label="Accuracies and Standard Deviations",
                     plot_name_add=f"{prompt_name}_{split}_before_",
                 )
-                run_evaluators["before"][split_][init_prompt] = split_.evaluator_before
-                run_em_accuracies["before"][split_][
+                run_evaluators["before"][split][init_prompt] = split_.evaluator_before
+                run_em_accuracies["before"][split][
                     init_prompt
                 ] = split_.evaluator_before.exact_match_accuracy
-                run_sm_accuracies["before"][split_][
+                run_sm_accuracies["before"][split][
                     init_prompt
                 ] = split_.evaluator_before.soft_match_accuracy
-                run_em_std["before"][split_][
+                run_em_std["before"][split][
                     init_prompt
                 ] = split_.evaluator_before.exact_match_std
-                run_sm_std["before"][split_][
+                run_sm_std["before"][split][
                     init_prompt
                 ] = split_.evaluator_before.soft_match_std
 
