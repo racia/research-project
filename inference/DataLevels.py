@@ -3,8 +3,6 @@ from __future__ import annotations
 import copy
 from dataclasses import dataclass
 
-from numpy import ndarray
-
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
 from inference.utils import *
@@ -81,31 +79,32 @@ class Results:
     """
 
     def __init__(
-        self, model_output: str, answer: str, reasoning: str, after: bool = True
+        self,
+        model_output: str,
+        model_answer: str,
+        model_reasoning: str,
+        interpretability: InterResult,
+        after: bool = True,
     ):
         """
         Initialize the Results class.
 
         :param model_output: the output of the model
-        :param answer: the answer to the question
-        :param reasoning: the reasoning for the answer
+        :param model_answer: the answer to the question
+        :param model_reasoning: the reasoning for the answer
         """
         self.after = after
 
         self.model_output: str = model_output
-        self.model_answer: str = answer
-        self.model_reasoning: str = reasoning
+        self.model_answer: str = model_answer
+        self.model_reasoning: str = model_reasoning
 
         self.answer_correct: bool = None
         self.reasoning_correct: bool = None
 
         self.features: Features = self.inspect_answer()
 
-        self.interpretability: InterResult = InterResult(
-            attn_scores=ndarray([]),
-            x_tokens=[],
-            y_tokens=[],
-        )
+        self.interpretability: InterResult = interpretability
 
         self.result_attrs: list[str] = [
             "model_reasoning",
@@ -208,14 +207,14 @@ class SamplePart:
 
         self.result_before: Results = Results(
             model_output="",
-            answer="",
-            reasoning="",
+            model_answer="",
+            model_reasoning="",
             after=False,
         )
         self.result_after: Results = Results(
             model_output="",
-            answer="",
-            reasoning="",
+            model_answer="",
+            model_reasoning="",
             after=True,
         )
 
@@ -289,27 +288,28 @@ class SamplePart:
         :return: None
         """
         if after:
-            self.result_before = Results(
-                model_output=model_output,
-                answer=answer,
-                reasoning=reasoning,
-            )
-            self.result_before.answer_correct = stats.are_identical(
-                answer, self.golden_answer
-            )
-            # TODO: add the score for reasoning
-            self.result_before.interpretability = interpretability
-        else:
             self.result_after = Results(
                 model_output=model_output,
-                answer=answer,
-                reasoning=reasoning,
-                after=False,
+                model_answer=answer,
+                model_reasoning=reasoning,
+                interpretability=interpretability,
+                after=after,
             )
             self.result_after.answer_correct = stats.are_identical(
                 answer, self.golden_answer
             )
-            self.result_after.interpretability = interpretability
+            # TODO: add the score for reasoning
+        else:
+            self.result_before = Results(
+                model_output=model_output,
+                model_answer=answer,
+                model_reasoning=reasoning,
+                interpretability=interpretability,
+                after=False,
+            )
+            self.result_before.answer_correct = stats.are_identical(
+                answer, self.golden_answer
+            )
 
     def get_result(self, multi_system: bool = True) -> dict[str, int | str]:
         """
