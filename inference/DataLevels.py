@@ -425,9 +425,7 @@ class Sample:
             )
             for (
                 golden_answer,
-                pred_answer_bef,
                 pred_answer_aft,
-                pred_reasoning_bef,
                 pred_reasoning_aft,
             ) in attributes:
                 print(
