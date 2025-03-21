@@ -134,6 +134,7 @@ class DataSaver:
                 evaluator.soft_match_accuracy,
                 evaluator.exact_match_std,
                 evaluator.soft_match_std,
+                after=after,
             ).values()
         )
         headers = list(accuracies_to_save[0].keys())
@@ -294,7 +295,7 @@ class DataSaver:
         run_headers = ["task_id"]
 
         for prompt, evaluator in split_evaluators.items():
-            prompt_headers = prepare_accuracy_headers(prompt.name)
+            prompt_headers = prepare_accuracy_headers(prompt.name, after=after)
             run_metrics = format_task_accuracies(
                 accuracies_to_save=run_metrics,
                 task_ids=task_ids,
@@ -311,7 +312,7 @@ class DataSaver:
 
         mean_headers = prepare_accuracy_headers("mean")
         run_headers.extend(mean_headers.values())
-        run_metrics = calculate_mean_accuracies(run_metrics, mean_headers)
+        run_metrics = calculate_mean_accuracies(run_metrics, mean_headers, after=after)
 
         self.save_output(
             data=list(run_metrics.values()),
