@@ -3,6 +3,8 @@ from __future__ import annotations
 import copy
 from dataclasses import dataclass
 
+import numpy as np
+
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
 from inference.utils import *
@@ -209,12 +211,14 @@ class SamplePart:
             model_output="",
             model_answer="",
             model_reasoning="",
+            interpretability=InterResult(attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]),
             after=False,
         )
         self.result_after: Results = Results(
             model_output="",
             model_answer="",
             model_reasoning="",
+            interpretability=InterResult(attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]),
             after=True,
         )
 
