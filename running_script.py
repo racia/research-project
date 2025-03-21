@@ -271,6 +271,7 @@ def run_setting(cfg: DictConfig) -> None:
                     results_file_name=results_file_names[split],
                     metrics_file_name=metrics_file_names[split],
                     setting=cfg.setting.name,
+                    multi_system=multi_system,
                 )
 
                 print("______________________________", end="\n\n")

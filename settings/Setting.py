@@ -292,8 +292,9 @@ class Setting(ABC):
         if self.multi_system:
             print("Before the setting was applied:")
             task.evaluator_before.print_accuracies(id_=task_id)
+
         task.evaluator_after.print_accuracies(id_=task_id)
-        task.set_results()
+        task.set_results(self.multi_system)
 
         print(f"The work on task {task_id} is finished successfully")
 
