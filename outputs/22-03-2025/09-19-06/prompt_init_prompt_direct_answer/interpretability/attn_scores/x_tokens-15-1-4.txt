@@ -1,0 +1,47 @@
+ Wolves
+ are
+ afraid
+ of
+ cats
+ are
+ afraid
+ of
+ sheep
+ is
+ mouse
+ Cats
+ are
+ afraid
+ of
+ wolves
+ is
+ cat
+ Sheep
+ are
+ afraid
+ of
+ mice
+ is
+ mouse
+ Jessica
+ is
+ cat
+What
+ is
+ afraid
+ of
+ wolves
+What
+ is
+ afraid
+ of
+ sheep
+What
+ is
+ afraid
+ of
+ wolves
+What
+ is
+ afraid
+ of

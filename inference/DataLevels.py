@@ -3,7 +3,7 @@ from __future__ import annotations
 import copy
 from dataclasses import dataclass
 
-from numpy import ndarray
+import numpy as np
 
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
@@ -63,18 +63,18 @@ class Features:
         self.not_mentioned += other.not_mentioned
         return self
 
-    def get(self) -> dict[str, int]:
+    def get(self, after: bool = True) -> dict[str, int]:
         """
         Get the features as a dictionary.
 
         :return: the features as a dictionary
         """
-        add = "_after" if self.after else "_before"
+        add = "after" if self.after else "before"
         return {
-            f"there{add}": self.there,
-            f"verbs{add}": self.verbs,
-            f"pronouns{add}": self.pronouns,
-            f"not_mentioned{add}": self.not_mentioned,
+            f"there_{add}": self.there,
+            f"verbs_{add}": self.verbs,
+            f"pronouns_{add}": self.pronouns,
+            f"not_mentioned_{add}": self.not_mentioned,
         }
 
     def __repr__(self) -> str:
@@ -96,6 +96,7 @@ class Results:
         model_output: str,
         model_answer: str,
         model_reasoning: str,
+        interpretability: InterResult,
         after: bool = True,
     ):
         """
@@ -104,6 +105,7 @@ class Results:
         :param model_output: the output of the model
         :param model_answer: the answer to the question
         :param model_reasoning: the reasoning for the answer
+        :param interpretability: the result of interpretability
         """
         self.after = after
 
@@ -116,11 +118,7 @@ class Results:
 
         self.features: Features = self.inspect_answer()
 
-        self.interpretability: InterResult = InterResult(
-            attn_scores=ndarray([]),
-            x_tokens=[],
-            y_tokens=[],
-        )
+        self.interpretability: InterResult = interpretability
 
         self.result_attrs: list[str] = [
             "model_answer",
@@ -169,7 +167,7 @@ class Results:
         except AttributeError as error:
             print(f"Error accessing attribute: {error}")
             attributes = {}
-        return {**attributes, **self.features.get()}
+        return {**attributes, **self.features.get(self.after)}
 
 
 class SamplePart:
@@ -259,16 +257,16 @@ class SamplePart:
             model_output="",
             model_answer="",
             model_reasoning="",
+            interpretability=InterResult(attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]),
             after=False,
         )
         self.result_after: Results = Results(
             model_output="",
             model_answer="",
             model_reasoning="",
+            interpretability=InterResult(attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]),
             after=True,
         )
-
-        self.result = self.get_result()
 
     def wrap(self, attr: str, replacements: dict[str, str]) -> str:
         """
@@ -340,27 +338,28 @@ class SamplePart:
         :return: None
         """
         if after:
-            self.result_before = Results(
-                model_output=model_output,
-                model_answer=answer,
-                model_reasoning=reasoning,
-            )
-            self.result_before.answer_correct = stats.are_identical(
-                answer, self.golden_answer
-            )
-            # TODO: add the score for reasoning
-            self.result_before.interpretability = interpretability
-        else:
             self.result_after = Results(
                 model_output=model_output,
                 model_answer=answer,
                 model_reasoning=reasoning,
-                after=False,
+                interpretability=interpretability,
+                after=after,
             )
             self.result_after.answer_correct = stats.are_identical(
                 answer, self.golden_answer
             )
-            self.result_after.interpretability = interpretability
+            # TODO: add the score for reasoning
+        else:
+            self.result_before = Results(
+                model_output=model_output,
+                model_answer=answer,
+                model_reasoning=reasoning,
+                interpretability=interpretability,
+                after=False,
+            )
+            self.result_before.answer_correct = stats.are_identical(
+                answer, self.golden_answer
+            )
 
     def get_result(self, multi_system: bool = False) -> dict[str, int | str]:
         """
@@ -378,6 +377,7 @@ class SamplePart:
         except AttributeError as error:
             print(f"Error accessing attribute: {error}")
             attributes = {}
+
         if multi_system:
             return {**attributes, **self.result_before.dict, **self.result_after.dict}
         return {**attributes, **self.result_after.dict}
@@ -402,65 +402,89 @@ class Sample:
         self.evaluator_before: AnswerEvaluator = evaluator
         self.evaluator_after: AnswerEvaluator = copy.deepcopy(evaluator)
 
-    def add_part(self, part: SamplePart, after: bool = True) -> None:
+    def add_part(self, part: SamplePart, multi_system: bool = False) -> None:
         """
         Add a part to the sample.
         Should be called after the output of the part is set with SamplePart.set_output().
 
         :param part: the part to add
-        :param after: whether the part is after the setting was applied to the model's output
+        :param multi_system: whether the part is for the setting with two models
         :return: None
         """
         self.parts.append(part)
 
-        if after:
-            self.evaluator_after.pred_answers.append(part.result_after.model_answer)
-            self.evaluator_after.pred_reasonings.append(
-                part.result_after.model_reasoning
-            )
-        else:
+        if multi_system:
             self.evaluator_before.pred_answers.append(part.result_before.model_answer)
             self.evaluator_before.pred_reasonings.append(
                 part.result_before.model_reasoning
             )
+        self.evaluator_after.pred_answers.append(part.result_after.model_answer)
+        self.evaluator_after.pred_reasonings.append(part.result_after.model_reasoning)
 
-    def print_sample_predictions(self) -> None:
+    def print_sample_predictions(self, multi_system: bool = False) -> None:
         """
         Print the model's predictions to compare with true values.
 
         :return: None
         """
-        attributes = zip(
-            self.evaluator_before.golden_answers,
-            self.evaluator_before.pred_answers,
-            self.evaluator_after.pred_answers,
-            self.evaluator_before.pred_reasonings,
-            self.evaluator_after.pred_reasonings,
-        )
-        print(
-            f"Model's predictions for the sample {self.sample_id}:",
-            "\t{0:<18s} PREDICTED-{1:<18s} PREDICTED-{2:<18s} REASONING-{1:<36s} REASONING-{2:<36s}".format(
-                "GOLDEN", "Bef", "Aft"
-            ),
-            sep="\n\n",
-            end="\n\n",
-        )
-        for (
-            golden_answer,
-            pred_answer_bef,
-            pred_answer_aft,
-            pred_reasoning_bef,
-            pred_reasoning_aft,
-        ) in attributes:
-            print(
-                "\t{0:<18s} {1:<18s} {2:<18s} {3:<18s} {4:<18s}".format(
-                    golden_answer,
-                    pred_answer_bef.replace("\n", "\t"),
-                    pred_answer_aft.replace("\n", "\t"),
-                    pred_reasoning_bef.replace("\n", "\t"),
-                    pred_reasoning_aft.replace("\n", "\t"),
-                ),
+        if multi_system:
+            attributes = zip(
+                self.evaluator_after.golden_answers,
+                self.evaluator_before.pred_answers,
+                self.evaluator_after.pred_answers,
+                self.evaluator_before.pred_reasonings,
+                self.evaluator_after.pred_reasonings,
             )
+            print(
+                f"Model's predictions for the sample {self.sample_id}:",
+                "\t{0:<18s} PREDICTED-{1:<18s} PREDICTED-{2:<18s} REASONING-{1:<36s} REASONING-{2:<36s}".format(
+                    "GOLDEN", "Bef", "Aft"
+                ),
+                sep="\n\n",
+                end="\n\n",
+            )
+            for (
+                golden_answer,
+                pred_answer_bef,
+                pred_answer_aft,
+                pred_reasoning_bef,
+                pred_reasoning_aft,
+            ) in attributes:
+                print(
+                    "\t{0:<18s} {1:<18s} {2:<18s} {3:<18s} {4:<18s}".format(
+                        golden_answer,
+                        pred_answer_bef.replace("\n", "\t"),
+                        pred_answer_aft.replace("\n", "\t"),
+                        pred_reasoning_bef.replace("\n", "\t"),
+                        pred_reasoning_aft.replace("\n", "\t"),
+                    ),
+                )
+        else:
+            attributes = zip(
+                self.evaluator_after.golden_answers,
+                self.evaluator_after.pred_answers,
+                self.evaluator_after.pred_reasonings,
+            )
+            print(
+                "Model's predictions for the sample:",
+                "\t{0:<18s} PREDICTED-{1:<18s} REASONING-{1:<36s} ".format(
+                    "GOLDEN", "Aft"
+                ),
+                sep="\n\n",
+                end="\n\n",
+            )
+            for (
+                golden_answer,
+                pred_answer_aft,
+                pred_reasoning_aft,
+            ) in attributes:
+                print(
+                    "\t{0:<18s} {1:<18s} {2:<18s}".format(
+                        golden_answer,
+                        pred_answer_aft.replace("\n", "\t"),
+                        pred_reasoning_aft.replace("\n", "\t"),
+                    ),
+                )
 
 
 class Task:
@@ -493,30 +517,32 @@ class Task:
         self.evaluator_before.update(sample.evaluator_before)
         self.evaluator_after.update(sample.evaluator_after)
 
-    def set_results(self) -> None:
+    def set_results(self, multi_system: bool) -> None:
         """
         Set the results for the task by combining the results from the parts of all samples.
         Additionally, calculate the mean of the accuracy metrics and add them to the results.
 
+        :param multi_system: whether the task is for the setting with two models
         :return: None
         """
         self.parts = [part for sample in self.samples for part in sample.parts]
-        self.results = [part.result for part in self.parts]
+        self.results = [part.get_result(multi_system) for part in self.parts]
 
-        self.features_before = sum(
-            [part.result_before.features for part in self.parts], self.features_before
-        )
+        if multi_system:
+            self.features_before = sum(
+                [part.result_before.features for part in self.parts],
+                self.features_before,
+            )
+            self.results[0][
+                "exact_match_accuracy_before"
+            ] = self.evaluator_before.exact_match_accuracy.get_mean()
+            self.results[0][
+                "soft_match_accuracy_before"
+            ] = self.evaluator_before.soft_match_accuracy.get_mean()
+
         self.features_after = sum(
             [part.result_after.features for part in self.parts], self.features_after
         )
-
-        self.results[0][
-            "exact_match_accuracy_before"
-        ] = self.evaluator_before.exact_match_accuracy.get_mean()
-        self.results[0][
-            "soft_match_accuracy_before"
-        ] = self.evaluator_before.soft_match_accuracy.get_mean()
-
         self.results[0][
             "exact_match_accuracy_after"
         ] = self.evaluator_after.exact_match_accuracy.get_mean()

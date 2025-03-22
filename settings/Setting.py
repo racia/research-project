@@ -67,7 +67,7 @@ class Setting(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> str:
         """
         Apply setting-specific postprocessing of the inital model output.
         For the baseline and skyline, this consists of parsing the output.
@@ -185,7 +185,7 @@ class Setting(ABC):
                     to_enumerate=self.to_enumerate,
                 )
 
-                chat.add_message(part=current_part.task, source=Source.user)
+                chat.add_message(part=current_part, source=Source.user)
 
                 formatted_prompt = self.prepare_prompt(chat=chat)
 
@@ -221,37 +221,50 @@ class Setting(ABC):
                     source=Source.assistant,
                 )
 
-                interpretability_before = (
-                    self.interpretability.get_attention(current_part, chat=chat)
-                    if self.multi_system and self.interpretability
-                    else None
-                )
-                answer, reasoning = parse_output(output=decoded_output)
+                if self.multi_system:
+                    interpretability_before = None
+                    try:
+                        interpretability_before = (
+                            self.interpretability.get_attention(current_part, chat=chat)
+                            if self.multi_system and self.interpretability
+                            else None
+                        )
+                    except ValueError as e:
+                        print("Interpretability called on empty model output")
+                    answer, reasoning = parse_output(output=decoded_output)
+                    current_part.set_output(
+                        model_output=decoded_output,
+                        answer=answer,
+                        reasoning=reasoning,
+                        interpretability=interpretability_before,
+                        after=False,
+                    )
+
+                # 7. Applying the changes that are specific to each setting
+                with torch.no_grad():
+                    decoded_output = self.apply_setting(
+                        decoded_output=decoded_output, chat=chat
+                    )
+                    answer, reasoning = parse_output(output=decoded_output)
+                try:
+
+                    # 8. Call interpretability attention score method
+                    interpretability_after = (
+                        self.interpretability.get_attention(current_part, chat=chat)
+                        if self.interpretability
+                        else None
+                    )
+                except ValueError as e:
+                    print("Interpretability called on empty model output")
                 current_part.set_output(
                     decoded_output,
                     answer,
                     reasoning,
-                    interpretability_before,
-                    after=False,
+                    interpretability_after,
+                    after=True,
                 )
 
-                # 7. Applying the changes that are specific to each setting
-                with torch.no_grad():
-                    answer, reasoning = self.apply_setting(
-                        decoded_output=decoded_output, chat=chat
-                    )
-
-                sample.add_part(current_part)
-
-                # 8. Call interpretability attention score method
-                interpretability_after = (
-                    self.interpretability.get_attention(current_part, chat=chat)
-                    if self.interpretability
-                    else None
-                )
-                current_part.set_output(
-                    decoded_output, answer, reasoning, interpretability_after
-                )
+                sample.add_part(current_part, multi_system=self.multi_system)
 
             sample.print_sample_predictions()
 
@@ -282,8 +295,9 @@ class Setting(ABC):
         if self.multi_system:
             print("Before the setting was applied:")
             task.evaluator_before.print_accuracies(id_=task_id)
+
         task.evaluator_after.print_accuracies(id_=task_id)
-        task.set_results()
+        task.set_results(self.multi_system)
 
         print(f"The work on task {task_id} is finished successfully")
 

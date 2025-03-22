@@ -10,7 +10,7 @@ from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
 from settings.config import Wrapper
-from settings.utils import Enumerate, parse_output
+from settings.utils import Enumerate
 
 
 class SpeculativeDecoding(Setting):
@@ -133,8 +133,8 @@ class SpeculativeDecoding(Setting):
         :param last_err_ix: the index of the last error
         :param student_str: the output of the student model as a string
 
-        :return: A tuple containing a boolean indicating whether the current CoT is valid, an integer or None indicating
-        the error index and the teacher's intervention or None
+        :return: A tuple containing a boolean indicating whether the current CoT is valid,
+        an integer or None indicating the error index and the teacher's intervention or None
         """
         suggested_token = None
         ix = 0
@@ -207,6 +207,7 @@ class SpeculativeDecoding(Setting):
             )
 
             suggested_token = str(top_tokens_decoded[0])
+            print("suggested_token", suggested_token)
 
             try:
                 student_token_id = self.tokenizer.encode(
@@ -420,7 +421,7 @@ class SpeculativeDecoding(Setting):
 
         return match
 
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> str:
         """
         Run the speculative decoding for one instance.
 
@@ -432,7 +433,7 @@ class SpeculativeDecoding(Setting):
 
         :param decoded_output: the current output of the student
         :param chat: the current chat, only necessary in the SD and feedback setting
-        :return: parsed output
+        :return: decoded model output
         """
         if not chat:
             raise ValueError("Chat is required for speculative decoding.")
@@ -480,9 +481,7 @@ class SpeculativeDecoding(Setting):
                 student_tokens, is_valid, error_id, teacher_intervention, chat
             )
 
-        model_out_parsed = parse_output(decoded_output)
-
-        return model_out_parsed
+        return decoded_output
 
     def speculative_decode(
         self,
@@ -582,9 +581,10 @@ class SpeculativeDecoding(Setting):
                 student_str=decoded_output,
             )
 
-            chat.add_message(
-                part=teacher_intervention, source="assistant", model_role="teacher"
-            )
+            if teacher_intervention:
+                chat.add_message(
+                    part=teacher_intervention, source="assistant", model_role="teacher"
+                )
 
             print(
                 "Teacher's evaluation:",

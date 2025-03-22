@@ -6,7 +6,7 @@ from typing import TextIO, Union, Iterable
 
 from data.utils import *
 from evaluation.Evaluator import MetricEvaluator
-from inference.DataLevels import Task, Features
+from inference.DataLevels import Task, Features, Split
 from inference.Prompt import Prompt
 from settings.config import DataSplits
 
@@ -99,7 +99,7 @@ class DataSaver:
         """
         if isinstance(file_name, str):
             file_name = self.results_path / file_name
-            if file_name.suffix == ".csv":
+            if file_name.suffix != ".csv":
                 raise ValueError("The file should be saved in a .csv format.")
         else:
             file_name = Path(file_name)
@@ -126,9 +126,11 @@ class DataSaver:
         :return: None
         """
         if after:
-            accuracy_file_name = self.results_path / "after" / accuracy_file_name
+            subdirectory = self.results_path / "after"
         else:
-            accuracy_file_name = self.results_path / "before" / accuracy_file_name
+            subdirectory = self.results_path / "before"
+        Path(subdirectory).mkdir(parents=True, exist_ok=True)
+        accuracy_file_name = subdirectory / accuracy_file_name
 
         accuracies_to_save = list(
             format_accuracy_metrics(
@@ -136,6 +138,7 @@ class DataSaver:
                 evaluator.soft_match_accuracy,
                 evaluator.exact_match_std,
                 evaluator.soft_match_std,
+                after=after,
             ).values()
         )
         headers = list(accuracies_to_save[0].keys())
@@ -196,12 +199,15 @@ class DataSaver:
             else:
                 part_result = part.result_before.interpretability.result
 
+            assert type(part_result) is dict
+
             try:
                 file_name = (
                     f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
                 )
                 attn_scores = [
-                    "\t".join(map(str, row)) for row in part_result.attn_scores.tolist()
+                    "\t".join(map(str, row))
+                    for row in part_result["attn_scores"].tolist()
                 ]
                 self.save_with_separator(
                     file_path=attn_scores_subdir / file_name, data=attn_scores
@@ -212,7 +218,7 @@ class DataSaver:
                     )
                     self.save_with_separator(
                         file_path=attn_scores_subdir / file_name,
-                        data=part_result.tokens,
+                        data=part_result[tokens],
                     )
             except AttributeError as e:
                 print(f"AttributeError: {e} in {part_result}")
@@ -229,6 +235,7 @@ class DataSaver:
         results_file_name: str,
         metrics_file_name: str,
         setting: str,
+        multi_system: bool = False,
     ) -> None:
         """
         Save the results for the task and the accuracy for the task to the separate files.
@@ -239,6 +246,7 @@ class DataSaver:
         :param results_file_name: the name of the file to save the results specific to the split
         :param metrics_file_name: the name of the file to save the accuracy specific to the split
         :param setting: the setting name
+        :param multi_system: if the setting uses two models
 
         :return: None
         """
@@ -250,19 +258,19 @@ class DataSaver:
         # get accuracy for the last task
         task_accuracy = {
             "task_id": task_id,
-            "exact_match_accuracy": task_data.evaluator_after.exact_match_accuracy.get_mean(),
-            "soft_match_accuracy": task_data.evaluator_after.soft_match_accuracy.get_mean(),
-            "exact_match_std": task_data.evaluator_after.exact_match_accuracy.get_std(),
-            "soft_match_std": task_data.evaluator_after.soft_match_accuracy.get_std(),
+            "exact_match_accuracy_after": task_data.evaluator_after.exact_match_accuracy.get_mean(),
+            "soft_match_accuracy_after": task_data.evaluator_after.soft_match_accuracy.get_mean(),
+            "exact_match_std_after": task_data.evaluator_after.exact_match_accuracy.get_std(),
+            "soft_match_std_after": task_data.evaluator_after.soft_match_accuracy.get_std(),
         }
 
-        if setting not in ["SD", "SpeculativeDecoding", "Feedback"]:
+        if multi_system:
             task_accuracy_before = {
                 "task_id": task_id,
-                "exact_match_accuracy": task_data.evaluator_before.exact_match_accuracy.get_mean(),
-                "soft_match_accuracy": task_data.evaluator_before.soft_match_accuracy.get_mean(),
-                "exact_match_std": task_data.evaluator_before.exact_match_std.get_mean(),
-                "soft_match_std": task_data.evaluator_before.soft_match_std.get_mean(),
+                "exact_match_accuracy_before": task_data.evaluator_before.exact_match_accuracy.get_mean(),
+                "soft_match_accuracy_before": task_data.evaluator_before.soft_match_accuracy.get_mean(),
+                "exact_match_std_before": task_data.evaluator_before.exact_match_std.get_mean(),
+                "soft_match_std_before": task_data.evaluator_before.soft_match_std.get_mean(),
             }
             task_accuracy.update(task_accuracy_before)
             self.save_interpretability(task_data, after=False)
@@ -277,24 +285,32 @@ class DataSaver:
     def save_run_accuracy(
         self,
         task_ids: list[int],
-        split_evaluators: dict[Prompt, MetricEvaluator],
+        splits: dict[Prompt, Split],
         features: Features,
         split_name: str,
+        after: bool = True,
     ) -> None:
         """
         Save the accuracies for the split run, including the mean accuracy for all tasks.
 
         :param task_ids: the task ids
-        :param split_evaluators: the evaluators per prompt
+        :param splits: the split objects of the data
         :param features: the features to save
         :param split_name: the name of the split
+        :param after: if to save the accuracy for after the setting was applied
         :return: None
         """
         run_metrics = {}
         run_headers = ["task_id"]
 
-        for prompt, evaluator in split_evaluators.items():
-            prompt_headers = prepare_accuracy_headers(prompt.name)
+        for prompt, split in splits.items():
+            prompt_headers = prepare_accuracy_headers(prompt.name, after=after)
+
+            if after:
+                evaluator = split.evaluator_after
+            else:
+                evaluator = split.evaluator_before
+
             run_metrics = format_task_accuracies(
                 accuracies_to_save=run_metrics,
                 task_ids=task_ids,
@@ -304,12 +320,15 @@ class DataSaver:
                 soft_match_std=evaluator.soft_match_std,
                 headers=prompt_headers,
             )
-            run_metrics = format_split_metrics(features, prompt_headers, run_metrics)
+
+            run_metrics = format_split_metrics(
+                features, prompt_headers, run_metrics, after=True if after else False
+            )
             run_headers.extend(prompt_headers.values())
 
         mean_headers = prepare_accuracy_headers("mean")
         run_headers.extend(mean_headers.values())
-        run_metrics = calculate_mean_accuracies(run_metrics, mean_headers)
+        run_metrics = calculate_mean_accuracies(run_metrics, mean_headers, after=after)
 
         self.save_output(
             data=list(run_metrics.values()),

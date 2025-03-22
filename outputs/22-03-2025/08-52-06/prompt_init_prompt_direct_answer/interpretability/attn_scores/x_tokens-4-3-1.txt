@@ -1,0 +1,20 @@
+ The
+ bedroom
+ is
+ south
+ of
+ the
+ kitchen
+ The
+ kitchen
+ is
+ south
+ of
+ the
+ hallway
+What
+ is
+ south
+ of
+ the
+ kitchen

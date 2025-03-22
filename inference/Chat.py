@@ -55,7 +55,7 @@ class Chat:
             self.messages = [
                 {
                     "role": Source.system,
-                    "content": system_prompt,
+                    "content": system_prompt.text,
                     "original_content": system_prompt.original_text,
                 }
             ]
@@ -113,7 +113,7 @@ class Chat:
         Converts either all the chat messages or the specified ones into ids ensuring that the input does not exceed
         the max_length. The system prompt is always included in the input, regardless of the chat_part.
         The assistant token id is always added at the end of the input.
-        
+
         (Partly taken from https://arxiv.org/abs/2402.18344)
 
         :param tokenizer: tokenizer to use
@@ -128,8 +128,9 @@ class Chat:
         for message in chat_part if chat_part else self.messages:
             message_ids = [generation_token(tokenizer, message["role"])]
 
-            message_ids.extend(tokenizer.encode(message["original_content"], add_special_tokens=False))
-            
+            message_ids.extend(
+                tokenizer.encode(message["original_content"], add_special_tokens=False)
+            )
             if len(history_ids) + len(message_ids) <= input_tokens_left:
                 history_ids += message_ids
             elif message["role"] == "assistant":
@@ -141,5 +142,4 @@ class Chat:
                 raise Exception("Unexpected error for message:", message)
 
         # take all the tokens that could fit
-        # input_tokens = system_prompt_ids + history_ids[-input_tokens_left:]
         return torch.LongTensor([history_ids[-input_tokens_left:]])

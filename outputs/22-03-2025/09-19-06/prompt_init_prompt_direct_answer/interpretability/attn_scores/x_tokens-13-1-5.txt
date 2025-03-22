@@ -1,0 +1,65 @@
+ John
+ Mary
+ went
+ the
+ kitchen
+ they
+ journey
+ the
+ bathroom
+Where
+ is
+ John
+ kitchen
+ John
+ Mary
+ moved
+ the
+ bedroom
+ they
+ moved
+ the
+ office
+Where
+ is
+ Mary
+ bedroom
+ Daniel
+ Mary
+ journey
+ the
+ hallway
+ they
+ travelled
+ the
+ kitchen
+Where
+ is
+ Daniel
+ hallway
+ Daniel
+ John
+ journey
+ the
+ hallway
+ Following
+ they
+ travelled
+ the
+ kitchen
+Where
+ is
+ Daniel
+ hallway
+ Daniel
+ Mary
+ moved
+ the
+ bathroom
+ they
+ travelled
+ the
+ office
+Where
+ is
+ Daniel
