@@ -3,3 +3,8 @@ Your teacher evaluated your answer and reasoning and found them to be flawed.
 You will receive the correct part of your previous answer and the next token the teacher proposes.
 Continue the reasoning and answer of the question from this point on.
 Follow the instructions and formatting of the task you received earlier.
+Here is a template for your answer:
+Reasoning: <REASONING>
+Answer: <ANSWER>
+
+Always use it to fill in your answer.

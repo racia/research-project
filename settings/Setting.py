@@ -7,7 +7,7 @@ import torch
 
 from evaluation.Evaluator import AnswerEvaluator
 from inference.Chat import Chat, Source
-from inference.DataLevels import SamplePart, Task, Sample
+from inference.DataLevels import Sample, SamplePart, Task
 from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
 from settings.Model import Model
@@ -222,6 +222,9 @@ class Setting(ABC):
                 )
 
                 if self.multi_system:
+                    print(
+                        f"Last chat message from student before applying the setting: {chat.messages['student'][-1]}"
+                    )
                     # 8. Call interpretability attention score method
                     interpretability_before = (
                         self.interpretability.get_attention(current_part, chat=chat)
@@ -250,6 +253,12 @@ class Setting(ABC):
                         if self.interpretability
                         else None
                     )
+
+                if self.multi_system:
+                    print(
+                        f"Last chat message from student after applying the setting: {chat.messages['student'][-1]}"
+                    )
+
                 current_part.set_output(
                     decoded_output,
                     answer,
@@ -259,6 +268,8 @@ class Setting(ABC):
                 )
 
                 sample.add_part(current_part, multi_system=self.multi_system)
+
+
 
             sample.print_sample_predictions()
 

@@ -103,6 +103,8 @@ def run_setting(cfg: DictConfig) -> None:
     else:
         raise ValueError("No base model is provided in the config.")
 
+    print(f"The model {model.model_name} is loaded successfully", flush=True)
+
     # Load scenery words
     scenery_words = loader.load_scenery()
 
@@ -502,5 +504,4 @@ def run_setting(cfg: DictConfig) -> None:
 
 
 if __name__ == "__main__":
-
     run_setting()
