@@ -1,4 +1,5 @@
 import re
+import warnings
 from pathlib import Path
 
 from data.DataLoader import DataLoader
@@ -116,8 +117,17 @@ def run(
         )
 
     parts = []
+    counter = 0
     for row in data:
         assert type(row) == dict
+
+        if not row["task"]:
+            warnings.warn(
+                f"Data is missing for task {row['task_id']}, skipping the row."
+            )
+            continue
+
+        counter += 1
 
         # Add missing columns
         row["part_id"] = 0 if "part_id" not in row else row["part_id"]
@@ -129,6 +139,7 @@ def run(
             "" if "silver_reasoning" not in row else row["silver_reasoning"]
         )
         h_patt = re.compile(r"(.+)_(?:after|before)")
+        row["id_"] = counter
 
         print(
             "\n".join(

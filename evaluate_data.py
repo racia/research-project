@@ -196,7 +196,7 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
 
 if __name__ == "__main__":
     # TODO: consider running standardize_data.py before running this script if there are not part_ids or silver_reasoning
-    data_path = "test/test_join/joined_data/valid_prompt_init_prompt_da_reasoning_results_upd.csv"
+    data_path = "test/test_join/joined_data2/valid_prompt_init_prompt_direct_answer_results_upd.csv"
     # TODO: make sure that the headers are present in the data
     headers = {
         "general": [

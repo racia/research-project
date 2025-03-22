@@ -144,13 +144,8 @@ class SpeculativeDecoding(Setting):
         )
 
         # add the output the student should continue as an assistant message
-        message_to_continue = self.resume_prompt.format_resume_message(
-            corrected_student_output=corrected_in,
-            add_to_chat=True,
-            chat=chat,
-            model_role="student",
-            source="assistant",
-        )
+        message_to_continue = self.resume_prompt.format_resume_message(corrected_in)
+        chat.add_message(message_to_continue, source="assistant", model_role="student")
         print(
             "\n--------------\n",
             "Message that the student should continue: ",
@@ -254,12 +249,16 @@ class SpeculativeDecoding(Setting):
                 student_out_approved = " "
 
             # the prompt is added into the chat in this method
-            self.eval_prompt.format_teacher_message(
-                student_out=student_out_approved,
-                add_to_chat=True,
-                chat=chat,
-                model_role="teacher",
-                source="user",
+            teacher_message = self.eval_prompt.format_teacher_message(
+                student_out_approved
+            )
+            chat.add_message(part=teacher_message, model_role="teacher", source="user")
+            print(
+                "\n--------------\n",
+                "Formatted teacher prompt:",
+                teacher_message,
+                sep="\n",
+                end="\n--------------\n\n",
             )
 
             formatted_eval_prompt = self.prepare_prompt(
