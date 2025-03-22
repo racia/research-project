@@ -228,9 +228,9 @@ class Setting(ABC):
                         self.interpretability.get_attention(current_part, chat=chat)
                         if self.multi_system and self.interpretability
                         else None
-                    )   
+                    )
                     # except ValueError as e:
-                        # print("Interpretability called on empty model output")
+                    # print("Interpretability called on empty model output")
                     answer, reasoning = parse_output(output=decoded_output)
                     current_part.set_output(
                         model_output=decoded_output,
@@ -239,7 +239,7 @@ class Setting(ABC):
                         interpretability=interpretability_before,
                         after=False,
                     )
-                
+
                 # 7. Applying the changes that are specific to each setting
                 with torch.no_grad():
                     decoded_output = self.apply_setting(
@@ -251,9 +251,9 @@ class Setting(ABC):
                         self.interpretability.get_attention(current_part, chat=chat)
                         if self.interpretability
                         else None
-                    )   
+                    )
                     # except ValueError as e:
-                        # print("Interpretability called on empty model output")
+                    # print("Interpretability called on empty model output")
                 current_part.set_output(
                     decoded_output,
                     answer,
@@ -277,7 +277,9 @@ class Setting(ABC):
                     exact_match_acc=exact_match_acc_before,
                     soft_match_acc=soft_match_acc_before,
                 )
-            exact_match_acc, soft_match_acc = sample.evaluator_after.calculate_accuracies()
+            exact_match_acc, soft_match_acc = (
+                sample.evaluator_after.calculate_accuracies()
+            )
             sample.evaluator_after.print_accuracies(
                 id_=sample_id,
                 exact_match_acc=exact_match_acc,

@@ -112,36 +112,36 @@ class Plotter:
 
     def draw_heat(
         self,
-        x: list[str],
+        x: list[str | int],
+        x_label: str,
         y: list[str],
         scores: np.ndarray,
         task_id: int,
         sample_id: int,
         part_id: int,
-        period_indices: list[int] = None
     ) -> None:
         """
         Draw a heat map with the interpretability attention scores for the current task.
         (Partly taken from https://arxiv.org/abs/2402.18344)
 
         :param x: the current task tokens
+        :param x_label: label for the x-axis
         :param y: the model output tokens
         :param scores: attention scores
         :param task_id: task id
         :param sample_id: sample id
         :param part_id: part id
-        :param period_indices: list of period indices for current task
         :return: None
         """
         plt.figure(figsize=(12, 6))
         axis = sns.heatmap(scores, cmap="RdBu_r", center=0)
-        x_ticks = [i + 0.5 for i in range(len(period_indices if period_indices else x))]
+        x_ticks = [i + 0.5 for i in range(len(x))]
         y_ticks = [i + 0.5 for i in range(len(y))]
 
-        plt.xlabel("Task Tokens" if not period_indices else "Sentence indeces", fontdict={"size": 10})
+        plt.xlabel(x_label, fontdict={"size": 10})
         plt.ylabel("Model Output Tokens", fontdict={"size": 10})
 
-        plt.xticks(ticks=x_ticks, labels=period_indices if period_indices else x, fontsize=5, rotation=90, ha="right")
+        plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=90, ha="right")
         plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
 
         plt.subplots_adjust(left=0.15, right=0.99, top=0.98, bottom=0.15)
@@ -215,8 +215,13 @@ class Plotter:
                 raise ValueError(
                     f"x and y must have the same first dimension, but have shapes {len(x_data)} and {len(y_data)}"
                 )
-            
-            plt.plot(x_data, y_data, label=prompt if type(prompt) is str else prompt.name, color=color)
+
+            plt.plot(
+                x_data,
+                y_data,
+                label=prompt if type(prompt) is str else prompt.name,
+                color=color,
+            )
 
         self._plot_general_details(
             x_label,

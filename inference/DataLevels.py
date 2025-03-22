@@ -189,6 +189,7 @@ class SamplePart:
         self.raw: dict = raw
         self.wrapper: Wrapper = wrapper
         self.to_enumerate: Enumerate = to_enumerate
+        self.supporting_sent_inx = raw.get("supporting_fact", [])
 
         self.structured_context, self.structured_question = structure_part(
             self.raw, self.to_enumerate
@@ -211,14 +212,18 @@ class SamplePart:
             model_output="",
             model_answer="",
             model_reasoning="",
-            interpretability=InterResult(attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]),
+            interpretability=InterResult(
+                attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]
+            ),
             after=False,
         )
         self.result_after: Results = Results(
             model_output="",
             model_answer="",
             model_reasoning="",
-            interpretability=InterResult(attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]),
+            interpretability=InterResult(
+                attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]
+            ),
             after=True,
         )
 
