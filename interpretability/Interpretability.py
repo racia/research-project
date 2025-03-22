@@ -56,11 +56,28 @@ class Interpretability:
                 if lemmatized not in self.scenery_words:
                     stop_words_ids.append(task_idx)
         return stop_words_ids
+    
+
+    def get_period_idxs(self, chat_ids: torch.LongTensor
+        ) -> tuple[int, int]:
+        """
+        Get tuple of start, stop indices of period from the current task chat ids.
+
+        :param chat_ids: current sample part ids (task and model's output)
+        :return: list of indices of periods in the current task
+        """
+        period_token_id = self.tokenizer.encode(".", add_special_tokens=False)[0]
+        period_token_indices = [i for i, tok in enumerate(chat_ids) if tok == period_token_id]
+        # Create start, stop tuples of indices
+        period_token_indices = [(lambda x:(start, stop))((start,stop)) for start, stop in zip([0]+period_token_indices,period_token_indices)]
+        return period_token_indices
+
 
     @staticmethod
     def get_attention_scores(
         output_tensor: torch.LongTensor,
         model_output_len: int,
+        period_indices: list = None
     ) -> np.ndarray:
         """
         Obtains the attention scores from a tensor of attention weights of the current chat.
@@ -70,19 +87,29 @@ class Interpretability:
 
         :param model_output_len: model output length
 
-        :return: 2D normalized attention scores averaged over layers and heads for the tokens of the current task.
+        :return: 2D normalized attention scores averaged over layers and heads for the tokens of the current task
         """
         attn_tensor = torch.stack(output_tensor["attentions"], dim=0).squeeze(1)
         # Mean over model layers
         attn_tensor = attn_tensor.mean(dim=0)
-        attn_scores = attn_tensor.float().detach().cpu().numpy()
+        attn_scores = attn_tensor.float().detach().cpu().numpy()        
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o system prompt)
         attn_scores = attn_scores[:, -model_output_len+1:, :-model_output_len+1].mean(
             axis=0
         )
+
         # Normalize the attention scores by the sum of all token attention scores
         attn_scores = attn_scores / attn_scores.sum(axis=-1, keepdims=True)
+
+        if period_indices:
+            # Additionally take mean of attention scores over each task sentence.        
+            #attn_scores = np.array([attn_scores.T[start:stop] for start, stop in period_indices]).squeeze().mean(axis=-1)
+            attn_scores = np.array([attn_scores[:,start:stop].mean(axis=-1) for start, stop in period_indices]).squeeze()
+            print(attn_scores, attn_scores.shape)
+            attn_scores = attn_scores.transpose(1, 0)  # Reshape to match expected output format
+            assert attn_scores.shape == (attn_scores.shape[0], len(period_indices))
+
         return attn_scores
 
     def filter_attention_scores(
@@ -142,33 +169,39 @@ class Interpretability:
 
         chat_ids = chat_ids[0, :].detach().cpu().numpy()
 
+        # Check task length 
+        period_indices = self.get_period_idxs(chat_ids)
+        overflow = True if len(period_indices) >= 10 else False
+
         # Obtain attention scores from model output
         attention_scores = self.get_attention_scores(
             output_tensor=output_tensor,
             model_output_len=model_output_len,
+            period_indices = period_indices if overflow else None
         )
 
-        attention_scores, attention_indices = self.filter_attention_scores(
-            attention_scores, chat_ids
-        )
-
-        # Decode the task tokens
-        x_tokens = self.tokenizer.batch_decode(chat_ids[attention_indices])
-
+        if not overflow:
+            attention_scores, attention_indices = self.filter_attention_scores(
+                attention_scores, chat_ids
+            )
+            # Decode the task tokens
+            x_tokens = self.tokenizer.batch_decode(chat_ids[attention_indices])
+        
         # Decode the model output tokens without "assistant" token
         chat_ids = chat_ids[1:]
         y_tokens = self.tokenizer.batch_decode(chat_ids[-model_output_len+1:])
 
         if self.save_heatmaps:
             self.plotter.draw_heat(
-                x=x_tokens,
+                x=x_tokens if not overflow else None,
                 y=y_tokens,
                 scores=attention_scores,
                 task_id=part.task_id,
                 sample_id=part.sample_id,
                 part_id=part.part_id,
+                period_indices=period_indices if overflow else None
             )
 
         torch.cuda.empty_cache()
 
-        return InterpretabilityResult(attention_scores, x_tokens, y_tokens)
+        return InterpretabilityResult(attention_scores, x_tokens if not overflow else period_indices, y_tokens)

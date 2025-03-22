@@ -25,10 +25,10 @@ data:
   # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  task_ids: [1]
+  task_ids: [3]
   # to get all samples use ~ (will be converted to None)
   # to set a specific number of samples use an int
-  samples_per_task: 1
+  samples_per_task: 2
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:

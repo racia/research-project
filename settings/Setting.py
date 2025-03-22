@@ -223,14 +223,14 @@ class Setting(ABC):
                 )
 
                 if self.multi_system:
-                    try:
-                        interpretability_before = (
-                            self.interpretability.get_attention(current_part, chat=chat)
-                            if self.multi_system and self.interpretability
-                            else None
-                        )   
-                    except ValueError as e:
-                        print("Interpretability called on empty model output")
+                    # try:
+                    interpretability_before = (
+                        self.interpretability.get_attention(current_part, chat=chat)
+                        if self.multi_system and self.interpretability
+                        else None
+                    )   
+                    # except ValueError as e:
+                        # print("Interpretability called on empty model output")
                     answer, reasoning = parse_output(output=decoded_output)
                     current_part.set_output(
                         model_output=decoded_output,
@@ -246,16 +246,14 @@ class Setting(ABC):
                         decoded_output=decoded_output, chat=chat
                     )
                     answer, reasoning = parse_output(output=decoded_output)
-                try:
-                        
-                    # 8. Call interpretability attention score method
+                    # try:
                     interpretability_after = (
                         self.interpretability.get_attention(current_part, chat=chat)
                         if self.interpretability
                         else None
-                    )
-                except ValueError as e:
-                    print("Interpretability called on empty model output")
+                    )   
+                    # except ValueError as e:
+                        # print("Interpretability called on empty model output")
                 current_part.set_output(
                     decoded_output,
                     answer,
