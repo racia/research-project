@@ -180,7 +180,7 @@ class DataSaver:
         :return: None
         """
         with open(file_path, "w", encoding="UTF-8") as file:
-            file.write(sep.join(data))
+            file.write(sep.join([item.strip() for item in data]))
 
     def save_interpretability(self, task_data: Task, after: bool = True) -> None:
         """

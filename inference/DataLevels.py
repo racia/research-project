@@ -257,14 +257,18 @@ class SamplePart:
             model_output="",
             model_answer="",
             model_reasoning="",
-            interpretability=InterResult(attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]),
+            interpretability=InterResult(
+                attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]
+            ),
             after=False,
         )
         self.result_after: Results = Results(
             model_output="",
             model_answer="",
             model_reasoning="",
-            interpretability=InterResult(attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]),
+            interpretability=InterResult(
+                attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]
+            ),
             after=True,
         )
 
@@ -451,7 +455,7 @@ class Sample:
                 pred_reasoning_aft,
             ) in attributes:
                 print(
-                    "\t{0:<18s} {1:<18s} {2:<18s} {3:<18s} {4:<18s}".format(
+                    "\t{0:<18s} {1:<18s} {2:<18s} {3:<36s} {4:<36s}".format(
                         golden_answer,
                         pred_answer_bef.replace("\n", "\t"),
                         pred_answer_aft.replace("\n", "\t"),
@@ -467,8 +471,8 @@ class Sample:
             )
             print(
                 "Model's predictions for the sample:",
-                "\t{0:<18s} PREDICTED-{1:<18s} REASONING-{1:<36s} ".format(
-                    "GOLDEN", "Aft"
+                "\t{0:<18s} {1:<25s} {2} ".format(
+                    "GOLDEN", "PREDICTED-Aft", "REASONING-Aft"
                 ),
                 sep="\n\n",
                 end="\n\n",
@@ -479,7 +483,7 @@ class Sample:
                 pred_reasoning_aft,
             ) in attributes:
                 print(
-                    "\t{0:<18s} {1:<18s} {2:<18s}".format(
+                    "\t{0:<18s} {1:<25s} {2}".format(
                         golden_answer,
                         pred_answer_aft.replace("\n", "\t"),
                         pred_reasoning_aft.replace("\n", "\t"),

@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 import re
+from pathlib import Path
 
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
@@ -39,15 +42,15 @@ def remove_unnecessary_columns(row: dict) -> None:
             del row[col]
 
 
-def extract_split(data_path) -> str:
+def extract_split(path) -> str:
     """
     Extract the split from the data path. If the split is not found, return "split".
 
-    :param data_path: The path to the data.
+    :param path: The path to the data.
     :return: The split.
     """
     for split in ["valid", "test", "train"]:
-        if split in data_path:
+        if split in path:
             return split
     return "split"
 
@@ -64,6 +67,7 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
     loader = DataLoader()
     saver = DataSaver(save_to=save_path)
     plotter = Plotter(results_path=saver.run_path)
+    interpretability_path = str(Path(data_path).parent / "interpretability/attn_scores")
 
     data_split = extract_split(data_path)
 
@@ -71,13 +75,13 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
     headers_results_after = [f"{result}_after" for result in headers["results"]]
     all_headers = headers["general"] + headers_results_before + headers_results_after
 
-    data = loader.load_result_data(data_path, headers=all_headers, list_output=True)
+    data = loader.load_result_data(
+        result_file_path=data_path, headers=all_headers, list_output=True
+    )
     before = True if "model_output_before" in data[0].keys() else False
 
     for row in data:
         remove_unnecessary_columns(row)
-
-    # TODO: load the interpretability results
 
     if before:
         split_evaluator_before = MetricEvaluator(level="split")
@@ -102,6 +106,12 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
                 ]
             )
         )
+        interpretability_result = loader.load_interpretability(
+            part.task_id,
+            part.sample_id,
+            part.part_id,
+            attn_scores_path=interpretability_path,
+        )
         part.result_after = Results(
             **dict(
                 [
@@ -113,13 +123,14 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
                     for result in headers_results_after
                 ]
             ),
+            interpretability=interpretability_result,
             after=True,
         )
 
         if part.sample_id == 1 and part.part_id == 1:
             if task:
                 task.evaluator_after.print_accuracies(id_=part.task_id)
-                task.set_results()
+                task.set_results(multi_system=False)
 
             task = Task(part.task_id)
             split.add_task(task)

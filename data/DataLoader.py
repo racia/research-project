@@ -6,8 +6,11 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Union
 
+import numpy as np
+
 from data.DataProcessor import DataProcessor
 from data.utils import convert_true
+from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits
 
 
@@ -222,6 +225,43 @@ class DataLoader:
                 with open(entry.path, "r", encoding="UTF-8") as f:
                     scenery_words.update(f.read().splitlines())
         return scenery_words
+
+    @staticmethod
+    def load_interpretability(
+        task_id: int, sample_id: int, part_id: int, attn_scores_path: str
+    ) -> InterpretabilityResult:
+        """
+        Load the interpretability results for a specific part.
+
+        :param task_id: task id
+        :param sample_id: sample id
+        :param part_id: part id
+        :param attn_scores_path: path to the attention scores subdirectory
+        :return: Interpretability Result object
+        """
+        path = Path(attn_scores_path)
+        if path.name != "attn_scores":
+            raise ValueError("The attention subdirectory is not located.")
+
+        attn_scores_file = f"attn_scores-{task_id}-{sample_id}-{part_id}.txt"
+        with open(path / attn_scores_file, "r", encoding="UTF-8") as f:
+            attn_scores_rows = f.read().splitlines()
+            attn_scores = [
+                list(map(float, row.split("\t"))) for row in attn_scores_rows
+            ]
+
+        x_tokens_file = f"x_tokens-{task_id}-{sample_id}-{part_id}.txt"
+        with open(path / x_tokens_file, "r", encoding="UTF-8") as f:
+            x_tokens = [token.strip() for token in f.read().splitlines()]
+
+        y_tokens_file = f"y_tokens-{task_id}-{sample_id}-{part_id}.txt"
+        with open(path / y_tokens_file, "r", encoding="UTF-8") as f:
+            y_tokens = [token.strip() for token in f.read().splitlines()]
+
+        interpretability_result = InterpretabilityResult(
+            attn_scores=np.array(attn_scores), x_tokens=x_tokens, y_tokens=y_tokens
+        )
+        return interpretability_result
 
 
 if __name__ == "__main__":
