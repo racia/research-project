@@ -135,13 +135,29 @@ class Plotter:
         """
         plt.figure(figsize=(12, 6))
         axis = sns.heatmap(scores, cmap="RdBu_r", center=0)
-        x_ticks = [i + 0.5 for i in range(len(x))]
+
+        # Add coloured x tokens to the plot
+        for i, token in enumerate(x):
+            color = "red" if isinstance(token, str) and "*" in token else "black"
+            axis.text(
+                i + 0.5,
+                -0.5,
+                token,
+                fontsize=5,
+                color=color,
+                rotation=90,
+                ha="right",
+                va="top",
+                transform=axis.transData,
+            )
+
+        # x_ticks = [i + 0.5 for i in range(len(x))]
         y_ticks = [i + 0.5 for i in range(len(y))]
 
         plt.xlabel(x_label, fontdict={"size": 10})
         plt.ylabel("Model Output Tokens", fontdict={"size": 10})
 
-        plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=90, ha="right")
+        # plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=90, ha="right")
         plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
 
         plt.subplots_adjust(left=0.15, right=0.99, top=0.98, bottom=0.15)
