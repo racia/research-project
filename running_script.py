@@ -266,7 +266,6 @@ def run_setting(cfg: DictConfig) -> None:
                     headers=cfg.results.headers,
                     results_file_name=results_file_names[split],
                     metrics_file_name=metrics_file_names[split],
-                    setting=cfg.setting.name,
                     multi_system=multi_system,
                 )
 
@@ -302,14 +301,16 @@ def run_setting(cfg: DictConfig) -> None:
             if multi_system:
                 saver.save_split_accuracy(
                     evaluator=split_.evaluator_before,
-                    accuracy_file_name=metrics_file_names[split],
+                    metrics_file_name=metrics_file_names[split],
+                    after=False,
                 )
                 saver.save_split_metrics(
                     features=split_.features_before,
-                    result_file_names=[
+                    metrics_file_names=[
                         metrics_file_names[split],
                         results_file_names[split],
                     ],
+                    after=False,
                 )
                 # Plot the prompt accuracies for the split
                 plotter.plot_acc_per_task_and_prompt(
@@ -325,14 +326,16 @@ def run_setting(cfg: DictConfig) -> None:
 
             saver.save_split_accuracy(
                 evaluator=split_.evaluator_after,
-                accuracy_file_name=metrics_file_names[split],
+                metrics_file_name=metrics_file_names[split],
+                after=True,
             )
             saver.save_split_metrics(
                 features=split_.features_after,
-                result_file_names=[
+                metrics_file_names=[
                     metrics_file_names[split],
                     results_file_names[split],
                 ],
+                after=True,
             )
             # Plot the prompt accuracies for the split
             plotter.plot_acc_per_task_and_prompt(

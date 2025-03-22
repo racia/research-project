@@ -79,6 +79,7 @@ class DataSaver:
         data: list[dict[str, str | int | float]],
         headers: list | tuple,
         file_name: str | Path,
+        path_add: str = "",
     ) -> None:
         """
         This function allows to save the data continuously throughout the run.
@@ -93,10 +94,12 @@ class DataSaver:
         :param data: one row as list of strings or multiple such rows
         :param headers: the headers for the csv file
         :param file_name: the name of the file to save the data
+        :param path_add: an addition to the results path (goes between results_path and file_name)
         :return: None
         """
         if isinstance(file_name, str):
-            file_name = self.results_path / file_name
+            file_name = self.results_path / path_add / file_name
+            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
             if file_name.suffix != ".csv":
                 raise ValueError("The file should be saved in a .csv format.")
         else:
@@ -111,7 +114,7 @@ class DataSaver:
     def save_split_accuracy(
         self,
         evaluator: MetricEvaluator,
-        accuracy_file_name: str,
+        metrics_file_name: str,
         after: bool = True,
     ) -> None:
         """
@@ -119,17 +122,10 @@ class DataSaver:
         including the mean accuracy for all tasks.
 
         :param evaluator: the evaluator
-        :param accuracy_file_name: the name of the file to save the accuracies
+        :param metrics_file_name: the name of the file to save the accuracies
         :param after: if to save the accuracy for after the setting was applied
         :return: None
         """
-        if after:
-            subdirectory = self.results_path / "after"
-        else:
-            subdirectory = self.results_path / "before"
-        Path(subdirectory).mkdir(parents=True, exist_ok=True)
-        accuracy_file_name = subdirectory / accuracy_file_name
-
         accuracies_to_save = list(
             format_accuracy_metrics(
                 evaluator.exact_match_accuracy,
@@ -143,28 +139,31 @@ class DataSaver:
         self.save_output(
             data=accuracies_to_save,
             headers=headers,
-            file_name=accuracy_file_name,
+            file_name=metrics_file_name,
+            path_add="after" if after else "before",
         )
 
     def save_split_metrics(
-        self, features: Features, result_file_names: list[str]
+        self, features: Features, metrics_file_names: list[str], after: bool = True
     ) -> None:
         """
         Save the metrics for all the tasks in a split.
 
         :param features: the features to save
-        :param result_file_names: the path to save the results
+        :param metrics_file_names: the path to save the metrics
+        :param after: if to save the metrics for after the setting was applied
         :return: None
         """
         headers = ["id", "task_id"]
         features = [
             {h: m for h, m in zip(headers, metric)} for metric in features.get().items()
         ]
-        for result_file_name in result_file_names:
+        for result_file_name in metrics_file_names:
             self.save_output(
                 data=features,
                 headers=headers,
                 file_name=result_file_name,
+                path_add="after" if after else "before",
             )
 
     @staticmethod
@@ -188,7 +187,12 @@ class DataSaver:
         :param after: if to save the interpretability result for after the setting was applied
         :return: None
         """
-        attn_scores_subdir = self.results_path / "interpretability" / "attn_scores"
+        attn_scores_subdir = (
+            self.results_path
+            / ("after" if after else "before")
+            / "interpretability"
+            / "attn_scores"
+        )
         Path.mkdir(attn_scores_subdir, exist_ok=True, parents=True)
 
         for part in task_data.parts:
@@ -232,7 +236,6 @@ class DataSaver:
         headers: list[str],
         results_file_name: str,
         metrics_file_name: str,
-        setting: str,
         multi_system: bool = False,
     ) -> None:
         """
@@ -243,7 +246,6 @@ class DataSaver:
         :param headers: the headers for the results
         :param results_file_name: the name of the file to save the results specific to the split
         :param metrics_file_name: the name of the file to save the accuracy specific to the split
-        :param setting: the setting name
         :param multi_system: if the setting uses two models
 
         :return: None
@@ -277,6 +279,7 @@ class DataSaver:
             data=[task_accuracy],
             headers=list(task_accuracy.keys()),
             file_name=metrics_file_name,
+            path_add="after",
         )
         self.save_interpretability(task_data, after=True)
 
@@ -332,6 +335,7 @@ class DataSaver:
             data=list(run_metrics.values()),
             headers=run_headers,
             file_name=self.run_path / f"{split_name}_accuracies.csv",
+            path_add="after" if after else "before",
         )
 
     @staticmethod
