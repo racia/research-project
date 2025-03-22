@@ -452,8 +452,8 @@ class Task:
         self.samples: list[Sample] = []
         self.parts: list[SamplePart] = []
 
-        self.evaluator_before: MetricEvaluator = MetricEvaluator(level="split")
-        self.evaluator_after: MetricEvaluator = MetricEvaluator(level="split")
+        self.evaluator_before: MetricEvaluator = MetricEvaluator(level="task")
+        self.evaluator_after: MetricEvaluator = MetricEvaluator(level="task")
 
         self.features_before: Features = Features(0, 0, 0, 0)
         self.features_after: Features = Features(0, 0, 0, 0)

@@ -76,7 +76,7 @@ def run_setting(cfg: DictConfig) -> None:
     print(f"Results will be saved to: {saver.results_path}")
     plotter = Plotter(results_path=saver.results_path)
 
-    run_splits = defaultdict(dict[str, dict[Prompt, Split]])
+    run_splits = defaultdict(lambda: defaultdict(dict))
 
     setting = None
 
@@ -350,7 +350,8 @@ def run_setting(cfg: DictConfig) -> None:
 
         print("\n- RUN RESULTS -", end="\n\n")
 
-        prompt_evaluator_before.print_accuracies(id_=init_prompt.name)
+        if multi_system:
+            prompt_evaluator_before.print_accuracies(id_=init_prompt.name)
         prompt_evaluator_after.print_accuracies(id_=init_prompt.name)
 
         print(
