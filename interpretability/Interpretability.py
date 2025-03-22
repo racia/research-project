@@ -104,11 +104,15 @@ class Interpretability:
 
         if period_indices:
             # Additionally take mean of attention scores over each task sentence.        
-            #attn_scores = np.array([attn_scores.T[start:stop] for start, stop in period_indices]).squeeze().mean(axis=-1)
             attn_scores = np.array([attn_scores[:,start:stop].mean(axis=-1) for start, stop in period_indices]).squeeze()
-            print(attn_scores, attn_scores.shape)
-            attn_scores = attn_scores.transpose(1, 0)  # Reshape to match expected output format
-            assert attn_scores.shape == (attn_scores.shape[0], len(period_indices))
+            
+            attn_scores_T = attn_scores.transpose(1, 0)  # Reshape to match expected output format
+            
+            # Normalize the attention scores by the sum of all token attention scores
+            attn_scores_T = attn_scores_T / attn_scores_T.sum(axis=0, keepdims=True) 
+
+            assert attn_scores_T.shape == (attn_scores.shape[1], len(period_indices))
+            return attn_scores_T
 
         return attn_scores
 
