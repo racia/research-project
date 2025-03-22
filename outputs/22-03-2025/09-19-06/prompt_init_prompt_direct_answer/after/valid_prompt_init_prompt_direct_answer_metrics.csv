@@ -1,3 +1,0 @@
-task_id	exact_match_accuracy_after	soft_match_accuracy_after	exact_match_std_after	soft_match_std_after
-mean	0.58	0.65	0.0	0.0
-std	0.33	0.22		
