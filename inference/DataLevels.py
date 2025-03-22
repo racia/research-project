@@ -21,11 +21,20 @@ class Features:
     This class handles the tracking of features.
     """
 
-    def __init__(self, there: int, verbs: int, pronouns: int, not_mentioned: int):
+    def __init__(
+        self,
+        there: int,
+        verbs: int,
+        pronouns: int,
+        not_mentioned: int,
+        after: bool = True,
+    ):
         self.there: int = there
         self.verbs: int = verbs
         self.pronouns: int = pronouns
         self.not_mentioned: int = not_mentioned
+
+        self.after: bool = after
 
     def __add__(self, other: Features) -> Features:
         """
@@ -60,11 +69,12 @@ class Features:
 
         :return: the features as a dictionary
         """
+        add = "_after" if self.after else "_before"
         return {
-            "there": self.there,
-            "verbs": self.verbs,
-            "pronouns": self.pronouns,
-            "not_mentioned": self.not_mentioned,
+            f"there{add}": self.there,
+            f"verbs{add}": self.verbs,
+            f"pronouns{add}": self.pronouns,
+            f"not_mentioned{add}": self.not_mentioned,
         }
 
     def __repr__(self) -> str:
@@ -113,9 +123,9 @@ class Results:
         )
 
         self.result_attrs: list[str] = [
-            "model_reasoning",
             "model_answer",
             "correct",
+            "model_reasoning",
             "model_output",
         ]
 
@@ -139,6 +149,7 @@ class Results:
             verbs=contains_verb(self.model_answer),
             pronouns=contains_pronouns(self.model_answer),
             not_mentioned=contains_not_mentioned(self.model_answer),
+            after=self.after,
         )
         return self.features
 
@@ -151,7 +162,7 @@ class Results:
         add = "after" if self.after else "before"
         try:
             attributes = {
-                f"{attr.strip('_')}_{add}": getattr(self, attr)
+                f"{attr}_{add}": getattr(self, attr)
                 for attr in self.result_attrs
                 if hasattr(self, attr)
             }
@@ -351,10 +362,11 @@ class SamplePart:
             )
             self.result_after.interpretability = interpretability
 
-    def get_result(self) -> dict[str, int | str]:
+    def get_result(self, multi_system: bool = False) -> dict[str, int | str]:
         """
         Get the result of the part.
 
+        :param multi_system: whether to return the results for before and after the setting was applied
         :return: the result of the part
         """
         try:
@@ -366,7 +378,9 @@ class SamplePart:
         except AttributeError as error:
             print(f"Error accessing attribute: {error}")
             attributes = {}
-        return {**attributes, **self.result_before.dict, **self.result_after.dict}
+        if multi_system:
+            return {**attributes, **self.result_before.dict, **self.result_after.dict}
+        return {**attributes, **self.result_after.dict}
 
 
 class Sample:
@@ -424,7 +438,7 @@ class Sample:
             self.evaluator_after.pred_reasonings,
         )
         print(
-            "Model's predictions for the sample:",
+            f"Model's predictions for the sample {self.sample_id}:",
             "\t{0:<18s} PREDICTED-{1:<18s} PREDICTED-{2:<18s} REASONING-{1:<36s} REASONING-{2:<36s}".format(
                 "GOLDEN", "Bef", "Aft"
             ),

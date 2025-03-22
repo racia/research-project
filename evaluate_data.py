@@ -1,9 +1,10 @@
-from pathlib import Path
+import re
 
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
-from inference.DataLevels import SamplePart, Results, Task, Sample, Split
+from inference.DataLevels import Task, Sample, Split, SamplePart, Results
+from plots.Plotter import Plotter
 
 
 def mean_attn_score(attn_scores: list[float]) -> float:
@@ -38,23 +39,6 @@ def remove_unnecessary_columns(row: dict) -> None:
             del row[col]
 
 
-def add_part_ids(parts: list[SamplePart]) -> list[SamplePart]:
-    """
-    Add part ids to the parts.
-
-    :param parts: The parts to add the path ids to.
-    :return: The parts with the path ids.
-    """
-    part_id = 1
-    for inx, part in enumerate(parts):
-        if parts[inx - 1].sample_id != part.sample_id:
-            part_id = 1
-        if part.part_id == 0:
-            part.part_id = part_id
-            part_id += 1
-    return parts
-
-
 def extract_split(data_path) -> str:
     """
     Extract the split from the data path. If the split is not found, return "split".
@@ -79,121 +63,65 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
     """
     loader = DataLoader()
     saver = DataSaver(save_to=save_path)
+    plotter = Plotter(results_path=saver.run_path)
 
     data_split = extract_split(data_path)
 
     headers_results_before = [f"{result}_before" for result in headers["results"]]
     headers_results_after = [f"{result}_after" for result in headers["results"]]
-    all_headers = (
-        headers["general"]
-        + headers_results_before
-        + headers["results"]
-        + headers_results_after
-    )
+    all_headers = headers["general"] + headers_results_before + headers_results_after
 
     data = loader.load_result_data(data_path, headers=all_headers, list_output=True)
+    before = True if "model_output_before" in data[0].keys() else False
 
-    # TODO: Make sure that the reasoning data corresponds to the results data
-    silver_reasoning_path = "data/golden_reasoning_1.csv"
-    silver_reasoning_headers = [
-        "task_id",
-        "sample_id",
-        "part_id",
-        "context",
-        "question",
-        "answer",
-        "reasoning",
-    ]
-    silver_reasoning_data = loader.load_result_data(
-        silver_reasoning_path,
-        headers=silver_reasoning_headers,
-        list_output=True,
-        sep=",",
-    )
+    for row in data:
+        remove_unnecessary_columns(row)
 
     # TODO: load the interpretability results
 
-    before = None
-    general = None
-
-    parts = []
-    for row, row_sil in zip(data, silver_reasoning_data):
-        assert type(row) == dict
-
-        # Add missing columns
-        row["part_id"] = 0 if "part_id" not in row else row["part_id"]
-        row["model_output"] = "" if "model_output" not in row else row["model_output"]
-
-        if row["golden_answer"] == row_sil["answer"]:
-            row["silver_reasoning"] = row_sil["reasoning"]
-        else:
-            raise ValueError(
-                "The golden answer in the results does not match the answer in the silver reasoning data."
-            )
-
-        remove_unnecessary_columns(row)
-
-        print("Row:")
-        print(row)
-
-        for gen_header in headers["general"]:
-            if gen_header in row:
-                print(f"{gen_header}: {row[gen_header]}")
-
-        part = SamplePart(
-            **{gen_header: row[gen_header] for gen_header in headers["general"]}
-        )
-        if "model_answer_before" in row:
-            part.result_before = Results(
-                **{result: row[result] for result in headers_results_before}
-            )
-            before = True
-        if "model_answer_after" in row:
-            part.result_after = Results(
-                **{result: row[result] for result in headers_results_after}
-            )
-        else:
-            part.result_after = Results(
-                **{result: row[result] for result in headers["results"]}
-            )
-            general = True
-
-        parts.append(part)
-        print(part.result_after)
-
-        break
-
-    if parts[0].part_id == 0:
-        parts = add_part_ids(parts)
-
-        path = Path(data_path)
-        file_name = path.parent / f"{path.stem}_with_parts.csv"
-
-        part_dicts = [part.get_result() for part in parts]
-        print(part_dicts[0])
-        print(all_headers)
-
-        saver.save_output(part_dicts, all_headers, file_name)
-
-    samples = []
-    tasks = []
-    if before and not general:
+    if before:
         split_evaluator_before = MetricEvaluator(level="split")
         # TODO make a function for each repetition
         pass
 
-    sample = False
-    task = False
+    sample = None
+    task = None
     split = Split(name=data_split)
+    h_patt = re.compile(r"(.+)_(?:after|before)")
 
-    for idx, part in enumerate(parts):
-        if part.sample_id == 1:
+    for idx, row in enumerate(data):
+        part = SamplePart(
+            **dict(
+                [
+                    (
+                        (h_patt.match(gen_header)[1], row[h_patt.match(gen_header)[1]])
+                        if h_patt.match(gen_header)
+                        else (gen_header, row[gen_header])
+                    )
+                    for gen_header in headers["general"]
+                ]
+            )
+        )
+        part.result_after = Results(
+            **dict(
+                [
+                    (
+                        (h_patt.match(result)[1], row[result])
+                        if h_patt.match(result)
+                        else (result, row[result])
+                    )
+                    for result in headers_results_after
+                ]
+            ),
+            after=True,
+        )
+
+        if part.sample_id == 1 and part.part_id == 1:
             if task:
                 task.evaluator_after.print_accuracies(id_=part.task_id)
                 task.set_results()
 
             task = Task(part.task_id)
-            tasks.append(task)
             split.add_task(task)
 
         if part.part_id == 1:
@@ -214,23 +142,41 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
                 sample_id=part.sample_id,
                 evaluator=sample_evaluator,
             )
-
-            samples.append(sample)
             task.add_sample(sample)
 
         sample.evaluator_after.golden_answers.append(part.golden_answer)
         sample.evaluator_after.silver_reasonings.append(part.silver_reasoning)
         sample.add_part(part)
 
-        break
+    sample.print_sample_predictions()
+    exact_match_acc, soft_match_acc = sample.evaluator_after.calculate_accuracies()
+    sample.evaluator_after.print_accuracies(
+        id_=split.tasks[-1].samples[-1].sample_id,
+        exact_match_acc=exact_match_acc,
+        soft_match_acc=soft_match_acc,
+    )
 
-    pass
+    task.evaluator_after.print_accuracies(id_=split.tasks[-1].task_id)
+    task.set_results()
+
+    split.evaluator_after.print_accuracies(id_=data_split)
+
+    plotter.plot_acc_per_task_and_prompt(
+        acc_per_prompt_task={
+            "exact_match_accuracy": split.evaluator_before.exact_match_accuracy,
+            "soft_match_accuracy": split.evaluator_before.soft_match_accuracy,
+            "exact_match_std": split.evaluator_before.exact_match_std,
+            "soft_match_std": split.evaluator_before.soft_match_std,
+        },
+        y_label="Accuracies and Standard Deviations",
+        plot_name_add=f"{split.name}_after_",
+    )
 
 
 if __name__ == "__main__":
-    data_path = (
-        "test/test_join/joined_data/valid_prompt_init_prompt_da_reasoning_results.csv"
-    )
+    # TODO: consider running standardize_data.py before running this script if there are not part_ids or silver_reasoning
+    data_path = "test/test_join/joined_data/valid_prompt_init_prompt_da_reasoning_results_upd.csv"
+    # TODO: make sure that the headers are present in the data
     headers = {
         "general": [
             "id_",
@@ -241,10 +187,10 @@ if __name__ == "__main__":
             "golden_answer",
             "silver_reasoning",
         ],
-        "results": [
+        "results": [  # for both before and after
             "model_answer",
             "model_reasoning",
-            "model_output",
+            "model_output",  # make sure it's not 'model_result'
         ],
     }
     run(data_path=data_path, headers=headers, save_path="test/test_join/joined_data/")

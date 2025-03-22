@@ -144,6 +144,7 @@ class DataLoader:
         :param result_file_path: path to the file
         :param headers: list of headers in the file
         :param list_output: if the output should be a list of dictionaries or a dictionary of lists
+        :param sep: separator for the file
         :return: dictionary with the task, accuracy, and soft match accuracy lists
         """
         with open(Path(result_file_path), "rt", encoding="UTF-8", errors="ignore") as f:
@@ -160,17 +161,38 @@ class DataLoader:
                                 row_[header] = convert_true(value)
                             else:
                                 if not printed:
-                                    print(f"Header {header} not found in headers.")
+                                    print(f"Header '{header}' not found in headers.")
                         data.append(row_)
                         printed = True
                     else:
                         for header in headers:
                             if header not in row.keys():
-                                print(f"Header {header} not found in row.")
+                                print(f"Header '{header}' not found in row.")
                                 continue
                             value = row[header]
                             data[header].append(convert_true(value))
         return data
+
+    def load_reasoning_data(
+        self, path: str, headers: list[str]
+    ) -> dict[tuple[int, int, int], dict]:
+        """
+        Load the silver reasoning data.
+
+        :param path: path to the silver reasoning data
+        :param headers: headers for the silver reasoning data
+        """
+        silver_reasoning_data = self.load_result_data(
+            path,
+            headers=headers,
+            list_output=True,
+            sep=",",
+        )
+        silver_reasoning_data = {
+            (int(row["task_id"]), int(row["sample_id"]), int(row["part_id"])): row
+            for row in silver_reasoning_data
+        }
+        return silver_reasoning_data
 
     def load_scenery(
         self,

@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 import csv
-import os
-from pathlib import Path
 import sys
 from typing import TextIO, Union, Iterable
 
@@ -81,6 +79,7 @@ class DataSaver:
         data: list[dict[str, str | int | float]],
         headers: list | tuple,
         file_name: str | Path,
+        flag: str = "a+",
     ) -> None:
         """
         This function allows to save the data continuously throughout the run.
@@ -95,6 +94,7 @@ class DataSaver:
         :param data: one row as list of strings or multiple such rows
         :param headers: the headers for the csv file
         :param file_name: the name of the file to save the data
+        :param flag: the flag to open the file
         :return: None
         """
         if isinstance(file_name, str):
@@ -104,7 +104,7 @@ class DataSaver:
         else:
             file_name = Path(file_name)
 
-        with open(file_name, "a+", encoding="UTF-8") as file:
+        with open(file_name, flag, encoding="UTF-8") as file:
             writer = csv.DictWriter(file, fieldnames=headers, delimiter="\t")
             if is_empty_file(file_name):
                 writer.writeheader()
