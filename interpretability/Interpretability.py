@@ -78,7 +78,7 @@ class Interpretability:
         attn_scores = attn_tensor.float().detach().cpu().numpy()
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o system prompt)
-        attn_scores = attn_scores[:, -model_output_len:, :-model_output_len].mean(
+        attn_scores = attn_scores[:, -model_output_len+1:, :-model_output_len+1].mean(
             axis=0
         )
         # Normalize the attention scores by the sum of all token attention scores
@@ -157,7 +157,7 @@ class Interpretability:
 
         # Decode the model output tokens without "assistant" token
         chat_ids = chat_ids[1:]
-        y_tokens = self.tokenizer.batch_decode(chat_ids[-model_output_len:])
+        y_tokens = self.tokenizer.batch_decode(chat_ids[-model_output_len+1:])
 
         if self.save_heatmaps:
             self.plotter.draw_heat(

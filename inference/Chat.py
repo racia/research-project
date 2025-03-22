@@ -131,7 +131,6 @@ class Chat:
             message_ids.extend(
                 tokenizer.encode(message["original_content"], add_special_tokens=False)
             )
-
             if len(history_ids) + len(message_ids) <= input_tokens_left:
                 history_ids += message_ids
             elif message["role"] == "assistant":
@@ -143,5 +142,4 @@ class Chat:
                 raise Exception("Unexpected error for message:", message)
 
         # take all the tokens that could fit
-        # input_tokens = system_prompt_ids + history_ids[-input_tokens_left:]
         return torch.LongTensor([history_ids[-input_tokens_left:]])

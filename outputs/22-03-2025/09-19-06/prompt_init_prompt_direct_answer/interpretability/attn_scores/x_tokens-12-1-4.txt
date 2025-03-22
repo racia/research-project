@@ -1,0 +1,55 @@
+ Mary
+ John
+ journey
+ the
+ office
+ John
+ Sandra
+ went
+ the
+ hallway
+Where
+ is
+ Mary
+ office
+ Daniel
+ Mary
+ journey
+ the
+ bedroom
+ Mary
+ Sandra
+ moved
+ the
+ bathroom
+Where
+ is
+ Daniel
+ bedroom
+ Mary
+ John
+ travelled
+ the
+ office
+ Sandra
+ Mary
+ went
+ the
+ bedroom
+Where
+ is
+ Mary
+ bedroom
+ Daniel
+ Mary
+ went
+ the
+ hallway
+ John
+ Sandra
+ travelled
+ the
+ garden
+Where
+ is
+ Daniel
