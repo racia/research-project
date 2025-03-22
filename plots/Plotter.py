@@ -216,7 +216,7 @@ class Plotter:
                     f"x and y must have the same first dimension, but have shapes {len(x_data)} and {len(y_data)}"
                 )
             
-            plt.plot(x_data, y_data, label=prompt, color=color)
+            plt.plot(x_data, y_data, label=prompt if type(prompt) is str else prompt.name, color=color)
 
         self._plot_general_details(
             x_label,
