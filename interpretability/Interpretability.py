@@ -68,11 +68,13 @@ class Interpretability:
         period_token_indices = [
             i for i, tok in enumerate(chat_ids) if tok == period_token_id
         ]
+        period_token_id.pop(-1) if period_token_indices[-1] == chat_ids[-1] else None
         # Create start, stop tuples of indices
         period_token_indices = [
             (lambda x: (start, stop))((start, stop))
             for start, stop in zip([0] + period_token_indices, period_token_indices)
         ]
+        
         return period_token_indices[1:]
 
     @staticmethod
