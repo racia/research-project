@@ -139,11 +139,13 @@ class Plotter:
         # Add coloured x tokens to the plot
         for i, token in enumerate(x):
             color = "red" if isinstance(token, str) and "*" in token else "black"
+            fontweight = 'bold' if isinstance(token, str) and "*" in token else 'normal'
             axis.text(
                 i + 0.5,
                 -0.5,
                 token,
                 fontsize=5,
+                fontweight=fontweight,
                 color=color,
                 rotation=90,
                 ha="right",
