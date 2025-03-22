@@ -62,7 +62,7 @@ init_prompt:
 
 logging:
   # if to print the results to a log file, otherwise will print to console
-  print_to_file: True
+  print_to_file: False
 
 results:
   save_heatmaps: True
