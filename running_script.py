@@ -175,7 +175,7 @@ def run_setting(cfg: DictConfig) -> None:
     setting.total_tasks = 0
 
     for prompt_num, prompt_path in enumerate(cfg.init_prompt.paths, 1):
-        prompt_name = f"prompt_{Path(prompt_path).stem}"
+        prompt_name = Path(prompt_path).stem
         prompt_evaluator_before = (
             MetricEvaluator(level="prompt") if multi_system else None
         )
@@ -315,13 +315,27 @@ def run_setting(cfg: DictConfig) -> None:
                 # Plot the prompt accuracies for the split
                 plotter.plot_acc_per_task_and_prompt(
                     acc_per_prompt_task={
-                        "exact_match_accuracy": split_.evaluator_before.exact_match_accuracy,
-                        "soft_match_accuracy": split_.evaluator_before.soft_match_accuracy,
-                        "exact_match_std": split_.evaluator_before.exact_match_std,
-                        "soft_match_std": split_.evaluator_before.soft_match_std,
+                        "exact_match_accuracy_before": split_.evaluator_before.exact_match_accuracy,
+                        "soft_match_accuracy_before": split_.evaluator_before.soft_match_accuracy,
+                        "exact_match_std_before": split_.evaluator_before.exact_match_std,
+                        "soft_match_std_before": split_.evaluator_before.soft_match_std,
                     },
                     y_label="Accuracies and Standard Deviations",
                     plot_name_add=f"{prompt_name}_{split}_before_",
+                )
+                plotter.plot_acc_per_task_and_prompt(
+                    acc_per_prompt_task={
+                        "exact_match_accuracy_before": split_.evaluator_before.exact_match_accuracy,
+                        "soft_match_accuracy_before": split_.evaluator_before.soft_match_accuracy,
+                        "exact_match_std_before": split_.evaluator_before.exact_match_std,
+                        "soft_match_std_before": split_.evaluator_before.soft_match_std,
+                        "exact_match_accuracy_after": split_.evaluator_after.exact_match_accuracy,
+                        "soft_match_accuracy_after": split_.evaluator_after.soft_match_accuracy,
+                        "exact_match_std_after": split_.evaluator_after.exact_match_std,
+                        "soft_match_std_after": split_.evaluator_after.soft_match_std,
+                    },
+                    y_label="Accuracies and Standard Deviations",
+                    plot_name_add=f"{prompt_name}_{split}_before_after",
                 )
 
             saver.save_split_accuracy(
@@ -340,10 +354,10 @@ def run_setting(cfg: DictConfig) -> None:
             # Plot the prompt accuracies for the split
             plotter.plot_acc_per_task_and_prompt(
                 acc_per_prompt_task={
-                    "exact_match_accuracy": split_.evaluator_after.exact_match_accuracy,
-                    "soft_match_accuracy": split_.evaluator_after.soft_match_accuracy,
-                    "exact_match_std": split_.evaluator_after.exact_match_std,
-                    "soft_match_std": split_.evaluator_after.soft_match_std,
+                    "exact_match_accuracy_after": split_.evaluator_after.exact_match_accuracy,
+                    "soft_match_accuracy_after": split_.evaluator_after.soft_match_accuracy,
+                    "exact_match_std_after": split_.evaluator_after.exact_match_std,
+                    "soft_match_std_after": split_.evaluator_after.soft_match_std,
                 },
                 y_label="Accuracies and Standard Deviations",
                 plot_name_add=f"{prompt_name}_{split}_after_",
@@ -382,6 +396,45 @@ def run_setting(cfg: DictConfig) -> None:
     if len(cfg.init_prompt.paths) > 1:
         for split in data_in_splits.keys():
             plotter.results_path = saver.run_path
+
+            saver.save_run_accuracy(
+                task_ids=loader.tasks,
+                splits=run_splits["after"][split],
+                features=split.features_after,
+                split_name=split.name,
+                after=True,
+            )
+            exact_match_accuracies_after = {
+                prompt: split.evaluator_after.exact_match_accuracy
+                for prompt, split in run_splits["after"][split].items()
+            }
+            soft_match_accuracies_after = {
+                prompt: split.evaluator_after.soft_match_accuracy
+                for prompt, split in run_splits["after"][split].items()
+            }
+            plotter.plot_accuracies(
+                exact_match_accuracies=exact_match_accuracies_after,
+                soft_match_accuracies=soft_match_accuracies_after,
+                additional_info=f"{split}_after_",
+                compare_prompts=True,
+                label="Accuracy",
+            )
+            em_std_after = {
+                prompt: split.evaluator_after.exact_match_std
+                for prompt, split in run_splits["after"][split].items()
+            }
+            sm_std_after = {
+                prompt: split.evaluator_after.soft_match_std
+                for prompt, split in run_splits["after"][split].items()
+            }
+            plotter.plot_accuracies(
+                exact_match_accuracies=em_std_after,
+                soft_match_accuracies=sm_std_after,
+                additional_info=f"{split}_after_",
+                compare_prompts=True,
+                label="Standard Deviation",
+            )
+
             if multi_system:
                 # save and plot the accuracies for the same split of all prompts
                 saver.save_run_accuracy(
@@ -391,73 +444,57 @@ def run_setting(cfg: DictConfig) -> None:
                     split_name=split.name,
                     after=False,
                 )
-                exact_match_accuracies = {
+                exact_match_accuracies_before = {
                     prompt: split.evaluator_before.exact_match_accuracy
                     for prompt, split in run_splits["before"][split].items()
                 }
-                soft_match_accuracies = {
+                soft_match_accuracies_before = {
                     prompt: split.evaluator_before.soft_match_accuracy
                     for prompt, split in run_splits["before"][split].items()
                 }
                 plotter.plot_accuracies(
-                    exact_match_accuracies=exact_match_accuracies,
-                    soft_match_accuracies=soft_match_accuracies,
+                    exact_match_accuracies=exact_match_accuracies_before,
+                    soft_match_accuracies=soft_match_accuracies_before,
                     additional_info=f"{split}_before_",
                     compare_prompts=True,
                     label="Accuracy",
                 )
-                em_std = {
+                em_std_before = {
                     prompt: split.evaluator_before.exact_match_std
                     for prompt, split in run_splits["before"][split].items()
                 }
-                sm_std = {
+                sm_std_before = {
                     prompt: split.evaluator_before.soft_match_std
                     for prompt, split in run_splits["before"][split].items()
                 }
                 plotter.plot_accuracies(
-                    exact_match_accuracies=em_std,
-                    soft_match_accuracies=sm_std,
+                    exact_match_accuracies=em_std_before,
+                    soft_match_accuracies=sm_std_before,
                     additional_info=f"{split}_before_",
                     compare_prompts=True,
                     label="Standard Deviation",
                 )
-            saver.save_run_accuracy(
-                task_ids=loader.tasks,
-                splits=run_splits["after"][split],
-                features=split.features_after,
-                split_name=split.name,
-                after=True,
-            )
-            exact_match_accuracies = {
-                prompt: split.evaluator_after.exact_match_accuracy
-                for prompt, split in run_splits["after"][split].items()
-            }
-            soft_match_accuracies = {
-                prompt: split.evaluator_after.soft_match_accuracy
-                for prompt, split in run_splits["after"][split].items()
-            }
-            plotter.plot_accuracies(
-                exact_match_accuracies=exact_match_accuracies,
-                soft_match_accuracies=soft_match_accuracies,
-                additional_info=f"{split}_after_",
-                compare_prompts=True,
-                label="Accuracy",
-            )
-            em_std = {
-                prompt: split.evaluator_after.exact_match_std
-                for prompt, split in run_splits["after"][split].items()
-            }
-            sm_std = {
-                prompt: split.evaluator_after.soft_match_std
-                for prompt, split in run_splits["after"][split].items()
-            }
-            plotter.plot_accuracies(
-                exact_match_accuracies=em_std,
-                soft_match_accuracies=sm_std,
-                additional_info=f"{split}_after_",
-                compare_prompts=True,
-                label="Standard Deviation",
-            )
+                # plot the accuracies for the before and after the setting was applied to compare
+                plotter.plot_accuracies(
+                    exact_match_accuracies={
+                        **exact_match_accuracies_before,
+                        **exact_match_accuracies_after,
+                    },
+                    soft_match_accuracies={
+                        **soft_match_accuracies_before,
+                        **soft_match_accuracies_after,
+                    },
+                    additional_info=f"{split}_before_after_",
+                    compare_prompts=True,
+                    label="Accuracy",
+                )
+                plotter.plot_accuracies(
+                    exact_match_accuracies={**em_std_before, **em_std_after},
+                    soft_match_accuracies={**sm_std_before, **sm_std_after},
+                    additional_info=f"{split}_before_after",
+                    compare_prompts=True,
+                    label="Standard Deviation",
+                )
 
     print("Plots are saved successfully and general accuracies are saved", end="\n\n")
 
