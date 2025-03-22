@@ -115,10 +115,13 @@ class Interpretability:
                     for start, stop in period_indices
                 ]
             ).squeeze()
-            print(attn_scores, attn_scores.shape)
             # Reshape to match expected output format
-            attn_scores = attn_scores.transpose(1, 0)
-            assert attn_scores.shape == (attn_scores.shape[0], len(period_indices))
+            attn_scores_T = attn_scores.transpose(1, 0)
+            # Normalize the attention scores by the sum of all token attention scores
+            attn_scores_T = attn_scores_T / attn_scores_T.sum(axis=0, keepdims=True)
+
+            assert attn_scores_T.shape == (attn_scores_T.shape[0], len(period_indices))
+            return attn_scores_T
 
         return attn_scores
 
