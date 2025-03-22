@@ -118,6 +118,7 @@ class Plotter:
         task_id: int,
         sample_id: int,
         part_id: int,
+        period_indices: list[int] = None
     ) -> None:
         """
         Draw a heat map with the interpretability attention scores for the current task.
@@ -129,17 +130,18 @@ class Plotter:
         :param task_id: task id
         :param sample_id: sample id
         :param part_id: part id
+        :param period_indices: list of period indices for current task
         :return: None
         """
         plt.figure(figsize=(12, 6))
         axis = sns.heatmap(scores, cmap="RdBu_r", center=0)
-        x_ticks = [i + 0.5 for i in range(len(x))]
+        x_ticks = [i + 0.5 for i in range(len(period_indices if period_indices else x))]
         y_ticks = [i + 0.5 for i in range(len(y))]
 
-        plt.xlabel("Task Tokens", fontdict={"size": 10})
+        plt.xlabel("Task Tokens" if not period_indices else "Sentence indeces", fontdict={"size": 10})
         plt.ylabel("Model Output Tokens", fontdict={"size": 10})
 
-        plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=90, ha="right")
+        plt.xticks(ticks=x_ticks, labels=period_indices if period_indices else x, fontsize=5, rotation=90, ha="right")
         plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
 
         plt.subplots_adjust(left=0.15, right=0.99, top=0.98, bottom=0.15)
