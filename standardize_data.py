@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 from data.DataLoader import DataLoader
@@ -115,9 +116,7 @@ def run(
         )
 
     parts = []
-    print(len(data))
     for row in data:
-
         assert type(row) == dict
 
         # Add missing columns
@@ -129,22 +128,65 @@ def run(
         row["silver_reasoning"] = (
             "" if "silver_reasoning" not in row else row["silver_reasoning"]
         )
+        h_patt = re.compile(r"(.+)_(?:after|before)")
 
+        print(
+            "\n".join(
+                f"{gen_header}: {row[gen_header]}" for gen_header in headers["general"]
+            ),
+            end="\n\n",
+        )
         part = SamplePart(
             **{gen_header: row[gen_header] for gen_header in headers["general"]}
         )
         if "model_answer_before" in row:
             part.result_before = Results(
-                **{result: row[result] for result in headers_results_before},
+                **dict(
+                    [
+                        (
+                            (h_patt.match(result)[1], str(row[result]))
+                            if h_patt.match(result)
+                            else (result, row[result])
+                        )
+                        for result in headers_results_before
+                    ]
+                ),
                 after=False,
             )
+        print(
+            "\n".join(
+                f"{h_patt.match(result)[1] if h_patt.match(result) else result}: {row[result]}"
+                for result in headers_results_after
+            ),
+            end="\n\n",
+        )
         if "model_answer_after" in row:
             part.result_after = Results(
-                **{result: row[result] for result in headers_results_after}, after=True
+                **dict(
+                    [
+                        (
+                            (h_patt.match(result)[1], str(row[result]))
+                            if h_patt.match(result)
+                            else (result, row[result])
+                        )
+                        for result in headers_results_after
+                    ]
+                ),
+                after=True,
             )
         else:
             part.result_after = Results(
-                **{result: row[result] for result in headers["results"]}, after=True
+                **dict(
+                    [
+                        (
+                            (h_patt.match(result)[1], str(row[result]))
+                            if h_patt.match(result)
+                            else (result, row[result])
+                        )
+                        for result in headers["results"]
+                    ]
+                ),
+                after=True,
             )
 
         parts.append(part)
@@ -180,7 +222,7 @@ def run(
 
 if __name__ == "__main__":
     data_path = (
-        "test/test_join/joined_data/valid_prompt_init_prompt_da_reasoning_results.csv"
+        "test/test_join/joined_data2/valid_prompt_init_prompt_direct_answer_results.csv"
     )
     headers = {
         "general": [
@@ -201,7 +243,7 @@ if __name__ == "__main__":
     run(
         data_path=data_path,
         headers=headers,
-        save_path="test/test_join/joined_data/",
+        save_path="test/test_join/joined_data2/",
         add_silver_reasoning=False,
         multi_system=False,
     )

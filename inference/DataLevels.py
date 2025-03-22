@@ -96,7 +96,7 @@ class Results:
         model_output: str,
         model_answer: str,
         model_reasoning: str,
-        interpretability: InterResult,
+        interpretability: InterResult = None,
         after: bool = True,
     ):
         """

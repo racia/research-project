@@ -168,16 +168,26 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
     )
 
     task.evaluator_after.print_accuracies(id_=split.tasks[-1].task_id)
-    task.set_results()
+    task.set_results(multi_system=False)
 
     split.evaluator_after.print_accuracies(id_=data_split)
 
     plotter.plot_acc_per_task_and_prompt(
         acc_per_prompt_task={
-            "exact_match_accuracy": split.evaluator_before.exact_match_accuracy,
-            "soft_match_accuracy": split.evaluator_before.soft_match_accuracy,
-            "exact_match_std": split.evaluator_before.exact_match_std,
-            "soft_match_std": split.evaluator_before.soft_match_std,
+            "exact_match_accuracy_before": split.evaluator_before.exact_match_accuracy,
+            "soft_match_accuracy_before": split.evaluator_before.soft_match_accuracy,
+            "exact_match_std_before": split.evaluator_before.exact_match_std,
+            "soft_match_std_before": split.evaluator_before.soft_match_std,
+        },
+        y_label="Accuracies and Standard Deviations",
+        plot_name_add=f"{split.name}_before_",
+    )
+    plotter.plot_acc_per_task_and_prompt(
+        acc_per_prompt_task={
+            "exact_match_accuracy_after": split.evaluator_after.exact_match_accuracy,
+            "soft_match_accuracy_after": split.evaluator_after.soft_match_accuracy,
+            "exact_match_std_after": split.evaluator_after.exact_match_std,
+            "soft_match_std_after": split.evaluator_after.soft_match_std,
         },
         y_label="Accuracies and Standard Deviations",
         plot_name_add=f"{split.name}_after_",
