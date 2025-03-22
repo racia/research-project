@@ -127,8 +127,8 @@ class DataLoader:
         return processed_data
 
     @staticmethod
-    def load_result_data(
-        result_file_path: str,
+    def load_metrics(
+        path: str,
         headers: list[str],
         list_output: bool = False,
     ) -> (
@@ -138,13 +138,13 @@ class DataLoader:
         """
         Read the accuracy from a file.
 
-        :param result_file_path: path to the file
+        :param path: path to the file
         :param headers: list of headers in the file
         :param list_output: if the output should be a list of dictionaries or a dictionary of lists
         :return: dictionary with the task, accuracy, and soft match accuracy lists
         """
         data = defaultdict(list)
-        with open(Path(result_file_path), "rt", encoding="UTF-8", errors="ignore") as f:
+        with open(Path(path), "rt", encoding="UTF-8", errors="ignore") as f:
             reader = csv.DictReader(f, delimiter="\t")
             for row in reader:
                 if row["task_id"].isdigit():
@@ -169,6 +169,33 @@ class DataLoader:
                                 data[header].append(float(value))
                             else:
                                 data[header].append(row[header])
+        return data
+
+    def load_results(self, path: str, headers: list[str] = None) -> dict[str, list]:
+        """
+        Load the results from the path. Please specify the headers to ensure the desired order of the data.
+
+        :param path: path to the data
+        :param headers: list of headers in the file, if None, the headers are read from the file
+        :return: result data
+        """
+        data = defaultdict(list)
+        with open(Path(path), "rt", encoding="UTF-8", errors="ignore") as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            if not headers:
+                headers = reader.fieldnames
+            for row in reader:
+                for header in headers:
+                    value = row[header]
+                    if not value:
+                        data[header].append(None)
+                        continue
+                    if value.isdigit():
+                        data[header].append(int(value))
+                    elif value.replace(".", "", 1).isdigit():
+                        data[header].append(float(value))
+                    else:
+                        data[header].append(row[header])
         return data
 
 
