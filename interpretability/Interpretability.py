@@ -136,6 +136,7 @@ class Interpretability:
         Removes message role tokens.
 
         :param attention_scores: The attention scores of the current chat
+        :param chat_ids: current sample part ids (task and model's output)
         :return: filtered attention scores with the according attention_indices
         """
         stop_words_indices = self.get_stop_word_idxs(attention_scores, chat_ids)
@@ -146,7 +147,9 @@ class Interpretability:
         )
         return attention_scores[:, attention_indices], attention_indices
 
-    def get_attention(self, part: SamplePart, chat: Chat) -> InterpretabilityResult:
+    def get_attention(
+        self, part: SamplePart, chat: Chat, after: bool = True
+    ) -> InterpretabilityResult:
         """
         1. Defines structural parts of the current chat and gets their input ids and lengths.
         2. Gets the relevant attention scores, filters them.
@@ -156,6 +159,7 @@ class Interpretability:
 
         :param part: part of the sample with the output before the setting is applied
         :param chat: Chat history as list of messages
+        :param after: if to get attention scores after the setting was applied to the model output or before
         :return: attention scores, tokenized x and y tokens
         """
 
@@ -222,6 +226,7 @@ class Interpretability:
                 task_id=part.task_id,
                 sample_id=part.sample_id,
                 part_id=part.part_id,
+                after=after,
             )
 
         torch.cuda.empty_cache()
