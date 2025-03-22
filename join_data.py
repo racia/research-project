@@ -189,8 +189,10 @@ def join_data(
             )
 
     joined_data = sorted(joined_data, key=lambda x: x["task_id"])
-    for i, data in enumerate(joined_data, start=1):
-        data["id"] = i
+    for i, row in enumerate(joined_data, start=1):
+        row["id"] = i
+        if not row["task"]:
+            raise ValueError(f"Task is missing in row {row['id']}.", row)
 
     return joined_data, all_headers
 
@@ -354,7 +356,7 @@ if __name__ == "__main__":
         "test/test_join/21-02-2025/22-33-44/prompt_init_prompt_da_reasoning",
     ]
     # path to save the joined data
-    result_directory = "test/test_join/joined_data"
+    result_directory = "test/test_join/joined_data3"
     run(
         paths=paths,
         result_directory=result_directory,
