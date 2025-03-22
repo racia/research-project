@@ -47,7 +47,7 @@ init_prompt:
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
   examples:
-    to_add: True
+    add: True
     enumerated: True
     handpicked: True
     not_mentioned: True
@@ -68,7 +68,9 @@ resume_prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/resume_prompt.txt"
-  wrapper: "{to_continue}"
+  wrapper: |
+    Here is the improved version of the previous output:
+    {to_continue}
 
 logging:
   # if to print the results to a log file, otherwise will print to console

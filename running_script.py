@@ -90,6 +90,7 @@ def run_setting(cfg: DictConfig) -> None:
             cfg.model.temperature,
             cfg.model.to_continue,
         )
+        print(f"The model {cfg.model.name} is loaded successfully", flush=True)
     elif hasattr(cfg, "student"):
         model = Model(
             cfg.student.name,
@@ -97,10 +98,10 @@ def run_setting(cfg: DictConfig) -> None:
             cfg.student.temperature,
             cfg.student.to_continue,
         )
+        print(f"The model {cfg.student.name} is loaded successfully", flush=True)
     else:
         raise ValueError("No base model is provided in the config.")
 
-    print(f"The model {cfg.model.name} is loaded successfully", flush=True)
     if cfg.setting.name == "Baseline":
         setting = Baseline(
             model=model,
