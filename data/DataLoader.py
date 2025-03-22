@@ -133,6 +133,7 @@ class DataLoader:
         result_file_path: str,
         headers: list[str],
         list_output: bool = False,
+        sep: str = "\t",
     ) -> (
         dict[str, list[Union[int, float]]]
         or dict[int, list[dict[str, Union[int, float, str]]]]
@@ -146,7 +147,7 @@ class DataLoader:
         :return: dictionary with the task, accuracy, and soft match accuracy lists
         """
         with open(Path(result_file_path), "rt", encoding="UTF-8", errors="ignore") as f:
-            reader = csv.DictReader(f, delimiter="\t")
+            reader = csv.DictReader(f, delimiter=sep)
             data = [] if list_output else defaultdict(list)
             printed = False
             for row in reader:

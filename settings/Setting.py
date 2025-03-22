@@ -274,11 +274,6 @@ class Setting(ABC):
                 exact_match_acc=exact_match_acc,
                 soft_match_acc=soft_match_acc,
             )
-            sample.evaluator_after.print_accuracies(
-                id_=sample_id,
-                exact_match_acc=exact_match_acc,
-                soft_match_acc=soft_match_acc,
-            )
 
             task.add_sample(sample)
 

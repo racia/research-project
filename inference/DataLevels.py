@@ -167,7 +167,7 @@ class SamplePart:
     """
 
     result_attrs: list[str] = [
-        "id",
+        "id_",
         "task_id",
         "sample_id",
         "part_id",
@@ -307,7 +307,7 @@ class SamplePart:
 
         :return: the string representation of the part
         """
-        return f"<SamplePart: id={self.id_}, task_id={self.task_id}, sample_id={self.sample_id}, part_id={self.part_id}>"
+        return f"<SamplePart: id_={self.id_}, task_id={self.task_id}, sample_id={self.sample_id}, part_id={self.part_id}>"
 
     def set_output(
         self,
@@ -460,8 +460,8 @@ class Task:
         self.samples: list[Sample] = []
         self.parts: list[SamplePart] = []
 
-        self.evaluator_before: MetricEvaluator = MetricEvaluator(level="split")
-        self.evaluator_after: MetricEvaluator = MetricEvaluator(level="split")
+        self.evaluator_before: MetricEvaluator = MetricEvaluator(level="task")
+        self.evaluator_after: MetricEvaluator = MetricEvaluator(level="task")
 
         self.features_before: Features = Features(0, 0, 0, 0)
         self.features_after: Features = Features(0, 0, 0, 0)
