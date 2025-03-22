@@ -94,6 +94,12 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
     h_patt = re.compile(r"(.+)_(?:after|before)")
 
     for idx, row in enumerate(data):
+        print(
+            "\n".join(
+                f"{gen_header}: {row[gen_header]}" for gen_header in headers["general"]
+            ),
+            end="\n\n",
+        )
         part = SamplePart(
             **dict(
                 [
