@@ -52,5 +52,5 @@ test
 fine-tuning/
 
 # Other
-inference/prompts/*reasoning*
+inference/prompts/*reasoning.txt
 *.log

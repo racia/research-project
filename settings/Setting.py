@@ -225,7 +225,9 @@ class Setting(ABC):
                 if self.multi_system:
                     # try:
                     interpretability_before = (
-                        self.interpretability.get_attention(current_part, chat=chat)
+                        self.interpretability.get_attention(
+                            current_part, chat=chat, after=False
+                        )
                         if self.multi_system and self.interpretability
                         else None
                     )
@@ -248,7 +250,9 @@ class Setting(ABC):
                     answer, reasoning = parse_output(output=decoded_output)
                     # try:
                     interpretability_after = (
-                        self.interpretability.get_attention(current_part, chat=chat)
+                        self.interpretability.get_attention(
+                            current_part, chat=chat, after=True
+                        )
                         if self.interpretability
                         else None
                     )

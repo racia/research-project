@@ -119,6 +119,7 @@ class Plotter:
         task_id: int,
         sample_id: int,
         part_id: int,
+        after: bool = True,
     ) -> None:
         """
         Draw a heat map with the interpretability attention scores for the current task.
@@ -131,6 +132,7 @@ class Plotter:
         :param task_id: task id
         :param sample_id: sample id
         :param part_id: part id
+        :param after: whether the plot is created after the setting was applied to the model output
         :return: None
         """
         plt.figure(figsize=(12, 6))
@@ -150,7 +152,12 @@ class Plotter:
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
 
-        plot_subdirectory = self.results_path / "interpretability" / "plots"
+        plot_subdirectory = (
+            self.results_path
+            / ("after" if after else "before")
+            / "interpretability"
+            / "plots"
+        )
         Path.mkdir(plot_subdirectory, exist_ok=True, parents=True)
         plt.savefig(plot_subdirectory / f"attn_map-{task_id}-{sample_id}-{part_id}.pdf")
 
