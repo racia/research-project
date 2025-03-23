@@ -5,7 +5,6 @@ from abc import ABC, abstractmethod
 
 import torch
 
-from evaluation.Evaluator import AnswerEvaluator
 from inference.Chat import Chat, Source
 from inference.DataLevels import Sample, SamplePart, Task
 from inference.Prompt import Prompt
@@ -132,26 +131,26 @@ class Setting(ABC):
         :return: results for the task in a list of dicts with each dict representing
                  one call to the model and will end up as one row of the table
         """
-        task = Task(task_id=task_id)
+        task = Task(task_id=task_id, multi_system=self.multi_system)
 
         # 1. Iterate through samples
         for sample_id_, sample_parts in task_data.items():
             sample_id = sample_id_ + 1
             part_id = 0
 
-            sample_eval = AnswerEvaluator(level="sample")
-            sample_eval.golden_answers = [
+            sample = Sample(
+                task_id=task_id, sample_id=sample_id, multi_system=self.multi_system
+            )
+            golden_answers = [
                 " ".join(list(part["answer"].values())[0]) for part in sample_parts
             ]
+            sample.add_golden_answers(golden_answers)
             # TODO: add silver reasoning
-            sample_eval.silver_reasonings = []
-            sample = Sample(task_id=task_id, sample_id=sample_id, evaluator=sample_eval)
-
             # each sample is a new conversation
             chat = Chat(system_prompt=self.init_prompt, multi_system=self.multi_system)
 
             # 2. Iterate through parts (one question at a time)
-            for sample_part, y_true in zip(sample_parts, sample_eval.golden_answers):
+            for sample_part, y_true in zip(sample_parts, golden_answers):
                 self.question_id += 1
                 part_id += 1
                 print(
@@ -183,6 +182,7 @@ class Setting(ABC):
                     golden_answer=y_true,
                     wrapper=self.wrapper,
                     to_enumerate=self.to_enumerate,
+                    multi_system=self.multi_system,
                 )
 
                 chat.add_message(part=current_part, source=Source.user)
@@ -271,7 +271,7 @@ class Setting(ABC):
                     after=True,
                 )
 
-                sample.add_part(current_part, multi_system=self.multi_system)
+                sample.add_part(current_part)
 
             sample.print_sample_predictions()
 
@@ -304,7 +304,7 @@ class Setting(ABC):
             task.evaluator_before.print_accuracies(id_=task_id)
 
         task.evaluator_after.print_accuracies(id_=task_id)
-        task.set_results(self.multi_system)
+        task.set_results()
 
         print(f"The work on task {task_id} is finished successfully")
 

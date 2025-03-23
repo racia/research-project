@@ -243,7 +243,7 @@ def run_setting(cfg: DictConfig) -> None:
             print(
                 f"Starting to query the model with {split.upper()} data...", end="\n\n"
             )
-            split_ = Split(name=split)
+            split_ = Split(name=split, multi_system=multi_system)
 
             for task_id, task in sorted(tasks.items()):
                 if (

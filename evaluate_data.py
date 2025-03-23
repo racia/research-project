@@ -5,7 +5,6 @@ from pathlib import Path
 
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
-from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from inference.DataLevels import Task, Sample, Split, SamplePart, Results
 from plots.Plotter import Plotter
 
@@ -67,7 +66,6 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
     loader = DataLoader()
     saver = DataSaver(save_to=save_path)
     plotter = Plotter(results_path=saver.run_path)
-    interpretability_path = str(Path(data_path).parent / "interpretability/attn_scores")
 
     data_split = extract_split(data_path)
 
@@ -84,21 +82,38 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
         remove_unnecessary_columns(row)
 
     if before:
-        split_evaluator_before = MetricEvaluator(level="split")
         # TODO make a function for each repetition
         pass
 
+    interpretability_path = (
+        Path(data_path).parent / "after" / "interpretability" / "attn_scores"
+    )
+    attn_plots_path = interpretability_path / "plots"
+    generate_heat_maps = (
+        False
+        if attn_plots_path.exists() and not any(Path(attn_plots_path).iterdir())
+        else True
+    )
+
     sample = None
     task = None
-    split = Split(name=data_split)
+    split = Split(name=data_split, multi_system=False)
     h_patt = re.compile(r"(.+)_(?:after|before)")
 
-    for idx, row in enumerate(data):
+    print("General headers:")
+    print(headers["general"])
+
+    for inx, row in enumerate(data):
         print(
             "\n".join(
-                f"{gen_header}: {row[gen_header]}" for gen_header in headers["general"]
+                (
+                    f"{gen_header}: '{row[gen_header]}'"
+                    if type(row[gen_header]) is str
+                    else f"{gen_header}: {row[gen_header]}"
+                )
+                for gen_header in headers["general"]
             ),
-            end="\n\n",
+            end="\n",
         )
         part = SamplePart(
             **dict(
@@ -110,19 +125,37 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
                     )
                     for gen_header in headers["general"]
                 ]
-            )
+            ),
+            multi_system=False,
         )
         interpretability_result = loader.load_interpretability(
-            part.task_id,
-            part.sample_id,
-            part.part_id,
-            attn_scores_path=interpretability_path,
+            task_id=part.task_id,
+            sample_id=part.sample_id,
+            part_id=part.part_id,
+            attn_scores_path=str(interpretability_path),
+        )
+        if generate_heat_maps:
+            plotter.draw_heat(
+                x=interpretability_result.x_tokens,
+                y=interpretability_result.y_tokens,
+                scores=interpretability_result.attn_scores,
+                task_id=part.task_id,
+                sample_id=part.sample_id,
+                part_id=part.part_id,
+            )
+        print(
+            "\n".join(
+                f"{h_patt.match(result)[1]}: '{row[result]}'"
+                for result in headers_results_after
+            ),
+            sep="\n",
+            end="\n\n",
         )
         part.result_after = Results(
             **dict(
                 [
                     (
-                        (h_patt.match(result)[1], row[result])
+                        (h_patt.match(result)[1], str(row[result]))
                         if h_patt.match(result)
                         else (result, row[result])
                     )
@@ -134,60 +167,55 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
         )
 
         if part.sample_id == 1 and part.part_id == 1:
-            if task:
-                task.evaluator_after.print_accuracies(id_=part.task_id)
-                task.set_results(multi_system=False)
-
-            task = Task(part.task_id)
-            split.add_task(task)
+            task = Task(part.task_id, multi_system=False)
 
         if part.part_id == 1:
-            if sample:
-                sample.print_sample_predictions()
-                exact_match_acc, soft_match_acc = (
-                    sample.evaluator_after.calculate_accuracies()
-                )
-                sample.evaluator_after.print_accuracies(
-                    id_=part.sample_id,
-                    exact_match_acc=exact_match_acc,
-                    soft_match_acc=soft_match_acc,
-                )
-
-            sample_evaluator = AnswerEvaluator(level="sample")
             sample = Sample(
                 task_id=part.task_id,
                 sample_id=part.sample_id,
-                evaluator=sample_evaluator,
+                multi_system=False,
+            )
+
+        sample.add_golden_answers(part.golden_answer)
+        sample.add_silver_reasoning(part.silver_reasoning)
+        sample.add_part(part)
+
+        if sample and (
+            inx == len(data) - 1 or part.sample_id != int(data[inx + 1]["sample_id"])
+        ):
+            sample.print_sample_predictions()
+            exact_match_acc, soft_match_acc = (
+                sample.evaluator_after.calculate_accuracies()
+            )
+            sample.evaluator_after.print_accuracies(
+                id_=part.sample_id,
+                exact_match_acc=exact_match_acc,
+                soft_match_acc=soft_match_acc,
             )
             task.add_sample(sample)
 
-        sample.evaluator_after.golden_answers.append(part.golden_answer)
-        sample.evaluator_after.silver_reasonings.append(part.silver_reasoning)
-        sample.add_part(part)
+        if task and (
+            inx == len(data) - 1 or part.task_id != int(data[inx + 1]["task_id"])
+        ):
+            task.set_results()
+            task.evaluator_after.print_accuracies(id_=part.task_id)
+            split.add_task(task)
 
-    sample.print_sample_predictions()
-    exact_match_acc, soft_match_acc = sample.evaluator_after.calculate_accuracies()
-    sample.evaluator_after.print_accuracies(
-        id_=split.tasks[-1].samples[-1].sample_id,
-        exact_match_acc=exact_match_acc,
-        soft_match_acc=soft_match_acc,
-    )
-
-    task.evaluator_after.print_accuracies(id_=split.tasks[-1].task_id)
-    task.set_results(multi_system=False)
-
+    print("----------------------------------------")
     split.evaluator_after.print_accuracies(id_=data_split)
 
-    plotter.plot_acc_per_task_and_prompt(
-        acc_per_prompt_task={
-            "exact_match_accuracy_before": split.evaluator_before.exact_match_accuracy,
-            "soft_match_accuracy_before": split.evaluator_before.soft_match_accuracy,
-            "exact_match_std_before": split.evaluator_before.exact_match_std,
-            "soft_match_std_before": split.evaluator_before.soft_match_std,
-        },
-        y_label="Accuracies and Standard Deviations",
-        plot_name_add=f"{split.name}_before_",
-    )
+    if not before:
+        plotter.plot_acc_per_task_and_prompt(
+            acc_per_prompt_task={
+                "exact_match_accuracy_before": split.evaluator_before.exact_match_accuracy,
+                "soft_match_accuracy_before": split.evaluator_before.soft_match_accuracy,
+                "exact_match_std_before": split.evaluator_before.exact_match_std,
+                "soft_match_std_before": split.evaluator_before.soft_match_std,
+            },
+            y_label="Accuracies and Standard Deviations",
+            plot_name_add=f"{split.name}_before_",
+        )
+
     plotter.plot_acc_per_task_and_prompt(
         acc_per_prompt_task={
             "exact_match_accuracy_after": split.evaluator_after.exact_match_accuracy,
@@ -220,4 +248,4 @@ if __name__ == "__main__":
             "model_output",  # make sure it's not 'model_result'
         ],
     }
-    run(data_path=data_path, headers=headers, save_path="test/test_join/joined_data/")
+    run(data_path=data_path, headers=headers, save_path="test/test_join/joined_data2/")

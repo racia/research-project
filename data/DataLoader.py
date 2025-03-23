@@ -214,7 +214,7 @@ class DataLoader:
     ) -> set:
         """
         Get scenery words from the scenery_words folder and the Scenery base phrases verbs.
-        Additionally adds Scenery base phrasal words.
+        Additionally, adds Scenery base phrasal words.
 
         :return: set of scenery words for filtering attention scores
         """

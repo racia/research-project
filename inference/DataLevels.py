@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import copy
 from dataclasses import dataclass
 
 import numpy as np
@@ -197,6 +196,7 @@ class SamplePart:
         task: str = None,
         wrapper: Wrapper = None,
         to_enumerate: Enumerate = None,
+        multi_system: bool = False,
     ):
         """
         Initialize the part.
@@ -211,11 +211,14 @@ class SamplePart:
         :param task: the task for the model (used only for evaluation)
         :param wrapper: the wrapper for the task
         :param to_enumerate: if to enumerate the context sentences and the question
+        :param multi_system: whether the part is for the setting with two models
         """
         self.id_: int = id_
         self.task_id: int = task_id
         self.sample_id: int = sample_id
         self.part_id: int = part_id
+
+        self.multi_system = multi_system
 
         if raw and task or not (raw or task):
             raise ValueError(
@@ -366,11 +369,10 @@ class SamplePart:
                 answer, self.golden_answer
             )
 
-    def get_result(self, multi_system: bool = False) -> dict[str, int | str]:
+    def get_result(self) -> dict[str, int | str]:
         """
         Get the result of the part.
 
-        :param multi_system: whether to return the results for before and after the setting was applied
         :return: the result of the part
         """
         try:
@@ -383,7 +385,7 @@ class SamplePart:
             print(f"Error accessing attribute: {error}")
             attributes = {}
 
-        if multi_system:
+        if self.multi_system:
             return {**attributes, **self.result_before.dict, **self.result_after.dict}
         return {**attributes, **self.result_after.dict}
 
@@ -397,28 +399,61 @@ class Sample:
         self,
         task_id: int,
         sample_id: int,
-        evaluator: AnswerEvaluator,
+        multi_system: bool = False,
     ):
         self.task_id = task_id
         self.sample_id: int = sample_id
 
+        self.multi_system: bool = multi_system
+
         self.parts: list[SamplePart] = []
 
-        self.evaluator_before: AnswerEvaluator = evaluator
-        self.evaluator_after: AnswerEvaluator = copy.deepcopy(evaluator)
+        self.evaluator_before: AnswerEvaluator = AnswerEvaluator(
+            level="sample", after=False
+        )
+        self.evaluator_after: AnswerEvaluator = AnswerEvaluator(
+            level="sample", after=True
+        )
 
-    def add_part(self, part: SamplePart, multi_system: bool = False) -> None:
+    def add_golden_answers(self, golden_answer: str | list[str]) -> None:
+        """
+        Add the golden answers to the sample.
+
+        :param golden_answer: the golden answer(s) to add
+        :return: None
+        """
+        if type(golden_answer) is str:
+            self.evaluator_before.golden_answers.append(golden_answer)
+            self.evaluator_after.golden_answers.append(golden_answer)
+        else:
+            self.evaluator_before.golden_answers.extend(golden_answer)
+            self.evaluator_after.golden_answers.extend(golden_answer)
+
+    def add_silver_reasoning(self, silver_reasoning: str | list[str]) -> None:
+        """
+        Add the silver reasoning to the sample.
+
+        :param silver_reasoning: the silver reasoning(s) to add
+        :return: None
+        """
+        if type(silver_reasoning) is str:
+            self.evaluator_before.silver_reasonings.append(silver_reasoning)
+            self.evaluator_after.silver_reasonings.append(silver_reasoning)
+        else:
+            self.evaluator_before.silver_reasonings.extend(silver_reasoning)
+            self.evaluator_after.silver_reasonings.extend(silver_reasoning)
+
+    def add_part(self, part: SamplePart) -> None:
         """
         Add a part to the sample.
         Should be called after the output of the part is set with SamplePart.set_output().
 
         :param part: the part to add
-        :param multi_system: whether the part is for the setting with two models
         :return: None
         """
         self.parts.append(part)
 
-        if multi_system:
+        if self.multi_system:
             self.evaluator_before.pred_answers.append(part.result_before.model_answer)
             self.evaluator_before.pred_reasonings.append(
                 part.result_before.model_reasoning
@@ -426,13 +461,13 @@ class Sample:
         self.evaluator_after.pred_answers.append(part.result_after.model_answer)
         self.evaluator_after.pred_reasonings.append(part.result_after.model_reasoning)
 
-    def print_sample_predictions(self, multi_system: bool = False) -> None:
+    def print_sample_predictions(self) -> None:
         """
         Print the model's predictions to compare with true values.
 
         :return: None
         """
-        if multi_system:
+        if self.multi_system:
             attributes = zip(
                 self.evaluator_after.golden_answers,
                 self.evaluator_before.pred_answers,
@@ -497,14 +532,25 @@ class Task:
     This class handles the tasks.
     """
 
-    def __init__(self, task_id: int):
+    def __init__(self, task_id: int, multi_system: bool = False):
+        """
+        Initialize the task.
+
+        :param task_id: the id of the task
+        :param multi_system: whether the task is for the setting with two models
+        """
         self.task_id = task_id
+        self.multi_system = multi_system
 
         self.samples: list[Sample] = []
         self.parts: list[SamplePart] = []
 
-        self.evaluator_before: MetricEvaluator = MetricEvaluator(level="task")
-        self.evaluator_after: MetricEvaluator = MetricEvaluator(level="task")
+        self.evaluator_before: MetricEvaluator = MetricEvaluator(
+            level="task", after=False
+        )
+        self.evaluator_after: MetricEvaluator = MetricEvaluator(
+            level="task", after=True
+        )
 
         self.features_before: Features = Features(0, 0, 0, 0)
         self.features_after: Features = Features(0, 0, 0, 0)
@@ -519,21 +565,21 @@ class Task:
         :return: None
         """
         self.samples.append(sample)
-        self.evaluator_before.update(sample.evaluator_before)
+        if self.multi_system:
+            self.evaluator_before.update(sample.evaluator_before)
         self.evaluator_after.update(sample.evaluator_after)
 
-    def set_results(self, multi_system: bool) -> None:
+    def set_results(self) -> None:
         """
         Set the results for the task by combining the results from the parts of all samples.
         Additionally, calculate the mean of the accuracy metrics and add them to the results.
 
-        :param multi_system: whether the task is for the setting with two models
         :return: None
         """
         self.parts = [part for sample in self.samples for part in sample.parts]
-        self.results = [part.get_result(multi_system) for part in self.parts]
+        self.results = [part.get_result() for part in self.parts]
 
-        if multi_system:
+        if self.multi_system:
             self.features_before = sum(
                 [part.result_before.features for part in self.parts],
                 self.features_before,
@@ -561,20 +607,27 @@ class Split:
     This class handles the splits of the data.
     """
 
-    def __init__(self, name: str):
+    def __init__(self, name: str, multi_system: bool = False):
         """
         Initialize the Split.
 
         :param name: the name of the split
+        :param multi_system: whether the split is for the setting with two models
         """
         self.name: str = name
+        self.multi_system: bool = multi_system
+
         self.tasks: list[Task] = []
 
         self.features_before: Features = Features(0, 0, 0, 0)
         self.features_after: Features = Features(0, 0, 0, 0)
 
-        self.evaluator_before: MetricEvaluator = MetricEvaluator(level="split")
-        self.evaluator_after: MetricEvaluator = MetricEvaluator(level="split")
+        self.evaluator_before: MetricEvaluator = MetricEvaluator(
+            level="split", after=False
+        )
+        self.evaluator_after: MetricEvaluator = MetricEvaluator(
+            level="split", after=True
+        )
 
     def add_task(self, task: Task) -> None:
         """
@@ -584,7 +637,8 @@ class Split:
         :return: None
         """
         self.tasks.append(task)
-        self.features_before += task.features_before
+        if self.multi_system:
+            self.features_before += task.features_before
+            self.evaluator_before.update(task.evaluator_before)
         self.features_after += task.features_after
-        self.evaluator_before.update(task.evaluator_before)
         self.evaluator_after.update(task.evaluator_after)
