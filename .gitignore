@@ -44,12 +44,13 @@ outputs/
 # Prompts
 settings/baseline/config/prompt_*_shot*
 
-# Testing scripts
+# Testing files
 test*.sh
+test/
 test
 
 fine-tuning/
 
 # Other
-inference/prompts/*reasoning*
+inference/prompts/*reasoning.txt
 *.log

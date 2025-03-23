@@ -232,6 +232,7 @@ class SamplePart:
 
             self.wrapper: Wrapper = wrapper
             self.to_enumerate: Enumerate = to_enumerate
+            self.supporting_sent_inx = raw.get("supporting_fact", [])
 
             self.structured_context, self.structured_question = structure_part(
                 self.raw, self.to_enumerate

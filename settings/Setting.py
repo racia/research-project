@@ -227,7 +227,9 @@ class Setting(ABC):
                     )
                     # 8. Call interpretability attention score method
                     interpretability_before = (
-                        self.interpretability.get_attention(current_part, chat=chat)
+                        self.interpretability.get_attention(
+                            current_part, chat=chat, after=False
+                        )
                         if self.multi_system and self.interpretability
                         else None
                     )
@@ -249,7 +251,9 @@ class Setting(ABC):
 
                     # 8. Call interpretability attention score method
                     interpretability_after = (
-                        self.interpretability.get_attention(current_part, chat=chat)
+                        self.interpretability.get_attention(
+                            current_part, chat=chat, after=True
+                        )
                         if self.interpretability
                         else None
                     )
@@ -268,8 +272,6 @@ class Setting(ABC):
                 )
 
                 sample.add_part(current_part, multi_system=self.multi_system)
-
-
 
             sample.print_sample_predictions()
 
