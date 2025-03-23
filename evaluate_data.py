@@ -75,7 +75,7 @@ def run(
     generate_heat_maps = {}
     headers_results = {}
     versions = ["before", "after"] if multi_system else ["after"]
-    print("The following version of results will be evaluated:", versions, end="\n\n")
+    print("The following versions of results will be evaluated:", versions, end="\n\n")
 
     for version in versions:
         headers_results[version] = [
@@ -98,9 +98,7 @@ def run(
 
     print("Loading data...", end="\n\n")
     all_headers = headers["general"] + list(headers_results.values())[0]
-    data = loader.load_result_data(
-        result_file_path=data_path, headers=all_headers, list_output=True
-    )
+    data = loader.load_result_data(result_file_path=data_path, list_output=True)
     for row in data:
         remove_unnecessary_columns(row)
 
@@ -309,16 +307,17 @@ if __name__ == "__main__":
     save_directory = "test/test_join/joined_data2/"
     # TODO: does the data feature before and after results? If yes, set to True
     multi_system = False
-    # TODO: make sure that the headers are present in the data
+    # TODO: make sure that all the important headers are on the list and present in the data
     headers = {
         "general": [
-            "id_",
+            "id_",  # TODO: make sure the id_ is present in the data, not 'id'
             "task_id",
             "sample_id",
             "part_id",
             "task",
             "golden_answer",
             "silver_reasoning",
+            "correct",
         ],
         "results": [  # for both before and after
             "model_answer",
