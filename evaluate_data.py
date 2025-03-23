@@ -98,9 +98,6 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
     split = Split(name=data_split, multi_system=False)
     h_patt = re.compile(r"(.+)_(?:after|before)")
 
-    print("General headers:")
-    print(headers["general"])
-
     for inx, row in enumerate(data):
         print(
             "\n".join(
@@ -196,11 +193,18 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
         if task and (
             inx == len(data) - 1 or part.task_id != int(data[inx + 1]["task_id"])
         ):
+            if inx < len(data) - 1 and int(data[inx + 1]["task_id"]) - part.task_id > 1:
+                raise ValueError(
+                    f"Missing data for task {part.task_id + 1}.\n"
+                    f"Please run the running_script.py for this task and add the results to the current data with join_data.py"
+                )
             task.set_results()
+            task.evaluator_after.calculate_std()
             task.evaluator_after.print_accuracies(id_=part.task_id)
             split.add_task(task)
 
     print("----------------------------------------")
+    split.evaluator_after.calculate_std()
     split.evaluator_after.print_accuracies(id_=data_split)
 
     if before:
@@ -214,14 +218,6 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
             y_label="Accuracies and Standard Deviations",
             plot_name_add=f"{split.name}_before_",
         )
-        plotter.plot_acc_per_task_and_prompt(
-            acc_per_prompt_task={
-                "exact_match_std": split.evaluator_before.exact_match_std,
-                "soft_match_std": split.evaluator_before.soft_match_std,
-            },
-            y_label="Standard Deviations",
-            plot_name_add=f"{split.name}_before_",
-        )
 
     plotter.plot_acc_per_task_and_prompt(
         acc_per_prompt_task={
@@ -231,14 +227,6 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
             "soft_match_std_after": split.evaluator_after.soft_match_std,
         },
         y_label="Accuracies and Standard Deviations",
-        plot_name_add=f"{split.name}_after_",
-    )
-    plotter.plot_acc_per_task_and_prompt(
-        acc_per_prompt_task={
-            "exact_match_std": split.evaluator_after.exact_match_std,
-            "soft_match_std": split.evaluator_after.soft_match_std,
-        },
-        y_label="Standard Deviations",
         plot_name_add=f"{split.name}_after_",
     )
 
