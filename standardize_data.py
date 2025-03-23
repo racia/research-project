@@ -1,6 +1,6 @@
 # Description: Standardize the data for the evaluation pipeline.
 # 1) Load the data from the path.
-# 2) Add missing columns.
+# 2) Add missing columns: part id, silver reasoning.
 # 3) Add part IDs to the data.
 # 4) Save the data.
 
@@ -76,22 +76,18 @@ def add_part_ids(parts: list[SamplePart]) -> list[SamplePart]:
 def run(
     data_path: str,
     headers: dict[str, list[str]],
-    save_path: str,
     add_silver_reasoning: bool = False,
-    multi_system: bool = False,
 ) -> None:
     """
     Run the standardization pipeline.
 
     :param data_path: Path to the data to standardize
     :param headers: The headers for the data
-    :param save_path: Path to save the results
     :param add_silver_reasoning: Whether to include silver reasoning data
-    :param multi_system: Whether the data includes multiple systems
     :return: None
     """
     loader = DataLoader()
-    saver = DataSaver(save_to=save_path)
+    saver = DataSaver(save_to=str(Path(data_path).parent))
 
     headers_results_before = [f"{result}_before" for result in headers["results"]]
     headers_results_after = [f"{result}_after" for result in headers["results"]]
@@ -241,8 +237,6 @@ def run(
 if __name__ == "__main__":
     # TODO: Add the link to the data
     data_path = ""
-    # TODO: provide a path to directory to save the standardized data
-    save_directory = ""
     # TODO: set to True if reasoning is present in the data
     add_silver_reasoning = False
     headers = {
@@ -254,18 +248,16 @@ if __name__ == "__main__":
             "task",
             "golden_answer",
             "silver_reasoning",
-            "correct",
         ],
         "results": [  # for both before and after
             "model_answer",
             "model_reasoning",
             "model_output",  # TODO: make sure it's not 'model_result'
+            "correct",
         ],
     }
     run(
         data_path=data_path,
         headers=headers,
-        save_path=save_directory,
         add_silver_reasoning=add_silver_reasoning,
-        multi_system=False,
     )

@@ -95,6 +95,7 @@ class Results:
         model_output: str,
         model_answer: str,
         model_reasoning: str,
+        correct: bool = None,
         interpretability: InterResult = None,
         after: bool = True,
     ):
@@ -104,13 +105,16 @@ class Results:
         :param model_output: the output of the model
         :param model_answer: the answer to the question
         :param model_reasoning: the reasoning for the answer
+        :param correct: whether the answer is correct
         :param interpretability: the result of interpretability
+        :param after: whether the output is after the setting was applied to the model's output
         """
         self.after = after
 
         self.model_output: str = model_output
         self.model_answer: str = model_answer
         self.model_reasoning: str = model_reasoning
+        self.correct = correct
 
         self.answer_correct: bool = None
         self.reasoning_correct: bool = None
