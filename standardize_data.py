@@ -240,11 +240,11 @@ def run(
 
 if __name__ == "__main__":
     # TODO: Add the link to the data
-    data_path = (
-        "/home/hd/hd_hd/hd_ea226/research-project/outputs/23-03-2025/01-07-29/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv"
-    )
+    data_path = ""
     # TODO: provide a path to directory to save the standardized data
-    save_directory = "test"
+    save_directory = ""
+    # TODO: set to True if reasoning is present in the data
+    add_silver_reasoning = False
     headers = {
         "general": [
             "id_",
@@ -254,6 +254,7 @@ if __name__ == "__main__":
             "task",
             "golden_answer",
             "silver_reasoning",
+            "correct",
         ],
         "results": [  # for both before and after
             "model_answer",
@@ -265,6 +266,6 @@ if __name__ == "__main__":
         data_path=data_path,
         headers=headers,
         save_path=save_directory,
-        add_silver_reasoning=False,  # TODO: set to True if reasoning is present in the data
+        add_silver_reasoning=add_silver_reasoning,
         multi_system=False,
     )

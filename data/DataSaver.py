@@ -142,11 +142,10 @@ class DataSaver:
             data=accuracies_to_save,
             headers=headers,
             file_name=metrics_file_name,
-            path_add="after" if after else "before",
         )
 
     def save_split_metrics(
-        self, features: Features, metrics_file_names: list[str], after: bool = True
+        self, features: Features, metrics_file_names: list[str]
     ) -> None:
         """
         Save the metrics for all the tasks in a split.
@@ -165,7 +164,8 @@ class DataSaver:
                 data=features,
                 headers=headers,
                 file_name=result_file_name,
-                path_add="after" if after else "before",
+                # TODO: check if leaving it out works for multi_system
+                # path_add="after" if after else "before",
             )
 
     @staticmethod
@@ -258,30 +258,17 @@ class DataSaver:
             file_name=results_file_name,
         )
         # get accuracy for the last task
-        task_accuracy = {
-            "task_id": task_id,
-            "exact_match_accuracy_after": task_data.evaluator_after.exact_match_accuracy.get_mean(),
-            "soft_match_accuracy_after": task_data.evaluator_after.soft_match_accuracy.get_mean(),
-            "exact_match_std_after": task_data.evaluator_after.exact_match_accuracy.get_std(),
-            "soft_match_std_after": task_data.evaluator_after.soft_match_accuracy.get_std(),
-        }
+        task_accuracy = {"task_id": task_id, **task_data.evaluator_after.get_metrics()}
 
         if multi_system:
-            task_accuracy_before = {
-                "task_id": task_id,
-                "exact_match_accuracy_before": task_data.evaluator_before.exact_match_accuracy.get_mean(),
-                "soft_match_accuracy_before": task_data.evaluator_before.soft_match_accuracy.get_mean(),
-                "exact_match_std_before": task_data.evaluator_before.exact_match_std.get_mean(),
-                "soft_match_std_before": task_data.evaluator_before.soft_match_std.get_mean(),
-            }
-            task_accuracy.update(task_accuracy_before)
+            task_accuracy.update(**task_data.evaluator_before.get_metrics())
             self.save_interpretability(task_data, after=False)
 
         self.save_output(
             data=[task_accuracy],
             headers=list(task_accuracy.keys()),
             file_name=metrics_file_name,
-            path_add="after",
+            path_add="",
         )
         self.save_interpretability(task_data, after=True)
 

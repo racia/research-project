@@ -40,8 +40,8 @@ class Evaluator:
             f"<{self.level.capitalize()} Evaluator [{self.add_on}]: "
             f"exact_match={self.exact_match_accuracy.get_mean()}, "
             f"soft_match={self.soft_match_accuracy.get_mean()}), "
-            f"exact_match_std={self.exact_match_accuracy.get_mean()}, "
-            f"soft_match_std={self.soft_match_accuracy.get_mean()}>"
+            f"exact_match_std={self.exact_match_std.get_mean()}, "
+            f"soft_match_std={self.soft_match_std.get_mean()}>"
         )
 
     def print_accuracies(self, id_, exact_match_acc=None, soft_match_acc=None) -> None:
@@ -103,8 +103,39 @@ class MetricEvaluator(Evaluator):
         """
         self.exact_match_accuracy.add(smaller_evaluator.exact_match_accuracy)
         self.soft_match_accuracy.add(smaller_evaluator.soft_match_accuracy)
-        self.exact_match_std.add(smaller_evaluator.exact_match_std)
-        self.soft_match_std.add(smaller_evaluator.soft_match_std)
+        self.exact_match_std.add(smaller_evaluator.exact_match_accuracy.get_std())
+        self.soft_match_std.add(smaller_evaluator.soft_match_accuracy.get_std())
+
+    def calculate_std(self):
+        """
+        Calculate the standard deviations for the metric.
+        """
+        exact_match_std = self.exact_match_accuracy.get_std()
+        self.exact_match_std.add(exact_match_std)
+        soft_match_std = self.soft_match_accuracy.get_std()
+        self.soft_match_std.add(soft_match_std)
+        return exact_match_std, soft_match_std
+
+    def get_metrics(self, as_lists: bool = False) -> dict[str, float | Metric]:
+        """
+        Get the metrics for the evaluator.
+
+        :return: the exact-match and soft-match accuracy scores
+        """
+        add_on = "after" if self.after else "before"
+        if as_lists:
+            return {
+                f"exact_match_accuracy_{add_on}": self.exact_match_accuracy,
+                f"soft_match_accuracy_{add_on}": self.soft_match_accuracy,
+                f"exact_match_std_{add_on}": self.exact_match_std,
+                f"soft_match_std_{add_on}": self.soft_match_std,
+            }
+        return {
+            f"exact_match_accuracy_{add_on}": self.exact_match_accuracy.get_mean(),
+            f"soft_match_accuracy_{add_on}": self.soft_match_accuracy.get_mean(),
+            f"exact_match_std_{add_on}": self.exact_match_accuracy.get_std(),
+            f"soft_match_std_{add_on}": self.soft_match_accuracy.get_std(),
+        }
 
 
 class AnswerEvaluator(Evaluator):
@@ -127,8 +158,8 @@ class AnswerEvaluator(Evaluator):
         self.golden_answers: list[str] = []
         self.silver_reasonings: list[str] = []
 
-    def calculate_accuracies(self) -> tuple[float, float]:
-        """
+    def calculate_accuracies(self) -> tuple[float, ...]:
+        """ "
         Calculate the accuracy scores for the sample and print them.
         Used for levels sample and task.
 
