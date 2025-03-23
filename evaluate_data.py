@@ -1,3 +1,11 @@
+# Description: This script is used to evaluate the results of the model.
+# 1) The script loads the data from the specified path.
+# 2) It removes unnecessary columns from the data.
+# 3) It extracts the split from the data path.
+# 4) It iterates over the data and creates the data levels.
+# 5) It loads the silver reasoning and interpretability results.
+# 5) It calculates the accuracies for the split and the tasks.
+# 6) It plots the accuracies and interpretability heat.
 from __future__ import annotations
 
 import re
@@ -7,16 +15,6 @@ from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from inference.DataLevels import Task, Sample, Split, SamplePart, Results
 from plots.Plotter import Plotter
-
-
-def mean_attn_score(attn_scores: list[float]) -> float:
-    """
-    Calculate the mean attention score.
-
-    :param attn_scores: The attention scores.
-    :return: The mean attention score.
-    """
-    return sum(attn_scores) / len(attn_scores)
 
 
 def remove_unnecessary_columns(row: dict) -> None:
