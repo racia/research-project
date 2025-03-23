@@ -1,3 +1,9 @@
+# Description: Standardize the data for the evaluation pipeline.
+# 1) Load the data from the path.
+# 2) Add missing columns.
+# 3) Add part IDs to the data.
+# 4) Save the data.
+
 import re
 import warnings
 from pathlib import Path
@@ -7,7 +13,7 @@ from data.DataSaver import DataSaver
 from inference.DataLevels import Results, SamplePart
 
 
-def extract_split(data_path) -> str:
+def extract_split(data_path: str) -> str:
     """
     Extract the split from the data path. If the split is not found, return "split".
 
@@ -148,7 +154,8 @@ def run(
             end="\n\n",
         )
         part = SamplePart(
-            **{gen_header: row[gen_header] for gen_header in headers["general"]}
+            **{gen_header: row[gen_header] for gen_header in headers["general"]},
+            multi_system=True,
         )
         if "model_answer_before" in row:
             part.result_before = Results(
@@ -224,7 +231,7 @@ def run(
     path = Path(data_path)
     file_path = path.parent / f"{path.stem}_upd.csv"
 
-    part_dicts = [part.get_result(multi_system=multi_system) for part in parts]
+    part_dicts = [part.get_result() for part in parts]
     part_headers = list(part_dicts[0].keys())
 
     saver.save_output(part_dicts, part_headers, file_path, flag="w")
@@ -232,9 +239,12 @@ def run(
 
 
 if __name__ == "__main__":
+    # TODO: Add the link to the data
     data_path = (
         "/home/hd/hd_hd/hd_ea226/research-project/outputs/23-03-2025/01-07-29/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv"
     )
+    # TODO: provide a path to directory to save the standardized data
+    save_directory = "test"
     headers = {
         "general": [
             "id_",
@@ -248,13 +258,13 @@ if __name__ == "__main__":
         "results": [  # for both before and after
             "model_answer",
             "model_reasoning",
-            "model_output",  # make sure it's not 'model_result'
+            "model_output",  # TODO: make sure it's not 'model_result'
         ],
     }
     run(
         data_path=data_path,
         headers=headers,
-        save_path="test/",
-        add_silver_reasoning=False,
+        save_path=save_directory,
+        add_silver_reasoning=False,  # TODO: set to True if reasoning is present in the data
         multi_system=False,
     )

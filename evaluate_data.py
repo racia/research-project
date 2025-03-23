@@ -1,3 +1,11 @@
+# Description: This script is used to evaluate the results of the model.
+# 1) The script loads the data from the specified path.
+# 2) It removes unnecessary columns from the data.
+# 3) It extracts the split from the data path.
+# 4) It iterates over the data and creates the data levels.
+# 5) It loads the silver reasoning and interpretability results.
+# 5) It calculates the accuracies for the split and the tasks.
+# 6) It plots the accuracies and interpretability heat.
 from __future__ import annotations
 
 import re
@@ -7,16 +15,6 @@ from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from inference.DataLevels import Task, Sample, Split, SamplePart, Results
 from plots.Plotter import Plotter
-
-
-def mean_attn_score(attn_scores: list[float]) -> float:
-    """
-    Calculate the mean attention score.
-
-    :param attn_scores: The attention scores.
-    :return: The mean attention score.
-    """
-    return sum(attn_scores) / len(attn_scores)
 
 
 def remove_unnecessary_columns(row: dict) -> None:
@@ -247,7 +245,7 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
 
 if __name__ == "__main__":
     # TODO: consider running standardize_data.py before running this script if there are not part_ids or silver_reasoning
-    data_path = "test/test_join/joined_data2/valid_prompt_init_prompt_direct_answer_results_upd.csv"
+    data_path = "/home/hd/hd_hd/hd_ea226/research-project/outputs/23-03-2025/01-07-29/init_prompt_reasoning/valid_init_prompt_reasoning_results_upd.csv"
     # TODO: make sure that the headers are present in the data
     headers = {
         "general": [
@@ -265,4 +263,4 @@ if __name__ == "__main__":
             "model_output",  # make sure it's not 'model_result'
         ],
     }
-    run(data_path=data_path, headers=headers, save_path="test/test_join/joined_data2/")
+    run(data_path=data_path, headers=headers, save_path="test")
