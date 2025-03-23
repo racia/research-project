@@ -233,7 +233,7 @@ def run(
 
 if __name__ == "__main__":
     data_path = (
-        "test/test_join/joined_data2/valid_prompt_init_prompt_direct_answer_results.csv"
+        "/home/hd/hd_hd/hd_ea226/research-project/outputs/23-03-2025/01-07-29/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv"
     )
     headers = {
         "general": [
@@ -254,7 +254,7 @@ if __name__ == "__main__":
     run(
         data_path=data_path,
         headers=headers,
-        save_path="test/test_join/joined_data2/",
+        save_path="test/",
         add_silver_reasoning=False,
         multi_system=False,
     )
