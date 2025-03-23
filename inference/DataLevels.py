@@ -377,7 +377,7 @@ class SamplePart:
         """
         try:
             attributes = {
-                attr.strip("_"): getattr(self, attr)
+                attr: getattr(self, attr)
                 for attr in self.result_attrs
                 if hasattr(self, attr)
             }
