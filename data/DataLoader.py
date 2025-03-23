@@ -134,7 +134,7 @@ class DataLoader:
     @staticmethod
     def load_result_data(
         result_file_path: str,
-        headers: list[str],
+        headers: list[str] = None,
         list_output: bool = False,
         sep: str = "\t",
     ) -> (
@@ -154,6 +154,8 @@ class DataLoader:
             reader = csv.DictReader(f, delimiter=sep)
             data = [] if list_output else defaultdict(list)
             printed = False
+            if not headers:
+                headers = reader.fieldnames
             for row in reader:
                 # to make sure we are reading a row containing data
                 if row["task_id"].isdigit():
