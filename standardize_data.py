@@ -240,11 +240,11 @@ def run(
 
 if __name__ == "__main__":
     # TODO: Add the link to the data
-    data_path = (
-        "test/test_join/joined_data2/valid_prompt_init_prompt_direct_answer_results.csv"
-    )
+    data_path = ""
     # TODO: provide a path to directory to save the standardized data
-    save_directory = "test/test_join/joined_data2/"
+    save_directory = ""
+    # TODO: set to True if reasoning is present in the data
+    add_silver_reasoning = False
     headers = {
         "general": [
             "id_",
@@ -265,6 +265,6 @@ if __name__ == "__main__":
         data_path=data_path,
         headers=headers,
         save_path=save_directory,
-        add_silver_reasoning=False,  # TODO: set to True if reasoning is present in the data
+        add_silver_reasoning=add_silver_reasoning,
         multi_system=False,
     )
