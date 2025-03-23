@@ -76,7 +76,7 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
     data = loader.load_result_data(
         result_file_path=data_path, headers=all_headers, list_output=True
     )
-    before = True if "model_output_before" in data[0].keys() else False
+    before = False  # if "model_output_before" in data[0].keys() else False
 
     for row in data:
         remove_unnecessary_columns(row)
@@ -138,6 +138,7 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
             plotter.draw_heat(
                 x=interpretability_result.x_tokens,
                 y=interpretability_result.y_tokens,
+                x_label="Model Output Tokens (after)",
                 scores=interpretability_result.attn_scores,
                 task_id=part.task_id,
                 sample_id=part.sample_id,
@@ -204,7 +205,7 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
     print("----------------------------------------")
     split.evaluator_after.print_accuracies(id_=data_split)
 
-    if not before:
+    if before:
         plotter.plot_acc_per_task_and_prompt(
             acc_per_prompt_task={
                 "exact_match_accuracy_before": split.evaluator_before.exact_match_accuracy,
@@ -213,6 +214,14 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
                 "soft_match_std_before": split.evaluator_before.soft_match_std,
             },
             y_label="Accuracies and Standard Deviations",
+            plot_name_add=f"{split.name}_before_",
+        )
+        plotter.plot_acc_per_task_and_prompt(
+            acc_per_prompt_task={
+                "exact_match_std": split.evaluator_before.exact_match_std,
+                "soft_match_std": split.evaluator_before.soft_match_std,
+            },
+            y_label="Standard Deviations",
             plot_name_add=f"{split.name}_before_",
         )
 
@@ -224,6 +233,14 @@ def run(data_path: str, headers: dict[str, list[str]], save_path: str) -> None:
             "soft_match_std_after": split.evaluator_after.soft_match_std,
         },
         y_label="Accuracies and Standard Deviations",
+        plot_name_add=f"{split.name}_after_",
+    )
+    plotter.plot_acc_per_task_and_prompt(
+        acc_per_prompt_task={
+            "exact_match_std": split.evaluator_after.exact_match_std,
+            "soft_match_std": split.evaluator_after.soft_match_std,
+        },
+        y_label="Standard Deviations",
         plot_name_add=f"{split.name}_after_",
     )
 
