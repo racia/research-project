@@ -49,11 +49,12 @@ def format_split_metrics(
     :param after: if the metrics are calculated after the setting was applied
     :return: the metrics to save
     """
+    add_on = "after" if after else "before"
     metrics = {
-        f"there_{'after' if after else 'before'}": features.there,
-        f"verbs_{'after' if after else 'before'}": features.verbs,
-        f"pronouns_{'after' if after else 'before'}": features.pronouns,
-        f"not_mentioned_{'after' if after else 'before'}": features.not_mentioned,
+        f"there_{add_on}": features.there,
+        f"verbs_{add_on}": features.verbs,
+        f"pronouns_{add_on}": features.pronouns,
+        f"not_mentioned_{add_on}": features.not_mentioned,
     }
     for metric, value in metrics.items():
         if metric not in metrics_to_save:
