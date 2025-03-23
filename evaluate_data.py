@@ -312,13 +312,14 @@ if __name__ == "__main__":
     # TODO: make sure that the headers are present in the data
     headers = {
         "general": [
-            "id_",
+            "id_",  # TODO: make sure the id_ is present in the data, not 'id'
             "task_id",
             "sample_id",
             "part_id",
             "task",
             "golden_answer",
             "silver_reasoning",
+            "correct",
         ],
         "results": [  # for both before and after
             "model_answer",
