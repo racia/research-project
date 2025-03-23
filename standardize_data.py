@@ -153,7 +153,7 @@ def run(
             **{gen_header: row[gen_header] for gen_header in headers["general"]},
             multi_system=True,
         )
-        if "model_answer_before" in row:
+        if "model_answer_before" in row and row["model_answer_before"]:
             part.result_before = Results(
                 **dict(
                     [
