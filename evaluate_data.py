@@ -64,6 +64,7 @@ def run(
     :param multi_system: Whether the data contains results for two-model setting
     :return: None
     """
+    print("You are running the evaluation pipeline.", end="\n\n")
     loader = DataLoader()
     saver = DataSaver(save_to=save_path)
     plotter = Plotter(results_path=saver.run_path)
@@ -74,6 +75,7 @@ def run(
     generate_heat_maps = {}
     headers_results = {}
     versions = ["before", "after"] if multi_system else ["after"]
+    print("The following version of results will be evaluated:", versions, end="\n\n")
 
     for version in versions:
         headers_results[version] = [
@@ -88,8 +90,14 @@ def run(
             if attn_plots_path.exists() and not any(Path(attn_plots_path).iterdir())
             else True
         )
+        if generate_heat_maps[version]:
+            print(
+                f"Attention heat maps will be generated for '{version}' results.",
+                end="\n\n",
+            )
 
-    all_headers = headers["general"] + list(headers_results.values())
+    print("Loading data...", end="\n\n")
+    all_headers = headers["general"] + list(headers_results.values())[0]
     data = loader.load_result_data(
         result_file_path=data_path, headers=all_headers, list_output=True
     )
@@ -101,6 +109,8 @@ def run(
     split = Split(name=data_split, multi_system=multi_system)
     h_patt = re.compile(r"(.+)_(?:after|before)")
     interpretability_results = {}
+
+    print("\nPART VALUES:\n")
 
     for inx, row in enumerate(data):
         print(
@@ -228,42 +238,68 @@ def run(
                     f"Please run the running_script.py for this task and add the results to the current data with join_data.py"
                 )
             task.set_results()
+
+            task_metrics = {
+                "task_id": part.task_id,
+                **task.evaluator_after.get_metrics(),
+            }
+
             if multi_system:
+                task_metrics.update(**task.evaluator_before.get_metrics())
+
                 task.evaluator_before.calculate_std()
                 task.evaluator_before.print_accuracies(id_=part.task_id)
+
             task.evaluator_after.calculate_std()
             task.evaluator_after.print_accuracies(id_=part.task_id)
             split.add_task(task)
 
-    print("----------------------------------------")
-    if multi_system:
-        split.evaluator_before.calculate_std()
-        split.evaluator_before.print_accuracies(id_=data_split)
+            saver.save_output(
+                data=[task_metrics],
+                headers=list(task_metrics.keys()),
+                file_name="eval_script_metrics.csv",
+                path_add="",
+            )
 
-        plotter.plot_acc_per_task_and_prompt(
-            acc_per_prompt_task={
-                "exact_match_accuracy_before": split.evaluator_before.exact_match_accuracy,
-                "soft_match_accuracy_before": split.evaluator_before.soft_match_accuracy,
-                "exact_match_std_before": split.evaluator_before.exact_match_std,
-                "soft_match_std_before": split.evaluator_before.soft_match_std,
-            },
-            y_label="Accuracies and Standard Deviations",
-            plot_name_add=f"{split.name}_before_",
+    print("----------------------------------------")
+
+    evaluators = (
+        [split.evaluator_before, split.evaluator_after]
+        if multi_system
+        else [split.evaluator_after]
+    )
+    features = (
+        [split.features_before, split.features_after]
+        if multi_system
+        else [split.features_after]
+    )
+
+    for version, evaluator, feature in zip(versions, evaluators, features):
+
+        evaluator.calculate_std()
+        evaluator.print_accuracies(id_=data_split)
+
+        saver.save_split_accuracy(
+            evaluator=evaluator,
+            metrics_file_name="eval_script_metrics.csv",
+        )
+        saver.save_split_metrics(
+            features=feature,
+            metrics_file_names=["eval_script_metrics.csv"],
         )
 
-    split.evaluator_after.calculate_std()
-    split.evaluator_after.print_accuracies(id_=data_split)
+        print(
+            f"Plotting accuracies and standard deviation for results '{version}'...",
+            end="\n\n",
+        )
 
-    plotter.plot_acc_per_task_and_prompt(
-        acc_per_prompt_task={
-            "exact_match_accuracy_after": split.evaluator_after.exact_match_accuracy,
-            "soft_match_accuracy_after": split.evaluator_after.soft_match_accuracy,
-            "exact_match_std_after": split.evaluator_after.exact_match_std,
-            "soft_match_std_after": split.evaluator_after.soft_match_std,
-        },
-        y_label="Accuracies and Standard Deviations",
-        plot_name_add=f"{split.name}_after_",
-    )
+        plotter.plot_acc_per_task_and_prompt(
+            acc_per_prompt_task=evaluator.get_metrics(as_lists=True),
+            y_label="Accuracies and Standard Deviations",
+            plot_name_add=f"{split.name}; {version}",
+        )
+
+    print("\nThe evaluation pipeline has finished successfully.")
 
 
 if __name__ == "__main__":

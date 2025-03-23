@@ -76,48 +76,42 @@ def format_accuracy_metrics(
     - mean accuracy for all tasks
     - standard deviation for all tasks
 
-    :param accuracies_to_save: the accuracies to save
     :param exact_match_accuracies: the exact-match accuracies
     :param soft_match_accuracies: the soft-match accuracies
     :param exact_match_std: the standard deviation for the exact-match accuracies (per task)
     :param soft_match_std: the standard deviation for the soft-match accuracies (per task)
-    :param headers: the headers for the accuracies
+    :param headers: the headers for the data
+    :param accuracies_to_save: the accuracies to save
+    :param after: if the metrics are calculated after the setting was applied
     """
+    add_on = "after" if after else "before"
     accuracy_metrics = {
         "mean": {
             "task_id": "mean",
             (
                 headers["exact_match_acc"]
                 if headers
-                else f"exact_match_accuracy_{'after' if after else 'before'}"
+                else f"exact_match_accuracy_{add_on}"
             ): exact_match_accuracies.get_mean(),
             (
                 headers["soft_match_acc"]
                 if headers
-                else f"soft_match_accuracy_{'after' if after else 'before'}"
+                else f"soft_match_accuracy_{add_on}"
             ): soft_match_accuracies.get_mean(),
             (
-                headers["exact_match_std"]
-                if headers
-                else f"exact_match_std_{'after' if after else 'before'}"
+                headers["exact_match_std"] if headers else f"exact_match_std_{add_on}"
             ): exact_match_std.get_mean(),
             (
-                headers["soft_match_std"]
-                if headers
-                else f"soft_match_std_{'after' if after else 'before'}"
+                headers["soft_match_std"] if headers else f"soft_match_std_{add_on}"
             ): soft_match_std.get_mean(),
         },
         "std": {
             "task_id": "std",
             (
-                headers["exact_match"]
-                if headers
-                else f"exact_match_accuracy_{'after' if after else 'before'}"
+                headers["exact_match"] if headers else f"exact_match_accuracy_{add_on}"
             ): exact_match_accuracies.get_std(),
             (
-                headers["soft_match"]
-                if headers
-                else f"soft_match_accuracy_{'after' if after else 'before'}"
+                headers["soft_match"] if headers else f"soft_match_accuracy_{add_on}"
             ): soft_match_accuracies.get_std(),
         },
     }

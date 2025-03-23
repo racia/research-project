@@ -254,6 +254,7 @@ if __name__ == "__main__":
             "task",
             "golden_answer",
             "silver_reasoning",
+            "correct",
         ],
         "results": [  # for both before and after
             "model_answer",
