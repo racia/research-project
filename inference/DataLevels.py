@@ -438,7 +438,7 @@ class Sample:
         if type(silver_reasoning) is str:
             self.evaluator_before.silver_reasonings.append(silver_reasoning)
             self.evaluator_after.silver_reasonings.append(silver_reasoning)
-        else:
+        elif type(silver_reasoning) is list:
             self.evaluator_before.silver_reasonings.extend(silver_reasoning)
             self.evaluator_after.silver_reasonings.extend(silver_reasoning)
 

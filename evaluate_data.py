@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import re
+import warnings
 from pathlib import Path
 
 from data.DataLoader import DataLoader
@@ -17,11 +18,14 @@ from inference.DataLevels import Task, Sample, Split, SamplePart, Results
 from plots.Plotter import Plotter
 
 
-def remove_unnecessary_columns(row: dict) -> None:
+def remove_unnecessary_columns(
+    row: dict[str, str | int | float], headers: dict[str, list[str]]
+) -> None:
     """
     Remove unnecessary columns from the row.
 
     :param row: The row to remove the columns from.
+    :param headers: The headers of the columns.
     :return: None
     """
     unnecessary_columns = [
@@ -37,6 +41,10 @@ def remove_unnecessary_columns(row: dict) -> None:
     for col in unnecessary_columns:
         if col in row:
             del row[col]
+    if not row["silver_reasoning"]:
+        del row["silver_reasoning"]
+        if "silver_reasoning" in headers["general"]:
+            del headers["general"][headers["general"].index("silver_reasoning")]
 
 
 def extract_split(path) -> str:
@@ -52,31 +60,55 @@ def extract_split(path) -> str:
     return "split"
 
 
-def run(
-    data_path: str, headers: dict[str, list[str]], save_path: str, multi_system: bool
-) -> None:
+def run(data_path: str, save_path: str) -> None:
     """
     Run the evaluation pipeline.
 
     :param data_path: Path to the data for evaluation
-    :param headers: The headers for the data
     :param save_path: Path to save the results
-    :param multi_system: Whether the data contains results for two-model setting
     :return: None
     """
     print("You are running the evaluation pipeline.", end="\n\n")
+
+    if not data_path:
+        raise ValueError("Please provide a path to the data for evaluation.")
+
+    headers = {
+        "general": [
+            "id_",
+            "task_id",
+            "sample_id",
+            "part_id",
+            "task",
+            "golden_answer",
+            "silver_reasoning",
+        ],
+        "results": [  # for both before and after
+            "model_answer",
+            "model_reasoning",
+            "model_output",
+        ],
+    }
     loader = DataLoader()
     saver = DataSaver(save_to=save_path)
     plotter = Plotter(results_path=saver.run_path)
+
+    multi_system = False
+    print("Loading data...", end="\n\n")
+    data = loader.load_results(path=data_path, list_output=True)
+    for row in data:
+        remove_unnecessary_columns(row, headers)
+        if "model_answer_before" in row:
+            multi_system = True
+
+    versions = ["before", "after"] if multi_system else ["after"]
+    print("The following versions of results will be evaluated:", versions, end="\n\n")
 
     data_split = extract_split(data_path)
 
     interpretability_paths = {}
     generate_heat_maps = {}
     headers_results = {}
-    versions = ["before", "after"] if multi_system else ["after"]
-    print("The following versions of results will be evaluated:", versions, end="\n\n")
-
     for version in versions:
         headers_results[version] = [
             f"{result}_{version}" for result in headers["results"]
@@ -95,12 +127,6 @@ def run(
                 f"Attention heat maps will be generated for '{version}' results.",
                 end="\n\n",
             )
-
-    print("Loading data...", end="\n\n")
-    all_headers = headers["general"] + list(headers_results.values())[0]
-    data = loader.load_result_data(result_file_path=data_path, list_output=True)
-    for row in data:
-        remove_unnecessary_columns(row)
 
     sample = None
     task = None
@@ -136,22 +162,28 @@ def run(
             multi_system=multi_system,
         )
         for version in versions:
-            interpretability_results[version] = loader.load_interpretability(
-                task_id=part.task_id,
-                sample_id=part.sample_id,
-                part_id=part.part_id,
-                attn_scores_path=str(interpretability_paths[version]),
-            )
-            if generate_heat_maps[version]:
-                plotter.draw_heat(
-                    x=interpretability_results[version].x_tokens,
-                    y=interpretability_results[version].y_tokens,
-                    x_label=f"Model Output Tokens ({version})",
-                    scores=interpretability_results[version].attn_scores,
+            if not interpretability_paths[version].exists():
+                warnings.warn(
+                    f"The interpretability data is not found at path: {interpretability_paths[version]}"
+                )
+                interpretability_results[version] = None
+            else:
+                interpretability_results[version] = loader.load_interpretability(
                     task_id=part.task_id,
                     sample_id=part.sample_id,
                     part_id=part.part_id,
+                    attn_scores_path=str(interpretability_paths[version]),
                 )
+                if generate_heat_maps[version]:
+                    plotter.draw_heat(
+                        x=interpretability_results[version].x_tokens,
+                        y=interpretability_results[version].y_tokens,
+                        x_label=f"Model Output Tokens ({version})",
+                        scores=interpretability_results[version].attn_scores,
+                        task_id=part.task_id,
+                        sample_id=part.sample_id,
+                        part_id=part.part_id,
+                    )
             print(
                 "\n".join(
                     f"{h_patt.match(result)[1]}: '{row[result]}'"
@@ -294,7 +326,7 @@ def run(
         plotter.plot_acc_per_task_and_prompt(
             acc_per_prompt_task=evaluator.get_metrics(as_lists=True),
             y_label="Accuracies and Standard Deviations",
-            plot_name_add=f"{split.name}; {version}",
+            plot_name_add=[split.name, version],
         )
 
     print("\nThe evaluation pipeline has finished successfully.")
@@ -302,31 +334,10 @@ def run(
 
 if __name__ == "__main__":
     # TODO: consider running standardize_data.py before running this script if there are not part_ids or silver_reasoning
-    data_path = "test/test_join/joined_data2/valid_prompt_init_prompt_direct_answer_results_upd.csv"
+    data_path = "test/test_join/joined_data3/valid_prompt_init_prompt_da_reasoning_results_upd.csv"
     # TODO: provide a path to directory to save the standardized data
-    save_directory = "test/test_join/joined_data2/"
-    # TODO: does the data feature before and after results? If yes, set to True
-    multi_system = False
-    # TODO: make sure that all the important headers are on the list and present in the data
-    headers = {
-        "general": [
-            "id_",  # TODO: make sure the id_ is present in the data, not 'id'
-            "task_id",
-            "sample_id",
-            "part_id",
-            "task",
-            "golden_answer",
-            "silver_reasoning",
-        ],
-        "results": [  # for both before and after
-            "model_answer",
-            "model_reasoning",
-            "model_output",  # TODO: make sure it's not 'model_result'
-        ],
-    }
+    save_directory = "test/test_join/joined_data3/"
     run(
         data_path=data_path,
-        headers=headers,
         save_path=save_directory,
-        multi_system=multi_system,
     )

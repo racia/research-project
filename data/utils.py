@@ -229,6 +229,8 @@ def get_real_value(entry: str) -> str | int | float | bool | None:
     :param entry: the entry to get the real value
     :return: the real value of the entry
     """
+    if not entry:
+        return None
     if entry.isdigit():
         return int(entry)
     elif entry.replace(".", "", 1).isdigit():

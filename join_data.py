@@ -150,7 +150,7 @@ def get_task_result(run_result: dict[str, list], task_id: int) -> dict[str, list
     """
     Get the results for a task from the data.
 
-    :param run_result: data from a result file
+    :param run_result: data from a result file from a specific run
     :param task_id: the task ID to select
     :return: the results for the task
     """
@@ -177,9 +177,8 @@ def join_data(
 
     for path, task_ids in sources_tasks.items():
         for task_id in task_ids:
-            task_results = get_task_result(data[path], task_id)
-            num_parts = len(task_results["id"])
-            for i in range(num_parts):
+            task_results = get_task_result(run_result=data[path], task_id=task_id)
+            for i in range(len(task_results["task_id"])):
                 joined_data.append(
                     {header: values[i] for header, values in task_results.items()}
                 )
@@ -225,6 +224,7 @@ def run(paths: list[str], result_directory: str) -> None:
     print_counts_table(id_counts, flat_paths)
 
     sources_tasks = define_sources_for_tasks(id_counts, flat_paths)
+    print("sources_tasks", sources_tasks)
     joined_data, headers = join_data(data, sources_tasks)
 
     print("\nHeaders:")
