@@ -340,9 +340,8 @@ def run(paths: list[str], result_directory: str) -> None:
                 f"==> {result_directory / attn_path_add / 'plots'}\t\t({plots_count} files)"
             )
 
-    # TODO: remove "(in development)" when the evaluation script is ready
     print(
-        "\nTo obtain the accuracy of the joined data, run the evaluation script (in development).",
+        "\nTo obtain the accuracy of the joined data, run the evaluation script.",
         end="\n\n",
     )
 
@@ -350,12 +349,12 @@ def run(paths: list[str], result_directory: str) -> None:
 
 
 if __name__ == "__main__":
-    # add paths of result directories that should be joined
+    # TODO: add paths of result directories that should be joined
     paths = [
         "test/test_join/20-02-2025/11-22-33/prompt_init_prompt_da_reasoning",
         "test/test_join/21-02-2025/22-33-44/prompt_init_prompt_da_reasoning",
     ]
-    # path to save the joined data
+    # TODO: path to save the joined data
     result_directory = "test/test_join/joined_data3"
     run(
         paths=paths,

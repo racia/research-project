@@ -1,10 +1,10 @@
 from dataclasses import dataclass
-from data.DataLoader import DataLoader
 
 import en_core_web_sm
 
-nlp = en_core_web_sm.load()
+from data.DataLoader import DataLoader
 
+nlp = en_core_web_sm.load()
 
 
 @dataclass
@@ -50,7 +50,7 @@ class Scenery:
     This class is responsible for extracting the agents, locations, objects and relations that occur in the data.
     """
 
-    def __init__(self, phrasal_verbs):
+    def __init__(self, base_phrasal_verbs):
         self.task_sceneries = {}
 
         self.agents = set()
@@ -62,7 +62,7 @@ class Scenery:
         self.lemmas = set()
 
         self.data = None
-        self.phrasal_verbs: list = phrasal_verbs
+        self.base_phrasal_verbs: list = base_phrasal_verbs
 
     def get_DO_NP(self, DO_head):
         """
@@ -145,7 +145,7 @@ class Scenery:
                     and child.pos_ not in ["SCONJ", "ADV"]
                 ]
                 # Extract the particles of phrasal verbs: go up, bring down, etc.
-                if token.lemma_ in Scenery.base_phrasal_verbs and particle:
+                if token.lemma_ in self.base_phrasal_verbs and particle:
                     relations.append((token.lemma_, particle[0].text))
                 else:
                     # Otherwise add a normal relation.

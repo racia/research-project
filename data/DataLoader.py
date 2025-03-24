@@ -6,8 +6,11 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Union
 
+import numpy as np
+
 from data.DataProcessor import DataProcessor
 from data.utils import get_real_value
+from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits
 
 
@@ -130,8 +133,14 @@ class DataLoader:
 
     @staticmethod
     def load_results(
-        path: str, headers: list[str] = None, list_output: bool = False
-    ) -> dict[str, list]:
+        path: str,
+        headers: list[str] = None,
+        list_output: bool = False,
+        sep: str = "\t",
+    ) -> (
+        dict[str, list[Union[int, float]]]
+        or dict[int, list[dict[str, Union[int, float, str]]]]
+    ):
         """
         Load the results or any csv file from the path.
         Please specify the headers to ensure the desired order of the data.
@@ -141,23 +150,29 @@ class DataLoader:
         :param list_output: if the output should be a list of dictionaries instead of a dictionary of lists
         :return: result data
         """
-        data = defaultdict(list)
+        data = [] if list_output else defaultdict(list)
         with open(Path(path), "rt", encoding="UTF-8", errors="ignore") as f:
             reader = csv.DictReader(f, delimiter="\t")
+            printed = False
             if not headers:
                 headers = reader.fieldnames
             for row in reader:
-                if list_output:
-                    row_ = {
-                        get_real_value(v) for k, v in row.items() if k in headers and v
-                    }
-                    data[get_real_value(row["task_id"])].append(row_)
+                # to make sure we are reading a row containing data
+                if list_output and row["task_id"].isdigit():
+                    row_ = {}
+                    for header, value in row.items():
+                        if header in headers and value:
+                            row_[header] = get_real_value(value)
+                        elif not printed:
+                            print(f"Header '{header}' not found in headers.")
+                    data.append(row_)
+                    printed = True
                 else:
                     for header in headers:
-                        if row[header]:
+                        if header in row.keys() and row[header]:
                             data[header].append(get_real_value(row[header]))
                         else:
-                            data[header].append(None)
+                            print(f"Header '{header}' not found in row.")
         return data
 
     def load_scenery(
@@ -188,6 +203,69 @@ class DataLoader:
                 with open(entry.path, "r", encoding="UTF-8") as f:
                     scenery_words.update(f.read().splitlines())
         return scenery_words
+
+    def load_reasoning_data(
+        self, path: str, headers: list[str]
+    ) -> dict[tuple[int, int, int], dict]:
+        """
+        Load the silver reasoning data.
+
+        :param path: path to the silver reasoning data
+        :param headers: headers for the silver reasoning data
+        """
+        if not Path(path).exists():
+            raise FileNotFoundError(
+                "The silver reasoning data is not found at the path:", path
+            )
+
+        silver_reasoning_data = self.load_results(
+            path,
+            headers=headers,
+            list_output=True,
+            sep=",",
+        )
+        silver_reasoning_data = {
+            (int(row["TaskID"]), int(row["SampleID"]), int(row["SamplePart"])): row
+            for row in silver_reasoning_data
+        }
+        return silver_reasoning_data
+
+    @staticmethod
+    def load_interpretability(
+        task_id: int, sample_id: int, part_id: int, attn_scores_path: str
+    ) -> InterpretabilityResult:
+        """
+        Load the interpretability results for a specific part.
+
+        :param task_id: task id
+        :param sample_id: sample id
+        :param part_id: part id
+        :param attn_scores_path: path to the attention scores subdirectory
+        :return: Interpretability Result object
+        """
+        path = Path(attn_scores_path)
+        if path.name != "attn_scores":
+            raise ValueError("The attention subdirectory is not located.")
+
+        attn_scores_file = f"attn_scores-{task_id}-{sample_id}-{part_id}.txt"
+        with open(path / attn_scores_file, "r", encoding="UTF-8") as f:
+            attn_scores_rows = f.read().splitlines()
+            attn_scores = [
+                list(map(float, row.split("\t"))) for row in attn_scores_rows
+            ]
+
+        x_tokens_file = f"x_tokens-{task_id}-{sample_id}-{part_id}.txt"
+        with open(path / x_tokens_file, "r", encoding="UTF-8") as f:
+            x_tokens = [token.strip() for token in f.read().splitlines()]
+
+        y_tokens_file = f"y_tokens-{task_id}-{sample_id}-{part_id}.txt"
+        with open(path / y_tokens_file, "r", encoding="UTF-8") as f:
+            y_tokens = [token.strip() for token in f.read().splitlines()]
+
+        interpretability_result = InterpretabilityResult(
+            attn_scores=np.array(attn_scores), x_tokens=x_tokens, y_tokens=y_tokens
+        )
+        return interpretability_result
 
 
 if __name__ == "__main__":

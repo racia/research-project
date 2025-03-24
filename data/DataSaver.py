@@ -80,6 +80,7 @@ class DataSaver:
         headers: list | tuple,
         file_name: str | Path,
         path_add: str = "",
+        flag: str = "a+",
     ) -> None:
         """
         This function allows to save the data continuously throughout the run.
@@ -95,6 +96,7 @@ class DataSaver:
         :param headers: the headers for the csv file
         :param file_name: the name of the file to save the data
         :param path_add: an addition to the results path (goes between results_path and file_name)
+        :param flag: the flag to open the file
         :return: None
         """
         if isinstance(file_name, str):
@@ -105,7 +107,7 @@ class DataSaver:
         else:
             file_name = Path(file_name)
 
-        with open(file_name, "a+", encoding="UTF-8") as file:
+        with open(file_name, flag, encoding="UTF-8") as file:
             writer = csv.DictWriter(file, fieldnames=headers, delimiter="\t")
             if is_empty_file(file_name):
                 writer.writeheader()
@@ -140,18 +142,16 @@ class DataSaver:
             data=accuracies_to_save,
             headers=headers,
             file_name=metrics_file_name,
-            path_add="after" if after else "before",
         )
 
     def save_split_metrics(
-        self, features: Features, metrics_file_names: list[str], after: bool = True
+        self, features: Features, metrics_file_names: list[str]
     ) -> None:
         """
         Save the metrics for all the tasks in a split.
 
         :param features: the features to save
         :param metrics_file_names: the path to save the metrics
-        :param after: if to save the metrics for after the setting was applied
         :return: None
         """
         headers = ["id", "task_id"]
@@ -163,7 +163,8 @@ class DataSaver:
                 data=features,
                 headers=headers,
                 file_name=result_file_name,
-                path_add="after" if after else "before",
+                # TODO: check if leaving it out works for multi_system
+                # path_add="after" if after else "before",
             )
 
     @staticmethod
@@ -177,7 +178,7 @@ class DataSaver:
         :return: None
         """
         with open(file_path, "w", encoding="UTF-8") as file:
-            file.write(sep.join(map(str, data)))
+            file.write(sep.join(map(lambda x: str(x).strip(), data)))
 
     def save_interpretability(self, task_data: Task, after: bool = True) -> None:
         """
@@ -256,30 +257,17 @@ class DataSaver:
             file_name=results_file_name,
         )
         # get accuracy for the last task
-        task_accuracy = {
-            "task_id": task_id,
-            "exact_match_accuracy_after": task_data.evaluator_after.exact_match_accuracy.get_mean(),
-            "soft_match_accuracy_after": task_data.evaluator_after.soft_match_accuracy.get_mean(),
-            "exact_match_std_after": task_data.evaluator_after.exact_match_accuracy.get_std(),
-            "soft_match_std_after": task_data.evaluator_after.soft_match_accuracy.get_std(),
-        }
+        task_accuracy = {"task_id": task_id, **task_data.evaluator_after.get_metrics()}
 
         if multi_system:
-            task_accuracy_before = {
-                "task_id": task_id,
-                "exact_match_accuracy_before": task_data.evaluator_before.exact_match_accuracy.get_mean(),
-                "soft_match_accuracy_before": task_data.evaluator_before.soft_match_accuracy.get_mean(),
-                "exact_match_std_before": task_data.evaluator_before.exact_match_std.get_mean(),
-                "soft_match_std_before": task_data.evaluator_before.soft_match_std.get_mean(),
-            }
-            task_accuracy.update(task_accuracy_before)
+            task_accuracy.update(**task_data.evaluator_before.get_metrics())
             self.save_interpretability(task_data, after=False)
 
         self.save_output(
             data=[task_accuracy],
             headers=list(task_accuracy.keys()),
             file_name=metrics_file_name,
-            path_add="after",
+            path_add="",
         )
         self.save_interpretability(task_data, after=True)
 

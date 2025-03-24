@@ -105,7 +105,7 @@ class FurtherPrompt(Prompt):
 
 @dataclass
 class CSVHeaders:
-    id_: str = "id"
+    id_: str = "id_"
     task_id: str = "task_id"
     sample_id: str = "sample_id"
     part_id: str = "part_id"

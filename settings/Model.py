@@ -39,7 +39,11 @@ class Model:
 
         :return: tuple: model, tokenizer
         """
-        print(f"The model {self.model_name} is being loaded in mode {self.mode}", end="\n\n", flush=True)
+        print(
+            f"The model {self.model_name} is being loaded in mode {self.mode}",
+            end="\n\n",
+            flush=True,
+        )
 
         # create an offload folder
         if not os.path.exists("offload_folder"):
@@ -69,6 +73,8 @@ class Model:
             model.eval()
         elif self.mode == "train":
             model.train()
+        else:
+            raise ValueError(f"The mode '{self.mode}' is doesn't exist.")
 
         tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         tokenizer.padding_side = "left"

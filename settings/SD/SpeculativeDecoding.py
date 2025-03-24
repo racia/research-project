@@ -106,8 +106,8 @@ class SpeculativeDecoding(Setting):
         self.tokenizer = student.tokenizer
 
         self.init_prompt = init_prompt
-        self.eval_prompt = eval_prompt
-        self.resume_prompt = resume_prompt
+        self.eval_prompt: Prompt = eval_prompt
+        self.resume_prompt: Prompt = resume_prompt
 
         self.initial_student_output = None
         self.student_eos = False
@@ -144,13 +144,8 @@ class SpeculativeDecoding(Setting):
         )
 
         # add the output the student should continue as an assistant message
-        message_to_continue = self.resume_prompt.format_resume_message(
-            corrected_student_output=corrected_in,
-            add_to_chat=True,
-            chat=chat,
-            model_role="student",
-            source="assistant",
-        )
+        message_to_continue = self.resume_prompt.format_resume_message(corrected_in)
+        chat.add_message(message_to_continue, source="assistant", model_role="student")
         print(
             "\n--------------\n",
             "Message that the student should continue: ",
@@ -178,7 +173,7 @@ class SpeculativeDecoding(Setting):
         last_err_ix=-1,
         approved_tokens=None,
         approved_str=None,
-    ) -> tuple[bool, int | None, Any | None]:
+    ) -> tuple[bool, int | None, str | None]:
         """
         Verify the candidates using the teacher model.
 
@@ -254,12 +249,16 @@ class SpeculativeDecoding(Setting):
                 student_out_approved = " "
 
             # the prompt is added into the chat in this method
-            self.eval_prompt.format_teacher_message(
-                student_out=student_out_approved,
-                add_to_chat=True,
-                chat=chat,
-                model_role="teacher",
-                source="user",
+            teacher_message = self.eval_prompt.format_teacher_message(
+                student_out_approved
+            )
+            chat.add_message(part=teacher_message, model_role="teacher", source="user")
+            print(
+                "\n--------------\n",
+                "Formatted teacher prompt:",
+                teacher_message,
+                sep="\n",
+                end="\n--------------\n\n",
             )
 
             formatted_eval_prompt = self.prepare_prompt(
@@ -502,7 +501,7 @@ class SpeculativeDecoding(Setting):
 
         return corrected_chain, corrected_str
 
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> str:
         """
         Run the speculative decoding for one instance.
 
@@ -513,7 +512,7 @@ class SpeculativeDecoding(Setting):
         4. Repeat steps 2 and 3 until the teacher model agrees with the chain of thought.
 
         :param decoded_output: the current output of the student
-        :param chat: the current chat
+        :param chat: the current chat, only necessary in the SD and feedback setting
 
         :return: The decoded output
         """
@@ -558,9 +557,7 @@ class SpeculativeDecoding(Setting):
         # change the last message of the student to the refined output
         self.chat.messages["student"][-1]["content"] = decoded_output
 
-        model_out_parsed = parse_output(decoded_output)
-
-        return model_out_parsed
+        return decoded_output
 
     def speculative_decode(
         self,

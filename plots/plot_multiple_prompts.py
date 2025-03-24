@@ -36,7 +36,7 @@ def plot_from_paths(
     :return: None
     """
     Path(result_path).mkdir(parents=True, exist_ok=True)
-    plotter = Plotter(result_path=Path(result_path))
+    plotter = Plotter(results_path=Path(result_path))
     loader = DataLoader()
 
     if type(paths[0]) is str:
