@@ -34,7 +34,7 @@ class Interpretability:
         self.plotter: Plotter = plotter
         self.save_heatmaps: bool = save_heatmaps
 
-        self.scenery_words: set[str] = scenery_words
+        self.scenery_words: set[str] = set(map(lambda x: x.lower(), scenery_words))
 
     def get_stop_word_idxs(
         self, attn_scores: np.ndarray, chat_ids: np.ndarray
@@ -49,15 +49,15 @@ class Interpretability:
         stop_words_ids = []
         for output_row in attn_scores:
             for task_idx in range(len(output_row)):
-                token = self.tokenizer.batch_decode(chat_ids)[task_idx]
-                token = token.strip()
-                for to_lemmatize in nlp(token):
-                    lemmatized = to_lemmatize.lemma_
-                if (lemmatized.capitalize() not in self.scenery_words) and (lemmatized.lower() not in self.scenery_words):
-                    stop_words_ids.append(task_idx)
+                token = self.tokenizer.batch_decode(chat_ids)[task_idx].strip()
+                for token_ in nlp(token):
+                    if token_.lemma_ not in self.scenery_words:
+                        stop_words_ids.append(task_idx)
         return stop_words_ids
 
-    def get_sentence_span_idx(self, chat_ids: torch.LongTensor) -> list[tuple[int, int]]:
+    def get_sentence_span_idx(
+        self, chat_ids: torch.LongTensor
+    ) -> list[tuple[int, int]]:
         """
         Get tuple of start, stop indices of period from the current task chat ids.
 
@@ -68,13 +68,17 @@ class Interpretability:
         period_token_indices = [
             i for i, tok in enumerate(chat_ids) if tok == period_token_id
         ]
-        period_token_indices.pop(-1) if period_token_indices[-1] == chat_ids[-1] else None
+        (
+            period_token_indices.pop(-1)
+            if period_token_indices[-1] == chat_ids[-1]
+            else None
+        )
         # Create start, stop tuples of indices
         period_token_indices = [
             (lambda x: (start, stop))((start, stop))
             for start, stop in zip([0] + period_token_indices, period_token_indices)
         ]
-        
+
         return period_token_indices[1:]
 
     @staticmethod
@@ -87,7 +91,9 @@ class Interpretability:
         Obtains the attention scores from a tensor of attention weights of the current chat.
         The function calculates the attention scores for current task tokens by averaging over layers,
         heads and normalizing over the sum of all token attention scores.
-        (The following code is an adjusted version of the original implementation from Li et. al 2024 (Link to paper: https://arxiv.org/abs/2402.18344))
+
+        (The following code is an adjusted version of the original implementation from Li et. al 2024
+         (Link to paper: https://arxiv.org/abs/2402.18344))
 
         :param output_tensor: model output tensor
         :param model_output_len: model output length
@@ -157,14 +163,18 @@ class Interpretability:
         2. Gets the relevant attention scores, filters them.
         3. Constructs x and y tokens and optionally creates heatmaps.
 
-        (The following code is an adjusted version of the original implementation from Li et. al 2024 (Link to paper: https://arxiv.org/abs/2402.18344))
+        (The following code is an adjusted version of the original implementation from Li et. al 2024
+         (Link to paper: https://arxiv.org/abs/2402.18344))
 
         :param part: part of the sample with the output before the setting is applied
         :param chat: Chat history as list of messages
         :param after: if to get attention scores after the setting was applied to the model output or before
         :return: attention scores, tokenized x and y tokens
-
         """
+        if (after and not part.result_after.model_answer) or not (
+            after or part.result_before.model_answer
+        ):
+            raise ValueError("Interpretability called on empty model output")
 
         chat_messages = chat.messages["student"] if chat.multi_system else chat.messages
 
@@ -210,7 +220,7 @@ class Interpretability:
             x_tokens = self.tokenizer.batch_decode(chat_ids[attention_indices])
         else:
             x_tokens = []
-            for inx in list(range(1, len(period_indices)+1)):
+            for inx in range(1, len(period_indices) + 1):
                 if inx in part.supporting_sent_inx:
                     x_tokens.append(f"* {inx} *")
                 else:

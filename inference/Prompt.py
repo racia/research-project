@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from data.TaskExamples import Task, TaskExample, TaskExamples
-from inference.Chat import Chat
 from settings.config import Examples
 
 
@@ -90,23 +89,11 @@ class Prompt:
 
         return self.text.format(init_prompt=student_sys, parts_so_far=parts_so_far)
 
-    def format_teacher_message(
-        self,
-        student_out: str,
-        add_to_chat: bool = False,
-        chat: Chat = None,
-        model_role: str = "student",
-        source: str = "user",
-    ):
+    def format_teacher_message(self, student_out: str):
         """
         Add the students current output into the instruction for the teacher.
 
         :param student_out: str, the current output of the student
-        :param add_to_chat: bool, if the formatted prompt should be added to the chat
-        :param chat: Chat, the current chat
-        :param model_role: str, the role of the model
-        :param source: str, the source of the message
-
         :return: str, the instruction with the student output inserted
         """
         if student_out:
@@ -114,26 +101,9 @@ class Prompt:
         else:
             wrapped_out = self.wrapper.format(student_output=" ")
 
-        if add_to_chat:
-            chat.add_message(part=wrapped_out, model_role=model_role, source=source)
-            print(
-                "\n--------------\n",
-                "Formatted teacher prompt:",
-                wrapped_out,
-                sep="\n",
-                end="\n--------------\n\n",
-            )
-
         return wrapped_out
 
-    def format_resume_message(
-        self,
-        corrected_student_output: str,
-        add_to_chat: bool = False,
-        chat: Chat = None,
-        model_role: str = "student",
-        source: str = "user",
-    ) -> str:
+    def format_resume_message(self, corrected_student_output: str) -> str:
         """
         Formulate the resume prompt for the student model.
 
@@ -143,10 +113,6 @@ class Prompt:
 
         :param corrected_student_output: the correct part of the student's previous output with the teacher's
         suggestion added
-        :param add_to_chat: if the formatted prompt should be added to the chat
-        :param chat: the current chat
-        :param model_role: the role of the model
-        :param source: the source of the message
 
         :return: the formulated resume prompt
         """
@@ -154,13 +120,6 @@ class Prompt:
             wrapped_out = self.wrapper.format(to_continue=corrected_student_output)
         else:
             wrapped_out = self.wrapper.format(to_continue=" ")
-
-        if add_to_chat:
-            chat.add_message(
-                part=wrapped_out,
-                model_role=model_role,
-                source=source,
-            )
 
         return wrapped_out
 

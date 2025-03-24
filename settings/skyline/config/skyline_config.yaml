@@ -68,7 +68,7 @@ logging:
 results:
   save_heatmaps: False
   headers:
-    - id
+    - id_
     - task_id
     - sample_id
     - part_id

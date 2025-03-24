@@ -77,7 +77,7 @@ def structure_part(
         question.extend(numerate_lines(part["question"]))
     else:
         question.extend(list(part["question"].values()))
-    return "\n".join(context), "\n".join(question)
+    return "\n".join(context).strip(), "\n".join(question).strip()
 
 
 def parse_output(output: str) -> tuple:
