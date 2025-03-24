@@ -73,33 +73,42 @@ def add_part_ids(parts: list[SamplePart]) -> list[SamplePart]:
     return parts
 
 
-def run(
-    data_path: str,
-    headers: dict[str, list[str]],
-    silver_reasoning_path: str = "",
-) -> None:
+def run(data_path: str, silver_reasoning_path: str = "") -> None:
     """
     Run the standardization pipeline.
 
     :param data_path: Path to the data to standardize
-    :param headers: The headers for the data
     :param silver_reasoning_path: the path to the silver reasoning data (if any, the reasoning will be added to the data)
     :return: None
     """
+    if not data_path:
+        raise ValueError("Data path is missing.")
+
+    headers = {
+        "general": [
+            "id_",
+            "task_id",
+            "sample_id",
+            "part_id",
+            "task",
+            "golden_answer",
+            "silver_reasoning",
+        ],
+        "results": [  # for both before and after
+            "model_answer",
+            "model_reasoning",
+            "model_output",  # TODO: make sure it's not 'model_result'
+            "correct",
+        ],
+    }
     loader = DataLoader()
     saver = DataSaver(save_to=str(Path(data_path).parent))
 
     headers_results_before = [f"{result}_before" for result in headers["results"]]
     headers_results_after = [f"{result}_after" for result in headers["results"]]
-    all_headers = (
-        headers["general"]
-        + headers_results_before
-        + headers["results"]
-        + headers_results_after
-    )
     print("Using long list of headers to load the data.")
 
-    data = loader.load_results(data_path, headers=all_headers, list_output=True)
+    data = loader.load_results(data_path, list_output=True)
 
     silver_reasoning_data = None
     if silver_reasoning_path:
@@ -117,6 +126,21 @@ def run(
             path=silver_reasoning_path,
             headers=silver_reasoning_headers,
         )
+
+    header_mapping = {
+        "true_result": "golden_answer",
+        "model_result": "model_output",
+        "sample_no": "sample_id",
+        "id": "id_",
+        "correct?": "correct",
+    }
+    multi_system = False
+    for header, header_upd in header_mapping.items():
+        for row in data:
+            if header in row:
+                row[header_upd] = row.pop(header)
+            if "model_answer_before" in row:
+                multi_system = True
 
     parts = []
     counter = 0
@@ -151,7 +175,7 @@ def run(
         )
         part = SamplePart(
             **{gen_header: row[gen_header] for gen_header in headers["general"]},
-            multi_system=True,
+            multi_system=multi_system,
         )
         if "model_answer_before" in row and row["model_answer_before"]:
             part.result_before = Results(
@@ -167,14 +191,15 @@ def run(
                 ),
                 after=False,
             )
-        print(
-            "\n".join(
-                f"{h_patt.match(result)[1] if h_patt.match(result) else result}: {row[result]}"
-                for result in headers_results_after
-            ),
-            end="\n\n",
-        )
-        if "model_answer_after" in row:
+
+        if "model_answer_after" in row and row["model_answer_after"]:
+            print(
+                "\n".join(
+                    f"{h_patt.match(result)[1] if h_patt.match(result) else result}: {row[result]}"
+                    for result in headers_results_after
+                ),
+                end="\n\n",
+            )
             part.result_after = Results(
                 **dict(
                     [
@@ -189,6 +214,13 @@ def run(
                 after=True,
             )
         else:
+            print(
+                "\n".join(
+                    f"{h_patt.match(result)[1] if h_patt.match(result) else result}: {row[result]}"
+                    for result in headers["results"]
+                ),
+                end="\n\n",
+            )
             part.result_after = Results(
                 **dict(
                     [
@@ -239,25 +271,7 @@ if __name__ == "__main__":
     data_path = ""
     # TODO: specify the path to silver reasoning if you wish to add it
     silver_reasoning_path = "data/silver_reasoning_test.csv"
-    headers = {
-        "general": [
-            "id_",
-            "task_id",
-            "sample_id",
-            "part_id",
-            "task",
-            "golden_answer",
-            "silver_reasoning",
-        ],
-        "results": [  # for both before and after
-            "model_answer",
-            "model_reasoning",
-            "model_output",  # TODO: make sure it's not 'model_result'
-            "correct",
-        ],
-    }
     run(
         data_path=data_path,
-        headers=headers,
         silver_reasoning_path=silver_reasoning_path,
     )

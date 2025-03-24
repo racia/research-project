@@ -320,7 +320,7 @@ def run_setting(cfg: DictConfig) -> None:
                         as_lists=True
                     ),
                     y_label="Accuracies and Standard Deviations",
-                    plot_name_add=f"{prompt_name}_{split.name}_before_",
+                    plot_name_add=[prompt_name, split.name, "before"],
                 )
                 plotter.plot_acc_per_task_and_prompt(
                     acc_per_prompt_task={
@@ -328,7 +328,7 @@ def run_setting(cfg: DictConfig) -> None:
                         **split.evaluator_after.get_metrics(as_lists=True),
                     },
                     y_label="Accuracies and Standard Deviations",
-                    plot_name_add=f"{prompt_name}_{split.name}_before_after",
+                    plot_name_add=[prompt_name, split.name, "before", "after"],
                 )
 
             saver.save_split_accuracy(
@@ -347,7 +347,7 @@ def run_setting(cfg: DictConfig) -> None:
             plotter.plot_acc_per_task_and_prompt(
                 acc_per_prompt_task=split.evaluator_after.get_metrics(as_lists=True),
                 y_label="Accuracies and Standard Deviations",
-                plot_name_add=f"{prompt_name}_{split.name}_after_",
+                plot_name_add=[prompt_name, split.name, "after"],
             )
 
             run_splits["after"][split.name][init_prompt] = split
@@ -413,7 +413,7 @@ def run_setting(cfg: DictConfig) -> None:
                 plotter.plot_accuracies(
                     exact_match_accuracies=em_accuracies_,
                     soft_match_accuracies=sm_accuracies_,
-                    additional_info=f"{split}; {version};",
+                    additional_info=[split, version],
                     compare_prompts=True,
                     label="Accuracy",
                 )
@@ -430,7 +430,7 @@ def run_setting(cfg: DictConfig) -> None:
                 plotter.plot_accuracies(
                     exact_match_accuracies=em_std_,
                     soft_match_accuracies=sm_std_,
-                    additional_info=f"{split.name}; {version}",
+                    additional_info=[split.name, version],
                     compare_prompts=True,
                     label="Standard Deviation",
                 )
@@ -440,14 +440,14 @@ def run_setting(cfg: DictConfig) -> None:
                 plotter.plot_accuracies(
                     exact_match_accuracies={**em_accuracies.values()},
                     soft_match_accuracies={**sm_accuracies.values()},
-                    additional_info=f"{split.name}; before; after",
+                    additional_info=[split.name, "before", "after"],
                     compare_prompts=True,
                     label="Accuracy",
                 )
                 plotter.plot_accuracies(
                     exact_match_accuracies={**em_std.values()},
                     soft_match_accuracies={**sm_std.values()},
-                    additional_info=f"{split.name}; before; after",
+                    additional_info=[split.name, "before", "after"],
                     compare_prompts=True,
                     label="Standard Deviation",
                 )

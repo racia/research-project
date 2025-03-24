@@ -148,31 +148,36 @@ class DataLoader:
         :param path: path to the data
         :param headers: list of headers in the file, if None, the headers are read from the file
         :param list_output: if the output should be a list of dictionaries instead of a dictionary of lists
+        :param sep: separator for the csv file
         :return: result data
         """
         data = [] if list_output else defaultdict(list)
         with open(Path(path), "rt", encoding="UTF-8", errors="ignore") as f:
-            reader = csv.DictReader(f, delimiter="\t")
-            printed = False
+            reader = csv.DictReader(f, delimiter=sep)
+            printed = []
             if not headers:
                 headers = reader.fieldnames
+
             for row in reader:
                 # to make sure we are reading a row containing data
-                if list_output and row["task_id"].isdigit():
+                if list_output and row[list(row.keys())[0]].isdigit():
                     row_ = {}
                     for header, value in row.items():
-                        if header in headers and value:
+                        if header in headers:
                             row_[header] = get_real_value(value)
-                        elif not printed:
+                        elif header not in printed:
                             print(f"Header '{header}' not found in headers.")
+                            printed.append(header)
                     data.append(row_)
-                    printed = True
+
                 else:
                     for header in headers:
-                        if header in row.keys() and row[header]:
+                        if header in row.keys():
                             data[header].append(get_real_value(row[header]))
-                        else:
+                        elif header not in printed:
                             print(f"Header '{header}' not found in row.")
+                            printed.append(header)
+
         return data
 
     def load_scenery(

@@ -37,7 +37,7 @@ class Plotter:
         y_label: str,
         x_label: str,
         file_name: str,
-        plot_name_add: str,
+        plot_name_add: list[str],
     ) -> None:
         """
         Save the plot to a file.
@@ -55,7 +55,7 @@ class Plotter:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
                 self.results_path
-                / f"{plot_name_add}{label}_per_{x_label.lower()}_no_{self.plot_counter_task}.png",
+                / f"{'_'.join(plot_name_add)}{label}_per_{x_label.lower()}_no_{self.plot_counter_task}.png",
                 bbox_inches="tight",
             )
 
@@ -67,7 +67,7 @@ class Plotter:
         x_label: str,
         y_label: str,
         max_x_len: int,
-        plot_name_add: str,
+        plot_name_add: list[str],
         number_of_prompts: int = 1,
     ) -> None:
         """
@@ -99,7 +99,7 @@ class Plotter:
             title += " and prompt"
 
         if plot_name_add:
-            title += f" ({plot_name_add.strip('_')})"
+            title += f" ({'; '.join(plot_name_add)})"
 
         plt.title(title)
 
@@ -169,7 +169,7 @@ class Plotter:
         x_label: str = "Task",
         y_label: str = "Accuracy",
         file_name=None,
-        plot_name_add: str = "",
+        plot_name_add: list[str] = None,
     ) -> None:
         """
         Plot the accuracy per task.
@@ -194,7 +194,7 @@ class Plotter:
         x_label: str = "Task",
         y_label: str = "Accuracy",
         file_name=None,
-        plot_name_add: str = "",
+        plot_name_add: list[str] = None,
     ) -> None:
         """
         Plot the accuracy per task and prompt.
@@ -244,7 +244,7 @@ class Plotter:
         self,
         exact_match_accuracies: Accuracy | Metric | dict[Prompt, Accuracy | Metric],
         soft_match_accuracies: Accuracy | Metric | dict[Prompt, Accuracy | Metric],
-        additional_info: str = "",
+        additional_info: list[str] = None,
         compare_prompts: bool = False,
         label: str = "",
     ) -> None:
