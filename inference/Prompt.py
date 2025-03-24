@@ -49,20 +49,22 @@ class Prompt:
 
         # if no prompt is given, use default prompt
         if prompt:
-            self.text = prompt
+            self.text: str = prompt
         elif prompt_type and not prompt_path:
             try:
-                self.text = self.read_prompt_from_file(f"./{prompt_type}_prompt.txt")
+                self.text: str = self.read_prompt_from_file(
+                    f"./{prompt_type}_prompt.txt"
+                )
             except FileNotFoundError:
                 print("No prompt file found. Please create a prompt file.")
         elif prompt_path:
-            self.text = self.read_prompt_from_file(prompt_path)
+            self.text: str = self.read_prompt_from_file(prompt_path)
         else:
-            self.text = "At some point, here will be a default prompt."
+            self.text: str = "At some point, here will be a default prompt."
 
-        self.original_text = self.text
-        self.wrapper = wrapper
-        self.name = name
+        self.original_text: str = self.text
+        self.wrapper: str = wrapper
+        self.name: str = name
 
     def format_teacher_sys(self, student_sys: str, student_chat: list[dict]) -> str:
         """

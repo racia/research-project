@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Union
 
 from data.DataProcessor import DataProcessor
+from data.utils import get_real_value
 from settings.config import DataSplits
 
 
@@ -21,10 +22,10 @@ class DataLoader:
         The dataloader handles the reading and loading of data, as well as the mapping of tasks to
         their respective data.
         """
-        self.number_of_parts = 0
-        self.samples_per_task = samples_per_task
-        self.number_of_tasks = 0
-        self.tasks = []
+        self.number_of_parts: int = 0
+        self.samples_per_task: int = samples_per_task
+        self.number_of_tasks: int = 0
+        self.tasks: list[int] = []
 
     @staticmethod
     def get_task_mapping(path: Path) -> dict[int, list[Path]]:
@@ -128,49 +129,65 @@ class DataLoader:
         return processed_data
 
     @staticmethod
-    def load_result_data(
-        result_file_path: str,
-        headers: list[str],
-        list_output: bool = False,
-    ) -> (
-        dict[str, list[Union[int, float]]]
-        or dict[int, list[dict[str, Union[int, float, str]]]]
-    ):
+    def load_results(
+        path: str, headers: list[str] = None, list_output: bool = False
+    ) -> dict[str, list]:
         """
-        Read the accuracy from a file.
+        Load the results or any csv file from the path.
+        Please specify the headers to ensure the desired order of the data.
 
-        :param result_file_path: path to the file
-        :param headers: list of headers in the file
-        :param list_output: if the output should be a list of dictionaries or a dictionary of lists
-        :return: dictionary with the task, accuracy, and soft match accuracy lists
+        :param path: path to the data
+        :param headers: list of headers in the file, if None, the headers are read from the file
+        :param list_output: if the output should be a list of dictionaries instead of a dictionary of lists
+        :return: result data
         """
         data = defaultdict(list)
-        with open(Path(result_file_path), "rt", encoding="UTF-8", errors="ignore") as f:
+        with open(Path(path), "rt", encoding="UTF-8", errors="ignore") as f:
             reader = csv.DictReader(f, delimiter="\t")
+            if not headers:
+                headers = reader.fieldnames
             for row in reader:
-                if row["task_id"].isdigit():
-                    if list_output:
-                        task_id = int(row["task_id"])
-                        row_ = {}
-                        for k, v in row.items():
-                            if k in headers and v:
-                                if v.isdigit():
-                                    row_[k] = int(v)
-                                elif v.replace(".", "", 1).isdigit():
-                                    row_[k] = float(v)
-                                else:
-                                    row_[k] = v
-                        data[task_id].append(row_)
-                    else:
-                        for header in headers:
-                            value = row[header]
-                            if value.isdigit():
-                                data[header].append(int(value))
-                            elif value.replace(".", "", 1).isdigit():
-                                data[header].append(float(value))
-                            else:
-                                data[header].append(row[header])
+                if list_output:
+                    row_ = {
+                        get_real_value(v) for k, v in row.items() if k in headers and v
+                    }
+                    data[get_real_value(row["task_id"])].append(row_)
+                else:
+                    for header in headers:
+                        if row[header]:
+                            data[header].append(get_real_value(row[header]))
+                        else:
+                            data[header].append(None)
         return data
+
+    def load_scenery(
+        self,
+        word_types: tuple[str, ...] = (
+            "attr",
+            "loc",
+            "nh-subj",
+            "obj",
+            "part",
+            "rel",
+            "subj-attr",
+            "subj",
+            "other",
+            "base_phrasal_verbs",
+        ),
+    ) -> set:
+        """
+        Get scenery words from the scenery_words folder and the Scenery base phrases verbs.
+        Additionally adds Scenery base phrasal words.
+
+        :return: set of scenery words for filtering attention scores
+        """
+        scenery_words = set()
+        for entry in os.scandir("data/scenery_words"):
+            word_type = entry.name.strip(".txt")
+            if word_type in word_types:
+                with open(entry.path, "r", encoding="UTF-8") as f:
+                    scenery_words.update(f.read().splitlines())
+        return scenery_words
 
 
 if __name__ == "__main__":

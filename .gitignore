@@ -19,6 +19,7 @@ data/tasks_1-20_v1-2/*
 data/*.zip
 data/*.tar.gz
 data/*.txt
+data/examples/*
 plots/*.png
 
 */.DS_Store
@@ -30,12 +31,26 @@ settings/baseline/init_bl.txt
 settings/baseline/prompts/results/*
 settings/baseline/results/*
 
+# Old baseline
+baseline/
+
 # Results
 results/
+outputs/
+
+# Outputs
 outputs/
 
 # Prompts
 settings/baseline/config/prompt_*_shot*
 
-# Testing scripts
+# Testing files
 test*.sh
+test/
+test
+
+fine-tuning/
+
+# Other
+inference/prompts/*reasoning.txt
+*.log

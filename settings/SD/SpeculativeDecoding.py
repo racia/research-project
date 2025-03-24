@@ -2,16 +2,16 @@ from __future__ import annotations
 
 import copy
 import re
-from typing import Any
 
 import torch
 
 from inference.Chat import Chat, Source
 from inference.Prompt import Prompt
+from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
 from settings.config import Wrapper
-from settings.utils import Enumerate, parse_output
+from settings.utils import Enumerate
 
 
 def check_match(tokens, string, ix=None, intervention=None) -> tuple[list, str]:
@@ -67,6 +67,7 @@ class SpeculativeDecoding(Setting):
         to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
+        interpretability: Interpretability,
         init_prompt: Prompt = None,
         eval_prompt: Prompt = None,
         resume_prompt: Prompt = None,
@@ -87,6 +88,7 @@ class SpeculativeDecoding(Setting):
         :param student: The student model
         :param eval_prompt: the evaluation prompt for the teacher
         :param resume_prompt: the resume prompt for the student
+        :param interpretability: optional interpretability instance
         """
         super().__init__(
             model=student,
@@ -97,9 +99,10 @@ class SpeculativeDecoding(Setting):
             multi_system=multi_system,
             to_enumerate=to_enumerate,
             wrapper=wrapper,
+            interpretability=interpretability,
         )
-        self.teacher = teacher
-        self.student = student
+        self.teacher: Model = teacher
+        self.student: Model = student
         self.tokenizer = student.tokenizer
 
         self.init_prompt = init_prompt
@@ -189,8 +192,8 @@ class SpeculativeDecoding(Setting):
         :param approved_tokens: the tokens that have been approved by the teacher so far
         :param approved_str: the string that has been approved by the teacher so far
 
-        :return: A tuple containing a boolean indicating whether the current CoT is valid, an integer or None indicating
-        the error index and the teacher's intervention or None
+        :return: A tuple containing a boolean indicating whether the current CoT is valid,
+        an integer or None indicating the error index and the teacher's intervention or None
         """
         student_tokens = self.string_to_tokens(model_out=student_out_str)
         if approved_tokens:
@@ -273,6 +276,7 @@ class SpeculativeDecoding(Setting):
             )
 
             suggested_token = str(top_tokens_decoded[0])
+            print("suggested_token", suggested_token)
 
             try:
                 student_token_id = self.tokenizer.encode(
