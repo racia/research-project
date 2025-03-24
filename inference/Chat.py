@@ -23,7 +23,7 @@ class Chat:
     This class handles the chats with the model.
     """
 
-    def __init__(self, system_prompt: str, multi_system: bool = False):
+    def __init__(self, system_prompt: str = None, multi_system: bool = False):
         """
         Create a chat.
         A chat consists of the prompts the model is prompted with and the answers of the model.

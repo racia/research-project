@@ -13,7 +13,7 @@ from prompts.Chat import Chat, Source
 from prompts.Prompt import Prompt
 =======
 from inference.Chat import Chat, Source
-from inference.DataLevels import SamplePart, Task, Sample
+from inference.DataLevels import Sample, SamplePart, Task
 from inference.Prompt import Prompt
 >>>>>>> 006cf9e525f9be92a55267ba710761b59a6518cf
 from settings.Model import Model
@@ -195,7 +195,7 @@ class Setting(ABC):
                     raw=sample_part,
                     golden_answer=y_true,
                     wrapper=self.wrapper,
-                    to_enumerate=self.to_enumerate
+                    to_enumerate=self.to_enumerate,
                 )
                 self.model.curr_sample_part = current_part
 
@@ -231,13 +231,23 @@ class Setting(ABC):
                 # 6. Add the model's output to conversation
                 self.chat.add_message(part=decoded_output, source=Source.assistant, interpretability=interpr)
 
+                if self.multi_system:
+                    print(
+                        f"Last chat message from student before applying the setting: {chat.messages['student'][-1]}"
+                    )
+
                 with torch.no_grad():
                     answer, reasoning = self.apply_setting(
-                        decoded_output=decoded_output
+                        decoded_output=decoded_output, chat=chat
                     )
 
                 current_part.set_output(decoded_output, answer, reasoning)
                 sample.add_part(current_part)
+
+                if self.multi_system:
+                    print(
+                        f"Last chat message from student after applying the setting: {chat.messages['student'][-1]}"
+                    )
 
             sample.print_sample_predictions()
 
