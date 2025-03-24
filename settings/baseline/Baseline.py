@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-import settings.utils as utils
 from inference.Chat import Chat
 from inference.Prompt import Prompt
+from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
 from settings.config import Wrapper
@@ -17,9 +17,10 @@ class Baseline(Setting):
     def __init__(
         self,
         model: Model,
-        to_enumerate: dict[Enumerate, bool],
+        to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
+        interpretability: Interpretability,
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
         wrapper: Wrapper = None,
@@ -43,7 +44,8 @@ class Baseline(Setting):
             to_enumerate=to_enumerate,
             wrapper=wrapper,
         )
-        self.question_id = 0
+        self.question_id: int = 0
+        self.interpretability: Interpretability = interpretability
 
     def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
         """
@@ -62,16 +64,10 @@ class Baseline(Setting):
             formatted_prompt = self.model.tokenizer.apply_chat_template(
                 chat.messages, tokenize=False, add_generation_prompt=True
             )
-        print(
-            "Formatted prompt:",
-            formatted_prompt,
-            sep="\n",
-            end="\n",
-        )
 
         return formatted_prompt
 
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> str:
         """
         Postprocesses the output of the model.
         For the baseline model, this postprocessing just parses the output.
@@ -80,4 +76,4 @@ class Baseline(Setting):
         :param chat: the current chat, only necessary in the SD and feedback setting
         :return: parsed output
         """
-        return utils.parse_output(output=decoded_output)
+        return decoded_output

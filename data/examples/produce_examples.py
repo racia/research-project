@@ -82,7 +82,7 @@ def produce_example_files(directory: str) -> None:
     :param directory: the directory to save the files
     """
     data_loader = DataLoader()
-    data = data_loader.load_result_data(
+    data = data_loader.load_results(
         str(Path(directory) / "task_examples.csv"),
         ["line_id", "context/question", "golden_answer"],
         list_output=True,

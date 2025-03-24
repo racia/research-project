@@ -8,9 +8,11 @@ model:
   # if we want the model to continue on the last message rather
   # than create a separate answer
   to_continue: False
+  mode: "eval"
 
 setting:
   name: "Skyline"
+  interpretability: True
 
 data:
   # small data with validation
@@ -49,7 +51,7 @@ init_prompt:
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_direct_answer.txt"
   examples:
-    to_add: True
+    add: True
     enumerated: True
     handpicked: True
     not_mentioned: True
@@ -64,6 +66,7 @@ logging:
   print_to_file: True
 
 results:
+  save_heatmaps: False
   headers:
     - id
     - task_id
@@ -71,17 +74,17 @@ results:
     - part_id
     - task
     - golden_answer
-    - model_answer
-    - correct
-    - model_reasoning
+    - model_answer_after
+    - correct_after
+    - model_reasoning_after
     - silver_reasoning
-    - model_output
-    - exact_match_accuracy
-    - soft_match_accuracy
-    - there
-    - verbs
-    - pronouns
-    - not_mentioned
+    - model_output_after
+    - exact_match_accuracy_after
+    - soft_match_accuracy_after
+    - there_after
+    - verbs_after
+    - pronouns_after
+    - not_mentioned_after
 
 hydra:
   run:

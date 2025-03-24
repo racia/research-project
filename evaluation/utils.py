@@ -20,6 +20,7 @@ def normalize_token(token: str) -> str:
     :param token: the token to clean
     :return: the normalized token
     """
+
     return token.strip("-,.:;!?").lower()
 
 

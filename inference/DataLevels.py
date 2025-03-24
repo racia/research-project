@@ -1,12 +1,18 @@
 from __future__ import annotations
 
+import copy
 from dataclasses import dataclass
+
+import numpy as np
 
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
 from inference.utils import *
+from interpretability.utils import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
 from settings.utils import structure_part
+
+stats = Statistics()
 
 
 @dataclass
@@ -47,17 +53,17 @@ class Features:
         self.not_mentioned += other.not_mentioned
         return self
 
-    def get(self) -> dict[str, int]:
+    def get(self, after: bool = True) -> dict[str, int]:
         """
         Get the features as a dictionary.
 
         :return: the features as a dictionary
         """
         return {
-            "there": self.there,
-            "verbs": self.verbs,
-            "pronouns": self.pronouns,
-            "not_mentioned": self.not_mentioned,
+            f"there_{'after' if after else 'before'}": self.there,
+            f"verbs_{'after' if after else 'before'}": self.verbs,
+            f"pronouns_{'after' if after else 'before'}": self.pronouns,
+            f"not_mentioned_{'after' if after else 'before'}": self.not_mentioned,
         }
 
     def __repr__(self) -> str:
@@ -69,139 +75,47 @@ class Features:
         return f"<Features: {str(self.get())}>"
 
 
-class DataLevel:
+class Results:
     """
     Abstract class for data levels.
     """
 
-    def __init__(self, task_id: int):
-        self.task_id = task_id
-        self.features = Features(
-            there=0,
-            verbs=0,
-            pronouns=0,
-            not_mentioned=0,
-        )
-
-
-class SamplePart(DataLevel):
-    """
-    This class handles the parts of the samples, dividing it by questions.
-    """
-
-    result_attrs = [
-        "id_",
-        "task_id",
-        "sample_id",
-        "part_id",
-        "task",
-        "model_reasoning",
-        "model_answer",
-        "correct",
-        "golden_answer",
-        "silver_reasoning",
-        "model_output",
-    ]
-
     def __init__(
         self,
-        id_: int,
-        task_id: int,
-        sample_id: int,
-        part_id: int,
-        raw: dict,
-        golden_answer: str,
-        silver_reasoning=None,
-        wrapper: Wrapper = None,
-        to_enumerate: Enumerate = None,
+        model_output: str,
+        model_answer: str,
+        model_reasoning: str,
+        interpretability: InterResult,
+        after: bool = True,
     ):
-        super().__init__(task_id)
-        self.id_ = id_
-        self.sample_id = sample_id
-        self.part_id = part_id
-
-        self.raw = raw
-        self.wrapper = wrapper
-        self.to_enumerate = to_enumerate
-
-        context, question, pre_reasoning, pre_answer = self.format_part()
-
-        self.context = context.split("\n")
-        self.question = question
-
-        self.task = "\n".join((context, question, pre_reasoning, pre_answer)).strip()
-
-        self.golden_answer = golden_answer
-        self.silver_reasoning = silver_reasoning
-
-        self.model_output = None
-        self.model_reasoning = None
-        self.model_answer = None
-
-        self.correct = None
-
-        self.stats = Statistics()
-        self.features = Features(
-            there=0,
-            verbs=0,
-            pronouns=0,
-            not_mentioned=0,
-        )
-        self.result = None
-
-    def wrap(self, attr: str, replacements: dict[str, str]) -> str:
         """
-        Wrap the attribute with the wrapper, allowing flexible placeholders.
+        Initialize the Results class.
 
-        :param attr: The name of the attribute to wrap (e.g., 'context', 'question')
-        :param replacements: A dictionary of placeholders to replace in the template
-        :return: The formatted attribute if it exists, otherwise None
+        :param model_output: the output of the model
+        :param model_answer: the answer to the question
+        :param model_reasoning: the reasoning for the answer
         """
-        if hasattr(self.wrapper, attr):
-            wrapped_attr = getattr(self.wrapper, attr)
-            try:
-                return wrapped_attr.format(**replacements) if wrapped_attr else ""
-            except KeyError as e:
-                raise ValueError(f"Missing placeholder in replacements: {e}")
-        else:
-            raise AttributeError(f"Wrapper has no attribute '{attr}': {self.wrapper}")
+        self.after = after
 
-    def format_part(self) -> tuple[str, ...] | tuple[str, str, str, str]:
-        """
-        Format the prompt part with the wrapper.
+        self.model_output: str = model_output
+        self.model_answer: str = model_answer
+        self.model_reasoning: str = model_reasoning
 
-        :return: the formatted prompt part
-        """
-        context, question = structure_part(self.raw, self.to_enumerate)
-        replacements = {
-            "context": context,
-            "question": question,
-            "reasoning": "",
-            "answer": "",
-        }
-        if self.wrapper:
-            return tuple(self.wrap(attr, replacements) for attr in replacements.keys())
-        return context, question, "", ""
+        self.answer_correct: bool = None
+        self.reasoning_correct: bool = None
 
-    def __str__(self) -> str:
-        """
-        Return the task which includes the wrapped context, question,
-        reasoning, and answer as the task for the model (no actual reasoning and answer).
+        self.features: Features = self.inspect_answer()
 
-        :return: the task for the model
-        """
-        return self.task
+        self.interpretability: InterResult = interpretability
 
-    def __repr__(self) -> str:
-        """
-        Return the string representation of the part.
+        self.result_attrs: list[str] = [
+            "model_reasoning",
+            "model_answer",
+            "correct",
+            "model_output",
+        ]
 
-        :return: the string representation of the part
-        """
-        return (
-            f"<SamplePart {self.id_} of task {self.task_id}, sample {self.sample_id}, part {self.part_id}>"
-            f"\n{self.task}"
-        )
+        self.dict: dict = self.get_result()
 
     def inspect_answer(self) -> Features:
         """
@@ -221,30 +135,196 @@ class SamplePart(DataLevel):
         )
         return self.features
 
-    def set_output(self, model_output: str, answer: str, reasoning: str) -> None:
+    def get_result(self) -> dict[str, int | str]:
+        """
+        Get the result of the part.
+
+        :return: the result of the part
+        """
+        add = "after" if self.after else "before"
+        try:
+            attributes = {
+                f"{attr.strip('_')}_{add}": getattr(self, attr)
+                for attr in self.result_attrs
+                if hasattr(self, attr)
+            }
+        except AttributeError as error:
+            print(f"Error accessing attribute: {error}")
+            attributes = {}
+        return {**attributes, **self.features.get(self.after)}
+
+
+class SamplePart:
+    """
+    This class handles the parts of the samples, dividing it by questions.
+    """
+
+    result_attrs: list[str] = [
+        "id_",
+        "task_id",
+        "sample_id",
+        "part_id",
+        "task",
+        "golden_answer",
+        "silver_reasoning",
+    ]
+
+    def __init__(
+        self,
+        id_: int,
+        task_id: int,
+        sample_id: int,
+        part_id: int,
+        raw: dict,
+        golden_answer: str,
+        silver_reasoning=None,
+        wrapper: Wrapper = None,
+        to_enumerate: Enumerate = None,
+    ):
+        self.id_: int = id_
+        self.task_id: int = task_id
+        self.sample_id: int = sample_id
+        self.part_id: int = part_id
+
+        self.raw: dict = raw
+        self.wrapper: Wrapper = wrapper
+        self.to_enumerate: Enumerate = to_enumerate
+        self.supporting_sent_inx = raw.get("supporting_fact", [])
+
+        self.structured_context, self.structured_question = structure_part(
+            self.raw, self.to_enumerate
+        )
+        self.unwrapped_task: str = "\n".join(
+            (self.structured_context, self.structured_question)
+        ).strip()
+
+        wrapped_context, wrapped_question, reasoning_wrapper, answer_wrapper = (
+            self.wrap_part()
+        )
+        self.task: str = "\n".join(
+            (wrapped_context, wrapped_question, reasoning_wrapper, answer_wrapper)
+        ).strip()
+
+        self.golden_answer: str = golden_answer
+        self.silver_reasoning: str = silver_reasoning
+
+        self.result_before: Results = Results(
+            model_output="",
+            model_answer="",
+            model_reasoning="",
+            interpretability=InterResult(
+                attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]
+            ),
+            after=False,
+        )
+        self.result_after: Results = Results(
+            model_output="",
+            model_answer="",
+            model_reasoning="",
+            interpretability=InterResult(
+                attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]
+            ),
+            after=True,
+        )
+
+    def wrap(self, attr: str, replacements: dict[str, str]) -> str:
+        """
+        Wrap the attribute with the wrapper, allowing flexible placeholders.
+
+        :param attr: The name of the attribute to wrap (e.g., 'context', 'question')
+        :param replacements: A dictionary of placeholders to replace in the template
+        :return: The formatted attribute if it exists, otherwise None
+        """
+        if hasattr(self.wrapper, attr):
+            wrapped_attr = getattr(self.wrapper, attr)
+            try:
+                return wrapped_attr.format(**replacements) if wrapped_attr else ""
+            except KeyError as e:
+                raise ValueError(f"Missing placeholder in replacements: {e}")
+        else:
+            raise AttributeError(f"Wrapper has no attribute '{attr}': {self.wrapper}")
+
+    def wrap_part(self) -> tuple[str, ...] | tuple[str, str, str, str]:
+        """
+        Format the prompt part with the wrapper.
+
+        :return: the formatted prompt part
+        """
+        replacements = {
+            "context": self.structured_context,
+            "question": self.structured_question,
+            "reasoning": "",
+            "answer": "",
+        }
+        if self.wrapper:
+            return tuple(self.wrap(attr, replacements) for attr in replacements.keys())
+        return self.structured_context, self.structured_question, "", ""
+
+    def __str__(self) -> str:
+        """
+        Return the task which includes the wrapped context, question,
+        reasoning, and answer as the task for the model (no actual reasoning and answer).
+
+        :return: the task for the model
+        """
+        return self.task
+
+    def __repr__(self) -> str:
+        """
+        Return the string representation of the part.
+
+        :return: the string representation of the part
+        """
+        return f"<SamplePart: id={self.id_}, task_id={self.task_id}, sample_id={self.sample_id}, part_id={self.part_id}>"
+
+    def set_output(
+        self,
+        model_output: str,
+        answer: str,
+        reasoning: str,
+        interpretability: InterResult,
+        after: bool = True,
+    ) -> None:
         """
         Set the output of the model.
 
         :param model_output: the output of the model
         :param answer: the answer to the question
         :param reasoning: the reasoning for the answer
+        :param interpretability: the interpretability result
+        :param after: whether the output is after the setting was applied to the model's output
 
         :return: None
         """
-        self.model_output = model_output
-        self.model_answer = answer
-        self.correct = self.stats.are_identical(self.model_answer, self.golden_answer)
+        if after:
+            self.result_after = Results(
+                model_output=model_output,
+                model_answer=answer,
+                model_reasoning=reasoning,
+                interpretability=interpretability,
+                after=after,
+            )
+            self.result_after.answer_correct = stats.are_identical(
+                answer, self.golden_answer
+            )
+            # TODO: add the score for reasoning
+        else:
+            self.result_before = Results(
+                model_output=model_output,
+                model_answer=answer,
+                model_reasoning=reasoning,
+                interpretability=interpretability,
+                after=False,
+            )
+            self.result_before.answer_correct = stats.are_identical(
+                answer, self.golden_answer
+            )
 
-        # TODO: add the score for reasoning
-        self.model_reasoning = reasoning
-
-        self.features = self.inspect_answer()
-        self.result = self.get_result()
-
-    def get_result(self) -> dict[str, int | str]:
+    def get_result(self, multi_system: bool = True) -> dict[str, int | str]:
         """
         Get the result of the part.
 
+        :param multi_system: whether the part is for the setting with two models
         :return: the result of the part
         """
         try:
@@ -256,10 +336,13 @@ class SamplePart(DataLevel):
         except AttributeError as error:
             print(f"Error accessing attribute: {error}")
             attributes = {}
-        return {**attributes, **self.features.get()}
+
+        if multi_system:
+            return {**attributes, **self.result_before.dict, **self.result_after.dict}
+        return {**attributes, **self.result_after.dict}
 
 
-class Sample(DataLevel):
+class Sample:
     """
     This class handles the samples.
     """
@@ -270,64 +353,117 @@ class Sample(DataLevel):
         sample_id: int,
         evaluator: AnswerEvaluator,
     ):
-        super().__init__(task_id)
-        self.sample_id = sample_id
+        self.task_id = task_id
+        self.sample_id: int = sample_id
 
         self.parts: list[SamplePart] = []
 
-        self.evaluator = evaluator
+        self.evaluator_before: AnswerEvaluator = evaluator
+        self.evaluator_after: AnswerEvaluator = copy.deepcopy(evaluator)
 
-    def add_part(self, part: SamplePart) -> None:
+    def add_part(self, part: SamplePart, multi_system: bool = False) -> None:
         """
         Add a part to the sample.
         Should be called after the output of the part is set with SamplePart.set_output().
 
         :param part: the part to add
+        :param multi_system: whether the part is for the setting with two models
         :return: None
         """
         self.parts.append(part)
-        self.features += part.features
 
-        self.evaluator.pred_answers.append(part.model_answer)
-        self.evaluator.pred_reasonings.append(part.model_reasoning)
+        if multi_system:
+            self.evaluator_before.pred_answers.append(part.result_before.model_answer)
+            self.evaluator_before.pred_reasonings.append(
+                part.result_before.model_reasoning
+            )
+        self.evaluator_after.pred_answers.append(part.result_after.model_answer)
+        self.evaluator_after.pred_reasonings.append(part.result_after.model_reasoning)
 
-    def print_sample_predictions(self) -> None:
+    def print_sample_predictions(self, multi_system: bool = False) -> None:
         """
         Print the model's predictions to compare with true values.
 
         :return: None
         """
-        attributes = zip(
-            self.evaluator.golden_answers,
-            self.evaluator.pred_answers,
-            self.evaluator.pred_reasonings,
-        )
-        print(
-            "Model's predictions for the sample:",
-            "\t{0:<18s} {1:<18s} REASONING".format("GOLDEN", "PREDICTED"),
-            sep="\n\n",
-            end="\n\n",
-        )
-        for golden_answer, pred_answer, pred_reasoning in attributes:
-            print(
-                "\t{0:<18s} {1:<18s} {2}".format(
-                    golden_answer, pred_answer.replace("\n", "\t"), pred_reasoning
-                ),
+        if multi_system:
+            attributes = zip(
+                self.evaluator_after.golden_answers,
+                self.evaluator_before.pred_answers,
+                self.evaluator_after.pred_answers,
+                self.evaluator_before.pred_reasonings,
+                self.evaluator_after.pred_reasonings,
             )
+            print(
+                "Model's predictions for the sample:",
+                "\t{0:<18s} PREDICTED-{1:<18s} PREDICTED-{2:<18s} REASONING-{1:<36s} REASONING-{2:<36s}".format(
+                    "GOLDEN", "Bef", "Aft"
+                ),
+                sep="\n\n",
+                end="\n\n",
+            )
+            for (
+                golden_answer,
+                pred_answer_bef,
+                pred_answer_aft,
+                pred_reasoning_bef,
+                pred_reasoning_aft,
+            ) in attributes:
+                print(
+                    "\t{0:<18s} {1:<18s} {2:<18s} {3:<18s} {4:<18s}".format(
+                        golden_answer,
+                        pred_answer_bef.replace("\n", "\t"),
+                        pred_answer_aft.replace("\n", "\t"),
+                        pred_reasoning_bef.replace("\n", "\t"),
+                        pred_reasoning_aft.replace("\n", "\t"),
+                    ),
+                )
+        else:
+            attributes = zip(
+                self.evaluator_after.golden_answers,
+                self.evaluator_after.pred_answers,
+                self.evaluator_after.pred_reasonings,
+            )
+            print(
+                "Model's predictions for the sample:",
+                "\t{0:<18s} PREDICTED-{1:<18s} REASONING-{1:<36s} ".format(
+                    "GOLDEN", "Aft"
+                ),
+                sep="\n\n",
+                end="\n\n",
+            )
+            for (
+                golden_answer,
+                pred_answer_aft,
+                pred_reasoning_aft,
+            ) in attributes:
+                print(
+                    "\t{0:<18s} {1:<18s} {2:<18s}".format(
+                        golden_answer,
+                        pred_answer_aft.replace("\n", "\t"),
+                        pred_reasoning_aft.replace("\n", "\t"),
+                    ),
+                )
 
 
-class Task(DataLevel):
+class Task:
     """
     This class handles the tasks.
     """
 
-    def __init__(self, task_id: int, evaluator: MetricEvaluator):
-        super().__init__(task_id)
+    def __init__(self, task_id: int):
+        self.task_id = task_id
 
         self.samples: list[Sample] = []
+        self.parts: list[SamplePart] = []
 
-        self.evaluator = evaluator
-        self.results: list[dict[str, int | str]] = []
+        self.evaluator_before: MetricEvaluator = MetricEvaluator(level="task")
+        self.evaluator_after: MetricEvaluator = MetricEvaluator(level="task")
+
+        self.features_before: Features = Features(0, 0, 0, 0)
+        self.features_after: Features = Features(0, 0, 0, 0)
+
+        self.results: list[dict[str, str | int | float]] = []
 
     def add_sample(self, sample: Sample) -> None:
         """
@@ -337,37 +473,62 @@ class Task(DataLevel):
         :return: None
         """
         self.samples.append(sample)
-        self.features += sample.features
-        self.evaluator.update(sample.evaluator)
+        self.evaluator_before.update(sample.evaluator_before)
+        self.evaluator_after.update(sample.evaluator_after)
 
-    def set_results(self) -> None:
+    def set_results(self, multi_system: bool) -> None:
         """
         Set the results for the task by combining the results from the parts of all samples.
         Additionally, calculate the mean of the accuracy metrics and add them to the results.
 
+        :param multi_system: whether the task is for the setting with two models
         :return: None
         """
-        self.results = [part.result for sample in self.samples for part in sample.parts]
+        self.parts = [part for sample in self.samples for part in sample.parts]
+        self.results = [part.get_result(multi_system) for part in self.parts]
 
+        if multi_system:
+            self.features_before = sum(
+                [part.result_before.features for part in self.parts],
+                self.features_before,
+            )
+            self.results[0][
+                "exact_match_accuracy_before"
+            ] = self.evaluator_before.exact_match_accuracy.get_mean()
+            self.results[0][
+                "soft_match_accuracy_before"
+            ] = self.evaluator_before.soft_match_accuracy.get_mean()
+
+        self.features_after = sum(
+            [part.result_after.features for part in self.parts], self.features_after
+        )
         self.results[0][
-            "exact_match_accuracy"
-        ] = self.evaluator.exact_match_accuracy.get_mean()
+            "exact_match_accuracy_after"
+        ] = self.evaluator_after.exact_match_accuracy.get_mean()
         self.results[0][
-            "soft_match_accuracy"
-        ] = self.evaluator.soft_match_accuracy.get_mean()
+            "soft_match_accuracy_after"
+        ] = self.evaluator_after.soft_match_accuracy.get_mean()
 
 
-class Split(DataLevel):
+class Split:
     """
     This class handles the splits of the data.
     """
 
-    def __init__(self, name: str, evaluator: MetricEvaluator):
-        super().__init__(task_id=0)
-        self.name = name
+    def __init__(self, name: str):
+        """
+        Initialize the Split.
+
+        :param name: the name of the split
+        """
+        self.name: str = name
         self.tasks: list[Task] = []
 
-        self.evaluator = evaluator
+        self.features_before: Features = Features(0, 0, 0, 0)
+        self.features_after: Features = Features(0, 0, 0, 0)
+
+        self.evaluator_before: MetricEvaluator = MetricEvaluator(level="split")
+        self.evaluator_after: MetricEvaluator = MetricEvaluator(level="split")
 
     def add_task(self, task: Task) -> None:
         """
@@ -377,5 +538,7 @@ class Split(DataLevel):
         :return: None
         """
         self.tasks.append(task)
-        self.features += task.features
-        self.evaluator.update(task.evaluator)
+        self.features_before += task.features_before
+        self.features_after += task.features_after
+        self.evaluator_before.update(task.evaluator_before)
+        self.evaluator_after.update(task.evaluator_after)

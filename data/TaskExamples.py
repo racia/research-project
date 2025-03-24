@@ -18,19 +18,19 @@ class Task:
         Initialize the task. The task can be enumerated or not enumerated,
         handpicked or not handpicked, and augmented with not_mentioned examples or not.
         """
-        self.number = number
-        self.to_enumerate = to_enumerate
-        self.folder = Path("data/examples") / (
+        self.number: int = number
+        self.to_enumerate: int = to_enumerate
+        self.folder: Path = Path("data/examples") / (
             "enumerated" if to_enumerate else "not_enumerated"
         )
 
-        self.handpicked = handpicked
+        self.handpicked: bool = handpicked
         if self.handpicked and not_mentioned:
-            self.folder = self.folder / "handpicked_aug"
+            self.folder: Path = self.folder / "handpicked_aug"
         elif self.handpicked:
-            self.folder = self.folder / "handpicked"
+            self.folder: Path = self.folder / "handpicked"
         else:
-            self.folder = self.folder / "from_valid"
+            self.folder: Path = self.folder / "from_valid"
 
     def __repr__(self):
         raise NotImplementedError(
@@ -48,14 +48,14 @@ class TaskExample(Task):
     A class to represent an example for a task.
     """
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """
         Return the one example for the task.
         """
-        paths = [
-            i
-            for i in self.folder.iterdir()
-            if i.name.startswith(f"task_{self.number}_")
+        paths: list[Path] = [
+            file
+            for file in self.folder.iterdir()
+            if file.name.startswith(f"task_{self.number}_")
         ]
         with open(paths[0], "r", encoding="utf-8") as file:
             return file.read()
@@ -75,12 +75,12 @@ class TaskExamples(Task):
                 "Getting multiple handpicked examples is not implemented, use TaskExample class."
             )
 
-        all_files = [
+        all_files: list[str] = [
             file
             for file in os.listdir(self.folder)
             if file.startswith(f"task_{self.number}_")
         ]
-        all_examples = []
+        all_examples: list[str] = []
         for i, file in enumerate(all_files, 1):
             path = self.folder / f"task_{self.number}_example_{i}.txt"
             with open(path, "r", encoding="utf-8") as f:
