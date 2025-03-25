@@ -39,9 +39,6 @@ else
     echo "Conda is available."
 fi
 
-#reinitialize conda
-source ~/miniconda3/etc/profile.d/conda.sh
-
 # Activate the conda environment
 ENV_NAME="research-project"
 echo "Activating conda environment: $ENV_NAME"

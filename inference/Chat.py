@@ -7,7 +7,7 @@ import torch
 from transformers import AutoTokenizer
 
 from inference.DataLevels import SamplePart
-from inference.Prompt import Prompt
+#from inference.Prompt import Prompt
 from inference.utils import generation_token
 
 
