@@ -208,14 +208,17 @@ class DataSaver:
                 file_name = (
                     f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
                 )
-                attn_scores = [
-                    "\t".join(map(str, row))
-                    for row in part_result["attn_scores"].tolist()
-                ]
-                self.save_with_separator(
-                    file_path=attn_scores_subdir / file_name, data=attn_scores
-                )
+                if part_result["attn_scores"]:
+                    attn_scores = [
+                        "\t".join(map(str, row))
+                        for row in part_result["attn_scores"].tolist()
+                    ]
+                    self.save_with_separator(
+                        file_path=attn_scores_subdir / file_name, data=attn_scores
+                    )
                 for tokens in ("x_tokens", "y_tokens"):
+                    if not part_result[tokens]:
+                        continue
                     file_name = (
                         f"{tokens}-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
                     )
@@ -326,8 +329,7 @@ class DataSaver:
             path_add="after" if after else "before",
         )
 
-    @staticmethod
-    def redirect_printing_to_log_file(file_name: str) -> TextIO:
+    def redirect_printing_to_log_file(self, file_name: str) -> TextIO:
         """
         Allows to redirect printing during the script run from console into a log file.
         Old 'sys.stdout' that must be returned in place after the run by calling
@@ -336,7 +338,7 @@ class DataSaver:
         :param file_name: the path and name of the file to redirect the printing
         :return: log file to write into
         """
-        log_file = open(Path(file_name), "w", encoding="UTF-8")
+        log_file = open(self.results_path / file_name, "w", encoding="UTF-8")
         sys.stdout = log_file
         return log_file
 
