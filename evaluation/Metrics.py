@@ -11,11 +11,11 @@ class Metric:
         :param name: the name of the metric
         :param values: the list of metric values
         """
-        self.name = name
-        self.all = values if values else []
+        self.name: str = name
+        self.all: list[float] = values if values else []
 
-        self.mean = None
-        self.std = None
+        self.mean: float = None
+        self.std: float = None
 
     def __getitem__(self, slice_: slice) -> float | list[float]:
         """

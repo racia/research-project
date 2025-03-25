@@ -5,11 +5,18 @@ from typing import Optional, Union
 
 
 @dataclass
+class Mode:
+    train: str = "train"
+    eval: str = "eval"
+
+
+@dataclass
 class Model:
     name: str
     max_new_tokens: int
     temperature: float
     to_continue: bool
+    mode: Mode
 
 
 @dataclass
@@ -18,6 +25,7 @@ class Student(Model):
     max_new_tokens: int
     temperature: float
     to_continue: bool
+    mode: Mode
 
 
 @dataclass
@@ -26,11 +34,13 @@ class Teacher(Model):
     max_new_tokens: int
     temperature: float
     to_continue: bool
+    mode: Mode
 
 
 @dataclass
 class Setting:
     name: str
+    interpretability: bool
 
 
 @dataclass
@@ -95,23 +105,33 @@ class FurtherPrompt(Prompt):
 
 @dataclass
 class CSVHeaders:
-    id_: str = "id"
+    id_: str = "id_"
     task_id: str = "task_id"
     sample_id: str = "sample_id"
     part_id: str = "part_id"
     task: str = "task"
-    model_answer: str = "model_answer"
-    correct: str = "correct"
     golden_answer: str = "golden_answer"
-    model_reasoning: str = "model_reasoning"
     silver_reasoning: str = "silver_reasoning"
-    model_output: str = "model_output"
-    exact_match_accuracy: str = "exact_match_accuracy"
-    soft_match_accuracy: str = "soft_match_accuracy"
-    there: str = "there"
-    verbs: str = "verbs"
-    pronouns: str = "pronouns"
-    not_mentioned: str = "not_mentioned"
+    model_answer_after: str = "model_answer_after"
+    correct_after: str = "correct_after"
+    model_reasoning_after: str = "model_reasoning_after"
+    model_output_after: str = "model_output_after"
+    exact_match_accuracy_after: str = "exact_match_accuracy_after"
+    soft_match_accuracy_after: str = "soft_match_accuracy_after"
+    there_after: str = "there_after"
+    verbs_after: str = "verbs_after"
+    pronouns_after: str = "pronouns_after"
+    not_mentioned_after: str = "not_mentioned_after"
+    model_answer_before: str = "model_answer_before"
+    correct_before: str = "correct_before"
+    model_reasoning_before: str = "model_reasoning_before"
+    model_output_before: str = "model_output_before"
+    exact_match_accuracy_before: str = "exact_match_accuracy_before"
+    soft_match_accuracy_before: str = "soft_match_accuracy_before"
+    there_before: str = "there_before"
+    verbs_before: str = "verbs_before"
+    pronouns_before: str = "pronouns_before"
+    not_mentioned_before: str = "not_mentioned_before"
 
 
 @dataclass

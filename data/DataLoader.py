@@ -6,7 +6,11 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Union
 
+import numpy as np
+
 from data.DataProcessor import DataProcessor
+from data.utils import get_real_value
+from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits
 
 
@@ -21,10 +25,10 @@ class DataLoader:
         The dataloader handles the reading and loading of data, as well as the mapping of tasks to
         their respective data.
         """
-        self.number_of_parts = 0
-        self.samples_per_task = samples_per_task
-        self.number_of_tasks = 0
-        self.tasks = []
+        self.number_of_parts: int = 0
+        self.samples_per_task: int = samples_per_task
+        self.number_of_tasks: int = 0
+        self.tasks: list[int] = []
 
     @staticmethod
     def get_task_mapping(path: Path) -> dict[int, list[Path]]:
@@ -128,49 +132,145 @@ class DataLoader:
         return processed_data
 
     @staticmethod
-    def load_result_data(
-        result_file_path: str,
-        headers: list[str],
+    def load_results(
+        path: str,
+        headers: list[str] = None,
         list_output: bool = False,
+        sep: str = "\t",
     ) -> (
         dict[str, list[Union[int, float]]]
         or dict[int, list[dict[str, Union[int, float, str]]]]
     ):
         """
-        Read the accuracy from a file.
+        Load the results or any csv file from the path.
+        Please specify the headers to ensure the desired order of the data.
 
-        :param result_file_path: path to the file
-        :param headers: list of headers in the file
-        :param list_output: if the output should be a list of dictionaries or a dictionary of lists
-        :return: dictionary with the task, accuracy, and soft match accuracy lists
+        :param path: path to the data
+        :param headers: list of headers in the file, if None, the headers are read from the file
+        :param list_output: if the output should be a list of dictionaries instead of a dictionary of lists
+        :param sep: separator for the csv file
+        :return: result data
         """
-        data = defaultdict(list)
-        with open(Path(result_file_path), "rt", encoding="UTF-8", errors="ignore") as f:
-            reader = csv.DictReader(f, delimiter="\t")
+        data = [] if list_output else defaultdict(list)
+        with open(Path(path), "rt", encoding="UTF-8", errors="ignore") as f:
+            reader = csv.DictReader(f, delimiter=sep)
+            printed = []
+            if not headers:
+                headers = reader.fieldnames
+
             for row in reader:
-                if row["task_id"].isdigit():
-                    if list_output:
-                        task_id = int(row["task_id"])
-                        row_ = {}
-                        for k, v in row.items():
-                            if k in headers and v:
-                                if v.isdigit():
-                                    row_[k] = int(v)
-                                elif v.replace(".", "", 1).isdigit():
-                                    row_[k] = float(v)
-                                else:
-                                    row_[k] = v
-                        data[task_id].append(row_)
-                    else:
-                        for header in headers:
-                            value = row[header]
-                            if value.isdigit():
-                                data[header].append(int(value))
-                            elif value.replace(".", "", 1).isdigit():
-                                data[header].append(float(value))
-                            else:
-                                data[header].append(row[header])
+                # to make sure we are reading a row containing data
+                if list_output and row[list(row.keys())[0]].isdigit():
+                    row_ = {}
+                    for header, value in row.items():
+                        if header in headers:
+                            row_[header] = get_real_value(value)
+                        elif header not in printed:
+                            print(f"Header '{header}' not found in headers.")
+                            printed.append(header)
+                    data.append(row_)
+
+                else:
+                    for header in headers:
+                        if header in row.keys():
+                            data[header].append(get_real_value(row[header]))
+                        elif header not in printed:
+                            print(f"Header '{header}' not found in row.")
+                            printed.append(header)
+
         return data
+
+    def load_scenery(
+        self,
+        word_types: tuple[str, ...] = (
+            "attr",
+            "loc",
+            "nh-subj",
+            "obj",
+            "part",
+            "rel",
+            "subj-attr",
+            "subj",
+            "other",
+            "base_phrasal_verbs",
+        ),
+    ) -> set:
+        """
+        Get scenery words from the scenery_words folder and the Scenery base phrases verbs.
+        Additionally adds Scenery base phrasal words.
+
+        :return: set of scenery words for filtering attention scores
+        """
+        scenery_words = set()
+        for entry in os.scandir("data/scenery_words"):
+            word_type = entry.name.strip(".txt")
+            if word_type in word_types:
+                with open(entry.path, "r", encoding="UTF-8") as f:
+                    scenery_words.update(f.read().splitlines())
+        return scenery_words
+
+    def load_reasoning_data(
+        self, path: str, headers: list[str]
+    ) -> dict[tuple[int, int, int], dict]:
+        """
+        Load the silver reasoning data.
+
+        :param path: path to the silver reasoning data
+        :param headers: headers for the silver reasoning data
+        """
+        if not Path(path).exists():
+            raise FileNotFoundError(
+                "The silver reasoning data is not found at the path:", path
+            )
+
+        silver_reasoning_data = self.load_results(
+            path,
+            headers=headers,
+            list_output=True,
+            sep=",",
+        )
+        silver_reasoning_data = {
+            (int(row["TaskID"]), int(row["SampleID"]), int(row["SamplePart"])): row
+            for row in silver_reasoning_data
+        }
+        return silver_reasoning_data
+
+    @staticmethod
+    def load_interpretability(
+        task_id: int, sample_id: int, part_id: int, attn_scores_path: str
+    ) -> InterpretabilityResult:
+        """
+        Load the interpretability results for a specific part.
+
+        :param task_id: task id
+        :param sample_id: sample id
+        :param part_id: part id
+        :param attn_scores_path: path to the attention scores subdirectory
+        :return: Interpretability Result object
+        """
+        path = Path(attn_scores_path)
+        if path.name != "attn_scores":
+            raise ValueError("The attention subdirectory is not located.")
+
+        attn_scores_file = f"attn_scores-{task_id}-{sample_id}-{part_id}.txt"
+        with open(path / attn_scores_file, "r", encoding="UTF-8") as f:
+            attn_scores_rows = f.read().splitlines()
+            attn_scores = [
+                list(map(float, row.split("\t"))) for row in attn_scores_rows
+            ]
+
+        x_tokens_file = f"x_tokens-{task_id}-{sample_id}-{part_id}.txt"
+        with open(path / x_tokens_file, "r", encoding="UTF-8") as f:
+            x_tokens = [token.strip() for token in f.read().splitlines()]
+
+        y_tokens_file = f"y_tokens-{task_id}-{sample_id}-{part_id}.txt"
+        with open(path / y_tokens_file, "r", encoding="UTF-8") as f:
+            y_tokens = [token.strip() for token in f.read().splitlines()]
+
+        interpretability_result = InterpretabilityResult(
+            attn_scores=np.array(attn_scores), x_tokens=x_tokens, y_tokens=y_tokens
+        )
+        return interpretability_result
 
 
 if __name__ == "__main__":

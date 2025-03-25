@@ -1,0 +1,11 @@
+bathroom
+bedroom
+cinema
+garden
+hallway
+kitchen
+office
+park
+rectangle
+school
+there

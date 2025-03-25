@@ -2,9 +2,9 @@ from dataclasses import dataclass
 
 import en_core_web_sm
 
-nlp = en_core_web_sm.load()
-
 from data.DataLoader import DataLoader
+
+nlp = en_core_web_sm.load()
 
 
 @dataclass
@@ -50,56 +50,7 @@ class Scenery:
     This class is responsible for extracting the agents, locations, objects and relations that occur in the data.
     """
 
-    base_phrasal_verbs = (
-        "base",
-        "beat",
-        "break",
-        "bring",
-        "call",
-        "calm",
-        "catch",
-        "check",
-        "cheer",
-        "count",
-        "cut",
-        "deal",
-        "do",
-        "drop",
-        "eat",
-        "end",
-        "figure",
-        "fill",
-        "find",
-        "get",
-        "give",
-        "go",
-        "grow",
-        "hang",
-        "hit",
-        "hold",
-        "keep",
-        "look",
-        "make",
-        "mess",
-        "pass",
-        "pick",
-        "point",
-        "put",
-        "rip",
-        "run",
-        "set",
-        "show",
-        "shut",
-        "sleep",
-        "speak",
-        "stand",
-        "take",
-        "think",
-        "tie",
-        "work",
-    )
-
-    def __init__(self):
+    def __init__(self, base_phrasal_verbs):
         self.task_sceneries = {}
 
         self.agents = set()
@@ -111,6 +62,7 @@ class Scenery:
         self.lemmas = set()
 
         self.data = None
+        self.base_phrasal_verbs: list = base_phrasal_verbs
 
     def get_DO_NP(self, DO_head):
         """
@@ -193,7 +145,7 @@ class Scenery:
                     and child.pos_ not in ["SCONJ", "ADV"]
                 ]
                 # Extract the particles of phrasal verbs: go up, bring down, etc.
-                if token.lemma_ in Scenery.base_phrasal_verbs and particle:
+                if token.lemma_ in self.base_phrasal_verbs and particle:
                     relations.append((token.lemma_, particle[0].text))
                 else:
                     # Otherwise add a normal relation.
@@ -355,8 +307,10 @@ class Scenery:
 
 
 if __name__ == "__main__":
-    scenery = Scenery()
+
     loader = DataLoader()
+    scenery = Scenery(loader.load_scenery(("base_phrasal_verbs",)))
+
     scenery.data = loader.load_task_data(
         path="../../tasks_1-20_v1-2/en-valid", split="train"
     )

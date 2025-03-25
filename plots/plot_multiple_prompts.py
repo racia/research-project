@@ -3,81 +3,23 @@
 # - The first line should contain the average accuracy for the "zero task".
 # - The following lines should contain the strict and soft-match accuracies for each task.
 
-from dataclasses import dataclass
+from __future__ import annotations
+
 from pathlib import Path
-from typing import Union
 
 from data.DataLoader import DataLoader
 from evaluation.Metrics import Accuracy
 from plots.Plotter import Plotter
 from settings.config import DataSplits
-
-
-@dataclass
-class AccuracyType:
-    exact_match: str = "exact_match_accuracy"
-    soft_match: str = "soft_match_accuracy"
-
-
-def get_paths(directory: str, keyword: str) -> list[str]:
-    """
-    Get all paths that contain a keyword in the name from all the run subdirectories.
-
-    :param directory: path to the directory containing the run subdirectories
-    :param keyword: keyword to search for in the path names
-
-    :return: list of paths containing the keyword
-    """
-    paths = []
-    for item in Path(directory).iterdir():
-        if item.is_dir():
-            paths.extend(get_paths(item, keyword))
-        elif keyword in item.name and item.name.endswith(".csv"):
-            paths.append(str(item))
-    return paths
-
-
-def find_difference_in_paths(paths: list[Path]) -> list[str]:
-    """
-    Find the difference in the paths to disambiguate them.
-
-    :param paths: list of paths to the files
-
-    :return: difference in the paths
-    """
-    names = [path.parent.name for path in paths]
-    if len(set(names)) != len(names):
-        return find_difference_in_paths([path.parent for path in paths])
-    return names
-
-
-def create_disambiguators(paths: list[Path]) -> list[str]:
-    """
-    Create disambiguators for the paths.
-
-    :param paths: list of paths to the files
-
-    :return: list of disambiguators
-    """
-    differences = find_difference_in_paths(paths)
-    disambiguators = []
-    names = [path.name for path in paths]
-    for path, difference in zip(paths, differences):
-        if names.count(path.name) > 1:
-            disambiguators.append(difference)
-        else:
-            disambiguators.append("")
-    return disambiguators
+from utils import get_paths, create_disambiguators, AccuracyType
 
 
 def plot_from_paths(
-    paths: list[str],
-    accuracy_types: list[Union[AccuracyType.exact_match, AccuracyType.soft_match]],
+    paths: list[Path] | list[str],
+    accuracy_types: list[AccuracyType],
     result_path: str,
     prompt_type: str,
-    split: Union[
-        DataSplits.train, DataSplits.valid, DataSplits.test
-    ] = DataSplits.valid,
+    split: DataSplits = "valid",
 ) -> None:
     """
     Plot the accuracies for multiple prompts to compare them.
@@ -94,10 +36,12 @@ def plot_from_paths(
     :return: None
     """
     Path(result_path).mkdir(parents=True, exist_ok=True)
-    plotter = Plotter(result_path=Path(result_path))
+    plotter = Plotter(results_path=Path(result_path))
     loader = DataLoader()
 
-    paths = [Path(path) for path in paths]
+    if type(paths[0]) is str:
+        paths = [Path(path) for path in paths]
+
     disambiguators = create_disambiguators(paths)
     unique_disambiguators = set(
         [disambiguator for disambiguator in disambiguators if disambiguator]
@@ -105,11 +49,11 @@ def plot_from_paths(
     if len(unique_disambiguators) > 1:
         print("Disambiguators found:", *unique_disambiguators, sep="\n", end="\n\n")
 
-    for accuracy_type in accuracy_types:
+    for accuracy_type in getattr(accuracy_types, "exact_match", "soft_match"):
         accuracies = {}
         for path, disambiguator in zip(paths, disambiguators):
-            data = loader.load_result_data(
-                result_file_path=str(path),
+            data = loader.load_results(
+                path=str(path),
                 headers=["task_id", "exact_match_accuracy", "soft_match_accuracy"],
             )
             prompt_name = Path(path).stem.replace("prompt_", f"{disambiguator}_", 1)
@@ -132,12 +76,10 @@ def plot_from_paths(
 
 def plot_from_directory(
     directory: str,
-    accuracy_types: list[Union[AccuracyType.exact_match, AccuracyType.soft_match]],
+    accuracy_types: list[AccuracyType],
     result_path: str,
     prompt_type: str,
-    split: Union[
-        DataSplits.train, DataSplits.valid, DataSplits.test
-    ] = DataSplits.valid,
+    split: DataSplits = "valid",
 ) -> None:
     """
     Plot the accuracies for multiple prompts to compare them.
@@ -165,8 +107,8 @@ def plot_from_directory(
 
 def run(
     paths: list[str],
-    split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
-    accuracy_types: list[Union[AccuracyType.exact_match, AccuracyType.soft_match]],
+    split: DataSplits,
+    accuracy_types: list[AccuracyType],
     result_path: str,
     prompt_type: str,
 ) -> None:
@@ -219,8 +161,11 @@ if __name__ == "__main__":
     ]
     run(
         paths=paths,
-        split=DataSplits.valid,
-        accuracy_types=[AccuracyType.exact_match, AccuracyType.soft_match],
+        split=DataSplits(valid=True, test=False, train=False),
+        accuracy_types=[
+            AccuracyType(exact_match="exact_match"),
+            AccuracyType(exact_match="soft_match"),
+        ],
         prompt_type="type",
         result_path="result/path",
     )

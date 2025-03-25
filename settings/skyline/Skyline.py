@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from inference.Prompt import Prompt
+from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.baseline.Baseline import Baseline
 from settings.config import Enumerate, Wrapper
@@ -14,9 +15,10 @@ class Skyline(Baseline):
     def __init__(
         self,
         model: Model,
-        to_enumerate: dict[Enumerate, bool],
+        to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
+        interpretability: Interpretability,
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
         wrapper: Wrapper = None,
@@ -30,6 +32,8 @@ class Skyline(Baseline):
         :param total_parts: total number of parts
         :param samples_per_task: number of samples per task for logging
         :param init_prompt: system prompt to start conversations
+        :param wrapper: wrapper for the model
+        :param interpretability: optional interpretability instance
         """
 
         super().__init__(
@@ -40,4 +44,6 @@ class Skyline(Baseline):
             init_prompt=init_prompt,
             to_enumerate=to_enumerate,
             wrapper=wrapper,
+            interpretability=interpretability,
+            mode=mode
         )

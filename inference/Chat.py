@@ -3,8 +3,17 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Union
 
+<<<<<<< HEAD
 from interpretability.Interpretability import Interpretability
 
+=======
+import torch
+from transformers import AutoTokenizer
+
+from inference.DataLevels import SamplePart
+from inference.Prompt import Prompt
+from inference.utils import generation_token
+>>>>>>> e6037e4ebd8ce8f2ac07f8a9c529eac953b0d5ef
 
 
 @dataclass
@@ -13,9 +22,11 @@ class Source:
     This class handles the roles of the participants in the conversation.
     """
 
-    system = "system"
-    user = "user"
-    assistant = "assistant"
+    system: str = "system"
+    user: str = "user"
+    assistant: str = "assistant"
+
+    options = (system, user, assistant)
 
 
 class Chat:
@@ -23,7 +34,7 @@ class Chat:
     This class handles the chats with the model.
     """
 
-    def __init__(self, system_prompt: str = None, multi_system: bool = False):
+    def __init__(self, system_prompt: Prompt = None, multi_system: bool = False):
         """
         Create a chat.
         A chat consists of the prompts the model is prompted with and the answers of the model.
@@ -32,19 +43,35 @@ class Chat:
         :param system_prompt: the first prompt the model is prompted with
         :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
         """
-        self.multi_system = multi_system
+        self.multi_system: bool = multi_system
 
         if multi_system:
             self.messages = {
                 "teacher": [],
-                "student": [{"role": Source.system, "content": system_prompt}],
+                "student": [
+                    {
+                        "role": Source.system,
+                        "content": system_prompt.text,
+                        "original_content": system_prompt.original_text,
+                    }
+                ],
             }
         else:
-            self.messages = [{"role": Source.system, "content": system_prompt}]
+            self.messages = [
+                {
+                    "role": Source.system,
+                    "content": system_prompt.text,
+                    "original_content": system_prompt.original_text,
+                }
+            ]
 
     @staticmethod
     def format_message(
+<<<<<<< HEAD
         part: str | list[str], role: Union[Source.user, Source.assistant] # type: ignore
+=======
+        part: SamplePart | str, role: Union[Source.user, Source.assistant]
+>>>>>>> e6037e4ebd8ce8f2ac07f8a9c529eac953b0d5ef
     ) -> dict[str, str]:
         """
         Formats the prompt by managing the data type and putting in into
@@ -54,6 +81,7 @@ class Chat:
         :param role: the producer of the message
         :return: prompt formatted as a dict
         """
+<<<<<<< HEAD
         if type(part) is list:
             part = "\n".join(part)
         return {"role": role, "content": part}
@@ -67,6 +95,24 @@ class Chat:
         self,
         part: str | list[str],
         source: Union[Source.user, Source.assistant], # type: ignore
+=======
+        if isinstance(part, str):
+            return {
+                "role": role,
+                "content": part,
+                "original_content": part,
+            }
+        return {
+            "role": role,
+            "content": part.task,
+            "original_content": part.unwrapped_task,
+        }
+
+    def add_message(
+        self,
+        part: SamplePart | str,
+        source: Union[Source.user, Source.assistant],
+>>>>>>> e6037e4ebd8ce8f2ac07f8a9c529eac953b0d5ef
         model_role: str = "student",
         interpretability: Interpretability = None  # type: ignore
     ) -> None:
@@ -87,3 +133,45 @@ class Chat:
                     #self.messages.pop()
                     pass
             self.messages.append(self.format_message(part, source))
+
+    def convert_into_ids(
+        self,
+        tokenizer: AutoTokenizer,
+        chat_part: list[dict] = None,
+        max_new_tokens: int = 100,
+        max_length: int = 2048,
+    ) -> torch.LongTensor:
+        """
+        Converts either all the chat messages or the specified ones into ids ensuring that the input does not exceed
+        the max_length. The system prompt is always included in the input, regardless of the chat_part.
+        The assistant token id is always added at the end of the input.
+
+        (Partly taken from https://arxiv.org/abs/2402.18344)
+
+        :param tokenizer: tokenizer to use
+        :param chat_part: chat part to convert into ids, if None, all messages are used
+        :param max_new_tokens: max_new_tokens model config
+        :param max_length: default max_length of model config
+        :return: tensor of input tokens
+        """
+        input_tokens_left = max_length - max_new_tokens
+
+        history_ids = []
+        for message in chat_part if chat_part else self.messages:
+            message_ids = [generation_token(tokenizer, message["role"])]
+
+            message_ids.extend(
+                tokenizer.encode(message["original_content"], add_special_tokens=False)
+            )
+            if len(history_ids) + len(message_ids) <= input_tokens_left:
+                history_ids += message_ids
+            elif message["role"] == "assistant":
+                history_ids.append(tokenizer.convert_tokens_to_ids("assistant"))
+                break
+            elif message["role"] == "user":
+                break
+            else:
+                raise Exception("Unexpected error for message:", message)
+
+        # take all the tokens that could fit
+        return torch.LongTensor([history_ids[-input_tokens_left:]])
