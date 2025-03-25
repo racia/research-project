@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import warnings
+
 import numpy as np
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -174,7 +176,8 @@ class Interpretability:
         if (after and not part.result_after.model_answer) or not (
             after or part.result_before.model_answer
         ):
-            raise ValueError("Interpretability called on empty model output")
+            warnings.warn("DEBUG: Interpretability called on empty model output")
+            return InterpretabilityResult(np.array(0), [], [])
 
         chat_messages = chat.messages["student"] if chat.multi_system else chat.messages
 
