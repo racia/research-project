@@ -3,6 +3,7 @@ from pathlib import Path
 
 from data.TaskExamples import Task, TaskExample, TaskExamples
 from settings.config import Examples
+from settings.utils import structure_part
 
 
 @dataclass
@@ -122,6 +123,41 @@ class Prompt:
             wrapped_out = self.wrapper.format(to_continue=" ")
 
         return wrapped_out
+
+    def formulate_init_prompt(self, input_str: str) -> str:
+        """
+        Formulate the init prompt for the teacher model.
+
+        :param input_str: the task and the questions the model should answer
+
+        :return: the formulated evaluation prompt
+        """
+        prompt = self.text.format(task=input_str)
+
+        return prompt
+
+    def format_refine_message(self, part, to_enumerate, cot_to_continue, teacher_feedback=''):
+        """
+        Format a refine message for the student model.
+        """
+        context, question = structure_part(part.raw, to_enumerate)
+        formatted_part = f"{context}\n{question}"
+
+        formatted_with_eval = f"{self.text}\n{formatted_part}"
+        if teacher_feedback:
+            formatted_with_eval += f"\n\nTeacher's feedback: {teacher_feedback}\n\n"
+
+        return formatted_with_eval + "\n" + cot_to_continue
+
+    def format_feedback_message(self, part, to_enumerate, cot_to_evaluate):
+        """
+        Format a feedback message for the teacher model.
+        """
+        context, question = structure_part(part.raw, to_enumerate)
+        formatted_part = f"{context}\n{question}"
+
+        formatted_with_cot = f"{self.text}\n{formatted_part}"
+        return formatted_with_cot + "\n" + cot_to_evaluate
 
     @staticmethod
     def read_prompt_from_file(file_path: str):

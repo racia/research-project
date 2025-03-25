@@ -241,6 +241,7 @@ class DataSaver:
         results_file_name: str,
         metrics_file_name: str,
         multi_system: bool = False,
+        interpretability_enabled: bool = False,
     ) -> None:
         """
         Save the results for the task and the accuracy for the task to the separate files.
@@ -262,9 +263,11 @@ class DataSaver:
         # get accuracy for the last task
         task_accuracy = {"task_id": task_id, **task_data.evaluator_after.get_metrics()}
 
-        if multi_system:
-            task_accuracy.update(**task_data.evaluator_before.get_metrics())
-            self.save_interpretability(task_data, after=False)
+        if interpretability_enabled:
+            if multi_system:
+                self.save_interpretability(task_data, after=False)
+
+            self.save_interpretability(task_data, after=True)
 
         self.save_output(
             data=[task_accuracy],
@@ -272,7 +275,6 @@ class DataSaver:
             file_name=metrics_file_name,
             path_add="",
         )
-        self.save_interpretability(task_data, after=True)
 
     def save_run_accuracy(
         self,

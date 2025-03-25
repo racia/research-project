@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import gc
 from abc import ABC, abstractmethod
-
+import copy
 import torch
 
 from inference.Chat import Chat, Source
@@ -64,6 +64,17 @@ class Setting(ABC):
         :return: prompt with the task and the current part
         """
         raise NotImplementedError
+
+    def create_chat_copy(self, chat: Chat) -> Chat:
+        """
+        Store the original chat and create a copy for use in the setting.
+
+        :param chat: The original chat to copy
+        :return: A copy of the original chat
+        """
+
+        self.chat = chat
+        return copy.deepcopy(chat)
 
     @abstractmethod
     def apply_setting(self, decoded_output: str, chat: Chat = None) -> str:
@@ -241,7 +252,8 @@ class Setting(ABC):
                     print(
                         f"Last chat message from student before applying the setting: {chat.messages['student'][-1]}"
                     )
-
+                if self.multi_system:
+                    self.student.curr_sample_part = current_part
                 # 7. Applying the changes that are specific to each setting
                 with torch.no_grad():
                     decoded_output = self.apply_setting(
