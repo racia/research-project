@@ -120,7 +120,8 @@ class Interpretability:
 
         if period_indices:
             # Additionally take mean of attention scores over each task sentence.
-            # attn_scores = np.array([attn_scores.T[start:stop] for start, stop in period_indices]).squeeze().mean(axis=-1)
+            # attn_scores = np.array([attn_scores.T[start:stop] for start, stop in period_indices]).squeeze().mean(
+            # axis=-1)
             attn_scores = np.array(
                 [
                     attn_scores[:, start:stop].mean(axis=-1)

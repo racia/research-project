@@ -11,7 +11,7 @@ from data.DataLoader import DataLoader
 from evaluation.Metrics import Accuracy
 from plots.Plotter import Plotter
 from settings.config import DataSplits
-from utils import get_paths, create_disambiguators, AccuracyType
+from utils import AccuracyType, create_disambiguators, get_paths
 
 
 def plot_from_paths(

@@ -323,7 +323,10 @@ class SamplePart:
 
         :return: the string representation of the part
         """
-        return f"<SamplePart: id_={self.id_}, task_id={self.task_id}, sample_id={self.sample_id}, part_id={self.part_id}>"
+        return (
+            f"<SamplePart: id_={self.id_}, task_id={self.task_id}, sample_id={self.sample_id}, "
+            f"part_id={self.part_id}>"
+        )
 
     def set_output(
         self,

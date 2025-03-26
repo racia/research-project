@@ -2,11 +2,11 @@ from __future__ import annotations
 
 import csv
 import sys
-from typing import TextIO, Union, Iterable
+from typing import Iterable, TextIO, Union
 
 from data.utils import *
 from evaluation.Evaluator import MetricEvaluator
-from inference.DataLevels import Task, Features, Split
+from inference.DataLevels import Features, Split, Task
 from inference.Prompt import Prompt
 from settings.config import DataSplits
 

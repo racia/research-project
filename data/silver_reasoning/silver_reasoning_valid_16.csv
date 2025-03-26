@@ -1,0 +1,901 @@
+id_,task_id,sample_id,part_id,context,question,golden_answer,silver_reasoning
+1,16,1,1,"1. Julius is a lion.
+2. Lily is a rhino.
+3. Bernhard is a swan.
+4. Lily is white.
+5. Bernhard is green.
+6. Greg is a rhino.
+7. Greg is gray.
+8. Julius is white.
+9. Brian is a lion.",What color is Brian?,white,"since brian is a lion (sentence 9), and julius is also a lion (sentence 1) and is white (sentence 8), it can be logically inferred that brian, being a lion like julius, is also white."
+2,16,2,1,"1. Lily is a frog.
+2. Bernhard is a lion.
+3. Brian is a frog.
+4. Bernhard is yellow.
+5. Julius is a lion.
+6. Julius is white.
+7. Greg is a swan.
+8. Greg is gray.
+9. Brian is white.",What color is Lily?,white,"since lily is a frog (context sentence 1), and brian is also a frog (context sentence 3), we can infer that they share similar characteristics. we know that brian is white (context sentence 9), so it is logical to assume that lily, being a frog like brian, is also white."
+3,16,3,1,"1. Brian is a rhino.
+2. Lily is a frog.
+3. Greg is a lion.
+4. Lily is gray.
+5. Julius is a swan.
+6. Greg is yellow.
+7. Brian is green.
+8. Bernhard is a swan.
+9. Bernhard is gray.",What color is Julius?,gray,"since julius is a swan (sentence 5), and bernhard is also a swan (sentence 8), it can be inferred that swans have a common characteristic. bernhard is gray (sentence 9), so it is logical to assume that julius, being a swan as well, shares this characteristic, which is being gray."
+4,16,4,1,"1. Julius is a lion.
+2. Julius is white.
+3. Greg is a frog.
+4. Bernhard is a frog.
+5. Bernhard is green.
+6. Brian is a swan.
+7. Brian is white.
+8. Greg is green.
+9. Lily is a swan.",What color is Lily?,white,"since lily is a swan (sentence 9), and we know that brian is also a swan (sentence 6) and is white (sentence 7), it is logical to assume that lily, being of the same species as brian, shares the same characteristic of being white."
+5,16,5,1,"1. Greg is a rhino.
+2. Bernhard is a swan.
+3. Bernhard is yellow.
+4. Greg is white.
+5. Brian is a swan.
+6. Brian is yellow.
+7. Lily is a frog.
+8. Julius is a rhino.
+9. Lily is green.",What color is Julius?,white,"since julius is a rhino (sentence 8), and greg is also a rhino (sentence 1), we can infer that julius and greg share the same characteristics. we know that greg is white (sentence 4), so it is logical to assume that julius, being a rhino like greg, is also white."
+6,16,6,1,"1. Bernhard is a frog.
+2. Julius is a rhino.
+3. Bernhard is yellow.
+4. Julius is yellow.
+5. Brian is a lion.
+6. Brian is white.
+7. Lily is a swan.
+8. Lily is green.
+9. Greg is a rhino.",What color is Greg?,yellow,"since greg is a rhino (sentence 9), and julius is also a rhino (sentence 2), we can infer that greg and julius share similar characteristics. we know that julius is yellow (sentence 4), so it is logical to assume that greg, being a rhino like julius, is also yellow."
+7,16,7,1,"1. Brian is a swan.
+2. Greg is a swan.
+3. Greg is gray.
+4. Lily is a frog.
+5. Lily is white.
+6. Bernhard is a lion.
+7. Julius is a frog.
+8. Brian is gray.
+9. Bernhard is green.",What color is Julius?,white,"since julius is a frog (sentence 7), and lily is also a frog (sentence 4) and white (sentence 5), it can be logically inferred that julius, being a frog like lily, is also white."
+8,16,8,1,"1. Bernhard is a rhino.
+2. Brian is a frog.
+3. Greg is a frog.
+4. Brian is white.
+5. Greg is white.
+6. Bernhard is white.
+7. Julius is a lion.
+8. Julius is green.
+9. Lily is a rhino.",What color is Lily?,white,"since lily is a rhino (sentence 9), and bernhard is also a rhino (sentence 1), and bernhard is white (sentence 6), it can be logically inferred that lily, being a rhino like bernhard, is also white."
+9,16,9,1,"1. Bernhard is a lion.
+2. Bernhard is yellow.
+3. Lily is a rhino.
+4. Brian is a frog.
+5. Lily is green.
+6. Greg is a frog.
+7. Brian is green.
+8. Julius is a lion.
+9. Julius is gray.",What color is Greg?,green,"since greg is a frog (from context line 6), and we know that brian is also a frog (from context line 4) and is green (from context line 7), we can logically infer that greg, being a frog like brian, is also green."
+10,16,10,1,"1. Brian is a frog.
+2. Bernhard is a frog.
+3. Julius is a frog.
+4. Bernhard is white.
+5. Greg is a frog.
+6. Brian is yellow.
+7. Greg is yellow.
+8. Lily is a rhino.
+9. Lily is gray.",What color is Julius?,yellow,"since there is no direct information about julius's color, we need to make an inference. we know that brian, bernhard, and greg are all frogs, and we have color information about two of them: bernhard is white, and brian and greg are both yellow. there is no information about any other colors for frogs. it is logical to assume that julius, being a frog, is likely to have a color that is already mentioned for frogs, rather than a new, unknown"
+11,16,11,1,"1. Greg is a rhino.
+2. Lily is a swan.
+3. Julius is a frog.
+4. Lily is yellow.
+5. Julius is white.
+6. Bernhard is a frog.
+7. Brian is a swan.
+8. Brian is yellow.
+9. Greg is yellow.",What color is Bernhard?,white,"since bernhard is a frog (sentence 6), and julius is also a frog (sentence 3), and julius is white (sentence 5), it can be logically inferred that bernhard, being of the same species as julius, is also likely to be white."
+12,16,12,1,"1. Brian is a rhino.
+2. Julius is a frog.
+3. Brian is green.
+4. Bernhard is a rhino.
+5. Julius is yellow.
+6. Greg is a frog.
+7. Lily is a rhino.
+8. Bernhard is yellow.
+9. Lily is yellow.",What color is Greg?,yellow,"since greg is a frog (sentence 6), and julius is also a frog (sentence 2) and is yellow (sentence 5), it can be logically inferred that greg, being a frog like julius, is also yellow."
+13,16,13,1,"1. Bernhard is a rhino.
+2. Julius is a lion.
+3. Brian is a frog.
+4. Brian is yellow.
+5. Lily is a frog.
+6. Bernhard is yellow.
+7. Julius is white.
+8. Lily is yellow.
+9. Greg is a rhino.",What color is Greg?,yellow,"since greg is a rhino (from context sentence 9), and bernhard is also a rhino (from context sentence 1), we can infer that greg might have similar characteristics as bernhard. bernhard is yellow (from context sentence 6), so it is logical to assume that greg, being of the same species, is also yellow."
+14,16,14,1,"1. Lily is a frog.
+2. Julius is a rhino.
+3. Julius is gray.
+4. Brian is a swan.
+5. Brian is gray.
+6. Greg is a rhino.
+7. Bernhard is a swan.
+8. Greg is white.
+9. Lily is white.",What color is Bernhard?,gray,"since bernhard is a swan (sentence 7), and we know that brian is also a swan (sentence 4) and is gray (sentence 5), it is logical to assume that bernhard, being a swan like brian, is also gray."
+15,16,15,1,"1. Bernhard is a swan.
+2. Julius is a swan.
+3. Lily is a rhino.
+4. Julius is gray.
+5. Lily is green.
+6. Bernhard is gray.
+7. Greg is a swan.
+8. Brian is a swan.
+9. Brian is green.",What color is Greg?,green,"since greg is a swan (sentence 7), and we know that julius is a swan and gray (sentences 2 and 4), and bernhard is a swan and gray (sentences 1 and 6), it is likely that gray is a common color for swans. however, we also know that brian is a swan and green (sentences 8 and 9), which suggests that green is also a possible color for swans."
+16,16,16,1,"1. Bernhard is a frog.
+2. Lily is a lion.
+3. Brian is a lion.
+4. Brian is green.
+5. Bernhard is yellow.
+6. Lily is green.
+7. Julius is a frog.
+8. Greg is a rhino.
+9. Greg is yellow.",What color is Julius?,yellow,"since julius is a frog (sentence 7), and bernhard is also a frog (sentence 1) and is yellow (sentence 5), it can be logically inferred that julius, being a frog like bernhard, is also yellow."
+17,16,17,1,"1. Greg is a frog.
+2. Lily is a rhino.
+3. Lily is yellow.
+4. Julius is a swan.
+5. Greg is white.
+6. Brian is a rhino.
+7. Brian is yellow.
+8. Julius is green.
+9. Bernhard is a swan.",What color is Bernhard?,green,"since bernhard is a swan (sentence 9), and julius is also a swan (sentence 4), it can be inferred that bernhard and julius share similar characteristics. additionally, julius is green (sentence 8). therefore, it is logical to assume that bernhard, being a swan like julius, is also green."
+18,16,18,1,"1. Lily is a frog.
+2. Julius is a rhino.
+3. Lily is yellow.
+4. Greg is a frog.
+5. Brian is a lion.
+6. Greg is yellow.
+7. Bernhard is a lion.
+8. Julius is white.
+9. Bernhard is gray.",What color is Brian?,gray,"since there is no direct information about brian's color in the context sentences, we need to make an inference. we know that bernhard is also a lion (sentence 7) and bernhard is gray (sentence 9). there is no information suggesting that lions can have different colors, so it is logical to assume that all lions have the same color. therefore, we can infer that brian, being a lion, is also gray."
+19,16,19,1,"1. Lily is a rhino.
+2. Brian is a rhino.
+3. Bernhard is a rhino.
+4. Lily is gray.
+5. Greg is a frog.
+6. Bernhard is gray.
+7. Julius is a frog.
+8. Brian is gray.
+9. Julius is yellow.",What color is Greg?,yellow,"since greg is a frog (from context sentence 5), and julius is also a frog (from context sentence 7), and julius is yellow (from context sentence 9), it can be logically inferred that greg, being a frog like julius, is also yellow."
+20,16,20,1,"1. Greg is a frog.
+2. Greg is white.
+3. Bernhard is a rhino.
+4. Bernhard is white.
+5. Lily is a swan.
+6. Brian is a frog.
+7. Julius is a rhino.
+8. Lily is yellow.
+9. Julius is yellow.",What color is Brian?,white,"since brian is a frog (sentence 6), and we know that greg is also a frog (sentence 1) and is white (sentence 2), it is logical to assume that brian, being of the same species as greg, shares the same characteristic of being white."
+21,16,21,1,"1. Bernhard is a lion.
+2. Julius is a frog.
+3. Greg is a swan.
+4. Lily is a frog.
+5. Lily is green.
+6. Brian is a lion.
+7. Greg is yellow.
+8. Julius is green.
+9. Bernhard is yellow.",What color is Brian?,yellow,"since bernhard is a lion (1) and brian is also a lion (6), we can infer that they share similar characteristics. we know that bernhard is yellow (9), so it is logical to assume that brian, being of the same species, would also be yellow."
+22,16,22,1,"1. Lily is a frog.
+2. Bernhard is a lion.
+3. Brian is a frog.
+4. Julius is a frog.
+5. Greg is a frog.
+6. Brian is white.
+7. Greg is white.
+8. Bernhard is gray.
+9. Lily is white.",What color is Julius?,white,"since julius is a frog (from context sentence 4), and all the other frogs mentioned (lily, brian, and greg) are white (from context sentences 6, 7, and 9), it is logical to assume that julius, being a frog, is also white. there is no information provided that suggests julius has a different color, so the most reasonable inference is that julius is white."
+23,16,23,1,"1. Lily is a swan.
+2. Brian is a frog.
+3. Brian is yellow.
+4. Bernhard is a frog.
+5. Bernhard is yellow.
+6. Lily is green.
+7. Julius is a rhino.
+8. Julius is gray.
+9. Greg is a rhino.",What color is Greg?,gray,"since greg is a rhino (sentence 9), and julius is also a rhino (sentence 7), it can be inferred that greg and julius share similar characteristics. additionally, julius is gray (sentence 8), so it is logical to assume that greg, being a rhino like julius, is also gray."
+24,16,24,1,"1. Bernhard is a rhino.
+2. Brian is a lion.
+3. Greg is a lion.
+4. Bernhard is green.
+5. Lily is a frog.
+6. Julius is a frog.
+7. Julius is white.
+8. Greg is gray.
+9. Brian is gray.",What color is Lily?,white,"since lily is a frog (context sentence 5), and julius is also a frog (context sentence 6) and white (context sentence 7), it can be logically inferred that lily, being a frog like julius, is also white."
+25,16,25,1,"1. Brian is a rhino.
+2. Julius is a frog.
+3. Brian is green.
+4. Julius is gray.
+5. Greg is a rhino.
+6. Bernhard is a lion.
+7. Lily is a lion.
+8. Lily is green.
+9. Bernhard is green.",What color is Greg?,green,"since greg is a rhino (sentence 5), and brian is also a rhino (sentence 1) and is green (sentence 3), we can logically infer that greg, being of the same species as brian, is also green."
+26,16,26,1,"1. Bernhard is a lion.
+2. Bernhard is yellow.
+3. Brian is a lion.
+4. Julius is a frog.
+5. Julius is white.
+6. Brian is gray.
+7. Lily is a lion.
+8. Greg is a frog.
+9. Lily is white.",What color is Greg?,white,"since there is no direct information about greg's color, we need to make an inference. we know that julius is a frog and white (sentence 5). we also know that greg is a frog (sentence 8). given that both julius and greg are frogs, and julius is white, it is logical to assume that greg, being a frog as well, is also white."
+27,16,27,1,"1. Greg is a lion.
+2. Lily is a swan.
+3. Bernhard is a rhino.
+4. Greg is gray.
+5. Julius is a lion.
+6. Lily is gray.
+7. Julius is green.
+8. Brian is a rhino.
+9. Bernhard is white.",What color is Brian?,white,"since brian is a rhino (sentence 8), and bernhard is also a rhino (sentence 3), we can infer that they share similar characteristics. additionally, bernhard is white (sentence 9), so it is logical to assume that brian, being of the same species, also has the same color, which is white."
+28,16,28,1,"1. Lily is a swan.
+2. Lily is white.
+3. Julius is a lion.
+4. Julius is white.
+5. Greg is a swan.
+6. Greg is yellow.
+7. Brian is a frog.
+8. Brian is white.
+9. Bernhard is a frog.",What color is Bernhard?,white,"since bernhard is a frog (sentence 9), and we know that another frog, brian, is white (sentence 8), it is logical to assume that bernhard, also being a frog, shares the same characteristic of being white. this inference is based on the pattern observed in the context sentences, where same species tend to have the same color (lily and greg are both swans, but have different colors; julius is a lion and is white; brian is a"
+29,16,29,1,"1. Greg is a lion.
+2. Julius is a rhino.
+3. Lily is a swan.
+4. Brian is a lion.
+5. Bernhard is a frog.
+6. Julius is gray.
+7. Bernhard is gray.
+8. Lily is white.
+9. Brian is green.",What color is Greg?,green,"since greg is a lion (context sentence 1), and brian is also a lion (context sentence 4), it can be inferred that greg and brian share similar characteristics. additionally, brian is green (context sentence 9), so it is logical to assume that greg, being of the same species, also has the same color, which is green."
+30,16,30,1,"1. Greg is a rhino.
+2. Brian is a lion.
+3. Bernhard is a swan.
+4. Julius is a lion.
+5. Brian is gray.
+6. Greg is green.
+7. Bernhard is green.
+8. Julius is gray.
+9. Lily is a swan.",What color is Lily?,green,"since lily is a swan (sentence 9), and bernhard is also a swan (sentence 3), and bernhard is green (sentence 7), it can be logically inferred that lily, being a swan like bernhard, is also green."
+31,16,31,1,"1. Brian is a rhino.
+2. Brian is green.
+3. Lily is a frog.
+4. Lily is white.
+5. Bernhard is a lion.
+6. Julius is a swan.
+7. Julius is white.
+8. Greg is a lion.
+9. Bernhard is yellow.",What color is Greg?,yellow,"since greg is a lion (sentence 8), and bernhard is also a lion (sentence 5), it can be inferred that they share similar characteristics. additionally, bernhard is yellow (sentence 9), so it is logical to assume that greg, being of the same species, also has the same color, which is yellow."
+32,16,32,1,"1. Bernhard is a frog.
+2. Brian is a rhino.
+3. Greg is a lion.
+4. Greg is green.
+5. Julius is a rhino.
+6. Brian is gray.
+7. Lily is a frog.
+8. Lily is gray.
+9. Bernhard is gray.",What color is Julius?,gray,"since julius is a rhino (sentence 5), and brian is also a rhino (sentence 2) and gray (sentence 6), it can be logically inferred that julius, being of the same species as brian, is also gray."
+33,16,33,1,"1. Greg is a lion.
+2. Bernhard is a lion.
+3. Lily is a frog.
+4. Lily is gray.
+5. Bernhard is white.
+6. Julius is a rhino.
+7. Julius is yellow.
+8. Brian is a frog.
+9. Greg is white.",What color is Brian?,gray,"since brian is a frog (sentence 8), and lily is also a frog (sentence 3) and gray (sentence 4), it can be logically inferred that brian, being a frog like lily, is also gray."
+34,16,34,1,"1. Bernhard is a swan.
+2. Greg is a frog.
+3. Julius is a rhino.
+4. Julius is white.
+5. Greg is green.
+6. Bernhard is gray.
+7. Lily is a rhino.
+8. Brian is a frog.
+9. Brian is yellow.",What color is Lily?,white,"since lily is a rhino (sentence 7), and julius is also a rhino (sentence 3) and is white (sentence 4), we can logically infer that lily, being a rhino like julius, is also white."
+35,16,35,1,"1. Greg is a swan.
+2. Julius is a swan.
+3. Greg is white.
+4. Brian is a rhino.
+5. Lily is a frog.
+6. Bernhard is a lion.
+7. Lily is white.
+8. Bernhard is green.
+9. Brian is white.",What color is Julius?,white,"since julius is a swan (sentence 2), and greg is also a swan (sentence 1), we can infer that julius shares the same characteristics as greg. one of the characteristics of greg is that he is white (sentence 3). therefore, it is logical to assume that julius is also white."
+36,16,36,1,"1. Brian is a frog.
+2. Brian is green.
+3. Lily is a frog.
+4. Lily is green.
+5. Greg is a frog.
+6. Greg is green.
+7. Bernhard is a frog.
+8. Julius is a frog.
+9. Julius is white.",What color is Bernhard?,white,"since bernhard is not explicitly mentioned to have a specific color, we need to make an inference. we know that all the frogs mentioned so far, except julius, are green (brian, lily, and greg). julius is the only exception, being white. there is no information that suggests bernhard is like the majority (green), so it is more logical to assume that bernhard is different from the majority, just like julius. therefore, it is reasonable to infer that bernhard"
+37,16,37,1,"1. Bernhard is a frog.
+2. Brian is a rhino.
+3. Bernhard is gray.
+4. Julius is a swan.
+5. Julius is yellow.
+6. Lily is a lion.
+7. Greg is a lion.
+8. Greg is yellow.
+9. Brian is gray.",What color is Lily?,yellow,"since lily is a lion (sentence 6), and greg is also a lion (sentence 7), it can be inferred that they share similar characteristics. additionally, sentence 8 states that greg is yellow. therefore, it is logical to assume that lily, being a lion like greg, also shares the same color, which is yellow."
+38,16,38,1,"1. Greg is a frog.
+2. Bernhard is a swan.
+3. Brian is a frog.
+4. Greg is green.
+5. Julius is a rhino.
+6. Bernhard is yellow.
+7. Julius is gray.
+8. Lily is a swan.
+9. Brian is green.",What color is Lily?,yellow,"since lily is a swan (sentence 8), and bernhard is also a swan (sentence 2), and bernhard is yellow (sentence 6), it can be logically inferred that swans are yellow. therefore, lily, being a swan, is also yellow."
+39,16,39,1,"1. Brian is a frog.
+2. Lily is a lion.
+3. Bernhard is a frog.
+4. Lily is yellow.
+5. Greg is a rhino.
+6. Greg is white.
+7. Julius is a lion.
+8. Brian is yellow.
+9. Bernhard is yellow.",What color is Julius?,yellow,"since julius is a lion (sentence 7), and lily is also a lion (sentence 2), we can infer that julius and lily share similar characteristics. additionally, we know that lily is yellow (sentence 4). therefore, it is logical to assume that julius, being a lion like lily, is also yellow."
+40,16,40,1,"1. Greg is a swan.
+2. Brian is a swan.
+3. Bernhard is a lion.
+4. Bernhard is white.
+5. Lily is a frog.
+6. Greg is gray.
+7. Julius is a frog.
+8. Julius is white.
+9. Lily is white.",What color is Brian?,gray,"since brian is a swan (sentence 2), and greg is also a swan (sentence 1) and gray (sentence 6), it can be logically inferred that brian, being a swan like greg, is also gray."
+41,16,41,1,"1. Julius is a rhino.
+2. Brian is a lion.
+3. Julius is gray.
+4. Lily is a frog.
+5. Bernhard is a swan.
+6. Bernhard is yellow.
+7. Brian is yellow.
+8. Greg is a frog.
+9. Greg is green.",What color is Lily?,green,"since lily is a frog (sentence 4), and greg is also a frog (sentence 8), it is logical to assume that they share similar characteristics. additionally, greg is green (sentence 9), which suggests that frogs in this context are typically green. therefore, it can be inferred that lily, being a frog, is also green."
+42,16,42,1,"1. Brian is a rhino.
+2. Brian is yellow.
+3. Greg is a frog.
+4. Bernhard is a lion.
+5. Greg is green.
+6. Julius is a lion.
+7. Julius is yellow.
+8. Lily is a rhino.
+9. Lily is yellow.",What color is Bernhard?,yellow,"since bernhard is a lion (sentence 4), and julius is also a lion (sentence 6), we can infer that bernhard and julius share similar characteristics. additionally, julius is yellow (sentence 7). therefore, it is logical to assume that bernhard, being a lion like julius, is also yellow."
+43,16,43,1,"1. Brian is a frog.
+2. Lily is a swan.
+3. Lily is yellow.
+4. Brian is green.
+5. Greg is a rhino.
+6. Bernhard is a rhino.
+7. Bernhard is green.
+8. Julius is a frog.
+9. Greg is green.",What color is Julius?,green,"since julius is a frog (sentence 8), and we know that brian is also a frog (sentence 1) and is green (sentence 4), it is logical to assume that julius, being of the same species as brian, shares the same characteristic of being green."
+44,16,44,1,"1. Brian is a frog.
+2. Brian is yellow.
+3. Lily is a swan.
+4. Julius is a swan.
+5. Lily is white.
+6. Bernhard is a lion.
+7. Greg is a lion.
+8. Julius is white.
+9. Bernhard is gray.",What color is Greg?,gray,"since greg is a lion (sentence 7), and bernhard is also a lion (sentence 6), and bernhard is gray (sentence 9), it can be logically inferred that greg, being of the same species as bernhard, is also gray."
+45,16,45,1,"1. Lily is a rhino.
+2. Julius is a rhino.
+3. Brian is a swan.
+4. Bernhard is a lion.
+5. Julius is yellow.
+6. Brian is white.
+7. Bernhard is gray.
+8. Lily is yellow.
+9. Greg is a lion.",What color is Greg?,gray,"since greg is a lion (sentence 9), and bernhard is also a lion (sentence 4), it is logical to assume that they share similar characteristics. bernhard is gray (sentence 7), so it is reasonable to infer that greg, being a lion like bernhard, is also gray."
+46,16,46,1,"1. Brian is a lion.
+2. Bernhard is a lion.
+3. Lily is a frog.
+4. Julius is a swan.
+5. Julius is yellow.
+6. Greg is a rhino.
+7. Greg is white.
+8. Lily is gray.
+9. Brian is yellow.",What color is Bernhard?,yellow,"since bernhard is a lion (sentence 2), and brian is also a lion (sentence 1), it can be inferred that bernhard and brian share similar characteristics. additionally, sentence 9 states that brian is yellow. therefore, it is logical to assume that bernhard, being a lion like brian, also shares the same color, which is yellow."
+47,16,47,1,"1. Bernhard is a frog.
+2. Brian is a frog.
+3. Julius is a swan.
+4. Julius is gray.
+5. Brian is yellow.
+6. Bernhard is yellow.
+7. Greg is a rhino.
+8. Greg is white.
+9. Lily is a swan.",What color is Lily?,gray,"since lily is a swan (sentence 9), and julius is also a swan (sentence 3) and gray (sentence 4), it can be logically inferred that lily, being a swan like julius, is also gray."
+48,16,48,1,"1. Bernhard is a lion.
+2. Greg is a rhino.
+3. Brian is a frog.
+4. Lily is a swan.
+5. Greg is green.
+6. Julius is a swan.
+7. Brian is white.
+8. Bernhard is gray.
+9. Julius is yellow.",What color is Lily?,yellow,"since lily is a swan (context sentence 4), and julius is also a swan (context sentence 6), it can be inferred that they share the same characteristics. since julius is yellow (context sentence 9), it is logical to assume that lily, being the same type of animal, is also yellow."
+49,16,49,1,"1. Brian is a lion.
+2. Greg is a rhino.
+3. Brian is white.
+4. Lily is a swan.
+5. Greg is white.
+6. Lily is green.
+7. Bernhard is a swan.
+8. Julius is a rhino.
+9. Julius is gray.",What color is Bernhard?,green,"since bernhard is a swan (sentence 7), and lily is also a swan (sentence 4), and lily is green (sentence 6), it can be logically inferred that bernhard, being of the same species as lily, shares the same characteristic of being green."
+50,16,50,1,"1. Brian is a rhino.
+2. Lily is a frog.
+3. Lily is gray.
+4. Greg is a frog.
+5. Greg is gray.
+6. Julius is a swan.
+7. Bernhard is a rhino.
+8. Bernhard is gray.
+9. Julius is green.",What color is Brian?,gray,"since there is no direct information about brian's color, we need to make an inference. we know that bernhard is also a rhino (from sentence 8) and bernhard is gray (from sentence 8). therefore, it is logical to assume that brian, being a rhino as well, shares the same characteristic of being gray."
+51,16,51,1,"1. Brian is a frog.
+2. Bernhard is a swan.
+3. Greg is a frog.
+4. Julius is a frog.
+5. Julius is green.
+6. Brian is green.
+7. Greg is green.
+8. Lily is a frog.
+9. Bernhard is green.",What color is Lily?,green,"since lily is a frog (sentence 8), and all the other frogs mentioned (brian, greg, and julius) are green (sentences 5, 6, and 7), it can be logically inferred that lily, being a frog, is also green."
+52,16,52,1,"1. Bernhard is a rhino.
+2. Bernhard is gray.
+3. Julius is a lion.
+4. Lily is a rhino.
+5. Brian is a swan.
+6. Brian is yellow.
+7. Lily is white.
+8. Greg is a lion.
+9. Greg is gray.",What color is Julius?,gray,"since julius is a lion (sentence 3), and we know that greg is also a lion (sentence 8) and is gray (sentence 9), we can logically infer that julius, being a lion like greg, is also gray."
+53,16,53,1,"1. Julius is a frog.
+2. Julius is yellow.
+3. Bernhard is a lion.
+4. Greg is a frog.
+5. Lily is a swan.
+6. Lily is green.
+7. Bernhard is white.
+8. Greg is gray.
+9. Brian is a lion.",What color is Brian?,white,"since bernhard is a lion (sentence 3) and bernhard is white (sentence 7), we can infer that lions are typically white. brian is also a lion (sentence 9), so it is logical to assume that brian is also white, as he shares the same species as bernhard."
+54,16,54,1,"1. Brian is a swan.
+2. Brian is white.
+3. Bernhard is a rhino.
+4. Bernhard is yellow.
+5. Lily is a rhino.
+6. Julius is a frog.
+7. Julius is green.
+8. Lily is yellow.
+9. Greg is a frog.",What color is Greg?,green,"since greg is a frog (sentence 9), and julius is also a frog (sentence 6) and is green (sentence 7), it can be logically inferred that greg, being a frog like julius, is also green."
+55,16,55,1,"1. Brian is a swan.
+2. Greg is a lion.
+3. Bernhard is a rhino.
+4. Brian is yellow.
+5. Greg is yellow.
+6. Bernhard is gray.
+7. Lily is a frog.
+8. Lily is green.
+9. Julius is a lion.",What color is Julius?,yellow,"since julius is a lion (sentence 9), and greg is also a lion (sentence 2), it can be inferred that julius and greg share the same characteristics. one of the characteristics of greg is that he is yellow (sentence 5). therefore, it is logical to assume that julius, being a lion like greg, is also yellow."
+56,16,56,1,"1. Greg is a lion.
+2. Bernhard is a lion.
+3. Julius is a lion.
+4. Brian is a rhino.
+5. Bernhard is yellow.
+6. Julius is yellow.
+7. Greg is yellow.
+8. Brian is white.
+9. Lily is a rhino.",What color is Lily?,white,"since lily is a rhino (from context sentence 9), and brian is also a rhino (from context sentence 4), it can be inferred that lily and brian share the same characteristics. additionally, brian is white (from context sentence 8). therefore, it is logical to assume that lily is also white, as they are both rhinos."
+57,16,57,1,"1. Brian is a rhino.
+2. Lily is a rhino.
+3. Lily is white.
+4. Brian is white.
+5. Julius is a frog.
+6. Bernhard is a rhino.
+7. Bernhard is gray.
+8. Julius is gray.
+9. Greg is a rhino.",What color is Greg?,gray,"since there is no direct information about greg's color, we need to make an inference. we know that there are three rhinos: brian, lily, and bernhard. brian and lily are both white, and bernhard is gray. we also know that julius, a frog, is gray. there is no information about any other colors. therefore, it is logical to assume that greg, being a rhino, is likely to have a color that is already mentioned, and since"
+58,16,58,1,"1. Greg is a rhino.
+2. Lily is a swan.
+3. Julius is a frog.
+4. Brian is a frog.
+5. Lily is white.
+6. Brian is gray.
+7. Julius is gray.
+8. Bernhard is a swan.
+9. Greg is gray.",What color is Bernhard?,white,"since bernhard is a swan (sentence 8), and lily is also a swan (sentence 2) and is white (sentence 5), it can be logically inferred that bernhard, being a swan like lily, is also white."
+59,16,59,1,"1. Brian is a rhino.
+2. Greg is a swan.
+3. Bernhard is a lion.
+4. Julius is a frog.
+5. Greg is gray.
+6. Julius is green.
+7. Bernhard is white.
+8. Brian is green.
+9. Lily is a lion.",What color is Lily?,white,"since lily is a lion (sentence 9), and bernhard is also a lion (sentence 3), it is logical to assume that they share similar characteristics. bernhard is white (sentence 7), so it can be inferred that lily, being a lion as well, is also white."
+60,16,60,1,"1. Greg is a lion.
+2. Julius is a swan.
+3. Julius is gray.
+4. Brian is a frog.
+5. Bernhard is a rhino.
+6. Greg is gray.
+7. Brian is gray.
+8. Bernhard is green.
+9. Lily is a frog.",What color is Lily?,gray,"since lily is a frog (sentence 9), and brian is also a frog (sentence 4), and brian is gray (sentence 7), it can be logically inferred that lily, being a frog like brian, is also gray."
+61,16,61,1,"1. Greg is a swan.
+2. Greg is white.
+3. Julius is a rhino.
+4. Brian is a rhino.
+5. Julius is green.
+6. Bernhard is a rhino.
+7. Lily is a rhino.
+8. Bernhard is yellow.
+9. Brian is yellow.",What color is Lily?,yellow,"since lily is a rhino (sentence 7), and we know that bernhard and brian are also rhinos (sentences 6 and 4), and they are both yellow (sentences 8 and 9), it is logical to assume that lily, being a rhino as well, is also yellow."
+62,16,62,1,"1. Lily is a swan.
+2. Lily is yellow.
+3. Bernhard is a lion.
+4. Julius is a swan.
+5. Julius is yellow.
+6. Greg is a frog.
+7. Bernhard is white.
+8. Greg is gray.
+9. Brian is a frog.",What color is Brian?,gray,"since there is no direct information about brian's color in the context sentences, we need to make an inference. we know that greg is a frog (sentence 6) and greg is gray (sentence 8). we also know that brian is a frog (sentence 9). since both greg and brian are frogs, it is logical to assume that they share similar characteristics, including their color. therefore, we can infer that brian is also gray, just like greg."
+63,16,63,1,"1. Lily is a rhino.
+2. Brian is a rhino.
+3. Julius is a lion.
+4. Lily is white.
+5. Greg is a frog.
+6. Brian is white.
+7. Julius is white.
+8. Bernhard is a frog.
+9. Greg is yellow.",What color is Bernhard?,yellow,"since bernhard is a frog (sentence 8), and greg is also a frog (sentence 5), and greg is yellow (sentence 9), it is logical to assume that bernhard, being of the same species as greg, shares the same characteristic of being yellow."
+64,16,64,1,"1. Brian is a rhino.
+2. Lily is a swan.
+3. Bernhard is a rhino.
+4. Lily is yellow.
+5. Greg is a lion.
+6. Julius is a lion.
+7. Greg is yellow.
+8. Brian is yellow.
+9. Julius is yellow.",What color is Bernhard?,yellow,"since bernhard is a rhino (sentence 3), and brian is also a rhino (sentence 1) and is yellow (sentence 8), it can be logically inferred that bernhard, being of the same species as brian, is also yellow."
+65,16,65,1,"1. Julius is a rhino.
+2. Brian is a frog.
+3. Lily is a frog.
+4. Bernhard is a lion.
+5. Greg is a lion.
+6. Julius is green.
+7. Greg is yellow.
+8. Lily is yellow.
+9. Brian is yellow.",What color is Bernhard?,yellow,"since bernhard is a lion (sentence 4), and greg is also a lion (sentence 5), it can be inferred that bernhard and greg share similar characteristics. additionally, greg is yellow (sentence 7). therefore, it is logical to assume that bernhard, being a lion like greg, is also yellow."
+66,16,66,1,"1. Lily is a swan.
+2. Greg is a lion.
+3. Bernhard is a lion.
+4. Lily is green.
+5. Bernhard is green.
+6. Greg is green.
+7. Brian is a rhino.
+8. Julius is a swan.
+9. Brian is green.",What color is Julius?,green,"since julius is a swan (sentence 8), and lily is also a swan (sentence 1), we can infer that julius shares the same characteristics as lily. one of the characteristics of lily is that she is green (sentence 4). therefore, it is logical to conclude that julius is also green."
+67,16,67,1,"1. Brian is a lion.
+2. Lily is a frog.
+3. Bernhard is a rhino.
+4. Julius is a lion.
+5. Greg is a swan.
+6. Lily is gray.
+7. Greg is green.
+8. Bernhard is gray.
+9. Brian is gray.",What color is Julius?,gray,"since julius is a lion (sentence 4), and brian is also a lion (sentence 1), it can be inferred that julius shares similar characteristics with brian. one of the characteristics of brian is that he is gray (sentence 9). therefore, it is logical to assume that julius, being a lion like brian, is also gray."
+68,16,68,1,"1. Brian is a rhino.
+2. Brian is yellow.
+3. Greg is a frog.
+4. Greg is gray.
+5. Bernhard is a frog.
+6. Julius is a rhino.
+7. Bernhard is gray.
+8. Lily is a frog.
+9. Lily is gray.",What color is Julius?,yellow,"since julius is a rhino (sentence 6), and brian is also a rhino (sentence 1) and is yellow (sentence 2), we can logically infer that julius, being a rhino like brian, is also yellow."
+69,16,69,1,"1. Brian is a lion.
+2. Julius is a lion.
+3. Brian is white.
+4. Bernhard is a lion.
+5. Greg is a frog.
+6. Greg is gray.
+7. Julius is yellow.
+8. Lily is a lion.
+9. Lily is yellow.",What color is Bernhard?,yellow,"since bernhard is a lion (from context sentence 4), and there are two lions that are yellow (julius and lily, from context sentences 7 and 9), and there is only one white lion (brian, from context sentence 3), it is likely that bernhard is yellow, as there is no other color mentioned for lions in the context sentences."
+70,16,70,1,"1. Brian is a rhino.
+2. Julius is a lion.
+3. Greg is a frog.
+4. Greg is yellow.
+5. Lily is a rhino.
+6. Julius is white.
+7. Bernhard is a lion.
+8. Bernhard is white.
+9. Brian is white.",What color is Lily?,white,"since lily is a rhino (sentence 5), and brian is also a rhino (sentence 1) and is white (sentence 9), it can be logically inferred that lily, being of the same species as brian, is also white."
+71,16,71,1,"1. Julius is a lion.
+2. Brian is a frog.
+3. Lily is a frog.
+4. Lily is yellow.
+5. Greg is a swan.
+6. Brian is yellow.
+7. Greg is gray.
+8. Julius is white.
+9. Bernhard is a swan.",What color is Bernhard?,gray,"since bernhard is a swan (sentence 9), and greg is also a swan (sentence 5), it can be inferred that bernhard and greg share similar characteristics. additionally, it is known that greg is gray (sentence 7). therefore, it is logical to assume that bernhard, being a swan like greg, also shares the same color, which is gray."
+72,16,72,1,"1. Brian is a rhino.
+2. Bernhard is a swan.
+3. Julius is a swan.
+4. Lily is a lion.
+5. Brian is gray.
+6. Julius is yellow.
+7. Lily is white.
+8. Greg is a lion.
+9. Bernhard is yellow.",What color is Greg?,white,"since greg is a lion (from context sentence 8), and lily is also a lion (from context sentence 4), and lily is white (from context sentence 7), it can be logically inferred that greg, being of the same species as lily, is also white."
+73,16,73,1,"1. Julius is a lion.
+2. Lily is a swan.
+3. Greg is a frog.
+4. Bernhard is a lion.
+5. Greg is yellow.
+6. Brian is a frog.
+7. Lily is yellow.
+8. Brian is white.
+9. Julius is green.",What color is Bernhard?,green,"since bernhard is a lion (from context sentence 4), and julius is also a lion (from context sentence 1), we can infer that bernhard and julius share the same characteristics. we know that julius is green (from context sentence 9), so it is logical to assume that bernhard, being a lion like julius, is also green."
+74,16,74,1,"1. Bernhard is a rhino.
+2. Brian is a lion.
+3. Lily is a rhino.
+4. Bernhard is green.
+5. Julius is a lion.
+6. Julius is gray.
+7. Brian is gray.
+8. Greg is a swan.
+9. Greg is gray.",What color is Lily?,green,"since lily is a rhino (sentence 3), and bernhard is also a rhino (sentence 1), we can infer that they share similar characteristics. bernhard is green (sentence 4), so it is logical to assume that lily, being of the same species, is also green."
+75,16,75,1,"1. Greg is a swan.
+2. Julius is a frog.
+3. Bernhard is a frog.
+4. Lily is a rhino.
+5. Greg is gray.
+6. Lily is yellow.
+7. Julius is green.
+8. Brian is a rhino.
+9. Bernhard is green.",What color is Brian?,yellow,"since brian is a rhino (sentence 8), and lily is also a rhino (sentence 4), it can be inferred that they share similar characteristics. one of these characteristics is their color, as seen in sentence 6, where lily is described as yellow. therefore, it is logical to assume that brian, being a rhino like lily, is also yellow."
+76,16,76,1,"1. Brian is a lion.
+2. Brian is green.
+3. Lily is a lion.
+4. Greg is a lion.
+5. Bernhard is a swan.
+6. Greg is yellow.
+7. Lily is yellow.
+8. Julius is a swan.
+9. Bernhard is green.",What color is Julius?,green,"since julius is a swan (sentence 8), and bernhard is also a swan (sentence 5), we can infer that julius and bernhard share similar characteristics. we know that bernhard is green (sentence 9), so it is logical to assume that julius, being a swan like bernhard, is also green."
+77,16,77,1,"1. Bernhard is a rhino.
+2. Brian is a swan.
+3. Lily is a lion.
+4. Greg is a rhino.
+5. Julius is a lion.
+6. Julius is white.
+7. Brian is green.
+8. Lily is white.
+9. Greg is gray.",What color is Bernhard?,gray,"since bernhard is a rhino (context sentence 1), and greg is also a rhino (context sentence 4), it can be inferred that bernhard and greg share similar characteristics. additionally, greg is gray (context sentence 9), so it is logical to assume that bernhard, being the same species as greg, also has the same color, which is gray."
+78,16,78,1,"1. Greg is a rhino.
+2. Bernhard is a rhino.
+3. Bernhard is yellow.
+4. Greg is yellow.
+5. Brian is a rhino.
+6. Julius is a swan.
+7. Julius is yellow.
+8. Brian is gray.
+9. Lily is a swan.",What color is Lily?,yellow,"since lily is a swan (sentence 9), and julius is also a swan (sentence 6) and is yellow (sentence 7), it can be logically inferred that lily, being a swan like julius, is also yellow."
+79,16,79,1,"1. Lily is a lion.
+2. Greg is a frog.
+3. Julius is a rhino.
+4. Bernhard is a swan.
+5. Lily is white.
+6. Julius is yellow.
+7. Greg is white.
+8. Brian is a swan.
+9. Brian is yellow.",What color is Bernhard?,yellow,"since bernhard is a swan (context sentence 4), and there are two swans mentioned in the context sentences (bernhard and brian), and brian is yellow (context sentence 9), it is logical to assume that bernhard, being a swan like brian, is also yellow. this inference is based on the similarity in characteristics between the two swans, bernhard and brian."
+80,16,80,1,"1. Greg is a lion.
+2. Julius is a frog.
+3. Brian is a rhino.
+4. Bernhard is a swan.
+5. Lily is a swan.
+6. Greg is gray.
+7. Julius is white.
+8. Brian is white.
+9. Lily is yellow.",What color is Bernhard?,yellow,"since bernhard is a swan (context sentence 4), and lily is also a swan (context sentence 5), it can be inferred that bernhard and lily share similar characteristics. additionally, lily is yellow (context sentence 9). therefore, it is logical to assume that bernhard, being a swan like lily, is also yellow."
+81,16,81,1,"1. Brian is a rhino.
+2. Lily is a rhino.
+3. Julius is a lion.
+4. Julius is yellow.
+5. Greg is a rhino.
+6. Lily is white.
+7. Bernhard is a rhino.
+8. Brian is green.
+9. Greg is green.",What color is Bernhard?,green,"since bernhard is a rhino (sentence 7), and we know that brian (sentence 1) and greg (sentence 5) are also rhinos, and both of them are green (sentences 8 and 9), it is logical to assume that bernhard, being a rhino as well, is also green."
+82,16,82,1,"1. Lily is a swan.
+2. Lily is yellow.
+3. Greg is a frog.
+4. Brian is a frog.
+5. Julius is a lion.
+6. Bernhard is a swan.
+7. Julius is yellow.
+8. Bernhard is yellow.
+9. Greg is white.",What color is Brian?,white,"since brian is a frog (context sentence 4), and greg is also a frog (context sentence 3), and greg is white (context sentence 9), it can be logically inferred that brian, being of the same type as greg, is also white."
+83,16,83,1,"1. Greg is a lion.
+2. Brian is a frog.
+3. Greg is white.
+4. Brian is yellow.
+5. Bernhard is a rhino.
+6. Lily is a lion.
+7. Julius is a frog.
+8. Julius is white.
+9. Bernhard is yellow.",What color is Lily?,white,"since lily is a lion (sentence 6), and greg is also a lion (sentence 1) and is white (sentence 3), it can be logically inferred that lily, being of the same species as greg, is also white."
+84,16,84,1,"1. Lily is a rhino.
+2. Bernhard is a frog.
+3. Lily is white.
+4. Bernhard is yellow.
+5. Brian is a swan.
+6. Brian is yellow.
+7. Julius is a swan.
+8. Greg is a frog.
+9. Greg is yellow.",What color is Julius?,yellow,"since julius is a swan (sentence 7), and brian is also a swan (sentence 5) and is yellow (sentence 6), we can logically infer that julius, being of the same type as brian (both are swans), is also yellow."
+85,16,85,1,"1. Bernhard is a frog.
+2. Brian is a frog.
+3. Greg is a swan.
+4. Brian is green.
+5. Greg is yellow.
+6. Julius is a swan.
+7. Bernhard is green.
+8. Lily is a frog.
+9. Lily is white.",What color is Julius?,yellow,"since julius is a swan (sentence 6), and greg is also a swan (sentence 3), and greg is yellow (sentence 5), it can be logically inferred that julius, being a swan like greg, is also yellow."
+86,16,86,1,"1. Julius is a swan.
+2. Brian is a lion.
+3. Lily is a frog.
+4. Brian is yellow.
+5. Bernhard is a rhino.
+6. Julius is yellow.
+7. Bernhard is gray.
+8. Lily is gray.
+9. Greg is a frog.",What color is Greg?,gray,"since greg is a frog (sentence 9), and lily is also a frog (sentence 3), it can be inferred that they share similar characteristics. additionally, lily is gray (sentence 8). therefore, it is logical to assume that greg, being a frog like lily, is also gray."
+87,16,87,1,"1. Julius is a rhino.
+2. Bernhard is a lion.
+3. Lily is a swan.
+4. Brian is a swan.
+5. Lily is yellow.
+6. Greg is a rhino.
+7. Bernhard is white.
+8. Julius is green.
+9. Greg is green.",What color is Brian?,yellow,"since brian is a swan (context sentence 4), and lily is also a swan (context sentence 3), and lily is yellow (context sentence 5), it can be logically inferred that brian, being of the same species as lily, is also yellow."
+88,16,88,1,"1. Julius is a frog.
+2. Brian is a rhino.
+3. Greg is a frog.
+4. Lily is a lion.
+5. Lily is green.
+6. Brian is yellow.
+7. Bernhard is a swan.
+8. Bernhard is gray.
+9. Greg is white.",What color is Julius?,white,"since julius is a frog (context sentence 1), and greg is also a frog (context sentence 3), it can be inferred that they share similar characteristics. additionally, greg is white (context sentence 9), which suggests that julius, being a fellow frog, might also be white. there is no other information provided about julius's color, so it is logical to assume that julius is also white, based on the similarity with greg."
+89,16,89,1,"1. Lily is a lion.
+2. Greg is a rhino.
+3. Greg is green.
+4. Bernhard is a rhino.
+5. Lily is gray.
+6. Brian is a frog.
+7. Bernhard is yellow.
+8. Brian is white.
+9. Julius is a frog.",What color is Julius?,white,"since julius is a frog (sentence 9), and we know that brian is also a frog (sentence 6) and is white (sentence 8), we can logically infer that julius, being a frog like brian, is also white."
+90,16,90,1,"1. Greg is a rhino.
+2. Lily is a frog.
+3. Julius is a swan.
+4. Brian is a lion.
+5. Greg is green.
+6. Brian is gray.
+7. Julius is white.
+8. Lily is green.
+9. Bernhard is a swan.",What color is Bernhard?,white,"since bernhard is a swan (sentence 9), and julius is also a swan (sentence 3), it can be inferred that bernhard and julius share the same characteristics as they belong to the same species. additionally, it is stated that julius is white (sentence 7). therefore, it is logical to assume that bernhard, being a swan like julius, is also white."
+91,16,91,1,"1. Lily is a frog.
+2. Greg is a swan.
+3. Julius is a frog.
+4. Julius is green.
+5. Brian is a rhino.
+6. Greg is yellow.
+7. Brian is green.
+8. Bernhard is a rhino.
+9. Bernhard is white.",What color is Lily?,green,"since lily is a frog (context sentence 1), and julius is also a frog (context sentence 3) and is green (context sentence 4), it can be logically inferred that lily, being a frog like julius, is also green."
+92,16,92,1,"1. Bernhard is a swan.
+2. Julius is a swan.
+3. Lily is a rhino.
+4. Bernhard is yellow.
+5. Brian is a rhino.
+6. Greg is a frog.
+7. Greg is green.
+8. Lily is gray.
+9. Julius is yellow.",What color is Brian?,gray,"since brian is a rhino (from context sentence 5), and lily is also a rhino (from context sentence 3), and lily is gray (from context sentence 8), it can be logically inferred that brian, being a rhino like lily, is also gray."
+93,16,93,1,"1. Brian is a frog.
+2. Brian is green.
+3. Lily is a frog.
+4. Bernhard is a rhino.
+5. Julius is a frog.
+6. Bernhard is white.
+7. Greg is a frog.
+8. Lily is green.
+9. Greg is green.",What color is Julius?,green,"since julius is a frog (sentence 5), and all the other frogs mentioned (brian, lily, and greg) are green (sentences 2, 8, and 9), it is logical to assume that julius, being a frog, is also green. there is no information provided that suggests julius has a different color, so the most reasonable conclusion is that julius is green."
+94,16,94,1,"1. Julius is a swan.
+2. Bernhard is a frog.
+3. Lily is a swan.
+4. Brian is a frog.
+5. Bernhard is white.
+6. Lily is yellow.
+7. Greg is a frog.
+8. Greg is white.
+9. Brian is white.",What color is Julius?,yellow,"since julius is a swan (context 1), and lily is also a swan (context 3), we can infer that they share similar characteristics. we know that lily is yellow (context 6), so it is logical to assume that julius, being of the same species, is also yellow."
+95,16,95,1,"1. Bernhard is a rhino.
+2. Lily is a frog.
+3. Julius is a swan.
+4. Lily is gray.
+5. Greg is a swan.
+6. Brian is a rhino.
+7. Bernhard is white.
+8. Brian is white.
+9. Greg is gray.",What color is Julius?,gray,"since julius is a swan (sentence 3), and we know that greg is also a swan (sentence 5) and is gray (sentence 9), we can logically infer that julius, being of the same species as greg, is also gray."
+96,16,96,1,"1. Julius is a rhino.
+2. Bernhard is a lion.
+3. Julius is green.
+4. Lily is a rhino.
+5. Greg is a frog.
+6. Brian is a frog.
+7. Bernhard is white.
+8. Lily is gray.
+9. Greg is gray.",What color is Brian?,gray,"since brian is a frog (sentence 6), and greg is also a frog (sentence 5) and gray (sentence 9), it can be logically inferred that brian, being a frog like greg, is also gray."
+97,16,97,1,"1. Julius is a lion.
+2. Bernhard is a frog.
+3. Bernhard is green.
+4. Brian is a rhino.
+5. Julius is yellow.
+6. Brian is gray.
+7. Greg is a frog.
+8. Greg is gray.
+9. Lily is a rhino.",What color is Lily?,gray,"since lily is a rhino (sentence 9), and brian is also a rhino (sentence 4), and brian is gray (sentence 6), it can be logically inferred that lily, being a rhino like brian, is also gray."
+98,16,98,1,"1. Greg is a rhino.
+2. Bernhard is a frog.
+3. Greg is white.
+4. Lily is a lion.
+5. Brian is a lion.
+6. Bernhard is green.
+7. Julius is a rhino.
+8. Brian is white.
+9. Lily is white.",What color is Julius?,white,"since julius is a rhino (sentence 7), and greg is also a rhino (sentence 1), we can infer that julius might have similar characteristics as greg. greg is white (sentence 3), so it is logical to assume that julius, being of the same species, is also white."
+99,16,99,1,"1. Julius is a lion.
+2. Lily is a frog.
+3. Brian is a frog.
+4. Greg is a rhino.
+5. Brian is white.
+6. Julius is gray.
+7. Greg is green.
+8. Bernhard is a lion.
+9. Bernhard is green.",What color is Lily?,white,"since lily is a frog, and brian is also a frog and is white, it is logical to assume that lily, being of the same species as brian, shares the same characteristic of being white."
+100,16,100,1,"1. Greg is a frog.
+2. Brian is a rhino.
+3. Bernhard is a rhino.
+4. Julius is a lion.
+5. Julius is yellow.
+6. Greg is white.
+7. Bernhard is gray.
+8. Lily is a frog.
+9. Brian is gray.",What color is Lily?,white,"since lily is a frog (sentence 8), and greg is also a frog (sentence 1), and greg is white (sentence 6), it can be logically inferred that lily, being a frog like greg, is also white."
