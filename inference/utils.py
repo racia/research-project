@@ -1,6 +1,7 @@
-from transformers import AutoTokenizer
 import re
+
 import en_core_web_sm
+from transformers import AutoTokenizer
 
 nlp = en_core_web_sm.load()
 

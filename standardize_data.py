@@ -78,7 +78,8 @@ def run(data_path: str, silver_reasoning_path: str = "") -> None:
     Run the standardization pipeline.
 
     :param data_path: Path to the data to standardize
-    :param silver_reasoning_path: the path to the silver reasoning data (if any, the reasoning will be added to the data)
+    :param silver_reasoning_path: the path to the silver reasoning data (if any, the reasoning will be added to the
+    data)
     :return: None
     """
     if not data_path:

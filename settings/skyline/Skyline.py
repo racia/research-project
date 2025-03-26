@@ -45,5 +45,5 @@ class Skyline(Baseline):
             to_enumerate=to_enumerate,
             wrapper=wrapper,
             interpretability=interpretability,
-            mode=mode
+            mode=mode,
         )

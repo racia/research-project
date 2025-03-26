@@ -1,0 +1,276 @@
+id_,task_id,sample_id,part_id,context,question,golden_answer,silver_reasoning
+1,15,1,1,"1. Wolves are afraid of cats.
+2. Mice are afraid of sheep.
+3. Emily is a mouse.
+4. Cats are afraid of wolves.
+5. Gertrude is a cat.
+6. Sheep are afraid of mice.
+7. Winona is a mouse.
+8. Jessica is a cat.",What is jessica afraid of?,wolf,"from sentence 4, we know that ""cats are afraid of wolves."" jessica is a cat (sentence 8), so we can infer that jessica is afraid of wolves."
+2,15,1,2,,What is winona afraid of?,sheep,"from sentence 3, we know that emily is a mouse, and from sentence 2, we know that mice are afraid of sheep. winona is also a mouse (sentence 7), so we can infer that winona is afraid of sheep."
+3,15,1,3,,What is gertrude afraid of?,wolf,"from sentence 5, we know that gertrude is a cat. from sentence 4, we know that cats are afraid of wolves. therefore, we can infer that gertrude, being a cat, is afraid of wolves."
+4,15,1,4,,What is winona afraid of?,sheep,"from sentence 7, we know that winona is a mouse. from sentence 2, we know that mice are afraid of sheep. therefore, we can infer that winona, being a mouse, is afraid of sheep."
+5,15,2,1,"1. Wolves are afraid of mice.
+2. Cats are afraid of sheep.
+3. Sheep are afraid of cats.
+4. Jessica is a sheep.
+5. Mice are afraid of wolves.
+6. Winona is a sheep.
+7. Emily is a sheep.
+8. Gertrude is a mouse.",What is winona afraid of?,cat,"from context sentence 2, we know that ""cats are afraid of sheep"". since winona is a sheep (context sentence 6), we can infer that cats are afraid of winona. however, the question asks what winona is afraid of, not what is afraid of winona. from context sentence 3, we know that ""sheep are afraid of cats"". since winona is a sheep, we can conclude that winona is afraid of cats."
+6,15,2,2,,What is winona afraid of?,cat,"from the context sentences, we know that winona is a sheep (context sentence 6). we also know that sheep are afraid of cats (context sentence 3). therefore, we can logically conclude that winona, being a sheep, is afraid of cats."
+7,15,2,3,,What is jessica afraid of?,cat,"from the context sentences, we know that jessica is a sheep (context sentence 4). we also know that sheep are afraid of cats (context sentence 3). therefore, we can logically conclude that jessica, being a sheep, is afraid of cats."
+8,15,2,4,,What is jessica afraid of?,cat,"from the context sentences, we know that jessica is a sheep (context sentence 4). we also know that sheep are afraid of cats (context sentence 3). therefore, we can logically conclude that jessica, being a sheep, is afraid of cats."
+9,15,3,1,"1. Wolves are afraid of sheep.
+2. Winona is a wolf.
+3. Cats are afraid of sheep.
+4. Jessica is a wolf.
+5. Sheep are afraid of cats.
+6. Emily is a sheep.
+7. Mice are afraid of wolves.
+8. Gertrude is a mouse.",What is emily afraid of?,cat,"from context sentence 6, we know that emily is a sheep. from context sentence 5, we know that sheep are afraid of cats. therefore, emily, being a sheep, is afraid of cats."
+10,15,3,2,,What is jessica afraid of?,sheep,"from context sentence 4, we know that jessica is a wolf. from context sentence 1, we know that wolves are afraid of sheep. therefore, jessica, being a wolf, is afraid of sheep."
+11,15,3,3,,What is gertrude afraid of?,wolf,"from context sentence 8, we know that gertrude is a mouse. from context sentence 7, we know that mice are afraid of wolves. therefore, gertrude, being a mouse, is afraid of wolves."
+12,15,3,4,,What is gertrude afraid of?,wolf,"from context sentence 8, we know that gertrude is a mouse. from context sentence 7, we know that mice are afraid of wolves. therefore, gertrude, being a mouse, is afraid of wolves."
+13,15,4,1,"1. Cats are afraid of wolves.
+2. Emily is a cat.
+3. Wolves are afraid of mice.
+4. Sheep are afraid of wolves.
+5. Mice are afraid of wolves.
+6. Gertrude is a sheep.
+7. Winona is a sheep.
+8. Jessica is a mouse.",What is gertrude afraid of?,wolf,"from context sentence 4, we know that ""sheep are afraid of wolves."" gertrude is a sheep (context sentence 6), so we can logically conclude that gertrude is afraid of wolves."
+14,15,4,2,,What is gertrude afraid of?,wolf,"from the context sentences, we know that gertrude is a sheep (not provided in this part, but assumed to be part of the previous context). we also know that sheep are afraid of wolves (context sentence 4). therefore, we can logically conclude that gertrude, being a sheep, is afraid of wolves."
+15,15,4,3,,What is emily afraid of?,wolf,"from the context sentences (provided in the previous part), we know that emily is a cat (context sentence 2). we also know that cats are afraid of wolves (context sentence 1). therefore, we can logically conclude that emily, being a cat, is afraid of wolves."
+16,15,4,4,,What is winona afraid of?,wolf,"from the context sentences (provided in the previous part), we know that winona is a sheep (context sentence 7). we also know that sheep are afraid of wolves (context sentence 4). therefore, we can logically conclude that winona, being a sheep, is afraid of wolves."
+17,15,5,1,"1. Cats are afraid of mice.
+2. Jessica is a cat.
+3. Sheep are afraid of mice.
+4. Mice are afraid of sheep.
+5. Wolves are afraid of mice.
+6. Emily is a cat.
+7. Winona is a sheep.
+8. Gertrude is a wolf.",What is emily afraid of?,mouse,"since emily is a cat (sentence 6), and cats are afraid of mice (sentence 1), we can logically conclude that emily is afraid of mice."
+18,15,5,2,,What is gertrude afraid of?,mouse,"since gertrude is a wolf (sentence 8), and wolves are afraid of mice (sentence 5), we can logically conclude that gertrude is afraid of mice."
+19,15,5,3,,What is emily afraid of?,mouse,"since emily is a cat (sentence 6), and cats are afraid of mice (sentence 1), we can logically conclude that emily is afraid of mice."
+20,15,5,4,,What is jessica afraid of?,mouse,"since jessica is a cat (sentence 2), and cats are afraid of mice (sentence 1), we can logically conclude that jessica is afraid of mice."
+21,15,6,1,"1. Mice are afraid of sheep.
+2. Cats are afraid of sheep.
+3. Gertrude is a mouse.
+4. Winona is a mouse.
+5. Jessica is a cat.
+6. Wolves are afraid of cats.
+7. Emily is a cat.
+8. Sheep are afraid of wolves.",What is gertrude afraid of?,sheep,"since gertrude is a mouse (context sentence 3), and mice are afraid of sheep (context sentence 1), we can logically conclude that gertrude is afraid of sheep."
+22,15,6,2,,What is jessica afraid of?,sheep,"since jessica is a cat (context sentence 5), and cats are afraid of sheep (context sentence 2), we can logically conclude that jessica is afraid of sheep."
+23,15,6,3,,What is gertrude afraid of?,sheep,"since gertrude is a mouse (context sentence 3), and mice are afraid of sheep (context sentence 1), we can logically conclude that gertrude is afraid of sheep."
+24,15,6,4,,What is jessica afraid of?,sheep,"since jessica is a cat (context sentence 5), and cats are afraid of sheep (context sentence 2), we can logically conclude that jessica is afraid of sheep."
+25,15,7,1,"1. Sheep are afraid of wolves.
+2. Gertrude is a sheep.
+3. Mice are afraid of sheep.
+4. Emily is a mouse.
+5. Jessica is a mouse.
+6. Wolves are afraid of sheep.
+7. Winona is a mouse.
+8. Cats are afraid of wolves.",What is gertrude afraid of?,wolf,"from context sentence 2, we know that gertrude is a sheep. from context sentence 1, we know that sheep are afraid of wolves. therefore, we can logically conclude that gertrude, being a sheep, is afraid of wolves."
+26,15,7,2,,What is emily afraid of?,sheep,"from context sentence 4, we know that emily is a mouse. from context sentence 3, we know that mice are afraid of sheep. therefore, we can logically conclude that emily, being a mouse, is afraid of sheep."
+27,15,7,3,,What is gertrude afraid of?,wolf,"from context sentence 2, we know that gertrude is a sheep. from context sentence 1, we know that sheep are afraid of wolves. therefore, we can logically conclude that gertrude, being a sheep, is afraid of wolves."
+28,15,7,4,,What is jessica afraid of?,sheep,"from context sentence 5, we know that jessica is a mouse. from context sentence 3, we know that mice are afraid of sheep. therefore, we can logically conclude that jessica, being a mouse, is afraid of sheep."
+29,15,8,1,"1. Sheep are afraid of cats.
+2. Mice are afraid of cats.
+3. Emily is a sheep.
+4. Jessica is a mouse.
+5. Wolves are afraid of sheep.
+6. Gertrude is a sheep.
+7. Cats are afraid of wolves.
+8. Winona is a sheep.",What is winona afraid of?,cat,"from context sentence 3, we know that emily is a sheep, and from context sentence 1, we know that sheep are afraid of cats. since winona is also a sheep (context sentence 8), we can logically infer that winona is afraid of cats as well."
+30,15,8,2,,What is emily afraid of?,cat,"from context sentence 3, we know that emily is a sheep, and from context sentence 1, we know that sheep are afraid of cats. therefore, we can logically conclude that emily, being a sheep, is afraid of cats."
+31,15,8,3,,What is jessica afraid of?,cat,"from context sentence 4, we know that jessica is a mouse, and from context sentence 2, we know that mice are afraid of cats. therefore, we can logically conclude that jessica, being a mouse, is afraid of cats."
+32,15,8,4,,What is jessica afraid of?,cat,"from context sentence 4, we know that jessica is a mouse. from context sentence 2, we know that mice are afraid of cats. therefore, we can logically conclude that jessica, being a mouse, is afraid of cats."
+33,15,9,1,"1. Cats are afraid of sheep.
+2. Wolves are afraid of cats.
+3. Emily is a wolf.
+4. Gertrude is a cat.
+5. Sheep are afraid of wolves.
+6. Mice are afraid of cats.
+7. Winona is a mouse.
+8. Jessica is a sheep.",What is emily afraid of?,cat,"since emily is a wolf (context sentence 3), and wolves are afraid of cats (context sentence 2), we can conclude that emily is afraid of a cat."
+34,15,9,2,,What is gertrude afraid of?,sheep,"since gertrude is a cat (context sentence 4), and cats are afraid of sheep (context sentence 1), we can conclude that gertrude is afraid of sheep."
+35,15,9,3,,What is jessica afraid of?,wolf,"since jessica is a sheep (context sentence 8), and sheep are afraid of wolves (context sentence 5), we can conclude that jessica is afraid of a wolf."
+36,15,9,4,,What is emily afraid of?,cat,"since emily is a wolf (context sentence 3), and wolves are afraid of cats (context sentence 2), we can conclude that emily is afraid of a cat."
+37,15,10,1,"1. Mice are afraid of wolves.
+2. Sheep are afraid of cats.
+3. Wolves are afraid of sheep.
+4. Cats are afraid of wolves.
+5. Winona is a mouse.
+6. Gertrude is a wolf.
+7. Emily is a mouse.
+8. Jessica is a sheep.",What is gertrude afraid of?,sheep,"from context sentence 3, we know that ""wolves are afraid of sheep"". since gertrude is a wolf (context sentence 6), we can infer that gertrude is afraid of sheep."
+38,15,10,2,,What is gertrude afraid of?,sheep,"from the context sentences, we know that gertrude is a wolf (sentence 6). we also know that wolves are afraid of sheep (sentence 3). therefore, since gertrude is a wolf, she is afraid of sheep."
+39,15,10,3,,What is jessica afraid of?,cat,"from the context sentences, we know that jessica is a sheep (sentence 8). we also know that sheep are afraid of cats (sentence 2). therefore, since jessica is a sheep, she is afraid of cats."
+40,15,10,4,,What is winona afraid of?,wolf,"from the context sentences, we know that winona is a mouse (sentence 5). we also know that mice are afraid of wolves (sentence 1). therefore, since winona is a mouse, she is afraid of wolves."
+41,15,11,1,"1. Mice are afraid of wolves.
+2. Cats are afraid of sheep.
+3. Wolves are afraid of cats.
+4. Jessica is a cat.
+5. Winona is a wolf.
+6. Sheep are afraid of cats.
+7. Gertrude is a mouse.
+8. Emily is a sheep.",What is winona afraid of?,cat,"from context sentence 5, we know that winona is a wolf. from context sentence 3, we know that wolves are afraid of cats. therefore, winona, being a wolf, is afraid of a cat."
+42,15,11,2,,What is jessica afraid of?,sheep,"from context sentence 4, we know that jessica is a cat. from context sentence 2, we know that cats are afraid of sheep. therefore, jessica, being a cat, is afraid of sheep."
+43,15,11,3,,What is winona afraid of?,cat,"from context sentence 5, we know that winona is a wolf. from context sentence 3, we know that wolves are afraid of cats. therefore, winona, being a wolf, is afraid of a cat."
+44,15,11,4,,What is winona afraid of?,cat,"from context sentence 5, we know that winona is a wolf. from context sentence 3, we know that wolves are afraid of cats. therefore, winona, being a wolf, is afraid of a cat."
+45,15,12,1,"1. Mice are afraid of cats.
+2. Sheep are afraid of wolves.
+3. Cats are afraid of mice.
+4. Gertrude is a sheep.
+5. Emily is a cat.
+6. Jessica is a cat.
+7. Wolves are afraid of cats.
+8. Winona is a sheep.",What is gertrude afraid of?,wolf,"from context sentence 4, we know that gertrude is a sheep. from context sentence 2, we know that sheep are afraid of wolves. therefore, we can logically conclude that gertrude, being a sheep, is afraid of wolves."
+46,15,12,2,,What is jessica afraid of?,mouse,"from context sentence 6, we know that jessica is a cat. from context sentence 1, we know that mice are afraid of cats, but we can infer that cats are not afraid of mice. however, from context sentence 3, we know that cats are actually afraid of mice. therefore, we can conclude that jessica, being a cat, is afraid of mice."
+47,15,12,3,,What is winona afraid of?,wolf,"from context sentence 8, we know that winona is a sheep. from context sentence 2, we know that sheep are afraid of wolves. therefore, we can logically conclude that winona, being a sheep, is afraid of wolves."
+48,15,12,4,,What is jessica afraid of?,mouse,"from context sentence 6, we know that jessica is a cat. from context sentence 3, we know that cats are afraid of mice. therefore, we can logically conclude that jessica, being a cat, is afraid of mice."
+49,15,13,1,"1. Wolves are afraid of sheep.
+2. Sheep are afraid of cats.
+3. Emily is a wolf.
+4. Jessica is a sheep.
+5. Cats are afraid of mice.
+6. Mice are afraid of sheep.
+7. Winona is a sheep.
+8. Gertrude is a sheep.",What is emily afraid of?,sheep,"since emily is a wolf (context sentence 3), and wolves are afraid of sheep (context sentence 1), emily is afraid of sheep."
+50,15,13,2,,What is jessica afraid of?,cat,"since jessica is a sheep (context sentence 4), and sheep are afraid of cats (context sentence 2), jessica is afraid of a cat."
+51,15,13,3,,What is winona afraid of?,cat,"since winona is a sheep (context sentence 7), and sheep are afraid of cats (context sentence 2), winona is afraid of a cat."
+52,15,13,4,,What is gertrude afraid of?,cat,"since gertrude is a sheep (context sentence 8), and sheep are afraid of cats (context sentence 2), gertrude is afraid of a cat."
+53,15,14,1,"1. Mice are afraid of cats.
+2. Cats are afraid of wolves.
+3. Winona is a cat.
+4. Jessica is a mouse.
+5. Sheep are afraid of wolves.
+6. Emily is a mouse.
+7. Gertrude is a sheep.
+8. Wolves are afraid of mice.",What is winona afraid of?,wolf,"from context sentence 3, we know that winona is a cat. from context sentence 2, we know that cats are afraid of wolves. therefore, we can logically conclude that winona, being a cat, is afraid of wolves."
+54,15,14,2,,What is gertrude afraid of?,wolf,"from context sentence 7, we know that gertrude is a sheep. from context sentence 5, we know that sheep are afraid of wolves. therefore, we can logically conclude that gertrude, being a sheep, is afraid of wolves."
+55,15,14,3,,What is jessica afraid of?,cat,"from context sentence 4, we know that jessica is a mouse. from context sentence 1, we know that mice are afraid of cats. therefore, we can logically conclude that jessica, being a mouse, is afraid of cats."
+56,15,14,4,,What is jessica afraid of?,cat,"from context sentence 4, we know that jessica is a mouse. from context sentence 1, we know that mice are afraid of cats. therefore, we can logically conclude that jessica, being a mouse, is afraid of cats."
+57,15,15,1,"1. Sheep are afraid of wolves.
+2. Jessica is a sheep.
+3. Wolves are afraid of sheep.
+4. Cats are afraid of sheep.
+5. Emily is a wolf.
+6. Gertrude is a cat.
+7. Winona is a wolf.
+8. Mice are afraid of wolves.",What is gertrude afraid of?,sheep,"from context sentence 6, we know that gertrude is a cat. from context sentence 4, we know that cats are afraid of sheep. therefore, gertrude, being a cat, is afraid of sheep."
+58,15,15,2,,What is gertrude afraid of?,sheep,"from the context sentences, we know that gertrude is a cat (not provided in this part, but assumed to be true based on the previous conversation). we also know that cats are afraid of sheep (context sentence 4). therefore, gertrude, being a cat, is afraid of sheep."
+59,15,15,3,,What is winona afraid of?,sheep,"from the context sentences (not provided in this part, but assumed to be true based on the previous conversation), we know that winona is a wolf (context sentence 7). we also know that wolves are afraid of sheep (context sentence 3). therefore, winona, being a wolf, is afraid of sheep."
+60,15,15,4,,What is jessica afraid of?,wolf,"from the context sentences (provided in a previous part), we know that jessica is a sheep (context sentence 2). we also know that sheep are afraid of wolves (context sentence 1). therefore, jessica, being a sheep, is afraid of a wolf."
+61,15,16,1,"1. Sheep are afraid of cats.
+2. Wolves are afraid of sheep.
+3. Cats are afraid of mice.
+4. Emily is a sheep.
+5. Mice are afraid of wolves.
+6. Winona is a wolf.
+7. Jessica is a mouse.
+8. Gertrude is a mouse.",What is jessica afraid of?,wolf,"from context sentence 5, we know that ""mice are afraid of wolves."" jessica is a mouse (context sentence 7), so we can logically conclude that jessica is afraid of wolves."
+62,15,16,2,,What is gertrude afraid of?,wolf,"from context sentence 5, we know that ""mice are afraid of wolves."" gertrude is a mouse (context sentence 8), so we can logically conclude that gertrude is afraid of wolves."
+63,15,16,3,,What is gertrude afraid of?,wolf,"from context sentence 8, we know that gertrude is a mouse. from context sentence 5, we know that mice are afraid of wolves. therefore, we can logically conclude that gertrude, being a mouse, is afraid of wolves."
+64,15,16,4,,What is emily afraid of?,cat,"from context sentence 4, we know that emily is a sheep. from context sentence 1, we know that sheep are afraid of cats. therefore, we can logically conclude that emily, being a sheep, is afraid of cats."
+65,15,17,1,"1. Mice are afraid of sheep.
+2. Gertrude is a mouse.
+3. Sheep are afraid of mice.
+4. Wolves are afraid of sheep.
+5. Emily is a mouse.
+6. Jessica is a sheep.
+7. Winona is a wolf.
+8. Cats are afraid of wolves.",What is emily afraid of?,sheep,"since emily is a mouse (sentence 5), and mice are afraid of sheep (sentence 1), we can conclude that emily is afraid of sheep."
+66,15,17,2,,What is gertrude afraid of?,sheep,"since gertrude is a mouse (sentence 2), and mice are afraid of sheep (sentence 1), we can conclude that gertrude is afraid of sheep."
+67,15,17,3,,What is jessica afraid of?,mouse,"since jessica is a sheep (sentence 6), and sheep are afraid of mice (sentence 3), we can conclude that jessica is afraid of a mouse."
+68,15,17,4,,What is emily afraid of?,sheep,"since emily is a mouse (sentence 5), and mice are afraid of sheep (sentence 1), we can conclude that emily is afraid of sheep."
+69,15,18,1,"1. Mice are afraid of cats.
+2. Jessica is a mouse.
+3. Winona is a mouse.
+4. Wolves are afraid of cats.
+5. Gertrude is a mouse.
+6. Emily is a wolf.
+7. Sheep are afraid of cats.
+8. Cats are afraid of sheep.",What is jessica afraid of?,cat,"since jessica is a mouse (context sentence 2), and mice are afraid of cats (context sentence 1), we can logically conclude that jessica is afraid of cats."
+70,15,18,2,,What is winona afraid of?,cat,"since winona is a mouse (context sentence 3), and mice are afraid of cats (context sentence 1), we can logically conclude that winona is afraid of cats."
+71,15,18,3,,What is emily afraid of?,cat,"this answer is incorrect based on the provided context. according to the context sentence 6, emily is a wolf, and wolves are afraid of cats is not mentioned in the context. instead, it is stated that wolves are afraid of cats in context sentence 4, but it does not relate to emily specifically. therefore, we cannot conclude that emily is afraid of cats."
+72,15,18,4,,What is winona afraid of?,cat,"since winona is a mouse (context sentence 3), and mice are afraid of cats (context sentence 1), we can logically conclude that winona is afraid of cats."
+73,15,19,1,"1. Wolves are afraid of cats.
+2. Winona is a wolf.
+3. Cats are afraid of sheep.
+4. Emily is a cat.
+5. Gertrude is a wolf.
+6. Sheep are afraid of mice.
+7. Mice are afraid of cats.
+8. Jessica is a sheep.",What is winona afraid of?,cat,"from context sentence 2, we know that winona is a wolf. from context sentence 1, we know that wolves are afraid of cats. therefore, we can logically conclude that winona, being a wolf, is afraid of cats."
+74,15,19,2,,What is emily afraid of?,sheep,"from context sentence 4, we know that emily is a cat. from context sentence 3, we know that cats are afraid of sheep. therefore, we can logically conclude that emily, being a cat, is afraid of sheep."
+75,15,19,3,,What is winona afraid of?,cat,"from context sentence 2, we know that winona is a wolf. from context sentence 1, we know that wolves are afraid of cats. therefore, we can logically conclude that winona, being a wolf, is afraid of a cat."
+76,15,19,4,,What is jessica afraid of?,mouse,"from context sentence 8, we know that jessica is a sheep. from context sentence 6, we know that sheep are afraid of mice. therefore, we can logically conclude that jessica, being a sheep, is afraid of a mouse."
+77,15,20,1,"1. Wolves are afraid of mice.
+2. Mice are afraid of wolves.
+3. Cats are afraid of wolves.
+4. Emily is a wolf.
+5. Gertrude is a cat.
+6. Jessica is a cat.
+7. Sheep are afraid of cats.
+8. Winona is a mouse.",What is gertrude afraid of?,wolf,"from context sentence 4, we know emily is a wolf. from context sentence 5, we know gertrude is a cat. from context sentence 3, we know cats are afraid of wolves. therefore, since gertrude is a cat, she is afraid of wolves."
+78,15,20,2,,What is winona afraid of?,wolf,"from context sentence 8, we know winona is a mouse. from context sentence 2, we know mice are afraid of wolves. therefore, since winona is a mouse, she is afraid of wolves."
+79,15,20,3,,What is emily afraid of?,mouse,"from context sentence 4, we know emily is a wolf. from context sentence 1, we know wolves are afraid of mice. therefore, since emily is a wolf, she is afraid of mice."
+80,15,20,4,,What is winona afraid of?,wolf,"from context sentence 8, we know winona is a mouse. from context sentence 2, we know mice are afraid of wolves. therefore, since winona is a mouse, she is afraid of wolves."
+81,15,21,1,"1. Cats are afraid of sheep.
+2. Sheep are afraid of mice.
+3. Wolves are afraid of sheep.
+4. Jessica is a wolf.
+5. Winona is a sheep.
+6. Emily is a sheep.
+7. Gertrude is a cat.
+8. Mice are afraid of cats.",What is emily afraid of?,mouse,"from context sentence 2, we know that sheep are afraid of mice. emily is a sheep (context sentence 6), so we can logically conclude that emily is afraid of mice."
+82,15,21,2,,What is jessica afraid of?,sheep,"from context sentence 4, we know that jessica is a wolf. from context sentence 3, we know that wolves are afraid of sheep. therefore, we can logically conclude that jessica, being a wolf, is afraid of sheep."
+83,15,21,3,,What is jessica afraid of?,sheep,"from context sentence 4, we know that jessica is a wolf. from context sentence 3, we know that wolves are afraid of sheep. therefore, we can logically conclude that jessica, being a wolf, is afraid of sheep."
+84,15,21,4,,What is gertrude afraid of?,sheep,"from context sentence 7, we know that gertrude is a cat. from context sentence 1, we know that cats are afraid of sheep. therefore, we can logically conclude that gertrude, being a cat, is afraid of sheep."
+85,15,22,1,"1. Sheep are afraid of cats.
+2. Mice are afraid of sheep.
+3. Jessica is a mouse.
+4. Wolves are afraid of cats.
+5. Winona is a wolf.
+6. Cats are afraid of mice.
+7. Emily is a cat.
+8. Gertrude is a wolf.",What is winona afraid of?,cat,"from context sentence 4, we know that wolves are afraid of cats. from context sentence 5, we know that winona is a wolf. therefore, we can logically conclude that winona, being a wolf, is afraid of cats."
+86,15,22,2,,What is emily afraid of?,mouse,"from context sentence 6, we know that emily is a cat. from context sentence 3, we know that jessica is a mouse. from context sentence 6, we also know that cats are afraid of mice. therefore, we can logically conclude that emily, being a cat, is afraid of mice."
+87,15,22,3,,What is emily afraid of?,mouse,"from context sentence 6, we know that emily is a cat. from context sentence 6, we also know that cats are afraid of mice. therefore, we can logically conclude that emily, being a cat, is afraid of a mouse."
+88,15,22,4,,What is gertrude afraid of?,cat,"from context sentence 8, we know that gertrude is a wolf. from context sentence 4, we know that wolves are afraid of cats. therefore, we can logically conclude that gertrude, being a wolf, is afraid of a cat."
+89,15,23,1,"1. Cats are afraid of wolves.
+2. Gertrude is a cat.
+3. Wolves are afraid of mice.
+4. Sheep are afraid of wolves.
+5. Mice are afraid of sheep.
+6. Winona is a sheep.
+7. Emily is a sheep.
+8. Jessica is a sheep.",What is winona afraid of?,wolf,"from context sentence 6, we know that winona is a sheep. from context sentence 4, we know that sheep are afraid of wolves. therefore, we can logically conclude that winona, being a sheep, is afraid of wolves."
+90,15,23,2,,What is emily afraid of?,wolf,"from context sentence 7, we know that emily is a sheep. from context sentence 4, we know that sheep are afraid of wolves. therefore, we can logically conclude that emily, being a sheep, is afraid of wolves."
+91,15,23,3,,What is jessica afraid of?,wolf,"from context sentence 8, we know that jessica is a sheep. from context sentence 4, we know that sheep are afraid of wolves. therefore, we can logically conclude that jessica, being a sheep, is afraid of wolves."
+92,15,23,4,,What is emily afraid of?,wolf,"from context sentence 7, we know that emily is a sheep. from context sentence 4, we know that sheep are afraid of wolves. therefore, we can logically conclude that emily, being a sheep, is afraid of wolves."
+93,15,24,1,"1. Mice are afraid of wolves.
+2. Wolves are afraid of cats.
+3. Cats are afraid of mice.
+4. Emily is a wolf.
+5. Sheep are afraid of cats.
+6. Winona is a cat.
+7. Jessica is a sheep.
+8. Gertrude is a cat.",What is emily afraid of?,cat,"from context sentence 4, we know that emily is a wolf. from context sentence 2, we know that wolves are afraid of cats. therefore, emily, being a wolf, is afraid of cats."
+94,15,24,2,,What is emily afraid of?,cat,"from the previous context sentences, we know that emily is a wolf (sentence 4). we also know that wolves are afraid of cats (sentence 2). therefore, emily, being a wolf, is afraid of a cat."
+95,15,24,3,,What is jessica afraid of?,cat,"from the previous context sentences, we know that jessica is a sheep (sentence 7). we also know that sheep are afraid of cats (sentence 5). therefore, jessica, being a sheep, is afraid of a cat."
+96,15,24,4,,What is emily afraid of?,cat,"from the previous context sentences, we know that emily is a wolf (sentence 4). we also know that wolves are afraid of cats (sentence 2). therefore, emily, being a wolf, is afraid of a cat."
+97,15,25,1,"1. Cats are afraid of wolves.
+2. Jessica is a cat.
+3. Wolves are afraid of mice.
+4. Mice are afraid of wolves.
+5. Sheep are afraid of cats.
+6. Emily is a mouse.
+7. Gertrude is a sheep.
+8. Winona is a mouse.",What is emily afraid of?,wolf,"from context line 3, we know that wolves are afraid of mice. however, this does not directly tell us what mice are afraid of. but from context line 4, we know that mice are afraid of wolves. since emily is a mouse (context line 6), we can infer that emily is afraid of wolves."
+98,15,25,2,,What is winona afraid of?,wolf,"since winona is a mouse (context line 8), and mice are afraid of wolves (context line 4), we can conclude that winona is afraid of wolves."
+99,15,25,3,,What is emily afraid of?,wolf,"since emily is a mouse (context line 6), and mice are afraid of wolves (context line 4), we can conclude that emily is afraid of wolves."
+100,15,25,4,,What is winona afraid of?,wolf,"since winona is a mouse (context line 8), and mice are afraid of wolves (context line 4), we can conclude that winona is afraid of wolves."

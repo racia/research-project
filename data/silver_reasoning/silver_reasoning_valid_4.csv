@@ -1,0 +1,201 @@
+id_,task_id,sample_id,part_id,context,question,golden_answer,silver_reasoning
+1,4,1,1,"1. The kitchen is west of the garden.
+2. The hallway is west of the kitchen.",What is the garden east of?,kitchen,"from the first context sentence, we know that the kitchen is west of the garden. this implies that the garden is east of the kitchen. therefore, the answer to the question ""what is the garden east of?"" is the kitchen."
+2,4,2,1,"1. The bathroom is south of the bedroom.
+2. The kitchen is north of the bedroom.",What is the bedroom south of?,kitchen,"from the context sentences, we know that the bathroom is south of the bedroom (sentence 1) and the kitchen is north of the bedroom (sentence 2). since the bedroom is north of the bathroom (opposite direction of ""south of""), it means the bedroom is south of the kitchen. therefore, the answer is the kitchen."
+3,4,3,1,"1. The bedroom is south of the kitchen.
+2. The kitchen is south of the hallway.",What is south of the kitchen?,bedroom,"from the context sentences, we know that the bedroom is south of the kitchen (sentence 1), and the kitchen is south of the hallway (sentence 2). since the bedroom is south of the kitchen, it means that the bedroom is in the southern direction relative to the kitchen. therefore, the answer to the question ""what is south of the kitchen?"" is indeed the bedroom."
+4,4,4,1,"1. The hallway is west of the bedroom.
+2. The hallway is east of the garden.",What is the bedroom east of?,hallway,"from the first context sentence, ""the hallway is west of the bedroom"", we can infer that the bedroom is east of the hallway. this is because if the hallway is west of the bedroom, it means the bedroom is located to the east of the hallway."
+5,4,5,1,"1. The kitchen is south of the bedroom.
+2. The garden is north of the bedroom.",What is the bedroom north of?,kitchen,"from the context sentences, we know that the kitchen is south of the bedroom (sentence 1) and the garden is north of the bedroom (sentence 2). since the bedroom is between the kitchen and the garden, and the kitchen is south of the bedroom, it means that the bedroom is north of the kitchen."
+6,4,6,1,"1. The hallway is west of the office.
+2. The kitchen is east of the office.",What is the office east of?,hallway,"from the context sentences, we know that the hallway is west of the office (sentence 1) and the kitchen is east of the office (sentence 2). since the office is east of the hallway, it means that the hallway is west of the office. therefore, the office is east of the hallway."
+7,4,7,1,"1. The hallway is west of the bathroom.
+2. The bathroom is west of the bedroom.",What is west of the bathroom?,hallway,"from the context sentences, we know that ""the hallway is west of the bathroom"" (sentence 1). this directly states that the hallway is west of the bathroom, which answers the question ""what is west of the bathroom?"""
+8,4,8,1,"1. The garden is west of the office.
+2. The bedroom is west of the garden.",What is west of the office?,garden,"according to context sentence 1, ""the garden is west of the office"", which directly states that the garden is located west of the office. therefore, the correct answer is indeed ""garden""."
+9,4,9,1,"1. The hallway is east of the bedroom.
+2. The garden is west of the bedroom.",What is east of the bedroom?,hallway,"according to context sentence 1, ""the hallway is east of the bedroom"", which directly states that the hallway is located east of the bedroom. therefore, the correct answer is indeed the hallway."
+10,4,10,1,"1. The office is north of the garden.
+2. The office is south of the bathroom.",What is the garden south of?,office,"from the first context sentence, we know that the office is north of the garden. this implies that the garden is south of the office. therefore, the answer to the question ""what is the garden south of?"" is indeed ""office""."
+11,4,11,1,"1. The garden is east of the bedroom.
+2. The office is west of the bedroom.",What is the bedroom west of?,garden,"from the context sentences, we know that the garden is east of the bedroom (sentence 1) and the office is west of the bedroom (sentence 2). since the office is west of the bedroom, it means the bedroom is east of the office. similarly, since the garden is east of the bedroom, it means the bedroom is west of the garden. therefore, the bedroom is west of the garden."
+12,4,12,1,"1. The garden is west of the kitchen.
+2. The hallway is east of the kitchen.",What is the kitchen west of?,hallway,"from the context sentences, we know that the garden is west of the kitchen (sentence 1), which means the kitchen is east of the garden. we also know that the hallway is east of the kitchen (sentence 2). therefore, if the kitchen is east of the garden, and the hallway is east of the kitchen, then the kitchen must be west of the hallway."
+13,4,13,1,"1. The bathroom is west of the bedroom.
+2. The bathroom is east of the hallway.",What is east of the hallway?,bathroom,"from context sentence 2, we know that ""the bathroom is east of the hallway."" this sentence directly states that the bathroom is east of the hallway, which answers the question ""what is east of the hallway?"""
+14,4,14,1,"1. The office is north of the kitchen.
+2. The office is south of the bedroom.",What is the kitchen south of?,office,"from the first context sentence, we know that the office is north of the kitchen. this implies that the kitchen is south of the office. therefore, the answer to the question ""what is the kitchen south of?"" is indeed ""office""."
+15,4,15,1,"1. The hallway is west of the bedroom.
+2. The bathroom is east of the bedroom.",What is the bedroom west of?,bathroom,"from the context sentences, we know that the hallway is west of the bedroom (sentence 1), which means the bedroom is east of the hallway. we also know that the bathroom is east of the bedroom (sentence 2). therefore, if the bedroom is east of the hallway, and the bathroom is also east of the bedroom, it logically follows that the bedroom is west of the bathroom."
+16,4,16,1,"1. The bathroom is east of the hallway.
+2. The office is east of the bathroom.",What is east of the bathroom?,office,"from the context sentences, we know that the office is east of the bathroom (sentence 2). therefore, the answer to the question ""what is east of the bathroom?"" is indeed the office."
+17,4,17,1,"1. The bathroom is south of the hallway.
+2. The garden is south of the bathroom.",What is the bathroom north of?,garden,"from context sentence 1, we know that the bathroom is south of the hallway. this implies that the hallway is north of the bathroom. from context sentence 2, we know that the garden is south of the bathroom. this implies that the bathroom is north of the garden. therefore, the answer is the garden."
+18,4,18,1,"1. The garden is north of the bathroom.
+2. The hallway is south of the bathroom.",What is north of the bathroom?,garden,"according to context sentence 1, ""the garden is north of the bathroom"", which directly states that the garden is located north of the bathroom. therefore, the correct answer is indeed ""garden""."
+19,4,19,1,"1. The bedroom is south of the office.
+2. The bedroom is north of the hallway.",What is south of the office?,bedroom,"according to context sentence 1, ""the bedroom is south of the office"", which directly states that the bedroom is located south of the office. therefore, the answer to the question ""what is south of the office?"" is indeed the bedroom."
+20,4,20,1,"1. The bathroom is west of the garden.
+2. The garden is west of the office.",What is the office east of?,garden,"from the context sentences, we know that the bathroom is west of the garden (sentence 1), and the garden is west of the office (sentence 2). this means that the office is east of the garden, since the garden is west of the office. therefore, the office is east of the garden."
+21,4,21,1,"1. The hallway is west of the kitchen.
+2. The office is east of the kitchen.",What is east of the kitchen?,office,"according to context sentence 2, ""the office is east of the kitchen"", which directly states that the office is located east of the kitchen. therefore, the answer to the question ""what is east of the kitchen?"" is indeed the office."
+22,4,22,1,"1. The office is west of the hallway.
+2. The bedroom is east of the hallway.",What is the hallway east of?,office,"from the context sentences, we know that the office is west of the hallway (sentence 1) and the bedroom is east of the hallway (sentence 2). since the office is west of the hallway, it means the hallway is east of the office. therefore, the correct answer is ""office""."
+23,4,23,1,"1. The hallway is north of the office.
+2. The kitchen is south of the office.",What is south of the office?,kitchen,"according to context sentence 2, ""the kitchen is south of the office"", which directly states that the kitchen is located south of the office. therefore, the answer to the question ""what is south of the office?"" is indeed the kitchen."
+24,4,24,1,"1. The bathroom is east of the office.
+2. The kitchen is west of the office.",What is east of the office?,bathroom,"according to context sentence 1, ""the bathroom is east of the office"", which directly states that the bathroom is located east of the office. therefore, the correct answer is indeed the bathroom."
+25,4,25,1,"1. The garden is south of the office.
+2. The kitchen is north of the office.",What is the office south of?,kitchen,"from the context sentences, we know that the garden is south of the office (sentence 1) and the kitchen is north of the office (sentence 2). since the kitchen is north of the office, it means the office is south of the kitchen. therefore, the office is south of the kitchen."
+26,4,26,1,"1. The office is south of the garden.
+2. The kitchen is north of the garden.",What is the garden south of?,kitchen,"from the context sentences, we know that the office is south of the garden (sentence 1) and the kitchen is north of the garden (sentence 2). since the kitchen is north of the garden, it means the garden is south of the kitchen. therefore, the answer is the kitchen."
+27,4,27,1,"1. The bathroom is east of the garden.
+2. The kitchen is west of the garden.",What is the garden west of?,bathroom,"from the context sentences, we know that the bathroom is east of the garden (sentence 1) and the kitchen is west of the garden (sentence 2). since the garden is between the bathroom (east) and the kitchen (west), it means that the garden is west of the bathroom. therefore, the correct answer is the bathroom."
+28,4,28,1,"1. The bathroom is south of the garden.
+2. The office is south of the bathroom.",What is the bathroom north of?,office,"from the context sentences, we know that the office is south of the bathroom (sentence 2). this implies that the bathroom is north of the office. therefore, the answer to the question ""what is the bathroom north of?"" is the office."
+29,4,29,1,"1. The bathroom is west of the kitchen.
+2. The kitchen is west of the garden.",What is the garden east of?,kitchen,"from the context sentences, we know that the bathroom is west of the kitchen (sentence 1), and the kitchen is west of the garden (sentence 2). this means that the garden is east of the kitchen, as the kitchen is to the west of the garden. therefore, the correct answer is that the garden is east of the kitchen."
+30,4,30,1,"1. The bedroom is west of the hallway.
+2. The bathroom is east of the hallway.",What is east of the hallway?,bathroom,"according to context sentence 2, ""the bathroom is east of the hallway"", which directly states that the bathroom is located east of the hallway. therefore, the correct answer is indeed the bathroom."
+31,4,31,1,"1. The bathroom is east of the bedroom.
+2. The garden is west of the bedroom.",What is west of the bedroom?,garden,"according to context sentence 2, ""the garden is west of the bedroom"", which directly states that the garden is located west of the bedroom. therefore, the correct answer is indeed ""garden""."
+32,4,32,1,"1. The hallway is north of the office.
+2. The bedroom is north of the hallway.",What is north of the hallway?,bedroom,"according to context sentence 2, ""the bedroom is north of the hallway."" this sentence directly states that the bedroom is north of the hallway, which answers the question."
+33,4,33,1,"1. The bathroom is south of the garden.
+2. The garden is south of the kitchen.",What is the garden north of?,bathroom,"from the context sentences, we know that the bathroom is south of the garden (sentence 1), which implies that the garden is north of the bathroom. therefore, the answer to the question ""what is the garden north of?"" is indeed the bathroom."
+34,4,34,1,"1. The bathroom is south of the kitchen.
+2. The office is north of the kitchen.",What is north of the kitchen?,office,"according to context sentence 2, ""the office is north of the kitchen"", which directly states that the office is located north of the kitchen. therefore, the answer to the question ""what is north of the kitchen?"" is indeed the office."
+35,4,35,1,"1. The office is east of the kitchen.
+2. The kitchen is east of the hallway.",What is east of the kitchen?,office,"from the context sentences, we know that the office is east of the kitchen (sentence 1), and the kitchen is east of the hallway (sentence 2). therefore, the office must be east of the kitchen, which is the correct answer."
+36,4,36,1,"1. The bedroom is west of the bathroom.
+2. The kitchen is west of the bedroom.",What is west of the bedroom?,kitchen,"from the context sentences, we know that the bedroom is west of the bathroom (sentence 1), and the kitchen is west of the bedroom (sentence 2). therefore, the kitchen is the one that is west of the bedroom."
+37,4,37,1,"1. The kitchen is north of the hallway.
+2. The hallway is north of the bathroom.",What is the bathroom south of?,hallway,"from the context sentences, we know that the kitchen is north of the hallway (sentence 1), and the hallway is north of the bathroom (sentence 2). this means that the hallway is located between the kitchen and the bathroom. since the hallway is north of the bathroom, it implies that the bathroom is south of the hallway. therefore, the correct answer is the hallway."
+38,4,38,1,"1. The kitchen is east of the bedroom.
+2. The kitchen is west of the bathroom.",What is the bathroom east of?,kitchen,"from the context sentences, we know that the kitchen is east of the bedroom (sentence 1) and west of the bathroom (sentence 2). since the kitchen is west of the bathroom, it means the bathroom is east of the kitchen. therefore, the answer is the kitchen."
+39,4,39,1,"1. The garden is west of the office.
+2. The hallway is west of the garden.",What is west of the office?,garden,"from the context sentence ""the garden is west of the office"", we can directly infer that the garden is west of the office. this sentence explicitly states the relationship between the office and the garden, indicating that the garden is located to the west of the office. therefore, the correct answer is indeed ""garden""."
+40,4,40,1,"1. The bathroom is west of the kitchen.
+2. The bathroom is east of the garden.",What is the kitchen east of?,bathroom,"from the first context sentence, we know that the bathroom is west of the kitchen. this implies that the kitchen is east of the bathroom. therefore, the answer to the question ""what is the kitchen east of?"" is indeed the bathroom."
+41,4,41,1,"1. The garden is south of the kitchen.
+2. The kitchen is south of the hallway.",What is south of the kitchen?,garden,"from the context sentences, we know that the garden is south of the kitchen (sentence 1), and the kitchen is south of the hallway (sentence 2). therefore, the garden must be south of the kitchen, as stated in sentence 1."
+42,4,42,1,"1. The hallway is south of the bathroom.
+2. The bedroom is south of the hallway.",What is south of the hallway?,bedroom,"from context sentence 2, ""the bedroom is south of the hallway"", we can directly infer that the bedroom is south of the hallway. therefore, the answer to the question ""what is south of the hallway?"" is indeed the bedroom."
+43,4,43,1,"1. The kitchen is west of the hallway.
+2. The garden is west of the kitchen.",What is the kitchen east of?,garden,"from the context sentences, we know that the kitchen is west of the hallway (sentence 1), and the garden is west of the kitchen (sentence 2). this means that the kitchen is located between the hallway and the garden. since the garden is west of the kitchen, it implies that the kitchen is east of the garden. therefore, the correct answer is the garden."
+44,4,44,1,"1. The office is south of the garden.
+2. The garden is south of the bedroom.",What is the bedroom north of?,garden,"from the context sentences, we know that the office is south of the garden (sentence 1), and the garden is south of the bedroom (sentence 2). this means that the bedroom is north of the garden, as the garden is located to the south of the bedroom. therefore, the correct answer is that the bedroom is north of the garden."
+45,4,45,1,"1. The kitchen is west of the bedroom.
+2. The bedroom is west of the hallway.",What is the bedroom east of?,kitchen,"from the context sentences, we know that the kitchen is west of the bedroom (sentence 1), which implies that the bedroom is east of the kitchen. therefore, the answer to the question ""what is the bedroom east of?"" is the kitchen."
+46,4,46,1,"1. The bedroom is west of the bathroom.
+2. The bathroom is west of the kitchen.",What is west of the kitchen?,bathroom,"from the context sentences, we know that the bedroom is west of the bathroom (sentence 1), and the bathroom is west of the kitchen (sentence 2). therefore, the bathroom is located between the bedroom and the kitchen. since the bathroom is west of the kitchen, it means that the kitchen is east of the bathroom. hence, the bathroom is west of the kitchen, which is the correct answer."
+47,4,47,1,"1. The kitchen is east of the office.
+2. The hallway is east of the kitchen.",What is east of the office?,kitchen,"from the context sentence ""the kitchen is east of the office"", we can directly infer that the kitchen is east of the office. this sentence explicitly states the relationship between the kitchen and the office, and the question asks what is east of the office. therefore, the answer is the kitchen."
+48,4,48,1,"1. The office is east of the kitchen.
+2. The bedroom is west of the kitchen.",What is west of the kitchen?,bedroom,"according to context sentence 2, ""the bedroom is west of the kitchen"", which directly states that the bedroom is located west of the kitchen. therefore, the answer to the question ""what is west of the kitchen?"" is indeed the bedroom."
+49,4,49,1,"1. The office is north of the bathroom.
+2. The bedroom is north of the office.",What is north of the bathroom?,office,"from the context sentence 1, we know that ""the office is north of the bathroom."" this directly states that the office is located north of the bathroom. therefore, the answer to the question ""what is north of the bathroom?"" is indeed the office."
+50,4,50,1,"1. The bedroom is west of the office.
+2. The garden is east of the office.",What is the office west of?,garden,"from the context sentences, we know that the bedroom is west of the office (sentence 1), which means the office is east of the bedroom. we also know that the garden is east of the office (sentence 2). therefore, if the office is east of the bedroom and the garden is east of the office, it logically follows that the office is west of the garden."
+51,4,51,1,"1. The office is west of the hallway.
+2. The office is east of the garden.",What is the hallway east of?,office,"from the first context sentence, we know that the office is west of the hallway. this implies that the hallway is east of the office. therefore, the answer to the question ""what is the hallway east of?"" is indeed the office."
+52,4,52,1,"1. The kitchen is east of the bedroom.
+2. The bathroom is west of the bedroom.",What is west of the bedroom?,bathroom,"according to context sentence 2, ""the bathroom is west of the bedroom"", which directly states that the bathroom is located west of the bedroom. therefore, the answer to the question ""what is west of the bedroom?"" is indeed the bathroom."
+53,4,53,1,"1. The bedroom is east of the office.
+2. The hallway is east of the bedroom.",What is east of the bedroom?,hallway,"according to context sentence 2, ""the hallway is east of the bedroom."" this sentence directly states that the hallway is east of the bedroom, which answers the question."
+54,4,54,1,"1. The kitchen is south of the office.
+2. The garden is south of the kitchen.",What is the kitchen north of?,garden,"from the context sentences, we know that the kitchen is south of the office (sentence 1), and the garden is south of the kitchen (sentence 2). this means that the kitchen is located between the office and the garden. since the garden is south of the kitchen, it implies that the kitchen is north of the garden. therefore, the answer is the garden."
+55,4,55,1,"1. The garden is south of the office.
+2. The garden is north of the bedroom.",What is the bedroom south of?,garden,"from the context sentences, we know that the garden is south of the office (sentence 1) and north of the bedroom (sentence 2). since the garden is north of the bedroom, it means the bedroom is south of the garden. therefore, the answer is the garden."
+56,4,56,1,"1. The garden is north of the office.
+2. The bathroom is south of the office.",What is north of the office?,garden,"according to context sentence 1, ""the garden is north of the office"", which directly states that the garden is located north of the office. therefore, the answer to the question ""what is north of the office?"" is indeed the garden."
+57,4,57,1,"1. The garden is west of the kitchen.
+2. The office is east of the kitchen.",What is the kitchen east of?,garden,"from the context sentences, we know that the garden is west of the kitchen (sentence 1) and the office is east of the kitchen (sentence 2). since the garden is west of the kitchen, it means the kitchen is east of the garden. therefore, the answer to the question ""what is the kitchen east of?"" is the garden."
+58,4,58,1,"1. The garden is west of the kitchen.
+2. The bathroom is west of the garden.",What is west of the kitchen?,garden,"from the first context sentence, ""the garden is west of the kitchen,"" we can conclude that the garden is located to the west of the kitchen. therefore, the answer to the question ""what is west of the kitchen?"" is indeed the garden."
+59,4,59,1,"1. The bathroom is south of the kitchen.
+2. The hallway is north of the kitchen.",What is south of the kitchen?,bathroom,"according to context sentence 1, ""the bathroom is south of the kitchen"", which directly states that the bathroom is located south of the kitchen. therefore, the answer to the question ""what is south of the kitchen?"" is indeed the bathroom."
+60,4,60,1,"1. The office is south of the garden.
+2. The garden is south of the bathroom.",What is south of the garden?,office,"from the context sentences, we know that the office is south of the garden (sentence 1), and the garden is south of the bathroom (sentence 2). therefore, the office must be south of the garden, which is the correct answer."
+61,4,61,1,"1. The garden is east of the bathroom.
+2. The kitchen is east of the garden.",What is east of the bathroom?,garden,"from the first context sentence, ""the garden is east of the bathroom,"" we can directly infer that the garden is east of the bathroom. this sentence explicitly states the relationship between the garden and the bathroom, making it clear that the garden is located east of the bathroom."
+62,4,62,1,"1. The bathroom is west of the garden.
+2. The bathroom is east of the kitchen.",What is west of the garden?,bathroom,"according to context sentence 1, ""the bathroom is west of the garden"", which directly states that the bathroom is located west of the garden. therefore, the answer to the question ""what is west of the garden?"" is indeed the bathroom."
+63,4,63,1,"1. The hallway is south of the kitchen.
+2. The bathroom is north of the kitchen.",What is the kitchen north of?,hallway,"from the context sentences, we know that the hallway is south of the kitchen (sentence 1) and the bathroom is north of the kitchen (sentence 2). since the bathroom is north of the kitchen, the kitchen must be south of the bathroom. similarly, since the hallway is south of the kitchen, the kitchen must be north of the hallway. therefore, the kitchen is north of the hallway."
+64,4,64,1,"1. The bedroom is west of the bathroom.
+2. The hallway is west of the bedroom.",What is the bedroom east of?,hallway,"from the context sentences, we know that the bedroom is west of the bathroom (sentence 1), and the hallway is west of the bedroom (sentence 2). this means that the hallway is further west than the bedroom. therefore, if the hallway is west of the bedroom, the bedroom must be east of the hallway."
+65,4,65,1,"1. The bathroom is south of the kitchen.
+2. The office is south of the bathroom.",What is the kitchen north of?,bathroom,"from the context sentence 1, we know that the bathroom is south of the kitchen. this implies that the kitchen is north of the bathroom. therefore, the answer to the question ""what is the kitchen north of?"" is indeed the bathroom."
+66,4,66,1,"1. The hallway is west of the office.
+2. The office is west of the garden.",What is west of the office?,hallway,"from the context sentences, we know that ""the hallway is west of the office"" (sentence 1). this directly states that the hallway is west of the office, which answers the question ""what is west of the office?"" as ""hallway""."
+67,4,67,1,"1. The office is east of the garden.
+2. The hallway is west of the garden.",What is west of the garden?,hallway,"according to context sentence 2, ""the hallway is west of the garden"", which directly states that the hallway is west of the garden. therefore, the correct answer is indeed the hallway."
+68,4,68,1,"1. The kitchen is east of the office.
+2. The garden is west of the office.",What is east of the office?,kitchen,"according to context sentence 1, ""the kitchen is east of the office"", which directly states that the kitchen is located east of the office. therefore, the answer to the question ""what is east of the office?"" is indeed the kitchen."
+69,4,69,1,"1. The hallway is east of the bedroom.
+2. The bedroom is east of the office.",What is east of the office?,bedroom,"from the context sentences, we know that the bedroom is east of the office (sentence 2). therefore, the answer to the question ""what is east of the office?"" is indeed the bedroom, as it is the entity that is directly east of the office."
+70,4,70,1,"1. The office is east of the kitchen.
+2. The hallway is west of the kitchen.",What is the kitchen east of?,hallway,"from the context sentences, we know that the office is east of the kitchen (sentence 1), which means the kitchen is west of the office. we also know that the hallway is west of the kitchen (sentence 2). therefore, if the kitchen is west of the office and the hallway is west of the kitchen, it logically follows that the kitchen is east of the hallway."
+71,4,71,1,"1. The office is north of the bedroom.
+2. The garden is north of the office.",What is north of the bedroom?,office,"from the context sentence 1, we know that the office is north of the bedroom. therefore, the answer to the question ""what is north of the bedroom?"" is indeed the office, as it is the entity that is directly north of the bedroom."
+72,4,72,1,"1. The hallway is east of the bathroom.
+2. The office is west of the bathroom.",What is the bathroom east of?,office,"from the context sentences, we know that the hallway is east of the bathroom (sentence 1), which means the bathroom is west of the hallway. we also know that the office is west of the bathroom (sentence 2). therefore, if the office is west of the bathroom, and the bathroom is west of the hallway, it logically follows that the bathroom is east of the office."
+73,4,73,1,"1. The bedroom is north of the hallway.
+2. The office is north of the bedroom.",What is the bedroom south of?,office,"from the context sentences, we know that the office is north of the bedroom (sentence 2). this implies that the bedroom is south of the office. therefore, the answer to the question ""what is the bedroom south of?"" is the office."
+74,4,74,1,"1. The kitchen is west of the hallway.
+2. The bedroom is east of the hallway.",What is east of the hallway?,bedroom,"according to context sentence 2, ""the bedroom is east of the hallway"", which directly states that the bedroom is located east of the hallway. therefore, the answer to the question ""what is east of the hallway?"" is indeed the bedroom."
+75,4,75,1,"1. The office is west of the bathroom.
+2. The hallway is west of the office.",What is west of the office?,hallway,"according to context sentence 2, ""the hallway is west of the office."" this sentence directly states that the hallway is west of the office, which matches the answer provided."
+76,4,76,1,"1. The bathroom is south of the kitchen.
+2. The kitchen is south of the bedroom.",What is south of the bedroom?,kitchen,"from context sentence 2, we know that ""the kitchen is south of the bedroom."" this directly states that the kitchen is south of the bedroom, which answers the question."
+77,4,77,1,"1. The office is east of the bedroom.
+2. The bathroom is west of the bedroom.",What is east of the bedroom?,office,"according to context sentence 1, ""the office is east of the bedroom"", which directly states that the office is located east of the bedroom. therefore, the answer to the question ""what is east of the bedroom?"" is indeed the office."
+78,4,78,1,"1. The garden is south of the hallway.
+2. The garden is north of the bathroom.",What is the hallway north of?,garden,"from the context sentences, we know that the garden is south of the hallway (sentence 1) and north of the bathroom (sentence 2). since the garden is south of the hallway, it means the hallway is north of the garden. therefore, the answer to the question ""what is the hallway north of?"" is indeed ""garden""."
+79,4,79,1,"1. The bathroom is east of the hallway.
+2. The bedroom is west of the hallway.",What is west of the hallway?,bedroom,"according to context sentence 2, ""the bedroom is west of the hallway"", which directly states that the bedroom is located west of the hallway. therefore, the answer to the question ""what is west of the hallway?"" is indeed the bedroom."
+80,4,80,1,"1. The bedroom is west of the garden.
+2. The bathroom is east of the garden.",What is the garden east of?,bedroom,"from the context sentences, we know that the bedroom is west of the garden (sentence 1) and the bathroom is east of the garden (sentence 2). since the bedroom is west of the garden, it means the garden is east of the bedroom. therefore, the answer is ""bedroom""."
+81,4,81,1,"1. The office is east of the garden.
+2. The bathroom is west of the garden.",What is east of the garden?,office,"according to context sentence 1, ""the office is east of the garden"", which directly states that the office is located east of the garden. therefore, the answer to the question ""what is east of the garden?"" is indeed the office."
+82,4,82,1,"1. The office is south of the bathroom.
+2. The bedroom is north of the bathroom.",What is the bathroom south of?,bedroom,"from the context sentences, we know that the office is south of the bathroom (sentence 1), which means the bathroom is north of the office. we also know that the bedroom is north of the bathroom (sentence 2). therefore, if the bedroom is north of the bathroom, and the bathroom is north of the office, it logically follows that the bathroom is south of the bedroom."
+83,4,83,1,"1. The kitchen is south of the garden.
+2. The hallway is north of the garden.",What is the garden north of?,kitchen,"from the context sentences, we know that the kitchen is south of the garden (sentence 1) and the hallway is north of the garden (sentence 2). since the garden is between the kitchen and the hallway, and the kitchen is south of the garden, it means the garden is north of the kitchen."
+84,4,84,1,"1. The kitchen is west of the bathroom.
+2. The office is east of the bathroom.",What is the bathroom east of?,kitchen,"from the context sentences, we know that the kitchen is west of the bathroom (sentence 1) and the office is east of the bathroom (sentence 2). since the kitchen is west of the bathroom, it means the bathroom is east of the kitchen. therefore, the answer is ""kitchen""."
+85,4,85,1,"1. The bedroom is west of the office.
+2. The bathroom is east of the office.",What is west of the office?,bedroom,"according to context sentence 1, ""the bedroom is west of the office"", which directly states that the bedroom is located west of the office. therefore, the answer to the question ""what is west of the office?"" is indeed the bedroom."
+86,4,86,1,"1. The kitchen is south of the garden.
+2. The hallway is south of the kitchen.",What is the garden north of?,kitchen,"from the first context sentence, we know that the kitchen is south of the garden. this implies that the garden is north of the kitchen. therefore, the answer to the question ""what is the garden north of?"" is the kitchen."
+87,4,87,1,"1. The kitchen is east of the bedroom.
+2. The hallway is east of the kitchen.",What is the kitchen west of?,hallway,"from the context sentences, we know that the kitchen is east of the bedroom (sentence 1), and the hallway is east of the kitchen (sentence 2). this means that the hallway is located to the east of the kitchen. therefore, the kitchen must be west of the hallway."
+88,4,88,1,"1. The garden is south of the bathroom.
+2. The hallway is north of the bathroom.",What is the bathroom south of?,hallway,"from the context sentences, we know that the hallway is north of the bathroom (sentence 2). this implies that the bathroom is south of the hallway, since ""north of"" and ""south of"" are opposite directions. therefore, the answer is the hallway."
+89,4,89,1,"1. The office is north of the bathroom.
+2. The office is south of the garden.",What is the bathroom south of?,office,"from the first context sentence, ""the office is north of the bathroom"", we can infer that the bathroom is south of the office. this is because ""north of"" and ""south of"" are opposite directions, so if the office is north of the bathroom, the bathroom must be south of the office."
+90,4,90,1,"1. The hallway is west of the garden.
+2. The garden is west of the bathroom.",What is the garden east of?,hallway,"from the context sentences, we know that the hallway is west of the garden (sentence 1), which means the garden is east of the hallway. therefore, the answer is the hallway."
+91,4,91,1,"1. The garden is east of the hallway.
+2. The bathroom is east of the garden.",What is east of the garden?,bathroom,"from the context sentences, we know that the garden is east of the hallway (sentence 1), and the bathroom is east of the garden (sentence 2). therefore, the bathroom is located east of the garden, making it the correct answer to the question ""what is east of the garden?"""
+92,4,92,1,"1. The kitchen is north of the bathroom.
+2. The bathroom is north of the garden.",What is north of the bathroom?,kitchen,"from the context sentences, we know that ""the kitchen is north of the bathroom"" (sentence 1). this directly states that the kitchen is north of the bathroom, which answers the question ""what is north of the bathroom?"""
+93,4,93,1,"1. The kitchen is west of the office.
+2. The kitchen is east of the bathroom.",What is the bathroom west of?,kitchen,"from the context sentences, we know that the kitchen is west of the office (sentence 1) and the kitchen is east of the bathroom (sentence 2). since the kitchen is east of the bathroom, it means the bathroom is west of the kitchen. therefore, the answer is the kitchen."
+94,4,94,1,"1. The bathroom is east of the kitchen.
+2. The office is west of the kitchen.",What is the kitchen west of?,bathroom,"from the context sentences, we know that the bathroom is east of the kitchen (sentence 1) and the office is west of the kitchen (sentence 2). since the office is west of the kitchen, it means the kitchen is east of the office. similarly, since the bathroom is east of the kitchen, it means the kitchen is west of the bathroom. therefore, the kitchen is west of the bathroom."
+95,4,95,1,"1. The garden is west of the hallway.
+2. The garden is east of the bedroom.",What is west of the hallway?,garden,"from context sentence 1, we know that ""the garden is west of the hallway."" this directly states that the garden is located west of the hallway. therefore, the answer to the question ""what is west of the hallway?"" is indeed the garden."
+96,4,96,1,"1. The bathroom is south of the hallway.
+2. The kitchen is north of the hallway.",What is south of the hallway?,bathroom,"according to context sentence 1, ""the bathroom is south of the hallway"", which directly states that the bathroom is located south of the hallway. therefore, the answer to the question ""what is south of the hallway?"" is indeed the bathroom."
+97,4,97,1,"1. The office is north of the hallway.
+2. The bathroom is south of the hallway.",What is south of the hallway?,bathroom,"according to context sentence 2, ""the bathroom is south of the hallway"", which directly states that the bathroom is located south of the hallway. therefore, the answer to the question ""what is south of the hallway?"" is indeed the bathroom."
+98,4,98,1,"1. The office is east of the kitchen.
+2. The office is west of the hallway.",What is the hallway east of?,office,"from the context sentences, we know that the office is east of the kitchen (sentence 1) and west of the hallway (sentence 2). since the office is west of the hallway, it means the hallway is east of the office."
+99,4,99,1,"1. The office is south of the bathroom.
+2. The office is north of the bedroom.",What is the bedroom south of?,office,"from context sentence 2, we know that the office is north of the bedroom. this implies that the bedroom is south of the office. therefore, the answer to the question ""what is the bedroom south of?"" is indeed the office."
+100,4,100,1,"1. The bedroom is east of the bathroom.
+2. The office is west of the bathroom.",What is east of the bathroom?,bedroom,"according to context sentence 1, ""the bedroom is east of the bathroom"", which directly states that the bedroom is located east of the bathroom. therefore, the answer to the question ""what is east of the bathroom?"" is indeed the bedroom."

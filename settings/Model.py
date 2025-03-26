@@ -19,7 +19,7 @@ class Model:
         max_new_tokens: int,
         temperature: float,
         to_continue: bool,
-        mode: Mode = "eval"
+        mode: Mode = "eval",
     ):
         self.token: str = os.getenv("HUGGINGFACE")
         self.model_name: str = model_name
