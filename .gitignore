@@ -35,21 +35,15 @@ settings/baseline/results/*
 baseline/
 
 # Results
-results/
-outputs/
-
-# Outputs
 outputs/
 
 # Prompts
 settings/baseline/config/prompt_*_shot*
 
-# Testing files
+# Testing scripts
 test*.sh
 test/
 test
-
-fine-tuning/
 
 # Other
 inference/prompts/*reasoning.txt

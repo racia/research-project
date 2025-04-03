@@ -3,7 +3,7 @@ defaults:
   - skyline_config
   - _self_
 
-prompt:
+init_prompt:
   paths:
     - "where/ever/the/prompts/will/be"
   

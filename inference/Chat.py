@@ -72,6 +72,7 @@ class Chat:
         :param role: the producer of the message
         :return: prompt formatted as a dict
         """
+
         if isinstance(part, str):
             return {
                 "role": role,
@@ -108,7 +109,7 @@ class Chat:
         chat_part: list[dict] = None,
         max_new_tokens: int = 100,
         max_length: int = 2048,
-    ) -> torch.LongTensor:
+    ) -> tuple[torch.LongTensor, list[tuple[int, int]]]:
         """
         Converts either all the chat messages or the specified ones into ids ensuring that the input does not exceed
         the max_length. The system prompt is always included in the input, regardless of the chat_part.
@@ -125,12 +126,22 @@ class Chat:
         input_tokens_left = max_length - max_new_tokens
 
         history_ids = []
+        supporting_sent_spans = []
         for message in chat_part if chat_part else self.messages:
             message_ids = [generation_token(tokenizer, message["role"])]
 
-            message_ids.extend(
-                tokenizer.encode(message["original_content"], add_special_tokens=False)
-            )
+            for sentence in message["original_content"].split("\n"):
+                tokenized_sentence = tokenizer.encode(
+                    sentence, add_special_tokens=False
+                )
+                if message["role"] == "user":
+                    start = len(message_ids) + 1
+                    message_ids.extend(tokenized_sentence)
+                    end = len(message_ids)
+                    supporting_sent_spans.append((start, end))
+                else:
+                    message_ids.extend(tokenized_sentence)
+
             if len(history_ids) + len(message_ids) <= input_tokens_left:
                 history_ids += message_ids
             elif message["role"] == "assistant":
@@ -142,4 +153,7 @@ class Chat:
                 raise Exception("Unexpected error for message:", message)
 
         # take all the tokens that could fit
-        return torch.LongTensor([history_ids[-input_tokens_left:]])
+        return (
+            torch.LongTensor([history_ids[-input_tokens_left:]]),
+            supporting_sent_spans,
+        )

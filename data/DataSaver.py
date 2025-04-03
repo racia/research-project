@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 import csv
+import json
 import sys
 from typing import Iterable, TextIO, Union
+
+import numpy as np
 
 from data.utils import *
 from evaluation.Evaluator import MetricEvaluator
 from inference.DataLevels import Features, Split, Task
 from inference.Prompt import Prompt
+from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits
 
 
@@ -170,15 +174,27 @@ class DataSaver:
     @staticmethod
     def save_with_separator(file_path: Path, data: Iterable, sep="\n") -> None:
         """
-        Save the separator between the data.
+        Save with the separator between the data.
 
         :param file_path: the path to the file
         :param data: the data to save
         :param sep: the separator, a newline by default
         :return: None
         """
+
         with open(file_path, "w", encoding="UTF-8") as file:
             file.write(sep.join(map(lambda x: str(x).strip(), data)))
+
+    @staticmethod
+    def save_json(file_path: Path, data: Iterable) -> None:
+        """
+        Save json data
+
+        :param file_path: the path to the file
+        :param data: the data to save
+        :return: None
+        """
+        json.dump(data, open(file_path, "w", encoding="UTF-8"), indent=2)
 
     def save_interpretability(self, task_data: Task, after: bool = True) -> None:
         """
@@ -197,18 +213,21 @@ class DataSaver:
         Path.mkdir(attn_scores_subdir, exist_ok=True, parents=True)
 
         for part in task_data.parts:
-            if after:
+            if after and part.result_after.interpretability:
                 part_result = part.result_after.interpretability.result
-            else:
+            elif not after and part.result_before.interpretability:
                 part_result = part.result_before.interpretability.result
-
-            assert type(part_result) is dict
+            else:
+                warnings.warn("No interpretability results found.")
+                part_result = InterpretabilityResult(
+                    attn_scores=np.array([]), x_tokens=[], y_tokens=[], max_attn_dist={}
+                )
 
             try:
                 file_name = (
                     f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
                 )
-                if part_result["attn_scores"]:
+                if part_result["attn_scores"].size > 1:
                     attn_scores = [
                         "\t".join(map(str, row))
                         for row in part_result["attn_scores"].tolist()
@@ -216,8 +235,15 @@ class DataSaver:
                     self.save_with_separator(
                         file_path=attn_scores_subdir / file_name, data=attn_scores
                     )
+                else:
+                    warnings.warn(
+                        f"No attention scores found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
+                    )
                 for tokens in ("x_tokens", "y_tokens"):
                     if not part_result[tokens]:
+                        warnings.warn(
+                            f"No {tokens} for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
+                        )
                         continue
                     file_name = (
                         f"{tokens}-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
@@ -226,6 +252,17 @@ class DataSaver:
                         file_path=attn_scores_subdir / file_name,
                         data=part_result[tokens],
                     )
+                if part_result["max_attn_dist"]:
+                    file_name = f"max_attn_dist-{part.task_id}-{part.sample_id}-{part.part_id}.json"
+                    self.save_json(
+                        file_path=attn_scores_subdir / file_name,
+                        data=part_result["max_attn_dist"],
+                    )
+                else:
+                    warnings.warn(
+                        f"No max attention distribution found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
+                    )
+
             except AttributeError as e:
                 print(f"AttributeError: {e} in {part_result}")
 
