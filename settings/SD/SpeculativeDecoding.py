@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import copy
 import re
 
 import torch
@@ -705,16 +704,3 @@ class SpeculativeDecoding(Setting):
         ]
 
         return student_tokens
-
-    def create_chat_copy(self, chat: Chat) -> Chat:
-        """
-        Create a copy of the chat.
-
-        :param chat: Chat, the chat that should be copied
-
-        :return: Chat, the copied chat
-        """
-        self.chat = chat
-        sd_chat = copy.deepcopy(chat)
-
-        return sd_chat

@@ -221,7 +221,10 @@ def run_setting(cfg: DictConfig) -> None:
             # so that it was clear which prompt was used last
             print(f"Starting to query with the prompt: {prompt_name}")
             print(f"Prompt path: {prompt_path}", end="\n\n")
-            print(f"Redirecting the system output to: {log_file_name}", flush=True)
+            print(
+                f"Redirecting the system output to: {saver.results_path / log_file_name}",
+                flush=True,
+            )
             log_file = saver.redirect_printing_to_log_file(log_file_name)
 
             # Print the config data to the log file

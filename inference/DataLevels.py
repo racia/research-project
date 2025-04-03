@@ -195,7 +195,7 @@ class SamplePart:
         sample_id: int,
         part_id: int,
         golden_answer: str,
-        silver_reasoning=None,
+        silver_reasoning: str = None,
         raw: dict = None,
         task: str = None,
         wrapper: Wrapper = None,
@@ -239,7 +239,7 @@ class SamplePart:
 
             self.wrapper: Wrapper = wrapper
             self.to_enumerate: Enumerate = to_enumerate
-            self.supporting_sent_inx: list[list[int]] = raw.get("supporting_fact", [])
+            self.supporting_sent_inx: list[int] = raw.get("supporting_fact", [])
 
             self.structured_context, self.structured_question = structure_part(
                 self.raw, self.to_enumerate
@@ -261,7 +261,7 @@ class SamplePart:
             model_answer="",
             model_reasoning="",
             interpretability=InterResult(
-                attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]
+                attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[], max_attn_dist={}
             ),
             after=False,
         )
@@ -270,7 +270,7 @@ class SamplePart:
             model_answer="",
             model_reasoning="",
             interpretability=InterResult(
-                attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[]
+                attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[], max_attn_dist={}
             ),
             after=True,
         )
@@ -333,7 +333,7 @@ class SamplePart:
         model_output: str,
         answer: str,
         reasoning: str,
-        interpretability: InterResult,
+        interpretability: InterResult | None,
         after: bool = True,
     ) -> None:
         """

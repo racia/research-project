@@ -1,13 +1,14 @@
-import torch
 import re
+
+import torch
+
 from inference.Chat import Chat, Source
 from inference.Prompt import Prompt
+from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
-from settings.utils import Enumerate
 from settings.config import Wrapper
-from interpretability.Interpretability import Interpretability
-
+from settings.utils import Enumerate
 
 
 class Feedback(Setting):
@@ -21,22 +22,21 @@ class Feedback(Setting):
     """
 
     def __init__(
-            self,
-            student: Model,
-            teacher: Model,
-            to_enumerate: Enumerate,
-
-            total_tasks: int,
-            total_parts: int,
-            interpretability: Interpretability = None,
-            init_prompt: Prompt = None,
-            feedback_prompt: Prompt = None,
-            refine_prompt: Prompt = None,
-            samples_per_task: int = 5,
-            teacher_max_new_tokens: int = 200,
-            student_max_new_tokens: int = 200,
-            multi_system: bool = True,
-            wrapper: Wrapper = None,
+        self,
+        student: Model,
+        teacher: Model,
+        to_enumerate: Enumerate,
+        total_tasks: int,
+        total_parts: int,
+        interpretability: Interpretability = None,
+        init_prompt: Prompt = None,
+        feedback_prompt: Prompt = None,
+        refine_prompt: Prompt = None,
+        samples_per_task: int = 5,
+        teacher_max_new_tokens: int = 200,
+        student_max_new_tokens: int = 200,
+        multi_system: bool = True,
+        wrapper: Wrapper = None,
     ):
         """
         Create a feedback setting.
@@ -84,7 +84,6 @@ class Feedback(Setting):
         self.refine_prompt = refine_prompt
 
         self.initial_student_output = None
-        self.chat = None
 
     def prepare_prompt(self, chat: Chat, resume_gen=False, model_role="student") -> str:
         """
@@ -121,7 +120,7 @@ class Feedback(Setting):
             return False
 
         # Clean the feedback for better pattern matching
-        cleaned_feedback = re.sub(r'[*_-]', '', teacher_feedback.lower())
+        cleaned_feedback = re.sub(r"[*_-]", "", teacher_feedback.lower())
 
         # Check for malformed feedback patterns
         invalid_patterns = ["_____", "-----"]
@@ -130,30 +129,58 @@ class Feedback(Setting):
             return False
 
         # Look for explicit 'correct' anywhere in the feedback
-        if re.search(r'\bcorrect\b(?!.*\bincorrect\b)', cleaned_feedback):
+        if re.search(r"\bcorrect\b(?!.*\bincorrect\b)", cleaned_feedback):
             # Make sure "incorrect" doesn't appear after "correct"
             return True
 
         # Look for explicit 'incorrect'
-        if 'incorrect' in cleaned_feedback:
+        if "incorrect" in cleaned_feedback:
             return False
 
         # More nuanced positive/negative detection
-        positive_indicators = ["good", "well done", "right", "that's right", "that is right",
-                               "correct answer", "well reasoned", "perfect"]
+        positive_indicators = [
+            "good",
+            "well done",
+            "right",
+            "that's right",
+            "that is right",
+            "correct answer",
+            "well reasoned",
+            "perfect",
+        ]
 
-        negative_indicators = ["wrong", "error", "mistake", "check",
-                               "look again", "review", "reconsider", "verify",
-                               "double-check", "hint", "not quite"]
+        negative_indicators = [
+            "wrong",
+            "error",
+            "mistake",
+            "check",
+            "look again",
+            "review",
+            "reconsider",
+            "verify",
+            "double-check",
+            "hint",
+            "not quite",
+        ]
 
         # Calculate weighted score (with more weight on exact matches)
-        positive_score = sum(2 if f" {indicator} " in f" {cleaned_feedback} " else
-                             1 if indicator in cleaned_feedback else 0
-                             for indicator in positive_indicators)
+        positive_score = sum(
+            (
+                2
+                if f" {indicator} " in f" {cleaned_feedback} "
+                else 1 if indicator in cleaned_feedback else 0
+            )
+            for indicator in positive_indicators
+        )
 
-        negative_score = sum(2 if f" {indicator} " in f" {cleaned_feedback} " else
-                             1 if indicator in cleaned_feedback else 0
-                             for indicator in negative_indicators)
+        negative_score = sum(
+            (
+                2
+                if f" {indicator} " in f" {cleaned_feedback} "
+                else 1 if indicator in cleaned_feedback else 0
+            )
+            for indicator in negative_indicators
+        )
 
         if positive_score > negative_score:
             return True
@@ -166,7 +193,6 @@ class Feedback(Setting):
 
         # Default behavior - when unsure
         return False
-
 
     def generate_student(self, input_prompt: str, chat: Chat) -> str:
         """
@@ -181,7 +207,7 @@ class Feedback(Setting):
         :return: The output of the student model
         """
         formulated_resume_prompt = self.refine_prompt.formulate_refine_prompt(
-            part=self.student.curr_sample,
+            part=self.student.curr_sample_part,
             to_enumerate=self.to_enumerate,
             cot_to_continue=input_prompt,
         )
@@ -221,24 +247,30 @@ class Feedback(Setting):
         """
         self.teacher.curr_sample_part = self.model.curr_sample_part
 
-
         # Format the feedback prompt
         formatted_feedback_prompt = self.feedback_prompt.format_feedback_message(
             part=self.teacher.curr_sample_part,
             to_enumerate=self.to_enumerate,
-            cot_to_evaluate=input_prompt
+            cot_to_evaluate=input_prompt,
         )
         if self.teacher.curr_sample_part is None:
-            raise ValueError("ERROR: teacher.curr_sample_part is None. Ensure it is properly assigned.")
+            raise ValueError(
+                "ERROR: teacher.curr_sample_part is None. Ensure it is properly assigned."
+            )
 
         if not hasattr(self.teacher.curr_sample_part, "raw"):
             raise ValueError(
-                f"ERROR: teacher.curr_sample_part does not have attribute 'raw'. Content: {self.teacher.curr_sample_part}")
+                f"ERROR: teacher.curr_sample_part does not have attribute 'raw'. Content: {self.teacher.curr_sample_part}"
+            )
 
         # Add to chat
-        chat.add_message(part=formatted_feedback_prompt, source=Source.user, model_role="teacher")
+        chat.add_message(
+            part=formatted_feedback_prompt, source=Source.user, model_role="teacher"
+        )
 
-        formatted_prompt = self.prepare_prompt(chat=chat, resume_gen=False, model_role="teacher")
+        formatted_prompt = self.prepare_prompt(
+            chat=chat, resume_gen=False, model_role="teacher"
+        )
 
         # Get teacher's response
         with torch.no_grad():
@@ -271,7 +303,7 @@ class Feedback(Setting):
             part=self.student.curr_sample_part,
             to_enumerate=self.to_enumerate,
             cot_to_continue=input_prompt,
-            teacher_feedback=teacher_feedback
+            teacher_feedback=teacher_feedback,
         )
 
         chat.add_message(
@@ -336,15 +368,15 @@ class Feedback(Setting):
         :return: The refined model output as a string
         """
         self.initial_student_output = decoded_output
-
-
-        #self.student.curr_sample_part = self.model.curr_sample_part
-        self.student.curr_sample_part =self.student.curr_sample_part
-
-        self.set_teacher_system_prompt(chat=chat)
         chat = self.create_chat_copy(chat=chat)
 
-        print(" ------------- Starting Feedback ------------- ", end="\n\n\n", flush=True)
+        self.teacher.curr_sample_part = self.student.curr_sample_part
+
+        self.set_teacher_system_prompt(chat=chat)
+
+        print(
+            " ------------- Starting Feedback ------------- ", end="\n\n\n", flush=True
+        )
         print(f" ---- Feedback iteration 1 ---- ", end="\n\n\n", flush=True)
 
         # Work with the complete student output

@@ -9,7 +9,11 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from evaluation.Scenery import nlp
 from inference.Chat import Chat
 from inference.DataLevels import SamplePart
-from interpretability.utils import InterpretabilityResult
+from interpretability.utils import (
+    InterpretabilityResult,
+    get_supp_tok_idx,
+    get_attention_distrib,
+)
 from plots.Plotter import Plotter
 from settings.Model import Model
 
@@ -51,43 +55,17 @@ class Interpretability:
         stop_words_ids = []
         for output_row in attn_scores:
             for task_idx in range(len(output_row)):
-                token = self.tokenizer.batch_decode(chat_ids)[task_idx].strip()
+                token = self.tokenizer.batch_decode(chat_ids)[task_idx].strip().lower()
                 for token_ in nlp(token):
                     if token_.lemma_ not in self.scenery_words:
                         stop_words_ids.append(task_idx)
         return stop_words_ids
 
-    def get_sentence_span_idx(
-        self, chat_ids: torch.LongTensor
-    ) -> list[tuple[int, int]]:
-        """
-        Get tuple of start, stop indices of period from the current task chat ids.
-
-        :param chat_ids: current sample part ids (task and model's output)
-        :return: list of indices of periods in the current task
-        """
-        period_token_id = self.tokenizer.encode(".", add_special_tokens=False)[0]
-        period_token_indices = [
-            i for i, tok in enumerate(chat_ids) if tok == period_token_id
-        ]
-        (
-            period_token_indices.pop(-1)
-            if period_token_indices[-1] == chat_ids[-1]
-            else None
-        )
-        # Create start, stop tuples of indices
-        period_token_indices = [
-            (lambda x: (start, stop))((start, stop))
-            for start, stop in zip([0] + period_token_indices, period_token_indices)
-        ]
-
-        return period_token_indices[1:]
-
     @staticmethod
     def get_attention_scores(
         output_tensor: torch.LongTensor,
         model_output_len: int,
-        period_indices: list = None,
+        context_sent_spans: list[tuple] = None,
     ) -> np.ndarray:
         """
         Obtains the attention scores from a tensor of attention weights of the current chat.
@@ -99,11 +77,9 @@ class Interpretability:
 
         :param output_tensor: model output tensor
         :param model_output_len: model output length
-        :param period_indices: indices of periods in the current task
+        :param context_sent_spans: list of spans of context sentences
 
         :return: 2D normalized attention scores averaged over layers and heads for the tokens of the current task
-        #TODO Add check for empty model output
-        #TODO Add supporting token markers
         """
         attn_tensor = torch.stack(output_tensor["attentions"], dim=0).squeeze(1)
         # Mean over model layers
@@ -118,14 +94,14 @@ class Interpretability:
         # Normalize the attention scores by the sum of all token attention scores
         attn_scores = attn_scores / attn_scores.sum(axis=-1, keepdims=True)
 
-        if period_indices:
+        if context_sent_spans:
             # Additionally take mean of attention scores over each task sentence.
             # attn_scores = np.array([attn_scores.T[start:stop] for start, stop in period_indices]).squeeze().mean(
             # axis=-1)
             attn_scores = np.array(
                 [
                     attn_scores[:, start:stop].mean(axis=-1)
-                    for start, stop in period_indices
+                    for start, stop in context_sent_spans
                 ]
             ).squeeze()
             # Reshape to match expected output format
@@ -133,22 +109,24 @@ class Interpretability:
             # Normalize the attention scores by the sum of all token attention scores
             attn_scores_T = attn_scores_T / attn_scores_T.sum(axis=0, keepdims=True)
 
-            assert attn_scores_T.shape == (attn_scores_T.shape[0], len(period_indices))
+            assert attn_scores_T.shape == (
+                attn_scores_T.shape[0],
+                len(context_sent_spans),
+            )
             return attn_scores_T
 
         return attn_scores
 
-    def filter_attention_scores(
+    def get_tok_indices(
         self, attention_scores: np.ndarray, chat_ids: np.ndarray
-    ) -> tuple[np.ndarray, list]:
+    ) -> list:
         """
-        Filter context and question attention scores for scenery words
-        by their indices in each row of the output attention scores.
-        Removes message role tokens.
+        Provide indices for scenery words of context and question in each row of the output attention scores.
+        Additionally also for message role tokens.
 
         :param attention_scores: The attention scores of the current chat
         :param chat_ids: current sample part ids (task and model's output)
-        :return: filtered attention scores with the according attention_indices
+        :return: according attention_indices
         """
         stop_words_indices = self.get_stop_word_idxs(attention_scores, chat_ids)
         attention_indices = list(
@@ -156,7 +134,8 @@ class Interpretability:
                 lambda x: x not in stop_words_indices, range(attention_scores.shape[1])
             )
         )
-        return attention_scores[:, attention_indices], attention_indices
+        return attention_indices
+
 
     def get_attention(
         self, part: SamplePart, chat: Chat, after: bool = True
@@ -166,30 +145,28 @@ class Interpretability:
         2. Gets the relevant attention scores, filters them.
         3. Constructs x and y tokens and optionally creates heatmaps.
 
-        (The following code is an adjusted version of the original implementation from Li et. al 2024
-         (Link to paper: https://arxiv.org/abs/2402.18344))
+        (The following code is an adjusted version of the original implementation from Li et. al 2024 (Link to paper: https://arxiv.org/abs/2402.18344))
 
         :param part: part of the sample with the output before the setting is applied
         :param chat: Chat history as list of messages
         :param after: if to get attention scores after the setting was applied to the model output or before
         :return: attention scores, tokenized x and y tokens
+
         """
-        if (after and not part.result_after.model_answer) or not (
-            after or part.result_before.model_answer
-        ):
-            warnings.warn("DEBUG: Interpretability called on empty model output")
-            return InterpretabilityResult(np.array(0), [], [])
-
         chat_messages = chat.messages["student"] if chat.multi_system else chat.messages
+        if not chat_messages[-1]["content"]:
+            warnings.warn("DEBUG: Interpretability called on empty model output")
+            print("DEBUG chat_messages", chat_messages, sep="\n")
+            return InterpretabilityResult(np.array(0), [], [], {})
 
-        model_output_ids = chat.convert_into_ids(
+        model_output_ids, _ = chat.convert_into_ids(
             chat_part=[chat_messages[-1]],
             max_new_tokens=self.max_new_tokens,
             tokenizer=self.tokenizer,
         )
         model_output_len = len(model_output_ids[0])
 
-        chat_ids = chat.convert_into_ids(
+        chat_ids, context_sent_spans = chat.convert_into_ids(
             chat_part=chat_messages[1:],
             max_new_tokens=self.max_new_tokens,
             tokenizer=self.tokenizer,
@@ -206,31 +183,50 @@ class Interpretability:
         chat_ids = chat_ids[0, :].detach().cpu().numpy()
 
         # Check task length
-        period_indices = self.get_sentence_span_idx(chat_ids)
-        overflow = True if len(period_indices) >= 10 else False
+        overflow = True if len(context_sent_spans) >= 10 else False
 
         # Obtain attention scores from model output
         attention_scores = self.get_attention_scores(
             output_tensor=output_tensor,
             model_output_len=model_output_len,
-            period_indices=period_indices if overflow else None,
+            context_sent_spans=context_sent_spans if overflow else None,
+        )
+
+        # Get filtering indices
+        supp_tok_idx = get_supp_tok_idx(context_sent_spans, part.supporting_sent_inx)
+
+        max_attn_dist = get_attention_distrib(
+            attn_scores=attention_scores,
+            supp_tok_idx=supp_tok_idx,
+            supp_sent_idx=part.supporting_sent_inx if overflow else None,
         )
 
         if not overflow:
-            attention_scores, attention_indices = self.filter_attention_scores(
-                attention_scores, chat_ids
-            )
+            attention_indices = self.get_tok_indices(attention_scores, chat_ids)
+            # Filter attention scores
+            attention_scores = attention_scores[:, attention_indices]
+
             # Decode the task tokens
-            x_tokens = self.tokenizer.batch_decode(chat_ids[attention_indices])
+            x_tokens_ = self.tokenizer.batch_decode(chat_ids)
+            x_tokens = []
+            for i in range(len(chat_ids)):
+                if i in supp_tok_idx:
+                    x_tokens.append(f"-- {x_tokens_[i]} --")
+                else:
+                    x_tokens.append(f"{x_tokens_[i]}")
+
+            # Filter tokens
+            x_tokens = [tok for i, tok in enumerate(x_tokens) if i in attention_indices]
+
         else:
             x_tokens = []
-            for inx in range(1, len(period_indices) + 1):
+            for inx in range(1, len(context_sent_spans) + 1):
                 if inx in part.supporting_sent_inx:
                     x_tokens.append(f"* {inx} *")
                 else:
                     x_tokens.append(f"{inx}")
 
-        # Decode the model output tokens without "assistant" token
+        # Decode the model output tokens without "user" token
         chat_ids = chat_ids[1:]
         y_tokens = self.tokenizer.batch_decode(chat_ids[-model_output_len + 1 :])
 
@@ -248,4 +244,6 @@ class Interpretability:
 
         torch.cuda.empty_cache()
 
-        return InterpretabilityResult(attention_scores, x_tokens, y_tokens)
+        return InterpretabilityResult(
+            attention_scores, x_tokens, y_tokens, max_attn_dist
+        )

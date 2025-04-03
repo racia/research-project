@@ -118,7 +118,9 @@ class Statistics:
                 true_in_predicted += 0.75
 
             # for partial answer of questions with two supporting facts
-            elif prediction in true or prediction_set.intersection(true_set):
+            elif prediction and (
+                prediction in true or prediction_set.intersection(true_set)
+            ):
                 true_in_predicted += 0.5
 
         return true_in_predicted / len(true_values) if true_in_predicted else 0.0

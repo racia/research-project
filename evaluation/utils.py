@@ -20,7 +20,6 @@ def normalize_token(token: str) -> str:
     :param token: the token to clean
     :return: the normalized token
     """
-
     return token.strip("-,.:;!?").lower()
 
 
@@ -84,6 +83,17 @@ def normalize_numbers(number_s: int | str | list[int | str]) -> str | list[str]:
         "7": "seven",
         "8": "eight",
         "9": "nine",
+        "10": "ten",
+        "11": "eleven",
+        "12": "twelve",
+        "13": "thirteen",
+        "14": "fourteen",
+        "15": "fifteen",
+        "16": "sixteen",
+        "17": "seventeen",
+        "18": "eighteen",
+        "19": "nineteen",
+        "20": "twenty",
     }
     if type(number_s) == int:
         return normalize[str(number_s)]
@@ -92,9 +102,15 @@ def normalize_numbers(number_s: int | str | list[int | str]) -> str | list[str]:
             return number_s
         if number_s == "zero":
             return "none"
-        return normalize[number_s]
+        if number_s in normalize:
+            return normalize[number_s]
+        else:
+            return number_s
     elif number_s and type(number_s) == list:
-        return [normalize_numbers(number) for number in number_s]
+        return [
+            normalize_numbers(number) if number_s in normalize else number
+            for number in number_s
+        ]
     else:
         raise TypeError(
             f"Expected int, str or list of int or str, got {type(number_s)}"

@@ -17,7 +17,7 @@ class Baseline(Setting):
     def __init__(
         self,
         model: Model,
-        to_enumerate: Enumerate,
+        to_enumerate: dict[Enumerate, bool],
         total_tasks: int,
         total_parts: int,
         interpretability: Interpretability,
@@ -44,6 +44,8 @@ class Baseline(Setting):
             to_enumerate=to_enumerate,
             wrapper=wrapper,
         )
+        self.question_id: int = 0
+        self.interpretability: Interpretability = interpretability
         self.question_id: int = 0
         self.interpretability: Interpretability = interpretability
 
