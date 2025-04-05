@@ -22,6 +22,7 @@ from settings.Model import Model
 from settings.SD.SpeculativeDecoding import SpeculativeDecoding
 from settings.baseline.Baseline import Baseline
 from settings.skyline.Skyline import Skyline
+from settings.feedback.Feedback import Feedback
 from settings.utils import set_device
 
 
@@ -144,8 +145,31 @@ def run_setting(cfg: DictConfig) -> None:
             wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
             interpretability=interpretability,
         )
-    elif cfg.setting.name == "Feedback":
-        # TODO: add feedback
+    elif cfg.setting.name in ["Feedback", "feedback"]:
+        multi_system = True
+        teacher = Model(
+            cfg.teacher.name,
+            cfg.teacher.max_new_tokens,
+            cfg.teacher.temperature,
+            cfg.teacher.to_continue,
+            cfg.teacher.mode,
+        )
+
+        setting = Feedback(
+            student=model,
+            teacher=teacher,
+            to_enumerate=cfg.data.to_enumerate,
+            total_tasks=loader.number_of_tasks,
+            total_parts=loader.number_of_parts,
+            init_prompt=None,
+            feedback_prompt=None,
+            refine_prompt=None,
+            teacher_max_new_tokens=cfg.teacher.max_new_tokens,
+            student_max_new_tokens=cfg.student.max_new_tokens,
+            wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
+            samples_per_task=cfg.data.samples_per_task,
+            interpretability=interpretability,
+        )
         pass
     elif cfg.setting.name in ["SD", "SpeculativeDecoding"]:
         multi_system = True
@@ -198,7 +222,10 @@ def run_setting(cfg: DictConfig) -> None:
             # so that it was clear which prompt was used last
             print(f"Starting to query with the prompt: {prompt_name}")
             print(f"Prompt path: {prompt_path}", end="\n\n")
-            print(f"Redirecting the system output to: {log_file_name}", flush=True)
+            print(
+                f"Redirecting the system output to: {saver.results_path / log_file_name}",
+                flush=True,
+            )
             log_file = saver.redirect_printing_to_log_file(log_file_name)
 
             # Print the config data to the log file
@@ -238,6 +265,26 @@ def run_setting(cfg: DictConfig) -> None:
             print(setting.resume_prompt.text)
             print("______________________________", end="\n\n", flush=True)
 
+        elif cfg.setting.name in ["Feedback", "feedback"]:
+            setting.feedback_prompt = Prompt(
+                prompt_path=cfg.feedback_prompt.paths[0],
+                wrapper=cfg.feedback_prompt.wrapper,
+            )
+            setting.refine_prompt = Prompt(
+                prompt_path=cfg.refine_prompt.paths[0],
+                wrapper=cfg.refine_prompt.wrapper,
+            )
+
+            print("- THE FEEDBACK PROMPT -")
+            print("______________________________")
+            print(setting.feedback_prompt.text)
+            print("______________________________", end="\n\n")
+
+            print("- THE REFINE PROMPT -")
+            print("______________________________")
+            print(setting.refine_prompt.text)
+            print("______________________________", end="\n\n", flush=True)
+
         setting.question_id = 0
 
         for split_name, tasks in data_in_splits.items():
@@ -271,6 +318,7 @@ def run_setting(cfg: DictConfig) -> None:
                     results_file_name=results_file_names[split.name],
                     metrics_file_name=metrics_file_names[split.name],
                     multi_system=multi_system,
+                    interpretability_enabled=cfg.setting.interpretability,
                 )
 
                 print("______________________________", end="\n\n")

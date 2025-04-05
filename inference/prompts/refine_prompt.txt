@@ -1,0 +1,23 @@
+You are a helpful, logical, and highly attentive assistant.
+You will be given a feedback based on your previous answer.
+You need to refine the given answer based on the teacher's feedback.
+
+Instructions:
+1. Use the teacher's feedback as a hint to improve your answer.
+2. Keep the reasoning the same unless it directly repairs to the mistake.(reworded)
+3. Only modify the necessary part of the answer, ensuring it remains concise and logically correct.
+4. Do not repeat the original answer and provide a corrected version based on the hint.
+
+
+Given Information:
+Context:
+{context}
+
+Original Answer:
+{student_answer}
+
+Teacher's Hint:
+{teacher_feedback}
+
+Corrected Answer:
+[Provide your improved answer here]

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import json
 import os
 from collections import defaultdict
 from pathlib import Path
@@ -267,8 +268,15 @@ class DataLoader:
         with open(path / y_tokens_file, "r", encoding="UTF-8") as f:
             y_tokens = [token.strip() for token in f.read().splitlines()]
 
+        max_attn_file = f"max_attn-{task_id}-{sample_id}-{part_id}.txt"
+        with open(path / max_attn_file, "r", encoding="UTF-8") as f:
+            max_attn_dist = json.load(f)
+
         interpretability_result = InterpretabilityResult(
-            attn_scores=np.array(attn_scores), x_tokens=x_tokens, y_tokens=y_tokens
+            attn_scores=np.array(attn_scores),
+            x_tokens=x_tokens,
+            y_tokens=y_tokens,
+            max_attn_dist=max_attn_dist,
         )
         return interpretability_result
 

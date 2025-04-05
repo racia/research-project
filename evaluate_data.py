@@ -14,7 +14,7 @@ from pathlib import Path
 
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
-from inference.DataLevels import Task, Sample, Split, SamplePart, Results
+from inference.DataLevels import Results, Sample, SamplePart, Split, Task
 from plots.Plotter import Plotter
 
 
@@ -265,7 +265,8 @@ def run(data_path: str, save_path: str) -> None:
             if inx < len(data) - 1 and int(data[inx + 1]["task_id"]) - part.task_id > 1:
                 raise ValueError(
                     f"Missing data for task {part.task_id + 1}.\n"
-                    f"Please run the running_script.py for this task and add the results to the current data with join_data.py"
+                    f"Please run the running_script.py for this task and add the results to the current data with "
+                    f"join_data.py"
                 )
             task.set_results()
 
@@ -305,7 +306,6 @@ def run(data_path: str, save_path: str) -> None:
     )
 
     for version, evaluator, feature in zip(versions, evaluators, features):
-
         evaluator.calculate_std()
         evaluator.print_accuracies(id_=data_split)
 
@@ -333,7 +333,8 @@ def run(data_path: str, save_path: str) -> None:
 
 
 if __name__ == "__main__":
-    # TODO: consider running standardize_data.py before running this script if there are not part_ids or silver_reasoning
+    # TODO: consider running standardize_data.py before running this script if there are not part_ids or
+    #  silver_reasoning
     data_path = "test/test_join/joined_data3/valid_prompt_init_prompt_da_reasoning_results_upd.csv"
     # TODO: provide a path to directory to save the standardized data
     save_directory = "test/test_join/joined_data3/"

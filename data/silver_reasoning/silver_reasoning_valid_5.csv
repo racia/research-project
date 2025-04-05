@@ -1,0 +1,469 @@
+id_,task_id,sample_id,part_id,context,question,golden_answer,silver_reasoning
+1,5,1,1,"1. Mary travelled to the garden.
+2. Mary journeyed to the kitchen.
+3. Bill went back to the office.
+4. Bill journeyed to the hallway.
+5. Jeff went back to the bedroom.
+6. Fred moved to the hallway.
+7. Bill moved to the bathroom.
+8. Jeff went back to the garden.
+9. Jeff went back to the kitchen.
+10. Fred went back to the garden.
+11. Mary got the football there.
+12. Mary handed the football to Jeff.",What did Mary give to Jeff?,football,"from sentence 11, we know that mary got the football in the garden. then, in sentence 12, it is stated that mary handed the football to jeff. therefore, it can be logically concluded that mary gave the football to jeff."
+2,5,1,2,"14. Bill went back to the hallway.
+15. Jeff went back to the bedroom.",What did Mary give to Jeff?,football,"the provided context lines (14 and 15) do not mention mary or the football. however, the answer ""football"" suggests that the correct reasoning can be found in previous parts of the conversation history. upon inspecting the previous parts, we find that sentences 11 and 12 are relevant, where mary got the football and handed it to jeff. therefore, we can conclude that mary gave the football to jeff."
+3,5,1,3,"17. Fred moved to the bathroom.
+18. Mary picked up the milk there.",What did Mary give to Jeff?,football,"the provided context lines (17 and 18) do not mention jeff or the football. however, the answer ""football"" suggests that the correct reasoning can be found in previous parts of the conversation history. upon inspecting the previous parts, we find that sentences 11 and 12 are relevant, where mary got the football and handed it to jeff. therefore, we can conclude that mary gave the football to jeff. the current context lines (17 and 18) are not relevant"
+4,5,1,4,"20. Fred travelled to the kitchen.
+21. Mary handed the milk to Fred.",Who gave the milk to Fred?,mary,"according to sentence 21, ""mary handed the milk to fred"", which directly states that mary gave the milk to fred. this sentence explicitly answers the question, and no additional inference or inspection of previous parts is required."
+5,5,1,5,"23. Fred moved to the hallway.
+24. Jeff went to the office.",Who did Mary give the milk to?,fred,"the provided context lines (23 and 24) do not mention mary giving milk to anyone. however, the answer ""fred"" suggests that the correct reasoning can be found in previous parts of the conversation history. upon inspecting the previous parts, we find that sentence 21 is relevant, where ""mary handed the milk to fred"". therefore, we can conclude that mary gave the milk to fred."
+6,5,2,1,"1. Jeff went to the bedroom.
+2. Mary journeyed to the kitchen.
+3. Mary journeyed to the bathroom.
+4. Bill moved to the kitchen.
+5. Mary moved to the garden.
+6. Bill went back to the office.
+7. Bill went to the kitchen.
+8. Mary went back to the bathroom.
+9. Mary travelled to the kitchen.
+10. Jeff moved to the office.
+11. Fred went to the hallway.
+12. Fred went back to the garden.
+13. Mary travelled to the office.
+14. Jeff took the apple there.
+15. Jeff discarded the apple.
+16. Mary went to the garden.
+17. Bill went back to the bathroom.
+18. Mary went to the office.
+19. Bill grabbed the milk there.
+20. Mary picked up the apple there.
+21. Jeff moved to the garden.
+22. Fred moved to the office.
+23. Mary dropped the apple.
+24. Fred took the football there.
+25. Fred handed the football to Mary.
+26. Fred picked up the apple there.",Who received the football?,mary,"from sentence 25, ""fred handed the football to mary"", we can directly infer that mary received the football."
+7,5,2,2,"28. Mary travelled to the garden.
+29. Jeff journeyed to the hallway.",What did Fred give to Mary?,football,"from the provided context lines, sentences 28 and 29, there is no direct information about what fred gave to mary. however, we can look at the previous context lines (sentences 1-27) to find the relevant information. in sentence 25, ""fred handed the football to mary"", we can see that fred gave the football to mary."
+8,5,2,3,"31. Bill travelled to the bedroom.
+32. Mary put down the football.
+33. Fred went back to the garden.
+34. Fred handed the apple to Mary.",Who received the apple?,mary,"from sentence 34, ""fred handed the apple to mary"", we can directly infer that mary received the apple."
+9,5,2,4,"36. Bill left the milk.
+37. Mary handed the apple to Fred.",Who did Mary give the apple to?,fred,"from sentence 37, ""mary handed the apple to fred"", we can directly infer that mary gave the apple to fred."
+10,5,2,5,"39. Fred gave the apple to Mary.
+40. Fred travelled to the bathroom.",What did Fred give to Mary?,apple,"from sentence 39, ""fred gave the apple to mary"", we can directly infer that fred gave the apple to mary."
+11,5,3,1,"1. Bill grabbed the apple there.
+2. Bill got the football there.
+3. Jeff journeyed to the bathroom.
+4. Bill handed the apple to Jeff.",What did Bill give to Jeff?,apple,"from context sentence 4, ""bill handed the apple to jeff"", it is directly stated that bill gave an apple to jeff. this sentence explicitly mentions the object being handed (the apple) and the recipient (jeff), which answers the question of what bill gave to jeff."
+12,5,3,2,"6. Jeff handed the apple to Bill.
+7. Bill handed the apple to Jeff.",What did Bill give to Jeff?,apple,"from context sentence 7, ""bill handed the apple to jeff"", it is directly stated that bill gave an apple to jeff. this sentence explicitly mentions the object being handed (the apple) and the recipient (jeff), which answers the question of what bill gave to jeff."
+13,5,3,3,"9. Jeff handed the apple to Bill.
+10. Bill handed the apple to Jeff.",What did Bill give to Jeff?,apple,"from context sentence 10, ""bill handed the apple to jeff"", it is directly stated that bill gave an apple to jeff. this sentence explicitly mentions the object being handed (the apple) and the recipient (jeff), which answers the question of what bill gave to jeff."
+14,5,3,4,"12. Jeff put down the apple.
+13. Bill passed the football to Jeff.",What did Bill give to Jeff?,apple,"this answer seems incorrect based on the provided context. according to context sentence 13, ""bill passed the football to jeff"", it is stated that bill gave a football to jeff, not an apple. there is no mention of bill giving an apple to jeff in the provided context."
+15,5,3,5,"15. Jeff passed the football to Bill.
+16. Mary got the milk there.",What did Bill give to Jeff?,apple,"there is no information in the provided context that suggests bill gave an apple to jeff. the context sentences 15 and 16 do not mention bill giving anything to jeff, let alone an apple. the answer ""apple"" seems to be incorrect based on the provided context."
+16,5,4,1,"1. Mary took the football there.
+2. Bill went to the garden.
+3. Fred journeyed to the office.
+4. Mary put down the football there.
+5. Jeff journeyed to the kitchen.
+6. Mary took the football there.
+7. Mary passed the football to Jeff.
+8. Jeff travelled to the hallway.",What did Mary give to Jeff?,football,"from sentence 7, ""mary passed the football to jeff"", we can directly infer that mary gave the football to jeff. this sentence explicitly states the action of mary giving the football to jeff, which answers the question."
+17,5,4,2,"10. Jeff journeyed to the garden.
+11. Bill journeyed to the office.",Who received the football?,jeff,"from the provided context lines (10 and 11), we cannot directly find the answer to the question ""who received the football?"". however, we can look back at the previous context lines (1-8) to find the relevant information. in sentence 7, ""mary passed the football to jeff"", we can see that jeff received the football from mary. therefore, the answer to the question is jeff."
+18,5,4,3,"13. Fred went to the hallway.
+14. Fred grabbed the apple there.
+15. Mary journeyed to the bedroom.
+16. Mary went to the office.
+17. Mary moved to the hallway.
+18. Mary journeyed to the bathroom.
+19. Jeff discarded the football.
+20. Bill went to the garden.
+21. Fred journeyed to the garden.
+22. Jeff grabbed the football there.
+23. Fred left the apple.
+24. Jeff discarded the football.
+25. Mary got the milk there.
+26. Jeff got the apple there.
+27. Bill picked up the football there.
+28. Mary left the milk.
+29. Jeff journeyed to the kitchen.
+30. Fred moved to the bedroom.
+31. Bill travelled to the kitchen.
+32. Jeff discarded the apple.
+33. Bill passed the football to Jeff.
+34. Mary went to the garden.",Who received the football?,jeff,"from the provided context lines, we can see that the question ""who received the football?"" is asking about the most recent event involving the football. in sentence 33, ""bill passed the football to jeff"", we can see that jeff received the football from bill. therefore, the answer to the question is jeff."
+19,5,4,4,"36. Mary travelled to the office.
+37. Jeff passed the football to Bill.",What did Jeff give to Bill?,football,"from sentence 37, ""jeff passed the football to bill"", we can directly infer that jeff gave the football to bill. this sentence explicitly states the action of jeff giving the football to bill, which answers the question."
+20,5,4,5,"39. Bill picked up the apple there.
+40. Bill handed the apple to Jeff.",Who received the football?,bill,"the provided context lines (39 and 40) do not mention the football, but rather the apple. however, the question asks about the football. to find the answer, we need to look back at the previous context lines. in sentence 37, ""jeff passed the football to bill"", we can see that bill received the football from jeff. therefore, the answer to the question is indeed bill."
+21,5,5,1,"1. Jeff moved to the bathroom.
+2. Jeff moved to the garden.
+3. Fred journeyed to the bathroom.
+4. Jeff travelled to the hallway.
+5. Fred moved to the office.
+6. Jeff travelled to the bedroom.
+7. Jeff picked up the football there.
+8. Mary journeyed to the office.
+9. Fred moved to the kitchen.
+10. Fred travelled to the hallway.
+11. Jeff took the milk there.
+12. Fred travelled to the kitchen.
+13. Mary journeyed to the bathroom.
+14. Mary picked up the apple there.
+15. Jeff travelled to the kitchen.
+16. Jeff handed the football to Fred.",What did Jeff give to Fred?,football,"from the context sentences, we can track jeff's movements and actions. in sentence 7, jeff picked up the football in the bedroom. then, jeff travelled to the kitchen (sentence 15). finally, in sentence 16, jeff handed the football to fred. therefore, jeff gave the football to fred."
+22,5,5,2,"18. Mary dropped the apple.
+19. Fred handed the football to Bill.",What did Fred give to Bill?,football,"from the context sentences, we can see that fred handed the football to bill in sentence 19. this sentence directly states that fred gave the football to bill. there is no other information provided that would contradict or modify this action, so we can conclude that fred gave the football to bill."
+23,5,5,3,"21. Fred travelled to the hallway.
+22. Bill handed the football to Jeff.",Who gave the football?,bill,"from the context sentences, we can see that bill handed the football to jeff in sentence 22. this sentence directly states that bill gave the football to jeff, which implies that bill is the one who gave the football. there is no other information provided that would contradict or modify this action, so we can conclude that bill gave the football."
+24,5,5,4,"24. Mary went back to the kitchen.
+25. Jeff handed the football to Mary.",Who received the football?,mary,"from the context sentences, we can see that jeff handed the football to mary in sentence 25. this sentence directly states that mary received the football from jeff. there is no other information provided that would contradict or modify this action, so we can conclude that mary received the football."
+25,5,5,5,"27. Mary passed the football to Bill.
+28. Bill passed the football to Mary.",What did Bill give to Mary?,football,"from the context sentences, we can see that bill passed the football to mary in sentence 28. this sentence directly states that bill gave the football to mary. there is no other information provided that would contradict or modify this action, so we can conclude that bill gave the football to mary."
+26,5,6,1,"1. Mary went to the bathroom.
+2. Jeff took the apple there.
+3. Bill journeyed to the office.
+4. Jeff journeyed to the office.
+5. Jeff passed the apple to Bill.
+6. Bill handed the apple to Jeff.",Who received the apple?,jeff,"from the context sentences, we can track the movement of the apple. initially, jeff took the apple (sentence 2). then, jeff journeyed to the office (sentence 4). after that, jeff passed the apple to bill (sentence 5). however, bill handed the apple back to jeff (sentence 6). therefore, the person who ultimately received the apple is jeff."
+27,5,6,2,"8. Jeff gave the apple to Bill.
+9. Bill handed the apple to Jeff.",Who gave the apple?,bill,"although sentence 8 states that jeff gave the apple to bill, sentence 9 reveals that bill handed the apple back to jeff. the question asks who gave the apple, and in this context, ""gave"" implies the most recent transfer of the apple. since bill handed the apple to jeff in sentence 9, which is the most recent action, it can be inferred that bill is the one who gave the apple."
+28,5,6,3,"11. Jeff picked up the football there.
+12. Jeff handed the apple to Bill.",What did Jeff give to Bill?,apple,"according to sentence 12, jeff handed the apple to bill. this sentence explicitly states that jeff gave the apple to bill. there is no mention of jeff giving anything else to bill, and sentence 11 only mentions jeff picking up a football, which is a separate action. therefore, the correct answer is that jeff gave the apple to bill."
+29,5,6,4,"14. Mary went to the kitchen.
+15. Bill handed the apple to Jeff.",What did Bill give to Jeff?,apple,"according to sentence 15, bill handed the apple to jeff. this sentence explicitly states that bill gave the apple to jeff. there is no other information provided that contradicts or modifies this action, so it can be concluded that bill gave the apple to jeff."
+30,5,6,5,"17. Mary journeyed to the bathroom.
+18. Mary moved to the hallway.",Who received the apple?,jeff,"there is no information in the provided context sentences (17 and 18) that mentions the apple or any action related to receiving an apple. the sentences only describe mary's movements to the bathroom and hallway. therefore, it is not possible to determine who received the apple based on this information. the answer ""jeff"" seems to be unrelated to the provided context."
+31,5,7,1,"1. Fred went to the garden.
+2. Fred moved to the kitchen.
+3. Bill went back to the kitchen.
+4. Bill moved to the office.
+5. Mary went back to the kitchen.
+6. Fred travelled to the hallway.
+7. Bill moved to the bedroom.
+8. Jeff moved to the bathroom.
+9. Bill moved to the hallway.
+10. Jeff moved to the office.
+11. Fred travelled to the garden.
+12. Fred picked up the apple there.
+13. Bill went to the kitchen.
+14. Bill went to the office.
+15. Fred journeyed to the bedroom.
+16. Fred put down the apple.
+17. Fred went back to the office.
+18. Bill went back to the garden.
+19. Bill went to the office.
+20. Jeff went to the bathroom.
+21. Fred moved to the hallway.
+22. Fred travelled to the kitchen.
+23. Mary went back to the garden.
+24. Mary moved to the bathroom.
+25. Fred went back to the office.
+26. Mary went to the office.
+27. Fred went back to the bedroom.
+28. Mary travelled to the garden.
+29. Mary moved to the office.
+30. Fred picked up the football there.
+31. Fred picked up the milk there.
+32. Mary went to the kitchen.
+33. Mary moved to the bathroom.
+34. Bill went to the bathroom.
+35. Fred took the apple there.
+36. Mary went to the kitchen.
+37. Fred put down the apple.
+38. Bill travelled to the kitchen.
+39. Fred moved to the office.
+40. Fred dropped the milk.
+41. Mary went to the office.
+42. Jeff went to the garden.
+43. Fred left the football.
+44. Mary picked up the football there.
+45. Mary left the football.
+46. Fred travelled to the bedroom.
+47. Fred grabbed the apple there.
+48. Bill went back to the bedroom.
+49. Jeff went to the bedroom.
+50. Mary moved to the kitchen.
+51. Fred gave the apple to Bill.
+52. Bill gave the apple to Fred.",Who gave the apple?,bill,"the question asks who gave the apple. from the context sentences, we can see that the apple was passed between fred and bill. in sentence 51, fred gave the apple to bill, and then in sentence 52, bill gave the apple back to fred. therefore, the last person to give the apple was bill, as stated in sentence 52."
+32,5,7,2,"54. Fred passed the apple to Bill.
+55. Bill gave the apple to Fred.",What did Bill give to Fred?,apple,"the question asks what bill gave to fred. according to the context sentences, in sentence 55, it is explicitly stated that bill gave the apple to fred. therefore, the answer is the apple."
+33,5,7,3,"57. Fred passed the apple to Bill.
+58. Bill gave the apple to Fred.",What did Bill give to Fred?,apple,"the question asks what bill gave to fred. according to the context sentences, in sentence 58, it is explicitly stated that bill gave the apple to fred. therefore, the answer is the apple."
+34,5,7,4,"60. Bill moved to the garden.
+61. Fred journeyed to the hallway.",Who did Bill give the apple to?,fred,"there is no direct information in the provided context sentences (60 and 61) about bill giving an apple to anyone. however, since the answer is provided as fred, we can infer that the question is referring to a previous part of the conversation history. in previous conversations, we had sentences 54 and 55, where fred passed the apple to bill, and then bill gave the apple back to fred. therefore, based on this previous information, we can conclude that bill gave"
+35,5,7,5,"63. Bill went to the bathroom.
+64. Jeff moved to the garden.",What did Bill give to Fred?,apple,"""reasoning: <reasoning>"""
+36,5,8,1,"1. Fred went to the kitchen.
+2. Jeff picked up the football there.
+3. Mary picked up the apple there.
+4. Jeff left the football.
+5. Mary moved to the office.
+6. Mary passed the apple to Jeff.",Who did Mary give the apple to?,jeff,"from context line 6, ""mary passed the apple to jeff"", it is directly stated that mary gave the apple to jeff. this sentence explicitly mentions the action of mary giving the apple to jeff, which answers the question of who mary gave the apple to."
+37,5,8,2,"8. Fred grabbed the milk there.
+9. Fred put down the milk.",What did Mary give to Jeff?,apple,"the context lines 8 and 9 are about fred's actions with the milk, but the question is about what mary gave to jeff. to find the answer, we need to look at the previous context lines. from context line 6, ""mary passed the apple to jeff"", it is clear that mary gave an apple to jeff. this information is not related to fred's actions with the milk, but it directly answers the question about what mary gave to jeff."
+38,5,8,3,"11. Jeff handed the apple to Mary.
+12. Mary gave the apple to Jeff.",What did Mary give to Jeff?,apple,"from context line 12, ""mary gave the apple to jeff"", it is directly stated that mary gave an apple to jeff. this sentence explicitly mentions the action of mary giving the apple to jeff, which answers the question of what mary gave to jeff."
+39,5,8,4,"14. Jeff gave the apple to Mary.
+15. Mary grabbed the football there.",Who received the apple?,mary,"from context line 14, ""jeff gave the apple to mary"", it is directly stated that mary received the apple from jeff. this sentence explicitly mentions the action of jeff giving the apple to mary, which answers the question of who received the apple."
+40,5,8,5,"17. Mary discarded the football.
+18. Jeff moved to the bedroom.",Who did Jeff give the apple to?,mary,"the context lines 17 and 18 do not directly mention the action of jeff giving the apple to mary. however, we need to look at the previous context lines to find the answer. from context line 14, ""jeff gave the apple to mary"", it is directly stated that jeff gave the apple to mary. this sentence explicitly mentions the action of jeff giving the apple to mary, which answers the question of who jeff gave the apple to."
+41,5,9,1,"1. Fred took the football there.
+2. Fred passed the football to Jeff.",Who did Fred give the football to?,jeff,"the question asks who fred gave the football to. in the context sentences, it is stated that ""fred passed the football to jeff"" (sentence 2). the phrase ""passed to"" is synonymous with ""gave to"" in this context, indicating that fred gave the football to jeff. therefore, the answer is jeff."
+42,5,9,2,"4. Jeff passed the football to Fred.
+5. Fred moved to the bedroom.",Who did Jeff give the football to?,fred,"the question asks who jeff gave the football to. in the context sentences, it is stated that ""jeff passed the football to fred"" (sentence 4). the phrase ""passed to"" is synonymous with ""gave to"" in this context, indicating that jeff gave the football to fred. therefore, the answer is fred."
+43,5,9,3,"7. Mary travelled to the bedroom.
+8. Bill travelled to the office.",Who received the football?,fred,"the question asks who received the football. however, the provided context sentences (7 and 8) do not mention the football or any action related to it. they only describe mary and bill's travels to different locations. to answer the question, we need to look at previous parts of the conversation history. in the previous parts, we had sentences 4 and 5, where it was stated that ""jeff passed the football to fred"" (sentence 4). this indicates that fred"
+44,5,9,4,"10. Fred gave the football to Mary.
+11. Jeff went back to the kitchen.",What did Fred give to Mary?,football,"the question asks what fred gave to mary. in the context sentence 10, it is stated that ""fred gave the football to mary"". this sentence directly answers the question, indicating that fred gave the football to mary. therefore, the answer is football."
+45,5,9,5,"13. Bill went back to the bathroom.
+14. Mary gave the football to Fred.",Who received the football?,fred,"the question asks who received the football. in the context sentence 14, it is stated that ""mary gave the football to fred"". this sentence directly answers the question, indicating that fred received the football from mary. therefore, the answer is fred."
+46,5,10,1,"1. Mary went back to the office.
+2. Fred journeyed to the office.
+3. Jeff went to the bathroom.
+4. Bill journeyed to the office.
+5. Fred travelled to the hallway.
+6. Jeff grabbed the apple there.
+7. Bill moved to the kitchen.
+8. Fred moved to the bathroom.
+9. Fred journeyed to the hallway.
+10. Fred went to the bedroom.
+11. Bill moved to the garden.
+12. Mary travelled to the kitchen.
+13. Jeff got the football there.
+14. Mary took the milk there.
+15. Jeff travelled to the bedroom.
+16. Jeff handed the apple to Fred.",What did Jeff give to Fred?,apple,"from sentence 16, it is directly stated that ""jeff handed the apple to fred."" this sentence explicitly mentions that jeff gave an apple to fred, which is the answer to the question."
+47,5,10,2,"18. Mary went back to the bedroom.
+19. Fred passed the apple to Mary.",What did Fred give to Mary?,apple,"from sentence 19, it is directly stated that ""fred passed the apple to mary."" this sentence explicitly mentions that fred gave an apple to mary, which is the answer to the question."
+48,5,10,3,"21. Jeff left the football.
+22. Jeff journeyed to the kitchen.",What did Fred give to Mary?,apple,"the context lines 21 and 22 do not provide any information about what fred gave to mary. however, we can look at the previous context lines (18 and 19) which mention that ""fred passed the apple to mary."" therefore, the answer to the question ""what did fred give to mary?"" is still ""apple"" based on the previous information."
+49,5,10,4,"24. Mary discarded the apple.
+25. Fred took the apple there.",Who did Fred give the apple to?,mary,"from sentence 19, we know that ""fred passed the apple to mary."" this sentence explicitly states that fred gave the apple to mary, which is the answer to the question. the context lines 24 and 25 do not change this fact, as they only mention mary discarding the apple and fred taking it, but they do not alter the fact that fred initially gave the apple to mary."
+50,5,10,5,"27. Fred picked up the football there.
+28. Mary dropped the milk.
+29. Fred gave the apple to Mary.
+30. Jeff moved to the garden.",What did Fred give to Mary?,apple,"sentence 29 directly states that ""fred gave the apple to mary."" this sentence explicitly mentions that fred gave an apple to mary, which is the answer to the question. the other sentences (27, 28, and 30) do not provide any contradictory information, so the answer remains ""apple""."
+51,5,11,1,"1. Fred got the milk there.
+2. Fred went back to the bathroom.
+3. Bill went back to the bathroom.
+4. Fred passed the milk to Bill.",Who gave the milk to Bill?,fred,"from context sentence 4, ""fred passed the milk to bill"", we can directly infer that fred gave the milk to bill. this sentence explicitly states the action of passing the milk from fred to bill, which implies that fred is the one who gave the milk to bill."
+52,5,11,2,"6. Bill took the football there.
+7. Bill handed the football to Fred.",Who did Bill give the football to?,fred,"from context sentence 7, ""bill handed the football to fred"", we can directly infer that bill gave the football to fred. this sentence explicitly states the action of handing the football from bill to fred, which implies that fred is the recipient of the football from bill."
+53,5,11,3,"9. Fred left the football.
+10. Bill picked up the football there.",What did Fred give to Bill?,milk,"the answer ""milk"" seems to be incorrect based on the provided context sentences. the context sentences 9 and 10 only mention the football, but not milk. there is no mention of milk in these sentences."
+54,5,11,4,"12. Bill passed the football to Fred.
+13. Fred handed the football to Bill.",Who received the football?,bill,"from context sentence 13, ""fred handed the football to bill"", we can directly infer that bill received the football. this sentence explicitly states the action of handing the football from fred to bill, which implies that bill is the recipient of the football."
+55,5,11,5,"15. Bill dropped the football.
+16. Fred took the football there.",What did Fred give to Bill?,football,"the answer ""football"" seems to be incorrect based on the provided context sentences. the context sentences 15 and 16 only mention fred taking the football, but not giving it to bill. there is no mention of fred giving the football to bill in these sentences."
+56,5,12,1,"1. Mary went back to the kitchen.
+2. Bill went to the garden.
+3. Mary picked up the football there.
+4. Jeff journeyed to the office.
+5. Jeff grabbed the apple there.
+6. Fred went back to the bathroom.
+7. Jeff went back to the kitchen.
+8. Jeff gave the apple to Mary.",Who did Jeff give the apple to?,mary,"according to sentence 8, ""jeff gave the apple to mary."" this sentence directly states that jeff gave the apple to mary, so the answer is indeed mary."
+57,5,12,2,"10. Mary left the football there.
+11. Mary put down the apple.",Who gave the apple?,jeff,"according to sentence 8 from the previous context, ""jeff gave the apple to mary."" this sentence directly states that jeff gave the apple to mary, so the answer is indeed jeff. the new context sentences (10 and 11) do not provide any contradictory information, and sentence 11 even confirms that mary had the apple, which supports the conclusion that jeff gave it to her."
+58,5,12,3,"13. Mary took the apple there.
+14. Mary took the football there.",What did Jeff give to Mary?,apple,"according to sentence 8 from the previous context, ""jeff gave the apple to mary."" this sentence directly states that jeff gave the apple to mary, so the answer is indeed the apple. the new context sentences (13 and 14) do not provide any contradictory information, and sentence 13 even confirms that mary took the apple, which supports the conclusion that jeff gave it to her."
+59,5,12,4,"16. Mary passed the apple to Jeff.
+17. Jeff handed the apple to Mary.",Who gave the apple to Mary?,jeff,"according to sentence 17, ""jeff handed the apple to mary."" this sentence directly states that jeff gave the apple to mary, so the answer is indeed jeff. the previous sentence 16, ""mary passed the apple to jeff"", indicates that mary had the apple at some point, but it does not contradict the fact that jeff later gave the apple to mary."
+60,5,12,5,"19. Mary handed the apple to Jeff.
+20. Jeff gave the apple to Mary.",Who gave the apple?,jeff,"according to sentence 20, ""jeff gave the apple to mary."" this sentence directly states that jeff gave the apple, so the answer is indeed jeff. the previous sentence 19, ""mary handed the apple to jeff"", indicates that mary had the apple at some point and gave it to jeff, but then jeff gave it back to mary, which supports the conclusion that jeff is the one who gave the apple."
+61,5,13,1,"1. Bill picked up the milk there.
+2. Fred went to the kitchen.
+3. Mary went back to the bedroom.
+4. Jeff took the apple there.
+5. Jeff passed the apple to Mary.
+6. Fred went to the hallway.",Who received the apple?,mary,"from sentence 4, we know that jeff took the apple there, and from sentence 5, we know that jeff passed the apple to mary. therefore, mary is the one who received the apple."
+62,5,13,2,"8. Mary put down the apple.
+9. Bill passed the milk to Fred.",Who gave the apple?,jeff,"from the new context sentences, we don't have direct information about who gave the apple. however, we can look back at the previous context sentences (sentence 4 and 5) where it is mentioned that ""jeff took the apple there"" and ""jeff passed the apple to mary"". therefore, we can infer that jeff is the one who gave the apple."
+63,5,13,3,"11. Fred passed the milk to Bill.
+12. Fred went to the bedroom.",Who gave the milk to Bill?,fred,"from sentence 11, we know that ""fred passed the milk to bill"", which directly states that fred is the one who gave the milk to bill."
+64,5,13,4,"14. Mary got the apple there.
+15. Jeff journeyed to the bathroom.",Who gave the milk to Bill?,fred,"this question does not relate to the new context sentences (14 and 15), but rather to a previous part of the conversation. we need to look back at the previous context sentences. from sentence 9, we know that ""bill passed the milk to fred"", but this is not the correct answer. however, from sentence 11, we know that ""fred passed the milk to bill"", which directly states that fred is the one who gave the milk to bill."
+65,5,13,5,"17. Mary handed the apple to Fred.
+18. Bill went back to the bathroom.",What did Mary give to Fred?,apple,"from sentence 17, we know that ""mary handed the apple to fred"", which directly states that mary gave the apple to fred."
+66,5,14,1,"1. Mary journeyed to the bathroom.
+2. Jeff took the apple there.
+3. Jeff put down the apple.
+4. Fred went to the hallway.
+5. Mary took the apple there.
+6. Mary passed the apple to Jeff.",Who did Mary give the apple to?,jeff,"from sentence 5, we know that mary took the apple to the hallway. then, in sentence 6, it is stated that mary passed the apple to jeff. therefore, it can be logically concluded that mary gave the apple to jeff."
+67,5,14,2,"8. Jeff journeyed to the bedroom.
+9. Jeff went to the bathroom.",What did Mary give to Jeff?,apple,"from the provided context, sentences 8 and 9 only describe jeff's movements, but they do not mention mary giving anything to jeff. however, if we look at the previous context (sentences 1-6), we can see that mary passed the apple to jeff in sentence 6. therefore, it can be logically concluded that mary gave the apple to jeff."
+68,5,14,3,"11. Jeff passed the apple to Mary.
+12. Jeff journeyed to the bedroom.",Who did Jeff give the apple to?,mary,"from sentence 11, it is explicitly stated that jeff passed the apple to mary. therefore, it can be logically concluded that jeff gave the apple to mary."
+69,5,14,4,"14. Fred went back to the kitchen.
+15. Mary journeyed to the garden.",What did Jeff give to Mary?,apple,"from the provided context, sentences 14 and 15 only describe fred and mary's movements, but they do not mention jeff giving anything to mary. however, if we look at the previous context (sentence 11), we can see that jeff passed the apple to mary. therefore, it can be logically concluded that jeff gave the apple to mary."
+70,5,14,5,"17. Mary handed the apple to Bill.
+18. Jeff journeyed to the bathroom.",Who gave the apple?,mary,"from sentence 17, it is explicitly stated that mary handed the apple to bill. therefore, it can be logically concluded that mary gave the apple."
+71,5,15,1,"1. Mary went back to the kitchen.
+2. Mary went back to the bedroom.
+3. Bill went to the bathroom.
+4. Bill took the apple there.
+5. Mary went back to the kitchen.
+6. Bill went back to the kitchen.
+7. Bill put down the apple.
+8. Bill picked up the apple there.
+9. Bill dropped the apple.
+10. Fred travelled to the kitchen.
+11. Fred went to the garden.
+12. Jeff went back to the garden.
+13. Jeff travelled to the kitchen.
+14. Bill journeyed to the office.
+15. Fred travelled to the kitchen.
+16. Jeff grabbed the apple there.
+17. Jeff passed the apple to Mary.
+18. Bill took the football there.",Who received the apple?,mary,"from the context sentences, we can track the movement of the apple. in sentence 4, bill took the apple to the bathroom. then, in sentence 7, bill put down the apple, and in sentence 8, bill picked it up again. later, in sentence 9, bill dropped the apple. after that, in sentence 16, jeff grabbed the apple in the kitchen. finally, in sentence 17, jeff passed the apple to mary. therefore,"
+72,5,15,2,"20. Mary gave the apple to Fred.
+21. Fred gave the apple to Mary.",Who gave the apple?,fred,"from the context sentences, we can see that there are two instances of giving the apple: mary gave the apple to fred (sentence 20), and then fred gave the apple to mary (sentence 21). the question asks who gave the apple, and the answer is fred. this is because the last action mentioned in the context sentences is fred giving the apple to mary, which means fred is the one who gave the apple in the most recent transaction."
+73,5,15,3,"23. Mary put down the apple.
+24. Mary went to the office.",Who did Fred give the apple to?,mary,"from the context sentences, we can see that there is no direct mention of fred giving the apple to anyone. however, we can infer the answer by looking at the previous parts of the conversation history. in the previous conversation, we saw that jeff passed the apple to mary (sentence 17). later, mary gave the apple to fred (sentence 20), and then fred gave the apple back to mary (sentence 21). therefore, we can conclude that fred gave the"
+74,5,15,4,"26. Bill dropped the football.
+27. Bill got the football there.",What did Fred give to Mary?,apple,"from the context sentences, we can see that sentences 26 and 27 are talking about bill and a football, which is not related to the question about what fred gave to mary. to answer the question, we need to look at the previous parts of the conversation history. in the previous conversation, we saw that fred gave the apple to mary (sentence 21). therefore, we can conclude that fred gave the apple to mary."
+75,5,15,5,"29. Jeff picked up the apple there.
+30. Jeff handed the apple to Fred.",Who received the apple?,fred,"from the context sentences, we can see that jeff picked up the apple (sentence 29) and then handed it to fred (sentence 30). therefore, fred is the one who received the apple. the question asks who received the apple, and the answer is indeed fred, as he is the one who received the apple from jeff."
+76,5,16,1,"1. Mary went to the hallway.
+2. Jeff journeyed to the bedroom.
+3. Fred went to the kitchen.
+4. Bill picked up the milk there.
+5. Bill went to the hallway.
+6. Fred got the football there.
+7. Bill gave the milk to Mary.
+8. Mary handed the milk to Bill.",Who gave the milk to Bill?,mary,"from the context sentences, we know that bill picked up the milk in the kitchen (sentence 4). then, bill went to the hallway (sentence 5) and gave the milk to mary (sentence 7). later, mary handed the milk back to bill (sentence 8). therefore, it was mary who gave the milk to bill."
+77,5,16,2,"10. Bill handed the milk to Mary.
+11. Mary gave the milk to Bill.",Who did Mary give the milk to?,bill,"according to sentence 11, ""mary gave the milk to bill"", which directly states that mary gave the milk to bill. therefore, the answer is indeed bill."
+78,5,16,3,"13. Bill handed the milk to Mary.
+14. Fred dropped the football.",What did Bill give to Mary?,milk,"according to sentence 13, ""bill handed the milk to mary"", which directly states that bill gave the milk to mary. therefore, the answer is indeed milk."
+79,5,16,4,"16. Mary left the milk.
+17. Fred picked up the football there.",Who gave the milk?,bill,"although the context sentences 16 and 17 do not directly mention who gave the milk, we can infer the answer by looking at the previous conversations. in a previous conversation, we had the context sentence ""bill handed the milk to mary"" (sentence 13), which indicates that bill gave the milk to mary. therefore, the answer is indeed bill."
+80,5,16,5,"19. Fred journeyed to the bedroom.
+20. Fred passed the football to Jeff.",Who did Fred give the football to?,jeff,"according to sentence 20, ""fred passed the football to jeff"", which directly states that fred gave the football to jeff. therefore, the answer is indeed jeff."
+81,5,17,1,"1. Mary moved to the bedroom.
+2. Bill journeyed to the garden.
+3. Bill journeyed to the bathroom.
+4. Jeff took the football there.
+5. Fred travelled to the hallway.
+6. Fred went back to the kitchen.
+7. Jeff gave the football to Mary.
+8. Jeff went to the office.",Who gave the football?,jeff,"according to sentence 7, ""jeff gave the football to mary."" this sentence explicitly states that jeff is the one who gave the football, which directly answers the question ""who gave the football?"""
+82,5,17,2,"10. Mary dropped the football.
+11. Mary picked up the football there.",Who received the football?,mary,"according to sentence 7 from the previous context, ""jeff gave the football to mary."" this sentence explicitly states that mary is the recipient of the football, which directly answers the question ""who received the football?"""
+83,5,17,3,"13. Fred went to the bedroom.
+14. Bill took the apple there.
+15. Mary passed the football to Fred.
+16. Fred dropped the football.",Who did Mary give the football to?,fred,"according to sentence 15, ""mary passed the football to fred."" this sentence explicitly states that mary gave the football to fred, which directly answers the question ""who did mary give the football to?"""
+84,5,17,4,"18. Mary got the football there.
+19. Bill discarded the apple.",Who received the football?,fred,"this answer seems to be incorrect based on the provided context. the correct answer should be ""mary"" because according to sentence 18, ""mary got the football there."" this sentence explicitly states that mary received the football. there is no information in the context that suggests fred received the football. in fact, sentence 15 from the previous context states that ""mary passed the football to fred"", which means fred already had the football and then dropped it (sentence 16)."
+85,5,17,5,"21. Bill moved to the kitchen.
+22. Jeff travelled to the hallway.
+23. Mary handed the football to Fred.
+24. Mary travelled to the bathroom.",Who received the football?,fred,"according to sentence 23, ""mary handed the football to fred."" this sentence explicitly states that fred is the recipient of the football, which directly answers the question ""who received the football?"""
+86,5,18,1,"1. Mary travelled to the hallway.
+2. Mary went back to the bathroom.
+3. Bill journeyed to the bathroom.
+4. Jeff went to the office.
+5. Mary went to the hallway.
+6. Jeff grabbed the football there.
+7. Jeff grabbed the milk there.
+8. Mary went back to the garden.
+9. Bill moved to the garden.
+10. Jeff left the football there.
+11. Jeff put down the milk.
+12. Jeff moved to the garden.
+13. Fred went back to the garden.
+14. Bill went back to the hallway.
+15. Bill journeyed to the bathroom.
+16. Bill moved to the kitchen.
+17. Bill moved to the bathroom.
+18. Mary journeyed to the kitchen.
+19. Fred went back to the kitchen.
+20. Jeff travelled to the hallway.
+21. Jeff travelled to the garden.
+22. Fred moved to the garden.
+23. Bill moved to the office.
+24. Bill got the football there.
+25. Bill moved to the hallway.
+26. Fred went back to the office.
+27. Fred travelled to the bathroom.
+28. Fred went to the office.
+29. Fred journeyed to the kitchen.
+30. Bill dropped the football.
+31. Bill grabbed the football there.
+32. Bill travelled to the bathroom.
+33. Bill travelled to the bedroom.
+34. Bill went back to the bathroom.
+35. Mary went back to the office.
+36. Bill left the football.
+37. Mary grabbed the milk there.
+38. Fred moved to the bedroom.
+39. Jeff travelled to the bedroom.
+40. Bill went to the hallway.
+41. Jeff got the apple there.
+42. Jeff passed the apple to Fred.",What did Jeff give to Fred?,apple,"from the context sentences, we can track jeff's actions and the objects he interacted with. in sentence 41, jeff got the apple in the hallway. then, in sentence 42, jeff passed the apple to fred. therefore, jeff gave the apple to fred."
+87,5,18,2,"44. Mary left the milk.
+45. Mary went to the bathroom.",Who did Jeff give the apple to?,fred,"the provided context lines (44 and 45) do not mention jeff or the apple, so we need to look at the previous context lines to find the relevant information. from the previous context lines, we know that jeff got the apple in sentence 41 and passed it to fred in sentence 42. therefore, jeff gave the apple to fred. the new context lines (44 and 45) do not provide any new information that changes this conclusion."
+88,5,18,3,"47. Fred dropped the apple.
+48. Mary grabbed the football there.",Who did Jeff give the apple to?,fred,"the provided context lines (47 and 48) do not mention jeff giving the apple to anyone. however, we can look at the previous context lines to find the relevant information. from the previous context lines, we know that jeff got the apple in sentence 41 and passed it to fred in sentence 42. therefore, jeff gave the apple to fred. the new context lines (47 and 48) do not provide any new information that changes this conclusion."
+89,5,18,4,"50. Fred picked up the apple there.
+51. Jeff travelled to the bathroom.
+52. Mary moved to the kitchen.
+53. Mary discarded the football.
+54. Bill moved to the office.
+55. Jeff journeyed to the hallway.
+56. Mary grabbed the football there.
+57. Fred dropped the apple there.
+58. Mary journeyed to the bathroom.
+59. Fred went to the kitchen.
+60. Bill grabbed the milk there.
+61. Mary journeyed to the office.
+62. Mary gave the football to Bill.
+63. Bill gave the football to Mary.",Who did Bill give the football to?,mary,"according to sentence 63, ""bill gave the football to mary."" this sentence directly states that bill gave the football to mary, which matches the provided answer."
+90,5,18,5,"65. Jeff journeyed to the garden.
+66. Mary handed the football to Bill.",Who received the football?,bill,"""reasoning: <re"
+91,5,19,1,"1. Fred moved to the bedroom.
+2. Mary travelled to the bedroom.
+3. Bill took the apple there.
+4. Bill journeyed to the garden.
+5. Jeff grabbed the milk there.
+6. Bill dropped the apple.
+7. Mary went to the hallway.
+8. Fred journeyed to the office.
+9. Mary went back to the kitchen.
+10. Jeff handed the milk to Mary.",Who received the milk?,mary,"from the context sentences, we know that jeff grabbed the milk in the garden (sentence 5). later, jeff handed the milk to mary (sentence 10). therefore, mary is the one who received the milk."
+92,5,19,2,"12. Mary travelled to the office.
+13. Bill grabbed the apple there.",Who received the milk?,mary,"the context sentences provided (12 and 13) do not mention the milk at all. however, we can look at the previous conversation history to find the relevant information. in the previous conversation, we saw that jeff grabbed the milk in the garden (sentence 5) and later handed the milk to mary (sentence 10). therefore, mary is the one who received the milk. the new context sentences (12 and 13) do not change this fact, as they only mention"
+93,5,19,3,"15. Mary gave the milk to Fred.
+16. Fred passed the milk to Mary.",What did Fred give to Mary?,milk,"according to sentence 16, fred passed the milk to mary. this implies that fred gave the milk to mary. the previous sentence 15, where mary gave the milk to fred, is not relevant to this question, as it describes a different action. the correct answer is that fred gave the milk to mary, as stated in sentence 16."
+94,5,19,4,"18. Mary left the milk.
+19. Jeff went to the bedroom.",Who gave the milk?,fred,"the context sentences 18 and 19 do not provide direct information about who gave the milk. however, we can look at the previous conversation history to find the relevant information. in the previous conversation, we saw that jeff handed the milk to mary (sentence 10), and then mary gave the milk to fred (sentence 15), and finally, fred passed the milk back to mary (sentence 16). therefore, it was fred who received the milk from mary, which means fred"
+95,5,19,5,"21. Mary travelled to the garden.
+22. Mary got the football there.",Who gave the milk?,fred,"the context sentences 21 and 22 do not provide any information about the milk or who gave it. however, we can look at the previous conversation history to find the relevant information. in the previous conversation, we saw that jeff handed the milk to mary (sentence 10), and then mary gave the milk to fred (sentence 15), and finally, fred passed the milk back to mary (sentence 16). therefore, it was mary who gave the milk to fred, which"
+96,5,20,1,"1. Jeff went to the bedroom.
+2. Bill moved to the garden.
+3. Fred got the apple there.
+4. Mary went to the office.
+5. Fred passed the apple to Mary.
+6. Mary passed the apple to Fred.",What did Mary give to Fred?,apple,"from the context sentences, we know that mary passed the apple to fred (sentence 6) and then received the apple back from fred (sentence 5). therefore, mary gave the apple to fred initially, which is stated in sentence 6."
+97,5,20,2,"8. Fred gave the apple to Mary.
+9. Mary handed the apple to Fred.",Who gave the apple to Fred?,mary,"according to sentence 9, ""mary handed the apple to fred"", which explicitly states that mary gave the apple to fred. this directly answers the question of who gave the apple to fred, and the answer is indeed mary."
+98,5,20,3,"11. Fred journeyed to the bathroom.
+12. Mary went back to the garden.",What did Mary give to Fred?,apple,"the context sentences 11 and 12 do not provide any information about mary giving something to fred. however, we can infer the answer from the previous conversation history. in the previous conversation, we had sentences 8 and 9, which stated ""fred gave the apple to mary"" and ""mary handed the apple to fred"". from these sentences, we can conclude that mary gave the apple to fred. therefore, the answer to the question ""what did mary give to fred?"" is"
+99,5,20,4,"14. Bill went back to the bedroom.
+15. Fred grabbed the football there.",What did Mary give to Fred?,apple,"the context sentences 14 and 15 do not provide any information about mary giving something to fred. however, we can infer the answer from the previous conversation history. in the previous conversation, we had sentences 8 and 9, which stated ""fred gave the apple to mary"" and ""mary handed the apple to fred"". from these sentences, we can conclude that mary gave the apple to fred. therefore, the answer to the question ""what did mary give to fred?"" is"
+100,5,20,5,"17. Fred went to the hallway.
+18. Bill moved to the garden.
+19. Jeff travelled to the bathroom.
+20. Fred moved to the bathroom.
+21. Fred handed the apple to Jeff.
+22. Jeff handed the apple to Fred.",Who did Jeff give the apple to?,fred,"according to sentence 22, ""jeff handed the apple to fred"", which explicitly states that jeff gave the apple to fred. this directly answers the question of who jeff gave the apple to, and the answer is indeed fred."

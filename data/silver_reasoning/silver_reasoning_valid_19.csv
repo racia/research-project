@@ -1,0 +1,501 @@
+id_,task_id,sample_id,part_id,context,question,golden_answer,silver_reasoning
+1,19,1,1,"1. The bedroom is east of the kitchen.
+2. The bathroom is south of the hallway.
+3. The office is west of the kitchen.
+4. The hallway is south of the garden.
+5. The kitchen is south of the bathroom.",How do you go from the hallway to the kitchen?,south south,"from sentence 2, we know the bathroom is south of the hallway. from sentence 5, we know the kitchen is south of the bathroom. therefore, to go from the hallway to the kitchen, we need to go south from the hallway to reach the bathroom, and then go south again from the bathroom to reach the kitchen. hence, the correct direction is south south."
+2,19,2,1,"1. The office is north of the garden.
+2. The kitchen is north of the hallway.
+3. The garden is north of the kitchen.
+4. The bathroom is east of the kitchen.
+5. The bedroom is west of the kitchen.",How do you go from the bedroom to the garden?,east north,"from the context sentences, we know the relative positions of the different rooms and areas."
+3,19,3,1,"1. The bedroom is west of the bathroom.
+2. The kitchen is east of the office.
+3. The hallway is west of the bedroom.
+4. The garden is east of the kitchen.
+5. The kitchen is north of the bedroom.",How do you go from the bedroom to the office?,north west,"to go from the bedroom to the office, we need to find the correct direction. from sentence 5, we know the kitchen is north of the bedroom, so we need to go north from the bedroom. then, from sentence 2, we know the office is west of the kitchen, so we need to go west from the kitchen. therefore, the correct direction to go from the bedroom to the office is north and then west, which can be abbreviated as ""north west""."
+4,19,4,1,"1. The office is east of the garden.
+2. The hallway is south of the bathroom.
+3. The hallway is east of the kitchen.
+4. The bedroom is south of the hallway.
+5. The bedroom is west of the garden.",How do you go from the hallway to the garden?,south east,"from sentence 2, we know the hallway is south of the bathroom. from sentence 4, we know the bedroom is south of the hallway. therefore, the bedroom is south of the hallway, and the hallway is south of the bathroom, so the bedroom is south of the bathroom as well."
+5,19,5,1,"1. The hallway is west of the bedroom.
+2. The garden is north of the bedroom.
+3. The kitchen is north of the office.
+4. The bathroom is north of the hallway.
+5. The hallway is east of the kitchen.",How do you go from the bedroom to the kitchen?,west west,"from sentence 1, we know the hallway is west of the bedroom. from sentence 5, we know the hallway is east of the kitchen. therefore, to go from the bedroom to the kitchen, we need to go west from the bedroom to reach the hallway, and then continue west from the hallway to reach the kitchen. hence, the correct direction is west west."
+6,19,6,1,"1. The bathroom is east of the hallway.
+2. The hallway is south of the garden.
+3. The office is west of the kitchen.
+4. The bedroom is south of the hallway.
+5. The bedroom is east of the kitchen.",How do you go from the kitchen to the hallway?,east north,"from sentence 5, we know that the bedroom is east of the kitchen. from sentence 4, we know that the bedroom is south of the hallway. combining these two pieces of information, we can infer that the hallway is north of the bedroom. since the bedroom is east of the kitchen, we need to go east from the kitchen to reach the bedroom, and then north to reach the hallway. therefore, the correct direction to go from the kitchen to the hallway is"
+7,19,7,1,"1. The kitchen is west of the garden.
+2. The hallway is north of the kitchen.
+3. The bedroom is north of the garden.
+4. The bathroom is east of the bedroom.
+5. The office is west of the bedroom.",How do you go from the bedroom to the kitchen?,south west,"from the context sentences, we know the relative positions of the rooms. to go from the bedroom to the kitchen, we need to find the direction from the bedroom to the kitchen."
+8,19,8,1,"1. The bathroom is west of the kitchen.
+2. The bedroom is west of the garden.
+3. The office is south of the bathroom.
+4. The garden is west of the office.
+5. The hallway is south of the office.",How do you go from the bathroom to the garden?,south west,"from context sentence 1, we know the bathroom is west of the kitchen. from context sentence 3, we know the office is south of the bathroom. from context sentence 4, we know the garden is west of the office."
+9,19,9,1,"1. The bedroom is west of the hallway.
+2. The garden is north of the kitchen.
+3. The office is west of the bathroom.
+4. The kitchen is east of the bathroom.
+5. The kitchen is west of the bedroom.",How do you go from the bathroom to the bedroom?,east east,"from context sentence 4, we know that the kitchen is east of the bathroom. from context sentence 5, we know that the kitchen is west of the bedroom. therefore, if we start at the bathroom and move east to the kitchen, and then continue moving east from the kitchen, we will reach the bedroom. hence, the correct direction to go from the bathroom to the bedroom is east east."
+10,19,10,1,"1. The office is east of the bathroom.
+2. The garden is east of the hallway.
+3. The hallway is north of the bathroom.
+4. The bathroom is east of the bedroom.
+5. The kitchen is west of the hallway.",How do you go from the bedroom to the hallway?,east north,"from context sentence 4, we know that the bathroom is east of the bedroom. from context sentence 3, we know that the hallway is north of the bathroom. therefore, to go from the bedroom to the hallway, we need to go east from the bedroom to reach the bathroom, and then go north from the bathroom to reach the hallway. hence, the correct direction is east north."
+11,19,11,1,"1. The office is north of the bedroom.
+2. The kitchen is east of the garden.
+3. The garden is north of the bathroom.
+4. The bathroom is east of the office.
+5. The hallway is south of the bathroom.",How do you go from the garden to the office?,south west,"from sentence 3, we know the garden is north of the bathroom. from sentence 5, we know the hallway is south of the bathroom. therefore, the garden is north of the hallway."
+12,19,12,1,"1. The kitchen is north of the hallway.
+2. The garden is south of the office.
+3. The bathroom is north of the bedroom.
+4. The bathroom is south of the hallway.
+5. The garden is east of the bathroom.",How do you go from the garden to the hallway?,west north,"from sentence 5, we know the garden is east of the bathroom. to go from the garden to the hallway, we need to move in the opposite direction, which is west. from sentence 4, we know the bathroom is south of the hallway. since we are already moving west from the garden to the bathroom, we need to move north from the bathroom to reach the hallway. therefore, the correct direction to go from the garden to the hallway is west north."
+13,19,13,1,"1. The garden is west of the kitchen.
+2. The office is east of the bathroom.
+3. The bedroom is south of the office.
+4. The hallway is north of the kitchen.
+5. The hallway is east of the office.",How do you go from the office to the kitchen?,east south,"from the context sentences, we know the relative positions of the rooms. to go from the office to the kitchen, we need to find the path that connects these two rooms."
+14,19,14,1,"1. The bathroom is south of the office.
+2. The kitchen is north of the hallway.
+3. The hallway is west of the bedroom.
+4. The bedroom is west of the garden.
+5. The bedroom is south of the bathroom.",How do you go from the hallway to the bathroom?,east north,"from sentence 3, we know the hallway is west of the bedroom. from sentence 5, we know the bedroom is south of the bathroom. therefore, to go from the hallway to the bathroom, we need to go east (to reach the bedroom) and then north (to reach the bathroom from the bedroom)."
+15,19,15,1,"1. The hallway is south of the bathroom.
+2. The bathroom is east of the garden.
+3. The office is south of the garden.
+4. The kitchen is east of the bathroom.
+5. The bedroom is north of the garden.",How do you go from the bathroom to the bedroom?,west north,"from the context sentences, we know the relative positions of the bathroom and the garden (sentence 2: ""the bathroom is east of the garden""). this means that to go from the bathroom to the garden, we need to move west."
+16,19,16,1,"1. The bedroom is west of the garden.
+2. The bathroom is east of the garden.
+3. The garden is north of the hallway.
+4. The kitchen is west of the hallway.
+5. The hallway is north of the office.",How do you go from the garden to the office?,south south,"from the context sentences, we know the relative positions of the rooms. to go from the garden to the office, we need to find the path that connects them."
+17,19,17,1,"1. The kitchen is north of the bedroom.
+2. The bathroom is south of the garden.
+3. The hallway is east of the garden.
+4. The office is west of the kitchen.
+5. The bedroom is north of the garden.",How do you go from the garden to the kitchen?,north north,"from the context sentences, we know that the bedroom is north of the garden (sentence 5) and the kitchen is north of the bedroom (sentence 1). therefore, to go from the garden to the kitchen, we need to go north from the garden to reach the bedroom, and then go north again from the bedroom to reach the kitchen. hence, the correct direction is north north."
+18,19,18,1,"1. The kitchen is west of the office.
+2. The bedroom is west of the hallway.
+3. The bathroom is south of the bedroom.
+4. The garden is north of the kitchen.
+5. The bedroom is south of the kitchen.",How do you go from the bedroom to the office?,north east,"from sentence 5, we know the bedroom is south of the kitchen. from sentence 1, we know the kitchen is west of the office. therefore, to go from the bedroom to the office, we need to go north (to reach the kitchen) and then east (to reach the office). hence, the correct direction is north east."
+19,19,19,1,"1. The office is west of the garden.
+2. The bathroom is south of the kitchen.
+3. The hallway is south of the garden.
+4. The office is east of the bathroom.
+5. The bedroom is north of the office.",How do you go from the garden to the bathroom?,west west,"from context line 1, we know the office is west of the garden. from context line 4, we know the office is east of the bathroom. therefore, the bathroom is west of the office."
+20,19,20,1,"1. The kitchen is west of the office.
+2. The hallway is north of the office.
+3. The garden is east of the bathroom.
+4. The office is north of the bedroom.
+5. The bathroom is east of the office.",How do you go from the bathroom to the bedroom?,west south,"from sentence 5, we know the bathroom is east of the office. from sentence 4, we know the office is north of the bedroom. to go from the bathroom to the bedroom, we need to move west (to reach the office) and then south (to reach the bedroom from the office). therefore, the correct direction is west south."
+21,19,21,1,"1. The office is south of the garden.
+2. The bathroom is south of the hallway.
+3. The garden is east of the hallway.
+4. The kitchen is west of the hallway.
+5. The bedroom is east of the garden.",How do you go from the garden to the kitchen?,west west,"from the context sentences, we know the relative positions of the different rooms and areas. specifically, we know that the garden is east of the hallway (sentence 3), and the kitchen is west of the hallway (sentence 4). to go from the garden to the kitchen, we need to move in the opposite direction of east, which is west. since the garden is east of the hallway, we need to move west to reach the hallway, and then continue moving west to"
+22,19,22,1,"1. The bathroom is north of the bedroom.
+2. The kitchen is south of the office.
+3. The office is west of the hallway.
+4. The garden is west of the bathroom.
+5. The office is east of the bathroom.",How do you go from the bathroom to the kitchen?,east south,"from the context sentences, we know the relative positions of the rooms."
+23,19,23,1,"1. The bedroom is south of the office.
+2. The office is west of the kitchen.
+3. The garden is south of the kitchen.
+4. The bathroom is north of the office.
+5. The kitchen is south of the hallway.",How do you go from the office to the garden?,east south,"from the context sentences, we know the relative positions of the rooms. to go from the office to the garden, we need to find the path that connects them."
+24,19,24,1,"1. The bedroom is north of the office.
+2. The kitchen is south of the hallway.
+3. The bedroom is south of the garden.
+4. The bathroom is west of the garden.
+5. The garden is west of the kitchen.",How do you go from the kitchen to the bedroom?,west south,"from sentence 5, we know the garden is west of the kitchen. from sentence 3, we know the bedroom is south of the garden. therefore, to go from the kitchen to the bedroom, we need to go west (from the kitchen to the garden) and then south (from the garden to the bedroom). hence, the correct direction is west south."
+25,19,25,1,"1. The garden is north of the bathroom.
+2. The hallway is west of the office.
+3. The bedroom is west of the bathroom.
+4. The hallway is south of the bathroom.
+5. The kitchen is east of the office.",How do you go from the bathroom to the office?,south east,"from the context sentences, we know the relative positions of the different rooms."
+26,19,26,1,"1. The bedroom is south of the kitchen.
+2. The office is north of the bathroom.
+3. The garden is south of the hallway.
+4. The bedroom is west of the office.
+5. The hallway is east of the office.",How do you go from the bedroom to the hallway?,east east,"from context sentence 4, we know that the bedroom is west of the office. from context sentence 5, we know that the hallway is east of the office. therefore, to go from the bedroom to the hallway, we need to move east from the bedroom to reach the office, and then move east again from the office to reach the hallway. hence, the correct direction is east east."
+27,19,27,1,"1. The bathroom is north of the hallway.
+2. The garden is south of the hallway.
+3. The office is east of the bedroom.
+4. The kitchen is west of the hallway.
+5. The bedroom is east of the hallway.",How do you go from the bedroom to the kitchen?,west west,"from sentence 5, we know that the bedroom is east of the hallway. from sentence 4, we know that the kitchen is west of the hallway. to go from the bedroom to the kitchen, we need to move in the opposite direction of east, which is west. since the bedroom is east of the hallway and the kitchen is west of the hallway, we need to move west from the bedroom to reach the hallway, and then move west again from the hallway to reach"
+28,19,28,1,"1. The bathroom is north of the kitchen.
+2. The bathroom is south of the garden.
+3. The kitchen is west of the office.
+4. The hallway is west of the garden.
+5. The garden is south of the bedroom.",How do you go from the garden to the kitchen?,south south,"from sentence 2, we know the bathroom is south of the garden. from sentence 1, we know the bathroom is north of the kitchen. therefore, the garden is north of the kitchen. to go from the garden to the kitchen, we need to move south."
+29,19,29,1,"1. The office is south of the bedroom.
+2. The bedroom is west of the hallway.
+3. The office is east of the kitchen.
+4. The garden is south of the hallway.
+5. The bedroom is south of the bathroom.",How do you go from the hallway to the office?,west south,"from sentence 2, we know the bedroom is west of the hallway. from sentence 1, we know the office is south of the bedroom. therefore, to go from the hallway to the office, we need to go west (from the hallway to the bedroom) and then south (from the bedroom to the office). hence, the correct direction is west south."
+30,19,30,1,"1. The bedroom is east of the kitchen.
+2. The garden is west of the kitchen.
+3. The bathroom is north of the hallway.
+4. The office is east of the hallway.
+5. The kitchen is south of the office.",How do you go from the kitchen to the hallway?,north west,"from sentence 5, we know that the kitchen is south of the office. from sentence 4, we know that the office is east of the hallway. therefore, if we move north from the kitchen, we will reach the office, and then if we move west from the office, we will reach the hallway. hence, to go from the kitchen to the hallway, we need to move north and then west, which is represented as ""north west""."
+31,19,31,1,"1. The hallway is east of the garden.
+2. The office is north of the bathroom.
+3. The bedroom is east of the hallway.
+4. The kitchen is south of the bedroom.
+5. The bathroom is north of the bedroom.",How do you go from the bathroom to the hallway?,south west,"from the context sentences, we know the relative positions of the different rooms."
+32,19,32,1,"1. The kitchen is east of the hallway.
+2. The office is south of the bedroom.
+3. The office is north of the hallway.
+4. The garden is north of the kitchen.
+5. The hallway is east of the bathroom.",How do you go from the office to the kitchen?,south east,"from sentence 3, we know the office is north of the hallway. from sentence 1, we know the kitchen is east of the hallway. therefore, to go from the office to the kitchen, we need to go south (to reach the hallway) and then east (to reach the kitchen). hence, the correct direction is south east."
+33,19,33,1,"1. The bathroom is west of the garden.
+2. The bedroom is west of the hallway.
+3. The bathroom is south of the office.
+4. The kitchen is east of the hallway.
+5. The hallway is south of the bathroom.",How do you go from the hallway to the office?,north north,"from sentence 5, we know the hallway is south of the bathroom. from sentence 3, we know the bathroom is south of the office. therefore, if we start at the hallway and move north, we will reach the bathroom, and then if we move north again, we will reach the office."
+34,19,34,1,"1. The kitchen is south of the bathroom.
+2. The kitchen is west of the office.
+3. The bathroom is east of the garden.
+4. The bedroom is south of the office.
+5. The hallway is east of the office.",How do you go from the office to the bathroom?,west north,"from the context sentences, we know the relative positions of the rooms. to go from the office to the bathroom, we need to find the direction from the office to the bathroom."
+35,19,35,1,"1. The kitchen is south of the office.
+2. The hallway is south of the bedroom.
+3. The hallway is north of the office.
+4. The bathroom is north of the garden.
+5. The garden is east of the office.",How do you go from the garden to the hallway?,west north,"from the context sentences, we know the relative positions of the different rooms and areas."
+36,19,36,1,"1. The bedroom is north of the garden.
+2. The bathroom is south of the garden.
+3. The office is west of the hallway.
+4. The hallway is west of the kitchen.
+5. The office is east of the garden.",How do you go from the hallway to the garden?,west west,"from sentence 4, we know that the hallway is west of the kitchen. from sentence 3, we know that the office is west of the hallway. from sentence 5, we know that the office is east of the garden. therefore, to go from the hallway to the garden, we need to go west from the hallway to reach the office, and then continue west from the office to reach the garden. hence, the correct direction is ""west west""."
+37,19,37,1,"1. The garden is west of the kitchen.
+2. The bedroom is west of the bathroom.
+3. The hallway is north of the kitchen.
+4. The office is south of the bathroom.
+5. The bathroom is south of the kitchen.",How do you go from the office to the kitchen?,north north,"from the context sentences, we know the relative positions of the rooms. to go from the office to the kitchen, we need to find the path that connects them."
+38,19,38,1,"1. The bedroom is west of the hallway.
+2. The bedroom is east of the bathroom.
+3. The kitchen is north of the bedroom.
+4. The hallway is west of the office.
+5. The garden is south of the bedroom.",How do you go from the hallway to the bathroom?,west west,"from the context sentences, we know that the bedroom is west of the hallway (sentence 1) and the bedroom is east of the bathroom (sentence 2). this means that the bathroom is east of the bedroom. to go from the hallway to the bathroom, we need to go east from the hallway, but since the bedroom is in between, we need to go west from the hallway to reach the bedroom first, and then go east from the bedroom to reach the bathroom. therefore"
+39,19,39,1,"1. The hallway is east of the bathroom.
+2. The office is south of the bathroom.
+3. The garden is north of the bedroom.
+4. The kitchen is west of the bathroom.
+5. The garden is west of the kitchen.",How do you go from the garden to the bathroom?,east east,"from sentence 3, we know the garden is north of the bedroom. from sentence 5, we know the garden is west of the kitchen. therefore, the kitchen is east of the garden."
+40,19,40,1,"1. The hallway is north of the bedroom.
+2. The kitchen is south of the bedroom.
+3. The bathroom is west of the bedroom.
+4. The office is north of the garden.
+5. The bedroom is west of the office.",How do you go from the office to the bathroom?,west west,"from sentence 5, we know the bedroom is west of the office. from sentence 3, we know the bathroom is west of the bedroom. therefore, to go from the office to the bathroom, we need to go west from the office to reach the bedroom, and then go west again from the bedroom to reach the bathroom. hence, the correct direction is west west."
+41,19,41,1,"1. The garden is west of the kitchen.
+2. The kitchen is north of the office.
+3. The kitchen is west of the hallway.
+4. The bathroom is south of the hallway.
+5. The bedroom is north of the kitchen.",How do you go from the hallway to the bedroom?,west north,"from the context sentences, we know that the kitchen is west of the hallway (sentence 3). we also know that the bedroom is north of the kitchen (sentence 5). therefore, to go from the hallway to the bedroom, we need to go west from the hallway to reach the kitchen, and then go north from the kitchen to reach the bedroom. hence, the correct direction is west north."
+42,19,42,1,"1. The kitchen is south of the hallway.
+2. The office is west of the garden.
+3. The bedroom is north of the garden.
+4. The hallway is east of the garden.
+5. The kitchen is east of the bathroom.",How do you go from the garden to the kitchen?,east south,"from context sentence 4, we know that the hallway is east of the garden. from context sentence 1, we know that the kitchen is south of the hallway. therefore, to go from the garden to the kitchen, we need to go east from the garden to reach the hallway, and then go south from the hallway to reach the kitchen. hence, the correct direction is east south."
+43,19,43,1,"1. The kitchen is north of the bathroom.
+2. The bedroom is west of the hallway.
+3. The office is south of the hallway.
+4. The garden is east of the bathroom.
+5. The hallway is west of the bathroom.",How do you go from the office to the bathroom?,north east,"from sentence 3, we know the office is south of the hallway. from sentence 5, we know the hallway is west of the bathroom. to go from the office to the hallway, we need to go north (opposite of south). once we reach the hallway, we need to go east (since the hallway is west of the bathroom) to reach the bathroom. therefore, the direction to go from the office to the bathroom is north east."
+44,19,44,1,"1. The bedroom is north of the bathroom.
+2. The garden is west of the bedroom.
+3. The hallway is east of the office.
+4. The kitchen is west of the office.
+5. The office is north of the bedroom.",How do you go from the bedroom to the kitchen?,north west,"from the context sentences, we know the relative positions of the rooms. to go from the bedroom to the kitchen, we need to find the path that connects these two rooms."
+45,19,45,1,"1. The garden is south of the hallway.
+2. The hallway is south of the bedroom.
+3. The kitchen is west of the hallway.
+4. The bathroom is east of the garden.
+5. The garden is east of the office.",How do you go from the kitchen to the garden?,east south,"to go from the kitchen to the garden, we need to find the relative positions of the kitchen and the garden. from sentence 3, we know the kitchen is west of the hallway. from sentence 1, we know the garden is south of the hallway. therefore, to go from the kitchen to the garden, we need to go east (to reach the hallway) and then south (to reach the garden). hence, the correct direction is east south."
+46,19,46,1,"1. The bedroom is north of the garden.
+2. The hallway is south of the bathroom.
+3. The kitchen is west of the bathroom.
+4. The office is south of the garden.
+5. The garden is west of the hallway.",How do you go from the garden to the bathroom?,east north,"from sentence 1, we know the garden is south of the bedroom. from sentence 5, we know the garden is west of the hallway. combining these two pieces of information, we can infer that the hallway is northeast of the garden."
+47,19,47,1,"1. The hallway is west of the bathroom.
+2. The office is east of the garden.
+3. The kitchen is east of the bathroom.
+4. The office is south of the bathroom.
+5. The bedroom is north of the hallway.",How do you go from the hallway to the office?,east south,"from the context sentences, we know the relative positions of the rooms."
+48,19,48,1,"1. The garden is south of the bathroom.
+2. The kitchen is north of the office.
+3. The bathroom is south of the office.
+4. The bedroom is north of the hallway.
+5. The bathroom is east of the hallway.",How do you go from the office to the hallway?,south west,"from sentence 3, we know the bathroom is south of the office. from sentence 5, we know the bathroom is east of the hallway. therefore, to go from the office to the hallway, we need to move south (to reach the bathroom) and then west (to reach the hallway from the bathroom). hence, the correct direction is south west."
+49,19,49,1,"1. The office is north of the garden.
+2. The kitchen is east of the bathroom.
+3. The bedroom is west of the bathroom.
+4. The hallway is east of the garden.
+5. The bathroom is south of the garden.",How do you go from the garden to the bedroom?,south west,"from the context sentences, we know the relative positions of the different rooms and areas. to go from the garden to the bedroom, we need to find the correct direction."
+50,19,50,1,"1. The bedroom is west of the bathroom.
+2. The office is south of the bedroom.
+3. The bedroom is east of the hallway.
+4. The garden is east of the office.
+5. The kitchen is south of the garden.",How do you go from the garden to the bedroom?,west north,"to go from the garden to the bedroom, we need to find the sequence of directions that connects the two locations. from the context sentences, we know that the garden is east of the office (sentence 4), and the office is south of the bedroom (sentence 2). this means that the bedroom is north of the office. since the garden is east of the office, we need to go west to reach the office from the garden. then, we need to go north to"
+51,19,51,1,"1. The kitchen is north of the garden.
+2. The bedroom is north of the office.
+3. The bathroom is west of the office.
+4. The office is north of the hallway.
+5. The hallway is north of the kitchen.",How do you go from the office to the kitchen?,south south,"from sentence 4, we know the office is north of the hallway. from sentence 5, we know the hallway is north of the kitchen. therefore, to go from the office to the kitchen, we need to move south from the office to the hallway, and then move south again from the hallway to the kitchen. hence, the correct direction is south south."
+52,19,52,1,"1. The bedroom is north of the bathroom.
+2. The kitchen is north of the office.
+3. The hallway is north of the kitchen.
+4. The kitchen is west of the bathroom.
+5. The kitchen is east of the garden.",How do you go from the office to the bathroom?,north east,"from sentence 2, we know the kitchen is north of the office. from sentence 4, we know the kitchen is west of the bathroom. therefore, to go from the office to the bathroom, we need to go north from the office to reach the kitchen, and then east from the kitchen to reach the bathroom. hence, the correct direction is north east."
+53,19,53,1,"1. The bathroom is west of the bedroom.
+2. The hallway is south of the office.
+3. The kitchen is north of the bedroom.
+4. The garden is east of the office.
+5. The bedroom is north of the office.",How do you go from the kitchen to the office?,south south,"from context sentence 3, we know the kitchen is north of the bedroom. from context sentence 5, we know the bedroom is north of the office. therefore, the office is south of the bedroom. to go from the kitchen to the office, we need to go south from the kitchen to the bedroom, and then south again from the bedroom to the office. hence, the correct direction is south south."
+54,19,54,1,"1. The bathroom is north of the bedroom.
+2. The garden is south of the kitchen.
+3. The bedroom is west of the kitchen.
+4. The hallway is north of the kitchen.
+5. The office is south of the bedroom.",How do you go from the kitchen to the bathroom?,west north,"to go from the kitchen to the bathroom, we need to find the correct direction. from sentence 3, we know the bedroom is west of the kitchen, so we need to go west from the kitchen to reach the bedroom. then, from sentence 1, we know the bathroom is north of the bedroom, so we need to go north from the bedroom to reach the bathroom. therefore, the correct direction to go from the kitchen to the bathroom is west and then north, which"
+55,19,55,1,"1. The kitchen is south of the hallway.
+2. The bathroom is east of the hallway.
+3. The garden is east of the bathroom.
+4. The bedroom is north of the hallway.
+5. The office is west of the bedroom.",How do you go from the bedroom to the bathroom?,south east,"to go from the bedroom to the bathroom, we need to find the relative directions between the two rooms. from sentence 4, we know the bedroom is north of the hallway. from sentence 2, we know the bathroom is east of the hallway. to go from the bedroom to the hallway, we need to go south (since the bedroom is north of the hallway). once we reach the hallway, we need to go east to reach the bathroom (since the bathroom is east of"
+56,19,56,1,"1. The office is east of the kitchen.
+2. The bathroom is west of the garden.
+3. The hallway is south of the garden.
+4. The bedroom is south of the hallway.
+5. The garden is west of the kitchen.",How do you go from the kitchen to the hallway?,west south,"from the context sentences, we know the relative positions of the different rooms and areas. to go from the kitchen to the hallway, we need to find the path that connects them."
+57,19,57,1,"1. The kitchen is east of the bathroom.
+2. The hallway is west of the garden.
+3. The bathroom is north of the hallway.
+4. The bedroom is south of the garden.
+5. The office is west of the hallway.",How do you go from the garden to the bathroom?,west north,"to go from the garden to the bathroom, we need to find the sequence of directions that connects the two locations. from sentence 2, we know the hallway is west of the garden, so we need to go west from the garden to reach the hallway. then, from sentence 3, we know the bathroom is north of the hallway, so we need to go north from the hallway to reach the bathroom. therefore, the correct sequence of directions is west north."
+58,19,58,1,"1. The bathroom is north of the bedroom.
+2. The kitchen is west of the bathroom.
+3. The bathroom is west of the hallway.
+4. The kitchen is south of the office.
+5. The garden is south of the kitchen.",How do you go from the bathroom to the garden?,west south,"from the context sentences, we know the relative positions of the rooms and areas in the house."
+59,19,59,1,"1. The bathroom is south of the office.
+2. The office is south of the bedroom.
+3. The hallway is west of the bathroom.
+4. The bedroom is east of the kitchen.
+5. The garden is east of the office.",How do you go from the bedroom to the bathroom?,south south,"from sentence 2, we know the office is south of the bedroom. from sentence 1, we know the bathroom is south of the office. therefore, to go from the bedroom to the bathroom, we need to go south from the bedroom to reach the office, and then go south again from the office to reach the bathroom. hence, the correct direction is south south."
+60,19,60,1,"1. The hallway is east of the bedroom.
+2. The hallway is west of the kitchen.
+3. The garden is south of the bedroom.
+4. The bedroom is east of the bathroom.
+5. The bedroom is south of the office.",How do you go from the hallway to the office?,west north,"from sentence 1, we know the hallway is east of the bedroom. to go from the hallway to the bedroom, we need to go west. from sentence 5, we know the bedroom is south of the office. to go from the bedroom to the office, we need to go north. therefore, to go from the hallway to the office, we need to go west (from the hallway to the bedroom) and then north (from the bedroom to the office)."
+61,19,61,1,"1. The hallway is east of the bedroom.
+2. The kitchen is west of the bathroom.
+3. The bedroom is east of the office.
+4. The kitchen is north of the office.
+5. The garden is south of the bedroom.",How do you go from the bedroom to the kitchen?,west north,"from the context sentences, we know the relative positions of the rooms."
+62,19,62,1,"1. The bathroom is south of the office.
+2. The bedroom is south of the hallway.
+3. The kitchen is north of the hallway.
+4. The garden is north of the office.
+5. The office is east of the hallway.",How do you go from the hallway to the garden?,east north,"from the context sentences, we know the relative positions of the different rooms and areas. to go from the hallway to the garden, we need to find the correct direction."
+63,19,63,1,"1. The kitchen is west of the bedroom.
+2. The garden is east of the office.
+3. The hallway is west of the office.
+4. The kitchen is south of the office.
+5. The bedroom is west of the bathroom.",How do you go from the office to the bedroom?,south east,"from the context sentences, we know that the office is east of the hallway (sentence 3) and the kitchen is south of the office (sentence 4). since the kitchen is west of the bedroom (sentence 1), we can infer that the bedroom is north of the kitchen. therefore, to go from the office to the bedroom, we need to go south (from the office to the kitchen) and then east (from the kitchen to the bedroom)."
+64,19,64,1,"1. The office is north of the bedroom.
+2. The garden is west of the bedroom.
+3. The hallway is south of the bathroom.
+4. The kitchen is east of the hallway.
+5. The bedroom is north of the bathroom.",How do you go from the bedroom to the hallway?,south south,"from context sentence 5, we know that the bedroom is north of the bathroom. from context sentence 3, we know that the hallway is south of the bathroom. therefore, to go from the bedroom to the hallway, we need to move south from the bedroom, and since the hallway is directly south of the bathroom, we need to move south again to reach the hallway. hence, the correct direction is south south."
+65,19,65,1,"1. The kitchen is north of the bedroom.
+2. The bathroom is east of the bedroom.
+3. The office is east of the bathroom.
+4. The hallway is east of the garden.
+5. The bathroom is south of the hallway.",How do you go from the bedroom to the hallway?,east north,"to go from the bedroom to the hallway, we need to find the correct sequence of directions. from sentence 2, we know the bathroom is east of the bedroom. from sentence 5, we know the bathroom is south of the hallway. therefore, if we go east from the bedroom, we will reach the bathroom. then, to reach the hallway, we need to go north from the bathroom, as it is south of the hallway. hence, the correct sequence of directions is"
+66,19,66,1,"1. The bedroom is south of the hallway.
+2. The kitchen is south of the garden.
+3. The bathroom is east of the office.
+4. The kitchen is west of the hallway.
+5. The office is north of the hallway.",How do you go from the office to the kitchen?,south west,"from sentence 5, we know the office is north of the hallway. from sentence 4, we know the kitchen is west of the hallway. to go from the office to the kitchen, we need to move south (to reach the hallway) and then west (to reach the kitchen). therefore, the correct direction is south west."
+67,19,67,1,"1. The hallway is east of the bedroom.
+2. The office is west of the garden.
+3. The kitchen is north of the bathroom.
+4. The office is north of the bedroom.
+5. The bathroom is west of the bedroom.",How do you go from the office to the bathroom?,south west,"from sentence 4, we know the office is north of the bedroom. from sentence 5, we know the bathroom is west of the bedroom. therefore, to go from the office to the bathroom, we need to move south (to reach the bedroom) and then west (to reach the bathroom from the bedroom). hence, the correct direction is south west."
+68,19,68,1,"1. The hallway is east of the office.
+2. The kitchen is south of the bathroom.
+3. The garden is east of the bathroom.
+4. The office is east of the bedroom.
+5. The garden is north of the office.",How do you go from the office to the bathroom?,north west,"from sentence 4, we know the office is east of the bedroom. from sentence 1, we know the hallway is east of the office, which means the office is west of the hallway. from sentence 5, we know the garden is north of the office, which means the office is south of the garden. from sentence 3, we know the garden is east of the bathroom, which means the bathroom is west of the garden."
+69,19,69,1,"1. The office is east of the hallway.
+2. The office is south of the bedroom.
+3. The bathroom is north of the garden.
+4. The garden is north of the kitchen.
+5. The garden is east of the office.",How do you go from the bedroom to the garden?,south east,"from sentence 2, we know the office is south of the bedroom. from sentence 5, we know the garden is east of the office. therefore, to go from the bedroom to the garden, we need to go south from the bedroom to reach the office, and then east from the office to reach the garden. hence, the correct direction is south east."
+70,19,70,1,"1. The bathroom is east of the hallway.
+2. The hallway is south of the bedroom.
+3. The garden is west of the bedroom.
+4. The kitchen is north of the office.
+5. The hallway is east of the kitchen.",How do you go from the kitchen to the bedroom?,east north,"from sentence 5, we know the hallway is east of the kitchen. this means that to go from the kitchen to the hallway, we need to go east."
+71,19,71,1,"1. The garden is south of the kitchen.
+2. The bedroom is east of the kitchen.
+3. The office is west of the hallway.
+4. The hallway is north of the bathroom.
+5. The hallway is west of the kitchen.",How do you go from the garden to the hallway?,north west,"from the context sentences, we know the garden is south of the kitchen (sentence 1). we also know the hallway is west of the kitchen (sentence 5). to go from the garden to the hallway, we need to move in the opposite direction of south, which is north, and then move west. therefore, the correct direction to go from the garden to the hallway is north and then west, or simply ""north west""."
+72,19,72,1,"1. The hallway is west of the office.
+2. The bedroom is east of the garden.
+3. The kitchen is east of the bedroom.
+4. The office is north of the bedroom.
+5. The garden is north of the bathroom.",How do you go from the garden to the office?,east north,"to go from the garden to the office, we need to find the correct sequence of directions. from sentence 5, we know the garden is north of the bathroom. from sentence 2, we know the bedroom is east of the garden, so we can go east from the garden to reach the bedroom. from sentence 4, we know the office is north of the bedroom, so we can go north from the bedroom to reach the office. therefore, the correct sequence of directions"
+73,19,73,1,"1. The bedroom is south of the bathroom.
+2. The kitchen is north of the garden.
+3. The garden is east of the hallway.
+4. The kitchen is west of the bathroom.
+5. The office is east of the bathroom.",How do you go from the bathroom to the garden?,west south,"from the context sentences, we know the relative positions of the rooms and areas in the house. to go from the bathroom to the garden, we need to find the correct direction."
+74,19,74,1,"1. The bathroom is east of the office.
+2. The bedroom is west of the kitchen.
+3. The office is east of the kitchen.
+4. The garden is north of the kitchen.
+5. The hallway is north of the bedroom.",How do you go from the bedroom to the office?,east east,"from the context sentences, we know the relative positions of the rooms."
+75,19,75,1,"1. The bedroom is north of the garden.
+2. The kitchen is east of the hallway.
+3. The hallway is east of the bathroom.
+4. The hallway is north of the office.
+5. The hallway is south of the garden.",How do you go from the bathroom to the garden?,east north,"from sentence 3, we know the hallway is east of the bathroom. this means to go from the bathroom to the hallway, we need to move west."
+76,19,76,1,"1. The bedroom is east of the kitchen.
+2. The office is east of the bathroom.
+3. The bedroom is west of the garden.
+4. The hallway is south of the kitchen.
+5. The bathroom is north of the kitchen.",How do you go from the bathroom to the bedroom?,south east,"from sentence 5, we know the bathroom is north of the kitchen. from sentence 1, we know the bedroom is east of the kitchen. to go from the bathroom to the bedroom, we need to move south (to reach the kitchen) and then east (to reach the bedroom). therefore, the correct direction is south east."
+77,19,77,1,"1. The bathroom is south of the bedroom.
+2. The garden is west of the bedroom.
+3. The hallway is south of the office.
+4. The bedroom is south of the kitchen.
+5. The office is west of the kitchen.",How do you go from the office to the bedroom?,east south,"from sentence 5, we know the office is west of the kitchen. from sentence 4, we know the bedroom is south of the kitchen. therefore, to go from the office to the bedroom, we need to go east (to reach the kitchen) and then south (to reach the bedroom). hence, the correct direction is east south."
+78,19,78,1,"1. The kitchen is east of the hallway.
+2. The bedroom is west of the garden.
+3. The garden is west of the hallway.
+4. The bathroom is south of the hallway.
+5. The office is south of the garden.",How do you go from the hallway to the bedroom?,west west,"from the context sentences, we know that the hallway is east of the kitchen (sentence 1), and the garden is west of the hallway (sentence 3). additionally, the bedroom is west of the garden (sentence 2). therefore, to go from the hallway to the bedroom, we need to move west from the hallway to reach the garden, and then move west again from the garden to reach the bedroom. hence, the correct direction is ""west west""."
+79,19,79,1,"1. The garden is north of the bedroom.
+2. The bathroom is south of the hallway.
+3. The hallway is west of the bedroom.
+4. The office is north of the hallway.
+5. The kitchen is north of the office.",How do you go from the office to the bedroom?,south east,"from the context sentences, we know the relative positions of the rooms."
+80,19,80,1,"1. The bedroom is east of the garden.
+2. The bathroom is south of the garden.
+3. The hallway is north of the office.
+4. The garden is south of the kitchen.
+5. The kitchen is west of the office.",How do you go from the garden to the office?,north east,"from sentence 4, we know the garden is south of the kitchen. from sentence 5, we know the kitchen is west of the office. therefore, to go from the garden to the office, we need to go north (to reach the kitchen) and then east (to reach the office). hence, the correct direction is north east."
+81,19,81,1,"1. The bathroom is north of the garden.
+2. The office is west of the hallway.
+3. The kitchen is north of the hallway.
+4. The hallway is west of the garden.
+5. The bedroom is south of the garden.",How do you go from the office to the garden?,east east,"from sentence 2, we know the office is west of the hallway. from sentence 4, we know the hallway is west of the garden. therefore, to go from the office to the garden, we need to move east from the office to reach the hallway, and then move east again from the hallway to reach the garden. hence, the correct direction is east east."
+82,19,82,1,"1. The bedroom is west of the garden.
+2. The kitchen is south of the bedroom.
+3. The office is west of the bedroom.
+4. The hallway is east of the garden.
+5. The bathroom is north of the bedroom.",How do you go from the hallway to the bedroom?,west west,"from context sentence 4, we know that the hallway is east of the garden. from context sentence 1, we know that the bedroom is west of the garden. therefore, to go from the hallway to the bedroom, we need to move west from the hallway, which is east of the garden, to reach the garden, and then move west again from the garden to reach the bedroom. hence, the correct direction is west west."
+83,19,83,1,"1. The office is west of the hallway.
+2. The bedroom is east of the hallway.
+3. The garden is south of the hallway.
+4. The kitchen is south of the garden.
+5. The bathroom is north of the office.",How do you go from the office to the garden?,east south,"to go from the office to the garden, we need to follow the directions provided in the context sentences."
+84,19,84,1,"1. The office is east of the bedroom.
+2. The bathroom is south of the garden.
+3. The office is north of the hallway.
+4. The kitchen is east of the garden.
+5. The hallway is north of the garden.",How do you go from the office to the garden?,south south,"from sentence 1, we know the office is east of the bedroom, but this information is not directly related to the garden."
+85,19,85,1,"1. The bedroom is west of the kitchen.
+2. The hallway is north of the office.
+3. The office is east of the kitchen.
+4. The garden is south of the bathroom.
+5. The office is west of the garden.",How do you go from the garden to the kitchen?,west west,"from sentence 5, we know the office is west of the garden. from sentence 3, we know the office is east of the kitchen. therefore, to go from the garden to the kitchen, we need to go west from the garden to reach the office, and then continue west from the office to reach the kitchen. hence, the correct direction is west west."
+86,19,86,1,"1. The hallway is north of the garden.
+2. The bedroom is east of the office.
+3. The kitchen is west of the garden.
+4. The bathroom is south of the office.
+5. The garden is west of the bathroom.",How do you go from the garden to the office?,east north,"from sentence 1, we know the hallway is north of the garden. from sentence 5, we know the garden is west of the bathroom. from sentence 4, we know the bathroom is south of the office. therefore, if we start from the garden, we need to go east to reach the bathroom (since the garden is west of the bathroom), and then go north to reach the office (since the bathroom is south of the office). hence, the correct direction"
+87,19,87,1,"1. The garden is south of the office.
+2. The garden is west of the hallway.
+3. The kitchen is west of the bathroom.
+4. The bathroom is south of the garden.
+5. The bedroom is west of the garden.",How do you go from the bathroom to the office?,north north,"from sentence 4, we know the bathroom is south of the garden. from sentence 1, we know the garden is south of the office. therefore, to go from the bathroom to the office, we need to go north from the bathroom to reach the garden, and then go north again from the garden to reach the office. hence, the correct direction is north north."
+88,19,88,1,"1. The bedroom is west of the kitchen.
+2. The bedroom is north of the bathroom.
+3. The kitchen is north of the office.
+4. The hallway is east of the kitchen.
+5. The garden is north of the kitchen.",How do you go from the garden to the bedroom?,south west,"from the context sentences, we know the relative positions of the different rooms and areas in the house."
+89,19,89,1,"1. The garden is south of the kitchen.
+2. The bathroom is west of the office.
+3. The kitchen is west of the hallway.
+4. The hallway is west of the bedroom.
+5. The office is west of the kitchen.",How do you go from the office to the hallway?,east east,"from sentence 5, we know that the office is west of the kitchen. from sentence 3, we know that the kitchen is west of the hallway. therefore, to go from the office to the hallway, we need to move east from the office to reach the kitchen, and then move east again from the kitchen to reach the hallway. hence, the correct direction is east east."
+90,19,90,1,"1. The kitchen is north of the office.
+2. The bathroom is south of the hallway.
+3. The office is west of the bathroom.
+4. The garden is south of the bathroom.
+5. The bedroom is west of the office.",How do you go from the office to the hallway?,east north,"from sentence 3, we know the office is west of the bathroom. from sentence 2, we know the bathroom is south of the hallway. therefore, to go from the office to the hallway, we need to go east (to reach the bathroom) and then north (to reach the hallway). hence, the correct direction is east north."
+91,19,91,1,"1. The hallway is north of the bathroom.
+2. The bedroom is south of the garden.
+3. The kitchen is north of the hallway.
+4. The office is south of the bathroom.
+5. The garden is west of the hallway.",How do you go from the bathroom to the garden?,north west,"from the context sentences, we know that the hallway is north of the bathroom (sentence 1). we also know that the garden is west of the hallway (sentence 5). therefore, to go from the bathroom to the garden, we need to go north from the bathroom to reach the hallway, and then west from the hallway to reach the garden. hence, the correct direction is north west."
+92,19,92,1,"1. The bathroom is north of the kitchen.
+2. The garden is east of the office.
+3. The office is east of the bedroom.
+4. The bathroom is south of the office.
+5. The hallway is west of the bedroom.",How do you go from the bedroom to the bathroom?,east south,"from the context sentences, we know the relative positions of the rooms."
+93,19,93,1,"1. The bathroom is west of the garden.
+2. The bedroom is west of the office.
+3. The kitchen is west of the hallway.
+4. The garden is north of the office.
+5. The kitchen is east of the office.",How do you go from the kitchen to the garden?,west north,"from sentence 5, we know the kitchen is east of the office. from sentence 4, we know the garden is north of the office. therefore, to go from the kitchen to the garden, we need to go west to reach the office (since the kitchen is east of the office) and then go north to reach the garden (since the garden is north of the office). hence, the correct direction is west north."
+94,19,94,1,"1. The kitchen is south of the hallway.
+2. The bedroom is north of the hallway.
+3. The hallway is west of the office.
+4. The garden is west of the kitchen.
+5. The bathroom is south of the kitchen.",How do you go from the hallway to the bathroom?,south south,"from the context sentences, we know that the hallway is east of the kitchen (since the kitchen is west of the hallway, as stated in sentence 3). we also know that the bathroom is south of the kitchen (sentence 5). therefore, to go from the hallway to the bathroom, we need to go south from the hallway to reach the kitchen, and then go south again from the kitchen to reach the bathroom. hence, the correct direction is south south."
+95,19,95,1,"1. The kitchen is north of the hallway.
+2. The office is south of the bathroom.
+3. The garden is east of the kitchen.
+4. The hallway is west of the bathroom.
+5. The bedroom is north of the kitchen.",How do you go from the bathroom to the kitchen?,west north,"from sentence 4, we know that the hallway is west of the bathroom. from sentence 1, we know that the kitchen is north of the hallway. therefore, to go from the bathroom to the kitchen, we need to go west from the bathroom to reach the hallway, and then go north from the hallway to reach the kitchen. hence, the correct direction is west north."
+96,19,96,1,"1. The kitchen is north of the bathroom.
+2. The hallway is south of the office.
+3. The bedroom is east of the garden.
+4. The hallway is east of the bathroom.
+5. The bathroom is east of the bedroom.",How do you go from the bedroom to the hallway?,east east,"from sentence 4, we know that the hallway is east of the bathroom. from sentence 5, we know that the bathroom is east of the bedroom. therefore, to go from the bedroom to the hallway, we need to move east from the bedroom to reach the bathroom, and then move east again from the bathroom to reach the hallway. hence, the correct direction is east east."
+97,19,97,1,"1. The bedroom is south of the hallway.
+2. The office is east of the hallway.
+3. The office is west of the bathroom.
+4. The garden is north of the bathroom.
+5. The kitchen is east of the bathroom.",How do you go from the hallway to the bathroom?,east east,"from the context sentences, we know the relative positions of the rooms."
+98,19,98,1,"1. The office is east of the kitchen.
+2. The bathroom is west of the kitchen.
+3. The bedroom is north of the kitchen.
+4. The hallway is south of the kitchen.
+5. The bathroom is north of the garden.",How do you go from the bathroom to the office?,east east,"to go from the bathroom to the office, we need to find the path that connects these two locations. from sentence 2, we know the bathroom is west of the kitchen. from sentence 1, we know the office is east of the kitchen. therefore, to go from the bathroom to the office, we need to go east from the bathroom to reach the kitchen, and then continue going east from the kitchen to reach the office. hence, the correct direction is east east."
+99,19,99,1,"1. The kitchen is west of the bathroom.
+2. The hallway is west of the bedroom.
+3. The garden is north of the office.
+4. The bathroom is west of the office.
+5. The bedroom is north of the bathroom.",How do you go from the bedroom to the office?,south east,"from sentence 5, we know the bedroom is north of the bathroom. from sentence 4, we know the bathroom is west of the office. therefore, to go from the bedroom to the office, we need to go south (to reach the bathroom) and then east (to reach the office from the bathroom). hence, the correct direction is south east."
+100,19,100,1,"1. The bedroom is south of the garden.
+2. The hallway is west of the bathroom.
+3. The kitchen is east of the garden.
+4. The bathroom is north of the kitchen.
+5. The office is south of the kitchen.",How do you go from the garden to the bathroom?,east north,"from the context sentences, we know the relative positions of the rooms. to go from the garden to the bathroom, we need to find the path that connects these two rooms."

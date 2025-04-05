@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import gc
 from abc import ABC, abstractmethod
 
@@ -79,6 +80,16 @@ class Setting(ABC):
         """
         # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
         raise NotImplementedError
+
+    def create_chat_copy(self, chat: Chat) -> Chat:
+        """
+        Store the original chat and create a copy for use in the setting.
+
+        :param chat: The original chat to copy
+        :return: A copy of the original chat
+        """
+        self.chat = chat
+        return copy.deepcopy(chat)
 
     def iterate_task(
         self,
@@ -229,25 +240,33 @@ class Setting(ABC):
                 )
 
                 if self.multi_system:
-                    # 8. Call interpretability attention score method
-                    interpretability_before = (
-                        self.interpretability.get_attention(
-                            current_part, chat=chat, after=False
+                    with torch.no_grad():
+                        # 8. Call interpretability attention score method
+                        interpretability_before = (
+                            self.interpretability.get_attention(
+                                current_part, chat=chat, after=False
+                            )
+                            if self.multi_system and self.interpretability
+                            else None
                         )
-                        if self.multi_system and self.interpretability
-                        else None
-                    )
-                    answer, reasoning = parse_output(output=decoded_output)
-                    current_part.set_output(
-                        model_output=decoded_output,
-                        answer=answer,
-                        reasoning=reasoning,
-                        interpretability=interpretability_before,
-                        after=False,
-                    )
+                        answer, reasoning = parse_output(output=decoded_output)
+                        current_part.set_output(
+                            model_output=decoded_output,
+                            answer=answer,
+                            reasoning=reasoning,
+                            interpretability=interpretability_before,
+                            after=False,
+                        )
                     print(
                         f"Last chat message from student before applying the setting: {chat.messages['student'][-1]}"
                     )
+                    print(
+                        "DEBUG: Model Output before applying the setting:",
+                        decoded_output,
+                    )
+
+                if self.multi_system:
+                    self.model.curr_sample_part = current_part
 
                 # 7. Applying the changes that are specific to each setting
                 with torch.no_grad():
@@ -263,12 +282,11 @@ class Setting(ABC):
                         if self.interpretability
                         else None
                     )
-
                     current_part.set_output(
-                        decoded_output,
-                        answer,
-                        reasoning,
-                        interpretability_after,
+                        model_output=decoded_output,
+                        answer=answer,
+                        reasoning=reasoning,
+                        interpretability=interpretability_after,
                         after=True,
                     )
 

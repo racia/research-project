@@ -1,5 +1,4 @@
 from __future__ import annotations
-import os
 
 from inference.Chat import Chat
 from inference.Prompt import Prompt
@@ -18,13 +17,7 @@ class Baseline(Setting):
     def __init__(
         self,
         model: Model,
-<<<<<<< HEAD
-        max_new_tokens: int,
-        temperature: float,
         to_enumerate: dict[Enumerate, bool],
-=======
-        to_enumerate: Enumerate,
->>>>>>> e6037e4ebd8ce8f2ac07f8a9c529eac953b0d5ef
         total_tasks: int,
         total_parts: int,
         interpretability: Interpretability,

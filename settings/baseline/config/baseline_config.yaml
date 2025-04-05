@@ -57,7 +57,7 @@ data:
 
 init_prompt:
   paths:
-    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_direct_answer.txt"
+    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
   examples:
     add: False
     enumerated: True
@@ -80,8 +80,9 @@ logging:
   # if to print the results to a log file, otherwise will print to console
   print_to_file: True
 
+
 results:
-  save_heatmaps: True
+  save_heatmaps: False
   headers:
     - id_
     - task_id

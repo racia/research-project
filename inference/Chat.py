@@ -3,17 +3,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Union
 
-<<<<<<< HEAD
-from interpretability.Interpretability import Interpretability
-
-=======
 import torch
 from transformers import AutoTokenizer
 
 from inference.DataLevels import SamplePart
-from inference.Prompt import Prompt
+#from inference.Prompt import Prompt
 from inference.utils import generation_token
->>>>>>> e6037e4ebd8ce8f2ac07f8a9c529eac953b0d5ef
 
 
 @dataclass
@@ -67,11 +62,7 @@ class Chat:
 
     @staticmethod
     def format_message(
-<<<<<<< HEAD
-        part: str | list[str], role: Union[Source.user, Source.assistant] # type: ignore
-=======
         part: SamplePart | str, role: Union[Source.user, Source.assistant]
->>>>>>> e6037e4ebd8ce8f2ac07f8a9c529eac953b0d5ef
     ) -> dict[str, str]:
         """
         Formats the prompt by managing the data type and putting in into
@@ -81,21 +72,7 @@ class Chat:
         :param role: the producer of the message
         :return: prompt formatted as a dict
         """
-<<<<<<< HEAD
-        if type(part) is list:
-            part = "\n".join(part)
-        return {"role": role, "content": part}
-    
 
-    def get_message(self):
-        return self.messages
-
-
-    def add_message(
-        self,
-        part: str | list[str],
-        source: Union[Source.user, Source.assistant], # type: ignore
-=======
         if isinstance(part, str):
             return {
                 "role": role,
@@ -112,9 +89,7 @@ class Chat:
         self,
         part: SamplePart | str,
         source: Union[Source.user, Source.assistant],
->>>>>>> e6037e4ebd8ce8f2ac07f8a9c529eac953b0d5ef
         model_role: str = "student",
-        interpretability: Interpretability = None  # type: ignore
     ) -> None:
         """
         Add a message to the messages list.
@@ -126,12 +101,6 @@ class Chat:
         if self.multi_system:
             self.messages[model_role].append(self.format_message(part, source))
         else:
-            if interpretability: # @TODO Check whether part-wise
-                if source == "assistant":
-                    return
-                if len(self.messages) > 1: # Consider all previous context
-                    #self.messages.pop()
-                    pass
             self.messages.append(self.format_message(part, source))
 
     def convert_into_ids(
@@ -140,7 +109,7 @@ class Chat:
         chat_part: list[dict] = None,
         max_new_tokens: int = 100,
         max_length: int = 2048,
-    ) -> torch.LongTensor:
+    ) -> tuple[torch.LongTensor, list[tuple[int, int]]]:
         """
         Converts either all the chat messages or the specified ones into ids ensuring that the input does not exceed
         the max_length. The system prompt is always included in the input, regardless of the chat_part.
@@ -157,12 +126,22 @@ class Chat:
         input_tokens_left = max_length - max_new_tokens
 
         history_ids = []
+        supporting_sent_spans = []
         for message in chat_part if chat_part else self.messages:
             message_ids = [generation_token(tokenizer, message["role"])]
 
-            message_ids.extend(
-                tokenizer.encode(message["original_content"], add_special_tokens=False)
-            )
+            for sentence in message["original_content"].split("\n"):
+                tokenized_sentence = tokenizer.encode(
+                    sentence, add_special_tokens=False
+                )
+                if message["role"] == "user":
+                    start = len(message_ids) + 1
+                    message_ids.extend(tokenized_sentence)
+                    end = len(message_ids)
+                    supporting_sent_spans.append((start, end))
+                else:
+                    message_ids.extend(tokenized_sentence)
+
             if len(history_ids) + len(message_ids) <= input_tokens_left:
                 history_ids += message_ids
             elif message["role"] == "assistant":
@@ -174,4 +153,7 @@ class Chat:
                 raise Exception("Unexpected error for message:", message)
 
         # take all the tokens that could fit
-        return torch.LongTensor([history_ids[-input_tokens_left:]])
+        return (
+            torch.LongTensor([history_ids[-input_tokens_left:]]),
+            supporting_sent_spans,
+        )
