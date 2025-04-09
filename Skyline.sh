@@ -22,7 +22,7 @@
 
 if command -v module >/dev/null 2>&1; then
     echo "Module util is available. Loading python and CUDA..."
-    module load devel/python/3.13.1-gnu-14.2
+    module load devel/python/3.12.3-gnu-14.2
     module load devel/cuda/12.8
 else
     echo "Module util is not available. Using manually installed python and CUDA..."
