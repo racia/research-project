@@ -1,47 +1,44 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=skyline_reasoning               # TODO: adjust job name
+#SBATCH --job-name=skyline_reasoning
 
 #SBATCH --time=15:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                # Request 4 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
-#SBATCH --partition=gpu_4
 #SBATCH --mem=32GB
+#SBATCH --partition=gpu_4
 
 # Output and error logs
-#SBATCH --output="reason_out.txt"        # TODO: adjust standard output log
-#SBATCH --error="reason_err.txt"         # TODO: adjust error log
+#SBATCH --output="sky_reason_out.txt"
+#SBATCH --error="sky_reason_err.txt"
 
 # Email notifications
-#SBATCH --mail-user=""
+#SBATCH --mail-user=""              # TODO: Add your email address
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
-# initialize shell to work with bash
-source ~/.bashrc
 
-module load devel/miniconda/23.9.0-py3.9.15
-module load devel/cuda/11.8
-
-
-# Verify conda availability
-if ! command -v conda &> /dev/null; then
-    echo "Error: Conda is not available after loading the module."
-    exit 1
+if command -v module >/dev/null 2>&1; then
+    echo "Module util is available. Loading python and CUDA..."
+    module load devel/python/3.13.1-gnu-14.2
+    module load devel/cuda/12.8
 else
-    echo "Conda is available."
+    echo "Module util is not available. Using manually installed python and CUDA..."
 fi
 
+# initialize shell to work with bash
+source ~/.bashrc 2>/dev/null
+
 # Activate the conda environment
-ENV_NAME="research-project"
-echo "Activating conda environment: $ENV_NAME"
-if ! conda activate "$ENV_NAME"; then
-    echo "Error: Failed to activate conda environment '$ENV_NAME'."
+ENV_NAME=".env"
+echo "Activating the project environment: $ENV_NAME"
+if ! source $ENV_NAME/bin/activate; then
+    echo "Error: Failed to activate the project environment '$ENV_NAME'."
     exit 1
 else
-    echo "Conda environment '$ENV_NAME' activated successfully."
+    echo "The project environment '$ENV_NAME' activated successfully."
 fi
 
 # Check if data directory exists
@@ -82,9 +79,5 @@ else
 fi
 
 echo "Job completed successfully."
-
-COLUMNS="JobID,JobName,MaxRSS,NTasks,AllocCPUS,AllocGRES,AveDiskRead,AveDiskWrite,Elapsed,State"
-sacct -l -j $SLURM_JOB_ID --format=$COLUMNS
-
-echo "Deactivating conda environment: $ENV_NAME"
-conda deactivate
+echo "Deactivating the environment: $ENV_NAME"
+deactivate
