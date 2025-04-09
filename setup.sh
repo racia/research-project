@@ -120,5 +120,7 @@ python3.12 -m nltk.downloader
 read -rp "Enter your Huggingface token: " token
 export HUGGINGFACE="$token"
 
+huggingface-cli login --token "$HUGGINGFACE" --yes
+
 echo "✅ All packages installed successfully!"
 echo "The setup is finished. Good luck on your research journey, adventurous traveller!"
