@@ -7,6 +7,26 @@ both "CLuster" and "bwUniCluster".
 
 ### Set up the project
 
+#### Steps on BWUniCluster3.0
+
+Log into the bwUniCluster using ssh with the following command:
+
+```commandline
+ssh hd_{uni_id}@uc3.scc.kit.edu
+```
+
+Once you have logged in the cluster, clone the repository and run the setup script.
+
+```commandline
+git clone https://gitlab.cl.uni-heidelberg.de/sari/research-project.git
+cd research-project || exit 1
+bash setup.sh
+```
+
+Manual actions will be required in the end of the script, so please follow the instructions.
+
+#### Steps locally or on CLuster
+
 First, you need to get the data, the project repository,
 and create an environment for the project.
 
@@ -18,8 +38,6 @@ and create an environment for the project.
 * `research-project`
 
 The data repository on the cluster is located here: `/workspace/students/reasoning`.
-
-#### Steps locally or on CLuster
 
 0. [if CLuster is your destination] Connect to the cluster with `ssh {your_surname}@cluster.cl.uni-heidelberg.de`.
 
@@ -124,64 +142,5 @@ To get started, log into the Heidelberg University Computational Linguistics clu
 1. Create a virtual environment: `python3 -m venv venv`
 2. Install all dependencies: `pip install -r requirements.txt`
 3. Activate environment: `source ~/venv/bin/activate`
-
-#### Steps on bwUniCluster
-
-0. Connect to the bwUniCluster using ssh with the following command:
-   `ssh hd_{uni_id}@bwunicluster.scc.kit.edu`.
-
-1. Clone the GitHub repository. This can be done via HTTPS, so you do not need to setup an ssh token.
-    ```commandline
-    git clone https://gitlab.cl.uni-heidelberg.de/sari/research-project.git
-    ```
-   The repository will be created in your home directory.
-
-2. In a new terminal, navigate to the local folder where the data is located. Then run the following command to copy the
-   data to the remote home directory:
-   `scp -r tasks_1-20_v1-2 hd_{uni_id}@bwunicluster.scc.kit.edu:.`
-3. Add this command to `~/.bashrc` in order to activate the conda environment
-
-```commandline
-   source ~/miniconda3/etc/profile.d/conda.sh
- ```
-
-3. Activate the necessary modules:
-    ```commandline
-    module load devel/miniconda/23.9.0-py3.9.15
-    module load devel/cuda/11.8
-    ```
-
-   You can check the available modules using `module avail`.
-
-4. Create the conda environment by running the following commands.
-
-- First, we need to change the solver: `conda config --set solver libmamba`
-- Then, we can actually create the environment:
-    ```commandline
-    conda create -n research-project "python>=3.9" scikit-learn numpy transformers matplotlib black "hydra-core>1" "pytorch::pytorch>=2.0" torchvision torchaudio pytorch-cuda=11.8 "conda-forge::accelerate>=0.26.0" -c pytorch -c nvidia -c conda-forge
-    ```
-  Install the model and cuda for Spacy:
-   ```commandline
-   python -m venv .env
-   source .env/bin/activate
-   pip install -U pip setuptools wheel
-   pip install -U 'spacy[cuda11x]'
-   python -m spacy download en_core_web_sm
-   ```
-
-  In theory, this should also be possible using the `environment.yaml` file:
-    ```commandline
-    conda env create -f research-project/environment.yaml
-    ```
-
-5. Sometimes, the shell needs to be configured to use `conda activate`. If so, run `conda init bash`, and reload the
-   shell, i.e. by closing the connection to the server and reconnecting again.
-
-6. Activate the conda environment: `conda activate research-project`
-
-7. To run the scripts with a Llama-3 model, you need to add a Huggingface access token:
-    ```commandline
-    export HF_TOKEN="<<your-token>>"
-    ```
 
 ---

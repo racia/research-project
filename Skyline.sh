@@ -11,8 +11,8 @@
 #SBATCH --partition=dev_gpu_4
 
 # Output and error logs
-#SBATCH --output="skyline_out.txt"
-#SBATCH --error="skyline_err.txt"
+#SBATCH --output="skyline_out.txt"        # TODO: adjust standard output log
+#SBATCH --error="skyline_err.txt"         # TODO: adjust error log
 
 # Email notifications
 #SBATCH --mail-user=""              # TODO: Add your email address
@@ -21,32 +21,24 @@
 ### JOB STEPS START HERE ###
 
 if command -v module >/dev/null 2>&1; then
-    echo "Module util is available. Loading miniconda and CUDA..."
-    module load devel/miniconda/23.9.0-py3.9.15
-    module load devel/cuda/11.8
+    echo "Module util is available. Loading python and CUDA..."
+    module load devel/python/3.12.3-gnu-14.2
+    module load devel/cuda/12.8
 else
-    echo "Module util is not available. Using manually installed miniconda and CUDA..."
+    echo "Module util is not available. Using manually installed python and CUDA..."
 fi
 
 # initialize shell to work with bash
-source ~/.bashrc 2>/dev/null || source ~/miniconda3/etc/profile.d/conda.sh
-
-# Verify conda availability
-if ! command -v conda &> /dev/null; then
-    echo "Error: Conda is not available after loading the module."
-    exit 1
-else
-    echo "Conda is available."
-fi
+source ~/.bashrc 2>/dev/null
 
 # Activate the conda environment
-ENV_NAME="research-project"
-echo "Activating conda environment: $ENV_NAME"
-if ! conda activate "$ENV_NAME"; then
-    echo "Error: Failed to activate conda environment '$ENV_NAME'."
+ENV_NAME=".env"
+echo "Activating the project environment: $ENV_NAME"
+if ! source $ENV_NAME/bin/activate; then
+    echo "Error: Failed to activate the project environment '$ENV_NAME'."
     exit 1
 else
-    echo "Conda environment '$ENV_NAME' activated successfully."
+    echo "The project environment '$ENV_NAME' activated successfully."
 fi
 
 # Check if data directory exists
@@ -99,9 +91,5 @@ else
 fi
 
 echo "Job completed successfully."
-
-COLUMNS="JobID,JobName,MaxRSS,NTasks,AllocCPUS,AllocGRES,AveDiskRead,AveDiskWrite,Elapsed,State"
-sacct -l -j $SLURM_JOB_ID --format=$COLUMNS
-
-echo "Deactivating conda environment: $ENV_NAME"
-conda deactivate
+echo "Deactivating the environment: $ENV_NAME"
+deactivate
