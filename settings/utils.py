@@ -87,8 +87,8 @@ def parse_output(output: str) -> tuple:
     :param output: parsed output of the model
     :return: model's answer and reasoning
     """
-    answer_pattern = re.compile(r"(?i)answer:[\s ]*(.+)")
-    reasoning_pattern = re.compile(r"(?i)reasoning:[\s ]*(.+)")
+    answer_pattern = re.compile(r"(?im)^answer:[\s ]*(.+)")
+    reasoning_pattern = re.compile(r"(?im)^reasoning:[\s ]*(.+)")
 
     answer_search = answer_pattern.search(output)
     answer = answer_search[1].strip() if answer_search else ""

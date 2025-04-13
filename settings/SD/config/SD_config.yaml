@@ -87,10 +87,12 @@ results:
     - sample_id
     - part_id
     - task
+    - answer_lies_in_self
     - golden_answer
     - silver_reasoning
     - model_answer_after
-    - correct_after
+    - answer_correct_after
+    - reasoning_correct_after
     - model_reasoning_after
     - model_output_after
     - exact_match_accuracy_after
@@ -99,8 +101,10 @@ results:
     - verbs_after
     - pronouns_after
     - not_mentioned_after
+    - context_sents_hall_after
     - model_answer_before
-    - correct_before
+    - answer_correct_before
+    - reasoning_correct_before
     - model_reasoning_before
     - model_output_before
     - exact_match_accuracy_before
@@ -109,6 +113,7 @@ results:
     - verbs_before
     - pronouns_before
     - not_mentioned_before
+    - context_sents_hall_before
 
 hydra:
   run:

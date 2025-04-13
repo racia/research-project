@@ -20,7 +20,7 @@ class DataLoader:
     This class handles loading the data.
     """
 
-    def __init__(self, samples_per_task: int = None):
+    def __init__(self, samples_per_task: int = None, prefix: str | Path = ""):
         """
         Initialize the DataLoader.
         The dataloader handles the reading and loading of data, as well as the mapping of tasks to
@@ -30,6 +30,9 @@ class DataLoader:
         self.samples_per_task: int = samples_per_task
         self.number_of_tasks: int = 0
         self.tasks: list[int] = []
+
+        self.prefix: Path = Path(prefix)
+        self.silver_reasoning_path: Path = self.prefix / "data/silver_reasoning/"
 
     @staticmethod
     def get_task_mapping(path: Path) -> dict[int, list[Path]]:
@@ -134,7 +137,7 @@ class DataLoader:
 
     @staticmethod
     def load_results(
-        path: str,
+        path: str | Path,
         headers: list[str] = None,
         list_output: bool = False,
         sep: str = "\t",
@@ -160,8 +163,10 @@ class DataLoader:
                 headers = reader.fieldnames
 
             for row in reader:
+                if not row[list(row.keys())[0]].isdigit():
+                    continue
                 # to make sure we are reading a row containing data
-                if list_output and row[list(row.keys())[0]].isdigit():
+                if list_output:
                     row_ = {}
                     for header, value in row.items():
                         if header in headers:
@@ -211,34 +216,42 @@ class DataLoader:
         return scenery_words
 
     def load_reasoning_data(
-        self, path: str, headers: list[str]
+        self, task_id: int, split: str = DataSplits.valid
     ) -> dict[tuple[int, int, int], dict]:
         """
-        Load the silver reasoning data.
+        Load the silver reasoning data for a specific task and split.
 
-        :param path: path to the silver reasoning data
-        :param headers: headers for the silver reasoning data
+        :param task_id: task id
+        :param split: split of the data
+        :return: silver reasoning data
         """
-        if not Path(path).exists():
+        if not self.silver_reasoning_path.exists():
             raise FileNotFoundError(
-                "The silver reasoning data is not found at the path:", path
+                "The silver reasoning data is not found at the path:",
+                self.silver_reasoning_path,
+            )
+        silver_reasoning_data = []
+        for path in self.silver_reasoning_path.iterdir():
+            if f"{split}_{task_id}." in path.name:
+                silver_reasoning_data = self.load_results(
+                    Path.cwd() / path, list_output=True, sep=","
+                )
+                break
+
+        if not silver_reasoning_data:
+            raise FileNotFoundError(
+                f"Silver reasoning data for task {task_id} and split {split} is "
+                f"not found in the path: {self.silver_reasoning_path}"
             )
 
-        silver_reasoning_data = self.load_results(
-            path,
-            headers=headers,
-            list_output=True,
-            sep=",",
-        )
         silver_reasoning_data = {
-            (int(row["TaskID"]), int(row["SampleID"]), int(row["SamplePart"])): row
+            (int(row["task_id"]), int(row["sample_id"]), int(row["part_id"])): row
             for row in silver_reasoning_data
         }
         return silver_reasoning_data
 
-    @staticmethod
     def load_interpretability(
-        task_id: int, sample_id: int, part_id: int, attn_scores_path: str
+        self, task_id: int, sample_id: int, part_id: int, attn_scores_path: str
     ) -> InterpretabilityResult:
         """
         Load the interpretability results for a specific part.

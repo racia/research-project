@@ -1,7 +1,11 @@
+from __future__ import annotations
+
 import re
+import warnings
 
 import torch
 
+from data.DataSaver import DataSaver
 from inference.Chat import Chat, Source
 from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
@@ -20,6 +24,29 @@ class Feedback(Setting):
     The feedback_prompt is used to prompt the teacher model to evaluate the chain of thought of the student.
     The refine_prompt is used to prompt the student to refine its chain of thought with feedback from the teacher.
     """
+    positive_indicators = [
+        "good",
+        "well done",
+        "right",
+        "that's right",
+        "that is right",
+        "correct answer",
+        "well reasoned",
+        "perfect",
+    ]
+    negative_indicators = [
+        "wrong",
+        "error",
+        "mistake",
+        "check",
+        "look again",
+        "review",
+        "reconsider",
+        "verify",
+        "double-check",
+        "hint",
+        "not quite",
+    ]
 
     def __init__(
         self,
@@ -37,10 +64,8 @@ class Feedback(Setting):
         student_max_new_tokens: int = 200,
         multi_system: bool = True,
         wrapper: Wrapper = None,
+        saver: DataSaver = None,
     ):
-        """
-        Create a feedback setting.
-        """
         """
         Create a feedback setting.
 
@@ -70,6 +95,7 @@ class Feedback(Setting):
             to_enumerate=to_enumerate,
             wrapper=wrapper,
             interpretability=interpretability,
+            saver=saver,
         )
 
         # Additional attributes specific to Feedback
@@ -77,13 +103,13 @@ class Feedback(Setting):
         self.student: Model = student
         self.tokenizer = student.tokenizer
 
-        self.teacher_max_new_tokens = teacher_max_new_tokens
-        self.student_max_new_tokens = student_max_new_tokens
+        self.teacher_max_new_tokens: int = teacher_max_new_tokens
+        self.student_max_new_tokens: int = student_max_new_tokens
 
-        self.feedback_prompt = feedback_prompt
-        self.refine_prompt = refine_prompt
+        self.feedback_prompt: Prompt = feedback_prompt
+        self.refine_prompt: Prompt = refine_prompt
 
-        self.initial_student_output = None
+        self.initial_student_output: str = ""
 
     def prepare_prompt(self, chat: Chat, resume_gen=False, model_role="student") -> str:
         """
@@ -106,7 +132,8 @@ class Feedback(Setting):
 
         return formatted_prompt
 
-    def check_feedback(self, teacher_feedback: str) -> bool:
+    @staticmethod
+    def check_feedback(teacher_feedback: str) -> bool | None:
         """
         Determine whether the teacher's feedback is valid and whether they are satisfied
         with the student's response.
@@ -116,8 +143,8 @@ class Feedback(Setting):
         """
 
         if not teacher_feedback.strip():
-            print("Teacher returned an empty response!")
-            return False
+            warnings.warn("DEBUG: Teacher returned an empty response!")
+            return None
 
         # Clean the feedback for better pattern matching
         cleaned_feedback = re.sub(r"[*_-]", "", teacher_feedback.lower())
@@ -125,43 +152,17 @@ class Feedback(Setting):
         # Check for malformed feedback patterns
         invalid_patterns = ["_____", "-----"]
         if any(pattern in teacher_feedback for pattern in invalid_patterns):
-            print(f"Malformed feedback detected: {teacher_feedback}")
+            warnings.warn(f"Malformed feedback detected: {teacher_feedback}")
             return False
 
         # Look for explicit 'correct' anywhere in the feedback
-        if re.search(r"\bcorrect\b(?!.*\bincorrect\b)", cleaned_feedback):
+        if re.search(r"(?im)^correct\b(?!.*\bincorrect\b)", cleaned_feedback):
             # Make sure "incorrect" doesn't appear after "correct"
             return True
 
         # Look for explicit 'incorrect'
         if "incorrect" in cleaned_feedback:
             return False
-
-        # More nuanced positive/negative detection
-        positive_indicators = [
-            "good",
-            "well done",
-            "right",
-            "that's right",
-            "that is right",
-            "correct answer",
-            "well reasoned",
-            "perfect",
-        ]
-
-        negative_indicators = [
-            "wrong",
-            "error",
-            "mistake",
-            "check",
-            "look again",
-            "review",
-            "reconsider",
-            "verify",
-            "double-check",
-            "hint",
-            "not quite",
-        ]
 
         # Calculate weighted score (with more weight on exact matches)
         positive_score = sum(
@@ -170,7 +171,7 @@ class Feedback(Setting):
                 if f" {indicator} " in f" {cleaned_feedback} "
                 else 1 if indicator in cleaned_feedback else 0
             )
-            for indicator in positive_indicators
+            for indicator in Feedback.positive_indicators
         )
 
         negative_score = sum(
@@ -179,7 +180,7 @@ class Feedback(Setting):
                 if f" {indicator} " in f" {cleaned_feedback} "
                 else 1 if indicator in cleaned_feedback else 0
             )
-            for indicator in negative_indicators
+            for indicator in Feedback.negative_indicators
         )
 
         if positive_score > negative_score:
@@ -194,90 +195,42 @@ class Feedback(Setting):
         # Default behavior - when unsure
         return False
 
-    def generate_student(self, input_prompt: str, chat: Chat) -> str:
-        """
-        Generate some candidates using the student model.
-
-        The student model generates a chain of thought based on the input string.
-        The maximum length of this chain of thought is handled by the max_length parameter.
-
-        :param input_prompt: the init prompt with the input string
-        :param chat: the current chat
-
-        :return: The output of the student model
-        """
-        formulated_resume_prompt = self.refine_prompt.formulate_refine_prompt(
-            part=self.student.curr_sample_part,
-            to_enumerate=self.to_enumerate,
-            cot_to_continue=input_prompt,
-        )
-
-        chat.add_message(
-            part=formulated_resume_prompt, source="user", model_role="student"
-        )
-
-        formatted_prompt = self.prepare_prompt(
-            chat=chat, resume_gen=False, model_role="student"
-        )
-
-        print(
-            "Formatted resume prompt:",
-            formulated_resume_prompt,
-            sep="\n",
-            end="\n\n\n",
-        )
-
-        with torch.no_grad():
-            student_out = self.student.call(
-                formatted_prompt,
-            )
-
-            return student_out
-
-    def give_feedback(self, input_prompt: str, chat: Chat) -> tuple[str, bool]:
+    def give_feedback(self, initial_output: str, chat: Chat) -> tuple[str, bool]:
         """
         Prompt the teacher to give feedback on the current chain of thought of the student.
         Similar to verify_output in SpeculativeDecoding.
 
-        :param input_prompt: The student's chain of thought to evaluate
+        :param initial_output: The student's chain of thought to evaluate
         :param chat: The current chat
 
         :return: A tuple containing the teacher's feedback and a boolean indicating whether
                  the feedback indicates satisfaction
         """
-        self.teacher.curr_sample_part = self.model.curr_sample_part
-
         # Format the feedback prompt
-        formatted_feedback_prompt = self.feedback_prompt.format_feedback_message(
-            part=self.teacher.curr_sample_part,
-            to_enumerate=self.to_enumerate,
-            cot_to_evaluate=input_prompt,
-        )
-        if self.teacher.curr_sample_part is None:
+        teacher_message = self.feedback_prompt.format_teacher_message(initial_output)
+        if self.current_part is None:
             raise ValueError(
-                "ERROR: teacher.curr_sample_part is None. Ensure it is properly assigned."
+                "ERROR: self.current_part is None. Ensure it is properly assigned."
             )
 
-        if not hasattr(self.teacher.curr_sample_part, "raw"):
+        if not hasattr(self.current_part, "raw"):
             raise ValueError(
-                f"ERROR: teacher.curr_sample_part does not have attribute 'raw'. Content: {self.teacher.curr_sample_part}"
+                f"ERROR: self.current_part does not have attribute 'raw'. Content: {self.current_part}"
             )
 
         # Add to chat
-        chat.add_message(
-            part=formatted_feedback_prompt, source=Source.user, model_role="teacher"
-        )
+        chat.add_message(part=teacher_message, source=Source.user, model_role="teacher")
 
-        formatted_prompt = self.prepare_prompt(
-            chat=chat, resume_gen=False, model_role="teacher"
+        formatted_teacher_prompt = self.prepare_prompt(
+            chat=chat, model_role="teacher", resume_gen=False
         )
 
         # Get teacher's response
         with torch.no_grad():
-            teacher_feedback = self.teacher.call(formatted_prompt)
+            teacher_feedback = self.teacher.call(formatted_teacher_prompt)
 
         print(
-            "teacher_feedback:",
+            "Teacher's feedback:",
             teacher_feedback,
             sep="\n",
             end="\n\n\n",
@@ -286,23 +239,24 @@ class Feedback(Setting):
         # Validate feedback
         is_valid = self.check_feedback(teacher_feedback)
 
+        if is_valid is None:
+            return self.give_feedback(initial_output, chat)
+
         return teacher_feedback, is_valid
 
-    def refine(self, input_prompt, teacher_feedback: str, chat: Chat) -> str:
+    def refine(self, original_output: str, teacher_feedback: str, chat: Chat) -> str:
         """
         Prompt the student to refine its chain of thought according to the feedback it received from
         the teacher. Similar to the speculative_decode method in SpeculativeDecoding.
 
-        :param input_prompt: The student's previous chain of thought
+        :param original_output: The student's previous chain of thought
         :param teacher_feedback: The feedback generated by the teacher
         :param chat: The current chat
 
         :return: str, the refined chain of thought
         """
         formulated_refine_prompt = self.refine_prompt.format_refine_message(
-            part=self.student.curr_sample_part,
-            to_enumerate=self.to_enumerate,
-            cot_to_continue=input_prompt,
+            model_output=original_output,
             teacher_feedback=teacher_feedback,
         )
 
@@ -326,35 +280,9 @@ class Feedback(Setting):
                 formatted_prompt,
             )
 
-            return student_out
+        return student_out
 
-    def set_teacher_system_prompt(self, chat: Chat):
-        """
-        Set the system prompt for the teacher.
-        This includes clearing the teacher's chat of previous parts, similar to SD.
-
-        :param chat: Chat, the current chat for the sample
-        """
-        # Clear the teacher's chat
-        if chat.messages["teacher"]:
-            chat.messages["teacher"] = []
-
-        teacher_sys_prompt = self.feedback_prompt.format_teacher_sys(
-            student_sys=chat.messages["student"][0]["content"],
-            student_chat=chat.messages["student"],
-        )
-        chat.messages["teacher"].append(
-            {"role": Source.system, "content": teacher_sys_prompt}
-        )
-
-        print(
-            "\n--------------\n",
-            f"Teacher's system prompt: {teacher_sys_prompt}",
-            end="\n--------------\n\n",
-            flush=True,
-        )
-
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> str:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple[str, int]:
         """
         Run the feedback setting.
         The feedback setting consists of the following steps:
@@ -367,29 +295,29 @@ class Feedback(Setting):
         :param chat: The current chat
         :return: The refined model output as a string
         """
+        # save the initial student output as a fallback solution
         self.initial_student_output = decoded_output
         chat = self.create_chat_copy(chat=chat)
-
-        self.teacher.curr_sample_part = self.student.curr_sample_part
-
-        self.set_teacher_system_prompt(chat=chat)
+        self.set_teacher_system_prompt(chat=chat, teacher_sys=self.feedback_prompt)
 
         print(
             " ------------- Starting Feedback ------------- ", end="\n\n\n", flush=True
         )
-        print(f" ---- Feedback iteration 1 ---- ", end="\n\n\n", flush=True)
-
-        # Work with the complete student output
-        student_output = decoded_output
+        print(" ---- Feedback iteration 1 ---- ", end="\n\n\n", flush=True)
 
         print(" ---- Teacher ---- ", end="\n\n\n", flush=True)
-        feedback, is_valid = self.give_feedback(student_output, chat)
+        feedback, is_valid = self.give_feedback(
+            initial_output=decoded_output, chat=chat
+        )
 
         print(
             "Teacher's feedback:",
-            f"is valid: {is_valid}, feedback: {feedback}",
+            f"is valid: {is_valid}",
+            "feedback:",
+            feedback,
             "\n ------------- ",
             end="\n\n\n",
+            sep="\n",
             flush=True,
         )
 
@@ -405,36 +333,41 @@ class Feedback(Setting):
                 print("Maximum feedback iterations reached. Using last student output.")
                 break
 
-            student_output = self.refine(student_output, feedback, chat)
+            decoded_output = self.refine(decoded_output, feedback, chat)
 
             print(
-                " ---- Student ---- \n",
+                " ---- Student ---- ",
                 "Refined output of student:",
-                student_output,
-                "\n ------------- ",
+                decoded_output,
+                " ------------- ",
                 end="\n\n\n",
+                sep="\n",
                 flush=True,
             )
 
             chat.add_message(
-                part=student_output, source="assistant", model_role="student"
+                part=decoded_output, source="assistant", model_role="student"
             )
 
             print(" ---- Teacher ---- ", end="\n\n\n", flush=True)
-            feedback, is_valid = self.give_feedback(student_output, chat)
+            feedback, is_valid = self.give_feedback(decoded_output, chat)
             chat.add_message(part=feedback, source="assistant", model_role="teacher")
 
             print(
                 "Teacher's feedback:",
-                f"is valid: {is_valid}, feedback: {feedback}",
+                f"is valid: {is_valid}",
+                "feedback:",
+                feedback,
                 "\n ------------- ",
                 end="\n\n\n",
+                sep="\n",
                 flush=True,
             )
 
         # Update the original chat's last student message with the refined output
         if self.chat:
-            self.chat.messages["student"][-1]["content"] = student_output
+            self.chat.messages["student"][-1]["content"] = decoded_output
 
+        # Features.current_iteration_count = i
         # Return the final output string
-        return student_output
+        return decoded_output, i

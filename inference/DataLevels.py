@@ -3,8 +3,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import numpy as np
+from prettytable import HRuleStyle
 
-from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
+from evaluation.Evaluator import AnswerEvaluator
 from evaluation.Statistics import Statistics
 from inference.utils import *
 from interpretability.utils import InterpretabilityResult as InterResult
@@ -20,20 +21,30 @@ class Features:
     This class handles the tracking of features.
     """
 
+    attrs = [
+        "there",
+        "verbs",
+        "pronouns",
+        "not_mentioned",
+        "context_sents_hall",
+    ]
+
     def __init__(
         self,
         there: int,
         verbs: int,
         pronouns: int,
         not_mentioned: int,
-        after: bool = True,
+        context_sents_hall: int,
+        version: str,
     ):
         self.there: int = there
         self.verbs: int = verbs
         self.pronouns: int = pronouns
         self.not_mentioned: int = not_mentioned
+        self.context_sents_hall: int = context_sents_hall
 
-        self.after: bool = after
+        self.version: str = version
 
     def __add__(self, other: Features) -> Features:
         """
@@ -42,11 +53,13 @@ class Features:
         :param other: the other part
         :return: the sum of the features in a new object
         """
+        if self.version != other.version:
+            raise ValueError(
+                f"Cannot add features with different versions: {self.version} and {other.version}"
+            )
         return Features(
-            there=self.there + other.there,
-            verbs=self.verbs + other.verbs,
-            pronouns=self.pronouns + other.pronouns,
-            not_mentioned=self.not_mentioned + other.not_mentioned,
+            **{attr: getattr(self, attr) + getattr(other, attr) for attr in self.attrs},
+            version=self.version,
         )
 
     def __iadd__(self, other: Features) -> Features:
@@ -56,10 +69,8 @@ class Features:
         :param other: the other part
         :return: the sum of the features in the current object
         """
-        self.there += other.there
-        self.verbs += other.verbs
-        self.pronouns += other.pronouns
-        self.not_mentioned += other.not_mentioned
+        for attr in self.attrs:
+            setattr(self, attr, getattr(self, attr) + getattr(other, attr))
         return self
 
     def get(self) -> dict[str, int]:
@@ -68,12 +79,10 @@ class Features:
 
         :return: the features as a dictionary
         """
-        add = "after" if self.after else "before"
         return {
-            f"there_{add}": self.there,
-            f"verbs_{add}": self.verbs,
-            f"pronouns_{add}": self.pronouns,
-            f"not_mentioned_{add}": self.not_mentioned,
+            f"{attr}_{self.version}": getattr(self, attr)
+            for attr in self.attrs
+            if hasattr(self, attr)
         }
 
     def __repr__(self) -> str:
@@ -90,14 +99,23 @@ class Results:
     Abstract class for data levels.
     """
 
+    result_attrs: list[str] = [
+        "model_answer",
+        "answer_correct",
+        "model_reasoning",
+        "reasoning_correct",
+        "model_output",
+    ]
+
     def __init__(
         self,
         model_output: str,
         model_answer: str,
         model_reasoning: str,
-        correct: bool = None,
+        answer_correct: bool = None,
+        reasoning_correct: bool = None,
         interpretability: InterResult = None,
-        after: bool = True,
+        version: str = "after",
     ):
         """
         Initialize the Results class.
@@ -105,30 +123,26 @@ class Results:
         :param model_output: the output of the model
         :param model_answer: the answer to the question
         :param model_reasoning: the reasoning for the answer
-        :param correct: whether the answer is correct
+        :param answer_correct: whether the answer is correct
+        :param reasoning_correct: whether the reasoning is correct
         :param interpretability: the result of interpretability
-        :param after: whether the output is after the setting was applied to the model's output
+        :param version: "after" if the setting was already applied to the model's output else "before"
         """
-        self.after = after
+        if version not in ["before", "after"]:
+            raise ValueError("Version should be either 'before' or 'after'.")
+
+        self.version = version
 
         self.model_output: str = model_output
         self.model_answer: str = model_answer
         self.model_reasoning: str = model_reasoning
-        self.correct = correct
 
-        self.answer_correct: bool = None
-        self.reasoning_correct: bool = None
+        self.answer_correct: bool = answer_correct
+        self.reasoning_correct: bool = reasoning_correct
 
         self.features: Features = self.inspect_answer()
 
         self.interpretability: InterResult = interpretability
-
-        self.result_attrs: list[str] = [
-            "model_answer",
-            "correct",
-            "model_reasoning",
-            "model_output",
-        ]
 
         self.dict: dict = self.get_result()
 
@@ -149,21 +163,20 @@ class Results:
             there=contains_there(self.model_answer),
             verbs=contains_verb(self.model_answer),
             pronouns=contains_pronouns(self.model_answer),
-            not_mentioned=contains_not_mentioned(self.model_answer),
-            after=self.after,
+            not_mentioned=contains_not_mentioned(self.model_output),
+            context_sents_hall=context_sentences(self.model_output),
+            version=self.version,
         )
         return self.features
 
     def get_result(self) -> dict[str, int | str]:
         """
         Get the result of the part.
-
         :return: the result of the part
         """
-        add = "after" if self.after else "before"
         try:
             attributes = {
-                f"{attr}_{add}": getattr(self, attr)
+                f"{attr}_{self.version}": getattr(self, attr)
                 for attr in self.result_attrs
                 if hasattr(self, attr)
             }
@@ -171,6 +184,12 @@ class Results:
             print(f"Error accessing attribute: {error}")
             attributes = {}
         return {**attributes, **self.features.get()}
+
+
+class SuppFactInSelf:
+    fully: str = "fully"
+    partially: str = "partially"
+    none: str = "none"
 
 
 class SamplePart:
@@ -186,7 +205,10 @@ class SamplePart:
         "task",
         "golden_answer",
         "silver_reasoning",
+        "answer_lies_in_self",
+        "feedback_iterations",
     ]
+    current_iteration_count = 0
 
     def __init__(
         self,
@@ -230,16 +252,13 @@ class SamplePart:
             )
 
         if raw:
-            if not (wrapper and to_enumerate):
-                raise ValueError(
-                    "'Wrapper' and 'to_enumerate' should be provided when creating tasks from scratch."
-                )
-
             self.raw: dict = raw
 
-            self.wrapper: Wrapper = wrapper
-            self.to_enumerate: Enumerate = to_enumerate
+            self.wrapper: Wrapper = wrapper if wrapper else Wrapper(context="", question="", reasoning="", answer="")
+            self.to_enumerate: Enumerate = to_enumerate if to_enumerate else Enumerate(context=True, question=False)
+
             self.supporting_sent_inx: list[int] = raw.get("supporting_fact", [])
+            self.answer_lies_in_self: str = self.contains_supp_sentences()
 
             self.structured_context, self.structured_question = structure_part(
                 self.raw, self.to_enumerate
@@ -261,19 +280,36 @@ class SamplePart:
             model_answer="",
             model_reasoning="",
             interpretability=InterResult(
-                attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[], max_attn_dist={}
+                attn_scores=np.ndarray([]), x_tokens=[], y_tokens=[], max_attn_dist={}
             ),
-            after=False,
+            version="before",
         )
         self.result_after: Results = Results(
             model_output="",
             model_answer="",
             model_reasoning="",
             interpretability=InterResult(
-                attn_scores=np.ndarray(0), x_tokens=[], y_tokens=[], max_attn_dist={}
+                attn_scores=np.ndarray([]), x_tokens=[], y_tokens=[], max_attn_dist={}
             ),
-            after=True,
+            version="after",
         )
+        self.feedback_iterations: int = 0
+
+    def contains_supp_sentences(self):
+        part_line_nums = [int(line_num) for line_num in self.raw["context"].keys()]
+        supp_sents_in_self = set(part_line_nums).intersection(
+            set(self.supporting_sent_inx)
+        )
+        if supp_sents_in_self:
+            if len(supp_sents_in_self) == len(self.supporting_sent_inx):
+                return SuppFactInSelf.fully
+            elif len(supp_sents_in_self) < len(self.supporting_sent_inx):
+                return SuppFactInSelf.partially
+            else:
+                raise ValueError(
+                    f"The part has more supporting sentences than noted in the data: {self}."
+                )
+        return SuppFactInSelf.none
 
     def wrap(self, attr: str, replacements: dict[str, str]) -> str:
         """
@@ -286,7 +322,11 @@ class SamplePart:
         if hasattr(self.wrapper, attr):
             wrapped_attr = getattr(self.wrapper, attr)
             try:
-                return wrapped_attr.format(**replacements) if wrapped_attr else ""
+                return (
+                    wrapped_attr.format(**replacements)
+                    if wrapped_attr
+                    else "\n".join(replacements.values())
+                )
             except KeyError as e:
                 raise ValueError(f"Missing placeholder in replacements: {e}")
         else:
@@ -331,44 +371,58 @@ class SamplePart:
     def set_output(
         self,
         model_output: str,
-        answer: str,
-        reasoning: str,
+        model_answer: str,
+        model_reasoning: str,
         interpretability: InterResult | None,
-        after: bool = True,
+        version: str = "after",
+        feedback_iterations: int = 0,
     ) -> None:
         """
         Set the output of the model.
 
         :param model_output: the output of the model
-        :param answer: the answer to the question
-        :param reasoning: the reasoning for the answer
+        :param model_answer: the answer to the question
+        :param model_reasoning: the reasoning for the answer
         :param interpretability: the interpretability result
-        :param after: whether the output is after the setting was applied to the model's output
+        :param version: "after" if the setting was already applied to the model's output else "before"
+        :param feedback_iterations: the number of feedback iterations
 
         :return: None
         """
-        if after:
+        if type(model_answer) is not str:
+            model_answer = str(model_answer)
+
+        if not interpretability:
+            interpretability = InterResult(
+                attn_scores=np.ndarray([]), x_tokens=[], y_tokens=[], max_attn_dist={}
+            )
+        # TODO: add the score for reasoning
+        if version == "after":
             self.result_after = Results(
                 model_output=model_output,
-                model_answer=answer,
-                model_reasoning=reasoning,
+                model_answer=model_answer,
+                model_reasoning=model_reasoning,
+                answer_correct=stats.are_identical(model_answer, self.golden_answer),
                 interpretability=interpretability,
-                after=after,
+                version=version,
             )
-            self.result_after.answer_correct = stats.are_identical(
-                answer, self.golden_answer
+            self.feedback_iterations = (
+                feedback_iterations
+                if feedback_iterations
+                else SamplePart.current_iteration_count
             )
-            # TODO: add the score for reasoning
-        else:
+        elif version == "before":
             self.result_before = Results(
                 model_output=model_output,
-                model_answer=answer,
-                model_reasoning=reasoning,
+                model_answer=model_answer,
+                model_reasoning=model_reasoning,
+                answer_correct=stats.are_identical(model_answer, self.golden_answer),
                 interpretability=interpretability,
-                after=False,
+                version=version,
             )
-            self.result_before.answer_correct = stats.are_identical(
-                answer, self.golden_answer
+        else:
+            raise ValueError(
+                f"Version should be either 'before' or 'after', currently: {version}"
             )
 
     def get_result(self) -> dict[str, int | str]:
@@ -389,6 +443,7 @@ class SamplePart:
 
         if self.multi_system:
             return {**attributes, **self.result_before.dict, **self.result_after.dict}
+        attributes.pop("feedback_iterations", None)
         return {**attributes, **self.result_after.dict}
 
 
@@ -411,11 +466,16 @@ class Sample:
         self.parts: list[SamplePart] = []
 
         self.evaluator_before: AnswerEvaluator = AnswerEvaluator(
-            level="sample", after=False
+            level="sample", version="before"
         )
         self.evaluator_after: AnswerEvaluator = AnswerEvaluator(
-            level="sample", after=True
+            level="sample", version="after"
         )
+
+        self.features_before: Features = Features(0, 0, 0, 0, 0, version="before")
+        self.features_after: Features = Features(0, 0, 0, 0, 0, version="after")
+
+        self.results = []
 
     def add_golden_answers(self, golden_answer: str | list[str]) -> None:
         """
@@ -460,16 +520,33 @@ class Sample:
             self.evaluator_before.pred_reasonings.append(
                 part.result_before.model_reasoning
             )
+            if part.result_before.interpretability:
+                self.evaluator_before.max_attn_dist.add(
+                    part.result_before.interpretability.max_attn_target
+                )
         self.evaluator_after.pred_answers.append(part.result_after.model_answer)
         self.evaluator_after.pred_reasonings.append(part.result_after.model_reasoning)
+        if part.result_after.interpretability:
+            self.evaluator_after.max_attn_dist.add(
+                part.result_after.interpretability.max_attn_target
+            )
 
     def print_sample_predictions(self) -> None:
         """
-        Print the model's predictions to compare with true values.
+        Print the model's predictions to compare with true values as a table.
 
         :return: None
         """
         if self.multi_system:
+            table = PrettyTable()
+            table.field_names = [
+                "GOLDEN",
+                "PREDICTED-Bef",
+                "PREDICTED-Aft",
+                "REASONING-Bef",
+                "REASONING-Aft",
+            ]
+
             attributes = zip(
                 self.evaluator_after.golden_answers,
                 self.evaluator_before.pred_answers,
@@ -477,56 +554,58 @@ class Sample:
                 self.evaluator_before.pred_reasonings,
                 self.evaluator_after.pred_reasonings,
             )
-            print(
-                f"Model's predictions for the sample {self.sample_id}:",
-                "\t{0:<18s} PREDICTED-{1:<18s} PREDICTED-{2:<18s} REASONING-{1:<36s} REASONING-{2:<36s}".format(
-                    "GOLDEN", "Bef", "Aft"
-                ),
-                sep="\n\n",
-                end="\n\n",
-            )
-            for (
-                golden_answer,
-                pred_answer_bef,
-                pred_answer_aft,
-                pred_reasoning_bef,
-                pred_reasoning_aft,
-            ) in attributes:
-                print(
-                    "\t{0:<18s} {1:<18s} {2:<18s} {3:<36s} {4:<36s}".format(
-                        golden_answer,
-                        pred_answer_bef.replace("\n", "\t"),
-                        pred_answer_aft.replace("\n", "\t"),
-                        pred_reasoning_bef.replace("\n", "\t"),
-                        pred_reasoning_aft.replace("\n", "\t"),
-                    ),
+
+            for golden, pred_bef, pred_aft, reas_bef, reas_aft in attributes:
+                table.add_row(
+                    [
+                        golden,
+                        pred_bef.replace("\n", " "),
+                        pred_aft.replace("\n", " "),
+                        wrap_text(reas_bef),
+                        wrap_text(reas_aft),
+                    ]
                 )
+
         else:
+            table = PrettyTable()
+            table.field_names = ["GOLDEN", "PREDICTED-Aft", "REASONING-Aft"]
+
             attributes = zip(
                 self.evaluator_after.golden_answers,
                 self.evaluator_after.pred_answers,
                 self.evaluator_after.pred_reasonings,
             )
-            print(
-                "Model's predictions for the sample:",
-                "\t{0:<18s} {1:<25s} {2} ".format(
-                    "GOLDEN", "PREDICTED-Aft", "REASONING-Aft"
-                ),
-                sep="\n\n",
-                end="\n\n",
-            )
-            for (
-                golden_answer,
-                pred_answer_aft,
-                pred_reasoning_aft,
-            ) in attributes:
-                print(
-                    "\t{0:<18s} {1:<25s} {2}".format(
-                        golden_answer,
-                        pred_answer_aft.replace("\n", "\t"),
-                        pred_reasoning_aft.replace("\n", "\t"),
-                    ),
+
+            for golden, pred_aft, reas_aft in attributes:
+                table.add_row(
+                    [golden, pred_aft.replace("\n", " "), wrap_text(reas_aft)]
                 )
+
+        table.hrules = HRuleStyle.ALL
+        table.padding_width = 2  # Adds more space inside each cell
+
+        print(f"Model's predictions for the sample {self.sample_id}:\n")
+        print(table)
+
+    def set_results(self) -> None:
+        """
+        Set the results for the sample by combining the results from its parts.
+        :return: None
+        """
+        self.results = [part.get_result() for part in self.parts]
+        if self.multi_system:
+            self.features_before = sum(
+                [part.result_before.features for part in self.parts],
+                self.features_before,
+            )
+        self.features_after = sum(
+            [part.result_after.features for part in self.parts], self.features_after
+        )
+
+    def calculate_metrics(self):
+        if self.multi_system:
+            self.evaluator_before.calculate_accuracies()
+        self.evaluator_after.calculate_accuracies()
 
 
 class Task:
@@ -542,22 +621,24 @@ class Task:
         :param multi_system: whether the task is for the setting with two models
         """
         self.task_id = task_id
+
         self.multi_system = multi_system
 
         self.samples: list[Sample] = []
         self.parts: list[SamplePart] = []
 
         self.evaluator_before: MetricEvaluator = MetricEvaluator(
-            level="task", after=False
+            level="task", version="before"
         )
         self.evaluator_after: MetricEvaluator = MetricEvaluator(
-            level="task", after=True
+            level="task", version="after"
         )
 
-        self.features_before: Features = Features(0, 0, 0, 0)
-        self.features_after: Features = Features(0, 0, 0, 0)
+        self.features_before: Features = Features(0, 0, 0, 0, 0, version="before")
+        self.features_after: Features = Features(0, 0, 0, 0, 0, version="after")
 
         self.results: list[dict[str, str | int | float]] = []
+        self.accuracies: dict = {}
 
     def add_sample(self, sample: Sample) -> None:
         """
@@ -603,6 +684,22 @@ class Task:
             "soft_match_accuracy_after"
         ] = self.evaluator_after.soft_match_accuracy.get_mean()
 
+    def calculate_metrics(self) -> None:
+        """
+        Calculate the metrics for the task.
+        :return: None
+        """
+        accuracies = {
+            "task_id": self.task_id,
+        }
+        # it is important to KEEP ORDER of the accuracies: before, then after
+        if self.multi_system:
+            self.evaluator_before.calculate_std()
+            accuracies.update(**self.evaluator_before.get_accuracies())
+        self.evaluator_after.calculate_std()
+        accuracies.update(**self.evaluator_after.get_accuracies())
+        self.accuracies = accuracies
+
 
 class Split:
     """
@@ -621,14 +718,14 @@ class Split:
 
         self.tasks: list[Task] = []
 
-        self.features_before: Features = Features(0, 0, 0, 0)
-        self.features_after: Features = Features(0, 0, 0, 0)
+        self.features_before: Features = Features(0, 0, 0, 0, 0, version="before")
+        self.features_after: Features = Features(0, 0, 0, 0, 0, version="after")
 
         self.evaluator_before: MetricEvaluator = MetricEvaluator(
-            level="split", after=False
+            level="split", version="before"
         )
         self.evaluator_after: MetricEvaluator = MetricEvaluator(
-            level="split", after=True
+            level="split", version="after"
         )
 
     def add_task(self, task: Task) -> None:
@@ -644,3 +741,33 @@ class Split:
             self.evaluator_before.update(task.evaluator_before)
         self.features_after += task.features_after
         self.evaluator_after.update(task.evaluator_after)
+
+
+def print_metrics(data_level: Sample | Task | Split, table: bool = True) -> None:
+    """
+    Print the metrics from the evaluator in a pretty table or with the usual statements.
+
+    :param data_level: the data level to print the metrics for
+    :param table: if to print the metrics in a table
+    :return: None
+    """
+    id_ = None
+    if type(data_level) is Sample:
+        id_ = data_level.sample_id
+    elif type(data_level) is Task:
+        id_ = data_level.task_id
+    elif type(data_level) is Split:
+        id_ = data_level.name
+
+    if table:
+        print_metrics_table(
+            eval_before=(
+                data_level.evaluator_before if data_level.multi_system else None
+            ),
+            eval_after=data_level.evaluator_after,
+            id_=id_,
+        )
+    else:
+        if data_level.multi_system:
+            data_level.evaluator_before.print_accuracies(id_=id_)
+        data_level.evaluator_after.print_accuracies(id_=id_)

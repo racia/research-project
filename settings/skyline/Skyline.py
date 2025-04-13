@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from data.DataSaver import DataSaver
 from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
 from settings.Model import Model
@@ -22,6 +23,7 @@ class Skyline(Baseline):
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
         wrapper: Wrapper = None,
+        saver: DataSaver = None,
     ):
         """
         Class Skyline manages the experiment with the big model. It is a subclass of Baseline, as the needs are similar.
@@ -45,5 +47,5 @@ class Skyline(Baseline):
             to_enumerate=to_enumerate,
             wrapper=wrapper,
             interpretability=interpretability,
-            mode=mode,
+            saver=saver,
         )

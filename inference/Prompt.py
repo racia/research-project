@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from data.TaskExamples import Task, TaskExample, TaskExamples
+from inference.DataLevels import SamplePart
 from settings.config import Examples
-from settings.utils import structure_part
 
 
 @dataclass
@@ -124,37 +124,32 @@ class Prompt:
 
         return wrapped_out
 
-    def formulate_init_prompt(self, input_str: str) -> str:
-        """
-        Formulate the init prompt for the teacher model.
-
-        :param input_str: the task and the questions the model should answer
-
-        :return: the formulated evaluation prompt
-        """
-        prompt = self.text.format(task=input_str)
-
-        return prompt
-
-    def format_refine_message(self, part, to_enumerate, cot_to_continue, teacher_feedback=''):
+    def format_refine_message(
+        self,
+        model_output: str,
+        teacher_feedback: str = "",
+    ) -> str:
         """
         Format a refine message for the student model.
+
+        :param model_output: the chain of thought to continue
+        :param teacher_feedback: the teacher's feedback to add to the message
+        :return: the formatted refine message
         """
-        context, question = structure_part(part.raw, to_enumerate)
-        formatted_part = f"{context}\n{question}"
+        text = self.original_text
+        return text.format(
+            student_output=model_output, teacher_feedback=teacher_feedback
+        )
 
-        formatted_with_eval = f"{self.text}\n{formatted_part}"
-        if teacher_feedback:
-            formatted_with_eval += f"\n\nTeacher's feedback: {teacher_feedback}\n\n"
-
-        return formatted_with_eval + "\n" + cot_to_continue
-
-    def format_feedback_message(self, part, to_enumerate, cot_to_evaluate):
+    def format_feedback_message(self, part: SamplePart, cot_to_evaluate: str) -> str:
         """
         Format a feedback message for the teacher model.
+
+        :param part: the part of the sample to evaluate
+        :param cot_to_evaluate: the chain of thought to evaluate
+        :return: the formatted feedback message
         """
-        context, question = structure_part(part.raw, to_enumerate)
-        formatted_part = f"{context}\n{question}"
+        formatted_part = f"{part.structured_context}\n{part.structured_question}"
 
         formatted_with_cot = f"{self.text}\n{formatted_part}"
         return formatted_with_cot + "\n" + cot_to_evaluate

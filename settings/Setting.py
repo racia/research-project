@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import copy
 import gc
+import warnings
 from abc import ABC, abstractmethod
 
 import torch
 
+from data.DataSaver import DataSaver
 from inference.Chat import Chat, Source
-from inference.DataLevels import Sample, SamplePart, Task
+from inference.DataLevels import Sample, SamplePart, Task, print_metrics
 from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
 from settings.Model import Model
@@ -32,6 +34,7 @@ class Setting(ABC):
         multi_system: bool = False,
         wrapper: Wrapper = None,
         interpretability: Interpretability = None,
+        saver: DataSaver = None,
     ):
         """
          The setting class is an abstract class for all settings.
@@ -54,6 +57,10 @@ class Setting(ABC):
 
         self.interpretability: Interpretability = interpretability
 
+        self.saver: DataSaver = saver
+        self.chat: Chat = None
+        self.current_part: SamplePart = None
+
     @abstractmethod
     def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
         """
@@ -66,20 +73,6 @@ class Setting(ABC):
         """
         raise NotImplementedError
 
-    @abstractmethod
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> str:
-        """
-        Apply setting-specific postprocessing of the inital model output.
-        For the baseline and skyline, this consists of parsing the output.
-        For the SD and feedback setting, this entails the main idea of these settings.
-
-        :param decoded_output: the current output of the student
-        :param chat: the current chat, only necessary in the SD and feedback setting
-        :return: parsed output
-        """
-        # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
-        raise NotImplementedError
-
     def create_chat_copy(self, chat: Chat) -> Chat:
         """
         Store the original chat and create a copy for use in the setting.
@@ -89,6 +82,50 @@ class Setting(ABC):
         """
         self.chat = chat
         return copy.deepcopy(chat)
+
+    @staticmethod
+    def set_teacher_system_prompt(chat: Chat, teacher_sys: Prompt) -> None:
+        """
+        Set the system prompt for the teacher.
+        This includes clearing the teacher's chat of previous parts.
+
+        :param: chat: Chat, the current chat for the sample
+        :param: teacher_sys: Prompt, the system prompt for the teacher
+        :return: None
+        """
+        # clear the teacher's chat
+        if chat.messages["teacher"]:
+            chat.messages["teacher"] = []
+
+        teacher_sys_prompt = teacher_sys.format_teacher_sys(
+            student_sys=chat.messages["student"][0]["content"],
+            student_chat=chat.messages["student"],
+        )
+        chat.messages["teacher"].append(
+            {"role": Source.system, "content": teacher_sys_prompt}
+        )
+
+        print(
+            f"Teacher's system prompt:",
+            teacher_sys_prompt,
+            sep="\n",
+            end="\n\n",
+            flush=True,
+        )
+
+    @abstractmethod
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple[str, int]:
+        """
+        Apply setting-specific postprocessing of the initial model output.
+        For the baseline and skyline, this consists of parsing the output.
+        For the SD and feedback setting, this entails the main idea of these settings.
+
+        :param decoded_output: the current output of the student
+        :param chat: the current chat, only necessary in the SD and feedback setting
+        :return: parsed output
+        """
+        # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
+        raise NotImplementedError
 
     def iterate_task(
         self,
@@ -166,8 +203,8 @@ class Setting(ABC):
                 part_id += 1
                 print(
                     "\n-* "
-                    f"TASK {task_id}/{self.total_tasks} | "
-                    f"SAMPLE {sample_id}/{self.samples_per_task if self.samples_per_task < 500 else len(task_data)} | "
+                    f"TASK {task_id}/{self.total_tasks if self.total_tasks else 20} | "
+                    f"SAMPLE {sample_id}/{len(task_data)} | "
                     f"PART {part_id}/{len(sample_parts)} | "
                     f"{prompt_name} | "
                     f"RUN ID {self.question_id}/{self.total_parts} "
@@ -184,7 +221,7 @@ class Setting(ABC):
                     end="\n\n\n",
                     flush=True,
                 )
-                current_part = SamplePart(
+                self.current_part = SamplePart(
                     id_=self.question_id,
                     task_id=task_id,
                     sample_id=sample_id,
@@ -196,7 +233,7 @@ class Setting(ABC):
                     multi_system=self.multi_system,
                 )
 
-                chat.add_message(part=current_part, source=Source.user)
+                chat.add_message(part=self.current_part, source=Source.user)
 
                 formatted_prompt = self.prepare_prompt(chat=chat)
 
@@ -212,7 +249,9 @@ class Setting(ABC):
                 )
 
                 # 5. Call the model and yield the response
-                decoded_output = self.model.call(prompt=formatted_prompt)
+                with torch.no_grad():
+                    decoded_output = self.model.call(prompt=formatted_prompt)
+                    torch.cuda.empty_cache()
                 print(
                     (
                         f"The output of the student:"
@@ -225,6 +264,7 @@ class Setting(ABC):
                     sep="\n",
                     flush=True,
                 )
+                torch.cuda.empty_cache()
 
                 # 6. Add the model's output to conversation
                 chat.add_message(
@@ -235,92 +275,102 @@ class Setting(ABC):
                 if self.multi_system:
                     with torch.no_grad():
                         # 8. Call interpretability attention score method
-                        interpretability_before = (
-                            self.interpretability.get_attention(
-                                current_part, chat=chat, after=False
+                        try:
+                            interpretability_before = (
+                                self.interpretability.get_attention(
+                                    self.current_part, chat=chat, after=False
+                                )
+                                if self.multi_system and self.interpretability
+                                else None
                             )
-                            if self.multi_system and self.interpretability
-                            else None
-                        )
+                        except torch.OutOfMemoryError:
+                            warnings.warn(
+                                "DEBUG: Out of memory error while calculating interpretability scores * before *. "
+                                "Skipping this step."
+                            )
+                            interpretability_before = None
+
                         answer, reasoning = parse_output(output=decoded_output)
-                        current_part.set_output(
+                        self.current_part.set_output(
                             model_output=decoded_output,
-                            answer=answer,
-                            reasoning=reasoning,
+                            model_answer=answer,
+                            model_reasoning=reasoning,
                             interpretability=interpretability_before,
-                            after=False,
+                            version="before",
                         )
-                    print(
-                        f"Last chat message from student before applying the setting: {chat.messages['student'][-1]}"
-                    )
-                    print(
-                        "DEBUG: Model Output before applying the setting:",
-                        decoded_output,
-                    )
 
-                if self.multi_system:
-                    self.model.curr_sample_part = current_part
-
-                # 7. Applying the changes that are specific to each setting
                 with torch.no_grad():
-                    decoded_output = self.apply_setting(
+                    decoded_output, feedback_iterations = self.apply_setting(
                         decoded_output=decoded_output, chat=chat
                     )
+
+                    # Now parse the string output
                     answer, reasoning = parse_output(output=decoded_output)
-                    # 8. Call interpretability attention score method
-                    interpretability_after = (
-                        self.interpretability.get_attention(
-                            current_part, chat=chat, after=True
+                    try:
+                        # 8. Call interpretability attention score method
+                        interpretability_after = (
+                            self.interpretability.get_attention(
+                                self.current_part, chat=chat, after=True
+                            )
+                            if self.interpretability
+                            else None
                         )
-                        if self.interpretability
-                        else None
-                    )
-                    current_part.set_output(
+                    except torch.OutOfMemoryError:
+                        warnings.warn(
+                            "DEBUG: Out of memory error while calculating interpretability scores * after *. "
+                            "Skipping this step."
+                        )
+                        interpretability_after = None
+
+                    self.current_part.set_output(
                         model_output=decoded_output,
-                        answer=answer,
-                        reasoning=reasoning,
+                        model_answer=answer,
+                        model_reasoning=reasoning,
                         interpretability=interpretability_after,
-                        after=True,
+                        version="after",
+                        feedback_iterations=feedback_iterations,
                     )
+
+                if self.saver:
+                    result = self.current_part.get_result()
+                    self.saver.save_output(
+                        data=[result],
+                        headers=list(result.keys()),
+                        file_name=f"t_{task_id}_s_{sample_id}_results.csv",
+                    )
+                    if self.interpretability:
+                        self.saver.save_part_interpretability(
+                            self.current_part, multi_system=self.multi_system
+                        )
 
                 if self.multi_system:
                     print(
                         f"Last chat message from student after applying the setting: {chat.messages['student'][-1]}"
                     )
 
-                sample.add_part(current_part)
-
-            sample.print_sample_predictions()
+                sample.add_part(self.current_part)
+                torch.cuda.empty_cache()
+                gc.collect()
 
             # 9. Initially evaluate the result for a sample and aggregate results
-            if self.multi_system:
-                print("Before the setting was applied:")
-                exact_match_acc_before, soft_match_acc_before = (
-                    sample.evaluator_before.calculate_accuracies()
-                )
-                sample.evaluator_before.print_accuracies(
-                    id_=sample_id,
-                    exact_match_acc=exact_match_acc_before,
-                    soft_match_acc=soft_match_acc_before,
-                )
-            exact_match_acc, soft_match_acc = (
-                sample.evaluator_after.calculate_accuracies()
-            )
-            sample.evaluator_after.print_accuracies(
-                id_=sample_id,
-                exact_match_acc=exact_match_acc,
-                soft_match_acc=soft_match_acc,
-            )
-
+            sample.print_sample_predictions()
+            sample.calculate_metrics()
+            print_metrics(sample, table=True)
             task.add_sample(sample)
+
+            # 9.5. Save the sample result
+            # if self.saver:
+            #     sample.set_results()
+            #     self.saver.save_sample_result(
+            #         task_id=task_id,
+            #         sample_id=sample_id,
+            #         sample_data=sample,
+            #         multi_system=self.multi_system,
+            #     )
 
         # 10. Report the results for the task and aggregate results
         print("\n- TASK RESULTS -", end="\n\n")
-        if self.multi_system:
-            print("Before the setting was applied:")
-            task.evaluator_before.print_accuracies(id_=task_id)
-
-        task.evaluator_after.print_accuracies(id_=task_id)
+        print_metrics(task, table=True)
         task.set_results()
 
         print(f"The work on task {task_id} is finished successfully")

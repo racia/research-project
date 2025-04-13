@@ -20,11 +20,14 @@ class InterpretabilityResult:
         self.y_tokens: list[str] = y_tokens
         self.max_attn_dist: dict[str, float] = max_attn_dist
 
+        self.max_attn_target: float = self.max_attn_target()
+
         self.result = {
             "attn_scores": self.attn_scores,
             "x_tokens": self.x_tokens,
             "y_tokens": self.y_tokens,
             "max_attn_dist": self.max_attn_dist,
+            "max_attn_target": self.max_attn_target,
         }
 
     def __repr__(self) -> str:
@@ -32,6 +35,17 @@ class InterpretabilityResult:
             f"InterpretabilityResult(attn_scores={self.attn_scores.shape}, x_tokens={len(self.x_tokens)}, "
             f"y_tokens={len(self.y_tokens)}, max_attn_dist={self.max_attn_dist})"
         )
+
+    def max_attn_target(self) -> float:
+        """
+        Return the maximum attention on supporting tokens or sentences (target).
+        """
+        if "max_supp_tok" in self.max_attn_dist:
+            return self.max_attn_dist["max_supp_tok"]
+        elif "max_supp_sent" in self.max_attn_dist:
+            return self.max_attn_dist["max_supp_sent"]
+        else:
+            return 0.0
 
 
 def get_supp_tok_idx(
@@ -74,7 +88,9 @@ def get_attention_distrib(
 
     for output_row in attn_scores:
         # Get index of maximum (mean) attention task token / sentence score
-        max_attn_ind = np.argmax(output_row[1:]) # Don't consider high attention "user" token
+        max_attn_ind = np.argmax(
+            output_row[1:]
+        )  # Don't consider high attention "user" token
         supp_range = supp_sent_idx if supp_sent_idx else supp_tok_idx
         # If i is in supporting token indices
         if max_attn_ind in supp_range:
