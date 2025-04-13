@@ -298,6 +298,30 @@ class DataSaver:
         for part in task_data.parts:
             self.save_part_interpretability(part, multi_system=multi_system)
 
+    def save_feedback_iteration(self, part, iteration, student_message, teacher_message) -> None:
+        """
+        Save both student's output and teacher's feedback in a single operation.
+
+        :param part: The SamplePart object containing IDs
+        :param iteration: The iteration number
+        :param student_message: The student's message
+        :param teacher_message: The teacher's feedback
+        """
+        iterations_dir = self.results_path / "iterations"
+        iterations_dir.mkdir(exist_ok=True, parents=True)
+
+        part_identifier = f"{part.task_id}-{part.sample_id}-{part.part_id}"
+
+        # Save both messages in one operation (open files only once)
+        student_file = iterations_dir / f"{iteration}_student_{part_identifier}.txt"
+        teacher_file = iterations_dir / f"{iteration}_teacher_{part_identifier}.txt"
+
+        with open(student_file, "w", encoding="UTF-8") as sf, \
+                open(teacher_file, "w", encoding="UTF-8") as tf:
+            sf.write(student_message)
+            tf.write(teacher_message)
+
+
     def save_sample_result(
         self,
         task_id: int,

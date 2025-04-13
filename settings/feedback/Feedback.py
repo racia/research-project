@@ -321,6 +321,14 @@ class Feedback(Setting):
             flush=True,
         )
 
+        if self.saver and self.current_part:
+            self.saver.save_feedback_iteration(
+                part=self.current_part,
+                iteration=1,
+                student_message=decoded_output,
+                teacher_message=feedback
+            )
+
         i = 1
 
         # Loop until teacher is satisfied with student output
@@ -363,11 +371,16 @@ class Feedback(Setting):
                 sep="\n",
                 flush=True,
             )
+            if self.saver and self.current_part:
+                self.saver.save_feedback_iteration(
+                    part=self.current_part,
+                    iteration=1,
+                    student_message=decoded_output,
+                    teacher_message=feedback
+                )
 
         # Update the original chat's last student message with the refined output
         if self.chat:
             self.chat.messages["student"][-1]["content"] = decoded_output
 
-        # Features.current_iteration_count = i
-        # Return the final output string
         return decoded_output, i
