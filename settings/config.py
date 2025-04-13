@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import warnings
 from dataclasses import dataclass
 from typing import Optional, Union
 
@@ -45,9 +46,19 @@ class Setting:
 
 @dataclass
 class DataSplits:
-    train: bool
-    valid: bool
-    test: bool
+    train: bool = "train"
+    valid: bool = "valid"
+    test: bool = "test"
+
+    def get(self) -> str:
+        split = [split for split, value in self.__dict__.items() if value]
+        if not split:
+            raise ValueError(
+                "No split found in the given path. Please make sure the path contains 'train', 'valid' or 'test'."
+            )
+        if len(split) > 1:
+            warnings.warn("Multiple splits found. Using the first one.")
+        return split[0]
 
 
 @dataclass
@@ -110,11 +121,13 @@ class CSVHeaders:
     sample_id: str = "sample_id"
     part_id: str = "part_id"
     task: str = "task"
+    answer_lies_in_self: str = "answer_lies_in_self"
     golden_answer: str = "golden_answer"
     silver_reasoning: str = "silver_reasoning"
     model_answer_after: str = "model_answer_after"
-    correct_after: str = "correct_after"
+    answer_correct_after: str = "answer_correct_after"
     model_reasoning_after: str = "model_reasoning_after"
+    reasoning_correct_after: str = "reasoning_correct_after"
     model_output_after: str = "model_output_after"
     exact_match_accuracy_after: str = "exact_match_accuracy_after"
     soft_match_accuracy_after: str = "soft_match_accuracy_after"
@@ -122,9 +135,12 @@ class CSVHeaders:
     verbs_after: str = "verbs_after"
     pronouns_after: str = "pronouns_after"
     not_mentioned_after: str = "not_mentioned_after"
+    context_sents_hall_after: str = "context_sents_hall_after"
+    feedback_iterations: str = "feedback_iterations"
     model_answer_before: str = "model_answer_before"
-    correct_before: str = "correct_before"
+    answer_correct_before: str = "answer_correct_before"
     model_reasoning_before: str = "model_reasoning_before"
+    reasoning_correct_before: str = "reasoning_correct_before"
     model_output_before: str = "model_output_before"
     exact_match_accuracy_before: str = "exact_match_accuracy_before"
     soft_match_accuracy_before: str = "soft_match_accuracy_before"
@@ -132,6 +148,7 @@ class CSVHeaders:
     verbs_before: str = "verbs_before"
     pronouns_before: str = "pronouns_before"
     not_mentioned_before: str = "not_mentioned_before"
+    context_sents_hall_before: str = "context_sents_hall_before"
 
 
 @dataclass

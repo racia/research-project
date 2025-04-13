@@ -10,47 +10,8 @@ from pathlib import Path
 
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
+from evaluate_data import SilverReasoning
 from inference.DataLevels import Results, SamplePart
-
-
-def extract_split(data_path: str) -> str:
-    """
-    Extract the split from the data path. If the split is not found, return "split".
-
-    :param data_path: The path to the data.
-    :return: The split.
-    """
-    for split in ["valid", "test", "train"]:
-        if split in data_path:
-            return split
-    return "split"
-
-
-def get_silver_reasoning(
-    task_id: int,
-    sample_id: int,
-    part_id: int,
-    silver_reasoning_data: dict[tuple[int, int, int], dict],
-    from_zero: bool = False,
-) -> str:
-    """
-    Get the silver reasoning for the part.
-
-    :param task_id: The task id.
-    :param sample_id: The sample id.
-    :param part_id: The part id.
-    :param silver_reasoning_data: The silver reasoning data.
-    :param from_zero: Whether the part ids start from zero.
-    """
-    if from_zero:
-        sample_id -= 1
-        part_id -= 1
-
-    if (task_id, sample_id, part_id) in silver_reasoning_data:
-        return silver_reasoning_data[(task_id, sample_id, part_id)]["Reasoning"]
-    raise ValueError(
-        f"Silver reasoning for <task_id='{task_id}', sample_id='{sample_id}', part_id='{part_id}'> not found."
-    )
 
 
 def add_part_ids(parts: list[SamplePart]) -> list[SamplePart]:
@@ -73,13 +34,11 @@ def add_part_ids(parts: list[SamplePart]) -> list[SamplePart]:
     return parts
 
 
-def run(data_path: str, silver_reasoning_path: str = "") -> None:
+def run(data_path: str) -> None:
     """
     Run the standardization pipeline.
 
     :param data_path: Path to the data to standardize
-    :param silver_reasoning_path: the path to the silver reasoning data (if any, the reasoning will be added to the
-    data)
     :return: None
     """
     if not data_path:
@@ -110,23 +69,7 @@ def run(data_path: str, silver_reasoning_path: str = "") -> None:
     print("Using long list of headers to load the data.")
 
     data = loader.load_results(data_path, list_output=True)
-
-    silver_reasoning_data = None
-    if silver_reasoning_path:
-        silver_reasoning_headers = [
-            "ID",
-            "TaskID",
-            "SampleID",
-            "SamplePart",
-            "Context",
-            "Question",
-            "Answer",
-            "Reasoning",
-        ]
-        silver_reasoning_data = loader.load_reasoning_data(
-            path=silver_reasoning_path,
-            headers=silver_reasoning_headers,
-        )
+    silver_reasoning = SilverReasoning(loader)
 
     header_mapping = {
         "true_result": "golden_answer",
@@ -190,7 +133,7 @@ def run(data_path: str, silver_reasoning_path: str = "") -> None:
                         for result in headers_results_before
                     ]
                 ),
-                after=False,
+                version="before",
             )
 
         if "model_answer_after" in row and row["model_answer_after"]:
@@ -212,7 +155,7 @@ def run(data_path: str, silver_reasoning_path: str = "") -> None:
                         for result in headers_results_after
                     ]
                 ),
-                after=True,
+                version="after",
             )
         else:
             print(
@@ -233,7 +176,7 @@ def run(data_path: str, silver_reasoning_path: str = "") -> None:
                         for result in headers["results"]
                     ]
                 ),
-                after=True,
+                version="after",
             )
 
         parts.append(part)
@@ -243,16 +186,10 @@ def run(data_path: str, silver_reasoning_path: str = "") -> None:
         parts = add_part_ids(parts)
 
     if silver_reasoning_path:
-        if not silver_reasoning_data:
-            raise ValueError("Silver reasoning data is not loaded.")
         print("Adding silver reasoning to the data...")
         for part in parts:
-            part.silver_reasoning = get_silver_reasoning(
-                task_id=part.task_id,
-                sample_id=part.sample_id,
-                part_id=part.part_id,
-                silver_reasoning_data=silver_reasoning_data,
-                from_zero=True,
+            part.silver_reasoning = silver_reasoning.get(
+                task_id=part.task_id, sample_id=part.sample_id, part_id=part.part_id
             )
 
     print("Saving the data...")
@@ -271,8 +208,7 @@ if __name__ == "__main__":
     # TODO: Add the link to the data
     data_path = ""
     # TODO: specify the path to silver reasoning if you wish to add it
-    silver_reasoning_path = "data/silver_reasoning_test.csv"
+    silver_reasoning_path = "data/silver_reasoning/silver_reasoning_test.csv"
     run(
         data_path=data_path,
-        silver_reasoning_path=silver_reasoning_path,
     )

@@ -7,7 +7,7 @@ import torch
 from transformers import AutoTokenizer
 
 from inference.DataLevels import SamplePart
-#from inference.Prompt import Prompt
+from inference.Prompt import Prompt
 from inference.utils import generation_token
 
 
@@ -151,6 +151,8 @@ class Chat:
                 break
             else:
                 raise Exception("Unexpected error for message:", message)
+
+            torch.cuda.empty_cache()
 
         # take all the tokens that could fit
         return (
