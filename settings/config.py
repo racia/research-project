@@ -43,7 +43,6 @@ class Setting:
     name: str
     interpretability: bool
 
-
 @dataclass
 class DataSplits:
     train: bool = "train"
