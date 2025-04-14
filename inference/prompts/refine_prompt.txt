@@ -1,23 +1,21 @@
-You are a helpful, logical, and highly attentive assistant.
-You will be given a feedback based on your previous answer.
-You need to refine the given answer based on the teacher's feedback.
+Your teacher evaluated your answer and reasoning and found them to be flawed.
+You will receive your previous answer and feedback to it.
 
 Instructions:
-1. Use the teacher's feedback as a hint to improve your answer.
-2. Keep the reasoning the same unless it directly repairs to the mistake.(reworded)
+1. Please correct your answer according to the teacher's feedback.
+2. Keep the reasoning same unless rewording directly repairs the mistake.
 3. Only modify the necessary part of the answer, ensuring it remains concise and logically correct.
 4. Do not repeat the original answer and provide a corrected version based on the hint.
+5. Follow the instructions and formatting of the task you received earlier.
 
+Original answer:
+{student_output}
 
-Given Information:
-Context:
-{context}
-
-Original Answer:
-{student_answer}
-
-Teacher's Hint:
+Teacher's feedback:
 {teacher_feedback}
 
-Corrected Answer:
-[Provide your improved answer here]
+Template for the corrected answer:
+Reasoning: <REASONING>
+Answer: <ANSWER>
+
+Always use it to fill in your answer.

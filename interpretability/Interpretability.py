@@ -81,23 +81,25 @@ class Interpretability:
 
         :return: 2D normalized attention scores averaged over layers and heads for the tokens of the current task
         """
-        attn_tensor = torch.stack(output_tensor["attentions"], dim=0).squeeze(1)
+        attn_tensor = torch.cat(
+            [att.cpu().half() for att in output_tensor["attentions"]], dim=0
+        )
+        del output_tensor
+        torch.cuda.empty_cache()
         # Mean over model layers
         attn_tensor = attn_tensor.mean(dim=0)
-        attn_scores = attn_tensor.float().detach().cpu().numpy()
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o system prompt)
-        attn_scores = attn_scores[
+        attn_scores = attn_tensor[
             :, -model_output_len + 1 :, : -model_output_len + 1
-        ].mean(axis=0)
+        ].mean(dim=0)
 
         # Normalize the attention scores by the sum of all token attention scores
-        attn_scores = attn_scores / attn_scores.sum(axis=-1, keepdims=True)
+        attn_scores = attn_scores / attn_scores.sum(dim=-1, keepdim=True)
+        attn_scores = attn_scores.float().detach().cpu().numpy()
 
         if context_sent_spans:
             # Additionally take mean of attention scores over each task sentence.
-            # attn_scores = np.array([attn_scores.T[start:stop] for start, stop in period_indices]).squeeze().mean(
-            # axis=-1)
             attn_scores = np.array(
                 [
                     attn_scores[:, start:stop].mean(axis=-1)
@@ -105,7 +107,21 @@ class Interpretability:
                 ]
             ).squeeze()
             # Reshape to match expected output format
-            attn_scores_T = attn_scores.transpose(1, 0)
+            warnings.warn(f"DEBUG attn_scores_T: {attn_scores.shape}")
+            if attn_scores.size > 0 and attn_scores.ndim == 2:
+                attn_scores_T = attn_scores.transpose(1, 0)
+            elif attn_scores.ndim == 1:
+                warnings.warn(f"DEBUG: Single row of attention scores:\n{attn_scores}")
+                attn_scores_T = attn_scores.reshape(1, -1).T
+            elif attn_scores.ndim == 0:
+                warnings.warn(f"DEBUG: Empty attention scores:\n{attn_scores}")
+                attn_scores_T = attn_scores.reshape(1, -1)
+            else:
+                warnings.warn(
+                    f"DEBUG: Unexpected shape of attention scores:\n{attn_scores}"
+                )
+                attn_scores_T = attn_scores
+
             # Normalize the attention scores by the sum of all token attention scores
             attn_scores_T = attn_scores_T / attn_scores_T.sum(axis=0, keepdims=True)
 
@@ -117,7 +133,7 @@ class Interpretability:
 
         return attn_scores
 
-    def get_tok_indices(
+    def filter_attention_indices(
         self, attention_scores: np.ndarray, chat_ids: np.ndarray
     ) -> list:
         """
@@ -136,7 +152,6 @@ class Interpretability:
         )
         return attention_indices
 
-
     def get_attention(
         self, part: SamplePart, chat: Chat, after: bool = True
     ) -> InterpretabilityResult:
@@ -151,13 +166,12 @@ class Interpretability:
         :param chat: Chat history as list of messages
         :param after: if to get attention scores after the setting was applied to the model output or before
         :return: attention scores, tokenized x and y tokens
-
         """
         chat_messages = chat.messages["student"] if chat.multi_system else chat.messages
         if not chat_messages[-1]["content"]:
             warnings.warn("DEBUG: Interpretability called on empty model output")
             print("DEBUG chat_messages", chat_messages, sep="\n")
-            return InterpretabilityResult(np.array(0), [], [], {})
+            return InterpretabilityResult(np.array([]), [], [], {})
 
         model_output_ids, _ = chat.convert_into_ids(
             chat_part=[chat_messages[-1]],
@@ -179,8 +193,11 @@ class Interpretability:
             output_attentions=True,
             output_hidden_states=False,
         )
+        torch.cuda.empty_cache()
 
         chat_ids = chat_ids[0, :].detach().cpu().numpy()
+
+        torch.cuda.empty_cache()
 
         # Check task length
         overflow = True if len(context_sent_spans) >= 10 else False
@@ -202,7 +219,7 @@ class Interpretability:
         )
 
         if not overflow:
-            attention_indices = self.get_tok_indices(attention_scores, chat_ids)
+            attention_indices = self.filter_attention_indices(attention_scores, chat_ids)
             # Filter attention scores
             attention_scores = attention_scores[:, attention_indices]
 
@@ -226,7 +243,9 @@ class Interpretability:
                 else:
                     x_tokens.append(f"{inx}")
 
-        # Decode the model output tokens without "user" token
+        torch.cuda.empty_cache()
+
+        # Decode the model output tokens without "assistant" token
         chat_ids = chat_ids[1:]
         y_tokens = self.tokenizer.batch_decode(chat_ids[-model_output_len + 1 :])
 

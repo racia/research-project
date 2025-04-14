@@ -18,27 +18,25 @@ def is_empty_file(file_path: Path) -> bool:
     return os.path.isfile(file_path) and os.path.getsize(file_path) == 0
 
 
-def prepare_accuracy_headers(prompt_name: str = "", after: bool = True) -> dict:
+def prepare_accuracy_headers(prompt_name: str = "", version: str = "after") -> dict:
     """
     Prepare the headers for the accuracies.
 
     :param prompt_name: the name of the prompt
-    :param after: if the metrics are calculated after the setting was applied
+    :param version: "after" if the metrics are calculated after the setting was applied, else "before"
     :return: the headers for the accuracies
     """
     prompt_name_ = prompt_name.replace("prompt_", "")
     return {
-        "exact_match": f"{prompt_name_}_exact_match_accuracy_{'after' if after else 'before'}".strip(
-            "_"
-        ),
-        "soft_match": f"{prompt_name_}_soft_match_accuracy_{'after' if after else 'before'}".strip(
-            "_"
-        ),
+        "exact_match_acc": f"{prompt_name_}_exact_match_accuracy_{version}".strip("_"),
+        "soft_match_acc": f"{prompt_name_}_soft_match_accuracy_{version}".strip("_"),
+        "exact_match_std": f"{prompt_name_}_exact_match_std_{version}".strip("_"),
+        "soft_match_std": f"{prompt_name_}_soft_match_std_{version}".strip("_"),
     }
 
 
 def format_split_metrics(
-    features: Features, headers: dict, metrics_to_save: dict, after: bool = True
+    features: Features, headers: dict, metrics_to_save: dict, version: str = "after"
 ) -> dict[str, dict]:
     """
     Format the metrics for the split to save them later.
@@ -46,20 +44,19 @@ def format_split_metrics(
     :param features: the features of the split
     :param headers: accuracy headers
     :param metrics_to_save: the accuracies to save
-    :param after: if the metrics are calculated after the setting was applied
+    :param version: if the metrics are calculated after the setting was applied
     :return: the metrics to save
     """
-    add_on = "after" if after else "before"
     metrics = {
-        f"there_{add_on}": features.there,
-        f"verbs_{add_on}": features.verbs,
-        f"pronouns_{add_on}": features.pronouns,
-        f"not_mentioned_{add_on}": features.not_mentioned,
+        f"there_{version}": features.there,
+        f"verbs_{version}": features.verbs,
+        f"pronouns_{version}": features.pronouns,
+        f"not_mentioned_{version}": features.not_mentioned,
     }
     for metric, value in metrics.items():
         if metric not in metrics_to_save:
             metrics_to_save[metric] = {"task_id": metric}
-        metrics_to_save[metric].update({headers["exact_match"]: value})
+        metrics_to_save[metric].update({headers["exact_match_acc"]: value})
     return metrics_to_save
 
 
@@ -70,7 +67,7 @@ def format_accuracy_metrics(
     soft_match_std: Metric,
     headers: dict = None,
     accuracies_to_save: dict[str, dict] = None,
-    after: bool = True,
+    version: str = "after",
 ) -> dict[str, dict]:
     """
     Format the accuracy metrics for the split to save them later:
@@ -83,39 +80,34 @@ def format_accuracy_metrics(
     :param soft_match_std: the standard deviation for the soft-match accuracies (per task)
     :param headers: the headers for the data
     :param accuracies_to_save: the accuracies to save
-    :param after: if the metrics are calculated after the setting was applied
+    :param version: if the metrics are calculated after the setting was applied
     """
-    add_on = "after" if after else "before"
     accuracy_metrics = {
-        "mean": {
-            "task_id": "mean",
-            (
-                headers["exact_match_acc"]
-                if headers
-                else f"exact_match_accuracy_{add_on}"
-            ): exact_match_accuracies.get_mean(),
-            (
-                headers["soft_match_acc"]
-                if headers
-                else f"soft_match_accuracy_{add_on}"
-            ): soft_match_accuracies.get_mean(),
-            (
-                headers["exact_match_std"] if headers else f"exact_match_std_{add_on}"
-            ): exact_match_std.get_mean(),
-            (
-                headers["soft_match_std"] if headers else f"soft_match_std_{add_on}"
-            ): soft_match_std.get_mean(),
-        },
-        "std": {
-            "task_id": "std",
-            (
-                headers["exact_match"] if headers else f"exact_match_accuracy_{add_on}"
-            ): exact_match_accuracies.get_std(),
-            (
-                headers["soft_match"] if headers else f"soft_match_accuracy_{add_on}"
-            ): soft_match_accuracies.get_std(),
-        },
+        "mean": {},
+        "std": {},
     }
+    exact_match_acc = (
+        headers["exact_match_acc"] if headers else f"exact_match_accuracy_{version}"
+    )
+    soft_match_acc = (
+        headers["soft_match_acc"] if headers else f"soft_match_accuracy_{version}"
+    )
+    em_std = headers["exact_match_std"] if headers else f"exact_match_std_{version}"
+    sm_std = headers["soft_match_std"] if headers else f"soft_match_std_{version}"
+    accuracy_metrics["mean"].update(
+        {
+            exact_match_acc: exact_match_accuracies.get_mean(),
+            soft_match_acc: soft_match_accuracies.get_mean(),
+            em_std: exact_match_std.get_mean(),
+            sm_std: soft_match_std.get_mean(),
+        }
+    )
+    accuracy_metrics["std"].update(
+        {
+            exact_match_acc: exact_match_accuracies.get_std(),
+            soft_match_acc: soft_match_accuracies.get_std(),
+        }
+    )
     accuracies_to_save = accuracies_to_save if accuracies_to_save else {}
     for task, metrics in accuracy_metrics.items():
         if not accuracies_to_save.get(task):
@@ -192,18 +184,18 @@ def _select_metric(metric_values: dict[str, float], keyword: str) -> list[float]
 def calculate_mean_accuracies(
     accuracies_to_save: dict,
     mean_headers: dict,
-    after: bool = True,
+    version: str = "after",
 ) -> dict[str, dict]:
     """
     Calculate mean accuracies for all tasks and update accuracies.
 
     :param accuracies_to_save: the split accuracies
     :param mean_headers: the headers for the mean accuracies
-    :param after: if the metrics are calculated after the setting was applied
+    :param version: if the metrics are calculated after the setting was applied
     :return: None
     """
-    exact_match = f"exact_match_{'after' if after else 'before'}"
-    soft_match = f"soft_match_{'after' if after else 'before'}"
+    exact_match = f"exact_match_{version}"
+    soft_match = f"soft_match_{version}"
     for task_id, accuracies in accuracies_to_save.items():
         exact_match_accuracies = Accuracy(
             "exact_match", _select_metric(accuracies, exact_match)
@@ -213,11 +205,11 @@ def calculate_mean_accuracies(
         )
 
         accuracies_to_save[task_id].update(
-            {mean_headers["exact_match"]: exact_match_accuracies.get_mean()}
+            {mean_headers["exact_match_acc"]: exact_match_accuracies.get_mean()}
         )
         if len(soft_match_accuracies) > 1:
             accuracies_to_save[task_id].update(
-                {mean_headers["soft_match"]: soft_match_accuracies.get_std()}
+                {mean_headers["soft_match_acc"]: soft_match_accuracies.get_std()}
             )
     return accuracies_to_save
 

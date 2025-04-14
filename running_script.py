@@ -14,15 +14,16 @@ from omegaconf import DictConfig, OmegaConf
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from evaluation.Evaluator import MetricEvaluator
-from inference.DataLevels import Split
+from inference.DataLevels import Split, print_metrics
 from inference.Prompt import Prompt
+from inference.utils import print_metrics_table
 from interpretability.Interpretability import Interpretability
 from plots.Plotter import Plotter
 from settings.Model import Model
 from settings.SD.SpeculativeDecoding import SpeculativeDecoding
 from settings.baseline.Baseline import Baseline
-from settings.skyline.Skyline import Skyline
 from settings.feedback.Feedback import Feedback
+from settings.skyline.Skyline import Skyline
 from settings.utils import set_device
 
 
@@ -72,21 +73,23 @@ def run_setting(cfg: DictConfig) -> None:
         )
         data_in_splits[split] = data_tasks
 
-    print("The data is loaded successfully", end="\n\n")
-
     saver = DataSaver(save_to=HydraConfig.get().run.dir)
     print(f"Results will be saved to: {saver.results_path}")
     plotter = Plotter(results_path=saver.results_path)
 
-    run_splits = defaultdict(lambda: defaultdict(dict))
+    run_splits = defaultdict(dict)
 
     setting = None
 
     if not hasattr(cfg.setting, "name"):
         raise ValueError("The setting name is not provided in the config file")
 
-    print("The model is being loaded...", end="\n\n")
     if hasattr(cfg, "model"):
+        print(
+            f"The model {cfg.model.name} is being loaded in mode '{cfg.model.mode}'",
+            end="\n\n",
+            flush=True,
+        )
         model = Model(
             cfg.model.name,
             cfg.model.max_new_tokens,
@@ -95,6 +98,11 @@ def run_setting(cfg: DictConfig) -> None:
             cfg.model.mode,
         )
     elif hasattr(cfg, "student"):
+        print(
+            f"The model {cfg.student.name} is being loaded in mode '{cfg.student.mode}'",
+            end="\n\n",
+            flush=True,
+        )
         model = Model(
             cfg.student.name,
             cfg.student.max_new_tokens,
@@ -105,7 +113,7 @@ def run_setting(cfg: DictConfig) -> None:
     else:
         raise ValueError("No base model is provided in the config.")
 
-    print(f"The model {model.model_name} is loaded successfully", flush=True)
+    print(f"The model {model.model_name} was loaded successfully", flush=True)
 
     # Load scenery words
     scenery_words = loader.load_scenery()
@@ -144,6 +152,7 @@ def run_setting(cfg: DictConfig) -> None:
             init_prompt=None,
             wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
             interpretability=interpretability,
+            saver=saver,
         )
     elif cfg.setting.name in ["Feedback", "feedback"]:
         multi_system = True
@@ -169,6 +178,7 @@ def run_setting(cfg: DictConfig) -> None:
             wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
             samples_per_task=cfg.data.samples_per_task,
             interpretability=interpretability,
+            saver=saver,
         )
         pass
     elif cfg.setting.name in ["SD", "SpeculativeDecoding"]:
@@ -272,7 +282,6 @@ def run_setting(cfg: DictConfig) -> None:
             )
             setting.refine_prompt = Prompt(
                 prompt_path=cfg.refine_prompt.paths[0],
-                wrapper=cfg.refine_prompt.wrapper,
             )
 
             print("- THE FEEDBACK PROMPT -")
@@ -334,6 +343,8 @@ def run_setting(cfg: DictConfig) -> None:
                 end="\n\n",
             )
 
+            print_metrics(split, table=True)
+
             if multi_system:
                 print("The features before applying the setting:")
                 print(split.features_before, end="\n\n")
@@ -341,31 +352,18 @@ def run_setting(cfg: DictConfig) -> None:
             print("The features after applying the setting:")
             print(split.features_after, end="\n\n")
 
-            if multi_system:
-                print("Before the setting was applied:")
-                split.evaluator_before.print_accuracies(id_=split.name)
-            split.evaluator_after.print_accuracies(id_=split.name)
-
             prompt_evaluator_after.update(split.evaluator_after)
 
             if multi_system:
                 prompt_evaluator_before.update(split.evaluator_before)
-
-                saver.save_split_accuracy(
-                    evaluator=split.evaluator_before,
-                    metrics_file_name=metrics_file_names[split_name],
-                    after=False,
-                )
                 saver.save_split_metrics(
                     features=split.features_before,
-                    metrics_file_names=[
-                        metrics_file_names[split.name],
-                        results_file_names[split.name],
-                    ],
+                    metrics_file_name=metrics_file_names[split.name],
+                    version="before",
                 )
                 # Plot the prompt accuracies for the split
                 plotter.plot_acc_per_task_and_prompt(
-                    acc_per_prompt_task=split.evaluator_before.get_metrics(
+                    acc_per_prompt_task=split.evaluator_before.get_accuracies(
                         as_lists=True
                     ),
                     y_label="Accuracies and Standard Deviations",
@@ -373,39 +371,40 @@ def run_setting(cfg: DictConfig) -> None:
                 )
                 plotter.plot_acc_per_task_and_prompt(
                     acc_per_prompt_task={
-                        **split.evaluator_before.get_metrics(as_lists=True),
-                        **split.evaluator_after.get_metrics(as_lists=True),
+                        **split.evaluator_before.get_accuracies(as_lists=True),
+                        **split.evaluator_after.get_accuracies(as_lists=True),
                     },
                     y_label="Accuracies and Standard Deviations",
                     plot_name_add=[prompt_name, split.name, "before", "after"],
                 )
 
-            saver.save_split_accuracy(
-                evaluator=split.evaluator_after,
-                metrics_file_name=metrics_file_names[split.name],
-                after=True,
-            )
             saver.save_split_metrics(
                 features=split.features_after,
-                metrics_file_names=[
-                    metrics_file_names[split.name],
-                    results_file_names[split.name],
-                ],
+                metrics_file_name=metrics_file_names[split.name],
+                version="after",
+            )
+            saver.save_split_accuracy(
+                evaluators=[split.evaluator_before, split.evaluator_after],
+                accuracy_file_name=metrics_file_names[split.name],
+                multi_system=multi_system,
             )
             # Plot the prompt accuracies for the split
             plotter.plot_acc_per_task_and_prompt(
-                acc_per_prompt_task=split.evaluator_after.get_metrics(as_lists=True),
+                acc_per_prompt_task=split.evaluator_after.get_accuracies(as_lists=True),
                 y_label="Accuracies and Standard Deviations",
                 plot_name_add=[prompt_name, split.name, "after"],
             )
 
-            run_splits["after"][split.name][init_prompt] = split
+            run_splits[split.name][init_prompt] = split
 
         print("\n- RUN RESULTS -", end="\n\n")
 
-        if multi_system:
-            prompt_evaluator_before.print_accuracies(id_=init_prompt.name)
-        prompt_evaluator_after.print_accuracies(id_=init_prompt.name)
+        evals = (
+            [prompt_evaluator_before, prompt_evaluator_after]
+            if multi_system
+            else [prompt_evaluator_after]
+        )
+        print_metrics_table(*evals, id_=init_prompt.name)
 
         print(
             "Processed",
@@ -430,56 +429,70 @@ def run_setting(cfg: DictConfig) -> None:
         print("______________________________")
 
     if len(cfg.init_prompt.paths) > 1:
-        versions = ["before", "after"] if multi_system else ["after"]
-        for split in data_in_splits.keys():
-            evaluators = (
-                [split.evaluator_before, split.evaluator_after]
-                if multi_system
-                else [split.evaluator_after]
-            )
+        for split_name, prompts_splits in run_splits.items():
+            evaluators = {"before": [], "after": []}
+            for prompt, split in prompts_splits.items():
+                evaluators["before"].append(split.evaluator_before)
+                evaluators["after"].append(split.evaluator_after)
             em_accuracies, sm_accuracies = {}, {}
             em_std, sm_std = {}, {}
             plotter.results_path = saver.run_path
 
-            for version, evaluator in zip(versions, evaluators):
+            for version, evaluator in evaluators.items():
                 saver.save_run_accuracy(
                     task_ids=loader.tasks,
-                    splits=run_splits[version][split.name],
-                    features=split.features_after,
-                    split_name=split.name,
-                    after=True if version == "after" else False,
+                    splits=prompts_splits,
+                    split_name=split_name,
+                    version=version,
                 )
-                em_accuracies_ = {
-                    prompt: evaluator.exact_match_accuracy
-                    for prompt, split in run_splits[version][split.name].items()
-                }
+                em_accuracies_ = dict(
+                    zip(
+                        prompts_splits.keys(),
+                        [
+                            evaluator.exact_match_accuracy
+                            for evaluator in evaluators[version]
+                        ],
+                    )
+                )
                 em_accuracies[version] = em_accuracies_
-                sm_accuracies_ = {
-                    prompt: evaluator.soft_match_accuracy
-                    for prompt, split in run_splits["after"][split.name].items()
-                }
+                sm_accuracies_ = dict(
+                    zip(
+                        prompts_splits.keys(),
+                        [
+                            evaluator.soft_match_accuracy
+                            for evaluator in evaluators[version]
+                        ],
+                    )
+                )
                 sm_accuracies[version] = sm_accuracies_
                 plotter.plot_accuracies(
                     exact_match_accuracies=em_accuracies_,
                     soft_match_accuracies=sm_accuracies_,
-                    additional_info=[split, version],
+                    additional_info=[split_name, version],
                     compare_prompts=True,
                     label="Accuracy",
                 )
-                em_std_ = {
-                    prompt: evaluator.exact_match_std
-                    for prompt, split in run_splits[version][split.name].items()
-                }
+                em_std_ = dict(
+                    zip(
+                        prompts_splits.keys(),
+                        [
+                            evaluator.exact_match_std
+                            for evaluator in evaluators[version]
+                        ],
+                    )
+                )
                 em_std[version] = em_std_
-                sm_std_ = {
-                    prompt: evaluator.soft_match_std
-                    for prompt, split in run_splits[version][split.name].items()
-                }
+                sm_std_ = dict(
+                    zip(
+                        prompts_splits.keys(),
+                        [evaluator.soft_match_std for evaluator in evaluators[version]],
+                    )
+                )
                 sm_std[version] = sm_std_
                 plotter.plot_accuracies(
                     exact_match_accuracies=em_std_,
                     soft_match_accuracies=sm_std_,
-                    additional_info=[split.name, version],
+                    additional_info=[split_name, version],
                     compare_prompts=True,
                     label="Standard Deviation",
                 )
@@ -489,14 +502,14 @@ def run_setting(cfg: DictConfig) -> None:
                 plotter.plot_accuracies(
                     exact_match_accuracies={**em_accuracies.values()},
                     soft_match_accuracies={**sm_accuracies.values()},
-                    additional_info=[split.name, "before", "after"],
+                    additional_info=[split_name, "before", "after"],
                     compare_prompts=True,
                     label="Accuracy",
                 )
                 plotter.plot_accuracies(
                     exact_match_accuracies={**em_std.values()},
                     soft_match_accuracies={**sm_std.values()},
-                    additional_info=[split.name, "before", "after"],
+                    additional_info=[split_name, "before", "after"],
                     compare_prompts=True,
                     label="Standard Deviation",
                 )

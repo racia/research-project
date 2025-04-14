@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from data.DataSaver import DataSaver
 from inference.Chat import Chat
 from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
@@ -24,6 +25,7 @@ class Baseline(Setting):
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
         wrapper: Wrapper = None,
+        saver: DataSaver = None,
     ):
         """
         Baseline class manages model runs and data flows around it.
@@ -43,6 +45,8 @@ class Baseline(Setting):
             init_prompt=init_prompt,
             to_enumerate=to_enumerate,
             wrapper=wrapper,
+            interpretability=interpretability,
+            saver=saver,
         )
         self.question_id: int = 0
         self.interpretability: Interpretability = interpretability
@@ -67,7 +71,7 @@ class Baseline(Setting):
 
         return formatted_prompt
 
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> str:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple[str, int]:
         """
         Postprocesses the output of the model.
         For the baseline model, this postprocessing just parses the output.
@@ -76,4 +80,4 @@ class Baseline(Setting):
         :param chat: the current chat, only necessary in the SD and feedback setting
         :return: parsed output
         """
-        return decoded_output
+        return decoded_output, 0

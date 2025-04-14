@@ -80,3 +80,16 @@ class Accuracy(Metric):
         :param accuracies: the list of accuracy values
         """
         super().__init__(name, accuracies)
+
+
+class AttnDistribution(Metric):
+    def __init__(self, name: str, accuracies: list[float] = None):
+        """
+        Initialize the attention distribution class.
+
+        :param name: the type of attention distribution
+        :param accuracies: the list of attention distribution values
+        """
+        super().__init__(name, accuracies)
+
+        self.all_other: list[float] = []

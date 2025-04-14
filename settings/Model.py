@@ -4,7 +4,6 @@ import torch
 from torch.amp import autocast
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
-from inference.DataLevels import SamplePart
 from settings.config import Mode
 
 
@@ -29,8 +28,6 @@ class Model:
         self.mode: Mode = mode
         self.model, self.tokenizer = self.load()
 
-        self.curr_sample_part: SamplePart = None
-
     def load(self) -> tuple:
         """
         Load the model and the tokenizer.
@@ -39,12 +36,6 @@ class Model:
 
         :return: tuple: model, tokenizer
         """
-        print(
-            f"The model {self.model_name} is being loaded in mode '{self.mode}'",
-            end="\n\n",
-            flush=True,
-        )
-
         # create an offload folder
         if not os.path.exists("offload_folder"):
             os.makedirs("offload_folder")
@@ -81,8 +72,6 @@ class Model:
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
         torch.cuda.empty_cache()
-
-        print(f"The model {self.model_name} was  loaded successfully", flush=True)
 
         return model, tokenizer
 

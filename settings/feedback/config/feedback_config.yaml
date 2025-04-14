@@ -14,7 +14,7 @@ student:
 
 setting:
   name: 'Feedback'
-  interpretability: False
+  interpretability: True
 
 data:
   # small data with validation
@@ -57,40 +57,20 @@ init_prompt:
     wrapper: |
       *EXAMPLE{number}*
       {example}
+      *END OF EXAMPLE{number}*
 
 feedback_prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/feedback_prompt.txt"
-  wrapper:
-    # if to wrap the part prompt with the task description
-    context: |
-      Here are the context sentences:
-      {context}
-    question: |
-      Now, answer the following question:
-      {question}
-    cot: |
-      {cot}
-    feedback: | 
-      Here is the teacher's feedback:
-      {feedback}
+  wrapper: |
+    The student's response was:
+    {student_output}
 
 refine_prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/refine_prompt.txt"
-  wrapper:
-    # if to wrap the part prompt with the task description
-    context: |
-      These were the context sentences:
-      {context}
-    question: |
-      This is the question that you should answer:
-      {question}
-    feedback: |
-      This is the feedback of the other model:
-      {feedback}
 
 logging:
   # if to print the results to a log file, otherwise will print to console
@@ -104,10 +84,12 @@ results:
     - sample_id
     - part_id
     - task
+    - answer_lies_in_self
     - golden_answer
     - silver_reasoning
     - model_answer_after
-    - correct_after
+    - answer_correct_after
+    - reasoning_correct_after
     - model_reasoning_after
     - model_output_after
     - exact_match_accuracy_after
@@ -116,8 +98,11 @@ results:
     - verbs_after
     - pronouns_after
     - not_mentioned_after
+    - context_sents_hall_after
+    - feedback_iterations
     - model_answer_before
-    - correct_before
+    - answer_correct_before
+    - reasoning_correct_before
     - model_reasoning_before
     - model_output_before
     - exact_match_accuracy_before
@@ -126,8 +111,10 @@ results:
     - verbs_before
     - pronouns_before
     - not_mentioned_before
+    - feedback_iterations
+    - context_sents_hall_before
 
-  hydra: # Added this section to align with SD
+  hydra:
     run:
       # the run directory with logs, plots, and csv results will be created here
       # use more folders if needed for distinguishing between different experiments

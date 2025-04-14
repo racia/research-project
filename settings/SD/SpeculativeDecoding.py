@@ -4,7 +4,7 @@ import re
 
 import torch
 
-from inference.Chat import Chat, Source
+from inference.Chat import Chat
 from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
 from settings.Model import Model
@@ -116,7 +116,7 @@ class SpeculativeDecoding(Setting):
         self.affix = False
 
         # save the original chat so the refined output can be added later on
-        self.chat = None
+        self.chat: Chat = None
 
     def generate_student(self, corrected_in: str, chat: Chat) -> str:
         """
@@ -190,6 +190,8 @@ class SpeculativeDecoding(Setting):
         an integer or None indicating the error index and the teacher's intervention or None
         """
         student_tokens = self.string_to_tokens(model_out=student_out_str)
+        suggested_token_affix = ""
+
         if approved_tokens:
             all_student_tokens = approved_tokens + student_tokens
             print(
@@ -230,7 +232,7 @@ class SpeculativeDecoding(Setting):
                     end="\n\n",
                     flush=True,
                 )
-            if ix > 0:
+            if ix > 0 or last_err_ix > 0:
                 print(
                     f"Tokens accepted by the teacher in this iteration so far: {student_tokens[:ix]}",
                     end="\n\n",
@@ -238,10 +240,10 @@ class SpeculativeDecoding(Setting):
                 )
 
                 _, student_out_approved = check_match(
-                    tokens=approved_tokens[:last_err_ix],
+                    tokens=all_student_tokens[: last_err_ix + 1],
                     string=all_student_str,
                     ix=ix,
-                    intervention=approved_tokens[last_err_ix],
+                    intervention=all_student_tokens[last_err_ix + 1],
                 )
             # first iteration -> teacher gets no student output
             else:
@@ -300,7 +302,11 @@ class SpeculativeDecoding(Setting):
             ):
                 # if the student token was considered as an affix and is not in the top tokens,
                 # return the suggested token of the previous step
-                if self.affix is True:
+
+                if self.affix and suggested_token_affix:
+                    suggested_token_affix = (
+                        all_student_tokens[last_err_ix - 1] + suggested_token
+                    )
                     self.affix = False
                     return False, ix - 1, suggested_token_affix
 
@@ -500,7 +506,7 @@ class SpeculativeDecoding(Setting):
 
         return corrected_chain, corrected_str
 
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> str:
+    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple[str, int]:
         """
         Run the speculative decoding for one instance.
 
@@ -517,7 +523,7 @@ class SpeculativeDecoding(Setting):
         """
         # save the initial student output as a fallback solution
         self.initial_student_output = decoded_output
-        self.set_teacher_system_prompt(chat=chat)
+        self.set_teacher_system_prompt(chat=chat, teacher_sys=self.eval_prompt)
         chat = self.create_chat_copy(chat=chat)
 
         print(
@@ -556,7 +562,7 @@ class SpeculativeDecoding(Setting):
         # change the last message of the student to the refined output
         self.chat.messages["student"][-1]["content"] = decoded_output
 
-        return decoded_output
+        return decoded_output, 0
 
     def speculative_decode(
         self,
@@ -637,9 +643,14 @@ class SpeculativeDecoding(Setting):
             # only add teacher intervention to chat if the teacher disagrees
             # otherwise the teacher doesn't propose anything
             if not is_valid:
-                chat.add_message(
-                    part=teacher_intervention, source="assistant", model_role="teacher"
-                )
+                if teacher_intervention:
+                    chat.add_message(
+                        part=teacher_intervention,
+                        source="assistant",
+                        model_role="teacher",
+                    )
+                else:
+                    chat.add_message(part=" ", source="assistant", model_role="teacher")
 
             print(
                 "Teacher's evaluation:",
@@ -656,34 +667,6 @@ class SpeculativeDecoding(Setting):
             revs += 1
 
         return corrected_str + student_out
-
-    def set_teacher_system_prompt(self, chat: Chat):
-        """
-        Set the system prompt for the teacher.
-        This includes clearing the teacher's chat of previous parts.
-
-        :param: chat: Chat, the current chat for the sample
-
-        :return:
-        """
-        # clear the teacher's chat
-        if chat.messages["teacher"]:
-            chat.messages["teacher"] = []
-
-        teacher_sys_prompt = self.eval_prompt.format_teacher_sys(
-            student_sys=chat.messages["student"][0]["content"],
-            student_chat=chat.messages["student"],
-        )
-        chat.messages["teacher"].append(
-            {"role": Source.system, "content": teacher_sys_prompt}
-        )
-
-        print(
-            "\n--------------\n",
-            f"Teacher's system prompt: {teacher_sys_prompt}",
-            end="\n--------------\n\n",
-            flush=True,
-        )
 
     def string_to_tokens(self, model_out: str) -> list[str]:
         """

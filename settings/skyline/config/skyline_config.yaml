@@ -75,7 +75,8 @@ results:
     - task
     - golden_answer
     - model_answer_after
-    - correct_after
+    - answer_correct_after
+    - reasoning_correct_after
     - model_reasoning_after
     - silver_reasoning
     - model_output_after
@@ -85,6 +86,7 @@ results:
     - verbs_after
     - pronouns_after
     - not_mentioned_after
+    - context_sents_hall_after
 
 hydra:
   run:
