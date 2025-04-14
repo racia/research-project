@@ -5,7 +5,7 @@ from typing import Any
 
 import en_core_web_sm
 from prettytable import PrettyTable
-from transformers import AutoTokenizer
+from transformers import PreTrainedTokenizerFast
 
 from evaluation.Evaluator import MetricEvaluator
 
@@ -61,22 +61,18 @@ def contains_not_mentioned(answer) -> bool:
     return False
 
 
-def generation_token(tokenizer: AutoTokenizer, role: str) -> int:
+def generation_tokens(tokenizer: PreTrainedTokenizerFast, role: str, eot: bool) -> list[float]:
     """
     Returns the token id for the role of the message.
 
     :param tokenizer: tokenizer to use
     :param role: role of the message
-    :return: token id
+    :param eot: whether to add the end of text token
+    :return: token id and special tokens
     """
-    if role == "user":
-        return tokenizer.convert_tokens_to_ids("user")
-    elif role == "assistant":
-        return tokenizer.convert_tokens_to_ids("assistant")
-    elif role == "system":
-        return tokenizer.convert_tokens_to_ids("system")
-    else:
-        raise ValueError(f"Unknown role: {role}")
+    generation_token = "<|eot_id|>" if eot else "<|begin_of_text|>"
+
+    return tokenizer.convert_tokens_to_ids([generation_token, "<|start_header_id|>", role, "<|end_header_id|>"])
 
 
 def context_sentences(text: str) -> int:
@@ -134,12 +130,12 @@ def print_metrics_table(
             if len(eval_before.soft_match_accuracy) > 1
             else eval_before.soft_match_accuracy.get_mean()
         )
-        if eval_before.max_attn_dist:
-            metric_values["Max attention distribution"]["Before"] = (
-                f"{eval_before.max_attn_dist.get_mean()} ± {eval_before.max_attn_dist.get_std()}"
-                if len(eval_before.max_attn_dist) > 1
-                else eval_before.max_attn_dist.get_mean()
-            )
+        # if eval_before.max_attn_dist:
+        #     metric_values["Max attention distribution"]["Before"] = (
+        #         f"{eval_before.max_attn_dist.get_mean()} ± {eval_before.max_attn_dist.get_std()}"
+        #         if len(eval_before.max_attn_dist) > 1
+        #         else eval_before.max_attn_dist.get_mean()
+        #     )
 
     if eval_after:
         metric_values["Exact-match accuracy"]["After"] = (
@@ -152,12 +148,12 @@ def print_metrics_table(
             if len(eval_after.soft_match_accuracy) > 1
             else eval_after.soft_match_accuracy.get_mean()
         )
-        if eval_after.max_attn_dist:
-            metric_values["Max attention distribution"]["After"] = (
-                f"{eval_after.max_attn_dist.get_mean()} ± {eval_after.max_attn_dist.get_std()}"
-                if len(eval_after.max_attn_dist) > 1
-                else eval_after.max_attn_dist.get_mean()
-            )
+        # if eval_after.max_attn_dist:
+        #     metric_values["Max attention distribution"]["After"] = (
+        #         f"{eval_after.max_attn_dist.get_mean()} ± {eval_after.max_attn_dist.get_std()}"
+        #         if len(eval_after.max_attn_dist) > 1
+        #         else eval_after.max_attn_dist.get_mean()
+        #     )
 
     for metric_name, values in metric_values.items():
         row = [metric_name]

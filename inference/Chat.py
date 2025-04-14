@@ -4,11 +4,11 @@ from dataclasses import dataclass
 from typing import Union
 
 import torch
-from transformers import AutoTokenizer
+from transformers import PreTrainedTokenizerFast
 
 from inference.DataLevels import SamplePart
 from inference.Prompt import Prompt
-from inference.utils import generation_token
+from inference.utils import generation_tokens
 
 
 @dataclass
@@ -39,7 +39,7 @@ class Chat:
         :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
         """
         self.multi_system: bool = multi_system
-
+        
         if multi_system:
             self.messages = {
                 "teacher": [],
@@ -105,11 +105,10 @@ class Chat:
 
     def convert_into_ids(
         self,
-        tokenizer: AutoTokenizer,
+        tokenizer: PreTrainedTokenizerFast,
         chat_part: list[dict] = None,
-        max_new_tokens: int = 100,
         max_length: int = 2048,
-    ) -> tuple[torch.LongTensor, list[tuple[int, int]]]:
+    ) -> tuple[dict[str, torch.LongTensor], list[tuple[int, int]], int]:
         """
         Converts either all the chat messages or the specified ones into ids ensuring that the input does not exceed
         the max_length. The system prompt is always included in the input, regardless of the chat_part.
@@ -119,43 +118,47 @@ class Chat:
 
         :param tokenizer: tokenizer to use
         :param chat_part: chat part to convert into ids, if None, all messages are used
-        :param max_new_tokens: max_new_tokens model config
         :param max_length: default max_length of model config
-        :return: tensor of input tokens
+        :return: tensor of input tokens, supporting sentence spans and system prompt length
         """
-        input_tokens_left = max_length - max_new_tokens
-
+        sys_prompt_len = 0
         history_ids = []
         supporting_sent_spans = []
-        for message in chat_part if chat_part else self.messages:
-            message_ids = [generation_token(tokenizer, message["role"])]
+        for i, message in enumerate(chat_part if chat_part else self.messages):
+            message_ids = generation_tokens(
+                tokenizer, message["role"], eot=False if i == 0 else True
+            )
 
             for sentence in message["original_content"].split("\n"):
-                tokenized_sentence = tokenizer.encode(
-                    sentence, add_special_tokens=False
-                )
-                if message["role"] == "user":
-                    start = len(message_ids) + 1
-                    message_ids.extend(tokenized_sentence)
-                    end = len(message_ids)
-                    supporting_sent_spans.append((start, end))
-                else:
-                    message_ids.extend(tokenized_sentence)
+                # \n\n in source produces empty sentences
+                if sentence:
+                    tokenized_sentence = tokenizer.encode(
+                        sentence,
+                        add_special_tokens=False,
+                        return_tensors="pt",
+                    )[0]
+                    torch.cuda.empty_cache()
+                    tokenized_sentence = tokenized_sentence.tolist()
 
-            if len(history_ids) + len(message_ids) <= input_tokens_left:
+                    if message["role"] == "user":
+                        start = len(message_ids) + 1
+                        message_ids.extend(tokenized_sentence)
+                        end = len(message_ids)
+                        supporting_sent_spans.append((start, end))
+                    else:
+                        message_ids.extend(tokenized_sentence)
+            if message["role"] == "system":
+                sys_prompt_len = len(message_ids)
+
+            if len(history_ids) + len(message_ids) <= max_length:
                 history_ids += message_ids
-            elif message["role"] == "assistant":
-                history_ids.append(tokenizer.convert_tokens_to_ids("assistant"))
-                break
-            elif message["role"] == "user":
-                break
             else:
-                raise Exception("Unexpected error for message:", message)
+                break
+            
+        history_ids.append(tokenizer.convert_tokens_to_ids("assistant"))
 
-            torch.cuda.empty_cache()
-
-        # take all the tokens that could fit
         return (
-            torch.LongTensor([history_ids[-input_tokens_left:]]),
+            {"input_ids": torch.LongTensor([history_ids])},
             supporting_sent_spans,
+            sys_prompt_len,
         )

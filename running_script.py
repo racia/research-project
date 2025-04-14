@@ -80,46 +80,11 @@ def run_setting(cfg: DictConfig) -> None:
 
     setting = None
 
-    if not hasattr(cfg.setting, "name"):
-        raise ValueError("The setting name is not provided in the config file")
-
-    if hasattr(cfg, "model"):
-        print(
-            f"The model {cfg.model.name} is being loaded in mode '{cfg.model.mode}'",
-            end="\n\n",
-            flush=True,
-        )
-        model = Model(
-            cfg.model.name,
-            cfg.model.max_new_tokens,
-            cfg.model.temperature,
-            cfg.model.to_continue,
-            cfg.model.mode,
-        )
-    elif hasattr(cfg, "student"):
-        print(
-            f"The model {cfg.student.name} is being loaded in mode '{cfg.student.mode}'",
-            end="\n\n",
-            flush=True,
-        )
-        model = Model(
-            cfg.student.name,
-            cfg.student.max_new_tokens,
-            cfg.student.temperature,
-            cfg.student.to_continue,
-            cfg.student.mode,
-        )
-    else:
-        raise ValueError("No base model is provided in the config.")
-
-    print(f"The model {model.model_name} was loaded successfully", flush=True)
-
     # Load scenery words
     scenery_words = loader.load_scenery()
 
     interpretability = (
         Interpretability(
-            model=model,
             plotter=plotter,
             save_heatmaps=cfg.results.save_heatmaps,
             scenery_words=scenery_words,
@@ -127,6 +92,19 @@ def run_setting(cfg: DictConfig) -> None:
         if cfg.setting.interpretability
         else None
     )
+
+    if not hasattr(cfg.setting, "name"):
+        raise ValueError("The setting name is not provided in the config file")
+
+    print("The model is being loaded...", end="\n\n")
+    if hasattr(cfg, "model"):
+        model = Model(**cfg.model, interpretability=interpretability)
+    elif hasattr(cfg, "student"):
+        model = Model(**cfg.student, interpretability=interpretability)
+    else:
+        raise ValueError("No base model is provided in the config.")
+
+    print(f"The model {model.name} is loaded successfully", flush=True)
 
     multi_system = False
 
@@ -139,7 +117,7 @@ def run_setting(cfg: DictConfig) -> None:
             samples_per_task=loader.samples_per_task,
             init_prompt=None,
             wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
-            interpretability=interpretability,
+            saver=saver,
         )
     elif cfg.setting.name == "Skyline":
         setting = Skyline(
@@ -150,19 +128,29 @@ def run_setting(cfg: DictConfig) -> None:
             samples_per_task=loader.samples_per_task,
             init_prompt=None,
             wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
-            interpretability=interpretability,
             saver=saver,
         )
     elif cfg.setting.name in ["Feedback", "feedback"]:
         multi_system = True
-        teacher = Model(
-            cfg.teacher.name,
-            cfg.teacher.max_new_tokens,
-            cfg.teacher.temperature,
-            cfg.teacher.to_continue,
-            cfg.teacher.mode,
+        feedback_prompt = Prompt(
+            prompt_path=cfg.feedback_prompt.paths[0],
+            wrapper=cfg.feedback_prompt.wrapper,
         )
+        refine_prompt = Prompt(
+            prompt_path=cfg.refine_prompt.paths[0],
+            wrapper=cfg.refine_prompt.wrapper,
+        )
+        print("- THE FEEDBACK PROMPT -")
+        print("______________________________")
+        print(feedback_prompt.text)
+        print("______________________________", end="\n\n")
 
+        print("- THE REFINE PROMPT -")
+        print("______________________________")
+        print(refine_prompt.text)
+        print("______________________________", end="\n\n", flush=True)
+
+        teacher = Model(**cfg.teacher)
         setting = Feedback(
             student=model,
             teacher=teacher,
@@ -170,25 +158,34 @@ def run_setting(cfg: DictConfig) -> None:
             total_tasks=loader.number_of_tasks,
             total_parts=loader.number_of_parts,
             init_prompt=None,
-            feedback_prompt=None,
-            refine_prompt=None,
+            feedback_prompt=feedback_prompt,
+            refine_prompt=refine_prompt,
             teacher_max_new_tokens=cfg.teacher.max_new_tokens,
             student_max_new_tokens=cfg.student.max_new_tokens,
             wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
             samples_per_task=cfg.data.samples_per_task,
-            interpretability=interpretability,
             saver=saver,
         )
-        pass
+
     elif cfg.setting.name in ["SD", "SpeculativeDecoding"]:
         multi_system = True
-        teacher = Model(
-            cfg.teacher.name,
-            cfg.teacher.max_new_tokens,
-            cfg.teacher.temperature,
-            cfg.teacher.to_continue,
-            cfg.teacher.mode,
+        eval_prompt = Prompt(
+            prompt_path=cfg.eval_prompt.paths[0], wrapper=cfg.eval_prompt.wrapper
         )
+        resume_prompt = Prompt(
+            prompt_path=cfg.resume_prompt.paths[0],
+            wrapper=cfg.resume_prompt.wrapper,
+        )
+        print("- THE EVAL PROMPT -")
+        print("______________________________")
+        print(eval_prompt.text)
+        print("______________________________", end="\n\n", flush=True)
+        print("- THE RESUME PROMPT -")
+        print("______________________________")
+        print(resume_prompt.text)
+        print("______________________________", end="\n\n", flush=True)
+
+        teacher = Model(**cfg.teacher)
         setting = SpeculativeDecoding(
             student=model,
             teacher=teacher,
@@ -196,19 +193,18 @@ def run_setting(cfg: DictConfig) -> None:
             total_tasks=loader.number_of_tasks,
             total_parts=loader.number_of_parts,
             init_prompt=None,
-            eval_prompt=None,
-            resume_prompt=None,
+            eval_prompt=eval_prompt,
+            resume_prompt=resume_prompt,
             samples_per_task=cfg.data.samples_per_task,
             wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
-            interpretability=interpretability,
+            saver=saver,
         )
+
     else:
         raise ValueError(
             f"Setting {cfg.setting.name} is not supported. "
             f"Please choose one of the following: Baseline, Skyline, Feedback, SD or SpeculativeDecoding"
         )
-
-    setting.total_tasks = 0
 
     for prompt_num, prompt_path in enumerate(cfg.init_prompt.paths, 1):
         prompt_name = Path(prompt_path).stem
@@ -254,53 +250,13 @@ def run_setting(cfg: DictConfig) -> None:
         print(init_prompt.text)
         print("______________________________", end="\n\n")
 
-        if cfg.setting.name in ["SD", "SpeculativeDecoding"]:
-            setting.eval_prompt = Prompt(
-                prompt_path=cfg.eval_prompt.paths[0], wrapper=cfg.eval_prompt.wrapper
-            )
-
-            print("- THE EVAL PROMPT -")
-            print("______________________________")
-            print(setting.eval_prompt.text)
-            print("______________________________", end="\n\n", flush=True)
-
-            setting.resume_prompt = Prompt(
-                prompt_path=cfg.resume_prompt.paths[0],
-                wrapper=cfg.resume_prompt.wrapper,
-            )
-
-            print("- THE RESUME PROMPT -")
-            print("______________________________")
-            print(setting.resume_prompt.text)
-            print("______________________________", end="\n\n", flush=True)
-
-        elif cfg.setting.name in ["Feedback", "feedback"]:
-            setting.feedback_prompt = Prompt(
-                prompt_path=cfg.feedback_prompt.paths[0],
-                wrapper=cfg.feedback_prompt.wrapper,
-            )
-            setting.refine_prompt = Prompt(
-                prompt_path=cfg.refine_prompt.paths[0],
-            )
-
-            print("- THE FEEDBACK PROMPT -")
-            print("______________________________")
-            print(setting.feedback_prompt.text)
-            print("______________________________", end="\n\n")
-
-            print("- THE REFINE PROMPT -")
-            print("______________________________")
-            print(setting.refine_prompt.text)
-            print("______________________________", end="\n\n", flush=True)
-
-        setting.question_id = 0
-
         for split_name, tasks in data_in_splits.items():
             print(
                 f"Starting to query the model with {split_name.upper()} data...",
                 end="\n\n",
             )
             split = Split(name=split_name, multi_system=multi_system)
+            setting.question_id = 0
 
             for task_id, task in sorted(tasks.items()):
                 if (

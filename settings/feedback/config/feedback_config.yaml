@@ -107,6 +107,8 @@ results:
     - model_output_before
     - exact_match_accuracy_before
     - soft_match_accuracy_before
+    - max_supp_target_before
+    - max_supp_target_after
     - there_before
     - verbs_before
     - pronouns_before

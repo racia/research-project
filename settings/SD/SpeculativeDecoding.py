@@ -4,9 +4,10 @@ import re
 
 import torch
 
+from data.DataSaver import DataSaver
 from inference.Chat import Chat
 from inference.Prompt import Prompt
-from interpretability.Interpretability import Interpretability
+from interpretability.utils import InterpretabilityResult
 from settings.Model import Model
 from settings.Setting import Setting
 from settings.config import Wrapper
@@ -66,13 +67,13 @@ class SpeculativeDecoding(Setting):
         to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
-        interpretability: Interpretability,
         init_prompt: Prompt = None,
         eval_prompt: Prompt = None,
         resume_prompt: Prompt = None,
         samples_per_task: int = 5,
         multi_system: bool = True,
         wrapper: Wrapper = None,
+        saver: DataSaver = None,
     ):
         """
         Initialize the speculative decoding setting.
@@ -87,7 +88,6 @@ class SpeculativeDecoding(Setting):
         :param student: The student model
         :param eval_prompt: the evaluation prompt for the teacher
         :param resume_prompt: the resume prompt for the student
-        :param interpretability: optional interpretability instance
         """
         super().__init__(
             model=student,
@@ -98,7 +98,7 @@ class SpeculativeDecoding(Setting):
             multi_system=multi_system,
             to_enumerate=to_enumerate,
             wrapper=wrapper,
-            interpretability=interpretability,
+            saver=saver,
         )
         self.teacher: Model = teacher
         self.student: Model = student
@@ -116,9 +116,12 @@ class SpeculativeDecoding(Setting):
         self.affix = False
 
         # save the original chat so the refined output can be added later on
+        # TODO: check if this is necessary
         self.chat: Chat = None
 
-    def generate_student(self, corrected_in: str, chat: Chat) -> str:
+    def generate_student(
+        self, corrected_in: str, chat: Chat
+    ) -> tuple[str, InterpretabilityResult]:
         """
         Generate some candidates using the student model.
 
@@ -157,12 +160,13 @@ class SpeculativeDecoding(Setting):
             chat=chat, resume_gen=True, model_role="student"
         )
 
+        # With Interpretability
         with torch.no_grad():
-            student_out = self.student.call(
-                formatted_prompt,
+            student_out, interpretability = self.student.call(
+                formatted_prompt, chat=chat
             )
 
-            return student_out
+            return student_out, interpretability
 
     def verify_output(
         self,
@@ -506,7 +510,9 @@ class SpeculativeDecoding(Setting):
 
         return corrected_chain, corrected_str
 
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple[str, int]:
+    def apply_setting(
+        self, decoded_output: str, chat: Chat = None
+    ) -> tuple[str, int, InterpretabilityResult]:
         """
         Run the speculative decoding for one instance.
 
@@ -545,13 +551,14 @@ class SpeculativeDecoding(Setting):
             flush=True,
         )
 
+        interpretability = None
         if not is_valid:
             # if teacher suggests a token, add it to its chat
             chat.add_message(
                 part=teacher_intervention, source="assistant", model_role="teacher"
             )
 
-            decoded_output = self.speculative_decode(
+            decoded_output, interpretability = self.speculative_decode(
                 student_out=decoded_output,
                 is_valid=is_valid,
                 error_id=error_id,
@@ -562,7 +569,7 @@ class SpeculativeDecoding(Setting):
         # change the last message of the student to the refined output
         self.chat.messages["student"][-1]["content"] = decoded_output
 
-        return decoded_output, 0
+        return decoded_output, 0, interpretability
 
     def speculative_decode(
         self,
@@ -571,7 +578,7 @@ class SpeculativeDecoding(Setting):
         error_id: int | None,
         teacher_intervention: str | None,
         chat: Chat,
-    ) -> dict[str, str | None] | str:
+    ) -> tuple[dict[str, str | None] | str, InterpretabilityResult]:
         """
         Apply the speculative decoding on the output of the student.
 
@@ -593,6 +600,7 @@ class SpeculativeDecoding(Setting):
         revs = 2
         corrected_chain = []
         corrected_str = ""
+        interpretability = None
 
         while (
             not is_valid and revs < 15 and not self.student_eos
@@ -622,7 +630,10 @@ class SpeculativeDecoding(Setting):
                     )
                     break
 
-            student_out = self.generate_student(corrected_in=corrected_str, chat=chat)
+            # TODO: save iterations of interpretability
+            student_out, interpretability = self.generate_student(
+                corrected_in=corrected_str, chat=chat
+            )
             print(
                 " ---- Student ---- \n",
                 "Resumed output of student: \n",
@@ -666,7 +677,7 @@ class SpeculativeDecoding(Setting):
 
             revs += 1
 
-        return corrected_str + student_out
+        return corrected_str + student_out, interpretability
 
     def string_to_tokens(self, model_out: str) -> list[str]:
         """
@@ -685,5 +696,6 @@ class SpeculativeDecoding(Setting):
             self.tokenizer.decode(to_decode, skip_special_tokens=True)
             for to_decode in student_token_ids
         ]
+        torch.cuda.empty_cache()
 
         return student_tokens
