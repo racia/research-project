@@ -105,6 +105,7 @@ class Results:
         "model_reasoning",
         "reasoning_correct",
         "model_output",
+        "max_supp_target",
     ]
 
     def __init__(
@@ -143,6 +144,7 @@ class Results:
         self.features: Features = self.inspect_answer()
 
         self.interpretability: InterResult = interpretability
+        self.max_supp_target: float = interpretability.max_supp_target if interpretability else None
 
         self.dict: dict = self.get_result()
 
@@ -254,8 +256,16 @@ class SamplePart:
         if raw:
             self.raw: dict = raw
 
-            self.wrapper: Wrapper = wrapper if wrapper else Wrapper(context="", question="", reasoning="", answer="")
-            self.to_enumerate: Enumerate = to_enumerate if to_enumerate else Enumerate(context=True, question=False)
+            self.wrapper: Wrapper = (
+                wrapper
+                if wrapper
+                else Wrapper(context="", question="", reasoning="", answer="")
+            )
+            self.to_enumerate: Enumerate = (
+                to_enumerate
+                if to_enumerate
+                else Enumerate(context=True, question=False)
+            )
 
             self.supporting_sent_inx: list[int] = raw.get("supporting_fact", [])
             self.answer_lies_in_self: str = self.contains_supp_sentences()
@@ -279,18 +289,14 @@ class SamplePart:
             model_output="",
             model_answer="",
             model_reasoning="",
-            interpretability=InterResult(
-                attn_scores=np.ndarray([]), x_tokens=[], y_tokens=[], max_attn_dist={}
-            ),
+            interpretability=None,
             version="before",
         )
         self.result_after: Results = Results(
             model_output="",
             model_answer="",
             model_reasoning="",
-            interpretability=InterResult(
-                attn_scores=np.ndarray([]), x_tokens=[], y_tokens=[], max_attn_dist={}
-            ),
+            interpretability=None,
             version="after",
         )
         self.feedback_iterations: int = 0
@@ -394,7 +400,10 @@ class SamplePart:
 
         if not interpretability:
             interpretability = InterResult(
-                attn_scores=np.ndarray([]), x_tokens=[], y_tokens=[], max_attn_dist={}
+                attn_scores=np.ndarray([]),
+                x_tokens=[],
+                y_tokens=[],
+                max_supp_target=0.0,
             )
         # TODO: add the score for reasoning
         if version == "after":
@@ -520,16 +529,16 @@ class Sample:
             self.evaluator_before.pred_reasonings.append(
                 part.result_before.model_reasoning
             )
-            if part.result_before.interpretability:
-                self.evaluator_before.max_attn_dist.add(
-                    part.result_before.interpretability.max_attn_target
-                )
+            # if part.result_before.interpretability:
+            #     self.evaluator_before.max_supp_target.add(
+            #         part.result_before.interpretability.max_supp_target
+            #     )
         self.evaluator_after.pred_answers.append(part.result_after.model_answer)
         self.evaluator_after.pred_reasonings.append(part.result_after.model_reasoning)
-        if part.result_after.interpretability:
-            self.evaluator_after.max_attn_dist.add(
-                part.result_after.interpretability.max_attn_target
-            )
+        # if part.result_after.interpretability:
+        #     self.evaluator_after.max_supp_target.add(
+        #         part.result_after.interpretability.max_supp_target
+        #     )
 
     def print_sample_predictions(self) -> None:
         """
@@ -683,6 +692,8 @@ class Task:
         self.results[0][
             "soft_match_accuracy_after"
         ] = self.evaluator_after.soft_match_accuracy.get_mean()
+
+        # self.results[0]["max_supp_target"] = self.evaluator_after.max_supp_target
 
     def calculate_metrics(self) -> None:
         """

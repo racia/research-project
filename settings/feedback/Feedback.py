@@ -4,6 +4,7 @@ import re
 import warnings
 
 import torch
+from transformers import PreTrainedTokenizerFast
 
 from data.DataSaver import DataSaver
 from inference.Chat import Chat, Source
@@ -24,6 +25,7 @@ class Feedback(Setting):
     The feedback_prompt is used to prompt the teacher model to evaluate the chain of thought of the student.
     The refine_prompt is used to prompt the student to refine its chain of thought with feedback from the teacher.
     """
+
     positive_indicators = [
         "good",
         "well done",
@@ -101,7 +103,7 @@ class Feedback(Setting):
         # Additional attributes specific to Feedback
         self.teacher: Model = teacher
         self.student: Model = student
-        self.tokenizer = student.tokenizer
+        self.tokenizer: PreTrainedTokenizerFast = student.tokenizer
 
         self.teacher_max_new_tokens: int = teacher_max_new_tokens
         self.student_max_new_tokens: int = student_max_new_tokens
@@ -227,7 +229,10 @@ class Feedback(Setting):
 
         # Get teacher's response
         with torch.no_grad():
-            teacher_feedback = self.teacher.call(formatted_teacher_prompt)
+            # TODO: remove interpretability calls from the teacher model
+            teacher_feedback, interpretability = self.teacher.call(
+                formatted_teacher_prompt
+            )
 
         print(
             "Teacher's feedback:",
@@ -276,8 +281,10 @@ class Feedback(Setting):
         )
 
         with torch.no_grad():
-            student_out = self.student.call(
+            # TODO: save interpretability iterations
+            student_out, interpretability = self.student.call(
                 formatted_prompt,
+                chat=chat,
             )
 
         return student_out
@@ -326,7 +333,7 @@ class Feedback(Setting):
                 part=self.current_part,
                 iteration=1,
                 student_message=decoded_output,
-                teacher_message=feedback
+                teacher_message=feedback,
             )
 
         i = 1
@@ -376,7 +383,7 @@ class Feedback(Setting):
                     part=self.current_part,
                     iteration=1,
                     student_message=decoded_output,
-                    teacher_message=feedback
+                    teacher_message=feedback,
                 )
 
         # Update the original chat's last student message with the refined output

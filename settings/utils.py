@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import warnings
 
 import torch
 
@@ -22,7 +23,7 @@ def set_device() -> torch.device:
     print(f"Device: {device}", flush=True)
 
     if not torch.cuda.is_available():
-        raise Exception("CUDA is not available. This will be using the CPU.")
+        warnings.warn("CUDA is not available. This will be using the CPU.")
 
     return device
 

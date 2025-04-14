@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from data.DataLoader import DataLoader
 
 import en_core_web_sm
 

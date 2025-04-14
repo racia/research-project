@@ -229,7 +229,10 @@ class DataSaver:
             else:
                 warnings.warn("No interpretability results found.")
                 part_result = InterpretabilityResult(
-                    attn_scores=np.array([]), x_tokens=[], y_tokens=[], max_attn_dist={}
+                    attn_scores=np.array([]),
+                    x_tokens=[],
+                    y_tokens=[],
+                    max_supp_target=0,
                 )
             attn_scores_subdir = (
                 self.results_path / version / "interpretability" / "attn_scores"
@@ -265,18 +268,6 @@ class DataSaver:
                         file_path=attn_scores_subdir / file_name,
                         data=part_result[tokens],
                     )
-                if part_result["max_attn_dist"]:
-                    file_name = (
-                        f"max_attn-{part.task_id}-{part.sample_id}-{part.part_id}.json"
-                    )
-                    self.save_json(
-                        file_path=attn_scores_subdir / file_name,
-                        data=part_result["max_attn_dist"],
-                    )
-                else:
-                    warnings.warn(
-                        f"No max attention distribution found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
-                    )
 
             except AttributeError as e:
                 print(f"AttributeError: {e} in {part_result}")
@@ -298,7 +289,9 @@ class DataSaver:
         for part in task_data.parts:
             self.save_part_interpretability(part, multi_system=multi_system)
 
-    def save_feedback_iteration(self, part, iteration, student_message, teacher_message) -> None:
+    def save_feedback_iteration(
+        self, part, iteration, student_message, teacher_message
+    ) -> None:
         """
         Save both student's output and teacher's feedback in a single operation.
 
@@ -316,11 +309,11 @@ class DataSaver:
         student_file = iterations_dir / f"{iteration}_student_{part_identifier}.txt"
         teacher_file = iterations_dir / f"{iteration}_teacher_{part_identifier}.txt"
 
-        with open(student_file, "w", encoding="UTF-8") as sf, \
-                open(teacher_file, "w", encoding="UTF-8") as tf:
+        with open(student_file, "w", encoding="UTF-8") as sf, open(
+            teacher_file, "w", encoding="UTF-8"
+        ) as tf:
             sf.write(student_message)
             tf.write(teacher_message)
-
 
     def save_sample_result(
         self,

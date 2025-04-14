@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-from evaluation.Metrics import Accuracy, Metric
+from evaluation.Metrics import Accuracy, Metric, AttnDistribution
 from inference.DataLevels import Features
 
 

@@ -12,6 +12,7 @@ from inference.Chat import Chat, Source
 from inference.DataLevels import Sample, SamplePart, Task, print_metrics
 from inference.Prompt import Prompt
 from interpretability.Interpretability import Interpretability
+from interpretability.utils import InterpretabilityResult
 from settings.Model import Model
 from settings.config import Enumerate, Wrapper
 from settings.utils import parse_output
@@ -114,7 +115,9 @@ class Setting(ABC):
         )
 
     @abstractmethod
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple[str, int]:
+    def apply_setting(
+        self, decoded_output: str, chat: Chat = None
+    ) -> tuple[str, int, InterpretabilityResult]:
         """
         Apply setting-specific postprocessing of the initial model output.
         For the baseline and skyline, this consists of parsing the output.
@@ -144,12 +147,10 @@ class Setting(ABC):
                  a question.
         3. iterate through parts
         4. create and format the prompt
-        5. call the model and yield the response
-        6. add the model's output to conversation
-        7. applying the changes that are specific to each setting
-        8. call interpretability attention score method
-        9. initially evaluate the result for a sample and aggregate results
-        10. report the results for the task and aggregate results
+        5. call the model (optionally with Interpretability) and yield the response
+        6. applying the changes that are specific to each setting
+        7. initially evaluate the result for a sample and aggregate results
+        8. report the results for the task and aggregate results
 
         :param task_id: task id corresponding to task name in original dataset
         :param task_data: task data of the following structure:
@@ -232,6 +233,9 @@ class Setting(ABC):
                     to_enumerate=self.to_enumerate,
                     multi_system=self.multi_system,
                 )
+                # TODO: remove?
+                # Obtain multi-system config via model
+                self.model.curr_sample_part = self.current_part
 
                 chat.add_message(part=self.current_part, source=Source.user)
 
@@ -248,115 +252,77 @@ class Setting(ABC):
                     end="\n",
                 )
 
-                # 5. Call the model and yield the response
-                with torch.no_grad():
-                    decoded_output = self.model.call(prompt=formatted_prompt)
-                    torch.cuda.empty_cache()
+                # 5. Call the model (optionally with Interpretability) and yield the response
+                interpretability = None
+                decoded_output = ""
+                print(chat.messages)
+                try:
+                    decoded_output, interpretability = self.model.call(
+                        prompt=formatted_prompt, chat=chat
+                    )
+                except torch.OutOfMemoryError:
+                    warnings.warn(
+                        "DEBUG: Out of memory error while calculating interpretability scores * before *. "
+                        "Skipping this step."
+                    )
                 print(
-                    (
-                        f"The output of the student:"
-                        if self.multi_system
-                        else f"The output of the model:"
-                    ),
+                    f"The output of the {'student' if self.multi_system else 'model'}:",
                     decoded_output,
                     "\n ------------- ",
                     end="\n\n\n",
                     sep="\n",
                     flush=True,
                 )
-                torch.cuda.empty_cache()
+                answer, reasoning = parse_output(output=decoded_output)
 
-                # 6. Add the model's output to conversation
+                # Add model output to current chat
                 chat.add_message(
                     part=decoded_output,
                     source=Source.assistant,
                 )
 
                 if self.multi_system:
-                    with torch.no_grad():
-                        # 8. Call interpretability attention score method
-                        try:
-                            interpretability_before = (
-                                self.interpretability.get_attention(
-                                    self.current_part, chat=chat, after=False
-                                )
-                                if self.multi_system and self.interpretability
-                                else None
-                            )
-                        except torch.OutOfMemoryError:
-                            warnings.warn(
-                                "DEBUG: Out of memory error while calculating interpretability scores * before *. "
-                                "Skipping this step."
-                            )
-                            interpretability_before = None
-
-                        answer, reasoning = parse_output(output=decoded_output)
-                        self.current_part.set_output(
-                            model_output=decoded_output,
-                            model_answer=answer,
-                            model_reasoning=reasoning,
-                            interpretability=interpretability_before,
-                            version="before",
-                        )
-
-                with torch.no_grad():
-                    decoded_output, feedback_iterations = self.apply_setting(
-                        decoded_output=decoded_output, chat=chat
-                    )
-
-                    # Now parse the string output
-                    answer, reasoning = parse_output(output=decoded_output)
-                    try:
-                        # 8. Call interpretability attention score method
-                        interpretability_after = (
-                            self.interpretability.get_attention(
-                                self.current_part, chat=chat, after=True
-                            )
-                            if self.interpretability
-                            else None
-                        )
-                    except torch.OutOfMemoryError:
-                        warnings.warn(
-                            "DEBUG: Out of memory error while calculating interpretability scores * after *. "
-                            "Skipping this step."
-                        )
-                        interpretability_after = None
-
                     self.current_part.set_output(
                         model_output=decoded_output,
                         model_answer=answer,
                         model_reasoning=reasoning,
-                        interpretability=interpretability_after,
-                        version="after",
-                        feedback_iterations=feedback_iterations,
+                        interpretability=interpretability,
+                        version="before",
                     )
-
-                if self.saver:
-                    result = self.current_part.get_result()
-                    self.saver.save_output(
-                        data=[result],
-                        headers=list(result.keys()),
-                        file_name=f"t_{task_id}_s_{sample_id}_results.csv",
+                    print(
+                        f"Last chat message from student before applying the setting: {chat.messages['student'][-1]}"
                     )
-                    if self.interpretability:
-                        self.saver.save_part_interpretability(
-                            self.current_part, multi_system=self.multi_system
+                    try:
+                        decoded_output, iterations, interpretability = self.apply_setting(
+                            decoded_output=decoded_output, chat=chat
                         )
-
-                if self.multi_system:
+                    except torch.OutOfMemoryError:
+                        warnings.warn(
+                            "DEBUG: Out of memory error while calculating interpretability scores * before *. "
+                            "Skipping this step."
+                        )
                     print(
                         f"Last chat message from student after applying the setting: {chat.messages['student'][-1]}"
                     )
+                    answer, reasoning = parse_output(output=decoded_output)
+
+                self.current_part.set_output(
+                    model_output=decoded_output,
+                    model_answer=answer,
+                    model_reasoning=reasoning,
+                    interpretability=interpretability,
+                    version="after",
+                )
 
                 sample.add_part(self.current_part)
                 torch.cuda.empty_cache()
                 gc.collect()
 
-            # 9. Initially evaluate the result for a sample and aggregate results
             sample.print_sample_predictions()
             sample.calculate_metrics()
             print_metrics(sample, table=True)
             task.add_sample(sample)
+
 
             # 9.5. Save the sample result
             # if self.saver:
