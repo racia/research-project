@@ -11,7 +11,7 @@ from transformers import (
     PreTrainedTokenizerFast,
 )
 
-from inference.Chat import Chat, Source
+from inference.Chat import Chat
 from inference.DataLevels import SamplePart
 from interpretability.Interpretability import Interpretability
 from interpretability.utils import InterpretabilityResult
@@ -112,7 +112,8 @@ class Model:
 
             if chat:
                 chat_ids, context_sent_spans, sys_prompt_len = chat.convert_into_ids(
-                    chat_part=chat.messages, tokenizer=self.tokenizer, 
+                    chat_part=chat.messages,
+                    tokenizer=self.tokenizer,
                 )
                 inputs = {k: v.to(device) for k, v in chat_ids.items()}
             else:
@@ -153,7 +154,6 @@ class Model:
 
                 # Controlled call (i.e. generate_student() in Feedback shouldn't call ?)
                 if chat and decoded_output:
-                    
                     output_tensor = self.model(
                         outputs,
                         return_dict=True,

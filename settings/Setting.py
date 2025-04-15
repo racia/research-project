@@ -293,8 +293,8 @@ class Setting(ABC):
                         f"Last chat message from student before applying the setting: {chat.messages['student'][-1]}"
                     )
                     try:
-                        decoded_output, iterations, interpretability = self.apply_setting(
-                            decoded_output=decoded_output, chat=chat
+                        decoded_output, iterations, interpretability = (
+                            self.apply_setting(decoded_output=decoded_output, chat=chat)
                         )
                     except torch.OutOfMemoryError:
                         warnings.warn(
@@ -322,7 +322,6 @@ class Setting(ABC):
             sample.calculate_metrics()
             print_metrics(sample, table=True)
             task.add_sample(sample)
-
 
             # 9.5. Save the sample result
             # if self.saver:

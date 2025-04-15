@@ -19,7 +19,7 @@ from spacy.tokens.doc import defaultdict
 
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
-from plots.utils import get_paths, find_difference_in_paths
+from plots.utils import find_difference_in_paths, get_paths
 
 PREFIX = Path.cwd()
 while PREFIX.name != "research-project":

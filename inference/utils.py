@@ -61,7 +61,9 @@ def contains_not_mentioned(answer) -> bool:
     return False
 
 
-def generation_tokens(tokenizer: PreTrainedTokenizerFast, role: str, eot: bool) -> list[float]:
+def generation_tokens(
+    tokenizer: PreTrainedTokenizerFast, role: str, eot: bool
+) -> list[float]:
     """
     Returns the token id for the role of the message.
 
@@ -72,7 +74,9 @@ def generation_tokens(tokenizer: PreTrainedTokenizerFast, role: str, eot: bool) 
     """
     generation_token = "<|eot_id|>" if eot else "<|begin_of_text|>"
 
-    return tokenizer.convert_tokens_to_ids([generation_token, "<|start_header_id|>", role, "<|end_header_id|>"])
+    return tokenizer.convert_tokens_to_ids(
+        [generation_token, "<|start_header_id|>", role, "<|end_header_id|>"]
+    )
 
 
 def context_sentences(text: str) -> int:
