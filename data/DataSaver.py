@@ -11,7 +11,7 @@ import numpy as np
 
 from data.utils import *
 from evaluation.Evaluator import MetricEvaluator
-from inference.DataLevels import Features, Split, Task, Sample, SamplePart
+from inference.DataLevels import Features, Sample, SamplePart, Split, Task
 from inference.Prompt import Prompt
 from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits

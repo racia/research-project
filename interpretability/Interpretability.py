@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+import warnings
+
 import numpy as np
 import torch
-import warnings
 from transformers import PreTrainedTokenizerFast
 from transformers.modeling_outputs import CausalLMOutputWithPast
 
@@ -10,8 +11,8 @@ from evaluation.Scenery import nlp
 from inference.DataLevels import SamplePart
 from interpretability.utils import (
     InterpretabilityResult,
-    get_supp_tok_idx,
     get_attention_distrib,
+    get_supp_tok_idx,
 )
 from plots.Plotter import Plotter
 
@@ -86,9 +87,9 @@ class Interpretability:
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o system prompt)
         attn_tensor = attn_tensor[
-            :, -model_output_len : -1, sys_prompt_len + 1 : -model_output_len
+            :, -model_output_len:-1, sys_prompt_len + 1 : -model_output_len
         ].mean(dim=0)
-        
+
         # Normalize the attention scores by the sum of all token attention scores
         attn_tensor = attn_tensor / attn_tensor.sum(dim=-1, keepdim=True)
         attn_scores = attn_tensor.float().detach().cpu().numpy()
@@ -166,7 +167,8 @@ class Interpretability:
         2. Gets the relevant attention scores, filters them.
         3. Constructs x and y tokens and optionally creates heatmaps.
 
-        (The following code is an adjusted version of the original implementation from Li et. al 2024 (Link to paper: https://arxiv.org/abs/2402.18344))
+        (The following code is an adjusted version of the original implementation from Li et. al 2024 (Link to paper:
+        https://arxiv.org/abs/2402.18344))
 
         :param tokenizer: The tokenizer
         :param chat_ids: current sample part ids (task and model's output)

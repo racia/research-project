@@ -39,7 +39,7 @@ class Chat:
         :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
         """
         self.multi_system: bool = multi_system
-        
+
         if multi_system:
             self.messages = {
                 "teacher": [],
@@ -154,7 +154,7 @@ class Chat:
                 history_ids += message_ids
             else:
                 break
-            
+
         history_ids.append(tokenizer.convert_tokens_to_ids("assistant"))
 
         return (

@@ -3,19 +3,19 @@
 # Job name
 #SBATCH --job-name=skyline_reasoning
 
-#SBATCH --time=15:00:00              # Job time limit (30 minutes)
+#SBATCH --time=4:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                # Request 4 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
-#SBATCH --mem=32GB
-#SBATCH --partition=gpu_4
+#SBATCH --partition=gpu_h100
+#SBATCH --mem=64GB
 
 # Output and error logs
 #SBATCH --output="sky_reason_out.txt"
 #SBATCH --error="sky_reason_err.txt"
 
 # Email notifications
-#SBATCH --mail-user=""              # TODO: Add your email address
+#SBATCH --mail-user=""
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
@@ -59,7 +59,7 @@ fi
         sleep 30
     done
 ) > gpu_monitor.log &
-MONITOR_PID=$!#
+MONITOR_PID=$!
 
 # Run the Python script
 SCRIPT="get_silver_reasoning.py"

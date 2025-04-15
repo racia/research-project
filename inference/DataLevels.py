@@ -144,7 +144,9 @@ class Results:
         self.features: Features = self.inspect_answer()
 
         self.interpretability: InterResult = interpretability
-        self.max_supp_target: float = interpretability.max_supp_target if interpretability else None
+        self.max_supp_target: float = (
+            interpretability.max_supp_target if interpretability else None
+        )
 
         self.dict: dict = self.get_result()
 
