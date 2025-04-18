@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Union
+import warnings
 
 import torch
 from transformers import PreTrainedTokenizerFast
@@ -123,29 +124,35 @@ class Chat:
         sys_prompt_len = 0
         history_ids = []
         supporting_sent_spans = []
+
         for i, message in enumerate(chat_part if chat_part else self.messages):
-            message_ids = generation_tokens(
+            if message["role"] in ["system", "user"]:
+                message_ids = generation_tokens(
                 tokenizer, message["role"], eot=False if i == 0 else True
             )
+            else:
+                message_ids = []
 
             for sentence in message["original_content"].split("\n"):
                 # \n\n in source produces empty sentences
-                if sentence:
-                    tokenized_sentence = tokenizer.encode(
-                        sentence,
-                        add_special_tokens=False,
-                        return_tensors="pt",
-                    )[0]
-                    torch.cuda.empty_cache()
-                    tokenized_sentence = tokenized_sentence.tolist()
+                if not sentence or sentence.isspace():
+                        warnings.warn("Empty sentence detected.")
+                        continue
+                tokenized_sentence = tokenizer.encode(
+                    sentence,
+                    add_special_tokens=False,
+                    return_tensors="pt",
+                )[0]
+                torch.cuda.empty_cache()
+                tokenized_sentence = tokenized_sentence.tolist()
 
-                    if message["role"] == "user":
-                        start = len(message_ids) + 1
-                        message_ids.extend(tokenized_sentence)
-                        end = len(message_ids)
-                        supporting_sent_spans.append((start, end))
-                    else:
-                        message_ids.extend(tokenized_sentence)
+                if message["role"] == "user":
+                    start = len(message_ids) + 1
+                    message_ids.extend(tokenized_sentence)
+                    end = len(message_ids) -1 if i == 1 else len(message_ids) # Correct index offset by 1
+                    supporting_sent_spans.append((start, end))
+                else:
+                    message_ids.extend(tokenized_sentence)
             if message["role"] == "system":
                 sys_prompt_len = len(message_ids)
 
