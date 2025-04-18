@@ -827,22 +827,18 @@ class Task:
                 [part.result_before.features for part in self.parts],
                 self.features_before,
             )
-            self.results[0][
-                "exact_match_accuracy_before"
-            ] = self.evaluator_before.exact_match_accuracy.get_mean()
-            self.results[0][
-                "soft_match_accuracy_before"
-            ] = self.evaluator_before.soft_match_accuracy.get_mean()
+            mean_em_acc = self.evaluator_before.exact_match_accuracy.get_mean()
+            self.results[0]["exact_match_accuracy_before"] = mean_em_acc
+            mean_sm_acc = self.evaluator_before.soft_match_accuracy.get_mean()
+            self.results[0]["soft_match_accuracy_before"] = mean_sm_acc
 
         self.features_after = sum(
             [part.result_after.features for part in self.parts], self.features_after
         )
-        self.results[0][
-            "exact_match_accuracy_after"
-        ] = self.evaluator_after.exact_match_accuracy.get_mean()
-        self.results[0][
-            "soft_match_accuracy_after"
-        ] = self.evaluator_after.soft_match_accuracy.get_mean()
+        mean_em_acc = self.evaluator_after.exact_match_accuracy.get_mean()
+        self.results[0]["exact_match_accuracy_after"] = mean_em_acc
+        mean_sm_acc = self.evaluator_after.soft_match_accuracy.get_mean()
+        self.results[0]["soft_match_accuracy_after"] = mean_sm_acc
 
     def calculate_metrics(self) -> None:
         """
