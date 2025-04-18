@@ -58,9 +58,9 @@ init_prompt:
     not_mentioned: True
     number: 1
     wrapper: |
-      *EXAMPLE{number}*
+      *EXAMPLE*
       {example}
-      *END OF EXAMPLE{number}*
+      *END OF EXAMPLE*
 
 logging:
   # if to print the results to a log file, otherwise will print to console

@@ -55,9 +55,9 @@ init_prompt:
     not_mentioned: True
     number: 1
     wrapper: |
-      *EXAMPLE{number}*
+      *EXAMPLE*
       {example}
-      *END OF EXAMPLE{number}*
+      *END OF EXAMPLE*
 
 feedback_prompt:
   # name of the prompt files serves as a basis for logging and result files
