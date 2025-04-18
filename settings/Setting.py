@@ -61,26 +61,15 @@ class Setting(ABC):
         self.saver: DataSaver = saver
 
     @abstractmethod
-    def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
+    def prepare_prompt(self, chat: Chat, resume_gen: bool = False) -> str:
         """
         Prepares the prompt to include the current part of the sample.
 
-        :param model_role: role of the model in the conversation
         :param resume_gen: whether to resume the generation
         :param chat: the current chat
         :return: prompt with the task and the current part
         """
         raise NotImplementedError
-
-    # def create_chat_copy(self, chat: Chat) -> Chat:
-    #     """
-    #     Store the original chat and create a copy for use in the setting.
-    #
-    #     :param chat: The original chat to copy
-    #     :return: A copy of the original chat
-    #     """
-    #     self.chat = chat
-    #     return copy.deepcopy(chat)
 
     def create_teacher_chat(self, teacher_sys: Prompt) -> Chat:
         """

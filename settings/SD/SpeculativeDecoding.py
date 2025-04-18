@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import re
 
 import torch
@@ -113,13 +114,7 @@ class SpeculativeDecoding(Setting):
         # the model sometimes predicts only parts of the word, e.g. "d" + "aniel" instead of daniel
         self.affix = False
 
-        # save the original chat so the refined output can be added later on
-        # TODO: check if this is necessary
-        self.chat: Chat = None
-
-    def generate_student(
-        self, corrected_in: str, chat: Chat
-    ) -> tuple[str, InterpretabilityResult]:
+    def generate_student(self, corrected_in: str) -> tuple[str, InterpretabilityResult]:
         """
         Generate some candidates using the student model.
 
@@ -127,14 +122,9 @@ class SpeculativeDecoding(Setting):
         The maximum length of this chain of thought is handled by the max_length parameter.
 
         :param corrected_in: the correct part of the student's previous output with the teacher's suggestion
-        :param chat: the current chat
-
         :return: The output of the student model
         """
-        # add the evaluation prompt as a user message
-        chat.add_message(
-            part=self.resume_prompt.text, source="user", model_role="student"
-        )
+        self.student.chat.add_message(part=self.resume_prompt.text, source="user")
         print(
             "\n--------------\n",
             "Evaluation prompt of the user: ",
@@ -145,7 +135,7 @@ class SpeculativeDecoding(Setting):
 
         # add the output the student should continue as an assistant message
         message_to_continue = self.resume_prompt.format_resume_message(corrected_in)
-        chat.add_message(message_to_continue, source="assistant", model_role="student")
+        self.student.chat.add_message(message_to_continue, source="assistant")
         print(
             "\n--------------\n",
             "Message that the student should continue: ",
@@ -154,22 +144,17 @@ class SpeculativeDecoding(Setting):
             end="\n--------------\n\n",
         )
 
-        formatted_prompt = self.prepare_prompt(
-            chat=chat, resume_gen=True, model_role="student"
-        )
+        formatted_prompt = self.prepare_prompt(chat=self.student.chat, resume_gen=True)
 
         # With Interpretability
-        with torch.no_grad():
-            student_out, interpretability = self.student.call(
-                part=self.part, prompt=formatted_prompt, chat=chat
-            )
-
-            return student_out, interpretability
+        student_out, interpretability = self.student.call(
+            formatted_prompt=formatted_prompt
+        )
+        return student_out, interpretability
 
     def verify_output(
         self,
         student_out_str: str,
-        chat: Chat,
         k=10,
         last_err_ix=-1,
         approved_tokens=None,
@@ -182,7 +167,6 @@ class SpeculativeDecoding(Setting):
         If the teacher disagrees at some point, return the teachers suggestion as the CoT step.
 
         :param student_out_str: the output of the student
-        :param chat: the current chat
         :param k: the number of top candidates to consider from the teacher model
         :param last_err_ix: the index of the last error
         :param approved_tokens: the tokens that have been approved by the teacher so far
@@ -255,7 +239,7 @@ class SpeculativeDecoding(Setting):
             teacher_message = self.eval_prompt.format_teacher_message(
                 student_out_approved
             )
-            chat.add_message(part=teacher_message, model_role="teacher", source="user")
+            self.teacher.chat.add_message(part=teacher_message, source="user")
             print(
                 "\n--------------\n",
                 "Formatted teacher prompt:",
@@ -265,7 +249,7 @@ class SpeculativeDecoding(Setting):
             )
 
             formatted_eval_prompt = self.prepare_prompt(
-                chat=chat, model_role="teacher", resume_gen=True
+                chat=self.teacher.chat, resume_gen=True
             )
 
             input_ids = self.tokenizer.encode(
@@ -334,7 +318,7 @@ class SpeculativeDecoding(Setting):
         if suggested_token == ("<|eot_id|>" or self.tokenizer.eos_token):
             self.teacher_eos = True
 
-        self.teacher_eos = self.check_if_teacher_eos(chat, suggested_token)
+        self.teacher_eos = self.check_if_teacher_eos(self.teacher.chat, suggested_token)
 
         # student's CoT is not empty and no disagreement was found
         if self.teacher_eos and ix == len(student_tokens) - 1:
@@ -411,9 +395,7 @@ class SpeculativeDecoding(Setting):
             return True
 
         # check if next token would be EOS
-        formatted_eval_prompt = self.prepare_prompt(
-            chat=chat, model_role="teacher", resume_gen=True
-        )
+        formatted_eval_prompt = self.prepare_prompt(chat=chat, resume_gen=True)
 
         input_ids = self.tokenizer.encode(
             formatted_eval_prompt, return_tensors="pt", add_special_tokens=True
@@ -436,28 +418,22 @@ class SpeculativeDecoding(Setting):
             return True
         return False
 
-    def prepare_prompt(
-        self,
-        chat: Chat,
-        resume_gen=False,
-        model_role="student",
-    ) -> str:
+    def prepare_prompt(self, chat: Chat, resume_gen: bool = False) -> str:
         """
         Prepares the prompt to include the current part of the sample.
 
         :param chat: the current chat
         :param resume_gen: whether to resume generation from the last message
-        :param model_role: the role of the model, either student or teacher
 
         :return: prompt with the task and the current part
         """
         if self.model.to_continue or resume_gen:
             formatted_prompt = self.model.tokenizer.apply_chat_template(
-                chat.messages[model_role], tokenize=False, continue_final_message=True
+                chat.messages, tokenize=False, continue_final_message=True
             )
         else:
             formatted_prompt = self.model.tokenizer.apply_chat_template(
-                chat.messages[model_role], tokenize=False, add_generation_prompt=True
+                chat.messages, tokenize=False, add_generation_prompt=True
             )
 
         return formatted_prompt
@@ -509,7 +485,7 @@ class SpeculativeDecoding(Setting):
         return corrected_chain, corrected_str
 
     def apply_setting(
-        self, decoded_output: str, chat: Chat = None
+        self, decoded_output: str
     ) -> tuple[str, int, InterpretabilityResult]:
         """
         Run the speculative decoding for one instance.
@@ -521,14 +497,13 @@ class SpeculativeDecoding(Setting):
         4. Repeat steps 2 and 3 until the teacher model agrees with the chain of thought.
 
         :param decoded_output: the current output of the student
-        :param chat: the current chat, only necessary in the SD and feedback setting
 
         :return: The decoded output
         """
         # save the initial student output as a fallback solution
         self.initial_student_output = decoded_output
-        self.set_teacher_system_prompt(chat=chat, teacher_sys=self.eval_prompt)
-        chat = self.create_chat_copy(chat=chat)
+        self.teacher.chat = self.create_teacher_chat(teacher_sys=self.eval_prompt)
+        chat_to_refine = copy.deepcopy(self.student.chat)
 
         print(
             " ------------- Starting speculative decoding ------------- ",
@@ -538,7 +513,7 @@ class SpeculativeDecoding(Setting):
         print(f" ---- SD iteration 1 ---- ", end="\n\n\n", flush=True)
 
         is_valid, error_id, teacher_intervention = self.verify_output(
-            student_out_str=decoded_output, chat=chat
+            student_out_str=decoded_output
         )
 
         print(
@@ -552,20 +527,18 @@ class SpeculativeDecoding(Setting):
         interpretability = None
         if not is_valid:
             # if teacher suggests a token, add it to its chat
-            chat.add_message(
-                part=teacher_intervention, source="assistant", model_role="teacher"
-            )
+            self.teacher.chat.add_message(part=teacher_intervention, source="assistant")
 
             decoded_output, interpretability = self.speculative_decode(
                 student_out=decoded_output,
                 is_valid=is_valid,
                 error_id=error_id,
                 teacher_intervention=teacher_intervention,
-                chat=chat,
             )
 
         # change the last message of the student to the refined output
-        self.chat.messages["student"][-1]["content"] = decoded_output
+        self.student.chat = chat_to_refine
+        self.student.chat.messages[-1]["content"] = decoded_output
 
         return decoded_output, 0, interpretability
 
@@ -575,7 +548,6 @@ class SpeculativeDecoding(Setting):
         is_valid: bool,
         error_id: int | None,
         teacher_intervention: str | None,
-        chat: Chat,
     ) -> tuple[dict[str, str | None] | str, InterpretabilityResult]:
         """
         Apply the speculative decoding on the output of the student.
@@ -584,7 +556,6 @@ class SpeculativeDecoding(Setting):
         :param is_valid: boolean indicating whether the current CoT is valid
         :param error_id: the error index
         :param teacher_intervention: the teacher's suggestion
-        :param chat: the current chat
 
         :return: str, the speculative decoding output
         """
@@ -630,7 +601,7 @@ class SpeculativeDecoding(Setting):
 
             # TODO: save iterations of interpretability
             student_out, interpretability = self.generate_student(
-                corrected_in=corrected_str, chat=chat
+                corrected_in=corrected_str
             )
             print(
                 " ---- Student ---- \n",
@@ -639,13 +610,12 @@ class SpeculativeDecoding(Setting):
                 end="\n--------------\n\n",
                 flush=True,
             )
-            chat.add_message(part=student_out, source="assistant", model_role="student")
+            self.student.chat.add_message(part=student_out, source="assistant")
 
             is_valid, error_id, teacher_intervention = self.verify_output(
                 student_out_str=student_out,
                 approved_tokens=corrected_chain,
                 approved_str=corrected_str,
-                chat=chat,
                 last_err_ix=error_id,
             )
 
@@ -653,13 +623,12 @@ class SpeculativeDecoding(Setting):
             # otherwise the teacher doesn't propose anything
             if not is_valid:
                 if teacher_intervention:
-                    chat.add_message(
+                    self.student.chat.add_message(
                         part=teacher_intervention,
                         source="assistant",
-                        model_role="teacher",
                     )
                 else:
-                    chat.add_message(part=" ", source="assistant", model_role="teacher")
+                    self.student.chat.add_message(part=" ", source="assistant")
 
             print(
                 "Teacher's evaluation:",
