@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import copy
 import gc
 import warnings
 from abc import ABC, abstractmethod
@@ -73,49 +72,44 @@ class Setting(ABC):
         """
         raise NotImplementedError
 
-    def create_chat_copy(self, chat: Chat) -> Chat:
-        """
-        Store the original chat and create a copy for use in the setting.
+    # def create_chat_copy(self, chat: Chat) -> Chat:
+    #     """
+    #     Store the original chat and create a copy for use in the setting.
+    #
+    #     :param chat: The original chat to copy
+    #     :return: A copy of the original chat
+    #     """
+    #     self.chat = chat
+    #     return copy.deepcopy(chat)
 
-        :param chat: The original chat to copy
-        :return: A copy of the original chat
-        """
-        self.chat = chat
-        return copy.deepcopy(chat)
-
-    @staticmethod
-    def set_teacher_system_prompt(chat: Chat, teacher_sys: Prompt) -> None:
+    def create_teacher_chat(self, teacher_sys: Prompt) -> Chat:
         """
         Set the system prompt for the teacher.
         This includes clearing the teacher's chat of previous parts.
 
-        :param: chat: Chat, the current chat for the sample
         :param: teacher_sys: Prompt, the system prompt for the teacher
         :return: None
         """
-        # clear the teacher's chat
-        if chat.messages["teacher"]:
-            chat.messages["teacher"] = []
-
-        teacher_sys_prompt = teacher_sys.format_teacher_sys(
-            student_sys=chat.messages["student"][0]["content"],
-            student_chat=chat.messages["student"],
+        teacher_sys.format_teacher_sys(
+            student_sys=self.model.chat.messages["student"][0]["content"],
+            student_chat=self.model.chat.messages["student"],
         )
-        chat.messages["teacher"].append(
-            {"role": Source.system, "content": teacher_sys_prompt}
+        chat = Chat(
+            model_role="teacher",
+            system_prompt=teacher_sys,
         )
-
         print(
             f"Teacher's system prompt:",
-            teacher_sys_prompt,
+            teacher_sys.text,
             sep="\n",
             end="\n\n",
             flush=True,
         )
+        return chat
 
     @abstractmethod
     def apply_setting(
-        self, decoded_output: str, chat: Chat = None
+        self, decoded_output: str
     ) -> tuple[str, int, InterpretabilityResult]:
         """
         Apply setting-specific postprocessing of the initial model output.
@@ -123,7 +117,6 @@ class Setting(ABC):
         For the SD and feedback setting, this entails the main idea of these settings.
 
         :param decoded_output: the current output of the student
-        :param chat: the current chat, only necessary in the SD and feedback setting
         :return: parsed output
         """
         # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK

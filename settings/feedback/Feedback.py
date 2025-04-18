@@ -191,7 +191,7 @@ class Feedback(Setting):
         return False
 
     def give_feedback(
-        self, initial_output: str, chat: Chat
+        self, initial_output: str
     ) -> tuple[str, bool, InterpretabilityResult]:
         """
         Prompt the teacher to give feedback on the current chain of thought of the student.
@@ -205,9 +205,10 @@ class Feedback(Setting):
         """
         # Format the feedback prompt
         teacher_message = self.feedback_prompt.format_teacher_message(initial_output)
-        chat.add_message(part=teacher_message, source=Source.user, model_role="teacher")
+        # TODO: remove because already in teacher.call? (not formatted prompt)
+        self.teacher.chat.add_message(part=teacher_message, source=Source.user)
         formatted_teacher_prompt = self.prepare_prompt(
-            chat=chat, model_role="teacher", resume_gen=False
+            chat=self.teacher.chat, model_role="teacher", resume_gen=False
         )
 
         print(
@@ -221,18 +222,18 @@ class Feedback(Setting):
         # Get teacher's response
         with torch.no_grad():
             teacher_feedback, interpretability = self.teacher.call(
-                self.part, formatted_teacher_prompt
+                formatted_prompt=formatted_teacher_prompt
             )
 
         # Validate feedback
         is_valid = self.check_feedback(teacher_feedback)
 
         if is_valid is None:
-            return self.give_feedback(initial_output, chat)
+            return self.give_feedback(initial_output)
 
         return teacher_feedback, is_valid, interpretability
 
-    def refine(self, original_output: str, teacher_feedback: str, chat: Chat) -> str:
+    def refine(self, original_output: str, teacher_feedback: str) -> str:
         """
         Prompt the student to refine its chain of thought according to the feedback it received from
         the teacher. Similar to the speculative_decode method in SpeculativeDecoding.
@@ -248,13 +249,13 @@ class Feedback(Setting):
             teacher_feedback=teacher_feedback,
         )
 
-        chat.add_message(
-            part=formulated_refine_prompt, source="user", model_role="student"
-        )
+        # chat.add_message(
+        #     part=formulated_refine_prompt, source="user", model_role="student"
+        # )
 
-        formatted_prompt = self.prepare_prompt(
-            chat=chat, resume_gen=False, model_role="student"
-        )
+        # formatted_prompt = self.prepare_prompt(
+        #     chat=chat, resume_gen=False, model_role="student"
+        # )
 
         print(
             "Formatted resume prompt:",
@@ -267,13 +268,13 @@ class Feedback(Setting):
             # TODO: save interpretability iterations
             student_out, interpretability = self.student.call(
                 self.part,
-                formatted_prompt,
-                chat=chat,
+                # formatted_prompt,
+                # chat=chat,
             )
 
         return student_out
 
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple[str, int]:
+    def apply_setting(self, decoded_output: str) -> tuple[str, int]:
         """
         Run the feedback setting.
         The feedback setting consists of the following steps:
@@ -283,13 +284,12 @@ class Feedback(Setting):
         4. Step 2 and 3 are repeated until no further feedback is provided
 
         :param decoded_output: The student's initial output
-        :param chat: The current chat
         :return: The refined model output as a string
         """
         # save the initial student output as a fallback solution
         self.initial_student_output = decoded_output
-        self.set_teacher_system_prompt(chat=chat, teacher_sys=self.feedback_prompt)
-        chat = self.create_chat_copy(chat=chat)
+        self.teacher.chat = self.create_teacher_chat(teacher_sys=self.feedback_prompt)
+        # chat = self.create_chat_copy(chat=chat)
 
         print(
             " ------------- Starting Feedback ------------- ", end="\n\n\n", flush=True
@@ -299,7 +299,7 @@ class Feedback(Setting):
         print(" ---- Teacher ---- ", end="\n\n\n", flush=True)
         # TODO: save interpretability iterations?
         feedback, is_valid, interpretability = self.give_feedback(
-            initial_output=decoded_output, chat=chat
+            initial_output=decoded_output
         )
 
         print(
@@ -333,7 +333,7 @@ class Feedback(Setting):
                 print("Maximum feedback iterations reached. Using last student output.")
                 break
 
-            decoded_output = self.refine(decoded_output, feedback, chat)
+            decoded_output = self.refine(decoded_output, feedback)
 
             print(
                 " ---- Student ---- ",
@@ -345,13 +345,13 @@ class Feedback(Setting):
                 flush=True,
             )
 
-            chat.add_message(
-                part=decoded_output, source="assistant", model_role="student"
-            )
+            # chat.add_message(
+            #     part=decoded_output, source="assistant", model_role="student"
+            # )
 
             print(" ---- Teacher ---- ", end="\n\n\n", flush=True)
-            feedback, is_valid = self.give_feedback(decoded_output, chat)
-            chat.add_message(part=feedback, source="assistant", model_role="teacher")
+            feedback, is_valid = self.give_feedback(decoded_output)
+            # chat.add_message(part=feedback, source="assistant", model_role="teacher")
 
             print(
                 "Teacher's feedback:",
@@ -372,7 +372,8 @@ class Feedback(Setting):
                 )
 
         # Update the original chat's last student message with the refined output
-        if self.chat:
-            self.chat.messages["student"][-1]["content"] = decoded_output
+        # TODO : check if this is correct
+        if self.student.chat:
+            self.student.chat.messages[-1]["content"] = decoded_output
 
         return decoded_output, i
