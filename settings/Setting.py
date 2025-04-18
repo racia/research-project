@@ -55,13 +55,11 @@ class Setting(ABC):
         self.samples_per_task: int = samples_per_task
 
         self.part: SamplePart = None
-        self.chat: Chat = None
 
         self.multi_system: bool = multi_system
         self.interpretability: Interpretability = interpretability
 
         self.saver: DataSaver = saver
-        self.chat: Chat = None
 
     @abstractmethod
     def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
@@ -160,12 +158,14 @@ class Setting(ABC):
         :return: results for the task in a list of dicts with each dict representing
                  one call to the model and will end up as one row of the table
         """
-        task = Task(task_id=task_id, multi_system=self.multi_system)
+        task = Task(task_id, self.multi_system)
         for sample_id, sample_parts in task_data.items():
+            sample = Sample(task_id, sample_id, self.multi_system)
             # each sample is a new conversation
-            chat = Chat(system_prompt=self.init_prompt, multi_system=self.multi_system)
-            sample = Sample(
-                task_id=task_id, sample_id=sample_id, multi_system=self.multi_system
+            self.model.chat = Chat(
+                model_role="student" if self.multi_system else "model",
+                system_prompt=self.init_prompt,
+                tokenizer=self.model.tokenizer,
             )
             # each part has one question
             for self.part in sample_parts:
@@ -182,19 +182,12 @@ class Setting(ABC):
                 sample.add_golden_answers(self.part.golden_answer)
                 sample.add_silver_reasoning(self.part.silver_reasoning)
 
-                chat.add_message(part=self.part, source=Source.user)
                 # Only run the model if the results are not loaded
                 if not self.part.result_before.model_answer:
-                    formatted_prompt = self.prepare_prompt(chat=chat)
-                    print(
-                        f"Formatted {'STUDENT' if self.multi_system else 'MODEL'} prompt:",
-                        formatted_prompt,
-                        sep="\n",
-                        end="\n",
-                    )
+                    # formatted_prompt = self.prepare_prompt(chat=chat)
                     try:
                         decoded_output, interpretability = self.model.call(
-                            part=self.part, prompt=formatted_prompt, chat=chat
+                            part=self.part
                         )
                         print(
                             f"The output of the {'student' if self.multi_system else 'model'}:",
@@ -219,18 +212,20 @@ class Setting(ABC):
                     )
 
                 # Add model output to current chat
-                chat.add_message(
+                self.model.chat.add_message(
                     part=self.part.result_before.model_output,
                     source=Source.assistant,
                 )
                 # applying the changes that are specific to each setting
                 if self.multi_system:
                     print(
-                        f"Last chat message from student before applying the setting: {chat.messages['student'][-1]}"
+                        f"Last chat message from student before applying the setting: {self.model.chat.messages['student'][-1]}"
                     )
                     try:
-                        decoded_output, iterations, interpretability = self.apply_setting(
-                            decoded_output=self.part.result_before.model_output, chat=chat
+                        decoded_output, iterations, interpretability = (
+                            self.apply_setting(
+                                decoded_output=self.part.result_before.model_output,
+                            )
                         )
                     except torch.OutOfMemoryError:
                         decoded_output, iterations, interpretability = "", 0, None
@@ -239,7 +234,7 @@ class Setting(ABC):
                             "Skipping this step."
                         )
                     print(
-                        f"Last chat message from student after applying the setting: {chat.messages['student'][-1]}"
+                        f"Last chat message from student after applying the setting: {self.model.chat.messages['student'][-1]}"
                     )
                     answer, reasoning = parse_output(output=decoded_output)
 

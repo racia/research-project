@@ -1,9 +1,15 @@
 from dataclasses import dataclass
 from pathlib import Path
 
+import en_core_web_sm
+from transformers import PreTrainedTokenizerFast
+
 from data.TaskExamples import Task, TaskExample, TaskExamples
 from inference.DataLevels import SamplePart
+from inference.utils import sents_to_ids
 from settings.config import Examples
+
+nlp = en_core_web_sm.load()
 
 
 @dataclass
@@ -29,6 +35,7 @@ class Prompt:
         prompt_type: PromptType = "init",
         wrapper: str = None,
         name: str = None,
+        tokenizer: PreTrainedTokenizerFast = None,
     ):
         """
         Create a prompt.
@@ -62,9 +69,20 @@ class Prompt:
         else:
             self.text: str = "At some point, here will be a default prompt."
 
-        self.original_text: str = self.text
-        self.wrapper: str = wrapper
         self.name: str = name
+        self.tokenizer: PreTrainedTokenizerFast = tokenizer
+
+        self.original_text: str = self.text
+        self.examples = ""
+        if self.tokenizer:
+            self.orig_ids, self.orig_sent_spans = sents_to_ids(
+                nlp(self.text).sents, self.tokenizer
+            )
+            self.ids, self.sent_spans = [], []
+            self.ex_ids = []
+            self.ex_sent_spans = []
+
+        self.wrapper: str = wrapper
 
     def format_teacher_sys(
         self, student_sys: str, student_chat: list[dict[str, str]]
@@ -186,6 +204,18 @@ class Prompt:
         """
         self.text = self.original_text
 
+    def process_example(self, formatted_example: str):
+        """
+        Process the examples by adding them to the prompt and
+        converting them to ids.
+        :param formatted_example: the formatted example
+        :return: None
+        """
+        self.examples += formatted_example
+        ids, spans = sents_to_ids(formatted_example.split("\n"), self.tokenizer)
+        self.ex_ids.extend(ids)
+        self.ex_sent_spans.extend(spans)
+
     def add_examples(self, task_id: int, example_config: Examples) -> None:
         """
         Adds one or multiple examples to the prompt under the hood
@@ -199,6 +229,7 @@ class Prompt:
                         - the example wrapper
         """
         self.use_original_prompt()
+        self.ex_ids, self.ex_sent_spans = [], []
 
         if example_config.number == 1:
             example = TaskExample(
@@ -207,9 +238,10 @@ class Prompt:
                 handpicked=example_config.handpicked,
                 not_mentioned=example_config.not_mentioned,
             )
-            self.text += self.format_example(
+            formatted_example = self.format_example(
                 example=example, number=0, wrapper=example_config.wrapper
             )
+            self.process_example(formatted_example)
         else:
             if example_config.handpicked:
                 raise NotImplementedError(
@@ -222,9 +254,14 @@ class Prompt:
                 handpicked=example_config.handpicked,
                 not_mentioned=example_config.not_mentioned,
             ):
-                self.text += self.format_example(
+                formatted_example = self.format_example(
                     example=example, number=counter, wrapper=example_config.wrapper
                 )
+                self.process_example(formatted_example)
                 counter += 1
                 if counter > example_config.number:
                     break
+
+        self.text += self.examples
+        self.ids = self.orig_ids + self.ex_ids
+        self.sent_spans = self.orig_sent_spans + self.ex_sent_spans

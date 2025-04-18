@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import re
 import warnings
+from collections import defaultdict
 
 import torch
+from transformers import PreTrainedTokenizerFast
 
 from inference.utils import sents_to_ids
 from settings.config import Wrapper
@@ -62,3 +64,33 @@ def parse_output(output: str) -> tuple:
         )
 
     return answer, reasoning
+
+
+def encode_wrapper(
+    wrapper: Wrapper, tokenizer: PreTrainedTokenizerFast
+) -> dict[str, dict[str, Any]]:
+    """
+    Encodes the wrapper into ids and sentence spans.
+    :param wrapper: the wrapper to encode
+    :param tokenizer: the tokenizer to use
+    :return: tuple of ids and sentence spans
+    """
+    if not wrapper:
+        raise ValueError(
+            "Wrapper is not set. Please set the wrapper before calling the model."
+        )
+    wrapper_dict = defaultdict(dict)
+    for key, value in getattr(wrapper, "__dict__").items():
+        if value:
+            no_insert_values = re.split(r" *\{.+?} *", value)
+            if len(no_insert_values) > 2:
+                raise ValueError(
+                    f"The wrapper value '{value}' is not in the correct format. "
+                    f"It should be 'wrapper text {{inserted_value}} wrapper text'."
+                )
+            for order, no_insert_value in zip(("before", "after"), no_insert_values):
+                ids, sent_spans = sents_to_ids(no_insert_value, tokenizer)
+                wrapper_dict[key][order]["ids"] = ids
+                wrapper_dict[key][order]["sent_spans"] = sent_spans
+
+    return wrapper_dict

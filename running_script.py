@@ -128,9 +128,9 @@ def run_setting(cfg: DictConfig) -> None:
 
     print("The model is being loaded...", end="\n\n")
     if hasattr(cfg, "model"):
-        model = Model(**cfg.model, interpretability=interpretability)
+        model = Model(**cfg.model, interpretability=interpretability, role=None)
     elif hasattr(cfg, "student"):
-        model = Model(**cfg.student, interpretability=interpretability)
+        model = Model(**cfg.student, interpretability=interpretability, role="student")
     else:
         raise ValueError("No base model is provided in the config.")
 
@@ -173,7 +173,7 @@ def run_setting(cfg: DictConfig) -> None:
         print(refine_prompt.text)
         print("______________________________", end="\n\n", flush=True)
 
-        teacher = Model(**cfg.teacher)
+        teacher = Model(**cfg.teacher, role="teacher")
         setting = Feedback(
             student=model,
             teacher=teacher,
@@ -204,7 +204,7 @@ def run_setting(cfg: DictConfig) -> None:
         print(resume_prompt.text)
         print("______________________________", end="\n\n", flush=True)
 
-        teacher = Model(**cfg.teacher)
+        teacher = Model(**cfg.teacher, role="teacher")
         setting = SpeculativeDecoding(
             student=model,
             teacher=teacher,
@@ -255,7 +255,9 @@ def run_setting(cfg: DictConfig) -> None:
             else:
                 print(f"Using the model: {cfg.model.name}")
 
-        init_prompt = Prompt(prompt_path=prompt_path, name=prompt_name)
+        init_prompt = Prompt(
+            prompt_path=prompt_path, name=prompt_name, tokenizer=model.tokenizer
+        )
         setting.init_prompt = init_prompt
 
         print(f"Prompt: {prompt_name}, path: {prompt_path}")

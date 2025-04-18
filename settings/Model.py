@@ -1,6 +1,7 @@
+from __future__ import annotations
+
 import os
 
-import numpy as np
 import torch
 from torch.amp import autocast
 from transformers import (
@@ -11,11 +12,12 @@ from transformers import (
     PreTrainedTokenizerFast,
 )
 
-from inference.Chat import Chat
+from inference.Chat import Chat, Source
 from inference.DataLevels import SamplePart
 from interpretability.Interpretability import Interpretability
 from interpretability.utils import InterpretabilityResult
-from settings.config import Mode
+from settings.config import Mode, Wrapper
+from settings.utils import encode_wrapper
 
 
 class Model:
@@ -29,17 +31,23 @@ class Model:
         max_new_tokens: int,
         temperature: float,
         to_continue: bool,
+        role: str | None,
+        wrapper: Wrapper = None,
         mode: Mode = "eval",
         interpretability: Interpretability = None,
     ):
         self.token: str = os.getenv("HUGGINGFACE")
         self.name: str = name
+        self.role = role
         self.max_new_tokens: int = max_new_tokens
         self.temperature: float = temperature
         self.to_continue: bool = to_continue
         self.mode: Mode = mode
         self.model, self.tokenizer = self.load()
         self.interpretability = interpretability
+
+        self.wrapper = encode_wrapper(wrapper)
+        self.chat: Chat = None
 
     def load(self) -> tuple[OpenLlamaPreTrainedModel, PreTrainedTokenizerFast]:
         """
@@ -97,27 +105,57 @@ class Model:
         return model, tokenizer
 
     def call(
-        self, part: SamplePart, prompt: str, chat: Chat = None
+        self,
+        part: SamplePart = None,
+        formatted_prompt: str = None,
+        interpretability: bool = False,
     ) -> tuple[str, InterpretabilityResult]:
         """
         Calls the model with memory optimizations and optionally with Interpretability.
         :param part: The current sample part
-        :param prompt: The formatted prompt
-        :param chat: The current chat
+        :param formatted_prompt: The formatted prompt including the whole chat
+        :param interpretability: Whether to calculate interpretability
         :return: The decoded model output
         """
+        if not self.chat:
+            raise ValueError(
+                "Chat is not set. Please set the chat before calling the model."
+            )
+        if part and formatted_prompt:
+            raise ValueError(
+                "Either part or formatted_prompt should be provided, not both."
+            )
+        if formatted_prompt and interpretability:
+            raise ValueError(
+                "Interpretability cannot be calculated with formatted_prompt."
+            )
+
+        self.chat.add_message(part=part, source=Source.user, wrapper=self.wrapper)
+
         with torch.no_grad():
             device = next(self.model.parameters()).device
 
-            if chat:
-                chat_ids, context_sent_spans, sys_prompt_len = chat.convert_into_ids(
-                    chat_part=chat.messages,
-                    tokenizer=self.tokenizer,
+            if interpretability:
+                # self.prepare_prompt(chat=chat)
+                chat_ids = self.chat.chat_to_ids()
+                print(
+                    f"Formatted prompt (to remove):",
+                    self.tokenizer.batch_decode(chat_ids),
+                    sep="\n",
+                    end="\n",
                 )
-                inputs = {k: v.to(device) for k, v in chat_ids.items()}
+                inputs = {"input_ids": [ids.to(device) for ids in chat_ids]}
+            # if self.chat:
+            #     chat_ids, context_sent_spans, sys_prompt_len = (
+            #         self.chat.convert_into_ids_old(
+            #             chat_part=self.chat.messages,
+            #             tokenizer=self.tokenizer,
+            #         )
+            #     )
+            #     inputs = {k: v.to(device) for k, v in chat_ids.items()}
             else:
                 inputs = self.tokenizer(
-                    prompt,
+                    formatted_prompt,
                     return_tensors="pt",
                     padding="longest",
                     truncation=True,
@@ -146,12 +184,12 @@ class Model:
                     encoded_output, skip_special_tokens=True
                 ).lower()
 
-                interpretability_result = InterpretabilityResult(
-                    np.array([]), [], [], 0
+                self.chat.add_message(
+                    part=decoded_output, source=Source.assistant, ids=encoded_output
                 )
 
-                # Controlled call (i.e. generate_student() in Feedback shouldn't call ?)
-                if chat and decoded_output:
+                interpretability_result = None
+                if interpretability and decoded_output:
                     output_tensor = self.model(
                         outputs,
                         return_dict=True,
@@ -164,10 +202,10 @@ class Model:
                         part=part,
                         after=not part.multi_system,
                         chat_ids=outputs,
-                        context_sent_spans=context_sent_spans,
+                        context_sent_spans=self.chat.sent_spans,
                         output_tensor=output_tensor,
                         model_output_len=len(encoded_output),
-                        sys_prompt_len=sys_prompt_len,
+                        sys_prompt_len=len(self.chat.system_message["ids"]),
                     )
 
             torch.cuda.empty_cache()

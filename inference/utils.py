@@ -98,22 +98,68 @@ def contains_not_mentioned(answer) -> bool:
     return False
 
 
-def generation_tokens(
-    tokenizer: PreTrainedTokenizerFast, role: str, eot: bool
-) -> list[float]:
+def generation_tokens(tokenizer: PreTrainedTokenizerFast, role: str) -> list[float]:
     """
     Returns the token id for the role of the message.
 
     :param tokenizer: tokenizer to use
     :param role: role of the message
-    :param eot: whether to add the end of text token
     :return: token id and special tokens
     """
-    generation_token = "<|eot_id|>" if eot else "<|begin_of_text|>"
+    tokens = ["<|eot_id|>", "<|start_header_id|>", role, "<|end_header_id|>"]
+    return tokenizer.convert_tokens_to_ids(tokens)
 
-    return tokenizer.convert_tokens_to_ids(
-        [generation_token, "<|start_header_id|>", role, "<|end_header_id|>"]
-    )
+
+def sents_to_ids(
+    sentences: list[str], tokenizer: PreTrainedTokenizerFast
+) -> tuple[list[list[int]], list[tuple[int, int]]]:
+    """
+    Converts a message into ids using the tokenizer.
+    Additionally, it saves the start and end index of each sentence.
+
+    :param sentences: structured message to convert
+    :param tokenizer: tokenizer to use
+    :return: list of lists of ids that represent sentences and list of sentence spans
+    """
+    ids = []
+    sent_spans = []
+    for sentence in sentences:
+        # \n\n in source produces empty sentences
+        if not sentence or sentence.isspace():
+            continue
+        tokenized_sentence = tokenizer.encode(
+            sentence,
+            add_special_tokens=False,
+            return_tensors="pt",
+        )[0].tolist()
+        torch.cuda.empty_cache()
+        start = len(ids) + 1
+        ids.append(tokenized_sentence)
+        end = len(ids)
+        sent_spans.append((start, end))
+
+    return ids, sent_spans
+
+
+def flatten(lst: list[list]) -> list:
+    """
+    Flattens a list of lists into a single list.
+
+    :param lst: list of lists to flatten
+    :return: flattened list
+    """
+    return [item for sublist in lst for item in sublist]
+
+
+def upd_span(span: tuple[int, int], offset: int) -> tuple[int, int]:
+    """
+    Update the span by adding an offset.
+
+    :param span: span to update
+    :param offset: offset to add
+    :return: updated span
+    """
+    return span[0] + offset, span[1] + offset
 
 
 def context_sentences(text: str) -> int:

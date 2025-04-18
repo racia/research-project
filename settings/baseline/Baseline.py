@@ -41,25 +41,25 @@ class Baseline(Setting):
         )
         self.question_id: int = 0
 
-    def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
-        """
-        Prepares the prompt to include the current part of the sample.
-
-        :param model_role: role of the model in the conversation
-        :param resume_gen: whether to resume the generation
-        :param chat: the current chat
-        :return: prompt with the task and the current part
-        """
-        if self.model.to_continue:
-            formatted_prompt = self.model.tokenizer.apply_chat_template(
-                chat.messages, tokenize=False, continue_final_message=True
-            )
-        else:
-            formatted_prompt = self.model.tokenizer.apply_chat_template(
-                chat.messages, tokenize=False, add_generation_prompt=True
-            )
-
-        return formatted_prompt
+    # def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
+    #     """
+    #     Prepares the prompt to include the current part of the sample.
+    #
+    #     :param model_role: role of the model in the conversation
+    #     :param resume_gen: whether to resume the generation
+    #     :param chat: the current chat
+    #     :return: prompt with the task and the current part
+    #     """
+    #     if self.model.to_continue:
+    #         formatted_prompt = self.model.tokenizer.apply_chat_template(
+    #             chat.messages, tokenize=False, continue_final_message=True
+    #         )
+    #     else:
+    #         formatted_prompt = self.model.tokenizer.apply_chat_template(
+    #             chat.messages, tokenize=False, add_generation_prompt=True
+    #         )
+    #
+    #     return formatted_prompt
 
     def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple[str, int]:
         """
