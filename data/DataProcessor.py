@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import re
 
+from data.utils import expand_cardinal_points
 from inference.DataLevels import SamplePart
 from settings.config import Wrapper, Enumerate
-from settings.utils import expand_cardinal_points
 
 
 class DataProcessor:

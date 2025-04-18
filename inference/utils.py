@@ -4,12 +4,49 @@ from collections import defaultdict
 from typing import Any
 
 import en_core_web_sm
+import torch
 from prettytable import PrettyTable
 from transformers import PreTrainedTokenizerFast
 
 from evaluation.Evaluator import MetricEvaluator
+from settings.config import Enumerate
 
 nlp = en_core_web_sm.load()
+
+
+def numerate_lines(lines: dict[int, str]) -> list[str]:
+    """
+    Adds line numbers to the beginning of each line.
+
+    :param lines: lines to numerate
+    :return: numerated lines
+    """
+    return [f"{i}. {line}" for i, line in lines.items()]
+
+
+def structure_part(
+    part: dict[str, dict[int, str]],
+    to_enumerate: Enumerate,
+) -> tuple[str, str]:
+    """
+    Structures the lines into a readable format.
+
+    :param part: part of the sample to structure
+    :param to_enumerate: if to add line numbers to the beginning of lines
+    :return: structured context and question
+    """
+    context = []
+    question = []
+    if part["context"]:
+        if to_enumerate.context:
+            context.extend(numerate_lines(part["context"]))
+        else:
+            context.extend(list(part["context"].values()))
+    if to_enumerate.question:
+        question.extend(numerate_lines(part["question"]))
+    else:
+        question.extend(list(part["question"].values()))
+    return "\n".join(context).strip(), "\n".join(question).strip()
 
 
 def contains_there(answer) -> bool:

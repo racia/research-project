@@ -17,9 +17,9 @@ from inference.utils import (
     wrap_text,
     print_metrics_table,
 )
+from inference.utils import structure_part
 from interpretability.utils import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
-from settings.utils import structure_part
 
 stats = Statistics()
 

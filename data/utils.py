@@ -8,6 +8,24 @@ from evaluation.Metrics import Accuracy, Metric
 from inference.DataLevels import Features, SamplePart
 
 
+def expand_cardinal_points(abbr_news: list[str]) -> list[str]:
+    """
+    Expands the abbreviations of cardinal points into full words by checking
+    if any word as a list item belongs to possible abbreviations.
+
+    :param abbr_news: list of possible abbreviations
+    :return: list of words with cardinal points expanded with order preserved
+    """
+    cardinal_points = {"n": "north", "e": "east", "w": "west", "s": "south"}
+    expanded_news = []
+    for abbr in abbr_news:
+        if abbr in cardinal_points.keys():
+            expanded_news.append(cardinal_points[abbr])
+        else:
+            expanded_news.append(abbr)
+    return expanded_news
+
+
 def is_empty_file(file_path: Path) -> bool:
     """
     Checks if the file exists and is empty.

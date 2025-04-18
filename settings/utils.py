@@ -5,7 +5,8 @@ import warnings
 
 import torch
 
-from settings.config import Enumerate
+from inference.utils import sents_to_ids
+from settings.config import Wrapper
 
 
 def set_device() -> torch.device:
@@ -26,59 +27,6 @@ def set_device() -> torch.device:
         warnings.warn("CUDA is not available. This will be using the CPU.")
 
     return device
-
-
-def expand_cardinal_points(abbr_news: list[str]) -> list[str]:
-    """
-    Expands the abbreviations of cardinal points into full words by checking
-    if any word as a list item belongs to possible abbreviations.
-
-    :param abbr_news: list of possible abbreviations
-    :return: list of words with cardinal points expanded with order preserved
-    """
-    cardinal_points = {"n": "north", "e": "east", "w": "west", "s": "south"}
-    expanded_news = []
-    for abbr in abbr_news:
-        if abbr in cardinal_points.keys():
-            expanded_news.append(cardinal_points[abbr])
-        else:
-            expanded_news.append(abbr)
-    return expanded_news
-
-
-def numerate_lines(lines: dict[int, str]) -> list[str]:
-    """
-    Adds line numbers to the beginning of each line.
-
-    :param lines: lines to numerate
-    :return: numerated lines
-    """
-    return [f"{i}. {line}" for i, line in lines.items()]
-
-
-def structure_part(
-    part: dict[str, dict[int, str]],
-    to_enumerate: Enumerate,
-) -> tuple[str, str]:
-    """
-    Structures the lines into a readable format.
-
-    :param part: part of the sample to structure
-    :param to_enumerate: if to add line numbers to the beginning of lines
-    :return: structured context and question
-    """
-    context = []
-    question = []
-    if part["context"]:
-        if to_enumerate.context:
-            context.extend(numerate_lines(part["context"]))
-        else:
-            context.extend(list(part["context"].values()))
-    if to_enumerate.question:
-        question.extend(numerate_lines(part["question"]))
-    else:
-        question.extend(list(part["question"].values()))
-    return "\n".join(context).strip(), "\n".join(question).strip()
 
 
 def parse_output(output: str) -> tuple:
