@@ -1,16 +1,17 @@
 from __future__ import annotations
 
-import os
+from pathlib import Path
 
 
-def check_or_create_directory(path: str) -> None:
+def check_or_create_directory(path: str | Path) -> None:
     """
     Check if the directory exists, if not create it.
 
     :param path: path to the directory
     """
-    if not os.path.exists(path):
-        os.makedirs(path)
+    if isinstance(path, str):
+        path = Path(path)
+    path.mkdir(parents=True, exist_ok=True)
 
 
 def normalize_token(token: str) -> str:

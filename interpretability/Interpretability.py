@@ -6,6 +6,7 @@ import numpy as np
 import torch
 from transformers import PreTrainedTokenizerFast
 from transformers.modeling_outputs import CausalLMOutputWithPast
+import warnings
 
 from evaluation.Scenery import nlp
 from inference.DataLevels import SamplePart
@@ -36,7 +37,7 @@ class Interpretability:
         self.scenery_words: set[str] = set(map(lambda x: x.lower(), scenery_words))
 
     def get_stop_word_idxs(
-        self, tokenizer, attn_scores: np.ndarray, chat_ids: np.ndarray
+        self, tokenizer: PreTrainedTokenizerFast, attn_scores: np.ndarray, chat_ids: np.ndarray
     ) -> list[int]:
         """
         Get indices of stop words in the current task.
@@ -130,7 +131,7 @@ class Interpretability:
         return attn_scores
 
     def filter_attention_indices(
-        self, tokenizer, attention_scores: np.ndarray, chat_ids: np.ndarray
+        self, tokenizer: PreTrainedTokenizerFast, attention_scores: np.ndarray, chat_ids: np.ndarray
     ) -> list:
         """
         Provide indices for scenery words of context and question in each row of the output attention scores.

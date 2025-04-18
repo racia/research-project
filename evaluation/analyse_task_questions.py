@@ -3,6 +3,7 @@
 # - the total number of questions;
 # - the total number of lines of context for each task;
 # - the number of lines of context before each question.
+from pathlib import Path
 
 from pathlib import Path
 

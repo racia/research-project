@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 import os
+from collections import defaultdict
 from pathlib import Path
 
 from evaluation.Metrics import Accuracy, Metric
-from inference.DataLevels import Features
+from inference.DataLevels import Features, SamplePart
 
 
 def is_empty_file(file_path: Path) -> bool:
@@ -235,3 +236,61 @@ def get_real_value(entry: str) -> str | int | float | bool | None:
         return False
     else:
         return entry
+
+
+def level_down(level_id: str) -> str | None:
+    """
+    Convert the level id to one level down. If it's already at the lowest level, return None.
+
+    :param level_id: the level id to convert
+    :return: the lower case level id
+    """
+    if level_id == "task_id":
+        return "sample_id"
+    elif level_id == "sample_id":
+        return "part_id"
+    return None
+
+
+def structure_parts(
+    parts: list[SamplePart], id_: str | None = "task_id"
+) -> dict[int, dict[int, list[SamplePart]]]:
+    """
+    Structure the parts of the sample into samples and tasks.
+
+    :param parts: the parts of the sample
+    :param id_: the id to structure the parts by
+                "task_id" or "sample_id"
+    :return: the structured parts
+    """
+    if id_ == "part_id":
+        return sorted(parts, key=lambda p: getattr(p, "part_id"))
+
+    if id_ not in ["task_id", "sample_id"]:
+        raise ValueError(
+            f"Invalid id_ value: {id_}. Expected 'task_id' or 'sample_id'."
+        )
+
+    id_parts = defaultdict(list)
+    for part in parts:
+        id_parts[getattr(part, id_)].append(part)
+
+    for key, value in id_parts.items():
+        id_parts[key] = structure_parts(value, level_down(id_))
+
+    return dict(sorted(id_parts.items(), key=lambda p: p[0]))
+
+
+def get_samples_per_task(data: list[dict]) -> int:
+    """
+    Get the maximum number of samples per task.
+    :param data: the data to get the samples from
+    :return: the maximum number of samples per task
+    """
+    tasks_samples = {}
+    for row in data:
+        if row["task_id"] not in tasks_samples.keys():
+            tasks_samples[row["task_id"]] = []
+        if row["sample_id"] not in tasks_samples[row["task_id"]]:
+            tasks_samples[row["task_id"]].append(row["sample_id"])
+    return len(max(tasks_samples.values(), key=len))

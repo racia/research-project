@@ -45,4 +45,5 @@ test
 
 # Other
 inference/prompts/*reasoning.txt
+interpretability/residual_decoding.py
 *.log

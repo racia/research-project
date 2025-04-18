@@ -34,6 +34,19 @@ class InterpretabilityResult:
             f"y_tokens={len(self.y_tokens)}, max_supp_target={self.max_supp_target})"
         )
 
+    def empty(self) -> bool:
+        """
+        Check if the result is empty.
+        :return: True if the result is empty, False otherwise
+        """
+        if not (
+            self.x_tokens
+            or self.y_tokens
+            or (self.attn_scores and self.attn_scores.size <= 1)
+        ):
+            return True
+        return False
+
 
 def get_supp_tok_idx(
     context_sent_spans: list[tuple[int, int]], supp_sent_idx: list[int]
