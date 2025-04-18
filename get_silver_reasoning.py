@@ -21,7 +21,7 @@ def main():
     """
     Run the Skyline model with memory optimizations
     """
-    split = "valid"
+    split = "test"
     max_samples = 100
     torch.cuda.empty_cache()
     gc.collect()
@@ -29,7 +29,9 @@ def main():
     # Load the data
     data_loader = DataLoader()
     valid_data = data_loader.load_task_data(
-        path=f"{home}/tasks_1-20_v1-2/en-valid/", split=split
+        path=f"{home}/tasks_1-20_v1-2/en-valid/",
+        split=split,
+        tasks=[15],
     )
 
     model = Model(
@@ -64,7 +66,7 @@ def main():
             result_df.to_csv(output_file, index=False)
 
         id_counter = 0
-        safety_length = max(len(task), max_samples)
+        safety_length = min(len(task), max_samples)
         for sample_id, sample_parts in list(task.items())[:safety_length]:
             id_counter = process_sample(
                 task_id, sample_id, sample_parts, prompt, model, output_file, id_counter
@@ -88,7 +90,7 @@ def process_sample(
     :param output_file: the output file
     :param id_counter: the ID counter
     """
-    chat = Chat(system_prompt=prompt.text)
+    chat = Chat(system_prompt=prompt)
 
     for sample_part_idx, sample_part in enumerate(sample_parts):
         # Format prompt components

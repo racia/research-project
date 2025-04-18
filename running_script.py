@@ -13,6 +13,7 @@ from omegaconf import DictConfig, OmegaConf
 
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
+from data.utils import structure_parts
 from evaluation.Evaluator import MetricEvaluator
 from inference.DataLevels import Split, print_metrics
 from inference.Prompt import Prompt
@@ -61,66 +62,60 @@ def run_setting(cfg: DictConfig) -> None:
 
     log_file = sys.stdout
 
-    loader = DataLoader(samples_per_task=cfg.data.samples_per_task)
+    sd = [
+        "sd",
+        "speculativedecoding",
+        "speculative_decoding",
+    ]
+
+    if cfg.setting.name.lower() in ["baseline", "skyline"]:
+        multi_system = False
+    elif cfg.setting.name.lower() in sd or cfg.setting.name.lower() == "feedback":
+        multi_system = True
+    else:
+        raise ValueError(
+            f"Setting {cfg.setting.name} is not supported. "
+            f"Please choose one of the following: Baseline, Skyline, Feedback, SD or SpeculativeDecoding"
+        )
+
+    loader = DataLoader(
+        samples_per_task=cfg.data.samples_per_task,
+        to_enumerate=cfg.data.to_enumerate,
+        wrapper=cfg.data.wrapper,
+    )
+
     data_splits = [split for split, to_use in cfg.data.splits.items() if to_use]
-    data_in_splits = {}
+    parts_per_split = {}
 
     for split in data_splits:
-        data_tasks = loader.load_task_data(
-            path=cfg.data.path,
-            split=split,
-            tasks=cfg.data.task_ids,
-        )
-        data_in_splits[split] = data_tasks
+        if cfg.data.baseline_results:
+            data_parts = loader.load_results(
+                results_path=cfg.data.baseline_results,
+                data_path=cfg.data.path,
+                split=split,
+                tasks=cfg.data.task_ids,
+                as_parts=True,
+            )
+        else:
+            data_parts = loader.load_task_data(
+                path=cfg.data.path,
+                split=split,
+                tasks=cfg.data.task_ids,
+                multi_system=multi_system,
+            )
+
+        parts_per_split[split] = structure_parts(data_parts)
 
     saver = DataSaver(save_to=HydraConfig.get().run.dir)
     print(f"Results will be saved to: {saver.results_path}")
     plotter = Plotter(results_path=saver.results_path)
 
     run_splits = defaultdict(dict)
-
-    setting = None
-
-    if not hasattr(cfg.setting, "name"):
-        raise ValueError("The setting name is not provided in the config file")
-
-    if hasattr(cfg, "model"):
-        print(
-            f"The model {cfg.model.name} is being loaded in mode '{cfg.model.mode}'",
-            end="\n\n",
-            flush=True,
-        )
-        model = Model(
-            cfg.model.name,
-            cfg.model.max_new_tokens,
-            cfg.model.temperature,
-            cfg.model.to_continue,
-            cfg.model.mode,
-        )
-    elif hasattr(cfg, "student"):
-        print(
-            f"The model {cfg.student.name} is being loaded in mode '{cfg.student.mode}'",
-            end="\n\n",
-            flush=True,
-        )
-        model = Model(
-            cfg.student.name,
-            cfg.student.max_new_tokens,
-            cfg.student.temperature,
-            cfg.student.to_continue,
-            cfg.student.mode,
-        )
-    else:
-        raise ValueError("No base model is provided in the config.")
-
-    print(f"The model {model.model_name} was loaded successfully", flush=True)
-
     # Load scenery words
     scenery_words = loader.load_scenery()
 
     interpretability = (
         Interpretability(
-            model=model,
             plotter=plotter,
             save_heatmaps=cfg.results.save_heatmaps,
             scenery_words=scenery_words,
@@ -129,87 +124,102 @@ def run_setting(cfg: DictConfig) -> None:
         else None
     )
 
-    multi_system = False
+    if not hasattr(cfg.setting, "name"):
+        raise ValueError("The setting name is not provided in the config file")
 
-    if cfg.setting.name == "Baseline":
+    print("The model is being loaded...", end="\n\n")
+    if hasattr(cfg, "model"):
+        model = Model(**cfg.model, interpretability=interpretability)
+    elif hasattr(cfg, "student"):
+        model = Model(**cfg.student, interpretability=interpretability)
+    else:
+        raise ValueError("No base model is provided in the config.")
+
+    print(f"The model {model.name} is loaded successfully", flush=True)
+
+    if cfg.setting.name.lower() == "baseline":
         setting = Baseline(
             model=model,
-            to_enumerate=cfg.data.to_enumerate,
             total_tasks=loader.number_of_tasks,
             total_parts=loader.number_of_parts,
             samples_per_task=loader.samples_per_task,
             init_prompt=None,
-            wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
-            interpretability=interpretability,
-        )
-    elif cfg.setting.name == "Skyline":
-        setting = Skyline(
-            model=model,
-            to_enumerate=cfg.data.to_enumerate,
-            total_tasks=loader.number_of_tasks,
-            total_parts=loader.number_of_parts,
-            samples_per_task=loader.samples_per_task,
-            init_prompt=None,
-            wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
-            interpretability=interpretability,
             saver=saver,
         )
-    elif cfg.setting.name in ["Feedback", "feedback"]:
-        multi_system = True
-        teacher = Model(
-            cfg.teacher.name,
-            cfg.teacher.max_new_tokens,
-            cfg.teacher.temperature,
-            cfg.teacher.to_continue,
-            cfg.teacher.mode,
+    elif cfg.setting.name.lower() == "skyline":
+        setting = Skyline(
+            model=model,
+            total_tasks=loader.number_of_tasks,
+            total_parts=loader.number_of_parts,
+            samples_per_task=loader.samples_per_task,
+            init_prompt=None,
+            saver=saver,
         )
+    elif cfg.setting.name.lower() == "feedback":
+        feedback_prompt = Prompt(
+            prompt_path=cfg.feedback_prompt.paths[0],
+            wrapper=cfg.feedback_prompt.wrapper,
+        )
+        refine_prompt = Prompt(
+            prompt_path=cfg.refine_prompt.paths[0],
+            wrapper=cfg.refine_prompt.wrapper,
+        )
+        print("- THE FEEDBACK PROMPT -")
+        print("______________________________")
+        print(feedback_prompt.text)
+        print("______________________________", end="\n\n")
 
+        print("- THE REFINE PROMPT -")
+        print("______________________________")
+        print(refine_prompt.text)
+        print("______________________________", end="\n\n", flush=True)
+
+        teacher = Model(**cfg.teacher)
         setting = Feedback(
             student=model,
             teacher=teacher,
-            to_enumerate=cfg.data.to_enumerate,
             total_tasks=loader.number_of_tasks,
             total_parts=loader.number_of_parts,
             init_prompt=None,
-            feedback_prompt=None,
-            refine_prompt=None,
+            feedback_prompt=feedback_prompt,
+            refine_prompt=refine_prompt,
             teacher_max_new_tokens=cfg.teacher.max_new_tokens,
             student_max_new_tokens=cfg.student.max_new_tokens,
-            wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
             samples_per_task=cfg.data.samples_per_task,
-            interpretability=interpretability,
             saver=saver,
         )
-        pass
-    elif cfg.setting.name in ["SD", "SpeculativeDecoding"]:
-        multi_system = True
-        teacher = Model(
-            cfg.teacher.name,
-            cfg.teacher.max_new_tokens,
-            cfg.teacher.temperature,
-            cfg.teacher.to_continue,
-            cfg.teacher.mode,
+    elif cfg.setting.name.lower() in sd:
+        eval_prompt = Prompt(
+            prompt_path=cfg.eval_prompt.paths[0], wrapper=cfg.eval_prompt.wrapper
         )
+        resume_prompt = Prompt(
+            prompt_path=cfg.resume_prompt.paths[0],
+            wrapper=cfg.resume_prompt.wrapper,
+        )
+        print("- THE EVAL PROMPT -")
+        print("______________________________")
+        print(eval_prompt.text)
+        print("______________________________", end="\n\n", flush=True)
+        print("- THE RESUME PROMPT -")
+        print("______________________________")
+        print(resume_prompt.text)
+        print("______________________________", end="\n\n", flush=True)
+
+        teacher = Model(**cfg.teacher)
         setting = SpeculativeDecoding(
             student=model,
             teacher=teacher,
-            to_enumerate=cfg.data.to_enumerate,
             total_tasks=loader.number_of_tasks,
             total_parts=loader.number_of_parts,
             init_prompt=None,
-            eval_prompt=None,
-            resume_prompt=None,
+            eval_prompt=eval_prompt,
+            resume_prompt=resume_prompt,
             samples_per_task=cfg.data.samples_per_task,
-            wrapper=cfg.data.wrapper if cfg.data.wrapper else None,
-            interpretability=interpretability,
-        )
-    else:
-        raise ValueError(
-            f"Setting {cfg.setting.name} is not supported. "
-            f"Please choose one of the following: Baseline, Skyline, Feedback, SD or SpeculativeDecoding"
+            saver=saver,
         )
 
-    setting.total_tasks = 0
+    else:
+        setting = None
 
     for prompt_num, prompt_path in enumerate(cfg.init_prompt.paths, 1):
         prompt_name = Path(prompt_path).stem
@@ -217,6 +227,7 @@ def run_setting(cfg: DictConfig) -> None:
             MetricEvaluator(level="prompt") if multi_system else None
         )
         prompt_evaluator_after = MetricEvaluator(level="prompt")
+        prompt_evaluators = [prompt_evaluator_before, prompt_evaluator_after]
 
         log_file_name, results_file_names, metrics_file_names = (
             saver.create_result_paths(prompt_name=prompt_name, splits=data_splits)
@@ -239,11 +250,11 @@ def run_setting(cfg: DictConfig) -> None:
             log_file = saver.redirect_printing_to_log_file(log_file_name)
 
             # Print the config data to the log file
-            if cfg.setting.name in ["Baseline", "Skyline"]:
-                print(f"Using the model: {cfg.model.name}")
-            elif cfg.setting.name in ["SD", "SpeculativeDecoding", "Feedback"]:
+            if multi_system:
                 print(f"Using the student model: {cfg.student.name}")
                 print(f"Using the teacher model: {cfg.teacher.name}")
+            else:
+                print(f"Using the model: {cfg.model.name}")
 
         init_prompt = Prompt(prompt_path=prompt_path, name=prompt_name)
         setting.init_prompt = init_prompt
@@ -255,55 +266,15 @@ def run_setting(cfg: DictConfig) -> None:
         print(init_prompt.text)
         print("______________________________", end="\n\n")
 
-        if cfg.setting.name in ["SD", "SpeculativeDecoding"]:
-            setting.eval_prompt = Prompt(
-                prompt_path=cfg.eval_prompt.paths[0], wrapper=cfg.eval_prompt.wrapper
-            )
-
-            print("- THE EVAL PROMPT -")
-            print("______________________________")
-            print(setting.eval_prompt.text)
-            print("______________________________", end="\n\n", flush=True)
-
-            setting.resume_prompt = Prompt(
-                prompt_path=cfg.resume_prompt.paths[0],
-                wrapper=cfg.resume_prompt.wrapper,
-            )
-
-            print("- THE RESUME PROMPT -")
-            print("______________________________")
-            print(setting.resume_prompt.text)
-            print("______________________________", end="\n\n", flush=True)
-
-        elif cfg.setting.name in ["Feedback", "feedback"]:
-            setting.feedback_prompt = Prompt(
-                prompt_path=cfg.feedback_prompt.paths[0],
-                wrapper=cfg.feedback_prompt.wrapper,
-            )
-            setting.refine_prompt = Prompt(
-                prompt_path=cfg.refine_prompt.paths[0],
-            )
-
-            print("- THE FEEDBACK PROMPT -")
-            print("______________________________")
-            print(setting.feedback_prompt.text)
-            print("______________________________", end="\n\n")
-
-            print("- THE REFINE PROMPT -")
-            print("______________________________")
-            print(setting.refine_prompt.text)
-            print("______________________________", end="\n\n", flush=True)
-
-        setting.question_id = 0
-
-        for split_name, tasks in data_in_splits.items():
+        for split_name, tasks in parts_per_split.items():
             print(
                 f"Starting to query the model with {split_name.upper()} data...",
                 end="\n\n",
             )
             split = Split(name=split_name, multi_system=multi_system)
+            setting.question_id = 0
 
-            for task_id, task in sorted(tasks.items()):
+            for task_id, task in tasks.items():
                 if (
                     cfg.init_prompt.get("examples", None)
                     and cfg.init_prompt.examples.add
@@ -342,33 +313,36 @@ def run_setting(cfg: DictConfig) -> None:
                 f"==> The run for {split.name.upper()} data is finished successfully <==",
                 end="\n\n",
             )
-
             print_metrics(split, table=True)
 
-            if multi_system:
-                print("The features before applying the setting:")
-                print(split.features_before, end="\n\n")
-
-            print("The features after applying the setting:")
-            print(split.features_after, end="\n\n")
-
-            prompt_evaluator_after.update(split.evaluator_after)
-
-            if multi_system:
-                prompt_evaluator_before.update(split.evaluator_before)
+            items = zip(
+                split.versions, split.features, split.evaluators, prompt_evaluators
+            )
+            for version, features, split_eval, prompt_eval in items:
+                print(f"The features {version} applying the setting:")
+                print(features, end="\n\n")
                 saver.save_split_metrics(
-                    features=split.features_before,
+                    features=features,
                     metrics_file_name=metrics_file_names[split.name],
-                    version="before",
+                    version=version,
                 )
+                prompt_eval.update(split_eval)
                 # Plot the prompt accuracies for the split
                 plotter.plot_acc_per_task_and_prompt(
-                    acc_per_prompt_task=split.evaluator_before.get_accuracies(
-                        as_lists=True
-                    ),
+                    acc_per_prompt_task=split_eval.get_accuracies(as_lists=True),
                     y_label="Accuracies and Standard Deviations",
-                    plot_name_add=[prompt_name, split.name, "before"],
+                    plot_name_add=[prompt_name, split.name, version],
                 )
+
+            print_metrics(split, table=True)
+            saver.save_split_accuracy(
+                evaluators=split.evaluators,
+                accuracy_file_name=metrics_file_names[split.name],
+                multi_system=multi_system,
+            )
+            run_splits[split.name][init_prompt] = split
+
+            if multi_system:
                 plotter.plot_acc_per_task_and_prompt(
                     acc_per_prompt_task={
                         **split.evaluator_before.get_accuracies(as_lists=True),
@@ -378,33 +352,12 @@ def run_setting(cfg: DictConfig) -> None:
                     plot_name_add=[prompt_name, split.name, "before", "after"],
                 )
 
-            saver.save_split_metrics(
-                features=split.features_after,
-                metrics_file_name=metrics_file_names[split.name],
-                version="after",
-            )
-            saver.save_split_accuracy(
-                evaluators=[split.evaluator_before, split.evaluator_after],
-                accuracy_file_name=metrics_file_names[split.name],
-                multi_system=multi_system,
-            )
-            # Plot the prompt accuracies for the split
-            plotter.plot_acc_per_task_and_prompt(
-                acc_per_prompt_task=split.evaluator_after.get_accuracies(as_lists=True),
-                y_label="Accuracies and Standard Deviations",
-                plot_name_add=[prompt_name, split.name, "after"],
-            )
-
-            run_splits[split.name][init_prompt] = split
-
         print("\n- RUN RESULTS -", end="\n\n")
 
-        evals = (
-            [prompt_evaluator_before, prompt_evaluator_after]
-            if multi_system
-            else [prompt_evaluator_after]
-        )
-        print_metrics_table(*evals, id_=init_prompt.name)
+        for prompt_eval in prompt_evaluators:
+            prompt_eval.calculate_std()
+            prompt_eval.print_accuracies(id_=init_prompt.name)
+        print_metrics_table(*prompt_evaluators, id_=init_prompt.name)
 
         print(
             "Processed",

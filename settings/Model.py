@@ -1,9 +1,20 @@
 import os
 
+import numpy as np
 import torch
 from torch.amp import autocast
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from transformers import (
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    BitsAndBytesConfig,
+    OpenLlamaPreTrainedModel,
+    PreTrainedTokenizerFast,
+)
 
+from inference.Chat import Chat
+from inference.DataLevels import SamplePart
+from interpretability.Interpretability import Interpretability
+from interpretability.utils import InterpretabilityResult
 from settings.config import Mode
 
 
@@ -14,21 +25,23 @@ class Model:
 
     def __init__(
         self,
-        model_name: str,
+        name: str,
         max_new_tokens: int,
         temperature: float,
         to_continue: bool,
         mode: Mode = "eval",
+        interpretability: Interpretability = None,
     ):
         self.token: str = os.getenv("HUGGINGFACE")
-        self.model_name: str = model_name
+        self.name: str = name
         self.max_new_tokens: int = max_new_tokens
         self.temperature: float = temperature
         self.to_continue: bool = to_continue
         self.mode: Mode = mode
         self.model, self.tokenizer = self.load()
+        self.interpretability = interpretability
 
-    def load(self) -> tuple:
+    def load(self) -> tuple[OpenLlamaPreTrainedModel, PreTrainedTokenizerFast]:
         """
         Load the model and the tokenizer.
         Set the model in mode.
@@ -36,6 +49,12 @@ class Model:
 
         :return: tuple: model, tokenizer
         """
+        print(
+            f"The model {self.name} is being loaded in mode '{self.mode}'",
+            end="\n\n",
+            flush=True,
+        )
+
         # create an offload folder
         if not os.path.exists("offload_folder"):
             os.makedirs("offload_folder")
@@ -58,7 +77,7 @@ class Model:
             "offload_state_dict": True,
         }
 
-        model = AutoModelForCausalLM.from_pretrained(self.model_name, **model_kwargs)
+        model = AutoModelForCausalLM.from_pretrained(self.name, **model_kwargs)
 
         if self.mode == "eval":
             model.eval()
@@ -67,29 +86,45 @@ class Model:
         else:
             raise ValueError(f"The mode '{self.mode}' is doesn't exist.")
 
-        tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+        tokenizer = AutoTokenizer.from_pretrained(self.name)
         tokenizer.padding_side = "left"
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
         torch.cuda.empty_cache()
 
+        print(f"The model {self.name} was  loaded successfully", flush=True)
+
         return model, tokenizer
 
-    def call(self, prompt: str) -> str:
+    def call(
+        self, part: SamplePart, prompt: str, chat: Chat = None
+    ) -> tuple[str, InterpretabilityResult]:
         """
-        Calls the model with memory optimizations.
+        Calls the model with memory optimizations and optionally with Interpretability.
+        :param part: The current sample part
+        :param prompt: The formatted prompt
+        :param chat: The current chat
+        :return: The decoded model output
         """
         with torch.no_grad():
-            inputs = self.tokenizer(
-                prompt,
-                return_tensors="pt",
-                padding="longest",
-                truncation=True,
-                max_length=2048,
-                add_special_tokens=True,
-            )
             device = next(self.model.parameters()).device
-            inputs = {k: v.to(device) for k, v in inputs.items()}
+
+            if chat:
+                chat_ids, context_sent_spans, sys_prompt_len = chat.convert_into_ids(
+                    chat_part=chat.messages,
+                    tokenizer=self.tokenizer,
+                )
+                inputs = {k: v.to(device) for k, v in chat_ids.items()}
+            else:
+                inputs = self.tokenizer(
+                    prompt,
+                    return_tensors="pt",
+                    padding="longest",
+                    truncation=True,
+                    max_length=2048,
+                    add_special_tokens=True,
+                )
+                inputs = {k: v.to(device) for k, v in inputs.items()}
 
             torch.cuda.empty_cache()
 
@@ -103,14 +138,41 @@ class Model:
                     use_cache=True,
                     num_beams=1,  # no beam search, reduce GPU memory usage
                 )
+
                 input_length = inputs["input_ids"].size(1)
+                encoded_output = outputs[0][input_length:]
+
                 decoded_output = self.tokenizer.decode(
-                    outputs[0][input_length:],
-                    skip_special_tokens=True,
+                    encoded_output, skip_special_tokens=True
                 ).lower()
 
+                interpretability_result = InterpretabilityResult(
+                    np.array([]), [], [], 0
+                )
+
+                # Controlled call (i.e. generate_student() in Feedback shouldn't call ?)
+                if chat and decoded_output:
+                    output_tensor = self.model(
+                        outputs,
+                        return_dict=True,
+                        output_attentions=True,
+                        output_hidden_states=False,
+                    )
+
+                    interpretability_result = self.interpretability.calculate_attention(
+                        tokenizer=self.tokenizer,
+                        part=part,
+                        after=not part.multi_system,
+                        chat_ids=outputs,
+                        context_sent_spans=context_sent_spans,
+                        output_tensor=output_tensor,
+                        model_output_len=len(encoded_output),
+                        sys_prompt_len=sys_prompt_len,
+                    )
+
             torch.cuda.empty_cache()
-        return decoded_output
+
+        return decoded_output, interpretability_result
 
     def call_probs(self, input_ids: torch.Tensor) -> torch.Tensor:
         """

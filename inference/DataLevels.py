@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import warnings
 from dataclasses import dataclass
 
 import numpy as np
@@ -99,12 +100,38 @@ class Results:
     Abstract class for data levels.
     """
 
+    CASE_COUNTERS = {
+        "before": {
+            "ans_null_reas_null": [],
+            "ans_null_reas_corr": [],
+            "ans_null_reas_incorr": [],
+            "ans_corr_reas_null": [],
+            "ans_corr_reas_incorr": [],
+            "ans_corr_reas_corr": [],
+            "ans_incorr_reas_null": [],
+            "ans_incorr_reas_incorr": [],
+            "ans_incorr_reas_corr": [],
+        },
+        "after": {
+            "ans_null_reas_null": [],
+            "ans_null_reas_corr": [],
+            "ans_null_reas_incorr": [],
+            "ans_corr_reas_null": [],
+            "ans_corr_reas_incorr": [],
+            "ans_corr_reas_corr": [],
+            "ans_incorr_reas_null": [],
+            "ans_incorr_reas_incorr": [],
+            "ans_incorr_reas_corr": [],
+        },
+    }
+
     result_attrs: list[str] = [
         "model_answer",
         "answer_correct",
         "model_reasoning",
         "reasoning_correct",
         "model_output",
+        "max_supp_target",
     ]
 
     def __init__(
@@ -143,8 +170,12 @@ class Results:
         self.features: Features = self.inspect_answer()
 
         self.interpretability: InterResult = interpretability
+        self.max_supp_target: float = (
+            interpretability.max_supp_target if interpretability else None
+        )
 
         self.dict: dict = self.get_result()
+        self.category: str = ""
 
     def __repr__(self):
         return f"<Results: {self.dict}>"
@@ -168,6 +199,52 @@ class Results:
             version=self.version,
         )
         return self.features
+
+    def categorize(self, ids: tuple[int, ...]) -> str:
+        """
+        Categorize the part results into types in the CASE_COUNTERS.
+        Reasoning is considered to be incorrect unless it was explicitly defined as correct.
+
+        :param ids: the ids of the part to add to the category
+        """
+        if self.model_answer == "None":
+            self.model_answer = ""
+        if self.model_reasoning == "None":
+            self.model_reasoning = ""
+
+        no_answer_no_reasoning = not self.model_answer and not self.model_reasoning
+        no_answer_reasoning = not self.model_answer and self.model_reasoning
+        answer_no_reasoning = self.model_answer and not self.model_reasoning
+        answer_reasoning = self.model_answer and self.model_reasoning
+        ans_corr_reas_corr = self.answer_correct and self.reasoning_correct
+        ans_corr_reas_incorr = self.answer_correct and not self.reasoning_correct
+        ans_incorr_reas_corr = not self.answer_correct and self.reasoning_correct
+        ans_incorr_reas_incorr = not self.answer_correct and not self.reasoning_correct
+        if no_answer_no_reasoning:
+            category = "ans_null_reas_null"
+        elif no_answer_reasoning and self.reasoning_correct:
+            category = "ans_null_reas_corr"
+        elif no_answer_reasoning and not self.reasoning_correct:
+            category = "ans_null_reas_incorr"
+        elif answer_no_reasoning and self.answer_correct:
+            category = "ans_corr_reas_null"
+        elif answer_reasoning and ans_corr_reas_incorr:
+            category = "ans_corr_reas_incorr"
+        elif answer_reasoning and ans_corr_reas_corr:
+            category = "ans_corr_reas_corr"
+        elif answer_no_reasoning and not self.answer_correct:
+            category = "ans_incorr_reas_null"
+        elif answer_reasoning and ans_incorr_reas_incorr:
+            category = "ans_incorr_reas_incorr"
+        elif answer_reasoning and ans_incorr_reas_corr:
+            category = "ans_incorr_reas_corr"
+        else:
+            raise ValueError("The output type is not handled: ", self)
+
+        ids = "\t".join(map(str, ids))
+        Results.CASE_COUNTERS[self.version][category].append(ids)
+        self.category = category
+        return category
 
     def get_result(self) -> dict[str, int | str]:
         """
@@ -206,7 +283,7 @@ class SamplePart:
         "golden_answer",
         "silver_reasoning",
         "answer_lies_in_self",
-        "feedback_iterations",
+        "iterations",
     ]
     current_iteration_count = 0
 
@@ -219,7 +296,6 @@ class SamplePart:
         golden_answer: str,
         silver_reasoning: str = None,
         raw: dict = None,
-        task: str = None,
         wrapper: Wrapper = None,
         to_enumerate: Enumerate = None,
         multi_system: bool = False,
@@ -233,8 +309,7 @@ class SamplePart:
         :param part_id: the id of the part
         :param golden_answer: the golden answer
         :param silver_reasoning: the silver reasoning
-        :param raw: the raw data of the part to format it into a task (used only for inference)
-        :param task: the task for the model (used only for evaluation)
+        :param raw: the raw data of the part to format it into a task
         :param wrapper: the wrapper for the task
         :param to_enumerate: if to enumerate the context sentences and the question
         :param multi_system: whether the part is for the setting with two models
@@ -243,34 +318,30 @@ class SamplePart:
         self.task_id: int = task_id
         self.sample_id: int = sample_id
         self.part_id: int = part_id
+        self.ids: tuple[int, ...] = (
+            self.id_,
+            self.task_id,
+            self.sample_id,
+            self.part_id,
+        )
 
         self.multi_system = multi_system
+        self.versions: list[str] = (
+            ["before", "after"] if self.multi_system else ["after"]
+        )
 
-        if raw and task or not (raw or task):
-            raise ValueError(
-                "Either 'raw' or 'task' should be provided, not both or neither."
-            )
+        self.raw: dict = raw
+        self.wrapper: Wrapper = self.set_wrapper(wrapper)
+        self.to_enumerate: Enumerate = self.set_to_enumerate(to_enumerate)
 
-        if raw:
-            self.raw: dict = raw
+        self.supporting_sent_inx: list[int] = raw.get("supporting_fact", [])
+        self.answer_lies_in_self: str = self.contains_supp_sentences()
 
-            self.wrapper: Wrapper = wrapper if wrapper else Wrapper(context="", question="", reasoning="", answer="")
-            self.to_enumerate: Enumerate = to_enumerate if to_enumerate else Enumerate(context=True, question=False)
-
-            self.supporting_sent_inx: list[int] = raw.get("supporting_fact", [])
-            self.answer_lies_in_self: str = self.contains_supp_sentences()
-
-            self.structured_context, self.structured_question = structure_part(
-                self.raw, self.to_enumerate
-            )
-            self.unwrapped_task: str = "\n".join(
-                (self.structured_context, self.structured_question)
-            )
-
-            self.task: str = "\n".join(self.wrap_part()).strip()
-
-        elif task:
-            self.task: str = task
+        self.structured_context: str = ""
+        self.structured_question: str = ""
+        self.unwrapped_task: str = ""
+        self.task: str = self.prepare_task()
+        self.full_task = ""
 
         self.golden_answer: str = golden_answer
         self.silver_reasoning: str = silver_reasoning
@@ -279,23 +350,74 @@ class SamplePart:
             model_output="",
             model_answer="",
             model_reasoning="",
-            interpretability=InterResult(
-                attn_scores=np.ndarray([]), x_tokens=[], y_tokens=[], max_attn_dist={}
-            ),
+            interpretability=None,
             version="before",
         )
         self.result_after: Results = Results(
             model_output="",
             model_answer="",
             model_reasoning="",
-            interpretability=InterResult(
-                attn_scores=np.ndarray([]), x_tokens=[], y_tokens=[], max_attn_dist={}
-            ),
+            interpretability=None,
             version="after",
         )
-        self.feedback_iterations: int = 0
+        self.results = (
+            [self.result_before, self.result_after]
+            if self.multi_system
+            else [self.result_after]
+        )
+        self.iterations: int = 0
+
+    def set_wrapper(self, wrapper: Wrapper = None) -> Wrapper:
+        """
+        Set the wrapper for the task.
+
+        :param wrapper: the wrapper for the task
+        :return: None
+        """
+        if not wrapper:
+            self.wrapper = Wrapper(context="", question="", reasoning="", answer="")
+        else:
+            self.wrapper = wrapper
+        return self.wrapper
+
+    def set_to_enumerate(self, to_enumerate: Enumerate = None) -> Enumerate:
+        """
+        Set the to_enumerate for the task.
+
+        :param to_enumerate: the to_enumerate for the task
+        :return: None
+        """
+        if not to_enumerate:
+            self.to_enumerate = Enumerate(context=True, question=False)
+        else:
+            self.to_enumerate = to_enumerate
+        return self.to_enumerate
+
+    def prepare_task(self) -> str:
+        """
+        Prepare the task for the model.
+        :return: the task for the model
+        """
+        if not hasattr(self, "task"):
+            self.structured_context, self.structured_question = structure_part(
+                self.raw, self.to_enumerate
+            )
+            self.unwrapped_task: str = "\n".join(
+                (self.structured_context, self.structured_question)
+            )
+            self.task = "\n".join(self.wrap_part()).strip()
+        else:
+            raise ValueError(
+                f"The task is already prepared: {self.task}. "
+                f"Please check the previous call of this function."
+            )
+        return self.task
 
     def contains_supp_sentences(self):
+        """
+        Check if the supporting sentences are in the part.
+        :return: the type of supporting sentences in the part
+        """
         part_line_nums = [int(line_num) for line_num in self.raw["context"].keys()]
         supp_sents_in_self = set(part_line_nums).intersection(
             set(self.supporting_sent_inx)
@@ -311,21 +433,21 @@ class SamplePart:
                 )
         return SuppFactInSelf.none
 
-    def wrap(self, attr: str, replacements: dict[str, str]) -> str:
+    def wrap(self, attr: str, replacement: str) -> str:
         """
         Wrap the attribute with the wrapper, allowing flexible placeholders.
 
         :param attr: The name of the attribute to wrap (e.g., 'context', 'question')
-        :param replacements: A dictionary of placeholders to replace in the template
+        :param replacement: A dictionary of placeholders to replace in the template
         :return: The formatted attribute if it exists, otherwise None
         """
         if hasattr(self.wrapper, attr):
             wrapped_attr = getattr(self.wrapper, attr)
             try:
                 return (
-                    wrapped_attr.format(**replacements)
+                    wrapped_attr.format(**{attr: replacement})
                     if wrapped_attr
-                    else "\n".join(replacements.values())
+                    else replacement
                 )
             except KeyError as e:
                 raise ValueError(f"Missing placeholder in replacements: {e}")
@@ -345,7 +467,9 @@ class SamplePart:
             "answer": "",
         }
         if self.wrapper:
-            return tuple(self.wrap(attr, replacements) for attr in replacements.keys())
+            return tuple(
+                self.wrap(*replacement) for replacement in replacements.items()
+            )
         return self.structured_context, self.structured_question, "", ""
 
     def __str__(self) -> str:
@@ -375,7 +499,8 @@ class SamplePart:
         model_reasoning: str,
         interpretability: InterResult | None,
         version: str = "after",
-        feedback_iterations: int = 0,
+        full_task: str = None,
+        iterations: int = 0,
     ) -> None:
         """
         Set the output of the model.
@@ -385,17 +510,23 @@ class SamplePart:
         :param model_reasoning: the reasoning for the answer
         :param interpretability: the interpretability result
         :param version: "after" if the setting was already applied to the model's output else "before"
-        :param feedback_iterations: the number of feedback iterations
+        :param full_task: the full task for the model (when loading results)
+        :param iterations: the number of iterations (feedback or speculative decoding)
 
         :return: None
         """
         if type(model_answer) is not str:
             model_answer = str(model_answer)
 
+        self.full_task = full_task if full_task else self.task
+        if full_task != self.task:
+            warnings.warn("New settings for preparing the task were applied.")
+
+        if type(model_answer) is not str:
+            model_answer = str(model_answer)
+
         if not interpretability:
-            interpretability = InterResult(
-                attn_scores=np.ndarray([]), x_tokens=[], y_tokens=[], max_attn_dist={}
-            )
+            interpretability = InterResult(np.ndarray([]), [], [], 0)
         # TODO: add the score for reasoning
         if version == "after":
             self.result_after = Results(
@@ -406,11 +537,10 @@ class SamplePart:
                 interpretability=interpretability,
                 version=version,
             )
-            self.feedback_iterations = (
-                feedback_iterations
-                if feedback_iterations
-                else SamplePart.current_iteration_count
+            self.iterations = (
+                iterations if iterations else SamplePart.current_iteration_count
             )
+            self.result_after.categorize(ids=self.ids)
         elif version == "before":
             self.result_before = Results(
                 model_output=model_output,
@@ -420,6 +550,7 @@ class SamplePart:
                 interpretability=interpretability,
                 version=version,
             )
+            self.result_before.categorize(ids=self.ids)
         else:
             raise ValueError(
                 f"Version should be either 'before' or 'after', currently: {version}"
@@ -443,8 +574,8 @@ class SamplePart:
 
         if self.multi_system:
             return {**attributes, **self.result_before.dict, **self.result_after.dict}
-        attributes.pop("feedback_iterations", None)
-        return {**attributes, **self.result_after.dict}
+        attributes.pop("iterations", None)
+        return {**attributes, **self.result_before.dict}
 
 
 class Sample:
@@ -462,6 +593,9 @@ class Sample:
         self.sample_id: int = sample_id
 
         self.multi_system: bool = multi_system
+        self.versions: list[str] = (
+            ["before", "after"] if self.multi_system else ["after"]
+        )
 
         self.parts: list[SamplePart] = []
 
@@ -471,10 +605,19 @@ class Sample:
         self.evaluator_after: AnswerEvaluator = AnswerEvaluator(
             level="sample", version="after"
         )
+        self.evaluators: list[AnswerEvaluator] = (
+            [self.evaluator_before, self.evaluator_after]
+            if self.multi_system
+            else [self.evaluator_after]
+        )
 
         self.features_before: Features = Features(0, 0, 0, 0, 0, version="before")
         self.features_after: Features = Features(0, 0, 0, 0, 0, version="after")
-
+        self.features: list[Features] = (
+            [self.features_before, self.features_after]
+            if self.multi_system
+            else [self.features_after]
+        )
         self.results = []
 
     def add_golden_answers(self, golden_answer: str | list[str]) -> None:
@@ -521,15 +664,13 @@ class Sample:
                 part.result_before.model_reasoning
             )
             if part.result_before.interpretability:
-                self.evaluator_before.max_attn_dist.add(
-                    part.result_before.interpretability.max_attn_target
+                self.evaluator_before.max_supp_target.add(
+                    part.result_before.max_supp_target
                 )
         self.evaluator_after.pred_answers.append(part.result_after.model_answer)
         self.evaluator_after.pred_reasonings.append(part.result_after.model_reasoning)
         if part.result_after.interpretability:
-            self.evaluator_after.max_attn_dist.add(
-                part.result_after.interpretability.max_attn_target
-            )
+            self.evaluator_after.max_supp_target.add(part.result_after.max_supp_target)
 
     def print_sample_predictions(self) -> None:
         """
@@ -621,11 +762,13 @@ class Task:
         :param multi_system: whether the task is for the setting with two models
         """
         self.task_id = task_id
-
-        self.multi_system = multi_system
-
         self.samples: list[Sample] = []
         self.parts: list[SamplePart] = []
+
+        self.multi_system = multi_system
+        self.versions: list[str] = (
+            ["before", "after"] if self.multi_system else ["after"]
+        )
 
         self.evaluator_before: MetricEvaluator = MetricEvaluator(
             level="task", version="before"
@@ -633,10 +776,19 @@ class Task:
         self.evaluator_after: MetricEvaluator = MetricEvaluator(
             level="task", version="after"
         )
+        self.evaluators: list[MetricEvaluator] = (
+            [self.evaluator_before, self.evaluator_after]
+            if self.multi_system
+            else [self.evaluator_after]
+        )
 
         self.features_before: Features = Features(0, 0, 0, 0, 0, version="before")
         self.features_after: Features = Features(0, 0, 0, 0, 0, version="after")
-
+        self.features: list[Features] = (
+            [self.features_before, self.features_after]
+            if self.multi_system
+            else [self.features_after]
+        )
         self.results: list[dict[str, str | int | float]] = []
         self.accuracies: dict = {}
 
@@ -714,18 +866,31 @@ class Split:
         :param multi_system: whether the split is for the setting with two models
         """
         self.name: str = name
-        self.multi_system: bool = multi_system
-
         self.tasks: list[Task] = []
+
+        self.multi_system: bool = multi_system
+        self.versions: list[str] = (
+            ["before", "after"] if self.multi_system else ["after"]
+        )
 
         self.features_before: Features = Features(0, 0, 0, 0, 0, version="before")
         self.features_after: Features = Features(0, 0, 0, 0, 0, version="after")
+        self.features: list[Features] = (
+            [self.features_before, self.features_after]
+            if self.multi_system
+            else [self.features_after]
+        )
 
         self.evaluator_before: MetricEvaluator = MetricEvaluator(
             level="split", version="before"
         )
         self.evaluator_after: MetricEvaluator = MetricEvaluator(
             level="split", version="after"
+        )
+        self.evaluators: list[MetricEvaluator] = (
+            [self.evaluator_before, self.evaluator_after]
+            if self.multi_system
+            else [self.evaluator_after]
         )
 
     def add_task(self, task: Task) -> None:

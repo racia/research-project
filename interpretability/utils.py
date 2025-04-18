@@ -7,45 +7,45 @@ class InterpretabilityResult:
         attn_scores: np.ndarray,
         x_tokens: list[str],
         y_tokens: list[str],
-        max_attn_dist: dict,
+        max_supp_target: float = None,
     ):
         """
         Interpretability result class
         :param attn_scores: attention scores
         :param x_tokens: tokenized x tokens
         :param y_tokens: tokenized y tokens
+        :param max_supp_target: ratio of max supporting target
         """
         self.attn_scores: np.ndarray = attn_scores
         self.x_tokens: list[str] = x_tokens
         self.y_tokens: list[str] = y_tokens
-        self.max_attn_dist: dict[str, float] = max_attn_dist
-
-        self.max_attn_target: float = self.max_attn_target()
+        self.max_supp_target: float = max_supp_target
 
         self.result = {
             "attn_scores": self.attn_scores,
             "x_tokens": self.x_tokens,
             "y_tokens": self.y_tokens,
-            "max_attn_dist": self.max_attn_dist,
-            "max_attn_target": self.max_attn_target,
+            "max_supp_target": self.max_supp_target,
         }
 
     def __repr__(self) -> str:
         return (
             f"InterpretabilityResult(attn_scores={self.attn_scores.shape}, x_tokens={len(self.x_tokens)}, "
-            f"y_tokens={len(self.y_tokens)}, max_attn_dist={self.max_attn_dist})"
+            f"y_tokens={len(self.y_tokens)}, max_supp_target={self.max_supp_target})"
         )
 
-    def max_attn_target(self) -> float:
+    def empty(self) -> bool:
         """
-        Return the maximum attention on supporting tokens or sentences (target).
+        Check if the result is empty.
+        :return: True if the result is empty, False otherwise
         """
-        if "max_supp_tok" in self.max_attn_dist:
-            return self.max_attn_dist["max_supp_tok"]
-        elif "max_supp_sent" in self.max_attn_dist:
-            return self.max_attn_dist["max_supp_sent"]
-        else:
-            return 0.0
+        if not (
+            self.x_tokens
+            or self.y_tokens
+            or (self.attn_scores and self.attn_scores.size <= 1)
+        ):
+            return True
+        return False
 
 
 def get_supp_tok_idx(
@@ -75,16 +75,15 @@ def get_supp_tok_idx(
 
 def get_attention_distrib(
     attn_scores: np.ndarray, supp_tok_idx, supp_sent_idx: list = None
-) -> dict:
+) -> float:
     """
-    Returns the ratio of most attended tokens for supporting and (non-supporting) other task tokens.
+    Returns the ratio of most attended supporting target.
     :param attn_scores: The attention scores
     :param supp_tok_idx: The supporting token indices
     :param supp_sent_idx: The supporting sentence indices
-    :return: Most attended token ratio
+    :return: Most attended target ratio
     """
-    supp_name = "sent" if supp_sent_idx else "tok"
-    max_supp, max_other = 0, 0
+    max_supp_target = 0
 
     for output_row in attn_scores:
         # Get index of maximum (mean) attention task token / sentence score
@@ -94,15 +93,9 @@ def get_attention_distrib(
         supp_range = supp_sent_idx if supp_sent_idx else supp_tok_idx
         # If i is in supporting token indices
         if max_attn_ind in supp_range:
-            max_supp += 1
-        else:
-            max_other += 1
+            max_supp_target += 1
 
-    # Take ratios
-    max_supp = max_supp / attn_scores.shape[0]
-    max_other = max_other / attn_scores.shape[0]
+    # Take ratio
+    max_supp_target = max_supp_target / attn_scores.shape[0]
 
-    return {
-        "max_supp_{}".format(supp_name): max_supp,
-        "max_other_{}".format(supp_name): max_other,
-    }
+    return max_supp_target

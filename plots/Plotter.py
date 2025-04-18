@@ -55,7 +55,7 @@ class Plotter:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
                 self.results_path
-                / f"{'_'.join(plot_name_add)}{label}_per_{x_label.lower()}_no_{self.plot_counter_task}.png",
+                / f"{'_'.join(plot_name_add)}_{label}_per_{x_label.lower()}_no_{self.plot_counter_task}.png",
                 bbox_inches="tight",
             )
 
@@ -120,6 +120,7 @@ class Plotter:
         sample_id: int,
         part_id: int,
         after: bool = True,
+        title: str = "",
     ) -> None:
         """
         Draw a heat map with the interpretability attention scores for the current task.
@@ -133,11 +134,15 @@ class Plotter:
         :param sample_id: sample id
         :param part_id: part id
         :param after: whether the plot is created after the setting was applied to the model output
+        :param title: title of the plot
         :return: None
         """
         plt.figure(figsize=(12, 6))
-        axis = sns.heatmap(scores, cmap="RdBu_r", center=0)
+        axis = sns.heatmap(
+            scores[1:] if part_id == 1 else scores, cmap="RdBu_r", center=0
+        )
 
+        y = y[1:] if part_id == 1 else y
         x_ticks = [i + 0.5 for i in range(len(x))]
         y_ticks = [i + 0.5 for i in range(len(y))]
 
@@ -151,6 +156,9 @@ class Plotter:
 
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
+
+        if title:
+            plt.title(title)
 
         plot_subdirectory = (
             self.results_path

@@ -43,6 +43,7 @@ class Setting:
     name: str
     interpretability: bool
 
+
 @dataclass
 class DataSplits:
     train: bool = "train"
@@ -83,6 +84,7 @@ class Wrapper:
 @dataclass
 class Data:
     path: str
+    baseline_results: str
     splits: DataSplits
     task_ids: bool | list[int]
     samples_per_task: int
@@ -143,6 +145,8 @@ class CSVHeaders:
     model_output_before: str = "model_output_before"
     exact_match_accuracy_before: str = "exact_match_accuracy_before"
     soft_match_accuracy_before: str = "soft_match_accuracy_before"
+    max_supp_target_before: str = "max_supp_target_before"
+    max_supp_target_after: str = "max_supp_target_after"
     there_before: str = "there_before"
     verbs_before: str = "verbs_before"
     pronouns_before: str = "pronouns_before"

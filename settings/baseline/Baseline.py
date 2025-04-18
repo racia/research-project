@@ -3,11 +3,8 @@ from __future__ import annotations
 from data.DataSaver import DataSaver
 from inference.Chat import Chat
 from inference.Prompt import Prompt
-from interpretability.Interpretability import Interpretability
 from settings.Model import Model
 from settings.Setting import Setting
-from settings.config import Wrapper
-from settings.utils import Enumerate
 
 
 class Baseline(Setting):
@@ -18,24 +15,21 @@ class Baseline(Setting):
     def __init__(
         self,
         model: Model,
-        to_enumerate: dict[Enumerate, bool],
         total_tasks: int,
         total_parts: int,
-        interpretability: Interpretability,
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
-        wrapper: Wrapper = None,
         saver: DataSaver = None,
     ):
         """
         Baseline class manages model runs and data flows around it.
 
         :param model: the model to use
-        :param to_enumerate: dictionary with the settings to enumerate
+        :param init_prompt: system prompt to start conversations
         :param total_tasks: total number of tasks
         :param total_parts: total number of parts
         :param samples_per_task: number of samples per task for logging
-        :param init_prompt: system prompt to start conversations
+        :param saver: data saver to use
         """
         super().__init__(
             model=model,
@@ -43,13 +37,9 @@ class Baseline(Setting):
             total_parts=total_parts,
             samples_per_task=samples_per_task,
             init_prompt=init_prompt,
-            to_enumerate=to_enumerate,
-            wrapper=wrapper,
-            interpretability=interpretability,
             saver=saver,
         )
         self.question_id: int = 0
-        self.interpretability: Interpretability = interpretability
 
     def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
         """

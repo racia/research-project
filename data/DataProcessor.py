@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import re
-from collections import defaultdict
 
+from inference.DataLevels import SamplePart
+from settings.config import Wrapper, Enumerate
 from settings.utils import expand_cardinal_points
 
 
@@ -11,19 +12,34 @@ class DataProcessor:
     This class preprocesses the data for the models as well as the output of the models.
     """
 
-    def __init__(self):
+    def __init__(
+        self,
+        wrapper: Wrapper = None,
+        to_enumerate: Enumerate = None,
+    ):
         """
         Preprocess or postprocess the data.
         """
         self.part_counter: int = 0
         self.sample_counter: int = 0
 
-    def process_data(self, data: dict[int, dict], samples_per_task: int = None) -> dict:
+        self.wrapper: Wrapper = wrapper
+        self.to_enumerate: Enumerate = to_enumerate
+
+    def process_data(
+        self,
+        data: dict[int, dict],
+        samples_per_task: int = None,
+        multi_system: bool = False,
+        silver_reasoning: dict = None,
+    ) -> list[SamplePart]:
         """
         Process the data from a split.
 
         :param data: data to process
         :param samples_per_task: number of samples to process and return per task
+        :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
+        :param silver_reasoning: the silver reasoning to add to the data
         :return: processed data of type
                  dict[int, dict[str, dict[str, dict[str, str] | dict[str, list[str]] | list[list[int]]]]
 
@@ -53,21 +69,25 @@ class DataProcessor:
                      }
                  }
         """
-        processed_data = defaultdict(dict)
+        from_zero = False
+        parts = []
+
         for task_id, task in data.items():
-            samples = list(data[task_id].keys())[:samples_per_task]
+            samples = list(task.items())[:samples_per_task]
             self.sample_counter += len(samples)
 
-            for sample in samples:
-                parts = [
-                    {
-                        "context": {},
-                        "question": {},
-                        "answer": {},
-                        "supporting_fact": [],
-                    }
-                ]
-                for line in task[sample]:
+            if 0 in task.keys():
+                from_zero = True
+
+            for sample_id, sample in samples:
+                raw_part = {
+                    "context": {},
+                    "question": {},
+                    "answer": {},
+                    "supporting_facts": [],
+                }
+                part_id = 1
+                for line in sample:
                     cleaned = line.strip()
                     # regex: group 1: line number: \d+\s+
                     # no group: space: \s+
@@ -80,42 +100,52 @@ class DataProcessor:
                         r"^(\d+)\s+(.+?)\s+(\w+(?:,\w+)?)\s+((?:\d+\s*)+)$"
                     )
                     question_match = re.match(question_line_pattern, cleaned)
-
                     context_line_pattern = r"^(\d+\s+)(.+)$"
                     context_match = re.match(context_line_pattern, cleaned)
 
                     if question_match:
+                        self.part_counter += 1
                         line_num = int(question_match.group(1))
 
-                        parts[-1]["question"][line_num] = question_match.group(2)
-                        # there might be two answers (see task 8)
-                        answers = question_match.group(3).lower().split(",")
-                        parts[-1]["answer"][line_num] = expand_cardinal_points(answers)
+                        raw_part["question"][line_num] = question_match.group(2)
 
                         supporting_list = [
                             int(x) for x in question_match.group(4).split(" ")
                         ]
-                        parts[-1]["supporting_fact"].extend(supporting_list)
-                        self.part_counter += 1
+                        raw_part["supporting_facts"].extend(supporting_list)
+                        # there might be two answers (see task 8)
+                        answers = question_match.group(3).lower().split(",")
 
-                        parts.append(
-                            {
-                                "context": {},
-                                "question": {},
-                                "answer": {},
-                                "supporting_fact": [],
-                            }
+                        reasoning = silver_reasoning.get(
+                            (task_id, sample_id, part_id), None
                         )
+                        part = SamplePart(
+                            id_=self.part_counter,
+                            task_id=task_id,
+                            sample_id=sample_id + 1 if from_zero else sample_id,
+                            part_id=part_id,
+                            raw=raw_part,
+                            golden_answer=" ".join(expand_cardinal_points(answers)),
+                            silver_reasoning=reasoning,
+                            multi_system=multi_system,
+                            wrapper=self.wrapper,
+                            to_enumerate=self.to_enumerate,
+                        )
+                        parts.append(part)
+
+                        raw_part = {
+                            "context": {},
+                            "question": {},
+                            "answer": {},
+                            "supporting_facts": [],
+                        }
+                        part_id += 1
 
                     elif context_match:
                         line_num = int(context_match.group(1))
-                        parts[-1]["context"][line_num] = context_match.group(2)
+                        raw_part["context"][line_num] = context_match.group(2)
 
                     else:
                         print("No match found for line: ", cleaned)
 
-                # Remove the last empty part added after the last question was matched
-                parts.pop()
-                processed_data[task_id][sample] = parts
-
-        return processed_data
+        return parts

@@ -17,8 +17,8 @@ setting:
   interpretability: True
 
 data:
-  # small data with validation
-  path: '${oc.env:HOME}/tasks_1-20_v1-2/en-valid/'
+  path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
+  baseline_results: "${oc.env:HOME}/research-project/results/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
   # Order: train, valid, test
   splits:
     train: False
@@ -97,6 +97,7 @@ results:
     - model_output_after
     - exact_match_accuracy_after
     - soft_match_accuracy_after
+    - max_supp_target_after
     - there_after
     - verbs_after
     - pronouns_after
@@ -109,6 +110,7 @@ results:
     - model_output_before
     - exact_match_accuracy_before
     - soft_match_accuracy_before
+    - max_supp_target_before
     - there_before
     - verbs_before
     - pronouns_before
