@@ -66,7 +66,9 @@ class Prompt:
         self.wrapper: str = wrapper
         self.name: str = name
 
-    def format_teacher_sys(self, student_sys: str, student_chat: list[dict]) -> str:
+    def format_teacher_sys(
+        self, student_sys: str, student_chat: list[dict[str, str]]
+    ) -> str:
         """
         Format the teacher's system prompt by inserting the student's init prompt and the parts of the sample the
         student has solved so far.
@@ -80,11 +82,7 @@ class Prompt:
         parts_so_far = ""
         parts_set = set()
         for message in student_chat:
-            if (
-                "Here are the context sentences:" in message["content"]
-                and message["role"] == "user"
-                and message["content"] not in parts_set
-            ):
+            if message["role"] == "user" and message["content"] not in parts_set:
                 parts_so_far += message["content"] + "\n"
                 parts_set.add(message["content"] + "\n")
 

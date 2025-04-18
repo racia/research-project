@@ -72,7 +72,6 @@ class Chat:
         :param role: the producer of the message
         :return: prompt formatted as a dict
         """
-
         if isinstance(part, str):
             return {
                 "role": role,

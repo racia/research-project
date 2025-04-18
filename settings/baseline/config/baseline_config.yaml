@@ -17,6 +17,7 @@ setting:
 data:
   # small data with validation
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
+  baseline_results: ""
   # Order: train, valid, test
   splits:
     train: False

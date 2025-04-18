@@ -134,12 +134,12 @@ def print_metrics_table(
             if len(eval_before.soft_match_accuracy) > 1
             else eval_before.soft_match_accuracy.get_mean()
         )
-        # if eval_before.max_attn_dist:
-        #     metric_values["Max attention distribution"]["Before"] = (
-        #         f"{eval_before.max_attn_dist.get_mean()} ± {eval_before.max_attn_dist.get_std()}"
-        #         if len(eval_before.max_attn_dist) > 1
-        #         else eval_before.max_attn_dist.get_mean()
-        #     )
+        if eval_before.max_supp_target:
+            metric_values["Max attention distribution"]["Before"] = (
+                f"{eval_before.max_supp_target.get_mean()} ± {eval_before.max_attn_dist.get_std()}"
+                if len(eval_before.max_supp_target) > 1
+                else eval_before.max_supp_target.get_mean()
+            )
 
     if eval_after:
         metric_values["Exact-match accuracy"]["After"] = (
@@ -152,12 +152,12 @@ def print_metrics_table(
             if len(eval_after.soft_match_accuracy) > 1
             else eval_after.soft_match_accuracy.get_mean()
         )
-        # if eval_after.max_attn_dist:
-        #     metric_values["Max attention distribution"]["After"] = (
-        #         f"{eval_after.max_attn_dist.get_mean()} ± {eval_after.max_attn_dist.get_std()}"
-        #         if len(eval_after.max_attn_dist) > 1
-        #         else eval_after.max_attn_dist.get_mean()
-        #     )
+        if eval_after.max_supp_target:
+            metric_values["Max attention distribution"]["After"] = (
+                f"{eval_after.max_supp_target.get_mean()} ± {eval_after.max_supp_target_std.get_std()}"
+                if len(eval_after.max_supp_target) > 1
+                else eval_after.max_supp_target.get_mean()
+            )
 
     for metric_name, values in metric_values.items():
         row = [metric_name]

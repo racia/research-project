@@ -84,6 +84,7 @@ class Wrapper:
 @dataclass
 class Data:
     path: str
+    baseline_results: str
     splits: DataSplits
     task_ids: bool | list[int]
     samples_per_task: int

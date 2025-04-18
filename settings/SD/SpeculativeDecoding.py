@@ -10,8 +10,6 @@ from inference.Prompt import Prompt
 from interpretability.utils import InterpretabilityResult
 from settings.Model import Model
 from settings.Setting import Setting
-from settings.config import Wrapper
-from settings.utils import Enumerate
 
 
 def check_match(tokens, string, ix=None, intervention=None) -> tuple[list, str]:
@@ -64,7 +62,6 @@ class SpeculativeDecoding(Setting):
         self,
         student: Model,
         teacher: Model,
-        to_enumerate: Enumerate,
         total_tasks: int,
         total_parts: int,
         init_prompt: Prompt = None,
@@ -72,7 +69,6 @@ class SpeculativeDecoding(Setting):
         resume_prompt: Prompt = None,
         samples_per_task: int = 5,
         multi_system: bool = True,
-        wrapper: Wrapper = None,
         saver: DataSaver = None,
     ):
         """
@@ -81,13 +77,17 @@ class SpeculativeDecoding(Setting):
         The speculative decoding setting consists of a teacher model, a student model, and a tokenizer.
         The init_prompt is the initial prompt that is used to start the chain of thought of the student model.
         The resume_prompt is used to prompt the student model to resume the chain of thought with the corrections by
-        the teacher.
-        The eval_prompt is used to prompt the teacher to evaluate the chain of thought of the student model.
+        the teacher. The eval_prompt is used to prompt the teacher to evaluate the chain of thought of the student model.
 
         :param teacher: The teacher model
         :param student: The student model
+        :param init_prompt: the initial prompt for the student
         :param eval_prompt: the evaluation prompt for the teacher
         :param resume_prompt: the resume prompt for the student
+        :param total_tasks: the number of tasks
+        :param total_parts: the number of parts
+        :param samples_per_task: the number of samples per task
+        :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
         """
         super().__init__(
             model=student,
@@ -96,8 +96,6 @@ class SpeculativeDecoding(Setting):
             init_prompt=init_prompt,
             samples_per_task=samples_per_task,
             multi_system=multi_system,
-            to_enumerate=to_enumerate,
-            wrapper=wrapper,
             saver=saver,
         )
         self.teacher: Model = teacher
@@ -163,7 +161,7 @@ class SpeculativeDecoding(Setting):
         # With Interpretability
         with torch.no_grad():
             student_out, interpretability = self.student.call(
-                formatted_prompt, chat=chat
+                part=self.part, prompt=formatted_prompt, chat=chat
             )
 
             return student_out, interpretability

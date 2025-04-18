@@ -85,7 +85,7 @@ class Accuracy(Metric):
 class AttnDistribution(Metric):
     def __init__(self, name: str, max_supp_target: list[float] = None):
         """
-        Initialize the attention distribution class for tracking the ratio of max attention on target.
+        Initialize the attention distribution class for tracking the ratio of max attention on target tokens.
 
         :param name: the type of attention distribution
         :param max_supp_target: the list of attention distribution values

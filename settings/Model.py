@@ -7,7 +7,7 @@ from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
     BitsAndBytesConfig,
-    LlamaModel,
+    OpenLlamaPreTrainedModel,
     PreTrainedTokenizerFast,
 )
 
@@ -41,9 +41,7 @@ class Model:
         self.model, self.tokenizer = self.load()
         self.interpretability = interpretability
 
-        self.curr_sample_part: SamplePart = None
-
-    def load(self) -> tuple[LlamaModel, PreTrainedTokenizerFast]:
+    def load(self) -> tuple[OpenLlamaPreTrainedModel, PreTrainedTokenizerFast]:
         """
         Load the model and the tokenizer.
         Set the model in mode.
@@ -99,10 +97,11 @@ class Model:
         return model, tokenizer
 
     def call(
-        self, prompt: str, chat: Chat = None
+        self, part: SamplePart, prompt: str, chat: Chat = None
     ) -> tuple[str, InterpretabilityResult]:
         """
         Calls the model with memory optimizations and optionally with Interpretability.
+        :param part: The current sample part
         :param prompt: The formatted prompt
         :param chat: The current chat
         :return: The decoded model output
@@ -144,8 +143,7 @@ class Model:
                 encoded_output = outputs[0][input_length:]
 
                 decoded_output = self.tokenizer.decode(
-                    encoded_output,
-                    skip_special_tokens=True,
+                    encoded_output, skip_special_tokens=True
                 ).lower()
 
                 interpretability_result = InterpretabilityResult(
@@ -163,8 +161,8 @@ class Model:
 
                     interpretability_result = self.interpretability.calculate_attention(
                         tokenizer=self.tokenizer,
-                        part=self.curr_sample_part,
-                        after=not self.curr_sample_part.multi_system,
+                        part=part,
+                        after=not part.multi_system,
                         chat_ids=outputs,
                         context_sent_spans=context_sent_spans,
                         output_tensor=output_tensor,
