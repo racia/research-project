@@ -45,8 +45,9 @@ class Model:
         self.mode: Mode = mode
         self.model, self.tokenizer = self.load()
         self.interpretability = interpretability
+        self.interpretability.tokenizer = self.tokenizer
 
-        self.wrapper = encode_wrapper(wrapper)
+        self.wrapper = encode_wrapper(wrapper, self.tokenizer)
         self.chat: Chat = None
 
     def load(self) -> tuple[OpenLlamaPreTrainedModel, PreTrainedTokenizerFast]:
@@ -177,9 +178,7 @@ class Model:
                     num_beams=1,  # no beam search, reduce GPU memory usage
                 )
 
-                input_length = inputs["input_ids"].size(1)
-                encoded_output = outputs[0][input_length:]
-
+                encoded_output = outputs[0][inputs["input_ids"].size(1) :]
                 decoded_output = self.tokenizer.decode(
                     encoded_output, skip_special_tokens=True
                 ).lower()
@@ -198,7 +197,6 @@ class Model:
                     )
 
                     interpretability_result = self.interpretability.calculate_attention(
-                        tokenizer=self.tokenizer,
                         part=part,
                         after=not part.multi_system,
                         chat_ids=outputs,

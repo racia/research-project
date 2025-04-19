@@ -8,6 +8,7 @@ import seaborn as sns
 
 from evaluation.Metrics import Accuracy, Metric
 from inference.Prompt import Prompt
+from interpretability.utils import InterpretabilityResult
 
 
 class Plotter:
@@ -112,31 +113,31 @@ class Plotter:
 
     def draw_heat(
         self,
-        x: list[str | int],
+        interpretability_result: InterpretabilityResult,
         x_label: str,
-        y: list[str],
-        scores: np.ndarray,
         task_id: int,
         sample_id: int,
         part_id: int,
-        after: bool = True,
+        version: str = "after",
         title: str = "",
     ) -> None:
         """
         Draw a heat map with the interpretability attention scores for the current task.
         (Partly taken from https://arxiv.org/abs/2402.18344)
 
-        :param x: the current task tokens
+        :param interpretability_result: interpretability result with the attention scores, x and y tokens
         :param x_label: label for the x-axis
-        :param y: the model output tokens
-        :param scores: attention scores
         :param task_id: task id
         :param sample_id: sample id
         :param part_id: part id
-        :param after: whether the plot is created after the setting was applied to the model output
+        :param version: whether the plot is created after the setting was applied to the model output
         :param title: title of the plot
         :return: None
         """
+        x = interpretability_result.x_tokens
+        y = interpretability_result.y_tokens
+        scores = interpretability_result.attn_scores
+
         plt.figure(figsize=(12, 6))
         axis = sns.heatmap(scores[2:], cmap="RdBu_r", center=0)
 
@@ -158,12 +159,7 @@ class Plotter:
         if title:
             plt.title(title)
 
-        plot_subdirectory = (
-            self.results_path
-            / ("after" if after else "before")
-            / "interpretability"
-            / "plots"
-        )
+        plot_subdirectory = self.results_path / version / "interpretability" / "plots"
         Path.mkdir(plot_subdirectory, exist_ok=True, parents=True)
         plt.savefig(plot_subdirectory / f"attn_map-{task_id}-{sample_id}-{part_id}.pdf")
 

@@ -98,12 +98,17 @@ class Chat:
             raise ValueError("Wrapper or ids can only be used for the assistant.")
 
         spans_ids = {}
-
+        target_sent_spans = {}
         if ids is None and not wrapper:
             ids, sent_spans = sents_to_ids(
                 part.unwrapped_task.split("\n"), self.tokenizer
             )
-            spans_ids["ans"] = dict(zip(sent_spans, ids))
+            spans_ids["task"] = dict(
+                zip([upd_span(span, self.offset) for span in sent_spans], ids)
+            )
+            for i, span in enumerate(sent_spans):
+                if i in part.supporting_sent_inx:
+                    target_sent_spans[upd_span(span, self.offset)] = ids
         elif wrapper:
             ids, sent_spans = [], []
 
@@ -117,8 +122,12 @@ class Chat:
                     to_encode = [part.structured_question]
 
                 to_insert_ids, to_insert_spans = sents_to_ids(to_encode, self.tokenizer)
-                self.offset += len(flatten(intro["ids"]))
+                if key == "context":
+                    for i, span in enumerate(to_insert_spans):
+                        if i in part.supporting_sent_inx:
+                            target_sent_spans[upd_span(span, self.offset)] = ids
 
+                self.offset += len(flatten(intro["ids"]))
                 if to_insert_ids:
                     # all ids
                     for chunk in intro["ids"] + to_insert_ids + outro["ids"]:
@@ -145,6 +154,7 @@ class Chat:
                     ids.extend(intro["ids"])
         else:
             sent_spans = [(0, len(ids))]
+            spans_ids["ans"] = dict(zip(sent_spans, ids))
 
         part_dict = {
             "role": source,
@@ -153,8 +163,22 @@ class Chat:
             "ids": ids,
             "sent_spans": sent_spans,
             "spans_ids": spans_ids,
+            "target_sent_spans": target_sent_spans,
         }
         self.messages.append(part_dict)
+
+    def get_sentence_spans(self, target: bool = False) -> list[tuple[int, int]]:
+        """
+        Get the sentence spans of the chat messages.
+        :return: list of sentence spans
+        """
+        spans = []
+        for message in self.messages:
+            if target:
+                spans.extend(message["target_sent_spans"])
+            else:
+                spans.extend(message["sent_spans"])
+        return spans
 
     def chat_to_ids(self, max_length: int = 2048) -> torch.LongTensor:
         """

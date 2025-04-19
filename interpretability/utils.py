@@ -73,11 +73,12 @@ def get_supp_tok_idx(
     return supp_tok_idx
 
 
-def get_attention_distrib(
+def get_attn_ratio(
     attn_scores: np.ndarray, supp_tok_idx, supp_sent_idx: list = None
 ) -> float:
     """
     Returns the ratio of most attended supporting target.
+
     :param attn_scores: The attention scores
     :param supp_tok_idx: The supporting token indices
     :param supp_sent_idx: The supporting sentence indices

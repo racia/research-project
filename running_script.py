@@ -113,6 +113,7 @@ def run_setting(cfg: DictConfig) -> None:
     # Load scenery words
     scenery_words = loader.load_scenery()
 
+    # TODO: move to the model class when finished
     interpretability = (
         Interpretability(
             plotter=plotter,

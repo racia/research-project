@@ -10,7 +10,6 @@ from data.DataSaver import DataSaver
 from inference.Chat import Chat, Source
 from inference.DataLevels import Sample, SamplePart, Task, print_metrics
 from inference.Prompt import Prompt
-from interpretability.Interpretability import Interpretability
 from interpretability.utils import InterpretabilityResult
 from settings.Model import Model
 from settings.utils import parse_output
@@ -30,7 +29,6 @@ class Setting(ABC):
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
         multi_system: bool = False,
-        interpretability: Interpretability = None,
         saver: DataSaver = None,
     ):
         """
@@ -42,21 +40,17 @@ class Setting(ABC):
         :param total_parts: total number of parts
         :param model: model to use
         :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
-        :param interpretability: interpretability class to use
         :param saver: data saver to use
         """
         self.model: Model = model
-
         self.init_prompt: Prompt = init_prompt
+        self.multi_system: bool = multi_system
 
         self.total_tasks: int = total_tasks
         self.total_parts: int = total_parts
         self.samples_per_task: int = samples_per_task
 
         self.part: SamplePart = None
-
-        self.multi_system: bool = multi_system
-        self.interpretability: Interpretability = interpretability
 
         self.saver: DataSaver = saver
 
