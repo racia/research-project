@@ -93,7 +93,7 @@ def encode_wrapper(
                 no_insert_values[i] = re.sub(r"\n+", " ", no_insert_value)
 
             print("no_insert_values", no_insert_values)
-            ids, sent_spans = sents_to_ids(no_insert_values, tokenizer)
+            ids, sent_spans = sents_to_ids(no_insert_values, tokenizer, output_empty=True)
             print(ids)
             print(sent_spans)
             print(*zip(sent_spans, ids), sep="\n")
