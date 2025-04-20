@@ -174,8 +174,10 @@ def upd_span(span: tuple, offset: int) -> tuple[int, int]:
     :param offset: offset to add
     :return: updated span
     """
+    if len(span) == 0:
+        return offset, offset
     if len(span) != 2:
-        print("span", span)
+        print("DEBUG: upd span", span)
         raise ValueError(
             "Span must be a tuple of two integers representing the start and end indices."
         )
