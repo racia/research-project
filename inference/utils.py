@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import re
 import textwrap
 from collections import defaultdict
@@ -6,6 +8,7 @@ from typing import Any
 import en_core_web_sm
 import torch
 from prettytable import PrettyTable
+from spacy.tokens.span import Span
 from transformers import PreTrainedTokenizerFast
 
 from evaluation.Evaluator import MetricEvaluator
@@ -111,7 +114,7 @@ def generation_tokens(tokenizer: PreTrainedTokenizerFast, role: str) -> list[flo
 
 
 def sents_to_ids(
-    sentences: list[str], tokenizer: PreTrainedTokenizerFast
+    sentences: list[str | Span], tokenizer: PreTrainedTokenizerFast
 ) -> tuple[list[list[int]], list[tuple[int, int]]]:
     """
     Converts a message into ids using the tokenizer.
@@ -124,6 +127,8 @@ def sents_to_ids(
     ids = []
     sent_spans = []
     for sentence in sentences:
+        if type(sentence) == Span:
+            sentence = sentence.text
         # \n\n in source produces empty sentences
         if not sentence or sentence.isspace():
             continue
