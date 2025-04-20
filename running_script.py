@@ -87,7 +87,7 @@ def run_setting(cfg: DictConfig) -> None:
 
     for split in data_splits:
         if cfg.data.baseline_results:
-            data_parts = loader.load_results(
+            parts_per_split[split] = loader.load_results(
                 results_path=cfg.data.baseline_results,
                 data_path=cfg.data.path,
                 split=split,
@@ -95,7 +95,7 @@ def run_setting(cfg: DictConfig) -> None:
                 as_parts=True,
             )
         else:
-            data_parts = loader.load_task_data(
+            parts_per_split[split] = loader.load_task_data(
                 path=cfg.data.path,
                 split=split,
                 tasks=cfg.data.task_ids,
@@ -126,9 +126,19 @@ def run_setting(cfg: DictConfig) -> None:
 
     print("The model is being loaded...", end="\n\n")
     if hasattr(cfg, "model"):
-        model = Model(**cfg.model, interpretability=interpretability, role=None)
+        model = Model(
+            **cfg.model,
+            interpretability=interpretability,
+            wrapper=cfg.data.wrapper,
+            role=None,
+        )
     elif hasattr(cfg, "student"):
-        model = Model(**cfg.student, interpretability=interpretability, role="student")
+        model = Model(
+            **cfg.student,
+            interpretability=interpretability,
+            wrapper=cfg.data.wrapper,
+            role="student",
+        )
     else:
         raise ValueError("No base model is provided in the config.")
 
