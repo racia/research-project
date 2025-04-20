@@ -68,7 +68,7 @@ class SilverReasoning:
             all_reasoning = {}
             for t in task_id:
                 task_reasoning = self.get(
-                    t, sample_id, part_id, split, from_zero, get_all=True
+                    t, split=split, from_zero=from_zero, get_all=True
                 )
                 all_reasoning.update(task_reasoning)
             assert type(self.silver_reasoning_data) == dict
