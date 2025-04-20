@@ -10,7 +10,6 @@ from transformers import PreTrainedTokenizerFast
 from data.DataSaver import DataSaver
 from inference.Chat import Chat, Source
 from inference.Prompt import Prompt
-from interpretability.Interpretability import Interpretability
 from interpretability.utils import InterpretabilityResult
 from settings.Model import Model
 from settings.Setting import Setting
@@ -56,7 +55,6 @@ class Feedback(Setting):
         teacher: Model,
         total_tasks: int,
         total_parts: int,
-        interpretability: Interpretability = None,
         init_prompt: Prompt = None,
         feedback_prompt: Prompt = None,
         refine_prompt: Prompt = None,

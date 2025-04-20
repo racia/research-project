@@ -114,14 +114,17 @@ def generation_tokens(tokenizer: PreTrainedTokenizerFast, role: str) -> list[flo
 
 
 def sents_to_ids(
-    sentences: list[str | Span], tokenizer: PreTrainedTokenizerFast
-) -> tuple[list[list[int]], list[tuple[int, int]]]:
+    sentences: list[str | Span],
+    tokenizer: PreTrainedTokenizerFast,
+    output_empty: bool = False,
+) -> tuple[list[list[int]], list[tuple]]:
     """
     Converts a message into ids using the tokenizer.
     Additionally, it saves the start and end index of each sentence.
 
     :param sentences: structured message to convert
     :param tokenizer: tokenizer to use
+    :param output_empty: whether to include empty sentences into the output
     :return: list of lists of ids that represent sentences and list of sentence spans
     """
     ids = []
@@ -132,6 +135,9 @@ def sents_to_ids(
             sentence = sentence.text
         # \n\n in source produces empty sentences
         if not sentence or sentence.isspace():
+            if output_empty:
+                ids.append([])
+                sent_spans.append(())
             continue
         tokenized_sentence = tokenizer.encode(
             sentence,
