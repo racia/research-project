@@ -122,6 +122,7 @@ class Chat:
                     to_encode = [part.structured_question]
 
                 to_insert_ids, to_insert_spans = sents_to_ids(to_encode, self.tokenizer)
+                print("encoded message", *zip(to_insert_spans, to_insert_ids), sep="\n")
                 if key == "context":
                     for i, span in enumerate(to_insert_spans):
                         if i in part.supporting_sent_inx:
