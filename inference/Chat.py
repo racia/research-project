@@ -9,7 +9,7 @@ from transformers import PreTrainedTokenizerFast
 
 from inference.DataLevels import SamplePart
 from inference.Prompt import Prompt
-from inference.utils import generation_tokens, sents_to_ids, upd_span, flatten
+from inference.utils import generation_tokens, sents_to_ids, upd_span
 
 
 @dataclass
@@ -145,13 +145,13 @@ class Chat:
                     self.offset += len(intro["ids"])
 
                     # context/question spans/ids
-                    for span in to_insert_spans:
+                    for span, ids_ in zip(to_insert_spans, to_insert_ids):
                         print("span", span)
                         sent_spans.append(upd_span(span, self.offset))
-                        spans_ids["task"][upd_span(span, self.offset)] = to_insert_ids
+                        spans_ids["task"][upd_span(span, self.offset)] = ids_
                         print("upd spans", upd_span(span, self.offset))
 
-                    self.offset += len(flatten(to_insert_ids))
+                        self.offset += len(ids_)
 
                     # after wrapper spans/ids
                     print("spans", outro["sent_spans"])
@@ -175,7 +175,8 @@ class Chat:
             sent_spans = [(0, len(ids))]
             spans_ids["ans"] = dict(zip(sent_spans, ids))
 
-        print("ids", ids)
+        print(self.system_message["sent_spans"])
+        print("ids", len(ids), ids)
         print("sent_spans", sent_spans)
         print("spans_ids", spans_ids)
 
@@ -222,8 +223,8 @@ class Chat:
             else:
                 break
 
-        chat_ids.append(generation_tokens(self.tokenizer, "assistant"))
-        print("chat_ids", chat_ids)
+        chat_ids.extend(generation_tokens(self.tokenizer, "assistant"))
+        print("chat_ids", len(chat_ids), chat_ids)
 
         return torch.LongTensor([chat_ids])
 
