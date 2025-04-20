@@ -289,14 +289,14 @@ def structure_parts(
             f"Invalid id_ value: {id_}. Expected 'task_id' or 'sample_id'."
         )
 
+    assert type(parts) == list
     id_parts = defaultdict(list)
     for part in parts:
-        print(id_)
-        print(parts)
         id_parts[getattr(part, id_)].append(part)
 
-    for key, value in id_parts.items():
-        id_parts[key] = structure_parts(value, level_down(id_))
+    for key, parts_ in id_parts.items():
+        assert type(parts_) == list
+        id_parts[key] = structure_parts(parts_, level_down(id_))
 
     return dict(sorted(id_parts.items(), key=lambda p: p[0]))
 
