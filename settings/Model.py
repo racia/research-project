@@ -109,13 +109,11 @@ class Model:
         self,
         part: SamplePart = None,
         formatted_prompt: str = None,
-        interpretability: bool = False,
     ) -> tuple[str, InterpretabilityResult]:
         """
         Calls the model with memory optimizations and optionally with Interpretability.
         :param part: The current sample part
         :param formatted_prompt: The formatted prompt including the whole chat
-        :param interpretability: Whether to calculate interpretability
         :return: The decoded model output
         """
         if not self.chat:
@@ -126,7 +124,7 @@ class Model:
             raise ValueError(
                 "Either part or formatted_prompt should be provided, not both."
             )
-        if formatted_prompt and interpretability:
+        if formatted_prompt and self.interpretability:
             raise ValueError(
                 "Interpretability cannot be calculated with formatted_prompt."
             )
@@ -137,7 +135,7 @@ class Model:
         with torch.no_grad():
             device = next(self.model.parameters()).device
 
-            if interpretability:
+            if self.interpretability:
                 # self.prepare_prompt(chat=chat)
                 chat_ids = self.chat.chat_to_ids()
                 print(
@@ -190,7 +188,7 @@ class Model:
                 )
 
                 interpretability_result = None
-                if interpretability and decoded_output:
+                if self.interpretability and decoded_output:
                     output_tensor = self.model(
                         outputs,
                         return_dict=True,

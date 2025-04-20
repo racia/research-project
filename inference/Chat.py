@@ -141,18 +141,23 @@ class Chat:
                     spans_ids["wrap"][upd_span(intro["sent_spans"], self.offset)] = (
                         intro["ids"]
                     )
+                    print("upd spans", upd_span(intro["sent_spans"], self.offset))
 
                     # context/question spans/ids
                     for span in to_insert_spans:
+                        print("span", span)
                         sent_spans.append(upd_span(span, self.offset))
                         spans_ids["task"][upd_span(span, self.offset)] = to_insert_ids
+                        print("upd spans", upd_span(span, self.offset))
 
                     self.offset += len(flatten(to_insert_ids))
 
                     # after wrapper spans/ids
+                    print("spans", outro["sent_spans"])
                     spans_ids["wrap"][upd_span(outro["sent_spans"], self.offset)] = (
                         outro["ids"]
                     )
+                    print("upd spans", upd_span(outro["sent_spans"], self.offset))
 
                     self.offset += len(outro["ids"])
                 else:
