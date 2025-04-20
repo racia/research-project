@@ -129,16 +129,16 @@ class Chat:
                     if line_num in part.supporting_sent_inx:
                         target_sent_spans[upd_span(span, self.offset)] = to_insert_ids
 
-                self.offset += len(intro.values())
+                self.offset += len(intro["ids"])
                 if to_insert_ids:
                     # all ids
-                    for chunk in [intro.values(), *to_insert_ids, outro.values()]:
+                    for chunk in [intro["ids"], *to_insert_ids, outro["ids"]]:
                         print(chunk)
                         ids.extend(chunk)
 
                     # before wrapper spans/ids
-                    for span, ids_ in intro.items():
-                        spans_ids["wrap"][upd_span(span, self.offset)] = ids_
+                    for span in intro["sent_spans"]:
+                        spans_ids["wrap"][upd_span(span, self.offset)] = intro["ids"]
 
                     # context/question spans/ids
                     for span in to_insert_spans:
@@ -147,14 +147,14 @@ class Chat:
 
                     self.offset += len(flatten(to_insert_ids))
                     # after wrapper spans/ids
-                    for span, ids_ in outro.items():
-                        spans_ids["wrap"][upd_span(span, self.offset)] = ids_
+                    for span in outro["sent_spans"]:
+                        spans_ids["wrap"][upd_span(span, self.offset)] = outro["ids"]
 
-                    self.offset += len(outro.values())
+                    self.offset += len(outro["ids"])
                 else:
                     # if the key is not context or question, we just add the before ids
                     # (no after because there's no formatting for reasoning nor answer)
-                    ids.extend(intro.values())
+                    ids.extend(intro["ids"])
         else:
             sent_spans = [(0, len(ids))]
             spans_ids["ans"] = dict(zip(sent_spans, ids))
