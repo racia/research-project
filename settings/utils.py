@@ -90,7 +90,7 @@ def encode_wrapper(
                     f"It should be 'wrapper text {{inserted_value}} wrapper text'."
                 )
             for i, no_insert_value in enumerate(no_insert_values):
-                no_insert_values[i] = no_insert_value.replace("\n", " ")
+                no_insert_values[i] = re.sub(r"\n+", " ", no_insert_value)
 
             print("no_insert_values", no_insert_values)
             ids, sent_spans = sents_to_ids(no_insert_values, tokenizer)
