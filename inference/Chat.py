@@ -94,7 +94,7 @@ class Chat:
         :param ids: the ids of the message, if None, the ids are generated from the message
         :param wrapper: the wrapper ids and sentence spans of the message
         """
-        if (wrapper or ids) and source == Source.user:
+        if (wrapper or ids) and source == Source.assistant:
             raise ValueError("Wrapper or ids can only be used for the assistant.")
 
         spans_ids = {}

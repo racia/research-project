@@ -71,7 +71,7 @@ def encode_wrapper(
     wrapper: Wrapper, tokenizer: PreTrainedTokenizerFast
 ) -> dict[str, dict[str, Any]]:
     """
-    Encodes the wrapper into ids and sentence spans.
+    Encodes the wrapper into ids and sentence spans. For empty wrapper, there are no values arriving.
     :param wrapper: the wrapper to encode
     :param tokenizer: the tokenizer to use
     :return: tuple of ids and sentence spans
@@ -92,14 +92,12 @@ def encode_wrapper(
             for i, no_insert_value in enumerate(no_insert_values):
                 no_insert_values[i] = re.sub(r"\n+", " ", no_insert_value)
 
-            print("no_insert_values", no_insert_values)
-            ids, sent_spans = sents_to_ids(no_insert_values, tokenizer, output_empty=True)
-            print(ids)
-            print(sent_spans)
+            ids, sent_spans = sents_to_ids(
+                no_insert_values, tokenizer, output_empty=True
+            )
+            print("Wrapper values:")
             print(*zip(sent_spans, ids), sep="\n")
-            for i, (order, value_) in enumerate(
-                zip(("before", "after"), no_insert_values)
-            ):
+            for i, order in enumerate(("before", "after")):
                 wrapper_dict[key][order]["ids"] = ids[i]
                 wrapper_dict[key][order]["sent_spans"] = sent_spans[i]
 
