@@ -90,6 +90,7 @@ def encode_wrapper(
                     f"It should be 'wrapper text {{inserted_value}} wrapper text'."
                 )
             ids, sent_spans = sents_to_ids(no_insert_values, tokenizer)
+            print(*zip(sent_spans, ids), sep="\n")
             for i, order in enumerate(("before", "after")):
                 wrapper_dict[key][order]["ids"] = ids[i]
                 wrapper_dict[key][order]["sent_spans"] = sent_spans[i]
