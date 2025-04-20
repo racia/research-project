@@ -295,9 +295,8 @@ def structure_parts(
         )
 
     id_parts = defaultdict(list)
-    print(level_id)
+    print(level_id, level_down(level_id))
     print(parts)
-    print(level_down(level_id))
     if level_down(level_id):
         for part in parts:
             id_parts[getattr(part, level_id)].append(part)
