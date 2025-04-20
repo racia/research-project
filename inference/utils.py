@@ -224,7 +224,7 @@ def print_metrics_table(
         )
         if eval_before.max_supp_target:
             metric_values["Max attention distribution"]["Before"] = (
-                f"{eval_before.max_supp_target.get_mean()} ± {eval_before.max_attn_dist.get_std()}"
+                f"{eval_before.max_supp_target.get_mean()} ± {eval_before.max_supp_target.get_std()}"
                 if len(eval_before.max_supp_target) > 1
                 else eval_before.max_supp_target.get_mean()
             )
