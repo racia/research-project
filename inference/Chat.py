@@ -129,7 +129,6 @@ class Chat:
                     if line_num in part.supporting_sent_inx:
                         target_sent_spans[upd_span(span, self.offset)] = to_insert_ids
 
-                self.offset += len(intro["ids"])
                 if to_insert_ids:
                     # all ids
                     for chunk in [intro["ids"], *to_insert_ids, outro["ids"]]:
@@ -142,6 +141,8 @@ class Chat:
                         intro["ids"]
                     )
                     print("upd spans", upd_span(intro["sent_spans"], self.offset))
+
+                    self.offset += len(intro["ids"])
 
                     # context/question spans/ids
                     for span in to_insert_spans:
@@ -164,6 +165,12 @@ class Chat:
                     # if the key is not context or question, we just add the before ids
                     # (no after because there's no formatting for reasoning nor answer)
                     ids.extend(intro["ids"])
+                    self.offset += len(intro["ids"])
+                    sent_spans.append(upd_span(intro["sent_spans"], self.offset))
+                    spans_ids["wrap"][upd_span(intro["sent_spans"], self.offset)] = (
+                        intro["ids"]
+                    )
+
         else:
             sent_spans = [(0, len(ids))]
             spans_ids["ans"] = dict(zip(sent_spans, ids))
@@ -216,6 +223,7 @@ class Chat:
                 break
 
         chat_ids.append(generation_tokens(self.tokenizer, "assistant"))
+        print("chat_ids", chat_ids)
 
         return torch.LongTensor([chat_ids])
 
