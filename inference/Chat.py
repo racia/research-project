@@ -127,6 +127,8 @@ class Chat:
                         if i in part.supporting_sent_inx:
                             target_sent_spans[upd_span(span, self.offset)] = ids
 
+                print(intro)
+                print(intro["ids"])
                 self.offset += len(flatten(intro["ids"]))
                 if to_insert_ids:
                     # all ids

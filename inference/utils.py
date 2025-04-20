@@ -130,9 +130,9 @@ def sents_to_ids(
     ids = []
     sent_spans = []
     for sentence in sentences:
-        print("sentence", sentence)
         if type(sentence) == Span:
             sentence = sentence.text
+        print("sentence", sentence)
         # \n\n in source produces empty sentences
         if not sentence or sentence.isspace():
             if output_empty:
@@ -163,7 +163,7 @@ def flatten(lst: list[list]) -> list:
     return [item for sublist in lst for item in sublist]
 
 
-def upd_span(span: tuple[int, int], offset: int) -> tuple[int, int]:
+def upd_span(span: tuple, offset: int) -> tuple[int, int]:
     """
     Update the span by adding an offset.
 
@@ -171,6 +171,10 @@ def upd_span(span: tuple[int, int], offset: int) -> tuple[int, int]:
     :param offset: offset to add
     :return: updated span
     """
+    if len(span) != 2:
+        raise ValueError(
+            "Span must be a tuple of two integers representing the start and end indices."
+        )
     return span[0] + offset, span[1] + offset
 
 
