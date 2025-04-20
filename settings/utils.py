@@ -98,7 +98,6 @@ def encode_wrapper(
             print("Wrapper values:")
             print(*zip(sent_spans, ids), sep="\n")
             for i, order in enumerate(("before", "after")):
-                wrapper_dict[key][order]["ids"] = ids[i]
-                wrapper_dict[key][order]["sent_spans"] = sent_spans[i]
+                wrapper_dict[key][order][sent_spans[i]] = ids[i]
 
     return wrapper_dict
