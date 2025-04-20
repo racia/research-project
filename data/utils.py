@@ -289,8 +289,9 @@ def structure_parts(
             f"Invalid id_ value: {id_}. Expected 'task_id' or 'sample_id'."
         )
 
-    assert type(parts) == list
     id_parts = defaultdict(list)
+    print(id_)
+    print(parts)
     for part in parts:
         id_parts[getattr(part, id_)].append(part)
 
