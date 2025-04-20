@@ -97,7 +97,7 @@ def encode_wrapper(
             print(ids)
             print(sent_spans)
             print(*zip(sent_spans, ids), sep="\n")
-            for i, order, value_ in zip(("before", "after"), no_insert_values):
+            for i, (order, value_) in enumerate(zip(("before", "after"), no_insert_values)):
                 if not value_ or value_.isspace() or value_ == "\n":
                     wrapper_dict[key][order]["ids"] = []
                     wrapper_dict[key][order]["sent_spans"] = []
