@@ -127,6 +127,7 @@ def sents_to_ids(
     ids = []
     sent_spans = []
     for sentence in sentences:
+        print("sentence", sentence)
         if type(sentence) == Span:
             sentence = sentence.text
         # \n\n in source produces empty sentences
