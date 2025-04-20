@@ -231,9 +231,9 @@ class DataLoader:
         """
         processor = DataProcessor(wrapper=self.wrapper, to_enumerate=self.to_enumerate)
         self.tasks = list(tasks) if bool(tasks) else list(range(1, 21))
-        raw_data = self.load_raw_task_data(path=Path(path), split=split, tasks=tasks)
+        raw_data = self.load_raw_task_data(path=Path(path), split=split, tasks=self.tasks)
         silver_reasoning = SilverReasoning(self)
-        reasoning = silver_reasoning.get(task_id=tasks, split=split)
+        reasoning = silver_reasoning.get(task_id=self.tasks, split=split)
         processed_data: list[SamplePart] = processor.process_data(
             raw_data,
             self.samples_per_task,
@@ -241,7 +241,7 @@ class DataLoader:
             silver_reasoning=reasoning,
         )
         if self.number_of_tasks == 0:
-            self.number_of_tasks = len(tasks)
+            self.number_of_tasks = len(self.tasks)
         if self.number_of_tasks == 0:
             self.number_of_parts = len(processed_data)
 
