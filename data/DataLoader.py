@@ -230,7 +230,7 @@ class DataLoader:
         :return: processed data
         """
         processor = DataProcessor(wrapper=self.wrapper, to_enumerate=self.to_enumerate)
-        self.tasks = tasks if bool(tasks) else list(range(1, 21))
+        self.tasks = list(tasks) if bool(tasks) else list(range(1, 21))
         raw_data = self.load_raw_task_data(path=Path(path), split=split, tasks=tasks)
         silver_reasoning = SilverReasoning(self)
         reasoning = silver_reasoning.get(task_id=tasks, split=split)
