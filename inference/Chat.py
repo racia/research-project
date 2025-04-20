@@ -121,18 +121,18 @@ class Chat:
                 elif key == "question":
                     to_encode = [part.structured_question]
 
+                print("context len", len(to_encode))
                 to_insert_ids, to_insert_spans = sents_to_ids(to_encode, self.tokenizer)
                 print("encoded message", *zip(to_insert_spans, to_insert_ids), sep="\n")
-                if key == "context":
-                    for i, span in enumerate(to_insert_spans):
-                        if i in part.supporting_sent_inx:
-                            target_sent_spans[upd_span(span, self.offset)] = ids
 
-                print(intro)
+                for span, line_num in zip(to_insert_spans, part.context_line_nums):
+                    if line_num in part.supporting_sent_inx:
+                        target_sent_spans[upd_span(span, self.offset)] = to_insert_ids
+
                 self.offset += len(intro["ids"])
                 if to_insert_ids:
                     # all ids
-                    for chunk in intro["ids"] + to_insert_ids + outro["ids"]:
+                    for chunk in [intro["ids"], to_insert_ids, outro["ids"]]:
                         print(chunk)
                         ids.extend(chunk)
 

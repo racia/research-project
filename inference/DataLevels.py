@@ -343,6 +343,9 @@ class SamplePart:
         self.to_enumerate: Enumerate = self.set_to_enumerate(to_enumerate)
 
         self.supporting_sent_inx: list[int] = raw.get("supporting_fact", [])
+        self.context_line_nums: list[int] = [
+            int(line_num) for line_num in self.raw["context"].keys()
+        ]
         self.answer_lies_in_self: str = self.contains_supp_sentences()
 
         self.structured_context: str = ""
@@ -426,8 +429,7 @@ class SamplePart:
         Check if the supporting sentences are in the part.
         :return: the type of supporting sentences in the part
         """
-        part_line_nums = [int(line_num) for line_num in self.raw["context"].keys()]
-        supp_sents_in_self = set(part_line_nums).intersection(
+        supp_sents_in_self = set(self.context_line_nums).intersection(
             set(self.supporting_sent_inx)
         )
         if supp_sents_in_self:

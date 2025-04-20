@@ -127,6 +127,7 @@ def sents_to_ids(
     :param output_empty: whether to include empty sentences into the output
     :return: list of lists of ids that represent sentences and list of sentence spans
     """
+    flat_ids = []
     ids = []
     sent_spans = []
     for sentence in sentences:
@@ -145,9 +146,11 @@ def sents_to_ids(
             return_tensors="pt",
         )[0].tolist()
         torch.cuda.empty_cache()
-        start = len(ids) + 1
         ids.append(tokenized_sentence)
-        end = len(ids)
+
+        start = len(flat_ids) + 1
+        flat_ids.extend(tokenized_sentence)
+        end = len(flat_ids)
         sent_spans.append((start, end))
 
     return ids, sent_spans
