@@ -285,24 +285,26 @@ def structure_parts(
                     "task_id" or "sample_id"
     :return: the structured parts
     """
-    if level_id == "part_id":
-        print("GOT TO PART ID")
-        return sorted(parts, key=lambda p: getattr(p, "part_id"))
-
-    if level_id not in ["task_id", "sample_id"]:
+    if level_id not in ["task_id", "sample_id", "part_id"]:
         raise ValueError(
             f"Invalid id_ value: {level_id}. Expected 'task_id' or 'sample_id'."
         )
 
+    if level_id is None:
+        return parts
+
+    if level_id == "part_id":
+        print("GOT TO PART ID")
+        return sorted(parts, key=lambda p: getattr(p, "part_id"))
+
     id_parts = defaultdict(list)
     print(level_id, level_down(level_id))
     print(parts)
-    if level_down(level_id):
-        for part in parts:
-            id_parts[getattr(part, level_id)].append(part)
-        for key, parts_ in id_parts.items():
-            assert type(parts_) == list
-            id_parts[key] = structure_parts(parts_, level_down(level_id))
+    for part in parts:
+        id_parts[getattr(part, level_id)].append(part)
+    for key, parts_ in id_parts.items():
+        assert type(parts_) == list
+        id_parts[key] = structure_parts(parts_, level_down(level_id))
 
     print("id_parts", id_parts)
 
