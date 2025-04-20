@@ -272,7 +272,11 @@ def level_down(level_id: str) -> str | None:
 
 def structure_parts(
     parts: list[SamplePart], level_id: str | None = "task_id"
-) -> dict[int, dict[int, list[SamplePart]]]:
+) -> (
+    dict[int, dict[int, list[SamplePart]]]
+    | dict[int, list[SamplePart]]
+    | list[SamplePart]
+):
     """
     Structure the parts of the sample into samples and tasks.
 
@@ -296,9 +300,10 @@ def structure_parts(
     for part in parts:
         id_parts[getattr(part, level_id)].append(part)
 
-    for key, parts_ in id_parts.items():
-        assert type(parts_) == list
-        id_parts[key] = structure_parts(parts_, level_down(level_id))
+    if level_down(level_id):
+        for key, parts_ in id_parts.items():
+            assert type(parts_) == list
+            id_parts[key] = structure_parts(parts_, level_down(level_id))
 
     print("id_parts", id_parts)
 
