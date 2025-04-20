@@ -84,7 +84,7 @@ def encode_wrapper(
     wrapper_dict = defaultdict(dict)
     for key, value in wrapper.items():
         if value:
-            print("value")
+            print(value)
             no_insert_values = re.split(r" *\{.+?} *", value)
             if len(no_insert_values) > 2:
                 raise ValueError(
