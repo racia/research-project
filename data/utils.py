@@ -294,20 +294,17 @@ def structure_parts(
         return parts
 
     if level_id == "part_id":
-        print("GOT TO PART ID")
         return sorted(parts, key=lambda p: getattr(p, "part_id"))
 
+    assert type(parts) == list
+
     id_parts = defaultdict(list)
-    print(level_id, level_down(level_id))
-    print(parts)
     for part in parts:
         id_parts[getattr(part, level_id)].append(part)
+
     for key, parts_ in id_parts.items():
-        print(level_id, key)
         assert type(parts_) == list
         id_parts[key] = structure_parts(parts_, level_down(level_id))
-
-    print("id_parts", id_parts)
 
     return dict(sorted(id_parts.items(), key=lambda p: p[0]))
 
