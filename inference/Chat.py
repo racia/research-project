@@ -229,7 +229,7 @@ class Chat:
         chat_ids.extend(generation_tokens(self.tokenizer, "assistant"))
         print("chat_ids", len(chat_ids), chat_ids)
 
-        return torch.LongTensor(chat_ids)
+        return torch.LongTensor([chat_ids])
 
     def convert_into_ids_old(
         self,
