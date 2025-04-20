@@ -51,20 +51,20 @@ class SilverReasoning:
         :return: The silver reasoning for the part.
         """
         print(task_id)
-        # reload the data if task_id or split changes
-        if type(task_id) is int and (task_id != self.task_id or split != self.split):
-            print("Reloading silver reasoning data")
-            self.task_id = task_id
-            self.split = split
-            self.silver_reasoning_data = self.loader.load_reasoning_data(
-                task_id=task_id, split=split
-            )
-
-        # enable getting all reasoning data for a specific task (not only one part)
-        if get_all and isinstance(task_id, int):
-            print("Getting all silver reasoning data")
-            assert type(self.silver_reasoning_data) == dict
-            return self.silver_reasoning_data
+        if isinstance(task_id, int):
+            # reload the data if task_id or split changes
+            if task_id != self.task_id or split != self.split:
+                print("Reloading silver reasoning data")
+                self.task_id = task_id
+                self.split = split
+                self.silver_reasoning_data = self.loader.load_reasoning_data(
+                    task_id=task_id, split=split
+                )
+            # enable getting all reasoning data for a specific task (not only one part)
+            if get_all:
+                print("Getting all silver reasoning data")
+                assert type(self.silver_reasoning_data) == dict
+                return self.silver_reasoning_data
 
         # enable getting all reasoning data for a list of tasks
         elif isinstance(task_id, list):
