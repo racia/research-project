@@ -132,7 +132,7 @@ class Chat:
                 self.offset += len(intro["ids"])
                 if to_insert_ids:
                     # all ids
-                    for chunk in [intro["ids"], to_insert_ids, outro["ids"]]:
+                    for chunk in [intro["ids"], *to_insert_ids, outro["ids"]]:
                         print(chunk)
                         ids.extend(chunk)
 
