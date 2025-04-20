@@ -54,16 +54,16 @@ class Setting(ABC):
 
         self.saver: DataSaver = saver
 
-    @abstractmethod
-    def prepare_prompt(self, chat: Chat, resume_gen: bool = False) -> str:
-        """
-        Prepares the prompt to include the current part of the sample.
-
-        :param resume_gen: whether to resume the generation
-        :param chat: the current chat
-        :return: prompt with the task and the current part
-        """
-        raise NotImplementedError
+    # @abstractmethod
+    # def prepare_prompt(self, chat: Chat, resume_gen: bool = False) -> str:
+    #     """
+    #     Prepares the prompt to include the current part of the sample.
+    #
+    #     :param resume_gen: whether to resume the generation
+    #     :param chat: the current chat
+    #     :return: prompt with the task and the current part
+    #     """
+    #     raise NotImplementedError
 
     def create_teacher_chat(self, teacher_sys: Prompt) -> Chat:
         """

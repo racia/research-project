@@ -79,7 +79,6 @@ def encode_wrapper(
         raise ValueError(
             "Wrapper is not set. Please set the wrapper before calling the model."
         )
-    print("Encoding wrapper:", type(wrapper), wrapper, flush=True)
     wrapper_dict = defaultdict(lambda: defaultdict(dict))
     for key, value in wrapper.items():
         if value:

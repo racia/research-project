@@ -90,7 +90,6 @@ class Feedback(Setting):
             init_prompt=init_prompt,
             samples_per_task=samples_per_task,
             multi_system=multi_system,
-            interpretability=interpretability,
             saver=saver,
         )
 
@@ -348,7 +347,7 @@ class Feedback(Setting):
             # )
 
             print(" ---- Teacher ---- ", end="\n\n\n", flush=True)
-            feedback, is_valid = self.give_feedback(decoded_output)
+            feedback, is_valid, interpretability = self.give_feedback(decoded_output)
             # chat.add_message(part=feedback, source="assistant", model_role="teacher")
 
             print(
