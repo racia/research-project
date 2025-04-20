@@ -89,9 +89,9 @@ def encode_wrapper(
                     f"The wrapper value '{value}' is not in the correct format. "
                     f"It should be 'wrapper text {{inserted_value}} wrapper text'."
                 )
-            for order, no_insert_value in zip(("before", "after"), no_insert_values):
-                ids, sent_spans = sents_to_ids(no_insert_value, tokenizer)
-                wrapper_dict[key][order]["ids"] = ids
-                wrapper_dict[key][order]["sent_spans"] = sent_spans
+            ids, sent_spans = sents_to_ids(no_insert_values, tokenizer)
+            for i, order in enumerate(("before", "after")):
+                wrapper_dict[key][order]["ids"] = ids[i]
+                wrapper_dict[key][order]["sent_spans"] = sent_spans[i]
 
     return wrapper_dict
