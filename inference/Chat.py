@@ -161,6 +161,8 @@ class Chat:
                     print("upd spans", upd_span(outro["sent_spans"], self.offset))
 
                     self.offset += len(outro["ids"])
+
+                    # TODO: add space before question (at the end of each chunk?)
                 else:
                     # if the key is not context or question, we just add the before ids
                     # (no after because there's no formatting for reasoning nor answer)
@@ -227,7 +229,7 @@ class Chat:
         chat_ids.extend(generation_tokens(self.tokenizer, "assistant"))
         print("chat_ids", len(chat_ids), chat_ids)
 
-        return torch.LongTensor([chat_ids])
+        return torch.LongTensor(chat_ids)
 
     def convert_into_ids_old(
         self,
