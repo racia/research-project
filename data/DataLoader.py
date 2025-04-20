@@ -50,6 +50,7 @@ class SilverReasoning:
         :param get_all: Whether to return all reasoning data.
         :return: The silver reasoning for the part.
         """
+        print(task_id)
         # reload the data if task_id or split changes
         if type(task_id) is int and (task_id != self.task_id or split != self.split):
             self.task_id = task_id
