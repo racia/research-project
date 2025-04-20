@@ -271,33 +271,34 @@ def level_down(level_id: str) -> str | None:
 
 
 def structure_parts(
-    parts: list[SamplePart], id_: str | None = "task_id"
+    parts: list[SamplePart], level_id: str | None = "task_id"
 ) -> dict[int, dict[int, list[SamplePart]]]:
     """
     Structure the parts of the sample into samples and tasks.
 
     :param parts: the parts of the sample
-    :param id_: the id to structure the parts by
-                "task_id" or "sample_id"
+    :param level_id: the level name for id to structure the parts by
+                    "task_id" or "sample_id"
     :return: the structured parts
     """
-    if id_ == "part_id":
+    if level_id == "part_id":
+        print("GOT TO PART ID")
         return sorted(parts, key=lambda p: getattr(p, "part_id"))
 
-    if id_ not in ["task_id", "sample_id"]:
+    if level_id not in ["task_id", "sample_id"]:
         raise ValueError(
-            f"Invalid id_ value: {id_}. Expected 'task_id' or 'sample_id'."
+            f"Invalid id_ value: {level_id}. Expected 'task_id' or 'sample_id'."
         )
 
     id_parts = defaultdict(list)
-    print(id_)
+    print(level_id)
     print(parts)
     for part in parts:
-        id_parts[getattr(part, id_)].append(part)
+        id_parts[getattr(part, level_id)].append(part)
 
     for key, parts_ in id_parts.items():
         assert type(parts_) == list
-        id_parts[key] = structure_parts(parts_, level_down(id_))
+        id_parts[key] = structure_parts(parts_, level_down(level_id))
 
     print("id_parts", id_parts)
 
