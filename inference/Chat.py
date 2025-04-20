@@ -168,6 +168,10 @@ class Chat:
             sent_spans = [(0, len(ids))]
             spans_ids["ans"] = dict(zip(sent_spans, ids))
 
+        print("ids", ids)
+        print("sent_spans", sent_spans)
+        print("spans_ids", spans_ids)
+
         part_dict = {
             "role": source,
             "content": part if isinstance(part, str) else part.task,
