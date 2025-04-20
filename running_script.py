@@ -102,7 +102,7 @@ def run_setting(cfg: DictConfig) -> None:
                 tasks=cfg.data.task_ids,
                 multi_system=multi_system,
             )
-
+        print("Calling structure_parts()...")
         parts_per_split[split] = structure_parts(data_parts)
 
     saver = DataSaver(save_to=HydraConfig.get().run.dir)
