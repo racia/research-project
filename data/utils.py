@@ -299,6 +299,8 @@ def structure_parts(
         assert type(parts_) == list
         id_parts[key] = structure_parts(parts_, level_down(id_))
 
+    print("id_parts", id_parts)
+
     return dict(sorted(id_parts.items(), key=lambda p: p[0]))
 
 
