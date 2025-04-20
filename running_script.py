@@ -12,7 +12,6 @@ from omegaconf import DictConfig, OmegaConf
 
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
-from data.utils import structure_parts
 from evaluation.Evaluator import MetricEvaluator
 from inference.DataLevels import Split, print_metrics
 from inference.Prompt import Prompt
@@ -102,8 +101,6 @@ def run_setting(cfg: DictConfig) -> None:
                 tasks=cfg.data.task_ids,
                 multi_system=multi_system,
             )
-        print("Calling structure_parts()...")
-        parts_per_split[split] = structure_parts(data_parts)
 
     saver = DataSaver(save_to=HydraConfig.get().run.dir)
     print(f"Results will be saved to: {saver.results_path}")
