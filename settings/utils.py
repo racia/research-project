@@ -9,6 +9,7 @@ import torch
 from transformers import PreTrainedTokenizerFast
 
 from inference.utils import sents_to_ids
+from settings.config import Wrapper
 
 
 def set_device() -> torch.device:
@@ -67,7 +68,7 @@ def parse_output(output: str) -> tuple:
 
 
 def encode_wrapper(
-    wrapper: dict, tokenizer: PreTrainedTokenizerFast
+    wrapper: Wrapper, tokenizer: PreTrainedTokenizerFast
 ) -> dict[str, dict[str, Any]]:
     """
     Encodes the wrapper into ids and sentence spans.

@@ -130,7 +130,7 @@ class Model:
             raise ValueError(
                 "Interpretability cannot be calculated with formatted_prompt."
             )
-
+        print(self.wrapper)
         self.chat.add_message(part=part, source=Source.user, wrapper=self.wrapper)
 
         with torch.no_grad():
