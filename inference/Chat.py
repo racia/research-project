@@ -128,8 +128,7 @@ class Chat:
                             target_sent_spans[upd_span(span, self.offset)] = ids
 
                 print(intro)
-                print(intro["ids"])
-                self.offset += len(flatten(intro["ids"]))
+                self.offset += len(intro["ids"])
                 if to_insert_ids:
                     # all ids
                     for chunk in intro["ids"] + to_insert_ids + outro["ids"]:
