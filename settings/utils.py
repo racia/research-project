@@ -9,7 +9,6 @@ import torch
 from transformers import PreTrainedTokenizerFast
 
 from inference.utils import sents_to_ids
-from settings.config import Wrapper
 
 
 def set_device() -> torch.device:
@@ -68,7 +67,7 @@ def parse_output(output: str) -> tuple:
 
 
 def encode_wrapper(
-    wrapper: Wrapper, tokenizer: PreTrainedTokenizerFast
+    wrapper: dict, tokenizer: PreTrainedTokenizerFast
 ) -> dict[str, dict[str, Any]]:
     """
     Encodes the wrapper into ids and sentence spans.
@@ -81,8 +80,9 @@ def encode_wrapper(
             "Wrapper is not set. Please set the wrapper before calling the model."
         )
     print("Encoding wrapper:", wrapper, flush=True)
+    assert type(wrapper) == dict
     wrapper_dict = defaultdict(dict)
-    for key, value in getattr(wrapper, "__dict__").items():
+    for key, value in wrapper.items():
         if value:
             print("value")
             no_insert_values = re.split(r" *\{.+?} *", value)
