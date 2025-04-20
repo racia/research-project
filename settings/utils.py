@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 import warnings
 from collections import defaultdict
+from typing import Any
 
 import torch
 from transformers import PreTrainedTokenizerFast
@@ -79,9 +80,11 @@ def encode_wrapper(
         raise ValueError(
             "Wrapper is not set. Please set the wrapper before calling the model."
         )
+    print("Encoding wrapper:", wrapper, flush=True)
     wrapper_dict = defaultdict(dict)
     for key, value in getattr(wrapper, "__dict__").items():
         if value:
+            print("value")
             no_insert_values = re.split(r" *\{.+?} *", value)
             if len(no_insert_values) > 2:
                 raise ValueError(
