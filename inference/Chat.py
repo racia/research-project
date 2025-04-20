@@ -137,8 +137,10 @@ class Chat:
                         ids.extend(chunk)
 
                     # before wrapper spans/ids
-                    for span in intro["sent_spans"]:
-                        spans_ids["wrap"][upd_span(span, self.offset)] = intro["ids"]
+                    print("spans", intro["sent_spans"])
+                    spans_ids["wrap"][upd_span(intro["sent_spans"], self.offset)] = (
+                        intro["ids"]
+                    )
 
                     # context/question spans/ids
                     for span in to_insert_spans:
@@ -146,9 +148,11 @@ class Chat:
                         spans_ids["task"][upd_span(span, self.offset)] = to_insert_ids
 
                     self.offset += len(flatten(to_insert_ids))
+
                     # after wrapper spans/ids
-                    for span in outro["sent_spans"]:
-                        spans_ids["wrap"][upd_span(span, self.offset)] = outro["ids"]
+                    spans_ids["wrap"][upd_span(outro["sent_spans"], self.offset)] = (
+                        outro["ids"]
+                    )
 
                     self.offset += len(outro["ids"])
                 else:
