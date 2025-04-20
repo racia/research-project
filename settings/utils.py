@@ -80,10 +80,9 @@ def encode_wrapper(
             "Wrapper is not set. Please set the wrapper before calling the model."
         )
     print("Encoding wrapper:", type(wrapper), wrapper, flush=True)
-    wrapper_dict = defaultdict(dict)
+    wrapper_dict = defaultdict(lambda: defaultdict(dict))
     for key, value in wrapper.items():
         if value:
-            print(value)
             no_insert_values = re.split(r" *\{.+?} *", value)
             if len(no_insert_values) > 2:
                 raise ValueError(
