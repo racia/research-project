@@ -271,7 +271,8 @@ class DataLoader:
         sep: str = "\t",
     ) -> (
         dict[str, list[Union[int, float]]]
-        or dict[int, list[dict[str, Union[int, float, str]]]]
+        | dict[int, list[dict[str, Union[int, float, str]]]]
+        | dict[int, dict[int, list[SamplePart]]]
     ):
         """
         Load the results or any csv file from the path.
@@ -373,7 +374,7 @@ class DataLoader:
                     "The number of parts does not match the number of loaded data: %d != %d"
                     % (len(parts), self.number_of_parts)
                 )
-            return parts
+            return structure_parts(parts)
 
         return data
 
@@ -425,7 +426,7 @@ class DataLoader:
         for path in self.silver_reasoning_path.iterdir():
             if f"{split}_{task_id}." in path.name:
                 silver_reasoning_data = self.load_results(
-                    Path.cwd() / path, list_output=True, sep=","
+                    Path.cwd() / path, list_output=True, sep=",", as_parts=False
                 )
                 break
 
