@@ -297,10 +297,9 @@ def structure_parts(
     id_parts = defaultdict(list)
     print(level_id)
     print(parts)
-    for part in parts:
-        id_parts[getattr(part, level_id)].append(part)
-
     if level_down(level_id):
+        for part in parts:
+            id_parts[getattr(part, level_id)].append(part)
         for key, parts_ in id_parts.items():
             assert type(parts_) == list
             id_parts[key] = structure_parts(parts_, level_down(level_id))
