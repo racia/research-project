@@ -50,11 +50,9 @@ class SilverReasoning:
         :param get_all: Whether to return all reasoning data.
         :return: The silver reasoning for the part.
         """
-        print(task_id, type(task_id))
         if isinstance(task_id, int):
             # reload the data if task_id or split changes
             if task_id != self.task_id or split != self.split:
-                print("Reloading silver reasoning data")
                 self.task_id = task_id
                 self.split = split
                 self.silver_reasoning_data = self.loader.load_reasoning_data(
@@ -62,14 +60,12 @@ class SilverReasoning:
                 )
             # enable getting all reasoning data for a specific task (not only one part)
             if get_all:
-                print("Getting all silver reasoning data")
                 assert type(self.silver_reasoning_data) == dict
                 return self.silver_reasoning_data
 
         # enable getting all reasoning data for a list of tasks
         elif isinstance(task_id, list):
             all_reasoning = {}
-            print("list of task ids")
             for t in task_id:
                 task_reasoning = self.get(
                     t, split=split, from_zero=from_zero, get_all=True
@@ -231,7 +227,9 @@ class DataLoader:
         """
         processor = DataProcessor(wrapper=self.wrapper, to_enumerate=self.to_enumerate)
         self.tasks = list(tasks) if bool(tasks) else list(range(1, 21))
-        raw_data = self.load_raw_task_data(path=Path(path), split=split, tasks=self.tasks)
+        raw_data = self.load_raw_task_data(
+            path=Path(path), split=split, tasks=self.tasks
+        )
         silver_reasoning = SilverReasoning(self)
         reasoning = silver_reasoning.get(task_id=self.tasks, split=split)
         processed_data: list[SamplePart] = processor.process_data(

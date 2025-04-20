@@ -291,6 +291,8 @@ def structure_parts(
 
     id_parts = defaultdict(list)
     for part in parts:
+        print(id_)
+        print(part)
         id_parts[getattr(part, id_)].append(part)
 
     for key, value in id_parts.items():
