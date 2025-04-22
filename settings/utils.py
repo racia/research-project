@@ -68,7 +68,7 @@ def parse_output(output: str) -> tuple:
 
 
 def encode_wrapper(
-    wrapper: Wrapper, tokenizer: PreTrainedTokenizerFast
+    wrapper: Wrapper | dict, tokenizer: PreTrainedTokenizerFast
 ) -> dict[str, dict[str, Any]]:
     """
     Encodes the wrapper into ids and sentence spans. For empty wrapper, there are no values arriving.

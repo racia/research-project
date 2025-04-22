@@ -133,7 +133,7 @@ def sents_to_ids(
     for sentence in sentences:
         if type(sentence) == Span:
             sentence = sentence.text
-        sentence = sentence.strip() + " "
+        sentence = sentence.strip() + "\n"
         print("sentence", sentence)
         # \n\n in source produces empty sentences
         if not sentence or sentence.isspace():
