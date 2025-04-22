@@ -136,7 +136,6 @@ class Chat:
             for sentence in message["original_content"].split("\n"):
                 # \n\n in source produces empty sentences
                 if not sentence or sentence.isspace():
-                        warnings.warn("Empty sentence detected.")
                         continue
                 tokenized_sentence = tokenizer.encode(
                     sentence,
