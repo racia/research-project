@@ -345,7 +345,7 @@ class Interpretability:
         )
         self.plotter.draw_heat(
             interpretability_result=result_aggr,
-            x_label="Sentence indices",
+            x_label="Sentence Indices",
             task_id=part.task_id,
             sample_id=part.sample_id,
             part_id=part.part_id,

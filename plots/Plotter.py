@@ -161,7 +161,10 @@ class Plotter:
 
         plot_subdirectory = self.results_path / version / "interpretability" / "plots"
         Path.mkdir(plot_subdirectory, exist_ok=True, parents=True)
-        plt.savefig(plot_subdirectory / f"attn_map-{task_id}-{sample_id}-{part_id}.pdf")
+        add = "aggr" if "Indices" in x_label else "ver"
+        plt.savefig(
+            plot_subdirectory / f"attn_map-{task_id}-{sample_id}-{part_id}-{add}.pdf"
+        )
 
         plt.close()
 
