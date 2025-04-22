@@ -282,12 +282,12 @@ class Interpretability:
         :param part: the part of the sample to evaluate
         :return: InterpretabilityResult object
         """
-        system_prompt_len = len(chat.messages[0]["ids"])
+        # system_prompt_len = len(chat.messages[0]["ids"])
         model_output_len = len(chat.messages[-1]["ids"])
         sent_spans = chat.get_sentence_spans()
         print("sent_spans:", sent_spans)
         target_sent_spans = chat.get_sentence_spans(target=True)
-        span_ids = chat.get_sentence_spans(spans_type=True)
+        spans_type = chat.get_sentence_spans(spans_type=True)
 
         # no system prompt but with full tokens, not sentence ids
         attn_scores_ver = self.get_attention_scores(
@@ -330,12 +330,16 @@ class Interpretability:
 
         # Decode the task tokens without the system prompt
         x_tokens = self.tokenizer.batch_decode(chat_ids_ver)
-        torch.cuda.empty_cache()
+        # torch.cuda.empty_cache()
 
         # Pad tokens with asterisks
+        # x_tokens_ver = [
+        #     f"* {x_tokens[i]} *" if i in target_indices else f"{x_tokens[i]}"
+        #     for i in range(len(chat_ids_ver))
+        # ]
         x_tokens_ver = [
-            f"* {x_tokens[i]} *" if i in target_indices else f"{x_tokens[i]}"
-            for i in range(len(chat_ids_ver))
+            f"* {type_} {i} *" if span in target_sent_spans else f"{type_} {i}"
+            for i, (type_, span) in enumerate(spans_type.items())
         ]
         # Filter tokens
         # x_tokens_ver = [

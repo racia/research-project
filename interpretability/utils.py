@@ -75,14 +75,12 @@ def get_supp_tok_idx(
     :param supp_sent_idx: the indices of the supporting sentence
     """
     supp_tok_idx = []
-    supp_sent_idx = [i - 1 for i in supp_sent_idx]
-
     for supp_sent_id in supp_sent_idx:
         try:
             supp_tok_range = list(
                 range(
-                    context_sent_spans[supp_sent_id][0],
-                    context_sent_spans[supp_sent_id][1],
+                    context_sent_spans[supp_sent_id - 1][0],
+                    context_sent_spans[supp_sent_id - 1][1],
                 )
             )
             supp_tok_idx.extend(supp_tok_range)
