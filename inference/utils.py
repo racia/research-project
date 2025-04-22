@@ -149,9 +149,9 @@ def sents_to_ids(
         torch.cuda.empty_cache()
         ids.append(tokenized_sentence)
 
-        start = len(flat_ids) + 1
+        start = len(flat_ids)
         flat_ids.extend(tokenized_sentence)
-        end = len(flat_ids)
+        end = len(flat_ids) + 1
         sent_spans.append((start, end))
 
     return ids, sent_spans

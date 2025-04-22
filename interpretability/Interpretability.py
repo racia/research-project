@@ -114,6 +114,7 @@ class Interpretability:
 
         if sent_spans:
             print("Start averaging attention scores")
+            print(attn_scores)
             # Additionally take mean of attention scores over each task sentence.
             attn_scores = np.array(
                 [
