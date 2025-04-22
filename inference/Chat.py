@@ -63,6 +63,7 @@ class Chat:
             "original_content": system_prompt.original_text,
             "ids": system_prompt.ids,
             "sent_spans": system_prompt.sent_spans,
+            "target_sent_spans": {},
             "spans_ids": {
                 "sys": system_prompt_spans_ids,
                 "ex": example_spans_ids,
