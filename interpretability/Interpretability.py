@@ -105,7 +105,7 @@ class Interpretability:
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o system prompt)
         attn_tensor = attn_tensor[
-            :, -model_output_len + 1 : -1, :  # _-model_output_len + 1
+            :, -model_output_len : -1, :  # _-model_output_len + 1
         ].mean(dim=0)
 
         # Normalize the attention scores by the sum of all token attention scores

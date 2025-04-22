@@ -46,12 +46,14 @@ class Chat:
         """
         self.model_role = model_role
         self.tokenizer = tokenizer
-        self.offset = len(flatten(system_prompt.ids))
 
         sys_prompt_spans_type = {span: "sys" for span in system_prompt.orig_sent_spans}
+        self.offset = len(flatten(system_prompt.orig_ids))
         example_spans_type = {
             upd_span(span, self.offset): "ex" for span in system_prompt.ex_sent_spans
         }
+        self.offset = len(flatten(system_prompt.ex_ids))
+
         self.system_message = {
             "role": Source.system,
             "content": system_prompt.text,
