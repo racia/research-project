@@ -58,6 +58,7 @@ class Interpretability:
         ids_to_remove = []
         task_indices = get_indices(span_ids, "task")
         print("task_indices:", task_indices)
+        chat_tokens = self.tokenizer.decode(chat_ids)
 
         for output_row in attn_scores:
             for task_idx in range(len(output_row)):
@@ -65,7 +66,7 @@ class Interpretability:
                 if task_idx in task_indices:
                     # ids_to_remove.append(task_idx)
                     continue
-                token = self.tokenizer.decode(chat_ids[task_idx]).strip().lower()
+                token = chat_tokens[task_idx].strip().lower()
                 print(token)
                 for token_ in nlp(token):
                     if token_.lemma_ not in self.scenery_words:
