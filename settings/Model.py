@@ -184,6 +184,8 @@ class Model:
                     encoded_output, skip_special_tokens=True
                 ).lower()
 
+                print("decoded_output", decoded_output)
+
                 self.chat.add_message(
                     part=decoded_output, source=Source.assistant, ids=encoded_output
                 )

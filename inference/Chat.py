@@ -95,7 +95,9 @@ class Chat:
         :param wrapper: the wrapper ids and sentence spans of the message
         """
         if wrapper and ids is not None and source == Source.assistant:
-            raise ValueError("Wrapper can only be used for the messages created from scratch, and now, ids are passed.")
+            raise ValueError(
+                "Wrapper can only be used for the messages created from scratch, and now, ids are passed."
+            )
 
         spans_ids = {}
         target_sent_spans = {}
@@ -174,8 +176,9 @@ class Chat:
                     )
 
         else:
+            # for the assistant output, the ids are passed
             sent_spans = [(0, len(ids))]
-            spans_ids["ans"] = dict(zip(sent_spans, ids))
+            spans_ids["ans"] = dict(zip(sent_spans, ids.tolist()))
 
         print(self.system_message["sent_spans"])
         print("ids", len(ids), ids)
