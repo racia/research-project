@@ -226,7 +226,8 @@ class DataLoader:
         :return: processed data
         """
         processor = DataProcessor(wrapper=self.wrapper, to_enumerate=self.to_enumerate)
-        self.tasks = list(tasks) if bool(tasks) else list(range(1, 21))
+        print("Tasks to load:", tasks, bool(tasks))
+        self.tasks = list(tasks) if bool(list(tasks)) else list(range(1, 21))
         raw_data = self.load_raw_task_data(
             path=Path(path), split=split, tasks=self.tasks
         )

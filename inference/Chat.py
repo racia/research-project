@@ -124,7 +124,6 @@ class Chat:
                 elif key == "question":
                     to_encode = [part.structured_question]
 
-                print("context len", len(to_encode))
                 to_insert_ids, to_insert_spans = sents_to_ids(to_encode, self.tokenizer)
                 print("encoded message", *zip(to_insert_spans, to_insert_ids), sep="\n")
 
@@ -139,29 +138,29 @@ class Chat:
                         ids.append(chunk)
 
                     # before wrapper spans/ids
-                    print("spans", intro["sent_spans"])
+                    print("intro spans", intro["sent_spans"])
                     spans_ids["wrap"][upd_span(intro["sent_spans"], self.offset)] = (
                         intro["ids"]
                     )
-                    print("upd spans", upd_span(intro["sent_spans"], self.offset))
+                    print("upd intro spans", upd_span(intro["sent_spans"], self.offset))
 
                     self.offset += len(intro["ids"])
 
                     # context/question spans/ids
                     for span, ids_ in zip(to_insert_spans, to_insert_ids):
-                        print("span", span)
+                        print("task span", span)
                         sent_spans.append(upd_span(span, self.offset))
                         spans_ids["task"][upd_span(span, self.offset)] = ids_
-                        print("upd spans", upd_span(span, self.offset))
+                        print("upd task spans", upd_span(span, self.offset))
 
                         self.offset += len(ids_)
 
                     # after wrapper spans/ids
-                    print("spans", outro["sent_spans"])
+                    print("outro spans", outro["sent_spans"])
                     spans_ids["wrap"][upd_span(outro["sent_spans"], self.offset)] = (
                         outro["ids"]
                     )
-                    print("upd spans", upd_span(outro["sent_spans"], self.offset))
+                    print("upd outro spans", upd_span(outro["sent_spans"], self.offset))
 
                     self.offset += len(outro["ids"])
 
@@ -222,7 +221,7 @@ class Chat:
         chat_ids = [self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")]
         # including the system prompt
         for i, message in enumerate(self.messages):
-            print(message)
+            print(message["content"])
             print(message["ids"])
             message_ids = generation_tokens(self.tokenizer, message["role"])
             message_ids.extend(flatten(message["ids"]))
@@ -237,7 +236,7 @@ class Chat:
 
             chat_ids.extend(message_ids)
 
-        chat_ids.append(generation_tokens(self.tokenizer, "assistant"))
+        chat_ids.extend(generation_tokens(self.tokenizer, "assistant"))
         print("chat_ids", len(chat_ids), chat_ids)
 
         return torch.LongTensor([chat_ids])
