@@ -77,19 +77,19 @@ results:
     - answer_lies_in_self
     - golden_answer
     - silver_reasoning
-    - model_output_after
-    - model_answer_after
-    - model_reasoning_after
-    - answer_correct_after
-    - reasoning_correct_after
-    - exact_match_accuracy_after
-    - soft_match_accuracy_after
-    - max_supp_target_after
-    - verbs_after
-    - there_after
-    - pronouns_after
-    - not_mentioned_after
-    - context_sents_hall_after
+    - model_output_before
+    - model_answer_before
+    - model_reasoning_before
+    - answer_correct_before
+    - reasoning_correct_before
+    - exact_match_accuracy_before
+    - soft_match_accuracy_before
+    - max_supp_target_before
+    - verbs_before
+    - there_before
+    - pronouns_before
+    - not_mentioned_before
+    - context_sents_hall_before
 
 hydra:
   run:
