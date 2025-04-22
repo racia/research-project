@@ -60,11 +60,14 @@ class Chat:
             "original_content": system_prompt.original_text,
             "ids": system_prompt.ids,
             "sent_spans": system_prompt.sent_spans,
-            "target_sent_spans": [],
+            # "target_sent_spans": [],
             "spans_type": {**sys_prompt_spans_type, **example_spans_type},
         }
         self.messages = [self.system_message]
         self.sent_spans = {}
+
+        self.part = None
+        self.target_sent_spans = []
 
     def __repr__(self) -> str:
         return "\n".join(
@@ -94,6 +97,7 @@ class Chat:
             raise ValueError(
                 "Wrapper can only be used for the messages created from scratch, and now, ids are passed."
             )
+        self.part = part
 
         spans_type = {}
         target_sent_spans = []
@@ -104,9 +108,9 @@ class Chat:
             spans_type.update(
                 {upd_span(span, self.offset): "task" for span in sent_spans}
             )
-            for i, span in enumerate(sent_spans, 1):
-                if i in part.supporting_sent_inx:
-                    target_sent_spans.append(upd_span(span, self.offset))
+            # for i, span in enumerate(sent_spans, 1):
+            #     if i in part.supporting_sent_inx:
+            #         target_sent_spans.append(upd_span(span, self.offset))
         elif wrapper:
             ids, sent_spans = [], []
 
@@ -121,11 +125,11 @@ class Chat:
                 to_insert_ids, to_insert_spans = sents_to_ids(to_encode, self.tokenizer)
                 print("encoded message", *zip(to_insert_spans, to_insert_ids), sep="\n")
 
-                print("part.supporting_sent_inx", part.supporting_sent_inx)
-                for span, line_num in zip(to_insert_spans, part.context_line_nums):
-                    print("line_num", line_num)
-                    if line_num in part.supporting_sent_inx:
-                        target_sent_spans.append(upd_span(span, self.offset))
+                # print("part.supporting_sent_inx", part.supporting_sent_inx)
+                # for span, line_num in zip(to_insert_spans, part.context_line_nums):
+                #     print("line_num", line_num)
+                #     if line_num in part.supporting_sent_inx:
+                #         target_sent_spans.append(upd_span(span, self.offset))
 
                 if to_insert_ids:
                     for chunk in [intro["ids"], *to_insert_ids, outro["ids"]]:
@@ -144,7 +148,7 @@ class Chat:
 
                         self.offset += len(intro["ids"])
 
-                    # context/question spans/ids
+                    # context and question spans/ids
                     for span, ids_ in zip(to_insert_spans, to_insert_ids):
                         print("task span", span)
                         sent_spans.append(upd_span(span, self.offset))
@@ -189,7 +193,7 @@ class Chat:
         print("ids", len(ids), ids)
         print("sent_spans", sent_spans)
         print("spans_type", spans_type)
-        print("target_sent_spans", target_sent_spans)
+        # print("target_sent_spans", target_sent_spans)
 
         part_dict = {
             "role": source,
@@ -198,7 +202,7 @@ class Chat:
             "ids": ids,
             "sent_spans": sent_spans,
             "spans_type": spans_type,
-            "target_sent_spans": target_sent_spans,
+            # "target_sent_spans": target_sent_spans,
         }
         self.messages.append(part_dict)
 
@@ -216,9 +220,9 @@ class Chat:
         spans = []
         spans_dict = {}
         for message in self.messages:
-            if target:
-                spans.extend(message["target_sent_spans"])
-            elif spans_type:
+            # if target:
+            #     spans.extend(message["target_sent_spans"])
+            if spans_type:
                 # {span: type}
                 spans_dict.update(message["spans_type"])
             else:
@@ -234,6 +238,14 @@ class Chat:
         :param max_length: the maximum length of the input
         :return: list of ids
         """
+        self.target_sent_spans, inx = [], 0
+        sentence_spans = self.get_sentence_spans(spans_type=True)
+        for span, type_ in sentence_spans.items():
+            if type_ == "task":
+                inx += 1
+            if inx in self.part.supporting_sent_inx:
+                self.target_sent_spans.append(span)
+
         chat_ids = [self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")]
         # including the system prompt
         for i, message in enumerate(self.messages):

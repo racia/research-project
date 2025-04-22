@@ -219,6 +219,7 @@ class Setting(ABC):
                     )
 
                 if self.saver:
+                    print("Saving part result...")
                     self.saver.save_part_result(self.part)
 
                 sample.add_part(self.part)

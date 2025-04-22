@@ -282,13 +282,18 @@ class Interpretability:
         :param part: the part of the sample to evaluate
         :return: InterpretabilityResult object
         """
+        # TODO: Problems:
+        # TODO: there's a weird mean on the first example token
+        # TODO: the last tokens of the x axis are longer that the scores and progressively grow
+
         # system_prompt_len = len(chat.messages[0]["ids"])
         model_output_len = len(chat.messages[-1]["ids"])
         sent_spans = chat.get_sentence_spans()
         print("sent_spans:", sent_spans)
         # should return not all of them, but for the last message
-        target_sent_spans = chat.messages[-1]["target_sent_spans"]
-        print("target_sent_spans:", target_sent_spans)
+        # TODO: there's a difference between the supporting sentences for the current part and in the current part
+        # target_sent_spans = chat.messages[-1]["target_sent_spans"]
+        print("target_sent_spans:", chat.target_sent_spans)
         spans_type = chat.get_sentence_spans(spans_type=True)
 
         # no system prompt but with full tokens, not sentence ids
@@ -306,7 +311,9 @@ class Interpretability:
         # )
 
         # TODO: not target sentence spans but general? or no supporting indices just target spans?
-        target_indices = get_supp_tok_idx(target_sent_spans, part.supporting_sent_inx)
+        target_indices = get_supp_tok_idx(
+            chat.target_sent_spans, part.supporting_sent_inx
+        )
         max_attn_ratio_ver = get_attn_ratio(
             attn_scores=attn_scores_ver,
             supp_tok_idx=target_indices,
@@ -340,7 +347,7 @@ class Interpretability:
         #     for i in range(len(chat_ids_ver))
         # ]
         x_tokens_ver = [
-            f"* {type_} {i} *" if span in target_sent_spans else f"{type_} {i}"
+            f"* {type_} {i} *" if span in chat.target_sent_spans else f"{type_} {i}"
             for i, (span, type_) in enumerate(spans_type.items(), 1)
         ]
         # Filter tokens
