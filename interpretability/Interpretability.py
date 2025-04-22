@@ -58,7 +58,7 @@ class Interpretability:
         ids_to_remove = []
         task_indices = get_indices(span_ids, "task")
         print("task_indices:", task_indices)
-        chat_tokens = self.tokenizer.decode(chat_ids)
+        chat_tokens = self.tokenizer.batch_decode(chat_ids)
 
         for output_row in attn_scores:
             for task_idx in range(len(output_row)):
