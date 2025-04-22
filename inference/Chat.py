@@ -102,7 +102,6 @@ class Chat:
             spans_type.update(
                 {upd_span(span, self.offset): "task" for span in sent_spans}
             )
-            print("part.supporting_sent_inx", part.supporting_sent_inx)
             for i, span in enumerate(sent_spans, 1):
                 if i in part.supporting_sent_inx:
                     target_sent_spans.append(upd_span(span, self.offset))
@@ -120,25 +119,27 @@ class Chat:
                 to_insert_ids, to_insert_spans = sents_to_ids(to_encode, self.tokenizer)
                 print("encoded message", *zip(to_insert_spans, to_insert_ids), sep="\n")
 
-                print("part.context_line_nums", part.context_line_nums)
-                print("part.supporting_sent_inx", part.supporting_sent_inx)
                 for span, line_num in zip(to_insert_spans, part.context_line_nums):
                     print("line_num", line_num)
                     if line_num in part.supporting_sent_inx:
                         target_sent_spans.append(upd_span(span, self.offset))
 
                 if to_insert_ids:
-                    # all ids
                     for chunk in [intro["ids"], *to_insert_ids, outro["ids"]]:
-                        print(chunk)
-                        ids.append(chunk)
+                        if chunk:
+                            print(chunk)
+                            ids.append(chunk)
 
                     # before wrapper spans/ids
                     print("intro spans", intro["sent_spans"])
-                    spans_type[upd_span(intro["sent_spans"], self.offset)] = "wrap"
-                    print("upd intro spans", upd_span(intro["sent_spans"], self.offset))
+                    if intro["sent_spans"]:
+                        spans_type[upd_span(intro["sent_spans"], self.offset)] = "wrap"
+                        print(
+                            "upd intro spans",
+                            upd_span(intro["sent_spans"], self.offset),
+                        )
 
-                    self.offset += len(intro["ids"])
+                        self.offset += len(intro["ids"])
 
                     # context/question spans/ids
                     for span, ids_ in zip(to_insert_spans, to_insert_ids):
@@ -150,11 +151,15 @@ class Chat:
                         self.offset += len(ids_)
 
                     # after wrapper spans/ids
-                    print("outro spans", outro["sent_spans"])
-                    spans_type[upd_span(outro["sent_spans"], self.offset)] = "wrap"
-                    print("upd outro spans", upd_span(outro["sent_spans"], self.offset))
+                    if outro["sent_spans"]:
+                        print("outro spans", outro["sent_spans"])
+                        spans_type[upd_span(outro["sent_spans"], self.offset)] = "wrap"
+                        print(
+                            "upd outro spans",
+                            upd_span(outro["sent_spans"], self.offset),
+                        )
 
-                    self.offset += len(outro["ids"])
+                        self.offset += len(outro["ids"])
 
                     # TODO: add space before question (at the end of each chunk?)
                 else:
