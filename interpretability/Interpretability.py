@@ -354,7 +354,7 @@ class Interpretability:
         #     for i in range(1, len(sent_spans) + 1)
         # ]
 
-        y_tokens = self.tokenizer.batch_decode(chat_ids[-model_output_len + 1 :])
+        y_tokens = self.tokenizer.batch_decode(chat_ids_ver[-model_output_len + 1 :])
         torch.cuda.empty_cache()
 
         # TODO save verbose and aggregated attention scores and x tokens (y tokens are always verbose)

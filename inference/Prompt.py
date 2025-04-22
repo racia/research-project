@@ -1,3 +1,4 @@
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -212,7 +213,7 @@ class Prompt:
         :return: None
         """
         self.examples += formatted_example
-        ids, spans = sents_to_ids(formatted_example.split("\n"), self.tokenizer)
+        ids, spans = sents_to_ids(re.split(r"\n+", formatted_example), self.tokenizer)
         self.ex_ids.extend(ids)
         self.ex_sent_spans.extend(spans)
 
@@ -255,7 +256,9 @@ class Prompt:
                 not_mentioned=example_config.not_mentioned,
             ):
                 formatted_example = self.format_example(
-                    example=example, number=counter, wrapper=example_config.wrapper
+                    example=example.strip(),
+                    number=counter,
+                    wrapper=example_config.wrapper,
                 )
                 self.process_example(formatted_example)
                 counter += 1
