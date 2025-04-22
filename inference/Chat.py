@@ -80,7 +80,7 @@ class Chat:
         self,
         part: SamplePart | str,
         source: Union[Source.user, Source.assistant],
-        ids: list[int] = None,
+        ids: torch.Tensor = None,
         wrapper: dict[str, dict] = None,
     ) -> None:
         """
@@ -178,8 +178,8 @@ class Chat:
         else:
             # for the assistant output, the ids are passed
             sent_spans = [(0, len(ids))]
-            print("ids", ids)
-            spans_ids["ans"] = {sent_spans: ids[0]}
+            print("ids", ids, type(ids))
+            spans_ids["ans"] = {sent_spans: ids.cpu().tolist()}
 
         print(self.system_message["sent_spans"])
         print("ids", len(ids), ids)
