@@ -105,7 +105,7 @@ class Interpretability:
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o system prompt)
         attn_tensor = attn_tensor[
-            :, -model_output_len + 1 : -1, : #_-model_output_len + 1
+            :, -model_output_len + 1 : -1, :  # _-model_output_len + 1
         ].mean(dim=0)
 
         # Normalize the attention scores by the sum of all token attention scores
@@ -313,7 +313,7 @@ class Interpretability:
         )
 
         # TODO: verbose and filtered x tokens (no system prompt)
-        chat_ids_ver = chat_ids[0][system_prompt_len + 1 : -1].detach().cpu().numpy()
+        chat_ids_ver = chat_ids[0][: -1].detach().cpu().numpy()
 
         attn_indices = self.filter_attn_indices(attn_scores_ver, chat_ids_ver, span_ids)
         # Filter attention scores
