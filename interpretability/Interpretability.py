@@ -287,6 +287,7 @@ class Interpretability:
         sent_spans = chat.get_sentence_spans()
         print("sent_spans:", sent_spans)
         target_sent_spans = chat.get_sentence_spans(target=True)
+        print("target_sent_spans:", target_sent_spans)
         spans_type = chat.get_sentence_spans(spans_type=True)
 
         # no system prompt but with full tokens, not sentence ids
@@ -329,7 +330,7 @@ class Interpretability:
         # attn_scores_ver = attn_scores_ver[:, attn_indices]
 
         # Decode the task tokens without the system prompt
-        x_tokens = self.tokenizer.batch_decode(chat_ids_ver)
+        # x_tokens = self.tokenizer.batch_decode(chat_ids_ver)
         # torch.cuda.empty_cache()
 
         # Pad tokens with asterisks
@@ -339,7 +340,7 @@ class Interpretability:
         # ]
         x_tokens_ver = [
             f"* {type_} {i} *" if span in target_sent_spans else f"{type_} {i}"
-            for i, (type_, span) in enumerate(spans_type.items())
+            for i, (span, type_) in enumerate(spans_type.items())
         ]
         # Filter tokens
         # x_tokens_ver = [
