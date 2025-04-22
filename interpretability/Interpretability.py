@@ -372,6 +372,7 @@ class Interpretability:
             task_id=part.task_id,
             sample_id=part.sample_id,
             part_id=part.part_id,
+            title=f"Attention Map for {part.task_id} - {part.sample_id} - {part.part_id}",
         )
         # self.plotter.draw_heat(
         #     interpretability_result=result_aggr,

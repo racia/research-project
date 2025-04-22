@@ -213,7 +213,9 @@ class Prompt:
         :return: None
         """
         self.examples += formatted_example
-        ids, spans = sents_to_ids(re.split(r"\n+", formatted_example), self.tokenizer)
+        ids, spans = sents_to_ids(
+            re.split(r"\n{2,}", formatted_example), self.tokenizer
+        )
         self.ex_ids.extend(ids)
         self.ex_sent_spans.extend(spans)
 

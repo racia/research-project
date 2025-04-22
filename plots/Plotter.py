@@ -139,9 +139,9 @@ class Plotter:
         scores = interpretability_result.attn_scores
 
         plt.figure(figsize=(12, 6))
-        axis = sns.heatmap(scores[:], cmap="RdBu_r", center=0)
+        axis = sns.heatmap(scores[1:], cmap="RdBu_r", center=0)
 
-        y = y[:]
+        y = y[1:]
         x_ticks = [i + 0.5 for i in range(len(x))]
         y_ticks = [i + 0.5 for i in range(len(y))]
 
