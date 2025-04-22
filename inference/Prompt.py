@@ -78,7 +78,7 @@ class Prompt:
             self.orig_ids, self.orig_sent_spans = sents_to_ids(
                 nlp(self.text).sents, self.tokenizer
             )
-            self.ids, self.sent_spans = [], []
+            self.ids, self.sent_spans = self.orig_ids, self.orig_sent_spans
             self.ex_ids = []
             self.ex_sent_spans = []
 
