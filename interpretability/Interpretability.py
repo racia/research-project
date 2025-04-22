@@ -57,6 +57,7 @@ class Interpretability:
         assert attn_scores.ndim == 2
         ids_to_remove = []
         task_indices = get_indices(span_ids, "task")
+        print("task_indices:", task_indices)
 
         for output_row in attn_scores:
             for task_idx in range(len(output_row)):
@@ -68,6 +69,7 @@ class Interpretability:
                 for token_ in nlp(token):
                     if token_.lemma_ not in self.scenery_words:
                         ids_to_remove.append(task_idx)
+        print(ids_to_remove)
         return ids_to_remove
 
     @staticmethod
