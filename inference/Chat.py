@@ -198,17 +198,29 @@ class Chat:
         }
         self.messages.append(part_dict)
 
-    def get_sentence_spans(self, target: bool = False) -> list[tuple[int, int]]:
+    def get_sentence_spans(
+        self, target: bool = False, spans_ids: bool = False
+    ) -> list[tuple[int, int]] | dict:
         """
         Get the sentence spans of the chat messages.
         :return: list of sentence spans
         """
+        if target and spans_ids:
+            raise ValueError(
+                "Cannot get target sentence spans and span ids at the same time."
+            )
         spans = []
+        spans_dict = {}
         for message in self.messages:
             if target:
                 spans.extend(message["target_sent_spans"])
+            elif spans_ids:
+                # {type: {span: ids}}
+                spans_dict.update(message["spans_ids"])
             else:
                 spans.extend(message["sent_spans"])
+        if spans_ids:
+            return spans_dict
         return spans
 
     def chat_to_ids(self, max_length: int = 2048) -> torch.LongTensor:

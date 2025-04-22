@@ -14,6 +14,7 @@ from interpretability.utils import (
     InterpretabilityResult,
     get_attn_ratio,
     get_supp_tok_idx,
+    get_indices,
 )
 from plots.Plotter import Plotter
 
@@ -42,23 +43,32 @@ class Interpretability:
         self,
         attn_scores: np.ndarray,
         chat_ids: np.ndarray,
+        span_ids: dict = None,
     ) -> list[int]:
+        # TODO: update the name and description
         """
         Get indices of stop words in the current task.
 
         :param chat_ids: current sample part ids (task and model's output)
         :param attn_scores: the attention scores for the current task
+        :param span_ids: the sentence spans of the current chat for all types of chunks
         :return: list of indices of stop words in the current task
         """
-        stop_words_ids = []
         assert attn_scores.ndim == 2
+        ids_to_remove = []
+        task_indices = get_indices(span_ids, "task")
+
         for output_row in attn_scores:
             for task_idx in range(len(output_row)):
+                # filter out non-task tokens
+                if task_idx not in task_indices:
+                    ids_to_remove.append(task_idx)
+                    continue
                 token = self.tokenizer.batch_decode(chat_ids)[task_idx].strip().lower()
                 for token_ in nlp(token):
                     if token_.lemma_ not in self.scenery_words:
-                        stop_words_ids.append(task_idx)
-        return stop_words_ids
+                        ids_to_remove.append(task_idx)
+        return ids_to_remove
 
     @staticmethod
     def get_attention_scores(
@@ -134,9 +144,7 @@ class Interpretability:
         return attn_scores
 
     def filter_attn_indices(
-        self,
-        attention_scores: np.ndarray,
-        chat_ids: np.ndarray,
+        self, attention_scores: np.ndarray, chat_ids: np.ndarray, span_ids: dict = None
     ) -> list:
         """
         Provide indices for scenery words of context and question in each row of the output attention scores.
@@ -144,15 +152,16 @@ class Interpretability:
 
         :param attention_scores: The attention scores of the current chat
         :param chat_ids: current sample part ids (task and model's output)
+        :param span_ids: the sentence spans of the current chat for all types of chunks
         :return: according attention_indices
         """
-        stop_words_indices = self.get_stop_word_idxs(attention_scores, chat_ids)
-        attention_indices = list(
-            filter(
-                lambda x: x not in stop_words_indices, range(attention_scores.shape[1])
-            )
+        stop_words_indices = self.get_stop_word_idxs(
+            attention_scores, chat_ids, span_ids
         )
-        return attention_indices
+        attention_indices = filter(
+            lambda x: x not in stop_words_indices, range(attention_scores.shape[1])
+        )
+        return list(attention_indices)
 
     def calculate_attention(
         self,
@@ -270,6 +279,7 @@ class Interpretability:
         model_output_len = len(chat.messages[-1]["ids"])
         sent_spans = chat.get_sentence_spans()
         target_sent_spans = chat.get_sentence_spans(target=True)
+        span_ids = chat.get_sentence_spans(spans_ids=True)
 
         # no system prompt but with full tokens, not sentence ids
         attn_scores_ver = self.get_attention_scores(
@@ -301,7 +311,7 @@ class Interpretability:
         # TODO: verbose and filtered x tokens (no system prompt)
         chat_ids_ver = chat_ids[0][system_prompt_len + 1 : -1].detach().cpu().numpy()
 
-        attn_indices = self.filter_attn_indices(attn_scores_ver, chat_ids_ver)
+        attn_indices = self.filter_attn_indices(attn_scores_ver, chat_ids_ver, span_ids)
         # Filter attention scores
         attn_scores_ver = attn_scores_ver[:, attn_indices]
 
