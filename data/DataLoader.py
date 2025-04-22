@@ -10,7 +10,7 @@ from typing import Union
 import numpy as np
 
 from data.DataProcessor import DataProcessor
-from data.utils import get_real_value, structure_parts, get_samples_per_task
+from data.utils import get_real_value, get_samples_per_task
 from inference.DataLevels import SamplePart
 from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits, Enumerate, Wrapper
@@ -212,7 +212,6 @@ class DataLoader:
         split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
         multi_system: bool,
         tasks: list[int] = None,
-        flat: bool = False,
         lookup: bool = False,
     ) -> dict | list[SamplePart]:
         """
@@ -222,15 +221,16 @@ class DataLoader:
         :param split: should be of type DataSplits ("train", "valid", or "test")
         :param multi_system: if as_parts is True, the multi_system parameter should be specified
         :param tasks: list of task numbers to read, use None to read all tasks
-        :param flat: if the data should be returned flat or in a nested structure of tasks and samples
         :param lookup: if the data should be returned as a lookup dictionary
         :return: processed data
         """
         processor = DataProcessor(wrapper=self.wrapper, to_enumerate=self.to_enumerate)
-        self.tasks = tasks if bool(tasks) else list(range(1, 21))
-        raw_data = self.load_raw_task_data(path=Path(path), split=split, tasks=tasks)
+        self.tasks = list(tasks) if bool(tasks) else list(range(1, 21))
+        raw_data = self.load_raw_task_data(
+            path=Path(path), split=split, tasks=self.tasks
+        )
         silver_reasoning = SilverReasoning(self)
-        reasoning = silver_reasoning.get(task_id=tasks, split=split)
+        reasoning = silver_reasoning.get(task_id=self.tasks, split=split)
         processed_data: list[SamplePart] = processor.process_data(
             raw_data,
             self.samples_per_task,
@@ -238,25 +238,17 @@ class DataLoader:
             silver_reasoning=reasoning,
         )
         if self.number_of_tasks == 0:
-            self.number_of_tasks = len(tasks)
+            self.number_of_tasks = len(self.tasks)
         if self.number_of_tasks == 0:
             self.number_of_parts = len(processed_data)
 
-        if flat and lookup:
-            raise ValueError(
-                "The 'flat' and 'lookup' parameters cannot be used together."
-            )
-        if flat:
-            return processed_data
+        if lookup:
+            lookup_data = {}
+            for part in processed_data:
+                lookup_data[(part.task_id, part.sample_id, part.part_id)] = part
+            return lookup_data
 
-        if not lookup:
-            return structure_parts(processed_data)
-
-        lookup_data = {}
-        for part in processed_data:
-            lookup_data[(part.task_id, part.sample_id, part.part_id)] = part
-
-        return lookup_data
+        return processed_data
 
     def load_results(
         self,
