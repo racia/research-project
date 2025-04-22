@@ -65,7 +65,7 @@ class Interpretability:
                 if task_idx not in task_indices:
                     ids_to_remove.append(task_idx)
                     continue
-                token = self.tokenizer.batch_decode(chat_ids)[task_idx].strip().lower()
+                token = self.tokenizer.decode(chat_ids[task_idx]).strip().lower()
                 for token_ in nlp(token):
                     if token_.lemma_ not in self.scenery_words:
                         ids_to_remove.append(task_idx)
