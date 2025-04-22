@@ -126,7 +126,9 @@ class DataProcessor:
                             part_id=part_id,
                             raw=raw_part,
                             golden_answer=" ".join(expand_cardinal_points(answers)),
-                            silver_reasoning=reasoning,
+                            silver_reasoning=(
+                                reasoning["silver_reasoning"] if reasoning else None
+                            ),
                             multi_system=multi_system,
                             wrapper=self.wrapper,
                             to_enumerate=self.to_enumerate,
