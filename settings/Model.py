@@ -197,13 +197,11 @@ class Model:
                     )
 
                     interpretability_result = self.interpretability.calculate_attention(
+                        chat_ids=outputs,
+                        output_tensor=output_tensor,
+                        chat=self.chat,
                         part=part,
                         after=not part.multi_system,
-                        chat_ids=outputs,
-                        context_sent_spans=self.chat.sent_spans,
-                        output_tensor=output_tensor,
-                        model_output_len=len(encoded_output),
-                        sys_prompt_len=len(self.chat.system_message["ids"]),
                     )
 
             torch.cuda.empty_cache()

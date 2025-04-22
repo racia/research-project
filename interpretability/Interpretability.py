@@ -158,10 +158,8 @@ class Interpretability:
         self,
         chat_ids: torch.Tensor,
         output_tensor: CausalLMOutputWithPast,
-        model_output_len: int,
-        context_sent_spans: list[tuple[int, int]],
+        chat: Chat,
         part: SamplePart,
-        sys_prompt_len: int,
         after: bool = True,
     ) -> InterpretabilityResult:
         """
@@ -174,13 +172,15 @@ class Interpretability:
 
         :param chat_ids: current sample part ids (task and model's output)
         :param output_tensor: model output tensor
-        :param model_output_len: model output length
-        :param context_sent_spans: list of spans of context sentences
+        :param chat: the current student chat
         :param part: part of the sample with the output before the setting is applied
-        :param sys_prompt_len: The system prompt length
         :param after: if to get attention scores after the setting was applied to the model output or before
         :return: attention scores, tokenized x and y tokens
         """
+        sys_prompt_len = len(chat.messages[0]["ids"])
+        context_sent_spans = chat.get_sentence_spans()
+        model_output_len = len(chat.messages[-1]["ids"])
+
         chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
 
         # Check task length
