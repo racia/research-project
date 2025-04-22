@@ -176,6 +176,7 @@ class Chat:
                     )
 
         else:
+            # TODO: optionally divide it into reasoning and answer
             # for the assistant output, the ids are passed
             sent_spans = [(0, len(ids))]
             ids = ids.tolist()
@@ -190,7 +191,7 @@ class Chat:
         part_dict = {
             "role": source,
             "content": part if isinstance(part, str) else part.task,
-            "original_content": part.unwrapped_task,
+            "original_content": part if isinstance(part, str) else part.unwrapped_task,
             "ids": ids,
             "sent_spans": sent_spans,
             "spans_ids": spans_ids,
