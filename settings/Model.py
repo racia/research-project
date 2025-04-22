@@ -145,9 +145,7 @@ class Model:
                     end="\n",
                 )
                 print(chat_ids)
-                inputs = {
-                    "input_ids": torch.tensor([chat_ids], dtype=torch.long).to("cuda")
-                }
+                inputs = {"input_ids": chat_ids.unsqueeze(0).to(torch.long).to("cuda")}
                 print("inputs", inputs)
             # if self.chat:
             #     chat_ids, context_sent_spans, sys_prompt_len = (
