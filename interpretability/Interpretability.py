@@ -105,7 +105,7 @@ class Interpretability:
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o system prompt)
         attn_tensor = attn_tensor[
-            :, -model_output_len : -1, :  # _-model_output_len + 1
+            :, -model_output_len:-1, :  # _-model_output_len + 1
         ].mean(dim=0)
 
         # Normalize the attention scores by the sum of all token attention scores
@@ -286,7 +286,8 @@ class Interpretability:
         model_output_len = len(chat.messages[-1]["ids"])
         sent_spans = chat.get_sentence_spans()
         print("sent_spans:", sent_spans)
-        target_sent_spans = chat.get_sentence_spans(target=True)
+        # should return not all of them, but for the last message
+        target_sent_spans = chat.messages[-1]["target_sent_spans"]
         print("target_sent_spans:", target_sent_spans)
         spans_type = chat.get_sentence_spans(spans_type=True)
 
