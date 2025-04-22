@@ -179,9 +179,9 @@ class Model:
                     num_beams=1,  # no beam search, reduce GPU memory usage
                 )
 
-                encoded_output = outputs[:, inputs["input_ids"].size(1) :]
+                encoded_output = outputs[0][inputs["input_ids"].size(1) :]
                 decoded_output = self.tokenizer.decode(
-                    encoded_output[0], skip_special_tokens=True
+                    encoded_output, skip_special_tokens=True
                 ).lower()
 
                 print("decoded_output", decoded_output)
