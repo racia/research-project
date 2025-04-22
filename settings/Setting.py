@@ -7,7 +7,7 @@ from abc import ABC, abstractmethod
 import torch
 
 from data.DataSaver import DataSaver
-from inference.Chat import Chat, Source
+from inference.Chat import Chat
 from inference.DataLevels import Sample, SamplePart, Task, print_metrics
 from inference.Prompt import Prompt
 from interpretability.utils import InterpretabilityResult
@@ -187,11 +187,6 @@ class Setting(ABC):
                         version="before",
                     )
 
-                # Add model output to current chat
-                self.model.chat.add_message(
-                    part=self.part.result_before.model_output,
-                    source=Source.assistant,
-                )
                 # applying the changes that are specific to each setting
                 if self.multi_system:
                     print(
