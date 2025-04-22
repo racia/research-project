@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 from collections import defaultdict
+from mailbox import FormatError
 from pathlib import Path
 
 from evaluation.Metrics import Accuracy, Metric
@@ -285,6 +286,11 @@ def structure_parts(
                     "task_id" or "sample_id"
     :return: the structured parts
     """
+    if type(parts) == dict:
+        raise FormatError(
+            "Parts should be a list, not a dict. They might be already structured."
+        )
+
     if level_id not in ["task_id", "sample_id", "part_id"]:
         raise ValueError(
             f"Invalid id_ value: {level_id}. Expected 'task_id' or 'sample_id'."
