@@ -340,7 +340,7 @@ class Interpretability:
         # ]
         x_tokens_ver = [
             f"* {type_} {i} *" if span in target_sent_spans else f"{type_} {i}"
-            for i, (span, type_) in enumerate(spans_type.items())
+            for i, (span, type_) in enumerate(spans_type.items(), 1)
         ]
         # Filter tokens
         # x_tokens_ver = [

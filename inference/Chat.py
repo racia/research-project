@@ -58,7 +58,7 @@ class Chat:
             "original_content": system_prompt.original_text,
             "ids": system_prompt.ids,
             "sent_spans": system_prompt.sent_spans,
-            "target_sent_spans": {},
+            "target_sent_spans": [],
             "spans_type": {**sys_prompt_spans_type, **example_spans_type},
         }
         self.messages = [self.system_message]
@@ -94,7 +94,7 @@ class Chat:
             )
 
         spans_type = {}
-        target_sent_spans = {}
+        target_sent_spans = []
         if ids is None and not wrapper:
             ids, sent_spans = sents_to_ids(
                 part.unwrapped_task.split("\n"), self.tokenizer
@@ -102,9 +102,10 @@ class Chat:
             spans_type.update(
                 {upd_span(span, self.offset): "task" for span in sent_spans}
             )
-            for i, span in enumerate(sent_spans):
+            print("part.supporting_sent_inx", part.supporting_sent_inx)
+            for i, span in enumerate(sent_spans, 1):
                 if i in part.supporting_sent_inx:
-                    target_sent_spans[upd_span(span, self.offset)] = ids
+                    target_sent_spans.append(upd_span(span, self.offset))
         elif wrapper:
             ids, sent_spans = [], []
 
@@ -121,7 +122,7 @@ class Chat:
 
                 for span, line_num in zip(to_insert_spans, part.context_line_nums):
                     if line_num in part.supporting_sent_inx:
-                        target_sent_spans[upd_span(span, self.offset)] = to_insert_ids
+                        target_sent_spans.append(upd_span(span, self.offset))
 
                 if to_insert_ids:
                     # all ids
