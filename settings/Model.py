@@ -196,17 +196,19 @@ class Model:
                         output_hidden_states=False,
                     )
 
-                    interpretability_result = self.interpretability.calculate_attention(
+                    interpretability_result = self.interpretability.process_attention(
                         chat_ids=outputs,
                         output_tensor=output_tensor,
                         chat=self.chat,
                         part=part,
-                        after=not part.multi_system,
                     )
 
             torch.cuda.empty_cache()
 
-        return decoded_output, interpretability_result
+        print("result_ver", interpretability_result[0])
+        print("result_aggr", interpretability_result[1])
+
+        return decoded_output, interpretability_result[1]
 
     def call_probs(self, input_ids: torch.Tensor) -> torch.Tensor:
         """
