@@ -306,8 +306,6 @@ def run_setting(cfg: DictConfig) -> None:
                     headers=cfg.results.headers,
                     results_file_name=results_file_names[split.name],
                     metrics_file_name=metrics_file_names[split.name],
-                    multi_system=multi_system,
-                    interpretability_enabled=cfg.setting.interpretability,
                 )
 
                 print("______________________________", end="\n\n")

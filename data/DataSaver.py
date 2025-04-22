@@ -4,7 +4,6 @@ import csv
 import json
 import sys
 import warnings
-from collections import defaultdict
 from typing import Iterable, TextIO, Union
 
 from data.utils import *
@@ -261,14 +260,11 @@ class DataSaver:
             else:
                 warnings.warn("No interpretability results found.")
 
-    def save_interpretability(
-        self, task_data: Task, multi_system: bool = False
-    ) -> None:
+    def save_interpretability(self, task_data: Task) -> None:
         """
         Save the interpretability result per sample part.
 
         :param task_data: the task instance with the results
-        :param multi_system: if the setting uses two models
         :return: None
         """
         for part in task_data.parts:
@@ -300,12 +296,11 @@ class DataSaver:
             sf.write(student_message)
             tf.write(teacher_message)
 
-    def save_part_result(self, part: SamplePart, interpretability_enabled: bool = False) -> None:
+    def save_part_result(self, part: SamplePart) -> None:
         """
         Save the result of a part of a sample.
 
         :param part: the part of the sample
-        :param interpretability_enabled: whether the interpretability is used in this run
         :return: None
         """
         result = part.get_result()
@@ -314,8 +309,7 @@ class DataSaver:
             headers=list(result.keys()),
             file_name=f"t_{part.task_id}_s_{part.sample_id}_results.csv",
         )
-        if interpretability_enabled:
-            self.save_part_interpretability(part)
+        self.save_part_interpretability(part)
 
     def save_sample_result(self, sample: Sample) -> None:
         """
@@ -334,8 +328,6 @@ class DataSaver:
         headers: list[str],
         results_file_name: str,
         metrics_file_name: str,
-        multi_system: bool = False,
-        interpretability_enabled: bool = False,
     ) -> None:
         """
         Save the results for the task and the accuracy for the task to the separate files.
@@ -345,8 +337,6 @@ class DataSaver:
         :param headers: the headers for the results
         :param results_file_name: the name of the file to save the results specific to the split
         :param metrics_file_name: the name of the file to save the accuracy specific to the split
-        :param multi_system: if the setting uses two models
-        :param interpretability_enabled: if the interpretability is enabled
         :return: None
         """
         self.save_output(
@@ -359,10 +349,7 @@ class DataSaver:
             "task_id": task_id,
             **task_data.evaluator_after.get_accuracies(),
         }
-
-        if interpretability_enabled:
-            self.save_interpretability(task_data, multi_system=multi_system)
-
+        self.save_interpretability(task_data)
         self.save_output(
             data=[task_accuracy],
             headers=list(task_accuracy.keys()),
