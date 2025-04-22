@@ -213,6 +213,7 @@ class Prompt:
         :return: None
         """
         self.examples += formatted_example
+        # try making bigger chunks out of the examples
         ids, spans = sents_to_ids(
             re.split(r"\n{2,}", formatted_example), self.tokenizer
         )
