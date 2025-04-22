@@ -529,8 +529,8 @@ class SamplePart:
         if type(model_answer) is not str:
             model_answer = str(model_answer)
 
-        self.full_task = full_task if full_task else self.task
-        if full_task != self.task:
+        self.full_task = full_task if full_task is not None else self.task
+        if full_task and full_task != self.task:
             print("full_task", full_task)
             print("self.task", self.task)
             warnings.warn("New settings for preparing the task were applied.")
