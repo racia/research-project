@@ -46,7 +46,7 @@ class Chat:
         """
         self.model_role = model_role
         self.tokenizer = tokenizer
-        self.offset = len(system_prompt.ids)
+        self.offset = len(flatten(system_prompt.ids))
 
         system_prompt_spans_ids = dict(
             zip(system_prompt.orig_sent_spans, system_prompt.orig_ids)
