@@ -287,14 +287,14 @@ class Interpretability:
         sent_spans = chat.get_sentence_spans()
         print("sent_spans:", sent_spans)
         target_sent_spans = chat.get_sentence_spans(target=True)
-        span_ids = chat.get_sentence_spans(spans_ids=True)
+        span_ids = chat.get_sentence_spans(spans_type=True)
 
         # no system prompt but with full tokens, not sentence ids
         attn_scores_ver = self.get_attention_scores(
             output_tensor=output_tensor,
             model_output_len=model_output_len,
             sent_spans=sent_spans,
-            sys_prompt_len=system_prompt_len,
+            # sys_prompt_len=system_prompt_len,
         )
         # # includes the system prompt but with aggregated sentences
         # attn_scores_aggr = self.get_attention_scores(
@@ -318,31 +318,32 @@ class Interpretability:
 
         # TODO: verbose and filtered x tokens (no system prompt)
         chat_ids_ver = chat_ids[0][:-1].detach().cpu().numpy()
-        stop_words_indices = self.get_stop_word_idxs(
-            attn_scores_ver, chat_ids_ver, span_ids
-        )
-        attn_indices = filter(
-            lambda x: x not in stop_words_indices, range(attn_scores_ver.shape[1])
-        )
+        # stop_words_indices = self.get_stop_word_idxs(
+        #     attn_scores_ver, chat_ids_ver, span_ids
+        # )
+        # attn_indices = filter(
+        #     lambda x: x not in stop_words_indices, range(attn_scores_ver.shape[1])
+        # )
         # attn_indices = self.filter_attn_indices(attn_scores_ver, chat_ids_ver, span_ids)
         # Filter attention scores
-        attn_scores_ver = attn_scores_ver[:, attn_indices]
+        # attn_scores_ver = attn_scores_ver[:, attn_indices]
 
         # Decode the task tokens without the system prompt
         x_tokens = self.tokenizer.batch_decode(chat_ids_ver)
         torch.cuda.empty_cache()
+
         # Pad tokens with asterisks
         x_tokens_ver = [
             f"* {x_tokens[i]} *" if i in target_indices else f"{x_tokens[i]}"
             for i in range(len(chat_ids_ver))
         ]
         # Filter tokens
-        x_tokens_ver = [
-            token for i, token in enumerate(x_tokens_ver) if i in attn_indices
-        ]
+        # x_tokens_ver = [
+        #     token for i, token in enumerate(x_tokens_ver) if i in attn_indices
+        # ]
 
         # TODO: aggregated x tokens (with system prompt)
-        # TODO: add sentence type from message["spans_ids"]
+        # TODO: add sentence type from message["spans_type"]
         # x_tokens_aggr = [
         #     f"* {i} *" if i in part.supporting_sent_inx else f"{i}"
         #     for i in range(1, len(sent_spans) + 1)
