@@ -9,7 +9,7 @@ from transformers import PreTrainedTokenizerFast
 
 from inference.DataLevels import SamplePart
 from inference.Prompt import Prompt
-from inference.utils import generation_tokens, sents_to_ids, upd_span
+from inference.utils import generation_tokens, sents_to_ids, upd_span, flatten
 
 
 @dataclass
@@ -48,6 +48,15 @@ class Chat:
         self.tokenizer = tokenizer
         self.offset = len(system_prompt.ids)
 
+        system_prompt_spans_ids = dict(
+            zip(system_prompt.orig_sent_spans, system_prompt.orig_ids)
+        )
+        example_spans_ids = dict(
+            zip(
+                [upd_span(span, self.offset) for span in system_prompt.ex_sent_spans],
+                system_prompt.ex_ids,
+            )
+        )
         self.system_message = {
             "role": Source.system,
             "content": system_prompt.text,
@@ -55,16 +64,8 @@ class Chat:
             "ids": system_prompt.ids,
             "sent_spans": system_prompt.sent_spans,
             "spans_ids": {
-                "sys": dict(zip(system_prompt.orig_sent_spans, system_prompt.orig_ids)),
-                "ex": dict(
-                    zip(
-                        [
-                            upd_span(span, self.offset)
-                            for span in system_prompt.ex_sent_spans
-                        ],
-                        system_prompt.ex_ids,
-                    )
-                ),
+                "sys": system_prompt_spans_ids,
+                "ex": example_spans_ids,
             },
         }
         self.messages = [self.system_message]
@@ -135,7 +136,7 @@ class Chat:
                     # all ids
                     for chunk in [intro["ids"], *to_insert_ids, outro["ids"]]:
                         print(chunk)
-                        ids.extend(chunk)
+                        ids.append(chunk)
 
                     # before wrapper spans/ids
                     print("spans", intro["sent_spans"])
@@ -224,7 +225,7 @@ class Chat:
             print(message)
             print(message["ids"])
             message_ids = generation_tokens(self.tokenizer, message["role"])
-            message_ids.extend(message["ids"])
+            message_ids.extend(flatten(message["ids"]))
             self.sent_spans[i] = message["sent_spans"]
 
             conversation_length = len(chat_ids) + len(message_ids)
@@ -236,7 +237,7 @@ class Chat:
 
             chat_ids.extend(message_ids)
 
-        chat_ids.extend(generation_tokens(self.tokenizer, "assistant"))
+        chat_ids.append(generation_tokens(self.tokenizer, "assistant"))
         print("chat_ids", len(chat_ids), chat_ids)
 
         return torch.LongTensor([chat_ids])
