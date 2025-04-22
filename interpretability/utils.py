@@ -62,8 +62,7 @@ def get_indices(span_ids: dict, type_: str):
     spans = span_ids[type_].keys()
     indices = []
     for span in spans:
-        start, end = span_ids[type_][span]
-        indices.extend(range(start, end + 1))
+        indices.extend(range(span[0], span[1] + 1))
     return indices
 
 
