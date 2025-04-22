@@ -146,6 +146,7 @@ class Model:
                 )
                 print(chat_ids)
                 inputs = {"input_ids": [ids.to(device) for ids in chat_ids]}
+                print("inputs", inputs)
             # if self.chat:
             #     chat_ids, context_sent_spans, sys_prompt_len = (
             #         self.chat.convert_into_ids_old(
