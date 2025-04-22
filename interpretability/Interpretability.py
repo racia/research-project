@@ -101,7 +101,10 @@ class Interpretability:
         if sent_spans:
             # Additionally take mean of attention scores over each task sentence.
             attn_scores = np.array(
-                [attn_scores[:, start:stop].mean(axis=-1) for start, stop in sent_spans]
+                [
+                    attn_scores[:, start:stop].mean(axis=-1)
+                    for (start, stop) in sent_spans
+                ]
             ).squeeze()
             # Reshape to match expected output format
             warnings.warn(f"DEBUG attn_scores_T: {attn_scores.shape}")

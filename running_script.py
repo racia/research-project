@@ -289,7 +289,7 @@ def run_setting(cfg: DictConfig) -> None:
                     and cfg.init_prompt.examples.add
                 ):
                     setting.init_prompt.add_examples(
-                        task_id=task_id, example_config=cfg.init_prompt.examples
+                        task_id=int(task_id), example_config=cfg.init_prompt.examples
                     )
                 else:
                     setting.init_prompt.use_original_prompt()
@@ -392,10 +392,10 @@ def run_setting(cfg: DictConfig) -> None:
 
     if len(cfg.init_prompt.paths) > 1:
         for split_name, prompts_splits in run_splits.items():
-            evaluators = {"before": [], "after": []}
-            for prompt, split in prompts_splits.items():
-                evaluators["before"].append(split.evaluator_before)
-                evaluators["after"].append(split.evaluator_after)
+            evaluators = {
+                "before": [split.evaluator_before for split in prompts_splits.values()],
+                "after": [split.evaluator_after for split in prompts_splits.values()],
+            }
             em_accuracies, sm_accuracies = {}, {}
             em_std, sm_std = {}, {}
             plotter.results_path = saver.run_path
@@ -407,6 +407,7 @@ def run_setting(cfg: DictConfig) -> None:
                     split_name=split_name,
                     version=version,
                 )
+                # TODO: to remove plotting
                 em_accuracies_ = dict(
                     zip(
                         prompts_splits.keys(),

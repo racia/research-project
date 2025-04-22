@@ -213,7 +213,11 @@ class DataLoader:
         tasks: list[int] = None,
         flat: bool = False,
         lookup: bool = False,
-    ) -> dict | list[SamplePart]:
+    ) -> (
+        list[SamplePart]
+        | dict[tuple, SamplePart]
+        | dict[int, dict[int, list[SamplePart]]]
+    ):
         """
         Prepare the data: load raw data and process it.
 
