@@ -151,7 +151,7 @@ def sents_to_ids(
 
         start = len(flat_ids)
         flat_ids.extend(tokenized_sentence)
-        end = len(flat_ids) + 1
+        end = len(flat_ids)
         sent_spans.append((start, end))
 
     return ids, sent_spans
