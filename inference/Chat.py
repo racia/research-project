@@ -120,7 +120,10 @@ class Chat:
                 to_insert_ids, to_insert_spans = sents_to_ids(to_encode, self.tokenizer)
                 print("encoded message", *zip(to_insert_spans, to_insert_ids), sep="\n")
 
+                print("part.context_line_nums", part.context_line_nums)
+                print("part.supporting_sent_inx", part.supporting_sent_inx)
                 for span, line_num in zip(to_insert_spans, part.context_line_nums):
+                    print("line_num", line_num)
                     if line_num in part.supporting_sent_inx:
                         target_sent_spans.append(upd_span(span, self.offset))
 
@@ -168,6 +171,12 @@ class Chat:
             sent_spans = [upd_span((0, len(ids)), self.offset)]
             ids = ids.tolist()
             spans_type[sent_spans[0]] = "ans"
+
+        # if type(part) == SamplePart:
+        #     print("part.supporting_sent_inx", part.supporting_sent_inx)
+        #     for i, span in enumerate(sent_spans, 1):
+        #         if i in part.supporting_sent_inx:
+        #             target_sent_spans.append(upd_span(span, self.offset))
 
         print("ids", len(ids), ids)
         print("sent_spans", sent_spans)
