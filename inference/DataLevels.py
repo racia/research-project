@@ -342,7 +342,7 @@ class SamplePart:
         self.wrapper: Wrapper = self.set_wrapper(wrapper)
         self.to_enumerate: Enumerate = self.set_to_enumerate(to_enumerate)
 
-        self.supporting_sent_inx: list[int] = raw.get("supporting_fact", [])
+        self.supporting_sent_inx: list[int] = raw.get("supporting_facts", [])
         self.context_line_nums: list[int] = [
             int(line_num) for line_num in self.raw["context"].keys()
         ]
