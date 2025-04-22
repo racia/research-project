@@ -59,7 +59,7 @@ class Chat:
             "ids": system_prompt.ids,
             "sent_spans": system_prompt.sent_spans,
             "target_sent_spans": {},
-            "spans_type": dict(**sys_prompt_spans_type, **example_spans_type),
+            "spans_type": {**sys_prompt_spans_type, **example_spans_type},
         }
         self.messages = [self.system_message]
         self.sent_spans = {}
