@@ -217,12 +217,11 @@ class Chat:
         # including the system prompt
         for i, message in enumerate(self.messages):
             message_ids = generation_tokens(self.tokenizer, message["role"])
-            chat_ids.extend(message_ids)
-            chat_ids.extend(message["ids"])
+            message_ids.extend(message["ids"])
             self.sent_spans[i] = message["sent_spans"]
 
             if len(chat_ids) + len(message_ids) <= max_length:
-                chat_ids += message_ids
+                chat_ids.extend(message_ids)
             else:
                 break
 
