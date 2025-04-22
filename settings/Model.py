@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 
 import torch
+from pyarrow.lib import tobytes
 from torch.amp import autocast
 from transformers import (
     AutoModelForCausalLM,
@@ -140,7 +141,7 @@ class Model:
                 chat_ids = self.chat.chat_to_ids()
                 print(
                     f"Formatted prompt (to remove):",
-                    self.tokenizer.batch_decode(chat_ids),
+                    self.tokenizer.decode(chat_ids),
                     sep="\n",
                     end="\n",
                 )
@@ -177,15 +178,22 @@ class Model:
                     use_cache=True,
                     num_beams=1,  # no beam search, reduce GPU memory usage
                 )
-
-                encoded_output = outputs[0][inputs["input_ids"].size(1) :]
+                # +1 because the first id 271 is a newline
+                encoded_output = outputs[0][inputs["input_ids"].size(1) + 1 :]
                 decoded_output = self.tokenizer.decode(
                     encoded_output, skip_special_tokens=True
                 ).lower()
 
                 print("decoded_output", decoded_output)
-                print("token 271", self.tokenizer.decode(271, skip_special_tokens=True))
-
+                print(
+                    "token 271",
+                    tobytes(self.tokenizer.decode(271, skip_special_tokens=True)),
+                )
+                print(
+                    "token 26197",
+                    self.tokenizer.decode(26197, skip_special_tokens=True),
+                    tobytes(self.tokenizer.decode(26197, skip_special_tokens=True)),
+                )
                 self.chat.add_message(
                     part=decoded_output, source=Source.assistant, ids=encoded_output
                 )

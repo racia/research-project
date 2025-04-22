@@ -429,6 +429,7 @@ class SamplePart:
         Check if the supporting sentences are in the part.
         :return: the type of supporting sentences in the part
         """
+        # TODO: fix (only outputs 'none')
         supp_sents_in_self = set(self.context_line_nums).intersection(
             set(self.supporting_sent_inx)
         )

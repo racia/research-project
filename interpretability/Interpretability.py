@@ -91,7 +91,7 @@ class Interpretability:
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o system prompt)
         attn_tensor = attn_tensor[
-            :, -model_output_len:-1, sys_prompt_len + 1 : -model_output_len
+            :, -model_output_len:-1, sys_prompt_len:-model_output_len
         ].mean(dim=0)
 
         # Normalize the attention scores by the sum of all token attention scores
@@ -178,7 +178,7 @@ class Interpretability:
         :param after: if to get attention scores after the setting was applied to the model output or before
         :return: attention scores, tokenized x and y tokens
         """
-        chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
+        chat_ids = chat_ids[0][sys_prompt_len:-1].detach().cpu().numpy()
 
         # Check task length
         overflow = True if len(context_sent_spans) >= 10 else False
@@ -193,7 +193,7 @@ class Interpretability:
 
         # Get filtering indices
         supp_tok_idx = get_supp_tok_idx(context_sent_spans, part.supporting_sent_inx)
-
+        # TODO: fix the attention ratio (outputs 0.0)
         max_attn_dist = get_attn_ratio(
             attn_scores=attention_scores,
             supp_tok_idx=supp_tok_idx,
