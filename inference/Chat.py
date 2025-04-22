@@ -178,8 +178,9 @@ class Chat:
         else:
             # for the assistant output, the ids are passed
             sent_spans = [(0, len(ids))]
+            ids = ids.tolist()
             print("ids", ids, type(ids))
-            spans_ids["ans"] = {sent_spans: ids.tolist()}
+            spans_ids["ans"] = {sent_spans[0]: ids}
 
         print(self.system_message["sent_spans"])
         print("ids", len(ids), ids)
