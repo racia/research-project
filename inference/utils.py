@@ -164,7 +164,11 @@ def flatten(lst: list[list]) -> list:
     :param lst: list of lists to flatten
     :return: flattened list
     """
-    return [item for sublist in lst for item in sublist]
+    if not lst:
+        return []
+    if type(lst[0]) == list:
+        return [item for sublist in lst for item in sublist]
+    return lst
 
 
 def upd_span(span: tuple, offset: int) -> tuple[int, int]:

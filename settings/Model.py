@@ -184,6 +184,7 @@ class Model:
                 ).lower()
 
                 print("decoded_output", decoded_output)
+                print("token 271", self.tokenizer.decode(271, skip_special_tokens=True))
 
                 self.chat.add_message(
                     part=decoded_output, source=Source.assistant, ids=encoded_output
