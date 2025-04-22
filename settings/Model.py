@@ -141,7 +141,7 @@ class Model:
                 chat_ids = self.chat.chat_to_ids()
                 print(
                     f"Formatted prompt (to remove):",
-                    self.tokenizer.decode(chat_ids),
+                    self.tokenizer.batch_decode(chat_ids)[0],
                     sep="\n",
                     end="\n",
                 )
