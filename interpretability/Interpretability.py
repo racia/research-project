@@ -63,9 +63,9 @@ class Interpretability:
         for output_row in attn_scores:
             for task_idx in range(len(output_row)):
                 # filter out non-task tokens
-                if task_idx in task_indices:
-                    # ids_to_remove.append(task_idx)
-                    continue
+                # if task_idx in task_indices:
+                #     # ids_to_remove.append(task_idx)
+                #     continue
                 token = chat_tokens[task_idx].strip().lower()
                 print(token)
                 for token_ in nlp(token):
