@@ -179,7 +179,7 @@ class Chat:
         else:
             # TODO: optionally divide it into reasoning and answer
             # for the assistant output, the ids are passed
-            sent_spans = [(0, len(ids))]
+            sent_spans = [upd_span((0, len(ids)), self.offset)]
             ids = ids.tolist()
             spans_ids["ans"] = {sent_spans[0]: ids}
 
