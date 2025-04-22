@@ -113,6 +113,7 @@ class Interpretability:
         attn_scores = attn_tensor.float().detach().cpu().numpy()
 
         if sent_spans:
+            print("Start averaging attention scores")
             # Additionally take mean of attention scores over each task sentence.
             attn_scores = np.array(
                 [
@@ -143,6 +144,7 @@ class Interpretability:
                 attn_scores_T.shape[0],
                 len(sent_spans),
             )
+            print("attn_scores_T:", attn_scores_T)
             return attn_scores_T
 
         return attn_scores
@@ -266,7 +268,7 @@ class Interpretability:
         chat_ids: torch.Tensor,
         chat: Chat,
         part: SamplePart,
-    ) -> tuple[InterpretabilityResult, ...]:
+    ) -> InterpretabilityResult:
         """
         Process the attention scores and return the interpretability result ready for plotting.
 
@@ -282,6 +284,7 @@ class Interpretability:
         system_prompt_len = len(chat.messages[0]["ids"])
         model_output_len = len(chat.messages[-1]["ids"])
         sent_spans = chat.get_sentence_spans()
+        print("sent_spans:", sent_spans)
         target_sent_spans = chat.get_sentence_spans(target=True)
         span_ids = chat.get_sentence_spans(spans_ids=True)
 
@@ -292,12 +295,12 @@ class Interpretability:
             sent_spans=sent_spans,
             sys_prompt_len=system_prompt_len,
         )
-        # includes the system prompt but with aggregated sentences
-        attn_scores_aggr = self.get_attention_scores(
-            output_tensor=output_tensor,
-            model_output_len=model_output_len,
-            sent_spans=None,
-        )
+        # # includes the system prompt but with aggregated sentences
+        # attn_scores_aggr = self.get_attention_scores(
+        #     output_tensor=output_tensor,
+        #     model_output_len=model_output_len,
+        #     sent_spans=None,
+        # )
 
         # TODO: not target sentence spans but general? or no supporting indices just target spans?
         target_indices = get_supp_tok_idx(target_sent_spans, part.supporting_sent_inx)
@@ -306,16 +309,21 @@ class Interpretability:
             supp_tok_idx=target_indices,
             supp_sent_idx=part.supporting_sent_inx,
         )
-        max_attn_ratio_aggr = get_attn_ratio(
-            attn_scores=attn_scores_aggr,
-            supp_tok_idx=target_indices,
-            supp_sent_idx=part.supporting_sent_inx,
-        )
+        # max_attn_ratio_aggr = get_attn_ratio(
+        #     attn_scores=attn_scores_aggr,
+        #     supp_tok_idx=target_indices,
+        #     supp_sent_idx=part.supporting_sent_inx,
+        # )
 
         # TODO: verbose and filtered x tokens (no system prompt)
-        chat_ids_ver = chat_ids[0][: -1].detach().cpu().numpy()
-
-        attn_indices = self.filter_attn_indices(attn_scores_ver, chat_ids_ver, span_ids)
+        chat_ids_ver = chat_ids[0][:-1].detach().cpu().numpy()
+        stop_words_indices = self.get_stop_word_idxs(
+            attn_scores_ver, chat_ids_ver, span_ids
+        )
+        attn_indices = filter(
+            lambda x: x not in stop_words_indices, range(attn_scores_ver.shape[1])
+        )
+        # attn_indices = self.filter_attn_indices(attn_scores_ver, chat_ids_ver, span_ids)
         # Filter attention scores
         attn_scores_ver = attn_scores_ver[:, attn_indices]
 
@@ -334,10 +342,10 @@ class Interpretability:
 
         # TODO: aggregated x tokens (with system prompt)
         # TODO: add sentence type from message["spans_ids"]
-        x_tokens_aggr = [
-            f"* {i} *" if i in part.supporting_sent_inx else f"{i}"
-            for i in range(1, len(sent_spans) + 1)
-        ]
+        # x_tokens_aggr = [
+        #     f"* {i} *" if i in part.supporting_sent_inx else f"{i}"
+        #     for i in range(1, len(sent_spans) + 1)
+        # ]
 
         y_tokens = self.tokenizer.batch_decode(chat_ids[-model_output_len + 1 :])
         torch.cuda.empty_cache()
@@ -346,9 +354,9 @@ class Interpretability:
         result_ver = InterpretabilityResult(
             attn_scores_ver, x_tokens_ver, y_tokens, max_attn_ratio_ver
         )
-        result_aggr = InterpretabilityResult(
-            attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio_aggr
-        )
+        # result_aggr = InterpretabilityResult(
+        #     attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio_aggr
+        # )
 
         self.plotter.draw_heat(
             interpretability_result=result_ver,
@@ -357,11 +365,11 @@ class Interpretability:
             sample_id=part.sample_id,
             part_id=part.part_id,
         )
-        self.plotter.draw_heat(
-            interpretability_result=result_aggr,
-            x_label="Sentence Indices",
-            task_id=part.task_id,
-            sample_id=part.sample_id,
-            part_id=part.part_id,
-        )
-        return result_ver, result_aggr
+        # self.plotter.draw_heat(
+        #     interpretability_result=result_aggr,
+        #     x_label="Sentence Indices",
+        #     task_id=part.task_id,
+        #     sample_id=part.sample_id,
+        #     part_id=part.part_id,
+        # )
+        return result_ver  # result_aggr

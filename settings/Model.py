@@ -205,10 +205,10 @@ class Model:
 
             torch.cuda.empty_cache()
 
-        print("result_ver", interpretability_result[0])
-        print("result_aggr", interpretability_result[1])
+        print("result_ver", interpretability_result)
+        # print("result_aggr", interpretability_result[1])
 
-        return decoded_output, interpretability_result[1]
+        return decoded_output, interpretability_result
 
     def call_probs(self, input_ids: torch.Tensor) -> torch.Tensor:
         """
