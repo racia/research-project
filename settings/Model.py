@@ -144,7 +144,6 @@ class Model:
                     sep="\n",
                     end="\n",
                 )
-                print(chat_ids)
                 inputs = {"input_ids": chat_ids.to("cuda")}
                 print("inputs", inputs)
             # if self.chat:

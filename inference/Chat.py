@@ -221,14 +221,20 @@ class Chat:
         chat_ids = [self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")]
         # including the system prompt
         for i, message in enumerate(self.messages):
+            print(message)
+            print(message["ids"])
             message_ids = generation_tokens(self.tokenizer, message["role"])
             message_ids.extend(message["ids"])
             self.sent_spans[i] = message["sent_spans"]
 
-            if len(chat_ids) + len(message_ids) <= max_length:
-                chat_ids.extend(message_ids)
-            else:
+            conversation_length = len(chat_ids) + len(message_ids)
+            if conversation_length > max_length:
+                warnings.warn(
+                    f"Exceeded max length with {conversation_length}. Truncating the input."
+                )
                 break
+
+            chat_ids.extend(message_ids)
 
         chat_ids.extend(generation_tokens(self.tokenizer, "assistant"))
         print("chat_ids", len(chat_ids), chat_ids)
