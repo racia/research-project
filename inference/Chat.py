@@ -9,7 +9,7 @@ from transformers import PreTrainedTokenizerFast
 
 from inference.DataLevels import SamplePart
 from inference.Prompt import Prompt
-from inference.utils import generation_tokens, sents_to_ids, upd_span, flatten
+from inference.utils import flatten, get_generation_tokens, sents_to_ids, upd_span
 
 
 @dataclass
@@ -238,7 +238,7 @@ class Chat:
         for i, message in enumerate(self.messages):
             print(message["content"])
             print(message["ids"])
-            message_ids = generation_tokens(self.tokenizer, message["role"])
+            message_ids = get_generation_tokens(self.tokenizer, message["role"])
             message_ids.extend(flatten(message["ids"]))
             self.sent_spans[i] = message["sent_spans"]
 
@@ -251,10 +251,10 @@ class Chat:
 
             chat_ids.extend(message_ids)
 
-        chat_ids.extend(generation_tokens(self.tokenizer, "assistant"))
+        chat_ids.extend(get_generation_tokens(self.tokenizer, "assistant"))
         print("chat_ids", len(chat_ids), chat_ids)
 
-        return torch.LongTensor([chat_ids])
+        return torch.LongTensor(chat_ids)
 
     def convert_into_ids_old(
         self,
@@ -281,7 +281,7 @@ class Chat:
         for i, message in enumerate(chat_part if chat_part else self.messages):
             if message["role"] in ["system", "user"]:
                 # TODO: add begin of text token
-                message_ids = generation_tokens(tokenizer, message["role"])
+                message_ids = get_generation_tokens(tokenizer, message["role"])
             else:
                 message_ids = []
 
