@@ -207,21 +207,18 @@ class Prompt:
 
     def process_example(self, formatted_example: str):
         """
-        Process the examples by adding them to the prompt and
-        converting them to ids.
+        Process the examples by converting them to ids and spans in parts (not sentences!) for the sake of conciseness
+
         :param formatted_example: the formatted example
         :return: None
         """
         self.examples += formatted_example
-        # try making bigger chunks out of the examples
-        print("parts of example", re.split(r"\n{2,}", formatted_example))
+        # process examples making bigger chunks out of the examples
         ids, spans = sents_to_ids(
             re.split(r"\n{2,}", formatted_example), self.tokenizer
         )
-        print("example ids", ids)
-        print("example spans", spans)
-        self.ex_ids.append(ids)
-        self.ex_sent_spans.append(spans)
+        self.ex_ids.extend(ids)
+        self.ex_sent_spans.extend(spans)
 
     def add_examples(self, task_id: int, example_config: Examples) -> None:
         """

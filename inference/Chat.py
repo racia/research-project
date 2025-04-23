@@ -49,10 +49,22 @@ class Chat:
 
         sys_prompt_spans_types = {span: "sys" for span in system_prompt.orig_sent_spans}
         self.offset = len(flatten(system_prompt.orig_ids))
+        print("offset with sys", self.offset)
+        print(
+            "example spans",
+            len(system_prompt.ex_sent_spans),
+            system_prompt.ex_sent_spans,
+        )
+        print(
+            "example ids",
+            len(flatten(system_prompt.ex_ids)),
+            flatten(system_prompt.ex_ids),
+        )
         example_spans_types = {
             upd_span(span, self.offset): "ex" for span in system_prompt.ex_sent_spans
         }
         self.offset = len(flatten(system_prompt.ex_ids))
+        print("offset with ex", self.offset)
 
         self.system_message = {
             "role": Source.system,
