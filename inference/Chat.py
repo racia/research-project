@@ -203,9 +203,12 @@ class Chat:
             if span_type == "all":
                 spans_dict.update(message["spans_type"])
             elif span_type:
-                for span, t in message["spans_type"].items():
-                    if t == span_type:
-                        spans.append(span)
+                print("span_type", span_type)
+                filtered_spans_type = filter(
+                    lambda item: item[1] == "task", dct.items()
+                )
+                print("filtered_spans_type", filtered_spans_type)
+                spans.extend(list(dict(filtered_spans_type).keys()))
             else:
                 spans.extend(message["sent_spans"])
 
