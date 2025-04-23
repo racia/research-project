@@ -540,8 +540,17 @@ class SamplePart:
 
         if not interpretability:
             interpretability = InterResult(np.ndarray([]), [], [], 0)
-        # TODO: add the score for reasoning
-        if version == "after":
+        if version == "before":
+            self.result_before = Results(
+                model_output=model_output,
+                model_answer=model_answer,
+                model_reasoning=model_reasoning,
+                answer_correct=stats.are_identical(model_answer, self.golden_answer),
+                interpretability=interpretability,
+                version=version,
+            )
+            self.result_before.categorize(ids=self.ids)
+        elif version == "after":
             self.result_after = Results(
                 model_output=model_output,
                 model_answer=model_answer,
@@ -554,16 +563,6 @@ class SamplePart:
                 iterations if iterations else SamplePart.current_iteration_count
             )
             self.result_after.categorize(ids=self.ids)
-        elif version == "before":
-            self.result_before = Results(
-                model_output=model_output,
-                model_answer=model_answer,
-                model_reasoning=model_reasoning,
-                answer_correct=stats.are_identical(model_answer, self.golden_answer),
-                interpretability=interpretability,
-                version=version,
-            )
-            self.result_before.categorize(ids=self.ids)
         else:
             raise ValueError(
                 f"Version should be either 'before' or 'after', currently: {version}"
