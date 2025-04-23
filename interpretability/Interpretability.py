@@ -103,9 +103,9 @@ class Interpretability:
         # Mean over model layers
         attn_tensor = attn_tensor.mean(dim=0)
 
-        # Takes mean over the attention heads: dimensions, model_output, current task (w/o system prompt)
+        # Takes mean over the attention heads: dimensions, model_output, current task (w/o model output, as it is in y axis)
         attn_tensor = attn_tensor[
-            :, -model_output_len:-1, :  # _-model_output_len + 1
+            :, -model_output_len:-1, : -model_output_len + 1
         ].mean(dim=0)
 
         # Normalize the attention scores by the sum of all token attention scores
@@ -347,9 +347,11 @@ class Interpretability:
         #     f"* {x_tokens[i]} *" if i in target_indices else f"{x_tokens[i]}"
         #     for i in range(len(chat_ids_ver))
         # ]
+
+        # we don't need the last part — the model output
         x_tokens_aggr = [
             f"* {type_} {i} *" if span in chat.target_sent_spans else f"{type_} {i}"
-            for i, (span, type_) in enumerate(spans_types.items(), 1)
+            for i, (span, type_) in enumerate(list(spans_types.items())[:-1], 1)
         ]
         # Filter tokens
         # x_tokens_ver = [

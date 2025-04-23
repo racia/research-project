@@ -49,22 +49,10 @@ class Chat:
 
         sys_prompt_spans_types = {span: "sys" for span in system_prompt.orig_sent_spans}
         self.offset = len(flatten(system_prompt.orig_ids))
-        print("offset with sys", self.offset)
-        print(
-            "example spans",
-            len(system_prompt.ex_sent_spans),
-            system_prompt.ex_sent_spans,
-        )
-        print(
-            "example ids",
-            len(flatten(system_prompt.ex_ids)),
-            flatten(system_prompt.ex_ids),
-        )
         example_spans_types = {
             upd_span(span, self.offset): "ex" for span in system_prompt.ex_sent_spans
         }
         self.offset += len(flatten(system_prompt.ex_ids))
-        print("offset with ex", self.offset)
 
         self.system_message = {
             "role": Source.system,
@@ -207,6 +195,7 @@ class Chat:
                           Possible types of spans: "sys" (system prompt), "ex" (example), "wrap" (wrappers), "task" (context sentences and questions), "ans" (model output)
         :return: list of sentence spans
         """
+        print(f"GETTING SENTENCE {span_type} SPANS...")
         spans = []
         spans_dict = {}
         for message in self.messages:
@@ -220,8 +209,8 @@ class Chat:
                     lambda x: x[1] == "task", message["spans_types"].items()
                 )
                 print("filtered_spans_types", list(filtered_spans_types))
-                print("spans to extend", list(dict(filtered_spans_types).keys()))
-                spans.extend(list(dict(filtered_spans_types).keys()))
+                print("spans to extend", list(dict(list(filtered_spans_types)).keys()))
+                spans.extend(list(dict(list(filtered_spans_types)).keys()))
                 print("extended spans", spans)
             else:
                 spans.extend(message["sent_spans"])
