@@ -130,7 +130,9 @@ class Model:
             )
         print("Wrapper before model call")
         print(self.wrapper)
-        self.chat.add_message(part=part, source=Source.user, wrapper=self.wrapper)
+
+        if part:
+            self.chat.add_message(part=part, source=Source.user, wrapper=self.wrapper)
 
         with torch.no_grad():
             device = next(self.model.parameters()).device
