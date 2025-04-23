@@ -205,14 +205,9 @@ class Chat:
                 spans_dict.update(message["spans_types"])
             elif span_type:
                 print("span_type", span_type)
-                # for span, t in message["spans_types"].items():
-                #     if t ==
-                filtered_spans_types = filter(
-                    lambda x: x[1] == span_type, message["spans_types"].items()
-                )
-                print("filtered_spans_types", list(filtered_spans_types))
-                print("spans to extend", list(dict(list(filtered_spans_types)).keys()))
-                spans.extend(list(dict(list(filtered_spans_types)).keys()))
+                for span, t in message["spans_types"].items():
+                    if t == span_type:
+                        spans.append(span)
                 print("extended spans", spans)
             else:
                 spans.extend(message["sent_spans"])
