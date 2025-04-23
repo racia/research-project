@@ -109,6 +109,8 @@ def get_attn_ratio(
         # Get index of maximum (mean) attention task token / sentence score
         # Don't consider high attention "user" token
         max_attn_inx = np.argmax(output_row[1:])
+        print("max_attn_inx", max_attn_inx)
+        print("supporting_indices", supporting_indices)
         # If i is in supporting token indices
         if max_attn_inx in supporting_indices:
             max_supp_target += 1
