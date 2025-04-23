@@ -295,10 +295,10 @@ class Interpretability:
         # target_sent_spans = chat.messages[-1]["target_sent_spans"]
         print("part supporting sentences:", part.supporting_sent_inx)
         print("target_sent_spans:", chat.target_sent_spans)
-        spans_type = chat.get_sentence_spans(span_type="all")
+        spans_types = chat.get_sentence_spans(span_type="all")
 
         # no system prompt but with full tokens, not sentence ids
-        attn_scores_ver = self.get_attention_scores(
+        attn_scores_aggr = self.get_attention_scores(
             output_tensor=output_tensor,
             model_output_len=model_output_len,
             sent_spans=sent_spans,
@@ -315,8 +315,8 @@ class Interpretability:
         target_indices = get_supp_tok_idx(
             chat.target_sent_spans, part.supporting_sent_inx
         )
-        max_attn_ratio_ver = get_attn_ratio(
-            attn_scores=attn_scores_ver,
+        max_attn_ratio_aggr = get_attn_ratio(
+            attn_scores=attn_scores_aggr,
             supp_tok_idx=target_indices,
             supp_sent_idx=part.supporting_sent_inx,
         )
@@ -327,7 +327,7 @@ class Interpretability:
         # )
 
         # TODO: verbose and filtered x tokens (no system prompt)
-        chat_ids_ver = chat_ids[0][:-1].detach().cpu().numpy()
+        chat_ids_aggr = chat_ids[0][:-1].detach().cpu().numpy()
         # stop_words_indices = self.get_stop_word_idxs(
         #     attn_scores_ver, chat_ids_ver, span_ids
         # )
@@ -347,35 +347,32 @@ class Interpretability:
         #     f"* {x_tokens[i]} *" if i in target_indices else f"{x_tokens[i]}"
         #     for i in range(len(chat_ids_ver))
         # ]
-        x_tokens_ver = [
+        x_tokens_aggr = [
             f"* {type_} {i} *" if span in chat.target_sent_spans else f"{type_} {i}"
-            for i, (span, type_) in enumerate(spans_type.items(), 1)
+            for i, (span, type_) in enumerate(spans_types.items(), 1)
         ]
         # Filter tokens
         # x_tokens_ver = [
         #     token for i, token in enumerate(x_tokens_ver) if i in attn_indices
         # ]
-
-        # TODO: aggregated x tokens (with system prompt)
-        # TODO: add sentence type from message["spans_type"]
         # x_tokens_aggr = [
         #     f"* {i} *" if i in part.supporting_sent_inx else f"{i}"
         #     for i in range(1, len(sent_spans) + 1)
         # ]
 
-        y_tokens = self.tokenizer.batch_decode(chat_ids_ver[-model_output_len + 1 :])
+        y_tokens = self.tokenizer.batch_decode(chat_ids_aggr[-model_output_len + 1 :])
         torch.cuda.empty_cache()
 
-        # TODO save verbose and aggregated attention scores and x tokens (y tokens are always verbose)
-        result_ver = InterpretabilityResult(
-            attn_scores_ver, x_tokens_ver, y_tokens, max_attn_ratio_ver
+        # TODO save verbose and (?) aggregated attention scores and x tokens (y tokens are always verbose)
+        result_aggr = InterpretabilityResult(
+            attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio_aggr
         )
         # result_aggr = InterpretabilityResult(
         #     attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio_aggr
         # )
 
         self.plotter.draw_heat(
-            interpretability_result=result_ver,
+            interpretability_result=result_aggr,
             x_label="Task Tokens",
             task_id=part.task_id,
             sample_id=part.sample_id,
@@ -389,4 +386,4 @@ class Interpretability:
         #     sample_id=part.sample_id,
         #     part_id=part.part_id,
         # )
-        return result_ver  # result_aggr
+        return result_aggr  # result_aggr

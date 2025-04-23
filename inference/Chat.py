@@ -47,9 +47,9 @@ class Chat:
         self.model_role = model_role
         self.tokenizer = tokenizer
 
-        sys_prompt_spans_type = {span: "sys" for span in system_prompt.orig_sent_spans}
+        sys_prompt_spans_types = {span: "sys" for span in system_prompt.orig_sent_spans}
         self.offset = len(flatten(system_prompt.orig_ids))
-        example_spans_type = {
+        example_spans_types = {
             upd_span(span, self.offset): "ex" for span in system_prompt.ex_sent_spans
         }
         self.offset = len(flatten(system_prompt.ex_ids))
@@ -60,7 +60,7 @@ class Chat:
             "original_content": system_prompt.original_text,
             "ids": system_prompt.ids,
             "sent_spans": system_prompt.sent_spans,
-            "spans_type": {**sys_prompt_spans_type, **example_spans_type},
+            "spans_types": {**sys_prompt_spans_types, **example_spans_types},
         }
         self.messages = [self.system_message]
         self.sent_spans = {}
@@ -98,12 +98,12 @@ class Chat:
             )
         self.part = part
 
-        spans_type = {}
+        spans_types = {}
         if ids is None and not wrapper:
             ids, sent_spans = sents_to_ids(
                 part.unwrapped_task.split("\n"), self.tokenizer
             )
-            spans_type.update(
+            spans_types.update(
                 {upd_span(span, self.offset): "task" for span in sent_spans}
             )
         elif wrapper:
@@ -129,7 +129,7 @@ class Chat:
                     # before wrapper spans/ids
                     print("intro spans", intro["sent_spans"])
                     if intro["sent_spans"]:
-                        spans_type[upd_span(intro["sent_spans"], self.offset)] = "wrap"
+                        spans_types[upd_span(intro["sent_spans"], self.offset)] = "wrap"
                         print(
                             "upd intro spans",
                             upd_span(intro["sent_spans"], self.offset),
@@ -141,7 +141,7 @@ class Chat:
                     for span, ids_ in zip(to_insert_spans, to_insert_ids):
                         print("task span", span)
                         sent_spans.append(upd_span(span, self.offset))
-                        spans_type[upd_span(span, self.offset)] = "task"
+                        spans_types[upd_span(span, self.offset)] = "task"
                         print("upd task spans", upd_span(span, self.offset))
 
                         self.offset += len(ids_)
@@ -149,7 +149,7 @@ class Chat:
                     # after wrapper spans/ids
                     if outro["sent_spans"]:
                         print("outro spans", outro["sent_spans"])
-                        spans_type[upd_span(outro["sent_spans"], self.offset)] = "wrap"
+                        spans_types[upd_span(outro["sent_spans"], self.offset)] = "wrap"
                         print(
                             "upd outro spans",
                             upd_span(outro["sent_spans"], self.offset),
@@ -164,18 +164,18 @@ class Chat:
                     ids.extend(intro["ids"])
                     self.offset += len(intro["ids"])
                     sent_spans.append(upd_span(intro["sent_spans"], self.offset))
-                    spans_type[upd_span(intro["sent_spans"], self.offset)] = "wrap"
+                    spans_types[upd_span(intro["sent_spans"], self.offset)] = "wrap"
 
         else:
             # TODO: optionally divide it into reasoning and answer
             # for the assistant output, the ids are passed
             sent_spans = [upd_span((0, len(ids)), self.offset)]
             ids = ids.tolist()
-            spans_type[sent_spans[0]] = "ans"
+            spans_types[sent_spans[0]] = "ans"
 
         print("ids", len(ids), ids)
         print("sent_spans", sent_spans)
-        print("spans_type", spans_type)
+        print("spans_types", spans_types)
 
         part_dict = {
             "role": source,
@@ -183,7 +183,7 @@ class Chat:
             "original_content": part if isinstance(part, str) else part.unwrapped_task,
             "ids": ids,
             "sent_spans": sent_spans,
-            "spans_type": spans_type,
+            "spans_types": spans_types,
         }
         self.messages.append(part_dict)
 
@@ -198,17 +198,17 @@ class Chat:
         spans = []
         spans_dict = {}
         for message in self.messages:
-            print('message["spans_type"]', message["spans_type"])
-            # message["spans_type"] = {span: type}
+            print('message["spans_types"]', message["spans_types"])
+            # message["spans_types"] = {span: type}
             if span_type == "all":
-                spans_dict.update(message["spans_type"])
+                spans_dict.update(message["spans_types"])
             elif span_type:
                 print("span_type", span_type)
-                filtered_spans_type = filter(
-                    lambda x: x[1] == "task", message["spans_type"].items()
+                filtered_spans_types = filter(
+                    lambda x: x[1] == "task", message["spans_types"].items()
                 )
-                print("filtered_spans_type", filtered_spans_type)
-                spans.extend(list(dict(filtered_spans_type).keys()))
+                print("filtered_spans_types", list(filtered_spans_types))
+                spans.extend(list(dict(filtered_spans_types).keys()))
             else:
                 spans.extend(message["sent_spans"])
 
