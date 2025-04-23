@@ -199,22 +199,31 @@ class Chat:
         spans = []
         spans_dict = {}
         for message in self.messages:
-            print('message["spans_types"]', message["spans_types"])
             # message["spans_types"] = {span: type}
             if span_type == "all":
                 spans_dict.update(message["spans_types"])
             elif span_type:
-                print("span_type", span_type)
                 for span, t in message["spans_types"].items():
                     if t == span_type:
                         spans.append(span)
-                print("extended spans", spans)
             else:
                 spans.extend(message["sent_spans"])
 
         if span_type == "all":
             return spans_dict
         return spans
+
+    def identify_supp_sent_spans(self):
+        """
+        Identify the target spans specific to the current part as they differ for each question.
+        """
+        self.target_sent_spans = []
+        all_task_spans = self.get_sentence_spans(span_type="task")
+        print("all_task_spans", all_task_spans)
+        for inx, span in enumerate(all_task_spans, 1):
+            if inx in self.part.supporting_sent_inx:
+                print("supp task span - supp inx", span, inx)
+                self.target_sent_spans.append(span)
 
     def chat_to_ids(self, max_length: int = 2048) -> torch.LongTensor:
         """
@@ -223,15 +232,7 @@ class Chat:
         :param max_length: the maximum length of the input
         :return: list of ids
         """
-        # target_sent_spans are updated for each part, because they differ for each question
-        self.target_sent_spans = []
-        all_task_spans = self.get_sentence_spans(span_type="task")
-        print("all_task_spans", all_task_spans)
-        print("self.part.supporting_sent_inx", self.part.supporting_sent_inx)
-        for inx, span in enumerate(all_task_spans, 1):
-            if inx in self.part.supporting_sent_inx:
-                print("span", span)
-                self.target_sent_spans.append(span)
+        self.identify_supp_sent_spans()
 
         chat_ids = [self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")]
         # including the system prompt
