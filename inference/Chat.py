@@ -222,9 +222,11 @@ class Chat:
         # target_sent_spans are updated for each part, because they differ for each question
         self.target_sent_spans = []
         all_task_spans = self.get_sentence_spans(span_type="task")
-        print()
+        print("all_task_spans", all_task_spans)
+        print("self.part.supporting_sent_inx", self.part.supporting_sent_inx)
         for inx, span in enumerate(all_task_spans, 1):
             if inx in self.part.supporting_sent_inx:
+                print("span", span)
                 self.target_sent_spans.append(span)
 
         chat_ids = [self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")]
