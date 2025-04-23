@@ -121,7 +121,7 @@ class Interpretability:
                 ]
             ).squeeze()
             # Reshape to match expected output format
-            warnings.warn(f"DEBUG attn_scores_T: {attn_scores.shape}")
+            print(f"attn_scores_T shape: {attn_scores.shape}")
             if attn_scores.size > 0 and attn_scores.ndim == 2:
                 attn_scores_T = attn_scores.transpose(1, 0)
             elif attn_scores.ndim == 1:
@@ -296,10 +296,11 @@ class Interpretability:
         spans_types = chat.get_sentence_spans(span_type="all")
 
         # no system prompt but with full tokens, not sentence ids
+        # all the spans apart from those for the model output at the end
         attn_scores_aggr = self.get_attention_scores(
             output_tensor=output_tensor,
             model_output_len=model_output_len,
-            sent_spans=sent_spans,
+            sent_spans=sent_spans[:-1],
             # sys_prompt_len=system_prompt_len,
         )
         # # includes the system prompt but with aggregated sentences
@@ -325,7 +326,8 @@ class Interpretability:
         # )
 
         # TODO: verbose and filtered x tokens (no system prompt)
-        chat_ids_aggr = chat_ids[0][:-1].detach().cpu().numpy()
+        # (already doesn't have the model output)
+        chat_ids_aggr = chat_ids[0][:].detach().cpu().numpy()
         # stop_words_indices = self.get_stop_word_idxs(
         #     attn_scores_ver, chat_ids_ver, span_ids
         # )

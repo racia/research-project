@@ -195,7 +195,6 @@ class Chat:
                           Possible types of spans: "sys" (system prompt), "ex" (example), "wrap" (wrappers), "task" (context sentences and questions), "ans" (model output)
         :return: list of sentence spans
         """
-        print(f"GETTING SENTENCE {span_type} SPANS...")
         spans = []
         spans_dict = {}
         for message in self.messages:
