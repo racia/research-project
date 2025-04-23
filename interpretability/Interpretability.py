@@ -194,7 +194,7 @@ class Interpretability:
         :return: attention scores, tokenized x and y tokens
         """
         sys_prompt_len = len(chat.messages[0]["ids"])
-        context_sent_spans = chat.get_sentence_spans()
+        context_sent_spans = chat.get_sentence_spans(span_type="task")
         model_output_len = len(chat.messages[-1]["ids"])
 
         chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
