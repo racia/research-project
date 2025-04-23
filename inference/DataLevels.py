@@ -941,13 +941,11 @@ def print_metrics(data_level: Sample | Task | Split, table: bool = True) -> None
 
     if table:
         print_metrics_table(
-            eval_before=(
-                data_level.evaluator_before if data_level.multi_system else None
-            ),
-            eval_after=data_level.evaluator_after,
+            eval_before=data_level.evaluator_before,
+            eval_after=data_level.evaluator_after if data_level.multi_system else None,
             id_=id_,
         )
     else:
+        data_level.evaluator_before.print_accuracies(id_=id_)
         if data_level.multi_system:
-            data_level.evaluator_before.print_accuracies(id_=id_)
-        data_level.evaluator_after.print_accuracies(id_=id_)
+            data_level.evaluator_after.print_accuracies(id_=id_)
