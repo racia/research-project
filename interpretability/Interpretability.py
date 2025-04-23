@@ -311,7 +311,6 @@ class Interpretability:
         #     sent_spans=None,
         # )
 
-        # TODO: not target sentence spans but general? or no supporting indices just target spans?
         # target_indices = get_supp_tok_idx(
         #     chat.target_sent_spans, part.supporting_sent_inx
         # )

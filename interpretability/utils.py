@@ -1,5 +1,7 @@
 import numpy as np
 
+from inference.utils import flatten
+
 
 class InterpretabilityResult:
     def __init__(
