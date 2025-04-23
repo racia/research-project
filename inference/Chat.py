@@ -192,18 +192,19 @@ class Chat:
         Get the sentence spans of the chat messages, possibly modified.
 
         :param span_type: if "all", return the spans with their type or only of one type if specified
-                         Possible types of spans: "sys" (system prompt), "ex" (example), "wrap" (wrappers), "task" (context sentences and questions), "ans" (model output)
+                          Possible types of spans: "sys" (system prompt), "ex" (example), "wrap" (wrappers), "task" (context sentences and questions), "ans" (model output)
         :return: list of sentence spans
         """
         spans = []
         spans_dict = {}
         for message in self.messages:
+            print('message["spans_type"]', message["spans_type"])
             # message["spans_type"] = {span: type}
             if span_type == "all":
                 spans_dict.update(message["spans_type"])
             elif span_type:
-                for span, type_ in message["spans_type"].items():
-                    if type_ == span_type:
+                for span, t in message["spans_type"].items():
+                    if t == span_type:
                         spans.append(span)
             else:
                 spans.extend(message["sent_spans"])
