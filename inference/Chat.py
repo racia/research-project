@@ -220,6 +220,7 @@ class Chat:
         self.target_sent_spans = []
         all_task_spans = self.get_sentence_spans(span_type="task")
         print("all_task_spans", all_task_spans)
+        print("part.task", self.part.task)
         for inx, span in enumerate(all_task_spans, 1):
             if inx in self.part.supporting_sent_inx:
                 print("supp task span - supp inx", span, inx)
