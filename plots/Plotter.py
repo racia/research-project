@@ -139,7 +139,9 @@ class Plotter:
         scores = interpretability_result.attn_scores
 
         plt.figure(figsize=(12, 6))
-        axis = sns.heatmap(scores[1:], cmap="RdBu_r", vmin=0, vmax=1.0)
+        # to get comparable heatmaps, the max value of all plots should be the same (as much as possible)
+        max_score = np.max(scores[1:]) if np.max(scores[1:]) > 0.4 else 0.4
+        axis = sns.heatmap(scores[1:], cmap="rocket", vmin=0, vmax=max_score)
 
         y = y[1:]
         x_ticks = [i + 0.5 for i in range(len(x))]
