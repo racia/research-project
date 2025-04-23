@@ -214,9 +214,12 @@ class Prompt:
         """
         self.examples += formatted_example
         # try making bigger chunks out of the examples
+        print("parts of example", re.split(r"\n{2,}", formatted_example))
         ids, spans = sents_to_ids(
             re.split(r"\n{2,}", formatted_example), self.tokenizer
         )
+        print("example ids", ids)
+        print("example spans", spans)
         self.ex_ids.append(ids)
         self.ex_sent_spans.append(spans)
 
