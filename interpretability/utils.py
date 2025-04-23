@@ -103,7 +103,7 @@ def get_attn_ratio(
     :return: Most attended target ratio
     """
     max_supp_target = 0
-    supporting_indices = flatten([range(*span) for span in supp_tok_spans])
+    supporting_indices = flatten([list(range(*span)) for span in supp_tok_spans])
 
     for output_row in attn_scores:
         # Get index of maximum (mean) attention task token / sentence score
