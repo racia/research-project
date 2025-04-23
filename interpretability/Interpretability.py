@@ -104,7 +104,9 @@ class Interpretability:
         attn_tensor = attn_tensor.mean(dim=0)
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o model output, as it is in y axis)
-        attn_tensor = attn_tensor[:, -model_output_len:, :-model_output_len].mean(dim=0)
+        attn_tensor = attn_tensor[:, -model_output_len:-1, :-model_output_len].mean(
+            dim=0
+        )
 
         # Normalize the attention scores by the sum of all token attention scores
         attn_tensor = attn_tensor / attn_tensor.sum(dim=-1, keepdim=True)
@@ -361,10 +363,11 @@ class Interpretability:
         #     for i in range(1, len(sent_spans) + 1)
         # ]
 
-        y_tokens = self.tokenizer.batch_decode(chat_ids_aggr[-model_output_len:])
+        y_tokens = self.tokenizer.batch_decode(chat_ids_aggr[-model_output_len:-1])
         torch.cuda.empty_cache()
 
-        # TODO save verbose and (?) aggregated attention scores and x tokens (y tokens are always verbose)
+        # TODO save aggregated attention scores and x tokens (y tokens are always verbose)
+        # TODO: the saving goes into line 262 in DataSaver (warnings.warn("No interpretability results found."))
         result_aggr = InterpretabilityResult(
             attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio_aggr
         )
