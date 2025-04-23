@@ -90,7 +90,7 @@ def get_supp_tok_idx(
 
 
 def get_attn_ratio(
-    attn_scores: np.ndarray, supp_tok_idx, supp_sent_idx: list = None
+    attn_scores: np.ndarray, supp_tok_spans: list[tuple[int, int]]
 ) -> float:
     """
     Returns the ratio of most attended supporting target.
@@ -101,15 +101,14 @@ def get_attn_ratio(
     :return: Most attended target ratio
     """
     max_supp_target = 0
+    supporting_indices = flatten([range(*span) for span in supp_tok_spans])
 
     for output_row in attn_scores:
         # Get index of maximum (mean) attention task token / sentence score
-        max_attn_ind = np.argmax(
-            output_row[1:]
-        )  # Don't consider high attention "user" token
-        supp_range = supp_sent_idx if supp_sent_idx else supp_tok_idx
+        # Don't consider high attention "user" token
+        max_attn_inx = np.argmax(output_row[1:])
         # If i is in supporting token indices
-        if max_attn_ind in supp_range:
+        if max_attn_inx in supporting_indices:
             max_supp_target += 1
 
     # Take ratio

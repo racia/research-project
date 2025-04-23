@@ -104,9 +104,7 @@ class Interpretability:
         attn_tensor = attn_tensor.mean(dim=0)
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o model output, as it is in y axis)
-        attn_tensor = attn_tensor[:, -model_output_len - 1 :, :-model_output_len].mean(
-            dim=0
-        )
+        attn_tensor = attn_tensor[:, -model_output_len:, :-model_output_len].mean(dim=0)
 
         # Normalize the attention scores by the sum of all token attention scores
         attn_tensor = attn_tensor / attn_tensor.sum(dim=-1, keepdim=True)
@@ -314,13 +312,12 @@ class Interpretability:
         # )
 
         # TODO: not target sentence spans but general? or no supporting indices just target spans?
-        target_indices = get_supp_tok_idx(
-            chat.target_sent_spans, part.supporting_sent_inx
-        )
+        # target_indices = get_supp_tok_idx(
+        #     chat.target_sent_spans, part.supporting_sent_inx
+        # )
         max_attn_ratio_aggr = get_attn_ratio(
             attn_scores=attn_scores_aggr,
-            supp_tok_idx=target_indices,
-            supp_sent_idx=part.supporting_sent_inx,
+            supp_tok_spans=chat.target_sent_spans,
         )
         # max_attn_ratio_aggr = get_attn_ratio(
         #     attn_scores=attn_scores_aggr,
@@ -365,7 +362,7 @@ class Interpretability:
         #     for i in range(1, len(sent_spans) + 1)
         # ]
 
-        y_tokens = self.tokenizer.batch_decode(chat_ids_aggr[-model_output_len - 1 :])
+        y_tokens = self.tokenizer.batch_decode(chat_ids_aggr[-model_output_len:])
         torch.cuda.empty_cache()
 
         # TODO save verbose and (?) aggregated attention scores and x tokens (y tokens are always verbose)
