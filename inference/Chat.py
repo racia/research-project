@@ -208,6 +208,7 @@ class Chat:
                     lambda x: x[1] == "task", message["spans_types"].items()
                 )
                 print("filtered_spans_types", list(filtered_spans_types))
+                print("spans to extend", list(dict(filtered_spans_types).keys()))
                 spans.extend(list(dict(filtered_spans_types).keys()))
                 print("extended spans", spans)
             else:
