@@ -209,10 +209,11 @@ class Chat:
                 )
                 print("filtered_spans_types", list(filtered_spans_types))
                 spans.extend(list(dict(filtered_spans_types).keys()))
+                print("extended spans", spans)
             else:
                 spans.extend(message["sent_spans"])
 
-        if span_type:
+        if span_type == "all":
             return spans_dict
         return spans
 
