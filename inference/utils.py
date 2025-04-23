@@ -101,7 +101,7 @@ def contains_not_mentioned(answer) -> bool:
     return False
 
 
-def generation_tokens(tokenizer: PreTrainedTokenizerFast, role: str) -> list[float]:
+def get_generation_tokens(tokenizer: PreTrainedTokenizerFast, role: str) -> list[float]:
     """
     Returns the token id for the role of the message.
 
