@@ -281,7 +281,7 @@ class Interpretability:
         :return: InterpretabilityResult object
         """
         # TODO: Problems:
-        # TODO: there's a weird mean on the first example token
+        # TODO: there's a weird mean on the first example part and first sys sentence
         # TODO: the last tokens of the x axis are longer that the scores and progressively grow
         # TODO: the supporting tokens get padded at wrap (sometimes)
         # TODO: part interpretability is not saved for some reason (tokens and scores)

@@ -212,6 +212,7 @@ class DataSaver:
         :return: None
         """
         for result in part.results:
+            print("result", result)
             if result.interpretability and not result.interpretability.empty():
                 attn_scores_subdir = (
                     self.results_path

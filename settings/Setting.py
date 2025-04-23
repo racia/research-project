@@ -173,7 +173,7 @@ class Setting(ABC):
                             flush=True,
                         )
                     except torch.OutOfMemoryError:
-                        decoded_output, iterations, interpretability = "", 0, None
+                        decoded_output, interpretability = "", None
                         warnings.warn(
                             "DEBUG: Out of memory error while calculating interpretability scores * before *. "
                             "Skipping this step."
