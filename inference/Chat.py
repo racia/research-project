@@ -205,7 +205,7 @@ class Chat:
             elif span_type:
                 print("span_type", span_type)
                 filtered_spans_type = filter(
-                    lambda item: item[1] == "task", dct.items()
+                    lambda x: x[1] == "task", message["spans_type"].items()
                 )
                 print("filtered_spans_type", filtered_spans_type)
                 spans.extend(list(dict(filtered_spans_type).keys()))
