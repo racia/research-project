@@ -285,7 +285,7 @@ class Interpretability:
         # TODO: Problems:
         # TODO: there's a weird mean on the first example token
         # TODO: the last tokens of the x axis are longer that the scores and progressively grow
-
+        # TODO: the supporting tokens get padded at wrap (sometimes)
         # system_prompt_len = len(chat.messages[0]["ids"])
         model_output_len = len(chat.messages[-1]["ids"])
         sent_spans = chat.get_sentence_spans()
@@ -293,8 +293,9 @@ class Interpretability:
         # should return not all of them, but for the last message
         # TODO: there's a difference between the supporting sentences for the current part and in the current part
         # target_sent_spans = chat.messages[-1]["target_sent_spans"]
+        print("part supporting sentences:", part.supporting_sent_inx)
         print("target_sent_spans:", chat.target_sent_spans)
-        spans_type = chat.get_sentence_spans(spans_type=True)
+        spans_type = chat.get_sentence_spans(span_type="all")
 
         # no system prompt but with full tokens, not sentence ids
         attn_scores_ver = self.get_attention_scores(

@@ -206,28 +206,28 @@ class Chat:
         }
         self.messages.append(part_dict)
 
-    def get_sentence_spans(
-        self, target: bool = False, spans_type: bool = False
-    ) -> list[tuple[int, int]] | dict:
+    def get_sentence_spans(self, span_type: str = "") -> list[tuple[int, int]] | dict:
         """
-        Get the sentence spans of the chat messages.
+        Get the sentence spans of the chat messages, possibly modified.
+
+        :param span_type: if "all", return the spans with their type or only of one type if specified
+                         Possible types of spans: "sys" (system prompt), "ex" (example), "wrap" (wrappers), "task" (context sentences and questions), "ans" (model output)
         :return: list of sentence spans
         """
-        if target and spans_type:
-            raise ValueError(
-                "Cannot get target sentence spans and span ids at the same time."
-            )
         spans = []
         spans_dict = {}
         for message in self.messages:
-            # if target:
-            #     spans.extend(message["target_sent_spans"])
-            if spans_type:
-                # {span: type}
+            # message["spans_type"] = {span: type}
+            if span_type == "all":
                 spans_dict.update(message["spans_type"])
+            elif span_type:
+                for span, type_ in message["spans_type"].items():
+                    if type_ == span_type:
+                        spans.append(span)
             else:
                 spans.extend(message["sent_spans"])
-        if spans_type:
+
+        if span_type:
             return spans_dict
         return spans
 
@@ -238,8 +238,9 @@ class Chat:
         :param max_length: the maximum length of the input
         :return: list of ids
         """
+        # target_sent_spans are updated for each part, because they differ for each question
         self.target_sent_spans, inx = [], 0
-        sentence_spans = self.get_sentence_spans(spans_type=True)
+        sentence_spans = self.get_sentence_spans(span_type="all")
         for span, type_ in sentence_spans.items():
             if type_ == "task":
                 inx += 1
