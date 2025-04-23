@@ -92,7 +92,7 @@ class Interpretability:
         :param output_tensor: model output tensor
         :param model_output_len: model output length
         :param sys_prompt_len: The system prompt length
-        :param sent_spans: list of spans of chat sentences
+        :param sent_spans: list of spans of chat sentences without the last model output
 
         :return: 2D normalized attention scores averaged over layers and heads for the tokens of the current task
         """
@@ -104,7 +104,9 @@ class Interpretability:
         attn_tensor = attn_tensor.mean(dim=0)
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o model output, as it is in y axis)
-        attn_tensor = attn_tensor[:, -model_output_len:, :-model_output_len].mean(dim=0)
+        attn_tensor = attn_tensor[:, -model_output_len - 1 :, :-model_output_len].mean(
+            dim=0
+        )
 
         # Normalize the attention scores by the sum of all token attention scores
         attn_tensor = attn_tensor / attn_tensor.sum(dim=-1, keepdim=True)
@@ -284,22 +286,23 @@ class Interpretability:
         # TODO: there's a weird mean on the first example token
         # TODO: the last tokens of the x axis are longer that the scores and progressively grow
         # TODO: the supporting tokens get padded at wrap (sometimes)
+        # TODO: part interpretability is not saved for some reason (tokens and scores)
         # system_prompt_len = len(chat.messages[0]["ids"])
         model_output_len = len(chat.messages[-1]["ids"])
         sent_spans = chat.get_sentence_spans()
-        print("sent_spans:", sent_spans)
         # should return not all of them, but for the last message
         # TODO: there's a difference between the supporting sentences for the current part and in the current part
         # target_sent_spans = chat.messages[-1]["target_sent_spans"]
         print("part supporting sentences:", part.supporting_sent_inx)
         print("target_sent_spans:", chat.target_sent_spans)
         spans_types = chat.get_sentence_spans(span_type="all")
+        print("spans_types:", spans_types)
 
         # no system prompt but with full tokens, not sentence ids
-        # all the spans apart from those for the model output at the end
         attn_scores_aggr = self.get_attention_scores(
             output_tensor=output_tensor,
             model_output_len=model_output_len,
+            # all the spans apart from those for the model output at the end
             sent_spans=sent_spans[:-1],
             # sys_prompt_len=system_prompt_len,
         )
@@ -362,7 +365,7 @@ class Interpretability:
         #     for i in range(1, len(sent_spans) + 1)
         # ]
 
-        y_tokens = self.tokenizer.batch_decode(chat_ids_aggr[-model_output_len + 1 :])
+        y_tokens = self.tokenizer.batch_decode(chat_ids_aggr[-model_output_len - 1 :])
         torch.cuda.empty_cache()
 
         # TODO save verbose and (?) aggregated attention scores and x tokens (y tokens are always verbose)
