@@ -63,7 +63,7 @@ class Chat:
         example_spans_types = {
             upd_span(span, self.offset): "ex" for span in system_prompt.ex_sent_spans
         }
-        self.offset = len(flatten(system_prompt.ex_ids))
+        self.offset += len(flatten(system_prompt.ex_ids))
         print("offset with ex", self.offset)
 
         self.system_message = {
