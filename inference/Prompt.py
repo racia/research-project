@@ -268,6 +268,6 @@ class Prompt:
                 if counter > example_config.number:
                     break
 
-        self.text += self.examples
-        self.ids = self.orig_ids + self.ex_ids
+        self.text += "\n" self.examples
+        self.ids = self.orig_ids + self.tokenizer.encode("\n") self.ex_ids
         self.sent_spans = self.orig_sent_spans + self.ex_sent_spans
