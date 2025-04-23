@@ -217,8 +217,8 @@ class Prompt:
         ids, spans = sents_to_ids(
             re.split(r"\n{2,}", formatted_example), self.tokenizer
         )
-        self.ex_ids.extend(ids)
-        self.ex_sent_spans.extend(spans)
+        self.ex_ids.append(ids)
+        self.ex_sent_spans.append(spans)
 
     def add_examples(self, task_id: int, example_config: Examples) -> None:
         """
