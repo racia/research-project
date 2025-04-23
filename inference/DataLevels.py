@@ -335,7 +335,7 @@ class SamplePart:
 
         self.multi_system = multi_system
         self.versions: list[str] = (
-            ["before", "after"] if self.multi_system else ["after"]
+            ["before", "after"] if self.multi_system else ["before"]
         )
 
         self.raw: dict = raw
@@ -374,7 +374,7 @@ class SamplePart:
         self.results = (
             [self.result_before, self.result_after]
             if self.multi_system
-            else [self.result_after]
+            else [self.result_before]
         )
         self.iterations: int = 0
 
@@ -607,7 +607,7 @@ class Sample:
 
         self.multi_system: bool = multi_system
         self.versions: list[str] = (
-            ["before", "after"] if self.multi_system else ["after"]
+            ["before", "after"] if self.multi_system else ["before"]
         )
 
         self.parts: list[SamplePart] = []
@@ -621,7 +621,7 @@ class Sample:
         self.evaluators: list[AnswerEvaluator] = (
             [self.evaluator_before, self.evaluator_after]
             if self.multi_system
-            else [self.evaluator_after]
+            else [self.evaluator_before]
         )
 
         self.features_before: Features = Features(0, 0, 0, 0, 0, version="before")
@@ -629,7 +629,7 @@ class Sample:
         self.features: list[Features] = (
             [self.features_before, self.features_after]
             if self.multi_system
-            else [self.features_after]
+            else [self.features_before]
         )
         self.results = []
 
@@ -671,19 +671,21 @@ class Sample:
         """
         self.parts.append(part)
 
-        if self.multi_system:
-            self.evaluator_before.pred_answers.append(part.result_before.model_answer)
-            self.evaluator_before.pred_reasonings.append(
-                part.result_before.model_reasoning
+        self.evaluator_before.pred_answers.append(part.result_before.model_answer)
+        self.evaluator_before.pred_reasonings.append(part.result_before.model_reasoning)
+        if part.result_before.interpretability:
+            self.evaluator_before.max_supp_target.add(
+                part.result_before.max_supp_target
             )
-            if part.result_before.interpretability:
-                self.evaluator_before.max_supp_target.add(
-                    part.result_before.max_supp_target
+        if self.multi_system:
+            self.evaluator_after.pred_answers.append(part.result_after.model_answer)
+            self.evaluator_after.pred_reasonings.append(
+                part.result_after.model_reasoning
+            )
+            if part.result_after.interpretability:
+                self.evaluator_after.max_supp_target.add(
+                    part.result_after.max_supp_target
                 )
-        self.evaluator_after.pred_answers.append(part.result_after.model_answer)
-        self.evaluator_after.pred_reasonings.append(part.result_after.model_reasoning)
-        if part.result_after.interpretability:
-            self.evaluator_after.max_supp_target.add(part.result_after.max_supp_target)
 
     def print_sample_predictions(self) -> None:
         """
@@ -722,17 +724,17 @@ class Sample:
 
         else:
             table = PrettyTable()
-            table.field_names = ["GOLDEN", "PREDICTED-Aft", "REASONING-Aft"]
+            table.field_names = ["GOLDEN", "PREDICTED-Bef", "REASONING-Bef"]
 
             attributes = zip(
-                self.evaluator_after.golden_answers,
-                self.evaluator_after.pred_answers,
-                self.evaluator_after.pred_reasonings,
+                self.evaluator_before.golden_answers,
+                self.evaluator_before.pred_answers,
+                self.evaluator_before.pred_reasonings,
             )
 
-            for golden, pred_aft, reas_aft in attributes:
+            for golden, pred_bef, reas_bef in attributes:
                 table.add_row(
-                    [golden, pred_aft.replace("\n", " "), wrap_text(reas_aft)]
+                    [golden, pred_bef.replace("\n", " "), wrap_text(reas_bef)]
                 )
 
         table.hrules = HRuleStyle.ALL
@@ -747,19 +749,23 @@ class Sample:
         :return: None
         """
         self.results = [part.get_result() for part in self.parts]
-        if self.multi_system:
-            self.features_before = sum(
-                [part.result_before.features for part in self.parts],
-                self.features_before,
-            )
-        self.features_after = sum(
-            [part.result_after.features for part in self.parts], self.features_after
+        self.features_before = sum(
+            [part.result_before.features for part in self.parts],
+            self.features_before,
         )
-
-    def calculate_metrics(self):
         if self.multi_system:
-            self.evaluator_before.calculate_accuracies()
-        self.evaluator_after.calculate_accuracies()
+            self.features_after = sum(
+                [part.result_after.features for part in self.parts], self.features_after
+            )
+
+    def calculate_metrics(self) -> None:
+        """
+        Calls all the individual metric calculating functions.
+        :return: None
+        """
+        self.evaluator_before.calculate_accuracies()
+        if self.multi_system:
+            self.evaluator_after.calculate_accuracies()
 
 
 class Task:
@@ -780,7 +786,7 @@ class Task:
 
         self.multi_system = multi_system
         self.versions: list[str] = (
-            ["before", "after"] if self.multi_system else ["after"]
+            ["before", "after"] if self.multi_system else ["before"]
         )
 
         self.evaluator_before: MetricEvaluator = MetricEvaluator(
@@ -792,7 +798,7 @@ class Task:
         self.evaluators: list[MetricEvaluator] = (
             [self.evaluator_before, self.evaluator_after]
             if self.multi_system
-            else [self.evaluator_after]
+            else [self.evaluator_before]
         )
 
         self.features_before: Features = Features(0, 0, 0, 0, 0, version="before")
@@ -800,7 +806,7 @@ class Task:
         self.features: list[Features] = (
             [self.features_before, self.features_after]
             if self.multi_system
-            else [self.features_after]
+            else [self.features_before]
         )
         self.results: list[dict[str, str | int | float]] = []
         self.accuracies: dict = {}
@@ -813,9 +819,9 @@ class Task:
         :return: None
         """
         self.samples.append(sample)
+        self.evaluator_before.update(sample.evaluator_before)
         if self.multi_system:
-            self.evaluator_before.update(sample.evaluator_before)
-        self.evaluator_after.update(sample.evaluator_after)
+            self.evaluator_after.update(sample.evaluator_after)
 
     def set_results(self) -> None:
         """
@@ -854,11 +860,11 @@ class Task:
             "task_id": self.task_id,
         }
         # it is important to KEEP ORDER of the accuracies: before, then after
+        self.evaluator_before.calculate_std()
+        accuracies.update(**self.evaluator_before.get_accuracies())
         if self.multi_system:
-            self.evaluator_before.calculate_std()
-            accuracies.update(**self.evaluator_before.get_accuracies())
-        self.evaluator_after.calculate_std()
-        accuracies.update(**self.evaluator_after.get_accuracies())
+            self.evaluator_after.calculate_std()
+            accuracies.update(**self.evaluator_after.get_accuracies())
         self.accuracies = accuracies
 
 
@@ -879,7 +885,7 @@ class Split:
 
         self.multi_system: bool = multi_system
         self.versions: list[str] = (
-            ["before", "after"] if self.multi_system else ["after"]
+            ["before", "after"] if self.multi_system else ["before"]
         )
 
         self.features_before: Features = Features(0, 0, 0, 0, 0, version="before")
@@ -887,7 +893,7 @@ class Split:
         self.features: list[Features] = (
             [self.features_before, self.features_after]
             if self.multi_system
-            else [self.features_after]
+            else [self.features_before]
         )
 
         self.evaluator_before: MetricEvaluator = MetricEvaluator(
@@ -899,7 +905,7 @@ class Split:
         self.evaluators: list[MetricEvaluator] = (
             [self.evaluator_before, self.evaluator_after]
             if self.multi_system
-            else [self.evaluator_after]
+            else [self.evaluator_before]
         )
 
     def add_task(self, task: Task) -> None:
@@ -910,11 +916,11 @@ class Split:
         :return: None
         """
         self.tasks.append(task)
+        self.features_before += task.features_before
+        self.evaluator_before.update(task.evaluator_before)
         if self.multi_system:
-            self.features_before += task.features_before
-            self.evaluator_before.update(task.evaluator_before)
-        self.features_after += task.features_after
-        self.evaluator_after.update(task.evaluator_after)
+            self.features_after += task.features_after
+            self.evaluator_after.update(task.evaluator_after)
 
 
 def print_metrics(data_level: Sample | Task | Split, table: bool = True) -> None:

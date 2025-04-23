@@ -133,7 +133,7 @@ class DataSaver:
         if multi_system:
             versions = ["before", "after"]
         else:
-            versions = ["after"]
+            versions = ["before"]
 
         accuracies_to_save = defaultdict(dict)
         for evaluator, version in zip(evaluators, versions):
