@@ -245,7 +245,7 @@ class Prompt:
             formatted_example = self.format_example(
                 example=example, number=0, wrapper=example_config.wrapper
             )
-            self.process_example(formatted_example.strip())
+            self.process_example(formatted_example)
         else:
             if example_config.handpicked:
                 raise NotImplementedError(
@@ -263,7 +263,7 @@ class Prompt:
                     number=counter,
                     wrapper=example_config.wrapper,
                 )
-                self.process_example(formatted_example.strip())
+                self.process_example(formatted_example)
                 counter += 1
                 if counter > example_config.number:
                     break
