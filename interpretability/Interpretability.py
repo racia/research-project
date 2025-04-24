@@ -181,7 +181,9 @@ class Interpretability:
         :param after: if to get attention scores after the setting was applied to the model output or before
         :return: attention scores, tokenized x and y tokens
         """
+        
         chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
+        
         # Check task length
         overflow = True if len(context_sent_spans) >= 10 else False
 
