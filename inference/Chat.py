@@ -159,9 +159,9 @@ class Chat:
                     # if the key is not context or question, we just add the before ids
                     # (no after because there's no formatting for reasoning nor answer)
                     ids.extend(intro["ids"])
-                    self.offset += len(intro["ids"])
                     sent_spans.append(upd_span(intro["sent_spans"], self.offset))
                     spans_types[upd_span(intro["sent_spans"], self.offset)] = "wrap"
+                    self.offset += len(intro["ids"])
 
         else:
             # TODO: optionally divide it into reasoning and answer
