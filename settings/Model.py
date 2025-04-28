@@ -138,7 +138,6 @@ class Model:
             device = next(self.model.parameters()).device
 
             if self.interpretability:
-                # self.prepare_prompt(chat=chat)
                 # includes flat ids for all the messages in the chat, including the wrapper
                 chat_ids = self.chat.chat_to_ids()
                 print(
@@ -202,9 +201,6 @@ class Model:
                 )
 
             torch.cuda.empty_cache()
-
-        print("result_ver", interpretability_result)
-        # print("result_aggr", interpretability_result[1])
 
         return decoded_output, interpretability_result
 

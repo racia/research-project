@@ -79,7 +79,6 @@ class Interpretability:
     def get_attention_scores(
         output_tensor: CausalLMOutputWithPast,
         model_output_len: int,
-        sys_prompt_len: int = 0,
         sent_spans: list[tuple] = None,
     ) -> np.ndarray:
         """
@@ -92,8 +91,7 @@ class Interpretability:
 
         :param output_tensor: model output tensor
         :param model_output_len: model output length
-        :param sys_prompt_len: The system prompt length
-        :param sent_spans: list of spans of chat sentences without the last model output
+        :param sent_spans: list of spans of chat sentences without the last model output (if provided, the scores are averaged over them)
 
         :return: 2D normalized attention scores averaged over layers and heads for the tokens of the current task
         """
@@ -108,13 +106,11 @@ class Interpretability:
         attn_tensor = attn_tensor[:, -model_output_len:-1, :-model_output_len].mean(
             dim=0
         )
-
         # Normalize the attention scores by the sum of all token attention scores
         attn_tensor = attn_tensor / attn_tensor.sum(dim=-1, keepdim=True)
         attn_scores = attn_tensor.float().detach().cpu().numpy()
 
         if sent_spans:
-            print("Start averaging attention scores")
             # Additionally take mean of attention scores over each task sentence.
             attn_scores = np.array(
                 [
@@ -123,7 +119,6 @@ class Interpretability:
                 ]
             ).squeeze()
             # Reshape to match expected output format
-            print(f"attn_scores shape: {attn_scores.shape}")
             if attn_scores.size > 0 and attn_scores.ndim == 2:
                 attn_scores_T = attn_scores.transpose(1, 0)
             elif attn_scores.ndim == 1:
@@ -145,7 +140,6 @@ class Interpretability:
                 attn_scores_T.shape[0],
                 len(sent_spans),
             )
-            print("attn_scores_T shape", attn_scores_T.shape)
             return attn_scores_T
 
         return attn_scores
@@ -197,6 +191,9 @@ class Interpretability:
         context_sent_spans = chat.get_sentence_spans(span_type="task")
         model_output_len = len(chat.messages[-1]["ids"])
         sent_spans = chat.get_sentence_spans(span_type="all")
+        supp_sent_idx = [
+            i for i, span in enumerate(sent_spans) if span in chat.supp_sent_spans
+        ]
 
         chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
 
@@ -208,16 +205,13 @@ class Interpretability:
             output_tensor=output_tensor,
             model_output_len=model_output_len,
             sent_spans=context_sent_spans if overflow else None,
-            sys_prompt_len=sys_prompt_len,
         )
 
         # Get filtering indices
         supp_tok_idx = get_supp_tok_idx(context_sent_spans, part.supporting_sent_inx)
-        # TODO: fix the attention ratio (outputs 0.0)
         max_attn_dist = get_max_attn_ratio(
             attn_scores=attention_scores,
-            supp_sent_spans=chat.supp_sent_spans,
-            sent_spans=sent_spans,
+            supp_sent_idx=supp_sent_idx,
         )
 
         if not overflow:
@@ -284,12 +278,9 @@ class Interpretability:
         :return: InterpretabilityResult object
         """
         # should not include the model output span!
-        sent_spans = chat.get_sentence_spans()
-        # should return not all of them, but for the last message
         spans_types = chat.get_sentence_spans(span_type="all")
+        sent_spans = list(spans_types.keys())
         print("spans_types:", spans_types)
-        print("sent_spans", sent_spans)
-        assert sent_spans == list(spans_types.keys())
         supp_sent_idx = [
             i for i, span in enumerate(sent_spans) if span in chat.supp_sent_spans
         ]
@@ -299,7 +290,6 @@ class Interpretability:
             output_tensor=output_tensor,
             model_output_len=len(model_output),
             sent_spans=sent_spans,
-            # sys_prompt_len=system_prompt_len,
         )
 
         # no model output for the x-axis!
@@ -325,6 +315,5 @@ class Interpretability:
             sample_id=part.sample_id,
             part_id=part.part_id,
             version="before",
-            # title=f"Attention Map for {part.task_id} - {part.sample_id} - {part.part_id}",
         )
         return result_aggr

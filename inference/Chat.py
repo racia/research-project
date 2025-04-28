@@ -55,12 +55,10 @@ class Chat:
             "content": system_prompt.text,
             "original_content": system_prompt.original_text,
             "ids": system_prompt.ids,
-            "sent_spans": system_prompt.sent_spans,
             "spans_types": {**sys_prompt_spans_types, **example_spans_types},
         }
         self.offset = len(flatten(system_prompt.ids))
         self.messages = [self.system_message]
-        self.sent_spans = {}
 
         self.supp_sent_spans = []
         self.part = None
@@ -104,7 +102,7 @@ class Chat:
                 {upd_span(span, self.offset): "task" for span in sent_spans}
             )
         elif wrapper:
-            ids, sent_spans = [], []
+            ids = []
 
             for key, wrap in wrapper.items():
                 intro, outro = wrap["before"], wrap.get("after", wrap["before"])
@@ -129,7 +127,6 @@ class Chat:
                     # before wrapper spans/ids
                     print("intro spans", intro["sent_spans"])
                     if intro["sent_spans"]:
-                        sent_spans.append(upd_span(intro["sent_spans"], self.offset))
                         spans_types[upd_span(intro["sent_spans"], self.offset)] = "wrap"
                         print(
                             "upd intro spans",
@@ -141,8 +138,6 @@ class Chat:
                     # context and question spans/ids
                     for ids_, span in zip(task_ids, task_spans):
                         print("task span", span)
-                        sent_spans.append(upd_span(span, self.offset))
-
                         spans_types[upd_span(span, self.offset)] = type_
                         print("upd task spans", upd_span(span, self.offset))
 
@@ -151,7 +146,6 @@ class Chat:
                     # after wrapper spans/ids
                     if outro["sent_spans"]:
                         print("outro spans", outro["sent_spans"])
-                        sent_spans.append(upd_span(outro["sent_spans"], self.offset))
                         spans_types[upd_span(outro["sent_spans"], self.offset)] = "wrap"
                         print(
                             "upd outro spans",
@@ -159,27 +153,21 @@ class Chat:
                         )
 
                         self.offset += len(outro["ids"])
-
-                    # TODO: add space before question (at the end of each chunk?)
                 else:
                     # if the key is not context or question, we just add the before ids
                     # (no after because there's no formatting for reasoning nor answer)
                     ids.extend(intro["ids"])
-                    sent_spans.append(upd_span(intro["sent_spans"], self.offset))
                     spans_types[upd_span(intro["sent_spans"], self.offset)] = "wrap"
 
                     self.offset += len(intro["ids"])
 
         else:
             # TODO: optionally divide it into reasoning and answer
-            # for the assistant output, the ids are passed
-            sent_spans = [upd_span((0, len(ids)), self.offset)]
             ids = ids.tolist()
-            spans_types[sent_spans[0]] = "ans"
+            spans_types[upd_span((0, len(ids)), self.offset)] = "ans"
             self.offset += len(ids)
 
         print("ids", len(ids), ids)
-        print("sent_spans", sent_spans)
         print("spans_types", spans_types)
 
         part_dict = {
@@ -187,27 +175,33 @@ class Chat:
             "content": part if isinstance(part, str) else part.task,
             "original_content": part if isinstance(part, str) else part.unwrapped_task,
             "ids": ids,
-            "sent_spans": sent_spans,
             "spans_types": spans_types,
         }
         self.messages.append(part_dict)
 
     def get_sentence_spans(self, span_type: str = "") -> list[tuple[int, int]] | dict:
         """
-        Get the sentence spans of the chat messages, possibly modified.
+        Get the all sentence spans of the chat messages for only a specified type of them.
 
-        :param span_type: if "all", return the spans with their type or only of one type if specified
-                          Possible types of spans: "sys" (system prompt), "ex" (example), "wrap" (wrappers), "task" (context sentences and questions), "ans" (model output)
-        :return: list of sentence spans
+        :param span_type: "sys" (system prompt),
+                          "ex" (example),
+                          "wrap" (wrappers),
+                          "task" (context sentences and questions),
+                          "cont" (context sentences),
+                          "ques" (questions),
+                          "ans" (model output)
+        :return: returns list of sentence spans if span type is specified otherwise returns all the spans with their types
         """
-        # TODO: filter out start==stop spans if any
+        possible_types = ("sys", "ex", "wrap", "task", "cont", "ques", "ans")
+        if span_type and span_type not in possible_types:
+            raise ValueError(
+                f"Invalid span type: {span_type}. Valid types are: {', '.join(possible_types)}."
+            )
         spans = []
         spans_dict = {}
         for message in self.messages:
             # message["spans_types"] = {span: type}
-            if span_type == "all":
-                spans_dict.update(message["spans_types"])
-            elif span_type:
+            if span_type:
                 for span, type_ in message["spans_types"].items():
                     if type_ == span_type or (
                         span_type == "task" and type_ in ["cont", "ques"]
@@ -215,11 +209,11 @@ class Chat:
                         print("span", span_type, "type_", type_)
                         spans.append(span)
             else:
-                spans.extend(message["sent_spans"])
+                spans_dict.update(message["spans_types"])
 
-        if span_type == "all":
-            return spans_dict
-        return spans
+        if span_type:
+            return spans
+        return spans_dict
 
     def identify_supp_sent_spans(self):
         """
@@ -227,16 +221,11 @@ class Chat:
         """
         self.supp_sent_spans = []
         all_task_spans = self.get_sentence_spans(span_type="task")
-        print("all_task_spans", all_task_spans)
         for inx, span in enumerate(all_task_spans, 1):
-            print("supp task span - supp inx", span, inx)
             if inx in self.part.supporting_sent_inx:
-                print(
-                    "inx", inx, "in supporting_sent_inx", self.part.supporting_sent_inx
-                )
                 self.supp_sent_spans.append(span)
 
-    def chat_to_ids(self, max_length: int = 2048) -> torch.LongTensor:
+    def chat_to_ids(self, max_length: int = 2048) -> torch.Tensor:
         """
         Converts the chat into ids using the tokenizer.
 
@@ -252,8 +241,6 @@ class Chat:
             print(message["ids"])
             message_ids = get_generation_tokens(self.tokenizer, message["role"])
             message_ids.extend(flatten(message["ids"]))
-            self.sent_spans[i] = message["sent_spans"]
-
             conversation_length = len(chat_ids) + len(message_ids)
             if conversation_length > max_length:
                 warnings.warn(
@@ -267,70 +254,3 @@ class Chat:
         print("chat_ids", len(chat_ids), chat_ids)
 
         return torch.as_tensor([chat_ids])
-
-    def convert_into_ids_old(
-        self,
-        tokenizer: PreTrainedTokenizerFast,
-        chat_part: list[dict] = None,
-        max_length: int = 2048,
-    ) -> tuple[dict[str, torch.LongTensor], list[tuple[int, int]], int]:
-        """
-        Converts either all the chat messages or the specified ones into ids ensuring that the input does not exceed
-        the max_length. The system prompt is always included in the input, regardless of the chat_part.
-        The assistant token id is always added at the end of the input.
-
-        (Partly taken from https://arxiv.org/abs/2402.18344)
-
-        :param tokenizer: tokenizer to use
-        :param chat_part: chat part to convert into ids, if None, all messages are used
-        :param max_length: default max_length of model config
-        :return: tensor of input tokens, supporting sentence spans and system prompt length
-        """
-        sys_prompt_len = 0
-        history_ids = []
-        supporting_sent_spans = []
-
-        for i, message in enumerate(chat_part if chat_part else self.messages):
-            if message["role"] in ["system", "user"]:
-                # TODO: add begin of text token
-                message_ids = get_generation_tokens(tokenizer, message["role"])
-            else:
-                message_ids = []
-
-            for sentence in message["original_content"].split("\n"):
-                # \n\n in source produces empty sentences
-                if not sentence or sentence.isspace():
-                    warnings.warn("Empty sentence detected.")
-                    continue
-                tokenized_sentence = tokenizer.encode(
-                    sentence,
-                    add_special_tokens=False,
-                    return_tensors="pt",
-                )[0]
-                torch.cuda.empty_cache()
-                tokenized_sentence = tokenized_sentence.tolist()
-
-                if message["role"] == "user":
-                    start = len(message_ids) + 1
-                    message_ids.extend(tokenized_sentence)
-                    end = (
-                        len(message_ids) - 1 if i == 1 else len(message_ids)
-                    )  # Correct index offset by 1
-                    supporting_sent_spans.append((start, end))
-                else:
-                    message_ids.extend(tokenized_sentence)
-            if message["role"] == "system":
-                sys_prompt_len = len(message_ids)
-
-            if len(history_ids) + len(message_ids) <= max_length:
-                history_ids += message_ids
-            else:
-                break
-
-        history_ids.append(tokenizer.convert_tokens_to_ids("assistant"))
-
-        return (
-            {"input_ids": torch.LongTensor([history_ids])},
-            supporting_sent_spans,
-            sys_prompt_len,
-        )
