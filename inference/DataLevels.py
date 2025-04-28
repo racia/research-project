@@ -140,6 +140,7 @@ class Results:
         "reasoning_correct",
         "model_output",
         "max_supp_attn",
+        "attn_on_target",
     ]
 
     def __init__(
@@ -180,6 +181,9 @@ class Results:
         self.interpretability: InterResult = interpretability
         self.max_supp_attn: float = (
             interpretability.max_supp_attn if interpretability else None
+        )
+        self.attn_on_target: float = (
+            interpretability.attn_on_target if interpretability else None
         )
 
         self.dict: dict = self.get_result()

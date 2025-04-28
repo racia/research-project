@@ -99,6 +99,7 @@ results:
     - exact_match_accuracy_after
     - soft_match_accuracy_after
     - max_supp_attn_after
+    - attn_on_target_after
     - there_after
     - verbs_after
     - pronouns_after
@@ -112,6 +113,7 @@ results:
     - exact_match_accuracy_before
     - soft_match_accuracy_before
     - max_supp_attn_before
+    - attn_on_target_before
     - there_before
     - verbs_before
     - pronouns_before

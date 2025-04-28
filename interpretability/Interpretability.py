@@ -15,6 +15,7 @@ from interpretability.utils import (
     get_max_attn_ratio,
     get_supp_tok_idx,
     get_indices,
+    get_attn_on_target,
 )
 from plots.Plotter import Plotter
 
@@ -289,6 +290,9 @@ class Interpretability:
         print("spans_types:", spans_types)
         print("sent_spans", sent_spans)
         assert sent_spans == list(spans_types.keys())
+        supp_sent_idx = [
+            i for i, span in enumerate(sent_spans) if span in chat.supp_sent_spans
+        ]
 
         # only aggregated sentences, no verbose tokens
         attn_scores_aggr = self.get_attention_scores(
@@ -296,11 +300,6 @@ class Interpretability:
             model_output_len=len(model_output),
             sent_spans=sent_spans,
             # sys_prompt_len=system_prompt_len,
-        )
-        max_attn_ratio = get_max_attn_ratio(
-            attn_scores=attn_scores_aggr,
-            supp_sent_spans=chat.supp_sent_spans,
-            sent_spans=sent_spans,
         )
 
         # no model output for the x-axis!
@@ -312,10 +311,11 @@ class Interpretability:
         y_tokens = self.tokenizer.batch_decode(model_output[:-1])
         torch.cuda.empty_cache()
 
-        # TODO save aggregated attention scores and x tokens (y tokens are always verbose)
-        # TODO: the saving goes into line 262 in DataSaver (warnings.warn("No interpretability results found."))
+        max_attn_ratio = get_max_attn_ratio(attn_scores_aggr, supp_sent_idx)
+        attn_on_target = get_attn_on_target(attn_scores_aggr, supp_sent_idx)
+
         result_aggr = InterpretabilityResult(
-            attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio
+            attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio, attn_on_target
         )
 
         self.plotter.draw_heat(

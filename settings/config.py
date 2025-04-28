@@ -147,6 +147,8 @@ class CSVHeaders:
     soft_match_accuracy_before: str = "soft_match_accuracy_before"
     max_supp_attn_before: str = "max_supp_attn_before"
     max_supp_attn_after: str = "max_supp_attn_after"
+    attn_on_target_before: str = "attn_on_target_before"
+    attn_on_target_after: str = "attn_on_target_after"
     there_before: str = "there_before"
     verbs_before: str = "verbs_before"
     pronouns_before: str = "pronouns_before"

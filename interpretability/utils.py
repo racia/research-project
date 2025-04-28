@@ -7,7 +7,8 @@ class InterpretabilityResult:
         attn_scores: np.ndarray,
         x_tokens: list[str],
         y_tokens: list[str],
-        max_supp_attn: float = None,
+        max_supp_attn: float,
+        attn_on_target: float,
     ):
         """
         Interpretability result class
@@ -15,23 +16,26 @@ class InterpretabilityResult:
         :param x_tokens: tokenized x tokens
         :param y_tokens: tokenized y tokens
         :param max_supp_attn: ratio of max supporting sent
+        :param attn_on_target: average attention on supporting sentences
         """
         self.attn_scores: np.ndarray = attn_scores
         self.x_tokens: list[str] = x_tokens
         self.y_tokens: list[str] = y_tokens
         self.max_supp_attn: float = max_supp_attn
+        self.attn_on_target: float = attn_on_target
 
         self.result = {
             "attn_scores": self.attn_scores,
             "x_tokens": self.x_tokens,
             "y_tokens": self.y_tokens,
             "max_supp_attn": self.max_supp_attn,
+            "attn_on_target": self.attn_on_target,
         }
 
     def __repr__(self) -> str:
         return (
             f"InterpretabilityResult(attn_scores={self.attn_scores.shape}, x_tokens={len(self.x_tokens)}, "
-            f"y_tokens={len(self.y_tokens)}, max_supp_attn={self.max_supp_attn})"
+            f"y_tokens={len(self.y_tokens)}, max_supp_attn={self.max_supp_attn}, attn_on_target={self.attn_on_target})"
         )
 
     def empty(self) -> bool:
@@ -92,18 +96,15 @@ def get_supp_tok_idx(
 
 def get_max_attn_ratio(
     attn_scores: np.ndarray,
-    supp_sent_spans: list[tuple[int, int]],
-    sent_spans: list[tuple[int, int]],
+    supp_sent_idx: list[int],
 ) -> float:
     """
     Returns the ratio of most attended supporting target sentences.
 
     :param attn_scores: The attention scores
-    :param supp_sent_spans: The spans indices of the supporting sentences
-    :param sent_spans: The spans indices of the sentences
+    :param supp_sent_idx: The indices of the supporting sentences
     :return: Most attended sentence ratio
     """
-    supp_sent_idx = [i for i, span in enumerate(sent_spans) if span in supp_sent_spans]
     max_attn_inx = np.argmax(attn_scores, axis=1)
     attention_on_supp = np.isin(max_attn_inx, supp_sent_idx)
     max_supp_attn = attention_on_supp.mean()
@@ -116,3 +117,20 @@ def get_max_attn_ratio(
     # Take ratio
     # max_supp_attn = max_supp_attn / attn_scores.shape[0]
     return round(float(max_supp_attn), 4)
+
+
+def get_attn_on_target(
+    attn_scores: np.ndarray,
+    supp_sent_idx: list[int],
+) -> float:
+    """
+    Calculates the average percentage of attention directed to supporting target sentences.
+
+    :param attn_scores: The attention scores
+    :param supp_sent_idx: The indices of the supporting sentences
+    :return: Average attention on supporting sentences
+    """
+    attn_on_supp = attn_scores[:, supp_sent_idx]
+    total_attn_per_token = attn_on_supp.sum(axis=1)
+    avg_attn_on_supp = total_attn_per_token.mean()
+    return round(float(avg_attn_on_supp), 4)

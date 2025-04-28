@@ -84,6 +84,7 @@ results:
     - exact_match_accuracy_before
     - soft_match_accuracy_before
     - max_supp_attn_before
+    - attn_on_target_before
     - verbs_before
     - there_before
     - pronouns_before
