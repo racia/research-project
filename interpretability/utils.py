@@ -102,17 +102,16 @@ def get_attn_ratio(
     :param sent_spans: The spans indices of the sentences
     :return: Most attended sentence ratio
     """
-    max_supp_sent = 0
     supp_sent_idx = [i for i, span in enumerate(sent_spans) if span in supp_sent_spans]
-    print("DEBUG supp_sent_idx", supp_sent_idx)
-
-    for output_row in attn_scores:
-        # Get index of maximum (mean) attention task token / sentence score
-        max_attn_inx = np.argmax(output_row)
-        print("max_attn_inx", max_attn_inx)
-        if max_attn_inx in supp_sent_idx:
-            max_supp_sent += 1
+    max_attn_inx = np.argmax(attn_scores, axis=1)
+    attention_on_supp = np.isin(max_attn_inx, supp_sent_idx)
+    max_supp_sent = attention_on_supp.mean()
+    # for output_row in attn_scores:
+    #     # Get index of maximum (mean) attention task token / sentence score
+    #     max_attn_inx = np.argmax(output_row)
+    #     if max_attn_inx in supp_sent_idx:
+    #         max_supp_sent += 1
 
     # Take ratio
-    max_supp_sent = max_supp_sent / attn_scores.shape[0]
-    return round(max_supp_sent, 4)
+    # max_supp_sent = max_supp_sent / attn_scores.shape[0]
+    return round(float(max_supp_sent), 4)
