@@ -97,9 +97,7 @@ class Chat:
         if ids is None and not wrapper:
             if isinstance(part, SamplePart):
                 part = part.unwrapped_task
-            ids, sent_spans = sents_to_ids(
-                part.split("\n"), self.tokenizer
-            )
+            ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
             spans_types.update(
                 {upd_span(span, self.offset): "task" for span in sent_spans}
             )
