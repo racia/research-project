@@ -7,7 +7,7 @@ from transformers import PreTrainedTokenizerFast
 
 from data.TaskExamples import Task, TaskExample, TaskExamples
 from inference.DataLevels import SamplePart
-from inference.utils import sents_to_ids
+from inference.utils import sents_to_ids, flatten, upd_span
 from settings.config import Examples
 
 nlp = en_core_web_sm.load()
@@ -79,6 +79,7 @@ class Prompt:
             self.orig_ids, self.orig_sent_spans = sents_to_ids(
                 nlp(self.text).sents, self.tokenizer
             )
+            self.offset = len(flatten(self.orig_ids))
             self.ids, self.sent_spans = self.orig_ids, self.orig_sent_spans
             self.ex_ids = []
             self.ex_sent_spans = []
@@ -218,7 +219,7 @@ class Prompt:
             re.split(r"\n{2,}", formatted_example), self.tokenizer
         )
         self.ex_ids.extend(ids)
-        self.ex_sent_spans.extend(spans)
+        self.ex_sent_spans.extend([upd_span(span, self.offset) for span in spans])
 
     def add_examples(self, task_id: int, example_config: Examples) -> None:
         """

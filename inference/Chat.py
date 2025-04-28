@@ -48,11 +48,7 @@ class Chat:
         self.tokenizer = tokenizer
 
         sys_prompt_spans_types = {span: "sys" for span in system_prompt.orig_sent_spans}
-        self.offset = len(flatten(system_prompt.orig_ids))
-        example_spans_types = {
-            upd_span(span, self.offset): "ex" for span in system_prompt.ex_sent_spans
-        }
-        self.offset += len(flatten(system_prompt.ex_ids))
+        example_spans_types = {span: "ex" for span in system_prompt.ex_sent_spans}
 
         self.system_message = {
             "role": Source.system,
@@ -62,11 +58,12 @@ class Chat:
             "sent_spans": system_prompt.sent_spans,
             "spans_types": {**sys_prompt_spans_types, **example_spans_types},
         }
+        self.offset = len(flatten(system_prompt.ids))
         self.messages = [self.system_message]
         self.sent_spans = {}
 
-        self.part = None
         self.target_sent_spans = []
+        self.part = None
 
     def __repr__(self) -> str:
         return "\n".join(

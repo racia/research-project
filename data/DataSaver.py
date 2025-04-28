@@ -213,6 +213,7 @@ class DataSaver:
         """
         for result in part.results:
             print("result", result)
+            print("result_before", part.result_before)
             if result.interpretability and not result.interpretability.empty():
                 attn_scores_subdir = (
                     self.results_path
