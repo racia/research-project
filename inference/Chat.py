@@ -62,7 +62,7 @@ class Chat:
         self.messages = [self.system_message]
         self.sent_spans = {}
 
-        self.target_sent_spans = []
+        self.supp_sent_spans = []
         self.part = None
 
     def __repr__(self) -> str:
@@ -223,9 +223,9 @@ class Chat:
 
     def identify_supp_sent_spans(self):
         """
-        Identify the target spans specific to the current part as they differ for each question.
+        Identify the supporting spans specific to the current part as they differ for each question.
         """
-        self.target_sent_spans = []
+        self.supp_sent_spans = []
         all_task_spans = self.get_sentence_spans(span_type="task")
         print("all_task_spans", all_task_spans)
         for inx, span in enumerate(all_task_spans, 1):
@@ -234,7 +234,7 @@ class Chat:
                 print(
                     "inx", inx, "in supporting_sent_inx", self.part.supporting_sent_inx
                 )
-                self.target_sent_spans.append(span)
+                self.supp_sent_spans.append(span)
 
     def chat_to_ids(self, max_length: int = 2048) -> torch.LongTensor:
         """

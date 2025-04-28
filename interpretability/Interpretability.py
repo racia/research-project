@@ -195,6 +195,7 @@ class Interpretability:
         sys_prompt_len = len(chat.messages[0]["ids"])
         context_sent_spans = chat.get_sentence_spans(span_type="task")
         model_output_len = len(chat.messages[-1]["ids"])
+        sent_spans = chat.get_sentence_spans(span_type="all")
 
         chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
 
@@ -213,7 +214,9 @@ class Interpretability:
         supp_tok_idx = get_supp_tok_idx(context_sent_spans, part.supporting_sent_inx)
         # TODO: fix the attention ratio (outputs 0.0)
         max_attn_dist = get_attn_ratio(
-            attn_scores=attention_scores, supp_tok_spans=chat.target_sent_spans
+            attn_scores=attention_scores,
+            supp_sent_spans=chat.supp_sent_spans,
+            sent_spans=sent_spans,
         )
 
         if not overflow:
@@ -296,12 +299,13 @@ class Interpretability:
         )
         max_attn_ratio_aggr = get_attn_ratio(
             attn_scores=attn_scores_aggr,
-            supp_sent_spans=chat.target_sent_spans,
+            supp_sent_spans=chat.supp_sent_spans,
+            sent_spans=sent_spans,
         )
 
         # no model output for the x-axis!
         x_tokens_aggr = [
-            f"* {i} {type_} *" if span in chat.target_sent_spans else f"{i} {type_}"
+            f"* {i} {type_} *" if span in chat.supp_sent_spans else f"{i} {type_}"
             for i, (span, type_) in enumerate(spans_types.items(), 1)
         ]
 

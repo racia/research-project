@@ -1,7 +1,5 @@
 import numpy as np
 
-from inference.utils import flatten
-
 
 class InterpretabilityResult:
     def __init__(
@@ -9,31 +7,31 @@ class InterpretabilityResult:
         attn_scores: np.ndarray,
         x_tokens: list[str],
         y_tokens: list[str],
-        max_supp_target: float = None,
+        max_supp_sent: float = None,
     ):
         """
         Interpretability result class
         :param attn_scores: attention scores
         :param x_tokens: tokenized x tokens
         :param y_tokens: tokenized y tokens
-        :param max_supp_target: ratio of max supporting target
+        :param max_supp_sent: ratio of max supporting sent
         """
         self.attn_scores: np.ndarray = attn_scores
         self.x_tokens: list[str] = x_tokens
         self.y_tokens: list[str] = y_tokens
-        self.max_supp_target: float = max_supp_target
+        self.max_supp_sent: float = max_supp_sent
 
         self.result = {
             "attn_scores": self.attn_scores,
             "x_tokens": self.x_tokens,
             "y_tokens": self.y_tokens,
-            "max_supp_target": self.max_supp_target,
+            "max_supp_sent": self.max_supp_sent,
         }
 
     def __repr__(self) -> str:
         return (
             f"InterpretabilityResult(attn_scores={self.attn_scores.shape}, x_tokens={len(self.x_tokens)}, "
-            f"y_tokens={len(self.y_tokens)}, max_supp_target={self.max_supp_target})"
+            f"y_tokens={len(self.y_tokens)}, max_supp_sent={self.max_supp_sent})"
         )
 
     def empty(self) -> bool:
@@ -92,29 +90,30 @@ def get_supp_tok_idx(
 
 
 def get_attn_ratio(
-    attn_scores: np.ndarray, supp_sent_spans: list[tuple[int, int]]
+    attn_scores: np.ndarray,
+    supp_sent_spans: list[tuple[int, int]],
+    sent_spans: list[tuple[int, int]],
 ) -> float:
     """
-    Returns the ratio of most attended supporting target.
+    Returns the ratio of most attended supporting target sentences.
 
     :param attn_scores: The attention scores
     :param supp_sent_spans: The spans indices of the supporting sentences
-    :return: Most attended target ratio
+    :param sent_spans: The spans indices of the sentences
+    :return: Most attended sentence ratio
     """
-    max_supp_target = 0
-    supporting_indices = flatten([list(range(*span)) for span in supp_sent_spans])
+    max_supp_sent = 0
+    supp_sent_idx = [i for i, span in enumerate(sent_spans) if span in supp_sent_spans]
 
     for output_row in attn_scores:
-        print("DEBUG output_row", output_row)
         # Get index of maximum (mean) attention task token / sentence score
-        # Don't consider high attention "user" token
-        max_attn_inx = np.argmax(output_row[1:])
+        max_attn_inx = np.argmax(output_row)
         # If i is in supporting token indices
-        if max_attn_inx in supporting_indices:
-            max_supp_target += 1
+        if max_attn_inx in supp_sent_idx:
+            max_supp_sent += 1
 
     # Take ratio
-    max_supp_target = max_supp_target / attn_scores.shape[0]
-    print("DEBUG max_supp_target", max_supp_target)
+    max_supp_sent = max_supp_sent / attn_scores.shape[0]
+    print("DEBUG max_supp_sent", max_supp_sent)
 
-    return max_supp_target
+    return max_supp_sent
