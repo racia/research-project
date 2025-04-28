@@ -195,6 +195,7 @@ class Chat:
                           Possible types of spans: "sys" (system prompt), "ex" (example), "wrap" (wrappers), "task" (context sentences and questions), "ans" (model output)
         :return: list of sentence spans
         """
+        # TODO: filter out start==stop spans if any
         spans = []
         spans_dict = {}
         for message in self.messages:
@@ -220,8 +221,11 @@ class Chat:
         all_task_spans = self.get_sentence_spans(span_type="task")
         print("all_task_spans", all_task_spans)
         for inx, span in enumerate(all_task_spans, 1):
+            print("supp task span - supp inx", span, inx)
             if inx in self.part.supporting_sent_inx:
-                print("supp task span - supp inx", span, inx)
+                print(
+                    "inx", inx, "in supporting_sent_inx", self.part.supporting_sent_inx
+                )
                 self.target_sent_spans.append(span)
 
     def chat_to_ids(self, max_length: int = 2048) -> torch.LongTensor:

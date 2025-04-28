@@ -114,7 +114,6 @@ class Interpretability:
 
         if sent_spans:
             print("Start averaging attention scores")
-            print(attn_scores)
             # Additionally take mean of attention scores over each task sentence.
             attn_scores = np.array(
                 [
@@ -123,7 +122,7 @@ class Interpretability:
                 ]
             ).squeeze()
             # Reshape to match expected output format
-            print(f"attn_scores_T shape: {attn_scores.shape}")
+            print(f"attn_scores shape: {attn_scores.shape}")
             if attn_scores.size > 0 and attn_scores.ndim == 2:
                 attn_scores_T = attn_scores.transpose(1, 0)
             elif attn_scores.ndim == 1:
@@ -145,7 +144,7 @@ class Interpretability:
                 attn_scores_T.shape[0],
                 len(sent_spans),
             )
-            print("attn_scores_T:", attn_scores_T)
+            print("attn_scores_T shape", attn_scores_T.shape)
             return attn_scores_T
 
         return attn_scores
@@ -214,9 +213,7 @@ class Interpretability:
         supp_tok_idx = get_supp_tok_idx(context_sent_spans, part.supporting_sent_inx)
         # TODO: fix the attention ratio (outputs 0.0)
         max_attn_dist = get_attn_ratio(
-            attn_scores=attention_scores,
-            supp_tok_idx=supp_tok_idx,
-            supp_sent_idx=part.supporting_sent_inx if overflow else None,
+            attn_scores=attention_scores, supp_tok_spans=chat.target_sent_spans
         )
 
         if not overflow:
@@ -266,8 +263,8 @@ class Interpretability:
     def process_attention(
         self,
         output_tensor: CausalLMOutputWithPast,
-        chat_ids: torch.Tensor,
         chat: Chat,
+        model_output: torch.Tensor,
         part: SamplePart,
     ) -> InterpretabilityResult:
         """
@@ -276,10 +273,10 @@ class Interpretability:
         The following code is an adjusted version of the original implementation from Li et. al 2024
         (Link to paper: https://arxiv.org/abs/2402.18344)
 
-        :param output_tensor: model output tensor
-        :param chat_ids: the ids of the whole chat
-        :param chat: the student chat
-        :param part: the part of the sample to evaluate
+        :param output_tensor: model output tensor for the current chat
+        :param model_output: model output ids
+        :param chat: the student chat (contains all the messages but the last model output)
+        :param part: the part of the sample to evaluate # TODO: to remove
         :return: InterpretabilityResult object
         """
         # TODO: Problems:
@@ -287,48 +284,29 @@ class Interpretability:
         # TODO: the last tokens of the x axis are longer that the scores and progressively grow
         # TODO: the supporting tokens get padded at wrap (sometimes)
         # TODO: part interpretability is not saved for some reason (tokens and scores)
-        # system_prompt_len = len(chat.messages[0]["ids"])
-        model_output_len = len(chat.messages[-1]["ids"])
+        # should not include the model output span!
         sent_spans = chat.get_sentence_spans()
         # should return not all of them, but for the last message
         # TODO: there's a difference between the supporting sentences for the current part and in the current part
-        # target_sent_spans = chat.messages[-1]["target_sent_spans"]
         print("part supporting sentences:", part.supporting_sent_inx)
         print("target_sent_spans:", chat.target_sent_spans)
         spans_types = chat.get_sentence_spans(span_type="all")
+        print("TO COMPARE")
         print("spans_types:", spans_types)
+        print("sent_spans", sent_spans)
 
-        # no system prompt but with full tokens, not sentence ids
+        # only aggregated sentences, no verbose tokens
         attn_scores_aggr = self.get_attention_scores(
             output_tensor=output_tensor,
-            model_output_len=model_output_len,
-            # all the spans apart from those for the model output at the end
-            sent_spans=sent_spans[:-1],
+            model_output_len=len(model_output),
+            sent_spans=sent_spans,
             # sys_prompt_len=system_prompt_len,
         )
-        # # includes the system prompt but with aggregated sentences
-        # attn_scores_aggr = self.get_attention_scores(
-        #     output_tensor=output_tensor,
-        #     model_output_len=model_output_len,
-        #     sent_spans=None,
-        # )
-
-        # target_indices = get_supp_tok_idx(
-        #     chat.target_sent_spans, part.supporting_sent_inx
-        # )
         max_attn_ratio_aggr = get_attn_ratio(
             attn_scores=attn_scores_aggr,
             supp_tok_spans=chat.target_sent_spans,
         )
-        # max_attn_ratio_aggr = get_attn_ratio(
-        #     attn_scores=attn_scores_aggr,
-        #     supp_tok_idx=target_indices,
-        #     supp_sent_idx=part.supporting_sent_inx,
-        # )
 
-        # TODO: verbose and filtered x tokens (no system prompt)
-        # (already doesn't have the model output)
-        chat_ids_aggr = chat_ids[0][:].detach().cpu().numpy()
         # stop_words_indices = self.get_stop_word_idxs(
         #     attn_scores_ver, chat_ids_ver, span_ids
         # )
@@ -349,21 +327,13 @@ class Interpretability:
         #     for i in range(len(chat_ids_ver))
         # ]
 
-        # we don't need the last part — the model output
+        # no model output for the x-axis!
         x_tokens_aggr = [
             f"* {type_} {i} *" if span in chat.target_sent_spans else f"{type_} {i}"
-            for i, (span, type_) in enumerate(list(spans_types.items())[:-1], 1)
+            for i, (span, type_) in enumerate(spans_types.items(), 1)
         ]
-        # Filter tokens
-        # x_tokens_ver = [
-        #     token for i, token in enumerate(x_tokens_ver) if i in attn_indices
-        # ]
-        # x_tokens_aggr = [
-        #     f"* {i} *" if i in part.supporting_sent_inx else f"{i}"
-        #     for i in range(1, len(sent_spans) + 1)
-        # ]
 
-        y_tokens = self.tokenizer.batch_decode(chat_ids_aggr[-model_output_len:-1])
+        y_tokens = self.tokenizer.batch_decode(model_output[:-1])
         torch.cuda.empty_cache()
 
         # TODO save aggregated attention scores and x tokens (y tokens are always verbose)
@@ -377,17 +347,10 @@ class Interpretability:
 
         self.plotter.draw_heat(
             interpretability_result=result_aggr,
-            x_label="Task Tokens",
+            x_label="Sentence Indices",
             task_id=part.task_id,
             sample_id=part.sample_id,
             part_id=part.part_id,
             # title=f"Attention Map for {part.task_id} - {part.sample_id} - {part.part_id}",
         )
-        # self.plotter.draw_heat(
-        #     interpretability_result=result_aggr,
-        #     x_label="Sentence Indices",
-        #     task_id=part.task_id,
-        #     sample_id=part.sample_id,
-        #     part_id=part.part_id,
-        # )
-        return result_aggr  # result_aggr
+        return result_aggr

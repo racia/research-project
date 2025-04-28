@@ -139,6 +139,7 @@ class Model:
 
             if self.interpretability:
                 # self.prepare_prompt(chat=chat)
+                # includes flat ids for all the messages in the chat, including the wrapper
                 chat_ids = self.chat.chat_to_ids()
                 print(
                     f"Formatted prompt (to remove):",
@@ -148,14 +149,6 @@ class Model:
                 )
                 inputs = {"input_ids": chat_ids.to("cuda")}
                 print("inputs", inputs)
-            # if self.chat:
-            #     chat_ids, context_sent_spans, sys_prompt_len = (
-            #         self.chat.convert_into_ids_old(
-            #             chat_part=self.chat.messages,
-            #             tokenizer=self.tokenizer,
-            #         )
-            #     )
-            #     inputs = {k: v.to(device) for k, v in chat_ids.items()}
             else:
                 inputs = self.tokenizer(
                     formatted_prompt,
@@ -170,6 +163,7 @@ class Model:
             torch.cuda.empty_cache()
 
             with autocast("cuda"):
+                # includes all the previous ids + the model output
                 outputs = self.model.generate(
                     **inputs,
                     max_new_tokens=self.max_new_tokens,
@@ -185,9 +179,6 @@ class Model:
                 ).strip()
 
                 print("decoded_output", decoded_output)
-                self.chat.add_message(
-                    part=decoded_output, source=Source.assistant, ids=encoded_output
-                )
 
                 interpretability_result = None
                 if self.interpretability and decoded_output:
@@ -197,13 +188,19 @@ class Model:
                         output_attentions=True,
                         output_hidden_states=False,
                     )
-
+                    print("output_tensor shape", output_tensor.shape)
                     interpretability_result = self.interpretability.process_attention(
-                        chat_ids=outputs,
+                        # output tensor includes all the previous ids + the model output
                         output_tensor=output_tensor,
+                        # chat doesn't include the current model output
                         chat=self.chat,
+                        model_output=encoded_output,
                         part=part,
                     )
+
+                self.chat.add_message(
+                    part=decoded_output, source=Source.assistant, ids=encoded_output
+                )
 
             torch.cuda.empty_cache()
 
