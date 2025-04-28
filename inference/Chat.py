@@ -115,7 +115,7 @@ class Chat:
                     type_ = "cont"
                 elif key == "question":
                     to_encode = [part.structured_question]
-                    type_ = "que"
+                    type_ = "ques"
 
                 task_ids, task_spans = sents_to_ids(to_encode, self.tokenizer)
                 print("encoded message", *zip(task_spans, task_ids), sep="\n")
@@ -209,7 +209,7 @@ class Chat:
                 spans_dict.update(message["spans_types"])
             elif span_type:
                 for span, t in message["spans_types"].items():
-                    if t == span_type or span_type == "task" and t == "cont":
+                    if t == span_type or (span_type == "task" and t == "cont"):
                         spans.append(span)
                     else:
                         warnings.warn(
