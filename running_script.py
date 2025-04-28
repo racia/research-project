@@ -165,11 +165,11 @@ def run_setting(cfg: DictConfig) -> None:
     elif cfg.setting.name.lower() == "feedback":
         feedback_prompt = Prompt(
             prompt_path=cfg.feedback_prompt.paths[0],
-            wrapper=cfg.feedback_prompt.wrapper,
+            wrapper=cfg.feedback_prompt.get("wrapper", None),
         )
         refine_prompt = Prompt(
             prompt_path=cfg.refine_prompt.paths[0],
-            wrapper=cfg.refine_prompt.wrapper,
+            wrapper=cfg.refine_prompt.get("wrapper", None),
         )
         print("- THE FEEDBACK PROMPT -")
         print("______________________________")
@@ -197,11 +197,12 @@ def run_setting(cfg: DictConfig) -> None:
         )
     elif cfg.setting.name.lower() in sd:
         eval_prompt = Prompt(
-            prompt_path=cfg.eval_prompt.paths[0], wrapper=cfg.eval_prompt.wrapper
+            prompt_path=cfg.eval_prompt.paths[0],
+            wrapper=cfg.eval_prompt.get("wrapper", None),
         )
         resume_prompt = Prompt(
             prompt_path=cfg.resume_prompt.paths[0],
-            wrapper=cfg.resume_prompt.wrapper,
+            wrapper=cfg.resume_prompt.get("wrapper", None),
         )
         print("- THE EVAL PROMPT -")
         print("______________________________")
