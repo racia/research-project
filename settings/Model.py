@@ -48,7 +48,7 @@ class Model:
         if interpretability:
             self.interpretability.tokenizer = self.tokenizer
 
-        self.wrapper = encode_wrapper(wrapper, self.tokenizer)
+        self.wrapper = encode_wrapper(wrapper, self.tokenizer) if wrapper else None
         self.chat: Chat = None
 
     def load(self) -> tuple[OpenLlamaPreTrainedModel, PreTrainedTokenizerFast]:
