@@ -281,15 +281,11 @@ class Interpretability:
         """
         # TODO: Problems:
         # TODO: there's a weird mean on the first example part and first sys sentence
-        # TODO: the last tokens of the x axis are longer that the scores and progressively grow
         # TODO: ? the supporting tokens get padded at wrap (sometimes)
         # TODO: part interpretability is not saved for some reason (tokens and scores)
         # should not include the model output span!
         sent_spans = chat.get_sentence_spans()
         # should return not all of them, but for the last message
-        # TODO: there's a difference between the supporting sentences for the current part and in the current part
-        print("part supporting sentences:", part.supporting_sent_inx)
-        print("target_sent_spans:", chat.target_sent_spans)
         spans_types = chat.get_sentence_spans(span_type="all")
         print("spans_types:", spans_types)
         print("sent_spans", sent_spans)

@@ -357,8 +357,8 @@ class SamplePart:
         self.golden_answer: str = golden_answer
         self.silver_reasoning: str = silver_reasoning
 
-        self.result_before: Results = None
-        self.result_after: Results = None
+        self.result_before: Results = Results("", "", "", False, False, None, "before")
+        self.result_after: Results = Results("", "", "", False, False, None, "after")
         self.results = []
         self.iterations: int = 0
 
