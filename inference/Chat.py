@@ -169,6 +169,7 @@ class Chat:
             sent_spans = [upd_span((0, len(ids)), self.offset)]
             ids = ids.tolist()
             spans_types[sent_spans[0]] = "ans"
+            self.offset += len(ids)
 
         print("ids", len(ids), ids)
         print("sent_spans", sent_spans)
