@@ -357,25 +357,9 @@ class SamplePart:
         self.golden_answer: str = golden_answer
         self.silver_reasoning: str = silver_reasoning
 
-        self.result_before: Results = Results(
-            model_output="",
-            model_answer="",
-            model_reasoning="",
-            interpretability=None,
-            version="before",
-        )
-        self.result_after: Results = Results(
-            model_output="",
-            model_answer="",
-            model_reasoning="",
-            interpretability=None,
-            version="after",
-        )
-        self.results = (
-            [self.result_before, self.result_after]
-            if self.multi_system
-            else [self.result_before]
-        )
+        self.result_before: Results = None
+        self.result_after: Results = None
+        self.results = []
         self.iterations: int = 0
 
     def set_wrapper(self, wrapper: Wrapper = None) -> Wrapper:
@@ -550,6 +534,7 @@ class SamplePart:
                 version=version,
             )
             self.result_before.categorize(ids=self.ids)
+            self.results.append(self.result_before)
         elif version == "after":
             self.result_after = Results(
                 model_output=model_output,
@@ -563,6 +548,7 @@ class SamplePart:
                 iterations if iterations else SamplePart.current_iteration_count
             )
             self.result_after.categorize(ids=self.ids)
+            self.results.append(self.result_after)
         else:
             raise ValueError(
                 f"Version should be either 'before' or 'after', currently: {version}"
