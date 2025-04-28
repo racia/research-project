@@ -114,11 +114,11 @@ class Chat:
                 elif key == "question":
                     to_encode = [part.structured_question]
 
-                to_insert_ids, to_insert_spans = sents_to_ids(to_encode, self.tokenizer)
-                print("encoded message", *zip(to_insert_spans, to_insert_ids), sep="\n")
+                task_ids, task_spans = sents_to_ids(to_encode, self.tokenizer)
+                print("encoded message", *zip(task_spans, task_ids), sep="\n")
 
-                if to_insert_ids:
-                    for chunk in [intro["ids"], *to_insert_ids, outro["ids"]]:
+                if task_ids:
+                    for chunk in [intro["ids"], *task_ids, outro["ids"]]:
                         if chunk:
                             print(chunk)
                             ids.append(chunk)
@@ -135,13 +135,13 @@ class Chat:
                         self.offset += len(intro["ids"])
 
                     # context and question spans/ids
-                    for span, ids_ in zip(to_insert_spans, to_insert_ids):
+                    for ids_, span in zip(task_ids, task_spans):
                         print("task span", span)
                         sent_spans.append(upd_span(span, self.offset))
                         spans_types[upd_span(span, self.offset)] = "task"
                         print("upd task spans", upd_span(span, self.offset))
 
-                        self.offset += len(ids_)
+                        self.offset += len(flatten(ids_))
 
                     # after wrapper spans/ids
                     if outro["sent_spans"]:

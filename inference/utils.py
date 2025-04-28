@@ -157,7 +157,7 @@ def sents_to_ids(
     return ids, sent_spans
 
 
-def flatten(lst: list[list]) -> list:
+def flatten(lst: list[list] | list) -> list:
     """
     Flattens a list of lists into a single list.
 
