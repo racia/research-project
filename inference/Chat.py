@@ -126,6 +126,7 @@ class Chat:
                     # before wrapper spans/ids
                     print("intro spans", intro["sent_spans"])
                     if intro["sent_spans"]:
+                        sent_spans.append(upd_span(intro["sent_spans"], self.offset))
                         spans_types[upd_span(intro["sent_spans"], self.offset)] = "wrap"
                         print(
                             "upd intro spans",
@@ -146,6 +147,7 @@ class Chat:
                     # after wrapper spans/ids
                     if outro["sent_spans"]:
                         print("outro spans", outro["sent_spans"])
+                        sent_spans.append(upd_span(outro["sent_spans"], self.offset))
                         spans_types[upd_span(outro["sent_spans"], self.offset)] = "wrap"
                         print(
                             "upd outro spans",
@@ -161,6 +163,7 @@ class Chat:
                     ids.extend(intro["ids"])
                     sent_spans.append(upd_span(intro["sent_spans"], self.offset))
                     spans_types[upd_span(intro["sent_spans"], self.offset)] = "wrap"
+
                     self.offset += len(intro["ids"])
 
         else:
