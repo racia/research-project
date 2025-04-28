@@ -104,10 +104,12 @@ def get_attn_ratio(
     """
     max_supp_sent = 0
     supp_sent_idx = [i for i, span in enumerate(sent_spans) if span in supp_sent_spans]
+    print("DEBUG supp_sent_idx", supp_sent_idx)
 
     for output_row in attn_scores:
         # Get index of maximum (mean) attention task token / sentence score
         max_attn_inx = np.argmax(output_row)
+        print("max_attn_inx", max_attn_inx)
         if max_attn_inx in supp_sent_idx:
             max_supp_sent += 1
 
