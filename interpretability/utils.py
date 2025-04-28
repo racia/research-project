@@ -108,12 +108,9 @@ def get_attn_ratio(
     for output_row in attn_scores:
         # Get index of maximum (mean) attention task token / sentence score
         max_attn_inx = np.argmax(output_row)
-        # If i is in supporting token indices
         if max_attn_inx in supp_sent_idx:
             max_supp_sent += 1
 
     # Take ratio
     max_supp_sent = max_supp_sent / attn_scores.shape[0]
-    print("DEBUG max_supp_sent", max_supp_sent)
-
     return max_supp_sent

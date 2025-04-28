@@ -244,11 +244,11 @@ def print_metrics_table(
             if len(eval_before.soft_match_accuracy) > 1
             else eval_before.soft_match_accuracy.get_mean()
         )
-        if eval_before.max_supp_target:
+        if eval_before.max_supp_sent:
             metric_values["Max attention distribution"]["Before"] = (
-                f"{eval_before.max_supp_target.get_mean()} ± {eval_before.max_supp_target.get_std()}"
-                if len(eval_before.max_supp_target) > 1
-                else eval_before.max_supp_target.get_mean()
+                f"{eval_before.max_supp_sent.get_mean()} ± {eval_before.max_supp_sent.get_std()}"
+                if len(eval_before.max_supp_sent) > 1
+                else eval_before.max_supp_sent.get_mean()
             )
 
     if eval_after:
@@ -262,11 +262,11 @@ def print_metrics_table(
             if len(eval_after.soft_match_accuracy) > 1
             else eval_after.soft_match_accuracy.get_mean()
         )
-        if eval_after.max_supp_target:
+        if eval_after.max_supp_sent:
             metric_values["Max attention distribution"]["After"] = (
-                f"{eval_after.max_supp_target.get_mean()} ± {eval_after.max_supp_target_std.get_std()}"
-                if len(eval_after.max_supp_target) > 1
-                else eval_after.max_supp_target.get_mean()
+                f"{eval_after.max_supp_sent.get_mean()} ± {eval_after.max_supp_sent_std.get_std()}"
+                if len(eval_after.max_supp_sent) > 1
+                else eval_after.max_supp_sent.get_mean()
             )
 
     for metric_name, values in metric_values.items():
