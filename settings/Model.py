@@ -188,7 +188,6 @@ class Model:
                         output_attentions=True,
                         output_hidden_states=False,
                     )
-                    print("output_tensor shape", output_tensor.shape)
                     interpretability_result = self.interpretability.process_attention(
                         # output tensor includes all the previous ids + the model output
                         output_tensor=output_tensor,
