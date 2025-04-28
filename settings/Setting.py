@@ -65,7 +65,7 @@ class Setting(ABC):
     #     """
     #     raise NotImplementedError
 
-    def create_teacher_chat(self, teacher_sys: Prompt) -> Chat:
+    def create_teacher_chat(self, teacher_sys: Prompt, tokenizer) -> Chat:
         """
         Set the system prompt for the teacher.
         This includes clearing the teacher's chat of previous parts.
@@ -80,6 +80,7 @@ class Setting(ABC):
         chat = Chat(
             model_role="teacher",
             system_prompt=teacher_sys,
+            tokenizer=tokenizer,
         )
         print(
             f"Teacher's system prompt:",
