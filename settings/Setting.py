@@ -191,7 +191,7 @@ class Setting(ABC):
                 # applying the changes that are specific to each setting
                 if self.multi_system:
                     print(
-                        f"Last chat message from student before applying the setting: {self.model.chat.messages['student'][-1]}"
+                        f"Last chat message from student before applying the setting: {self.model.chat.messages[-1]}"
                     )
                     try:
                         decoded_output, iterations, interpretability = (
@@ -206,7 +206,7 @@ class Setting(ABC):
                             "Skipping this step."
                         )
                     print(
-                        f"Last chat message from student after applying the setting: {self.model.chat.messages['student'][-1]}"
+                        f"Last chat message from student after applying the setting: {self.model.chat.messages[-1]}"
                     )
                     answer, reasoning = parse_output(output=decoded_output)
 
