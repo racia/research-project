@@ -109,10 +109,13 @@ class Chat:
             for key, wrap in wrapper.items():
                 intro, outro = wrap["before"], wrap.get("after", wrap["before"])
                 to_encode = None
+                type_ = "task"
                 if key == "context":
                     to_encode = part.structured_context.split("\n")
+                    type_ = "cont"
                 elif key == "question":
                     to_encode = [part.structured_question]
+                    type_ = "que"
 
                 task_ids, task_spans = sents_to_ids(to_encode, self.tokenizer)
                 print("encoded message", *zip(task_spans, task_ids), sep="\n")
@@ -139,7 +142,8 @@ class Chat:
                     for ids_, span in zip(task_ids, task_spans):
                         print("task span", span)
                         sent_spans.append(upd_span(span, self.offset))
-                        spans_types[upd_span(span, self.offset)] = "task"
+
+                        spans_types[upd_span(span, self.offset)] = type_
                         print("upd task spans", upd_span(span, self.offset))
 
                         self.offset += len(flatten(ids_))
@@ -205,8 +209,12 @@ class Chat:
                 spans_dict.update(message["spans_types"])
             elif span_type:
                 for span, t in message["spans_types"].items():
-                    if t == span_type:
+                    if t == span_type or span_type == "task" and t == "cont":
                         spans.append(span)
+                    else:
+                        warnings.warn(
+                            f"Span type {span_type} not found in {message['spans_types']}"
+                        )
             else:
                 spans.extend(message["sent_spans"])
 

@@ -279,10 +279,6 @@ class Interpretability:
         :param part: the part of the sample to evaluate # TODO: to remove
         :return: InterpretabilityResult object
         """
-        # TODO: Problems:
-        # TODO: there's a weird mean on the first example part and first sys sentence
-        # TODO: ? the supporting tokens get padded at wrap (sometimes)
-        # TODO: part interpretability is not saved for some reason (tokens and scores)
         # should not include the model output span!
         sent_spans = chat.get_sentence_spans()
         # should return not all of them, but for the last message
@@ -347,6 +343,7 @@ class Interpretability:
             task_id=part.task_id,
             sample_id=part.sample_id,
             part_id=part.part_id,
+            version="before",
             # title=f"Attention Map for {part.task_id} - {part.sample_id} - {part.part_id}",
         )
         return result_aggr
