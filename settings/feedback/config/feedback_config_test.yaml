@@ -18,17 +18,16 @@ setting:
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  baseline_results: "${oc.env:HOME}/research-project/results/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
   # Order: train, valid, test
   splits:
     train: False
     valid: True
     test: False
   # to get all tasks use (will be converted to None)
-  task_ids: ~
+  task_ids: [ 1, 2 ]
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  samples_per_task: 5
+  samples_per_task: 3
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
@@ -75,10 +74,10 @@ refine_prompt:
 
 logging:
   # if to print the results to a log file, otherwise will print to console
-  print_to_file: True
+  print_to_file: False
 
 results:
-  save_heatmaps: False
+  save_heatmaps: True
   headers:
     - id_
     - task_id
@@ -123,4 +122,4 @@ results:
     run:
       # the run directory with logs, plots, and csv results will be created here
       # use more folders if needed for distinguishing between different experiments
-      dir: "${oc.env:HOME}/research-project/outputs/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+      dir: "${oc.env:HOME}/research-project/outputs/test-encoding/FD/${now:%d-%m-%Y}/${now:%H-%M-%S}"

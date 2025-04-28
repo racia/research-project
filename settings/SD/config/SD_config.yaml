@@ -7,7 +7,7 @@ teacher:
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 12
+  max_new_tokens: 100
   temperature: 0.1
   to_continue: false
   mode: "eval"
@@ -37,6 +37,7 @@ data:
   wrapper:
     # if to wrap the part prompt with the task description
     context: |
+      *TASK*
       Here are the context sentences:
       {context}
     question: |

@@ -1,42 +1,41 @@
 teacher:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 200
+  max_new_tokens: 12
   temperature: 0.1
   to_continue: false
   mode: "eval"
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 200
+  max_new_tokens: 100
   temperature: 0.1
   to_continue: false
   mode: "eval"
 
 setting:
-  name: 'Feedback'
+  name: 'SD'
   interpretability: True
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  baseline_results: "${oc.env:HOME}/research-project/results/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
   # Order: train, valid, test
   splits:
     train: False
     valid: True
     test: False
   # to get all tasks use (will be converted to None)
-  task_ids: ~
+  task_ids: [ 1, 2 ]
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  samples_per_task: 5
+  samples_per_task: 3
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
     context: True
     question: False
-  wrapper: # Added this section to align with SD
+  wrapper:
+    # if to wrap the part prompt with the task description
     context: |
-      *TASK*
       Here are the context sentences:
       {context}
     question: |
@@ -46,10 +45,10 @@ data:
     answer: ""
 
 init_prompt:
+  # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
-  # name of the prompt files serves as a basis for logging and result files
-  examples: # Added this section to align with SD
+  examples:
     add: True
     enumerated: True
     handpicked: True
@@ -60,25 +59,28 @@ init_prompt:
       {example}
       *END OF EXAMPLE*
 
-feedback_prompt:
+eval_prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
-    - "${oc.env:HOME}/research-project/inference/prompts/feedback_prompt.txt"
-  wrapper: |
+    - "${oc.env:HOME}/research-project/inference/prompts/eval_prompt.txt"
+  wrapper: | # if to wrap the part prompt with the task description
     The student's response was:
     {student_output}
 
-refine_prompt:
+resume_prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
-    - "${oc.env:HOME}/research-project/inference/prompts/refine_prompt.txt"
+    - "${oc.env:HOME}/research-project/inference/prompts/resume_prompt.txt"
+  wrapper: |
+    Here is the improved version of the previous output:
+    {to_continue}
 
 logging:
   # if to print the results to a log file, otherwise will print to console
-  print_to_file: True
+  print_to_file: False
 
 results:
-  save_heatmaps: False
+  save_heatmaps: True
   headers:
     - id_
     - task_id
@@ -102,7 +104,6 @@ results:
     - pronouns_after
     - not_mentioned_after
     - context_sents_hall_after
-    - feedback_iterations
     - model_answer_before
     - answer_correct_before
     - reasoning_correct_before
@@ -116,11 +117,10 @@ results:
     - verbs_before
     - pronouns_before
     - not_mentioned_before
-    - feedback_iterations
     - context_sents_hall_before
 
-  hydra:
-    run:
-      # the run directory with logs, plots, and csv results will be created here
-      # use more folders if needed for distinguishing between different experiments
-      dir: "${oc.env:HOME}/research-project/outputs/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+hydra:
+  run:
+    # the run directory with logs, plots, and csv results will be created here
+    # use more folders if needed for distinguishing between different experiments
+    dir: "${oc.env:HOME}/research-project/outputs/test-encoding/SD/${now:%d-%m-%Y}/${now:%H-%M-%S}"

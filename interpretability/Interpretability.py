@@ -192,7 +192,9 @@ class Interpretability:
         model_output_len = len(chat.messages[-1]["ids"])
         spans_types = chat.get_sentence_spans()
         supp_sent_idx = [
-            i for i, span in enumerate(list(spans_types.keys())) if span in chat.supp_sent_spans
+            i
+            for i, span in enumerate(list(spans_types.keys()))
+            if span in chat.supp_sent_spans
         ]
 
         chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
