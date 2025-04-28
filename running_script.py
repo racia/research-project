@@ -163,13 +163,16 @@ def run_setting(cfg: DictConfig) -> None:
             saver=saver,
         )
     elif cfg.setting.name.lower() == "feedback":
+        teacher = Model(**cfg.teacher, role="teacher")
         feedback_prompt = Prompt(
             prompt_path=cfg.feedback_prompt.paths[0],
             wrapper=cfg.feedback_prompt.get("wrapper", None),
+            tokenizer=teacher.tokenizer,
         )
         refine_prompt = Prompt(
             prompt_path=cfg.refine_prompt.paths[0],
             wrapper=cfg.refine_prompt.get("wrapper", None),
+            tokenizer=model.tokenizer,
         )
         print("- THE FEEDBACK PROMPT -")
         print("______________________________")
@@ -181,7 +184,6 @@ def run_setting(cfg: DictConfig) -> None:
         print(refine_prompt.text)
         print("______________________________", end="\n\n", flush=True)
 
-        teacher = Model(**cfg.teacher, role="teacher")
         setting = Feedback(
             student=model,
             teacher=teacher,
@@ -196,13 +198,16 @@ def run_setting(cfg: DictConfig) -> None:
             saver=saver,
         )
     elif cfg.setting.name.lower() in sd:
+        teacher = Model(**cfg.teacher, role="teacher")
         eval_prompt = Prompt(
             prompt_path=cfg.eval_prompt.paths[0],
             wrapper=cfg.eval_prompt.get("wrapper", None),
+            tokenizer=teacher.tokenizer,
         )
         resume_prompt = Prompt(
             prompt_path=cfg.resume_prompt.paths[0],
             wrapper=cfg.resume_prompt.get("wrapper", None),
+            tokenizer=model.tokenizer,
         )
         print("- THE EVAL PROMPT -")
         print("______________________________")
@@ -213,7 +218,6 @@ def run_setting(cfg: DictConfig) -> None:
         print(resume_prompt.text)
         print("______________________________", end="\n\n", flush=True)
 
-        teacher = Model(**cfg.teacher, role="teacher")
         setting = SpeculativeDecoding(
             student=model,
             teacher=teacher,

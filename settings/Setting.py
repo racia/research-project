@@ -75,7 +75,7 @@ class Setting(ABC):
         """
         teacher_sys.format_teacher_sys(
             student_sys=self.model.chat.messages[0]["content"],
-            student_chat=self.model.chat.messages,
+            student_chat=self.model.chat.messages[1:],
         )
         chat = Chat(
             model_role="teacher",
