@@ -113,4 +113,4 @@ def get_attn_ratio(
 
     # Take ratio
     max_supp_sent = max_supp_sent / attn_scores.shape[0]
-    return max_supp_sent
+    return round(max_supp_sent, 4)

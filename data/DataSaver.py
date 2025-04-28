@@ -224,7 +224,7 @@ class DataSaver:
 
                 try:
                     file_name = f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
-                    if result.interpretability.attn_scores.size > 1:
+                    if result.interpretability.attn_scores.size != 0:
                         attn_scores = [
                             "\t".join(map(str, row))
                             for row in result.interpretability.attn_scores.tolist()
@@ -246,10 +246,6 @@ class DataSaver:
                         self.save_with_separator(
                             file_path=attn_scores_subdir / file_name,
                             data=getattr(result.interpretability, tokens),
-                        )
-                    else:
-                        warnings.warn(
-                            f"No max attention distribution found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
                         )
 
                 except AttributeError as e:
