@@ -296,13 +296,13 @@ def run_setting(cfg: DictConfig) -> None:
                     setting.init_prompt.use_original_prompt()
 
                 task_result = setting.iterate_task(
-                    task_id=task_id,
+                    task_id=int(task_id),
                     task_data=task,
                     prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.init_prompt.paths)}",
                 )
                 split.add_task(task_result)
                 saver.save_task_result(
-                    task_id=task_id,
+                    task_id=int(task_id),
                     task_data=task_result,
                     headers=cfg.results.headers,
                     results_file_name=results_file_names[split.name],

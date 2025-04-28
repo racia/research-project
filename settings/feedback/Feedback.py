@@ -71,7 +71,6 @@ class Feedback(Setting):
         :param teacher: The teacher model
         :param total_tasks: Total number of tasks
         :param total_parts: Total number of parts
-        :param interpretability: Optional interpretability instance
         :param init_prompt: Initial prompt for the student
         :param feedback_prompt: Prompt for the teacher to evaluate student output
         :param refine_prompt: Prompt for the student to refine based on teacher feedback

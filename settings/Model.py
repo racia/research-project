@@ -45,7 +45,8 @@ class Model:
         self.mode: Mode = mode
         self.model, self.tokenizer = self.load()
         self.interpretability = interpretability
-        self.interpretability.tokenizer = self.tokenizer
+        if interpretability:
+            self.interpretability.tokenizer = self.tokenizer
 
         self.wrapper = encode_wrapper(wrapper, self.tokenizer)
         self.chat: Chat = None
