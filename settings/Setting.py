@@ -74,8 +74,8 @@ class Setting(ABC):
         :return: None
         """
         teacher_sys.format_teacher_sys(
-            student_sys=self.model.chat.messages["student"][0]["content"],
-            student_chat=self.model.chat.messages["student"],
+            student_sys=self.model.chat.messages[0]["content"],
+            student_chat=self.model.chat.messages,
         )
         chat = Chat(
             model_role="teacher",
