@@ -83,7 +83,7 @@ results:
     - model_output_before
     - exact_match_accuracy_before
     - soft_match_accuracy_before
-    - max_supp_sent_before
+    - max_supp_attn_before
     - there_before
     - verbs_before
     - pronouns_before

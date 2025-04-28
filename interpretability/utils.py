@@ -7,31 +7,31 @@ class InterpretabilityResult:
         attn_scores: np.ndarray,
         x_tokens: list[str],
         y_tokens: list[str],
-        max_supp_sent: float = None,
+        max_supp_attn: float = None,
     ):
         """
         Interpretability result class
         :param attn_scores: attention scores
         :param x_tokens: tokenized x tokens
         :param y_tokens: tokenized y tokens
-        :param max_supp_sent: ratio of max supporting sent
+        :param max_supp_attn: ratio of max supporting sent
         """
         self.attn_scores: np.ndarray = attn_scores
         self.x_tokens: list[str] = x_tokens
         self.y_tokens: list[str] = y_tokens
-        self.max_supp_sent: float = max_supp_sent
+        self.max_supp_attn: float = max_supp_attn
 
         self.result = {
             "attn_scores": self.attn_scores,
             "x_tokens": self.x_tokens,
             "y_tokens": self.y_tokens,
-            "max_supp_sent": self.max_supp_sent,
+            "max_supp_attn": self.max_supp_attn,
         }
 
     def __repr__(self) -> str:
         return (
             f"InterpretabilityResult(attn_scores={self.attn_scores.shape}, x_tokens={len(self.x_tokens)}, "
-            f"y_tokens={len(self.y_tokens)}, max_supp_sent={self.max_supp_sent})"
+            f"y_tokens={len(self.y_tokens)}, max_supp_attn={self.max_supp_attn})"
         )
 
     def empty(self) -> bool:
@@ -70,7 +70,8 @@ def get_supp_tok_idx(
     context_sent_spans: list[tuple[int, int]], supp_sent_idx: list[int]
 ) -> list[int]:
     """
-    Return the indices of the supporting tokens of current chat
+    Calculates the percentage of output tokens which maximum attention is on supporting sentences.
+
     :param context_sent_spans: The indices of sentence spans of current chat (based on chat ids)
     :param supp_sent_idx: the indices of the supporting sentence
     """
@@ -89,7 +90,7 @@ def get_supp_tok_idx(
     return supp_tok_idx
 
 
-def get_attn_ratio(
+def get_max_attn_ratio(
     attn_scores: np.ndarray,
     supp_sent_spans: list[tuple[int, int]],
     sent_spans: list[tuple[int, int]],
@@ -105,13 +106,13 @@ def get_attn_ratio(
     supp_sent_idx = [i for i, span in enumerate(sent_spans) if span in supp_sent_spans]
     max_attn_inx = np.argmax(attn_scores, axis=1)
     attention_on_supp = np.isin(max_attn_inx, supp_sent_idx)
-    max_supp_sent = attention_on_supp.mean()
+    max_supp_attn = attention_on_supp.mean()
     # for output_row in attn_scores:
     #     # Get index of maximum (mean) attention task token / sentence score
     #     max_attn_inx = np.argmax(output_row)
     #     if max_attn_inx in supp_sent_idx:
-    #         max_supp_sent += 1
+    #         max_supp_attn += 1
 
     # Take ratio
-    # max_supp_sent = max_supp_sent / attn_scores.shape[0]
-    return round(float(max_supp_sent), 4)
+    # max_supp_attn = max_supp_attn / attn_scores.shape[0]
+    return round(float(max_supp_attn), 4)

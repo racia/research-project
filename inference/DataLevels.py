@@ -139,7 +139,7 @@ class Results:
         "model_reasoning",
         "reasoning_correct",
         "model_output",
-        "max_supp_sent",
+        "max_supp_attn",
     ]
 
     def __init__(
@@ -178,8 +178,8 @@ class Results:
         self.features: Features = self.inspect_answer()
 
         self.interpretability: InterResult = interpretability
-        self.max_supp_sent: float = (
-            interpretability.max_supp_sent if interpretability else None
+        self.max_supp_attn: float = (
+            interpretability.max_supp_attn if interpretability else None
         )
 
         self.dict: dict = self.get_result()
@@ -659,14 +659,14 @@ class Sample:
         self.evaluator_before.pred_answers.append(part.result_before.model_answer)
         self.evaluator_before.pred_reasonings.append(part.result_before.model_reasoning)
         if part.result_before.interpretability:
-            self.evaluator_before.max_supp_sent.add(part.result_before.max_supp_sent)
+            self.evaluator_before.max_supp_attn.add(part.result_before.max_supp_attn)
         if self.multi_system:
             self.evaluator_after.pred_answers.append(part.result_after.model_answer)
             self.evaluator_after.pred_reasonings.append(
                 part.result_after.model_reasoning
             )
             if part.result_after.interpretability:
-                self.evaluator_after.max_supp_sent.add(part.result_after.max_supp_sent)
+                self.evaluator_after.max_supp_attn.add(part.result_after.max_supp_attn)
 
     def print_sample_predictions(self) -> None:
         """

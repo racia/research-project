@@ -12,7 +12,7 @@ from inference.Chat import Chat
 from inference.DataLevels import SamplePart
 from interpretability.utils import (
     InterpretabilityResult,
-    get_attn_ratio,
+    get_max_attn_ratio,
     get_supp_tok_idx,
     get_indices,
 )
@@ -213,7 +213,7 @@ class Interpretability:
         # Get filtering indices
         supp_tok_idx = get_supp_tok_idx(context_sent_spans, part.supporting_sent_inx)
         # TODO: fix the attention ratio (outputs 0.0)
-        max_attn_dist = get_attn_ratio(
+        max_attn_dist = get_max_attn_ratio(
             attn_scores=attention_scores,
             supp_sent_spans=chat.supp_sent_spans,
             sent_spans=sent_spans,
@@ -297,7 +297,7 @@ class Interpretability:
             sent_spans=sent_spans,
             # sys_prompt_len=system_prompt_len,
         )
-        max_attn_ratio_aggr = get_attn_ratio(
+        max_attn_ratio = get_max_attn_ratio(
             attn_scores=attn_scores_aggr,
             supp_sent_spans=chat.supp_sent_spans,
             sent_spans=sent_spans,
@@ -315,7 +315,7 @@ class Interpretability:
         # TODO save aggregated attention scores and x tokens (y tokens are always verbose)
         # TODO: the saving goes into line 262 in DataSaver (warnings.warn("No interpretability results found."))
         result_aggr = InterpretabilityResult(
-            attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio_aggr
+            attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio
         )
 
         self.plotter.draw_heat(
