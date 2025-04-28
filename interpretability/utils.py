@@ -98,8 +98,7 @@ def get_attn_ratio(
     Returns the ratio of most attended supporting target.
 
     :param attn_scores: The attention scores
-    :param supp_tok_idx: The supporting token indices
-    :param supp_sent_idx: The supporting sentence indices
+    :param supp_tok_spans: The spans indices of the supporting sentences
     :return: Most attended target ratio
     """
     max_supp_target = 0

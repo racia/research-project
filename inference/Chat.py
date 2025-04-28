@@ -209,7 +209,9 @@ class Chat:
                 spans_dict.update(message["spans_types"])
             elif span_type:
                 for span, t in message["spans_types"].items():
-                    if t == span_type or (span_type == "task" and t == "cont"):
+                    if t == span_type or (
+                        span_type == "task" and t in ["cont", "ques"]
+                    ):
                         spans.append(span)
                     else:
                         warnings.warn(

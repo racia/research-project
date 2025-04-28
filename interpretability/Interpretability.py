@@ -299,26 +299,6 @@ class Interpretability:
             supp_tok_spans=chat.target_sent_spans,
         )
 
-        # stop_words_indices = self.get_stop_word_idxs(
-        #     attn_scores_ver, chat_ids_ver, span_ids
-        # )
-        # attn_indices = filter(
-        #     lambda x: x not in stop_words_indices, range(attn_scores_ver.shape[1])
-        # )
-        # attn_indices = self.filter_attn_indices(attn_scores_ver, chat_ids_ver, span_ids)
-        # Filter attention scores
-        # attn_scores_ver = attn_scores_ver[:, attn_indices]
-
-        # Decode the task tokens without the system prompt
-        # x_tokens = self.tokenizer.batch_decode(chat_ids_ver)
-        # torch.cuda.empty_cache()
-
-        # Pad tokens with asterisks
-        # x_tokens_ver = [
-        #     f"* {x_tokens[i]} *" if i in target_indices else f"{x_tokens[i]}"
-        #     for i in range(len(chat_ids_ver))
-        # ]
-
         # no model output for the x-axis!
         x_tokens_aggr = [
             f"* {type_} {i} *" if span in chat.target_sent_spans else f"{type_} {i}"
@@ -333,9 +313,6 @@ class Interpretability:
         result_aggr = InterpretabilityResult(
             attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio_aggr
         )
-        # result_aggr = InterpretabilityResult(
-        #     attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio_aggr
-        # )
 
         self.plotter.draw_heat(
             interpretability_result=result_aggr,
