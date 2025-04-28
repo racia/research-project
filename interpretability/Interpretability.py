@@ -296,12 +296,12 @@ class Interpretability:
         )
         max_attn_ratio_aggr = get_attn_ratio(
             attn_scores=attn_scores_aggr,
-            supp_tok_spans=chat.target_sent_spans,
+            supp_sent_spans=chat.target_sent_spans,
         )
 
         # no model output for the x-axis!
         x_tokens_aggr = [
-            f"* {type_} {i} *" if span in chat.target_sent_spans else f"{type_} {i}"
+            f"* {i} {type_} *" if span in chat.target_sent_spans else f"{i} {type_}"
             for i, (span, type_) in enumerate(spans_types.items(), 1)
         ]
 

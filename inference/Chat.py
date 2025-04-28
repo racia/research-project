@@ -208,15 +208,12 @@ class Chat:
             if span_type == "all":
                 spans_dict.update(message["spans_types"])
             elif span_type:
-                for span, t in message["spans_types"].items():
-                    if t == span_type or (
-                        span_type == "task" and t in ["cont", "ques"]
+                for span, type_ in message["spans_types"].items():
+                    if type_ == span_type or (
+                        span_type == "task" and type_ in ["cont", "ques"]
                     ):
+                        print("span", span_type, "type_", type_)
                         spans.append(span)
-                    else:
-                        warnings.warn(
-                            f"Span type {span_type} not found in {message['spans_types']}"
-                        )
             else:
                 spans.extend(message["sent_spans"])
 
