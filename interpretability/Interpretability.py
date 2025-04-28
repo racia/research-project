@@ -190,9 +190,9 @@ class Interpretability:
         sys_prompt_len = len(chat.messages[0]["ids"])
         context_sent_spans = chat.get_sentence_spans(span_type="task")
         model_output_len = len(chat.messages[-1]["ids"])
-        sent_spans = chat.get_sentence_spans(span_type="all")
+        spans_types = chat.get_sentence_spans()
         supp_sent_idx = [
-            i for i, span in enumerate(sent_spans) if span in chat.supp_sent_spans
+            i for i, span in enumerate(list(spans_types.keys())) if span in chat.supp_sent_spans
         ]
 
         chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
@@ -278,7 +278,7 @@ class Interpretability:
         :return: InterpretabilityResult object
         """
         # should not include the model output span!
-        spans_types = chat.get_sentence_spans(span_type="all")
+        spans_types = chat.get_sentence_spans()
         sent_spans = list(spans_types.keys())
         print("spans_types:", spans_types)
         supp_sent_idx = [
