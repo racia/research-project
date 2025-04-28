@@ -86,7 +86,7 @@ def run_setting(cfg: DictConfig) -> None:
     parts_per_split = {}
 
     for split in data_splits:
-        if cfg.data.baseline_results:
+        if cfg.data.get("baseline_results", None):
             parts_per_split[split] = loader.load_results(
                 results_path=cfg.data.baseline_results,
                 data_path=cfg.data.path,
