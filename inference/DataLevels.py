@@ -527,7 +527,7 @@ class SamplePart:
             model_answer = str(model_answer)
 
         if not interpretability:
-            interpretability = InterResult(np.ndarray([]), [], [], 0)
+            interpretability = InterResult(np.ndarray([]), [], [], 0, 0)
         if version == "before":
             self.result_before = Results(
                 model_output=model_output,
