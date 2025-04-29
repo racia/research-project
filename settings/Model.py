@@ -125,10 +125,10 @@ class Model:
             raise ValueError(
                 "Chat is not set. Please set the chat before calling the model."
             )
-        if part and formatted_prompt:
-            raise ValueError(
-                "Either part or formatted_prompt should be provided, not both."
-            )
+        # if part and formatted_prompt:
+        #     raise ValueError(
+        #         "Either part or formatted_prompt should be provided, not both."
+        #     )
         if not (formatted_prompt or part):
             warnings.warn(
                 "Not adding any message to the chat, please make sure you do it manually "
