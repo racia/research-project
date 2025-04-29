@@ -154,7 +154,9 @@ class Model:
             # if self.interpretability:
 
             # includes flat ids for all the messages in the chat, including the wrapper
-            chat_ids = self.chat.chat_to_ids()
+            chat_ids = self.chat.chat_to_ids(
+                identify_target=False if self.role == "teacher" else True
+            )
             print(
                 f"Formatted prompt (to remove):",
                 self.tokenizer.batch_decode(chat_ids)[0],

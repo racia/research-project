@@ -225,14 +225,18 @@ class Chat:
             if inx in self.part.supporting_sent_inx:
                 self.supp_sent_spans.append(span)
 
-    def chat_to_ids(self, max_length: int = 2048) -> torch.Tensor:
+    def chat_to_ids(
+        self, max_length: int = 2048, identify_target: bool = True
+    ) -> torch.Tensor:
         """
         Converts the chat into ids using the tokenizer.
 
         :param max_length: the maximum length of the input
+        :param identify_target: whether to identify the supporting sentence spans
         :return: list of ids
         """
-        self.identify_supp_sent_spans()
+        if identify_target:
+            self.identify_supp_sent_spans()
 
         chat_ids = [self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")]
         # including the system prompt
