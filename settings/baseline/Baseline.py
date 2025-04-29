@@ -61,13 +61,12 @@ class Baseline(Setting):
     #
     #     return formatted_prompt
 
-    def apply_setting(self, decoded_output: str, chat: Chat = None) -> tuple[str, int]:
+    def apply_setting(self, chat: Chat = None) -> tuple[str, int]:
         """
         Postprocesses the output of the model.
         For the baseline model, this postprocessing just parses the output.
 
-        :param decoded_output: the current output of the student
         :param chat: the current chat, only necessary in the SD and feedback setting
         :return: parsed output
         """
-        return decoded_output, 0
+        return "", 0
