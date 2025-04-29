@@ -142,7 +142,9 @@ class Model:
         print(self.wrapper)
 
         self.chat.add_message(
-            part=part or formatted_prompt, source=Source.user, wrapper=self.wrapper
+            part=formatted_prompt if formatted_prompt else part,
+            source=Source.user,
+            wrapper=self.wrapper,
         )
 
         with torch.no_grad():
@@ -151,7 +153,9 @@ class Model:
             # if self.interpretability:
 
             # includes flat ids for all the messages in the chat, including the wrapper
-            chat_ids = self.chat.chat_to_ids(identify_target=True if part else False)
+            chat_ids = self.chat.chat_to_ids(
+                identify_target=False if formatted_prompt else True
+            )
             print(
                 f"Formatted prompt (to remove):",
                 self.tokenizer.batch_decode(chat_ids)[0],

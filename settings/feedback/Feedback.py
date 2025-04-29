@@ -250,7 +250,7 @@ class Feedback(Setting):
         )
 
         student_out, interpretability = self.student.call(
-            formatted_prompt=formulated_refine_prompt
+            formatted_prompt=formulated_refine_prompt, part=self.part
         )
 
         return student_out, interpretability
