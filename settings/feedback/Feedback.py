@@ -232,7 +232,7 @@ class Feedback(Setting):
 
         :return: str, the refined chain of thought
         """
-        formulated_refine_prompt = self.refine_prompt.format_refine_message(
+        formulated_refine_message = self.refine_prompt.format_refine_message(
             model_output=original_output,
             teacher_feedback=teacher_feedback,
         )
@@ -243,14 +243,14 @@ class Feedback(Setting):
         # )
 
         print(
-            "Formatted resume prompt:",
-            formulated_refine_prompt,
+            "Formatted refine message:",
+            formulated_refine_message,
             sep="\n",
             end="\n\n\n",
         )
 
         student_out, interpretability = self.student.call(
-            formatted_prompt=formulated_refine_prompt, part=self.part
+            formatted_prompt=formulated_refine_message, part=self.part
         )
 
         return student_out, interpretability

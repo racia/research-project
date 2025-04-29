@@ -107,19 +107,18 @@ class Prompt:
         # TODO: filter out generation tokens?
 
         for message in student_messages:
-            if message["role"] == "user":
+            if message["role"] != "assistant":
                 if message["content"] in parts_set:
                     raise ValueError(
                         f"Duplicate message in the chat: {message['content']}"
                     )
 
-                parts_so_far += message["content"] + "\n"
-                parts_set.add(message["content"] + "\n")
+                parts_so_far += message["content"] + "\n\n"
+                parts_set.add(message["content"] + "\n\n")
 
                 ids_so_far.extend(message["ids"])
                 spans_types_so_far.update(message["spans_types"])
 
-        print("DEBUG parts so far", parts_so_far)
         self.text = (
             self.original_text + "\n\n" + self.history.format(chat_history=parts_so_far)
         )

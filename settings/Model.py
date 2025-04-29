@@ -197,6 +197,9 @@ class Model:
                 print("decoded_output", decoded_output)
 
                 interpretability_result = None
+
+                if self.role == "student" and not self.interpretability:
+                    raise ValueError("Interpretability is not set for student model!")
                 print("DEBUG self.interpretability", self.interpretability)
                 print("DEBUG decoded_output", decoded_output)
                 if self.interpretability and decoded_output:
