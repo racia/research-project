@@ -3,6 +3,7 @@ from __future__ import annotations
 import gc
 import warnings
 from abc import ABC, abstractmethod
+from mailbox import FormatError
 
 import torch
 from transformers import PreTrainedTokenizerFast
@@ -86,13 +87,8 @@ class Setting(ABC):
             system_prompt=teacher_sys,
             tokenizer=tokenizer,
         )
-        print(
-            f"Teacher's system prompt:",
-            teacher_sys.text,
-            sep="\n",
-            end="\n\n",
-            flush=True,
-        )
+        if "{" in teacher_sys.text:
+            raise FormatError(teacher_sys.text)
         return chat
 
     @abstractmethod

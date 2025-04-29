@@ -168,7 +168,7 @@ class Chat:
         else:
             # it is a string
             if ids is None:
-                # it is a formatted prompt => task
+                # it is a formatted prompt (string prompt) => task
                 ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
                 spans_types.update(
                     {upd_span(span, self.offset): "debug task" for span in sent_spans}

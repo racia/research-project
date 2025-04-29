@@ -106,6 +106,7 @@ class Prompt:
                 parts_so_far += message["content"] + "\n"
                 parts_set.add(message["content"] + "\n")
 
+        print("DEBUG parts so far", parts_so_far)
         return self.text.format(init_prompt=student_sys, parts_so_far=parts_so_far)
 
     def format_teacher_message(self, student_out: str):
