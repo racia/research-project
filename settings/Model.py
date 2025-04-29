@@ -129,10 +129,10 @@ class Model:
             raise ValueError(
                 "Either part or formatted_prompt should be provided, not both."
             )
-        if formatted_prompt and self.interpretability:
-            raise ValueError(
-                "Interpretability cannot be calculated with formatted_prompt."
-            )
+        # if formatted_prompt and self.interpretability:
+        #     raise ValueError(
+        #         "Interpretability cannot be calculated with formatted_prompt."
+        #     )
         print("Wrapper before model call")
         print(self.wrapper)
 
