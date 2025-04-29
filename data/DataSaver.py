@@ -335,8 +335,8 @@ class DataSaver:
             headers=list(result.keys()),
             file_name=f"t_{part.task_id}_s_{part.sample_id}_results.csv",
         )
-        for result, version in zip(part.results, part.versions):
-            self.save_part_interpretability(result.interpretability, version, part)
+        for result_, version in zip(part.results, part.versions):
+            self.save_part_interpretability(result_.interpretability, version, part)
 
     def save_sample_result(self, sample: Sample) -> None:
         """
