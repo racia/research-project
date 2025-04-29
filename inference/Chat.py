@@ -167,18 +167,18 @@ class Chat:
                 )
         else:
             # it is a string
-            if ids:
-                # it is certainly an assistant output
-                # TODO: optionally divide it into reasoning and answer
-                ids = ids.tolist()
-                spans_types[upd_span((0, len(ids)), self.offset)] = "ans"
-                self.offset += len(ids)
-            else:
+            if ids is None:
                 # it is a formatted prompt => task
                 ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
                 spans_types.update(
                     {upd_span(span, self.offset): "debug task" for span in sent_spans}
                 )
+            else:
+                # it is certainly an assistant output
+                # TODO: optionally divide it into reasoning and answer
+                ids = ids.tolist()
+                spans_types[upd_span((0, len(ids)), self.offset)] = "ans"
+                self.offset += len(ids)
 
         print("ids", len(ids), ids)
         print("spans_types", spans_types)
