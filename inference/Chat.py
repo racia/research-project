@@ -96,6 +96,7 @@ class Chat:
         # it is certainly a task
         if isinstance(part, SamplePart):
             if wrapper:
+                print("DEBUG: case SamplePart and Wrapper")
                 ids = []
                 for key, wrap in wrapper.items():
                     intro, outro = wrap["before"], wrap.get("after", wrap["before"])
@@ -159,6 +160,7 @@ class Chat:
                         self.offset += len(intro["ids"])
 
             else:
+                print("DEBUG: case SamplePart and NO Wrapper")
                 ids, sent_spans = sents_to_ids(
                     part.unwrapped_task.split("\n"), self.tokenizer
                 )
@@ -168,12 +170,14 @@ class Chat:
         else:
             # it is a string
             if ids is None:
+                print("DEBUG: case str and NO ids")
                 # it is a formatted prompt (string prompt) => task
                 ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
                 spans_types.update(
                     {upd_span(span, self.offset): "teacher task" for span in sent_spans}
                 )
             else:
+                print("DEBUG: case str and ids")
                 # it is certainly an assistant output
                 # TODO: optionally divide it into reasoning and answer
                 ids = ids.tolist()
