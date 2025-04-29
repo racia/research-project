@@ -326,7 +326,7 @@ class Feedback(Setting):
                 print("Maximum feedback iterations reached. Using last student output.")
                 break
 
-            decoded_output, interpretability = self.refine(decoded_output, feedback)
+            decoded_output, interpretability = self.refine(feedback)
 
             print(
                 " ---- Student ---- ",
