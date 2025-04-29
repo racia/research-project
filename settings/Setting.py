@@ -76,6 +76,7 @@ class Setting(ABC):
         :param: teacher_sys: Prompt, the system prompt for the teacher
         :return: None
         """
+        print("DEBUG model chat", self.model.chat)
         teacher_sys.format_teacher_sys(
             student_sys=self.model.chat.messages[0]["content"],
             student_chat=self.model.chat.messages[1:],

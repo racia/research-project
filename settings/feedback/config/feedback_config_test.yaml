@@ -2,14 +2,14 @@ teacher:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
   max_new_tokens: 200
   temperature: 0.1
-  to_continue: false
+  to_continue: False
   mode: "eval"
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
   max_new_tokens: 200
   temperature: 0.1
-  to_continue: false
+  to_continue: False
   mode: "eval"
 
 setting:

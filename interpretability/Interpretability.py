@@ -135,6 +135,7 @@ class Interpretability:
                 )
                 attn_scores_T = attn_scores
 
+            # TODO: check if the second normalization is needed
             # Normalize the attention scores by the sum of all token attention scores
             attn_scores_T = attn_scores_T / attn_scores_T.sum(axis=0, keepdims=True)
 

@@ -141,7 +141,7 @@ def run_setting(cfg: DictConfig) -> None:
     else:
         raise ValueError("No base model is provided in the config.")
 
-    print(f"The model {model.name} is loaded successfully", flush=True)
+    print(f"The model {model.name} was loaded successfully.", flush=True)
 
     if cfg.setting.name.lower() == "baseline":
         setting = Baseline(

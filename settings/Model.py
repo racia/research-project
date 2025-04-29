@@ -129,6 +129,11 @@ class Model:
             raise ValueError(
                 "Either part or formatted_prompt should be provided, not both."
             )
+        if not formatted_prompt and not part:
+            warnings.warn(
+                "Not adding any message to the chat, please make sure you do it manually "
+                "before calling the model.call method or pass a message."
+            )
         # if formatted_prompt and self.interpretability:
         #     raise ValueError(
         #         "Interpretability cannot be calculated with formatted_prompt."
@@ -136,17 +141,9 @@ class Model:
         print("Wrapper before model call")
         print(self.wrapper)
 
-        if part:
-            self.chat.add_message(part=part, source=Source.user, wrapper=self.wrapper)
-        elif formatted_prompt:
-            self.chat.add_message(
-                part=formatted_prompt, source=Source.user, wrapper=self.wrapper
-            )
-        else:
-            warnings.warn(
-                "Not adding any message to the chat, please make sure you do it manually "
-                "before calling the model.call method or pass a message."
-            )
+        self.chat.add_message(
+            part=part or formatted_prompt, source=Source.user, wrapper=self.wrapper
+        )
 
         with torch.no_grad():
             # device = next(self.model.parameters()).device
