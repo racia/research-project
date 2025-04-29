@@ -224,6 +224,8 @@ class DataSaver:
 
                 try:
                     file_name = f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
+                    print("DEBUG part.multi_system", part.multi_system)
+                    print("DEBUG result.interpretability.attn_scores.size", result.interpretability.attn_scores.size)
                     if result.interpretability.attn_scores.size != 0:
                         attn_scores = [
                             "\t".join(map(str, row))
