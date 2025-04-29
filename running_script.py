@@ -166,6 +166,7 @@ def run_setting(cfg: DictConfig) -> None:
         feedback_prompt = Prompt(
             prompt_path=cfg.feedback_prompt.paths[0],
             wrapper=cfg.feedback_prompt.get("wrapper", None),
+            history=cfg.feedback_prompt.get("history", None),
             tokenizer=teacher.tokenizer,
         )
         # Doesn't need a tokenizer as it still needs to be formatted and

@@ -271,11 +271,12 @@ class Feedback(Setting):
         """
         # save the initial student output as a fallback solution
         self.initial_student_output = decoded_output
-        self.teacher.chat = self.create_teacher_chat(
-            teacher_sys=self.feedback_prompt, tokenizer=self.teacher.tokenizer
-        )
         original_student_chat = copy.deepcopy(self.student.chat)
 
+        self.teacher.chat = self.create_teacher_chat(
+            teacher_sys=self.feedback_prompt,
+            tokenizer=self.tokenizer,
+        )
         print(
             " ------------- Starting Feedback ------------- ", end="\n\n\n", flush=True
         )

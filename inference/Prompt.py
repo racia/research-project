@@ -6,6 +6,7 @@ import en_core_web_sm
 from transformers import PreTrainedTokenizerFast
 
 from data.TaskExamples import Task, TaskExample, TaskExamples
+from inference.Chat import Chat
 from inference.DataLevels import SamplePart
 from inference.utils import sents_to_ids, flatten, upd_span
 from settings.config import Examples
@@ -35,6 +36,7 @@ class Prompt:
         prompt_path: str = None,
         prompt_type: PromptType = "init",
         wrapper: str = None,
+        history: str = None,
         name: str = None,
         tokenizer: PreTrainedTokenizerFast = None,
     ):
@@ -68,7 +70,9 @@ class Prompt:
         elif prompt_path:
             self.text: str = self.read_prompt_from_file(prompt_path)
         else:
-            self.text: str = "At some point, here will be a default prompt."
+            raise ValueError(
+                "Please provide a prompt string, a prompt path or a prompt type."
+            )
 
         self.name: str = name
         self.tokenizer: PreTrainedTokenizerFast = tokenizer
@@ -84,30 +88,42 @@ class Prompt:
             self.ex_ids = []
             self.ex_sent_spans = []
 
+        self.history = history
         self.wrapper: str = wrapper
 
-    def format_teacher_sys(
-        self, student_sys: str, student_chat: list[dict[str, str]]
-    ) -> str:
+    def add_history(self, student_chat: Chat):
         """
-        Format the teacher's system prompt by inserting the student's init prompt and the parts of the sample the
-        student has solved so far.
+        Format the history of the teacher's system prompt by inserting the student's init prompt and
+        the parts of the sample the student has solved so far.
         This prompt is only applicable per part (NOT per sample).
 
-        :param student_sys: str, the student's system prompt
-        :param student_chat: list[dict], the chat of the student
+        :param student_chat: the chat of the student
 
         :return: str, the formatted teacher's system prompt
         """
         parts_so_far = ""
         parts_set = set()
-        for message in student_chat:
-            if message["role"] == "user" and message["content"] not in parts_set:
+        ids_so_far, spans_types_so_far = [], {}
+
+        for message in student_chat.messages:
+            if message["role"] == "user":
+                if message["content"] in parts_set:
+                    raise ValueError(
+                        f"Duplicate message in the chat: {message['content']}"
+                    )
+
                 parts_so_far += message["content"] + "\n"
                 parts_set.add(message["content"] + "\n")
 
+                ids_so_far.extend(message["ids"])
+                spans_types_so_far.update(message["spans_types"])
+
         print("DEBUG parts so far", parts_so_far)
-        return self.text.format(init_prompt=student_sys, parts_so_far=parts_so_far)
+        self.text = (
+            self.original_text + "\n\n" + self.history.format(chat_history=parts_so_far)
+        )
+        self.ids = self.orig_ids + ids_so_far
+        self.sent_spans = {**self.orig_sent_spans, **spans_types_so_far}
 
     def format_teacher_message(self, student_out: str):
         """
