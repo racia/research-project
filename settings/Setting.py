@@ -88,15 +88,12 @@ class Setting(ABC):
         return chat
 
     @abstractmethod
-    def apply_setting(
-        self, decoded_output: str
-    ) -> tuple[str, int, InterpretabilityResult]:
+    def apply_setting(self) -> tuple[str, int, InterpretabilityResult]:
         """
         Apply setting-specific postprocessing of the initial model output.
         For the baseline and skyline, this consists of parsing the output.
         For the SD and feedback setting, this entails the main idea of these settings.
 
-        :param decoded_output: the current output of the student
         :return: parsed output
         """
         # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
@@ -190,9 +187,7 @@ class Setting(ABC):
                     )
                     try:
                         decoded_output, iterations, interpretability = (
-                            self.apply_setting(
-                                decoded_output=self.part.result_before.model_output,
-                            )
+                            self.apply_setting()
                         )
                     except torch.OutOfMemoryError:
                         decoded_output, iterations, interpretability = "", 0, None
