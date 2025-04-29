@@ -196,8 +196,11 @@ class Model:
 
                 print("decoded_output", decoded_output)
 
-                interpretability_result = None
+                # interpretability_result = None
+                print("DEBUG self.interpretability", self.interpretability)
+                print("DEBUG decoded_output", decoded_output)
                 if self.interpretability and decoded_output:
+                    print("DEBUG starting interpretability")
                     output_tensor = self.model(
                         outputs,
                         return_dict=True,

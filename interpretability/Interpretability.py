@@ -15,6 +15,7 @@ from interpretability.utils import (
     get_max_attn_ratio,
     get_supp_tok_idx,
     get_indices,
+    get_attn_on_target,
 )
 from plots.Plotter import Plotter
 
@@ -308,8 +309,8 @@ class Interpretability:
         y_tokens = self.tokenizer.batch_decode(model_output[:-1])
         torch.cuda.empty_cache()
 
-        max_attn_ratio = 0.0  # get_max_attn_ratio(attn_scores_aggr, supp_sent_idx)
-        attn_on_target = 0.0  # get_attn_on_target(attn_scores_aggr, supp_sent_idx)
+        max_attn_ratio = get_max_attn_ratio(attn_scores_aggr, supp_sent_idx)
+        attn_on_target = get_attn_on_target(attn_scores_aggr, supp_sent_idx)
 
         result_aggr = InterpretabilityResult(
             attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio, attn_on_target

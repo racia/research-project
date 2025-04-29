@@ -232,6 +232,7 @@ class DataSaver:
                 file_name = (
                     f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
                 )
+                print("DEBUG", result)
                 print("ATTN raw type:", type(result.attn_scores))
                 print(
                     "ATTN raw shape:", getattr(result.attn_scores, "shape", "no shape")
