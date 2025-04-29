@@ -122,7 +122,10 @@ class Prompt:
             self.original_text + "\n\n" + self.history.format(chat_history=parts_so_far)
         )
         self.ids = self.orig_ids + ids_so_far
-        self.sent_spans = {**{span: "teacher sys" for span in self.orig_sent_spans}, **spans_types_so_far}
+        self.sent_spans = {
+            **{span: "teacher sys" for span in self.orig_sent_spans},
+            **spans_types_so_far,
+        }
 
     def format_teacher_message(self, student_out: str):
         """

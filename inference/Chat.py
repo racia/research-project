@@ -171,7 +171,7 @@ class Chat:
                 # it is a formatted prompt (string prompt) => task
                 ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
                 spans_types.update(
-                    {upd_span(span, self.offset): "debug task" for span in sent_spans}
+                    {upd_span(span, self.offset): "teacher task" for span in sent_spans}
                 )
             else:
                 # it is certainly an assistant output
