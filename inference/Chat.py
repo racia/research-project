@@ -94,7 +94,7 @@ class Chat:
         self.part = part
 
         spans_types = {}
-        if ids is None and not wrapper:
+        if ids is None or not wrapper:
             if isinstance(part, SamplePart):
                 part = part.unwrapped_task
             ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
@@ -225,9 +225,7 @@ class Chat:
             if inx in self.part.supporting_sent_inx:
                 self.supp_sent_spans.append(span)
 
-    def chat_to_ids(
-        self, max_length: int = 2048, identify_target: bool = True
-    ) -> torch.Tensor:
+    def chat_to_ids(self, max_length: int = 2048, identify_target: bool = True) -> torch.Tensor:
         """
         Converts the chat into ids using the tokenizer.
 
