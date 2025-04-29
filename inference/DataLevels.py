@@ -527,6 +527,8 @@ class SamplePart:
             model_answer = str(model_answer)
 
         if not interpretability:
+            warnings.warn("DEBUG: NO INTERPRETABILITY SCORES WERE CALCULATED.")
+            print(self)
             interpretability = InterResult(np.ndarray([]), [], [], 0, 0)
         if version == "before":
             self.result_before = Results(
