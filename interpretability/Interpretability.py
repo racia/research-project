@@ -248,7 +248,7 @@ class Interpretability:
         torch.cuda.empty_cache()
 
         result = InterpretabilityResult(
-            attention_scores, x_tokens, y_tokens, max_attn_dist
+            attention_scores, x_tokens, y_tokens, max_attn_dist, max_attn_dist
         )
 
         if self.save_heatmaps:

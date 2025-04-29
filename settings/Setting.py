@@ -5,6 +5,7 @@ import warnings
 from abc import ABC, abstractmethod
 
 import torch
+from transformers import PreTrainedTokenizerFast
 
 from data.DataSaver import DataSaver
 from inference.Chat import Chat
@@ -65,7 +66,9 @@ class Setting(ABC):
     #     """
     #     raise NotImplementedError
 
-    def create_teacher_chat(self, teacher_sys: Prompt, tokenizer) -> Chat:
+    def create_teacher_chat(
+        self, teacher_sys: Prompt, tokenizer: PreTrainedTokenizerFast
+    ) -> Chat:
         """
         Set the system prompt for the teacher.
         This includes clearing the teacher's chat of previous parts.
@@ -164,9 +167,7 @@ class Setting(ABC):
                     print("QUERYING BEFORE")
                     # formatted_prompt = self.prepare_prompt(chat=chat)
                     try:
-                        decoded_output, interpretability = self.model.call(
-                            part=self.part
-                        )
+                        decoded_output, interpretability = self.model.call(self.part)
                         print(
                             f"The output of the {'student' if self.multi_system else 'model'}:",
                             decoded_output,

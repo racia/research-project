@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import warnings
 
 import torch
 from torch.amp import autocast
@@ -112,9 +113,12 @@ class Model:
         formatted_prompt: str = None,
     ) -> tuple[str, InterpretabilityResult]:
         """
-        Calls the model with memory optimizations and optionally with Interpretability.
+        Calls the model with memory optimizations and optionally with Interpretability (depends on config).
+        The user message is added to the chat if a part or a formatted prompt is provided. The generated model message is
+        added always. When a message is added, it is encoded, so the chat assumes all the encoded ids to be in place.
+
         :param part: The current sample part
-        :param formatted_prompt: The formatted prompt including the whole chat
+        :param formatted_prompt: The formatted message to be added to the chat
         :return: The decoded model output
         """
         if not self.chat:
@@ -134,31 +138,42 @@ class Model:
 
         if part:
             self.chat.add_message(part=part, source=Source.user, wrapper=self.wrapper)
+        elif formatted_prompt:
+            self.chat.add_message(
+                part=formatted_prompt, source=Source.user, wrapper=self.wrapper
+            )
+        else:
+            warnings.warn(
+                "Not adding any message to the chat, please make sure you do it manually "
+                "before calling the model.call method or pass a message."
+            )
 
         with torch.no_grad():
-            device = next(self.model.parameters()).device
+            # device = next(self.model.parameters()).device
+            #
+            # if self.interpretability:
 
-            if self.interpretability:
-                # includes flat ids for all the messages in the chat, including the wrapper
-                chat_ids = self.chat.chat_to_ids()
-                print(
-                    f"Formatted prompt (to remove):",
-                    self.tokenizer.batch_decode(chat_ids)[0],
-                    sep="\n",
-                    end="\n",
-                )
-                inputs = {"input_ids": chat_ids.to("cuda")}
-                print("inputs", inputs)
-            else:
-                inputs = self.tokenizer(
-                    formatted_prompt,
-                    return_tensors="pt",
-                    padding="longest",
-                    truncation=True,
-                    max_length=2048,
-                    add_special_tokens=True,
-                )
-                inputs = {k: v.to(device) for k, v in inputs.items()}
+            # includes flat ids for all the messages in the chat, including the wrapper
+            chat_ids = self.chat.chat_to_ids()
+            print(
+                f"Formatted prompt (to remove):",
+                self.tokenizer.batch_decode(chat_ids)[0],
+                sep="\n",
+                end="\n",
+            )
+            inputs = {"input_ids": chat_ids.to("cuda")}
+            print("inputs", inputs)
+
+            # else:
+            #     inputs = self.tokenizer(
+            #         formatted_prompt,
+            #         return_tensors="pt",
+            #         padding="longest",
+            #         truncation=True,
+            #         max_length=2048,
+            #         add_special_tokens=True,
+            #     )
+            #     inputs = {k: v.to(device) for k, v in inputs.items()}
 
             torch.cuda.empty_cache()
 
@@ -197,11 +212,11 @@ class Model:
                         part=part,
                     )
 
-                self.chat.add_message(
-                    part=decoded_output, source=Source.assistant, ids=encoded_output
-                )
+        torch.cuda.empty_cache()
 
-            torch.cuda.empty_cache()
+        self.chat.add_message(
+            part=decoded_output, source=Source.assistant, ids=encoded_output
+        )
 
         return decoded_output, interpretability_result
 

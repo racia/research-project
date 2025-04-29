@@ -168,10 +168,11 @@ def run_setting(cfg: DictConfig) -> None:
             wrapper=cfg.feedback_prompt.get("wrapper", None),
             tokenizer=teacher.tokenizer,
         )
+        # Doesn't need a tokenizer as it still needs to be formatted and
+        # will be added to the chat as a message
         refine_prompt = Prompt(
             prompt_path=cfg.refine_prompt.paths[0],
             wrapper=cfg.refine_prompt.get("wrapper", None),
-            tokenizer=model.tokenizer,
         )
         print("- THE FEEDBACK PROMPT -")
         print("______________________________")
@@ -203,10 +204,11 @@ def run_setting(cfg: DictConfig) -> None:
             wrapper=cfg.eval_prompt.get("wrapper", None),
             tokenizer=teacher.tokenizer,
         )
+        # Doesn't need a tokenizer as it still needs to be formatted and
+        # will be added to the chat as a message
         resume_prompt = Prompt(
             prompt_path=cfg.resume_prompt.paths[0],
             wrapper=cfg.resume_prompt.get("wrapper", None),
-            tokenizer=model.tokenizer,
         )
         print("- THE EVAL PROMPT -")
         print("______________________________")

@@ -10,6 +10,7 @@ from data.utils import *
 from evaluation.Evaluator import MetricEvaluator
 from inference.DataLevels import Features, Sample, SamplePart, Split, Task
 from inference.Prompt import Prompt
+from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits
 
 
@@ -204,65 +205,72 @@ class DataSaver:
         with open(file_path, "w", encoding="UTF-8") as file:
             file.write(json.dumps(data, indent=2))
 
-    def save_part_interpretability(self, part: SamplePart) -> None:
+    def save_part_interpretability(
+        self, result: InterpretabilityResult, version: str, part: SamplePart
+    ) -> None:
         """
         Save the interpretability result per sample part.
 
-        :param part: the part of the sample
+        :param result: the interpretability result
+        :param version: the version of the interpretability result (might also be an iteration)
+        :param part: the part of the sample (only for the ids)
         :return: None
         """
-        for result in part.results:
-            print("result", result)
-            if result.interpretability and not result.interpretability.empty():
-                attn_scores_subdir = (
-                    self.results_path
-                    / result.version
-                    / "interpretability"
-                    / "attn_scores"
+        if not (version in ["before", "after"] or version.isdigit()):
+            raise ValueError(
+                "Version should be either 'before', 'after' or an iteration number."
+            )
+        if result and not result.empty():
+            if version.isdigit():
+                version = Path("iterations", version)
+            attn_scores_subdir = (
+                self.results_path / version / "interpretability" / "attn_scores"
+            )
+            Path.mkdir(attn_scores_subdir, exist_ok=True, parents=True)
+
+            try:
+                file_name = (
+                    f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
                 )
-                Path.mkdir(attn_scores_subdir, exist_ok=True, parents=True)
-
-                try:
-                    file_name = f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
-                    print("DEBUG part.multi_system", part.multi_system)
-                    print(
-                        "DEBUG result.interpretability.attn_scores",
-                        result.interpretability.attn_scores.size,
-                        "\n",
-                        result.interpretability.attn_scores,
+                print(
+                    "DEBUG result.interpretability.attn_scores",
+                    result.attn_scores.size,
+                    "\n",
+                    result.attn_scores,
+                )
+                if result.attn_scores.size != 0:
+                    attn_scores = [
+                        "\t".join(map(str, row)) for row in result.attn_scores.tolist()
+                    ]
+                    self.save_with_separator(
+                        file_path=attn_scores_subdir / file_name, data=attn_scores
                     )
-                    if result.interpretability.attn_scores.size != 0:
-                        attn_scores = [
-                            "\t".join(map(str, row))
-                            for row in result.interpretability.attn_scores.tolist()
-                        ]
-                        self.save_with_separator(
-                            file_path=attn_scores_subdir / file_name, data=attn_scores
-                        )
-                    else:
+                else:
+                    warnings.warn(
+                        f"No attention scores found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
+                    )
+                for tokens in ("x_tokens", "y_tokens"):
+                    if not hasattr(result, tokens):
                         warnings.warn(
-                            f"No attention scores found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
+                            f"No {tokens} for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
                         )
-                    for tokens in ("x_tokens", "y_tokens"):
-                        if not hasattr(result.interpretability, tokens):
-                            warnings.warn(
-                                f"No {tokens} for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
-                            )
-                            continue
-                        file_name = f"{tokens}-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
-                        self.save_with_separator(
-                            file_path=attn_scores_subdir / file_name,
-                            data=getattr(result.interpretability, tokens),
-                        )
+                        continue
+                    file_name = (
+                        f"{tokens}-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
+                    )
+                    self.save_with_separator(
+                        file_path=attn_scores_subdir / file_name,
+                        data=getattr(result, tokens),
+                    )
 
-                except AttributeError as e:
-                    print(f"AttributeError: {e} in {result.interpretability}")
+            except AttributeError as e:
+                print(f"AttributeError: {e} in {result}")
 
                 print(
                     f"Interpretability results for task {part.task_id} saved to {attn_scores_subdir}"
                 )
-            else:
-                warnings.warn("No interpretability results found.")
+        else:
+            warnings.warn("No interpretability results found.")
 
     def save_interpretability(self, task_data: Task) -> None:
         """
@@ -272,10 +280,16 @@ class DataSaver:
         :return: None
         """
         for part in task_data.parts:
-            self.save_part_interpretability(part)
+            for result, version in zip(part.results, part.versions):
+                self.save_part_interpretability(result.interpretability, version, part)
 
     def save_feedback_iteration(
-        self, part, iteration, student_message, teacher_message
+        self,
+        part: SamplePart,
+        iteration: int,
+        student_message: str,
+        teacher_message: str,
+        interpretability: InterpretabilityResult = None,
     ) -> None:
         """
         Save both student's output and teacher's feedback in a single operation.
@@ -284,6 +298,7 @@ class DataSaver:
         :param iteration: The iteration number
         :param student_message: The student's message
         :param teacher_message: The teacher's feedback
+        :param interpretability: The interpretability result
         """
         iterations_dir = self.results_path / "iterations"
         iterations_dir.mkdir(exist_ok=True, parents=True)
@@ -300,6 +315,9 @@ class DataSaver:
             sf.write(student_message)
             tf.write(teacher_message)
 
+        if interpretability:
+            self.save_part_interpretability(interpretability, str(iteration), part)
+
     def save_part_result(self, part: SamplePart) -> None:
         """
         Save the result of a part of a sample.
@@ -313,7 +331,8 @@ class DataSaver:
             headers=list(result.keys()),
             file_name=f"t_{part.task_id}_s_{part.sample_id}_results.csv",
         )
-        self.save_part_interpretability(part)
+        for result, version in zip(part.results, part.versions):
+            self.save_part_interpretability(result.interpretability, version, part)
 
     def save_sample_result(self, sample: Sample) -> None:
         """
