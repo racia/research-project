@@ -104,6 +104,8 @@ class Prompt:
         parts_set = set()
         ids_so_far, spans_types_so_far = [], {}
 
+        # TODO: filter out generation tokens?
+
         for message in student_messages:
             if message["role"] == "user":
                 if message["content"] in parts_set:

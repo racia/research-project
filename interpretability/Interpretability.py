@@ -118,6 +118,7 @@ class Interpretability:
                 [
                     attn_scores[:, start:stop].mean(axis=-1)
                     for (start, stop) in sent_spans
+                    if start < stop
                 ]
             ).squeeze()
             # Reshape to match expected output format
@@ -297,6 +298,7 @@ class Interpretability:
             model_output_len=len(model_output),
             sent_spans=sent_spans,
         )
+        print("DEBUG attn_scores_aggr:", attn_scores_aggr)
 
         # no model output for the x-axis!
         x_tokens_aggr = [

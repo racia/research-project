@@ -77,7 +77,6 @@ class Setting(ABC):
         :param: teacher_sys: Prompt, the system prompt for the teacher
         :return: None
         """
-        print("DEBUG model chat", self.model.chat)
         teacher_sys.add_history(self.model.chat.messages)
         chat = Chat(
             model_role="teacher",

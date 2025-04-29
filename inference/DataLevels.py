@@ -548,9 +548,7 @@ class SamplePart:
                 interpretability=interpretability,
                 version=version,
             )
-            self.iterations = (
-                iterations if iterations else SamplePart.current_iteration_count
-            )
+            self.iterations = iterations or SamplePart.current_iteration_count
             self.result_after.categorize(ids=self.ids)
             self.results.append(self.result_after)
         else:
