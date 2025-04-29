@@ -251,8 +251,8 @@ class Feedback(Setting):
                 refine_message += teacher_feedback
                 refine_ids.extend(self.teacher.tokenizer.encode(teacher_feedback))
             else:
-                refine_message += line
-                refine_ids.extend(self.teacher.tokenizer.encode(line))
+                refine_message += line + "\n"
+                refine_ids.extend(self.teacher.tokenizer.encode(line + "\n"))
 
         self.student.chat.add_message(
             part=refine_message, source=Source.user, ids=refine_ids

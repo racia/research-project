@@ -151,10 +151,10 @@ class Model:
             # device = next(self.model.parameters()).device
             #
             # if self.interpretability:
-
+            not_from_part = formatted_prompt or not (formatted_prompt or part)
             # includes flat ids for all the messages in the chat, including the wrapper
             chat_ids = self.chat.chat_to_ids(
-                identify_target=False if formatted_prompt else True
+                identify_target=False if not_from_part else True
             )
             print(
                 f"Formatted prompt (to remove):",
