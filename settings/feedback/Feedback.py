@@ -305,7 +305,7 @@ class Feedback(Setting):
         )
 
         iteration = 1
-        interpretability = None
+        interpretability = self.part.result_before.interpretability
 
         if self.saver and self.part:
             self.saver.save_feedback_iteration(
