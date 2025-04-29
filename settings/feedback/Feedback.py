@@ -332,9 +332,7 @@ class Feedback(Setting):
             )
 
             print(" ---- Teacher ---- ", end="\n\n\n", flush=True)
-            feedback, is_valid = self.give_feedback(
-                self.student.chat.messages[-1]["content"]
-            )
+            feedback, is_valid = self.give_feedback(self.student.chat.messages[-1])
             # chat.add_message(part=feedback, source="assistant", model_role="teacher")
 
             print(
