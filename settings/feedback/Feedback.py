@@ -103,23 +103,22 @@ class Feedback(Setting):
 
         self.initial_student_output: str = ""
 
-    def prepare_prompt(self, chat: Chat, resume_gen=False, model_role="student") -> str:
+    def prepare_prompt(self, chat: Chat, resume_gen=False) -> str:
         """
         Prepares the prompt to include the current part of the sample.
 
         :param chat: the current chat
         :param resume_gen: whether to resume generation from the last message
-        :param model_role: the role of the model, either student or teacher
 
         :return: prompt with the task and the current part
         """
         if self.model.to_continue or resume_gen:
             formatted_prompt = self.model.tokenizer.apply_chat_template(
-                chat.messages[model_role], tokenize=False, continue_final_message=True
+                chat.messages, tokenize=False, continue_final_message=True
             )
         else:
             formatted_prompt = self.model.tokenizer.apply_chat_template(
-                chat.messages[model_role], tokenize=False, add_generation_prompt=True
+                chat.messages, tokenize=False, add_generation_prompt=True
             )
 
         return formatted_prompt
@@ -203,7 +202,7 @@ class Feedback(Setting):
         # TODO: remove because already in teacher.call? (not formatted prompt)
         self.teacher.chat.add_message(part=teacher_message, source=Source.user)
         formatted_teacher_prompt = self.prepare_prompt(
-            chat=self.teacher.chat, model_role="teacher", resume_gen=False
+            chat=self.teacher.chat, resume_gen=False
         )
 
         print(
@@ -308,22 +307,24 @@ class Feedback(Setting):
             flush=True,
         )
 
-        i = 1
+        iteration = 1
 
         if self.saver and self.part:
             self.saver.save_feedback_iteration(
                 part=self.part,
-                iteration=i,
+                iteration=iteration,
                 student_message=decoded_output,
                 teacher_message=feedback,
             )
         # Loop until teacher is satisfied with student output
         while not is_valid:
-            i += 1
-            print(f" ---- Feedback iteration {i} ---- ", end="\n\n\n", flush=True)
+            iteration += 1
+            print(
+                f" ---- Feedback iteration {iteration} ---- ", end="\n\n\n", flush=True
+            )
 
             # Maximum iterations check
-            if i > 15:
+            if iteration > 15:
                 print("Maximum feedback iterations reached. Using last student output.")
                 break
 
@@ -360,7 +361,7 @@ class Feedback(Setting):
             if self.saver and self.part:
                 self.saver.save_feedback_iteration(
                     part=self.part,
-                    iteration=i,
+                    iteration=iteration,
                     student_message=decoded_output,
                     teacher_message=feedback,
                 )
@@ -369,4 +370,4 @@ class Feedback(Setting):
         self.student.chat = chat_to_refine
         self.student.chat.messages[-1]["content"] = decoded_output
 
-        return decoded_output, i
+        return decoded_output, iteration
