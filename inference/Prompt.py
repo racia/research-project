@@ -82,6 +82,7 @@ class Prompt:
             self.orig_ids, self.orig_sent_spans = sents_to_ids(
                 nlp(self.text).sents, self.tokenizer
             )
+            self.orig_spans_types = {span: "sys" for span in self.orig_sent_spans}
             self.offset = len(flatten(self.orig_ids))
             self.ids, self.sent_spans = self.orig_ids, self.orig_sent_spans
             self.ex_ids = []
@@ -122,7 +123,7 @@ class Prompt:
             self.original_text + "\n\n" + self.history.format(chat_history=parts_so_far)
         )
         self.ids = self.orig_ids + ids_so_far
-        self.sent_spans = {**self.orig_sent_spans, **spans_types_so_far}
+        self.sent_spans = {**self.orig_spans_types, **spans_types_so_far}
 
     def format_teacher_message(self, student_out: str):
         """
