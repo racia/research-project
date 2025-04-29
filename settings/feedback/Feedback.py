@@ -4,7 +4,6 @@ import copy
 import re
 import warnings
 
-from torch import Tensor
 from transformers import PreTrainedTokenizerFast
 
 from data.DataSaver import DataSaver
@@ -206,7 +205,7 @@ class Feedback(Setting):
                 teacher_ids.extend(self.teacher.tokenizer.encode(line))
 
         self.teacher.chat.add_message(
-            part=teacher_message, source=Source.user, ids=Tensor(teacher_ids)
+            part=teacher_message, source=Source.user, ids=teacher_ids
         )
 
         print(

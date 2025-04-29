@@ -73,7 +73,7 @@ class Chat:
         self,
         part: SamplePart | str,
         source: Union[Source.user, Source.assistant],
-        ids: torch.Tensor = None,
+        ids: torch.Tensor | list[int] = None,
         wrapper: dict[str, dict] = None,
     ) -> None:
         """
@@ -180,7 +180,7 @@ class Chat:
                 print("DEBUG: case str and ids")
                 # it is certainly an assistant output
                 # TODO: optionally divide it into reasoning and answer
-                ids = ids.tolist()
+                ids = ids.tolist() if not isinstance(ids, list) else ids
                 spans_types[upd_span((0, len(ids)), self.offset)] = "ans"
                 self.offset += len(ids)
 
