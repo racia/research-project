@@ -124,7 +124,6 @@ def run_setting(cfg: DictConfig) -> None:
     if not hasattr(cfg.setting, "name"):
         raise ValueError("The setting name is not provided in the config file")
 
-    print("The model is being loaded...", end="\n\n")
     if hasattr(cfg, "model"):
         model = Model(
             **cfg.model,

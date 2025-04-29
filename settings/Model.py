@@ -60,7 +60,7 @@ class Model:
         :return: tuple: model, tokenizer
         """
         print(
-            f"The model {self.name} is being loaded in mode '{self.mode}'",
+            f"The model {self.name} is being loaded in mode '{self.mode}'...",
             end="\n\n",
             flush=True,
         )
