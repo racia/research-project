@@ -6,7 +6,6 @@ import en_core_web_sm
 from transformers import PreTrainedTokenizerFast
 
 from data.TaskExamples import Task, TaskExample, TaskExamples
-from inference.Chat import Chat
 from inference.DataLevels import SamplePart
 from inference.utils import sents_to_ids, flatten, upd_span
 from settings.config import Examples
@@ -91,13 +90,13 @@ class Prompt:
         self.history = history
         self.wrapper: str = wrapper
 
-    def add_history(self, student_chat: Chat):
+    def add_history(self, student_messages: list[dict]):
         """
         Format the history of the teacher's system prompt by inserting the student's init prompt and
         the parts of the sample the student has solved so far.
         This prompt is only applicable per part (NOT per sample).
 
-        :param student_chat: the chat of the student
+        :param student_messages: the messages of the student chat
 
         :return: str, the formatted teacher's system prompt
         """
@@ -105,7 +104,7 @@ class Prompt:
         parts_set = set()
         ids_so_far, spans_types_so_far = [], {}
 
-        for message in student_chat.messages:
+        for message in student_messages:
             if message["role"] == "user":
                 if message["content"] in parts_set:
                     raise ValueError(

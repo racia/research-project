@@ -78,7 +78,7 @@ class Setting(ABC):
         :return: None
         """
         print("DEBUG model chat", self.model.chat)
-        teacher_sys.add_history(student_chat=self.model.chat)
+        teacher_sys.add_history(self.model.chat.messages)
         chat = Chat(
             model_role="teacher",
             system_prompt=teacher_sys,
