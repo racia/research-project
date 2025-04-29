@@ -205,7 +205,9 @@ class Feedback(Setting):
                 teacher_message += line
                 teacher_ids.extend(self.teacher.tokenizer.encode(line))
 
-        self.teacher.chat.add_message(part=teacher_message, source=Source.user, ids=Tensor(teacher_ids))
+        self.teacher.chat.add_message(
+            part=teacher_message, source=Source.user, ids=Tensor(teacher_ids)
+        )
 
         print(
             "Teacher's message:",
@@ -227,9 +229,7 @@ class Feedback(Setting):
 
         return teacher_feedback, is_valid
 
-    def refine(
-        self, teacher_feedback: str
-    ) -> InterpretabilityResult:
+    def refine(self, teacher_feedback: str) -> InterpretabilityResult:
         """
         Prompt the student to refine its chain of thought according to the feedback it received from
         the teacher. Similar to the speculative_decode method in SpeculativeDecoding.
@@ -333,7 +333,9 @@ class Feedback(Setting):
             )
 
             print(" ---- Teacher ---- ", end="\n\n\n", flush=True)
-            feedback, is_valid = self.give_feedback(self.student.chat.messages[-1]["content"])
+            feedback, is_valid = self.give_feedback(
+                self.student.chat.messages[-1]["content"]
+            )
             # chat.add_message(part=feedback, source="assistant", model_role="teacher")
 
             print(
