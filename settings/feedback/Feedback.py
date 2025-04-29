@@ -267,7 +267,9 @@ class Feedback(Setting):
 
         return student_out
 
-    def apply_setting(self, decoded_output: str) -> tuple[str, int]:
+    def apply_setting(
+        self, decoded_output: str
+    ) -> tuple[str, int, InterpretabilityResult]:
         """
         Run the feedback setting.
         The feedback setting consists of the following steps:
@@ -370,4 +372,4 @@ class Feedback(Setting):
         self.student.chat = chat_to_refine
         self.student.chat.messages[-1]["content"] = decoded_output
 
-        return decoded_output, iteration
+        return decoded_output, iteration, interpretability

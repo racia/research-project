@@ -26,6 +26,7 @@ class Interpretability:
         scenery_words: set[str],
         plotter: Plotter,
         save_heatmaps: bool = False,
+        aggregate_attn: bool = True,
     ):
         """
         Interpretability class
@@ -37,6 +38,7 @@ class Interpretability:
 
         self.plotter: Plotter = plotter
         self.save_heatmaps: bool = save_heatmaps
+        self.aggregate_attn: bool = aggregate_attn
 
         self.tokenizer: PreTrainedTokenizerFast = None
 
@@ -266,7 +268,6 @@ class Interpretability:
         chat: Chat,
         model_output: torch.Tensor,
         part: SamplePart,
-        aggregate: bool = False,
     ) -> InterpretabilityResult:
         """
         Process the attention scores and return the interpretability result ready for plotting.
