@@ -129,7 +129,7 @@ class Model:
             raise ValueError(
                 "Either part or formatted_prompt should be provided, not both."
             )
-        if not formatted_prompt and not part:
+        if not (formatted_prompt or part):
             warnings.warn(
                 "Not adding any message to the chat, please make sure you do it manually "
                 "before calling the model.call method or pass a message."
@@ -152,7 +152,7 @@ class Model:
 
             # includes flat ids for all the messages in the chat, including the wrapper
             chat_ids = self.chat.chat_to_ids(
-                identify_target=False if self.role == "teacher" else True
+                identify_target=False if part else True
             )
             print(
                 f"Formatted prompt (to remove):",
