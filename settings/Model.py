@@ -111,6 +111,7 @@ class Model:
         self,
         part: SamplePart = None,
         formatted_prompt: str = None,
+        from_chat: bool = False,
     ) -> tuple[str, InterpretabilityResult]:
         """
         Calls the model with memory optimizations and optionally with Interpretability (depends on config).
@@ -154,7 +155,7 @@ class Model:
             not_from_part = formatted_prompt or not (formatted_prompt or part)
             # includes flat ids for all the messages in the chat, including the wrapper
             chat_ids = self.chat.chat_to_ids(
-                identify_target=False if not_from_part else True
+                identify_target=False if not_from_part or from_chat else True
             )
             print(
                 f"Formatted prompt (to remove):",

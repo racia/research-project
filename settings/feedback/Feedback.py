@@ -265,7 +265,7 @@ class Feedback(Setting):
             end="\n\n\n",
         )
 
-        return self.student.call()
+        return self.student.call(part=self.part, from_chat=True)
 
     def apply_setting(self) -> tuple[str, int, InterpretabilityResult]:
         """
