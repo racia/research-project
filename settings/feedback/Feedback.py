@@ -293,7 +293,6 @@ class Feedback(Setting):
         print(" ---- Feedback iteration 1 ---- ", end="\n\n\n", flush=True)
 
         print(" ---- Teacher ---- ", end="\n\n\n", flush=True)
-        # TODO: save interpretability iterations?
         feedback, is_valid, interpretability = self.give_feedback(
             initial_output=decoded_output
         )
@@ -309,16 +308,15 @@ class Feedback(Setting):
             flush=True,
         )
 
+        i = 1
+
         if self.saver and self.part:
             self.saver.save_feedback_iteration(
                 part=self.part,
-                iteration=1,
+                iteration=i,
                 student_message=decoded_output,
                 teacher_message=feedback,
             )
-
-        i = 1
-
         # Loop until teacher is satisfied with student output
         while not is_valid:
             i += 1
@@ -362,7 +360,7 @@ class Feedback(Setting):
             if self.saver and self.part:
                 self.saver.save_feedback_iteration(
                     part=self.part,
-                    iteration=1,
+                    iteration=i,
                     student_message=decoded_output,
                     teacher_message=feedback,
                 )

@@ -276,7 +276,7 @@ class Interpretability:
         :param output_tensor: model output tensor for the current chat
         :param model_output: model output ids
         :param chat: the student chat (contains all the messages but the last model output)
-        :param part: the part of the sample to evaluate # TODO: to remove
+        :param part: the part of the sample to evaluate # TODO: to remove plotting after review
         :return: InterpretabilityResult object
         """
         # should not include the model output span!
@@ -309,7 +309,7 @@ class Interpretability:
         result_aggr = InterpretabilityResult(
             attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio, attn_on_target
         )
-
+        # TODO: remove plotting after review
         self.plotter.draw_heat(
             interpretability_result=result_aggr,
             x_label="Sentence Indices",
