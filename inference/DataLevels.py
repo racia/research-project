@@ -529,6 +529,8 @@ class SamplePart:
         if not interpretability:
             warnings.warn("DEBUG: NO INTERPRETABILITY SCORES WERE CALCULATED.")
             print(self)
+            print("version", version)
+            print("Model output:", model_output)
             interpretability = InterResult(np.ndarray([]), [], [], 0, 0)
         if version == "before":
             self.result_before = Results(
