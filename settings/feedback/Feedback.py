@@ -228,7 +228,7 @@ class Feedback(Setting):
 
         return teacher_feedback, is_valid
 
-    def refine(self, teacher_feedback: str) -> InterpretabilityResult:
+    def refine(self, teacher_feedback: str) -> tuple[str, InterpretabilityResult]:
         """
         Prompt the student to refine its chain of thought according to the feedback it received from
         the teacher. Similar to the speculative_decode method in SpeculativeDecoding.
@@ -254,11 +254,11 @@ class Feedback(Setting):
             end="\n\n\n",
         )
 
-        _, interpretability = self.student.call(
+        decoded_output, interpretability = self.student.call(
             formatted_prompt=formulated_refine_message, part=self.part
         )
 
-        return interpretability
+        return decoded_output, interpretability
 
     def apply_setting(self) -> tuple[str, int, InterpretabilityResult]:
         """
