@@ -531,7 +531,7 @@ class SamplePart:
             print(self)
             print("version", version)
             print("Model output:", model_output)
-            interpretability = InterResult(np.ndarray([]), [], [], 0, 0)
+            interpretability = InterResult(np.ndarray([]), [], [], 0.0, 0.0)
         if version == "before":
             self.result_before = Results(
                 model_output=model_output,
@@ -662,25 +662,12 @@ class Sample:
         """
         self.parts.append(part)
 
-        self.evaluator_before.pred_answers.append(part.result_before.model_answer)
-        self.evaluator_before.pred_reasonings.append(part.result_before.model_reasoning)
-        if (
-            part.result_before.interpretability
-            and part.result_before.max_supp_attn is not None
-        ):
-            print("DEBUG: max_supp_attn", part.result_after.max_supp_attn)
-            self.evaluator_before.max_supp_attn.add(part.result_before.max_supp_attn)
-        if self.multi_system:
-            self.evaluator_after.pred_answers.append(part.result_after.model_answer)
-            self.evaluator_after.pred_reasonings.append(
-                part.result_after.model_reasoning
-            )
-            if (
-                part.result_after.interpretability
-                and part.result_after.max_supp_attn is not None
-            ):
-                print("DEBUG: max_supp_attn", part.result_after.max_supp_attn)
-                self.evaluator_after.max_supp_attn.add(part.result_after.max_supp_attn)
+        for evaluator, result in zip(self.evaluators, part.results):
+            evaluator.pred_answers.append(result.model_answer)
+            evaluator.pred_reasonings.append(result.model_reasoning)
+            if result.interpretability:
+                print("DEBUG: max_supp_attn", result.max_supp_attn)
+                evaluator.max_supp_attn.add(result.max_supp_attn or 0.0)
 
     def print_sample_predictions(self) -> None:
         """

@@ -464,7 +464,7 @@ class DataLoader:
             warnings.warn(
                 f"The interpretability data is not found at path: {attn_scores_path}"
             )
-            return InterpretabilityResult(np.array([]), [], [], 0)
+            return InterpretabilityResult(np.array([]), [], [], 0.0, 0.0)
 
         if path.name != "attn_scores":
             raise ValueError("The attention subdirectory is not located.")

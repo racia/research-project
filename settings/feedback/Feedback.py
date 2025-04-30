@@ -263,6 +263,7 @@ class Feedback(Setting):
         )
 
         iteration = 1
+        # without iterations, interpretability will stay None
         interpretability = None
 
         if self.saver and self.part:
