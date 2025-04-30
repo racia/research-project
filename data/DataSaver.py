@@ -206,7 +206,11 @@ class DataSaver:
             file.write(json.dumps(data, indent=2))
 
     def save_part_interpretability(
-        self, result: InterpretabilityResult, version: str, part: SamplePart
+        self,
+        result: InterpretabilityResult,
+        version: str,
+        part: SamplePart,
+        add: str = "",
     ) -> None:
         """
         Save the interpretability result per sample part.
@@ -223,16 +227,17 @@ class DataSaver:
         print("Version:", version)
         if result and not result.empty():
             if version.isdigit():
-                version = Path("iterations", version)
+                add = f"{version}_"
+                version = "iterations"
+            else:
+                add = ""
             attn_scores_subdir = (
                 self.results_path / version / "interpretability" / "attn_scores"
             )
             Path.mkdir(attn_scores_subdir, exist_ok=True, parents=True)
 
             try:
-                file_name = (
-                    f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
-                )
+                file_name = f"{add}attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
                 print("DEBUG", result)
                 print("ATTN raw type:", type(result.attn_scores))
                 print(
@@ -261,9 +266,7 @@ class DataSaver:
                             f"No {tokens} for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
                         )
                         continue
-                    file_name = (
-                        f"{tokens}-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
-                    )
+                    file_name = f"{add}{tokens}-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
                     self.save_with_separator(
                         file_path=attn_scores_subdir / file_name,
                         data=getattr(result, tokens),

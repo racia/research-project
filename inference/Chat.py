@@ -61,6 +61,22 @@ class Chat:
             + [f"{message['role']}: {message['content']}" for message in self.messages]
         )
 
+    def remove_message(self, message: dict) -> None:
+        """
+        Remove a message from the messages list.
+
+        :param message: the message to remove
+        """
+        if message != self.messages[-1]:
+            raise ValueError(
+                "Removing messages other than the last one is not supported."
+            )
+        self.messages.remove(message)
+        self.offset -= len(flatten(message["ids"]))
+        if message["role"] == Source.assistant:
+            self.supp_sent_spans = []
+            self.identify_supp_sent_spans()
+
     def add_message(
         self,
         part: SamplePart | str,
