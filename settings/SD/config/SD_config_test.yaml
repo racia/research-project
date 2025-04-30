@@ -2,14 +2,14 @@ teacher:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
   max_new_tokens: 12
   temperature: 0.1
-  to_continue: false
+  to_continue: False
   mode: "eval"
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 100
+  max_new_tokens: 200
   temperature: 0.1
-  to_continue: false
+  to_continue: False
   mode: "eval"
 
 setting:
@@ -36,6 +36,7 @@ data:
   wrapper:
     # if to wrap the part prompt with the task description
     context: |
+      *TASK*
       Here are the context sentences:
       {context}
     question: |
@@ -62,8 +63,13 @@ init_prompt:
 eval_prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
-    - "${oc.env:HOME}/research-project/inference/prompts/eval_prompt.txt"
-  wrapper: | # if to wrap the part prompt with the task description
+    - "${oc.env:HOME}/research-project/inference/prompts/feedback_prompt.txt"
+  history: |
+    Your student was given the following task:
+    """
+    {chat_history}
+    """
+  wrapper: |
     The student's response was:
     {student_output}
 
@@ -117,6 +123,7 @@ results:
     - verbs_before
     - pronouns_before
     - not_mentioned_before
+    - iterations
     - context_sents_hall_before
 
 hydra:
