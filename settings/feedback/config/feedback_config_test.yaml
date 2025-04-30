@@ -106,7 +106,6 @@ results:
     - pronouns_after
     - not_mentioned_after
     - context_sents_hall_after
-    - feedback_iterations
     - model_answer_before
     - answer_correct_before
     - reasoning_correct_before
@@ -120,7 +119,7 @@ results:
     - verbs_before
     - pronouns_before
     - not_mentioned_before
-    - feedback_iterations
+    - iterations
     - context_sents_hall_before
 
   hydra:

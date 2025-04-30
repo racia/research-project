@@ -137,7 +137,7 @@ class CSVHeaders:
     pronouns_after: str = "pronouns_after"
     not_mentioned_after: str = "not_mentioned_after"
     context_sents_hall_after: str = "context_sents_hall_after"
-    feedback_iterations: str = "feedback_iterations"
+    iterations: str = "iterations"
     model_answer_before: str = "model_answer_before"
     answer_correct_before: str = "answer_correct_before"
     model_reasoning_before: str = "model_reasoning_before"

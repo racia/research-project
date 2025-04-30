@@ -664,14 +664,20 @@ class Sample:
 
         self.evaluator_before.pred_answers.append(part.result_before.model_answer)
         self.evaluator_before.pred_reasonings.append(part.result_before.model_reasoning)
-        if part.result_before.interpretability and part.result_before.max_supp_attn:
+        if (
+            part.result_before.interpretability
+            and part.result_before.max_supp_attn is not None
+        ):
             self.evaluator_before.max_supp_attn.add(part.result_before.max_supp_attn)
         if self.multi_system:
             self.evaluator_after.pred_answers.append(part.result_after.model_answer)
             self.evaluator_after.pred_reasonings.append(
                 part.result_after.model_reasoning
             )
-            if part.result_after.interpretability and part.result_after.max_supp_attn:
+            if (
+                part.result_after.interpretability
+                and part.result_after.max_supp_attn is not None
+            ):
                 self.evaluator_after.max_supp_attn.add(part.result_after.max_supp_attn)
 
     def print_sample_predictions(self) -> None:
