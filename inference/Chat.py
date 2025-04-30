@@ -74,6 +74,7 @@ class Chat:
                 "Removing messages other than the last one is not supported."
             )
         deleted_message = self.messages.pop(i)
+        print("REMOVED MESSAGE", deleted_message)
         self.offset -= len(flatten(deleted_message["ids"]))
         if deleted_message["role"] == Source.assistant:
             self.supp_sent_spans = []
@@ -84,7 +85,6 @@ class Chat:
         source: Union[Source.user, Source.assistant],
         ids: torch.Tensor | list[int] = None,
         wrapper: dict[str, dict] = None,
-        label: str = "",
     ) -> None:
         """
         Add a message to the messages list. It can add either a message from the part task or assistant output.
@@ -96,7 +96,6 @@ class Chat:
         :param source: the producer of the message
         :param ids: the ids of the message, if None, the ids are generated from the message
         :param wrapper: the wrapper ids and sentence spans of the message
-        :param label: the label of the message for the ambiguous cases of encoded messages
         :return: None
         """
         if wrapper and ids is not None and source == Source.assistant:
@@ -193,7 +192,8 @@ class Chat:
                 # it is certainly an assistant output
                 # TODO: optionally divide it into reasoning and answer
                 ids = ids.tolist() if not isinstance(ids, list) else ids
-                spans_types[upd_span((0, len(ids)), self.offset)] = "ans" or label
+                label = "ans" if source == Source.assistant else "_task_"
+                spans_types[upd_span((0, len(ids)), self.offset)] = label
                 self.offset += len(ids)
 
         print("ids", len(ids), ids)
