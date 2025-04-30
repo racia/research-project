@@ -46,8 +46,8 @@ class InterpretabilityResult:
         print("DEBUG: checking if InterpretabilityResult is empty...")
         print("self.x_tokens", bool(self.x_tokens), self.x_tokens)
         print("self.y_tokens", bool(self.y_tokens), self.y_tokens)
-        print("self.attn_scores.shape == ()", self.attn_scores.shape == ())
-        if not (self.x_tokens or self.y_tokens or (self.attn_scores.shape == ())):
+        print("self.attn_scores.shape != ()", self.attn_scores.shape != ())
+        if not (self.x_tokens or self.y_tokens or self.attn_scores.shape != ()):
             return True
         return False
 
