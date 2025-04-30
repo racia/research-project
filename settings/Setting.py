@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import gc
-import warnings
 from abc import ABC, abstractmethod
 from mailbox import FormatError
 
@@ -84,16 +83,21 @@ class Setting(ABC):
             tokenizer=tokenizer,
         )
         if "{" in teacher_sys.text:
-            raise FormatError(teacher_sys.text)
+            raise FormatError(
+                "The teacher prompt is still unformatted:\n", teacher_sys.text
+            )
         return chat
 
     @abstractmethod
-    def apply_setting(self) -> tuple[str, int, InterpretabilityResult]:
+    def apply_setting(
+        self, decoded_output: str
+    ) -> tuple[str, int, InterpretabilityResult]:
         """
         Apply setting-specific postprocessing of the initial model output.
         For the baseline and skyline, this consists of parsing the output.
         For the SD and feedback setting, this entails the main idea of these settings.
 
+        :param decoded_output: the output of the model
         :return: parsed output
         """
         # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
@@ -156,21 +160,8 @@ class Setting(ABC):
                 if not self.part.result_before.model_answer:
                     print("QUERYING BEFORE")
                     # formatted_prompt = self.prepare_prompt(chat=chat)
-                    try:
-                        decoded_output, interpretability = self.model.call(self.part)
-                        print(
-                            f"The output of the {'student' if self.multi_system else 'model'}:",
-                            decoded_output,
-                            end="\n\n\n",
-                            sep="\n",
-                            flush=True,
-                        )
-                    except torch.OutOfMemoryError:
-                        decoded_output, interpretability = "", None
-                        warnings.warn(
-                            "DEBUG: Out of memory error while calculating interpretability scores * before *. "
-                            "Skipping this step."
-                        )
+                    # TODO optional: remove returning the decoded output => move printing to model.call and work only with chat
+                    decoded_output, interpretability = self.model.call(self.part)
                     answer, reasoning = parse_output(output=decoded_output)
                     self.part.set_output(
                         model_output=decoded_output,
@@ -179,27 +170,23 @@ class Setting(ABC):
                         interpretability=interpretability,
                         version="before",
                     )
+                    print(
+                        f"The output of the {'student' if self.multi_system else 'model'}:",
+                        decoded_output,
+                        end="\n\n\n",
+                        sep="\n",
+                        flush=True,
+                    )
 
                 # applying the changes that are specific to each setting
                 if self.multi_system:
                     print(
                         f"Last chat message from student before applying the setting: {self.model.chat.messages[-1]}"
                     )
-                    try:
-                        decoded_output, iterations, interpretability = (
-                            self.apply_setting()
-                        )
-                    except torch.OutOfMemoryError:
-                        decoded_output, iterations, interpretability = "", 0, None
-                        warnings.warn(
-                            "DEBUG: Out of memory error while calculating interpretability scores * before *. "
-                            "Skipping this step."
-                        )
-                    print(
-                        f"Last chat message from student after applying the setting: {self.model.chat.messages[-1]}"
+                    decoded_output, iterations, interpretability = self.apply_setting(
+                        decoded_output
                     )
                     answer, reasoning = parse_output(output=decoded_output)
-
                     self.part.set_output(
                         model_output=decoded_output,
                         model_answer=answer,
@@ -207,6 +194,9 @@ class Setting(ABC):
                         interpretability=interpretability,
                         iterations=iterations,
                         version="after",
+                    )
+                    print(
+                        f"Last chat message from student after applying the setting: {self.model.chat.messages[-1]}"
                     )
 
                 if self.saver:

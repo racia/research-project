@@ -6,7 +6,7 @@ import en_core_web_sm
 from transformers import PreTrainedTokenizerFast
 
 from data.TaskExamples import Task, TaskExample, TaskExamples
-from inference.DataLevels import SamplePart
+from inference.Chat import Source
 from inference.utils import sents_to_ids, flatten, upd_span
 from settings.config import Examples
 
@@ -142,6 +142,35 @@ class Prompt:
 
         return wrapped_out
 
+    def format_teacher_message_f(self, student_message: dict):
+        """
+        Format the teacher message by inserting the student's output into the instruction,
+        both the content and the ids.
+
+        :param student_message: the message of the student chat with the content and ids
+        :return: str, the instruction with the student output inserted
+        """
+        teacher_message = ""
+        teacher_ids = []
+        for line in self.wrapper.split("\n"):
+            if "student_output" in line:
+                teacher_message += student_message["content"]
+                teacher_ids.extend(student_message["ids"])
+            else:
+                teacher_message += line
+                teacher_ids.extend(self.tokenizer.encode(line))
+        print(
+            "Teacher's message:",
+            teacher_message,
+            sep="\n",
+            end="\n\n\n",
+        )
+        return {
+            "part": teacher_message,
+            "source": Source.user,
+            "ids": teacher_ids,
+        }
+
     def format_resume_message(self, corrected_student_output: str) -> str:
         """
         Formulate the resume prompt for the student model.
@@ -162,35 +191,46 @@ class Prompt:
 
         return wrapped_out
 
+    # def format_feedback_message(self, part: SamplePart, cot_to_evaluate: str) -> str:
+    #     """
+    #     Format a feedback message for the teacher model.
+    #
+    #     :param part: the part of the sample to evaluate
+    #     :param cot_to_evaluate: the chain of thought to evaluate
+    #     :return: the formatted feedback message
+    #     """
+    #     formatted_part = f"{part.structured_context}\n{part.structured_question}"
+    #
+    #     formatted_with_cot = f"{self.text}\n{formatted_part}"
+    #     return formatted_with_cot + "\n" + cot_to_evaluate
+
     def format_refine_message(
-        self,
-        model_output: str,
-        teacher_feedback: str = "",
-    ) -> str:
-        """
-        Format a refine message for the student model.
-
-        :param model_output: the chain of thought to continue
-        :param teacher_feedback: the teacher's feedback to add to the message
-        :return: the formatted refine message
-        """
-        text = self.original_text
-        return text.format(
-            student_output=model_output, teacher_feedback=teacher_feedback
+        self, student_message: dict, teacher_feedback: str
+    ) -> dict:
+        """ """
+        refine_message = ""
+        refine_ids = []
+        for line in self.original_text.split("\n"):
+            if "student_output" in line:
+                refine_message += student_message["content"]
+                refine_ids.extend(student_message["ids"])
+            elif "teacher_feedback" in line:
+                refine_message += teacher_feedback
+                refine_ids.extend(self.tokenizer.encode(teacher_feedback))
+            else:
+                refine_message += line + "\n"
+                refine_ids.extend(self.tokenizer.encode(line + "\n"))
+        print(
+            "Formatted refine message:",
+            refine_message,
+            sep="\n",
+            end="\n\n\n",
         )
-
-    def format_feedback_message(self, part: SamplePart, cot_to_evaluate: str) -> str:
-        """
-        Format a feedback message for the teacher model.
-
-        :param part: the part of the sample to evaluate
-        :param cot_to_evaluate: the chain of thought to evaluate
-        :return: the formatted feedback message
-        """
-        formatted_part = f"{part.structured_context}\n{part.structured_question}"
-
-        formatted_with_cot = f"{self.text}\n{formatted_part}"
-        return formatted_with_cot + "\n" + cot_to_evaluate
+        return {
+            "part": refine_message,
+            "source": Source.user,
+            "ids": refine_ids,
+        }
 
     @staticmethod
     def read_prompt_from_file(file_path: str):

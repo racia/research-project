@@ -284,6 +284,10 @@ class Interpretability:
         :param aggregate: if to aggregate the attention scores over the sentences
         :return: InterpretabilityResult object
         """
+        # TODO: Problems
+        # TODO: first part of a sample has context of several parts
+        # TODO: the further parts don't seem to add up to the previous ones (maybe replace?)
+        # TODO: How to save interpretability iterations?
         # should not include the model output span!
         spans_types = chat.get_sentence_spans()
         sent_spans = list(spans_types.keys())

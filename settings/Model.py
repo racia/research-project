@@ -115,8 +115,9 @@ class Model:
     ) -> tuple[str, InterpretabilityResult]:
         """
         Calls the model with memory optimizations and optionally with Interpretability (depends on config).
-        The user message is added to the chat if a part or a formatted prompt is provided. The generated model message is
-        added always. When a message is added, it is encoded, so the chat assumes all the encoded ids to be in place.
+        The user message is added to the chat if a part or a formatted prompt is provided.
+        Otherwise, the model is called on the current chat as is. The generated model message is added always.
+        Whenever a string message is added, it is encoded, so the chat assumes all the encoded ids to be in place.
 
         :param part: The current sample part
         :param formatted_prompt: The formatted message to be added to the chat
@@ -152,10 +153,10 @@ class Model:
             # device = next(self.model.parameters()).device
             #
             # if self.interpretability:
-            not_from_part = formatted_prompt or not (formatted_prompt or part)
+            call_from_part = not (formatted_prompt or from_chat) and part
             # includes flat ids for all the messages in the chat, including the wrapper
             chat_ids = self.chat.chat_to_ids(
-                identify_target=False if not_from_part or from_chat else True
+                identify_target=True if call_from_part else False
             )
             print(
                 f"Formatted prompt (to remove):",
@@ -198,27 +199,32 @@ class Model:
                 print("decoded_output", decoded_output)
 
                 interpretability_result = None
-
                 if self.role == "student" and not self.interpretability:
                     raise ValueError("Interpretability is not set for student model!")
                 print("DEBUG self.interpretability", self.interpretability)
                 print("DEBUG decoded_output", decoded_output)
                 if self.interpretability and decoded_output:
                     print("DEBUG starting interpretability")
-                    output_tensor = self.model(
-                        outputs,
-                        return_dict=True,
-                        output_attentions=True,
-                        output_hidden_states=False,
-                    )
-                    interpretability_result = self.interpretability.process_attention(
-                        # output tensor includes all the previous ids + the model output
-                        output_tensor=output_tensor,
-                        # chat doesn't include the current model output
-                        chat=self.chat,
-                        model_output=encoded_output,
-                        part=part,
-                    )
+                    try:
+                        output_tensor = self.model(
+                            outputs,
+                            return_dict=True,
+                            output_attentions=True,
+                            output_hidden_states=False,
+                        )
+                        interpretability_result = self.interpretability.process_attention(
+                            # output tensor includes all the previous ids + the model output
+                            output_tensor=output_tensor,
+                            # chat doesn't include the current model output
+                            chat=self.chat,
+                            model_output=encoded_output,
+                            part=part,
+                        )
+                    except torch.OutOfMemoryError:
+                        warnings.warn(
+                            "DEBUG: Out of memory error while calculating interpretability scores * before *. "
+                            "Skipping this step."
+                        )
 
         torch.cuda.empty_cache()
 
