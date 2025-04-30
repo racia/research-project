@@ -337,6 +337,7 @@ class DataSaver:
             file_name=f"t_{part.task_id}_s_{part.sample_id}_results.csv",
         )
         for result, version in zip(part.results, part.versions):
+            print("DEBUG result.interpretability.empty()", result.interpretability.empty())
             if not result.interpretability.empty():
                 self.save_part_interpretability(result.interpretability, version, part)
 
