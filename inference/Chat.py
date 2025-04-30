@@ -75,7 +75,6 @@ class Chat:
         self.offset -= len(flatten(message["ids"]))
         if message["role"] == Source.assistant:
             self.supp_sent_spans = []
-            self.identify_supp_sent_spans()
 
     def add_message(
         self,
