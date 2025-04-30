@@ -323,12 +323,16 @@ class Feedback(Setting):
 
         # Update the original chat's last student message with the refined output
         last_model_message = self.student.chat.messages[-1]
+        print("DEBUG: last_model_message", last_model_message)
+        print("DEBUG: self.student.chat changed", self.student.chat)
         self.student.chat = original_student_chat
-        self.student.chat.remove_message(self.student.chat.messages[-1])
+        print("DEBUG: self.student.chat original", self.student.chat)
+        self.student.chat.remove_message(-1)
         self.student.chat.add_message(
             last_model_message["content"],
             last_model_message["role"],
             last_model_message["ids"],
         )
+        print("DEBUG: self.student.chat updated", self.student.chat)
 
         return decoded_output, iteration, interpretability

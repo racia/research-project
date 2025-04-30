@@ -61,19 +61,21 @@ class Chat:
             + [f"{message['role']}: {message['content']}" for message in self.messages]
         )
 
-    def remove_message(self, message: dict) -> None:
+    def remove_message(self, i: int) -> None:
         """
         Remove a message from the messages list.
 
-        :param message: the message to remove
+        :param i: the index of the message to remove
+        :return: None
         """
-        if message != self.messages[-1]:
+        if i != -1:
+            # this is due to necessity to update all the spans after the deletion
             raise ValueError(
                 "Removing messages other than the last one is not supported."
             )
-        self.messages.remove(message)
-        self.offset -= len(flatten(message["ids"]))
-        if message["role"] == Source.assistant:
+        deleted_message = self.messages.pop(i)
+        self.offset -= len(flatten(deleted_message["ids"]))
+        if deleted_message["role"] == Source.assistant:
             self.supp_sent_spans = []
 
     def add_message(
@@ -265,8 +267,6 @@ class Chat:
         chat_ids = [self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")]
         # including the system prompt
         for i, message in enumerate(self.messages):
-            print(message["content"])
-            print(message["ids"])
             message_ids = get_generation_tokens(self.tokenizer, message["role"])
             message_ids.extend(flatten(message["ids"]))
             conversation_length = len(chat_ids) + len(message_ids)
