@@ -222,7 +222,7 @@ class Feedback(Setting):
             self.student.chat.messages[-1], teacher_feedback
         )
         self.student.chat.add_message(**refine_message)
-        return self.student.call(part=self.part, from_chat=True, keyword="refine")
+        return self.student.call(part=self.part, from_chat=True, keyword="iterations")
 
     def apply_setting(
         self, decoded_output: str

@@ -285,8 +285,6 @@ class Interpretability:
         :param aggregate: if to aggregate the attention scores over the sentences
         :return: InterpretabilityResult object
         """
-        # TODO: Problems
-        # TODO: answer is added twice at the end when iteration loop took place
         # should not include the model output span!
         spans_types = chat.get_sentence_spans()
         sent_spans = list(spans_types.keys())

@@ -120,6 +120,7 @@ class Plotter:
         part_id: int,
         version: str = "after",
         title: str = "",
+        add: str = "",
     ) -> None:
         """
         Draw a heat map with the interpretability attention scores for the current task.
@@ -163,9 +164,11 @@ class Plotter:
 
         plot_subdirectory = self.results_path / version / "interpretability" / "plots"
         Path.mkdir(plot_subdirectory, exist_ok=True, parents=True)
-        add = "aggr" if "Indices" in x_label else "ver"
+        verbosity = "aggr" if "Indices" in x_label else "ver"
+        add = f"{add}_" if add else ""
         plt.savefig(
-            plot_subdirectory / f"attn_map-{task_id}-{sample_id}-{part_id}-{add}.pdf"
+            plot_subdirectory
+            / f"{add}attn_map-{task_id}-{sample_id}-{part_id}-{verbosity}.pdf"
         )
 
         plt.close()
