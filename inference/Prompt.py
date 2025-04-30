@@ -6,8 +6,7 @@ import en_core_web_sm
 from transformers import PreTrainedTokenizerFast
 
 from data.TaskExamples import Task, TaskExample, TaskExamples
-from inference.Chat import Source
-from inference.utils import sents_to_ids, flatten, upd_span
+from inference.utils import sents_to_ids, flatten, upd_span, Source
 from settings.config import Examples
 
 nlp = en_core_web_sm.load()

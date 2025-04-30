@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import warnings
-from dataclasses import dataclass
 from typing import Union
 
 import torch
@@ -9,20 +8,13 @@ from transformers import PreTrainedTokenizerFast
 
 from inference.DataLevels import SamplePart
 from inference.Prompt import Prompt
-from inference.utils import flatten, get_generation_tokens, sents_to_ids, upd_span
-
-
-@dataclass
-class Source:
-    """
-    This class handles the roles of the participants in the conversation.
-    """
-
-    system: str = "system"
-    user: str = "user"
-    assistant: str = "assistant"
-
-    options = (system, user, assistant)
+from inference.utils import (
+    flatten,
+    get_generation_tokens,
+    sents_to_ids,
+    upd_span,
+    Source,
+)
 
 
 class Chat:

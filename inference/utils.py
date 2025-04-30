@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 import textwrap
 from collections import defaultdict
+from dataclasses import dataclass
 from typing import Any
 
 import en_core_web_sm
@@ -15,6 +16,19 @@ from evaluation.Evaluator import MetricEvaluator
 from settings.config import Enumerate
 
 nlp = en_core_web_sm.load()
+
+
+@dataclass
+class Source:
+    """
+    This class handles the roles of the participants in the conversation.
+    """
+
+    system: str = "system"
+    user: str = "user"
+    assistant: str = "assistant"
+
+    options = (system, user, assistant)
 
 
 def numerate_lines(lines: dict[int, str]) -> list[str]:
