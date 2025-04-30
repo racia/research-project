@@ -286,9 +286,9 @@ def print_metrics_table(
     for metric_name, values in metric_values.items():
         row = [metric_name]
         if eval_before:
-            row.append(values["Before"])
+            row.append(values.get("Before", None))
         if eval_after:
-            row.append(values["After"])
+            row.append(values.get("After", None))
         table.add_row(row)
 
     if id_:
