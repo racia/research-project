@@ -287,9 +287,9 @@ class Interpretability:
         # TODO: Problems
         # ? TODO: first part of a sample has context of several parts
         # TODO: the further parts don't seem to add up to the previous ones (maybe replace?)
-        # TODO: there are no answer scores sometimes (present in the first part, disappears in the next parts)
         # TODO: too many sentences are added sometimes (from iterations?)
         # TODO: answer is added twice
+        # TODO: Add padding for answer?
         # should not include the model output span!
         spans_types = chat.get_sentence_spans()
         sent_spans = list(spans_types.keys())

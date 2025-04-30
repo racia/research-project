@@ -65,9 +65,9 @@ feedback_prompt:
     - "${oc.env:HOME}/research-project/inference/prompts/feedback_prompt.txt"
   history: |
     Your student was given the following task:
-    \"""
+    """
     {chat_history}
-    \"""
+    """
   wrapper: |
     The student's response was:
     {student_output}

@@ -312,7 +312,6 @@ class Feedback(Setting):
                 sep="\n",
                 flush=True,
             )
-            print("DEBUG Feedback iteration:", iteration, interpretability)
             if self.saver and self.part:
                 self.saver.save_feedback_iteration(
                     part=self.part,

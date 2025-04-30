@@ -131,7 +131,7 @@ class Model:
         #     raise ValueError(
         #         "Either part or formatted_prompt should be provided, not both."
         #     )
-        if formatted_prompt or part:
+        if (formatted_prompt or part) and not from_chat:
             self.chat.add_message(
                 part=formatted_prompt if formatted_prompt else part,
                 source=Source.user,
