@@ -157,7 +157,9 @@ class Prompt:
                 teacher_ids.extend(student_message["ids"])
             else:
                 teacher_message += line
-                teacher_ids.extend(self.tokenizer.encode(line))
+                teacher_ids.extend(
+                    self.tokenizer.encode(line, add_special_tokens=False)
+                )
         print(
             "Teacher's message:",
             teacher_message,
@@ -206,27 +208,38 @@ class Prompt:
     def format_refine_message(
         self, student_message: dict, teacher_feedback: str
     ) -> dict:
-        """ """
-        refine_message = ""
+        """
+        Format the refine message by inserting the student's output into the instruction,
+        both the content and the ids.
+
+        :param student_message: the message of the student chat with the content and ids
+        :param teacher_feedback: the feedback from the teacher
+        :return: dict, the refine message for the student with content, source, and ids.
+        """
+        refine_str = ""
         refine_ids = []
         for line in self.original_text.split("\n"):
             if "student_output" in line:
-                refine_message += student_message["content"]
+                refine_str += student_message["content"]
                 refine_ids.extend(student_message["ids"])
             elif "teacher_feedback" in line:
-                refine_message += teacher_feedback
-                refine_ids.extend(self.tokenizer.encode(teacher_feedback))
+                refine_str += teacher_feedback
+                refine_ids.extend(
+                    self.tokenizer.encode(teacher_feedback, add_special_tokens=False)
+                )
             else:
-                refine_message += line + "\n"
-                refine_ids.extend(self.tokenizer.encode(line + "\n"))
+                refine_str += line + "\n"
+                refine_ids.extend(
+                    self.tokenizer.encode(line + "\n", add_special_tokens=False)
+                )
         print(
             "Formatted refine message:",
-            refine_message,
+            refine_str,
             sep="\n",
             end="\n\n\n",
         )
         return {
-            "part": refine_message,
+            "part": refine_str,
             "source": Source.user,
             "ids": refine_ids,
         }

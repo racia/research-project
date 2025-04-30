@@ -288,6 +288,7 @@ class Interpretability:
         # TODO: first part of a sample has context of several parts
         # TODO: the further parts don't seem to add up to the previous ones (maybe replace?)
         # TODO: How to save interpretability iterations?
+        # TODO: <|eot_id|><|eot_id|><|start_header_id|>user<|end_header_id|>
         # should not include the model output span!
         spans_types = chat.get_sentence_spans()
         sent_spans = list(spans_types.keys())
