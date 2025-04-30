@@ -668,6 +668,7 @@ class Sample:
             part.result_before.interpretability
             and part.result_before.max_supp_attn is not None
         ):
+            print("DEBUG: max_supp_attn", part.result_after.max_supp_attn)
             self.evaluator_before.max_supp_attn.add(part.result_before.max_supp_attn)
         if self.multi_system:
             self.evaluator_after.pred_answers.append(part.result_after.model_answer)
@@ -678,6 +679,7 @@ class Sample:
                 part.result_after.interpretability
                 and part.result_after.max_supp_attn is not None
             ):
+                print("DEBUG: max_supp_attn", part.result_after.max_supp_attn)
                 self.evaluator_after.max_supp_attn.add(part.result_after.max_supp_attn)
 
     def print_sample_predictions(self) -> None:
