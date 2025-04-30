@@ -112,6 +112,7 @@ class Model:
         part: SamplePart = None,
         formatted_prompt: str = None,
         from_chat: bool = False,
+        keyword: str = None,
     ) -> tuple[str, InterpretabilityResult]:
         """
         Calls the model with memory optimizations and optionally with Interpretability (depends on config).
@@ -219,6 +220,7 @@ class Model:
                             chat=self.chat,
                             model_output=encoded_output,
                             part=part,
+                            keyword=keyword,
                         )
                     except torch.OutOfMemoryError:
                         warnings.warn(

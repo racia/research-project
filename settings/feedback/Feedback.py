@@ -200,7 +200,7 @@ class Feedback(Setting):
         print("Golden answer:", self.part.golden_answer)
 
         # The teacher message is already added to the chat, so no need to pass it (the call is on the whole chat)
-        teacher_feedback, _ = self.teacher.call(from_chat=True)
+        teacher_feedback, _ = self.teacher.call(from_chat=True, keyword="teacher")
 
         # Validate feedback
         is_valid = self.check_feedback(teacher_feedback)
@@ -222,7 +222,7 @@ class Feedback(Setting):
             self.student.chat.messages[-1], teacher_feedback
         )
         self.student.chat.add_message(**refine_message)
-        return self.student.call(part=self.part, from_chat=True)
+        return self.student.call(part=self.part, from_chat=True, keyword="refine")
 
     def apply_setting(
         self, decoded_output: str

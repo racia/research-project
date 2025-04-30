@@ -194,7 +194,7 @@ class Chat:
                 # it is certainly an assistant output
                 # TODO: optionally divide it into reasoning and answer
                 ids = ids.tolist() if not isinstance(ids, list) else ids
-                label = "ans" if source == Source.assistant else "_task_"
+                label = "ans" if source == Source.assistant else "task"
                 spans_types[upd_span((0, len(ids)), self.offset)] = label
                 self.offset += len(ids)
 

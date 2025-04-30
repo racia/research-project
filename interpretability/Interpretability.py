@@ -270,6 +270,7 @@ class Interpretability:
         chat: Chat,
         model_output: torch.Tensor,
         part: SamplePart,
+        keyword: str,
     ) -> InterpretabilityResult:
         """
         Process the attention scores and return the interpretability result ready for plotting.
@@ -324,6 +325,6 @@ class Interpretability:
             task_id=part.task_id,
             sample_id=part.sample_id,
             part_id=part.part_id,
-            version="before",
+            version=keyword,
         )
         return result_aggr
