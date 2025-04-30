@@ -156,9 +156,9 @@ class Prompt:
                 teacher_message += student_message["content"]
                 teacher_ids.extend(student_message["ids"])
             else:
-                teacher_message += line
+                teacher_message += line + "\n"
                 teacher_ids.extend(
-                    self.tokenizer.encode(line, add_special_tokens=False)
+                    self.tokenizer.encode(line + "\n", add_special_tokens=False)
                 )
         print(
             "Teacher's message:",

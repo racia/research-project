@@ -220,6 +220,7 @@ class DataSaver:
             raise ValueError(
                 "Version should be either 'before', 'after' or an iteration number."
             )
+        print("Version:", version)
         if result and not result.empty():
             if version.isdigit():
                 version = Path("iterations", version)
@@ -337,9 +338,6 @@ class DataSaver:
             file_name=f"t_{part.task_id}_s_{part.sample_id}_results.csv",
         )
         for result, version in zip(part.results, part.versions):
-            print(
-                "DEBUG result.interpretability.empty()", result.interpretability.empty()
-            )
             self.save_part_interpretability(result.interpretability, version, part)
 
     def save_sample_result(self, sample: Sample) -> None:

@@ -184,8 +184,9 @@ class Setting(ABC):
                         f"Last chat message from student before applying the setting: {self.model.chat.messages[-1]}"
                     )
                     decoded_output, iterations, interpretability = self.apply_setting(
-                        decoded_output
+                        self.part.result_before.model_output
                     )
+                    print("DEBUG: interpretability after", interpretability)
                     answer, reasoning = parse_output(output=decoded_output)
                     self.part.set_output(
                         model_output=decoded_output,

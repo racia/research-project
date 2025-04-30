@@ -7,8 +7,8 @@ class InterpretabilityResult:
         attn_scores: np.ndarray,
         x_tokens: list[str],
         y_tokens: list[str],
-        max_supp_attn: float,
-        attn_on_target: float,
+        max_supp_attn: float = None,
+        attn_on_target: float = None,
     ):
         """
         Interpretability result class
