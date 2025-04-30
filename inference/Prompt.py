@@ -170,6 +170,7 @@ class Prompt:
             "part": teacher_message,
             "source": Source.user,
             "ids": teacher_ids,
+            "label": "t task",
         }
 
     def format_resume_message(self, corrected_student_output: str) -> str:
@@ -242,6 +243,7 @@ class Prompt:
             "part": refine_str,
             "source": Source.user,
             "ids": refine_ids,
+            "label": "refine",
         }
 
     @staticmethod

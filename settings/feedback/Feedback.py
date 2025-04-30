@@ -339,6 +339,9 @@ class Feedback(Setting):
 
         print("DEBUG self.student.chat spans_types changed", spans_types_changed)
         print("DEBUG self.student.chat spans_types original", spans_types_original)
-        print("DEBUG self.student.chat spans_types updated", self.student.chat.get_sentence_spans())
+        print(
+            "DEBUG self.student.chat spans_types updated",
+            self.student.chat.get_sentence_spans(),
+        )
 
         return decoded_output, iteration, interpretability
