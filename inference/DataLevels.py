@@ -667,7 +667,7 @@ class Sample:
             evaluator.pred_reasonings.append(result.model_reasoning)
             if result.interpretability:
                 print("DEBUG: max_supp_attn", result.max_supp_attn)
-                evaluator.max_supp_attn.add(result.max_supp_attn or 0.0)
+                evaluator.max_supp_attn.add(result.max_supp_attn)
 
     def print_sample_predictions(self) -> None:
         """
