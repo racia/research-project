@@ -209,6 +209,7 @@ def run_setting(cfg: DictConfig) -> None:
         resume_prompt = Prompt(
             prompt_path=cfg.resume_prompt.paths[0],
             wrapper=cfg.resume_prompt.get("wrapper", None),
+            history=cfg.feedback_prompt.get("history", None),
             tokenizer=teacher.tokenizer,
         )
         print("- THE EVAL PROMPT -")
