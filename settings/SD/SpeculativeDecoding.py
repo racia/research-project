@@ -502,7 +502,9 @@ class SpeculativeDecoding(Setting):
         """
         # save the initial student output as a fallback solution
         self.initial_student_output = decoded_output
-        self.teacher.chat = self.create_teacher_chat(teacher_sys=self.eval_prompt)
+        self.teacher.chat = self.create_teacher_chat(
+            teacher_sys=self.eval_prompt, tokenizer=self.student.tokenizer
+        )
         chat_to_refine = copy.deepcopy(self.student.chat)
 
         print(
