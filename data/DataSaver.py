@@ -275,7 +275,7 @@ class DataSaver:
                     f"Interpretability results for task {part.task_id} saved to {attn_scores_subdir}"
                 )
         else:
-            warnings.warn("No interpretability results found.")
+            warnings.warn("No interpretability results found and saved.")
 
     def save_interpretability(self, task_data: Task) -> None:
         """
@@ -340,8 +340,7 @@ class DataSaver:
             print(
                 "DEBUG result.interpretability.empty()", result.interpretability.empty()
             )
-            if not result.interpretability.empty():
-                self.save_part_interpretability(result.interpretability, version, part)
+            self.save_part_interpretability(result.interpretability, version, part)
 
     def save_sample_result(self, sample: Sample) -> None:
         """
