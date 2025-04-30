@@ -325,6 +325,6 @@ class Interpretability:
             task_id=part.task_id,
             sample_id=part.sample_id,
             part_id=part.part_id,
-            version=keyword,
+            version=keyword or "before",
         )
         return result_aggr
