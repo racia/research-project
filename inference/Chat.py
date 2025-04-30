@@ -68,6 +68,8 @@ class Chat:
         :param i: the index of the message to remove
         :return: None
         """
+        if not self.messages:
+            raise ValueError("No messages to remove.")
         if i != -1:
             # this is due to necessity to update all the spans after the deletion
             raise ValueError(

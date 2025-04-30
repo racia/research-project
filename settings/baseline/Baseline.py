@@ -69,4 +69,4 @@ class Baseline(Setting):
         :param chat: the current chat, only necessary in the SD and feedback setting
         :return: parsed output
         """
-        return "", 0
+        raise NotImplementedError("Baseline does not require postprocessing.")

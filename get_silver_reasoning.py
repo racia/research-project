@@ -114,7 +114,7 @@ def process_sample(
             question=formatted_questions,
             answer=formatted_answers,
         )
-        decoded_output = model.call(prompt=formatted_prompt_str)
+        decoded_output = model.call(formatted_prompt=formatted_prompt_str)
 
         reasoning_pattern = re.compile(r"(?i)reasoning:[\s ]*(.+)")
         reasoning_search = reasoning_pattern.search(decoded_output)

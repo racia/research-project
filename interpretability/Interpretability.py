@@ -280,7 +280,7 @@ class Interpretability:
         :param output_tensor: model output tensor for the current chat
         :param model_output: model output ids
         :param chat: the student chat (contains all the messages but the last model output)
-        :param part: the part of the sample to evaluate # TODO: to remove plotting after review
+        :param part: the part of the sample to evaluate # TODO: to remove after review
         :param aggregate: if to aggregate the attention scores over the sentences
         :return: InterpretabilityResult object
         """

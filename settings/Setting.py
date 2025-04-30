@@ -100,7 +100,7 @@ class Setting(ABC):
         :param decoded_output: the output of the model
         :return: parsed output
         """
-        # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
+        # ONLY USED FOR SETTINGS -> SD AND FEEDBACK
         raise NotImplementedError
 
     def iterate_task(
@@ -202,6 +202,7 @@ class Setting(ABC):
 
                 if self.saver:
                     print("Saving part result...")
+                    # TODO: save "before" ids (embedding)
                     self.saver.save_part_result(self.part)
 
                 sample.add_part(self.part)
