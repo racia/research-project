@@ -131,7 +131,7 @@ def sents_to_ids(
     sentences: list[str | Span],
     tokenizer: PreTrainedTokenizerFast,
     output_empty: bool = False,
-) -> tuple[list[list[int]], list[tuple]]:
+) -> tuple[list[list[str]], list[list[int]], list[tuple]]:
     """
     Converts a message into ids using the tokenizer.
     Additionally, it saves the start and end index of each sentence.
@@ -142,8 +142,7 @@ def sents_to_ids(
     :return: list of lists of ids that represent sentences and list of sentence spans
     """
     flat_ids = []
-    ids = []
-    sent_spans = []
+    tokens, ids, sent_spans = [], [], []
     for sentence in sentences:
         if type(sentence) == Span:
             sentence = sentence.text
@@ -152,23 +151,27 @@ def sents_to_ids(
         # \n\n in source produces empty sentences
         if not sentence or sentence.isspace():
             if output_empty:
+                tokens.append([])
                 ids.append([])
                 sent_spans.append(())
             continue
-        tokenized_sentence = tokenizer.encode(
-            sentence,
-            add_special_tokens=False,
-            return_tensors="pt",
-        )[0].tolist()
+        sentence_tokens = tokenizer.tokenize(sentence)
+        sentence_ids = tokenizer.convert_tokens_to_ids(sentence_tokens)
+        # tokenized_sentence = tokenizer.encode(
+        #     sentence,
+        #     add_special_tokens=False,
+        #     return_tensors="pt",
+        # )[0].tolist()
         torch.cuda.empty_cache()
-        ids.append(tokenized_sentence)
+        tokens.extend(sentence_tokens)
+        ids.append(sentence_ids)
 
         start = len(flat_ids)
-        flat_ids.extend(tokenized_sentence)
+        flat_ids.extend(sentence_ids)
         end = len(flat_ids)
         sent_spans.append((start, end))
 
-    return ids, sent_spans
+    return tokens, ids, sent_spans
 
 
 def flatten(lst: list[list] | list) -> list:

@@ -268,7 +268,6 @@ class Interpretability:
         self,
         output_tensor: CausalLMOutputWithPast,
         chat: Chat,
-        model_output: torch.Tensor,
         part: SamplePart,
         keyword: str,
     ) -> InterpretabilityResult:
@@ -279,14 +278,13 @@ class Interpretability:
         (Link to paper: https://arxiv.org/abs/2402.18344)
 
         :param output_tensor: model output tensor for the current chat
-        :param model_output: model output ids
         :param chat: the student chat (contains all the messages but the last model output)
         :param part: the part of the sample to evaluate # TODO: to remove after review
         :param aggregate: if to aggregate the attention scores over the sentences
         :return: InterpretabilityResult object
         """
         # should not include the model output span!
-        spans_types = chat.get_sentence_spans()
+        spans_types = chat.get_sentence_spans()[:-1]
         sent_spans = list(spans_types.keys())
         print("spans_types:", spans_types)
         supp_sent_idx = [
@@ -296,7 +294,7 @@ class Interpretability:
         # only aggregated sentences, no verbose tokens
         attn_scores_aggr = self.get_attention_scores(
             output_tensor=output_tensor,
-            model_output_len=len(model_output),
+            model_output_len=len(chat.messages[-1]["ids"]),
             sent_spans=sent_spans,
         )
         print("DEBUG attn_scores_aggr:", attn_scores_aggr)
@@ -306,9 +304,9 @@ class Interpretability:
             f"* {i} {type_} *" if span in chat.supp_sent_spans else f"{i} {type_}"
             for i, (span, type_) in enumerate(spans_types.items(), 1)
         ]
-
-        y_tokens = self.tokenizer.batch_decode(model_output[:-1])
-        torch.cuda.empty_cache()
+        # TODO: reconstructs the text, no tokens as the model sees them
+        y_tokens = chat.messages[-1]["tokens"]
+        # y_tokens = self.tokenizer.batch_decode(model_output[:-1])
 
         max_attn_ratio = get_max_attn_ratio(attn_scores_aggr, supp_sent_idx)
         attn_on_target = get_attn_on_target(attn_scores_aggr, supp_sent_idx)

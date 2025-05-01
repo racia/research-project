@@ -87,6 +87,7 @@ class Chat:
         source: Union[Source.user, Source.assistant],
         ids: torch.Tensor | list[int] = None,
         wrapper: dict[str, dict] = None,
+        to_continue: bool = False,
     ) -> None:
         """
         Add a message to the messages list. It can add either a message from the part task or assistant output.
@@ -98,6 +99,7 @@ class Chat:
         :param source: the producer of the message
         :param ids: the ids of the message, if None, the ids are generated from the message
         :param wrapper: the wrapper ids and sentence spans of the message
+        :param to_continue: whether the model has to continue the last message (instead of answering to it)
         :return: None
         """
         if wrapper and ids is not None and source == Source.assistant:
@@ -110,7 +112,7 @@ class Chat:
         if isinstance(part, SamplePart):
             if wrapper:
                 print("DEBUG: case SamplePart and Wrapper")
-                ids = []
+                tokens, ids = [], []
                 for key, wrap in wrapper.items():
                     intro, outro = wrap["before"], wrap.get("after", wrap["before"])
                     to_encode = None
@@ -122,14 +124,19 @@ class Chat:
                         to_encode = [part.structured_question]
                         type_ = "ques"
 
-                    task_ids, task_spans = sents_to_ids(to_encode, self.tokenizer)
+                    task_tokens, task_ids, task_spans = sents_to_ids(
+                        to_encode, self.tokenizer
+                    )
                     print("encoded message", *zip(task_spans, task_ids), sep="\n")
 
                     if task_ids:
-                        for chunk in [intro["ids"], *task_ids, outro["ids"]]:
-                            if chunk:
-                                print(chunk)
-                                ids.append(chunk)
+                        ids_ = [intro["ids"], *task_ids, outro["ids"]]
+                        tokens_ = [intro["tokens"], *task_tokens, outro["tokens"]]
+                        for chunk_ids, chunk_tok in zip(ids_, tokens_):
+                            if chunk_ids:
+                                print(chunk_tok)
+                                tokens.append(chunk_tok)
+                                ids.append(chunk_ids)
 
                         # add before wrapper spans/ids
                         print("intro spans", intro["sent_spans"])
@@ -168,13 +175,14 @@ class Chat:
                         # if the key is not context or question, we just add the before ids
                         # (no after because there's no formatting for reasoning nor answer)
                         ids.extend(intro["ids"])
+                        tokens.extend(intro["tokens"])
                         spans_types[upd_span(intro["sent_spans"], self.offset)] = "wrap"
 
                         self.offset += len(intro["ids"])
 
             else:
                 print("DEBUG: case SamplePart and NO Wrapper")
-                ids, sent_spans = sents_to_ids(
+                tokens, ids, sent_spans = sents_to_ids(
                     part.unwrapped_task.split("\n"), self.tokenizer
                 )
                 spans_types.update(
@@ -185,7 +193,7 @@ class Chat:
             if ids is None:
                 print("DEBUG: case str and NO ids")
                 # it is a formatted prompt (string prompt) => task
-                ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
+                tokens, ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
                 spans_types.update(
                     {upd_span(span, self.offset): "teacher task" for span in sent_spans}
                 )
@@ -194,6 +202,7 @@ class Chat:
                 # it is certainly an assistant output
                 # TODO: optionally divide it into reasoning and answer
                 ids = ids.tolist() if not isinstance(ids, list) else ids
+                tokens = self.tokenizer.convert_ids_to_tokens(ids)
                 label = "ans" if source == Source.assistant else "task"
                 spans_types[upd_span((0, len(ids)), self.offset)] = label
                 self.offset += len(ids)
@@ -205,6 +214,7 @@ class Chat:
             "role": source,
             "content": part if isinstance(part, str) else part.task,
             "original_content": part if isinstance(part, str) else part.unwrapped_task,
+            "tokens": tokens,
             "ids": ids,
             "spans_types": spans_types,
         }
@@ -256,7 +266,7 @@ class Chat:
             if inx in self.part.supporting_sent_inx:
                 self.supp_sent_spans.append(span)
 
-    def chat_to_ids(
+    def convert_into_ids(
         self, max_length: int = 2048, identify_target: bool = True
     ) -> torch.Tensor:
         """

@@ -194,7 +194,7 @@ class Feedback(Setting):
         if not student_message["content"]:
             student_message["content"] = " "
 
-        teacher_message = self.feedback_prompt.format_teacher_message_f(student_message)
+        teacher_message = self.feedback_prompt.format_teacher_message(student_message)
         self.teacher.chat.add_message(**teacher_message)
 
         print("Golden answer:", self.part.golden_answer)

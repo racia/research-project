@@ -103,7 +103,7 @@ class Prompt:
         parts_set = set()
         ids_so_far, spans_types_so_far = [], {}
 
-        # TODO: filter out generation tokens?
+        # TODO: do we need to filter out generation tokens from the student history?
 
         for message in student_messages:
             if message["role"] != "assistant":
@@ -127,21 +127,7 @@ class Prompt:
             **spans_types_so_far,
         }
 
-    def format_teacher_message(self, student_out: str):
-        """
-        Add the students current output into the instruction for the teacher.
-
-        :param student_out: str, the current output of the student
-        :return: str, the instruction with the student output inserted
-        """
-        if student_out:
-            wrapped_out = self.wrapper.format(student_output=student_out)
-        else:
-            wrapped_out = self.wrapper.format(student_output=" ")
-
-        return wrapped_out
-
-    def format_teacher_message_f(self, student_message: dict):
+    def format_teacher_message(self, student_message: dict):
         """
         Format the teacher message by inserting the student's output into the instruction,
         both the content and the ids.
@@ -149,30 +135,33 @@ class Prompt:
         :param student_message: the message of the student chat with the content and ids
         :return: str, the instruction with the student output inserted
         """
-        teacher_message = ""
+        teacher_string = ""
         teacher_ids = []
         for line in self.wrapper.split("\n"):
             if "student_output" in line:
-                teacher_message += student_message["content"]
+                teacher_string += student_message["content"]
                 teacher_ids.extend(student_message["ids"])
             else:
-                teacher_message += line + "\n"
+                teacher_string += line + "\n"
+                # TODO: possibly not a good idea, maybe better tokenize, too
                 teacher_ids.extend(
                     self.tokenizer.encode(line + "\n", add_special_tokens=False)
                 )
         print(
             "Teacher's message:",
-            teacher_message,
+            teacher_string,
             sep="\n",
             end="\n\n\n",
         )
         return {
-            "part": teacher_message,
+            "part": teacher_string,
             "source": Source.user,
             "ids": teacher_ids,
         }
 
-    def format_resume_message(self, corrected_student_output: str) -> str:
+    def format_resume_message(
+        self, corrected_student_str: str, corrected_student_ids: list[int]
+    ) -> str:
         """
         Formulate the resume prompt for the student model.
 
@@ -180,17 +169,34 @@ class Prompt:
         This prompt is then used to prompt the student model to resume the chain of thought with the corrections by
         the teacher.
 
-        :param corrected_student_output: the correct part of the student's previous output with the teacher's
+        :param corrected_student_str: the correct part of the student's previous output with the teacher's
+        :param corrected_stud_ids: the corresponding ids
         suggestion added
 
         :return: the formulated resume prompt
         """
-        if corrected_student_output:
-            wrapped_out = self.wrapper.format(to_continue=corrected_student_output)
-        else:
-            wrapped_out = self.wrapper.format(to_continue=" ")
-
-        return wrapped_out
+        resume_str = ""
+        resume_ids = []
+        for line in self.wrapper.split("\n"):
+            if "to_continue" in line:
+                resume_str += corrected_student_str
+                resume_ids.extend(corrected_student_ids)
+            else:
+                resume_str += line + "\n"
+                resume_ids.extend(
+                    self.tokenizer.encode(line + "\n", add_special_tokens=False)
+                )
+        print(
+            "Formatted refine message:",
+            resume_str,
+            sep="\n",
+            end="\n\n\n",
+        )
+        return {
+            "part": resume_str,
+            "source": Source.assistant,
+            "ids": resume_ids,
+        }
 
     # def format_feedback_message(self, part: SamplePart, cot_to_evaluate: str) -> str:
     #     """

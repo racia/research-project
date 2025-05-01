@@ -156,7 +156,7 @@ class Model:
             # if self.interpretability:
             call_from_part = not (formatted_prompt or from_chat) and part
             # includes flat ids for all the messages in the chat, including the wrapper
-            chat_ids = self.chat.chat_to_ids(
+            chat_ids = self.chat.convert_into_ids(
                 identify_target=True if call_from_part else False
             )
             print(
@@ -199,11 +199,18 @@ class Model:
 
                 print("decoded_output", decoded_output)
 
+                self.chat.add_message(
+                    part=decoded_output, source=Source.assistant, ids=encoded_output
+                )
+
                 interpretability_result = None
+
                 if self.role == "student" and not self.interpretability:
                     raise ValueError("Interpretability is not set for student model!")
+
                 print("DEBUG self.interpretability", self.interpretability)
                 print("DEBUG decoded_output", decoded_output)
+
                 if self.interpretability and decoded_output:
                     print("DEBUG starting interpretability")
                     try:
@@ -216,9 +223,8 @@ class Model:
                         interpretability_result = self.interpretability.process_attention(
                             # output tensor includes all the previous ids + the model output
                             output_tensor=output_tensor,
-                            # chat doesn't include the current model output
+                            # chat includes the current model output but the processing should not!
                             chat=self.chat,
-                            model_output=encoded_output,
                             part=part,
                             keyword=keyword,
                         )
@@ -229,10 +235,6 @@ class Model:
                         )
 
         torch.cuda.empty_cache()
-
-        self.chat.add_message(
-            part=decoded_output, source=Source.assistant, ids=encoded_output
-        )
 
         return decoded_output, interpretability_result
 
