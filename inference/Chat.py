@@ -286,6 +286,10 @@ class Chat:
         # including the system prompt
         for i, message in enumerate(self.messages):
             message_ids = get_generation_tokens(self.tokenizer, message["role"])
+            if type(message["ids"][0]) is str:
+                raise ValueError(
+                    "Detected tokens instead of ids. Please check the input."
+                )
             message_ids.extend(flatten(message["ids"]))
             conversation_length = len(chat_ids) + len(message_ids)
             if conversation_length > max_length:

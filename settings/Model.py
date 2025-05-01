@@ -220,6 +220,7 @@ class Model:
                             output_attentions=True,
                             output_hidden_states=False,
                         )
+                        # for the settings, the final model output is currently not plotted
                         interpretability_result = self.interpretability.process_attention(
                             # output tensor includes all the previous ids + the model output
                             output_tensor=output_tensor,

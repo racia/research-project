@@ -305,7 +305,10 @@ class Interpretability:
             for i, (span, type_) in enumerate(spans_types.items(), 1)
         ]
         # TODO: reconstructs the text, no tokens as the model sees them
-        y_tokens = chat.messages[-1]["tokens"]
+        y_tokens = [
+            self.tokenizer.convert_tokens_to_string([token])
+            for token in chat.messages[-1]["tokens"]
+        ]
         # y_tokens = self.tokenizer.batch_decode(model_output[:-1])
 
         max_attn_ratio = get_max_attn_ratio(attn_scores_aggr, supp_sent_idx)

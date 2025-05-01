@@ -301,13 +301,14 @@ class DataSaver:
         interpretability: InterpretabilityResult = None,
     ) -> None:
         """
-        Save both student's output and teacher's feedback in a single operation.
+        Save student's output, teacher's feedback, and interpretability result of the student output in a single operation.
 
         :param part: The SamplePart object containing IDs
         :param iteration: The iteration number
         :param student_message: The student's message
         :param teacher_message: The teacher's feedback
         :param interpretability: The interpretability result
+        :return: None
         """
         iterations_dir = self.results_path / "iterations"
         iterations_dir.mkdir(exist_ok=True, parents=True)
@@ -323,6 +324,34 @@ class DataSaver:
         ) as tf:
             sf.write(student_message)
             tf.write(teacher_message)
+
+        if interpretability:
+            self.save_part_interpretability(interpretability, str(iteration), part)
+
+    def save_sd_iteration(
+        self,
+        part: SamplePart,
+        iteration: int,
+        student_message: str,
+        interpretability: InterpretabilityResult = None,
+    ) -> None:
+        """
+        Save student's output and its interpretability result in a single operation.
+
+        :param part: The SamplePart object containing IDs
+        :param iteration: The iteration number
+        :param student_message: The student's message
+        :param interpretability: The interpretability result
+        :return: None
+        """
+        iterations_dir = self.results_path / "iterations"
+        iterations_dir.mkdir(exist_ok=True, parents=True)
+
+        part_identifier = f"{part.task_id}-{part.sample_id}-{part.part_id}"
+        student_file = iterations_dir / f"{iteration}_student_{part_identifier}.txt"
+
+        with open(student_file, "w", encoding="UTF-8") as f:
+            f.write(student_message)
 
         if interpretability:
             self.save_part_interpretability(interpretability, str(iteration), part)

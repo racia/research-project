@@ -497,6 +497,10 @@ class SpeculativeDecoding(Setting):
 
         :return: The decoded output
         """
+        # TODO: save model output as strings, not tokens
+        # TODO: save iterations
+        # TODO: teacher tokens in the student chat?
+
         original_student_chat = copy.deepcopy(self.student.chat)
         self.teacher.chat = self.create_teacher_chat(
             teacher_sys=self.eval_prompt, tokenizer=self.student.tokenizer
@@ -565,7 +569,7 @@ class SpeculativeDecoding(Setting):
         )
 
         # at this point, the teacher has evaluated once and potentially given a correction
-        revs = 2
+        revs = 1
         corrected_tokens = []
         corrected_str = ""
         interpretability = None
@@ -601,6 +605,14 @@ class SpeculativeDecoding(Setting):
             # TODO: save iterations of interpretability
             student_out, interpretability = self.generate_student(
                 corrected_str, corrected_tokens
+            )
+            if type(student_out) is not str:
+                raise ValueError(f"Student output is not a string: {student_out}")
+            self.saver.save_sd_iteration(
+                part=self.part,
+                iteration=revs,
+                student_message=student_out,
+                interpretability=interpretability,
             )
             print(
                 " ---- Student ---- \n",
