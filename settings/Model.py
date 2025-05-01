@@ -113,6 +113,7 @@ class Model:
         formatted_prompt: str = None,
         from_chat: bool = False,
         keyword: str = None,
+        to_continue: bool = False,
     ) -> tuple[str, InterpretabilityResult]:
         """
         Calls the model with memory optimizations and optionally with Interpretability (depends on config).
@@ -198,6 +199,10 @@ class Model:
                 ).strip()
 
                 print("decoded_output", decoded_output)
+
+                # the model expanded on the message, so we need to update it
+                if to_continue:
+                    self.chat.remove_message(-1)
 
                 self.chat.add_message(
                     part=decoded_output, source=Source.assistant, ids=encoded_output

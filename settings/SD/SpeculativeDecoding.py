@@ -128,7 +128,9 @@ class SpeculativeDecoding(Setting):
         :param corrected_tokens: the corresponding ids
         :return: The output of the student model
         """
-        self.student.chat.add_message(part=self.resume_prompt.text, source=Source.user)
+        self.student.chat.add_message(
+            part=self.resume_prompt.text, source=Source.user, ids=self.resume_prompt.ids
+        )
         print(
             "\n--------------\n",
             "Evaluation prompt of the user: ",
@@ -499,12 +501,14 @@ class SpeculativeDecoding(Setting):
         4. Repeat steps 2 and 3 until the teacher model agrees with the chain of thought.
 
         :param decoded_output: the current output of the student
-
-        :return: The decoded output
+        :return: The decoded output, the number of revisions and the interpretability result
         """
-        # TODO: save model output as strings, not tokens
-        # TODO: save iterations
+        # TODO: save model_output_after as strings, not tokens
         # TODO: teacher tokens in the student chat?
+        # TODO: nan values in attentions - due to non-existing spans?
+        # TODO: eot_id in the end of y tokens
+        # TODO: y tokens are still "model tokens" with spaces
+        # TODO: model output gets infinite: Instead of adding a new token, we add the whole message each time?
 
         original_student_chat = copy.deepcopy(self.student.chat)
         self.teacher.chat = self.create_teacher_chat(
@@ -529,7 +533,7 @@ class SpeculativeDecoding(Setting):
             end="\n\n",
             flush=True,
         )
-
+        revs = 0
         interpretability = None
         if not is_valid:
             # # if teacher suggests a token, add it to its chat
@@ -537,7 +541,7 @@ class SpeculativeDecoding(Setting):
             #     part=teacher_intervention, source=Source.assistant
             # )
 
-            decoded_output, interpretability = self.speculative_decode(
+            decoded_output, revs, interpretability = self.speculative_decode(
                 student_out=decoded_output,
                 is_valid=is_valid,
                 error_id=error_id,
@@ -548,7 +552,7 @@ class SpeculativeDecoding(Setting):
         self.student.chat = original_student_chat
         self.student.chat.messages[-1]["content"] = decoded_output
 
-        return decoded_output, 0, interpretability
+        return decoded_output, revs, interpretability
 
     def speculative_decode(
         self,
@@ -556,7 +560,7 @@ class SpeculativeDecoding(Setting):
         is_valid: bool,
         error_id: int | None,
         teacher_intervention: str | None,
-    ) -> tuple[dict[str, str | None] | str, InterpretabilityResult]:
+    ) -> tuple[dict[str, str | None] | str, int, InterpretabilityResult]:
         """
         Apply the speculative decoding on the output of the student.
 
@@ -612,12 +616,12 @@ class SpeculativeDecoding(Setting):
                     )
                     break
 
-            # TODO: save iterations of interpretability
             student_out, interpretability = self.generate_student(
                 corrected_str, corrected_tokens
             )
             if type(student_out) is not str:
                 raise ValueError(f"Student output is not a string: {student_out}")
+
             self.saver.save_sd_iteration(
                 part=self.part,
                 iteration=revs,
@@ -665,7 +669,7 @@ class SpeculativeDecoding(Setting):
 
             revs += 1
 
-        return corrected_str + student_out, interpretability
+        return corrected_str + student_out, revs, interpretability
 
     # def string_to_tokens(self, model_out: str) -> list[str]:
     #     """
