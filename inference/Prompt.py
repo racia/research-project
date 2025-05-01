@@ -165,7 +165,7 @@ class Prompt:
         }
 
     def format_resume_message(
-        self, corrected_student_str: str, corrected_student_ids: list[int]
+        self, corrected_student_str: str, corrected_student_tokens: list[str]
     ) -> dict:
         """
         Formulate the resume prompt for the student model.
@@ -175,7 +175,7 @@ class Prompt:
         the teacher.
 
         :param corrected_student_str: the correct part of the student's previous output with the teacher's
-        :param corrected_student_ids: the corresponding ids
+        :param corrected_student_tokens: the corresponding tokens
         suggestion added
 
         :return: the formulated resume prompt
@@ -185,7 +185,9 @@ class Prompt:
         for line in self.wrapper.split("\n"):
             if "to_continue" in line:
                 resume_str += corrected_student_str
-                resume_ids.extend(corrected_student_ids)
+                resume_ids.extend(
+                    self.tokenizer.convert_tokens_to_ids(corrected_student_tokens)
+                )
             else:
                 resume_str += line + "\n"
                 resume_ids.extend(

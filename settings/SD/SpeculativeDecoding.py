@@ -114,7 +114,7 @@ class SpeculativeDecoding(Setting):
         self.affix = False
 
     def generate_student(
-        self, corrected_stud_str: str, corrected_stud_ids: list[int]
+        self, corrected_str: str, corrected_tokens: list[str]
     ) -> tuple[str, InterpretabilityResult]:
         """
         Generate some candidates using the student model.
@@ -122,8 +122,8 @@ class SpeculativeDecoding(Setting):
         The student model generates a chain of thought based on the input string.
         The maximum length of this chain of thought is handled by the max_length parameter.
 
-        :param corrected_stud_str: the correct part of the student's previous output with the teacher's suggestion
-        :param corrected_stud_ids: the corresponding ids
+        :param corrected_str: the correct part of the student's previous output with the teacher's suggestion
+        :param corrected_tokens: the corresponding ids
         :return: The output of the student model
         """
         self.student.chat.add_message(part=self.resume_prompt.text, source=Source.user)
@@ -138,7 +138,7 @@ class SpeculativeDecoding(Setting):
         # add the output the student should continue as an assistant message
         # TODO: Should not include eos_token_id or other end tokens at the end!
         message_to_continue = self.resume_prompt.format_resume_message(
-            corrected_stud_str, corrected_stud_ids
+            corrected_str, corrected_tokens
         )
         self.student.chat.add_message(**message_to_continue)
 
@@ -469,17 +469,17 @@ class SpeculativeDecoding(Setting):
             student_complete_out = student_out
 
         if len(student_chain) >= 1:
-            corrected_chain, corrected_str = check_match(
+            corrected_tokens, corrected_str = check_match(
                 tokens=student_chain,
                 string=student_complete_out,
                 ix=error_id,
                 intervention=teacher_intervention,
             )
         else:
-            corrected_chain = [teacher_intervention]
+            corrected_tokens = [teacher_intervention]
             corrected_str = teacher_intervention
 
-        return corrected_chain, corrected_str
+        return corrected_tokens, corrected_str
 
     def apply_setting(
         self, decoded_output: str
@@ -566,7 +566,7 @@ class SpeculativeDecoding(Setting):
 
         # at this point, the teacher has evaluated once and potentially given a correction
         revs = 2
-        corrected_ids = []
+        corrected_tokens = []
         corrected_str = ""
         interpretability = None
 
@@ -578,20 +578,20 @@ class SpeculativeDecoding(Setting):
                 end="\n\n",
                 flush=True,
             )
-            corrected_ids, corrected_str = self.get_previous_approved_output(
+            corrected_tokens, corrected_str = self.get_previous_approved_output(
                 student_out=student_out,
                 teacher_intervention=teacher_intervention,
                 error_id=error_id,
                 prev_str=corrected_str,
-                prev_output=corrected_ids,
+                prev_output=corrected_tokens,
             )
 
             # check for repetitions
-            if len(corrected_ids) > 5:
-                count_last_token = corrected_ids[-5:].count(corrected_ids[-1])
+            if len(corrected_tokens) > 5:
+                count_last_token = corrected_tokens[-5:].count(corrected_tokens[-1])
                 if count_last_token >= 3:
                     print(
-                        f"Last token {corrected_ids[-1]} repeated {count_last_token} times, stopping speculative "
+                        f"Last token {corrected_tokens[-1]} repeated {count_last_token} times, stopping speculative "
                         f"decoding",
                         end="\n\n\n",
                         flush=True,
@@ -600,7 +600,7 @@ class SpeculativeDecoding(Setting):
 
             # TODO: save iterations of interpretability
             student_out, interpretability = self.generate_student(
-                corrected_str, corrected_ids
+                corrected_str, corrected_tokens
             )
             print(
                 " ---- Student ---- \n",
@@ -613,7 +613,7 @@ class SpeculativeDecoding(Setting):
 
             is_valid, error_id, teacher_intervention = self.verify_output(
                 student_message=self.student.chat.messages[-1],
-                approved_tokens=corrected_ids,
+                approved_tokens=corrected_tokens,
                 approved_str=corrected_str,
                 last_err_inx=error_id,
             )
