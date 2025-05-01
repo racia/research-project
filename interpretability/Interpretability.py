@@ -304,7 +304,6 @@ class Interpretability:
             f"* {i} {type_} *" if span in chat.supp_sent_spans else f"{i} {type_}"
             for i, (span, type_) in enumerate(spans_types.items(), 1)
         ]
-        # TODO: reconstructs the text, no tokens as the model sees them
         y_tokens = [
             self.tokenizer.convert_tokens_to_string([token])
             for token in chat.messages[-1]["tokens"]

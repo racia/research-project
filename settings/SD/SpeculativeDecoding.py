@@ -14,21 +14,23 @@ from settings.Model import Model
 from settings.Setting import Setting
 
 
-def check_match(tokens, string, ix=None, intervention=None) -> tuple[list, str]:
+def check_match(
+    tokens: list[str], string: str, inx: int = None, intervention: str = None
+) -> tuple[list, str]:
     """
     Check if the token list matches the string.
 
     :param tokens: list of tokens that should be checked for a match
     :param string: the string the tokens are matched against
-    :param ix: the index up until which the tokens are approved/index of first error
+    :param inx: the index up until which the tokens are approved/index of first error
     :param intervention: the intervention that should be added to the string
 
     :return: Tuple(list, str): the tokens and the string
     """
-    if not ix or ix >= len(tokens):
-        ix = len(tokens)
+    if not inx or inx >= len(tokens):
+        inx = len(tokens)
 
-    out_tokens = [token.strip() if token else token for token in tokens][:ix]
+    out_tokens = [token.strip() if token else token for token in tokens][:inx]
     pattern = r"\s*" + r"\s*".join(map(re.escape, out_tokens))
 
     match = re.match(pattern, string)
@@ -47,7 +49,7 @@ def check_match(tokens, string, ix=None, intervention=None) -> tuple[list, str]:
         out_tokens = out_tokens + [intervention]
 
     print(
-        f"Checking match for tokens: {tokens[:ix]} and string: {string}. Result: {match}",
+        f"Checking match for tokens: {tokens[:inx]} and string: {string}. Result: {match}",
         end="\n\n",
         flush=True,
     )
@@ -153,7 +155,7 @@ class SpeculativeDecoding(Setting):
         # formatted_prompt = self.prepare_prompt(chat=self.student.chat, resume_gen=True)
 
         # Call with the whole chat
-        return self.student.call(self.part, from_chat=True)
+        return self.student.call(self.part, from_chat=True, keyword="iterations")
 
     def verify_output(
         self,
@@ -223,7 +225,7 @@ class SpeculativeDecoding(Setting):
                 _, student_out_approved = check_match(
                     tokens=all_student_tokens[: last_err_inx + 1],
                     string=all_student_str,
-                    ix=inx,
+                    inx=inx,
                     intervention=all_student_tokens[last_err_inx + 1],
                 )
             # first iteration -> teacher gets no student output
@@ -302,6 +304,7 @@ class SpeculativeDecoding(Setting):
         if self.teacher_suggests_eos(suggested_token) and on_last_token:
             print(f"Teacher generated EOS", end="\n\n\n", flush=True)
             return True, None, None
+
         print(f"Teacher did not generate EOS", end="\n\n\n", flush=True)
         return False, inx, suggested_token
 
@@ -456,6 +459,8 @@ class SpeculativeDecoding(Setting):
         # TODO: check if tokenization works
         # student_tokens = self.string_to_tokens(model_out=student_out)
         student_tokens = self.tokenizer.tokenize(student_out)
+        if type(student_out) is not str:
+            raise TypeError(f"Student output is not a string: {student_out}")
 
         if prev_output:
             prev_output_tokens = [token.strip() for token in prev_output]
@@ -472,7 +477,7 @@ class SpeculativeDecoding(Setting):
             corrected_tokens, corrected_str = check_match(
                 tokens=student_chain,
                 string=student_complete_out,
-                ix=error_id,
+                inx=error_id,
                 intervention=teacher_intervention,
             )
         else:
@@ -582,6 +587,9 @@ class SpeculativeDecoding(Setting):
                 end="\n\n",
                 flush=True,
             )
+            if type(student_out) is not str:
+                raise TypeError("Student output is not a string:", student_out)
+
             corrected_tokens, corrected_str = self.get_previous_approved_output(
                 student_out=student_out,
                 teacher_intervention=teacher_intervention,
@@ -589,6 +597,8 @@ class SpeculativeDecoding(Setting):
                 prev_str=corrected_str,
                 prev_output=corrected_tokens,
             )
+            if type(corrected_str) is not str:
+                raise TypeError("Corrected string is not a string:", corrected_str)
 
             # check for repetitions
             if len(corrected_tokens) > 5:
