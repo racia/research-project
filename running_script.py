@@ -201,6 +201,7 @@ def run_setting(cfg: DictConfig) -> None:
         teacher = Model(**cfg.teacher, role="teacher")
         eval_prompt = Prompt(
             prompt_path=cfg.eval_prompt.paths[0],
+            history=cfg.eval_prompt.get("history", None),
             wrapper=cfg.eval_prompt.get("wrapper", None),
             tokenizer=teacher.tokenizer,
         )
@@ -209,7 +210,6 @@ def run_setting(cfg: DictConfig) -> None:
         resume_prompt = Prompt(
             prompt_path=cfg.resume_prompt.paths[0],
             wrapper=cfg.resume_prompt.get("wrapper", None),
-            history=cfg.resume_prompt.get("history", None),
             tokenizer=teacher.tokenizer,
         )
         print("- THE EVAL PROMPT -")
