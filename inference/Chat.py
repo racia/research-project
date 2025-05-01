@@ -221,7 +221,9 @@ class Chat:
         }
         self.messages.append(part_dict)
 
-    def get_sentence_spans(self, span_type: str = "") -> list[tuple[int, int]] | dict:
+    def get_sentence_spans(
+        self, span_type: str = "", remove_last: bool = False
+    ) -> list[tuple[int, int]] | dict:
         """
         Get the all sentence spans of the chat messages for only a specified type of them.
 
@@ -232,6 +234,7 @@ class Chat:
                           "cont" (context sentences),
                           "ques" (questions),
                           "ans" (model output)
+        :param remove_last: whether to remove the last message span from the list
         :return: returns list of sentence spans if span type is specified otherwise returns all the spans with their types
         """
         possible_types = ("sys", "ex", "wrap", "task", "cont", "ques", "ans")
@@ -241,7 +244,7 @@ class Chat:
             )
         spans = []
         spans_dict = {}
-        for message in self.messages:
+        for message in self.messages[:-1] if remove_last else self.messages:
             # message["spans_types"] = {span: type}
             if span_type:
                 for span, type_ in message["spans_types"].items():
