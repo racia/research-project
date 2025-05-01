@@ -532,10 +532,10 @@ class SpeculativeDecoding(Setting):
 
         interpretability = None
         if not is_valid:
-            # if teacher suggests a token, add it to its chat
-            self.teacher.chat.add_message(
-                part=teacher_intervention, source=Source.assistant
-            )
+            # # if teacher suggests a token, add it to its chat
+            # self.teacher.chat.add_message(
+            #     part=teacher_intervention, source=Source.assistant
+            # )
 
             decoded_output, interpretability = self.speculative_decode(
                 student_out=decoded_output,
@@ -640,16 +640,16 @@ class SpeculativeDecoding(Setting):
                 last_err_inx=error_id,
             )
 
-            # only add teacher intervention to chat if the teacher disagrees
-            # otherwise the teacher doesn't propose anything
-            if not is_valid:
-                if teacher_intervention:
-                    self.student.chat.add_message(
-                        part=teacher_intervention,
-                        source=Source.assistant,
-                    )
-                else:
-                    self.student.chat.add_message(part=" ", source=Source.assistant)
+            # # only add teacher intervention to chat if the teacher disagrees
+            # # otherwise the teacher doesn't propose anything
+            # if not is_valid:
+            #     if teacher_intervention:
+            #         self.student.chat.add_message(
+            #             part=teacher_intervention,
+            #             source=Source.assistant,
+            #         )
+            #     else:
+            #         self.student.chat.add_message(part=" ", source=Source.assistant)
 
             print(
                 "Teacher's evaluation:",
