@@ -82,6 +82,7 @@ class Interpretability:
         output_tensor: CausalLMOutputWithPast,
         model_output_len: int,
         sent_spans: list[tuple] = None,
+        sys_prompt_len: int = 0,
     ) -> np.ndarray:
         """
         Obtains the attention scores from a tensor of attention weights of the current chat.
@@ -94,6 +95,7 @@ class Interpretability:
         :param output_tensor: model output tensor
         :param model_output_len: model output length
         :param sent_spans: list of spans of chat sentences without the last model output (if provided, the scores are averaged over them)
+        :param sys_prompt_len: length of the system prompt (pass only for verbose attention)
 
         :return: 2D normalized attention scores averaged over layers and heads for the tokens of the current task
         """
@@ -105,9 +107,9 @@ class Interpretability:
         attn_tensor = attn_tensor.mean(dim=0)
 
         # Takes mean over the attention heads: dimensions, model_output, current task (w/o model output, as it is in y axis)
-        attn_tensor = attn_tensor[:, -model_output_len:-1, :-model_output_len].mean(
-            dim=0
-        )
+        attn_tensor = attn_tensor[
+            :, -model_output_len:-1, sys_prompt_len:-model_output_len
+        ].mean(dim=0)
         # Normalize the attention scores by the sum of all token attention scores
         attn_tensor = attn_tensor / attn_tensor.sum(dim=-1, keepdim=True)
         attn_scores = attn_tensor.float().detach().cpu().numpy()
@@ -270,6 +272,7 @@ class Interpretability:
         chat: Chat,
         part: SamplePart,
         keyword: str,
+        aggregate: bool = True,
     ) -> InterpretabilityResult:
         """
         Process the attention scores and return the interpretability result ready for plotting.
@@ -280,6 +283,7 @@ class Interpretability:
         :param output_tensor: model output tensor for the current chat
         :param chat: the student chat (contains all the messages but the last model output)
         :param part: the part of the sample to evaluate # TODO: to remove after review
+        :param keyword: the keyword for the current task # TODO: to remove with plotting
         :param aggregate: if to aggregate the attention scores over the sentences
         :return: InterpretabilityResult object
         """
@@ -291,38 +295,52 @@ class Interpretability:
             i for i, span in enumerate(sent_spans) if span in chat.supp_sent_spans
         ]
 
+        # if aggregate:
         # only aggregated sentences, no verbose tokens
-        attn_scores_aggr = self.get_attention_scores(
+        attn_scores = self.get_attention_scores(
             output_tensor=output_tensor,
             model_output_len=len(chat.messages[-1]["ids"]),
             sent_spans=sent_spans,
         )
-        print("DEBUG attn_scores_aggr:", attn_scores_aggr)
+        # else:
+        #     attn_scores = self.get_attention_scores(
+        #         output_tensor=output_tensor,
+        #         model_output_len=len(chat.messages[-1]["ids"]),
+        #         sys_prompt_len=len(chat.messages[0]["ids"]),
+        #     )
+        print("DEBUG attn_scores_aggr:", attn_scores)
 
         # no model output for the x-axis!
-        x_tokens_aggr = [
+        # if aggregate:
+        x_tokens = [
             f"* {i} {type_} *" if span in chat.supp_sent_spans else f"{i} {type_}"
             for i, (span, type_) in enumerate(spans_types.items(), 1)
         ]
+        # else:
+        #     attention_indices = self.filter_attn_indices(attn_scores, chat_ids)
+        #     # Filter attention scores
+        #     attention_scores = attention_scores[:, attention_indices]
+
         y_tokens = [
             self.tokenizer.convert_tokens_to_string([token])
             for token in chat.messages[-1]["tokens"]
         ]
         # y_tokens = self.tokenizer.batch_decode(model_output[:-1])
 
-        max_attn_ratio = get_max_attn_ratio(attn_scores_aggr, supp_sent_idx)
-        attn_on_target = get_attn_on_target(attn_scores_aggr, supp_sent_idx)
+        # TODO: there might be problems with indices for verbose attentions
+        max_attn_ratio = get_max_attn_ratio(attn_scores, supp_sent_idx)
+        attn_on_target = get_attn_on_target(attn_scores, supp_sent_idx)
 
-        result_aggr = InterpretabilityResult(
-            attn_scores_aggr, x_tokens_aggr, y_tokens, max_attn_ratio, attn_on_target
+        result = InterpretabilityResult(
+            attn_scores, x_tokens, y_tokens, max_attn_ratio, attn_on_target
         )
         # TODO: remove plotting after review
         self.plotter.draw_heat(
-            interpretability_result=result_aggr,
+            interpretability_result=result,
             x_label="Sentence Indices",
             task_id=part.task_id,
             sample_id=part.sample_id,
             part_id=part.part_id,
             version=keyword or "before",
         )
-        return result_aggr
+        return result
