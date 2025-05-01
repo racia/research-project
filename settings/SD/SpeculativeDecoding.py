@@ -241,7 +241,9 @@ class SpeculativeDecoding(Setting):
             #     formatted_eval_prompt, return_tensors="pt", add_special_tokens=True
             # ).to("cuda:1")
 
-            input_ids = self.teacher.chat.convert_into_ids(identify_target=False).to("cuda:1")
+            input_ids = self.teacher.chat.convert_into_ids(identify_target=False).to(
+                "cuda:1"
+            )
             teacher_probs = self.teacher.call_probs(input_ids)
             top_tokens_decoded, top_tokens_encoded = self.get_top_k_tokens(
                 teacher_probs=teacher_probs, k=k, skip_eos=True
@@ -367,7 +369,9 @@ class SpeculativeDecoding(Setting):
 
         # check if next token would be EOS
         # ASSUMPTION: the last student message is already in the chat and is unfinished
-        input_ids = self.teacher.chat.convert_into_ids(identify_target=False).to("cuda:1")
+        input_ids = self.teacher.chat.convert_into_ids(identify_target=False).to(
+            "cuda:1"
+        )
         teacher_probs = self.teacher.call_probs(input_ids)
         top_tokens_decoded, top_tokens_encoded = self.get_top_k_tokens(
             teacher_probs=teacher_probs, k=5, skip_eos=True
