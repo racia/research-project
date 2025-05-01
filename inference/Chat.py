@@ -88,7 +88,6 @@ class Chat:
         source: Union[Source.user, Source.assistant],
         ids: torch.Tensor | list[int] = None,
         wrapper: dict[str, dict] = None,
-        to_continue: bool = False,
     ) -> None:
         """
         Add a message to the messages list. It can add either a message from the part task or assistant output.
@@ -100,7 +99,6 @@ class Chat:
         :param source: the producer of the message
         :param ids: the ids of the message, if None, the ids are generated from the message
         :param wrapper: the wrapper ids and sentence spans of the message
-        :param to_continue: whether the model has to continue the last message (instead of answering to it)
         :return: None
         """
         if wrapper and ids is not None and source == Source.assistant:
@@ -203,6 +201,7 @@ class Chat:
                 # it is certainly an assistant output
                 # TODO: optionally divide it into reasoning and answer
                 ids = ids.tolist() if not isinstance(ids, list) else ids
+                print("REASON IDs", ids)
                 tokens = self.tokenizer.convert_ids_to_tokens(ids)
                 label = "ans" if source == Source.assistant else "task"
                 spans_types[upd_span((0, len(ids)), self.offset)] = label

@@ -600,8 +600,7 @@ class SpeculativeDecoding(Setting):
 
             # TODO: save iterations of interpretability
             student_out, interpretability = self.generate_student(
-                corrected_stud_str=corrected_str,
-                corrected_stud_ids=corrected_ids,
+                corrected_str, corrected_ids
             )
             print(
                 " ---- Student ---- \n",
