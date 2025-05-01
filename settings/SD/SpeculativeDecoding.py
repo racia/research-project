@@ -356,7 +356,6 @@ class SpeculativeDecoding(Setting):
         """
         Check if the teacher model would generate an end-of-sentence (EOS) token next.
 
-        :param teacher_chat: Chat, the current teacher chat
         :param suggested_token: str, the token that the teacher suggests
 
         :return: boolean indicating whether the teacher model would generate an EOS token next
@@ -507,7 +506,7 @@ class SpeculativeDecoding(Setting):
         print(f" ---- SD iteration 1 ---- ", end="\n\n\n", flush=True)
 
         is_valid, error_id, teacher_intervention = self.verify_output(
-            student_out_str=decoded_output
+            self.student.chat.messages[-1]
         )
 
         print(

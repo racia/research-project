@@ -46,6 +46,7 @@ class Chat:
             "role": Source.system,
             "content": system_prompt.text,
             "original_content": system_prompt.original_text,
+            "tokens": system_prompt.tokens,
             "ids": system_prompt.ids,
             "spans_types": {**sys_prompt_spans_types, **example_spans_types},
         }

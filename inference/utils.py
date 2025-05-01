@@ -139,7 +139,7 @@ def sents_to_ids(
     :param sentences: structured message to convert
     :param tokenizer: tokenizer to use
     :param output_empty: whether to include empty sentences into the output
-    :return: list of lists of ids that represent sentences and list of sentence spans
+    :return: tokens and ids that represent sentences, and sentence spans
     """
     flat_ids = []
     tokens, ids, sent_spans = [], [], []

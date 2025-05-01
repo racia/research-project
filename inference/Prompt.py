@@ -78,11 +78,16 @@ class Prompt:
         self.original_text: str = self.text
         self.examples = ""
         if self.tokenizer:
-            self.orig_ids, self.orig_sent_spans = sents_to_ids(
+            self.orig_tokens, self.orig_ids, self.orig_sent_spans = sents_to_ids(
                 nlp(self.text).sents, self.tokenizer
             )
             self.offset = len(flatten(self.orig_ids))
-            self.ids, self.sent_spans = self.orig_ids, self.orig_sent_spans
+            self.tokens, self.ids, self.sent_spans = (
+                self.orig_tokens,
+                self.orig_ids,
+                self.orig_sent_spans,
+            )
+            self.ex_tokens = []
             self.ex_ids = []
             self.ex_sent_spans = []
 
@@ -161,7 +166,7 @@ class Prompt:
 
     def format_resume_message(
         self, corrected_student_str: str, corrected_student_ids: list[int]
-    ) -> str:
+    ) -> dict:
         """
         Formulate the resume prompt for the student model.
 
@@ -170,7 +175,7 @@ class Prompt:
         the teacher.
 
         :param corrected_student_str: the correct part of the student's previous output with the teacher's
-        :param corrected_stud_ids: the corresponding ids
+        :param corrected_student_ids: the corresponding ids
         suggestion added
 
         :return: the formulated resume prompt
@@ -293,9 +298,10 @@ class Prompt:
         """
         self.examples += formatted_example
         # process examples making bigger chunks out of the examples
-        ids, spans = sents_to_ids(
+        tokens, ids, spans = sents_to_ids(
             re.split(r"\n{2,}", formatted_example), self.tokenizer
         )
+        self.ex_tokens.extend(tokens)
         self.ex_ids.extend(ids)
         self.ex_sent_spans.extend([upd_span(span, self.offset) for span in spans])
 
@@ -312,7 +318,7 @@ class Prompt:
                         - the example wrapper
         """
         self.use_original_prompt()
-        self.ex_ids, self.ex_sent_spans = [], []
+        self.ex_tokens, self.ex_ids, self.ex_sent_spans = [], [], []
 
         if example_config.number == 1:
             example = TaskExample(
