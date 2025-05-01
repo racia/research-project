@@ -157,8 +157,8 @@ class Model:
             # if self.interpretability:
             call_from_part = not (formatted_prompt or from_chat) and part
             # includes flat ids for all the messages in the chat, including the wrapper
-            chat_ids = self.chat.convert_into_ids(
-                identify_target=True if call_from_part else False
+            chat_ids = self.chat.convert_into(
+                values="ids", identify_target=True if call_from_part else False
             )
             print(
                 f"Formatted prompt (to remove):",
@@ -231,6 +231,7 @@ class Model:
                             output_tensor=output_tensor,
                             # chat includes the current model output but the processing should not!
                             chat=self.chat,
+                            chat_ids=outputs,
                             part=part,
                             keyword=keyword,
                         )

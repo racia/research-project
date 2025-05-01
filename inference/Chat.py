@@ -271,16 +271,22 @@ class Chat:
             if inx in self.part.supporting_sent_inx:
                 self.supp_sent_spans.append(span)
 
-    def convert_into_ids(
-        self, max_length: int = 2048, identify_target: bool = True
+    def convert_into(
+        self, values: str, max_length: int = 2048, identify_target: bool = True
     ) -> torch.Tensor:
         """
         Converts the chat into ids using the tokenizer.
 
+        :param values: what to convert chat into ('ids' or 'tokens')
         :param max_length: the maximum length of the input
         :param identify_target: whether to identify the supporting sentence spans
         :return: list of ids
         """
+        if values not in ("ids", "tokens"):
+            raise ValueError(
+                f"Value {values} is not supported. Must be either 'ids' or 'tokens'."
+            )
+
         if identify_target:
             self.identify_supp_sent_spans()
 
@@ -288,11 +294,11 @@ class Chat:
         # including the system prompt
         for i, message in enumerate(self.messages):
             message_ids = get_generation_tokens(self.tokenizer, message["role"])
-            if type(message["ids"][0]) is str:
+            if type(message[values][0]) is str:
                 raise ValueError(
                     "Detected tokens instead of ids. Please check the input."
                 )
-            message_ids.extend(flatten(message["ids"]))
+            message_ids.extend(flatten(message[values]))
             conversation_length = len(chat_ids) + len(message_ids)
             if conversation_length > max_length:
                 warnings.warn(
