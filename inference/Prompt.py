@@ -1,4 +1,5 @@
 import re
+import warnings
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -185,10 +186,15 @@ class Prompt:
         for line in self.wrapper.split("\n"):
             if "to_continue" in line:
                 resume_str += corrected_student_str
-                print("CONVERTED TOKENS:", self.tokenizer.convert_tokens_to_ids(corrected_student_tokens))
-                resume_ids.extend(
-                    self.tokenizer.convert_tokens_to_ids(corrected_student_tokens)
+                print(
+                    "CONVERTED TOKENS:",
+                    self.tokenizer.convert_tokens_to_ids(corrected_student_tokens),
                 )
+                ids = self.tokenizer.convert_tokens_to_ids(corrected_student_tokens)
+                filtered_ids = [id_ for id_ in ids if id_ is not None]
+                if len(filtered_ids) != len(ids):
+                    warnings.warn("Some tokens were not converted to ids.")
+                resume_ids.extend(filtered_ids)
             else:
                 resume_str += line + "\n"
                 resume_ids.extend(
