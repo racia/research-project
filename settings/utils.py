@@ -80,6 +80,14 @@ def encode_wrapper(
         raise ValueError(
             "Wrapper is not set. Please set the wrapper before calling the model."
         )
+    # TODO: fix tokens
+    # sentence *TASK* Here are the context sentences:
+    #
+    # sentence
+    #
+    # Wrapper values:
+    # ((0, 9), '*T', [61734, 7536, 9, 5810, 527, 279, 2317, 23719, 512])
+    # ((), 'ASK', [])
     wrapper_dict = defaultdict(lambda: defaultdict(dict))
     for key, value in wrapper.items():
         if value:

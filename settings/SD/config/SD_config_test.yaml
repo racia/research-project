@@ -4,6 +4,7 @@ teacher:
   temperature: 0.1
   to_continue: False
   mode: "eval"
+  k: 15
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
