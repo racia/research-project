@@ -33,10 +33,10 @@ class Model:
         temperature: float,
         to_continue: bool,
         role: str | None,
-        k: int | None,
-        p: float | None,
-        wrapper: Wrapper = None,
+        k: int | None = None,
+        p: float | None = None,
         mode: Mode = "eval",
+        wrapper: Wrapper = None,
         interpretability: Interpretability = None,
     ):
         self.token: str = os.getenv("HUGGINGFACE")
