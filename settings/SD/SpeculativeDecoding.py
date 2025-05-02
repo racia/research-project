@@ -219,11 +219,11 @@ class SpeculativeDecoding(Setting):
 
             if self.teacher.p:
                 top_tokens_decoded_probs, top_tokens_encoded = self.get_top_p_tokens(
-                    teacher_probs=teacher_probs, p=self.teacher.p, skip_eos=True
+                    teacher_probs=teacher_probs, skip_eos=True
                 )
             else:
                 top_tokens_decoded_probs, top_tokens_encoded = self.get_top_k_tokens(
-                    teacher_probs=teacher_probs, k=self.teacher.k, skip_eos=True
+                    teacher_probs=teacher_probs, skip_eos=True
                 )
 
             top_tokens_decoded = list(top_tokens_decoded_probs.keys())
@@ -315,13 +315,12 @@ class SpeculativeDecoding(Setting):
         return False, inx, suggested_token
 
     def get_top_k_tokens(
-        self, teacher_probs, k, skip_eos=True
+        self, teacher_probs, skip_eos=True
     ) -> tuple[dict[Any, Any], list[int]]:
         """
         Get the top k tokens from the teacher model that have a probability higher than min_prob.
 
         :param teacher_probs: the probabilities of the teacher model output
-        :param k: the number of top tokens to return
         :param skip_eos: boolean indicating whether to skip the EOS token
 
         :return: a tuple containing the top k tokens in decoded and encoded form
@@ -332,11 +331,11 @@ class SpeculativeDecoding(Setting):
         # some of the top tokens could be special tokens
         # we generate until we have k valid tokens
         while (
-            len(top_tokens_decoded_probs) < k
-            and (k + j) < teacher_probs.shape[-1]
+            len(top_tokens_decoded_probs) < self.teacher.k
+            and (self.teacher.k + j) < teacher_probs.shape[-1]
             and j < 20
         ):
-            top_probs, top_ids = torch.topk(teacher_probs, k + j, dim=-1)
+            top_probs, top_ids = torch.topk(teacher_probs, self.teacher.k + j, dim=-1)
 
             for token_id in top_ids[0]:
                 decoded_token = (
@@ -351,7 +350,7 @@ class SpeculativeDecoding(Setting):
                     top_tokens_decoded_probs[decoded_token] = top_probs[0][j].item()
                     top_tokens_encoded.append(int(token_id.item()))
 
-                if len(top_tokens_decoded_probs) == k:
+                if len(top_tokens_decoded_probs) == self.teacher.k:
                     break
 
             j += 1
@@ -368,14 +367,13 @@ class SpeculativeDecoding(Setting):
         return top_tokens_decoded_probs, top_tokens_encoded
 
     def get_top_p_tokens(
-        self, teacher_probs, p=0.97, skip_eos=True
+        self, teacher_probs, skip_eos=True
     ) -> tuple[dict[Any, Any], list[int]]:
         """
         Get the top p tokens of the teacher.
 
 
         :param teacher_probs: the probabilities of the teacher
-        :param p: the minimum probability for a token to be considered
         :param skip_eos: bool, whether to skip the end-of-sentence token
 
         :return: a tuple containing the top tokens in decoded and encoded form
@@ -385,7 +383,7 @@ class SpeculativeDecoding(Setting):
 
         sorted_probs, sorted_indices = torch.sort(teacher_probs[0], descending=True)
         cumulative_probs = torch.cumsum(sorted_probs, dim=-1)
-        top_token_mask = cumulative_probs <= p
+        top_token_mask = cumulative_probs <= self.teacher.p
         # always include the most likely token
         top_token_mask[0] = True
 
@@ -409,13 +407,13 @@ class SpeculativeDecoding(Setting):
 
         if len(top_tokens_decoded_prob) == 0:
             print(
-                f"Teacher model did not predict any token with cumulative prob >= {p}.",
+                f"Teacher model did not predict any token with cumulative prob >= {self.teacher.p}.",
                 end="\n\n",
                 flush=True,
             )
 
         print(
-            f"Teacher's top tokens with cumulative prob >= {p}:",
+            f"Teacher's top tokens with cumulative prob >= {self.teacher.p}:",
             top_tokens_decoded_prob.keys(),
             top_tokens_encoded,
             sep=" ",
@@ -445,7 +443,7 @@ class SpeculativeDecoding(Setting):
         ).to("cuda:1")
         teacher_probs = self.teacher.call_probs(input_ids)
         top_tokens_decoded, top_tokens_encoded = self.get_top_k_tokens(
-            teacher_probs=teacher_probs, k=10, skip_eos=True
+            teacher_probs=teacher_probs, skip_eos=True
         )
 
         # formatted_eval_prompt = self.prepare_prompt(chat=teacher_chat, resume_gen=True)
