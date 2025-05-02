@@ -100,7 +100,11 @@ class Feedback(Setting):
         self.feedback_prompt: Prompt = feedback_prompt
         self.refine_prompt: Prompt = refine_prompt
 
-    def prepare_prompt(self, chat: Chat, resume_gen=False) -> str:
+        self.curr_eval_dict = {
+            "iterations": 0,
+        }
+
+    def prepare_prompt(self, chat: Chat, resume_gen=False, model_role="student") -> str:
         """
         Prepares the prompt to include the current part of the sample.
 
@@ -337,11 +341,6 @@ class Feedback(Setting):
         )
         print("DEBUG: self.student.chat updated", self.student.chat)
 
-        print("DEBUG self.student.chat spans_types changed", spans_types_changed)
-        print("DEBUG self.student.chat spans_types original", spans_types_original)
-        print(
-            "DEBUG self.student.chat spans_types updated",
-            self.student.chat.get_sentence_spans(),
-        )
+        self.curr_eval_dict = {"iterations": iteration}
 
-        return decoded_output, iteration, interpretability
+        return decoded_output, self.curr_eval_dict

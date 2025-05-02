@@ -9,15 +9,15 @@ from prettytable import HRuleStyle, PrettyTable
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
 from inference.utils import (
+    contains_not_mentioned,
+    contains_pronouns,
     contains_there,
     contains_verb,
-    contains_pronouns,
-    contains_not_mentioned,
     context_sentences,
-    wrap_text,
     print_metrics_table,
+    structure_part,
+    wrap_text,
 )
-from inference.utils import structure_part
 from interpretability.utils import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
 

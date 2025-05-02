@@ -36,6 +36,8 @@ class Model:
         wrapper: Wrapper = None,
         mode: Mode = "eval",
         interpretability: Interpretability = None,
+        k: int | None = None,
+        p: float | None = None,
     ):
         self.token: str = os.getenv("HUGGINGFACE")
         self.name: str = name
@@ -51,6 +53,8 @@ class Model:
 
         self.wrapper = encode_wrapper(wrapper, self.tokenizer) if wrapper else None
         self.chat: Chat = None
+        self.k = k
+        self.p = p
 
     def load(self) -> tuple[OpenLlamaPreTrainedModel, PreTrainedTokenizerFast]:
         """
@@ -255,9 +259,11 @@ class Model:
         :return: the probabilities of the model
         """
         with torch.no_grad():
-            teacher_outputs = self.model(input_ids)
-            teacher_logits = teacher_outputs.logits
-            teacher_probs = torch.nn.functional.softmax(
-                teacher_logits[:, -1, :], dim=-1
-            )
+            with autocast("cuda"):
+                teacher_outputs = self.model(input_ids)
+                teacher_logits = teacher_outputs.logits
+                teacher_probs = torch.nn.functional.softmax(
+                    teacher_logits[:, -1, :], dim=-1
+                )
+            torch.cuda.empty_cache()
         return teacher_probs

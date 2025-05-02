@@ -160,7 +160,8 @@ class Setting(ABC):
                 if not self.part.result_before.model_answer:
                     print("QUERYING BEFORE")
                     # formatted_prompt = self.prepare_prompt(chat=chat)
-                    # TODO optional: remove returning the decoded output => move printing to model.call and work only with chat
+                    # TODO optional: remove returning the decoded output => move printing to model.call and work only
+                    #  with chat
                     decoded_output, interpretability = self.model.call(self.part)
                     answer, reasoning = parse_output(output=decoded_output)
                     self.part.set_output(
@@ -183,17 +184,26 @@ class Setting(ABC):
                     print(
                         f"Last chat message from student before applying the setting: {self.model.chat.messages[-1]}"
                     )
-                    decoded_output, iterations, interpretability = self.apply_setting(
-                        self.part.result_before.model_output
+
+                    decoded_output, eval_dict, interpretability = self.apply_setting(
+                        decoded_output=self.part.result_before.model_output,
+                        chat=chat,
                     )
-                    print("DEBUG: interpretability after", interpretability)
+
+                    self.saver.save_eval_dict(
+                        task_id=task_id,
+                        sample_id=sample_id,
+                        part_id=self.part.part_id,
+                        eval_dict=eval_dict,
+                        file_name="eval_dict_sd.json",
+                    )
                     answer, reasoning = parse_output(output=decoded_output)
                     self.part.set_output(
                         model_output=decoded_output,
                         model_answer=answer,
                         model_reasoning=reasoning,
                         interpretability=interpretability,
-                        iterations=iterations,
+                        iterations=eval_dict["iterations"],
                         version="after",
                     )
                     print(

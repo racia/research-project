@@ -36,6 +36,8 @@ class Teacher(Model):
     temperature: float
     to_continue: bool
     mode: Mode
+    p: float
+    k: int
 
 
 @dataclass

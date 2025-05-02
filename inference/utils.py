@@ -14,6 +14,7 @@ from transformers import PreTrainedTokenizerFast
 
 from evaluation.Evaluator import MetricEvaluator
 from settings.config import Enumerate
+from settings.utils import numerate_lines
 
 nlp = en_core_web_sm.load()
 

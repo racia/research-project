@@ -9,11 +9,11 @@ from transformers import PreTrainedTokenizerFast
 from inference.DataLevels import SamplePart
 from inference.Prompt import Prompt
 from inference.utils import (
+    Source,
     flatten,
     get_generation_tokens,
     sents_to_ids,
     upd_span,
-    Source,
 )
 
 
@@ -91,7 +91,8 @@ class Chat:
     ) -> None:
         """
         Add a message to the messages list. It can add either a message from the part task or assistant output.
-        The message is converted into ids using the tokenizer, but the ids can also be provided for the assistant output.
+        The message is converted into ids using the tokenizer, but the ids can also be provided for the assistant
+        output.
         If the wrapper is present, it takes into account its ids and spans to offset the sentence spans and adds it
         to the task ids.
 
@@ -236,7 +237,8 @@ class Chat:
                           "ques" (questions),
                           "ans" (model output)
         :param remove_last: whether to remove the last message span from the list
-        :return: returns list of sentence spans if span type is specified otherwise returns all the spans with their types
+        :return: returns list of sentence spans if span type is specified otherwise returns all the spans with their
+        types
         """
         possible_types = ("sys", "ex", "wrap", "task", "cont", "ques", "ans")
         if span_type and span_type not in possible_types:
