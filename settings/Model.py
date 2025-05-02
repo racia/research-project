@@ -116,7 +116,7 @@ class Model:
         part: SamplePart = None,
         formatted_prompt: str = None,
         from_chat: bool = False,
-        keyword: str = None,
+        subfolder: str = None,
         to_continue: bool = False,
     ) -> tuple[str, InterpretabilityResult]:
         """
@@ -127,6 +127,8 @@ class Model:
 
         :param part: The current sample part
         :param formatted_prompt: The formatted message to be added to the chat
+        :param from_chat: Whether the message is from the chat or not
+        :param subfolder: The subfolder for the interpretability results (only for "iterations")
         :return: The decoded model output
         """
         if not self.chat:
@@ -137,6 +139,7 @@ class Model:
         #     raise ValueError(
         #         "Either part or formatted_prompt should be provided, not both."
         #     )
+        # TODO: merge formatted_prompt and part into one
         if (formatted_prompt or part) and not from_chat:
             self.chat.add_message(
                 part=formatted_prompt if formatted_prompt else part,
@@ -161,8 +164,8 @@ class Model:
             # if self.interpretability:
             call_from_part = not (formatted_prompt or from_chat) and part
             # includes flat ids for all the messages in the chat, including the wrapper
-            chat_ids = self.chat.convert_into(
-                values="ids", identify_target=True if call_from_part else False
+            chat_ids = self.chat.convert_into_datatype(
+                datatype="ids", identify_target=True if call_from_part else False
             )
             print(
                 f"Formatted prompt (to remove):",
@@ -237,7 +240,7 @@ class Model:
                             chat=self.chat,
                             chat_ids=outputs,
                             part=part,
-                            keyword=keyword,
+                            keyword=subfolder,
                         )
                     except torch.OutOfMemoryError:
                         warnings.warn(

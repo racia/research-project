@@ -102,7 +102,11 @@ class Chat:
         :param wrapper: the wrapper ids and sentence spans of the message
         :return: None
         """
-        if wrapper and ids is not None and source == Source.assistant:
+        if (
+            wrapper
+            and (ids is not None or type(part) is str)
+            and source == Source.assistant
+        ):
             raise ValueError(
                 "Wrapper can only be used for the messages created from scratch, and now, ids are passed."
             )
@@ -203,6 +207,7 @@ class Chat:
                 # TODO: optionally divide it into reasoning and answer
                 ids = ids.tolist() if not isinstance(ids, list) else ids
                 print("REASON IDs", ids)
+                # TODO: possibly just store tokens?
                 tokens = [
                     self.tokenizer.convert_ids_to_tokens(id_list) for id_list in ids
                 ]
@@ -273,20 +278,20 @@ class Chat:
             if inx in self.part.supporting_sent_inx:
                 self.supp_sent_spans.append(span)
 
-    def convert_into(
-        self, values: str, max_length: int = 2048, identify_target: bool = True
+    def convert_into_datatype(
+        self, datatype: str, max_length: int = 2048, identify_target: bool = True
     ) -> torch.Tensor:
         """
-        Converts the chat into ids using the tokenizer.
+        Converts the chat into 'ids' or 'tokens' using the tokenizer.
 
-        :param values: what to convert chat into ('ids' or 'tokens')
+        :param datatype: what to convert chat into ('ids' or 'tokens')
         :param max_length: the maximum length of the input
         :param identify_target: whether to identify the supporting sentence spans
         :return: list of ids
         """
-        if values not in ("ids", "tokens"):
+        if datatype not in ("ids", "tokens"):
             raise ValueError(
-                f"Value {values} is not supported. Must be either 'ids' or 'tokens'."
+                f"Value {datatype} is not supported. Must be either 'ids' or 'tokens'."
             )
 
         if identify_target:
@@ -296,11 +301,11 @@ class Chat:
         # including the system prompt
         for i, message in enumerate(self.messages):
             message_ids = get_generation_tokens(self.tokenizer, message["role"])
-            if type(message[values][0]) is str:
+            if type(message[datatype][0]) is str:
                 raise ValueError(
                     "Detected tokens instead of ids. Please check the input."
                 )
-            message_ids.extend(flatten(message[values]))
+            message_ids.extend(flatten(message[datatype]))
             conversation_length = len(chat_ids) + len(message_ids)
             if conversation_length > max_length:
                 warnings.warn(

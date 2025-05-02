@@ -3,18 +3,20 @@ from __future__ import annotations
 import re
 
 
-def check_match(tokens, string, ix=None, intervention=None) -> tuple[list, str]:
+def check_match(
+    tokens: list[str], string: str, inx: int = None, intervention: str = None
+) -> tuple[list, str]:
     """
     Check if the token list matches the string.
 
     :param tokens: list of tokens that should be checked for a match
     :param string: the string the tokens are matched against
-    :param ix: the index up until which the tokens are approved/index of first error
+    :param inx: the index up until which the tokens are approved/index of first error
     :param intervention: the intervention that should be added to the string
 
     :return: Tuple(list, str): the tokens and the string
     """
-    if not ix or ix >= len(tokens):
+    if not inx or inx >= len(tokens):
         ix = len(tokens)
 
     out_tokens = [token.strip() if token else token for token in tokens][:ix]

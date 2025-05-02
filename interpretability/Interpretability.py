@@ -327,7 +327,9 @@ class Interpretability:
             attention_indices = self.filter_attn_indices(attn_scores, chat_ids.numpy())
             # Filter attention scores
             attn_scores = attn_scores[:, attention_indices]
-            x_tokens = chat.convert_into(values="tokens", identify_target=False)
+            x_tokens = chat.convert_into_datatype(
+                datatype="tokens", identify_target=False
+            )
             x_tokens = [
                 f"* {tok} *" if i in flatten(supp_sent_ranges) else tok
                 for i, tok in enumerate(x_tokens)

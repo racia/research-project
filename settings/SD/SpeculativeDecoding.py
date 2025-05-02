@@ -128,7 +128,7 @@ class SpeculativeDecoding(Setting):
         # formatted_prompt = self.prepare_prompt(chat=self.student.chat, resume_gen=True)
 
         # Call with the whole chat
-        return self.student.call(self.part, from_chat=True, keyword="iterations")
+        return self.student.call(self.part, from_chat=True, subfolder="iterations")
 
     def verify_output(
         self,
@@ -217,8 +217,8 @@ class SpeculativeDecoding(Setting):
             #     formatted_eval_prompt, return_tensors="pt", add_special_tokens=True
             # ).to("cuda:1")
 
-            input_ids = self.teacher.chat.convert_into(
-                values="ids", identify_target=False
+            input_ids = self.teacher.chat.convert_into_datatype(
+                datatype="ids", identify_target=False
             ).to("cuda:1")
             teacher_probs = self.teacher.call_probs(input_ids)
 
@@ -302,7 +302,7 @@ class SpeculativeDecoding(Setting):
 
         print(f"Teacher did not generate EOS", end="\n\n\n", flush=True)
 
-        self.curr_eval_dict["intervention_ix"].append(int(ix))
+        self.curr_eval_dict["intervention_ix"].append(int(inx))
         if top_tokens_decoded_probs:
             self.curr_eval_dict["intervention_with_prob"][suggested_token] = (
                 top_tokens_decoded_probs[suggested_token]
@@ -436,8 +436,8 @@ class SpeculativeDecoding(Setting):
 
         # check if next token would be EOS
         # ASSUMPTION: the last student message is already in the chat and is unfinished
-        input_ids = self.teacher.chat.convert_into(
-            values="ids", identify_target=False
+        input_ids = self.teacher.chat.convert_into_datatype(
+            datatype="ids", identify_target=False
         ).to("cuda:1")
         teacher_probs = self.teacher.call_probs(input_ids)
         top_tokens_decoded, top_tokens_encoded = self.get_top_k_tokens(
@@ -552,7 +552,7 @@ class SpeculativeDecoding(Setting):
 
     def apply_setting(
         self, decoded_output: str
-    ) -> tuple[str, int, InterpretabilityResult]:
+    ) -> tuple[str, dict, InterpretabilityResult]:
         """
         Run the speculative decoding for one instance.
 
@@ -567,7 +567,7 @@ class SpeculativeDecoding(Setting):
         """
         # TODO: save model_output_after as strings, not tokens
         # TODO: teacher tokens in the student chat?
-        # TODO: nan values in attentions - due to non-existing spans?
+        # TODO: nan datatype in attentions - due to non-existing spans?
         # TODO: eot_id in the end of y tokens
         # TODO: y tokens are still "model tokens" with spaces
         # TODO: model output gets infinite: Instead of adding a new token, we add the whole message each time?
@@ -638,7 +638,7 @@ class SpeculativeDecoding(Setting):
         is_valid: bool,
         error_id: int | None,
         teacher_intervention: str | None,
-    ) -> tuple[dict[str, str | None] | str, int, InterpretabilityResult]:
+    ) -> tuple[dict[str, str | None] | str, InterpretabilityResult]:
         """
         Apply the speculative decoding on the output of the student.
 

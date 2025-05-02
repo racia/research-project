@@ -91,7 +91,7 @@ class Setting(ABC):
     @abstractmethod
     def apply_setting(
         self, decoded_output: str
-    ) -> tuple[str, int, InterpretabilityResult]:
+    ) -> tuple[str, dict, InterpretabilityResult]:
         """
         Apply setting-specific postprocessing of the initial model output.
         For the baseline and skyline, this consists of parsing the output.
@@ -187,9 +187,7 @@ class Setting(ABC):
 
                     decoded_output, eval_dict, interpretability = self.apply_setting(
                         decoded_output=self.part.result_before.model_output,
-                        chat=chat,
                     )
-
                     self.saver.save_eval_dict(
                         task_id=task_id,
                         sample_id=sample_id,
