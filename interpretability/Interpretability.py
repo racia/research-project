@@ -13,10 +13,10 @@ from inference.DataLevels import SamplePart
 from inference.utils import flatten
 from interpretability.utils import (
     InterpretabilityResult,
+    get_attn_on_target,
+    get_indices,
     get_max_attn_ratio,
     get_supp_tok_idx,
-    get_indices,
-    get_attn_on_target,
 )
 from plots.Plotter import Plotter
 
@@ -95,7 +95,8 @@ class Interpretability:
 
         :param output_tensor: model output tensor
         :param model_output_len: model output length
-        :param sent_spans: list of spans of chat sentences without the last model output (if provided, the scores are averaged over them)
+        :param sent_spans: list of spans of chat sentences without the last model output (if provided, the scores are
+        averaged over them)
         :param sys_prompt_len: length of the system prompt (pass only for verbose attention)
 
         :return: 2D normalized attention scores averaged over layers and heads for the tokens of the current task
@@ -107,7 +108,8 @@ class Interpretability:
         # Mean over model layers
         attn_tensor = attn_tensor.mean(dim=0)
 
-        # Takes mean over the attention heads: dimensions, model_output, current task (w/o model output, as it is in y axis)
+        # Takes mean over the attention heads: dimensions, model_output, current task (w/o model output, as it is in
+        # y axis)
         attn_tensor = attn_tensor[
             :, -model_output_len:-1, sys_prompt_len:-model_output_len
         ].mean(dim=0)

@@ -10,7 +10,7 @@ from typing import Union
 import numpy as np
 
 from data.DataProcessor import DataProcessor
-from data.utils import get_real_value, structure_parts, get_samples_per_task
+from data.utils import get_real_value, get_samples_per_task, structure_parts
 from inference.DataLevels import SamplePart
 from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits, Enumerate, Wrapper

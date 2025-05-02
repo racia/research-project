@@ -4,7 +4,7 @@ import re
 
 from data.utils import expand_cardinal_points
 from inference.DataLevels import SamplePart
-from settings.config import Wrapper, Enumerate
+from settings.config import Enumerate, Wrapper
 
 
 class DataProcessor:

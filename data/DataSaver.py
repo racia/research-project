@@ -6,6 +6,8 @@ import sys
 import warnings
 from typing import Iterable, TextIO, Union
 
+import pandas as pd
+
 from data.utils import *
 from evaluation.Evaluator import MetricEvaluator
 from inference.DataLevels import Features, Sample, SamplePart, Split, Task
@@ -258,7 +260,8 @@ class DataSaver:
                     )
                 else:
                     warnings.warn(
-                        f"No attention scores found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
+                        f"No attention scores found for task {part.task_id}, sample {part.sample_id}, "
+                        f"part {part.part_id}."
                     )
                 for tokens in ("x_tokens", "y_tokens"):
                     if not hasattr(result, tokens):
@@ -301,7 +304,8 @@ class DataSaver:
         interpretability: InterpretabilityResult = None,
     ) -> None:
         """
-        Save student's output, teacher's feedback, and interpretability result of the student output in a single operation.
+        Save student's output, teacher's feedback, and interpretability result of the student output in a single
+        operation.
 
         :param part: The SamplePart object containing IDs
         :param iteration: The iteration number
@@ -503,3 +507,35 @@ class DataSaver:
         """
         file_to_close.close()
         sys.stdout = self.old_stdout
+
+    def save_eval_dict(
+        self,
+        task_id: int,
+        sample_id: int,
+        part_id: int,
+        eval_dict: dict,
+        file_name: str,
+    ) -> None:
+        """
+        Save the evaluation dictionary to a file.
+
+        :param task_id: the task id
+        :param sample_id: the sample id
+        :param part_id: the part id
+        :param eval_dict: the evaluation dictionary
+        :param file_name: the name of the file to save the evaluation dictionary
+        :return: None
+        """
+        res_path = self.results_path / file_name
+        meta_dict = {
+            "task_id": task_id,
+            "sample_id": sample_id,
+            "part_id": part_id,
+        }
+        combined = [{**meta_dict, **eval_dict}]
+        df = pd.DataFrame(combined)
+
+        if res_path.exists():
+            df.to_csv(res_path, mode="a", header=False, index=False)
+        else:
+            df.to_csv(res_path, mode="w", header=True, index=False)

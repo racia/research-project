@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import copy
-import re
+from typing import Any
 
 import torch
 
@@ -11,50 +11,8 @@ from inference.Prompt import Prompt
 from inference.utils import Source
 from interpretability.utils import InterpretabilityResult
 from settings.Model import Model
+from settings.SD.utils import check_match
 from settings.Setting import Setting
-
-
-def check_match(
-    tokens: list[str], string: str, inx: int = None, intervention: str = None
-) -> tuple[list, str]:
-    """
-    Check if the token list matches the string.
-
-    :param tokens: list of tokens that should be checked for a match
-    :param string: the string the tokens are matched against
-    :param inx: the index up until which the tokens are approved/index of first error
-    :param intervention: the intervention that should be added to the string
-
-    :return: Tuple(list, str): the tokens and the string
-    """
-    if not inx or inx >= len(tokens):
-        inx = len(tokens)
-
-    out_tokens = [token.strip() if token else token for token in tokens][:inx]
-    pattern = r"\s*" + r"\s*".join(map(re.escape, out_tokens))
-
-    match = re.match(pattern, string)
-
-    if match:
-        out_string = str(match.group(0))
-    else:
-        out_string = " ".join(out_tokens)
-
-    if intervention:
-        out_string += (
-            " " + intervention
-            if intervention.isalpha() and not (intervention in ["ing", "ed", "s"])
-            else intervention
-        )
-        out_tokens = out_tokens + [intervention]
-
-    print(
-        f"Checking match for tokens: {tokens[:inx]} and string: {string}. Result: {match}",
-        end="\n\n",
-        flush=True,
-    )
-
-    return out_tokens, out_string
 
 
 class SpeculativeDecoding(Setting):
@@ -110,10 +68,23 @@ class SpeculativeDecoding(Setting):
         self.eval_prompt: Prompt = eval_prompt
         self.resume_prompt: Prompt = resume_prompt
 
+        self.initial_student_output = None
+        self.use_fallback = False
         self.student_eos = False
 
         # the model sometimes predicts only parts of the word, e.g. "d" + "aniel" instead of daniel
         self.affix = False
+
+        # save the original chat so the refined output can be added later on
+        self.chat = None
+        self.curr_eval_dict = {
+            "iterations": 0,
+            "intervention_ix": [],
+            "early_stop": False,
+            "teacher_prob_approved_tokens": {},
+            "intervention_with_prob": {},
+            "teacher_empty_suggestion": 0,
+        }
 
     def generate_student(
         self, corrected_str: str, corrected_tokens: list[str]
@@ -162,7 +133,6 @@ class SpeculativeDecoding(Setting):
     def verify_output(
         self,
         student_message: dict,
-        k: int = 10,
         last_err_inx: int = -1,
         approved_tokens: list = None,
         approved_str: str = None,
@@ -174,7 +144,6 @@ class SpeculativeDecoding(Setting):
         If the teacher disagrees at some point, return the teachers suggestion as the CoT step.
 
         :param student_message: the student message with string output, tokens, and ids
-        :param k: the number of top candidates to consider from the teacher model
         :param last_err_inx: the index of the last error
         :param approved_tokens: the tokens that have been approved by the teacher so far
         :param approved_str: the string that has been approved by the teacher so far
@@ -192,6 +161,8 @@ class SpeculativeDecoding(Setting):
         )
 
         suggested_token = None
+        suggested_token_affix = None
+        top_tokens_decoded_probs = None
         inx = 0
 
         for inx, student_token in enumerate(all_student_tokens[last_err_inx + 1 :]):
@@ -250,11 +221,31 @@ class SpeculativeDecoding(Setting):
                 values="ids", identify_target=False
             ).to("cuda:1")
             teacher_probs = self.teacher.call_probs(input_ids)
-            top_tokens_decoded, top_tokens_encoded = self.get_top_k_tokens(
-                teacher_probs=teacher_probs, k=k, skip_eos=True
-            )
 
-            suggested_token = str(top_tokens_decoded[0])
+            if self.teacher.p:
+                top_tokens_decoded_probs, top_tokens_encoded = self.get_top_p_tokens(
+                    teacher_probs=teacher_probs, p=self.teacher.p, skip_eos=True
+                )
+            else:
+                top_tokens_decoded_probs, top_tokens_encoded = self.get_top_k_tokens(
+                    teacher_probs=teacher_probs, k=self.teacher.k, skip_eos=True
+                )
+
+            top_tokens_decoded = list(top_tokens_decoded_probs.keys())
+
+            if len(top_tokens_decoded_probs) == 0:
+                print(
+                    f"Teacher model did not predict any token with cumulative prob >= {self.teacher.p} or k = "
+                    f"{self.teacher.k}.",
+                    f"\n Using the students token '{student_token}' as the teacher's suggestion.",
+                    end="\n\n",
+                    flush=True,
+                )
+                self.curr_eval_dict["teacher_empty_suggestion"] += 1
+                suggested_token = student_token
+            else:
+                # teacher suggests token with highest prob = first token in dict
+                suggested_token = str(top_tokens_decoded[0])
             print("suggested_token", suggested_token)
 
             student_token_id = (
@@ -277,9 +268,6 @@ class SpeculativeDecoding(Setting):
                 # if the student token was considered as an affix and is not in the top tokens,
                 # return the suggested token of the previous step
                 if self.affix and suggested_token_affix:
-                    suggested_token_affix = (
-                        all_student_tokens[last_err_inx - 1] + suggested_token
-                    )
                     self.affix = False
                     return False, inx - 1, suggested_token_affix
 
@@ -299,6 +287,10 @@ class SpeculativeDecoding(Setting):
                 break
 
             approved_tokens.append(student_token)
+            self.curr_eval_dict["teacher_prob_approved_tokens"][student_token] = (
+                top_tokens_decoded_probs[student_token]
+            ).item()
+
             self.affix = False
             print(f"Teacher approved token {student_token}", end="\n\n", flush=True)
 
@@ -309,9 +301,18 @@ class SpeculativeDecoding(Setting):
             return True, None, None
 
         print(f"Teacher did not generate EOS", end="\n\n\n", flush=True)
+
+        self.curr_eval_dict["intervention_ix"].append(int(ix))
+        if top_tokens_decoded_probs:
+            self.curr_eval_dict["intervention_with_prob"][suggested_token] = (
+                top_tokens_decoded_probs[suggested_token]
+            ).item()
+
         return False, inx, suggested_token
 
-    def get_top_k_tokens(self, teacher_probs, k, skip_eos=True) -> tuple[list, list]:
+    def get_top_k_tokens(
+        self, teacher_probs, k, skip_eos=True
+    ) -> tuple[dict[Any, Any], list[int]]:
         """
         Get the top k tokens from the teacher model that have a probability higher than min_prob.
 
@@ -321,13 +322,15 @@ class SpeculativeDecoding(Setting):
 
         :return: a tuple containing the top k tokens in decoded and encoded form
         """
-        top_tokens_decoded = []
+        top_tokens_decoded_probs = {}
         top_tokens_encoded = []
         j = 0
         # some of the top tokens could be special tokens
         # we generate until we have k valid tokens
         while (
-            len(top_tokens_decoded) < k and (k + j) < teacher_probs.shape[-1] and j < 20
+            len(top_tokens_decoded_probs) < k
+            and (k + j) < teacher_probs.shape[-1]
+            and j < 20
         ):
             top_probs, top_ids = torch.topk(teacher_probs, k + j, dim=-1)
 
@@ -338,27 +341,85 @@ class SpeculativeDecoding(Setting):
                     .strip()
                 )
 
-                if decoded_token not in top_tokens_decoded:
+                if decoded_token not in top_tokens_decoded_probs.keys():
                     if skip_eos and len(decoded_token) < 1:
                         continue
-                    top_tokens_decoded.append(decoded_token)
+                    top_tokens_decoded_probs[decoded_token] = top_probs[0][j].item()
                     top_tokens_encoded.append(int(token_id.item()))
 
-                if len(top_tokens_decoded) == k:
+                if len(top_tokens_decoded_probs) == k:
                     break
 
             j += 1
 
         print(
-            "Teacher's top tokens:",
-            top_tokens_decoded,
+            "Teacher's top k tokens:",
+            top_tokens_decoded_probs.keys(),
             top_tokens_encoded,
             sep=" ",
             end="\n",
             flush=True,
         )
 
-        return top_tokens_decoded, top_tokens_encoded
+        return top_tokens_decoded_probs, top_tokens_encoded
+
+    def get_top_p_tokens(
+        self, teacher_probs, p=0.97, skip_eos=True
+    ) -> tuple[dict[Any, Any], list[int]]:
+        """
+        Get the top p tokens of the teacher.
+
+
+        :param teacher_probs: the probabilities of the teacher
+        :param p: the minimum probability for a token to be considered
+        :param skip_eos: bool, whether to skip the end-of-sentence token
+
+        :return: a tuple containing the top tokens in decoded and encoded form
+        """
+        top_tokens_decoded_prob = {}
+        top_tokens_encoded = []
+
+        sorted_probs, sorted_indices = torch.sort(teacher_probs[0], descending=True)
+        cumulative_probs = torch.cumsum(sorted_probs, dim=-1)
+        top_token_mask = cumulative_probs <= p
+        # always include the most likely token
+        top_token_mask[0] = True
+
+        for token_id, prob in zip(
+            sorted_indices[top_token_mask], sorted_probs[top_token_mask]
+        ):
+            decoded_token = (
+                self.tokenizer.decode(token_id.item(), skip_special_tokens=skip_eos)
+                .lower()
+                .strip()
+            )
+
+            print(f"Token id: {token_id}, decoded token: {decoded_token}, prob: {prob}")
+
+            if skip_eos and len(decoded_token) == 0:
+                continue
+
+            if decoded_token not in top_tokens_decoded_prob:
+                top_tokens_decoded_prob[decoded_token] = prob
+                top_tokens_encoded.append(token_id)
+
+        if len(top_tokens_decoded_prob) == 0:
+            print(
+                f"Teacher model did not predict any token with cumulative prob >= {p}.",
+                end="\n\n",
+                flush=True,
+            )
+
+        print(
+            f"Teacher's top tokens with cumulative prob >= {p}:",
+            top_tokens_decoded_prob.keys(),
+            top_tokens_encoded,
+            sep=" ",
+            end="\n",
+            flush=True,
+        )
+
+        return top_tokens_decoded_prob, top_tokens_encoded
 
     def teacher_suggests_eos(self, suggested_token: str) -> bool:
         """
@@ -380,7 +441,7 @@ class SpeculativeDecoding(Setting):
         ).to("cuda:1")
         teacher_probs = self.teacher.call_probs(input_ids)
         top_tokens_decoded, top_tokens_encoded = self.get_top_k_tokens(
-            teacher_probs=teacher_probs, k=5, skip_eos=True
+            teacher_probs=teacher_probs, k=10, skip_eos=True
         )
 
         # formatted_eval_prompt = self.prepare_prompt(chat=teacher_chat, resume_gen=True)
@@ -510,18 +571,30 @@ class SpeculativeDecoding(Setting):
         # TODO: eot_id in the end of y tokens
         # TODO: y tokens are still "model tokens" with spaces
         # TODO: model output gets infinite: Instead of adding a new token, we add the whole message each time?
+        self.initial_student_output = decoded_output
 
         original_student_chat = copy.deepcopy(self.student.chat)
         self.teacher.chat = self.create_teacher_chat(
             teacher_sys=self.eval_prompt, tokenizer=self.student.tokenizer
         )
 
+        # reset evaluation dict for each part
+        self.curr_eval_dict = {
+            "iterations": 0,
+            "intervention_ix": [],
+            "early_stop": False,
+            "teacher_prob_approved_tokens": {},
+            "intervention_with_prob": {},
+            "teacher_empty_suggestion": 0,
+        }
+
         print(
             " ------------- Starting speculative decoding ------------- ",
             end="\n\n\n",
             flush=True,
         )
-        print(f" ---- SD iteration 1 ---- ", end="\n\n\n", flush=True)
+        print(f" ---- SD iteration 0 ---- ", end="\n\n\n", flush=True)
+        self.curr_eval_dict["iterations"] += 1
 
         is_valid, error_id, teacher_intervention = self.verify_output(
             self.student.chat.messages[-1]
@@ -534,7 +607,7 @@ class SpeculativeDecoding(Setting):
             end="\n\n",
             flush=True,
         )
-        revs = 0
+
         interpretability = None
         if not is_valid:
             # # if teacher suggests a token, add it to its chat
@@ -542,18 +615,22 @@ class SpeculativeDecoding(Setting):
             #     part=teacher_intervention, source=Source.assistant
             # )
 
-            decoded_output, revs, interpretability = self.speculative_decode(
+            decoded_output, interpretability = self.speculative_decode(
                 student_out=decoded_output,
                 is_valid=is_valid,
                 error_id=error_id,
                 teacher_intervention=teacher_intervention,
             )
 
+        if self.use_fallback:
+            decoded_output = self.initial_student_output
+
         # change the last message of the student to the refined output
         self.student.chat = original_student_chat
+        # TODO: make more complicated
         self.student.chat.messages[-1]["content"] = decoded_output
 
-        return decoded_output, revs, interpretability
+        return decoded_output, self.curr_eval_dict, interpretability
 
     def speculative_decode(
         self,
@@ -592,6 +669,7 @@ class SpeculativeDecoding(Setting):
                 end="\n\n",
                 flush=True,
             )
+            self.curr_eval_dict["iterations"] += 1
             if type(student_out) is not str:
                 raise TypeError("Student output is not a string:", student_out)
 
@@ -611,10 +689,12 @@ class SpeculativeDecoding(Setting):
                 if count_last_token >= 3:
                     print(
                         f"Last token {corrected_tokens[-1]} repeated {count_last_token} times, stopping speculative "
-                        f"decoding",
+                        f"decoding and using fallback solution.",
                         end="\n\n\n",
                         flush=True,
                     )
+                    self.use_fallback = True
+                    self.curr_eval_dict["early_stop"] = True
                     break
 
             student_out, interpretability = self.generate_student(
@@ -670,7 +750,7 @@ class SpeculativeDecoding(Setting):
 
             revs += 1
 
-        return corrected_str + student_out, revs, interpretability
+        return corrected_str + student_out, interpretability
 
     # def string_to_tokens(self, model_out: str) -> list[str]:
     #     """
