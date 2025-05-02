@@ -17,9 +17,9 @@ def check_match(
     :return: Tuple(list, str): the tokens and the string
     """
     if not inx or inx >= len(tokens):
-        ix = len(tokens)
+        inx = len(tokens)
 
-    out_tokens = [token.strip() if token else token for token in tokens][:ix]
+    out_tokens = [token.strip() if token else token for token in tokens][:inx]
     pattern = r"\s*" + r"\s*".join(map(re.escape, out_tokens))
 
     match = re.match(pattern, string)
@@ -38,7 +38,7 @@ def check_match(
         out_tokens = out_tokens + [intervention]
 
     print(
-        f"Checking match for tokens: {tokens[:ix]} and string: {string}. Result: {match}",
+        f"Checking match for tokens: {tokens[:inx]} and string: {string}. Result: {match}",
         end="\n\n",
         flush=True,
     )

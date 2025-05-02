@@ -129,6 +129,7 @@ class Model:
         :param formatted_prompt: The formatted message to be added to the chat
         :param from_chat: Whether the message is from the chat or not
         :param subfolder: The subfolder for the interpretability results (only for "iterations")
+        :param to_continue: Whether the model should continue the last message or not
         :return: The decoded model output
         """
         if not self.chat:
@@ -211,9 +212,12 @@ class Model:
                 if to_continue:
                     self.chat.remove_message(-1)
 
-                self.chat.add_message(
-                    part=decoded_output, source=Source.assistant, ids=encoded_output
-                )
+                if to_continue:
+                    self.chat.adjust_message(decoded_output, encoded_output)
+                else:
+                    self.chat.add_message(
+                        part=decoded_output, source=Source.assistant, ids=encoded_output
+                    )
 
                 interpretability_result = None
 

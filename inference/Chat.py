@@ -82,6 +82,53 @@ class Chat:
         if deleted_message["role"] == Source.assistant:
             self.supp_sent_spans = []
 
+    def adjust_message(
+        self, partial_output: str, partial_ids: int | list[int] | torch.Tensor
+    ) -> None:
+        """
+        Adjust the *last* message of the chat.
+        This is mostly used in SD to update the last message with the partial output of the model.
+
+        :param partial_output: the partial output of the model
+        :param partial_ids: the ids of the partial output
+        :return: None
+        """
+        if not self.messages:
+            raise ValueError("No messages to adjust.")
+        if not isinstance(partial_ids, (int, list)):
+            raise ValueError("ids must be an int or a list.")
+
+        if type(self.messages[-1]["tokens"][0]) is str:
+            raise ValueError(
+                "Detected tokens instead of token lists. Please check the input."
+            )
+        if type(self.messages[-1]["ids"][0]) is int:
+            raise ValueError(
+                "Detected ids instead of ids lists. Please check the input."
+            )
+
+        if isinstance(partial_ids, torch.Tensor):
+            partial_ids = partial_ids.tolist()
+        elif not isinstance(partial_ids, int):
+            partial_ids = [partial_ids]
+
+        self.messages[-1]["content"] += partial_output
+        self.messages[-1]["original_content"] += partial_output
+        self.messages[-1]["tokens"][-1].extend(
+            self.tokenizer.convert_ids_to_tokens(partial_ids)
+        )
+        self.messages[-1]["ids"].extend(partial_ids)
+        spans_with_types = self.messages[-1]["spans_with_types"]
+        model_output_span = list(spans_with_types.keys())[-1]
+        model_output_span_type = {
+            (model_output_span[0], model_output_span[1] + len(partial_ids)): "ans"
+        }
+        self.messages[-1]["spans_with_types"] = {
+            **list(spans_with_types.items())[:-1],
+            **model_output_span_type,
+        }
+        self.offset += len(partial_ids)
+
     def add_message(
         self,
         part: SamplePart | str,
@@ -227,6 +274,22 @@ class Chat:
             "spans_types": spans_types,
         }
         self.messages.append(part_dict)
+
+    def move_approved_message(self, other_chat: Chat) -> None:
+        """
+        Move the last message from another chat to the current chat.
+
+        :param other_chat: the chat to move the message from
+        :return: None
+        """
+        approved_message = other_chat.messages[-1]
+        spans_with_types = {}
+        for span, type_ in approved_message["spans_with_types"].items():
+            offset_difference = other_chat.offset - self.offset
+            spans_upd = (span[0] - offset_difference, span[1] - offset_difference)
+            spans_with_types[spans_upd] = type_
+        approved_message["spans_with_types"] = spans_with_types
+        self.messages.append(approved_message)
 
     def get_sentence_spans(
         self, span_type: str = "", remove_last: bool = False

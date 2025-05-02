@@ -67,7 +67,10 @@ class Setting(ABC):
     #     raise NotImplementedError
 
     def create_teacher_chat(
-        self, teacher_sys: Prompt, tokenizer: PreTrainedTokenizerFast
+        self,
+        teacher_sys: Prompt,
+        tokenizer: PreTrainedTokenizerFast,
+        remove_last: bool = False,
     ) -> Chat:
         """
         Set the system prompt for the teacher.
@@ -76,7 +79,10 @@ class Setting(ABC):
         :param: teacher_sys: Prompt, the system prompt for the teacher
         :return: None
         """
-        teacher_sys.add_history(self.model.chat.messages)
+        messages = (
+            self.model.chat.messages[:-1] if remove_last else self.model.chat.messages
+        )
+        teacher_sys.add_history(messages)
         chat = Chat(
             model_role="teacher",
             system_prompt=teacher_sys,
