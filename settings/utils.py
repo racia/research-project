@@ -2,10 +2,14 @@ from __future__ import annotations
 
 import re
 import warnings
+from collections import defaultdict
+from typing import Any
 
 import torch
+from transformers import PreTrainedTokenizerFast
 
-from settings.config import Enumerate
+from inference.utils import sents_to_ids
+from settings.config import Wrapper
 
 
 def set_device() -> torch.device:
@@ -28,59 +32,6 @@ def set_device() -> torch.device:
     return device
 
 
-def expand_cardinal_points(abbr_news: list[str]) -> list[str]:
-    """
-    Expands the abbreviations of cardinal points into full words by checking
-    if any word as a list item belongs to possible abbreviations.
-
-    :param abbr_news: list of possible abbreviations
-    :return: list of words with cardinal points expanded with order preserved
-    """
-    cardinal_points = {"n": "north", "e": "east", "w": "west", "s": "south"}
-    expanded_news = []
-    for abbr in abbr_news:
-        if abbr in cardinal_points.keys():
-            expanded_news.append(cardinal_points[abbr])
-        else:
-            expanded_news.append(abbr)
-    return expanded_news
-
-
-def numerate_lines(lines: dict[int, str]) -> list[str]:
-    """
-    Adds line numbers to the beginning of each line.
-
-    :param lines: lines to numerate
-    :return: numerated lines
-    """
-    return [f"{i}. {line}" for i, line in lines.items()]
-
-
-def structure_part(
-    part: dict[str, dict[int, str]],
-    to_enumerate: Enumerate,
-) -> tuple[str, str]:
-    """
-    Structures the lines into a readable format.
-
-    :param part: part of the sample to structure
-    :param to_enumerate: if to add line numbers to the beginning of lines
-    :return: structured context and question
-    """
-    context = []
-    question = []
-    if part["context"]:
-        if to_enumerate.context:
-            context.extend(numerate_lines(part["context"]))
-        else:
-            context.extend(list(part["context"].values()))
-    if to_enumerate.question:
-        question.extend(numerate_lines(part["question"]))
-    else:
-        question.extend(list(part["question"].values()))
-    return "\n".join(context).strip(), "\n".join(question).strip()
-
-
 def parse_output(output: str) -> tuple:
     """
     Parses the output of the model to extract the answer and reasoning.
@@ -92,6 +43,7 @@ def parse_output(output: str) -> tuple:
     reasoning_pattern = re.compile(r"(?im)^reasoning:[\s ]*(.+)")
 
     answer_search = answer_pattern.search(output)
+    print("ANSWER SEARCH",answer_search)
     answer = answer_search[1].strip() if answer_search else ""
     if not answer:
         print("DEBUG: Answer not found in the output")
@@ -114,3 +66,49 @@ def parse_output(output: str) -> tuple:
         )
 
     return answer, reasoning
+
+
+def encode_wrapper(
+    wrapper: Wrapper | dict, tokenizer: PreTrainedTokenizerFast
+) -> dict[str, dict[str, Any]]:
+    """
+    Encodes the wrapper into ids and sentence spans. For empty wrapper, there are no values arriving.
+    :param wrapper: the wrapper to encode
+    :param tokenizer: the tokenizer to use
+    :return: tuple of ids and sentence spans
+    """
+    if not wrapper:
+        raise ValueError(
+            "Wrapper is not set. Please set the wrapper before calling the model."
+        )
+    # TODO: fix tokens
+    # sentence *TASK* Here are the context sentences:
+    #
+    # sentence
+    #
+    # Wrapper values:
+    # ((0, 9), '*T', [61734, 7536, 9, 5810, 527, 279, 2317, 23719, 512])
+    # ((), 'ASK', [])
+    wrapper_dict = defaultdict(lambda: defaultdict(dict))
+    for key, value in wrapper.items():
+        if value:
+            no_insert_values = re.split(r" *\{.+?} *", value)
+            if len(no_insert_values) > 2:
+                raise ValueError(
+                    f"The wrapper value '{value}' is not in the correct format. "
+                    f"It should be 'wrapper text {{inserted_value}} wrapper text'."
+                )
+            for i, no_insert_value in enumerate(no_insert_values):
+                no_insert_values[i] = re.sub(r"\n+", " ", no_insert_value)
+
+            tokens, ids, sent_spans = sents_to_ids(
+                no_insert_values, tokenizer, output_empty=True
+            )
+            print("Wrapper values:")
+            print(*zip(sent_spans, tokens, ids), sep="\n")
+            for i, order in enumerate(("before", "after")):
+                wrapper_dict[key][order]["tokens"] = tokens[i]
+                wrapper_dict[key][order]["ids"] = ids[i]
+                wrapper_dict[key][order]["sent_spans"] = sent_spans[i]
+
+    return wrapper_dict

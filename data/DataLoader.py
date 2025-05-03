@@ -10,7 +10,7 @@ from typing import Union
 import numpy as np
 
 from data.DataProcessor import DataProcessor
-from data.utils import get_real_value, get_samples_per_task
+from data.utils import get_real_value, get_samples_per_task, structure_parts
 from inference.DataLevels import SamplePart
 from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits, Enumerate, Wrapper
@@ -50,28 +50,27 @@ class SilverReasoning:
         :param get_all: Whether to return all reasoning data.
         :return: The silver reasoning for the part.
         """
-        # reload the data if task_id or split changes
-        if type(task_id) is int and (task_id != self.task_id or split != self.split):
-            self.task_id = task_id
-            self.split = split
-            self.silver_reasoning_data = self.loader.load_reasoning_data(
-                task_id=task_id, split=split
-            )
-
-        # enable getting all reasoning data for a specific task (not only one part)
-        if get_all and isinstance(task_id, int):
-            assert type(self.silver_reasoning_data) == dict
-            return self.silver_reasoning_data
+        if isinstance(task_id, int):
+            # reload the data if task_id or split changes
+            if task_id != self.task_id or split != self.split:
+                self.task_id = task_id
+                self.split = split
+                self.silver_reasoning_data = self.loader.load_reasoning_data(
+                    task_id=task_id, split=split
+                )
+            # enable getting all reasoning data for a specific task (not only one part)
+            if get_all:
+                assert type(self.silver_reasoning_data) == dict
+                return self.silver_reasoning_data
 
         # enable getting all reasoning data for a list of tasks
         elif isinstance(task_id, list):
             all_reasoning = {}
             for t in task_id:
                 task_reasoning = self.get(
-                    t, sample_id, part_id, split, from_zero, get_all=True
+                    t, split=split, from_zero=from_zero, get_all=True
                 )
                 all_reasoning.update(task_reasoning)
-            assert type(self.silver_reasoning_data) == dict
             return all_reasoning
 
         if not (sample_id or part_id):
@@ -213,7 +212,11 @@ class DataLoader:
         multi_system: bool,
         tasks: list[int] = None,
         lookup: bool = False,
-    ) -> dict | list[SamplePart]:
+    ) -> (
+        list[SamplePart]
+        | dict[tuple, SamplePart]
+        | dict[int, dict[int, list[SamplePart]]]
+    ):
         """
         Prepare the data: load raw data and process it.
 
@@ -262,7 +265,8 @@ class DataLoader:
         sep: str = "\t",
     ) -> (
         dict[str, list[Union[int, float]]]
-        or dict[int, list[dict[str, Union[int, float, str]]]]
+        | dict[int, list[dict[str, Union[int, float, str]]]]
+        | dict[int, dict[int, list[SamplePart]]]
     ):
         """
         Load the results or any csv file from the path.
@@ -364,7 +368,7 @@ class DataLoader:
                     "The number of parts does not match the number of loaded data: %d != %d"
                     % (len(parts), self.number_of_parts)
                 )
-            return parts
+            return structure_parts(parts)
 
         return data
 
@@ -416,7 +420,7 @@ class DataLoader:
         for path in self.silver_reasoning_path.iterdir():
             if f"{split}_{task_id}." in path.name:
                 silver_reasoning_data = self.load_results(
-                    Path.cwd() / path, list_output=True, sep=","
+                    Path.cwd() / path, list_output=True, sep=",", as_parts=False
                 )
                 break
 
@@ -450,7 +454,7 @@ class DataLoader:
             warnings.warn(
                 f"The interpretability data is not found at path: {attn_scores_path}"
             )
-            return InterpretabilityResult(np.array(0), [], [], 0)
+            return InterpretabilityResult(np.array([]), [], [], 0.0, 0.0)
 
         if path.name != "attn_scores":
             raise ValueError("The attention subdirectory is not located.")

@@ -35,10 +35,10 @@ data:
   # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  task_ids: ~
+  task_ids: [1,2]
   # to get all samples use ~ (will be converted to None)
   # to set a specific number of samples use an int
-  samples_per_task: 5
+  samples_per_task: 2
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
@@ -83,7 +83,7 @@ logging:
 
 
 results:
-  save_heatmaps: False
+  save_heatmaps: True
   headers:
     - id_
     - task_id
@@ -106,6 +106,7 @@ results:
     - pronouns_after
     - not_mentioned_after
     - context_sents_hall_after
+    
 
 hydra:
   run:

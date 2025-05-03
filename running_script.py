@@ -223,12 +223,16 @@ def run_setting(cfg: DictConfig) -> None:
 
     for prompt_num, prompt_path in enumerate(cfg.init_prompt.paths, 1):
         prompt_name = Path(prompt_path).stem
-        prompt_evaluator_before = (
-            MetricEvaluator(level="prompt") if multi_system else None
-        )
-        prompt_evaluator_after = MetricEvaluator(level="prompt")
-        prompt_evaluators = [prompt_evaluator_before, prompt_evaluator_after]
 
+        prompt_evaluator_after = MetricEvaluator(level="prompt")
+        prompt_evaluators = []
+        if multi_system:
+            prompt_evaluator_before = (
+                MetricEvaluator(level="prompt")
+            )
+            prompt_evaluators.append(prompt_evaluator_before)
+        prompt_evaluators.append(prompt_evaluator_after)
+        
         log_file_name, results_file_names, metrics_file_names = (
             saver.create_result_paths(prompt_name=prompt_name, splits=data_splits)
         )

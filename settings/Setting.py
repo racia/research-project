@@ -1,17 +1,16 @@
 from __future__ import annotations
 
-import copy
 import gc
-import warnings
 from abc import ABC, abstractmethod
+from mailbox import FormatError
 
 import torch
+from transformers import PreTrainedTokenizerFast
 
 from data.DataSaver import DataSaver
-from inference.Chat import Chat, Source
+from inference.Chat import Chat
 from inference.DataLevels import Sample, SamplePart, Task, print_metrics
 from inference.Prompt import Prompt
-from interpretability.Interpretability import Interpretability
 from interpretability.utils import InterpretabilityResult
 from settings.Model import Model
 from settings.utils import parse_output
@@ -31,7 +30,6 @@ class Setting(ABC):
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
         multi_system: bool = False,
-        interpretability: Interpretability = None,
         saver: DataSaver = None,
     ):
         """
@@ -43,93 +41,72 @@ class Setting(ABC):
         :param total_parts: total number of parts
         :param model: model to use
         :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
-        :param interpretability: interpretability class to use
         :param saver: data saver to use
         """
         self.model: Model = model
-
         self.init_prompt: Prompt = init_prompt
+        self.multi_system: bool = multi_system
 
         self.total_tasks: int = total_tasks
         self.total_parts: int = total_parts
         self.samples_per_task: int = samples_per_task
 
         self.part: SamplePart = None
-        self.chat: Chat = None
-
-        self.multi_system: bool = multi_system
-        self.interpretability: Interpretability = interpretability
 
         self.saver: DataSaver = saver
-        self.chat: Chat = None
 
-    @abstractmethod
-    def prepare_prompt(self, chat: Chat, resume_gen=False, model_role=None) -> str:
-        """
-        @TODO: self.to_continue check, default: add_generation_prompt
-        Prepares the prompt to include the current part of the sample.
+    # @abstractmethod
+    # def prepare_prompt(self, chat: Chat, resume_gen: bool = False) -> str:
+    #     """
+    #     Prepares the prompt to include the current part of the sample.
+    #
+    #     :param resume_gen: whether to resume the generation
+    #     :param chat: the current chat
+    #     :return: prompt with the task and the current part
+    #     """
+    #     raise NotImplementedError
 
-        :param model_role: role of the model in the conversation
-        :param resume_gen: whether to resume the generation
-        :param chat: the current chat
-        :return: prompt with the task and the current part
-        """
-        raise NotImplementedError
-
-    def create_chat_copy(self, chat: Chat) -> Chat:
-        """
-        Store the original chat and create a copy for use in the setting.
-
-        :param chat: The original chat to copy
-        :return: A copy of the original chat
-        """
-        self.chat = chat
-        return copy.deepcopy(chat)
-
-    @staticmethod
-    def set_teacher_system_prompt(chat: Chat, teacher_sys: Prompt) -> None:
+    def create_teacher_chat(
+        self,
+        teacher_sys: Prompt,
+        tokenizer: PreTrainedTokenizerFast,
+        remove_last: bool = False,
+    ) -> Chat:
         """
         Set the system prompt for the teacher.
         This includes clearing the teacher's chat of previous parts.
 
-        :param: chat: Chat, the current chat for the sample
         :param: teacher_sys: Prompt, the system prompt for the teacher
         :return: None
         """
-        # clear the teacher's chat
-        if chat.messages["teacher"]:
-            chat.messages["teacher"] = []
-
-        teacher_sys_prompt = teacher_sys.format_teacher_sys(
-            student_sys=chat.messages["student"][0]["content"],
-            student_chat=chat.messages["student"],
+        messages = (
+            self.model.chat.messages[:-1] if remove_last else self.model.chat.messages
         )
-        chat.messages["teacher"].append(
-            {"role": Source.system, "content": teacher_sys_prompt}
+        teacher_sys.add_history(messages)
+        chat = Chat(
+            model_role="teacher",
+            system_prompt=teacher_sys,
+            tokenizer=tokenizer,
         )
-
-        print(
-            f"Teacher's system prompt:",
-            teacher_sys_prompt,
-            sep="\n",
-            end="\n\n",
-            flush=True,
-        )
+        if "{" in teacher_sys.text:
+            raise FormatError(
+                "The teacher prompt is still unformatted:\n", teacher_sys.text
+            )
+        return chat
 
     @abstractmethod
     def apply_setting(
-        self, decoded_output: str, chat: Chat = None
-    ) -> tuple[str, int, InterpretabilityResult]:
+        self, decoded_output: str
+    ) -> tuple[str, dict, InterpretabilityResult]:
         """
         Apply setting-specific postprocessing of the initial model output.
         For the baseline and skyline, this consists of parsing the output.
         For the SD and feedback setting, this entails the main idea of these settings.
 
-        :param decoded_output: the current output of the student
-        :param chat: the current chat, only necessary in the SD and feedback setting
+        :param decoded_output: the output of the model
         :return: parsed output
         """
-        # ALSO INCLUDES SETTINGS -> SD AND FEEDBACK
+        # ONLY USED FOR SETTINGS -> SD AND FEEDBACK
         raise NotImplementedError
 
     def iterate_task(
@@ -161,12 +138,14 @@ class Setting(ABC):
         :return: results for the task in a list of dicts with each dict representing
                  one call to the model and will end up as one row of the table
         """
-        task = Task(task_id=task_id, multi_system=self.multi_system)
+        task = Task(task_id, self.multi_system)
         for sample_id, sample_parts in task_data.items():
+            sample = Sample(task_id, sample_id, self.multi_system)
             # each sample is a new conversation
-            chat = Chat(system_prompt=self.init_prompt, multi_system=self.multi_system)
-            sample = Sample(
-                task_id=task_id, sample_id=sample_id, multi_system=self.multi_system
+            self.model.chat = Chat(
+                model_role="student" if self.multi_system else "model",
+                system_prompt=self.init_prompt,
+                tokenizer=self.model.tokenizer,
             )
             # each part has one question
             for self.part in sample_parts:
@@ -183,77 +162,61 @@ class Setting(ABC):
                 sample.add_golden_answers(self.part.golden_answer)
                 sample.add_silver_reasoning(self.part.silver_reasoning)
 
-                chat.add_message(part=self.part, source=Source.user)
                 # Only run the model if the results are not loaded
                 if not self.part.result_before.model_answer:
-                    formatted_prompt = self.prepare_prompt(chat=chat)
-                    print(
-                        f"Formatted {'STUDENT' if self.multi_system else 'MODEL'} prompt:",
-                        formatted_prompt,
-                        sep="\n",
-                        end="\n",
-                    )
-                    try:
-                        decoded_output, interpretability = self.model.call(
-                            part=self.part, prompt=formatted_prompt, chat=chat
-                        )
-                        print(
-                            f"The output of the {'student' if self.multi_system else 'model'}:",
-                            decoded_output,
-                            end="\n\n\n",
-                            sep="\n",
-                            flush=True,
-                        )
-                    except torch.OutOfMemoryError:
-                        decoded_output, iterations, interpretability = "", 0, None
-                        warnings.warn(
-                            "DEBUG: Out of memory error while calculating interpretability scores * before *. "
-                            "Skipping this step."
-                        )
+                    print("QUERYING BEFORE")
+                    # formatted_prompt = self.prepare_prompt(chat=chat)
+                    # TODO optional: remove returning the decoded output => move printing to model.call and work only
+                    #  with chat
+                    decoded_output, interpretability = self.model.call(self.part)
                     answer, reasoning = parse_output(output=decoded_output)
                     self.part.set_output(
                         model_output=decoded_output,
                         model_answer=answer,
                         model_reasoning=reasoning,
                         interpretability=interpretability,
-                        version="before",
+                        version="before" if self.multi_system else "after",
+                    )
+                    print(
+                        f"The output of the {'student' if self.multi_system else 'model'}:",
+                        decoded_output,
+                        end="\n\n\n",
+                        sep="\n",
+                        flush=True,
                     )
 
-                # Add model output to current chat
-                chat.add_message(
-                    part=self.part.result_before.model_output,
-                    source=Source.assistant,
-                )
                 # applying the changes that are specific to each setting
                 if self.multi_system:
                     print(
-                        f"Last chat message from student before applying the setting: {chat.messages['student'][-1]}"
+                        f"Last chat message from student before applying the setting: {self.model.chat.messages[-1]}"
                     )
-                    try:
-                        decoded_output, iterations, interpretability = self.apply_setting(
-                            decoded_output=self.part.result_before.model_output, chat=chat
-                        )
-                    except torch.OutOfMemoryError:
-                        decoded_output, iterations, interpretability = "", 0, None
-                        warnings.warn(
-                            "DEBUG: Out of memory error while calculating interpretability scores * before *. "
-                            "Skipping this step."
-                        )
-                    print(
-                        f"Last chat message from student after applying the setting: {chat.messages['student'][-1]}"
+
+                    decoded_output, eval_dict, interpretability = self.apply_setting(
+                        decoded_output=self.part.result_before.model_output,
+                    )
+                    self.saver.save_eval_dict(
+                        task_id=task_id,
+                        sample_id=sample_id,
+                        part_id=self.part.part_id,
+                        eval_dict=eval_dict,
+                        file_name="eval_dict_sd.json",
                     )
                     answer, reasoning = parse_output(output=decoded_output)
-
                     self.part.set_output(
                         model_output=decoded_output,
                         model_answer=answer,
                         model_reasoning=reasoning,
                         interpretability=interpretability,
-                        iterations=iterations,
+                        iterations=eval_dict["iterations"],
                         version="after",
+                    )
+                    print(
+                        f"Last chat message from student after applying the setting: {self.model.chat.messages[-1]}"
                     )
 
                 if self.saver:
+                    print("Saving part result...")
+                    # TODO: save "before" ids (embedding)
                     self.saver.save_part_result(self.part)
 
                 sample.add_part(self.part)

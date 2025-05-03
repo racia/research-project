@@ -212,54 +212,55 @@ class DataSaver:
         :param part: the part of the sample
         :return: None
         """
-        for result in part.results:
-            if result.interpretability and not result.interpretability.empty():
-                attn_scores_subdir = (
-                    self.results_path
-                    / result.version
-                    / "interpretability"
-                    / "attn_scores"
-                )
-                Path.mkdir(attn_scores_subdir, exist_ok=True, parents=True)
+        if part.result_after.interpretability:
+            for result in part.results:
+                if result.max_supp_target:
+                    attn_scores_subdir = (
+                        self.results_path
+                        / result.version
+                        / "interpretability"
+                        / "attn_scores"
+                    )
+                    Path.mkdir(attn_scores_subdir, exist_ok=True, parents=True)
 
-                try:
-                    file_name = f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
-                    if result.interpretability.attn_scores.size > 1:
-                        attn_scores = [
-                            "\t".join(map(str, row))
-                            for row in result.interpretability.attn_scores.tolist()
-                        ]
-                        self.save_with_separator(
-                            file_path=attn_scores_subdir / file_name, data=attn_scores
-                        )
-                    else:
-                        warnings.warn(
-                            f"No attention scores found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
-                        )
-                    for tokens in ("x_tokens", "y_tokens"):
-                        if not hasattr(result.interpretability, tokens):
-                            warnings.warn(
-                                f"No {tokens} for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
+                    try:
+                        file_name = f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
+                        if result.interpretability.attn_scores.size > 1:
+                            attn_scores = [
+                                "\t".join(map(str, row))
+                                for row in result.interpretability.attn_scores.tolist()
+                            ]
+                            self.save_with_separator(
+                                file_path=attn_scores_subdir / file_name, data=attn_scores
                             )
-                            continue
-                        file_name = f"{tokens}-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
-                        self.save_with_separator(
-                            file_path=attn_scores_subdir / file_name,
-                            data=getattr(result.interpretability, tokens),
-                        )
-                    else:
-                        warnings.warn(
-                            f"No max attention distribution found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
-                        )
+                        else:
+                            warnings.warn(
+                                f"No attention scores found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
+                            )
+                        for tokens in ("x_tokens", "y_tokens"):
+                            if not hasattr(result.interpretability, tokens):
+                                warnings.warn(
+                                    f"No {tokens} for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
+                                )
+                                continue
+                            file_name = f"{tokens}-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
+                            self.save_with_separator(
+                                file_path=attn_scores_subdir / file_name,
+                                data=getattr(result.interpretability, tokens),
+                            )
+                        else:
+                            warnings.warn(
+                                f"No max attention distribution found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
+                            )
 
-                except AttributeError as e:
-                    print(f"AttributeError: {e} in {result.interpretability}")
+                    except AttributeError as e:
+                        print(f"AttributeError: {e} in {result.interpretability}")
 
-                print(
-                    f"Interpretability results for task {part.task_id} saved to {attn_scores_subdir}"
-                )
-            else:
-                warnings.warn("No interpretability results found.")
+                    print(
+                        f"Interpretability results for task {part.task_id} saved to {attn_scores_subdir}"
+                    )
+        else:
+            warnings.warn("No interpretability results found.")
 
     def save_interpretability(
         self, task_data: Task, multi_system: bool = False

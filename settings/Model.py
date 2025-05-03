@@ -71,7 +71,7 @@ class Model:
         model_kwargs = {
             "device_map": "auto",
             "torch_dtype": torch.bfloat16,
-            "quantization_config": quantization_config,
+            #"quantization_config": quantization_config,
             "low_cpu_mem_usage": True,
             "offload_folder": "offload_folder",
             "offload_state_dict": True,
