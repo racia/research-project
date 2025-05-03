@@ -39,8 +39,10 @@ class Chat:
         self.model_role = model_role
         self.tokenizer = tokenizer
 
-        sys_prompt_spans_types = {span: "sys" for span in system_prompt.orig_sent_spans}
-        example_spans_types = {span: "ex" for span in system_prompt.ex_sent_spans}
+        sys_prompt_spans_with_types = {
+            span: "sys" for span in system_prompt.orig_sent_spans
+        }
+        example_spans_with_types = {span: "ex" for span in system_prompt.ex_sent_spans}
 
         self.system_message = {
             "role": Source.system,
@@ -48,7 +50,10 @@ class Chat:
             "original_content": system_prompt.original_text,
             "tokens": system_prompt.tokens,
             "ids": system_prompt.ids,
-            "spans_types": {**sys_prompt_spans_types, **example_spans_types},
+            "spans_with_types": {
+                **sys_prompt_spans_with_types,
+                **example_spans_with_types,
+            },
         }
         self.offset = len(flatten(system_prompt.ids))
         self.messages = [self.system_message]
@@ -158,7 +163,7 @@ class Chat:
                 "Wrapper can only be used for the messages created from scratch, and now, ids are passed."
             )
         self.part = part
-        spans_types = {}
+        spans_with_types = {}
         # it is certainly a task
         if isinstance(part, SamplePart):
             if wrapper:
@@ -192,9 +197,9 @@ class Chat:
                         # add before wrapper spans/ids
                         print("intro spans", intro["sent_spans"])
                         if intro["sent_spans"]:
-                            spans_types[upd_span(intro["sent_spans"], self.offset)] = (
-                                "wrap"
-                            )
+                            spans_with_types[
+                                upd_span(intro["sent_spans"], self.offset)
+                            ] = "wrap"
                             print(
                                 "upd intro spans",
                                 upd_span(intro["sent_spans"], self.offset),
@@ -205,7 +210,7 @@ class Chat:
                         # add context and question spans/ids
                         for ids_, span in zip(task_ids, task_spans):
                             print("task span", span)
-                            spans_types[upd_span(span, self.offset)] = type_
+                            spans_with_types[upd_span(span, self.offset)] = type_
                             print("upd task spans", upd_span(span, self.offset))
 
                             self.offset += len(flatten(ids_))
@@ -213,9 +218,9 @@ class Chat:
                         # add after wrapper spans/ids
                         if outro["sent_spans"]:
                             print("outro spans", outro["sent_spans"])
-                            spans_types[upd_span(outro["sent_spans"], self.offset)] = (
-                                "wrap"
-                            )
+                            spans_with_types[
+                                upd_span(outro["sent_spans"], self.offset)
+                            ] = "wrap"
                             print(
                                 "upd outro spans",
                                 upd_span(outro["sent_spans"], self.offset),
@@ -227,7 +232,9 @@ class Chat:
                         # (no after because there's no formatting for reasoning nor answer)
                         ids.extend(intro["ids"])
                         tokens.extend(intro["tokens"])
-                        spans_types[upd_span(intro["sent_spans"], self.offset)] = "wrap"
+                        spans_with_types[upd_span(intro["sent_spans"], self.offset)] = (
+                            "wrap"
+                        )
 
                         self.offset += len(intro["ids"])
 
@@ -236,7 +243,7 @@ class Chat:
                 tokens, ids, sent_spans = sents_to_ids(
                     part.unwrapped_task.split("\n"), self.tokenizer
                 )
-                spans_types.update(
+                spans_with_types.update(
                     {upd_span(span, self.offset): "task" for span in sent_spans}
                 )
         else:
@@ -245,7 +252,7 @@ class Chat:
                 print("DEBUG: case str and NO ids")
                 # it is a formatted prompt (string prompt) => task
                 tokens, ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
-                spans_types.update(
+                spans_with_types.update(
                     {upd_span(span, self.offset): "teacher task" for span in sent_spans}
                 )
             else:
@@ -259,11 +266,11 @@ class Chat:
                     self.tokenizer.convert_ids_to_tokens(id_list) for id_list in ids
                 ]
                 label = "ans" if source == Source.assistant else "task"
-                spans_types[upd_span((0, len(ids)), self.offset)] = label
+                spans_with_types[upd_span((0, len(ids)), self.offset)] = label
                 self.offset += len(ids)
 
         print("ids", len(ids), ids)
-        print("spans_types", spans_types)
+        print("spans_with_types", spans_with_types)
 
         part_dict = {
             "role": source,
@@ -271,7 +278,7 @@ class Chat:
             "original_content": part if isinstance(part, str) else part.unwrapped_task,
             "tokens": tokens,
             "ids": ids,
-            "spans_types": spans_types,
+            "spans_with_types": spans_with_types,
         }
         self.messages.append(part_dict)
 
@@ -316,16 +323,16 @@ class Chat:
         spans = []
         spans_dict = {}
         for message in self.messages[:-1] if remove_last else self.messages:
-            # message["spans_types"] = {span: type}
+            # message["spans_with_types"] = {span: type}
             if span_type:
-                for span, type_ in message["spans_types"].items():
+                for span, type_ in message["spans_with_types"].items():
                     if type_ == span_type or (
                         span_type == "task" and type_ in ["cont", "ques"]
                     ):
                         print("span", span_type, "type_", type_)
                         spans.append(span)
             else:
-                spans_dict.update(message["spans_types"])
+                spans_dict.update(message["spans_with_types"])
 
         if span_type:
             return spans
