@@ -100,9 +100,9 @@ def encode_wrapper(
                 no_insert_values, tokenizer, output_empty=True
             )
             print("Wrapper values:")
-            print(*zip(sent_spans, tokens, ids), sep="\n")
+            print(*zip(sent_spans, tokens, ids, wrapper.values()), sep="\n")
             for i, order in enumerate(("before", "after")):
-                wrapper_dict[key][order]["content"] = list(wrapper.values())[i]
+                wrapper_dict[key][order]["content"] = no_insert_values[i]
                 wrapper_dict[key][order]["tokens"] = tokens[i]
                 wrapper_dict[key][order]["ids"] = ids[i]
                 wrapper_dict[key][order]["sent_spans"] = sent_spans[i]

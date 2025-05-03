@@ -95,9 +95,10 @@ class Prompt:
             self.ex_ids = []
             self.ex_sent_spans = []
 
-        self.history: dict = (
-            encode_wrapper(history, self.tokenizer) if wrapper else None
-        )
+        if history:
+            self.history: dict = (
+                encode_wrapper(history, self.tokenizer) if wrapper else None
+            )
         self.wrapper: dict = (
             encode_wrapper(wrapper, self.tokenizer) if wrapper else None
         )
