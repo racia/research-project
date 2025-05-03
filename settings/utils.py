@@ -97,8 +97,8 @@ def encode_wrapper(
                     f"The wrapper value '{value}' is not in the correct format. "
                     f"It should be 'wrapper text {{inserted_value}} wrapper text'."
                 )
-            for i, no_insert_value in enumerate(no_insert_values):
-                no_insert_values[i] = re.sub(r"\n+", " ", no_insert_value)
+            # for i, no_insert_value in enumerate(no_insert_values):
+            #     no_insert_values[i] = re.sub(r"\n+", " ", no_insert_value)
 
             tokens, ids, sent_spans = sents_to_ids(
                 no_insert_values, tokenizer, output_empty=True

@@ -163,7 +163,7 @@ def sents_to_ids(
         #     return_tensors="pt",
         # )[0].tolist()
         torch.cuda.empty_cache()
-        tokens.extend(sentence_tokens)
+        tokens.append(sentence_tokens)
         ids.append(sentence_ids)
 
         start = len(flat_ids)
