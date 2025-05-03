@@ -68,7 +68,7 @@ def parse_output(output: str) -> tuple:
 
 
 def encode_wrapper(
-    wrapper: Wrapper | dict, tokenizer: PreTrainedTokenizerFast
+    wrapper: Wrapper | dict | str, tokenizer: PreTrainedTokenizerFast
 ) -> dict[str, dict[str, Any]]:
     """
     Encodes the wrapper into ids and sentence spans. For empty wrapper, there are no values arriving.
@@ -80,14 +80,10 @@ def encode_wrapper(
         raise ValueError(
             "Wrapper is not set. Please set the wrapper before calling the model."
         )
-    # TODO: fix tokens
-    # sentence *TASK* Here are the context sentences:
-    #
-    # sentence
-    #
-    # Wrapper values:
-    # ((0, 9), '*T', [61734, 7536, 9, 5810, 527, 279, 2317, 23719, 512])
-    # ((), 'ASK', [])
+
+    if type(wrapper) is str:
+        wrapper = {"wrapper": wrapper}
+
     wrapper_dict = defaultdict(lambda: defaultdict(dict))
     for key, value in wrapper.items():
         if value:
@@ -106,6 +102,7 @@ def encode_wrapper(
             print("Wrapper values:")
             print(*zip(sent_spans, tokens, ids), sep="\n")
             for i, order in enumerate(("before", "after")):
+                wrapper_dict[key][order]["content"] = list(wrapper.values())[i]
                 wrapper_dict[key][order]["tokens"] = tokens[i]
                 wrapper_dict[key][order]["ids"] = ids[i]
                 wrapper_dict[key][order]["sent_spans"] = sent_spans[i]

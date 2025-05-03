@@ -9,6 +9,7 @@ from transformers import PreTrainedTokenizerFast
 from data.TaskExamples import Task, TaskExample, TaskExamples
 from inference.utils import Source, flatten, sents_to_ids, upd_span
 from settings.config import Examples
+from settings.utils import encode_wrapper
 
 nlp = en_core_web_sm.load()
 
@@ -83,17 +84,23 @@ class Prompt:
                 nlp(self.text).sents, self.tokenizer
             )
             self.offset = len(flatten(self.orig_ids))
+            self.orig_offset = self.offset
             self.tokens, self.ids, self.sent_spans = (
                 self.orig_tokens,
                 self.orig_ids,
                 self.orig_sent_spans,
             )
+            self.spans_with_types = {}
             self.ex_tokens = []
             self.ex_ids = []
             self.ex_sent_spans = []
 
-        self.history = history
-        self.wrapper: str = wrapper
+        self.history: dict = (
+            encode_wrapper(history, self.tokenizer) if wrapper else None
+        )
+        self.wrapper: dict = (
+            encode_wrapper(wrapper, self.tokenizer) if wrapper else None
+        )
 
     def add_history(self, student_messages: list[dict]):
         """
@@ -107,28 +114,53 @@ class Prompt:
         """
         parts_so_far = ""
         parts_set = set()
-        ids_so_far, spans_with_types_so_far = [], {}
+        ids_so_far, tokens_so_far = [], []
+        spans_with_types_so_far = {}
+        self.offset = self.orig_offset
 
         # TODO: do we need to filter out generation tokens from the student history?
 
-        for message in student_messages:
-            if message["role"] != "assistant":
-                if message["content"] in parts_set:
-                    raise ValueError(
-                        f"Duplicate message in the chat: {message['content']}"
+        for key, hist in self.history.items():
+            intro, outro = hist["before"], hist.get("after", hist["before"])
+            chunks = [intro, *student_messages, outro]
+            for chunk in chunks:
+                is_history_wrapper = "role" not in chunk
+                is_student_message = "role" in chunk and chunk["role"] != "assistant"
+                if is_history_wrapper or is_student_message:
+                    # this is a student message
+                    if is_student_message and chunk["content"] in parts_set:
+                        raise ValueError(
+                            f"Duplicate message in the chat: {chunk['content']}"
+                        )
+                    assert type(chunk) is dict
+                    parts_so_far += chunk["content"] + "\n\n"
+                    parts_set.add(chunk["content"] + "\n\n")
+                    newline_tokens = self.tokenizer.tokenize("\n\n")
+                    tokens_so_far.extend(chunk["tokens"] + newline_tokens)
+                    ids_so_far.extend(
+                        chunk["ids"]
+                        + self.tokenizer.convert_tokens_to_ids(newline_tokens)
                     )
+                    if chunk.get("spans_with_types", None):
+                        spans_with_types = chunk["spans_with_types"]
+                        upd_spans = {
+                            (span[0] + self.offset, span[1] + self.offset): f"{type_}_"
+                            for span, type_ in spans_with_types.items()
+                        }
+                        spans_with_types_so_far.update(upd_spans)
+                    else:
+                        spans = {
+                            (span[0] + self.offset, span[1] + self.offset): "hist"
+                            for span in chunk["sent_spans"]
+                        }
+                        spans_with_types_so_far.update(spans)
 
-                parts_so_far += message["content"] + "\n\n"
-                parts_set.add(message["content"] + "\n\n")
+                    self.offset += len(flatten(chunk["ids"]))
 
-                ids_so_far.extend(message["ids"])
-                spans_with_types_so_far.update(message["spans_with_types"])
-
-        self.text = (
-            self.original_text + "\n\n" + self.history.format(chat_history=parts_so_far)
-        )
+        self.text = self.original_text + "\n\n" + parts_so_far
         self.ids = self.orig_ids + ids_so_far
-        self.sent_spans = {
+        self.tokens = self.orig_tokens + tokens_so_far
+        self.spans_with_types = {
             **{span: "teacher sys" for span in self.orig_sent_spans},
             **spans_with_types_so_far,
         }
@@ -143,16 +175,15 @@ class Prompt:
         """
         teacher_string = ""
         teacher_ids = []
-        for line in self.wrapper.split("\n"):
-            if "student_output" in line:
-                teacher_string += student_message["content"]
-                teacher_ids.extend(student_message["ids"])
-            else:
-                teacher_string += line + "\n"
-                # TODO: possibly not a good idea, maybe better tokenize, too
-                teacher_ids.extend(
-                    self.tokenizer.encode(line + "\n", add_special_tokens=False)
-                )
+        teacher_tokens = []
+        for key, wrap in self.wrapper.items():
+            intro, outro = wrap["before"], wrap.get("after", wrap["before"])
+            chunks = [intro, student_message, outro]
+            for chunk in chunks:
+                assert type(chunk) is dict
+                teacher_string += chunk["content"]
+                teacher_ids.extend(chunk["ids"])
+                teacher_tokens.extend(chunk["tokens"])
         print(
             "Teacher's message:",
             teacher_string,
@@ -163,6 +194,7 @@ class Prompt:
             "part": teacher_string,
             "source": Source.user,
             "ids": teacher_ids,
+            "tokens": teacher_tokens,
         }
 
     def format_resume_message(
@@ -183,23 +215,26 @@ class Prompt:
         """
         resume_str = ""
         resume_ids = []
-        for line in self.wrapper.split("\n"):
-            if "to_continue" in line:
-                resume_str += corrected_student_str
-                print(
-                    "CONVERTED TOKENS:",
-                    self.tokenizer.convert_tokens_to_ids(corrected_student_tokens),
-                )
-                ids = self.tokenizer.convert_tokens_to_ids(corrected_student_tokens)
-                filtered_ids = [id_ for id_ in ids if id_ is not None]
-                if len(filtered_ids) != len(ids):
+        resume_tokens = []
+
+        message = {
+            "content": corrected_student_str,
+            "ids": self.tokenizer.convert_tokens_to_ids(corrected_student_tokens),
+            "tokens": corrected_student_tokens,
+        }
+
+        for key, wrap in self.wrapper.items():
+            intro, outro = wrap["before"], wrap.get("after", wrap["before"])
+            chunks = [intro, message, outro]
+            for chunk in chunks:
+                assert type(chunk) is dict
+                resume_str += chunk["content"]
+                resume_ids.extend(chunk["ids"])
+                filtered_ids = [id_ for id_ in chunk["ids"] if id_ is not None]
+                if len(filtered_ids) != len(chunk["ids"]):
                     warnings.warn("Some tokens were not converted to ids.")
-                resume_ids.extend(filtered_ids)
-            else:
-                resume_str += line + "\n"
-                resume_ids.extend(
-                    self.tokenizer.encode(line + "\n", add_special_tokens=False)
-                )
+
+                resume_tokens.extend(chunk["tokens"])
         print(
             "Formatted refine message:",
             resume_str,
@@ -210,6 +245,7 @@ class Prompt:
             "part": resume_str,
             "source": Source.assistant,
             "ids": resume_ids,
+            "tokens": resume_tokens,
         }
 
     # def format_feedback_message(self, part: SamplePart, cot_to_evaluate: str) -> str:

@@ -139,6 +139,7 @@ class Chat:
         part: SamplePart | str,
         source: Union[Source.user, Source.assistant],
         ids: torch.Tensor | list[int] = None,
+        tokens: list[str] = None,
         wrapper: dict[str, dict] = None,
     ) -> None:
         """
@@ -151,6 +152,7 @@ class Chat:
         :param part: part of a sample as a string or a list of strings
         :param source: the producer of the message
         :param ids: the ids of the message, if None, the ids are generated from the message
+        :param tokens: the tokens of the message, if None, the tokens are generated from the message
         :param wrapper: the wrapper ids and sentence spans of the message
         :return: None
         """
@@ -183,60 +185,21 @@ class Chat:
                     task_tokens, task_ids, task_spans = sents_to_ids(
                         to_encode, self.tokenizer
                     )
+                    task = {
+                        "tokens": task_tokens,
+                        "ids": task_ids,
+                        "sent_spans": task_spans,
+                    }
                     print("encoded message", *zip(task_spans, task_ids), sep="\n")
-
-                    if task_ids:
-                        ids_ = [intro["ids"], *task_ids, outro["ids"]]
-                        tokens_ = [intro["tokens"], *task_tokens, outro["tokens"]]
-                        for chunk_ids, chunk_tok in zip(ids_, tokens_):
-                            if chunk_ids:
-                                print(chunk_tok)
-                                tokens.append(chunk_tok)
-                                ids.append(chunk_ids)
-
-                        # add before wrapper spans/ids
-                        print("intro spans", intro["sent_spans"])
-                        if intro["sent_spans"]:
-                            spans_with_types[
-                                upd_span(intro["sent_spans"], self.offset)
-                            ] = "wrap"
-                            print(
-                                "upd intro spans",
-                                upd_span(intro["sent_spans"], self.offset),
-                            )
-
-                            self.offset += len(intro["ids"])
-
-                        # add context and question spans/ids
-                        for ids_, span in zip(task_ids, task_spans):
-                            print("task span", span)
-                            spans_with_types[upd_span(span, self.offset)] = type_
-                            print("upd task spans", upd_span(span, self.offset))
-
-                            self.offset += len(flatten(ids_))
-
-                        # add after wrapper spans/ids
-                        if outro["sent_spans"]:
-                            print("outro spans", outro["sent_spans"])
-                            spans_with_types[
-                                upd_span(outro["sent_spans"], self.offset)
-                            ] = "wrap"
-                            print(
-                                "upd outro spans",
-                                upd_span(outro["sent_spans"], self.offset),
-                            )
-
-                            self.offset += len(outro["ids"])
-                    else:
-                        # if the key is not context or question, we just add the before ids
-                        # (no after because there's no formatting for reasoning nor answer)
-                        ids.extend(intro["ids"])
-                        tokens.extend(intro["tokens"])
-                        spans_with_types[upd_span(intro["sent_spans"], self.offset)] = (
-                            "wrap"
-                        )
-
-                        self.offset += len(intro["ids"])
+                    chunks = [intro, task, outro]
+                    for i, chunk in enumerate(chunks):
+                        if chunk.get("ids", None):
+                            tokens.append(chunk["tokens"])
+                            ids.append(chunk["id"])
+                            type_ = "wrap" if i == 0 or i == len(chunks) else type_
+                            updated_span = upd_span(intro["sent_spans"], self.offset)
+                            spans_with_types[updated_span] = type_
+                            self.offset += len(flatten(chunk["ids"]))
 
             else:
                 print("DEBUG: case SamplePart and NO Wrapper")
@@ -262,9 +225,10 @@ class Chat:
                 ids = ids.tolist() if not isinstance(ids, list) else ids
                 print("REASON IDs", ids)
                 # TODO: possibly just store tokens?
-                tokens = [
-                    self.tokenizer.convert_ids_to_tokens(id_list) for id_list in ids
-                ]
+                if not tokens:
+                    tokens = [
+                        self.tokenizer.convert_ids_to_tokens(id_list) for id_list in ids
+                    ]
                 label = "ans" if source == Source.assistant else "task"
                 spans_with_types[upd_span((0, len(ids)), self.offset)] = label
                 self.offset += len(ids)
