@@ -41,33 +41,6 @@ class DataProcessor:
         :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
         :param silver_reasoning: the silver reasoning to add to the data
         :return: processed data of type
-                 dict[int, dict[str, dict[str, dict[str, str] | dict[str, list[str]] | list[list[int]]]]
-
-                 Example:
-                 {
-                     task_id: int: {
-                        sample_id: str = 0-n:
-                        [ # there might be multiple parts for one sample
-                             {
-                                 "context": {
-                                     line_num: str
-                                     sentence: str
-                                 }
-                                 "question": {
-                                     line_num: str
-                                     question: str
-                                 }
-                                 "answer": {
-                                     line_num: str
-                                     answers: list[str]
-                                 }
-                                 "supporting_fact": [
-                                     [int], [int, int]
-                                 ]
-                             }
-                         ]
-                     }
-                 }
         """
         from_zero = False
         parts = []

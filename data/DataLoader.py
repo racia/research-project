@@ -251,11 +251,11 @@ class DataLoader:
             raise ValueError(
                 "The 'flat' and 'lookup' parameters cannot be used together."
             )
+        if not (flat or lookup):
+            return structure_parts(processed_data)
+
         if flat:
             return processed_data
-
-        if not lookup:
-            return structure_parts(processed_data)
 
         lookup_data = {}
         for part in processed_data:

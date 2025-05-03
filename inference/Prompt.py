@@ -7,7 +7,13 @@ import en_core_web_sm
 from transformers import PreTrainedTokenizerFast
 
 from data.TaskExamples import Task, TaskExample, TaskExamples
-from inference.utils import Source, flatten, sents_to_ids, upd_span
+from inference.utils import (
+    Source,
+    flatten,
+    sents_to_ids,
+    upd_span,
+    get_generation_token_ids,
+)
 from settings.config import Examples
 from settings.utils import encode_wrapper
 
@@ -77,12 +83,18 @@ class Prompt:
         self.name: str = name
         self.tokenizer: PreTrainedTokenizerFast = tokenizer
 
-        self.original_text: str = self.text
+        self.newline_tokens = self.tokenizer.tokenize("\n")
+        self.newline_ids = self.tokenizer.convert_tokens_to_ids(self.newline_tokens)
+
+        self.original_text: str = self.text + "\n"
         self.examples = ""
         if self.tokenizer:
             self.orig_tokens, self.orig_ids, self.orig_sent_spans = sents_to_ids(
                 nlp(self.text).sents, self.tokenizer
             )
+            self.orig_ids[-1].extend(self.newline_ids)
+            self.orig_tokens[-1].extend(self.newline_tokens)
+
             self.offset = len(flatten(self.orig_ids))
             self.orig_offset = self.offset
             self.tokens, self.ids, self.sent_spans = (
@@ -118,12 +130,15 @@ class Prompt:
         ids_so_far, tokens_so_far = [], []
         spans_with_types_so_far = {}
         self.offset = self.orig_offset
+        # student_messages = flatten(
+        #     [flatten_message(message) for message in student_messages]
+        # )
 
-        # TODO: do we need to filter out generation tokens from the student history?
         for key, hist in self.history.items():
             intro, outro = hist["before"], hist.get("after", hist["before"])
             chunks = [intro, *student_messages, outro]
             for chunk in chunks:
+                print("DEBUG: chunk", chunk)
                 is_history_wrapper = "role" not in chunk
                 is_student_message = "role" in chunk and chunk["role"] != "assistant"
                 if is_history_wrapper or is_student_message:
@@ -132,23 +147,28 @@ class Prompt:
                         raise ValueError(
                             f"Duplicate message in the chat: {chunk['content']}"
                         )
-                    assert type(chunk) is dict
-                    parts_so_far += chunk["content"] + "\n\n"
-                    parts_set.add(chunk["content"] + "\n\n")
-                    newline_tokens = self.tokenizer.tokenize("\n\n")
-                    tokens_so_far.extend(chunk["tokens"] + newline_tokens)
-                    ids_so_far.extend(
-                        chunk["ids"]
-                        + self.tokenizer.convert_tokens_to_ids(newline_tokens)
-                    )
-                    if chunk.get("spans_with_types", None):
+                    if type(chunk) is not dict:
+                        raise ValueError(
+                            f"Chunk is not a dictionary, but {type(chunk)}"
+                        )
+                    parts_so_far += chunk["content"] + "\n"
+                    parts_set.add(chunk["content"] + "\n")
+                    if is_student_message:
+                        chunk["tokens"][-1].extend(self.newline_tokens)
+                        tokens_so_far.extend(chunk["tokens"])
+                        chunk["ids"][-1].extend(self.newline_ids)
+                        ids_so_far.extend(chunk["ids"])
                         spans_with_types = chunk["spans_with_types"]
                         upd_spans = {
-                            (span[0] + self.offset, span[1] + self.offset): f"{type_}_"
-                            for span, type_ in spans_with_types.items()
+                            (start + self.offset, end + self.offset): f"{type_}_"
+                            for (start, end), type_ in spans_with_types.items()
                         }
                         spans_with_types_so_far.update(upd_spans)
                     else:
+                        chunk["tokens"].extend(self.newline_tokens)
+                        tokens_so_far.append(chunk["tokens"])
+                        chunk["ids"].extend(self.newline_ids)
+                        ids_so_far.append(chunk["ids"])
                         spans = {
                             (
                                 chunk["sent_spans"][0] + self.offset,
@@ -159,7 +179,7 @@ class Prompt:
 
                     self.offset += len(flatten(chunk["ids"]))
 
-        self.text = self.original_text + "\n\n" + parts_so_far
+        self.text = self.original_text + parts_so_far
         self.ids = self.orig_ids + ids_so_far
         self.tokens = self.orig_tokens + tokens_so_far
         self.spans_with_types = {
@@ -176,24 +196,27 @@ class Prompt:
         :return: str, the instruction with the student output inserted
         """
         teacher_string = ""
-        teacher_ids = []
-        teacher_tokens = []
-        student_message = [
-            {
-                "content": values["content"],
-                "ids": values["ids"],
-                "tokens": values["tokens"],
-            }
-            for keys, values in student_message.items()
-        ]
+        teacher_ids, teacher_tokens = [], []
+
         for key, wrap in self.wrapper.items():
             intro, outro = wrap["before"], wrap.get("after", wrap["before"])
-            chunks = [intro, *student_message, outro]
+            chunks = [intro, student_message, outro]
             for chunk in chunks:
                 assert type(chunk) is dict
+                if not chunk.get("content", False):
+                    generation_token_ids = [
+                        self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")
+                    ] + get_generation_token_ids(self.tokenizer, Source.assistant)
+                    teacher_ids.extend(generation_token_ids)
+                    continue
+
                 teacher_string += chunk["content"]
-                teacher_ids.append(chunk["ids"])
-                teacher_tokens.append(chunk["tokens"])
+                if type(chunk["ids"]) is int:
+                    teacher_ids.append(chunk["ids"])
+                    teacher_tokens.append(chunk["tokens"])
+                else:
+                    teacher_ids.extend(chunk["ids"])
+                    teacher_tokens.extend(chunk["tokens"])
         print(
             "Teacher's message:",
             teacher_string,
@@ -357,6 +380,11 @@ class Prompt:
         tokens, ids, spans = sents_to_ids(
             re.split(r"\n{2,}", formatted_example), self.tokenizer
         )
+        [tok.extend(self.newline_tokens) for tok in tokens]
+        [id_.extend(self.newline_ids) for id_ in ids]
+        last_span = spans[-1]
+        spans[-1] = (last_span[0], last_span[1] + len(self.newline_ids))
+
         self.ex_tokens.extend(tokens)
         self.ex_ids.extend(ids)
         self.ex_sent_spans.extend([upd_span(span, self.offset) for span in spans])
@@ -411,4 +439,5 @@ class Prompt:
 
         self.text += self.examples
         self.ids = self.orig_ids + self.ex_ids
+        self.tokens = self.orig_tokens + self.ex_tokens
         self.sent_spans = self.orig_sent_spans + self.ex_sent_spans

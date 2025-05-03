@@ -115,7 +115,9 @@ def contains_not_mentioned(answer) -> bool:
     return False
 
 
-def get_generation_tokens(tokenizer: PreTrainedTokenizerFast, role: str) -> list[float]:
+def get_generation_token_ids(
+    tokenizer: PreTrainedTokenizerFast, role: str
+) -> list[float]:
     """
     Returns the token id for the role of the message.
 
@@ -157,11 +159,6 @@ def sents_to_ids(
             continue
         sentence_tokens = tokenizer.tokenize(sentence)
         sentence_ids = tokenizer.convert_tokens_to_ids(sentence_tokens)
-        # tokenized_sentence = tokenizer.encode(
-        #     sentence,
-        #     add_special_tokens=False,
-        #     return_tensors="pt",
-        # )[0].tolist()
         torch.cuda.empty_cache()
         tokens.append(sentence_tokens)
         ids.append(sentence_ids)
@@ -186,6 +183,30 @@ def flatten(lst: list[list] | list) -> list:
     if type(lst[0]) == list:
         return [item for sublist in lst for item in sublist]
     return lst
+
+
+def flatten_message(message: dict) -> list[dict]:
+    """
+    Flattens the message into a list of dictionaries.
+
+    :param message: message to flatten
+    :return: flattened message (list of dictionaries)
+    """
+    flat_message = []
+    spans = list(message["spans_with_types"].items())
+    for i in range(len(message["ids"])):
+        if not message["ids"][i]:
+            continue
+        span = spans[i][0]
+        flat_message.append(
+            {
+                "content": message["content"][span[0] : span[1]],
+                "ids": message["ids"][i],
+                "tokens": message["tokens"][i],
+                "spans_with_types": (spans[i],),
+            }
+        )
+    return flat_message
 
 
 def upd_span(span: tuple, offset: int) -> tuple[int, int]:

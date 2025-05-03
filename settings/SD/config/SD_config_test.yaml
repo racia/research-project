@@ -64,7 +64,7 @@ init_prompt:
 eval_prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
-    - "${oc.env:HOME}/research-project/inference/prompts/feedback_prompt.txt"
+    - "${oc.env:HOME}/research-project/inference/prompts/eval_prompt.txt"
   history: |
     Your student was given the following task:
     """

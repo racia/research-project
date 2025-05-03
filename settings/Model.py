@@ -210,9 +210,7 @@ class Model:
 
                 # the model expanded on the message, so we need to update it
                 if to_continue:
-                    self.chat.remove_message(-1)
-
-                if to_continue:
+                    # self.chat.remove_message(-1)
                     self.chat.adjust_message(decoded_output, encoded_output)
                 else:
                     self.chat.add_message(

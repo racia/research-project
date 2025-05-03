@@ -214,8 +214,14 @@ class SpeculativeDecoding(Setting):
 
             input_ids = self.teacher.chat.convert_into_datatype(
                 datatype="ids", identify_target=False
-            ).to("cuda:1")
-            teacher_probs = self.teacher.call_probs(input_ids)
+            )
+            print(
+                f"TEACHER Formatted prompt (to remove):",
+                self.tokenizer.batch_decode(input_ids, skip_special_tokens=False)[0],
+                sep="\n",
+                end="\n",
+            )
+            teacher_probs = self.teacher.call_probs(input_ids.to("cuda:1"))
 
             if self.teacher.p:
                 top_tokens_decoded_probs, top_tokens_encoded = self.get_top_p_tokens(
@@ -339,7 +345,9 @@ class SpeculativeDecoding(Setting):
 
             for token_id in top_ids[0]:
                 decoded_token = (
-                    self.tokenizer.decode(token_id, skip_special_tokens=skip_eos)
+                    self.tokenizer.decode(
+                        token_id,  # skip_special_tokens=skip_eos
+                    )
                     .lower()
                     .strip()
                 )
@@ -440,8 +448,8 @@ class SpeculativeDecoding(Setting):
         # ASSUMPTION: the last student message is already in the chat and is unfinished
         input_ids = self.teacher.chat.convert_into_datatype(
             datatype="ids", identify_target=False
-        ).to("cuda:1")
-        teacher_probs = self.teacher.call_probs(input_ids)
+        )
+        teacher_probs = self.teacher.call_probs(input_ids.to("cuda:1"))
         top_tokens_decoded, top_tokens_encoded = self.get_top_k_tokens(
             teacher_probs=teacher_probs, skip_eos=True
         )
@@ -577,12 +585,10 @@ class SpeculativeDecoding(Setting):
         original_student_chat = copy.deepcopy(self.student.chat)
         self.teacher.chat = self.create_teacher_chat(
             teacher_sys=self.eval_prompt,
-            tokenizer=self.student.tokenizer,
+            tokenizer=self.teacher.tokenizer,
             remove_last=True,
         )
-        teacher_message = self.eval_prompt.format_teacher_message(
-            {"content": "", "ids": []}
-        )
+        teacher_message = self.eval_prompt.format_teacher_message({})
         self.teacher.chat.add_message(**teacher_message)
 
         # reset evaluation dict for each part
@@ -721,6 +727,8 @@ class SpeculativeDecoding(Setting):
                     self.use_fallback = True
                     self.curr_eval_dict["early_stop"] = True
                     break
+
+            print("TEACHER CHAT", self.teacher.chat, end="\n\n", flush=True)
 
             student_out, interpretability = self.generate_student()
             if type(student_out) is not str:

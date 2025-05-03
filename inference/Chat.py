@@ -11,7 +11,7 @@ from inference.Prompt import Prompt
 from inference.utils import (
     Source,
     flatten,
-    get_generation_tokens,
+    get_generation_token_ids,
     sents_to_ids,
     upd_span,
 )
@@ -340,7 +340,7 @@ class Chat:
         chat_ids = [self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")]
         # including the system prompt
         for i, message in enumerate(self.messages):
-            message_ids = get_generation_tokens(self.tokenizer, message["role"])
+            message_ids = get_generation_token_ids(self.tokenizer, message["role"])
             if type(message[datatype][0]) is str:
                 raise ValueError(
                     "Detected tokens instead of ids. Please check the input."
@@ -355,7 +355,7 @@ class Chat:
 
             chat_ids.extend(message_ids)
 
-        chat_ids.extend(get_generation_tokens(self.tokenizer, "assistant"))
+        chat_ids.extend(get_generation_token_ids(self.tokenizer, "assistant"))
         print("chat_ids", len(chat_ids), chat_ids)
 
         return torch.as_tensor([chat_ids])
