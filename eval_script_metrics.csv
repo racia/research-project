@@ -1,0 +1,15 @@
+task_id	exact_match_accuracy_after	soft_match_accuracy_after	exact_match_std_after	soft_match_std_after
+3	0.3	0.3	0.14	0.14
+mean	0.3	0.3	0.07	0.07
+std	0.0	0.0		
+there_after	0
+verbs_after	0
+pronouns_after	0
+not_mentioned_after	0
+3	0.3	0.3	0.14	0.14
+mean	0.3	0.3	0.07	0.07
+std	0.0	0.0		
+there_after	0
+verbs_after	0
+pronouns_after	0
+not_mentioned_after	0

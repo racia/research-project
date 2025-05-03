@@ -1,0 +1,3618 @@
+id	task_id	sample_id	part_id	task	golden_answer	model_answer	correct	model_reasoning	silver_reasoning	model_output	exact_match_accuracy	soft_match_accuracy	there	verbs	pronouns	not_mentioned
+1	1	1	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the kitchen.
+2. Daniel journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	bedroom	True			answer: bedroom	0.84	0.84	False	False	False	False
+2	1	1	2	"*TASK*
+Here are the context sentences:
+4. Sandra moved to the garden.
+5. Sandra went back to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+3	1	1	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the office.
+8. Sandra went back to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	hallway	True			answer: hallway			False	False	False	False
+4	1	1	4	"*TASK*
+Here are the context sentences:
+10. Daniel journeyed to the hallway.
+11. Daniel went to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	hallway	True			answer: hallway			False	False	False	False
+5	1	1	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the garden.
+14. Daniel moved to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	hallway	True			answer: hallway			False	False	False	False
+6	1	2	1	"*TASK*
+Here are the context sentences:
+1. John went back to the bathroom.
+2. Mary travelled to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	bathroom	True			answer: bathroom			False	False	False	False
+7	1	2	2	"*TASK*
+Here are the context sentences:
+4. Mary went to the garden.
+5. Sandra moved to the garden.
+
+Now, answer the following question:
+Where is John?"	bathroom	unknown	False			answer: unknown			False	False	False	True
+8	1	2	3	"*TASK*
+Here are the context sentences:
+7. John went to the kitchen.
+8. Daniel moved to the bathroom.
+
+Now, answer the following question:
+Where is John?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+9	1	2	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the hallway.
+11. Mary went to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+10	1	2	5	"*TASK*
+Here are the context sentences:
+13. Daniel went to the garden.
+14. Daniel travelled to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	hallway	True			answer: hallway			False	False	False	False
+11	1	3	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the bedroom.
+2. Mary travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	bathroom	True			answer: bathroom			False	False	False	False
+12	1	3	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the office.
+5. Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+13	1	3	3	"*TASK*
+Here are the context sentences:
+7. John journeyed to the kitchen.
+8. John moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+14	1	3	4	"*TASK*
+Here are the context sentences:
+10. Daniel moved to the hallway.
+11. Mary went back to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	garden	True			answer: garden			False	False	False	False
+15	1	3	5	"*TASK*
+Here are the context sentences:
+13. Daniel went back to the office.
+14. Daniel travelled to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	office	False			answer: office			False	False	False	False
+16	1	4	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the garden.
+2. Mary went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	garden	garden	True			answer: garden			False	False	False	False
+17	1	4	2	"*TASK*
+Here are the context sentences:
+4. Daniel travelled to the kitchen.
+5. Sandra went to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+18	1	4	3	"*TASK*
+Here are the context sentences:
+7. Daniel journeyed to the garden.
+8. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+19	1	4	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the hallway.
+11. John went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	hallway	hallway	True			answer: hallway			False	False	False	False
+20	1	4	5	"*TASK*
+Here are the context sentences:
+13. John moved to the office.
+14. John travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	hallway	hallway	True			answer: hallway			False	False	False	False
+21	1	5	1	"*TASK*
+Here are the context sentences:
+1. John went to the office.
+2. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+22	1	5	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the bedroom.
+5. John moved to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	unknown	False			answer: unknown			False	False	False	True
+23	1	5	3	"*TASK*
+Here are the context sentences:
+7. Daniel journeyed to the bathroom.
+8. John journeyed to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+24	1	5	4	"*TASK*
+Here are the context sentences:
+10. Sandra journeyed to the kitchen.
+11. Mary moved to the garden.
+
+Now, answer the following question:
+Where is John?"	bedroom	unknown	False			answer: unknown			False	False	False	True
+25	1	5	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the bathroom.
+14. Sandra went back to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+26	2	1	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the office.
+2. Daniel travelled to the office.
+3. Mary grabbed the football there.
+4. Daniel went back to the hallway.
+5. Mary left the football.
+6. Sandra grabbed the apple there.
+7. Mary went to the bedroom.
+8. Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	there	False			answer: there	0.12	0.12	True	False	False	False
+27	2	1	2	"*TASK*
+Here are the context sentences:
+10. Daniel journeyed to the bathroom.
+11. Mary went back to the office.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	nowhere	False			answer: nowhere			True	False	False	False
+28	2	1	3	"*TASK*
+Here are the context sentences:
+13. Sandra took the milk there.
+14. Sandra dropped the milk.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	nowhere	False			answer: nowhere			True	False	False	False
+29	2	1	4	"*TASK*
+Here are the context sentences:
+16. Mary went back to the bathroom.
+17. Daniel took the football there.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	nowhere	False			answer: nowhere			True	False	False	False
+30	2	1	5	"*TASK*
+Here are the context sentences:
+19. Sandra picked up the milk there.
+20. Mary went back to the bedroom.
+21. John moved to the bedroom.
+22. Daniel discarded the football there.
+
+Now, answer the following question:
+Where is the football?"	bathroom	there	False			answer: there			True	False	False	False
+31	2	2	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the hallway.
+2. Daniel journeyed to the garden.
+3. Daniel went back to the office.
+4. Sandra got the apple there.
+5. Sandra discarded the apple.
+6. Daniel travelled to the kitchen.
+
+Now, answer the following question:
+Where is the apple?"	hallway	discarded	False			answer: discarded			False	True	False	False
+32	2	2	2	"*TASK*
+Here are the context sentences:
+8. John journeyed to the hallway.
+9. Mary went back to the garden.
+
+Now, answer the following question:
+Where is the apple?"	hallway	unknown	False			answer: unknown			False	False	False	True
+33	2	2	3	"*TASK*
+Here are the context sentences:
+11. Sandra grabbed the apple there.
+12. Sandra dropped the apple there.
+
+Now, answer the following question:
+Where is the apple?"	hallway	there	False			answer: there			True	False	False	False
+34	2	2	4	"*TASK*
+Here are the context sentences:
+14. Daniel grabbed the football there.
+15. Daniel discarded the football.
+
+Now, answer the following question:
+Where is the apple?"	hallway	discarded	False			answer: discarded			False	True	False	False
+35	2	2	5	"*TASK*
+Here are the context sentences:
+17. Mary went back to the office.
+18. Daniel took the football there.
+
+Now, answer the following question:
+Where is the apple?"	hallway	discarded	False			answer: discarded			False	True	False	False
+36	2	3	1	"*TASK*
+Here are the context sentences:
+1. Sandra grabbed the milk there.
+2. Sandra moved to the garden.
+
+Now, answer the following question:
+Where is the milk?"	garden	there	False			answer: there			True	False	False	False
+37	2	3	2	"*TASK*
+Here are the context sentences:
+4. Sandra grabbed the football there.
+5. Sandra dropped the milk.
+
+Now, answer the following question:
+Where is the milk?"	garden	dropped	False			answer: dropped			False	True	False	False
+38	2	3	3	"*TASK*
+Here are the context sentences:
+7. Sandra discarded the football.
+8. Sandra went to the hallway.
+
+Now, answer the following question:
+Where is the milk?"	garden	dropped	False			answer: dropped			False	True	False	False
+39	2	3	4	"*TASK*
+Here are the context sentences:
+10. John went to the office.
+11. Mary travelled to the office.
+
+Now, answer the following question:
+Where is the milk?"	garden	dropped	False			answer: dropped			False	True	False	False
+40	2	3	5	"*TASK*
+Here are the context sentences:
+13. Sandra went to the bedroom.
+14. Daniel went to the bathroom.
+15. John travelled to the garden.
+16. Daniel got the apple there.
+17. John picked up the milk there.
+18. John dropped the milk.
+
+Now, answer the following question:
+Where is the milk?"	garden	there	False			answer: there			True	False	False	False
+41	2	4	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the bathroom.
+2. John travelled to the office.
+3. Mary moved to the bedroom.
+4. Daniel travelled to the bathroom.
+5. Daniel went to the hallway.
+6. Mary got the milk there.
+7. John went to the garden.
+8. John travelled to the bedroom.
+9. Mary left the milk.
+10. John went back to the garden.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+42	2	4	2	"*TASK*
+Here are the context sentences:
+12. Daniel travelled to the bathroom.
+13. Sandra grabbed the milk there.
+14. Sandra left the milk.
+15. John travelled to the kitchen.
+16. Daniel got the apple there.
+17. Mary got the milk there.
+18. Mary went to the office.
+19. Daniel moved to the bedroom.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	kitchen	False			answer: kitchen			False	False	False	False
+43	2	4	3	"*TASK*
+Here are the context sentences:
+21. John went to the bathroom.
+22. Daniel dropped the apple.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	bathroom	False			answer: bathroom			False	False	False	False
+44	2	4	4	"*TASK*
+Here are the context sentences:
+24. Daniel picked up the apple there.
+25. Mary went back to the garden.
+26. Daniel moved to the kitchen.
+27. Sandra journeyed to the bathroom.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+45	2	4	5	"*TASK*
+Here are the context sentences:
+29. Mary got the football there.
+30. Daniel dropped the apple.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	bathroom	False			answer: bathroom			False	False	False	False
+46	2	5	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the bathroom.
+2. Mary picked up the football there.
+3. Mary travelled to the hallway.
+4. Sandra moved to the garden.
+
+Now, answer the following question:
+Where is the football?"	hallway	bathroom	False			answer: bathroom			False	False	False	False
+47	2	5	2	"*TASK*
+Here are the context sentences:
+6. Daniel journeyed to the kitchen.
+7. Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where is the football?"	bedroom	bathroom	False			answer: bathroom			False	False	False	False
+48	2	5	3	"*TASK*
+Here are the context sentences:
+9. Mary got the apple there.
+10. John went back to the bathroom.
+11. Daniel went back to the office.
+12. John moved to the hallway.
+13. John journeyed to the bathroom.
+14. Sandra moved to the bathroom.
+15. Sandra moved to the kitchen.
+16. John travelled to the kitchen.
+17. Mary left the apple.
+18. Mary travelled to the garden.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	garden	False			answer: garden			False	False	False	False
+49	2	5	4	"*TASK*
+Here are the context sentences:
+20. Sandra travelled to the bedroom.
+21. Daniel journeyed to the bedroom.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	garden	False			answer: garden			False	False	False	False
+50	2	5	5	"*TASK*
+Here are the context sentences:
+23. Mary went back to the kitchen.
+24. Sandra picked up the apple there.
+25. Mary discarded the football.
+26. John took the football there.
+27. John discarded the football there.
+28. John went to the office.
+
+Now, answer the following question:
+Where is the football?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+51	3	1	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the bathroom.
+2. Sandra journeyed to the bedroom.
+3. Mary got the football there.
+4. John went back to the bedroom.
+5. Mary journeyed to the office.
+6. John journeyed to the office.
+7. John took the milk.
+8. Daniel went back to the kitchen.
+9. John moved to the bedroom.
+10. Daniel went back to the hallway.
+11. Daniel took the apple.
+12. John left the milk there.
+13. John travelled to the kitchen.
+14. Sandra went back to the bathroom.
+15. Daniel journeyed to the bathroom.
+16. John journeyed to the bathroom.
+17. Mary journeyed to the bathroom.
+18. Sandra went back to the garden.
+19. Sandra went to the office.
+20. Daniel went to the garden.
+21. Sandra went back to the hallway.
+22. Daniel journeyed to the office.
+23. Mary dropped the football.
+24. John moved to the bedroom.
+
+Now, answer the following question:
+Where was the football before the bathroom?"	office	bedroom	False			answer: bedroom	0.2	0.22	False	False	False	False
+52	3	1	2	"*TASK*
+Here are the context sentences:
+26. John travelled to the office.
+27. John travelled to the bedroom.
+
+Now, answer the following question:
+Where was the football before the bathroom?"	office	bedroom	False			answer: bedroom			False	False	False	False
+53	3	1	3	"*TASK*
+Here are the context sentences:
+29. Daniel left the apple.
+30. Sandra travelled to the kitchen.
+
+Now, answer the following question:
+Where was the apple before the garden?"	bathroom	hallway	False			answer: hallway			False	False	False	False
+54	3	1	4	"*TASK*
+Here are the context sentences:
+32. Sandra went to the bedroom.
+33. Daniel moved to the bedroom.
+
+Now, answer the following question:
+Where was the apple before the garden?"	bathroom	hallway	False			answer: hallway			False	False	False	False
+55	3	1	5	"*TASK*
+Here are the context sentences:
+35. John went to the hallway.
+36. Mary got the football.
+37. John went back to the bedroom.
+38. Sandra took the milk.
+39. Daniel travelled to the office.
+40. Sandra left the milk there.
+41. Daniel travelled to the hallway.
+42. Sandra picked up the milk.
+43. Mary left the football.
+44. Sandra travelled to the hallway.
+45. John journeyed to the hallway.
+46. Sandra went to the kitchen.
+
+Now, answer the following question:
+Where was the milk before the kitchen?"	hallway	hallway	True			answer: hallway			False	False	False	False
+56	3	2	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the hallway.
+2. Sandra went back to the garden.
+3. Daniel journeyed to the kitchen.
+4. Daniel took the football.
+5. Daniel put down the football there.
+6. Mary went back to the hallway.
+7. Sandra picked up the apple.
+8. Sandra left the apple.
+9. Daniel went to the garden.
+10. Sandra picked up the apple.
+11. John went back to the hallway.
+12. Sandra dropped the apple.
+13. Sandra got the apple there.
+14. Sandra dropped the apple.
+15. Daniel went back to the kitchen.
+16. Sandra went back to the bathroom.
+17. John went to the garden.
+18. Daniel travelled to the garden.
+19. John got the apple there.
+20. John discarded the apple.
+21. Daniel moved to the kitchen.
+22. Daniel picked up the football.
+23. Sandra went back to the hallway.
+24. Daniel moved to the garden.
+25. Daniel discarded the football.
+26. Daniel got the football there.
+27. Mary went back to the kitchen.
+28. Daniel went back to the bathroom.
+29. Daniel put down the football.
+30. Sandra travelled to the garden.
+31. Mary moved to the garden.
+32. Daniel took the football.
+33. Sandra went to the bathroom.
+34. Sandra went back to the hallway.
+35. John picked up the apple there.
+36. John discarded the apple.
+37. Mary picked up the apple.
+38. Mary dropped the apple.
+39. Mary took the apple.
+40. Daniel journeyed to the garden.
+41. Sandra went to the garden.
+42. Mary travelled to the hallway.
+43. Mary went to the kitchen.
+44. Daniel left the football.
+45. Mary put down the apple.
+46. Sandra grabbed the football.
+
+Now, answer the following question:
+Where was the apple before the kitchen?"	hallway	garden	False			answer: garden			False	False	False	False
+57	3	2	2	"*TASK*
+Here are the context sentences:
+48. John went to the kitchen.
+49. Sandra left the football there.
+
+Now, answer the following question:
+Where was the apple before the kitchen?"	hallway	garden	False			answer: garden			False	False	False	False
+58	3	2	3	"*TASK*
+Here are the context sentences:
+51. Daniel picked up the football.
+52. John picked up the apple.
+53. John put down the apple.
+54. Mary grabbed the apple.
+55. Mary dropped the apple.
+56. Mary moved to the office.
+57. Daniel discarded the football.
+58. John journeyed to the garden.
+59. Daniel got the football.
+60. Daniel travelled to the kitchen.
+61. Daniel picked up the apple.
+62. Daniel dropped the apple.
+63. Mary moved to the kitchen.
+64. Daniel grabbed the apple there.
+65. Sandra went back to the bedroom.
+66. Daniel went to the hallway.
+67. John moved to the hallway.
+68. Daniel discarded the apple there.
+69. Daniel picked up the apple.
+70. Daniel moved to the office.
+71. Daniel went back to the bedroom.
+72. Daniel dropped the football.
+
+Now, answer the following question:
+Where was the apple before the bedroom?"	office	hallway	False			answer: hallway			False	False	False	False
+59	3	2	4	"*TASK*
+Here are the context sentences:
+74. Mary moved to the office.
+75. Mary went to the garden.
+
+Now, answer the following question:
+Where was the football before the office?"	hallway	kitchen	False			answer: kitchen			False	False	False	False
+60	3	2	5	"*TASK*
+Here are the context sentences:
+77. Daniel grabbed the football.
+78. Daniel left the apple.
+
+Now, answer the following question:
+Where was the apple before the bedroom?"	office	hallway	False			answer: hallway			False	False	False	False
+61	3	3	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the kitchen.
+2. Sandra went to the garden.
+3. John went back to the office.
+4. Sandra went to the bathroom.
+5. Mary moved to the bedroom.
+6. Mary grabbed the football.
+7. Sandra moved to the office.
+8. Daniel went to the office.
+9. Sandra moved to the garden.
+10. Mary discarded the football.
+11. Mary grabbed the football there.
+12. Sandra picked up the apple there.
+13. Mary left the football.
+14. Sandra dropped the apple.
+15. Sandra moved to the office.
+16. John went to the kitchen.
+17. John travelled to the bedroom.
+18. Mary picked up the football.
+19. Mary travelled to the hallway.
+20. Mary picked up the milk.
+21. Mary discarded the football.
+22. Sandra went to the bedroom.
+23. Daniel went back to the bathroom.
+24. John travelled to the office.
+25. Daniel went back to the bedroom.
+26. Daniel went back to the office.
+27. John went back to the garden.
+28. John travelled to the hallway.
+29. Mary went back to the kitchen.
+30. Daniel went back to the kitchen.
+31. Sandra moved to the garden.
+32. Mary went to the office.
+33. Mary moved to the bathroom.
+34. Sandra went back to the kitchen.
+35. Mary dropped the milk.
+36. Mary grabbed the milk.
+37. Mary dropped the milk.
+38. Sandra travelled to the bathroom.
+39. Sandra got the milk.
+40. Daniel went back to the office.
+41. Sandra moved to the hallway.
+42. Mary travelled to the garden.
+43. John went back to the garden.
+44. Mary travelled to the bathroom.
+45. Mary went to the bedroom.
+46. John went back to the bathroom.
+47. Daniel journeyed to the garden.
+48. John journeyed to the garden.
+49. Mary journeyed to the office.
+50. Sandra put down the milk there.
+51. Sandra journeyed to the kitchen.
+52. Mary went back to the kitchen.
+53. John moved to the kitchen.
+54. Mary moved to the garden.
+55. Mary grabbed the apple.
+56. Mary put down the apple.
+57. Daniel went back to the bathroom.
+58. Sandra moved to the garden.
+59. Mary grabbed the apple.
+60. Sandra went to the hallway.
+61. Daniel went to the kitchen.
+62. John journeyed to the office.
+63. John moved to the hallway.
+64. Mary dropped the apple there.
+65. Mary got the apple.
+66. Mary put down the apple.
+67. John went to the bathroom.
+68. Sandra took the football.
+69. Sandra journeyed to the office.
+70. Daniel travelled to the bedroom.
+71. Mary journeyed to the hallway.
+72. Mary picked up the milk.
+73. Mary put down the milk.
+74. Mary went back to the bathroom.
+75. Sandra left the football.
+76. Sandra grabbed the football there.
+77. John travelled to the bedroom.
+78. Mary went back to the kitchen.
+79. Sandra journeyed to the hallway.
+80. Sandra moved to the garden.
+
+Now, answer the following question:
+Where was the football before the garden?"	hallway	office	False			answer: office			False	False	False	False
+62	3	3	2	"*TASK*
+Here are the context sentences:
+82. Sandra put down the football there.
+83. Mary travelled to the garden.
+
+Now, answer the following question:
+Where was the football before the garden?"	hallway	office	False			answer: office			False	False	False	False
+63	3	3	3	"*TASK*
+Here are the context sentences:
+85. Sandra picked up the apple there.
+86. Sandra went back to the bathroom.
+
+Now, answer the following question:
+Where was the football before the garden?"	hallway	office	False			answer: office			False	False	False	False
+64	3	3	4	"*TASK*
+Here are the context sentences:
+88. Daniel went to the garden.
+89. Daniel got the football.
+90. Mary travelled to the bathroom.
+91. Mary went back to the kitchen.
+92. Daniel put down the football.
+93. Daniel journeyed to the kitchen.
+94. Mary moved to the hallway.
+95. Sandra dropped the apple.
+96. Mary got the milk.
+97. Mary went to the office.
+98. John travelled to the bathroom.
+99. Sandra took the apple.
+100. Sandra discarded the apple.
+101. John journeyed to the kitchen.
+102. Mary left the milk there.
+103. Sandra took the apple.
+104. Sandra dropped the apple.
+105. Mary picked up the milk.
+106. Sandra grabbed the apple.
+107. John moved to the bedroom.
+108. Mary left the milk.
+109. Daniel travelled to the bedroom.
+110. Sandra moved to the office.
+111. Sandra left the apple there.
+112. Sandra moved to the bedroom.
+113. Mary journeyed to the bathroom.
+114. John journeyed to the bathroom.
+115. Sandra went to the kitchen.
+116. Daniel travelled to the garden.
+117. Daniel travelled to the bedroom.
+118. Mary moved to the kitchen.
+119. Sandra went back to the bedroom.
+120. John moved to the office.
+121. Sandra journeyed to the bathroom.
+122. Mary moved to the hallway.
+123. Daniel went back to the garden.
+124. John took the milk there.
+125. John moved to the bedroom.
+126. John discarded the milk.
+127. Daniel took the football.
+128. John took the milk there.
+129. Sandra went back to the garden.
+130. John put down the milk.
+131. John travelled to the bathroom.
+132. Mary journeyed to the bedroom.
+133. John travelled to the bedroom.
+134. Sandra moved to the bedroom.
+135. Daniel put down the football.
+136. Sandra moved to the bathroom.
+137. Mary went to the hallway.
+138. Daniel picked up the football.
+139. Sandra travelled to the garden.
+140. Mary moved to the garden.
+141. Daniel dropped the football.
+142. Sandra went back to the bathroom.
+143. Daniel journeyed to the bedroom.
+144. John moved to the bathroom.
+145. Daniel moved to the hallway.
+146. Daniel journeyed to the bathroom.
+147. Daniel went back to the bedroom.
+148. Mary moved to the bathroom.
+149. Daniel travelled to the office.
+150. Daniel went to the kitchen.
+151. Sandra moved to the kitchen.
+152. Mary journeyed to the office.
+153. Daniel went back to the bedroom.
+154. John journeyed to the bedroom.
+155. Mary journeyed to the hallway.
+156. Sandra travelled to the office.
+157. Sandra picked up the apple.
+158. Daniel moved to the hallway.
+159. John went to the bathroom.
+160. Sandra discarded the apple.
+161. John moved to the garden.
+162. Sandra moved to the bedroom.
+163. Daniel journeyed to the kitchen.
+164. Sandra went back to the kitchen.
+165. John picked up the football.
+166. Mary went back to the bathroom.
+167. John dropped the football.
+168. John took the football.
+169. Sandra went back to the office.
+170. John discarded the football there.
+171. John journeyed to the bathroom.
+172. Mary went back to the hallway.
+173. Mary went to the kitchen.
+174. Sandra travelled to the kitchen.
+175. Daniel went back to the garden.
+176. Daniel journeyed to the bathroom.
+177. Daniel moved to the bedroom.
+178. John went back to the garden.
+179. Mary went to the bathroom.
+180. John travelled to the kitchen.
+181. Sandra went back to the office.
+182. Daniel travelled to the kitchen.
+183. John went to the office.
+184. John went back to the bathroom.
+185. Sandra journeyed to the bedroom.
+186. John went to the kitchen.
+187. Sandra got the milk.
+188. John went to the bathroom.
+189. Daniel journeyed to the bathroom.
+190. John journeyed to the kitchen.
+191. Mary journeyed to the office.
+192. Sandra left the milk.
+193. Sandra picked up the milk.
+194. Sandra put down the milk there.
+195. Sandra moved to the office.
+196. Sandra moved to the bathroom.
+197. Mary moved to the garden.
+198. John moved to the office.
+199. Mary travelled to the office.
+200. John grabbed the apple there.
+201. John dropped the apple.
+202. Mary went back to the bathroom.
+203. John went back to the bedroom.
+204. Daniel went back to the office.
+205. John picked up the milk.
+206. John journeyed to the bathroom.
+207. Daniel went back to the bathroom.
+208. Mary travelled to the kitchen.
+209. John travelled to the garden.
+
+Now, answer the following question:
+Where was the milk before the garden?"	bathroom	hallway	False			answer: hallway			False	False	False	False
+65	3	3	5	"*TASK*
+Here are the context sentences:
+211. Sandra went to the bedroom.
+212. Sandra moved to the bathroom.
+213. Mary moved to the office.
+214. John went back to the kitchen.
+215. Mary went back to the garden.
+216. Mary moved to the bedroom.
+217. John discarded the milk.
+218. Daniel journeyed to the garden.
+
+Now, answer the following question:
+Where was the milk before the kitchen?"	garden		False						False	False	False	False
+66	3	4	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the office.
+2. Mary got the apple.
+3. Sandra picked up the football.
+4. Daniel went back to the garden.
+5. Mary travelled to the kitchen.
+6. Sandra left the football.
+7. Sandra got the football.
+8. Daniel journeyed to the bathroom.
+9. Daniel travelled to the office.
+10. Sandra went to the kitchen.
+11. Daniel journeyed to the hallway.
+12. Mary left the apple.
+13. John went back to the office.
+14. Sandra dropped the football.
+15. John went to the bathroom.
+16. Mary took the football.
+17. Mary picked up the apple.
+18. Daniel grabbed the milk.
+19. Daniel put down the milk there.
+20. John travelled to the kitchen.
+21. Daniel got the milk.
+22. Daniel journeyed to the garden.
+23. Mary put down the apple.
+24. Mary discarded the football.
+25. Daniel journeyed to the hallway.
+26. Sandra got the football there.
+27. Mary journeyed to the office.
+28. John got the apple.
+29. Sandra moved to the garden.
+30. Daniel moved to the bedroom.
+31. John dropped the apple.
+32. Sandra travelled to the office.
+33. Sandra went back to the bathroom.
+34. Daniel moved to the kitchen.
+35. Daniel discarded the milk.
+36. Sandra travelled to the hallway.
+
+Now, answer the following question:
+Where was the milk before the bedroom?"	hallway	kitchen	False			answer: kitchen			False	False	False	False
+67	3	4	2	"*TASK*
+Here are the context sentences:
+38. Mary went to the hallway.
+39. Daniel went to the bathroom.
+
+Now, answer the following question:
+Where was the milk before the hallway?"	garden	kitchen	False			answer: kitchen			False	False	False	False
+68	3	4	3	"*TASK*
+Here are the context sentences:
+41. John picked up the milk.
+42. Sandra dropped the football there.
+
+Now, answer the following question:
+Where was the football before the hallway?"	bathroom	there (referring to the previous sentence 42	False			answer: there (referring to the previous sentence 42			True	False	False	False
+69	3	4	4	"*TASK*
+Here are the context sentences:
+44. John put down the milk there.
+45. Daniel went to the bedroom.
+
+Now, answer the following question:
+Where was the football before the office?"	garden	nowhere (there is no mention of the football being	False			answer: nowhere (there is no mention of the football being			True	False	False	True
+70	3	4	5	"*TASK*
+Here are the context sentences:
+47. Daniel went back to the bathroom.
+48. Sandra took the football there.
+49. John picked up the apple there.
+50. Daniel went back to the hallway.
+51. Mary went back to the bedroom.
+52. Sandra put down the football there.
+53. Sandra journeyed to the bathroom.
+54. John dropped the apple.
+55. Daniel moved to the garden.
+56. Sandra went back to the bedroom.
+57. John picked up the milk.
+58. Mary journeyed to the garden.
+59. John travelled to the hallway.
+60. John moved to the bathroom.
+
+Now, answer the following question:
+Where was the milk before the bathroom?"	hallway	kitchen	False			answer: kitchen			False	False	False	False
+71	3	5	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the bathroom.
+2. John went to the office.
+3. Daniel went to the office.
+4. Daniel got the milk.
+5. John went to the bedroom.
+6. John got the football.
+7. Daniel travelled to the hallway.
+8. John went to the hallway.
+9. John took the apple.
+10. Mary travelled to the office.
+11. Mary moved to the kitchen.
+12. John left the apple.
+13. John journeyed to the garden.
+14. John put down the football.
+
+Now, answer the following question:
+Where was the football before the garden?"	hallway	hallway	True			answer: hallway			False	False	False	False
+72	3	5	2	"*TASK*
+Here are the context sentences:
+16. Daniel travelled to the kitchen.
+17. Mary went back to the bathroom.
+
+Now, answer the following question:
+Where was the football before the garden?"	hallway	hallway	True			answer: hallway			False	False	False	False
+73	3	5	3	"*TASK*
+Here are the context sentences:
+19. Mary went to the garden.
+20. Daniel left the milk.
+
+Now, answer the following question:
+Where was the football before the garden?"	hallway	hallway	True			answer: hallway			False	False	False	False
+74	3	5	4	"*TASK*
+Here are the context sentences:
+22. John picked up the football.
+23. John moved to the bathroom.
+
+Now, answer the following question:
+Where was the milk before the kitchen?"	hallway	office	False			answer: office			False	False	False	False
+75	3	5	5	"*TASK*
+Here are the context sentences:
+25. Daniel grabbed the milk.
+26. Daniel dropped the milk.
+27. Daniel went to the office.
+28. John put down the football.
+29. John journeyed to the bedroom.
+30. John went back to the garden.
+31. John journeyed to the kitchen.
+32. Mary moved to the bathroom.
+33. Mary moved to the kitchen.
+34. John got the milk.
+35. Daniel went back to the hallway.
+36. Sandra took the football.
+37. Mary journeyed to the office.
+38. Daniel grabbed the apple there.
+39. Daniel put down the apple.
+40. John went back to the bathroom.
+41. John put down the milk.
+42. Daniel took the apple.
+43. Mary travelled to the kitchen.
+44. John went to the bedroom.
+45. Sandra dropped the football.
+46. John journeyed to the garden.
+47. John moved to the office.
+48. Sandra journeyed to the kitchen.
+49. Mary moved to the garden.
+50. Daniel journeyed to the garden.
+51. Daniel left the apple.
+52. Daniel picked up the apple.
+53. Daniel travelled to the kitchen.
+54. Daniel put down the apple there.
+55. Sandra took the apple.
+56. Daniel journeyed to the bathroom.
+57. Sandra discarded the apple.
+58. Sandra journeyed to the bedroom.
+59. Sandra went to the office.
+60. Daniel grabbed the milk there.
+61. Sandra went to the bathroom.
+62. Daniel got the football.
+63. Daniel moved to the garden.
+64. Mary travelled to the bedroom.
+65. Daniel dropped the milk there.
+66. Mary travelled to the garden.
+67. Mary travelled to the bedroom.
+68. John went back to the kitchen.
+69. John picked up the apple there.
+70. John put down the apple.
+71. Daniel went to the hallway.
+72. Sandra travelled to the kitchen.
+73. John went back to the bathroom.
+74. Daniel put down the football.
+
+Now, answer the following question:
+Where was the football before the hallway?"	garden	garden	True			answer: garden			False	False	False	False
+76	4	1	1	"*TASK*
+Here are the context sentences:
+1. The kitchen is west of the garden.
+2. The hallway is west of the kitchen.
+
+Now, answer the following question:
+What is the garden east of?"	kitchen	kitchen	True			answer: kitchen	0.4	0.4	False	False	False	False
+77	4	2	1	"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the bedroom.
+2. The kitchen is north of the bedroom.
+
+Now, answer the following question:
+What is the bedroom south of?"	kitchen	bathroom	False			answer: bathroom			False	False	False	False
+78	4	3	1	"*TASK*
+Here are the context sentences:
+1. The bedroom is south of the kitchen.
+2. The kitchen is south of the hallway.
+
+Now, answer the following question:
+What is south of the kitchen?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+79	4	4	1	"*TASK*
+Here are the context sentences:
+1. The hallway is west of the bedroom.
+2. The hallway is east of the garden.
+
+Now, answer the following question:
+What is the bedroom east of?"	hallway	garden	False			answer: garden			False	False	False	False
+80	4	5	1	"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the bedroom.
+2. The garden is north of the bedroom.
+
+Now, answer the following question:
+What is the bedroom north of?"	kitchen	the garden.	False			answer: the garden.			False	False	False	False
+81	5	1	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the garden.
+2. Mary journeyed to the kitchen.
+3. Bill went back to the office.
+4. Bill journeyed to the hallway.
+5. Jeff went back to the bedroom.
+6. Fred moved to the hallway.
+7. Bill moved to the bathroom.
+8. Jeff went back to the garden.
+9. Jeff went back to the kitchen.
+10. Fred went back to the garden.
+11. Mary got the football there.
+12. Mary handed the football to Jeff.
+
+Now, answer the following question:
+What did Mary give to Jeff?"	football	football	True			answer: football	0.88	0.88	False	False	False	False
+82	5	1	2	"*TASK*
+Here are the context sentences:
+14. Bill went back to the hallway.
+15. Jeff went back to the bedroom.
+
+Now, answer the following question:
+What did Mary give to Jeff?"	football	football	True			answer: football			False	False	False	False
+83	5	1	3	"*TASK*
+Here are the context sentences:
+17. Fred moved to the bathroom.
+18. Mary picked up the milk there.
+
+Now, answer the following question:
+What did Mary give to Jeff?"	football	football	True			answer: football			False	False	False	False
+84	5	1	4	"*TASK*
+Here are the context sentences:
+20. Fred travelled to the kitchen.
+21. Mary handed the milk to Fred.
+
+Now, answer the following question:
+Who gave the milk to Fred?"	mary	mary	True			answer: mary			False	False	False	False
+85	5	1	5	"*TASK*
+Here are the context sentences:
+23. Fred moved to the hallway.
+24. Jeff went to the office.
+
+Now, answer the following question:
+Who did Mary give the milk to?"	fred	fred	True			answer: fred			False	True	False	False
+86	5	2	1	"*TASK*
+Here are the context sentences:
+1. Jeff went to the bedroom.
+2. Mary journeyed to the kitchen.
+3. Mary journeyed to the bathroom.
+4. Bill moved to the kitchen.
+5. Mary moved to the garden.
+6. Bill went back to the office.
+7. Bill went to the kitchen.
+8. Mary went back to the bathroom.
+9. Mary travelled to the kitchen.
+10. Jeff moved to the office.
+11. Fred went to the hallway.
+12. Fred went back to the garden.
+13. Mary travelled to the office.
+14. Jeff took the apple there.
+15. Jeff discarded the apple.
+16. Mary went to the garden.
+17. Bill went back to the bathroom.
+18. Mary went to the office.
+19. Bill grabbed the milk there.
+20. Mary picked up the apple there.
+21. Jeff moved to the garden.
+22. Fred moved to the office.
+23. Mary dropped the apple.
+24. Fred took the football there.
+25. Fred handed the football to Mary.
+26. Fred picked up the apple there.
+
+Now, answer the following question:
+Who received the football?"	mary	mary	True			answer: mary			False	False	False	False
+87	5	2	2	"*TASK*
+Here are the context sentences:
+28. Mary travelled to the garden.
+29. Jeff journeyed to the hallway.
+
+Now, answer the following question:
+What did Fred give to Mary?"	football	football	True			answer: football			False	False	False	False
+88	5	2	3	"*TASK*
+Here are the context sentences:
+31. Bill travelled to the bedroom.
+32. Mary put down the football.
+33. Fred went back to the garden.
+34. Fred handed the apple to Mary.
+
+Now, answer the following question:
+Who received the apple?"	mary	mary	True			answer: mary			False	False	False	False
+89	5	2	4	"*TASK*
+Here are the context sentences:
+36. Bill left the milk.
+37. Mary handed the apple to Fred.
+
+Now, answer the following question:
+Who did Mary give the apple to?"	fred	fred	True			answer: fred			False	True	False	False
+90	5	2	5	"*TASK*
+Here are the context sentences:
+39. Fred gave the apple to Mary.
+40. Fred travelled to the bathroom.
+
+Now, answer the following question:
+What did Fred give to Mary?"	apple	apple	True			answer: apple			False	False	False	False
+91	5	3	1	"*TASK*
+Here are the context sentences:
+1. Bill grabbed the apple there.
+2. Bill got the football there.
+3. Jeff journeyed to the bathroom.
+4. Bill handed the apple to Jeff.
+
+Now, answer the following question:
+What did Bill give to Jeff?"	apple	apple	True			answer: apple			False	False	False	False
+92	5	3	2	"*TASK*
+Here are the context sentences:
+6. Jeff handed the apple to Bill.
+7. Bill handed the apple to Jeff.
+
+Now, answer the following question:
+What did Bill give to Jeff?"	apple	apple	True			answer: apple			False	False	False	False
+93	5	3	3	"*TASK*
+Here are the context sentences:
+9. Jeff handed the apple to Bill.
+10. Bill handed the apple to Jeff.
+
+Now, answer the following question:
+What did Bill give to Jeff?"	apple	apple	True			answer: apple			False	False	False	False
+94	5	3	4	"*TASK*
+Here are the context sentences:
+12. Jeff put down the apple.
+13. Bill passed the football to Jeff.
+
+Now, answer the following question:
+What did Bill give to Jeff?"	apple	football	False			answer: football			False	False	False	False
+95	5	3	5	"*TASK*
+Here are the context sentences:
+15. Jeff passed the football to Bill.
+16. Mary got the milk there.
+
+Now, answer the following question:
+What did Bill give to Jeff?"	apple	football	False			answer: football			False	False	False	False
+96	5	4	1	"*TASK*
+Here are the context sentences:
+1. Mary took the football there.
+2. Bill went to the garden.
+3. Fred journeyed to the office.
+4. Mary put down the football there.
+5. Jeff journeyed to the kitchen.
+6. Mary took the football there.
+7. Mary passed the football to Jeff.
+8. Jeff travelled to the hallway.
+
+Now, answer the following question:
+What did Mary give to Jeff?"	football	football	True			answer: football			False	False	False	False
+97	5	4	2	"*TASK*
+Here are the context sentences:
+10. Jeff journeyed to the garden.
+11. Bill journeyed to the office.
+
+Now, answer the following question:
+Who received the football?"	jeff	jeff	True			answer: jeff			False	False	False	False
+98	5	4	3	"*TASK*
+Here are the context sentences:
+13. Fred went to the hallway.
+14. Fred grabbed the apple there.
+15. Mary journeyed to the bedroom.
+16. Mary went to the office.
+17. Mary moved to the hallway.
+18. Mary journeyed to the bathroom.
+19. Jeff discarded the football.
+20. Bill went to the garden.
+21. Fred journeyed to the garden.
+22. Jeff grabbed the football there.
+23. Fred left the apple.
+24. Jeff discarded the football.
+25. Mary got the milk there.
+26. Jeff got the apple there.
+27. Bill picked up the football there.
+28. Mary left the milk.
+29. Jeff journeyed to the kitchen.
+30. Fred moved to the bedroom.
+31. Bill travelled to the kitchen.
+32. Jeff discarded the apple.
+33. Bill passed the football to Jeff.
+34. Mary went to the garden.
+
+Now, answer the following question:
+Who received the football?"	jeff	jeff	True			answer: jeff			False	False	False	False
+99	5	4	4	"*TASK*
+Here are the context sentences:
+36. Mary travelled to the office.
+37. Jeff passed the football to Bill.
+
+Now, answer the following question:
+What did Jeff give to Bill?"	football	football	True			answer: football			False	False	False	False
+100	5	4	5	"*TASK*
+Here are the context sentences:
+39. Bill picked up the apple there.
+40. Bill handed the apple to Jeff.
+
+Now, answer the following question:
+Who received the football?"	bill	jeff	False			answer: jeff			False	False	False	False
+101	5	5	1	"*TASK*
+Here are the context sentences:
+1. Jeff moved to the bathroom.
+2. Jeff moved to the garden.
+3. Fred journeyed to the bathroom.
+4. Jeff travelled to the hallway.
+5. Fred moved to the office.
+6. Jeff travelled to the bedroom.
+7. Jeff picked up the football there.
+8. Mary journeyed to the office.
+9. Fred moved to the kitchen.
+10. Fred travelled to the hallway.
+11. Jeff took the milk there.
+12. Fred travelled to the kitchen.
+13. Mary journeyed to the bathroom.
+14. Mary picked up the apple there.
+15. Jeff travelled to the kitchen.
+16. Jeff handed the football to Fred.
+
+Now, answer the following question:
+What did Jeff give to Fred?"	football	football	True			answer: football			False	False	False	False
+102	5	5	2	"*TASK*
+Here are the context sentences:
+18. Mary dropped the apple.
+19. Fred handed the football to Bill.
+
+Now, answer the following question:
+What did Fred give to Bill?"	football	football	True			answer: football			False	False	False	False
+103	5	5	3	"*TASK*
+Here are the context sentences:
+21. Fred travelled to the hallway.
+22. Bill handed the football to Jeff.
+
+Now, answer the following question:
+Who gave the football?"	bill	bill	True			answer: bill			False	False	False	False
+104	5	5	4	"*TASK*
+Here are the context sentences:
+24. Mary went back to the kitchen.
+25. Jeff handed the football to Mary.
+
+Now, answer the following question:
+Who received the football?"	mary	mary	True			answer: mary			False	False	False	False
+105	5	5	5	"*TASK*
+Here are the context sentences:
+27. Mary passed the football to Bill.
+28. Bill passed the football to Mary.
+
+Now, answer the following question:
+What did Bill give to Mary?"	football	football	True			answer: football			False	False	False	False
+106	6	1	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the office.
+2. John went back to the garden.
+
+Now, answer the following question:
+Is Sandra in the office?"	yes	yes	True			answer: yes	0.88	0.88	False	False	False	False
+107	6	1	2	"*TASK*
+Here are the context sentences:
+4. Sandra went to the hallway.
+5. Sandra went to the kitchen.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	no	no	True			answer: no			False	False	False	False
+108	6	1	3	"*TASK*
+Here are the context sentences:
+7. Mary went to the office.
+8. Sandra got the apple there.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	yes	no	False			answer: no			False	False	False	False
+109	6	1	4	"*TASK*
+Here are the context sentences:
+10. Mary journeyed to the hallway.
+11. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	yes	True			answer: yes			False	False	False	False
+110	6	1	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the garden.
+14. Mary went to the kitchen.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	yes	True			answer: yes			False	False	False	False
+111	6	2	1	"*TASK*
+Here are the context sentences:
+1. Sandra grabbed the football there.
+2. Sandra went back to the hallway.
+
+Now, answer the following question:
+Is Sandra in the garden?"	no	no	True			answer: no			False	False	False	False
+112	6	2	2	"*TASK*
+Here are the context sentences:
+4. Mary journeyed to the kitchen.
+5. Mary moved to the office.
+
+Now, answer the following question:
+Is Mary in the office?"	yes	yes	True			answer: yes			False	False	False	False
+113	6	2	3	"*TASK*
+Here are the context sentences:
+7. John moved to the kitchen.
+8. Sandra put down the football there.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	no	True			answer: no			False	False	False	False
+114	6	2	4	"*TASK*
+Here are the context sentences:
+10. Mary took the apple there.
+11. John travelled to the hallway.
+
+Now, answer the following question:
+Is John in the garden?"	no	no	True			answer: no			False	False	False	False
+115	6	2	5	"*TASK*
+Here are the context sentences:
+13. Daniel moved to the hallway.
+14. Mary travelled to the kitchen.
+
+Now, answer the following question:
+Is John in the garden?"	no	no	True			answer: no			False	False	False	False
+116	6	3	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the hallway.
+2. Mary went back to the kitchen.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	yes	True			answer: yes			False	False	False	False
+117	6	3	2	"*TASK*
+Here are the context sentences:
+4. John moved to the hallway.
+5. John picked up the apple there.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	no	no	True			answer: no			False	False	False	False
+118	6	3	3	"*TASK*
+Here are the context sentences:
+7. Daniel moved to the bathroom.
+8. John went to the garden.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	no	False			answer: no			False	False	False	False
+119	6	3	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the hallway.
+11. John dropped the apple.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	no	True			answer: no			False	False	False	False
+120	6	3	5	"*TASK*
+Here are the context sentences:
+13. Sandra grabbed the apple there.
+14. Sandra left the apple.
+
+Now, answer the following question:
+Is John in the garden?"	yes	yes	True			answer: yes			False	False	False	False
+121	6	4	1	"*TASK*
+Here are the context sentences:
+1. John went to the hallway.
+2. Sandra picked up the apple there.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	yes	True			answer: yes			False	False	False	False
+122	6	4	2	"*TASK*
+Here are the context sentences:
+4. Daniel moved to the garden.
+5. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	yes	True			answer: yes			False	False	False	False
+123	6	4	3	"*TASK*
+Here are the context sentences:
+7. Mary moved to the bathroom.
+8. Sandra left the apple.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	no	True			answer: no			False	False	False	False
+124	6	4	4	"*TASK*
+Here are the context sentences:
+10. Mary grabbed the milk there.
+11. Daniel moved to the office.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	no	True			answer: no			False	False	False	False
+125	6	4	5	"*TASK*
+Here are the context sentences:
+13. John took the football there.
+14. John moved to the bedroom.
+
+Now, answer the following question:
+Is John in the bedroom?"	yes	yes	True			answer: yes			False	False	False	False
+126	6	5	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the hallway.
+2. John grabbed the apple there.
+
+Now, answer the following question:
+Is Mary in the hallway?"	yes	yes	True			answer: yes			False	False	False	False
+127	6	5	2	"*TASK*
+Here are the context sentences:
+4. John put down the apple.
+5. John took the apple there.
+
+Now, answer the following question:
+Is Mary in the hallway?"	yes	no	False			answer: no			False	False	False	False
+128	6	5	3	"*TASK*
+Here are the context sentences:
+7. John put down the apple there.
+8. Mary moved to the kitchen.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	yes	True			answer: yes			False	False	False	False
+129	6	5	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the bathroom.
+11. Sandra went back to the garden.
+
+Now, answer the following question:
+Is Sandra in the garden?"	yes	yes	True			answer: yes			False	False	False	False
+130	6	5	5	"*TASK*
+Here are the context sentences:
+13. Daniel went to the bedroom.
+14. Mary took the milk there.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	no	no	True			answer: no			False	False	False	False
+131	7	1	1	"*TASK*
+Here are the context sentences:
+1. Sandra went to the bedroom.
+2. Mary went to the office.
+3. Mary took the apple there.
+4. Mary put down the apple.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	1	False			answer: 1	0.76	0.76	False	False	False	False
+132	7	1	2	"*TASK*
+Here are the context sentences:
+6. Mary went back to the bedroom.
+7. Mary travelled to the bathroom.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	0	False			answer: 0			False	False	False	False
+133	7	1	3	"*TASK*
+Here are the context sentences:
+9. John went to the hallway.
+10. John got the football there.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	1	False			answer: 1			False	False	False	False
+134	7	1	4	"*TASK*
+Here are the context sentences:
+12. Mary moved to the hallway.
+13. John went to the office.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	1	False			answer: 1			False	False	False	False
+135	7	1	5	"*TASK*
+Here are the context sentences:
+15. Mary went back to the garden.
+16. John grabbed the apple there.
+
+Now, answer the following question:
+How many objects is John carrying?"	two	1	False			answer: 1			False	False	False	False
+136	7	2	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the hallway.
+2. Mary grabbed the milk there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	1	False			answer: 1			False	False	False	False
+137	7	2	2	"*TASK*
+Here are the context sentences:
+4. John got the football there.
+5. Sandra journeyed to the hallway.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	0	False			answer: 0			False	False	False	False
+138	7	2	3	"*TASK*
+Here are the context sentences:
+7. Mary dropped the milk.
+8. Daniel journeyed to the hallway.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	1	False			answer: 1			False	False	False	False
+139	7	2	4	"*TASK*
+Here are the context sentences:
+10. John journeyed to the bedroom.
+11. Daniel took the milk there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	0	False			answer: 0			False	False	False	False
+140	7	2	5	"*TASK*
+Here are the context sentences:
+13. Daniel handed the milk to Mary.
+14. Sandra journeyed to the garden.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	0	False			answer: 0			False	False	False	False
+141	7	3	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the garden.
+2. John journeyed to the bathroom.
+3. Mary got the apple there.
+4. Sandra grabbed the milk there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	1	False			answer: 1			False	False	False	False
+142	7	3	2	"*TASK*
+Here are the context sentences:
+6. Sandra went to the office.
+7. Daniel travelled to the bathroom.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	0	False			answer: 0			False	False	False	False
+143	7	3	3	"*TASK*
+Here are the context sentences:
+9. Mary dropped the apple.
+10. Daniel travelled to the bedroom.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	0	False			answer: 0			False	False	False	False
+144	7	3	4	"*TASK*
+Here are the context sentences:
+12. Mary picked up the apple there.
+13. John went back to the office.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	1	False			answer: 1			False	False	False	False
+145	7	3	5	"*TASK*
+Here are the context sentences:
+15. Daniel went back to the hallway.
+16. Sandra handed the milk to John.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	0	False			answer: 0			False	False	False	False
+146	7	4	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the kitchen.
+2. Sandra took the football there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	1	False			answer: 1			False	False	False	False
+147	7	4	2	"*TASK*
+Here are the context sentences:
+4. Sandra journeyed to the office.
+5. Sandra gave the football to John.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	0	False			answer: 0			False	False	False	False
+148	7	4	3	"*TASK*
+Here are the context sentences:
+7. John went back to the garden.
+8. John passed the football to Mary.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	0	False			answer: 0			False	False	False	False
+149	7	4	4	"*TASK*
+Here are the context sentences:
+10. Mary passed the football to John.
+11. John passed the football to Mary.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	0	False			answer: 0			False	False	False	False
+150	7	4	5	"*TASK*
+Here are the context sentences:
+13. John went to the office.
+14. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	0	False			answer: 0			False	False	False	False
+151	7	5	1	"*TASK*
+Here are the context sentences:
+1. John grabbed the apple there.
+2. John passed the apple to Mary.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	1	False			answer: 1			False	False	False	False
+152	7	5	2	"*TASK*
+Here are the context sentences:
+4. Mary discarded the apple.
+5. Mary grabbed the apple there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	1	False			answer: 1			False	False	False	False
+153	7	5	3	"*TASK*
+Here are the context sentences:
+7. Mary went back to the kitchen.
+8. John went to the hallway.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	0	False			answer: 0			False	False	False	False
+154	7	5	4	"*TASK*
+Here are the context sentences:
+10. John moved to the bedroom.
+11. Daniel went back to the bathroom.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	0	False			answer: 0			False	False	False	False
+155	7	5	5	"*TASK*
+Here are the context sentences:
+13. Sandra moved to the kitchen.
+14. Mary passed the apple to Sandra.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	0	False			answer: 0			False	False	False	False
+156	8	1	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the bathroom.
+2. Daniel went back to the bedroom.
+3. Mary journeyed to the bedroom.
+4. Mary picked up the milk there.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	milk	True			answer: milk	0.76	0.86	False	False	False	False
+157	8	1	2	"*TASK*
+Here are the context sentences:
+6. Mary dropped the milk.
+7. Daniel grabbed the football there.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	nothing	True			answer: nothing			False	False	False	False
+158	8	1	3	"*TASK*
+Here are the context sentences:
+9. Mary took the milk there.
+10. Mary left the milk.
+
+Now, answer the following question:
+What is Daniel carrying?"	football	football	True			answer: football			False	False	False	False
+159	8	1	4	"*TASK*
+Here are the context sentences:
+12. Daniel discarded the football.
+13. Daniel picked up the football there.
+
+Now, answer the following question:
+What is Daniel carrying?"	football	football	True			answer: football			False	False	False	False
+160	8	1	5	"*TASK*
+Here are the context sentences:
+15. Mary grabbed the milk there.
+16. Mary left the milk.
+
+Now, answer the following question:
+What is Daniel carrying?"	football	football	True			answer: football			False	False	False	False
+161	8	2	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the kitchen.
+2. Daniel journeyed to the hallway.
+3. Mary went back to the garden.
+4. Daniel picked up the apple there.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple	apple	True			answer: apple			False	False	False	False
+162	8	2	2	"*TASK*
+Here are the context sentences:
+6. John moved to the bathroom.
+7. Sandra went back to the hallway.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple	nothing (since there is no mention of daniel in	False			answer: nothing (since there is no mention of daniel in			True	False	False	True
+163	8	2	3	"*TASK*
+Here are the context sentences:
+9. Mary took the football there.
+10. Daniel put down the apple.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	nothing	True			answer: nothing			False	False	False	False
+164	8	2	4	"*TASK*
+Here are the context sentences:
+12. John moved to the office.
+13. Mary left the football.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	nothing	True			answer: nothing			False	False	False	False
+165	8	2	5	"*TASK*
+Here are the context sentences:
+15. Sandra took the apple there.
+16. Mary moved to the bathroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	nothing	True			answer: nothing			False	False	False	False
+166	8	3	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the hallway.
+2. John moved to the kitchen.
+3. Sandra moved to the bathroom.
+4. Daniel picked up the football there.
+
+Now, answer the following question:
+What is Daniel carrying?"	football	football	True			answer: football			False	False	False	False
+167	8	3	2	"*TASK*
+Here are the context sentences:
+6. Daniel dropped the football there.
+7. Mary grabbed the football there.
+
+Now, answer the following question:
+What is Mary carrying?"	football	football	True			answer: football			False	False	False	False
+168	8	3	3	"*TASK*
+Here are the context sentences:
+9. Mary travelled to the office.
+10. Mary took the apple there.
+
+Now, answer the following question:
+What is Mary carrying?"	football apple	apple	False			answer: apple			False	False	False	False
+169	8	3	4	"*TASK*
+Here are the context sentences:
+12. Daniel went back to the bedroom.
+13. Mary left the football.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	apple	True			answer: apple			False	False	False	False
+170	8	3	5	"*TASK*
+Here are the context sentences:
+15. Mary grabbed the football there.
+16. Daniel got the milk there.
+
+Now, answer the following question:
+What is Mary carrying?"	football apple	football	False			answer: football			False	False	False	False
+171	8	4	1	"*TASK*
+Here are the context sentences:
+1. Mary took the milk there.
+2. Mary went to the office.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	milk	True			answer: milk			False	False	False	False
+172	8	4	2	"*TASK*
+Here are the context sentences:
+4. Mary took the apple there.
+5. Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+What is Mary carrying?"	milk apple	apple	False			answer: apple			False	False	False	False
+173	8	4	3	"*TASK*
+Here are the context sentences:
+7. Mary put down the milk.
+8. Mary discarded the apple.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	nothing	True			answer: nothing			False	False	False	False
+174	8	4	4	"*TASK*
+Here are the context sentences:
+10. Sandra picked up the football there.
+11. Sandra journeyed to the office.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	nothing	True			answer: nothing			False	False	False	False
+175	8	4	5	"*TASK*
+Here are the context sentences:
+13. Sandra took the apple there.
+14. Daniel got the milk there.
+
+Now, answer the following question:
+What is Sandra carrying?"	football apple	apple	False			answer: apple			False	False	False	False
+176	8	5	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the garden.
+2. Sandra went back to the hallway.
+3. Sandra travelled to the bathroom.
+4. Daniel moved to the garden.
+5. Mary went back to the office.
+6. Mary moved to the garden.
+7. Mary went back to the bedroom.
+8. Mary travelled to the office.
+9. Sandra went back to the hallway.
+10. Sandra went back to the bathroom.
+11. Mary went to the kitchen.
+12. Mary went to the office.
+13. Daniel went to the kitchen.
+14. Sandra moved to the office.
+15. Mary moved to the kitchen.
+16. Daniel travelled to the hallway.
+17. Daniel took the football there.
+18. Daniel picked up the milk there.
+
+Now, answer the following question:
+What is Daniel carrying?"	football milk	football	False			answer: football			False	False	False	False
+177	8	5	2	"*TASK*
+Here are the context sentences:
+20. John went to the kitchen.
+21. Daniel discarded the milk.
+
+Now, answer the following question:
+What is Daniel carrying?"	football	football	True			answer: football			False	False	False	False
+178	8	5	3	"*TASK*
+Here are the context sentences:
+23. Mary journeyed to the hallway.
+24. Daniel left the football there.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	nothing	True			answer: nothing			False	False	False	False
+179	8	5	4	"*TASK*
+Here are the context sentences:
+26. Daniel picked up the milk there.
+27. Daniel moved to the bedroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	milk	True			answer: milk			False	False	False	False
+180	8	5	5	"*TASK*
+Here are the context sentences:
+29. Daniel dropped the milk.
+30. John journeyed to the bedroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	nothing	True			answer: nothing			False	False	False	False
+181	8															
+182	9	1	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the garden.
+2. John journeyed to the kitchen.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	no	True			answer: no	0.92	0.92	False	False	False	False
+183	9	1	2	"*TASK*
+Here are the context sentences:
+4. Sandra journeyed to the bathroom.
+5. John travelled to the office.
+
+Now, answer the following question:
+Is John in the office?"	yes	yes	True			answer: yes			False	False	False	False
+184	9	1	3	"*TASK*
+Here are the context sentences:
+7. John moved to the hallway.
+8. John is in the office.
+
+Now, answer the following question:
+Is John in the office?"	yes	yes	True			answer: yes			False	False	False	False
+185	9	1	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the hallway.
+11. Mary went to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	yes	True			answer: yes			False	False	False	False
+186	9	1	5	"*TASK*
+Here are the context sentences:
+13. Daniel is in the bathroom.
+14. Daniel travelled to the hallway.
+
+Now, answer the following question:
+Is Mary in the office?"	no	no	True			answer: no			False	False	False	False
+187	9	2	1	"*TASK*
+Here are the context sentences:
+1. Mary is not in the garden.
+2. Sandra is in the hallway.
+
+Now, answer the following question:
+Is Mary in the garden?"	no	no	True			answer: no			False	False	False	False
+188	9	2	2	"*TASK*
+Here are the context sentences:
+4. Daniel is not in the bathroom.
+5. Mary travelled to the hallway.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	yes	no	False			answer: no			False	False	False	False
+189	9	2	3	"*TASK*
+Here are the context sentences:
+7. Sandra is no longer in the hallway.
+8. Daniel is in the hallway.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	no	no	True			answer: no			False	False	False	False
+190	9	2	4	"*TASK*
+Here are the context sentences:
+10. John went back to the bedroom.
+11. Mary went to the garden.
+
+Now, answer the following question:
+Is Mary in the garden?"	yes	yes	True			answer: yes			False	False	False	False
+191	9	2	5	"*TASK*
+Here are the context sentences:
+13. Sandra travelled to the kitchen.
+14. Daniel is in the garden.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	no	no	True			answer: no			False	False	False	False
+192	9	3	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the bedroom.
+2. Mary is in the bathroom.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	no	no	True			answer: no			False	False	False	False
+193	9	3	2	"*TASK*
+Here are the context sentences:
+4. Sandra travelled to the kitchen.
+5. Sandra is in the hallway.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	yes	yes	True			answer: yes			False	False	False	False
+194	9	3	3	"*TASK*
+Here are the context sentences:
+7. John is no longer in the office.
+8. Sandra is no longer in the hallway.
+
+Now, answer the following question:
+Is John in the office?"	no	no	True			answer: no			False	False	False	False
+195	9	3	4	"*TASK*
+Here are the context sentences:
+10. John is not in the hallway.
+11. Daniel is no longer in the bathroom.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	no	True			answer: no			False	False	False	False
+196	9	3	5	"*TASK*
+Here are the context sentences:
+13. Mary is no longer in the bathroom.
+14. Daniel travelled to the bedroom.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	no	True			answer: no			False	False	False	False
+197	9	4	1	"*TASK*
+Here are the context sentences:
+1. John is in the kitchen.
+2. Sandra went to the hallway.
+
+Now, answer the following question:
+Is John in the office?"	no	no	True			answer: no			False	False	False	False
+198	9	4	2	"*TASK*
+Here are the context sentences:
+4. Sandra went to the bedroom.
+5. Mary is no longer in the kitchen.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	yes	yes	True			answer: yes			False	False	False	False
+199	9	4	3	"*TASK*
+Here are the context sentences:
+7. Mary is in the kitchen.
+8. Mary is in the bathroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	yes	yes	True			answer: yes			False	False	False	False
+200	9	4	4	"*TASK*
+Here are the context sentences:
+10. Daniel is not in the garden.
+11. Mary is in the kitchen.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	yes	True			answer: yes			False	False	False	False
+201	9	4	5	"*TASK*
+Here are the context sentences:
+13. Daniel went back to the bathroom.
+14. Sandra is in the hallway.
+
+Now, answer the following question:
+Is Mary in the office?"	no	no	True			answer: no			False	False	False	False
+202	9	5	1	"*TASK*
+Here are the context sentences:
+1. John went back to the bedroom.
+2. John is in the garden.
+
+Now, answer the following question:
+Is John in the garden?"	yes	yes	True			answer: yes			False	False	False	False
+203	9	5	2	"*TASK*
+Here are the context sentences:
+4. John went back to the hallway.
+5. Sandra went to the bathroom.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	yes	True			answer: yes			False	False	False	False
+204	9	5	3	"*TASK*
+Here are the context sentences:
+7. Mary is not in the bathroom.
+8. John journeyed to the bedroom.
+
+Now, answer the following question:
+Is John in the bedroom?"	yes	yes	True			answer: yes			False	False	False	False
+205	9	5	4	"*TASK*
+Here are the context sentences:
+10. Mary is in the office.
+11. Sandra went back to the hallway.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	no	True			answer: no			False	False	False	False
+206	9	5	5	"*TASK*
+Here are the context sentences:
+13. Sandra moved to the bedroom.
+14. Sandra went to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	yes	no	False			answer: no			False	False	False	False
+207	10	1	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the kitchen.
+2. Fred is in the school.
+
+Now, answer the following question:
+Is Mary in the school?"	no	no	True			answer: no	0.64	0.7	False	False	False	False
+208	10	1	2	"*TASK*
+Here are the context sentences:
+4. Fred went back to the office.
+5. Julie is either in the park or the office.
+
+Now, answer the following question:
+Is Mary in the cinema?"	no	no (no information about mary in the context)	False			answer: no (no information about mary in the context)			False	False	False	True
+209	10	1	3	"*TASK*
+Here are the context sentences:
+7. Fred is either in the school or the bedroom.
+8. Julie journeyed to the bedroom.
+
+Now, answer the following question:
+Is Fred in the school?"	maybe	no	False			answer: no			False	False	False	False
+210	10	1	4	"*TASK*
+Here are the context sentences:
+10. Fred went to the kitchen.
+11. Fred travelled to the cinema.
+
+Now, answer the following question:
+Is Fred in the cinema?"	yes	yes	True			answer: yes			False	False	False	False
+211	10	1	5	"*TASK*
+Here are the context sentences:
+13. Bill is in the cinema.
+14. Bill travelled to the bedroom.
+
+Now, answer the following question:
+Is Bill in the bedroom?"	yes	yes	True			answer: yes			False	False	False	False
+212	10	2	1	"*TASK*
+Here are the context sentences:
+1. Julie went to the kitchen.
+2. Julie moved to the school.
+
+Now, answer the following question:
+Is Julie in the school?"	yes	yes	True			answer: yes			False	False	False	False
+213	10	2	2	"*TASK*
+Here are the context sentences:
+4. Julie is either in the office or the kitchen.
+5. Julie went to the park.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	no	no	True			answer: no			False	False	False	False
+214	10	2	3	"*TASK*
+Here are the context sentences:
+7. Mary is in the office.
+8. Julie travelled to the kitchen.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	yes	yes	True			answer: yes			False	False	False	False
+215	10	2	4	"*TASK*
+Here are the context sentences:
+10. Julie is either in the cinema or the bedroom.
+11. Bill is either in the office or the office.
+
+Now, answer the following question:
+Is Bill in the bedroom?"	no	no	True			answer: no			False	False	False	False
+216	10	2	5	"*TASK*
+Here are the context sentences:
+13. Fred is either in the school or the school.
+14. Bill travelled to the kitchen.
+
+Now, answer the following question:
+Is Julie in the bedroom?"	maybe	no (there is no information about julie being in	False			answer: no (there is no information about julie being in			True	False	False	True
+217	10	3	1	"*TASK*
+Here are the context sentences:
+1. Bill is in the cinema.
+2. Fred is either in the cinema or the school.
+
+Now, answer the following question:
+Is Fred in the cinema?"	maybe	yes	False			answer: yes			False	False	False	False
+218	10	3	2	"*TASK*
+Here are the context sentences:
+4. Julie travelled to the school.
+5. Bill went back to the park.
+
+Now, answer the following question:
+Is Bill in the park?"	yes	yes	True			answer: yes			False	False	False	False
+219	10	3	3	"*TASK*
+Here are the context sentences:
+7. Fred moved to the kitchen.
+8. Mary moved to the school.
+
+Now, answer the following question:
+Is Fred in the bedroom?"	no	no	True			answer: no			False	False	False	False
+220	10	3	4	"*TASK*
+Here are the context sentences:
+10. Julie is either in the park or the park.
+11. Fred is either in the park or the office.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	no (there is no mention of mary being in	False			answer: no (there is no mention of mary being in			True	False	False	True
+221	10	3	5	"*TASK*
+Here are the context sentences:
+13. Julie is in the school.
+14. Mary went to the bedroom.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	no	no	True			answer: no			False	False	False	False
+222	10	4	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the office.
+2. Mary is either in the kitchen or the cinema.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	maybe	no	False			answer: no			False	False	False	False
+223	10	4	2	"*TASK*
+Here are the context sentences:
+4. Fred journeyed to the bedroom.
+5. Fred is either in the kitchen or the park.
+
+Now, answer the following question:
+Is Fred in the park?"	maybe	no	False			answer: no			False	False	False	False
+224	10	4	3	"*TASK*
+Here are the context sentences:
+7. Fred is either in the office or the cinema.
+8. Mary is in the office.
+
+Now, answer the following question:
+Is Mary in the school?"	no	no	True			answer: no			False	False	False	False
+225	10	4	4	"*TASK*
+Here are the context sentences:
+10. Mary is in the bedroom.
+11. Fred went to the kitchen.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	yes	True			answer: yes			False	False	False	False
+226	10	4	5	"*TASK*
+Here are the context sentences:
+13. Fred is in the school.
+14. Mary moved to the park.
+
+Now, answer the following question:
+Is Mary in the park?"	yes	yes	True			answer: yes			False	False	False	False
+227	10	5	1	"*TASK*
+Here are the context sentences:
+1. Fred went back to the school.
+2. Bill is in the bedroom.
+
+Now, answer the following question:
+Is Fred in the school?"	yes	yes	True			answer: yes			False	False	False	False
+228	10	5	2	"*TASK*
+Here are the context sentences:
+4. Bill is either in the school or the park.
+5. Julie is either in the kitchen or the school.
+
+Now, answer the following question:
+Is Bill in the park?"	maybe	no	False			answer: no			False	False	False	False
+229	10	5	3	"*TASK*
+Here are the context sentences:
+7. Bill is in the bedroom.
+8. Fred went back to the bedroom.
+
+Now, answer the following question:
+Is Bill in the kitchen?"	no	no	True			answer: no			False	False	False	False
+230	10	5	4	"*TASK*
+Here are the context sentences:
+10. Bill moved to the park.
+11. Julie is in the office.
+
+Now, answer the following question:
+Is Julie in the office?"	yes	yes	True			answer: yes			False	False	False	False
+231	10	5	5	"*TASK*
+Here are the context sentences:
+13. Fred is either in the office or the bedroom.
+14. Fred is in the park.
+
+Now, answer the following question:
+Is Bill in the park?"	yes	no	False			answer: no			False	False	False	False
+232	11	1	1	"*TASK*
+Here are the context sentences:
+1. Daniel went back to the office.
+2. Then he went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	bathroom	True			answer: bathroom	0.6	0.6	False	False	False	False
+233	11	1	2	"*TASK*
+Here are the context sentences:
+4. Sandra went back to the bedroom.
+5. After that she moved to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	not mentioned	False			answer: not mentioned			False	False	False	True
+234	11	1	3	"*TASK*
+Here are the context sentences:
+7. John journeyed to the bedroom.
+8. After that he journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	not mentioned	False			answer: not mentioned			False	False	False	True
+235	11	1	4	"*TASK*
+Here are the context sentences:
+10. Sandra journeyed to the garden.
+11. Following that she went back to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	bedroom	False			answer: bedroom			False	False	False	False
+236	11	1	5	"*TASK*
+Here are the context sentences:
+13. Mary travelled to the office.
+14. After that she went back to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+237	11	2	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the office.
+2. Following that he journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	office	False			answer: office			False	False	False	False
+238	11	2	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the office.
+5. Then he went back to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+239	11	2	3	"*TASK*
+Here are the context sentences:
+7. Sandra went to the office.
+8. Following that she went to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	hallway	True			answer: hallway			False	False	False	False
+240	11	2	4	"*TASK*
+Here are the context sentences:
+10. Daniel travelled to the kitchen.
+11. Afterwards he moved to the office.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	not mentioned	False			answer: not mentioned			False	False	False	True
+241	11	2	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the office.
+14. Afterwards she moved to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	office	office	True			answer: office			False	False	False	False
+242	11	3	1	"*TASK*
+Here are the context sentences:
+1. John moved to the kitchen.
+2. Afterwards he journeyed to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	hallway	True			answer: hallway			False	False	False	False
+243	11	3	2	"*TASK*
+Here are the context sentences:
+4. Daniel moved to the hallway.
+5. Then he moved to the garden.
+
+Now, answer the following question:
+Where is John?"	hallway	not mentioned	False			answer: not mentioned			False	False	False	True
+244	11	3	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the hallway.
+8. Afterwards she travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+245	11	3	4	"*TASK*
+Here are the context sentences:
+10. Mary journeyed to the kitchen.
+11. Then she went to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	not mentioned	False			answer: not mentioned			False	False	False	True
+246	11	3	5	"*TASK*
+Here are the context sentences:
+13. Mary travelled to the office.
+14. Then she journeyed to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	hallway	True			answer: hallway			False	False	False	False
+247	11	4	1	"*TASK*
+Here are the context sentences:
+1. Sandra went to the bathroom.
+2. Following that she went back to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+248	11	4	2	"*TASK*
+Here are the context sentences:
+4. Daniel went to the garden.
+5. Then he went back to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	not mentioned	False			answer: not mentioned			False	False	False	True
+249	11	4	3	"*TASK*
+Here are the context sentences:
+7. John went back to the hallway.
+8. Afterwards he journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	not mentioned	False			answer: not mentioned			False	False	False	True
+250	11	4	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the office.
+11. Then she went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	not mentioned	False			answer: not mentioned			False	False	False	True
+251	11	4	5	"*TASK*
+Here are the context sentences:
+13. John went to the office.
+14. After that he journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	bathroom	True			answer: bathroom			False	False	False	False
+252	11	5	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the office.
+2. Afterwards she moved to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	bathroom	True			answer: bathroom			False	False	False	False
+253	11	5	2	"*TASK*
+Here are the context sentences:
+4. Daniel journeyed to the kitchen.
+5. Then he went to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	bathroom	True			answer: bathroom			False	False	False	False
+254	11	5	3	"*TASK*
+Here are the context sentences:
+7. Sandra went to the hallway.
+8. Afterwards she went back to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	office	True			answer: office			False	False	False	False
+255	11	5	4	"*TASK*
+Here are the context sentences:
+10. Daniel moved to the garden.
+11. Following that he moved to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	office	office	True			answer: office			False	False	False	False
+256	11	5	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the bedroom.
+14. Following that he moved to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+257	12	1	1	"*TASK*
+Here are the context sentences:
+1. Mary and John journeyed to the office.
+2. John and Sandra went to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	office	office	True			answer: office	0.8	0.8	False	False	False	False
+258	12	1	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Mary journeyed to the bedroom.
+5. Mary and Sandra moved to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+259	12	1	3	"*TASK*
+Here are the context sentences:
+7. Mary and John travelled to the office.
+8. Sandra and Mary went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+260	12	1	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Mary went to the hallway.
+11. John and Sandra travelled to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	hallway	True			answer: hallway			False	False	False	False
+261	12	1	5	"*TASK*
+Here are the context sentences:
+13. Sandra and John moved to the office.
+14. John and Mary went back to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	office	False			answer: office			False	False	False	False
+262	12	2	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Sandra went back to the kitchen.
+2. Daniel and John went back to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	kitchen	False			answer: kitchen			False	False	False	False
+263	12	2	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John moved to the bathroom.
+5. Sandra and Mary travelled to the office.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	bathroom	True			answer: bathroom			False	False	False	False
+264	12	2	3	"*TASK*
+Here are the context sentences:
+7. John and Mary travelled to the hallway.
+8. Sandra and Mary journeyed to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	hallway	False			answer: hallway			False	False	False	False
+265	12	2	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Sandra went back to the bedroom.
+11. Daniel and John went back to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	garden	garden	True			answer: garden			False	False	False	False
+266	12	2	5	"*TASK*
+Here are the context sentences:
+13. Sandra and John journeyed to the hallway.
+14. John and Sandra journeyed to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	hallway	False			answer: hallway			False	False	False	False
+267	12	3	1	"*TASK*
+Here are the context sentences:
+1. John and Daniel moved to the hallway.
+2. Mary and Sandra travelled to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	hallway	True			answer: hallway			False	False	False	False
+268	12	3	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John moved to the kitchen.
+5. John and Daniel travelled to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	garden	True			answer: garden			False	False	False	False
+269	12	3	3	"*TASK*
+Here are the context sentences:
+7. Sandra and John moved to the bedroom.
+8. Sandra and Daniel went back to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	bedroom	False			answer: bedroom			False	False	False	False
+270	12	3	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John journeyed to the hallway.
+11. John and Daniel went back to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+271	12	3	5	"*TASK*
+Here are the context sentences:
+13. John and Sandra went back to the kitchen.
+14. Daniel and Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	bathroom	True			answer: bathroom			False	False	False	False
+272	12	4	1	"*TASK*
+Here are the context sentences:
+1. Mary and Sandra journeyed to the kitchen.
+2. Daniel and Mary went to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	hallway	True			answer: hallway			False	False	False	False
+273	12	4	2	"*TASK*
+Here are the context sentences:
+4. John and Mary went back to the kitchen.
+5. Mary and Daniel went to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+274	12	4	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Daniel went to the garden.
+8. Daniel and John went to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	bathroom	True			answer: bathroom			False	False	False	False
+275	12	4	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Sandra moved to the kitchen.
+11. John and Sandra travelled to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	garden	True			answer: garden			False	False	False	False
+276	12	4	5	"*TASK*
+Here are the context sentences:
+13. John and Mary moved to the kitchen.
+14. Sandra and Daniel went to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	office	True			answer: office			False	False	False	False
+277	12	5	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Daniel journeyed to the bedroom.
+2. Mary and John moved to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	bathroom	True			answer: bathroom			False	False	False	False
+278	12	5	2	"*TASK*
+Here are the context sentences:
+4. John and Sandra moved to the office.
+5. Daniel and Sandra travelled to the hallway.
+
+Now, answer the following question:
+Where is John?"	office	office	True			answer: office			False	False	False	False
+279	12	5	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary went to the bedroom.
+8. Sandra and Mary went back to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	office	True			answer: office			False	False	False	False
+280	12	5	4	"*TASK*
+Here are the context sentences:
+10. Mary and Sandra journeyed to the kitchen.
+11. Mary and Daniel went to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+281	12	5	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra moved to the garden.
+14. Sandra and Daniel journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	hallway	True			answer: hallway			False	False	False	False
+282	13	1	1	"*TASK*
+Here are the context sentences:
+1. John and Mary went back to the kitchen.
+2. After that they journeyed to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	kitchen	False			answer: kitchen	0.68	0.68	False	False	False	False
+283	13	1	2	"*TASK*
+Here are the context sentences:
+4. John and Mary moved to the bedroom.
+5. Afterwards they moved to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	bedroom	False			answer: bedroom			False	False	False	False
+284	13	1	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Mary journeyed to the hallway.
+8. After that they travelled to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	hallway	False			answer: hallway			False	False	False	False
+285	13	1	4	"*TASK*
+Here are the context sentences:
+10. Daniel and John journeyed to the hallway.
+11. Following that they travelled to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	hallway	False			answer: hallway			False	False	False	False
+286	13	1	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Mary moved to the bathroom.
+14. After that they travelled to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	bathroom	False			answer: bathroom			False	False	False	False
+287	13	2	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary went to the bedroom.
+2. Then they travelled to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	bedroom	False			answer: bedroom			False	False	False	False
+288	13	2	2	"*TASK*
+Here are the context sentences:
+4. Mary and Daniel went to the bathroom.
+5. Following that they went to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	office	True			answer: office			False	False	False	False
+289	13	2	3	"*TASK*
+Here are the context sentences:
+7. John and Sandra journeyed to the kitchen.
+8. After that they moved to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+290	13	2	4	"*TASK*
+Here are the context sentences:
+10. John and Mary journeyed to the bathroom.
+11. Following that they travelled to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+291	13	2	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Mary journeyed to the bathroom.
+14. Following that they travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+292	13	3	1	"*TASK*
+Here are the context sentences:
+1. Mary and John moved to the office.
+2. Following that they travelled to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	office	False			answer: office			False	False	False	False
+293	13	3	2	"*TASK*
+Here are the context sentences:
+4. John and Sandra went back to the garden.
+5. Then they moved to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+294	13	3	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary went back to the bathroom.
+8. Following that they went back to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+295	13	3	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John journeyed to the office.
+11. After that they journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+296	13	3	5	"*TASK*
+Here are the context sentences:
+13. Sandra and John went to the hallway.
+14. Then they journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+297	13	4	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary travelled to the garden.
+2. Then they went back to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	office	True			answer: office			False	False	False	False
+298	13	4	2	"*TASK*
+Here are the context sentences:
+4. John and Sandra went to the bathroom.
+5. Then they went back to the office.
+
+Now, answer the following question:
+Where is John?"	office	office	True			answer: office			False	False	False	False
+299	13	4	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary journeyed to the bathroom.
+8. Following that they moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	hallway	True			answer: hallway			False	False	False	False
+300	13	4	4	"*TASK*
+Here are the context sentences:
+10. John and Sandra journeyed to the bathroom.
+11. After that they journeyed to the office.
+
+Now, answer the following question:
+Where is John?"	office	office	True			answer: office			False	False	False	False
+301	13	4	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Sandra went back to the bedroom.
+14. Following that they travelled to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	garden	True			answer: garden			False	False	False	False
+302	13	5	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary went back to the bathroom.
+2. Then they went back to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	hallway	True			answer: hallway			False	False	False	False
+303	13	5	2	"*TASK*
+Here are the context sentences:
+4. Mary and Sandra went to the office.
+5. Then they went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+304	13	5	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John went back to the kitchen.
+8. Afterwards they went back to the office.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	not mentioned	False			answer: not mentioned			False	False	False	True
+305	13	5	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John journeyed to the garden.
+11. Afterwards they went back to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	office	True			answer: office			False	False	False	False
+306	13	5	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Daniel travelled to the hallway.
+14. Following that they journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	bathroom	True			answer: bathroom			False	False	False	False
+307	14	1	1	"*TASK*
+Here are the context sentences:
+1. Julie went to the park this morning.
+2. Julie moved to the kitchen yesterday.
+
+Now, answer the following question:
+Where was Julie before the park?"	kitchen	home	False			answer: home	0.52	0.52	False	False	False	False
+308	14	1	2	"*TASK*
+Here are the context sentences:
+4. Julie moved to the bedroom this afternoon.
+5. Mary journeyed to the school yesterday.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	park	kitchen	False			answer: kitchen			False	False	False	False
+309	14	1	3	"*TASK*
+Here are the context sentences:
+7. This morning Bill moved to the park.
+8. Yesterday Bill travelled to the kitchen.
+
+Now, answer the following question:
+Where was Julie before the park?"	kitchen	not mentioned	False			answer: not mentioned			False	False	False	True
+310	14	1	4	"*TASK*
+Here are the context sentences:
+10. This morning Mary moved to the office.
+11. This evening Julie journeyed to the kitchen.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	bedroom	not mentioned	False			answer: not mentioned			False	False	False	True
+311	14	1	5	"*TASK*
+Here are the context sentences:
+13. This afternoon Mary moved to the cinema.
+14. This afternoon Bill travelled to the kitchen.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	park	not mentioned	False			answer: not mentioned			False	False	False	True
+312	14	2	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the cinema yesterday.
+2. Yesterday Julie travelled to the cinema.
+3. This morning Julie travelled to the bedroom.
+4. Yesterday Bill moved to the park.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	cinema	cinema	True			answer: cinema			False	False	False	False
+313	14	2	2	"*TASK*
+Here are the context sentences:
+6. Mary moved to the school this morning.
+7. Julie moved to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	bedroom	not mentioned	False			answer: not mentioned			False	False	False	True
+314	14	2	3	"*TASK*
+Here are the context sentences:
+9. Julie went back to the park this evening.
+10. This morning Bill went back to the office.
+
+Now, answer the following question:
+Where was Mary before the school?"	cinema	not mentioned	False			answer: not mentioned			False	False	False	True
+315	14	2	4	"*TASK*
+Here are the context sentences:
+12. Yesterday Fred journeyed to the cinema.
+13. Mary journeyed to the office this afternoon.
+
+Now, answer the following question:
+Where was Bill before the office?"	park	park	True			answer: park			False	False	False	False
+316	14	2	5	"*TASK*
+Here are the context sentences:
+15. Fred went back to the park this morning.
+16. Mary went back to the school this evening.
+
+Now, answer the following question:
+Where was Julie before the park?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+317	14	3	1	"*TASK*
+Here are the context sentences:
+1. Fred moved to the park yesterday.
+2. This morning Julie journeyed to the bedroom.
+3. Julie went back to the park this afternoon.
+4. Julie moved to the park yesterday.
+
+Now, answer the following question:
+Where was Julie before the park?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+318	14	3	2	"*TASK*
+Here are the context sentences:
+6. Bill journeyed to the park this morning.
+7. Bill went to the bedroom yesterday.
+
+Now, answer the following question:
+Where was Bill before the park?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+319	14	3	3	"*TASK*
+Here are the context sentences:
+9. Mary journeyed to the school yesterday.
+10. Julie journeyed to the school this evening.
+
+Now, answer the following question:
+Where was Julie before the park?"	bedroom	not mentioned	False			answer: not mentioned			False	False	False	True
+320	14	3	4	"*TASK*
+Here are the context sentences:
+12. Bill went to the bedroom this afternoon.
+13. This morning Fred moved to the kitchen.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	park	not mentioned	False			answer: not mentioned			False	False	False	True
+321	14	3	5	"*TASK*
+Here are the context sentences:
+15. This morning Mary travelled to the kitchen.
+16. Fred moved to the bedroom this afternoon.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+322	14	4	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Mary journeyed to the kitchen.
+2. This morning Fred went back to the cinema.
+3. Yesterday Julie journeyed to the cinema.
+4. Fred journeyed to the bedroom yesterday.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+323	14	4	2	"*TASK*
+Here are the context sentences:
+6. Julie went back to the bedroom this morning.
+7. Fred journeyed to the school this afternoon.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	cinema	cinema	True			answer: cinema			False	False	False	False
+324	14	4	3	"*TASK*
+Here are the context sentences:
+9. Mary travelled to the bedroom this morning.
+10. This afternoon Julie went back to the park.
+
+Now, answer the following question:
+Where was Fred before the school?"	cinema	cinema	True			answer: cinema			False	False	False	False
+325	14	4	4	"*TASK*
+Here are the context sentences:
+12. Mary went back to the kitchen this afternoon.
+13. This evening Julie moved to the kitchen.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+326	14	4	5	"*TASK*
+Here are the context sentences:
+15. Yesterday Bill went to the cinema.
+16. Mary went back to the cinema this evening.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	park	park	True			answer: park			False	False	False	False
+327	14	5	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Julie went to the bedroom.
+2. Yesterday Bill travelled to the kitchen.
+3. This morning Julie went back to the kitchen.
+4. Yesterday Mary went to the park.
+5. Fred went back to the bedroom yesterday.
+6. Fred went to the cinema this morning.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	bedroom	bedroom	True			answer: bedroom			False	False	False	False
+328	14	5	2	"*TASK*
+Here are the context sentences:
+8. Fred went to the office this evening.
+9. Fred travelled to the bedroom this afternoon.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	cinema	office	False			answer: office			False	False	False	False
+329	14	5	3	"*TASK*
+Here are the context sentences:
+11. This afternoon Julie moved to the bedroom.
+12. Mary journeyed to the school this morning.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	cinema	office	False			answer: office			False	False	False	False
+330	14	5	4	"*TASK*
+Here are the context sentences:
+14. This evening Mary journeyed to the bedroom.
+15. This afternoon Mary went to the kitchen.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+331	14	5	5	"*TASK*
+Here are the context sentences:
+17. Bill moved to the bedroom this afternoon.
+18. Bill moved to the cinema this morning.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	kitchen	bedroom	False			answer: bedroom			False	False	False	False
+332	14															
+333	15	1	1	"*TASK*
+Here are the context sentences:
+1. Wolves are afraid of cats.
+2. Mice are afraid of sheep.
+3. Emily is a mouse.
+4. Cats are afraid of wolves.
+5. Gertrude is a cat.
+6. Sheep are afraid of mice.
+7. Winona is a mouse.
+8. Jessica is a cat.
+
+Now, answer the following question:
+What is jessica afraid of?"	wolf	wolves	True			answer: wolves	0.95	0.95	False	False	False	False
+334	15	1	2	"Now, answer the following question:
+What is winona afraid of?"	sheep	sheep	True			answer: sheep			False	False	False	False
+335	15	1	3	"Now, answer the following question:
+What is gertrude afraid of?"	wolf	wolves	True			answer: wolves			False	False	False	False
+336	15	1	4	"Now, answer the following question:
+What is winona afraid of?"	sheep	sheep	True			answer: sheep			False	False	False	False
+337	15	2	1	"*TASK*
+Here are the context sentences:
+1. Wolves are afraid of mice.
+2. Cats are afraid of sheep.
+3. Sheep are afraid of cats.
+4. Jessica is a sheep.
+5. Mice are afraid of wolves.
+6. Winona is a sheep.
+7. Emily is a sheep.
+8. Gertrude is a mouse.
+
+Now, answer the following question:
+What is winona afraid of?"	cat	cats	True			answer: cats			False	False	False	False
+338	15	2	2	"Now, answer the following question:
+What is winona afraid of?"	cat	cats	True			answer: cats			False	False	False	False
+339	15	2	3	"Now, answer the following question:
+What is jessica afraid of?"	cat	cats	True			answer: cats			False	False	False	False
+340	15	2	4	"Now, answer the following question:
+What is jessica afraid of?"	cat	cats	True			answer: cats			False	False	False	False
+341	15	3	1	"*TASK*
+Here are the context sentences:
+1. Wolves are afraid of sheep.
+2. Winona is a wolf.
+3. Cats are afraid of sheep.
+4. Jessica is a wolf.
+5. Sheep are afraid of cats.
+6. Emily is a sheep.
+7. Mice are afraid of wolves.
+8. Gertrude is a mouse.
+
+Now, answer the following question:
+What is emily afraid of?"	cat	cats	True			answer: cats			False	False	False	False
+342	15	3	2	"Now, answer the following question:
+What is jessica afraid of?"	sheep	cats	False			answer: cats			False	False	False	False
+343	15	3	3	"Now, answer the following question:
+What is gertrude afraid of?"	wolf	wolves	True			answer: wolves			False	False	False	False
+344	15	3	4	"Now, answer the following question:
+What is gertrude afraid of?"	wolf	wolves	True			answer: wolves			False	False	False	False
+345	15	4	1	"*TASK*
+Here are the context sentences:
+1. Cats are afraid of wolves.
+2. Emily is a cat.
+3. Wolves are afraid of mice.
+4. Sheep are afraid of wolves.
+5. Mice are afraid of wolves.
+6. Gertrude is a sheep.
+7. Winona is a sheep.
+8. Jessica is a mouse.
+
+Now, answer the following question:
+What is gertrude afraid of?"	wolf	wolves	True			answer: wolves			False	False	False	False
+346	15	4	2	"Now, answer the following question:
+What is gertrude afraid of?"	wolf	wolves	True			answer: wolves			False	False	False	False
+347	15	4	3	"Now, answer the following question:
+What is emily afraid of?"	wolf	wolves	True			answer: wolves			False	False	False	False
+348	15	4	4	"Now, answer the following question:
+What is winona afraid of?"	wolf	wolves	True			answer: wolves			False	False	False	False
+349	15	5	1	"*TASK*
+Here are the context sentences:
+1. Cats are afraid of mice.
+2. Jessica is a cat.
+3. Sheep are afraid of mice.
+4. Mice are afraid of sheep.
+5. Wolves are afraid of mice.
+6. Emily is a cat.
+7. Winona is a sheep.
+8. Gertrude is a wolf.
+
+Now, answer the following question:
+What is emily afraid of?"	mouse	mice	True			answer: mice			False	False	False	False
+350	15	5	2	"Now, answer the following question:
+What is gertrude afraid of?"	mouse	mice	True			answer: mice			False	False	False	False
+351	15	5	3	"Now, answer the following question:
+What is emily afraid of?"	mouse	mice	True			answer: mice			False	False	False	False
+352	15	5	4	"Now, answer the following question:
+What is jessica afraid of?"	mouse	mice	True			answer: mice			False	False	False	False
+353	16	1	1	"*TASK*
+Here are the context sentences:
+1. Julius is a lion.
+2. Lily is a rhino.
+3. Bernhard is a swan.
+4. Lily is white.
+5. Bernhard is green.
+6. Greg is a rhino.
+7. Greg is gray.
+8. Julius is white.
+9. Brian is a lion.
+
+Now, answer the following question:
+What color is Brian?"	white	white	True			answer: white	0.6	0.6	False	False	False	False
+354	16	2	1	"*TASK*
+Here are the context sentences:
+1. Lily is a frog.
+2. Bernhard is a lion.
+3. Brian is a frog.
+4. Bernhard is yellow.
+5. Julius is a lion.
+6. Julius is white.
+7. Greg is a swan.
+8. Greg is gray.
+9. Brian is white.
+
+Now, answer the following question:
+What color is Lily?"	white	none	False			answer: none			False	False	False	False
+355	16	3	1	"*TASK*
+Here are the context sentences:
+1. Brian is a rhino.
+2. Lily is a frog.
+3. Greg is a lion.
+4. Lily is gray.
+5. Julius is a swan.
+6. Greg is yellow.
+7. Brian is green.
+8. Bernhard is a swan.
+9. Bernhard is gray.
+
+Now, answer the following question:
+What color is Julius?"	gray	unknown	False			answer: unknown			False	False	False	True
+356	16	4	1	"*TASK*
+Here are the context sentences:
+1. Julius is a lion.
+2. Julius is white.
+3. Greg is a frog.
+4. Bernhard is a frog.
+5. Bernhard is green.
+6. Brian is a swan.
+7. Brian is white.
+8. Greg is green.
+9. Lily is a swan.
+
+Now, answer the following question:
+What color is Lily?"	white	white	True			answer: white			False	False	False	False
+357	16	5	1	"*TASK*
+Here are the context sentences:
+1. Greg is a rhino.
+2. Bernhard is a swan.
+3. Bernhard is yellow.
+4. Greg is white.
+5. Brian is a swan.
+6. Brian is yellow.
+7. Lily is a frog.
+8. Julius is a rhino.
+9. Lily is green.
+
+Now, answer the following question:
+What color is Julius?"	white	white	True			answer: white			False	False	False	False
+358	17	1	1	"*TASK*
+Here are the context sentences:
+1. The triangle is above the pink rectangle.
+2. The blue square is to the left of the triangle.
+
+Now, answer the following question:
+Is the pink rectangle to the right of the blue square?"	yes	no	False			answer: no	0.58	0.58	False	False	False	False
+359	17	1	2	"Now, answer the following question:
+Is the blue square below the pink rectangle?"	no	no	True			answer: no			False	False	False	False
+360	17	1	3	"Now, answer the following question:
+Is the blue square to the right of the pink rectangle?"	no	no	True			answer: no			False	False	False	False
+361	17	1	4	"Now, answer the following question:
+Is the blue square below the pink rectangle?"	no	no	True			answer: no			False	False	False	False
+362	17	1	5	"Now, answer the following question:
+Is the blue square below the pink rectangle?"	no	no	True			answer: no			False	False	False	False
+363	17	1	6	"Now, answer the following question:
+Is the pink rectangle to the left of the blue square?"	no	no	True			answer: no			False	False	False	False
+364	17	1	7	"Now, answer the following question:
+Is the blue square to the left of the pink rectangle?"	yes	yes	True			answer: yes			False	False	False	False
+365	17	1	8	"Now, answer the following question:
+Is the pink rectangle to the right of the blue square?"	yes	yes	True			answer: yes			False	False	False	False
+366	17	2	1	"*TASK*
+Here are the context sentences:
+1. The triangle is below the red square.
+2. The triangle is to the left of the blue square.
+
+Now, answer the following question:
+Is the red square to the right of the blue square?"	no	no	True			answer: no			False	False	False	False
+367	17	2	2	"Now, answer the following question:
+Is the blue square below the red square?"	yes	no	False			answer: no			False	False	False	False
+368	17	2	3	"Now, answer the following question:
+Is the red square below the blue square?"	no	no	True			answer: no			False	False	False	False
+369	17	2	4	"Now, answer the following question:
+Is the blue square above the red square?"	no	no	True			answer: no			False	False	False	False
+370	17	2	5	"Now, answer the following question:
+Is the red square to the right of the blue square?"	no	no	True			answer: no			False	False	False	False
+371	17	2	6	"Now, answer the following question:
+Is the red square to the right of the blue square?"	no	no	True			answer: no			False	False	False	False
+372	17	2	7	"Now, answer the following question:
+Is the red square to the left of the blue square?"	yes	no	False			answer: no			False	False	False	False
+373	17	2	8	"Now, answer the following question:
+Is the red square below the blue square?"	no	no	True			answer: no			False	False	False	False
+374	17	3	1	"*TASK*
+Here are the context sentences:
+1. The red sphere is to the right of the blue square.
+2. The blue square is below the yellow square.
+
+Now, answer the following question:
+Is the red sphere above the yellow square?"	no	no	True			answer: no			False	False	False	False
+375	17	3	2	"Now, answer the following question:
+Is the red sphere above the yellow square?"	no	no	True			answer: no			False	False	False	False
+376	17	3	3	"Now, answer the following question:
+Is the yellow square below the red sphere?"	no	no	True			answer: no			False	False	False	False
+377	17	3	4	"Now, answer the following question:
+Is the yellow square to the left of the red sphere?"	yes	cannot be determined	False			answer: cannot be determined			False	False	False	False
+378	17	3	5	"Now, answer the following question:
+Is the red sphere to the right of the yellow square?"	yes	yes	True			answer: yes			False	False	False	False
+379	17	3	6	"Now, answer the following question:
+Is the red sphere below the yellow square?"	yes	no	False			answer: no			False	False	False	False
+380	17	3	7	"Now, answer the following question:
+Is the red sphere above the yellow square?"	no	no	True			answer: no			False	False	False	False
+381	17	3	8	"Now, answer the following question:
+Is the red sphere below the yellow square?"	yes	no	False			answer: no			False	False	False	False
+382	17	4	1	"*TASK*
+Here are the context sentences:
+1. The triangle is to the right of the yellow square.
+2. The pink rectangle is above the triangle.
+
+Now, answer the following question:
+Is the yellow square to the left of the pink rectangle?"	yes	no	False			answer: no			False	False	False	False
+383	17	4	2	"Now, answer the following question:
+Is the pink rectangle above the yellow square?"	yes	no	False			answer: no			False	False	False	False
+384	17	4	3	"Now, answer the following question:
+Is the pink rectangle to the right of the yellow square?"	yes	no	False			answer: no			False	False	False	False
+385	17	4	4	"Now, answer the following question:
+Is the yellow square above the pink rectangle?"	no	no	True			answer: no			False	False	False	False
+386	17	4	5	"Now, answer the following question:
+Is the pink rectangle below the yellow square?"	no	yes	False			answer: yes			False	False	False	False
+387	17	4	6	"Now, answer the following question:
+Is the pink rectangle to the left of the yellow square?"	no	yes	False			answer: yes			False	False	False	False
+388	17	4	7	"Now, answer the following question:
+Is the yellow square below the pink rectangle?"	yes	yes	True			answer: yes			False	False	False	False
+389	17	4	8	"Now, answer the following question:
+Is the yellow square above the pink rectangle?"	no	no	True			answer: no			False	False	False	False
+390	17	5	1	"*TASK*
+Here are the context sentences:
+1. The red sphere is below the pink rectangle.
+2. The red sphere is to the left of the red square.
+
+Now, answer the following question:
+Is the red square to the left of the pink rectangle?"	no	no	True			answer: no			False	False	False	False
+391	17	5	2	"Now, answer the following question:
+Is the pink rectangle above the red square?"	yes	no	False			answer: no			False	False	False	False
+392	17	5	3	"Now, answer the following question:
+Is the pink rectangle to the left of the red square?"	yes	unknown	False			answer: unknown			False	False	False	True
+393	17	5	4	"Now, answer the following question:
+Is the red square below the pink rectangle?"	yes	no	False			answer: no			False	False	False	False
+394	17	5	5	"Now, answer the following question:
+Is the pink rectangle to the left of the red square?"	yes	unknown	False			answer: unknown			False	False	False	True
+395	17	5	6	"Now, answer the following question:
+Is the red square to the right of the pink rectangle?"	yes	unknown	False			answer: unknown			False	False	False	True
+396	17	5	7	"Now, answer the following question:
+Is the pink rectangle above the red square?"	yes	no	False			answer: no			False	False	False	False
+397	17	5	8	"Now, answer the following question:
+Is the red square above the pink rectangle?"	no	no	True			answer: no			False	False	False	False
+398	18	1	1	"*TASK*
+Here are the context sentences:
+1. The box is bigger than the box of chocolates.
+2. The box of chocolates is bigger than the chocolate.
+3. The suitcase is bigger than the chocolate.
+4. The box of chocolates fits inside the container.
+5. The box of chocolates is bigger than the chocolate.
+
+Now, answer the following question:
+Does the box fit in the chocolate?"	no	no	True			answer: no	0.96	0.96	False	False	False	False
+399	18	1	2	"Now, answer the following question:
+Is the chocolate bigger than the box?"	no	no	True			answer: no			False	False	False	False
+400	18	1	3	"Now, answer the following question:
+Is the chocolate bigger than the box?"	no	no	True			answer: no			False	False	False	False
+401	18	1	4	"Now, answer the following question:
+Is the box bigger than the chocolate?"	yes	yes	True			answer: yes			False	False	False	False
+402	18	1	5	"Now, answer the following question:
+Is the chocolate bigger than the box?"	no	no	True			answer: no			False	False	False	False
+403	18	2	1	"*TASK*
+Here are the context sentences:
+1. The box fits inside the suitcase.
+2. The box fits inside the container.
+3. The chest is bigger than the box.
+4. The container is bigger than the box of chocolates.
+5. The box of chocolates is bigger than the chocolate.
+
+Now, answer the following question:
+Does the container fit in the chocolate?"	no	no	True			answer: no			False	False	False	False
+404	18	2	2	"Now, answer the following question:
+Is the container bigger than the chocolate?"	yes	yes	True			answer: yes			False	False	False	False
+405	18	2	3	"Now, answer the following question:
+Is the container bigger than the chocolate?"	yes	yes	True			answer: yes			False	False	False	False
+406	18	2	4	"Now, answer the following question:
+Does the chocolate fit in the container?"	yes	yes	True			answer: yes			False	False	False	False
+407	18	2	5	"Now, answer the following question:
+Is the chocolate bigger than the container?"	no	no	True			answer: no			False	False	False	False
+408	18	3	1	"*TASK*
+Here are the context sentences:
+1. The box of chocolates is bigger than the chocolate.
+2. The chocolate fits inside the container.
+3. The container is bigger than the chest.
+4. The chest fits inside the suitcase.
+5. The container is bigger than the box.
+6. The container is bigger than the box of chocolates.
+7. The box fits inside the suitcase.
+8. The box fits inside the chest.
+9. The box of chocolates fits inside the suitcase.
+10. The chocolate fits inside the box of chocolates.
+
+Now, answer the following question:
+Does the container fit in the box?"	no	no	True			answer: no			False	False	False	False
+409	18	3	2	"Now, answer the following question:
+Is the container bigger than the chocolate?"	yes	yes	True			answer: yes			False	False	False	False
+410	18	3	3	"Now, answer the following question:
+Does the container fit in the box?"	no	no	True			answer: no			False	False	False	False
+411	18	3	4	"Now, answer the following question:
+Does the container fit in the box?"	no	no	True			answer: no			False	False	False	False
+412	18	3	5	"Now, answer the following question:
+Does the chocolate fit in the suitcase?"	yes	no	False			answer: no			False	False	False	False
+413	18	4	1	"*TASK*
+Here are the context sentences:
+1. The suitcase is bigger than the box of chocolates.
+2. The box of chocolates fits inside the suitcase.
+3. The chocolate fits inside the chest.
+4. The box is bigger than the box of chocolates.
+5. The chest is bigger than the chocolate.
+6. The box of chocolates fits inside the suitcase.
+7. The box is bigger than the box of chocolates.
+8. The chest is bigger than the container.
+9. The suitcase is bigger than the box.
+10. The chocolate fits inside the container.
+
+Now, answer the following question:
+Does the chest fit in the chocolate?"	no	no	True			answer: no			False	False	False	False
+414	18	4	2	"Now, answer the following question:
+Is the chest bigger than the chocolate?"	yes	yes	True			answer: yes			False	False	False	False
+415	18	4	3	"Now, answer the following question:
+Does the box of chocolates fit in the suitcase?"	yes	yes	True			answer: yes			False	False	False	False
+416	18	4	4	"Now, answer the following question:
+Is the chocolate bigger than the chest?"	no	no	True			answer: no			False	False	False	False
+417	18	4	5	"Now, answer the following question:
+Is the chest bigger than the chocolate?"	yes	yes	True			answer: yes			False	False	False	False
+418	18	5	1	"*TASK*
+Here are the context sentences:
+1. The suitcase is bigger than the chocolate.
+2. The chest is bigger than the chocolate.
+3. The container fits inside the chest.
+4. The chocolate fits inside the box.
+5. The box fits inside the suitcase.
+
+Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	no	True			answer: no			False	False	False	False
+419	18	5	2	"Now, answer the following question:
+Does the chocolate fit in the suitcase?"	yes	yes	True			answer: yes			False	False	False	False
+420	18	5	3	"Now, answer the following question:
+Is the suitcase bigger than the chocolate?"	yes	yes	True			answer: yes			False	False	False	False
+421	18	5	4	"Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	no	True			answer: no			False	False	False	False
+422	18	5	5	"Now, answer the following question:
+Is the suitcase bigger than the chocolate?"	yes	yes	True			answer: yes			False	False	False	False
+423	19	1	1	"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the kitchen.
+2. The bathroom is south of the hallway.
+3. The office is west of the kitchen.
+4. The hallway is south of the garden.
+5. The kitchen is south of the bathroom.
+
+Now, answer the following question:
+How do you go from the hallway to the kitchen?"	south south	south	True			answer: south	0.0	0.3	False	False	False	False
+424	19	2	1	"*TASK*
+Here are the context sentences:
+1. The office is north of the garden.
+2. The kitchen is north of the hallway.
+3. The garden is north of the kitchen.
+4. The bathroom is east of the kitchen.
+5. The bedroom is west of the kitchen.
+
+Now, answer the following question:
+How do you go from the bedroom to the garden?"	east north	east	False			answer: east			False	False	False	False
+425	19	3	1	"*TASK*
+Here are the context sentences:
+1. The bedroom is west of the bathroom.
+2. The kitchen is east of the office.
+3. The hallway is west of the bedroom.
+4. The garden is east of the kitchen.
+5. The kitchen is north of the bedroom.
+
+Now, answer the following question:
+How do you go from the bedroom to the office?"	north west	east	False			answer: east			False	False	False	False
+426	19	4	1	"*TASK*
+Here are the context sentences:
+1. The office is east of the garden.
+2. The hallway is south of the bathroom.
+3. The hallway is east of the kitchen.
+4. The bedroom is south of the hallway.
+5. The bedroom is west of the garden.
+
+Now, answer the following question:
+How do you go from the hallway to the garden?"	south east	east	False			answer: east			False	False	False	False
+427	19	5	1	"*TASK*
+Here are the context sentences:
+1. The hallway is west of the bedroom.
+2. The garden is north of the bedroom.
+3. The kitchen is north of the office.
+4. The bathroom is north of the hallway.
+5. The hallway is east of the kitchen.
+
+Now, answer the following question:
+How do you go from the bedroom to the kitchen?"	west west	east	False			answer: east			False	False	False	False
+428	20	1	1	"*TASK*
+Here are the context sentences:
+1. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	bed	False			answer: bed	0.07	0.29	False	False	False	False
+429	20	1	2	"*TASK*
+Here are the context sentences:
+3. Yann is tired.
+
+Now, answer the following question:
+Where will yann go?"	bedroom	bed	False			answer: bed			False	False	False	False
+430	20	1	3	"*TASK*
+Here are the context sentences:
+5. Antoine went to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	because he was tired	False			answer: because he was tired			False	False	True	False
+431	20	1	4	"*TASK*
+Here are the context sentences:
+7. Sumit is bored.
+
+Now, answer the following question:
+Where will sumit go?"	garden	nowhere (since there is no information about sumit	False			answer: nowhere (since there is no information about sumit			True	False	False	True
+432	20	1	5	"*TASK*
+Here are the context sentences:
+9. Jason is thirsty.
+
+Now, answer the following question:
+Where will jason go?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+433	20	1	6	"*TASK*
+Here are the context sentences:
+11. Yann moved to the bedroom.
+
+Now, answer the following question:
+Why did yann go to the bedroom?"	tired	same reason as antoine (tired)	False			answer: same reason as antoine (tired)			False	False	False	False
+434	20	1	7	"*TASK*
+Here are the context sentences:
+13. Antoine grabbed the pajamas there.
+
+Now, answer the following question:
+Why did antoine get the pajamas?"	tired	because he went to the bedroom	False			answer: because he went to the bedroom			False	False	True	False
+435	20	1	8	"*TASK*
+Here are the context sentences:
+15. Sumit went back to the garden.
+
+Now, answer the following question:
+Why did sumit go to the garden?"	bored	no reason mentioned (no information about sumit's	False			answer: no reason mentioned (no information about sumit's			False	False	False	True
+436	20	1	9	"*TASK*
+Here are the context sentences:
+17. Sumit took the football there.
+
+Now, answer the following question:
+Why did sumit get the football?"	bored	no reason mentioned (no information about sumit's	False			answer: no reason mentioned (no information about sumit's			False	False	False	True
+437	20	1	10	"*TASK*
+Here are the context sentences:
+19. Jason went back to the kitchen.
+
+Now, answer the following question:
+Why did jason go to the kitchen?"	thirsty	because he was thirsty	False			answer: because he was thirsty			False	False	True	False
+438	20	1	11	"*TASK*
+Here are the context sentences:
+21. Jason grabbed the milk there.
+
+Now, answer the following question:
+Why did jason get the milk?"	thirsty	because he was thirsty	False			answer: because he was thirsty			False	False	True	False
+439	20	2	1	"*TASK*
+Here are the context sentences:
+1. Sumit is tired.
+
+Now, answer the following question:
+Where will sumit go?"	bedroom	home	False			answer: home			False	False	False	False
+440	20	2	2	"*TASK*
+Here are the context sentences:
+3. Antoine is thirsty.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+441	20	2	3	"*TASK*
+Here are the context sentences:
+5. Antoine travelled to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	thirsty	because he is thirsty	False			answer: because he is thirsty			False	False	True	False
+442	20	2	4	"*TASK*
+Here are the context sentences:
+7. Antoine got the milk there.
+
+Now, answer the following question:
+Why did antoine get the milk?"	thirsty	because he is thirsty	False			answer: because he is thirsty			False	False	True	False
+443	20	2	5	"*TASK*
+Here are the context sentences:
+9. Yann is hungry.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+444	20	2	6	"*TASK*
+Here are the context sentences:
+11. Jason is hungry.
+
+Now, answer the following question:
+Where will jason go?"	kitchen	kitchen	True			answer: kitchen			False	False	False	False
+445	20	2	7	"*TASK*
+Here are the context sentences:
+13. Yann moved to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	hungry	because he is hungry	False			answer: because he is hungry			False	False	True	False
+446	20	2	8	"*TASK*
+Here are the context sentences:
+15. Jason went back to the kitchen.
+
+Now, answer the following question:
+Why did jason go to the kitchen?"	hungry	because he is hungry	False			answer: because he is hungry			False	False	True	False
+447	20	2	9	"*TASK*
+Here are the context sentences:
+17. Jason picked up the apple there.
+
+Now, answer the following question:
+Why did jason get the apple?"	hungry	because he is hungry	False			answer: because he is hungry			False	False	True	False
+448	20	2	10	"*TASK*
+Here are the context sentences:
+19. Sumit journeyed to the bedroom.
+
+Now, answer the following question:
+Why did sumit go to the bedroom?"	tired	because he is tired	False			answer: because he is tired			False	False	True	False
+449	20	2	11	"*TASK*
+Here are the context sentences:
+21. Sumit took the pajamas there.
+
+Now, answer the following question:
+Why did sumit get the pajamas?"	tired	because he is tired	False			answer: because he is tired			False	False	True	False
+450	20	3	1	"*TASK*
+Here are the context sentences:
+1. Sumit is hungry.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	home	False			answer: home			False	False	False	False
+451	20	3	2	"*TASK*
+Here are the context sentences:
+3. Sumit journeyed to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	hungry	because	False			answer: because			False	False	False	False
+452	20	3	3	"*TASK*
+Here are the context sentences:
+5. Sumit got the apple there.
+
+Now, answer the following question:
+Why did sumit get the apple?"	hungry	because	False			answer: because			False	False	False	False
+453	20	3	4	"*TASK*
+Here are the context sentences:
+7. Yann is bored.
+
+Now, answer the following question:
+Where will yann go?"	garden	home	False			answer: home			False	False	False	False
+454	20	3	5	"*TASK*
+Here are the context sentences:
+9. Yann went back to the garden.
+
+Now, answer the following question:
+Why did yann go to the garden?"	bored	because	False			answer: because			False	False	False	False
+455	20	3	6	"*TASK*
+Here are the context sentences:
+11. Antoine is hungry.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	home	False			answer: home			False	False	False	False
+456	20	3	7	"*TASK*
+Here are the context sentences:
+13. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	home	False			answer: home			False	False	False	False
+457	20	3	8	"*TASK*
+Here are the context sentences:
+15. Antoine travelled to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	hungry	because	False			answer: because			False	False	False	False
+458	20	3	9	"*TASK*
+Here are the context sentences:
+17. Yann got the football there.
+
+Now, answer the following question:
+Why did yann get the football?"	bored	not mentioned	False			answer: not mentioned			False	False	False	True
+459	20	3	10	"*TASK*
+Here are the context sentences:
+19. Jason moved to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	because	False			answer: because			False	False	False	False
+460	20	3	11	"*TASK*
+Here are the context sentences:
+21. Jason grabbed the pajamas there.
+
+Now, answer the following question:
+Why did jason get the pajamas?"	tired	not mentioned	False			answer: not mentioned			False	False	False	True
+461	20	4	1	"*TASK*
+Here are the context sentences:
+1. Jason is bored.
+
+Now, answer the following question:
+Where will jason go?"	garden	nowhere	False			answer: nowhere			True	False	False	False
+462	20	4	2	"*TASK*
+Here are the context sentences:
+3. Yann is bored.
+
+Now, answer the following question:
+Where will yann go?"	garden	nowhere	False			answer: nowhere			True	False	False	False
+463	20	4	3	"*TASK*
+Here are the context sentences:
+5. Yann travelled to the garden.
+
+Now, answer the following question:
+Why did yann go to the garden?"	bored	not specified	False			answer: not specified			False	False	False	False
+464	20	4	4	"*TASK*
+Here are the context sentences:
+7. Antoine is hungry.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	nowhere	False			answer: nowhere			True	False	False	False
+465	20	4	5	"*TASK*
+Here are the context sentences:
+9. Jason travelled to the garden.
+
+Now, answer the following question:
+Why did jason go to the garden?"	bored	not specified	False			answer: not specified			False	False	False	False
+466	20	4	6	"*TASK*
+Here are the context sentences:
+11. Yann picked up the football there.
+
+Now, answer the following question:
+Why did yann get the football?"	bored	not specified	False			answer: not specified			False	False	False	False
+467	20	4	7	"*TASK*
+Here are the context sentences:
+13. Sumit is bored.
+
+Now, answer the following question:
+Where will sumit go?"	garden	nowhere	False			answer: nowhere			True	False	False	False
+468	20	4	8	"*TASK*
+Here are the context sentences:
+15. Sumit went back to the garden.
+
+Now, answer the following question:
+Why did sumit go to the garden?"	bored	not specified	False			answer: not specified			False	False	False	False
+469	20	4	9	"*TASK*
+Here are the context sentences:
+17. Antoine moved to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	hungry	not specified	False			answer: not specified			False	False	False	False
+470	20	4	10	"*TASK*
+Here are the context sentences:
+19. Antoine took the apple there.
+
+Now, answer the following question:
+Why did antoine get the apple?"	hungry	not specified	False			answer: not specified			False	False	False	False
+471	20	5	1	"*TASK*
+Here are the context sentences:
+1. Yann is tired.
+
+Now, answer the following question:
+Where will yann go?"	bedroom	bed	False			answer: bed			False	False	False	False
+472	20	5	2	"*TASK*
+Here are the context sentences:
+3. Sumit is bored.
+
+Now, answer the following question:
+Where will sumit go?"	garden	nowhere	False			answer: nowhere			True	False	False	False
+473	20	5	3	"*TASK*
+Here are the context sentences:
+5. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	bed	False			answer: bed			False	False	False	False
+474	20	5	4	"*TASK*
+Here are the context sentences:
+7. Jason is bored.
+
+Now, answer the following question:
+Where will jason go?"	garden	nowhere	False			answer: nowhere			True	False	False	False
+475	20	5	5	"*TASK*
+Here are the context sentences:
+9. Antoine journeyed to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	because he was tired	False			answer: because he was tired			False	False	True	False
+476	20	5	6	"*TASK*
+Here are the context sentences:
+11. Sumit went back to the garden.
+
+Now, answer the following question:
+Why did sumit go to the garden?"	bored	no reason given	False			answer: no reason given			False	False	False	False
+477	20	5	7	"*TASK*
+Here are the context sentences:
+13. Sumit grabbed the football there.
+
+Now, answer the following question:
+Why did sumit get the football?"	bored	no reason given	False			answer: no reason given			False	False	False	False
+478	20	5	8	"*TASK*
+Here are the context sentences:
+15. Yann went to the bedroom.
+
+Now, answer the following question:
+Why did yann go to the bedroom?"	tired	because he was tired	False			answer: because he was tired			False	False	True	False
+479	20	5	9	"*TASK*
+Here are the context sentences:
+17. Antoine got the pajamas there.
+
+Now, answer the following question:
+Why did antoine get the pajamas?"	tired	because he went to the bedroom	False			answer: because he went to the bedroom			False	False	True	False
+480	20	5	10	"*TASK*
+Here are the context sentences:
+19. Jason moved to the garden.
+
+Now, answer the following question:
+Why did jason go to the garden?"	bored	no reason given	False			answer: no reason given			False	False	False	False
+481	20															
