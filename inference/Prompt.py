@@ -107,7 +107,7 @@ class Prompt:
         """
         parts_so_far = ""
         parts_set = set()
-        ids_so_far, spans_types_so_far = [], {}
+        ids_so_far, spans_with_types_so_far = [], {}
 
         # TODO: do we need to filter out generation tokens from the student history?
 
@@ -122,7 +122,7 @@ class Prompt:
                 parts_set.add(message["content"] + "\n\n")
 
                 ids_so_far.extend(message["ids"])
-                spans_types_so_far.update(message["spans_types"])
+                spans_with_types_so_far.update(message["spans_with_types"])
 
         self.text = (
             self.original_text + "\n\n" + self.history.format(chat_history=parts_so_far)
@@ -130,7 +130,7 @@ class Prompt:
         self.ids = self.orig_ids + ids_so_far
         self.sent_spans = {
             **{span: "teacher sys" for span in self.orig_sent_spans},
-            **spans_types_so_far,
+            **spans_with_types_so_far,
         }
 
     def format_teacher_message(self, student_message: dict):
