@@ -44,6 +44,8 @@ class Chat:
         }
         example_spans_with_types = {span: "ex" for span in system_prompt.ex_sent_spans}
 
+        print("system_prompt.ids", system_prompt.ids)
+
         self.system_message = {
             "role": Source.system,
             "content": system_prompt.text,
@@ -185,18 +187,22 @@ class Chat:
                     task_tokens, task_ids, task_spans = sents_to_ids(
                         to_encode, self.tokenizer
                     )
-                    task = {
-                        "tokens": task_tokens,
-                        "ids": task_ids,
-                        "sent_spans": task_spans,
-                    }
+                    task_chunks = [
+                        {
+                            "tokens": tokens,
+                            "ids": ids,
+                            "sent_spans": spans,
+                            "type": type_,
+                        }
+                        for tokens, ids, spans in zip(task_tokens, task_ids, task_spans)
+                    ]
                     print("encoded message", *zip(task_spans, task_ids), sep="\n")
-                    chunks = [intro, task, outro]
+                    chunks = [intro, *task_chunks, outro]
                     for i, chunk in enumerate(chunks):
                         if chunk.get("ids", None):
                             tokens.append(chunk["tokens"])
-                            ids.append(chunk["id"])
-                            type_ = "wrap" if i == 0 or i == len(chunks) else type_
+                            ids.append(chunk["ids"])
+                            type_ = chunk["type"] if chunk.get("type", None) else "wrap"
                             updated_span = upd_span(intro["sent_spans"], self.offset)
                             spans_with_types[updated_span] = type_
                             self.offset += len(flatten(chunk["ids"]))

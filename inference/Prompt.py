@@ -120,7 +120,6 @@ class Prompt:
         self.offset = self.orig_offset
 
         # TODO: do we need to filter out generation tokens from the student history?
-
         for key, hist in self.history.items():
             intro, outro = hist["before"], hist.get("after", hist["before"])
             chunks = [intro, *student_messages, outro]
@@ -151,8 +150,10 @@ class Prompt:
                         spans_with_types_so_far.update(upd_spans)
                     else:
                         spans = {
-                            (span[0] + self.offset, span[1] + self.offset): "hist"
-                            for span in chunk["sent_spans"]
+                            (
+                                chunk["sent_spans"][0] + self.offset,
+                                chunk["sent_spans"][1] + self.offset,
+                            ): "hist"
                         }
                         spans_with_types_so_far.update(spans)
 
@@ -177,14 +178,22 @@ class Prompt:
         teacher_string = ""
         teacher_ids = []
         teacher_tokens = []
+        student_message = [
+            {
+                "content": values["content"],
+                "ids": values["ids"],
+                "tokens": values["tokens"],
+            }
+            for keys, values in student_message.items()
+        ]
         for key, wrap in self.wrapper.items():
             intro, outro = wrap["before"], wrap.get("after", wrap["before"])
-            chunks = [intro, student_message, outro]
+            chunks = [intro, *student_message, outro]
             for chunk in chunks:
                 assert type(chunk) is dict
                 teacher_string += chunk["content"]
-                teacher_ids.extend(chunk["ids"])
-                teacher_tokens.extend(chunk["tokens"])
+                teacher_ids.append(chunk["ids"])
+                teacher_tokens.append(chunk["tokens"])
         print(
             "Teacher's message:",
             teacher_string,
@@ -230,12 +239,12 @@ class Prompt:
             for chunk in chunks:
                 assert type(chunk) is dict
                 resume_str += chunk["content"]
-                resume_ids.extend(chunk["ids"])
+                resume_ids.append(chunk["ids"])
                 filtered_ids = [id_ for id_ in chunk["ids"] if id_ is not None]
                 if len(filtered_ids) != len(chunk["ids"]):
                     warnings.warn("Some tokens were not converted to ids.")
 
-                resume_tokens.extend(chunk["tokens"])
+                resume_tokens.append(chunk["tokens"])
         print(
             "Formatted refine message:",
             resume_str,
@@ -263,7 +272,7 @@ class Prompt:
     #     return formatted_with_cot + "\n" + cot_to_evaluate
 
     def format_refine_message(
-        self, student_message: dict, teacher_feedback: str
+        self, student_message: dict, teacher_feedback: dict
     ) -> dict:
         """
         Format the refine message by inserting the student's output into the instruction,
@@ -275,20 +284,20 @@ class Prompt:
         """
         refine_str = ""
         refine_ids = []
-        for line in self.original_text.split("\n"):
+        refine_tokens = []
+        for i, line in enumerate(self.original_text.split("\n")):
             if "student_output" in line:
                 refine_str += student_message["content"]
                 refine_ids.extend(student_message["ids"])
+                refine_tokens.extend(student_message["tokens"])
             elif "teacher_feedback" in line:
-                refine_str += teacher_feedback
-                refine_ids.extend(
-                    self.tokenizer.encode(teacher_feedback, add_special_tokens=False)
-                )
+                refine_str += teacher_feedback["content"]
+                refine_ids.extend(teacher_feedback["ids"])
+                refine_tokens.extend(teacher_feedback["tokens"])
             else:
                 refine_str += line + "\n"
-                refine_ids.extend(
-                    self.tokenizer.encode(line + "\n", add_special_tokens=False)
-                )
+                refine_ids.extend(self.orig_ids[i])
+                refine_tokens.extend(self.orig_tokens[i])
         print(
             "Formatted refine message:",
             refine_str,
@@ -299,6 +308,7 @@ class Prompt:
             "part": refine_str,
             "source": Source.user,
             "ids": refine_ids,
+            "tokens": refine_tokens,
         }
 
     @staticmethod
