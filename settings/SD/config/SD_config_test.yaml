@@ -12,10 +12,10 @@ student:
   temperature: 0.1
   to_continue: False
   mode: "eval"
+  interpretability: True
 
 setting:
   name: 'SD'
-  interpretability: True
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"

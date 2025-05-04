@@ -152,10 +152,6 @@ class Setting(ABC):
 
                 # Only run the model if the results are not loaded
                 if not self.part.results[0].model_answer:
-                    print("QUERYING BEFORE")
-                    # formatted_prompt = self.prepare_prompt(chat=chat)
-                    # TODO optional: remove returning the decoded output => move printing to model.call and work only
-                    #  with chat
                     decoded_output, interpretability = self.model.call(self.part)
                     self.part.set_output(
                         message=self.model.chat.messages[-1],

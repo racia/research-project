@@ -73,28 +73,28 @@ def get_indices(span_ids: dict, type_: str):
     return indices
 
 
-def get_supp_tok_idx(
-    context_sent_spans: list[tuple[int, int]], supp_sent_idx: list[int]
-) -> list[int]:
-    """
-    Calculates the percentage of output tokens which maximum attention is on supporting sentences.
-
-    :param context_sent_spans: The indices of sentence spans of current chat (based on chat ids)
-    :param supp_sent_idx: the indices of the supporting sentence
-    """
-    supp_tok_idx = []
-    for supp_sent_id in supp_sent_idx:
-        try:
-            supp_tok_range = list(
-                range(
-                    context_sent_spans[supp_sent_id - 1][0],
-                    context_sent_spans[supp_sent_id - 1][1],
-                )
-            )
-            supp_tok_idx.extend(supp_tok_range)
-        except IndexError:
-            return []
-    return supp_tok_idx
+# def get_supp_tok_idx(
+#     context_sent_spans: list[tuple[int, int]], supp_sent_idx: list[int]
+# ) -> list[int]:
+#     """
+#     Calculates the percentage of output tokens which maximum attention is on supporting sentences.
+#
+#     :param context_sent_spans: The indices of sentence spans of current chat (based on chat ids)
+#     :param supp_sent_idx: the indices of the supporting sentence
+#     """
+#     supp_tok_idx = []
+#     for supp_sent_id in supp_sent_idx:
+#         try:
+#             supp_tok_range = list(
+#                 range(
+#                     context_sent_spans[supp_sent_id - 1][0],
+#                     context_sent_spans[supp_sent_id - 1][1],
+#                 )
+#             )
+#             supp_tok_idx.extend(supp_tok_range)
+#         except IndexError:
+#             return []
+#     return supp_tok_idx
 
 
 def get_max_attn_ratio(

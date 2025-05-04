@@ -16,7 +16,6 @@ from evaluation.Evaluator import MetricEvaluator
 from inference.DataLevels import Split, print_metrics
 from inference.Prompt import Prompt
 from inference.utils import print_metrics_table
-from interpretability.Interpretability import Interpretability
 from plots.Plotter import Plotter
 from settings.Model import Model
 from settings.SD.SpeculativeDecoding import SpeculativeDecoding
@@ -108,18 +107,7 @@ def run_setting(cfg: DictConfig) -> None:
 
     run_splits = defaultdict(dict)
     # Load scenery words
-    scenery_words = loader.load_scenery()
-
-    # TODO: move to the model class after review
-    interpretability = (
-        Interpretability(
-            plotter=plotter,
-            save_heatmaps=cfg.results.save_heatmaps,
-            scenery_words=scenery_words,
-        )
-        if cfg.setting.interpretability
-        else None
-    )
+    # scenery_words = loader.load_scenery()
 
     if not hasattr(cfg.setting, "name"):
         raise ValueError("The setting name is not provided in the config file")
@@ -127,14 +115,12 @@ def run_setting(cfg: DictConfig) -> None:
     if hasattr(cfg, "model"):
         model = Model(
             **cfg.model,
-            interpretability=interpretability,
             wrapper=cfg.data.wrapper,
             role=None,
         )
     elif hasattr(cfg, "student"):
         model = Model(
             **cfg.student,
-            interpretability=interpretability,
             wrapper=cfg.data.wrapper,
             role="student",
         )

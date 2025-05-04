@@ -357,6 +357,7 @@ class DataLoader:
                 multi_system=True,
                 lookup=True,
             )
+            # TODO: implement loading ids and tokens for all parts
             for row in data:
                 raw_part = raw_parts[(row["task_id"], row["sample_id"], row["part_id"])]
                 if not row["model_output_before"]:

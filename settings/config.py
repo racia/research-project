@@ -18,6 +18,7 @@ class Model:
     temperature: float
     to_continue: bool
     mode: Mode
+    interpretability: bool
 
 
 @dataclass
@@ -27,6 +28,7 @@ class Student(Model):
     temperature: float
     to_continue: bool
     mode: Mode
+    interpretability: bool
 
 
 @dataclass
@@ -38,12 +40,12 @@ class Teacher(Model):
     mode: Mode
     p: float
     k: int
+    interpretability: bool
 
 
 @dataclass
 class Setting:
     name: str
-    interpretability: bool
 
 
 @dataclass

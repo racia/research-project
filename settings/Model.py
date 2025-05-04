@@ -37,7 +37,7 @@ class Model:
         p: float | None = None,
         mode: Mode = "eval",
         wrapper: Wrapper = None,
-        interpretability: Interpretability = None,
+        interpretability: bool = None,
     ):
         self.token: str = os.getenv("HUGGINGFACE")
         self.name: str = name
@@ -46,9 +46,11 @@ class Model:
         self.temperature: float = temperature
         self.to_continue: bool = to_continue
         self.mode: Mode = mode
+
         self.model, self.tokenizer = self.load()
-        self.interpretability = interpretability
+
         if interpretability:
+            self.interpretability = Interpretability()
             self.interpretability.tokenizer = self.tokenizer
 
         self.wrapper = encode_wrapper(wrapper, self.tokenizer) if wrapper else None
@@ -136,10 +138,10 @@ class Model:
             raise ValueError(
                 "Chat is not set. Please set the chat before calling the model."
             )
-        # if part and formatted_prompt:
-        #     raise ValueError(
-        #         "Either part or formatted_prompt should be provided, not both."
-        #     )
+        if part and formatted_prompt:
+            raise ValueError(
+                "Either part or formatted_prompt should be provided, not both."
+            )
         # TODO: merge formatted_prompt and part into one
         if (formatted_prompt or part) and not from_chat:
             self.chat.add_message(
@@ -152,42 +154,14 @@ class Model:
                 "Not adding any message to the chat, please make sure you do it manually "
                 "before calling the model.call method or pass a message."
             )
-        # if formatted_prompt and self.interpretability:
-        #     raise ValueError(
-        #         "Interpretability cannot be calculated with formatted_prompt."
-        #     )
-        print("Wrapper before model call")
-        print(self.wrapper)
 
         with torch.no_grad():
-            # device = next(self.model.parameters()).device
-            #
-            # if self.interpretability:
             call_from_part = not (formatted_prompt or from_chat) and part
             # includes flat ids for all the messages in the chat, including the wrapper
             chat_ids = self.chat.convert_into_datatype(
                 datatype="ids", identify_target=True if call_from_part else False
             )
-            print(
-                f"Formatted prompt (to remove):",
-                self.tokenizer.batch_decode(chat_ids)[0],
-                sep="\n",
-                end="\n",
-            )
             inputs = {"input_ids": chat_ids.to("cuda")}
-            print("inputs", inputs)
-
-            # else:
-            #     inputs = self.tokenizer(
-            #         formatted_prompt,
-            #         return_tensors="pt",
-            #         padding="longest",
-            #         truncation=True,
-            #         max_length=2048,
-            #         add_special_tokens=True,
-            #     )
-            #     inputs = {k: v.to(device) for k, v in inputs.items()}
-
             torch.cuda.empty_cache()
 
             with autocast("cuda"):
@@ -206,8 +180,6 @@ class Model:
                     encoded_output, skip_special_tokens=True
                 ).strip()
 
-                print("decoded_output", decoded_output)
-
                 # the model expanded on the message, so we need to update it
                 if to_continue:
                     # self.chat.remove_message(-1)
@@ -222,12 +194,10 @@ class Model:
                 if self.role == "student" and not self.interpretability:
                     raise ValueError("Interpretability is not set for student model!")
 
-                print("DEBUG self.interpretability", self.interpretability)
-                print("DEBUG decoded_output", decoded_output)
-
                 if self.interpretability and decoded_output:
                     print("DEBUG starting interpretability")
                     try:
+                        # output tensor includes all the previous ids + the model output
                         output_tensor = self.model(
                             outputs,
                             return_dict=True,
@@ -235,14 +205,12 @@ class Model:
                             output_hidden_states=False,
                         )
                         # for the settings, the final model output is currently not plotted
-                        interpretability_result = self.interpretability.process_attention(
-                            # output tensor includes all the previous ids + the model output
-                            output_tensor=output_tensor,
-                            # chat includes the current model output but the processing should not!
-                            chat=self.chat,
-                            chat_ids=outputs,
-                            part=part,
-                            keyword=subfolder,
+                        interpretability_result = (
+                            self.interpretability.process_attention(
+                                output_tensor=output_tensor,
+                                chat=self.chat,
+                                chat_ids=outputs,
+                            )
                         )
                     except torch.OutOfMemoryError:
                         warnings.warn(

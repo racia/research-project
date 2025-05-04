@@ -4,6 +4,7 @@ teacher:
   temperature: 0.1
   to_continue: false
   mode: "eval"
+  interpretability: False
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
@@ -11,10 +12,10 @@ student:
   temperature: 0.1
   to_continue: false
   mode: "eval"
+  interpretability: True
 
 setting:
   name: 'Feedback'
-  interpretability: True
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"

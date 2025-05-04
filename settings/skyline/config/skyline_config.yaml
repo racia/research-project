@@ -9,10 +9,10 @@ model:
   # than create a separate answer
   to_continue: False
   mode: "eval"
+  interpretability: True
 
 setting:
   name: "Skyline"
-  interpretability: True
 
 data:
   # small data with validation
