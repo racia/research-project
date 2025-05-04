@@ -13,7 +13,6 @@ from inference.DataLevels import Sample, SamplePart, Task, print_metrics
 from inference.Prompt import Prompt
 from interpretability.utils import InterpretabilityResult
 from settings.Model import Model
-from settings.utils import parse_output
 
 
 class Setting(ABC):
@@ -54,17 +53,6 @@ class Setting(ABC):
         self.part: SamplePart = None
 
         self.saver: DataSaver = saver
-
-    # @abstractmethod
-    # def prepare_prompt(self, chat: Chat, resume_gen: bool = False) -> str:
-    #     """
-    #     Prepares the prompt to include the current part of the sample.
-    #
-    #     :param resume_gen: whether to resume the generation
-    #     :param chat: the current chat
-    #     :return: prompt with the task and the current part
-    #     """
-    #     raise NotImplementedError
 
     def create_teacher_chat(
         self,
@@ -163,17 +151,14 @@ class Setting(ABC):
                 sample.add_silver_reasoning(self.part.silver_reasoning)
 
                 # Only run the model if the results are not loaded
-                if not self.part.result_before.model_answer:
+                if not self.part.results[0].model_answer:
                     print("QUERYING BEFORE")
                     # formatted_prompt = self.prepare_prompt(chat=chat)
                     # TODO optional: remove returning the decoded output => move printing to model.call and work only
                     #  with chat
                     decoded_output, interpretability = self.model.call(self.part)
-                    answer, reasoning = parse_output(output=decoded_output)
                     self.part.set_output(
-                        model_output=decoded_output,
-                        model_answer=answer,
-                        model_reasoning=reasoning,
+                        message=self.model.chat.messages[-1],
                         interpretability=interpretability,
                         version="before",
                     )
@@ -192,7 +177,7 @@ class Setting(ABC):
                     )
 
                     decoded_output, eval_dict, interpretability = self.apply_setting(
-                        decoded_output=self.part.result_before.model_output,
+                        decoded_output=self.part.results[-1].model_output,
                     )
                     self.saver.save_eval_dict(
                         task_id=task_id,
@@ -201,11 +186,8 @@ class Setting(ABC):
                         eval_dict=eval_dict,
                         file_name="eval_dict_sd.json",
                     )
-                    answer, reasoning = parse_output(output=decoded_output)
                     self.part.set_output(
-                        model_output=decoded_output,
-                        model_answer=answer,
-                        model_reasoning=reasoning,
+                        message=self.model.chat.messages[-1],
                         interpretability=interpretability,
                         iterations=eval_dict["iterations"],
                         version="after",
@@ -216,7 +198,6 @@ class Setting(ABC):
 
                 if self.saver:
                     print("Saving part result...")
-                    # TODO: save "before" ids (embedding)
                     self.saver.save_part_result(self.part)
 
                 sample.add_part(self.part)

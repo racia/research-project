@@ -191,6 +191,9 @@ class DataSaver:
         :param sep: the separator, a newline by default
         :return: None
         """
+        if not data:
+            warnings.warn("No data to save.")
+            return
         file_path.parent.mkdir(parents=True, exist_ok=True)
         with open(file_path, "w", encoding="UTF-8") as file:
             file.write(sep.join(map(lambda x: str(x).strip(), data)))
@@ -376,6 +379,16 @@ class DataSaver:
         for result, version in zip(part.results, part.versions):
             self.save_part_interpretability(result.interpretability, version, part)
 
+            part_identifier = f"{part.task_id}-{part.sample_id}-{part.part_id}"
+            folder = self.results_path / version
+            self.save_with_separator(
+                folder / "ids" / f"ids-{part_identifier}.txt", result.ids
+            )
+
+            self.save_with_separator(
+                folder / "tokens" / f"tokens-{part_identifier}.txt", result.tokens
+            )
+
     def save_sample_result(self, sample: Sample) -> None:
         """
         Save the results for the task and the accuracy for the task to the separate files.
@@ -427,7 +440,6 @@ class DataSaver:
         task_ids: list[int],
         splits: dict[Prompt, Split],
         split_name: str,
-        version: str = "after",
     ) -> None:
         """
         Save the accuracies for the split run, including the mean accuracy for all tasks.
@@ -442,48 +454,39 @@ class DataSaver:
         run_headers = ["task_id"]
 
         for prompt, split in splits.items():
-            prompt_headers = prepare_accuracy_headers(prompt.name, version=version)
+            for version, evaluator, features in zip(
+                split.versions, split.evaluators, split.features
+            ):
+                prompt_headers = prepare_accuracy_headers(prompt.name, version=version)
 
-            if version == "after":
-                evaluator = split.evaluator_after
-            elif version == "before":
-                evaluator = split.evaluator_before
-            else:
-                raise ValueError(
-                    f"Version should be either 'before' or 'after', not {version}."
+                run_metrics = format_task_accuracies(
+                    accuracies_to_save=run_metrics,
+                    task_ids=task_ids,
+                    exact_match_accuracies=evaluator.exact_match_accuracy,
+                    soft_match_accuracies=evaluator.soft_match_accuracy,
+                    exact_match_std=evaluator.exact_match_std,
+                    soft_match_std=evaluator.soft_match_std,
+                    headers=prompt_headers,
                 )
 
-            run_metrics = format_task_accuracies(
-                accuracies_to_save=run_metrics,
-                task_ids=task_ids,
-                exact_match_accuracies=evaluator.exact_match_accuracy,
-                soft_match_accuracies=evaluator.soft_match_accuracy,
-                exact_match_std=evaluator.exact_match_std,
-                soft_match_std=evaluator.soft_match_std,
-                headers=prompt_headers,
-            )
-            if version == "after":
-                features = split.features_after
-            elif version == "before":
-                features = split.features_before
-            else:
-                raise ValueError("Version should be either 'before' or 'after'.")
+                run_metrics = format_split_metrics(
+                    features, prompt_headers, run_metrics, version
+                )
+                run_headers.extend(prompt_headers.values())
 
-            run_metrics = format_split_metrics(
-                features, prompt_headers, run_metrics, version
-            )
-            run_headers.extend(prompt_headers.values())
+                mean_headers = prepare_accuracy_headers("mean")
+                run_headers.extend(mean_headers.values())
+                run_metrics = calculate_mean_accuracies(
+                    run_metrics, mean_headers, version
+                )
 
-        mean_headers = prepare_accuracy_headers("mean")
-        run_headers.extend(mean_headers.values())
-        run_metrics = calculate_mean_accuracies(run_metrics, mean_headers, version)
-
-        self.save_output(
-            data=list(run_metrics.values()),
-            headers=run_headers,
-            file_name=self.run_path / f"{split_name}_accuracies.csv",
-            path_add=version,
-        )
+                # TODO: should it be one level back?
+                self.save_output(
+                    data=list(run_metrics.values()),
+                    headers=run_headers,
+                    file_name=self.run_path / f"{split_name}_accuracies.csv",
+                    path_add=version,
+                )
 
     def redirect_printing_to_log_file(self, file_name: str) -> TextIO:
         """

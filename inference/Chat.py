@@ -102,6 +102,7 @@ class Chat:
         """
         if not self.messages:
             raise ValueError("No messages to adjust.")
+        print("partial_ids", type(partial_ids), partial_ids)
         if not isinstance(partial_ids, (int, list)):
             raise ValueError("ids must be an int or a list.")
 

@@ -309,7 +309,7 @@ def run(
         )
 
     if verbose:
-        print_metrics_table(*split.evaluators, id_=data_split)
+        print_metrics_table(evaluators=split.evaluators, id_=data_split)
 
     saver.save_split_accuracy(
         evaluators=split.evaluators,

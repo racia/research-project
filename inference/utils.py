@@ -246,77 +246,53 @@ def wrap_text(text, width=40):
 
 
 def print_metrics_table(
-    eval_before: MetricEvaluator = None,
-    eval_after: MetricEvaluator = None,
+    evaluators: list[MetricEvaluator],
     id_: Any = None,
 ) -> None:
     """
     Print a table comparing metrics before and after a process.
 
-    :param eval_before: MetricEvaluator object before the setting was applied
-    :param eval_after: MetricEvaluator object after the setting was applied
+    :param evaluators: MetricEvaluator objects with metrics before and after the setting was applied to compare
     :param id_: ID of the data level
     :return: None
     """
     table = PrettyTable()
 
-    if eval_before and eval_after:
-        table.field_names = ["Metric", "Before", "After"]
-    elif eval_before:
-        table.field_names = ["Metric", "Before"]
-    elif eval_after:
-        table.field_names = ["Metric", "After"]
+    if len(evaluators) == 2:
+        versions = ["Before", "After"]
+        table.field_names = ["Metric", *versions]
+    elif len(evaluators) == 1:
+        versions = ["Before"]
+        table.field_names = ["Metric", *versions]
     else:
-        raise ValueError("At least one MetricEvaluator must be provided.")
+        raise ValueError("Only one or two MetricEvaluators can be provided.")
 
     metric_values = defaultdict(dict)
 
-    if eval_before:
-        metric_values["Exact-match accuracy"]["Before"] = (
-            f"{eval_before.exact_match_accuracy.get_mean()} ± {eval_before.exact_match_accuracy.get_std()}"
-            if len(eval_before.exact_match_accuracy) > 1
-            else eval_before.exact_match_accuracy.get_mean()
+    for evaluator, version in zip(evaluators, versions):
+        metric_values["Exact-match accuracy"][version] = (
+            f"{evaluator.exact_match_accuracy.get_mean()} ± {evaluator.exact_match_accuracy.get_std()}"
+            if len(evaluator.exact_match_accuracy) > 1
+            else evaluator.exact_match_accuracy.get_mean()
         )
-        metric_values["Soft-match accuracy"]["Before"] = (
-            f"{eval_before.soft_match_accuracy.get_mean()} ± {eval_before.soft_match_accuracy.get_std()}"
-            if len(eval_before.soft_match_accuracy) > 1
-            else eval_before.soft_match_accuracy.get_mean()
+        metric_values["Soft-match accuracy"][version] = (
+            f"{evaluator.soft_match_accuracy.get_mean()} ± {evaluator.soft_match_accuracy.get_std()}"
+            if len(evaluator.soft_match_accuracy) > 1
+            else evaluator.soft_match_accuracy.get_mean()
         )
-        if eval_before.max_supp_attn:
-            metric_values["Max attention distribution"]["Before"] = (
-                f"{eval_before.max_supp_attn.get_mean()} ± {eval_before.max_supp_attn.get_std()}"
-                if len(eval_before.max_supp_attn) > 1
-                else eval_before.max_supp_attn.get_mean()
-            )
-
-    if eval_after:
-        metric_values["Exact-match accuracy"]["After"] = (
-            f"{eval_after.exact_match_accuracy.get_mean()} ± {eval_after.exact_match_accuracy.get_std()}"
-            if len(eval_after.exact_match_accuracy) > 1
-            else eval_after.exact_match_accuracy.get_mean()
-        )
-        metric_values["Soft-match accuracy"]["After"] = (
-            f"{eval_after.soft_match_accuracy.get_mean()} ± {eval_after.soft_match_accuracy.get_std()}"
-            if len(eval_after.soft_match_accuracy) > 1
-            else eval_after.soft_match_accuracy.get_mean()
-        )
-        if eval_after.max_supp_attn:
-            metric_values["Max attention distribution"]["After"] = (
-                f"{eval_after.max_supp_attn.get_mean()} ± {eval_after.max_supp_attn_std.get_std()}"
-                if len(eval_after.max_supp_attn) > 1
-                else eval_after.max_supp_attn.get_mean()
+        if evaluator.max_supp_attn:
+            metric_values["Max attention distribution"][version] = (
+                f"{evaluator.max_supp_attn.get_mean()} ± {evaluator.max_supp_attn.get_std()}"
+                if len(evaluator.max_supp_attn) > 1
+                else evaluator.max_supp_attn.get_mean()
             )
 
     for metric_name, values in metric_values.items():
         row = [metric_name]
-        if eval_before:
-            row.append(values.get("Before", None))
-        if eval_after:
-            row.append(values.get("After", None))
+        for version in versions:
+            row.append(values.get(version, None))
         table.add_row(row)
 
     if id_:
-        print(
-            f"\nMetrics for {eval_after.level if eval_after else eval_before.level} {id_}:"
-        )
+        print(f"\nMetrics for {evaluators[0].level} {id_}:")
     print(table)
