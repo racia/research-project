@@ -4,5 +4,5 @@ defaults:
   - _self_
 
 data:
-  task_ids: [ 1, 2 ]
-  samples_per_task: 5
+  task_ids: [ 1, 2, 3, 4, 5 ]
+  samples_per_task: 100
