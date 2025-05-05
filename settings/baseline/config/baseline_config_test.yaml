@@ -12,7 +12,9 @@ model:
 
 setting:
   name: "Baseline"
-  interpretability: True
+  interpretability:
+    use: True
+    aggregate: True
 
 data:
   # small data with validation

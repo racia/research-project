@@ -116,8 +116,9 @@ def run_setting(cfg: DictConfig) -> None:
             plotter=plotter,
             save_heatmaps=cfg.results.save_heatmaps,
             scenery_words=scenery_words,
+            aggregate_attn=cfg.setting.interpretability.aggregate,
         )
-        if cfg.setting.interpretability
+        if cfg.setting.interpretability.use
         else None
     )
 

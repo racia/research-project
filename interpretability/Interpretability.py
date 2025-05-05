@@ -26,19 +26,16 @@ class Interpretability:
         self,
         scenery_words: set[str],
         plotter: Plotter,
-        save_heatmaps: bool = False,
-        aggregate_attn: bool = True,
+        aggregate_attn: bool,
     ):
         """
         Interpretability class
         :param plotter: instance of Plotter
-        :param save_heatmaps: if to create and save heatmaps
         :param scenery_words: set of scenery words
         """
         self.scenery_words: set[str] = set(map(lambda x: x.lower(), scenery_words))
 
         self.plotter: Plotter = plotter
-        self.save_heatmaps: bool = save_heatmaps
         self.aggregate_attn: bool = aggregate_attn
 
         self.tokenizer: PreTrainedTokenizerFast = None
@@ -258,15 +255,14 @@ class Interpretability:
             attention_scores, x_tokens, y_tokens, max_attn_dist, max_attn_dist
         )
 
-        if self.save_heatmaps:
-            self.plotter.draw_heat(
-                interpretability_result=result,
-                x_label="Task Tokens" if not overflow else "Sentence indices",
-                task_id=part.task_id,
-                sample_id=part.sample_id,
-                part_id=part.part_id,
-                version="after" if after else "before",
-            )
+        self.plotter.draw_heat(
+            interpretability_result=result,
+            x_label="Task Tokens" if not overflow else "Sentence indices",
+            task_id=part.task_id,
+            sample_id=part.sample_id,
+            part_id=part.part_id,
+            version="after" if after else "before",
+        )
         return result
 
     def process_attention(
