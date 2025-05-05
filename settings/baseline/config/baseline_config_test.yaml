@@ -9,7 +9,9 @@ model:
   # than create a separate answer
   to_continue: False
   mode: "eval"
-  interpretability: True
+  interpretability:
+    use: True
+    aggregate: True
 
 setting:
   name: "Baseline"
