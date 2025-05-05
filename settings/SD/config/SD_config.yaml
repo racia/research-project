@@ -16,7 +16,9 @@ student:
 
 setting:
   name: 'SD'
-  interpretability: True
+  interpretability:
+    use: True
+    aggregate: True
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"

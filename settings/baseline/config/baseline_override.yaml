@@ -1,8 +1,0 @@
-defaults:
-  # running this script will pull the prompt in this file over the prompt in baseline_config file
-  - baseline_config
-  - _self_
-
-data:
-  task_ids: [ 1, 2 ]
-  samples_per_task: 5
