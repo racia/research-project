@@ -184,18 +184,12 @@ class Interpretability:
         :return: InterpretabilityResult object
         """
         # should not include the model output span!
-        spans_types = chat.get_sentence_spans(remove_last=True)
-        sent_spans = list(spans_types.keys())
-        print("spans_types:", spans_types)
+        spans_with_types = chat.get_sentence_spans(remove_last=True)
+        sent_spans = list(spans_with_types.keys())
         supp_sent_idx = [
             i for i, span in enumerate(sent_spans) if span in chat.supp_sent_spans
         ]
-        supp_sent_ranges = [
-            list(range(*span))
-            for span in enumerate(sent_spans)
-            if span in chat.supp_sent_spans
-        ]
-        # TODO: test verbose attention and add a switch to the config
+        # TODO: test verbose attention
         if aggregate:
             # only aggregated sentences, no verbose tokens
             attn_scores = self.get_attention_scores(
@@ -205,8 +199,10 @@ class Interpretability:
             )
             x_tokens = [
                 f"* {i} {type_} *" if span in chat.supp_sent_spans else f"{i} {type_}"
-                for i, (span, type_) in enumerate(spans_types.items(), 1)
+                for i, (span, type_) in enumerate(spans_with_types.items(), 1)
             ]
+            max_attn_ratio = get_max_attn_ratio(attn_scores, supp_sent_idx)
+            attn_on_target = get_attn_on_target(attn_scores, supp_sent_idx)
         else:
             sys_prompt_len = len(flatten(chat.messages[0]["ids"]))
             chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
@@ -221,12 +217,19 @@ class Interpretability:
             x_tokens = chat.convert_into_datatype(
                 datatype="tokens", identify_target=False
             )
-            # TODO: redefine supp_sent_idx for tokens (get tokens for all supporting sentences)
+            supp_sent_ranges = [
+                list(range(*span))
+                for span in sent_spans
+                if span in chat.supp_sent_spans
+            ]
+            flat_supp_sent_ranges = flatten(supp_sent_ranges)
             x_tokens = [
-                f"* {tok} *" if i in flatten(supp_sent_ranges) else tok
+                f"* {tok} *" if i in flat_supp_sent_ranges else tok
                 for i, tok in enumerate(x_tokens)
                 if i in attention_indices
             ]
+            max_attn_ratio = get_max_attn_ratio(attn_scores, flat_supp_sent_ranges)
+            attn_on_target = get_attn_on_target(attn_scores, flat_supp_sent_ranges)
 
         if not chat.messages[-1]["tokens"][0]:
             raise ValueError(
@@ -237,9 +240,6 @@ class Interpretability:
             self.tokenizer.convert_tokens_to_string([token])
             for token in chat.messages[-1]["tokens"][0][:-1]
         ]
-
-        max_attn_ratio = get_max_attn_ratio(attn_scores, supp_sent_idx)
-        attn_on_target = get_attn_on_target(attn_scores, supp_sent_idx)
 
         keyword_ = "aggregated" if aggregate else "verbose"
         result = InterpretabilityResult(

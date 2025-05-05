@@ -55,18 +55,18 @@ class InterpretabilityResult:
         return False
 
 
-def get_indices(span_ids: dict, type_: str):
+def get_indices(spans_with_types: dict, type_: str):
     """
     Get indices for the spans of the current chat for a desired type of chunk.
 
-    :param span_ids: the sentence spans of the current chat for all types of chunks
+    :param spans_with_types: the sentence spans of the current chat for all types of chunks
     :param type_: the type of chunk to get indices for
     """
     if type_ not in ("sys", "ex", "wrap", "task", "ans"):
         raise ValueError(
             "Invalid type. Must be one of 'sys', 'ex', 'wrap', 'task', or 'ans'."
         )
-    spans = span_ids[type_].keys()
+    spans = spans_with_types[type_].keys()
     indices = []
     for span in spans:
         indices.extend(range(span[0], span[1] + 1))
