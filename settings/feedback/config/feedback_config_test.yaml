@@ -11,7 +11,9 @@ student:
   temperature: 0.1
   to_continue: False
   mode: "eval"
-  interpretability: True
+  interpretability:
+    use: True
+    aggregate: True
 
 setting:
   name: 'Feedback'

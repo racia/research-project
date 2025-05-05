@@ -191,8 +191,8 @@ class Results:
         self.category: str = ""
 
         # used only to store the ids of the parts
-        self.ids: list[int] = []
-        self.tokens: list[str] = []
+        self.ids: dict[str, list[int]] = {}
+        self.tokens: dict[str, list[str]] = {}
 
     def __repr__(self):
         return f"<Results: {self.dict}>"
@@ -496,7 +496,7 @@ class SamplePart:
     def set_output(
         self,
         interpretability: InterResult | None,
-        message: dict = None,
+        messages: list[dict] = None,
         model_output: str = None,
         model_answer: str = None,
         model_reasoning: str = None,
@@ -507,7 +507,7 @@ class SamplePart:
         """
         Set the output of the model either from the message or from the model's output.
 
-        :param message: the message from the model
+        :param messages: the message from the model
         :param model_output: the output of the model
         :param model_answer: the answer to the question
         :param model_reasoning: the reasoning for the answer
@@ -518,18 +518,22 @@ class SamplePart:
 
         :return: None
         """
-        nothing = not any([message, model_output, model_answer, model_reasoning])
-        everything = all([message, model_output, model_answer, model_reasoning])
+        nothing = not any([messages, model_output, model_answer, model_reasoning])
+        everything = all([messages, model_output, model_answer, model_reasoning])
         if nothing or everything:
             raise ValueError(
                 "Either a message or model_output, model_answer, and model_reasoning should be provided."
             )
-        if not message and not (model_output and model_answer and model_reasoning):
+        if not messages and not (model_output and model_answer and model_reasoning):
             raise ValueError(
                 "When no message, a model_output, model_answer, and model_reasoning should be provided."
             )
-        if message:
-            model_output = message["content"]
+        if messages:
+            if len(messages) < 2:
+                raise ValueError(
+                    "The messages should contain at least two elements: the input and the output."
+                )
+            model_output = messages[-1]["content"]
             model_answer, model_reasoning = parse_output(output=model_output)
 
         if type(model_answer) is not str:
@@ -561,9 +565,10 @@ class SamplePart:
             interpretability=interpretability,
             version=version,
         )
-        if message:
-            result.ids = message["ids"]
-            result.tokens = message["tokens"]
+        if messages:
+            for message in messages:
+                result.ids[message["role"]] = message["ids"]
+                result.tokens[message["role"]] = message["tokens"]
 
         if version == "after":
             self.iterations = iterations or SamplePart.current_iteration_count
@@ -816,11 +821,11 @@ class Task:
                 features,
             )
 
-        for i, evaluator in enumerate(self.evaluators):
+        for evaluator, version in zip(self.evaluators, self.versions):
             mean_em_acc = evaluator.exact_match_accuracy.get_mean()
-            self.results[i][0]["exact_match_accuracy_before"] = mean_em_acc
+            self.results[0][f"exact_match_accuracy_{version}"] = mean_em_acc
             mean_sm_acc = evaluator.soft_match_accuracy.get_mean()
-            self.results[i][0]["soft_match_accuracy_before"] = mean_sm_acc
+            self.results[0][f"soft_match_accuracy_{version}"] = mean_sm_acc
 
     def calculate_metrics(self) -> None:
         """

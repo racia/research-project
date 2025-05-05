@@ -8,7 +8,7 @@ import torch
 from data.DataSaver import DataSaver
 from inference.Chat import Chat
 from inference.Prompt import Prompt
-from inference.utils import Source
+from inference.utils import Source, flatten
 from interpretability.utils import InterpretabilityResult
 from settings.Model import Model
 from settings.SD.utils import check_match
@@ -167,21 +167,22 @@ class SpeculativeDecoding(Setting):
         suggested_token_affix = None
         top_tokens_decoded_probs = None
         inx = 0
+        flat_student_tokens = flatten(student_message["tokens"])
 
         for inx, student_token in enumerate(
-            student_message["tokens"][last_err_inx + 1 :]
+            flat_student_tokens[last_err_inx + 1 :]
         ):
             # handle empty tokens by setting it to whitespace
             # TODO: remove?
             student_token = student_token.lower().strip() or " "
             is_eos_token = student_token == self.tokenizer.eos_token
-            is_last_token = inx == len(student_message["tokens"])
+            is_last_token = inx == len(flat_student_tokens)
             if is_eos_token or is_last_token:
                 self.student_eos = True
 
             # TODO: check if needed?
             if self.affix:
-                student_token = student_message["tokens"][inx - 1] + student_token
+                student_token = flat_student_tokens[inx - 1] + student_token
                 student_token = student_token.strip()
                 print(
                     f"Verifying token combined with previous token {student_token} at indices {inx - 1} and {inx}",
@@ -300,7 +301,7 @@ class SpeculativeDecoding(Setting):
             print(f"Teacher approved token {student_token}", end="\n\n", flush=True)
 
         # student's CoT is not empty and no disagreement was found
-        on_last_token = inx == len(student_message["tokens"]) - 1
+        on_last_token = inx == len(flatten(student_message["tokens"])) - 1
         if self.teacher_suggests_eos(suggested_token) and on_last_token:
             print(f"Teacher generated EOS", end="\n\n\n", flush=True)
             return True, None, None
@@ -714,9 +715,10 @@ class SpeculativeDecoding(Setting):
 
             # check for repetitions
             last_message = self.teacher.chat.messages[-1]
-            if len(last_message["tokens"]) > 5:
-                last_token = last_message["tokens"][-1]
-                count_last_token = last_message["tokens"][-5:].count(last_token)
+            flat_student_tokens = flatten(last_message["tokens"])
+            if len(flat_student_tokens) > 5:
+                last_token = flat_student_tokens[-1]
+                count_last_token = flat_student_tokens[-5:].count(last_token)
                 if count_last_token >= 3:
                     print(
                         f"Last token {last_token} repeated {count_last_token} times, stopping speculative "

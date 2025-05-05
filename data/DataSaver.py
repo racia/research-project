@@ -9,7 +9,6 @@ from typing import Iterable, TextIO, Union
 import pandas as pd
 
 from data.utils import *
-from evaluation.Evaluator import MetricEvaluator
 from inference.DataLevels import Features, Sample, SamplePart, Split, Task
 from inference.Prompt import Prompt
 from interpretability.utils import InterpretabilityResult
@@ -120,26 +119,19 @@ class DataSaver:
 
     def save_split_accuracy(
         self,
-        evaluators: list[MetricEvaluator],
+        split,
         accuracy_file_name: str,
-        multi_system: bool = False,
     ) -> None:
         """
         Save the accuracies for the split,
         including the * mean accuracy * for all tasks.
 
-        :param evaluators: the evaluator
+        :param split: the split object of the data
         :param accuracy_file_name: the name of the file to save the accuracies
-        :param multi_system: if the setting uses two models
         :return: None
         """
-        if multi_system:
-            versions = ["before", "after"]
-        else:
-            versions = ["before"]
-
         accuracies_to_save = defaultdict(dict)
-        for evaluator, version in zip(evaluators, versions):
+        for evaluator, version in zip(split.evaluators, split.versions):
             accuracies = list(
                 format_accuracy_metrics(
                     evaluator.exact_match_accuracy,
@@ -375,19 +367,24 @@ class DataSaver:
             data=[result],
             headers=list(result.keys()),
             file_name=f"t_{part.task_id}_s_{part.sample_id}_results.csv",
+            path_add="sample_results",
         )
         for result, version in zip(part.results, part.versions):
             self.save_part_interpretability(result.interpretability, version, part)
 
             part_identifier = f"{part.task_id}-{part.sample_id}-{part.part_id}"
             folder = self.results_path / version
-            self.save_with_separator(
-                folder / "ids" / f"ids-{part_identifier}.txt", result.ids
-            )
 
-            self.save_with_separator(
-                folder / "tokens" / f"tokens-{part_identifier}.txt", result.tokens
-            )
+            for role, ids in result.ids.items():
+                self.save_with_separator(
+                    folder / "ids" / f"{role}-ids-{part_identifier}.txt",
+                    ["\t".join(map(str, i)) for i in ids],
+                )
+            for role, tokens in result.tokens.items():
+                self.save_with_separator(
+                    folder / "tokens" / f"{role}-tokens-{part_identifier}.txt",
+                    ["\t".join(t) for t in tokens],
+                )
 
     def save_sample_result(self, sample: Sample) -> None:
         """
@@ -423,10 +420,10 @@ class DataSaver:
             file_name=results_file_name,
         )
         # get accuracy for the last task
-        task_accuracy = {
-            "task_id": task_id,
-            **task_data.evaluator_after.get_accuracies(),
-        }
+        task_accuracy = {"task_id": task_id}
+        for evaluator in task_data.evaluators:
+            task_accuracy = {**task_accuracy, **evaluator.get_accuracies()}
+
         self.save_interpretability(task_data)
         self.save_output(
             data=[task_accuracy],
@@ -447,7 +444,6 @@ class DataSaver:
         :param task_ids: the task ids
         :param splits: the split objects of the data
         :param split_name: the name of the split
-        :param version: if to save the accuracy for after the setting was applied
         :return: None
         """
         run_metrics = {}
@@ -480,7 +476,7 @@ class DataSaver:
                     run_metrics, mean_headers, version
                 )
 
-                # TODO: should it be one level back?
+                # TODO: check if it should be one level back before running two-model settings
                 self.save_output(
                     data=list(run_metrics.values()),
                     headers=run_headers,

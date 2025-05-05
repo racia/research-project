@@ -115,8 +115,7 @@ class Model:
 
     def call(
         self,
-        part: SamplePart = None,
-        formatted_prompt: str = None,
+        data: SamplePart | str = None,
         from_chat: bool = False,
         subfolder: str = None,
         to_continue: bool = False,
@@ -127,8 +126,7 @@ class Model:
         Otherwise, the model is called on the current chat as is. The generated model message is added always.
         Whenever a string message is added, it is encoded, so the chat assumes all the encoded ids to be in place.
 
-        :param part: The current sample part
-        :param formatted_prompt: The formatted message to be added to the chat
+        :param data: The data to be used for the model call. It can be a SamplePart or a string.
         :param from_chat: Whether the message is from the chat or not
         :param subfolder: The subfolder for the interpretability results (only for "iterations")
         :param to_continue: Whether the model should continue the last message or not
@@ -138,25 +136,19 @@ class Model:
             raise ValueError(
                 "Chat is not set. Please set the chat before calling the model."
             )
-        if part and formatted_prompt:
-            raise ValueError(
-                "Either part or formatted_prompt should be provided, not both."
-            )
-        # TODO: merge formatted_prompt and part into one
-        if (formatted_prompt or part) and not from_chat:
+        if data and not from_chat:
             self.chat.add_message(
-                part=formatted_prompt if formatted_prompt else part,
+                part=data,
                 source=Source.user,
                 wrapper=self.wrapper,
             )
-        else:
-            warnings.warn(
-                "Not adding any message to the chat, please make sure you do it manually "
-                "before calling the model.call method or pass a message."
+        elif not (data or from_chat):
+            raise ValueError(
+                "Either data or from_chat should be set. Please set one of them."
             )
 
         with torch.no_grad():
-            call_from_part = not (formatted_prompt or from_chat) and part
+            call_from_part = type(data) is SamplePart and not from_chat
             # includes flat ids for all the messages in the chat, including the wrapper
             chat_ids = self.chat.convert_into_datatype(
                 datatype="ids", identify_target=True if call_from_part else False
@@ -204,6 +196,8 @@ class Model:
                             output_attentions=True,
                             output_hidden_states=False,
                         )
+                        if type(data) is not SamplePart:
+                            raise TypeError("For interpretability plotting, data should be of type SamplePart")
                         # for the settings, the final model output is currently not plotted
                         interpretability_result = (
                             self.interpretability.process_attention(

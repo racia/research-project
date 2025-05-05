@@ -6,7 +6,8 @@ teacher:
   mode: "eval"
   k: 15
   p: 0.9
-  interpretability: False
+  interpretability:
+    use: False
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
@@ -14,7 +15,9 @@ student:
   temperature: 0.1
   to_continue: false
   mode: "eval"
-  interpretability: True
+  interpretability:
+    use: True
+    aggregate: True
 
 setting:
   name: 'SD'
@@ -68,7 +71,12 @@ eval_prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/eval_prompt.txt"
-  wrapper: | # if to wrap the part prompt with the task description
+  history: |
+    Your student was given the following task:
+    """
+    {chat_history}
+    """
+  wrapper: |
     The student's response was:
     {student_output}
 
@@ -122,6 +130,7 @@ results:
     - verbs_before
     - pronouns_before
     - not_mentioned_before
+    - iterations
     - context_sents_hall_before
 
 hydra:

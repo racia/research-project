@@ -223,11 +223,14 @@ def run_setting(cfg: DictConfig) -> None:
 
     for prompt_num, prompt_path in enumerate(cfg.init_prompt.paths, 1):
         prompt_name = Path(prompt_path).stem
-        prompt_evaluator_before = MetricEvaluator(level="prompt")
-        prompt_evaluator_after = (
-            MetricEvaluator(level="prompt") if multi_system else None
-        )
-        prompt_evaluators = [prompt_evaluator_before, prompt_evaluator_after]
+        prompt_evaluator_before = MetricEvaluator(level="prompt", version="before")
+        if multi_system:
+            prompt_evaluators = [
+                prompt_evaluator_before,
+                MetricEvaluator(level="prompt", version="after"),
+            ]
+        else:
+            prompt_evaluators = [prompt_evaluator_before]
 
         log_file_name, results_file_names, metrics_file_names = (
             saver.create_result_paths(prompt_name=prompt_name, splits=data_splits)
@@ -313,8 +316,6 @@ def run_setting(cfg: DictConfig) -> None:
                 f"==> The run for {split.name.upper()} data is finished successfully <==",
                 end="\n\n",
             )
-            print_metrics(split, table=True)
-
             items = zip(
                 split.versions, split.features, split.evaluators, prompt_evaluators
             )
@@ -336,9 +337,8 @@ def run_setting(cfg: DictConfig) -> None:
 
             print_metrics(split, table=True)
             saver.save_split_accuracy(
-                evaluators=split.evaluators,
+                split=split,
                 accuracy_file_name=metrics_file_names[split.name],
-                multi_system=multi_system,
             )
             run_splits[split.name][init_prompt] = split
 
@@ -346,7 +346,7 @@ def run_setting(cfg: DictConfig) -> None:
                 plotter.plot_acc_per_task_and_prompt(
                     acc_per_prompt_task={
                         **split.evaluators[0].get_accuracies(as_lists=True),
-                        **split.evaluators[0].get_accuracies(as_lists=True),
+                        **split.evaluators[1].get_accuracies(as_lists=True),
                     },
                     y_label="Accuracies and Standard Deviations",
                     plot_name_add=[prompt_name, split.name, "before", "after"],

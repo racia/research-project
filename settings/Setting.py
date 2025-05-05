@@ -151,10 +151,10 @@ class Setting(ABC):
                 sample.add_silver_reasoning(self.part.silver_reasoning)
 
                 # Only run the model if the results are not loaded
-                if not self.part.results[0].model_answer:
+                if not self.part.results:
                     decoded_output, interpretability = self.model.call(self.part)
                     self.part.set_output(
-                        message=self.model.chat.messages[-1],
+                        messages=self.model.chat.messages[-2:],
                         interpretability=interpretability,
                         version="before",
                     )
@@ -183,7 +183,7 @@ class Setting(ABC):
                         file_name="eval_dict_sd.json",
                     )
                     self.part.set_output(
-                        message=self.model.chat.messages[-1],
+                        messages=self.model.chat.messages[-2:],
                         interpretability=interpretability,
                         iterations=eval_dict["iterations"],
                         version="after",

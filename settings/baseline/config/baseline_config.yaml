@@ -9,10 +9,12 @@ model:
   # than create a separate answer
   to_continue: False
   mode: "eval"
-  interpretability: True
 
 setting:
   name: "Baseline"
+  interpretability:
+    use: True
+    aggregate: True
 
 data:
   # small data with validation
@@ -64,7 +66,6 @@ init_prompt:
 logging:
   # if to print the results to a log file, otherwise will print to console
   print_to_file: True
-
 
 results:
   save_heatmaps: False
