@@ -74,19 +74,20 @@ results:
     - sample_id
     - part_id
     - task
+    - answer_lies_in_self
     - golden_answer
-    - model_answer_before
-    - answer_correct_before
-    - reasoning_correct_before
-    - model_reasoning_before
     - silver_reasoning
     - model_output_before
+    - model_answer_before
+    - model_reasoning_before
+    - answer_correct_before
+    - reasoning_correct_before
     - exact_match_accuracy_before
     - soft_match_accuracy_before
     - max_supp_attn_before
     - attn_on_target_before
-    - there_before
     - verbs_before
+    - there_before
     - pronouns_before
     - not_mentioned_before
     - context_sents_hall_before

@@ -52,14 +52,15 @@ class DataProcessor:
             if 0 in task.keys():
                 from_zero = True
 
-            for sample_id, sample in samples:
+            for sample_id_, sample in samples:
+                sample_id = sample_id_ + 1 if from_zero else sample_id_
+                part_id = 1
                 raw_part = {
                     "context": {},
                     "question": {},
                     "answer": {},
                     "supporting_facts": [],
                 }
-                part_id = 1
                 for line in sample:
                     cleaned = line.strip()
                     # regex: group 1: line number: \d+\s+
@@ -95,7 +96,7 @@ class DataProcessor:
                         part = SamplePart(
                             id_=self.part_counter,
                             task_id=task_id,
-                            sample_id=sample_id + 1 if from_zero else sample_id,
+                            sample_id=sample_id,
                             part_id=part_id,
                             raw=raw_part,
                             golden_answer=" ".join(expand_cardinal_points(answers)),

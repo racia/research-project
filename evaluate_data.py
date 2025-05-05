@@ -312,9 +312,8 @@ def run(
         print_metrics_table(evaluators=split.evaluators, id_=data_split)
 
     saver.save_split_accuracy(
-        evaluators=split.evaluators,
+        split=split,
         accuracy_file_name="eval_script_accuracies.csv",
-        multi_system=multi_system,
     )
 
     for version, evaluator, features in zip(

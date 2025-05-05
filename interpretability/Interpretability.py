@@ -334,9 +334,8 @@ class Interpretability:
 
         y_tokens = [
             self.tokenizer.convert_tokens_to_string([token])
-            for token in chat.messages[-1]["tokens"]
+            for token in chat.messages[-1]["tokens"][:-1]
         ]
-        # y_tokens = self.tokenizer.batch_decode(model_output[:-1])
 
         # TODO: there might be problems with indices for verbose attentions
         max_attn_ratio = get_max_attn_ratio(attn_scores, supp_sent_idx)

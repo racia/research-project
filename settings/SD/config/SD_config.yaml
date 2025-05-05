@@ -67,7 +67,12 @@ eval_prompt:
   # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/eval_prompt.txt"
-  wrapper: | # if to wrap the part prompt with the task description
+  history: |
+    Your student was given the following task:
+    """
+    {chat_history}
+    """
+  wrapper: |
     The student's response was:
     {student_output}
 
@@ -121,6 +126,7 @@ results:
     - verbs_before
     - pronouns_before
     - not_mentioned_before
+    - iterations
     - context_sents_hall_before
 
 hydra:
