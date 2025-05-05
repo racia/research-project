@@ -4,7 +4,7 @@ import re
 import textwrap
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Iterable
 
 import en_core_web_sm
 import torch
@@ -182,7 +182,7 @@ def flatten(lst: list[list] | list) -> list:
         return []
     if all(isinstance(i, list) for i in lst):
         return [item for sublist in lst for item in sublist]
-    elif all(isinstance(obj, int) for obj in lst):
+    elif not any(isinstance(obj, list) for obj in lst):
         return lst
     raise TypeError(
         "Expected a list of lists or a list of integers, got:",

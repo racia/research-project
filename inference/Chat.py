@@ -102,30 +102,30 @@ class Chat:
         """
         if not self.messages:
             raise ValueError("No messages to adjust.")
-        print("partial_ids", type(partial_ids), partial_ids)
-        if not isinstance(partial_ids, (int, list)):
-            raise ValueError("ids must be an int or a list.")
 
-        if type(self.messages[-1]["tokens"][0]) is str:
+        if type(partial_ids) == torch.Tensor:
+            partial_ids = partial_ids.tolist()
+        elif type(partial_ids) == int:
+            partial_ids = [partial_ids]
+        else:
+            partial_ids = flatten(partial_ids)
+
+        if type(self.messages[-1]["tokens"]) is str:
             raise ValueError(
                 "Detected tokens instead of token lists. Please check the input."
             )
-        if type(self.messages[-1]["ids"][0]) is int:
-            raise ValueError(
-                "Detected ids instead of ids lists. Please check the input."
-            )
-
-        if isinstance(partial_ids, torch.Tensor):
-            partial_ids = partial_ids.tolist()
-        elif not isinstance(partial_ids, int):
-            partial_ids = [partial_ids]
 
         self.messages[-1]["content"] += partial_output
         self.messages[-1]["original_content"] += partial_output
+        print('"self.messages[-1]["tokens"][-1]"', self.messages[-1]["tokens"][-1])
+        print(
+            "self.tokenizer.convert_ids_to_tokens(partial_ids)",
+            self.tokenizer.convert_ids_to_tokens(partial_ids),
+        )
         self.messages[-1]["tokens"][-1].extend(
             self.tokenizer.convert_ids_to_tokens(partial_ids)
         )
-        self.messages[-1]["ids"].extend(partial_ids)
+        self.messages[-1]["ids"][-1].extend(partial_ids)
         spans_with_types = self.messages[-1]["spans_with_types"]
         model_output_span = list(spans_with_types.keys())[-1]
         model_output_span_type = {
@@ -237,6 +237,7 @@ class Chat:
                     tokens = [
                         self.tokenizer.convert_ids_to_tokens(id_list) for id_list in ids
                     ]
+                tokens = [tokens]
                 label = "ans" if source == Source.assistant else "task"
                 spans_with_types[upd_span((0, len(ids)), self.offset)] = label
                 self.offset += len(ids)
