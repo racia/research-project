@@ -68,7 +68,6 @@ logging:
   print_to_file: False
 
 results:
-  save_heatmaps: True
   headers:
     - id_
     - task_id

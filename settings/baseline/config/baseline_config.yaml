@@ -9,12 +9,12 @@ model:
   # than create a separate answer
   to_continue: False
   mode: "eval"
-
-setting:
-  name: "Baseline"
   interpretability:
     use: True
     aggregate: True
+
+setting:
+  name: "Baseline"
 
 data:
   # small data with validation
@@ -68,7 +68,6 @@ logging:
   print_to_file: True
 
 results:
-  save_heatmaps: False
   headers:
     - id_
     - task_id
