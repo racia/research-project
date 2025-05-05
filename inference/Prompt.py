@@ -92,8 +92,8 @@ class Prompt:
             self.orig_tokens, self.orig_ids, self.orig_sent_spans = sents_to_ids(
                 nlp(self.text).sents, self.tokenizer
             )
-            self.orig_ids[-1].extend(self.newline_ids)
-            self.orig_tokens[-1].extend(self.newline_tokens)
+            self.orig_ids.extend(self.newline_ids)
+            self.orig_tokens.extend(self.newline_tokens)
 
             self.offset = len(flatten(self.orig_ids))
             self.orig_offset = self.offset
@@ -380,8 +380,8 @@ class Prompt:
         tokens, ids, spans = sents_to_ids(
             re.split(r"\n{2,}", formatted_example), self.tokenizer
         )
-        [tok.extend(self.newline_tokens) for tok in tokens]
-        [id_.extend(self.newline_ids) for id_ in ids]
+        # [tok.extend(self.newline_tokens) for tok in tokens]
+        # [id_.extend(self.newline_ids) for id_ in ids]
         last_span = spans[-1]
         spans[-1] = (last_span[0], last_span[1] + len(self.newline_ids))
 

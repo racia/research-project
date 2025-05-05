@@ -111,6 +111,14 @@ def get_max_attn_ratio(
     max_attn_inx = np.argmax(attn_scores, axis=1)
     attention_on_supp = np.isin(max_attn_inx, supp_sent_idx)
     max_supp_attn = attention_on_supp.mean()
+    # for output_row in attn_scores:
+    #     # Get index of maximum (mean) attention task token / sentence score
+    #     max_attn_inx = np.argmax(output_row)
+    #     if max_attn_inx in supp_sent_idx:
+    #         max_supp_attn += 1
+
+    # Take ratio
+    # max_supp_attn = max_supp_attn / attn_scores.shape[0]
     return round(float(max_supp_attn), 4)
 
 
@@ -120,8 +128,6 @@ def get_attn_on_target(
 ) -> float:
     """
     Calculates the average percentage of attention directed to supporting target sentences.
-    Both attn scores and indices of the supporting sentences should be for the same values:
-    either verbose tokens or aggregated into sentences.
 
     :param attn_scores: The attention scores
     :param supp_sent_idx: The indices of the supporting sentences

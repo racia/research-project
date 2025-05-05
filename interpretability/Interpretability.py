@@ -26,16 +26,19 @@ class Interpretability:
         self,
         scenery_words: set[str],
         plotter: Plotter,
-        aggregate_attn: bool,
+        save_heatmaps: bool = False,
+        aggregate_attn: bool = True,
     ):
         """
         Interpretability class
         :param plotter: instance of Plotter
+        :param save_heatmaps: if to create and save heatmaps
         :param scenery_words: set of scenery words
         """
         self.scenery_words: set[str] = set(map(lambda x: x.lower(), scenery_words))
 
         self.plotter: Plotter = plotter
+        self.save_heatmaps: bool = save_heatmaps
         self.aggregate_attn: bool = aggregate_attn
 
         self.tokenizer: PreTrainedTokenizerFast = None
@@ -115,7 +118,7 @@ class Interpretability:
         attn_scores = attn_tensor.float().detach().cpu().numpy()
 
         if sent_spans:
-            # Additionally take mean of attention scores over each task sentence
+            # Additionally take mean of attention scores over each task sentence.
             attn_scores = np.array(
                 [
                     attn_scores[:, start:stop].mean(axis=-1)
@@ -138,8 +141,8 @@ class Interpretability:
                 )
                 attn_scores_T = attn_scores
 
-            # Normalize the attention scores by special tokens
-            # (otherwise the first system prompt sentence gets all the attention)
+            # TODO: check if the second normalization is needed
+            # Normalize the attention scores by the sum of all token attention scores
             attn_scores_T = attn_scores_T / attn_scores_T.sum(axis=0, keepdims=True)
 
             assert attn_scores_T.shape == (
@@ -255,14 +258,15 @@ class Interpretability:
             attention_scores, x_tokens, y_tokens, max_attn_dist, max_attn_dist
         )
 
-        self.plotter.draw_heat(
-            interpretability_result=result,
-            x_label="Task Tokens" if not overflow else "Sentence indices",
-            task_id=part.task_id,
-            sample_id=part.sample_id,
-            part_id=part.part_id,
-            version="after" if after else "before",
-        )
+        if self.save_heatmaps:
+            self.plotter.draw_heat(
+                interpretability_result=result,
+                x_label="Task Tokens" if not overflow else "Sentence indices",
+                task_id=part.task_id,
+                sample_id=part.sample_id,
+                part_id=part.part_id,
+                version="after" if after else "before",
+            )
         return result
 
     def process_attention(
@@ -305,7 +309,7 @@ class Interpretability:
             # only aggregated sentences, no verbose tokens
             attn_scores = self.get_attention_scores(
                 output_tensor=output_tensor,
-                model_output_len=len(flatten(chat.messages[-1]["ids"])),
+                model_output_len=len(chat.messages[-1]["ids"]),
                 sent_spans=sent_spans,
             )
             x_tokens = [
@@ -313,11 +317,11 @@ class Interpretability:
                 for i, (span, type_) in enumerate(spans_types.items(), 1)
             ]
         else:
-            sys_prompt_len = len(flatten(chat.messages[0]["ids"]))
+            sys_prompt_len = len(chat.messages[0]["ids"])
             chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
             attn_scores = self.get_attention_scores(
                 output_tensor=output_tensor,
-                model_output_len=len(flatten(chat.messages[-1]["ids"])),
+                model_output_len=len(chat.messages[-1]["ids"]),
                 sys_prompt_len=sys_prompt_len,
             )
             attention_indices = self.filter_attn_indices(attn_scores, chat_ids.numpy())
@@ -332,15 +336,11 @@ class Interpretability:
                 if i in attention_indices
             ]
 
-        if not chat.messages[-1]["tokens"][0]:
-            raise ValueError(
-                "The last message in the chat does not contain any tokens."
-            )
-
         y_tokens = [
             self.tokenizer.convert_tokens_to_string([token])
-            for token in chat.messages[-1]["tokens"][0][:-1]
+            for token in chat.messages[-1]["tokens"]
         ]
+        # y_tokens = self.tokenizer.batch_decode(model_output[:-1])
 
         # TODO: there might be problems with indices for verbose attentions
         max_attn_ratio = get_max_attn_ratio(attn_scores, supp_sent_idx)
