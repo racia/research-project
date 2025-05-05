@@ -230,8 +230,9 @@ class Chat:
                 # it is certainly an assistant output
                 # TODO: optionally divide it into reasoning and answer
                 ids = ids.tolist() if not isinstance(ids, list) else ids
-                print("REASON IDs", ids)
-                # TODO: possibly just store tokens?
+                # not flat because they count as "one sentence"
+                if type(ids[0]) is int:
+                    ids = [ids]
                 if not tokens:
                     tokens = [
                         self.tokenizer.convert_ids_to_tokens(id_list) for id_list in ids

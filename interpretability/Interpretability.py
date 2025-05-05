@@ -115,7 +115,7 @@ class Interpretability:
         attn_scores = attn_tensor.float().detach().cpu().numpy()
 
         if sent_spans:
-            # Additionally take mean of attention scores over each task sentence.
+            # Additionally take mean of attention scores over each task sentence
             attn_scores = np.array(
                 [
                     attn_scores[:, start:stop].mean(axis=-1)
@@ -138,8 +138,8 @@ class Interpretability:
                 )
                 attn_scores_T = attn_scores
 
-            # TODO: check if the second normalization is needed
-            # Normalize the attention scores by the sum of all token attention scores
+            # Normalize the attention scores by special tokens
+            # (otherwise the first system prompt sentence gets all the attention)
             attn_scores_T = attn_scores_T / attn_scores_T.sum(axis=0, keepdims=True)
 
             assert attn_scores_T.shape == (
@@ -305,7 +305,7 @@ class Interpretability:
             # only aggregated sentences, no verbose tokens
             attn_scores = self.get_attention_scores(
                 output_tensor=output_tensor,
-                model_output_len=len(chat.messages[-1]["ids"]),
+                model_output_len=len(flatten(chat.messages[-1]["ids"])),
                 sent_spans=sent_spans,
             )
             x_tokens = [
@@ -313,11 +313,11 @@ class Interpretability:
                 for i, (span, type_) in enumerate(spans_types.items(), 1)
             ]
         else:
-            sys_prompt_len = len(chat.messages[0]["ids"])
+            sys_prompt_len = len(flatten(chat.messages[0]["ids"]))
             chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
             attn_scores = self.get_attention_scores(
                 output_tensor=output_tensor,
-                model_output_len=len(chat.messages[-1]["ids"]),
+                model_output_len=len(flatten(chat.messages[-1]["ids"])),
                 sys_prompt_len=sys_prompt_len,
             )
             attention_indices = self.filter_attn_indices(attn_scores, chat_ids.numpy())
@@ -332,9 +332,14 @@ class Interpretability:
                 if i in attention_indices
             ]
 
+        if not chat.messages[-1]["tokens"][0]:
+            raise ValueError(
+                "The last message in the chat does not contain any tokens."
+            )
+
         y_tokens = [
             self.tokenizer.convert_tokens_to_string([token])
-            for token in chat.messages[-1]["tokens"][:-1]
+            for token in chat.messages[-1]["tokens"][0][:-1]
         ]
 
         # TODO: there might be problems with indices for verbose attentions

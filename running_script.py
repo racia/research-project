@@ -330,8 +330,6 @@ def run_setting(cfg: DictConfig) -> None:
                 f"==> The run for {split.name.upper()} data is finished successfully <==",
                 end="\n\n",
             )
-            print_metrics(split, table=True)
-
             items = zip(
                 split.versions, split.features, split.evaluators, prompt_evaluators
             )

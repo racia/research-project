@@ -367,6 +367,7 @@ class DataSaver:
             data=[result],
             headers=list(result.keys()),
             file_name=f"t_{part.task_id}_s_{part.sample_id}_results.csv",
+            path_add="sample_results",
         )
         for result, version in zip(part.results, part.versions):
             self.save_part_interpretability(result.interpretability, version, part)
@@ -375,13 +376,14 @@ class DataSaver:
             folder = self.results_path / version
 
             for role, ids in result.ids.items():
-                # TODO: user values are not flat! fix that in add_message?
                 self.save_with_separator(
-                    folder / "ids" / f"{role}-ids-{part_identifier}.txt", ids
+                    folder / "ids" / f"{role}-ids-{part_identifier}.txt",
+                    ["\t".join(map(str, i)) for i in ids],
                 )
             for role, tokens in result.tokens.items():
                 self.save_with_separator(
-                    folder / "tokens" / f"{role}-tokens-{part_identifier}.txt", tokens
+                    folder / "tokens" / f"{role}-tokens-{part_identifier}.txt",
+                    ["\t".join(t) for t in tokens],
                 )
 
     def save_sample_result(self, sample: Sample) -> None:
@@ -474,7 +476,7 @@ class DataSaver:
                     run_metrics, mean_headers, version
                 )
 
-                # TODO: should it be one level back?
+                # TODO: check if it should be one level back before running two-model settings
                 self.save_output(
                     data=list(run_metrics.values()),
                     headers=run_headers,

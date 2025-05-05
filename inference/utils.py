@@ -180,9 +180,14 @@ def flatten(lst: list[list] | list) -> list:
     """
     if not lst:
         return []
-    if type(lst[0]) == list:
+    if all(isinstance(i, list) for i in lst):
         return [item for sublist in lst for item in sublist]
-    return lst
+    elif all(isinstance(obj, int) for obj in lst):
+        return lst
+    raise TypeError(
+        "Expected a list of lists or a list of integers, got:",
+        *[type(obj) for obj in lst],
+    )
 
 
 def flatten_message(message: dict) -> list[dict]:

@@ -229,15 +229,19 @@ class Plotter:
 
             x_data = range(1, len(acc.all) + 1)
             y_data = acc.all
+
             if len(x_data) != len(y_data):
                 raise ValueError(
                     f"x and y must have the same first dimension, but have shapes {len(x_data)} and {len(y_data)}"
                 )
 
+            if not y_data:
+                raise ValueError("y_data is empty")
+
             plt.plot(
                 x_data,
                 y_data,
-                label=prompt if type(prompt) is str else prompt.name,
+                label=prompt if isinstance(prompt, str) else prompt.name,
                 color=color,
             )
 
@@ -249,46 +253,3 @@ class Plotter:
             number_of_prompts=number_of_prompts,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
-
-    def plot_accuracies(
-        self,
-        exact_match_accuracies: Accuracy | Metric | dict[Prompt, Accuracy | Metric],
-        soft_match_accuracies: Accuracy | Metric | dict[Prompt, Accuracy | Metric],
-        additional_info: list[str] = None,
-        compare_prompts: bool = False,
-        label: str = "",
-    ) -> None:
-        """
-        Plot the accuracies or standard deviations.
-
-        :param exact_match_accuracies: the exact-match accuracies or standard deviations
-        :param soft_match_accuracies: the soft-match accuracies or standard deviations
-        :param additional_info: additional information for the plot name
-        :param compare_prompts: whether to compare the prompts
-        :param label: label for the plot
-        :return: None
-        """
-        if compare_prompts:
-            # Save accuracies of all prompts
-            self.plot_acc_per_task_and_prompt(
-                acc_per_prompt_task=exact_match_accuracies,
-                y_label=f"Exact-Match {label}",
-                plot_name_add=additional_info,
-            )
-            self.plot_acc_per_task_and_prompt(
-                acc_per_prompt_task=soft_match_accuracies,
-                y_label=f"Soft Match {label}",
-                plot_name_add=additional_info,
-            )
-        else:
-            # Save accuracies of one prompts
-            self.plot_acc_per_task(
-                acc_per_task=exact_match_accuracies,
-                y_label=f"Exact-Match {label}",
-                plot_name_add=additional_info,
-            )
-            self.plot_acc_per_task(
-                acc_per_task=soft_match_accuracies,
-                y_label=f"Soft Match {label}",
-                plot_name_add=additional_info,
-            )
