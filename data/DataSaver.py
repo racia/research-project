@@ -215,6 +215,7 @@ class DataSaver:
         :param result: the interpretability result
         :param version: the version of the interpretability result (might also be an iteration)
         :param part: the part of the sample (only for the ids)
+        :param add: the addition to the file name
         :return: None
         """
         if not (version in ["before", "after"] or version.isdigit()):
