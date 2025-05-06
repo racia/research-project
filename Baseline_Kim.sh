@@ -7,7 +7,7 @@
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:1                 # Request 1 GPU
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
-#SBATCH --mem=64G                    # Total memory requested
+#SBATCH --mem=128G                    # Total memory requested
 
 # Output and error logs
 #SBATCH --output="baseline_out.txt"
