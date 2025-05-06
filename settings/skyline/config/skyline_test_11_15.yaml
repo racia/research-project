@@ -3,10 +3,13 @@ defaults:
   - skyline_config
   - _self_
 
+model:
+  max_new_tokens: 150
+
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
   task_ids: [ 11, 12, 13, 14, 15 ]
-  samples_per_task: 150
+  samples_per_task: 100
   splits:
     train: False
     valid: False
