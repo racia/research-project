@@ -6,7 +6,7 @@ defaults:
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
   task_ids: [ 6, 7, 8, 9, 10 ]
-  samples_per_task: 100
+  samples_per_task: 150
   splits:
     train: False
     valid: False
