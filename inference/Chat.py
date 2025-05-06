@@ -140,10 +140,11 @@ class Chat:
     def add_message(
         self,
         part: SamplePart | str | dict,
-        source: Union[Source.user, Source.assistant],
+        source: Union[Source.user, Source.assistant] = None,
         ids: torch.Tensor | list[int] = None,
         tokens: list[str] = None,
         wrapper: dict[str, dict] = None,
+        **kwargs,
     ) -> None:
         """
         Add a message to the messages list. It can add either a message from the part task or assistant output.
@@ -159,6 +160,8 @@ class Chat:
         :param wrapper: the wrapper ids and sentence spans of the message
         :return: None
         """
+        if kwargs:
+            warnings.warn("Unused keyword arguments: " + ", ".join(kwargs.keys()))
         if (
             wrapper
             and (ids is not None or type(part) in [str, dict])
@@ -167,6 +170,7 @@ class Chat:
             raise ValueError(
                 "Wrapper can only be used for the messages created from scratch, and now, ids are passed."
             )
+
         message_fields = (
             "role",
             "content",
@@ -175,25 +179,27 @@ class Chat:
             "ids",
             "spans_with_types",
         )
-        # it is a pre-created message (used in SD)
+        self.part = part
+        spans_with_types = {}
+        part_dict = {}
+        # it is a pre-created message (used in SD and Feedback)
         if isinstance(part, dict):
+
             if all(key in part for key in message_fields):
+                print("DEBUG: case dict and all keys present")
+                print("DEBUG: part['spans_with_types']", part["spans_with_types"])
                 part["spans_with_types"] = {
                     upd_span(span, self.offset): f"{type_}_"
                     for span, type_ in part["spans_with_types"].items()
                 }
                 self.offset += len(flatten(["ids"]))
-                self.messages.append(part)
-                return
+                part_dict = part
             else:
                 raise ValueError(
                     f"The part is a dictionary, but not all required fields are present: {part}"
                 )
-
-        self.part = part
-        spans_with_types = {}
         # it is certainly a task
-        if isinstance(part, SamplePart):
+        elif isinstance(part, SamplePart):
             if wrapper:
                 print("DEBUG: case SamplePart and Wrapper")
                 tokens, ids = [], []
@@ -266,10 +272,8 @@ class Chat:
                 spans_with_types[upd_span((0, len(ids)), self.offset)] = label
                 self.offset += len(ids)
 
-        print("ids", len(ids), ids)
-        print("spans_with_types", spans_with_types)
 
-        part_dict = {
+        part_dict = part_dict or {
             "role": source,
             "content": part if isinstance(part, str) else part.task,
             "original_content": part if isinstance(part, str) else part.unwrapped_task,
@@ -277,6 +281,8 @@ class Chat:
             "ids": ids,
             "spans_with_types": spans_with_types,
         }
+        print("ids", len(part_dict["ids"]), part_dict["ids"])
+        print("spans_with_types", part_dict["spans_with_types"])
         self.messages.append(part_dict)
 
     def move_approved_message(self, other_chat: Chat, wrapper: dict = None) -> None:

@@ -82,6 +82,29 @@ class Setting(ABC):
             )
         return chat
 
+    def get_after_interpretability(self) -> InterpretabilityResult:
+        """
+        Get the interpretability result for the student after the setting is applied.
+        This is used for the multi-system setting.
+        :return: interpretability result
+        """
+        chat_ids = self.model.chat.convert_into_datatype("ids", identify_target=False)
+        output_tensor = self.model.model(
+            chat_ids,
+            return_dict=True,
+            output_attentions=True,
+            output_hidden_states=False,
+        )
+        interpretability = self.model.interpretability.process_attention(
+            # output tensor includes all the previous ids + the model output
+            output_tensor=output_tensor,
+            chat=self.model.chat,
+            chat_ids=chat_ids,
+            part=self.part,
+            keyword="after",
+        )
+        return interpretability
+
     @abstractmethod
     def apply_setting(
         self, decoded_output: str

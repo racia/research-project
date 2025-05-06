@@ -105,26 +105,6 @@ class Feedback(Setting):
             "attn_on_target": [],
         }
 
-    # def prepare_prompt(self, chat: Chat, resume_gen=False, model_role="student") -> str:
-    #     """
-    #     Prepares the prompt to include the current part of the sample.
-    #
-    #     :param chat: the current chat
-    #     :param resume_gen: whether to resume generation from the last message
-    #
-    #     :return: prompt with the task and the current part
-    #     """
-    #     if self.model.to_continue or resume_gen:
-    #         formatted_prompt = self.model.tokenizer.apply_chat_template(
-    #             chat.messages, tokenize=False, continue_final_message=True
-    #         )
-    #     else:
-    #         formatted_prompt = self.model.tokenizer.apply_chat_template(
-    #             chat.messages, tokenize=False, add_generation_prompt=True
-    #         )
-    #
-    #     return formatted_prompt
-
     @staticmethod
     def check_feedback(teacher_feedback: str) -> bool | None:
         """
@@ -200,7 +180,7 @@ class Feedback(Setting):
             student_message["content"] = " "
 
         teacher_message = self.feedback_prompt.format_teacher_message(student_message)
-        self.teacher.chat.add_message(**teacher_message)
+        self.teacher.chat.add_message(part=teacher_message)
 
         print("Golden answer:", self.part.golden_answer)
 
@@ -237,7 +217,7 @@ class Feedback(Setting):
             self.student.chat.messages[-1], self.teacher.chat.messages[-1]
         )
         self.student.chat.add_message(**refine_message)
-        return self.student.call(part=self.part, from_chat=True, subfolder="iterations")
+        return self.student.call(self.part, from_chat=True, subfolder="iterations")
 
     def apply_setting(
         self, decoded_output: str
@@ -317,52 +297,23 @@ class Feedback(Setting):
             )
 
             print(" ---- Teacher ---- ", end="\n\n\n", flush=True)
-            feedback, is_valid = self.give_feedback(self.student.chat.messages[-1])
+            is_valid = self.give_feedback(self.student.chat.messages[-1])
 
-            print(
-                "Teacher's feedback:",
-                f"is valid: {is_valid}",
-                "feedback:",
-                feedback,
-                " ------------- ",
-                end="\n\n\n",
-                sep="\n",
-                flush=True,
-            )
             if self.saver and self.part:
                 self.saver.save_feedback_iteration(
                     part=self.part,
                     iteration=iteration,
                     student_message=decoded_output,
-                    teacher_message=feedback,
+                    teacher_message=self.teacher.chat.messages[-1]["content"],
                     interpretability=interpretability,
                 )
 
         # Update the original chat's last student message with the refined output
-        last_model_message = self.student.chat.messages[-1]
         original_student_chat.remove_message(-1)
-        original_student_chat.move_approved_message(last_model_message)
+        original_student_chat.move_approved_message(self.student.chat)
         self.student.chat = original_student_chat
         print("DEBUG: self.student.chat updated", self.student.chat)
 
-        # call the interpretability with the final chat
-        chat_ids = self.student.chat.convert_into_datatype("ids")
-        output_tensor = self.student.model(
-            chat_ids,
-            return_dict=True,
-            output_attentions=True,
-            output_hidden_states=False,
-        )
-        interpretability = self.student.interpretability.process_attention(
-            # output tensor includes all the previous ids + the model output
-            output_tensor=output_tensor,
-            # chat includes the current model output but the processing should not!
-            chat=self.student.chat,
-            chat_ids=chat_ids,
-            part=self.part,
-            keyword="after",
-        )
-
         self.curr_eval_dict = {"iterations": iteration}
 
-        return decoded_output, self.curr_eval_dict, interpretability
+        return decoded_output, self.curr_eval_dict, self.get_after_interpretability()
