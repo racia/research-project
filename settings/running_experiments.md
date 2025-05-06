@@ -41,4 +41,7 @@ Instruction:
    You might also want to check the available partitions: `sinfo_t_idle`
 
 6. check job allocation with `squeue --start`
+
+   > NB! Don't change the code until the job starts
+
 7. once a job is started, cancel all other jobs with `scancel {job_id}`
