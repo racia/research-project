@@ -3,7 +3,7 @@
 # Job name
 #SBATCH --job-name=baseline
 
-#SBATCH --time=4:30:00              # Job time limit (30 minutes)
+#SBATCH --time=2:30:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:1                 # Request 1 GPU
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
