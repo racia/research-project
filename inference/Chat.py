@@ -182,12 +182,35 @@ class Chat:
         self.part = part
         spans_with_types = {}
         part_dict = {}
+        # TODO: overlapping spans
+        # DEBUG: case SamplePart and Wrapper
+        # sentence 10. John went to the office.
+        # sentence 11. Mary travelled to the office.
+        # sentence Where is the milk?
+
+        # {(405, 414): 'wrap', (414, 423): 'cont', (422, 431): 'cont', (430, 437): 'wrap', (437, 444): 'ques'}
+        # DEBUG: chunk {'role': 'user', 'content': '*TASK*\nHere are the context sentences:\n4. Sandra grabbed the football there.\n5.
+        # Sandra dropped the milk.\n\nNow, answer the following question:\nWhere is the milk?', 'original_content': '4.
+        # Sandra grabbed the football there.\n5. Sandra dropped the milk.\nWhere is the milk?', 'tokens': [['*T', 'ASK', '*Ċ',
+        # 'Here', 'Ġare', 'Ġthe', 'Ġcontext', 'Ġsentences', ':Ċ'], ['4', '.', 'ĠSandra', 'Ġgrabbed', 'Ġthe', 'Ġfootball', 'Ġthere', '.Ċ'],
+        # ['5', '.', 'ĠSandra', 'Ġdropped', 'Ġthe', 'Ġmilk', '.Ċ'], ['Now', ',', 'Ġanswer', 'Ġthe', 'Ġfollowing', 'Ġquestion', ':Ċ'],
+        # ['Where', 'Ġis', 'Ġthe', 'Ġmilk', '?Ċ']], 'ids': [[61734, 7536, 5736, 8586, 527, 279, 2317, 23719, 512], [19, 13, 56786, 30418,
+        # 279, 9141, 1070, 627], [20, 13, 56786, 12504, 279, 14403, 627], [7184, 11, 4320, 279, 2768, 3488, 512], [9241, 374, 279, 14403,
+        # 5380]], 'spans_with_types': {(484, 493): 'wrap', (493, 502): 'cont', (501, 510): 'cont', (508, 515): 'wrap', (515, 522): 'ques'}}
+
+        # DEBUG: chunk {'role': 'user', 'content': '*TASK*\nHere are the context sentences:\n7. Sandra discarded the football.\n8. Sandra
+        # went to the hallway.\n\nNow, answer the following question:\nWhere is the milk?', 'original_content': '7. Sandra discarded the
+        # football.\n8. Sandra went to the hallway.\nWhere is the milk?', 'tokens': [['*T', 'ASK', '*Ċ', 'Here', 'Ġare', 'Ġthe', 'Ġcontext',
+        # 'Ġsentences', ':Ċ'], ['7', '.', 'ĠSandra', 'Ġdiscarded', 'Ġthe', 'Ġfootball', '.Ċ'], ['8', '.', 'ĠSandra', 'Ġwent', 'Ġto', 'Ġthe',
+        # 'Ġhallway', '.Ċ'], ['Now', ',', 'Ġanswer', 'Ġthe', 'Ġfollowing', 'Ġquestion', ':Ċ'], ['Where', 'Ġis', 'Ġthe', 'Ġmilk', '?Ċ']],
+        # 'ids': [[61734, 7536, 5736, 8586, 527, 279, 2317, 23719, 512], [22, 13, 56786, 44310, 279, 9141, 627], [23, 13, 56786, 4024, 311,
+        # 279, 51902, 627], [7184, 11, 4320, 279, 2768, 3488, 512], [9241, 374, 279, 14403, 5380]], 'spans_with_types': {(430, 439): 'wrap',
+        # (439, 448): 'cont', (446, 455): 'cont', (454, 461): 'wrap', (461, 468): 'ques'}}
+
         # it is a pre-created message (used in SD and Feedback)
         if isinstance(part, dict):
-
             if all(key in part for key in message_fields):
                 print("DEBUG: case dict and all keys present")
-                print("DEBUG: part['spans_with_types']", part["spans_with_types"])
                 part["spans_with_types"] = {
                     upd_span(span, self.offset): f"{type_}_"
                     for span, type_ in part["spans_with_types"].items()
@@ -271,7 +294,6 @@ class Chat:
                 label = "ans" if source == Source.assistant else "task"
                 spans_with_types[upd_span((0, len(ids)), self.offset)] = label
                 self.offset += len(ids)
-
 
         part_dict = part_dict or {
             "role": source,

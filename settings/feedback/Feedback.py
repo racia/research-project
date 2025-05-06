@@ -98,7 +98,7 @@ class Feedback(Setting):
 
         self.feedback_prompt: Prompt = feedback_prompt
         self.refine_prompt: Prompt = refine_prompt
-
+        self.interation = 0
         self.curr_eval_dict = {
             "iterations": 0,
             "max_supp_attn": [],
@@ -217,7 +217,12 @@ class Feedback(Setting):
             self.student.chat.messages[-1], self.teacher.chat.messages[-1]
         )
         self.student.chat.add_message(**refine_message)
-        return self.student.call(self.part, from_chat=True, subfolder="iterations")
+        return self.student.call(
+            # subfolder will be removed as no plotting is done during the main run
+            self.part,
+            from_chat=True,
+            subfolder=f"iterations/{self.iteration}",
+        )
 
     def apply_setting(
         self, decoded_output: str
@@ -252,7 +257,7 @@ class Feedback(Setting):
         print(" ---- Teacher ---- ", end="\n\n\n", flush=True)
         is_valid = self.give_feedback(self.student.chat.messages[-1])
 
-        iteration = 1
+        self.iteration = 1
         # without iterations, interpretability will stay None
         interpretability = None
 
@@ -261,19 +266,21 @@ class Feedback(Setting):
             # otherwise, if the teacher is happy, it'd be saved as empty
             self.saver.save_feedback_iteration(
                 part=self.part,
-                iteration=iteration,
+                iteration=self.iteration,
                 student_message=decoded_output,
                 teacher_message=self.teacher.chat.messages[-1]["content"],
             )
         # Loop until teacher is satisfied with student output
         while not is_valid:
-            iteration += 1
+            self.iteration += 1
             print(
-                f" ---- Feedback iteration {iteration} ---- ", end="\n\n\n", flush=True
+                f" ---- Feedback iteration {self.iteration} ---- ",
+                end="\n\n\n",
+                flush=True,
             )
 
             # Maximum iterations check
-            if iteration > 15:
+            if self.iteration > 15:
                 print("Maximum feedback iterations reached. Using last student output.")
                 break
 
@@ -302,7 +309,7 @@ class Feedback(Setting):
             if self.saver and self.part:
                 self.saver.save_feedback_iteration(
                     part=self.part,
-                    iteration=iteration,
+                    iteration=self.iteration,
                     student_message=decoded_output,
                     teacher_message=self.teacher.chat.messages[-1]["content"],
                     interpretability=interpretability,
@@ -314,6 +321,6 @@ class Feedback(Setting):
         self.student.chat = original_student_chat
         print("DEBUG: self.student.chat updated", self.student.chat)
 
-        self.curr_eval_dict = {"iterations": iteration}
+        self.curr_eval_dict = {"iterations": self.iteration}
 
         return decoded_output, self.curr_eval_dict, self.get_after_interpretability()
