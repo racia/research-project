@@ -717,9 +717,14 @@ class SpeculativeDecoding(Setting):
             tokenizer=self.teacher.tokenizer,
             remove_last=True,
         )
-        teacher_message = self.eval_prompt.format_teacher_message(
-            {"content": "\n\n", "tokens": ["Ċ"], "ids": [271]}
-        )
+        empty_message = {
+            "content": "\n\n",
+            "original_content": "\n\n",
+            "tokens": ["Ċ"],
+            "ids": [271],
+            "spans_with_types": {(0, 1): "ans"},
+        }
+        teacher_message = self.eval_prompt.format_teacher_message(empty_message)
         self.teacher.chat.add_message(**teacher_message)
 
         # reset evaluation dict for each part

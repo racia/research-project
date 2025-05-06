@@ -139,7 +139,7 @@ class Chat:
 
     def add_message(
         self,
-        part: SamplePart | str,
+        part: SamplePart | str | dict,
         source: Union[Source.user, Source.assistant],
         ids: torch.Tensor | list[int] = None,
         tokens: list[str] = None,
@@ -161,12 +161,35 @@ class Chat:
         """
         if (
             wrapper
-            and (ids is not None or type(part) is str)
+            and (ids is not None or type(part) in [str, dict])
             and source == Source.assistant
         ):
             raise ValueError(
                 "Wrapper can only be used for the messages created from scratch, and now, ids are passed."
             )
+        message_fields = (
+            "role",
+            "content",
+            "original_content",
+            "tokens",
+            "ids",
+            "spans_with_types",
+        )
+        # it is a pre-created message (used in SD)
+        if isinstance(part, dict):
+            if all(key in part for key in message_fields):
+                part["spans_with_types"] = {
+                    upd_span(span, self.offset): f"{type_}_"
+                    for span, type_ in part["spans_with_types"].items()
+                }
+                self.offset += len(flatten(["ids"]))
+                self.messages.append(part)
+                return
+            else:
+                raise ValueError(
+                    f"The part is a dictionary, but not all required fields are present: {part}"
+                )
+
         self.part = part
         spans_with_types = {}
         # it is certainly a task
@@ -256,7 +279,7 @@ class Chat:
         }
         self.messages.append(part_dict)
 
-    def move_approved_message(self, other_chat: Chat, wrapper: dict) -> None:
+    def move_approved_message(self, other_chat: Chat, wrapper: dict = None) -> None:
         """
         Move the last message from another chat to the current chat.
 
