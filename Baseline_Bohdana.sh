@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=baseline
+#SBATCH --job-name=da-baseline
 
 #SBATCH --time=2:30:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
@@ -10,8 +10,8 @@
 #SBATCH --mem=128G                    # Total memory requested
 
 # Output and error logs
-#SBATCH --output="baseline_out.txt"
-#SBATCH --error="baseline_err.txt"
+#SBATCH --output="da_baseline_out.txt"
+#SBATCH --error="da_baseline_err.txt"
 
 # Email notifications
 #SBATCH --mail-user=""              # TODO: Add your email address
