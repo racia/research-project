@@ -5,7 +5,7 @@
 We'll run it for:
 
 1. basic baseline
-2. advanced baseline
+2. advanced baseline +
 3. skyline
 
 ## Reasoning
@@ -13,8 +13,8 @@ We'll run it for:
 We'll run it for:
 
 1. basic baseline
-2. advanced baseline
-3. skyline
+2. advanced baseline +++
+3. skyline +
 4. feedback
 5. speculative decoding
 
