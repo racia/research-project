@@ -12,13 +12,13 @@ class AccuracyType:
 
 def get_paths(directory: str | Path, keyword: str, file_format="csv") -> list[Path]:
     """
-    Get all paths that contain a keyword in the name from all the run subdirectories.
+    Get all paths that contain a type_ in the name from all the run subdirectories.
 
     :param directory: path to the directory containing the run subdirectories
-    :param keyword: keyword to search for in the path names
+    :param keyword: type_ to search for in the path names
     :param file_format: format of the files to search for
 
-    :return: list of paths containing the keyword
+    :return: list of paths containing the type_
     """
     paths = []
     if type(directory) is str:

@@ -241,8 +241,12 @@ class Interpretability:
             for token in chat.messages[-1]["tokens"][0][:-1]
         ]
 
-        keyword_ = "aggregated" if aggregate else "verbose"
         result = InterpretabilityResult(
-            attn_scores, x_tokens, y_tokens, max_attn_ratio, attn_on_target, keyword_
+            attn_scores,
+            x_tokens,
+            y_tokens,
+            max_attn_ratio,
+            attn_on_target,
+            "aggregated" if aggregate else "verbose",
         )
         return result

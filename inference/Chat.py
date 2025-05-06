@@ -127,14 +127,14 @@ class Chat:
             (model_output_span[0], model_output_span[1] + len(partial_ids)): "ans"
         }
         self.messages[-1]["spans_with_types"] = {
-            **list(spans_with_types.items())[:-1],
+            **dict(list(spans_with_types.items())[:-1]),
             **model_output_span_type,
         }
         self.offset += len(partial_ids)
 
     def add_message(
         self,
-        part: SamplePart | str,
+        part: SamplePart | str | dict,
         source: Union[Source.user, Source.assistant],
         ids: torch.Tensor | list[int] = None,
         tokens: list[str] = None,
@@ -156,12 +156,35 @@ class Chat:
         """
         if (
             wrapper
-            and (ids is not None or type(part) is str)
+            and (ids is not None or type(part) in [str, dict])
             and source == Source.assistant
         ):
             raise ValueError(
                 "Wrapper can only be used for the messages created from scratch, and now, ids are passed."
             )
+        message_fields = (
+            "role",
+            "content",
+            "original_content",
+            "tokens",
+            "ids",
+            "spans_with_types",
+        )
+        # it is a pre-created message (used in SD)
+        if isinstance(part, dict):
+            if all(key in part for key in message_fields):
+                part["spans_with_types"] = {
+                    upd_span(span, self.offset): f"{type_}_"
+                    for span, type_ in part["spans_with_types"].items()
+                }
+                self.offset += len(flatten(["ids"]))
+                self.messages.append(part)
+                return
+            else:
+                raise ValueError(
+                    f"The part is a dictionary, but not all required fields are present: {part}"
+                )
+
         self.part = part
         spans_with_types = {}
         # it is certainly a task
@@ -232,7 +255,8 @@ class Chat:
                     tokens = [
                         self.tokenizer.convert_ids_to_tokens(id_list) for id_list in ids
                     ]
-                tokens = [tokens]
+                elif type(tokens[0]) is str:
+                    tokens = [tokens]
                 label = "ans" if source == Source.assistant else "task"
                 spans_with_types[upd_span((0, len(ids)), self.offset)] = label
                 self.offset += len(ids)
@@ -250,20 +274,58 @@ class Chat:
         }
         self.messages.append(part_dict)
 
-    def move_approved_message(self, other_chat: Chat) -> None:
+    def move_approved_message(self, other_chat: Chat, wrapper: dict = None) -> None:
         """
         Move the last message from another chat to the current chat.
 
         :param other_chat: the chat to move the message from
+        :param wrapper: the wrapper for the moved message
         :return: None
         """
         approved_message = other_chat.messages[-1]
+        print("MOVING MESSAGE", approved_message, sep="\n")
+        offset_difference = other_chat.offset - self.offset
         spans_with_types = {}
-        for span, type_ in approved_message["spans_with_types"].items():
-            offset_difference = other_chat.offset - self.offset
-            spans_upd = (span[0] - offset_difference, span[1] - offset_difference)
-            spans_with_types[spans_upd] = type_
-        approved_message["spans_with_types"] = spans_with_types
+
+        if "The student's response was:" in approved_message["original_content"]:
+            raise ValueError(
+                f"The message contains teacher wrapper: {approved_message}"
+            )
+
+        content, original_content = "", ""
+        message_ids, message_tokens = [], []
+        if wrapper:
+            for key, wrap in wrapper.items():
+                intro, outro = wrap["before"], wrap.get("after", wrap["before"])
+                chunks = [intro, approved_message, outro]
+                for chunk in chunks:
+                    assert type(chunk) is dict
+                    content += chunk.get("original_content", chunk["content"])
+                    original_content += chunk.get("original_content", "")
+                    if type(chunk["ids"]) is int:
+                        message_ids.append(chunk["ids"])
+                        message_tokens.append(chunk["tokens"])
+                    else:
+                        message_ids.extend(chunk["ids"])
+                        message_tokens.extend(chunk["tokens"])
+
+                    updated_span = upd_span(chunk["sent_spans"], self.offset)
+                    spans_with_types[updated_span] = chunk.get("type", "wrap")
+                    self.offset += len(flatten(chunk["ids"]))
+            approved_message = {
+                "role": approved_message["role"],
+                "content": content,
+                "original_content": original_content,
+                "tokens": message_tokens,
+                "ids": message_ids,
+                "spans_with_types": spans_with_types,
+            }
+        else:
+            for span, type_ in approved_message["spans_with_types"].items():
+                spans_upd = (span[0] - offset_difference, span[1] - offset_difference)
+                spans_with_types[spans_upd] = type_
+            approved_message["spans_with_types"] = spans_with_types
+            approved_message["content"] = approved_message["original_content"]
         self.messages.append(approved_message)
 
     def get_sentence_spans(
@@ -317,7 +379,11 @@ class Chat:
                 self.supp_sent_spans.append(span)
 
     def convert_into_datatype(
-        self, datatype: str, max_length: int = 2048, identify_target: bool = True
+        self,
+        datatype: str,
+        max_length: int = 2048,
+        identify_target: bool = True,
+        to_continue: bool = False,
     ) -> torch.Tensor:
         """
         Converts the chat into 'ids' or 'tokens' using the tokenizer.
@@ -325,7 +391,8 @@ class Chat:
         :param datatype: what to convert chat into ('ids' or 'tokens')
         :param max_length: the maximum length of the input
         :param identify_target: whether to identify the supporting sentence spans
-        :return: list of ids
+        :param to_continue: whether the last message has to be continued (no generation token will be added)
+        :return: list of ids or tokens as a tensor
         """
         if datatype not in ("ids", "tokens"):
             raise ValueError(
@@ -353,7 +420,7 @@ class Chat:
 
             chat_ids.extend(message_ids)
 
-        chat_ids.extend(get_generation_token_ids(self.tokenizer, "assistant"))
-        print("chat_ids", len(chat_ids), chat_ids)
+        if not to_continue:
+            chat_ids.extend(get_generation_token_ids(self.tokenizer, "assistant"))
 
         return torch.as_tensor([chat_ids])

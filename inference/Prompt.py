@@ -195,8 +195,10 @@ class Prompt:
         :param student_message: the message of the student chat with the content and ids
         :return: str, the instruction with the student output inserted
         """
-        teacher_string = ""
+        teacher_string, orig_teacher_string = "", ""
         teacher_ids, teacher_tokens = [], []
+        spans_with_types = {}
+        offset = 0
 
         for key, wrap in self.wrapper.items():
             intro, outro = wrap["before"], wrap.get("after", wrap["before"])
@@ -210,13 +212,26 @@ class Prompt:
                     teacher_ids.extend(generation_token_ids)
                     continue
 
-                teacher_string += chunk["content"]
+                teacher_string += chunk.get("content", "")
+                orig_teacher_string += chunk.get("original_content", "")
                 if type(chunk["ids"]) is int:
                     teacher_ids.append(chunk["ids"])
                     teacher_tokens.append(chunk["tokens"])
                 else:
                     teacher_ids.extend(chunk["ids"])
                     teacher_tokens.extend(chunk["tokens"])
+
+                if chunk.get("spans_with_types", False):
+                    spans_types = chunk["spans_with_types"]
+                    upd_spans = {
+                        upd_span(span, offset): f"{type_}_"
+                        for span, type_ in spans_types.items()
+                    }
+                    spans_with_types.update(upd_spans)
+                    offset += len(flatten(chunk["ids"]))
+                else:
+                    raise ValueError(f"Chunk does not have spans with types: {chunk}")
+
         print(
             "Teacher's message:",
             teacher_string,
@@ -224,10 +239,12 @@ class Prompt:
             end="\n\n\n",
         )
         return {
-            "part": teacher_string,
-            "source": Source.user,
+            "role": Source.user,
+            "content": teacher_string,
+            "original_content": orig_teacher_string,
             "ids": teacher_ids,
             "tokens": teacher_tokens,
+            "spans_with_types": spans_with_types,
         }
 
     def format_resume_message(

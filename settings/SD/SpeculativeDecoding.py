@@ -97,11 +97,14 @@ class SpeculativeDecoding(Setting):
 
         :return: The output of the student model
         """
+        print("GENERATE STUDENT IS CALLED")
         self.student.chat.remove_message(-1)
         self.student.chat.add_message(
             part=self.resume_prompt.text, source=Source.user, ids=self.resume_prompt.ids
         )
-        self.student.chat.move_approved_message(self.teacher.chat)
+        self.student.chat.move_approved_message(
+            self.teacher.chat, wrapper=self.resume_prompt.wrapper
+        )
         print(
             "\n--------------\n",
             "Evaluation prompt of the user: ",
@@ -110,13 +113,6 @@ class SpeculativeDecoding(Setting):
             end="\n--------------\n\n",
         )
 
-        # add the output the student should continue as an assistant message
-        # TODO: Should not include eos_token_id or other end tokens at the end!
-        # message_to_continue = self.resume_prompt.format_resume_message(
-        #     corrected_str, corrected_tokens
-        # )
-        # self.student.chat.add_message(**message_to_continue)
-
         print(
             "\n--------------\n",
             "Message that the student should continue: ",
@@ -124,8 +120,6 @@ class SpeculativeDecoding(Setting):
             sep="\n",
             end="\n--------------\n\n",
         )
-
-        # formatted_prompt = self.prepare_prompt(chat=self.student.chat, resume_gen=True)
 
         # Call with the whole chat
         decoded_output, interpretability = self.student.call(
@@ -167,34 +161,39 @@ class SpeculativeDecoding(Setting):
         suggested_token_affix = None
         top_tokens_decoded_probs = None
         inx = 0
+        print('student_message["tokens"]', student_message["tokens"])
         flat_student_tokens = flatten(student_message["tokens"])
+        print("flat_student_tokens", flat_student_tokens)
 
-        for inx, student_token in enumerate(
-            flat_student_tokens[last_err_inx + 1 :]
-        ):
+        for inx, student_token in enumerate(flat_student_tokens[last_err_inx + 1 :]):
             # handle empty tokens by setting it to whitespace
             # TODO: remove?
-            student_token = student_token.lower().strip() or " "
+            print(
+                "Encoded token",
+                student_token,
+                self.tokenizer.convert_tokens_to_ids(student_token),
+            )
+            # student_token = student_token.lower().strip() or " "
             is_eos_token = student_token == self.tokenizer.eos_token
             is_last_token = inx == len(flat_student_tokens)
             if is_eos_token or is_last_token:
                 self.student_eos = True
 
             # TODO: check if needed?
-            if self.affix:
-                student_token = flat_student_tokens[inx - 1] + student_token
-                student_token = student_token.strip()
-                print(
-                    f"Verifying token combined with previous token {student_token} at indices {inx - 1} and {inx}",
-                    end="\n\n",
-                    flush=True,
-                )
-            else:
-                print(
-                    f"Verifying token '{student_token}' at index {inx}",
-                    end="\n\n",
-                    flush=True,
-                )
+            # if self.affix:
+            #     student_token = flat_student_tokens[inx - 1] + student_token
+            #     student_token = student_token.strip()
+            #     print(
+            #         f"Verifying token combined with previous token {student_token} at indices {inx - 1} and {inx}",
+            #         end="\n\n",
+            #         flush=True,
+            #     )
+            # else:
+            print(
+                f"Verifying token '{student_token}' at index {inx}",
+                end="\n\n",
+                flush=True,
+            )
 
             # if inx > 0 or last_err_inx > 0:
             #     print(
@@ -214,7 +213,7 @@ class SpeculativeDecoding(Setting):
             #     student_out_approved = " "
 
             input_ids = self.teacher.chat.convert_into_datatype(
-                datatype="ids", identify_target=False
+                datatype="ids", identify_target=False, to_continue=True
             )
             print(
                 f"TEACHER Formatted prompt (to remove):",
@@ -222,7 +221,7 @@ class SpeculativeDecoding(Setting):
                 sep="\n",
                 end="\n",
             )
-            teacher_probs = self.teacher.call_probs(input_ids.to("cuda:1"))
+            teacher_probs = self.teacher.call_probs(input_ids.to("cuda"))
 
             if self.teacher.p:
                 top_tokens_decoded_probs, top_tokens_encoded = self.get_top_p_tokens(
@@ -293,9 +292,14 @@ class SpeculativeDecoding(Setting):
                 self.tokenizer.convert_tokens_to_string([student_token]),
                 student_token_id,
             )
+            print(
+                "top_tokens_decoded_probs[student_token]",
+                type(top_tokens_decoded_probs[student_token]),
+                top_tokens_decoded_probs[student_token],
+            )
             self.curr_eval_dict["teacher_prob_approved_tokens"][student_token] = (
                 top_tokens_decoded_probs[student_token]
-            ).item()
+            )
 
             self.affix = False
             print(f"Teacher approved token {student_token}", end="\n\n", flush=True)
@@ -312,7 +316,7 @@ class SpeculativeDecoding(Setting):
         if top_tokens_decoded_probs:
             self.curr_eval_dict["intervention_with_prob"][suggested_token] = (
                 top_tokens_decoded_probs[suggested_token]
-            ).item()
+            )
 
         self.teacher.chat.adjust_message(
             self.tokenizer.convert_tokens_to_string([suggested_token]),
@@ -345,19 +349,15 @@ class SpeculativeDecoding(Setting):
             top_probs, top_ids = torch.topk(teacher_probs, self.teacher.k + j, dim=-1)
 
             for token_id in top_ids[0]:
-                decoded_token = (
-                    self.tokenizer.decode(
-                        token_id,  # skip_special_tokens=skip_eos
-                    )
-                    .lower()
-                    .strip()
-                )
+                decoded_token = self.tokenizer.convert_ids_to_tokens(
+                    token_id.item()
+                )  # .lower().strip()
 
                 if decoded_token not in top_tokens_decoded_probs.keys():
                     if skip_eos and len(decoded_token) < 1:
                         continue
-                    top_tokens_decoded_probs[decoded_token] = top_probs[0][j].item()
-                    top_tokens_encoded.append(int(token_id.item()))
+                    top_tokens_decoded_probs[decoded_token] = top_probs[0][j]
+                    top_tokens_encoded.append(int(token_id))
 
                 if len(top_tokens_decoded_probs) == self.teacher.k:
                     break
@@ -399,11 +399,9 @@ class SpeculativeDecoding(Setting):
         for token_id, prob in zip(
             sorted_indices[top_token_mask], sorted_probs[top_token_mask]
         ):
-            decoded_token = (
-                self.tokenizer.decode(token_id.item(), skip_special_tokens=skip_eos)
-                .lower()
-                .strip()
-            )
+            decoded_token = self.tokenizer.convert_ids_to_tokens(
+                token_id.items()
+            )  # .lower().strip()
 
             print(f"Token id: {token_id}, decoded token: {decoded_token}, prob: {prob}")
 
@@ -450,7 +448,7 @@ class SpeculativeDecoding(Setting):
         input_ids = self.teacher.chat.convert_into_datatype(
             datatype="ids", identify_target=False
         )
-        teacher_probs = self.teacher.call_probs(input_ids.to("cuda:1"))
+        teacher_probs = self.teacher.call_probs(input_ids.to("cuda"))
         top_tokens_decoded, top_tokens_encoded = self.get_top_k_tokens(
             teacher_probs=teacher_probs, skip_eos=True
         )
@@ -560,111 +558,6 @@ class SpeculativeDecoding(Setting):
             corrected_str = teacher_intervention
 
         return corrected_tokens, corrected_str
-
-    def apply_setting(
-        self, decoded_output: str
-    ) -> tuple[str, dict, InterpretabilityResult]:
-        """
-        Run the speculative decoding for one instance.
-
-        The speculative decoding consists of the following steps:
-        1. Generate a chain of thought with the student model.
-        2. Verify that chain of thought using the teacher model.
-        3. If the teacher model disagrees, correct the chain of thought and continue with the student model.
-        4. Repeat steps 2 and 3 until the teacher model agrees with the chain of thought.
-
-        :param decoded_output: the current output of the student
-        :return: The decoded output, the number of revisions and the interpretability result
-        """
-        # TODO: save model_output_after as strings, not tokens
-        # TODO: teacher tokens in the student chat?
-        # TODO: nan datatype in attentions - due to non-existing spans?
-        # TODO: eot_id in the end of y tokens
-        # TODO: y tokens are still "model tokens" with spaces
-        # TODO: model output gets infinite: Instead of adding a new token, we add the whole message each time?
-        self.initial_student_output = decoded_output
-        original_student_chat = copy.deepcopy(self.student.chat)
-        self.teacher.chat = self.create_teacher_chat(
-            teacher_sys=self.eval_prompt,
-            tokenizer=self.teacher.tokenizer,
-            remove_last=True,
-        )
-        teacher_message = self.eval_prompt.format_teacher_message({})
-        self.teacher.chat.add_message(**teacher_message)
-
-        # reset evaluation dict for each part
-        self.curr_eval_dict = {
-            "iterations": 0,
-            "intervention_ix": [],
-            "early_stop": False,
-            "teacher_prob_approved_tokens": {},
-            "intervention_with_prob": {},
-            "teacher_empty_suggestion": 0,
-            "max_supp_attn": [],
-            "attn_on_target": [],
-        }
-
-        print(
-            " ------------- Starting speculative decoding ------------- ",
-            end="\n\n\n",
-            flush=True,
-        )
-        print(f" ---- SD iteration 0 ---- ", end="\n\n\n", flush=True)
-        self.curr_eval_dict["iterations"] += 1
-
-        is_valid, error_id, teacher_intervention = self.verify_output(
-            self.student.chat.messages[-1]
-        )
-
-        print(
-            "Teacher's evaluation:",
-            f"is valid: {is_valid}, error_id: {error_id}, teacher_intervention: {teacher_intervention}",
-            "\n ------------- ",
-            end="\n\n",
-            flush=True,
-        )
-
-        interpretability = None
-        if not is_valid:
-            # # if teacher suggests a token, add it to its chat
-            # self.teacher.chat.add_message(
-            #     part=teacher_intervention, source=Source.assistant
-            # )
-
-            self.speculative_decode(
-                student_out=decoded_output,
-                is_valid=is_valid,
-                error_id=error_id,
-            )
-
-        if self.use_fallback:
-            decoded_output = self.initial_student_output
-
-        # change the last message of the student to the refined output
-        last_model_message = self.student.chat.messages[-1]
-        original_student_chat.remove_message(-1)
-        original_student_chat.move_approved_message(last_model_message)
-        self.student.chat = original_student_chat
-
-        # call the interpretability with the final chat
-        chat_ids = self.student.chat.convert_into_datatype("ids")
-        output_tensor = self.student.model(
-            chat_ids,
-            return_dict=True,
-            output_attentions=True,
-            output_hidden_states=False,
-        )
-        interpretability = self.student.interpretability.process_attention(
-            # output tensor includes all the previous ids + the model output
-            output_tensor=output_tensor,
-            # chat includes the current model output but the processing should not!
-            chat=self.student.chat,
-            chat_ids=chat_ids,
-            part=self.part,
-            keyword="after",
-        )
-
-        return decoded_output, self.curr_eval_dict, interpretability
 
     def speculative_decode(
         self,
@@ -794,6 +687,125 @@ class SpeculativeDecoding(Setting):
         if not is_valid:
             self.student.chat.remove_message(-1)
             self.student.chat.move_approved_message(self.teacher.chat)
+
+    def apply_setting(
+        self, decoded_output: str
+    ) -> tuple[str, dict, InterpretabilityResult]:
+        """
+        Run the speculative decoding for one instance.
+
+        The speculative decoding consists of the following steps:
+        1. Generate a chain of thought with the student model.
+        2. Verify that chain of thought using the teacher model.
+        3. If the teacher model disagrees, correct the chain of thought and continue with the student model.
+        4. Repeat steps 2 and 3 until the teacher model agrees with the chain of thought.
+
+        :param decoded_output: the current output of the student
+        :return: The decoded output, the number of revisions and the interpretability result
+        """
+        # TODO: teacher tokens in the student chat?
+        # TODO: the iterations is cut off at the middle of the message and teacher message is saved instead of the teacher one:
+        # The student's response was:
+        #
+        #
+        #
+        # Reasoning: Daniel
+        self.initial_student_output = decoded_output
+        original_student_chat = copy.deepcopy(self.student.chat)
+        self.teacher.chat = self.create_teacher_chat(
+            teacher_sys=self.eval_prompt,
+            tokenizer=self.teacher.tokenizer,
+            remove_last=True,
+        )
+        empty_message = {
+            "content": "\n\n",
+            "original_content": "\n\n",
+            "tokens": ["Ċ"],
+            "ids": [271],
+            "spans_with_types": {(0, 1): "ans"},
+        }
+        teacher_message = self.eval_prompt.format_teacher_message(empty_message)
+        self.teacher.chat.add_message(**teacher_message)
+
+        # reset evaluation dict for each part
+        self.curr_eval_dict = {
+            "iterations": 0,
+            "intervention_ix": [],
+            "early_stop": False,
+            "teacher_prob_approved_tokens": {},
+            "intervention_with_prob": {},
+            "teacher_empty_suggestion": 0,
+            "max_supp_attn": [],
+            "attn_on_target": [],
+        }
+
+        print(
+            " ------------- Starting speculative decoding ------------- ",
+            end="\n\n\n",
+            flush=True,
+        )
+        print(f" ---- SD iteration 0 ---- ", end="\n\n\n", flush=True)
+        self.curr_eval_dict["iterations"] += 1
+
+        is_valid, error_id, teacher_intervention = self.verify_output(
+            self.student.chat.messages[-1]
+        )
+
+        print(
+            "Teacher's evaluation:",
+            f"is valid: {is_valid}, error_id: {error_id}, teacher_intervention: {teacher_intervention}",
+            "\n ------------- ",
+            end="\n\n",
+            flush=True,
+        )
+
+        interpretability = None
+        if not is_valid:
+            # # if teacher suggests a token, add it to its chat
+            # self.teacher.chat.add_message(
+            #     part=teacher_intervention, source=Source.assistant
+            # )
+
+            self.speculative_decode(
+                student_out=decoded_output,
+                is_valid=is_valid,
+                error_id=error_id,
+            )
+
+        if self.use_fallback:
+            decoded_output = self.initial_student_output
+
+        teacher_wrapper = "The student's response was:"
+        last_message = self.student.chat.messages[-1]
+        if teacher_wrapper in last_message["content"]:
+            raise ValueError(
+                f"Teacher wrapper found in the last message of the student: {last_message['content']}"
+            )
+
+        # change the last message of the student to the refined output
+        original_student_chat.remove_message(-1)
+        original_student_chat.move_approved_message(self.student.chat)
+        self.student.chat = original_student_chat
+
+        # call the interpretability with the final chat
+        chat_ids = self.student.chat.convert_into_datatype("ids", identify_target=False)
+        output_tensor = self.student.model(
+            chat_ids,
+            return_dict=True,
+            output_attentions=True,
+            output_hidden_states=False,
+        )
+        interpretability = self.student.interpretability.process_attention(
+            # output tensor includes all the previous ids + the model output
+            output_tensor=output_tensor,
+            # chat includes the current model output but the processing should not!
+            chat=self.student.chat,
+            chat_ids=chat_ids,
+            part=self.part,
+            keyword="after",
+        )
+
+        return decoded_output, self.curr_eval_dict, interpretability
 
     # def string_to_tokens(self, model_out: str) -> list[str]:
     #     """

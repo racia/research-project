@@ -256,7 +256,7 @@ def run(
     :param paths: list of paths to the result files
     :param result_directory: path to save the all_samples data
     :param level: level of the data to join, either 'task' or 'sample'
-    :param keyword: keyword to search for in the paths
+    :param keyword: type_ to search for in the paths
     :return:
     """
     print("You are running the data join script.", end="\n\n")
