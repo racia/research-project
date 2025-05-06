@@ -304,10 +304,13 @@ def run_setting(cfg: DictConfig) -> None:
 
                 print("______________________________", end="\n\n")
 
-            if len(split.evaluators[0].exact_match_accuracy) != len(tasks):
+            number_of_accuracies = [
+                len(e.exact_match_accuracy) for e in split.evaluators
+            ]
+            if len(tasks) not in number_of_accuracies:
                 raise ValueError(
                     f"Number of tasks and number of accuracies do not match: "
-                    f"{len(tasks)} != {len(split.evaluators[0].exact_match_accuracy)}"
+                    f"{len(tasks)} not in {number_of_accuracies}"
                 )
 
             print(

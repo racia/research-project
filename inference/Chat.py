@@ -44,8 +44,6 @@ class Chat:
         }
         example_spans_with_types = {span: "ex" for span in system_prompt.ex_sent_spans}
 
-        print("system_prompt.ids", system_prompt.ids)
-
         self.system_message = {
             "role": Source.system,
             "content": system_prompt.text,
@@ -84,7 +82,6 @@ class Chat:
                 "Removing messages other than the last one is not supported."
             )
         deleted_message = self.messages.pop(i)
-        print("REMOVED MESSAGE", deleted_message)
         self.offset -= len(flatten(deleted_message["ids"]))
         if deleted_message["role"] == Source.assistant:
             self.supp_sent_spans = []
@@ -190,7 +187,6 @@ class Chat:
         # it is certainly a task
         if isinstance(part, SamplePart):
             if wrapper:
-                print("DEBUG: case SamplePart and Wrapper")
                 tokens, ids = [], []
                 for key, wrap in wrapper.items():
                     intro, outro = wrap["before"], wrap.get("after", wrap["before"])
@@ -215,7 +211,6 @@ class Chat:
                         }
                         for tokens, ids, spans in zip(task_tokens, task_ids, task_spans)
                     ]
-                    print("encoded message", *zip(task_spans, task_ids), sep="\n")
                     chunks = [intro, *task_chunks, outro]
                     for i, chunk in enumerate(chunks):
                         if chunk.get("ids", None):
@@ -227,7 +222,6 @@ class Chat:
                             self.offset += len(flatten(chunk["ids"]))
 
             else:
-                print("DEBUG: case SamplePart and NO Wrapper")
                 tokens, ids, sent_spans = sents_to_ids(
                     part.unwrapped_task.split("\n"), self.tokenizer
                 )
@@ -237,14 +231,12 @@ class Chat:
         else:
             # it is a string
             if ids is None:
-                print("DEBUG: case str and NO ids")
                 # it is a formatted prompt (string prompt) => task
                 tokens, ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
                 spans_with_types.update(
                     {upd_span(span, self.offset): "teacher task" for span in sent_spans}
                 )
             else:
-                print("DEBUG: case str and ids")
                 # it is certainly an assistant output
                 # TODO: optionally divide it into reasoning and answer
                 ids = ids.tolist() if not isinstance(ids, list) else ids
@@ -260,9 +252,6 @@ class Chat:
                 label = "ans" if source == Source.assistant else "task"
                 spans_with_types[upd_span((0, len(ids)), self.offset)] = label
                 self.offset += len(ids)
-
-        print("ids", len(ids), ids)
-        print("spans_with_types", spans_with_types)
 
         part_dict = {
             "role": source,
@@ -283,7 +272,6 @@ class Chat:
         :return: None
         """
         approved_message = other_chat.messages[-1]
-        print("MOVING MESSAGE", approved_message, sep="\n")
         offset_difference = other_chat.offset - self.offset
         spans_with_types = {}
 
@@ -359,7 +347,6 @@ class Chat:
                     if type_ == span_type or (
                         span_type == "task" and type_ in ["cont", "ques"]
                     ):
-                        print("span", span_type, "type_", type_)
                         spans.append(span)
             else:
                 spans_dict.update(message["spans_with_types"])

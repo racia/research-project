@@ -149,7 +149,6 @@ def sents_to_ids(
         if type(sentence) == Span:
             sentence = sentence.text
         sentence = sentence.strip() + "\n"
-        print("sentence", sentence)
         # \n\n in source produces empty sentences
         if not sentence or sentence.isspace():
             if output_empty:
@@ -225,7 +224,6 @@ def upd_span(span: tuple, offset: int) -> tuple[int, int]:
     if len(span) == 0:
         return offset, offset
     if len(span) != 2:
-        print("DEBUG: upd span", span)
         raise ValueError(
             "Span must be a tuple of two integers representing the start and end indices."
         )

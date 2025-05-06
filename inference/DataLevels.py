@@ -524,7 +524,9 @@ class SamplePart:
             raise ValueError(
                 "Either a message or model_output, model_answer, and model_reasoning should be provided."
             )
-        if not messages and not (model_output and model_answer and model_reasoning):
+        if not messages and not any(
+            [model_output and model_answer and model_reasoning]
+        ):
             raise ValueError(
                 "When no message, a model_output, model_answer, and model_reasoning should be provided."
             )
@@ -679,7 +681,6 @@ class Sample:
             evaluator.pred_answers.append(result.model_answer)
             evaluator.pred_reasonings.append(result.model_reasoning)
             if result.interpretability:
-                print("DEBUG: max_supp_attn", result.max_supp_attn)
                 evaluator.max_supp_attn.add(result.max_supp_attn)
 
     def print_sample_predictions(self) -> None:
