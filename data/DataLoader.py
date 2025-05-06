@@ -383,35 +383,6 @@ class DataLoader:
 
         return data
 
-    @staticmethod
-    def load_scenery(
-        word_types: tuple[str, ...] = (
-            "attr",
-            "loc",
-            "nh-subj",
-            "obj",
-            "part",
-            "rel",
-            "subj-attr",
-            "subj",
-            "other",
-            "base_phrasal_verbs",
-        ),
-    ) -> set:
-        """
-        Get scenery words from the scenery_words folder and the Scenery base phrases verbs.
-        Additionally, adds Scenery base phrasal words.
-
-        :return: set of scenery words for filtering attention scores
-        """
-        scenery_words = set()
-        for entry in os.scandir("data/scenery_words"):
-            word_type = entry.name.strip(".txt")
-            if word_type in word_types:
-                with open(entry.path, "r", encoding="UTF-8") as f:
-                    scenery_words.update(f.read().splitlines())
-        return scenery_words
-
     def load_reasoning_data(
         self, task_id: int, split: str = DataSplits.valid
     ) -> dict[tuple[int, int, int], dict]:

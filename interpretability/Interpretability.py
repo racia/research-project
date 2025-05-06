@@ -7,6 +7,7 @@ import torch
 from transformers import PreTrainedTokenizerFast
 from transformers.modeling_outputs import CausalLMOutputWithPast
 
+from data.utils import load_scenery
 from evaluation.Scenery import nlp
 from inference.Chat import Chat
 from inference.utils import flatten
@@ -19,18 +20,13 @@ from interpretability.utils import (
 
 
 class Interpretability:
-    def __init__(
-        self,
-        aggregate_attn: bool = True,
-        scenery_words: set[str] = None,
-    ):
+    def __init__(self, aggregate_attn: bool = True):
         """
-        Interpretability class
-        :param scenery_words: set of scenery words
+        Initialise Interpretability class
         """
         self.aggregate_attn: bool = aggregate_attn
-        # only necessary for verbose attention
-        self.scenery_words: set[str] = set(map(lambda x: x.lower(), scenery_words))
+        # scenery words are only necessary for verbose attention
+        self.scenery_words: set[str] = set(map(lambda x: x.lower(), load_scenery()))
 
         self.tokenizer: PreTrainedTokenizerFast = None
 

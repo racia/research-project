@@ -106,8 +106,6 @@ def run_setting(cfg: DictConfig) -> None:
     plotter = Plotter(results_path=saver.results_path)
 
     run_splits = defaultdict(dict)
-    # Load scenery words
-    # scenery_words = loader.load_scenery()
 
     if not hasattr(cfg.setting, "name"):
         raise ValueError("The setting name is not provided in the config file")

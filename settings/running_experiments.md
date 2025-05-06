@@ -25,7 +25,8 @@ Date: 06.05.2025
 Instruction:
 
 0. log into the cluster
-1. make sure that all of your current work is saved and commited to your branch
+1. make sure that all of your current work there is saved and commited to your branch, so you are not adding any code on
+   top of the current version
 2. `git fetch`
 3. `git checkout baseline-run`
 4. `git pull`
