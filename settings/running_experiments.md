@@ -45,3 +45,14 @@ Instruction:
    > NB! Don't change the code until the job starts
 
 7. once a job is started, cancel all other jobs with `scancel {job_id}`
+
+### Skyline
+
+Date: 06.05.2025-07.05.2025
+
+Instruction:
+
+0. everything from the advanced baseline until step 5
+1. run your sbatch script with all the possible partitions `sbatch --partition={partition_name} Skyline_{your_name}.sh`
+2. finish the steps from the advanced baseline
+
