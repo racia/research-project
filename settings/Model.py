@@ -167,19 +167,6 @@ class Model:
                 end="\n",
             )
             inputs = {"input_ids": chat_ids.to("cuda")}
-            print("inputs", inputs)
-
-            # else:
-            #     inputs = self.tokenizer(
-            #         formatted_prompt,
-            #         return_tensors="pt",
-            #         padding="longest",
-            #         truncation=True,
-            #         max_length=2048,
-            #         add_special_tokens=True,
-            #     )
-            #     inputs = {k: v.to(device) for k, v in inputs.items()}
-
             torch.cuda.empty_cache()
 
             with autocast("cuda"):
@@ -202,7 +189,6 @@ class Model:
 
                 # the model expanded on the message, so we need to update it
                 if to_continue:
-                    # self.chat.remove_message(-1)
                     self.chat.adjust_message(decoded_output, encoded_output)
                 else:
                     self.chat.add_message(
@@ -227,7 +213,9 @@ class Model:
                             output_hidden_states=False,
                         )
                         if type(data) is not SamplePart:
-                            raise TypeError("For interpretability plotting, data should be of type SamplePart")
+                            raise TypeError(
+                                "For interpretability plotting, data should be of type SamplePart"
+                            )
                         # for the settings, the final model output is currently not plotted
                         interpretability_result = self.interpretability.process_attention(
                             # output tensor includes all the previous ids + the model output

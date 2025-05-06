@@ -284,7 +284,7 @@ class Interpretability:
         :param chat: the student chat (contains all the messages including the last model output)
         :param chat_ids: the ids of the current chat (including the last model output)
         :param part: the part of the sample to evaluate # TODO: to remove after review
-        :param keyword: the keyword for the current task # TODO: to remove with plotting
+        :param keyword: the type_ for the current task # TODO: to remove with plotting
         :param aggregate: if to aggregate the attention scores over the sentences
         :return: InterpretabilityResult object
         """
@@ -346,9 +346,13 @@ class Interpretability:
         max_attn_ratio = get_max_attn_ratio(attn_scores, supp_sent_idx)
         attn_on_target = get_attn_on_target(attn_scores, supp_sent_idx)
 
-        keyword_ = "aggregated" if aggregate else "verbose"
         result = InterpretabilityResult(
-            attn_scores, x_tokens, y_tokens, max_attn_ratio, attn_on_target, keyword_
+            attn_scores,
+            x_tokens,
+            y_tokens,
+            max_attn_ratio,
+            attn_on_target,
+            "aggregated" if aggregate else "verbose",
         )
         # TODO: remove plotting after review
         self.plotter.draw_heat(

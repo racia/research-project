@@ -192,11 +192,11 @@ def format_task_accuracies(
 
 def _select_metric(metric_values: dict[str, float], keyword: str) -> list[float]:
     """
-    Select accuracies from a dictionary of accuracies based on the keyword.
+    Select accuracies from a dictionary of accuracies based on the type_.
 
     :param metric_values: the accuracies
-    :param keyword: the keyword to select the accuracies
-    :return: a list of accuracies by the keyword
+    :param keyword: the type_ to select the accuracies
+    :return: a list of accuracies by the type_
     """
     return [value for type_, value in metric_values.items() if keyword in type_]
 

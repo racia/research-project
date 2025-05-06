@@ -4,7 +4,7 @@ import re
 import textwrap
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Any, Iterable
+from typing import Any
 
 import en_core_web_sm
 import torch

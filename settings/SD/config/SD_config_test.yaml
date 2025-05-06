@@ -1,5 +1,5 @@
 teacher:
-  name: "meta-llama/Meta-Llama-3-8B-Instruct"
+  name: "meta-llama/Meta-Llama-3-70B-Instruct"
   max_new_tokens: 12
   temperature: 0.1
   to_continue: False

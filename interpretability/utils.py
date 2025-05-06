@@ -9,7 +9,7 @@ class InterpretabilityResult:
         y_tokens: list[str],
         max_supp_attn: float = None,
         attn_on_target: float = None,
-        keyword: str = None,
+        type_: str = None,
     ):
         """
         Interpretability result class
@@ -18,7 +18,7 @@ class InterpretabilityResult:
         :param y_tokens: tokenized y tokens
         :param max_supp_attn: ratio of max supporting sent
         :param attn_on_target: average attention on supporting sentences
-        :param keyword: keyword for the result (aggregated or verbose)
+        :param type_: keyword for the result (aggregated or verbose)
         """
         self.attn_scores: np.ndarray = attn_scores
         self.x_tokens: list[str] = x_tokens
@@ -33,7 +33,7 @@ class InterpretabilityResult:
             "max_supp_attn": self.max_supp_attn,
             "attn_on_target": self.attn_on_target,
         }
-        self.keyword: str = keyword
+        self.type_: str = type_
 
     def __repr__(self) -> str:
         return (
