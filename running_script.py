@@ -330,11 +330,11 @@ def run_setting(cfg: DictConfig) -> None:
                 )
                 prompt_eval.update(split_eval)
                 # Plot the prompt accuracies for the split
-                plotter.plot_acc_per_task_and_prompt(
-                    acc_per_prompt_task=split_eval.get_accuracies(as_lists=True),
-                    y_label="Accuracies and Standard Deviations",
-                    plot_name_add=[prompt_name, split.name, version],
-                )
+                # plotter.plot_acc_per_task_and_prompt(
+                #     acc_per_prompt_task=split_eval.get_accuracies(as_lists=True),
+                #     y_label="Accuracies and Standard Deviations",
+                #     plot_name_add=[prompt_name, split.name, version],
+                # )
 
             print_metrics(split, table=True)
             saver.save_split_accuracy(
@@ -343,15 +343,15 @@ def run_setting(cfg: DictConfig) -> None:
             )
             run_splits[split.name][init_prompt] = split
 
-            if multi_system:
-                plotter.plot_acc_per_task_and_prompt(
-                    acc_per_prompt_task={
-                        **split.evaluators[0].get_accuracies(as_lists=True),
-                        **split.evaluators[1].get_accuracies(as_lists=True),
-                    },
-                    y_label="Accuracies and Standard Deviations",
-                    plot_name_add=[prompt_name, split.name, "before", "after"],
-                )
+            # if multi_system:
+            #     plotter.plot_acc_per_task_and_prompt(
+            #         acc_per_prompt_task={
+            #             **split.evaluators[0].get_accuracies(as_lists=True),
+            #             **split.evaluators[1].get_accuracies(as_lists=True),
+            #         },
+            #         y_label="Accuracies and Standard Deviations",
+            #         plot_name_add=[prompt_name, split.name, "before", "after"],
+            #     )
 
         print("\n- RUN RESULTS -", end="\n\n")
 
