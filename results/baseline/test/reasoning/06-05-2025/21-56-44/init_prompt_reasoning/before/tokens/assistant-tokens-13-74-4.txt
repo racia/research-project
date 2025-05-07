@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġlogical	Ġto	Ġconclude	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġbathroom	,	Ġsince	Ġthere	Ġis	Ġno	Ġindication	Ġthat	Ġshe	Ġleft	ĠJohn	's	Ġside	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

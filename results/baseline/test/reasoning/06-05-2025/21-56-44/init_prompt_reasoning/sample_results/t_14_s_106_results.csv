@@ -1,0 +1,44 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2776	14	106	1	"*TASK*
+Here are the context sentences:
+1. Bill journeyed to the school this morning.
+2. Yesterday Bill went back to the park.
+
+Now, answer the following question:
+Where was Bill before the school?"	park	"from the context sentences, we know that bill went to the school this morning (sentence 1). to determine where bill was before the school, we need to look at the previous actions of bill. sentence 2 states that yesterday bill went back to the park. although it doesn't directly say where bill was before the school, we can logically infer that bill was at the park before going to the school because ""went back"" implies that bill returned to a place he had been to"	fully		False	Since Bill went back to the park yesterday, it implies that he was at the park the previous day. However, the question asks about where Bill was before he journeyed to the school this morning. Since Bill went back to the park yesterday, it is likely that he was somewhere else before he went back to the park. The only information provided is that he went back to the park yesterday, but it does not specify where he was before that. Therefore, we cannot pinpoint a		Reasoning: Since Bill went back to the park yesterday, it implies that he was at the park the previous day. However, the question asks about where Bill was before he journeyed to the school this morning. Since Bill went back to the park yesterday, it is likely that he was somewhere else before he went back to the park. The only information provided is that he went back to the park yesterday, but it does not specify where he was before that. Therefore, we cannot pinpoint a	0.1818	0.0202	False	False	False	True	0
+2777	14	106	2	"*TASK*
+Here are the context sentences:
+4. Yesterday Julie went back to the cinema.
+5. Mary journeyed to the park yesterday.
+
+Now, answer the following question:
+Where was Bill before the school?"	park	"there is no information about bill in the provided context sentences. the sentences only mention julie and mary, and their actions. there is no mention of bill's actions or locations. however, the answer suggests that bill was at the park before the school. this can only be true if we consider the previous conversation history, where we had context sentences about bill's actions. in the previous conversation, we had the sentence ""2. yesterday bill went back to the park."" which implies that bill"	none	Not mentioned	False	There is no information provided about Bill in these context sentences. The sentences only mention Julie and Mary, but not Bill. Therefore, we cannot answer the question about Bill's whereabouts before the school.		"Reasoning: There is no information provided about Bill in these context sentences. The sentences only mention Julie and Mary, but not Bill. Therefore, we cannot answer the question about Bill's whereabouts before the school.
+
+Answer: Not mentioned"	0.1915	0.0426	False	False	False	True	0
+2778	14	106	3	"*TASK*
+Here are the context sentences:
+7. Julie moved to the school this afternoon.
+8. This morning Julie moved to the bedroom.
+
+Now, answer the following question:
+Where was Julie before the school?"	bedroom	from the context sentences, we know that julie moved to the school this afternoon (sentence 7). to determine where julie was before the school, we need to look at julie's previous action. sentence 8 states that this morning julie moved to the bedroom. since julie moved to the school in the afternoon and to the bedroom in the morning, we can logically infer that julie was in the bedroom before moving to the school.	fully	bedroom	True	According to the context sentences, Julie moved to the bedroom this morning. Since she moved to the school this afternoon, it implies that she was at the bedroom before moving to the school.		"Reasoning: According to the context sentences, Julie moved to the bedroom this morning. Since she moved to the school this afternoon, it implies that she was at the bedroom before moving to the school.
+
+Answer: bedroom"	0.1136	0.0455	False	False	False	False	0
+2779	14	106	4	"*TASK*
+Here are the context sentences:
+10. This morning Mary went to the bedroom.
+11. Julie went to the office this evening.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	cinema	"there is no information in the provided context sentences about julie being at the cinema or going to the bedroom. the sentences only mention mary going to the bedroom (sentence 10) and julie going to the office (sentence 11). there is no logical connection between the provided context and the answer ""cinema"". the answer seems to be incorrect or based on information not provided in the context."	none	Not mentioned	False	There is no information provided about Julie's whereabouts before the bedroom. The context sentences only mention Mary going to the bedroom this morning, and Julie going to the office this evening, but do not provide information about Julie's location before the bedroom.		"Reasoning: There is no information provided about Julie's whereabouts before the bedroom. The context sentences only mention Mary going to the bedroom this morning, and Julie going to the office this evening, but do not provide information about Julie's location before the bedroom.
+
+Answer: Not mentioned"	0.0536	0.0357	False	False	False	True	0
+2780	14	106	5	"*TASK*
+Here are the context sentences:
+13. This afternoon Mary journeyed to the cinema.
+14. Fred journeyed to the office yesterday.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	park	"there is no information in the provided context sentences about mary being at the park or going to the bedroom. the sentences only mention mary going to the cinema (sentence 13) and fred going to the office (sentence 14). there is no logical connection between the provided context and the answer ""park"". the answer seems to be incorrect or based on information not provided in the context."	none	Not mentioned	False	There is no information provided about Mary's whereabouts before the bedroom. The context sentences only mention Mary going to the bedroom this morning, and Mary journeying to the cinema this afternoon, but do not provide information about Mary's location before the bedroom.		"Reasoning: There is no information provided about Mary's whereabouts before the bedroom. The context sentences only mention Mary going to the bedroom this morning, and Mary journeying to the cinema this afternoon, but do not provide information about Mary's location before the bedroom.
+
+Answer: Not mentioned"	0.0175	0.0351	False	False	False	True	0

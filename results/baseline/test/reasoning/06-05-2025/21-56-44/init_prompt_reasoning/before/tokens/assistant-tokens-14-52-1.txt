@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	,	Ġand	Ġthen	Ġwent	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	,	Ġit	Ġis	Ġlogical	Ġto	Ġassume	Ġthat	Ġshe	Ġwas	Ġat	Ġthe	Ġkitchen	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

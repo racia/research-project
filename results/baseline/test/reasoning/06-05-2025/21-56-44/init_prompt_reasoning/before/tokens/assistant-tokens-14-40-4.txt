@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠFred	Ġmoved	Ġto	Ġthe	Ġoffice	Ġthis	Ġevening	,	Ġand	Ġwe	Ġalready	Ġknow	Ġthat	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġpark	Ġthis	Ġafternoon	,	Ġit	Ġis	Ġlogical	Ġto	Ġassume	Ġthat	ĠFred	Ġwas	Ġat	Ġthe	Ġpark	Ġbefore	Ġmoving	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġpark	<|eot_id|>

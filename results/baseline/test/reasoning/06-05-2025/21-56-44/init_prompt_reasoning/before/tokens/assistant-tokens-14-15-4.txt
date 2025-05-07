@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	12	),	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġhim	Ġgoing	Ġto	Ġthe	Ġschool	Ġearlier	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwas	Ġnot	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġschool	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠJessica	Ġis	Ġa	Ġmouse	.	ĠSentence	Ġ	3	Ġstates	Ġthat	Ġmice	Ġare	Ġafraid	Ġof	Ġwolves	.	ĠTherefore	,	ĠJessica	,	Ġbeing	Ġa	Ġmouse	,	Ġis	Ġafraid	Ġof	Ġwolves	.ĊĊ	Answer	:	Ġwolves	<|eot_id|>

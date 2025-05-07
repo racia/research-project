@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1061	12	63	1	"*TASK*
+Here are the context sentences:
+1. John and Daniel went back to the kitchen.
+2. Sandra and Mary went to the office.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"from context sentence 1, we know that john and daniel went back to the kitchen. this implies that daniel is currently in the kitchen, as he went there with john. therefore, the answer to the question ""where is daniel?"" is indeed the kitchen."	fully	kitchen	True	Daniel is mentioned in sentence 1, which states that John and Daniel went back to the kitchen. This implies that Daniel is currently in the kitchen.		"Reasoning: Daniel is mentioned in sentence 1, which states that John and Daniel went back to the kitchen. This implies that Daniel is currently in the kitchen.
+
+Answer: kitchen"	0.0541	0.027	False	False	False	True	0
+1062	12	63	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John moved to the hallway.
+5. Mary and Daniel moved to the bedroom.
+
+Now, answer the following question:
+Where is John?"	hallway	from context sentence 4, we know that daniel and john moved to the hallway. although daniel later moved to the bedroom with mary (sentence 5), john's location was not updated. therefore, we can infer that john is still in the hallway, as there is no information suggesting he moved to a different location.	fully	hallway	True	John is mentioned in sentence 4, which states that Daniel and John moved to the hallway. This implies that John is currently in the hallway.		"Reasoning: John is mentioned in sentence 4, which states that Daniel and John moved to the hallway. This implies that John is currently in the hallway.
+
+Answer: hallway"	0.0556	0.0278	False	False	False	True	0
+1063	12	63	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John travelled to the garden.
+8. Sandra and Daniel went back to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from context sentence 7, we know that daniel and john travelled to the garden. however, in sentence 8, it is stated that sandra and daniel went back to the bedroom. this implies that daniel moved from the garden to the bedroom with sandra. therefore, the current location of daniel is the bedroom.	fully	bedroom	True	Daniel is mentioned in sentence 8, which states that Sandra and Daniel went back to the bedroom. This implies that Daniel is currently in the bedroom.		"Reasoning: Daniel is mentioned in sentence 8, which states that Sandra and Daniel went back to the bedroom. This implies that Daniel is currently in the bedroom.
+
+Answer: bedroom"	0.027	0.027	False	False	False	True	0
+1064	12	63	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Mary went back to the office.
+11. John and Daniel went to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	"from context sentence 11, we know that john and daniel went to the bathroom. this implies that john is currently in the bathroom, as he moved there with daniel. the fact that daniel later went back to the office with mary (sentence 10) does not change john's location, as there is no information suggesting john moved with them. therefore, the answer to the question ""where is john?"" is indeed the bathroom."	fully	bathroom	True	John is mentioned in sentence 11, which states that John and Daniel went to the bathroom. This implies that John is currently in the bathroom.		"Reasoning: John is mentioned in sentence 11, which states that John and Daniel went to the bathroom. This implies that John is currently in the bathroom.
+
+Answer: bathroom"	0.1111	0.0278	False	False	False	True	0
+1065	12	63	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra travelled to the bathroom.
+14. Daniel and Mary moved to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"from context sentence 14, we know that daniel and mary moved to the garden. this implies that daniel is currently in the garden, as he moved there with mary. the fact that mary was previously in the bathroom with sandra (sentence 13) does not change daniel's location, as mary moved to the garden with daniel afterwards. therefore, the answer to the question ""where is daniel?"" is indeed the garden."	fully	garden	True	Daniel is mentioned in sentence 14, which states that Daniel and Mary moved to the garden. This implies that Daniel is currently in the garden.		"Reasoning: Daniel is mentioned in sentence 14, which states that Daniel and Mary moved to the garden. This implies that Daniel is currently in the garden.
+
+Answer: garden"	0.0278	0.0278	False	False	False	True	0

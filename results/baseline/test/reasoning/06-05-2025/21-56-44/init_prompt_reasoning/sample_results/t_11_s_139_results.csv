@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+691	11	139	1	"*TASK*
+Here are the context sentences:
+1. John went back to the bedroom.
+2. Following that he journeyed to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	"the context sentences describe john's movements, first going back to the bedroom and then journeying to the bathroom. since the second sentence mentions that john went to the bathroom ""following that"" (i.e., after going to the bedroom), it implies that john's current location is the bathroom. therefore, the answer to the question ""where is john?"" is the bathroom."	fully	bathroom	True	John went back to the bedroom initially, and then he journeyed to the bathroom. This implies that John's current location is the bathroom.		"Reasoning: John went back to the bedroom initially, and then he journeyed to the bathroom. This implies that John's current location is the bathroom.
+
+Answer: bathroom"	0.2	0.0571	False	False	False	False	0
+692	11	139	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the kitchen.
+5. After that she went back to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	"the context sentences describe mary's movements, first traveling to the kitchen and then going back to the garden. the phrase ""after that"" in sentence 5 indicates that mary's journey to the garden occurred after her trip to the kitchen. therefore, mary's current location is the garden, as she went back to the garden after visiting the kitchen."	fully	garden	True	Mary initially travelled to the kitchen, and then she went back to the garden. This implies that Mary's current location is the garden.		"Reasoning: Mary initially travelled to the kitchen, and then she went back to the garden. This implies that Mary's current location is the garden.
+
+Answer: garden"	0.1471	0.0588	False	False	False	False	0
+693	11	139	3	"*TASK*
+Here are the context sentences:
+7. Sandra travelled to the office.
+8. After that she went to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"the context sentences describe sandra's movements, first traveling to the office and then going to the bedroom. the phrase ""after that"" in sentence 8 indicates that sandra's journey to the bedroom occurred after her trip to the office. therefore, sandra's current location is the bedroom, as she went to the bedroom after visiting the office."	fully	bedroom	True	Sandra initially travelled to the office, and then she went to the bedroom. This implies that Sandra's current location is the bedroom.		"Reasoning: Sandra initially travelled to the office, and then she went to the bedroom. This implies that Sandra's current location is the bedroom.
+
+Answer: bedroom"	0.1212	0.0606	False	False	False	False	0
+694	11	139	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the office.
+11. After that he went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	garden	"there is no information about mary's movements or location in the provided context sentences. the context sentences only describe daniel's movements, going back to the office and then back to the bedroom. the answer ""garden"" seems to be unrelated to the provided context. it is likely that the answer is referring to a previous part of the conversation history, where mary's location was mentioned as the garden (context lines 4 and 5). therefore, the answer ""garden"" is based"	none	not mentioned	False	There is no mention of Mary in the given context sentences. The sentences only mention Daniel's movements.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Daniel's movements.
+
+Answer: not mentioned"	0.0714	0.0714	False	False	False	True	0
+695	11	139	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the kitchen.
+14. Afterwards she moved to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"the context sentences describe mary's movements, not daniel's. there is no information about daniel's location or movements in the provided context sentences. the answer ""bedroom"" seems to be unrelated to the provided context. it is likely that the answer is incorrect or refers to a previous part of the conversation history, where daniel's location was mentioned as the bedroom (but this information is not provided in the current context)."	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only mention Mary's movements.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only mention Mary's movements.
+
+Answer: not mentioned"	0.0714	0.0714	False	False	False	True	0

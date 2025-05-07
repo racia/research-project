@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1381	12	127	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Mary went back to the office.
+2. Daniel and John travelled to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from the context sentences, we know that daniel went back to the office with mary (sentence 1), but then daniel travelled to the bedroom with john (sentence 2). since the second sentence mentions daniel's movement to the bedroom, it implies that daniel's current location is the bedroom, overriding the previous location mentioned in sentence 1.	fully	office	False	Since Daniel is mentioned in both sentences, and he is moving with other people (Mary and John), it is likely that he is in a location that is shared by all of them. The only location mentioned is the office and the bedroom, which are both places where people can be.		"Reasoning: Since Daniel is mentioned in both sentences, and he is moving with other people (Mary and John), it is likely that he is in a location that is shared by all of them. The only location mentioned is the office and the bedroom, which are both places where people can be.
+
+Answer: office"	0.0781	0.0156	False	False	False	True	0
+1382	12	127	2	"*TASK*
+Here are the context sentences:
+4. Mary and John went to the kitchen.
+5. Daniel and Mary travelled to the bathroom.
+
+Now, answer the following question:
+Where is John?"	kitchen	from sentence 4, we know that mary and john went to the kitchen. there is no subsequent sentence that mentions john moving to a different location. sentence 5 mentions mary travelling to the bathroom with daniel, but it does not mention john, so it does not change john's location. therefore, john's current location is still the kitchen.	fully	kitchen	True	John is mentioned in sentence 4, which states that he went to the kitchen with Mary. There is no mention of John in sentence 5, which only mentions Mary and Daniel going to the bathroom. Therefore, it is likely that John is still in the kitchen.		"Reasoning: John is mentioned in sentence 4, which states that he went to the kitchen with Mary. There is no mention of John in sentence 5, which only mentions Mary and Daniel going to the bathroom. Therefore, it is likely that John is still in the kitchen.
+
+Answer: kitchen"	0.0492	0.0164	False	False	False	True	0
+1383	12	127	3	"*TASK*
+Here are the context sentences:
+7. John and Daniel went to the hallway.
+8. Sandra and John travelled to the garden.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	there is no new information about mary's location in sentences 7 and 8. the last mention of mary's location was in sentence 5, where it was stated that mary and daniel travelled to the bathroom. there is no subsequent sentence that mentions mary moving to a different location. therefore, mary's current location is still the bathroom.	none	not mentioned	False	Mary is not mentioned in either sentence 7 or 8. The only information provided is about John's movements with Daniel and Sandra. Since Mary's location is not specified, it is not possible to determine where she is.		"Reasoning: Mary is not mentioned in either sentence 7 or 8. The only information provided is about John's movements with Daniel and Sandra. Since Mary's location is not specified, it is not possible to determine where she is.
+
+Answer: not mentioned"	0.1132	0.0189	False	False	False	True	0
+1384	12	127	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel went back to the kitchen.
+11. John and Daniel journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from sentence 10, we know that john and daniel went back to the kitchen. however, sentence 11 states that john and daniel journeyed to the bedroom, which implies that they left the kitchen and moved to the bedroom. since daniel was with john in both sentences, it can be inferred that daniel's current location is the bedroom.	fully	bedroom	True	Daniel is mentioned in both sentences, and he is moving with John. Sentence 10 states that they went back to the kitchen, and sentence 11 states that they journeyed to the bedroom. Since Daniel is moving with John, it is likely that Daniel is in the same location as John. The last location mentioned is the bedroom, so it is likely that Daniel is there.		"Reasoning: Daniel is mentioned in both sentences, and he is moving with John. Sentence 10 states that they went back to the kitchen, and sentence 11 states that they journeyed to the bedroom. Since Daniel is moving with John, it is likely that Daniel is in the same location as John. The last location mentioned is the bedroom, so it is likely that Daniel is there.
+
+Answer: bedroom"	0.0	0.012	False	False	False	True	0
+1385	12	127	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra journeyed to the office.
+14. Daniel and Mary went to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	from sentence 13, we know that mary and sandra journeyed to the office. however, sentence 14 states that daniel and mary went to the garden, which implies that mary left the office and moved to the garden with daniel. therefore, mary's current location is the garden.	fully	office	False	Mary is mentioned in both sentences. Sentence 13 states that she journeyed to the office with Sandra, and sentence 14 states that she went to the garden with Daniel. Since Mary is moving with different people to different locations, it is likely that she is in one of these locations. The last locations mentioned are the office and the garden.		"Reasoning: Mary is mentioned in both sentences. Sentence 13 states that she journeyed to the office with Sandra, and sentence 14 states that she went to the garden with Daniel. Since Mary is moving with different people to different locations, it is likely that she is in one of these locations. The last locations mentioned are the office and the garden.
+
+Answer: office"	0.0789	0.0132	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSandra	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	Ġtogether	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠSandra	Ġleft	Ġthe	Ġoffice	Ġor	Ġmoved	Ġto	Ġa	Ġdifferent	Ġlocation	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

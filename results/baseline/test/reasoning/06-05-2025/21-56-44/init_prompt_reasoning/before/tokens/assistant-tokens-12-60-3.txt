@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġtwo	Ġsentences	.	ĠIn	Ġsentence	Ġ	7	,	Ġshe	Ġis	Ġnot	Ġpresent	.	ĠIn	Ġsentence	Ġ	8	,	Ġshe	Ġis	Ġmoving	Ġto	Ġthe	Ġbedroom	Ġwith	ĠSandra	.	ĠSince	ĠSandra	Ġis	Ġmoving	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġimplies	Ġthat	ĠMary	Ġis	Ġalso	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

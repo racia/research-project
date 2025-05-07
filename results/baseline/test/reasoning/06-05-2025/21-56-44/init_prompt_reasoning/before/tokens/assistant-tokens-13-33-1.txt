@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġimplies	Ġthat	ĠJohn	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġoffice	.	ĠThe	Ġmost	Ġrecent	Ġlocation	Ġmentioned	Ġis	Ġthe	Ġbedroom	,	Ġso	Ġit	Ġis	Ġlikely	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

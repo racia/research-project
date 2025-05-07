@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1751	13	51	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Sandra journeyed to the bedroom.
+2. Following that they travelled to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from the context sentences, we know that daniel and sandra first went to the bedroom (sentence 1) and then travelled to the garden (sentence 2). since there is no information about them leaving the garden, we can logically conclude that daniel is still in the garden.	fully	garden	True	Since Daniel and Sandra journeyed to the bedroom, and then travelled to the garden, it is likely that Daniel is in the garden as well, since they travelled together.		"Reasoning: Since Daniel and Sandra journeyed to the bedroom, and then travelled to the garden, it is likely that Daniel is in the garden as well, since they travelled together.
+
+Answer: garden"	0.1951	0.0488	False	False	False	False	0
+1752	13	51	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Mary journeyed to the kitchen.
+5. Then they journeyed to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentences, we know that daniel and mary travelled to the kitchen (sentence 4) and then journeyed to the hallway (sentence 5). since there is no information about them leaving the hallway, we can logically conclude that mary is still in the hallway.	fully	hallway	True	Since Daniel and Mary journeyed to the kitchen, and then to the hallway, it is likely that Mary is in the hallway as well, since they journeyed together.		"Reasoning: Since Daniel and Mary journeyed to the kitchen, and then to the hallway, it is likely that Mary is in the hallway as well, since they journeyed together.
+
+Answer: hallway"	0.1951	0.0488	False	False	False	False	0
+1753	13	51	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John moved to the bathroom.
+8. Afterwards they travelled to the office.
+
+Now, answer the following question:
+Where is Mary?"	hallway	the context sentences (7 and 8) only mention daniel and john, but the question asks about mary. to find the answer, we need to look at the previous parts of the conversation history. in the previous parts, we found that mary was in the hallway (sentence 5). there is no information about mary moving from the hallway, so we can logically conclude that mary is still in the hallway.	none	not mentioned	False	There is no mention of Mary in the given context sentences. The sentences only mention Daniel and John.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Daniel and John.
+
+Answer: not mentioned"	0.1071	0.0714	False	False	False	True	0
+1754	13	51	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel moved to the kitchen.
+11. Afterwards they travelled to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from the context sentences, we know that john and daniel moved to the kitchen (sentence 10) and then travelled to the bedroom (sentence 11). since there is no information about them leaving the bedroom, we can logically conclude that daniel is still in the bedroom.	fully	bedroom	True	Since John and Daniel moved to the kitchen, and then travelled to the bedroom, it is likely that Daniel is in the bedroom as well, since they moved together.		"Reasoning: Since John and Daniel moved to the kitchen, and then travelled to the bedroom, it is likely that Daniel is in the bedroom as well, since they moved together.
+
+Answer: bedroom"	0.05	0.05	False	False	False	False	0
+1755	13	51	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Mary journeyed to the garden.
+14. Then they journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that daniel and mary travelled to the garden (sentence 13) and then journeyed to the bedroom (sentence 14). since there is no information about them leaving the bedroom, we can logically conclude that mary is still in the bedroom.	fully	bedroom	True	Since Daniel and Mary journeyed to the garden, and then to the bedroom, it is likely that Mary is in the bedroom as well, since they journeyed together.		"Reasoning: Since Daniel and Mary journeyed to the garden, and then to the bedroom, it is likely that Mary is in the bedroom as well, since they journeyed together.
+
+Answer: bedroom"	0.122	0.0488	False	False	False	False	0

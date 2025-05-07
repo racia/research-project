@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	,	Ġand	Ġafterwards	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.	ĠThis	Ġimplies	Ġthat	ĠMary	's	Ġlocation	Ġchanged	Ġfrom	Ġthe	Ġoffice	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

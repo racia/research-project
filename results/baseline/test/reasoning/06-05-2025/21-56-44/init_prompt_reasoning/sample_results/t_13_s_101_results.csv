@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2001	13	101	1	"*TASK*
+Here are the context sentences:
+1. Mary and Sandra went to the kitchen.
+2. Afterwards they went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	the context sentences describe the sequence of actions performed by mary and sandra. in the first sentence, they go to the kitchen, and in the second sentence, they go to the bathroom afterwards. this implies that they moved from the kitchen to the bathroom. since mary was with sandra in both locations, it can be inferred that mary is currently in the bathroom, which is the last location mentioned in the sequence of actions.	fully	bathroom	True	Since Mary and Sandra went to the kitchen together, and then they went to the bathroom, it is likely that Mary is still with Sandra in the bathroom.		"Reasoning: Since Mary and Sandra went to the kitchen together, and then they went to the bathroom, it is likely that Mary is still with Sandra in the bathroom.
+
+Answer: bathroom"	0.1842	0.0526	False	False	False	False	0
+2002	13	101	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Sandra moved to the kitchen.
+5. After that they journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	the context sentences describe the sequence of actions performed by daniel and sandra. in sentence 4, they move to the kitchen, and in sentence 5, they journey to the bedroom after that. this implies that they moved from the kitchen to the bedroom. since daniel was with sandra in both locations, it can be inferred that daniel is currently in the bedroom, which is the last location mentioned in the sequence of actions.	fully	bedroom	True	Since Daniel and Sandra moved to the kitchen together, and then they journeyed to the bedroom, it is likely that Daniel is still with Sandra in the bedroom.		"Reasoning: Since Daniel and Sandra moved to the kitchen together, and then they journeyed to the bedroom, it is likely that Daniel is still with Sandra in the bedroom.
+
+Answer: bedroom"	0.1795	0.0513	False	False	False	False	0
+2003	13	101	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Mary moved to the office.
+8. After that they went to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	the context sentences describe the actions of daniel and mary, but they do not mention sandra. however, we can infer the location of sandra from the previous context ( sentences 4 and 5), where it was established that sandra was with daniel when they journeyed to the bedroom. since there is no information about sandra moving from the bedroom, it can be logically assumed that sandra is still in the bedroom.	none	not mentioned	False	Since Sandra was previously with Daniel in the kitchen and then in the bedroom, but the context sentences now mention Daniel and Mary, it implies that Sandra is not with them. There is no mention of Sandra's current location, so it's unknown.		"Reasoning: Since Sandra was previously with Daniel in the kitchen and then in the bedroom, but the context sentences now mention Daniel and Mary, it implies that Sandra is not with them. There is no mention of Sandra's current location, so it's unknown.
+
+Answer: not mentioned"	0.0526	0.0351	False	False	False	True	0
+2004	13	101	4	"*TASK*
+Here are the context sentences:
+10. Mary and John journeyed to the hallway.
+11. Following that they went back to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	the context sentences describe the sequence of actions performed by mary and john. in sentence 10, they journey to the hallway, and in sentence 11, they go back to the bathroom following that. this implies that they moved from the hallway to the bathroom. since john was with mary in both locations, it can be inferred that john is currently in the bathroom, which is the last location mentioned in the sequence of actions.	fully	bathroom	True	Since Mary and John journeyed to the hallway together, and then they went back to the bathroom, it is likely that John is still with Mary in the bathroom.		"Reasoning: Since Mary and John journeyed to the hallway together, and then they went back to the bathroom, it is likely that John is still with Mary in the bathroom.
+
+Answer: bathroom"	0.075	0.05	False	False	False	False	0
+2005	13	101	5	"*TASK*
+Here are the context sentences:
+13. Mary and Daniel went back to the office.
+14. Then they went to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	the context sentences describe the actions of mary and daniel, but they do not mention john. however, we can infer the location of john from the previous context (sentences 10 and 11), where it was established that john was with mary when they went back to the bathroom. since there is no information about john moving from the bathroom, it can be logically assumed that john is still in the bathroom.	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only mention Mary and Daniel, and their movements. Therefore, it's unknown where John is.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Mary and Daniel, and their movements. Therefore, it's unknown where John is.
+
+Answer: not mentioned"	0.0244	0.0488	False	False	False	True	0

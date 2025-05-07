@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1746	13	50	1	"*TASK*
+Here are the context sentences:
+1. Mary and John went back to the office.
+2. Following that they moved to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that mary and john went back to the office (sentence 1) and then moved to the hallway (sentence 2). since john was with mary in both actions, it can be logically inferred that john is currently in the hallway, as that is the last location mentioned where they moved to.	fully	hallway	True	Since Mary and John went back to the office and then moved to the hallway, it is likely that John is in the hallway.		"Reasoning: Since Mary and John went back to the office and then moved to the hallway, it is likely that John is in the hallway.
+
+Answer: hallway"	0.2424	0.0606	False	False	False	False	0
+1747	13	50	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Mary moved to the bedroom.
+5. Afterwards they went back to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from the context sentences, we know that sandra and mary moved to the bedroom (sentence 4) and then went back to the kitchen (sentence 5). since sandra was with mary in both actions, it can be logically inferred that sandra is currently in the kitchen, as that is the last location mentioned where they moved to.	fully	kitchen	True	Since Sandra and Mary moved to the bedroom and then went back to the kitchen, it is likely that Sandra is in the kitchen.		"Reasoning: Since Sandra and Mary moved to the bedroom and then went back to the kitchen, it is likely that Sandra is in the kitchen.
+
+Answer: kitchen"	0.2121	0.0606	False	False	False	False	0
+1748	13	50	3	"*TASK*
+Here are the context sentences:
+7. Mary and Sandra went back to the bathroom.
+8. Following that they journeyed to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentences, we know that mary and sandra went back to the bathroom (sentence 7) and then journeyed to the hallway (sentence 8). since mary was with sandra in both actions, it can be logically inferred that mary is currently in the hallway, as that is the last location mentioned where they moved to.	fully	hallway	True	Since Mary and Sandra went back to the bathroom and then journeyed to the hallway, it is likely that Mary is in the hallway.		"Reasoning: Since Mary and Sandra went back to the bathroom and then journeyed to the hallway, it is likely that Mary is in the hallway.
+
+Answer: hallway"	0.0882	0.0588	False	False	False	False	0
+1749	13	50	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Daniel travelled to the bedroom.
+11. Afterwards they journeyed to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	from the context sentences, we know that sandra and daniel travelled to the bedroom (sentence 10) and then journeyed to the office (sentence 11). since daniel was with sandra in both actions, it can be logically inferred that daniel is currently in the office, as that is the last location mentioned where they moved to.	fully	office	True	Since Sandra and Daniel travelled to the bedroom and then journeyed to the office, it is likely that Daniel is in the office.		"Reasoning: Since Sandra and Daniel travelled to the bedroom and then journeyed to the office, it is likely that Daniel is in the office.
+
+Answer: office"	0.2121	0.0606	False	False	False	False	0
+1750	13	50	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John went to the bedroom.
+14. Afterwards they went to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	from the context sentences, we know that daniel and john went to the bedroom (sentence 13) and then went to the office (sentence 14). since daniel was with john in both actions, it can be logically inferred that daniel is currently in the office, as that is the last location mentioned where they moved to.	fully	office	True	Since Daniel and John went to the bedroom and then went to the office, it is likely that Daniel is in the office.		"Reasoning: Since Daniel and John went to the bedroom and then went to the office, it is likely that Daniel is in the office.
+
+Answer: office"	0.0625	0.0625	False	False	False	False	0

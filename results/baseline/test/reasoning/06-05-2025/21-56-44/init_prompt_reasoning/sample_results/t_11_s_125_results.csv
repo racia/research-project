@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+621	11	125	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the kitchen.
+2. Then she went back to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	mary initially went to the kitchen, but then she went back to the garden, which implies that she reversed her direction and ended up in the garden. therefore, mary is currently in the garden.	fully	garden	True	Since Mary went back to the garden after being in the kitchen, it is likely that she is currently in the garden.		"Reasoning: Since Mary went back to the garden after being in the kitchen, it is likely that she is currently in the garden.
+
+Answer: garden"	0.1935	0.0645	False	False	False	False	0
+622	11	125	2	"*TASK*
+Here are the context sentences:
+4. Mary went back to the kitchen.
+5. Then she went back to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	in the previous context, we knew mary was in the garden (from sentences 1 and 2). then, in sentence 4, mary went back to the kitchen, which means she moved from the garden to the kitchen. afterwards, in sentence 5, she went back to the office, implying that she moved from the kitchen to the office. therefore, mary is currently in the office.	fully	office	True	Mary went back to the kitchen and then went back to the office, which implies that she is currently in the office.		"Reasoning: Mary went back to the kitchen and then went back to the office, which implies that she is currently in the office.
+
+Answer: office"	0.0968	0.0645	False	False	False	False	0
+623	11	125	3	"*TASK*
+Here are the context sentences:
+7. Daniel went back to the kitchen.
+8. Following that he journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	office	the context sentences 7 and 8 are about daniel's movements, but the question asks about mary's location. since the question is about mary, we need to refer to the previous context sentences that mentioned mary. from the previous context, we knew mary was in the office (from sentences 4 and 5). there is no new information about mary's movements, so her location remains the same. therefore, mary is still in the office.	none	not mentioned	False	There is no mention of Mary in the given context sentences. The sentences only mention Daniel's movements.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Daniel's movements.
+
+Answer: not mentioned"	0.0714	0.0714	False	False	False	True	0
+624	11	125	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the office.
+11. Then he travelled to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	according to sentence 10, daniel went back to the office, which means he was in the office at that point. then, sentence 11 states that he travelled to the kitchen, implying that he moved from the office to the kitchen. therefore, daniel is currently in the kitchen.	fully	kitchen	True	Daniel went back to the office and then travelled to the kitchen, which implies that he is currently in the kitchen.		"Reasoning: Daniel went back to the office and then travelled to the kitchen, which implies that he is currently in the kitchen.
+
+Answer: kitchen"	0.1333	0.0667	False	False	False	False	0
+625	11	125	5	"*TASK*
+Here are the context sentences:
+13. John moved to the garden.
+14. Following that he journeyed to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	according to sentence 13, john moved to the garden, which means he was in the garden at that point. then, sentence 14 states that he journeyed to the kitchen, implying that he moved from the garden to the kitchen. therefore, john is currently in the kitchen.	fully	kitchen	True	John moved to the garden and then journeyed to the kitchen, which implies that he is currently in the kitchen.		"Reasoning: John moved to the garden and then journeyed to the kitchen, which implies that he is currently in the kitchen.
+
+Answer: kitchen"	0.0	0.0667	False	False	False	False	0

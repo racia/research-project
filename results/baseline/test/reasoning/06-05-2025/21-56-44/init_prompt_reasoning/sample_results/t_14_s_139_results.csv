@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2941	14	139	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the school yesterday.
+2. This morning Fred moved to the kitchen.
+3. Yesterday Fred went to the bedroom.
+4. This morning Mary travelled to the kitchen.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	bedroom	"from context sentence 3, ""yesterday fred went to the bedroom"", we know that fred was in the bedroom yesterday. then, from context sentence 2, ""this morning fred moved to the kitchen"", we can infer that fred moved from the bedroom to the kitchen this morning. therefore, before moving to the kitchen, fred was in the bedroom."	fully	bedroom	True	Since Fred moved to the kitchen this morning, it implies that he was somewhere else before moving to the kitchen. From sentence 3, we know that Fred went to the bedroom yesterday, which means he was not in the kitchen yesterday. Therefore, Fred was in the bedroom before moving to the kitchen this morning.		"Reasoning: Since Fred moved to the kitchen this morning, it implies that he was somewhere else before moving to the kitchen. From sentence 3, we know that Fred went to the bedroom yesterday, which means he was not in the kitchen yesterday. Therefore, Fred was in the bedroom before moving to the kitchen this morning.
+
+Answer: bedroom"	0.1449	0.029	False	False	False	False	0
+2942	14	139	2	"*TASK*
+Here are the context sentences:
+6. Yesterday Julie went back to the school.
+7. Mary moved to the school this afternoon.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	bedroom	the question asks about fred's location before the kitchen, but the provided context sentences (6 and 7) do not mention fred at all. they talk about julie and mary's movements. to answer the question, we need to refer to the previous context sentences. from the previous context sentences, we know that fred moved to the kitchen this morning (sentence 2) and was in the bedroom yesterday (sentence 3). therefore, before moving to the kitchen, fred was in the	none	bedroom	True	There is no new information provided about Fred's location. The previous information about Fred's location is from sentences 1-4, which mentioned that Fred went to the bedroom yesterday and moved to the kitchen this morning. Since this new information does not contradict or update Fred's location, we can still conclude that Fred was in the bedroom before moving to the kitchen.		"Reasoning: There is no new information provided about Fred's location. The previous information about Fred's location is from sentences 1-4, which mentioned that Fred went to the bedroom yesterday and moved to the kitchen this morning. Since this new information does not contradict or update Fred's location, we can still conclude that Fred was in the bedroom before moving to the kitchen.
+
+Answer: bedroom"	0.0886	0.0253	False	False	False	True	0
+2943	14	139	3	"*TASK*
+Here are the context sentences:
+9. Fred went back to the kitchen this evening.
+10. Fred journeyed to the park this afternoon.
+
+Now, answer the following question:
+Where was Mary before the school?"	kitchen	the question asks about mary's location before the school, but the provided context sentences (9 and 10) talk about fred's movements. to answer the question, we need to refer to the previous context sentences. from the previous context sentences, we know that mary travelled to the kitchen this morning (sentence 4) and then moved to the school this afternoon (sentence 7). therefore, before moving to the school, mary was in the kitchen.	none	Not enough information	False	There is no new information provided about Mary's location. The previous information about Mary's location is from sentences 1-4, which mentioned that Mary travelled to the school yesterday and moved to the kitchen this morning. Since this new information does not provide any information about Mary's location before the school, we cannot answer the question.		"Reasoning: There is no new information provided about Mary's location. The previous information about Mary's location is from sentences 1-4, which mentioned that Mary travelled to the school yesterday and moved to the kitchen this morning. Since this new information does not provide any information about Mary's location before the school, we cannot answer the question.
+
+Answer: Not enough information"	0.0133	0.0267	False	False	False	True	0
+2944	14	139	4	"*TASK*
+Here are the context sentences:
+12. Yesterday Bill went to the cinema.
+13. Julie went back to the park this morning.
+
+Now, answer the following question:
+Where was Julie before the park?"	school	"the question asks about julie's location before the park, but the provided context sentences (12 and 13) do not directly mention julie's previous location. however, we can refer to the previous context sentences. from sentence 6, we know that ""yesterday julie went back to the school"". since sentence 13 mentions that julie went back to the park this morning, we can infer that julie was at the school before going to the park."	partially	Not mentioned	False	From sentence 13, we know that Julie went back to the park this morning. This implies that Julie was somewhere else before going back to the park. However, there is no information provided about Julie's location before going back to the park. Sentence 12 only mentions Bill's location, which is not relevant to Julie's location.		"Reasoning: From sentence 13, we know that Julie went back to the park this morning. This implies that Julie was somewhere else before going back to the park. However, there is no information provided about Julie's location before going back to the park. Sentence 12 only mentions Bill's location, which is not relevant to Julie's location.
+
+Answer: Not mentioned"	0.04	0.0267	False	False	False	True	0
+2945	14	139	5	"*TASK*
+Here are the context sentences:
+15. This afternoon Bill went back to the cinema.
+16. This morning Bill went to the office.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	park	"the question asks about fred's location before the kitchen, but the provided context sentences (15 and 16) talk about bill's movements. to answer the question, we need to refer to the previous context sentences. from sentence 2, we know that ""this morning fred moved to the kitchen"". however, there is no direct information about fred's location before the kitchen. but, from sentence 10, we know that ""fred journeyed to the park this afternoon"". since fred"	none	bedroom	False	There is no new information provided about Fred's location. The previous information about Fred's location is from sentences 1-4, which mentioned that Fred went to the bedroom yesterday and moved to the kitchen this morning. Since this new information does not contradict or update Fred's location, we can still conclude that Fred was in the bedroom before moving to the kitchen.		"Reasoning: There is no new information provided about Fred's location. The previous information about Fred's location is from sentences 1-4, which mentioned that Fred went to the bedroom yesterday and moved to the kitchen this morning. Since this new information does not contradict or update Fred's location, we can still conclude that Fred was in the bedroom before moving to the kitchen.
+
+Answer: bedroom"	0.0506	0.0253	False	False	False	True	0

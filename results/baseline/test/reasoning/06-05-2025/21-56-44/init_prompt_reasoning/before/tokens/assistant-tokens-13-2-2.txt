@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġand	Ġthen	Ġto	Ġthe	Ġhallway	,	Ġit	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	,	Ġas	Ġthey	Ġtravelled	Ġto	Ġit	Ġtogether	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

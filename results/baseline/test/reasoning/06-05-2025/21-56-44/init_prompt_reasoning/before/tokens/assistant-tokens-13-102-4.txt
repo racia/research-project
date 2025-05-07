@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġthey	Ġtravelled	Ġto	Ġthe	Ġkitchen	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġsame	Ġlocation	Ġas	ĠJohn	,	Ġwhich	Ġis	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+356	11	72	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the office.
+2. After that she went to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	the context sentences describe mary's movements in a sequence. first, she went back to the office (sentence 1), and then she went to the garden (sentence 2). since sentence 2 describes her movement after she went to the office, it implies that she left the office and went to the garden. therefore, her current location is the garden.	fully	garden	True	Mary went back to the office initially, and then she went to the garden. There is no information suggesting she moved from the garden to any other location. Therefore, it is logical to conclude that Mary is currently in the garden.		"Reasoning: Mary went back to the office initially, and then she went to the garden. There is no information suggesting she moved from the garden to any other location. Therefore, it is logical to conclude that Mary is currently in the garden.
+
+Answer: garden"	0.1321	0.0377	False	False	False	True	0
+357	11	72	2	"*TASK*
+Here are the context sentences:
+4. Mary went back to the hallway.
+5. Then she travelled to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	the context sentences describe mary's movements in a sequence. sentence 4 states that mary went back to the hallway, and sentence 5 states that then she travelled to the garden. this implies that mary left the hallway and went to the garden. therefore, her current location is the garden.	fully	garden	True	Mary initially went back to the hallway, and then she travelled to the garden. There is no information suggesting she moved from the garden to any other location. Therefore, it is logical to conclude that Mary is currently in the garden.		"Reasoning: Mary initially went back to the hallway, and then she travelled to the garden. There is no information suggesting she moved from the garden to any other location. Therefore, it is logical to conclude that Mary is currently in the garden.
+
+Answer: garden"	0.0566	0.0377	False	False	False	True	0
+358	11	72	3	"*TASK*
+Here are the context sentences:
+7. John went back to the office.
+8. Afterwards he journeyed to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	"the context sentences describe john's movements, not mary's. there is no information provided about mary's movements or location. the answer ""garden"" does not logically follow from the provided context sentences, as they only describe john's actions."	none	not mentioned	False	The question asks about Mary's location, but there is no information about Mary in the given context sentences. The sentences only mention John's movements. Therefore, it is not possible to determine Mary's location based on the provided information.		"Reasoning: The question asks about Mary's location, but there is no information about Mary in the given context sentences. The sentences only mention John's movements. Therefore, it is not possible to determine Mary's location based on the provided information.
+
+Answer: not mentioned"	0.0926	0.037	False	False	False	True	0
+359	11	72	4	"*TASK*
+Here are the context sentences:
+10. John journeyed to the kitchen.
+11. Following that he travelled to the office.
+
+Now, answer the following question:
+Where is John?"	office	the context sentences describe john's movements in a sequence. sentence 10 states that john journeyed to the kitchen, and sentence 11 states that following that, he travelled to the office. this implies that john left the kitchen and went to the office. therefore, his current location is the office.	fully	office	True	John initially journeyed to the kitchen, and then he travelled to the office. There is no information suggesting he moved from the office to any other location. Therefore, it is logical to conclude that John is currently in the office.		"Reasoning: John initially journeyed to the kitchen, and then he travelled to the office. There is no information suggesting he moved from the office to any other location. Therefore, it is logical to conclude that John is currently in the office.
+
+Answer: office"	0.0755	0.0377	False	False	False	True	0
+360	11	72	5	"*TASK*
+Here are the context sentences:
+13. Sandra went back to the hallway.
+14. Afterwards she went back to the bedroom.
+
+Now, answer the following question:
+Where is John?"	office	"the context sentences describe sandra's movements, not john's. there is no information provided about john's movements or location. the answer ""office"" does not logically follow from the provided context sentences, as they only describe sandra's actions."	none	not mentioned	False	The question asks about John's location, but there is no information about John in the given context sentences. The sentences only mention Sandra's movements. Therefore, it is not possible to determine John's location based on the provided information.		"Reasoning: The question asks about John's location, but there is no information about John in the given context sentences. The sentences only mention Sandra's movements. Therefore, it is not possible to determine John's location based on the provided information.
+
+Answer: not mentioned"	0.0	0.037	False	False	False	True	0

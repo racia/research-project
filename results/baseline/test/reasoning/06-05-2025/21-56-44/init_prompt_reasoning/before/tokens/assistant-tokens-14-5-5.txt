@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	.	ĠSince	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġthis	Ġevening	,	Ġit	Ġimplies	Ġthat	Ġshe	Ġwas	Ġat	Ġthe	Ġcinema	Ġbefore	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġcinema	<|eot_id|>

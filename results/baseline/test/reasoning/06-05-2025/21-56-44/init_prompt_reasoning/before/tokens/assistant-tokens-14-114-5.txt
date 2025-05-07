@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJulie	's	Ġlocation	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	.	ĠThe	Ġinformation	Ġprovided	Ġis	Ġabout	ĠBill	's	Ġmovement	Ġto	Ġthe	Ġpark	Ġand	ĠFred	's	Ġmovement	Ġback	Ġto	Ġthe	Ġcinema	,	Ġbut	Ġnot	Ġabout	ĠJulie	's	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

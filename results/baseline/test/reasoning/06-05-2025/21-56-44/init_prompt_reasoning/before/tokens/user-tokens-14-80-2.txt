@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+6	.	ĠThis	Ġevening	ĠFred	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+7	.	ĠThis	Ġafternoon	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġpark	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠFred	Ġbefore	Ġthe	Ġoffice	?Ċ

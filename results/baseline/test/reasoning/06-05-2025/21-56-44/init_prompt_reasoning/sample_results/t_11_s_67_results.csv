@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+331	11	67	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the hallway.
+2. After that he moved to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"the context sentences describe daniel's movements, first to the hallway and then to the kitchen. since the second sentence states ""after that"" and mentions daniel moving to the kitchen, it implies that daniel's current location is the kitchen, as it is the last location mentioned in the sequence of events."	fully	kitchen	True	Daniel's last known location was the hallway, and then he moved to the kitchen, so he is likely to be in the kitchen.		"Reasoning: Daniel's last known location was the hallway, and then he moved to the kitchen, so he is likely to be in the kitchen.
+
+Answer: kitchen"	0.1471	0.0588	False	False	False	False	0
+332	11	67	2	"*TASK*
+Here are the context sentences:
+4. Daniel travelled to the hallway.
+5. Following that he went to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"the context sentences describe daniel's movements, first to the hallway and then to the garden. the phrase ""following that"" in the second sentence indicates a chronological sequence of events, implying that daniel's current location is the garden, as it is the last location mentioned in the sequence of events."	fully	garden	True	Daniel's last known location was the hallway, and then he went to the garden, so he is likely to be in the garden.		"Reasoning: Daniel's last known location was the hallway, and then he went to the garden, so he is likely to be in the garden.
+
+Answer: garden"	0.2059	0.0588	False	False	False	False	0
+333	11	67	3	"*TASK*
+Here are the context sentences:
+7. Sandra went back to the office.
+8. Following that she journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	"the context sentences describe sandra's movements, first going back to the office and then journeying to the kitchen. the phrase ""following that"" in the second sentence indicates a chronological sequence of events, implying that sandra's current location is the kitchen, as it is the last location mentioned in the sequence of events."	fully	kitchen	True	Sandra's last known location was the office, and then she journeyed to the kitchen, so she is likely to be in the kitchen.		"Reasoning: Sandra's last known location was the office, and then she journeyed to the kitchen, so she is likely to be in the kitchen.
+
+Answer: kitchen"	0.0	0.0571	False	False	False	False	0
+334	11	67	4	"*TASK*
+Here are the context sentences:
+10. Sandra moved to the garden.
+11. Afterwards she journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"the context sentences describe sandra's movements, first moving to the garden and then journeying to the hallway. the word ""afterwards"" in the second sentence indicates a chronological sequence of events, implying that sandra's current location is the hallway, as it is the last location mentioned in the sequence of events."	fully	hallway	True	Sandra's last known location was the garden, and then she journeyed to the hallway, so she is likely to be in the hallway.		"Reasoning: Sandra's last known location was the garden, and then she journeyed to the hallway, so she is likely to be in the hallway.
+
+Answer: hallway"	0.2	0.0571	False	False	False	False	0
+335	11	67	5	"*TASK*
+Here are the context sentences:
+13. Mary went back to the garden.
+14. Then she journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"the context sentences describe mary's movements, first going back to the garden and then journeying to the kitchen. the word ""then"" in the second sentence indicates a chronological sequence of events, implying that mary's current location is the kitchen, as it is the last location mentioned in the sequence of events."	fully	kitchen	True	Mary's last known location was the garden, and then she journeyed to the kitchen, so she is likely to be in the kitchen.		"Reasoning: Mary's last known location was the garden, and then she journeyed to the kitchen, so she is likely to be in the kitchen.
+
+Answer: kitchen"	0.0286	0.0571	False	False	False	False	0

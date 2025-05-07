@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2161	13	133	1	"*TASK*
+Here are the context sentences:
+1. Sandra and John journeyed to the office.
+2. Then they went to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	from the context sentences, we know that sandra and john first went to the office (sentence 1) and then went to the garden (sentence 2). since there is no information about them leaving the garden, it can be logically inferred that sandra is still in the garden.	fully	garden	True	Sandra and John journeyed to the office, and then they went to the garden. This implies that Sandra was with John throughout their journey, and since they are in the garden now, Sandra is likely to be in the garden as well.		"Reasoning: Sandra and John journeyed to the office, and then they went to the garden. This implies that Sandra was with John throughout their journey, and since they are in the garden now, Sandra is likely to be in the garden as well.
+
+Answer: garden"	0.1818	0.0364	False	False	False	False	0
+2162	13	133	2	"*TASK*
+Here are the context sentences:
+4. John and Mary went back to the office.
+5. Following that they journeyed to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that john and mary went back to the office (sentence 4) and then journeyed to the kitchen (sentence 5). since there is no information about them leaving the kitchen, it can be logically inferred that john is still in the kitchen.	fully	kitchen	True	According to sentence 4, John and Mary went back to the office. Then, in sentence 5, they journeyed to the kitchen. This implies that John is now in the kitchen, as he went there with Mary.		"Reasoning: According to sentence 4, John and Mary went back to the office. Then, in sentence 5, they journeyed to the kitchen. This implies that John is now in the kitchen, as he went there with Mary.
+
+Answer: kitchen"	0.0755	0.0377	False	False	False	False	0
+2163	13	133	3	"*TASK*
+Here are the context sentences:
+7. Mary and Sandra went back to the bathroom.
+8. Then they travelled to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	from the context sentences, we know that mary and sandra went back to the bathroom (sentence 7) and then travelled to the garden (sentence 8). since there is no information about them leaving the garden, it can be logically inferred that sandra is still in the garden.	fully	garden	True	According to sentence 7, Mary and Sandra went back to the bathroom. Then, in sentence 8, they travelled to the garden. This implies that Sandra is now in the garden, as she went there with Mary.		"Reasoning: According to sentence 7, Mary and Sandra went back to the bathroom. Then, in sentence 8, they travelled to the garden. This implies that Sandra is now in the garden, as she went there with Mary.
+
+Answer: garden"	0.1346	0.0385	False	False	False	False	0
+2164	13	133	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel travelled to the bathroom.
+11. Then they moved to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that john and daniel travelled to the bathroom (sentence 10) and then moved to the hallway (sentence 11). since there is no information about them leaving the hallway, it can be logically inferred that john is still in the hallway.	fully	hallway	True	According to sentence 10, John and Daniel travelled to the bathroom. Then, in sentence 11, they moved to the hallway. This implies that John is now in the hallway, as he went there with Daniel.		"Reasoning: According to sentence 10, John and Daniel travelled to the bathroom. Then, in sentence 11, they moved to the hallway. This implies that John is now in the hallway, as he went there with Daniel.
+
+Answer: hallway"	0.0196	0.0392	False	False	False	False	0
+2165	13	133	5	"*TASK*
+Here are the context sentences:
+13. John and Daniel moved to the kitchen.
+14. Then they went back to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that john and daniel moved to the kitchen (sentence 13) and then went back to the hallway (sentence 14). this implies that they reversed their direction and returned to the hallway, so it can be logically inferred that john is currently in the hallway.	fully	hallway	True	According to sentence 13, John and Daniel moved to the kitchen. Then, in sentence 14, they went back to the hallway. This implies that John is now in the hallway, as they went back there.		"Reasoning: According to sentence 13, John and Daniel moved to the kitchen. Then, in sentence 14, they went back to the hallway. This implies that John is now in the hallway, as they went back there.
+
+Answer: hallway"	0.1373	0.0392	False	False	False	False	0

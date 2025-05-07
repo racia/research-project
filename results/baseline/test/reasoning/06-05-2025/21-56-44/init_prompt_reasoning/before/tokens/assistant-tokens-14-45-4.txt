@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġcinema	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJulie	's	Ġjourney	Ġto	Ġthe	Ġbedroom	Ġand	ĠMary	's	Ġmovement	Ġto	Ġthe	Ġpark	Ġyesterday	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJulie	's	Ġactivity	Ġor	Ġlocation	Ġrelated	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

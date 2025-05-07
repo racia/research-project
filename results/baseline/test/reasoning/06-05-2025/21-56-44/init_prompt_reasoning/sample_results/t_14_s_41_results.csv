@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2451	14	41	1	"*TASK*
+Here are the context sentences:
+1. This morning Julie went back to the office.
+2. Yesterday Bill went to the office.
+3. Yesterday Fred moved to the cinema.
+4. Yesterday Julie moved to the school.
+
+Now, answer the following question:
+Where was Julie before the office?"	school	"from context sentence 4, ""yesterday julie moved to the school"", we know that julie was at the school yesterday. then, from context sentence 1, ""this morning julie went back to the office"", we can infer that julie went from the school to the office this morning. therefore, julie was at the school before going to the office."	fully	school	True	Since Julie moved to the school yesterday (sentence 4), and she went back to the office this morning (sentence 1), it implies that she was at the school yesterday and moved to the office this morning.		"Reasoning: Since Julie moved to the school yesterday (sentence 4), and she went back to the office this morning (sentence 1), it implies that she was at the school yesterday and moved to the office this morning.
+
+Answer: school"	0.08	0.04	False	False	False	False	0
+2452	14	41	2	"*TASK*
+Here are the context sentences:
+6. Yesterday Mary went to the school.
+7. This afternoon Julie journeyed to the park.
+
+Now, answer the following question:
+Where was Julie before the office?"	school	this question refers to a previous part of the conversation history. from the previous context sentences (1. this morning julie went back to the office. 2. yesterday bill went to the office. 3. yesterday fred moved to the cinema. 4. yesterday julie moved to the school.), we know that julie moved to the school yesterday (sentence 4). then, julie went back to the office this morning (sentence 1). the new context sentences (6. yesterday mary	none	Not mentioned	False	There is no mention of Julie being at the office in these context sentences. The sentences only mention Julie's journey to the park this afternoon (sentence 7), and Mary's visit to the school yesterday (sentence 6).		"Reasoning: There is no mention of Julie being at the office in these context sentences. The sentences only mention Julie's journey to the park this afternoon (sentence 7), and Mary's visit to the school yesterday (sentence 6).
+
+Answer: Not mentioned"	0.1132	0.0377	False	False	False	True	0
+2453	14	41	3	"*TASK*
+Here are the context sentences:
+9. Julie moved to the bedroom this evening.
+10. Fred journeyed to the bedroom this morning.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	park	from the previous context sentences, we know that julie journeyed to the park this afternoon (sentence 7). there is no information about julie moving to any other location between the afternoon and this evening. therefore, it is logical to assume that julie was at the park before moving to the bedroom this evening.	partially	Not mentioned	False	Since Julie moved to the bedroom this evening (sentence 9), it implies that she was somewhere else before moving to the bedroom. However, the context sentences do not provide information about Julie's location before moving to the bedroom.		"Reasoning: Since Julie moved to the bedroom this evening (sentence 9), it implies that she was somewhere else before moving to the bedroom. However, the context sentences do not provide information about Julie's location before moving to the bedroom.
+
+Answer: Not mentioned"	0.0566	0.0377	False	False	False	True	0
+2454	14	41	4	"*TASK*
+Here are the context sentences:
+12. Mary journeyed to the bedroom this morning.
+13. Fred went to the school this afternoon.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	cinema	from the previous context sentences, we know that fred moved to the cinema yesterday (sentence 3). there is no information about fred moving to any other location between yesterday and this afternoon. then, sentence 13 states that fred went to the school this afternoon, but the question asks about fred's location before the bedroom, which is not mentioned in sentence 13. therefore, we need to look further back in the conversation history. since fred was at the cinema yesterday and there is no	none	Not mentioned	False	There is no mention of Fred being at the bedroom in these context sentences. The sentences only mention Fred's journey to the school this afternoon (sentence 13), and Mary's visit to the bedroom this morning (sentence 12).		"Reasoning: There is no mention of Fred being at the bedroom in these context sentences. The sentences only mention Fred's journey to the school this afternoon (sentence 13), and Mary's visit to the bedroom this morning (sentence 12).
+
+Answer: Not mentioned"	0.0	0.037	False	False	False	True	0
+2455	14	41	5	"*TASK*
+Here are the context sentences:
+15. Bill went to the park this morning.
+16. Fred moved to the bedroom this evening.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	park	from the previous context sentences, we know that julie journeyed to the park this afternoon (sentence 7). there is no information about julie moving to any other location between the afternoon and this evening. then, sentence 9 states that julie moved to the bedroom this evening. therefore, it is logical to conclude that julie was at the park before moving to the bedroom this evening.	none	Not mentioned	False	There is no mention of Julie's location in these context sentences. The sentences only mention Bill's visit to the park this morning (sentence 15) and Fred's move to the bedroom this evening (sentence 16).		"Reasoning: There is no mention of Julie's location in these context sentences. The sentences only mention Bill's visit to the park this morning (sentence 15) and Fred's move to the bedroom this evening (sentence 16).
+
+Answer: Not mentioned"	0.0192	0.0385	False	False	False	True	0

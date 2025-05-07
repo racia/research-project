@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġsentences	Ġ	10	Ġand	Ġ	11	,	Ġwhich	Ġstate	Ġthat	ĠMary	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġand	Ġthen	ĠMary	Ġand	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

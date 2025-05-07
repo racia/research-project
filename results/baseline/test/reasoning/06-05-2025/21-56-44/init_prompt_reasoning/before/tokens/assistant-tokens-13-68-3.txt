@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġgarden	Ġinitially	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġoffice	.	ĠSince	Ġthere	Ġis	Ġno	Ġinformation	Ġsuggesting	Ġshe	Ġleft	Ġthe	Ġoffice	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

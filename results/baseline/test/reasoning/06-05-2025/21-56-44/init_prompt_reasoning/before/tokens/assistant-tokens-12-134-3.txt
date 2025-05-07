@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġstates	Ġthat	ĠJohn	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.	ĠSentence	Ġ	8	Ġdoes	Ġnot	Ġmention	ĠMary	's	Ġlocation	,	Ġbut	Ġit	Ġonly	Ġaffects	ĠJohn	's	Ġlocation	,	Ġwhich	Ġis	Ġnow	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

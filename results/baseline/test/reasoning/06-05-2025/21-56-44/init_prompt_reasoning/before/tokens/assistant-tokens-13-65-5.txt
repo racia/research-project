@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠDaniel	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġkitchen	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġwas	Ġin	Ġthe	Ġoffice	Ġinitially	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġkitchen	.	ĠSince	Ġthe	Ġquestion	Ġasks	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġis	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

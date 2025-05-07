@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġwith	ĠMary	Ġ(	sentence	Ġ	10	),	Ġand	Ġthen	Ġhe	Ġmoved	Ġto	Ġthe	Ġgarden	Ġwith	ĠDaniel	Ġ(	sentence	Ġ	11	).	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

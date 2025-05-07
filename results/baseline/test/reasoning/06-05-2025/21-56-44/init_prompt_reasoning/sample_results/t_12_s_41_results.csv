@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+951	12	41	1	"*TASK*
+Here are the context sentences:
+1. Daniel and John travelled to the bedroom.
+2. Sandra and John journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from context sentence 1, we know that daniel and john travelled to the bedroom. there is no information provided about daniel leaving the bedroom or going to any other location. therefore, based on the last known location of daniel, we can conclude that daniel is in the bedroom.	fully	bedroom	True	Since Daniel and John travelled to the bedroom in sentence 1, it implies that Daniel is in the bedroom. However, sentence 2 mentions Sandra and John journeyed to the kitchen, which does not provide any information about Daniel's location. Therefore, we can conclude that Daniel is still in the bedroom.		"Reasoning: Since Daniel and John travelled to the bedroom in sentence 1, it implies that Daniel is in the bedroom. However, sentence 2 mentions Sandra and John journeyed to the kitchen, which does not provide any information about Daniel's location. Therefore, we can conclude that Daniel is still in the bedroom.
+
+Answer: bedroom"	0.0735	0.0147	False	False	False	True	0
+952	12	41	2	"*TASK*
+Here are the context sentences:
+4. Mary and Daniel journeyed to the kitchen.
+5. John and Mary moved to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	from context sentence 5, we know that john and mary moved to the bedroom. there is no information provided about john leaving the bedroom or going to any other location after that. therefore, based on the last known location of john, we can conclude that john is in the bedroom.	fully	bedroom	True	Sentence 5 states that John and Mary moved to the bedroom, which implies that John is in the bedroom.		"Reasoning: Sentence 5 states that John and Mary moved to the bedroom, which implies that John is in the bedroom.
+
+Answer: bedroom"	0.1379	0.0345	False	False	False	False	0
+953	12	41	3	"*TASK*
+Here are the context sentences:
+7. Mary and Daniel moved to the garden.
+8. Mary and Daniel journeyed to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from context sentence 7, we know that mary and daniel moved to the garden. then, from context sentence 8, we know that mary and daniel journeyed to the hallway. this implies that mary and daniel left the garden and went to the hallway. therefore, based on the last known location of mary, we can conclude that mary is in the hallway.	fully	hallway	True	Since Mary and Daniel moved to the garden in sentence 7, it implies that Mary is in the garden. However, sentence 8 states that Mary and Daniel journeyed to the hallway, which means Mary's location changed to the hallway.		"Reasoning: Since Mary and Daniel moved to the garden in sentence 7, it implies that Mary is in the garden. However, sentence 8 states that Mary and Daniel journeyed to the hallway, which means Mary's location changed to the hallway.
+
+Answer: hallway"	0.0545	0.0182	False	False	False	False	0
+954	12	41	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel went back to the bathroom.
+11. Mary and Daniel went to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	from context sentence 10, we know that john and daniel went back to the bathroom. however, this information is overridden by context sentence 11, which states that mary and daniel went to the office. this implies that daniel left the bathroom and went to the office with mary. therefore, based on the last known location of daniel, we can conclude that daniel is in the office.	fully	office	True	Sentence 10 states that John and Daniel went back to the bathroom, which implies that Daniel is in the bathroom. However, sentence 11 states that Mary and Daniel went to the office, which means Daniel's location changed to the office.		"Reasoning: Sentence 10 states that John and Daniel went back to the bathroom, which implies that Daniel is in the bathroom. However, sentence 11 states that Mary and Daniel went to the office, which means Daniel's location changed to the office.
+
+Answer: office"	0.0182	0.0182	False	False	False	False	0
+955	12	41	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John travelled to the bedroom.
+14. Daniel and Mary travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from context sentence 14, we know that daniel and mary travelled to the bathroom. there is no information provided about mary leaving the bathroom or going to any other location after that. therefore, based on the last known location of mary, we can conclude that mary is in the bathroom.	fully	bathroom	True	Sentence 14 states that Daniel and Mary travelled to the bathroom, which implies that Mary is in the bathroom.		"Reasoning: Sentence 14 states that Daniel and Mary travelled to the bathroom, which implies that Mary is in the bathroom.
+
+Answer: bathroom"	0.1379	0.0345	False	False	False	False	0

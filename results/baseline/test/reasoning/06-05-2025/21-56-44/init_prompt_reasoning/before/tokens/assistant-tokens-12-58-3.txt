@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġhis	Ġlocation	Ġchanges	.	ĠInitially	,	Ġhe	Ġis	Ġin	Ġthe	Ġkitchen	Ġwith	ĠMary	,	Ġbut	Ġthen	Ġhe	Ġgoes	Ġback	Ġto	Ġthe	Ġoffice	Ġwith	ĠSandra	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

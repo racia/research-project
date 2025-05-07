@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2696	14	90	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Bill went back to the office.
+2. Mary journeyed to the school this morning.
+3. Julie went to the kitchen yesterday.
+4. Mary went to the park yesterday.
+
+Now, answer the following question:
+Where was Mary before the school?"	park	from the context sentences, we know that mary went to the park yesterday (sentence 4). the question asks where mary was before going to the school, and since sentence 2 states that mary journeyed to the school this morning, we can infer that mary was at the park before going to the school.	fully	home	False	Since Mary went to the school this morning, and we know she went to the park yesterday, it implies that she was somewhere else before going to the school. The only other information we have about Mary's activities is that she journeyed to the school this morning. This journey implies that she was not at the school before this morning. Therefore, we can infer that Mary was at home before going to the school.		"Reasoning: Since Mary went to the school this morning, and we know she went to the park yesterday, it implies that she was somewhere else before going to the school. The only other information we have about Mary's activities is that she journeyed to the school this morning. This journey implies that she was not at the school before this morning. Therefore, we can infer that Mary was at home before going to the school.
+
+Answer: home"	0.0778	0.0222	False	False	False	True	0
+2697	14	90	2	"*TASK*
+Here are the context sentences:
+6. This morning Bill went to the cinema.
+7. Julie went to the bedroom this morning.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	kitchen	from the provided context sentences, we don't have any direct information about julie's location before the bedroom. however, we can look at the previous parts of the conversation history. in sentence 3, we know that julie went to the kitchen yesterday. there is no information about julie's movements after that until sentence 7, where julie goes to the bedroom this morning. it is logical to assume that julie was at the kitchen before going to the bedroom, as there is no other information	partially	home	False	Since Julie went to the bedroom this morning, and we know nothing about her activities before this morning, we can only infer that she was somewhere else before going to the bedroom. The only information we have about Julie's activities is that she went to the bedroom this morning. Therefore, we can infer that Julie was at home before going to the bedroom.		"Reasoning: Since Julie went to the bedroom this morning, and we know nothing about her activities before this morning, we can only infer that she was somewhere else before going to the bedroom. The only information we have about Julie's activities is that she went to the bedroom this morning. Therefore, we can infer that Julie was at home before going to the bedroom.
+
+Answer: home"	0.1299	0.026	False	False	False	True	0
+2698	14	90	3	"*TASK*
+Here are the context sentences:
+9. Mary went back to the kitchen this afternoon.
+10. Julie went back to the school this afternoon.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	school	from the provided context sentences, we don't have any direct information about mary's location before the kitchen. however, we can look at the previous parts of the conversation history. in sentence 4, we know that mary went to the park yesterday. then, in sentence 2, we know that mary journeyed to the school this morning. there is no information about mary's movements after that until sentence 9, where mary goes back to the kitchen this afternoon. it is logical	partially		False	Since Mary went back to the kitchen this afternoon, we know she was somewhere else before going back to the kitchen. We also know that Mary went to the park yesterday (from context sentence 4), but we don't have any information about her activities this afternoon before going back to the kitchen. Therefore, we can only infer that Mary was at the kitchen before going back to the kitchen, which is not a very helpful answer.		"Reasoning: Since Mary went back to the kitchen this afternoon, we know she was somewhere else before going back to the kitchen. We also know that Mary went to the park yesterday (from context sentence 4), but we don't have any information about her activities this afternoon before going back to the kitchen. Therefore, we can only infer that Mary was at the kitchen before going back to the kitchen, which is not a very helpful answer.
+
+However, we can look at the previous information about"	0.1212	0.0202	False	False	False	True	0
+2699	14	90	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Bill moved to the office.
+13. Fred went back to the cinema yesterday.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	school	this question refers to a previous part of the conversation history. in sentence 9, we know that mary went back to the kitchen this afternoon. to find out where mary was before the kitchen, we need to look at the previous parts of the conversation history. in sentence 2, we know that mary journeyed to the school this morning. there is no information about mary's movements after that until sentence 9, where mary goes back to the kitchen this afternoon. it is logical	none	home (assuming Mary was at home before going to the park yesterday)	False	There is no new information about Mary in these context sentences. We already knew that Mary went to the park yesterday (from context sentence 4) and went back to the kitchen this afternoon (from context sentence 9). We still don't have any information about Mary's activities this afternoon before going back to the kitchen.		"Reasoning: There is no new information about Mary in these context sentences. We already knew that Mary went to the park yesterday (from context sentence 4) and went back to the kitchen this afternoon (from context sentence 9). We still don't have any information about Mary's activities this afternoon before going back to the kitchen.
+
+Answer: home (assuming Mary was at home before going to the park yesterday)"	0.0595	0.0238	False	False	False	True	0
+2700	14	90	5	"*TASK*
+Here are the context sentences:
+15. This evening Julie travelled to the kitchen.
+16. Bill moved to the school this evening.
+
+Now, answer the following question:
+Where was Bill before the school?"	office	to find out where bill was before the school, we need to look at the previous parts of the conversation history. in sentence 12, we know that bill moved to the office this afternoon. there is no information about bill's movements after that until sentence 16, where bill moves to the school this evening. it is logical to assume that bill was at the office before going to the school.	partially	office	True	Since Bill moved to the school this evening, we know he was somewhere else before going to the school. We also know that Bill went to the office this afternoon (from context sentence 12), so it's likely that he was at the office before going to the school.		"Reasoning: Since Bill moved to the school this evening, we know he was somewhere else before going to the school. We also know that Bill went to the office this afternoon (from context sentence 12), so it's likely that he was at the office before going to the school.
+
+Answer: office"	0.0645	0.0323	False	False	False	False	0

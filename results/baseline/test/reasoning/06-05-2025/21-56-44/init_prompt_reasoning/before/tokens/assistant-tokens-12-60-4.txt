@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġis	Ġmentioned	Ġin	Ġtwo	Ġsentences	.	ĠIn	Ġsentence	Ġ	10	,	Ġhe	Ġis	Ġmoving	Ġto	Ġthe	Ġbathroom	Ġwith	ĠMary	.	ĠIn	Ġsentence	Ġ	11	,	Ġhe	Ġis	Ġmoving	Ġto	Ġthe	Ġkitchen	Ġwith	ĠMary	.	ĠSince	Ġthe	Ġlast	Ġaction	Ġmentioned	Ġis	Ġmoving	Ġto	Ġthe	Ġkitchen	,	Ġit	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

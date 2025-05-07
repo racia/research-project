@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+511	11	103	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the bedroom.
+2. Following that she travelled to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	"sandra's current location is determined by tracing her movements from the context sentences. in sentence 1, sandra journeyed to the bedroom, which means she was in the bedroom at that point. however, sentence 2 states that ""following that"" (i.e., after being in the bedroom) she travelled to the office. this implies that she left the bedroom and moved to the office. therefore, her current location is the office."	fully	office	True	Sandra has journeyed to the bedroom initially, and then she travelled to the office. This implies that she has moved from the bedroom to the office, and currently, she is in the office.		"Reasoning: Sandra has journeyed to the bedroom initially, and then she travelled to the office. This implies that she has moved from the bedroom to the office, and currently, she is in the office.
+
+Answer: office"	0.1957	0.0435	False	False	False	False	0
+512	11	103	2	"*TASK*
+Here are the context sentences:
+4. John moved to the office.
+5. Following that he travelled to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	office	the context sentences provided only mention john's movements, but the question asks about sandra's location. there is no information about sandra's movements or location in the provided context sentences. however, we can look at the previous parts of the conversation history. in the previous part, we had context sentences about sandra's movements, and her last known location was the office. there is no new information about sandra's movements, so her location remains the same, which is the office.	none	not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only mention John's movements, and Sandra's whereabouts are not specified.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention John's movements, and Sandra's whereabouts are not specified.
+
+Answer: not mentioned"	0.2778	0.0556	False	False	False	True	0
+513	11	103	3	"*TASK*
+Here are the context sentences:
+7. Sandra went back to the bedroom.
+8. After that she travelled to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"sandra's current location is determined by tracing her movements from the context sentences. in sentence 7, sandra went back to the bedroom, which means she was in the bedroom at that point. however, sentence 8 states that ""after that"" (i.e., after being in the bedroom) she travelled to the hallway. this implies that she left the bedroom and moved to the hallway. therefore, her current location is the hallway."	fully	hallway	True	Sandra went back to the bedroom initially, and then she travelled to the hallway. This implies that she has moved from the bedroom to the hallway, and currently, she is in the hallway.		"Reasoning: Sandra went back to the bedroom initially, and then she travelled to the hallway. This implies that she has moved from the bedroom to the hallway, and currently, she is in the hallway.
+
+Answer: hallway"	0.1556	0.0444	False	False	False	False	0
+514	11	103	4	"*TASK*
+Here are the context sentences:
+10. John travelled to the hallway.
+11. Following that he travelled to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	"john's current location is determined by tracing his movements from the context sentences. in sentence 10, john travelled to the hallway, which means he was in the hallway at that point. however, sentence 11 states that ""following that"" (i.e., after being in the hallway) he travelled to the bathroom. this implies that he left the hallway and moved to the bathroom. therefore, his current location is the bathroom."	fully	bathroom	True	John travelled to the hallway initially, and then he travelled to the bathroom. This implies that he has moved from the hallway to the bathroom, and currently, he is in the bathroom.		"Reasoning: John travelled to the hallway initially, and then he travelled to the bathroom. This implies that he has moved from the hallway to the bathroom, and currently, he is in the bathroom.
+
+Answer: bathroom"	0.0227	0.0455	False	False	False	False	0
+515	11	103	5	"*TASK*
+Here are the context sentences:
+13. Sandra went back to the kitchen.
+14. Afterwards she went back to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"sandra's current location is determined by tracing her movements from the context sentences. in sentence 13, sandra went back to the kitchen, which means she was in the kitchen at that point. however, sentence 14 states that ""afterwards"" (i.e., after being in the kitchen) she went back to the hallway. this implies that she left the kitchen and moved to the hallway. therefore, her current location is the hallway."	fully	hallway	True	Sandra went back to the kitchen initially, and then she went back to the hallway. This implies that she has moved from the kitchen to the hallway, and currently, she is in the hallway.		"Reasoning: Sandra went back to the kitchen initially, and then she went back to the hallway. This implies that she has moved from the kitchen to the hallway, and currently, she is in the hallway.
+
+Answer: hallway"	0.0217	0.0435	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġwent	Ġto	Ġthe	Ġgarden	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

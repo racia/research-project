@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġschool	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠFred	's	Ġlocation	Ġas	Ġthe	Ġcinema	Ġyesterday	,	Ġbut	Ġnot	Ġhis	Ġlocation	Ġbefore	Ġthe	Ġschool	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

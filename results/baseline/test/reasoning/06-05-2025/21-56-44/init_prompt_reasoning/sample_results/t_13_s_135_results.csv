@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2171	13	135	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Daniel moved to the bedroom.
+2. Then they travelled to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	sandra and daniel moved to the bedroom initially, but then they travelled to the hallway. since there is no information about them moving to any other location after the hallway, it can be logically concluded that sandra is currently in the hallway.	fully	hallway	True	Sandra is mentioned in the first sentence as moving to the bedroom, and then in the second sentence as travelling to the hallway. There is no indication that she left the hallway, so it is likely that she is still there.		"Reasoning: Sandra is mentioned in the first sentence as moving to the bedroom, and then in the second sentence as travelling to the hallway. There is no indication that she left the hallway, so it is likely that she is still there.
+
+Answer: hallway"	0.1923	0.0385	False	False	False	True	0
+2172	13	135	2	"*TASK*
+Here are the context sentences:
+4. John and Sandra went back to the kitchen.
+5. Following that they went to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	according to the context, john and sandra went back to the kitchen, and then they went to the bathroom. since there is no information about them moving to any other location after the bathroom, it can be logically concluded that john is currently in the bathroom.	fully	bathroom	True	According to sentence 4, John and Sandra went back to the kitchen. Then, according to sentence 5, they went to the bathroom. Since John is not mentioned as leaving the bathroom, it is likely that he is still there.		"Reasoning: According to sentence 4, John and Sandra went back to the kitchen. Then, according to sentence 5, they went to the bathroom. Since John is not mentioned as leaving the bathroom, it is likely that he is still there.
+
+Answer: bathroom"	0.0727	0.0364	False	False	False	True	0
+2173	13	135	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary moved to the office.
+8. After that they journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	sandra and mary initially moved to the office, but then they journeyed to the bathroom. since there is no information about them moving to any other location after the bathroom, it can be logically concluded that sandra is currently in the bathroom.	fully	bathroom	True	According to sentence 7, Sandra and Mary moved to the office. Then, according to sentence 8, they journeyed to the bathroom. Since Sandra is not mentioned as leaving the bathroom, it is likely that she is still there.		"Reasoning: According to sentence 7, Sandra and Mary moved to the office. Then, according to sentence 8, they journeyed to the bathroom. Since Sandra is not mentioned as leaving the bathroom, it is likely that she is still there.
+
+Answer: bathroom"	0.2	0.0364	False	False	False	True	0
+2174	13	135	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Daniel moved to the kitchen.
+11. Following that they moved to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	sandra and daniel initially moved to the kitchen, but then they moved to the bathroom. since there is no information about them moving to any other location after the bathroom, it can be logically concluded that sandra is currently in the bathroom.	fully	bathroom	True	According to sentence 10, Sandra and Daniel moved to the kitchen. Then, according to sentence 11, they moved to the bathroom. Since Sandra is not mentioned as leaving the bathroom, it is likely that she is still there.		"Reasoning: According to sentence 10, Sandra and Daniel moved to the kitchen. Then, according to sentence 11, they moved to the bathroom. Since Sandra is not mentioned as leaving the bathroom, it is likely that she is still there.
+
+Answer: bathroom"	0.0741	0.037	False	False	False	True	0
+2175	13	135	5	"*TASK*
+Here are the context sentences:
+13. John and Sandra went back to the office.
+14. Afterwards they travelled to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	john and sandra initially went back to the office, but afterwards they travelled to the bathroom. since there is no information about them moving to any other location after the bathroom, it can be logically concluded that sandra is currently in the bathroom.	fully	bathroom	True	According to sentence 13, John and Sandra went back to the office. Then, according to sentence 14, they travelled to the bathroom. Since Sandra is not mentioned as leaving the bathroom, it is likely that she is still there.		"Reasoning: According to sentence 13, John and Sandra went back to the office. Then, according to sentence 14, they travelled to the bathroom. Since Sandra is not mentioned as leaving the bathroom, it is likely that she is still there.
+
+Answer: bathroom"	0.2	0.0364	False	False	False	True	0

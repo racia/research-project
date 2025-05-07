@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġbut	Ġthe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠSandra	's	Ġmovements	.	ĠSince	ĠMary	's	Ġlocation	Ġis	Ġnot	Ġmentioned	,	Ġwe	Ġcannot	Ġdetermine	Ġwhere	ĠMary	Ġis	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+41	11	9	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the garden.
+2. After that she moved to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	sandra's initial location was the garden, but then she moved to the office, which means her current location is the office. the sequence of events indicates that she changed her location from the garden to the office, so the office is her current location.	fully	office	True	Sandra moved to the garden initially, and then she moved to the office. Since the last known location is the office, it is likely that Sandra is currently in the office.		"Reasoning: Sandra moved to the garden initially, and then she moved to the office. Since the last known location is the office, it is likely that Sandra is currently in the office.
+
+Answer: office"	0.119	0.0476	False	False	False	False	0
+42	11	9	2	"*TASK*
+Here are the context sentences:
+4. Mary went back to the hallway.
+5. Then she went back to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	office	"the context sentences provided (4 and 5) are about mary's movements, but the question asks about sandra's location. the answer ""office"" is not related to the current context sentences, but it must be related to previous context sentences. since the previous context sentences (1 and 2) mentioned sandra moving to the garden and then to the office, the answer ""office"" is consistent with sandra's last known location. the movements of mary do not affect sandra's location,"	none	not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only mention Mary's movements.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention Mary's movements.
+
+Answer: not mentioned"	0.25	0.0714	False	False	False	True	0
+43	11	9	3	"*TASK*
+Here are the context sentences:
+7. Sandra went back to the bedroom.
+8. After that she journeyed to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	"sandra initially went back to the bedroom, but then she journeyed to the office. the phrase ""after that"" indicates a sequence of events, meaning that her movement to the office occurred after she went back to the bedroom. therefore, her current location is the office, as it is the last location mentioned in the sequence of events."	fully	office	True	Sandra initially went back to the bedroom, and then she journeyed to the office. Since the last known location is the office, it is likely that Sandra is currently in the office.		"Reasoning: Sandra initially went back to the bedroom, and then she journeyed to the office. Since the last known location is the office, it is likely that Sandra is currently in the office.
+
+Answer: office"	0.0455	0.0455	False	False	False	False	0
+44	11	9	4	"*TASK*
+Here are the context sentences:
+10. Sandra moved to the bathroom.
+11. After that she journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"sandra initially moved to the bathroom, but then she journeyed to the bedroom. the phrase ""after that"" indicates a sequence of events, meaning that her movement to the bedroom occurred after she moved to the bathroom. therefore, her current location is the bedroom, as it is the last location mentioned in the sequence of events."	fully	bedroom	True	Sandra moved to the bathroom initially, and then she journeyed to the bedroom. Since the last known location is the bedroom, it is likely that Sandra is currently in the bedroom.		"Reasoning: Sandra moved to the bathroom initially, and then she journeyed to the bedroom. Since the last known location is the bedroom, it is likely that Sandra is currently in the bedroom.
+
+Answer: bedroom"	0.0698	0.0465	False	False	False	False	0
+45	11	9	5	"*TASK*
+Here are the context sentences:
+13. John went to the office.
+14. Afterwards he moved to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"the context sentences (13 and 14) are about john's movements, but the question asks about sandra's location. there is no information provided about sandra's movements in these sentences. however, the answer ""bedroom"" is likely an incorrect answer because it is based on john's movement, not sandra's. to determine sandra's location, we need to refer to previous context sentences that mention sandra's movements."	none	not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only mention John's movements.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention John's movements.
+
+Answer: not mentioned"	0.0714	0.0714	False	False	False	True	0

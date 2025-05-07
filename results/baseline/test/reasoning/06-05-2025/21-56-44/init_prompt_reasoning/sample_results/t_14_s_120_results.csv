@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2846	14	120	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Mary went back to the kitchen.
+2. Yesterday Julie went to the school.
+3. Julie moved to the office this morning.
+4. Yesterday Bill went back to the bedroom.
+
+Now, answer the following question:
+Where was Julie before the office?"	school	"from context sentence 2, ""yesterday julie went to the school"", we know that julie was at the school yesterday. then, from context sentence 3, ""julie moved to the office this morning"", we can infer that julie was at the school before moving to the office this morning, as there is no other location mentioned for julie between yesterday and this morning. therefore, julie was at the school before the office."	fully	school	True	Julie moved to the office this morning, and yesterday she went to the school. This implies that Julie was at the school yesterday, and then moved to the office this morning.		"Reasoning: Julie moved to the office this morning, and yesterday she went to the school. This implies that Julie was at the school yesterday, and then moved to the office this morning.
+
+Answer: school"	0.1667	0.0476	False	False	False	False	0
+2847	14	120	2	"*TASK*
+Here are the context sentences:
+6. Mary journeyed to the park this morning.
+7. Bill travelled to the kitchen this morning.
+
+Now, answer the following question:
+Where was Julie before the office?"	school	"this question refers to a previous part of the conversation history. from context sentence 3, ""julie moved to the office this morning"", we know that julie moved to the office this morning. and from context sentence 2, ""yesterday julie went to the school"", we can infer that julie was at the school before moving to the office this morning. the new context sentences 6 and 7 do not provide any new information about julie's location before the office, so we can"	none	school	True	There is no new information about Julie in these context sentences. The previous information is that Julie moved to the office this morning, and yesterday she went to the school. This implies that Julie was at the school yesterday, and then moved to the office this morning.		"Reasoning: There is no new information about Julie in these context sentences. The previous information is that Julie moved to the office this morning, and yesterday she went to the school. This implies that Julie was at the school yesterday, and then moved to the office this morning.
+
+Answer: school"	0.0847	0.0339	False	False	False	True	0
+2848	14	120	3	"*TASK*
+Here are the context sentences:
+9. Fred went back to the bedroom yesterday.
+10. This afternoon Mary travelled to the school.
+
+Now, answer the following question:
+Where was Mary before the park?"	kitchen	"this question refers to a previous part of the conversation history. from context sentence 1, ""yesterday mary went back to the kitchen"", we know that mary was at the kitchen yesterday. then, from context sentence 6, ""mary journeyed to the park this morning"", we can infer that mary was at the kitchen before going to the park, as there is no other location mentioned for mary between yesterday and this morning. therefore, mary was at the kitchen before the park."	none	Not mentioned	False	There is no mention of Mary going to the park in these context sentences. The previous information is that Mary journeyed to the park this morning, but there is no information about where she was before that.		"Reasoning: There is no mention of Mary going to the park in these context sentences. The previous information is that Mary journeyed to the park this morning, but there is no information about where she was before that.
+
+Answer: Not mentioned"	0.1633	0.0408	False	False	False	True	0
+2849	14	120	4	"*TASK*
+Here are the context sentences:
+12. This evening Mary went back to the kitchen.
+13. Fred moved to the office this morning.
+
+Now, answer the following question:
+Where was Mary before the park?"	kitchen	"this question refers to a previous part of the conversation history. from context sentence 6, ""mary journeyed to the park this morning"", we know that mary went to the park this morning. and from context sentence 1, ""yesterday mary went back to the kitchen"", we can infer that mary was at the kitchen yesterday. there is no other location mentioned for mary between yesterday and this morning, so we can assume that mary was still at the kitchen before going to the park"	none	Not mentioned	False	There is no mention of Mary going to the park in these context sentences. The previous information is that Mary journeyed to the park this morning, but there is no information about where she was before that.		"Reasoning: There is no mention of Mary going to the park in these context sentences. The previous information is that Mary journeyed to the park this morning, but there is no information about where she was before that.
+
+Answer: Not mentioned"	0.0612	0.0408	False	False	False	True	0
+2850	14	120	5	"*TASK*
+Here are the context sentences:
+15. This evening Fred journeyed to the park.
+16. Fred went to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	school	"this question refers to a previous part of the conversation history. from context sentence 10, ""this afternoon mary travelled to the school"", is not present in the conversation history. however, from context sentence 1, ""yesterday mary went back to the kitchen"", we can infer that mary was somewhere before going back to the kitchen yesterday. and from context sentence 2, ""yesterday julie went to the school"", we can infer that mary might have been at the school before"	none	Not mentioned	False	There is no new information about Mary in these context sentences. The previous information is that Mary journeyed to the park this morning, and then went back to the kitchen this evening. There is no information about where she was before the kitchen.		"Reasoning: There is no new information about Mary in these context sentences. The previous information is that Mary journeyed to the park this morning, and then went back to the kitchen this evening. There is no information about where she was before the kitchen.
+
+Answer: Not mentioned"	0.0536	0.0357	False	False	False	True	0

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1141	12	79	1	"*TASK*
+Here are the context sentences:
+1. Sandra and John moved to the office.
+2. Daniel and John went to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from the context sentences, we know that daniel went to the garden with john (sentence 2). there is no information provided that suggests daniel left the garden or moved to a different location. therefore, based on the last known location of daniel, we can conclude that daniel is in the garden.	fully	garden	True	Since Sandra and John moved to the office, it implies that Sandra and John are together. Then, Daniel and John went to the garden, which means Daniel is with John. Since Sandra is with John in the office, it's likely that Daniel is with John in the garden, not in the office.		"Reasoning: Since Sandra and John moved to the office, it implies that Sandra and John are together. Then, Daniel and John went to the garden, which means Daniel is with John. Since Sandra is with John in the office, it's likely that Daniel is with John in the garden, not in the office.
+
+Answer: garden"	0.1765	0.0147	False	False	False	False	0
+1142	12	79	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Mary journeyed to the kitchen.
+5. Sandra and John moved to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	according to sentence 5, sandra and john moved to the bathroom. there is no subsequent information provided that suggests john left the bathroom or moved to a different location. therefore, based on the last known location of john, we can conclude that john is in the bathroom.	fully	bathroom	True	Sandra and Mary journeyed to the kitchen, which implies that Sandra is with Mary. Then, Sandra and John moved to the bathroom, which means Sandra is with John. Since Sandra is with John in the bathroom, it's likely that John is in the bathroom.		"Reasoning: Sandra and Mary journeyed to the kitchen, which implies that Sandra is with Mary. Then, Sandra and John moved to the bathroom, which means Sandra is with John. Since Sandra is with John in the bathroom, it's likely that John is in the bathroom.
+
+Answer: bathroom"	0.0667	0.0167	False	False	False	False	0
+1143	12	79	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John moved to the kitchen.
+8. John and Mary journeyed to the office.
+
+Now, answer the following question:
+Where is John?"	office	according to sentence 7, daniel and john moved to the kitchen. however, sentence 8 provides more recent information about john's location, stating that john and mary journeyed to the office. this implies that john left the kitchen and moved to the office with mary. therefore, based on the most recent information, we can conclude that john is in the office.	fully	office	True	Daniel and John moved to the kitchen, which implies that John is with Daniel. Then, John and Mary journeyed to the office, which means John is with Mary. Since John is with Mary in the office, it's likely that John is in the office.		"Reasoning: Daniel and John moved to the kitchen, which implies that John is with Daniel. Then, John and Mary journeyed to the office, which means John is with Mary. Since John is with Mary in the office, it's likely that John is in the office.
+
+Answer: office"	0.05	0.0167	False	False	False	False	0
+1144	12	79	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John went to the garden.
+11. Daniel and Mary moved to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	according to sentence 11, daniel and mary moved to the bedroom. there is no subsequent information provided that suggests mary left the bedroom or moved to a different location. therefore, based on the last known location of mary, we can conclude that mary is in the bedroom.	fully	bedroom	True	Sandra and John went to the garden, which implies that Sandra is not with Mary. Then, Daniel and Mary moved to the bedroom, which means Mary is with Daniel. Since Sandra is not with Mary, and Mary is with Daniel, it's likely that Mary is in the bedroom.		"Reasoning: Sandra and John went to the garden, which implies that Sandra is not with Mary. Then, Daniel and Mary moved to the bedroom, which means Mary is with Daniel. Since Sandra is not with Mary, and Mary is with Daniel, it's likely that Mary is in the bedroom.
+
+Answer: bedroom"	0.0	0.0156	False	False	False	False	0
+1145	12	79	5	"*TASK*
+Here are the context sentences:
+13. John and Sandra went to the office.
+14. John and Sandra went back to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	according to sentence 13, john and sandra went to the office. however, sentence 14 provides more recent information about sandra's location, stating that john and sandra went back to the bedroom. this implies that sandra left the office and returned to the bedroom with john. therefore, based on the most recent information, we can conclude that sandra is in the bedroom.	fully	bedroom	True	John and Sandra went to the office, which implies that Sandra is with John. Then, John and Sandra went back to the bedroom, which means Sandra is with John again. Since Sandra is with John in the bedroom, it's likely that Sandra is in the bedroom.		"Reasoning: John and Sandra went to the office, which implies that Sandra is with John. Then, John and Sandra went back to the bedroom, which means Sandra is with John again. Since Sandra is with John in the bedroom, it's likely that Sandra is in the bedroom.
+
+Answer: bedroom"	0.082	0.0164	False	False	False	False	0

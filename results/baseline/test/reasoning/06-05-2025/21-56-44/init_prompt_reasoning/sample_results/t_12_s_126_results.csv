@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1376	12	126	1	"*TASK*
+Here are the context sentences:
+1. John and Daniel journeyed to the kitchen.
+2. Daniel and Sandra went back to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from the context sentences, we know that daniel was initially in the kitchen with john (sentence 1). then, daniel and sandra went back to the hallway (sentence 2). since daniel was part of this action, it implies that daniel moved from the kitchen to the hallway. therefore, daniel's current location is the hallway.	fully	hallway	True	Since Daniel and Sandra went back to the hallway, it implies that Daniel was previously somewhere else, which was the kitchen with John. After going back to the hallway, Daniel's current location is the hallway.		"Reasoning: Since Daniel and Sandra went back to the hallway, it implies that Daniel was previously somewhere else, which was the kitchen with John. After going back to the hallway, Daniel's current location is the hallway.
+
+Answer: hallway"	0.125	0.0208	False	False	False	False	0
+1377	12	126	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John journeyed to the bedroom.
+5. John and Sandra journeyed to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	from the context sentences, we know that john was initially in the bedroom with daniel (sentence 4). then, john and sandra journeyed to the garden (sentence 5). since john was part of this action, it implies that john moved from the bedroom to the garden. therefore, john's current location is the garden.	fully	garden	True	Since John and Sandra journeyed to the garden, it implies that John's current location is the garden.		"Reasoning: Since John and Sandra journeyed to the garden, it implies that John's current location is the garden.
+
+Answer: garden"	0.1429	0.0357	False	False	False	False	0
+1378	12	126	3	"*TASK*
+Here are the context sentences:
+7. Mary and John moved to the bathroom.
+8. John and Mary went back to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that john and mary moved to the bathroom (sentence 7), which means john was in the bathroom. then, john and mary went back to the kitchen (sentence 8), which implies that john moved from the bathroom back to the kitchen. therefore, john's current location is the kitchen.	fully	kitchen	True	Since John and Mary went back to the kitchen, it implies that John's current location is the kitchen.		"Reasoning: Since John and Mary went back to the kitchen, it implies that John's current location is the kitchen.
+
+Answer: kitchen"	0.0	0.0357	False	False	False	False	0
+1379	12	126	4	"*TASK*
+Here are the context sentences:
+10. John and Sandra went to the office.
+11. Mary and John went to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	from the context sentences, we know that john and sandra went to the office (sentence 10), but this sentence does not provide any information about mary's location. however, in sentence 11, mary and john went to the garden, which implies that mary moved to the garden with john. therefore, mary's current location is the garden.	fully	garden	True	Since Mary and John went to the garden, it implies that Mary's current location is the garden.		"Reasoning: Since Mary and John went to the garden, it implies that Mary's current location is the garden.
+
+Answer: garden"	0.0	0.037	False	False	False	False	0
+1380	12	126	5	"*TASK*
+Here are the context sentences:
+13. John and Mary went to the bedroom.
+14. Daniel and Sandra went back to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	from the context sentences, we know that sentence 13 mentions john and mary going to the bedroom, but it does not provide any information about sandra's location. however, in sentence 14, daniel and sandra went back to the hallway, which implies that sandra moved to the hallway with daniel. therefore, sandra's current location is the hallway.	fully	hallway	True	Since Daniel and Sandra went back to the hallway, it implies that Sandra's current location is the hallway.		"Reasoning: Since Daniel and Sandra went back to the hallway, it implies that Sandra's current location is the hallway.
+
+Answer: hallway"	0.0	0.0357	False	False	False	False	0

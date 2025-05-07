@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentence	Ġ"	Mary	Ġtravelled	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	",	ĠMary	Ġwas	Ġsomewhere	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.	ĠThe	Ġprevious	Ġsentence	Ġ"	Mary	Ġtravelled	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	"	Ġimplies	Ġthat	ĠMary	Ġwas	Ġnot	Ġat	Ġthe	Ġschool	Ġbefore	,	Ġbut	Ġrather	Ġmoved	Ġto	Ġthe	Ġschool	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

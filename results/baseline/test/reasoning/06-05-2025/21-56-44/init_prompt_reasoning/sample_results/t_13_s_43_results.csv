@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1711	13	43	1	"*TASK*
+Here are the context sentences:
+1. Mary and Sandra journeyed to the bedroom.
+2. Afterwards they journeyed to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentences, we know that mary and sandra journeyed to the bedroom (sentence 1) and then afterwards they journeyed to the hallway (sentence 2). since mary was with sandra in both instances, it can be logically inferred that mary is currently in the hallway, as that is the last location mentioned in the sequence of events.	fully	hallway	True	Mary and Sandra journeyed to the bedroom and then to the hallway, which means Mary's location is not specified to be different from Sandra's. Since Sandra's location is the hallway, Mary's location is also the hallway.		"Reasoning: Mary and Sandra journeyed to the bedroom and then to the hallway, which means Mary's location is not specified to be different from Sandra's. Since Sandra's location is the hallway, Mary's location is also the hallway.
+
+Answer: hallway"	0.1346	0.0385	False	False	False	False	0
+1712	13	43	2	"*TASK*
+Here are the context sentences:
+4. Mary and Daniel went back to the kitchen.
+5. After that they journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from the context sentences, we know that mary and daniel went back to the kitchen (sentence 4) and then afterwards they journeyed to the bedroom (sentence 5). since daniel was with mary in both instances, it can be logically inferred that daniel is currently in the bedroom, as that is the last location mentioned in the sequence of events.	fully	bedroom	True	According to the context sentences, Mary and Daniel went back to the kitchen and then journeyed to the bedroom. This implies that Daniel's location is the same as Mary's, which is the bedroom.		"Reasoning: According to the context sentences, Mary and Daniel went back to the kitchen and then journeyed to the bedroom. This implies that Daniel's location is the same as Mary's, which is the bedroom.
+
+Answer: bedroom"	0.1277	0.0426	False	False	False	False	0
+1713	13	43	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary went back to the office.
+8. Following that they went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that sandra and mary went back to the office (sentence 7) and then following that they went to the bathroom (sentence 8). since mary was with sandra in both instances, it can be logically inferred that mary is currently in the bathroom, as that is the last location mentioned in the sequence of events.	fully	bathroom	True	According to the context sentences, Sandra and Mary went back to the office and then went to the bathroom. This implies that Mary's location is the same as Sandra's, which is the bathroom.		"Reasoning: According to the context sentences, Sandra and Mary went back to the office and then went to the bathroom. This implies that Mary's location is the same as Sandra's, which is the bathroom.
+
+Answer: bathroom"	0.087	0.0435	False	False	False	False	0
+1714	13	43	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John went back to the office.
+11. Afterwards they went back to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	from the context sentences, we know that sandra and john went back to the office (sentence 10) and then afterwards they went back to the garden (sentence 11). since sandra was with john in both instances, it can be logically inferred that sandra is currently in the garden, as that is the last location mentioned in the sequence of events.	fully	garden	True	According to the context sentences, Sandra and John went back to the office and then went back to the garden. This implies that Sandra's location is the same as John's, which is the garden.		"Reasoning: According to the context sentences, Sandra and John went back to the office and then went back to the garden. This implies that Sandra's location is the same as John's, which is the garden.
+
+Answer: garden"	0.0	0.0426	False	False	False	False	0
+1715	13	43	5	"*TASK*
+Here are the context sentences:
+13. Sandra and John journeyed to the kitchen.
+14. Then they journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	from the context sentences, we know that sandra and john journeyed to the kitchen (sentence 13) and then they journeyed to the hallway (sentence 14). since sandra was with john in both instances, it can be logically inferred that sandra is currently in the hallway, as that is the last location mentioned in the sequence of events.	fully	hallway	True	According to the context sentences, Sandra and John journeyed to the kitchen and then to the hallway. This implies that Sandra's location is the same as John's, which is the hallway.		"Reasoning: According to the context sentences, Sandra and John journeyed to the kitchen and then to the hallway. This implies that Sandra's location is the same as John's, which is the hallway.
+
+Answer: hallway"	0.2	0.0444	False	False	False	False	0

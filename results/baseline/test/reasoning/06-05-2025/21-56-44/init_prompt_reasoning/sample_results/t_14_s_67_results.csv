@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2581	14	67	1	"*TASK*
+Here are the context sentences:
+1. Bill moved to the bedroom yesterday.
+2. Yesterday Fred moved to the bedroom.
+3. Mary travelled to the kitchen yesterday.
+4. Bill travelled to the park this morning.
+
+Now, answer the following question:
+Where was Bill before the park?"	bedroom	from context line 1, we know that bill moved to the bedroom yesterday. there is no information about bill moving out of the bedroom or going anywhere else until context line 4, which states that bill travelled to the park this morning. therefore, we can logically conclude that bill was in the bedroom before going to the park.	fully	bedroom	True	Since Bill moved to the bedroom yesterday (sentence 1), and he travelled to the park this morning (sentence 4), it is logical to infer that Bill was in the bedroom before moving to the park.		"Reasoning: Since Bill moved to the bedroom yesterday (sentence 1), and he travelled to the park this morning (sentence 4), it is logical to infer that Bill was in the bedroom before moving to the park.
+
+Answer: bedroom"	0.0408	0.0408	False	False	False	False	0
+2582	14	67	2	"*TASK*
+Here are the context sentences:
+6. This morning Fred journeyed to the cinema.
+7. Mary moved to the cinema this morning.
+
+Now, answer the following question:
+Where was Bill before the park?"	bedroom	the context lines 6 and 7 provide information about fred and mary, but they do not mention bill. to find the answer to the question, we need to refer to the previous context lines. from context line 4, we know that bill travelled to the park this morning. to find out where bill was before the park, we need to look at the previous context lines again. from context line 1, we know that bill moved to the bedroom yesterday. there is no	none	Not mentioned	False	The question is not about Bill, but about Fred. The context sentences do not provide any information about Bill's whereabouts. The question is asking about Bill's location before the park, but Bill's location is not mentioned in the context sentences.		"Reasoning: The question is not about Bill, but about Fred. The context sentences do not provide any information about Bill's whereabouts. The question is asking about Bill's location before the park, but Bill's location is not mentioned in the context sentences.
+
+Answer: Not mentioned"	0.1071	0.0357	False	False	False	True	0
+2583	14	67	3	"*TASK*
+Here are the context sentences:
+9. Fred travelled to the park this evening.
+10. Fred moved to the school this afternoon.
+
+Now, answer the following question:
+Where was Fred before the school?"	cinema	from context line 6, we know that fred journeyed to the cinema this morning. there is no information about fred moving out of the cinema or going anywhere else until context line 10, which states that fred moved to the school this afternoon. therefore, we can logically conclude that fred was at the cinema before moving to the school.	partially	school	False	According to sentence 10, Fred moved to the school this afternoon. Since Fred travelled to the park this evening (sentence 9), it is logical to infer that Fred was at the school before moving to the park.		"Reasoning: According to sentence 10, Fred moved to the school this afternoon. Since Fred travelled to the park this evening (sentence 9), it is logical to infer that Fred was at the school before moving to the park.
+
+Answer: school"	0.0392	0.0392	False	False	False	False	0
+2584	14	67	4	"*TASK*
+Here are the context sentences:
+12. Mary went back to the office this afternoon.
+13. Julie went to the bedroom yesterday.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	bedroom	from context line 2, we know that fred moved to the bedroom yesterday. there is no information about fred moving out of the bedroom or going anywhere else until context line 6, which states that fred journeyed to the cinema this morning. therefore, we can logically conclude that fred was in the bedroom before going to the cinema.	none	Not mentioned	False	There is no information about Fred's whereabouts before the cinema. The context sentences do not mention Fred's location before the cinema.		"Reasoning: There is no information about Fred's whereabouts before the cinema. The context sentences do not mention Fred's location before the cinema.
+
+Answer: Not mentioned"	0.0	0.0606	False	False	False	True	0
+2585	14	67	5	"*TASK*
+Here are the context sentences:
+15. Bill went to the park this evening.
+16. This afternoon Bill went to the office.
+
+Now, answer the following question:
+Where was Fred before the park?"	school	the question asks about fred, but the context lines 15 and 16 only provide information about bill. to find the answer, we need to refer to the previous context lines. from context line 10, we know that fred moved to the school this afternoon. from context line 9, we know that fred travelled to the park this evening. therefore, we can logically conclude that fred was at the school before going to the park.	none	Not mentioned	False	The question is asking about Fred's location before the park, but Fred's location is not mentioned in the context sentences. The context sentences only mention Bill's location, not Fred's.		"Reasoning: The question is asking about Fred's location before the park, but Fred's location is not mentioned in the context sentences. The context sentences only mention Bill's location, not Fred's.
+
+Answer: Not mentioned"	0.0	0.0444	False	False	False	True	0

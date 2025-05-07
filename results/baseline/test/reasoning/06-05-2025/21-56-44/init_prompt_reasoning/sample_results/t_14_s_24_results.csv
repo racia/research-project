@@ -1,0 +1,44 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2366	14	24	1	"*TASK*
+Here are the context sentences:
+1. Fred journeyed to the school this morning.
+2. This morning Bill moved to the park.
+3. Bill went to the school yesterday.
+4. Yesterday Fred journeyed to the cinema.
+
+Now, answer the following question:
+Where was Bill before the park?"	school	from context sentence 3, we know that bill went to the school yesterday. from context sentence 2, we know that bill moved to the park this morning. therefore, we can logically conclude that bill was at the school before moving to the park this morning.	fully	school	True	Since Bill went to the school yesterday, it implies that he was somewhere else before going to the school. Since he moved to the park this morning, it means that he was at the school before moving to the park.		"Reasoning: Since Bill went to the school yesterday, it implies that he was somewhere else before going to the school. Since he moved to the park this morning, it means that he was at the school before moving to the park.
+
+Answer: school"	0.1961	0.0392	False	False	False	False	0
+2367	14	24	2	"*TASK*
+Here are the context sentences:
+6. This afternoon Bill moved to the bedroom.
+7. Mary went back to the school yesterday.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	park	from context sentence 2 (provided in the previous part of the conversation), we know that bill moved to the park this morning. from context sentence 6, we know that bill moved to the bedroom this afternoon. therefore, we can logically conclude that bill was at the park before moving to the bedroom this afternoon.	partially		False	Since Bill moved to the bedroom this afternoon, it implies that he was somewhere else before moving to the bedroom. Since he moved to the bedroom, it means that he was not at the school (as mentioned in sentence 7) before moving to the bedroom. The only other place mentioned is the park (from previous context), but it's not specified when Bill was there. However, since Bill moved to the bedroom this afternoon, it's likely that he was at the park before		Reasoning: Since Bill moved to the bedroom this afternoon, it implies that he was somewhere else before moving to the bedroom. Since he moved to the bedroom, it means that he was not at the school (as mentioned in sentence 7) before moving to the bedroom. The only other place mentioned is the park (from previous context), but it's not specified when Bill was there. However, since Bill moved to the bedroom this afternoon, it's likely that he was at the park before	0.0505	0.0202	False	False	False	True	0
+2368	14	24	3	"*TASK*
+Here are the context sentences:
+9. Fred went back to the bedroom this afternoon.
+10. This morning Mary went to the office.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	school	from context sentence 1 (provided in the previous part of the conversation), we know that fred journeyed to the school this morning. from context sentence 9, we know that fred went back to the bedroom this afternoon. therefore, we can logically conclude that fred was at the school before going back to the bedroom this afternoon.	partially	Not mentioned	False	Since Fred went back to the bedroom this afternoon, it implies that he was somewhere else before going back to the bedroom. Since Fred went back to the bedroom, it means that he was at the bedroom previously. There is no information about Fred's whereabouts before going back to the bedroom.		"Reasoning: Since Fred went back to the bedroom this afternoon, it implies that he was somewhere else before going back to the bedroom. Since Fred went back to the bedroom, it means that he was at the bedroom previously. There is no information about Fred's whereabouts before going back to the bedroom.
+
+Answer: Not mentioned"	0.0	0.0308	False	False	False	True	0
+2369	14	24	4	"*TASK*
+Here are the context sentences:
+12. Fred moved to the school this evening.
+13. Bill went to the school this evening.
+
+Now, answer the following question:
+Where was Bill before the school?"	bedroom	from context sentence 6 (provided in a previous part of the conversation), we know that bill moved to the bedroom this afternoon. from context sentence 13, we know that bill went to the school this evening. therefore, we can logically conclude that bill was at the bedroom before going to the school this evening.	partially		False	Since Bill went to the school this evening, it implies that he was somewhere else before going to the school. Since Bill went to the school this evening, it means that he was not at the bedroom (from previous context) before going to the school. The only other place mentioned is the park (from previous context), but it's not specified when Bill was there. However, since Bill went to the school this evening, it's likely that he was at the park before going		Reasoning: Since Bill went to the school this evening, it implies that he was somewhere else before going to the school. Since Bill went to the school this evening, it means that he was not at the bedroom (from previous context) before going to the school. The only other place mentioned is the park (from previous context), but it's not specified when Bill was there. However, since Bill went to the school this evening, it's likely that he was at the park before going	0.0	0.0202	False	False	False	True	0
+2370	14	24	5	"*TASK*
+Here are the context sentences:
+15. This evening Mary went to the school.
+16. Mary travelled to the park this afternoon.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	school	from context sentence 1 (provided in a previous part of the conversation), we know that fred journeyed to the school this morning. from context sentence 9 (provided in a previous part of the conversation), we know that fred went back to the bedroom this afternoon. therefore, we can logically conclude that fred was at the school before going back to the bedroom this afternoon.	none	Not mentioned	False	This question is not related to the given context sentences. The question asks about Fred's whereabouts before the bedroom, but there is no information about Fred's activities or location related to the bedroom in the given context sentences.		"Reasoning: This question is not related to the given context sentences. The question asks about Fred's whereabouts before the bedroom, but there is no information about Fred's activities or location related to the bedroom in the given context sentences.
+
+Answer: Not mentioned"	0.0588	0.0392	False	False	False	True	0

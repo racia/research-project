@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+866	12	24	1	"*TASK*
+Here are the context sentences:
+1. Mary and Daniel moved to the hallway.
+2. Mary and Daniel moved to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	since mary and daniel moved to the hallway in sentence 1, they were initially in the hallway. however, sentence 2 states that they moved to the bathroom, which implies that they left the hallway and are now in the bathroom. therefore, mary's current location is the bathroom.	fully	bathroom	True	Since Mary and Daniel moved to the hallway in sentence 1, and then moved to the bathroom in sentence 2, it is likely that Mary is still in the bathroom, as the second movement implies a change in location.		"Reasoning: Since Mary and Daniel moved to the hallway in sentence 1, and then moved to the bathroom in sentence 2, it is likely that Mary is still in the bathroom, as the second movement implies a change in location.
+
+Answer: bathroom"	0.0385	0.0192	False	False	False	False	0
+867	12	24	2	"*TASK*
+Here are the context sentences:
+4. Mary and John journeyed to the garden.
+5. John and Sandra moved to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"there is no mention of daniel in the provided context sentences. the sentences only mention mary, john, and sandra, but not daniel. therefore, it is not possible to determine daniel's location based on the given information. the answer ""bathroom"" seems to be incorrect, as there is no connection between daniel and the bathroom in the provided context."	none	not mentioned	False	Daniel is not mentioned in the given context sentences. He was previously mentioned in sentences 1 and 2, but his current location is not specified in the new sentences.		"Reasoning: Daniel is not mentioned in the given context sentences. He was previously mentioned in sentences 1 and 2, but his current location is not specified in the new sentences.
+
+Answer: not mentioned"	0.1667	0.0238	False	False	False	True	0
+868	12	24	3	"*TASK*
+Here are the context sentences:
+7. John and Sandra went to the hallway.
+8. Daniel and John moved to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	in sentence 7, john and sandra went to the hallway, which means john was initially in the hallway. however, in sentence 8, daniel and john moved to the bedroom, which implies that john left the hallway and is now in the bedroom. therefore, john's current location is the bedroom.	fully	bedroom	True	According to sentence 8, John moved to the bedroom with Daniel.		"Reasoning: According to sentence 8, John moved to the bedroom with Daniel.
+
+Answer: bedroom"	0.0476	0.0476	False	False	False	False	0
+869	12	24	4	"*TASK*
+Here are the context sentences:
+10. Mary and Sandra went to the bedroom.
+11. John and Mary moved to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	in sentence 10, mary and sandra went to the bedroom, which means mary was initially in the bedroom. however, in sentence 11, john and mary moved to the hallway, which implies that mary left the bedroom and is now in the hallway. since john is moving with mary, john is also now in the hallway. therefore, john's current location is the hallway.	fully	hallway	True	According to sentence 11, John moved to the hallway with Mary.		"Reasoning: According to sentence 11, John moved to the hallway with Mary.
+
+Answer: hallway"	0.0	0.0476	False	False	False	False	0
+870	12	24	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Sandra moved to the kitchen.
+14. John and Daniel went back to the office.
+
+Now, answer the following question:
+Where is John?"	office	in sentence 13, daniel and sandra moved to the kitchen, which means daniel was initially in the kitchen. however, in sentence 14, john and daniel went back to the office, which implies that daniel left the kitchen and is now in the office. since john is moving with daniel, john is also now in the office. therefore, john's current location is the office.	fully	office	True	According to sentence 14, John went back to the office with Daniel.		"Reasoning: According to sentence 14, John went back to the office with Daniel.
+
+Answer: office"	0.0	0.0455	False	False	False	False	0

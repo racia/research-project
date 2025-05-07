@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+6	11	2	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the office.
+2. After that he went back to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"from the context sentences, we know that daniel first travelled to the office (sentence 1) and then went back to the kitchen (sentence 2). since the second sentence mentions that daniel went back to the kitchen, it implies that daniel's current location is the kitchen. therefore, the answer to the question ""where is daniel?"" is indeed the kitchen."	fully	kitchen	True	Daniel travelled to the office, and then went back to the kitchen, which means he is currently in the kitchen.		"Reasoning: Daniel travelled to the office, and then went back to the kitchen, which means he is currently in the kitchen.
+
+Answer: kitchen"	0.1667	0.0667	False	False	False	False	0
+7	11	2	2	"*TASK*
+Here are the context sentences:
+4. Daniel journeyed to the office.
+5. After that he went to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"from the context sentences, we know that daniel first journeyed to the office (sentence 4) and then went to the kitchen (sentence 5). since the second sentence mentions that daniel went to the kitchen after being at the office, it implies that daniel's current location is the kitchen. therefore, the answer to the question ""where is daniel?"" is indeed the kitchen."	fully	kitchen	True	Daniel journeyed to the office, and then went to the kitchen, which means he is currently in the kitchen.		"Reasoning: Daniel journeyed to the office, and then went to the kitchen, which means he is currently in the kitchen.
+
+Answer: kitchen"	0.1	0.0667	False	False	False	False	0
+8	11	2	3	"*TASK*
+Here are the context sentences:
+7. Mary journeyed to the bathroom.
+8. Following that she travelled to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"from the context sentences, we know that mary first journeyed to the bathroom (sentence 7) and then travelled to the hallway (sentence 8). since the second sentence mentions that mary travelled to the hallway after being in the bathroom, it implies that mary's current location is the hallway. therefore, the answer to the question ""where is mary?"" is indeed the hallway."	fully	hallway	True	Mary journeyed to the bathroom, and then travelled to the hallway, which means she is currently in the hallway.		"Reasoning: Mary journeyed to the bathroom, and then travelled to the hallway, which means she is currently in the hallway.
+
+Answer: hallway"	0.1667	0.0667	False	False	False	False	0
+9	11	2	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the hallway.
+11. Afterwards he went back to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"from the context sentences, we know that daniel went back to the hallway (sentence 10) and then went back to the garden (sentence 11). since the second sentence mentions that daniel went back to the garden after being in the hallway, it implies that daniel's current location is the garden. therefore, the answer to the question ""where is daniel?"" is indeed the garden."	fully	garden	True	Daniel went back to the hallway, and then went back to the garden, which means he is currently in the garden.		"Reasoning: Daniel went back to the hallway, and then went back to the garden, which means he is currently in the garden.
+
+Answer: garden"	0.0968	0.0645	False	False	False	False	0
+10	11	2	5	"*TASK*
+Here are the context sentences:
+13. Mary travelled to the bathroom.
+14. Following that she went back to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"from the context sentences, we know that mary travelled to the bathroom (sentence 13) and then went back to the kitchen (sentence 14). since the second sentence mentions that mary went back to the kitchen after being in the bathroom, it implies that mary's current location is the kitchen. therefore, the answer to the question ""where is mary?"" is indeed the kitchen."	fully	kitchen	True	Mary travelled to the bathroom, and then went back to the kitchen, which means she is currently in the kitchen.		"Reasoning: Mary travelled to the bathroom, and then went back to the kitchen, which means she is currently in the kitchen.
+
+Answer: kitchen"	0.1	0.0667	False	False	False	False	0

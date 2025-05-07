@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġdoes	Ġnot	Ġmention	ĠMary	,	Ġand	ĠSentence	Ġ	8	Ġindicates	Ġthat	ĠSandra	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

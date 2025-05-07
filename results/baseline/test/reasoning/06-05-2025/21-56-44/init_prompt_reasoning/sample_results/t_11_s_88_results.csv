@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+436	11	88	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the bedroom.
+2. Afterwards he went to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	the context sentences describe daniel's movements, first going to the bedroom and then going to the bathroom. since the last location mentioned is the bathroom, it can be inferred that daniel is currently in the bathroom.	fully	bathroom	True	Daniel travelled to the bedroom, and then went to the bathroom, which means he is currently in the bathroom.		"Reasoning: Daniel travelled to the bedroom, and then went to the bathroom, which means he is currently in the bathroom.
+
+Answer: bathroom"	0.1724	0.069	False	False	False	False	0
+437	11	88	2	"*TASK*
+Here are the context sentences:
+4. Daniel travelled to the bedroom.
+5. Following that he moved to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	the context sentences describe daniel's movements, first going to the bedroom and then moving to the hallway. since the last location mentioned is the hallway, it can be inferred that daniel is currently in the hallway.	fully	hallway	True	Daniel travelled to the bedroom and then moved to the hallway, which means he is currently in the hallway.		"Reasoning: Daniel travelled to the bedroom and then moved to the hallway, which means he is currently in the hallway.
+
+Answer: hallway"	0.1071	0.0714	False	False	False	False	0
+438	11	88	3	"*TASK*
+Here are the context sentences:
+7. Daniel went to the garden.
+8. Then he journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	the context sentences describe daniel's movements, first going to the garden and then journeying to the bedroom. since the last location mentioned is the bedroom, it can be inferred that daniel is currently in the bedroom.	fully	bedroom	True	Daniel went to the garden and then journeyed to the bedroom, which means he is currently in the bedroom.		"Reasoning: Daniel went to the garden and then journeyed to the bedroom, which means he is currently in the bedroom.
+
+Answer: bedroom"	0.0345	0.069	False	False	False	False	0
+439	11	88	4	"*TASK*
+Here are the context sentences:
+10. John travelled to the garden.
+11. Then he went to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	the context sentences describe john's movements, first traveling to the garden and then going to the bedroom. since the last location mentioned is the bedroom, it can be inferred that john is currently in the bedroom.	fully	bedroom	True	John travelled to the garden and then went to the bedroom, which means he is currently in the bedroom.		"Reasoning: John travelled to the garden and then went to the bedroom, which means he is currently in the bedroom.
+
+Answer: bedroom"	0.1429	0.0714	False	False	False	False	0
+440	11	88	5	"*TASK*
+Here are the context sentences:
+13. John went to the office.
+14. Then he went to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	the context sentences describe john's movements, first going to the office and then going to the bedroom. since the last location mentioned is the bedroom, it can be inferred that john is currently in the bedroom.	fully	bedroom	True	John went to the office and then went to the bedroom, which means he is currently in the bedroom.		"Reasoning: John went to the office and then went to the bedroom, which means he is currently in the bedroom.
+
+Answer: bedroom"	0.0714	0.0714	False	False	False	False	0

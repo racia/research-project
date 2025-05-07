@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2981	14	147	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Fred went to the cinema.
+2. Yesterday Julie moved to the kitchen.
+3. Yesterday Bill travelled to the kitchen.
+4. Bill moved to the office this morning.
+
+Now, answer the following question:
+Where was Bill before the office?"	kitchen	from context sentence 3, we know that bill travelled to the kitchen yesterday. there is no information about bill moving from the kitchen to any other location until context sentence 4, where he moves to the office this morning. therefore, we can logically conclude that bill was in the kitchen before moving to the office.	fully	kitchen	True	Bill travelled to the kitchen yesterday, and then he moved to the office this morning. Since he was in the kitchen yesterday, it is likely that he was there before moving to the office.		"Reasoning: Bill travelled to the kitchen yesterday, and then he moved to the office this morning. Since he was in the kitchen yesterday, it is likely that he was there before moving to the office.
+
+Answer: kitchen"	0.1556	0.0444	False	False	False	False	0
+2982	14	147	2	"*TASK*
+Here are the context sentences:
+6. This afternoon Bill went to the school.
+7. Julie journeyed to the bedroom this morning.
+
+Now, answer the following question:
+Where was Bill before the school?"	office	from the previous context sentences (1-4), we know that bill moved to the office this morning (sentence 4). there is no information about bill moving from the office to any other location until sentence 6, where he goes to the school this afternoon. therefore, we can logically conclude that bill was in the office before going to the school.	partially	office	True	Bill went to the office this morning (from context sentences 1 and 4), and then he went to the school this afternoon. Since he was in the office this morning, it is likely that he was there before going to the school.		"Reasoning: Bill went to the office this morning (from context sentences 1 and 4), and then he went to the school this afternoon. Since he was in the office this morning, it is likely that he was there before going to the school.
+
+Answer: office"	0.1429	0.0357	False	False	False	False	0
+2983	14	147	3	"*TASK*
+Here are the context sentences:
+9. This evening Julie journeyed to the park.
+10. Julie travelled to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Julie before the park?"	kitchen	from context sentence 10, we know that julie travelled to the kitchen this afternoon. there is no information about julie moving from the kitchen to any other location until sentence 9, where she journeys to the park this evening. therefore, we can logically conclude that julie was in the kitchen before going to the park.	fully	kitchen	True	Julie travelled to the kitchen this afternoon (from context sentence 10), and then she journeyed to the park this evening (from context sentence 9). Since she was in the kitchen this afternoon, it is likely that she was there before going to the park.		"Reasoning: Julie travelled to the kitchen this afternoon (from context sentence 10), and then she journeyed to the park this evening (from context sentence 9). Since she was in the kitchen this afternoon, it is likely that she was there before going to the park.
+
+Answer: kitchen"	0.15	0.0333	False	False	False	False	0
+2984	14	147	4	"*TASK*
+Here are the context sentences:
+12. Mary went to the park yesterday.
+13. Bill went back to the kitchen this evening.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	bedroom	from the previous context sentences (7), we know that julie journeyed to the bedroom this morning. there is no information about julie moving from the bedroom to any other location until sentence 10, where she travelled to the kitchen this afternoon. therefore, we can logically conclude that julie was in the bedroom before going to the kitchen.	none	Not mentioned	False	There is no information provided about Julie's location before the kitchen. The context sentences only mention Bill's location before the kitchen (he went back to the kitchen this evening, from context sentence 13), but not Julie's.		"Reasoning: There is no information provided about Julie's location before the kitchen. The context sentences only mention Bill's location before the kitchen (he went back to the kitchen this evening, from context sentence 13), but not Julie's.
+
+Answer: Not mentioned"	0.0566	0.0377	False	False	False	True	0
+2985	14	147	5	"*TASK*
+Here are the context sentences:
+15. This afternoon Fred journeyed to the cinema.
+16. Fred travelled to the office this morning.
+
+Now, answer the following question:
+Where was Fred before the office?"	cinema	this answer seems to be incorrect. according to the context sentences, fred travelled to the office this morning (sentence 16), and then journeyed to the cinema this afternoon (sentence 15). therefore, fred was not at the cinema before the office, but rather at an unknown location. the correct answer cannot be determined based on the provided information.	partially	office	False	Fred travelled to the office this morning (from context sentence 16), and then he journeyed to the cinema this afternoon (from context sentence 15). Since he was in the office this morning, it is likely that he was there before going to the cinema.		"Reasoning: Fred travelled to the office this morning (from context sentence 16), and then he journeyed to the cinema this afternoon (from context sentence 15). Since he was in the office this morning, it is likely that he was there before going to the cinema.
+
+Answer: office"	0.1	0.0333	False	False	False	False	0

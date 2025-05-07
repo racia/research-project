@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġand	ĠSandra	Ġjourney	ing	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.	ĠHowever	,	Ġthe	Ġsentence	Ġabout	ĠDaniel	Ġand	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	Ġdoes	Ġnot	Ġaffect	Ġthe	Ġlocation	Ġof	ĠSandra	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

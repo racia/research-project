@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2541	14	59	1	"*TASK*
+Here are the context sentences:
+1. Julie journeyed to the office this morning.
+2. Yesterday Julie went back to the bedroom.
+
+Now, answer the following question:
+Where was Julie before the office?"	bedroom	from the context sentences, we know that julie journeyed to the office this morning (sentence 1), which implies that she was somewhere else before coming to the office. the previous sentence (sentence 2) mentions that julie went back to the bedroom yesterday, which suggests that the bedroom is a location that julie has been to before. since julie was somewhere else before coming to the office, and the bedroom is a location she has been to before, it is logical to infer that julie	fully	bedroom	True	Since Julie went back to the bedroom yesterday, it implies that she was somewhere else before returning to the bedroom. Since she journeyed to the office this morning, it is likely that she was at the bedroom before going to the office.		"Reasoning: Since Julie went back to the bedroom yesterday, it implies that she was somewhere else before returning to the bedroom. Since she journeyed to the office this morning, it is likely that she was at the bedroom before going to the office.
+
+Answer: bedroom"	0.1481	0.037	False	False	False	False	0
+2542	14	59	2	"*TASK*
+Here are the context sentences:
+4. This evening Julie went back to the park.
+5. This afternoon Julie went back to the kitchen.
+
+Now, answer the following question:
+Where was Julie before the park?"	kitchen	from the context sentences, we know that julie went back to the park this evening (sentence 4), which implies that she was somewhere else before coming to the park. the previous sentence (sentence 5) mentions that julie went back to the kitchen this afternoon, which suggests that the kitchen is a location that julie has been to before. since julie was somewhere else before coming to the park, and the kitchen is a location she has been to before, it is logical to infer that	fully	kitchen	True	Since Julie went back to the park this evening, it implies that she was somewhere else before returning to the park. Since she went back to the kitchen this afternoon, it is likely that she was at the kitchen before going to the park.		"Reasoning: Since Julie went back to the park this evening, it implies that she was somewhere else before returning to the park. Since she went back to the kitchen this afternoon, it is likely that she was at the kitchen before going to the park.
+
+Answer: kitchen"	0.1818	0.0364	False	False	False	False	0
+2543	14	59	3	"*TASK*
+Here are the context sentences:
+7. Yesterday Mary journeyed to the kitchen.
+8. Bill travelled to the kitchen yesterday.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	office	"the context sentences (7 and 8) do not mention julie at all, but rather talk about mary and bill traveling to the kitchen yesterday. however, we can look back at the previous parts of the conversation history to find the relevant information. in the first part, we learned that ""julie journeyed to the office this morning"" (sentence 1). since there is no other information about julie's location before the kitchen, it is logical to infer that julie was at the"	none	Not mentioned	False	There is no information provided about Julie's location or actions related to the kitchen. The context sentences only mention Mary and Bill's journeys to the kitchen, but not Julie's.		"Reasoning: There is no information provided about Julie's location or actions related to the kitchen. The context sentences only mention Mary and Bill's journeys to the kitchen, but not Julie's.
+
+Answer: Not mentioned"	0.0465	0.0465	False	False	False	True	0
+2544	14	59	4	"*TASK*
+Here are the context sentences:
+10. Bill went back to the bedroom this afternoon.
+11. This morning Bill went to the cinema.
+
+Now, answer the following question:
+Where was Julie before the park?"	kitchen	"the context sentences (10 and 11) only talk about bill's movements, but the question asks about julie's location before the park. to find the answer, we need to look back at the previous parts of the conversation history. in a previous part, we learned that ""this evening julie went back to the park"" (sentence 4), and before that, ""this afternoon julie went back to the kitchen"" (sentence 5). therefore, it is logical to infer that"	none	Not mentioned	False	There is no information provided about Julie's location or actions related to the park. The context sentences only mention Bill's journeys to the bedroom and cinema, but not Julie's.		"Reasoning: There is no information provided about Julie's location or actions related to the park. The context sentences only mention Bill's journeys to the bedroom and cinema, but not Julie's.
+
+Answer: Not mentioned"	0.0	0.0465	False	False	False	True	0
+2545	14	59	5	"*TASK*
+Here are the context sentences:
+13. This afternoon Mary travelled to the school.
+14. Mary moved to the park this morning.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	kitchen	"the context sentences (13 and 14) only talk about mary's movements, but the question asks about bill's location before the cinema. to find the answer, we need to look back at the previous parts of the conversation history. in a previous part, we learned that ""this morning bill went to the cinema"" (sentence 11), and there is no information about bill's location before going to the cinema. however, in another previous part, we learned that ""bill travelled"	none	Not mentioned	False	There is no information provided about Bill's location or actions related to the cinema. The context sentences only mention Mary's journeys to the school and park, but not Bill's.		"Reasoning: There is no information provided about Bill's location or actions related to the cinema. The context sentences only mention Mary's journeys to the school and park, but not Bill's.
+
+Answer: Not mentioned"	0.0	0.0465	False	False	False	True	0

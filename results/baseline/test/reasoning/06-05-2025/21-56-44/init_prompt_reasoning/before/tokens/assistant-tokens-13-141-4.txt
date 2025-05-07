@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	Ġtogether	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġbathroom	.	ĠSince	ĠMary	Ġis	Ġwith	ĠJohn	,	Ġand	Ġthey	Ġare	Ġin	Ġthe	Ġbathroom	,	ĠMary	Ġis	Ġalso	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

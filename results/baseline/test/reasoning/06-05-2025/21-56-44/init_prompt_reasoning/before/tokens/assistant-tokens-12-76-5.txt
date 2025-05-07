@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSandra	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġis	Ġchanging	.	ĠIn	Ġsentence	Ġ	13	,	Ġshe	Ġgoes	Ġback	Ġto	Ġthe	Ġhallway	Ġwith	ĠMary	.	ĠIn	Ġsentence	Ġ	14	,	Ġshe	Ġtravels	Ġto	Ġthe	Ġbathroom	Ġwith	ĠDaniel	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġwas	Ġpreviously	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

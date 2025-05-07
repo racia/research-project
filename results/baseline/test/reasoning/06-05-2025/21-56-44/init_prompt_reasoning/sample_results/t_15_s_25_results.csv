@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3097	15	25	1	"*TASK*
+Here are the context sentences:
+1. Mice are afraid of sheep.
+2. Emily is a mouse.
+3. Cats are afraid of wolves.
+4. Sheep are afraid of wolves.
+5. Winona is a mouse.
+6. Wolves are afraid of sheep.
+7. Jessica is a wolf.
+8. Gertrude is a cat.
+
+Now, answer the following question:
+What is gertrude afraid of?"	wolf	"from context sentence 3, we know that ""cats are afraid of wolves."" since gertrude is a cat (context sentence 8), we can logically conclude that gertrude is afraid of wolves."	fully	sheep	False	Gertrude is a cat, and according to sentence 3, cats are afraid of wolves. Since wolves are afraid of sheep (sentence 6), Gertrude, as a cat, is likely afraid of sheep.		"Reasoning: Gertrude is a cat, and according to sentence 3, cats are afraid of wolves. Since wolves are afraid of sheep (sentence 6), Gertrude, as a cat, is likely afraid of sheep.
+
+Answer: sheep"	0.1154	0.0385	False	False	False	False	0
+3098	15	25	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	sheep	"from context sentence 2, we know that ""emily is a mouse."" from context sentence 1, we know that ""mice are afraid of sheep."" therefore, we can logically conclude that emily, being a mouse, is afraid of sheep."	none	sheep	True	Emily is a mouse (sentence 2), and according to sentence 1, mice are afraid of sheep.		"Reasoning: Emily is a mouse (sentence 2), and according to sentence 1, mice are afraid of sheep.
+
+Answer: sheep"	0.3103	0.069	False	False	False	False	0
+3099	15	25	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	sheep	"from context sentence 1, we know that ""mice are afraid of sheep."" from context sentence 2, we know that ""emily is a mouse."" therefore, we can logically conclude that emily, being a mouse, is afraid of sheep."	none	sheep	True	Emily is a mouse (sentence 2), and according to sentence 1, mice are afraid of sheep.		"Reasoning: Emily is a mouse (sentence 2), and according to sentence 1, mice are afraid of sheep.
+
+Answer: sheep"	0.2069	0.069	False	False	False	False	0
+3100	15	25	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is jessica afraid of?"	sheep	"from context sentence 7, we know that ""jessica is a wolf."" from context sentence 6, we know that ""wolves are afraid of sheep."" therefore, we can logically conclude that jessica, being a wolf, is afraid of sheep."	none	sheep	True	Jessica is a wolf (sentence 7), and according to sentence 6, wolves are afraid of sheep.		"Reasoning: Jessica is a wolf (sentence 7), and according to sentence 6, wolves are afraid of sheep.
+
+Answer: sheep"	0.0	0.069	False	False	False	False	0

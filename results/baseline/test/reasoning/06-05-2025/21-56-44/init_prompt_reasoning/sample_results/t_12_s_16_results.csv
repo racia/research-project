@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+826	12	16	1	"*TASK*
+Here are the context sentences:
+1. John and Sandra travelled to the bedroom.
+2. John and Mary went to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"according to context sentence 2, ""john and mary went to the hallway"", which explicitly states that mary went to the hallway with john. therefore, mary's current location is the hallway."	fully	bedroom	False	Since John and Sandra travelled to the bedroom, it implies that John is in the bedroom. Then, John and Mary went to the hallway, which means Mary is with John. Since John is in the bedroom, Mary must be in the bedroom as well.		"Reasoning: Since John and Sandra travelled to the bedroom, it implies that John is in the bedroom. Then, John and Mary went to the hallway, which means Mary is with John. Since John is in the bedroom, Mary must be in the bedroom as well.
+
+Answer: bedroom"	0.1034	0.0172	False	False	False	False	0
+827	12	16	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Daniel moved to the kitchen.
+5. Mary and John went back to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	"according to context sentence 5, ""mary and john went back to the garden"", which explicitly states that mary went back to the garden with john. therefore, mary's current location is the garden."	fully	garden	True	Since Mary and John went back to the garden, it implies that Mary is in the garden.		"Reasoning: Since Mary and John went back to the garden, it implies that Mary is in the garden.
+
+Answer: garden"	0.1538	0.0385	False	False	False	False	0
+828	12	16	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary went to the bedroom.
+8. Daniel and John went back to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"according to context sentence 8, ""daniel and john went back to the office"", which explicitly states that daniel went back to the office with john. therefore, daniel's current location is the office."	fully	office	True	Since Daniel and John went back to the office, it implies that Daniel is in the office.		"Reasoning: Since Daniel and John went back to the office, it implies that Daniel is in the office.
+
+Answer: office"	0.0	0.0385	False	False	False	False	0
+829	12	16	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Daniel moved to the garden.
+11. John and Sandra travelled to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	"according to context sentence 11, ""john and sandra travelled to the hallway"", which explicitly states that john went to the hallway with sandra. therefore, john's current location is the hallway."	fully	garden	False	Since Sandra and Daniel moved to the garden, it implies that Sandra is in the garden. Then, John and Sandra travelled to the hallway, which means John is with Sandra. Since Sandra is in the garden, John must be in the garden as well.		"Reasoning: Since Sandra and Daniel moved to the garden, it implies that Sandra is in the garden. Then, John and Sandra travelled to the hallway, which means John is with Sandra. Since Sandra is in the garden, John must be in the garden as well.
+
+Answer: garden"	0.0345	0.0172	False	False	False	False	0
+830	12	16	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Mary moved to the bathroom.
+14. John and Sandra moved to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"according to context sentence 14, ""john and sandra moved to the bedroom"", which explicitly states that sandra went to the bedroom with john. therefore, sandra's current location is the bedroom."	fully	bedroom	True	Since John and Sandra moved to the bedroom, it implies that Sandra is in the bedroom.		"Reasoning: Since John and Sandra moved to the bedroom, it implies that Sandra is in the bedroom.
+
+Answer: bedroom"	0.08	0.04	False	False	False	False	0

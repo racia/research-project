@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġin	Ġsentence	Ġ	7	,	Ġit	Ġimplies	Ġthat	ĠSandra	Ġwas	Ġthere	.	ĠHowever	,	Ġsentence	Ġ	8	Ġstates	Ġthat	ĠSandra	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġmeans	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

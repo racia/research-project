@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	16	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	Ġthis	Ġafternoon	,	Ġwhich	Ġmeans	Ġshe	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	.	ĠSince	Ġwe	Ġknow	Ġshe	Ġwent	Ġto	Ġthe	Ġoffice	Ġthis	Ġevening	Ġ(	sentence	Ġ	15	),	Ġit	Ġimplies	Ġthat	Ġshe	Ġwas	Ġin	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

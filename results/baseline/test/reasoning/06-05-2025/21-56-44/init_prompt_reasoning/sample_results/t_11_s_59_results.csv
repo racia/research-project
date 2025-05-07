@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+291	11	59	1	"*TASK*
+Here are the context sentences:
+1. Daniel went back to the bedroom.
+2. Afterwards he journeyed to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"the context sentences describe daniel's movements, first going back to the bedroom and then journeying to the office. since the second sentence mentions that daniel went to the office ""afterwards"", it implies that the office is his current location. therefore, the answer to the question ""where is daniel?"" is the office."	fully	office	True	Daniel went back to the bedroom initially, and then he journeyed to the office. Since he went to the office after being in the bedroom, it is likely that he is currently in the office.		"Reasoning: Daniel went back to the bedroom initially, and then he journeyed to the office. Since he went to the office after being in the bedroom, it is likely that he is currently in the office.
+
+Answer: office"	0.2128	0.0426	False	False	False	False	0
+292	11	59	2	"*TASK*
+Here are the context sentences:
+4. Mary journeyed to the bathroom.
+5. After that she journeyed to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	"the context sentences describe mary's movements, first journeying to the bathroom and then journeying to the office ""after that"". this implies that the office is her current location, as it is the last place she went to. therefore, the answer to the question ""where is mary?"" is the office."	fully	office	True	Mary initially journeyed to the bathroom, and then she journeyed to the office. Since she went to the office after being in the bathroom, it is likely that she is currently in the office.		"Reasoning: Mary initially journeyed to the bathroom, and then she journeyed to the office. Since she went to the office after being in the bathroom, it is likely that she is currently in the office.
+
+Answer: office"	0.1064	0.0426	False	False	False	False	0
+293	11	59	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the garden.
+8. Afterwards he travelled to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"the context sentences describe daniel's movements, first travelling to the garden and then travelling to the office ""afterwards"". this implies that the office is his current location, as it is the last place he went to. therefore, the answer to the question ""where is daniel?"" is the office."	fully	office	True	Daniel travelled to the garden initially, and then he travelled to the office. Since he went to the office after being in the garden, it is likely that he is currently in the office.		"Reasoning: Daniel travelled to the garden initially, and then he travelled to the office. Since he went to the office after being in the garden, it is likely that he is currently in the office.
+
+Answer: office"	0.1556	0.0444	False	False	False	False	0
+294	11	59	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the garden.
+11. Then he travelled to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"the context sentences describe daniel's movements, first going to the garden and then travelling to the office. the word ""then"" implies a sequence of events, meaning that daniel's trip to the office occurred after his visit to the garden. therefore, the office is daniel's current location, and the answer to the question ""where is daniel?"" is the office."	fully	office	True	Daniel went to the garden initially, and then he travelled to the office. Since he went to the office after being in the garden, it is likely that he is currently in the office.		"Reasoning: Daniel went to the garden initially, and then he travelled to the office. Since he went to the office after being in the garden, it is likely that he is currently in the office.
+
+Answer: office"	0.0222	0.0444	False	False	False	False	0
+295	11	59	5	"*TASK*
+Here are the context sentences:
+13. Daniel went back to the bathroom.
+14. Afterwards he journeyed to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"the context sentences describe daniel's movements, first going back to the bathroom and then journeying to the office ""afterwards"". the word ""afterwards"" implies a sequence of events, meaning that daniel's trip to the office occurred after his visit to the bathroom. therefore, the office is daniel's current location, and the answer to the question ""where is daniel?"" is the office."	fully	office	True	Daniel went back to the bathroom initially, and then he journeyed to the office. Since he went to the office after being in the bathroom, it is likely that he is currently in the office.		"Reasoning: Daniel went back to the bathroom initially, and then he journeyed to the office. Since he went to the office after being in the bathroom, it is likely that he is currently in the office.
+
+Answer: office"	0.1277	0.0426	False	False	False	False	0

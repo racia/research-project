@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1221	12	95	1	"*TASK*
+Here are the context sentences:
+1. Mary and John moved to the garden.
+2. Sandra and John moved to the office.
+
+Now, answer the following question:
+Where is John?"	office	from the context sentences, we know that john moved to the garden with mary (sentence 1) and then moved to the office with sandra (sentence 2). since the last movement mentioned is john moving to the office, it can be inferred that john is currently in the office.	fully	office	True	John is mentioned in both sentences, and his location changes. In sentence 1, he is in the garden with Mary. In sentence 2, he moves to the office with Sandra.		"Reasoning: John is mentioned in both sentences, and his location changes. In sentence 1, he is in the garden with Mary. In sentence 2, he moves to the office with Sandra.
+
+Answer: office"	0.2222	0.0222	False	False	False	True	0
+1222	12	95	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Mary journeyed to the kitchen.
+5. Sandra and Mary journeyed to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	from the context sentences, we know that mary journeyed to the kitchen with daniel (sentence 4) and then journeyed to the garden with sandra (sentence 5). since the last movement mentioned is mary journeying to the garden, it can be inferred that mary is currently in the garden.	fully	garden	True	Mary is mentioned in both sentences, and her location changes. In sentence 4, she is in the kitchen with Daniel. In sentence 5, she moves to the garden with Sandra.		"Reasoning: Mary is mentioned in both sentences, and her location changes. In sentence 4, she is in the kitchen with Daniel. In sentence 5, she moves to the garden with Sandra.
+
+Answer: garden"	0.2222	0.0222	False	False	False	True	0
+1223	12	95	3	"*TASK*
+Here are the context sentences:
+7. John and Daniel travelled to the bedroom.
+8. Daniel and Mary journeyed to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	from the context sentences, we know that daniel travelled to the bedroom with john (sentence 7) and then journeyed to the office with mary (sentence 8). since the last movement mentioned is daniel journeying to the office, it can be inferred that daniel is currently in the office.	fully	office	True	Daniel is mentioned in both sentences, and his location changes. In sentence 7, he is in the bedroom with John. In sentence 8, he moves to the office with Mary.		"Reasoning: Daniel is mentioned in both sentences, and his location changes. In sentence 7, he is in the bedroom with John. In sentence 8, he moves to the office with Mary.
+
+Answer: office"	0.0	0.0222	False	False	False	True	0
+1224	12	95	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Sandra travelled to the hallway.
+11. Daniel and Sandra went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	office	the context sentences (10 and 11) only mention daniel and sandra, but the question asks about mary's location. to answer this, we need to look at previous context sentences. since we don't have any new information about mary, we can infer that mary's location hasn't changed. from previous context sentences (8), we know that mary journeyed to the office with daniel. there is no information that suggests mary moved from the office, so it can be inferred that mary	none	not mentioned	False	Mary is not mentioned in these sentences, so her location cannot be determined.		"Reasoning: Mary is not mentioned in these sentences, so her location cannot be determined.
+
+Answer: not mentioned"	0.0	0.0435	False	False	False	True	0
+1225	12	95	5	"*TASK*
+Here are the context sentences:
+13. Mary and Daniel travelled to the garden.
+14. Sandra and John travelled to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from the context sentences, we know that daniel travelled to the garden with mary (sentence 13). there is no subsequent information that suggests daniel moved from the garden, so it can be inferred that daniel is currently in the garden.	fully	garden	True	Daniel is mentioned in sentence 13, and his location is the garden with Mary.		"Reasoning: Daniel is mentioned in sentence 13, and his location is the garden with Mary.
+
+Answer: garden"	0.0	0.0417	False	False	False	True	0

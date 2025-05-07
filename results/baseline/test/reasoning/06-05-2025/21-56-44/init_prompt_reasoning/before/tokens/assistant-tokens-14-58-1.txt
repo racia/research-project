@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠFred	Ġtravelled	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	,	Ġand	Ġhe	Ġtravelled	Ġto	Ġthe	Ġcinema	Ġyesterday	,	Ġit	Ġimplies	Ġthat	ĠFred	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġhe	Ġwent	Ġto	Ġthe	Ġschool	.	ĠThe	Ġonly	Ġother	Ġplace	Ġmentioned	Ġis	Ġthe	Ġcinema	,	Ġwhich	Ġis	Ġthe	Ġlast	Ġplace	ĠFred	Ġwas	Ġknown	Ġto	Ġbe	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġcinema	<|eot_id|>

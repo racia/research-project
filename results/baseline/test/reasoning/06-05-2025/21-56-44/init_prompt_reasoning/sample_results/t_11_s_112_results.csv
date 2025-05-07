@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+556	11	112	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the kitchen.
+2. Afterwards she went to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	"the context sentences describe mary's movements in a sequence. first, she moved to the kitchen, and afterwards, she went to the garden. since the second sentence mentions ""afterwards"", it implies that mary's movement to the garden happened after she was in the kitchen. therefore, her current location is the garden, which is the last place she was mentioned to be."	fully	garden	True	Mary moved to the kitchen initially, and then she went to the garden. Since the question asks about her current location, we need to consider her most recent movement, which is to the garden.		"Reasoning: Mary moved to the kitchen initially, and then she went to the garden. Since the question asks about her current location, we need to consider her most recent movement, which is to the garden.
+
+Answer: garden"	0.1087	0.0435	False	False	False	False	0
+557	11	112	2	"*TASK*
+Here are the context sentences:
+4. Sandra moved to the office.
+5. Following that she went back to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"the context sentences describe sandra's movements in a sequence. first, she moved to the office, and following that, she went back to the garden. the phrase ""following that"" implies a chronological order, meaning that sandra's movement to the garden happened after she was in the office. since she went ""back"" to the garden, it can be inferred that she was in the garden before moving to the office. therefore, her current location is the garden, which is the last place"	fully	garden	True	Sandra initially moved to the office, and then she went back to the garden. Since the question asks about her current location, we need to consider her most recent movement, which is to the garden.		"Reasoning: Sandra initially moved to the office, and then she went back to the garden. Since the question asks about her current location, we need to consider her most recent movement, which is to the garden.
+
+Answer: garden"	0.0851	0.0426	False	False	False	False	0
+558	11	112	3	"*TASK*
+Here are the context sentences:
+7. Sandra moved to the bathroom.
+8. Then she went to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	"the context sentences describe sandra's movements, but the question asks about mary's location. there is no information provided about mary's movements or location in the given context sentences. the answer ""garden"" is likely incorrect, as the context sentences do not provide any information about mary being in the garden. the correct answer would be ""unknown"" or ""cannot be determined"" based on the provided context."	none	not mentioned	False	There is no mention of Mary in the given context sentences. The sentences only mention Sandra's movements, and there is no information about Mary's location.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Sandra's movements, and there is no information about Mary's location.
+
+Answer: not mentioned"	0.1316	0.0526	False	False	False	True	0
+559	11	112	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the hallway.
+11. Following that she travelled to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"the context sentences describe mary's movements in a sequence. first, she moved to the hallway, and following that, she travelled to the kitchen. the phrase ""following that"" implies a chronological order, meaning that mary's movement to the kitchen happened after she was in the hallway. therefore, her current location is the kitchen, which is the last place she was mentioned to be."	fully	kitchen	True	Mary initially moved to the hallway, and then she travelled to the kitchen. Since the question asks about her current location, we need to consider her most recent movement, which is to the kitchen.		"Reasoning: Mary initially moved to the hallway, and then she travelled to the kitchen. Since the question asks about her current location, we need to consider her most recent movement, which is to the kitchen.
+
+Answer: kitchen"	0.0	0.0435	False	False	False	False	0
+560	11	112	5	"*TASK*
+Here are the context sentences:
+13. Daniel went to the bathroom.
+14. After that he moved to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"the context sentences describe daniel's movements in a sequence. first, he went to the bathroom, and after that, he moved to the office. the phrase ""after that"" implies a chronological order, meaning that daniel's movement to the office happened after he was in the bathroom. therefore, his current location is the office, which is the last place he was mentioned to be."	fully	office	True	Daniel initially went to the bathroom, and then he moved to the office. Since the question asks about his current location, we need to consider his most recent movement, which is to the office.		"Reasoning: Daniel initially went to the bathroom, and then he moved to the office. Since the question asks about his current location, we need to consider his most recent movement, which is to the office.
+
+Answer: office"	0.1957	0.0435	False	False	False	False	0

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2126	13	126	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Mary travelled to the kitchen.
+2. Afterwards they went back to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	according to the context sentences, daniel and mary first travelled to the kitchen (sentence 1), and then they went back to the office (sentence 2). since there is no further information about daniel's movement after returning to the office, it can be logically concluded that daniel is still in the office.	fully	office	True	Since Daniel and Mary travelled to the kitchen together, it implies that Daniel was in the kitchen initially. After that, they went back to the office, which means Daniel is currently in the office.		"Reasoning: Since Daniel and Mary travelled to the kitchen together, it implies that Daniel was in the kitchen initially. After that, they went back to the office, which means Daniel is currently in the office.
+
+Answer: office"	0.2174	0.0435	False	False	False	False	0
+2127	13	126	2	"*TASK*
+Here are the context sentences:
+4. John and Mary travelled to the garden.
+5. After that they went to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	according to the context sentences, john and mary travelled to the garden (sentence 4), and then they went to the hallway (sentence 5). since there is no further information about john's movement after going to the hallway, it can be logically concluded that john is still in the hallway.	fully	hallway	True	According to the context sentences, John and Mary travelled to the garden together, and then they went to the hallway. This implies that John is currently in the hallway.		"Reasoning: According to the context sentences, John and Mary travelled to the garden together, and then they went to the hallway. This implies that John is currently in the hallway.
+
+Answer: hallway"	0.15	0.05	False	False	False	False	0
+2128	13	126	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary journeyed to the garden.
+8. After that they moved to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	according to the context sentences, sandra and mary journeyed to the garden (sentence 7), and then they moved to the bedroom (sentence 8). since there is no further information about sandra's movement after moving to the bedroom, it can be logically concluded that sandra is still in the bedroom.	fully	bedroom	True	Sandra and Mary journeyed to the garden together, and then they moved to the bedroom. This implies that Sandra is currently in the bedroom.		"Reasoning: Sandra and Mary journeyed to the garden together, and then they moved to the bedroom. This implies that Sandra is currently in the bedroom.
+
+Answer: bedroom"	0.0571	0.0571	False	False	False	False	0
+2129	13	126	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Mary went back to the kitchen.
+11. After that they journeyed to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	according to the context sentences, sandra and mary went back to the kitchen (sentence 10), and then they journeyed to the garden (sentence 11). since there is no further information about mary's movement after journeying to the garden, it can be logically concluded that mary is still in the garden.	fully	garden	True	Sandra and Mary went back to the kitchen together, and then they journeyed to the garden. This implies that Mary is currently in the garden.		"Reasoning: Sandra and Mary went back to the kitchen together, and then they journeyed to the garden. This implies that Mary is currently in the garden.
+
+Answer: garden"	0.0278	0.0556	False	False	False	False	0
+2130	13	126	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra journeyed to the bedroom.
+14. Afterwards they travelled to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	according to the context sentences, mary and sandra journeyed to the bedroom (sentence 13), and then they travelled to the office (sentence 14). since there is no further information about sandra's movement after travelling to the office, it can be logically concluded that sandra is still in the office.	fully	office	True	Mary and Sandra journeyed to the bedroom together, and then they travelled to the office. This implies that Sandra is currently in the office.		"Reasoning: Mary and Sandra journeyed to the bedroom together, and then they travelled to the office. This implies that Sandra is currently in the office.
+
+Answer: office"	0.2	0.0571	False	False	False	False	0

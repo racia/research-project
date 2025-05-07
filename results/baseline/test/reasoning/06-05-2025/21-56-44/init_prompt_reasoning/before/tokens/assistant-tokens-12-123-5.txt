@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSandra	Ġis	Ġmentioned	Ġin	Ġtwo	Ġsentences	,	Ġand	Ġin	Ġthe	Ġfirst	Ġsentence	,	Ġshe	Ġis	Ġnot	Ġmentioned	Ġat	Ġall	.	ĠIn	Ġthe	Ġsecond	Ġsentence	,	ĠSandra	Ġis	Ġwith	ĠDaniel	,	Ġand	Ġthey	Ġgo	Ġto	Ġthe	Ġhallway	.	ĠSince	ĠSandra	Ġis	Ġwith	ĠDaniel	Ġin	Ġthe	Ġsecond	Ġsentence	,	Ġit	Ġimplies	Ġthat	ĠSandra	Ġis	Ġinitially	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

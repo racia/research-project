@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1796	13	60	1	"*TASK*
+Here are the context sentences:
+1. Mary and Sandra went to the bedroom.
+2. Afterwards they moved to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	since mary and sandra went to the bedroom initially (context sentence 1), and afterwards they moved to the bathroom (context sentence 2), it can be logically inferred that mary is currently in the bathroom. the sequence of events suggests that mary and sandra relocated from the bedroom to the bathroom, and there is no indication that mary left the bathroom or moved to a different location. therefore, the most reasonable conclusion is that mary is in the bathroom.	fully	bathroom	True	Mary and Sandra went to the bedroom together, and then they moved to the bathroom. Since Mary is not mentioned as leaving the bedroom or bathroom, it is inferred that Mary is still with Sandra in the bathroom.		"Reasoning: Mary and Sandra went to the bedroom together, and then they moved to the bathroom. Since Mary is not mentioned as leaving the bedroom or bathroom, it is inferred that Mary is still with Sandra in the bathroom.
+
+Answer: bathroom"	0.1837	0.0408	False	False	False	True	0
+1797	13	60	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Daniel journeyed to the hallway.
+5. Afterwards they went to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	since sandra and daniel journeyed to the hallway initially (context sentence 4), and afterwards they went to the office (context sentence 5), it can be logically inferred that sandra is currently in the office. the sequence of events suggests that sandra and daniel relocated from the hallway to the office, and there is no indication that sandra left the office or moved to a different location. therefore, the most reasonable conclusion is that sandra is in the office.	fully	office	True	Sandra and Daniel journeyed to the hallway together, and then they went to the office. Since Sandra is not mentioned as leaving the hallway or office, it is inferred that Sandra is still with Daniel in the office.		"Reasoning: Sandra and Daniel journeyed to the hallway together, and then they went to the office. Since Sandra is not mentioned as leaving the hallway or office, it is inferred that Sandra is still with Daniel in the office.
+
+Answer: office"	0.1	0.04	False	False	False	True	0
+1798	13	60	3	"*TASK*
+Here are the context sentences:
+7. Mary and Daniel journeyed to the bedroom.
+8. Then they travelled to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	since mary and daniel journeyed to the bedroom initially (context sentence 7), and then they travelled to the hallway (context sentence 8), it can be logically inferred that daniel is currently in the hallway. the sequence of events suggests that daniel and mary relocated from the bedroom to the hallway, and there is no indication that daniel left the hallway or moved to a different location. therefore, the most reasonable conclusion is that daniel is in the hallway.	fully	hallway	True	Mary and Daniel journeyed to the bedroom together, and then they travelled to the hallway. Since Daniel is not mentioned as leaving the bedroom or hallway, it is inferred that Daniel is still with Mary in the hallway.		"Reasoning: Mary and Daniel journeyed to the bedroom together, and then they travelled to the hallway. Since Daniel is not mentioned as leaving the bedroom or hallway, it is inferred that Daniel is still with Mary in the hallway.
+
+Answer: hallway"	0.14	0.04	False	False	False	True	0
+1799	13	60	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Daniel went to the bathroom.
+11. Then they went to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	since sandra and daniel went to the bathroom initially (context sentence 10), and then they went to the bedroom (context sentence 11), it can be logically inferred that daniel is currently in the bedroom. the sequence of events suggests that daniel and sandra relocated from the bathroom to the bedroom, and there is no indication that daniel left the bedroom or moved to a different location. therefore, the most reasonable conclusion is that daniel is in the bedroom.	fully	bedroom	True	Sandra and Daniel went to the bathroom together, and then they went to the bedroom. Since Daniel is not mentioned as leaving the bathroom or bedroom, it is inferred that Daniel is still with Sandra in the bedroom.		"Reasoning: Sandra and Daniel went to the bathroom together, and then they went to the bedroom. Since Daniel is not mentioned as leaving the bathroom or bedroom, it is inferred that Daniel is still with Sandra in the bedroom.
+
+Answer: bedroom"	0.0204	0.0408	False	False	False	True	0
+1800	13	60	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Sandra journeyed to the hallway.
+14. Following that they went to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	since daniel and sandra journeyed to the hallway initially (context sentence 13), and following that they went to the garden (context sentence 14), it can be logically inferred that daniel is currently in the garden. the sequence of events suggests that daniel and sandra relocated from the hallway to the garden, and there is no indication that daniel left the garden or moved to a different location. therefore, the most reasonable conclusion is that daniel is in the garden.	fully	garden	True	Daniel and Sandra journeyed to the hallway together, and then they went to the garden. Since Daniel is not mentioned as leaving the hallway or garden, it is inferred that Daniel is still with Sandra in the garden.		"Reasoning: Daniel and Sandra journeyed to the hallway together, and then they went to the garden. Since Daniel is not mentioned as leaving the hallway or garden, it is inferred that Daniel is still with Sandra in the garden.
+
+Answer: garden"	0.16	0.04	False	False	False	True	0

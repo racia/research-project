@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2151	13	131	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Mary moved to the kitchen.
+2. Following that they went to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from the context sentences, we know that daniel and mary moved to the kitchen (sentence 1) and then went to the bathroom (sentence 2). since there is no information about daniel leaving the bathroom, we can logically conclude that daniel is still in the bathroom.	fully	bathroom	True	Since Daniel and Mary moved to the kitchen together, and then went to the bathroom, it implies that Daniel is still with Mary and is in the bathroom.		"Reasoning: Since Daniel and Mary moved to the kitchen together, and then went to the bathroom, it implies that Daniel is still with Mary and is in the bathroom.
+
+Answer: bathroom"	0.1842	0.0526	False	False	False	False	0
+2152	13	131	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Mary moved to the kitchen.
+5. Following that they went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that daniel and mary moved to the kitchen (sentence 4) and then went back to the bedroom (sentence 5). since there is no information about mary leaving the bedroom, we can logically conclude that mary is still in the bedroom.	fully	bedroom	True	Since Daniel and Mary moved to the kitchen together, and then went back to the bedroom, it implies that Mary is still with Daniel and is in the bedroom.		"Reasoning: Since Daniel and Mary moved to the kitchen together, and then went back to the bedroom, it implies that Mary is still with Daniel and is in the bedroom.
+
+Answer: bedroom"	0.1282	0.0513	False	False	False	False	0
+2153	13	131	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Mary travelled to the garden.
+8. After that they journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that daniel and mary travelled to the garden (sentence 7) and then journeyed to the bathroom (sentence 8). since there is no information about mary leaving the bathroom, we can logically conclude that mary is still in the bathroom.	fully	bathroom	True	Since Daniel and Mary travelled to the garden together, and then journeyed to the bathroom, it implies that Mary is still with Daniel and is in the bathroom.		"Reasoning: Since Daniel and Mary travelled to the garden together, and then journeyed to the bathroom, it implies that Mary is still with Daniel and is in the bathroom.
+
+Answer: bathroom"	0.0256	0.0513	False	False	False	False	0
+2154	13	131	4	"*TASK*
+Here are the context sentences:
+10. John and Sandra journeyed to the bedroom.
+11. After that they travelled to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	from the context sentences, we know that john and sandra journeyed to the bedroom (sentence 10) and then travelled to the bathroom (sentence 11). since there is no information about john leaving the bathroom, we can logically conclude that john is still in the bathroom.	fully	bathroom	True	Since John and Sandra journeyed to the bedroom together, and then travelled to the bathroom, it implies that John is still with Sandra and is in the bathroom.		"Reasoning: Since John and Sandra journeyed to the bedroom together, and then travelled to the bathroom, it implies that John is still with Sandra and is in the bathroom.
+
+Answer: bathroom"	0.0513	0.0513	False	False	False	False	0
+2155	13	131	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Daniel journeyed to the bedroom.
+14. Then they went back to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	from the context sentences, we know that sandra and daniel journeyed to the bedroom (sentence 13) and then went back to the office (sentence 14). since there is no information about sandra leaving the office, we can logically conclude that sandra is still in the office.	fully	office	True	Since Sandra and Daniel journeyed to the bedroom together, and then went back to the office, it implies that Sandra is still with Daniel and is in the office.		"Reasoning: Since Sandra and Daniel journeyed to the bedroom together, and then went back to the office, it implies that Sandra is still with Daniel and is in the office.
+
+Answer: office"	0.05	0.05	False	False	False	False	0
