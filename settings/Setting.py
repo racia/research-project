@@ -85,7 +85,7 @@ class Setting(ABC):
     def get_after_interpretability(self) -> InterpretabilityResult:
         """
         Get the interpretability result for the student after the setting is applied.
-        This is used for the multi-system setting.
+        This is used for the multi-system setting when the final version of the chat is not available till the end.
         :return: interpretability result
         """
         chat_ids = self.model.chat.convert_into_datatype("ids", identify_target=False)

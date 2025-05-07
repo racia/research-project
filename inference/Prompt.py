@@ -11,7 +11,7 @@ from inference.utils import (
     Source,
     flatten,
     sents_to_ids,
-    upd_span,
+    update_span,
     get_generation_token_ids,
 )
 from settings.config import Examples
@@ -222,38 +222,23 @@ class Prompt:
                     teacher_ids.extend(chunk["ids"])
                     teacher_tokens.extend(chunk["tokens"])
 
-                print("DEBUG: chunk", chunk["content"])
-
                 if chunk.get("spans_with_types", False):
                     # this is the actual student message
                     spans_types = chunk["spans_with_types"]
-                    upd_spans = {}
                     for span, type_ in spans_types.items():
-                        if upd_spans:
-                            last_span = list(upd_spans.keys())[-1]
-                        else:
-                            last_span = list(spans_with_types.keys())[-1]
-                        start = last_span[1]
-                        end = start + span[1] - span[0]
-                        upd_spans[(start, end)] = type_
-                    # upd_spans = {
-                    #     upd_span(span, offset): f"{type_}_"
-                    #     for span, type_ in spans_types.items()
-                    # }
-                    spans_with_types.update(upd_spans)
+                        spans_with_types[update_span(span, offset)] = type_
+                        offset += span[1] - span[0]
                 elif chunk.get("sent_spans", False):
                     # this is a wrapper
                     span = chunk.get("sent_spans", ())
                     if spans_with_types:
-                        last_span = list(spans_with_types.keys())[-1]
-                        start = last_span[1]
-                        end = start + span[1] - span[0]
-                        span = (start, end)
-                    spans_with_types.update({span: "wrap"})
+                        span = update_span(span, offset)
+                        offset += span[1] - span[0]
+                    spans_with_types[span] = "wrap"
 
                 # otherwise, empty message
 
-                offset += len(flatten(chunk["ids"]))
+        print("DEBUG: spans_with_types", spans_with_types)
 
         print(
             "Teacher's message:",
@@ -419,7 +404,7 @@ class Prompt:
 
         self.ex_tokens.extend(tokens)
         self.ex_ids.extend(ids)
-        self.ex_sent_spans.extend([upd_span(span, self.offset) for span in spans])
+        self.ex_sent_spans.extend([update_span(span, self.offset) for span in spans])
 
     def add_examples(self, task_id: int, example_config: Examples) -> None:
         """

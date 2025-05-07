@@ -368,9 +368,7 @@ def run_setting(cfg: DictConfig) -> None:
 
         print("\n- RUN RESULTS -", end="\n\n")
 
-        for prompt_eval in prompt_evaluators:
-            prompt_eval.calculate_std()
-            prompt_eval.print_accuracies(id_=init_prompt.name)
+        [prompt_eval.calculate_std() for prompt_eval in prompt_evaluators]
         print_metrics_table(evaluators=prompt_evaluators, id_=init_prompt.name)
 
         print(

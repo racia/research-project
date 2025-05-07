@@ -343,14 +343,14 @@ class Interpretability:
         ]
 
         # TODO: there might be problems with indices for verbose attentions
-        max_attn_ratio = get_max_attn_ratio(attn_scores, supp_sent_idx)
+        max_supp_attn_ratio = get_max_attn_ratio(attn_scores, supp_sent_idx)
         attn_on_target = get_attn_on_target(attn_scores, supp_sent_idx)
 
         result = InterpretabilityResult(
             attn_scores,
             x_tokens,
             y_tokens,
-            max_attn_ratio,
+            max_supp_attn_ratio,
             attn_on_target,
             "aggregated" if aggregate else "verbose",
         )
