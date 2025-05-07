@@ -1,0 +1,11 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1950	19	43	1	"*TASK*
+Here are the context sentences:
+1. The bathroom is north of the kitchen.
+2. The bedroom is east of the office.
+3. The hallway is east of the kitchen.
+4. The bedroom is south of the garden.
+5. The kitchen is north of the garden.
+
+Now, answer the following question:
+How do you go from the kitchen to the bedroom?"	south south	from context sentence 1, we know the bathroom is north of the kitchen, which implies the kitchen is south of the bathroom.	fully		False	Since the kitchen is north of the garden (sentence 5), and the bedroom is east of the office (sentence 2), we need to find a path from the kitchen to the bedroom. Since the bedroom is also south of the garden (sentence 4), we can conclude that the bedroom is not directly east of the kitchen. However, the hallway is east of the kitchen (sentence 3), and the bedroom is east of the office (sentence 2). This suggests		Reasoning: Since the kitchen is north of the garden (sentence 5), and the bedroom is east of the office (sentence 2), we need to find a path from the kitchen to the bedroom. Since the bedroom is also south of the garden (sentence 4), we can conclude that the bedroom is not directly east of the kitchen. However, the hallway is east of the kitchen (sentence 3), and the bedroom is east of the office (sentence 2). This suggests	0.2727	0.0202	False	False	False	False	0

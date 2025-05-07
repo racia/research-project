@@ -1,0 +1,17 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+120	16	120	1	"*TASK*
+Here are the context sentences:
+1. Lily is a lion.
+2. Greg is a rhino.
+3. Bernhard is a swan.
+4. Lily is green.
+5. Greg is gray.
+6. Julius is a frog.
+7. Julius is white.
+8. Bernhard is white.
+9. Brian is a rhino.
+
+Now, answer the following question:
+What color is Brian?"	gray	since brian is a rhino (sentence 9), and greg is also a rhino (sentence 2), it can be inferred that they share similar characteristics. additionally, greg is gray (sentence 5), which suggests that being a rhino might be associated with being gray. therefore, it is logical to conclude that brian, being a rhino, is also gray.	fully	Gray	True	Since Brian is a rhino (from sentence 2), and Greg is also a rhino (from sentence 2), we can infer that Brian's color is likely to be the same as Greg's. Since Greg is gray (from sentence 5), it's likely that Brian is also gray.		"Reasoning: Since Brian is a rhino (from sentence 2), and Greg is also a rhino (from sentence 2), we can infer that Brian's color is likely to be the same as Greg's. Since Greg is gray (from sentence 5), it's likely that Brian is also gray.
+
+Answer: Gray"	0.0441	0.0441	False	False	False	False	0

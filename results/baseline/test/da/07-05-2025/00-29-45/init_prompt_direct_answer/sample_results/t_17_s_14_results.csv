@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+205	17	14	1	"*TASK*
+Here are the context sentences:
+1. The red sphere is to the right of the red square.
+2. The red sphere is to the left of the pink rectangle.
+
+Now, answer the following question:
+Is the pink rectangle to the left of the red square?"	no	from context sentence 1, we know that the red sphere is to the right of the red square. from context sentence 2, we know that the red sphere is to the left of the pink rectangle. since the red sphere is to the right of the red square and to the left of the pink rectangle, we can logically conclude that the pink rectangle is to the right of the red square, not to the left. therefore, the answer is no, the pink rectangle is not	fully	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+206	17	14	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the left of the pink rectangle?"	yes	from the previous context sentences, we know that the red sphere is to the right of the red square (sentence 1) and the red sphere is to the left of the pink rectangle (sentence 2). since the red sphere is to the right of the red square and to the left of the pink rectangle, we can logically conclude that the red square is to the left of the pink rectangle. therefore, the answer is yes, the red square is to the left of the pink	none	no	False			Answer: no	0.25	0.5	False	False	False	False	0
+207	17	14	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square above the pink rectangle?"	no	"there is no information provided in the context sentences about the vertical positions of the objects, only about their horizontal positions. therefore, we cannot conclude whether the red square is above or below the pink rectangle. however, the answer is ""no"", which implies that the question is asking about a specific relationship that is not supported by the provided information. in this case, the correct answer is ""no"" because we cannot determine the vertical relationship between the red square and the pink rectangle based on the"	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0
+208	17	14	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the right of the red square?"	yes	from the previous context sentences, we know that the red sphere is to the right of the red square (sentence 1) and the red sphere is to the left of the pink rectangle (sentence 2). since the red sphere is to the right of the red square and to the left of the pink rectangle, we can logically conclude that the pink rectangle is to the right of the red square. therefore, the answer is yes, the pink rectangle is to the right of the red	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+209	17	14	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle below the red square?"	no	"there is no information provided in the context sentences about the vertical positions of the objects, only about their horizontal positions. the context sentences only mention ""to the right of"" and ""to the left of"", but not ""above"", ""below"", ""up"", or ""down"". therefore, we cannot conclude whether the pink rectangle is below the red square or not. however, the answer is ""no"", which implies that the question is asking about a specific relationship that is not supported by"	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0
+210	17	14	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the left of the pink rectangle?"	yes	"""reasoning: <reasoning>"""	none	no	False			Answer: no	0.25	0.5	False	False	False	False	0
+211	17	14	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the right of the red square?"	yes	"""reasoning: <reasoning>"""	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+212	17	14	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle below the red square?"	no	"""reasoning: <reasoning>"""	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0

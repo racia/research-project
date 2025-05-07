@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+637	17	68	1	"*TASK*
+Here are the context sentences:
+1. The blue square is to the left of the red square.
+2. The red sphere is to the left of the blue square.
+
+Now, answer the following question:
+Is the red square to the right of the red sphere?"	yes	from context sentence 1, we know that the blue square is to the left of the red square. from context sentence 2, we know that the red sphere is to the left of the blue square. therefore, the red sphere is to the left of the blue square, and the blue square is to the left of the red square. this implies that the red sphere is to the left of the red square. since the red sphere is to the left of the red square,	fully	no	False			Answer: no	0.25	0.5	False	False	False	False	0
+638	17	68	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the left of the red sphere?"	no	from the previous context sentences, we know that the red sphere is to the left of the blue square (sentence 2), and the blue square is to the right of the red square (sentence 1). therefore, the red sphere is to the left of the blue square, and the blue square is to the right of the red square. this implies that the red sphere is to the left of the red square's right side, which means the red sphere is not to the right	none	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+639	17	68	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red sphere to the left of the red square?"	yes	from the previous context sentences, we know that the red sphere is to the left of the blue square (sentence 2), and the blue square is to the right of the red square (sentence 1). therefore, the red sphere is to the left of the blue square, and the blue square is to the right of the red square. this implies that the red sphere is to the left of the red square.	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+640	17	68	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the right of the red sphere?"	yes	from the previous context sentences, we know that the red sphere is to the left of the blue square (sentence 2), and the blue square is to the right of the red square (sentence 1). therefore, the red sphere is to the left of the blue square, and the blue square is to the right of the red square. this implies that the red sphere is to the left of the red square, which means the red square is to the right of the red sphere	none	no	False			Answer: no	0.25	0.5	False	False	False	False	0
+641	17	68	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square above the red sphere?"	no	"there is no information provided about the vertical positions of the red square and the red sphere. the context sentences only mention left and right relationships between the objects, but do not provide any information about up or down relationships. therefore, we cannot conclude that the red square is above the red sphere, and the answer is ""no"" because there is no evidence to support that claim."	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0
+642	17	68	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red sphere to the left of the red square?"	yes	"""reasoning: <reasoning>"""	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+643	17	68	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the left of the red sphere?"	no	"""reasoning: <reasoning>"""	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+644	17	68	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red sphere to the left of the red square?"	yes	"""reasoning: <reasoning>"""	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0

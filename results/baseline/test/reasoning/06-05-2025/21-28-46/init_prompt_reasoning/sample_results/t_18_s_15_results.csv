@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1221	18	15	1	"*TASK*
+Here are the context sentences:
+1. The box is bigger than the chocolate.
+2. The chocolate fits inside the suitcase.
+3. The box is bigger than the box of chocolates.
+4. The box of chocolates fits inside the suitcase.
+5. The box is bigger than the box of chocolates.
+6. The chocolate fits inside the chest.
+7. The chocolate fits inside the box.
+8. The box of chocolates fits inside the box.
+9. The suitcase is bigger than the chest.
+10. The suitcase is bigger than the chocolate.
+
+Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	"from context sentence 10, we know that ""the suitcase is bigger than the chocolate."" this directly implies that the chocolate is not bigger than the suitcase, but rather the opposite. therefore, the answer is ""no""."	fully		False	From the given context sentences, we know that the chocolate is smaller than the box (1), and the box is bigger than the box of chocolates (5). We also know that the box of chocolates fits inside the suitcase (4), and the box fits inside the suitcase (not explicitly stated, but can be inferred). This implies that the box is smaller than the suitcase. Since the chocolate fits inside the box (7), it is also smaller than the box. Therefore, the		Reasoning: From the given context sentences, we know that the chocolate is smaller than the box (1), and the box is bigger than the box of chocolates (5). We also know that the box of chocolates fits inside the suitcase (4), and the box fits inside the suitcase (not explicitly stated, but can be inferred). This implies that the box is smaller than the suitcase. Since the chocolate fits inside the box (7), it is also smaller than the box. Therefore, the	0.1414	0.0202	False	False	False	False	0
+1222	18	15	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the chocolate?"	yes	"from context sentence 10, we know that ""the suitcase is bigger than the chocolate."" this directly states that the suitcase is bigger than the chocolate, which aligns with the answer ""yes""."	none	yes	True	From the given context sentences, we know that the chocolate is smaller than the box (1), and the box fits inside the suitcase (not explicitly stated, but can be inferred). We also know that the chocolate fits inside the box (7), and the box fits inside the suitcase (not explicitly stated, but can be inferred). This implies that the chocolate is smaller than the suitcase.		"Reasoning: From the given context sentences, we know that the chocolate is smaller than the box (1), and the box fits inside the suitcase (not explicitly stated, but can be inferred). We also know that the chocolate fits inside the box (7), and the box fits inside the suitcase (not explicitly stated, but can be inferred). This implies that the chocolate is smaller than the suitcase.
+
+Answer: yes"	0.1071	0.0238	False	False	False	False	0
+1223	18	15	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the suitcase fit in the chocolate?"	no	"from context sentence 10, we know that ""the suitcase is bigger than the chocolate."" this implies that the suitcase cannot fit inside the chocolate, as it is larger than the chocolate. therefore, the answer is ""no"", the suitcase does not fit in the chocolate."	none	no	True	From the given context sentences, we know that the chocolate is smaller than the box (1), and the box fits inside the suitcase (not explicitly stated, but can be inferred). We also know that the chocolate fits inside the box (7), and the box fits inside the suitcase (not explicitly stated, but can be inferred). This implies that the chocolate is smaller than the suitcase. Therefore, it is not possible for the suitcase to fit inside the chocolate.		"Reasoning: From the given context sentences, we know that the chocolate is smaller than the box (1), and the box fits inside the suitcase (not explicitly stated, but can be inferred). We also know that the chocolate fits inside the box (7), and the box fits inside the suitcase (not explicitly stated, but can be inferred). This implies that the chocolate is smaller than the suitcase. Therefore, it is not possible for the suitcase to fit inside the chocolate.
+
+Answer: no"	0.0505	0.0202	False	False	False	False	0
+1224	18	15	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the suitcase fit in the chocolate?"	no	"from context sentence 2, we know that ""the chocolate fits inside the suitcase."" this implies that the chocolate is smaller than the suitcase. if the chocolate fits inside the suitcase, it is not possible for the suitcase to fit inside the chocolate. therefore, the answer is ""no"", the suitcase does not fit in the chocolate."	none	no	True	The suitcase is bigger than the chocolate (10), and the chocolate is smaller than the box (1). The box fits inside the suitcase (not explicitly stated, but can be inferred). This implies that the suitcase is not smaller than the box, and therefore, the suitcase does not fit inside the chocolate.		"Reasoning: The suitcase is bigger than the chocolate (10), and the chocolate is smaller than the box (1). The box fits inside the suitcase (not explicitly stated, but can be inferred). This implies that the suitcase is not smaller than the box, and therefore, the suitcase does not fit inside the chocolate.
+
+Answer: no"	0.0441	0.0294	False	False	False	False	0
+1225	18	15	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the chocolate?"	yes	"from context sentence 10, we know that ""the suitcase is bigger than the chocolate."" this directly states that the suitcase is bigger than the chocolate, which aligns with the answer ""yes""."	none	yes	True	We know that the suitcase is bigger than the chocolate (10).		"Reasoning: We know that the suitcase is bigger than the chocolate (10).
+
+Answer: yes"	0.0	0.1	False	False	False	False	0

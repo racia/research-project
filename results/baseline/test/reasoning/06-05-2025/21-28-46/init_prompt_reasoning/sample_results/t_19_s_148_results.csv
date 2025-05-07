@@ -1,0 +1,13 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2055	19	148	1	"*TASK*
+Here are the context sentences:
+1. The bathroom is east of the kitchen.
+2. The bedroom is east of the office.
+3. The hallway is north of the bedroom.
+4. The garden is north of the hallway.
+5. The hallway is west of the kitchen.
+
+Now, answer the following question:
+How do you go from the bedroom to the kitchen?"	north east	to go from the bedroom to the kitchen, we need to find the correct direction. from sentence 2, we know the bedroom is east of the office. from sentence 3, we know the hallway is north of the bedroom. so, to go from the bedroom, we need to go north to reach the hallway. from sentence 5, we know the hallway is west of the kitchen. since we are already in the hallway, we need to go east to reach the kitchen	fully	north, west	False	Since the bedroom is east of the office, and the hallway is north of the bedroom, the hallway is also north of the office. The kitchen is west of the hallway, and the bathroom is east of the kitchen. This means that the bedroom and the kitchen are not directly adjacent, but the bedroom and the hallway are. To get from the bedroom to the kitchen, you would need to go north to the hallway and then west to the kitchen.		"Reasoning: Since the bedroom is east of the office, and the hallway is north of the bedroom, the hallway is also north of the office. The kitchen is west of the hallway, and the bathroom is east of the kitchen. This means that the bedroom and the kitchen are not directly adjacent, but the bedroom and the hallway are. To get from the bedroom to the kitchen, you would need to go north to the hallway and then west to the kitchen.
+
+Answer: north, west"	0.1818	0.0202	False	False	False	False	0

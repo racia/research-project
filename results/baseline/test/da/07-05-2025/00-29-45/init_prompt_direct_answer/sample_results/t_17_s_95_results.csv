@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+853	17	95	1	"*TASK*
+Here are the context sentences:
+1. The blue square is to the left of the triangle.
+2. The blue square is below the red square.
+
+Now, answer the following question:
+Is the triangle to the right of the red square?"	yes	from context sentence 1, we know that the blue square is to the left of the triangle. from context sentence 2, we know that the blue square is below the red square. since the blue square is below the red square, the triangle must be to the right of the red square, because the blue square is to the left of the triangle. therefore, the answer is yes, the triangle is to the right of the red square.	fully	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+854	17	95	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the left of the triangle?"	yes	from the previous context sentences, we know that the blue square is to the left of the triangle (sentence 1) and the blue square is below the red square (sentence 2). since the blue square is below the red square, the red square must be above the blue square. and since the blue square is to the left of the triangle, the red square (which is above the blue square) must also be to the left of the triangle. therefore, the answer is	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+855	17	95	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square above the triangle?"	yes	from the previous context sentences, we know that the blue square is to the left of the triangle (sentence 1) and the blue square is below the red square (sentence 2). since the blue square is below the red square, the red square must be above the blue square. and since the blue square is to the left of the triangle, the red square (which is above the blue square) must also be above the triangle. therefore, the answer is yes, the	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+856	17	95	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square above the triangle?"	yes	we previously established that the triangle is to the right of the red square (from the previous question), and the blue square is below the red square (from context sentence 2). since the blue square is below the red square, the red square must be above the blue square. and since the triangle is to the right of the red square, the red square must also be above the triangle. therefore, the answer is yes, the red square is above the triangle.	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+857	17	95	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the left of the red square?"	no	we previously established that the triangle is to the right of the red square (from the previous question). therefore, the answer is no, the triangle is not to the left of the red square.	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+858	17	95	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the left of the red square?"	no	"""reasoning: <reasoning>"""	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+859	17	95	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle below the red square?"	yes	"""reasoning: <reasoning>"""	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+860	17	95	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle above the red square?"	no	"""reasoning: <reasoning>"""	none	no	True			Answer: no	0.25	0.5	False	False	False	False	0

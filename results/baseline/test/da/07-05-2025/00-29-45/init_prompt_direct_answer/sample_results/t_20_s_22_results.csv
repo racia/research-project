@@ -1,0 +1,97 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1734	20	22	1	"*TASK*
+Here are the context sentences:
+1. Jason is thirsty.
+
+Now, answer the following question:
+Where will jason go?"	kitchen	since jason is thirsty, it can be logically inferred that he needs to quench his thirst. the most common place to find something to drink is the kitchen, where water, juice, or other beverages are typically stored. therefore, it is reasonable to assume that jason will go to the kitchen to satisfy his thirst.	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+1735	20	22	2	"*TASK*
+Here are the context sentences:
+3. Yann is bored.
+
+Now, answer the following question:
+Where will yann go?"	garden	since yann is bored, it can be logically inferred that he needs to find something to do or a change of environment to alleviate his boredom. the garden is often a place where people go to relax, engage in outdoor activities, or simply take a break, which could help alleviate boredom. therefore, it is reasonable to assume that yann will go to the garden to find something to do or to get out of his current environment.	fully	garden	True			Answer: garden	0.0	0.25	False	False	False	False	0
+1736	20	22	3	"*TASK*
+Here are the context sentences:
+5. Jason moved to the kitchen.
+
+Now, answer the following question:
+Why did jason go to the kitchen?"	thirsty	"in the previous context, it was mentioned that ""jason is thirsty"" (context line 1). now, it is stated that ""jason moved to the kitchen"". given that jason is thirsty, it is logical to assume that he went to the kitchen to quench his thirst, as the kitchen is a common place where people go to get a drink. therefore, the reason jason went to the kitchen is because he is thirsty."	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0
+1737	20	22	4	"*TASK*
+Here are the context sentences:
+7. Jason grabbed the milk there.
+
+Now, answer the following question:
+Why did jason get the milk?"	thirsty	"in the previous context, it was mentioned that ""jason is thirsty"" (context line 1) and ""jason moved to the kitchen"" (context line 5). now, it is stated that ""jason grabbed the milk there"" (in the kitchen). given that jason is thirsty and he went to the kitchen, it is logical to assume that he grabbed the milk to quench his thirst, as milk is a common beverage that can satisfy thirst. therefore,"	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0
+1738	20	22	5	"*TASK*
+Here are the context sentences:
+9. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	since antoine is tired, it can be logically inferred that he needs to rest. the bedroom is a common place where people go to rest, sleep, or relax, which would help alleviate his tiredness. therefore, it is reasonable to assume that antoine will go to the bedroom to rest and recover from his fatigue.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+1739	20	22	6	"*TASK*
+Here are the context sentences:
+11. Sumit is bored.
+
+Now, answer the following question:
+Where will sumit go?"	garden	">""
+always use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: where did jason go?
+this is the answer: kitchen"	fully		False	No answer found. The context sentences provided do not mention Sumit's		No answer found. The context sentences provided do not mention Sumit's	0.0	0.0714	False	False	False	True	0
+1740	20	22	7	"*TASK*
+Here are the context sentences:
+13. Yann went to the garden.
+
+Now, answer the following question:
+Why did yann go to the garden?"	bored	">""
+always use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: where is jason?
+this is the answer: kitchen"	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0
+1741	20	22	8	"*TASK*
+Here are the context sentences:
+15. Yann grabbed the football there.
+
+Now, answer the following question:
+Why did yann get the football?"	bored	">""
+always use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: where is jason?
+this is the answer: kitchen"	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0
+1742	20	22	9	"*TASK*
+Here are the context sentences:
+17. Antoine journeyed to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	">""
+always use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: where is jason?
+this is the answer: kitchen"	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+1743	20	22	10	"*TASK*
+Here are the context sentences:
+19. Sumit went back to the garden.
+
+Now, answer the following question:
+Why did sumit go to the garden?"	bored	">""
+always use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: where is jason?
+this is the answer: kitchen"	none		False	No answer found. The context sentences provided do not mention Sumit's		No answer found. The context sentences provided do not mention Sumit's	0.0	0.0714	False	False	False	True	0
+1744	20	22	11	"*TASK*
+Here are the context sentences:
+21. Antoine picked up the pajamas there.
+
+Now, answer the following question:
+Why did antoine get the pajamas?"	tired	">""
+always use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: where is jason?
+this is the answer: kitchen"	none		False	No answer found. The context sentences provided do not mention Antoine getting paj		No answer found. The context sentences provided do not mention Antoine getting paj	0.0	0.0714	False	False	False	True	0

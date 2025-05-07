@@ -1,0 +1,11 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1445	19	41	1	"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the office.
+2. The bedroom is south of the bathroom.
+3. The hallway is east of the kitchen.
+4. The hallway is north of the bathroom.
+5. The bathroom is east of the garden.
+
+Now, answer the following question:
+How do you go from the bathroom to the kitchen?"	north west	"from sentence 4, we know the hallway is north of the bathroom. from sentence 3, we know the hallway is east of the kitchen. therefore, if we go north from the bathroom, we will reach the hallway, and then if we go west from the hallway, we will reach the kitchen. hence, to go from the bathroom to the kitchen, we need to go north and then west, which is represented as ""north west""."	fully	east, then south	False			Answer: east, then south	0.4286	0.2857	False	False	False	False	0

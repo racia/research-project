@@ -1,0 +1,13 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2011	19	104	1	"*TASK*
+Here are the context sentences:
+1. The kitchen is west of the bathroom.
+2. The bathroom is south of the garden.
+3. The hallway is south of the kitchen.
+4. The office is north of the kitchen.
+5. The bathroom is north of the bedroom.
+
+Now, answer the following question:
+How do you go from the kitchen to the garden?"	east north	to go from the kitchen to the garden, we need to find the direction from the kitchen to the bathroom (since the garden is south of the bathroom) and then from the bathroom to the garden.	fully	east, south	False	Since the kitchen is west of the bathroom, and the bathroom is south of the garden, we can infer that the kitchen is not directly adjacent to the garden. However, we can move east from the kitchen to reach the bathroom, and then south from the bathroom to reach the garden.		"Reasoning: Since the kitchen is west of the bathroom, and the bathroom is south of the garden, we can infer that the kitchen is not directly adjacent to the garden. However, we can move east from the kitchen to reach the bathroom, and then south from the bathroom to reach the garden.
+
+Answer: east, south"	0.1364	0.0303	False	False	False	False	0

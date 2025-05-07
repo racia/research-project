@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1390	18	48	1	"*TASK*
+Here are the context sentences:
+1. The chest is bigger than the suitcase.
+2. The container is bigger than the suitcase.
+3. The chest is bigger than the suitcase.
+4. The box of chocolates fits inside the chest.
+5. The container is bigger than the chest.
+
+Now, answer the following question:
+Does the suitcase fit in the container?"	yes	from sentence 1, we know the chest is bigger than the suitcase. from sentence 5, we know the container is bigger than the chest. therefore, we can logically conclude that the container is also bigger than the suitcase (since the chest is bigger than the suitcase and the container is bigger than the chest). this means the suitcase can fit inside the container, so the answer is yes.	fully	yes	True	Since the container is bigger than the suitcase (sentence 2), and the chest is bigger than the suitcase (sentence 3), it is logical to conclude that the container is also bigger than the chest. This means that the container has enough space to accommodate the chest, which in turn has enough space to accommodate the box of chocolates (sentence 4). Therefore, it is possible to fit the suitcase inside the container.		"Reasoning: Since the container is bigger than the suitcase (sentence 2), and the chest is bigger than the suitcase (sentence 3), it is logical to conclude that the container is also bigger than the chest. This means that the container has enough space to accommodate the chest, which in turn has enough space to accommodate the box of chocolates (sentence 4). Therefore, it is possible to fit the suitcase inside the container.
+
+Answer: yes"	0.2198	0.022	False	False	False	False	0
+1391	18	48	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the suitcase?"	yes	from sentence 2, we know the container is bigger than the suitcase. this directly answers the question, so the answer is yes.	none	yes	True	According to sentence 2, the container is indeed bigger than the suitcase.		"Reasoning: According to sentence 2, the container is indeed bigger than the suitcase.
+
+Answer: yes"	0.0909	0.0909	False	False	False	False	0
+1392	18	48	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the suitcase fit in the container?"	yes	we already know from a previous question that the container is bigger than the suitcase (sentence 2). since the container is bigger, it can hold the suitcase, so the suitcase fits in the container. therefore, the answer is yes.	none	yes	True	Since the container is bigger than the suitcase (sentence 2), it is logical to conclude that the suitcase can fit inside the container.		"Reasoning: Since the container is bigger than the suitcase (sentence 2), it is logical to conclude that the suitcase can fit inside the container.
+
+Answer: yes"	0.1471	0.0588	False	False	False	False	0
+1393	18	48	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the suitcase fit in the container?"	yes	we know that the container is bigger than the chest (sentence 5), and the chest is bigger than the suitcase (sentence 1). therefore, we can logically conclude that the container is also bigger than the suitcase. since the container is bigger, it can hold the suitcase, so the suitcase fits in the container. therefore, the answer is yes.	none	yes	True	The same reasoning as before applies. Since the container is bigger than the suitcase (sentence 2), it is logical to conclude that the suitcase can fit inside the container.		"Reasoning: The same reasoning as before applies. Since the container is bigger than the suitcase (sentence 2), it is logical to conclude that the suitcase can fit inside the container.
+
+Answer: yes"	0.0976	0.0488	False	False	False	False	0
+1394	18	48	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the suitcase fit in the container?"	yes	we know that the container is bigger than the chest (sentence 5), and the chest is bigger than the suitcase (sentence 1). additionally, we know that the suitcase is smaller than the chest (sentence 3). since the box of chocolates fits inside the chest (sentence 4), and the chest fits inside the container, we can logically conclude that the suitcase, being smaller than the chest, will also fit inside the container. therefore, the answer is yes.	none	yes	True	The same reasoning as before applies. Since the container is bigger than the suitcase (sentence 2), it is logical to conclude that the suitcase can fit inside the container.		"Reasoning: The same reasoning as before applies. Since the container is bigger than the suitcase (sentence 2), it is logical to conclude that the suitcase can fit inside the container.
+
+Answer: yes"	0.0244	0.0488	False	False	False	False	0

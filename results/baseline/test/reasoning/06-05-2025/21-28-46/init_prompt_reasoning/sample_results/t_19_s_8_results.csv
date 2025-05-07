@@ -1,0 +1,13 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1915	19	8	1	"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the bedroom.
+2. The garden is north of the office.
+3. The bathroom is east of the kitchen.
+4. The bathroom is west of the garden.
+5. The bathroom is north of the hallway.
+
+Now, answer the following question:
+How do you go from the garden to the bedroom?"	west north	from context sentence 4, we know that the bathroom is west of the garden. this means that to go from the garden to the bathroom, we need to move east.	fully	east	False	Since the bathroom is south of the bedroom (sentence 1), and the bathroom is west of the garden (sentence 4), we can conclude that the garden is east of the bedroom. To go from the garden to the bedroom, we need to move east.		"Reasoning: Since the bathroom is south of the bedroom (sentence 1), and the bathroom is west of the garden (sentence 4), we can conclude that the garden is east of the bedroom. To go from the garden to the bedroom, we need to move east.
+
+Answer: east"	0.1	0.0333	False	False	False	False	0

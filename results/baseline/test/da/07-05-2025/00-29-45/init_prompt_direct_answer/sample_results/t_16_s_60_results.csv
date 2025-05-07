@@ -1,0 +1,15 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+60	16	60	1	"*TASK*
+Here are the context sentences:
+1. Brian is a frog.
+2. Brian is white.
+3. Lily is a lion.
+4. Julius is a lion.
+5. Julius is white.
+6. Greg is a swan.
+7. Greg is white.
+8. Lily is white.
+9. Bernhard is a frog.
+
+Now, answer the following question:
+What color is Bernhard?"	white	since bernhard is a frog (sentence 9), and we know that brian is also a frog (sentence 1) and is white (sentence 2), it is logical to assume that bernhard, being a frog as well, shares the same characteristic of being white. this inference is based on the pattern observed in the context sentences, where all the frogs mentioned (brian and bernhard) are white.	fully	white	True			Answer: white	0.0	0.75	False	False	False	False	0

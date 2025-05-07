@@ -1,0 +1,89 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2629	20	54	1	"*TASK*
+Here are the context sentences:
+1. Sumit is thirsty.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	since sumit is thirsty, it can be logically inferred that he needs to quench his thirst. the most common place to find a drink to quench thirst is the kitchen, where water, juice, or other beverages are typically stored. therefore, it is reasonable to assume that sumit will go to the kitchen to get a drink and satisfy his thirst.	fully	kitchen	True	Since Sumit is thirsty, he will likely go to a place where he can quench his thirst.		"Reasoning: Since Sumit is thirsty, he will likely go to a place where he can quench his thirst.
+
+Answer: kitchen"	0.0	0.0357	False	False	False	False	0
+2630	20	54	2	"*TASK*
+Here are the context sentences:
+3. Yann is thirsty.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	since yann is thirsty, it can be logically inferred that he needs to quench his thirst. based on the previous context (although it was about sumit, not yann), we can make a logical assumption that the kitchen is a common place where people go to get a drink to quench their thirst. therefore, it is reasonable to assume that yann will go to the kitchen to get a drink and satisfy his thirst.	fully	kitchen	True	Since Yann is thirsty, he will likely go to a place where he can quench his thirst.		"Reasoning: Since Yann is thirsty, he will likely go to a place where he can quench his thirst.
+
+Answer: kitchen"	0.0714	0.0357	False	False	False	False	0
+2631	20	54	3	"*TASK*
+Here are the context sentences:
+5. Antoine is hungry.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	since antoine is hungry, it can be logically inferred that he needs to eat. the kitchen is a common place where people go to prepare and consume food, which is typically associated with satisfying hunger. therefore, it is reasonable to assume that antoine will go to the kitchen to find food and satisfy his hunger.	fully	not mentioned (since there is no information about Antoine going to a specific location)	False	Since Antoine is hungry, he will likely go to a place where he can eat.		"Reasoning: Since Antoine is hungry, he will likely go to a place where he can eat.
+
+Answer: not mentioned (since there is no information about Antoine going to a specific location)"	0.0	0.0256	True	False	False	True	0
+2632	20	54	4	"*TASK*
+Here are the context sentences:
+7. Sumit travelled to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	thirsty	previously, it was mentioned that sumit is thirsty (context line 1). it can be logically inferred that sumit went to the kitchen to quench his thirst, as the kitchen is a common place where people go to get a drink. therefore, the reason sumit went to the kitchen is because he is thirsty.	none	thirsty	True	Since Sumit travelled to the kitchen, it is likely that he went there to quench his thirst, as previously mentioned.		"Reasoning: Since Sumit travelled to the kitchen, it is likely that he went there to quench his thirst, as previously mentioned.
+
+Answer: thirsty"	0.0	0.0312	False	False	False	True	0
+2633	20	54	5	"*TASK*
+Here are the context sentences:
+9. Antoine journeyed to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	hungry	previously, it was mentioned that antoine is hungry (context line 5). it can be logically inferred that antoine went to the kitchen to find food to satisfy his hunger, as the kitchen is a common place where people go to prepare and consume food. therefore, the reason antoine went to the kitchen is because he is hungry.	none	hungry	True	Since Antoine journeyed to the kitchen, it is likely that he went there to satisfy his hunger, as previously mentioned.		"Reasoning: Since Antoine journeyed to the kitchen, it is likely that he went there to satisfy his hunger, as previously mentioned.
+
+Answer: hungry"	0.0323	0.0323	False	False	False	True	0
+2634	20	54	6	"*TASK*
+Here are the context sentences:
+11. Yann journeyed to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	thirsty	: thirsty	none	thirsty	True	Since Yann journeyed to the kitchen, it is likely that he went there to quench his thirst, as previously mentioned.		"Reasoning: Since Yann journeyed to the kitchen, it is likely that he went there to quench his thirst, as previously mentioned.
+
+Answer: thirsty"	0.0606	0.0303	False	False	False	True	0
+2635	20	54	7	"*TASK*
+Here are the context sentences:
+13. Sumit got the milk there.
+
+Now, answer the following question:
+Why did sumit get the milk?"	thirsty	: thirsty	none	thirsty	True	Since Sumit got the milk in the kitchen, it is likely that he got it to quench his thirst, as previously mentioned.		"Reasoning: Since Sumit got the milk in the kitchen, it is likely that he got it to quench his thirst, as previously mentioned.
+
+Answer: thirsty"	0.0	0.0294	False	False	False	True	0
+2636	20	54	8	"*TASK*
+Here are the context sentences:
+15. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	: thirsty	fully	bedroom	True	Since Jason is tired, he will likely go to a place where he can rest.		"Reasoning: Since Jason is tired, he will likely go to a place where he can rest.
+
+Answer: bedroom"	0.0	0.0417	False	False	False	False	0
+2637	20	54	9	"*TASK*
+Here are the context sentences:
+17. Jason journeyed to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	: thirsty	none	tired	True	Since Jason journeyed to the bedroom, it is likely that he went there to rest, as previously mentioned.		"Reasoning: Since Jason journeyed to the bedroom, it is likely that he went there to rest, as previously mentioned.
+
+Answer: tired"	0.0	0.0345	False	False	False	True	0
+2638	20	54	10	"*TASK*
+Here are the context sentences:
+19. Jason took the pajamas there.
+
+Now, answer the following question:
+Why did jason get the pajamas?"	tired	: thirsty	none	tired	True	Since Jason took the pajamas in the bedroom, it is likely that he got them to wear while resting, as previously mentioned.		"Reasoning: Since Jason took the pajamas in the bedroom, it is likely that he got them to wear while resting, as previously mentioned.
+
+Answer: tired"	0.0	0.0303	False	False	False	True	0
+2639	20	54	11	"*TASK*
+Here are the context sentences:
+21. Antoine picked up the apple there.
+
+Now, answer the following question:
+Why did antoine get the apple?"	hungry	: thirsty	none	not mentioned	False	There is no information about Antoine getting an apple, so it's not possible to determine why he got it.		"Reasoning: There is no information about Antoine getting an apple, so it's not possible to determine why he got it.
+
+Answer: not mentioned"	0.0333	0.0333	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJason	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġwent	Ġthere	Ġfor	Ġa	Ġspecific	Ġreason	.	ĠSince	ĠJason	Ġis	Ġhungry	,	Ġthe	Ġmost	Ġlogical	Ġreason	Ġfor	Ġhim	Ġgoing	Ġto	Ġthe	Ġkitchen	Ġis	Ġto	Ġget	Ġfood	.ĊĊ	Answer	:	Ġhungry	<|eot_id|>

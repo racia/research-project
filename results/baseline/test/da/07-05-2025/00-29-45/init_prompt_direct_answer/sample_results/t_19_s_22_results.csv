@@ -1,0 +1,11 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1426	19	22	1	"*TASK*
+Here are the context sentences:
+1. The bedroom is south of the bathroom.
+2. The hallway is south of the kitchen.
+3. The garden is west of the kitchen.
+4. The bathroom is east of the office.
+5. The bathroom is west of the garden.
+
+Now, answer the following question:
+How do you go from the bathroom to the kitchen?"	east east	from sentence 4, we know the bathroom is east of the office. from sentence 5, we know the bathroom is west of the garden. since the garden is west of the kitchen (sentence 3), the bathroom must be east of the kitchen. therefore, to go from the bathroom to the kitchen, we need to move east. since the hallway is south of the kitchen (sentence 2), we need to move east again to reach the kitchen from the hallway.	fully	east, then south	False			Answer: east, then south	0.1429	0.2857	False	False	False	False	0

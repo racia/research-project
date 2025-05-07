@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJason	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġhad	Ġa	Ġreason	Ġto	Ġgo	Ġthere	.	ĠThe	Ġcontext	Ġsentence	Ġdoes	Ġnot	Ġspecify	Ġwhy	ĠJason	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġbased	Ġon	Ġthe	Ġprevious	Ġtask	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJason	Ġwent	Ġto	Ġthe	Ġkitchen	Ġbecause	Ġhe	Ġwas	Ġthirsty	.ĊĊ	Answer	:	Ġthirsty	<|eot_id|>

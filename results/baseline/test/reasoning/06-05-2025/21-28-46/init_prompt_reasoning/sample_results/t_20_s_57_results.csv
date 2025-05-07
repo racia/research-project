@@ -1,0 +1,111 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2662	20	57	1	"*TASK*
+Here are the context sentences:
+1. Sumit is hungry.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	since sumit is hungry, it is logical to assume that he needs to eat to satisfy his hunger. the most common place where people go to eat is the kitchen, where food is typically prepared and consumed. therefore, it is reasonable to conclude that sumit will go to the kitchen to address his hunger.	fully	kitchen	True	Since Sumit is hungry, he will likely go to a place where he can satisfy his hunger.		"Reasoning: Since Sumit is hungry, he will likely go to a place where he can satisfy his hunger.
+
+Answer: kitchen"	0.0	0.037	False	False	False	False	0
+2663	20	57	2	"*TASK*
+Here are the context sentences:
+3. Antoine is thirsty.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	since antoine is thirsty, it is logical to assume that he needs to quench his thirst by drinking something. in most households, beverages are typically found in the kitchen, where refrigerators and sinks are usually located. therefore, it is reasonable to conclude that antoine will go to the kitchen to get a drink and satisfy his thirst.	fully	kitchen	True	Since Antoine is thirsty, he will likely go to a place where he can quench his thirst.		"Reasoning: Since Antoine is thirsty, he will likely go to a place where he can quench his thirst.
+
+Answer: kitchen"	0.037	0.037	False	False	False	False	0
+2664	20	57	3	"*TASK*
+Here are the context sentences:
+5. Sumit went back to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	hungry	previously, it was established that sumit is hungry (context line 1). now, sumit went back to the kitchen (context line 5). it is logical to assume that sumit's hunger is the reason for his return to the kitchen, as kitchens are typically associated with food and eating. therefore, sumit's hunger is the reason why he went to the kitchen.	none	hungry	True	Since Sumit went back to the kitchen, it is likely that he went there to satisfy his hunger, which was mentioned earlier.		"Reasoning: Since Sumit went back to the kitchen, it is likely that he went there to satisfy his hunger, which was mentioned earlier.
+
+Answer: hungry"	0.0	0.0303	False	False	False	True	0
+2665	20	57	4	"*TASK*
+Here are the context sentences:
+7. Antoine moved to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	thirsty	previously, it was established that antoine is thirsty (context line 3). now, antoine moved to the kitchen (context line 7). it is logical to assume that antoine's thirst is the reason for his movement to the kitchen, as kitchens are typically associated with access to drinks and water. therefore, antoine's thirst is the reason why he went to the kitchen.	none	thirsty	True	Since Antoine moved to the kitchen, it is likely that he went there to quench his thirst, which was mentioned earlier.		"Reasoning: Since Antoine moved to the kitchen, it is likely that he went there to quench his thirst, which was mentioned earlier.
+
+Answer: thirsty"	0.0	0.0312	False	False	False	True	0
+2666	20	57	5	"*TASK*
+Here are the context sentences:
+9. Antoine picked up the milk there.
+
+Now, answer the following question:
+Why did antoine get the milk?"	thirsty	previously, it was established that antoine is thirsty (context line 3). antoine moved to the kitchen (context line 7) and now picked up the milk there (context line 9). it is logical to assume that antoine's thirst is the reason for getting the milk, as milk is a common beverage that can quench thirst. therefore, antoine's thirst is the reason why he got the milk.	none	thirsty	True	Since Antoine picked up the milk, it is likely that he got it to quench his thirst, which was mentioned earlier.		"Reasoning: Since Antoine picked up the milk, it is likely that he got it to quench his thirst, which was mentioned earlier.
+
+Answer: thirsty"	0.0312	0.0312	False	False	False	True	0
+2667	20	57	6	"*TASK*
+Here are the context sentences:
+11. Sumit picked up the apple there.
+
+Now, answer the following question:
+Why did sumit get the apple?"	hungry	" there.
+this is the question: why did sumit get the apple?
+this is the answer: hungry"	none	not mentioned	False	There is no previous mention of Sumit being hungry or thirsty, so it is not possible to infer a reason for him getting the apple.		"Reasoning: There is no previous mention of Sumit being hungry or thirsty, so it is not possible to infer a reason for him getting the apple.
+
+Answer: not mentioned"	0.0	0.0278	False	False	False	True	0
+2668	20	57	7	"*TASK*
+Here are the context sentences:
+13. Yann is bored.
+
+Now, answer the following question:
+Where will yann go?"	garden	" there.
+this is the question: why did sumit get the apple?
+this is the answer: hungry"	fully	garden	True	Since Yann is bored, he will likely go to a place where he can find entertainment or something to do.		"Reasoning: Since Yann is bored, he will likely go to a place where he can find entertainment or something to do.
+
+Answer: garden"	0.0	0.0333	False	False	False	False	0
+2669	20	57	8	"*TASK*
+Here are the context sentences:
+15. Yann moved to the garden.
+
+Now, answer the following question:
+Why did yann go to the garden?"	bored	" there.
+this is the question: why did sumit get the apple?
+this is the answer: hungry"	none	bored	True	Since Yann moved to the garden, it is likely that he went there to find something to do or alleviate his boredom, which was mentioned earlier.		"Reasoning: Since Yann moved to the garden, it is likely that he went there to find something to do or alleviate his boredom, which was mentioned earlier.
+
+Answer: bored"	0.027	0.027	False	True	False	True	0
+2670	20	57	9	"*TASK*
+Here are the context sentences:
+17. Yann got the football there.
+
+Now, answer the following question:
+Why did yann get the football?"	bored	" there.
+this is the question: why did sumit get the apple?
+this is the answer: hungry"	none	bored	True	Since Yann got the football, it is likely that he got it to alleviate his boredom, which was mentioned earlier.		"Reasoning: Since Yann got the football, it is likely that he got it to alleviate his boredom, which was mentioned earlier.
+
+Answer: bored"	0.0323	0.0323	False	True	False	True	0
+2671	20	57	10	"*TASK*
+Here are the context sentences:
+19. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	" there.
+this is the question: why did sumit get the apple?
+this is the answer: hungry"	fully	bedroom	True	Since Jason is tired, he will likely go to a place where he can rest or sleep.		"Reasoning: Since Jason is tired, he will likely go to a place where he can rest or sleep.
+
+Answer: bedroom"	0.0	0.0385	False	False	False	False	0
+2672	20	57	11	"*TASK*
+Here are the context sentences:
+21. Jason journeyed to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	" there.
+this is the question: why did sumit get the apple?
+this is the answer: hungry"	none	tired	True	Since Jason journeyed to the bedroom, it is likely that he went there to rest or sleep, which was mentioned earlier.		"Reasoning: Since Jason journeyed to the bedroom, it is likely that he went there to rest or sleep, which was mentioned earlier.
+
+Answer: tired"	0.0	0.0312	False	False	False	True	0
+2673	20	57	12	"*TASK*
+Here are the context sentences:
+23. Jason grabbed the pajamas there.
+
+Now, answer the following question:
+Why did jason get the pajamas?"	tired	" there.
+this is the question: why did sumit get the apple?
+this is the answer: hungry"	none	tired	True	Since Jason grabbed the pajamas, it is likely that he got them to wear to bed, which is a common activity when one is tired.		"Reasoning: Since Jason grabbed the pajamas, it is likely that he got them to wear to bed, which is a common activity when one is tired.
+
+Answer: tired"	0.0	0.0278	False	False	False	False	0

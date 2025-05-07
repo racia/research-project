@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠY	ann	Ġis	Ġtired	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġneeds	Ġto	Ġrest	Ġor	Ġsleep	.	ĠSince	Ġthe	Ġcontext	Ġdoesn	't	Ġspecify	Ġa	Ġspecific	Ġlocation	,	ĠI	'll	Ġassume	Ġhe	'll	Ġgo	Ġto	Ġa	Ġplace	Ġwhere	Ġhe	Ġcan	Ġrest	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

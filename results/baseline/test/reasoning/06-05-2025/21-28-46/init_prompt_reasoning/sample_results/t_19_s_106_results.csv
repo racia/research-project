@@ -1,0 +1,11 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2013	19	106	1	"*TASK*
+Here are the context sentences:
+1. The kitchen is east of the hallway.
+2. The garden is north of the bathroom.
+3. The garden is south of the office.
+4. The kitchen is south of the bedroom.
+5. The bedroom is east of the garden.
+
+Now, answer the following question:
+How do you go from the kitchen to the garden?"	north west	from sentence 1, we know the kitchen is east of the hallway. from sentence 4, we know the kitchen is south of the bedroom. from sentence 5, we know the bedroom is east of the garden. therefore, the garden is northwest of the kitchen. to go from the kitchen to the garden, we need to move northwest.	fully		False	Since the kitchen is east of the hallway (sentence 1), and the garden is south of the office (sentence 3), we can infer that the kitchen is also east of the office. Additionally, the garden is north of the bathroom (sentence 2), and the kitchen is south of the bedroom (sentence 4), which means the bedroom is north of the kitchen. Finally, the bedroom is east of the garden (sentence 5), which implies that the kitchen is		Reasoning: Since the kitchen is east of the hallway (sentence 1), and the garden is south of the office (sentence 3), we can infer that the kitchen is also east of the office. Additionally, the garden is north of the bathroom (sentence 2), and the kitchen is south of the bedroom (sentence 4), which means the bedroom is north of the kitchen. Finally, the bedroom is east of the garden (sentence 5), which implies that the kitchen is	0.1919	0.0202	False	False	False	False	0

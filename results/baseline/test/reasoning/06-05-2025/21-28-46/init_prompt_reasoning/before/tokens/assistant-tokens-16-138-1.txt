@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠBrian	Ġis	Ġa	Ġrh	ino	Ġ(	from	Ġsentence	Ġ	9	),	Ġand	ĠGreg	Ġis	Ġa	Ġrh	ino	Ġ(	from	Ġsentence	Ġ	1	),	Ġwe	Ġcan	Ġinfer	Ġthat	ĠBrian	's	Ġcolor	Ġis	Ġlikely	Ġto	Ġbe	Ġthe	Ġsame	Ġas	ĠGreg	's	.	ĠGreg	Ġis	Ġyellow	Ġ(	from	Ġsentence	Ġ	5	),	Ġso	ĠBrian	's	Ġcolor	Ġis	Ġalso	Ġyellow	.ĊĊ	Answer	:	Ġyellow	<|eot_id|>

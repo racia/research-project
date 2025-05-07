@@ -1,0 +1,35 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1335	18	87	1	"*TASK*
+Here are the context sentences:
+1. The chest is bigger than the box.
+2. The container is bigger than the box of chocolates.
+3. The suitcase fits inside the chest.
+4. The box of chocolates fits inside the box.
+5. The box of chocolates fits inside the chest.
+
+Now, answer the following question:
+Is the box of chocolates bigger than the chest?"	no	from context sentence 5, we know that the box of chocolates fits inside the chest. this implies that the chest is bigger than the box of chocolates. if the box of chocolates were bigger than the chest, it would not fit inside the chest. therefore, the answer is no, the box of chocolates is not bigger than the chest.	fully	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1336	18	87	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box of chocolates bigger than the chest?"	no	"there is no context provided, so we cannot make a direct comparison between the box of chocolates and the chest. however, since an answer is provided as ""no"", we can infer that the context will be provided in subsequent parts of the conversation, and the answer ""no"" will be justified based on the context."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1337	18	87	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chest bigger than the box of chocolates?"	yes	from the previous context (1. the chest is bigger than the box. 2. the container is bigger than the box of chocolates. 3. the suitcase fits inside the chest. 4. the box of chocolates fits inside the box. 5. the box of chocolates fits inside the chest.), we know that the box of chocolates fits inside the chest (sentence 5). this implies that the chest is bigger than the box of chocolates, because a smaller object cannot contain	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+1338	18	87	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box of chocolates bigger than the chest?"	no	"we already know that the answer to ""is the chest bigger than the box of chocolates?"" is ""yes"". this implies that the chest is bigger than the box of chocolates. therefore, the box of chocolates cannot be bigger than the chest, so the answer is ""no""."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1339	18	87	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chest bigger than the box of chocolates?"	yes	"we know that the box of chocolates fits inside the chest (from previous context sentence 5). this implies that the chest is bigger than the box of chocolates, because a smaller object cannot contain a larger one. therefore, the answer is ""yes"", the chest is bigger than the box of chocolates."	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0

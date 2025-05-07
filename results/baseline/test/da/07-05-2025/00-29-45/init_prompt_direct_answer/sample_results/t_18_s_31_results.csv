@@ -1,0 +1,35 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1055	18	31	1	"*TASK*
+Here are the context sentences:
+1. The chest is bigger than the suitcase.
+2. The box is bigger than the container.
+3. The box of chocolates fits inside the chest.
+4. The chocolate fits inside the container.
+5. The box of chocolates is bigger than the chocolate.
+
+Now, answer the following question:
+Is the box bigger than the chocolate?"	yes	"from sentence 5, we know that ""the box of chocolates is bigger than the chocolate."" this directly states that the box (of chocolates) is bigger than the chocolate, which answers the question affirmatively."	fully	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+1056	18	31	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chest fit in the chocolate?"	no	"from the context sentences, we know that ""the box of chocolates fits inside the chest"" (sentence 3) and ""the box of chocolates is bigger than the chocolate"" (sentence 5). this implies that the chest is bigger than the box of chocolates, and the box of chocolates is bigger than the chocolate. therefore, it can be logically concluded that the chest is bigger than the chocolate, which means the chest cannot fit inside the chocolate."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1057	18	31	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the chest?"	yes	"from the context sentences, we know that ""the box of chocolates fits inside the chest"" (sentence 3) and ""the box of chocolates is bigger than the chocolate"" (sentence 5). since the box of chocolates fits inside the chest and the chocolate is smaller than the box of chocolates, it can be logically concluded that the chocolate also fits inside the chest."	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+1058	18	31	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the box?"	yes	"from the context sentences, we know that ""the chocolate fits inside the container"" (sentence 4) and ""the box of chocolates is bigger than the chocolate"" (sentence 5). since the box of chocolates is bigger than the chocolate, it can be logically concluded that the chocolate fits inside the box (of chocolates)."	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+1059	18	31	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the box?"	no	"from the context sentences, we know that ""the box of chocolates is bigger than the chocolate"" (sentence 5). this directly states that the box (of chocolates) is bigger than the chocolate, which means the chocolate is not bigger than the box."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0

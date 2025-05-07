@@ -1,0 +1,81 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2504	20	42	1	"*TASK*
+Here are the context sentences:
+1. Yann is thirsty.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	since yann is thirsty, it can be logically inferred that he needs to quench his thirst. the most common place to find something to drink is the kitchen, where water, juice, or other beverages are typically stored. therefore, it is reasonable to assume that yann will go to the kitchen to satisfy his thirst.	fully	kitchen	True	Since Yann is thirsty, he will likely go somewhere to quench his thirst.		"Reasoning: Since Yann is thirsty, he will likely go somewhere to quench his thirst.
+
+Answer: kitchen"	0.0	0.0417	False	False	False	False	0
+2505	20	42	2	"*TASK*
+Here are the context sentences:
+3. Yann journeyed to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	thirsty	"in the previous context, it was established that ""yann is thirsty"" (context line 1). this thirst is the motivation for yann's action of journeying to the kitchen (context line 3). therefore, it can be logically concluded that yann went to the kitchen because he was thirsty."	none	thirsty	True	Since Yann journeyed to the kitchen, it is likely that he went there to satisfy his thirst, which was mentioned earlier.		"Reasoning: Since Yann journeyed to the kitchen, it is likely that he went there to satisfy his thirst, which was mentioned earlier.
+
+Answer: thirsty"	0.0303	0.0303	False	False	False	True	0
+2506	20	42	3	"*TASK*
+Here are the context sentences:
+5. Sumit is thirsty.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	since sumit is thirsty (context line 5), it can be logically inferred that he needs to quench his thirst. in a previous context, it was established that yann, who was also thirsty, went to the kitchen (context lines 1 and 3). it is reasonable to assume that sumit, who is also thirsty, will follow a similar course of action and go to the kitchen to satisfy his thirst.	fully	kitchen	True	Since Sumit is thirsty, he will likely go somewhere to quench his thirst.		"Reasoning: Since Sumit is thirsty, he will likely go somewhere to quench his thirst.
+
+Answer: kitchen"	0.0	0.0417	False	False	False	False	0
+2507	20	42	4	"*TASK*
+Here are the context sentences:
+7. Yann picked up the milk there.
+
+Now, answer the following question:
+Why did yann get the milk?"	thirsty	in a previous context, it was established that yann was thirsty (context line 1) and went to the kitchen (context line 3). now, yann picked up the milk in the kitchen (context line 7). it can be logically inferred that yann, who was thirsty, went to the kitchen to quench his thirst and picked up the milk as a means to satisfy his thirst.	none	thirsty	True	Since Yann picked up the milk, it is likely that he got it because he was thirsty, which was mentioned earlier.		"Reasoning: Since Yann picked up the milk, it is likely that he got it because he was thirsty, which was mentioned earlier.
+
+Answer: thirsty"	0.0	0.0312	False	False	False	True	0
+2508	20	42	5	"*TASK*
+Here are the context sentences:
+9. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	since antoine is tired (context line 9), it can be logically inferred that he needs to rest. a common place to rest is the bedroom, where people typically sleep or relax. therefore, it is reasonable to assume that antoine, who is tired, will go to the bedroom to rest.	fully	bedroom	True	Since Antoine is tired, he will likely go somewhere to rest or sleep.		"Reasoning: Since Antoine is tired, he will likely go somewhere to rest or sleep.
+
+Answer: bedroom"	0.0	0.0455	False	False	False	False	0
+2509	20	42	6	"*TASK*
+Here are the context sentences:
+11. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	since jason is tired (context line 11), it can be logically inferred that he needs to rest. in a previous context, it was established that antoine, who was also tired, went to the bedroom (context lines 9 and 10). it is reasonable to assume that jason, who is also tired, will follow a similar course of action and go to the bedroom to rest.	fully	bedroom	True	Since Jason is tired, he will likely go somewhere to rest or sleep.		"Reasoning: Since Jason is tired, he will likely go somewhere to rest or sleep.
+
+Answer: bedroom"	0.0	0.0455	False	False	False	False	0
+2510	20	42	7	"*TASK*
+Here are the context sentences:
+13. Sumit went back to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	thirsty	since jason is tired (context line 11), it can be logically inferred that he needs to rest. in a previous context, it was established that antoine, who was also tired, went to the bedroom (context lines 9 and 10). it is reasonable to assume that jason, who is also tired, will follow a similar course of action and go to the bedroom to rest, as it is a common place to rest and sleep.	none	thirsty	True	Since Sumit went back to the kitchen, it is likely that he went there to get something, possibly to quench his thirst, which was mentioned earlier.		"Reasoning: Since Sumit went back to the kitchen, it is likely that he went there to get something, possibly to quench his thirst, which was mentioned earlier.
+
+Answer: thirsty"	0.0256	0.0256	False	False	False	True	0
+2511	20	42	8	"*TASK*
+Here are the context sentences:
+15. Antoine went back to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	since jason is tired (context line 11), it can be logically inferred that he needs to rest. in a previous context, it was established that antoine, who was also tired, went to the bedroom (context lines 9 and 10). it is reasonable to assume that jason, who is also tired, will follow a similar course of action and go to the bedroom to rest.	none	tired	True	Since Antoine went back to the bedroom, it is likely that he went there to rest or sleep, which was mentioned earlier.		"Reasoning: Since Antoine went back to the bedroom, it is likely that he went there to rest or sleep, which was mentioned earlier.
+
+Answer: tired"	0.0312	0.0312	False	False	False	True	0
+2512	20	42	9	"*TASK*
+Here are the context sentences:
+17. Antoine took the pajamas there.
+
+Now, answer the following question:
+Why did antoine get the pajamas?"	tired	since jason is tired (context line 11), it can be logically inferred that he needs to rest. in a previous context, it was established that antoine, who was also tired, went to the bedroom (context lines 9 and 10). it is reasonable to assume that jason, who is also tired, will follow a similar course of action and go to the bedroom to rest, as it is a common place to rest and sleep.	none	tired	True	Since Antoine took the pajamas, it is likely that he got them because he was tired and wanted to sleep, which was mentioned earlier.		"Reasoning: Since Antoine took the pajamas, it is likely that he got them because he was tired and wanted to sleep, which was mentioned earlier.
+
+Answer: tired"	0.0286	0.0286	False	False	False	True	0
+2513	20	42	10	"*TASK*
+Here are the context sentences:
+19. Jason travelled to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	since jason is tired (context line 11), it can be logically inferred that he needs to rest. in a previous context, it was established that antoine, who was also tired, went to the bedroom (context lines 9 and 10). it is reasonable to assume that jason, who is also tired, will follow a similar course of action and go to the bedroom to rest.	none	tired	True	Since Jason travelled to the bedroom, it is likely that he went there to rest or sleep, which was mentioned earlier.		"Reasoning: Since Jason travelled to the bedroom, it is likely that he went there to rest or sleep, which was mentioned earlier.
+
+Answer: tired"	0.0	0.0323	False	False	False	True	0

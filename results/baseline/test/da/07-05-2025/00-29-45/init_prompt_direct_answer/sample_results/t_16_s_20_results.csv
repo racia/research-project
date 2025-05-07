@@ -1,0 +1,15 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+20	16	20	1	"*TASK*
+Here are the context sentences:
+1. Julius is a swan.
+2. Brian is a frog.
+3. Bernhard is a lion.
+4. Bernhard is white.
+5. Brian is gray.
+6. Julius is yellow.
+7. Lily is a lion.
+8. Lily is gray.
+9. Greg is a swan.
+
+Now, answer the following question:
+What color is Greg?"	yellow	since greg is a swan (sentence 9), and julius is also a swan (sentence 1) and is yellow (sentence 6), we can logically infer that greg, being a swan like julius, is also yellow.	fully	yellow	True			Answer: yellow	0.25	0.75	False	False	False	False	0

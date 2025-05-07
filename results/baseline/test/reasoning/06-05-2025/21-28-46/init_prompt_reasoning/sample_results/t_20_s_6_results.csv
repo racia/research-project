@@ -1,0 +1,113 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2114	20	6	1	"*TASK*
+Here are the context sentences:
+1. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	when jason is tired, it is logical to assume that he will go to a place where he can rest. in most cases, people go to their bedroom to rest or sleep when they are tired. therefore, based on the context, it is reasonable to conclude that jason will go to his bedroom.	fully	bedroom	True	Since Jason is tired, he will likely go to a place where he can rest and relax.		"Reasoning: Since Jason is tired, he will likely go to a place where he can rest and relax.
+
+Answer: bedroom"	0.0	0.0385	False	False	False	False	0
+2115	20	6	2	"*TASK*
+Here are the context sentences:
+3. Yann is thirsty.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	when yann is thirsty, it is logical to assume that he will go to a place where he can quench his thirst. in most households, the kitchen is where people typically go to get a drink, as it is where the refrigerator, sink, and other sources of water are usually located. therefore, based on the context, it is reasonable to conclude that yann will go to the kitchen.	fully	kitchen	True	Since Yann is thirsty, he will likely go to a place where he can quench his thirst.		"Reasoning: Since Yann is thirsty, he will likely go to a place where he can quench his thirst.
+
+Answer: kitchen"	0.0357	0.0357	False	False	False	False	0
+2116	20	6	3	"*TASK*
+Here are the context sentences:
+5. Sumit is hungry.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	when sumit is hungry, it is logical to assume that he will go to a place where he can find food. in most households, the kitchen is where food is typically prepared and stored, making it a likely location for sumit to go to satisfy his hunger. therefore, based on the context, it is reasonable to conclude that sumit will go to the kitchen.	fully	Not mentioned	False	There is no information provided about Sumit being hungry, so I will not make an assumption. The previous context sentences only mentioned Jason and Yann, and Sumit's context sentence mentioned him being tired, not hungry.		"Reasoning: There is no information provided about Sumit being hungry, so I will not make an assumption. The previous context sentences only mentioned Jason and Yann, and Sumit's context sentence mentioned him being tired, not hungry.
+
+Answer: Not mentioned"	0.0	0.0192	False	False	False	True	0
+2117	20	6	4	"*TASK*
+Here are the context sentences:
+7. Yann travelled to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	thirsty	"in a previous context, it was mentioned that ""yann is thirsty"" (context line 3). now, it is stated that ""yann travelled to the kitchen"". given that yann is thirsty, it is logical to assume that he went to the kitchen to quench his thirst, as the kitchen is a common place where people go to get a drink. therefore, the reason yann went to the kitchen is because he is thirsty."	none	thirsty	True	Since Yann travelled to the kitchen, it is likely that he went there to quench his thirst, as previously mentioned in context sentence 3.		"Reasoning: Since Yann travelled to the kitchen, it is likely that he went there to quench his thirst, as previously mentioned in context sentence 3.
+
+Answer: thirsty"	0.0541	0.027	False	False	False	True	0
+2118	20	6	5	"*TASK*
+Here are the context sentences:
+9. Jason went to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	"in a previous context, it was mentioned that ""jason is tired"" (context line 1). now, it is stated that ""jason went to the bedroom"". given that jason is tired, it is logical to assume that he went to the bedroom to rest or sleep, as the bedroom is a common place where people go to rest when they are tired. therefore, the reason jason went to the bedroom is because he is tired."	none	tired	True	Since Jason went to the bedroom, it is likely that he went there to rest and relax, as previously mentioned in context sentence 1.		"Reasoning: Since Jason went to the bedroom, it is likely that he went there to rest and relax, as previously mentioned in context sentence 1.
+
+Answer: tired"	0.0571	0.0286	False	False	False	True	0
+2119	20	6	6	"*TASK*
+Here are the context sentences:
+11. Sumit went to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	hungry	" use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: who is tired?
+this is the answer: jason"	none	Not mentioned	False	There is no information provided about Sumit going to the kitchen, so I will not make an assumption. The previous context sentences only mentioned Jason and Yann, and Sumit's context sentence mentioned him being tired, not going to the kitchen.		"Reasoning: There is no information provided about Sumit going to the kitchen, so I will not make an assumption. The previous context sentences only mentioned Jason and Yann, and Sumit's context sentence mentioned him being tired, not going to the kitchen.
+
+Answer: Not mentioned"	0.0	0.0175	False	False	False	True	0
+2120	20	6	7	"*TASK*
+Here are the context sentences:
+13. Antoine is hungry.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	" use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: where did jason go?
+this is the answer: bedroom"	fully	Not mentioned	False	There is no information provided about Antoine going anywhere, so I will not make an assumption. The previous context sentences only mentioned Jason and Yann, and Antoine's context sentence mentioned him being hungry, but not going anywhere.		"Reasoning: There is no information provided about Antoine going anywhere, so I will not make an assumption. The previous context sentences only mentioned Jason and Yann, and Antoine's context sentence mentioned him being hungry, but not going anywhere.
+
+Answer: Not mentioned"	0.0577	0.0192	False	False	False	True	0
+2121	20	6	8	"*TASK*
+Here are the context sentences:
+15. Antoine went to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	hungry	" use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: who is tired?
+this is the answer: jason"	none	hungry	True	Since Antoine went to the kitchen, it is likely that he went there to satisfy his hunger, as previously mentioned in context sentence 13.		"Reasoning: Since Antoine went to the kitchen, it is likely that he went there to satisfy his hunger, as previously mentioned in context sentence 13.
+
+Answer: hungry"	0.0	0.0286	False	False	False	True	0
+2122	20	6	9	"*TASK*
+Here are the context sentences:
+17. Jason got the pajamas there.
+
+Now, answer the following question:
+Why did jason get the pajamas?"	tired	" use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: who is tired?
+this is the answer: jason"	none	Not mentioned	False	There is no information provided about Jason getting pajamas, so I will not make an assumption. The previous context sentences only mentioned Jason going to the bedroom, but not getting pajamas.		"Reasoning: There is no information provided about Jason getting pajamas, so I will not make an assumption. The previous context sentences only mentioned Jason going to the bedroom, but not getting pajamas.
+
+Answer: Not mentioned"	0.0	0.0222	False	False	False	True	0
+2123	20	6	10	"*TASK*
+Here are the context sentences:
+19. Antoine got the apple there.
+
+Now, answer the following question:
+Why did antoine get the apple?"	hungry	" use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: where did jason go?
+this is the answer: bedroom"	none	Not mentioned	False	There is no information provided about Antoine getting an apple, so I will not make an assumption. The previous context sentences only mentioned Antoine going to the kitchen, but not getting an apple.		"Reasoning: There is no information provided about Antoine getting an apple, so I will not make an assumption. The previous context sentences only mentioned Antoine going to the kitchen, but not getting an apple.
+
+Answer: Not mentioned"	0.0	0.0222	False	False	False	True	0
+2124	20	6	11	"*TASK*
+Here are the context sentences:
+21. Yann got the milk there.
+
+Now, answer the following question:
+Why did yann get the milk?"	thirsty	" use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: where did jason go?
+this is the answer: bedroom"	none	Not mentioned	False	There is no information provided about Yann getting milk, so I will not make an assumption. The previous context sentences only mentioned Yann going to the kitchen, but not getting milk.		"Reasoning: There is no information provided about Yann getting milk, so I will not make an assumption. The previous context sentences only mentioned Yann going to the kitchen, but not getting milk.
+
+Answer: Not mentioned"	0.0222	0.0222	False	False	False	True	0

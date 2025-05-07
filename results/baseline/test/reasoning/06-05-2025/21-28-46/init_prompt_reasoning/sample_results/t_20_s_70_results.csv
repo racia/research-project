@@ -1,0 +1,86 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2802	20	70	1	"*TASK*
+Here are the context sentences:
+1. Yann is bored.
+
+Now, answer the following question:
+Where will yann go?"	garden	there is no direct information provided about yann's destination. however, it is mentioned that yann is bored, which implies that yann might be looking for a change of scenery or an activity to alleviate the boredom. a garden is a common outdoor space that people often visit to relax, take a walk, or engage in leisure activities, which could help alleviate boredom. therefore, it is a logical inference that yann might go to the garden to alleviate their boredom.	fully	garden	True	"Since Yann is bored, it is likely that Yann will go somewhere to alleviate the boredom. The context sentence does not specify a particular location, but based on the assumption that Yann will go somewhere to entertain themselves, the most logical choice is the ""garden""."		"Reasoning: Since Yann is bored, it is likely that Yann will go somewhere to alleviate the boredom. The context sentence does not specify a particular location, but based on the assumption that Yann will go somewhere to entertain themselves, the most logical choice is the ""garden"".
+
+Answer: garden"	0.0161	0.0161	False	False	False	False	0
+2803	20	70	2	"*TASK*
+Here are the context sentences:
+3. Sumit is hungry.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	when sumit is hungry, it implies that he needs to eat or find food. a kitchen is a common place where people typically go to prepare or find food to satisfy their hunger. therefore, it is a logical inference that sumit will go to the kitchen to address his hunger.	fully	kitchen	True	"Since Sumit is hungry, it is likely that Sumit will go somewhere to satisfy their hunger. The context sentence does not specify a particular location, but based on the assumption that Sumit will go somewhere to eat, the most logical choice is the ""kitchen""."		"Reasoning: Since Sumit is hungry, it is likely that Sumit will go somewhere to satisfy their hunger. The context sentence does not specify a particular location, but based on the assumption that Sumit will go somewhere to eat, the most logical choice is the ""kitchen"".
+
+Answer: kitchen"	0.0328	0.0164	False	False	False	False	0
+2804	20	70	3	"*TASK*
+Here are the context sentences:
+5. Jason is hungry.
+
+Now, answer the following question:
+Where will jason go?"	kitchen	when jason is hungry, it implies that he needs to eat or find food. a kitchen is a common place where people typically go to prepare or find food to satisfy their hunger. therefore, it is a logical inference that jason will go to the kitchen to address his hunger.	fully	kitchen	True	"Since Jason is hungry, it is likely that Jason will go somewhere to satisfy their hunger. The context sentence does not specify a particular location, but based on the assumption that Jason will go somewhere to eat, the most logical choice is the ""kitchen""."		"Reasoning: Since Jason is hungry, it is likely that Jason will go somewhere to satisfy their hunger. The context sentence does not specify a particular location, but based on the assumption that Jason will go somewhere to eat, the most logical choice is the ""kitchen"".
+
+Answer: kitchen"	0.0862	0.0172	False	False	False	False	0
+2805	20	70	4	"*TASK*
+Here are the context sentences:
+7. Jason went to the kitchen.
+
+Now, answer the following question:
+Why did jason go to the kitchen?"	hungry	"in the previous context, it was mentioned that ""jason is hungry"" (context line 5). now, it is stated that ""jason went to the kitchen"". given that jason is hungry, it is a logical inference that he went to the kitchen to address his hunger, as kitchens are typically associated with food preparation and consumption. therefore, the reason jason went to the kitchen is because he is hungry."	none	hungry	True	Since Jason went to the kitchen, it is likely that Jason went to the kitchen because they were hungry. This is inferred from the previous context sentence that stated Jason was hungry.		"Reasoning: Since Jason went to the kitchen, it is likely that Jason went to the kitchen because they were hungry. This is inferred from the previous context sentence that stated Jason was hungry.
+
+Answer: hungry"	0.0	0.0238	False	False	False	False	0
+2806	20	70	5	"*TASK*
+Here are the context sentences:
+9. Sumit moved to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	hungry	"in a previous context, it was mentioned that ""sumit is hungry"" (context line 3). now, it is stated that ""sumit moved to the kitchen"". given that sumit is hungry, it is a logical inference that he went to the kitchen to address his hunger, as kitchens are typically associated with food preparation and consumption. therefore, the reason sumit went to the kitchen is because he is hungry."	none	hungry	True	Since Sumit moved to the kitchen, it is likely that Sumit went to the kitchen because they were hungry. This is inferred from the previous context sentence that stated Sumit was hungry.		"Reasoning: Since Sumit moved to the kitchen, it is likely that Sumit went to the kitchen because they were hungry. This is inferred from the previous context sentence that stated Sumit was hungry.
+
+Answer: hungry"	0.0222	0.0222	False	False	False	False	0
+2807	20	70	6	"*TASK*
+Here are the context sentences:
+11. Antoine is hungry.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	"this is the question: where will antoine go?
+this is the answer: kitchen"	fully	kitchen	True	"Since Antoine is hungry, it is likely that Antoine will go somewhere to satisfy their hunger. The context sentence does not specify a particular location, but based on the assumption that Antoine will go somewhere to eat, the most logical choice is the ""kitchen""."		"Reasoning: Since Antoine is hungry, it is likely that Antoine will go somewhere to satisfy their hunger. The context sentence does not specify a particular location, but based on the assumption that Antoine will go somewhere to eat, the most logical choice is the ""kitchen"".
+
+Answer: kitchen"	0.069	0.0172	False	False	False	False	0
+2808	20	70	7	"*TASK*
+Here are the context sentences:
+13. Antoine journeyed to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	hungry	"this is the question: where will antoine go?
+this is the answer: kitchen"	none	hungry	True	Since Antoine journeyed to the kitchen, it is likely that Antoine went to the kitchen because they were hungry. This is inferred from the previous context sentence that stated Antoine was hungry.		"Reasoning: Since Antoine journeyed to the kitchen, it is likely that Antoine went to the kitchen because they were hungry. This is inferred from the previous context sentence that stated Antoine was hungry.
+
+Answer: hungry"	0.0	0.0233	False	False	False	False	0
+2809	20	70	8	"*TASK*
+Here are the context sentences:
+15. Jason grabbed the apple there.
+
+Now, answer the following question:
+Why did jason get the apple?"	hungry	"this is the question: where will antoine go?
+this is the answer: kitchen"	none	hungry	True	Since Jason grabbed the apple, it is likely that Jason got the apple because they were hungry. This is inferred from the previous context sentence that stated Jason went to the kitchen, which is typically a location where people go to eat.		"Reasoning: Since Jason grabbed the apple, it is likely that Jason got the apple because they were hungry. This is inferred from the previous context sentence that stated Jason went to the kitchen, which is typically a location where people go to eat.
+
+Answer: hungry"	0.0	0.0189	False	False	False	False	0
+2810	20	70	9	"*TASK*
+Here are the context sentences:
+17. Yann travelled to the garden.
+
+Now, answer the following question:
+Why did yann go to the garden?"	bored	"this is the question: where will antoine go?
+this is the answer: kitchen"	none	bored	True	Since Yann travelled to the garden, it is likely that Yann went to the garden because they were bored. This is inferred from the previous context sentence that stated Yann was bored.		"Reasoning: Since Yann travelled to the garden, it is likely that Yann went to the garden because they were bored. This is inferred from the previous context sentence that stated Yann was bored.
+
+Answer: bored"	0.0	0.0222	False	True	False	False	0
+2811	20	70	10	"*TASK*
+Here are the context sentences:
+19. Yann picked up the football there.
+
+Now, answer the following question:
+Why did yann get the football?"	bored	"this is the question: where will antoine go?
+this is the answer: kitchen"	none	bored	True	Since Yann picked up the football, it is likely that Yann got the football because they were bored. This is inferred from the previous context sentence that stated Yann was bored, and the assumption that Yann would engage in an activity to alleviate boredom, such as playing with a football.		"Reasoning: Since Yann picked up the football, it is likely that Yann got the football because they were bored. This is inferred from the previous context sentence that stated Yann was bored, and the assumption that Yann would engage in an activity to alleviate boredom, such as playing with a football.
+
+Answer: bored"	0.0	0.0152	False	True	False	False	0

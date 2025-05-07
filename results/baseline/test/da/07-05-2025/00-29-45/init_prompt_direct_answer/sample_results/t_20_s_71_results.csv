@@ -1,0 +1,81 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2259	20	71	1	"*TASK*
+Here are the context sentences:
+1. Jason is thirsty.
+
+Now, answer the following question:
+Where will jason go?"	kitchen	since jason is thirsty, it can be logically inferred that he needs to quench his thirst. the most common place to find a drink to quench thirst is the kitchen, where water, juice, or other beverages are typically stored. therefore, it is reasonable to assume that jason will go to the kitchen to get a drink and satisfy his thirst.	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+2260	20	71	2	"*TASK*
+Here are the context sentences:
+3. Yann is tired.
+
+Now, answer the following question:
+Where will yann go?"	bedroom	since yann is tired, it can be logically inferred that he needs to rest. the most common place to rest is the bedroom, where a bed or a comfortable place to sleep is typically located. therefore, it is reasonable to assume that yann will go to the bedroom to take a nap or sleep and alleviate his tiredness.	fully	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+2261	20	71	3	"*TASK*
+Here are the context sentences:
+5. Jason travelled to the kitchen.
+
+Now, answer the following question:
+Why did jason go to the kitchen?"	thirsty	in a previous context (1. jason is thirsty), it was established that jason is thirsty. now, it is stated that jason travelled to the kitchen. it can be logically inferred that jason went to the kitchen to quench his thirst, as the kitchen is a common place to find a drink. therefore, the reason jason went to the kitchen is because he is thirsty.	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0
+2262	20	71	4	"*TASK*
+Here are the context sentences:
+7. Yann journeyed to the bedroom.
+
+Now, answer the following question:
+Why did yann go to the bedroom?"	tired	in a previous context (3. yann is tired), it was established that yann is tired. now, it is stated that yann journeyed to the bedroom. it can be logically inferred that yann went to the bedroom to rest or sleep, as the bedroom is a common place to do so. therefore, the reason yann went to the bedroom is because he is tired.	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+2263	20	71	5	"*TASK*
+Here are the context sentences:
+9. Jason picked up the milk there.
+
+Now, answer the following question:
+Why did jason get the milk?"	thirsty	in a previous context (1. jason is thirsty), it was established that jason is thirsty. later, it was stated that jason travelled to the kitchen (5. jason travelled to the kitchen). now, it is stated that jason picked up the milk there (in the kitchen). it can be logically inferred that jason got the milk to quench his thirst, as milk is a common beverage that can satisfy thirst. therefore, the reason jason got the	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0
+2264	20	71	6	"*TASK*
+Here are the context sentences:
+11. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	"always use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: what did jason do in the kitchen?
+this is the answer: got milk"	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+2265	20	71	7	"*TASK*
+Here are the context sentences:
+13. Yann grabbed the pajamas there.
+
+Now, answer the following question:
+Why did yann get the pajamas?"	tired	"always use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: what did jason get in the kitchen?
+this is the answer: milk"	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+2266	20	71	8	"*TASK*
+Here are the context sentences:
+15. Sumit is thirsty.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	"always use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: what did jason get in the kitchen?
+this is the answer: milk"	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+2267	20	71	9	"*TASK*
+Here are the context sentences:
+17. Antoine travelled to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	"always use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: what did jason get in the kitchen?
+this is the answer: milk"	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2268	20	71	10	"*TASK*
+Here are the context sentences:
+19. Sumit went to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	thirsty	"always use it to fill in your reasoning.
+
+these are the context lines: 
+this is the question: what did jason get in the kitchen?
+this is the answer: milk"	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0

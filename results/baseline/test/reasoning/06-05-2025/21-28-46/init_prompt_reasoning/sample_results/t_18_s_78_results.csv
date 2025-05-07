@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1540	18	78	1	"*TASK*
+Here are the context sentences:
+1. The container is bigger than the chocolate.
+2. The box is bigger than the suitcase.
+3. The container is bigger than the chest.
+4. The suitcase is bigger than the box of chocolates.
+5. The box of chocolates fits inside the container.
+
+Now, answer the following question:
+Does the box fit in the box of chocolates?"	no	from context sentence 5, we know that the box of chocolates fits inside the container. from context sentence 1, we know that the container is bigger than the chocolate. since the box of chocolates contains chocolates, it is reasonable to assume that the box of chocolates is at least as big as the chocolate. therefore, the container is bigger than the box of chocolates.	fully	no	True	The question is asking if the box (mentioned in sentence 2) fits inside the box of chocolates (mentioned in sentence 4). However, the box of chocolates is bigger than the box (sentence 4), which means the box cannot fit inside the box of chocolates.		"Reasoning: The question is asking if the box (mentioned in sentence 2) fits inside the box of chocolates (mentioned in sentence 4). However, the box of chocolates is bigger than the box (sentence 4), which means the box cannot fit inside the box of chocolates.
+
+Answer: no"	0.0323	0.0323	False	False	False	True	0
+1541	18	78	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box of chocolates bigger than the box?"	no	from context sentence 5, we know that the box of chocolates fits inside the container. from context sentence 2, we know that the box is smaller than the suitcase. from context sentence 4, we know that the suitcase is bigger than the box of chocolates. therefore, the box of chocolates is smaller than the suitcase. since the box is smaller than the suitcase and the box of chocolates is smaller than the suitcase, it is logical to conclude that the box of chocolates is	none	no	True	Sentence 4 states that the suitcase is bigger than the box of chocolates, and sentence 2 states that the box is bigger than the suitcase. This implies that the box is bigger than the box of chocolates. However, the box of chocolates is not smaller than the box, it's just not bigger. Therefore, we cannot conclude that the box of chocolates is bigger than the box.		"Reasoning: Sentence 4 states that the suitcase is bigger than the box of chocolates, and sentence 2 states that the box is bigger than the suitcase. This implies that the box is bigger than the box of chocolates. However, the box of chocolates is not smaller than the box, it's just not bigger. Therefore, we cannot conclude that the box of chocolates is bigger than the box.
+
+Answer: no"	0.0357	0.0238	False	False	False	False	0
+1542	18	78	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box bigger than the box of chocolates?"	yes	from context sentence 4, we know that the suitcase is bigger than the box of chocolates. from context sentence 2, we know that the box is smaller than the suitcase. therefore, the box is smaller than the suitcase, and the suitcase is bigger than the box of chocolates. using transitive property, we can conclude that the box is smaller than the box of chocolates, which means the box of chocolates is smaller than the box. hence, the box is bigger than the	none	yes	True	Sentence 2 states that the box is bigger than the suitcase, and sentence 4 states that the suitcase is bigger than the box of chocolates. This implies that the box is bigger than the box of chocolates.		"Reasoning: Sentence 2 states that the box is bigger than the suitcase, and sentence 4 states that the suitcase is bigger than the box of chocolates. This implies that the box is bigger than the box of chocolates.
+
+Answer: yes"	0.0	0.0408	False	False	False	False	0
+1543	18	78	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box of chocolates bigger than the box?"	no	from the previous question, we know that the box is bigger than the box of chocolates. this is the opposite of what is being asked in this question, so the answer is no, the box of chocolates is not bigger than the box.	none	no	True	Sentence 4 states that the suitcase is bigger than the box of chocolates, and sentence 2 states that the box is bigger than the suitcase. This implies that the box is not bigger than the box of chocolates, but rather the opposite. Therefore, we can conclude that the box of chocolates is not bigger than the box.		"Reasoning: Sentence 4 states that the suitcase is bigger than the box of chocolates, and sentence 2 states that the box is bigger than the suitcase. This implies that the box is not bigger than the box of chocolates, but rather the opposite. Therefore, we can conclude that the box of chocolates is not bigger than the box.
+
+Answer: no"	0.0	0.0278	False	False	False	False	0
+1544	18	78	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box bigger than the box of chocolates?"	yes	"from the previous question, we know that the answer to ""is the box of chocolates bigger than the box?"" is ""no"". this implies that the box is bigger than the box of chocolates, which is exactly what this question is asking. therefore, the answer is yes, the box is bigger than the box of chocolates."	none	yes	True	Sentence 2 states that the box is bigger than the suitcase, and sentence 4 states that the suitcase is bigger than the box of chocolates. This implies that the box is bigger than the box of chocolates.		"Reasoning: Sentence 2 states that the box is bigger than the suitcase, and sentence 4 states that the suitcase is bigger than the box of chocolates. This implies that the box is bigger than the box of chocolates.
+
+Answer: yes"	0.0	0.0408	False	False	False	False	0

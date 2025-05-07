@@ -1,0 +1,81 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2524	20	44	1	"*TASK*
+Here are the context sentences:
+1. Antoine is thirsty.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	since antoine is thirsty, it is logical to assume that he needs to quench his thirst. the most common place to find a drink is in the kitchen, where water, juice, or other beverages are typically stored. therefore, it is reasonable to conclude that antoine will go to the kitchen to satisfy his thirst.	fully	kitchen	True	Since Antoine is thirsty, he will likely go somewhere to quench his thirst.		"Reasoning: Since Antoine is thirsty, he will likely go somewhere to quench his thirst.
+
+Answer: kitchen"	0.0	0.0435	False	False	False	False	0
+2525	20	44	2	"*TASK*
+Here are the context sentences:
+3. Yann is tired.
+
+Now, answer the following question:
+Where will yann go?"	bedroom	since yann is tired, it is logical to assume that he needs to rest. the most common place to rest is in a bedroom, where a bed is typically located. therefore, it is reasonable to conclude that yann will go to the bedroom to sleep or take a nap.	fully	bedroom	True	Since Yann is tired, he will likely go somewhere to rest or sleep.		"Reasoning: Since Yann is tired, he will likely go somewhere to rest or sleep.
+
+Answer: bedroom"	0.0435	0.0435	False	False	False	False	0
+2526	20	44	3	"*TASK*
+Here are the context sentences:
+5. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	since jason is tired, it is logical to assume that he needs to rest. the most common place to rest is in a bedroom, where a bed is typically located. therefore, it is reasonable to conclude that jason will go to the bedroom to sleep or take a nap.	fully	bedroom	True	Since Jason is tired, he will likely go somewhere to rest or sleep.		"Reasoning: Since Jason is tired, he will likely go somewhere to rest or sleep.
+
+Answer: bedroom"	0.0	0.0455	False	False	False	False	0
+2527	20	44	4	"*TASK*
+Here are the context sentences:
+7. Jason went to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	since jason went to the bedroom, and we know from the previous context that jason is tired, it is logical to conclude that jason went to the bedroom because he is tired. the bedroom is a common place to rest and sleep, and jason's tiredness suggests that he needs to rest, which is why he went to the bedroom.	none	tired	True	Since Jason went to the bedroom, it is likely because he is tired and wants to rest or sleep.		"Reasoning: Since Jason went to the bedroom, it is likely because he is tired and wants to rest or sleep.
+
+Answer: tired"	0.0	0.0357	False	False	False	False	0
+2528	20	44	5	"*TASK*
+Here are the context sentences:
+9. Antoine travelled to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	thirsty	since antoine travelled to the kitchen, and we know from the previous context that antoine is thirsty, it is logical to conclude that antoine went to the kitchen because he is thirsty. the kitchen is a common place to find a drink, and antoine's thirst suggests that he needs to quench his thirst, which is why he went to the kitchen.	none	thirsty	True	Since Antoine travelled to the kitchen, it is likely because he is thirsty and wants to get something to drink.		"Reasoning: Since Antoine travelled to the kitchen, it is likely because he is thirsty and wants to get something to drink.
+
+Answer: thirsty"	0.0	0.0345	False	False	False	False	0
+2529	20	44	6	"*TASK*
+Here are the context sentences:
+11. Yann journeyed to the bedroom.
+
+Now, answer the following question:
+Why did yann go to the bedroom?"	tired	since yann journeyed to the bedroom, and we know from the previous context that yann is tired, it is logical to conclude that yann went to the bedroom because he is tired. the bedroom is a common place to rest and sleep, and yann's tiredness suggests that he needs to rest, which is why he went to the bedroom.	none	tired	True	Since Yann journeyed to the bedroom, it is likely because he is tired and wants to rest or sleep.		"Reasoning: Since Yann journeyed to the bedroom, it is likely because he is tired and wants to rest or sleep.
+
+Answer: tired"	0.0333	0.0333	False	False	False	False	0
+2530	20	44	7	"*TASK*
+Here are the context sentences:
+13. Jason picked up the pajamas there.
+
+Now, answer the following question:
+Why did jason get the pajamas?"	tired	 to conclude that yann went to the bedroom because he is tired. the bedroom is a common place to rest and sleep, and yann's tiredness suggests that he needs to rest, which is why he went to the bedroom.	none	tired	True	Since Jason picked up the pajamas, it is likely because he is tired and wants to wear them to sleep.		"Reasoning: Since Jason picked up the pajamas, it is likely because he is tired and wants to wear them to sleep.
+
+Answer: tired"	0.0	0.0333	False	False	False	False	0
+2531	20	44	8	"*TASK*
+Here are the context sentences:
+15. Sumit is tired.
+
+Now, answer the following question:
+Where will sumit go?"	bedroom	 to conclude that yann went to the bedroom because he is tired. the bedroom is a common place to rest and sleep, and yann's tiredness suggests that he needs to rest, which is why he went to the bedroom.	fully	bedroom	True	Since Sumit is tired, he will likely go somewhere to rest or sleep.		"Reasoning: Since Sumit is tired, he will likely go somewhere to rest or sleep.
+
+Answer: bedroom"	0.0	0.0435	False	False	False	False	0
+2532	20	44	9	"*TASK*
+Here are the context sentences:
+17. Sumit went to the bedroom.
+
+Now, answer the following question:
+Why did sumit go to the bedroom?"	tired	 to conclude that yann went to the bedroom because he is tired. the bedroom is a common place to rest and sleep, and yann's tiredness suggests that he needs to rest, which is why he went to the bedroom.	none	tired	True	Since Sumit went to the bedroom, it is likely because he is tired and wants to rest or sleep.		"Reasoning: Since Sumit went to the bedroom, it is likely because he is tired and wants to rest or sleep.
+
+Answer: tired"	0.1724	0.0345	False	False	False	False	0
+2533	20	44	10	"*TASK*
+Here are the context sentences:
+19. Antoine took the milk there.
+
+Now, answer the following question:
+Why did antoine get the milk?"	thirsty	 to conclude that yann went to the bedroom because he is tired. the bedroom is a common place to rest and sleep, and yann's tiredness suggests that he needs to rest, which is why he went to the bedroom.	none	thirsty	True	Since Antoine took the milk, it is likely because he is thirsty and wants to drink it.		"Reasoning: Since Antoine took the milk, it is likely because he is thirsty and wants to drink it.
+
+Answer: thirsty"	0.0	0.0385	False	False	False	False	0

@@ -1,0 +1,67 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2377	20	82	1	"*TASK*
+Here are the context sentences:
+1. Antoine is hungry.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	since antoine is hungry, it is logical to assume that he will go to a place where he can satisfy his hunger. the most common place in a household where people go to eat is the kitchen, which is where food is typically prepared and consumed. therefore, it is reasonable to conclude that antoine will go to the kitchen.	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+2378	20	82	2	"*TASK*
+Here are the context sentences:
+3. Yann is tired.
+
+Now, answer the following question:
+Where will yann go?"	bedroom	since yann is tired, it is logical to assume that he will go to a place where he can rest. in a typical household, the bedroom is a common place where people go to sleep or rest when they are tired. therefore, it is reasonable to conclude that yann will go to the bedroom.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+2379	20	82	3	"*TASK*
+Here are the context sentences:
+5. Sumit is tired.
+
+Now, answer the following question:
+Where will sumit go?"	bedroom	since sumit is tired, it is logical to assume that he will go to a place where he can rest. in a typical household, the bedroom is a common place where people go to sleep or rest when they are tired. therefore, it is reasonable to conclude that sumit will go to the bedroom.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+2380	20	82	4	"*TASK*
+Here are the context sentences:
+7. Sumit went back to the bedroom.
+
+Now, answer the following question:
+Why did sumit go to the bedroom?"	tired	"in the previous context, it was stated that ""sumit is tired"" (context line 5). given this information, it is logical to conclude that sumit went to the bedroom because he was tired. the bedroom is a common place where people rest or sleep when they are tired, and sumit's action of going back to the bedroom is a direct result of his tiredness."	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2381	20	82	5	"*TASK*
+Here are the context sentences:
+9. Antoine journeyed to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	hungry	"in the initial context, it was stated that ""antoine is hungry"" (context line 1). given this information, it is logical to conclude that antoine went to the kitchen because he was hungry. the kitchen is a common place where people go to eat or prepare food when they are hungry, and antoine's action of journeying to the kitchen is a direct result of his hunger."	none	hungry	True			Answer: hungry	0.0	0.25	False	False	False	False	0
+2382	20	82	6	"*TASK*
+Here are the context sentences:
+11. Antoine got the apple there.
+
+Now, answer the following question:
+Why did antoine get the apple?"	hungry	"previously, it was established that ""antoine is hungry"" (context line 1) and ""antoine journeyed to the kitchen"" (context line 9). it is logical to assume that antoine went to the kitchen to satisfy his hunger. apples are a type of food that can be found in a kitchen, and getting an apple is a common action people take when they are hungry. therefore, it is reasonable to conclude that antoine got the apple because he was hungry"	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+2383	20	82	7	"*TASK*
+Here are the context sentences:
+13. Jason is thirsty.
+
+Now, answer the following question:
+Where will jason go?"	kitchen	"ing: in the initial context, it was stated that ""antoine is hungry"" (context line 1). subsequently, it was mentioned that ""antoine journeyed to the kitchen"" (context line 9), which is a common place where people go to eat or prepare food when they are hungry. logically, antoine's hunger led him to get the apple, which is a type of food, in the kitchen."	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+2384	20	82	8	"*TASK*
+Here are the context sentences:
+15. Yann journeyed to the bedroom.
+
+Now, answer the following question:
+Why did yann go to the bedroom?"	tired	"ing: in the initial context, it was stated that ""antoine is hungry"" (context line 1). subsequently, it was mentioned that ""antoine journeyed to the kitchen"" (context line 9), which is a common place where people go to eat or prepare food when they are hungry. logically, antoine's hunger led him to get the apple, which is a type of food, in the kitchen."	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2385	20	82	9	"*TASK*
+Here are the context sentences:
+17. Yann got the pajamas there.
+
+Now, answer the following question:
+Why did yann get the pajamas?"	tired	"ing: in the initial context, it was stated that ""antoine is hungry"" (context line 1). subsequently, it was mentioned that ""antoine journeyed to the kitchen"" (context line 9). it is logical to assume that antoine went to the kitchen to satisfy his hunger. getting an apple is a common action people take when they are hungry, and antoine's action of getting the apple is a direct result of his hunger."	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2386	20	82	10	"*TASK*
+Here are the context sentences:
+19. Jason journeyed to the kitchen.
+
+Now, answer the following question:
+Why did jason go to the kitchen?"	thirsty	"ing: in the initial context, it was stated that ""antoine is hungry"" (context line 1). subsequently, it was mentioned that ""antoine journeyed to the kitchen"" (context line 9). it is logical to assume that antoine went to the kitchen to satisfy his hunger. getting an apple is a common action people take when they are hungry, and antoine's action of getting the apple is a direct result of his hunger."	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0
+2387	20	82	11	"*TASK*
+Here are the context sentences:
+21. Jason got the milk there.
+
+Now, answer the following question:
+Why did jason get the milk?"	thirsty	"ing: in the initial context, it was stated that ""antoine is hungry"" (context line 1). subsequently, it was mentioned that ""antoine journeyed to the kitchen"" (context line 9), which is a common place where people go to eat or prepare food when they are hungry. logically, antoine's hunger led him to get the apple, which is a type of food, in the kitchen."	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0

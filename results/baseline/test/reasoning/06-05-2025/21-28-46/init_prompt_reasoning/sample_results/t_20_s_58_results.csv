@@ -1,0 +1,81 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2674	20	58	1	"*TASK*
+Here are the context sentences:
+1. Antoine is hungry.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	since antoine is hungry, it is logical to assume that he will go to a place where he can satisfy his hunger. the most common place in a household where people go to eat is the kitchen, which is where food is typically prepared and consumed. therefore, it is reasonable to conclude that antoine will go to the kitchen.	fully	kitchen	True	Since Antoine is hungry, he will likely go to a place where he can satisfy his hunger.		"Reasoning: Since Antoine is hungry, he will likely go to a place where he can satisfy his hunger.
+
+Answer: kitchen"	0.0	0.0385	False	False	False	False	0
+2675	20	58	2	"*TASK*
+Here are the context sentences:
+3. Yann is hungry.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	since yann is hungry, it is logical to assume that he will go to a place where he can satisfy his hunger. based on the previous context about antoine, who was also hungry and went to the kitchen, it is reasonable to conclude that yann will also go to the kitchen, as it is a common place in a household where people go to eat.	fully	kitchen	True	Since Yann is hungry, he will likely go to a place where he can satisfy his hunger.		"Reasoning: Since Yann is hungry, he will likely go to a place where he can satisfy his hunger.
+
+Answer: kitchen"	0.0741	0.037	False	False	False	False	0
+2676	20	58	3	"*TASK*
+Here are the context sentences:
+5. Antoine went back to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	hungry	since antoine went back to the kitchen, and we know from the previous context that antoine was hungry, it is logical to conclude that antoine went to the kitchen because he was hungry. this is a direct connection between antoine's hunger and his action of going to the kitchen, which is a common place to satisfy hunger.	none	hungry	True	Since Antoine went back to the kitchen, it is likely that he went there because he was hungry (as previously mentioned).		"Reasoning: Since Antoine went back to the kitchen, it is likely that he went there because he was hungry (as previously mentioned).
+
+Answer: hungry"	0.0	0.0323	False	False	False	True	0
+2677	20	58	4	"*TASK*
+Here are the context sentences:
+7. Antoine took the apple there.
+
+Now, answer the following question:
+Why did antoine get the apple?"	hungry	since antoine took the apple, and we know from the previous context that antoine was hungry, it is logical to conclude that antoine got the apple because he was hungry. apples are a type of food, and people often eat food when they are hungry, so it is a reasonable assumption that antoine took the apple to satisfy his hunger.	none	hungry	True	Since Antoine took the apple in the kitchen, it is likely that he got the apple because he was hungry and wanted to satisfy his hunger.		"Reasoning: Since Antoine took the apple in the kitchen, it is likely that he got the apple because he was hungry and wanted to satisfy his hunger.
+
+Answer: hungry"	0.0	0.0286	False	False	False	False	0
+2678	20	58	5	"*TASK*
+Here are the context sentences:
+9. Sumit is hungry.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	since sumit is hungry, it is logical to assume that he will go to a place where he can satisfy his hunger. based on the previous context about antoine and yann, who were also hungry and went to the kitchen, it is reasonable to conclude that sumit will also go to the kitchen, as it is a common place in a household where people go to eat.	fully	kitchen	True	Since Sumit is hungry, he will likely go to a place where he can satisfy his hunger.		"Reasoning: Since Sumit is hungry, he will likely go to a place where he can satisfy his hunger.
+
+Answer: kitchen"	0.0	0.037	False	False	False	False	0
+2679	20	58	6	"*TASK*
+Here are the context sentences:
+11. Sumit went to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	hungry	since sumit went to the kitchen, and we know from the previous context that sumit is hungry, it is logical to conclude that sumit went to the kitchen because he was hungry. the kitchen is a common place where people go to eat and satisfy their hunger, so it is a reasonable assumption that sumit's hunger led him to go to the kitchen.	none	hungry	True	Since Sumit went to the kitchen, it is likely that he went there because he was hungry (as previously mentioned).		"Reasoning: Since Sumit went to the kitchen, it is likely that he went there because he was hungry (as previously mentioned).
+
+Answer: hungry"	0.0	0.0323	False	False	False	True	0
+2680	20	58	7	"*TASK*
+Here are the context sentences:
+13. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	since sumit went to the kitchen, and we know from the previous context that sumit is hungry, it is logical to conclude that sumit went to the kitchen because he was hungry. the kitchen is a common place where people go to eat and satisfy their hunger, so it is a reasonable assumption that sumit's hunger led him to go to the kitchen.	fully	bedroom	True	Since Jason is tired, he will likely go to a place where he can rest or relax.		"Reasoning: Since Jason is tired, he will likely go to a place where he can rest or relax.
+
+Answer: bedroom"	0.0	0.0385	False	False	False	False	0
+2681	20	58	8	"*TASK*
+Here are the context sentences:
+15. Yann journeyed to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	hungry	since sumit went to the kitchen, and we know from the previous context that sumit is hungry, it is logical to conclude that sumit went to the kitchen because he was hungry. the kitchen is a common place where people go to eat and satisfy their hunger, so it is a reasonable assumption that sumit's hunger led him to go to the kitchen.	none	hungry	True	Since Yann journeyed to the kitchen, it is likely that he went there because he was hungry (as previously mentioned).		"Reasoning: Since Yann journeyed to the kitchen, it is likely that he went there because he was hungry (as previously mentioned).
+
+Answer: hungry"	0.0312	0.0312	False	False	False	True	0
+2682	20	58	9	"*TASK*
+Here are the context sentences:
+17. Jason travelled to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	since sumit went to the kitchen, and we know from the previous context that sumit is hungry, it is logical to conclude that sumit went to the kitchen because he was hungry. the kitchen is a common place where people go to eat and satisfy their hunger, so it is a reasonable assumption that sumit's hunger led him to go to the kitchen.	none	tired	True	Since Jason travelled to the bedroom, it is likely that he went there because he was tired (as previously mentioned).		"Reasoning: Since Jason travelled to the bedroom, it is likely that he went there because he was tired (as previously mentioned).
+
+Answer: tired"	0.0333	0.0333	False	False	False	True	0
+2683	20	58	10	"*TASK*
+Here are the context sentences:
+19. Jason took the pajamas there.
+
+Now, answer the following question:
+Why did jason get the pajamas?"	tired	since sumit went to the kitchen, and we know from the previous context that sumit is hungry, it is logical to conclude that sumit went to the kitchen because he was hungry. the kitchen is a common place where people go to eat and satisfy their hunger, so it is a reasonable assumption that sumit's hunger led him to go to the kitchen.	none	tired	True	Since Jason took the pajamas in the bedroom, it is likely that he got the pajamas because he was tired and wanted to rest.		"Reasoning: Since Jason took the pajamas in the bedroom, it is likely that he got the pajamas because he was tired and wanted to rest.
+
+Answer: tired"	0.0	0.0286	False	False	False	False	0

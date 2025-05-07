@@ -1,0 +1,59 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+885	17	99	1	"*TASK*
+Here are the context sentences:
+1. The red square is below the yellow square.
+2. The pink rectangle is above the yellow square.
+
+Now, answer the following question:
+Is the red square below the pink rectangle?"	yes	from the context sentences, we know that the red square is below the yellow square (sentence 1) and the pink rectangle is above the yellow square (sentence 2). since the pink rectangle is above the yellow square and the red square is below the yellow square, it can be logically inferred that the red square is below the pink rectangle.	fully	no	False			Answer: no	0.25	0.5	False	False	False	False	0
+886	17	99	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square below the pink rectangle?"	yes	i apologize, but there are no context lines provided. please provide the context lines, and i'll be happy to assist you with the question and answer.	none	yes	True			Answer: yes	0.25	0.5	False	False	False	False	0
+887	17	99	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square below the pink rectangle?"	yes	reasoning: from the	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+888	17	99	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle below the red square?"	no	reasoning: from the	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+889	17	99	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle below the red square?"	no	reasoning: from the context lines, we know that the pink rectangle is above the yellow square (sentence 2) and the red square is below the yellow square (sentence 1). since the	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+890	17	99	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the right of the pink rectangle?"	no	" the question: is the pink rectangle below the red square?
+this is the answer: no
+
+please provide the context lines."	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0
+891	17	99	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square below the pink rectangle?"	yes	" the question: is the pink rectangle below the red square?
+this is the answer: no
+
+please provide the context lines."	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+892	17	99	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle above the red square?"	yes	" the question: is the pink rectangle below the red square?
+this is the answer: no
+
+please provide the context lines."	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0

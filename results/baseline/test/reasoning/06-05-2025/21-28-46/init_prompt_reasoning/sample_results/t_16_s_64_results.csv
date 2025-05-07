@@ -1,0 +1,17 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+64	16	64	1	"*TASK*
+Here are the context sentences:
+1. Greg is a rhino.
+2. Brian is a swan.
+3. Brian is green.
+4. Bernhard is a rhino.
+5. Lily is a frog.
+6. Lily is gray.
+7. Bernhard is gray.
+8. Greg is gray.
+9. Julius is a frog.
+
+Now, answer the following question:
+What color is Julius?"	gray	since julius is a frog (sentence 9), and lily is also a frog (sentence 5) and gray (sentence 6), it can be logically inferred that julius, being a frog like lily, is also gray.	fully	gray	True	The question asks about the color of Julius, who is a frog according to sentence 9. Since Lily, who is also a frog, is gray according to sentence 6, it is likely that Julius, being a frog, is also gray.		"Reasoning: The question asks about the color of Julius, who is a frog according to sentence 9. Since Lily, who is also a frog, is gray according to sentence 6, it is likely that Julius, being a frog, is also gray.
+
+Answer: gray"	0.193	0.0526	False	False	False	False	0

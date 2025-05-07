@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1295	18	79	1	"*TASK*
+Here are the context sentences:
+1. The chest is bigger than the box.
+2. The chocolate fits inside the chest.
+3. The suitcase fits inside the container.
+4. The box fits inside the chest.
+5. The chocolate fits inside the box of chocolates.
+6. The container is bigger than the box.
+7. The container is bigger than the box of chocolates.
+8. The chocolate fits inside the suitcase.
+9. The box is bigger than the box of chocolates.
+10. The suitcase fits inside the container.
+
+Now, answer the following question:
+Is the box of chocolates bigger than the chest?"	no	from context sentence 4, we know that the box fits inside the chest. this implies that the chest is bigger than the box. additionally, from context sentence 5, we know that the chocolate fits inside the box of chocolates, and from context sentence 2, we know that the chocolate fits inside the chest. this means that the box of chocolates must be smaller than or equal to the box, since the chocolate fits inside both. from context sentence 9, we know that	fully	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1296	18	79	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the container fit in the chocolate?"	no	from the context sentences, we can see that the container is compared to various objects in terms of size, but there is no mention of the container being smaller than the chocolate. in fact, the chocolate is described as fitting inside other objects (chest, box, box of chocolates, suitcase), but not the other way around. therefore, it is logical to conclude that the container does not fit inside the chocolate, as it would be unusual for a larger object to fit inside a smaller one	none	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+1297	18	79	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the container fit in the chocolate?"	no	from the context sentences, we know that the chocolate fits inside the box of chocolates (sentence 5), the box of chocolates is smaller than the box (sentence 9), the box fits inside the chest (sentence 4), and the container is bigger than the box (sentence 6). therefore, the container is also bigger than the box of chocolates, which means it is bigger than the chocolate. as a result, the container cannot fit inside the chocolate.	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1298	18	79	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the container fit in the chocolate?"	no	since the chocolate fits inside the box of chocolates (sentence 5), and the box of chocolates is smaller than the box (sentence 9), and the box fits inside the chest (sentence 4), and the container is bigger than the box (sentence 6), it can be logically inferred that the container is also bigger than the chocolate. therefore, the container cannot fit inside the chocolate.	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1299	18	79	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the box?"	yes	the chocolate fits inside the box of chocolates (sentence 5), and the box of chocolates is smaller than the box (sentence 9). therefore, it can be logically inferred that the chocolate also fits inside the box, since the box is larger than the box of chocolates.	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0

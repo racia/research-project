@@ -1,0 +1,13 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠThe	Ġchocolate	Ġfits	Ġinside	Ġthe	Ġsuitcase	.Ċ
+2	.	ĠThe	Ġbox	Ġof	Ġchocolates	Ġfits	Ġinside	Ġthe	Ġchest	.Ċ
+3	.	ĠThe	Ġsuitcase	Ġis	Ġbigger	Ġthan	Ġthe	Ġchocolate	.Ċ
+4	.	ĠThe	Ġbox	Ġof	Ġchocolates	Ġfits	Ġinside	Ġthe	Ġbox	.Ċ
+5	.	ĠThe	Ġbox	Ġis	Ġbigger	Ġthan	Ġthe	Ġcontainer	.Ċ
+6	.	ĠThe	Ġchocolate	Ġfits	Ġinside	Ġthe	Ġbox	Ġof	Ġchocolates	.Ċ
+7	.	ĠThe	Ġcontainer	Ġfits	Ġinside	Ġthe	Ġbox	.Ċ
+8	.	ĠThe	Ġcontainer	Ġis	Ġbigger	Ġthan	Ġthe	Ġbox	Ġof	Ġchocolates	.Ċ
+9	.	ĠThe	Ġsuitcase	Ġis	Ġbigger	Ġthan	Ġthe	Ġbox	.Ċ
+10	.	ĠThe	Ġbox	Ġof	Ġchocolates	Ġis	Ġbigger	Ġthan	Ġthe	Ġchocolate	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	Ġthe	Ġbox	Ġof	Ġchocolates	Ġbigger	Ġthan	Ġthe	Ġbox	?Ċ

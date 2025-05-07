@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġgarden	Ġis	Ġnorth	Ġof	Ġthe	Ġhallway	Ġ(	sentence	Ġ	4	),	Ġand	Ġthe	Ġhallway	Ġis	Ġwest	Ġof	Ġthe	Ġoffice	Ġ(	sentence	Ġ	5	),	Ġwe	Ġneed	Ġto	Ġgo	Ġwest	Ġfrom	Ġthe	Ġgarden	Ġto	Ġreach	Ġthe	Ġhallway	.	ĠThen	,	Ġwe	Ġneed	Ġto	Ġgo	Ġwest	Ġagain	Ġfrom	Ġthe	Ġhallway	Ġto	Ġreach	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġwest	<|eot_id|>

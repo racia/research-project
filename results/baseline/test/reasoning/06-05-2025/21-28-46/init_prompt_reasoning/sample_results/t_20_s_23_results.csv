@@ -1,0 +1,125 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2298	20	23	1	"*TASK*
+Here are the context sentences:
+1. Antoine is hungry.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	since antoine is hungry, it is logical to assume that he will go to a place where he can satisfy his hunger. the most common place in a household where people go to eat is the kitchen, which is where food is typically prepared and consumed. therefore, it is reasonable to conclude that antoine will go to the kitchen.	fully	kitchen	True	Antoine is hungry, which implies that he needs to satisfy his hunger. Since the context doesn't specify what he wants to eat, I'll assume he's looking for food.		"Reasoning: Antoine is hungry, which implies that he needs to satisfy his hunger. Since the context doesn't specify what he wants to eat, I'll assume he's looking for food.
+
+Answer: kitchen"	0.0476	0.0238	False	False	False	False	0
+2299	20	23	2	"*TASK*
+Here are the context sentences:
+3. Antoine went to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	hungry	"in the previous context, it was established that ""antoine is hungry"" (context line 1). now, we are told that ""antoine went to the kitchen"" (context line 3). it is logical to conclude that antoine went to the kitchen because he was hungry, as the kitchen is a common place where people go to satisfy their hunger. therefore, the reason antoine went to the kitchen is that he was hungry."	none	hungry	True	Antoine went to the kitchen, and earlier, it was established that he was hungry. Given this information, it's logical to infer that Antoine went to the kitchen to satisfy his hunger.		"Reasoning: Antoine went to the kitchen, and earlier, it was established that he was hungry. Given this information, it's logical to infer that Antoine went to the kitchen to satisfy his hunger.
+
+Answer: hungry"	0.0455	0.0227	False	False	False	True	0
+2300	20	23	3	"*TASK*
+Here are the context sentences:
+5. Antoine picked up the apple there.
+
+Now, answer the following question:
+Why did antoine get the apple?"	hungry	"previously, it was established that ""antoine is hungry"" (context line 1) and ""antoine went to the kitchen"" (context line 3) because of his hunger. now, we are told that ""antoine picked up the apple there"" (context line 5), which implies that ""there"" refers to the kitchen. it is logical to conclude that antoine got the apple because he was hungry, as apples are a type of food that can satisfy hunger"	none	hungry	True	Antoine went to the kitchen, which is where food is typically prepared and stored. Given that he picked up an apple, it's likely that he got the apple because he was hungry and wanted to eat something.		"Reasoning: Antoine went to the kitchen, which is where food is typically prepared and stored. Given that he picked up an apple, it's likely that he got the apple because he was hungry and wanted to eat something.
+
+Answer: hungry"	0.0	0.0204	False	False	False	False	0
+2301	20	23	4	"*TASK*
+Here are the context sentences:
+7. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	since jason is tired, it is logical to assume that he will go to a place where he can rest. in a typical household, the bedroom is a common place where people go to sleep and rest when they are tired. therefore, it is reasonable to conclude that jason will go to the bedroom.	fully	bedroom	True	Jason is tired, which implies that he needs rest. Since the context doesn't specify what he wants to do, I'll assume he's looking for a place to sleep.		"Reasoning: Jason is tired, which implies that he needs rest. Since the context doesn't specify what he wants to do, I'll assume he's looking for a place to sleep.
+
+Answer: bedroom"	0.0	0.0238	False	False	False	False	0
+2302	20	23	5	"*TASK*
+Here are the context sentences:
+9. Yann is thirsty.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	since yann is thirsty, it is logical to assume that he will go to a place where he can quench his thirst. in a typical household, the kitchen is a common place where people go to get a drink, as it is where the refrigerator, sink, and other sources of water are usually located. therefore, it is reasonable to conclude that yann will go to the kitchen.	fully	kitchen	True	Yann is thirsty, which implies that he needs to quench his thirst. Since the context doesn't specify what he wants to drink, I'll assume he's looking for a source of water or a drink.		"Reasoning: Yann is thirsty, which implies that he needs to quench his thirst. Since the context doesn't specify what he wants to drink, I'll assume he's looking for a source of water or a drink.
+
+Answer: kitchen"	0.02	0.02	False	False	False	False	0
+2303	20	23	6	"*TASK*
+Here are the context sentences:
+11. Yann went to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	thirsty	".
+
+these are the context lines: 11. yann got a glass of water.
+this is the question: why did yann get a glass of water?
+this is the answer: thirsty"	none	thirsty	True	Yann went to the kitchen, and earlier, it was established that he was thirsty. Given this information, it's logical to infer that Yann went to the kitchen to get a drink.		"Reasoning: Yann went to the kitchen, and earlier, it was established that he was thirsty. Given this information, it's logical to infer that Yann went to the kitchen to get a drink.
+
+Answer: thirsty"	0.1304	0.0217	False	False	False	True	0
+2304	20	23	7	"*TASK*
+Here are the context sentences:
+13. Sumit is bored.
+
+Now, answer the following question:
+Where will sumit go?"	garden	".
+
+these are the context lines: 
+this is the question: why did yann go to the kitchen?
+this is the answer: thirsty"	fully	garden	True	Sumit is bored, which implies that he needs something to do or a change of environment. Since the context doesn't specify what he wants to do, I'll assume he's looking for a place to engage himself.		"Reasoning: Sumit is bored, which implies that he needs something to do or a change of environment. Since the context doesn't specify what he wants to do, I'll assume he's looking for a place to engage himself.
+
+Answer: garden"	0.0	0.0196	False	False	False	False	0
+2305	20	23	8	"*TASK*
+Here are the context sentences:
+15. Sumit went to the garden.
+
+Now, answer the following question:
+Why did sumit go to the garden?"	bored	".
+
+these are the context lines: 11. yann got a glass of water.
+this is the question: why did yann get a glass of water?
+this is the answer: thirsty"	none	bored	True	Sumit went to the garden, and earlier, it was established that he was bored. Given this information, it's logical to infer that Sumit went to the garden to alleviate his boredom.		"Reasoning: Sumit went to the garden, and earlier, it was established that he was bored. Given this information, it's logical to infer that Sumit went to the garden to alleviate his boredom.
+
+Answer: bored"	0.0	0.0217	False	True	False	True	0
+2306	20	23	9	"*TASK*
+Here are the context sentences:
+17. Yann grabbed the milk there.
+
+Now, answer the following question:
+Why did yann get the milk?"	thirsty	".
+
+these are the context lines: 11. yann got a glass of water.
+this is the question: why did yann get a glass of water?
+this is the answer: thirsty"	none	thirsty	True	Yann went to the kitchen earlier, and it's likely that he got the milk because he was thirsty and wanted to quench his thirst.		"Reasoning: Yann went to the kitchen earlier, and it's likely that he got the milk because he was thirsty and wanted to quench his thirst.
+
+Answer: thirsty"	0.0833	0.0278	False	False	False	False	0
+2307	20	23	10	"*TASK*
+Here are the context sentences:
+19. Sumit took the football there.
+
+Now, answer the following question:
+Why did sumit get the football?"	bored	".
+
+these are the context lines: 11. yann got a glass of water.
+this is the question: why did yann get a glass of water?
+this is the answer: thirsty"	none	bored	True	Sumit went to the garden earlier, and it's likely that he got the football because he was bored and wanted to engage himself in an activity.		"Reasoning: Sumit went to the garden earlier, and it's likely that he got the football because he was bored and wanted to engage himself in an activity.
+
+Answer: bored"	0.027	0.027	False	True	False	False	0
+2308	20	23	11	"*TASK*
+Here are the context sentences:
+21. Jason travelled to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	".
+
+these are the context lines: 11. yann got a glass of water.
+this is the question: why did yann get a glass of water?
+this is the answer: thirsty"	none	tired	True	Jason was tired earlier, and it's likely that he went to the bedroom to rest and sleep.		"Reasoning: Jason was tired earlier, and it's likely that he went to the bedroom to rest and sleep.
+
+Answer: tired"	0.0	0.037	False	False	False	False	0
+2309	20	23	12	"*TASK*
+Here are the context sentences:
+23. Jason took the pajamas there.
+
+Now, answer the following question:
+Why did jason get the pajamas?"	tired	".
+
+these are the context lines: 11. yann got a glass of water.
+this is the question: why did yann get a glass of water?
+this is the answer: thirsty"	none	tired	True	Jason went to the bedroom earlier, and it's likely that he got the pajamas because he was tired and wanted to sleep.		"Reasoning: Jason went to the bedroom earlier, and it's likely that he got the pajamas because he was tired and wanted to sleep.
+
+Answer: tired"	0.0	0.0303	False	False	False	False	0

@@ -1,0 +1,71 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2141	20	60	1	"*TASK*
+Here are the context sentences:
+1. Sumit is bored.
+
+Now, answer the following question:
+Where will sumit go?"	garden	there is no direct information provided about sumit's intentions or preferences, but since sumit is bored, it can be inferred that he might want to do something to alleviate his boredom. going to the garden is a common activity people do to relax and get some fresh air, which could help alleviate boredom. therefore, it is a logical assumption that sumit might go to the garden to alleviate his boredom.	fully	garden	True			Answer: garden	0.0	0.25	False	False	False	False	0
+2142	20	60	2	"*TASK*
+Here are the context sentences:
+3. Jason is hungry.
+
+Now, answer the following question:
+Where will jason go?"	kitchen	since jason is hungry, it can be inferred that he needs to eat or find food to satisfy his hunger. the kitchen is a common place where people go to prepare or find food, so it is a logical assumption that jason will go to the kitchen to address his hunger.	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+2143	20	60	3	"*TASK*
+Here are the context sentences:
+5. Yann is bored.
+
+Now, answer the following question:
+Where will yann go?"	garden	since yann is bored, it can be inferred that he might want to do something to alleviate his boredom. going to the garden is a common activity people do to relax and get some fresh air, which could help alleviate boredom. this is similar to the situation with sumit in the previous context, where sumit was also bored and went to the garden. it is a logical assumption that yann will also go to the garden to alleviate his boredom, following a similar pattern of behavior	fully	garden	True			Answer: garden	0.0	0.25	False	False	False	False	0
+2144	20	60	4	"*TASK*
+Here are the context sentences:
+7. Antoine is bored.
+
+Now, answer the following question:
+Where will antoine go?"	garden	since antoine is bored, it can be inferred that he might want to do something to alleviate his boredom. in previous contexts, when sumit and yann were bored, they both went to the garden to alleviate their boredom. it is a logical assumption that antoine will follow a similar pattern of behavior and also go to the garden to alleviate his boredom, as it has been established as a common response to boredom in this context.	fully	garden	True			Answer: garden	0.0	0.25	False	False	False	False	0
+2145	20	60	5	"*TASK*
+Here are the context sentences:
+9. Yann journeyed to the garden.
+
+Now, answer the following question:
+Why did yann go to the garden?"	bored	in a previous context, it was established that yann was bored (context 5) and went to the garden (answer: garden). it can be inferred that yann's boredom was the reason for him going to the garden, as it is a common response to boredom in this context.	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0
+2146	20	60	6	"*TASK*
+Here are the context sentences:
+11. Yann grabbed the football there.
+
+Now, answer the following question:
+Why did yann get the football?"	bored	".
+this is the question: where did yann grab the football?
+this is the answer: garden"	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0
+2147	20	60	7	"*TASK*
+Here are the context sentences:
+13. Sumit journeyed to the garden.
+
+Now, answer the following question:
+Why did sumit go to the garden?"	bored	".
+this is the question: where did yann grab the football?
+this is the answer: garden"	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0
+2148	20	60	8	"*TASK*
+Here are the context sentences:
+15. Jason journeyed to the kitchen.
+
+Now, answer the following question:
+Why did jason go to the kitchen?"	hungry	".
+this is the question: where did yann grab the football?
+this is the answer: garden"	none	hungry	True			Answer: hungry	0.0	0.25	False	False	False	False	0
+2149	20	60	9	"*TASK*
+Here are the context sentences:
+17. Jason grabbed the apple there.
+
+Now, answer the following question:
+Why did jason get the apple?"	hungry	".
+this is the question: where did yann grab the football?
+this is the answer: garden"	none	hungry	True			Answer: hungry	0.0	0.25	False	False	False	False	0
+2150	20	60	10	"*TASK*
+Here are the context sentences:
+19. Antoine moved to the garden.
+
+Now, answer the following question:
+Why did antoine go to the garden?"	bored	".
+this is the question: where did yann grab the football?
+this is the answer: garden"	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0

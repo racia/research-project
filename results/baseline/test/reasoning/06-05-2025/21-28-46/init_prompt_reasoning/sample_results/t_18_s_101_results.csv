@@ -1,0 +1,43 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1655	18	101	1	"*TASK*
+Here are the context sentences:
+1. The container is bigger than the suitcase.
+2. The box is bigger than the container.
+3. The chest fits inside the container.
+4. The chest is bigger than the chocolate.
+5. The chocolate fits inside the box.
+
+Now, answer the following question:
+Does the suitcase fit in the box?"	yes	from sentence 1, we know the container is bigger than the suitcase.	fully		False	The suitcase is smaller than the container (from sentence 1). The box is bigger than the container (from sentence 2). Therefore, the box is bigger than the suitcase. Since the chest fits inside the container (from sentence 3), the chest is also smaller than the box. The chocolate fits inside the box (from sentence 5), and the chest is bigger than the chocolate (from sentence 4). This means the chest cannot fit inside the suitcase, as the		Reasoning: The suitcase is smaller than the container (from sentence 1). The box is bigger than the container (from sentence 2). Therefore, the box is bigger than the suitcase. Since the chest fits inside the container (from sentence 3), the chest is also smaller than the box. The chocolate fits inside the box (from sentence 5), and the chest is bigger than the chocolate (from sentence 4). This means the chest cannot fit inside the suitcase, as the	0.1717	0.0202	False	False	False	False	0
+1656	18	101	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the chocolate?"	yes	from sentence 3, we know the chest fits inside the container.	none	yes	True	The chest fits inside the container (from sentence 3), and the chest is bigger than the chocolate (from sentence 4). This implies that the container is bigger than the chocolate, as the chest is smaller than the container.		"Reasoning: The chest fits inside the container (from sentence 3), and the chest is bigger than the chocolate (from sentence 4). This implies that the container is bigger than the chocolate, as the chest is smaller than the container.
+
+Answer: yes"	0.1698	0.0377	False	False	False	False	0
+1657	18	101	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the container fit in the chocolate?"	no	from sentence 4, we know the chest is bigger than the chocolate.	none	no	True	The chest fits inside the container (from sentence 3), and the chest is bigger than the chocolate (from sentence 4). This means the container is bigger than the chocolate. Since the container is bigger than the chocolate, it is not possible for the container to fit inside the chocolate.		"Reasoning: The chest fits inside the container (from sentence 3), and the chest is bigger than the chocolate (from sentence 4). This means the container is bigger than the chocolate. Since the container is bigger than the chocolate, it is not possible for the container to fit inside the chocolate.
+
+Answer: no"	0.1231	0.0308	False	False	False	False	0
+1658	18	101	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the box?"	no	from sentence 1, we know the container is bigger than the suitcase.	none	yes	False	The container is bigger than the suitcase (from sentence 1), and the box is bigger than the container (from sentence 2). This implies that the box is bigger than the suitcase. Since the box is bigger than the suitcase, the box is also bigger than the suitcase.		"Reasoning: The container is bigger than the suitcase (from sentence 1), and the box is bigger than the container (from sentence 2). This implies that the box is bigger than the suitcase. Since the box is bigger than the suitcase, the box is also bigger than the suitcase.
+
+Answer: yes"	0.0794	0.0317	False	False	False	False	0
+1659	18	101	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the container fit in the chocolate?"	no	from sentence 4, we know the chest is bigger than the chocolate.	none	no	True	The chest fits inside the container (from sentence 3), and the chest is bigger than the chocolate (from sentence 4). This means the container is bigger than the chocolate. Since the container is bigger than the chocolate, it is not possible for the container to fit inside the chocolate.		"Reasoning: The chest fits inside the container (from sentence 3), and the chest is bigger than the chocolate (from sentence 4). This means the container is bigger than the chocolate. Since the container is bigger than the chocolate, it is not possible for the container to fit inside the chocolate.
+
+Answer: no"	0.0769	0.0308	False	False	False	False	0

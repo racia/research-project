@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġoffice	Ġis	Ġnorth	Ġof	Ġthe	Ġhallway	Ġ(	sentence	Ġ	4	),	Ġand	Ġthe	Ġgarden	Ġis	Ġsouth	Ġof	Ġthe	Ġhallway	Ġ(	sentence	Ġ	5	),	Ġto	Ġgo	Ġfrom	Ġthe	Ġoffice	Ġto	Ġthe	Ġgarden	,	Ġyou	Ġneed	Ġto	Ġmove	Ġsouth	Ġfrom	Ġthe	Ġoffice	,	Ġwhich	Ġis	Ġlocated	Ġnorth	Ġof	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġsouth	<|eot_id|>

@@ -1,0 +1,35 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1395	18	99	1	"*TASK*
+Here are the context sentences:
+1. The container is bigger than the box of chocolates.
+2. The box is bigger than the box of chocolates.
+3. The box is bigger than the chest.
+4. The container fits inside the chest.
+5. The suitcase fits inside the chest.
+
+Now, answer the following question:
+Does the box fit in the container?"	no	from sentence 2, we know the box is bigger than the box of chocolates. from sentence 1, we know the container is also bigger than the box of chocolates. if both the box and the container are bigger than the box of chocolates, it means the box is not smaller than the container. since the box is not smaller than the container, it cannot fit inside the container. therefore, the answer is no, the box does not fit in the container.	fully	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+1396	18	99	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the box?"	no	from sentence 4, we know the container fits inside the chest. from sentence 5, we know the suitcase fits inside the chest. since both the container and the suitcase fit inside the chest, it means they are both smaller than or equal to the chest in size. there is no information suggesting the suitcase is bigger than the container, so it is likely that the suitcase is not bigger than the box (from sentence 2, the box is bigger than the chest). therefore,	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1397	18	99	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the box?"	no	from sentence 1, we know the container is bigger than the box of chocolates. from sentence 2, we know the box is bigger than the box of chocolates. since both the container and the box are bigger than the box of chocolates, it means they are both at least as big as the box of chocolates. if the container were bigger than the box, it would mean the container is bigger than the box of chocolates and the box is bigger than the box of chocolates, which	none	yes	False			Answer: yes	0.0	0.5	False	False	False	False	0
+1398	18	99	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the container?"	no	we already established in a previous question that the box does not fit in the container. the reasoning was: from sentence 2, we know the box is bigger than the box of chocolates. from sentence 1, we know the container is also bigger than the box of chocolates. if both the box and the container are bigger than the box of chocolates, it means the box is not smaller than the container. since the box is not smaller than the container, it cannot fit inside the	none	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+1399	18	99	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the container?"	no	from sentence 2, we know the box is bigger than the box of chocolates. from sentence 1, we know the container is also bigger than the box of chocolates. if both the box and the container are bigger than the box of chocolates, it means the box is not smaller than the container. since the box is not smaller than the container, it cannot fit inside the container. therefore, the answer is no, the box does not fit in the container.	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0

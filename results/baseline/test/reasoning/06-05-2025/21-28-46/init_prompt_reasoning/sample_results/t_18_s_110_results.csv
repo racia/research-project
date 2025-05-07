@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1700	18	110	1	"*TASK*
+Here are the context sentences:
+1. The chest fits inside the container.
+2. The box is bigger than the chest.
+3. The suitcase is bigger than the chocolate.
+4. The container is bigger than the chest.
+5. The box fits inside the suitcase.
+
+Now, answer the following question:
+Is the chest bigger than the suitcase?"	no	from context line 1, we know the chest fits inside the container. from context line 4, we know the container is bigger than the chest. this implies that the chest is smaller than the container. from context line 5, we know the box fits inside the suitcase, which means the suitcase is bigger than the box. from context line 2, we know the box is bigger than the chest. therefore, if the box is bigger than the chest and the suitcase is	fully	no	True	The chest fits inside the container, and the container is bigger than the chest. This means the chest is not bigger than the container. However, the question asks about the chest's size compared to the suitcase. Since the box fits inside the suitcase, and the box is bigger than the chest, the chest is not bigger than the suitcase.		"Reasoning: The chest fits inside the container, and the container is bigger than the chest. This means the chest is not bigger than the container. However, the question asks about the chest's size compared to the suitcase. Since the box fits inside the suitcase, and the box is bigger than the chest, the chest is not bigger than the suitcase.
+
+Answer: no"	0.2133	0.0267	False	False	False	False	0
+1701	18	110	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chest bigger than the suitcase?"	no	"from the context lines, we know that the box is bigger than the chest (line 2) and the box fits inside the suitcase (line 5). this implies that the suitcase is bigger than the box. since the box is bigger than the chest, and the suitcase is bigger than the box, we can logically conclude that the suitcase is bigger than the chest. therefore, the chest is not bigger than the suitcase, which aligns with the provided answer ""no""."	none	no	True	The chest fits inside the container, and the container is bigger than the chest. This means the chest is not bigger than the container. However, the question asks about the chest's size compared to the suitcase. Since the box fits inside the suitcase, and the box is bigger than the chest, the chest is not bigger than the suitcase.		"Reasoning: The chest fits inside the container, and the container is bigger than the chest. This means the chest is not bigger than the container. However, the question asks about the chest's size compared to the suitcase. Since the box fits inside the suitcase, and the box is bigger than the chest, the chest is not bigger than the suitcase.
+
+Answer: no"	0.1733	0.0267	False	False	False	False	0
+1702	18	110	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the chest?"	yes	"from the context lines, we know that the box is bigger than the chest (line 2) and the box fits inside the suitcase (line 5). this implies that the suitcase is bigger than the box. since the box is bigger than the chest, and the suitcase is bigger than the box, we can logically conclude that the suitcase is bigger than the chest. therefore, the answer to the question ""is the suitcase bigger than the chest?"" is indeed ""yes""."	none	yes	True	The chest fits inside the container, and the container is bigger than the chest. This means the chest is not bigger than the container. The suitcase is bigger than the box, and the box is bigger than the chest. Therefore, the suitcase is bigger than the chest.		"Reasoning: The chest fits inside the container, and the container is bigger than the chest. This means the chest is not bigger than the container. The suitcase is bigger than the box, and the box is bigger than the chest. Therefore, the suitcase is bigger than the chest.
+
+Answer: yes"	0.1311	0.0328	False	False	False	False	0
+1703	18	110	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chest bigger than the suitcase?"	no	"from the context lines, we know that the box is bigger than the chest (line 2) and the box fits inside the suitcase (line 5). this implies that the suitcase is bigger than the box. since the box is bigger than the chest, and the suitcase is bigger than the box, we can logically conclude that the suitcase is bigger than the chest. therefore, the chest is not bigger than the suitcase, which aligns with the provided answer ""no""."	none	no	True	The chest fits inside the container, and the container is bigger than the chest. This means the chest is not bigger than the container. The suitcase is bigger than the box, and the box is bigger than the chest. Therefore, the chest is not bigger than the suitcase.		"Reasoning: The chest fits inside the container, and the container is bigger than the chest. This means the chest is not bigger than the container. The suitcase is bigger than the box, and the box is bigger than the chest. Therefore, the chest is not bigger than the suitcase.
+
+Answer: no"	0.1129	0.0323	False	False	False	False	0
+1704	18	110	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chest fit in the suitcase?"	yes	"from the context lines, we know that the box fits inside the suitcase (line 5) and the box is bigger than the chest (line 2). since the box fits inside the suitcase and the box is bigger than the chest, it is logical to conclude that the chest, being smaller than the box, will also fit inside the suitcase. therefore, the answer to the question ""does the chest fit in the suitcase?"" is indeed ""yes""."	none	no	False	The chest fits inside the container, and the container is bigger than the chest. The suitcase is bigger than the box, and the box is bigger than the chest. Since the box fits inside the suitcase, and the chest is smaller than the box, the chest does not fit inside the suitcase.		"Reasoning: The chest fits inside the container, and the container is bigger than the chest. The suitcase is bigger than the box, and the box is bigger than the chest. Since the box fits inside the suitcase, and the chest is smaller than the box, the chest does not fit inside the suitcase.
+
+Answer: no"	0.1364	0.0303	False	False	False	False	0
