@@ -89,8 +89,9 @@ class Prompt:
         self.original_text: str = self.text + "\n"
         self.examples = ""
         if self.tokenizer:
+            self.prompt_lines = [line for line in self.text.split("\n") if line]
             self.orig_tokens, self.orig_ids, self.orig_sent_spans = sents_to_ids(
-                nlp(self.text).sents, self.tokenizer
+                self.prompt_lines, self.tokenizer
             )
             self.orig_ids[-1].extend(self.newline_ids)
             self.orig_tokens[-1].extend(self.newline_tokens)
@@ -130,9 +131,6 @@ class Prompt:
         ids_so_far, tokens_so_far = [], []
         spans_with_types_so_far = {}
         self.offset = self.orig_offset
-        # student_messages = flatten(
-        #     [flatten_message(message) for message in student_messages]
-        # )
 
         for key, hist in self.history.items():
             intro, outro = hist["before"], hist.get("after", hist["before"])
@@ -205,6 +203,7 @@ class Prompt:
             chunks = [intro, student_message, outro]
             for chunk in chunks:
                 assert type(chunk) is dict
+                # this is an empty message
                 if not chunk.get("content", False):
                     generation_token_ids = [
                         self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")
@@ -214,23 +213,47 @@ class Prompt:
 
                 teacher_string += chunk.get("content", "")
                 orig_teacher_string += chunk.get("original_content", "")
-                if type(chunk["ids"]) is int:
+                # this is a flat message
+                if chunk["ids"] and type(chunk["ids"][0]) is int:
                     teacher_ids.append(chunk["ids"])
                     teacher_tokens.append(chunk["tokens"])
                 else:
+                    # this is a list of lists
                     teacher_ids.extend(chunk["ids"])
                     teacher_tokens.extend(chunk["tokens"])
 
+                print("DEBUG: chunk", chunk["content"])
+
                 if chunk.get("spans_with_types", False):
+                    # this is the actual student message
                     spans_types = chunk["spans_with_types"]
-                    upd_spans = {
-                        upd_span(span, offset): f"{type_}_"
-                        for span, type_ in spans_types.items()
-                    }
+                    upd_spans = {}
+                    for span, type_ in spans_types.items():
+                        if upd_spans:
+                            last_span = list(upd_spans.keys())[-1]
+                        else:
+                            last_span = list(spans_with_types.keys())[-1]
+                        start = last_span[1]
+                        end = start + span[1] - span[0]
+                        upd_spans[(start, end)] = type_
+                    # upd_spans = {
+                    #     upd_span(span, offset): f"{type_}_"
+                    #     for span, type_ in spans_types.items()
+                    # }
                     spans_with_types.update(upd_spans)
-                    offset += len(flatten(chunk["ids"]))
-                else:
-                    raise ValueError(f"Chunk does not have spans with types: {chunk}")
+                elif chunk.get("sent_spans", False):
+                    # this is a wrapper
+                    span = chunk.get("sent_spans", ())
+                    if spans_with_types:
+                        last_span = list(spans_with_types.keys())[-1]
+                        start = last_span[1]
+                        end = start + span[1] - span[0]
+                        span = (start, end)
+                    spans_with_types.update({span: "wrap"})
+
+                # otherwise, empty message
+
+                offset += len(flatten(chunk["ids"]))
 
         print(
             "Teacher's message:",
@@ -264,8 +287,7 @@ class Prompt:
         :return: the formulated resume prompt
         """
         resume_str = ""
-        resume_ids = []
-        resume_tokens = []
+        resume_ids, resume_tokens = [], []
 
         message = {
             "content": corrected_student_str,
@@ -298,19 +320,6 @@ class Prompt:
             "tokens": resume_tokens,
         }
 
-    # def format_feedback_message(self, part: SamplePart, cot_to_evaluate: str) -> str:
-    #     """
-    #     Format a feedback message for the teacher model.
-    #
-    #     :param part: the part of the sample to evaluate
-    #     :param cot_to_evaluate: the chain of thought to evaluate
-    #     :return: the formatted feedback message
-    #     """
-    #     formatted_part = f"{part.structured_context}\n{part.structured_question}"
-    #
-    #     formatted_with_cot = f"{self.text}\n{formatted_part}"
-    #     return formatted_with_cot + "\n" + cot_to_evaluate
-
     def format_refine_message(
         self, student_message: dict, teacher_feedback: dict
     ) -> dict:
@@ -325,7 +334,13 @@ class Prompt:
         refine_str = ""
         refine_ids = []
         refine_tokens = []
-        for i, line in enumerate(self.original_text.split("\n")):
+        print("DEBUG: Refine Prompt", self.original_text)
+        print("DEBUG: prompt_lines", self.prompt_lines)
+        print("len(prompt_lines)", len(self.prompt_lines))
+        print("len(self.orig_ids)", len(self.orig_ids))
+        print("len(self.orig_tokens)", len(self.orig_tokens))
+        print("self.orig_tokens", self.orig_tokens, sep="\n")
+        for i, line in enumerate(self.prompt_lines):
             if "student_output" in line:
                 refine_str += student_message["content"]
                 refine_ids.extend(student_message["ids"])
@@ -336,8 +351,8 @@ class Prompt:
                 refine_tokens.extend(teacher_feedback["tokens"])
             else:
                 refine_str += line + "\n"
-                refine_ids.extend(self.orig_ids[i])
-                refine_tokens.extend(self.orig_tokens[i])
+                refine_ids.append(self.orig_ids[i])
+                refine_tokens.append(self.orig_tokens[i])
         print(
             "Formatted refine message:",
             refine_str,

@@ -787,25 +787,7 @@ class SpeculativeDecoding(Setting):
         original_student_chat.move_approved_message(self.student.chat)
         self.student.chat = original_student_chat
 
-        # call the interpretability with the final chat
-        chat_ids = self.student.chat.convert_into_datatype("ids", identify_target=False)
-        output_tensor = self.student.model(
-            chat_ids,
-            return_dict=True,
-            output_attentions=True,
-            output_hidden_states=False,
-        )
-        interpretability = self.student.interpretability.process_attention(
-            # output tensor includes all the previous ids + the model output
-            output_tensor=output_tensor,
-            # chat includes the current model output but the processing should not!
-            chat=self.student.chat,
-            chat_ids=chat_ids,
-            part=self.part,
-            keyword="after",
-        )
-
-        return decoded_output, self.curr_eval_dict, interpretability
+        return decoded_output, self.curr_eval_dict, self.get_after_interpretability()
 
     # def string_to_tokens(self, model_out: str) -> list[str]:
     #     """

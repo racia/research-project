@@ -132,10 +132,11 @@ class Chat:
     def add_message(
         self,
         part: SamplePart | str | dict,
-        source: Union[Source.user, Source.assistant],
+        source: Union[Source.user, Source.assistant] = None,
         ids: torch.Tensor | list[int] = None,
         tokens: list[str] = None,
         wrapper: dict[str, dict] = None,
+        **kwargs,
     ) -> None:
         """
         Add a message to the messages list. It can add either a message from the part task or assistant output.
@@ -151,6 +152,8 @@ class Chat:
         :param wrapper: the wrapper ids and sentence spans of the message
         :return: None
         """
+        if kwargs:
+            warnings.warn("Unused keyword arguments: " + ", ".join(kwargs.keys()))
         if (
             wrapper
             and (ids is not None or type(part) in [str, dict])
@@ -159,6 +162,7 @@ class Chat:
             raise ValueError(
                 "Wrapper can only be used for the messages created from scratch, and now, ids are passed."
             )
+
         message_fields = (
             "role",
             "content",
@@ -167,25 +171,50 @@ class Chat:
             "ids",
             "spans_with_types",
         )
-        # it is a pre-created message (used in SD)
+        self.part = part
+        spans_with_types = {}
+        part_dict = {}
+        # TODO: overlapping spans
+        # DEBUG: case SamplePart and Wrapper
+        # sentence 10. John went to the office.
+        # sentence 11. Mary travelled to the office.
+        # sentence Where is the milk?
+
+        # {(405, 414): 'wrap', (414, 423): 'cont', (422, 431): 'cont', (430, 437): 'wrap', (437, 444): 'ques'}
+        # DEBUG: chunk {'role': 'user', 'content': '*TASK*\nHere are the context sentences:\n4. Sandra grabbed the football there.\n5.
+        # Sandra dropped the milk.\n\nNow, answer the following question:\nWhere is the milk?', 'original_content': '4.
+        # Sandra grabbed the football there.\n5. Sandra dropped the milk.\nWhere is the milk?', 'tokens': [['*T', 'ASK', '*Ċ',
+        # 'Here', 'Ġare', 'Ġthe', 'Ġcontext', 'Ġsentences', ':Ċ'], ['4', '.', 'ĠSandra', 'Ġgrabbed', 'Ġthe', 'Ġfootball', 'Ġthere', '.Ċ'],
+        # ['5', '.', 'ĠSandra', 'Ġdropped', 'Ġthe', 'Ġmilk', '.Ċ'], ['Now', ',', 'Ġanswer', 'Ġthe', 'Ġfollowing', 'Ġquestion', ':Ċ'],
+        # ['Where', 'Ġis', 'Ġthe', 'Ġmilk', '?Ċ']], 'ids': [[61734, 7536, 5736, 8586, 527, 279, 2317, 23719, 512], [19, 13, 56786, 30418,
+        # 279, 9141, 1070, 627], [20, 13, 56786, 12504, 279, 14403, 627], [7184, 11, 4320, 279, 2768, 3488, 512], [9241, 374, 279, 14403,
+        # 5380]], 'spans_with_types': {(484, 493): 'wrap', (493, 502): 'cont', (501, 510): 'cont', (508, 515): 'wrap', (515, 522): 'ques'}}
+
+        # DEBUG: chunk {'role': 'user', 'content': '*TASK*\nHere are the context sentences:\n7. Sandra discarded the football.\n8. Sandra
+        # went to the hallway.\n\nNow, answer the following question:\nWhere is the milk?', 'original_content': '7. Sandra discarded the
+        # football.\n8. Sandra went to the hallway.\nWhere is the milk?', 'tokens': [['*T', 'ASK', '*Ċ', 'Here', 'Ġare', 'Ġthe', 'Ġcontext',
+        # 'Ġsentences', ':Ċ'], ['7', '.', 'ĠSandra', 'Ġdiscarded', 'Ġthe', 'Ġfootball', '.Ċ'], ['8', '.', 'ĠSandra', 'Ġwent', 'Ġto', 'Ġthe',
+        # 'Ġhallway', '.Ċ'], ['Now', ',', 'Ġanswer', 'Ġthe', 'Ġfollowing', 'Ġquestion', ':Ċ'], ['Where', 'Ġis', 'Ġthe', 'Ġmilk', '?Ċ']],
+        # 'ids': [[61734, 7536, 5736, 8586, 527, 279, 2317, 23719, 512], [22, 13, 56786, 44310, 279, 9141, 627], [23, 13, 56786, 4024, 311,
+        # 279, 51902, 627], [7184, 11, 4320, 279, 2768, 3488, 512], [9241, 374, 279, 14403, 5380]], 'spans_with_types': {(430, 439): 'wrap',
+        # (439, 448): 'cont', (446, 455): 'cont', (454, 461): 'wrap', (461, 468): 'ques'}}
+
+        # it is a pre-created message (used in SD and Feedback)
         if isinstance(part, dict):
             if all(key in part for key in message_fields):
+                print("DEBUG: case dict and all keys present")
                 part["spans_with_types"] = {
                     upd_span(span, self.offset): f"{type_}_"
                     for span, type_ in part["spans_with_types"].items()
                 }
                 self.offset += len(flatten(["ids"]))
-                self.messages.append(part)
-                return
+                part_dict = part
             else:
                 raise ValueError(
                     f"The part is a dictionary, but not all required fields are present: {part}"
                 )
-
-        self.part = part
-        spans_with_types = {}
         # it is certainly a task
-        if isinstance(part, SamplePart):
+        elif isinstance(part, SamplePart):
             if wrapper:
                 tokens, ids = [], []
                 for key, wrap in wrapper.items():
@@ -253,7 +282,7 @@ class Chat:
                 spans_with_types[upd_span((0, len(ids)), self.offset)] = label
                 self.offset += len(ids)
 
-        part_dict = {
+        part_dict = part_dict or {
             "role": source,
             "content": part if isinstance(part, str) else part.task,
             "original_content": part if isinstance(part, str) else part.unwrapped_task,
