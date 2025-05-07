@@ -33,7 +33,6 @@ settings/baseline/results/*
 
 # Results
 outputs/
-results/
 
 # Testing scripts
 test*.sh
