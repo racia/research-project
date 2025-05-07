@@ -197,7 +197,7 @@ class Interpretability:
                 f"* {i} {type_} *" if span in chat.supp_sent_spans else f"{i} {type_}"
                 for i, (span, type_) in enumerate(spans_with_types.items(), 1)
             ]
-            max_attn_ratio = get_max_attn_ratio(attn_scores, supp_sent_idx)
+            max_supp_attn_ratio = get_max_attn_ratio(attn_scores, supp_sent_idx)
             attn_on_target = get_attn_on_target(attn_scores, supp_sent_idx)
         else:
             sys_prompt_len = len(flatten(chat.messages[0]["ids"]))
@@ -224,7 +224,7 @@ class Interpretability:
                 for i, tok in enumerate(x_tokens)
                 if i in attention_indices
             ]
-            max_attn_ratio = get_max_attn_ratio(attn_scores, flat_supp_sent_ranges)
+            max_supp_attn_ratio = get_max_attn_ratio(attn_scores, flat_supp_sent_ranges)
             attn_on_target = get_attn_on_target(attn_scores, flat_supp_sent_ranges)
 
         if not chat.messages[-1]["tokens"][0]:
@@ -241,7 +241,7 @@ class Interpretability:
             attn_scores,
             x_tokens,
             y_tokens,
-            max_attn_ratio,
+            max_supp_attn_ratio,
             attn_on_target,
             "aggregated" if aggregate else "verbose",
         )

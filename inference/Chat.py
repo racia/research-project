@@ -13,7 +13,7 @@ from inference.utils import (
     flatten,
     get_generation_token_ids,
     sents_to_ids,
-    upd_span,
+    update_span,
 )
 
 
@@ -83,8 +83,6 @@ class Chat:
             )
         deleted_message = self.messages.pop(i)
         self.offset -= len(flatten(deleted_message["ids"]))
-        if deleted_message["role"] == Source.assistant:
-            self.supp_sent_spans = []
 
     def adjust_message(
         self, partial_output: str, partial_ids: int | list[int] | torch.Tensor
@@ -174,37 +172,12 @@ class Chat:
         self.part = part
         spans_with_types = {}
         part_dict = {}
-        # TODO: overlapping spans
-        # DEBUG: case SamplePart and Wrapper
-        # sentence 10. John went to the office.
-        # sentence 11. Mary travelled to the office.
-        # sentence Where is the milk?
-
-        # {(405, 414): 'wrap', (414, 423): 'cont', (422, 431): 'cont', (430, 437): 'wrap', (437, 444): 'ques'}
-        # DEBUG: chunk {'role': 'user', 'content': '*TASK*\nHere are the context sentences:\n4. Sandra grabbed the football there.\n5.
-        # Sandra dropped the milk.\n\nNow, answer the following question:\nWhere is the milk?', 'original_content': '4.
-        # Sandra grabbed the football there.\n5. Sandra dropped the milk.\nWhere is the milk?', 'tokens': [['*T', 'ASK', '*Ċ',
-        # 'Here', 'Ġare', 'Ġthe', 'Ġcontext', 'Ġsentences', ':Ċ'], ['4', '.', 'ĠSandra', 'Ġgrabbed', 'Ġthe', 'Ġfootball', 'Ġthere', '.Ċ'],
-        # ['5', '.', 'ĠSandra', 'Ġdropped', 'Ġthe', 'Ġmilk', '.Ċ'], ['Now', ',', 'Ġanswer', 'Ġthe', 'Ġfollowing', 'Ġquestion', ':Ċ'],
-        # ['Where', 'Ġis', 'Ġthe', 'Ġmilk', '?Ċ']], 'ids': [[61734, 7536, 5736, 8586, 527, 279, 2317, 23719, 512], [19, 13, 56786, 30418,
-        # 279, 9141, 1070, 627], [20, 13, 56786, 12504, 279, 14403, 627], [7184, 11, 4320, 279, 2768, 3488, 512], [9241, 374, 279, 14403,
-        # 5380]], 'spans_with_types': {(484, 493): 'wrap', (493, 502): 'cont', (501, 510): 'cont', (508, 515): 'wrap', (515, 522): 'ques'}}
-
-        # DEBUG: chunk {'role': 'user', 'content': '*TASK*\nHere are the context sentences:\n7. Sandra discarded the football.\n8. Sandra
-        # went to the hallway.\n\nNow, answer the following question:\nWhere is the milk?', 'original_content': '7. Sandra discarded the
-        # football.\n8. Sandra went to the hallway.\nWhere is the milk?', 'tokens': [['*T', 'ASK', '*Ċ', 'Here', 'Ġare', 'Ġthe', 'Ġcontext',
-        # 'Ġsentences', ':Ċ'], ['7', '.', 'ĠSandra', 'Ġdiscarded', 'Ġthe', 'Ġfootball', '.Ċ'], ['8', '.', 'ĠSandra', 'Ġwent', 'Ġto', 'Ġthe',
-        # 'Ġhallway', '.Ċ'], ['Now', ',', 'Ġanswer', 'Ġthe', 'Ġfollowing', 'Ġquestion', ':Ċ'], ['Where', 'Ġis', 'Ġthe', 'Ġmilk', '?Ċ']],
-        # 'ids': [[61734, 7536, 5736, 8586, 527, 279, 2317, 23719, 512], [22, 13, 56786, 44310, 279, 9141, 627], [23, 13, 56786, 4024, 311,
-        # 279, 51902, 627], [7184, 11, 4320, 279, 2768, 3488, 512], [9241, 374, 279, 14403, 5380]], 'spans_with_types': {(430, 439): 'wrap',
-        # (439, 448): 'cont', (446, 455): 'cont', (454, 461): 'wrap', (461, 468): 'ques'}}
-
         # it is a pre-created message (used in SD and Feedback)
         if isinstance(part, dict):
             if all(key in part for key in message_fields):
                 print("DEBUG: case dict and all keys present")
                 part["spans_with_types"] = {
-                    upd_span(span, self.offset): f"{type_}_"
+                    update_span(span, self.offset): f"{type_}_"
                     for span, type_ in part["spans_with_types"].items()
                 }
                 self.offset += len(flatten(["ids"]))
@@ -241,21 +214,42 @@ class Chat:
                         for tokens, ids, spans in zip(task_tokens, task_ids, task_spans)
                     ]
                     chunks = [intro, *task_chunks, outro]
+                    last_span = ()
                     for i, chunk in enumerate(chunks):
                         if chunk.get("ids", None):
                             tokens.append(chunk["tokens"])
                             ids.append(chunk["ids"])
                             type_ = chunk["type"] if chunk.get("type", None) else "wrap"
-                            updated_span = upd_span(intro["sent_spans"], self.offset)
-                            spans_with_types[updated_span] = type_
-                            self.offset += len(flatten(chunk["ids"]))
+                            upd_span = update_span(chunk["sent_spans"], self.offset)
+
+                            if last_span and last_span[1] != upd_span[0]:
+                                print("DEBUG: chunks", *chunks)
+                                raise ValueError(
+                                    f"Span mismatch: {last_span} vs {upd_span}"
+                                )
+                            last_span = upd_span
+                            spans_with_types[upd_span] = type_
+                            flat_chunk_ids = flatten(chunk["ids"])
+                            self.offset += len(flat_chunk_ids)
+
+                            if len(flat_chunk_ids) != upd_span[1] - upd_span[0]:
+                                print("DEBUG: chunks", *chunks)
+                                print("flat_chunk_ids", flat_chunk_ids)
+                                print("upd_span difference", upd_span[1] - upd_span[0])
+                                raise ValueError(
+                                    f"Span length mismatch: {flatten(chunk['ids'])}, {chunk['sent_spans']} vs {upd_span}"
+                                )
+
+                        else:
+                            print("Chat ids is none")
+                            print("DEBUG: chunks", *chunks)
 
             else:
                 tokens, ids, sent_spans = sents_to_ids(
                     part.unwrapped_task.split("\n"), self.tokenizer
                 )
                 spans_with_types.update(
-                    {upd_span(span, self.offset): "task" for span in sent_spans}
+                    {update_span(span, self.offset): "task" for span in sent_spans}
                 )
         else:
             # it is a string
@@ -263,7 +257,10 @@ class Chat:
                 # it is a formatted prompt (string prompt) => task
                 tokens, ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
                 spans_with_types.update(
-                    {upd_span(span, self.offset): "teacher task" for span in sent_spans}
+                    {
+                        update_span(span, self.offset): "teacher task"
+                        for span in sent_spans
+                    }
                 )
             else:
                 # it is certainly an assistant output
@@ -279,7 +276,7 @@ class Chat:
                 elif type(tokens[0]) is str:
                     tokens = [tokens]
                 label = "ans" if source == Source.assistant else "task"
-                spans_with_types[upd_span((0, len(ids)), self.offset)] = label
+                spans_with_types[update_span((0, len(ids)), self.offset)] = label
                 self.offset += len(ids)
 
         part_dict = part_dict or {
@@ -326,7 +323,7 @@ class Chat:
                         message_ids.extend(chunk["ids"])
                         message_tokens.extend(chunk["tokens"])
 
-                    updated_span = upd_span(chunk["sent_spans"], self.offset)
+                    updated_span = update_span(chunk["sent_spans"], self.offset)
                     spans_with_types[updated_span] = chunk.get("type", "wrap")
                     self.offset += len(flatten(chunk["ids"]))
             approved_message = {
