@@ -148,7 +148,8 @@ class Setting(ABC):
                     end="\n\n\n",
                 )
                 sample.add_golden_answers(self.part.golden_answer)
-                sample.add_silver_reasoning(self.part.silver_reasoning)
+                if self.part.silver_reasoning:
+                    sample.add_silver_reasoning(self.part.silver_reasoning)
 
                 # Only run the model if the results are not loaded
                 if not self.part.results:

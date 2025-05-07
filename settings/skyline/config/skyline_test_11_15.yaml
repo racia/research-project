@@ -1,6 +1,6 @@
 defaults:
   # running this script will pull the prompt in this file over the prompt in baseline_config file
-  - baseline_config
+  - skyline_config
   - _self_
 
 model:
@@ -27,4 +27,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "${oc.env:HOME}/research-project/results/baseline/test/reasoning/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "${oc.env:HOME}/research-project/results/skyline/test/reasoning/${now:%d-%m-%Y}/${now:%H-%M-%S}"
