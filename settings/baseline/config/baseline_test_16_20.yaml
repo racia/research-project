@@ -4,7 +4,7 @@ defaults:
   - _self_
 
 model:
-  max_new_tokens: 15
+  max_new_tokens: 150
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
@@ -17,7 +17,7 @@ data:
 
 init_prompt:
   paths:
-    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_direct_answer.txt"
+    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
 
 logging:
   # if to print the results to a log file, otherwise will print to console
@@ -27,4 +27,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "${oc.env:HOME}/research-project/results/baseline/test/da/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "${oc.env:HOME}/research-project/results/baseline/test/reasoning/${now:%d-%m-%Y}/${now:%H-%M-%S}"
