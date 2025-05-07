@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1041	12	59	1	"*TASK*
+Here are the context sentences:
+1. John and Daniel moved to the bedroom.
+2. Daniel and Sandra went back to the kitchen.
+
+Now, answer the following question:
+Where is John?"	bedroom	from the context sentences, we know that john and daniel moved to the bedroom together (sentence 1). there is no information about john leaving the bedroom or moving to any other location. although daniel left the bedroom and went back to the kitchen with sandra (sentence 2), there is no indication that john accompanied them. therefore, based on the provided information, john is still in the bedroom.	fully	bedroom	True	Since John and Daniel moved to the bedroom together, it is likely that John is still in the bedroom.		"Reasoning: Since John and Daniel moved to the bedroom together, it is likely that John is still in the bedroom.
+
+Answer: bedroom"	0.0357	0.0357	False	False	False	False	0
+1042	12	59	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Sandra went back to the bathroom.
+5. John and Sandra journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from the context sentences, we know that daniel and sandra went back to the bathroom together (sentence 4). however, in sentence 5, it is stated that john and sandra journeyed to the kitchen. this implies that sandra left the bathroom and went to the kitchen with john. therefore, based on the provided information, sandra is currently in the kitchen.	fully	kitchen	True	Sandra is mentioned in both sentences, and her location changes. Initially, she went back to the bathroom with Daniel, but then she journeyed to the kitchen with John.		"Reasoning: Sandra is mentioned in both sentences, and her location changes. Initially, she went back to the bathroom with Daniel, but then she journeyed to the kitchen with John.
+
+Answer: kitchen"	0.0732	0.0244	False	False	False	True	0
+1043	12	59	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Sandra went to the bedroom.
+8. Sandra and Daniel went to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from the context sentences, we know that daniel and sandra went to the bedroom together (sentence 7). however, in sentence 8, it is stated that sandra and daniel went to the kitchen. this implies that sandra left the bedroom and went to the kitchen with daniel. therefore, based on the provided information, sandra is currently in the kitchen.	fully	kitchen	True	Sandra's location changes in the two sentences. Initially, she went to the bedroom with Daniel, but then she went to the kitchen with Daniel again.		"Reasoning: Sandra's location changes in the two sentences. Initially, she went to the bedroom with Daniel, but then she went to the kitchen with Daniel again.
+
+Answer: kitchen"	0.0	0.027	False	False	False	False	0
+1044	12	59	4	"*TASK*
+Here are the context sentences:
+10. Daniel and John went back to the bathroom.
+11. Daniel and Sandra travelled to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from the context sentences, we know that daniel and john went back to the bathroom together (sentence 10). however, in sentence 11, it is stated that daniel and sandra travelled to the hallway. this implies that daniel left the bathroom and went to the hallway with sandra. therefore, based on the provided information, daniel is currently in the hallway.	fully	hallway	True	Daniel's location changes in the two sentences. Initially, he went back to the bathroom with John, but then he travelled to the hallway with Sandra.		"Reasoning: Daniel's location changes in the two sentences. Initially, he went back to the bathroom with John, but then he travelled to the hallway with Sandra.
+
+Answer: hallway"	0.1351	0.027	False	False	False	False	0
+1045	12	59	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Mary moved to the kitchen.
+14. Mary and John journeyed to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	from the context sentences, we know that daniel and mary moved to the kitchen together (sentence 13). however, in sentence 14, it is stated that mary and john journeyed to the bedroom. this implies that mary left the kitchen and went to the bedroom with john. therefore, based on the provided information, john is currently in the bedroom.	fully	bedroom	True	John's location changes in the sentence. Initially, he journeyed to the bedroom with Mary.		"Reasoning: John's location changes in the sentence. Initially, he journeyed to the bedroom with Mary.
+
+Answer: bedroom"	0.0	0.0385	False	False	False	False	0

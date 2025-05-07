@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	Ġthat	ĠFred	Ġwent	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġmention	Ġwhere	Ġhe	Ġwas	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.	ĠHowever	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠFred	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	,	Ġas	Ġhe	Ġhad	Ġto	Ġtravel	Ġto	Ġget	Ġthere	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

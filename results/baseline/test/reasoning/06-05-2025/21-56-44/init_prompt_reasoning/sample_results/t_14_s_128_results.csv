@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2886	14	128	1	"*TASK*
+Here are the context sentences:
+1. This morning Bill travelled to the office.
+2. Yesterday Bill went back to the school.
+
+Now, answer the following question:
+Where was Bill before the office?"	school	from the context sentences, we know that bill travelled to the office this morning (sentence 1). to determine where bill was before the office, we need to look at the previous location mentioned in the context sentences. sentence 2 states that bill went back to the school yesterday. since bill went back to the school yesterday and travelled to the office this morning, it can be logically inferred that bill was at the school before going to the office.	fully	school	True	Since Bill went back to the school yesterday, it implies that he was at the office the day before yesterday. Therefore, before going to the office this morning, Bill was at the school.		"Reasoning: Since Bill went back to the school yesterday, it implies that he was at the office the day before yesterday. Therefore, before going to the office this morning, Bill was at the school.
+
+Answer: school"	0.1556	0.0444	False	False	False	False	0
+2887	14	128	2	"*TASK*
+Here are the context sentences:
+4. Bill travelled to the school this evening.
+5. This afternoon Bill went back to the park.
+
+Now, answer the following question:
+Where was Bill before the park?"	office	there is no direct information about bill's location before the park in the provided context sentences. however, we can infer the answer by analyzing the sequence of events. sentence 5 states that bill went back to the park this afternoon, which implies that bill was somewhere else before coming back to the park. sentence 4 mentions that bill travelled to the school this evening, but since it's an evening event and the question is about the afternoon, it's not relevant to this question. since	partially	school	False	Since Bill went back to the park this afternoon, it implies that he was at the school this evening. Therefore, before going back to the park, Bill was at the school.		"Reasoning: Since Bill went back to the park this afternoon, it implies that he was at the school this evening. Therefore, before going back to the park, Bill was at the school.
+
+Answer: school"	0.093	0.0465	False	False	False	False	0
+2888	14	128	3	"*TASK*
+Here are the context sentences:
+7. Yesterday Julie moved to the school.
+8. Fred moved to the cinema yesterday.
+
+Now, answer the following question:
+Where was Bill before the school?"	park	"the provided context sentences (7 and 8) do not mention bill at all. they talk about julie and fred moving to the school and cinema respectively. however, the answer suggests that bill was at the park before the school. to find the connection, we need to look at the previous parts of the conversation history. in the previous parts, we had sentences about bill's movements, including ""this afternoon bill went back to the park"" (sentence 5). since bill went back"	none	not mentioned	False	There is no information provided about Bill's location before the school. The context sentences only mention Julie and Fred's movements, but not Bill's.		"Reasoning: There is no information provided about Bill's location before the school. The context sentences only mention Julie and Fred's movements, but not Bill's.
+
+Answer: not mentioned"	0.0811	0.0541	False	False	False	True	0
+2889	14	128	4	"*TASK*
+Here are the context sentences:
+10. This morning Fred went back to the park.
+11. Julie went back to the office this morning.
+
+Now, answer the following question:
+Where was Fred before the park?"	cinema	sentence 10 states that fred went back to the park this morning, which implies that fred was somewhere else before coming back to the park. although there is no direct information about fred's previous location, we can infer the answer by analyzing the conversation history. in sentence 8, it is mentioned that fred moved to the cinema yesterday. since fred went back to the park this morning, it is logical to assume that fred was at the cinema before going back to the park.	partially	cinema	True	Since Fred went back to the park this morning, it implies that he was at the cinema yesterday. Therefore, before going back to the park, Fred was at the cinema.		"Reasoning: Since Fred went back to the park this morning, it implies that he was at the cinema yesterday. Therefore, before going back to the park, Fred was at the cinema.
+
+Answer: cinema"	0.0	0.0476	False	False	False	False	0
+2890	14	128	5	"*TASK*
+Here are the context sentences:
+13. Fred went back to the kitchen this afternoon.
+14. Yesterday Mary moved to the kitchen.
+
+Now, answer the following question:
+Where was Fred before the park?"	cinema	the provided context sentences (13 and 14) do not directly mention fred's location before the park. however, we can infer the answer by analyzing the conversation history. in sentence 10, it is mentioned that fred went back to the park this morning. since fred went back to the park, it implies that fred was somewhere else before coming back to the park. in sentence 8, it is mentioned that fred moved to the cinema yesterday. there is no information about fred's	none	not mentioned	False	The question asks about Fred's location before the park, but the context sentences do not mention Fred's location before the park. The sentences only mention Fred's movement to the park, but not his previous location.		"Reasoning: The question asks about Fred's location before the park, but the context sentences do not mention Fred's location before the park. The sentences only mention Fred's movement to the park, but not his previous location.
+
+Answer: not mentioned"	0.04	0.04	False	False	False	True	0

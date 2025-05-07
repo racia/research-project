@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠBill	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	Ġ(	from	Ġcontext	Ġsentences	Ġ	11	Ġand	Ġ	12	),	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	,	Ġit	Ġis	Ġlogical	Ġto	Ġassume	Ġthat	ĠBill	Ġwas	Ġat	Ġthe	Ġkitchen	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

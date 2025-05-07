@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3269	15	68	1	"*TASK*
+Here are the context sentences:
+1. Mice are afraid of sheep.
+2. Wolves are afraid of cats.
+3. Jessica is a wolf.
+4. Sheep are afraid of cats.
+5. Winona is a mouse.
+6. Cats are afraid of mice.
+7. Gertrude is a cat.
+8. Emily is a wolf.
+
+Now, answer the following question:
+What is gertrude afraid of?"	mouse	from sentence 7, we know that gertrude is a cat. from sentence 6, we know that cats are afraid of mice. therefore, gertrude, being a cat, is afraid of mice.	fully	mice	True	Gertrude is a cat, and according to sentence 6, cats are afraid of mice.		"Reasoning: Gertrude is a cat, and according to sentence 6, cats are afraid of mice.
+
+Answer: mice"	0.1852	0.0741	False	False	False	False	0
+3270	15	68	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	cat	from sentence 8, we know that emily is a wolf. from sentence 2, we know that wolves are afraid of cats. therefore, emily, being a wolf, is afraid of cats.	none	cats	True	Emily is a wolf, and according to sentence 2, wolves are afraid of cats.		"Reasoning: Emily is a wolf, and according to sentence 2, wolves are afraid of cats.
+
+Answer: cats"	0.0	0.08	False	False	False	False	0
+3271	15	68	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is jessica afraid of?"	cat	from sentence 3, we know that jessica is a wolf. from sentence 2, we know that wolves are afraid of cats. therefore, jessica, being a wolf, is afraid of cats.	none	cats	True	Jessica is a wolf, and according to sentence 2, wolves are afraid of cats.		"Reasoning: Jessica is a wolf, and according to sentence 2, wolves are afraid of cats.
+
+Answer: cats"	0.16	0.08	False	False	False	False	0
+3272	15	68	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	cat	from sentence 8, we know that emily is a wolf. from sentence 2, we know that wolves are afraid of cats. therefore, emily, being a wolf, is afraid of cats.	none	cats	True	Emily is a wolf, and according to sentence 2, wolves are afraid of cats.		"Reasoning: Emily is a wolf, and according to sentence 2, wolves are afraid of cats.
+
+Answer: cats"	0.0	0.08	False	False	False	False	0

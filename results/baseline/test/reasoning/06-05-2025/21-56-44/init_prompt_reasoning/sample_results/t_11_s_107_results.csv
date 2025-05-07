@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+531	11	107	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the garden.
+2. After that he travelled to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	the context sentences describe john's movements, stating that he first went to the garden and then travelled to the bedroom. since the last location mentioned is the bedroom, it can be logically inferred that john is currently in the bedroom.	fully	bedroom	True	John journeyed to the garden, then travelled to the bedroom. This implies that John is currently in the bedroom, as he has moved from the garden to the bedroom.		"Reasoning: John journeyed to the garden, then travelled to the bedroom. This implies that John is currently in the bedroom, as he has moved from the garden to the bedroom.
+
+Answer: bedroom"	0.1951	0.0488	False	False	False	False	0
+532	11	107	2	"*TASK*
+Here are the context sentences:
+4. Sandra went to the hallway.
+5. Then she went to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	the context sentences describe sandra's movements, stating that she first went to the hallway and then went to the bedroom. since the last location mentioned is the bedroom, it can be logically inferred that sandra is currently in the bedroom.	fully	bedroom	True	Sandra went to the hallway, then to the bedroom. This implies that Sandra is currently in the bedroom, as she has moved from the hallway to the bedroom.		"Reasoning: Sandra went to the hallway, then to the bedroom. This implies that Sandra is currently in the bedroom, as she has moved from the hallway to the bedroom.
+
+Answer: bedroom"	0.1282	0.0513	False	False	False	False	0
+533	11	107	3	"*TASK*
+Here are the context sentences:
+7. Daniel moved to the garden.
+8. Afterwards he journeyed to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	the context sentences describe daniel's movements, stating that he first moved to the garden and then journeyed to the office. since the last location mentioned is the office, it can be logically inferred that daniel is currently in the office.	fully	office	True	Daniel moved to the garden, then journeyed to the office. This implies that Daniel is currently in the office, as he has moved from the garden to the office.		"Reasoning: Daniel moved to the garden, then journeyed to the office. This implies that Daniel is currently in the office, as he has moved from the garden to the office.
+
+Answer: office"	0.0488	0.0488	False	False	False	False	0
+534	11	107	4	"*TASK*
+Here are the context sentences:
+10. Sandra moved to the garden.
+11. Then she moved to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	the context sentences describe sandra's movements, stating that she first moved to the garden and then moved to the bedroom. since the last location mentioned is the bedroom, it can be logically inferred that sandra is currently in the bedroom.	fully	bedroom	True	Sandra moved to the garden, then to the bedroom. This implies that Sandra is currently in the bedroom, as she has moved from the garden to the bedroom.		"Reasoning: Sandra moved to the garden, then to the bedroom. This implies that Sandra is currently in the bedroom, as she has moved from the garden to the bedroom.
+
+Answer: bedroom"	0.0256	0.0513	False	False	False	False	0
+535	11	107	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the kitchen.
+14. Then he went back to the office.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"the context sentences describe john's movements, but there is no mention of sandra's movements or location in these sentences. however, since the answer is ""bedroom"", it can be inferred that the correct information about sandra's location must be in the previous parts of the conversation history. therefore, the correct answer is based on the previous context lines 10 and 11, which stated that sandra moved to the garden and then moved to the bedroom."	none	not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only mention John's movements.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention John's movements.
+
+Answer: not mentioned"	0.0357	0.0714	False	False	False	True	0

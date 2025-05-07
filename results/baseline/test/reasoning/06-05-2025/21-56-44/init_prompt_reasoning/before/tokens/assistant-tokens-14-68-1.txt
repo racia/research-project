@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJulie	Ġtravelled	Ġto	Ġthe	Ġschool	Ġyesterday	Ġ(	sentence	Ġ	1	),	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	Ġ(	sentence	Ġ	3	).	ĠSince	Ġshe	Ġdidn	't	Ġtravel	Ġanywhere	Ġelse	Ġin	Ġbetween	,	Ġit	's	Ġlikely	Ġthat	Ġshe	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2786	14	108	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Mary travelled to the kitchen.
+2. This morning Fred travelled to the school.
+3. Julie moved to the cinema yesterday.
+4. Fred travelled to the park yesterday.
+
+Now, answer the following question:
+Where was Fred before the school?"	park	from the context sentences, we know that fred travelled to the school this morning (sentence 2). to determine where fred was before the school, we need to look at fred's previous location. sentence 4 states that fred travelled to the park yesterday. since fred travelled to the school this morning, it is logical to assume that fred was at the park before going to the school.	fully	park	True	Since Fred travelled to the school this morning, and he travelled to the park yesterday, it implies that he was at the park before going to the school.		"Reasoning: Since Fred travelled to the school this morning, and he travelled to the park yesterday, it implies that he was at the park before going to the school.
+
+Answer: park"	0.0	0.0526	False	False	False	False	0
+2787	14	108	2	"*TASK*
+Here are the context sentences:
+6. Bill journeyed to the park yesterday.
+7. Julie journeyed to the bedroom this morning.
+
+Now, answer the following question:
+Where was Fred before the school?"	park	"this question refers to a previous part of the conversation history. in the previous context, sentence 4 states that ""fred travelled to the park yesterday."" since the question asks about fred's location before going to the school, and sentence 2 states that ""this morning fred travelled to the school"", it is logical to conclude that fred was at the park before going to the school. the new context sentences (6 and 7) do not provide any new information about fred's location,"	none	Not mentioned	False	There is no information provided about Fred's location before the school. The context sentences only mention Bill's journey to the park and Julie's journey to the bedroom, but not Fred's location.		"Reasoning: There is no information provided about Fred's location before the school. The context sentences only mention Bill's journey to the park and Julie's journey to the bedroom, but not Fred's location.
+
+Answer: Not mentioned"	0.1522	0.0435	False	False	False	True	0
+2788	14	108	3	"*TASK*
+Here are the context sentences:
+9. This afternoon Julie went back to the kitchen.
+10. This morning Mary went back to the office.
+
+Now, answer the following question:
+Where was Fred before the school?"	park	"this question refers to a previous part of the conversation history. in the previous context, sentence 4 states that ""fred travelled to the park yesterday."" since the question asks about fred's location before going to the school, and sentence 2 states that ""this morning fred travelled to the school"", it is logical to conclude that fred was at the park before going to the school. the new context sentences (9 and 10) do not provide any new information about fred's location,"	none	Not mentioned	False	The context sentences do not provide any information about Fred's location before the school. The sentences only mention Julie's return to the kitchen and Mary's return to the office, but not Fred's location.		"Reasoning: The context sentences do not provide any information about Fred's location before the school. The sentences only mention Julie's return to the kitchen and Mary's return to the office, but not Fred's location.
+
+Answer: Not mentioned"	0.0417	0.0417	False	False	False	True	0
+2789	14	108	4	"*TASK*
+Here are the context sentences:
+12. Mary travelled to the cinema this afternoon.
+13. This morning Bill went back to the cinema.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	bedroom	"the question asks about julie's location before going to the kitchen. sentence 9 states that ""this afternoon julie went back to the kitchen"". to determine where julie was before going to the kitchen, we need to look at julie's previous location. sentence 7 states that ""julie journeyed to the bedroom this morning"". since julie went back to the kitchen in the afternoon, it is logical to conclude that julie was in the bedroom before going to the kitchen. the new context sentences"	none	Not mentioned	False	The context sentences do not provide any information about Julie's location before the kitchen. The sentences only mention Mary's travel to the cinema and Bill's return to the cinema, but not Julie's location.		"Reasoning: The context sentences do not provide any information about Julie's location before the kitchen. The sentences only mention Mary's travel to the cinema and Bill's return to the cinema, but not Julie's location.
+
+Answer: Not mentioned"	0.0417	0.0417	False	False	False	True	0
+2790	14	108	5	"*TASK*
+Here are the context sentences:
+15. This evening Julie moved to the bedroom.
+16. Mary travelled to the office this evening.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	park	"the question asks about bill's location before going to the cinema. sentence 6 states that ""bill journeyed to the park yesterday"". there is no information about bill's movement after that, but sentence 13 states that ""this morning bill went back to the cinema"". since bill went back to the cinema in the morning, it is logical to conclude that bill was at the park before going to the cinema. the new context sentences (15 and 16) do not provide any new"	none	Not mentioned	False	The context sentences do not provide any information about Bill's location before the cinema. The sentences only mention Julie's move to the bedroom and Mary's travel to the office, but not Bill's location.		"Reasoning: The context sentences do not provide any information about Bill's location before the cinema. The sentences only mention Julie's move to the bedroom and Mary's travel to the office, but not Bill's location.
+
+Answer: Not mentioned"	0.125	0.0417	False	False	False	True	0

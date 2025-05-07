@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1456	12	142	1	"*TASK*
+Here are the context sentences:
+1. Mary and John moved to the bathroom.
+2. Mary and John journeyed to the office.
+
+Now, answer the following question:
+Where is John?"	office	since mary and john moved to the bathroom (sentence 1), they were initially in the bathroom. however, sentence 2 states that they journeyed to the office, which implies that they left the bathroom and went to the office. therefore, john's current location is the office.	fully	office	True	Since Mary and John moved to the bathroom (sentence 1), and then journeyed to the office (sentence 2), it is likely that John is still with Mary in the office.		"Reasoning: Since Mary and John moved to the bathroom (sentence 1), and then journeyed to the office (sentence 2), it is likely that John is still with Mary in the office.
+
+Answer: office"	0.1111	0.0222	False	False	False	False	0
+1457	12	142	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Sandra travelled to the bathroom.
+5. Mary and Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	in sentence 4, daniel and sandra travelled to the bathroom, which means sandra was in the bathroom. however, in sentence 5, mary and sandra journeyed to the bedroom, which implies that sandra left the bathroom and went to the bedroom with mary. therefore, sandra's current location is the bedroom.	fully	bedroom	True	Sandra travelled to the bathroom with Daniel (sentence 4), and then journeyed to the bedroom with Mary (sentence 5). This suggests that Sandra is currently with Mary in the bedroom.		"Reasoning: Sandra travelled to the bathroom with Daniel (sentence 4), and then journeyed to the bedroom with Mary (sentence 5). This suggests that Sandra is currently with Mary in the bedroom.
+
+Answer: bedroom"	0.1111	0.0222	False	False	False	False	0
+1458	12	142	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Sandra went back to the kitchen.
+8. John and Daniel journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	in sentence 7, daniel and sandra went back to the kitchen, which means daniel was in the kitchen. however, in sentence 8, john and daniel journeyed to the hallway, which implies that daniel left the kitchen and went to the hallway with john. therefore, daniel's current location is the hallway.	fully	hallway	True	Daniel and Sandra went back to the kitchen (sentence 7), but then John and Daniel journeyed to the hallway (sentence 8). This implies that Daniel is now with John in the hallway.		"Reasoning: Daniel and Sandra went back to the kitchen (sentence 7), but then John and Daniel journeyed to the hallway (sentence 8). This implies that Daniel is now with John in the hallway.
+
+Answer: hallway"	0.0	0.0213	False	False	False	False	0
+1459	12	142	4	"*TASK*
+Here are the context sentences:
+10. John and Mary went to the garden.
+11. John and Mary went back to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	in sentence 10, john and mary went to the garden, which means john was in the garden. however, in sentence 11, john and mary went back to the hallway, which implies that john left the garden and returned to the hallway with mary. therefore, john's current location is the hallway.	fully	hallway	True	John and Mary went to the garden (sentence 10), but then they went back to the hallway (sentence 11). This suggests that John is currently with Mary in the hallway.		"Reasoning: John and Mary went to the garden (sentence 10), but then they went back to the hallway (sentence 11). This suggests that John is currently with Mary in the hallway.
+
+Answer: hallway"	0.0227	0.0227	False	False	False	False	0
+1460	12	142	5	"*TASK*
+Here are the context sentences:
+13. Mary and Daniel went to the garden.
+14. Daniel and Mary went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	in sentence 13, mary and daniel went to the garden, which means daniel was in the garden. however, in sentence 14, daniel and mary went back to the bathroom, which implies that daniel left the garden and returned to the bathroom with mary. therefore, daniel's current location is the bathroom.	fully	bathroom	True	Daniel and Mary went to the garden (sentence 13), but then they went back to the bathroom (sentence 14). This implies that Daniel is currently with Mary in the bathroom.		"Reasoning: Daniel and Mary went to the garden (sentence 13), but then they went back to the bathroom (sentence 14). This implies that Daniel is currently with Mary in the bathroom.
+
+Answer: bathroom"	0.0682	0.0227	False	False	False	False	0

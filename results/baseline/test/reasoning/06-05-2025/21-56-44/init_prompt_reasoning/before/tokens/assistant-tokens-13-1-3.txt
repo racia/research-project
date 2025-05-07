@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġand	ĠSandra	,	Ġand	Ġtheir	Ġmovements	.	ĠTherefore	,	Ġit	Ġis	Ġnot	Ġpossible	Ġto	Ġdetermine	ĠJohn	's	Ġlocation	Ġbased	Ġon	Ġthe	Ġprovided	Ġinformation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

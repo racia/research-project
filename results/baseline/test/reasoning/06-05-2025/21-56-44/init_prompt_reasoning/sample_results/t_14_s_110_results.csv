@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2796	14	110	1	"*TASK*
+Here are the context sentences:
+1. Julie went back to the office yesterday.
+2. This morning Julie moved to the bedroom.
+3. Yesterday Bill journeyed to the school.
+4. Fred went back to the office yesterday.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	office	from context sentence 2, we know that julie moved to the bedroom this morning. to determine where julie was before the bedroom, we need to look at the previous actions of julie. in context sentence 1, we are told that julie went back to the office yesterday. there is no other information about julie's movements between yesterday and this morning, so we can logically infer that julie was still in the office before moving to the bedroom this morning.	fully	office	True	Julie went back to the office yesterday, which implies she was somewhere else before going back to the office. Then, she moved to the bedroom this morning. Since she went back to the office yesterday, it's likely that she was at the office before moving to the bedroom.		"Reasoning: Julie went back to the office yesterday, which implies she was somewhere else before going back to the office. Then, she moved to the bedroom this morning. Since she went back to the office yesterday, it's likely that she was at the office before moving to the bedroom.
+
+Answer: office"	0.1452	0.0323	False	False	False	False	0
+2797	14	110	2	"*TASK*
+Here are the context sentences:
+6. Fred moved to the park this morning.
+7. Yesterday Mary went to the kitchen.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	office	the context sentences 6 and 7 do not provide any new information about julie's movements. we need to refer back to the previous context sentences to find the answer. from context sentence 2, we know that julie moved to the bedroom this morning. to determine where julie was before the bedroom, we need to look at the previous actions of julie. in context sentence 1, we are told that julie went back to the office yesterday. there is no other information about julie's	none	Not enough information to answer.	False	The previous question was about Julie, but the new context sentences don't provide any information about Julie. The question is asking about Julie's location before the bedroom, but there's no new information to answer this question.		"Reasoning: The previous question was about Julie, but the new context sentences don't provide any information about Julie. The question is asking about Julie's location before the bedroom, but there's no new information to answer this question.
+
+Answer: Not enough information to answer."	0.1455	0.0364	False	False	False	True	0
+2798	14	110	3	"*TASK*
+Here are the context sentences:
+9. Mary went to the cinema this morning.
+10. Bill went back to the park this morning.
+
+Now, answer the following question:
+Where was Fred before the park?"	office	the context sentences 9 and 10 do not provide any direct information about fred's movements before the park. however, we need to refer back to the previous context sentences to find the answer. in context sentence 6, we are told that fred moved to the park this morning. to determine where fred was before the park, we need to look at the previous actions of fred. in context sentence 4, we are told that fred went back to the office yesterday. there is	none	office	True	The previous context sentences mentioned that Fred moved to the park this morning (sentence 6). Since Fred was already at the park this morning, it's likely that he was at the office yesterday (sentence 4), as mentioned earlier.		"Reasoning: The previous context sentences mentioned that Fred moved to the park this morning (sentence 6). Since Fred was already at the park this morning, it's likely that he was at the office yesterday (sentence 4), as mentioned earlier.
+
+Answer: office"	0.0741	0.037	False	False	False	True	0
+2799	14	110	4	"*TASK*
+Here are the context sentences:
+12. Julie moved to the school this afternoon.
+13. This afternoon Fred travelled to the cinema.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	park	to determine where fred was before the cinema, we need to look at the previous actions of fred. in context sentence 6, we are told that fred moved to the park this morning. there is no other information about fred's movements between this morning and this afternoon, so we can logically infer that fred was still in the park before moving to the cinema this afternoon.	partially	park	True	The previous context sentences mentioned that Fred moved to the park this morning (sentence 6), and then travelled to the cinema this afternoon (sentence 13). Since Fred was already at the park this morning, it's likely that he was at the park before going to the cinema.		"Reasoning: The previous context sentences mentioned that Fred moved to the park this morning (sentence 6), and then travelled to the cinema this afternoon (sentence 13). Since Fred was already at the park this morning, it's likely that he was at the park before going to the cinema.
+
+Answer: park"	0.0317	0.0317	False	False	False	True	0
+2800	14	110	5	"*TASK*
+Here are the context sentences:
+15. Bill went back to the school this afternoon.
+16. This afternoon Mary went back to the bedroom.
+
+Now, answer the following question:
+Where was Bill before the school?"	park	"to determine where bill was before the school, we need to look at the previous actions of bill. in context sentence 3, we are told that bill journeyed to the school yesterday. there is no other information about bill's movements between yesterday and this afternoon, but we know that bill went back to the school this afternoon (context sentence 15). the phrase ""went back"" implies that bill had been to the school before and was returning to it. therefore, we can logically"	partially	park	True	The previous context sentences mentioned that Bill went back to the park this morning (sentence 10), and then went back to the school this afternoon (sentence 15). Since Bill was already at the park this morning, it's likely that he was at the park before going back to the school.		"Reasoning: The previous context sentences mentioned that Bill went back to the park this morning (sentence 10), and then went back to the school this afternoon (sentence 15). Since Bill was already at the park this morning, it's likely that he was at the park before going back to the school.
+
+Answer: park"	0.0455	0.0303	False	False	False	True	0

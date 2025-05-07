@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2231	13	147	1	"*TASK*
+Here are the context sentences:
+1. Mary and John journeyed to the garden.
+2. Then they journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	since mary and john journeyed to the garden in the first context sentence, we know that mary was in the garden at some point. however, the second context sentence states that they then journeyed to the bathroom, implying that mary moved from the garden to the bathroom with john. therefore, based on the sequence of events, it is logical to conclude that mary is currently in the bathroom.	fully	bathroom	True	Mary and John journeyed to the garden, and then they journeyed to the bathroom. Since Mary and John are together, it is likely that Mary is also in the bathroom.		"Reasoning: Mary and John journeyed to the garden, and then they journeyed to the bathroom. Since Mary and John are together, it is likely that Mary is also in the bathroom.
+
+Answer: bathroom"	0.186	0.0465	False	False	False	False	0
+2232	13	147	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John went back to the garden.
+5. After that they travelled to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that daniel and john went back to the garden (sentence 4), and then they travelled to the kitchen (sentence 5). since john was with daniel in both locations, it can be logically inferred that john moved from the garden to the kitchen with daniel. therefore, based on the sequence of events, it is reasonable to conclude that john is currently in the kitchen.	fully	kitchen	True	According to the context sentences, John went back to the garden with Daniel, and then they travelled to the kitchen. Since John is with Daniel, it is likely that John is also in the kitchen.		"Reasoning: According to the context sentences, John went back to the garden with Daniel, and then they travelled to the kitchen. Since John is with Daniel, it is likely that John is also in the kitchen.
+
+Answer: kitchen"	0.1064	0.0426	False	False	False	False	0
+2233	13	147	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John went back to the hallway.
+8. After that they moved to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from the context sentences, we know that daniel and john went back to the hallway (sentence 7), and then they moved to the bathroom (sentence 8). since daniel was with john in both locations, it can be logically inferred that daniel moved from the hallway to the bathroom with john. therefore, based on the sequence of events, it is reasonable to conclude that daniel is currently in the bathroom.	fully	bathroom	True	According to the context sentences, Daniel and John went back to the hallway, and then they moved to the bathroom. Since Daniel is with John, it is likely that Daniel is also in the bathroom.		"Reasoning: According to the context sentences, Daniel and John went back to the hallway, and then they moved to the bathroom. Since Daniel is with John, it is likely that Daniel is also in the bathroom.
+
+Answer: bathroom"	0.1064	0.0426	False	False	False	False	0
+2234	13	147	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Mary went to the hallway.
+11. Afterwards they went to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from the context sentences, we know that sandra and mary went to the hallway (sentence 10), and then they went to the bathroom (sentence 11). since sandra was with mary in both locations, it can be logically inferred that sandra moved from the hallway to the bathroom with mary. therefore, based on the sequence of events, it is reasonable to conclude that sandra is currently in the bathroom.	fully	bathroom	True	According to the context sentences, Sandra and Mary went to the hallway, and then they went to the bathroom. Since Sandra is with Mary, it is likely that Sandra is also in the bathroom.		"Reasoning: According to the context sentences, Sandra and Mary went to the hallway, and then they went to the bathroom. Since Sandra is with Mary, it is likely that Sandra is also in the bathroom.
+
+Answer: bathroom"	0.0652	0.0435	False	False	False	False	0
+2235	13	147	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John went to the hallway.
+14. After that they went back to the office.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	the context sentences provided (13 and 14) only mention daniel and john, but the question asks about mary's location. to answer this, we need to look at previous context sentences that mentioned mary. from earlier context sentences (1 and 2), we know that mary and john journeyed to the garden and then to the bathroom. there is no information about mary leaving the bathroom, so it can be logically inferred that mary is still in the bathroom.	none	not mentioned	False	There is no mention of Mary in the given context sentences. The sentences only mention Daniel and John.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Daniel and John.
+
+Answer: not mentioned"	0.0357	0.0714	False	False	False	True	0

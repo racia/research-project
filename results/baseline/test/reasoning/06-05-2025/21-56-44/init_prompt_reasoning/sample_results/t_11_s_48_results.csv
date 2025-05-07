@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+236	11	48	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the garden.
+2. Then she journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"the context sentences describe mary's movements, with sentence 1 stating she went to the garden, and sentence 2 stating she then journeyed to the bedroom. since sentence 2 mentions ""then"", it implies that mary's journey to the bedroom occurred after she went to the garden. therefore, the most recent location mentioned in the context is the bedroom, which is where mary is currently located."	fully	bedroom	True	Mary's movement is tracked from the garden to the bedroom, indicating a change in location. Since the last known location is the bedroom, it is inferred that Mary is currently in the bedroom.		"Reasoning: Mary's movement is tracked from the garden to the bedroom, indicating a change in location. Since the last known location is the bedroom, it is inferred that Mary is currently in the bedroom.
+
+Answer: bedroom"	0.1111	0.0444	False	False	False	False	0
+237	11	48	2	"*TASK*
+Here are the context sentences:
+4. Sandra went back to the bathroom.
+5. Afterwards she moved to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"the context sentences describe sandra's movements, with sentence 4 stating she went back to the bathroom, and sentence 5 stating she moved to the garden afterwards. the word ""afterwards"" implies that sandra's movement to the garden occurred after she went back to the bathroom. therefore, the most recent location mentioned in the context is the garden, which is where sandra is currently located."	fully	garden	True	Sandra's movement is tracked from the bathroom to the garden, indicating a change in location. Since the last known location is the garden, it is inferred that Sandra is currently in the garden.		"Reasoning: Sandra's movement is tracked from the bathroom to the garden, indicating a change in location. Since the last known location is the garden, it is inferred that Sandra is currently in the garden.
+
+Answer: garden"	0.1556	0.0444	False	False	False	False	0
+238	11	48	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the office.
+8. Then he moved to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"the context sentences describe daniel's movements, with sentence 7 stating he travelled to the office, and sentence 8 stating he moved to the bathroom ""then"". the word ""then"" implies a chronological order, meaning that daniel's movement to the bathroom occurred after he travelled to the office. therefore, the most recent location mentioned in the context is the bathroom, which is where daniel is currently located."	fully	bathroom	True	Daniel's movement is tracked from the office to the bathroom, indicating a change in location. Since the last known location is the bathroom, it is inferred that Daniel is currently in the bathroom.		"Reasoning: Daniel's movement is tracked from the office to the bathroom, indicating a change in location. Since the last known location is the bathroom, it is inferred that Daniel is currently in the bathroom.
+
+Answer: bathroom"	0.1111	0.0444	False	False	False	False	0
+239	11	48	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the garden.
+11. After that she journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"the context sentences describe mary's movements, not daniel's. there is no information provided about daniel's location. the answer ""bathroom"" is incorrect because it is based on mary's movement, not daniel's. the correct answer would be ""unknown"" or ""not specified"" since there is no information about daniel's location."	none	not mentioned	False	The question asks about Daniel's location, but the context sentences provided only describe Mary's movements. Since Daniel's location is not mentioned in the given context, it is not possible to determine his current location.		"Reasoning: The question asks about Daniel's location, but the context sentences provided only describe Mary's movements. Since Daniel's location is not mentioned in the given context, it is not possible to determine his current location.
+
+Answer: not mentioned"	0.0408	0.0408	False	False	False	True	0
+240	11	48	5	"*TASK*
+Here are the context sentences:
+13. Daniel went to the kitchen.
+14. After that he journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"the context sentences describe daniel's movements, not mary's. there is no information provided about mary's location. the answer ""bathroom"" is incorrect because it is not supported by any information in the context sentences. the correct answer would be ""unknown"" or ""not specified"" since there is no information about mary's location."	none	not mentioned	False	The question asks about Mary's location, but the context sentences provided only describe Daniel's movements. Since Mary's location is not mentioned in the given context, it is not possible to determine her current location.		"Reasoning: The question asks about Mary's location, but the context sentences provided only describe Daniel's movements. Since Mary's location is not mentioned in the given context, it is not possible to determine her current location.
+
+Answer: not mentioned"	0.0204	0.0408	False	False	False	True	0

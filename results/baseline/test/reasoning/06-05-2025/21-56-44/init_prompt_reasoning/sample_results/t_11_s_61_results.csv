@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+301	11	61	1	"*TASK*
+Here are the context sentences:
+1. Sandra went back to the office.
+2. Following that she journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from the context sentences, we know that sandra went back to the office (sentence 1) and then journeyed to the bathroom (sentence 2). since sentence 2 follows sentence 1, it implies that sandra's journey to the bathroom occurred after she went back to the office. therefore, her current location is the bathroom.	fully	bathroom	True	Sandra went back to the office initially, and then she journeyed to the bathroom. This implies that she moved from the office to the bathroom, so she is currently in the bathroom.		"Reasoning: Sandra went back to the office initially, and then she journeyed to the bathroom. This implies that she moved from the office to the bathroom, so she is currently in the bathroom.
+
+Answer: bathroom"	0.2045	0.0455	False	False	False	False	0
+302	11	61	2	"*TASK*
+Here are the context sentences:
+4. Mary went to the garden.
+5. Afterwards she travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"the context sentences provided (4 and 5) do not mention sandra at all. they only talk about mary's movements. the answer ""bathroom"" seems to be unrelated to the context sentences. however, if we look back at the previous conversation, we can see that sandra was mentioned in sentences 1 and 2, and her last known location was the bathroom. since there is no new information about sandra's movements, we can infer that she is still in the bathroom."	none	not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only talk about Mary's movements.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only talk about Mary's movements.
+
+Answer: not mentioned"	0.2759	0.069	False	False	False	True	0
+303	11	61	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the bedroom.
+8. Afterwards he went back to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	the context sentences (7 and 8) describe daniel's movements. in sentence 7, daniel travelled to the bedroom, and in sentence 8, he went back to the kitchen. since sentence 8 follows sentence 7, it implies that daniel's movement to the kitchen occurred after he was in the bedroom. therefore, his current location is the kitchen.	fully	kitchen	True	Daniel travelled to the bedroom initially, and then he went back to the kitchen. This implies that he moved from the bedroom to the kitchen, so he is currently in the kitchen.		"Reasoning: Daniel travelled to the bedroom initially, and then he went back to the kitchen. This implies that he moved from the bedroom to the kitchen, so he is currently in the kitchen.
+
+Answer: kitchen"	0.1395	0.0465	False	False	False	False	0
+304	11	61	4	"*TASK*
+Here are the context sentences:
+10. Daniel travelled to the office.
+11. After that he journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	the context sentences (10 and 11) describe daniel's movements. in sentence 10, daniel travelled to the office, and in sentence 11, he journeyed to the hallway. since sentence 11 follows sentence 10, it implies that daniel's movement to the hallway occurred after he was in the office. therefore, his current location is the hallway.	fully	hallway	True	Daniel travelled to the office initially, and then he journeyed to the hallway. This implies that he moved from the office to the hallway, so he is currently in the hallway.		"Reasoning: Daniel travelled to the office initially, and then he journeyed to the hallway. This implies that he moved from the office to the hallway, so he is currently in the hallway.
+
+Answer: hallway"	0.0	0.0465	False	False	False	False	0
+305	11	61	5	"*TASK*
+Here are the context sentences:
+13. Mary went to the office.
+14. Following that she journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	the context sentences (13 and 14) describe mary's movements. in sentence 13, mary went to the office, and in sentence 14, she journeyed to the kitchen. since sentence 14 follows sentence 13, it implies that mary's movement to the kitchen occurred after she was in the office. therefore, her current location is the kitchen.	fully	kitchen	True	Mary went to the office initially, and then she journeyed to the kitchen. This implies that she moved from the office to the kitchen, so she is currently in the kitchen.		"Reasoning: Mary went to the office initially, and then she journeyed to the kitchen. This implies that she moved from the office to the kitchen, so she is currently in the kitchen.
+
+Answer: kitchen"	0.0	0.0465	False	False	False	False	0

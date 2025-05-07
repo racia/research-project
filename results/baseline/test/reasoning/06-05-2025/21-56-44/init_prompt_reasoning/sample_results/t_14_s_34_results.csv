@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2416	14	34	1	"*TASK*
+Here are the context sentences:
+1. Fred went to the kitchen this morning.
+2. Julie journeyed to the bedroom yesterday.
+3. Yesterday Bill went back to the office.
+4. This afternoon Fred went to the cinema.
+5. Yesterday Fred travelled to the cinema.
+6. Yesterday Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	cinema	from context sentence 4, we know that fred went to the cinema this afternoon. from context sentence 1, we know that fred went to the kitchen this morning. since fred went to the kitchen this morning and the cinema this afternoon, it can be logically inferred that fred was at the cinema before going to the kitchen. additionally, context sentence 5 states that fred travelled to the cinema yesterday, which further supports the conclusion that fred was at the cinema before going to the kitchen.	fully	cinema	True	Since Fred went to the kitchen this morning, and yesterday he travelled to the cinema, it is logical to assume that Fred was at the cinema before going to the kitchen.		"Reasoning: Since Fred went to the kitchen this morning, and yesterday he travelled to the cinema, it is logical to assume that Fred was at the cinema before going to the kitchen.
+
+Answer: cinema"	0.0244	0.0488	False	False	False	False	0
+2417	14	34	2	"*TASK*
+Here are the context sentences:
+8. This morning Julie travelled to the kitchen.
+9. Fred travelled to the school this evening.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	cinema	there is no direct information about fred's location before the kitchen in the provided context sentences (8 and 9). however, we can look at the previous context sentences (1-6) to find the relevant information. from context sentence 1, we know that fred went to the kitchen this morning. from context sentence 4, we know that fred went to the cinema this afternoon. and from context sentence 5, we know that fred travelled to the cinema yesterday. therefore,	none	Not mentioned	False	Since Fred travelled to the school this evening, and we are not given any information about him being at the kitchen before that, it is logical to assume that Fred was not at the kitchen before going to the school.		"Reasoning: Since Fred travelled to the school this evening, and we are not given any information about him being at the kitchen before that, it is logical to assume that Fred was not at the kitchen before going to the school.
+
+Answer: Not mentioned"	0.1765	0.0392	False	False	False	True	0
+2418	14	34	3	"*TASK*
+Here are the context sentences:
+11. This morning Mary travelled to the cinema.
+12. This morning Bill travelled to the kitchen.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	bedroom	there is no direct information about mary's location before the cinema in the provided context sentences (11 and 12). however, we can look at the previous context sentences (1-6) to find the relevant information. from context sentence 6, we know that mary travelled to the bedroom yesterday. there is no information about mary's movements after that until this morning when she travelled to the cinema (context sentence 11). therefore, it can be logically inferred that mary was in the	partially	Not mentioned	False	Since Mary travelled to the cinema this morning, and we are not given any information about her being at the cinema before that, it is logical to assume that Mary was not at the cinema before going to the cinema.		"Reasoning: Since Mary travelled to the cinema this morning, and we are not given any information about her being at the cinema before that, it is logical to assume that Mary was not at the cinema before going to the cinema.
+
+Answer: Not mentioned"	0.0196	0.0392	False	False	False	True	0
+2419	14	34	4	"*TASK*
+Here are the context sentences:
+14. This afternoon Bill went back to the office.
+15. Mary went back to the school this afternoon.
+
+Now, answer the following question:
+Where was Bill before the office?"	kitchen	there is no direct information about bill's location before the office in the provided context sentences (14 and 15). however, we can look at the previous context sentences to find the relevant information. from context sentence 12, we know that bill travelled to the kitchen this morning. there is no information about bill's movements after that until this afternoon when he went back to the office (context sentence 14). therefore, it can be logically inferred that bill was in the kitchen before going	partially	kitchen	True	Since Bill travelled to the kitchen this morning (from context sentences 11 and 12), and then went back to the office this afternoon, it is logical to assume that Bill was at the kitchen before going back to the office.		"Reasoning: Since Bill travelled to the kitchen this morning (from context sentences 11 and 12), and then went back to the office this afternoon, it is logical to assume that Bill was at the kitchen before going back to the office.
+
+Answer: kitchen"	0.0	0.0377	False	False	False	False	0
+2420	14	34	5	"*TASK*
+Here are the context sentences:
+17. Mary journeyed to the cinema this evening.
+18. This evening Bill went back to the kitchen.
+
+Now, answer the following question:
+Where was Mary before the school?"	cinema	there is no direct information about mary's location before the school in the provided context sentences (17 and 18). however, we can look at the previous context sentences to find the relevant information. from context sentence 15, we know that mary went back to the school this afternoon. from context sentence 17, we know that mary journeyed to the cinema this evening. there is no information about mary's location before going to the school, but we know that she was at the	none	Not mentioned	False	There is no information provided about Mary going to the school. The context sentences only mention Mary journeying to the cinema this evening, and Bill going back to the kitchen this evening.		"Reasoning: There is no information provided about Mary going to the school. The context sentences only mention Mary journeying to the cinema this evening, and Bill going back to the kitchen this evening.
+
+Answer: Not mentioned"	0.0227	0.0455	False	False	False	True	0

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+931	12	37	1	"*TASK*
+Here are the context sentences:
+1. John and Daniel went back to the garden.
+2. Mary and Daniel travelled to the hallway.
+
+Now, answer the following question:
+Where is John?"	garden	from context sentence 1, we know that john and daniel went back to the garden. there is no information provided about john leaving the garden, so it can be logically inferred that john is still in the garden.	fully	garden	True	Since John and Daniel went back to the garden in sentence 1, and Mary and Daniel travelled to the hallway in sentence 2, it implies that John was with Daniel in the garden initially. There is no information that suggests John moved to the hallway or anywhere else.		"Reasoning: Since John and Daniel went back to the garden in sentence 1, and Mary and Daniel travelled to the hallway in sentence 2, it implies that John was with Daniel in the garden initially. There is no information that suggests John moved to the hallway or anywhere else.
+
+Answer: garden"	0.1148	0.0164	False	False	False	True	0
+932	12	37	2	"*TASK*
+Here are the context sentences:
+4. Mary and John went back to the bedroom.
+5. John and Sandra went back to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from context sentence 4, we know that mary and john went back to the bedroom. however, this information is overridden by context sentence 5, which states that john and sandra went back to the kitchen. this implies that john left the bedroom and went to the kitchen, so john's current location is the kitchen.	fully	kitchen	True	According to sentence 4, Mary and John went back to the bedroom. However, sentence 5 reveals that John and Sandra went back to the kitchen, which implies that John moved from the bedroom to the kitchen.		"Reasoning: According to sentence 4, Mary and John went back to the bedroom. However, sentence 5 reveals that John and Sandra went back to the kitchen, which implies that John moved from the bedroom to the kitchen.
+
+Answer: kitchen"	0.08	0.02	False	False	False	False	0
+933	12	37	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Sandra moved to the bathroom.
+8. Sandra and Mary moved to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from context sentence 7, we know that daniel and sandra moved to the bathroom. there is no information provided about daniel leaving the bathroom, and sentence 8 only mentions sandra moving to the kitchen with mary, but does not mention daniel. therefore, it can be logically inferred that daniel is still in the bathroom.	fully	bathroom	True	Sentence 7 states that Daniel and Sandra moved to the bathroom, which implies that Daniel is currently in the bathroom. There is no information that suggests Daniel moved to the kitchen or anywhere else.		"Reasoning: Sentence 7 states that Daniel and Sandra moved to the bathroom, which implies that Daniel is currently in the bathroom. There is no information that suggests Daniel moved to the kitchen or anywhere else.
+
+Answer: bathroom"	0.1333	0.0222	False	False	False	True	0
+934	12	37	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Daniel moved to the office.
+11. Daniel and John went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from context sentence 10, we know that sandra and daniel moved to the office. however, sentence 11 overrides this information, stating that daniel and john went back to the bathroom. this implies that daniel left the office and went to the bathroom, so daniel's current location is the bathroom.	fully	bathroom	True	Sentence 10 states that Sandra and Daniel moved to the office, which implies that Daniel is currently in the office. However, sentence 11 reveals that Daniel and John went back to the bathroom, which suggests that Daniel moved from the office to the bathroom.		"Reasoning: Sentence 10 states that Sandra and Daniel moved to the office, which implies that Daniel is currently in the office. However, sentence 11 reveals that Daniel and John went back to the bathroom, which suggests that Daniel moved from the office to the bathroom.
+
+Answer: bathroom"	0.0517	0.0172	False	False	False	False	0
+935	12	37	5	"*TASK*
+Here are the context sentences:
+13. Mary and Daniel went to the bedroom.
+14. Sandra and John journeyed to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from context sentence 14, we know that sandra and john journeyed to the hallway. there is no information provided about john leaving the hallway, so it can be logically inferred that john is still in the hallway.	fully	hallway	True	Sentence 14 states that Sandra and John journeyed to the hallway, which implies that John is currently in the hallway.		"Reasoning: Sentence 14 states that Sandra and John journeyed to the hallway, which implies that John is currently in the hallway.
+
+Answer: hallway"	0.0645	0.0323	False	False	False	False	0

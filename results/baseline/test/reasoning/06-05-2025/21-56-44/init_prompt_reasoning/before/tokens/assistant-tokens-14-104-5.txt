@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	,	Ġand	Ġshe	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġyesterday	,	Ġit	Ġimplies	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġkitchen	Ġyesterday	.	ĠTherefore	,	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	,	ĠMary	Ġwas	Ġat	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+9	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	.Ċ
+10	.	ĠBill	Ġwent	Ġto	Ġthe	Ġkitchen	Ġyesterday	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠBill	Ġbefore	Ġthe	Ġbedroom	?Ċ

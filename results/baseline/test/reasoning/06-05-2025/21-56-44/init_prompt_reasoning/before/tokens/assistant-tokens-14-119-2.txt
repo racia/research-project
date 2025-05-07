@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġkitchen	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġlocation	Ġat	Ġthe	Ġschool	Ġthis	Ġafternoon	,	Ġbut	Ġnot	Ġher	Ġprevious	Ġlocation	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

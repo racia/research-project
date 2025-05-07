@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠJohn	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	Ġafter	Ġtravelling	Ġto	Ġthe	Ġkitchen	.	ĠSince	ĠMary	Ġis	Ġnot	Ġmentioned	Ġas	Ġleaving	Ġthe	Ġbathroom	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠFred	Ġmoved	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.	ĠSince	ĠFred	Ġtravelled	Ġto	Ġthe	Ġpark	Ġthis	Ġevening	Ġ(	sentence	Ġ	9	),	Ġit	Ġis	Ġlogical	Ġto	Ġinfer	Ġthat	ĠFred	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġmoving	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

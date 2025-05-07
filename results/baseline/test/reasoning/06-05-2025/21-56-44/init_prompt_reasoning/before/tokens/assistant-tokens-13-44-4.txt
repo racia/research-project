@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġgarden	Ġtogether	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġoffice	.	ĠSince	Ġthey	Ġwent	Ġtogether	,	Ġit	's	Ġlikely	Ġthat	ĠMary	Ġis	Ġstill	Ġwith	ĠSandra	,	Ġand	Ġsince	Ġthey	Ġwent	Ġto	Ġthe	Ġoffice	,	ĠMary	Ġis	Ġlikely	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

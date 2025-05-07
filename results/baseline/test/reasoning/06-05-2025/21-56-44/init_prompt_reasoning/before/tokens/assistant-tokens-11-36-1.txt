@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġkitchen	,	Ġas	Ġstated	Ġin	Ġsentence	Ġ	2	.	ĠSince	Ġthere	Ġis	Ġno	Ġinformation	Ġindicating	Ġshe	Ġhas	Ġmoved	Ġto	Ġa	Ġdifferent	Ġlocation	,	Ġit	Ġis	Ġreasonable	Ġto	Ġassume	Ġshe	Ġis	Ġstill	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+791	12	9	1	"*TASK*
+Here are the context sentences:
+1. Mary and John moved to the garden.
+2. Sandra and John went back to the office.
+
+Now, answer the following question:
+Where is John?"	office	from the context sentences, we know that john was initially in the garden with mary (sentence 1). however, in sentence 2, it is stated that john went back to the office with sandra. this implies that john left the garden and moved to the office. therefore, the current location of john is the office.	fully	office	True	John is mentioned in two sentences, and his movement is tracked. In sentence 1, John moves to the garden with Mary. In sentence 2, John goes back to the office with Sandra. This implies that John's current location is the office.		"Reasoning: John is mentioned in two sentences, and his movement is tracked. In sentence 1, John moves to the garden with Mary. In sentence 2, John goes back to the office with Sandra. This implies that John's current location is the office.
+
+Answer: office"	0.1724	0.0172	False	False	False	True	0
+792	12	9	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John moved to the bedroom.
+5. Daniel and John moved to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	from the context sentences, we know that daniel and john moved to the bedroom (sentence 4), but then they moved to the garden (sentence 5). this implies that john left the bedroom and moved to the garden with daniel. therefore, the current location of john is the garden.	fully	garden	True	John is mentioned in two sentences, and his movement is tracked. In sentence 4, John moves to the bedroom with Daniel. In sentence 5, John moves to the garden with Daniel. This implies that John's current location is the garden.		"Reasoning: John is mentioned in two sentences, and his movement is tracked. In sentence 4, John moves to the bedroom with Daniel. In sentence 5, John moves to the garden with Daniel. This implies that John's current location is the garden.
+
+Answer: garden"	0.193	0.0175	False	False	False	True	0
+793	12	9	3	"*TASK*
+Here are the context sentences:
+7. John and Sandra went to the kitchen.
+8. Sandra and Mary went back to the bedroom.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that john went to the kitchen with sandra (sentence 7). there is no information about john leaving the kitchen. in sentence 8, sandra leaves the kitchen and goes back to the bedroom with mary, but there is no mention of john accompanying them. therefore, we can infer that john remained in the kitchen, and his current location is still the kitchen.	fully	kitchen	True	John is mentioned in two sentences, and his movement is tracked. In sentence 7, John goes to the kitchen with Sandra. There is no mention of John moving away from the kitchen, so it can be inferred that John is still in the kitchen.		"Reasoning: John is mentioned in two sentences, and his movement is tracked. In sentence 7, John goes to the kitchen with Sandra. There is no mention of John moving away from the kitchen, so it can be inferred that John is still in the kitchen.
+
+Answer: kitchen"	0.0517	0.0172	False	False	False	True	0
+794	12	9	4	"*TASK*
+Here are the context sentences:
+10. Daniel and John moved to the office.
+11. John and Daniel went to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	from the context sentences, we know that daniel and john moved to the office (sentence 10), and then they went to the kitchen (sentence 11). this implies that daniel left the office and moved to the kitchen with john. therefore, the current location of daniel is the kitchen.	fully	kitchen	True	Daniel is mentioned in two sentences, and his movement is tracked. In sentence 10, Daniel moves to the office with John. In sentence 11, Daniel moves to the kitchen with John. This implies that Daniel's current location is the kitchen.		"Reasoning: Daniel is mentioned in two sentences, and his movement is tracked. In sentence 10, Daniel moves to the office with John. In sentence 11, Daniel moves to the kitchen with John. This implies that Daniel's current location is the kitchen.
+
+Answer: kitchen"	0.0	0.0175	False	False	False	True	0
+795	12	9	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Mary went to the kitchen.
+14. Mary and John went to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from the context sentences, we know that sandra went to the kitchen with mary (sentence 13). there is no information about sandra leaving the kitchen. in sentence 14, mary leaves the kitchen and goes to the hallway with john, but there is no mention of sandra accompanying them. therefore, we can infer that sandra remained in the kitchen, and her current location is still the kitchen.	fully	kitchen	True	Sandra is mentioned in two sentences, and her movement is tracked. In sentence 13, Sandra goes to the kitchen with Mary. There is no mention of Sandra moving away from the kitchen, so it can be inferred that Sandra is still in the kitchen.		"Reasoning: Sandra is mentioned in two sentences, and her movement is tracked. In sentence 13, Sandra goes to the kitchen with Mary. There is no mention of Sandra moving away from the kitchen, so it can be inferred that Sandra is still in the kitchen.
+
+Answer: kitchen"	0.0517	0.0172	False	False	False	True	0

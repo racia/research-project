@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġinitially	,	Ġand	Ġthen	Ġshe	Ġwent	Ġto	Ġthe	Ġgarden	.	ĠThere	Ġis	Ġno	Ġinformation	Ġsuggesting	Ġshe	Ġmoved	Ġfrom	Ġthe	Ġgarden	Ġto	Ġany	Ġother	Ġlocation	.	ĠTherefore	,	Ġit	Ġis	Ġlogical	Ġto	Ġconclude	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

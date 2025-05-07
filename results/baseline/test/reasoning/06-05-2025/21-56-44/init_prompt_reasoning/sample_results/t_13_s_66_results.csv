@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1826	13	66	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Daniel went back to the bathroom.
+2. Afterwards they travelled to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	from the context sentences, we know that sandra and daniel went back to the bathroom (sentence 1) and afterwards they travelled to the kitchen (sentence 2). since daniel was with sandra in both locations, it can be logically inferred that daniel is currently in the kitchen, as that is the last location mentioned in the sequence of events.	fully	kitchen	True	Since Sandra and Daniel went back to the bathroom, and afterwards they travelled to the kitchen, it implies that they moved from the bathroom to the kitchen. Since Daniel is not mentioned to have left the kitchen, it is likely that he is still in the kitchen.		"Reasoning: Since Sandra and Daniel went back to the bathroom, and afterwards they travelled to the kitchen, it implies that they moved from the bathroom to the kitchen. Since Daniel is not mentioned to have left the kitchen, it is likely that he is still in the kitchen.
+
+Answer: kitchen"	0.1695	0.0339	False	False	False	True	0
+1827	13	66	2	"*TASK*
+Here are the context sentences:
+4. John and Mary moved to the bathroom.
+5. Following that they moved to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that john and mary moved to the bathroom (sentence 4) and following that, they moved to the bedroom (sentence 5). since mary was with john in both locations, it can be logically inferred that mary is currently in the bedroom, as that is the last location mentioned in the sequence of events.	fully	bedroom	True	According to the context sentences, John and Mary moved from the bathroom to the bedroom. Since Mary is not mentioned to have left the bedroom, it is likely that she is still in the bedroom.		"Reasoning: According to the context sentences, John and Mary moved from the bathroom to the bedroom. Since Mary is not mentioned to have left the bedroom, it is likely that she is still in the bedroom.
+
+Answer: bedroom"	0.0652	0.0435	False	False	False	True	0
+1828	13	66	3	"*TASK*
+Here are the context sentences:
+7. Mary and John went to the kitchen.
+8. Then they moved to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that mary and john went to the kitchen (sentence 7) and then they moved to the bedroom (sentence 8). since mary was with john in both locations, it can be logically inferred that mary is currently in the bedroom, as that is the last location mentioned in the sequence of events.	fully	bedroom	True	According to the context sentences, Mary and John went to the kitchen and then moved to the bedroom. Since Mary is not mentioned to have left the bedroom, it is likely that she is still in the bedroom.		"Reasoning: According to the context sentences, Mary and John went to the kitchen and then moved to the bedroom. Since Mary is not mentioned to have left the bedroom, it is likely that she is still in the bedroom.
+
+Answer: bedroom"	0.2041	0.0408	False	False	False	True	0
+1829	13	66	4	"*TASK*
+Here are the context sentences:
+10. Mary and John went back to the office.
+11. Afterwards they went back to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	from the context sentences, we know that mary and john went back to the office (sentence 10) and afterwards they went back to the garden (sentence 11). since mary was with john in both locations, it can be logically inferred that mary is currently in the garden, as that is the last location mentioned in the sequence of events.	fully	garden	True	According to the context sentences, Mary and John went back to the office and then went back to the garden. Since Mary is not mentioned to have left the garden, it is likely that she is still in the garden.		"Reasoning: According to the context sentences, Mary and John went back to the office and then went back to the garden. Since Mary is not mentioned to have left the garden, it is likely that she is still in the garden.
+
+Answer: garden"	0.0196	0.0392	False	False	False	True	0
+1830	13	66	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Daniel journeyed to the bedroom.
+14. Then they went back to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from the context sentences, we know that sandra and daniel journeyed to the bedroom (sentence 13) and then they went back to the bathroom (sentence 14). since sandra was with daniel in both locations, it can be logically inferred that sandra is currently in the bathroom, as that is the last location mentioned in the sequence of events.	fully	bathroom	True	According to the context sentences, Sandra and Daniel journeyed to the bedroom and then went back to the bathroom. Since Sandra is not mentioned to have left the bathroom, it is likely that she is still in the bathroom.		"Reasoning: According to the context sentences, Sandra and Daniel journeyed to the bedroom and then went back to the bathroom. Since Sandra is not mentioned to have left the bathroom, it is likely that she is still in the bathroom.
+
+Answer: bathroom"	0.1765	0.0392	False	False	False	True	0

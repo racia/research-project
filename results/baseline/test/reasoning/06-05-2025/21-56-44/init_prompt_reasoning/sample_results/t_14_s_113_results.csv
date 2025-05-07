@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2811	14	113	1	"*TASK*
+Here are the context sentences:
+1. This morning Mary went back to the office.
+2. Fred went to the bedroom yesterday.
+3. This morning Bill journeyed to the park.
+4. Yesterday Bill went back to the cinema.
+5. Yesterday Mary went back to the park.
+6. Julie went back to the park yesterday.
+
+Now, answer the following question:
+Where was Mary before the office?"	park	"from sentence 5, we know that ""yesterday mary went back to the park."" since sentence 1 states ""this morning mary went back to the office,"" it implies that mary was somewhere else before coming to the office this morning. given that mary went back to the park yesterday, it is logical to assume that she was at the park before coming to the office this morning."	fully		False	The question asks about Mary's location before going back to the office. Since Mary went back to the office this morning, it implies that she was somewhere else before going back. The context sentences provide information about Mary's movements, but not about her location before going back to the office. However, sentence 5 mentions that Mary went back to the park yesterday, which implies that she was at the park yesterday. Since the question asks about Mary's location before going back to the office		Reasoning: The question asks about Mary's location before going back to the office. Since Mary went back to the office this morning, it implies that she was somewhere else before going back. The context sentences provide information about Mary's movements, but not about her location before going back to the office. However, sentence 5 mentions that Mary went back to the park yesterday, which implies that she was at the park yesterday. Since the question asks about Mary's location before going back to the office	0.101	0.0202	False	False	False	True	0
+2812	14	113	2	"*TASK*
+Here are the context sentences:
+8. Mary journeyed to the school this afternoon.
+9. Julie moved to the cinema this morning.
+
+Now, answer the following question:
+Where was Bill before the park?"	cinema	"from sentence 4, we know that ""yesterday bill went back to the cinema."" since sentence 3 states ""this morning bill journeyed to the park"", it implies that bill was somewhere else before coming to the park this morning. given that bill went back to the cinema yesterday, it is logical to assume that he was at the cinema before coming to the park this morning."	none	Not mentioned	False	The question asks about Bill's location before going to the park. However, the context sentences do not provide any information about Bill's location before going to the park. The sentences only mention Bill's movement to the park this morning (sentence 3), but not his location before that.		"Reasoning: The question asks about Bill's location before going to the park. However, the context sentences do not provide any information about Bill's location before going to the park. The sentences only mention Bill's movement to the park this morning (sentence 3), but not his location before that.
+
+Answer: Not mentioned"	0.1231	0.0308	False	False	False	True	0
+2813	14	113	3	"*TASK*
+Here are the context sentences:
+11. This evening Mary travelled to the office.
+12. This morning Fred moved to the office.
+
+Now, answer the following question:
+Where was Mary before the office?"	school	"from sentence 8, we know that ""mary journeyed to the school this afternoon."" sentence 11 states ""this evening mary travelled to the office."" this implies that mary was somewhere else before coming to the office this evening. given that mary was at the school in the afternoon, it is logical to assume that she was at the school before coming to the office this evening."	partially		False	The question asks about Mary's location before going to the office. According to sentence 11, Mary travelled to the office this evening. Since the question asks about her location before going to the office, it implies that we need to find her location before this evening. Sentence 12 mentions that Fred moved to the office this morning, but it does not provide information about Mary's location. However, sentence 11 does not provide information about Mary's location before this evening either. Therefore		Reasoning: The question asks about Mary's location before going to the office. According to sentence 11, Mary travelled to the office this evening. Since the question asks about her location before going to the office, it implies that we need to find her location before this evening. Sentence 12 mentions that Fred moved to the office this morning, but it does not provide information about Mary's location. However, sentence 11 does not provide information about Mary's location before this evening either. Therefore	0.0707	0.0202	False	False	False	True	0
+2814	14	113	4	"*TASK*
+Here are the context sentences:
+14. Julie went to the school this afternoon.
+15. This afternoon Fred travelled to the school.
+
+Now, answer the following question:
+Where was Fred before the office?"	bedroom	"there is no direct information about fred's location before the office in the provided context lines. however, we can look at the previous context lines (2. fred went to the bedroom yesterday.) which indicates that fred was at the bedroom yesterday. there is no information about fred's movement after yesterday until sentence 15, which states that ""this afternoon fred travelled to the school"". it is logical to assume that fred was at the bedroom before going to the school this afternoon, and there is"	none	Not mentioned	False	The question asks about Fred's location before going to the office. However, the context sentences do not provide any information about Fred's location before going to the office. The sentences only mention Fred's movement to the school this afternoon (sentence 15), but not his location before that. There is no mention of Fred going to the office in these sentences.		"Reasoning: The question asks about Fred's location before going to the office. However, the context sentences do not provide any information about Fred's location before going to the office. The sentences only mention Fred's movement to the school this afternoon (sentence 15), but not his location before that. There is no mention of Fred going to the office in these sentences.
+
+Answer: Not mentioned"	0.0759	0.0253	False	False	False	True	0
+2815	14	113	5	"*TASK*
+Here are the context sentences:
+17. This evening Fred travelled to the bedroom.
+18. Bill travelled to the bedroom this afternoon.
+
+Now, answer the following question:
+Where was Fred before the school?"	office	"there is no direct information about fred's location before the school in the provided context lines. however, we can look at the previous context lines (12. this morning fred moved to the office.) which indicates that fred was at the office in the morning. there is no information about fred's movement after the morning until sentence 15, which states that ""this afternoon fred travelled to the school"". it is logical to assume that fred was at the office before going to the school this afternoon"	none	Not mentioned	False	The question asks about Fred's location before going to the school. However, the context sentences do not provide any information about Fred's location before going to the school. The sentences only mention Fred's movement to the bedroom this evening (sentence 17), but not his location before that. There is no mention of Fred going to the school in these sentences.		"Reasoning: The question asks about Fred's location before going to the school. However, the context sentences do not provide any information about Fred's location before going to the school. The sentences only mention Fred's movement to the bedroom this evening (sentence 17), but not his location before that. There is no mention of Fred going to the school in these sentences.
+
+Answer: Not mentioned"	0.038	0.0253	False	False	False	True	0

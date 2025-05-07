@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	,	Ġit	Ġmeans	Ġshe	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.	ĠFrom	Ġthe	Ġgiven	Ġcontext	,	Ġwe	Ġdon	't	Ġhave	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġwhereabouts	Ġbefore	Ġthe	Ġoffice	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

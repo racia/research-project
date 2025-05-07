@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+981	12	47	1	"*TASK*
+Here are the context sentences:
+1. John and Sandra went to the garden.
+2. Sandra and Daniel went to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	from the context sentences, we know that sandra was initially in the garden with john (sentence 1). however, in sentence 2, it is stated that sandra and daniel went to the bedroom. this implies that sandra left the garden and moved to the bedroom with daniel. therefore, the current location of sandra is the bedroom.	fully	bedroom	True	Sandra is mentioned in both sentences, and her location changes. Initially, she is in the garden with John. Then, she moves to the bedroom with Daniel.		"Reasoning: Sandra is mentioned in both sentences, and her location changes. Initially, she is in the garden with John. Then, she moves to the bedroom with Daniel.
+
+Answer: bedroom"	0.2051	0.0256	False	False	False	True	0
+982	12	47	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Daniel went to the kitchen.
+5. Daniel and John travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	in sentence 4, it is stated that sandra and daniel went to the kitchen. there is no subsequent information that suggests sandra left the kitchen. in sentence 5, daniel and john travelled to the bedroom, but there is no mention of sandra accompanying them. therefore, based on the available information, sandra's current location is still the kitchen.	fully	kitchen	True	Sandra is mentioned in the first sentence, and her location is the kitchen. There is no new information about Sandra's location in the second sentence, which only mentions Daniel and John.		"Reasoning: Sandra is mentioned in the first sentence, and her location is the kitchen. There is no new information about Sandra's location in the second sentence, which only mentions Daniel and John.
+
+Answer: kitchen"	0.0465	0.0233	False	False	False	True	0
+983	12	47	3	"*TASK*
+Here are the context sentences:
+7. John and Daniel travelled to the hallway.
+8. Sandra and John travelled to the office.
+
+Now, answer the following question:
+Where is John?"	office	in sentence 7, john and daniel travelled to the hallway. however, in sentence 8, john's location is updated as he travels to the office with sandra. this implies that john left the hallway and moved to the office. therefore, john's current location is the office.	fully	office	True	John is mentioned in both sentences, and his location changes. Initially, he is in the hallway with Daniel. Then, he moves to the office with Sandra.		"Reasoning: John is mentioned in both sentences, and his location changes. Initially, he is in the hallway with Daniel. Then, he moves to the office with Sandra.
+
+Answer: office"	0.0	0.0256	False	False	False	True	0
+984	12	47	4	"*TASK*
+Here are the context sentences:
+10. Mary and John moved to the bathroom.
+11. John and Daniel went back to the office.
+
+Now, answer the following question:
+Where is John?"	office	in sentence 10, john moved to the bathroom with mary. however, in sentence 11, john's location is updated as he goes back to the office with daniel. this implies that john left the bathroom and returned to the office. therefore, john's current location is the office.	fully	office	True	John is mentioned in both sentences, and his location changes. Initially, he is in the bathroom with Mary. Then, he moves back to the office with Daniel.		"Reasoning: John is mentioned in both sentences, and his location changes. Initially, he is in the bathroom with Mary. Then, he moves back to the office with Daniel.
+
+Answer: office"	0.1	0.025	False	False	False	True	0
+985	12	47	5	"*TASK*
+Here are the context sentences:
+13. John and Mary travelled to the garden.
+14. Sandra and John travelled to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	in sentence 13, john and mary travelled to the garden. however, in sentence 14, john's location is updated as he travels to the bedroom with sandra. this implies that john left the garden and moved to the bedroom. therefore, john's current location is the bedroom.	fully	bedroom	True	John is mentioned in both sentences, and his location changes. Initially, he is in the garden with Mary. Then, he moves to the bedroom with Sandra.		"Reasoning: John is mentioned in both sentences, and his location changes. Initially, he is in the garden with Mary. Then, he moves to the bedroom with Sandra.
+
+Answer: bedroom"	0.0	0.0256	False	False	False	True	0

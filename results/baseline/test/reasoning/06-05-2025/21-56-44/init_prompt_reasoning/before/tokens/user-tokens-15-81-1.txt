@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠSheep	Ġare	Ġafraid	Ġof	Ġcats	.Ċ
+2	.	ĠWolves	Ġare	Ġafraid	Ġof	Ġcats	.Ċ
+3	.	ĠM	ice	Ġare	Ġafraid	Ġof	Ġwolves	.Ċ
+4	.	ĠGer	tr	ude	Ġis	Ġa	Ġmouse	.Ċ
+5	.	ĠEmily	Ġis	Ġa	Ġwolf	.Ċ
+6	.	ĠJessica	Ġis	Ġa	Ġmouse	.Ċ
+7	.	ĠWin	ona	Ġis	Ġa	Ġsheep	.Ċ
+8	.	ĠCats	Ġare	Ġafraid	Ġof	Ġmice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	Ġger	tr	ude	Ġafraid	Ġof	?Ċ

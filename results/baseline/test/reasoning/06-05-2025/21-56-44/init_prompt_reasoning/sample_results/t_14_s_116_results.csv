@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2826	14	116	1	"*TASK*
+Here are the context sentences:
+1. Julie travelled to the bedroom yesterday.
+2. This morning Fred journeyed to the school.
+3. Yesterday Mary journeyed to the school.
+4. Fred travelled to the park yesterday.
+
+Now, answer the following question:
+Where was Fred before the school?"	park	"from context sentence 4, ""fred travelled to the park yesterday"", we know that fred was at the park yesterday. from the question, ""where was fred before the school?"", we can infer that fred went to the school after being at the park, as stated in context sentence 2, ""this morning fred journeyed to the school"". therefore, fred was at the park before going to the school."	fully	park	True	Since Fred journeyed to the school this morning, it implies that he was somewhere else before arriving at the school. The only information provided about Fred's previous location is that he travelled to the park yesterday. However, this information does not directly answer the question about his location before arriving at the school. We need to infer his location before the school.		"Reasoning: Since Fred journeyed to the school this morning, it implies that he was somewhere else before arriving at the school. The only information provided about Fred's previous location is that he travelled to the park yesterday. However, this information does not directly answer the question about his location before arriving at the school. We need to infer his location before the school.
+
+Answer: park"	0.0649	0.026	False	False	False	True	0
+2827	14	116	2	"*TASK*
+Here are the context sentences:
+6. Julie went to the office this afternoon.
+7. This morning Julie journeyed to the cinema.
+
+Now, answer the following question:
+Where was Julie before the office?"	cinema	"from context sentence 7, ""this morning julie journeyed to the cinema"", we know that julie was at the cinema in the morning. from context sentence 6, ""julie went to the office this afternoon"", we can infer that julie went to the office after being at the cinema, since the office visit occurred in the afternoon, which is later than the morning. therefore, julie was at the cinema before going to the office."	fully	cinema	True	According to the context sentences, Julie journeyed to the cinema this morning, which implies that she was somewhere else before arriving at the cinema. The next information provided is that she went to the office this afternoon. Since we are asked about her location before the office, we need to infer her location before the office.		"Reasoning: According to the context sentences, Julie journeyed to the cinema this morning, which implies that she was somewhere else before arriving at the cinema. The next information provided is that she went to the office this afternoon. Since we are asked about her location before the office, we need to infer her location before the office.
+
+Answer: cinema"	0.1	0.0286	False	False	False	True	0
+2828	14	116	3	"*TASK*
+Here are the context sentences:
+9. Julie went to the cinema this evening.
+10. Bill went back to the office yesterday.
+
+Now, answer the following question:
+Where was Julie before the cinema?"	office	there is no direct information about julie's location before the cinema in the provided context sentences. however, we can make a logical assumption based on the context. since julie went to the cinema this evening (sentence 9), and there is no other information about julie's previous location, we can infer that julie was at the office before the cinema. this assumption is based on the fact that sentence 10 mentions the office, which is the only other location mentioned in the context, and it	partially	not mentioned	False	Since Julie went to the cinema this evening, we need to find her location before arriving at the cinema. The only information provided is that she went to the cinema, but not what she did before that. We cannot infer her location before the cinema from the given information.		"Reasoning: Since Julie went to the cinema this evening, we need to find her location before arriving at the cinema. The only information provided is that she went to the cinema, but not what she did before that. We cannot infer her location before the cinema from the given information.
+
+Answer: not mentioned"	0.1129	0.0323	False	False	False	True	0
+2829	14	116	4	"*TASK*
+Here are the context sentences:
+12. Fred moved to the kitchen this evening.
+13. Fred went back to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	cinema	"from context sentence 13, ""fred went back to the cinema this afternoon"", we know that fred was at the cinema in the afternoon. from context sentence 12, ""fred moved to the kitchen this evening"", we can infer that fred went to the kitchen after being at the cinema, since the kitchen visit occurred in the evening, which is later than the afternoon. therefore, fred was at the cinema before going to the kitchen."	fully	cinema	True	According to the context sentences, Fred went back to the cinema this afternoon, which implies that he was somewhere else before returning to the cinema. The next information provided is that he moved to the kitchen this evening. Since we are asked about his location before the kitchen, we need to infer his location before the kitchen.		"Reasoning: According to the context sentences, Fred went back to the cinema this afternoon, which implies that he was somewhere else before returning to the cinema. The next information provided is that he moved to the kitchen this evening. Since we are asked about his location before the kitchen, we need to infer his location before the kitchen.
+
+Answer: cinema"	0.0429	0.0286	False	False	False	True	0
+2830	14	116	5	"*TASK*
+Here are the context sentences:
+15. Bill went back to the cinema this morning.
+16. Mary moved to the park this morning.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	cinema	"there is no direct information about fred's location before the kitchen in the provided context sentences. the context sentences only mention bill and mary, but not fred. therefore, it is not possible to provide a logical reasoning that leads to the answer ""cinema"" based on the provided context. the answer seems to be incorrect or out of context."	none	not mentioned	False	There is no information provided about Fred's location or actions in the given context sentences. The sentences only mention Bill and Mary's actions, but not Fred's.		"Reasoning: There is no information provided about Fred's location or actions in the given context sentences. The sentences only mention Bill and Mary's actions, but not Fred's.
+
+Answer: not mentioned"	0.075	0.05	False	False	False	True	0

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+976	12	46	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary went back to the bathroom.
+2. Daniel and Sandra moved to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	from the context sentences, we know that sandra was initially in the bathroom with mary (sentence 1). then, sandra moved to the bedroom with daniel (sentence 2). since there is no information about sandra moving out of the bedroom, we can conclude that sandra is currently in the bedroom.	fully	bedroom	True	Sandra is mentioned in both sentences, and her movement is tracked. In sentence 1, Sandra and Mary go back to the bathroom, which implies that Sandra was previously somewhere else. In sentence 2, Sandra moves to the bedroom, which means she is now in the bedroom.		"Reasoning: Sandra is mentioned in both sentences, and her movement is tracked. In sentence 1, Sandra and Mary go back to the bathroom, which implies that Sandra was previously somewhere else. In sentence 2, Sandra moves to the bedroom, which means she is now in the bedroom.
+
+Answer: bedroom"	0.2063	0.0159	False	False	False	True	0
+977	12	46	2	"*TASK*
+Here are the context sentences:
+4. John and Sandra travelled to the garden.
+5. Mary and John went to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that john was initially in the garden with sandra (sentence 4). then, john moved to the kitchen with mary (sentence 5). since there is no information about john moving out of the kitchen, we can conclude that john is currently in the kitchen.	fully	kitchen	True	John is mentioned in both sentences. In sentence 4, John travels to the garden with Sandra, which implies that John is now in the garden. However, sentence 5 mentions that Mary and John went to the kitchen, which is a different location. Since sentence 5 is more recent, it takes precedence over sentence 4.		"Reasoning: John is mentioned in both sentences. In sentence 4, John travels to the garden with Sandra, which implies that John is now in the garden. However, sentence 5 mentions that Mary and John went to the kitchen, which is a different location. Since sentence 5 is more recent, it takes precedence over sentence 4.
+
+Answer: kitchen"	0.0811	0.0135	False	False	False	True	0
+978	12	46	3	"*TASK*
+Here are the context sentences:
+7. John and Mary went back to the garden.
+8. John and Sandra journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	garden	from the context sentences, we know that mary was with john and they went back to the garden (sentence 7). there is no information about mary moving out of the garden or going anywhere else. therefore, we can conclude that mary is currently in the garden.	fully	garden	True	Mary is mentioned in both sentences. In sentence 7, John and Mary go back to the garden, which implies that Mary was previously somewhere else. However, sentence 8 mentions that John and Sandra journeyed to the kitchen, which does not mention Mary. Since Mary's location is not updated in sentence 8, her previous location remains the same.		"Reasoning: Mary is mentioned in both sentences. In sentence 7, John and Mary go back to the garden, which implies that Mary was previously somewhere else. However, sentence 8 mentions that John and Sandra journeyed to the kitchen, which does not mention Mary. Since Mary's location is not updated in sentence 8, her previous location remains the same.
+
+Answer: garden"	0.0385	0.0128	False	False	False	True	0
+979	12	46	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John travelled to the office.
+11. John and Mary went to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentences, we know that john was with sandra and they travelled to the office (sentence 10). then, john moved to the hallway with mary (sentence 11). since there is no information about mary moving out of the hallway, we can conclude that mary is currently in the hallway.	fully	hallway	True	Mary is mentioned in sentence 11, which states that John and Mary went to the hallway. This implies that Mary is currently in the hallway.		"Reasoning: Mary is mentioned in sentence 11, which states that John and Mary went to the hallway. This implies that Mary is currently in the hallway.
+
+Answer: hallway"	0.0833	0.0278	False	False	False	True	0
+980	12	46	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John went back to the garden.
+14. Daniel and Mary travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that daniel was with john and they went back to the garden (sentence 13). then, daniel moved to the bathroom with mary (sentence 14). since there is no information about mary moving out of the bathroom, we can conclude that mary is currently in the bathroom.	fully	bathroom	True	Mary is mentioned in sentence 14, which states that Daniel and Mary travelled to the bathroom. This implies that Mary is currently in the bathroom.		"Reasoning: Mary is mentioned in sentence 14, which states that Daniel and Mary travelled to the bathroom. This implies that Mary is currently in the bathroom.
+
+Answer: bathroom"	0.0556	0.0278	False	False	False	True	0

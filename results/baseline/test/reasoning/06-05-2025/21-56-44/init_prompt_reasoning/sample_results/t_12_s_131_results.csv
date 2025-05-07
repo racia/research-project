@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1401	12	131	1	"*TASK*
+Here are the context sentences:
+1. Sandra and John travelled to the bedroom.
+2. Mary and John went to the office.
+
+Now, answer the following question:
+Where is John?"	office	from the context sentences, we know that john was involved in two separate actions: traveling to the bedroom with sandra (sentence 1) and going to the office with mary (sentence 2). since sentence 2 is the most recent action mentioned, it is logical to assume that john's current location is the office, as it is the last known location mentioned.	fully	office	True	John is mentioned in both sentences, and his location is changing. In sentence 1, he is in the bedroom with Sandra. In sentence 2, he is in the office with Mary.		"Reasoning: John is mentioned in both sentences, and his location is changing. In sentence 1, he is in the bedroom with Sandra. In sentence 2, he is in the office with Mary.
+
+Answer: office"	0.2174	0.0217	False	False	False	True	0
+1402	12	131	2	"*TASK*
+Here are the context sentences:
+4. Mary and John went back to the bedroom.
+5. Sandra and Mary journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from the context sentences, we know that mary was involved in two separate actions: going back to the bedroom with john (sentence 4) and journeying to the bathroom with sandra (sentence 5). since sentence 5 is the most recent action mentioned, it is logical to assume that sandra's current location is the bathroom, as it is the last known location mentioned.	fully	not mentioned	False	Sandra is mentioned in sentence 1, where she was in the bedroom with John. However, in sentence 5, she is not mentioned, but Mary is, and she is in the bathroom. There is no information about Sandra's current location.		"Reasoning: Sandra is mentioned in sentence 1, where she was in the bedroom with John. However, in sentence 5, she is not mentioned, but Mary is, and she is in the bathroom. There is no information about Sandra's current location.
+
+Answer: not mentioned"	0.1207	0.0172	False	False	False	True	0
+1403	12	131	3	"*TASK*
+Here are the context sentences:
+7. Mary and Daniel went back to the bedroom.
+8. John and Mary went back to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that mary was involved in two separate actions: going back to the bedroom with daniel (sentence 7) and going back to the hallway with john (sentence 8). since sentence 8 is the most recent action mentioned, it is logical to assume that john's current location is the hallway, as it is the last known location mentioned.	fully	hallway	True	John is mentioned in sentence 8, where he is in the hallway with Mary.		"Reasoning: John is mentioned in sentence 8, where he is in the hallway with Mary.
+
+Answer: hallway"	0.0417	0.0417	False	False	False	True	0
+1404	12	131	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Sandra went back to the garden.
+11. John and Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from the context sentences, we know that mary was involved in an action with john, journeying to the kitchen (sentence 11). this is the most recent action mentioned, so it is logical to assume that mary's current location is the kitchen, as it is the last known location mentioned.	fully	kitchen	True	Mary is mentioned in sentence 11, where she is in the kitchen with John.		"Reasoning: Mary is mentioned in sentence 11, where she is in the kitchen with John.
+
+Answer: kitchen"	0.0	0.0417	False	False	False	True	0
+1405	12	131	5	"*TASK*
+Here are the context sentences:
+13. Mary and John travelled to the bedroom.
+14. Mary and John journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that mary and john were involved in two consecutive actions: traveling to the bedroom (sentence 13) and then journeying to the bathroom (sentence 14). since sentence 14 is the most recent action mentioned, it is logical to assume that mary's current location is the bathroom, as it is the last known location mentioned.	fully	bathroom	True	Mary is mentioned in both sentences, and her location is changing. In sentence 13, she is in the bedroom with John. In sentence 14, she is in the bathroom with John.		"Reasoning: Mary is mentioned in both sentences, and her location is changing. In sentence 13, she is in the bedroom with John. In sentence 14, she is in the bathroom with John.
+
+Answer: bathroom"	0.0	0.0217	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠBill	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	.	ĠSince	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġpark	Ġthis	Ġafternoon	,	Ġit	Ġimplies	Ġthat	Ġhe	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

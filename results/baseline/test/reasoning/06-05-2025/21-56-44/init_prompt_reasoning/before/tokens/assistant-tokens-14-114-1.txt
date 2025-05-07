@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠBill	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġyesterday	,	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	.	ĠSince	Ġhe	Ġmoved	Ġfrom	Ġthe	Ġbedroom	Ġto	Ġthe	Ġcinema	,	Ġthe	Ġbedroom	Ġis	Ġthe	Ġlocation	Ġhe	Ġwas	Ġin	Ġbefore	Ġmoving	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

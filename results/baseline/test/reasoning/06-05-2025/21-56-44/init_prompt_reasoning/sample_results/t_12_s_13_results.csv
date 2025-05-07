@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+811	12	13	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary journeyed to the garden.
+2. John and Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	from the context sentences, we know that sandra initially journeyed to the garden with mary (sentence 1). however, in sentence 2, it is stated that john and sandra journeyed to the bedroom. this implies that sandra's location changed from the garden to the bedroom. therefore, the current location of sandra is the bedroom.	fully	bedroom	True	Sandra has journeyed to the bedroom with John in sentence 2, and she has also journeyed to the garden with Mary in sentence 1. Since the last action mentioned is her journey to the bedroom, it is likely that she is currently in the bedroom.		"Reasoning: Sandra has journeyed to the bedroom with John in sentence 2, and she has also journeyed to the garden with Mary in sentence 1. Since the last action mentioned is her journey to the bedroom, it is likely that she is currently in the bedroom.
+
+Answer: bedroom"	0.1667	0.0167	False	False	False	True	0
+812	12	13	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John travelled to the hallway.
+5. Mary and Sandra moved to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	according to sentence 5, mary and sandra moved to the kitchen, which explicitly states sandra's current location as the kitchen.	fully	kitchen	True	Sandra has moved to the kitchen with Mary in sentence 5, and there is no mention of her leaving the kitchen or going anywhere else. Therefore, it is likely that she is currently in the kitchen.		"Reasoning: Sandra has moved to the kitchen with Mary in sentence 5, and there is no mention of her leaving the kitchen or going anywhere else. Therefore, it is likely that she is currently in the kitchen.
+
+Answer: kitchen"	0.0417	0.0208	False	False	False	True	0
+813	12	13	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Daniel travelled to the bathroom.
+8. John and Daniel went to the office.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	according to sentence 7, sandra and daniel travelled to the bathroom, which explicitly states sandra's current location as the bathroom. the subsequent sentence 8 does not mention sandra, so her location remains unchanged.	fully	bathroom	True	Sandra has travelled to the bathroom with Daniel in sentence 7, and there is no mention of her leaving the bathroom or going anywhere else. Therefore, it is likely that she is currently in the bathroom.		"Reasoning: Sandra has travelled to the bathroom with Daniel in sentence 7, and there is no mention of her leaving the bathroom or going anywhere else. Therefore, it is likely that she is currently in the bathroom.
+
+Answer: bathroom"	0.1042	0.0208	False	False	False	True	0
+814	12	13	4	"*TASK*
+Here are the context sentences:
+10. Mary and Sandra went back to the office.
+11. Sandra and Daniel journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	according to sentence 11, sandra and daniel journeyed to the hallway, which explicitly states daniel's current location as the hallway.	fully	hallway	True	Sandra has journeyed to the hallway with Daniel in sentence 11, and there is no mention of Daniel leaving the hallway or going anywhere else. Therefore, it is likely that he is currently in the hallway.		"Reasoning: Sandra has journeyed to the hallway with Daniel in sentence 11, and there is no mention of Daniel leaving the hallway or going anywhere else. Therefore, it is likely that he is currently in the hallway.
+
+Answer: hallway"	0.0	0.0204	False	False	False	True	0
+815	12	13	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra travelled to the bathroom.
+14. John and Mary went back to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	according to sentence 13, mary and sandra travelled to the bathroom, but then in sentence 14, john and mary went back to the garden, which explicitly states mary's current location as the garden.	fully	garden	True	Mary has travelled to the bathroom with Sandra in sentence 13, and then she has gone back to the garden with John in sentence 14. Since the last action mentioned is her going back to the garden, it is likely that she is currently in the garden.		"Reasoning: Mary has travelled to the bathroom with Sandra in sentence 13, and then she has gone back to the garden with John in sentence 14. Since the last action mentioned is her going back to the garden, it is likely that she is currently in the garden.
+
+Answer: garden"	0.0333	0.0167	False	False	False	True	0

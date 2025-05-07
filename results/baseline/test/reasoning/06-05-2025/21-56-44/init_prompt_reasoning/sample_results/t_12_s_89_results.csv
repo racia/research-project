@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1191	12	89	1	"*TASK*
+Here are the context sentences:
+1. Daniel and John went to the office.
+2. Sandra and Mary journeyed to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	"from the context sentences, we know that mary was part of a group that ""journeyed to the office"" (sentence 2). this implies that mary's destination was the office, and since there is no information suggesting she left the office, we can logically conclude that mary is currently at the office."	fully	office	True	Since Sandra and Mary journeyed to the office together, it is logical to assume that Mary is also present in the office.		"Reasoning: Since Sandra and Mary journeyed to the office together, it is logical to assume that Mary is also present in the office.
+Answer: office"	0.0312	0.0312	False	False	False	False	0
+1192	12	89	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Mary went to the garden.
+5. Mary and John went to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from the context sentences, we know that mary went to the garden with daniel (sentence 4), but then she went to the kitchen with john (sentence 5). since sentence 5 is the most recent action involving mary, we can logically conclude that mary is currently at the kitchen.	fully	kitchen	True	Mary went to the garden with Daniel, and then went to the kitchen with John. Since the latest information available is that Mary went to the kitchen with John, it is logical to assume that Mary is currently in the kitchen.		"Reasoning: Mary went to the garden with Daniel, and then went to the kitchen with John. Since the latest information available is that Mary went to the kitchen with John, it is logical to assume that Mary is currently in the kitchen.
+Answer: kitchen"	0.0577	0.0192	False	False	False	True	0
+1193	12	89	3	"*TASK*
+Here are the context sentences:
+7. John and Sandra moved to the bathroom.
+8. Sandra and John journeyed to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that john and sandra moved to the bathroom (sentence 7), but then they journeyed to the kitchen (sentence 8). since sentence 8 is the most recent action involving john, we can logically conclude that john is currently at the kitchen.	fully	kitchen	True	John and Sandra moved to the bathroom, and then journeyed to the kitchen together. Since the latest information available is that they journeyed to the kitchen, it is logical to assume that John is currently in the kitchen.		"Reasoning: John and Sandra moved to the bathroom, and then journeyed to the kitchen together. Since the latest information available is that they journeyed to the kitchen, it is logical to assume that John is currently in the kitchen.
+Answer: kitchen"	0.0196	0.0196	False	False	False	True	0
+1194	12	89	4	"*TASK*
+Here are the context sentences:
+10. Mary and John went back to the bedroom.
+11. Mary and Daniel travelled to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from the context sentences, we know that mary went back to the bedroom with john (sentence 10), but then she travelled to the kitchen with daniel (sentence 11). since sentence 11 is the most recent action involving mary, we can logically conclude that mary is currently at the kitchen.	fully	kitchen	True	Mary and John went back to the bedroom, but then Mary and Daniel travelled to the kitchen. Since the latest information available is that Mary and Daniel travelled to the kitchen, it is logical to assume that Mary is currently in the kitchen.		"Reasoning: Mary and John went back to the bedroom, but then Mary and Daniel travelled to the kitchen. Since the latest information available is that Mary and Daniel travelled to the kitchen, it is logical to assume that Mary is currently in the kitchen.
+Answer: kitchen"	0.0556	0.0185	False	False	False	True	0
+1195	12	89	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Daniel moved to the bedroom.
+14. Sandra and John travelled to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	from the context sentences, we know that sandra moved to the bedroom with daniel (sentence 13), but then she travelled to the hallway with john (sentence 14). since sentence 14 is the most recent action involving sandra, we can logically conclude that sandra is currently at the hallway.	fully	hallway	True	Sandra and Daniel moved to the bedroom, and then Sandra and John travelled to the hallway. Since the latest information available is that Sandra and John travelled to the hallway, it is logical to assume that Sandra is currently in the hallway.		"Reasoning: Sandra and Daniel moved to the bedroom, and then Sandra and John travelled to the hallway. Since the latest information available is that Sandra and John travelled to the hallway, it is logical to assume that Sandra is currently in the hallway.
+Answer: hallway"	0.0189	0.0189	False	False	False	True	0

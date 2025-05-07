@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	12	,	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.	ĠSince	ĠBill	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġthis	Ġevening	,	Ġit	Ġimplies	Ġthat	ĠBill	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

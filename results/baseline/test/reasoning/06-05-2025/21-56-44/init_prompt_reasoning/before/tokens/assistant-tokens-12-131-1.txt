@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġhis	Ġlocation	Ġis	Ġchanging	.	ĠIn	Ġsentence	Ġ	1	,	Ġhe	Ġis	Ġin	Ġthe	Ġbedroom	Ġwith	ĠSandra	.	ĠIn	Ġsentence	Ġ	2	,	Ġhe	Ġis	Ġin	Ġthe	Ġoffice	Ġwith	ĠMary	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

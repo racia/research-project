@@ -1,0 +1,42 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1361	12	123	1	"*TASK*
+Here are the context sentences:
+1. John and Sandra moved to the garden.
+2. Daniel and John journeyed to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that john initially moved to the garden with sandra (sentence 1). however, in sentence 2, it is stated that john and daniel journeyed to the hallway. this implies that john left the garden and moved to the hallway with daniel. therefore, the current location of john is the hallway.	fully		False	John is mentioned in two sentences, and in both sentences, he is accompanied by another person. In sentence 1, John is with Sandra, and they move to the garden. In sentence 2, John is with Daniel, and they journey to the hallway. Since John is with Sandra in the first sentence, it implies that John is initially in the garden. However, in the second sentence, John is with Daniel, and they move to the hallway, which suggests that John		Reasoning: John is mentioned in two sentences, and in both sentences, he is accompanied by another person. In sentence 1, John is with Sandra, and they move to the garden. In sentence 2, John is with Daniel, and they journey to the hallway. Since John is with Sandra in the first sentence, it implies that John is initially in the garden. However, in the second sentence, John is with Daniel, and they move to the hallway, which suggests that John	0.1717	0.0101	False	False	False	True	0
+1362	12	123	2	"*TASK*
+Here are the context sentences:
+4. John and Mary moved to the kitchen.
+5. John and Daniel moved to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	in sentence 4, john moves to the kitchen with mary. however, in sentence 5, john moves to the bathroom with daniel. this implies that john left the kitchen and moved to the bathroom. therefore, the current location of john is the bathroom.	fully		False	John is mentioned in two sentences, and in both sentences, he is accompanied by another person. In sentence 4, John is with Mary, and they move to the kitchen. In sentence 5, John is with Daniel, and they move to the bathroom. Since John is with Mary in the first sentence, it implies that John is initially in the kitchen. However, in the second sentence, John is with Daniel, and they move to the bathroom, which suggests that John		Reasoning: John is mentioned in two sentences, and in both sentences, he is accompanied by another person. In sentence 4, John is with Mary, and they move to the kitchen. In sentence 5, John is with Daniel, and they move to the bathroom. Since John is with Mary in the first sentence, it implies that John is initially in the kitchen. However, in the second sentence, John is with Daniel, and they move to the bathroom, which suggests that John	0.1313	0.0101	False	False	False	True	0
+1363	12	123	3	"*TASK*
+Here are the context sentences:
+7. Sandra and John went to the bedroom.
+8. Daniel and Sandra went back to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	in sentence 7, sandra moves to the bedroom with john. then, in sentence 8, daniel and sandra move back to the garden. since sandra was with john in the bedroom and then moved with daniel to the garden, it can be inferred that daniel was not in the bedroom. therefore, daniel's current location is the garden.	fully	bedroom	False	Daniel is mentioned in two sentences, and in the first sentence, he is with Sandra, and they go to the bedroom. In the second sentence, Sandra goes back to the garden, but it does not specify what happens to Daniel. Since Sandra goes back to the garden, it implies that she was initially in the garden, and Daniel was with her. Therefore, it is likely that Daniel is still in the bedroom.		"Reasoning: Daniel is mentioned in two sentences, and in the first sentence, he is with Sandra, and they go to the bedroom. In the second sentence, Sandra goes back to the garden, but it does not specify what happens to Daniel. Since Sandra goes back to the garden, it implies that she was initially in the garden, and Daniel was with her. Therefore, it is likely that Daniel is still in the bedroom.
+
+Answer: bedroom"	0.0	0.011	False	False	False	True	0
+1364	12	123	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel went to the bathroom.
+11. Sandra and John journeyed to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	in sentence 10, john moves to the bathroom with daniel. then, in sentence 11, sandra and john journey to the office. since john was in the bathroom and then moved to the office with sandra, it can be inferred that sandra was not in the bathroom. therefore, sandra's current location is the office.	fully	office	True	Sandra is mentioned in two sentences, and in the first sentence, she is not mentioned at all. In the second sentence, Sandra is with John, and they journey to the office. Since Sandra is with John in the second sentence, it implies that Sandra is initially in the office.		"Reasoning: Sandra is mentioned in two sentences, and in the first sentence, she is not mentioned at all. In the second sentence, Sandra is with John, and they journey to the office. Since Sandra is with John in the second sentence, it implies that Sandra is initially in the office.
+
+Answer: office"	0.0312	0.0156	False	False	False	True	0
+1365	12	123	5	"*TASK*
+Here are the context sentences:
+13. John and Daniel moved to the bedroom.
+14. Daniel and Sandra went to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	in sentence 13, john and daniel move to the bedroom. then, in sentence 14, daniel moves to the hallway with sandra. since daniel was in the bedroom and then moved to the hallway with sandra, it can be inferred that sandra was not in the bedroom. therefore, sandra's current location is the hallway.	fully	hallway	True	Sandra is mentioned in two sentences, and in the first sentence, she is not mentioned at all. In the second sentence, Sandra is with Daniel, and they go to the hallway. Since Sandra is with Daniel in the second sentence, it implies that Sandra is initially in the hallway.		"Reasoning: Sandra is mentioned in two sentences, and in the first sentence, she is not mentioned at all. In the second sentence, Sandra is with Daniel, and they go to the hallway. Since Sandra is with Daniel in the second sentence, it implies that Sandra is initially in the hallway.
+
+Answer: hallway"	0.0	0.0156	False	False	False	True	0

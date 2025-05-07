@@ -1,0 +1,44 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2461	14	43	1	"*TASK*
+Here are the context sentences:
+1. Fred went to the cinema yesterday.
+2. Julie went back to the cinema yesterday.
+3. This morning Fred went back to the kitchen.
+4. Yesterday Bill moved to the park.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	cinema	"from context sentence 1, we know that fred went to the cinema yesterday. then, from context sentence 3, we know that this morning fred went back to the kitchen. the phrase ""went back"" implies that fred had been to the kitchen before, but more importantly, it suggests that fred was somewhere else before coming back to the kitchen. since we know fred was at the cinema yesterday, and he went back to the kitchen this morning, it is logical to conclude that fred"	fully	cinema	True	Since Fred went back to the kitchen this morning, it implies that he was somewhere else before going back to the kitchen. The only information we have about Fred's previous location is that he went to the cinema yesterday. Therefore, it is logical to assume that Fred was at the cinema before going back to the kitchen.		"Reasoning: Since Fred went back to the kitchen this morning, it implies that he was somewhere else before going back to the kitchen. The only information we have about Fred's previous location is that he went to the cinema yesterday. Therefore, it is logical to assume that Fred was at the cinema before going back to the kitchen.
+
+Answer: cinema"	0.0714	0.0286	False	False	False	True	0
+2462	14	43	2	"*TASK*
+Here are the context sentences:
+6. Yesterday Mary went back to the office.
+7. Julie went back to the bedroom this morning.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	cinema	"this question refers to a previous part of the conversation history. from context sentences 1-4, we know that fred went to the cinema yesterday (sentence 1) and went back to the kitchen this morning (sentence 3). the phrase ""went back"" in sentence 3 implies that fred was somewhere else before coming back to the kitchen. given that fred was at the cinema yesterday, it is logical to conclude that fred was at the cinema before going back to the kitchen."	none	not mentioned	False	The question is asking about Fred's location before going back to the kitchen, but the context sentences provided do not mention Fred's location. The sentences only mention Mary and Julie's locations, which are the office and bedroom, respectively. Since Fred's location is not mentioned, we cannot determine where Fred was before going back to the kitchen.		"Reasoning: The question is asking about Fred's location before going back to the kitchen, but the context sentences provided do not mention Fred's location. The sentences only mention Mary and Julie's locations, which are the office and bedroom, respectively. Since Fred's location is not mentioned, we cannot determine where Fred was before going back to the kitchen.
+
+Answer: not mentioned"	0.1333	0.0267	False	False	False	True	0
+2463	14	43	3	"*TASK*
+Here are the context sentences:
+9. This morning Bill travelled to the kitchen.
+10. Fred went to the school this afternoon.
+
+Now, answer the following question:
+Where was Fred before the school?"	kitchen	"this question refers to a previous part of the conversation history. from context sentence 3, we know that this morning fred went back to the kitchen. the phrase ""went back"" implies that fred was already at the kitchen before, and then left the kitchen. later, according to sentence 10, fred went to the school this afternoon. given that fred went back to the kitchen this morning and then went to the school this afternoon, it is logical to conclude that fred was at the"	partially		False	The question is asking about Fred's location before going to the school. The context sentence mentions that Fred went to the school this afternoon, but it does not mention his location before going to the school. However, we can infer that Fred was somewhere else before going to the school, since he went to the school this afternoon. The only information we have about Fred's previous location is that he went to the kitchen this morning (from context sentence 9). Therefore, it is logical		Reasoning: The question is asking about Fred's location before going to the school. The context sentence mentions that Fred went to the school this afternoon, but it does not mention his location before going to the school. However, we can infer that Fred was somewhere else before going to the school, since he went to the school this afternoon. The only information we have about Fred's previous location is that he went to the kitchen this morning (from context sentence 9). Therefore, it is logical	0.0909	0.0202	False	False	False	True	0
+2464	14	43	4	"*TASK*
+Here are the context sentences:
+12. This morning Mary travelled to the kitchen.
+13. This afternoon Bill moved to the cinema.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	park	this question refers to a previous part of the conversation history. from context sentence 4, we know that yesterday bill moved to the park. there is no information about bill moving from the park to any other location until sentence 13, where bill moves to the cinema this afternoon. there is no mention of bill going to the kitchen at any point. therefore, it is logical to conclude that bill was at the park before going to the cinema, and not at the kitchen.	none		False	The question is asking about Bill's location before going to the kitchen. The context sentence mentions that Bill moved to the cinema this afternoon (from context sentence 13), but it does not mention his location before going to the cinema. However, we can infer that Bill was somewhere else before going to the cinema. The only information we have about Bill's previous location is that he travelled to the kitchen this morning (from context sentence 12). Therefore, it is logical to assume that		Reasoning: The question is asking about Bill's location before going to the kitchen. The context sentence mentions that Bill moved to the cinema this afternoon (from context sentence 13), but it does not mention his location before going to the cinema. However, we can infer that Bill was somewhere else before going to the cinema. The only information we have about Bill's previous location is that he travelled to the kitchen this morning (from context sentence 12). Therefore, it is logical to assume that	0.0909	0.0202	False	False	False	True	0
+2465	14	43	5	"*TASK*
+Here are the context sentences:
+15. Mary journeyed to the kitchen this evening.
+16. This afternoon Mary moved to the cinema.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	park	this question refers to a previous part of the conversation history. the context sentences provided (15 and 16) are about mary's movements, but the question is about bill. to answer this question, we need to look at previous context sentences. from context sentence 4, we know that yesterday bill moved to the park. there is no information about bill moving from the park to any other location. therefore, it is logical to conclude that bill was at the park before going to any	none	not mentioned	False	The question is asking about Bill's location before going to the kitchen, but the context sentences provided do not mention Bill's location. The sentences only mention Mary's locations, which are the kitchen and cinema, respectively. Since Bill's location is not mentioned, we cannot determine where Bill was before going to the kitchen.		"Reasoning: The question is asking about Bill's location before going to the kitchen, but the context sentences provided do not mention Bill's location. The sentences only mention Mary's locations, which are the kitchen and cinema, respectively. Since Bill's location is not mentioned, we cannot determine where Bill was before going to the kitchen.
+
+Answer: not mentioned"	0.0423	0.0282	False	False	False	True	0

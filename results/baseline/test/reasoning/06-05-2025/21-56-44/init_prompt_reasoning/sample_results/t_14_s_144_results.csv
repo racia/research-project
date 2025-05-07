@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2966	14	144	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Bill journeyed to the park.
+2. Yesterday Fred went back to the kitchen.
+3. This morning Julie moved to the cinema.
+4. Julie moved to the office yesterday.
+
+Now, answer the following question:
+Where was Julie before the cinema?"	office	"from context sentence 4, ""julie moved to the office yesterday"", we know that julie was in the office yesterday. then, from context sentence 3, ""this morning julie moved to the cinema"", we can infer that julie moved from the office to the cinema this morning. therefore, julie was in the office before moving to the cinema."	fully	office	True	Julie moved to the cinema this morning, and yesterday she moved to the office. Therefore, Julie was in the office before moving to the cinema.		"Reasoning: Julie moved to the cinema this morning, and yesterday she moved to the office. Therefore, Julie was in the office before moving to the cinema.
+
+Answer: office"	0.1667	0.0556	False	False	False	False	0
+2967	14	144	2	"*TASK*
+Here are the context sentences:
+6. This morning Fred went to the bedroom.
+7. This afternoon Julie went back to the bedroom.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	kitchen	"from context sentence 2, ""yesterday fred went back to the kitchen"", we know that fred was in the kitchen yesterday. there is no information about fred's movement between yesterday and this morning. however, from context sentence 6, ""this morning fred went to the bedroom"", we can infer that fred moved from somewhere to the bedroom this morning. the most logical assumption is that fred was still in the kitchen from yesterday and moved to the bedroom this morning, as there is no other"	partially	not mentioned	False	Fred went to the bedroom this morning, but there is no information about where he was before going to the bedroom. The context sentences do not provide any information about Fred's previous location.		"Reasoning: Fred went to the bedroom this morning, but there is no information about where he was before going to the bedroom. The context sentences do not provide any information about Fred's previous location.
+
+Answer: not mentioned"	0.0444	0.0444	False	False	False	True	0
+2968	14	144	3	"*TASK*
+Here are the context sentences:
+9. This morning Mary went back to the office.
+10. Mary travelled to the bedroom yesterday.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	cinema	"the question asks about julie, but the context sentences 9 and 10 are about mary. to find the answer, we need to look at the previous context sentences. from context sentence 3, ""this morning julie moved to the cinema"", we know that julie was somewhere before moving to the cinema this morning. from context sentence 4, ""julie moved to the office yesterday"", we can infer that julie was in the office yesterday. therefore, julie was in the office before"	none	not mentioned	False	The question asks about Julie's location before the bedroom, but Julie is not mentioned in the given context sentences. The sentences only provide information about Mary's location.		"Reasoning: The question asks about Julie's location before the bedroom, but Julie is not mentioned in the given context sentences. The sentences only provide information about Mary's location.
+
+Answer: not mentioned"	0.075	0.05	False	False	False	True	0
+2969	14	144	4	"*TASK*
+Here are the context sentences:
+12. This morning Bill went to the school.
+13. Julie journeyed to the cinema this evening.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	kitchen	"the question asks about fred, and the answer is ""kitchen"". to find the reasoning, we need to look at the previous context sentences. from context sentence 2, ""yesterday fred went back to the kitchen"", we know that fred was in the kitchen yesterday. there is no information about fred's movement between yesterday and this morning. therefore, the most logical assumption is that fred was still in the kitchen before moving to the bedroom, which is mentioned in context sentence 6"	none	not mentioned	False	The question asks about Fred's location before the bedroom, but there is no information about Fred's location in the given context sentences. The sentences only provide information about Bill's location and Julie's location.		"Reasoning: The question asks about Fred's location before the bedroom, but there is no information about Fred's location in the given context sentences. The sentences only provide information about Bill's location and Julie's location.
+
+Answer: not mentioned"	0.125	0.0417	False	False	False	True	0
+2970	14	144	5	"*TASK*
+Here are the context sentences:
+15. This afternoon Bill travelled to the bedroom.
+16. Fred journeyed to the park this afternoon.
+
+Now, answer the following question:
+Where was Julie before the cinema?"	bedroom	"the question asks about julie, and the answer is ""bedroom"". to find the reasoning, we need to look at the previous context sentences. from context sentence 7, ""this afternoon julie went back to the bedroom"", we can infer that julie was somewhere before moving back to the bedroom this afternoon. from context sentence 3, ""this morning julie moved to the cinema"", we know that julie was in the cinema this morning. therefore, julie must"	none	not mentioned	False	The question asks about Julie's location before the cinema, but the given context sentences do not provide any information about Julie's location. The sentences only provide information about Bill's and Fred's locations.		"Reasoning: The question asks about Julie's location before the cinema, but the given context sentences do not provide any information about Julie's location. The sentences only provide information about Bill's and Fred's locations.
+
+Answer: not mentioned"	0.0638	0.0426	False	False	False	True	0

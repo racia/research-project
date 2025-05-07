@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1096	12	70	1	"*TASK*
+Here are the context sentences:
+1. Mary and John journeyed to the kitchen.
+2. Daniel and Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"according to context sentence 1, ""mary and john journeyed to the kitchen"", which explicitly states that mary went to the kitchen. therefore, the answer to the question ""where is mary?"" is indeed the kitchen."	fully	kitchen	True	Mary and John journeyed to the kitchen, which implies that Mary is currently in the kitchen.		"Reasoning: Mary and John journeyed to the kitchen, which implies that Mary is currently in the kitchen.
+
+Answer: kitchen"	0.0	0.0385	False	False	False	False	0
+1097	12	70	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Mary went back to the office.
+5. Mary and John went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"according to context sentence 5, ""mary and john went back to the bedroom"", which explicitly states that mary went back to the bedroom. this information overrides any previous location of mary, so the answer to the question ""where is mary?"" is indeed the bedroom."	fully	bedroom	True	Mary and John went back to the bedroom, which implies that Mary was previously in the office, but then returned to the bedroom with John.		"Reasoning: Mary and John went back to the bedroom, which implies that Mary was previously in the office, but then returned to the bedroom with John.
+
+Answer: bedroom"	0.1429	0.0286	False	False	False	False	0
+1098	12	70	3	"*TASK*
+Here are the context sentences:
+7. Mary and Daniel travelled to the bathroom.
+8. Daniel and Sandra travelled to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"according to context sentence 8, ""daniel and sandra travelled to the garden"", which explicitly states that sandra went to the garden. therefore, the answer to the question ""where is sandra?"" is indeed the garden."	fully	garden	True	Sandra is not mentioned as being in the bathroom, and she is not mentioned as being in the garden. The only information about Sandra is that she travelled to the garden with Daniel.		"Reasoning: Sandra is not mentioned as being in the bathroom, and she is not mentioned as being in the garden. The only information about Sandra is that she travelled to the garden with Daniel.
+
+Answer: garden"	0.0698	0.0233	False	False	False	True	0
+1099	12	70	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Sandra journeyed to the bathroom.
+11. Mary and John journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"according to context sentence 10, ""daniel and sandra journeyed to the bathroom"", which explicitly states that daniel went to the bathroom. therefore, the answer to the question ""where is daniel?"" is indeed the bathroom."	fully	bathroom	True	Daniel and Sandra journeyed to the bathroom, which implies that Daniel is currently in the bathroom.		"Reasoning: Daniel and Sandra journeyed to the bathroom, which implies that Daniel is currently in the bathroom.
+
+Answer: bathroom"	0.0	0.0385	False	False	False	False	0
+1100	12	70	5	"*TASK*
+Here are the context sentences:
+13. Mary and Daniel journeyed to the bedroom.
+14. Daniel and Mary went back to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	"according to context sentence 14, ""daniel and mary went back to the garden"", which explicitly states that mary went back to the garden. this information overrides any previous location of mary, so the answer to the question ""where is mary?"" is indeed the garden."	fully	garden	True	Mary and Daniel journeyed to the bedroom, which implies that Mary is currently in the bedroom. Later, Daniel and Mary went back to the garden, which implies that Mary was previously in the bedroom, but then returned to the garden with Daniel.		"Reasoning: Mary and Daniel journeyed to the bedroom, which implies that Mary is currently in the bedroom. Later, Daniel and Mary went back to the garden, which implies that Mary was previously in the bedroom, but then returned to the garden with Daniel.
+
+Answer: garden"	0.0179	0.0179	False	False	False	False	0

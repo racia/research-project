@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġthen	ĠMary	Ġand	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.	ĠSince	Ġthe	Ġlatest	Ġinformation	Ġavailable	Ġis	Ġthat	ĠMary	Ġand	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlogical	Ġto	Ġassume	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.Ċ	Answer	:	Ġkitchen	<|eot_id|>

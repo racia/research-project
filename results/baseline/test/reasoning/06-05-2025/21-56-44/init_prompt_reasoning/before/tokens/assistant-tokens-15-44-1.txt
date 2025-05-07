@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	Ġwhat	ĠJessica	Ġis	Ġafraid	Ġof	.	ĠSince	ĠJessica	Ġis	Ġa	Ġmouse	,	Ġwe	Ġcan	Ġinfer	Ġthat	Ġshe	Ġis	Ġafraid	Ġof	Ġsheep	,	Ġas	Ġmentioned	Ġin	Ġsentence	Ġ	3	.ĊĊ	Answer	:	Ġsheep	<|eot_id|>

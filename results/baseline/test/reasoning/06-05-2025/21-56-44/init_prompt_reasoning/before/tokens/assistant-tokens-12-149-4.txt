@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠMary	Ġand	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġimplies	Ġthat	ĠMary	's	Ġlocation	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.	ĠHowever	,	Ġsentence	Ġ	11	Ġstates	Ġthat	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġmeans	ĠMary	's	Ġlocation	Ġhas	Ġchanged	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

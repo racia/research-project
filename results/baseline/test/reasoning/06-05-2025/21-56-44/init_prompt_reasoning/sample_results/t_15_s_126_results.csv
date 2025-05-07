@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3501	15	126	1	"*TASK*
+Here are the context sentences:
+1. Mice are afraid of sheep.
+2. Sheep are afraid of mice.
+3. Cats are afraid of wolves.
+4. Wolves are afraid of cats.
+5. Emily is a sheep.
+6. Winona is a sheep.
+7. Jessica is a wolf.
+8. Gertrude is a wolf.
+
+Now, answer the following question:
+What is jessica afraid of?"	cat	from sentence 7, we know that jessica is a wolf. from sentence 4, we know that wolves are afraid of cats. therefore, jessica, being a wolf, is afraid of a cat.	fully	cats	True	Since Jessica is a wolf (sentence 7), and wolves are afraid of cats (sentence 4), Jessica is afraid of cats.		"Reasoning: Since Jessica is a wolf (sentence 7), and wolves are afraid of cats (sentence 4), Jessica is afraid of cats.
+
+Answer: cats"	0.0588	0.0588	False	False	False	False	0
+3502	15	126	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	mouse	from sentence 6, we know that winona is a sheep. from sentence 1, we know that sheep are afraid of mice. therefore, winona, being a sheep, is afraid of a mouse.	none	mice	True	Since Winona is a sheep (sentence 6), and sheep are afraid of mice (sentence 2), Winona is afraid of mice.		"Reasoning: Since Winona is a sheep (sentence 6), and sheep are afraid of mice (sentence 2), Winona is afraid of mice.
+
+Answer: mice"	0.1667	0.0556	False	False	False	False	0
+3503	15	126	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is jessica afraid of?"	cat	from sentence 7, we know that jessica is a wolf. from sentence 4, we know that wolves are afraid of cats. therefore, jessica, being a wolf, is afraid of a cat.	none	cats	True	Since Jessica is a wolf (sentence 7), and wolves are afraid of cats (sentence 4), Jessica is afraid of cats.		"Reasoning: Since Jessica is a wolf (sentence 7), and wolves are afraid of cats (sentence 4), Jessica is afraid of cats.
+
+Answer: cats"	0.0882	0.0588	False	False	False	False	0
+3504	15	126	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	mouse	from sentence 6, we know that winona is a sheep. from sentence 2, we know that sheep are afraid of mice. therefore, winona, being a sheep, is afraid of a mouse.	none	mice	True	Since Winona is a sheep (sentence 6), and sheep are afraid of mice (sentence 2), Winona is afraid of mice.		"Reasoning: Since Winona is a sheep (sentence 6), and sheep are afraid of mice (sentence 2), Winona is afraid of mice.
+
+Answer: mice"	0.0833	0.0556	False	False	False	False	0

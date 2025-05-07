@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+376	11	76	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the garden.
+2. Afterwards she travelled to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	the context sentences provide a sequence of mary's travels. in the first sentence, mary travels to the garden, which means she is in the garden after that. however, the second sentence states that afterwards she travelled to the bedroom. this implies that mary left the garden and moved to the bedroom. therefore, based on the sequence of events, mary is currently in the bedroom.	fully	bedroom	True	Mary has travelled to two locations: the garden and the bedroom. Since the question asks about her current location, we need to consider the most recent location she has travelled to, which is the bedroom.		"Reasoning: Mary has travelled to two locations: the garden and the bedroom. Since the question asks about her current location, we need to consider the most recent location she has travelled to, which is the bedroom.
+
+Answer: bedroom"	0.1064	0.0426	False	False	False	False	0
+377	11	76	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the kitchen.
+5. Then she went back to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	the context sentences provide a sequence of mary's travels. in the first sentence, mary travels to the kitchen, which means she is in the kitchen after that. however, the second sentence states that then she went back to the garden. this implies that mary left the kitchen and returned to the garden. therefore, based on the sequence of events, mary is currently in the garden.	fully	garden	True	Mary has travelled to two locations: the kitchen and the garden. Since she went back to the garden, her current location is the garden.		"Reasoning: Mary has travelled to two locations: the kitchen and the garden. Since she went back to the garden, her current location is the garden.
+
+Answer: garden"	0.2286	0.0571	False	False	False	False	0
+378	11	76	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the hallway.
+8. Then she journeyed to the office.
+
+Now, answer the following question:
+Where is Mary?"	garden	the context sentences provided do not mention mary at all, but instead talk about sandra's journeys to the hallway and then to the office. however, the answer provided is about mary's location, which is the garden. to find the correct reasoning, we need to inspect the previous parts of the conversation history. in the previous parts, we had established that mary travelled to the kitchen and then went back to the garden. since there is no new information about mary's travels, we can conclude	none	not mentioned	False	The question asks about Mary's location, but there is no mention of Mary in the given context sentences. The sentences only mention Sandra's journey to the hallway and office.		"Reasoning: The question asks about Mary's location, but there is no mention of Mary in the given context sentences. The sentences only mention Sandra's journey to the hallway and office.
+
+Answer: not mentioned"	0.0476	0.0476	False	False	False	True	0
+379	11	76	4	"*TASK*
+Here are the context sentences:
+10. Sandra moved to the kitchen.
+11. Following that she journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	the context sentences provide a sequence of sandra's movements. in sentence 10, sandra moves to the kitchen, which means she is in the kitchen after that. however, sentence 11 states that following that, she journeyed to the bathroom. this implies that sandra left the kitchen and moved to the bathroom. therefore, based on the sequence of events, sandra is currently in the bathroom.	fully	bathroom	True	Sandra has moved to the kitchen and then journeyed to the bathroom. Since the question asks about her current location, we need to consider the most recent location she has journeyed to, which is the bathroom.		"Reasoning: Sandra has moved to the kitchen and then journeyed to the bathroom. Since the question asks about her current location, we need to consider the most recent location she has journeyed to, which is the bathroom.
+
+Answer: bathroom"	0.0	0.0408	False	False	False	False	0
+380	11	76	5	"*TASK*
+Here are the context sentences:
+13. Sandra travelled to the hallway.
+14. Afterwards she went to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	the context sentences provide a sequence of sandra's travels. in sentence 13, sandra travels to the hallway, which means she is in the hallway after that. however, sentence 14 states that afterwards she went to the garden. this implies that sandra left the hallway and moved to the garden. therefore, based on the sequence of events, sandra is currently in the garden.	fully	garden	True	Sandra has travelled to the hallway and then went to the garden. Since the question asks about her current location, we need to consider the most recent location she has gone to, which is the garden.		"Reasoning: Sandra has travelled to the hallway and then went to the garden. Since the question asks about her current location, we need to consider the most recent location she has gone to, which is the garden.
+
+Answer: garden"	0.0426	0.0426	False	False	False	False	0

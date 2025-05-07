@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġcinema	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠBill	's	Ġjourney	Ġto	Ġthe	Ġcinema	Ġand	ĠFred	's	Ġjourney	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

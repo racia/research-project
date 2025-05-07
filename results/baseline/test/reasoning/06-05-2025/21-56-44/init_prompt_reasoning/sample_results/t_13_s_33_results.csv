@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1661	13	33	1	"*TASK*
+Here are the context sentences:
+1. Daniel and John went back to the office.
+2. After that they moved to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	from the context sentences, we know that daniel and john went back to the office (sentence 1), and then they moved to the bedroom (sentence 2). since john was with daniel in both locations, it can be logically inferred that john is currently in the bedroom, which is the last location mentioned in the sequence of events.	fully	bedroom	True	Since John and Daniel went back to the office, and then they moved to the bedroom, it implies that John is no longer in the office. The most recent location mentioned is the bedroom, so it is likely that John is currently in the bedroom.		"Reasoning: Since John and Daniel went back to the office, and then they moved to the bedroom, it implies that John is no longer in the office. The most recent location mentioned is the bedroom, so it is likely that John is currently in the bedroom.
+
+Answer: bedroom"	0.193	0.0351	False	False	False	True	0
+1662	13	33	2	"*TASK*
+Here are the context sentences:
+4. Sandra and John moved to the garden.
+5. After that they journeyed to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	from the context sentences, we know that sandra and john moved to the garden (sentence 4), and then they journeyed to the bathroom (sentence 5). since john was with sandra in both locations, it can be logically inferred that john is currently in the bathroom, which is the last location mentioned in the sequence of events.	fully	bathroom	True	According to the context sentences, Sandra and John moved to the garden, and then they journeyed to the bathroom. This implies that John's location changed from the garden to the bathroom.		"Reasoning: According to the context sentences, Sandra and John moved to the garden, and then they journeyed to the bathroom. This implies that John's location changed from the garden to the bathroom.
+
+Answer: bathroom"	0.0909	0.0455	False	False	False	False	0
+1663	13	33	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Sandra went to the kitchen.
+8. Then they went to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from the context sentences, we know that daniel and sandra went to the kitchen (sentence 7), and then they went to the bathroom (sentence 8). since daniel was with sandra in both locations, it can be logically inferred that daniel is currently in the bathroom, which is the last location mentioned in the sequence of events.	fully	bathroom	True	Since Daniel and Sandra went to the kitchen, and then they went to the bathroom, it implies that Daniel is no longer in the kitchen. The most recent location mentioned is the bathroom, so it is likely that Daniel is currently in the bathroom.		"Reasoning: Since Daniel and Sandra went to the kitchen, and then they went to the bathroom, it implies that Daniel is no longer in the kitchen. The most recent location mentioned is the bathroom, so it is likely that Daniel is currently in the bathroom.
+
+Answer: bathroom"	0.2143	0.0357	False	False	False	True	0
+1664	13	33	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John went to the bedroom.
+11. Then they journeyed to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that sandra and john went to the bedroom (sentence 10), and then they journeyed to the kitchen (sentence 11). since john was with sandra in both locations, it can be logically inferred that john is currently in the kitchen, which is the last location mentioned in the sequence of events.	fully	kitchen	True	According to the context sentences, Sandra and John went to the bedroom, and then they journeyed to the kitchen. This implies that John's location changed from the bedroom to the kitchen.		"Reasoning: According to the context sentences, Sandra and John went to the bedroom, and then they journeyed to the kitchen. This implies that John's location changed from the bedroom to the kitchen.
+
+Answer: kitchen"	0.0909	0.0455	False	False	False	False	0
+1665	13	33	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra moved to the bedroom.
+14. After that they travelled to the office.
+
+Now, answer the following question:
+Where is John?"	kitchen	there is no information about john's location in the provided context sentences (13 and 14). the context sentences only mention mary and sandra moving to the bedroom and then to the office. however, the answer suggests that john is in the kitchen. to arrive at this answer, we need to look at the previous parts of the conversation history. in a previous part (11), it was mentioned that sandra and john journeyed to the kitchen. since sandra is now in the office (sentence	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only mention Mary and Sandra's movements.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Mary and Sandra's movements.
+
+Answer: not mentioned"	0.0	0.0667	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġprovided	Ġabout	ĠFred	Ġin	Ġthese	Ġcontext	Ġsentences	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠFred	's	Ġlocation	Ġis	Ġstill	Ġrelevant	.	ĠAccording	Ġto	Ġprevious	Ġcontext	,	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġoffice	Ġyesterday	,	Ġand	Ġthen	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

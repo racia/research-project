@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3529	15	133	1	"*TASK*
+Here are the context sentences:
+1. Mice are afraid of cats.
+2. Sheep are afraid of wolves.
+3. Cats are afraid of wolves.
+4. Wolves are afraid of cats.
+5. Gertrude is a sheep.
+6. Jessica is a mouse.
+7. Emily is a mouse.
+8. Winona is a mouse.
+
+Now, answer the following question:
+What is emily afraid of?"	cat	from sentence 1, we know that mice are afraid of cats. emily is a mouse (sentence 7), so we can infer that emily is afraid of cats.	fully	cat	True	According to sentence 1, mice are afraid of cats. Since Emily is a mouse (sentence 8), it can be inferred that Emily is afraid of cats.		"Reasoning: According to sentence 1, mice are afraid of cats. Since Emily is a mouse (sentence 8), it can be inferred that Emily is afraid of cats.
+
+Answer: cat"	0.075	0.05	False	False	False	False	0
+3530	15	133	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is gertrude afraid of?"	wolf	from sentence 2, we know that sheep are afraid of wolves. gertrude is a sheep (sentence 5), so we can infer that gertrude is afraid of wolves.	none	wolves	True	Gertrude is a sheep (sentence 5), and sheep are afraid of wolves (sentence 2). Therefore, it can be inferred that Gertrude is afraid of wolves.		"Reasoning: Gertrude is a sheep (sentence 5), and sheep are afraid of wolves (sentence 2). Therefore, it can be inferred that Gertrude is afraid of wolves.
+
+Answer: wolves"	0.0682	0.0455	False	False	False	False	0
+3531	15	133	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	cat	from sentence 1, we know that mice are afraid of cats. winona is a mouse (sentence 8), so we can infer that winona is afraid of cats.	none	cats	True	Winona is a mouse (sentence 8), and mice are afraid of cats (sentence 1). Therefore, it can be inferred that Winona is afraid of cats.		"Reasoning: Winona is a mouse (sentence 8), and mice are afraid of cats (sentence 1). Therefore, it can be inferred that Winona is afraid of cats.
+
+Answer: cats"	0.0238	0.0476	False	False	False	False	0
+3532	15	133	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	cat	from sentence 1, we know that mice are afraid of cats. emily is a mouse (sentence 7), so we can infer that emily is afraid of cats.	none	cats	True	Emily is a mouse (sentence 8), and mice are afraid of cats (sentence 1). Therefore, it can be inferred that Emily is afraid of cats.		"Reasoning: Emily is a mouse (sentence 8), and mice are afraid of cats (sentence 1). Therefore, it can be inferred that Emily is afraid of cats.
+
+Answer: cats"	0.025	0.05	False	False	False	False	0

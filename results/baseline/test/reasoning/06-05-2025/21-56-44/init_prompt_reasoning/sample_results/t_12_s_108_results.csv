@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1286	12	108	1	"*TASK*
+Here are the context sentences:
+1. John and Sandra moved to the office.
+2. Daniel and John travelled to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	from the context sentences, we know that john initially moved to the office (sentence 1). however, in sentence 2, it is stated that john travelled to the bathroom with daniel. this implies that john's location changed from the office to the bathroom. therefore, the current location of john is the bathroom.	fully	office	False	John is mentioned in two sentences, and in both sentences, he is accompanied by another person. In sentence 1, John is with Sandra, and they move to the office. In sentence 2, John is with Daniel, and they travel to the bathroom. Since John is with Sandra in the first sentence, it is likely that John is in the office.		"Reasoning: John is mentioned in two sentences, and in both sentences, he is accompanied by another person. In sentence 1, John is with Sandra, and they move to the office. In sentence 2, John is with Daniel, and they travel to the bathroom. Since John is with Sandra in the first sentence, it is likely that John is in the office.
+
+Answer: office"	0.1625	0.0125	False	False	False	True	0
+1287	12	108	2	"*TASK*
+Here are the context sentences:
+4. Sandra and John went to the garden.
+5. Mary and Daniel journeyed to the office.
+
+Now, answer the following question:
+Where is John?"	garden	according to sentence 4, sandra and john went to the garden, which implies that john's current location is the garden. there is no subsequent information that suggests john's location has changed, so we can conclude that john is still in the garden.	fully	garden	True	According to sentence 4, John is with Sandra, and they went to the garden. This implies that John is currently in the garden.		"Reasoning: According to sentence 4, John is with Sandra, and they went to the garden. This implies that John is currently in the garden.
+
+Answer: garden"	0.0286	0.0286	False	False	False	False	0
+1288	12	108	3	"*TASK*
+Here are the context sentences:
+7. Mary and John went to the bathroom.
+8. Mary and John went back to the office.
+
+Now, answer the following question:
+Where is John?"	office	according to sentence 7, mary and john went to the bathroom, which means john's location was the bathroom. however, in sentence 8, it is stated that mary and john went back to the office, implying that john's location changed from the bathroom to the office. therefore, john's current location is the office.	fully	office	True	According to sentence 8, Mary and John went back to the office. This implies that John is currently in the office.		"Reasoning: According to sentence 8, Mary and John went back to the office. This implies that John is currently in the office.
+
+Answer: office"	0.0312	0.0312	False	False	False	False	0
+1289	12	108	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel moved to the bedroom.
+11. Sandra and Daniel travelled to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	according to sentence 10, john and daniel moved to the bedroom, which means daniel's initial location was the bedroom. however, in sentence 11, it is stated that sandra and daniel travelled to the hallway, implying that daniel's location changed from the bedroom to the hallway. therefore, daniel's current location is the hallway.	fully	hallway	True	According to sentence 11, Sandra and Daniel travelled to the hallway. This implies that Daniel is currently in the hallway.		"Reasoning: According to sentence 11, Sandra and Daniel travelled to the hallway. This implies that Daniel is currently in the hallway.
+
+Answer: hallway"	0.0	0.0323	False	False	False	False	0
+1290	12	108	5	"*TASK*
+Here are the context sentences:
+13. John and Mary went to the bathroom.
+14. John and Sandra went to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	according to sentence 14, john and sandra went to the office, which implies that sandra's current location is the office. there is no subsequent information that suggests sandra's location has changed, so we can conclude that sandra is still in the office.	fully	office	True	According to sentence 14, John and Sandra went to the office. This implies that Sandra is currently in the office.		"Reasoning: According to sentence 14, John and Sandra went to the office. This implies that Sandra is currently in the office.
+
+Answer: office"	0.129	0.0323	False	False	False	False	0

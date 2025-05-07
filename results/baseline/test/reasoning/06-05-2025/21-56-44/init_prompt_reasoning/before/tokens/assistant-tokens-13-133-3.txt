@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠMary	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.	ĠThen	,	Ġin	Ġsentence	Ġ	8	,	Ġthey	Ġtravelled	Ġto	Ġthe	Ġgarden	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġnow	Ġin	Ġthe	Ġgarden	,	Ġas	Ġshe	Ġwent	Ġthere	Ġwith	ĠMary	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

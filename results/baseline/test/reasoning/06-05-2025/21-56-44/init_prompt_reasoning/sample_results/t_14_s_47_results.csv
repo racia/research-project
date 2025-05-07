@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2481	14	47	1	"*TASK*
+Here are the context sentences:
+1. This morning Fred went to the school.
+2. Yesterday Mary journeyed to the kitchen.
+3. Fred journeyed to the office yesterday.
+4. Bill went back to the park yesterday.
+
+Now, answer the following question:
+Where was Fred before the school?"	office	from context sentence 3, we know that fred journeyed to the office yesterday. since the question asks about where fred was before going to the school (which happened this morning, according to context sentence 1), and we know that fred was at the office yesterday, it is logical to assume that fred was at the office before going to the school.	fully	office	True	Since Fred went to the school this morning, and he journeyed to the office yesterday, it implies that he was somewhere else before going to the office. Since he went to the school this morning, it is likely that he was at home or in the office before going to the school.		"Reasoning: Since Fred went to the school this morning, and he journeyed to the office yesterday, it implies that he was somewhere else before going to the office. Since he went to the school this morning, it is likely that he was at home or in the office before going to the school.
+
+Answer: office"	0.0462	0.0308	False	False	False	False	0
+2482	14	47	2	"*TASK*
+Here are the context sentences:
+6. Julie went back to the school yesterday.
+7. This morning Mary journeyed to the park.
+
+Now, answer the following question:
+Where was Mary before the park?"	kitchen	from context sentence 2, we know that mary journeyed to the kitchen yesterday. since the question asks about where mary was before going to the park (which happened this morning, according to context sentence 7), and we know that mary was at the kitchen yesterday, it is logical to assume that mary was at the kitchen before going to the park.	partially	school	False	Since Mary journeyed to the park this morning, and she went back to the school yesterday, it implies that she was at the school before going to the park.		"Reasoning: Since Mary journeyed to the park this morning, and she went back to the school yesterday, it implies that she was at the school before going to the park.
+
+Answer: school"	0.125	0.05	False	False	False	False	0
+2483	14	47	3	"*TASK*
+Here are the context sentences:
+9. Bill went back to the kitchen this morning.
+10. Mary journeyed to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Fred before the school?"	office	this question refers to a previous part of the conversation history. from context sentence 3, we know that fred journeyed to the office yesterday. since the question asks about where fred was before going to the school (which happened this morning, according to context sentence 1), and we know that fred was at the office yesterday, it is logical to assume that fred was at the office before going to the school. the new context sentences 9 and 10 do not provide any new	none	office	True	There is no new information provided about Fred in these context sentences. The previous information about Fred's location is still relevant. According to previous context, Fred journeyed to the office yesterday, and then went to the school this morning.		"Reasoning: There is no new information provided about Fred in these context sentences. The previous information about Fred's location is still relevant. According to previous context, Fred journeyed to the office yesterday, and then went to the school this morning.
+
+Answer: office"	0.0755	0.0377	False	False	False	True	0
+2484	14	47	4	"*TASK*
+Here are the context sentences:
+12. Julie went back to the bedroom this morning.
+13. Fred went back to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	park	this question refers to a previous part of the conversation history. from context sentence 4, we know that bill went back to the park yesterday. since the question asks about where bill was before going to the kitchen (which happened this morning, according to context sentence 9), and we know that bill was at the park yesterday, it is logical to assume that bill was at the park before going to the kitchen. the new context sentences 12 and 13 do not provide any new	none	park	True	There is no new information provided about Bill's location in these context sentences. The previous information about Bill's location is still relevant. According to previous context, Bill went back to the park yesterday, and then went back to the kitchen this morning.		"Reasoning: There is no new information provided about Bill's location in these context sentences. The previous information about Bill's location is still relevant. According to previous context, Bill went back to the park yesterday, and then went back to the kitchen this morning.
+
+Answer: park"	0.0179	0.0357	False	False	False	True	0
+2485	14	47	5	"*TASK*
+Here are the context sentences:
+15. This evening Mary journeyed to the kitchen.
+16. Bill went to the park this afternoon.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	school	this question refers to a previous part of the conversation history. from context sentence 1, we know that fred went to the school this morning. from context sentence 3, we know that fred journeyed to the office yesterday. from context sentence 13, we know that fred went back to the cinema this afternoon. since the question asks about where fred was before going to the cinema, and we know that fred was at the school this morning and then went to the cinema this afternoon	none	school	True	There is no new information provided about Fred's location in these context sentences. The previous information about Fred's location is still relevant. According to previous context, Fred went back to the cinema this afternoon.		"Reasoning: There is no new information provided about Fred's location in these context sentences. The previous information about Fred's location is still relevant. According to previous context, Fred went back to the cinema this afternoon.
+
+Answer: school"	0.0213	0.0426	False	False	False	True	0

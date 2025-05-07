@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2406	14	32	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Fred travelled to the park.
+2. This morning Fred moved to the office.
+3. This morning Julie journeyed to the bedroom.
+4. Yesterday Julie moved to the cinema.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	cinema	"from context sentence 4, ""yesterday julie moved to the cinema"", we know that julie was at the cinema yesterday. since julie journeyed to the bedroom this morning (context sentence 3), it can be logically inferred that julie was at the cinema before going to the bedroom."	fully	cinema	True	Since Julie moved to the cinema yesterday (sentence 4), and she journeyed to the bedroom this morning (sentence 3), it is logical to infer that Julie was at the cinema before moving to the bedroom.		"Reasoning: Since Julie moved to the cinema yesterday (sentence 4), and she journeyed to the bedroom this morning (sentence 3), it is logical to infer that Julie was at the cinema before moving to the bedroom.
+
+Answer: cinema"	0.22	0.04	False	False	False	False	0
+2407	14	32	2	"*TASK*
+Here are the context sentences:
+6. Mary moved to the school yesterday.
+7. Fred went back to the bedroom this afternoon.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	cinema	the provided context sentences (6 and 7) do not mention julie, so we need to look at the previous parts of the conversation. from the previous context sentences (1-4), we know that julie moved to the cinema yesterday (sentence 4). since julie journeyed to the bedroom this morning (sentence 3), it can be logically inferred that julie was at the cinema before going to the bedroom.	none	cinema	True	There is no new information provided about Julie's location. The previous information is that Julie moved to the cinema yesterday (sentence 4) and journeyed to the bedroom this morning (sentence 3). Since there is no new information, we can rely on the previous answer.		"Reasoning: There is no new information provided about Julie's location. The previous information is that Julie moved to the cinema yesterday (sentence 4) and journeyed to the bedroom this morning (sentence 3). Since there is no new information, we can rely on the previous answer.
+
+Answer: cinema"	0.0484	0.0323	False	False	False	True	0
+2408	14	32	3	"*TASK*
+Here are the context sentences:
+9. Mary journeyed to the bedroom this afternoon.
+10. This morning Mary journeyed to the park.
+
+Now, answer the following question:
+Where was Mary before the park?"	school	"from context sentence 6, ""mary moved to the school yesterday"", we know that mary was at the school yesterday. since mary journeyed to the park this morning (sentence 10), it can be logically inferred that mary was at the school before going to the park."	partially	not mentioned	False	According to sentence 10, Mary journeyed to the park this morning. Since Mary journeyed to the park, it means she was somewhere else before going to the park. The previous information about Mary's location is not provided, but we can infer that Mary was somewhere else before going to the park.		"Reasoning: According to sentence 10, Mary journeyed to the park this morning. Since Mary journeyed to the park, it means she was somewhere else before going to the park. The previous information about Mary's location is not provided, but we can infer that Mary was somewhere else before going to the park.
+
+Answer: not mentioned"	0.058	0.029	False	False	False	True	0
+2409	14	32	4	"*TASK*
+Here are the context sentences:
+12. This evening Mary journeyed to the office.
+13. Julie went back to the school this afternoon.
+
+Now, answer the following question:
+Where was Mary before the park?"	school	"the provided context sentences (12 and 13) do not directly mention mary's location before the park. however, we can look at the previous parts of the conversation. from context sentence 10, ""this morning mary journeyed to the park"", we know that mary went to the park this morning. and from context sentence 6, ""mary moved to the school yesterday"", we know that mary was at the school yesterday. since mary went to the park this morning, it can"	none	not mentioned	False	There is no new information provided about Mary's location before the park. The previous information is that Mary journeyed to the park this morning (sentence 10), but there is no information about where she was before going to the park.		"Reasoning: There is no new information provided about Mary's location before the park. The previous information is that Mary journeyed to the park this morning (sentence 10), but there is no information about where she was before going to the park.
+
+Answer: not mentioned"	0.0182	0.0364	False	False	False	True	0
+2410	14	32	5	"*TASK*
+Here are the context sentences:
+15. Yesterday Bill travelled to the school.
+16. Fred journeyed to the cinema this evening.
+
+Now, answer the following question:
+Where was Mary before the office?"	bedroom	"the provided context sentences (15 and 16) do not mention mary or the office. however, we can look at the previous parts of the conversation. from context sentence 9, ""mary journeyed to the bedroom this afternoon"", we know that mary was at the bedroom in the afternoon. and from context sentence 12, ""this evening mary journeyed to the office"", we know that mary went to the office this evening. since mary went to the office this evening, it"	none	not mentioned	False	There is no new information provided about Mary's location before the office. The previous information is that Mary journeyed to the office this evening (sentence 12), but there is no information about where she was before going to the office.		"Reasoning: There is no new information provided about Mary's location before the office. The previous information is that Mary journeyed to the office this evening (sentence 12), but there is no information about where she was before going to the office.
+
+Answer: not mentioned"	0.0182	0.0364	False	False	False	True	0

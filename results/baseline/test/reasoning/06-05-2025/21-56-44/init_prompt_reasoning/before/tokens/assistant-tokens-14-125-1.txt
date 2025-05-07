@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	,	Ġand	Ġbefore	Ġthat	,	Ġshe	Ġwas	Ġin	Ġthe	Ġkitchen	Ġ(	from	Ġsentence	Ġ	4	).	ĠBefore	Ġthe	Ġkitchen	,	Ġshe	Ġwas	Ġin	Ġthe	Ġbedroom	Ġ(	from	Ġsentence	Ġ	2	).ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

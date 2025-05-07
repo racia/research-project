@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1936	13	88	1	"*TASK*
+Here are the context sentences:
+1. Mary and Daniel moved to the garden.
+2. Then they travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	mary and daniel moved to the garden initially, but then they travelled to the bathroom. since there is no information about them moving to any other location after the bathroom, it can be logically inferred that mary is currently in the bathroom.	fully	garden	False	Mary and Daniel moved to the garden, and then they travelled to the bathroom. Since Mary is not mentioned as leaving the garden, it is inferred that she is still in the garden.		"Reasoning: Mary and Daniel moved to the garden, and then they travelled to the bathroom. Since Mary is not mentioned as leaving the garden, it is inferred that she is still in the garden.
+
+Answer: garden"	0.1818	0.0455	False	False	False	True	0
+1937	13	88	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Mary journeyed to the bedroom.
+5. Following that they went to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	sandra and mary initially journeyed to the bedroom, but then they went to the office. since there is no information about them moving to any other location after the office, it can be logically inferred that sandra is currently in the office.	fully	bedroom	False	Sandra and Mary journeyed to the bedroom, and then they went to the office. Since Sandra is not mentioned as leaving the bedroom, it is inferred that she is still in the bedroom.		"Reasoning: Sandra and Mary journeyed to the bedroom, and then they went to the office. Since Sandra is not mentioned as leaving the bedroom, it is inferred that she is still in the bedroom.
+
+Answer: bedroom"	0.1333	0.0444	False	False	False	True	0
+1938	13	88	3	"*TASK*
+Here are the context sentences:
+7. Mary and John travelled to the bedroom.
+8. Afterwards they went to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	mary and john initially travelled to the bedroom, but afterwards they went to the hallway. since there is no information about them moving to any other location after the hallway, it can be logically inferred that mary is currently in the hallway.	fully	bedroom	False	Mary and John travelled to the bedroom, and afterwards they went to the hallway. Since Mary is not mentioned as leaving the bedroom, it is inferred that she is still in the bedroom.		"Reasoning: Mary and John travelled to the bedroom, and afterwards they went to the hallway. Since Mary is not mentioned as leaving the bedroom, it is inferred that she is still in the bedroom.
+
+Answer: bedroom"	0.0	0.0455	False	False	False	True	0
+1939	13	88	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel moved to the garden.
+11. After that they travelled to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	john and daniel initially moved to the garden, but after that they travelled to the bathroom. since there is no information about them moving to any other location after the bathroom, it can be logically inferred that john is currently in the bathroom.	fully	garden	False	John and Daniel moved to the garden, and then they travelled to the bathroom. Since John is not mentioned as leaving the garden, it is inferred that he is still in the garden.		"Reasoning: John and Daniel moved to the garden, and then they travelled to the bathroom. Since John is not mentioned as leaving the garden, it is inferred that he is still in the garden.
+
+Answer: garden"	0.0455	0.0455	False	False	False	True	0
+1940	13	88	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Mary journeyed to the kitchen.
+14. Then they went back to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	daniel and mary initially journeyed to the kitchen, but then they went back to the garden. this implies that they reversed their direction and returned to the garden, which was their previous location. therefore, it can be logically inferred that daniel is currently in the garden.	fully	garden	True	Daniel and Mary journeyed to the kitchen, and then they went back to the garden. Since Daniel is not mentioned as leaving the kitchen, it is inferred that he is still in the kitchen. However, they went back to the garden, which means Daniel is now in the garden.		"Reasoning: Daniel and Mary journeyed to the kitchen, and then they went back to the garden. Since Daniel is not mentioned as leaving the kitchen, it is inferred that he is still in the kitchen. However, they went back to the garden, which means Daniel is now in the garden.
+
+Answer: garden"	0.0781	0.0312	False	False	False	True	0

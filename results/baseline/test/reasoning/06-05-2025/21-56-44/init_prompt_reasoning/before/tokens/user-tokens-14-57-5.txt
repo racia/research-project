@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+15	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġpark	Ġthis	Ġevening	.Ċ
+16	.	ĠThis	Ġmorning	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġschool	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠMary	Ġbefore	Ġthe	Ġpark	?Ċ

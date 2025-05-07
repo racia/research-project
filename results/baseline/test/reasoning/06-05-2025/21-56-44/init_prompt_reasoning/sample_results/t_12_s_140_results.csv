@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1446	12	140	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Sandra journeyed to the bathroom.
+2. Sandra and Daniel went back to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from the context sentences, we know that daniel and sandra first went to the bathroom (sentence 1) and then went back to the garden (sentence 2). since there is no mention of daniel going anywhere else after returning to the garden, it can be logically concluded that daniel is currently in the garden.	fully	garden	True	Since Daniel and Sandra journeyed to the bathroom in sentence 1, it implies that Daniel was in the bathroom initially. Then, in sentence 2, they went back to the garden, which means Daniel is currently in the garden.		"Reasoning: Since Daniel and Sandra journeyed to the bathroom in sentence 1, it implies that Daniel was in the bathroom initially. Then, in sentence 2, they went back to the garden, which means Daniel is currently in the garden.
+
+Answer: garden"	0.1852	0.0185	False	False	False	False	0
+1447	12	140	2	"*TASK*
+Here are the context sentences:
+4. John and Mary moved to the office.
+5. Sandra and Mary moved to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	from sentence 5, we know that sandra and mary moved to the hallway. there is no subsequent information that suggests sandra moved to a different location. therefore, it can be logically concluded that sandra is currently in the hallway.	fully	not mentioned	False	Sandra is not mentioned in the context sentences 4 and 5, but we can infer that she is not in the office (since John and Mary moved there) and not in the hallway (since Sandra and Mary moved there). Therefore, Sandra's location is not specified.		"Reasoning: Sandra is not mentioned in the context sentences 4 and 5, but we can infer that she is not in the office (since John and Mary moved there) and not in the hallway (since Sandra and Mary moved there). Therefore, Sandra's location is not specified.
+
+Answer: not mentioned"	0.0794	0.0159	False	False	False	True	0
+1448	12	140	3	"*TASK*
+Here are the context sentences:
+7. Mary and Sandra journeyed to the bedroom.
+8. John and Daniel moved to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	from sentence 8, we know that john and daniel moved to the bathroom. there is no subsequent information that suggests john moved to a different location. therefore, it can be logically concluded that john is currently in the bathroom.	fully	not mentioned	False	John is not mentioned in the context sentences 7 and 8, but we can infer that he is not in the bedroom (since Mary and Sandra journeyed there) and not in the bathroom (since John and Daniel moved there). Therefore, John's location is not specified.		"Reasoning: John is not mentioned in the context sentences 7 and 8, but we can infer that he is not in the bedroom (since Mary and Sandra journeyed there) and not in the bathroom (since John and Daniel moved there). Therefore, John's location is not specified.
+
+Answer: not mentioned"	0.0	0.0156	False	False	False	True	0
+1449	12	140	4	"*TASK*
+Here are the context sentences:
+10. Mary and Sandra went to the kitchen.
+11. Mary and Daniel moved to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from sentence 10, we know that mary and sandra went to the kitchen. in sentence 11, mary moves to the hallway with daniel, but there is no mention of sandra moving with them. therefore, it can be logically concluded that sandra remained in the kitchen.	fully	kitchen	True	Sandra is mentioned in sentence 10, which implies that she is in the kitchen. Then, in sentence 11, Mary and Daniel moved to the hallway, but Sandra is not mentioned, which means her location remains the same.		"Reasoning: Sandra is mentioned in sentence 10, which implies that she is in the kitchen. Then, in sentence 11, Mary and Daniel moved to the hallway, but Sandra is not mentioned, which means her location remains the same.
+
+Answer: kitchen"	0.0566	0.0189	False	False	False	True	0
+1450	12	140	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Mary went to the garden.
+14. John and Mary went to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	from sentence 13, we know that daniel and mary went to the garden. however, in sentence 14, mary moves to the office with john. this implies that mary left the garden and is now in the office. therefore, it can be logically concluded that mary is currently in the office.	fully	office	True	Mary is mentioned in sentence 13, which implies that she is in the garden. Then, in sentence 14, John and Mary went to the office, which means Mary's location changed to the office.		"Reasoning: Mary is mentioned in sentence 13, which implies that she is in the garden. Then, in sentence 14, John and Mary went to the office, which means Mary's location changed to the office.
+
+Answer: office"	0.0204	0.0204	False	False	False	True	0

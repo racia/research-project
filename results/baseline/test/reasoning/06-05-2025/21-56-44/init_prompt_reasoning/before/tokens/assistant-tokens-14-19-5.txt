@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġbedroom	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJulie	's	Ġmovements	,	Ġand	Ġnot	ĠMary	's	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

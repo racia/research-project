@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+56	11	12	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the kitchen.
+2. Then he travelled to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	"the context sentences describe john's movements, first to the kitchen and then to the garden. since the second sentence mentions that john ""travelled to the garden"" after being in the kitchen, it implies that john's current location is the garden. therefore, the answer to the question ""where is john?"" is indeed the garden."	fully	garden	True	John journeyed to the kitchen and then travelled to the garden, which means he is currently in the garden.		"Reasoning: John journeyed to the kitchen and then travelled to the garden, which means he is currently in the garden.
+
+Answer: garden"	0.2069	0.069	False	False	False	False	0
+57	11	12	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the bathroom.
+5. After that he went to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	"the context sentences describe john's movements, first to the bathroom and then to the kitchen. the phrase ""after that"" in sentence 5 indicates that john's trip to the kitchen occurred after his trip to the bathroom. therefore, john's current location is the kitchen, which is the answer to the question ""where is john?""."	fully	kitchen	True	John travelled to the bathroom and then went to the kitchen, which means he is currently in the kitchen.		"Reasoning: John travelled to the bathroom and then went to the kitchen, which means he is currently in the kitchen.
+
+Answer: kitchen"	0.1786	0.0714	False	False	False	False	0
+58	11	12	3	"*TASK*
+Here are the context sentences:
+7. John travelled to the garden.
+8. Afterwards he went to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	"the context sentences describe john's movements, first to the garden and then to the hallway. the word ""afterwards"" in sentence 8 indicates that john's trip to the hallway occurred after his trip to the garden. therefore, john's current location is the hallway, which is the answer to the question ""where is john?""."	fully	hallway	True	John travelled to the garden and then went to the hallway, which means he is currently in the hallway.		"Reasoning: John travelled to the garden and then went to the hallway, which means he is currently in the hallway.
+
+Answer: hallway"	0.1071	0.0714	False	False	False	False	0
+59	11	12	4	"*TASK*
+Here are the context sentences:
+10. Mary journeyed to the garden.
+11. Then she went to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"the context sentences describe mary's movements, first to the garden and then to the bedroom. the word ""then"" in sentence 11 indicates that mary's trip to the bedroom occurred after her trip to the garden. therefore, mary's current location is the bedroom, which is the answer to the question ""where is mary?""."	fully	bedroom	True	Mary journeyed to the garden and then went to the bedroom, which means she is currently in the bedroom.		"Reasoning: Mary journeyed to the garden and then went to the bedroom, which means she is currently in the bedroom.
+
+Answer: bedroom"	0.1379	0.069	False	False	False	False	0
+60	11	12	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the office.
+14. Following that she moved to the garden.
+
+Now, answer the following question:
+Where is John?"	hallway	"there is no information about john's movements or location in the provided context sentences. the context sentences only describe mary's movements, first to the office and then to the garden. the answer ""hallway"" does not match the information provided about mary, and there is no previous information about john's location being in the hallway. therefore, the answer ""hallway"" seems to be incorrect or out of context."	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only mention Mary's journey.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Mary's journey.
+
+Answer: not mentioned"	0.1429	0.0714	False	False	False	True	0

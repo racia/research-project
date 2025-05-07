@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJessica	Ġis	Ġa	Ġmouse	Ġ(	from	Ġsentence	Ġ	3	),	Ġand	Ġmice	Ġare	Ġafraid	Ġof	Ġwolves	Ġ(	from	Ġsentence	Ġ	1	),	Ġwolves	Ġare	Ġafraid	Ġof	Ġmice	Ġ(	from	Ġsentence	Ġ	4	),	Ġand	Ġsheep	Ġare	Ġafraid	Ġof	Ġmice	Ġ(	from	Ġsentence	Ġ	5	),	Ġit	Ġis	Ġlikely	Ġthat	ĠJessica	,	Ġbeing	Ġa	Ġmouse	,	Ġis	Ġafraid	Ġof	Ġwolves	.ĊĊ	Answer	:	Ġwolves	<|eot_id|>

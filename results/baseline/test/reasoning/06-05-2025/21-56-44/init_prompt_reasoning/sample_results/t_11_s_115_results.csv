@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+571	11	115	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the bedroom.
+2. Following that she travelled to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	sandra's location is determined by tracing her movements. initially, she travelled to the bedroom (sentence 1). then, she travelled to the garden (sentence 2), which means she left the bedroom and moved to the garden. therefore, her current location is the garden.	fully	garden	True	Sandra has travelled to the bedroom and then to the garden, so she is currently in the garden.		"Reasoning: Sandra has travelled to the bedroom and then to the garden, so she is currently in the garden.
+
+Answer: garden"	0.1481	0.0741	False	False	False	False	0
+572	11	115	2	"*TASK*
+Here are the context sentences:
+4. John went back to the bathroom.
+5. Afterwards he travelled to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	john's location is determined by tracing his movements. he went back to the bathroom (sentence 4), which means he was in the bathroom at some point. then, he travelled to the hallway (sentence 5), which means he left the bathroom and moved to the hallway. therefore, his current location is the hallway.	fully	hallway	True	John went back to the bathroom and then travelled to the hallway, so he is currently in the hallway.		"Reasoning: John went back to the bathroom and then travelled to the hallway, so he is currently in the hallway.
+
+Answer: hallway"	0.1429	0.0714	False	False	False	False	0
+573	11	115	3	"*TASK*
+Here are the context sentences:
+7. Sandra travelled to the office.
+8. Then she went back to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	"the question asks about john's location, but the context sentences only mention sandra's movements. there is no information provided about john's movements or location. the answer ""hallway"" seems to be incorrect, as it refers to sandra's location, not john's."	none	not mentioned	False	There is no information about John's current location in the given context sentences. The sentences only mention Sandra's movements.		"Reasoning: There is no information about John's current location in the given context sentences. The sentences only mention Sandra's movements.
+
+Answer: not mentioned"	0.0968	0.0645	False	False	False	True	0
+574	11	115	4	"*TASK*
+Here are the context sentences:
+10. Mary went back to the bathroom.
+11. Afterwards she travelled to the garden.
+
+Now, answer the following question:
+Where is John?"	hallway	"the context sentences only mention mary's movements, but the question asks about john's location. there is no information provided about john's movements or location in the current context. to answer the question, we need to refer to previous parts of the conversation history. in a previous part, we had the context sentences ""4. john went back to the bathroom. 5. afterwards he travelled to the hallway."" which established that john was in the hallway. since there is no new information about"	none	not mentioned	False	There is no information about John's current location in the given context sentences. The sentences only mention Mary's movements.		"Reasoning: There is no information about John's current location in the given context sentences. The sentences only mention Mary's movements.
+
+Answer: not mentioned"	0.0968	0.0645	False	False	False	True	0
+575	11	115	5	"*TASK*
+Here are the context sentences:
+13. Mary went back to the bathroom.
+14. Following that she moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	mary's location is determined by tracing her movements. she went back to the bathroom (sentence 13), which means she was in the bathroom at some point. then, she moved to the hallway (sentence 14), which means she left the bathroom and moved to the hallway. therefore, her current location is the hallway.	fully	hallway	True	Mary went back to the bathroom and then moved to the hallway, so she is currently in the hallway.		"Reasoning: Mary went back to the bathroom and then moved to the hallway, so she is currently in the hallway.
+
+Answer: hallway"	0.0357	0.0714	False	False	False	False	0

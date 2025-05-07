@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġyesterday	,	Ġit	Ġimplies	Ġthat	Ġhe	Ġwas	Ġat	Ġthe	Ġoffice	Ġthe	Ġprevious	Ġday	.	ĠSince	Ġhe	Ġwent	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	,	Ġit	Ġmeans	Ġhe	Ġwas	Ġnot	Ġat	Ġthe	Ġpark	Ġyesterday	.	ĠTherefore	,	ĠFred	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

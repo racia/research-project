@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġhas	Ġtravelled	Ġto	Ġtwo	Ġlocations	:	Ġthe	Ġkitchen	Ġand	Ġthe	Ġgarden	.	ĠSince	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġher	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

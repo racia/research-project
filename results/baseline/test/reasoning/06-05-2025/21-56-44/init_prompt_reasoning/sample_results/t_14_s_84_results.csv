@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2666	14	84	1	"*TASK*
+Here are the context sentences:
+1. This morning Mary went to the office.
+2. Mary moved to the kitchen yesterday.
+
+Now, answer the following question:
+Where was Mary before the office?"	kitchen	from the context sentences, we know that mary went to the office this morning (sentence 1). we also know that mary moved to the kitchen yesterday (sentence 2). since mary went to the office this morning, it implies that she was somewhere else before going to the office. the only other location mentioned in the context is the kitchen, which she moved to yesterday. therefore, it is logical to assume that mary was in the kitchen before going to the office this morning.	fully	kitchen	True	Since Mary moved to the kitchen yesterday, it implies that she was somewhere else before moving to the kitchen. Since she went to the office this morning, it is likely that she was in the kitchen before going to the office.		"Reasoning: Since Mary moved to the kitchen yesterday, it implies that she was somewhere else before moving to the kitchen. Since she went to the office this morning, it is likely that she was in the kitchen before going to the office.
+
+Answer: kitchen"	0.1538	0.0385	False	False	False	False	0
+2667	14	84	2	"*TASK*
+Here are the context sentences:
+4. Bill journeyed to the office this morning.
+5. Bill travelled to the cinema yesterday.
+
+Now, answer the following question:
+Where was Mary before the office?"	kitchen	"there is no information about mary in the provided context sentences. the context sentences only talk about bill's movements, mentioning that he journeyed to the office this morning and travelled to the cinema yesterday. there is no mention of mary or her location. the answer ""kitchen"" seems to be unrelated to the provided context. it appears that the question and answer are referring to a previous part of the conversation, where mary's movements were discussed."	none	Not mentioned	False	There is no mention of Mary in the given context sentences. The sentences only mention Bill's activities, and there is no connection between Bill and Mary.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Bill's activities, and there is no connection between Bill and Mary.
+
+Answer: Not mentioned"	0.2368	0.0526	False	False	False	True	0
+2668	14	84	3	"*TASK*
+Here are the context sentences:
+7. This evening Bill moved to the cinema.
+8. Bill went back to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	kitchen	"from the context sentences, we know that bill moved to the cinema this evening (sentence 7). we also know that bill went back to the kitchen this afternoon (sentence 8). the phrase ""went back"" implies that bill was in the kitchen previously and then left it. since bill moved to the cinema this evening, it means that he was somewhere else before going to the cinema. the only other location mentioned in the context is the kitchen, which bill went back to this afternoon"	fully	kitchen	True	According to sentence 5, Bill travelled to the cinema yesterday. Since Bill moved to the cinema this evening, it implies that he was somewhere else before moving to the cinema. The sentence 8 states that Bill went back to the kitchen this afternoon, which means he was at the cinema before going back to the kitchen. Therefore, Bill was at the kitchen before moving to the cinema.		"Reasoning: According to sentence 5, Bill travelled to the cinema yesterday. Since Bill moved to the cinema this evening, it implies that he was somewhere else before moving to the cinema. The sentence 8 states that Bill went back to the kitchen this afternoon, which means he was at the cinema before going back to the kitchen. Therefore, Bill was at the kitchen before moving to the cinema.
+
+Answer: kitchen"	0.0476	0.0238	False	False	False	False	0
+2669	14	84	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the park this afternoon.
+11. Fred journeyed to the school yesterday.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	kitchen	"there is no information about bill in the provided context sentences. the context sentences only talk about mary's and fred's movements, mentioning that mary travelled to the park this afternoon and fred journeyed to the school yesterday. there is no mention of bill or his location. the answer ""kitchen"" seems to be unrelated to the provided context. it appears that the question and answer are referring to a previous part of the conversation, where bill's movements were discussed."	none	Not mentioned	False	There is no mention of Bill in the given context sentences. The sentences only mention Mary's activity and Fred's activity, and there is no connection between Bill and these events.		"Reasoning: There is no mention of Bill in the given context sentences. The sentences only mention Mary's activity and Fred's activity, and there is no connection between Bill and these events.
+
+Answer: Not mentioned"	0.0465	0.0465	False	False	False	True	0
+2670	14	84	5	"*TASK*
+Here are the context sentences:
+13. Julie travelled to the park yesterday.
+14. This evening Mary moved to the kitchen.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	park	"from the context sentences, we know that mary moved to the kitchen this evening (sentence 14). there is no direct information about mary's location before the kitchen. however, we can make a logical inference based on the information provided. sentence 13 mentions that julie travelled to the park yesterday, but it does not provide any information about mary's location. since the answer is ""park"", we can assume that mary was at the park before moving to the kitchen, as there is"	partially	Not mentioned	False	According to sentence 14, Mary moved to the kitchen this evening. Since there is no mention of Mary's activity before this evening, we cannot determine where she was before moving to the kitchen.		"Reasoning: According to sentence 14, Mary moved to the kitchen this evening. Since there is no mention of Mary's activity before this evening, we cannot determine where she was before moving to the kitchen.
+
+Answer: Not mentioned"	0.0638	0.0426	False	False	False	True	0

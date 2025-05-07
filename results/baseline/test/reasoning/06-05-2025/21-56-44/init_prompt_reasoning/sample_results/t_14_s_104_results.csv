@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2766	14	104	1	"*TASK*
+Here are the context sentences:
+1. Julie went to the park this morning.
+2. Julie journeyed to the cinema yesterday.
+
+Now, answer the following question:
+Where was Julie before the park?"	cinema	"from the context sentences, we know that julie went to the park this morning (sentence 1) and that she journeyed to the cinema yesterday (sentence 2). since sentence 1 mentions ""this morning"" and sentence 2 mentions ""yesterday"", we can infer that the event at the cinema happened before the event at the park. therefore, julie was at the cinema before she went to the park."	fully	cinema	True	Since Julie went to the park this morning, and she journeyed to the cinema yesterday, it implies that Julie was at the cinema yesterday. Therefore, before going to the park, Julie was at the cinema.		"Reasoning: Since Julie went to the park this morning, and she journeyed to the cinema yesterday, it implies that Julie was at the cinema yesterday. Therefore, before going to the park, Julie was at the cinema.
+
+Answer: cinema"	0.2041	0.0408	False	False	False	False	0
+2767	14	104	2	"*TASK*
+Here are the context sentences:
+4. Julie moved to the bedroom this afternoon.
+5. Yesterday Fred journeyed to the park.
+
+Now, answer the following question:
+Where was Julie before the park?"	cinema	the question asks about julie's location before the park, but the provided context sentences (4 and 5) do not directly mention julie's location before the park. however, we can look back at the previous conversation history and find sentences 1 and 2, which mentioned julie's journey to the park this morning and her journey to the cinema yesterday, respectively. from these sentences, we can infer that julie was at the cinema before she went to the park. the new context sentences	none	cinema	True	Since Julie moved to the bedroom this afternoon, and the question asks about Julie's location before the park, which is not mentioned in the given context, we need to look for a previous mention of Julie's location. The previous mention is in sentence 2, which states that Julie journeyed to the cinema yesterday. Therefore, before going to the park, Julie was at the cinema.		"Reasoning: Since Julie moved to the bedroom this afternoon, and the question asks about Julie's location before the park, which is not mentioned in the given context, we need to look for a previous mention of Julie's location. The previous mention is in sentence 2, which states that Julie journeyed to the cinema yesterday. Therefore, before going to the park, Julie was at the cinema.
+
+Answer: cinema"	0.131	0.0238	False	False	False	True	0
+2768	14	104	3	"*TASK*
+Here are the context sentences:
+7. Yesterday Bill moved to the kitchen.
+8. Fred travelled to the office this morning.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	park	the question asks about julie's location before the bedroom, but the provided context sentences (7 and 8) do not mention julie at all. they talk about bill and fred's movements. however, we can look back at the previous conversation history and find sentence 4, which mentioned julie moving to the bedroom this afternoon. to find julie's location before the bedroom, we need to look further back in the conversation history. sentence 1 mentioned julie going to the park this morning.	none	Not mentioned	False	Since Julie's location before the bedroom is not mentioned in the given context, we need to look for a previous mention of Julie's location. However, there is no mention of Julie's location in the given context. Therefore, we cannot determine Julie's location before the bedroom.		"Reasoning: Since Julie's location before the bedroom is not mentioned in the given context, we need to look for a previous mention of Julie's location. However, there is no mention of Julie's location in the given context. Therefore, we cannot determine Julie's location before the bedroom.
+
+Answer: Not mentioned"	0.1587	0.0317	False	False	False	True	0
+2769	14	104	4	"*TASK*
+Here are the context sentences:
+10. This afternoon Fred travelled to the kitchen.
+11. Julie travelled to the office this evening.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	park	the question asks about julie's location before the bedroom. sentence 4 (from previous conversation history) mentions julie moving to the bedroom this afternoon. to find julie's location before the bedroom, we need to look at julie's movements before that. sentence 1 (from previous conversation history) mentions julie going to the park this morning. there is no other information about julie's movements between the park and the bedroom, so we can infer that julie was at the park before the bedroom.	none	Not mentioned	False	Since Julie's location before the bedroom is not mentioned in the given context, and there is no mention of Julie's location in the given context, we cannot determine Julie's location before the bedroom.		"Reasoning: Since Julie's location before the bedroom is not mentioned in the given context, and there is no mention of Julie's location in the given context, we cannot determine Julie's location before the bedroom.
+
+Answer: Not mentioned"	0.0851	0.0426	False	False	False	True	0
+2770	14	104	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the school this morning.
+14. Yesterday Mary moved to the kitchen.
+
+Now, answer the following question:
+Where was Mary before the school?"	kitchen	the question asks about mary's location before the school. sentence 13 mentions mary journeying to the school this morning, but it doesn't provide information about her location before that. however, sentence 14 mentions mary moving to the kitchen yesterday. since yesterday is before this morning, we can infer that mary was at the kitchen before she went to the school.	fully	kitchen	True	Since Mary journeyed to the school this morning, and she moved to the kitchen yesterday, it implies that Mary was at the kitchen yesterday. Therefore, before going to the school, Mary was at the kitchen.		"Reasoning: Since Mary journeyed to the school this morning, and she moved to the kitchen yesterday, it implies that Mary was at the kitchen yesterday. Therefore, before going to the school, Mary was at the kitchen.
+
+Answer: kitchen"	0.0	0.0408	False	False	False	False	0

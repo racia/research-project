@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSandra	Ġis	Ġmentioned	Ġin	Ġsentences	Ġ	10	Ġand	Ġ	11	,	Ġwhich	Ġstate	Ġthat	ĠSandra	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	,	Ġand	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	.	ĠSince	ĠSandra	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġit	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġone	Ġof	Ġthese	Ġtwo	Ġlocations	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

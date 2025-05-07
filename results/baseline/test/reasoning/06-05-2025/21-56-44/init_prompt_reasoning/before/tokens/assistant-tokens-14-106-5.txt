@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġwhereabouts	Ġbefore	Ġthe	Ġbedroom	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġgoing	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	,	Ġand	ĠMary	Ġjourney	ing	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġbedroom	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

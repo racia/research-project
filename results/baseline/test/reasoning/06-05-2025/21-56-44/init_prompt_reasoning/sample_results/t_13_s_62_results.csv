@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1806	13	62	1	"*TASK*
+Here are the context sentences:
+1. John and Daniel went back to the kitchen.
+2. Then they went to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	from the context sentences, we know that john and daniel went to two places: the kitchen and the office. the sequence of events is important here. they went to the kitchen first, and then they went to the office. this implies that they left the kitchen and moved to the office. therefore, daniel's current location is the office.	fully	office	True	Daniel and John went back to the kitchen, and then they went to the office. Since Daniel is not mentioned as going anywhere else, it is likely that he is still in the same location as John.		"Reasoning: Daniel and John went back to the kitchen, and then they went to the office. Since Daniel is not mentioned as going anywhere else, it is likely that he is still in the same location as John.
+
+Answer: office"	0.1875	0.0417	False	False	False	True	0
+1807	13	62	2	"*TASK*
+Here are the context sentences:
+4. John and Daniel travelled to the bathroom.
+5. After that they went to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that john and daniel travelled to two places: the bathroom and the kitchen. the sequence of events is important here. they went to the bathroom first, and then they went to the kitchen. this implies that they left the bathroom and moved to the kitchen. therefore, john's current location is the kitchen.	fully	kitchen	True	According to the context sentences, John and Daniel travelled to the bathroom, and then they went to the kitchen. Since John is not mentioned as going anywhere else, it is likely that he is still in the same location as Daniel.		"Reasoning: According to the context sentences, John and Daniel travelled to the bathroom, and then they went to the kitchen. Since John is not mentioned as going anywhere else, it is likely that he is still in the same location as Daniel.
+
+Answer: kitchen"	0.0943	0.0377	False	False	False	True	0
+1808	13	62	3	"*TASK*
+Here are the context sentences:
+7. Mary and John went back to the bedroom.
+8. Following that they moved to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	the context sentences provided do not mention daniel's current location. however, we can infer daniel's location by looking at the previous parts of the conversation history. in the previous parts, we know that john and daniel went to the kitchen (sentence 5). there is no information that suggests daniel left the kitchen or moved to a different location. therefore, we can logically assume that daniel is still in the kitchen.	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only mention Mary and John, and their movements. Since Daniel was not mentioned, it is not possible to determine his location.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only mention Mary and John, and their movements. Since Daniel was not mentioned, it is not possible to determine his location.
+
+Answer: not mentioned"	0.1064	0.0426	False	False	False	True	0
+1809	13	62	4	"*TASK*
+Here are the context sentences:
+10. Mary and Daniel went to the office.
+11. Afterwards they moved to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from the context sentences, we know that mary and daniel went to two places: the office and the bathroom. the sequence of events is important here. they went to the office first, and then they moved to the bathroom. this implies that they left the office and moved to the bathroom. therefore, daniel's current location is the bathroom.	fully	bathroom	True	According to the context sentences, Mary and Daniel went to the office, and then they moved to the bathroom. Since Daniel is not mentioned as going anywhere else, it is likely that he is still in the same location as Mary.		"Reasoning: According to the context sentences, Mary and Daniel went to the office, and then they moved to the bathroom. Since Daniel is not mentioned as going anywhere else, it is likely that he is still in the same location as Mary.
+
+Answer: bathroom"	0.0	0.0377	False	False	False	True	0
+1810	13	62	5	"*TASK*
+Here are the context sentences:
+13. John and Sandra journeyed to the bedroom.
+14. Then they journeyed to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	the context sentences provided do not mention daniel's current location. however, we can infer daniel's location by looking at the previous parts of the conversation history. in the previous parts, we know that mary and daniel went to the bathroom (sentence 11). there is no information that suggests daniel left the bathroom or moved to a different location. therefore, we can logically assume that daniel is still in the bathroom.	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only mention John and Sandra, and their movements. Since Daniel was not mentioned, it is not possible to determine his location.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only mention John and Sandra, and their movements. Since Daniel was not mentioned, it is not possible to determine his location.
+
+Answer: not mentioned"	0.0	0.0426	False	False	False	True	0

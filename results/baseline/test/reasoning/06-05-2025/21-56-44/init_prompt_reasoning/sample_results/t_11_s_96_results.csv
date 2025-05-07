@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+476	11	96	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the kitchen.
+2. Afterwards she travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"the context sentences describe mary's movements in a sequence. first, she went back to the kitchen, and afterwards, she travelled to the bathroom. since the second sentence mentions ""afterwards"", it implies that mary's movement to the bathroom happened after she went to the kitchen. therefore, her current location is the bathroom, as it is the last location mentioned in the sequence of events."	fully	bathroom	True	Mary went back to the kitchen initially, and then she travelled to the bathroom. There is no information suggesting she left the bathroom, so it's likely she is still there.		"Reasoning: Mary went back to the kitchen initially, and then she travelled to the bathroom. There is no information suggesting she left the bathroom, so it's likely she is still there.
+
+Answer: bathroom"	0.1667	0.0476	False	False	False	True	0
+477	11	96	2	"*TASK*
+Here are the context sentences:
+4. John journeyed to the hallway.
+5. Following that he journeyed to the office.
+
+Now, answer the following question:
+Where is John?"	office	"the context sentences describe john's movements in a sequence. first, he journeyed to the hallway, and following that, he journeyed to the office. the phrase ""following that"" implies a chronological order of events, meaning that john's movement to the office happened after he was in the hallway. therefore, his current location is the office, as it is the last location mentioned in the sequence of events."	fully	office	True	John journeyed to the hallway first, and then he journeyed to the office. There is no information suggesting he left the office, so it's likely he is still there.		"Reasoning: John journeyed to the hallway first, and then he journeyed to the office. There is no information suggesting he left the office, so it's likely he is still there.
+
+Answer: office"	0.1395	0.0465	False	False	False	True	0
+478	11	96	3	"*TASK*
+Here are the context sentences:
+7. Daniel went to the hallway.
+8. After that he travelled to the office.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"the context sentences describe daniel's movements, but the question asks about mary's location. since there is no information about mary's movements in the provided context, we need to look for previous information about mary. however, there is no previous information about mary in this conversation. the answer ""bathroom"" seems to be related to a previous conversation about mary, but it is not relevant to the current context about daniel. therefore, it is not possible to provide a logical reasoning for the answer"	none	not mentioned	False	There is no mention of Mary in the given context sentences. The sentences only mention Daniel's movements.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Daniel's movements.
+
+Answer: not mentioned"	0.1786	0.0714	False	False	False	True	0
+479	11	96	4	"*TASK*
+Here are the context sentences:
+10. Daniel moved to the bedroom.
+11. Following that he went to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"the context sentences describe daniel's movements in a sequence. first, he moved to the bedroom, and following that, he went to the office. the phrase ""following that"" implies a chronological order of events, meaning that daniel's movement to the office happened after he was in the bedroom. therefore, his current location is the office, as it is the last location mentioned in the sequence of events."	fully	office	True	Daniel moved to the bedroom initially, and then he went to the office. There is no information suggesting he left the office, so it's likely he is still there.		"Reasoning: Daniel moved to the bedroom initially, and then he went to the office. There is no information suggesting he left the office, so it's likely he is still there.
+
+Answer: office"	0.0244	0.0488	False	False	False	True	0
+480	11	96	5	"*TASK*
+Here are the context sentences:
+13. Daniel travelled to the hallway.
+14. Following that he went to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"the context sentences describe daniel's movements in a sequence. first, he travelled to the hallway, and following that, he went to the garden. the phrase ""following that"" implies a chronological order of events, meaning that daniel's movement to the garden happened after he was in the hallway. therefore, his current location is the garden, as it is the last location mentioned in the sequence of events."	fully	garden	True	Daniel travelled to the hallway initially, and then he went to the garden. There is no information suggesting he left the garden, so it's likely he is still there.		"Reasoning: Daniel travelled to the hallway initially, and then he went to the garden. There is no information suggesting he left the garden, so it's likely he is still there.
+
+Answer: garden"	0.1951	0.0488	False	False	False	True	0

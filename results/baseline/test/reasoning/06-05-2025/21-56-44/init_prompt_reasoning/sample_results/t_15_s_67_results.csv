@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3265	15	67	1	"*TASK*
+Here are the context sentences:
+1. Wolves are afraid of mice.
+2. Sheep are afraid of wolves.
+3. Emily is a wolf.
+4. Mice are afraid of wolves.
+5. Winona is a wolf.
+6. Cats are afraid of sheep.
+7. Jessica is a cat.
+8. Gertrude is a sheep.
+
+Now, answer the following question:
+What is gertrude afraid of?"	wolf	from context sentence 2, we know that sheep are afraid of wolves. gertrude is a sheep (context sentence 8), so we can logically conclude that gertrude is afraid of wolves.	fully	cats	False	Gertrude is a sheep, and according to sentence 8, sheep are afraid of cats. Therefore, Gertrude is afraid of cats.		"Reasoning: Gertrude is a sheep, and according to sentence 8, sheep are afraid of cats. Therefore, Gertrude is afraid of cats.
+
+Answer: cats"	0.027	0.0541	False	False	False	False	0
+3266	15	67	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	mouse	from context sentence 1, we know that wolves are afraid of mice. emily is a wolf (context sentence 3), so we can logically conclude that emily is afraid of mice.	none	mice	True	Emily is a wolf, and according to sentence 1, wolves are afraid of mice. Therefore, Emily is afraid of mice.		"Reasoning: Emily is a wolf, and according to sentence 1, wolves are afraid of mice. Therefore, Emily is afraid of mice.
+
+Answer: mice"	0.0909	0.0606	False	False	False	False	0
+3267	15	67	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	mouse	from context sentence 1, we know that wolves are afraid of mice. emily is a wolf (context sentence 3), so we can logically conclude that emily is afraid of mice.	none	mice	True	Emily is a wolf, and according to sentence 1, wolves are afraid of mice. Therefore, Emily is afraid of mice.		"Reasoning: Emily is a wolf, and according to sentence 1, wolves are afraid of mice. Therefore, Emily is afraid of mice.
+
+Answer: mice"	0.0303	0.0606	False	False	False	False	0
+3268	15	67	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is gertrude afraid of?"	wolf	from context sentence 8, we know that gertrude is a sheep. from context sentence 2, we know that sheep are afraid of wolves. therefore, we can logically conclude that gertrude, being a sheep, is afraid of wolves.	none	cats	False	Gertrude is a sheep, and according to sentence 8, sheep are afraid of cats. Therefore, Gertrude is afraid of cats.		"Reasoning: Gertrude is a sheep, and according to sentence 8, sheep are afraid of cats. Therefore, Gertrude is afraid of cats.
+
+Answer: cats"	0.0541	0.0541	False	False	False	False	0

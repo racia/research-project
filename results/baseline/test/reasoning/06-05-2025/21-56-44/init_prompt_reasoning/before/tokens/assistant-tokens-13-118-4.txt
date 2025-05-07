@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġthen	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġwith	ĠMary	,	Ġand	Ġsince	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	,	ĠJohn	Ġis	Ġlikely	Ġin	Ġthe	Ġbedroom	Ġas	Ġwell	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

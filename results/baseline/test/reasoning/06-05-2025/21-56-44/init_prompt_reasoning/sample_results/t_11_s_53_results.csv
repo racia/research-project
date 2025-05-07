@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+261	11	53	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the kitchen.
+2. Afterwards she journeyed to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	the context sentences describe mary's movements, with sentence 1 stating she went to the kitchen and sentence 2 stating she journeyed to the hallway afterwards. this implies that mary's location changed from the kitchen to the hallway. therefore, based on the sequence of events, mary's current location is the hallway.	fully	hallway	True	Mary went to the kitchen initially, and then she journeyed to the hallway. This implies that she is currently in the hallway.		"Reasoning: Mary went to the kitchen initially, and then she journeyed to the hallway. This implies that she is currently in the hallway.
+
+Answer: hallway"	0.1515	0.0606	False	False	False	False	0
+262	11	53	2	"*TASK*
+Here are the context sentences:
+4. Daniel moved to the kitchen.
+5. Afterwards he travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	hallway	the context sentences describe daniel's movements, but there is no mention of mary's location in these sentences. however, we can refer to the previous parts of the conversation history, where it was established that mary is in the hallway (from the previous question). the current context sentences do not provide any information about mary's location, so we can conclude that mary's location remains unchanged, which is the hallway.	none	not mentioned	False	There is no mention of Mary in the given context sentences. The sentences only mention Daniel's movements.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Daniel's movements.
+
+Answer: not mentioned"	0.2143	0.0714	False	False	False	True	0
+263	11	53	3	"*TASK*
+Here are the context sentences:
+7. Sandra went back to the kitchen.
+8. After that she went back to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	the context sentences describe sandra's movements, with sentence 7 stating she went back to the kitchen and sentence 8 stating she went back to the hallway after that. this implies that sandra's location changed from the kitchen to the hallway. therefore, based on the sequence of events, sandra's current location is the hallway.	fully	hallway	True	Sandra went back to the kitchen initially, and then she went back to the hallway. This implies that she is currently in the hallway.		"Reasoning: Sandra went back to the kitchen initially, and then she went back to the hallway. This implies that she is currently in the hallway.
+
+Answer: hallway"	0.0	0.0588	False	False	False	False	0
+264	11	53	4	"*TASK*
+Here are the context sentences:
+10. John journeyed to the garden.
+11. Then he went back to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	the context sentences describe john's movements, with sentence 10 stating he journeyed to the garden and sentence 11 stating he went back to the kitchen. this implies that john's location changed from the garden to the kitchen. therefore, based on the sequence of events, john's current location is the kitchen.	fully	kitchen	True	John journeyed to the garden initially, and then he went back to the kitchen. This implies that he is currently in the kitchen.		"Reasoning: John journeyed to the garden initially, and then he went back to the kitchen. This implies that he is currently in the kitchen.
+
+Answer: kitchen"	0.0882	0.0588	False	False	False	False	0
+265	11	53	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the kitchen.
+14. Afterwards she went back to the bathroom.
+
+Now, answer the following question:
+Where is John?"	kitchen	the context sentences describe mary's movements, but there is no mention of john's location in these sentences. however, we can refer to the previous parts of the conversation history, where it was established that john's location is the kitchen (from the previous question). the current context sentences do not provide any information about john's location, so we cannot conclude that john's location has changed. therefore, based on the previous information, john's current location is still the kitchen.	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only mention Mary's movements.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Mary's movements.
+
+Answer: not mentioned"	0.2857	0.0714	False	False	False	True	0

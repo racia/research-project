@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.	ĠLater	,	ĠDaniel	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġwas	Ġpreviously	Ġin	Ġthe	Ġbedroom	,	Ġbut	Ġthen	Ġreturned	Ġto	Ġthe	Ġgarden	Ġwith	ĠDaniel	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>
