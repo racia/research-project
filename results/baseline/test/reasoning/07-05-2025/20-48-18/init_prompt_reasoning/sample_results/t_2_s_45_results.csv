@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+721	2	45	1	"*TASK*
+Here are the context sentences:
+1. John picked up the apple there.
+2. John moved to the office.
+
+Now, answer the following question:
+Where is the apple?"	office	since john picked up the apple (context sentence 1), it can be inferred that john has the apple with him. then, john moved to the office (context sentence 2), which implies that the apple, being with john, also moved to the office. therefore, the apple is in the office.	fully	office	True	"The context sentence 1 states that John picked up the apple ""there"", but it doesn't specify where ""there"" is. However, context sentence 2 states that John moved to the office, which implies that ""there"" is likely referring to the office."		"Reasoning: The context sentence 1 states that John picked up the apple ""there"", but it doesn't specify where ""there"" is. However, context sentence 2 states that John moved to the office, which implies that ""there"" is likely referring to the office.
+
+Answer: office"	0.2	0.0333	False	False	False	False	0
+722	2	45	2	"*TASK*
+Here are the context sentences:
+4. Mary went to the office.
+5. John discarded the apple.
+
+Now, answer the following question:
+Where is the apple?"	office	from the previous context (not provided in this part, but assumed to exist), we know that the apple was in the office (answer to the previous question). the new context sentences do not provide any information about the apple being moved or taken from the office. mary going to the office (context sentence 4) does not affect the apple's location. john discarding the apple (context sentence 5) implies that the apple is still in the office, but it is no longer	partially	not mentioned	False	The context sentence 5 states that John discarded the apple, which implies that the apple is no longer in the office (since Mary went to the office in sentence 4). There is no additional information about where the apple was discarded, but it's likely that it was discarded somewhere outside of the office.		"Reasoning: The context sentence 5 states that John discarded the apple, which implies that the apple is no longer in the office (since Mary went to the office in sentence 4). There is no additional information about where the apple was discarded, but it's likely that it was discarded somewhere outside of the office.
+
+Answer: not mentioned"	0.1449	0.029	False	False	False	True	0
+723	2	45	3	"*TASK*
+Here are the context sentences:
+7. John travelled to the kitchen.
+8. Mary went back to the hallway.
+
+Now, answer the following question:
+Where is the apple?"	office	"the context sentences 7 and 8 do not provide any information about the apple's location. the answer to the question ""where is the apple?"" is still ""office"" because the previous context (not provided in this part, but assumed to exist) established that the apple was in the office, and there is no new information that suggests the apple has been moved from the office. the movements of john and mary (travelling to the kitchen and going back to the hallway,"	none	not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only mention John's travel to the kitchen and Mary's return to the hallway, but they don't provide any information about the apple's location.		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only mention John's travel to the kitchen and Mary's return to the hallway, but they don't provide any information about the apple's location.
+
+Answer: not mentioned"	0.1538	0.0385	False	False	False	True	0
+724	2	45	4	"*TASK*
+Here are the context sentences:
+10. Daniel grabbed the apple there.
+11. Daniel left the apple.
+12. Mary grabbed the milk there.
+13. Daniel moved to the kitchen.
+14. Sandra got the apple there.
+15. Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	"from context sentence 12, we know that mary grabbed the milk there, but the location ""there"" is not specified. however, from context sentence 15, we know that mary travelled to the bedroom. it can be logically inferred that ""there"" refers to the bedroom, as mary was in the bedroom when she travelled from it. therefore, the milk is in the bedroom."	fully	not mentioned	False	"The context sentence 12 states that Mary grabbed the milk ""there"", but it doesn't specify where ""there"" is. However, there is no additional information about Mary's location after grabbing the milk. Sentence 15 mentions Mary's travel to the bedroom, but it doesn't provide any information about the milk's location."		"Reasoning: The context sentence 12 states that Mary grabbed the milk ""there"", but it doesn't specify where ""there"" is. However, there is no additional information about Mary's location after grabbing the milk. Sentence 15 mentions Mary's travel to the bedroom, but it doesn't provide any information about the milk's location.
+
+Answer: not mentioned"	0.0548	0.0274	False	False	False	True	0
+725	2	45	5	"*TASK*
+Here are the context sentences:
+17. Sandra went to the bedroom.
+18. John travelled to the hallway.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	"from the previous context (not provided in this part, but assumed to exist), we know that sandra got the apple there (context sentence 14). since sandra went to the bedroom (context sentence 17), it can be inferred that ""there"" refers to the bedroom, and therefore the apple is in the bedroom."	partially	not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only mention Sandra's travel to the bedroom and John's travel to the hallway, but they don't provide any information about the apple's location.		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only mention Sandra's travel to the bedroom and John's travel to the hallway, but they don't provide any information about the apple's location.
+
+Answer: not mentioned"	0.1346	0.0385	False	False	False	True	0

@@ -1,0 +1,13 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+23	.	ĠFred	Ġleft	Ġthe	Ġfootball	.Ċ
+24	.	ĠFred	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+25	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+26	.	ĠBill	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+27	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+28	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+29	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+30	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+31	.	ĠFred	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+32	.	ĠBill	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġapple	?Ċ

@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+941	2	89	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the hallway.
+2. John moved to the bathroom.
+3. Sandra picked up the apple there.
+4. John grabbed the milk there.
+5. John put down the milk there.
+6. Sandra moved to the bathroom.
+
+Now, answer the following question:
+Where is the milk?"	bathroom	from sentence 4, we know that john grabbed the milk in the bathroom. then, in sentence 5, it is stated that john put down the milk there, which implies that john put down the milk in the same location where he grabbed it, i.e., the bathroom. therefore, the milk is still in the bathroom.	fully	bathroom	True	The milk was picked up and put down in the bathroom, so it is likely still in the bathroom.		"Reasoning: The milk was picked up and put down in the bathroom, so it is likely still in the bathroom.
+
+Answer: bathroom"	0.1071	0.0714	False	False	False	False	0
+942	2	89	2	"*TASK*
+Here are the context sentences:
+8. Sandra picked up the milk there.
+9. John journeyed to the office.
+10. Sandra journeyed to the hallway.
+11. Sandra discarded the milk.
+
+Now, answer the following question:
+Where is the milk?"	hallway	from sentence 8, we know that sandra picked up the milk, but the location is not specified. however, in sentence 10, it is stated that sandra journeyed to the hallway, and in sentence 11, it is stated that sandra discarded the milk. since sandra discarded the milk after journeying to the hallway, it can be logically inferred that sandra discarded the milk in the hallway. therefore, the milk is in the hallway.	fully	nowhere	False	The milk was picked up in the bathroom, then discarded, so it is no longer present anywhere.		"Reasoning: The milk was picked up in the bathroom, then discarded, so it is no longer present anywhere.
+
+Answer: nowhere"	0.1852	0.0741	True	False	False	False	0
+943	2	89	3	"*TASK*
+Here are the context sentences:
+13. Daniel travelled to the bathroom.
+14. Sandra journeyed to the garden.
+
+Now, answer the following question:
+Where is the milk?"	hallway	"there is no information about the milk in the provided context lines (13 and 14). the answer ""hallway"" cannot be deduced from the current context. the previous context ( sentences 8-11) is required to answer this question, where it was established that sandra discarded the milk in the hallway."	none	nowhere	False	There is no mention of the milk in these sentences, and the previous sentences mentioned that the milk was discarded. Therefore, it is not present anywhere.		"Reasoning: There is no mention of the milk in these sentences, and the previous sentences mentioned that the milk was discarded. Therefore, it is not present anywhere.
+
+Answer: nowhere"	0.1081	0.0541	True	False	False	True	0
+944	2	89	4	"*TASK*
+Here are the context sentences:
+16. Sandra dropped the apple.
+17. Daniel went to the kitchen.
+
+Now, answer the following question:
+Where is the apple?"	garden	from the previous context (sentence 3), we know that sandra picked up the apple in the hallway. there is no information about the apple being moved to the garden. however, in sentence 16, it is stated that sandra dropped the apple, which implies that the apple is now in the same location where sandra was when she dropped it. from the previous context (sentence 14), we know that sandra journeyed to the garden. therefore, it can be logically inferred that sandra	partially	not specified	False	The apple was dropped, but there is no mention of it being picked up or moved. Therefore, it is likely still on the floor where it was dropped.		"Reasoning: The apple was dropped, but there is no mention of it being picked up or moved. Therefore, it is likely still on the floor where it was dropped.
+
+Answer: not specified"	0.075	0.05	False	False	False	True	0
+945	2	89	5	"*TASK*
+Here are the context sentences:
+19. Daniel went back to the garden.
+20. John journeyed to the garden.
+
+Now, answer the following question:
+Where is the apple?"	garden	from the previous context (sentence 16), we know that sandra dropped the apple. from the previous context (sentence 14), we know that sandra journeyed to the garden. therefore, it can be logically inferred that sandra dropped the apple in the garden. the subsequent actions of daniel and john (sentences 19 and 20) do not affect the location of the apple, which remains in the garden.	none	not specified	False	There is no mention of the apple in these sentences, and the previous sentence mentioned that the apple was dropped. Therefore, it is not present in the garden.		"Reasoning: There is no mention of the apple in these sentences, and the previous sentence mentioned that the apple was dropped. Therefore, it is not present in the garden.
+
+Answer: not specified"	0.05	0.05	False	False	False	True	0

@@ -1,0 +1,111 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1356	3	72	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the garden.
+2. Mary travelled to the office.
+3. Daniel travelled to the hallway.
+4. Mary travelled to the hallway.
+5. Mary went to the office.
+6. Sandra journeyed to the bathroom.
+7. Daniel took the milk.
+8. Daniel travelled to the kitchen.
+9. Mary moved to the bedroom.
+10. Daniel picked up the football there.
+11. Daniel journeyed to the office.
+12. Daniel left the milk there.
+
+Now, answer the following question:
+Where was the milk before the office?"	kitchen	from sentence 8, we know that daniel travelled to the kitchen. in sentence 7, it is mentioned that daniel took the milk, which implies that the milk was in the kitchen when daniel took it. later, in sentence 12, it is mentioned that daniel left the milk in the office, which means the milk was moved from the kitchen to the office. therefore, the milk was in the kitchen before it was taken to the office.	fully	kitchen	True	The milk was taken by Daniel, and then left in the office. Therefore, the milk was not in the office before Daniel took it, but rather somewhere else. Since Daniel travelled to the kitchen before taking the milk, it is likely that the milk was in the kitchen before the office.		"Reasoning: The milk was taken by Daniel, and then left in the office. Therefore, the milk was not in the office before Daniel took it, but rather somewhere else. Since Daniel travelled to the kitchen before taking the milk, it is likely that the milk was in the kitchen before the office.
+
+Answer: kitchen"	0.2154	0.0462	False	False	False	False	0
+1357	3	72	2	"*TASK*
+Here are the context sentences:
+14. Mary took the apple there.
+15. Sandra journeyed to the garden.
+
+Now, answer the following question:
+Where was the milk before the office?"	kitchen	"the provided context lines (14 and 15) do not mention the milk at all. however, the answer ""kitchen"" suggests that the milk was previously mentioned in the conversation. since the conversation history is not provided, i will assume that the previous conversation history is still valid."	none	not mentioned	False	There is no mention of milk in the given context sentences. The sentences only mention taking an apple and journeying to the garden. Therefore, it is not possible to determine where the milk was before the office.		"Reasoning: There is no mention of milk in the given context sentences. The sentences only mention taking an apple and journeying to the garden. Therefore, it is not possible to determine where the milk was before the office.
+
+Answer: not mentioned"	0.1	0.06	False	False	False	True	0
+1358	3	72	3	"*TASK*
+Here are the context sentences:
+17. Mary dropped the apple.
+18. Mary travelled to the kitchen.
+
+Now, answer the following question:
+Where was the milk before the office?"	kitchen	"the provided context lines (17 and 18) do not mention the milk, but the answer ""kitchen"" suggests that the milk was previously mentioned in the conversation. since the conversation history is not provided, i will assume that the previous conversation history is still valid."	none	not mentioned	False	The context sentences do not mention milk at all. They only mention dropping an apple and Mary travelling to the kitchen. Therefore, it is not possible to determine where the milk was before the office.		"Reasoning: The context sentences do not mention milk at all. They only mention dropping an apple and Mary travelling to the kitchen. Therefore, it is not possible to determine where the milk was before the office.
+
+Answer: not mentioned"	0.1277	0.0638	False	False	False	True	0
+1359	3	72	4	"*TASK*
+Here are the context sentences:
+20. John went back to the kitchen.
+21. Daniel grabbed the milk.
+22. Daniel discarded the milk.
+23. Sandra moved to the bathroom.
+24. Daniel picked up the milk.
+25. Mary moved to the garden.
+26. John moved to the garden.
+27. Daniel discarded the football.
+28. John went back to the office.
+29. John moved to the kitchen.
+30. Daniel got the football.
+31. John moved to the garden.
+32. Sandra journeyed to the hallway.
+33. Sandra went to the kitchen.
+34. Sandra travelled to the bathroom.
+35. John journeyed to the bedroom.
+36. Sandra went back to the kitchen.
+37. John went back to the bathroom.
+38. John travelled to the hallway.
+39. Mary travelled to the bedroom.
+40. Mary grabbed the apple.
+41. John moved to the bathroom.
+42. Mary went back to the hallway.
+43. Daniel travelled to the hallway.
+44. Mary left the apple.
+45. John went to the office.
+46. John travelled to the bathroom.
+47. Daniel discarded the milk.
+48. Sandra travelled to the hallway.
+49. Daniel journeyed to the garden.
+50. Daniel left the football.
+51. Mary grabbed the milk.
+
+Now, answer the following question:
+Where was the football before the garden?"	hallway	from sentence 50, we know that daniel left the football in the garden. to find out where the football was before the garden, we need to look at the previous actions of daniel with the football. in sentence 47, daniel discarded the milk, but there is no mention of the football. in sentence 43, daniel travelled to the hallway, and in sentence 30, daniel got the football. since daniel got the football and then travelled to the hallway, it can be	fully	with Daniel	False	According to sentence 30, Daniel picked up the football. Since Daniel journeyed to the garden in sentence 49, it is likely that the football was with Daniel before he journeyed to the garden.		"Reasoning: According to sentence 30, Daniel picked up the football. Since Daniel journeyed to the garden in sentence 49, it is likely that the football was with Daniel before he journeyed to the garden.
+
+Answer: with Daniel"	0.0	0.0612	False	False	False	False	0
+1360	3	72	5	"*TASK*
+Here are the context sentences:
+53. Daniel picked up the football.
+54. Sandra got the apple.
+55. Mary journeyed to the office.
+56. Mary dropped the milk.
+57. Sandra journeyed to the kitchen.
+58. Sandra put down the apple.
+59. Daniel went to the bathroom.
+60. Daniel went to the garden.
+61. Sandra grabbed the apple.
+62. Sandra discarded the apple there.
+63. John travelled to the kitchen.
+64. Sandra picked up the apple.
+65. Daniel travelled to the bathroom.
+66. Mary got the milk.
+67. Daniel journeyed to the bedroom.
+68. Daniel left the football.
+
+Now, answer the following question:
+Where was the football before the garden?"	bathroom	" object in the sentences separately paying attention to their relations.
+the questions might refer to previous parts of the conversation history.
+if so, inspect all the previous parts to find the correct reasoning.
+
+aim to give a specific and objective reasoning rather than a subjective one.
+
+if information you need to answer the question is not specified directly,
+infer it logically employing the information about the connected entities.
+if you need to make an assumption, please make it as logical as possible.
+
+here is a template for your reasoning:
+"	fully	with Daniel	False	According to sentence 53, Daniel picked up the football. Since Daniel journeyed to the garden in sentence 60, it is likely that the football was with Daniel before he journeyed to the garden.		"Reasoning: According to sentence 53, Daniel picked up the football. Since Daniel journeyed to the garden in sentence 60, it is likely that the football was with Daniel before he journeyed to the garden.
+
+Answer: with Daniel"	0.0	0.0612	False	False	False	False	0

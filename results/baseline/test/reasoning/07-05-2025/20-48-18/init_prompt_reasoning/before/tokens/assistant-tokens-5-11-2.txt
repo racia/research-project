@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	22	,	ĠFred	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	,	Ġso	ĠFred	Ġis	Ġthe	Ġone	Ġwho	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

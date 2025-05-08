@@ -1,0 +1,27 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+66	.	ĠJohn	Ġdiscarded	Ġthe	Ġmilk	Ġthere	.Ċ
+67	.	ĠMary	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+68	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+69	.	ĠMary	Ġput	Ġdown	Ġthe	Ġmilk	Ġthere	.Ċ
+70	.	ĠDaniel	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+71	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+72	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	.Ċ
+73	.	ĠMary	Ġdropped	Ġthe	Ġmilk	.Ċ
+74	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+75	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+76	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+77	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+78	.	ĠMary	Ġtook	Ġthe	Ġmilk	.Ċ
+79	.	ĠMary	Ġleft	Ġthe	Ġmilk	.Ċ
+80	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+81	.	ĠJohn	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+82	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+83	.	ĠSandra	Ġleft	Ġthe	Ġfootball	.Ċ
+84	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+85	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+86	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+87	.	ĠJohn	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+88	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+89	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġoffice	?Ċ

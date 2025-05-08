@@ -1,0 +1,68 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+796	2	60	1	"*TASK*
+Here are the context sentences:
+1. Sandra got the football there.
+2. John journeyed to the hallway.
+3. John journeyed to the office.
+4. Daniel travelled to the bedroom.
+5. John went to the bedroom.
+6. Mary went back to the kitchen.
+7. John journeyed to the bathroom.
+8. Sandra journeyed to the bedroom.
+9. Sandra put down the football.
+10. Sandra picked up the football there.
+11. John went back to the hallway.
+12. Daniel moved to the bathroom.
+13. John grabbed the milk there.
+14. Mary travelled to the garden.
+15. Sandra moved to the hallway.
+16. Daniel went back to the office.
+17. Sandra left the football there.
+18. John grabbed the football there.
+19. John dropped the football.
+20. John discarded the milk there.
+
+Now, answer the following question:
+Where is the milk?"	hallway	from sentence 13, we know that john grabbed the milk in the hallway. although john later moved to other locations (bathroom, bedroom, and back to the hallway), there is no indication that he took the milk with him. in sentence 19, john discarded the milk, which implies that he got rid of it in the last location he was in, which is the hallway (sentence 11). therefore, the milk is in the hallway.	fully	hallway	True	The question asks about the location of the milk. John grabbed the milk in the hallway (sentence 13), and then discarded it in the hallway (sentence 20). Therefore, the milk is in the hallway.		"Reasoning: The question asks about the location of the milk. John grabbed the milk in the hallway (sentence 13), and then discarded it in the hallway (sentence 20). Therefore, the milk is in the hallway.
+
+Answer: hallway"	0.02	0.04	False	False	False	False	0
+797	2	60	2	"*TASK*
+Here are the context sentences:
+22. Mary went to the office.
+23. Mary travelled to the garden.
+
+Now, answer the following question:
+Where is the football?"	hallway	the context lines provided (22 and 23) only mention mary's movements and do not provide any information about the football. however, we can look at the previous context lines (1-21) to find the relevant information. from sentence 18, we know that john grabbed the football in the hallway, and in sentence 19, john dropped the football. there is no indication that the football was moved from the hallway after that. therefore, the football is still in the hallway	none	not mentioned	False	The context sentences do not mention the football at all. Therefore, we cannot determine the location of the football based on the provided information.		"Reasoning: The context sentences do not mention the football at all. Therefore, we cannot determine the location of the football based on the provided information.
+
+Answer: not mentioned"	0.0	0.0571	False	False	False	True	0
+798	2	60	3	"*TASK*
+Here are the context sentences:
+25. Sandra moved to the bathroom.
+26. Sandra went to the kitchen.
+
+Now, answer the following question:
+Where is the milk?"	hallway	the context lines provided (25 and 26) only mention sandra's movements and do not provide any information about the milk. however, we can look at the previous context lines (1-24) to find the relevant information. from sentence 13, we know that john grabbed the milk in the hallway, and in sentence 19, john discarded the milk. there is no indication that the milk was moved from the hallway after that. therefore, the milk is still in the hallway	none	not mentioned	False	There is no mention of the milk in these context sentences. The milk was previously mentioned in sentence 13, but its current location is not specified in these sentences.		"Reasoning: There is no mention of the milk in these context sentences. The milk was previously mentioned in sentence 13, but its current location is not specified in these sentences.
+
+Answer: not mentioned"	0.0	0.0488	False	False	False	True	0
+799	2	60	4	"*TASK*
+Here are the context sentences:
+28. Mary moved to the bathroom.
+29. Sandra travelled to the office.
+30. John went to the bedroom.
+31. Mary grabbed the apple there.
+32. Mary put down the apple.
+33. Mary travelled to the hallway.
+
+Now, answer the following question:
+Where is the apple?"	bathroom	from sentence 31, we know that mary grabbed the apple in the bathroom. then, in sentence 32, mary put down the apple, which implies that she put it down in the same location where she grabbed it, which is the bathroom. there is no indication that the apple was moved from the bathroom after that. mary travelled to the hallway in sentence 33, but there is no mention of her taking the apple with her. therefore, the apple is still in the bathroom	fully	hallway	False	The apple was grabbed by Mary in the bedroom (sentence 31) and then put down (sentence 32). After that, Mary travelled to the hallway (sentence 33). Therefore, the apple is in the hallway.		"Reasoning: The apple was grabbed by Mary in the bedroom (sentence 31) and then put down (sentence 32). After that, Mary travelled to the hallway (sentence 33). Therefore, the apple is in the hallway.
+
+Answer: hallway"	0.0	0.0385	False	False	False	False	0
+800	2	60	5	"*TASK*
+Here are the context sentences:
+35. Mary got the milk there.
+36. John moved to the garden.
+
+Now, answer the following question:
+Where is the apple?"	bathroom	the context lines provided (35 and 36) do not mention the apple at all. however, we can look at the previous context lines (28-34) to find the relevant information. from sentence 31, we know that mary grabbed the apple in the bathroom, and in sentence 32, mary put down the apple, which implies that she put it down in the same location where she grabbed it, which is the bathroom. there is no indication that the apple was moved	none	not mentioned	False	The context sentences do not mention the apple at all. The apple was previously mentioned in sentences 31-32, but its current location is not specified in these sentences.		"Reasoning: The context sentences do not mention the apple at all. The apple was previously mentioned in sentences 31-32, but its current location is not specified in these sentences.
+
+Answer: not mentioned"	0.119	0.0476	False	False	False	True	0

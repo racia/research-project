@@ -1,0 +1,23 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+54	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+55	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+56	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+57	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+58	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+59	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+60	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+61	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+62	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+63	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+64	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+65	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+66	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+67	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+68	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+69	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+70	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+71	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+72	.	ĠSandra	Ġleft	Ġthe	Ġfootball	.Ċ
+73	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġbedroom	?Ċ

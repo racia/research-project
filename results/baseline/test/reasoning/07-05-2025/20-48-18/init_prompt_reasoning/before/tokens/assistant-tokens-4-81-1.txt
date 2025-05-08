@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġwhat	Ġis	Ġwest	Ġof	Ġthe	Ġoffice	.	ĠSentence	Ġ	2	Ġstates	Ġthat	Ġthe	Ġgarden	Ġis	Ġwest	Ġof	Ġthe	Ġoffice	,	Ġso	Ġthe	Ġgarden	Ġis	Ġthe	Ġcorrect	Ġanswer	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

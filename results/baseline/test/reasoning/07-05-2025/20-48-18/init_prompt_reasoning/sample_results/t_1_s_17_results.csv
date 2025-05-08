@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+81	1	17	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the garden.
+2. John travelled to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	"from the context sentences, we know that john travelled to the garden (sentence 2). this implies that john's current location is the garden, as he has already travelled there. therefore, the answer to the question ""where is john?"" is indeed ""garden""."	fully	garden	True	John travelled to the garden, which means he is currently in the garden.		"Reasoning: John travelled to the garden, which means he is currently in the garden.
+Answer: garden"	0.0	0.0455	False	False	False	False	0
+82	1	17	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the bathroom.
+5. Mary went to the garden.
+
+Now, answer the following question:
+Where is John?"	bathroom	"from the context sentences, we know that john travelled to the bathroom (sentence 4). this implies that john's current location is the bathroom, as he has already travelled there. the fact that mary went to the garden (sentence 5) does not provide any information about john's location. therefore, the answer to the question ""where is john?"" is indeed ""bathroom""."	fully	bathroom	True	John travelled to the bathroom, which means he is currently in the bathroom.		"Reasoning: John travelled to the bathroom, which means he is currently in the bathroom.
+Answer: bathroom"	0.0455	0.0455	False	False	False	False	0
+83	1	17	3	"*TASK*
+Here are the context sentences:
+7. Sandra moved to the kitchen.
+8. Sandra went back to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"from the context sentences, we know that sandra moved to the kitchen (sentence 7), but then she went back to the bedroom (sentence 8). this implies that sandra's current location is the bedroom, as she has moved back to it after being in the kitchen. therefore, the answer to the question ""where is sandra?"" is indeed ""bedroom""."	fully	bedroom	True	Sandra moved to the kitchen, but then went back to the bedroom, which means she is currently in the bedroom.		"Reasoning: Sandra moved to the kitchen, but then went back to the bedroom, which means she is currently in the bedroom.
+Answer: bedroom"	0.0667	0.0333	False	False	False	False	0
+84	1	17	4	"*TASK*
+Here are the context sentences:
+10. John journeyed to the office.
+11. Sandra went to the office.
+
+Now, answer the following question:
+Where is Mary?"	garden	"there is no information provided about mary's location in the context sentences. the sentences only mention john and sandra going to the office, but there is no mention of mary. therefore, it is not possible to determine mary's location based on the provided information. the answer ""garden"" seems to be incorrect, as there is no context sentence that mentions mary going to the garden."	none	not mentioned	False	There is no mention of Mary in the given context sentences, so her location is unknown.		"Reasoning: There is no mention of Mary in the given context sentences, so her location is unknown.
+Answer: not mentioned"	0.0385	0.0385	False	False	False	True	0
+85	1	17	5	"*TASK*
+Here are the context sentences:
+13. Mary travelled to the kitchen.
+14. Daniel travelled to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"from the context sentences, we know that daniel travelled to the office (sentence 14). this implies that daniel's current location is the office, as he has already travelled there. the fact that mary travelled to the kitchen (sentence 13) does not provide any information about daniel's location. therefore, the answer to the question ""where is daniel?"" is indeed ""office""."	fully	office	True	Daniel travelled to the office, which means he is currently in the office.		"Reasoning: Daniel travelled to the office, which means he is currently in the office.
+Answer: office"	0.0	0.0455	False	False	False	False	0

@@ -1,0 +1,33 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+38	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+39	.	ĠJohn	Ġgrabbed	Ġthe	Ġapple	.Ċ
+40	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+41	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+42	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+43	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+44	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+45	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+46	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+47	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	.Ċ
+48	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+49	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+50	.	ĠMary	Ġdropped	Ġthe	Ġapple	.Ċ
+51	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+52	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+53	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+54	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+55	.	ĠMary	Ġleft	Ġthe	Ġapple	.Ċ
+56	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+57	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+58	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+59	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+60	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+61	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+62	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+63	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+64	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+65	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+66	.	ĠSandra	Ġleft	Ġthe	Ġmilk	.Ċ
+67	.	ĠMary	Ġleft	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġbedroom	?Ċ

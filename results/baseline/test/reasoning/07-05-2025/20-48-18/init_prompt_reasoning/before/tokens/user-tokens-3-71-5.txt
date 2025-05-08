@@ -1,0 +1,23 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+133	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+134	.	ĠDaniel	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+135	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+136	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+137	.	ĠSandra	Ġgot	Ġthe	Ġapple	.Ċ
+138	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+139	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+140	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+141	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+142	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+143	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+144	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+145	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+146	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+147	.	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+148	.	ĠDaniel	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
+149	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+150	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+151	.	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	Ġthere	.Ċ
+152	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġgarden	?Ċ

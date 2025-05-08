@@ -1,0 +1,111 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1476	3	96	1	"*TASK*
+Here are the context sentences:
+1. Sandra took the football.
+2. John moved to the bathroom.
+3. Sandra journeyed to the bedroom.
+4. Sandra discarded the football.
+5. Sandra picked up the football there.
+6. Sandra travelled to the garden.
+7. Daniel travelled to the kitchen.
+8. Sandra left the football.
+9. Daniel went to the bathroom.
+10. Mary went back to the office.
+11. Sandra journeyed to the hallway.
+12. John went to the garden.
+13. Mary went to the bedroom.
+14. Daniel journeyed to the hallway.
+15. Sandra journeyed to the bedroom.
+16. Mary journeyed to the kitchen.
+17. Sandra got the apple.
+18. Daniel went back to the kitchen.
+19. Mary went back to the bathroom.
+20. John went back to the bedroom.
+21. Mary went to the hallway.
+22. John moved to the garden.
+23. Daniel picked up the milk there.
+24. Daniel went back to the hallway.
+25. Sandra moved to the bathroom.
+26. Sandra left the apple there.
+27. Sandra travelled to the office.
+28. John moved to the bathroom.
+29. John picked up the apple.
+30. Mary moved to the bedroom.
+31. John discarded the apple.
+32. Sandra went to the bathroom.
+33. John picked up the apple.
+34. Sandra went to the kitchen.
+35. John moved to the kitchen.
+36. Sandra journeyed to the bathroom.
+37. Daniel discarded the milk.
+38. John travelled to the bedroom.
+39. John travelled to the garden.
+40. John got the football.
+41. John journeyed to the bathroom.
+42. Sandra journeyed to the hallway.
+43. Mary went to the office.
+44. Daniel went back to the kitchen.
+45. Sandra took the milk.
+46. Sandra put down the milk.
+47. Daniel went back to the office.
+48. Daniel went to the kitchen.
+49. Mary went to the bedroom.
+50. John journeyed to the office.
+51. Mary went to the garden.
+52. Sandra went back to the garden.
+53. John went to the bedroom.
+54. Sandra went back to the office.
+55. Mary went to the office.
+56. Mary went back to the garden.
+57. John journeyed to the bathroom.
+58. Mary travelled to the bathroom.
+59. John left the football.
+60. John put down the apple there.
+
+Now, answer the following question:
+Where was the apple before the bathroom?"	bedroom	from sentence 29, we know that john picked up the apple in the bathroom. to find out where the apple was before the bathroom, we need to track the apple's movement. sentence 26 tells us that sandra left the apple in the bathroom, but this is after john picked it up, so we need to look further back. sentence 17 tells us that sandra got the apple in the bedroom, and there is no mention of the apple being moved from the bedroom until	fully	bathroom	False	The apple was last mentioned in sentence 59, where John left the football. Since the football was discarded earlier, it's likely that the apple was left in the same location. In sentence 60, John put down the apple there, which implies that the apple was left in the bathroom.		"Reasoning: The apple was last mentioned in sentence 59, where John left the football. Since the football was discarded earlier, it's likely that the apple was left in the same location. In sentence 60, John put down the apple there, which implies that the apple was left in the bathroom.
+
+Answer: bathroom"	0.0758	0.0455	False	False	False	True	0
+1477	3	96	2	"*TASK*
+Here are the context sentences:
+62. Sandra journeyed to the kitchen.
+63. John took the football.
+
+Now, answer the following question:
+Where was the apple before the bedroom?"	office	from the given context lines, we don't have any direct information about the apple's location before the bedroom. however, we can look at the previous context lines (not provided in this part, but available in the previous conversation) to find the answer.	none	Not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only mention Sandra journeying to the kitchen and John taking the football. The apple is not mentioned in these sentences.		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only mention Sandra journeying to the kitchen and John taking the football. The apple is not mentioned in these sentences.
+
+Answer: Not mentioned"	0.0	0.0652	False	False	False	True	0
+1478	3	96	3	"*TASK*
+Here are the context sentences:
+65. Mary grabbed the apple.
+66. Mary moved to the garden.
+67. Sandra journeyed to the hallway.
+68. John went to the kitchen.
+69. Mary moved to the office.
+70. Mary put down the apple.
+
+Now, answer the following question:
+Where was the apple before the office?"	garden	from sentence 70, we know that mary put down the apple in the office. to find out where the apple was before the office, we need to track mary's movement with the apple. sentence 69 tells us that mary moved to the office, and before that, sentence 66 tells us that mary moved to the garden. since mary had the apple (sentence 65), it is logical to assume that mary had the apple with her when she moved to the office from	fully	garden	True	According to sentence 65, Mary grabbed the apple. Then, in sentence 66, Mary moved to the garden. This implies that the apple was with Mary in the garden. Later, in sentence 69, Mary moved to the office. Since the apple was with Mary in the garden, it's likely that the apple was left behind in the garden.		"Reasoning: According to sentence 65, Mary grabbed the apple. Then, in sentence 66, Mary moved to the garden. This implies that the apple was with Mary in the garden. Later, in sentence 69, Mary moved to the office. Since the apple was with Mary in the garden, it's likely that the apple was left behind in the garden.
+
+Answer: garden"	0.0633	0.038	False	False	False	False	0
+1479	3	96	4	"*TASK*
+Here are the context sentences:
+72. Mary moved to the garden.
+73. John dropped the football.
+
+Now, answer the following question:
+Where was the apple before the office?"	garden	the provided context lines (72 and 73) do not mention the apple or its movement. however, we can look at the previous context lines (not provided in this part, but available in the previous conversation) to find the answer.	none	Not mentioned	False	The context sentences do not provide information about the apple's location before the office. The sentences only mention Mary moving to the garden and John dropping the football. There is no mention of the apple.		"Reasoning: The context sentences do not provide information about the apple's location before the office. The sentences only mention Mary moving to the garden and John dropping the football. There is no mention of the apple.
+
+Answer: Not mentioned"	0.0	0.0638	False	False	False	True	0
+1480	3	96	5	"*TASK*
+Here are the context sentences:
+75. Mary went back to the kitchen.
+76. John moved to the office.
+
+Now, answer the following question:
+Where was the apple before the office?"	garden	": 
+the provided context lines (72 and 73) do not mention the apple or its location. however, we can look at the previous context lines (not provided in this part, but available in the previous conversation) to find the answer. 
+
+from the previous context lines, we know that mary put down the apple in the office (sentence 70). before that, mary moved to the office (sentence 69), and before that, mary moved to the garden (sentence 66)."	none	Not mentioned	False	The context sentences do not provide information about the apple's location before the office. The sentences only mention Mary going back to the kitchen and John moving to the office. There is no mention of the apple.		"Reasoning: The context sentences do not provide information about the apple's location before the office. The sentences only mention Mary going back to the kitchen and John moving to the office. There is no mention of the apple.
+
+Answer: Not mentioned"	0.0204	0.0612	False	False	False	True	0

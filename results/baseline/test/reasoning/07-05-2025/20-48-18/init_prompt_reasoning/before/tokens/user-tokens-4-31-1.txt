@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠThe	Ġbedroom	Ġis	Ġeast	Ġof	Ġthe	Ġkitchen	.Ċ
+2	.	ĠThe	Ġoffice	Ġis	Ġeast	Ġof	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	Ġeast	Ġof	Ġthe	Ġkitchen	?Ċ

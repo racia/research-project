@@ -1,0 +1,106 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1431	3	87	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the bedroom.
+2. Sandra picked up the football.
+3. Sandra picked up the apple.
+4. Daniel travelled to the office.
+5. Sandra put down the apple.
+6. Sandra left the football.
+7. Daniel journeyed to the bathroom.
+8. Sandra went back to the hallway.
+9. John went back to the kitchen.
+10. Mary went to the bathroom.
+11. Sandra travelled to the bedroom.
+12. Mary travelled to the office.
+13. John journeyed to the garden.
+14. Mary journeyed to the kitchen.
+15. Mary took the milk.
+16. John went back to the kitchen.
+17. Daniel travelled to the kitchen.
+18. Sandra went to the bathroom.
+19. Mary left the milk there.
+20. Daniel moved to the office.
+21. John moved to the bedroom.
+22. John moved to the kitchen.
+23. John picked up the milk.
+24. John discarded the milk.
+25. Mary grabbed the milk.
+26. Sandra travelled to the kitchen.
+27. Mary moved to the bathroom.
+28. Mary put down the milk.
+29. John went to the hallway.
+30. Mary grabbed the milk.
+31. Daniel travelled to the garden.
+32. Daniel got the apple.
+33. Mary travelled to the office.
+34. Daniel moved to the bedroom.
+35. Mary went to the kitchen.
+36. Mary journeyed to the garden.
+37. Sandra went back to the bathroom.
+38. Mary put down the milk there.
+
+Now, answer the following question:
+Where was the milk before the kitchen?"	office	from sentence 15, we know that mary took the milk in the kitchen. then, in sentence 19, mary left the milk there, implying that the milk was in the kitchen at that point.	fully	bathroom	False	The milk was taken by Mary in the office (sentence 15). Then, Mary left the milk there (sentence 19), which implies that the milk was left in the bathroom. Later, Mary grabbed the milk again (sentence 30), which means the milk was still in the bathroom. Mary then moved to the kitchen (sentence 35), so the milk was moved from the bathroom to the kitchen.		"Reasoning: The milk was taken by Mary in the office (sentence 15). Then, Mary left the milk there (sentence 19), which implies that the milk was left in the bathroom. Later, Mary grabbed the milk again (sentence 30), which means the milk was still in the bathroom. Mary then moved to the kitchen (sentence 35), so the milk was moved from the bathroom to the kitchen.
+
+Answer: bathroom"	0.0225	0.0337	False	False	False	False	0
+1432	3	87	2	"*TASK*
+Here are the context sentences:
+40. Daniel dropped the apple.
+41. Daniel grabbed the apple.
+
+Now, answer the following question:
+Where was the milk before the garden?"	kitchen	the provided context lines (40 and 41) do not mention the milk at all. they only talk about daniel and the apple.	none	not mentioned	False	There is no mention of milk in the given context sentences. The sentences only mention the apple, and its location is not specified before the garden.		"Reasoning: There is no mention of milk in the given context sentences. The sentences only mention the apple, and its location is not specified before the garden.
+
+Answer: not mentioned"	0.0	0.0811	False	False	False	True	0
+1433	3	87	3	"*TASK*
+Here are the context sentences:
+43. Mary moved to the kitchen.
+44. Mary went to the office.
+
+Now, answer the following question:
+Where was the milk before the kitchen?"	office	from the previous context lines (1-42), we know that mary took the milk in the kitchen (sentence 15), left it in the kitchen (sentence 19), and then grabbed it again (sentence 30).	none	office	True	The milk was taken by Mary in the office (sentence 15). Then, Mary moved to the kitchen (sentence 43), so the milk was moved from the office to the kitchen.		"Reasoning: The milk was taken by Mary in the office (sentence 15). Then, Mary moved to the kitchen (sentence 43), so the milk was moved from the office to the kitchen.
+
+Answer: office"	0.0	0.0667	False	False	False	False	0
+1434	3	87	4	"*TASK*
+Here are the context sentences:
+46. Daniel left the apple.
+47. Daniel went back to the kitchen.
+48. Mary travelled to the hallway.
+49. Daniel went to the garden.
+50. Mary went back to the office.
+51. Mary travelled to the kitchen.
+52. Sandra went back to the office.
+53. Daniel journeyed to the hallway.
+54. Sandra went back to the hallway.
+55. Sandra moved to the bedroom.
+56. John journeyed to the bedroom.
+57. Sandra grabbed the apple there.
+58. Sandra left the apple.
+59. Mary went to the bedroom.
+60. John picked up the apple.
+61. Daniel journeyed to the office.
+62. John left the apple there.
+63. Sandra picked up the apple.
+64. John travelled to the kitchen.
+65. Sandra travelled to the bathroom.
+66. Sandra went back to the kitchen.
+67. Mary travelled to the hallway.
+
+Now, answer the following question:
+Where was the apple before the kitchen?"	bathroom	from sentence 62, we know that john left the apple in the office. then, in sentence 63, sandra picked up the apple, implying that sandra picked it up from the office.	fully	not mentioned	False	The apple was left by Sandra (sentence 58). Then, John picked up the apple (sentence 60) and left it there (sentence 62). Later, Sandra picked up the apple again (sentence 63). Mary travelled to the hallway (sentence 67), but there is no mention of the apple's location before the kitchen.		"Reasoning: The apple was left by Sandra (sentence 58). Then, John picked up the apple (sentence 60) and left it there (sentence 62). Later, Sandra picked up the apple again (sentence 63). Mary travelled to the hallway (sentence 67), but there is no mention of the apple's location before the kitchen.
+
+Answer: not mentioned"	0.039	0.039	False	False	False	True	0
+1435	3	87	5	"*TASK*
+Here are the context sentences:
+69. John moved to the garden.
+70. Sandra moved to the office.
+71. Sandra went to the kitchen.
+72. Sandra discarded the apple.
+
+Now, answer the following question:
+Where was the apple before the office?"	kitchen	" bathroom, and then in sentence 66, sandra went back to the kitchen. this implies that sandra had the apple with her when she travelled to the bathroom and then brought it back to the kitchen. 
+
+since the question asks where the apple was before the kitchen, and we know that sandra brought it to the kitchen from the bathroom, the answer is the bathroom."	partially	hallway	False	The apple was grabbed by Sandra in the bedroom (sentence 57). Then, Sandra left the apple (sentence 58), which implies that the apple was left in the hallway. Later, Sandra moved to the office (sentence 70), so the apple was moved from the hallway to the office.		"Reasoning: The apple was grabbed by Sandra in the bedroom (sentence 57). Then, Sandra left the apple (sentence 58), which implies that the apple was left in the hallway. Later, Sandra moved to the office (sentence 70), so the apple was moved from the hallway to the office.
+
+Answer: hallway"	0.0149	0.0448	False	False	False	False	0

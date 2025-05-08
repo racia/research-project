@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġgarden	Ġis	Ġsouth	Ġof	Ġthe	Ġbedroom	,	Ġand	Ġthe	Ġgarden	Ġis	Ġnorth	Ġof	Ġthe	Ġbathroom	.	ĠThis	Ġmeans	Ġthe	Ġbedroom	Ġis	Ġnot	Ġadjacent	Ġto	Ġthe	Ġbathroom	.	ĠSince	Ġthe	Ġgarden	Ġis	Ġsouth	Ġof	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġthe	Ġonly	Ġoption	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+18	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+19	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+20	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+21	.	ĠMary	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+22	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+23	.	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1676	5	16	1	"*TASK*
+Here are the context sentences:
+1. Fred took the football there.
+2. Fred journeyed to the hallway.
+3. Fred passed the football to Mary.
+4. Mary dropped the football.
+
+Now, answer the following question:
+Who gave the football?"	fred	the question asks who gave the football. from the context sentences, we know that fred passed the football to mary (sentence 3). this implies that fred had the football before passing it to mary, and he is the one who gave it to her. therefore, the answer is indeed fred.	fully	Fred	True	Fred took the football and then passed it to Mary, so he is the one who gave the football.		"Reasoning: Fred took the football and then passed it to Mary, so he is the one who gave the football.
+
+Answer: Fred"	0.0357	0.0357	False	False	False	False	0
+1677	5	16	2	"*TASK*
+Here are the context sentences:
+6. Bill travelled to the hallway.
+7. Bill got the football there.
+
+Now, answer the following question:
+Who gave the football?"	fred	the question asks who gave the football. from the context sentences, we know that bill got the football in the hallway (sentence 7), but it doesn't mention bill receiving the football from anyone. however, we can look back at the previous context sentences (1-4) and see that fred passed the football to mary (sentence 3), and mary dropped it (sentence 4). it is logical to assume that the football was still in the hallway after mary dropped it,	none	Not mentioned	False	There is no mention of anyone giving the football in these sentences. Bill got the football, but it is not specified who gave it to him.		"Reasoning: There is no mention of anyone giving the football in these sentences. Bill got the football, but it is not specified who gave it to him.
+
+Answer: Not mentioned"	0.0541	0.027	False	False	False	True	0
+1678	5	16	3	"*TASK*
+Here are the context sentences:
+9. Bill left the football.
+10. Fred got the football there.
+11. Jeff journeyed to the office.
+12. Fred passed the football to Mary.
+
+Now, answer the following question:
+Who received the football?"	mary	the question asks who received the football. from the context sentences, we know that fred passed the football to mary (sentence 12). this directly states that mary is the one who received the football from fred. therefore, the answer is indeed mary.	fully	Mary	True	According to sentence 12, Fred passed the football to Mary, so Mary received the football.		"Reasoning: According to sentence 12, Fred passed the football to Mary, so Mary received the football.
+
+Answer: Mary"	0.0	0.0385	False	False	False	False	0
+1679	5	16	4	"*TASK*
+Here are the context sentences:
+14. Mary passed the football to Fred.
+15. Mary moved to the kitchen.
+
+Now, answer the following question:
+Who gave the football?"	mary	the question asks who gave the football. from the context sentences, we know that mary passed the football to fred (sentence 14). this directly states that mary is the one who gave the football to fred. therefore, the answer is indeed mary.	fully	Mary	True	According to sentence 14, Mary passed the football to Fred, so Mary is the one who gave the football.		"Reasoning: According to sentence 14, Mary passed the football to Fred, so Mary is the one who gave the football.
+
+Answer: Mary"	0.0	0.0333	False	False	False	False	0
+1680	5	16	5	"*TASK*
+Here are the context sentences:
+17. Bill went back to the office.
+18. Bill moved to the bathroom.
+
+Now, answer the following question:
+What did Mary give to Fred?"	football	the question asks what mary gave to fred. although the provided context sentences (17-18) do not directly mention mary or fred, we can look back at the previous context sentences (14-15) and see that mary passed the football to fred (sentence 14). therefore, the answer is indeed the football.	none	Not mentioned	False	There is no mention of Mary giving anything to Fred in these sentences. The sentences only mention Bill's actions, but do not provide any information about Mary or Fred.		"Reasoning: There is no mention of Mary giving anything to Fred in these sentences. The sentences only mention Bill's actions, but do not provide any information about Mary or Fred.
+
+Answer: Not mentioned"	0.0732	0.0244	False	False	False	True	0

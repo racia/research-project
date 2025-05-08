@@ -1,0 +1,15 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+2	.	ĠBill	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+3	.	ĠBill	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+4	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+5	.	ĠFred	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+6	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+7	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+8	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+9	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+10	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+11	.	ĠFred	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
+12	.	ĠMary	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġapple	?Ċ

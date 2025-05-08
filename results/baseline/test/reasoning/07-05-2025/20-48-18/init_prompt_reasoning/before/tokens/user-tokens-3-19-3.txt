@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+47	.	ĠJohn	Ġgrabbed	Ġthe	Ġmilk	.Ċ
+48	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
+49	.	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+50	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġmilk	.Ċ
+51	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+52	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+53	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+54	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġbedroom	?Ċ

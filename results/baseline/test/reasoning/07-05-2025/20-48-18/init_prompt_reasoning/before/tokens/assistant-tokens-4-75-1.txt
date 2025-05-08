@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġhallway	Ġis	Ġsouth	Ġof	Ġthe	Ġoffice	,	Ġit	Ġcannot	Ġbe	Ġnorth	Ġof	Ġanything	.	ĠThe	Ġbathroom	Ġis	Ġsouth	Ġof	Ġthe	Ġhallway	,	Ġwhich	Ġmeans	Ġthe	Ġhallway	Ġis	Ġnot	Ġnorth	Ġof	Ġthe	Ġbathroom	Ġeither	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

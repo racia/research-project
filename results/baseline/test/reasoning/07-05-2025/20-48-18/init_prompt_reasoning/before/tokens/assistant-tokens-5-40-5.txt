@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	40	Ġshows	Ġthat	ĠMary	Ġgave	Ġthe	Ġmilk	Ġto	ĠBill	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġcontrad	icts	Ġthis	Ġor	Ġsuggests	Ġsomeone	Ġelse	Ġgave	Ġthe	Ġmilk	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

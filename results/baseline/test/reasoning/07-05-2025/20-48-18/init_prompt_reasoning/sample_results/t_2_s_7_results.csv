@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+531	2	7	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the office.
+2. Daniel went back to the bedroom.
+3. Mary went back to the kitchen.
+4. Mary got the football there.
+5. Daniel travelled to the hallway.
+6. John journeyed to the bedroom.
+7. Daniel got the apple there.
+8. Sandra travelled to the garden.
+9. Daniel travelled to the garden.
+10. Daniel dropped the apple.
+
+Now, answer the following question:
+Where is the apple?"	garden	from the context sentences, we know that daniel got the apple in the hallway (sentence 7). then, daniel travelled to the garden (sentence 9). finally, daniel dropped the apple (sentence 10). since daniel dropped the apple in the garden, the apple is now in the garden.	fully	garden	True	The apple was dropped by Daniel in the garden, where he was traveling to. Since Mary was in the kitchen, and John was in the bedroom, and Sandra was in the garden, it is likely that Daniel was in the garden when he dropped the apple.		"Reasoning: The apple was dropped by Daniel in the garden, where he was traveling to. Since Mary was in the kitchen, and John was in the bedroom, and Sandra was in the garden, it is likely that Daniel was in the garden when he dropped the apple.
+
+Answer: garden"	0.2373	0.0339	False	False	False	False	0
+532	2	7	2	"*TASK*
+Here are the context sentences:
+12. Mary left the football.
+13. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Where is the apple?"	garden	the context sentences provided (12 and 13) do not mention the apple at all. however, we can look back at the previous context sentences (1-10) to find the relevant information. from sentence 7, we know that daniel got the apple in the hallway. then, daniel travelled to the garden (sentence 9) and dropped the apple (sentence 10). therefore, the apple is in the garden, which is the correct answer. the new context sentences (	none	not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only mention Mary leaving the football and journeying to the bedroom, but do not mention the apple.		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only mention Mary leaving the football and journeying to the bedroom, but do not mention the apple.
+
+Answer: not mentioned"	0.0	0.0465	False	False	False	True	0
+533	2	7	3	"*TASK*
+Here are the context sentences:
+15. John moved to the hallway.
+16. John went back to the bedroom.
+
+Now, answer the following question:
+Where is the football?"	kitchen	from the previous context sentences (1-10), we know that mary got the football in the kitchen (sentence 4). there is no information provided that suggests the football has been moved from the kitchen. the new context sentences (15 and 16) only mention john's movements, which do not affect the location of the football. therefore, the football is still in the kitchen, which is the correct answer.	none	not mentioned	False	There is no mention of the football in the given context sentences. The sentences only mention John moving to the hallway and going back to the bedroom, but do not mention the football.		"Reasoning: There is no mention of the football in the given context sentences. The sentences only mention John moving to the hallway and going back to the bedroom, but do not mention the football.
+
+Answer: not mentioned"	0.1364	0.0455	False	False	False	True	0
+534	2	7	4	"*TASK*
+Here are the context sentences:
+18. Sandra got the apple there.
+19. John went to the kitchen.
+20. Mary went to the bathroom.
+21. Mary journeyed to the garden.
+22. Sandra went back to the kitchen.
+23. Sandra put down the apple there.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	from sentence 18, we know that sandra got the apple, but the location is not specified. however, in sentence 23, it is mentioned that sandra put down the apple in the kitchen. this implies that sandra was in the kitchen when she put down the apple, and therefore, the apple is in the kitchen, which is the correct answer.	fully	kitchen	True	The apple was put down by Sandra in the kitchen, where she went back to.		"Reasoning: The apple was put down by Sandra in the kitchen, where she went back to.
+
+Answer: kitchen"	0.0833	0.0833	False	False	False	False	0
+535	2	7	5	"*TASK*
+Here are the context sentences:
+25. Mary went back to the bedroom.
+26. Mary went back to the kitchen.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	the context sentences (25 and 26) only mention mary's movements, which do not affect the location of the apple. to find the location of the apple, we need to refer to the previous context sentences. from sentence 23, we know that sandra put down the apple in the kitchen. there is no information provided that suggests the apple has been moved from the kitchen. therefore, the apple is still in the kitchen, which is the correct answer.	none	not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only mention Mary going back to the bedroom and then back to the kitchen, but do not mention the apple.		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only mention Mary going back to the bedroom and then back to the kitchen, but do not mention the apple.
+
+Answer: not mentioned"	0.2444	0.0444	False	False	False	True	0

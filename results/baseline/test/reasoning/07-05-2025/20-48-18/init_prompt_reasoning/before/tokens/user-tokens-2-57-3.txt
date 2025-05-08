@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+15	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+16	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+17	.	ĠDaniel	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+18	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

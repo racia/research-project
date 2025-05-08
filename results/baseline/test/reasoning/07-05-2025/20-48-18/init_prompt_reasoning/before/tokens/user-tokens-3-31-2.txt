@@ -1,0 +1,27 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+90	.	ĠMary	Ġtook	Ġthe	Ġmilk	.Ċ
+91	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+92	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+93	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+94	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+95	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+96	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+97	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+98	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+99	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+100	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+101	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+102	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+103	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+104	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+105	.	ĠMary	Ġtook	Ġthe	Ġmilk	.Ċ
+106	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+107	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+108	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+109	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+110	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+111	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+112	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+113	.	ĠSandra	Ġleft	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġbathroom	?Ċ

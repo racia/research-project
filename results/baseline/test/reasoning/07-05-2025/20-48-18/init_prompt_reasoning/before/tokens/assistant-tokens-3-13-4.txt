@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġtaken	Ġby	ĠMary	Ġto	Ġthe	Ġgarden	Ġin	Ġsentence	Ġ	28	.	ĠThen	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	Ġin	Ġsentence	Ġ	30	.	ĠBefore	Ġgoing	Ġto	Ġthe	Ġbathroom	,	ĠMary	Ġwas	Ġin	Ġthe	Ġgarden	Ġwith	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

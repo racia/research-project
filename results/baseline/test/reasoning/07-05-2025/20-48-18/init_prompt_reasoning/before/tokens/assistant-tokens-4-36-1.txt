@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġgarden	Ġis	Ġwest	Ġof	Ġthe	Ġbathroom	,	Ġand	Ġthe	Ġbedroom	Ġis	Ġwest	Ġof	Ġthe	Ġgarden	,	Ġit	Ġimplies	Ġthat	Ġthe	Ġbedroom	Ġis	Ġalso	Ġwest	Ġof	Ġthe	Ġbathroom	.	ĠThis	Ġmeans	Ġthat	Ġthe	Ġbathroom	Ġis	Ġnot	Ġeast	Ġof	Ġanything	,	Ġas	Ġit	Ġis	Ġsurrounded	Ġby	Ġthe	Ġgarden	Ġand	Ġthe	Ġbedroom	Ġon	Ġits	Ġwest	Ġside	.ĊĊ	Answer	:	ĠNothing	<|eot_id|>

@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+2	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+3	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+4	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+5	.	ĠMary	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+6	.	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġto	ĠBill	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠMary	Ġgive	Ġto	ĠBill	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	Ġthe	Ġrelative	Ġlocations	Ġof	Ġthe	Ġbathroom	,	Ġbedroom	,	Ġand	Ġgarden	.	ĠSentence	Ġ	1	Ġstates	Ġthat	Ġthe	Ġbathroom	Ġis	Ġnorth	Ġof	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	Ġanything	Ġnorth	Ġof	Ġthe	Ġbathroom	Ġwould	Ġalso	Ġbe	Ġnorth	Ġof	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

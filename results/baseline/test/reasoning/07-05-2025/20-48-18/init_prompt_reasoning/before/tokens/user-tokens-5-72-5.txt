@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+27	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+28	.	ĠFred	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠJeff	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

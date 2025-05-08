@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+14	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+15	.	ĠMary	Ġgot	Ġthe	Ġapple	.Ċ
+16	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+17	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+18	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+19	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġhallway	?Ċ

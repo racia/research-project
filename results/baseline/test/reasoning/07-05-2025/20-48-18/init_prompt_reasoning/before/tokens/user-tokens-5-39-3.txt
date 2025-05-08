@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+53	.	ĠJeff	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+54	.	ĠJeff	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠFred	Ġgive	Ġto	ĠJeff	?Ċ

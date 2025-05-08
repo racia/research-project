@@ -1,0 +1,104 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1621	5	5	1	"*TASK*
+Here are the context sentences:
+1. Fred travelled to the kitchen.
+2. Bill travelled to the office.
+3. Mary travelled to the office.
+4. Jeff went back to the kitchen.
+5. Bill travelled to the hallway.
+6. Fred went to the bathroom.
+7. Mary travelled to the hallway.
+8. Mary travelled to the bedroom.
+9. Fred journeyed to the hallway.
+10. Mary moved to the bathroom.
+11. Bill went back to the kitchen.
+12. Bill went to the hallway.
+13. Mary journeyed to the kitchen.
+14. Mary went to the bathroom.
+15. Jeff journeyed to the office.
+16. Fred travelled to the garden.
+17. Fred grabbed the football there.
+18. Fred discarded the football.
+19. Bill travelled to the kitchen.
+20. Jeff went to the garden.
+21. Jeff travelled to the bedroom.
+22. Jeff moved to the garden.
+23. Jeff grabbed the football there.
+24. Jeff went back to the bedroom.
+25. Jeff journeyed to the office.
+26. Bill travelled to the hallway.
+27. Jeff left the football.
+28. Bill went to the bedroom.
+29. Jeff got the milk there.
+30. Mary went to the kitchen.
+31. Bill went to the kitchen.
+32. Jeff journeyed to the bathroom.
+33. Bill went to the hallway.
+34. Jeff dropped the milk.
+35. Mary went to the hallway.
+36. Mary went to the kitchen.
+37. Fred travelled to the office.
+38. Fred went back to the hallway.
+39. Jeff got the milk there.
+40. Fred travelled to the office.
+41. Bill went to the garden.
+42. Mary journeyed to the bathroom.
+43. Fred went back to the bathroom.
+44. Fred journeyed to the office.
+45. Jeff passed the milk to Mary.
+46. Fred grabbed the football there.
+
+Now, answer the following question:
+What did Jeff give to Mary?"	milk	"from sentence 45, it is directly stated that ""jeff passed the milk to mary."" this explicitly indicates that jeff gave milk to mary."	fully	milk	True	Jeff passed the milk to Mary in sentence 45, and there is no mention of Jeff giving Mary anything else. Therefore, it can be inferred that Jeff gave the milk to Mary.		"Reasoning: Jeff passed the milk to Mary in sentence 45, and there is no mention of Jeff giving Mary anything else. Therefore, it can be inferred that Jeff gave the milk to Mary.
+
+Answer: milk"	0.0	0.0227	False	False	False	True	0
+1622	5	5	2	"*TASK*
+Here are the context sentences:
+48. Mary passed the milk to Jeff.
+49. Fred dropped the football.
+
+Now, answer the following question:
+Who gave the milk to Jeff?"	mary	"from sentence 48, it is directly stated that ""mary passed the milk to jeff."" this explicitly indicates that mary gave the milk to jeff."	fully	Mary	True	According to sentence 45, Fred passed the milk to Mary, and then Mary passed the milk to Jeff in sentence 48. Therefore, Mary gave the milk to Jeff.		"Reasoning: According to sentence 45, Fred passed the milk to Mary, and then Mary passed the milk to Jeff in sentence 48. Therefore, Mary gave the milk to Jeff.
+
+Answer: Mary"	0.0	0.0238	False	False	False	False	0
+1623	5	5	3	"*TASK*
+Here are the context sentences:
+51. Fred got the football there.
+52. Bill went to the hallway.
+
+Now, answer the following question:
+Who gave the milk to Jeff?"	mary	"the provided context lines (51 and 52) do not mention the milk or jeff receiving the milk. however, the answer is given as ""mary"". this implies that the correct context for this question is actually in a previous part of the conversation history. in the previous conversation, sentence 45 states ""jeff passed the milk to mary"" and sentence 48 states ""mary passed the milk to jeff"". from these sentences, we can infer that mary and jeff exchanged the milk."	none	Mary	True	The previous question about who gave the milk to Jeff was answered as Mary. The new sentences do not provide any information about the milk or Jeff, so the previous answer remains correct.		"Reasoning: The previous question about who gave the milk to Jeff was answered as Mary. The new sentences do not provide any information about the milk or Jeff, so the previous answer remains correct.
+
+Answer: Mary"	0.0465	0.0233	False	False	False	True	0
+1624	5	5	4	"*TASK*
+Here are the context sentences:
+54. Jeff dropped the milk.
+55. Mary moved to the garden.
+56. Jeff got the milk there.
+57. Fred discarded the football.
+58. Fred journeyed to the hallway.
+59. Jeff discarded the milk.
+60. Bill travelled to the bedroom.
+61. Bill went back to the hallway.
+62. Bill travelled to the office.
+63. Jeff took the milk there.
+64. Fred went to the office.
+65. Fred travelled to the hallway.
+66. Mary journeyed to the kitchen.
+67. Bill grabbed the apple there.
+68. Bill travelled to the bathroom.
+69. Bill passed the apple to Jeff.
+
+Now, answer the following question:
+Who gave the apple to Jeff?"	bill	"from sentence 69, it is directly stated that ""bill passed the apple to jeff"". this explicitly indicates that bill gave the apple to jeff."	fully	Bill	True	According to sentence 69, Bill passed the apple to Jeff.		"Reasoning: According to sentence 69, Bill passed the apple to Jeff.
+
+Answer: Bill"	0.0	0.05	False	False	False	False	0
+1625	5	5	5	"*TASK*
+Here are the context sentences:
+71. Jeff handed the apple to Bill.
+72. Bill dropped the apple.
+
+Now, answer the following question:
+Who gave the apple?"	jeff	"""reasoning: <reasoning>"""	fully	Jeff	True	According to sentence 69, Bill passed the apple to Jeff, and then Jeff handed the apple to Bill in sentence 71. Therefore, the apple was given by Jeff to Bill, and then Bill dropped it.		"Reasoning: According to sentence 69, Bill passed the apple to Jeff, and then Jeff handed the apple to Bill in sentence 71. Therefore, the apple was given by Jeff to Bill, and then Bill dropped it.
+
+Answer: Jeff"	0.0	0.02	False	False	False	False	0

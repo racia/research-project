@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+966	2	94	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the office.
+2. Daniel grabbed the football there.
+3. Mary journeyed to the garden.
+4. Daniel dropped the football.
+5. Sandra travelled to the office.
+6. Mary grabbed the milk there.
+7. Sandra moved to the bedroom.
+8. Sandra travelled to the bathroom.
+9. Daniel journeyed to the garden.
+10. Sandra moved to the kitchen.
+11. Mary left the milk.
+12. Mary travelled to the bathroom.
+
+Now, answer the following question:
+Where is the milk?"	garden	from context line 6, we know mary grabbed the milk at the office. then, in context line 11, mary left the milk. since mary was in the garden in context line 3, and she didn't go back to the office after leaving the milk, it is logical to assume that mary left the milk in the garden.	fully	bathroom	False	The milk was grabbed by Mary in the office, and then left by Mary. Since Mary travelled to the bathroom, it is likely that the milk is still with Mary in the bathroom.		"Reasoning: The milk was grabbed by Mary in the office, and then left by Mary. Since Mary travelled to the bathroom, it is likely that the milk is still with Mary in the bathroom.
+
+Answer: bathroom"	0.0227	0.0455	False	False	False	False	0
+967	2	94	2	"*TASK*
+Here are the context sentences:
+14. Daniel travelled to the hallway.
+15. Mary travelled to the hallway.
+
+Now, answer the following question:
+Where is the milk?"	garden	"the context lines provided (14 and 15) do not mention the milk at all. however, the answer ""garden"" suggests that the milk's location is already known from previous context. since this is a new part of the conversation, i will inspect the previous parts to find the correct reasoning."	none	office	False	There is no mention of the milk in the hallway context sentences. The last mention of the milk was in the office, and then Mary left it. Since the milk's location is not specified in the hallway context, it is likely that the milk is still in the office.		"Reasoning: There is no mention of the milk in the hallway context sentences. The last mention of the milk was in the office, and then Mary left it. Since the milk's location is not specified in the hallway context, it is likely that the milk is still in the office.
+
+Answer: office"	0.0323	0.0323	False	False	False	True	0
+968	2	94	3	"*TASK*
+Here are the context sentences:
+17. Daniel grabbed the football there.
+18. Mary travelled to the office.
+19. Mary moved to the hallway.
+20. Daniel put down the football.
+
+Now, answer the following question:
+Where is the football?"	hallway	"from context line 17, we know daniel grabbed the football, but the location is not specified. however, in context line 14 (from previous parts), we know daniel travelled to the hallway. it is logical to assume that ""there"" in context line 17 refers to the hallway, since it is the last known location of daniel. then, in context line 20, daniel put down the football. therefore, the football is in the hallway."	partially	hallway	True	The football was grabbed by Daniel, and then put down by Daniel. Since the last action with the football was putting it down, it is likely that the football is in the same location where Daniel put it down.		"Reasoning: The football was grabbed by Daniel, and then put down by Daniel. Since the last action with the football was putting it down, it is likely that the football is in the same location where Daniel put it down.
+
+Answer: hallway"	0.06	0.04	False	False	False	False	0
+969	2	94	4	"*TASK*
+Here are the context sentences:
+22. John went to the office.
+23. Sandra travelled to the bedroom.
+
+Now, answer the following question:
+Where is the football?"	hallway	"the context lines provided (22 and 23) do not mention the football at all. however, the answer ""hallway"" suggests that the football's location is already known from previous context. since this is a new part of the conversation, i will inspect the previous parts to find the correct reasoning."	none	hallway	True	There is no mention of the football in the given context sentences. The last mention of the football was in the hallway, but there is no connection between the football and the office or bedroom.		"Reasoning: There is no mention of the football in the given context sentences. The last mention of the football was in the hallway, but there is no connection between the football and the office or bedroom.
+
+Answer: hallway"	0.1111	0.0444	False	False	False	True	0
+970	2	94	5	"*TASK*
+Here are the context sentences:
+25. Sandra went to the kitchen.
+26. Sandra journeyed to the office.
+
+Now, answer the following question:
+Where is the football?"	hallway	"the context lines provided (25 and 26) do not mention the football at all. however, the answer ""hallway"" suggests that the football's location is already known from previous context. since this is a new part of the conversation, i will inspect the previous parts to find the correct reasoning."	none	hallway	True	There is no mention of the football in the given context sentences. The last mention of the football was in the hallway, but there is no connection between the football and the kitchen or office.		"Reasoning: There is no mention of the football in the given context sentences. The last mention of the football was in the hallway, but there is no connection between the football and the kitchen or office.
+
+Answer: hallway"	0.0444	0.0444	False	False	False	True	0

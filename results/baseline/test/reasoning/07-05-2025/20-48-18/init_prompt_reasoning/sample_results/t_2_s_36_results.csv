@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+676	2	36	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the bathroom.
+2. Daniel went back to the bathroom.
+3. Mary got the milk there.
+4. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Where is the milk?"	kitchen	from context sentence 3, we know that mary got the milk in the bathroom. then, according to context sentence 4, mary journeyed to the kitchen. it is logical to assume that mary carried the milk with her when she moved from the bathroom to the kitchen. therefore, the milk is now in the kitchen.	fully	kitchen	True	The milk was obtained by Mary in the bathroom, and then she journeyed to the kitchen. Since she didn't discard or give the milk away, it's likely that she took the milk with her to the kitchen.		"Reasoning: The milk was obtained by Mary in the bathroom, and then she journeyed to the kitchen. Since she didn't discard or give the milk away, it's likely that she took the milk with her to the kitchen.
+
+Answer: kitchen"	0.1569	0.0392	False	False	False	False	0
+677	2	36	2	"*TASK*
+Here are the context sentences:
+6. Mary got the apple there.
+7. Mary moved to the hallway.
+
+Now, answer the following question:
+Where is the apple?"	hallway	from context sentence 6, we know that mary got the apple at some location, but the location is not specified. however, we can infer that mary got the apple at the same location where she was before moving to the hallway, as there is no other information about her visiting any other location. then, according to context sentence 7, mary moved to the hallway. it is logical to assume that mary carried the apple with her when she moved to the hallway. therefore, the	fully	hallway	True	The apple was obtained by Mary in a location that is not specified, but since she moved to the hallway, it's likely that she took the apple with her to the hallway.		"Reasoning: The apple was obtained by Mary in a location that is not specified, but since she moved to the hallway, it's likely that she took the apple with her to the hallway.
+
+Answer: hallway"	0.186	0.0465	False	False	False	False	0
+678	2	36	3	"*TASK*
+Here are the context sentences:
+9. Mary went back to the bedroom.
+10. Mary moved to the kitchen.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	from the previous context (6. mary got the apple there. 7. mary moved to the hallway.), we know that mary got the apple at some location and then moved to the hallway with the apple. now, from the new context sentences, we see that mary went back to the bedroom (9) and then moved to the kitchen (10). it is logical to assume that mary carried the apple with her throughout these movements. therefore, the apple is now in the kitchen.	partially	kitchen	True	The apple was previously mentioned to be in the hallway, but since Mary moved to the kitchen, it's likely that she took the apple with her to the kitchen.		"Reasoning: The apple was previously mentioned to be in the hallway, but since Mary moved to the kitchen, it's likely that she took the apple with her to the kitchen.
+
+Answer: kitchen"	0.175	0.05	False	False	False	True	0
+679	2	36	4	"*TASK*
+Here are the context sentences:
+12. John journeyed to the bathroom.
+13. John went back to the hallway.
+14. John moved to the bedroom.
+15. Mary journeyed to the garden.
+16. Daniel travelled to the office.
+17. Daniel picked up the football there.
+18. Mary journeyed to the office.
+19. John journeyed to the bathroom.
+20. Daniel discarded the football.
+21. Mary discarded the milk.
+
+Now, answer the following question:
+Where is the milk?"	office	from the previous context (4. mary journeyed to the kitchen.), we know that mary had the milk. then, from the new context sentences, we see that mary journeyed to the garden (15) and later to the office (18). it is logical to assume that mary carried the milk with her throughout these movements. finally, mary discarded the milk (21) in the office, which means the milk is now in the office.	fully	not mentioned	False	The milk was previously mentioned to be in the kitchen, but since Mary discarded it, it's likely that the milk is no longer present anywhere.		"Reasoning: The milk was previously mentioned to be in the kitchen, but since Mary discarded it, it's likely that the milk is no longer present anywhere.
+
+Answer: not mentioned"	0.0541	0.0541	False	False	False	True	0
+680	2	36	5	"*TASK*
+Here are the context sentences:
+23. Mary grabbed the football there.
+24. Sandra went back to the bathroom.
+
+Now, answer the following question:
+Where is the milk?"	office	this question is not related to the new context sentences (23 and 24), but rather to the previous context. from the previous context (21. mary discarded the milk.), we know that mary discarded the milk in the office. there is no new information that would change the location of the milk, so the answer remains the same: the milk is in the office.	none	not mentioned	False	The milk was previously mentioned to be discarded, so it's not present anywhere. The context sentences don't provide any information about the milk's current location.		"Reasoning: The milk was previously mentioned to be discarded, so it's not present anywhere. The context sentences don't provide any information about the milk's current location.
+
+Answer: not mentioned"	0.0513	0.0513	False	False	False	True	0

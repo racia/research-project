@@ -1,0 +1,29 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+31	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+32	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+33	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+34	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+35	.	ĠBill	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+36	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+37	.	ĠMary	Ġleft	Ġthe	Ġmilk	Ġthere	.Ċ
+38	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+39	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+40	.	ĠMary	Ġleft	Ġthe	Ġapple	.Ċ
+41	.	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	Ġthere	.Ċ
+42	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+43	.	ĠMary	Ġleft	Ġthe	Ġfootball	Ġthere	.Ċ
+44	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+45	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+46	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+47	.	ĠFred	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+48	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+49	.	ĠJeff	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+50	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+51	.	ĠJeff	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+52	.	ĠFred	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+53	.	ĠJeff	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+54	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+55	.	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġto	ĠBill	.Ċ
+56	.	ĠJeff	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠJeff	Ġgive	Ġthe	Ġfootball	Ġto	?Ċ

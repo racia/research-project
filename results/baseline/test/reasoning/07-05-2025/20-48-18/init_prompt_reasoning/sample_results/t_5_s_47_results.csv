@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1831	5	47	1	"*TASK*
+Here are the context sentences:
+1. Fred picked up the apple there.
+2. Fred gave the apple to Bill.
+
+Now, answer the following question:
+What did Fred give to Bill?"	apple	"from context sentence 1, we know that fred picked up an apple. then, in context sentence 2, it is stated that fred gave ""the apple"" to bill. since fred had picked up an apple earlier, it can be logically inferred that ""the apple"" referred to in sentence 2 is the same apple that fred picked up in sentence 1. therefore, fred gave the apple to bill."	fully	apple	True	Fred picked up the apple and then gave it to Bill, so the object that Fred gave to Bill is the apple.		"Reasoning: Fred picked up the apple and then gave it to Bill, so the object that Fred gave to Bill is the apple.
+
+Answer: apple"	0.1613	0.0323	False	False	False	False	0
+1832	5	47	2	"*TASK*
+Here are the context sentences:
+4. Bill gave the apple to Fred.
+5. Fred passed the apple to Bill.
+
+Now, answer the following question:
+Who did Fred give the apple to?"	bill	"in context sentence 5, it is stated that ""fred passed the apple to bill"". this sentence explicitly mentions that fred gave the apple to bill, which directly answers the question."	fully	cannot be determined	False	The context sentences contradict each other. Sentence 4 states that Bill gave the apple to Fred, while sentence 5 states that Fred passed the apple to Bill. This is a logical inconsistency, and we cannot determine who Fred gave the apple to based on these sentences.		"Reasoning: The context sentences contradict each other. Sentence 4 states that Bill gave the apple to Fred, while sentence 5 states that Fred passed the apple to Bill. This is a logical inconsistency, and we cannot determine who Fred gave the apple to based on these sentences.
+
+Answer: cannot be determined"	0.0323	0.0161	False	False	False	False	0
+1833	5	47	3	"*TASK*
+Here are the context sentences:
+7. Bill handed the apple to Fred.
+8. Fred gave the apple to Bill.
+
+Now, answer the following question:
+Who gave the apple to Bill?"	fred	"in context sentence 8, it is stated that ""fred gave the apple to bill"". this sentence explicitly mentions that fred gave the apple to bill, which directly answers the question."	fully	Fred	True	According to sentence 8, Fred gave the apple to Bill.		"Reasoning: According to sentence 8, Fred gave the apple to Bill.
+
+Answer: Fred"	0.05	0.05	False	False	False	False	0
+1834	5	47	4	"*TASK*
+Here are the context sentences:
+10. Mary went back to the bathroom.
+11. Fred journeyed to the kitchen.
+
+Now, answer the following question:
+Who gave the apple to Bill?"	fred	"the context sentences 10 and 11 do not provide any information about who gave the apple to bill. however, the answer ""fred"" is provided, which suggests that the correct information is not in the current context sentences, but rather in a previous part of the conversation history. therefore, i will rely on the previous context sentences to find the correct reasoning."	none	cannot be determined	False	There is no mention of an apple or Bill in the given context sentences. The sentences only mention Mary, Fred, and their movements to different locations (bathroom and kitchen).		"Reasoning: There is no mention of an apple or Bill in the given context sentences. The sentences only mention Mary, Fred, and their movements to different locations (bathroom and kitchen).
+
+Answer: cannot be determined"	0.0227	0.0227	False	False	False	True	0
+1835	5	47	5	"*TASK*
+Here are the context sentences:
+13. Jeff travelled to the bedroom.
+14. Mary travelled to the office.
+
+Now, answer the following question:
+Who gave the apple?"	fred	"the context sentences 13 and 14 do not provide any information about who gave the apple. however, the answer ""fred"" is provided, which suggests that the correct information is not in the current context sentences, but rather in a previous part of the conversation history."	none	cannot be determined	False	There is no mention of an apple or anyone giving an apple in the given context sentences. The sentences only mention Jeff and Mary traveling to different locations (bedroom and office).		"Reasoning: There is no mention of an apple or anyone giving an apple in the given context sentences. The sentences only mention Jeff and Mary traveling to different locations (bedroom and office).
+
+Answer: cannot be determined"	0.0	0.0227	False	False	False	True	0

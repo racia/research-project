@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	's	Ġcurrent	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	's	Ġmovement	Ġto	Ġthe	Ġbathroom	Ġand	ĠJohn	's	Ġmovement	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġnot	ĠMary	's	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

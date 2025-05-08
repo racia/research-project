@@ -1,0 +1,8 @@
+task_id	exact_match_accuracy_before	soft_match_accuracy_before	exact_match_std_before	soft_match_std_before
+1	0.72	0.72	0.18	0.18
+2	0.39	0.39	0.21	0.21
+3	0.31	0.31	0.14	0.14
+4	1.0	1.0	0.0	0.0
+5	0.64	0.66	0.2	0.2
+mean	0.61	0.62	0.18	0.18
+std	0.28	0.28

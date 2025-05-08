@@ -1,0 +1,68 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+701	2	41	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the hallway.
+2. Mary journeyed to the kitchen.
+3. Sandra moved to the office.
+4. Daniel journeyed to the office.
+5. Mary travelled to the bedroom.
+6. Mary went back to the garden.
+7. Sandra moved to the kitchen.
+8. Daniel went back to the bedroom.
+9. Mary went to the office.
+10. Mary moved to the garden.
+11. John moved to the hallway.
+12. John travelled to the bedroom.
+13. John moved to the office.
+14. Daniel journeyed to the bathroom.
+15. Sandra picked up the milk there.
+16. Sandra moved to the office.
+
+Now, answer the following question:
+Where is the milk?"	office	from sentence 15, we know that sandra picked up the milk in the bathroom. then, in sentence 16, sandra moved to the office. since sandra picked up the milk and then moved to the office, it can be logically inferred that the milk is now in the office with sandra.	fully	office	True	The milk was picked up in the bathroom, and Sandra moved to the office after that. There is no indication that the milk was moved or left in the bathroom, so it is likely that Sandra took the milk with her to the office.		"Reasoning: The milk was picked up in the bathroom, and Sandra moved to the office after that. There is no indication that the milk was moved or left in the bathroom, so it is likely that Sandra took the milk with her to the office.
+
+Answer: office"	0.2	0.0364	False	False	False	False	0
+702	2	41	2	"*TASK*
+Here are the context sentences:
+18. John travelled to the bedroom.
+19. John travelled to the bathroom.
+
+Now, answer the following question:
+Where is the milk?"	office	the context sentences 18 and 19 only provide information about john's movements, but they do not mention the milk. to find the answer, we need to refer to the previous parts of the conversation history. from the previous conversation, we know that sandra picked up the milk in the bathroom (sentence 15) and then moved to the office (sentence 16). therefore, the milk is still in the office, regardless of john's movements.	none	not mentioned	False	There is no mention of the milk in the given context sentences. The sentences only mention John's movements to the bedroom and bathroom, but do not mention the milk.		"Reasoning: There is no mention of the milk in the given context sentences. The sentences only mention John's movements to the bedroom and bathroom, but do not mention the milk.
+
+Answer: not mentioned"	0.1707	0.0488	False	False	False	True	0
+703	2	41	3	"*TASK*
+Here are the context sentences:
+21. Sandra went back to the garden.
+22. John went to the hallway.
+23. Sandra put down the milk.
+24. Mary picked up the milk there.
+25. John went back to the kitchen.
+26. John went to the garden.
+27. Mary put down the milk.
+28. Sandra picked up the milk there.
+29. Sandra went back to the hallway.
+30. John journeyed to the hallway.
+
+Now, answer the following question:
+Where is the milk?"	hallway	from sentence 23, we know that sandra put down the milk in the garden. then, in sentence 24, mary picked up the milk in the garden. afterwards, in sentence 27, mary put down the milk again, but the location is not specified. however, since mary picked up the milk in the garden and then put it down, it can be logically inferred that mary put down the milk in the same location, which is the garden. then, in	fully	hallway	True	The milk was put down by Sandra, then picked up by Mary, and then put down again by Mary. After that, Sandra picked it up again. The last action mentioned is Sandra putting it down in the hallway.		"Reasoning: The milk was put down by Sandra, then picked up by Mary, and then put down again by Mary. After that, Sandra picked it up again. The last action mentioned is Sandra putting it down in the hallway.
+
+Answer: hallway"	0.0196	0.0392	False	False	False	True	0
+704	2	41	4	"*TASK*
+Here are the context sentences:
+32. John moved to the bedroom.
+33. Sandra went back to the garden.
+
+Now, answer the following question:
+Where is the milk?"	garden	from the previous conversation, we know that mary put down the milk in the garden (sentence 27). then, in sentence 28, sandra picked up the milk in the garden. afterwards, in sentence 29, sandra went back to the hallway. however, in sentence 33, sandra went back to the garden. since sandra had the milk and went back to the garden, it can be logically inferred that the milk is now in the garden with sand	partially	not mentioned	False	There is no mention of the milk in the given context sentences. The sentences only mention John's movement to the bedroom and Sandra's return to the garden, but do not mention the milk.		"Reasoning: There is no mention of the milk in the given context sentences. The sentences only mention John's movement to the bedroom and Sandra's return to the garden, but do not mention the milk.
+
+Answer: not mentioned"	0.0	0.0435	False	False	False	True	0
+705	2	41	5	"*TASK*
+Here are the context sentences:
+35. John moved to the hallway.
+36. Sandra dropped the milk there.
+
+Now, answer the following question:
+Where is the milk?"	garden	"this answer seems to be incorrect based on the provided context. according to sentence 36, sandra dropped the milk in the hallway, not in the garden. therefore, the correct answer should be ""hallway"", not ""garden""."	partially	hallway	False	The milk was dropped by Sandra in the hallway.		"Reasoning: The milk was dropped by Sandra in the hallway.
+
+Answer: hallway"	0.0	0.1176	False	False	False	False	0

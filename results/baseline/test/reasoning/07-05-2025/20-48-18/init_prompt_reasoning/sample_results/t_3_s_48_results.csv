@@ -1,0 +1,60 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1236	3	48	1	"*TASK*
+Here are the context sentences:
+1. Daniel picked up the apple.
+2. Sandra journeyed to the office.
+3. Sandra moved to the kitchen.
+4. Daniel went back to the garden.
+5. Mary picked up the milk.
+6. John journeyed to the hallway.
+7. John went to the kitchen.
+8. Mary put down the milk.
+9. Daniel dropped the apple.
+10. Mary grabbed the milk.
+11. Mary went back to the bedroom.
+12. Mary went to the office.
+
+Now, answer the following question:
+Where was the milk before the office?"	bedroom	from the context sentences, we can track the movement of mary and the milk. in sentence 5, mary picked up the milk, but it doesn't specify where she picked it up. in sentence 8, mary put down the milk, which implies that she had the milk with her before putting it down. then, in sentence 11, mary went back to the bedroom, and in sentence 12, mary went to the office. since mary had the milk with her when	fully	kitchen	False	The milk was picked up by Mary, and then she put it down. After that, she grabbed it again and went to the office. Therefore, the milk was in the kitchen before the office, as Mary moved to the kitchen before picking up the milk.		"Reasoning: The milk was picked up by Mary, and then she put it down. After that, she grabbed it again and went to the office. Therefore, the milk was in the kitchen before the office, as Mary moved to the kitchen before picking up the milk.
+
+Answer: kitchen"	0.1186	0.0508	False	False	False	False	0
+1237	3	48	2	"*TASK*
+Here are the context sentences:
+14. John journeyed to the garden.
+15. Daniel picked up the apple.
+
+Now, answer the following question:
+Where was the milk before the office?"	bedroom	"there is no information about the milk in the provided context sentences (14 and 15). the context sentences only mention john and daniel, but not mary or the milk, which are the relevant entities for the question. the answer ""bedroom"" cannot be inferred from the provided context sentences. the correct answer cannot be determined based on the given information."	none	not mentioned	False	There is no mention of milk in these context sentences. The sentences only mention John journeying to the garden and Daniel picking up the apple. Therefore, we cannot determine where the milk was before the office.		"Reasoning: There is no mention of milk in these context sentences. The sentences only mention John journeying to the garden and Daniel picking up the apple. Therefore, we cannot determine where the milk was before the office.
+
+Answer: not mentioned"	0.0612	0.0612	False	False	False	True	0
+1238	3	48	3	"*TASK*
+Here are the context sentences:
+17. Mary dropped the milk.
+18. Daniel took the football.
+
+Now, answer the following question:
+Where was the milk before the office?"	bedroom	"there is no information about the milk being in the bedroom or the office in the provided context sentences (17 and 18). sentence 17 only mentions mary dropping the milk, but it doesn't specify where she dropped it. sentence 18 is about daniel and a football, which is unrelated to the milk or the office. the answer ""bedroom"" cannot be inferred from the provided context sentences. the correct answer cannot be determined based on the given information."	partially	not mentioned	False	There is no mention of the office in these context sentences. The sentences only mention Mary dropping the milk and Daniel taking the football. Additionally, the previous context sentences mentioned Mary picking up the milk, but not taking it to the office. Therefore, we cannot determine where the milk was before the office.		"Reasoning: There is no mention of the office in these context sentences. The sentences only mention Mary dropping the milk and Daniel taking the football. Additionally, the previous context sentences mentioned Mary picking up the milk, but not taking it to the office. Therefore, we cannot determine where the milk was before the office.
+
+Answer: not mentioned"	0.0294	0.0441	False	False	False	True	0
+1239	3	48	4	"*TASK*
+Here are the context sentences:
+20. Daniel travelled to the kitchen.
+21. Mary moved to the kitchen.
+
+Now, answer the following question:
+Where was the milk before the office?"	bedroom	"there is no information about the milk or the office in the provided context sentences (20 and 21). the sentences only mention daniel and mary moving to the kitchen, but they don't provide any information about the milk or its location before the office. the answer ""bedroom"" cannot be inferred from the provided context sentences. the correct answer cannot be determined based on the given information."	none	kitchen	False	There is no mention of the office in these context sentences. However, we can infer that the milk was in the kitchen before the office, as Mary picked up the milk and then moved to the kitchen (sentences 5 and 3).		"Reasoning: There is no mention of the office in these context sentences. However, we can infer that the milk was in the kitchen before the office, as Mary picked up the milk and then moved to the kitchen (sentences 5 and 3).
+
+Answer: kitchen"	0.1071	0.0536	False	False	False	True	0
+1240	3	48	5	"*TASK*
+Here are the context sentences:
+23. Daniel discarded the apple.
+24. Mary got the apple.
+25. Sandra journeyed to the bathroom.
+26. Daniel journeyed to the bedroom.
+27. Daniel left the football.
+28. John went to the office.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	kitchen	there is no direct information about the football being in the kitchen before the bedroom. however, we can infer the location of the football by analyzing the context sentences. in sentence 27, daniel left the football, but it doesn't specify where he left it. since daniel journeyed to the bedroom in sentence 26, it's likely that he left the football in the bedroom. but the question asks about the location of the football before the bedroom.	partially	office	False	The football was taken by Daniel, and then he left it. Before that, there is no mention of the football being in the bedroom. However, we can infer that the football was in the office, as Daniel left it after going to the office (sentence 28).		"Reasoning: The football was taken by Daniel, and then he left it. Before that, there is no mention of the football being in the bedroom. However, we can infer that the football was in the office, as Daniel left it after going to the office (sentence 28).
+
+Answer: office"	0.0645	0.0484	False	False	False	True	0

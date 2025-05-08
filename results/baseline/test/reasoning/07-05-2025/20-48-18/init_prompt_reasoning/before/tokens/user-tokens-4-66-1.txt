@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠThe	Ġoffice	Ġis	Ġsouth	Ġof	Ġthe	Ġbedroom	.Ċ
+2	.	ĠThe	Ġbedroom	Ġis	Ġsouth	Ġof	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	Ġthe	Ġbedroom	Ġnorth	Ġof	?Ċ

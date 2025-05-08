@@ -1,0 +1,25 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġfootball	.Ċ
+2	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+3	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+4	.	ĠSandra	Ġdropped	Ġthe	Ġfootball	.Ċ
+5	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+6	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+7	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+8	.	ĠSandra	Ġgrabbed	Ġthe	Ġapple	.Ċ
+9	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+10	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+11	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+12	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+13	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+14	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+15	.	ĠSandra	Ġtook	Ġthe	Ġfootball	.Ċ
+16	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+17	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+18	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+19	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+20	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+21	.	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
+22	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġkitchen	?Ċ

@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+26	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+27	.	ĠDaniel	Ġgrabbed	Ġthe	Ġapple	.Ċ
+28	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+29	.	ĠMary	Ġgot	Ġthe	Ġfootball	.Ċ
+30	.	ĠJohn	Ġdropped	Ġthe	Ġmilk	Ġthere	.Ċ
+31	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġoffice	?Ċ

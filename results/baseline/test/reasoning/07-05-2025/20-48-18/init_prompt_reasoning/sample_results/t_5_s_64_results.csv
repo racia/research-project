@@ -1,0 +1,64 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1916	5	64	1	"*TASK*
+Here are the context sentences:
+1. Fred picked up the apple there.
+2. Bill went back to the office.
+3. Jeff grabbed the milk there.
+4. Jeff gave the milk to Bill.
+
+Now, answer the following question:
+What did Jeff give to Bill?"	milk	from sentence 3, we know that jeff grabbed the milk there, which implies that jeff possessed the milk. then, in sentence 4, it is stated that jeff gave the milk to bill. therefore, it can be logically concluded that jeff gave the milk to bill.	fully	milk	True	Jeff grabbed the milk there, and then gave it to Bill, so the object he gave to Bill is the milk.		"Reasoning: Jeff grabbed the milk there, and then gave it to Bill, so the object he gave to Bill is the milk.
+
+Answer: milk"	0.1613	0.0323	False	False	False	False	0
+1917	5	64	2	"*TASK*
+Here are the context sentences:
+6. Fred dropped the apple.
+7. Bill discarded the milk.
+
+Now, answer the following question:
+Who received the milk?"	bill	from sentence 4 in the previous context, we know that jeff gave the milk to bill. this implies that bill received the milk from jeff.	none	no one	False	There is no mention of anyone receiving the milk in these sentences. In fact, Bill discarded the milk, which means it was not received by anyone.		"Reasoning: There is no mention of anyone receiving the milk in these sentences. In fact, Bill discarded the milk, which means it was not received by anyone.
+
+Answer: no one"	0.1316	0.0263	False	False	False	True	0
+1918	5	64	3	"*TASK*
+Here are the context sentences:
+9. Mary journeyed to the garden.
+10. Bill went to the kitchen.
+
+Now, answer the following question:
+What did Jeff give to Bill?"	milk	this question refers to a previous part of the conversation history. from sentence 4, we know that jeff gave the milk to bill. this information is still valid and relevant, even though the context has moved on to sentences 9 and 10, which describe the movements of mary and bill to different locations. the action of jeff giving milk to bill occurred earlier and is not affected by their current locations.	none	milk (based on previous context)	False	There is no mention of Jeff giving anything to Bill in these sentences. The previous sentences mentioned Jeff giving the milk to Bill, but these sentences do not provide any new information about the transaction.		"Reasoning: There is no mention of Jeff giving anything to Bill in these sentences. The previous sentences mentioned Jeff giving the milk to Bill, but these sentences do not provide any new information about the transaction.
+
+Answer: milk (based on previous context)"	0.0196	0.0196	False	False	False	True	0
+1919	5	64	4	"*TASK*
+Here are the context sentences:
+12. Bill travelled to the bedroom.
+13. Mary travelled to the bathroom.
+14. Bill journeyed to the garden.
+15. Fred picked up the apple there.
+16. Fred went to the bedroom.
+17. Jeff grabbed the milk there.
+18. Fred picked up the football there.
+19. Fred put down the apple.
+20. Jeff discarded the milk there.
+21. Mary travelled to the office.
+22. Bill went to the kitchen.
+23. Bill went to the garden.
+24. Jeff took the milk there.
+25. Fred picked up the apple there.
+26. Jeff went to the hallway.
+27. Bill travelled to the hallway.
+28. Fred went to the office.
+29. Fred handed the apple to Mary.
+
+Now, answer the following question:
+What did Fred give to Mary?"	apple	from sentence 29, it is directly stated that fred handed the apple to mary. this sentence explicitly indicates that fred gave the apple to mary, which matches the provided answer.	fully	apple	True	According to sentence 29, Fred handed the apple to Mary.		"Reasoning: According to sentence 29, Fred handed the apple to Mary.
+
+Answer: apple"	0.0	0.05	False	False	False	False	0
+1920	5	64	5	"*TASK*
+Here are the context sentences:
+31. Jeff went to the bathroom.
+32. Mary gave the apple to Fred.
+
+Now, answer the following question:
+Who did Mary give the apple to?"	fred	from sentence 32, it is directly stated that mary gave the apple to fred. this sentence explicitly indicates that the recipient of the apple from mary is fred, which matches the provided answer.	fully	Fred	True	According to sentence 32, Mary gave the apple to Fred.		"Reasoning: According to sentence 32, Mary gave the apple to Fred.
+
+Answer: Fred"	0.1	0.05	False	False	False	False	0

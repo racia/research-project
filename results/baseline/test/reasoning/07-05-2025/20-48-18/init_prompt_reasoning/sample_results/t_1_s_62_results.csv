@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+306	1	62	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the bathroom.
+2. Daniel moved to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	the context sentences provide a sequence of actions performed by daniel. in the first sentence, daniel goes to the bathroom, which implies that he is in the bathroom. however, the second sentence states that daniel moved to the garden, which means he left the bathroom and is now in the garden. therefore, the current location of daniel is the garden.	fully	garden	True	Daniel's location changed from the bathroom to the garden, so the current location is the garden.		"Reasoning: Daniel's location changed from the bathroom to the garden, so the current location is the garden.
+
+Answer: garden"	0.1154	0.0385	False	False	False	False	0
+307	1	62	2	"*TASK*
+Here are the context sentences:
+4. Daniel travelled to the bedroom.
+5. Daniel journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	the context sentences provide a sequence of actions performed by daniel. in sentence 4, daniel travels to the bedroom, which implies that he is in the bedroom. however, sentence 5 states that daniel journeyed to the bathroom, which means he left the bedroom and is now in the bathroom. therefore, the current location of daniel is the bathroom.	fully	bathroom	True	Daniel's location changed from the bedroom to the bathroom, so the current location is the bathroom.		"Reasoning: Daniel's location changed from the bedroom to the bathroom, so the current location is the bathroom.
+
+Answer: bathroom"	0.1923	0.0385	False	False	False	False	0
+308	1	62	3	"*TASK*
+Here are the context sentences:
+7. Daniel journeyed to the office.
+8. John journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	office	the context sentences provide information about the movements of two individuals, daniel and john. sentence 7 specifically states that daniel journeyed to the office, which implies that daniel's current location is the office. the movement of john to the bathroom in sentence 8 does not affect daniel's location, as it is a separate action performed by a different person. therefore, the correct answer is that daniel is in the office.	fully	office	True	The context sentences do not mention Daniel's location after he journeyed to the office, so his current location is still the office.		"Reasoning: The context sentences do not mention Daniel's location after he journeyed to the office, so his current location is still the office.
+
+Answer: office"	0.0	0.0303	False	False	False	True	0
+309	1	62	4	"*TASK*
+Here are the context sentences:
+10. John went to the garden.
+11. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	office	"the context sentences provide information about the movements of two individuals, john and sandra. however, there is no new information about daniel's location. the answer ""office"" can only be inferred by looking at the previous context sentences that mentioned daniel's movement. since there is no previous context provided in this part of the conversation, it is assumed that the answer is based on a previous part of the conversation history. in a previous part, it was mentioned that ""daniel journeyed to the office"	none	unknown	False	There is no mention of Daniel in the given context sentences, so his location is unknown.		"Reasoning: There is no mention of Daniel in the given context sentences, so his location is unknown.
+
+Answer: unknown"	0.12	0.04	False	False	False	True	0
+310	1	62	5	"*TASK*
+Here are the context sentences:
+13. Mary went to the office.
+14. John went back to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	the context sentences provide information about the movements of two individuals, mary and john. sentence 13 states that mary went to the office, which is not relevant to john's location. sentence 14 specifically states that john went back to the kitchen, which implies that john's current location is the kitchen. therefore, the correct answer is that john is in the kitchen.	fully	kitchen	True	John's location changed from an unknown location to the kitchen, so the current location is the kitchen.		"Reasoning: John's location changed from an unknown location to the kitchen, so the current location is the kitchen.
+
+Answer: kitchen"	0.037	0.037	False	False	False	True	0

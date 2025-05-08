@@ -1,0 +1,37 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+90	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+91	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+92	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+93	.	ĠJohn	Ġtook	Ġthe	Ġfootball	.Ċ
+94	.	ĠJohn	Ġdropped	Ġthe	Ġapple	.Ċ
+95	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+96	.	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+97	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+98	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġmilk	.Ċ
+99	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+100	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+101	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+102	.	ĠDaniel	Ġdropped	Ġthe	Ġmilk	.Ċ
+103	.	ĠJohn	Ġgot	Ġthe	Ġapple	.Ċ
+104	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+105	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+106	.	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+107	.	ĠSandra	Ġtook	Ġthe	Ġfootball	.Ċ
+108	.	ĠJohn	Ġdropped	Ġthe	Ġapple	.Ċ
+109	.	ĠSandra	Ġleft	Ġthe	Ġfootball	Ġthere	.Ċ
+110	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+111	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+112	.	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+113	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+114	.	ĠJohn	Ġdropped	Ġthe	Ġapple	.Ċ
+115	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+116	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+117	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+118	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+119	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+120	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+121	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+122	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+123	.	ĠJohn	Ġleft	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġgarden	?Ċ

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+106	1	22	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the office.
+2. Mary moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"from the context sentences, we know that mary first journeyed to the office (sentence 1) and then moved to the hallway (sentence 2). since mary moved to the hallway after being at the office, it can be inferred that she is currently located in the hallway. therefore, the answer to the question ""where is mary?"" is indeed the hallway."	fully	hallway	True	Mary's last known location was the office, and then she moved to the hallway, which implies that she is currently in the hallway.		"Reasoning: Mary's last known location was the office, and then she moved to the hallway, which implies that she is currently in the hallway.
+
+Answer: hallway"	0.1176	0.0294	False	False	False	False	0
+107	1	22	2	"*TASK*
+Here are the context sentences:
+4. John journeyed to the hallway.
+5. Daniel travelled to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"according to sentence 5, daniel travelled to the bedroom, which implies that he is currently located in the bedroom. there is no information provided that suggests he has moved from the bedroom, so it can be logically concluded that daniel is still in the bedroom. therefore, the answer to the question ""where is daniel?"" is indeed the bedroom."	fully	bedroom	True	The context sentences only mention John journeying to the hallway and Daniel travelling to the bedroom, but there is no mention of Daniel's current location after that. Therefore, we can only infer that Daniel is in the bedroom, but we don't know if he is still there or has moved.		"Reasoning: The context sentences only mention John journeying to the hallway and Daniel travelling to the bedroom, but there is no mention of Daniel's current location after that. Therefore, we can only infer that Daniel is in the bedroom, but we don't know if he is still there or has moved.
+
+Answer: bedroom"	0.0462	0.0154	False	False	False	True	0
+108	1	22	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the bathroom.
+8. John travelled to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"according to sentence 7, daniel travelled to the bathroom, which implies that he is currently located in the bathroom. there is no information provided that suggests he has moved from the bathroom, so it can be logically concluded that daniel is still in the bathroom. therefore, the answer to the question ""where is daniel?"" is indeed the bathroom."	fully	bathroom	True	The context sentences mention Daniel travelling to the bathroom, which implies that he is currently in the bathroom.		"Reasoning: The context sentences mention Daniel travelling to the bathroom, which implies that he is currently in the bathroom.
+
+Answer: bathroom"	0.0	0.037	False	False	False	True	0
+109	1	22	4	"*TASK*
+Here are the context sentences:
+10. Daniel moved to the office.
+11. Mary went to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	office	"according to sentence 10, daniel moved to the office, which implies that he is currently located in the office. there is no information provided that suggests he has moved from the office, so it can be logically concluded that daniel is still in the office. therefore, the answer to the question ""where is daniel?"" is indeed the office."	fully	office	True	The context sentences mention Daniel moving to the office, which implies that he is currently in the office.		"Reasoning: The context sentences mention Daniel moving to the office, which implies that he is currently in the office.
+
+Answer: office"	0.0	0.037	False	False	False	True	0
+110	1	22	5	"*TASK*
+Here are the context sentences:
+13. Daniel moved to the kitchen.
+14. John travelled to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"according to sentence 14, john travelled to the bedroom, which implies that he is currently located in the bedroom. there is no information provided that suggests he has moved from the bedroom, so it can be logically concluded that john is still in the bedroom. therefore, the answer to the question ""where is john?"" is indeed the bedroom."	fully	bedroom	True	The context sentences mention John travelling to the bedroom, which implies that he is currently in the bedroom.		"Reasoning: The context sentences mention John travelling to the bedroom, which implies that he is currently in the bedroom.
+
+Answer: bedroom"	0.0	0.037	False	False	False	True	0

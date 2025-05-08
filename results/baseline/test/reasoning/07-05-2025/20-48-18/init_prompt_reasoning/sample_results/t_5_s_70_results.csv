@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1946	5	70	1	"*TASK*
+Here are the context sentences:
+1. Bill went to the kitchen.
+2. Fred moved to the bedroom.
+3. Jeff went to the kitchen.
+4. Jeff moved to the bedroom.
+5. Mary went to the bathroom.
+6. Jeff went to the garden.
+7. Fred moved to the bathroom.
+8. Mary travelled to the garden.
+9. Mary grabbed the milk there.
+10. Mary passed the milk to Jeff.
+
+Now, answer the following question:
+What did Mary give to Jeff?"	milk	from the context sentences, we know that mary grabbed the milk in the garden (sentence 9) and then passed it to jeff (sentence 10). therefore, it is logical to conclude that mary gave the milk to jeff.	fully	milk	True	Mary grabbed the milk in the garden and then passed it to Jeff, indicating that she gave the milk to Jeff.		"Reasoning: Mary grabbed the milk in the garden and then passed it to Jeff, indicating that she gave the milk to Jeff.
+
+Answer: milk"	0.1333	0.0333	False	False	False	False	0
+1947	5	70	2	"*TASK*
+Here are the context sentences:
+12. Jeff moved to the kitchen.
+13. Bill travelled to the garden.
+
+Now, answer the following question:
+Who gave the milk to Jeff?"	mary	from the previous context sentences (9 and 10), we know that mary passed the milk to jeff. the new context sentences (12 and 13) do not provide any new information about the milk or jeff receiving it from someone else. therefore, we can conclude that mary is still the one who gave the milk to jeff.	none	not mentioned	False	There is no mention of milk or Jeff receiving milk in these context sentences. The previous context sentences mentioned Mary giving milk to Jeff, but these new sentences do not provide any information about milk or its transfer.		"Reasoning: There is no mention of milk or Jeff receiving milk in these context sentences. The previous context sentences mentioned Mary giving milk to Jeff, but these new sentences do not provide any information about milk or its transfer.
+
+Answer: not mentioned"	0.0204	0.0204	False	False	False	True	0
+1948	5	70	3	"*TASK*
+Here are the context sentences:
+15. Jeff went back to the bathroom.
+16. Jeff handed the milk to Fred.
+
+Now, answer the following question:
+Who gave the milk?"	jeff	"this question is a bit tricky because the answer ""jeff"" seems to contradict the previous information that mary gave the milk to jeff (sentence 10). however, upon closer inspection, we see that jeff handed the milk to fred (sentence 16), which implies that jeff had the milk at some point. since mary gave the milk to jeff (sentence 10), it is logical to conclude that jeff had the milk and then handed it to fred. therefore, in the context of"	fully	Jeff	True	According to the previous context sentences, Mary passed the milk to Jeff, and now Jeff handed the milk to Fred. Therefore, Jeff gave the milk to Fred.		"Reasoning: According to the previous context sentences, Mary passed the milk to Jeff, and now Jeff handed the milk to Fred. Therefore, Jeff gave the milk to Fred.
+
+Answer: Jeff"	0.0256	0.0256	False	False	False	False	0
+1949	5	70	4	"*TASK*
+Here are the context sentences:
+18. Fred travelled to the office.
+19. Fred dropped the milk.
+
+Now, answer the following question:
+Who received the milk?"	fred	from the previous context sentences, we know that jeff handed the milk to fred (sentence 16). this implies that fred received the milk from jeff. therefore, it is logical to conclude that fred is the one who received the milk.	none	not mentioned	False	There is no mention of anyone receiving the milk in these context sentences. Fred dropped the milk, but it is not clear who received it.		"Reasoning: There is no mention of anyone receiving the milk in these context sentences. Fred dropped the milk, but it is not clear who received it.
+
+Answer: not mentioned"	0.0	0.0278	False	False	False	True	0
+1950	5	70	5	"*TASK*
+Here are the context sentences:
+21. Jeff grabbed the apple there.
+22. Bill picked up the football there.
+
+Now, answer the following question:
+Who gave the milk to Fred?"	jeff	from the previous context sentences, we know that mary gave the milk to jeff (sentence 10), and then jeff handed the milk to fred (sentence 16). therefore, it is logical to conclude that jeff is the one who gave the milk to fred. the new context sentences (21 and 22) do not provide any new information about the milk or jeff giving it to fred, so we can rely on the previous information to answer the question.	none	not mentioned	False	The context sentences do not mention milk or Fred receiving milk. The sentences only mention Jeff grabbing an apple, Bill picking up a football, and no mention of milk or Fred.		"Reasoning: The context sentences do not mention milk or Fred receiving milk. The sentences only mention Jeff grabbing an apple, Bill picking up a football, and no mention of milk or Fred.
+
+Answer: not mentioned"	0.0	0.0233	False	False	False	True	0

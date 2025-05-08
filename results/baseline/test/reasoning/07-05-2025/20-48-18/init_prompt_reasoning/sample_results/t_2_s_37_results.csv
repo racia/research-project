@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+681	2	37	1	"*TASK*
+Here are the context sentences:
+1. Sandra took the milk there.
+2. Sandra journeyed to the garden.
+
+Now, answer the following question:
+Where is the milk?"	garden	"from context sentence 1, we know that sandra took the milk ""there"". since sandra journeyed to the garden in context sentence 2, we can logically infer that ""there"" refers to the garden. therefore, the milk is in the garden."	fully	garden	True	The context sentences suggest that Sandra took the milk somewhere, and then journeyed to the garden. Since there is no mention of Sandra putting the milk down or leaving it anywhere, it is likely that she took the milk to the garden.		"Reasoning: The context sentences suggest that Sandra took the milk somewhere, and then journeyed to the garden. Since there is no mention of Sandra putting the milk down or leaving it anywhere, it is likely that she took the milk to the garden.
+
+Answer: garden"	0.2037	0.037	False	False	False	True	0
+682	2	37	2	"*TASK*
+Here are the context sentences:
+4. Sandra dropped the milk there.
+5. Sandra journeyed to the bathroom.
+
+Now, answer the following question:
+Where is the milk?"	garden	"this answer seems to be incorrect based on the provided context. the context sentences do not mention the garden at all. sentence 4 states that sandra dropped the milk ""there"", but it doesn't specify where ""there"" is. sentence 5 states that sandra journeyed to the bathroom, but it doesn't provide any information about the milk's location. there is no logical connection to the garden. the correct answer cannot be determined based on the provided context."	partially	there	False	The context sentences suggest that Sandra dropped the milk somewhere, and then journeyed to the bathroom. Since the milk was dropped, it is likely that it is still at the location where it was dropped.		"Reasoning: The context sentences suggest that Sandra dropped the milk somewhere, and then journeyed to the bathroom. Since the milk was dropped, it is likely that it is still at the location where it was dropped.
+
+Answer: there"	0.0851	0.0426	True	False	False	False	0
+683	2	37	3	"*TASK*
+Here are the context sentences:
+7. John travelled to the garden.
+8. John went to the kitchen.
+
+Now, answer the following question:
+Where is the milk?"	garden	"there is no mention of the milk in the provided context sentences. the context only talks about john's movements between the garden and the kitchen. there is no logical connection between john's actions and the milk's location. the answer ""garden"" seems to be incorrect based on the provided context."	none	not mentioned	False	There is no mention of milk in the given context sentences. The sentences only mention John's movements to the garden and kitchen, but do not provide any information about milk.		"Reasoning: There is no mention of milk in the given context sentences. The sentences only mention John's movements to the garden and kitchen, but do not provide any information about milk.
+
+Answer: not mentioned"	0.0952	0.0476	False	False	False	True	0
+684	2	37	4	"*TASK*
+Here are the context sentences:
+10. John got the apple there.
+11. Daniel moved to the bathroom.
+12. John dropped the apple.
+13. Daniel moved to the hallway.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	"the provided answer ""kitchen"" seems to be incorrect based on the context. there is no mention of the kitchen in the context sentences. the context only talks about john getting and dropping an apple, and daniel moving between the bathroom and the hallway. there is no logical connection between the apple's location and the kitchen. the correct answer cannot be determined based on the provided context."	partially	there	False	The context sentences suggest that John got the apple somewhere, dropped it, and there is no mention of anyone else handling the apple. Therefore, it is likely that the apple is still at the location where John dropped it.		"Reasoning: The context sentences suggest that John got the apple somewhere, dropped it, and there is no mention of anyone else handling the apple. Therefore, it is likely that the apple is still at the location where John dropped it.
+
+Answer: there"	0.0588	0.0392	True	False	False	True	0
+685	2	37	5	"*TASK*
+Here are the context sentences:
+15. John picked up the apple there.
+16. Mary went back to the office.
+17. Mary journeyed to the kitchen.
+18. John discarded the apple.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	"from context sentence 15, we know that john picked up the apple ""there"", but it doesn't specify where ""there"" is. however, in context sentence 17, mary journeys to the kitchen, which implies that the previous actions (including john picking up the apple) took place in the kitchen. then, in context sentence 18, john discards the apple. therefore, it can be logically inferred that the apple is in the kitchen."	partially	there	False	The context sentences suggest that John picked up the apple somewhere, discarded it, and there is no mention of anyone else handling the apple. Therefore, it is likely that the apple is no longer at the location where John picked it up, but rather at the location where he discarded it.		"Reasoning: The context sentences suggest that John picked up the apple somewhere, discarded it, and there is no mention of anyone else handling the apple. Therefore, it is likely that the apple is no longer at the location where John picked it up, but rather at the location where he discarded it.
+
+Answer: there"	0.0	0.0312	True	False	False	True	0

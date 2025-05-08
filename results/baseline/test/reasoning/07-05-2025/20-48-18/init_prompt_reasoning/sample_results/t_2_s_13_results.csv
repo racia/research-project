@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+561	2	13	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the office.
+2. Daniel travelled to the bedroom.
+3. John took the milk there.
+4. John travelled to the garden.
+
+Now, answer the following question:
+Where is the milk?"	garden	"from sentence 3, we know that john took the milk ""there"", which implies that john took the milk to the location he was at that time. since sentence 3 comes after sentence 2, we can infer that john was in the bedroom when he took the milk. then, sentence 4 states that john travelled to the garden. it is logical to assume that john took the milk with him when he travelled to the garden, as there is no indication that he left the"	fully	garden	True	The context sentences suggest that John took the milk to the bedroom (sentence 3), but then travelled to the garden (sentence 4). Since John is now in the garden, it is likely that the milk is still with him in the garden.		"Reasoning: The context sentences suggest that John took the milk to the bedroom (sentence 3), but then travelled to the garden (sentence 4). Since John is now in the garden, it is likely that the milk is still with him in the garden.
+
+Answer: garden"	0.1228	0.0351	False	False	False	False	0
+562	2	13	2	"*TASK*
+Here are the context sentences:
+6. Sandra moved to the office.
+7. Daniel went back to the office.
+
+Now, answer the following question:
+Where is the milk?"	garden	the question asks about the location of the milk, but the provided context sentences (6 and 7) do not mention the milk at all. to find the answer, we need to refer to the previous parts of the conversation history. in the previous context, we had sentences 1-4, which mentioned the milk. specifically, sentence 4 stated that john travelled to the garden, and we inferred that john took the milk with him to the garden. the new context sentences (	none	not mentioned	False	There is no mention of the milk in the given context sentences. The sentences only mention Sandra and Daniel moving to the office, but do not provide any information about the milk.		"Reasoning: There is no mention of the milk in the given context sentences. The sentences only mention Sandra and Daniel moving to the office, but do not provide any information about the milk.
+
+Answer: not mentioned"	0.186	0.0465	False	False	False	True	0
+563	2	13	3	"*TASK*
+Here are the context sentences:
+9. John went to the kitchen.
+10. Mary travelled to the garden.
+11. John picked up the football there.
+12. John dropped the football.
+
+Now, answer the following question:
+Where is the football?"	kitchen	"from sentence 11, we know that john picked up the football ""there"", which implies that john picked up the football at the location he was at that time. since sentence 11 comes after sentence 9, we can infer that john was in the kitchen when he picked up the football. then, sentence 12 states that john dropped the football. it is logical to assume that john dropped the football at the same location where he picked it up, which is the kitchen."	fully	garden	False	The context sentences suggest that John picked up the football in the garden (sentence 11), but then dropped it. Since John dropped the football, it is likely that the football is still on the ground in the garden.		"Reasoning: The context sentences suggest that John picked up the football in the garden (sentence 11), but then dropped it. Since John dropped the football, it is likely that the football is still on the ground in the garden.
+
+Answer: garden"	0.0784	0.0392	False	False	False	False	0
+564	2	13	4	"*TASK*
+Here are the context sentences:
+14. John put down the milk.
+15. Daniel moved to the kitchen.
+
+Now, answer the following question:
+Where is the football?"	kitchen	the question asks about the location of the football, but the provided context sentences (14 and 15) do not mention the football at all. to find the answer, we need to refer to the previous parts of the conversation history. in the previous context, we had sentences 9-12, which mentioned the football. specifically, sentence 12 stated that john dropped the football, and we inferred that john dropped the football in the kitchen (sentence 9). the new context sentences	none	not mentioned	False	There is no mention of the football in the given context sentences. The sentences only mention John putting down the milk and Daniel moving to the kitchen, but do not provide any information about the football.		"Reasoning: There is no mention of the football in the given context sentences. The sentences only mention John putting down the milk and Daniel moving to the kitchen, but do not provide any information about the football.
+
+Answer: not mentioned"	0.0	0.0426	False	False	False	True	0
+565	2	13	5	"*TASK*
+Here are the context sentences:
+17. Mary travelled to the bathroom.
+18. Daniel went to the office.
+
+Now, answer the following question:
+Where is the football?"	kitchen	the question asks about the location of the football, but the provided context sentences (17 and 18) do not mention the football at all. to find the answer, we need to refer to the previous parts of the conversation history. in the previous context, we had sentences 9-12, which mentioned the football. specifically, sentence 12 stated that john dropped the football, and we inferred that john dropped the football in the kitchen (sentence 9). the new context sentences	none	not mentioned	False	There is no mention of the football in the given context sentences. The sentences only mention Mary travelling to the bathroom and Daniel going to the office, but do not provide any information about the football.		"Reasoning: There is no mention of the football in the given context sentences. The sentences only mention Mary travelling to the bathroom and Daniel going to the office, but do not provide any information about the football.
+
+Answer: not mentioned"	0.0	0.0426	False	False	False	True	0

@@ -1,0 +1,15 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+89	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+90	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	.Ċ
+91	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+92	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	.Ċ
+93	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+94	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+95	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+96	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+97	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+98	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+99	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+100	.	ĠDaniel	Ġleft	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġhallway	?Ċ

@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+2	.	ĠDaniel	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+3	.	ĠDaniel	Ġleft	Ġthe	Ġmilk	.Ċ
+4	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

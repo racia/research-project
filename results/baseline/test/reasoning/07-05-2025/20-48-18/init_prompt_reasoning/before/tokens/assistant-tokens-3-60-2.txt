@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġjourney	ing	Ġto	Ġthe	Ġgarden	Ġand	ĠMary	Ġdropping	Ġthe	Ġfootball	,	Ġbut	Ġdo	Ġnot	Ġmention	Ġthe	Ġapple	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

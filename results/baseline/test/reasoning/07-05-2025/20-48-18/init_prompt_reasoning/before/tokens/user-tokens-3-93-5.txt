@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+47	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+48	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġfootball	.Ċ
+49	.	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+50	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+51	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+52	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġhallway	?Ċ

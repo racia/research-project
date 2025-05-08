@@ -1,0 +1,21 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+2	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+3	.	ĠJeff	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+4	.	ĠJeff	Ġdropped	Ġthe	Ġmilk	.Ċ
+5	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+6	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+7	.	ĠBill	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+8	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+9	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+10	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+11	.	ĠJeff	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+12	.	ĠJeff	Ġleft	Ġthe	Ġmilk	.Ċ
+13	.	ĠBill	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+14	.	ĠJeff	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+15	.	ĠBill	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+16	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+17	.	ĠBill	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
+18	.	ĠJeff	Ġhanded	Ġthe	Ġmilk	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġmilk	?Ċ

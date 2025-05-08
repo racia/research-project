@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+27	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+28	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+29	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+30	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+31	.	ĠSandra	Ġdropped	Ġthe	Ġfootball	.Ċ
+32	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

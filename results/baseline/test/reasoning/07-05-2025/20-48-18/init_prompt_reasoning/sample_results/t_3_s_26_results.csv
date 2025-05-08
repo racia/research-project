@@ -1,0 +1,78 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1126	3	26	1	"*TASK*
+Here are the context sentences:
+1. John went back to the hallway.
+2. Mary picked up the apple.
+3. Sandra journeyed to the bedroom.
+4. Sandra grabbed the milk.
+5. Daniel moved to the office.
+6. Sandra went to the office.
+7. Mary discarded the apple.
+8. Daniel went back to the kitchen.
+9. Sandra put down the milk.
+10. Sandra went back to the bedroom.
+11. Mary went back to the bathroom.
+12. Sandra grabbed the football there.
+13. Mary went to the garden.
+14. Daniel picked up the apple.
+15. Mary travelled to the office.
+16. Mary picked up the milk.
+17. Sandra went back to the office.
+18. Mary journeyed to the kitchen.
+19. John travelled to the office.
+20. Mary went to the garden.
+
+Now, answer the following question:
+Where was the milk before the garden?"	kitchen	from sentence 16, we know that mary picked up the milk. before that, in sentence 9, sandra put down the milk. since sandra put down the milk, it means she was holding it before that. in sentence 6, sandra went to the office, and in sentence 4, she grabbed the milk, implying that she grabbed the milk in the office. then, in sentence 9, she put down the milk, which means the milk was in the	fully	office	False	The milk was grabbed by Sandra in the bedroom (sentence 4), and then put down in the office (sentence 9). Since Mary journeyed to the garden (sentence 20), the milk was in the office before Mary went to the garden.		"Reasoning: The milk was grabbed by Sandra in the bedroom (sentence 4), and then put down in the office (sentence 9). Since Mary journeyed to the garden (sentence 20), the milk was in the office before Mary went to the garden.
+
+Answer: office"	0.0345	0.0517	False	False	False	False	0
+1127	3	26	2	"*TASK*
+Here are the context sentences:
+22. Sandra discarded the football.
+23. Daniel dropped the apple there.
+24. Sandra went back to the garden.
+25. John moved to the bathroom.
+26. Mary dropped the milk there.
+27. John moved to the bedroom.
+
+Now, answer the following question:
+Where was the milk before the garden?"	kitchen	from sentence 26, we know that mary dropped the milk in the bathroom. to find out where the milk was before the garden, we need to track back mary's movements. in sentence 18, mary journeyed to the kitchen, and in sentence 16, mary picked up the milk. therefore, the milk was in the kitchen before mary went to the garden.	partially	bathroom	False	The milk was dropped by Mary in the bathroom (sentence 26), and then Sandra went back to the garden (sentence 24). Since the milk was dropped in the bathroom, it was not in the garden before Sandra went there.		"Reasoning: The milk was dropped by Mary in the bathroom (sentence 26), and then Sandra went back to the garden (sentence 24). Since the milk was dropped in the bathroom, it was not in the garden before Sandra went there.
+
+Answer: bathroom"	0.0741	0.0556	False	False	False	False	0
+1128	3	26	3	"*TASK*
+Here are the context sentences:
+29. Daniel grabbed the apple.
+30. Daniel journeyed to the office.
+
+Now, answer the following question:
+Where was the milk before the garden?"	kitchen	the provided context lines (29 and 30) do not mention the milk or the garden. to answer the question, we need to look at the previous parts of the conversation. from the previous conversation, we know that in sentence 16, mary picked up the milk, and in sentence 18, mary journeyed to the kitchen. therefore, the milk was in the kitchen before mary went to the garden.	none	not mentioned	False	There is no information about the milk in these sentences. The sentences only mention the apple and Daniel's journey to the office.		"Reasoning: There is no information about the milk in these sentences. The sentences only mention the apple and Daniel's journey to the office.
+
+Answer: not mentioned"	0.0606	0.0909	False	False	False	True	0
+1129	3	26	4	"*TASK*
+Here are the context sentences:
+32. Sandra took the milk.
+33. Sandra put down the milk there.
+34. Sandra got the milk.
+35. John went to the hallway.
+36. Daniel picked up the football there.
+37. Sandra travelled to the hallway.
+38. Sandra left the milk.
+39. Daniel moved to the kitchen.
+40. Mary went back to the office.
+41. Sandra journeyed to the garden.
+42. Daniel dropped the apple.
+43. Mary went to the garden.
+
+Now, answer the following question:
+Where was the apple before the kitchen?"	office	"from sentence 42, we know that daniel dropped the apple. to find out where the apple was before the kitchen, we need to track back daniel's movements. in sentence 39, daniel moved to the kitchen, and before that, in sentence 36, daniel picked up the football there, which implies that ""there"" refers to the hallway. however, we don't have any information about daniel picking up the apple in the hallway. let's"	partially	not mentioned	False	The apple was dropped by Daniel (sentence 42), and then Daniel moved to the kitchen (sentence 39). Since the apple was dropped, it was not in the kitchen before Daniel moved there. The sentence before the drop doesn't mention the apple's location, so we can't infer where it was before the kitchen.		"Reasoning: The apple was dropped by Daniel (sentence 42), and then Daniel moved to the kitchen (sentence 39). Since the apple was dropped, it was not in the kitchen before Daniel moved there. The sentence before the drop doesn't mention the apple's location, so we can't infer where it was before the kitchen.
+
+Answer: not mentioned"	0.0822	0.0411	False	False	False	True	0
+1130	3	26	5	"*TASK*
+Here are the context sentences:
+45. Daniel journeyed to the bedroom.
+46. Daniel went to the bathroom.
+
+Now, answer the following question:
+Where was the apple before the kitchen?"	office	"""reasoning: <reasoning>"""	none	not mentioned	False	There is no information about the apple in these sentences. The sentences only mention Daniel's journey to the bedroom and bathroom, but do not mention the apple.		"Reasoning: There is no information about the apple in these sentences. The sentences only mention Daniel's journey to the bedroom and bathroom, but do not mention the apple.
+
+Answer: not mentioned"	0.0256	0.0769	False	False	False	True	0

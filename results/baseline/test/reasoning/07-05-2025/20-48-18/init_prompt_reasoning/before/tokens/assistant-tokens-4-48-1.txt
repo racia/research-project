@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġbedroom	Ġis	Ġwest	Ġof	Ġthe	Ġbathroom	,	Ġand	Ġthe	Ġgarden	Ġis	Ġwest	Ġof	Ġthe	Ġbedroom	,	Ġthe	Ġgarden	Ġis	Ġwest	Ġof	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+21	.	ĠFred	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+22	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+23	.	ĠFred	Ġput	Ġdown	Ġthe	Ġfootball	Ġthere	.Ċ
+24	.	ĠFred	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+25	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+26	.	ĠFred	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠFred	Ġgive	Ġto	ĠMary	?Ċ

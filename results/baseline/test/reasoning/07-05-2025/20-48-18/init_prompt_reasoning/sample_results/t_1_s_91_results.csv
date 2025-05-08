@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+451	1	91	1	"*TASK*
+Here are the context sentences:
+1. John went back to the bathroom.
+2. John moved to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	"the context sentences describe john's movements. in the first sentence, john goes back to the bathroom, which means he is in the bathroom at that point. however, the second sentence states that john moved to the kitchen, which implies that he left the bathroom and is now in the kitchen. therefore, the answer to the question ""where is john?"" is the kitchen, as that is his current location according to the sequence of events."	fully	kitchen	True	John went back to the bathroom initially, but then he moved to the kitchen, which means he is currently in the kitchen.		"Reasoning: John went back to the bathroom initially, but then he moved to the kitchen, which means he is currently in the kitchen.
+
+Answer: kitchen"	0.2188	0.0312	False	False	False	False	0
+452	1	91	2	"*TASK*
+Here are the context sentences:
+4. Sandra moved to the office.
+5. Sandra travelled to the bedroom.
+
+Now, answer the following question:
+Where is John?"	kitchen	"the context sentences describe sandra's movements, but the question asks about john's location. however, we have no information about john's movements or location in the provided context sentences. the answer ""kitchen"" seems to be incorrect, as there is no mention of john being in the kitchen. the correct answer would be ""unknown"" or ""cannot be determined"" based on the provided information."	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only talk about Sandra's movements, and John is not mentioned.		"Reasoning: There is no mention of John in the given context sentences. The sentences only talk about Sandra's movements, and John is not mentioned.
+
+Answer: not mentioned"	0.0571	0.0286	False	False	False	True	0
+453	1	91	3	"*TASK*
+Here are the context sentences:
+7. John went to the garden.
+8. Sandra moved to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	"the context sentences describe the movements of two individuals, john and sandra. sentence 8 specifically states that sandra moved to the kitchen, which implies that she is currently located in the kitchen. therefore, the answer to the question ""where is sandra?"" is indeed the kitchen, as it is the last known location mentioned for her in the context."	fully	kitchen	True	According to the context sentence 8, Sandra moved to the kitchen, which means she is currently in the kitchen.		"Reasoning: According to the context sentence 8, Sandra moved to the kitchen, which means she is currently in the kitchen.
+
+Answer: kitchen"	0.0667	0.0333	False	False	False	False	0
+454	1	91	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the garden.
+11. Daniel went to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"the context sentences describe the movements of two individuals, sandra and daniel. sentence 10 specifically states that sandra went to the garden, which implies that she is currently located in the garden. the question ""where is sandra?"" is asking about sandra's current location, and based on the information provided, the answer is indeed the garden, as it is the last known location mentioned for her in the context."	fully	garden	True	According to the context sentence 10, Sandra went to the garden, which means she is currently in the garden.		"Reasoning: According to the context sentence 10, Sandra went to the garden, which means she is currently in the garden.
+
+Answer: garden"	0.0667	0.0333	False	False	False	False	0
+455	1	91	5	"*TASK*
+Here are the context sentences:
+13. Sandra went to the bathroom.
+14. John went to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"the context sentences describe the movements of two individuals, sandra and john. sentence 13 specifically states that sandra went to the bathroom, which implies that she is currently located in the bathroom. the question ""where is sandra?"" is asking about sandra's current location, and based on the information provided, the answer is indeed the bathroom, as it is the last known location mentioned for her in the context. the fact that john also went to the bathroom (sentence 14) does not change"	fully	bathroom	True	According to the context sentence 13, Sandra went to the bathroom, which means she is currently in the bathroom.		"Reasoning: According to the context sentence 13, Sandra went to the bathroom, which means she is currently in the bathroom.
+
+Answer: bathroom"	0.0667	0.0333	False	False	False	False	0

@@ -1,0 +1,77 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+581	2	17	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the bedroom.
+2. Daniel went to the bathroom.
+3. John moved to the garden.
+4. Mary travelled to the bedroom.
+5. Sandra travelled to the garden.
+6. Daniel journeyed to the garden.
+7. Sandra travelled to the hallway.
+8. John got the football there.
+9. John moved to the bathroom.
+10. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Where is the football?"	bathroom	from sentence 8, we know that john got the football in the garden. however, in sentence 9, john moved to the bathroom. since there is no mention of john dropping or leaving the football in the garden, it is logical to assume that john took the football with him when he moved to the bathroom. therefore, the football is currently in the bathroom.	fully	hallway	False	The football is mentioned in sentence 8, where John got the football in the hallway. Since John moved to the bathroom in sentence 9, it is likely that the football is still in the hallway. There is no mention of the football being moved or discarded, so it is likely still in the hallway.		"Reasoning: The football is mentioned in sentence 8, where John got the football in the hallway. Since John moved to the bathroom in sentence 9, it is likely that the football is still in the hallway. There is no mention of the football being moved or discarded, so it is likely still in the hallway.
+
+Answer: hallway"	0.2174	0.029	False	False	False	True	0
+582	2	17	2	"*TASK*
+Here are the context sentences:
+12. Daniel moved to the bedroom.
+13. Daniel travelled to the kitchen.
+
+Now, answer the following question:
+Where is the football?"	bathroom	"there is no mention of the football in the provided context sentences (12 and 13). the context only talks about daniel's movements between the bedroom and the kitchen. there is no connection between daniel's actions and the football. the answer ""bathroom"" cannot be deduced from the provided context. it seems that the answer is referring to a previous part of the conversation history, where the football was mentioned (sentence 8). in that context, john got the football in the garden"	none	not mentioned	False	There is no mention of a football in the given context sentences. The sentences only mention Daniel moving to the bedroom and then to the kitchen, but do not mention a football.		"Reasoning: There is no mention of a football in the given context sentences. The sentences only mention Daniel moving to the bedroom and then to the kitchen, but do not mention a football.
+
+Answer: not mentioned"	0.1395	0.0465	False	False	False	True	0
+583	2	17	3	"*TASK*
+Here are the context sentences:
+15. Mary moved to the hallway.
+16. Sandra travelled to the office.
+17. Daniel moved to the hallway.
+18. Daniel went back to the kitchen.
+19. John went back to the hallway.
+20. Daniel went back to the hallway.
+21. Daniel went to the bedroom.
+22. John moved to the kitchen.
+23. Mary moved to the office.
+24. John went back to the garden.
+25. Sandra took the apple there.
+26. Daniel went to the office.
+27. Mary went back to the kitchen.
+28. Mary went to the bedroom.
+29. John journeyed to the bathroom.
+30. Sandra went back to the hallway.
+31. Sandra moved to the bedroom.
+32. Daniel moved to the garden.
+33. John went back to the bedroom.
+34. Mary went back to the office.
+35. John moved to the kitchen.
+36. John grabbed the milk there.
+37. Daniel journeyed to the bedroom.
+38. John discarded the football.
+
+Now, answer the following question:
+Where is the football?"	kitchen	in sentence 38, john discarded the football. the location where john discarded the football is not explicitly mentioned, but we can infer it from the previous sentence (37) where john moved to the kitchen. it is logical to assume that john discarded the football in the kitchen, as he was already there. therefore, the football is in the kitchen.	fully	kitchen	True	The football is mentioned in sentence 38, where John discarded the football. Since John moved to the kitchen in sentence 35, it is likely that the football was discarded in the kitchen.		"Reasoning: The football is mentioned in sentence 38, where John discarded the football. Since John moved to the kitchen in sentence 35, it is likely that the football was discarded in the kitchen.
+
+Answer: kitchen"	0.0222	0.0444	False	False	False	True	0
+584	2	17	4	"*TASK*
+Here are the context sentences:
+40. John left the milk.
+41. John took the milk there.
+
+Now, answer the following question:
+Where is the football?"	kitchen	"the provided context sentences (40 and 41) do not mention the football at all. they only talk about john and the milk. to answer the question ""where is the football?"", we need to refer to the previous parts of the conversation history. in sentence 38, john discarded the football, and from the context, we inferred that it was in the kitchen. there is no new information that would change this conclusion, so the football is still in the kitchen."	none	not mentioned	False	There is no mention of the football in the given context sentences. The sentences only mention John taking and leaving the milk, but do not mention a football.		"Reasoning: There is no mention of the football in the given context sentences. The sentences only mention John taking and leaving the milk, but do not mention a football.
+
+Answer: not mentioned"	0.0	0.0513	False	False	False	True	0
+585	2	17	5	"*TASK*
+Here are the context sentences:
+43. John picked up the football there.
+44. John put down the football.
+
+Now, answer the following question:
+Where is the football?"	kitchen	"this is the question: where is the football?
+this is the answer: kitchen"	partially	not specified	False	The football is mentioned in sentences 43 and 44, where John picked up and put down the football. Since John put down the football, it is likely that the football is in the same location where John put it down.		"Reasoning: The football is mentioned in sentences 43 and 44, where John picked up and put down the football. Since John put down the football, it is likely that the football is in the same location where John put it down.
+
+Answer: not specified"	0.0	0.037	False	False	False	True	0

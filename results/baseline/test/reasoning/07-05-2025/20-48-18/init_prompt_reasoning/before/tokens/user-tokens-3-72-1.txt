@@ -1,0 +1,15 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+2	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+3	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+4	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+5	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+6	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+7	.	ĠDaniel	Ġtook	Ġthe	Ġmilk	.Ċ
+8	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+9	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+10	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+11	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+12	.	ĠDaniel	Ġleft	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġoffice	?Ċ

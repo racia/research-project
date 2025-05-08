@@ -1,0 +1,68 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1871	5	55	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the kitchen.
+2. Mary travelled to the bathroom.
+3. Bill went to the garden.
+4. Bill went back to the kitchen.
+5. Jeff grabbed the apple there.
+6. Jeff passed the apple to Mary.
+
+Now, answer the following question:
+Who received the apple?"	mary	from the context sentences, we know that jeff grabbed the apple in the kitchen (sentence 5) and then passed it to mary (sentence 6). therefore, mary is the one who received the apple.	fully	Mary	True	Mary received the apple because Jeff passed the apple to Mary in sentence 6.		"Reasoning: Mary received the apple because Jeff passed the apple to Mary in sentence 6.
+
+Answer: Mary"	0.087	0.0435	False	False	False	False	0
+1872	5	55	2	"*TASK*
+Here are the context sentences:
+8. Mary passed the apple to Jeff.
+9. Mary went back to the bedroom.
+
+Now, answer the following question:
+Who gave the apple?"	mary	"according to sentence 8, ""mary passed the apple to jeff"", which implies that mary had the apple and gave it to jeff. therefore, mary is the one who gave the apple."	fully	Mary	True	Mary gave the apple to Jeff in sentence 8.		"Reasoning: Mary gave the apple to Jeff in sentence 8.
+
+Answer: Mary"	0.0556	0.0556	False	False	False	False	0
+1873	5	55	3	"*TASK*
+Here are the context sentences:
+11. Fred went to the hallway.
+12. Mary journeyed to the office.
+
+Now, answer the following question:
+What did Mary give to Jeff?"	apple	"this question refers to a previous part of the conversation history. in sentence 8, ""mary passed the apple to jeff"", it is stated that mary gave the apple to jeff. therefore, the answer is ""apple""."	none	Not mentioned	False	There is no mention of Mary giving anything to Jeff in the provided context sentences.		"Reasoning: There is no mention of Mary giving anything to Jeff in the provided context sentences.
+
+Answer: Not mentioned"	0.0833	0.0417	False	False	False	True	0
+1874	5	55	4	"*TASK*
+Here are the context sentences:
+14. Fred moved to the kitchen.
+15. Bill moved to the hallway.
+16. Fred went back to the office.
+17. Jeff dropped the apple.
+18. Jeff travelled to the hallway.
+19. Mary went to the bedroom.
+20. Mary took the milk there.
+21. Fred went back to the kitchen.
+22. Bill travelled to the garden.
+23. Mary discarded the milk.
+24. Fred went back to the office.
+25. Mary journeyed to the hallway.
+26. Bill moved to the bathroom.
+27. Bill took the apple there.
+28. Bill went back to the kitchen.
+29. Fred journeyed to the kitchen.
+30. Jeff travelled to the bathroom.
+31. Bill went back to the bathroom.
+32. Bill handed the apple to Jeff.
+33. Mary journeyed to the garden.
+
+Now, answer the following question:
+Who gave the apple to Jeff?"	bill	"according to sentence 32, ""bill handed the apple to jeff"", which explicitly states that bill gave the apple to jeff. therefore, the answer is indeed ""bill""."	fully	Bill	True	Bill handed the apple to Jeff in sentence 32.		"Reasoning: Bill handed the apple to Jeff in sentence 32.
+
+Answer: Bill"	0.0556	0.0556	False	False	False	False	0
+1875	5	55	5	"*TASK*
+Here are the context sentences:
+35. Jeff went back to the kitchen.
+36. Jeff gave the apple to Fred.
+
+Now, answer the following question:
+What did Jeff give to Fred?"	apple	"according to sentence 36, ""jeff gave the apple to fred"", which explicitly states that jeff gave the apple to fred. therefore, the answer is indeed ""apple""."	fully	apple	True	Jeff gave the apple to Fred in sentence 36.		"Reasoning: Jeff gave the apple to Fred in sentence 36.
+
+Answer: apple"	0.0	0.0556	False	False	False	False	0

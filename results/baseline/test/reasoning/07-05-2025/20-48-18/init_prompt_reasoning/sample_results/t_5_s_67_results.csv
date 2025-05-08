@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1931	5	67	1	"*TASK*
+Here are the context sentences:
+1. Bill travelled to the bathroom.
+2. Fred picked up the apple there.
+3. Mary moved to the office.
+4. Fred handed the apple to Mary.
+
+Now, answer the following question:
+What did Fred give to Mary?"	apple	from context sentence 2, we know that fred picked up the apple in the bathroom. then, from context sentence 4, we know that fred handed the apple to mary. therefore, it can be logically concluded that the object fred gave to mary is the apple he picked up in the bathroom.	fully	apple	True	Fred handed the apple to Mary, and there is no mention of Fred giving anything else to Mary. Therefore, it can be inferred that Fred gave the apple to Mary.		"Reasoning: Fred handed the apple to Mary, and there is no mention of Fred giving anything else to Mary. Therefore, it can be inferred that Fred gave the apple to Mary.
+
+Answer: apple"	0.0244	0.0244	False	False	False	True	0
+1932	5	67	2	"*TASK*
+Here are the context sentences:
+6. Mary handed the apple to Fred.
+7. Fred passed the apple to Mary.
+
+Now, answer the following question:
+What did Fred give to Mary?"	apple	from context sentence 7, we know that fred passed the apple to mary. this directly states that fred gave the apple to mary, which matches the provided answer.	fully	apple	True	In the previous context, Fred handed the apple to Mary, and now Fred is passing the apple to Mary again. This suggests that Fred is giving the apple to Mary, and there is no indication that Fred is giving anything else to Mary.		"Reasoning: In the previous context, Fred handed the apple to Mary, and now Fred is passing the apple to Mary again. This suggests that Fred is giving the apple to Mary, and there is no indication that Fred is giving anything else to Mary.
+
+Answer: apple"	0.1091	0.0182	False	False	False	False	0
+1933	5	67	3	"*TASK*
+Here are the context sentences:
+9. Fred moved to the hallway.
+10. Mary went to the bathroom.
+
+Now, answer the following question:
+Who gave the apple?"	fred	the question asks who gave the apple, but the provided context sentences (9 and 10) do not directly mention the apple or any action related to giving the apple. however, we can look at the previous parts of the conversation history. in the previous parts, we saw that fred passed the apple to mary (sentence 7). therefore, we can logically conclude that fred is the one who gave the apple.	none	Fred	True	There is no mention of the apple being given in these context sentences. The previous context sentences mentioned Bill travelling to the bathroom, Fred picking up the apple, and Fred handing the apple to Mary. Therefore, it can be inferred that Bill gave the apple to Fred, and Fred gave the apple to Mary.		"Reasoning: There is no mention of the apple being given in these context sentences. The previous context sentences mentioned Bill travelling to the bathroom, Fred picking up the apple, and Fred handing the apple to Mary. Therefore, it can be inferred that Bill gave the apple to Fred, and Fred gave the apple to Mary.
+
+Answer: Fred"	0.0588	0.0147	False	False	False	True	0
+1934	5	67	4	"*TASK*
+Here are the context sentences:
+12. Mary passed the apple to Bill.
+13. Bill went back to the kitchen.
+
+Now, answer the following question:
+Who received the apple?"	bill	from context sentence 12, we know that mary passed the apple to bill. this directly states that bill is the recipient of the apple, which matches the provided answer.	fully	Bill	True	According to the previous context, Fred handed the apple to Mary, and Mary passed the apple to Bill. Therefore, Bill received the apple.		"Reasoning: According to the previous context, Fred handed the apple to Mary, and Mary passed the apple to Bill. Therefore, Bill received the apple.
+
+Answer: Bill"	0.0	0.0286	False	False	False	False	0
+1935	5	67	5	"*TASK*
+Here are the context sentences:
+15. Jeff journeyed to the office.
+16. Mary went to the bedroom.
+
+Now, answer the following question:
+What did Mary give to Bill?"	apple	although the provided context sentences (15 and 16) do not directly mention mary giving anything to bill, we can look at the previous parts of the conversation history. in the previous parts, we saw that mary passed the apple to bill (sentence 12). therefore, we can logically conclude that mary gave the apple to bill, which matches the provided answer.	none	apple	True	There is no mention of Mary giving anything to Bill in these context sentences. The previous context sentences mentioned Bill travelling to the bathroom, Fred picking up the apple, and Fred handing the apple to Mary. Mary then passed the apple to Bill. Therefore, it can be inferred that Mary gave the apple to Bill.		"Reasoning: There is no mention of Mary giving anything to Bill in these context sentences. The previous context sentences mentioned Bill travelling to the bathroom, Fred picking up the apple, and Fred handing the apple to Mary. Mary then passed the apple to Bill. Therefore, it can be inferred that Mary gave the apple to Bill.
+
+Answer: apple"	0.0435	0.0145	False	False	False	True	0

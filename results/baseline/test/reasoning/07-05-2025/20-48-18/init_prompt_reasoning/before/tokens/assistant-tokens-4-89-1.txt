@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġbathroom	Ġis	Ġnorth	Ġof	Ġthe	Ġoffice	,	Ġand	Ġthe	Ġkitchen	Ġis	Ġnorth	Ġof	Ġthe	Ġbathroom	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġthe	Ġkitchen	Ġis	Ġnorth	Ġof	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

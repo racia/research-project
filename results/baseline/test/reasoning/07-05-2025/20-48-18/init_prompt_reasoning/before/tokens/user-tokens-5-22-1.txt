@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+2	.	ĠMary	Ġgave	Ġthe	Ġmilk	Ġto	ĠJeff	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġmilk	?Ċ

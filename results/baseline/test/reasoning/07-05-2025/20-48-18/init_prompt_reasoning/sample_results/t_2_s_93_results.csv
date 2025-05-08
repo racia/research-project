@@ -1,0 +1,68 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+961	2	93	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the garden.
+2. John went to the hallway.
+3. John went to the kitchen.
+4. Daniel grabbed the apple there.
+5. Daniel dropped the apple.
+6. John journeyed to the garden.
+7. Mary travelled to the bathroom.
+8. John went to the bedroom.
+9. Sandra moved to the kitchen.
+10. Daniel went back to the bathroom.
+11. Sandra went back to the hallway.
+12. Mary took the milk there.
+13. John grabbed the apple there.
+14. John journeyed to the bathroom.
+
+Now, answer the following question:
+Where is the apple?"	bathroom	from the context sentences, we can track the movement of the apple. in sentence 4, daniel grabbed the apple in the kitchen. then, in sentence 5, daniel dropped the apple, so the apple is still in the kitchen.	fully	bathroom	True	The apple was grabbed by Daniel in the kitchen (sentence 4), and then dropped (sentence 5). After that, John grabbed the apple (sentence 13), and then journeyed to the bathroom (sentence 14). Since John is now in the bathroom, the apple is likely to be with him.		"Reasoning: The apple was grabbed by Daniel in the kitchen (sentence 4), and then dropped (sentence 5). After that, John grabbed the apple (sentence 13), and then journeyed to the bathroom (sentence 14). Since John is now in the bathroom, the apple is likely to be with him.
+
+Answer: bathroom"	0.1143	0.0286	False	False	False	False	0
+962	2	93	2	"*TASK*
+Here are the context sentences:
+16. Mary dropped the milk.
+17. John picked up the milk there.
+
+Now, answer the following question:
+Where is the apple?"	bathroom	the context sentences provided (16 and 17) do not mention the apple at all. they only talk about mary dropping the milk and john picking it up.	none	not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only talk about the milk, and its location is the bathroom (since John picked it up there).		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only talk about the milk, and its location is the bathroom (since John picked it up there).
+
+Answer: not mentioned"	0.1163	0.0465	False	False	False	True	0
+963	2	93	3	"*TASK*
+Here are the context sentences:
+19. Daniel travelled to the garden.
+20. Sandra went to the office.
+21. Mary took the football there.
+22. Daniel journeyed to the hallway.
+23. Daniel went back to the bedroom.
+24. Mary left the football there.
+
+Now, answer the following question:
+Where is the football?"	bathroom	the provided context sentences (19-24) do not mention the bathroom at all. they talk about daniel, sandra, and mary moving around different locations (garden, office, hallway, bedroom) and mary taking and leaving the football.	partially	office	False	The football was taken by Mary to the office (sentence 21), and then left there by Mary (sentence 24). Since Daniel went back to the bedroom (sentence 23), the football is likely to be in the office.		"Reasoning: The football was taken by Mary to the office (sentence 21), and then left there by Mary (sentence 24). Since Daniel went back to the bedroom (sentence 23), the football is likely to be in the office.
+
+Answer: office"	0.0185	0.037	False	False	False	False	0
+964	2	93	4	"*TASK*
+Here are the context sentences:
+26. Mary got the football there.
+27. Daniel went to the hallway.
+28. Daniel journeyed to the garden.
+29. John went to the kitchen.
+30. John went back to the office.
+31. John travelled to the hallway.
+32. Mary travelled to the bedroom.
+33. Mary dropped the football.
+
+Now, answer the following question:
+Where is the football?"	bedroom	from the context sentences, we can track the movement of the football. in sentence 26, mary got the football, but the location is not specified.	fully	bedroom	True	The football was dropped by Mary (sentence 33), and there is no mention of anyone picking it up or moving it after that. Therefore, the football is likely to be in the same location where it was dropped, which is the bedroom (since Mary travelled to the bedroom before dropping the football).		"Reasoning: The football was dropped by Mary (sentence 33), and there is no mention of anyone picking it up or moving it after that. Therefore, the football is likely to be in the same location where it was dropped, which is the bedroom (since Mary travelled to the bedroom before dropping the football).
+
+Answer: bedroom"	0.0149	0.0299	False	False	False	True	0
+965	2	93	5	"*TASK*
+Here are the context sentences:
+35. John left the milk.
+36. Mary went to the garden.
+
+Now, answer the following question:
+Where is the milk?"	hallway	the context sentences (35-36) do not mention the hallway at all. sentence 35 only mentions john leaving the milk, but the location is not specified. sentence 36 talks about mary going to the garden, which is unrelated to the milk.	partially	not mentioned	False	There is no mention of the milk being taken or moved after John left it. Therefore, the milk is likely to be in the same location where John left it, which is unknown.		"Reasoning: There is no mention of the milk being taken or moved after John left it. Therefore, the milk is likely to be in the same location where John left it, which is unknown.
+
+Answer: not mentioned"	0.0	0.0444	False	False	False	True	0

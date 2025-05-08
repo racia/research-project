@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1721	5	25	1	"*TASK*
+Here are the context sentences:
+1. Bill went back to the hallway.
+2. Jeff moved to the garden.
+3. Mary journeyed to the kitchen.
+4. Bill went back to the office.
+5. Bill journeyed to the hallway.
+6. Fred journeyed to the bathroom.
+7. Fred got the apple there.
+8. Bill went back to the kitchen.
+9. Mary grabbed the milk there.
+10. Mary handed the milk to Bill.
+
+Now, answer the following question:
+What did Mary give to Bill?"	milk	from sentence 9, we know that mary grabbed the milk in the kitchen. then, in sentence 10, it is stated that mary handed the milk to bill. therefore, it can be logically concluded that mary gave milk to bill.	fully	milk	True	Mary handed the milk to Bill, and the context sentence 10 specifically states that Mary handed the milk to Bill, which implies that Mary gave the milk to Bill.		"Reasoning: Mary handed the milk to Bill, and the context sentence 10 specifically states that Mary handed the milk to Bill, which implies that Mary gave the milk to Bill.
+
+Answer: milk"	0.075	0.025	False	False	False	False	0
+1722	5	25	2	"*TASK*
+Here are the context sentences:
+12. Mary journeyed to the office.
+13. Fred put down the apple.
+
+Now, answer the following question:
+Who gave the milk?"	mary	"from the provided context lines, sentences 12 and 13, there is no direct information about who gave the milk. however, we can look back at the previous context lines (sentences 1-11) to find the relevant information. in sentence 10, it is stated that ""mary handed the milk to bill"". therefore, it can be logically concluded that mary gave the milk."	none	Not mentioned	False	There is no mention of milk in the given context sentences. The sentences only mention Mary journeying to the office and Fred putting down the apple, but do not mention milk or any transaction related to it.		"Reasoning: There is no mention of milk in the given context sentences. The sentences only mention Mary journeying to the office and Fred putting down the apple, but do not mention milk or any transaction related to it.
+
+Answer: Not mentioned"	0.102	0.0204	False	False	False	True	0
+1723	5	25	3	"*TASK*
+Here are the context sentences:
+15. Bill grabbed the football there.
+16. Mary went back to the bedroom.
+
+Now, answer the following question:
+Who gave the milk?"	mary	"the context lines provided (sentences 15 and 16) do not contain any information about who gave the milk. however, we can look back at the previous context lines (sentences 1-14) to find the relevant information. in sentence 10, it is stated that ""mary handed the milk to bill"". therefore, it can be logically concluded that mary gave the milk."	none	Not mentioned	False	There is no mention of milk or any transaction related to it in the given context sentences. The sentences only mention Bill grabbing the football and Mary going back to the bedroom, but do not mention milk.		"Reasoning: There is no mention of milk or any transaction related to it in the given context sentences. The sentences only mention Bill grabbing the football and Mary going back to the bedroom, but do not mention milk.
+
+Answer: Not mentioned"	0.0417	0.0208	False	False	False	True	0
+1724	5	25	4	"*TASK*
+Here are the context sentences:
+18. Bill moved to the bathroom.
+19. Mary went to the hallway.
+20. Bill went back to the garden.
+21. Bill passed the football to Jeff.
+
+Now, answer the following question:
+Who did Bill give the football to?"	jeff	"according to sentence 21, ""bill passed the football to jeff"". this sentence directly states that bill gave the football to jeff. therefore, it can be logically concluded that the answer to the question is indeed jeff."	fully	Jeff	True	According to context sentence 21, Bill passed the football to Jeff, which implies that Bill gave the football to Jeff.		"Reasoning: According to context sentence 21, Bill passed the football to Jeff, which implies that Bill gave the football to Jeff.
+
+Answer: Jeff"	0.0323	0.0323	False	False	False	False	0
+1725	5	25	5	"*TASK*
+Here are the context sentences:
+23. Bill dropped the milk there.
+24. Jeff went back to the kitchen.
+
+Now, answer the following question:
+Who gave the football to Jeff?"	bill	"according to sentence 21 (from previous context), ""bill passed the football to jeff"". this sentence directly states that bill gave the football to jeff. therefore, it can be logically concluded that the answer to the question is indeed bill."	none	Not mentioned	False	There is no mention of football in the given context sentences. The sentences only mention Bill dropping the milk and Jeff going back to the kitchen, but do not mention football or any transaction related to it.		"Reasoning: There is no mention of football in the given context sentences. The sentences only mention Bill dropping the milk and Jeff going back to the kitchen, but do not mention football or any transaction related to it.
+
+Answer: Not mentioned"	0.1042	0.0208	False	False	False	True	0

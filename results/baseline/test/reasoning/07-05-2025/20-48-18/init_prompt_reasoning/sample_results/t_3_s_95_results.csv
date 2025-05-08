@@ -1,0 +1,80 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1471	3	95	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the bathroom.
+2. Daniel went back to the kitchen.
+3. John took the apple.
+4. Sandra went to the office.
+5. John went to the office.
+6. Mary journeyed to the garden.
+7. John dropped the apple.
+8. Daniel travelled to the bathroom.
+9. John picked up the apple.
+10. Mary went to the office.
+11. Daniel moved to the bedroom.
+12. John discarded the apple.
+13. Sandra moved to the garden.
+14. Mary got the apple there.
+15. Mary moved to the kitchen.
+16. John journeyed to the bathroom.
+17. Sandra grabbed the football.
+18. Daniel went to the hallway.
+19. Sandra went back to the office.
+20. Daniel travelled to the kitchen.
+21. John went to the garden.
+22. Sandra went to the garden.
+23. Sandra went to the hallway.
+24. Mary dropped the apple.
+25. Sandra put down the football.
+26. John went back to the bathroom.
+
+Now, answer the following question:
+Where was the football before the garden?"	office	from sentence 17, we know that sandra grabbed the football. before that, there is no mention of the football being in the garden. in sentence 19, sandra goes back to the office, which implies that she was in the office before going to the garden (sentence 22). therefore, it can be logically inferred that sandra grabbed the football in the office, which means the football was in the office before the garden.	fully	garden	False	The football was grabbed by Sandra in sentence 17, and then put down by Sandra in sentence 25. Since Sandra went to the garden in sentence 22, it is likely that the football was put down in the garden before Sandra went there.		"Reasoning: The football was grabbed by Sandra in sentence 17, and then put down by Sandra in sentence 25. Since Sandra went to the garden in sentence 22, it is likely that the football was put down in the garden before Sandra went there.
+
+Answer: garden"	0.0351	0.0526	False	False	False	False	0
+1472	3	95	2	"*TASK*
+Here are the context sentences:
+28. Mary travelled to the garden.
+29. Daniel took the apple there.
+
+Now, answer the following question:
+Where was the football before the hallway?"	garden	from the provided context lines, we don't have any direct information about the football. however, we can look at the previous context lines (sentences 1-27) to find the relevant information. in sentence 17, sandra grabbed the football. then, in sentence 22, sandra went to the garden, and in sentence 23, she went to the hallway. since sandra had the football when she went to the hallway, it can be logically inferred that the football	none	not mentioned	False	There is no mention of the football in the given context sentences. The sentences only mention the apple and Mary's travel to the garden. Therefore, we cannot determine where the football was before the hallway.		"Reasoning: There is no mention of the football in the given context sentences. The sentences only mention the apple and Mary's travel to the garden. Therefore, we cannot determine where the football was before the hallway.
+
+Answer: not mentioned"	0.0	0.0625	False	False	False	True	0
+1473	3	95	3	"*TASK*
+Here are the context sentences:
+31. Daniel grabbed the milk.
+32. Daniel went to the bedroom.
+33. Sandra took the football.
+34. Mary travelled to the bedroom.
+35. Daniel journeyed to the garden.
+36. Sandra travelled to the kitchen.
+37. Daniel went back to the office.
+38. Daniel travelled to the kitchen.
+39. Daniel dropped the apple.
+40. Daniel picked up the apple.
+41. Daniel discarded the milk.
+42. Sandra travelled to the garden.
+
+Now, answer the following question:
+Where was the milk before the office?"	garden	from sentence 31, we know that daniel grabbed the milk. then, in sentence 32, daniel went to the bedroom, but there is no mention of the milk being dropped or discarded. in sentence 35, daniel journeyed to the garden, and in sentence 37, daniel went back to the office. since daniel still had the milk when he went to the office (sentence 37), it can be logically inferred that daniel had the milk in the garden before going	fully	office	False	The milk was grabbed by Daniel in sentence 31, and then dropped by Daniel in sentence 41. Since Daniel went back to the office in sentence 37, it is likely that the milk was dropped in the office before Daniel went back there.		"Reasoning: The milk was grabbed by Daniel in sentence 31, and then dropped by Daniel in sentence 41. Since Daniel went back to the office in sentence 37, it is likely that the milk was dropped in the office before Daniel went back there.
+
+Answer: office"	0.0526	0.0526	False	False	False	False	0
+1474	3	95	4	"*TASK*
+Here are the context sentences:
+44. Mary went back to the garden.
+45. Mary went back to the bedroom.
+
+Now, answer the following question:
+Where was the milk before the kitchen?"	office	from the provided context lines, there is no direct information about the milk. however, we can look at the previous context lines (sentences 31-43) to find the relevant information. in sentence 41, daniel discarded the milk. before that, in sentence 37, daniel went back to the office. since daniel had the milk when he went to the office, it can be logically inferred that the milk was in the office before the kitchen.	none	not mentioned	False	There is no mention of the milk in the given context sentences. The sentences only mention Mary's travel to the garden and bedroom, but do not mention the milk.		"Reasoning: There is no mention of the milk in the given context sentences. The sentences only mention Mary's travel to the garden and bedroom, but do not mention the milk.
+
+Answer: not mentioned"	0.122	0.0732	False	False	False	True	0
+1475	3	95	5	"*TASK*
+Here are the context sentences:
+47. Sandra discarded the football.
+48. Daniel moved to the office.
+
+Now, answer the following question:
+Where was the football before the garden?"	kitchen	"""reasoning: <reasoning>"""	partially	not mentioned	False	There is no mention of the football being in the garden in the given context sentences. The sentences only mention Sandra discarding the football and Daniel moving to the office, but do not provide information about the football's location before the garden.		"Reasoning: There is no mention of the football being in the garden in the given context sentences. The sentences only mention Sandra discarding the football and Daniel moving to the office, but do not provide information about the football's location before the garden.
+
+Answer: not mentioned"	0.1091	0.0545	False	False	False	True	0

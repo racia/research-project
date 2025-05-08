@@ -1,0 +1,100 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1296	3	60	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the kitchen.
+2. Sandra went back to the kitchen.
+3. Daniel moved to the garden.
+4. Sandra grabbed the apple.
+5. Sandra went back to the office.
+6. Sandra dropped the apple.
+7. Sandra went to the garden.
+8. Sandra went back to the bedroom.
+9. Sandra went back to the office.
+10. Mary went back to the office.
+11. Daniel moved to the bathroom.
+12. Sandra grabbed the apple.
+13. Sandra travelled to the garden.
+14. Sandra put down the apple there.
+15. Mary went back to the bathroom.
+16. Daniel travelled to the garden.
+17. Mary took the milk.
+18. Sandra grabbed the apple.
+19. Mary left the milk there.
+20. Sandra journeyed to the bedroom.
+21. John travelled to the office.
+22. John went back to the garden.
+23. Sandra journeyed to the garden.
+24. Mary grabbed the milk.
+25. Mary left the milk.
+26. Mary grabbed the milk.
+27. Mary went to the hallway.
+28. John moved to the hallway.
+29. Mary picked up the football.
+30. Sandra journeyed to the kitchen.
+31. Sandra left the apple.
+32. Mary discarded the milk.
+
+Now, answer the following question:
+Where was the apple before the garden?"	bedroom	from sentence 14, we know that sandra put down the apple in the garden. to find out where the apple was before the garden, we need to track sandra's movements with the apple. in sentence 12, sandra grabbed the apple, and in sentence 13, she travelled to the garden. this means that sandra had the apple with her when she travelled to the garden. before sentence 12, sandra was in the office (sentence 9), but she didn't	fully	office	False	The apple was grabbed by Sandra in sentence 4, and then dropped in sentence 6. After that, it was picked up again in sentence 12, and then put down in sentence 14. Since it was put down in the garden, the apple was in the office before the garden.		"Reasoning: The apple was grabbed by Sandra in sentence 4, and then dropped in sentence 6. After that, it was picked up again in sentence 12, and then put down in sentence 14. Since it was put down in the garden, the apple was in the office before the garden.
+
+Answer: office"	0.0299	0.0448	False	False	False	False	0
+1297	3	60	2	"*TASK*
+Here are the context sentences:
+34. John journeyed to the garden.
+35. Mary dropped the football.
+
+Now, answer the following question:
+Where was the apple before the kitchen?"	garden	from the provided context, we need to find out where the apple was before the kitchen. since the context lines 34 and 35 do not provide direct information about the apple, we need to look at the previous parts of the conversation.	none	Not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only mention John journeying to the garden and Mary dropping the football, but do not mention the apple.		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only mention John journeying to the garden and Mary dropping the football, but do not mention the apple.
+
+Answer: Not mentioned"	0.1136	0.0682	False	False	False	True	0
+1298	3	60	3	"*TASK*
+Here are the context sentences:
+37. Daniel moved to the bathroom.
+38. Daniel journeyed to the kitchen.
+39. Mary travelled to the bathroom.
+40. Daniel went to the bedroom.
+41. Mary went to the hallway.
+42. Sandra got the apple.
+43. Sandra went back to the hallway.
+44. Mary moved to the kitchen.
+45. Sandra dropped the apple there.
+46. Sandra grabbed the milk.
+47. Sandra journeyed to the bathroom.
+48. John went back to the kitchen.
+49. Sandra went to the kitchen.
+50. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Where was the milk before the bathroom?"	kitchen	from sentence 46, we know that sandra grabbed the milk. to find out where the milk was before the bathroom, we need to track sandra's movements with the milk. in sentence 47, sandra journeyed to the bathroom with the milk. before sentence 47, sandra was in the kitchen (sentence 45), and she dropped the apple there. therefore, the milk was in the kitchen before the bathroom.	fully	kitchen	True	The milk was grabbed by Sandra in sentence 46, and then Sandra journeyed to the bathroom in sentence 47. Therefore, the milk was in the kitchen before the bathroom.		"Reasoning: The milk was grabbed by Sandra in sentence 46, and then Sandra journeyed to the bathroom in sentence 47. Therefore, the milk was in the kitchen before the bathroom.
+
+Answer: kitchen"	0.0	0.0698	False	False	False	False	0
+1299	3	60	4	"*TASK*
+Here are the context sentences:
+52. Daniel went to the garden.
+53. Daniel moved to the kitchen.
+54. Sandra dropped the milk.
+55. Sandra got the milk.
+56. Sandra put down the milk.
+57. John journeyed to the garden.
+58. Sandra went back to the hallway.
+59. Sandra picked up the apple.
+60. Sandra got the football.
+61. Sandra moved to the garden.
+62. Daniel moved to the bathroom.
+63. Daniel travelled to the garden.
+64. Sandra went back to the bathroom.
+65. Sandra discarded the football.
+
+Now, answer the following question:
+Where was the football before the bathroom?"	garden	from sentence 65, we know that sandra discarded the football in the bathroom. to find out where the football was before the bathroom, we need to track sandra's movements with the football. in sentence 61, sandra moved to the garden with the football (she picked it up in sentence 59). therefore, the football was in the garden before the bathroom.	fully	garden	True	The football was picked up by Sandra in sentence 60, and then Sandra went back to the bathroom in sentence 64. Therefore, the football was in the garden before the bathroom.		"Reasoning: The football was picked up by Sandra in sentence 60, and then Sandra went back to the bathroom in sentence 64. Therefore, the football was in the garden before the bathroom.
+
+Answer: garden"	0.0	0.0682	False	False	False	False	0
+1300	3	60	5	"*TASK*
+Here are the context sentences:
+67. Sandra put down the apple.
+68. Sandra moved to the hallway.
+
+Now, answer the following question:
+Where was the apple before the bathroom?"	garden		partially	Not mentioned	False	There is no mention of the apple being in the bathroom in the given context sentences. The sentences only mention Sandra putting down the apple and moving to the hallway, but do not mention the apple being in the bathroom.		"Reasoning: There is no mention of the apple being in the bathroom in the given context sentences. The sentences only mention Sandra putting down the apple and moving to the hallway, but do not mention the apple being in the bathroom.
+
+Answer: Not mentioned"	0.0	0.0588	False	False	False	True	0

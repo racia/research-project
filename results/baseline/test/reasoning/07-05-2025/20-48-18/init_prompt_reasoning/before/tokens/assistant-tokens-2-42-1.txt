@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġsuggest	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	Ġand	Ġgot	Ġthe	Ġapple	Ġthere	,	Ġwhich	Ġimplies	Ġthat	Ġthe	Ġoffice	Ġis	Ġa	Ġlocation	Ġwhere	Ġobjects	Ġcan	Ġbe	Ġobtained	.	ĠLater	,	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġoffice	Ġand	Ġgot	Ġthe	Ġmilk	Ġthere	,	Ġwhich	Ġmeans	Ġthe	Ġmilk	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+29	.	ĠBill	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+30	.	ĠBill	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+31	.	ĠBill	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+32	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+33	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+34	.	ĠBill	Ġpassed	Ġthe	Ġmilk	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġmilk	Ġto	ĠFred	?Ċ

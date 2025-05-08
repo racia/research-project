@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġshow	Ġthat	ĠBill	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	Ġ(	question	Ġ	66	),	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠFred	Ġgiving	Ġthe	Ġapple	Ġto	ĠMary	.	ĠMary	Ġalso	Ġdropped	Ġthe	Ġapple	Ġ(	sentence	Ġ	68	),	Ġwhich	Ġimplies	Ġshe	Ġalready	Ġhad	Ġit	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

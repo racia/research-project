@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+19	.	ĠBill	Ġhanded	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
+20	.	ĠFred	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġapple	?Ċ

@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+12	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+13	.	ĠMary	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+14	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+15	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+16	.	ĠDaniel	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+17	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

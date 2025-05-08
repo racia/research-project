@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+851	2	71	1	"*TASK*
+Here are the context sentences:
+1. Mary picked up the football there.
+2. Sandra got the milk there.
+3. Sandra went back to the bedroom.
+4. Daniel went back to the garden.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	"from sentence 2, we know that sandra got the milk ""there"", which implies that she got the milk in the same location where mary picked up the football (sentence 1). then, in sentence 3, sandra went back to the bedroom, which suggests that she took the milk with her to the bedroom. therefore, the milk is in the bedroom."	fully	garden	False	The context sentences do not mention where Sandra got the milk, but they do mention that she went back to the bedroom. This implies that the milk was obtained somewhere before she went back to the bedroom. Since Daniel went back to the garden, it is possible that the milk was obtained in the garden.		"Reasoning: The context sentences do not mention where Sandra got the milk, but they do mention that she went back to the bedroom. This implies that the milk was obtained somewhere before she went back to the bedroom. Since Daniel went back to the garden, it is possible that the milk was obtained in the garden.
+
+Answer: garden"	0.2239	0.0299	False	False	False	True	0
+852	2	71	2	"*TASK*
+Here are the context sentences:
+6. Daniel travelled to the office.
+7. Sandra travelled to the office.
+
+Now, answer the following question:
+Where is the milk?"	office	from the previous context (sentences 1-4), we know that the milk was in the bedroom with sandra (sentence 3). now, in sentence 7, sandra travelled to the office. it can be logically inferred that sandra took the milk with her when she travelled to the office, as there is no information suggesting she left the milk behind. therefore, the milk is now in the office.	partially	not mentioned	False	There is no mention of milk in the given context sentences. The sentences only mention Daniel and Sandra travelling to the office, but do not provide any information about the milk.		"Reasoning: There is no mention of milk in the given context sentences. The sentences only mention Daniel and Sandra travelling to the office, but do not provide any information about the milk.
+
+Answer: not mentioned"	0.119	0.0476	False	False	False	True	0
+853	2	71	3	"*TASK*
+Here are the context sentences:
+9. John got the apple there.
+10. Mary moved to the kitchen.
+11. Sandra left the milk there.
+12. Daniel went to the kitchen.
+
+Now, answer the following question:
+Where is the milk?"	office	"the answer ""office"" seems to be inconsistent with the current context (sentences 9-12), as there is no mention of the office in these sentences. however, we can look back at the previous context (sentences 6-7) where sandra travelled to the office. in sentence 11, sandra left the milk ""there"", but it doesn't specify where ""there"" is. since we know sandra was in the office previously, it can be logically inferred that"	partially	kitchen	False	Sentence 11 states that Sandra left the milk there, and sentence 12 mentions that Daniel went to the kitchen. Since Sandra left the milk there, and Daniel went to the kitchen, it is likely that the milk is in the kitchen.		"Reasoning: Sentence 11 states that Sandra left the milk there, and sentence 12 mentions that Daniel went to the kitchen. Since Sandra left the milk there, and Daniel went to the kitchen, it is likely that the milk is in the kitchen.
+
+Answer: kitchen"	0.1636	0.0364	False	False	False	True	0
+854	2	71	4	"*TASK*
+Here are the context sentences:
+14. Sandra went to the kitchen.
+15. Daniel journeyed to the bedroom.
+
+Now, answer the following question:
+Where is the milk?"	office	we can look back at the previous context (sentences 6-7) where sandra travelled to the office, and we inferred that she took the milk with her to the office. the current context (sentences 14-15) doesn't provide any information that would suggest the milk has been moved from the office. therefore, based on the previous information, the milk is still in the office.	none	not mentioned	False	There is no mention of milk in the given context sentences. The sentences only mention Sandra going to the kitchen and Daniel journeying to the bedroom, but do not provide any information about the milk.		"Reasoning: There is no mention of milk in the given context sentences. The sentences only mention Sandra going to the kitchen and Daniel journeying to the bedroom, but do not provide any information about the milk.
+
+Answer: not mentioned"	0.0426	0.0426	False	False	False	True	0
+855	2	71	5	"*TASK*
+Here are the context sentences:
+17. John dropped the apple.
+18. Mary put down the football.
+
+Now, answer the following question:
+Where is the football?"	kitchen	"there is no direct information about the football being in the kitchen. however, we can look back at the previous context (sentences 1-4) where mary picked up the football ""there"", and then (sentences 9-12) where mary moved to the kitchen. it can be logically inferred that mary took the football with her to the kitchen, and now (sentence 18) she put it down, so the football is in the kitchen."	partially	not specified	False	Sentence 18 states that Mary put down the football, but does not specify where. However, there is no mention of the football being picked up or moved anywhere else. Therefore, it is likely that the football is still in the same location where Mary put it down.		"Reasoning: Sentence 18 states that Mary put down the football, but does not specify where. However, there is no mention of the football being picked up or moved anywhere else. Therefore, it is likely that the football is still in the same location where Mary put it down.
+
+Answer: not specified"	0.0806	0.0323	False	False	False	True	0

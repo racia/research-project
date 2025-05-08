@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+23	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+24	.	ĠFred	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠFred	Ġgive	Ġto	ĠMary	?Ċ

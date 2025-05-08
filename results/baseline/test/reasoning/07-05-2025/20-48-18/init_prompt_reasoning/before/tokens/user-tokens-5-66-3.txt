@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+27	.	ĠFred	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+28	.	ĠFred	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+29	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+30	.	ĠMary	Ġleft	Ġthe	Ġfootball	.Ċ
+31	.	ĠJeff	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+32	.	ĠFred	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+33	.	ĠJeff	Ġpassed	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
+34	.	ĠBill	Ġgave	Ġthe	Ġapple	Ġto	ĠJeff	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġapple	?Ċ

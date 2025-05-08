@@ -1,0 +1,120 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1021	3	5	1	"*TASK*
+Here are the context sentences:
+1. John took the football.
+2. Daniel went back to the garden.
+3. Mary moved to the bathroom.
+4. Mary went to the bedroom.
+5. Mary went to the hallway.
+6. John dropped the football.
+7. Daniel journeyed to the hallway.
+8. Sandra grabbed the football.
+9. John moved to the office.
+10. Sandra put down the football.
+11. Sandra took the football.
+12. Daniel went to the bedroom.
+13. Mary moved to the office.
+14. Mary journeyed to the bedroom.
+15. Mary grabbed the apple there.
+16. Sandra went back to the kitchen.
+17. Sandra picked up the milk there.
+18. Mary discarded the apple.
+19. John went back to the bathroom.
+20. Mary got the apple.
+21. Mary left the apple.
+22. Mary took the apple.
+23. Mary put down the apple.
+24. Sandra put down the milk.
+25. Daniel went to the kitchen.
+26. Sandra journeyed to the office.
+27. Sandra journeyed to the bedroom.
+28. John moved to the garden.
+29. Sandra journeyed to the garden.
+30. Mary got the apple.
+31. Mary discarded the apple.
+32. Mary travelled to the hallway.
+33. Daniel went to the garden.
+34. Sandra went back to the hallway.
+35. Sandra travelled to the garden.
+36. Sandra went back to the office.
+37. Daniel went to the bathroom.
+38. Sandra dropped the football.
+
+Now, answer the following question:
+Where was the football before the hallway?"	garden	from sentence 6, we know that john dropped the football. from sentence 9, we know that john moved to the office after dropping the football. from sentence 28, we know that john moved to the garden. since john dropped the football before moving to the office, and he moved to the garden after the office, the football must have been dropped in the garden. then, in sentence 8, sandra grabbed the football, which means the football was in the garden	fully	office	False	The football was dropped by John in sentence 6, and then Sandra grabbed it in sentence 8. After that, Sandra put it down in sentence 10, and then took it again in sentence 11. Since Sandra journeyed to the hallway in sentence 7, it is likely that the football was with her before she went to the hallway.		"Reasoning: The football was dropped by John in sentence 6, and then Sandra grabbed it in sentence 8. After that, Sandra put it down in sentence 10, and then took it again in sentence 11. Since Sandra journeyed to the hallway in sentence 7, it is likely that the football was with her before she went to the hallway.
+
+Answer: office"	0.0385	0.0385	False	False	False	False	0
+1022	3	5	2	"*TASK*
+Here are the context sentences:
+40. Mary went back to the kitchen.
+41. Mary went back to the hallway.
+
+Now, answer the following question:
+Where was the football before the office?"	garden	the question asks about the location of the football before the office. from the previous context (sentence 36), we know that sandra went back to the office. before that, in sentence 35, sandra travelled to the garden. in sentence 38, sandra dropped the football. therefore, the football was in the garden before sandra went back to the office.	none	hallway	False	There is no mention of the football being in the office in the given context sentences. However, we know that Sandra took the football in sentence 11 and then put it down in sentence 10. Since Sandra journeyed to the office in sentence 26, it is likely that the football was with her before she went to the office.		"Reasoning: There is no mention of the football being in the office in the given context sentences. However, we know that Sandra took the football in sentence 11 and then put it down in sentence 10. Since Sandra journeyed to the office in sentence 26, it is likely that the football was with her before she went to the office.
+
+Answer: hallway"	0.0	0.04	False	False	False	True	0
+1023	3	5	3	"*TASK*
+Here are the context sentences:
+43. Sandra went back to the hallway.
+44. Mary journeyed to the bathroom.
+
+Now, answer the following question:
+Where was the football before the garden?"	hallway	the question asks about the location of the football before the garden. from the previous context (sentence 35), we know that sandra travelled to the garden. before that, in sentence 34, sandra went back to the hallway. in sentence 38, sandra dropped the football. therefore, the football was in the hallway before sandra travelled to the garden.	none	not mentioned	False	There is no mention of the football being in the garden in the given context sentences. However, we know that Sandra dropped the football in sentence 38, and there is no mention of it being moved to the garden. Therefore, we cannot determine where the football was before the garden.		"Reasoning: There is no mention of the football being in the garden in the given context sentences. However, we know that Sandra dropped the football in sentence 38, and there is no mention of it being moved to the garden. Therefore, we cannot determine where the football was before the garden.
+
+Answer: not mentioned"	0.0308	0.0462	False	False	False	True	0
+1024	3	5	4	"*TASK*
+Here are the context sentences:
+46. John travelled to the bathroom.
+47. Sandra journeyed to the office.
+48. John went to the bedroom.
+49. Sandra went back to the bedroom.
+50. John took the apple.
+51. John went to the office.
+52. Sandra travelled to the kitchen.
+53. John put down the apple.
+54. Daniel travelled to the bedroom.
+55. John journeyed to the bedroom.
+56. John went to the garden.
+57. Daniel went to the hallway.
+58. Daniel went to the office.
+59. Sandra grabbed the milk there.
+60. Mary went to the garden.
+61. Sandra went back to the office.
+62. John travelled to the office.
+63. Sandra journeyed to the kitchen.
+
+Now, answer the following question:
+Where was the milk before the kitchen?"	office	the question asks about the location of the milk before the kitchen. from sentence 59, we know that sandra grabbed the milk in the office. then, in sentence 63, sandra journeyed to the kitchen. therefore, the milk was in the office before sandra went to the kitchen.	fully	office	True	Sandra grabbed the milk in the office in sentence 59, and then journeyed to the kitchen in sentence 63. Therefore, the milk was in the office before it was in the kitchen.		"Reasoning: Sandra grabbed the milk in the office in sentence 59, and then journeyed to the kitchen in sentence 63. Therefore, the milk was in the office before it was in the kitchen.
+
+Answer: office"	0.0	0.0652	False	False	False	False	0
+1025	3	5	5	"*TASK*
+Here are the context sentences:
+65. Daniel went to the garden.
+66. John grabbed the football.
+67. Sandra went to the bedroom.
+68. John grabbed the apple.
+69. Daniel went back to the bathroom.
+70. Daniel went back to the office.
+71. Mary moved to the hallway.
+72. Mary travelled to the kitchen.
+73. John discarded the football.
+74. John dropped the apple.
+75. Mary went to the hallway.
+76. John grabbed the apple.
+77. John got the football.
+78. Sandra put down the milk.
+
+Now, answer the following question:
+Where was the milk before the bedroom?"	kitchen	" a basis for your reasoning, use only the information provided to you in the conversation.
+
+follow each actor and object in the sentences separately paying attention to their relations.
+the questions might refer to previous parts of the conversation history.
+if so, inspect all the previous parts to find the correct reasoning.
+
+aim to give a specific and objective reasoning rather than a subjective one.
+
+if information you need to answer the question is not specified directly,
+infer it logically employing the information about the connected entities.
+if you need"	partially	not mentioned	False	There is no mention of the milk being in the bedroom in the given context sentences. However, we know that Sandra put down the milk in sentence 78, and there is no mention of it being moved to the bedroom. Therefore, we cannot determine where the milk was before the bedroom.		"Reasoning: There is no mention of the milk being in the bedroom in the given context sentences. However, we know that Sandra put down the milk in sentence 78, and there is no mention of it being moved to the bedroom. Therefore, we cannot determine where the milk was before the bedroom.
+
+Answer: not mentioned"	0.0303	0.0455	False	False	False	True	0

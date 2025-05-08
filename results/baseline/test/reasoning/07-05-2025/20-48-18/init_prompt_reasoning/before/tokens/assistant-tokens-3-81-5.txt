@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġleft	Ġby	ĠMary	Ġin	Ġsentence	Ġ	85	.	ĠBefore	Ġthat	,	Ġthe	Ġapple	Ġwas	Ġpicked	Ġup	Ġby	ĠMary	Ġin	Ġsentence	Ġ	73	.	ĠTherefore	,	Ġthe	Ġapple	Ġwas	Ġin	Ġthe	Ġhallway	,	Ġas	ĠMary	Ġgrabbed	Ġthe	Ġapple	Ġin	Ġsentence	Ġ	73	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

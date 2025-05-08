@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġanyone	Ġgiving	Ġthe	Ġapple	Ġto	ĠMary	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠIn	Ġfact	,	Ġsentence	Ġ	38	Ġmentions	ĠBill	Ġpicking	Ġup	Ġthe	Ġapple	,	Ġbut	Ġit	Ġdoesn	't	Ġmention	ĠMary	Ġreceiving	Ġit	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+901	2	81	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the hallway.
+2. John journeyed to the bathroom.
+3. Sandra grabbed the football there.
+4. Daniel travelled to the bedroom.
+5. John got the milk there.
+6. John dropped the milk.
+
+Now, answer the following question:
+Where is the milk?"	bathroom	from the context sentences, we know that john journeyed to the bathroom (sentence 2) and got the milk there (sentence 5). later, john dropped the milk (sentence 6). since john dropped the milk, it is likely that the milk is still in the same location where john dropped it, which is the bathroom.	fully	bathroom	True	The context sentences suggest that John journeyed to the bathroom, got the milk there, and then dropped the milk. This implies that the milk was in the bathroom when John dropped it.		"Reasoning: The context sentences suggest that John journeyed to the bathroom, got the milk there, and then dropped the milk. This implies that the milk was in the bathroom when John dropped it.
+
+Answer: bathroom"	0.1136	0.0455	False	False	False	False	0
+902	2	81	2	"*TASK*
+Here are the context sentences:
+8. Sandra moved to the garden.
+9. Daniel went back to the hallway.
+
+Now, answer the following question:
+Where is the milk?"	bathroom	the question asks about the location of the milk, which was previously mentioned in sentences 2, 5, and 6. sentences 8 and 9 provide information about sandra and daniel's movements, but they do not mention the milk. therefore, we need to refer back to the previous sentences to determine the location of the milk. according to sentence 6, john dropped the milk, and from sentence 2, we know that john was in the bathroom. since there	none	bathroom	True	There is no mention of the milk in the new context sentences. The previous context sentences mentioned John getting and dropping the milk in the bathroom, but there is no update on its location.		"Reasoning: There is no mention of the milk in the new context sentences. The previous context sentences mentioned John getting and dropping the milk in the bathroom, but there is no update on its location.
+
+Answer: bathroom"	0.0682	0.0455	False	False	False	True	0
+903	2	81	3	"*TASK*
+Here are the context sentences:
+11. Sandra discarded the football.
+12. John moved to the hallway.
+
+Now, answer the following question:
+Where is the football?"	garden	the question asks about the location of the football. from sentence 3, we know that sandra grabbed the football in the hallway. later, in sentence 11, sandra discarded the football. since sandra moved to the garden in sentence 8, it is likely that she discarded the football in the garden, which is her current location. therefore, the football is in the garden.	partially	unknown	False	The context sentences suggest that Sandra discarded the football, but there is no mention of where she discarded it. However, the previous context sentences mentioned Sandra grabbing the football in the hallway, but there is no update on its location after she discarded it.		"Reasoning: The context sentences suggest that Sandra discarded the football, but there is no mention of where she discarded it. However, the previous context sentences mentioned Sandra grabbing the football in the hallway, but there is no update on its location after she discarded it.
+
+Answer: unknown"	0.0357	0.0357	False	False	False	True	0
+904	2	81	4	"*TASK*
+Here are the context sentences:
+14. John went back to the garden.
+15. Sandra went to the kitchen.
+
+Now, answer the following question:
+Where is the football?"	garden	the question asks about the location of the football. from the previous context, we know that sandra discarded the football in the garden (sentence 11). there is no information that suggests the football was moved from the garden after sandra discarded it. john's movement to the garden (sentence 14) does not affect the location of the football. sandra's movement to the kitchen (sentence 15) also does not affect the location of the football. therefore, the football remains in the garden	none	unknown	False	There is no mention of the football in the new context sentences. The previous context sentences mentioned Sandra grabbing and discarding the football, but there is no update on its location.		"Reasoning: There is no mention of the football in the new context sentences. The previous context sentences mentioned Sandra grabbing and discarding the football, but there is no update on its location.
+
+Answer: unknown"	0.0238	0.0476	False	False	False	True	0
+905	2	81	5	"*TASK*
+Here are the context sentences:
+17. Daniel moved to the bedroom.
+18. Sandra journeyed to the hallway.
+19. Sandra moved to the kitchen.
+20. John travelled to the office.
+21. Sandra went to the garden.
+22. Sandra grabbed the football there.
+23. Sandra put down the football there.
+24. Daniel went back to the kitchen.
+
+Now, answer the following question:
+Where is the football?"	garden	the question asks about the location of the football. from sentence 22, we know that sandra grabbed the football in the garden. then, in sentence 23, sandra put down the football in the same location, which is the garden. there is no information that suggests the football was moved from the garden after sandra put it down. the movements of other characters (john, daniel, and sandra herself) to other locations (office, kitchen, hallway, and bedroom) do not affect	fully	garden	True	The context sentences suggest that Sandra grabbed the football in the garden and then put it down in the garden. This implies that the football is currently in the garden.		"Reasoning: The context sentences suggest that Sandra grabbed the football in the garden and then put it down in the garden. This implies that the football is currently in the garden.
+
+Answer: garden"	0.0	0.0513	False	False	False	False	0

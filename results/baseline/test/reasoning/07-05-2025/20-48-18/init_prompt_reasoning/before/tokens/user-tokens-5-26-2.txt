@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+14	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+15	.	ĠJeff	Ġpassed	Ġthe	Ġfootball	Ġto	ĠBill	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġfootball	Ġto	ĠBill	?Ċ

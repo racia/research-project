@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1521	4	21	1	"*TASK*
+Here are the context sentences:
+1. The hallway is east of the office.
+2. The garden is west of the office.
+
+Now, answer the following question:
+What is the office east of?"	garden	from the context sentences, we know that the hallway is east of the office (sentence 1), which means the office is west of the hallway. we also know that the garden is west of the office (sentence 2), which means the office is east of the garden. therefore, the office is east of the garden.	fully	None	False	The hallway is east of the office, which means the office is not east of anything. The hallway is east of the office, so the office is not east of the hallway.		"Reasoning: The hallway is east of the office, which means the office is not east of anything. The hallway is east of the office, so the office is not east of the hallway.
+
+Answer: None"	0.2093	0.0233	False	False	False	False	0

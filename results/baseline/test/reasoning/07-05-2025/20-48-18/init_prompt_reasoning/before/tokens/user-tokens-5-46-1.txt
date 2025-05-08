@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJeff	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+2	.	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠJeff	Ġgive	Ġto	ĠFred	?Ċ
