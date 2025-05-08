@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠThis	Ġmorning	ĠFred	Ġmoved	Ġto	Ġthe	Ġcinema	.Ċ
+5	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġyesterday	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠMary	Ġbefore	Ġthe	Ġpark	?Ċ

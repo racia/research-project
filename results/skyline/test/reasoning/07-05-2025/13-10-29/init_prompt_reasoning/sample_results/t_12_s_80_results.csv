@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+896	12	80	1	"*TASK*
+Here are the context sentences:
+1. Mary and John journeyed to the kitchen.
+2. Mary and John went to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	according to the context sentences, mary and john went to the bathroom in sentence 2, and there is no subsequent sentence indicating that john left the bathroom. therefore, it can be logically inferred that john is still in the bathroom.	fully	bathroom	True	According to the context sentences, Mary and John went to the kitchen (sentence 1) and then they went to the bathroom (sentence 2). Therefore, John's current location is the bathroom.		"assistant
+
+Reasoning: According to the context sentences, Mary and John went to the kitchen (sentence 1) and then they went to the bathroom (sentence 2). Therefore, John's current location is the bathroom.
+
+Answer: bathroom"	0.08	0.02	False	False	False	False	0
+897	12	80	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Sandra moved to the office.
+5. Sandra and Mary travelled to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	according to sentence 4, daniel and sandra moved to the office, but then in sentence 5, sandra and mary travelled to the garden. this implies that sandra left the office and went to the garden with mary. therefore, sandra's current location is the garden.	fully	garden	True	According to the context sentences, Daniel and Sandra moved to the office (sentence 4), but then Sandra and Mary travelled to the garden (sentence 5). Therefore, Sandra's current location is the garden.		"Reasoning: According to the context sentences, Daniel and Sandra moved to the office (sentence 4), but then Sandra and Mary travelled to the garden (sentence 5). Therefore, Sandra's current location is the garden.
+
+Answer: garden"	0.1224	0.0204	False	False	False	False	0
+898	12	80	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John moved to the hallway.
+8. Sandra and Mary moved to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	according to sentence 8, sandra and mary moved to the kitchen, and there is no subsequent sentence indicating that sandra left the kitchen. therefore, it can be logically inferred that sandra is still in the kitchen.	fully	kitchen	True	According to the context sentences, Sandra and Mary moved to the kitchen (sentence 8). Therefore, Sandra's current location is the kitchen.		"Reasoning: According to the context sentences, Sandra and Mary moved to the kitchen (sentence 8). Therefore, Sandra's current location is the kitchen.
+
+Answer: kitchen"	0.0857	0.0286	False	False	False	False	0
+899	12	80	4	"*TASK*
+Here are the context sentences:
+10. Mary and Daniel moved to the garden.
+11. Mary and Sandra went back to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	according to sentence 10, mary and daniel moved to the garden, but then in sentence 11, mary and sandra went back to the hallway. this implies that mary left the garden and returned to the hallway with sandra. therefore, mary's current location is the hallway.	fully	hallway	True	According to the context sentences, Mary and Daniel moved to the garden (sentence 10), but then Mary and Sandra went back to the hallway (sentence 11). Therefore, Mary's current location is the hallway.		"Reasoning: According to the context sentences, Mary and Daniel moved to the garden (sentence 10), but then Mary and Sandra went back to the hallway (sentence 11). Therefore, Mary's current location is the hallway.
+
+Answer: hallway"	0.0	0.02	False	False	False	False	0
+900	12	80	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Daniel went to the bedroom.
+14. Sandra and Daniel journeyed to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	according to sentence 13, sandra and daniel went to the bedroom, but then in sentence 14, sandra and daniel journeyed to the garden. this implies that sandra left the bedroom and went to the garden with daniel. therefore, sandra's current location is the garden.	fully	garden	True	According to the context sentences, Sandra and Daniel went to the bedroom (sentence 13), but then they journeyed to the garden (sentence 14). Therefore, Sandra's current location is the garden.		"Reasoning: According to the context sentences, Sandra and Daniel went to the bedroom (sentence 13), but then they journeyed to the garden (sentence 14). Therefore, Sandra's current location is the garden.
+
+Answer: garden"	0.1042	0.0208	False	False	False	False	0

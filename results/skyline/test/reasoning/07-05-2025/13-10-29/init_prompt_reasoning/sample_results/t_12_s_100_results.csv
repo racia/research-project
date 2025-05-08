@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+996	12	100	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Mary journeyed to the bedroom.
+2. Mary and Sandra moved to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from context sentence 1, we know that daniel and mary journeyed to the bedroom. there is no subsequent information that suggests daniel left the bedroom. therefore, we can logically conclude that daniel is still in the bedroom.	fully	bedroom	True	According to sentence 1, Daniel and Mary journeyed to the bedroom. There is no subsequent information that suggests Daniel moved to a different location. Therefore, we can infer that Daniel is still in the bedroom.		"assistant
+
+Reasoning: According to sentence 1, Daniel and Mary journeyed to the bedroom. There is no subsequent information that suggests Daniel moved to a different location. Therefore, we can infer that Daniel is still in the bedroom.
+
+Answer: bedroom"	0.0377	0.0189	False	False	False	True	0
+997	12	100	2	"*TASK*
+Here are the context sentences:
+4. Sandra and John journeyed to the hallway.
+5. Mary and Sandra went back to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	from context sentence 4, we know that sandra and john journeyed to the hallway. then, in context sentence 5, it is stated that mary and sandra went back to the bedroom. this implies that sandra, who was previously in the hallway, moved back to the bedroom with mary. therefore, we can conclude that sandra is currently in the bedroom.	fully	bedroom	True	According to sentence 4, Sandra and John journeyed to the hallway. However, in sentence 5, Mary and Sandra went back to the bedroom. This implies that Sandra moved from the hallway to the bedroom.		"Reasoning: According to sentence 4, Sandra and John journeyed to the hallway. However, in sentence 5, Mary and Sandra went back to the bedroom. This implies that Sandra moved from the hallway to the bedroom.
+
+Answer: bedroom"	0.16	0.02	False	False	False	False	0
+998	12	100	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary went to the office.
+8. Sandra and Daniel went back to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from context sentence 7, we know that sandra and mary went to the office. then, in context sentence 8, it is stated that sandra and daniel went back to the bathroom. this implies that sandra, who was previously in the office, moved back to the bathroom with daniel. therefore, we can conclude that sandra is currently in the bathroom.	fully	bathroom	True	According to sentence 7, Sandra and Mary went to the office. However, in sentence 8, Sandra and Daniel went back to the bathroom. This implies that Sandra moved from the office to the bathroom.		"Reasoning: According to sentence 7, Sandra and Mary went to the office. However, in sentence 8, Sandra and Daniel went back to the bathroom. This implies that Sandra moved from the office to the bathroom.
+
+Answer: bathroom"	0.0408	0.0204	False	False	False	False	0
+999	12	100	4	"*TASK*
+Here are the context sentences:
+10. Mary and Daniel went to the bedroom.
+11. John and Mary travelled to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	from context sentence 11, we know that john and mary travelled to the bathroom. there is no subsequent information that suggests john left the bathroom. therefore, we can logically conclude that john is currently in the bathroom.	fully	bathroom	True	According to sentence 11, John and Mary travelled to the bathroom. There is no subsequent information that suggests John moved to a different location. Therefore, we can infer that John is still in the bathroom.		"Reasoning: According to sentence 11, John and Mary travelled to the bathroom. There is no subsequent information that suggests John moved to a different location. Therefore, we can infer that John is still in the bathroom.
+
+Answer: bathroom"	0.0	0.0208	False	False	False	True	0
+1000	12	100	5	"*TASK*
+Here are the context sentences:
+13. Mary and Daniel went to the hallway.
+14. John and Daniel went back to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from context sentence 13, we know that mary and daniel went to the hallway. then, in context sentence 14, it is stated that john and daniel went back to the bedroom. this implies that daniel, who was previously in the hallway, moved back to the bedroom with john. therefore, we can conclude that daniel is currently in the bedroom.	fully	bedroom	True	According to sentence 13, Mary and Daniel went to the hallway. However, in sentence 14, John and Daniel went back to the bedroom. This implies that Daniel moved from the hallway to the bedroom.		"Reasoning: According to sentence 13, Mary and Daniel went to the hallway. However, in sentence 14, John and Daniel went back to the bedroom. This implies that Daniel moved from the hallway to the bedroom.
+
+Answer: bedroom"	0.102	0.0204	False	False	False	False	0

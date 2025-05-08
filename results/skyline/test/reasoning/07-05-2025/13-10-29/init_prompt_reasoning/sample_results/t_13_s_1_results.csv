@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1001	13	1	1	"*TASK*
+Here are the context sentences:
+1. John and Mary went back to the hallway.
+2. Then they went to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	from the context sentences, we know that john and mary went back to the hallway (sentence 1) and then they went to the bathroom (sentence 2). since john was with mary in both actions, it can be logically inferred that john is currently in the bathroom, as that is the last location mentioned where they went together.	fully	bathroom	True	According to the context sentences, John and Mary went back to the hallway (sentence 1) and then they went to the bathroom (sentence 2). This implies that John's current location is the bathroom.		"assistant
+
+Reasoning: According to the context sentences, John and Mary went back to the hallway (sentence 1) and then they went to the bathroom (sentence 2). This implies that John's current location is the bathroom.
+
+Answer: bathroom"	0.2692	0.0385	False	False	False	False	0
+1002	13	1	2	"*TASK*
+Here are the context sentences:
+4. Mary and John moved to the hallway.
+5. Following that they moved to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that mary and john moved to the hallway (sentence 4) and then they moved to the kitchen (sentence 5). since john was with mary in both actions, it can be logically inferred that john is currently in the kitchen, as that is the last location mentioned where they moved together.	fully	kitchen	True	According to the context sentences, Mary and John moved to the hallway (sentence 4) and then they moved to the kitchen (sentence 5). This implies that John's current location is the kitchen.		"Reasoning: According to the context sentences, Mary and John moved to the hallway (sentence 4) and then they moved to the kitchen (sentence 5). This implies that John's current location is the kitchen.
+
+Answer: kitchen"	0.1458	0.0417	False	False	False	False	0
+1003	13	1	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Sandra went to the office.
+8. Following that they went back to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	"there is no mention of john in the provided context sentences. the sentences only talk about daniel and sandra moving to the office and then back to the kitchen. there is no logical connection between john and the mentioned locations. the answer ""kitchen"" seems to be incorrect, as john is not mentioned in the context at all."	none	kitchen	True	The context sentences (7 and 8) do not mention John. The last mention of John was in sentence 5, where Mary and John moved to the kitchen. There is no new information about John's location.		"Reasoning: The context sentences (7 and 8) do not mention John. The last mention of John was in sentence 5, where Mary and John moved to the kitchen. There is no new information about John's location.
+
+Answer: kitchen"	0.098	0.0392	False	False	False	True	0
+1004	13	1	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel journeyed to the office.
+11. Following that they travelled to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	"there is no mention of sandra in the provided context sentences. the sentences only talk about john and daniel moving to the office and then to the hallway. there is no logical connection between sandra and the mentioned locations. additionally, the answer ""kitchen"" is not supported by the context, as sandra is not mentioned at all, and the kitchen is not mentioned in the context sentences."	none	kitchen	True	The context sentences (10 and 11) do not mention Sandra. The last mention of Sandra was in sentence 8, where Daniel and Sandra went back to the kitchen. There is no new information about Sandra's location.		"Reasoning: The context sentences (10 and 11) do not mention Sandra. The last mention of Sandra was in sentence 8, where Daniel and Sandra went back to the kitchen. There is no new information about Sandra's location.
+
+Answer: kitchen"	0.1538	0.0385	False	False	False	True	0
+1005	13	1	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra travelled to the garden.
+14. After that they went back to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from the context sentences, we know that mary and sandra travelled to the garden (sentence 13) and then they went back to the kitchen (sentence 14). since sandra was with mary in both actions, it can be logically inferred that sandra is currently in the kitchen, as that is the last location mentioned where they went together.	fully	kitchen	True	According to the context sentences, Mary and Sandra travelled to the garden (sentence 13) and then they went back to the kitchen (sentence 14). This implies that Sandra's current location is the kitchen.		"Reasoning: According to the context sentences, Mary and Sandra travelled to the garden (sentence 13) and then they went back to the kitchen (sentence 14). This implies that Sandra's current location is the kitchen.
+
+Answer: kitchen"	0.1224	0.0408	False	False	False	False	0

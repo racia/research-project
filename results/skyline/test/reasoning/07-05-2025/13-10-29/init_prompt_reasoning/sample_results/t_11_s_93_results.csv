@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+461	11	93	1	"*TASK*
+Here are the context sentences:
+1. Sandra went to the bathroom.
+2. After that she travelled to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"from the context sentences, we know that sandra went to the bathroom (sentence 1) and then travelled to the hallway (sentence 2). since sentence 2 mentions ""after that"", it implies that sandra's action of travelling to the hallway occurred after she went to the bathroom. therefore, it can be logically concluded that sandra's current location is the hallway."	fully	hallway	True	According to the context sentences, Sandra went to the bathroom and then travelled to the hallway. Therefore, her current location is the hallway.		"assistant
+
+Reasoning: According to the context sentences, Sandra went to the bathroom and then travelled to the hallway. Therefore, her current location is the hallway.
+
+Answer: hallway"	0.2162	0.0541	False	False	False	False	0
+462	11	93	2	"*TASK*
+Here are the context sentences:
+4. John went back to the office.
+5. Following that he went back to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"from the context sentences, we know that john went back to the office (sentence 4) and then went back to the bedroom (sentence 5). the phrase ""following that"" in sentence 5 indicates that john's action of going back to the bedroom occurred after he went back to the office. therefore, it can be logically concluded that john's current location is the bedroom."	fully	bedroom	True	According to the context sentences, John went back to the office and then went back to the bedroom. Therefore, his current location is the bedroom.		"Reasoning: According to the context sentences, John went back to the office and then went back to the bedroom. Therefore, his current location is the bedroom.
+
+Answer: bedroom"	0.1667	0.0556	False	False	False	False	0
+463	11	93	3	"*TASK*
+Here are the context sentences:
+7. John went to the bathroom.
+8. Following that he went back to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"from the context sentences, we know that john went to the bathroom (sentence 7) and then went back to the bedroom (sentence 8). the phrase ""following that"" in sentence 8 indicates that john's action of going back to the bedroom occurred after he went to the bathroom. therefore, it can be logically concluded that john's current location is the bedroom."	fully	bedroom	True	According to the context sentences, John went to the bathroom and then went back to the bedroom. Therefore, his current location is the bedroom.		"Reasoning: According to the context sentences, John went to the bathroom and then went back to the bedroom. Therefore, his current location is the bedroom.
+
+Answer: bedroom"	0.0286	0.0571	False	False	False	False	0
+464	11	93	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the hallway.
+11. After that he went to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"the context sentences provided do not mention john at all. they only talk about daniel's movements, stating that he went to the hallway (sentence 10) and then to the bathroom (sentence 11). there is no information about john's location. the answer ""bedroom"" seems to be unrelated to the provided context. it is possible that john's location was established in a previous part of the conversation, but based on the current context, it is not possible to determine john's"	none	bedroom	True	The context sentences are about Daniel, but the question is about John. The last known location of John was the bedroom (from previous context sentences).		"Reasoning: The context sentences are about Daniel, but the question is about John. The last known location of John was the bedroom (from previous context sentences).
+
+Answer: bedroom"	0.0	0.0556	False	False	False	False	0
+465	11	93	5	"*TASK*
+Here are the context sentences:
+13. Daniel went to the office.
+14. Following that he went to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"from the context sentences, we know that daniel went to the office (sentence 13) and then went to the bathroom (sentence 14). the phrase ""following that"" in sentence 14 indicates that daniel's action of going to the bathroom occurred after he went to the office. therefore, it can be logically concluded that daniel's current location is the bathroom."	fully	bathroom	True	According to the context sentences, Daniel went to the office and then went to the bathroom. Therefore, his current location is the bathroom.		"Reasoning: According to the context sentences, Daniel went to the office and then went to the bathroom. Therefore, his current location is the bathroom.
+
+Answer: bathroom"	0.0294	0.0588	False	False	False	False	0

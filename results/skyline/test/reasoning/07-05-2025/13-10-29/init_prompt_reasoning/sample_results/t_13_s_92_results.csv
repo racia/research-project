@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1456	13	92	1	"*TASK*
+Here are the context sentences:
+1. Mary and Sandra travelled to the bedroom.
+2. After that they went to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	from the context sentences, we know that mary and sandra travelled to the bedroom (sentence 1) and then went to the garden (sentence 2). since there is no information about mary leaving the garden, we can logically conclude that mary is still in the garden.	fully	garden	True	According to the context sentences, Mary and Sandra travelled to the bedroom and then went to the garden. Therefore, Mary's current location is the garden.		"assistant
+
+Reasoning: According to the context sentences, Mary and Sandra travelled to the bedroom and then went to the garden. Therefore, Mary's current location is the garden.
+
+Answer: garden"	0.25	0.05	False	False	False	False	0
+1457	13	92	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John travelled to the hallway.
+5. Following that they journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from the context sentences, we know that daniel and john travelled to the hallway (sentence 4) and then journeyed to the bedroom (sentence 5). since there is no information about daniel leaving the bedroom, we can logically conclude that daniel is still in the bedroom.	fully	bedroom	True	According to the context sentences, Daniel and John travelled to the hallway and then journeyed to the bedroom. Therefore, Daniel's current location is the bedroom.		"Reasoning: According to the context sentences, Daniel and John travelled to the hallway and then journeyed to the bedroom. Therefore, Daniel's current location is the bedroom.
+
+Answer: bedroom"	0.1842	0.0526	False	False	False	False	0
+1458	13	92	3	"*TASK*
+Here are the context sentences:
+7. Sandra and John travelled to the kitchen.
+8. Afterwards they went to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	from the context sentences, we know that sandra and john travelled to the kitchen (sentence 7) and then went to the garden (sentence 8). since there is no information about john leaving the garden, we can logically conclude that john is still in the garden.	fully	garden	True	According to the context sentences, Sandra and John travelled to the kitchen and then went to the garden. Therefore, John's current location is the garden.		"Reasoning: According to the context sentences, Sandra and John travelled to the kitchen and then went to the garden. Therefore, John's current location is the garden.
+
+Answer: garden"	0.0811	0.0541	False	False	False	False	0
+1459	13	92	4	"*TASK*
+Here are the context sentences:
+10. Mary and Daniel journeyed to the bathroom.
+11. Then they moved to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from the context sentences, we know that mary and daniel journeyed to the bathroom (sentence 10) and then moved to the garden (sentence 11). since there is no information about daniel leaving the garden, we can logically conclude that daniel is still in the garden.	fully	garden	True	According to the context sentences, Mary and Daniel journeyed to the bathroom and then moved to the garden. Therefore, Daniel's current location is the garden.		"Reasoning: According to the context sentences, Mary and Daniel journeyed to the bathroom and then moved to the garden. Therefore, Daniel's current location is the garden.
+
+Answer: garden"	0.0526	0.0526	False	False	False	False	0
+1460	13	92	5	"*TASK*
+Here are the context sentences:
+13. John and Sandra went back to the kitchen.
+14. Following that they journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	garden	there is no information about daniel's movements in the provided context sentences (13 and 14). however, we can infer that the question is referring to a previous part of the conversation history. since we don't have any information about daniel's movements after sentence 11, where it was stated that mary and daniel moved to the garden, we can logically conclude that daniel is still in the garden.	none	garden	True	The context sentences do not provide any new information about Daniel's location. The last known location of Daniel was the garden (from context sentences 10 and 11).		"Reasoning: The context sentences do not provide any new information about Daniel's location. The last known location of Daniel was the garden (from context sentences 10 and 11).
+
+Answer: garden"	0.025	0.05	False	False	False	True	0

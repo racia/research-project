@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġcinema	Ġin	Ġthe	Ġprovided	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġand	ĠBill	's	Ġmovements	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

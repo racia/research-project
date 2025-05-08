@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	Ġ"	Fred	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	."	ĠSince	Ġsentence	Ġ	9	Ġstates	,	Ġ"	This	Ġafternoon	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġpark	,"	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠFred	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

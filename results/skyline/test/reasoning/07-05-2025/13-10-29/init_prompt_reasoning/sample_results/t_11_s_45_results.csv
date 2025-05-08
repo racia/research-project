@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+221	11	45	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the hallway.
+2. Following that he travelled to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"the context sentences describe daniel's movements, stating that he first journeyed to the hallway and then travelled to the bathroom. since the second sentence indicates that he travelled to the bathroom ""following"" his journey to the hallway, it can be inferred that he moved from the hallway to the bathroom. therefore, his current location is the bathroom."	fully	bathroom	True	According to the context sentences, Daniel first went to the hallway and then travelled to the bathroom. Therefore, his current location is the bathroom.		"assistant
+
+Reasoning: According to the context sentences, Daniel first went to the hallway and then travelled to the bathroom. Therefore, his current location is the bathroom.
+
+Answer: bathroom"	0.2308	0.0513	False	False	False	False	0
+222	11	45	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the hallway.
+5. Following that she travelled to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	"the context sentences describe mary's movements, stating that she first travelled to the hallway and then travelled to the office ""following that"". this implies that she moved from the hallway to the office. therefore, her current location is the office."	fully	office	True	According to the context sentences, Mary first went to the hallway and then travelled to the office. Therefore, her current location is the office.		"Reasoning: According to the context sentences, Mary first went to the hallway and then travelled to the office. Therefore, her current location is the office.
+
+Answer: office"	0.1429	0.0571	False	False	False	False	0
+223	11	45	3	"*TASK*
+Here are the context sentences:
+7. John went back to the hallway.
+8. After that he went to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"the context sentences describe john's movements, stating that he first went back to the hallway and then went to the bedroom ""after that"". this implies that he moved from the hallway to the bedroom. therefore, his current location is the bedroom."	fully	bedroom	True	According to the context sentences, John first went back to the hallway and then went to the bedroom. Therefore, his current location is the bedroom.		"Reasoning: According to the context sentences, John first went back to the hallway and then went to the bedroom. Therefore, his current location is the bedroom.
+
+Answer: bedroom"	0.0833	0.0556	False	False	False	False	0
+224	11	45	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the bedroom.
+11. After that he journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	office	the context sentences describe daniel's movements, but the question asks about mary's location. since the context sentences do not provide any new information about mary, we need to look at the previous parts of the conversation. earlier, it was established that mary travelled to the office (context lines 4 and 5). there is no information that suggests mary moved from the office, so her current location is still the office.	none	office	True	The context sentences only provide information about Daniel's movements, but not about Mary's current location. The last information about Mary's location was in sentence 5, where she travelled to the office.		"Reasoning: The context sentences only provide information about Daniel's movements, but not about Mary's current location. The last information about Mary's location was in sentence 5, where she travelled to the office.
+
+Answer: office"	0.087	0.0435	False	False	False	True	0
+225	11	45	5	"*TASK*
+Here are the context sentences:
+13. Sandra moved to the garden.
+14. Following that she journeyed to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	the context sentences describe sandra's movements, but the question asks about john's location. since the context sentences do not provide any new information about john, we need to look at the previous parts of the conversation. earlier, it was established that john went back to the hallway and then went to the bedroom (context lines 7 and 8). there is no information that suggests john moved from the bedroom, so his current location is still the bedroom.	none	bedroom	True	The context sentences only provide information about Sandra's movements, but not about John's current location. The last information about John's location was in sentence 8, where he went to the bedroom.		"Reasoning: The context sentences only provide information about Sandra's movements, but not about John's current location. The last information about John's location was in sentence 8, where he went to the bedroom.
+
+Answer: bedroom"	0.0652	0.0435	False	False	False	True	0

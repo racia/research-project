@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+581	12	17	1	"*TASK*
+Here are the context sentences:
+1. John and Mary moved to the office.
+2. Mary and John went to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that john and mary moved to the office (sentence 1), but then they both went to the kitchen (sentence 2). since john was with mary in both locations, it can be logically inferred that john is currently in the kitchen, as that is the last location mentioned where john was present.	fully	kitchen	True	According to the context sentences, John and Mary moved to the office (sentence 1), but then Mary and John went to the kitchen (sentence 2). This implies that John's current location is the kitchen.		"assistant
+
+Reasoning: According to the context sentences, John and Mary moved to the office (sentence 1), but then Mary and John went to the kitchen (sentence 2). This implies that John's current location is the kitchen.
+
+Answer: kitchen"	0.1321	0.0189	False	False	False	False	0
+582	12	17	2	"*TASK*
+Here are the context sentences:
+4. John and Sandra journeyed to the hallway.
+5. Sandra and Mary went to the bedroom.
+
+Now, answer the following question:
+Where is John?"	hallway	from sentence 4, we know that john and sandra journeyed to the hallway, which implies that john is in the hallway. there is no subsequent information that suggests john moved to a different location. therefore, it can be logically concluded that john is still in the hallway.	fully	hallway	True	According to the context sentences, John and Sandra journeyed to the hallway (sentence 4), and there is no subsequent movement mentioned for John. Therefore, John's current location is still the hallway.		"Reasoning: According to the context sentences, John and Sandra journeyed to the hallway (sentence 4), and there is no subsequent movement mentioned for John. Therefore, John's current location is still the hallway.
+
+Answer: hallway"	0.0213	0.0213	False	False	False	True	0
+583	12	17	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John moved to the bathroom.
+8. Sandra and Mary went back to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from sentence 7, we know that daniel and john moved to the bathroom, which implies that daniel is in the bathroom. there is no subsequent information that suggests daniel moved to a different location. therefore, it can be logically concluded that daniel is still in the bathroom.	fully	bathroom	True	According to the context sentences, Daniel and John moved to the bathroom (sentence 7), and there is no subsequent movement mentioned for Daniel. Therefore, Daniel's current location is still the bathroom.		"Reasoning: According to the context sentences, Daniel and John moved to the bathroom (sentence 7), and there is no subsequent movement mentioned for Daniel. Therefore, Daniel's current location is still the bathroom.
+
+Answer: bathroom"	0.1304	0.0217	False	False	False	True	0
+584	12	17	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Mary went to the bathroom.
+11. John and Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from sentence 10, we know that sandra and mary went to the bathroom, which implies that mary was in the bathroom. however, in sentence 11, it is stated that john and mary travelled to the bedroom. this means that mary moved from the bathroom to the bedroom with john. therefore, it can be logically concluded that mary is currently in the bedroom.	fully	bedroom	True	According to the context sentences, Sandra and Mary went to the bathroom (sentence 10), but then John and Mary travelled to the bedroom (sentence 11). This implies that Mary's current location is the bedroom.		"Reasoning: According to the context sentences, Sandra and Mary went to the bathroom (sentence 10), but then John and Mary travelled to the bedroom (sentence 11). This implies that Mary's current location is the bedroom.
+
+Answer: bedroom"	0.0	0.02	False	False	False	False	0
+585	12	17	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John moved to the garden.
+14. John and Mary travelled to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from sentence 13, we know that daniel and john moved to the garden, which implies that john was in the garden. however, in sentence 14, it is stated that john and mary travelled to the kitchen. this means that john moved from the garden to the kitchen with mary. therefore, it can be logically concluded that john is currently in the kitchen.	fully	kitchen	True	According to the context sentences, Daniel and John moved to the garden (sentence 13), but then John and Mary travelled to the kitchen (sentence 14). This implies that John's current location is the kitchen.		"Reasoning: According to the context sentences, Daniel and John moved to the garden (sentence 13), but then John and Mary travelled to the kitchen (sentence 14). This implies that John's current location is the kitchen.
+
+Answer: kitchen"	0.04	0.02	False	False	False	False	0

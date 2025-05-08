@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJohn	's	Ġmovements	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	ĠMary	's	Ġcurrent	Ġlocation	Ġbased	Ġon	Ġthe	Ġprovided	Ġinformation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

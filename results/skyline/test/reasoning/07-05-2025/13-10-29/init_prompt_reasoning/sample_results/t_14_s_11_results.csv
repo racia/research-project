@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1551	14	11	1	"*TASK*
+Here are the context sentences:
+1. This morning Bill went back to the park.
+2. Yesterday Mary went to the bedroom.
+3. This morning Mary moved to the office.
+4. Yesterday Bill travelled to the cinema.
+
+Now, answer the following question:
+Where was Mary before the office?"	bedroom	"from context sentence 3, we know that ""this morning mary moved to the office."" this implies that mary was somewhere else before moving to the office. the only other information we have about mary's location is from context sentence 2, which states ""yesterday mary went to the bedroom."" since there is no other information about mary's location between yesterday and this morning, it is logical to assume that mary was still in the bedroom before moving to the office this morning."	fully	bedroom	True	According to sentence 2, Mary went to the bedroom yesterday. Then, according to sentence 3, Mary moved to the office this morning. Therefore, Mary was in the bedroom before moving to the office.		"assistant
+
+Reasoning: According to sentence 2, Mary went to the bedroom yesterday. Then, according to sentence 3, Mary moved to the office this morning. Therefore, Mary was in the bedroom before moving to the office.
+
+Answer: bedroom"	0.2115	0.0385	False	False	False	False	0
+1552	14	11	2	"*TASK*
+Here are the context sentences:
+6. Mary journeyed to the cinema this afternoon.
+7. Julie went to the office yesterday.
+
+Now, answer the following question:
+Where was Mary before the office?"	bedroom	"the answer ""bedroom"" seems incorrect based on the provided context sentences. the context sentences 6 and 7 do not provide any information about mary being in the bedroom. in fact, context sentence 6 states that mary journeyed to the cinema this afternoon, and there is no mention of mary being in the office or bedroom. the only information about mary's previous location is from context sentence 3 in the previous part of the conversation, which stated ""this morning mary moved to"	none	bedroom	True	There is no information about Mary being in the office. Sentence 3 mentioned Mary moved to the office this morning, but the current question is asking about Mary's location before the office, which is already known to be the bedroom (from previous question).		"Reasoning: There is no information about Mary being in the office. Sentence 3 mentioned Mary moved to the office this morning, but the current question is asking about Mary's location before the office, which is already known to be the bedroom (from previous question).
+
+Answer: bedroom"	0.1404	0.0351	False	False	False	True	0
+1553	14	11	3	"*TASK*
+Here are the context sentences:
+9. Julie travelled to the school this morning.
+10. Bill moved to the school this afternoon.
+
+Now, answer the following question:
+Where was Bill before the school?"	park	"the answer ""park"" is based on the information from previous parts of the conversation. in the previous parts, we had context sentence 1: ""this morning bill went back to the park."" this implies that bill was at the park this morning. there is no information about bill's location between this morning and this afternoon, so it is logical to assume that bill was still at the park before moving to the school this afternoon."	partially	park	True	According to sentence 1, Bill went back to the park this morning. Then, according to sentence 10, Bill moved to the school this afternoon. Therefore, Bill was in the park before moving to the school.		"Reasoning: According to sentence 1, Bill went back to the park this morning. Then, according to sentence 10, Bill moved to the school this afternoon. Therefore, Bill was in the park before moving to the school.
+
+Answer: park"	0.0392	0.0392	False	False	False	False	0
+1554	14	11	4	"*TASK*
+Here are the context sentences:
+12. This evening Mary moved to the school.
+13. Bill moved to the bedroom this evening.
+
+Now, answer the following question:
+Where was Bill before the school?"	park	"the answer ""park"" is based on the information from previous parts of the conversation. in the previous parts, we had context sentence 1: ""this morning bill went back to the park."" there is no information about bill's location between this morning and this evening, when bill moved to the bedroom (context sentence 13). the question asks about bill's location before the school, but bill never went to the school in the provided context sentences. bill went to the bedroom this evening"	none	park	True	There is no information about Bill being in the school. Sentence 10 mentioned Bill moved to the school this afternoon, but the current question is asking about Bill's location before the school, which is already known to be the park (from previous question).		"Reasoning: There is no information about Bill being in the school. Sentence 10 mentioned Bill moved to the school this afternoon, but the current question is asking about Bill's location before the school, which is already known to be the park (from previous question).
+
+Answer: park"	0.0351	0.0351	False	False	False	True	0
+1555	14	11	5	"*TASK*
+Here are the context sentences:
+15. This afternoon Julie went to the bedroom.
+16. Yesterday Fred went to the bedroom.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	school	"there is no information about bill's location in the provided context sentences. the context sentences 15 and 16 only mention julie and fred going to the bedroom, but do not provide any information about bill. the answer ""school"" seems incorrect because there is no logical connection between the provided context sentences and bill's location before the bedroom."	none	park	False	There is no information about Bill being in the bedroom. Sentence 13 mentioned Bill moved to the bedroom this evening, but the current question is asking about Bill's location before the bedroom, which is already known to be the park (from previous question).		"Reasoning: There is no information about Bill being in the bedroom. Sentence 13 mentioned Bill moved to the bedroom this evening, but the current question is asking about Bill's location before the bedroom, which is already known to be the park (from previous question).
+
+Answer: park"	0.0175	0.0351	False	False	False	True	0

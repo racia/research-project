@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1801	14	61	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the school yesterday.
+2. This morning Mary moved to the office.
+3. This morning Bill travelled to the school.
+4. Yesterday Bill went back to the office.
+
+Now, answer the following question:
+Where was Mary before the office?"	school	from context line 2, we know that mary moved to the office this morning. to determine where mary was before the office, we need to look at the events that occurred before this morning. according to context line 1, mary went back to the school yesterday. there is no other information about mary's location between yesterday and this morning, so we can logically conclude that mary was at the school before moving to the office this morning.	fully	school	True	From sentence 1, we know Mary was at the school yesterday. Then, from sentence 2, we know she moved to the office this morning. Therefore, Mary was at the school before she moved to the office.		"assistant
+
+Reasoning: From sentence 1, we know Mary was at the school yesterday. Then, from sentence 2, we know she moved to the office this morning. Therefore, Mary was at the school before she moved to the office.
+
+Answer: school"	0.2143	0.0357	False	False	False	False	0
+1802	14	61	2	"*TASK*
+Here are the context sentences:
+6. This morning Fred moved to the kitchen.
+7. Fred moved to the office yesterday.
+
+Now, answer the following question:
+Where was Mary before the office?"	school	the context lines provided (6 and 7) only mention fred's movements and do not provide any new information about mary's location. therefore, we need to refer back to the previous context lines (1-4) to find the answer. from context line 2, we know that mary moved to the office this morning. to determine where mary was before the office, we need to look at the events that occurred before this morning. according to context line 1, mary went	none	not mentioned	False	The context sentences provided do not mention Mary, so we cannot determine where Mary was before the office. The sentences only talk about Fred's movements.		"Reasoning: The context sentences provided do not mention Mary, so we cannot determine where Mary was before the office. The sentences only talk about Fred's movements.
+
+Answer: not mentioned"	0.1081	0.0541	False	False	False	True	0
+1803	14	61	3	"*TASK*
+Here are the context sentences:
+9. Yesterday Julie journeyed to the cinema.
+10. Mary went back to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	office	the new context lines (9 and 10) do not provide direct information about mary's location before the kitchen. however, we can refer back to the previous context lines (1-4) to find the answer. from context line 2, we know that mary moved to the office this morning. there is no information about mary's location between this morning and this afternoon, so we can logically conclude that mary was at the office before moving to the kitchen this afternoon.	partially	office	True	From sentence 2 in the previous context, we know Mary was at the office this morning. There is no other information about Mary's movements between this morning and this afternoon. Therefore, we can infer that Mary was at the office before she went back to the kitchen this afternoon.		"Reasoning: From sentence 2 in the previous context, we know Mary was at the office this morning. There is no other information about Mary's movements between this morning and this afternoon. Therefore, we can infer that Mary was at the office before she went back to the kitchen this afternoon.
+
+Answer: office"	0.0635	0.0317	False	False	False	True	0
+1804	14	61	4	"*TASK*
+Here are the context sentences:
+12. Fred went back to the cinema this afternoon.
+13. Bill moved to the park this afternoon.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	kitchen	the new context lines (12 and 13) do not provide direct information about fred's location before the cinema. however, we can refer back to the previous context lines (6 and 7) to find the answer. from context line 6, we know that fred moved to the kitchen this morning. there is no information about fred's location between this morning and this afternoon, so we can logically conclude that fred was at the kitchen before moving to the cinema this afternoon.	partially	not mentioned	False	There is no information provided about Fred's movements before he went back to the cinema this afternoon. Sentence 7 mentioned that Fred moved to the office yesterday, but there is no connection to his current movement to the cinema.		"Reasoning: There is no information provided about Fred's movements before he went back to the cinema this afternoon. Sentence 7 mentioned that Fred moved to the office yesterday, but there is no connection to his current movement to the cinema.
+
+Answer: not mentioned"	0.0577	0.0385	False	False	False	True	0
+1805	14	61	5	"*TASK*
+Here are the context sentences:
+15. Julie journeyed to the cinema this afternoon.
+16. Julie went to the park this morning.
+
+Now, answer the following question:
+Where was Bill before the park?"	school	the context lines (15 and 16) do not provide direct information about bill's location before the park. however, we can refer back to the previous context lines (1-4) to find the answer. from context line 4, we know that bill went back to the office yesterday. there is no information about bill's location between yesterday and this morning, but from context line 13, we know that bill moved to the park this afternoon. since bill moved to the	none	school	True	There is no information provided about Bill's movements before he moved to the park this afternoon. Sentence 3 mentioned that Bill travelled to the school this morning, but there is no connection to his current movement to the park.		"Reasoning: There is no information provided about Bill's movements before he moved to the park this afternoon. Sentence 3 mentioned that Bill travelled to the school this morning, but there is no connection to his current movement to the park.
+
+Answer: school"	0.0392	0.0392	False	False	False	True	0

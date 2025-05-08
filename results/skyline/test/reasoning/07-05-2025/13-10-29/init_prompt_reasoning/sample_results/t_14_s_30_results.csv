@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1646	14	30	1	"*TASK*
+Here are the context sentences:
+1. Julie moved to the cinema yesterday.
+2. This morning Bill journeyed to the kitchen.
+3. Yesterday Fred went back to the office.
+4. Bill travelled to the bedroom yesterday.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	bedroom	from the context sentences, we know that bill travelled to the bedroom yesterday (sentence 4). this morning, bill journeyed to the kitchen (sentence 2). therefore, it can be logically inferred that bill was in the bedroom before going to the kitchen.	fully	bedroom	True	According to sentence 4, Bill travelled to the bedroom yesterday. Sentence 2 states that Bill journeyed to the kitchen this morning. Therefore, Bill was in the bedroom before going to the kitchen.		"assistant
+
+Reasoning: According to sentence 4, Bill travelled to the bedroom yesterday. Sentence 2 states that Bill journeyed to the kitchen this morning. Therefore, Bill was in the bedroom before going to the kitchen.
+
+Answer: bedroom"	0.0196	0.0392	False	False	False	False	0
+1647	14	30	2	"*TASK*
+Here are the context sentences:
+6. Mary journeyed to the school this morning.
+7. Yesterday Mary travelled to the park.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	bedroom	"the context sentences provided (6 and 7) only mention mary's movements and do not provide any information about bill's movements before going to the kitchen. however, the answer ""bedroom"" suggests that the correct information about bill's movement is already known from previous context sentences. upon reviewing the previous context sentences, we find that sentence 4 states ""bill travelled to the bedroom yesterday."" therefore, it can be logically inferred that bill was in the bedroom before going to the kitchen."	none	bedroom	True	The context sentences provided (6 and 7) do not mention Bill. The information about Bill is in the previous context sentences (1-4). According to sentence 4, Bill travelled to the bedroom yesterday. Sentence 2 states that Bill journeyed to the kitchen this morning. Therefore, Bill was in the bedroom before going to the kitchen.		"Reasoning: The context sentences provided (6 and 7) do not mention Bill. The information about Bill is in the previous context sentences (1-4). According to sentence 4, Bill travelled to the bedroom yesterday. Sentence 2 states that Bill journeyed to the kitchen this morning. Therefore, Bill was in the bedroom before going to the kitchen.
+
+Answer: bedroom"	0.039	0.026	False	False	False	True	0
+1648	14	30	3	"*TASK*
+Here are the context sentences:
+9. This morning Julie travelled to the office.
+10. This afternoon Bill went back to the office.
+
+Now, answer the following question:
+Where was Julie before the office?"	cinema	"the context sentences provided (9 and 10) mention julie and bill's movements to the office, but do not directly provide information about julie's location before the office. however, the answer ""cinema"" suggests that the correct information about julie's previous location is already known from previous context sentences. upon reviewing the previous context sentences, we find that sentence 1 states ""julie moved to the cinema yesterday."" therefore, it can be logically inferred that julie was at the cinema before"	partially	cinema	True	According to sentence 1, Julie moved to the cinema yesterday. There is no other information about Julie's location before the office. Therefore, we can infer that Julie was in the cinema before going to the office.		"Reasoning: According to sentence 1, Julie moved to the cinema yesterday. There is no other information about Julie's location before the office. Therefore, we can infer that Julie was in the cinema before going to the office.
+
+Answer: cinema"	0.04	0.04	False	False	False	True	0
+1649	14	30	4	"*TASK*
+Here are the context sentences:
+12. Bill went back to the kitchen this evening.
+13. Fred went to the cinema this morning.
+
+Now, answer the following question:
+Where was Mary before the school?"	park	"the context sentences provided (12 and 13) mention bill's and fred's movements, but do not directly provide information about mary's location before the school. however, the answer ""park"" suggests that the correct information about mary's previous location is already known from previous context sentences. upon reviewing the previous context sentences, we find that sentence 7 states ""yesterday mary travelled to the park."" since sentence 6 states ""mary journeyed to the school this morning"", it can be"	none	park	True	According to sentence 7, Mary travelled to the park yesterday. Sentence 6 states that Mary journeyed to the school this morning. Therefore, Mary was in the park before going to the school.		"Reasoning: According to sentence 7, Mary travelled to the park yesterday. Sentence 6 states that Mary journeyed to the school this morning. Therefore, Mary was in the park before going to the school.
+
+Answer: park"	0.0638	0.0426	False	False	False	False	0
+1650	14	30	5	"*TASK*
+Here are the context sentences:
+15. Mary went to the office this evening.
+16. Mary went back to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Mary before the office?"	kitchen	"the context sentences provided (15 and 16) mention mary's movements. sentence 16 states ""mary went back to the kitchen this afternoon"", which implies that mary was already at the kitchen at some point before going back to it. sentence 15 states ""mary went to the office this evening"", which means mary went to the office after being at the kitchen. therefore, it can be logically inferred that mary was at the kitchen before going to the office."	fully	kitchen	True	According to sentence 16, Mary went back to the kitchen this afternoon. Sentence 15 states that Mary went to the office this evening. Therefore, Mary was in the kitchen before going to the office.		"Reasoning: According to sentence 16, Mary went back to the kitchen this afternoon. Sentence 15 states that Mary went to the office this evening. Therefore, Mary was in the kitchen before going to the office.
+
+Answer: kitchen"	0.0208	0.0417	False	False	False	False	0

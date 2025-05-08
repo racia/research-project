@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1766	14	54	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Bill journeyed to the bedroom.
+2. Yesterday Fred travelled to the bedroom.
+3. This morning Bill moved to the park.
+4. Yesterday Mary went back to the office.
+
+Now, answer the following question:
+Where was Bill before the park?"	bedroom	from context sentence 3, we know that bill moved to the park this morning. to determine where bill was before the park, we need to look at the previous actions of bill. in context sentence 1, we are told that bill journeyed to the bedroom yesterday. there is no other information about bill's movements between yesterday and this morning, so we can logically conclude that bill was in the bedroom before moving to the park this morning.	fully	bedroom	True	According to sentence 1, yesterday Bill journeyed to the bedroom. Then, according to sentence 3, this morning Bill moved to the park. Therefore, Bill was in the bedroom before moving to the park.		"assistant
+
+Reasoning: According to sentence 1, yesterday Bill journeyed to the bedroom. Then, according to sentence 3, this morning Bill moved to the park. Therefore, Bill was in the bedroom before moving to the park.
+
+Answer: bedroom"	0.1698	0.0377	False	False	False	False	0
+1767	14	54	2	"*TASK*
+Here are the context sentences:
+6. This morning Mary travelled to the bedroom.
+7. Julie went to the park yesterday.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	office	from context sentence 6, we know that mary travelled to the bedroom this morning. to determine where mary was before the bedroom, we need to look at the previous actions of mary. in context sentence 4 from the previous part of the conversation, we are told that mary went back to the office yesterday. there is no other information about mary's movements between yesterday and this morning, so we can logically conclude that mary was in the office before travelling to the bedroom this morning.	partially	office	True	According to sentence 4, yesterday Mary went back to the office. Then, according to sentence 6, this morning Mary travelled to the bedroom. Therefore, Mary was in the office before moving to the bedroom.		"Reasoning: According to sentence 4, yesterday Mary went back to the office. Then, according to sentence 6, this morning Mary travelled to the bedroom. Therefore, Mary was in the office before moving to the bedroom.
+
+Answer: office"	0.16	0.04	False	False	False	False	0
+1768	14	54	3	"*TASK*
+Here are the context sentences:
+9. This morning Fred moved to the park.
+10. This morning Julie travelled to the bedroom.
+
+Now, answer the following question:
+Where was Bill before the park?"	bedroom	from the previous part of the conversation, we know that bill moved to the park this morning (context sentence 3). to determine where bill was before the park, we need to look at the previous actions of bill. in context sentence 1 from the previous part of the conversation, we are told that bill journeyed to the bedroom yesterday. there is no other information about bill's movements between yesterday and this morning, so we can logically conclude that bill was in the bedroom before moving	none	bedroom	True	According to sentence 1, yesterday Bill journeyed to the bedroom. Then, according to sentence 3, this morning Bill moved to the park. Therefore, Bill was in the bedroom before moving to the park.		"Reasoning: According to sentence 1, yesterday Bill journeyed to the bedroom. Then, according to sentence 3, this morning Bill moved to the park. Therefore, Bill was in the bedroom before moving to the park.
+
+Answer: bedroom"	0.04	0.04	False	False	False	False	0
+1769	14	54	4	"*TASK*
+Here are the context sentences:
+12. Bill moved to the cinema this evening.
+13. This afternoon Bill went back to the school.
+
+Now, answer the following question:
+Where was Fred before the park?"	bedroom	to determine where fred was before the park, we need to look at the previous actions of fred. in context sentence 2 from the previous part of the conversation, we are told that fred travelled to the bedroom yesterday. there is no other information about fred's movements between yesterday and this morning, so we can logically conclude that fred was in the bedroom before moving to the park this morning (context sentence 9).	none	bedroom	True	According to sentence 2, yesterday Fred travelled to the bedroom. Then, according to sentence 9, this morning Fred moved to the park. Therefore, Fred was in the bedroom before moving to the park.		"Reasoning: According to sentence 2, yesterday Fred travelled to the bedroom. Then, according to sentence 9, this morning Fred moved to the park. Therefore, Fred was in the bedroom before moving to the park.
+
+Answer: bedroom"	0.1837	0.0408	False	False	False	False	0
+1770	14	54	5	"*TASK*
+Here are the context sentences:
+15. Julie travelled to the kitchen this afternoon.
+16. This afternoon Fred moved to the kitchen.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	park	to determine where fred was before the kitchen, we need to look at the previous actions of fred. in context sentence 9 from the previous part of the conversation, we are told that fred moved to the park this morning. there is no other information about fred's movements between this morning and this afternoon, so we can logically conclude that fred was in the park before moving to the kitchen this afternoon (context sentence 16).	partially	park	True	According to sentence 9, this morning Fred moved to the park. Then, according to sentence 16, this afternoon Fred moved to the kitchen. Therefore, Fred was in the park before moving to the kitchen.		"Reasoning: According to sentence 9, this morning Fred moved to the park. Then, according to sentence 16, this afternoon Fred moved to the kitchen. Therefore, Fred was in the park before moving to the kitchen.
+
+Answer: park"	0.14	0.04	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	2	,	ĠFred	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	15	,	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠFred	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

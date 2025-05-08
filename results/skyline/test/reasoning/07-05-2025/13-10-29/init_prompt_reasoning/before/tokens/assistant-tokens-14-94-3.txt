@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠBill	's	Ġlocation	Ġbefore	Ġthe	Ġkitchen	Ġin	Ġthe	Ġprovided	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġgoing	Ġto	Ġthe	Ġoffice	Ġand	ĠFred	Ġtravelling	Ġto	Ġthe	Ġcinema	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠBill	.	ĠĊĊ	Answer	:	Ġbedroom	Ġ(	from	Ġprevious	Ġcontext	)	<|eot_id|>

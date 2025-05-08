@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+686	12	38	1	"*TASK*
+Here are the context sentences:
+1. Mary and Daniel went back to the kitchen.
+2. Mary and Sandra journeyed to the office.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	from context sentence 1, we know that mary and daniel went back to the kitchen. this implies that daniel's current location is the kitchen, as he was last mentioned to be going to the kitchen with mary. there is no subsequent information that suggests daniel has moved to a different location, so we can conclude that daniel is still in the kitchen.	fully	kitchen	True	In sentence 1, Mary and Daniel went back to the kitchen, which means Daniel is in the kitchen. Sentence 2 only mentions Mary and Sandra, but it doesn't change Daniel's location.		"assistant
+
+Reasoning: In sentence 1, Mary and Daniel went back to the kitchen, which means Daniel is in the kitchen. Sentence 2 only mentions Mary and Sandra, but it doesn't change Daniel's location.
+
+Answer: kitchen"	0.06	0.02	False	False	False	True	0
+687	12	38	2	"*TASK*
+Here are the context sentences:
+4. Mary and John moved to the kitchen.
+5. Daniel and John moved to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from context sentence 5, we know that daniel and john moved to the garden. this implies that daniel's current location is the garden, as he was last mentioned to be moving to the garden with john. there is no subsequent information that suggests daniel has moved to a different location, so we can conclude that daniel is in the garden.	fully	garden	True	In sentence 5, Daniel and John moved to the garden, which means Daniel is in the garden.		"Reasoning: In sentence 5, Daniel and John moved to the garden, which means Daniel is in the garden.
+
+Answer: garden"	0.2143	0.0357	False	False	False	False	0
+688	12	38	3	"*TASK*
+Here are the context sentences:
+7. John and Mary journeyed to the hallway.
+8. Mary and Sandra moved to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from context sentence 8, we know that mary and sandra moved to the kitchen. this implies that sandra's current location is the kitchen, as she was last mentioned to be moving to the kitchen with mary. there is no subsequent information that suggests sandra has moved to a different location, so we can conclude that sandra is in the kitchen.	fully	kitchen	True	In sentence 8, Mary and Sandra moved to the kitchen, which means Sandra is in the kitchen.		"Reasoning: In sentence 8, Mary and Sandra moved to the kitchen, which means Sandra is in the kitchen.
+
+Answer: kitchen"	0.0357	0.0357	False	False	False	False	0
+689	12	38	4	"*TASK*
+Here are the context sentences:
+10. Mary and Sandra moved to the bathroom.
+11. Daniel and John journeyed to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	from context sentence 11, we know that daniel and john journeyed to the bedroom. this implies that john's current location is the bedroom, as he was last mentioned to be moving to the bedroom with daniel. there is no subsequent information that suggests john has moved to a different location, so we can conclude that john is in the bedroom.	fully	bedroom	True	In sentence 11, Daniel and John journeyed to the bedroom, which means John is in the bedroom.		"Reasoning: In sentence 11, Daniel and John journeyed to the bedroom, which means John is in the bedroom.
+
+Answer: bedroom"	0.0	0.0345	False	False	False	False	0
+690	12	38	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Mary journeyed to the bedroom.
+14. Daniel and Sandra travelled to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from context sentence 13, we know that sandra and mary journeyed to the bedroom. however, in context sentence 14, it is mentioned that daniel and sandra travelled to the kitchen. this implies that sandra has moved from the bedroom to the kitchen with daniel. therefore, sandra's current location is the kitchen.	fully	kitchen	True	In sentence 14, Daniel and Sandra travelled to the kitchen, which means Sandra is in the kitchen.		"Reasoning: In sentence 14, Daniel and Sandra travelled to the kitchen, which means Sandra is in the kitchen.
+
+Answer: kitchen"	0.0	0.0357	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġgarden	Ġ(	sentence	Ġ	10	),	Ġbut	Ġthen	ĠMary	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	Ġ(	sentence	Ġ	11	).	ĠTherefore	,	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

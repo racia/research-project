@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1501	14	1	1	"*TASK*
+Here are the context sentences:
+1. This morning Mary moved to the kitchen.
+2. This afternoon Mary moved to the cinema.
+3. Yesterday Bill went to the bedroom.
+4. Yesterday Mary journeyed to the school.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	kitchen	from the context sentences, we know that mary moved to the kitchen in the morning (sentence 1) and then moved to the cinema in the afternoon (sentence 2). since mary moved to the cinema in the afternoon, she must have been in the kitchen before going to the cinema, as there is no other location mentioned in between. therefore, mary was in the kitchen before the cinema.	fully	kitchen	True	According to sentence 2, Mary moved to the cinema this afternoon. To find out where Mary was before the cinema, we need to look at Mary's previous location. Sentence 1 states that Mary moved to the kitchen this morning. Since Mary moved to the cinema in the afternoon, it is logical to assume that Mary was in the kitchen before moving to the cinema.		"assistant
+
+Reasoning: According to sentence 2, Mary moved to the cinema this afternoon. To find out where Mary was before the cinema, we need to look at Mary's previous location. Sentence 1 states that Mary moved to the kitchen this morning. Since Mary moved to the cinema in the afternoon, it is logical to assume that Mary was in the kitchen before moving to the cinema.
+
+Answer: kitchen"	0.119	0.0238	False	False	False	False	0
+1502	14	1	2	"*TASK*
+Here are the context sentences:
+6. Yesterday Fred went back to the cinema.
+7. Bill journeyed to the office this morning.
+
+Now, answer the following question:
+Where was Bill before the office?"	bedroom	from the context sentences, we know that bill went to the office this morning (sentence 7). to determine where bill was before the office, we need to look at the previous information about bill. the only previous information about bill is that he went to the bedroom yesterday (sentence 3). there is no other information about bill's movements between yesterday and this morning, so it is logical to assume that bill was still in the bedroom before going to the office this morning.	partially	bedroom	True	According to sentence 7, Bill journeyed to the office this morning. To find out where Bill was before the office, we need to look at Bill's previous location. Sentence 3 (from previous context) states that Yesterday Bill went to the bedroom. There is no other information about Bill's location between yesterday and this morning, so it is logical to assume that Bill was in the bedroom before moving to the office.		"Reasoning: According to sentence 7, Bill journeyed to the office this morning. To find out where Bill was before the office, we need to look at Bill's previous location. Sentence 3 (from previous context) states that Yesterday Bill went to the bedroom. There is no other information about Bill's location between yesterday and this morning, so it is logical to assume that Bill was in the bedroom before moving to the office.
+
+Answer: bedroom"	0.1957	0.0217	False	False	False	True	0
+1503	14	1	3	"*TASK*
+Here are the context sentences:
+9. Mary went to the school this evening.
+10. This afternoon Bill journeyed to the kitchen.
+
+Now, answer the following question:
+Where was Bill before the office?"	bedroom	the question asks about bill's location before the office, but the provided context sentences (9 and 10) do not mention bill going to the office. however, we can look at the previous context sentences to find the answer. in the previous context sentences, we know that bill journeyed to the office this morning (sentence 7). to determine where bill was before the office, we need to look at the previous information about bill. the only previous information about bill is that he	none	bedroom	True	The question asks about Bill's location before the office, but the new context sentences (9 and 10) do not provide any new information about Bill's location before the office. The previous answer (sentence 3 from previous context) still holds, which states that Bill was in the bedroom before moving to the office.		"Reasoning: The question asks about Bill's location before the office, but the new context sentences (9 and 10) do not provide any new information about Bill's location before the office. The previous answer (sentence 3 from previous context) still holds, which states that Bill was in the bedroom before moving to the office.
+
+Answer: bedroom"	0.1549	0.0282	False	False	False	True	0
+1504	14	1	4	"*TASK*
+Here are the context sentences:
+12. Julie went to the office yesterday.
+13. This morning Fred journeyed to the office.
+
+Now, answer the following question:
+Where was Mary before the school?"	cinema	the question asks about mary's location before the school, and the answer is the cinema. to find the reasoning, we need to look at the previous context sentences about mary. in the previous context sentences, we know that mary moved to the cinema in the afternoon (sentence 2) and then there is no other information about mary's movements until she went to the school this evening (sentence 9). therefore, it is logical to assume that mary was still in the cinema before going	none	cinema	True	According to sentence 9 (from previous context), Mary went to the school this evening. To find out where Mary was before the school, we need to look at Mary's previous location. Sentence 2 (from previous context) states that This afternoon Mary moved to the cinema. Since Mary went to the school in the evening, it is logical to assume that Mary was in the cinema before moving to the school.		"Reasoning: According to sentence 9 (from previous context), Mary went to the school this evening. To find out where Mary was before the school, we need to look at Mary's previous location. Sentence 2 (from previous context) states that This afternoon Mary moved to the cinema. Since Mary went to the school in the evening, it is logical to assume that Mary was in the cinema before moving to the school.
+
+Answer: cinema"	0.0333	0.0222	False	False	False	False	0
+1505	14	1	5	"*TASK*
+Here are the context sentences:
+15. This evening Fred journeyed to the school.
+16. This afternoon Fred journeyed to the bedroom.
+
+Now, answer the following question:
+Where was Mary before the school?"	cinema	the question asks about mary's location before the school, and the answer is the cinema. to find the reasoning, we need to look at the previous context sentences about mary. in the previous context sentences, we know that mary moved to the cinema in the afternoon (sentence 2) and then went to the school this evening (sentence 9). there is no other information about mary's movements between the cinema and the school, so it is logical to assume that mary was still in	none	cinema	True	The new context sentences (15 and 16) do not provide any new information about Mary's location before the school. The previous answer still holds, which states that Mary was in the cinema before moving to the school.		"Reasoning: The new context sentences (15 and 16) do not provide any new information about Mary's location before the school. The previous answer still holds, which states that Mary was in the cinema before moving to the school.
+
+Answer: cinema"	0.0196	0.0392	False	False	False	True	0

@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1686	14	38	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Julie moved to the cinema.
+2. Yesterday Bill travelled to the kitchen.
+3. Mary journeyed to the office yesterday.
+4. Bill moved to the school this morning.
+
+Now, answer the following question:
+Where was Bill before the school?"	kitchen	"from context sentence 2, we know that ""yesterday bill travelled to the kitchen."" this implies that bill was in the kitchen yesterday. then, according to context sentence 4, ""bill moved to the school this morning."" this means that bill was somewhere else before moving to the school this morning. since bill was in the kitchen yesterday, and he moved to the school this morning, it can be logically inferred that bill was in the kitchen before moving to the school."	fully	kitchen	True	"According to sentence 2, ""Yesterday Bill travelled to the kitchen."" This implies that Bill was in the kitchen before moving to the school this morning (sentence 4)."		"assistant
+
+Reasoning: According to sentence 2, ""Yesterday Bill travelled to the kitchen."" This implies that Bill was in the kitchen before moving to the school this morning (sentence 4).
+
+Answer: kitchen"	0.1136	0.0455	False	False	False	False	0
+1687	14	38	2	"*TASK*
+Here are the context sentences:
+6. Mary journeyed to the school this morning.
+7. Bill moved to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Mary before the school?"	office	"from context sentence 3, we know that ""mary journeyed to the office yesterday."" there is no information about mary's movement after that until context sentence 6, which states that ""mary journeyed to the school this morning."" this implies that mary was somewhere before moving to the school this morning. since mary was in the office yesterday and there is no other information about her movement, it can be logically inferred that mary was in the office before moving to the school this morning."	partially	office	True	"According to sentence 3, ""Mary journeyed to the office yesterday."" There is no information about Mary's location between yesterday and this morning, but we can infer that Mary was in the office before moving to the school this morning (sentence 6)."		"Reasoning: According to sentence 3, ""Mary journeyed to the office yesterday."" There is no information about Mary's location between yesterday and this morning, but we can infer that Mary was in the office before moving to the school this morning (sentence 6).
+
+Answer: office"	0.0172	0.0345	False	False	False	True	0
+1688	14	38	3	"*TASK*
+Here are the context sentences:
+9. Julie went back to the park this afternoon.
+10. This morning Julie went back to the bedroom.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	school	"the question asks about bill, but the provided context sentences (9 and 10) only talk about julie's movements. to find the answer, we need to look at previous context sentences that mention bill. from context sentence 4, we know that ""bill moved to the school this morning."" then, from context sentence 7, we know that ""bill moved to the cinema this afternoon."" this implies that bill was in the school before moving to the cinema. therefore, the answer"	none	kitchen	False	"According to sentence 2, ""Yesterday Bill travelled to the kitchen."" There is no information about Bill's location between yesterday and this afternoon, but we can infer that Bill was in the kitchen before moving to the cinema this afternoon (sentence 7)."		"Reasoning: According to sentence 2, ""Yesterday Bill travelled to the kitchen."" There is no information about Bill's location between yesterday and this afternoon, but we can infer that Bill was in the kitchen before moving to the cinema this afternoon (sentence 7).
+
+Answer: kitchen"	0.1053	0.0351	False	False	False	True	0
+1689	14	38	4	"*TASK*
+Here are the context sentences:
+12. Julie journeyed to the office this evening.
+13. This evening Bill travelled to the school.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	cinema	"the question asks about julie's location before the bedroom, but the provided context sentences (12 and 13) do not directly mention julie's movement to the bedroom. to find the answer, we need to look at previous context sentences that mention julie's movements. from context sentence 1, we know that ""julie moved to the cinema yesterday."" then, from context sentence 10, we know that ""this morning julie went back to the bedroom."" this"	none	cinema	True	"According to sentence 1, ""Yesterday Julie moved to the cinema."" There is no information about Julie's location between yesterday and this morning, but we can infer that Julie was in the cinema before moving to the bedroom this morning (sentence 10)."		"Reasoning: According to sentence 1, ""Yesterday Julie moved to the cinema."" There is no information about Julie's location between yesterday and this morning, but we can infer that Julie was in the cinema before moving to the bedroom this morning (sentence 10).
+
+Answer: cinema"	0.0175	0.0351	False	False	False	True	0
+1690	14	38	5	"*TASK*
+Here are the context sentences:
+15. Fred went to the park yesterday.
+16. Mary went to the office this afternoon.
+
+Now, answer the following question:
+Where was Mary before the office?"	school	"from context sentence 3, we know that ""mary journeyed to the office yesterday."" however, this sentence is contradicted by context sentence 16, which states that ""mary went to the office this afternoon."" this implies that mary was somewhere else before going to the office this afternoon. from context sentence 6, we know that ""mary journeyed to the school this morning."" since mary was in the school this morning and went to the office this afternoon, it can be logically"	partially	school	True	"According to sentence 6, ""Mary journeyed to the school this morning."" There is no information about Mary's location between this morning and this afternoon, but we can infer that Mary was in the school before moving to the office this afternoon (sentence 16)."		"Reasoning: According to sentence 6, ""Mary journeyed to the school this morning."" There is no information about Mary's location between this morning and this afternoon, but we can infer that Mary was in the school before moving to the office this afternoon (sentence 16).
+
+Answer: school"	0.1	0.0333	False	False	False	True	0

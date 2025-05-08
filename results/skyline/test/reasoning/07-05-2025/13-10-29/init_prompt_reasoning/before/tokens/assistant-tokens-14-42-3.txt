@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	1	,	Ġ"	Mary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġyesterday	."	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġkitchen	Ġbefore	Ġmoving	Ġto	Ġthe	Ġpark	Ġ(	sentence	Ġ	6	).ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

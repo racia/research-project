@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovided	Ġdo	Ġnot	Ġmention	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġschool	.	ĠSentence	Ġ	9	Ġonly	Ġtells	Ġus	Ġthat	ĠJulie	Ġtravelled	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġinformation	Ġabout	Ġher	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

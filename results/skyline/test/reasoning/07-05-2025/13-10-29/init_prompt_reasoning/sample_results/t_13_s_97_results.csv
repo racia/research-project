@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1481	13	97	1	"*TASK*
+Here are the context sentences:
+1. John and Mary moved to the bedroom.
+2. After that they went back to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from the context sentences, we know that john and mary moved to the bedroom (sentence 1), but then they went back to the kitchen (sentence 2). since mary was with john in both actions, it can be logically inferred that mary is currently in the kitchen with john.	fully	kitchen	True	According to the context sentences, John and Mary moved to the bedroom (sentence 1) and then went back to the kitchen (sentence 2). This implies that Mary is currently in the kitchen.		"assistant
+
+Reasoning: According to the context sentences, John and Mary moved to the bedroom (sentence 1) and then went back to the kitchen (sentence 2). This implies that Mary is currently in the kitchen.
+
+Answer: kitchen"	0.26	0.04	False	False	False	False	0
+1482	13	97	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Mary went to the office.
+5. Following that they went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that daniel and mary went to the office (sentence 4), and then they went to the bathroom (sentence 5). since mary was with daniel in both actions, it can be logically inferred that mary is currently in the bathroom with daniel.	fully	bathroom	True	According to the context sentences, Daniel and Mary went to the office (sentence 4) and then went to the bathroom (sentence 5). This implies that Mary is currently in the bathroom.		"Reasoning: According to the context sentences, Daniel and Mary went to the office (sentence 4) and then went to the bathroom (sentence 5). This implies that Mary is currently in the bathroom.
+
+Answer: bathroom"	0.1739	0.0435	False	False	False	False	0
+1483	13	97	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John went to the office.
+8. After that they travelled to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"there is no mention of mary in the provided context sentences (7 and 8). the context only talks about daniel and john moving to the office and then to the hallway. however, the answer suggests that mary is in the bathroom. this information must have been provided in a previous part of the conversation, which is not included in the current context. therefore, the answer ""bathroom"" must be based on previous information that is not shown here."	none	bathroom	True	The context sentences (7 and 8) only mention Daniel and John, but not Mary. To find Mary's location, we need to refer to the previous context sentences. According to sentence 5, Mary was last seen in the bathroom.		"Reasoning: The context sentences (7 and 8) only mention Daniel and John, but not Mary. To find Mary's location, we need to refer to the previous context sentences. According to sentence 5, Mary was last seen in the bathroom.
+
+Answer: bathroom"	0.0893	0.0357	False	False	False	True	0
+1484	13	97	4	"*TASK*
+Here are the context sentences:
+10. John and Sandra went back to the bedroom.
+11. Following that they moved to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that john and sandra went back to the bedroom (sentence 10), and then they moved to the hallway (sentence 11). since john was with sandra in both actions, it can be logically inferred that john is currently in the hallway with sandra.	fully	hallway	True	According to the context sentences, John and Sandra went back to the bedroom (sentence 10) and then moved to the hallway (sentence 11). This implies that John is currently in the hallway.		"Reasoning: According to the context sentences, John and Sandra went back to the bedroom (sentence 10) and then moved to the hallway (sentence 11). This implies that John is currently in the hallway.
+
+Answer: hallway"	0.0213	0.0426	False	False	False	False	0
+1485	13	97	5	"*TASK*
+Here are the context sentences:
+13. John and Mary journeyed to the kitchen.
+14. Afterwards they went back to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that john and mary journeyed to the kitchen (sentence 13), and then they went back to the hallway (sentence 14). since john was with mary in both actions, it can be logically inferred that john is currently in the hallway with mary.	fully	hallway	True	According to the context sentences, John and Mary journeyed to the kitchen (sentence 13) and then went back to the hallway (sentence 14). This implies that John is currently in the hallway.		"Reasoning: According to the context sentences, John and Mary journeyed to the kitchen (sentence 13) and then went back to the hallway (sentence 14). This implies that John is currently in the hallway.
+
+Answer: hallway"	0.1667	0.0417	False	False	False	False	0

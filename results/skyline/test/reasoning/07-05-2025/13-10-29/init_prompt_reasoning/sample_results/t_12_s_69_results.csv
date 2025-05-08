@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+841	12	69	1	"*TASK*
+Here are the context sentences:
+1. John and Sandra went to the bedroom.
+2. John and Daniel moved to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"from context sentence 2, ""john and daniel moved to the garden"", we can infer that daniel is in the garden because the sentence explicitly states that daniel moved to the garden along with john."	fully	garden	True	According to sentence 2, John and Daniel moved to the garden. Therefore, Daniel is in the garden.		"assistant
+
+Reasoning: According to sentence 2, John and Daniel moved to the garden. Therefore, Daniel is in the garden.
+
+Answer: garden"	0.0	0.0312	False	False	False	False	0
+842	12	69	2	"*TASK*
+Here are the context sentences:
+4. John and Mary went to the hallway.
+5. Daniel and Mary travelled to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"from context sentence 5, ""daniel and mary travelled to the kitchen"", we can infer that daniel is in the kitchen because the sentence explicitly states that daniel travelled to the kitchen along with mary."	fully	kitchen	True	According to sentence 5, Daniel and Mary travelled to the kitchen. Therefore, Daniel is in the kitchen.		"Reasoning: According to sentence 5, Daniel and Mary travelled to the kitchen. Therefore, Daniel is in the kitchen.
+
+Answer: kitchen"	0.2069	0.0345	False	False	False	False	0
+843	12	69	3	"*TASK*
+Here are the context sentences:
+7. Mary and Sandra moved to the hallway.
+8. Mary and Daniel travelled to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	"from context sentence 8, ""mary and daniel travelled to the office"", we can infer that mary is in the office because the sentence explicitly states that mary travelled to the office along with daniel. this information overrides the previous location of mary mentioned in sentence 7, ""mary and sandra moved to the hallway"", as it provides a more recent and updated location for mary."	fully	office	True	According to sentence 8, Mary and Daniel travelled to the office. Therefore, Mary is in the office.		"Reasoning: According to sentence 8, Mary and Daniel travelled to the office. Therefore, Mary is in the office.
+
+Answer: office"	0.0	0.0345	False	False	False	False	0
+844	12	69	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Mary went to the garden.
+11. Mary and John went to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	"from context sentence 11, ""mary and john went to the office"", we can infer that mary is in the office because the sentence explicitly states that mary went to the office along with john. this information overrides the previous location of mary mentioned in sentence 10, ""sandra and mary went to the garden"", as it provides a more recent and updated location for mary."	fully	office	True	According to sentence 11, Mary and John went to the office. Therefore, Mary is in the office.		"Reasoning: According to sentence 11, Mary and John went to the office. Therefore, Mary is in the office.
+
+Answer: office"	0.069	0.0345	False	False	False	False	0
+845	12	69	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John travelled to the kitchen.
+14. Daniel and John went back to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"from context sentence 14, ""daniel and john went back to the office"", we can infer that daniel is in the office because the sentence explicitly states that daniel went back to the office along with john. this information overrides the previous location of daniel mentioned in sentence 13, ""daniel and john travelled to the kitchen"", as it provides a more recent and updated location for daniel."	fully	office	True	According to sentence 14, Daniel and John went back to the office. Therefore, Daniel is in the office.		"Reasoning: According to sentence 14, Daniel and John went back to the office. Therefore, Daniel is in the office.
+
+Answer: office"	0.0	0.0333	False	False	False	False	0

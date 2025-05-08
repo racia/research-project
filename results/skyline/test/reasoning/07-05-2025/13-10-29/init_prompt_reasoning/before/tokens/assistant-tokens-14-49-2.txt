@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠFred	Ġwas	Ġat	Ġthe	Ġschool	Ġyesterday	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	6	,	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	.	ĠTherefore	,	ĠFred	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

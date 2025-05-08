@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+466	11	94	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the hallway.
+2. After that she moved to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	the context sentences describe mary's movements, first going to the hallway and then moving to the kitchen. since the last movement mentioned is her moving to the kitchen, it can be logically inferred that mary is currently in the kitchen.	fully	kitchen	True	According to the context sentences, Mary went to the hallway (1) and then moved to the kitchen (2), so her current location is the kitchen.		"assistant
+
+Reasoning: According to the context sentences, Mary went to the hallway (1) and then moved to the kitchen (2), so her current location is the kitchen.
+
+Answer: kitchen"	0.1951	0.0488	False	False	False	False	0
+467	11	94	2	"*TASK*
+Here are the context sentences:
+4. Sandra travelled to the garden.
+5. Then she travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	the context sentences describe sandra's movements, first travelling to the garden and then travelling to the bedroom. since the last movement mentioned is her travelling to the bedroom, it can be logically inferred that sandra is currently in the bedroom.	fully	bedroom	True	According to the context sentences, Sandra travelled to the garden (4) and then travelled to the bedroom (5), so her current location is the bedroom.		"Reasoning: According to the context sentences, Sandra travelled to the garden (4) and then travelled to the bedroom (5), so her current location is the bedroom.
+
+Answer: bedroom"	0.1842	0.0526	False	False	False	False	0
+468	11	94	3	"*TASK*
+Here are the context sentences:
+7. John went to the hallway.
+8. Following that he went to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	the context sentences describe john's movements, first going to the hallway and then going to the kitchen. since the last movement mentioned is his going to the kitchen, it can be logically inferred that john is currently in the kitchen.	fully	kitchen	True	According to the context sentences, John went to the hallway (7) and then went to the kitchen (8), so his current location is the kitchen.		"Reasoning: According to the context sentences, John went to the hallway (7) and then went to the kitchen (8), so his current location is the kitchen.
+
+Answer: kitchen"	0.1053	0.0526	False	False	False	False	0
+469	11	94	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the garden.
+11. Afterwards she went back to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	"the context sentences describe mary's movements, not john's. there is no information provided about john's movements or location. the answer ""kitchen"" seems to be incorrect, as the context only talks about mary's movements and does not mention john at all."	none	kitchen	True	The context sentences (10-11) are about Mary's movements, but the question asks about John's location. The previous information about John's location is that he is in the kitchen (8).		"Reasoning: The context sentences (10-11) are about Mary's movements, but the question asks about John's location. The previous information about John's location is that he is in the kitchen (8).
+
+Answer: kitchen"	0.0426	0.0426	False	False	False	True	0
+470	11	94	5	"*TASK*
+Here are the context sentences:
+13. Mary travelled to the bedroom.
+14. After that she moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	the context sentences describe mary's movements, first travelling to the bedroom and then moving to the hallway. since the last movement mentioned is her moving to the hallway, it can be logically inferred that mary is currently in the hallway.	fully	hallway	True	According to the context sentences, Mary travelled to the bedroom (13) and then moved to the hallway (14), so her current location is the hallway.		"Reasoning: According to the context sentences, Mary travelled to the bedroom (13) and then moved to the hallway (14), so her current location is the hallway.
+
+Answer: hallway"	0.1579	0.0526	False	False	False	False	0

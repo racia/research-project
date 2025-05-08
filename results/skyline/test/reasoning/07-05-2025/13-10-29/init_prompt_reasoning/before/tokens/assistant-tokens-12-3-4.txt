@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	10	,	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	Ġwith	ĠJohn	,	Ġwhich	Ġis	Ġthe	Ġmost	Ġrecent	Ġlocation	Ġmentioned	Ġfor	ĠSandra	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

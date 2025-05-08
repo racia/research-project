@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1511	14	3	1	"*TASK*
+Here are the context sentences:
+1. Fred travelled to the kitchen yesterday.
+2. Julie journeyed to the park yesterday.
+3. Mary journeyed to the park yesterday.
+4. This morning Mary journeyed to the cinema.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	park	from context line 4, we know that mary journeyed to the cinema this morning. to find out where mary was before the cinema, we need to look at mary's previous location. from context line 3, we know that mary journeyed to the park yesterday. there is no information about mary's movement between yesterday and this morning, so we can logically assume that mary was still at the park before she journeyed to the cinema this morning.	fully	park	True	According to sentence 3, Mary journeyed to the park yesterday. Then, according to sentence 4, this morning Mary journeyed to the cinema. Therefore, Mary was at the park before going to the cinema.		"assistant
+
+Reasoning: According to sentence 3, Mary journeyed to the park yesterday. Then, according to sentence 4, this morning Mary journeyed to the cinema. Therefore, Mary was at the park before going to the cinema.
+
+Answer: park"	0.2222	0.037	False	False	False	False	0
+1512	14	3	2	"*TASK*
+Here are the context sentences:
+6. Mary moved to the kitchen this evening.
+7. This afternoon Mary moved to the office.
+
+Now, answer the following question:
+Where was Mary before the office?"	cinema	from context line 7, we know that mary moved to the office this afternoon. to find out where mary was before the office, we need to look at mary's previous location. there is no information about mary's movement between the morning and the afternoon, so we can look at the previous context lines. from context line 4, we know that mary journeyed to the cinema this morning. there is no information about mary's movement between the morning and the afternoon, so we	partially	not mentioned	False	According to sentence 7, This afternoon Mary moved to the office. Since Mary moved to the office in the afternoon, she must have been somewhere else before that. There is no information about Mary's location before the afternoon, but sentence 6 mentions that Mary moved to the kitchen this evening, which is after the afternoon. Therefore, Mary was not at the kitchen before the office. The only other location mentioned in the context sentences is the cinema (sentence 4), but there is no direct connection between the cinema and the office.		"Reasoning: According to sentence 7, This afternoon Mary moved to the office. Since Mary moved to the office in the afternoon, she must have been somewhere else before that. There is no information about Mary's location before the afternoon, but sentence 6 mentions that Mary moved to the kitchen this evening, which is after the afternoon. Therefore, Mary was not at the kitchen before the office. The only other location mentioned in the context sentences is the cinema (sentence 4), but there is no direct connection between the cinema and the office. 
+
+Answer: not mentioned"	0.1121	0.0172	False	False	False	True	0
+1513	14	3	3	"*TASK*
+Here are the context sentences:
+9. This morning Fred went to the bedroom.
+10. This morning Julie went to the bedroom.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	park	from context line 10, we know that julie went to the bedroom this morning. to find out where julie was before the bedroom, we need to look at julie's previous location. there is no information about julie's movement between yesterday and this morning, so we can look at the previous context lines. from context line 2, we know that julie journeyed to the park yesterday. there is no information about julie's movement between yesterday and this morning, so we can logically assume	partially	not mentioned	False	There is no information provided about Julie's location before she went to the bedroom. Sentence 10 only mentions that Julie went to the bedroom this morning, but it does not provide any information about her previous location.		"Reasoning: There is no information provided about Julie's location before she went to the bedroom. Sentence 10 only mentions that Julie went to the bedroom this morning, but it does not provide any information about her previous location.
+
+Answer: not mentioned"	0.08	0.04	False	False	False	True	0
+1514	14	3	4	"*TASK*
+Here are the context sentences:
+12. Julie travelled to the kitchen this afternoon.
+13. Yesterday Bill journeyed to the office.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	park	the question asks about julie's location before the bedroom, but the provided context lines (12 and 13) do not directly mention julie's location before the bedroom. however, we can look at the previous context lines. from context line 10, we know that julie went to the bedroom this morning. to find out where julie was before the bedroom, we can look at the previous context lines again. from context line 2, we know that julie journeyed to the park yesterday	none	not mentioned	False	There is no information provided about Julie's location before the bedroom. The context sentences only mention Julie's travel to the kitchen this afternoon (sentence 12) and Bill's journey to the office yesterday (sentence 13), but they do not provide any information about Julie's location before the bedroom.		"Reasoning: There is no information provided about Julie's location before the bedroom. The context sentences only mention Julie's travel to the kitchen this afternoon (sentence 12) and Bill's journey to the office yesterday (sentence 13), but they do not provide any information about Julie's location before the bedroom.
+
+Answer: not mentioned"	0.0896	0.0299	False	False	False	True	0
+1515	14	3	5	"*TASK*
+Here are the context sentences:
+15. Fred travelled to the bedroom this evening.
+16. Fred moved to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	cinema	from context line 15, we know that fred travelled to the bedroom this evening. to find out where fred was before the bedroom, we need to look at fred's previous location. from context line 16, we know that fred moved to the cinema this afternoon. there is no information about fred's movement between the afternoon and the evening, so we can logically assume that fred was still at the cinema before he travelled to the bedroom this evening.	fully	cinema	True	According to sentence 16, Fred moved to the cinema this afternoon. Then, according to sentence 15, Fred travelled to the bedroom this evening. Therefore, Fred was at the cinema before going to the bedroom.		"Reasoning: According to sentence 16, Fred moved to the cinema this afternoon. Then, according to sentence 15, Fred travelled to the bedroom this evening. Therefore, Fred was at the cinema before going to the bedroom.
+
+Answer: cinema"	0.02	0.04	False	False	False	False	0

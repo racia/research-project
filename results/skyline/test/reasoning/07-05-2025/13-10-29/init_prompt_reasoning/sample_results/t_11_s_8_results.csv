@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+36	11	8	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the hallway.
+2. Afterwards she went to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"the context sentences describe mary's movements, first traveling to the hallway and then going to the kitchen. since the second sentence mentions that she went to the kitchen ""afterwards"", it implies that she moved from the hallway to the kitchen. therefore, her current location is the kitchen."	fully	kitchen	True	According to the context sentences, Mary travelled to the hallway and afterwards went to the kitchen. Therefore, her current location is the kitchen.		"assistant
+
+Reasoning: According to the context sentences, Mary travelled to the hallway and afterwards went to the kitchen. Therefore, her current location is the kitchen.
+
+Answer: kitchen"	0.1892	0.0541	False	False	False	False	0
+37	11	8	2	"*TASK*
+Here are the context sentences:
+4. Daniel went back to the bedroom.
+5. After that he journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"the context sentences describe daniel's movements, but there is no mention of mary's movements or location. the question asks about mary's location, but the provided context only talks about daniel. therefore, it is not possible to determine mary's location based on the given information. the answer ""kitchen"" seems to be incorrect, as there is no mention of mary being in the kitchen."	none	kitchen	True	The context sentences provided do not mention Mary's current location. The previous information about Mary's location was that she went to the kitchen (sentence 2). There is no update about Mary's location since then.		"Reasoning: The context sentences provided do not mention Mary's current location. The previous information about Mary's location was that she went to the kitchen (sentence 2). There is no update about Mary's location since then.
+
+Answer: kitchen"	0.0816	0.0408	False	False	False	True	0
+38	11	8	3	"*TASK*
+Here are the context sentences:
+7. Daniel went back to the office.
+8. After that he journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"the context sentences describe daniel's movements, first going back to the office and then journeying to the hallway. the phrase ""after that"" in sentence 8 implies that daniel's movement to the hallway occurred after he went back to the office. therefore, his current location is the hallway, as he moved there after being in the office."	fully	hallway	True	According to the context sentences, Daniel went back to the office and afterwards journeyed to the hallway. Therefore, his current location is the hallway.		"Reasoning: According to the context sentences, Daniel went back to the office and afterwards journeyed to the hallway. Therefore, his current location is the hallway.
+
+Answer: hallway"	0.0556	0.0556	False	False	False	False	0
+39	11	8	4	"*TASK*
+Here are the context sentences:
+10. Mary journeyed to the hallway.
+11. Afterwards she went to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"the context sentences describe mary's movements, first journeying to the hallway and then going to the kitchen ""afterwards"". this implies that mary moved from the hallway to the kitchen, so her current location is the kitchen."	fully	kitchen	True	According to the context sentences, Mary journeyed to the hallway and afterwards went to the kitchen. Therefore, her current location is the kitchen.		"Reasoning: According to the context sentences, Mary journeyed to the hallway and afterwards went to the kitchen. Therefore, her current location is the kitchen.
+
+Answer: kitchen"	0.0	0.0571	False	False	False	False	0
+40	11	8	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the office.
+14. Following that she travelled to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"the context sentences describe mary's movements, but there is no mention of daniel's movements or location. the question asks about daniel's location, but the provided context only talks about mary. therefore, it is not possible to determine daniel's location based on the given information. the answer ""hallway"" seems to be incorrect, as there is no mention of daniel being in the hallway."	none	hallway	True	The context sentences provided do not update Daniel's location. The previous information about Daniel's location was that he journeyed to the hallway (sentence 8). There is no new information about Daniel's location.		"Reasoning: The context sentences provided do not update Daniel's location. The previous information about Daniel's location was that he journeyed to the hallway (sentence 8). There is no new information about Daniel's location.
+
+Answer: hallway"	0.0	0.0417	False	False	False	True	0

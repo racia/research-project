@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	11	,	ĠMary	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġmeans	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

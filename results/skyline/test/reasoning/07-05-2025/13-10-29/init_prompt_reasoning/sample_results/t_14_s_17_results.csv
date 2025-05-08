@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1581	14	17	1	"*TASK*
+Here are the context sentences:
+1. Fred moved to the park this morning.
+2. Yesterday Fred went back to the kitchen.
+
+Now, answer the following question:
+Where was Fred before the park?"	kitchen	from the context sentences, we know that fred moved to the park this morning (sentence 1). to determine where fred was before the park, we need to look at the previous location mentioned in the context sentences. sentence 2 states that yesterday fred went back to the kitchen. since fred went back to the kitchen, it implies that the kitchen was a previous location of fred. therefore, before moving to the park this morning, fred was in the kitchen.	fully	kitchen	True	From sentence 2, we know that yesterday Fred was in the kitchen. Since sentence 1 mentions that Fred moved to the park this morning, it implies that Fred was somewhere else before moving to the park, and that somewhere else is the kitchen.		"assistant
+
+Reasoning: From sentence 2, we know that yesterday Fred was in the kitchen. Since sentence 1 mentions that Fred moved to the park this morning, it implies that Fred was somewhere else before moving to the park, and that somewhere else is the kitchen.
+
+Answer: kitchen"	0.2131	0.0328	False	False	False	True	0
+1582	14	17	2	"*TASK*
+Here are the context sentences:
+4. Yesterday Bill moved to the office.
+5. Julie journeyed to the school yesterday.
+
+Now, answer the following question:
+Where was Fred before the park?"	kitchen	"there is no information about fred in the provided context sentences. the context sentences only mention bill and julie, and their movements to the office and school respectively. there is no mention of fred or the park. the answer ""kitchen"" seems to be unrelated to the provided context. it appears that the correct context sentences for this question are missing."	none	not mentioned	False	There is no mention of Fred in the given context sentences. The sentences only talk about Bill and Julie. Therefore, we cannot determine where Fred was before the park based on the provided information.		"Reasoning: There is no mention of Fred in the given context sentences. The sentences only talk about Bill and Julie. Therefore, we cannot determine where Fred was before the park based on the provided information.
+
+Answer: not mentioned"	0.1087	0.0435	False	False	False	True	0
+1583	14	17	3	"*TASK*
+Here are the context sentences:
+7. Fred went back to the park this evening.
+8. This afternoon Fred went to the office.
+
+Now, answer the following question:
+Where was Fred before the office?"	park	from the context sentences, we know that this afternoon fred went to the office (sentence 8). to determine where fred was before the office, we need to look at the previous location mentioned in the context sentences. sentence 7 states that fred went back to the park this evening, which implies that fred was at the park at some point before going to the office. since fred went back to the park, it means that fred was already at the park previously. therefore, before going	partially	park	True	From sentence 2 (previous context), we know that yesterday Fred was in the kitchen. From sentence 8, we know that this afternoon Fred went to the office. Since Fred went back to the park this evening (sentence 7), it implies that Fred was in the park before going to the office this afternoon.		"Reasoning: From sentence 2 (previous context), we know that yesterday Fred was in the kitchen. From sentence 8, we know that this afternoon Fred went to the office. Since Fred went back to the park this evening (sentence 7), it implies that Fred was in the park before going to the office this afternoon.
+
+Answer: park"	0.0704	0.0282	False	False	False	False	0
+1584	14	17	4	"*TASK*
+Here are the context sentences:
+10. Bill moved to the bedroom this morning.
+11. This morning Julie went to the office.
+
+Now, answer the following question:
+Where was Fred before the park?"	office	"there is no information about fred in the provided context sentences. the context sentences only mention bill and julie, and their movements to the bedroom and office respectively. there is no mention of fred or the park. the answer ""office"" seems to be unrelated to the provided context. it appears that the correct context sentences for this question are missing."	none	kitchen	False	From sentence 2 (previous context), we know that yesterday Fred was in the kitchen. There is no new information that updates Fred's location before going to the park.		"Reasoning: From sentence 2 (previous context), we know that yesterday Fred was in the kitchen. There is no new information that updates Fred's location before going to the park.
+
+Answer: kitchen"	0.0976	0.0488	False	False	False	True	0
+1585	14	17	5	"*TASK*
+Here are the context sentences:
+13. Julie journeyed to the park this afternoon.
+14. Mary travelled to the cinema yesterday.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	office	"there is no information about bill or the bedroom in the provided context sentences. the context sentences only mention julie and mary, and their movements to the park and cinema respectively. there is no mention of bill or the bedroom. the answer ""office"" seems to be unrelated to the provided context. it appears that the correct context sentences for this question are missing."	none	not mentioned	False	There is no information provided about Bill's location before the bedroom. Sentence 10 only mentions that Bill moved to the bedroom this morning, but it doesn't provide any information about his previous location.		"Reasoning: There is no information provided about Bill's location before the bedroom. Sentence 10 only mentions that Bill moved to the bedroom this morning, but it doesn't provide any information about his previous location.
+
+Answer: not mentioned"	0.0	0.0426	False	False	False	True	0

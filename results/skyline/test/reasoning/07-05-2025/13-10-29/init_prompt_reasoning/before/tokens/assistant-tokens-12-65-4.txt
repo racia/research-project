@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	Ġin	Ġthe	Ġprovided	Ġcontext	Ġsentences	.	ĠThe	Ġlast	Ġmention	Ġof	ĠJohn	Ġwas	Ġin	Ġsentence	Ġ	8	,	Ġwhere	Ġhe	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġwith	ĠSandra	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

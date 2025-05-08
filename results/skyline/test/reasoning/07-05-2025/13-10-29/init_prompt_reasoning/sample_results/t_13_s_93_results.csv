@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1461	13	93	1	"*TASK*
+Here are the context sentences:
+1. Sandra and John moved to the hallway.
+2. Afterwards they travelled to the office.
+
+Now, answer the following question:
+Where is John?"	office	from the context sentences, we know that sandra and john moved to the hallway (sentence 1) and afterwards they travelled to the office (sentence 2). since john was with sandra in both locations, it can be logically inferred that john is currently in the office, which is the last location mentioned in the sequence of events.	fully	office	True	According to the context sentences, John and Sandra moved to the hallway and then travelled to the office. Therefore, John's current location is the office.		"assistant
+
+Reasoning: According to the context sentences, John and Sandra moved to the hallway and then travelled to the office. Therefore, John's current location is the office.
+
+Answer: office"	0.25	0.05	False	False	False	False	0
+1462	13	93	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Sandra journeyed to the hallway.
+5. After that they journeyed to the bedroom.
+
+Now, answer the following question:
+Where is John?"	office	"the context sentences (4 and 5) mention daniel and sandra, but not john. however, the answer ""office"" suggests that john's location is already known from previous context. since the previous context (sentences 1 and 2) mentioned john moving to the hallway and then to the office, it can be inferred that john is still in the office, as there is no new information about john's movement."	none	office	True	The context sentences mention Daniel and Sandra's movements, but there is no new information about John's location. The last known location of John was the office (from the previous context).		"Reasoning: The context sentences mention Daniel and Sandra's movements, but there is no new information about John's location. The last known location of John was the office (from the previous context).
+
+Answer: office"	0.1628	0.0465	False	False	False	True	0
+1463	13	93	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary went back to the hallway.
+8. Then they travelled to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that sandra and mary went back to the hallway (sentence 7) and then they travelled to the bedroom (sentence 8). since mary was with sandra in both locations, it can be logically inferred that mary is currently in the bedroom, which is the last location mentioned in the sequence of events.	fully	bedroom	True	According to the context sentences, Sandra and Mary went back to the hallway and then travelled to the bedroom. Therefore, Mary's current location is the bedroom.		"Reasoning: According to the context sentences, Sandra and Mary went back to the hallway and then travelled to the bedroom. Therefore, Mary's current location is the bedroom.
+
+Answer: bedroom"	0.0263	0.0526	False	False	False	False	0
+1464	13	93	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Mary moved to the office.
+11. Then they went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that daniel and mary moved to the office (sentence 10) and then they went back to the bedroom (sentence 11). since mary was with daniel in both locations, it can be logically inferred that mary is currently in the bedroom, which is the last location mentioned in the sequence of events.	fully	bedroom	True	According to the context sentences, Daniel and Mary moved to the office and then went back to the bedroom. Therefore, Mary's current location is the bedroom.		"Reasoning: According to the context sentences, Daniel and Mary moved to the office and then went back to the bedroom. Therefore, Mary's current location is the bedroom.
+
+Answer: bedroom"	0.0263	0.0526	False	False	False	False	0
+1465	13	93	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Daniel moved to the garden.
+14. Following that they went to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from the context sentences, we know that sandra and daniel moved to the garden (sentence 13) and following that they went to the hallway (sentence 14). since daniel was with sandra in both locations, it can be logically inferred that daniel is currently in the hallway, which is the last location mentioned in the sequence of events.	fully	hallway	True	According to the context sentences, Sandra and Daniel moved to the garden and then went to the hallway. Therefore, Daniel's current location is the hallway.		"Reasoning: According to the context sentences, Sandra and Daniel moved to the garden and then went to the hallway. Therefore, Daniel's current location is the hallway.
+
+Answer: hallway"	0.0	0.0541	False	False	False	False	0
