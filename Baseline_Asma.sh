@@ -69,7 +69,7 @@ export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 
 # declare array of config paths and names, e.g. "/path/to/config config_name"
 declare -a CONFIGS=(
-  "/home/hd/hd_hd/hd_ip303/research-project/settings/baseline/config baseline_test_6_10"
+  "$HOME/research-project/settings/baseline/config baseline_test_6_10"
 )
 
 for CONFIG in "${CONFIGS[@]}"
