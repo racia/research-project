@@ -1,0 +1,78 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1851	5	51	1	"*TASK*
+Here are the context sentences:
+1. Jeff went back to the office.
+2. Jeff went to the bedroom.
+3. Mary journeyed to the garden.
+4. Fred got the apple there.
+5. Bill travelled to the office.
+6. Mary travelled to the hallway.
+7. Mary went to the bedroom.
+8. Bill journeyed to the hallway.
+9. Fred went back to the kitchen.
+10. Fred got the milk there.
+11. Fred moved to the office.
+12. Fred went to the kitchen.
+13. Fred travelled to the office.
+14. Bill went back to the kitchen.
+15. Mary journeyed to the hallway.
+16. Fred left the apple.
+17. Fred grabbed the apple there.
+18. Mary journeyed to the bathroom.
+19. Fred put down the apple.
+20. Fred picked up the football there.
+21. Jeff journeyed to the kitchen.
+22. Fred took the apple there.
+23. Mary went to the garden.
+24. Jeff travelled to the bathroom.
+25. Mary went to the bedroom.
+26. Fred discarded the football.
+27. Bill went back to the hallway.
+28. Fred dropped the milk.
+29. Fred moved to the bedroom.
+30. Bill journeyed to the garden.
+31. Fred gave the apple to Mary.
+32. Mary handed the apple to Fred.
+
+Now, answer the following question:
+What did Mary give to Fred?"	apple	from the context sentences, we can see that mary handed the apple to fred in sentence 32. however, the question asks what mary gave to fred, which implies that mary gave the apple to fred at some point in the past.	fully	Nothing	False	The context sentences do not mention Mary giving anything to Fred. In fact, sentence 32 shows Mary handing the apple to Fred, but it does not imply that Mary gave something to Fred in the first place.		"Reasoning: The context sentences do not mention Mary giving anything to Fred. In fact, sentence 32 shows Mary handing the apple to Fred, but it does not imply that Mary gave something to Fred in the first place.
+
+Answer: Nothing"	0.0612	0.0204	False	False	False	True	0
+1852	5	51	2	"*TASK*
+Here are the context sentences:
+34. Jeff went to the kitchen.
+35. Bill travelled to the bathroom.
+
+Now, answer the following question:
+Who received the apple?"	fred	from the provided context sentences (34 and 35), we don't have any direct information about the apple or who received it. however, we can look at the previous parts of the conversation history to find the relevant information.	none	Not mentioned	False	The context sentences do not mention anyone receiving an apple. The only mention of an apple is in sentence 4, where Fred got the apple, but it does not specify who gave it to him or who received it.		"Reasoning: The context sentences do not mention anyone receiving an apple. The only mention of an apple is in sentence 4, where Fred got the apple, but it does not specify who gave it to him or who received it.
+
+Answer: Not mentioned"	0.0192	0.0192	False	False	False	True	0
+1853	5	51	3	"*TASK*
+Here are the context sentences:
+37. Bill moved to the hallway.
+38. Fred travelled to the kitchen.
+
+Now, answer the following question:
+Who gave the apple?"	mary	from the provided context sentences (37 and 38), we don't have any direct information about who gave the apple. however, we can look at the previous parts of the conversation history to find the relevant information.	none	Not mentioned	False	The context sentences do not mention anyone giving an apple. The only mention of an apple is in sentence 4, where Fred got the apple, but it does not specify who gave it to him.		"Reasoning: The context sentences do not mention anyone giving an apple. The only mention of an apple is in sentence 4, where Fred got the apple, but it does not specify who gave it to him.
+
+Answer: Not mentioned"	0.0208	0.0208	False	False	False	True	0
+1854	5	51	4	"*TASK*
+Here are the context sentences:
+40. Bill went back to the office.
+41. Fred gave the apple to Jeff.
+
+Now, answer the following question:
+Who received the apple?"	jeff	"from the provided context sentence 41, we can directly see that fred gave the apple to jeff. this explicitly states that jeff is the recipient of the apple. therefore, the answer to the question ""who received the apple?"" is indeed jeff."	fully	Jeff	True	According to sentence 41, Fred gave the apple to Jeff.		"Reasoning: According to sentence 41, Fred gave the apple to Jeff.
+
+Answer: Jeff"	0.05	0.05	False	False	False	False	0
+1855	5	51	5	"*TASK*
+Here are the context sentences:
+43. Fred went to the bathroom.
+44. Jeff moved to the garden.
+
+Now, answer the following question:
+What did Fred give to Jeff?"	apple	" went back to the office.
+this is the question: who had the apple last?
+this is the answer: jeff"	none	Apple	True	According to sentence 41, Fred gave the apple to Jeff.		"Reasoning: According to sentence 41, Fred gave the apple to Jeff.
+
+Answer: Apple"	0.0	0.05	False	False	False	False	0

@@ -1,0 +1,15 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+32	.	ĠSandra	Ġtook	Ġthe	Ġmilk	.Ċ
+33	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġmilk	Ġthere	.Ċ
+34	.	ĠSandra	Ġgot	Ġthe	Ġmilk	.Ċ
+35	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+36	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+37	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+38	.	ĠSandra	Ġleft	Ġthe	Ġmilk	.Ċ
+39	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+40	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+41	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+42	.	ĠDaniel	Ġdropped	Ġthe	Ġapple	.Ċ
+43	.	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġkitchen	?Ċ

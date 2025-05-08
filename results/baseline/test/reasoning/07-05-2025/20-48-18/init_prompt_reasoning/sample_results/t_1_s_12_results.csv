@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+56	1	12	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the bedroom.
+2. Daniel journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"according to context sentence 1, ""mary went to the bedroom"", which explicitly states mary's location as the bedroom. therefore, the answer to the question ""where is mary?"" is indeed the bedroom."	fully	bedroom	True	Mary went to the bedroom, which implies that she is currently in the bedroom.		"Reasoning: Mary went to the bedroom, which implies that she is currently in the bedroom.
+Answer: bedroom"	0.0	0.0435	False	False	False	False	0
+57	1	12	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the kitchen.
+5. Daniel moved to the garden.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"according to context sentence 4, ""mary travelled to the kitchen"", which explicitly states mary's new location as the kitchen. this sentence updates mary's location, overriding any previous location mentioned. therefore, the answer to the question ""where is mary?"" is indeed the kitchen."	fully	kitchen	True	Mary travelled to the kitchen, which implies that she is currently in the kitchen.		"Reasoning: Mary travelled to the kitchen, which implies that she is currently in the kitchen.
+Answer: kitchen"	0.0435	0.0435	False	False	False	False	0
+58	1	12	3	"*TASK*
+Here are the context sentences:
+7. Sandra travelled to the bedroom.
+8. Mary journeyed to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"according to context sentence 8, ""mary journeyed to the hallway"", which explicitly states mary's new location as the hallway. this sentence updates mary's location, overriding any previous location mentioned. therefore, the answer to the question ""where is mary?"" is indeed the hallway."	fully	hallway	True	Mary journeyed to the hallway, which implies that she is currently in the hallway.		"Reasoning: Mary journeyed to the hallway, which implies that she is currently in the hallway.
+Answer: hallway"	0.0417	0.0417	False	False	False	False	0
+59	1	12	4	"*TASK*
+Here are the context sentences:
+10. Sandra went back to the office.
+11. Sandra went to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"there is no information about daniel's movement or location in the provided context sentences (10 and 11). however, we can look back at the previous context sentences (5) which states ""daniel moved to the garden"". since there is no update about daniel's location, we can infer that daniel is still in the garden. therefore, the answer to the question ""where is daniel?"" is indeed the garden."	none	not mentioned	False	There is no mention of Daniel in the given context sentences, so his location is unknown.		"Reasoning: There is no mention of Daniel in the given context sentences, so his location is unknown.
+Answer: not mentioned"	0.1154	0.0385	False	False	False	True	0
+60	1	12	5	"*TASK*
+Here are the context sentences:
+13. Sandra went to the hallway.
+14. John moved to the office.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"according to context sentence 13, ""sandra went to the hallway"", which explicitly states sandra's location as the hallway. there is no subsequent information that updates sandra's location, so we can conclude that sandra is still in the hallway. therefore, the answer to the question ""where is sandra?"" is indeed the hallway."	fully	hallway	True	Sandra went to the hallway, which implies that she is currently in the hallway.		"Reasoning: Sandra went to the hallway, which implies that she is currently in the hallway.
+Answer: hallway"	0.0	0.0435	False	False	False	False	0

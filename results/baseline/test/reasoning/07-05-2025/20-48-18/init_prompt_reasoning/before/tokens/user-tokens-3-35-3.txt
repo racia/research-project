@@ -1,0 +1,35 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+11	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+12	.	ĠJohn	Ġgot	Ġthe	Ġfootball	.Ċ
+13	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+14	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+15	.	ĠSandra	Ġleft	Ġthe	Ġmilk	.Ċ
+16	.	ĠMary	Ġtook	Ġthe	Ġmilk	.Ċ
+17	.	ĠJohn	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
+18	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+19	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+20	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+21	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+22	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+23	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+24	.	ĠMary	Ġput	Ġdown	Ġthe	Ġmilk	Ġthere	.Ċ
+25	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+26	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+27	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+28	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+29	.	ĠJohn	Ġdiscarded	Ġthe	Ġapple	Ġthere	.Ċ
+30	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+31	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+32	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+33	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+34	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+35	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+36	.	ĠSandra	Ġgot	Ġthe	Ġapple	.Ċ
+37	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+38	.	ĠSandra	Ġleft	Ġthe	Ġapple	.Ċ
+39	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+40	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+41	.	ĠMary	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
+42	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġoffice	?Ċ

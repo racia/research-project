@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+566	2	14	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the hallway.
+2. Daniel journeyed to the garden.
+3. Mary went back to the kitchen.
+4. Daniel went back to the office.
+5. Mary journeyed to the bathroom.
+6. John moved to the hallway.
+7. Daniel grabbed the football there.
+8. Daniel went to the kitchen.
+
+Now, answer the following question:
+Where is the football?"	kitchen	from sentence 7, we know that daniel grabbed the football in the hallway. then, in sentence 8, daniel went to the kitchen. since there is no mention of daniel dropping or leaving the football, it can be logically inferred that daniel still has the football with him when he goes to the kitchen. therefore, the football is in the kitchen.	fully	hallway	False	The football was grabbed by Daniel in the hallway (sentence 7), and since then, Daniel went back to the office (sentence 4), but there is no mention of him leaving the office or moving the football. Therefore, the football is likely still in the hallway.		"Reasoning: The football was grabbed by Daniel in the hallway (sentence 7), and since then, Daniel went back to the office (sentence 4), but there is no mention of him leaving the office or moving the football. Therefore, the football is likely still in the hallway.
+
+Answer: hallway"	0.1613	0.0323	False	False	False	True	0
+567	2	14	2	"*TASK*
+Here are the context sentences:
+10. Daniel discarded the football.
+11. John went to the bathroom.
+
+Now, answer the following question:
+Where is the football?"	kitchen	from the previous context (sentence 8), we know that daniel went to the kitchen with the football. now, in sentence 10, daniel discarded the football. since there is no mention of daniel leaving the kitchen, it can be logically inferred that daniel discarded the football in the kitchen. therefore, the football is still in the kitchen.	partially	bathroom	False	The football was discarded by Daniel (sentence 10), and there is no mention of it being moved or taken after that. Therefore, it is likely that the football is no longer in the hallway (where it was last mentioned) and has been discarded, possibly in the bathroom where John went (sentence 11).		"Reasoning: The football was discarded by Daniel (sentence 10), and there is no mention of it being moved or taken after that. Therefore, it is likely that the football is no longer in the hallway (where it was last mentioned) and has been discarded, possibly in the bathroom where John went (sentence 11).
+
+Answer: bathroom"	0.0143	0.0286	False	False	False	True	0
+568	2	14	3	"*TASK*
+Here are the context sentences:
+13. Daniel took the football there.
+14. John travelled to the kitchen.
+15. Mary travelled to the office.
+16. John travelled to the hallway.
+17. John went back to the office.
+18. Daniel journeyed to the bedroom.
+19. Daniel got the milk there.
+20. Daniel discarded the milk.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	from sentence 19, we know that daniel got the milk in the bedroom. then, in sentence 20, daniel discarded the milk. since there is no mention of daniel leaving the bedroom or moving the milk to a different location, it can be logically inferred that daniel discarded the milk in the bedroom. therefore, the milk is still in the bedroom.	fully	hallway	False	The milk was obtained by Daniel in the bedroom (sentence 19), and then discarded (sentence 20). Since there is no mention of the milk being moved or taken after that, it is likely that the milk is no longer in the bedroom and has been discarded, possibly in the hallway where John went (sentence 16).		"Reasoning: The milk was obtained by Daniel in the bedroom (sentence 19), and then discarded (sentence 20). Since there is no mention of the milk being moved or taken after that, it is likely that the milk is no longer in the bedroom and has been discarded, possibly in the hallway where John went (sentence 16).
+
+Answer: hallway"	0.0274	0.0274	False	False	False	True	0
+569	2	14	4	"*TASK*
+Here are the context sentences:
+22. Sandra went to the bathroom.
+23. Mary went back to the bedroom.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	from the previous context (sentence 20), we know that daniel discarded the milk in the bedroom. there is no new information about the milk being moved or removed from the bedroom. therefore, the milk is still in the bedroom. the actions of sandra and mary in sentences 22 and 23 do not affect the location of the milk, so the answer remains the same.	none	hallway	False	The milk was discarded by Daniel (sentence 20), and there is no mention of it being moved or taken after that. Therefore, it is likely that the milk is still in the location where it was discarded, which is the hallway (as inferred from previous sentences).		"Reasoning: The milk was discarded by Daniel (sentence 20), and there is no mention of it being moved or taken after that. Therefore, it is likely that the milk is still in the location where it was discarded, which is the hallway (as inferred from previous sentences).
+
+Answer: hallway"	0.0492	0.0328	False	False	False	True	0
+570	2	14	5	"*TASK*
+Here are the context sentences:
+25. Daniel took the apple there.
+26. Daniel dropped the football.
+
+Now, answer the following question:
+Where is the football?"	bedroom	"from the previous context (sentence 10), we know that daniel discarded the football in the kitchen. there is no new information about the football being moved or removed from the kitchen. the actions in sentences 25 and 26 do not provide any information about the football being moved to the bedroom. therefore, the correct answer should be ""kitchen"", not ""bedroom""."	partially	not mentioned	False	There is no mention of the football being moved or taken after it was dropped (sentence 26). Therefore, it is likely that the football is still in the location where it was dropped, which is not specified.		"Reasoning: There is no mention of the football being moved or taken after it was dropped (sentence 26). Therefore, it is likely that the football is still in the location where it was dropped, which is not specified.
+
+Answer: not mentioned"	0.0392	0.0392	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġleft	Ġby	ĠJohn	Ġ(	sentence	Ġ	60	),	Ġand	Ġthen	ĠDaniel	Ġwent	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	61	).	ĠSince	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	58	)	Ġbefore	ĠDaniel	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġthe	Ġfootball	Ġwas	Ġin	Ġthe	Ġbedroom	Ġbefore	ĠJohn	Ġleft	Ġit	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

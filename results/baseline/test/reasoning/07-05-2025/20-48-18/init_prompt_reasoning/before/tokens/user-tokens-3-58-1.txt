@@ -1,0 +1,17 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+2	.	ĠSandra	Ġgot	Ġthe	Ġmilk	.Ċ
+3	.	ĠSandra	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+4	.	ĠSandra	Ġtook	Ġthe	Ġmilk	.Ċ
+5	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+6	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+7	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+8	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+9	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+10	.	ĠMary	Ġtook	Ġthe	Ġapple	.Ċ
+11	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+12	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+13	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+14	.	ĠSandra	Ġdropped	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġbathroom	?Ċ

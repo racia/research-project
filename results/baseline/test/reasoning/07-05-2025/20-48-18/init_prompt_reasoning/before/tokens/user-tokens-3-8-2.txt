@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+44	.	ĠSandra	Ġtook	Ġthe	Ġapple	.Ċ
+45	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+46	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	.Ċ
+47	.	ĠDaniel	Ġleft	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġkitchen	?Ċ

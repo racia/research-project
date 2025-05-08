@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1565	4	65	1	"*TASK*
+Here are the context sentences:
+1. The garden is east of the office.
+2. The bedroom is east of the garden.
+
+Now, answer the following question:
+What is east of the garden?"	bedroom	"according to context sentence 2, ""the bedroom is east of the garden"", which directly states that the bedroom is east of the garden. therefore, the answer to the question ""what is east of the garden?"" is indeed the bedroom."	fully	bedroom	True	The question asks what is east of the garden, and we know from sentence 2 that the bedroom is east of the garden. Therefore, the answer is the bedroom.		"Reasoning: The question asks what is east of the garden, and we know from sentence 2 that the bedroom is east of the garden. Therefore, the answer is the bedroom.
+
+Answer: bedroom"	0.1463	0.0244	False	False	False	False	0

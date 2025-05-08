@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġshow	Ġthat	ĠBill	Ġpicked	Ġup	Ġthe	Ġapple	Ġmultiple	Ġtimes	,	Ġbut	Ġonly	Ġonce	Ġhanded	Ġit	Ġto	ĠMary	.	ĠThis	Ġis	Ġthe	Ġonly	Ġinstance	Ġwhere	Ġthe	Ġapple	Ġwas	Ġgiven	Ġto	ĠMary	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

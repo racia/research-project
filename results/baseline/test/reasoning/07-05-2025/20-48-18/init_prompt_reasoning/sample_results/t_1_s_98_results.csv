@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+486	1	98	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the garden.
+2. Daniel travelled to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"according to context sentence 2, ""daniel travelled to the bedroom"", which explicitly states daniel's current location as the bedroom. therefore, the answer to the question ""where is daniel?"" is indeed the bedroom."	fully	bedroom	True	Daniel travelled to the bedroom, which means he is currently in the bedroom.		"Reasoning: Daniel travelled to the bedroom, which means he is currently in the bedroom.
+Answer: bedroom"	0.0455	0.0455	False	False	False	False	0
+487	1	98	2	"*TASK*
+Here are the context sentences:
+4. Sandra went to the hallway.
+5. Sandra went back to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"according to context sentence 4, ""sandra went to the hallway"", which indicates that sandra moved to the hallway. however, context sentence 5, ""sandra went back to the bathroom"", implies that sandra returned to the bathroom from the hallway. therefore, the current location of sandra is the bathroom, which is the answer to the question ""where is sandra?""."	fully	bathroom	True	Sandra went to the hallway, but then went back to the bathroom, which means she is currently in the bathroom.		"Reasoning: Sandra went to the hallway, but then went back to the bathroom, which means she is currently in the bathroom.
+Answer: bathroom"	0.2	0.0333	False	False	False	False	0
+488	1	98	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the kitchen.
+8. Daniel went back to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"according to context sentence 8, ""daniel went back to the hallway"", which explicitly states that daniel moved back to the hallway. this sentence provides direct information about daniel's current location, which is the hallway, and therefore, the answer to the question ""where is daniel?"" is indeed the hallway."	fully	hallway	True	There is no information about Daniel's current location after he went back to the hallway, so we can't determine his exact location.		"Reasoning: There is no information about Daniel's current location after he went back to the hallway, so we can't determine his exact location.
+Answer: hallway"	0.0606	0.0303	False	False	False	True	0
+489	1	98	4	"*TASK*
+Here are the context sentences:
+10. John travelled to the bedroom.
+11. Daniel travelled to the kitchen.
+
+Now, answer the following question:
+Where is John?"	bedroom	"according to context sentence 10, ""john travelled to the bedroom"", which explicitly states that john moved to the bedroom. this sentence provides direct information about john's current location, which is the bedroom, and therefore, the answer to the question ""where is john?"" is indeed the bedroom."	fully	bedroom	True	John travelled to the bedroom, which means he is currently in the bedroom.		"Reasoning: John travelled to the bedroom, which means he is currently in the bedroom.
+Answer: bedroom"	0.0	0.0455	False	False	False	False	0
+490	1	98	5	"*TASK*
+Here are the context sentences:
+13. Sandra moved to the office.
+14. Daniel moved to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"according to context sentence 14, ""daniel moved to the bathroom"", which explicitly states that daniel moved to the bathroom. this sentence provides direct information about daniel's current location, which is the bathroom, and therefore, the answer to the question ""where is daniel?"" is indeed the bathroom."	fully	bathroom	True	Daniel moved to the bathroom, which means he is currently in the bathroom.		"Reasoning: Daniel moved to the bathroom, which means he is currently in the bathroom.
+Answer: bathroom"	0.0	0.0455	False	False	False	False	0

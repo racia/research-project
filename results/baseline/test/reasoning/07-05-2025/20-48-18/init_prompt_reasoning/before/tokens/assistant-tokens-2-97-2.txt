@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġput	Ġdown	Ġby	ĠMary	Ġin	Ġthe	Ġlocation	Ġwhere	ĠJohn	Ġdropped	Ġthe	Ġapple	Ġ(	sent	ences	Ġ	10	Ġand	Ġ	11	).	ĠSince	Ġthe	Ġlocation	Ġis	Ġnot	Ġspecified	,	Ġwe	Ġcan	Ġinfer	Ġthat	Ġit	Ġis	Ġthe	Ġsame	Ġlocation	Ġas	Ġwhere	ĠJohn	Ġdropped	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġthere	<|eot_id|>

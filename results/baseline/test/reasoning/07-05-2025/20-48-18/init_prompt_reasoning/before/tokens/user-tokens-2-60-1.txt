@@ -1,0 +1,23 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠSandra	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+2	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+3	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+4	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+5	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+6	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+7	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+8	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+9	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+10	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+11	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+12	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+13	.	ĠJohn	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+14	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+15	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+16	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+17	.	ĠSandra	Ġleft	Ġthe	Ġfootball	Ġthere	.Ċ
+18	.	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+19	.	ĠJohn	Ġdropped	Ġthe	Ġfootball	.Ċ
+20	.	ĠJohn	Ġdiscarded	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

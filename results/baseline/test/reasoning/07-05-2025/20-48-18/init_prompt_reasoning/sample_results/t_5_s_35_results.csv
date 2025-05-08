@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1771	5	35	1	"*TASK*
+Here are the context sentences:
+1. Fred journeyed to the kitchen.
+2. Jeff went to the garden.
+3. Mary travelled to the office.
+4. Bill journeyed to the office.
+5. Mary took the football there.
+6. Mary handed the football to Bill.
+
+Now, answer the following question:
+What did Mary give to Bill?"	football	from sentence 5, we know that mary took the football to the office. then, in sentence 6, it is stated that mary handed the football to bill. since mary handed the football to bill, it can be logically concluded that mary gave the football to bill.	fully	football	True	Mary handed the football to Bill, and there is no mention of Mary giving anything else to Bill. Therefore, it can be inferred that Mary gave the football to Bill.		"Reasoning: Mary handed the football to Bill, and there is no mention of Mary giving anything else to Bill. Therefore, it can be inferred that Mary gave the football to Bill.
+
+Answer: football"	0.0976	0.0244	False	False	False	True	0
+1772	5	35	2	"*TASK*
+Here are the context sentences:
+8. Bill journeyed to the bedroom.
+9. Mary moved to the bathroom.
+
+Now, answer the following question:
+Who did Mary give the football to?"	bill	in the previous context (sentences 1-6), it was established that mary handed the football to bill (sentence 6). this information is still relevant and has not been contradicted or updated by the new context (sentences 8-9). therefore, we can conclude that mary gave the football to bill.	none	no one	False	There is no mention of Mary giving the football to anyone in the given context sentences. In fact, the context sentences do not mention Mary having the football at all. Therefore, it can be concluded that Mary did not give the football to anyone.		"Reasoning: There is no mention of Mary giving the football to anyone in the given context sentences. In fact, the context sentences do not mention Mary having the football at all. Therefore, it can be concluded that Mary did not give the football to anyone.
+
+Answer: no one"	0.1404	0.0175	False	False	False	True	0
+1773	5	35	3	"*TASK*
+Here are the context sentences:
+11. Mary journeyed to the bedroom.
+12. Bill handed the football to Mary.
+
+Now, answer the following question:
+What did Bill give to Mary?"	football	"according to sentence 12, ""bill handed the football to mary"". this sentence directly states that bill gave the football to mary, which is the answer to the question."	fully	football	True	The context sentence 12 explicitly states that Bill handed the football to Mary, indicating that Bill gave the football to Mary.		"Reasoning: The context sentence 12 explicitly states that Bill handed the football to Mary, indicating that Bill gave the football to Mary.
+
+Answer: football"	0.0645	0.0323	False	False	False	False	0
+1774	5	35	4	"*TASK*
+Here are the context sentences:
+14. Jeff journeyed to the hallway.
+15. Jeff went to the bedroom.
+
+Now, answer the following question:
+What did Bill give to Mary?"	football	"the context sentences 14 and 15 do not provide any new information about bill or mary, or the object ""football"". however, we can look back at the previous context (sentences 11-12) where it was established that ""bill handed the football to mary"" (sentence 12). this information is still relevant and has not been contradicted or updated by the new context (sentences 14-15). therefore, we can conclude that bill gave the football to"	none	unknown (or no information)	False	There is no mention of Bill giving anything to Mary in the given context sentences. The sentences only mention Jeff's movements, but do not provide any information about Bill or Mary.		"Reasoning: There is no mention of Bill giving anything to Mary in the given context sentences. The sentences only mention Jeff's movements, but do not provide any information about Bill or Mary.
+
+Answer: unknown (or no information)"	0.0	0.0213	False	False	False	True	0
+1775	5	35	5	"*TASK*
+Here are the context sentences:
+17. Jeff moved to the hallway.
+18. Jeff picked up the milk there.
+
+Now, answer the following question:
+Who did Bill give the football to?"	mary	"the context sentences 17 and 18 do not provide any new information about bill or mary, or the object ""football"". however, we can look back at the previous context (sentences 11-12) where it was established that ""bill handed the football to mary"" (sentence 12). this information is still relevant and has not been contradicted or updated by the new context (sentences 17-18). therefore, we can conclude that bill gave the football to"	none	unknown (or no information)	False	There is no mention of Bill giving the football to anyone in the given context sentences. The sentences only mention Jeff's movements and actions, but do not provide any information about Bill or the football.		"Reasoning: There is no mention of Bill giving the football to anyone in the given context sentences. The sentences only mention Jeff's movements and actions, but do not provide any information about Bill or the football.
+
+Answer: unknown (or no information)"	0.0	0.0196	False	False	False	True	0

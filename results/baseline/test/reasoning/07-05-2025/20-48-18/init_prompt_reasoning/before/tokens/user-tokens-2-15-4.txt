@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+22	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+23	.	ĠSandra	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+24	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+25	.	ĠSandra	Ġleft	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġapple	?Ċ

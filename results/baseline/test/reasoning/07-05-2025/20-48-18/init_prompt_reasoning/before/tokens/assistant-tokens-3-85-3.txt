@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġlast	Ġmentioned	Ġin	Ġsentence	Ġ	81	,	Ġwhere	ĠDaniel	Ġdropped	Ġthe	Ġapple	.	ĠBefore	Ġthat	,	Ġit	Ġwas	Ġpicked	Ġup	Ġby	ĠDaniel	Ġin	Ġsentence	Ġ	59	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

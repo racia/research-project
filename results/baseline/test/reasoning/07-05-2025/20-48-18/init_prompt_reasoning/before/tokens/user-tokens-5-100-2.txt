@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+20	.	ĠJeff	Ġgave	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
+21	.	ĠFred	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠFred	Ġgive	Ġto	ĠJeff	?Ċ

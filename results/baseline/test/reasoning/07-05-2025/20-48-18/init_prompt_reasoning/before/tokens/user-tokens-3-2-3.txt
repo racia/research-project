@@ -1,0 +1,17 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+61	.	ĠDaniel	Ġgrabbed	Ġthe	Ġmilk	.Ċ
+62	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+63	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+64	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+65	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+66	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+67	.	ĠDaniel	Ġdiscarded	Ġthe	Ġmilk	Ġthere	.Ċ
+68	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+69	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+70	.	ĠDaniel	Ġgot	Ġthe	Ġmilk	.Ċ
+71	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+72	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+73	.	ĠMary	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+74	.	ĠJohn	Ġtook	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġoffice	?Ċ

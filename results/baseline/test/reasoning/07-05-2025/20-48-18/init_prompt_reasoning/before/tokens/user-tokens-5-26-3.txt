@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+17	.	ĠBill	Ġgave	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
+18	.	ĠJeff	Ġgave	Ġthe	Ġfootball	Ġto	ĠBill	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠJeff	Ġgive	Ġto	ĠBill	?Ċ

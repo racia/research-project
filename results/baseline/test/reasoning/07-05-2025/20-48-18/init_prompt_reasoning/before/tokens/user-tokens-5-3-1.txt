@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+2	.	ĠFred	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+3	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+4	.	ĠBill	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+5	.	ĠFred	Ġhanded	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
+6	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġmilk	?Ċ

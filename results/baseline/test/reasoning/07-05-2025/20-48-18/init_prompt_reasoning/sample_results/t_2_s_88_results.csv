@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+936	2	88	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the garden.
+2. Mary took the milk there.
+3. Sandra went to the bedroom.
+4. Sandra went to the kitchen.
+5. John journeyed to the bathroom.
+6. Daniel went back to the kitchen.
+7. Sandra took the apple there.
+8. Sandra dropped the apple there.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	from sentence 4, we know that sandra went to the kitchen. then, in sentence 7, sandra took the apple there, which implies that she took the apple in the kitchen. finally, in sentence 8, sandra dropped the apple there, which means she dropped it in the kitchen, where she was already located. therefore, the apple is in the kitchen.	fully	kitchen	True	The apple was taken to the kitchen by Sandra, and then dropped there. Since there is no mention of the apple being moved or taken away from the kitchen, it is likely still in the kitchen.		"Reasoning: The apple was taken to the kitchen by Sandra, and then dropped there. Since there is no mention of the apple being moved or taken away from the kitchen, it is likely still in the kitchen.
+
+Answer: kitchen"	0.0851	0.0426	False	False	False	True	0
+937	2	88	2	"*TASK*
+Here are the context sentences:
+10. Sandra took the apple there.
+11. Sandra took the football there.
+12. Mary went back to the hallway.
+13. Sandra put down the football.
+
+Now, answer the following question:
+Where is the football?"	kitchen	from the previous context (sentence 4), we know that sandra went to the kitchen. then, in sentence 11, sandra took the football there, which implies that she took the football in the kitchen. finally, in sentence 13, sandra put down the football, which means she put it down in the kitchen, where she was already located. therefore, the football is in the kitchen.	partially	kitchen	True	The football was taken to the same place as the apple, which is the kitchen, by Sandra. Then, Sandra put it down, implying that it is still in the same location.		"Reasoning: The football was taken to the same place as the apple, which is the kitchen, by Sandra. Then, Sandra put it down, implying that it is still in the same location.
+
+Answer: kitchen"	0.0227	0.0455	False	False	False	False	0
+938	2	88	3	"*TASK*
+Here are the context sentences:
+15. Mary discarded the milk.
+16. Mary picked up the milk there.
+
+Now, answer the following question:
+Where is the football?"	kitchen	"the context lines 15 and 16 only mention mary and the milk, but do not provide any information about the football. to answer the question, we need to refer to the previous context (sentence 11), where sandra took the football there, and infer that ""there"" refers to the kitchen (from sentence 4). therefore, the football is still in the kitchen."	none	kitchen (assuming it's still in the kitchen, as previously established)	False	There is no mention of the football in these sentences, only the milk. The previous sentences mentioned the football, but this new information does not provide any new location for the football.		"Reasoning: There is no mention of the football in these sentences, only the milk. The previous sentences mentioned the football, but this new information does not provide any new location for the football.
+
+Answer: kitchen (assuming it's still in the kitchen, as previously established)"	0.0714	0.0357	False	False	True	True	0
+939	2	88	4	"*TASK*
+Here are the context sentences:
+18. Mary put down the milk.
+19. Sandra got the football there.
+
+Now, answer the following question:
+Where is the milk?"	hallway	from the previous context (sentence 12), we know that mary went back to the hallway. then, in sentence 18, mary put down the milk, which implies that she put it down in the hallway, where she was already located. therefore, the milk is in the hallway.	partially	not specified	False	The milk was put down, implying that it is no longer in the location where it was previously mentioned. Since Mary put it down, it is likely that the milk is now on the ground or in a location where Mary is.		"Reasoning: The milk was put down, implying that it is no longer in the location where it was previously mentioned. Since Mary put it down, it is likely that the milk is now on the ground or in a location where Mary is.
+
+Answer: not specified"	0.1667	0.037	False	False	False	True	0
+940	2	88	5	"*TASK*
+Here are the context sentences:
+21. Mary went back to the garden.
+22. Sandra left the football.
+
+Now, answer the following question:
+Where is the milk?"	hallway	the context lines 21 and 22 do not provide any new information about the milk. to answer the question, we need to refer to the previous context (sentence 18), where mary put down the milk in the hallway. there is no information that suggests the milk has been moved, so it is still in the hallway.	none	not specified	False	There is no mention of the milk in these sentences, only the football. The previous sentences mentioned the milk, but this new information does not provide any new location for the milk.		"Reasoning: There is no mention of the milk in these sentences, only the football. The previous sentences mentioned the milk, but this new information does not provide any new location for the milk.
+
+Answer: not specified"	0.0455	0.0455	False	False	False	True	0

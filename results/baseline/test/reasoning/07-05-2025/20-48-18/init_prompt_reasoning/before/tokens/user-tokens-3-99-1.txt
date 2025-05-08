@@ -1,0 +1,23 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+2	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+3	.	ĠSandra	Ġgot	Ġthe	Ġfootball	.Ċ
+4	.	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
+5	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+6	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+7	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+8	.	ĠMary	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+9	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+10	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+11	.	ĠMary	Ġtook	Ġthe	Ġapple	.Ċ
+12	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+13	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+14	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+15	.	ĠMary	Ġdiscarded	Ġthe	Ġapple	Ġthere	.Ċ
+16	.	ĠMary	Ġtook	Ġthe	Ġapple	.Ċ
+17	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+18	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+19	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+20	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġgarden	?Ċ

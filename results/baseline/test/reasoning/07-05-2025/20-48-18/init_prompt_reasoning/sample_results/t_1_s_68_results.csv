@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+336	1	68	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the office.
+2. Sandra travelled to the garden.
+
+Now, answer the following question:
+Where is John?"	office	"according to context sentence 1, ""john journeyed to the office"", which explicitly states that john's destination is the office. therefore, it can be logically concluded that john is currently at the office."	fully	office	True	John journeyed to the office, which means he went to the office, but there is no information about him moving away from the office. Therefore, it can be inferred that John is still in the office.		"Reasoning: John journeyed to the office, which means he went to the office, but there is no information about him moving away from the office. Therefore, it can be inferred that John is still in the office.
+Answer: office"	0.0	0.0204	False	False	False	True	0
+337	1	68	2	"*TASK*
+Here are the context sentences:
+4. Sandra moved to the office.
+5. Daniel travelled to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"according to context sentence 5, ""daniel travelled to the hallway"", which explicitly states that daniel's destination is the hallway. therefore, it can be logically concluded that daniel is currently at the hallway."	fully	hallway	True	There is no information about Daniel moving away from the hallway, so it can be inferred that Daniel is still in the hallway.		"Reasoning: There is no information about Daniel moving away from the hallway, so it can be inferred that Daniel is still in the hallway.
+Answer: hallway"	0.0625	0.0312	False	False	False	True	0
+338	1	68	3	"*TASK*
+Here are the context sentences:
+7. John travelled to the bathroom.
+8. Daniel journeyed to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	office	"although the context sentences 7 and 8 mention john and daniel, respectively, there is no new information about sandra's location. however, we can refer back to context sentence 4, ""sandra moved to the office"", which explicitly states that sandra's destination is the office. therefore, it can be logically concluded that sandra is still at the office."	none	not mentioned	False	There is no information about Sandra's location in the given context sentences. The sentences only mention John and Daniel's movements, but not Sandra's.		"Reasoning: There is no information about Sandra's location in the given context sentences. The sentences only mention John and Daniel's movements, but not Sandra's.
+Answer: not mentioned"	0.0811	0.027	False	False	False	True	0
+339	1	68	4	"*TASK*
+Here are the context sentences:
+10. Sandra journeyed to the kitchen.
+11. Sandra went back to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"according to context sentence 10, ""sandra journeyed to the kitchen"", which means sandra moved to the kitchen. however, context sentence 11, ""sandra went back to the hallway"", indicates that sandra returned to the hallway from the kitchen. therefore, it can be logically concluded that sandra is currently at the hallway."	fully	hallway	True	Sandra journeyed to the kitchen, but then went back to the hallway, which means she is no longer in the kitchen. Therefore, Sandra is currently in the hallway.		"Reasoning: Sandra journeyed to the kitchen, but then went back to the hallway, which means she is no longer in the kitchen. Therefore, Sandra is currently in the hallway.
+Answer: hallway"	0.0244	0.0244	False	False	False	False	0
+340	1	68	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the bedroom.
+14. Mary went back to the office.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"the context sentences 13 and 14 only provide information about mary's movements, but the question asks about sandra's location. to answer this, we need to refer back to the previous context sentences. according to context sentence 11, ""sandra went back to the hallway"", which explicitly states that sandra's current location is the hallway. there is no new information that would change sandra's location, so it can be logically concluded that sandra is still at the hallway."	none	not mentioned	False	There is no information about Sandra's location in the given context sentences. The sentences only mention Mary's movements, but not Sandra's.		"Reasoning: There is no information about Sandra's location in the given context sentences. The sentences only mention Mary's movements, but not Sandra's.
+Answer: not mentioned"	0.0	0.0286	False	False	False	True	0

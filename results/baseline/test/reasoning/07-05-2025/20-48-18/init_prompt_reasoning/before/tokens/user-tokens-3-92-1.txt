@@ -1,0 +1,53 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+2	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+3	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+4	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+5	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+6	.	ĠMary	Ġleft	Ġthe	Ġapple	.Ċ
+7	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+8	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	.Ċ
+9	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+10	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+11	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+12	.	ĠMary	Ġleft	Ġthe	Ġapple	Ġthere	.Ċ
+13	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+14	.	ĠSandra	Ġtook	Ġthe	Ġapple	.Ċ
+15	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+16	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+17	.	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+18	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+19	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+20	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+21	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+22	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+23	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+24	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+25	.	ĠJohn	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+26	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+27	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+28	.	ĠJohn	Ġdropped	Ġthe	Ġapple	Ġthere	.Ċ
+29	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+30	.	ĠJohn	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+31	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+32	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+33	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+34	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+35	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+36	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+37	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+38	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+39	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+40	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+41	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+42	.	ĠJohn	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+43	.	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+44	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+45	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+46	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+47	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+48	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+49	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+50	.	ĠJohn	Ġdiscarded	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġbedroom	?Ċ

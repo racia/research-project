@@ -1,0 +1,21 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+12	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+13	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+14	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+15	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+16	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+17	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+18	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+19	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+20	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+21	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+22	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+23	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+24	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+25	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
+26	.	ĠDaniel	Ġdropped	Ġthe	Ġmilk	.Ċ
+27	.	ĠDaniel	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+28	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+29	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

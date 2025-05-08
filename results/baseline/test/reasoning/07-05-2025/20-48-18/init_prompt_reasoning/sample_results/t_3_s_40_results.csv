@@ -1,0 +1,128 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1196	3	40	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the kitchen.
+2. Mary journeyed to the garden.
+3. Mary went to the kitchen.
+4. Sandra travelled to the bedroom.
+5. Daniel went back to the kitchen.
+6. Mary journeyed to the hallway.
+7. Daniel journeyed to the hallway.
+8. John went back to the hallway.
+9. Daniel went to the bedroom.
+10. Mary went back to the kitchen.
+11. John moved to the bedroom.
+12. John went to the office.
+13. Daniel travelled to the hallway.
+14. Sandra travelled to the office.
+15. John journeyed to the kitchen.
+16. Daniel went to the kitchen.
+17. Sandra moved to the bathroom.
+18. Daniel journeyed to the office.
+19. Sandra went to the office.
+20. Sandra travelled to the bathroom.
+21. Sandra got the apple there.
+22. John went back to the bathroom.
+23. Daniel took the football.
+24. Sandra journeyed to the hallway.
+25. Sandra went to the office.
+26. Daniel discarded the football there.
+27. Daniel got the football there.
+28. Sandra discarded the apple.
+
+Now, answer the following question:
+Where was the apple before the office?"	hallway	from sentence 21, we know that sandra got the apple in the bathroom. then, from sentence 24, we know that sandra journeyed to the hallway. there is no mention of sandra dropping or giving away the apple until sentence 28, where she discards it. therefore, the apple must have been with sandra in the hallway before she went to the office.	fully	bathroom	False	The apple was last mentioned in sentence 21, where Sandra got the apple in the bathroom. Since Sandra then journeyed to the hallway (sentence 24) and then went to the office (sentence 25), the apple was in the bathroom before Sandra went to the office.		"Reasoning: The apple was last mentioned in sentence 21, where Sandra got the apple in the bathroom. Since Sandra then journeyed to the hallway (sentence 24) and then went to the office (sentence 25), the apple was in the bathroom before Sandra went to the office.
+
+Answer: bathroom"	0.0952	0.0476	False	False	False	True	0
+1197	3	40	2	"*TASK*
+Here are the context sentences:
+30. Daniel picked up the apple.
+31. Daniel discarded the football there.
+32. Mary journeyed to the hallway.
+33. Daniel went to the bedroom.
+34. Daniel travelled to the bathroom.
+35. Mary travelled to the bathroom.
+36. Sandra picked up the football there.
+37. Mary went to the office.
+38. Sandra went back to the bathroom.
+39. Mary went back to the kitchen.
+40. John moved to the office.
+41. John went to the bathroom.
+42. Sandra discarded the football.
+43. Mary moved to the bedroom.
+44. Sandra grabbed the football.
+45. Sandra dropped the football.
+46. Mary went to the office.
+47. Daniel moved to the office.
+48. Sandra went to the kitchen.
+49. Daniel left the apple.
+
+Now, answer the following question:
+Where was the apple before the office?"	bathroom	from sentence 30, we know that daniel picked up the apple. then, from sentence 34, we know that daniel travelled to the bathroom. there is no mention of daniel dropping or giving away the apple until sentence 49, where he left the apple. therefore, the apple must have been with daniel in the bathroom before he went to the office.	fully	office	False	The apple was last mentioned in sentence 49, where Daniel left the apple. Since Daniel was in the office (sentence 47), the apple was in the office before Daniel left it.		"Reasoning: The apple was last mentioned in sentence 49, where Daniel left the apple. Since Daniel was in the office (sentence 47), the apple was in the office before Daniel left it.
+
+Answer: office"	0.0667	0.0667	False	False	False	True	0
+1198	3	40	3	"*TASK*
+Here are the context sentences:
+51. Sandra travelled to the office.
+52. John took the football.
+
+Now, answer the following question:
+Where was the apple before the bathroom?"	bedroom	from sentence 49 in the previous context, we know that daniel left the apple. from sentence 33 in the previous context, we know that daniel went to the bedroom. there is no mention of daniel dropping or giving away the apple until sentence 49, where he left the apple. therefore, the apple must have been in the bedroom before daniel went to the bathroom.	none	not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only mention the football and Sandra's travel to the office. Therefore, we cannot determine where the apple was before the bathroom.		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only mention the football and Sandra's travel to the office. Therefore, we cannot determine where the apple was before the bathroom.
+
+Answer: not mentioned"	0.0417	0.0625	False	False	False	True	0
+1199	3	40	4	"*TASK*
+Here are the context sentences:
+54. Mary journeyed to the kitchen.
+55. John dropped the football.
+
+Now, answer the following question:
+Where was the apple before the office?"	bathroom	from sentence 49 in the previous context, we know that daniel left the apple. from sentence 34 in the previous context, we know that daniel travelled to the bathroom. there is no mention of daniel dropping or giving away the apple until sentence 49, where he left the apple. therefore, the apple must have been in the bathroom before daniel went to the office.	none	not mentioned	False	The apple was not mentioned in the given context sentences. The sentences only mention Mary's journey to the kitchen and John dropping the football. Therefore, we cannot determine where the apple was before the office.		"Reasoning: The apple was not mentioned in the given context sentences. The sentences only mention Mary's journey to the kitchen and John dropping the football. Therefore, we cannot determine where the apple was before the office.
+
+Answer: not mentioned"	0.0208	0.0625	False	False	False	True	0
+1200	3	40	5	"*TASK*
+Here are the context sentences:
+57. Daniel travelled to the hallway.
+58. Sandra took the apple.
+59. John went to the office.
+60. Sandra left the apple there.
+61. Daniel went to the office.
+62. John got the apple.
+63. Mary went back to the bathroom.
+64. Daniel journeyed to the kitchen.
+65. Sandra moved to the bedroom.
+66. John left the apple.
+67. Sandra moved to the kitchen.
+68. Daniel went back to the office.
+69. Mary got the football.
+70. Daniel moved to the hallway.
+71. John moved to the hallway.
+72. John journeyed to the bathroom.
+73. Mary moved to the office.
+74. John went back to the hallway.
+75. Mary left the football.
+76. Sandra journeyed to the bedroom.
+77. Daniel journeyed to the office.
+78. Mary grabbed the football there.
+79. Mary took the apple there.
+80. Mary put down the apple.
+81. Mary picked up the apple.
+82. Daniel went back to the garden.
+83. Mary put down the apple there.
+84. Mary discarded the football.
+85. Daniel got the milk.
+86. Mary moved to the bathroom.
+87. John went back to the office.
+88. John travelled to the hallway.
+89. John moved to the kitchen.
+90. Mary moved to the bedroom.
+91. Daniel went back to the kitchen.
+92. Daniel moved to the garden.
+93. Mary went back to the bathroom.
+94. Sandra went to the bathroom.
+95. Mary moved to the hallway.
+96. Daniel put down the milk.
+
+Now, answer the following question:
+Where was the milk before the garden?"	kitchen	"""reasoning: <reasoning>"""	fully	office	False	The milk was last mentioned in sentence 85, where Daniel got the milk. Since Daniel then moved to the garden (sentence 92), the milk was in the office before Daniel moved to the garden.		"Reasoning: The milk was last mentioned in sentence 85, where Daniel got the milk. Since Daniel then moved to the garden (sentence 92), the milk was in the office before Daniel moved to the garden.
+
+Answer: office"	0.0	0.0625	False	False	False	True	0

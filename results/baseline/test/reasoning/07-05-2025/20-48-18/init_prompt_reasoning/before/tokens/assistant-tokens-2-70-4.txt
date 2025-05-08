@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	,	Ġand	Ġthe	Ġsentences	Ġonly	Ġmention	Ġthe	Ġbedroom	Ġand	Ġbathroom	,	Ġwhich	Ġare	Ġnot	Ġrelated	Ġto	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1736	5	28	1	"*TASK*
+Here are the context sentences:
+1. Bill went back to the bathroom.
+2. Mary went to the bathroom.
+3. Bill went to the bedroom.
+4. Fred grabbed the football there.
+5. Fred dropped the football.
+6. Bill journeyed to the hallway.
+7. Bill went back to the bathroom.
+8. Bill went to the kitchen.
+9. Fred grabbed the football there.
+10. Fred handed the football to Jeff.
+
+Now, answer the following question:
+What did Fred give to Jeff?"	football	from the context sentences, we know that fred grabbed the football twice (sentences 4 and 9). the second time fred grabbed the football was in the kitchen (sentence 9). immediately after that, fred handed the football to jeff (sentence 10). therefore, it is logical to conclude that fred gave the football to jeff.	fully	football	True	Fred grabbed the football in the bedroom (sentence 4) and then handed it to Jeff (sentence 10). There is no mention of Fred giving anything else to Jeff.		"Reasoning: Fred grabbed the football in the bedroom (sentence 4) and then handed it to Jeff (sentence 10). There is no mention of Fred giving anything else to Jeff.
+
+Answer: football"	0.0714	0.0238	False	False	False	True	0
+1737	5	28	2	"*TASK*
+Here are the context sentences:
+12. Jeff gave the football to Fred.
+13. Fred handed the football to Jeff.
+
+Now, answer the following question:
+What did Fred give to Jeff?"	football	"according to sentence 13, ""fred handed the football to jeff"", which explicitly states that fred gave the football to jeff. this sentence directly answers the question, and no additional inference or assumption is needed."	fully	football	True	According to sentence 13, Fred handed the football to Jeff, which means Fred gave the football to Jeff.		"Reasoning: According to sentence 13, Fred handed the football to Jeff, which means Fred gave the football to Jeff.
+
+Answer: football"	0.069	0.0345	False	False	False	False	0
+1738	5	28	3	"*TASK*
+Here are the context sentences:
+15. Jeff gave the football to Fred.
+16. Bill grabbed the milk there.
+
+Now, answer the following question:
+Who gave the football?"	jeff	"according to sentence 15, ""jeff gave the football to fred"", which explicitly states that jeff is the one who gave the football. this sentence directly answers the question, and no additional inference or assumption is needed."	fully	Jeff	True	According to sentence 15, Jeff gave the football to Fred.		"Reasoning: According to sentence 15, Jeff gave the football to Fred.
+
+Answer: Jeff"	0.05	0.05	False	False	False	False	0
+1739	5	28	4	"*TASK*
+Here are the context sentences:
+18. Bill put down the milk.
+19. Mary went back to the bedroom.
+
+Now, answer the following question:
+Who did Jeff give the football to?"	fred	"although the context sentences 18 and 19 do not directly mention jeff or the football, we can infer the answer from the previous conversation history. in the previous part, we had sentence 15: ""jeff gave the football to fred"". this sentence explicitly states that jeff gave the football to fred. therefore, we can conclude that jeff gave the football to fred."	none	Fred	True	The context sentences provided do not mention Jeff giving the football to anyone. The previous task mentioned Jeff giving the football to Fred, but this information is not repeated in these new sentences.		"Reasoning: The context sentences provided do not mention Jeff giving the football to anyone. The previous task mentioned Jeff giving the football to Fred, but this information is not repeated in these new sentences.
+
+Answer: Fred"	0.0233	0.0233	False	False	False	True	0
+1740	5	28	5	"*TASK*
+Here are the context sentences:
+21. Fred went to the office.
+22. Mary moved to the bathroom.
+23. Fred put down the football there.
+24. Fred got the football there.
+25. Fred moved to the bathroom.
+26. Fred handed the football to Mary.
+
+Now, answer the following question:
+What did Fred give to Mary?"	football	"according to sentence 26, ""fred handed the football to mary"", which explicitly states that fred gave the football to mary. this sentence directly answers the question, and no additional inference or assumption is needed."	fully	football	True	According to sentence 26, Fred handed the football to Mary.		"Reasoning: According to sentence 26, Fred handed the football to Mary.
+
+Answer: football"	0.0	0.05	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġhallway	Ġis	Ġwest	Ġof	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	Ġthe	Ġbedroom	Ġis	Ġnot	Ġwest	Ġof	Ġanything	.	ĠThe	Ġquestion	Ġis	Ġasking	Ġwhat	Ġis	Ġthe	Ġbedroom	Ġwest	Ġof	,	Ġimplying	Ġthat	Ġsomething	Ġis	Ġwest	Ġof	Ġthe	Ġbedroom	.	ĠHowever	,	Ġthe	Ġhallway	Ġis	Ġwest	Ġof	Ġthe	Ġbedroom	,	Ġnot	Ġthe	Ġother	Ġway	Ġaround	.ĊĊ	Answer	:	ĠNothing	<|eot_id|>

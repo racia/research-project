@@ -1,0 +1,160 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1216	3	44	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the garden.
+2. Sandra went to the hallway.
+3. John travelled to the bathroom.
+4. Mary took the milk there.
+5. Sandra journeyed to the bedroom.
+6. Sandra moved to the hallway.
+7. Sandra went back to the bedroom.
+8. Daniel moved to the office.
+9. Mary discarded the milk.
+10. Sandra went to the garden.
+11. Sandra moved to the hallway.
+12. Sandra got the football.
+13. Mary travelled to the kitchen.
+14. John moved to the garden.
+15. John moved to the hallway.
+16. Sandra took the apple.
+17. Sandra discarded the football there.
+18. Sandra went to the bathroom.
+19. Daniel travelled to the hallway.
+20. John picked up the football there.
+21. Daniel moved to the kitchen.
+22. Daniel journeyed to the bedroom.
+23. Mary went back to the bathroom.
+24. John put down the football there.
+25. John took the football there.
+26. Mary moved to the bedroom.
+27. Sandra left the apple.
+28. Sandra took the apple there.
+29. Mary journeyed to the office.
+30. Sandra dropped the apple.
+31. Mary moved to the bathroom.
+32. Mary travelled to the garden.
+33. Mary went to the office.
+34. Sandra grabbed the apple there.
+35. Sandra put down the apple.
+36. John put down the football.
+37. Sandra travelled to the office.
+38. Daniel went to the hallway.
+39. Daniel went back to the garden.
+40. Sandra travelled to the hallway.
+41. Mary went back to the garden.
+42. Daniel went back to the bathroom.
+43. Mary moved to the bathroom.
+44. Daniel got the apple.
+45. John got the football there.
+46. Sandra journeyed to the garden.
+47. John moved to the office.
+48. Sandra went to the hallway.
+49. John went back to the hallway.
+50. Daniel left the apple.
+51. Mary grabbed the apple there.
+52. Daniel went back to the hallway.
+53. John dropped the football.
+54. Mary moved to the hallway.
+
+Now, answer the following question:
+Where was the football before the hallway?"	office	from the context sentences, we can track the movement of the football.	fully	office	True	The football was last mentioned in sentence 46, where John got the football there. Since John moved to the office in sentence 47, it is likely that the football was in the office before John got it. Additionally, Sandra took the apple in sentence 12, and later discarded the football in sentence 17, which suggests that the football was in the hallway before Sandra took the apple.		"Reasoning: The football was last mentioned in sentence 46, where John got the football there. Since John moved to the office in sentence 47, it is likely that the football was in the office before John got it. Additionally, Sandra took the apple in sentence 12, and later discarded the football in sentence 17, which suggests that the football was in the hallway before Sandra took the apple.
+
+Answer: office"	0.0814	0.0349	False	False	False	True	0
+1217	3	44	2	"*TASK*
+Here are the context sentences:
+56. Sandra journeyed to the bedroom.
+57. Mary got the football there.
+58. Sandra moved to the office.
+59. Sandra travelled to the garden.
+60. Mary put down the football.
+61. John went back to the kitchen.
+62. Mary went to the bedroom.
+63. Daniel travelled to the bedroom.
+64. Daniel went back to the kitchen.
+65. Sandra got the milk.
+66. Sandra dropped the milk.
+67. John went back to the garden.
+68. John travelled to the hallway.
+69. Daniel went back to the bedroom.
+70. Daniel moved to the garden.
+71. Sandra took the milk.
+72. John took the football.
+73. Sandra discarded the milk there.
+74. Sandra went to the hallway.
+75. Mary put down the apple.
+
+Now, answer the following question:
+Where was the apple before the bedroom?"	hallway	from the context sentences, we can track the movement of the apple.	partially	Not mentioned	False	The apple is not mentioned before sentence 75, where Mary put down the apple. However, we can infer that the apple was in the hallway before Mary put it down, since Sandra took the milk in sentence 71 and discarded it in sentence 73, which suggests that the milk was in the hallway before Sandra took it.		"Reasoning: The apple is not mentioned before sentence 75, where Mary put down the apple. However, we can infer that the apple was in the hallway before Mary put it down, since Sandra took the milk in sentence 71 and discarded it in sentence 73, which suggests that the milk was in the hallway before Sandra took it.
+
+Answer: Not mentioned"	0.0135	0.0405	False	False	False	True	0
+1218	3	44	3	"*TASK*
+Here are the context sentences:
+77. Daniel went to the office.
+78. Daniel went to the bathroom.
+
+Now, answer the following question:
+Where was the apple before the bedroom?"	hallway	the provided context sentences (77 and 78) do not mention the apple at all.	none	Not mentioned	False	There is no mention of the apple in the given context sentences. The previous question was about the apple, but the context sentences provided do not provide any information about the apple's location before the bedroom.		"Reasoning: There is no mention of the apple in the given context sentences. The previous question was about the apple, but the context sentences provided do not provide any information about the apple's location before the bedroom.
+
+Answer: Not mentioned"	0.0	0.0625	False	False	False	True	0
+1219	3	44	4	"*TASK*
+Here are the context sentences:
+80. Mary travelled to the bathroom.
+81. Sandra moved to the bedroom.
+
+Now, answer the following question:
+Where was the apple before the bedroom?"	hallway	": where was the milk before the hallway?
+this is the answer: garden"	none	Not mentioned	False	There is no mention of the apple in the given context sentences. The previous question was about the apple, but the context sentences provided do not provide any information about the apple's location before the bedroom.		"Reasoning: There is no mention of the apple in the given context sentences. The previous question was about the apple, but the context sentences provided do not provide any information about the apple's location before the bedroom.
+
+Answer: Not mentioned"	0.0	0.0625	False	False	False	True	0
+1220	3	44	5	"*TASK*
+Here are the context sentences:
+83. Sandra picked up the apple.
+84. Mary journeyed to the garden.
+85. John left the football.
+86. John journeyed to the garden.
+87. John took the milk.
+88. John put down the milk.
+89. John went to the bedroom.
+90. Daniel journeyed to the office.
+91. Sandra left the apple.
+92. Daniel went to the hallway.
+93. Mary travelled to the kitchen.
+94. John travelled to the office.
+95. Daniel picked up the football.
+96. Sandra grabbed the apple.
+97. John went back to the garden.
+98. Daniel dropped the football.
+99. John moved to the office.
+100. Sandra travelled to the bathroom.
+101. Daniel grabbed the football there.
+102. Mary travelled to the bathroom.
+103. John went to the hallway.
+104. Sandra put down the apple.
+105. Sandra went back to the hallway.
+106. Mary picked up the apple.
+107. Daniel dropped the football there.
+108. Mary dropped the apple.
+109. Mary grabbed the apple.
+110. John journeyed to the office.
+111. John moved to the hallway.
+112. Mary journeyed to the office.
+113. Mary left the apple.
+114. Daniel moved to the kitchen.
+115. Mary took the apple.
+116. Sandra journeyed to the kitchen.
+117. Sandra moved to the bathroom.
+118. Sandra journeyed to the kitchen.
+119. Daniel travelled to the garden.
+120. Daniel moved to the kitchen.
+121. John took the football.
+122. Sandra journeyed to the office.
+123. Mary went back to the kitchen.
+124. Mary moved to the garden.
+125. Mary left the apple.
+126. Daniel travelled to the hallway.
+
+Now, answer the following question:
+Where was the apple before the garden?"	kitchen	": where was the milk before the hallway?
+this is the answer: garden"	fully	hallway	False			"I apologize for the mistake. Since the context sentences provided earlier (75. Sandra took the milk. 76. John took the football. 77. Daniel went to the office. 78. Daniel went to the bathroom.) mentioned Mary putting down the apple, we can infer that the apple was in the hallway before Mary put it down.
+
+Answer: hallway"	0.0	nan	False	False	False	True	0

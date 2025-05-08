@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+15	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+16	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+17	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+18	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+19	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+20	.	ĠMary	Ġleft	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġapple	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġshow	Ġthat	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠJeff	Ġ(	sentence	Ġ	9	),	Ġbut	Ġthe	Ġquestion	Ġasks	Ġwho	Ġgave	Ġthe	Ġapple	,	Ġwhich	Ġis	ĠMary	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

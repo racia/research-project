@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+22	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+23	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+24	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+25	.	ĠFred	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+26	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+27	.	ĠBill	Ġhanded	Ġthe	Ġapple	Ġto	ĠJeff	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġapple	Ġto	ĠJeff	?Ċ

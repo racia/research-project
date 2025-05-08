@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠFred	Ġhanded	Ġthe	Ġapple	Ġto	ĠJeff	.Ċ
+14	.	ĠJeff	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	?Ċ

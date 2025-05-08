@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1591	4	91	1	"*TASK*
+Here are the context sentences:
+1. The office is north of the bathroom.
+2. The hallway is north of the office.
+
+Now, answer the following question:
+What is the bathroom south of?"	office	"from the first context sentence, we know that the office is north of the bathroom. this implies that the bathroom is south of the office. therefore, the answer to the question ""what is the bathroom south of?"" is indeed the office."	fully	hallway	False	Since the office is north of the bathroom, and the hallway is north of the office, it implies that the bathroom is not north of anything. Therefore, it must be south of something. The only option is the hallway, as it is north of the bathroom.		"Reasoning: Since the office is north of the bathroom, and the hallway is north of the office, it implies that the bathroom is not north of anything. Therefore, it must be south of something. The only option is the hallway, as it is north of the bathroom.
+
+Answer: hallway"	0.0333	0.0167	False	False	False	False	0

@@ -1,0 +1,17 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+69	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+70	.	ĠJohn	Ġleft	Ġthe	Ġmilk	.Ċ
+71	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġfootball	.Ċ
+72	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+73	.	ĠJohn	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+74	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+75	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+76	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+77	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+78	.	ĠJohn	Ġgot	Ġthe	Ġapple	.Ċ
+79	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+80	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+81	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+82	.	ĠSandra	Ġleft	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġbedroom	?Ċ

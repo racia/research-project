@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+55	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+56	.	ĠBill	Ġhanded	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġapple	?Ċ

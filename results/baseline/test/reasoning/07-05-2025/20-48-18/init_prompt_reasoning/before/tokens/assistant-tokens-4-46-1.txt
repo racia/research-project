@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġoffice	Ġis	Ġwest	Ġof	Ġthe	Ġbedroom	,	Ġit	Ġmeans	Ġthe	Ġbedroom	Ġis	Ġeast	Ġof	Ġthe	Ġoffice	.	ĠThe	Ġhallway	Ġis	Ġwest	Ġof	Ġthe	Ġoffice	,	Ġwhich	Ġdoesn	't	Ġprovide	Ġany	Ġinformation	Ġabout	Ġthe	Ġoffice	's	Ġeast	Ġside	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

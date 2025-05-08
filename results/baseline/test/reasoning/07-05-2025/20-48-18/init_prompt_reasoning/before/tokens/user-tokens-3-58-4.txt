@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+32	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	.Ċ
+33	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+34	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+35	.	ĠMary	Ġleft	Ġthe	Ġapple	Ġthere	.Ċ
+36	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+37	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+38	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+39	.	ĠSandra	Ġleft	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġbedroom	?Ċ

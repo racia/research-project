@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠBill	Ġgiving	Ġthe	Ġfootball	Ġto	Ġanyone	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġprevious	Ġcontext	Ġsentences	Ġmentioned	ĠBill	Ġhanding	Ġthe	Ġfootball	Ġto	ĠMary	,	Ġbut	Ġthere	Ġis	Ġno	Ġfurther	Ġinformation	Ġabout	Ġwho	ĠBill	Ġgave	Ġthe	Ġfootball	Ġto	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

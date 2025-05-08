@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+471	1	95	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the hallway.
+2. John went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"according to context sentence 1, ""mary moved to the hallway"", which explicitly states mary's current location as the hallway. there is no information provided that suggests mary has moved from the hallway since then. therefore, it can be logically concluded that mary is still in the hallway."	fully	hallway	True	Mary moved to the hallway, which implies that she is currently located in the hallway. There is no information about John's location affecting Mary's location.		"Reasoning: Mary moved to the hallway, which implies that she is currently located in the hallway. There is no information about John's location affecting Mary's location.
+
+Answer: hallway"	0.027	0.027	False	False	False	True	0
+472	1	95	2	"*TASK*
+Here are the context sentences:
+4. Mary went back to the bathroom.
+5. Mary travelled to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	"according to context sentence 4, ""mary went back to the bathroom"", which indicates mary's location as the bathroom. however, context sentence 5, ""mary travelled to the office"", implies that mary has moved from the bathroom to the office. since there is no information provided that suggests mary has moved again, it can be logically concluded that mary is currently at the office."	fully	office	True	Mary went back to the bathroom, which implies that she was previously somewhere else. Then, she travelled to the office, which means she is currently located in the office.		"Reasoning: Mary went back to the bathroom, which implies that she was previously somewhere else. Then, she travelled to the office, which means she is currently located in the office.
+
+Answer: office"	0.1463	0.0244	False	False	False	False	0
+473	1	95	3	"*TASK*
+Here are the context sentences:
+7. Daniel went back to the office.
+8. John moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	office	there is no information provided about mary's location in the given context sentences (7 and 8). however, we can look back at the previous context sentences (4 and 5) which mentioned mary's movements. according to those sentences, mary travelled to the office (sentence 5). there is no information provided that suggests mary has moved from the office since then. therefore, it can be logically concluded that mary is still at the office.	none	not mentioned	False	There is no information about Mary's location in the given context sentences. The sentences only mention Daniel and John's locations, but not Mary's.		"Reasoning: There is no information about Mary's location in the given context sentences. The sentences only mention Daniel and John's locations, but not Mary's.
+
+Answer: not mentioned"	0.027	0.027	False	False	False	True	0
+474	1	95	4	"*TASK*
+Here are the context sentences:
+10. John went back to the bathroom.
+11. Mary travelled to the garden.
+
+Now, answer the following question:
+Where is John?"	bathroom	"according to context sentence 10, ""john went back to the bathroom"", which explicitly states john's current location as the bathroom. there is no information provided that suggests john has moved from the bathroom since then. therefore, it can be logically concluded that john is still in the bathroom."	fully	bathroom	True	John went back to the bathroom, which implies that he is currently located in the bathroom.		"Reasoning: John went back to the bathroom, which implies that he is currently located in the bathroom.
+
+Answer: bathroom"	0.0	0.04	False	False	False	False	0
+475	1	95	5	"*TASK*
+Here are the context sentences:
+13. Daniel went back to the bathroom.
+14. John went to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	"according to context sentence 14, ""john went to the kitchen"", which explicitly states john's current location as the kitchen. there is no information provided that suggests john has moved from the kitchen since then. therefore, it can be logically concluded that john is still in the kitchen."	fully	kitchen	True	John went to the kitchen, which implies that he is currently located in the kitchen.		"Reasoning: John went to the kitchen, which implies that he is currently located in the kitchen.
+
+Answer: kitchen"	0.0	0.0417	False	False	False	False	0

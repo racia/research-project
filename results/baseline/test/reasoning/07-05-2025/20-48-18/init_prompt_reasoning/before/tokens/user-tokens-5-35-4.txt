@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+14	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+15	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠBill	Ġgive	Ġto	ĠMary	?Ċ

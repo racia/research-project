@@ -1,0 +1,49 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+2	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġfootball	.Ċ
+3	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+4	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+5	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+6	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+7	.	ĠDaniel	Ġleft	Ġthe	Ġfootball	.Ċ
+8	.	ĠDaniel	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+9	.	ĠSandra	Ġgot	Ġthe	Ġapple	.Ċ
+10	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+11	.	ĠSandra	Ġtook	Ġthe	Ġmilk	.Ċ
+12	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+13	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+14	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+15	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+16	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+17	.	ĠDaniel	Ġdropped	Ġthe	Ġfootball	.Ċ
+18	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+19	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+20	.	ĠSandra	Ġdiscarded	Ġthe	Ġmilk	Ġthere	.Ċ
+21	.	ĠMary	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+22	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+23	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+24	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+25	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+26	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+27	.	ĠDaniel	Ġgot	Ġthe	Ġfootball	.Ċ
+28	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+29	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+30	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+31	.	ĠDaniel	Ġdropped	Ġthe	Ġfootball	Ġthere	.Ċ
+32	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+33	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+34	.	ĠDaniel	Ġtook	Ġthe	Ġmilk	.Ċ
+35	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+36	.	ĠDaniel	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
+37	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+38	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+39	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+40	.	ĠJohn	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+41	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+42	.	ĠJohn	Ġtook	Ġthe	Ġapple	.Ċ
+43	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+44	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+45	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+46	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġbathroom	?Ċ

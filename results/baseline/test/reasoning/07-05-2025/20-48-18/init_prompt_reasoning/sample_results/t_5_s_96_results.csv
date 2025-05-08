@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2076	5	96	1	"*TASK*
+Here are the context sentences:
+1. Jeff travelled to the garden.
+2. Jeff journeyed to the bedroom.
+3. Fred journeyed to the office.
+4. Bill went back to the office.
+5. Mary travelled to the hallway.
+6. Fred journeyed to the garden.
+7. Fred moved to the hallway.
+8. Bill moved to the hallway.
+9. Fred went back to the office.
+10. Jeff travelled to the bathroom.
+11. Mary took the apple there.
+12. Fred went back to the hallway.
+13. Mary handed the apple to Fred.
+14. Mary went back to the kitchen.
+
+Now, answer the following question:
+What did Mary give to Fred?"	apple	from sentence 11, we know that mary took the apple to the hallway. then, in sentence 13, it is stated that mary handed the apple to fred. since mary had the apple in the hallway and handed it to fred, it can be logically concluded that mary gave the apple to fred.	fully	apple	True	Mary handed the apple to Fred, and there is no other instance where Mary gave something to Fred in the context sentences.		"Reasoning: Mary handed the apple to Fred, and there is no other instance where Mary gave something to Fred in the context sentences.
+
+Answer: apple"	0.0	0.0323	False	False	False	False	0
+2077	5	96	2	"*TASK*
+Here are the context sentences:
+16. Fred gave the apple to Bill.
+17. Fred took the milk there.
+
+Now, answer the following question:
+What did Fred give to Bill?"	apple	"according to sentence 16, ""fred gave the apple to bill"", it is explicitly stated that fred gave the apple to bill. this sentence directly answers the question, providing the information that fred gave the apple to bill."	fully	apple	True	According to context sentence 16, Fred gave the apple to Bill.		"Reasoning: According to context sentence 16, Fred gave the apple to Bill.
+
+Answer: apple"	0.0476	0.0476	False	False	False	False	0
+2078	5	96	3	"*TASK*
+Here are the context sentences:
+19. Mary journeyed to the bathroom.
+20. Bill took the football there.
+
+Now, answer the following question:
+Who gave the apple to Bill?"	fred	"the question asks who gave the apple to bill, but the provided context sentences (19 and 20) do not mention the apple or the action of giving it to bill. however, we can look back at the previous context sentences (16) which states ""fred gave the apple to bill"". this sentence directly answers the question, providing the information that fred gave the apple to bill."	none	Fred	True	There is no mention of an apple being given to Bill in the provided context sentences. The only mention of an object being given is Fred giving the apple to Bill in sentence 16.		"Reasoning: There is no mention of an apple being given to Bill in the provided context sentences. The only mention of an object being given is Fred giving the apple to Bill in sentence 16.
+
+Answer: Fred"	0.0682	0.0227	False	False	False	True	0
+2079	5	96	4	"*TASK*
+Here are the context sentences:
+22. Bill passed the apple to Fred.
+23. Mary travelled to the garden.
+
+Now, answer the following question:
+Who gave the apple to Fred?"	bill	"according to sentence 22, ""bill passed the apple to fred"", it is explicitly stated that bill gave the apple to fred. this sentence directly answers the question, providing the information that bill gave the apple to fred."	fully	Bill	True	According to context sentence 22, Bill passed the apple to Fred.		"Reasoning: According to context sentence 22, Bill passed the apple to Fred.
+
+Answer: Bill"	0.0952	0.0476	False	False	False	False	0
+2080	5	96	5	"*TASK*
+Here are the context sentences:
+25. Fred handed the apple to Bill.
+26. Bill dropped the apple.
+
+Now, answer the following question:
+Who gave the apple to Bill?"	fred	"according to sentence 25, ""fred handed the apple to bill"", it is explicitly stated that fred gave the apple to bill. this sentence directly answers the question, providing the information that fred gave the apple to bill."	fully	Fred	True	According to context sentence 25, Fred handed the apple to Bill.		"Reasoning: According to context sentence 25, Fred handed the apple to Bill.
+
+Answer: Fred"	0.0	0.0476	False	False	False	False	0

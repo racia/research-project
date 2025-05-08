@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġgoing	Ġback	Ġto	Ġthe	Ġbedroom	Ġand	ĠMary	Ġgoing	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

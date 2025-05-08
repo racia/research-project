@@ -1,0 +1,13 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+2	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+3	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+4	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+5	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+6	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+7	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+8	.	ĠJohn	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+9	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+10	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

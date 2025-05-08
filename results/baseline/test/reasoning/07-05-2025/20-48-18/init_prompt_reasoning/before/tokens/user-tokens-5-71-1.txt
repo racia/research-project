@@ -1,0 +1,17 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+2	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+3	.	ĠBill	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+4	.	ĠBill	Ġdropped	Ġthe	Ġapple	.Ċ
+5	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+6	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+7	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+8	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+9	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+10	.	ĠJeff	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+11	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+12	.	ĠBill	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+13	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+14	.	ĠJeff	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġmilk	?Ċ

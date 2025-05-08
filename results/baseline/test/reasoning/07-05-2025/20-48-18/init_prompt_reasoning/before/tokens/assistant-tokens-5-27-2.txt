@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġshow	Ġthat	ĠBill	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	Ġ(	sentence	Ġ	4	),	Ġand	Ġthen	ĠMary	Ġpassed	Ġthe	Ġapple	Ġto	ĠBill	Ġ(	sentence	Ġ	5	).	ĠThis	Ġmeans	Ġthat	ĠMary	Ġdid	Ġnot	Ġgive	Ġanything	Ġto	ĠBill	,	Ġbut	Ġrather	Ġreceived	Ġthe	Ġapple	Ġfrom	ĠBill	Ġand	Ġthen	Ġpassed	Ġit	Ġback	Ġto	Ġhim	.ĊĊ	Answer	:	ĠNothing	<|eot_id|>

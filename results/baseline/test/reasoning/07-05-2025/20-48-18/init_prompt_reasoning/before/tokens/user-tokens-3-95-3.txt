@@ -1,0 +1,15 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+31	.	ĠDaniel	Ġgrabbed	Ġthe	Ġmilk	.Ċ
+32	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+33	.	ĠSandra	Ġtook	Ġthe	Ġfootball	.Ċ
+34	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+35	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+36	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+37	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+38	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+39	.	ĠDaniel	Ġdropped	Ġthe	Ġapple	.Ċ
+40	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+41	.	ĠDaniel	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+42	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġoffice	?Ċ

@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+956	2	92	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the bedroom.
+2. Daniel took the milk there.
+3. Daniel left the milk.
+4. John went to the bedroom.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	from context line 2, we know that daniel took the milk to the bedroom. in context line 3, it is stated that daniel left the milk, which implies that he left it in the bedroom, as that is where he took it to. there is no information about anyone or anything moving the milk from the bedroom after daniel left it, so it can be logically concluded that the milk is still in the bedroom.	fully	not mentioned	False	Since Daniel left the milk, it is no longer in the bedroom. However, we don't have any information about where Daniel left the milk, so we can't pinpoint its exact location.		"Reasoning: Since Daniel left the milk, it is no longer in the bedroom. However, we don't have any information about where Daniel left the milk, so we can't pinpoint its exact location.
+
+Answer: not mentioned"	0.087	0.0435	False	False	False	True	0
+957	2	92	2	"*TASK*
+Here are the context sentences:
+6. John grabbed the apple there.
+7. Sandra went back to the garden.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	the question asks about the location of the milk, but the provided context lines (6 and 7) do not mention the milk at all. they talk about john grabbing an apple and sandra going back to the garden. to find the answer, we need to look at the previous context lines. from the previous context lines (1-4), we know that daniel took the milk to the bedroom and left it there. there is no information about the milk being moved from the bedroom,	none	not mentioned	False	There is no mention of the milk in the given context sentences. The only mention is of an apple, and the milk was taken to the bedroom in the previous context.		"Reasoning: There is no mention of the milk in the given context sentences. The only mention is of an apple, and the milk was taken to the bedroom in the previous context.
+
+Answer: not mentioned"	0.1905	0.0476	False	False	False	True	0
+958	2	92	3	"*TASK*
+Here are the context sentences:
+9. Mary journeyed to the garden.
+10. John got the milk there.
+11. John travelled to the hallway.
+12. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+Where is the milk?"	hallway	from context line 10, we know that john got the milk in the garden. then, in context line 11, it is stated that john travelled to the hallway. it can be logically inferred that john took the milk with him when he travelled to the hallway, as there is no information about him leaving the milk in the garden or giving it to someone else. therefore, the milk is now in the hallway with john.	fully	garden	False	According to sentence 10, John got the milk in the garden. Since then, John travelled to the hallway, but there is no mention of him leaving the milk or doing anything with it. Therefore, it is likely that the milk is still in the garden.		"Reasoning: According to sentence 10, John got the milk in the garden. Since then, John travelled to the hallway, but there is no mention of him leaving the milk or doing anything with it. Therefore, it is likely that the milk is still in the garden.
+
+Answer: garden"	0.0833	0.0333	False	False	False	True	0
+959	2	92	4	"*TASK*
+Here are the context sentences:
+14. John journeyed to the office.
+15. Mary went to the bedroom.
+
+Now, answer the following question:
+Where is the milk?"	office	from the previous context lines (9-12), we know that john got the milk in the garden and then travelled to the hallway. there is no information about john giving the milk to someone else or leaving it in the hallway. now, in context line 14, it is stated that john journeyed to the office. it can be logically inferred that john took the milk with him when he travelled to the office, as there is no information about him leaving the milk in the hallway	partially	not mentioned	False	There is no mention of the milk in the given context sentences. The previous mention of the milk was in the garden, but there is no information about what happened to it after that.		"Reasoning: There is no mention of the milk in the given context sentences. The previous mention of the milk was in the garden, but there is no information about what happened to it after that.
+
+Answer: not mentioned"	0.1333	0.0444	False	False	False	True	0
+960	2	92	5	"*TASK*
+Here are the context sentences:
+17. Mary journeyed to the office.
+18. John discarded the milk there.
+
+Now, answer the following question:
+Where is the milk?"	office	from the previous context lines (14), we know that john journeyed to the office. now, in context line 18, it is stated that john discarded the milk there, which means he got rid of the milk in the office. therefore, the milk is still in the office, although it has been discarded.	partially	office	True	According to sentence 18, John discarded the milk in the office. Therefore, the milk is no longer in the garden, but is now in the office.		"Reasoning: According to sentence 18, John discarded the milk in the office. Therefore, the milk is no longer in the garden, but is now in the office.
+
+Answer: office"	0.1026	0.0513	False	False	False	False	0

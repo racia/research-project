@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+16	.	ĠBill	Ġpassed	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
+17	.	ĠMary	Ġleft	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠBill	Ġgive	Ġto	ĠMary	?Ċ

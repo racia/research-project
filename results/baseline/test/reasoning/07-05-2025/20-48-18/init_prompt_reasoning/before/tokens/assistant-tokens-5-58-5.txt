@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġsuggest	Ġthat	ĠBill	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	Ġ(	sentence	Ġ	33	).	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġanyone	Ġelse	Ġgiving	Ġthe	Ġapple	Ġto	ĠMary	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

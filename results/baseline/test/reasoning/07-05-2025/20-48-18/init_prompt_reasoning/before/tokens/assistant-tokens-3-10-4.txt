@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġlast	Ġmentioned	Ġin	Ġsentence	Ġ	31	,	Ġwhere	ĠJohn	Ġleft	Ġit	.	ĠSince	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġin	Ġsentence	Ġ	26	,	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġin	Ġsentence	Ġ	36	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġapple	Ġwas	Ġin	Ġthe	Ġbedroom	Ġbefore	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

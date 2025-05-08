@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġfootball	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	Ġthe	Ġapple	Ġand	ĠMary	's	Ġtravel	Ġto	Ġthe	Ġgarden	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	Ġwhere	Ġthe	Ġfootball	Ġwas	Ġbefore	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

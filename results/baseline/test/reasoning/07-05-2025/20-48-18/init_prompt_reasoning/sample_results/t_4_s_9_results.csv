@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1509	4	9	1	"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the office.
+2. The garden is south of the kitchen.
+
+Now, answer the following question:
+What is south of the office?"	kitchen	"according to context sentence 1, ""the kitchen is south of the office"", which directly states that the kitchen is located south of the office. therefore, the answer to the question ""what is south of the office?"" is indeed the kitchen."	fully	kitchen	True	The kitchen is south of the office, and the garden is south of the kitchen. Therefore, the garden is south of the office, but the kitchen is also south of the office.		"Reasoning: The kitchen is south of the office, and the garden is south of the kitchen. Therefore, the garden is south of the office, but the kitchen is also south of the office.
+
+Answer: kitchen"	0.0227	0.0227	False	False	False	False	0

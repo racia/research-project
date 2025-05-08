@@ -1,0 +1,223 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1351	3	71	1	"*TASK*
+Here are the context sentences:
+1. John picked up the football.
+2. Sandra journeyed to the kitchen.
+3. Mary took the apple.
+4. John dropped the football there.
+5. John moved to the garden.
+6. Mary left the apple.
+7. Sandra went back to the bathroom.
+8. Daniel journeyed to the garden.
+9. Daniel moved to the bathroom.
+10. Mary got the apple.
+11. Sandra journeyed to the hallway.
+12. Mary dropped the apple.
+13. Sandra went back to the garden.
+14. Sandra went back to the bedroom.
+15. John took the milk.
+16. Mary got the apple there.
+17. Daniel journeyed to the kitchen.
+18. Mary went back to the office.
+19. Mary discarded the apple there.
+20. Sandra travelled to the office.
+21. John left the milk.
+22. Sandra picked up the football there.
+23. John picked up the milk there.
+24. Mary went to the garden.
+25. Mary went back to the hallway.
+26. Sandra left the football.
+27. Daniel travelled to the bathroom.
+28. John discarded the milk.
+29. John moved to the kitchen.
+30. Sandra travelled to the kitchen.
+31. Mary moved to the bathroom.
+32. Sandra moved to the hallway.
+33. Mary went back to the bedroom.
+34. Daniel travelled to the bedroom.
+35. Daniel travelled to the hallway.
+36. Sandra travelled to the office.
+37. Daniel went back to the garden.
+38. Sandra journeyed to the hallway.
+39. John went to the hallway.
+40. John went to the kitchen.
+41. John travelled to the hallway.
+42. Mary journeyed to the office.
+43. Mary took the football there.
+44. Sandra moved to the bathroom.
+45. Mary discarded the football.
+46. Daniel went to the hallway.
+47. Daniel journeyed to the bathroom.
+48. Daniel journeyed to the office.
+49. Mary took the apple there.
+50. Mary journeyed to the bathroom.
+51. Daniel got the football.
+52. Daniel dropped the football.
+53. Mary left the apple there.
+54. Sandra moved to the kitchen.
+55. Mary moved to the bedroom.
+56. Daniel grabbed the football.
+57. Daniel put down the football.
+58. Daniel took the football.
+59. Mary went to the garden.
+60. Mary took the milk there.
+61. Daniel left the football there.
+62. Sandra moved to the office.
+63. Sandra moved to the garden.
+64. John went back to the garden.
+65. Sandra travelled to the hallway.
+66. Daniel went to the kitchen.
+67. Sandra journeyed to the office.
+68. Sandra got the football.
+69. Mary discarded the milk.
+70. Sandra left the football.
+71. John travelled to the bathroom.
+72. John travelled to the bedroom.
+73. Sandra got the football.
+74. Mary went back to the hallway.
+75. Mary journeyed to the kitchen.
+76. John journeyed to the bathroom.
+77. Sandra left the football there.
+78. Sandra grabbed the football.
+79. Mary journeyed to the hallway.
+80. Sandra left the football there.
+81. Daniel went to the bedroom.
+82. John took the apple there.
+83. John went back to the garden.
+84. Sandra moved to the garden.
+85. Sandra went back to the kitchen.
+86. Mary went back to the bedroom.
+87. John travelled to the office.
+88. John put down the apple.
+
+Now, answer the following question:
+Where was the apple before the office?"	garden	from sentence 83, we know that john took the apple there (in the bedroom).	fully	office	False	The apple was taken by Mary in sentence 3, and then left in sentence 6. Later, Mary got the apple again in sentence 10, and then dropped it in sentence 12. After that, Mary got the apple again in sentence 16, and then discarded it in sentence 19. Finally, John took the apple in sentence 82, and then put it down in sentence 88. Since John put the apple down in the office, the apple was in the office before that.		"Reasoning: The apple was taken by Mary in sentence 3, and then left in sentence 6. Later, Mary got the apple again in sentence 10, and then dropped it in sentence 12. After that, Mary got the apple again in sentence 16, and then discarded it in sentence 19. Finally, John took the apple in sentence 82, and then put it down in sentence 88. Since John put the apple down in the office, the apple was in the office before that.
+
+Answer: office"	0.0642	0.0275	False	False	False	False	0
+1352	3	71	2	"*TASK*
+Here are the context sentences:
+90. Mary went back to the bathroom.
+91. John picked up the apple there.
+92. Sandra went back to the bedroom.
+93. John took the football.
+94. John dropped the apple.
+95. Daniel travelled to the garden.
+96. Mary went to the kitchen.
+97. John put down the football.
+98. Daniel picked up the milk.
+99. Sandra moved to the kitchen.
+100. Sandra journeyed to the bedroom.
+101. Mary journeyed to the hallway.
+102. Daniel dropped the milk.
+103. John got the apple.
+104. Sandra journeyed to the office.
+105. Daniel travelled to the kitchen.
+106. Mary went to the kitchen.
+107. Sandra took the football.
+108. John dropped the apple.
+109. Sandra left the football there.
+110. John picked up the apple.
+111. Sandra went to the hallway.
+112. John grabbed the football.
+113. Mary moved to the bedroom.
+114. John dropped the apple.
+115. John journeyed to the hallway.
+116. John went back to the kitchen.
+117. Mary went to the bathroom.
+118. Daniel journeyed to the bathroom.
+119. John journeyed to the bathroom.
+120. Daniel travelled to the garden.
+121. John moved to the garden.
+122. John travelled to the bathroom.
+123. John left the football.
+
+Now, answer the following question:
+Where was the football before the garden?"	bathroom	from sentence 123, we know that john left the football.	fully	hallway	False	The football was taken by John in sentence 93, and then dropped by John in sentence 97. Later, Sandra took the football in sentence 107, and then left it in sentence 109. John then picked up the football in sentence 112, and grabbed it in sentence 112. Since John left the football in sentence 123, the football was in the hallway before the garden.		"Reasoning: The football was taken by John in sentence 93, and then dropped by John in sentence 97. Later, Sandra took the football in sentence 107, and then left it in sentence 109. John then picked up the football in sentence 112, and grabbed it in sentence 112. Since John left the football in sentence 123, the football was in the hallway before the garden.
+
+Answer: hallway"	0.0575	0.0345	False	False	False	False	0
+1353	3	71	3	"*TASK*
+Here are the context sentences:
+125. John moved to the office.
+126. Mary took the football.
+127. Mary went to the hallway.
+128. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	hallway	".
+
+these are the context lines: 1. john picked up the football.
+2. sandra journeyed to the kitchen.
+3. mary took the apple.
+4. john dropped the football there.
+5. john moved to the garden.
+6. mary left the apple.
+7. sandra went back to the bathroom.
+8. daniel journeyed to the garden.
+9. daniel moved to the bathroom.
+10. mary got the apple.
+11. sandra journeyed to the hallway.
+12. mary"	fully	hallway	True	The football was taken by John in sentence 93, and then dropped by John in sentence 97. Later, Sandra took the football in sentence 107, and then left it in sentence 109. John then picked up the football in sentence 112, and grabbed it in sentence 112. Since John left the football in sentence 123, the football was in the hallway before the garden.		"Reasoning: The football was taken by John in sentence 93, and then dropped by John in sentence 97. Later, Sandra took the football in sentence 107, and then left it in sentence 109. John then picked up the football in sentence 112, and grabbed it in sentence 112. Since John left the football in sentence 123, the football was in the hallway before the garden.
+
+Answer: hallway"	0.069	0.0345	False	False	False	False	0
+1354	3	71	4	"*TASK*
+Here are the context sentences:
+130. Sandra journeyed to the bedroom.
+131. Sandra travelled to the hallway.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	hallway	".
+
+these are the context lines: 1. john picked up the football.
+2. sandra journeyed to the kitchen.
+3. mary took the apple.
+4. john dropped the football there.
+5. john moved to the garden.
+6. mary left the apple.
+7. sandra went back to the bathroom.
+8. daniel journeyed to the garden.
+9. daniel moved to the bathroom.
+10. mary got the apple.
+11. sandra journeyed to the hallway.
+12. mary"	none	hallway	True	The football was taken by John in sentence 93, and then dropped in sentence 97. Later, Sandra took the football in sentence 107, and then left it in sentence 109. John then picked up the football in sentence 112, and then dropped it again in sentence 123. Since John dropped the football before going to the garden, the football was in the hallway before the garden.		"Reasoning: The football was taken by John in sentence 93, and then dropped in sentence 97. Later, Sandra took the football in sentence 107, and then left it in sentence 109. John then picked up the football in sentence 112, and then dropped it again in sentence 123. Since John dropped the football before going to the garden, the football was in the hallway before the garden.
+
+Answer: hallway"	0.125	0.0341	False	False	False	False	0
+1355	3	71	5	"*TASK*
+Here are the context sentences:
+133. Sandra journeyed to the bathroom.
+134. Daniel got the milk there.
+135. John travelled to the bathroom.
+136. Sandra moved to the office.
+137. Sandra got the apple.
+138. Sandra put down the apple.
+139. John went to the hallway.
+140. John went to the kitchen.
+141. Mary travelled to the kitchen.
+142. Mary went back to the hallway.
+143. Sandra travelled to the kitchen.
+144. Daniel travelled to the hallway.
+145. John went to the hallway.
+146. Sandra journeyed to the bathroom.
+147. Mary went to the garden.
+148. Daniel put down the milk.
+149. Mary moved to the hallway.
+150. Daniel went back to the garden.
+151. Mary put down the football there.
+152. John went to the bathroom.
+
+Now, answer the following question:
+Where was the football before the garden?"	hallway	".
+
+these are the context lines: 1. john picked up the football.
+2. sandra journeyed to the kitchen.
+3. mary took the apple.
+4. john dropped the football there.
+5. john moved to the garden.
+6. mary left the apple.
+7. sandra went back to the bathroom.
+8. daniel journeyed to the garden.
+9. daniel moved to the bathroom.
+10. mary got the apple.
+11. sandra journeyed to the hallway.
+12. mary"	fully	hallway	True	The football was taken by John in sentence 93, and then dropped by John in sentence 97. Later, Sandra took the football in sentence 107, and then left it in sentence 109. John picked up the football again in sentence 112, and then grabbed it in sentence 112. Since John left the football in sentence 123, the football was in the hallway before the garden.		"Reasoning: The football was taken by John in sentence 93, and then dropped by John in sentence 97. Later, Sandra took the football in sentence 107, and then left it in sentence 109. John picked up the football again in sentence 112, and then grabbed it in sentence 112. Since John left the football in sentence 123, the football was in the hallway before the garden.
+
+Answer: hallway"	0.0	nan	False	False	False	False	0

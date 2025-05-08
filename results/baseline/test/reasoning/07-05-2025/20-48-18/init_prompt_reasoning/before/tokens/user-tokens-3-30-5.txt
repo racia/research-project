@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+53	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+54	.	ĠDaniel	Ġgot	Ġthe	Ġfootball	.Ċ
+55	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+56	.	ĠMary	Ġdropped	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġkitchen	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġtravelling	Ġto	Ġthe	Ġkitchen	Ġand	Ġjourney	ing	Ġto	Ġthe	Ġgarden	.	ĠSince	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġcurrent	Ġlocation	Ġafter	Ġjourney	ing	Ġto	Ġthe	Ġgarden	,	Ġwe	Ġcan	Ġinfer	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

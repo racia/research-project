@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+11	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+12	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+13	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+14	.	ĠDaniel	Ġdropped	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġapple	?Ċ

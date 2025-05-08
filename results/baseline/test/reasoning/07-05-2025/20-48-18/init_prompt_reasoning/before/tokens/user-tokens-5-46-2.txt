@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠFred	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
+5	.	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġfootball	Ġto	ĠFred	?Ċ

@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1566	4	66	1	"*TASK*
+Here are the context sentences:
+1. The office is south of the bedroom.
+2. The bedroom is south of the garden.
+
+Now, answer the following question:
+What is the bedroom north of?"	office	from the context sentences, we know that the office is south of the bedroom (sentence 1), which means the bedroom is north of the office. therefore, the answer is the office.	fully	nothing	False	Since the bedroom is south of the garden, it cannot be north of anything. The office is south of the bedroom, which means the office is also south of the garden. There is no information provided that suggests the bedroom is north of anything else.		"Reasoning: Since the bedroom is south of the garden, it cannot be north of anything. The office is south of the bedroom, which means the office is also south of the garden. There is no information provided that suggests the bedroom is north of anything else.
+
+Answer: nothing"	0.0526	0.0175	False	False	False	True	0

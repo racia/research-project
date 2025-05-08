@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	's	Ġlast	Ġknown	Ġlocations	Ġare	Ġthe	Ġbathroom	Ġand	Ġthe	Ġhallway	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġcurrent	Ġlocation	.	ĠSince	Ġshe	Ġmoved	Ġfrom	Ġthe	Ġbathroom	,	Ġit	's	Ġpossible	Ġthat	Ġshe	Ġis	Ġstill	Ġin	Ġthe	Ġhallway	Ġor	Ġhas	Ġmoved	Ġto	Ġanother	Ġlocation	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

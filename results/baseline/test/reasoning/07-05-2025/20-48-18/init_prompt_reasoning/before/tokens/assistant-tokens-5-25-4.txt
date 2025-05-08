@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	21	,	ĠBill	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJeff	,	Ġwhich	Ġimplies	Ġthat	ĠBill	Ġgave	Ġthe	Ġfootball	Ġto	ĠJeff	.ĊĊ	Answer	:	ĠJeff	<|eot_id|>

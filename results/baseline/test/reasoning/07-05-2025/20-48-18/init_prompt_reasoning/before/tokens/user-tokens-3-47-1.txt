@@ -1,0 +1,55 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+2	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+3	.	ĠSandra	Ġgot	Ġthe	Ġapple	.Ċ
+4	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+5	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+6	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+7	.	ĠSandra	Ġdropped	Ġthe	Ġapple	.Ċ
+8	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+9	.	ĠDaniel	Ġdiscarded	Ġthe	Ġapple	Ġthere	.Ċ
+10	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+11	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+12	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+13	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+14	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+15	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+16	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+17	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+18	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+19	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+20	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+21	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+22	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+23	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+24	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+25	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+26	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+27	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+28	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+29	.	ĠMary	Ġtook	Ġthe	Ġmilk	.Ċ
+30	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+31	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+32	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+33	.	ĠJohn	Ġgot	Ġthe	Ġapple	.Ċ
+34	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+35	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+36	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+37	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+38	.	ĠJohn	Ġgot	Ġthe	Ġapple	.Ċ
+39	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+40	.	ĠJohn	Ġdiscarded	Ġthe	Ġapple	.Ċ
+41	.	ĠMary	Ġgot	Ġthe	Ġfootball	.Ċ
+42	.	ĠSandra	Ġtook	Ġthe	Ġapple	.Ċ
+43	.	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+44	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+45	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+46	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+47	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġapple	Ġthere	.Ċ
+48	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġfootball	.Ċ
+49	.	ĠMary	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+50	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+51	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+52	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġgarden	?Ċ

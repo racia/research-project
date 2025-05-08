@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	16	,	ĠMary	Ġdiscarded	Ġthe	Ġfootball	Ġin	Ġthe	Ġoffice	,	Ġwhere	Ġshe	Ġwas	Ġlocated	Ġin	Ġsentence	Ġ	15	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠBill	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
+5	.	ĠFred	Ġpassed	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠFred	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

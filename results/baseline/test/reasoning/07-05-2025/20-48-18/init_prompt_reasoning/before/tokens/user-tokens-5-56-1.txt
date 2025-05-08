@@ -1,0 +1,55 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+2	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+3	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+4	.	ĠBill	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+5	.	ĠBill	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+6	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+7	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+8	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+9	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+10	.	ĠMary	Ġdropped	Ġthe	Ġapple	Ġthere	.Ċ
+11	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+12	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+13	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+14	.	ĠMary	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+15	.	ĠBill	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+16	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+17	.	ĠMary	Ġdiscarded	Ġthe	Ġapple	.Ċ
+18	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+19	.	ĠFred	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
+20	.	ĠFred	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+21	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+22	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+23	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+24	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+25	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+26	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+27	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+28	.	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+29	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+30	.	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+31	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+32	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+33	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+34	.	ĠFred	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+35	.	ĠBill	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+36	.	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+37	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+38	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+39	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+40	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+41	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+42	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+43	.	ĠMary	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+44	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
+45	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+46	.	ĠMary	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+47	.	ĠMary	Ġput	Ġdown	Ġthe	Ġmilk	Ġthere	.Ċ
+48	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+49	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+50	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+51	.	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
+52	.	ĠJeff	Ġgave	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġfootball	?Ċ

@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1572	4	72	1	"*TASK*
+Here are the context sentences:
+1. The kitchen is north of the garden.
+2. The office is south of the garden.
+
+Now, answer the following question:
+What is the garden south of?"	kitchen	"from the context sentences, we know that the kitchen is north of the garden (sentence 1) and the office is south of the garden (sentence 2). since the garden is between the kitchen and the office, and the kitchen is north of the garden, it means the garden is south of the kitchen. therefore, the correct answer is ""kitchen""."	fully	office	False	The garden is not mentioned as being south of anything else, but we know the office is south of the garden. This implies that the office is the only thing south of the garden.		"Reasoning: The garden is not mentioned as being south of anything else, but we know the office is south of the garden. This implies that the office is the only thing south of the garden.
+
+Answer: office"	0.0227	0.0227	False	False	False	True	0

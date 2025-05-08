@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+11	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠJeff	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

@@ -1,0 +1,74 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+716	2	44	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the office.
+2. Mary took the football there.
+3. Sandra journeyed to the garden.
+4. Sandra went to the bedroom.
+5. John took the apple there.
+6. John put down the apple.
+7. Mary put down the football.
+8. John took the apple there.
+9. Mary went back to the bedroom.
+10. John put down the apple.
+11. Mary journeyed to the kitchen.
+12. Daniel moved to the garden.
+13. Sandra moved to the kitchen.
+14. Daniel picked up the milk there.
+15. John went to the hallway.
+16. John journeyed to the bedroom.
+17. Sandra picked up the apple there.
+18. Mary travelled to the bedroom.
+19. Mary went back to the bathroom.
+20. Sandra journeyed to the office.
+
+Now, answer the following question:
+Where is the apple?"	office	from sentence 5, we know john took the apple to the bedroom.	fully	kitchen	False	The apple is taken by John to the bedroom (sentence 5), put down (sentence 6), taken again to the bedroom (sentence 8), and put down again (sentence 10). Later, Sandra picks up the apple in the bedroom (sentence 17). Since Sandra is in the kitchen (sentence 13), the apple must be with her in the kitchen.		"Reasoning: The apple is taken by John to the bedroom (sentence 5), put down (sentence 6), taken again to the bedroom (sentence 8), and put down again (sentence 10). Later, Sandra picks up the apple in the bedroom (sentence 17). Since Sandra is in the kitchen (sentence 13), the apple must be with her in the kitchen.
+
+Answer: kitchen"	0.0241	0.0241	False	False	False	False	0
+717	2	44	2	"*TASK*
+Here are the context sentences:
+22. John went back to the kitchen.
+23. John moved to the garden.
+24. Sandra left the apple.
+25. Sandra took the apple there.
+26. Sandra put down the apple.
+27. John went back to the bathroom.
+
+Now, answer the following question:
+Where is the apple?"	office	the provided context lines (22-27) do not explicitly mention the office, but we can infer the location of the apple by connecting the new information to the previous context.	partially	bathroom	False	Sandra left the apple (sentence 24), took it to the bathroom (sentence 25), and put it down (sentence 26). Since John went back to the bathroom (sentence 27), the apple must be with him in the bathroom.		"Reasoning: Sandra left the apple (sentence 24), took it to the bathroom (sentence 25), and put it down (sentence 26). Since John went back to the bathroom (sentence 27), the apple must be with him in the bathroom.
+
+Answer: bathroom"	0.1228	0.0351	False	False	False	False	0
+718	2	44	3	"*TASK*
+Here are the context sentences:
+29. Sandra travelled to the garden.
+30. Daniel went to the bathroom.
+
+Now, answer the following question:
+Where is the apple?"	office	the provided context lines (29-30) do not mention the apple, but we can infer its location by connecting the new information to the previous context.	none	not mentioned	False	There is no mention of the apple in the given context sentences. The previous context sentences mentioned the apple being in the bathroom, but there is no new information about its current location.		"Reasoning: There is no mention of the apple in the given context sentences. The previous context sentences mentioned the apple being in the bathroom, but there is no new information about its current location.
+
+Answer: not mentioned"	0.0455	0.0455	False	False	False	True	0
+719	2	44	4	"*TASK*
+Here are the context sentences:
+32. Daniel left the milk.
+33. Mary took the milk there.
+34. Mary put down the milk.
+35. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Where is the milk?"	bathroom	from sentence 32, we know daniel left the milk, but the location is not specified.	partially	kitchen	False	Mary took the milk to the kitchen (sentence 33) and put it down (sentence 34). Since Mary is in the kitchen (sentence 35), the milk must be with her in the kitchen.		"Reasoning: Mary took the milk to the kitchen (sentence 33) and put it down (sentence 34). Since Mary is in the kitchen (sentence 35), the milk must be with her in the kitchen.
+
+Answer: kitchen"	0.0	0.0408	False	False	False	False	0
+720	2	44	5	"*TASK*
+Here are the context sentences:
+37. Mary moved to the bedroom.
+38. John went to the garden.
+
+Now, answer the following question:
+Where is the milk?"	bathroom	" went back to the office.
+39. sandra took the apple there.
+40. sandra put down the apple.
+this is the question: where is the apple?
+this is the answer: office"	none	kitchen	False	The milk was last mentioned to be in the kitchen (sentence 35). There is no new information about its current location, so it is likely still in the kitchen.		"Reasoning: The milk was last mentioned to be in the kitchen (sentence 35). There is no new information about its current location, so it is likely still in the kitchen.
+
+Answer: kitchen"	0.0	0.0488	False	False	False	True	0

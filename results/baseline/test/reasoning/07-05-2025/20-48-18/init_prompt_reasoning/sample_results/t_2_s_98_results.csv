@@ -1,0 +1,66 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+986	2	98	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the kitchen.
+2. Sandra went back to the bedroom.
+3. Daniel went back to the garden.
+4. Daniel travelled to the bathroom.
+5. John moved to the bathroom.
+6. Mary went to the bedroom.
+7. Mary travelled to the office.
+8. Mary journeyed to the hallway.
+9. John went to the bedroom.
+10. Daniel moved to the garden.
+11. Daniel grabbed the apple there.
+12. John travelled to the kitchen.
+13. Daniel travelled to the bedroom.
+14. John picked up the milk there.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	from context line 11, we know that daniel grabbed the apple in the garden. then, in context line 13, daniel travelled to the bedroom. since there is no mention of daniel dropping or leaving the apple, it can be logically inferred that daniel still has the apple with him when he travels to the bedroom. therefore, the apple is in the bedroom.	fully	garden	False	The context sentences suggest that Daniel grabbed the apple in the garden (sentence 11), and then Daniel moved to the garden again (sentence 10). This implies that the apple is still in the garden.		"Reasoning: The context sentences suggest that Daniel grabbed the apple in the garden (sentence 11), and then Daniel moved to the garden again (sentence 10). This implies that the apple is still in the garden.
+
+Answer: garden"	0.2292	0.0417	False	False	False	False	0
+987	2	98	2	"*TASK*
+Here are the context sentences:
+16. Mary moved to the bathroom.
+17. John grabbed the football there.
+18. Sandra journeyed to the hallway.
+19. Sandra journeyed to the kitchen.
+20. Daniel went to the hallway.
+21. Daniel journeyed to the kitchen.
+22. John journeyed to the bathroom.
+23. John left the football.
+
+Now, answer the following question:
+Where is the football?"	bathroom	from context line 17, we know that john grabbed the football in the bathroom. then, in context line 22, john journeyed to the bathroom again. in context line 23, john left the football, which implies that john left the football in the bathroom, where he was currently located. therefore, the football is in the bathroom.	fully	bathroom	True	The context sentences suggest that John grabbed the football in the bathroom (sentence 17), and then John left the football (sentence 23). This implies that the football is no longer in the bathroom, but its current location is not specified. However, since John journeyed to the bathroom again (sentence 22), it is likely that the football is still in the bathroom.		"Reasoning: The context sentences suggest that John grabbed the football in the bathroom (sentence 17), and then John left the football (sentence 23). This implies that the football is no longer in the bathroom, but its current location is not specified. However, since John journeyed to the bathroom again (sentence 22), it is likely that the football is still in the bathroom.
+
+Answer: bathroom"	0.0366	0.0244	False	False	False	False	0
+988	2	98	3	"*TASK*
+Here are the context sentences:
+25. John dropped the milk.
+26. Mary grabbed the football there.
+
+Now, answer the following question:
+Where is the milk?"	bathroom	from the previous conversation, we know that john picked up the milk in the kitchen (context line 14). there is no information about john moving to a different location with the milk. in the current context, john dropped the milk (context line 25). since john's location is not specified, we need to make a logical assumption. from the previous conversation, we know that john was last in the bathroom (context line 22). it is logical to assume that john is	partially	not mentioned	False	The context sentences do not provide any information about the location of the milk after John dropped it. The only mention of the milk is in sentence 26, where Mary grabs the football, but there is no mention of the milk being grabbed or moved.		"Reasoning: The context sentences do not provide any information about the location of the milk after John dropped it. The only mention of the milk is in sentence 26, where Mary grabs the football, but there is no mention of the milk being grabbed or moved.
+
+Answer: not mentioned"	0.0172	0.0345	False	False	False	True	0
+989	2	98	4	"*TASK*
+Here are the context sentences:
+28. Sandra moved to the bathroom.
+29. John grabbed the milk there.
+30. John discarded the milk.
+31. John went back to the office.
+
+Now, answer the following question:
+Where is the milk?"	bathroom	from context line 29, we know that john grabbed the milk in the bathroom. then, in context line 30, john discarded the milk, which implies that john left the milk in the bathroom. there is no information about anyone or anything moving the milk after that. therefore, the milk is still in the bathroom.	partially	office	False	The context sentences suggest that John grabbed the milk in the bathroom (sentence 29), and then discarded the milk (sentence 30). This implies that the milk is no longer in the bathroom, but its current location is not specified. However, since John went back to the office (sentence 31), it is likely that the milk is in the office.		"Reasoning: The context sentences suggest that John grabbed the milk in the bathroom (sentence 29), and then discarded the milk (sentence 30). This implies that the milk is no longer in the bathroom, but its current location is not specified. However, since John went back to the office (sentence 31), it is likely that the milk is in the office.
+
+Answer: office"	0.0253	0.0253	False	False	False	False	0
+990	2	98	5	"*TASK*
+Here are the context sentences:
+33. Sandra took the milk there.
+34. Mary dropped the football.
+
+Now, answer the following question:
+Where is the football?"	bathroom	from the previous conversation, we know that john discarded the milk in the bathroom (context line 30). then, in context line 33, sandra took the milk there, which implies that sandra took the milk in the bathroom. now, in context line 34, mary dropped the football. since there is no information about mary moving to a different location, it is logical to assume that mary dropped the football in the same location where sandra took the milk, which	partially	not mentioned	False	The context sentences do not provide any information about the location of the football after Mary dropped it. The only mention of the football is in sentence 34, where Mary drops it, but there is no mention of the football being picked up or moved.		"Reasoning: The context sentences do not provide any information about the location of the football after Mary dropped it. The only mention of the football is in sentence 34, where Mary drops it, but there is no mention of the football being picked up or moved.
+
+Answer: not mentioned"	0.1034	0.0345	False	False	False	True	0

@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+96	1	20	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the kitchen.
+2. Sandra moved to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	"from context sentence 1, ""john travelled to the kitchen"", we can infer that john's current location is the kitchen. this sentence explicitly states john's movement to the kitchen, implying that he is now present in the kitchen. therefore, the answer to the question ""where is john?"" is indeed ""kitchen""."	fully	kitchen	True	John travelled to the kitchen, which means he is currently in the kitchen.		"Reasoning: John travelled to the kitchen, which means he is currently in the kitchen.
+Answer: kitchen"	0.0	0.0455	False	False	False	False	0
+97	1	20	2	"*TASK*
+Here are the context sentences:
+4. Daniel went to the kitchen.
+5. John journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	"the question asks about sandra's location, but the provided context sentences (4 and 5) do not mention sandra at all. however, we can look back at the previous context sentences (1 and 2) which mentioned sandra: ""2. sandra moved to the kitchen."" this sentence explicitly states that sandra moved to the kitchen, implying that she is still there. therefore, the answer to the question ""where is sandra?"" is indeed ""kitchen""."	none	not mentioned	False	There is no mention of Sandra's current location in the given context sentences. The sentences only mention Daniel and John, but not Sandra.		"Reasoning: There is no mention of Sandra's current location in the given context sentences. The sentences only mention Daniel and John, but not Sandra.
+Answer: not mentioned"	0.0857	0.0286	False	False	False	True	0
+98	1	20	3	"*TASK*
+Here are the context sentences:
+7. Mary journeyed to the bedroom.
+8. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"from context sentence 7, ""mary journeyed to the bedroom"", we can infer that mary initially went to the bedroom. however, context sentence 8, ""mary journeyed to the kitchen"", indicates that mary then moved from the bedroom to the kitchen. since this is the most recent action mentioned, we can conclude that mary's current location is the kitchen. therefore, the answer to the question ""where is mary?"" is indeed ""kitchen""."	fully	kitchen	True	Mary journeyed to the bedroom and then journeyed to the kitchen, which means she is currently in the kitchen.		"Reasoning: Mary journeyed to the bedroom and then journeyed to the kitchen, which means she is currently in the kitchen.
+Answer: kitchen"	0.1667	0.0333	False	False	False	False	0
+99	1	20	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the bedroom.
+11. Sandra travelled to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"from context sentence 10, ""mary travelled to the bedroom"", we can directly infer that mary's current location is the bedroom. this sentence explicitly states mary's movement to the bedroom, and there is no subsequent information that suggests she has moved elsewhere. therefore, the answer to the question ""where is mary?"" is indeed ""bedroom""."	fully	bedroom	True	Mary travelled to the bedroom, which means she is currently in the bedroom.		"Reasoning: Mary travelled to the bedroom, which means she is currently in the bedroom.
+Answer: bedroom"	0.0	0.0455	False	False	False	False	0
+100	1	20	5	"*TASK*
+Here are the context sentences:
+13. John went to the office.
+14. John went back to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"the provided context sentences (13 and 14) only mention john's movements, but the question asks about mary's location. to answer this, we need to look back at previous context sentences that mention mary. unfortunately, there are no previous sentences that mention mary's movements or location. therefore, we cannot provide a logical reasoning for the answer ""bedroom"" based on the provided context."	none	not mentioned	False	There is no mention of Mary's current location in the given context sentences. The sentences only mention John, but not Mary.		"Reasoning: There is no mention of Mary's current location in the given context sentences. The sentences only mention John, but not Mary.
+Answer: not mentioned"	0.1818	0.0303	False	False	False	True	0

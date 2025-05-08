@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1666	5	14	1	"*TASK*
+Here are the context sentences:
+1. Bill moved to the bedroom.
+2. Fred went to the hallway.
+3. Jeff went to the garden.
+4. Fred travelled to the office.
+5. Mary took the apple there.
+6. Mary passed the apple to Bill.
+
+Now, answer the following question:
+Who gave the apple to Bill?"	mary	from sentence 5, we know that mary took the apple to a location, and from sentence 6, we know that mary passed the apple to bill. since mary passed the apple to bill, it can be inferred that mary gave the apple to bill.	fully	Mary	True	Mary passed the apple to Bill, and according to sentence 6, Mary took the apple there, which implies that Mary gave the apple to Bill.		"Reasoning: Mary passed the apple to Bill, and according to sentence 6, Mary took the apple there, which implies that Mary gave the apple to Bill.
+
+Answer: Mary"	0.1081	0.027	False	False	False	False	0
+1667	5	14	2	"*TASK*
+Here are the context sentences:
+8. Bill gave the apple to Mary.
+9. Mary passed the apple to Bill.
+
+Now, answer the following question:
+Who did Mary give the apple to?"	bill	from sentence 9, we know that mary passed the apple to bill, which implies that mary gave the apple to bill.	fully	No one	False	According to sentence 9, Mary passed the apple to Bill, but sentence 8 states that Bill gave the apple to Mary, which means that Mary did not give the apple to anyone.		"Reasoning: According to sentence 9, Mary passed the apple to Bill, but sentence 8 states that Bill gave the apple to Mary, which means that Mary did not give the apple to anyone.
+
+Answer: No one"	0.0652	0.0217	False	False	False	False	0
+1668	5	14	3	"*TASK*
+Here are the context sentences:
+11. Fred travelled to the bathroom.
+12. Bill passed the apple to Mary.
+
+Now, answer the following question:
+Who did Bill give the apple to?"	mary	from sentence 12, we know that bill passed the apple to mary, which implies that bill gave the apple to mary.	fully	Mary	True	According to sentence 12, Bill passed the apple to Mary, which implies that Bill gave the apple to Mary.		"Reasoning: According to sentence 12, Bill passed the apple to Mary, which implies that Bill gave the apple to Mary.
+
+Answer: Mary"	0.0	0.0333	False	False	False	False	0
+1669	5	14	4	"*TASK*
+Here are the context sentences:
+14. Bill went back to the office.
+15. Mary dropped the apple.
+
+Now, answer the following question:
+What did Bill give to Mary?"	apple	"from the context, we don't have a direct statement that says ""bill gave the apple to mary"". however, we can infer this from the previous conversations. in a previous conversation, we had the context lines ""8. bill gave the apple to mary. 9. mary passed the apple to bill."" which implies that bill had given the apple to mary initially. although we don't have that context here, we can still make a logical assumption that bill had given the apple to"	none	Nothing	False	According to sentence 12, Bill passed the apple to Mary, but sentence 15 states that Mary dropped the apple, which means that Bill did not give the apple to Mary.		"Reasoning: According to sentence 12, Bill passed the apple to Mary, but sentence 15 states that Mary dropped the apple, which means that Bill did not give the apple to Mary.
+
+Answer: Nothing"	0.0	0.0233	False	False	False	False	0
+1670	5	14	5	"*TASK*
+Here are the context sentences:
+17. Fred went back to the office.
+18. Fred journeyed to the bathroom.
+
+Now, answer the following question:
+Who did Bill give the apple to?"	mary	"the context lines provided (17 and 18) do not mention bill or the apple, but the answer is still ""mary"". this is because the question is referring to a previous part of the conversation history. in a previous conversation, we had the context lines ""12. bill passed the apple to mary."" which implies that bill gave the apple to mary."	none	No one	False	There is no mention of Bill giving the apple to anyone in the provided context sentences. The sentences only mention Fred's movements and actions, but not Bill's.		"Reasoning: There is no mention of Bill giving the apple to anyone in the provided context sentences. The sentences only mention Fred's movements and actions, but not Bill's.
+
+Answer: No one"	0.025	0.025	False	False	False	True	0

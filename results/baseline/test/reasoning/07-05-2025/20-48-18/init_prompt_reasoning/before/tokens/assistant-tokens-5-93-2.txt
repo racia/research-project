@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgiving	Ġanything	Ġto	ĠBill	Ġin	Ġthe	Ġprovided	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJeff	Ġpicking	Ġup	Ġthe	Ġfootball	Ġand	ĠFred	Ġgoing	Ġback	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġdo	Ġnot	Ġmention	ĠMary	Ġor	ĠBill	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+19	.	ĠFred	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+20	.	ĠBill	Ġpassed	Ġthe	Ġmilk	Ġto	ĠJeff	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠBill	Ġgive	Ġto	ĠJeff	?Ċ

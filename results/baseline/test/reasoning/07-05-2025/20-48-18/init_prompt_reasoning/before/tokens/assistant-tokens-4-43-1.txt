@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġkitchen	Ġis	Ġnorth	Ġof	Ġthe	Ġgarden	,	Ġand	Ġthe	Ġbedroom	Ġis	Ġnorth	Ġof	Ġthe	Ġkitchen	,	Ġit	Ġimplies	Ġthat	Ġthe	Ġgarden	Ġis	Ġsouth	Ġof	Ġthe	Ġkitchen	Ġand	Ġbedroom	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

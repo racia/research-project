@@ -1,0 +1,19 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+120	.	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+121	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+122	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+123	.	ĠJohn	Ġdropped	Ġthe	Ġfootball	.Ċ
+124	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+125	.	ĠDaniel	Ġtook	Ġthe	Ġfootball	.Ċ
+126	.	ĠDaniel	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+127	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+128	.	ĠJohn	Ġgrabbed	Ġthe	Ġapple	.Ċ
+129	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+130	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+131	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+132	.	ĠJohn	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+133	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+134	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+135	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġbedroom	?Ċ

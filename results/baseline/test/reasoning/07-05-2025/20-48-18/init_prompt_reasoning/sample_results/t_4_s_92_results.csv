@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1592	4	92	1	"*TASK*
+Here are the context sentences:
+1. The kitchen is west of the bedroom.
+2. The office is east of the bedroom.
+
+Now, answer the following question:
+What is east of the bedroom?"	office	"according to context sentence 2, ""the office is east of the bedroom"", which directly states that the office is located east of the bedroom. therefore, the answer to the question ""what is east of the bedroom?"" is indeed the office."	fully	office	True	The office is east of the bedroom, as stated in sentence 2. The kitchen is west of the bedroom, as stated in sentence 1. This implies that the office is on the opposite side of the bedroom from the kitchen.		"Reasoning: The office is east of the bedroom, as stated in sentence 2. The kitchen is west of the bedroom, as stated in sentence 1. This implies that the office is on the opposite side of the bedroom from the kitchen.
+
+Answer: office"	0.1481	0.0185	False	False	False	False	0

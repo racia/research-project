@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġdiscarded	Ġby	ĠJohn	Ġin	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	28	).	ĠThere	Ġis	Ġno	Ġindication	Ġthat	Ġit	Ġwas	Ġmoved	Ġor	Ġpicked	Ġup	Ġagain	,	Ġso	Ġit	Ġis	Ġlikely	Ġstill	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

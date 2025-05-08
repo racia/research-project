@@ -1,0 +1,62 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1366	3	74	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the garden.
+2. John went to the hallway.
+3. Sandra took the apple.
+4. John travelled to the kitchen.
+5. Daniel picked up the milk there.
+6. Daniel travelled to the bathroom.
+7. Daniel went back to the kitchen.
+8. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Where was the milk before the kitchen?"	bathroom	from sentence 5, we know that daniel picked up the milk in the kitchen. however, sentence 6 states that daniel travelled to the bathroom, and sentence 7 states that daniel went back to the kitchen. this implies that daniel had the milk with him when he travelled to the bathroom and then brought it back to the kitchen. therefore, the milk was in the bathroom before it was in the kitchen.	fully		False	"The question asks about the milk's location before it was in the kitchen. Since Daniel picked up the milk in the kitchen (sentence 5), it implies that the milk was not in the kitchen before Daniel picked it up. Therefore, we need to find the location where Daniel picked up the milk. According to sentence 5, Daniel picked up the milk ""there"", which refers to the location mentioned in sentence 4, which is the kitchen. However, this is not the location where the milk was before. To find the location, we need to look for the sentence where the milk is mentioned before sentence 4. Sentence 2 mentions John going to the hallway, but it does not mention the milk. Sentence 1"		"Reasoning: The question asks about the milk's location before it was in the kitchen. Since Daniel picked up the milk in the kitchen (sentence 5), it implies that the milk was not in the kitchen before Daniel picked it up. Therefore, we need to find the location where Daniel picked up the milk. According to sentence 5, Daniel picked up the milk ""there"", which refers to the location mentioned in sentence 4, which is the kitchen. However, this is not the location where the milk was before. To find the location, we need to look for the sentence where the milk is mentioned before sentence 4. Sentence 2 mentions John going to the hallway, but it does not mention the milk. Sentence 1"	0.255	0.0201	False	False	False	True	0
+1367	3	74	2	"*TASK*
+Here are the context sentences:
+10. Mary moved to the bedroom.
+11. Mary journeyed to the garden.
+12. Daniel journeyed to the garden.
+13. Sandra discarded the apple.
+14. John picked up the apple.
+15. John went to the hallway.
+16. Sandra went to the bedroom.
+17. John went to the bedroom.
+
+Now, answer the following question:
+Where was the apple before the bedroom?"	hallway	from sentence 14, we know that john picked up the apple. sentence 15 states that john went to the hallway, so the apple was with john in the hallway. later, sentence 17 states that john went to the bedroom, implying that john brought the apple with him to the bedroom. therefore, the apple was in the hallway before it was in the bedroom.	fully	garden	False	The question asks about the apple's location before it was in the bedroom. Since the apple was discarded (sentence 13), it implies that the apple was somewhere before it was discarded. According to sentence 14, John picked up the apple, which means the apple was somewhere before John picked it up. Sentence 13 does not specify where the apple was before it was discarded, but sentence 12 mentions Daniel journeying to the garden. Since the apple was discarded, it is likely that the apple was in the garden before it was discarded. Therefore, the apple was in the garden before it was in the bedroom.		"Reasoning: The question asks about the apple's location before it was in the bedroom. Since the apple was discarded (sentence 13), it implies that the apple was somewhere before it was discarded. According to sentence 14, John picked up the apple, which means the apple was somewhere before John picked it up. Sentence 13 does not specify where the apple was before it was discarded, but sentence 12 mentions Daniel journeying to the garden. Since the apple was discarded, it is likely that the apple was in the garden before it was discarded. Therefore, the apple was in the garden before it was in the bedroom.
+
+Answer: garden"	0.229	0.0229	False	False	False	True	0
+1368	3	74	3	"*TASK*
+Here are the context sentences:
+19. Mary travelled to the kitchen.
+20. Daniel went back to the bedroom.
+21. Mary travelled to the bathroom.
+22. Daniel got the football there.
+23. Mary went to the bedroom.
+24. John went to the kitchen.
+25. Daniel travelled to the kitchen.
+26. Daniel moved to the garden.
+
+Now, answer the following question:
+Where was the football before the garden?"	kitchen	from sentence 22, we know that daniel got the football in the bedroom. sentence 25 states that daniel travelled to the kitchen, implying that daniel brought the football with him to the kitchen. later, sentence 26 states that daniel moved to the garden, which means daniel took the football from the kitchen to the garden. therefore, the football was in the kitchen before it was in the garden.	fully	bathroom	False	The question asks about the football's location before it was in the garden. According to sentence 22, Daniel got the football in the bathroom. Since Daniel moved to the garden (sentence 26), it implies that the football was somewhere before Daniel moved to the garden. The only location mentioned before the garden is the kitchen, where Daniel travelled to (sentence 25). However, sentence 25 does not specify what Daniel did in the kitchen, so we cannot conclude that the football was in the kitchen. The only specific location mentioned is the bathroom, where Daniel got the football. Therefore, the football was in the bathroom before it was in the garden.		"Reasoning: The question asks about the football's location before it was in the garden. According to sentence 22, Daniel got the football in the bathroom. Since Daniel moved to the garden (sentence 26), it implies that the football was somewhere before Daniel moved to the garden. The only location mentioned before the garden is the kitchen, where Daniel travelled to (sentence 25). However, sentence 25 does not specify what Daniel did in the kitchen, so we cannot conclude that the football was in the kitchen. The only specific location mentioned is the bathroom, where Daniel got the football. Therefore, the football was in the bathroom before it was in the garden.
+
+Answer: bathroom"	0.0507	0.0217	False	False	False	True	0
+1369	3	74	4	"*TASK*
+Here are the context sentences:
+28. John left the apple.
+29. Daniel left the milk.
+
+Now, answer the following question:
+Where was the milk before the garden?"	kitchen	"there is no information provided about the milk being in the garden, and there is no connection between the milk and the garden in the given context sentences. the context sentences only mention that daniel left the milk, but they do not specify where daniel left the milk. however, since the answer is provided as ""kitchen"", we can infer that the milk was in the kitchen before, but this information is not explicitly stated in the context sentences."	partially	not mentioned	False	The question asks about the milk's location before it was in the garden, but there is no mention of the milk being in the garden. Sentence 29 only mentions Daniel leaving the milk, but it does not specify where the milk was before. Therefore, we cannot determine the milk's location before the garden.		"Reasoning: The question asks about the milk's location before it was in the garden, but there is no mention of the milk being in the garden. Sentence 29 only mentions Daniel leaving the milk, but it does not specify where the milk was before. Therefore, we cannot determine the milk's location before the garden.
+
+Answer: not mentioned"	0.0714	0.0429	False	False	False	True	0
+1370	3	74	5	"*TASK*
+Here are the context sentences:
+31. Sandra journeyed to the hallway.
+32. John went to the garden.
+
+Now, answer the following question:
+Where was the milk before the garden?"	kitchen	"there is no information provided about the milk in the context sentences. the context sentences only mention sandra journeying to the hallway and john going to the garden, but they do not mention the milk at all. therefore, it is not possible to determine where the milk was before the garden based on the provided context sentences. the answer ""kitchen"" seems to be unrelated to the provided context."	none	not mentioned	False	There is no mention of the milk in the given context sentences. Sentence 31 mentions Sandra journeying to the hallway, and sentence 32 mentions John going to the garden, but neither of these sentences mentions the milk. Therefore, we cannot determine the milk's location before the garden.		"Reasoning: There is no mention of the milk in the given context sentences. Sentence 31 mentions Sandra journeying to the hallway, and sentence 32 mentions John going to the garden, but neither of these sentences mentions the milk. Therefore, we cannot determine the milk's location before the garden.
+
+Answer: not mentioned"	0.0923	0.0462	False	False	False	True	0

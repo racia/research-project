@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+72	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+73	.	ĠDaniel	Ġgot	Ġthe	Ġfootball	.Ċ
+74	.	ĠDaniel	Ġdropped	Ġthe	Ġfootball	.Ċ
+75	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+76	.	ĠSandra	Ġdropped	Ġthe	Ġapple	.Ċ
+77	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġbedroom	?Ċ

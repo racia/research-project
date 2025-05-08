@@ -1,0 +1,75 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+996	2	100	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the garden.
+2. Mary journeyed to the bathroom.
+3. John went back to the kitchen.
+4. John went back to the hallway.
+5. John travelled to the kitchen.
+6. Mary journeyed to the office.
+7. Mary got the football there.
+8. Sandra moved to the office.
+9. Mary left the football.
+10. John went to the office.
+
+Now, answer the following question:
+Where is the football?"	office	from sentence 7, we know that mary got the football in the office. in sentence 9, it is mentioned that mary left the football, but it doesn't specify that she took it with her or moved it to a different location. therefore, it can be logically inferred that the football was left in the office, which is where mary got it initially.	fully	office	True	The football was last mentioned in sentence 8, where Mary got it in the office. Since then, Mary left the football, but there is no mention of anyone else picking it up or moving it. Therefore, it is likely that the football is still in the office.		"Reasoning: The football was last mentioned in sentence 8, where Mary got it in the office. Since then, Mary left the football, but there is no mention of anyone else picking it up or moving it. Therefore, it is likely that the football is still in the office.
+
+Answer: office"	0.0323	0.0323	False	False	False	True	0
+997	2	100	2	"*TASK*
+Here are the context sentences:
+12. Sandra grabbed the football there.
+13. Daniel went to the bedroom.
+14. John travelled to the bathroom.
+15. Mary journeyed to the bathroom.
+16. Daniel travelled to the office.
+17. Sandra travelled to the hallway.
+18. John journeyed to the office.
+19. Daniel went to the bedroom.
+20. Sandra got the milk there.
+21. Sandra got the apple there.
+22. Mary went to the bedroom.
+23. Daniel went back to the garden.
+24. Mary travelled to the office.
+25. John journeyed to the garden.
+26. Mary journeyed to the kitchen.
+27. Sandra discarded the apple.
+
+Now, answer the following question:
+Where is the apple?"	hallway	from sentence 21, we know that sandra got the apple in the hallway (since sentence 17 states that sandra travelled to the hallway before getting the apple). in sentence 27, it is mentioned that sandra discarded the apple, but it doesn't specify that she moved it to a different location. therefore, it can be logically inferred that the apple was discarded in the hallway, where sandra got it initially.	fully	discarded	False	The apple was last mentioned in sentence 21, where Sandra got it in the hallway. Since then, Sandra discarded the apple, but there is no mention of anyone else picking it up or moving it. Therefore, it is likely that the apple is no longer in the hallway, but rather has been discarded.		"Reasoning: The apple was last mentioned in sentence 21, where Sandra got it in the hallway. Since then, Sandra discarded the apple, but there is no mention of anyone else picking it up or moving it. Therefore, it is likely that the apple is no longer in the hallway, but rather has been discarded.
+
+Answer: discarded"	0.1449	0.029	False	True	False	True	0
+998	2	100	3	"*TASK*
+Here are the context sentences:
+29. Mary travelled to the hallway.
+30. Mary grabbed the apple there.
+31. John moved to the bathroom.
+32. Daniel travelled to the hallway.
+33. Sandra discarded the football.
+34. Daniel got the football there.
+35. Daniel moved to the bedroom.
+36. Mary put down the apple.
+
+Now, answer the following question:
+Where is the football?"	bedroom	from sentence 33, we know that sandra discarded the football, but the location is not specified. however, in sentence 34, it is mentioned that daniel got the football there, which implies that the football was discarded in the hallway (since daniel travelled to the hallway in sentence 32). then, in sentence 35, daniel moved to the bedroom. it can be logically inferred that daniel took the football with him to the bedroom, since there is	fully	hallway	False	The football was last mentioned in sentence 34, where Daniel got it in the hallway. Since then, Daniel moved to the bedroom, but there is no mention of anyone else picking it up or moving it. Therefore, it is likely that the football is still in the hallway.		"Reasoning: The football was last mentioned in sentence 34, where Daniel got it in the hallway. Since then, Daniel moved to the bedroom, but there is no mention of anyone else picking it up or moving it. Therefore, it is likely that the football is still in the hallway.
+
+Answer: hallway"	0.0	0.0317	False	False	False	True	0
+999	2	100	4	"*TASK*
+Here are the context sentences:
+38. Sandra put down the milk.
+39. Daniel put down the football.
+
+Now, answer the following question:
+Where is the milk?"	hallway	from sentence 20, we know that sandra got the milk in the hallway. there is no subsequent information about sandra moving the milk to a different location. in sentence 38, it is mentioned that sandra put down the milk, but it doesn't specify that she moved it to a different location. therefore, it can be logically inferred that sandra put down the milk in the same location where she got it, which is the hallway.	partially	not mentioned	False	The milk was last mentioned in sentence 38, where Sandra put it down. However, there is no information about where Sandra put it down. It could be anywhere.		"Reasoning: The milk was last mentioned in sentence 38, where Sandra put it down. However, there is no information about where Sandra put it down. It could be anywhere.
+
+Answer: not mentioned"	0.0714	0.0476	False	False	False	True	0
+1000	2	100	5	"*TASK*
+Here are the context sentences:
+41. Daniel went back to the garden.
+42. John travelled to the office.
+
+Now, answer the following question:
+Where is the milk?"	hallway	" is mary?
+this is the answer: bedroom"	none	not mentioned	False	There is no mention of the milk in the given context sentences. The last mention of the milk was in sentence 38, but it didn't specify where it was put down.		"Reasoning: There is no mention of the milk in the given context sentences. The last mention of the milk was in sentence 38, but it didn't specify where it was put down.
+
+Answer: not mentioned"	0.0455	0.0455	False	False	False	True	0

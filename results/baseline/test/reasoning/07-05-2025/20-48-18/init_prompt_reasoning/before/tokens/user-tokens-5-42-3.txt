@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+47	.	ĠFred	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
+48	.	ĠBill	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠFred	Ġgive	Ġthe	Ġfootball	Ġto	?Ċ

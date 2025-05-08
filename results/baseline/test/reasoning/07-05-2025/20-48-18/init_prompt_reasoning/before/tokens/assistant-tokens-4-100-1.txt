@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġbedroom	Ġis	Ġnorth	Ġof	Ġthe	Ġoffice	,	Ġwhich	Ġmeans	Ġthe	Ġoffice	Ġis	Ġnot	Ġnorth	Ġof	Ġanything	Ġelse	.	ĠThe	Ġbedroom	Ġis	Ġnorth	Ġof	Ġthe	Ġoffice	,	Ġso	Ġthe	Ġoffice	Ġis	Ġsouth	Ġof	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

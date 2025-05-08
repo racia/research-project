@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSandra	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġis	Ġthe	Ġonly	Ġlocation	Ġmentioned	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġleaving	Ġthe	Ġgarden	Ġor	Ġgoing	Ġto	Ġa	Ġdifferent	Ġlocation	.Ċ	Answer	:	Ġgarden	<|eot_id|>

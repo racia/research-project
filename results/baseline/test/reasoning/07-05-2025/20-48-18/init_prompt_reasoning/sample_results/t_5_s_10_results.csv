@@ -1,0 +1,74 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1646	5	10	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the hallway.
+2. Mary went back to the bathroom.
+3. Mary went to the bedroom.
+4. Fred went to the office.
+5. Fred went to the hallway.
+6. Jeff journeyed to the garden.
+7. Fred moved to the office.
+8. Jeff went to the kitchen.
+9. Mary moved to the kitchen.
+10. Jeff went back to the bathroom.
+11. Fred got the apple there.
+12. Bill went back to the garden.
+13. Fred put down the apple.
+14. Mary moved to the bedroom.
+15. Bill went to the hallway.
+16. Mary travelled to the garden.
+17. Bill journeyed to the office.
+18. Fred moved to the kitchen.
+19. Jeff went back to the office.
+20. Bill grabbed the football there.
+21. Fred went to the bathroom.
+22. Bill left the football.
+23. Bill travelled to the kitchen.
+24. Jeff got the apple there.
+25. Jeff put down the apple.
+26. Mary grabbed the milk there.
+27. Bill moved to the garden.
+28. Mary gave the milk to Bill.
+
+Now, answer the following question:
+Who did Mary give the milk to?"	bill	"according to sentence 28, ""mary gave the milk to bill."" this sentence directly states that mary gave the milk to bill, so the answer is indeed bill."	fully	Bill	True	Mary gave the milk to Bill in sentence 28, and there is no other mention of Mary giving the milk to anyone else.		"Reasoning: Mary gave the milk to Bill in sentence 28, and there is no other mention of Mary giving the milk to anyone else.
+
+Answer: Bill"	0.0303	0.0303	False	False	False	True	0
+1647	5	10	2	"*TASK*
+Here are the context sentences:
+30. Bill left the milk.
+31. Bill journeyed to the hallway.
+
+Now, answer the following question:
+What did Mary give to Bill?"	milk	"in sentence 28, ""mary gave the milk to bill."" this sentence directly states that mary gave the milk to bill. although the provided context lines (30 and 31) do not explicitly mention the milk being given to bill, we can infer the correct answer by looking at the previous parts of the conversation history. specifically, sentence 28 provides the necessary information to answer the question, and the answer is indeed ""milk""."	none	milk	True	Mary gave the milk to Bill in sentence 28, and there is no other mention of Mary giving anything else to Bill.		"Reasoning: Mary gave the milk to Bill in sentence 28, and there is no other mention of Mary giving anything else to Bill.
+
+Answer: milk"	0.0625	0.0312	False	False	False	True	0
+1648	5	10	3	"*TASK*
+Here are the context sentences:
+33. Bill moved to the garden.
+34. Jeff grabbed the football there.
+
+Now, answer the following question:
+Who gave the milk?"	mary	"in sentence 28, ""mary gave the milk to bill."" this sentence directly states that mary gave the milk to bill. although the provided context lines (33 and 34) do not mention the milk or mary giving it to bill, we can infer the correct answer by looking at the previous parts of the conversation history. specifically, sentence 28 provides the necessary information to answer the question, and the answer is indeed ""mary""."	none	Mary	True	Mary gave the milk to Bill in sentence 28, and there is no other mention of anyone giving milk.		"Reasoning: Mary gave the milk to Bill in sentence 28, and there is no other mention of anyone giving milk.
+
+Answer: Mary"	0.0345	0.0345	False	False	False	True	0
+1649	5	10	4	"*TASK*
+Here are the context sentences:
+36. Fred went to the hallway.
+37. Bill got the milk there.
+38. Jeff took the apple there.
+39. Bill passed the milk to Mary.
+
+Now, answer the following question:
+Who did Bill give the milk to?"	mary	"according to sentence 39, ""bill passed the milk to mary."" this sentence directly states that bill gave the milk to mary, so the answer is indeed ""mary""."	fully	Mary	True	Bill passed the milk to Mary in sentence 39, and there is no other mention of Bill giving the milk to anyone else.		"Reasoning: Bill passed the milk to Mary in sentence 39, and there is no other mention of Bill giving the milk to anyone else.
+
+Answer: Mary"	0.0606	0.0303	False	False	False	True	0
+1650	5	10	5	"*TASK*
+Here are the context sentences:
+41. Mary went back to the bathroom.
+42. Jeff dropped the apple.
+
+Now, answer the following question:
+Who gave the milk to Mary?"	bill	"according to sentence 39, ""bill passed the milk to mary."" this sentence directly states that bill gave the milk to mary, so the answer is indeed ""bill""."	none	Bill	True	Bill passed the milk to Mary in sentence 39, and there is no other mention of anyone giving milk to Mary.		"Reasoning: Bill passed the milk to Mary in sentence 39, and there is no other mention of anyone giving milk to Mary.
+
+Answer: Bill"	0.0645	0.0323	False	False	False	True	0

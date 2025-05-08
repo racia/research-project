@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+891	2	79	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the garden.
+2. Sandra went to the office.
+3. Sandra moved to the hallway.
+4. Mary went to the office.
+5. Sandra picked up the milk there.
+6. Sandra dropped the milk there.
+
+Now, answer the following question:
+Where is the milk?"	hallway	from sentence 5, we know that sandra picked up the milk in the office. then, in sentence 6, she dropped the milk. since sandra moved to the hallway in sentence 3, it is logical to assume that she dropped the milk in the hallway, as she was already there. therefore, the milk is in the hallway.	fully	hallway	True	The milk was picked up at the office and dropped at the hallway. Since it was dropped, it is likely to be at the hallway.		"Reasoning: The milk was picked up at the office and dropped at the hallway. Since it was dropped, it is likely to be at the hallway.
+
+Answer: hallway"	0.1429	0.0571	False	False	False	False	0
+892	2	79	2	"*TASK*
+Here are the context sentences:
+8. Mary journeyed to the bedroom.
+9. Sandra got the milk there.
+10. John moved to the office.
+11. Sandra travelled to the garden.
+
+Now, answer the following question:
+Where is the milk?"	garden	from sentence 9, we know that sandra got the milk in the bedroom. then, in sentence 11, sandra travelled to the garden. since sandra already had the milk (from sentence 9), it is logical to assume that she took the milk with her when she travelled to the garden. therefore, the milk is in the garden.	fully	unknown	False	The milk was obtained at the bedroom, but there is no information about what happened to it after that. Since the context sentences do not provide any information about the milk's current location, it is unknown.		"Reasoning: The milk was obtained at the bedroom, but there is no information about what happened to it after that. Since the context sentences do not provide any information about the milk's current location, it is unknown.
+
+Answer: unknown"	0.1042	0.0417	False	False	False	True	0
+893	2	79	3	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the kitchen.
+14. Mary took the football there.
+
+Now, answer the following question:
+Where is the milk?"	garden	"there is no information about the milk in the provided context lines (13 and 14). the context lines only mention mary, the kitchen, and the football. the answer ""garden"" seems to be referring to a previous part of the conversation history. therefore, i will look at the previous parts of the conversation."	none	unknown	False	There is no mention of the milk in these context sentences. The previous context sentences mentioned the milk, but this new set of sentences only talks about Mary and the football.		"Reasoning: There is no mention of the milk in these context sentences. The previous context sentences mentioned the milk, but this new set of sentences only talks about Mary and the football.
+
+Answer: unknown"	0.0976	0.0488	False	False	False	True	0
+894	2	79	4	"*TASK*
+Here are the context sentences:
+16. Sandra discarded the milk.
+17. Daniel moved to the hallway.
+
+Now, answer the following question:
+Where is the milk?"	garden	from the previous parts of the conversation, we know that sandra got the milk in the bedroom (sentence 9) and then travelled to the garden (sentence 11). therefore, it is logical to assume that the milk was in the garden. then, in sentence 16, sandra discarded the milk. since sandra was in the garden, it is logical to assume that she discarded the milk in the garden. the milk's location did not change after it was discarded	partially	nowhere	False	The milk was discarded, which means it is no longer present anywhere. The context sentences do not provide any information about the milk's current location, but it is clear that it is no longer available.		"Reasoning: The milk was discarded, which means it is no longer present anywhere. The context sentences do not provide any information about the milk's current location, but it is clear that it is no longer available.
+
+Answer: nowhere"	0.1277	0.0426	True	False	False	True	0
+895	2	79	5	"*TASK*
+Here are the context sentences:
+19. Mary discarded the football.
+20. Mary travelled to the garden.
+
+Now, answer the following question:
+Where is the football?"	kitchen	from the context lines, we know that mary discarded the football (sentence 19), but there is no information about where she discarded it. then, in sentence 20, mary travelled to the garden, but this does not provide any information about the football's location.	partially	nowhere	False	The football was discarded, which means it is no longer present anywhere. The context sentences do not provide any information about the football's current location, but it is clear that it is no longer available.		"Reasoning: The football was discarded, which means it is no longer present anywhere. The context sentences do not provide any information about the football's current location, but it is clear that it is no longer available.
+
+Answer: nowhere"	0.1277	0.0426	True	False	False	True	0

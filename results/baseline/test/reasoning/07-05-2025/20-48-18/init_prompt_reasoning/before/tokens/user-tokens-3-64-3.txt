@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+11	.	ĠMary	Ġgot	Ġthe	Ġmilk	.Ċ
+12	.	ĠMary	Ġdropped	Ġthe	Ġmilk	Ġthere	.Ċ
+13	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+14	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+15	.	ĠDaniel	Ġtook	Ġthe	Ġmilk	.Ċ
+16	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+17	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+18	.	ĠDaniel	Ġdropped	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġgarden	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġgrabbed	Ġby	ĠSandra	Ġin	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	57	).	ĠThen	,	ĠSandra	Ġleft	Ġthe	Ġapple	Ġ(	sentence	Ġ	58	),	Ġwhich	Ġimplies	Ġthat	Ġthe	Ġapple	Ġwas	Ġleft	Ġin	Ġthe	Ġhallway	.	ĠLater	,	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	70	),	Ġso	Ġthe	Ġapple	Ġwas	Ġmoved	Ġfrom	Ġthe	Ġhallway	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

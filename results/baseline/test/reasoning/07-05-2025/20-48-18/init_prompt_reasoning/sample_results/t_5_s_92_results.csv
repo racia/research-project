@@ -1,0 +1,95 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2056	5	92	1	"*TASK*
+Here are the context sentences:
+1. Jeff journeyed to the garden.
+2. Bill picked up the apple there.
+3. Jeff went to the bathroom.
+4. Bill dropped the apple there.
+5. Fred journeyed to the bedroom.
+6. Bill got the apple there.
+7. Bill dropped the apple.
+8. Fred journeyed to the garden.
+9. Jeff moved to the garden.
+10. Mary travelled to the bathroom.
+11. Bill went to the office.
+12. Bill went to the bathroom.
+13. Mary went back to the kitchen.
+14. Jeff went to the bathroom.
+15. Jeff journeyed to the office.
+16. Mary took the milk there.
+17. Bill moved to the garden.
+18. Jeff went to the bathroom.
+19. Jeff journeyed to the bedroom.
+20. Bill travelled to the bathroom.
+21. Bill went back to the garden.
+22. Jeff went to the kitchen.
+23. Mary journeyed to the hallway.
+24. Bill travelled to the bedroom.
+25. Fred journeyed to the hallway.
+26. Mary passed the milk to Fred.
+
+Now, answer the following question:
+Who did Mary give the milk to?"	fred	"mary gave the milk to fred because in sentence 26, it is explicitly stated that ""mary passed the milk to fred."" this sentence directly indicates the recipient of the milk, which is fred."	fully	Fred	True	Mary passed the milk to Fred, which is mentioned in sentence 26. There is no mention of Mary giving the milk to anyone else.		"Reasoning: Mary passed the milk to Fred, which is mentioned in sentence 26. There is no mention of Mary giving the milk to anyone else.
+
+Answer: Fred"	0.0286	0.0286	False	False	False	True	0
+2057	5	92	2	"*TASK*
+Here are the context sentences:
+28. Fred handed the milk to Mary.
+29. Mary gave the milk to Fred.
+
+Now, answer the following question:
+Who gave the milk?"	mary	according to the context sentences, in sentence 28, fred handed the milk to mary, which means mary received the milk from fred. then, in sentence 29, mary gave the milk to fred, which implies that mary was the one who gave the milk to fred. therefore, the correct answer is mary, as she is the one who gave the milk in the second transaction.	fully	Both Mary and Fred (depending on which sentence is considered correct)	False	According to sentence 29, Mary gave the milk to Fred. However, sentence 28 contradicts this information, stating that Fred handed the milk to Mary. This creates a paradox, as it is unclear who gave the milk.		"Reasoning: According to sentence 29, Mary gave the milk to Fred. However, sentence 28 contradicts this information, stating that Fred handed the milk to Mary. This creates a paradox, as it is unclear who gave the milk.
+
+Answer: Both Mary and Fred (depending on which sentence is considered correct)"	0.0462	0.0154	False	False	False	True	0
+2058	5	92	3	"*TASK*
+Here are the context sentences:
+31. Mary moved to the bathroom.
+32. Fred left the milk there.
+
+Now, answer the following question:
+Who did Mary give the milk to?"	fred	"there is no information in the provided context sentences that suggests mary gave the milk to anyone, including fred. the context sentences only mention mary moving to the bathroom and fred leaving the milk there. there is no transaction or action involving mary giving the milk to anyone. the answer ""fred"" seems to be incorrect based on the provided context."	none	Not mentioned	False	There is no mention of Mary giving the milk to anyone in the provided context sentences. Sentence 32 only states that Fred left the milk in the bathroom, but it does not imply that Mary gave the milk to anyone.		"Reasoning: There is no mention of Mary giving the milk to anyone in the provided context sentences. Sentence 32 only states that Fred left the milk in the bathroom, but it does not imply that Mary gave the milk to anyone.
+
+Answer: Not mentioned"	0.0385	0.0192	False	False	False	True	0
+2059	5	92	4	"*TASK*
+Here are the context sentences:
+34. Mary moved to the office.
+35. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Who gave the milk?"	mary	"there is no information in the provided context sentences that suggests mary gave the milk to anyone. the context sentences only mention mary moving to different locations (office and bedroom), but there is no mention of the milk or any transaction involving mary and the milk. the answer ""mary"" seems to be incorrect based on the provided context."	none	Not mentioned	False	There is no mention of milk or anyone giving milk in the provided context sentences. The sentences only mention Mary moving to different locations, but do not provide any information about milk or its distribution.		"Reasoning: There is no mention of milk or anyone giving milk in the provided context sentences. The sentences only mention Mary moving to different locations, but do not provide any information about milk or its distribution.
+
+Answer: Not mentioned"	0.0	0.0217	False	False	False	True	0
+2060	5	92	5	"*TASK*
+Here are the context sentences:
+37. Fred travelled to the kitchen.
+38. Jeff travelled to the hallway.
+39. Mary went back to the bathroom.
+40. Jeff grabbed the apple there.
+41. Jeff put down the apple.
+42. Bill journeyed to the office.
+43. Jeff grabbed the apple there.
+44. Jeff got the football there.
+45. Jeff dropped the football there.
+46. Jeff picked up the milk there.
+47. Jeff went back to the kitchen.
+48. Jeff dropped the apple.
+49. Jeff discarded the milk.
+50. Mary moved to the garden.
+51. Fred picked up the apple there.
+52. Bill went back to the bathroom.
+53. Jeff got the milk there.
+54. Mary journeyed to the bathroom.
+55. Jeff left the milk.
+56. Bill went to the office.
+57. Fred put down the apple.
+58. Fred picked up the milk there.
+59. Fred handed the milk to Jeff.
+60. Fred moved to the bedroom.
+
+Now, answer the following question:
+What did Fred give to Jeff?"	milk	"ed to the office.
+55. jeff handed the milk to mary.
+this is the question: who did jeff give the milk to?
+this is the answer: mary"	fully	milk	True	According to sentence 59, Fred handed the milk to Jeff.		"Reasoning: According to sentence 59, Fred handed the milk to Jeff.
+
+Answer: milk"	0.0	0.05	False	False	False	False	0

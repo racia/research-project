@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġtravelling	Ġto	Ġthe	Ġbedroom	,	ĠDaniel	Ġgrabbing	Ġthe	Ġapple	Ġthere	,	Ġand	Ġthen	ĠDaniel	Ġgoing	Ġto	Ġthe	Ġgarden	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġor	Ġthe	Ġoffice	Ġin	Ġrelation	Ġto	Ġthe	Ġapple	.	ĠTherefore	,	Ġthe	Ġapple	Ġmust	Ġbe	Ġin	Ġthe	Ġbedroom	Ġor	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

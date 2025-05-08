@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+396	1	80	1	"*TASK*
+Here are the context sentences:
+1. Daniel went back to the kitchen.
+2. Daniel moved to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	the context sentences provide a sequence of actions performed by daniel. in the first sentence, daniel goes back to the kitchen, but then in the second sentence, daniel moves to the office. this implies that daniel's location has changed from the kitchen to the office. therefore, the current location of daniel is the office.	fully	office	True	Daniel went back to the kitchen, which implies he was previously somewhere else. Then, he moved to the office, which means he is currently in the office.		"Reasoning: Daniel went back to the kitchen, which implies he was previously somewhere else. Then, he moved to the office, which means he is currently in the office.
+
+Answer: office"	0.2308	0.0256	False	False	False	False	0
+397	1	80	2	"*TASK*
+Here are the context sentences:
+4. Daniel went back to the bedroom.
+5. John moved to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	the context sentences provide information about the movements of two individuals, daniel and john. sentence 4 specifically states that daniel went back to the bedroom, which implies that daniel's current location is the bedroom. the movement of john to the garden in sentence 5 does not affect daniel's location, so we can conclude that daniel is still in the bedroom.	fully	bedroom	True	The previous context mentioned Daniel went back to the bedroom, but there is no new information about his current location. Therefore, we can assume he is still in the bedroom.		"Reasoning: The previous context mentioned Daniel went back to the bedroom, but there is no new information about his current location. Therefore, we can assume he is still in the bedroom.
+
+Answer: bedroom"	0.0488	0.0244	False	False	False	True	0
+398	1	80	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the office.
+8. Mary journeyed to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	office	the context sentences provide information about the movements of two individuals, daniel and mary. sentence 7 specifically states that daniel travelled to the office, which implies that daniel's current location is the office. the movement of mary to the garden in sentence 8 does not affect daniel's location, so we can conclude that daniel is still in the office.	fully	office	True	The previous context mentioned Daniel travelled to the office, which implies he is currently in the office.		"Reasoning: The previous context mentioned Daniel travelled to the office, which implies he is currently in the office.
+
+Answer: office"	0.0769	0.0385	False	False	False	True	0
+399	1	80	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the bathroom.
+11. Mary moved to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	the context sentences provide information about the movements of two individuals, sandra and mary. sentence 10 specifically states that sandra went to the bathroom, which implies that sandra's current location is the bathroom. the movement of mary to the bedroom in sentence 11 does not affect sandra's location, so we can conclude that sandra is still in the bathroom.	fully	bathroom	True	There is no information about Sandra's current location, only that she went to the bathroom. Since there is no subsequent information about her movement, we can assume she is still in the bathroom.		"Reasoning: There is no information about Sandra's current location, only that she went to the bathroom. Since there is no subsequent information about her movement, we can assume she is still in the bathroom.
+
+Answer: bathroom"	0.0	0.0222	False	False	False	True	0
+400	1	80	5	"*TASK*
+Here are the context sentences:
+13. Sandra moved to the garden.
+14. John travelled to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	garden	the context sentences provide information about the movements of two individuals, sandra and john. sentence 13 specifically states that sandra moved to the garden, which implies that sandra's current location is the garden. the movement of john to the hallway in sentence 14 does not affect sandra's location, so we can conclude that sandra is still in the garden.	fully	garden	True	The previous context mentioned Sandra moved to the garden, which implies she is currently in the garden.		"Reasoning: The previous context mentioned Sandra moved to the garden, which implies she is currently in the garden.
+
+Answer: garden"	0.0385	0.0385	False	False	False	True	0
