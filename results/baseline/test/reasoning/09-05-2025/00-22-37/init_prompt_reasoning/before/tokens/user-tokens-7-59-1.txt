@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+2	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+3	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+4	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+5	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+6	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+7	.	ĠMary	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+8	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠMary	Ġcarrying	?Ċ

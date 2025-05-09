@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġthe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġand	Ġis	Ġnow	Ġin	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+15	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+16	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+17	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+18	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠJohn	Ġcarrying	?Ċ

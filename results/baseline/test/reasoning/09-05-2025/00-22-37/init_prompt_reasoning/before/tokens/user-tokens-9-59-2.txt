@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠSandra	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġkitchen	.Ċ
+5	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠSandra	Ġin	Ġthe	Ġkitchen	?Ċ

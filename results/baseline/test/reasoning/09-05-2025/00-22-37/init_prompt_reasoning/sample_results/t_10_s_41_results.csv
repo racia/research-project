@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2201	10	41	1	"*TASK*
+Here are the context sentences:
+1. Bill is in the school.
+2. Mary travelled to the kitchen.
+
+Now, answer the following question:
+Is Mary in the cinema?"	no	"the context sentences do not mention mary being in the cinema. in fact, sentence 2 states that mary travelled to the kitchen, which is a different location. there is no information provided that would suggest mary is in the cinema. therefore, the answer is ""no"", mary is not in the cinema."	fully	no	True	The question asks about Mary's location, and the only information provided is that Mary travelled to the kitchen. There is no mention of Mary being in the cinema. Additionally, Bill is in the school, which is a different location from the kitchen.		"Reasoning: The question asks about Mary's location, and the only information provided is that Mary travelled to the kitchen. There is no mention of Mary being in the cinema. Additionally, Bill is in the school, which is a different location from the kitchen.
+
+Answer: no"	0.1071	0.0179	False	False	False	True	0
+2202	10	41	2	"*TASK*
+Here are the context sentences:
+4. Fred is in the park.
+5. Fred is in the school.
+
+Now, answer the following question:
+Is Mary in the office?"	no	"the context sentences do not mention mary at all. they only talk about fred's locations, which are the park and the school. there is no information provided about mary or the office. therefore, we cannot conclude that mary is in the office, and the answer is ""no""."	none	not mentioned	False	The question asks about Mary's location, but there is no mention of Mary in any of the context sentences. The sentences only mention Fred's locations, which are the park and the school. There is no information about Mary's location, including the office.		"Reasoning: The question asks about Mary's location, but there is no mention of Mary in any of the context sentences. The sentences only mention Fred's locations, which are the park and the school. There is no information about Mary's location, including the office.
+
+Answer: not mentioned"	0.0339	0.0169	False	False	False	True	0
+2203	10	41	3	"*TASK*
+Here are the context sentences:
+7. Bill is in the cinema.
+8. Bill is in the office.
+
+Now, answer the following question:
+Is Fred in the cinema?"	no	"the context sentences only talk about bill's locations, which are the cinema and the office. there is no information provided about fred's location. the question asks about fred, but the context sentences do not mention fred being in the cinema or any other location. therefore, we cannot conclude that fred is in the cinema, and the answer is ""no""."	none	not mentioned	False	The question asks about Fred's location, but there is no mention of Fred in any of the context sentences. The sentences only mention Bill's locations, which are the cinema and the office. There is no information about Fred's location.		"Reasoning: The question asks about Fred's location, but there is no mention of Fred in any of the context sentences. The sentences only mention Bill's locations, which are the cinema and the office. There is no information about Fred's location.
+
+Answer: not mentioned"	0.1091	0.0182	False	False	False	True	0
+2204	10	41	4	"*TASK*
+Here are the context sentences:
+10. Fred moved to the kitchen.
+11. Julie is in the bedroom.
+
+Now, answer the following question:
+Is Bill in the office?"	yes	"there is no information provided about bill's location in the context sentences. sentence 10 talks about fred moving to the kitchen, and sentence 11 talks about julie being in the bedroom. however, the answer is ""yes"", which implies that there must be some previous information about bill being in the office. since this conversation only provides these two context sentences, we can infer that there must be some previous context or information that is not provided here, which states that bill is in the office"	none	not mentioned	False	The question asks about Bill's location, but there is no mention of Bill in any of the context sentences. The sentences only mention Fred's movement to the kitchen and Julie's location in the bedroom. There is no information about Bill's location, including the office.		"Reasoning: The question asks about Bill's location, but there is no mention of Bill in any of the context sentences. The sentences only mention Fred's movement to the kitchen and Julie's location in the bedroom. There is no information about Bill's location, including the office.
+
+Answer: not mentioned"	0.0164	0.0164	False	False	False	True	0
+2205	10	41	5	"*TASK*
+Here are the context sentences:
+13. Fred is in the bedroom.
+14. Julie travelled to the kitchen.
+
+Now, answer the following question:
+Is Fred in the bedroom?"	yes	"the context sentence 13 explicitly states that ""fred is in the bedroom"". this directly answers the question ""is fred in the bedroom?"" with a ""yes"". there is no conflicting or contradictory information provided, so the answer is indeed ""yes""."	fully	yes	True	The question asks about Fred's location, and the context sentence explicitly states that Fred is in the bedroom.		"Reasoning: The question asks about Fred's location, and the context sentence explicitly states that Fred is in the bedroom.
+
+Answer: yes"	0.0714	0.0357	False	False	False	False	0

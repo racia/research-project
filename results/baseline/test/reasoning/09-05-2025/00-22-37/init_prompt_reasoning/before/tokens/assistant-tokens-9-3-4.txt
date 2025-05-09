@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	10	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġhallway	,	Ġbut	Ġthis	Ġinformation	Ġdoes	Ġnot	Ġprovide	Ġany	Ġdirect	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.	ĠThe	Ġcontext	Ġsentence	Ġ	11	Ġstates	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġis	Ġa	Ġseparate	Ġlocation	Ġfrom	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠJulie	Ġmoved	Ġto	Ġthe	Ġcinema	.Ċ
+14	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġschool	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠBill	Ġin	Ġthe	Ġcinema	?Ċ

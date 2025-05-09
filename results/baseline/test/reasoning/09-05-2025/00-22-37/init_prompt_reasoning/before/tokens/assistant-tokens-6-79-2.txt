@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġgarden	.	ĠThey	Ġonly	Ġmention	ĠJohn	Ġtaking	Ġthe	Ġmilk	Ġsomewhere	,	Ġbut	Ġnot	Ġspecifying	Ġwhere	,	Ġand	ĠMary	Ġgoing	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġnot	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	<|eot_id|>

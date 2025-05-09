@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠSandra	Ġis	Ġnot	Ġin	Ġthe	Ġhallway	.Ċ
+5	.	ĠDaniel	Ġis	Ġin	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠSandra	Ġin	Ġthe	Ġhallway	?Ċ

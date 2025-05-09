@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1231	8	47	1	"*TASK*
+Here are the context sentences:
+1. Sandra went back to the garden.
+2. Daniel got the milk there.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	from the context sentences, we know that daniel got the milk in the garden (sentence 2). since he got it, it is logical to assume that he is carrying it. therefore, the answer is milk.	fully	milk	True	The context sentences mention that Daniel got the milk, which implies that he acquired or obtained the milk. Since he got the milk in the garden, it is likely that he is carrying the milk.		"Reasoning: The context sentences mention that Daniel got the milk, which implies that he acquired or obtained the milk. Since he got the milk in the garden, it is likely that he is carrying the milk.
+
+Answer: milk"	0.1304	0.0217	False	False	False	True	0
+1232	8	47	2	"*TASK*
+Here are the context sentences:
+4. Daniel went back to the kitchen.
+5. Mary moved to the garden.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"although the context sentences 4 and 5 do not directly mention what daniel is carrying, we can infer the answer from the previous context sentences. in sentence 2, it was mentioned that ""daniel got the milk there"" (in the garden). since then, daniel went back to the kitchen (sentence 4), it is logical to assume that he is still carrying the milk. therefore, the answer is milk."	none	not mentioned	False	There is no mention of Daniel acquiring or obtaining anything in the given context sentences. The sentences only mention Daniel's movement to the kitchen and Mary's movement to the garden.		"Reasoning: There is no mention of Daniel acquiring or obtaining anything in the given context sentences. The sentences only mention Daniel's movement to the kitchen and Mary's movement to the garden.
+
+Answer: not mentioned"	0.1429	0.0238	False	False	False	True	0
+1233	8	47	3	"*TASK*
+Here are the context sentences:
+7. John went to the hallway.
+8. John moved to the kitchen.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"the context sentences 7 and 8 only provide information about john's movements, but the question asks about what daniel is carrying. to answer this, we need to refer to the previous context sentences. in sentence 2, it was mentioned that ""daniel got the milk there"" (in the garden). since then, daniel went back to the kitchen (sentence 4). there is no information about daniel putting down the milk or giving it to someone else, so it is logical to"	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only mention John's movements to the hallway and kitchen.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only mention John's movements to the hallway and kitchen.
+
+Answer: not mentioned"	0.0303	0.0303	False	False	False	True	0
+1234	8	47	4	"*TASK*
+Here are the context sentences:
+10. Mary journeyed to the bathroom.
+11. Daniel went to the office.
+12. Mary travelled to the hallway.
+13. Daniel dropped the milk.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"in sentence 13, it is explicitly stated that ""daniel dropped the milk"". this implies that daniel was carrying the milk before dropping it. since he dropped it, he is no longer carrying it. therefore, the answer is nothing."	partially	milk	False	According to sentence 13, Daniel dropped the milk, which implies that he was carrying the milk before dropping it. Since the context sentences do not mention Daniel acquiring or obtaining anything else, it is likely that he was carrying the milk.		"Reasoning: According to sentence 13, Daniel dropped the milk, which implies that he was carrying the milk before dropping it. Since the context sentences do not mention Daniel acquiring or obtaining anything else, it is likely that he was carrying the milk.
+
+Answer: milk"	0.0926	0.037	False	False	False	True	0
+1235	8	47	5	"*TASK*
+Here are the context sentences:
+15. Mary went back to the bedroom.
+16. Mary grabbed the football there.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"the context sentences 15 and 16 only provide information about mary's actions, but the question asks about what daniel is carrying. to answer this, we need to refer to the previous context sentences. in sentence 13, it was mentioned that ""daniel dropped the milk"". this implies that daniel was carrying the milk before dropping it, and since he dropped it, he is no longer carrying it. therefore, the answer is nothing."	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only mention Mary's movements and actions.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only mention Mary's movements and actions.
+
+Answer: not mentioned"	0.1	0.0667	False	False	False	True	0

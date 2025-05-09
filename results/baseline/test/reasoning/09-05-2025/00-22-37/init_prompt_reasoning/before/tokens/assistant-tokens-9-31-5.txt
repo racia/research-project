@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġbathroom	Ġand	ĠDaniel	's	Ġjourney	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

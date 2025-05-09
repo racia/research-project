@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+746	7	50	1	"*TASK*
+Here are the context sentences:
+1. Sandra got the apple there.
+2. Sandra gave the apple to Daniel.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	"from context sentence 1, we know that sandra got the apple, which implies that she was carrying the apple. however, in context sentence 2, it is stated that sandra gave the apple to daniel. this means that sandra no longer has the apple, as she has given it to daniel. therefore, sandra is not carrying any objects, which is the answer ""none""."	fully	none	True	Sandra got the apple in sentence 1, and then gave it to Daniel in sentence 2. This implies that Sandra was holding the apple initially, but after giving it away, she is no longer carrying it.		"Reasoning: Sandra got the apple in sentence 1, and then gave it to Daniel in sentence 2. This implies that Sandra was holding the apple initially, but after giving it away, she is no longer carrying it.
+
+Answer: none"	0.18	0.04	False	False	False	False	0
+747	7	50	2	"*TASK*
+Here are the context sentences:
+4. Mary went back to the bathroom.
+5. Sandra took the football there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from context sentence 5, we know that sandra took the football there, which implies that sandra is carrying the football. there is no information provided about sandra giving away or dropping the football, so we can logically conclude that sandra is still carrying the football. therefore, the answer is one, as sandra is carrying one object, which is the football.	partially	not mentioned	False	There is no mention of Sandra carrying any objects in the given context sentences. Sentence 4 is about Mary going back to the bathroom, and sentence 5 is about Sandra taking the football to a location, but it doesn't specify what Sandra is carrying.		"Reasoning: There is no mention of Sandra carrying any objects in the given context sentences. Sentence 4 is about Mary going back to the bathroom, and sentence 5 is about Sandra taking the football to a location, but it doesn't specify what Sandra is carrying.
+
+Answer: not mentioned"	0.1864	0.0508	False	False	False	True	0
+748	7	50	3	"*TASK*
+Here are the context sentences:
+7. Mary went to the garden.
+8. John moved to the garden.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	"the context sentences 7 and 8 do not provide any new information about sandra or the objects she is carrying. the previous information about sandra carrying an object is from context sentence 5, where it was stated that ""sandra took the football there."" there is no information provided that suggests sandra has dropped or given away the football, so we can logically conclude that sandra is still carrying the football. therefore, the answer is one, as sandra is carrying one object, which is the"	none	not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only mention Mary and John, but not Sandra.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention Mary and John, but not Sandra.
+
+Answer: not mentioned"	0.2188	0.0938	False	False	False	True	0
+749	7	50	4	"*TASK*
+Here are the context sentences:
+10. Daniel gave the apple to Sandra.
+11. Sandra left the football.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from context sentence 10, we know that daniel gave the apple to sandra, which means sandra now has the apple. from context sentence 11, we know that sandra left the football, which implies that sandra is no longer carrying the football. however, there is no information provided that suggests sandra dropped or gave away the apple, so we can logically conclude that sandra is still carrying the apple. therefore, the answer is one, as sandra is	partially	one	True	Sentence 10 mentions Sandra receiving the apple from Daniel, but it doesn't specify what Sandra is carrying. Sentence 11 mentions Sandra leaving the football, which implies that Sandra was holding the football initially. However, it doesn't provide information about Sandra's current state.		"Reasoning: Sentence 10 mentions Sandra receiving the apple from Daniel, but it doesn't specify what Sandra is carrying. Sentence 11 mentions Sandra leaving the football, which implies that Sandra was holding the football initially. However, it doesn't provide information about Sandra's current state.
+
+Answer: one"	0.15	0.0833	False	False	False	True	0
+750	7	50	5	"*TASK*
+Here are the context sentences:
+13. Daniel went to the office.
+14. Sandra discarded the apple there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	from context sentence 14, we know that sandra discarded the apple there, which means sandra is no longer carrying the apple. there is no information provided about sandra picking up or receiving any other objects, so we can logically conclude that sandra is not carrying any objects. therefore, the answer is none, as sandra is not carrying any objects.	partially	none	True	Sentence 14 mentions Sandra discarding the apple, which implies that Sandra was holding the apple initially. However, it doesn't provide information about Sandra's current state.		"Reasoning: Sentence 14 mentions Sandra discarding the apple, which implies that Sandra was holding the apple initially. However, it doesn't provide information about Sandra's current state.
+
+Answer: none"	0.1	0.15	False	False	False	True	0

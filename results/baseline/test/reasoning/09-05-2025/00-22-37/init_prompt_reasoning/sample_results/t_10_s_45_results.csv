@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2221	10	45	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the park.
+2. Mary went to the kitchen.
+
+Now, answer the following question:
+Is Mary in the cinema?"	no	the context sentences mention mary going to the park and the kitchen, but there is no mention of her going to the cinema. therefore, based on the provided information, it can be logically concluded that mary is not in the cinema.	fully	no	True	The context sentences do not mention Mary going to the cinema. Mary's activities are limited to the park and the kitchen, but not the cinema.		"Reasoning: The context sentences do not mention Mary going to the cinema. Mary's activities are limited to the park and the kitchen, but not the cinema.
+
+Answer: no"	0.0833	0.0278	False	False	False	True	0
+2222	10	45	2	"*TASK*
+Here are the context sentences:
+4. Bill is in the cinema.
+5. Bill went back to the office.
+
+Now, answer the following question:
+Is Bill in the kitchen?"	no	the context sentences mention bill being in the cinema and then going back to the office, but there is no mention of him going to the kitchen. therefore, based on the provided information, it can be logically concluded that bill is not in the kitchen.	fully	no	True	Bill is currently in the office, not in the kitchen. The context sentences do not mention Bill going to the kitchen.		"Reasoning: Bill is currently in the office, not in the kitchen. The context sentences do not mention Bill going to the kitchen.
+
+Answer: no"	0.1935	0.0323	False	False	False	True	0
+2223	10	45	3	"*TASK*
+Here are the context sentences:
+7. Mary journeyed to the park.
+8. Mary journeyed to the cinema.
+
+Now, answer the following question:
+Is Bill in the office?"	yes	the context sentences only provide information about mary's journeys to the park and the cinema, but do not mention bill at all. however, we have previous information from context lines 4 and 5, which mentioned bill being in the cinema and then going back to the office. therefore, based on this previous information, it can be logically concluded that bill is indeed in the office.	none	not mentioned	False	The context sentences do not mention Bill's location. The sentences only describe Mary's journeys to the park and the cinema. There is no information about Bill's whereabouts.		"Reasoning: The context sentences do not mention Bill's location. The sentences only describe Mary's journeys to the park and the cinema. There is no information about Bill's whereabouts.
+
+Answer: not mentioned"	0.122	0.0244	False	False	False	True	0
+2224	10	45	4	"*TASK*
+Here are the context sentences:
+10. Julie is either in the office or the bedroom.
+11. Mary is in the park.
+
+Now, answer the following question:
+Is Julie in the bedroom?"	maybe	"the context sentences provide information about julie's possible locations (office or bedroom) and mary's location (park). however, there is no direct information about julie's exact location. since the context only narrows down julie's possible locations to two options (office or bedroom), it is uncertain which one is correct, hence the answer ""maybe""."	fully	maybe	True	According to sentence 10, Julie is either in the office or the bedroom. Since we don't have any information that contradicts this, we can conclude that Julie's location is either the office or the bedroom, but we can't pinpoint it to be specifically the bedroom.		"Reasoning: According to sentence 10, Julie is either in the office or the bedroom. Since we don't have any information that contradicts this, we can conclude that Julie's location is either the office or the bedroom, but we can't pinpoint it to be specifically the bedroom.
+
+Answer: maybe"	0.0323	0.0161	False	False	False	True	0
+2225	10	45	5	"*TASK*
+Here are the context sentences:
+13. Julie is in the cinema.
+14. Julie is either in the kitchen or the school.
+
+Now, answer the following question:
+Is Julie in the office?"	no	the context sentences provide conflicting information about julie's location. sentence 13 states that julie is in the cinema, while sentence 14 suggests that julie is either in the kitchen or the school. there is no mention of the office as a possible location for julie. therefore, based on the provided information, it can be logically concluded that julie is not in the office.	fully	no	True	Julie is currently in the cinema (sentence 13). Sentence 14 mentions that Julie is either in the kitchen or the school, but not in the office. Therefore, we can conclude that Julie is not in the office.		"Reasoning: Julie is currently in the cinema (sentence 13). Sentence 14 mentions that Julie is either in the kitchen or the school, but not in the office. Therefore, we can conclude that Julie is not in the office.
+
+Answer: no"	0.0	0.0192	False	False	False	True	0

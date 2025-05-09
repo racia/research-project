@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠFred	Ġis	Ġin	Ġthe	Ġcinema	.Ċ
+8	.	ĠFred	Ġis	Ġin	Ġthe	Ġpark	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠFred	Ġin	Ġthe	Ġpark	?Ċ

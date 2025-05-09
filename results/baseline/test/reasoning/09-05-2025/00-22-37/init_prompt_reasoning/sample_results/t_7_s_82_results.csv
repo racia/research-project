@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+906	7	82	1	"*TASK*
+Here are the context sentences:
+1. John grabbed the apple there.
+2. Sandra grabbed the milk there.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	from the context sentences, we know that john grabbed an apple (sentence 1) and sandra grabbed the milk (sentence 2). there is no mention of john grabbing anything else. therefore, we can logically conclude that john is carrying only one object, which is the apple.	fully	one	True	John grabbed the apple, which means he is holding or carrying the apple. There is no mention of him grabbing or carrying any other object.		"Reasoning: John grabbed the apple, which means he is holding or carrying the apple. There is no mention of him grabbing or carrying any other object.
+
+Answer: one"	0.0	0.0286	False	False	False	True	0
+907	7	82	2	"*TASK*
+Here are the context sentences:
+4. Mary got the football there.
+5. John put down the apple.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	from the previous context sentences (1 and 2), we know that john was carrying an apple. in the new context sentence (5), it is stated that john put down the apple. this implies that john is no longer carrying the apple. therefore, we can logically conclude that john is carrying none.	partially	none	True	John put down the apple, which means he was holding or carrying it, but now it's on the ground. There is no mention of him grabbing or carrying any other object.		"Reasoning: John put down the apple, which means he was holding or carrying it, but now it's on the ground. There is no mention of him grabbing or carrying any other object.
+
+Answer: none"	0.1163	0.0465	False	False	False	True	0
+908	7	82	3	"*TASK*
+Here are the context sentences:
+7. John journeyed to the bathroom.
+8. Mary put down the football.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	from the previous context sentence (4), we know that mary got the football. in the new context sentence (8), it is stated that mary put down the football. this implies that mary is no longer carrying the football. therefore, we can logically conclude that mary is carrying none.	partially	none	True	Mary put down the football, which means she was holding or carrying it, but now it's on the ground. There is no mention of her grabbing or carrying any other object.		"Reasoning: Mary put down the football, which means she was holding or carrying it, but now it's on the ground. There is no mention of her grabbing or carrying any other object.
+
+Answer: none"	0.0465	0.0465	False	False	False	True	0
+909	7	82	4	"*TASK*
+Here are the context sentences:
+10. Sandra passed the milk to John.
+11. John left the milk there.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	from the context sentence (10), we know that sandra passed the milk to john, which implies that john is carrying the milk. however, in the next sentence (11), it is stated that john left the milk there, which means john is no longer carrying the milk. therefore, we can logically conclude that john is carrying none.	partially	none	True	John left the milk there, which means he was holding or carrying it, but now it's on the ground. There is no mention of him grabbing or carrying any other object.		"Reasoning: John left the milk there, which means he was holding or carrying it, but now it's on the ground. There is no mention of him grabbing or carrying any other object.
+
+Answer: none"	0.093	0.093	False	False	False	True	0
+910	7	82	5	"*TASK*
+Here are the context sentences:
+13. Sandra got the milk there.
+14. Sandra left the milk.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	from the context sentence (13), we know that sandra got the milk, which implies that sandra is carrying the milk. however, in the next sentence (14), it is stated that sandra left the milk, which means sandra is no longer carrying the milk. therefore, we can logically conclude that sandra is carrying none.	partially	none	True	Sandra got the milk and then left it, which means she was holding or carrying it, but now it's gone. There is no mention of her grabbing or carrying any other object.		"Reasoning: Sandra got the milk and then left it, which means she was holding or carrying it, but now it's gone. There is no mention of her grabbing or carrying any other object.
+
+Answer: none"	0.0909	0.0909	False	False	False	True	0

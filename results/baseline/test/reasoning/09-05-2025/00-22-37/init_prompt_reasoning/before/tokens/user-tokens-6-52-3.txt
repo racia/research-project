@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+8	.	ĠDaniel	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠMary	Ġin	Ġthe	Ġbathroom	?Ċ

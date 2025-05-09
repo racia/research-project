@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1046	8	10	1	"*TASK*
+Here are the context sentences:
+1. Sandra went to the garden.
+2. Daniel went back to the office.
+3. John journeyed to the bathroom.
+4. Sandra moved to the bathroom.
+5. Sandra journeyed to the bedroom.
+6. John went to the hallway.
+7. Daniel grabbed the apple there.
+8. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple	"from the context sentences, we know that daniel went back to the office (sentence 2), and then daniel grabbed the apple there (sentence 7). the word ""there"" in sentence 7 refers to the office, which is the location where daniel was last mentioned. therefore, it can be logically concluded that daniel is carrying the apple."	fully	apple	True	The question asks about what Daniel is carrying. We need to find the last action performed by Daniel that involves carrying something. In sentence 7, Daniel grabbed the apple, which is the last action performed by Daniel that involves carrying something.		"Reasoning: The question asks about what Daniel is carrying. We need to find the last action performed by Daniel that involves carrying something. In sentence 7, Daniel grabbed the apple, which is the last action performed by Daniel that involves carrying something.
+
+Answer: apple"	0.0	0.0185	False	False	False	False	0
+1047	8	10	2	"*TASK*
+Here are the context sentences:
+10. John went to the kitchen.
+11. Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple	"the context sentences provided (10 and 11) do not mention daniel or an apple. however, we can look at the previous conversation history to find the relevant information. in the previous conversation, sentence 7 states ""daniel grabbed the apple there."" this sentence indicates that daniel is carrying an apple. the new context sentences (10 and 11) do not provide any information that would change this fact, so we can conclude that daniel is still carrying the apple."	none	not mentioned	False	There is no mention of Daniel carrying anything in the given context sentences. The sentences only mention John and Sandra's actions, but not Daniel's.		"Reasoning: There is no mention of Daniel carrying anything in the given context sentences. The sentences only mention John and Sandra's actions, but not Daniel's.
+
+Answer: not mentioned"	0.027	0.027	False	False	False	True	0
+1048	8	10	3	"*TASK*
+Here are the context sentences:
+13. Daniel went to the kitchen.
+14. Daniel moved to the bedroom.
+15. Mary went to the office.
+16. Daniel moved to the garden.
+17. Daniel grabbed the milk there.
+18. Mary went to the kitchen.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple milk	"the question asks what daniel is carrying. from the context sentences, we know that daniel grabbed the milk in sentence 17. this implies that daniel is carrying the milk. however, the answer also mentions an apple. to find the connection to the apple, we need to look at the previous conversation history. in the previous conversation, sentence 7 states ""daniel grabbed the apple there."" this sentence indicates that daniel is carrying an apple. the new context sentences (13-18) do"	partially	milk	False	The question asks about what Daniel is carrying. We need to find the last action performed by Daniel that involves carrying something. In sentence 17, Daniel grabbed the milk, which is the last action performed by Daniel that involves carrying something.		"Reasoning: The question asks about what Daniel is carrying. We need to find the last action performed by Daniel that involves carrying something. In sentence 17, Daniel grabbed the milk, which is the last action performed by Daniel that involves carrying something.
+
+Answer: milk"	0.0185	0.037	False	False	False	False	0
+1049	8	10	4	"*TASK*
+Here are the context sentences:
+20. Daniel moved to the kitchen.
+21. Mary went back to the bathroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple milk	"the question asks what daniel is carrying. to answer this, we need to look at the previous conversation history. in the previous conversation, sentence 7 states ""daniel grabbed the apple there."" this sentence indicates that daniel is carrying an apple. additionally, in sentence 17, ""daniel grabbed the milk there"" implies that daniel is also carrying milk. the new context sentences (20 and 21) do not provide any information that would change this fact, so we can conclude that daniel"	none	not mentioned	False	There is no mention of Daniel carrying anything in the given context sentences. The sentences only mention Daniel's movement to the kitchen and Mary's action in the bathroom, but not Daniel's carrying action.		"Reasoning: There is no mention of Daniel carrying anything in the given context sentences. The sentences only mention Daniel's movement to the kitchen and Mary's action in the bathroom, but not Daniel's carrying action.
+
+Answer: not mentioned"	0.0426	0.0426	False	False	False	True	0
+1050	8	10	5	"*TASK*
+Here are the context sentences:
+23. John journeyed to the garden.
+24. John picked up the football there.
+
+Now, answer the following question:
+What is John carrying?"	football	"the question asks what john is carrying. from the context sentences, we know that john picked up the football in sentence 24. the phrase ""picked up"" implies that john took possession of the football, which means he is carrying it. therefore, the answer is that john is carrying the football."	fully	football	True	The question asks about what John is carrying. We need to find the last action performed by John that involves carrying something. In sentence 24, John picked up the football, which is the last action performed by John that involves carrying something.		"Reasoning: The question asks about what John is carrying. We need to find the last action performed by John that involves carrying something. In sentence 24, John picked up the football, which is the last action performed by John that involves carrying something.
+
+Answer: football"	0.0	0.0182	False	False	False	False	0

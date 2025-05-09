@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1416	8	84	1	"*TASK*
+Here are the context sentences:
+1. Sandra picked up the football there.
+2. Sandra journeyed to the office.
+
+Now, answer the following question:
+What is Sandra carrying?"	football	from context sentence 1, we know that sandra picked up the football, which implies that she has the football in her possession. there is no information in context sentence 2 about sandra putting down or dropping the football, so we can logically infer that she is still carrying it when she journeys to the office. therefore, the answer is that sandra is carrying the football.	fully	football	True	Sandra picked up the football, and there is no mention of her putting it down or dropping it. Therefore, it is likely that she is still carrying the football.		"Reasoning: Sandra picked up the football, and there is no mention of her putting it down or dropping it. Therefore, it is likely that she is still carrying the football.
+
+Answer: football"	0.0	0.025	False	False	False	True	0
+1417	8	84	2	"*TASK*
+Here are the context sentences:
+4. Sandra discarded the football.
+5. Sandra picked up the football there.
+
+Now, answer the following question:
+What is Sandra carrying?"	football	although context sentence 4 states that sandra discarded the football, context sentence 5, which is a previous action, indicates that sandra picked up the football. since picking up an object implies that the object is being carried, and there is no other information suggesting that sandra put the football down again, we can logically conclude that sandra is still carrying the football. the fact that she discarded it later (sentence 4) does not change the fact that she was carrying it at some point,	partially	nothing	False	Sandra picked up the football, but then she discarded it. Therefore, it is likely that she is not carrying the football anymore.		"Reasoning: Sandra picked up the football, but then she discarded it. Therefore, it is likely that she is not carrying the football anymore.
+
+Answer: nothing"	0.1212	0.0909	False	False	False	False	0
+1418	8	84	3	"*TASK*
+Here are the context sentences:
+7. Sandra left the football.
+8. Sandra went to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"in context sentence 7, it is stated that sandra left the football, which implies that she is no longer carrying it. there is no information in context sentence 8 about sandra picking up or carrying any object. therefore, based on the information provided, we can logically conclude that sandra is not carrying anything, which is consistent with the answer ""nothing""."	partially	nothing	True	Sandra left the football, which implies that she was carrying it and then left it. Since she left it, she is no longer carrying it.		"Reasoning: Sandra left the football, which implies that she was carrying it and then left it. Since she left it, she is no longer carrying it.
+
+Answer: nothing"	0.1389	0.1111	False	False	False	False	0
+1419	8	84	4	"*TASK*
+Here are the context sentences:
+10. Daniel grabbed the apple there.
+11. Mary moved to the office.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple	"in context sentence 10, it is stated that daniel grabbed the apple, which implies that he has taken hold of the apple and is carrying it. there is no information in context sentence 11 about daniel putting down or releasing the apple, and the sentence is about mary's action, which does not affect daniel's state. therefore, we can logically conclude that daniel is still carrying the apple, which is consistent with the answer ""apple""."	fully	apple	True	There is no mention of Daniel doing anything with the apple, so it is likely that he is still carrying it.		"Reasoning: There is no mention of Daniel doing anything with the apple, so it is likely that he is still carrying it.
+
+Answer: apple"	0.0	0.0333	False	False	False	True	0
+1420	8	84	5	"*TASK*
+Here are the context sentences:
+13. John went back to the bathroom.
+14. Sandra went back to the bathroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple	"the context sentences 13 and 14 only provide information about john and sandra's actions, but do not mention daniel or the apple. however, we can infer that the question is referring to a previous part of the conversation history. since the answer is ""apple"", we can look back to context sentence 10, where it is stated that daniel grabbed the apple. there is no information provided that suggests daniel put down or released the apple, so we can logically conclude that daniel is still"	none	not mentioned	False	There is no mention of Daniel in the given context sentences, so there is no information about what he is carrying.		"Reasoning: There is no mention of Daniel in the given context sentences, so there is no information about what he is carrying.
+
+Answer: not mentioned"	0.0645	0.0323	False	False	False	True	0

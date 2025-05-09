@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJulie	's	Ġlocation	,	Ġand	Ġwe	Ġknow	Ġfrom	Ġsentence	Ġ	5	Ġthat	ĠJulie	Ġwent	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġimplies	Ġthat	ĠJulie	Ġis	Ġcurrently	Ġin	Ġthe	Ġschool	,	Ġnot	Ġin	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġno	<|eot_id|>

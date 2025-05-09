@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+6	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+7	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠJohn	Ġin	Ġthe	Ġbathroom	?Ċ

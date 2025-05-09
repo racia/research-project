@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+501	7	1	1	"*TASK*
+Here are the context sentences:
+1. Mary got the milk there.
+2. John moved to the bedroom.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"from the context sentence ""mary got the milk there"", we can infer that mary is carrying the milk. there is no mention of mary carrying any other objects. therefore, the logical conclusion is that mary is carrying one object, which is the milk."	fully	one	True	Since Mary got the milk there, it implies that she acquired the milk at a specific location, which is mentioned in sentence 1. However, there is no information about Mary carrying any other objects. Therefore, we can infer that Mary is carrying only one object, which is the milk.		"Reasoning: Since Mary got the milk there, it implies that she acquired the milk at a specific location, which is mentioned in sentence 1. However, there is no information about Mary carrying any other objects. Therefore, we can infer that Mary is carrying only one object, which is the milk.
+
+Answer: one"	0.0462	0.0154	False	False	False	True	0
+502	7	1	2	"*TASK*
+Here are the context sentences:
+4. Sandra went back to the bathroom.
+5. John got the football there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"the question asks about mary, but the provided context sentences (4 and 5) do not mention mary at all. they talk about sandra and john. to answer the question, we need to refer to the previous parts of the conversation history. in the previous part, we had the context sentence ""mary got the milk there"" which implies that mary is carrying one object, which is the milk. there is no new information that suggests mary is carrying any other objects or has dropped the"	none	not mentioned	False	There is no mention of Mary in sentences 4 and 5. The context only talks about Sandra and John. Since Mary was not involved in these actions, we cannot determine what objects she is carrying.		"Reasoning: There is no mention of Mary in sentences 4 and 5. The context only talks about Sandra and John. Since Mary was not involved in these actions, we cannot determine what objects she is carrying.
+
+Answer: not mentioned"	0.0612	0.0204	False	False	False	True	0
+503	7	1	3	"*TASK*
+Here are the context sentences:
+7. Mary journeyed to the bathroom.
+8. Mary gave the milk to Sandra.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	"in the previous part of the conversation, we established that mary was carrying one object, which was the milk. now, in the current context sentence ""mary gave the milk to sandra"", we can infer that mary is no longer carrying the milk because she has given it to sandra. therefore, the logical conclusion is that mary is not carrying any objects, which is consistent with the answer ""none""."	partially	one	False	According to sentence 8, Mary gave the milk to Sandra, which implies that Mary had the milk with her. Since Mary got the milk there (from sentence 1), we can infer that Mary was carrying the milk.		"Reasoning: According to sentence 8, Mary gave the milk to Sandra, which implies that Mary had the milk with her. Since Mary got the milk there (from sentence 1), we can infer that Mary was carrying the milk.
+
+Answer: one"	0.1731	0.0385	False	False	False	False	0
+504	7	1	4	"*TASK*
+Here are the context sentences:
+10. John went back to the bathroom.
+11. John left the football.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	"in the previous part of the conversation, we had the context sentence ""john got the football there"" which implied that john was carrying the football. however, in the current context sentence ""john left the football"", we can infer that john is no longer carrying the football because he has left it. therefore, the logical conclusion is that john is not carrying any objects, which is consistent with the answer ""none""."	partially	one	False	According to sentence 11, John left the football, which implies that John had the football with him. However, there is no mention of John acquiring or carrying any other objects. Therefore, we can infer that John was carrying only one object, which is the football.		"Reasoning: According to sentence 11, John left the football, which implies that John had the football with him. However, there is no mention of John acquiring or carrying any other objects. Therefore, we can infer that John was carrying only one object, which is the football.
+
+Answer: one"	0.1311	0.0328	False	False	False	True	0
+505	7	1	5	"*TASK*
+Here are the context sentences:
+13. Sandra gave the milk to John.
+14. John journeyed to the garden.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	"in the previous part of the conversation, we established that mary gave the milk to sandra, and now in the current context sentence ""sandra gave the milk to john"", we can infer that john has received the milk from sandra. there is no information suggesting that john has dropped or left the milk, so it is logical to assume that john is still carrying the milk. therefore, the correct answer is that john is carrying one object, which is the milk."	partially	one	True	According to sentence 13, Sandra gave the milk to John, which implies that John acquired the milk. Since John journeyed to the garden (sentence 14), we can infer that John is carrying the milk.		"Reasoning: According to sentence 13, Sandra gave the milk to John, which implies that John acquired the milk. Since John journeyed to the garden (sentence 14), we can infer that John is carrying the milk.
+
+Answer: one"	0.08	0.06	False	False	False	False	0

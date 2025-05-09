@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1816	9	64	1	"*TASK*
+Here are the context sentences:
+1. John is not in the bedroom.
+2. John is in the bathroom.
+
+Now, answer the following question:
+Is John in the garden?"	no	since the context sentences explicitly state john's location as not being in the bedroom (sentence 1) and being in the bathroom (sentence 2), there is no mention of john being in the garden. therefore, based on the provided information, it can be logically concluded that john is not in the garden.	fully	Not mentioned	False	The question asks about John's location in the garden, which is not mentioned in the context sentences. However, we can infer that John is not in the bedroom (sentence 1) and is currently in the bathroom (sentence 2). There is no information about John's presence or absence in the garden.		"Reasoning: The question asks about John's location in the garden, which is not mentioned in the context sentences. However, we can infer that John is not in the bedroom (sentence 1) and is currently in the bathroom (sentence 2). There is no information about John's presence or absence in the garden.
+
+Answer: Not mentioned"	0.1	0.0143	False	False	False	True	0
+1817	9	64	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the hallway.
+5. Sandra went back to the bedroom.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	according to the context sentence 4, john travelled to the hallway, which implies that john is currently in the hallway. there is no information provided that suggests john returned to the bedroom. additionally, sentence 5 mentions sandra went back to the bedroom, but it does not mention john. therefore, based on the provided information, it can be logically concluded that john is not in the bedroom.	fully	Not mentioned	False	According to sentence 5, Sandra went back to the bedroom, but there is no information about John's location. However, we know that John travelled to the hallway (sentence 4), which doesn't provide any information about his current location in the bedroom.		"Reasoning: According to sentence 5, Sandra went back to the bedroom, but there is no information about John's location. However, we know that John travelled to the hallway (sentence 4), which doesn't provide any information about his current location in the bedroom.
+
+Answer: Not mentioned"	0.0333	0.0167	False	False	False	True	0
+1818	9	64	3	"*TASK*
+Here are the context sentences:
+7. John is no longer in the hallway.
+8. Daniel travelled to the office.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	no	according to the context sentence 8, daniel travelled to the office, which implies that daniel is currently in the office. there is no information provided that suggests daniel is in the kitchen or has ever been in the kitchen. therefore, based on the provided information, it can be logically concluded that daniel is not in the kitchen.	fully	Not mentioned	False	The question asks about Daniel's location in the kitchen, but there is no information about Daniel's presence or absence in the kitchen. Sentence 8 only mentions that Daniel travelled to the office, which doesn't provide any information about the kitchen.		"Reasoning: The question asks about Daniel's location in the kitchen, but there is no information about Daniel's presence or absence in the kitchen. Sentence 8 only mentions that Daniel travelled to the office, which doesn't provide any information about the kitchen.
+
+Answer: Not mentioned"	0.0536	0.0179	False	False	False	True	0
+1819	9	64	4	"*TASK*
+Here are the context sentences:
+10. John is no longer in the bathroom.
+11. John travelled to the bathroom.
+
+Now, answer the following question:
+Is John in the bathroom?"	yes	sentence 10 states that john is no longer in the bathroom, but sentence 11 contradicts this by stating that john travelled to the bathroom. this implies that john was not in the bathroom initially, but then moved to the bathroom. therefore, at the time of sentence 11, john is indeed in the bathroom, which is why the answer is yes.	fully	Yes	True	Sentence 10 states that John is no longer in the bathroom, but sentence 11 reveals that John travelled to the bathroom, which means he is currently in the bathroom.		"Reasoning: Sentence 10 states that John is no longer in the bathroom, but sentence 11 reveals that John travelled to the bathroom, which means he is currently in the bathroom.
+
+Answer: Yes"	0.0732	0.0244	False	False	False	False	0
+1820	9	64	5	"*TASK*
+Here are the context sentences:
+13. John is in the garden.
+14. John is in the hallway.
+
+Now, answer the following question:
+Is John in the kitchen?"	no	according to the context sentences, john's location is explicitly stated as being in the garden (sentence 13) and in the hallway (sentence 14). there is no mention of john being in the kitchen in either sentence. therefore, based on the provided information, it can be logically concluded that john is not in the kitchen.	fully	Not mentioned	False	The question asks about John's location in the kitchen, but neither sentence 13 nor sentence 14 mentions the kitchen. Sentence 13 states that John is in the garden, and sentence 14 states that John is in the hallway, but there is no information about the kitchen.		"Reasoning: The question asks about John's location in the kitchen, but neither sentence 13 nor sentence 14 mentions the kitchen. Sentence 13 states that John is in the garden, and sentence 14 states that John is in the hallway, but there is no information about the kitchen.
+
+Answer: Not mentioned"	0.0312	0.0156	False	False	False	True	0

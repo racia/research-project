@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1281	8	57	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the bathroom.
+2. Mary moved to the kitchen.
+3. Sandra picked up the football there.
+4. Mary moved to the bedroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	football	from sentence 3, we know that sandra picked up the football, and there is no subsequent information about her putting it down or giving it to someone else. therefore, we can logically conclude that sandra is still carrying the football.	fully	football	True	"Sandra picked up the football there, which implies that ""there"" refers to the location where Sandra moved, which is the same location where Mary moved, which is the bedroom. Since Mary moved to the bedroom, it is likely that Sandra picked up the football in the bedroom."		"Reasoning: Sandra picked up the football there, which implies that ""there"" refers to the location where Sandra moved, which is the same location where Mary moved, which is the bedroom. Since Mary moved to the bedroom, it is likely that Sandra picked up the football in the bedroom.
+
+Answer: football"	0.0645	0.0161	False	False	False	False	0
+1282	8	57	2	"*TASK*
+Here are the context sentences:
+6. Sandra left the football there.
+7. Mary went to the hallway.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	in the previous context (sentence 3), we knew that sandra picked up the football. however, in the new context (sentence 6), it is stated that sandra left the football there, which implies that she is no longer carrying it. therefore, we can logically conclude that sandra is carrying nothing.	partially	football	False	Sandra left the football there, which implies that Sandra was carrying the football and left it at a specific location. Since Sandra left the football, it is likely that Sandra was carrying the football before leaving it.		"Reasoning: Sandra left the football there, which implies that Sandra was carrying the football and left it at a specific location. Since Sandra left the football, it is likely that Sandra was carrying the football before leaving it.
+
+Answer: football"	0.0625	0.0417	False	False	False	False	0
+1283	8	57	3	"*TASK*
+Here are the context sentences:
+9. Mary went back to the kitchen.
+10. Mary travelled to the hallway.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	the question asks about sandra, but the provided context sentences (9 and 10) only mention mary's movements. there is no new information about sandra. we can refer back to the previous context (sentence 6) where it was stated that sandra left the football there, implying that she is no longer carrying it. therefore, we can logically conclude that sandra is still carrying nothing.	none	football	False	There is no new information about Sandra's actions or possessions in these sentences. The previous information is still relevant, and Sandra was last seen leaving the football somewhere.		"Reasoning: There is no new information about Sandra's actions or possessions in these sentences. The previous information is still relevant, and Sandra was last seen leaving the football somewhere.
+
+Answer: football"	0.0769	0.0513	False	False	False	True	0
+1284	8	57	4	"*TASK*
+Here are the context sentences:
+12. Daniel went to the office.
+13. John grabbed the football there.
+
+Now, answer the following question:
+What is John carrying?"	football	according to sentence 13, john grabbed the football there, which implies that john picked up the football and is now carrying it. there is no subsequent information about john putting the football down or giving it to someone else, so we can logically conclude that john is carrying the football.	fully	football	True	John grabbed the football there, which implies that John picked up the football at a specific location. Since John grabbed the football, it is likely that John is carrying the football.		"Reasoning: John grabbed the football there, which implies that John picked up the football at a specific location. Since John grabbed the football, it is likely that John is carrying the football.
+
+Answer: football"	0.0238	0.0238	False	False	False	False	0
+1285	8	57	5	"*TASK*
+Here are the context sentences:
+15. Daniel travelled to the kitchen.
+16. Daniel went to the bedroom.
+
+Now, answer the following question:
+What is John carrying?"	football	the provided context sentences (15 and 16) only mention daniel's movements, but the question asks about john. we need to refer back to the previous context (sentence 13) where it was stated that john grabbed the football there, implying that john is carrying the football. there is no new information about john putting the football down or giving it to someone else, so we can logically conclude that john is still carrying the football.	none	football	True	There is no new information about John's actions or possessions in these sentences. The previous information is still relevant, and John was last seen carrying the football.		"Reasoning: There is no new information about John's actions or possessions in these sentences. The previous information is still relevant, and John was last seen carrying the football.
+
+Answer: football"	0.0	0.0263	False	False	False	True	0

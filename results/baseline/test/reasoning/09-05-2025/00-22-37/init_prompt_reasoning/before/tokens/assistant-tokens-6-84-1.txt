@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġmoving	Ġto	Ġthe	Ġbedroom	Ġand	ĠDaniel	Ġpicking	Ġup	Ġthe	Ġmilk	Ġthere	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgoing	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	<|eot_id|>

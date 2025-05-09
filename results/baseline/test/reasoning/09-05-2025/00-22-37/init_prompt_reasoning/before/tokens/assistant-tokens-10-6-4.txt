@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġsentences	.	ĠSentence	Ġ	10	Ġmentions	ĠJulie	's	Ġpossible	Ġlocations	,	Ġbut	Ġit	's	Ġnot	Ġrelevant	Ġto	ĠMary	's	Ġlocation	.	ĠSentence	Ġ	11	Ġmentions	ĠBill	's	Ġpossible	Ġlocations	,	Ġbut	Ġit	's	Ġnot	Ġrelevant	Ġto	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠMary	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJohn	,	Ġwhich	Ġmeans	Ġshe	Ġwas	Ġholding	Ġthe	Ġfootball	Ġbut	Ġhas	Ġnow	Ġgiven	Ġit	Ġto	ĠJohn	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġholding	Ġor	Ġcarrying	Ġanything	Ġelse	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

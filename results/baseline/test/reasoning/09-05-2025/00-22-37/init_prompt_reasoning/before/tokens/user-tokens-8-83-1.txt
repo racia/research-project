@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+2	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+3	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+4	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+5	.	ĠMary	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+6	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠMary	Ġcarrying	?Ċ

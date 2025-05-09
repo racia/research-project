@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJulie	Ġbeing	Ġin	Ġthe	Ġcinema	.	ĠThe	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠJulie	's	Ġpossible	Ġlocations	Ġbeing	Ġthe	Ġschool	Ġor	Ġthe	Ġoffice	,	Ġbut	Ġnot	Ġthe	Ġcinema	.ĊĊ	Answer	:	ĠNo	<|eot_id|>

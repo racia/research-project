@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġand	Ġ	11	Ġonly	Ġmention	ĠDaniel	's	Ġactions	,	Ġbut	Ġnot	ĠMary	's	.	ĠSentence	Ġ	8	Ġmentioned	ĠMary	Ġgoing	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġthere	Ġis	Ġno	Ġfurther	Ġinformation	Ġabout	Ġher	Ġlocation	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

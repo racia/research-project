@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġreceived	Ġthe	Ġapple	Ġfrom	ĠMary	Ġ(	sentence	Ġ	10	),	Ġand	Ġthen	ĠMary	Ġpassed	Ġit	Ġback	Ġto	ĠJohn	Ġ(	sentence	Ġ	11	),	ĠJohn	Ġis	Ġstill	Ġholding	Ġthe	Ġapple	.	ĠThere	Ġis	Ġno	Ġindication	Ġthat	ĠJohn	Ġhas	Ġgiven	Ġthe	Ġapple	Ġaway	Ġor	Ġdropped	Ġit	.ĊĊ	Answer	:	Ġone	<|eot_id|>

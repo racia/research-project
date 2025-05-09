@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġkitchen	.	ĠSentence	Ġ	13	Ġstates	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġoffice	,	Ġand	Ġsentence	Ġ	14	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġgarden	.	ĠHowever	,	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	Ġin	Ġthe	Ġprevious	Ġcontext	Ġ(	sentence	Ġ	11	)	Ġand	Ġthen	Ġpicked	Ġup	Ġthe	Ġapple	Ġ(	sentence	Ġ	12	).	ĠSince	Ġshe	Ġpicked	Ġup	Ġthe	Ġapple	,	Ġshe	Ġis	Ġnow	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġapple	<|eot_id|>

@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+11	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+12	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+13	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+14	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+15	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠJohn	Ġcarrying	?Ċ

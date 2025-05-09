@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠSandra	Ġgoing	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġnot	ĠDaniel	.	ĠDaniel	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġhe	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġhim	Ġleaving	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

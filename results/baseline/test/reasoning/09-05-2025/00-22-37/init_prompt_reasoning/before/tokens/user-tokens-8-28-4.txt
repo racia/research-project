@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠSandra	Ġleft	Ġthe	Ġapple	.Ċ
+11	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠMary	Ġcarrying	?Ċ

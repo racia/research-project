@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+5	.	ĠDaniel	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠJohn	Ġin	Ġthe	Ġbedroom	?Ċ

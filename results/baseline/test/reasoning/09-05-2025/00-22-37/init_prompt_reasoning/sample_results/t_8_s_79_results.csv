@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1391	8	79	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the bathroom.
+2. Mary moved to the bathroom.
+3. Sandra picked up the apple there.
+4. John travelled to the kitchen.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"from context sentence 3, ""sandra picked up the apple there"", we know that sandra picked up an apple in the bathroom (since ""there"" refers to the bathroom, which is the location mentioned in context sentences 1 and 2). therefore, sandra is carrying the apple."	fully	apple	True	Sandra picked up the apple in the bathroom, and there is no mention of her putting it down or giving it away. Therefore, it is likely that Sandra is still carrying the apple.		"Reasoning: Sandra picked up the apple in the bathroom, and there is no mention of her putting it down or giving it away. Therefore, it is likely that Sandra is still carrying the apple.
+
+Answer: apple"	0.0909	0.0227	False	False	False	True	0
+1392	8	79	2	"*TASK*
+Here are the context sentences:
+6. Sandra travelled to the office.
+7. Mary travelled to the hallway.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"although the context sentences 6 and 7 do not provide direct information about what sandra is carrying, we can infer the answer from the previous context sentences. in context sentence 3, ""sandra picked up the apple there"", we know that sandra picked up an apple in the bathroom. there is no information provided that suggests sandra dropped or put down the apple, so it is logical to assume that sandra is still carrying the apple. the fact that sandra travelled to the office (context"	none	nothing	False	There is no mention of Sandra picking up or carrying anything in the given context sentences. Sandra's actions are limited to travelling to the office, and there is no indication of her carrying anything.		"Reasoning: There is no mention of Sandra picking up or carrying anything in the given context sentences. Sandra's actions are limited to travelling to the office, and there is no indication of her carrying anything.
+
+Answer: nothing"	0.0444	0.0222	False	False	False	True	0
+1393	8	79	3	"*TASK*
+Here are the context sentences:
+9. Sandra grabbed the milk there.
+10. Sandra dropped the milk.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"in context sentence 9, ""sandra grabbed the milk there"", sandra grabbed the milk, but in context sentence 10, ""sandra dropped the milk"", sandra dropped the milk, which means she is no longer carrying the milk. however, the question asks what sandra is carrying, and the answer is ""apple"". this is because, as previously established in context sentence 3, ""sandra picked up the apple there"", sandra picked up an apple in the bathroom and there"	partially	milk	False	Sandra grabbed the milk, but then she dropped it. This means that Sandra was carrying the milk initially, but it is no longer in her possession since she dropped it.		"Reasoning: Sandra grabbed the milk, but then she dropped it. This means that Sandra was carrying the milk initially, but it is no longer in her possession since she dropped it.
+
+Answer: milk"	0.0488	0.0732	False	False	False	False	0
+1394	8	79	4	"*TASK*
+Here are the context sentences:
+12. Sandra picked up the milk there.
+13. John travelled to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple milk	"in context sentence 12, ""sandra picked up the milk there"", sandra picked up the milk, which means she is now carrying the milk. previously, in context sentence 3, ""sandra picked up the apple there"", sandra picked up an apple in the bathroom and there is no information provided that suggests she dropped or put down the apple, so it is logical to assume that sandra is still carrying the apple. therefore, sandra is carrying both the apple"	partially	milk	False	Sandra picked up the milk, and there is no mention of her putting it down or giving it away. Therefore, it is likely that Sandra is still carrying the milk.		"Reasoning: Sandra picked up the milk, and there is no mention of her putting it down or giving it away. Therefore, it is likely that Sandra is still carrying the milk.
+
+Answer: milk"	0.1707	0.0976	False	False	False	True	0
+1395	8	79	5	"*TASK*
+Here are the context sentences:
+15. John went back to the bathroom.
+16. Daniel went to the bathroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple milk	"the context sentences 15 and 16 do not provide any new information about sandra or what she is carrying. however, we can refer back to the previous context sentences to determine what sandra is carrying. in context sentence 12, ""sandra picked up the milk there"", sandra picked up the milk, and in context sentence 3, ""sandra picked up the apple there"", sandra picked up an apple in the bathroom. there is no information provided that suggests sandra dropped or put"	none	not mentioned	False	There is no mention of Sandra's actions or whereabouts in these context sentences. The question asks about Sandra's carrying, but there is no relevant information provided.		"Reasoning: There is no mention of Sandra's actions or whereabouts in these context sentences. The question asks about Sandra's carrying, but there is no relevant information provided.
+
+Answer: not mentioned"	0.0513	0.1026	False	False	False	True	0

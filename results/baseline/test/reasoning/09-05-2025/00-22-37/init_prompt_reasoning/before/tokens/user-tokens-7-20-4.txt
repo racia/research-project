@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠSandra	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+11	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠSandra	Ġcarrying	?Ċ

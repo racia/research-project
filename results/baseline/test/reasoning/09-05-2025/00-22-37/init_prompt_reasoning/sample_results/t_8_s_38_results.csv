@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1186	8	38	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the hallway.
+2. John went to the bathroom.
+3. Daniel took the milk there.
+4. Sandra moved to the office.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"from context sentence 3, ""daniel took the milk there"", we can infer that daniel is carrying the milk. the word ""took"" implies that daniel has possession of the milk, and since there is no subsequent sentence indicating that he put it down or gave it to someone else, it is logical to conclude that daniel is still carrying the milk."	fully	milk	True	The question asks about what Daniel is carrying, but Daniel's actions are not mentioned in the context sentences. The sentences only mention John's and Sandra's actions, and Daniel's actions are related to taking the milk, which implies that he is carrying the milk.		"Reasoning: The question asks about what Daniel is carrying, but Daniel's actions are not mentioned in the context sentences. The sentences only mention John's and Sandra's actions, and Daniel's actions are related to taking the milk, which implies that he is carrying the milk.
+
+Answer: milk"	0.0508	0.0169	False	False	False	True	0
+1187	8	38	2	"*TASK*
+Here are the context sentences:
+6. John moved to the office.
+7. Sandra journeyed to the bathroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"the question asks about daniel, but the provided context sentences (6 and 7) do not mention daniel. however, we can look back at the previous context sentences (1-4) and find that daniel was mentioned in sentence 3: ""daniel took the milk there."" this sentence indicates that daniel took the milk, and there is no subsequent sentence that suggests he put it down or gave it to someone else. therefore, it is logical to conclude that daniel is still carrying the"	none	not mentioned	False	The question asks about what Daniel is carrying, but Daniel's actions are not mentioned in the context sentences. The sentences only mention John's and Sandra's actions, and there is no mention of Daniel carrying anything.		"Reasoning: The question asks about what Daniel is carrying, but Daniel's actions are not mentioned in the context sentences. The sentences only mention John's and Sandra's actions, and there is no mention of Daniel carrying anything.
+
+Answer: not mentioned"	0.0	0.02	False	False	False	True	0
+1188	8	38	3	"*TASK*
+Here are the context sentences:
+9. Mary went to the bathroom.
+10. John got the football there.
+
+Now, answer the following question:
+What is John carrying?"	football	"from context sentence 10, ""john got the football there"", we can infer that john acquired the football at the location mentioned (""there"", which is the bathroom, as indicated by sentence 9). the verb ""got"" implies that john took possession of the football, and since there is no subsequent sentence indicating that he put it down or gave it to someone else, it is logical to conclude that john is carrying the football."	fully	football	True	The question asks about what John is carrying, and the context sentence mentions that John got the football there, implying that he is carrying the football.		"Reasoning: The question asks about what John is carrying, and the context sentence mentions that John got the football there, implying that he is carrying the football.
+
+Answer: football"	0.1389	0.0278	False	False	False	True	0
+1189	8	38	4	"*TASK*
+Here are the context sentences:
+12. Daniel travelled to the office.
+13. Daniel put down the milk.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"from context sentence 13, ""daniel put down the milk"", we can infer that daniel released the milk, which means he is no longer carrying it. previously, we knew that daniel was carrying the milk (from sentence 3 in the previous context), but now that he has put it down, it is logical to conclude that daniel is not carrying anything, i.e., he is carrying nothing."	partially	milk	False	The context sentence mentions that Daniel put down the milk, implying that he was carrying the milk before putting it down.		"Reasoning: The context sentence mentions that Daniel put down the milk, implying that he was carrying the milk before putting it down.
+
+Answer: milk"	0.0333	0.0667	False	False	False	True	0
+1190	8	38	5	"*TASK*
+Here are the context sentences:
+15. Daniel went back to the bathroom.
+16. John picked up the milk there.
+
+Now, answer the following question:
+What is John carrying?"	football milk	"from context sentence 10, we know that john got the football, and there is no subsequent sentence indicating that he put it down or gave it to someone else, so we can infer that john is still carrying the football. additionally, from context sentence 16, ""john picked up the milk there"", we can infer that john acquired the milk, which was previously put down by daniel (sentence 13). therefore, it is logical to conclude that john is carrying both the football and"	partially	milk	False	The context sentence mentions that John picked up the milk there, implying that he is carrying the milk.		"Reasoning: The context sentence mentions that John picked up the milk there, implying that he is carrying the milk.
+
+Answer: milk"	0.1481	0.0741	False	False	False	True	0

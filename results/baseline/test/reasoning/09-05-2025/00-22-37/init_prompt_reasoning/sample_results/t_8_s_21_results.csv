@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1101	8	21	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the hallway.
+2. Mary travelled to the office.
+3. John went back to the hallway.
+4. Sandra picked up the apple there.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"from context sentence 4, ""sandra picked up the apple there"", we know that sandra picked up an apple in the location where she was. since the previous sentence (3) mentions john going back to the hallway, and there is no mention of sandra moving to a different location, we can logically infer that sandra is in the hallway. therefore, sandra is carrying an apple."	fully	apple	True	"Sandra picked up the apple there, which implies that ""there"" refers to the hallway, as John went back to the hallway. Since Sandra picked up the apple there, it is likely that she is carrying the apple."		"Reasoning: Sandra picked up the apple there, which implies that ""there"" refers to the hallway, as John went back to the hallway. Since Sandra picked up the apple there, it is likely that she is carrying the apple.
+
+Answer: apple"	0.1176	0.0196	False	False	False	False	0
+1102	8	21	2	"*TASK*
+Here are the context sentences:
+6. John journeyed to the garden.
+7. Sandra moved to the office.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	from the previous context (sentence 4), we know that sandra picked up an apple in the hallway. in the current context, sentence 7 states that sandra moved to the office. there is no mention of sandra putting down or dropping the apple, so we can logically infer that sandra is still carrying the apple.	none	nothing	False	There is no mention of Sandra picking up or carrying anything in the given context sentences. The sentences only mention John journeying to the garden and Sandra moving to the office, but no object is mentioned.		"Reasoning: There is no mention of Sandra picking up or carrying anything in the given context sentences. The sentences only mention John journeying to the garden and Sandra moving to the office, but no object is mentioned.
+
+Answer: nothing"	0.0638	0.0213	False	False	False	True	0
+1103	8	21	3	"*TASK*
+Here are the context sentences:
+9. Sandra moved to the bathroom.
+10. Daniel went to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	from the previous context (sentence 4), we know that sandra picked up an apple in the hallway. there is no mention of sandra putting down or dropping the apple in any of the subsequent sentences (6, 7, 9, 10). therefore, we can logically infer that sandra is still carrying the apple, even after moving to the bathroom (sentence 9).	none	nothing	False	There is no mention of Sandra picking up or carrying anything in the given context sentences. The sentences only mention Sandra moving to the bathroom and Daniel going to the garden, but no object is mentioned.		"Reasoning: There is no mention of Sandra picking up or carrying anything in the given context sentences. The sentences only mention Sandra moving to the bathroom and Daniel going to the garden, but no object is mentioned.
+
+Answer: nothing"	0.0435	0.0217	False	False	False	True	0
+1104	8	21	4	"*TASK*
+Here are the context sentences:
+12. Daniel journeyed to the bedroom.
+13. Mary travelled to the hallway.
+14. John travelled to the office.
+15. John moved to the bathroom.
+16. Mary journeyed to the office.
+17. John grabbed the milk there.
+
+Now, answer the following question:
+What is John carrying?"	milk	"from sentence 17, ""john grabbed the milk there"", we know that john picked up the milk in the location where he was, which is the bathroom (sentence 15). there is no mention of john putting down or dropping the milk in any of the subsequent sentences. therefore, we can logically infer that john is still carrying the milk."	fully	milk	True	"According to sentence 17, John grabbed the milk there, which implies that ""there"" refers to the bathroom, as John moved to the bathroom. Therefore, John is carrying the milk."		"Reasoning: According to sentence 17, John grabbed the milk there, which implies that ""there"" refers to the bathroom, as John moved to the bathroom. Therefore, John is carrying the milk.
+
+Answer: milk"	0.0	0.0222	False	False	False	False	0
+1105	8	21	5	"*TASK*
+Here are the context sentences:
+19. Sandra picked up the football there.
+20. Daniel travelled to the hallway.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple football	"from the previous context (sentence 4), we know that sandra picked up an apple in the hallway. there is no mention of sandra putting down or dropping the apple in any of the subsequent sentences. in sentence 19, ""sandra picked up the football there"", we know that sandra picked up a football in the current location (which is not specified, but it's not relevant for this question). since there is no mention of sandra putting down the apple,"	partially	football	False	"According to sentence 19, Sandra picked up the football there, which implies that ""there"" refers to the office, as there is no mention of Sandra going to a different location. Therefore, Sandra is carrying the football."		"Reasoning: According to sentence 19, Sandra picked up the football there, which implies that ""there"" refers to the office, as there is no mention of Sandra going to a different location. Therefore, Sandra is carrying the football.
+
+Answer: football"	0.0192	0.0385	False	False	False	True	0

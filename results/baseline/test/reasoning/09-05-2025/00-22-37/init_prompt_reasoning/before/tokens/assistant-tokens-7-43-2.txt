@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġcarrying	Ġany	Ġobjects	.	ĠThe	Ġsentence	Ġabout	ĠJohn	Ġmoving	Ġto	Ġthe	Ġgarden	Ġdoes	Ġnot	Ġimply	Ġhe	Ġis	Ġcarrying	Ġanything	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġcarrying	,	Ġand	Ġthe	Ġonly	Ġsentence	Ġthat	Ġmentions	ĠMary	Ġis	Ġsentence	Ġ	1	,	Ġwhich	Ġstates	Ġthat	ĠMary	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

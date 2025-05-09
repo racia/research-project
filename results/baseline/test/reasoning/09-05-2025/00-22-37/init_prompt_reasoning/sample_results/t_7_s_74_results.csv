@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+866	7	74	1	"*TASK*
+Here are the context sentences:
+1. Daniel got the football there.
+2. Daniel went to the garden.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from context sentence 1, we know that daniel got the football, which implies that daniel is carrying the football. there is no mention of daniel picking up or carrying any other object in the context sentences. therefore, we can logically conclude that daniel is carrying only one object, which is the football.	fully	one	True	The context sentences only mention Daniel getting the football and going to the garden, but do not mention him carrying anything else. Therefore, we can infer that Daniel is carrying only one object, which is the football.		"Reasoning: The context sentences only mention Daniel getting the football and going to the garden, but do not mention him carrying anything else. Therefore, we can infer that Daniel is carrying only one object, which is the football.
+
+Answer: one"	0.0408	0.0204	False	False	False	True	0
+867	7	74	2	"*TASK*
+Here are the context sentences:
+4. Daniel discarded the football.
+5. Mary travelled to the bathroom.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	from the previous context sentence 1, we know that daniel got the football, which implies that daniel was carrying the football. however, in the current context sentence 4, it is stated that daniel discarded the football. this means that daniel is no longer carrying the football. there is no mention of daniel picking up or carrying any other object in the context sentences. therefore, we can logically conclude that daniel is not carrying any objects, which is none.	partially	none	True	The context sentences mention that Daniel discarded the football, which implies that he was previously carrying it. However, since he discarded it, he is no longer carrying it. Additionally, there is no mention of Daniel carrying any other object.		"Reasoning: The context sentences mention that Daniel discarded the football, which implies that he was previously carrying it. However, since he discarded it, he is no longer carrying it. Additionally, there is no mention of Daniel carrying any other object.
+
+Answer: none"	0.0566	0.0377	False	False	False	True	0
+868	7	74	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the office.
+8. Mary went back to the garden.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	the context sentences 7 and 8 do not provide any new information about daniel or the objects he is carrying. the last information we had about daniel was in context sentence 4, where it was stated that daniel discarded the football. this means that daniel is not carrying the football or any other object. therefore, we can logically conclude that daniel is still not carrying any objects, which is none.	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only mention Sandra's journey to the office and Mary's return to the garden. Since Daniel is not mentioned, we cannot determine how many objects he is carrying.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only mention Sandra's journey to the office and Mary's return to the garden. Since Daniel is not mentioned, we cannot determine how many objects he is carrying.
+
+Answer: not mentioned"	0.0926	0.037	False	False	False	True	0
+869	7	74	4	"*TASK*
+Here are the context sentences:
+10. John travelled to the garden.
+11. Daniel picked up the football there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	in context sentence 11, it is stated that daniel picked up the football there, which implies that daniel is now carrying the football. this is a new development since the last time we checked, where daniel was not carrying any objects (in context sentence 4, daniel discarded the football, and there was no mention of him picking up anything else). now, with the new information, we can logically conclude that daniel is carrying one object, which is the football	partially	one	True	The context sentences mention that Daniel picked up the football, which implies that he is now carrying it. There is no mention of him discarding or losing the football.		"Reasoning: The context sentences mention that Daniel picked up the football, which implies that he is now carrying it. There is no mention of him discarding or losing the football.
+
+Answer: one"	0.05	0.075	False	False	False	True	0
+870	7	74	5	"*TASK*
+Here are the context sentences:
+13. Daniel passed the football to John.
+14. John dropped the football there.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	in context sentence 13, it is stated that daniel passed the football to john, which implies that john is now carrying the football. however, in context sentence 14, it is stated that john dropped the football there, which means that john is no longer carrying the football. therefore, we can logically conclude that john is not carrying any objects, which is none.	fully	none	True	The context sentences mention that John dropped the football, which implies that he was previously carrying it. However, since he dropped it, he is no longer carrying it.		"Reasoning: The context sentences mention that John dropped the football, which implies that he was previously carrying it. However, since he dropped it, he is no longer carrying it.
+
+Answer: none"	0.225	0.05	False	False	False	True	0

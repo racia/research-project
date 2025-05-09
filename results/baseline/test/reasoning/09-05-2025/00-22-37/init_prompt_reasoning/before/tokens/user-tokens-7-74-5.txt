@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠDaniel	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJohn	.Ċ
+14	.	ĠJohn	Ġdropped	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠJohn	Ġcarrying	?Ċ

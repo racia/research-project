@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1351	8	71	1	"*TASK*
+Here are the context sentences:
+1. Sandra got the apple there.
+2. John went back to the bedroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"from context sentence 1, ""sandra got the apple there"", we can infer that sandra has possession of the apple. the phrase ""got"" implies that sandra has acquired or obtained the apple, and ""there"" suggests that she is currently holding or carrying it. therefore, the answer to the question ""what is sandra carrying?"" is indeed ""apple""."	fully	apple	True	Sandra got the apple there, which implies that Sandra acquired the apple at a specific location. Since John went back to the bedroom, it's likely that Sandra got the apple in the bedroom, as there's no other information to contradict this assumption.		"Reasoning: Sandra got the apple there, which implies that Sandra acquired the apple at a specific location. Since John went back to the bedroom, it's likely that Sandra got the apple in the bedroom, as there's no other information to contradict this assumption.
+
+Answer: apple"	0.0179	0.0179	False	False	False	True	0
+1352	8	71	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the bathroom.
+5. Sandra journeyed to the hallway.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"although the context sentences 4 and 5 do not provide direct information about what sandra is carrying, we can refer back to the previous context sentence 1, ""sandra got the apple there"", which indicates that sandra has possession of the apple. there is no information in the subsequent sentences that suggests sandra has dropped or given away the apple. therefore, it is logical to assume that sandra is still carrying the apple, which is the answer to the question."	none	nothing	False	There is no information provided about Sandra carrying anything. The context sentences only mention Sandra's journey to the hallway, but not what she is carrying.		"Reasoning: There is no information provided about Sandra carrying anything. The context sentences only mention Sandra's journey to the hallway, but not what she is carrying.
+
+Answer: nothing"	0.1111	0.0278	False	False	False	True	0
+1353	8	71	3	"*TASK*
+Here are the context sentences:
+7. Sandra dropped the apple there.
+8. Daniel travelled to the hallway.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"in context sentence 7, ""sandra dropped the apple there"", it is explicitly stated that sandra dropped the apple, which means she is no longer carrying it. this action of dropping the apple implies that sandra has relinquished possession of the apple. therefore, the correct answer to the question ""what is sandra carrying?"" is indeed ""nothing"", as she is no longer holding or carrying the apple."	partially	apple	False	Sandra dropped the apple there, which implies that Sandra had the apple previously. Since Sandra dropped the apple, it's likely that Sandra was carrying the apple before dropping it.		"Reasoning: Sandra dropped the apple there, which implies that Sandra had the apple previously. Since Sandra dropped the apple, it's likely that Sandra was carrying the apple before dropping it.
+
+Answer: apple"	0.0244	0.0488	False	False	False	False	0
+1354	8	71	4	"*TASK*
+Here are the context sentences:
+10. Daniel got the apple there.
+11. John travelled to the office.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple	"in context sentence 10, ""daniel got the apple there"", it is explicitly stated that daniel acquired or obtained the apple, which implies that he now has possession of it. the phrase ""got"" suggests that daniel has taken control of the apple, and ""there"" indicates that he is currently holding or carrying it. therefore, the correct answer to the question ""what is daniel carrying?"" is indeed ""apple"", as he has taken possession of it."	fully	apple	True	Daniel got the apple there, which implies that Daniel acquired the apple at a specific location. Since John travelled to the office, it's likely that Daniel got the apple in the office, as there's no other information to contradict this assumption.		"Reasoning: Daniel got the apple there, which implies that Daniel acquired the apple at a specific location. Since John travelled to the office, it's likely that Daniel got the apple in the office, as there's no other information to contradict this assumption.
+
+Answer: apple"	0.0182	0.0182	False	False	False	True	0
+1355	8	71	5	"*TASK*
+Here are the context sentences:
+13. Daniel left the apple.
+14. Mary journeyed to the hallway.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"in context sentence 13, ""daniel left the apple"", it is explicitly stated that daniel relinquished or abandoned the apple, which implies that he is no longer carrying it. the verb ""left"" suggests that daniel has intentionally let go of the apple, and it is no longer in his possession. therefore, the correct answer to the question ""what is daniel carrying?"" is indeed ""nothing"", as he has intentionally given up the apple."	partially	nothing	True	Daniel left the apple, which implies that Daniel had the apple previously. Since Daniel left the apple, it's likely that Daniel was carrying the apple before leaving it.		"Reasoning: Daniel left the apple, which implies that Daniel had the apple previously. Since Daniel left the apple, it's likely that Daniel was carrying the apple before leaving it.
+
+Answer: nothing"	0.0	0.05	False	False	False	False	0

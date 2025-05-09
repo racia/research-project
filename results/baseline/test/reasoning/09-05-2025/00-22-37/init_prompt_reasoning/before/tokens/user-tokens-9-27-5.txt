@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠMary	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġbedroom	.Ċ
+14	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠJohn	Ġin	Ġthe	Ġhallway	?Ċ

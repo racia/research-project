@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2161	10	33	1	"*TASK*
+Here are the context sentences:
+1. Julie is either in the kitchen or the school.
+2. Mary journeyed to the park.
+
+Now, answer the following question:
+Is Mary in the cinema?"	no	the context sentences do not mention mary being in the cinema. in fact, sentence 2 states that mary journeyed to the park, which implies that she is in the park, not in the cinema. there is no information provided that would suggest mary is in the cinema, so the answer is no.	fully	no	True	The question asks about Mary's location, and we know that Mary journeyed to the park (sentence 2). There is no mention of Mary being in the cinema. Additionally, sentence 1 only mentions Julie's possible locations, not Mary's.		"Reasoning: The question asks about Mary's location, and we know that Mary journeyed to the park (sentence 2). There is no mention of Mary being in the cinema. Additionally, sentence 1 only mentions Julie's possible locations, not Mary's.
+
+Answer: no"	0.1754	0.0175	False	False	False	True	0
+2162	10	33	2	"*TASK*
+Here are the context sentences:
+4. Julie journeyed to the cinema.
+5. Fred is either in the office or the kitchen.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	no	sentence 4 states that julie journeyed to the cinema, which implies that julie is currently in the cinema. there is no information provided that suggests julie is in the kitchen. in fact, the context only mentions julie's location as the cinema, and fred's possible locations as the office or the kitchen, but not julie's. therefore, the answer is no, julie is not in the kitchen.	fully	no	True	According to sentence 4, Julie journeyed to the cinema, which means she is likely to be in the cinema, not the kitchen. Sentence 5 only mentions Fred's possible locations, not Julie's.		"Reasoning: According to sentence 4, Julie journeyed to the cinema, which means she is likely to be in the cinema, not the kitchen. Sentence 5 only mentions Fred's possible locations, not Julie's.
+
+Answer: no"	0.0612	0.0204	False	False	False	True	0
+2163	10	33	3	"*TASK*
+Here are the context sentences:
+7. Fred is in the cinema.
+8. Fred is in the park.
+
+Now, answer the following question:
+Is Fred in the park?"	yes	sentence 8 explicitly states that fred is in the park, which directly answers the question. the fact that sentence 7 also states that fred is in the cinema does not contradict this, as it is possible for fred to be in both locations (although this would be a contradictory statement, it is not explicitly stated that fred can only be in one location). however, since sentence 8 clearly states that fred is in the park, the answer is yes.	fully	yes	True	According to sentence 8, Fred is indeed in the park.		"Reasoning: According to sentence 8, Fred is indeed in the park.
+
+Answer: yes"	0.05	0.05	False	False	False	False	0
+2164	10	33	4	"*TASK*
+Here are the context sentences:
+10. Julie went to the bedroom.
+11. Julie went to the park.
+
+Now, answer the following question:
+Is Julie in the park?"	yes	sentence 11 explicitly states that julie went to the park, which implies that julie is currently in the park. the fact that sentence 10 states that julie went to the bedroom does not contradict this, as it is possible that julie went to the bedroom first and then went to the park. since the most recent information about julie's location is that she went to the park, the answer is yes, julie is in the park.	fully	yes	True	According to sentence 11, Julie went to the park, which means she is likely to be in the park.		"Reasoning: According to sentence 11, Julie went to the park, which means she is likely to be in the park.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+2165	10	33	5	"*TASK*
+Here are the context sentences:
+13. Fred travelled to the kitchen.
+14. Bill is either in the cinema or the bedroom.
+
+Now, answer the following question:
+Is Fred in the bedroom?"	no	sentence 13 states that fred travelled to the kitchen, which implies that fred is currently in the kitchen. there is no information provided that suggests fred is in the bedroom. the information about bill's possible locations (cinema or bedroom) is irrelevant to fred's location. therefore, the answer is no, fred is not in the bedroom.	fully	no	True	Sentence 13 states that Fred travelled to the kitchen, but there is no mention of Fred being in the bedroom. Sentence 14 only mentions Bill's possible locations, not Fred's.		"Reasoning: Sentence 13 states that Fred travelled to the kitchen, but there is no mention of Fred being in the bedroom. Sentence 14 only mentions Bill's possible locations, not Fred's.
+
+Answer: no"	0.0227	0.0227	False	False	False	True	0

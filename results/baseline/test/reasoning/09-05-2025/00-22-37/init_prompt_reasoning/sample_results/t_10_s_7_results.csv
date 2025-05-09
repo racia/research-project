@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2031	10	7	1	"*TASK*
+Here are the context sentences:
+1. Fred is in the kitchen.
+2. Bill moved to the bedroom.
+
+Now, answer the following question:
+Is Fred in the kitchen?"	yes	"the context sentence ""1. fred is in the kitchen"" explicitly states that fred is in the kitchen. the second sentence ""2. bill moved to the bedroom"" does not provide any information that would change fred's location. therefore, based on the provided information, it can be concluded that fred is indeed in the kitchen, which aligns with the answer ""yes""."	fully	yes	True	The context sentences provide information about the locations of Fred and Bill. Fred is explicitly stated to be in the kitchen, and Bill is in the bedroom.		"Reasoning: The context sentences provide information about the locations of Fred and Bill. Fred is explicitly stated to be in the kitchen, and Bill is in the bedroom.
+
+Answer: yes"	0.0541	0.027	False	False	False	True	0
+2032	10	7	2	"*TASK*
+Here are the context sentences:
+4. Fred is in the school.
+5. Bill went to the cinema.
+
+Now, answer the following question:
+Is Bill in the school?"	no	"the context sentence ""5. bill went to the cinema"" explicitly states that bill went to the cinema, which is a different location from the school. there is no information provided that suggests bill is in the school. additionally, the sentence ""4. fred is in the school"" only provides information about fred's location, not bill's. therefore, based on the provided information, it can be concluded that bill is not in the school, which aligns with the answer ""no""."	fully	no	True	The context sentences provide information about the locations of Fred and Bill. Fred is in the school, and Bill went to the cinema, which implies that Bill is not in the school.		"Reasoning: The context sentences provide information about the locations of Fred and Bill. Fred is in the school, and Bill went to the cinema, which implies that Bill is not in the school.
+
+Answer: no"	0.1395	0.0233	False	False	False	True	0
+2033	10	7	3	"*TASK*
+Here are the context sentences:
+7. Julie travelled to the park.
+8. Julie is in the office.
+
+Now, answer the following question:
+Is Bill in the cinema?"	yes	"there is no information provided about bill's location in the context sentences. the sentences only mention julie's locations, which are the park and the office. there is no connection between julie's locations and bill's location. however, the answer ""yes"" suggests that bill's location is known. since there is no information about bill's location in the context sentences, it must be assumed that the answer is based on previous information that is not provided in the current context. therefore, the reasoning"	none	not mentioned	False	There is no information provided about Bill's location in the given context sentences. The sentences only mention Julie's travel and current location. Therefore, we cannot determine Bill's location.		"Reasoning: There is no information provided about Bill's location in the given context sentences. The sentences only mention Julie's travel and current location. Therefore, we cannot determine Bill's location.
+
+Answer: not mentioned"	0.093	0.0233	False	False	False	True	0
+2034	10	7	4	"*TASK*
+Here are the context sentences:
+10. Julie journeyed to the kitchen.
+11. Fred went to the kitchen.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	yes	"the context sentence ""10. julie journeyed to the kitchen"" explicitly states that julie went to the kitchen. there is no information provided that suggests julie left the kitchen or changed her location. additionally, the sentence ""11. fred went to the kitchen"" only provides information about fred's location, not julie's. therefore, based on the provided information, it can be concluded that julie is indeed in the kitchen, which aligns with the answer ""yes""."	fully	yes	True	According to context sentence 11, Fred went to the kitchen, which implies that the kitchen is a location where someone (Fred) has been. Context sentence 10 states that Julie journeyed to the kitchen, which means Julie is now in the kitchen.		"Reasoning: According to context sentence 11, Fred went to the kitchen, which implies that the kitchen is a location where someone (Fred) has been. Context sentence 10 states that Julie journeyed to the kitchen, which means Julie is now in the kitchen.
+
+Answer: yes"	0.0	0.0172	False	False	False	False	0
+2035	10	7	5	"*TASK*
+Here are the context sentences:
+13. Julie moved to the park.
+14. Fred moved to the cinema.
+
+Now, answer the following question:
+Is Fred in the kitchen?"	no	"the context sentence ""14. fred moved to the cinema"" explicitly states that fred moved to the cinema, which is a different location from the kitchen. there is no information provided that suggests fred is in the kitchen or was in the kitchen previously. additionally, the sentence ""13. julie moved to the park"" only provides information about julie's location, not fred's. therefore, based on the provided information, it can be concluded that fred is not in the kitchen, which aligns"	fully	no	True	According to context sentence 14, Fred moved to the cinema, which implies that Fred is no longer in the kitchen. The previous information about Fred being in the kitchen is no longer valid.		"Reasoning: According to context sentence 14, Fred moved to the cinema, which implies that Fred is no longer in the kitchen. The previous information about Fred being in the kitchen is no longer valid.
+
+Answer: no"	0.0222	0.0222	False	False	False	True	0

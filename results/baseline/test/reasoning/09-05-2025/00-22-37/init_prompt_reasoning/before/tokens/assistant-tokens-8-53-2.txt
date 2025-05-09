@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	's	Ġmovements	,	Ġbut	Ġnot	ĠMary	's	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1981	9	97	1	"*TASK*
+Here are the context sentences:
+1. John is in the kitchen.
+2. Mary is not in the garden.
+
+Now, answer the following question:
+Is Mary in the garden?"	no	"the answer is ""no"" because the context sentence 2 explicitly states ""mary is not in the garden"", which directly indicates that mary's location is not in the garden."	fully	no	True	The question asks about Mary's location in the garden, but the context sentences only provide information about Mary's absence in the garden (sentence 2). There is no direct statement about Mary's presence in the garden. Therefore, we cannot conclude that Mary is in the garden.		"Reasoning: The question asks about Mary's location in the garden, but the context sentences only provide information about Mary's absence in the garden (sentence 2). There is no direct statement about Mary's presence in the garden. Therefore, we cannot conclude that Mary is in the garden.
+
+Answer: no"	0.0161	0.0161	False	False	False	True	0
+1982	9	97	2	"*TASK*
+Here are the context sentences:
+4. Daniel moved to the bathroom.
+5. John went to the hallway.
+
+Now, answer the following question:
+Is Mary in the garden?"	no	"the answer is ""no"" because in the previous context (sentence 2), it was explicitly stated that ""mary is not in the garden"". this information has not been updated or changed by the new context sentences (4 and 5), which only provide information about daniel and john's movements, but do not mention mary or the garden. therefore, the previous information about mary's location remains valid, and the answer is still ""no""."	none	not mentioned	False	The question asks about Mary's location in the garden, but the context sentences do not provide any information about Mary's location. The sentences only mention Daniel's movement to the bathroom and John's movement to the hallway, but do not mention Mary at all. Therefore, we cannot conclude anything about Mary's location in the garden.		"Reasoning: The question asks about Mary's location in the garden, but the context sentences do not provide any information about Mary's location. The sentences only mention Daniel's movement to the bathroom and John's movement to the hallway, but do not mention Mary at all. Therefore, we cannot conclude anything about Mary's location in the garden.
+
+Answer: not mentioned"	0.0685	0.0137	False	False	False	True	0
+1983	9	97	3	"*TASK*
+Here are the context sentences:
+7. Daniel is in the hallway.
+8. Sandra is not in the garden.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	"the answer is ""yes"" because in the previous context (sentence 5), it was stated that ""john went to the hallway"". this information has not been updated or changed by the new context sentences (7 and 8), which provide information about daniel and sandra, but do not mention john's movement or location. therefore, the previous information about john's location remains valid, and the answer is ""yes""."	none	not mentioned	False	The question asks about John's location in the hallway, but the context sentences do not provide any information about John's location. Sentence 7 mentions Daniel's location in the hallway, and sentence 8 mentions Sandra's absence in the garden, but there is no mention of John's location.		"Reasoning: The question asks about John's location in the hallway, but the context sentences do not provide any information about John's location. Sentence 7 mentions Daniel's location in the hallway, and sentence 8 mentions Sandra's absence in the garden, but there is no mention of John's location.
+
+Answer: not mentioned"	0.1061	0.0152	False	False	False	True	0
+1984	9	97	4	"*TASK*
+Here are the context sentences:
+10. Daniel is not in the hallway.
+11. Daniel went back to the kitchen.
+
+Now, answer the following question:
+Is Daniel in the office?"	no	"the answer is ""no"" because there is no information provided about daniel being in the office. in fact, the context sentences (10 and 11) explicitly state that daniel is not in the hallway and went back to the kitchen, which implies that daniel's current location is the kitchen, not the office."	fully	not mentioned	False	The question asks about Daniel's location in the office, but the context sentences do not provide any information about Daniel's location in the office. Sentence 10 mentions Daniel's absence in the hallway, and sentence 11 mentions Daniel's movement back to the kitchen, but there is no mention of Daniel's location in the office.		"Reasoning: The question asks about Daniel's location in the office, but the context sentences do not provide any information about Daniel's location in the office. Sentence 10 mentions Daniel's absence in the hallway, and sentence 11 mentions Daniel's movement back to the kitchen, but there is no mention of Daniel's location in the office.
+
+Answer: not mentioned"	0.0137	0.0137	False	False	False	True	0
+1985	9	97	5	"*TASK*
+Here are the context sentences:
+13. John went back to the kitchen.
+14. Daniel went to the hallway.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	"the answer is ""no"" because the context sentence (14) explicitly states that ""daniel went to the hallway"", which implies that daniel's current location is the hallway, not the bathroom. there is no information provided about daniel being in the bathroom, and the latest information about daniel's movement points to the hallway."	fully	not mentioned	False	The question asks about Daniel's location in the bathroom, but the context sentences do not provide any information about Daniel's location in the bathroom. Sentence 14 mentions Daniel's movement to the hallway, but there is no mention of Daniel's location in the bathroom.		"Reasoning: The question asks about Daniel's location in the bathroom, but the context sentences do not provide any information about Daniel's location in the bathroom. Sentence 14 mentions Daniel's movement to the hallway, but there is no mention of Daniel's location in the bathroom.
+
+Answer: not mentioned"	0.1	0.0167	False	False	False	True	0

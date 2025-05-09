@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġshow	Ġthat	ĠJohn	Ġreceived	Ġthe	Ġmilk	Ġfrom	ĠMary	,	Ġand	Ġthen	ĠMary	Ġpassed	Ġit	Ġback	Ġto	ĠJohn	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġcarrying	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġone	<|eot_id|>
