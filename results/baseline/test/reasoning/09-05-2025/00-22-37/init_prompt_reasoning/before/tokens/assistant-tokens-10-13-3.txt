@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠWe	Ġknow	Ġthat	ĠJulie	Ġis	Ġin	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	7	).	ĠHowever	,	Ġthere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġlocation	.	ĠSentence	Ġ	8	Ġonly	Ġmentions	ĠFred	's	Ġjourney	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

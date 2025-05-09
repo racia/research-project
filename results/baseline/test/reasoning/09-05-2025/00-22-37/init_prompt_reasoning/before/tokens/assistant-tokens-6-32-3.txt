@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġin	Ġthe	Ġcontext	Ġsentences	Ġprovided	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġgoing	Ġto	Ġthe	Ġgarden	Ġand	ĠJohn	Ġgoing	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġnot	ĠSandra	's	Ġlocation	.	ĠAdditionally	,	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġbeing	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

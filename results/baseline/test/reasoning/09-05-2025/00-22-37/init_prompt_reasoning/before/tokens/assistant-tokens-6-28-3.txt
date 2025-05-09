@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġor	Ġthe	Ġoffice	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġleaving	Ġand	Ġgrabbing	Ġthe	Ġfootball	,	Ġbut	Ġthere	Ġis	Ġno	Ġconnection	Ġto	ĠMary	Ġor	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+156	6	32	1	"*TASK*
+Here are the context sentences:
+1. John went to the kitchen.
+2. John moved to the hallway.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	the context sentences describe john's movements, but neither of them mentions the bedroom. sentence 1 states that john went to the kitchen, and sentence 2 states that john moved to the hallway. there is no indication that john ever went to the bedroom, so it can be logically concluded that john is not in the bedroom.	fully	no	True	Since John went to the kitchen and then moved to the hallway, there is no direct information about him entering the bedroom. We can't conclude that he is in the bedroom.		"Reasoning: Since John went to the kitchen and then moved to the hallway, there is no direct information about him entering the bedroom. We can't conclude that he is in the bedroom.
+
+Answer: no"	0.0952	0.0238	False	False	False	True	0
+157	6	32	2	"*TASK*
+Here are the context sentences:
+4. Daniel went back to the garden.
+5. Sandra travelled to the hallway.
+
+Now, answer the following question:
+Is John in the garden?"	no	"the context sentences do not mention john at all. they only talk about daniel and sandra, and their movements to the garden and hallway, respectively. there is no information provided about john's location, and therefore, it cannot be concluded that john is in the garden. the answer ""no"" is correct because there is no evidence to suggest that john is in the garden."	none	no	True	There is no mention of John in the context sentences provided. The sentences only mention Daniel going back to the garden and Sandra traveling to the hallway, but not John's location.		"Reasoning: There is no mention of John in the context sentences provided. The sentences only mention Daniel going back to the garden and Sandra traveling to the hallway, but not John's location.
+
+Answer: no"	0.0476	0.0238	False	False	False	True	0
+158	6	32	3	"*TASK*
+Here are the context sentences:
+7. Mary went to the garden.
+8. John went to the office.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	no	"the context sentences do not mention sandra at all. they only talk about mary and john, and their movements to the garden and office, respectively. there is no information provided about sandra's location, and there is no mention of the bedroom. therefore, it cannot be concluded that sandra is in the bedroom. the answer ""no"" is correct because there is no evidence to suggest that sandra is in the bedroom."	none	not mentioned	False	There is no mention of Sandra in the context sentences provided. The sentences only mention Mary going to the garden and John going to the office, but not Sandra's location. Additionally, there is no mention of Sandra being in the bedroom.		"Reasoning: There is no mention of Sandra in the context sentences provided. The sentences only mention Mary going to the garden and John going to the office, but not Sandra's location. Additionally, there is no mention of Sandra being in the bedroom.
+
+Answer: not mentioned"	0.0364	0.0182	False	False	False	True	0
+159	6	32	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the bedroom.
+11. Sandra travelled to the kitchen.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	"the context sentences do not mention mary at all. they only talk about daniel and sandra, and their movements to the bedroom and kitchen, respectively. there is no information provided about mary's location, and there is no mention of the bathroom. therefore, it cannot be concluded that mary is in the bathroom. the answer ""no"" is correct because there is no evidence to suggest that mary is in the bathroom."	none	not mentioned	False	There is no mention of Mary in the context sentences provided. The sentences only mention Daniel going back to the bedroom and Sandra traveling to the kitchen, but not Mary's location. Additionally, there is no mention of Mary being in the bathroom.		"Reasoning: There is no mention of Mary in the context sentences provided. The sentences only mention Daniel going back to the bedroom and Sandra traveling to the kitchen, but not Mary's location. Additionally, there is no mention of Mary being in the bathroom.
+
+Answer: not mentioned"	0.0357	0.0179	False	False	False	True	0
+160	6	32	5	"*TASK*
+Here are the context sentences:
+13. Sandra went to the hallway.
+14. Mary moved to the kitchen.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	no	"according to sentence 13, sandra went to the hallway, and according to sentence 14, mary moved to the kitchen. there is no information provided that suggests sandra moved to the kitchen or left the hallway. therefore, it can be logically concluded that sandra is not in the kitchen. the answer ""no"" is correct because sandra's location is explicitly stated to be the hallway, not the kitchen."	fully	yes	False	According to sentence 11, Sandra travelled to the kitchen, which implies that she is currently in the kitchen.		"Reasoning: According to sentence 11, Sandra travelled to the kitchen, which implies that she is currently in the kitchen.
+
+Answer: yes"	0.0	0.0345	False	False	False	False	0

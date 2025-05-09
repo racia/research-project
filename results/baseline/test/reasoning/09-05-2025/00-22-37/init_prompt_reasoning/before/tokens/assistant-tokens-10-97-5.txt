@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	,	Ġand	Ġwe	Ġhave	Ġtwo	Ġsentences	Ġthat	Ġprovide	Ġinformation	Ġabout	Ġher	Ġlocation	.	ĠSentence	Ġ	14	Ġstates	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

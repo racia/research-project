@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠBill	Ġwent	Ġto	Ġthe	Ġpark	.Ċ
+2	.	ĠFred	Ġis	Ġeither	Ġin	Ġthe	Ġschool	Ġor	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠBill	Ġin	Ġthe	Ġpark	?Ċ

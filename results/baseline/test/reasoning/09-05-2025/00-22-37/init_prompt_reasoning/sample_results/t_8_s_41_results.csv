@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1201	8	41	1	"*TASK*
+Here are the context sentences:
+1. Daniel grabbed the milk there.
+2. John went to the bedroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"from context sentence 1, ""daniel grabbed the milk there"", we can infer that daniel is carrying the milk because ""grabbed"" implies taking hold of something, and in this case, it is the milk."	fully	milk	True	The question asks about what Daniel is carrying, and the only sentence that mentions Daniel is sentence 1, which states that Daniel grabbed the milk there. This implies that Daniel is carrying the milk.		"Reasoning: The question asks about what Daniel is carrying, and the only sentence that mentions Daniel is sentence 1, which states that Daniel grabbed the milk there. This implies that Daniel is carrying the milk.
+
+Answer: milk"	0.0435	0.0217	False	False	False	True	0
+1202	8	41	2	"*TASK*
+Here are the context sentences:
+4. Sandra travelled to the garden.
+5. Daniel journeyed to the garden.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"the context sentences 4 and 5 do not provide any information about what daniel is carrying. however, we can look back at the previous context sentences (1 and 2) which mentioned that ""daniel grabbed the milk there"". this implies that daniel is carrying milk. the new context sentences (4 and 5) do not provide any information that would change this fact, so we can conclude that daniel is still carrying milk."	none	not mentioned	False	There is no sentence that mentions Daniel carrying something. The sentences only mention Daniel journeying to the garden, but do not provide information about what he is carrying.		"Reasoning: There is no sentence that mentions Daniel carrying something. The sentences only mention Daniel journeying to the garden, but do not provide information about what he is carrying.
+
+Answer: not mentioned"	0.0	0.025	False	False	False	True	0
+1203	8	41	3	"*TASK*
+Here are the context sentences:
+7. John grabbed the football there.
+8. Mary got the apple there.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	"from context sentence 8, ""mary got the apple there"", we can infer that mary is carrying the apple because ""got"" implies taking possession of something, and in this case, it is the apple."	fully	apple	True	The question asks about what Mary is carrying, and the only sentence that mentions Mary is sentence 8, which states that Mary got the apple there. This implies that Mary is carrying the apple.		"Reasoning: The question asks about what Mary is carrying, and the only sentence that mentions Mary is sentence 8, which states that Mary got the apple there. This implies that Mary is carrying the apple.
+
+Answer: apple"	0.0217	0.0217	False	False	False	True	0
+1204	8	41	4	"*TASK*
+Here are the context sentences:
+10. Mary put down the apple.
+11. John left the football there.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	"from context sentence 8 (previous part of the conversation), we know that ""mary got the apple there"", which implies that mary was carrying the apple. however, in context sentence 10, ""mary put down the apple"", which means mary is no longer carrying the apple. therefore, the correct answer is that mary is carrying nothing."	partially	nothing	True	Sentence 10 states that Mary put down the apple, which implies that Mary was previously carrying the apple. However, since Mary put it down, she is no longer carrying it.		"Reasoning: Sentence 10 states that Mary put down the apple, which implies that Mary was previously carrying the apple. However, since Mary put it down, she is no longer carrying it.
+
+Answer: nothing"	0.0	0.0465	False	False	False	False	0
+1205	8	41	5	"*TASK*
+Here are the context sentences:
+13. John got the football there.
+14. John moved to the garden.
+
+Now, answer the following question:
+What is John carrying?"	football	"from context sentence 13, ""john got the football there"", we can infer that john is carrying the football because ""got"" implies taking possession of something, and in this case, it is the football. the fact that john moved to the garden in sentence 14 does not change the fact that he is carrying the football."	partially	football	True	The question asks about what John is carrying, and the only sentence that mentions John is sentence 13, which states that John got the football there. This implies that John is carrying the football.		"Reasoning: The question asks about what John is carrying, and the only sentence that mentions John is sentence 13, which states that John got the football there. This implies that John is carrying the football.
+
+Answer: football"	0.1087	0.0652	False	False	False	True	0

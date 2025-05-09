@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2186	10	38	1	"*TASK*
+Here are the context sentences:
+1. Fred is in the park.
+2. Mary journeyed to the cinema.
+
+Now, answer the following question:
+Is Fred in the park?"	yes	"the context sentence ""1. fred is in the park"" explicitly states that fred is in the park. the question ""is fred in the park?"" directly asks about fred's location, and the answer ""yes"" is a direct confirmation of the information provided in the context sentence. the second context sentence ""2. mary journeyed to the cinema"" does not provide any contradictory or relevant information about fred's location, so it can be ignored in this case."	fully	yes	True	The question asks about Fred's location, and we have a direct statement in context sentence 1 that Fred is in the park.		"Reasoning: The question asks about Fred's location, and we have a direct statement in context sentence 1 that Fred is in the park.
+
+Answer: yes"	0.0909	0.0303	False	False	False	False	0
+2187	10	38	2	"*TASK*
+Here are the context sentences:
+4. Julie is either in the bedroom or the kitchen.
+5. Bill is either in the office or the park.
+
+Now, answer the following question:
+Is Julie in the park?"	no	"the context sentence ""4. julie is either in the bedroom or the kitchen"" explicitly states that julie is in one of two locations: the bedroom or the kitchen. the park is not mentioned as one of julie's possible locations. therefore, based on the provided information, it can be logically concluded that julie is not in the park, which aligns with the answer ""no""."	fully	no	True	The question asks about Julie's location, and we have a statement in context sentence 4 that Julie is either in the bedroom or the kitchen. There is no mention of Julie being in the park.		"Reasoning: The question asks about Julie's location, and we have a statement in context sentence 4 that Julie is either in the bedroom or the kitchen. There is no mention of Julie being in the park.
+
+Answer: no"	0.0638	0.0213	False	False	False	True	0
+2188	10	38	3	"*TASK*
+Here are the context sentences:
+7. Bill went back to the bedroom.
+8. Mary went to the bedroom.
+
+Now, answer the following question:
+Is Julie in the office?"	no	"there is no mention of julie in the provided context sentences. the context sentences only mention bill and mary, and their movements are related to the bedroom. there is no information about julie's location, and the office is not mentioned in relation to julie. therefore, it cannot be determined that julie is in the office, and the answer ""no"" is a logical conclusion based on the lack of information about julie's location."	none	not mentioned	False	There is no mention of Julie's location in the given context sentences. The sentences only mention Bill and Mary's movements, but not Julie's.		"Reasoning: There is no mention of Julie's location in the given context sentences. The sentences only mention Bill and Mary's movements, but not Julie's.
+
+Answer: not mentioned"	0.0811	0.027	False	False	False	True	0
+2189	10	38	4	"*TASK*
+Here are the context sentences:
+10. Julie travelled to the school.
+11. Julie is either in the kitchen or the kitchen.
+
+Now, answer the following question:
+Is Bill in the bedroom?"	yes	"the provided context sentences do not mention bill's location. however, the answer ""yes"" suggests that bill's location is known. upon reviewing the previous context sentences, we find that sentence 7 mentions ""bill went back to the bedroom"". this sentence explicitly states that bill is in the bedroom. therefore, the answer ""yes"" is a logical conclusion based on the previous information about bill's location."	none	not mentioned	False	There is no mention of Bill's location in the given context sentences. The sentences only mention Julie's movements and location, but not Bill's.		"Reasoning: There is no mention of Bill's location in the given context sentences. The sentences only mention Julie's movements and location, but not Bill's.
+
+Answer: not mentioned"	0.0	0.027	False	False	False	True	0
+2190	10	38	5	"*TASK*
+Here are the context sentences:
+13. Bill is in the office.
+14. Julie went back to the school.
+
+Now, answer the following question:
+Is Julie in the school?"	yes	"the context sentence ""14. julie went back to the school"" explicitly states that julie went back to the school. this implies that julie is currently in the school. therefore, the answer ""yes"" to the question ""is julie in the school?"" is a logical conclusion based on the provided information about julie's movement and location."	fully	yes	True	According to context sentence 14, Julie went back to the school, which implies that Julie is currently in the school.		"Reasoning: According to context sentence 14, Julie went back to the school, which implies that Julie is currently in the school.
+
+Answer: yes"	0.0323	0.0323	False	False	False	False	0

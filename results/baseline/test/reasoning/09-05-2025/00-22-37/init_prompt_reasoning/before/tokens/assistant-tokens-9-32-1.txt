@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġmovement	Ġto	Ġthe	Ġhallway	Ġand	ĠDaniel	's	Ġabsence	Ġfrom	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġdirect	Ġinformation	Ġabout	ĠDaniel	's	Ġcurrent	Ġlocation	Ġor	Ġpresence	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

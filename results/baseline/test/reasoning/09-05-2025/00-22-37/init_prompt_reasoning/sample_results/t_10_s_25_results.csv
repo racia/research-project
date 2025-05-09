@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2121	10	25	1	"*TASK*
+Here are the context sentences:
+1. Julie went to the kitchen.
+2. Julie is in the office.
+
+Now, answer the following question:
+Is Julie in the school?"	no	the context sentences do not mention julie being in a school. in fact, sentence 1 mentions julie being in the kitchen, and sentence 2 mentions julie being in the office. there is no indication that the kitchen or office are located within a school. therefore, based on the provided information, it can be logically concluded that julie is not in the school.	fully	no	True	The context sentences do not mention Julie being in the school. Julie is either in the kitchen (sentence 1) or in the office (sentence 2), but there is no mention of her being in the school.		"Reasoning: The context sentences do not mention Julie being in the school. Julie is either in the kitchen (sentence 1) or in the office (sentence 2), but there is no mention of her being in the school.
+
+Answer: no"	0.1373	0.0196	False	False	False	True	0
+2122	10	25	2	"*TASK*
+Here are the context sentences:
+4. Julie journeyed to the school.
+5. Mary is in the school.
+
+Now, answer the following question:
+Is Mary in the school?"	yes	"sentence 5 explicitly states ""mary is in the school"", which directly answers the question and confirms that mary is indeed in the school."	fully	yes	True	Sentence 5 explicitly states that Mary is in the school.		"Reasoning: Sentence 5 explicitly states that Mary is in the school.
+
+Answer: yes"	0.1053	0.0526	False	False	False	False	0
+2123	10	25	3	"*TASK*
+Here are the context sentences:
+7. Bill journeyed to the park.
+8. Mary went to the cinema.
+
+Now, answer the following question:
+Is Julie in the school?"	yes	"the answer ""yes"" to the question ""is julie in the school?"" is based on the previous context sentence 5, which explicitly stated ""mary is in the school"". however, the current context sentences 7 and 8 do not provide any new information about julie or the school. they mention bill going to the park and mary going to the cinema, but do not update or contradict the previous information about julie being in the school. therefore, the answer remains ""yes"" based"	none	not mentioned	False	There is no mention of Julie in the context sentences. Julie's whereabouts are not specified.		"Reasoning: There is no mention of Julie in the context sentences. Julie's whereabouts are not specified.
+
+Answer: not mentioned"	0.1154	0.0385	False	False	False	True	0
+2124	10	25	4	"*TASK*
+Here are the context sentences:
+10. Fred is in the school.
+11. Mary is either in the bedroom or the office.
+
+Now, answer the following question:
+Is Bill in the park?"	yes	"the answer ""yes"" to the question ""is bill in the park?"" is based on the previous context sentence 7, which explicitly stated ""bill journeyed to the park"". this sentence directly indicates that bill went to the park, and there is no subsequent information that suggests he left the park. therefore, it can be logically concluded that bill is indeed in the park. the current context sentences 10 and 11 provide information about fred and mary, but do not update or contradict"	none	yes	True	Sentence 10 mentions Fred being in the school, but it does not mention Bill. Sentence 8 mentions Mary going to the cinema, but it does not mention Bill. Sentence 7 mentions Bill journeying to the park, which implies that Bill is in the park.		"Reasoning: Sentence 10 mentions Fred being in the school, but it does not mention Bill. Sentence 8 mentions Mary going to the cinema, but it does not mention Bill. Sentence 7 mentions Bill journeying to the park, which implies that Bill is in the park.
+
+Answer: yes"	0.0328	0.0164	False	False	False	True	0
+2125	10	25	5	"*TASK*
+Here are the context sentences:
+13. Julie is in the kitchen.
+14. Fred travelled to the bedroom.
+
+Now, answer the following question:
+Is Julie in the park?"	no	"the answer ""no"" to the question ""is julie in the park?"" is based on the context sentence 13, which explicitly states ""julie is in the kitchen"". this sentence directly indicates that julie is in the kitchen, not in the park. there is no information provided that suggests julie moved from the kitchen to the park, and sentence 14 only provides information about fred's location, which does not affect julie's location. therefore, it can be"	fully	no	True	Sentence 13 mentions Julie being in the kitchen, but it does not mention her being in the park. There is no mention of Julie being in the park.		"Reasoning: Sentence 13 mentions Julie being in the kitchen, but it does not mention her being in the park. There is no mention of Julie being in the park.
+
+Answer: no"	0.0	0.0256	False	False	False	True	0

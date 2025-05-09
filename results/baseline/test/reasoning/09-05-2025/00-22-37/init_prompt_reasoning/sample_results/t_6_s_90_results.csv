@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+446	6	90	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the hallway.
+2. Mary picked up the football there.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	according to the context sentences, mary moved to the hallway (sentence 1) and then picked up the football there (sentence 2). there is no mention of mary being in the bathroom or moving to the bathroom in the provided context. therefore, based on the information given, it can be logically concluded that mary is not in the bathroom.	fully	no	True	The context sentences do not mention Mary entering or being in the bathroom. The only location mentioned is the hallway, where Mary moved and picked up the football.		"Reasoning: The context sentences do not mention Mary entering or being in the bathroom. The only location mentioned is the hallway, where Mary moved and picked up the football.
+
+Answer: no"	0.0526	0.0263	False	False	False	True	0
+447	6	90	2	"*TASK*
+Here are the context sentences:
+4. Daniel journeyed to the bedroom.
+5. Daniel moved to the bathroom.
+
+Now, answer the following question:
+Is Daniel in the garden?"	no	according to the context sentences, daniel journeyed to the bedroom (sentence 4) and then moved to the bathroom (sentence 5). there is no mention of daniel being in the garden or moving to the garden in the provided context. therefore, based on the information given, it can be logically concluded that daniel is not in the garden.	fully	no	True	The context sentences do not mention Daniel entering or being in the garden. The locations mentioned are the bedroom and the bathroom, where Daniel journeyed and moved, respectively.		"Reasoning: The context sentences do not mention Daniel entering or being in the garden. The locations mentioned are the bedroom and the bathroom, where Daniel journeyed and moved, respectively.
+
+Answer: no"	0.15	0.025	False	False	False	True	0
+448	6	90	3	"*TASK*
+Here are the context sentences:
+7. Mary left the football.
+8. John travelled to the bedroom.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	no	"there is no mention of daniel in the provided context sentences. sentence 7 mentions mary leaving the football, and sentence 8 mentions john traveling to the bedroom. there is no information about daniel's location, and there is no previous context that mentions daniel being in the hallway. therefore, based on the lack of information, it can be logically concluded that the answer to the question ""is daniel in the hallway?"" is ""no""."	none	not mentioned	False	The context sentences do not mention Daniel's location. The only information provided is about Mary leaving the football and John traveling to the bedroom, but there is no mention of Daniel being in the hallway.		"Reasoning: The context sentences do not mention Daniel's location. The only information provided is about Mary leaving the football and John traveling to the bedroom, but there is no mention of Daniel being in the hallway.
+
+Answer: not mentioned"	0.1064	0.0213	False	False	False	True	0
+449	6	90	4	"*TASK*
+Here are the context sentences:
+10. John picked up the milk there.
+11. Sandra travelled to the hallway.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	"sentence 10 states that john picked up the milk ""there"", implying that john is in the same location where the milk was. there is no mention of john being in the bathroom. additionally, sentence 11 mentions sandra traveling to the hallway, but does not provide any information about john's location. therefore, based on the lack of information linking john to the bathroom, it can be logically concluded that john is not in the bathroom."	none	no	True	The context sentences do not mention John entering or being in the bathroom. The only information provided is about John picking up the milk and Sandra traveling to the hallway, but there is no mention of John being in the bathroom.		"Reasoning: The context sentences do not mention John entering or being in the bathroom. The only information provided is about John picking up the milk and Sandra traveling to the hallway, but there is no mention of John being in the bathroom.
+
+Answer: no"	0.0	0.0196	False	False	False	True	0
+450	6	90	5	"*TASK*
+Here are the context sentences:
+13. Daniel went back to the hallway.
+14. Daniel got the football there.
+
+Now, answer the following question:
+Is John in the kitchen?"	no	"there is no mention of john in the provided context sentences. sentences 13 and 14 only talk about daniel's actions, specifically that daniel went back to the hallway and got the football there. there is no information about john's location, and there is no previous context that mentions john being in the kitchen. therefore, based on the lack of information, it can be logically concluded that the answer to the question ""is john in the kitchen?"" is ""no""."	none	not mentioned	False	There is no mention of John's location or any information about the kitchen in the provided context sentences. The sentences only mention Daniel's actions in the hallway and getting the football.		"Reasoning: There is no mention of John's location or any information about the kitchen in the provided context sentences. The sentences only mention Daniel's actions in the hallway and getting the football.
+
+Answer: not mentioned"	0.0233	0.0233	False	False	False	True	0

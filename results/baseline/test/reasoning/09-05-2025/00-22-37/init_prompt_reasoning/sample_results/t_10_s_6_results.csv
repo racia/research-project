@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2026	10	6	1	"*TASK*
+Here are the context sentences:
+1. Julie journeyed to the cinema.
+2. Fred is in the bedroom.
+
+Now, answer the following question:
+Is Julie in the school?"	no	the context sentences do not mention julie being in the school. in fact, sentence 1 states that julie journeyed to the cinema, which implies that she is currently at the cinema, not at the school. there is no information provided that would suggest julie is in the school, so the answer is no.	fully	no	True	The question asks about Julie's location, and we have information about her journeying to the cinema (sentence 1). However, there is no mention of her being in the school. Additionally, Fred's location is mentioned, but it's not relevant to Julie's location.		"Reasoning: The question asks about Julie's location, and we have information about her journeying to the cinema (sentence 1). However, there is no mention of her being in the school. Additionally, Fred's location is mentioned, but it's not relevant to Julie's location.
+
+Answer: no"	0.0645	0.0161	False	False	False	True	0
+2027	10	6	2	"*TASK*
+Here are the context sentences:
+4. Julie moved to the kitchen.
+5. Mary travelled to the park.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	yes	sentence 4 explicitly states that julie moved to the kitchen, which implies that she is currently in the kitchen. there is no information provided that would suggest she has left the kitchen, so the answer is yes.	fully	yes	True	We have information about Julie's movement to the kitchen (sentence 4), which implies that she is currently in the kitchen.		"Reasoning: We have information about Julie's movement to the kitchen (sentence 4), which implies that she is currently in the kitchen.
+
+Answer: yes"	0.0938	0.0312	False	False	False	True	0
+2028	10	6	3	"*TASK*
+Here are the context sentences:
+7. Mary is in the bedroom.
+8. Fred is either in the kitchen or the kitchen.
+
+Now, answer the following question:
+Is Mary in the office?"	no	sentence 7 explicitly states that mary is in the bedroom, which implies that she is not in the office. there is no information provided that would suggest mary is in the office, and the information about fred's location (sentence 8) is irrelevant to mary's location. therefore, the answer is no.	fully	no	True	Sentence 7 states that Mary is in the bedroom, but there is no mention of her being in the office. Sentence 8 mentions Fred's location, but it's not relevant to Mary's location.		"Reasoning: Sentence 7 states that Mary is in the bedroom, but there is no mention of her being in the office. Sentence 8 mentions Fred's location, but it's not relevant to Mary's location.
+
+Answer: no"	0.1042	0.0208	False	False	False	True	0
+2029	10	6	4	"*TASK*
+Here are the context sentences:
+10. Julie is either in the cinema or the park.
+11. Bill is either in the office or the office.
+
+Now, answer the following question:
+Is Mary in the office?"	no	there is no information provided about mary's location in the context sentences. the sentences only mention julie and bill, but not mary. therefore, we cannot conclude that mary is in the office, and the answer is no.	none	not mentioned	False	There is no mention of Mary's location in the given sentences. Sentence 10 mentions Julie's possible locations, but it's not relevant to Mary's location. Sentence 11 mentions Bill's possible locations, but it's not relevant to Mary's location.		"Reasoning: There is no mention of Mary's location in the given sentences. Sentence 10 mentions Julie's possible locations, but it's not relevant to Mary's location. Sentence 11 mentions Bill's possible locations, but it's not relevant to Mary's location.
+
+Answer: not mentioned"	0.0508	0.0169	False	False	False	True	0
+2030	10	6	5	"*TASK*
+Here are the context sentences:
+13. Bill is either in the park or the park.
+14. Julie is either in the bedroom or the school.
+
+Now, answer the following question:
+Is Fred in the cinema?"	no	there is no information provided about fred's location in the context sentences. the sentences only mention bill and julie, but not fred. additionally, the locations mentioned (park, bedroom, and school) do not include the cinema, which is the location in question. therefore, we cannot conclude that fred is in the cinema, and the answer is no.	none	not mentioned	False	There is no mention of Fred's location in the given sentences. Sentence 13 mentions Bill's possible locations, but it's not relevant to Fred's location. Sentence 14 mentions Julie's possible locations, but it's not relevant to Fred's location.		"Reasoning: There is no mention of Fred's location in the given sentences. Sentence 13 mentions Bill's possible locations, but it's not relevant to Fred's location. Sentence 14 mentions Julie's possible locations, but it's not relevant to Fred's location.
+
+Answer: not mentioned"	0.0847	0.0169	False	False	False	True	0

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+976	7	96	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the office.
+2. Daniel grabbed the apple there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from the context sentences, we know that daniel went to the office (sentence 1) and then grabbed an apple there (sentence 2). since daniel grabbed only one apple, we can logically conclude that daniel is carrying one object, which is the apple.	fully	one	True	Daniel grabbed the apple in the office, which means he is holding the apple. There is no mention of him dropping or giving away the apple, so he is still holding it.		"Reasoning: Daniel grabbed the apple in the office, which means he is holding the apple. There is no mention of him dropping or giving away the apple, so he is still holding it.
+
+Answer: one"	0.0698	0.0233	False	False	False	True	0
+977	7	96	2	"*TASK*
+Here are the context sentences:
+4. Sandra moved to the office.
+5. Daniel gave the apple to Sandra.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	from the previous context sentences, we know that daniel was carrying one object, which was the apple (sentence 2). in the new context sentences, we are told that daniel gave the apple to sandra (sentence 5). this implies that daniel no longer has the apple, and therefore, he is not carrying any objects.	partially	none	True	Daniel gave the apple to Sandra, which means he is no longer holding the apple. The context sentences do not mention him grabbing or holding any other objects.		"Reasoning: Daniel gave the apple to Sandra, which means he is no longer holding the apple. The context sentences do not mention him grabbing or holding any other objects.
+
+Answer: none"	0.0789	0.0526	False	False	False	True	0
+978	7	96	3	"*TASK*
+Here are the context sentences:
+7. John went to the garden.
+8. Sandra gave the apple to Daniel.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from the previous context sentences, we know that daniel gave the apple to sandra (sentence 5), so sandra had the apple. now, in the new context sentences, we are told that sandra gave the apple to daniel (sentence 8). this implies that the apple is now back with daniel, and therefore, daniel is carrying one object, which is the apple.	partially	one	True	Sandra gave the apple to Daniel, which means Daniel is holding the apple. There is no mention of him dropping or giving away the apple, so he is still holding it.		"Reasoning: Sandra gave the apple to Daniel, which means Daniel is holding the apple. There is no mention of him dropping or giving away the apple, so he is still holding it.
+
+Answer: one"	0.0952	0.0714	False	False	False	True	0
+979	7	96	4	"*TASK*
+Here are the context sentences:
+10. Daniel passed the apple to Sandra.
+11. Daniel went back to the bedroom.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from the previous context sentences, we know that daniel was carrying one object, which was the apple (sentence 8). then, in the new context sentences, we are told that daniel passed the apple to sandra (sentence 10). this implies that sandra now has the apple, and therefore, sandra is carrying one object, which is the apple.	partially	one	True	Sandra received the apple from Daniel, and there is no mention of her dropping or giving away the apple. Therefore, she is still holding the apple.		"Reasoning: Sandra received the apple from Daniel, and there is no mention of her dropping or giving away the apple. Therefore, she is still holding the apple.
+
+Answer: one"	0.027	0.0811	False	False	False	True	0
+980	7	96	5	"*TASK*
+Here are the context sentences:
+13. Sandra went back to the garden.
+14. Sandra passed the apple to John.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	from the previous context sentences, we know that sandra was carrying one object, which was the apple (sentence 10). then, in the new context sentences, we are told that sandra passed the apple to john (sentence 14). this implies that sandra no longer has the apple, and therefore, sandra is not carrying any objects.	partially	none	True	Sandra passed the apple to John, which means she is no longer holding the apple. The context sentences do not mention her grabbing or holding any other objects.		"Reasoning: Sandra passed the apple to John, which means she is no longer holding the apple. The context sentences do not mention her grabbing or holding any other objects.
+
+Answer: none"	0.0789	0.1053	False	False	False	True	0

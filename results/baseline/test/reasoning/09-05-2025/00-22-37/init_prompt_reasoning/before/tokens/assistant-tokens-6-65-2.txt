@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġtravelling	Ġto	Ġthe	Ġbedroom	,	Ġnot	Ġthe	Ġhallway	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġbeing	Ġin	Ġthe	Ġhallway	.Ċ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠWe	Ġknow	Ġfrom	Ġsentence	Ġ	4	Ġthat	ĠJulie	Ġtravelled	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġimplies	Ġthat	ĠJulie	Ġis	Ġcurrently	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

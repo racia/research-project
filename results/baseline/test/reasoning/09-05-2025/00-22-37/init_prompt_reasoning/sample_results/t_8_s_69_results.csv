@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1341	8	69	1	"*TASK*
+Here are the context sentences:
+1. John moved to the garden.
+2. Mary travelled to the hallway.
+3. John got the milk there.
+4. John moved to the office.
+
+Now, answer the following question:
+What is John carrying?"	milk	"from context sentence 3, ""john got the milk there"", we know that john obtained milk at some location. since john moved to the garden in sentence 1 and then moved to the office in sentence 4, it is likely that ""there"" refers to the garden, where john got the milk. therefore, john is carrying milk."	fully	milk	True	The question asks about what John is carrying. We can infer that John got the milk in the hallway (sentence 3), and then moved to the office (sentence 4). This suggests that John is carrying the milk.		"Reasoning: The question asks about what John is carrying. We can infer that John got the milk in the hallway (sentence 3), and then moved to the office (sentence 4). This suggests that John is carrying the milk.
+
+Answer: milk"	0.0769	0.0192	False	False	False	False	0
+1342	8	69	2	"*TASK*
+Here are the context sentences:
+6. Sandra journeyed to the hallway.
+7. Daniel went back to the bathroom.
+
+Now, answer the following question:
+What is John carrying?"	milk	"the context sentences 6 and 7 do not provide any information about john or what he is carrying. however, the answer ""milk"" suggests that the correct reasoning should be based on previous context sentences. since the previous context sentences (1-4) mentioned john and stated that ""john got the milk there"" (sentence 3), it can be inferred that john is still carrying the milk. the new context sentences (6 and 7) do not provide any information that"	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only mention Sandra and Daniel, but not John. Therefore, we cannot determine what John is carrying.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Sandra and Daniel, but not John. Therefore, we cannot determine what John is carrying.
+
+Answer: not mentioned"	0.0714	0.0238	False	False	False	True	0
+1343	8	69	3	"*TASK*
+Here are the context sentences:
+9. Daniel took the football there.
+10. Daniel dropped the football.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"from context sentence 9, ""daniel took the football there"", we know that daniel acquired the football at some location. however, in sentence 10, ""daniel dropped the football"", it is stated that daniel released the football. since daniel dropped the football, it can be logically inferred that daniel is no longer carrying the football. therefore, the correct answer is that daniel is carrying nothing."	fully	nothing	True	According to sentence 9, Daniel took the football, which means he was carrying it. However, in sentence 10, Daniel dropped the football, which implies that he is no longer carrying it.		"Reasoning: According to sentence 9, Daniel took the football, which means he was carrying it. However, in sentence 10, Daniel dropped the football, which implies that he is no longer carrying it.
+
+Answer: nothing"	0.1915	0.0426	False	False	False	False	0
+1344	8	69	4	"*TASK*
+Here are the context sentences:
+12. Daniel moved to the kitchen.
+13. Mary went to the bedroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"the context sentences 12 and 13 do not provide any information about what daniel is carrying. however, we can look back at the previous context sentences (9 and 10) which mentioned daniel and stated that ""daniel took the football there"" and then ""daniel dropped the football"". since daniel dropped the football, it can be logically inferred that daniel is no longer carrying the football. therefore, the correct answer is that daniel is carrying nothing."	none	not mentioned	False	There is no mention of Daniel carrying anything in the given context sentences. The sentences only mention Daniel's movement to the kitchen and Mary's movement to the bedroom, but not any objects being carried.		"Reasoning: There is no mention of Daniel carrying anything in the given context sentences. The sentences only mention Daniel's movement to the kitchen and Mary's movement to the bedroom, but not any objects being carried.
+
+Answer: not mentioned"	0.0213	0.0426	False	False	False	True	0
+1345	8	69	5	"*TASK*
+Here are the context sentences:
+15. Daniel went to the office.
+16. Mary took the apple there.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	"from context sentence 16, ""mary took the apple there"", we know that mary acquired the apple at some location. there is no subsequent information that suggests mary released or dropped the apple. therefore, it can be logically inferred that mary is still carrying the apple."	fully	apple	True	According to sentence 16, Mary took the apple to the office, which means she is carrying the apple.		"Reasoning: According to sentence 16, Mary took the apple to the office, which means she is carrying the apple.
+
+Answer: apple"	0.0	0.0345	False	False	False	False	0

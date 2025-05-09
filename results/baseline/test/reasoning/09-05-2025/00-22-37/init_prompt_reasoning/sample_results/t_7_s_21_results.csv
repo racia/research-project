@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+601	7	21	1	"*TASK*
+Here are the context sentences:
+1. Mary took the milk there.
+2. Mary went to the office.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"from context sentence 1, ""mary took the milk there"", we can infer that mary is carrying the milk. there is no mention of mary carrying any other object. therefore, the number of objects mary is carrying is one, which is the milk."	fully	one	True	The context sentences only mention Mary taking the milk, but do not mention her carrying any other objects. Additionally, there is no mention of her dropping or leaving the milk, so it can be inferred that she is still carrying it.		"Reasoning: The context sentences only mention Mary taking the milk, but do not mention her carrying any other objects. Additionally, there is no mention of her dropping or leaving the milk, so it can be inferred that she is still carrying it.
+
+Answer: one"	0.0566	0.0189	False	False	False	True	0
+602	7	21	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the hallway.
+5. Sandra journeyed to the kitchen.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"the context sentences 4 and 5 do not provide any new information about mary carrying any objects. we need to refer to the previous context sentences. from context sentence 1, ""mary took the milk there"", we can infer that mary is carrying the milk. there is no mention of mary carrying any other object or dropping the milk. therefore, the number of objects mary is carrying is still one, which is the milk."	none	none	False	The context sentences do not mention Mary carrying any objects. The sentences only mention Mary's travel to the hallway, and Sandra's journey to the kitchen. There is no mention of Mary taking or carrying any objects.		"Reasoning: The context sentences do not mention Mary carrying any objects. The sentences only mention Mary's travel to the hallway, and Sandra's journey to the kitchen. There is no mention of Mary taking or carrying any objects.
+
+Answer: none"	0.0408	0.0204	False	False	False	True	0
+603	7	21	3	"*TASK*
+Here are the context sentences:
+7. Sandra went back to the garden.
+8. Daniel grabbed the apple there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	"from context sentence 8, ""daniel grabbed the apple there"", we can infer that daniel is carrying the apple. there is no mention of daniel carrying any other object. therefore, the number of objects daniel is carrying is one, which is the apple."	fully	one	True	The context sentences only mention Daniel grabbing the apple, but do not mention him dropping or leaving it. Therefore, it can be inferred that he is still carrying the apple.		"Reasoning: The context sentences only mention Daniel grabbing the apple, but do not mention him dropping or leaving it. Therefore, it can be inferred that he is still carrying the apple.
+
+Answer: one"	0.0732	0.0244	False	False	False	True	0
+604	7	21	4	"*TASK*
+Here are the context sentences:
+10. Daniel discarded the apple.
+11. Sandra moved to the bedroom.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	"from context sentence 8, ""daniel grabbed the apple there"", we know that daniel was carrying the apple. however, in context sentence 10, ""daniel discarded the apple"", it is stated that daniel discarded the apple, which means he is no longer carrying it. therefore, the number of objects daniel is carrying is none."	partially	none	True	The context sentences mention Daniel discarding the apple, which implies that he was previously carrying it. However, since he has discarded it, he is no longer carrying it.		"Reasoning: The context sentences mention Daniel discarding the apple, which implies that he was previously carrying it. However, since he has discarded it, he is no longer carrying it.
+
+Answer: none"	0.0488	0.0488	False	False	False	True	0
+605	7	21	5	"*TASK*
+Here are the context sentences:
+13. Daniel travelled to the hallway.
+14. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	"the context sentences 13 and 14 do not provide any new information about daniel carrying any objects. we need to refer to the previous context sentences. from context sentence 10, ""daniel discarded the apple"", we know that daniel is not carrying the apple anymore. there is no mention of daniel picking up any other object. therefore, the number of objects daniel is carrying is still none."	none	none	True	The context sentences do not mention Daniel carrying any objects. The sentences only mention Daniel's travel to the hallway, and Mary's journey to the bedroom. There is no mention of Daniel taking or carrying any objects.		"Reasoning: The context sentences do not mention Daniel carrying any objects. The sentences only mention Daniel's travel to the hallway, and Mary's journey to the bedroom. There is no mention of Daniel taking or carrying any objects.
+
+Answer: none"	0.0612	0.0408	False	False	False	True	0

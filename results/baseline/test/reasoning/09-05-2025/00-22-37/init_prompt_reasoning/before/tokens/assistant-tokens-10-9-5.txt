@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġpark	.	ĠSentence	Ġ	13	Ġstates	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġmention	Ġthe	Ġpark	.	ĠSentence	Ġ	14	Ġis	Ġabout	ĠJulie	Ġgoing	Ġback	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	ĠNo	<|eot_id|>

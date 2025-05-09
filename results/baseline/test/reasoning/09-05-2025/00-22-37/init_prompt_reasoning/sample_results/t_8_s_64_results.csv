@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1316	8	64	1	"*TASK*
+Here are the context sentences:
+1. Daniel took the milk there.
+2. Daniel moved to the bathroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"from context sentence 1, ""daniel took the milk there"", we can infer that daniel is carrying milk. the fact that daniel moved to the bathroom in sentence 2 does not change the fact that he is still carrying the milk. therefore, the answer is milk."	fully	milk	True	The context sentences mention that Daniel took the milk there, which implies that he is carrying something. The sentence also mentions that he moved to the bathroom, which suggests that he is carrying something with him.		"Reasoning: The context sentences mention that Daniel took the milk there, which implies that he is carrying something. The sentence also mentions that he moved to the bathroom, which suggests that he is carrying something with him.
+
+Answer: milk"	0.0638	0.0213	False	False	False	True	0
+1317	8	64	2	"*TASK*
+Here are the context sentences:
+4. Mary got the apple there.
+5. Daniel dropped the milk there.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"from context sentence 5, ""daniel dropped the milk there"", we can infer that daniel is no longer carrying the milk because he dropped it. there is no other information suggesting that daniel picked up or took anything else, so the answer is nothing."	partially	milk	False	The context sentences mention that Daniel dropped the milk there, which implies that he was carrying the milk. There is no mention of him carrying anything else.		"Reasoning: The context sentences mention that Daniel dropped the milk there, which implies that he was carrying the milk. There is no mention of him carrying anything else.
+
+Answer: milk"	0.1081	0.0541	False	False	False	True	0
+1318	8	64	3	"*TASK*
+Here are the context sentences:
+7. Mary left the apple.
+8. Sandra moved to the bedroom.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	"from context sentence 7, ""mary left the apple"", we can infer that mary is no longer carrying the apple because she left it. there is no other information suggesting that mary picked up or took anything else, so the answer is nothing."	partially	not mentioned	False	There is no mention of Mary carrying anything in the given context sentences. The sentences only mention Mary leaving the apple, but not carrying it.		"Reasoning: There is no mention of Mary carrying anything in the given context sentences. The sentences only mention Mary leaving the apple, but not carrying it.
+
+Answer: not mentioned"	0.1944	0.0556	False	False	False	True	0
+1319	8	64	4	"*TASK*
+Here are the context sentences:
+10. John grabbed the football there.
+11. Sandra went back to the garden.
+
+Now, answer the following question:
+What is John carrying?"	football	"from context sentence 10, ""john grabbed the football there"", we can infer that john is carrying the football because he grabbed it. the fact that sandra went back to the garden in sentence 11 does not change the fact that john is carrying the football, so the answer is football."	fully	football	True	The context sentence mentions that John grabbed the football there, which implies that he is carrying the football.		"Reasoning: The context sentence mentions that John grabbed the football there, which implies that he is carrying the football.
+
+Answer: football"	0.037	0.037	False	False	False	True	0
+1320	8	64	5	"*TASK*
+Here are the context sentences:
+13. Sandra went back to the kitchen.
+14. Mary got the apple there.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	"from context sentence 14, ""mary got the apple there"", we can infer that mary is carrying the apple because she got it. the fact that sandra went back to the kitchen in sentence 13 does not change the fact that mary is carrying the apple, so the answer is apple."	partially	apple	True	The context sentence mentions that Mary got the apple there, which implies that she is carrying the apple.		"Reasoning: The context sentence mentions that Mary got the apple there, which implies that she is carrying the apple.
+
+Answer: apple"	0.037	0.1111	False	False	False	True	0

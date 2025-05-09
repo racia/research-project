@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1076	8	16	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the bedroom.
+2. Sandra went back to the office.
+3. John got the apple there.
+4. Daniel moved to the bathroom.
+
+Now, answer the following question:
+What is John carrying?"	apple	"from context sentence 3, ""john got the apple there"", we can infer that john obtained an apple in the location he was in, which is the bedroom (as stated in context sentence 1, ""john journeyed to the bedroom""). therefore, john is carrying the apple."	fully	apple	True	The question asks about what John is carrying, and the context sentences provide information about John's actions. In sentence 1, John journeyed to the bedroom, which implies that he moved to a new location. In sentence 3, John got the apple there, which suggests that he acquired the apple. Since John got the apple, it is likely that he is carrying it.		"Reasoning: The question asks about what John is carrying, and the context sentences provide information about John's actions. In sentence 1, John journeyed to the bedroom, which implies that he moved to a new location. In sentence 3, John got the apple there, which suggests that he acquired the apple. Since John got the apple, it is likely that he is carrying it.
+
+Answer: apple"	0.0241	0.012	False	False	False	True	0
+1077	8	16	2	"*TASK*
+Here are the context sentences:
+6. John discarded the apple.
+7. Mary went to the office.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"from the previous context (sentence 3), we knew that john was carrying an apple. however, in the new context (sentence 6), it is stated that ""john discarded the apple"", which means john got rid of the apple he was carrying. therefore, john is no longer carrying the apple, and the correct answer is that john is carrying nothing."	partially	nothing	True	The question asks about what John is carrying, and the context sentences provide information about John's actions. In the previous context sentences, John got the apple, but now in sentence 6, John discarded the apple. This implies that John is no longer carrying the apple.		"Reasoning: The question asks about what John is carrying, and the context sentences provide information about John's actions. In the previous context sentences, John got the apple, but now in sentence 6, John discarded the apple. This implies that John is no longer carrying the apple.
+
+Answer: nothing"	0.1148	0.0328	False	False	False	True	0
+1078	8	16	3	"*TASK*
+Here are the context sentences:
+9. Mary travelled to the hallway.
+10. John grabbed the apple there.
+
+Now, answer the following question:
+What is John carrying?"	apple	"previously, we knew that john discarded the apple (sentence 6), so john was not carrying the apple. however, in the new context (sentence 10), it is stated that ""john grabbed the apple there"", which means john picked up an apple in the location he was in. since john was not carrying the apple before, and now he grabbed one, john is now carrying the apple."	partially	apple	True	The question asks about what John is carrying, and the context sentences provide information about John's actions. In sentence 10, John grabbed the apple there, which suggests that John acquired the apple. Since John grabbed the apple, it is likely that he is carrying it.		"Reasoning: The question asks about what John is carrying, and the context sentences provide information about John's actions. In sentence 10, John grabbed the apple there, which suggests that John acquired the apple. Since John grabbed the apple, it is likely that he is carrying it.
+
+Answer: apple"	0.0328	0.0492	False	False	False	True	0
+1079	8	16	4	"*TASK*
+Here are the context sentences:
+12. John took the football there.
+13. John journeyed to the office.
+
+Now, answer the following question:
+What is John carrying?"	apple football	"previously, we knew that john was carrying an apple (sentence 10), and there is no information that suggests john dropped or discarded the apple. in the new context (sentence 12), it is stated that ""john took the football there"", which means john picked up a football in the location he was in. since john was already carrying an apple and now he took a football, john is carrying both the apple and the football."	partially	football	False	The question asks about what John is carrying, and the context sentences provide information about John's actions. In sentence 12, John took the football there, which suggests that John acquired the football. Since John took the football, it is likely that he is carrying it.		"Reasoning: The question asks about what John is carrying, and the context sentences provide information about John's actions. In sentence 12, John took the football there, which suggests that John acquired the football. Since John took the football, it is likely that he is carrying it.
+
+Answer: football"	0.1475	0.0656	False	False	False	True	0
+1080	8	16	5	"*TASK*
+Here are the context sentences:
+15. Sandra went to the bathroom.
+16. John discarded the apple there.
+
+Now, answer the following question:
+What is John carrying?"	football	"previously, we knew that john was carrying both an apple and a football (sentence 12 and 13). however, in the new context (sentence 16), it is stated that ""john discarded the apple there"", which means john got rid of the apple he was carrying. since john was carrying both an apple and a football, and he discarded the apple, john is now only carrying the football."	partially	nothing	False	The question asks about what John is carrying, and the context sentences provide information about John's actions. In sentence 16, John discarded the apple there, which implies that John is no longer carrying the apple. Since John discarded the apple, it is likely that he is not carrying anything.		"Reasoning: The question asks about what John is carrying, and the context sentences provide information about John's actions. In sentence 16, John discarded the apple there, which implies that John is no longer carrying the apple. Since John discarded the apple, it is likely that he is not carrying anything.
+
+Answer: nothing"	0.1385	0.0769	False	False	False	True	0

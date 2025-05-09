@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1806	9	62	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the hallway.
+2. Daniel is in the hallway.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	since john travelled to the hallway (context sentence 1), it can be logically inferred that john is now in the hallway. the fact that daniel is also in the hallway (context sentence 2) does not affect john's location. therefore, the answer is yes, john is in the hallway.	fully	yes	True	According to sentence 1, John travelled to the hallway, which implies that John is currently in the hallway. Additionally, sentence 2 states that Daniel is in the hallway, which does not contradict John's presence in the hallway.		"Reasoning: According to sentence 1, John travelled to the hallway, which implies that John is currently in the hallway. Additionally, sentence 2 states that Daniel is in the hallway, which does not contradict John's presence in the hallway.
+
+Answer: yes"	0.0377	0.0189	False	False	False	False	0
+1807	9	62	2	"*TASK*
+Here are the context sentences:
+4. Sandra is in the hallway.
+5. Daniel moved to the bedroom.
+
+Now, answer the following question:
+Is John in the office?"	no	there is no information provided about john's location in the context sentences (4 and 5). the previous context sentences (1 and 2) mentioned john travelling to the hallway, but there is no information about him moving to the office. therefore, it cannot be concluded that john is in the office, and the answer is no.	none	not mentioned	False	There is no information provided about John's location. The context sentences only mention Sandra's and Daniel's locations, but not John's. Therefore, we cannot determine John's location.		"Reasoning: There is no information provided about John's location. The context sentences only mention Sandra's and Daniel's locations, but not John's. Therefore, we cannot determine John's location.
+
+Answer: not mentioned"	0.1136	0.0227	False	False	False	True	0
+1808	9	62	3	"*TASK*
+Here are the context sentences:
+7. Sandra moved to the garden.
+8. Mary journeyed to the hallway.
+
+Now, answer the following question:
+Is Sandra in the garden?"	yes	according to context sentence 7, sandra moved to the garden, which implies that she is now in the garden. there is no information provided that suggests she has left the garden or moved to a different location. therefore, the answer is yes, sandra is in the garden.	fully	yes	True	According to sentence 7, Sandra moved to the garden, which implies that Sandra is currently in the garden.		"Reasoning: According to sentence 7, Sandra moved to the garden, which implies that Sandra is currently in the garden.
+
+Answer: yes"	0.0	0.0345	False	False	False	False	0
+1809	9	62	4	"*TASK*
+Here are the context sentences:
+10. Daniel is no longer in the bedroom.
+11. Mary is not in the hallway.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	according to context sentence 10, daniel is no longer in the bedroom, which explicitly states that daniel is not in the bedroom. this sentence directly answers the question, and therefore, the answer is no, daniel is not in the bedroom.	fully	no	True	According to sentence 10, Daniel is no longer in the bedroom, which implies that Daniel is not currently in the bedroom.		"Reasoning: According to sentence 10, Daniel is no longer in the bedroom, which implies that Daniel is not currently in the bedroom.
+
+Answer: no"	0.0312	0.0312	False	False	False	False	0
+1810	9	62	5	"*TASK*
+Here are the context sentences:
+13. John went to the bedroom.
+14. Daniel journeyed to the bedroom.
+
+Now, answer the following question:
+Is John in the hallway?"	no	according to context sentence 13, john went to the bedroom, which implies that john is no longer in the hallway. there is no information provided that suggests john returned to the hallway or moved to a different location. therefore, the answer is no, john is not in the hallway.	fully	not mentioned	False	There is no information provided about John's location after he went to the bedroom. The context sentences only mention John's movement to the bedroom, but not his current location.		"Reasoning: There is no information provided about John's location after he went to the bedroom. The context sentences only mention John's movement to the bedroom, but not his current location.
+
+Answer: not mentioned"	0.0952	0.0238	False	False	False	True	0

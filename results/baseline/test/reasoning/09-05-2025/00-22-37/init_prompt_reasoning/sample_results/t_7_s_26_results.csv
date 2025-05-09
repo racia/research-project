@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+626	7	26	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the office.
+2. John picked up the football there.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	according to the context sentences, john picked up the football at the office, which implies that john is carrying the football. there is no mention of john carrying any other objects. therefore, the logical conclusion is that john is carrying one object, which is the football.	fully	one	True	Since John picked up the football, it implies that he is holding or carrying the football. There is no mention of John dropping or giving away the football, so it can be inferred that John is still carrying the football.		"Reasoning: Since John picked up the football, it implies that he is holding or carrying the football. There is no mention of John dropping or giving away the football, so it can be inferred that John is still carrying the football.
+
+Answer: one"	0.0588	0.0196	False	False	False	True	0
+627	7	26	2	"*TASK*
+Here are the context sentences:
+4. John discarded the football.
+5. Sandra went to the bathroom.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	in the previous context, we established that john was carrying the football (sentence 2). however, in sentence 4, it is stated that john discarded the football, which means he is no longer carrying it. there is no mention of john picking up or carrying any other objects. therefore, the logical conclusion is that john is not carrying any objects, i.e., he is carrying none.	partially	none	True	Since John discarded the football, it implies that he is no longer holding or carrying the football. There is no mention of John picking up or holding any other object, so it can be inferred that John is not carrying any object.		"Reasoning: Since John discarded the football, it implies that he is no longer holding or carrying the football. There is no mention of John picking up or holding any other object, so it can be inferred that John is not carrying any object.
+
+Answer: none"	0.0566	0.0377	False	False	False	True	0
+628	7	26	3	"*TASK*
+Here are the context sentences:
+7. Sandra picked up the milk there.
+8. Daniel got the apple there.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	the question asks about john, but the context sentences 7 and 8 mention sandra and daniel, respectively, picking up objects (milk and apple). there is no new information about john, and we previously established that john discarded the football (sentence 4) and was not carrying any objects (answer to previous question). therefore, the logical conclusion is that john is still not carrying any objects, i.e., he is carrying none.	none	none	True	There is no mention of John picking up or holding any object in the given context sentences. The sentences only mention Sandra and Daniel's actions, but not John's.		"Reasoning: There is no mention of John picking up or holding any object in the given context sentences. The sentences only mention Sandra and Daniel's actions, but not John's.
+
+Answer: none"	0.075	0.05	False	False	False	True	0
+629	7	26	4	"*TASK*
+Here are the context sentences:
+10. Daniel discarded the apple there.
+11. Daniel picked up the apple there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	the question asks about sandra, and we know that sandra picked up the milk in sentence 7. there is no information about sandra discarding the milk or picking up any other objects. the context sentences 10 and 11 mention daniel discarding and picking up the apple, but this does not affect sandra's objects. therefore, the logical conclusion is that sandra is still carrying one object, which is the milk.	none	none	False	There is no mention of Sandra picking up or holding any object in the given context sentences. The sentences only mention Daniel's actions, but not Sandra's.		"Reasoning: There is no mention of Sandra picking up or holding any object in the given context sentences. The sentences only mention Daniel's actions, but not Sandra's.
+
+Answer: none"	0.0	0.0263	False	False	False	True	0
+630	7	26	5	"*TASK*
+Here are the context sentences:
+13. Sandra left the milk there.
+14. Sandra journeyed to the office.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	the question asks about daniel, and we know that daniel picked up the apple in sentence 11. there is no information about daniel discarding the apple or picking up any other objects. the context sentences 13 and 14 mention sandra leaving the milk and journeying to the office, but this does not affect daniel's objects. therefore, the logical conclusion is that daniel is still carrying one object, which is the apple.	none	none	False	There is no mention of Daniel picking up or holding any object in the given context sentences. The sentences only mention Sandra's actions, but not Daniel's.		"Reasoning: There is no mention of Daniel picking up or holding any object in the given context sentences. The sentences only mention Sandra's actions, but not Daniel's.
+
+Answer: none"	0.0	0.0789	False	False	False	True	0

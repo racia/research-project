@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġbeing	Ġin	Ġthe	Ġhallway	.	ĠSentence	Ġ	13	Ġmentions	ĠJohn	Ġtravelling	Ġto	Ġthe	Ġgarden	,	Ġand	ĠSentence	Ġ	14	Ġmentions	ĠMary	Ġjourney	ing	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġor	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

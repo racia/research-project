@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2406	10	82	1	"*TASK*
+Here are the context sentences:
+1. Fred is in the bedroom.
+2. Bill is in the office.
+
+Now, answer the following question:
+Is Fred in the park?"	no	the context sentences explicitly state fred's location as the bedroom, and there is no mention of fred being in the park. therefore, based on the provided information, it can be logically concluded that fred is not in the park.	fully	no	True	The question asks about Fred's location, and we are given information about Fred's location in the bedroom (sentence 1). There is no mention of Fred being in the park. Additionally, sentence 1 does not provide any information about Fred's movement or action that would take him to the park.		"Reasoning: The question asks about Fred's location, and we are given information about Fred's location in the bedroom (sentence 1). There is no mention of Fred being in the park. Additionally, sentence 1 does not provide any information about Fred's movement or action that would take him to the park.
+
+Answer: no"	0.0448	0.0149	False	False	False	True	0
+2407	10	82	2	"*TASK*
+Here are the context sentences:
+4. Julie is in the park.
+5. Bill is in the cinema.
+
+Now, answer the following question:
+Is Fred in the cinema?"	no	"there is no mention of fred's location in the provided context sentences. the sentences only mention julie's location as the park and bill's location as the cinema. there is no information about fred being in the cinema or any other location. therefore, based on the provided information, it can be logically concluded that the answer to the question ""is fred in the cinema?"" is ""no""."	none	no	True	The question asks about Fred's location, and we are given information about Fred's location in the bedroom (sentence 1). There is no mention of Fred being in the cinema. Additionally, sentence 1 does not provide any information about Fred's movement or action that would take him to the cinema.		"Reasoning: The question asks about Fred's location, and we are given information about Fred's location in the bedroom (sentence 1). There is no mention of Fred being in the cinema. Additionally, sentence 1 does not provide any information about Fred's movement or action that would take him to the cinema.
+
+Answer: no"	0.0149	0.0149	False	False	False	True	0
+2408	10	82	3	"*TASK*
+Here are the context sentences:
+7. Julie moved to the school.
+8. Fred is either in the kitchen or the kitchen.
+
+Now, answer the following question:
+Is Julie in the cinema?"	no	the context sentence 7 states that julie moved to the school, which implies that julie is currently in the school. there is no mention of julie being in the cinema. additionally, sentence 8 only talks about fred's location, which is irrelevant to julie's location. therefore, based on the provided information, it can be logically concluded that julie is not in the cinema.	fully	no	True	The question asks about Julie's location, and we are given information about Julie's movement to the school (sentence 7). There is no mention of Julie being in the cinema. Additionally, sentence 7 does not provide any information about Julie's movement or action that would take her to the cinema.		"Reasoning: The question asks about Julie's location, and we are given information about Julie's movement to the school (sentence 7). There is no mention of Julie being in the cinema. Additionally, sentence 7 does not provide any information about Julie's movement or action that would take her to the cinema.
+
+Answer: no"	0.0746	0.0149	False	False	False	True	0
+2409	10	82	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the cinema.
+11. Mary is either in the park or the school.
+
+Now, answer the following question:
+Is Mary in the cinema?"	no	sentence 10 states that mary moved to the cinema, which implies that mary was in the cinema at some point. however, sentence 11 contradicts this by stating that mary is either in the park or the school, with no mention of the cinema. this implies that mary must have moved from the cinema to either the park or the school. therefore, based on the provided information, it can be logically concluded that mary is no longer in the cinema.	fully	yes	False	The question asks about Mary's location, and we are given information about Mary's movement to the cinema (sentence 10). Additionally, sentence 10 states that Mary is in the cinema, which directly answers the question.		"Reasoning: The question asks about Mary's location, and we are given information about Mary's movement to the cinema (sentence 10). Additionally, sentence 10 states that Mary is in the cinema, which directly answers the question.
+
+Answer: yes"	0.0196	0.0196	False	False	False	True	0
+2410	10	82	5	"*TASK*
+Here are the context sentences:
+13. Mary is either in the office or the park.
+14. Bill went to the office.
+
+Now, answer the following question:
+Is Mary in the office?"	maybe	sentence 13 states that mary is either in the office or the park, which means mary's location is uncertain. sentence 14 states that bill went to the office, but it does not provide any information about mary's location. since mary's location is uncertain, and bill's presence in the office does not provide any conclusive evidence about mary's location, it can be logically concluded that mary might be in the office, but it is also possible that she is in the park. therefore	fully	maybe	True	The question asks about Mary's location, and we are given information about Mary's possible locations being the office or the park (sentence 13). However, sentence 13 does not provide any information about Mary's actual location. Since Mary's location is not specified, we cannot determine whether Mary is in the office or not.		"Reasoning: The question asks about Mary's location, and we are given information about Mary's possible locations being the office or the park (sentence 13). However, sentence 13 does not provide any information about Mary's actual location. Since Mary's location is not specified, we cannot determine whether Mary is in the office or not.
+
+Answer: maybe"	0.0694	0.0139	False	False	False	True	0

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1526	9	6	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the hallway.
+2. John is in the office.
+
+Now, answer the following question:
+Is John in the hallway?"	no	"from context sentence 1, we know that john journeyed to the hallway, which implies that john was not in the hallway initially and moved to the hallway. however, context sentence 2 states that john is in the office, which means john is not in the hallway anymore. therefore, the answer to the question ""is john in the hallway?"" is no."	fully	no	True	According to sentence 1, John journeyed to the hallway, which implies that John was not in the hallway initially. However, sentence 2 states that John is in the office, which is a different location from the hallway. Since John is in the office, it is unlikely that he is in the hallway.		"Reasoning: According to sentence 1, John journeyed to the hallway, which implies that John was not in the hallway initially. However, sentence 2 states that John is in the office, which is a different location from the hallway. Since John is in the office, it is unlikely that he is in the hallway.
+
+Answer: no"	0.1286	0.0143	False	False	False	False	0
+1527	9	6	2	"*TASK*
+Here are the context sentences:
+4. John is no longer in the office.
+5. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+Is John in the office?"	no	"the answer to the question ""is john in the office?"" is no because context sentence 4 explicitly states ""john is no longer in the office"", which directly indicates that john is not in the office. the information about daniel journeying to the kitchen in context sentence 5 is irrelevant to john's location and does not affect the answer."	fully	no	True	Sentence 4 explicitly states that John is no longer in the office, which implies that John is not in the office currently.		"Reasoning: Sentence 4 explicitly states that John is no longer in the office, which implies that John is not in the office currently.
+
+Answer: no"	0.0625	0.0312	False	False	False	False	0
+1528	9	6	3	"*TASK*
+Here are the context sentences:
+7. Sandra is not in the hallway.
+8. Daniel travelled to the bathroom.
+
+Now, answer the following question:
+Is John in the office?"	no	"the answer to the question ""is john in the office?"" is still no because the previous information in context sentence 4 stated ""john is no longer in the office"", which directly indicates that john is not in the office. the new information in context sentences 7 and 8 about sandra and daniel's locations does not provide any new information about john's location, so the answer remains the same."	none	not mentioned	False	There is no information provided about John's current location. The context sentences only mention Sandra and Daniel, and their locations. Since John's location is not mentioned, we cannot determine whether John is in the office or not.		"Reasoning: There is no information provided about John's current location. The context sentences only mention Sandra and Daniel, and their locations. Since John's location is not mentioned, we cannot determine whether John is in the office or not.
+
+Answer: not mentioned"	0.0577	0.0192	False	False	False	True	0
+1529	9	6	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the bedroom.
+11. Sandra is no longer in the garden.
+
+Now, answer the following question:
+Is Sandra in the garden?"	no	"the answer to the question ""is sandra in the garden?"" is no because context sentence 11 explicitly states ""sandra is no longer in the garden"", which directly indicates that sandra is not in the garden. the information about daniel going to the bedroom in context sentence 10 is irrelevant to sandra's location and does not affect the answer."	fully	no	True	Sentence 11 explicitly states that Sandra is no longer in the garden, which implies that Sandra is not in the garden currently.		"Reasoning: Sentence 11 explicitly states that Sandra is no longer in the garden, which implies that Sandra is not in the garden currently.
+
+Answer: no"	0.0938	0.0312	False	False	False	False	0
+1530	9	6	5	"*TASK*
+Here are the context sentences:
+13. Daniel is in the bathroom.
+14. John journeyed to the hallway.
+
+Now, answer the following question:
+Is Daniel in the office?"	no	"the answer to the question ""is daniel in the office?"" is no because context sentence 13 states ""daniel is in the bathroom"", which directly indicates that daniel is in the bathroom, not in the office. the information about john journeying to the hallway in context sentence 14 is irrelevant to daniel's location and does not affect the answer."	fully	no	True	Sentence 14 mentions John journeying to the hallway, but it does not mention Daniel's location. Sentence 13 states that Daniel is in the bathroom, which is a different location from the office.		"Reasoning: Sentence 14 mentions John journeying to the hallway, but it does not mention Daniel's location. Sentence 13 states that Daniel is in the bathroom, which is a different location from the office.
+
+Answer: no"	0.0426	0.0213	False	False	False	True	0

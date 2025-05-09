@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1896	9	80	1	"*TASK*
+Here are the context sentences:
+1. Sandra went to the bathroom.
+2. Sandra is in the office.
+
+Now, answer the following question:
+Is Sandra in the office?"	yes	"the context sentence ""sandra is in the office"" directly states that sandra is in the office. the first sentence ""sandra went to the bathroom"" does not contradict this statement, as it does not imply that she left the office, but rather that she went to the bathroom, which is likely a part of the office. therefore, based on the provided information, it can be concluded that sandra is indeed in the office."	fully	yes	True	The question asks about Sandra's location, and we have two context sentences that provide information about her location. Sentence 1 states that Sandra went to the bathroom, which implies that she was not in the office at that time. However, sentence 2 states that Sandra is in the office, which suggests that her current location is the office.		"Reasoning: The question asks about Sandra's location, and we have two context sentences that provide information about her location. Sentence 1 states that Sandra went to the bathroom, which implies that she was not in the office at that time. However, sentence 2 states that Sandra is in the office, which suggests that her current location is the office.
+
+Answer: yes"	0.12	0.0133	False	False	False	True	0
+1897	9	80	2	"*TASK*
+Here are the context sentences:
+4. Mary is in the hallway.
+5. Mary went to the garden.
+
+Now, answer the following question:
+Is Mary in the garden?"	yes	"the context sentence ""mary went to the garden"" implies that mary moved from her previous location (the hallway) to the garden. there is no information suggesting that she left the garden after arriving, so it can be logically concluded that mary is currently in the garden."	fully	not mentioned	False	The question asks about Mary's current location, and we have two context sentences that provide information about her movements. Sentence 4 states that Mary is in the hallway, which implies that she was in the hallway at some point. Sentence 5 states that Mary went to the garden, which suggests that she moved from the hallway to the garden. However, the question asks about her current location, not her previous location. Since we don't have any information about Mary's current location after she went to the garden, we can't determine her current location.		"Reasoning: The question asks about Mary's current location, and we have two context sentences that provide information about her movements. Sentence 4 states that Mary is in the hallway, which implies that she was in the hallway at some point. Sentence 5 states that Mary went to the garden, which suggests that she moved from the hallway to the garden. However, the question asks about her current location, not her previous location. Since we don't have any information about Mary's current location after she went to the garden, we can't determine her current location.
+
+Answer: not mentioned"	0.0763	0.0085	False	False	False	True	0
+1898	9	80	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the bathroom.
+8. Mary is in the bedroom.
+
+Now, answer the following question:
+Is Mary in the garden?"	no	"the context sentence ""mary is in the bedroom"" directly states mary's location as the bedroom. there is no information suggesting that mary moved to the garden, and the sentence ""daniel travelled to the bathroom"" is about daniel's action, not related to mary's location. therefore, it can be logically concluded that mary is not in the garden."	fully	no	True	The question asks about Mary's current location, and we have two context sentences that provide information about her location. Sentence 8 states that Mary is in the bedroom, which implies that she is currently in the bedroom. There is no information about Mary's location in the garden, so we can't determine if she is in the garden or not.		"Reasoning: The question asks about Mary's current location, and we have two context sentences that provide information about her location. Sentence 8 states that Mary is in the bedroom, which implies that she is currently in the bedroom. There is no information about Mary's location in the garden, so we can't determine if she is in the garden or not.
+
+Answer: no"	0.0263	0.0132	False	False	False	True	0
+1899	9	80	4	"*TASK*
+Here are the context sentences:
+10. John travelled to the office.
+11. John moved to the bedroom.
+
+Now, answer the following question:
+Is John in the garden?"	no	"the context sentences ""john travelled to the office"" and ""john moved to the bedroom"" describe john's movements, but neither of them mentions the garden. the last known location of john is the bedroom, as stated in sentence 11. there is no information suggesting that john moved to the garden after that. therefore, it can be logically concluded that john is not in the garden."	fully	no	True	The question asks about John's current location, and we have two context sentences that provide information about his movements. Sentence 10 states that John travelled to the office, which implies that he was not in the office initially. Sentence 11 states that John moved to the bedroom, which suggests that he is currently in the bedroom. There is no information about John's location in the garden, so we can't determine if he is in the garden or not.		"Reasoning: The question asks about John's current location, and we have two context sentences that provide information about his movements. Sentence 10 states that John travelled to the office, which implies that he was not in the office initially. Sentence 11 states that John moved to the bedroom, which suggests that he is currently in the bedroom. There is no information about John's location in the garden, so we can't determine if he is in the garden or not.
+
+Answer: no"	0.0	0.0102	False	False	False	True	0
+1900	9	80	5	"*TASK*
+Here are the context sentences:
+13. John is no longer in the bedroom.
+14. John went to the bedroom.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	"the context sentence ""john went to the bedroom"" implies that john moved to the bedroom at some point. however, the sentence ""john is no longer in the bedroom"" indicates that john has left the bedroom. there is no information suggesting that john went to the bathroom, and the question asks specifically about the bathroom. therefore, it can be logically concluded that john is not in the bathroom."	fully	not mentioned	False	The question asks about John's current location, and we have two context sentences that provide information about his movements. Sentence 14 states that John went to the bedroom, which implies that he was in the bedroom at some point. Sentence 13 states that John is no longer in the bedroom, which suggests that he is not currently in the bedroom. However, there is no information about John's location in the bathroom, so we can't determine if he is in the bathroom or not.		"Reasoning: The question asks about John's current location, and we have two context sentences that provide information about his movements. Sentence 14 states that John went to the bedroom, which implies that he was in the bedroom at some point. Sentence 13 states that John is no longer in the bedroom, which suggests that he is not currently in the bedroom. However, there is no information about John's location in the bathroom, so we can't determine if he is in the bathroom or not.
+
+Answer: not mentioned"	0.0476	0.0095	False	False	False	True	0

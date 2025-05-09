@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1066	8	14	1	"*TASK*
+Here are the context sentences:
+1. Sandra went back to the garden.
+2. Mary journeyed to the kitchen.
+3. Mary went back to the bedroom.
+4. Daniel went to the hallway.
+5. Daniel journeyed to the garden.
+6. Mary went to the hallway.
+7. John travelled to the garden.
+8. John went to the kitchen.
+9. John travelled to the garden.
+10. Daniel travelled to the kitchen.
+11. Sandra journeyed to the kitchen.
+12. Sandra grabbed the milk there.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	"from context sentence 12, ""sandra grabbed the milk there"", we know that sandra grabbed the milk in the kitchen (since ""there"" refers to the kitchen, which is the location mentioned in the previous sentence 11, ""sandra journeyed to the kitchen""). therefore, sandra is carrying the milk."	fully	milk	True	Sandra grabbed the milk in the kitchen, and there is no mention of her dropping or giving away the milk. Therefore, it is likely that she is still carrying the milk.		"Reasoning: Sandra grabbed the milk in the kitchen, and there is no mention of her dropping or giving away the milk. Therefore, it is likely that she is still carrying the milk.
+
+Answer: milk"	0.0714	0.0238	False	False	False	True	0
+1067	8	14	2	"*TASK*
+Here are the context sentences:
+14. Sandra left the milk there.
+15. Mary travelled to the kitchen.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"from context sentence 12 in the previous part of the conversation, ""sandra grabbed the milk there"", we know that sandra grabbed the milk in the kitchen. then, in context sentence 14, ""sandra left the milk there"", sandra left the milk in the kitchen, which means she is no longer carrying it. therefore, sandra is carrying nothing."	partially	nothing	True	Sandra left the milk in the kitchen, which means she is no longer carrying it. There is no new information about her carrying anything else.		"Reasoning: Sandra left the milk in the kitchen, which means she is no longer carrying it. There is no new information about her carrying anything else.
+
+Answer: nothing"	0.0857	0.0571	False	False	False	True	0
+1068	8	14	3	"*TASK*
+Here are the context sentences:
+17. Sandra travelled to the hallway.
+18. Mary picked up the milk there.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	from the previous context sentences, we know that sandra left the milk in the kitchen (sentence 14). now, in sentence 17, sandra travels to the hallway, but there is no mention of her picking up or carrying anything. additionally, in sentence 18, mary picks up the milk in the hallway, but this action is performed by mary, not sandra. therefore, sandra is still not carrying anything, and the answer is nothing.	none	nothing	True	Sandra travelled to the hallway, which is a different location from where she left the milk. There is no mention of her picking up or carrying anything else. Mary picked up the milk, not Sandra.		"Reasoning: Sandra travelled to the hallway, which is a different location from where she left the milk. There is no mention of her picking up or carrying anything else. Mary picked up the milk, not Sandra.
+
+Answer: nothing"	0.0426	0.0426	False	False	False	True	0
+1069	8	14	4	"*TASK*
+Here are the context sentences:
+20. Mary dropped the milk.
+21. Daniel got the milk there.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	in sentence 18, mary picked up the milk, which means she was carrying it. however, in sentence 20, mary dropped the milk, which means she is no longer carrying it. the fact that daniel got the milk in sentence 21 does not change the fact that mary is not carrying the milk anymore. therefore, the answer is nothing.	partially	nothing	True	Mary dropped the milk, which means she is no longer carrying it. There is no new information about her carrying anything else.		"Reasoning: Mary dropped the milk, which means she is no longer carrying it. There is no new information about her carrying anything else.
+
+Answer: nothing"	0.0625	0.0625	False	False	False	True	0
+1070	8	14	5	"*TASK*
+Here are the context sentences:
+23. John journeyed to the bathroom.
+24. Daniel went back to the bedroom.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	the context sentences 23 and 24 do not provide any information about mary or what she is carrying. the previous information about mary is that she dropped the milk in sentence 20, and there is no new information that suggests she picked up anything else. therefore, the answer remains that mary is carrying nothing.	none	nothing	True	There is no new information about Mary's carrying anything. The previous sentences did not mention Mary carrying anything, and there is no mention of her picking up or dropping anything in these new sentences.		"Reasoning: There is no new information about Mary's carrying anything. The previous sentences did not mention Mary carrying anything, and there is no mention of her picking up or dropping anything in these new sentences.
+
+Answer: nothing"	0.0	0.0444	False	False	False	True	0

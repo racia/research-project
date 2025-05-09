@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠDaniel	Ġgoing	Ġto	Ġthe	Ġoffice	Ġor	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠThe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġthat	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġconnection	Ġbetween	ĠDaniel	Ġand	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

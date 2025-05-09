@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġthat	Ġsuggests	ĠJulie	Ġis	Ġin	Ġthe	Ġschool	.	ĠThe	Ġonly	Ġinformation	Ġabout	ĠJulie	Ġis	Ġthat	Ġshe	Ġis	Ġnot	Ġmentioned	Ġin	Ġsentences	Ġ	7	Ġand	Ġ	8	,	Ġwhich	Ġonly	Ġtalk	Ġabout	ĠFred	Ġand	ĠBill	.ĊĊ	Answer	:	ĠNo	<|eot_id|>

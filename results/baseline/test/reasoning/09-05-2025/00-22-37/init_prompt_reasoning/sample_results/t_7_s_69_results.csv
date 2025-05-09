@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+841	7	69	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the kitchen.
+2. John journeyed to the garden.
+3. Sandra went back to the kitchen.
+4. Sandra moved to the bathroom.
+5. Daniel moved to the hallway.
+6. Daniel travelled to the garden.
+7. John got the milk there.
+8. Mary journeyed to the garden.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	from the context sentences, we know that john journeyed to the garden (sentence 2) and got the milk there (sentence 7). this implies that john is carrying the milk, which is one object. there is no information about john carrying any other objects. therefore, the answer is one.	fully	none	False	The context sentences do not mention John carrying any objects. The sentences only mention John's actions, such as journeying to the garden, but do not mention him holding or carrying anything.		"Reasoning: The context sentences do not mention John carrying any objects. The sentences only mention John's actions, such as journeying to the garden, but do not mention him holding or carrying anything.
+
+Answer: none"	0.0	0.0227	False	False	False	True	0
+842	7	69	2	"*TASK*
+Here are the context sentences:
+10. John put down the milk there.
+11. Daniel got the milk there.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	from the previous context sentences, we knew that john got the milk in the garden (sentence 7). however, in the new context sentences, it is stated that john put down the milk there (sentence 10). this implies that john is no longer carrying the milk. therefore, the answer is none.	partially	none	True	According to sentence 10, John put down the milk, which implies that he was holding the milk before putting it down. Since he put it down, he is no longer carrying it.		"Reasoning: According to sentence 10, John put down the milk, which implies that he was holding the milk before putting it down. Since he put it down, he is no longer carrying it.
+
+Answer: none"	0.0222	0.0444	False	False	False	False	0
+843	7	69	3	"*TASK*
+Here are the context sentences:
+13. Daniel gave the milk to John.
+14. Sandra journeyed to the hallway.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	from the previous context sentences, we knew that daniel got the milk (sentence 11). however, in the new context sentence, it is stated that daniel gave the milk to john (sentence 13). this implies that daniel is no longer carrying the milk, as he has given it to john. therefore, the answer is none.	partially	none	True	According to sentence 13, Daniel gave the milk to John, which implies that Daniel was holding the milk before giving it to John. Since he gave it away, he is no longer carrying it.		"Reasoning: According to sentence 13, Daniel gave the milk to John, which implies that Daniel was holding the milk before giving it to John. Since he gave it away, he is no longer carrying it.
+
+Answer: none"	0.0638	0.0426	False	False	False	False	0
+844	7	69	4	"*TASK*
+Here are the context sentences:
+16. John passed the milk to Mary.
+17. Mary passed the milk to John.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	from the previous context sentences, we knew that daniel gave the milk to john (sentence 13). then, john passed the milk to mary (sentence 16), but mary passed the milk back to john (sentence 17). this implies that the milk is now back in john's possession. therefore, john is carrying one object, which is the milk.	partially	none	False	According to sentence 16, John passed the milk to Mary, which implies that John was holding the milk before passing it to Mary. Since he passed it away, he is no longer carrying it. Sentence 17 shows that Mary then passed the milk back to John, but this does not change the fact that John was not carrying the milk initially.		"Reasoning: According to sentence 16, John passed the milk to Mary, which implies that John was holding the milk before passing it to Mary. Since he passed it away, he is no longer carrying it. Sentence 17 shows that Mary then passed the milk back to John, but this does not change the fact that John was not carrying the milk initially.
+
+Answer: none"	0.1429	0.0649	False	False	False	False	0
+845	7	69	5	"*TASK*
+Here are the context sentences:
+19. Daniel travelled to the office.
+20. John moved to the kitchen.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	the question asks about mary, but the context sentences 19 and 20 only provide information about daniel and john, respectively. there is no new information about mary or any objects she might be carrying. from the previous context, we didn't have any information about mary carrying any objects either. therefore, the answer is none.	none	none	True	There is no mention of Mary carrying any objects in the given context sentences.		"Reasoning: There is no mention of Mary carrying any objects in the given context sentences.
+
+Answer: none"	0.1818	0.0909	False	False	False	True	0

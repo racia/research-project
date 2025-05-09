@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJohn	's	Ġcarrying	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	's	Ġmovement	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġnot	Ġany	Ġobject	Ġbeing	Ġcarried	.	ĠAdditionally	,	ĠJohn	Ġgot	Ġthe	Ġapple	Ġin	Ġthe	Ġoffice	,	Ġbut	Ġthis	Ġdoesn	't	Ġimply	Ġhe	Ġis	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

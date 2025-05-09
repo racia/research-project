@@ -1,0 +1,60 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+831	7	67	1	"*TASK*
+Here are the context sentences:
+1. John went back to the hallway.
+2. Mary travelled to the hallway.
+3. Sandra went back to the office.
+4. Sandra went back to the bedroom.
+5. Mary moved to the kitchen.
+6. Mary went to the bedroom.
+7. Daniel journeyed to the kitchen.
+8. Sandra moved to the bathroom.
+9. Sandra went back to the bedroom.
+10. Daniel travelled to the hallway.
+11. John went to the garden.
+12. Daniel travelled to the kitchen.
+13. Mary went back to the bathroom.
+14. Daniel went to the bathroom.
+15. Daniel picked up the milk there.
+16. Daniel gave the milk to Mary.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	from the context sentences, we can see that daniel picked up the milk in sentence 15, but then gave it to mary in sentence 16. therefore, daniel is not carrying any objects, including the milk, as he has already given it away.	fully	one	False	Daniel picked up the milk in the bathroom, and then gave it to Mary. This implies that Daniel was carrying the milk at some point. However, after giving it to Mary, Daniel is no longer carrying the milk.		"Reasoning: Daniel picked up the milk in the bathroom, and then gave it to Mary. This implies that Daniel was carrying the milk at some point. However, after giving it to Mary, Daniel is no longer carrying the milk.
+
+Answer: one"	0.1765	0.0392	False	False	False	False	0
+832	7	67	2	"*TASK*
+Here are the context sentences:
+18. Mary handed the milk to Daniel.
+19. John got the apple there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	in sentence 16 of the previous context, daniel gave the milk to mary. then, in sentence 18, mary handed the milk to daniel, which means mary no longer has the milk. there is no other object mentioned that mary is carrying, so mary is not carrying any objects.	partially	none	True	Mary handed the milk to Daniel, which means she was carrying the milk. However, after handing it to Daniel, Mary is no longer carrying the milk.		"Reasoning: Mary handed the milk to Daniel, which means she was carrying the milk. However, after handing it to Daniel, Mary is no longer carrying the milk.
+
+Answer: none"	0.1316	0.0526	False	False	False	False	0
+833	7	67	3	"*TASK*
+Here are the context sentences:
+21. Daniel left the milk.
+22. John discarded the apple.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	in sentence 18, mary handed the milk to daniel, so daniel had the milk. then, in sentence 21, daniel left the milk, which means daniel is no longer carrying the milk. there is no other object mentioned that daniel is carrying, so daniel is not carrying any objects.	partially	none	True	Daniel left the milk, which implies that he was carrying the milk. However, after leaving it, Daniel is no longer carrying the milk.		"Reasoning: Daniel left the milk, which implies that he was carrying the milk. However, after leaving it, Daniel is no longer carrying the milk.
+
+Answer: none"	0.2857	0.1143	False	False	False	False	0
+834	7	67	4	"*TASK*
+Here are the context sentences:
+24. Mary picked up the milk there.
+25. John went to the kitchen.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	there is no new information about daniel in the provided context lines (24 and 25). the last information about daniel was in sentence 21, where daniel left the milk. since then, there is no mention of daniel picking up or carrying any object. therefore, daniel is still not carrying any objects.	none	none	True	There is no mention of Daniel picking up or carrying any object in the given context sentences. The sentences only mention Mary picking up the milk and John going to the kitchen.		"Reasoning: There is no mention of Daniel picking up or carrying any object in the given context sentences. The sentences only mention Mary picking up the milk and John going to the kitchen.
+
+Answer: none"	0.122	0.0976	False	False	False	True	0
+835	7	67	5	"*TASK*
+Here are the context sentences:
+27. Daniel went back to the garden.
+28. Daniel moved to the bedroom.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	in sentence 24, mary picked up the milk. there is no subsequent information about mary dropping or giving away the milk. therefore, mary is still carrying the milk, which is one object.	none	none	False	There is no new information about Mary's actions or objects in the given context sentences. The previous information only mentioned Mary picking up the milk and handing it to Daniel, and then leaving it.		"Reasoning: There is no new information about Mary's actions or objects in the given context sentences. The previous information only mentioned Mary picking up the milk and handing it to Daniel, and then leaving it.
+
+Answer: none"	0.0889	0.0667	False	False	False	True	0

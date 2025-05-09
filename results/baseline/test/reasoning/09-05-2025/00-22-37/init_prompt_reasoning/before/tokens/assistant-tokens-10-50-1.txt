@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJulie	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠSentence	Ġ	1	Ġstates	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġschool	Ġor	Ġthe	Ġbedroom	,	Ġbut	Ġnot	Ġin	Ġthe	Ġoffice	.	ĠSentence	Ġ	2	Ġis	Ġabout	ĠBill	's	Ġjourney	Ġto	Ġthe	Ġcinema	,	Ġwhich	Ġdoes	Ġnot	Ġprovide	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

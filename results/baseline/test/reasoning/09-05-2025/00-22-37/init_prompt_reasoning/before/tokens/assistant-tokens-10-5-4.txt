@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠInitially	,	ĠMary	Ġis	Ġin	Ġthe	Ġpark	Ġ(	sentence	Ġ	10	).	ĠLater	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	11	).	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

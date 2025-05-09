@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	7	Ġtalks	Ġabout	ĠJohn	Ġmoving	Ġto	Ġthe	Ġhallway	,	Ġand	ĠSentence	Ġ	8	Ġtalks	Ġabout	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġgarden	.	ĠHowever	,	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	's	Ġlocation	,	Ġincluding	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

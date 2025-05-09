@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠIn	Ġfact	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġis	Ġa	Ġdifferent	Ġlocation	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġis	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

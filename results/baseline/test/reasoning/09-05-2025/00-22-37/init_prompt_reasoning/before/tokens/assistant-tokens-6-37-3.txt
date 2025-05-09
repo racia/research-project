@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġif	ĠJohn	Ġis	Ġin	Ġthe	Ġoffice	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġaction	Ġof	Ġgoing	Ġback	Ġto	Ġthe	Ġoffice	Ġand	Ġputting	Ġdown	Ġthe	Ġapple	.	ĠSince	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠSentence	Ġ	7	Ġmentions	ĠDaniel	Ġgoing	Ġto	Ġthe	Ġbathroom	,	Ġand	ĠSentence	Ġ	8	Ġmentions	ĠJohn	Ġjourney	ing	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

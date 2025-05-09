@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	.	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠMary	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	.	ĠSentence	Ġ	7	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	,	Ġbut	Ġit	Ġonly	Ġmentions	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

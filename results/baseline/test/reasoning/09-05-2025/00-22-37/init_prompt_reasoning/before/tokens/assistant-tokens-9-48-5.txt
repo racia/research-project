@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġoffice	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	's	Ġaction	Ġof	Ġgoing	Ġto	Ġthe	Ġbedroom	Ġand	ĠSandra	's	Ġaction	Ġof	Ġjourney	ing	Ġto	Ġthe	Ġkitchen	.	ĠThere	Ġis	Ġno	Ġdirect	Ġmention	Ġof	ĠJohn	's	Ġpresence	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

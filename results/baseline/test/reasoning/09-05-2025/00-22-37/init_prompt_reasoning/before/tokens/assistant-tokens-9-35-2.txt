@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġlocation	.	ĠSentence	Ġ	4	Ġonly	Ġmentions	ĠDaniel	's	Ġabsence	Ġfrom	Ġthe	Ġbedroom	,	Ġand	Ġsentence	Ġ	5	Ġonly	Ġmentions	ĠJohn	's	Ġabsence	Ġfrom	Ġthe	Ġbathroom	.	ĠSince	ĠMary	Ġis	Ġnot	Ġmentioned	Ġin	Ġthese	Ġsentences	,	Ġwe	Ġcannot	Ġdetermine	Ġher	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1616	9	24	1	"*TASK*
+Here are the context sentences:
+1. John is in the kitchen.
+2. John journeyed to the hallway.
+
+Now, answer the following question:
+Is John in the kitchen?"	no	"since john was initially in the kitchen (context sentence 1), but then he ""journeyed to the hallway"" (context sentence 2), it implies that he moved from the kitchen to the hallway. therefore, john is no longer in the kitchen."	fully	no	True	John journeyed to the hallway, which means he moved from the kitchen to the hallway. This implies that John is no longer in the kitchen.		"Reasoning: John journeyed to the hallway, which means he moved from the kitchen to the hallway. This implies that John is no longer in the kitchen.
+
+Answer: no"	0.1667	0.0278	False	False	False	False	0
+1617	9	24	2	"*TASK*
+Here are the context sentences:
+4. John moved to the office.
+5. Sandra is not in the kitchen.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	no	"the context sentence 5 explicitly states ""sandra is not in the kitchen"", which directly answers the question and confirms that sandra is not in the kitchen."	fully	no	True	There is no information that suggests Sandra moved to the kitchen or is currently in the kitchen. Sentence 5 only states that Sandra is not in the kitchen, but it doesn't provide information about her current location.		"Reasoning: There is no information that suggests Sandra moved to the kitchen or is currently in the kitchen. Sentence 5 only states that Sandra is not in the kitchen, but it doesn't provide information about her current location.
+
+Answer: no"	0.0	0.0204	False	False	False	True	0
+1618	9	24	3	"*TASK*
+Here are the context sentences:
+7. Daniel is no longer in the hallway.
+8. John is in the bathroom.
+
+Now, answer the following question:
+Is John in the bathroom?"	yes	"the context sentence 8 explicitly states ""john is in the bathroom"", which directly answers the question and confirms that john is indeed in the bathroom."	fully	yes	True	Sentence 8 explicitly states that John is in the bathroom, and there is no information that suggests he has moved from the bathroom.		"Reasoning: Sentence 8 explicitly states that John is in the bathroom, and there is no information that suggests he has moved from the bathroom.
+
+Answer: yes"	0.0	0.0303	False	False	False	True	0
+1619	9	24	4	"*TASK*
+Here are the context sentences:
+10. John went back to the garden.
+11. Mary is in the kitchen.
+
+Now, answer the following question:
+Is John in the garden?"	yes	"the context sentence 10 states ""john went back to the garden"", which implies that john moved to the garden and is currently there. therefore, the answer to the question ""is john in the garden?"" is indeed ""yes""."	fully	yes	True	Sentence 10 states that John went back to the garden, which implies that John is currently in the garden.		"Reasoning: Sentence 10 states that John went back to the garden, which implies that John is currently in the garden.
+
+Answer: yes"	0.069	0.0345	False	False	False	False	0
+1620	9	24	5	"*TASK*
+Here are the context sentences:
+13. Daniel went to the bedroom.
+14. Sandra is in the garden.
+
+Now, answer the following question:
+Is John in the garden?"	yes	"there is no information about john's location in the provided context sentences (13 and 14). however, the answer is ""yes"", which implies that the information about john's location is present in the previous parts of the conversation. since the previous context sentence 10 states ""john went back to the garden"", it can be inferred that john is indeed in the garden."	none	no	False	There is no information that suggests John moved to the garden or is currently in the garden. Sentence 14 only states that Sandra is in the garden, but it doesn't provide information about John's location.		"Reasoning: There is no information that suggests John moved to the garden or is currently in the garden. Sentence 14 only states that Sandra is in the garden, but it doesn't provide information about John's location.
+
+Answer: no"	0.0	0.0208	False	False	False	True	0

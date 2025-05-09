@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġschool	.	ĠThe	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġpossible	Ġlocations	Ġbeing	Ġthe	Ġoffice	Ġor	Ġthe	Ġbedroom	,	Ġand	Ġthe	Ġoffice	Ġor	Ġthe	Ġcinema	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġschool	.Ċ	Answer	:	Ġno	<|eot_id|>

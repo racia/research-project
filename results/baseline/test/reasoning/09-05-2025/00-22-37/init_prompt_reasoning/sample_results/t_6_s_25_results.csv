@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+121	6	25	1	"*TASK*
+Here are the context sentences:
+1. John went to the kitchen.
+2. Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+Is John in the office?"	no	the context sentences explicitly state john's location as the kitchen (sentence 1) and sandra's location as the bedroom (sentence 2), but there is no mention of john being in the office. therefore, based on the provided information, it can be logically concluded that john is not in the office.	fully	no	True	The context sentences do not mention John going to the office. John went to the kitchen, and Sandra journeyed to the bedroom. There is no information about John's whereabouts after going to the kitchen.		"Reasoning: The context sentences do not mention John going to the office. John went to the kitchen, and Sandra journeyed to the bedroom. There is no information about John's whereabouts after going to the kitchen.
+
+Answer: no"	0.0638	0.0213	False	False	False	True	0
+122	6	25	2	"*TASK*
+Here are the context sentences:
+4. Sandra journeyed to the kitchen.
+5. Daniel went back to the office.
+
+Now, answer the following question:
+Is John in the kitchen?"	yes	"the context sentences do not mention john's location in sentences 4 and 5. however, we can refer to the previous parts of the conversation history. in sentence 1, it was stated that ""john went to the kitchen."" there is no information provided that suggests john left the kitchen, so it can be logically concluded that john is still in the kitchen."	none	no	False	The context sentences do not mention John going to the kitchen. Sandra journeyed to the kitchen, and Daniel went back to the office. There is no information about John's whereabouts.		"Reasoning: The context sentences do not mention John going to the kitchen. Sandra journeyed to the kitchen, and Daniel went back to the office. There is no information about John's whereabouts.
+
+Answer: no"	0.0465	0.0233	False	False	False	True	0
+123	6	25	3	"*TASK*
+Here are the context sentences:
+7. John picked up the football there.
+8. John discarded the football.
+
+Now, answer the following question:
+Is Daniel in the office?"	yes	"the context sentences 7 and 8 only provide information about john's actions with the football, but they do not mention daniel's location. however, we can refer to the previous parts of the conversation history. in sentence 5, it was stated that ""daniel went back to the office."" there is no information provided that suggests daniel left the office, so it can be logically concluded that daniel is still in the office."	none	no	False	The context sentences do not mention Daniel's location. The sentences only mention John's actions with the football, but do not provide information about Daniel's whereabouts.		"Reasoning: The context sentences do not mention Daniel's location. The sentences only mention John's actions with the football, but do not provide information about Daniel's whereabouts.
+
+Answer: no"	0.1053	0.0263	False	False	False	True	0
+124	6	25	4	"*TASK*
+Here are the context sentences:
+10. Sandra got the football there.
+11. Sandra dropped the football.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	"the context sentences 10 and 11 only provide information about sandra's actions with the football, but they do not mention daniel's location. however, we can refer to the previous parts of the conversation history. in sentence 5, it was stated that ""daniel went back to the office."" and in sentence 2, it was stated that ""sandra journeyed to the bedroom."" but there is no information provided that suggests daniel went to the bedroom. therefore"	none	no	True	There is no information about Daniel's location in the given context sentences. The sentences only mention Sandra's actions with the football, but do not provide information about Daniel's whereabouts.		"Reasoning: There is no information about Daniel's location in the given context sentences. The sentences only mention Sandra's actions with the football, but do not provide information about Daniel's whereabouts.
+
+Answer: no"	0.0238	0.0238	False	False	False	True	0
+125	6	25	5	"*TASK*
+Here are the context sentences:
+13. Mary grabbed the apple there.
+14. John got the football there.
+15. John travelled to the hallway.
+16. Sandra went back to the garden.
+
+Now, answer the following question:
+Is Sandra in the garden?"	yes	"sentence 16 explicitly states that ""sandra went back to the garden"", which directly indicates that sandra is in the garden. this information is provided directly in the context, so no inference or assumption is needed to arrive at the answer."	fully	yes	True	The context sentences mention Sandra going back to the garden, which implies that she was previously in the garden.		"Reasoning: The context sentences mention Sandra going back to the garden, which implies that she was previously in the garden.
+
+Answer: yes"	0.0357	0.0357	False	False	False	True	0

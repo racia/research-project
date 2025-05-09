@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġat	Ġall	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġmoving	Ġto	Ġthe	Ġoffice	Ġand	ĠDaniel	Ġmoving	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġor	Ġany	Ġobjects	Ġhe	Ġmight	Ġbe	Ġcarrying	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

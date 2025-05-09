@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	1	,	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġsentence	Ġ	2	Ġstates	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	,	Ġas	Ġhe	Ġhas	Ġgone	Ġthere	.Ċ	Answer	:	Ġyes	<|eot_id|>
