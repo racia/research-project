@@ -1,0 +1,70 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1206	3	42	1	"*TASK*
+Here are the context sentences:
+1. John moved to the bathroom.
+2. Sandra took the apple there.
+3. Daniel journeyed to the hallway.
+4. John journeyed to the hallway.
+5. John went to the kitchen.
+6. Sandra moved to the bedroom.
+7. Sandra went back to the garden.
+8. Sandra grabbed the football.
+9. John travelled to the office.
+10. John grabbed the milk.
+11. Daniel went back to the office.
+12. Sandra dropped the apple.
+
+Now, answer the following question:
+Where was the apple before the garden?"	bedroom	from sentence 2, we know that sandra took the apple to the bathroom. then, in sentence 6, sandra moved to the bedroom. since there is no mention of the apple being dropped or given to someone else, we can infer that sandra still had the apple with her when she moved to the bedroom. this is further supported by the fact that sentence 12 mentions sandra dropping the apple, implying that she had it with her until then. therefore, the apple was in the	fully	hallway	False	The apple was dropped by Sandra, and before that, it was grabbed by Sandra in the hallway. Since Sandra went back to the garden after dropping the apple, it is likely that the apple was dropped in the hallway, not the garden.		"Reasoning: The apple was dropped by Sandra, and before that, it was grabbed by Sandra in the hallway. Since Sandra went back to the garden after dropping the apple, it is likely that the apple was dropped in the hallway, not the garden.
+
+Answer: hallway"	0.0545	0.0545	False	False	False	False	0
+1207	3	42	2	"*TASK*
+Here are the context sentences:
+14. Mary moved to the garden.
+15. Mary got the apple.
+16. Mary moved to the office.
+17. Daniel went back to the bedroom.
+18. Mary went back to the kitchen.
+19. Mary went to the hallway.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	kitchen	from sentence 15, we know that mary got the apple, and at that time, she was in the garden (sentence 14). then, in sentence 16, mary moved to the office with the apple. after that, in sentence 18, mary went back to the kitchen. since there is no mention of mary dropping or giving the apple to someone else, we can infer that mary still had the apple with her when she moved back to the kitchen. therefore, the	fully	kitchen	True	The apple was got by Mary in the garden, and then Mary moved to the office, and later went back to the kitchen. Since Mary went to the hallway after being in the kitchen, it is likely that the apple was with Mary in the kitchen before she went to the hallway.		"Reasoning: The apple was got by Mary in the garden, and then Mary moved to the office, and later went back to the kitchen. Since Mary went to the hallway after being in the kitchen, it is likely that the apple was with Mary in the kitchen before she went to the hallway.
+
+Answer: kitchen"	0.1719	0.0469	False	False	False	False	0
+1208	3	42	3	"*TASK*
+Here are the context sentences:
+21. Mary went back to the garden.
+22. Mary discarded the apple.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	kitchen	from the previous conversation, we know that mary had the apple with her when she moved back to the kitchen (sentence 18). there is no mention of mary dropping or giving the apple to someone else before sentence 21. in sentence 21, mary goes back to the garden, and in sentence 22, she discards the apple. since mary had the apple with her when she was in the kitchen, and she didn't drop it before going to the garden, we can	partially	garden	False	The apple was discarded by Mary in the garden, and before that, it was with Mary in the garden. Since the question asks about the apple before the hallway, and Mary didn't go to the hallway with the apple, it is likely that the apple was in the garden before the hallway.		"Reasoning: The apple was discarded by Mary in the garden, and before that, it was with Mary in the garden. Since the question asks about the apple before the hallway, and Mary didn't go to the hallway with the apple, it is likely that the apple was in the garden before the hallway.
+
+Answer: garden"	0.1667	0.0455	False	False	False	False	0
+1209	3	42	4	"*TASK*
+Here are the context sentences:
+24. Mary went to the bedroom.
+25. Sandra got the apple.
+26. John moved to the kitchen.
+27. Daniel went to the hallway.
+28. Mary journeyed to the bathroom.
+29. John moved to the garden.
+30. John travelled to the kitchen.
+31. John moved to the office.
+32. Mary journeyed to the garden.
+33. Daniel went to the kitchen.
+34. John left the milk there.
+35. Sandra discarded the apple.
+
+Now, answer the following question:
+Where was the milk before the office?"	kitchen	from sentence 34, we know that john left the milk in the kitchen. then, in sentence 31, john moved to the office. since john left the milk in the kitchen before moving to the office, we can conclude that the milk was in the kitchen before the office.	fully	kitchen	True	The milk was left by John in the kitchen, and before that, John moved to the kitchen from the garden. Since John travelled to the office after leaving the milk in the kitchen, it is likely that the milk was in the kitchen before the office.		"Reasoning: The milk was left by John in the kitchen, and before that, John moved to the kitchen from the garden. Since John travelled to the office after leaving the milk in the kitchen, it is likely that the milk was in the kitchen before the office.
+
+Answer: kitchen"	0.0862	0.0517	False	False	False	False	0
+1210	3	42	5	"*TASK*
+Here are the context sentences:
+37. Sandra moved to the hallway.
+38. Mary went to the bedroom.
+
+Now, answer the following question:
+Where was the milk before the kitchen?"	garden	from sentence 29, we know that john moved to the garden. then, in sentence 30, john travelled to the kitchen. in sentence 34, john left the milk there (in the kitchen). since john left the milk in the kitchen, and he came from the garden, we can conclude that the milk was in the garden before the kitchen.	none	not mentioned	False	There is no information about the milk's location before the kitchen. The context sentences only mention the milk being left by John in the kitchen, but not its previous location.		"Reasoning: There is no information about the milk's location before the kitchen. The context sentences only mention the milk being left by John in the kitchen, but not its previous location.
+
+Answer: not mentioned"	0.0476	0.0714	False	False	False	True	0

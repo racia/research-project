@@ -1,0 +1,62 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1896	5	60	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the hallway.
+2. Mary travelled to the bathroom.
+3. Jeff journeyed to the office.
+4. Bill moved to the bathroom.
+5. Mary journeyed to the hallway.
+6. Mary went back to the garden.
+7. Bill travelled to the garden.
+8. Bill journeyed to the hallway.
+9. Bill went back to the kitchen.
+10. Jeff got the milk there.
+11. Mary journeyed to the bedroom.
+12. Jeff travelled to the hallway.
+13. Bill moved to the hallway.
+14. Jeff journeyed to the bedroom.
+15. Bill journeyed to the bathroom.
+16. Jeff dropped the milk.
+17. Mary got the milk there.
+18. Mary passed the milk to Jeff.
+
+Now, answer the following question:
+What did Mary give to Jeff?"	milk	from the context sentences, we can track mary's and jeff's movements and actions. in sentence 17, it is stated that mary got the milk there (in the bedroom). then, in sentence 18, it is mentioned that mary passed the milk to jeff. therefore, it can be logically concluded that mary gave the milk to jeff.	fully	milk	True	Mary passed the milk to Jeff in sentence 18, indicating that she gave the milk to him.		"Reasoning: Mary passed the milk to Jeff in sentence 18, indicating that she gave the milk to him.
+
+Answer: milk"	0.0	0.037	False	False	False	False	0
+1897	5	60	2	"*TASK*
+Here are the context sentences:
+20. Jeff dropped the milk.
+21. Jeff took the milk there.
+
+Now, answer the following question:
+Who gave the milk?"	mary	from the context sentences, we can see that jeff dropped the milk (sentence 20) and then took the milk (sentence 21). however, the question asks who gave the milk. to find the answer, we need to look at the previous context sentences. in sentence 18, it is stated that mary passed the milk to jeff. therefore, it can be logically concluded that mary gave the milk.	none	Not mentioned	False	There is no sentence that explicitly states who gave the milk. However, sentence 18 mentions Mary passing the milk to Jeff, but sentence 20 shows that Jeff dropped the milk, which implies that Jeff had the milk before dropping it. Sentence 21 mentions Jeff taking the milk, but it doesn't specify where he got it from.		"Reasoning: There is no sentence that explicitly states who gave the milk. However, sentence 18 mentions Mary passing the milk to Jeff, but sentence 20 shows that Jeff dropped the milk, which implies that Jeff had the milk before dropping it. Sentence 21 mentions Jeff taking the milk, but it doesn't specify where he got it from.
+
+Answer: Not mentioned"	0.0133	0.0133	False	False	False	True	0
+1898	5	60	3	"*TASK*
+Here are the context sentences:
+23. Jeff passed the milk to Mary.
+24. Mary handed the milk to Jeff.
+
+Now, answer the following question:
+What did Mary give to Jeff?"	milk	from the context sentences, we can see that there are two transactions involving mary and jeff: jeff passed the milk to mary (sentence 23), and then mary handed the milk to jeff (sentence 24). the question asks what mary gave to jeff. according to sentence 24, mary handed the milk to jeff, so it can be logically concluded that mary gave the milk to jeff.	fully	milk	True	Sentence 24 states that Mary handed the milk to Jeff, indicating that she gave the milk to him.		"Reasoning: Sentence 24 states that Mary handed the milk to Jeff, indicating that she gave the milk to him.
+
+Answer: milk"	0.0	0.0357	False	False	False	False	0
+1899	5	60	4	"*TASK*
+Here are the context sentences:
+26. Bill went back to the bedroom.
+27. Mary moved to the office.
+
+Now, answer the following question:
+What did Mary give to Jeff?"	milk	the provided context sentences (26 and 27) do not mention mary giving anything to jeff. however, we need to look at the previous context sentences to find the correct answer. in sentence 18, it is stated that mary passed the milk to jeff. therefore, it can be logically concluded that mary gave the milk to jeff.	none	Not mentioned	False	There is no sentence that mentions Mary giving anything to Jeff in the given context. The sentences only provide information about Bill's and Mary's movements, but do not mention any transactions or gifts between Mary and Jeff.		"Reasoning: There is no sentence that mentions Mary giving anything to Jeff in the given context. The sentences only provide information about Bill's and Mary's movements, but do not mention any transactions or gifts between Mary and Jeff.
+
+Answer: Not mentioned"	0.0	0.02	False	False	False	True	0
+1900	5	60	5	"*TASK*
+Here are the context sentences:
+29. Jeff gave the milk to Bill.
+30. Bill passed the milk to Jeff.
+
+Now, answer the following question:
+Who gave the milk to Jeff?"	bill	from the context sentences, we can see that there are two transactions involving jeff and bill: jeff gave the milk to bill (sentence 29), and then bill passed the milk to jeff (sentence 30). the question asks who gave the milk to jeff. according to sentence 30, bill passed the milk to jeff, so it can be logically concluded that bill gave the milk to jeff.	fully	Jeff	False	Sentence 29 states that Jeff gave the milk to Bill, but sentence 30 shows that Bill passed the milk back to Jeff. This implies that Bill received the milk from Jeff initially.		"Reasoning: Sentence 29 states that Jeff gave the milk to Bill, but sentence 30 shows that Bill passed the milk back to Jeff. This implies that Bill received the milk from Jeff initially.
+
+Answer: Jeff"	0.0	0.0227	False	False	False	False	0

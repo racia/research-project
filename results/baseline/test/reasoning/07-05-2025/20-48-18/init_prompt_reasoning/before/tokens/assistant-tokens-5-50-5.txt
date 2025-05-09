@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentence	Ġ	14	,	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġanyone	Ġelse	Ġgiving	Ġthe	Ġapple	Ġto	ĠBill	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

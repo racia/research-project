@@ -1,0 +1,57 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+97	.	ĠJohn	Ġgot	Ġthe	Ġmilk	.Ċ
+98	.	ĠMary	Ġleft	Ġthe	Ġfootball	.Ċ
+99	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+100	.	ĠSandra	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+101	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+102	.	ĠSandra	Ġdropped	Ġthe	Ġapple	Ġthere	.Ċ
+103	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+104	.	ĠMary	Ġgot	Ġthe	Ġfootball	.Ċ
+105	.	ĠJohn	Ġdropped	Ġthe	Ġmilk	.Ċ
+106	.	ĠSandra	Ġgot	Ġthe	Ġapple	.Ċ
+107	.	ĠSandra	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+108	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+109	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+110	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+111	.	ĠMary	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+112	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+113	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+114	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+115	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+116	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+117	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+118	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+119	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+120	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+121	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+122	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+123	.	ĠMary	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+124	.	ĠMary	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+125	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+126	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+127	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġfootball	.Ċ
+128	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+129	.	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+130	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+131	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+132	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+133	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+134	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+135	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+136	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+137	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+138	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+139	.	ĠMary	Ġtook	Ġthe	Ġfootball	.Ċ
+140	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+141	.	ĠSandra	Ġleft	Ġthe	Ġmilk	.Ċ
+142	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġmilk	.Ċ
+143	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+144	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+145	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+146	.	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+147	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+148	.	ĠJohn	Ġleft	Ġthe	Ġfootball	Ġthere	.Ċ
+149	.	ĠJohn	Ġtook	Ġthe	Ġfootball	.Ċ
+150	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġkitchen	?Ċ

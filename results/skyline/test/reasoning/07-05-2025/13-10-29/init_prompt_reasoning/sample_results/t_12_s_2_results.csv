@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+506	12	2	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Mary journeyed to the office.
+2. Mary and Sandra went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that mary was initially with daniel at the office (sentence 1). however, in sentence 2, it is stated that mary and sandra went back to the bedroom. this implies that mary left the office and moved to the bedroom. therefore, based on the sequence of events, mary is currently in the bedroom.	fully	bedroom	True	According to sentence 2, Mary and Sandra went back to the bedroom, which means Mary is currently in the bedroom.		"assistant
+
+Reasoning: According to sentence 2, Mary and Sandra went back to the bedroom, which means Mary is currently in the bedroom.
+
+Answer: bedroom"	0.0286	0.0286	False	False	False	False	0
+507	12	2	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Sandra journeyed to the hallway.
+5. Mary and Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from the context sentences, we know that sandra was initially with daniel in the hallway (sentence 4). however, in sentence 5, it is stated that mary and sandra travelled to the bathroom. this implies that sandra left the hallway and moved to the bathroom with mary. therefore, based on the sequence of events, sandra is currently in the bathroom.	fully	bathroom	True	According to sentence 5, Mary and Sandra travelled to the bathroom, which means Sandra is currently in the bathroom.		"Reasoning: According to sentence 5, Mary and Sandra travelled to the bathroom, which means Sandra is currently in the bathroom.
+
+Answer: bathroom"	0.2	0.0333	False	False	False	False	0
+508	12	2	3	"*TASK*
+Here are the context sentences:
+7. Mary and John travelled to the kitchen.
+8. Mary and Daniel journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that mary was initially with john in the kitchen (sentence 7). however, in sentence 8, it is stated that mary and daniel journeyed to the bedroom. this implies that mary left the kitchen and moved to the bedroom with daniel. therefore, based on the sequence of events, mary is currently in the bedroom.	fully	bedroom	True	According to sentence 8, Mary and Daniel journeyed to the bedroom, which means Mary is currently in the bedroom.		"Reasoning: According to sentence 8, Mary and Daniel journeyed to the bedroom, which means Mary is currently in the bedroom.
+
+Answer: bedroom"	0.0968	0.0323	False	False	False	False	0
+509	12	2	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel moved to the office.
+11. John and Mary moved to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	office	from the context sentences, we know that daniel was initially with john in the office (sentence 10). there is no subsequent sentence that indicates daniel moved to a different location. in sentence 11, john moves to the hallway with mary, but there is no mention of daniel moving with them. therefore, based on the sequence of events, daniel is still in the office.	fully	office	True	According to sentence 10, John and Daniel moved to the office, but then sentence 11 doesn't mention Daniel moving again, so Daniel is still in the office.		"Reasoning: According to sentence 10, John and Daniel moved to the office, but then sentence 11 doesn't mention Daniel moving again, so Daniel is still in the office.
+
+Answer: office"	0.0488	0.0244	False	False	False	True	0
+510	12	2	5	"*TASK*
+Here are the context sentences:
+13. John and Mary moved to the garden.
+14. John and Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that john was initially with mary in the garden (sentence 13). however, in sentence 14, it is stated that john and mary journeyed to the kitchen. this implies that john left the garden and moved to the kitchen with mary. therefore, based on the sequence of events, john is currently in the kitchen.	fully	kitchen	True	According to sentence 14, John and Mary journeyed to the kitchen, which means John is currently in the kitchen.		"Reasoning: According to sentence 14, John and Mary journeyed to the kitchen, which means John is currently in the kitchen.
+
+Answer: kitchen"	0.0323	0.0323	False	False	False	False	0

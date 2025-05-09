@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	Ġ"	Yesterday	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	."	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	Ġ(	sentence	Ġ	6	).ĊĊ	Answer	:	Ġoffice	<|eot_id|>

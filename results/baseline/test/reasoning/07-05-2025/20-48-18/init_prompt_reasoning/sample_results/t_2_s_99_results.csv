@@ -1,0 +1,62 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+991	2	99	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the bathroom.
+2. Mary went back to the bedroom.
+3. Sandra moved to the office.
+4. John went to the bedroom.
+5. Mary travelled to the hallway.
+6. Sandra went to the bedroom.
+7. Mary travelled to the garden.
+8. John went to the bathroom.
+9. Daniel went to the hallway.
+10. Mary moved to the bathroom.
+11. Daniel went to the kitchen.
+12. Mary travelled to the hallway.
+13. John got the milk there.
+14. Mary went to the office.
+15. Daniel journeyed to the bathroom.
+16. Daniel grabbed the apple there.
+17. John put down the milk.
+18. Daniel dropped the apple.
+
+Now, answer the following question:
+Where is the apple?"	bathroom	from the context sentences, we can track the movements of each person and the objects they interact with.	fully	bathroom	True	The apple was grabbed by Daniel in the bathroom (sentence 16), and then it was dropped by Daniel (sentence 18). Since there is no mention of the apple being moved or taken to any other location, it can be inferred that the apple is still in the bathroom.		"Reasoning: The apple was grabbed by Daniel in the bathroom (sentence 16), and then it was dropped by Daniel (sentence 18). Since there is no mention of the apple being moved or taken to any other location, it can be inferred that the apple is still in the bathroom.
+
+Answer: bathroom"	0.0159	0.0317	False	False	False	True	0
+992	2	99	2	"*TASK*
+Here are the context sentences:
+20. Daniel went back to the kitchen.
+21. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Where is the apple?"	bathroom	the question asks about the location of the apple, but the provided context sentences (20 and 21) do not mention the apple. however, we can refer to the previous parts of the conversation history. in the previous conversation, we established that the apple was dropped in the bathroom (sentence 18). there is no information in the new context sentences that suggests the apple was moved from the bathroom. therefore, we can logically conclude that the apple is still in the bathroom.	none	not mentioned	False	There is no mention of the apple being moved or taken to the kitchen in the given context sentences. The previous context sentences mentioned the apple being grabbed in the bathroom and then dropped, but there is no information about its current location.		"Reasoning: There is no mention of the apple being moved or taken to the kitchen in the given context sentences. The previous context sentences mentioned the apple being grabbed in the bathroom and then dropped, but there is no information about its current location.
+
+Answer: not mentioned"	0.0	0.037	False	False	False	True	0
+993	2	99	3	"*TASK*
+Here are the context sentences:
+23. John took the apple there.
+24. John went back to the office.
+
+Now, answer the following question:
+Where is the apple?"	office	from the previous conversation, we knew that the apple was in the bathroom (sentence 18). in sentence 23, john took the apple, which means he picked it up from its previous location (bathroom). then, in sentence 24, john went back to the office. since john took the apple with him, we can logically conclude that the apple is now in the office with john.	fully	office	True	"The context sentence 23 mentions John taking the apple, but it doesn't specify where ""there"" is. However, sentence 24 mentions John going back to the office, which implies that ""there"" might be the office. Since John took the apple, it can be inferred that the apple is in the office."		"Reasoning: The context sentence 23 mentions John taking the apple, but it doesn't specify where ""there"" is. However, sentence 24 mentions John going back to the office, which implies that ""there"" might be the office. Since John took the apple, it can be inferred that the apple is in the office.
+
+Answer: office"	0.1268	0.0282	False	False	False	True	0
+994	2	99	4	"*TASK*
+Here are the context sentences:
+26. John went back to the bedroom.
+27. Daniel moved to the garden.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	from the previous conversation, we knew that the apple was in the office with john (sentence 24). in sentence 26, john went back to the bedroom, but there is no information about john dropping or leaving the apple in the office. therefore, we can logically conclude that john still has the apple with him. since john moved to the bedroom, the apple must also be in the bedroom with him.	partially	office	False	The previous context sentences mentioned John taking the apple and going back to the office, but there is no mention of the apple being moved or taken to the bedroom or the garden. Since the apple's location was previously mentioned as the office, it can be inferred that the apple is still in the office.		"Reasoning: The previous context sentences mentioned John taking the apple and going back to the office, but there is no mention of the apple being moved or taken to the bedroom or the garden. Since the apple's location was previously mentioned as the office, it can be inferred that the apple is still in the office.
+
+Answer: office"	0.1194	0.0299	False	False	False	True	0
+995	2	99	5	"*TASK*
+Here are the context sentences:
+29. John dropped the apple there.
+30. Sandra went back to the kitchen.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	from the previous conversation, we knew that the apple was in the bedroom with john (sentence 26). in sentence 29, john dropped the apple, which means he released the apple in the same location (bedroom) where he was. there is no information about the apple being moved or taken by anyone else. therefore, we can logically conclude that the apple is still in the bedroom, where john dropped it.	partially	not mentioned	False	"The context sentence 29 mentions John dropping the apple, and ""there"" is not specified. However, the sentence 30 mentions Sandra going back to the kitchen, which is a different location from the office where the apple was previously mentioned. Since the apple was dropped, it can be inferred that the apple is now in the location where John dropped it, which is not specified."		"Reasoning: The context sentence 29 mentions John dropping the apple, and ""there"" is not specified. However, the sentence 30 mentions Sandra going back to the kitchen, which is a different location from the office where the apple was previously mentioned. Since the apple was dropped, it can be inferred that the apple is now in the location where John dropped it, which is not specified.
+
+Answer: not mentioned"	0.0119	0.0238	False	False	False	True	0

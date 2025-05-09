@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġtaking	Ġthe	Ġmilk	Ġ(	sentence	Ġ	17	)	Ġand	Ġhanding	Ġit	Ġto	ĠBill	Ġ(	sentence	Ġ	29	).	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġanyone	Ġelse	Ġhandling	Ġor	Ġgiving	Ġthe	Ġmilk	.	ĠTherefore	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġgave	Ġthe	Ġmilk	Ġto	ĠBill	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

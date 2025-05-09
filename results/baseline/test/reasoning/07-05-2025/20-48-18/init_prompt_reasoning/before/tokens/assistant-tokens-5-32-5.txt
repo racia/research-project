@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	36	Ġstates	Ġthat	ĠMary	Ġpassed	Ġthe	Ġapple	Ġto	ĠBill	,	Ġwhich	Ġimplies	Ġthat	ĠBill	Ġreceived	Ġthe	Ġapple	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

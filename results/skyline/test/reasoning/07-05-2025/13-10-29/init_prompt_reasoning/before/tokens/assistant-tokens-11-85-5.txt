@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ(	13	-	14	)	Ġare	Ġabout	ĠMary	's	Ġmovements	,	Ġbut	Ġthe	Ġquestion	Ġasks	Ġabout	ĠSandra	's	Ġlocation	.	ĠSince	Ġthere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠSandra	's	Ġmovements	,	Ġwe	Ġneed	Ġto	Ġrefer	Ġto	Ġthe	Ġprevious	Ġcontext	Ġsentences	Ġ(	10	-	11	)	Ġwhich	Ġstated	Ġthat	ĠSandra	Ġwent	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

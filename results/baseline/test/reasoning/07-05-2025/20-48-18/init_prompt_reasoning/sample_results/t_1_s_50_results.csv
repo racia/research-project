@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+246	1	50	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the kitchen.
+2. John journeyed to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	"from the context sentences, we know that john journeyed to the kitchen (sentence 2). this implies that john's current location is the kitchen, as there is no information suggesting that he left the kitchen after arriving. therefore, the answer to the question ""where is john?"" is indeed the kitchen."	fully	kitchen	True	Since John journeyed to the kitchen, it is likely that he is currently in the kitchen, as the action of journeying implies movement to a new location.		"Reasoning: Since John journeyed to the kitchen, it is likely that he is currently in the kitchen, as the action of journeying implies movement to a new location.
+
+Answer: kitchen"	0.0256	0.0256	False	False	False	False	0
+247	1	50	2	"*TASK*
+Here are the context sentences:
+4. Sandra moved to the kitchen.
+5. Sandra went to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"from the context sentences, we know that sandra moved to the kitchen (sentence 4), but then she went to the garden (sentence 5). this implies that sandra's current location is the garden, as she left the kitchen and went to the garden afterwards. therefore, the answer to the question ""where is sandra?"" is indeed the garden."	fully	garden	True	Sandra moved to the kitchen initially, but then went to the garden, which implies a change in location. Therefore, Sandra is currently in the garden.		"Reasoning: Sandra moved to the kitchen initially, but then went to the garden, which implies a change in location. Therefore, Sandra is currently in the garden.
+
+Answer: garden"	0.0811	0.027	False	False	False	False	0
+248	1	50	3	"*TASK*
+Here are the context sentences:
+7. John travelled to the office.
+8. Daniel went to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	garden	there is no information about sandra's location in the provided context sentences (7 and 8). however, we can infer that the answer is still referring to a previous part of the conversation history. from the previous context (sentences 4 and 5), we know that sandra moved to the kitchen and then went to the garden. there is no new information that suggests sandra's location has changed, so we can conclude that sandra is still in the garden.	none	not mentioned	False	There is no mention of Sandra in the given context sentences, so it is not possible to determine her location.		"Reasoning: There is no mention of Sandra in the given context sentences, so it is not possible to determine her location.
+
+Answer: not mentioned"	0.0	0.0333	False	False	False	True	0
+249	1	50	4	"*TASK*
+Here are the context sentences:
+10. Mary went back to the kitchen.
+11. Daniel moved to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	garden	there is no new information about sandra's location in the provided context sentences (10 and 11). the sentences only mention mary and daniel, but not sandra. we can infer that the answer is still referring to a previous part of the conversation history. from the previous context (sentences 4 and 5), we know that sandra moved to the kitchen and then went to the garden. there is no new information that suggests sandra's location has changed, so we can conclude that sandra	none	not mentioned	False	There is no mention of Sandra in the given context sentences, so it is not possible to determine her location.		"Reasoning: There is no mention of Sandra in the given context sentences, so it is not possible to determine her location.
+
+Answer: not mentioned"	0.0	0.0333	False	False	False	True	0
+250	1	50	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the bathroom.
+14. Daniel moved to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"from the context sentence 14, we know that daniel moved to the garden. this implies that daniel's current location is the garden, as there is no information suggesting that he left the garden after arriving. therefore, the answer to the question ""where is daniel?"" is indeed the garden."	fully	garden	True	According to the context sentence 14, Daniel moved to the garden, which implies that he is currently in the garden.		"Reasoning: According to the context sentence 14, Daniel moved to the garden, which implies that he is currently in the garden.
+
+Answer: garden"	0.0645	0.0323	False	False	False	False	0

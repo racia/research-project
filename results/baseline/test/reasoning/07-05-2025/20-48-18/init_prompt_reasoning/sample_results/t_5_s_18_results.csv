@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1686	5	18	1	"*TASK*
+Here are the context sentences:
+1. Bill went back to the kitchen.
+2. Bill took the apple there.
+3. Bill passed the apple to Mary.
+4. Mary handed the apple to Fred.
+
+Now, answer the following question:
+Who did Mary give the apple to?"	fred	"according to sentence 4, ""mary handed the apple to fred."" this sentence directly states that mary gave the apple to fred, which answers the question."	fully	Fred	True	Mary handed the apple to Fred, but the question asks who Mary gave the apple to, which is Fred.		"Reasoning: Mary handed the apple to Fred, but the question asks who Mary gave the apple to, which is Fred.
+
+Answer: Fred"	0.0	0.0345	False	False	False	False	0
+1687	5	18	2	"*TASK*
+Here are the context sentences:
+6. Fred gave the apple to Mary.
+7. Mary journeyed to the office.
+
+Now, answer the following question:
+Who gave the apple to Mary?"	fred	"according to sentence 6, ""fred gave the apple to mary."" this sentence directly states that fred gave the apple to mary, which answers the question."	fully	Fred	True	The context sentences show that Fred gave the apple to Mary (sentence 6), but the question asks who gave the apple to Mary, which is Fred.		"Reasoning: The context sentences show that Fred gave the apple to Mary (sentence 6), but the question asks who gave the apple to Mary, which is Fred.
+
+Answer: Fred"	0.0526	0.0263	False	False	False	False	0
+1688	5	18	3	"*TASK*
+Here are the context sentences:
+9. Mary handed the apple to Jeff.
+10. Mary got the football there.
+
+Now, answer the following question:
+Who gave the apple?"	mary	"according to sentence 9, ""mary handed the apple to jeff."" this sentence implies that mary had the apple before handing it to jeff, which means mary gave the apple."	fully	Mary	True	The context sentences show that Mary handed the apple to Jeff (sentence 9), but the question asks who gave the apple, which is Mary.		"Reasoning: The context sentences show that Mary handed the apple to Jeff (sentence 9), but the question asks who gave the apple, which is Mary.
+
+Answer: Mary"	0.0278	0.0278	False	False	False	False	0
+1689	5	18	4	"*TASK*
+Here are the context sentences:
+12. Jeff left the apple.
+13. Mary gave the football to Jeff.
+
+Now, answer the following question:
+Who did Mary give the apple to?"	jeff	"this answer seems to be incorrect based on the provided context. according to sentence 13, ""mary gave the football to jeff"", but there is no mention of mary giving the apple to jeff. in fact, sentence 9 from a previous part of the conversation states ""mary handed the apple to jeff"", which implies that mary gave the apple to jeff, but this information is not present in the current context. therefore, based on the current context, it cannot be"	none	Not mentioned	False	There is no mention of Mary giving the apple to anyone in the given context sentences. In fact, the apple was already given to Jeff (sentence 9). The question asks about the apple, but the context sentences only mention the football being given to Jeff.		"Reasoning: There is no mention of Mary giving the apple to anyone in the given context sentences. In fact, the apple was already given to Jeff (sentence 9). The question asks about the apple, but the context sentences only mention the football being given to Jeff.
+
+Answer: Not mentioned"	0.0	0.0167	False	False	False	True	0
+1690	5	18	5	"*TASK*
+Here are the context sentences:
+15. Mary took the apple there.
+16. Fred travelled to the hallway.
+
+Now, answer the following question:
+Who received the football?"	jeff	"according to sentence 13 from a previous part of the conversation, ""mary gave the football to jeff"". this sentence directly states that jeff received the football, which answers the question."	none	Not mentioned	False	There is no mention of the football in the given context sentences. The sentences only mention the apple and the hallway, but not the football.		"Reasoning: There is no mention of the football in the given context sentences. The sentences only mention the apple and the hallway, but not the football.
+
+Answer: Not mentioned"	0.0556	0.0278	False	False	False	True	0

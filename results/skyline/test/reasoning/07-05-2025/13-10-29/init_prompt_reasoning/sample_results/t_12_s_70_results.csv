@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+846	12	70	1	"*TASK*
+Here are the context sentences:
+1. Mary and John journeyed to the kitchen.
+2. Daniel and Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"according to context sentence 1, ""mary and john journeyed to the kitchen"", which explicitly states that mary went to the kitchen. therefore, the answer to the question ""where is mary?"" is indeed the kitchen."	fully	kitchen	True	According to context sentence 1, Mary and John journeyed to the kitchen, which means Mary is currently in the kitchen.		"assistant
+
+Reasoning: According to context sentence 1, Mary and John journeyed to the kitchen, which means Mary is currently in the kitchen.
+
+Answer: kitchen"	0.0571	0.0286	False	False	False	False	0
+847	12	70	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Mary went back to the office.
+5. Mary and John went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"according to context sentence 5, ""mary and john went back to the bedroom"", which explicitly states that mary went back to the bedroom. this information overrides any previous location of mary, so the answer to the question ""where is mary?"" is indeed the bedroom."	fully	bedroom	True	According to context sentence 5, Mary and John went back to the bedroom, which means Mary is currently in the bedroom.		"Reasoning: According to context sentence 5, Mary and John went back to the bedroom, which means Mary is currently in the bedroom.
+
+Answer: bedroom"	0.1875	0.0312	False	False	False	False	0
+848	12	70	3	"*TASK*
+Here are the context sentences:
+7. Mary and Daniel travelled to the bathroom.
+8. Daniel and Sandra travelled to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"according to context sentence 8, ""daniel and sandra travelled to the garden"", which explicitly states that sandra went to the garden. therefore, the answer to the question ""where is sandra?"" is indeed the garden."	fully	garden	True	According to context sentence 8, Daniel and Sandra travelled to the garden, which means Sandra is currently in the garden.		"Reasoning: According to context sentence 8, Daniel and Sandra travelled to the garden, which means Sandra is currently in the garden.
+
+Answer: garden"	0.0	0.0323	False	False	False	False	0
+849	12	70	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Sandra journeyed to the bathroom.
+11. Mary and John journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"according to context sentence 10, ""daniel and sandra journeyed to the bathroom"", which explicitly states that daniel went to the bathroom. therefore, the answer to the question ""where is daniel?"" is indeed the bathroom."	fully	bathroom	True	According to context sentence 10, Daniel and Sandra journeyed to the bathroom, which means Daniel is currently in the bathroom.		"Reasoning: According to context sentence 10, Daniel and Sandra journeyed to the bathroom, which means Daniel is currently in the bathroom.
+
+Answer: bathroom"	0.0312	0.0312	False	False	False	False	0
+850	12	70	5	"*TASK*
+Here are the context sentences:
+13. Mary and Daniel journeyed to the bedroom.
+14. Daniel and Mary went back to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	"according to context sentence 14, ""daniel and mary went back to the garden"", which explicitly states that mary went back to the garden. this information overrides any previous location of mary, so the answer to the question ""where is mary?"" is indeed the garden."	fully	garden	True	According to context sentence 14, Daniel and Mary went back to the garden, which means Mary is currently in the garden.		"Reasoning: According to context sentence 14, Daniel and Mary went back to the garden, which means Mary is currently in the garden.
+
+Answer: garden"	0.0	0.0312	False	False	False	False	0

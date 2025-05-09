@@ -1,0 +1,55 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+2	.	ĠSandra	Ġgrabbed	Ġthe	Ġapple	.Ċ
+3	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+4	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+5	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+6	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+7	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+8	.	ĠSandra	Ġdiscarded	Ġthe	Ġapple	.Ċ
+9	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+10	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+11	.	ĠJohn	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+12	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+13	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+14	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+15	.	ĠJohn	Ġdropped	Ġthe	Ġmilk	.Ċ
+16	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+17	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+18	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+19	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+20	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+21	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġmilk	.Ċ
+22	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+23	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+24	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+25	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+26	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+27	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+28	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+29	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+30	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+31	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+32	.	ĠSandra	Ġtook	Ġthe	Ġfootball	.Ċ
+33	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+34	.	ĠSandra	Ġgrabbed	Ġthe	Ġapple	.Ċ
+35	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+36	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+37	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+38	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+39	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+40	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+41	.	ĠSandra	Ġdropped	Ġthe	Ġfootball	.Ċ
+42	.	ĠSandra	Ġdiscarded	Ġthe	Ġapple	.Ċ
+43	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+44	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+45	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+46	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+47	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+48	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+49	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+50	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+51	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+52	.	ĠSandra	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġbathroom	?Ċ

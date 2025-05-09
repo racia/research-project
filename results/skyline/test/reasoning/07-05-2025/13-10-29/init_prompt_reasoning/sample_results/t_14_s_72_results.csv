@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1856	14	72	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Bill journeyed to the cinema.
+2. Mary went to the office this afternoon.
+3. Mary went to the kitchen yesterday.
+4. This morning Mary went back to the bedroom.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	kitchen	"from context sentence 4, we know that mary went back to the bedroom this morning. the question asks where mary was before the bedroom. to find the answer, we need to look at mary's previous location. since sentence 4 mentions ""went back"" to the bedroom, it implies that mary was somewhere else before coming back to the bedroom. we can look at the previous sentences to find mary's previous location. sentence 3 states that mary went to the kitchen yesterday. although"	fully	kitchen	True	"According to sentence 4, Mary went back to the bedroom this morning. To go ""back"" to a place implies that she had been there before. Sentence 3 states that Mary went to the kitchen yesterday, which means she was in the kitchen before coming back to the bedroom."		"Reasoning: According to sentence 4, Mary went back to the bedroom this morning. To go ""back"" to a place implies that she had been there before. Sentence 3 states that Mary went to the kitchen yesterday, which means she was in the kitchen before coming back to the bedroom.
+
+Answer: kitchen"	0.1875	0.0312	False	False	False	False	0
+1857	14	72	2	"*TASK*
+Here are the context sentences:
+6. Julie moved to the bedroom yesterday.
+7. Fred went back to the office yesterday.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	kitchen	"there is no information about mary in the provided context sentences (6 and 7). the context sentences only mention julie and fred, but not mary. however, the answer provided is ""kitchen"", which suggests that the correct context sentences to consider are actually sentences 2-4, which mention mary."	none	kitchen	True	The context sentences 6 and 7 do not provide any new information about Mary's location. We need to refer back to the previous context sentences 1-4. According to sentence 3, Mary went to the kitchen yesterday, and according to sentence 4, she went back to the bedroom this morning. Therefore, Mary was in the kitchen before the bedroom.		"Reasoning: The context sentences 6 and 7 do not provide any new information about Mary's location. We need to refer back to the previous context sentences 1-4. According to sentence 3, Mary went to the kitchen yesterday, and according to sentence 4, she went back to the bedroom this morning. Therefore, Mary was in the kitchen before the bedroom.
+
+Answer: kitchen"	0.1481	0.0247	False	False	False	True	0
+1858	14	72	3	"*TASK*
+Here are the context sentences:
+9. This morning Julie went to the office.
+10. This morning Bill journeyed to the bedroom.
+
+Now, answer the following question:
+Where was Julie before the office?"	bedroom	there is no direct information about julie's location before the office in the provided context sentences (9 and 10). however, we can make a logical inference. sentence 9 states that julie went to the office this morning, implying that julie was somewhere else before going to the office. sentence 10 mentions bill journeying to the bedroom this morning, but it does not provide any information about julie's previous location.	partially	bedroom	True	According to sentence 6, Julie moved to the bedroom yesterday. There is no other information about Julie's location before the office. Therefore, we can infer that Julie was in the bedroom before the office.		"Reasoning: According to sentence 6, Julie moved to the bedroom yesterday. There is no other information about Julie's location before the office. Therefore, we can infer that Julie was in the bedroom before the office.
+
+Answer: bedroom"	0.1042	0.0417	False	False	False	True	0
+1859	14	72	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Fred travelled to the cinema.
+13. This morning Fred went to the school.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	cinema	"the provided context sentences (12 and 13) only mention fred, but the question asks about bill. there is no information about bill in the provided context sentences. the answer ""cinema"" suggests that the correct context sentences to consider are actually sentences 1-4, which mention bill."	none	not mentioned	False	The context sentences 12 and 13 do not provide any new information about Bill's location. We need to refer back to the previous context sentences 1-4. There is no information about Bill's location before the bedroom. Sentence 1 only mentions that Bill journeyed to the cinema yesterday, but it does not provide information about his location before the bedroom.		"Reasoning: The context sentences 12 and 13 do not provide any new information about Bill's location. We need to refer back to the previous context sentences 1-4. There is no information about Bill's location before the bedroom. Sentence 1 only mentions that Bill journeyed to the cinema yesterday, but it does not provide information about his location before the bedroom.
+
+Answer: not mentioned"	0.0617	0.0247	False	False	False	True	0
+1860	14	72	5	"*TASK*
+Here are the context sentences:
+15. Bill moved to the park this afternoon.
+16. This evening Mary travelled to the cinema.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	office	the provided context sentences (15 and 16) do not mention mary's location before the cinema. sentence 16 only states that mary travelled to the cinema this evening, but it does not provide information about her previous location.	partially	bedroom	False	The context sentences 15 and 16 do not provide any new information about Mary's location before the cinema. We need to refer back to the previous context sentences 1-4. According to sentence 4, Mary went back to the bedroom this morning. There is no other information about Mary's location before the cinema. Therefore, we can infer that Mary was in the bedroom before the cinema.		"Reasoning: The context sentences 15 and 16 do not provide any new information about Mary's location before the cinema. We need to refer back to the previous context sentences 1-4. According to sentence 4, Mary went back to the bedroom this morning. There is no other information about Mary's location before the cinema. Therefore, we can infer that Mary was in the bedroom before the cinema.
+
+Answer: bedroom"	0.092	0.023	False	False	False	True	0

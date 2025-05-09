@@ -1,0 +1,23 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠBill	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+2	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+3	.	ĠFred	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+4	.	ĠBill	Ġdropped	Ġthe	Ġapple	.Ċ
+5	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+6	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+7	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+8	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+9	.	ĠBill	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+10	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+11	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+12	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+13	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+14	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+15	.	ĠJeff	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+16	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+17	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+18	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+19	.	ĠJeff	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
+20	.	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	?Ċ

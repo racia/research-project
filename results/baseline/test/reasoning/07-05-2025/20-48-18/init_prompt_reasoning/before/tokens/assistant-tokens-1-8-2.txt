@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġmoving	Ġto	Ġa	Ġnew	Ġlocation	.	ĠTherefore	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

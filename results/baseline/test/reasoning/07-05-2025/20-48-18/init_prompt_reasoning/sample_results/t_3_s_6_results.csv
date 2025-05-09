@@ -1,0 +1,115 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1026	3	6	1	"*TASK*
+Here are the context sentences:
+1. John went to the hallway.
+2. Mary went back to the office.
+3. Mary got the milk.
+4. John journeyed to the garden.
+5. Daniel went to the kitchen.
+6. Mary put down the milk.
+7. John travelled to the bathroom.
+8. Daniel went back to the hallway.
+9. John took the apple.
+10. Daniel journeyed to the office.
+11. Daniel grabbed the milk.
+12. John discarded the apple.
+13. Daniel went to the garden.
+14. Daniel dropped the milk.
+15. Mary travelled to the garden.
+16. Daniel travelled to the office.
+17. Mary travelled to the bedroom.
+18. Mary moved to the garden.
+19. John picked up the football.
+20. John picked up the apple.
+21. John left the football.
+22. John moved to the office.
+23. Sandra travelled to the bathroom.
+24. Sandra got the football.
+25. Sandra travelled to the office.
+26. Daniel went back to the bedroom.
+27. Mary went back to the office.
+28. Daniel travelled to the hallway.
+29. Mary went back to the hallway.
+30. Sandra moved to the bedroom.
+31. Daniel moved to the bedroom.
+32. Sandra moved to the bathroom.
+33. John dropped the apple.
+34. John picked up the apple.
+35. Mary went back to the bedroom.
+36. Sandra went to the bedroom.
+37. Sandra dropped the football there.
+38. John dropped the apple.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	bathroom	from sentence 24, we know that sandra got the football. from sentence 23, we know that sandra was in the bathroom when she got the football. therefore, the football was in the bathroom before it was taken to the bedroom.	fully	office	False	The football was picked up by Sandra in the bathroom (sentence 24), and then she travelled to the office (sentence 25). From the office, she travelled to the bedroom (sentence 30), where she dropped the football (sentence 37).		"Reasoning: The football was picked up by Sandra in the bathroom (sentence 24), and then she travelled to the office (sentence 25). From the office, she travelled to the bedroom (sentence 30), where she dropped the football (sentence 37).
+
+Answer: office"	0.069	0.0517	False	False	False	False	0
+1027	3	6	2	"*TASK*
+Here are the context sentences:
+40. Sandra grabbed the football.
+41. John took the apple.
+42. Mary travelled to the hallway.
+43. Mary journeyed to the office.
+44. Sandra discarded the football.
+45. John put down the apple there.
+46. Mary went to the bathroom.
+47. Daniel picked up the football.
+48. Daniel travelled to the bathroom.
+49. Mary moved to the kitchen.
+50. John took the apple.
+51. John moved to the kitchen.
+52. Daniel went back to the office.
+53. John left the apple there.
+54. Mary picked up the apple there.
+55. Mary dropped the apple.
+56. Daniel went back to the bedroom.
+57. John moved to the hallway.
+58. Mary went back to the garden.
+59. Mary travelled to the bedroom.
+60. Mary travelled to the kitchen.
+61. John journeyed to the bedroom.
+62. Daniel journeyed to the kitchen.
+63. Daniel got the apple there.
+64. Sandra moved to the office.
+65. Sandra journeyed to the bedroom.
+66. Daniel went to the garden.
+67. John went back to the bathroom.
+68. Mary moved to the hallway.
+69. Mary journeyed to the kitchen.
+70. Sandra moved to the office.
+71. Daniel journeyed to the office.
+72. Mary travelled to the bedroom.
+73. Daniel put down the football there.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	office	from sentence 73, we know that daniel put down the football in the bedroom. to find out where the football was before the bedroom, we need to track back the movement of the football. from sentence 73, we know that daniel had the football before putting it down in the bedroom. from sentence 71, we know that daniel journeyed to the office before going to the bedroom. from sentence 63, we know that daniel got the apple in the kitchen, but	fully	bathroom	False	The football was picked up by Daniel in the office (sentence 47), and then he travelled to the bathroom (sentence 48). From the bathroom, he travelled to the bedroom (sentence 56), where he put down the football (sentence 73).		"Reasoning: The football was picked up by Daniel in the office (sentence 47), and then he travelled to the bathroom (sentence 48). From the bathroom, he travelled to the bedroom (sentence 56), where he put down the football (sentence 73).
+
+Answer: bathroom"	0.0339	0.0508	False	False	False	False	0
+1028	3	6	3	"*TASK*
+Here are the context sentences:
+75. Sandra journeyed to the bathroom.
+76. Daniel left the apple there.
+
+Now, answer the following question:
+Where was the football before the office?"	garden	from the given context, there is no direct information about the football's movement before the office. however, we can infer the answer by looking at the previous context (sentences 40-74). from sentence 73, we know that daniel put down the football in the bedroom. from sentence 66, we know that daniel went to the garden before going to the office (sentence 71). from sentence 52, we know that daniel had the football before	none	not mentioned	False	There is no mention of the football being in the office or being moved from anywhere to the office. The context sentences only mention the football being picked up by Daniel in the office (sentence 47), but do not provide information about where it was before that.		"Reasoning: There is no mention of the football being in the office or being moved from anywhere to the office. The context sentences only mention the football being picked up by Daniel in the office (sentence 47), but do not provide information about where it was before that.
+
+Answer: not mentioned"	0.0	0.05	False	False	False	True	0
+1029	3	6	4	"*TASK*
+Here are the context sentences:
+78. John moved to the bedroom.
+79. Sandra journeyed to the office.
+
+Now, answer the following question:
+Where was the football before the office?"	garden	from the given context, there is no direct information about the football's movement before the office. however, we can infer the answer by looking at the previous context (sentences 40-74). from sentence 73, we know that daniel put down the football in the bedroom. from sentence 66, we know that daniel went to the garden before going to the office (sentence 71). from sentence 48, we know that daniel picked up the football	none	bedroom	False	The football was put down by Daniel in the bedroom (sentence 73), and then Sandra journeyed to the office (sentence 79). There is no mention of the football being moved from the bedroom to the office, so it is likely that the football was still in the bedroom when Sandra journeyed to the office.		"Reasoning: The football was put down by Daniel in the bedroom (sentence 73), and then Sandra journeyed to the office (sentence 79). There is no mention of the football being moved from the bedroom to the office, so it is likely that the football was still in the bedroom when Sandra journeyed to the office.
+
+Answer: bedroom"	0.0	0.0423	False	False	False	True	0
+1030	3	6	5	"*TASK*
+Here are the context sentences:
+81. Sandra got the football.
+82. Mary went back to the hallway.
+
+Now, answer the following question:
+Where was the apple before the office?"	garden	" 
+since the provided context (sentences 78 and 79) does not mention the football, we need to look at the previous context (sentences 40-77) to find the answer. from sentence 73, we know that daniel put down the football in the bedroom. from sentence 66, we know that daniel went to the garden before going to the office (sentence 71). therefore, the football was in the garden before the office."	none	bathroom	False	There is no mention of the apple being in the office or being moved from anywhere to the office. The context sentences only mention the apple being taken by John (sentence 41), put down by John in the bathroom (sentence 45), and then picked up by Mary in the bathroom (sentence 54). There is no mention of the apple being in the office.		"Reasoning: There is no mention of the apple being in the office or being moved from anywhere to the office. The context sentences only mention the apple being taken by John (sentence 41), put down by John in the bathroom (sentence 45), and then picked up by Mary in the bathroom (sentence 54). There is no mention of the apple being in the office.
+
+Answer: bathroom"	0.0	0.037	False	False	False	True	0

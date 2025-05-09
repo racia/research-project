@@ -1,0 +1,13 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+38	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+39	.	ĠSandra	Ġgot	Ġthe	Ġfootball	.Ċ
+40	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+41	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+42	.	ĠMary	Ġput	Ġdown	Ġthe	Ġapple	Ġthere	.Ċ
+43	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	.Ċ
+44	.	ĠMary	Ġdropped	Ġthe	Ġapple	Ġthere	.Ċ
+45	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+46	.	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
+47	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġgarden	?Ċ

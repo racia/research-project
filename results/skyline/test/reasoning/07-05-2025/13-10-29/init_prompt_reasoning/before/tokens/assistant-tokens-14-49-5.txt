@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	12	,	ĠBill	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġthis	Ġevening	.	ĠTherefore	,	ĠBill	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

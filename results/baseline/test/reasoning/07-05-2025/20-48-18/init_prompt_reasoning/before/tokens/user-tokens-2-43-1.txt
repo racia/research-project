@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+2	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+3	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+4	.	ĠMary	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+5	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+6	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

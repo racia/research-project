@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1031	13	7	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary travelled to the bedroom.
+2. Following that they went to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	from the context sentences, we know that sandra and mary travelled to the bedroom (sentence 1) and then they went to the garden (sentence 2). since there is no information about mary leaving the garden, we can logically conclude that mary is still in the garden.	fully	garden	True	According to the context sentences, Mary travelled to the bedroom and then to the garden. Therefore, her current location is the garden.		"assistant
+
+Reasoning: According to the context sentences, Mary travelled to the bedroom and then to the garden. Therefore, her current location is the garden.
+
+Answer: garden"	0.25	0.0556	False	False	False	False	0
+1032	13	7	2	"*TASK*
+Here are the context sentences:
+4. John and Daniel went to the bathroom.
+5. After that they went back to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	from the context sentences, we know that john and daniel went to the bathroom (sentence 4) and then they went back to the garden (sentence 5). since there is no information about john leaving the garden after returning to it, we can logically conclude that john is still in the garden.	fully	garden	True	According to the context sentences, John went to the bathroom and then went back to the garden. Therefore, his current location is the garden.		"Reasoning: According to the context sentences, John went to the bathroom and then went back to the garden. Therefore, his current location is the garden.
+
+Answer: garden"	0.2	0.0571	False	False	False	False	0
+1033	13	7	3	"*TASK*
+Here are the context sentences:
+7. Sandra and John went back to the bedroom.
+8. After that they travelled to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	from the context sentences, we know that sandra and john went back to the bedroom (sentence 7) and then they travelled to the bathroom (sentence 8). since there is no information about john leaving the bathroom after arriving there, we can logically conclude that john is still in the bathroom.	fully	bathroom	True	According to the context sentences, John went back to the bedroom and then travelled to the bathroom. Therefore, his current location is the bathroom.		"Reasoning: According to the context sentences, John went back to the bedroom and then travelled to the bathroom. Therefore, his current location is the bathroom.
+
+Answer: bathroom"	0.0	0.0571	False	False	False	False	0
+1034	13	7	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Mary journeyed to the kitchen.
+11. Following that they moved to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from the context sentences, we know that sandra and mary journeyed to the kitchen (sentence 10) and then they moved to the bathroom (sentence 11). since there is no information about sandra leaving the bathroom after arriving there, we can logically conclude that sandra is still in the bathroom.	fully	bathroom	True	According to the context sentences, Sandra journeyed to the kitchen and then moved to the bathroom. Therefore, her current location is the bathroom.		"Reasoning: According to the context sentences, Sandra journeyed to the kitchen and then moved to the bathroom. Therefore, her current location is the bathroom.
+
+Answer: bathroom"	0.1143	0.0571	False	False	False	False	0
+1035	13	7	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra moved to the office.
+14. After that they went to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	from the context sentences, we know that mary and sandra moved to the office (sentence 13) and then they went to the garden (sentence 14). since there is no information about sandra leaving the garden after arriving there, we can logically conclude that sandra is still in the garden.	fully	garden	True	According to the context sentences, Sandra moved to the office and then went to the garden. Therefore, her current location is the garden.		"Reasoning: According to the context sentences, Sandra moved to the office and then went to the garden. Therefore, her current location is the garden.
+
+Answer: garden"	0.0	0.0588	False	False	False	False	0

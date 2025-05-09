@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġcurrent	Ġlocation	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠMary	Ġwas	Ġin	Ġthe	Ġbathroom	Ġ(	from	Ġprevious	Ġcontext	Ġsentences	).	ĠHowever	,	Ġthe	Ġcurrent	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġand	ĠDaniel	's	Ġmovements	,	Ġwhich	Ġdo	Ġnot	Ġaffect	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

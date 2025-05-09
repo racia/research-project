@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġbedroom	Ġis	Ġsouth	Ġof	Ġthe	Ġhallway	,	Ġand	Ġthe	Ġoffice	Ġis	Ġsouth	Ġof	Ġthe	Ġbedroom	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġthe	Ġoffice	Ġis	Ġsouth	Ġof	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

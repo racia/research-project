@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	13	)	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	14	).	ĠThis	Ġimplies	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

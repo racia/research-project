@@ -25,7 +25,7 @@ from settings.skyline.Skyline import Skyline
 from settings.utils import set_device
 
 
-@hydra.main(version_base=None)
+@hydra.main(version_base=None,config_path=None, config_name=None)
 def run_setting(cfg: DictConfig) -> None:
     """
     The function to run a model without modifications

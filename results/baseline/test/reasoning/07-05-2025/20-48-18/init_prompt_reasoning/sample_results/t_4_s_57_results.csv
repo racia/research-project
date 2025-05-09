@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1557	4	57	1	"*TASK*
+Here are the context sentences:
+1. The hallway is west of the bedroom.
+2. The hallway is east of the kitchen.
+
+Now, answer the following question:
+What is the bedroom east of?"	hallway	from the context sentences, we know that the hallway is west of the bedroom (sentence 1) and the hallway is east of the kitchen (sentence 2). since the hallway is west of the bedroom, it means the bedroom is east of the hallway. therefore, the answer is the hallway.	fully	Nothing	False	Since the hallway is west of the bedroom, it means the bedroom is not east of anything. The hallway is east of the kitchen, but the question asks what the bedroom is east of, not the hallway.		"Reasoning: Since the hallway is west of the bedroom, it means the bedroom is not east of anything. The hallway is east of the kitchen, but the question asks what the bedroom is east of, not the hallway.
+
+Answer: Nothing"	0.0408	0.0204	False	False	False	False	0

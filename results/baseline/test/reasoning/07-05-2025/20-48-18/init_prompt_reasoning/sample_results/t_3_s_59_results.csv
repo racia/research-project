@@ -1,0 +1,183 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1291	3	59	1	"*TASK*
+Here are the context sentences:
+1. Daniel took the apple.
+2. Mary journeyed to the bathroom.
+3. Daniel got the milk.
+4. Mary journeyed to the bedroom.
+5. Mary travelled to the office.
+6. Daniel journeyed to the hallway.
+7. Sandra journeyed to the bathroom.
+8. John moved to the office.
+9. Daniel left the apple.
+10. Sandra went to the hallway.
+11. Daniel dropped the milk.
+12. John went back to the bathroom.
+13. Daniel went back to the office.
+14. Daniel moved to the bedroom.
+15. Sandra went back to the garden.
+16. Daniel went back to the bathroom.
+17. Mary went back to the bedroom.
+18. Mary journeyed to the kitchen.
+19. Daniel went back to the kitchen.
+20. Daniel grabbed the football.
+21. Daniel put down the football.
+22. Daniel went to the bathroom.
+23. Mary travelled to the bathroom.
+24. Sandra moved to the kitchen.
+25. Daniel went to the office.
+26. Daniel journeyed to the garden.
+27. John travelled to the hallway.
+28. John picked up the apple.
+29. John left the apple.
+30. John travelled to the kitchen.
+31. Sandra travelled to the bedroom.
+32. Daniel moved to the bedroom.
+33. John journeyed to the garden.
+34. Daniel moved to the bathroom.
+35. John journeyed to the kitchen.
+36. John grabbed the football.
+37. John moved to the bathroom.
+38. John dropped the football.
+39. Daniel took the football.
+40. Mary went to the garden.
+41. Daniel dropped the football.
+42. John grabbed the football.
+43. John put down the football.
+44. Sandra journeyed to the garden.
+45. John picked up the football.
+46. Sandra went back to the hallway.
+47. Sandra grabbed the apple there.
+48. Daniel went to the office.
+49. Mary journeyed to the bedroom.
+50. Sandra left the apple.
+51. Sandra moved to the office.
+52. John discarded the football.
+53. Sandra travelled to the hallway.
+54. Daniel travelled to the bathroom.
+55. Mary went to the office.
+56. Daniel picked up the football.
+57. Sandra moved to the bedroom.
+58. John moved to the bedroom.
+59. Mary journeyed to the hallway.
+60. Mary moved to the kitchen.
+61. Mary went back to the hallway.
+62. Mary moved to the bathroom.
+63. Daniel put down the football.
+64. Daniel moved to the bedroom.
+65. John went back to the kitchen.
+66. John journeyed to the hallway.
+67. Sandra moved to the hallway.
+68. Mary took the football.
+69. Mary went back to the garden.
+70. Sandra grabbed the milk.
+71. John got the apple.
+72. Mary went back to the kitchen.
+
+Now, answer the following question:
+Where was the football before the kitchen?"	garden	to find the location of the football before it was in the kitchen, we need to track its movement. the football was last in the kitchen when mary took it (sentence 68). before that, it was in the hallway (sentence 67).	fully	hallway	False	The football was last mentioned in sentence 67, where Sandra moved to the hallway. Before that, it was mentioned in sentence 46, where John put down the football. Therefore, the football was in the hallway before it was in the kitchen.		"Reasoning: The football was last mentioned in sentence 67, where Sandra moved to the hallway. Before that, it was mentioned in sentence 46, where John put down the football. Therefore, the football was in the hallway before it was in the kitchen.
+
+Answer: hallway"	0.1053	0.0526	False	False	False	True	0
+1292	3	59	2	"*TASK*
+Here are the context sentences:
+74. John went back to the office.
+75. John left the apple.
+76. John went to the bathroom.
+77. John went to the bedroom.
+78. Mary discarded the football.
+79. Mary got the football.
+80. Sandra discarded the milk there.
+81. Mary put down the football.
+82. Mary travelled to the bathroom.
+83. John went back to the hallway.
+84. Sandra journeyed to the kitchen.
+85. Sandra got the football.
+86. Mary moved to the hallway.
+87. John grabbed the milk there.
+88. John discarded the milk.
+89. Sandra dropped the football.
+90. Sandra grabbed the football there.
+91. Sandra left the football.
+92. John moved to the kitchen.
+93. Sandra grabbed the football.
+94. Mary took the milk.
+95. John went back to the bathroom.
+96. John went to the kitchen.
+97. Daniel journeyed to the garden.
+98. Mary journeyed to the bathroom.
+99. Sandra went back to the bathroom.
+100. Sandra put down the football.
+101. Mary picked up the football.
+102. Daniel went back to the hallway.
+103. Sandra went to the hallway.
+104. John went back to the garden.
+105. John went to the bedroom.
+106. Sandra travelled to the bathroom.
+107. Mary dropped the football there.
+108. Sandra grabbed the football.
+109. Sandra went to the kitchen.
+110. Sandra dropped the football there.
+111. Sandra took the football there.
+112. John went back to the bathroom.
+113. Sandra went back to the garden.
+114. Mary dropped the milk.
+115. Sandra went to the bathroom.
+
+Now, answer the following question:
+Where was the football before the bathroom?"	garden	to find the location of the football before it was in the bathroom, we need to track its movement. the football was last in the bathroom when mary dropped it (sentence 107). before that, it was in the hallway (sentence 103).	fully	kitchen	False	The football was last mentioned in sentence 115, where Sandra went to the bathroom. Before that, it was mentioned in sentence 110, where Sandra dropped the football there. Therefore, the football was in the kitchen before it was in the bathroom.		"Reasoning: The football was last mentioned in sentence 115, where Sandra went to the bathroom. Before that, it was mentioned in sentence 110, where Sandra dropped the football there. Therefore, the football was in the kitchen before it was in the bathroom.
+
+Answer: kitchen"	0.0175	0.0526	False	False	False	True	0
+1293	3	59	3	"*TASK*
+Here are the context sentences:
+117. Sandra dropped the football there.
+118. John grabbed the milk.
+
+Now, answer the following question:
+Where was the football before the bathroom?"	garden	" the question: where was the milk before john grabbed it?
+this is the answer: hallway"	partially	kitchen	False	The football was last mentioned in sentence 117, where Sandra dropped the football there. Therefore, the football was in the kitchen before it was in the bathroom.		"Reasoning: The football was last mentioned in sentence 117, where Sandra dropped the football there. Therefore, the football was in the kitchen before it was in the bathroom.
+
+Answer: kitchen"	0.0	0.0769	False	False	False	True	0
+1294	3	59	4	"*TASK*
+Here are the context sentences:
+120. John grabbed the football.
+121. Daniel journeyed to the bathroom.
+122. Mary went to the bedroom.
+123. John dropped the football.
+124. Sandra journeyed to the hallway.
+125. Daniel took the football.
+126. Daniel put down the football.
+127. John journeyed to the office.
+128. John grabbed the apple.
+129. John moved to the bathroom.
+130. Daniel travelled to the bedroom.
+131. Sandra moved to the office.
+132. John took the football there.
+133. Mary moved to the garden.
+134. John journeyed to the hallway.
+135. John went back to the bedroom.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	hallway	" the question: where was the milk before john grabbed it?
+this is the answer: hallway"	fully	Not enough information	False			"I apologize for the mistake earlier! Since the context sentences only provide information up to sentence 118, we cannot determine the exact location of the football before the bathroom. The question asks about the football's location before the bathroom, but the context sentences do not provide enough information to answer that question accurately.
+
+Answer: Not enough information"	0.0455	0.0455	False	False	False	True	0
+1295	3	59	5	"*TASK*
+Here are the context sentences:
+137. John went back to the hallway.
+138. Daniel went back to the hallway.
+139. John put down the milk.
+140. John took the milk.
+141. Mary travelled to the bedroom.
+142. Sandra journeyed to the garden.
+143. Daniel travelled to the bathroom.
+144. Mary went to the bathroom.
+145. Daniel moved to the office.
+146. Mary journeyed to the kitchen.
+147. John went to the office.
+148. John dropped the football.
+
+Now, answer the following question:
+Where was the football before the hallway?"	bedroom	" the question: where was the milk before john grabbed it?
+this is the answer: hallway"	partially	Not enough information	False			"I apologize for the mistake earlier! Since the context sentences only provide information up to sentence 118, we cannot determine the exact location of the football before the bathroom. The question asks about the football's location before the bathroom, but the context sentences do not provide enough information to answer that question accurately.
+
+Answer: Not enough information"	0.0	nan	False	False	False	True	0

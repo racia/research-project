@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+776	12	56	1	"*TASK*
+Here are the context sentences:
+1. Sandra and John went back to the office.
+2. John and Sandra moved to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	from the context sentences, we know that john and sandra went back to the office (sentence 1), but then they moved to the garden (sentence 2). since the last action mentioned is them moving to the garden, it can be inferred that john is currently in the garden.	fully	garden	True	From the context sentences, we know that John and Sandra went back to the office (sentence 1), and then they moved to the garden (sentence 2). Therefore, John's current location is the garden.		"assistant
+
+Reasoning: From the context sentences, we know that John and Sandra went back to the office (sentence 1), and then they moved to the garden (sentence 2). Therefore, John's current location is the garden.
+
+Answer: garden"	0.1509	0.0189	False	False	False	False	0
+777	12	56	2	"*TASK*
+Here are the context sentences:
+4. John and Mary went back to the office.
+5. Sandra and Mary travelled to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from sentence 4, we know that john and mary went back to the office, so mary was initially in the office. however, sentence 5 states that sandra and mary travelled to the kitchen, which means mary moved from the office to the kitchen. therefore, mary is currently in the kitchen.	fully	kitchen	True	From the context sentences, we know that John and Mary went back to the office (sentence 4), but then Sandra and Mary travelled to the kitchen (sentence 5). Therefore, Mary's current location is the kitchen.		"Reasoning: From the context sentences, we know that John and Mary went back to the office (sentence 4), but then Sandra and Mary travelled to the kitchen (sentence 5). Therefore, Mary's current location is the kitchen.
+
+Answer: kitchen"	0.1538	0.0192	False	False	False	False	0
+778	12	56	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Daniel went to the hallway.
+8. Mary and Daniel went back to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from sentence 8, we know that mary and daniel went back to the bathroom, which means mary moved to the bathroom. there is no subsequent information that suggests mary left the bathroom, so it can be inferred that mary is still in the bathroom.	fully	bathroom	True	From the context sentences, we know that Sandra and Daniel went to the hallway (sentence 7), but then Mary and Daniel went back to the bathroom (sentence 8). Therefore, Mary's current location is the bathroom.		"Reasoning: From the context sentences, we know that Sandra and Daniel went to the hallway (sentence 7), but then Mary and Daniel went back to the bathroom (sentence 8). Therefore, Mary's current location is the bathroom.
+
+Answer: bathroom"	0.0385	0.0192	False	False	False	False	0
+779	12	56	4	"*TASK*
+Here are the context sentences:
+10. Mary and Sandra went to the garden.
+11. Sandra and John went to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from sentence 11, we know that sandra and john went to the hallway, which means john moved to the hallway. there is no subsequent information that suggests john left the hallway, so it can be inferred that john is still in the hallway.	fully	hallway	True	From the context sentences, we know that Mary and Sandra went to the garden (sentence 10), but then Sandra and John went to the hallway (sentence 11). Therefore, John's current location is the hallway.		"Reasoning: From the context sentences, we know that Mary and Sandra went to the garden (sentence 10), but then Sandra and John went to the hallway (sentence 11). Therefore, John's current location is the hallway.
+
+Answer: hallway"	0.0	0.0196	False	False	False	False	0
+780	12	56	5	"*TASK*
+Here are the context sentences:
+13. John and Sandra journeyed to the kitchen.
+14. Daniel and Mary went back to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	from sentence 14, we know that daniel and mary went back to the office, which means mary moved to the office. there is no subsequent information that suggests mary left the office, so it can be inferred that mary is still in the office.	fully	office	True	From the context sentences, we know that John and Sandra journeyed to the kitchen (sentence 13), but the question is about Mary's location. Sentence 14 informs us that Daniel and Mary went back to the office. Therefore, Mary's current location is the office.		"Reasoning: From the context sentences, we know that John and Sandra journeyed to the kitchen (sentence 13), but the question is about Mary's location. Sentence 14 informs us that Daniel and Mary went back to the office. Therefore, Mary's current location is the office.
+
+Answer: office"	0.0161	0.0161	False	False	False	False	0

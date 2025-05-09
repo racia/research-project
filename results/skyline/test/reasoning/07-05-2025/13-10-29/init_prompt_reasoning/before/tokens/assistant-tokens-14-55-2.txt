@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġpark	Ġyesterday	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	8	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	.	ĠTherefore	,	ĠMary	Ġwas	Ġin	Ġthe	Ġpark	Ġbefore	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġpark	<|eot_id|>

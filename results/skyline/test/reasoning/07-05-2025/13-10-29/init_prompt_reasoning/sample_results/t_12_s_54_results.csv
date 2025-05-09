@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+766	12	54	1	"*TASK*
+Here are the context sentences:
+1. John and Sandra travelled to the office.
+2. Mary and John moved to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that mary and john moved to the bathroom (sentence 2). there is no information provided that suggests mary left the bathroom or moved to a different location. therefore, based on the last known location of mary, we can conclude that mary is in the bathroom.	fully	bathroom	True	From sentence 2, we know that Mary and John moved to the bathroom. There is no subsequent information that suggests Mary has moved to a different location. Therefore, we can conclude that Mary is still in the bathroom.		"assistant
+
+Reasoning: From sentence 2, we know that Mary and John moved to the bathroom. There is no subsequent information that suggests Mary has moved to a different location. Therefore, we can conclude that Mary is still in the bathroom.
+
+Answer: bathroom"	0.0185	0.0185	False	False	False	True	0
+767	12	54	2	"*TASK*
+Here are the context sentences:
+4. Mary and Sandra moved to the garden.
+5. Sandra and John went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	garden	from the context sentences, we know that mary and sandra moved to the garden (sentence 4). there is no information provided that suggests mary left the garden or moved to a different location. although sandra left the garden and went back to the bedroom with john (sentence 5), there is no indication that mary accompanied them. therefore, based on the last known location of mary, we can conclude that mary is still in the garden.	fully	garden	True	From sentence 4, we know that Mary and Sandra moved to the garden. There is no subsequent information that suggests Mary has moved to a different location. Therefore, we can conclude that Mary is still in the garden.		"Reasoning: From sentence 4, we know that Mary and Sandra moved to the garden. There is no subsequent information that suggests Mary has moved to a different location. Therefore, we can conclude that Mary is still in the garden.
+
+Answer: garden"	0.0196	0.0196	False	False	False	True	0
+768	12	54	3	"*TASK*
+Here are the context sentences:
+7. John and Sandra moved to the kitchen.
+8. Sandra and Daniel went to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from the context sentences, we know that sandra and daniel went to the hallway (sentence 8). there is no information provided that suggests daniel left the hallway or moved to a different location. therefore, based on the last known location of daniel, we can conclude that daniel is in the hallway.	fully	hallway	True	From sentence 8, we know that Sandra and Daniel went to the hallway. There is no subsequent information that suggests Daniel has moved to a different location. Therefore, we can conclude that Daniel is still in the hallway.		"Reasoning: From sentence 8, we know that Sandra and Daniel went to the hallway. There is no subsequent information that suggests Daniel has moved to a different location. Therefore, we can conclude that Daniel is still in the hallway.
+
+Answer: hallway"	0.0392	0.0196	False	False	False	True	0
+769	12	54	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John went back to the bathroom.
+11. Mary and John went to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from the context sentences, we know that mary and john went to the kitchen (sentence 11). there is no information provided that suggests mary left the kitchen or moved to a different location. although john was previously in the bathroom with sandra (sentence 10), the sentence 11 indicates that john moved to the kitchen with mary. therefore, based on the last known location of mary, we can conclude that mary is in the kitchen.	fully	kitchen	True	From sentence 11, we know that Mary and John went to the kitchen. There is no subsequent information that suggests Mary has moved to a different location. Therefore, we can conclude that Mary is still in the kitchen.		"Reasoning: From sentence 11, we know that Mary and John went to the kitchen. There is no subsequent information that suggests Mary has moved to a different location. Therefore, we can conclude that Mary is still in the kitchen.
+
+Answer: kitchen"	0.0	0.0196	False	False	False	True	0
+770	12	54	5	"*TASK*
+Here are the context sentences:
+13. John and Sandra went back to the bedroom.
+14. John and Daniel went back to the office.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	from the context sentences, we know that john and sandra went back to the bedroom (sentence 13). although john later went back to the office with daniel (sentence 14), there is no information provided that suggests sandra accompanied them or left the bedroom. therefore, based on the last known location of sandra, we can conclude that sandra is still in the bedroom.	fully	bedroom	True	From sentence 13, we know that John and Sandra went back to the bedroom. There is no subsequent information that suggests Sandra has moved to a different location. Therefore, we can conclude that Sandra is still in the bedroom.		"Reasoning: From sentence 13, we know that John and Sandra went back to the bedroom. There is no subsequent information that suggests Sandra has moved to a different location. Therefore, we can conclude that Sandra is still in the bedroom.
+
+Answer: bedroom"	0.0769	0.0192	False	False	False	True	0

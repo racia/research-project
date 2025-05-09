@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġwho	Ġgave	Ġthe	Ġfootball	Ġto	ĠFred	.	ĠWe	Ġcan	Ġfind	Ġthe	Ġanswer	Ġby	Ġlooking	Ġat	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	53	Ġstates	Ġthat	ĠJeff	Ġpassed	Ġthe	Ġfootball	Ġto	ĠFred	,	Ġwhich	Ġimplies	Ġthat	ĠJeff	Ġgave	Ġthe	Ġfootball	Ġto	ĠFred	.ĊĊ	Answer	:	ĠJeff	<|eot_id|>

@@ -1,0 +1,76 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1111	3	23	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the kitchen.
+2. John took the apple.
+3. Daniel picked up the milk.
+4. John dropped the apple.
+5. John got the apple.
+6. John went to the garden.
+7. Daniel discarded the milk.
+8. Sandra picked up the milk.
+9. John journeyed to the hallway.
+10. Daniel went to the bathroom.
+11. Daniel picked up the football.
+12. Sandra travelled to the office.
+13. Daniel travelled to the hallway.
+14. Mary journeyed to the bedroom.
+15. John went back to the kitchen.
+16. Sandra left the milk.
+17. Mary moved to the bathroom.
+18. Sandra grabbed the milk there.
+19. Sandra dropped the milk.
+20. John discarded the apple.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	garden	from sentence 6, we know that john went to the garden. in sentence 4, we know that john dropped the apple, and in sentence 5, we know that john got the apple. this implies that john had the apple with him when he went to the garden. therefore, the apple was in the garden before john went to the hallway.	fully	garden	True	The apple was dropped by John, and then he got it back. After that, he went to the garden, and then journeyed to the hallway. So, the apple was with John before the hallway.		"Reasoning: The apple was dropped by John, and then he got it back. After that, he went to the garden, and then journeyed to the hallway. So, the apple was with John before the hallway.
+
+Answer: garden"	0.1429	0.0612	False	False	False	False	0
+1112	3	23	2	"*TASK*
+Here are the context sentences:
+22. Daniel went to the kitchen.
+23. Daniel put down the football.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	garden	the context lines provided (22 and 23) do not mention the apple or the hallway, so we need to look at the previous context lines to find the relevant information. from the previous context lines, we know that the apple was in the garden before john went to the hallway (sentence 6). this information is not affected by daniel's actions in the kitchen (sentences 22 and 23), so the answer remains the same: the apple was in the garden before the	none	not mentioned	False	There is no mention of the apple in these context sentences. The previous context sentences mentioned the apple, but these sentences do not provide any information about the apple's location.		"Reasoning: There is no mention of the apple in these context sentences. The previous context sentences mentioned the apple, but these sentences do not provide any information about the apple's location.
+
+Answer: not mentioned"	0.0476	0.0714	False	False	False	True	0
+1113	3	23	3	"*TASK*
+Here are the context sentences:
+25. John got the apple.
+26. Sandra went to the hallway.
+
+Now, answer the following question:
+Where was the football before the kitchen?"	hallway	from the previous context lines, we know that daniel picked up the football (sentence 11) and then travelled to the hallway (sentence 13). there is no information about daniel dropping or leaving the football before going to the kitchen (sentence 22). therefore, we can infer that daniel still had the football with him when he travelled to the hallway. when daniel went to the kitchen, the football was with him, so it must have been in the hallway before the kitchen.	none	not mentioned	False	There is no mention of the football being in the kitchen. The context sentences only mention Daniel putting down the football, but not in relation to the kitchen.		"Reasoning: There is no mention of the football being in the kitchen. The context sentences only mention Daniel putting down the football, but not in relation to the kitchen.
+
+Answer: not mentioned"	0.1026	0.0769	False	False	False	True	0
+1114	3	23	4	"*TASK*
+Here are the context sentences:
+28. Sandra went to the bedroom.
+29. John went to the office.
+
+Now, answer the following question:
+Where was the football before the kitchen?"	hallway	the context lines provided (28 and 29) do not mention the football or the kitchen, so we need to look at the previous context lines to find the relevant information. from the previous context lines, we know that daniel picked up the football (sentence 11) and then travelled to the hallway (sentence 13). there is no information about daniel dropping or leaving the football before going to the kitchen (sentence 22). therefore, we can infer that daniel still had the football	none	not mentioned	False	There is no mention of the football being in the kitchen. The context sentences do not provide any information about the football's location.		"Reasoning: There is no mention of the football being in the kitchen. The context sentences do not provide any information about the football's location.
+
+Answer: not mentioned"	0.0294	0.0882	False	False	False	True	0
+1115	3	23	5	"*TASK*
+Here are the context sentences:
+31. Mary moved to the office.
+32. Mary got the milk.
+33. Sandra travelled to the garden.
+34. Sandra travelled to the bedroom.
+35. Mary travelled to the bathroom.
+36. Sandra went to the office.
+37. Daniel got the football.
+38. John put down the apple.
+39. Daniel went back to the garden.
+40. John got the apple.
+41. John went to the kitchen.
+42. John went back to the garden.
+
+Now, answer the following question:
+Where was the apple before the garden?"	kitchen	" back to the kitchen.
+this is the question: where was the apple before john put it down?
+this is the answer: hallway"	fully	on the ground	False	According to sentence 38, John put down the apple. Then, he went to the garden (sentence 42). Therefore, the apple was on the ground before John went to the garden.		"Reasoning: According to sentence 38, John put down the apple. Then, he went to the garden (sentence 42). Therefore, the apple was on the ground before John went to the garden.
+
+Answer: on the ground"	0.0	0.0625	False	False	False	False	0

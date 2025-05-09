@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.	ĠThe	Ġlast	Ġlocation	Ġmentioned	Ġis	Ġthe	Ġgarden	,	Ġso	ĠMary	Ġmust	Ġbe	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

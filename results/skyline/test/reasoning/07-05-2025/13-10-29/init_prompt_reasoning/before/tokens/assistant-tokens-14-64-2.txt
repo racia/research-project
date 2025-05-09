@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	5	Ġstates	Ġthat	ĠBill	Ġmoved	Ġto	Ġthe	Ġoffice	Ġyesterday	,	Ġand	Ġsentence	Ġ	4	Ġindicates	Ġthat	ĠBill	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	.	ĠThis	Ġimplies	Ġthat	ĠBill	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġcoming	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

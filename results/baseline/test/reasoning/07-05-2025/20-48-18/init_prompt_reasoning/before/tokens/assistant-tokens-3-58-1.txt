@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġtaken	Ġby	ĠMary	Ġ(	sentence	Ġ	10	),	Ġand	Ġthen	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	11	).	ĠAfter	Ġthat	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	13	).	ĠSince	Ġthe	Ġapple	Ġwas	Ġtaken	Ġbefore	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġwas	Ġin	Ġthe	Ġoffice	Ġbefore	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	50	,	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	,	Ġand	Ġthen	ĠFred	Ġhanded	Ġthe	Ġapple	Ġback	Ġto	ĠMary	Ġin	Ġsentence	Ġ	51	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

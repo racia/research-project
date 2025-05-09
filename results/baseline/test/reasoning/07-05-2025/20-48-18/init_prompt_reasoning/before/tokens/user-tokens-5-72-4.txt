@@ -1,0 +1,15 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+14	.	ĠFred	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+15	.	ĠFred	Ġleft	Ġthe	Ġmilk	.Ċ
+16	.	ĠFred	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+17	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+18	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+19	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+20	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+21	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+22	.	ĠJeff	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+23	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+24	.	ĠJeff	Ġpassed	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
+25	.	ĠFred	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠJeff	Ġgive	Ġto	ĠFred	?Ċ

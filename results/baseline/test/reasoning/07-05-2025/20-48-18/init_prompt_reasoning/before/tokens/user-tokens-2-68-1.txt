@@ -1,0 +1,15 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+2	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+3	.	ĠMary	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+4	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+5	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+6	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+7	.	ĠMary	Ġdropped	Ġthe	Ġapple	Ġthere	.Ċ
+8	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+9	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+10	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+11	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+12	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

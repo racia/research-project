@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	Ġwith	ĠSandra	,	Ġwhich	Ġis	Ġthe	Ġmost	Ġrecent	Ġlocation	Ġmentioned	Ġfor	ĠMary	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

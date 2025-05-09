@@ -1,0 +1,29 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+19	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+20	.	ĠJeff	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+21	.	ĠFred	Ġdiscarded	Ġthe	Ġapple	.Ċ
+22	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+23	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+24	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+25	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+26	.	ĠMary	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+27	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+28	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+29	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+30	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+31	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+32	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+33	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+34	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+35	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+36	.	ĠFred	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+37	.	ĠBill	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+38	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+39	.	ĠBill	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+40	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+41	.	ĠBill	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+42	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+43	.	ĠBill	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+44	.	ĠBill	Ġhanded	Ġthe	Ġapple	Ġto	ĠJeff	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġapple	?Ċ

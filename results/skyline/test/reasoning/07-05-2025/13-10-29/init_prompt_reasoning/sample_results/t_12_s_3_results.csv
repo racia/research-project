@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+511	12	3	1	"*TASK*
+Here are the context sentences:
+1. Mary and Sandra went to the bathroom.
+2. Daniel and John journeyed to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"from context sentence 1, ""mary and sandra went to the bathroom"", we can infer that mary's current location is the bathroom. this sentence directly states mary's destination, which is the bathroom, and there is no information provided that suggests she has moved from there. therefore, the answer to the question ""where is mary?"" is indeed the bathroom."	fully	bathroom	True	According to context sentence 1, Mary went to the bathroom with Sandra.		"assistant
+
+Reasoning: According to context sentence 1, Mary went to the bathroom with Sandra.
+
+Answer: bathroom"	0.08	0.04	False	False	False	False	0
+512	12	3	2	"*TASK*
+Here are the context sentences:
+4. Mary and John moved to the bedroom.
+5. John and Sandra travelled to the office.
+
+Now, answer the following question:
+Where is John?"	office	"from context sentence 4, ""mary and john moved to the bedroom"", we know that john was in the bedroom. however, context sentence 5, ""john and sandra travelled to the office"", indicates that john has moved from the bedroom to the office. this sentence directly states john's new location, which is the office. therefore, the answer to the question ""where is john?"" is indeed the office."	fully	office	True	According to context sentence 5, John travelled to the office with Sandra, which is the most recent location mentioned for John.		"Reasoning: According to context sentence 5, John travelled to the office with Sandra, which is the most recent location mentioned for John.
+
+Answer: office"	0.1875	0.0312	False	False	False	True	0
+513	12	3	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary journeyed to the kitchen.
+8. Mary and Daniel moved to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"from context sentence 8, ""mary and daniel moved to the office"", we can directly infer that daniel's current location is the office. this sentence explicitly states daniel's destination, which is the office, and there is no information provided that suggests he has moved from there. therefore, the answer to the question ""where is daniel?"" is indeed the office."	fully	office	True	According to context sentence 8, Daniel moved to the office with Mary, which is the most recent location mentioned for Daniel.		"Reasoning: According to context sentence 8, Daniel moved to the office with Mary, which is the most recent location mentioned for Daniel.
+
+Answer: office"	0.0625	0.0312	False	False	False	True	0
+514	12	3	4	"*TASK*
+Here are the context sentences:
+10. John and Sandra travelled to the garden.
+11. Mary and Daniel moved to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"from context sentence 10, ""john and sandra travelled to the garden"", we can directly infer that sandra's current location is the garden. this sentence explicitly states sandra's destination, which is the garden, and there is no information provided that suggests she has moved from there. therefore, the answer to the question ""where is sandra?"" is indeed the garden."	fully	garden	True	According to context sentence 10, Sandra travelled to the garden with John, which is the most recent location mentioned for Sandra.		"Reasoning: According to context sentence 10, Sandra travelled to the garden with John, which is the most recent location mentioned for Sandra.
+
+Answer: garden"	0.0625	0.0313	False	False	False	True	0
+515	12	3	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra went to the bathroom.
+14. Sandra and Mary moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"from context sentence 13, ""mary and sandra went to the bathroom"", we know that mary was in the bathroom. however, context sentence 14, ""sandra and mary moved to the hallway"", indicates that mary has moved from the bathroom to the hallway. this sentence directly states mary's new location, which is the hallway. therefore, the answer to the question ""where is mary?"" is indeed the hallway."	fully	hallway	True	According to context sentence 14, Mary moved to the hallway with Sandra, which is the most recent location mentioned for Mary.		"Reasoning: According to context sentence 14, Mary moved to the hallway with Sandra, which is the most recent location mentioned for Mary.
+
+Answer: hallway"	0.0938	0.0312	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġmilk	Ġwas	Ġdiscarded	Ġby	ĠMary	,	Ġand	Ġthen	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.	ĠSince	Ġthe	Ġmilk	Ġwas	Ġdiscarded	Ġbefore	Ġgoing	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġwas	Ġin	Ġthe	Ġbathroom	Ġbefore	Ġbeing	Ġdiscarded	.	ĠTherefore	,	Ġthe	Ġmilk	Ġwas	Ġin	Ġthe	Ġbathroom	Ġbefore	Ġbeing	Ġdiscarded	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

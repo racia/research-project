@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+38	.	ĠBill	Ġhanded	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
+39	.	ĠJeff	Ġpassed	Ġthe	Ġfootball	Ġto	ĠBill	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠJeff	Ġgive	Ġto	ĠBill	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠJohn	Ġfirst	Ġwent	Ġto	Ġthe	Ġhallway	Ġand	Ġthen	Ġwent	Ġto	Ġthe	Ġgarden	.	ĠTherefore	,	Ġhis	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

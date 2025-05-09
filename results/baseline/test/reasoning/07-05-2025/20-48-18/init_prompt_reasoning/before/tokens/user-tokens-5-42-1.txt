@@ -1,0 +1,45 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+2	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+3	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+4	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+5	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+6	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+7	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+8	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+9	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+10	.	ĠJeff	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
+11	.	ĠJeff	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
+12	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+13	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+14	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+15	.	ĠBill	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+16	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+17	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+18	.	ĠBill	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+19	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+20	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+21	.	ĠBill	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+22	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+23	.	ĠFred	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+24	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+25	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+26	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+27	.	ĠMary	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+28	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+29	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+30	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+31	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+32	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+33	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+34	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+35	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+36	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+37	.	ĠBill	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+38	.	ĠBill	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+39	.	ĠMary	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+40	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+41	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+42	.	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġfootball	?Ċ

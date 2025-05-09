@@ -1,0 +1,70 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2011	5	83	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the hallway.
+2. Jeff moved to the office.
+3. Jeff grabbed the football there.
+4. Bill moved to the bathroom.
+5. Mary travelled to the bathroom.
+6. Mary went to the kitchen.
+7. Bill travelled to the hallway.
+8. Jeff put down the football.
+9. Mary moved to the bathroom.
+10. Jeff journeyed to the garden.
+11. Jeff travelled to the bathroom.
+12. Fred went to the hallway.
+13. Fred went to the bedroom.
+14. Bill grabbed the milk there.
+15. Fred travelled to the office.
+16. Bill put down the milk.
+17. Fred picked up the football there.
+18. Bill got the milk there.
+19. Jeff went back to the hallway.
+20. Bill handed the milk to Jeff.
+
+Now, answer the following question:
+What did Bill give to Jeff?"	milk	"from sentence 20, it is directly stated that ""bill handed the milk to jeff."" this explicitly indicates that bill gave milk to jeff."	fully	milk	True	Bill grabbed the milk in the bedroom (sentence 14) and later handed it to Jeff (sentence 20).		"Reasoning: Bill grabbed the milk in the bedroom (sentence 14) and later handed it to Jeff (sentence 20).
+
+Answer: milk"	0.0333	0.0333	False	False	False	False	0
+2012	5	83	2	"*TASK*
+Here are the context sentences:
+22. Fred travelled to the garden.
+23. Jeff passed the milk to Bill.
+
+Now, answer the following question:
+Who gave the milk to Bill?"	jeff	"from sentence 23, it is directly stated that ""jeff passed the milk to bill."" this explicitly indicates that jeff gave the milk to bill."	fully	Jeff	True	According to sentence 23, Jeff passed the milk to Bill.		"Reasoning: According to sentence 23, Jeff passed the milk to Bill.
+
+Answer: Jeff"	0.1	0.05	False	False	False	False	0
+2013	5	83	3	"*TASK*
+Here are the context sentences:
+25. Fred put down the football.
+26. Bill left the milk.
+
+Now, answer the following question:
+What did Jeff give to Bill?"	milk	"from the previous context (sentence 20), we know that ""bill handed the milk to jeff."" however, this question asks what jeff gave to bill. to find the answer, we need to look for a sentence where jeff gives something to bill. in sentence 20, it's the opposite - bill gives milk to jeff. but we can infer that before that, jeff must have had the milk and given it to bill. this is supported by the"	none	Not mentioned (or Unknown)	False	There is no mention of Jeff giving anything to Bill in the given context sentences. In fact, sentence 23 states that Jeff passed the milk to Bill, but it doesn't imply that Jeff gave the milk to Bill.		"Reasoning: There is no mention of Jeff giving anything to Bill in the given context sentences. In fact, sentence 23 states that Jeff passed the milk to Bill, but it doesn't imply that Jeff gave the milk to Bill.
+
+Answer: Not mentioned (or Unknown)"	0.0536	0.0179	False	False	False	True	0
+2014	5	83	4	"*TASK*
+Here are the context sentences:
+28. Mary moved to the bedroom.
+29. Fred moved to the office.
+
+Now, answer the following question:
+What did Jeff give to Bill?"	milk	"this question refers to a previous part of the conversation history. from the previous context (sentence 20), we know that ""bill handed the milk to jeff."" however, this question asks what jeff gave to bill. to find the answer, we need to look for a sentence where jeff gives something to bill. in sentence 20, it's the opposite - bill gives milk to jeff. but we can infer that before that, jeff must have had the"	none	Not mentioned (or Unknown)	False	There is no mention of Jeff giving anything to Bill in the given context sentences. The sentences only mention Mary and Fred moving to different locations, but do not provide any information about Jeff giving something to Bill.		"Reasoning: There is no mention of Jeff giving anything to Bill in the given context sentences. The sentences only mention Mary and Fred moving to different locations, but do not provide any information about Jeff giving something to Bill.
+
+Answer: Not mentioned (or Unknown)"	0.0377	0.0189	False	False	False	True	0
+2015	5	83	5	"*TASK*
+Here are the context sentences:
+31. Bill moved to the bedroom.
+32. Mary journeyed to the hallway.
+33. Mary grabbed the milk there.
+34. Mary put down the milk there.
+35. Jeff grabbed the milk there.
+36. Bill moved to the hallway.
+37. Jeff passed the milk to Mary.
+38. Jeff travelled to the garden.
+
+Now, answer the following question:
+Who gave the milk to Mary?"	jeff	"from sentence 37, it is directly stated that ""jeff passed the milk to mary."" this explicitly indicates that jeff gave the milk to mary."	fully	Jeff	True	According to sentence 37, Jeff passed the milk to Mary.		"Reasoning: According to sentence 37, Jeff passed the milk to Mary.
+
+Answer: Jeff"	0.1	0.05	False	False	False	False	0

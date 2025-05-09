@@ -1,0 +1,51 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+2	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+3	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+4	.	ĠFred	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+5	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+6	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+7	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+8	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+9	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+10	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+11	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+12	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+13	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+14	.	ĠFred	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+15	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+16	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+17	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+18	.	ĠBill	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+19	.	ĠBill	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+20	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+21	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+22	.	ĠBill	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+23	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+24	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+25	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+26	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+27	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+28	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+29	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+30	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+31	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+32	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+33	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+34	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+35	.	ĠFred	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+36	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+37	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+38	.	ĠFred	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+39	.	ĠFred	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+40	.	ĠFred	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+41	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+42	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+43	.	ĠFred	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+44	.	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+45	.	ĠFred	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+46	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+47	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+48	.	ĠFred	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	?Ċ

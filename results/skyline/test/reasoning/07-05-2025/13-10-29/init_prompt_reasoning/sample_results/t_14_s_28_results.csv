@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1636	14	28	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Julie went back to the bedroom.
+2. This morning Bill travelled to the park.
+3. Yesterday Bill went to the office.
+4. Yesterday Mary went to the bedroom.
+
+Now, answer the following question:
+Where was Bill before the park?"	office	from the context sentences, we know that bill travelled to the park this morning (sentence 2). to determine where bill was before the park, we need to look at the previous actions of bill. sentence 3 states that yesterday bill went to the office. there is no information about bill's actions between yesterday and this morning, so we can logically assume that bill was still at the office before he travelled to the park this morning.	fully	office	True	"According to sentence 3, ""Yesterday Bill went to the office."" This implies that Bill was at the office before going to the park this morning."		"assistant
+
+Reasoning: According to sentence 3, ""Yesterday Bill went to the office."" This implies that Bill was at the office before going to the park this morning.
+
+Answer: office"	0.225	0.05	False	False	False	False	0
+1637	14	28	2	"*TASK*
+Here are the context sentences:
+6. Julie travelled to the cinema this morning.
+7. Mary travelled to the office this morning.
+
+Now, answer the following question:
+Where was Mary before the office?"	bedroom	from the context sentences, we know that mary travelled to the office this morning (sentence 7). to determine where mary was before the office, we need to look at the previous actions of mary. although there is no direct information about mary's actions before this morning, we can look at the previous parts of the conversation history. in sentence 4, we know that yesterday mary went to the bedroom. there is no information about mary's actions between yesterday and this morning, so we	partially	bedroom	True	"According to sentence 4, ""Yesterday Mary went to the bedroom."" There is no other information about Mary's location between yesterday and this morning, so it can be inferred that Mary was at the bedroom before going to the office this morning."		"Reasoning: According to sentence 4, ""Yesterday Mary went to the bedroom."" There is no other information about Mary's location between yesterday and this morning, so it can be inferred that Mary was at the bedroom before going to the office this morning.
+
+Answer: bedroom"	0.0909	0.0364	False	False	False	True	0
+1638	14	28	3	"*TASK*
+Here are the context sentences:
+9. This afternoon Mary travelled to the park.
+10. This afternoon Bill went to the school.
+
+Now, answer the following question:
+Where was Bill before the park?"	office	the question asks where bill was before the park, but the context sentences (9 and 10) do not mention bill going to the park. sentence 10 states that bill went to the school this afternoon. there is no information about bill going to the park. however, we can look at the previous parts of the conversation history. in sentence 3, we know that yesterday bill went to the office. there is no information about bill's actions between yesterday and this afternoon, so	none	not mentioned	False	The question asks about Bill's location before the park, but Bill did not go to the park. According to sentence 2, Bill went to the park this morning, and according to sentence 10, Bill went to the school this afternoon. There is no information about Bill going to the park in the afternoon.		"Reasoning: The question asks about Bill's location before the park, but Bill did not go to the park. According to sentence 2, Bill went to the park this morning, and according to sentence 10, Bill went to the school this afternoon. There is no information about Bill going to the park in the afternoon.
+
+Answer: not mentioned"	0.0845	0.0282	False	False	False	True	0
+1639	14	28	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Julie went to the office.
+13. Mary went back to the cinema this evening.
+
+Now, answer the following question:
+Where was Julie before the office?"	cinema	the question asks where julie was before the office. sentence 12 states that julie went to the office this afternoon. there is no direct information about julie's actions before this afternoon. however, we can look at the previous parts of the conversation history. in sentence 6, we know that julie travelled to the cinema this morning. there is no information about julie's actions between this morning and this afternoon, so we can logically assume that julie was still at the cinema before she went to	partially	cinema	True	"According to sentence 6, ""Julie travelled to the cinema this morning."" There is no other information about Julie's location between this morning and this afternoon, so it can be inferred that Julie was at the cinema before going to the office this afternoon."		"Reasoning: According to sentence 6, ""Julie travelled to the cinema this morning."" There is no other information about Julie's location between this morning and this afternoon, so it can be inferred that Julie was at the cinema before going to the office this afternoon.
+
+Answer: cinema"	0.0345	0.0345	False	False	False	True	0
+1640	14	28	5	"*TASK*
+Here are the context sentences:
+15. Yesterday Fred went back to the bedroom.
+16. Julie journeyed to the school this evening.
+
+Now, answer the following question:
+Where was Mary before the park?"	office	the question asks where mary was before the park, but the context sentences (15 and 16) do not mention mary going to the park. however, we can look at the previous parts of the conversation history. in sentence 9, we know that mary travelled to the park this afternoon. to determine where mary was before the park, we need to look at mary's actions before this afternoon. in sentence 7, we know that mary travelled to the office this morning. there	none	bedroom	False	"According to sentence 4, ""Yesterday Mary went to the bedroom."" And according to sentence 9, ""This afternoon Mary travelled to the park."" There is no other information about Mary's location between yesterday and this afternoon, so it can be inferred that Mary was at the bedroom before going to the park this afternoon."		"Reasoning: According to sentence 4, ""Yesterday Mary went to the bedroom."" And according to sentence 9, ""This afternoon Mary travelled to the park."" There is no other information about Mary's location between yesterday and this afternoon, so it can be inferred that Mary was at the bedroom before going to the park this afternoon.
+
+Answer: bedroom"	0.0563	0.0282	False	False	False	True	0

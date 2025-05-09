@@ -1,0 +1,79 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1331	3	67	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the kitchen.
+2. Daniel went to the hallway.
+3. John journeyed to the hallway.
+4. John picked up the football there.
+5. Daniel journeyed to the office.
+6. John went back to the bedroom.
+7. Sandra travelled to the bedroom.
+8. Sandra went back to the garden.
+9. John discarded the football.
+10. Daniel moved to the garden.
+11. John travelled to the office.
+12. Daniel went back to the kitchen.
+13. Sandra journeyed to the bathroom.
+14. John journeyed to the bathroom.
+15. Daniel moved to the bedroom.
+16. Daniel travelled to the bathroom.
+17. John went back to the office.
+18. Mary got the football.
+19. Mary dropped the football.
+20. Mary grabbed the milk there.
+21. Mary got the football.
+22. Mary put down the football.
+23. John went to the garden.
+24. Sandra travelled to the office.
+25. Mary got the football.
+26. Mary went back to the garden.
+27. John picked up the apple.
+28. Mary went to the bedroom.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	garden	from the context sentences, we can track the movement of the football. the football was first picked up by john in the hallway (sentence 4). then, john discarded the football (sentence 9), which means the football was left in the location where john was when he discarded it. at that time, john was in the bedroom (sentence 6). later, mary got the football (sentence 18), which implies that the football was still in the bedroom. mary then	fully	hallway	False	The football was picked up by John in the hallway (sentence 4). Then, John went back to the bedroom (sentence 6). Therefore, the football was in the hallway before the bedroom.		"Reasoning: The football was picked up by John in the hallway (sentence 4). Then, John went back to the bedroom (sentence 6). Therefore, the football was in the hallway before the bedroom.
+
+Answer: hallway"	0.0	0.0638	False	False	False	False	0
+1332	3	67	2	"*TASK*
+Here are the context sentences:
+30. Sandra went to the kitchen.
+31. John discarded the apple.
+32. Daniel moved to the hallway.
+33. Mary put down the milk.
+
+Now, answer the following question:
+Where was the milk before the bedroom?"	garden	from the context sentences, we can track the movement of the milk. the milk was first grabbed by mary in the garden (sentence 20). then, mary put down the milk (sentence 33), but the location where mary put down the milk is not specified. however, we can infer that mary was still in the same location where she grabbed the milk, which is the garden, because there is no sentence indicating that mary moved to a different location after grabbing the milk.	partially	not mentioned	False	There is no mention of the milk being in the bedroom. The milk was put down (sentence 33), but its location before that is not specified. Therefore, we cannot determine where the milk was before the bedroom.		"Reasoning: There is no mention of the milk being in the bedroom. The milk was put down (sentence 33), but its location before that is not specified. Therefore, we cannot determine where the milk was before the bedroom.
+
+Answer: not mentioned"	0.0	0.0577	False	False	False	True	0
+1333	3	67	3	"*TASK*
+Here are the context sentences:
+35. Daniel went to the office.
+36. John got the apple.
+
+Now, answer the following question:
+Where was the milk before the bedroom?"	garden	this question refers to a previous part of the conversation history. the milk was first grabbed by mary in the garden (sentence 20). then, mary put down the milk (sentence 33), but the location where mary put down the milk is not specified. however, we can infer that mary was still in the same location where she grabbed the milk, which is the garden, because there is no sentence indicating that mary moved to a different location after grabbing the milk. the new	none	not mentioned	False	There is no mention of the milk being in the bedroom or any previous location. The context sentences only mention the office and the apple, but not the milk.		"Reasoning: There is no mention of the milk being in the bedroom or any previous location. The context sentences only mention the office and the apple, but not the milk.
+
+Answer: not mentioned"	0.1	0.075	False	False	False	True	0
+1334	3	67	4	"*TASK*
+Here are the context sentences:
+38. Mary grabbed the milk.
+39. Mary put down the football.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	garden	to answer this question, we need to track the movement of the football. previously, mary got the football (sentence 25) and then went back to the garden (sentence 26). there is no sentence indicating that mary moved the football from the garden before she put down the football (sentence 39). therefore, we can infer that the football was still in the garden when mary put it down.	partially	hallway	False	The football was put down (sentence 39), but its location before that is not specified. However, we know that John discarded the football (sentence 9) and Mary picked it up (sentence 18) before putting it down. Since John discarded the football, it's likely that the football was in the hallway (where John discarded it) before the bedroom.		"Reasoning: The football was put down (sentence 39), but its location before that is not specified. However, we know that John discarded the football (sentence 9) and Mary picked it up (sentence 18) before putting it down. Since John discarded the football, it's likely that the football was in the hallway (where John discarded it) before the bedroom.
+
+Answer: hallway"	0.0247	0.037	False	False	False	False	0
+1335	3	67	5	"*TASK*
+Here are the context sentences:
+41. Daniel went to the garden.
+42. Mary dropped the milk.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	garden	".
+
+these are the context lines: 40. mary went to the office.
+41. john went to the office.
+this is the question: where was the apple before john got it?
+this is the answer: garden"	none	hallway	False	The context sentences do not provide any new information about the football's location before the bedroom. The previous answer still stands: the football was likely in the hallway before the bedroom.		"Reasoning: The context sentences do not provide any new information about the football's location before the bedroom. The previous answer still stands: the football was likely in the hallway before the bedroom.
+
+Answer: hallway"	0.0	0.0714	False	False	False	True	0

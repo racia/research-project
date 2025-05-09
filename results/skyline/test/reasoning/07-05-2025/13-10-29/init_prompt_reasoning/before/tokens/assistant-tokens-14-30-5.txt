@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	16	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	Ġthis	Ġafternoon	.	ĠSentence	Ġ	15	Ġstates	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	Ġthis	Ġevening	.	ĠTherefore	,	ĠMary	Ġwas	Ġin	Ġthe	Ġkitchen	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

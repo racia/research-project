@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1561	14	13	1	"*TASK*
+Here are the context sentences:
+1. Bill travelled to the office yesterday.
+2. Bill moved to the school this morning.
+3. Fred went back to the kitchen yesterday.
+4. Julie journeyed to the school yesterday.
+
+Now, answer the following question:
+Where was Bill before the school?"	office	from context sentence 2, we know that bill moved to the school this morning. to determine where bill was before the school, we need to look at bill's previous location. context sentence 1 states that bill travelled to the office yesterday. since bill moved to the school this morning, it implies that bill was at the office before moving to the school. therefore, the answer is the office.	fully	office	True	According to sentence 1, Bill was in the office yesterday. Then, according to sentence 2, Bill moved to the school this morning. Therefore, Bill was in the office before moving to the school.		"assistant
+
+Reasoning: According to sentence 1, Bill was in the office yesterday. Then, according to sentence 2, Bill moved to the school this morning. Therefore, Bill was in the office before moving to the school.
+
+Answer: office"	0.1923	0.0385	False	False	False	False	0
+1562	14	13	2	"*TASK*
+Here are the context sentences:
+6. This afternoon Bill journeyed to the cinema.
+7. Yesterday Mary journeyed to the park.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	school	to determine where bill was before the cinema, we need to look at bill's previous location. the context sentences provided do not directly mention bill's location before the cinema, but we can infer it from the previous context sentences. since we are not given any information about bill's location between yesterday and this afternoon, we can look at the previous sentences about bill. from the previous context sentences (1. bill travelled to the office yesterday. 2. bill moved to the school this morning	partially	school	True	According to sentence 2 in the previous context, Bill moved to the school this morning. Then, according to sentence 6, Bill journeyed to the cinema this afternoon. Therefore, Bill was in the school before moving to the cinema.		"Reasoning: According to sentence 2 in the previous context, Bill moved to the school this morning. Then, according to sentence 6, Bill journeyed to the cinema this afternoon. Therefore, Bill was in the school before moving to the cinema.
+
+Answer: school"	0.0545	0.0364	False	False	False	False	0
+1563	14	13	3	"*TASK*
+Here are the context sentences:
+9. Fred journeyed to the bedroom this morning.
+10. Julie went back to the kitchen this morning.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	school	the context sentences 9 and 10 do not provide any new information about bill's location. however, we can refer to the previous context sentences about bill. from sentence 2, we know that bill moved to the school this morning. since sentence 6 states that bill journeyed to the cinema this afternoon, it implies that bill was at the school before going to the cinema. therefore, the answer is the school.	none	school	True	The context sentences 9 and 10 do not provide new information about Bill's location. The previous information about Bill's location is still valid. According to sentence 2 in the previous context, Bill moved to the school this morning. Then, according to sentence 6, Bill journeyed to the cinema this afternoon. Therefore, Bill was in the school before moving to the cinema.		"Reasoning: The context sentences 9 and 10 do not provide new information about Bill's location. The previous information about Bill's location is still valid. According to sentence 2 in the previous context, Bill moved to the school this morning. Then, according to sentence 6, Bill journeyed to the cinema this afternoon. Therefore, Bill was in the school before moving to the cinema.
+
+Answer: school"	0.0595	0.0238	False	False	False	True	0
+1564	14	13	4	"*TASK*
+Here are the context sentences:
+12. Fred travelled to the park this afternoon.
+13. Bill travelled to the bedroom this evening.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	cinema	to determine where bill was before the bedroom, we need to look at bill's previous location. from sentence 6, we know that bill journeyed to the cinema this afternoon. sentence 13 states that bill travelled to the bedroom this evening, which implies that bill was at the cinema before going to the bedroom. therefore, the answer is the cinema.	partially	cinema	True	According to sentence 6, Bill journeyed to the cinema this afternoon. Then, according to sentence 13, Bill travelled to the bedroom this evening. Therefore, Bill was in the cinema before moving to the bedroom.		"Reasoning: According to sentence 6, Bill journeyed to the cinema this afternoon. Then, according to sentence 13, Bill travelled to the bedroom this evening. Therefore, Bill was in the cinema before moving to the bedroom.
+
+Answer: cinema"	0.0392	0.0392	False	False	False	False	0
+1565	14	13	5	"*TASK*
+Here are the context sentences:
+15. This evening Fred went back to the office.
+16. Julie went back to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	cinema	the context sentences 15 and 16 do not provide any new information about bill's location. however, we can refer to the previous context sentences about bill. from sentence 6, we know that bill journeyed to the cinema this afternoon. sentence 13 states that bill travelled to the bedroom this evening, which implies that bill was at the cinema before going to the bedroom. therefore, the answer is the cinema.	none	cinema	True	The context sentences 15 and 16 do not provide new information about Bill's location. The previous information about Bill's location is still valid. According to sentence 6, Bill journeyed to the cinema this afternoon. Then, according to sentence 13, Bill travelled to the bedroom this evening. Therefore, Bill was in the cinema before moving to the bedroom.		"Reasoning: The context sentences 15 and 16 do not provide new information about Bill's location. The previous information about Bill's location is still valid. According to sentence 6, Bill journeyed to the cinema this afternoon. Then, according to sentence 13, Bill travelled to the bedroom this evening. Therefore, Bill was in the cinema before moving to the bedroom.
+
+Answer: cinema"	0.025	0.025	False	False	False	True	0

@@ -1,0 +1,33 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+2	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+3	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+4	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+5	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+6	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+7	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+8	.	ĠBill	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+9	.	ĠBill	Ġdropped	Ġthe	Ġfootball	.Ċ
+10	.	ĠBill	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+11	.	ĠBill	Ġdropped	Ġthe	Ġfootball	.Ċ
+12	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+13	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+14	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+15	.	ĠFred	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+16	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+17	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+18	.	ĠMary	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
+19	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+20	.	ĠBill	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+21	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+22	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+23	.	ĠMary	Ġdropped	Ġthe	Ġapple	.Ċ
+24	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+25	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+26	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+27	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+28	.	ĠFred	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+29	.	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
+30	.	ĠFred	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġapple	?Ċ

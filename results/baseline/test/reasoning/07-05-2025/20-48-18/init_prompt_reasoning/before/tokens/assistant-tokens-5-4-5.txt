@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	32	,	ĠMary	Ġpassed	Ġthe	Ġmilk	Ġto	ĠJeff	,	Ġwhich	Ġmeans	ĠMary	Ġgave	Ġthe	Ġmilk	Ġto	ĠJeff	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+2	.	ĠFred	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+3	.	ĠFred	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+4	.	ĠFred	Ġhanded	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠFred	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

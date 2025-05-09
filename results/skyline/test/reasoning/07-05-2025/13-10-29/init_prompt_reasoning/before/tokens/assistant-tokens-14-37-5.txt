@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	10	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.	ĠSentence	Ġ	15	Ġmentions	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġcinema	Ġthis	Ġevening	,	Ġimplying	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

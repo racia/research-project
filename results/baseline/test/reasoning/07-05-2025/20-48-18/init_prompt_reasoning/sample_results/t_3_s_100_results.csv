@@ -1,0 +1,143 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1496	3	100	1	"*TASK*
+Here are the context sentences:
+1. John moved to the kitchen.
+2. Daniel picked up the football.
+3. John journeyed to the garden.
+4. Mary moved to the bedroom.
+5. Mary went back to the garden.
+6. Sandra travelled to the hallway.
+7. Daniel left the football.
+8. Daniel took the football there.
+9. Sandra got the apple.
+10. John moved to the bedroom.
+11. Sandra took the milk.
+12. John moved to the kitchen.
+13. John went back to the office.
+14. Daniel journeyed to the garden.
+15. Mary travelled to the hallway.
+16. John went to the hallway.
+17. Daniel dropped the football.
+18. Mary went back to the kitchen.
+19. Mary moved to the garden.
+20. Sandra discarded the milk there.
+21. Mary took the football there.
+22. Sandra put down the apple.
+23. John journeyed to the garden.
+24. Sandra went back to the bathroom.
+25. John travelled to the bedroom.
+26. Mary dropped the football.
+27. Daniel got the football.
+28. Mary moved to the hallway.
+29. Mary journeyed to the bathroom.
+30. John went back to the hallway.
+31. Daniel dropped the football there.
+32. Sandra moved to the kitchen.
+33. Daniel travelled to the hallway.
+34. Daniel took the milk.
+35. Mary travelled to the kitchen.
+36. Daniel put down the milk.
+37. Daniel went back to the office.
+38. Daniel went to the garden.
+39. Sandra journeyed to the office.
+40. John grabbed the milk there.
+41. Daniel travelled to the office.
+42. John took the apple.
+43. Daniel moved to the hallway.
+44. John journeyed to the garden.
+45. Daniel went back to the kitchen.
+46. John moved to the bathroom.
+
+Now, answer the following question:
+Where was the apple before the bathroom?"	garden	from the context sentences, we can track the movement of the apple. in sentence 9, sandra got the apple, and in sentence 22, sandra put down the apple. since sandra was in the hallway when she put down the apple (sentence 6), we can infer that the apple was in the hallway at that point.	fully	not mentioned	False	The apple was last mentioned in sentence 9, where Sandra got the apple. Then, in sentence 22, Sandra put down the apple. Since John journeyed to the bathroom in sentence 46, and there is no mention of the apple being moved or taken to the bathroom, it can be inferred that the apple was still in the same location where Sandra put it down, which is not specified.		"Reasoning: The apple was last mentioned in sentence 9, where Sandra got the apple. Then, in sentence 22, Sandra put down the apple. Since John journeyed to the bathroom in sentence 46, and there is no mention of the apple being moved or taken to the bathroom, it can be inferred that the apple was still in the same location where Sandra put it down, which is not specified.
+
+Answer: not mentioned"	0.0112	0.0337	False	False	False	True	0
+1497	3	100	2	"*TASK*
+Here are the context sentences:
+48. Daniel travelled to the garden.
+49. Daniel travelled to the hallway.
+50. John went back to the kitchen.
+51. John put down the apple.
+
+Now, answer the following question:
+Where was the apple before the bathroom?"	garden	from the previous conversation, we know that john took the apple in sentence 42. then, in sentence 46, john moved to the bathroom. to find where the apple was before the bathroom, we need to track john's movement before he went to the bathroom.	partially	kitchen	False	The apple was last mentioned in sentence 51, where John put down the apple. Since there is no mention of the apple being moved or taken to the bathroom, it can be inferred that the apple was in the kitchen, where John put it down.		"Reasoning: The apple was last mentioned in sentence 51, where John put down the apple. Since there is no mention of the apple being moved or taken to the bathroom, it can be inferred that the apple was in the kitchen, where John put it down.
+
+Answer: kitchen"	0.0345	0.0517	False	False	False	True	0
+1498	3	100	3	"*TASK*
+Here are the context sentences:
+53. Mary journeyed to the office.
+54. John moved to the office.
+
+Now, answer the following question:
+Where was the apple before the kitchen?"	bathroom	to find where the apple was before the kitchen, we need to track the movement of the apple and john. from the previous conversation, we know that john took the apple in sentence 42 and moved to the bathroom in sentence 46.	none	kitchen	False	There is no mention of the apple being moved or taken to the kitchen. The apple was last mentioned in sentence 51, where John put it down, and it was in the kitchen. Since there is no information about the apple being moved from the kitchen, it can be inferred that the apple was still in the kitchen.		"Reasoning: There is no mention of the apple being moved or taken to the kitchen. The apple was last mentioned in sentence 51, where John put it down, and it was in the kitchen. Since there is no information about the apple being moved from the kitchen, it can be inferred that the apple was still in the kitchen.
+
+Answer: kitchen"	0.0417	0.0417	False	False	False	True	0
+1499	3	100	4	"*TASK*
+Here are the context sentences:
+56. Daniel went back to the garden.
+57. John discarded the milk.
+
+Now, answer the following question:
+Where was the apple before the kitchen?"	bathroom	the question asks about the location of the apple before the kitchen. from the previous conversation, we know that john took the apple in sentence 42 and moved to the bathroom in sentence 46. then, in sentence 50, john went back to the kitchen, and in sentence 51, john put down the apple.	none	kitchen	False	The question is asking about the apple's location before the kitchen, but the context sentences do not provide any information about the apple's location before the kitchen. The apple's location was previously mentioned as being in the kitchen (sentence 51), but there is no new information about its location before the kitchen.		"Reasoning: The question is asking about the apple's location before the kitchen, but the context sentences do not provide any information about the apple's location before the kitchen. The apple's location was previously mentioned as being in the kitchen (sentence 51), but there is no new information about its location before the kitchen.
+
+Answer: kitchen"	0.0588	0.0441	False	False	False	True	0
+1500	3	100	5	"*TASK*
+Here are the context sentences:
+59. John took the milk.
+60. Sandra moved to the bathroom.
+61. Daniel grabbed the football there.
+62. Daniel discarded the football there.
+63. John discarded the milk.
+64. Mary took the milk.
+65. Mary left the milk.
+66. Mary took the milk.
+67. Mary travelled to the hallway.
+68. Mary dropped the milk.
+69. Daniel went back to the bathroom.
+70. Mary grabbed the milk.
+71. John moved to the bathroom.
+72. Mary went to the bedroom.
+73. Mary put down the milk.
+74. Sandra went to the garden.
+75. John moved to the garden.
+76. Daniel went to the hallway.
+77. Mary took the milk there.
+78. Mary dropped the milk.
+79. Mary moved to the office.
+80. Sandra took the football.
+81. John travelled to the hallway.
+82. Sandra dropped the football.
+83. Sandra picked up the football there.
+84. Daniel went back to the bathroom.
+85. Sandra journeyed to the bathroom.
+86. Sandra put down the football.
+87. Sandra picked up the football.
+88. Mary went to the hallway.
+89. Sandra dropped the football.
+90. Sandra went to the bedroom.
+91. Sandra moved to the garden.
+92. John went back to the office.
+93. John moved to the hallway.
+94. John went back to the bathroom.
+95. John moved to the office.
+96. Daniel picked up the football there.
+97. Daniel dropped the football.
+98. John journeyed to the bathroom.
+99. John took the football.
+100. John dropped the football.
+101. Daniel got the football.
+102. Daniel travelled to the office.
+103. Sandra journeyed to the kitchen.
+104. Daniel journeyed to the bedroom.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	office	" should read the context sentences, the question, and the answer, understand the situation, and provide a reasoning that leads to the provided answer.
+as a basis for your reasoning, use only the information provided to you in the conversation.
+
+follow each actor and object in the sentences separately paying attention to their relations.
+the questions might refer to previous parts of the conversation history.
+if so, inspect all the previous parts to find the correct reasoning.
+
+aim to give a specific and objective reasoning rather than a subjective"	fully	not mentioned	False			"I apologize for the mistake. Since the question is asking about the apple's location before the kitchen, and the context sentences do not provide any information about the apple's location before the kitchen, the correct answer is:
+
+Answer: not mentioned"	0.0	nan	False	False	False	True	0

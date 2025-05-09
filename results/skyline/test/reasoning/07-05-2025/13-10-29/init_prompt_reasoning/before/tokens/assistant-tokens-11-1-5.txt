@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ(	13	Ġand	Ġ	14	)	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġmovements	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġcurrent	Ġlocation	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġwas	Ġin	Ġsentences	Ġ	10	Ġand	Ġ	11	,	Ġwhere	Ġshe	Ġwas	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

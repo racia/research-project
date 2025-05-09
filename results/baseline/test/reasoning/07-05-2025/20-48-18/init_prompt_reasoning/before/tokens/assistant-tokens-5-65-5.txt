@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	25	,	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠJeff	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	26	,	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġback	Ġto	ĠMary	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+696	12	40	1	"*TASK*
+Here are the context sentences:
+1. John and Sandra journeyed to the bedroom.
+2. John and Mary travelled to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that john was with sandra in the bedroom (sentence 1), but then john travelled to the hallway with mary (sentence 2). since john's last known location was the hallway, the answer is that john is in the hallway.	fully	hallway	True	From sentence 1, John was in the bedroom, but then in sentence 2, John travelled to the hallway with Mary. So, John's current location is the hallway.		"assistant
+
+Reasoning: From sentence 1, John was in the bedroom, but then in sentence 2, John travelled to the hallway with Mary. So, John's current location is the hallway.
+
+Answer: hallway"	0.1522	0.0217	False	False	False	False	0
+697	12	40	2	"*TASK*
+Here are the context sentences:
+4. Mary and John went back to the kitchen.
+5. Sandra and Daniel travelled to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	according to sentence 5, sandra and daniel travelled to the hallway, which means daniel's current location is the hallway.	fully	hallway	True	According to sentence 5, Sandra and Daniel travelled to the hallway, so Daniel's current location is the hallway.		"Reasoning: According to sentence 5, Sandra and Daniel travelled to the hallway, so Daniel's current location is the hallway.
+
+Answer: hallway"	0.0333	0.0333	False	False	False	False	0
+698	12	40	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John journeyed to the bathroom.
+8. Daniel and Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	according to sentence 8, daniel and sandra journeyed to the bedroom, which means sandra's current location is the bedroom.	fully	bedroom	True	According to sentence 8, Daniel and Sandra journeyed to the bedroom, so Sandra's current location is the bedroom.		"Reasoning: According to sentence 8, Daniel and Sandra journeyed to the bedroom, so Sandra's current location is the bedroom.
+
+Answer: bedroom"	0.0	0.0323	False	False	False	False	0
+699	12	40	4	"*TASK*
+Here are the context sentences:
+10. Daniel and John travelled to the garden.
+11. Sandra and John travelled to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	garden	according to sentence 10, daniel and john travelled to the garden, which means daniel's current location is the garden.	fully	garden	True	According to sentence 10, Daniel and John travelled to the garden, so Daniel's current location is the garden.		"Reasoning: According to sentence 10, Daniel and John travelled to the garden, so Daniel's current location is the garden.
+
+Answer: garden"	0.0	0.0333	False	False	False	False	0
+700	12	40	5	"*TASK*
+Here are the context sentences:
+13. John and Daniel moved to the bedroom.
+14. Mary and Daniel went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	according to sentence 14, mary and daniel went to the bathroom, which means mary's current location is the bathroom.	fully	bathroom	True	According to sentence 14, Mary and Daniel went to the bathroom, so Mary's current location is the bathroom.		"Reasoning: According to sentence 14, Mary and Daniel went to the bathroom, so Mary's current location is the bathroom.
+
+Answer: bathroom"	0.0	0.0333	False	False	False	False	0

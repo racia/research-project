@@ -1,0 +1,21 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+2	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+3	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+4	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+5	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+6	.	ĠFred	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+7	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+8	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+9	.	ĠJeff	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+10	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+11	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+12	.	ĠJeff	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+13	.	ĠJeff	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+14	.	ĠJeff	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
+15	.	ĠJeff	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+16	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+17	.	ĠJeff	Ġpassed	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
+18	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠJeff	Ġgive	Ġto	ĠFred	?Ċ

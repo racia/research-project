@@ -1,0 +1,21 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+2	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+3	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+4	.	ĠMary	Ġleft	Ġthe	Ġapple	.Ċ
+5	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+6	.	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+7	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+8	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+9	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+10	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+11	.	ĠBill	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+12	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+13	.	ĠFred	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+14	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+15	.	ĠFred	Ġleft	Ġthe	Ġapple	.Ċ
+16	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+17	.	ĠBill	Ġgave	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
+18	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġfootball	?Ċ

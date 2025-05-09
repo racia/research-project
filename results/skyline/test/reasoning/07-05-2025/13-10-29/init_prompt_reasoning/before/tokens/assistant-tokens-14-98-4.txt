@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠBill	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentence	Ġonly	Ġmentions	Ġthat	ĠBill	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġinformation	Ġabout	Ġhis	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

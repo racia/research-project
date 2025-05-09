@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	.	ĠSentence	Ġ	9	Ġstates	Ġthat	Ġ"	Mary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	",	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġinformation	Ġabout	Ġher	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

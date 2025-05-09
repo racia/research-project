@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1706	5	22	1	"*TASK*
+Here are the context sentences:
+1. Mary grabbed the milk there.
+2. Mary gave the milk to Jeff.
+
+Now, answer the following question:
+Who received the milk?"	jeff	according to the context sentences, mary grabbed the milk (sentence 1) and then gave the milk to jeff (sentence 2). therefore, it can be logically concluded that jeff received the milk.	fully	Jeff	True	Mary grabbed the milk and then gave it to Jeff, so Jeff is the one who received the milk.		"Reasoning: Mary grabbed the milk and then gave it to Jeff, so Jeff is the one who received the milk.
+
+Answer: Jeff"	0.1071	0.0357	False	False	False	False	0
+1707	5	22	2	"*TASK*
+Here are the context sentences:
+4. Mary moved to the garden.
+5. Fred travelled to the hallway.
+
+Now, answer the following question:
+Who gave the milk?"	mary	the question asks who gave the milk, but the provided context sentences (4 and 5) do not mention the milk or any action related to giving the milk. however, we can look back at the previous context sentences (1 and 2) which mentioned mary grabbing the milk and giving it to jeff. therefore, it can be logically concluded that mary is the one who gave the milk.	none	Not mentioned	False	There is no mention of milk or anyone giving it in these context sentences. The sentences only mention Mary moving to the garden and Fred travelling to the hallway, but no milk-related information is provided.		"Reasoning: There is no mention of milk or anyone giving it in these context sentences. The sentences only mention Mary moving to the garden and Fred travelling to the hallway, but no milk-related information is provided.
+
+Answer: Not mentioned"	0.0638	0.0213	False	False	False	True	0
+1708	5	22	3	"*TASK*
+Here are the context sentences:
+7. Fred moved to the bathroom.
+8. Fred moved to the hallway.
+
+Now, answer the following question:
+Who did Mary give the milk to?"	jeff	the provided context sentences (7 and 8) do not mention mary or the milk, but the question asks about mary giving the milk to someone. we can look back at the previous context sentences (1 and 2) which mentioned mary grabbing the milk and giving it to jeff. therefore, it can be logically concluded that mary gave the milk to jeff.	none	Not mentioned	False	There is no mention of Mary giving milk to anyone in these context sentences. The sentences only mention Fred moving to the bathroom and then to the hallway, but no milk-related information is provided.		"Reasoning: There is no mention of Mary giving milk to anyone in these context sentences. The sentences only mention Fred moving to the bathroom and then to the hallway, but no milk-related information is provided.
+
+Answer: Not mentioned"	0.0217	0.0217	False	False	False	True	0
+1709	5	22	4	"*TASK*
+Here are the context sentences:
+10. Mary journeyed to the bedroom.
+11. Jeff put down the milk.
+12. Bill picked up the football there.
+13. Bill handed the football to Mary.
+
+Now, answer the following question:
+What did Bill give to Mary?"	football	"according to sentence 13, ""bill handed the football to mary"", which directly states that bill gave the football to mary."	fully	football	True	According to sentence 13, Bill handed the football to Mary, so Bill gave the football to Mary.		"Reasoning: According to sentence 13, Bill handed the football to Mary, so Bill gave the football to Mary.
+
+Answer: football"	0.0357	0.0357	False	False	False	False	0
+1710	5	22	5	"*TASK*
+Here are the context sentences:
+15. Mary passed the football to Bill.
+16. Bill travelled to the office.
+
+Now, answer the following question:
+Who gave the football?"	mary	"according to sentence 15, ""mary passed the football to bill"", which directly states that mary gave the football to bill."	fully	Mary	True	According to sentence 15, Mary passed the football to Bill, so Mary gave the football to Bill.		"Reasoning: According to sentence 15, Mary passed the football to Bill, so Mary gave the football to Bill.
+
+Answer: Mary"	0.0357	0.0357	False	False	False	False	0

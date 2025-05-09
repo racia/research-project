@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	.	ĠThey	Ġonly	Ġmention	ĠDaniel	's	Ġmovements	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	ĠJohn	's	Ġcurrent	Ġlocation	Ġbased	Ġon	Ġthe	Ġprovided	Ġinformation	.ĊĊ	Answer	:	Ġunknown	<|eot_id|>

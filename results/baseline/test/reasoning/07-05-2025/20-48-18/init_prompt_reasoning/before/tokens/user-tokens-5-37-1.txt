@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJeff	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+2	.	ĠJeff	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
+3	.	ĠFred	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+4	.	ĠFred	Ġhanded	Ġthe	Ġmilk	Ġto	ĠJeff	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġmilk	Ġto	ĠJeff	?Ċ

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+61	11	13	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the garden.
+2. Following that she journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	mary's location is determined by tracing her movements. initially, she travelled to the garden (sentence 1). then, she journeyed to the kitchen (sentence 2), which implies that she left the garden and moved to the kitchen. therefore, her current location is the kitchen.	fully	kitchen	True	According to the context sentences, Mary travelled to the garden and then journeyed to the kitchen. Therefore, her current location is the kitchen.		"assistant
+
+Reasoning: According to the context sentences, Mary travelled to the garden and then journeyed to the kitchen. Therefore, her current location is the kitchen.
+
+Answer: kitchen"	0.2368	0.0526	False	False	False	False	0
+62	11	13	2	"*TASK*
+Here are the context sentences:
+4. Sandra travelled to the hallway.
+5. Then she went to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	sandra's location is determined by tracing her movements. initially, she travelled to the hallway (sentence 4). then, she went to the garden (sentence 5), which implies that she left the hallway and moved to the garden. therefore, her current location is the garden.	fully	garden	True	According to the context sentences, Sandra travelled to the hallway and then went to the garden. Therefore, her current location is the garden.		"Reasoning: According to the context sentences, Sandra travelled to the hallway and then went to the garden. Therefore, her current location is the garden.
+
+Answer: garden"	0.1471	0.0588	False	False	False	False	0
+63	11	13	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the office.
+8. Following that she journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	sandra's location is determined by tracing her movements. initially, she journeyed to the office (sentence 7). then, she journeyed to the hallway (sentence 8), which implies that she left the office and moved to the hallway. therefore, her current location is the hallway.	fully	hallway	True	According to the context sentences, Sandra journeyed to the office and then journeyed to the hallway. Therefore, her current location is the hallway.		"Reasoning: According to the context sentences, Sandra journeyed to the office and then journeyed to the hallway. Therefore, her current location is the hallway.
+
+Answer: hallway"	0.0833	0.0556	False	False	False	False	0
+64	11	13	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the office.
+11. Then he travelled to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	daniel's location is determined by tracing his movements. initially, he went to the office (sentence 10). then, he travelled to the kitchen (sentence 11), which implies that he left the office and moved to the kitchen. therefore, his current location is the kitchen.	fully	kitchen	True	According to the context sentences, Daniel went to the office and then travelled to the kitchen. Therefore, his current location is the kitchen.		"Reasoning: According to the context sentences, Daniel went to the office and then travelled to the kitchen. Therefore, his current location is the kitchen.
+
+Answer: kitchen"	0.0294	0.0588	False	False	False	False	0
+65	11	13	5	"*TASK*
+Here are the context sentences:
+13. Sandra moved to the kitchen.
+14. Afterwards she journeyed to the office.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"the question asks about daniel's location, but the context sentences only mention sandra's movements. there is no information about daniel's movements or location. therefore, it is not possible to determine daniel's location based on the provided context. the answer ""kitchen"" seems to be incorrect, as it refers to sandra's previous location, not daniel's."	none	kitchen	True	The context sentences are about Sandra's movements, but the question is about Daniel's location. The previous information about Daniel's location is that he travelled to the kitchen.		"Reasoning: The context sentences are about Sandra's movements, but the question is about Daniel's location. The previous information about Daniel's location is that he travelled to the kitchen.
+
+Answer: kitchen"	0.0	0.05	False	False	False	True	0

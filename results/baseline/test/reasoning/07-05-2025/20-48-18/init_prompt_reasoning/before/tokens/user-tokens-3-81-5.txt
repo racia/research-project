@@ -1,0 +1,21 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+69	.	ĠMary	Ġdropped	Ġthe	Ġapple	Ġthere	.Ċ
+70	.	ĠSandra	Ġtook	Ġthe	Ġmilk	.Ċ
+71	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+72	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
+73	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	.Ċ
+74	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġmilk	.Ċ
+75	.	ĠJohn	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+76	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+77	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+78	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+79	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+80	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġmilk	.Ċ
+81	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+82	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+83	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+84	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+85	.	ĠMary	Ġleft	Ġthe	Ġapple	Ġthere	.Ċ
+86	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġbathroom	?Ċ

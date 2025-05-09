@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1256	13	52	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Sandra travelled to the office.
+2. After that they journeyed to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from the context sentences, we know that daniel and sandra first travelled to the office (sentence 1) and then journeyed to the garden (sentence 2). since there is no information about them leaving the garden, it can be logically inferred that daniel is still in the garden.	fully	garden	True	According to the context sentences, Daniel travelled to the office and then to the garden. Therefore, his current location is the garden.		"assistant
+
+Reasoning: According to the context sentences, Daniel travelled to the office and then to the garden. Therefore, his current location is the garden.
+
+Answer: garden"	0.25	0.0556	False	False	False	False	0
+1257	13	52	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John went back to the bedroom.
+5. Afterwards they went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from the context sentences, we know that daniel and john went back to the bedroom (sentence 4) and then went back to the bathroom (sentence 5). since there is no information about them leaving the bathroom, it can be logically inferred that daniel is still in the bathroom.	fully	bathroom	True	According to the context sentences, Daniel went back to the bedroom and then to the bathroom. Therefore, his current location is the bathroom.		"Reasoning: According to the context sentences, Daniel went back to the bedroom and then to the bathroom. Therefore, his current location is the bathroom.
+
+Answer: bathroom"	0.2059	0.0588	False	False	False	False	0
+1258	13	52	3	"*TASK*
+Here are the context sentences:
+7. Mary and Daniel went back to the garden.
+8. After that they journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from the context sentences, we know that mary and daniel went back to the garden (sentence 7) and then journeyed to the hallway (sentence 8). since there is no information about them leaving the hallway, it can be logically inferred that daniel is still in the hallway.	fully	hallway	True	According to the context sentences, Daniel went back to the garden and then to the hallway. Therefore, his current location is the hallway.		"Reasoning: According to the context sentences, Daniel went back to the garden and then to the hallway. Therefore, his current location is the hallway.
+
+Answer: hallway"	0.0588	0.0588	False	False	False	False	0
+1259	13	52	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Mary travelled to the kitchen.
+11. After that they travelled to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	from the context sentences, we know that sandra and mary travelled to the kitchen (sentence 10) and then travelled to the garden (sentence 11). since there is no information about them leaving the garden, it can be logically inferred that mary is still in the garden.	fully	garden	True	According to the context sentences, Mary travelled to the kitchen and then to the garden. Therefore, her current location is the garden.		"Reasoning: According to the context sentences, Mary travelled to the kitchen and then to the garden. Therefore, her current location is the garden.
+
+Answer: garden"	0.0909	0.0606	False	False	False	False	0
+1260	13	52	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Mary went back to the office.
+14. After that they went back to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentences, we know that sandra and mary went back to the office (sentence 13) and then went back to the hallway (sentence 14). since there is no information about them leaving the hallway, it can be logically inferred that mary is still in the hallway.	fully	hallway	True	According to the context sentences, Mary went back to the office and then to the hallway. Therefore, her current location is the hallway.		"Reasoning: According to the context sentences, Mary went back to the office and then to the hallway. Therefore, her current location is the hallway.
+
+Answer: hallway"	0.0	0.0588	False	False	False	False	0

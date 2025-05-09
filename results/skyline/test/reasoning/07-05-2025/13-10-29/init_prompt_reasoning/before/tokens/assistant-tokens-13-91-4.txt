@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ(	10	Ġand	Ġ	11	)	Ġonly	Ġmention	ĠSandra	Ġand	ĠMary	,	Ġbut	Ġnot	ĠDaniel	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠDaniel	's	Ġlocation	Ġwas	Ġthat	Ġhe	Ġwas	Ġin	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	8	).	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġthat	Ġwould	Ġchange	ĠDaniel	's	Ġlocation	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

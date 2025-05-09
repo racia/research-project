@@ -1,0 +1,72 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+836	2	68	1	"*TASK*
+Here are the context sentences:
+1. John went back to the office.
+2. Daniel journeyed to the garden.
+3. Mary took the apple there.
+4. John went back to the hallway.
+5. Mary grabbed the milk there.
+6. Daniel moved to the bedroom.
+7. Mary dropped the apple there.
+8. Sandra grabbed the football there.
+9. Mary travelled to the garden.
+10. Mary went back to the hallway.
+11. Sandra went back to the kitchen.
+12. Sandra went back to the hallway.
+
+Now, answer the following question:
+Where is the football?"	hallway	from sentence 8, we know that sandra grabbed the football in the bedroom. then, in sentence 11, sandra went back to the kitchen, but there is no mention of her dropping the football. in sentence 12, sandra went back to the hallway. since she still had the football with her, it is logical to conclude that the football is now in the hallway.	fully	hallway	True	The context sentences do not mention the football being dropped or moved to any location other than the hallway. Sandra grabbed the football there, and there is no mention of it being moved or dropped elsewhere.		"Reasoning: The context sentences do not mention the football being dropped or moved to any location other than the hallway. Sandra grabbed the football there, and there is no mention of it being moved or dropped elsewhere.
+
+Answer: hallway"	0.0652	0.0435	False	False	False	True	0
+837	2	68	2	"*TASK*
+Here are the context sentences:
+14. Sandra put down the football.
+15. Sandra went to the garden.
+
+Now, answer the following question:
+Where is the football?"	hallway	from the previous conversation, we know that the football was in the hallway (sentence 12). the new information provided in sentence 14 states that sandra put down the football, but it doesn't specify where she put it down. however, since we already know the football was in the hallway, it is logical to conclude that sandra put it down in the hallway, and it is still there. the fact that sandra went to the garden in sentence 15 doesn't change the location	partially	garden	False	According to sentence 14, Sandra put down the football, and then she went to the garden in sentence 15. This implies that the football is still in the location where Sandra put it down, which is not specified but is likely the hallway since Sandra went back to the hallway in previous sentences.		"Reasoning: According to sentence 14, Sandra put down the football, and then she went to the garden in sentence 15. This implies that the football is still in the location where Sandra put it down, which is not specified but is likely the hallway since Sandra went back to the hallway in previous sentences.
+
+Answer: garden"	0.0299	0.0299	False	False	False	False	0
+838	2	68	3	"*TASK*
+Here are the context sentences:
+17. Mary picked up the football there.
+18. Sandra moved to the hallway.
+19. Sandra journeyed to the kitchen.
+20. Daniel journeyed to the bathroom.
+21. Sandra went to the office.
+22. Sandra journeyed to the bathroom.
+23. Mary went to the bathroom.
+24. Mary moved to the bedroom.
+25. Mary went to the hallway.
+26. Daniel went to the office.
+27. Daniel journeyed to the bathroom.
+28. Daniel went back to the garden.
+29. Mary discarded the football.
+30. Daniel went to the bathroom.
+
+Now, answer the following question:
+Where is the football?"	hallway	from sentence 29, we know that mary discarded the football. since mary was in the hallway in sentence 25, it is logical to conclude that she discarded the football in the hallway. there is no subsequent information that suggests the football was moved from the hallway, so it is still there.	fully	bathroom	False	According to sentence 29, Mary discarded the football, but the location is not specified. However, sentence 28 mentions Daniel going back to the garden, and there is no mention of the football being moved or dropped elsewhere. Therefore, it is likely that the football is still in the location where Mary discarded it, which is not specified but could be the bathroom since Daniel went to the bathroom multiple times.		"Reasoning: According to sentence 29, Mary discarded the football, but the location is not specified. However, sentence 28 mentions Daniel going back to the garden, and there is no mention of the football being moved or dropped elsewhere. Therefore, it is likely that the football is still in the location where Mary discarded it, which is not specified but could be the bathroom since Daniel went to the bathroom multiple times.
+
+Answer: bathroom"	0.1364	0.0227	False	False	False	True	0
+839	2	68	4	"*TASK*
+Here are the context sentences:
+32. Mary journeyed to the bedroom.
+33. John moved to the office.
+
+Now, answer the following question:
+Where is the football?"	hallway	the question asks about the location of the football, which was last mentioned in sentence 29, where mary discarded the football in the hallway. there is no subsequent information that suggests the football was moved from the hallway, so it is still there. the movements of mary and john in sentences 32 and 33 do not affect the location of the football, which remains in the hallway.	none	bathroom	False	There is no mention of the football in the given context sentences. The previous sentences mentioned Mary discarding the football, but the location was not specified. Since there is no new information about the football's location, the previous answer remains the same.		"Reasoning: There is no mention of the football in the given context sentences. The previous sentences mentioned Mary discarding the football, but the location was not specified. Since there is no new information about the football's location, the previous answer remains the same.
+
+Answer: bathroom"	0.0893	0.0357	False	False	False	True	0
+840	2	68	5	"*TASK*
+Here are the context sentences:
+35. John journeyed to the bedroom.
+36. Daniel went back to the office.
+37. Daniel travelled to the kitchen.
+38. Daniel went to the bedroom.
+39. John went back to the hallway.
+40. Mary left the milk.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	from sentence 40, we know that mary left the milk. since mary was not mentioned to be in any specific location in sentence 40, we need to look at the previous sentences to determine where she was. in sentence 32, mary journeyed to the bedroom, and there is no subsequent information that suggests she left the bedroom. therefore, it is logical to conclude that mary left the milk in the bedroom.	partially	not mentioned	False	The context sentences do not mention the milk being moved or dropped to any specific location. Sentence 40 only mentions Mary leaving the milk, but does not specify where she left it.		"Reasoning: The context sentences do not mention the milk being moved or dropped to any specific location. Sentence 40 only mentions Mary leaving the milk, but does not specify where she left it.
+
+Answer: not mentioned"	0.0227	0.0455	False	False	False	True	0

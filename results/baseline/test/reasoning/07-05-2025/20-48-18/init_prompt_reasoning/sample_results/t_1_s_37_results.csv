@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+181	1	37	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the office.
+2. Mary went back to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentences, we know that mary initially travelled to the office (sentence 1). however, the second sentence states that mary went back to the hallway, which implies that she moved from the office to the hallway. therefore, based on the sequence of events, we can conclude that mary is currently in the hallway.	fully	hallway	True	Mary travelled to the office, but then she went back to the hallway, which means she is currently in the hallway.		"Reasoning: Mary travelled to the office, but then she went back to the hallway, which means she is currently in the hallway.
+
+Answer: hallway"	0.1613	0.0323	False	False	False	False	0
+182	1	37	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the hallway.
+5. Daniel went back to the office.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"there is no mention of mary in the provided context sentences. the sentences only talk about john and daniel, and their movements. therefore, we cannot determine mary's location based on the provided information. the answer ""hallway"" seems to be incorrect, as there is no mention of mary in the context."	none	not mentioned	False	There is no mention of Mary in the given context sentences, so we cannot determine her location.		"Reasoning: There is no mention of Mary in the given context sentences, so we cannot determine her location.
+
+Answer: not mentioned"	0.0741	0.037	False	False	False	True	0
+183	1	37	3	"*TASK*
+Here are the context sentences:
+7. John went to the office.
+8. Daniel journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"according to sentence 8, ""daniel journeyed to the hallway"", which explicitly states that daniel moved to the hallway. therefore, based on this information, we can conclude that daniel is currently in the hallway."	fully	hallway	True	Daniel journeyed to the hallway, which means he is currently in the hallway.		"Reasoning: Daniel journeyed to the hallway, which means he is currently in the hallway.
+
+Answer: hallway"	0.0	0.0435	False	False	False	False	0
+184	1	37	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the office.
+11. Mary moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"according to sentence 10, ""mary moved to the office"", which initially places mary in the office. however, sentence 11, ""mary moved to the hallway"", indicates that mary subsequently moved from the office to the hallway. therefore, based on the sequence of events, we can conclude that mary is currently in the hallway."	fully	hallway	True	Mary moved to the office, but then she moved to the hallway, which means she is currently in the hallway.		"Reasoning: Mary moved to the office, but then she moved to the hallway, which means she is currently in the hallway.
+
+Answer: hallway"	0.0333	0.0333	False	False	False	False	0
+185	1	37	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the kitchen.
+14. Sandra went to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"according to sentence 14, ""sandra went to the bedroom"", which explicitly states that sandra moved to the bedroom. therefore, based on this information, we can conclude that sandra is currently in the bedroom."	fully	bedroom	True	There is no mention of Sandra's movement to the kitchen, so we can only rely on the information that she went to the bedroom, which means she is currently in the bedroom.		"Reasoning: There is no mention of Sandra's movement to the kitchen, so we can only rely on the information that she went to the bedroom, which means she is currently in the bedroom.
+
+Answer: bedroom"	0.0	0.0233	False	False	False	True	0

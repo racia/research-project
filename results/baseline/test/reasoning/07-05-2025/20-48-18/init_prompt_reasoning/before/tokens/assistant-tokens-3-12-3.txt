@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġnot	Ġmentioned	Ġin	Ġthe	Ġcontext	Ġsentences	Ġuntil	Ġsentence	Ġ	24	,	Ġwhere	ĠMary	Ġdiscarded	Ġit	Ġin	Ġthe	Ġbedroom	.	ĠSince	Ġthe	Ġfootball	Ġwas	Ġnot	Ġmentioned	Ġbefore	Ġthat	,	Ġwe	Ġcannot	Ġdetermine	Ġits	Ġlocation	Ġbefore	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

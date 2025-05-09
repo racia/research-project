@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1961	14	93	1	"*TASK*
+Here are the context sentences:
+1. Julie journeyed to the park yesterday.
+2. This morning Julie moved to the office.
+3. Bill journeyed to the office this morning.
+4. Yesterday Bill went back to the bedroom.
+
+Now, answer the following question:
+Where was Julie before the office?"	park	from context sentence 2, we know that julie moved to the office this morning. to determine where julie was before the office, we need to look at the previous sentence that mentions julie's location. sentence 1 states that julie journeyed to the park yesterday. since julie was at the park yesterday and moved to the office this morning, we can logically conclude that julie was at the park before the office.	fully	park	True	According to sentence 1, Julie was at the park yesterday. Then, according to sentence 2, Julie moved to the office this morning. Therefore, Julie was at the park before moving to the office.		"assistant
+
+Reasoning: According to sentence 1, Julie was at the park yesterday. Then, according to sentence 2, Julie moved to the office this morning. Therefore, Julie was at the park before moving to the office.
+
+Answer: park"	0.1887	0.0377	False	False	False	False	0
+1962	14	93	2	"*TASK*
+Here are the context sentences:
+6. This morning Fred went to the bedroom.
+7. Yesterday Fred moved to the school.
+
+Now, answer the following question:
+Where was Julie before the office?"	park	the context sentences provided (6 and 7) only mention fred's movements and do not provide any new information about julie's location. therefore, we need to refer back to the previous context sentences that mentioned julie. from the previous context sentences (1 and 2), we know that julie journeyed to the park yesterday and moved to the office this morning. hence, julie was at the park before the office. the information about fred's movements does not change this conclusion.	none	park	True	The context sentences 6 and 7 are about Fred, but the question is about Julie. We need to refer to the previous context sentences about Julie. According to sentence 1, Julie was at the park yesterday. Then, according to sentence 2, Julie moved to the office this morning. Therefore, Julie was at the park before moving to the office.		"Reasoning: The context sentences 6 and 7 are about Fred, but the question is about Julie. We need to refer to the previous context sentences about Julie. According to sentence 1, Julie was at the park yesterday. Then, according to sentence 2, Julie moved to the office this morning. Therefore, Julie was at the park before moving to the office.
+
+Answer: park"	0.175	0.025	False	False	False	False	0
+1963	14	93	3	"*TASK*
+Here are the context sentences:
+9. This afternoon Julie journeyed to the bedroom.
+10. This afternoon Bill moved to the kitchen.
+
+Now, answer the following question:
+Where was Bill before the office?"	bedroom	the provided context sentences (9 and 10) do not mention bill's location before the office. however, we can refer back to the previous context sentences that mentioned bill's movements. from sentence 4, we know that bill went back to the bedroom yesterday. there is no information about bill moving to the office, so we can infer that bill was still in the bedroom before moving to the office.	none	bedroom	True	The context sentences 9 and 10 are about Julie and Bill's afternoon activities, but the question is about Bill's location before the office. We need to refer to the previous context sentences about Bill. According to sentence 4, Bill was at the bedroom yesterday. Then, according to sentence 3, Bill moved to the office this morning. Therefore, Bill was at the bedroom before moving to the office.		"Reasoning: The context sentences 9 and 10 are about Julie and Bill's afternoon activities, but the question is about Bill's location before the office. We need to refer to the previous context sentences about Bill. According to sentence 4, Bill was at the bedroom yesterday. Then, according to sentence 3, Bill moved to the office this morning. Therefore, Bill was at the bedroom before moving to the office.
+
+Answer: bedroom"	0.0889	0.0222	False	False	False	False	0
+1964	14	93	4	"*TASK*
+Here are the context sentences:
+12. This evening Bill went to the office.
+13. Mary travelled to the office yesterday.
+
+Now, answer the following question:
+Where was Bill before the office?"	kitchen	the provided context sentences (12 and 13) do not directly mention bill's location before the office. however, we can refer back to the previous context sentences that mentioned bill's movements. from sentence 10, we know that bill moved to the kitchen this afternoon. there is no information about bill moving to any other location before going to the office this evening, so we can logically conclude that bill was in the kitchen before going to the office.	partially	bedroom	False	The context sentence 12 is about Bill's evening activity, but the question is about Bill's location before the office. We need to refer to the previous context sentences about Bill. According to sentence 4, Bill was at the bedroom yesterday. Then, according to sentence 3, Bill moved to the office this morning. Therefore, Bill was at the bedroom before moving to the office.		"Reasoning: The context sentence 12 is about Bill's evening activity, but the question is about Bill's location before the office. We need to refer to the previous context sentences about Bill. According to sentence 4, Bill was at the bedroom yesterday. Then, according to sentence 3, Bill moved to the office this morning. Therefore, Bill was at the bedroom before moving to the office.
+
+Answer: bedroom"	0.0353	0.0235	False	False	False	False	0
+1965	14	93	5	"*TASK*
+Here are the context sentences:
+15. Fred journeyed to the park this afternoon.
+16. Julie went back to the park this evening.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	office	the provided context sentences (15 and 16) do not directly mention julie's location before the bedroom. however, we can refer back to the previous context sentences that mentioned julie's movements. from sentence 2, we know that julie moved to the office this morning. from sentence 9, we know that julie journeyed to the bedroom this afternoon. there is no information about julie moving to any other location before going to the bedroom, so we can logically conclude that julie was in	none	office	True	The context sentences 15 and 16 are about Fred and Julie's afternoon and evening activities, but the question is about Julie's location before the bedroom. We need to refer to the previous context sentences about Julie. According to sentence 1, Julie was at the park yesterday. Then, according to sentence 2, Julie moved to the office this morning. Later, according to sentence 9, Julie journeyed to the bedroom this afternoon. Therefore, Julie was at the office before moving to the bedroom.		"Reasoning: The context sentences 15 and 16 are about Fred and Julie's afternoon and evening activities, but the question is about Julie's location before the bedroom. We need to refer to the previous context sentences about Julie. According to sentence 1, Julie was at the park yesterday. Then, according to sentence 2, Julie moved to the office this morning. Later, according to sentence 9, Julie journeyed to the bedroom this afternoon. Therefore, Julie was at the office before moving to the bedroom.
+
+Answer: office"	0.1009	0.0183	False	False	False	False	0

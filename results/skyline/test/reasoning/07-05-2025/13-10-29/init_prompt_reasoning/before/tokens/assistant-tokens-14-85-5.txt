@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠWe	Ġknow	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġcinema	Ġyesterday	Ġ(	sentence	Ġ	1	)	Ġand	Ġbefore	Ġthat	,	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġlocation	.	ĠĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

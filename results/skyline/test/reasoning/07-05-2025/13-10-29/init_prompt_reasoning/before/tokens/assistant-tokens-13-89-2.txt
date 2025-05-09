@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġand	ĠMary	,	Ġbut	Ġnot	ĠSandra	.	ĠThe	Ġprevious	Ġcontext	Ġsentences	Ġ(	1	Ġand	Ġ	2	)	Ġmentioned	Ġthat	ĠSandra	Ġwas	Ġin	Ġthe	Ġoffice	,	Ġand	Ġthere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+2	.	ĠFred	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+3	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+4	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+5	.	ĠFred	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
+6	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġfootball	?Ċ

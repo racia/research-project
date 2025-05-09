@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1616	14	24	1	"*TASK*
+Here are the context sentences:
+1. Fred journeyed to the school this morning.
+2. This morning Bill moved to the park.
+3. Bill went to the school yesterday.
+4. Yesterday Fred journeyed to the cinema.
+
+Now, answer the following question:
+Where was Bill before the park?"	school	from context sentence 3, we know that bill went to the school yesterday. from context sentence 2, we know that bill moved to the park this morning. therefore, we can logically conclude that bill was at the school before moving to the park this morning.	fully	school	True	According to sentence 3, Bill went to the school yesterday. There is no other information about Bill's location before the park. Therefore, we can infer that Bill was at the school before going to the park this morning.		"assistant
+
+Reasoning: According to sentence 3, Bill went to the school yesterday. There is no other information about Bill's location before the park. Therefore, we can infer that Bill was at the school before going to the park this morning.
+
+Answer: school"	0.2143	0.0357	False	False	False	True	0
+1617	14	24	2	"*TASK*
+Here are the context sentences:
+6. This afternoon Bill moved to the bedroom.
+7. Mary went back to the school yesterday.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	park	from context sentence 2 (provided in the previous part of the conversation), we know that bill moved to the park this morning. from context sentence 6, we know that bill moved to the bedroom this afternoon. therefore, we can logically conclude that bill was at the park before moving to the bedroom this afternoon.	partially	park	True	There is no direct information about Bill's location before the bedroom. However, we can look at the previous context sentences. Sentence 2 mentioned that Bill moved to the park this morning, and there is no other information about Bill's movement until sentence 6, which says Bill moved to the bedroom this afternoon. Therefore, we can infer that Bill was at the park before going to the bedroom.		"Reasoning: There is no direct information about Bill's location before the bedroom. However, we can look at the previous context sentences. Sentence 2 mentioned that Bill moved to the park this morning, and there is no other information about Bill's movement until sentence 6, which says Bill moved to the bedroom this afternoon. Therefore, we can infer that Bill was at the park before going to the bedroom.
+
+Answer: park"	0.0233	0.0233	False	False	False	True	0
+1618	14	24	3	"*TASK*
+Here are the context sentences:
+9. Fred went back to the bedroom this afternoon.
+10. This morning Mary went to the office.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	school	from context sentence 1 (provided in the previous part of the conversation), we know that fred journeyed to the school this morning. from context sentence 9, we know that fred went back to the bedroom this afternoon. therefore, we can logically conclude that fred was at the school before going back to the bedroom this afternoon.	partially	school	True	Sentence 4 mentioned that Fred journeyed to the cinema yesterday, and sentence 1 mentioned that Fred journeyed to the school this morning. There is no other information about Fred's movement until sentence 9, which says Fred went back to the bedroom this afternoon. Therefore, we can infer that Fred was at the school before going to the bedroom.		"Reasoning: Sentence 4 mentioned that Fred journeyed to the cinema yesterday, and sentence 1 mentioned that Fred journeyed to the school this morning. There is no other information about Fred's movement until sentence 9, which says Fred went back to the bedroom this afternoon. Therefore, we can infer that Fred was at the school before going to the bedroom.
+
+Answer: school"	0.1039	0.026	False	False	False	True	0
+1619	14	24	4	"*TASK*
+Here are the context sentences:
+12. Fred moved to the school this evening.
+13. Bill went to the school this evening.
+
+Now, answer the following question:
+Where was Bill before the school?"	bedroom	from context sentence 6 (provided in a previous part of the conversation), we know that bill moved to the bedroom this afternoon. from context sentence 13, we know that bill went to the school this evening. therefore, we can logically conclude that bill was at the bedroom before going to the school this evening.	partially	bedroom	True	Sentence 6 mentioned that Bill moved to the bedroom this afternoon, and there is no other information about Bill's movement until sentence 13, which says Bill went to the school this evening. Therefore, we can infer that Bill was at the bedroom before going to the school.		"Reasoning: Sentence 6 mentioned that Bill moved to the bedroom this afternoon, and there is no other information about Bill's movement until sentence 13, which says Bill went to the school this evening. Therefore, we can infer that Bill was at the bedroom before going to the school.
+
+Answer: bedroom"	0.0	0.0323	False	False	False	True	0
+1620	14	24	5	"*TASK*
+Here are the context sentences:
+15. This evening Mary went to the school.
+16. Mary travelled to the park this afternoon.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	school	from context sentence 1 (provided in a previous part of the conversation), we know that fred journeyed to the school this morning. from context sentence 9 (provided in a previous part of the conversation), we know that fred went back to the bedroom this afternoon. therefore, we can logically conclude that fred was at the school before going back to the bedroom this afternoon.	none	not mentioned	False	Sentence 9 mentioned that Fred went back to the bedroom this afternoon. Before that, sentence 1 mentioned that Fred journeyed to the school this morning, and sentence 4 mentioned that Fred journeyed to the cinema yesterday. Therefore, we can infer that Fred was at the school or the cinema before going to the bedroom, but the exact location is not specified.		"Reasoning: Sentence 9 mentioned that Fred went back to the bedroom this afternoon. Before that, sentence 1 mentioned that Fred journeyed to the school this morning, and sentence 4 mentioned that Fred journeyed to the cinema yesterday. Therefore, we can infer that Fred was at the school or the cinema before going to the bedroom, but the exact location is not specified.
+
+Answer: not mentioned"	0.0864	0.0247	False	False	False	True	0

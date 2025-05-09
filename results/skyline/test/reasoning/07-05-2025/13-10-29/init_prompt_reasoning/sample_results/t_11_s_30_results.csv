@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+146	11	30	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the office.
+2. Then he went to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"the context sentences describe daniel's movements in a sequence. first, he moved to the office, and then he went to the garden. this implies that daniel's current location is the garden, as it is the last location mentioned in the sequence of his movements. therefore, the answer to the question ""where is daniel?"" is indeed the garden."	fully	garden	True	The context sentences describe Daniel's movements. He first moved to the office and then went to the garden. Therefore, his current location is the garden.		"assistant
+
+Reasoning: The context sentences describe Daniel's movements. He first moved to the office and then went to the garden. Therefore, his current location is the garden.
+
+Answer: garden"	0.175	0.05	False	False	False	False	0
+147	11	30	2	"*TASK*
+Here are the context sentences:
+4. Mary went to the hallway.
+5. Then she went to the office.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"the context sentences provided (4 and 5) only mention mary's movements, but the question asks about daniel's location. to answer this question, we need to refer to the previous context sentences (1 and 2) which mentioned daniel's movements. according to those sentences, daniel moved to the office and then went to the garden. there is no information provided that suggests daniel changed locations after that. therefore, the answer to the question ""where is daniel?"" is still the garden"	none	garden	True	The context sentences describe Mary's movements, but they do not provide any new information about Daniel's location. The last information about Daniel's location was that he went to the garden.		"Reasoning: The context sentences describe Mary's movements, but they do not provide any new information about Daniel's location. The last information about Daniel's location was that he went to the garden.
+
+Answer: garden"	0.093	0.0465	False	False	False	True	0
+148	11	30	3	"*TASK*
+Here are the context sentences:
+7. Sandra travelled to the hallway.
+8. Following that she went back to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	garden	the context sentences provided (7 and 8) only mention sandra's movements, but the question asks about daniel's location. to answer this question, we need to refer to the previous context sentences (1 and 2) which mentioned daniel's movements. according to those sentences, daniel moved to the office and then went to the garden. there is no information provided that suggests daniel changed locations after that. the movements of sandra or mary (mentioned in previous context sentences) do not affect	none	garden	True	The context sentences describe Sandra's movements, but they do not provide any new information about Daniel's location. The last information about Daniel's location was that he went to the garden.		"Reasoning: The context sentences describe Sandra's movements, but they do not provide any new information about Daniel's location. The last information about Daniel's location was that he went to the garden.
+
+Answer: garden"	0.0698	0.0465	False	False	False	True	0
+149	11	30	4	"*TASK*
+Here are the context sentences:
+10. Mary went to the bedroom.
+11. After that she went to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	"the context sentences describe mary's movements in a sequence. first, she went to the bedroom (sentence 10), and then she went to the office (sentence 11). this implies that mary's current location is the office, as it is the last location mentioned in the sequence of her movements. therefore, the answer to the question ""where is mary?"" is indeed the office."	fully	office	True	The context sentences describe Mary's movements. She first went to the bedroom and then went to the office. Therefore, her current location is the office.		"Reasoning: The context sentences describe Mary's movements. She first went to the bedroom and then went to the office. Therefore, her current location is the office.
+
+Answer: office"	0.0	0.0541	False	False	False	False	0
+150	11	30	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the hallway.
+14. Then she journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	office	the context sentences provided (13 and 14) only mention sandra's movements, but the question asks about mary's location. to answer this question, we need to refer to the previous context sentences (10 and 11) which mentioned mary's movements. according to those sentences, mary went to the bedroom and then went to the office. there is no information provided that suggests mary changed locations after that. the movements of sandra do not affect mary's location, so the answer	none	office	True	The context sentences describe Sandra's movements, but they do not provide any new information about Mary's location. The last information about Mary's location was that she went to the office.		"Reasoning: The context sentences describe Sandra's movements, but they do not provide any new information about Mary's location. The last information about Mary's location was that she went to the office.
+
+Answer: office"	0.0698	0.0465	False	False	False	True	0

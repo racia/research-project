@@ -1,0 +1,114 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1346	3	70	1	"*TASK*
+Here are the context sentences:
+1. John picked up the apple there.
+2. Sandra took the milk.
+3. Mary journeyed to the hallway.
+4. John put down the apple.
+5. Daniel moved to the bathroom.
+6. Sandra put down the milk.
+7. John journeyed to the bedroom.
+8. Sandra got the milk there.
+9. John went to the hallway.
+10. Sandra put down the milk.
+11. John moved to the kitchen.
+12. Daniel went to the office.
+13. John took the milk.
+14. John travelled to the office.
+15. Mary moved to the office.
+16. John got the apple.
+17. Sandra went back to the hallway.
+18. Sandra journeyed to the office.
+19. John travelled to the bedroom.
+20. Sandra journeyed to the hallway.
+21. Daniel went to the hallway.
+22. Sandra went back to the garden.
+23. Daniel went back to the garden.
+24. Sandra travelled to the bedroom.
+25. John discarded the apple.
+26. Sandra moved to the kitchen.
+27. John grabbed the apple.
+28. Daniel went back to the bathroom.
+29. Daniel went back to the hallway.
+30. Mary went back to the bedroom.
+31. John dropped the apple.
+32. Mary went to the hallway.
+33. Sandra went to the office.
+34. Sandra went to the hallway.
+35. John travelled to the hallway.
+36. John dropped the milk.
+
+Now, answer the following question:
+Where was the milk before the hallway?"	bedroom	from sentence 13, we know john took the milk. then, in sentence 14, john travelled to the office. in sentence 19, john travelled to the bedroom. there is no mention of john putting down the milk until sentence 36, where john drops the milk in the hallway. therefore, we can infer that john had the milk with him when he travelled to the bedroom (sentence 19) and still had it until he dropped it in the hallway (sentence	fully	floor	False	The milk was taken by Sandra in sentence 2, and then put down in sentence 6. After that, it was picked up again in sentence 8, and then put down again in sentence 10. Since the question asks about the milk before the hallway, we need to look at the events before Sandra journeyed to the hallway in sentence 3. The last event before that was Sandra putting down the milk in sentence 10, so the milk was on the floor before the hallway.		"Reasoning: The milk was taken by Sandra in sentence 2, and then put down in sentence 6. After that, it was picked up again in sentence 8, and then put down again in sentence 10. Since the question asks about the milk before the hallway, we need to look at the events before Sandra journeyed to the hallway in sentence 3. The last event before that was Sandra putting down the milk in sentence 10, so the milk was on the floor before the hallway.
+
+Answer: floor"	0.0374	0.028	False	False	False	False	0
+1347	3	70	2	"*TASK*
+Here are the context sentences:
+38. Mary got the milk there.
+39. Mary discarded the milk.
+40. Mary grabbed the milk.
+41. John journeyed to the bathroom.
+42. Daniel travelled to the kitchen.
+43. Mary dropped the milk there.
+44. John went to the garden.
+45. Daniel travelled to the office.
+46. Sandra took the milk.
+47. Sandra went back to the bedroom.
+48. Sandra journeyed to the garden.
+49. Sandra put down the milk.
+
+Now, answer the following question:
+Where was the milk before the garden?"	bedroom	from sentence 46, we know sandra took the milk. then, in sentence 47, sandra went back to the bedroom. there is no mention of sandra putting down the milk until sentence 49, where sandra put down the milk in the garden. therefore, we can infer that sandra had the milk with her when she went back to the bedroom (sentence 47) and still had it until she put it down in the garden (sentence 49).	fully	not mentioned	False	The milk was taken by Sandra in sentence 46. Before that, the milk was dropped by Mary in sentence 43. Since the question asks about the milk before the garden, we need to look at the events before Sandra journeyed to the garden in sentence 48. The last event before that was Sandra putting down the milk in sentence 49, but that's after she journeyed to the garden. Therefore, we need to look at the event before that, which is Sandra taking the milk in sentence 46. So, the milk was taken by Sandra before the garden.		"Reasoning: The milk was taken by Sandra in sentence 46. Before that, the milk was dropped by Mary in sentence 43. Since the question asks about the milk before the garden, we need to look at the events before Sandra journeyed to the garden in sentence 48. The last event before that was Sandra putting down the milk in sentence 49, but that's after she journeyed to the garden. Therefore, we need to look at the event before that, which is Sandra taking the milk in sentence 46. So, the milk was taken by Sandra before the garden.
+
+Answer: not mentioned"	0.2	0.024	False	False	False	True	0
+1348	3	70	3	"*TASK*
+Here are the context sentences:
+51. Daniel went back to the garden.
+52. Sandra travelled to the kitchen.
+
+Now, answer the following question:
+Where was the milk before the garden?"	bedroom	this question refers to a previous part of the conversation history. from the previous context (sentences 46-49), we know that sandra took the milk (sentence 46), went back to the bedroom (sentence 47), and then put down the milk in the garden (sentence 49). therefore, the milk was in the bedroom before it was put down in the garden.	none	not mentioned	False	There is no information about the milk in the given context sentences. The sentences only mention Daniel and Sandra's movements, but not the milk. Therefore, we cannot determine where the milk was before the garden.		"Reasoning: There is no information about the milk in the given context sentences. The sentences only mention Daniel and Sandra's movements, but not the milk. Therefore, we cannot determine where the milk was before the garden.
+
+Answer: not mentioned"	0.0612	0.0612	False	False	False	True	0
+1349	3	70	4	"*TASK*
+Here are the context sentences:
+54. Mary went back to the kitchen.
+55. Daniel travelled to the office.
+
+Now, answer the following question:
+Where was the milk before the garden?"	bedroom	this question refers to a previous part of the conversation history. from the previous context (sentences 46-49), we know that sandra took the milk (sentence 46), went back to the bedroom (sentence 47), and then put down the milk in the garden (sentence 49). therefore, the milk was in the bedroom before it was put down in the garden.	none	not mentioned	False	There is no information about the milk in the given context sentences. The sentences only mention Mary and Daniel's movements, but not the milk. Therefore, we cannot determine where the milk was before the garden.		"Reasoning: There is no information about the milk in the given context sentences. The sentences only mention Mary and Daniel's movements, but not the milk. Therefore, we cannot determine where the milk was before the garden.
+
+Answer: not mentioned"	0.0204	0.0612	False	False	False	True	0
+1350	3	70	5	"*TASK*
+Here are the context sentences:
+57. Mary travelled to the hallway.
+58. Sandra travelled to the garden.
+59. Daniel went to the garden.
+60. John journeyed to the kitchen.
+61. Daniel went back to the bedroom.
+62. Mary went to the bathroom.
+63. Mary got the football.
+64. Mary moved to the office.
+65. Sandra got the milk.
+66. Sandra travelled to the kitchen.
+67. John went back to the hallway.
+68. Daniel moved to the hallway.
+69. John journeyed to the garden.
+70. Sandra journeyed to the office.
+71. Sandra put down the milk.
+72. Sandra took the milk.
+73. John travelled to the bedroom.
+74. Mary left the football.
+75. Daniel went back to the garden.
+76. Mary picked up the football.
+77. Mary moved to the bathroom.
+78. Mary discarded the football there.
+79. Sandra moved to the hallway.
+80. Sandra journeyed to the bathroom.
+81. Sandra discarded the milk.
+82. John picked up the apple.
+
+Now, answer the following question:
+Where was the milk before the bathroom?"	hallway	"""reasoning: <"	fully	floor	False	The milk was taken by Sandra in sentence 65, and then put down in sentence 71. After that, it was taken again in sentence 72, and then discarded in sentence 81. Since the question asks about the milk before the bathroom, we need to look at the events before Sandra journeyed to the bathroom in sentence 80. The last event before that was Sandra moving to the hallway in sentence 79, but that's not relevant to the milk. Therefore, we need to look at the event before that, which is Sandra putting down the milk in sentence 71. So, the milk was on the floor before the bathroom.		"Reasoning: The milk was taken by Sandra in sentence 65, and then put down in sentence 71. After that, it was taken again in sentence 72, and then discarded in sentence 81. Since the question asks about the milk before the bathroom, we need to look at the events before Sandra journeyed to the bathroom in sentence 80. The last event before that was Sandra moving to the hallway in sentence 79, but that's not relevant to the milk. Therefore, we need to look at the event before that, which is Sandra putting down the milk in sentence 71. So, the milk was on the floor before the bathroom.
+
+Answer: floor"	0.0	0.0217	False	False	False	False	0

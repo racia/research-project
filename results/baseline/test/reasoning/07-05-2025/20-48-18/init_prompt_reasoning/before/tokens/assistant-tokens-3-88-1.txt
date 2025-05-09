@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġmilk	Ġwas	Ġtaken	Ġby	ĠMary	Ġin	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	14	),	Ġand	Ġthen	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	Ġand	Ġthen	Ġto	Ġthe	Ġkitchen	,	Ġso	Ġthe	Ġmilk	Ġwas	Ġwith	ĠMary	Ġbefore	Ġshe	Ġwent	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.	ĠSentence	Ġ	13	Ġonly	Ġmentions	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	,	Ġbut	Ġit	Ġdoesn	't	Ġprovide	Ġany	Ġinformation	Ġabout	Ġher	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

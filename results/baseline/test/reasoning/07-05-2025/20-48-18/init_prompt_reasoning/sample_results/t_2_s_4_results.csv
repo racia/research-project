@@ -1,0 +1,64 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+516	2	4	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the office.
+2. John took the football there.
+3. John discarded the football.
+4. John travelled to the garden.
+5. Daniel travelled to the garden.
+6. Sandra went to the garden.
+7. Daniel travelled to the kitchen.
+8. Daniel moved to the office.
+9. Mary grabbed the milk there.
+10. Daniel journeyed to the bedroom.
+11. John travelled to the office.
+12. Daniel travelled to the bathroom.
+13. John travelled to the kitchen.
+14. Mary travelled to the garden.
+15. Mary dropped the milk.
+16. John went back to the garden.
+
+Now, answer the following question:
+Where is the milk?"	garden	from sentence 9, we know that mary grabbed the milk in the office. then, in sentence 14, mary travelled to the garden. finally, in sentence 15, mary dropped the milk. therefore, the milk is in the garden.	fully	garden	True	The milk was grabbed by Mary in the office (sentence 9), and then dropped by Mary (sentence 15). Since Mary dropped the milk, it is likely that the milk is on the floor or in the garden, where Mary travelled to after grabbing the milk. However, the exact location of the milk is not specified, so we cannot pinpoint an exact location.		"Reasoning: The milk was grabbed by Mary in the office (sentence 9), and then dropped by Mary (sentence 15). Since Mary dropped the milk, it is likely that the milk is on the floor or in the garden, where Mary travelled to after grabbing the milk. However, the exact location of the milk is not specified, so we cannot pinpoint an exact location.
+
+Answer: garden"	0.1111	0.0247	False	False	False	False	0
+517	2	4	2	"*TASK*
+Here are the context sentences:
+18. Sandra got the milk there.
+19. Sandra put down the milk.
+
+Now, answer the following question:
+Where is the milk?"	garden	"from the previous conversation, we know that mary dropped the milk in the garden (sentence 15). there is no information about the milk being moved or taken from the garden after that. in the current context, sentence 18 says sandra got the milk there, which implies that ""there"" refers to the garden, where the milk was already present. then, in sentence 19, sandra put down the milk, which means the milk is still in the same location, i.e"	partially	unknown	False	"The milk was put down by Sandra, and there is no information about where Sandra put it down. However, the context sentence 18 mentions ""there"", which implies that Sandra got the milk somewhere, but it doesn't specify where she put it down."		"Reasoning: The milk was put down by Sandra, and there is no information about where Sandra put it down. However, the context sentence 18 mentions ""there"", which implies that Sandra got the milk somewhere, but it doesn't specify where she put it down.
+
+Answer: unknown"	0.069	0.0345	False	False	False	True	0
+518	2	4	3	"*TASK*
+Here are the context sentences:
+21. Mary went back to the bathroom.
+22. Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where is the milk?"	garden	the question asks about the location of the milk, but the provided context sentences (21 and 22) only describe mary's movements and do not mention the milk. to answer the question, we need to refer to the previous conversation, where we established that the milk was in the garden (sentence 15, mary dropped the milk, and sentence 19, sandra put down the milk). there is no new information that would change the location of the milk, so it remains	none	not mentioned	False	There is no mention of the milk in these context sentences, and the previous context sentences (18-19) only mentioned Sandra getting and putting down the milk, but didn't specify where. Therefore, we cannot determine the location of the milk based on these sentences.		"Reasoning: There is no mention of the milk in these context sentences, and the previous context sentences (18-19) only mentioned Sandra getting and putting down the milk, but didn't specify where. Therefore, we cannot determine the location of the milk based on these sentences.
+
+Answer: not mentioned"	0.0492	0.0328	False	False	False	True	0
+519	2	4	4	"*TASK*
+Here are the context sentences:
+24. John got the milk there.
+25. Daniel went back to the office.
+26. Daniel moved to the kitchen.
+27. Daniel grabbed the apple there.
+28. John left the milk.
+29. Daniel discarded the apple.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	from sentence 27, we know that daniel grabbed the apple in the kitchen. then, in sentence 29, daniel discarded the apple. since there is no information about the apple being moved or taken from the kitchen after that, we can conclude that the apple is still in the kitchen.	fully	kitchen	True	The apple was grabbed by Daniel in the kitchen (sentence 27), and then discarded by Daniel (sentence 29). There is no information about where the apple was discarded, but it is likely that it is in the kitchen or nearby.		"Reasoning: The apple was grabbed by Daniel in the kitchen (sentence 27), and then discarded by Daniel (sentence 29). There is no information about where the apple was discarded, but it is likely that it is in the kitchen or nearby.
+
+Answer: kitchen"	0.0	0.0364	False	False	False	True	0
+520	2	4	5	"*TASK*
+Here are the context sentences:
+31. John picked up the milk there.
+32. Daniel went to the hallway.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	the question asks about the location of the apple, but the provided context sentences (31 and 32) do not mention the apple. to answer the question, we need to refer to the previous conversation, where we established that the apple was discarded in the kitchen (sentence 29). there is no new information that would change the location of the apple, so it remains in the kitchen.	none	not mentioned	False	There is no mention of the apple in these context sentences. The previous context sentences (24-29) mentioned the apple, but the current sentences only mention the milk. Therefore, we cannot determine the location of the apple based on these sentences.		"Reasoning: There is no mention of the apple in these context sentences. The previous context sentences (24-29) mentioned the apple, but the current sentences only mention the milk. Therefore, we cannot determine the location of the apple based on these sentences.
+
+Answer: not mentioned"	0.0526	0.0351	False	False	False	True	0

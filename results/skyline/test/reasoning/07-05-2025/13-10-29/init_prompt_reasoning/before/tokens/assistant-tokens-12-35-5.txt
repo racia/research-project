@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠFrom	Ġthe	Ġcontext	Ġsentences	,	Ġwe	Ġknow	Ġthat	ĠSandra	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	13	),	Ġand	Ġthen	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġwith	ĠDaniel	Ġ(	sentence	Ġ	14	),	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġmoving	Ġfrom	Ġthe	Ġoffice	.	ĠTherefore	,	ĠSandra	's	Ġcurrent	Ġlocation	Ġis	Ġstill	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ"	Mary	Ġleft	Ġthe	Ġmilk	"	Ġimplies	Ġthat	ĠMary	Ġwas	Ġholding	Ġthe	Ġmilk	Ġbefore	Ġleaving	Ġit	.	ĠSince	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġhallway	Ġwhen	Ġshe	Ġleft	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

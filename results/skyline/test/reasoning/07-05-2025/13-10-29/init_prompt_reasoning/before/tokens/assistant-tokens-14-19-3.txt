@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠMary	Ġwas	Ġin	Ġthe	Ġoffice	Ġthis	Ġafternoon	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	9	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġthis	Ġevening	.	ĠTherefore	,	ĠMary	Ġwas	Ġin	Ġthe	Ġoffice	Ġbefore	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

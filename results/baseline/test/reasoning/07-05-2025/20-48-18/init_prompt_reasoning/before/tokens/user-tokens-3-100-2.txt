@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+48	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+49	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+50	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+51	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġbathroom	?Ċ

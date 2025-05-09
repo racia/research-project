@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	.	ĠSentence	Ġ	11	Ġonly	Ġmentions	ĠFred	Ġtravelling	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġbut	Ġit	Ġdoesn	't	Ġprovide	Ġany	Ġinformation	Ġabout	Ġhis	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

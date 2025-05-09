@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+11	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+12	.	ĠBill	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠBill	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

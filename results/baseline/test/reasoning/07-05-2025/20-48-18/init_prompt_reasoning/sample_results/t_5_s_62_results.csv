@@ -1,0 +1,64 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1906	5	62	1	"*TASK*
+Here are the context sentences:
+1. Fred moved to the hallway.
+2. Jeff journeyed to the garden.
+3. Fred took the milk there.
+4. Jeff moved to the hallway.
+5. Fred went back to the garden.
+6. Jeff picked up the apple there.
+7. Jeff passed the apple to Mary.
+8. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Who gave the apple to Mary?"	jeff	from the context sentences, we know that jeff picked up the apple in the garden (sentence 6) and then passed it to mary (sentence 7). therefore, it is logical to conclude that jeff gave the apple to mary.	fully	Jeff	True	Fred and Jeff both interacted with the apple, but only Jeff passed the apple to Mary. There is no mention of Fred giving the apple to Mary.		"Reasoning: Fred and Jeff both interacted with the apple, but only Jeff passed the apple to Mary. There is no mention of Fred giving the apple to Mary.
+
+Answer: Jeff"	0.0789	0.0263	False	False	False	True	0
+1907	5	62	2	"*TASK*
+Here are the context sentences:
+10. Fred discarded the milk.
+11. Bill journeyed to the bedroom.
+
+Now, answer the following question:
+Who did Jeff give the apple to?"	mary	"this question refers to a previous part of the conversation history. in sentence 7, it is stated that ""jeff passed the apple to mary."" therefore, it is logical to conclude that jeff gave the apple to mary. the new context sentences (10 and 11) do not provide any new information that would change this conclusion."	none	Not mentioned	False	There is no mention of Jeff giving the apple to anyone in the provided context sentences. The previous question mentioned Jeff passing the apple to Mary, but this new question does not provide any additional information about Jeff's actions.		"Reasoning: There is no mention of Jeff giving the apple to anyone in the provided context sentences. The previous question mentioned Jeff passing the apple to Mary, but this new question does not provide any additional information about Jeff's actions.
+
+Answer: Not mentioned"	0.0588	0.0196	False	False	False	True	0
+1908	5	62	3	"*TASK*
+Here are the context sentences:
+13. Mary put down the apple.
+14. Bill picked up the apple there.
+15. Bill dropped the apple.
+16. Fred got the milk there.
+17. Bill took the apple there.
+18. Jeff went back to the bathroom.
+19. Mary moved to the garden.
+20. Mary travelled to the hallway.
+21. Mary journeyed to the garden.
+22. Mary went to the office.
+23. Fred went to the bathroom.
+24. Fred journeyed to the office.
+25. Fred gave the milk to Mary.
+26. Mary passed the milk to Fred.
+
+Now, answer the following question:
+What did Mary give to Fred?"	milk	"in sentence 25, it is stated that ""fred gave the milk to mary."" then, in sentence 26, it is stated that ""mary passed the milk to fred."" this implies that mary received the milk from fred and then gave it back to fred. therefore, it is logical to conclude that mary gave the milk to fred."	fully	Milk	True	According to the context sentences, Mary passed the milk to Fred (sentence 26), but there is no mention of Mary giving the apple to Fred.		"Reasoning: According to the context sentences, Mary passed the milk to Fred (sentence 26), but there is no mention of Mary giving the apple to Fred.
+
+Answer: Milk"	0.0541	0.027	False	False	False	True	0
+1909	5	62	4	"*TASK*
+Here are the context sentences:
+28. Fred passed the milk to Mary.
+29. Mary handed the milk to Fred.
+
+Now, answer the following question:
+Who did Mary give the milk to?"	fred	"in sentence 29, it is stated that ""mary handed the milk to fred."" this directly indicates that mary gave the milk to fred. therefore, it is logical to conclude that mary gave the milk to fred."	fully	Fred	True	According to the context sentences, Mary handed the milk to Fred (sentence 29), but there is no mention of Mary giving the milk to anyone else.		"Reasoning: According to the context sentences, Mary handed the milk to Fred (sentence 29), but there is no mention of Mary giving the milk to anyone else.
+
+Answer: Fred"	0.0	0.0263	False	False	False	True	0
+1910	5	62	5	"*TASK*
+Here are the context sentences:
+31. Fred handed the milk to Mary.
+32. Mary gave the milk to Fred.
+
+Now, answer the following question:
+Who received the milk?"	fred	"in sentence 31, it is stated that ""fred handed the milk to mary."" this means that mary received the milk from fred. then, in sentence 32, it is stated that ""mary gave the milk to fred."" this means that fred received the milk from mary. therefore, it is logical to conclude that fred received the milk."	fully	Fred	True	According to the context sentences, Fred received the milk from Mary (sentences 31 and 32).		"Reasoning: According to the context sentences, Fred received the milk from Mary (sentences 31 and 32).
+
+Answer: Fred"	0.0	0.0357	False	False	False	False	0

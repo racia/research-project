@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+76	1	16	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the kitchen.
+2. Daniel went back to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	from the context sentences, we know that daniel went back to the kitchen (sentence 2). this implies that daniel was not in the kitchen initially, but he moved to the kitchen. since there is no information about daniel leaving the kitchen after going back, we can logically conclude that daniel is still in the kitchen.	fully	kitchen	True	Daniel went back to the kitchen, which implies that he was previously in the kitchen. Since there is no information about him moving to a different location, it can be inferred that he is still in the kitchen.		"Reasoning: Daniel went back to the kitchen, which implies that he was previously in the kitchen. Since there is no information about him moving to a different location, it can be inferred that he is still in the kitchen.
+
+Answer: kitchen"	0.1224	0.0204	False	False	False	True	0
+77	1	16	2	"*TASK*
+Here are the context sentences:
+4. Daniel went to the garden.
+5. Mary went back to the office.
+
+Now, answer the following question:
+Where is John?"	kitchen	"the question asks about john's location, but the context sentences 4 and 5 do not provide any new information about john. however, we can look back at the previous context sentences (1 and 2) which mentioned john. sentence 1 states that ""john travelled to the kitchen"", and there is no information about john leaving the kitchen. therefore, we can logically conclude that john is still in the kitchen."	none	not mentioned	False	There is no information about John's current location in the given context sentences. Sentence 4 mentions Daniel going to the garden, and sentence 5 mentions Mary going back to the office, but neither of these sentences provides information about John's location.		"Reasoning: There is no information about John's current location in the given context sentences. Sentence 4 mentions Daniel going to the garden, and sentence 5 mentions Mary going back to the office, but neither of these sentences provides information about John's location.
+
+Answer: not mentioned"	0.0877	0.0175	False	False	False	True	0
+78	1	16	3	"*TASK*
+Here are the context sentences:
+7. Daniel journeyed to the office.
+8. Daniel moved to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	the question asks about daniel's current location. from the context sentences, we know that daniel journeyed to the office (sentence 7), but then he moved to the kitchen (sentence 8). this implies that daniel's final destination is the kitchen, as he moved there after being in the office. therefore, we can logically conclude that daniel is currently in the kitchen.	fully	kitchen	True	Sentence 7 mentions Daniel journeying to the office, but sentence 8 mentions him moving to the kitchen. Since the latter sentence is more recent, it can be inferred that Daniel is currently in the kitchen.		"Reasoning: Sentence 7 mentions Daniel journeying to the office, but sentence 8 mentions him moving to the kitchen. Since the latter sentence is more recent, it can be inferred that Daniel is currently in the kitchen.
+
+Answer: kitchen"	0.0408	0.0204	False	False	False	True	0
+79	1	16	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the hallway.
+11. Sandra went back to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	the question asks about daniel's current location. from the context sentences, we know that daniel went back to the hallway (sentence 10). there is no information about daniel leaving the hallway after going back, so we can logically conclude that daniel is still in the hallway.	fully	hallway	True	Sentence 10 mentions Daniel going back to the hallway, which implies that he was previously in the hallway. Since there is no information about him moving to a different location, it can be inferred that he is still in the hallway.		"Reasoning: Sentence 10 mentions Daniel going back to the hallway, which implies that he was previously in the hallway. Since there is no information about him moving to a different location, it can be inferred that he is still in the hallway.
+
+Answer: hallway"	0.0	0.0189	False	False	False	True	0
+80	1	16	5	"*TASK*
+Here are the context sentences:
+13. Sandra went to the garden.
+14. Daniel went back to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	the question asks about daniel's current location. from the context sentences, we know that daniel went back to the office (sentence 14). there is no information about daniel leaving the office after going back, so we can logically conclude that daniel is still in the office.	fully	office	True	Sentence 14 mentions Daniel going back to the office, which implies that he was previously in the office. Since there is no information about him moving to a different location, it can be inferred that he is still in the office.		"Reasoning: Sentence 14 mentions Daniel going back to the office, which implies that he was previously in the office. Since there is no information about him moving to a different location, it can be inferred that he is still in the office.
+
+Answer: office"	0.0	0.0189	False	False	False	True	0

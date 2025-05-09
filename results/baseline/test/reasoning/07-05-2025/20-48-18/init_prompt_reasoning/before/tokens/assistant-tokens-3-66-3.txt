@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġleft	Ġby	ĠSandra	,	Ġand	Ġthen	Ġgrabbed	Ġby	ĠSandra	Ġagain	.	ĠTherefore	,	Ġthe	Ġapple	Ġwas	Ġin	Ġthe	Ġhallway	Ġbefore	Ġthe	Ġbathroom	,	Ġas	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	Ġbefore	Ġgoing	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

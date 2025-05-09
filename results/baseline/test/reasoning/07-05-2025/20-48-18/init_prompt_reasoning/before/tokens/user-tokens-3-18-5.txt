@@ -1,0 +1,13 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+79	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+80	.	ĠMary	Ġdropped	Ġthe	Ġapple	.Ċ
+81	.	ĠMary	Ġgot	Ġthe	Ġapple	.Ċ
+82	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+83	.	ĠMary	Ġdropped	Ġthe	Ġapple	.Ċ
+84	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+85	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	.Ċ
+86	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+87	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+88	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġbedroom	?Ċ

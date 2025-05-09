@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġsuggest	Ġthat	ĠSandra	Ġtook	Ġthe	Ġfootball	Ġthere	,	Ġand	Ġlater	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠSince	ĠSandra	Ġtook	Ġthe	Ġfootball	Ġbefore	Ġgoing	Ġto	Ġthe	Ġbedroom	,	Ġthe	Ġfootball	Ġmust	Ġhave	Ġbeen	Ġtaken	Ġbefore	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġthere	<|eot_id|>

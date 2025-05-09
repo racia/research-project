@@ -1,0 +1,23 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġgot	Ġthe	Ġmilk	.Ċ
+2	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+3	.	ĠJohn	Ġdropped	Ġthe	Ġmilk	.Ċ
+4	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+5	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+6	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+7	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġmilk	.Ċ
+8	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+9	.	ĠJohn	Ġdropped	Ġthe	Ġmilk	.Ċ
+10	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+11	.	ĠJohn	Ġtook	Ġthe	Ġmilk	.Ċ
+12	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+13	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+14	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+15	.	ĠMary	Ġtook	Ġthe	Ġfootball	.Ċ
+16	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+17	.	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	Ġthere	.Ċ
+18	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+19	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+20	.	ĠJohn	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġhallway	?Ċ

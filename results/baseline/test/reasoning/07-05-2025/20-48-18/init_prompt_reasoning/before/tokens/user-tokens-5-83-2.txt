@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+22	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+23	.	ĠJeff	Ġpassed	Ġthe	Ġmilk	Ġto	ĠBill	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġmilk	Ġto	ĠBill	?Ċ

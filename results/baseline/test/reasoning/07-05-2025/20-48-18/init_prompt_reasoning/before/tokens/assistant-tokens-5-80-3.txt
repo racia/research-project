@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠBill	Ġpassed	Ġthe	Ġapple	Ġto	ĠFred	,	Ġand	Ġthen	ĠFred	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	Ġ(	sentence	Ġ	14	).	ĠThis	Ġmeans	Ġthat	ĠFred	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

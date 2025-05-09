@@ -1,0 +1,21 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠFred	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+2	.	ĠFred	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+3	.	ĠFred	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+4	.	ĠJeff	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+5	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+6	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+7	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+8	.	ĠBill	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+9	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+10	.	ĠJeff	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+11	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+12	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+13	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+14	.	ĠBill	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+15	.	ĠFred	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+16	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+17	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+18	.	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠMary	Ġgive	Ġto	ĠFred	?Ċ

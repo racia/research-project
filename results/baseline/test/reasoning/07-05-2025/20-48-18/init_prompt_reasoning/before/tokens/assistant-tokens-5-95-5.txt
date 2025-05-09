@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	38	,	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	.	ĠSentence	Ġ	41	Ġmentions	ĠBill	Ġpicking	Ġup	Ġthe	Ġapple	,	Ġbut	Ġit	Ġdoesn	't	Ġmention	ĠMary	Ġgiving	Ġit	Ġto	Ġhim	.	ĠSentence	Ġ	42	Ġis	Ġirrelevant	Ġto	Ġthe	Ġquestion	.ĊĊ	Answer	:	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	.	<|eot_id|>

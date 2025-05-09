@@ -1,0 +1,72 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2016	5	84	1	"*TASK*
+Here are the context sentences:
+1. Jeff took the apple there.
+2. Jeff went to the bathroom.
+3. Jeff picked up the football there.
+4. Jeff put down the apple.
+5. Jeff dropped the football.
+6. Fred journeyed to the office.
+7. Jeff grabbed the football there.
+8. Bill went back to the hallway.
+9. Jeff dropped the football.
+10. Jeff journeyed to the kitchen.
+11. Jeff moved to the hallway.
+12. Bill went to the kitchen.
+13. Bill went to the garden.
+14. Fred travelled to the garden.
+15. Fred moved to the kitchen.
+16. Jeff moved to the bedroom.
+17. Bill went to the bathroom.
+18. Jeff travelled to the bathroom.
+19. Mary went back to the office.
+20. Bill journeyed to the office.
+21. Bill journeyed to the bedroom.
+22. Jeff picked up the milk there.
+23. Mary travelled to the hallway.
+24. Jeff travelled to the kitchen.
+25. Jeff passed the milk to Fred.
+26. Fred passed the milk to Jeff.
+
+Now, answer the following question:
+What did Fred give to Jeff?"	milk	from sentence 25, we know that jeff passed the milk to fred. then, in sentence 26, fred passed the milk to jeff. therefore, fred gave the milk to jeff.	fully	milk	True	Fred passed the milk to Jeff, but there is no mention of Fred giving milk to Jeff in the context sentences. However, Fred received the milk from Jeff in sentence 25.		"Reasoning: Fred passed the milk to Jeff, but there is no mention of Fred giving milk to Jeff in the context sentences. However, Fred received the milk from Jeff in sentence 25.
+
+Answer: milk"	0.0698	0.0233	False	False	False	True	0
+2017	5	84	2	"*TASK*
+Here are the context sentences:
+28. Jeff handed the milk to Fred.
+29. Bill went to the office.
+
+Now, answer the following question:
+What did Jeff give to Fred?"	milk	"according to sentence 28, ""jeff handed the milk to fred"", which directly states that jeff gave the milk to fred."	fully	milk	True	According to sentence 28, Jeff handed the milk to Fred.		"Reasoning: According to sentence 28, Jeff handed the milk to Fred.
+
+Answer: milk"	0.05	0.05	False	False	False	False	0
+2018	5	84	3	"*TASK*
+Here are the context sentences:
+31. Jeff journeyed to the office.
+32. Mary went back to the office.
+
+Now, answer the following question:
+Who received the milk?"	fred	"there is no direct information in the provided context lines (31 and 32) about who received the milk. however, we can infer the answer from the previous conversation history. in the previous conversation, we had sentence 28, ""jeff handed the milk to fred"", which directly states that fred received the milk."	none	Not mentioned	False	There is no mention of milk in the given context sentences.		"Reasoning: There is no mention of milk in the given context sentences.
+
+Answer: Not mentioned"	0.1	0.05	False	False	False	True	0
+2019	5	84	4	"*TASK*
+Here are the context sentences:
+34. Fred moved to the hallway.
+35. Jeff moved to the garden.
+36. Jeff journeyed to the hallway.
+37. Fred handed the milk to Jeff.
+
+Now, answer the following question:
+Who did Fred give the milk to?"	jeff	"according to sentence 37, ""fred handed the milk to jeff"", which directly states that fred gave the milk to jeff."	fully	Jeff	True	According to sentence 37, Fred handed the milk to Jeff.		"Reasoning: According to sentence 37, Fred handed the milk to Jeff.
+
+Answer: Jeff"	0.0	0.05	False	False	False	False	0
+2020	5	84	5	"*TASK*
+Here are the context sentences:
+39. Bill moved to the garden.
+40. Jeff handed the milk to Fred.
+
+Now, answer the following question:
+Who gave the milk to Fred?"	jeff	"according to sentence 40, ""jeff handed the milk to fred"", which directly states that jeff gave the milk to fred."	fully	Jeff	True	According to sentence 40, Jeff handed the milk to Fred.		"Reasoning: According to sentence 40, Jeff handed the milk to Fred.
+
+Answer: Jeff"	0.0	0.05	False	False	False	False	0

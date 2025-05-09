@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+186	11	38	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the hallway.
+2. Following that she travelled to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	sandra's location is determined by tracing her movements from the context sentences. in sentence 1, sandra journeyed to the hallway, which means she was in the hallway. then, in sentence 2, she travelled to the bathroom, which implies that she left the hallway and moved to the bathroom. therefore, her current location is the bathroom.	fully	bathroom	True	According to the context sentences, Sandra first went to the hallway and then travelled to the bathroom. Therefore, her current location is the bathroom.		"assistant
+
+Reasoning: According to the context sentences, Sandra first went to the hallway and then travelled to the bathroom. Therefore, her current location is the bathroom.
+
+Answer: bathroom"	0.2564	0.0513	False	False	False	False	0
+187	11	38	2	"*TASK*
+Here are the context sentences:
+4. Daniel went to the hallway.
+5. Afterwards he went back to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	daniel's location is determined by tracing his movements from the context sentences. in sentence 4, daniel went to the hallway, which means he was in the hallway. then, in sentence 5, he went back to the office, which implies that he left the hallway and moved to the office. therefore, his current location is the office.	fully	office	True	According to the context sentences, Daniel first went to the hallway and then went back to the office. Therefore, his current location is the office.		"Reasoning: According to the context sentences, Daniel first went to the hallway and then went back to the office. Therefore, his current location is the office.
+
+Answer: office"	0.1389	0.0556	False	False	False	False	0
+188	11	38	3	"*TASK*
+Here are the context sentences:
+7. Sandra travelled to the bedroom.
+8. After that she moved to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	office	"the question asks about daniel's location, but the context sentences only provide information about sandra's movements. there is no mention of daniel in the context sentences. however, the answer provided is ""office"", which suggests that daniel's location was established in a previous part of the conversation. since we don't have any information about daniel's movements in the current context, we must rely on the previous conversation history. therefore, the answer ""office"" must be based on information provided earlier in the"	none	office	True	The context sentences provided do not mention Daniel's current location. The previous information about Daniel's location was that he was in the office (from sentences 4 and 5).		"Reasoning: The context sentences provided do not mention Daniel's current location. The previous information about Daniel's location was that he was in the office (from sentences 4 and 5).
+
+Answer: office"	0.0476	0.0476	False	False	False	True	0
+189	11	38	4	"*TASK*
+Here are the context sentences:
+10. Mary went to the hallway.
+11. After that she travelled to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"the question asks about sandra's location, but the context sentences only provide information about mary's movements. there is no mention of sandra in the context sentences. however, the answer provided is ""hallway"", which suggests that sandra's location was established in a previous part of the conversation. since we don't have any information about sandra's movements in the current context, we must rely on the previous conversation history. in a previous part of the conversation, it was established that sandra journeyed"	none	not specified	False	The context sentences provided do not mention Sandra's current location. The previous information about Sandra's location was that she was in the hallway (from sentences 7 and 8), but then she might have moved to another location which is not specified.		"Reasoning: The context sentences provided do not mention Sandra's current location. The previous information about Sandra's location was that she was in the hallway (from sentences 7 and 8), but then she might have moved to another location which is not specified.
+
+Answer: not specified"	0.0702	0.0351	False	False	False	True	0
+190	11	38	5	"*TASK*
+Here are the context sentences:
+13. John went to the bathroom.
+14. Then he journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"the question asks about sandra's location, but the context sentences only provide information about john's movements. there is no mention of sandra in the context sentences. however, the answer provided is ""hallway"", which suggests that sandra's location was established in a previous part of the conversation. since we don't have any information about sandra's movements in the current context, we must rely on the previous conversation history. in a previous part of the conversation, it was established"	none	not specified	False	The context sentences provided do not mention Sandra's current location. The previous information about Sandra's location was that it was not specified (from sentences 10 and 11).		"Reasoning: The context sentences provided do not mention Sandra's current location. The previous information about Sandra's location was that it was not specified (from sentences 10 and 11).
+
+Answer: not specified"	0.0952	0.0476	False	False	False	True	0

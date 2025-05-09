@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+276	11	56	1	"*TASK*
+Here are the context sentences:
+1. John moved to the hallway.
+2. After that he went to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	the context sentences describe john's movements in a sequence. first, john moved to the hallway, and then he went to the kitchen. since the kitchen is the last location mentioned in the sequence, it can be inferred that john is currently in the kitchen.	fully	kitchen	True	The context sentences describe John's movements. He first moved to the hallway (sentence 1) and then went to the kitchen (sentence 2). Therefore, his current location is the kitchen.		"assistant
+
+Reasoning: The context sentences describe John's movements. He first moved to the hallway (sentence 1) and then went to the kitchen (sentence 2). Therefore, his current location is the kitchen.
+
+Answer: kitchen"	0.1837	0.0408	False	False	False	False	0
+277	11	56	2	"*TASK*
+Here are the context sentences:
+4. John went to the office.
+5. Afterwards he moved to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	the context sentences describe john's movements in a sequence. sentence 4 states that john went to the office, and sentence 5 states that afterwards he moved to the garden. this implies that john's location was updated from the office to the garden. therefore, john's current location is the garden.	fully	garden	True	The context sentences describe John's movements. He first went to the office (sentence 4) and then moved to the garden (sentence 5). Therefore, his current location is the garden.		"Reasoning: The context sentences describe John's movements. He first went to the office (sentence 4) and then moved to the garden (sentence 5). Therefore, his current location is the garden.
+
+Answer: garden"	0.1522	0.0435	False	False	False	False	0
+278	11	56	3	"*TASK*
+Here are the context sentences:
+7. Mary travelled to the office.
+8. Then she moved to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	"the context sentences describe mary's movements, not john's. there is no information provided about john's location in the given context sentences. the answer ""garden"" seems to be incorrect, as it is mary who moved to the garden, not john."	none	garden	True	The context sentences describe Mary's movements, but they do not provide any new information about John's location. The last known location of John was the garden (from previous context sentences).		"Reasoning: The context sentences describe Mary's movements, but they do not provide any new information about John's location. The last known location of John was the garden (from previous context sentences).
+
+Answer: garden"	0.1163	0.0465	False	False	False	True	0
+279	11	56	4	"*TASK*
+Here are the context sentences:
+10. Sandra travelled to the bathroom.
+11. Then she went back to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	garden	the context sentences describe sandra's movements, but the question asks about mary's location. there is no information provided about mary's location in the given context sentences. however, if we look back at the previous parts of the conversation, we can see that mary's location was mentioned in sentences 7 and 8, where it was stated that mary travelled to the office and then moved to the garden. since there is no new information about mary's movements, we can infer that mary is	none	garden	True	The context sentences describe Sandra's movements, but they do not provide any new information about Mary's location. The last known location of Mary was the garden (from previous context sentences).		"Reasoning: The context sentences describe Sandra's movements, but they do not provide any new information about Mary's location. The last known location of Mary was the garden (from previous context sentences).
+
+Answer: garden"	0.1628	0.0465	False	False	False	True	0
+280	11	56	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the hallway.
+14. After that he travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	the context sentences describe john's movements, but the question asks about sandra's location. there is no information provided about sandra's location in the given context sentences. however, if we look back at the previous parts of the conversation, we can see that sandra's location was not mentioned at all. but we do have information about sandra's location from sentence 11, where it was stated that sandra went back to the kitchen. since there is no new information about sandra's movements, we	none	kitchen	True	The context sentences describe John's movements, but they do not provide any new information about Sandra's location. The last known location of Sandra was the kitchen (from previous context sentences).		"Reasoning: The context sentences describe John's movements, but they do not provide any new information about Sandra's location. The last known location of Sandra was the kitchen (from previous context sentences).
+
+Answer: kitchen"	0.0	0.0465	False	False	False	True	0

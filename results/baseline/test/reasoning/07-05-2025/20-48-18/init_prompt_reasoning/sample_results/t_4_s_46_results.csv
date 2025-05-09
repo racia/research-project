@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1546	4	46	1	"*TASK*
+Here are the context sentences:
+1. The office is west of the bedroom.
+2. The hallway is west of the office.
+
+Now, answer the following question:
+What is the office east of?"	hallway	from the context sentences, we know that the office is west of the bedroom (sentence 1), and the hallway is west of the office (sentence 2). this means that the office is located east of the hallway, since the hallway is west of the office. therefore, the office is east of the hallway.	fully	bedroom	False	Since the office is west of the bedroom, it means the bedroom is east of the office. The hallway is west of the office, which doesn't provide any information about the office's east side.		"Reasoning: Since the office is west of the bedroom, it means the bedroom is east of the office. The hallway is west of the office, which doesn't provide any information about the office's east side.
+
+Answer: bedroom"	0.1915	0.0213	False	False	False	True	0

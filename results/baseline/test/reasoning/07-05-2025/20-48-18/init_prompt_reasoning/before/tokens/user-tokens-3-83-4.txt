@@ -1,0 +1,51 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+44	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+45	.	ĠJohn	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+46	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+47	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+48	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+49	.	ĠMary	Ġleft	Ġthe	Ġapple	.Ċ
+50	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+51	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+52	.	ĠMary	Ġleft	Ġthe	Ġapple	.Ċ
+53	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+54	.	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+55	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+56	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+57	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+58	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+59	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+60	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+61	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+62	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+63	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+64	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+65	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+66	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+67	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+68	.	ĠMary	Ġgot	Ġthe	Ġfootball	.Ċ
+69	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+70	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	.Ċ
+71	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+72	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+73	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+74	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+75	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+76	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+77	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+78	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+79	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+80	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+81	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+82	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+83	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+84	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+85	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+86	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+87	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+88	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+89	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+90	.	ĠMary	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
+91	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġgarden	?Ċ

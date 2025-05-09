@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+501	2	1	1	"*TASK*
+Here are the context sentences:
+1. Mary got the milk there.
+2. John moved to the bedroom.
+3. Sandra went back to the kitchen.
+4. Mary travelled to the hallway.
+
+Now, answer the following question:
+Where is the milk?"	hallway	"from context line 1, we know that mary got the milk ""there"", but the location ""there"" is not specified. however, in context line 4, it is mentioned that mary travelled to the hallway. since mary had the milk (from context line 1), it can be logically inferred that the milk is with mary. therefore, when mary travels to the hallway, the milk also goes to the hallway. hence, the milk is in the hallway."	fully	kitchen	False	"Since Mary got the milk ""there"", and John moved to the bedroom, it is likely that ""there"" refers to the location where Mary got the milk, which is not specified. However, we can infer that Mary travelled to the hallway, which means that the location where she got the milk is not the hallway. Therefore, the milk is likely to be in the kitchen, where Sandra went back to."		"Reasoning: Since Mary got the milk ""there"", and John moved to the bedroom, it is likely that ""there"" refers to the location where Mary got the milk, which is not specified. However, we can infer that Mary travelled to the hallway, which means that the location where she got the milk is not the hallway. Therefore, the milk is likely to be in the kitchen, where Sandra went back to.
+
+Answer: kitchen"	0.1236	0.0225	False	False	False	False	0
+502	2	1	2	"*TASK*
+Here are the context sentences:
+6. John got the football there.
+7. John went to the hallway.
+
+Now, answer the following question:
+Where is the football?"	hallway	"from context line 6, we know that john got the football ""there"", but the location ""there"" is not specified. however, in context line 7, it is mentioned that john went to the hallway. since john got the football (from context line 6), it can be logically inferred that the football is with john. therefore, when john goes to the hallway, the football also goes to the hallway. hence, the football is in the hallway."	fully	hallway	True	"Since John got the football ""there"", and John went to the hallway, it is likely that ""there"" refers to the location where John got the football, which is not specified. However, we can infer that John went to the hallway, which means that the location where he got the football is likely to be the same as the hallway."		"Reasoning: Since John got the football ""there"", and John went to the hallway, it is likely that ""there"" refers to the location where John got the football, which is not specified. However, we can infer that John went to the hallway, which means that the location where he got the football is likely to be the same as the hallway.
+
+Answer: hallway"	0.0921	0.0263	False	False	False	False	0
+503	2	1	3	"*TASK*
+Here are the context sentences:
+9. John put down the football.
+10. Mary went to the garden.
+
+Now, answer the following question:
+Where is the football?"	hallway	from the previous context lines 6 and 7, we know that john got the football and went to the hallway. therefore, the football was with john in the hallway. in context line 9, john put down the football, which implies that the football was placed in the location where john was, i.e., the hallway. the action of mary going to the garden in context line 10 does not affect the location of the football. hence, the football is still in the	partially	hallway	True	Since John put down the football, it is likely that the football is in the location where John put it down, which is not specified. However, we can infer that John put down the football earlier, and John went to the hallway (from previous context). Since the football is not mentioned to be moved or taken to the garden, it is likely to be in the same location where John put it down, which is not specified but likely to be the hallway.		"Reasoning: Since John put down the football, it is likely that the football is in the location where John put it down, which is not specified. However, we can infer that John put down the football earlier, and John went to the hallway (from previous context). Since the football is not mentioned to be moved or taken to the garden, it is likely to be in the same location where John put it down, which is not specified but likely to be the hallway.
+
+Answer: hallway"	0.17	0.02	False	False	False	True	0
+504	2	1	4	"*TASK*
+Here are the context sentences:
+12. John went to the kitchen.
+13. Sandra travelled to the hallway.
+
+Now, answer the following question:
+Where is the football?"	hallway	from the previous context lines 6, 7, and 9, we know that john got the football and went to the hallway, and then put down the football in the hallway. the actions of john going to the kitchen in context line 12 and sandra travelling to the hallway in context line 13 do not change the location of the football, which was already placed in the hallway. therefore, the football is still in the hallway.	none	kitchen	False	Since the football was previously put down, and John went to the kitchen, it is likely that the football is still in the location where John put it down, which is not specified. However, we can infer that John went to the kitchen, and Sandra travelled to the hallway, which means that the football is not in the hallway. Therefore, the football is likely to be in the kitchen, where John went.		"Reasoning: Since the football was previously put down, and John went to the kitchen, it is likely that the football is still in the location where John put it down, which is not specified. However, we can infer that John went to the kitchen, and Sandra travelled to the hallway, which means that the football is not in the hallway. Therefore, the football is likely to be in the kitchen, where John went.
+
+Answer: kitchen"	0.1222	0.0222	False	False	False	False	0
+505	2	1	5	"*TASK*
+Here are the context sentences:
+15. Daniel went to the hallway.
+16. Mary discarded the milk.
+
+Now, answer the following question:
+Where is the milk?"	garden	from the previous context lines 1 and 4, we know that mary got the milk and travelled to the hallway. there is no information about the milk being moved or taken by anyone else. in context line 16, mary discarded the milk, which implies that the milk was discarded in the location where mary was, i.e., the hallway. however, the answer states that the milk is in the garden. this is inconsistent with the previous information, as there is no indication that	partially	not mentioned	False	Since Mary discarded the milk, it is likely that the milk is no longer in the location where Mary got it, which is not specified. However, we can infer that Mary travelled to the hallway (from previous context), which means that the milk is not in the hallway. Since the milk is discarded, it is likely to be in a location where it was discarded, which is not specified.		"Reasoning: Since Mary discarded the milk, it is likely that the milk is no longer in the location where Mary got it, which is not specified. However, we can infer that Mary travelled to the hallway (from previous context), which means that the milk is not in the hallway. Since the milk is discarded, it is likely to be in a location where it was discarded, which is not specified.
+
+Answer: not mentioned"	0.046	0.023	False	False	False	True	0

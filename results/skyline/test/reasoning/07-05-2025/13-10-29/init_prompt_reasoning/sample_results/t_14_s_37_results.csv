@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1681	14	37	1	"*TASK*
+Here are the context sentences:
+1. This morning Fred travelled to the park.
+2. Julie went back to the cinema yesterday.
+3. This afternoon Fred moved to the cinema.
+4. Yesterday Fred moved to the cinema.
+
+Now, answer the following question:
+Where was Fred before the park?"	cinema	"from sentence 4, we know that ""yesterday fred moved to the cinema"", which means fred was at the cinema yesterday. sentence 1 states ""this morning fred travelled to the park"", implying that fred was somewhere else before coming to the park this morning. since fred was at the cinema yesterday, it is logical to assume that fred was at the cinema before going to the park this morning."	fully	cinema	True	From sentence 4, we know that Fred moved to the cinema yesterday. There is no other information about Fred's location before the park, so we can infer that Fred was at the cinema before going to the park this morning.		"assistant
+
+Reasoning: From sentence 4, we know that Fred moved to the cinema yesterday. There is no other information about Fred's location before the park, so we can infer that Fred was at the cinema before going to the park this morning.
+
+Answer: cinema"	0.1053	0.0351	False	False	False	True	0
+1682	14	37	2	"*TASK*
+Here are the context sentences:
+6. Mary went to the park this morning.
+7. Yesterday Mary went back to the school.
+
+Now, answer the following question:
+Where was Mary before the park?"	school	"from sentence 7, we know that ""yesterday mary went back to the school"", which implies that mary was at the school yesterday. sentence 6 states ""mary went to the park this morning"", indicating that mary was somewhere else before coming to the park this morning. since mary was at the school yesterday, it is logical to assume that mary was at the school before going to the park this morning."	fully	school	True	From sentence 7, we know that Mary went back to the school yesterday. Since Mary went to the park this morning, it implies that Mary was at the school before going to the park.		"Reasoning: From sentence 7, we know that Mary went back to the school yesterday. Since Mary went to the park this morning, it implies that Mary was at the school before going to the park.
+
+Answer: school"	0.1739	0.0435	False	False	False	False	0
+1683	14	37	3	"*TASK*
+Here are the context sentences:
+9. Julie went back to the kitchen this morning.
+10. Mary went to the school this afternoon.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	cinema	"there is no information provided about julie's location before the kitchen, and there is no mention of the cinema in the context sentences. the context only mentions julie going back to the kitchen this morning and mary going to the school this afternoon. therefore, it is not possible to logically infer julie's location before the kitchen based on the provided information. the answer ""cinema"" seems to be unrelated to the context."	partially	not mentioned	False	There is no specific information about Julie's location before the kitchen, but from sentence 9, we know that Julie went back to the kitchen this morning, implying that Julie was somewhere else before returning to the kitchen.		"Reasoning: There is no specific information about Julie's location before the kitchen, but from sentence 9, we know that Julie went back to the kitchen this morning, implying that Julie was somewhere else before returning to the kitchen.
+
+Answer: not mentioned"	0.1961	0.0392	False	False	False	True	0
+1684	14	37	4	"*TASK*
+Here are the context sentences:
+12. Yesterday Bill went back to the school.
+13. This afternoon Julie moved to the cinema.
+
+Now, answer the following question:
+Where was Mary before the school?"	park	"there is no information provided about mary's location before the school. the context only mentions bill going back to the school yesterday and julie moving to the cinema this afternoon. there is no mention of mary or the park in the context sentences. therefore, it is not possible to logically infer mary's location before the school based on the provided information. the answer ""park"" seems to be unrelated to the context."	none	not mentioned	False	There is no specific information about Mary's location before the school. Sentence 10 mentions that Mary went to the school this afternoon, but it doesn't provide information about her location before that.		"Reasoning: There is no specific information about Mary's location before the school. Sentence 10 mentions that Mary went to the school this afternoon, but it doesn't provide information about her location before that.
+
+Answer: not mentioned"	0.0652	0.0435	False	False	False	True	0
+1685	14	37	5	"*TASK*
+Here are the context sentences:
+15. Mary travelled to the cinema this evening.
+16. Fred travelled to the school this evening.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	school	"there is no direct information about mary's location before the cinema. however, since mary travelled to the cinema this evening (sentence 15), it implies that mary was somewhere else before coming to the cinema. there is no other information about mary's previous location. but, interestingly, fred travelled to the school this evening (sentence 16), which doesn't provide direct information about mary. however, if we consider the answer ""school"" as correct, it would imply that mary was"	partially	school	True	From sentence 10, we know that Mary went to the school this afternoon. Sentence 15 mentions that Mary travelled to the cinema this evening, implying that Mary was at the school before going to the cinema.		"Reasoning: From sentence 10, we know that Mary went to the school this afternoon. Sentence 15 mentions that Mary travelled to the cinema this evening, implying that Mary was at the school before going to the cinema.
+
+Answer: school"	0.0408	0.0408	False	False	False	True	0

@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+26	.	ĠMary	Ġtook	Ġthe	Ġfootball	.Ċ
+27	.	ĠDaniel	Ġtook	Ġthe	Ġapple	.Ċ
+28	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+29	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+30	.	ĠMary	Ġput	Ġdown	Ġthe	Ġmilk	Ġthere	.Ċ
+31	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġbathroom	?Ċ

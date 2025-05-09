@@ -1,0 +1,156 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1341	3	69	1	"*TASK*
+Here are the context sentences:
+1. Sandra took the milk.
+2. Sandra journeyed to the kitchen.
+3. Sandra dropped the milk.
+4. Mary picked up the apple there.
+5. John journeyed to the hallway.
+6. John travelled to the bathroom.
+7. Daniel went back to the hallway.
+8. John journeyed to the bedroom.
+9. Mary dropped the apple.
+10. Mary travelled to the office.
+11. Daniel picked up the apple.
+12. Daniel put down the apple.
+13. Mary went to the bathroom.
+14. Mary went back to the office.
+15. Daniel picked up the apple.
+16. Daniel put down the apple.
+17. Sandra got the milk there.
+18. John journeyed to the hallway.
+19. Mary grabbed the football.
+20. John got the apple.
+21. Mary put down the football there.
+22. Mary journeyed to the garden.
+23. Mary went back to the bedroom.
+24. John moved to the office.
+25. John dropped the apple.
+26. Sandra dropped the milk.
+27. Sandra got the milk there.
+28. John took the apple there.
+29. Daniel went back to the garden.
+30. John put down the apple.
+31. John went back to the kitchen.
+32. Daniel went back to the bathroom.
+33. John travelled to the office.
+34. John moved to the kitchen.
+35. Sandra left the milk.
+36. John moved to the bathroom.
+37. Daniel moved to the garden.
+38. Sandra got the milk.
+39. John travelled to the office.
+40. John travelled to the bedroom.
+41. John moved to the garden.
+42. Daniel travelled to the office.
+43. Sandra discarded the milk.
+44. Sandra went to the office.
+45. Sandra took the apple there.
+46. Daniel travelled to the bedroom.
+47. Sandra discarded the apple.
+48. John moved to the bathroom.
+49. Sandra journeyed to the bathroom.
+50. Mary went back to the bathroom.
+51. Sandra went back to the kitchen.
+52. Sandra grabbed the milk.
+53. Sandra went to the bathroom.
+54. Sandra discarded the milk there.
+55. Sandra got the milk.
+56. Daniel went back to the kitchen.
+57. Daniel journeyed to the bedroom.
+58. Daniel journeyed to the office.
+59. Sandra left the milk.
+60. Mary picked up the milk there.
+61. Daniel took the apple.
+62. Daniel discarded the apple.
+63. Mary dropped the milk.
+64. Mary went back to the office.
+65. Mary picked up the apple.
+66. Sandra got the milk.
+67. Daniel got the football.
+68. Daniel travelled to the bathroom.
+69. Daniel dropped the football there.
+70. Daniel picked up the football.
+71. Sandra discarded the milk.
+72. Daniel took the milk.
+73. John went back to the office.
+74. Sandra went back to the garden.
+75. Mary went to the bathroom.
+76. Mary travelled to the garden.
+77. John travelled to the bedroom.
+78. John journeyed to the office.
+79. Mary left the apple.
+80. Daniel discarded the football.
+
+Now, answer the following question:
+Where was the apple before the garden?"	bathroom	to find the location of the apple before the garden, we need to track the movements of the apple and the characters involved with it.	fully	bathroom	True	The apple was dropped by Mary in the bathroom (sentence 13). Then, Daniel picked it up (sentence 11) and put it down (sentence 12). Later, Mary picked it up again (sentence 65) and left it (sentence 79). Since Mary travelled to the garden (sentence 76) after leaving the apple, the apple was in the bathroom before the garden.		"Reasoning: The apple was dropped by Mary in the bathroom (sentence 13). Then, Daniel picked it up (sentence 11) and put it down (sentence 12). Later, Mary picked it up again (sentence 65) and left it (sentence 79). Since Mary travelled to the garden (sentence 76) after leaving the apple, the apple was in the bathroom before the garden.
+
+Answer: bathroom"	0.0115	0.0345	False	False	False	False	0
+1342	3	69	2	"*TASK*
+Here are the context sentences:
+82. Daniel left the milk there.
+83. Mary moved to the kitchen.
+
+Now, answer the following question:
+Where was the apple before the garden?"	bathroom	to find the location of the apple before the garden, we need to track the movements of the apple and the characters involved with it.	none	Not mentioned	False	The context sentences provided do not mention the apple at all. The previous conversation had information about the apple, but it is not present in these new sentences. Therefore, we cannot determine where the apple was before the garden based on these sentences.		"Reasoning: The context sentences provided do not mention the apple at all. The previous conversation had information about the apple, but it is not present in these new sentences. Therefore, we cannot determine where the apple was before the garden based on these sentences.
+
+Answer: Not mentioned"	0.0	0.0536	False	False	False	True	0
+1343	3	69	3	"*TASK*
+Here are the context sentences:
+85. Daniel got the football there.
+86. Sandra went to the kitchen.
+87. Daniel discarded the football.
+88. Sandra travelled to the hallway.
+89. Daniel went to the kitchen.
+90. Sandra went to the garden.
+91. Daniel went back to the bathroom.
+92. Mary went back to the garden.
+93. Sandra went to the bedroom.
+94. Sandra moved to the kitchen.
+95. Mary took the apple.
+96. Daniel took the milk.
+97. Sandra travelled to the bathroom.
+98. Mary discarded the apple.
+99. Mary took the apple.
+100. Daniel travelled to the kitchen.
+101. John journeyed to the bedroom.
+102. John travelled to the office.
+103. Daniel went to the garden.
+104. Daniel travelled to the bathroom.
+105. Sandra journeyed to the garden.
+106. Mary journeyed to the kitchen.
+107. Mary put down the apple.
+108. Daniel got the football.
+109. John went to the hallway.
+110. Daniel put down the milk.
+
+Now, answer the following question:
+Where was the milk before the garden?"	kitchen	to find the location of the milk before the garden, we need to track the movements of the milk and the characters involved with it.	fully	kitchen	True	According to sentence 96, Daniel took the milk. Then, in sentence 110, Daniel put down the milk. Since Daniel went to the garden (sentence 103) after putting down the milk, the milk was in the kitchen before the garden.		"Reasoning: According to sentence 96, Daniel took the milk. Then, in sentence 110, Daniel put down the milk. Since Daniel went to the garden (sentence 103) after putting down the milk, the milk was in the kitchen before the garden.
+
+Answer: kitchen"	0.0172	0.0517	False	False	False	False	0
+1344	3	69	4	"*TASK*
+Here are the context sentences:
+112. Daniel put down the football.
+113. Mary picked up the apple.
+
+Now, answer the following question:
+Where was the milk before the bathroom?"	garden	" daniel took the milk in sentence 96. then, in sentence 103, daniel travelled to the garden with the milk. 
+
+before that, in sentence 110, daniel put down the milk, but it was not in the garden. therefore, we can infer that daniel put down the milk in the kitchen, which is where he was before going to the garden (sentence 100)."	none	kitchen	False	According to sentence 96, Daniel took the milk. Then, in sentence 110, Daniel put down the milk. Since Daniel went to the garden (sentence 103) after putting down the milk, the milk was in the kitchen before the garden.		"Reasoning: According to sentence 96, Daniel took the milk. Then, in sentence 110, Daniel put down the milk. Since Daniel went to the garden (sentence 103) after putting down the milk, the milk was in the kitchen before the garden.
+
+Answer: kitchen"	0.0345	0.0517	False	False	False	False	0
+1345	3	69	5	"*TASK*
+Here are the context sentences:
+115. Mary put down the apple.
+116. Mary travelled to the hallway.
+
+Now, answer the following question:
+Where was the milk before the garden?"	kitchen	" daniel took the milk in sentence 96. then, in sentence 103, daniel travelled to the garden with the milk. 
+
+before that, in sentence 110, daniel put down the milk, but it was in the bathroom (sentence 104). 
+
+further back, in sentence 96, daniel took the milk, and at that time, daniel was in the kitchen (sentence 100). 
+
+therefore, the milk was in the kitchen before the garden."	none	kitchen	True	According to sentence 96, Daniel took the milk. Then, in sentence 110, Daniel put down the milk. Since Daniel went to the garden (sentence 103) after putting down the milk, the milk was in the kitchen before the garden.		"Reasoning: According to sentence 96, Daniel took the milk. Then, in sentence 110, Daniel put down the milk. Since Daniel went to the garden (sentence 103) after putting down the milk, the milk was in the kitchen before the garden.
+
+Answer: kitchen"	0.0172	0.0517	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	9	,	Ġwe	Ġknow	Ġthat	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	.	ĠFrom	Ġsentence	Ġ	12	,	Ġwe	Ġknow	Ġthat	Ġthis	Ġafternoon	,	ĠBill	Ġtravelled	Ġto	Ġthe	Ġcinema	.	ĠTherefore	,	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	,	ĠBill	Ġwas	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

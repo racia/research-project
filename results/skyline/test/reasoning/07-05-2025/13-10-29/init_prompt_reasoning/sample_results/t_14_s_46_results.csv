@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1726	14	46	1	"*TASK*
+Here are the context sentences:
+1. This morning Julie travelled to the kitchen.
+2. Julie travelled to the cinema yesterday.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	cinema	from the context sentences, we know that julie travelled to the kitchen this morning (sentence 1) and that she travelled to the cinema yesterday (sentence 2). since julie travelled to the kitchen this morning, it implies that she was somewhere else before coming to the kitchen. the only other location mentioned in the context sentences is the cinema, which julie visited yesterday. therefore, it is logical to assume that julie was at the cinema before coming to the kitchen, as there is no other	fully	cinema	True	Since Julie travelled to the cinema yesterday and travelled to the kitchen this morning, it can be inferred that Julie was at the cinema before coming to the kitchen.		"assistant
+
+Reasoning: Since Julie travelled to the cinema yesterday and travelled to the kitchen this morning, it can be inferred that Julie was at the cinema before coming to the kitchen.
+
+Answer: cinema"	0.1667	0.0476	False	False	False	False	0
+1727	14	46	2	"*TASK*
+Here are the context sentences:
+4. Mary went to the kitchen yesterday.
+5. Yesterday Bill moved to the kitchen.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	cinema	"the context sentences provided (4 and 5) do not mention julie at all. they only talk about mary and bill moving to the kitchen yesterday. however, the answer provided is ""cinema"", which suggests that julie was at the cinema before the kitchen. this information must have come from a previous part of the conversation history. upon reviewing the previous parts, i found that sentence 2 mentions ""julie travelled to the cinema yesterday"". therefore, it is logical to conclude that julie"	none	not mentioned	False	There is no information provided about Julie's location before the kitchen. The context sentences only mention Mary and Bill's movements to the kitchen, but do not provide any information about Julie.		"Reasoning: There is no information provided about Julie's location before the kitchen. The context sentences only mention Mary and Bill's movements to the kitchen, but do not provide any information about Julie.
+
+Answer: not mentioned"	0.1136	0.0455	False	False	False	True	0
+1728	14	46	3	"*TASK*
+Here are the context sentences:
+7. Mary travelled to the bedroom this morning.
+8. This afternoon Julie journeyed to the bedroom.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	kitchen	"there is no direct information about mary's location before the bedroom in the provided context sentences (7 and 8). however, we can infer the answer by looking at the previous parts of the conversation history. in sentence 4, it is mentioned that ""mary went to the kitchen yesterday"". since mary travelled to the bedroom this morning (sentence 7), it is logical to assume that mary was in the kitchen before the bedroom, as there is no other location mentioned in the context sentences"	partially	not mentioned	False	There is no information provided about Mary's location before the bedroom. The context sentences only mention Mary's and Julie's movements to the bedroom, but do not provide any information about Mary's previous location.		"Reasoning: There is no information provided about Mary's location before the bedroom. The context sentences only mention Mary's and Julie's movements to the bedroom, but do not provide any information about Mary's previous location.
+
+Answer: not mentioned"	0.125	0.0417	False	False	False	True	0
+1729	14	46	4	"*TASK*
+Here are the context sentences:
+10. This evening Julie travelled to the kitchen.
+11. Mary went to the park this afternoon.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	kitchen	"the provided context sentences (10 and 11) do not directly mention mary's location before the bedroom. however, we can look at the previous parts of the conversation history to find the answer. in sentence 4, it is mentioned that ""mary went to the kitchen yesterday"". later, in sentence 7, it is mentioned that ""mary travelled to the bedroom this morning"". therefore, it is logical to conclude that mary was in the kitchen before the bedroom, as there is a"	none	not mentioned	False	There is no information provided about Mary's location before the bedroom. The context sentences only mention Mary's movement to the park and Julie's movement to the kitchen, but do not provide any information about Mary's previous location before the bedroom.		"Reasoning: There is no information provided about Mary's location before the bedroom. The context sentences only mention Mary's movement to the park and Julie's movement to the kitchen, but do not provide any information about Mary's previous location before the bedroom.
+
+Answer: not mentioned"	0.1091	0.0364	False	False	False	True	0
+1730	14	46	5	"*TASK*
+Here are the context sentences:
+13. Bill moved to the bedroom this morning.
+14. Mary went to the office this evening.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	kitchen	"the provided context sentences (13 and 14) do not directly mention mary's location before the bedroom. however, we can look at the previous parts of the conversation history to find the answer. in sentence 7, it is mentioned that ""mary travelled to the bedroom this morning"". this implies that mary was somewhere else before coming to the bedroom. in sentence 4, it is mentioned that ""mary went to the kitchen yesterday"". since mary travelled to the bedroom this morning, it"	none	not mentioned	False	There is no information provided about Mary's location before the bedroom. The context sentences only mention Bill's movement to the bedroom and Mary's movement to the office, but do not provide any information about Mary's previous location before the bedroom.		"Reasoning: There is no information provided about Mary's location before the bedroom. The context sentences only mention Bill's movement to the bedroom and Mary's movement to the office, but do not provide any information about Mary's previous location before the bedroom.
+
+Answer: not mentioned"	0.0727	0.0364	False	False	False	True	0

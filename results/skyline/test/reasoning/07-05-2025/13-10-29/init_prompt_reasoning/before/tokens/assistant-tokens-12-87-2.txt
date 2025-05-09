@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	4	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.	ĠSince	ĠSandra	Ġis	Ġmentioned	Ġas	Ġgoing	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

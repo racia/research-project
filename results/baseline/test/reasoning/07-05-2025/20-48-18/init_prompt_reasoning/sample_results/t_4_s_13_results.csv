@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1513	4	13	1	"*TASK*
+Here are the context sentences:
+1. The bathroom is east of the kitchen.
+2. The bedroom is east of the bathroom.
+
+Now, answer the following question:
+What is east of the kitchen?"	bathroom	from context sentence 1, we know that the bathroom is east of the kitchen. this directly answers the question, as it states that the bathroom is east of the kitchen.	fully	bedroom	False	Since the bathroom is east of the kitchen, and the bedroom is east of the bathroom, it can be inferred that the bedroom is also east of the kitchen.		"Reasoning: Since the bathroom is east of the kitchen, and the bedroom is east of the bathroom, it can be inferred that the bedroom is also east of the kitchen.
+
+Answer: bedroom"	0.0256	0.0256	False	False	False	False	0

@@ -1,0 +1,66 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1671	5	15	1	"*TASK*
+Here are the context sentences:
+1. Bill travelled to the bathroom.
+2. Jeff journeyed to the garden.
+3. Mary journeyed to the office.
+4. Jeff went back to the office.
+5. Fred travelled to the bedroom.
+6. Bill went back to the garden.
+7. Mary went back to the bedroom.
+8. Jeff journeyed to the bathroom.
+9. Mary moved to the garden.
+10. Mary went back to the kitchen.
+11. Mary travelled to the office.
+12. Fred moved to the bathroom.
+13. Mary travelled to the garden.
+14. Jeff grabbed the apple there.
+15. Jeff put down the apple.
+16. Mary journeyed to the office.
+17. Fred picked up the apple there.
+18. Jeff took the football there.
+19. Fred passed the apple to Jeff.
+20. Jeff discarded the apple.
+
+Now, answer the following question:
+What did Fred give to Jeff?"	apple	"from sentence 19, ""fred passed the apple to jeff"", we can directly infer that fred gave the apple to jeff."	fully	apple	True	Fred picked up the apple in the office (sentence 17) and passed it to Jeff (sentence 19). There is no mention of Fred giving anything else to Jeff.		"Reasoning: Fred picked up the apple in the office (sentence 17) and passed it to Jeff (sentence 19). There is no mention of Fred giving anything else to Jeff.
+
+Answer: apple"	0.0238	0.0238	False	False	False	True	0
+1672	5	15	2	"*TASK*
+Here are the context sentences:
+22. Jeff gave the football to Fred.
+23. Bill journeyed to the bedroom.
+
+Now, answer the following question:
+Who gave the football?"	jeff	"from sentence 22, ""jeff gave the football to fred"", we can directly infer that jeff gave the football."	fully	Jeff	True	According to sentence 22, Jeff gave the football to Fred.		"Reasoning: According to sentence 22, Jeff gave the football to Fred.
+
+Answer: Jeff"	0.05	0.05	False	False	False	False	0
+1673	5	15	3	"*TASK*
+Here are the context sentences:
+25. Jeff grabbed the apple there.
+26. Jeff left the apple.
+
+Now, answer the following question:
+Who gave the football?"	jeff	"there is no information about the football in the provided context lines (25 and 26). however, the answer is ""jeff"", which means we need to look for previous parts of the conversation history that mention the football. in the previous conversation, we had sentence 22: ""jeff gave the football to fred."" from this sentence, we can infer that jeff gave the football."	none	(No answer, as the question is about the football, which is not mentioned in these sentences)	False	There is no mention of a football in these sentences. The sentences only talk about Jeff grabbing and leaving an apple.		"Reasoning: There is no mention of a football in these sentences. The sentences only talk about Jeff grabbing and leaving an apple.
+
+Answer: (No answer, as the question is about the football, which is not mentioned in these sentences)"	0.0408	0.0204	False	False	False	True	0
+1674	5	15	4	"*TASK*
+Here are the context sentences:
+28. Jeff got the apple there.
+29. Bill went back to the bathroom.
+30. Jeff gave the apple to Fred.
+31. Fred gave the apple to Bill.
+
+Now, answer the following question:
+What did Fred give to Bill?"	apple	"from sentence 31, ""fred gave the apple to bill"", we can directly infer that fred gave the apple to bill."	fully	apple	True	According to sentence 30, Fred received the apple from Jeff, and according to sentence 31, Fred gave the apple to Bill.		"Reasoning: According to sentence 30, Fred received the apple from Jeff, and according to sentence 31, Fred gave the apple to Bill.
+
+Answer: apple"	0.0294	0.0294	False	False	False	False	0
+1675	5	15	5	"*TASK*
+Here are the context sentences:
+33. Mary journeyed to the hallway.
+34. Fred went to the garden.
+
+Now, answer the following question:
+What did Fred give to Bill?"	apple	"there is no information about fred giving something to bill in the provided context lines (33 and 34). however, the answer is ""apple"", which means we need to look for previous parts of the conversation history that mention fred giving something to bill. in the previous conversation, we had sentence 31: ""fred gave the apple to bill."" from this sentence, we can infer that fred gave the apple to bill."	none	(No answer, as there is no information about Fred giving anything to Bill)	False	There is no mention of Fred giving anything to Bill in these sentences. The sentences only talk about Mary journeying to the hallway and Fred going to the garden.		"Reasoning: There is no mention of Fred giving anything to Bill in these sentences. The sentences only talk about Mary journeying to the hallway and Fred going to the garden.
+
+Answer: (No answer, as there is no information about Fred giving anything to Bill)"	0.0	0.0185	True	False	False	True	0

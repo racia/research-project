@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1761	14	53	1	"*TASK*
+Here are the context sentences:
+1. Julie journeyed to the school this morning.
+2. Julie went to the kitchen yesterday.
+
+Now, answer the following question:
+Where was Julie before the school?"	kitchen	from the context sentences, we know that julie went to the kitchen yesterday (sentence 2) and journeyed to the school this morning (sentence 1). since julie went to the school this morning, it implies that she was somewhere else before coming to the school. the only other location mentioned in the context sentences is the kitchen, which julie visited yesterday. therefore, it is logical to assume that julie was at the kitchen before coming to the school this morning.	fully	kitchen	True	According to sentence 2, Julie went to the kitchen yesterday, which implies that Julie was in the kitchen before coming to the school this morning.		"assistant
+
+Reasoning: According to sentence 2, Julie went to the kitchen yesterday, which implies that Julie was in the kitchen before coming to the school this morning.
+
+Answer: kitchen"	0.2	0.05	False	False	False	False	0
+1762	14	53	2	"*TASK*
+Here are the context sentences:
+4. This evening Julie journeyed to the office.
+5. This afternoon Julie travelled to the cinema.
+
+Now, answer the following question:
+Where was Julie before the office?"	cinema	from the context sentences, we know that julie travelled to the cinema this afternoon (sentence 5) and journeyed to the office this evening (sentence 4). since julie went to the office this evening, it implies that she was somewhere else before coming to the office. the only other location mentioned in the context sentences is the cinema, which julie visited this afternoon. therefore, it is logical to assume that julie was at the cinema before coming to the office this evening.	fully	cinema	True	According to sentence 5, Julie travelled to the cinema this afternoon, and then she journeyed to the office this evening, which implies that Julie was in the cinema before coming to the office.		"Reasoning: According to sentence 5, Julie travelled to the cinema this afternoon, and then she journeyed to the office this evening, which implies that Julie was in the cinema before coming to the office.
+
+Answer: cinema"	0.1739	0.0435	False	False	False	False	0
+1763	14	53	3	"*TASK*
+Here are the context sentences:
+7. This morning Mary went to the park.
+8. Yesterday Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Where was Julie before the office?"	cinema	"the question asks about julie, but the context sentences only mention mary. there is no information provided about julie's actions or locations. the answer ""cinema"" cannot be logically deduced from the given context sentences, as they do not mention julie or the office. the correct answer would be ""unknown"" or ""cannot be determined"" based on the provided information."	none	cinema	True	The context sentences provided (7 and 8) are about Mary, but the question is about Julie. There is no new information about Julie, so we need to refer to the previous context sentences. From the previous context sentences (4 and 5), we know that Julie was in the cinema before coming to the office.		"Reasoning: The context sentences provided (7 and 8) are about Mary, but the question is about Julie. There is no new information about Julie, so we need to refer to the previous context sentences. From the previous context sentences (4 and 5), we know that Julie was in the cinema before coming to the office.
+
+Answer: cinema"	0.0833	0.0278	False	False	False	True	0
+1764	14	53	4	"*TASK*
+Here are the context sentences:
+10. This evening Mary went back to the cinema.
+11. This afternoon Mary travelled to the kitchen.
+
+Now, answer the following question:
+Where was Mary before the park?"	bedroom	"the question asks about mary's location before the park, but the context sentences (10 and 11) do not mention mary going to the park. the answer ""bedroom"" is also not supported by the provided context sentences. the context sentences only mention mary going to the cinema and the kitchen, but not the park or the bedroom. the correct answer would be ""unknown"" or ""cannot be determined"" based on the provided information."	none	bedroom	True	According to sentence 8, Mary journeyed to the bedroom yesterday, and then she went to the park this morning, which implies that Mary was in the bedroom before coming to the park.		"Reasoning: According to sentence 8, Mary journeyed to the bedroom yesterday, and then she went to the park this morning, which implies that Mary was in the bedroom before coming to the park.
+
+Answer: bedroom"	0.0	0.0444	False	False	False	False	0
+1765	14	53	5	"*TASK*
+Here are the context sentences:
+13. This morning Fred journeyed to the cinema.
+14. Fred moved to the school yesterday.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	park	"the question asks about mary's location before the kitchen, but the context sentences (13 and 14) only mention fred's actions and do not mention mary at all. there is no information provided about mary's actions or locations. the answer ""park"" cannot be logically deduced from the given context sentences, as they do not mention mary or the kitchen. the correct answer would be ""unknown"" or ""cannot be determined"" based on the provided information."	none	not mentioned	False	According to sentence 11, Mary travelled to the kitchen this afternoon, and there is no information about Mary's location before the kitchen in the current context sentences. However, we can refer to the previous context sentences. From sentence 8, we know that Mary was in the bedroom yesterday, and then she went to the park this morning. There is no information about Mary's location between yesterday and this afternoon, so we cannot determine exactly where Mary was before the kitchen.		"Reasoning: According to sentence 11, Mary travelled to the kitchen this afternoon, and there is no information about Mary's location before the kitchen in the current context sentences. However, we can refer to the previous context sentences. From sentence 8, we know that Mary was in the bedroom yesterday, and then she went to the park this morning. There is no information about Mary's location between yesterday and this afternoon, so we cannot determine exactly where Mary was before the kitchen.
+
+Answer: not mentioned"	0.0784	0.0196	False	False	False	True	0

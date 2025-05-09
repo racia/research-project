@@ -1,0 +1,15 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+2	.	ĠBill	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+3	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+4	.	ĠBill	Ġdiscarded	Ġthe	Ġapple	.Ċ
+5	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+6	.	ĠBill	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+7	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+8	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+9	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+10	.	ĠJeff	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+11	.	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
+12	.	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠMary	Ġgive	Ġto	ĠJeff	?Ċ

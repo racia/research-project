@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+56	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+57	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+58	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+59	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+60	.	ĠJohn	Ġleft	Ġthe	Ġfootball	.Ċ
+61	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġkitchen	?Ċ
