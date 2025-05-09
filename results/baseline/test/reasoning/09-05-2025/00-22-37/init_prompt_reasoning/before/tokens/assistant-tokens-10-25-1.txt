@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJulie	Ġbeing	Ġin	Ġthe	Ġschool	.	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	1	)	Ġor	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	2	),	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġbeing	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġno	<|eot_id|>

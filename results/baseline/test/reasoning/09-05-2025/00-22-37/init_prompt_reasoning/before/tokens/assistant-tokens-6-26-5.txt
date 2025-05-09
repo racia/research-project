@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġat	Ġall	,	Ġnor	Ġdo	Ġthey	Ġmention	Ġthe	Ġhallway	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġtaking	Ġthe	Ġmilk	Ġand	ĠJohn	Ġtaking	Ġthe	Ġapple	,	Ġbut	Ġnot	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

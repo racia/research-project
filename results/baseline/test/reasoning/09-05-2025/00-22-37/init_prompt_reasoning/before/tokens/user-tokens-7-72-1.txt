@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+2	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+3	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+4	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+5	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+6	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠMary	Ġcarrying	?Ċ

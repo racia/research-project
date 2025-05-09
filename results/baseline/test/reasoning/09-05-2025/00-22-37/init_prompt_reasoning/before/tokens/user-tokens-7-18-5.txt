@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+14	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+15	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+16	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠMary	Ġcarrying	?Ċ

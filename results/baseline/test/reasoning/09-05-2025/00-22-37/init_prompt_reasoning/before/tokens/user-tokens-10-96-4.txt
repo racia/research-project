@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠFred	Ġis	Ġeither	Ġin	Ġthe	Ġschool	Ġor	Ġthe	Ġbedroom	.Ċ
+11	.	ĠBill	Ġis	Ġin	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠBill	Ġin	Ġthe	Ġkitchen	?Ċ

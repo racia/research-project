@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	Ġthat	ĠJohn	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	,	Ġbut	Ġdo	Ġnot	Ġmention	ĠJohn	Ġpicking	Ġup	Ġor	Ġcarrying	Ġany	Ġother	Ġobjects	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠJohn	Ġis	Ġonly	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġone	<|eot_id|>

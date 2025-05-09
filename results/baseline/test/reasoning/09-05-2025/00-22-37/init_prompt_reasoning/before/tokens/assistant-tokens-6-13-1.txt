@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJohn	's	Ġlocation	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġmention	ĠJohn	Ġgoing	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġbeing	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	<|eot_id|>

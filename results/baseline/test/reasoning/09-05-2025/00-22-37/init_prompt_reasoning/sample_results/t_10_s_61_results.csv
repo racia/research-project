@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2301	10	61	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the kitchen.
+2. Mary is in the park.
+
+Now, answer the following question:
+Is Mary in the park?"	yes	"the context sentences provide two separate statements about mary's location. sentence 1 states that mary moved to the kitchen, but sentence 2 explicitly states that mary is in the park. since sentence 2 is the most recent and direct statement about mary's location, it takes precedence over sentence 1. therefore, the answer to the question ""is mary in the park?"" is indeed ""yes""."	fully	yes	True	The context sentences provide information about Mary's location. Sentence 1 states that Mary moved to the kitchen, which implies that she was not in the park at that time. However, sentence 2 states that Mary is currently in the park. This information is more recent and takes precedence over the earlier information.		"Reasoning: The context sentences provide information about Mary's location. Sentence 1 states that Mary moved to the kitchen, which implies that she was not in the park at that time. However, sentence 2 states that Mary is currently in the park. This information is more recent and takes precedence over the earlier information.
+
+Answer: yes"	0.1471	0.0147	False	False	False	True	0
+2302	10	61	2	"*TASK*
+Here are the context sentences:
+4. Mary is either in the bedroom or the cinema.
+5. Bill is either in the kitchen or the school.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	maybe	"the context sentences provide information about mary's and bill's possible locations. sentence 4 states that mary is either in the bedroom or the cinema, but it does not provide a definitive answer to her exact location. since there are two possible locations mentioned, and no additional information is given to favor one over the other, the answer to the question ""is mary in the bedroom?"" is ""maybe"", as it is one of the possible locations mentioned."	fully	maybe	True	The context sentence 4 states that Mary is either in the bedroom or the cinema, but it does not specify which one. There is no additional information that would allow us to determine which option is correct.		"Reasoning: The context sentence 4 states that Mary is either in the bedroom or the cinema, but it does not specify which one. There is no additional information that would allow us to determine which option is correct.
+
+Answer: maybe"	0.0417	0.0208	False	False	False	True	0
+2303	10	61	3	"*TASK*
+Here are the context sentences:
+7. Fred is in the park.
+8. Mary is either in the office or the office.
+
+Now, answer the following question:
+Is Fred in the park?"	yes	"sentence 7 directly states that fred is in the park. this statement is a definitive and explicit declaration of fred's location. therefore, the answer to the question ""is fred in the park?"" is indeed ""yes"", as it is explicitly confirmed by the context sentence."	fully	yes	True	The context sentence 7 explicitly states that Fred is in the park. There is no additional information that contradicts this statement.		"Reasoning: The context sentence 7 explicitly states that Fred is in the park. There is no additional information that contradicts this statement.
+
+Answer: yes"	0.0625	0.0312	False	False	False	True	0
+2304	10	61	4	"*TASK*
+Here are the context sentences:
+10. Mary is in the bedroom.
+11. Julie journeyed to the cinema.
+
+Now, answer the following question:
+Is Bill in the school?"	maybe	"there is no information provided about bill's location in the context sentences. sentences 10 and 11 mention mary and julie, respectively, but do not provide any information about bill. therefore, it is not possible to determine bill's location with certainty, and the answer to the question ""is bill in the school?"" is ""maybe"", as it is unknown."	none	not mentioned	False	There is no information provided about Bill's location. The context sentences only mention Mary's location (bedroom) and Julie's journey to the cinema. There is no mention of Bill's whereabouts.		"Reasoning: There is no information provided about Bill's location. The context sentences only mention Mary's location (bedroom) and Julie's journey to the cinema. There is no mention of Bill's whereabouts.
+
+Answer: not mentioned"	0.0638	0.0213	False	False	False	True	0
+2305	10	61	5	"*TASK*
+Here are the context sentences:
+13. Mary is in the kitchen.
+14. Julie travelled to the bedroom.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	"sentence 13 directly states that mary is in the kitchen. this statement is a definitive and explicit declaration of mary's location. therefore, the answer to the question ""is mary in the kitchen?"" is indeed ""yes"", as it is explicitly confirmed by the context sentence."	fully	yes	True	The context sentence 13 explicitly states that Mary is in the kitchen. There is no additional information that contradicts this statement.		"Reasoning: The context sentence 13 explicitly states that Mary is in the kitchen. There is no additional information that contradicts this statement.
+
+Answer: yes"	0.125	0.0312	False	False	False	True	0

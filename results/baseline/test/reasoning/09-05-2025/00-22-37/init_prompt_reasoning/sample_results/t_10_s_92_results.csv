@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2456	10	92	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the school.
+2. Bill went to the cinema.
+
+Now, answer the following question:
+Is Mary in the school?"	yes	"the context sentence ""mary moved to the school"" implies that mary changed her location to the school, which means she is now in the school. there is no information provided that suggests she left the school after moving there, so it can be logically concluded that mary is still in the school."	fully	yes	True	The context sentences provide information about Mary's and Bill's movements. Mary moved to the school, which implies that she is currently in the school. There is no information that contradicts this assumption.		"Reasoning: The context sentences provide information about Mary's and Bill's movements. Mary moved to the school, which implies that she is currently in the school. There is no information that contradicts this assumption.
+
+Answer: yes"	0.087	0.0217	False	False	False	True	0
+2457	10	92	2	"*TASK*
+Here are the context sentences:
+4. Julie went back to the park.
+5. Julie is in the cinema.
+
+Now, answer the following question:
+Is Bill in the school?"	no	there is no information provided about bill's location in the context sentences 4 and 5. however, we can look back at the previous context sentences (1 and 2) which mentioned bill going to the cinema. there is no information that suggests bill went to the school, and the latest information about bill's location is that he went to the cinema. therefore, it can be logically concluded that bill is not in the school.	none	not mentioned	False	The context sentences provide information about Julie's movements and current location. However, there is no mention of Bill's current location or any information that would suggest he is in the school.		"Reasoning: The context sentences provide information about Julie's movements and current location. However, there is no mention of Bill's current location or any information that would suggest he is in the school.
+
+Answer: not mentioned"	0.0455	0.0227	False	False	False	True	0
+2458	10	92	3	"*TASK*
+Here are the context sentences:
+7. Bill is either in the school or the kitchen.
+8. Julie is in the office.
+
+Now, answer the following question:
+Is Bill in the school?"	maybe	"the context sentence 7 states that bill is either in the school or the kitchen, which means we cannot determine his exact location with certainty. there is no additional information provided that would allow us to eliminate one of the options, so it is possible that bill is in the school, but it is also possible that he is in the kitchen. therefore, the answer is ""maybe""."	fully	yes	False	According to sentence 7, Bill is either in the school or the kitchen. There is no information that suggests he is not in the school, so it is possible that he is in the school.		"Reasoning: According to sentence 7, Bill is either in the school or the kitchen. There is no information that suggests he is not in the school, so it is possible that he is in the school.
+
+Answer: yes"	0.0426	0.0213	False	False	False	True	0
+2459	10	92	4	"*TASK*
+Here are the context sentences:
+10. Bill went back to the office.
+11. Julie is either in the kitchen or the bedroom.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	maybe	"the context sentence 11 states that julie is either in the kitchen or the bedroom, which means we cannot determine her exact location with certainty. there is no additional information provided that would allow us to eliminate one of the options, so it is possible that julie is in the kitchen, but it is also possible that she is in the bedroom. therefore, the answer is ""maybe""."	fully	maybe	True	According to sentence 11, Julie is either in the kitchen or the bedroom. There is no information that suggests she is not in the kitchen, so it is possible that she is in the kitchen.		"Reasoning: According to sentence 11, Julie is either in the kitchen or the bedroom. There is no information that suggests she is not in the kitchen, so it is possible that she is in the kitchen.
+
+Answer: maybe"	0.0638	0.0213	False	False	False	True	0
+2460	10	92	5	"*TASK*
+Here are the context sentences:
+13. Fred is either in the office or the cinema.
+14. Mary is either in the kitchen or the cinema.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	maybe	"there is no information provided about julie's location in the context sentences 13 and 14. the sentences only mention fred and mary, but not julie. therefore, we cannot determine julie's location with certainty, and the answer is ""maybe""."	none	not mentioned	False	There is no information about Julie's current location in the given context sentences. Julie is not mentioned in sentences 13 and 14.		"Reasoning: There is no information about Julie's current location in the given context sentences. Julie is not mentioned in sentences 13 and 14.
+
+Answer: not mentioned"	0.0857	0.0286	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠSandra	Ġgoing	Ġto	Ġthe	Ġoffice	.	ĠSandra	Ġhas	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġand	Ġjourney	ed	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

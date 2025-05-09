@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġpossible	Ġlocation	.	ĠSentence	Ġ	11	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġwas	Ġpreviously	Ġsomewhere	Ġelse	Ġand	Ġhas	Ġnow	Ġreturned	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

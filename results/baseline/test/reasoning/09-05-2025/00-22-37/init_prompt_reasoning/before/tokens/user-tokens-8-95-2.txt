@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+5	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠDaniel	Ġcarrying	?Ċ

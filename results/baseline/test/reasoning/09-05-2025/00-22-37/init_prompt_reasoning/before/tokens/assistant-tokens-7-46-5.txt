@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġpicked	Ġup	Ġthe	Ġmilk	,	Ġwhich	Ġmeans	Ġhe	Ġis	Ġholding	Ġthe	Ġmilk	.	ĠThen	,	Ġhe	Ġpassed	Ġthe	Ġfootball	Ġto	ĠSandra	,	Ġwhich	Ġmeans	Ġhe	Ġwas	Ġholding	Ġthe	Ġfootball	.	ĠAfter	Ġpassing	Ġit	,	Ġhe	Ġis	Ġno	Ġlonger	Ġholding	Ġit	.ĊĊ	Answer	:	Ġone	<|eot_id|>

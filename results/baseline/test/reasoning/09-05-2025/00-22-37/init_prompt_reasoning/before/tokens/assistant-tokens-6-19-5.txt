@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġlocation	.	ĠSentence	Ġ	13	Ġmentions	ĠDaniel	Ġgetting	Ġthe	Ġfootball	,	Ġand	Ġsentence	Ġ	14	Ġmentions	ĠSandra	Ġgoing	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġmovement	Ġto	Ġthe	Ġbathroom	Ġand	ĠMary	's	Ġpresence	Ġin	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġindication	Ġthat	ĠMary	Ġhas	Ġleft	Ġthe	Ġbedroom	Ġor	Ġmoved	Ġto	Ġa	Ġdifferent	Ġlocation	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠJohn	Ġdropped	Ġthe	Ġmilk	.Ċ
+8	.	ĠSandra	Ġdiscarded	Ġthe	Ġapple	.Ċ
+9	.	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+10	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠSandra	Ġin	Ġthe	Ġbathroom	?Ċ

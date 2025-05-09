@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+551	7	11	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the garden.
+2. John journeyed to the kitchen.
+3. John travelled to the hallway.
+4. Daniel went back to the garden.
+5. Daniel journeyed to the office.
+6. Mary grabbed the football there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	from the context sentences, we know that mary travelled to the garden (sentence 1) and then grabbed the football there (sentence 6). there is no information about mary putting down the football or picking up any other object. therefore, we can logically conclude that mary is carrying one object, which is the football.	fully	one	True	Mary grabbed the football there, which implies that Mary is holding the football. Since Mary is holding the football, she is carrying one object.		"Reasoning: Mary grabbed the football there, which implies that Mary is holding the football. Since Mary is holding the football, she is carrying one object.
+
+Answer: one"	0.0	0.0286	False	False	False	False	0
+552	7	11	2	"*TASK*
+Here are the context sentences:
+8. John went to the garden.
+9. Mary handed the football to John.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	"from the previous context sentences, we know that mary grabbed the football in the garden (sentence 6). now, in sentence 9, mary handed the football to john. this implies that mary no longer has possession of the football, as she has handed it over to john. therefore, we can logically conclude that mary is not carrying any objects, which is consistent with the answer ""none""."	partially	none	True	Mary handed the football to John, which implies that Mary was holding the football. Since Mary handed the football to John, she is no longer holding it. Therefore, Mary is not carrying any objects.		"Reasoning: Mary handed the football to John, which implies that Mary was holding the football. Since Mary handed the football to John, she is no longer holding it. Therefore, Mary is not carrying any objects.
+
+Answer: none"	0.0851	0.0426	False	False	False	False	0
+553	7	11	3	"*TASK*
+Here are the context sentences:
+11. Daniel moved to the hallway.
+12. John handed the football to Mary.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	in sentence 9, mary handed the football to john, which means mary was not carrying the football at that point. however, in sentence 12, john handed the football back to mary. this implies that mary now has possession of the football again. therefore, we can logically conclude that mary is carrying one object, which is the football.	partially	one	True	John handed the football to Mary, which implies that Mary is now holding the football. Since Mary is holding the football, she is carrying one object.		"Reasoning: John handed the football to Mary, which implies that Mary is now holding the football. Since Mary is holding the football, she is carrying one object.
+
+Answer: one"	0.1081	0.0811	False	False	False	False	0
+554	7	11	4	"*TASK*
+Here are the context sentences:
+14. Sandra moved to the bedroom.
+15. Mary gave the football to John.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	"in sentence 12, john handed the football to mary, so mary was carrying the football at that point. however, in sentence 15, mary gave the football to john, which means mary no longer has possession of the football. therefore, we can logically conclude that mary is not carrying any objects, which is consistent with the answer ""none""."	partially	none	True	Mary gave the football to John, which implies that Mary was holding the football. Since Mary gave the football to John, she is no longer holding it. Therefore, Mary is not carrying any objects.		"Reasoning: Mary gave the football to John, which implies that Mary was holding the football. Since Mary gave the football to John, she is no longer holding it. Therefore, Mary is not carrying any objects.
+
+Answer: none"	0.0638	0.0851	False	False	False	False	0
+555	7	11	5	"*TASK*
+Here are the context sentences:
+17. John moved to the kitchen.
+18. Mary went to the bathroom.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	"in the previous context sentences, we established that mary gave the football to john in sentence 15, which means mary is not carrying the football anymore. there is no new information about mary picking up or receiving any objects in sentences 17 and 18. therefore, we can logically conclude that mary is still not carrying any objects, which is consistent with the answer ""none""."	none	not mentioned	False	There is no information about Mary holding or carrying any objects in the given context sentences. Therefore, we cannot determine how many objects Mary is carrying.		"Reasoning: There is no information about Mary holding or carrying any objects in the given context sentences. Therefore, we cannot determine how many objects Mary is carrying.
+
+Answer: not mentioned"	0.1622	0.1081	False	False	False	True	0

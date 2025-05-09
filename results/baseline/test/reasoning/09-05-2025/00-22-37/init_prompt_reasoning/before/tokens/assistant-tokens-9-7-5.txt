@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	Ġin	Ġthe	Ġbathroom	.	ĠSentence	Ġ	14	Ġstates	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġnot	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

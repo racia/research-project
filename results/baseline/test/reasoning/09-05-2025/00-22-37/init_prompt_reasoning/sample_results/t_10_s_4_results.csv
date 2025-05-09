@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2016	10	4	1	"*TASK*
+Here are the context sentences:
+1. Julie journeyed to the bedroom.
+2. Julie travelled to the park.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	no	the context sentences mention julie's movements to two different locations: the bedroom and the park. there is no mention of julie being in the kitchen or traveling to the kitchen. therefore, based on the provided information, it can be logically concluded that julie is not in the kitchen.	fully	no	True	The context sentences do not mention Julie being in the kitchen. Julie has journeyed to the bedroom and travelled to the park, but there is no mention of her being in the kitchen.		"Reasoning: The context sentences do not mention Julie being in the kitchen. Julie has journeyed to the bedroom and travelled to the park, but there is no mention of her being in the kitchen.
+
+Answer: no"	0.1591	0.0227	False	False	False	True	0
+2017	10	4	2	"*TASK*
+Here are the context sentences:
+4. Fred is either in the office or the kitchen.
+5. Julie travelled to the bedroom.
+
+Now, answer the following question:
+Is Julie in the bedroom?"	yes	"according to context sentence 5, ""julie travelled to the bedroom"", which explicitly states that julie moved to the bedroom. this implies that julie is currently in the bedroom, as there is no information suggesting she left the bedroom after arriving. therefore, the answer to the question ""is julie in the bedroom?"" is indeed ""yes""."	fully	yes	True	According to context sentence 5, Julie travelled to the bedroom, which implies that she is currently in the bedroom.		"Reasoning: According to context sentence 5, Julie travelled to the bedroom, which implies that she is currently in the bedroom.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+2018	10	4	3	"*TASK*
+Here are the context sentences:
+7. Julie moved to the office.
+8. Mary is either in the office or the kitchen.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	no	"according to context sentence 7, ""julie moved to the office"", which explicitly states that julie is currently in the office. the question asks if julie is in the kitchen, but since we know julie is in the office, it can be logically concluded that julie is not in the kitchen. the information in sentence 8 about mary's location does not provide any additional information about julie's location, so it does not affect the conclusion."	fully	no	True	According to context sentence 7, Julie moved to the office, which implies that she is currently in the office. There is no mention of her being in the kitchen.		"Reasoning: According to context sentence 7, Julie moved to the office, which implies that she is currently in the office. There is no mention of her being in the kitchen.
+
+Answer: no"	0.0732	0.0244	False	False	False	True	0
+2019	10	4	4	"*TASK*
+Here are the context sentences:
+10. Bill is in the kitchen.
+11. Bill is either in the bedroom or the park.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	maybe	"the context sentences provide information about bill's location, but there is no direct information about mary's location. sentence 10 states that bill is in the kitchen, and sentence 11 provides an alternative location for bill, but it does not contradict sentence 10. there is no mention of mary in the context sentences, so we cannot conclude whether mary is in the kitchen or not. therefore, the answer to the question ""is mary in the kitchen?"" is ""maybe"", as we lack"	none	no	False	The context sentences do not mention Mary being in the kitchen. The only mention of someone being in the kitchen is Bill, according to context sentence 10.		"Reasoning: The context sentences do not mention Mary being in the kitchen. The only mention of someone being in the kitchen is Bill, according to context sentence 10.
+
+Answer: no"	0.0	0.0263	False	False	False	True	0
+2020	10	4	5	"*TASK*
+Here are the context sentences:
+13. Fred is either in the bedroom or the bedroom.
+14. Julie went to the bedroom.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	maybe	the context sentences provide information about fred's and julie's locations, but there is no direct information about mary's location. sentence 13 states that fred is either in the bedroom or the bedroom (which is a redundant statement, implying fred is in the bedroom), and sentence 14 states that julie went to the bedroom. however, there is no mention of mary in the context sentences, so we cannot conclude whether mary is in the kitchen or not. therefore, the answer to	none	no	False	There is no mention of Mary being in the kitchen in the given context sentences. The sentences only mention Fred being in the bedroom and Julie going to the bedroom, but not Mary.		"Reasoning: There is no mention of Mary being in the kitchen in the given context sentences. The sentences only mention Fred being in the bedroom and Julie going to the bedroom, but not Mary.
+
+Answer: no"	0.0465	0.0233	False	False	False	True	0

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1016	8	4	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the kitchen.
+2. Daniel took the football there.
+
+Now, answer the following question:
+What is Daniel carrying?"	football	"from the context sentences, we know that daniel took the football in the kitchen (sentence 2). the verb ""took"" implies that daniel picked up or grasped the football, which means he is now carrying it. therefore, the answer to the question ""what is daniel carrying?"" is indeed ""football""."	fully	football	True	The question asks about what Daniel is carrying, and the only sentence that mentions Daniel is sentence 2, which states that Daniel took the football there. This implies that Daniel is carrying the football.		"Reasoning: The question asks about what Daniel is carrying, and the only sentence that mentions Daniel is sentence 2, which states that Daniel took the football there. This implies that Daniel is carrying the football.
+
+Answer: football"	0.0217	0.0217	False	False	False	True	0
+1017	8	4	2	"*TASK*
+Here are the context sentences:
+4. Daniel dropped the football.
+5. Sandra grabbed the milk there.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	in the previous context (sentence 2), we knew that daniel was carrying the football. however, in sentence 4, it is stated that daniel dropped the football. this implies that daniel is no longer carrying the football. there is no other object mentioned that daniel is carrying, so the correct answer is that daniel is carrying nothing.	partially	nothing	True	Sentence 4 states that Daniel dropped the football, implying that Daniel was previously carrying the football. However, since Daniel dropped it, he is no longer carrying it.		"Reasoning: Sentence 4 states that Daniel dropped the football, implying that Daniel was previously carrying the football. However, since Daniel dropped it, he is no longer carrying it.
+
+Answer: nothing"	0.075	0.05	False	False	False	False	0
+1018	8	4	3	"*TASK*
+Here are the context sentences:
+7. Mary travelled to the garden.
+8. Daniel went back to the bedroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	in sentence 5, it was stated that sandra grabbed the milk there. there is no subsequent information that suggests sandra dropped or put down the milk. therefore, it can be logically inferred that sandra is still carrying the milk. the movements of mary and daniel in sentences 7 and 8 do not provide any information about sandra or the milk, so they do not affect the answer.	none	nothing	False	There is no mention of Sandra carrying anything in the given context sentences. The sentences only mention Mary and Daniel, but not Sandra.		"Reasoning: There is no mention of Sandra carrying anything in the given context sentences. The sentences only mention Mary and Daniel, but not Sandra.
+
+Answer: nothing"	0.0606	0.0303	False	False	False	True	0
+1019	8	4	4	"*TASK*
+Here are the context sentences:
+10. Sandra discarded the milk.
+11. Sandra grabbed the milk there.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	this question seems to be contradictory, as sentence 10 states that sandra discarded the milk, which implies that she is no longer carrying it. however, sentence 11, which comes after sentence 10, states that sandra grabbed the milk there, which implies that she is now carrying it again. since sentence 11 is the most recent information about sandra and the milk, it takes precedence, and therefore, the correct answer is that sandra is carrying the milk.	partially	milk	True	Sentence 11 states that Sandra grabbed the milk there, implying that Sandra is carrying the milk.		"Reasoning: Sentence 11 states that Sandra grabbed the milk there, implying that Sandra is carrying the milk.
+
+Answer: milk"	0.0769	0.1154	False	False	False	False	0
+1020	8	4	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the bedroom.
+14. John got the apple there.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	the context sentences 13 and 14 do not provide any new information about sandra or what she is carrying. the last information we had about sandra was in sentence 11, where she grabbed the milk. there is no subsequent information that suggests she dropped or put down the milk. therefore, it can be logically inferred that sandra is still carrying the milk.	none	nothing	False	There is no mention of Sandra carrying anything in the given context sentences. The sentences only mention Mary and John, but not Sandra.		"Reasoning: There is no mention of Sandra carrying anything in the given context sentences. The sentences only mention Mary and John, but not Sandra.
+
+Answer: nothing"	0.0	0.0909	False	False	False	True	0

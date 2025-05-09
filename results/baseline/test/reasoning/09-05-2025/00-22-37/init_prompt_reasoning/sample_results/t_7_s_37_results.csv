@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+681	7	37	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the garden.
+2. Sandra picked up the football there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from the context sentences, we know that sandra moved to the garden (sentence 1) and then picked up the football there (sentence 2). since she picked up the football, it implies that she is now carrying it. there is no mention of her carrying any other object. therefore, we can logically conclude that sandra is carrying only one object, which is the football.	fully	one	True	Sandra picked up the football in the garden, which means she is holding the football. Since she moved to the garden, it implies that she is carrying the football.		"Reasoning: Sandra picked up the football in the garden, which means she is holding the football. Since she moved to the garden, it implies that she is carrying the football.
+
+Answer: one"	0.15	0.025	False	False	False	False	0
+682	7	37	2	"*TASK*
+Here are the context sentences:
+4. Sandra discarded the football there.
+5. John journeyed to the hallway.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	from the previous context sentences, we know that sandra was carrying the football (sentence 2). however, in sentence 4, it is stated that sandra discarded the football. this implies that she is no longer carrying the football. there is no mention of her picking up any other object. therefore, we can logically conclude that sandra is not carrying any objects, which is none.	partially	none	True	Sandra discarded the football, which means she was holding it but is no longer holding it. Since she discarded it, she is not carrying anything.		"Reasoning: Sandra discarded the football, which means she was holding it but is no longer holding it. Since she discarded it, she is not carrying anything.
+
+Answer: none"	0.0556	0.0556	False	False	False	False	0
+683	7	37	3	"*TASK*
+Here are the context sentences:
+7. Mary grabbed the milk there.
+8. John went back to the bedroom.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	the context sentences 7 and 8 do not provide any new information about sandra or the objects she is carrying. the previous information about sandra is that she discarded the football (sentence 4), and there is no mention of her picking up any other object. therefore, we can logically conclude that sandra is still not carrying any objects, which is none.	none	none	True	There is no mention of Sandra in sentences 7 and 8, which means Sandra's state remains unchanged. Since the previous context showed Sandra discarded the football, she is still not carrying anything.		"Reasoning: There is no mention of Sandra in sentences 7 and 8, which means Sandra's state remains unchanged. Since the previous context showed Sandra discarded the football, she is still not carrying anything.
+
+Answer: none"	0.1087	0.0435	False	False	False	True	0
+684	7	37	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the office.
+11. Sandra went back to the bathroom.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	the context sentences 10 and 11 do not provide any new information about mary or the objects she is carrying. however, from the previous context sentence 7, we know that mary grabbed the milk. there is no mention of her discarding or putting down the milk, so we can logically conclude that mary is still carrying the milk, which is one object.	none	not mentioned	False	There is no mention of Mary in sentences 10 and 11, which means Mary's state remains unchanged. Since the previous context showed Mary was not mentioned, we don't know what she was carrying.		"Reasoning: There is no mention of Mary in sentences 10 and 11, which means Mary's state remains unchanged. Since the previous context showed Mary was not mentioned, we don't know what she was carrying.
+
+Answer: not mentioned"	0.0204	0.0204	False	False	False	True	0
+685	7	37	5	"*TASK*
+Here are the context sentences:
+13. Daniel moved to the hallway.
+14. Mary handed the milk to Sandra.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	from the previous context sentence 7, we know that mary grabbed the milk. however, in sentence 14, it is stated that mary handed the milk to sandra. this implies that mary is no longer carrying the milk, as she has given it to sandra. therefore, we can logically conclude that mary is not carrying any objects, which is none.	partially	none	True	Mary handed the milk to Sandra, which means she was holding the milk but is no longer holding it. Since she handed it to Sandra, she is not carrying anything.		"Reasoning: Mary handed the milk to Sandra, which means she was holding the milk but is no longer holding it. Since she handed it to Sandra, she is not carrying anything.
+
+Answer: none"	0.0244	0.0488	False	False	False	False	0

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+31	6	7	1	"*TASK*
+Here are the context sentences:
+1. Daniel grabbed the apple there.
+2. John went to the garden.
+
+Now, answer the following question:
+Is John in the garden?"	yes	"the context sentence ""john went to the garden"" explicitly states that john's action is to go to the garden, which implies that he is now in the garden. there is no information provided that suggests he left the garden or changed his location, so it can be logically concluded that john is indeed in the garden."	fully	yes	True	The question asks if John is in the garden, and the context sentence 2 states that John went to the garden. This implies that John is currently in the garden.		"Reasoning: The question asks if John is in the garden, and the context sentence 2 states that John went to the garden. This implies that John is currently in the garden.
+
+Answer: yes"	0.0244	0.0244	False	False	False	False	0
+32	6	7	2	"*TASK*
+Here are the context sentences:
+4. Sandra picked up the milk there.
+5. Mary went back to the hallway.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	"there is no mention of john in the provided context sentences. the sentences only mention sandra and mary, and their actions are unrelated to john. there is no information about john's location, and there is no logical connection between the actions of sandra and mary and john's location. therefore, it can be concluded that there is no evidence to suggest john is in the bathroom, and the answer is ""no""."	none	not mentioned	False	There is no mention of John in the context sentences 4 and 5. The question asks about John's location in the bathroom, but there is no information provided about John's presence in the bathroom.		"Reasoning: There is no mention of John in the context sentences 4 and 5. The question asks about John's location in the bathroom, but there is no information provided about John's presence in the bathroom.
+
+Answer: not mentioned"	0.0	0.0204	False	False	False	True	0
+33	6	7	3	"*TASK*
+Here are the context sentences:
+7. Sandra put down the milk there.
+8. Sandra moved to the garden.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	no	"according to the context sentence ""sandra moved to the garden"", sandra's current location is the garden. there is no information provided that suggests she is in the bedroom. in fact, the sentence implies that she is not in the bedroom, but rather in the garden. therefore, it can be logically concluded that sandra is not in the bedroom, and the answer is ""no""."	fully	no	True	The context sentences do not mention Sandra being in the bedroom. Sentence 7 implies that Sandra was previously in a location where she put down the milk, but it does not specify the location. Sentence 8 states that Sandra moved to the garden, which implies that she is currently in the garden.		"Reasoning: The context sentences do not mention Sandra being in the bedroom. Sentence 7 implies that Sandra was previously in a location where she put down the milk, but it does not specify the location. Sentence 8 states that Sandra moved to the garden, which implies that she is currently in the garden.
+
+Answer: no"	0.0152	0.0152	False	False	False	True	0
+34	6	7	4	"*TASK*
+Here are the context sentences:
+10. John went to the bedroom.
+11. Sandra moved to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	no	"according to the context sentence ""sandra moved to the bathroom"", sandra's current location is the bathroom. there is no information provided that suggests she is in the bedroom. in fact, the sentence implies that she is not in the bedroom, but rather in the bathroom. the context sentence ""john went to the bedroom"" only provides information about john's location, which is the bedroom, but it does not affect sandra's location. therefore, it can be logically concluded that sand"	fully	no	True	Sentence 11 states that Sandra moved to the bathroom, which implies that she is currently in the bathroom. Sentence 10 does not mention Sandra, it only mentions John going to the bedroom.		"Reasoning: Sentence 11 states that Sandra moved to the bathroom, which implies that she is currently in the bathroom. Sentence 10 does not mention Sandra, it only mentions John going to the bedroom.
+
+Answer: no"	0.0222	0.0222	False	False	False	True	0
+35	6	7	5	"*TASK*
+Here are the context sentences:
+13. Sandra moved to the garden.
+14. Sandra moved to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the garden?"	no	"the context sentence ""sandra moved to the bathroom"" indicates that sandra's current location is the bathroom. the previous sentence ""sandra moved to the garden"" suggests that sandra was in the garden at some point, but the subsequent sentence overrides this information, implying that sandra left the garden and moved to the bathroom. therefore, it can be logically concluded that sandra is no longer in the garden, and the answer is ""no""."	fully	yes	False	Sentence 13 states that Sandra moved to the garden, which implies that she is currently in the garden. There is no information that contradicts this, so it can be inferred that Sandra is indeed in the garden.		"Reasoning: Sentence 13 states that Sandra moved to the garden, which implies that she is currently in the garden. There is no information that contradicts this, so it can be inferred that Sandra is indeed in the garden.
+
+Answer: yes"	0.06	0.02	False	False	False	True	0

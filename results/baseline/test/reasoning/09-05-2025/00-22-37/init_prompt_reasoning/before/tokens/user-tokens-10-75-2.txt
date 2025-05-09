@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠJulie	Ġtravelled	Ġto	Ġthe	Ġschool	.Ċ
+5	.	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġcinema	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠJulie	Ġin	Ġthe	Ġschool	?Ċ

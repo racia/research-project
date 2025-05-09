@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġif	ĠMary	Ġis	Ġin	Ġthe	Ġoffice	,	Ġand	Ġthe	Ġcontext	Ġsentence	Ġ	5	Ġstates	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

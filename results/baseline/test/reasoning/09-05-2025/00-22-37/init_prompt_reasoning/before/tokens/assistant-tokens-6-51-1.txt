@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJohn	's	Ġlocation	,	Ġand	Ġthe	Ġcontext	Ġsentence	Ġ(	2	)	Ġexplicitly	Ġstates	Ġthat	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

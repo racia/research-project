@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJulie	Ġis	Ġcurrently	Ġin	Ġthe	Ġcinema	Ġ(	sentence	Ġ	13	).	ĠSentence	Ġ	14	Ġmentions	Ġthat	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġkitchen	Ġor	Ġthe	Ġschool	,	Ġbut	Ġnot	Ġin	Ġthe	Ġoffice	.	ĠTherefore	,	Ġwe	Ġcan	Ġconclude	Ġthat	ĠJulie	Ġis	Ġnot	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

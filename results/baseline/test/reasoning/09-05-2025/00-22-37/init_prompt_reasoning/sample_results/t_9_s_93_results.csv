@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1961	9	93	1	"*TASK*
+Here are the context sentences:
+1. Mary is not in the garden.
+2. Sandra moved to the garden.
+
+Now, answer the following question:
+Is Mary in the garden?"	no	"the context sentence ""mary is not in the garden"" directly states that mary is not in the garden. this sentence was provided before the sentence ""sandra moved to the garden"", which does not change the fact that mary is not in the garden. therefore, the answer to the question ""is mary in the garden?"" is indeed ""no""."	fully	no	True	The context sentences provide information about Mary's and Sandra's locations. Sentence 1 states that Mary is not in the garden, and Sentence 2 states that Sandra moved to the garden. This information does not mention Mary's current location in the garden.		"Reasoning: The context sentences provide information about Mary's and Sandra's locations. Sentence 1 states that Mary is not in the garden, and Sentence 2 states that Sandra moved to the garden. This information does not mention Mary's current location in the garden.
+
+Answer: no"	0.0877	0.0175	False	False	False	True	0
+1962	9	93	2	"*TASK*
+Here are the context sentences:
+4. John journeyed to the bedroom.
+5. John is not in the bedroom.
+
+Now, answer the following question:
+Is Sandra in the garden?"	yes	"the context sentences provided do not mention sandra or the garden in sentences 4 and 5. however, we have a previous context sentence ""2. sandra moved to the garden"" which indicates that sandra is in the garden. there is no information that suggests sandra has left the garden or moved to a different location. therefore, based on the previous context, the answer to the question ""is sandra in the garden?"" is indeed ""yes""."	none	not mentioned	False	The context sentences provide information about John's location. Sentence 4 states that John journeyed to the bedroom, and Sentence 5 states that John is not in the bedroom. However, this information does not mention Sandra or the garden.		"Reasoning: The context sentences provide information about John's location. Sentence 4 states that John journeyed to the bedroom, and Sentence 5 states that John is not in the bedroom. However, this information does not mention Sandra or the garden.
+
+Answer: not mentioned"	0.0182	0.0182	False	False	False	True	0
+1963	9	93	3	"*TASK*
+Here are the context sentences:
+7. John went to the garden.
+8. Sandra went to the hallway.
+
+Now, answer the following question:
+Is John in the office?"	no	"the context sentence ""7. john went to the garden"" indicates that john is in the garden. there is no information provided that suggests john has left the garden or moved to a different location, such as the office. therefore, based on the provided context, the answer to the question ""is john in the office?"" is indeed ""no""."	fully	not mentioned	False	The context sentences provide information about John's and Sandra's locations. Sentence 7 states that John went to the garden, but it does not mention the office. Sentence 8 states that Sandra went to the hallway, but it does not mention the office either. There is no mention of John being in the office.		"Reasoning: The context sentences provide information about John's and Sandra's locations. Sentence 7 states that John went to the garden, but it does not mention the office. Sentence 8 states that Sandra went to the hallway, but it does not mention the office either. There is no mention of John being in the office.
+
+Answer: not mentioned"	0.1127	0.0141	False	False	False	True	0
+1964	9	93	4	"*TASK*
+Here are the context sentences:
+10. John is no longer in the garden.
+11. Sandra is in the bedroom.
+
+Now, answer the following question:
+Is Sandra in the garden?"	no	"the context sentence ""11. sandra is in the bedroom"" directly states that sandra is in the bedroom, not in the garden. there is no information provided that suggests sandra has moved from the bedroom to the garden. therefore, based on the provided context, the answer to the question ""is sandra in the garden?"" is indeed ""no""."	fully	not mentioned	False	Sentence 10 states that John is no longer in the garden, but it does not mention Sandra. Sentence 11 states that Sandra is in the bedroom, which does not mention the garden. Since there is no information about Sandra's location in the garden, we cannot conclude whether she is in the garden or not.		"Reasoning: Sentence 10 states that John is no longer in the garden, but it does not mention Sandra. Sentence 11 states that Sandra is in the bedroom, which does not mention the garden. Since there is no information about Sandra's location in the garden, we cannot conclude whether she is in the garden or not.
+
+Answer: not mentioned"	0.0	0.0141	False	False	False	True	0
+1965	9	93	5	"*TASK*
+Here are the context sentences:
+13. Sandra went to the bathroom.
+14. John is not in the hallway.
+
+Now, answer the following question:
+Is John in the hallway?"	no	"the context sentence ""14. john is not in the hallway"" directly states that john is not in the hallway. this sentence explicitly answers the question ""is john in the hallway?"" with a ""no"". therefore, the answer to the question is indeed ""no""."	fully	no	True	Sentence 14 states that John is not in the hallway, which provides direct information about John's location.		"Reasoning: Sentence 14 states that John is not in the hallway, which provides direct information about John's location.
+
+Answer: no"	0.0	0.0357	False	False	False	True	0

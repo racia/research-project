@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+241	6	49	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the bathroom.
+2. Sandra travelled to the kitchen.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	sandra travelled to the bathroom and then to the kitchen, which implies that she is currently in the kitchen. there is no mention of her returning to the hallway or being in the hallway at any point, so it can be logically concluded that she is not in the hallway.	fully	no	True	Since Sandra travelled to the bathroom and the kitchen, it implies that she is not in the hallway. The context sentences do not mention Sandra being in the hallway.		"Reasoning: Since Sandra travelled to the bathroom and the kitchen, it implies that she is not in the hallway. The context sentences do not mention Sandra being in the hallway.
+
+Answer: no"	0.0513	0.0256	False	False	False	True	0
+242	6	49	2	"*TASK*
+Here are the context sentences:
+4. Sandra moved to the garden.
+5. Sandra got the apple there.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	the context lines do not mention sandra being in the hallway at any point. in fact, the previous context lines (1 and 2) mentioned sandra travelling to the bathroom and then to the kitchen, and now (4 and 5) she has moved to the garden. there is no indication of her returning to the hallway or being in the hallway at any point, so it can be logically concluded that she is not in the hallway.	fully	no	True	Since Sandra moved to the garden and got an apple there, it implies that she is not in the hallway. The context sentences do not mention Sandra being in the hallway.		"Reasoning: Since Sandra moved to the garden and got an apple there, it implies that she is not in the hallway. The context sentences do not mention Sandra being in the hallway.
+
+Answer: no"	0.0488	0.0244	False	False	False	True	0
+243	6	49	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the hallway.
+8. Sandra moved to the kitchen.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	yes	"according to context line 8, ""sandra moved to the kitchen"", which explicitly states that sandra is in the kitchen. this information directly answers the question, confirming that sandra is indeed in the kitchen."	fully	yes	True	According to context sentence 8, Sandra moved to the kitchen, which implies that she is indeed in the kitchen.		"Reasoning: According to context sentence 8, Sandra moved to the kitchen, which implies that she is indeed in the kitchen.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+244	6	49	4	"*TASK*
+Here are the context sentences:
+10. John went to the garden.
+11. Daniel travelled to the office.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	"there is no mention of daniel being in the bathroom in the provided context lines. in fact, context line 11 states that ""daniel travelled to the office"", which implies that daniel is currently in the office, not in the bathroom."	fully	no	True	The context sentences do not mention Daniel being in the bathroom. In fact, Daniel travelled to the office (context sentence 11), which implies that he is not in the bathroom.		"Reasoning: The context sentences do not mention Daniel being in the bathroom. In fact, Daniel travelled to the office (context sentence 11), which implies that he is not in the bathroom.
+
+Answer: no"	0.0465	0.0233	False	False	False	True	0
+245	6	49	5	"*TASK*
+Here are the context sentences:
+13. Sandra went to the garden.
+14. Sandra discarded the apple.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	"there is no mention of daniel being in the bedroom in the provided context lines. the context lines only mention sandra's actions, specifically that she went to the garden and discarded the apple. there is no information about daniel's location, and the previous context lines (10 and 11) mentioned that daniel travelled to the office, but there is no indication that he went to the bedroom. therefore, it can be logically concluded that the answer is ""no"", daniel is not in the bedroom"	none	not mentioned	False	There is no information provided about Daniel being in the bedroom. The context sentences only mention Sandra's actions, and do not mention Daniel's location.		"Reasoning: There is no information provided about Daniel being in the bedroom. The context sentences only mention Sandra's actions, and do not mention Daniel's location.
+
+Answer: not mentioned"	0.1081	0.027	False	False	False	True	0

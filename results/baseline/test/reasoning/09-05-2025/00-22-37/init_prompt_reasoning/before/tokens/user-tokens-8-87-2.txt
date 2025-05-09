@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠDaniel	Ġdropped	Ġthe	Ġapple	.Ċ
+5	.	ĠDaniel	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠDaniel	Ġcarrying	?Ċ

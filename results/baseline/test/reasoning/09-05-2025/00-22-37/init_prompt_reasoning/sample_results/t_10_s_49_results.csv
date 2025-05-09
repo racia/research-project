@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2241	10	49	1	"*TASK*
+Here are the context sentences:
+1. Julie travelled to the kitchen.
+2. Julie is in the office.
+
+Now, answer the following question:
+Is Julie in the office?"	yes	the context sentences provide conflicting information about julie's location. sentence 1 states that julie travelled to the kitchen, implying that she was not in the kitchen initially. sentence 2, however, explicitly states that julie is in the office. since the question asks about julie's current location, we should rely on the more recent and explicit information provided in sentence 2, which confirms that julie is indeed in the office.	fully	yes	True	The question asks about Julie's current location, and we have two sentences that provide information about her movements. Sentence 1 states that Julie travelled to the kitchen, which implies that she was not in the kitchen initially. Sentence 2 states that Julie is in the office, which suggests that she arrived at the office after her travel to the kitchen.		"Reasoning: The question asks about Julie's current location, and we have two sentences that provide information about her movements. Sentence 1 states that Julie travelled to the kitchen, which implies that she was not in the kitchen initially. Sentence 2 states that Julie is in the office, which suggests that she arrived at the office after her travel to the kitchen.
+
+Answer: yes"	0.1447	0.0132	False	False	False	True	0
+2242	10	49	2	"*TASK*
+Here are the context sentences:
+4. Mary journeyed to the office.
+5. Fred is either in the park or the park.
+
+Now, answer the following question:
+Is Mary in the office?"	yes	sentence 4 explicitly states that mary journeyed to the office, which implies that she is now in the office. the information about fred's location in sentence 5 is irrelevant to mary's location, so we can ignore it. therefore, based on sentence 4, we can conclude that mary is indeed in the office.	fully	yes	True	The question asks about Mary's current location, and we have one sentence that provides information about her movement. Sentence 4 states that Mary journeyed to the office, which implies that she arrived at the office.		"Reasoning: The question asks about Mary's current location, and we have one sentence that provides information about her movement. Sentence 4 states that Mary journeyed to the office, which implies that she arrived at the office.
+
+Answer: yes"	0.0612	0.0204	False	False	False	True	0
+2243	10	49	3	"*TASK*
+Here are the context sentences:
+7. Mary is in the bedroom.
+8. Fred went to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	sentence 7 explicitly states that mary is in the bedroom, which directly answers the question. the additional information in sentence 8 about fred going to the bedroom does not change mary's location, so we can conclude that mary is indeed in the bedroom.	fully	yes	True	The question asks about Mary's current location, and we have one sentence that provides information about her location. Sentence 7 states that Mary is in the bedroom, which suggests that she is currently located there.		"Reasoning: The question asks about Mary's current location, and we have one sentence that provides information about her location. Sentence 7 states that Mary is in the bedroom, which suggests that she is currently located there.
+
+Answer: yes"	0.0208	0.0208	False	False	False	True	0
+2244	10	49	4	"*TASK*
+Here are the context sentences:
+10. Bill went to the kitchen.
+11. Bill travelled to the cinema.
+
+Now, answer the following question:
+Is Bill in the cinema?"	yes	sentence 10 states that bill went to the kitchen, but sentence 11 updates bill's location by stating that he travelled to the cinema. since sentence 11 is more recent and explicitly mentions bill's new location, we can conclude that bill is no longer in the kitchen and is now in the cinema.	fully	yes	True	The question asks about Bill's current location, and we have two sentences that provide information about his movements. Sentence 10 states that Bill went to the kitchen, which implies that he was not in the kitchen initially. Sentence 11 states that Bill travelled to the cinema, which suggests that he arrived at the cinema after his trip to the kitchen.		"Reasoning: The question asks about Bill's current location, and we have two sentences that provide information about his movements. Sentence 10 states that Bill went to the kitchen, which implies that he was not in the kitchen initially. Sentence 11 states that Bill travelled to the cinema, which suggests that he arrived at the cinema after his trip to the kitchen.
+
+Answer: yes"	0.0	0.0132	False	False	False	True	0
+2245	10	49	5	"*TASK*
+Here are the context sentences:
+13. Julie is either in the cinema or the park.
+14. Fred is in the kitchen.
+
+Now, answer the following question:
+Is Bill in the cinema?"	yes	"there is no information about bill's location in the provided context sentences. sentence 13 mentions julie's possible locations, and sentence 14 mentions fred's location, but neither of them provides any information about bill. therefore, it is not possible to logically conclude that bill is in the cinema based on the provided information. the answer ""yes"" seems to be incorrect."	none	not mentioned	False	The question asks about Bill's current location, but there is no information about Bill's location in the given sentences. The sentences only provide information about Julie's and Fred's locations.		"Reasoning: The question asks about Bill's current location, but there is no information about Bill's location in the given sentences. The sentences only provide information about Julie's and Fred's locations.
+
+Answer: not mentioned"	0.0	0.0227	False	False	False	True	0

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+471	6	95	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the bathroom.
+2. Daniel went back to the garden.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	"according to the context sentences, daniel initially travelled to the bathroom (sentence 1), but then he went back to the garden (sentence 2). this implies that daniel is no longer in the bathroom, as he has moved to a different location (the garden). therefore, the answer is ""no"", daniel is not in the bathroom."	fully	no	True	Daniel travelled to the bathroom initially, but then he went back to the garden. This implies that Daniel is not in the bathroom anymore.		"Reasoning: Daniel travelled to the bathroom initially, but then he went back to the garden. This implies that Daniel is not in the bathroom anymore.
+
+Answer: no"	0.1471	0.0294	False	False	False	False	0
+472	6	95	2	"*TASK*
+Here are the context sentences:
+4. Daniel went back to the office.
+5. Daniel went to the garden.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	the context sentences do not mention daniel going to the bedroom at all. in fact, they mention daniel going to the office (sentence 4) and the garden (sentence 5), but not the bedroom. therefore, based on the provided information, it can be logically concluded that daniel is not in the bedroom, which is the correct answer.	fully	no	True	There is no mention of Daniel going to the bedroom in the given context sentences. Daniel went back to the office and then went to the garden, but there is no indication of him being in the bedroom.		"Reasoning: There is no mention of Daniel going to the bedroom in the given context sentences. Daniel went back to the office and then went to the garden, but there is no indication of him being in the bedroom.
+
+Answer: no"	0.0833	0.0208	False	False	False	True	0
+473	6	95	3	"*TASK*
+Here are the context sentences:
+7. John journeyed to the bathroom.
+8. Daniel took the milk there.
+
+Now, answer the following question:
+Is John in the bathroom?"	yes	according to sentence 7, john journeyed to the bathroom, which implies that john is currently in the bathroom. there is no subsequent sentence that suggests john left the bathroom, so it can be logically concluded that john is still in the bathroom, which is the correct answer.	fully	yes	True	According to sentence 7, John journeyed to the bathroom, which implies that John is currently in the bathroom.		"Reasoning: According to sentence 7, John journeyed to the bathroom, which implies that John is currently in the bathroom.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+474	6	95	4	"*TASK*
+Here are the context sentences:
+10. Mary journeyed to the kitchen.
+11. Mary moved to the bathroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	yes	according to sentence 10, mary initially journeyed to the kitchen, but then sentence 11 states that mary moved to the bathroom. this implies that mary left the kitchen and is now in the bathroom, which is the correct answer.	fully	yes	True	According to sentence 11, Mary moved to the bathroom, which implies that Mary is currently in the bathroom.		"Reasoning: According to sentence 11, Mary moved to the bathroom, which implies that Mary is currently in the bathroom.
+
+Answer: yes"	0.0345	0.0345	False	False	False	False	0
+475	6	95	5	"*TASK*
+Here are the context sentences:
+13. Mary went back to the garden.
+14. Daniel dropped the milk.
+
+Now, answer the following question:
+Is Mary in the garden?"	yes	according to sentence 13, mary went back to the garden, which implies that mary is currently in the garden. there is no subsequent sentence that suggests mary left the garden, so it can be logically concluded that mary is still in the garden, which is the correct answer.	fully	yes	True	According to sentence 13, Mary went back to the garden, which implies that Mary is currently in the garden.		"Reasoning: According to sentence 13, Mary went back to the garden, which implies that Mary is currently in the garden.
+
+Answer: yes"	0.0333	0.0333	False	False	False	False	0

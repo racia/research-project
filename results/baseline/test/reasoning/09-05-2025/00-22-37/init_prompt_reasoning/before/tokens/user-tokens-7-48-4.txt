@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+12	.	ĠSandra	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+13	.	ĠSandra	Ġhanded	Ġthe	Ġapple	Ġto	ĠJohn	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠDaniel	Ġcarrying	?Ċ

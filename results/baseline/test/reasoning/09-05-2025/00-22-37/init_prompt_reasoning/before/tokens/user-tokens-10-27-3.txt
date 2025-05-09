@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+8	.	ĠJulie	Ġis	Ġin	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠFred	Ġin	Ġthe	Ġkitchen	?Ċ

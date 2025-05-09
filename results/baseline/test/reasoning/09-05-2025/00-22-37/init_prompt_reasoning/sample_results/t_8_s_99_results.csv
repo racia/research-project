@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1491	8	99	1	"*TASK*
+Here are the context sentences:
+1. John went to the hallway.
+2. Sandra picked up the apple there.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"from context sentence 2, ""sandra picked up the apple there"", we know that sandra picked up an apple in the hallway (as indicated by ""there"", which refers to the hallway mentioned in context sentence 1). therefore, sandra is carrying the apple."	fully	apple	True	Sandra picked up the apple in the hallway, which means she is holding the apple.		"Reasoning: Sandra picked up the apple in the hallway, which means she is holding the apple.
+
+Answer: apple"	0.125	0.0417	False	False	False	False	0
+1492	8	99	2	"*TASK*
+Here are the context sentences:
+4. Sandra put down the apple there.
+5. John travelled to the office.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"from context sentence 4, ""sandra put down the apple there"", we know that sandra put down the apple, which means she is no longer carrying it. there is no other information about sandra picking up or carrying anything else, so we can conclude that sandra is carrying nothing."	partially	nothing	True	Sandra put down the apple in the hallway, which means she is no longer holding it. Since there is no new information about Sandra picking up something else, she is not carrying anything.		"Reasoning: Sandra put down the apple in the hallway, which means she is no longer holding it. Since there is no new information about Sandra picking up something else, she is not carrying anything.
+
+Answer: nothing"	0.0909	0.0455	False	False	False	True	0
+1493	8	99	3	"*TASK*
+Here are the context sentences:
+7. Mary went back to the hallway.
+8. Mary got the apple there.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	"from context sentence 8, ""mary got the apple there"", we know that mary picked up the apple in the hallway. since mary got the apple, it can be logically inferred that mary is now carrying the apple."	fully	apple	True	Mary got the apple in the hallway, which means she is holding the apple.		"Reasoning: Mary got the apple in the hallway, which means she is holding the apple.
+
+Answer: apple"	0.0	0.0435	False	False	False	False	0
+1494	8	99	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the kitchen.
+11. Mary dropped the apple.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	"from context sentence 11, ""mary dropped the apple"", we know that mary dropped the apple, which means she is no longer carrying it. there is no other information about mary picking up or carrying anything else, so we can conclude that mary is carrying nothing."	partially	nothing	True	Mary dropped the apple, which means she was holding it, but now it's on the floor. Since Mary dropped the apple, she is no longer holding it.		"Reasoning: Mary dropped the apple, which means she was holding it, but now it's on the floor. Since Mary dropped the apple, she is no longer holding it.
+
+Answer: nothing"	0.175	0.05	False	False	False	False	0
+1495	8	99	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the kitchen.
+14. Mary moved to the bedroom.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	from the previous context sentences, we know that mary dropped the apple in the kitchen (sentence 11). there is no new information about mary picking up or carrying anything else. mary's movement to the bedroom (sentence 14) does not change the fact that she is not carrying anything. therefore, we can conclude that mary is still carrying nothing.	none	nothing	True	There is no new information about Mary picking up or holding something. Since the previous question showed that Mary dropped the apple, she is not carrying anything.		"Reasoning: There is no new information about Mary picking up or holding something. Since the previous question showed that Mary dropped the apple, she is not carrying anything.
+
+Answer: nothing"	0.0541	0.0541	False	False	False	True	0

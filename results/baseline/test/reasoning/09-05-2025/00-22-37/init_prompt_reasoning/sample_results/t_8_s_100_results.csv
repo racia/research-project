@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1496	8	100	1	"*TASK*
+Here are the context sentences:
+1. Sandra got the football there.
+2. Mary journeyed to the bathroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	football	"from context sentence 1, ""sandra got the football there"", we can infer that sandra has possession of the football. the phrase ""got"" implies that sandra has acquired or obtained the football, and ""there"" suggests that she is currently holding or carrying it. therefore, the answer to the question ""what is sandra carrying?"" is indeed ""football""."	fully	football	True	"Sandra got the football, which implies she acquired or obtained the football, and since she got it ""there"", it means she got it in a location that is not specified in the given context. However, since Sandra is the one who got the football, it is likely that she is carrying it."		"Reasoning: Sandra got the football, which implies she acquired or obtained the football, and since she got it ""there"", it means she got it in a location that is not specified in the given context. However, since Sandra is the one who got the football, it is likely that she is carrying it.
+
+Answer: football"	0.0448	0.0149	False	False	False	False	0
+1497	8	100	2	"*TASK*
+Here are the context sentences:
+4. Mary went back to the kitchen.
+5. John travelled to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	football	"the question ""what is sandra carrying?"" cannot be answered directly from the provided context sentences 4 and 5, as they do not mention sandra or what she is carrying. however, we can look back at the previous context sentences (1 and 2) which mentioned sandra getting the football. since there is no information provided that suggests sandra has dropped or given away the football, we can logically assume that she is still carrying it. therefore, the answer to the question ""what is"	none	Not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only mention Mary and John, and their actions. Since Sandra was mentioned in the previous context, it is likely that she was carrying something, but there is no new information provided to update her status.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention Mary and John, and their actions. Since Sandra was mentioned in the previous context, it is likely that she was carrying something, but there is no new information provided to update her status.
+
+Answer: Not mentioned"	0.1452	0.0161	False	False	False	True	0
+1498	8	100	3	"*TASK*
+Here are the context sentences:
+7. Sandra moved to the kitchen.
+8. Sandra put down the football.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"from context sentence 8, ""sandra put down the football"", we can infer that sandra is no longer carrying the football. the phrase ""put down"" implies that sandra has released or placed the football on a surface, which means she is not holding or carrying it anymore. therefore, the answer to the question ""what is sandra carrying?"" is indeed ""nothing""."	partially	football	False	According to sentence 8, Sandra put down the football, which implies that she was previously carrying it. Since she moved to the kitchen, it is likely that she was carrying the football to the kitchen.		"Reasoning: According to sentence 8, Sandra put down the football, which implies that she was previously carrying it. Since she moved to the kitchen, it is likely that she was carrying the football to the kitchen.
+
+Answer: football"	0.1042	0.0417	False	False	False	False	0
+1499	8	100	4	"*TASK*
+Here are the context sentences:
+10. Daniel took the football there.
+11. Daniel dropped the football there.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"the question ""what is sandra carrying?"" refers to sandra, but the context sentences 10 and 11 only mention daniel and the football. there is no information provided about sandra carrying anything. we can look back at the previous context sentences (7 and 8) which mentioned sandra putting down the football, and we can infer that sandra is still not carrying anything. therefore, the answer to the question ""what is sandra carrying?"" is indeed ""nothing""."	none	football	False	There is no mention of Sandra in the given context sentences. The sentences only mention Daniel and his actions with the football. Since Sandra's status was previously updated to carrying the football, but there is no new information provided to update her status.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention Daniel and his actions with the football. Since Sandra's status was previously updated to carrying the football, but there is no new information provided to update her status.
+
+Answer: football"	0.0727	0.0364	False	False	False	True	0
+1500	8	100	5	"*TASK*
+Here are the context sentences:
+13. John journeyed to the bedroom.
+14. Daniel took the football there.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"the question ""what is sandra carrying?"" refers to sandra, but the context sentences 13 and 14 do not provide any new information about sandra carrying anything. we can look back at the previous context sentences (7 and 8) which mentioned sandra putting down the football, and we can infer that sandra is still not carrying anything. therefore, the answer to the question ""what is sandra carrying?"" is indeed ""nothing""."	none	football	False	There is no mention of Sandra in the given context sentences. The sentences only mention John and Daniel, and their actions. Since Sandra's status was previously updated to carrying the football, but there is no new information provided to update her status.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention John and Daniel, and their actions. Since Sandra's status was previously updated to carrying the football, but there is no new information provided to update her status.
+
+Answer: football"	0.0545	0.0364	False	False	False	True	0

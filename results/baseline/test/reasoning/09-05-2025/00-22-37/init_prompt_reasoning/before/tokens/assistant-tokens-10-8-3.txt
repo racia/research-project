@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠFred	Ġgoing	Ġto	Ġthe	Ġkitchen	Ġand	ĠJulie	Ġtravelling	Ġto	Ġthe	Ġbedroom	.	ĠSince	ĠMary	Ġis	Ġnot	Ġmentioned	,	Ġwe	Ġcannot	Ġdetermine	Ġher	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

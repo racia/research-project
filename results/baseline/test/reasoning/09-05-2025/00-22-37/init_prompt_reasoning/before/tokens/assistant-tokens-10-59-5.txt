@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ"	14	.	ĠFred	Ġis	Ġin	Ġthe	Ġoffice	"	Ġexplicitly	Ġstates	Ġthat	ĠFred	Ġis	Ġin	Ġthe	Ġoffice	,	Ġbut	Ġdoes	Ġnot	Ġmention	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġno	<|eot_id|>

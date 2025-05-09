@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+351	6	71	1	"*TASK*
+Here are the context sentences:
+1. John moved to the bedroom.
+2. John went to the bathroom.
+
+Now, answer the following question:
+Is John in the bathroom?"	yes	"the context sentences indicate that john moved to the bedroom (sentence 1) and then went to the bathroom (sentence 2). since john went to the bathroom after moving to the bedroom, it can be inferred that john left the bedroom and entered the bathroom. therefore, john is currently in the bathroom, which aligns with the provided answer ""yes""."	fully	yes	True	According to sentence 2, John went to the bathroom, which implies that he is currently in the bathroom.		"Reasoning: According to sentence 2, John went to the bathroom, which implies that he is currently in the bathroom.
+
+Answer: yes"	0.0	0.0345	False	False	False	False	0
+352	6	71	2	"*TASK*
+Here are the context sentences:
+4. Daniel travelled to the bathroom.
+5. John picked up the apple there.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	yes	"the context sentence 4 states that daniel travelled to the bathroom, which implies that daniel went to the bathroom and is still there. there is no information provided that suggests daniel left the bathroom. additionally, sentence 5 mentions john picking up an apple ""there"", which likely refers to the bathroom, but it does not provide any information about daniel's location. therefore, based on the information provided, it can be concluded that daniel is still in the bathroom, which aligns with the provided"	fully	yes	True	Sentence 4 states that Daniel travelled to the bathroom, which implies that he is currently in the bathroom.		"Reasoning: Sentence 4 states that Daniel travelled to the bathroom, which implies that he is currently in the bathroom.
+
+Answer: yes"	0.0357	0.0357	False	False	False	False	0
+353	6	71	3	"*TASK*
+Here are the context sentences:
+7. Sandra took the football there.
+8. John went back to the garden.
+
+Now, answer the following question:
+Is John in the garden?"	yes	"sentence 8 explicitly states that john went back to the garden, which implies that john was not in the garden previously, but now he has returned to the garden. there is no information provided that suggests john left the garden again after returning. therefore, based on the information provided, it can be concluded that john is currently in the garden, which aligns with the provided answer ""yes""."	fully	yes	True	Sentence 8 states that John went back to the garden, which implies that he is currently in the garden.		"Reasoning: Sentence 8 states that John went back to the garden, which implies that he is currently in the garden.
+
+Answer: yes"	0.0	0.0345	False	False	False	False	0
+354	6	71	4	"*TASK*
+Here are the context sentences:
+10. John dropped the apple.
+11. Sandra discarded the football.
+
+Now, answer the following question:
+Is John in the garden?"	yes	although sentences 10 and 11 provide information about john and sandra's actions with objects, they do not explicitly mention john's location. however, we can infer john's location by looking at the previous context sentences. since we don't have any information about john's location in the current sentences, we need to look at the previous sentences. sentence 8 mentions that john went back to the garden, and there is no information provided that suggests john left the garden again. therefore,	none	not mentioned	False	Although sentence 10 mentions John dropping the apple, it doesn't provide information about his current location. Sentence 11 is unrelated to John's location. Therefore, we cannot determine John's current location.		"Reasoning: Although sentence 10 mentions John dropping the apple, it doesn't provide information about his current location. Sentence 11 is unrelated to John's location. Therefore, we cannot determine John's current location.
+
+Answer: not mentioned"	0.0208	0.0208	False	False	False	True	0
+355	6	71	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the bedroom.
+14. John went to the hallway.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	"sentence 13 states that john travelled to the bedroom, which implies that john went to the bedroom. however, sentence 14 states that john went to the hallway, which implies that john left the bedroom and moved to the hallway. therefore, based on the sequence of events, it can be concluded that john is no longer in the bedroom, which aligns with the provided answer ""no""."	fully	yes	False	Sentence 13 states that John travelled to the bedroom, which implies that he is currently in the bedroom.		"Reasoning: Sentence 13 states that John travelled to the bedroom, which implies that he is currently in the bedroom.
+
+Answer: yes"	0.0	0.0357	False	False	False	False	0

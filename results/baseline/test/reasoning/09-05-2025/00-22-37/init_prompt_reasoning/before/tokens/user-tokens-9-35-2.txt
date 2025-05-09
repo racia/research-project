@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠDaniel	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	.Ċ
+5	.	ĠJohn	Ġis	Ġnot	Ġin	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠMary	Ġin	Ġthe	Ġbathroom	?Ċ

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+931	7	87	1	"*TASK*
+Here are the context sentences:
+1. John went to the bedroom.
+2. Sandra went to the hallway.
+3. Mary went to the hallway.
+4. Sandra got the milk there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from the context sentences, we know that sandra went to the hallway (sentence 2) and got the milk there (sentence 4). this implies that sandra is carrying the milk, which is one object. there is no information about sandra carrying any other objects, so the answer is one.	fully	one	True	Sandra got the milk in the hallway, which means she acquired the milk in that location. Since she got the milk, it implies that she is carrying the milk.		"Reasoning: Sandra got the milk in the hallway, which means she acquired the milk in that location. Since she got the milk, it implies that she is carrying the milk.
+
+Answer: one"	0.025	0.025	False	False	False	False	0
+932	7	87	2	"*TASK*
+Here are the context sentences:
+6. Sandra gave the milk to Mary.
+7. John moved to the kitchen.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	in the previous context sentences, we knew that sandra got the milk in the hallway (sentence 4) and was carrying it. however, in the new context sentence 6, it is stated that sandra gave the milk to mary. this implies that sandra is no longer carrying the milk, as she has given it away to mary. therefore, the answer is that sandra is carrying none.	partially	none	True	Sandra gave the milk to Mary, which means she has transferred the milk to Mary. Since Sandra has given away the milk, she is no longer carrying it.		"Reasoning: Sandra gave the milk to Mary, which means she has transferred the milk to Mary. Since Sandra has given away the milk, she is no longer carrying it.
+
+Answer: none"	0.1282	0.0513	False	False	False	False	0
+933	7	87	3	"*TASK*
+Here are the context sentences:
+9. Sandra picked up the football there.
+10. Sandra passed the football to Mary.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	in the previous context sentences, we knew that sandra was not carrying any objects (sentence 6). then, in sentence 9, sandra picked up the football, which means she was carrying the football. however, in sentence 10, sandra passed the football to mary, which implies that she is no longer carrying the football. therefore, the answer is that sandra is carrying none.	partially	one	False	Sandra picked up the football, which means she acquired the football. Since she passed the football to Mary, it implies that she was carrying the football before passing it to Mary.		"Reasoning: Sandra picked up the football, which means she acquired the football. Since she passed the football to Mary, it implies that she was carrying the football before passing it to Mary.
+
+Answer: one"	0.1905	0.0952	False	False	False	False	0
+934	7	87	4	"*TASK*
+Here are the context sentences:
+12. Mary put down the milk.
+13. Mary handed the football to Sandra.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	in the previous context sentences, we knew that sandra was not carrying any objects (sentence 10). then, in sentence 13, mary handed the football to sandra, which means sandra received the football from mary and is now carrying it. therefore, the answer is that sandra is carrying one object, which is the football.	partially	one	True	Sandra received the football from Mary, which means she acquired the football. Since Mary put down the milk, it implies that Sandra was not carrying the milk anymore. The only object Sandra is carrying is the football.		"Reasoning: Sandra received the football from Mary, which means she acquired the football. Since Mary put down the milk, it implies that Sandra was not carrying the milk anymore. The only object Sandra is carrying is the football.
+
+Answer: one"	0.1224	0.102	False	False	False	False	0
+935	7	87	5	"*TASK*
+Here are the context sentences:
+15. Sandra handed the football to Mary.
+16. Mary handed the football to Sandra.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	in the previous context sentences, we knew that sandra handed the football to mary (sentence 15), which means mary received the football from sandra and was carrying it. however, in sentence 16, mary handed the football back to sandra, which implies that mary is no longer carrying the football. therefore, the answer is that mary is carrying none.	partially	none	True	Mary received the football from Sandra, but then handed it back to Sandra. This means Mary was carrying the football for a brief moment, but then gave it back to Sandra. Since Mary is not currently carrying the football, she is not carrying any objects.		"Reasoning: Mary received the football from Sandra, but then handed it back to Sandra. This means Mary was carrying the football for a brief moment, but then gave it back to Sandra. Since Mary is not currently carrying the football, she is not carrying any objects.
+
+Answer: none"	0.0517	0.1034	False	False	False	False	0

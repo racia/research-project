@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġand	Ġthe	Ġkitchen	,	Ġit	Ġimplies	Ġthat	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġhallway	.	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠSandra	Ġbeing	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

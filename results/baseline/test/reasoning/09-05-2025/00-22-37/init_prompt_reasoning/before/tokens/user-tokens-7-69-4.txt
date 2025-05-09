@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+16	.	ĠJohn	Ġpassed	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
+17	.	ĠMary	Ġpassed	Ġthe	Ġmilk	Ġto	ĠJohn	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠJohn	Ġcarrying	?Ċ

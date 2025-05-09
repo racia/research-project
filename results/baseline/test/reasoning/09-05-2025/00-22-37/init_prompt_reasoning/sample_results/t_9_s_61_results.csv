@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1801	9	61	1	"*TASK*
+Here are the context sentences:
+1. John is in the bathroom.
+2. John went to the office.
+
+Now, answer the following question:
+Is John in the hallway?"	no	from the context sentences, we know that john was initially in the bathroom (sentence 1). then, he went to the office (sentence 2). there is no mention of john going to the hallway or being in the hallway. since john is now in the office, it can be logically concluded that he is not in the hallway.	fully	no	True	Since John went to the office, he is no longer in the bathroom. There is no information that suggests he went to the hallway. Therefore, we cannot conclude that John is in the hallway.		"Reasoning: Since John went to the office, he is no longer in the bathroom. There is no information that suggests he went to the hallway. Therefore, we cannot conclude that John is in the hallway.
+
+Answer: no"	0.1087	0.0217	False	False	False	True	0
+1802	9	61	2	"*TASK*
+Here are the context sentences:
+4. Daniel journeyed to the bathroom.
+5. Sandra is no longer in the bathroom.
+
+Now, answer the following question:
+Is John in the office?"	yes	"the provided context sentences (4 and 5) do not mention john or the office at all. however, the answer is ""yes"", which implies that the information about john being in the office must have been provided earlier in the conversation history. indeed, in the previous part of the conversation, we had the context sentences ""1. john is in the bathroom. 2. john went to the office."" which explicitly state that john went to the office. therefore, the answer """	none	not mentioned	False	There is no information about John's location. The context sentences only mention Daniel's journey to the bathroom and Sandra's departure from the bathroom. We cannot infer anything about John's location.		"Reasoning: There is no information about John's location. The context sentences only mention Daniel's journey to the bathroom and Sandra's departure from the bathroom. We cannot infer anything about John's location.
+
+Answer: not mentioned"	0.0	0.0222	False	False	False	True	0
+1803	9	61	3	"*TASK*
+Here are the context sentences:
+7. Sandra is no longer in the garden.
+8. Sandra moved to the bedroom.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	from the context sentences, we know that sandra is no longer in the garden (sentence 7), and she moved to the bedroom (sentence 8). there is no mention of sandra being in the hallway or moving to the hallway. logically, it can be concluded that sandra is not in the hallway, but rather in the bedroom, which is her current location.	fully	no	True	Sandra moved from the garden to the bedroom, but there is no information about her moving to the hallway. Therefore, we cannot conclude that Sandra is in the hallway.		"Reasoning: Sandra moved from the garden to the bedroom, but there is no information about her moving to the hallway. Therefore, we cannot conclude that Sandra is in the hallway.
+
+Answer: no"	0.0	0.025	False	False	False	True	0
+1804	9	61	4	"*TASK*
+Here are the context sentences:
+10. John travelled to the kitchen.
+11. Daniel went back to the office.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	yes	"the context sentences (10 and 11) do not provide any new information about sandra's location. however, in a previous part of the conversation, we had the context sentences ""7. sandra is no longer in the garden. 8. sandra moved to the bedroom."" which explicitly stated that sandra moved to the bedroom. there is no information that suggests sandra has moved from the bedroom since then. therefore, it can be logically concluded that sandra is still in the bedroom."	none	not mentioned	False	There is no information about Sandra's location. The context sentences only mention John's travel to the kitchen and Daniel's return to the office. We cannot infer anything about Sandra's location.		"Reasoning: There is no information about Sandra's location. The context sentences only mention John's travel to the kitchen and Daniel's return to the office. We cannot infer anything about Sandra's location.
+
+Answer: not mentioned"	0.0	0.0222	False	False	False	True	0
+1805	9	61	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the kitchen.
+14. Mary journeyed to the hallway.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	yes	"the context sentence 13 explicitly states that ""sandra journeyed to the kitchen"", which means sandra moved to the kitchen. there is no subsequent information that suggests sandra has left the kitchen. therefore, it can be logically concluded that sandra is still in the kitchen."	fully	yes	True	According to sentence 13, Sandra journeyed to the kitchen, which implies that she is currently in the kitchen.		"Reasoning: According to sentence 13, Sandra journeyed to the kitchen, which implies that she is currently in the kitchen.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
