@@ -96,4 +96,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "${oc.env:HOME}/../../../../pfs/work9/workspace/scratch/hd_nc326-research-project/outputs/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/${now:%d-%m-%Y}/${now:%H-%M-%S}"

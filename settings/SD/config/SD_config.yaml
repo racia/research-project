@@ -69,7 +69,7 @@ init_prompt:
 eval_prompt:
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/eval_prompt.txt"
-  baseline_results: "${oc.env:HOME}/../../../../pfs/work9/workspace/scratch/hd_nc326-research-project/results/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
+  baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
   history: |
     Your student was given the following task:
     """
@@ -135,4 +135,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "${oc.env:HOME}/../../../../pfs/work9/workspace/scratch/hd_nc326-research-project/outputs/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/${now:%d-%m-%Y}/${now:%H-%M-%S}"
