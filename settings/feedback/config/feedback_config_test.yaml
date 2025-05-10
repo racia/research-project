@@ -22,7 +22,7 @@ setting:
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  baseline_results: "${oc.env:HOME}/research-project/results/baseline/test/reasoning/06-05-2025/21-28-46/init_prompt_reasoning/test_init_prompt_reasoning_results.csv"
+  baseline_results: "${oc.env:HOME}/../../../../pfs/work9/workspace/scratch/hd_nc326-research-project/results/baseline/test/reasoning/06-05-2025/21-28-46/init_prompt_reasoning/test_init_prompt_reasoning_results.csv"
   # Order: train, valid, test
   splits:
     train: False
@@ -129,4 +129,4 @@ results:
     run:
       # the run directory with logs, plots, and csv results will be created here
       # use more folders if needed for distinguishing between different experiments
-      dir: "${oc.env:HOME}/research-project/outputs/test-FD-run/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+      dir: "${oc.env:HOME}/../../../../pfs/work9/workspace/scratch/hd_nc326-research-project/outputs/test-FD-run/${now:%d-%m-%Y}/${now:%H-%M-%S}"
