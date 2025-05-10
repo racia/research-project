@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJulie	's	Ġlocation	Ġin	Ġthe	Ġschool	.	ĠThe	Ġcontext	Ġsentences	Ġ	10	Ġand	Ġ	11	Ġmention	ĠMary	's	Ġmovements	Ġand	Ġpossible	Ġlocations	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJulie	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

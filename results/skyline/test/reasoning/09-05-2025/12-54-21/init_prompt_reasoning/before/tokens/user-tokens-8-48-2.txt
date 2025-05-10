@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+5	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠMary	Ġcarrying	?Ċ

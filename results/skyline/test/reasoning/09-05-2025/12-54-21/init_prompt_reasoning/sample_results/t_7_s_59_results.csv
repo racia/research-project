@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+791	7	59	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the bedroom.
+2. John travelled to the garden.
+3. Mary journeyed to the bathroom.
+4. Sandra went back to the bathroom.
+5. Sandra moved to the hallway.
+6. John moved to the office.
+7. Mary got the milk there.
+8. Sandra went to the bedroom.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	from the context sentences, we can see that mary travelled to different locations (bedroom, bathroom) and finally got the milk in one of those locations (sentence 7). there is no mention of mary putting down the milk or giving it to someone else. therefore, it is logical to assume that mary is still carrying the milk, which is one object.	fully	one	True	In sentence 7, it is mentioned that Mary got the milk there, which implies that Mary is carrying the milk. There is no information about Mary putting down or giving away the milk, so we can infer that Mary is still carrying the milk.		"assistant
+
+Reasoning: In sentence 7, it is mentioned that Mary got the milk there, which implies that Mary is carrying the milk. There is no information about Mary putting down or giving away the milk, so we can infer that Mary is still carrying the milk.
+
+Answer: one"	0.0	0.0164	False	False	False	True	0
+792	7	59	2	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the bedroom.
+11. Daniel got the apple there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from the context sentences, we can see that daniel went back to the bedroom (sentence 10) and then got the apple there (sentence 11). there is no mention of daniel putting down the apple or giving it to someone else. therefore, it is logical to assume that daniel is still carrying the apple, which is one object.	fully	one	True	In sentence 11, it is mentioned that Daniel got the apple there, which implies that Daniel is carrying the apple. There is no information about Daniel putting down or giving away the apple, so we can infer that Daniel is still carrying the apple.		"Reasoning: In sentence 11, it is mentioned that Daniel got the apple there, which implies that Daniel is carrying the apple. There is no information about Daniel putting down or giving away the apple, so we can infer that Daniel is still carrying the apple.
+
+Answer: one"	0.0702	0.0175	False	False	False	True	0
+793	7	59	3	"*TASK*
+Here are the context sentences:
+13. Daniel passed the apple to Sandra.
+14. Sandra moved to the kitchen.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	from the context sentences, we can see that daniel passed the apple to sandra (sentence 13), which means daniel no longer has the apple. there is no mention of daniel getting or carrying any other object. therefore, it is logical to conclude that daniel is not carrying any objects.	partially	none	True	In sentence 13, it is mentioned that Daniel passed the apple to Sandra, which implies that Daniel is no longer carrying the apple. Daniel gave the apple to Sandra, so Daniel is not carrying any objects.		"Reasoning: In sentence 13, it is mentioned that Daniel passed the apple to Sandra, which implies that Daniel is no longer carrying the apple. Daniel gave the apple to Sandra, so Daniel is not carrying any objects.
+
+Answer: none"	0.1633	0.0408	False	False	False	True	0
+794	7	59	4	"*TASK*
+Here are the context sentences:
+16. Mary went to the bedroom.
+17. Mary handed the milk to Daniel.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from the context sentences, we can see that mary handed the milk to daniel (sentence 17). this implies that daniel received the milk from mary and now has it. there is no mention of daniel putting down the milk or giving it to someone else. therefore, it is logical to conclude that daniel is carrying one object, which is the milk.	partially	one	True	In sentence 17, it is mentioned that Mary handed the milk to Daniel, which implies that Daniel is now carrying the milk. Previously, Daniel was not carrying any objects, but now he has the milk.		"Reasoning: In sentence 17, it is mentioned that Mary handed the milk to Daniel, which implies that Daniel is now carrying the milk. Previously, Daniel was not carrying any objects, but now he has the milk.
+
+Answer: one"	0.1224	0.0612	False	False	False	True	0
+795	7	59	5	"*TASK*
+Here are the context sentences:
+19. Sandra journeyed to the office.
+20. Sandra moved to the hallway.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	the context sentences (19 and 20) only provide information about sandra's movements, but do not mention mary or any objects related to her. to answer the question, we need to look at the previous context sentences. from sentence 17, we know that mary handed the milk to daniel, which means mary is no longer carrying the milk. there is no other information about mary carrying any other objects. therefore, it is logical to conclude that mary is not carrying any objects.	none	none	True	There is no new information about Mary in sentences 19 and 20. The last information about Mary was in sentence 17, where Mary handed the milk to Daniel, which implies that Mary is no longer carrying the milk.		"Reasoning: There is no new information about Mary in sentences 19 and 20. The last information about Mary was in sentence 17, where Mary handed the milk to Daniel, which implies that Mary is no longer carrying the milk.
+
+Answer: none"	0.0385	0.0385	False	False	False	True	0

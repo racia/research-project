@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+301	6	61	1	"*TASK*
+Here are the context sentences:
+1. John moved to the bedroom.
+2. Mary picked up the apple there.
+
+Now, answer the following question:
+Is John in the bedroom?"	yes	"the context sentence ""john moved to the bedroom"" explicitly states that john's location is the bedroom. this implies that john is currently in the bedroom, which is why the answer to the question ""is john in the bedroom?"" is ""yes""."	fully	yes	True	According to context sentence 1, John moved to the bedroom, which implies that John is currently in the bedroom.		"assistant
+
+Reasoning: According to context sentence 1, John moved to the bedroom, which implies that John is currently in the bedroom.
+
+Answer: yes"	0.0909	0.0303	False	False	False	False	0
+302	6	61	2	"*TASK*
+Here are the context sentences:
+4. Sandra went back to the bedroom.
+5. Sandra moved to the hallway.
+
+Now, answer the following question:
+Is John in the office?"	no	"there is no mention of john or the office in the provided context sentences (4 and 5). the context sentences only talk about sandra's movements between the bedroom and the hallway. there is no information provided about john's location, and the office is not even mentioned. therefore, we cannot conclude that john is in the office, and the answer is ""no""."	none	not mentioned	False	There is no mention of John or the office in the context sentences. The sentences only talk about Sandra's movements.		"Reasoning: There is no mention of John or the office in the context sentences. The sentences only talk about Sandra's movements.
+
+Answer: not mentioned"	0.0645	0.0323	False	False	False	True	0
+303	6	61	3	"*TASK*
+Here are the context sentences:
+7. Mary dropped the apple there.
+8. Sandra travelled to the garden.
+
+Now, answer the following question:
+Is Sandra in the garden?"	yes	"the context sentence ""sandra travelled to the garden"" explicitly states that sandra's location is the garden. this implies that sandra is currently in the garden, which is why the answer to the question ""is sandra in the garden?"" is ""yes""."	fully	yes	True	According to context sentence 8, Sandra travelled to the garden, which implies that Sandra is currently in the garden.		"Reasoning: According to context sentence 8, Sandra travelled to the garden, which implies that Sandra is currently in the garden.
+
+Answer: yes"	0.0333	0.0333	False	False	False	False	0
+304	6	61	4	"*TASK*
+Here are the context sentences:
+10. John moved to the bathroom.
+11. Daniel travelled to the hallway.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	yes	"the context sentence ""daniel travelled to the hallway"" explicitly states that daniel's location is the hallway. this implies that daniel is currently in the hallway, which is why the answer to the question ""is daniel in the hallway?"" is ""yes""."	fully	yes	True	According to context sentence 11, Daniel travelled to the hallway, which implies that Daniel is currently in the hallway.		"Reasoning: According to context sentence 11, Daniel travelled to the hallway, which implies that Daniel is currently in the hallway.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+305	6	61	5	"*TASK*
+Here are the context sentences:
+13. Sandra travelled to the bathroom.
+14. Mary picked up the apple there.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	no	"the context sentence ""sandra travelled to the bathroom"" explicitly states that sandra's location is the bathroom. there is no mention of the kitchen in the context sentences. therefore, we cannot conclude that sandra is in the kitchen, and the answer is ""no""."	fully	no	True	According to context sentence 13, Sandra travelled to the bathroom, which implies that Sandra is currently in the bathroom, not in the kitchen.		"Reasoning: According to context sentence 13, Sandra travelled to the bathroom, which implies that Sandra is currently in the bathroom, not in the kitchen.
+
+Answer: no"	0.0	0.0286	False	False	False	False	0

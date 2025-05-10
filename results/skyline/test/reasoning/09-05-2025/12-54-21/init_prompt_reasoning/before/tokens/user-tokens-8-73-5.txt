@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+15	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+16	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+17	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+18	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+19	.	ĠSandra	Ġdropped	Ġthe	Ġmilk	.Ċ
+20	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠSandra	Ġcarrying	?Ċ

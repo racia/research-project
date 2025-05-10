@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠSandra	Ġwas	Ġever	Ġin	Ġthe	Ġbedroom	.	ĠThe	Ġprevious	Ġcontext	Ġsentences	Ġmentioned	ĠSandra	's	Ġlocation	Ġas	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	2	),	Ġand	Ġthere	Ġis	Ġno	Ġupdate	Ġabout	Ġher	Ġmoving	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġbeing	Ġin	Ġthe	Ġbedroom	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠIn	Ġfact	,	Ġsentence	Ġ	1	Ġmentions	ĠSandra	Ġgoing	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġsentence	Ġ	2	Ġmentions	Ġher	Ġmoving	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

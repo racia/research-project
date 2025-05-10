@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+296	6	60	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the bedroom.
+2. Sandra journeyed to the garden.
+
+Now, answer the following question:
+Is Sandra in the office?"	no	sandra is not mentioned to have travelled to the office in the context sentences. in fact, she travelled to the bedroom and then journeyed to the garden, which are two different locations. there is no indication that she ever went to the office, so it can be logically concluded that she is not in the office.	fully	no	True	The context sentences only mention Sandra traveling to the bedroom and then to the garden, but there is no mention of her going to the office.		"assistant
+
+Reasoning: The context sentences only mention Sandra traveling to the bedroom and then to the garden, but there is no mention of her going to the office.
+
+Answer: no"	0.1538	0.0256	False	False	False	True	0
+297	6	60	2	"*TASK*
+Here are the context sentences:
+4. John went to the bedroom.
+5. Mary moved to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the garden?"	yes	"there is no information provided about sandra's location in the context sentences 4 and 5. however, we can look back at the previous context sentences 1 and 2, which mentioned sandra's movements: ""1. sandra travelled to the bedroom."" and ""2. sandra journeyed to the garden."" from sentence 2, we can conclude that sandra is indeed in the garden."	none	not mentioned	False	There is no mention of Sandra in the context sentences, and the sentences only talk about John and Mary moving to different locations.		"Reasoning: There is no mention of Sandra in the context sentences, and the sentences only talk about John and Mary moving to different locations.
+
+Answer: not mentioned"	0.0303	0.0303	False	False	False	True	0
+298	6	60	3	"*TASK*
+Here are the context sentences:
+7. Daniel got the milk there.
+8. Mary moved to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	"according to context sentence 5, ""mary moved to the bathroom."" however, in context sentence 8, it is stated that ""mary moved to the bedroom."" this implies that mary has changed her location from the bathroom to the bedroom. therefore, mary is no longer in the bathroom."	fully	no	True	According to sentence 5, Mary moved to the bathroom, but sentence 8 states that Mary moved to the bedroom, which means she is no longer in the bathroom.		"Reasoning: According to sentence 5, Mary moved to the bathroom, but sentence 8 states that Mary moved to the bedroom, which means she is no longer in the bathroom.
+
+Answer: no"	0.0	0.0244	False	False	False	False	0
+299	6	60	4	"*TASK*
+Here are the context sentences:
+10. Sandra journeyed to the bedroom.
+11. John moved to the kitchen.
+
+Now, answer the following question:
+Is Sandra in the garden?"	no	"according to context sentence 2, ""sandra journeyed to the garden."" however, in context sentence 10, it is stated that ""sandra journeyed to the bedroom."" this implies that sandra has changed her location from the garden to the bedroom. therefore, sandra is no longer in the garden."	fully	no	True	Sentence 10 states that Sandra journeyed to the bedroom, but there is no mention of her being in the garden.		"Reasoning: Sentence 10 states that Sandra journeyed to the bedroom, but there is no mention of her being in the garden.
+
+Answer: no"	0.0645	0.0323	False	False	False	True	0
+300	6	60	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the bedroom.
+14. Mary picked up the football there.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	yes	"there is no direct information about sandra's location in the context sentences 13 and 14. however, we can look back at the previous context sentences 1 and 10, which mentioned sandra's movements: ""1. sandra travelled to the bedroom."" and ""10. sandra journeyed to the bedroom."" from these sentences, we can conclude that sandra is indeed in the bedroom."	none	not mentioned	False	There is no mention of Sandra in the context sentences, and the sentences only talk about John traveling to the bedroom and Mary picking up the football.		"Reasoning: There is no mention of Sandra in the context sentences, and the sentences only talk about John traveling to the bedroom and Mary picking up the football.
+
+Answer: not mentioned"	0.0	0.027	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġgoing	Ġto	Ġthe	Ġhallway	.	ĠInstead	,	Ġthey	Ġmention	ĠMary	Ġputting	Ġdown	Ġthe	Ġapple	Ġ(	likely	Ġin	Ġthe	Ġbedroom	)	Ġand	Ġthen	Ġjourney	ing	Ġto	Ġthe	Ġbathroom	,	Ġimplying	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

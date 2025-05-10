@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	13	,	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġcontext	Ġsentence	Ġ	14	Ġprovides	Ġalternative	Ġlocations	Ġfor	ĠFred	Ġ(	school	Ġor	Ġcinema	).	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠFred	Ġis	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

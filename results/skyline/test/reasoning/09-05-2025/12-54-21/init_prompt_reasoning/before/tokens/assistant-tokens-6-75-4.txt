@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠDaniel	Ġbeing	Ġin	Ġthe	Ġhallway	.	ĠSentence	Ġ	13	Ġstates	Ġthat	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	,	Ġnot	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

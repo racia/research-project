@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+37	15	10	1	"*TASK*
+Here are the context sentences:
+1. Cats are afraid of mice.
+2. Wolves are afraid of cats.
+3. Sheep are afraid of mice.
+4. Emily is a cat.
+5. Mice are afraid of sheep.
+6. Gertrude is a sheep.
+7. Jessica is a mouse.
+8. Winona is a wolf.
+
+Now, answer the following question:
+What is jessica afraid of?"	sheep	"from context sentence 5, we know that ""mice are afraid of sheep"". jessica is a mouse (context sentence 7), so we can conclude that jessica is afraid of sheep."	fully	Gertrude	False	According to sentence 3, Sheep are afraid of mice. Since Jessica is a mouse (sentence 7), and mice are afraid of sheep (sentence 5), Jessica is afraid of Gertrude, who is a sheep (sentence 6).		"Reasoning: According to sentence 3, Sheep are afraid of mice. Since Jessica is a mouse (sentence 7), and mice are afraid of sheep (sentence 5), Jessica is afraid of Gertrude, who is a sheep (sentence 6).
+
+Answer: Gertrude"	0.1695	0.0339	False	False	False	False	0
+38	15	10	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	mouse	"from context sentence 1, we know that ""cats are afraid of mice"". emily is a cat (context sentence 4), so we can conclude that emily is afraid of mice."	none	not mentioned	False	According to sentence 2, Wolves are afraid of cats. Since Emily is a cat (sentence 4), Emily is not afraid of wolves. There is no information about what Emily is afraid of.		"Reasoning: According to sentence 2, Wolves are afraid of cats. Since Emily is a cat (sentence 4), Emily is not afraid of wolves. There is no information about what Emily is afraid of.
+
+Answer: not mentioned"	0.0625	0.0417	False	False	False	True	0
+39	15	10	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is gertrude afraid of?"	mouse	"from context sentence 3, we know that ""sheep are afraid of mice"". gertrude is a sheep (context sentence 6), so we can conclude that gertrude is afraid of mice."	none	not mentioned	False	According to sentence 1, Cats are afraid of mice. Since Gertrude is a sheep (sentence 6), not a cat, there is no information about what Gertrude is afraid of.		"Reasoning: According to sentence 1, Cats are afraid of mice. Since Gertrude is a sheep (sentence 6), not a cat, there is no information about what Gertrude is afraid of.
+
+Answer: not mentioned"	0.0408	0.0408	False	False	False	True	0
+40	15	10	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	mouse	"from context sentence 1, we know that ""cats are afraid of mice"". emily is a cat (context sentence 4), so we can conclude that emily is afraid of mice."	none	mice	True	According to sentence 1, Cats are afraid of mice. Since Emily is a cat (sentence 4), Emily is afraid of mice.		"Reasoning: According to sentence 1, Cats are afraid of mice. Since Emily is a cat (sentence 4), Emily is afraid of mice.
+
+Answer: mice"	0.0286	0.0571	False	False	False	False	0

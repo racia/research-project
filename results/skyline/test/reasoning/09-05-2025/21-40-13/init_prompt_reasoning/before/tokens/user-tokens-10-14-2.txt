@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġbedroom	Ġor	Ġthe	Ġschool	.Ċ
+5	.	ĠJulie	Ġis	Ġin	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠMary	Ġin	Ġthe	Ġschool	?Ċ

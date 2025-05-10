@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1211	8	43	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the office.
+2. Sandra travelled to the bedroom.
+3. Daniel journeyed to the kitchen.
+4. Mary moved to the bedroom.
+5. John went back to the garden.
+6. Daniel travelled to the bedroom.
+7. Mary went back to the kitchen.
+8. John got the milk there.
+
+Now, answer the following question:
+What is John carrying?"	milk	"from sentence 8, ""john got the milk there"", we can infer that john is carrying the milk. the word ""there"" implies that john obtained the milk in the location he was in, which is the garden (as stated in sentence 5). therefore, john is carrying the milk."	fully	milk	True	According to sentence 8, John got the milk there, which implies that John is carrying the milk.		"assistant
+
+Reasoning: According to sentence 8, John got the milk there, which implies that John is carrying the milk.
+
+Answer: milk"	0.0312	0.0312	False	False	False	False	0
+1212	8	43	2	"*TASK*
+Here are the context sentences:
+10. John put down the milk there.
+11. John picked up the football there.
+
+Now, answer the following question:
+What is John carrying?"	football	from sentence 10, we know that john put down the milk, which means he is no longer carrying it. then, in sentence 11, john picked up the football, which implies that he is now carrying the football. therefore, john is carrying the football.	partially	football	True	According to sentence 10, John put down the milk, which means he is no longer carrying it. Then, according to sentence 11, John picked up the football, which implies that John is now carrying the football.		"Reasoning: According to sentence 10, John put down the milk, which means he is no longer carrying it. Then, according to sentence 11, John picked up the football, which implies that John is now carrying the football.
+
+Answer: football"	0.2115	0.0577	False	False	False	False	0
+1213	8	43	3	"*TASK*
+Here are the context sentences:
+13. John put down the football.
+14. John travelled to the bathroom.
+
+Now, answer the following question:
+What is John carrying?"	nothing	from sentence 13, we know that john put down the football, which means he is no longer carrying it. there is no information in sentence 14 about john picking up or carrying anything, so we can conclude that john is not carrying anything. therefore, the correct answer is that john is carrying nothing.	partially	nothing	True	According to sentence 13, John put down the football, which means he is no longer carrying it. There is no mention of John picking up anything else in sentence 14, which is about John traveling to the bathroom.		"Reasoning: According to sentence 13, John put down the football, which means he is no longer carrying it. There is no mention of John picking up anything else in sentence 14, which is about John traveling to the bathroom.
+
+Answer: nothing"	0.1538	0.0769	False	False	False	True	0
+1214	8	43	4	"*TASK*
+Here are the context sentences:
+16. Daniel journeyed to the office.
+17. Daniel went to the bedroom.
+
+Now, answer the following question:
+What is John carrying?"	nothing	the context sentences 16 and 17 only provide information about daniel's movements, but the question asks about john. since there is no information about john's actions or possessions in these sentences, we cannot infer anything about what john is carrying. however, we can look back at the previous conversation history, where we established that john put down the football in sentence 13 and didn't pick up anything else. therefore, we can conclude that john is still carrying nothing.	none	nothing	True	The context sentences 16 and 17 are about Daniel's movements, but they do not provide any information about John. The last known information about John was that he was carrying nothing (from the previous question).		"Reasoning: The context sentences 16 and 17 are about Daniel's movements, but they do not provide any information about John. The last known information about John was that he was carrying nothing (from the previous question).
+
+Answer: nothing"	0.0	0.0816	False	False	False	True	0
+1215	8	43	5	"*TASK*
+Here are the context sentences:
+19. John moved to the kitchen.
+20. Mary went to the hallway.
+21. Mary picked up the apple there.
+22. Mary discarded the apple.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	from sentence 21, we know that mary picked up the apple in the hallway. however, in sentence 22, mary discarded the apple, which means she is no longer carrying it. there is no information about mary picking up anything else, so we can conclude that mary is carrying nothing.	fully	nothing	True	According to sentence 21, Mary picked up the apple, which means she was carrying it. However, according to sentence 22, Mary discarded the apple, which means she is no longer carrying it.		"Reasoning: According to sentence 21, Mary picked up the apple, which means she was carrying it. However, according to sentence 22, Mary discarded the apple, which means she is no longer carrying it.
+
+Answer: nothing"	0.0208	0.0417	False	False	False	False	0

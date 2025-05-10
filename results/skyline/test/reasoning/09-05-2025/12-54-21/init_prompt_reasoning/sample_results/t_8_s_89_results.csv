@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1441	8	89	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the kitchen.
+2. John journeyed to the hallway.
+3. Mary went to the garden.
+4. Daniel grabbed the apple there.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple	"from context sentence 4, ""daniel grabbed the apple there"", we can infer that daniel is carrying the apple. the word ""there"" implies that daniel grabbed the apple in the location mentioned in the previous sentence, which is the garden. therefore, daniel is carrying the apple."	fully	apple	True	According to sentence 4, Daniel grabbed the apple in the garden. This implies that Daniel is carrying the apple.		"assistant
+
+Reasoning: According to sentence 4, Daniel grabbed the apple in the garden. This implies that Daniel is carrying the apple.
+
+Answer: apple"	0.1212	0.0303	False	False	False	False	0
+1442	8	89	2	"*TASK*
+Here are the context sentences:
+6. John moved to the bathroom.
+7. Mary moved to the kitchen.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple	there is no information about daniel or an apple in the provided context sentences (6 and 7). however, we can look at the previous parts of the conversation history. in the previous part, we had the context sentences: 1. mary moved to the kitchen. 2. john journeyed to the hallway. 3. mary went to the garden. 4. daniel grabbed the apple there. from sentence 4, we know that daniel grabbed an apple in the garden	none	apple	True	The context sentences 6 and 7 do not provide any new information about Daniel. We need to refer to the previous context sentences. According to sentence 4, Daniel grabbed the apple in the garden. This implies that Daniel is still carrying the apple.		"Reasoning: The context sentences 6 and 7 do not provide any new information about Daniel. We need to refer to the previous context sentences. According to sentence 4, Daniel grabbed the apple in the garden. This implies that Daniel is still carrying the apple.
+
+Answer: apple"	0.0172	0.0172	False	False	False	True	0
+1443	8	89	3	"*TASK*
+Here are the context sentences:
+9. Daniel left the apple there.
+10. Daniel picked up the milk there.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"from context sentence 10, ""daniel picked up the milk there"", we can infer that daniel is carrying the milk. the fact that daniel left the apple in sentence 9 implies that daniel is no longer carrying the apple. therefore, daniel is currently carrying the milk."	partially	milk	True	According to sentence 9, Daniel left the apple, which means he is no longer carrying it. Then, according to sentence 10, Daniel picked up the milk, which means he is now carrying the milk.		"Reasoning: According to sentence 9, Daniel left the apple, which means he is no longer carrying it. Then, according to sentence 10, Daniel picked up the milk, which means he is now carrying the milk.
+
+Answer: milk"	0.04	0.06	False	False	False	False	0
+1444	8	89	4	"*TASK*
+Here are the context sentences:
+12. Mary went to the office.
+13. Daniel discarded the milk.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"from context sentence 13, ""daniel discarded the milk"", we can infer that daniel is no longer carrying the milk. since there is no information about daniel picking up or carrying any other object, we can logically conclude that daniel is carrying nothing."	partially	nothing	True	According to sentence 13, Daniel discarded the milk, which means he is no longer carrying it. There is no new information about Daniel picking up or carrying anything else.		"Reasoning: According to sentence 13, Daniel discarded the milk, which means he is no longer carrying it. There is no new information about Daniel picking up or carrying anything else.
+
+Answer: nothing"	0.122	0.0976	False	False	False	True	0
+1445	8	89	5	"*TASK*
+Here are the context sentences:
+15. Daniel went back to the kitchen.
+16. Sandra went back to the bedroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"the context sentences 15 and 16 do not provide any information about daniel carrying or picking up any object. we need to look at the previous parts of the conversation history. in the previous part, we had the context sentence 13, ""daniel discarded the milk"". this implies that daniel is no longer carrying the milk. there is no information about daniel picking up or carrying any other object after that. therefore, we can logically conclude that daniel is carrying nothing."	none	nothing	True	The context sentences 15 and 16 do not provide any new information about Daniel carrying anything. We need to refer to the previous context sentences. According to sentence 13, Daniel discarded the milk, and there is no new information about Daniel picking up or carrying anything else.		"Reasoning: The context sentences 15 and 16 do not provide any new information about Daniel carrying anything. We need to refer to the previous context sentences. According to sentence 13, Daniel discarded the milk, and there is no new information about Daniel picking up or carrying anything else.
+
+Answer: nothing"	0.1129	0.0645	False	False	False	True	0

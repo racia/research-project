@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+2	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠSandra	Ġin	Ġthe	Ġhallway	?Ċ

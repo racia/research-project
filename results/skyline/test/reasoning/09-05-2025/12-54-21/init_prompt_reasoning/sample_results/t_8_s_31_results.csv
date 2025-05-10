@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1151	8	31	1	"*TASK*
+Here are the context sentences:
+1. John moved to the bedroom.
+2. Daniel went back to the bedroom.
+3. Mary travelled to the office.
+4. John went to the office.
+5. Mary travelled to the bedroom.
+6. Sandra travelled to the hallway.
+7. Sandra journeyed to the bedroom.
+8. John grabbed the football there.
+
+Now, answer the following question:
+What is John carrying?"	football	from the context sentences, we know that john moved to the bedroom (sentence 1) and later went to the office (sentence 4). then, mary travelled to the bedroom (sentence 5), and sandra journeyed to the bedroom (sentence 7). in sentence 8, it is stated that john grabbed the football there, which implies that john is back in the bedroom. since john grabbed the football in the bedroom, it can be logically concluded that john is carrying the	fully	football	True	From sentence 8, we know that John grabbed the football in the bedroom, which implies that John is carrying the football.		"assistant
+
+Reasoning: From sentence 8, we know that John grabbed the football in the bedroom, which implies that John is carrying the football.
+
+Answer: football"	0.0541	0.027	False	False	False	False	0
+1152	8	31	2	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the kitchen.
+11. Mary travelled to the hallway.
+
+Now, answer the following question:
+What is John carrying?"	football	"the provided context sentences (10 and 11) do not mention john or the football at all. however, the answer ""football"" suggests that the correct reasoning should be based on previous parts of the conversation history. upon inspecting the previous parts, we find that john grabbed the football in the bedroom (sentence 8). there is no information that suggests john dropped or lost the football, so it can be logically concluded that john is still carrying the football."	none	football	True	The new context sentences (10 and 11) do not provide any new information about John. We still know from sentence 8 that John grabbed the football in the bedroom, which implies that John is carrying the football.		"Reasoning: The new context sentences (10 and 11) do not provide any new information about John. We still know from sentence 8 that John grabbed the football in the bedroom, which implies that John is carrying the football.
+
+Answer: football"	0.0196	0.0196	False	False	False	True	0
+1153	8	31	3	"*TASK*
+Here are the context sentences:
+13. John left the football.
+14. Sandra travelled to the office.
+
+Now, answer the following question:
+What is John carrying?"	nothing	in the previous parts of the conversation, we knew that john grabbed the football in the bedroom (sentence 8). however, in the current context, sentence 13 states that john left the football. this implies that john is no longer carrying the football. there is no information suggesting that john picked up any other object, so it can be logically concluded that john is carrying nothing.	partially	nothing	True	From sentence 13, we know that John left the football, which implies that John is no longer carrying the football.		"Reasoning: From sentence 13, we know that John left the football, which implies that John is no longer carrying the football.
+
+Answer: nothing"	0.0323	0.0645	False	False	False	False	0
+1154	8	31	4	"*TASK*
+Here are the context sentences:
+16. Mary took the apple there.
+17. John journeyed to the garden.
+
+Now, answer the following question:
+What is John carrying?"	nothing	there is no information in the provided context sentences (16 and 17) that suggests john picked up or carried any object. sentence 16 mentions mary taking the apple, but it does not involve john. sentence 17 only states that john journeyed to the garden, but it does not imply that he carried anything. since there is no information about john carrying anything, it can be logically concluded that john is carrying nothing.	none	nothing	True	The new context sentences (16 and 17) do not provide any new information about John carrying anything. We still know from sentence 13 that John left the football, which implies that John is not carrying anything.		"Reasoning: The new context sentences (16 and 17) do not provide any new information about John carrying anything. We still know from sentence 13 that John left the football, which implies that John is not carrying anything.
+
+Answer: nothing"	0.04	0.04	False	False	False	True	0
+1155	8	31	5	"*TASK*
+Here are the context sentences:
+19. John travelled to the kitchen.
+20. Mary went back to the office.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	in the previous parts of the conversation, we knew that mary took the apple there (sentence 16). there is no information that suggests mary dropped or lost the apple, and sentence 20 only mentions mary going back to the office, but it does not imply that she dropped the apple. therefore, it can be logically concluded that mary is still carrying the apple.	none	apple	True	From sentence 16, we know that Mary took the apple, which implies that Mary is carrying the apple.		"Reasoning: From sentence 16, we know that Mary took the apple, which implies that Mary is carrying the apple.
+
+Answer: apple"	0.0	0.0345	False	False	False	False	0

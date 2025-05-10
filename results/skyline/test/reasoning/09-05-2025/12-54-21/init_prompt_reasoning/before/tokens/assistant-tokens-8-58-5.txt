@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠJohn	Ġtook	Ġthe	Ġfootball	Ġthere	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

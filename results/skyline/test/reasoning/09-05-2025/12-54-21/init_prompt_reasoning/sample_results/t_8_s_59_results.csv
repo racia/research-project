@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1291	8	59	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the bedroom.
+2. Mary journeyed to the bathroom.
+3. Daniel went to the garden.
+4. Daniel went back to the bathroom.
+5. Sandra journeyed to the hallway.
+6. Daniel went to the hallway.
+7. Mary went back to the office.
+8. Sandra travelled to the kitchen.
+9. John travelled to the kitchen.
+10. John went to the bedroom.
+11. Sandra picked up the apple there.
+12. John travelled to the hallway.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	from sentence 11, we know that sandra picked up the apple in the kitchen. there is no subsequent sentence that indicates sandra put down the apple or gave it to someone else. therefore, we can logically conclude that sandra is still carrying the apple.	fully	apple	True	According to sentence 11, Sandra picked up the apple in the kitchen, which means she is carrying the apple.		"Reasoning: According to sentence 11, Sandra picked up the apple in the kitchen, which means she is carrying the apple.
+
+Answer: apple"	0.0	0.0333	False	False	False	False	0
+1292	8	59	2	"*TASK*
+Here are the context sentences:
+14. John got the milk there.
+15. Daniel went back to the office.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	the question asks about what sandra is carrying, but the provided context lines (14 and 15) do not mention sandra at all. they talk about john getting milk and daniel going back to the office. to answer the question, we need to look at the previous context lines. from the previous conversation, we know that sandra picked up the apple in the kitchen (sentence 11). there is no subsequent sentence that indicates sandra put down the apple or gave it to someone else. therefore	none	apple	True	The new context sentences (14 and 15) do not provide any new information about Sandra. The previous information about Sandra is that she picked up the apple in the kitchen (sentence 11). There is no update about Sandra dropping or putting down the apple.		"Reasoning: The new context sentences (14 and 15) do not provide any new information about Sandra. The previous information about Sandra is that she picked up the apple in the kitchen (sentence 11). There is no update about Sandra dropping or putting down the apple.
+
+Answer: apple"	0.0339	0.0169	False	False	False	True	0
+1293	8	59	3	"*TASK*
+Here are the context sentences:
+17. Mary travelled to the bedroom.
+18. Sandra travelled to the hallway.
+
+Now, answer the following question:
+What is John carrying?"	milk	"the question asks about what john is carrying, and the answer is milk. to find the reasoning, we need to look at the previous context lines. in sentence 14, it is stated that ""john got the milk there."" this implies that john acquired the milk at some location, and since then, there is no mention of john putting down the milk or giving it to someone else. therefore, we can logically conclude that john is still carrying the milk."	none	milk	True	According to sentence 14, John got the milk in the kitchen. There is no update about John dropping or putting down the milk.		"Reasoning: According to sentence 14, John got the milk in the kitchen. There is no update about John dropping or putting down the milk.
+
+Answer: milk"	0.0294	0.0294	False	False	False	False	0
+1294	8	59	4	"*TASK*
+Here are the context sentences:
+20. Sandra dropped the apple.
+21. John went back to the kitchen.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"the question asks about what sandra is carrying, and the answer is nothing. to find the reasoning, we need to look at the previous context lines. in sentence 11, it was stated that ""sandra picked up the apple there."" this implies that sandra was carrying the apple. however, in sentence 20, it is stated that ""sandra dropped the apple."" this means that sandra is no longer carrying the apple. since there is no subsequent sentence that indicates sandra picked up"	partially	nothing	True	According to sentence 20, Sandra dropped the apple, which means she is no longer carrying it.		"Reasoning: According to sentence 20, Sandra dropped the apple, which means she is no longer carrying it.
+
+Answer: nothing"	0.0	0.0741	False	False	False	False	0
+1295	8	59	5	"*TASK*
+Here are the context sentences:
+23. John discarded the milk.
+24. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"the question asks about what john is carrying, and the answer is nothing. to find the reasoning, we need to look at the previous context lines. in sentence 14, it was stated that ""john got the milk there."" this implies that john was carrying the milk. however, in sentence 23, it is stated that ""john discarded the milk."" this means that john is no longer carrying the milk. since there is no subsequent sentence that indicates john picked up or acquired any"	partially	nothing	True	According to sentence 23, John discarded the milk, which means he is no longer carrying it.		"Reasoning: According to sentence 23, John discarded the milk, which means he is no longer carrying it.
+
+Answer: nothing"	0.0	0.0741	False	False	False	False	0

@@ -1,0 +1,37 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2131	10	27	1	"*TASK*
+Here are the context sentences:
+1. Bill travelled to the kitchen.
+2. Bill is in the office.
+
+Now, answer the following question:
+Is Bill in the park?"	no	the context sentences provide information about bill's location. sentence 1 states that bill travelled to the kitchen, which implies that bill was in the kitchen at some point. however, sentence 2 updates bill's location to the office, indicating that bill is currently in the office. there is no mention of bill being in the park in either sentence. therefore, based on the provided information, it can be logically concluded that bill is not in the park.	fully	no	True	The context sentences do not mention Bill being in the park. In fact, sentence 2 explicitly states that Bill is in the office, which is a different location.		"Reasoning: The context sentences do not mention Bill being in the park. In fact, sentence 2 explicitly states that Bill is in the office, which is a different location.
+
+Answer: no"	0.0488	0.0244	False	False	False	True	0
+2132	10	27	2	"*TASK*
+Here are the context sentences:
+4. Mary is in the school.
+5. Fred is in the school.
+
+Now, answer the following question:
+Is Fred in the school?"	yes	"sentence 5 explicitly states that fred is in the school. this direct statement provides conclusive evidence that fred is indeed in the school, which aligns with the answer ""yes"". the mention of mary's location in sentence 4 is irrelevant to the question about fred's location."	fully	yes	True	Sentence 5 explicitly states that Fred is in the school.		"Reasoning: Sentence 5 explicitly states that Fred is in the school.
+
+Answer: yes"	0.0526	0.0526	False	False	False	False	0
+2133	10	27	3	"*TASK*
+Here are the context sentences:
+7. Fred journeyed to the office.
+8. Julie is in the office.
+
+Now, answer the following question:
+Is Fred in the kitchen?"	no	sentence 7 states that fred journeyed to the office, which implies that fred is currently in the office. there is no mention of fred being in the kitchen in either sentence. additionally, sentence 8 mentions julie's location in the office, but it does not provide any information about fred's location being in the kitchen. therefore, based on the provided information, it can be logically concluded that fred is not in the kitchen.	fully	no	True	Sentence 7 states that Fred journeyed to the office, which implies that Fred is currently in the office. There is no mention of Fred being in the kitchen.		"Reasoning: Sentence 7 states that Fred journeyed to the office, which implies that Fred is currently in the office. There is no mention of Fred being in the kitchen.
+
+Answer: no"	0.05	0.025	False	False	False	True	0
+2134	10	27	4	"*TASK*
+Here are the context sentences:
+10. Fred moved to the bedroom.
+11. Fred is either in the cinema or the office.
+
+Now, answer the following question:
+Is Fred in the cinema?"	maybe	"sentence 11 states that fred is either in the cinema or the office, which implies that fred's location is one of these two options. however, sentence 10 updates fred's location to the bedroom, which is not one of the options mentioned in sentence 11. this creates a contradiction, and we cannot conclude that fred is definitely in the cinema. therefore, the answer ""maybe"" is correct, as we cannot determine fred's location with certainty based on the provided information."	fully	no	False	Sentence 10 states that Fred moved to the bedroom, which implies that Fred is currently in the bedroom. Sentence 11 provides alternative locations for Fred, but it does not contradict the information from sentence 10. Therefore, it is unlikely that Fred is in the cinema.		"Reasoning: Sentence 10 states that Fred moved to the bedroom, which implies that Fred is currently in the bedroom. Sentence 11 provides alternative locations for Fred, but it does not contradict the information from sentence 10. Therefore, it is unlikely that Fred is in the cinema.
+
+Answer: no"	0.0328	0.0164	False	False	False	True	0

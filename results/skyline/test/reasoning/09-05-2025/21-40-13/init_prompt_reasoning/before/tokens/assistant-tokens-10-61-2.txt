@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġstates	Ġthat	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġbedroom	Ġor	Ġthe	Ġcinema	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġa	Ġdefinitive	Ġlocation	Ġfor	ĠMary	.	ĠTherefore	,	Ġwe	Ġcan	Ġonly	Ġconclude	Ġthat	ĠMary	Ġmight	Ġbe	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

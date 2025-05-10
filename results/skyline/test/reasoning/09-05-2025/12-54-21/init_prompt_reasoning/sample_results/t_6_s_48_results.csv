@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+236	6	48	1	"*TASK*
+Here are the context sentences:
+1. Sandra went back to the kitchen.
+2. John grabbed the football there.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	yes	"the context sentence ""sandra went back to the kitchen"" explicitly states that sandra went to the kitchen, which implies that she is currently in the kitchen. the second sentence ""john grabbed the football there"" does not provide any information that would suggest sandra left the kitchen, so we can conclude that sandra is still in the kitchen."	fully	yes	True	According to context sentence 1, Sandra went back to the kitchen, which implies that she is currently in the kitchen.		"assistant
+
+Reasoning: According to context sentence 1, Sandra went back to the kitchen, which implies that she is currently in the kitchen.
+
+Answer: yes"	0.0588	0.0294	False	False	False	False	0
+237	6	48	2	"*TASK*
+Here are the context sentences:
+4. John went back to the office.
+5. Sandra went back to the garden.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	no	"the context sentences provided do not mention sandra going to the kitchen, but instead, sentence 5 states that ""sandra went back to the garden"". this implies that sandra is currently in the garden, not in the kitchen. additionally, there is no information that suggests sandra was in the kitchen previously, so we can conclude that sandra is not in the kitchen."	fully	no	True	According to context sentence 1, Sandra went back to the kitchen, but then according to context sentence 5, Sandra went back to the garden, which implies that she is no longer in the kitchen.		"Reasoning: According to context sentence 1, Sandra went back to the kitchen, but then according to context sentence 5, Sandra went back to the garden, which implies that she is no longer in the kitchen.
+
+Answer: no"	0.1458	0.0208	False	False	False	False	0
+238	6	48	3	"*TASK*
+Here are the context sentences:
+7. John went to the kitchen.
+8. Mary went back to the bathroom.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	"the context sentence 7 states that ""john went to the kitchen"", which implies that john is currently in the kitchen. there is no information provided that suggests john went to the bathroom or is currently in the bathroom. in fact, sentence 8 mentions mary going back to the bathroom, but it does not mention john. therefore, we can conclude that john is not in the bathroom."	fully	no	True	According to context sentence 7, John went to the kitchen, which implies that he is currently in the kitchen, not in the bathroom.		"Reasoning: According to context sentence 7, John went to the kitchen, which implies that he is currently in the kitchen, not in the bathroom.
+
+Answer: no"	0.0	0.0286	False	False	False	False	0
+239	6	48	4	"*TASK*
+Here are the context sentences:
+10. John discarded the football.
+11. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	no	there is no information provided about sandra's location in the context sentences. sentence 10 mentions john discarding the football, and sentence 11 mentions mary journeying to the bedroom, but neither of these sentences provides any information about sandra's location. since there is no information about sandra being in the kitchen, and no previous context sentences mentioned sandra being in the kitchen, we can conclude that sandra is not in the kitchen.	none	no	True	There is no new information about Sandra's location in the latest context sentences. The last information about Sandra's location was in context sentence 5, where she went back to the garden.		"Reasoning: There is no new information about Sandra's location in the latest context sentences. The last information about Sandra's location was in context sentence 5, where she went back to the garden.
+
+Answer: no"	0.0227	0.0227	False	False	False	True	0
+240	6	48	5	"*TASK*
+Here are the context sentences:
+13. Mary got the apple there.
+14. Daniel went to the bathroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	"sentence 13 states ""mary got the apple there"", which implies that mary is in a location where she can get the apple, but it does not specify the location. sentence 14 states ""daniel went to the bathroom"", which implies that daniel is in the bathroom. there is no information that suggests mary is in the bathroom, and the context sentences do not provide any connection between mary's location and the bathroom. therefore, we can conclude that mary is not in the bathroom."	none	no	True	There is no information about Mary going to the bathroom. According to context sentence 11, Mary journeyed to the bedroom, and according to context sentence 13, she got the apple there, which implies that she is still in the bedroom.		"Reasoning: There is no information about Mary going to the bathroom. According to context sentence 11, Mary journeyed to the bedroom, and according to context sentence 13, she got the apple there, which implies that she is still in the bedroom.
+
+Answer: no"	0.0536	0.0179	False	False	False	True	0

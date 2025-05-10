@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+5	.	ĠFred	Ġis	Ġin	Ġthe	Ġcinema	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠFred	Ġin	Ġthe	Ġcinema	?Ċ

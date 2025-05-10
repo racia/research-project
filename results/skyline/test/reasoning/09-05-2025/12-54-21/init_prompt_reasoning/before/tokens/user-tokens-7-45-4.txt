@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+14	.	ĠMary	Ġdropped	Ġthe	Ġapple	.Ċ
+15	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠSandra	Ġcarrying	?Ċ

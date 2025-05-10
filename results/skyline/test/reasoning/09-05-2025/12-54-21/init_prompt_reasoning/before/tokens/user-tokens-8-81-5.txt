@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+14	.	ĠMary	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠMary	Ġcarrying	?Ċ

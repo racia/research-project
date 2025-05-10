@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+2	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+3	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+4	.	ĠMary	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠMary	Ġcarrying	?Ċ

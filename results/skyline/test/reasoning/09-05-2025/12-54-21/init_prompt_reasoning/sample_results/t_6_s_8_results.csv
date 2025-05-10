@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+36	6	8	1	"*TASK*
+Here are the context sentences:
+1. John took the apple there.
+2. Mary went back to the bathroom.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	no	since mary went back to the bathroom (sentence 2), it implies that mary was not in the kitchen. there is no mention of mary being in the kitchen in the context sentences, and her action of going back to the bathroom suggests that she is currently in the bathroom, not in the kitchen.	fully	no	True	There is no mention of Mary being in the kitchen in the context sentences. In fact, sentence 2 states that Mary went back to the bathroom, implying that she is currently in the bathroom, not the kitchen.		"assistant
+
+Reasoning: There is no mention of Mary being in the kitchen in the context sentences. In fact, sentence 2 states that Mary went back to the bathroom, implying that she is currently in the bathroom, not the kitchen.
+
+Answer: no"	0.0556	0.0185	False	False	False	True	0
+37	6	8	2	"*TASK*
+Here are the context sentences:
+4. John left the apple.
+5. Sandra went to the garden.
+
+Now, answer the following question:
+Is Sandra in the garden?"	yes	"according to sentence 5, ""sandra went to the garden"", which implies that sandra's action of going to the garden resulted in her being in the garden. there is no information provided that suggests she left the garden or moved to a different location, so it can be logically concluded that sandra is indeed in the garden."	fully	yes	True	Sentence 5 explicitly states that Sandra went to the garden, which implies that she is currently in the garden.		"Reasoning: Sentence 5 explicitly states that Sandra went to the garden, which implies that she is currently in the garden.
+
+Answer: yes"	0.0345	0.0345	False	False	False	False	0
+38	6	8	3	"*TASK*
+Here are the context sentences:
+7. Mary went back to the bedroom.
+8. Mary journeyed to the garden.
+
+Now, answer the following question:
+Is Mary in the garden?"	yes	"according to sentence 7, ""mary went back to the bedroom"", which implies that mary was in the bedroom. however, sentence 8, ""mary journeyed to the garden"", indicates that mary left the bedroom and went to the garden. since there is no information provided that suggests mary left the garden or moved to a different location, it can be logically concluded that mary is indeed in the garden."	fully	yes	True	Sentence 7 states that Mary went back to the bedroom, but sentence 8 overrides this information by stating that Mary journeyed to the garden, implying that she is currently in the garden.		"Reasoning: Sentence 7 states that Mary went back to the bedroom, but sentence 8 overrides this information by stating that Mary journeyed to the garden, implying that she is currently in the garden.
+
+Answer: yes"	0.0222	0.0222	False	False	False	True	0
+39	6	8	4	"*TASK*
+Here are the context sentences:
+10. John picked up the apple there.
+11. John travelled to the bathroom.
+
+Now, answer the following question:
+Is Mary in the garden?"	yes	"the provided context sentences (10 and 11) do not mention mary or the garden at all. they only talk about john and his actions. however, the answer is ""yes"", which implies that the information about mary being in the garden must have been established in a previous part of the conversation. since there is no information provided in the current context that contradicts or updates mary's location, the previous information about mary being in the garden (established in a previous part of the"	none	yes	True	The context sentences 10 and 11 only provide information about John's actions, but do not mention Mary's location. However, from the previous context sentences 7 and 8, we know that Mary journeyed to the garden.		"Reasoning: The context sentences 10 and 11 only provide information about John's actions, but do not mention Mary's location. However, from the previous context sentences 7 and 8, we know that Mary journeyed to the garden.
+
+Answer: yes"	0.0185	0.0185	False	False	False	True	0
+40	6	8	5	"*TASK*
+Here are the context sentences:
+13. John got the football there.
+14. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Is Mary in the office?"	no	"according to sentence 14, ""mary journeyed to the kitchen"", which implies that mary went to the kitchen. there is no information provided that suggests mary went to the office or is currently in the office. in fact, the information provided suggests that mary is in the kitchen, not in the office. therefore, it can be logically concluded that mary is not in the office."	fully	no	True	Sentence 14 states that Mary journeyed to the kitchen, which implies that she is currently in the kitchen, not the office.		"Reasoning: Sentence 14 states that Mary journeyed to the kitchen, which implies that she is currently in the kitchen, not the office.
+
+Answer: no"	0.0303	0.0303	False	False	False	False	0

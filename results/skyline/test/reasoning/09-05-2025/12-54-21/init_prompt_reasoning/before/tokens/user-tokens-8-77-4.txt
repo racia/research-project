@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+52	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+53	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+54	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+55	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+56	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+57	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+58	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+59	.	ĠSandra	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠSandra	Ġcarrying	?Ċ

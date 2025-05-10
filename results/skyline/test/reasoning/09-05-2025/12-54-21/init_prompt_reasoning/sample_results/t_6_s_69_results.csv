@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+341	6	69	1	"*TASK*
+Here are the context sentences:
+1. Sandra went to the office.
+2. Mary went back to the bedroom.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	"since sandra went to the office (context sentence 1), it can be inferred that she is currently in the office. there is no mention of her leaving the office or moving to the hallway. therefore, it is logical to conclude that sandra is not in the hallway, which aligns with the provided answer ""no""."	fully	no	True	The context sentences do not mention Sandra being in the hallway. In fact, sentence 1 states that Sandra went to the office, which implies that she is currently in the office, not in the hallway.		"assistant
+
+Reasoning: The context sentences do not mention Sandra being in the hallway. In fact, sentence 1 states that Sandra went to the office, which implies that she is currently in the office, not in the hallway.
+
+Answer: no"	0.0577	0.0192	False	False	False	True	0
+342	6	69	2	"*TASK*
+Here are the context sentences:
+4. Daniel travelled to the bathroom.
+5. John went to the hallway.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	"the question asks about mary's location, but the provided context sentences (4 and 5) do not mention mary at all. however, we can look back at the previous context sentences (1 and 2) which mentioned mary going back to the bedroom. there is no information provided that suggests mary has left the bedroom since then. therefore, it is logical to conclude that mary is still in the bedroom, which aligns with the provided answer ""yes""."	none	yes	True	"Sentence 2 from the previous part of the conversation states that ""Mary went back to the bedroom"", which implies that Mary is currently in the bedroom. The new context sentences (4 and 5) do not provide any information that would change Mary's location."		"Reasoning: Sentence 2 from the previous part of the conversation states that ""Mary went back to the bedroom"", which implies that Mary is currently in the bedroom. The new context sentences (4 and 5) do not provide any information that would change Mary's location.
+
+Answer: yes"	0.0	0.0169	False	False	False	True	0
+343	6	69	3	"*TASK*
+Here are the context sentences:
+7. Daniel moved to the garden.
+8. Sandra moved to the bathroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	"the question asks about mary's location, specifically whether she is in the bathroom. however, the provided context sentences (7 and 8) do not mention mary at all. instead, they mention daniel moving to the garden and sandra moving to the bathroom. since mary is not mentioned as moving to the bathroom, and sandra is the one who moved to the bathroom, it is logical to conclude that mary is not in the bathroom, which aligns with the provided answer """	none	no	True	"Sentence 2 from the previous part of the conversation states that ""Mary went back to the bedroom"", which implies that Mary is currently in the bedroom, not in the bathroom. The new context sentences (7 and 8) do not provide any information that would change Mary's location."		"Reasoning: Sentence 2 from the previous part of the conversation states that ""Mary went back to the bedroom"", which implies that Mary is currently in the bedroom, not in the bathroom. The new context sentences (7 and 8) do not provide any information that would change Mary's location.
+
+Answer: no"	0.0156	0.0156	False	False	False	True	0
+344	6	69	4	"*TASK*
+Here are the context sentences:
+10. Daniel moved to the office.
+11. Mary picked up the apple there.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	no	the question asks about daniel's location, specifically whether he is in the kitchen. however, the provided context sentences (10 and 11) do not mention the kitchen at all. instead, they mention daniel moving to the office (sentence 10), which implies that daniel is currently in the office. there is no information provided that suggests daniel has left the office or moved to the kitchen. therefore, it is logical to conclude that daniel is not in the kitchen, which aligns with	fully	no	True	"Sentence 10 states that ""Daniel moved to the office"", which implies that Daniel is currently in the office, not in the kitchen. There is no information provided that would suggest Daniel is in the kitchen."		"Reasoning: Sentence 10 states that ""Daniel moved to the office"", which implies that Daniel is currently in the office, not in the kitchen. There is no information provided that would suggest Daniel is in the kitchen.
+
+Answer: no"	0.0208	0.0208	False	False	False	True	0
+345	6	69	5	"*TASK*
+Here are the context sentences:
+13. John took the milk there.
+14. John moved to the garden.
+
+Now, answer the following question:
+Is John in the garden?"	yes	"the question asks about john's location, specifically whether he is in the garden. the provided context sentence (14) explicitly states that ""john moved to the garden"", which directly implies that john is currently in the garden. therefore, it is logical to conclude that john is indeed in the garden, which aligns with the provided answer ""yes""."	fully	yes	True	"Sentence 14 states that ""John moved to the garden"", which implies that John is currently in the garden."		"Reasoning: Sentence 14 states that ""John moved to the garden"", which implies that John is currently in the garden.
+
+Answer: yes"	0.1034	0.0345	False	False	False	False	0

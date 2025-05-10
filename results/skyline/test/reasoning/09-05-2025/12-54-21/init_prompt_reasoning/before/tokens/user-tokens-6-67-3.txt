@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	Ġthere	.Ċ
+8	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠSandra	Ġin	Ġthe	Ġoffice	?Ċ

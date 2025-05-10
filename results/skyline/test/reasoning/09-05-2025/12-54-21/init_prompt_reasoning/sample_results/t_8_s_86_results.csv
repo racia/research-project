@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1426	8	86	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the office.
+2. Mary travelled to the garden.
+3. Mary journeyed to the kitchen.
+4. Mary grabbed the football there.
+
+Now, answer the following question:
+What is Mary carrying?"	football	"from context sentence 4, ""mary grabbed the football there"", we know that mary picked up the football in the kitchen (as indicated by ""there"", which refers to the kitchen mentioned in sentence 3). since mary grabbed the football, it can be logically inferred that she is carrying it."	fully	football	True	According to sentence 4, Mary grabbed the football in the kitchen. This implies that Mary is carrying the football.		"assistant
+
+Reasoning: According to sentence 4, Mary grabbed the football in the kitchen. This implies that Mary is carrying the football.
+
+Answer: football"	0.0909	0.0303	False	False	False	False	0
+1427	8	86	2	"*TASK*
+Here are the context sentences:
+6. Daniel went to the hallway.
+7. Mary went to the bathroom.
+
+Now, answer the following question:
+What is Mary carrying?"	football	"the question asks about what mary is carrying, and the answer is ""football"". although the context sentences 6 and 7 do not provide direct information about what mary is carrying, we can refer to the previous context sentences (1-4) to find the relevant information. in sentence 4, it is stated that ""mary grabbed the football there"", which implies that mary is carrying the football. the subsequent sentences (6 and 7) do not mention mary putting down the football"	none	football	True	The context sentences 6 and 7 do not provide any new information about what Mary is carrying. We can refer back to the previous context sentences, where in sentence 4, Mary grabbed the football in the kitchen. This information is still valid, as there is no mention of Mary dropping or leaving the football.		"Reasoning: The context sentences 6 and 7 do not provide any new information about what Mary is carrying. We can refer back to the previous context sentences, where in sentence 4, Mary grabbed the football in the kitchen. This information is still valid, as there is no mention of Mary dropping or leaving the football.
+
+Answer: football"	0.0286	0.0143	False	False	False	True	0
+1428	8	86	3	"*TASK*
+Here are the context sentences:
+9. John picked up the apple there.
+10. Sandra went back to the office.
+
+Now, answer the following question:
+What is Mary carrying?"	football	"the question asks about what mary is carrying, and the answer is ""football"". the context sentences 9 and 10 do not provide direct information about what mary is carrying, but we can refer to the previous context sentences (1-4) to find the relevant information. in sentence 4, it is stated that ""mary grabbed the football there"", which implies that mary is carrying the football. the subsequent sentences (6, 7, 9, and 10) do"	none	football	True	The context sentences 9 and 10 do not provide any new information about what Mary is carrying. We can refer back to the previous context sentences, where in sentence 4, Mary grabbed the football in the kitchen. This information is still valid, as there is no mention of Mary dropping or leaving the football.		"Reasoning: The context sentences 9 and 10 do not provide any new information about what Mary is carrying. We can refer back to the previous context sentences, where in sentence 4, Mary grabbed the football in the kitchen. This information is still valid, as there is no mention of Mary dropping or leaving the football.
+
+Answer: football"	0.0286	0.0143	False	False	False	True	0
+1429	8	86	4	"*TASK*
+Here are the context sentences:
+12. John discarded the apple.
+13. Mary put down the football there.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	"the question asks about what mary is carrying, and the answer is ""nothing"". in sentence 13, it is stated that ""mary put down the football there"", which implies that mary is no longer carrying the football. prior to this, we knew that mary was carrying the football (from sentence 4), but now she has put it down. therefore, logically, mary is not carrying anything, which aligns with the answer ""nothing""."	partially	nothing	True	According to sentence 13, Mary put down the football, which means she is no longer carrying it.		"Reasoning: According to sentence 13, Mary put down the football, which means she is no longer carrying it.
+
+Answer: nothing"	0.0714	0.0714	False	False	False	False	0
+1430	8	86	5	"*TASK*
+Here are the context sentences:
+15. Mary grabbed the football there.
+16. Mary picked up the apple there.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"the question asks about what john is carrying, and the answer is ""nothing"". there is no information in the context sentences (15 and 16) that suggests john is carrying anything. in fact, the sentences only mention mary performing actions (grabbing the football and picking up the apple), but do not mention john at all. therefore, logically, we can infer that john is not carrying anything, which aligns with the answer ""nothing""."	none	nothing	True	There is no information in the context sentences about John carrying anything. The sentences only mention Mary's actions.		"Reasoning: There is no information in the context sentences about John carrying anything. The sentences only mention Mary's actions.
+
+Answer: nothing"	0.0	0.0714	False	False	False	True	0

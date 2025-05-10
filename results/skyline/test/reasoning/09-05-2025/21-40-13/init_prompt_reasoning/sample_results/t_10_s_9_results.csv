@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+41	10	9	1	"*TASK*
+Here are the context sentences:
+1. Bill is either in the school or the school.
+2. Mary is either in the office or the kitchen.
+
+Now, answer the following question:
+Is Bill in the cinema?"	no	the context sentences only mention two possible locations for bill: the school and the school (which is likely a typo and meant to be a different location, but we'll assume it's the same location for now). there is no mention of the cinema as a possible location for bill. therefore, based on the provided information, we can conclude that bill is not in the cinema.	fully	no	True	The context sentences only mention Bill being in the school or the school, but there is no mention of the cinema. Therefore, we cannot conclude that Bill is in the cinema.		"Reasoning: The context sentences only mention Bill being in the school or the school, but there is no mention of the cinema. Therefore, we cannot conclude that Bill is in the cinema.
+
+Answer: no"	0.0714	0.0238	False	False	False	True	0
+42	10	9	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the cinema.
+5. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Is Bill in the school?"	maybe	the context sentences only provide information about mary's travels, but the question asks about bill's location. the previous context sentences (1 and 2) mentioned that bill is either in the school or the school, but there is no new information that would confirm or deny bill's presence in the school. therefore, based on the provided information, we can only conclude that maybe bill is in the school, as we don't have enough information to confirm or deny it.	none	maybe	True	The context sentences only mention Mary's movements, but there is no new information about Bill's location. From the previous context (sentence 1), we know that Bill is either in the school or the school.		"Reasoning: The context sentences only mention Mary's movements, but there is no new information about Bill's location. From the previous context (sentence 1), we know that Bill is either in the school or the school.
+
+Answer: maybe"	0.102	0.0204	False	False	False	True	0
+43	10	9	3	"*TASK*
+Here are the context sentences:
+7. Julie journeyed to the office.
+8. Mary moved to the cinema.
+
+Now, answer the following question:
+Is Julie in the park?"	no	the context sentence 7 states that julie journeyed to the office, which implies that julie is currently in the office. there is no mention of julie being in the park or moving to the park. therefore, based on the provided information, we can conclude that julie is not in the park.	fully	no	True	The context sentences only mention Julie journeying to the office, but there is no mention of the park. Therefore, we cannot conclude that Julie is in the park.		"Reasoning: The context sentences only mention Julie journeying to the office, but there is no mention of the park. Therefore, we cannot conclude that Julie is in the park.
+
+Answer: no"	0.075	0.025	False	False	False	True	0
+44	10	9	4	"*TASK*
+Here are the context sentences:
+10. Julie is either in the bedroom or the bedroom.
+11. Julie went back to the park.
+
+Now, answer the following question:
+Is Julie in the office?"	no	the context sentence 11 states that julie went back to the park, which implies that julie is currently in the park. the previous sentence 10 mentions that julie is either in the bedroom or the bedroom (which is likely a typo and meant to be a different location), but sentence 11 overrides this information and updates julie's location to the park. there is no mention of julie being in the office, and sentence 7 (from previous context) mentioned that julie journeyed to the	fully	no	True	The context sentence 11 mentions Julie going back to the park, which implies that Julie is no longer in the office (sentence 7).		"Reasoning: The context sentence 11 mentions Julie going back to the park, which implies that Julie is no longer in the office (sentence 7). 
+
+Answer: no"	0.0833	0.0278	False	False	False	True	0
+45	10	9	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the office.
+14. Julie went back to the office.
+
+Now, answer the following question:
+Is Mary in the park?"	no	the context sentence 13 states that mary moved to the office, which implies that mary is currently in the office. there is no mention of mary being in the park, and the provided information suggests that mary's location is the office, not the park. therefore, based on the provided information, we can conclude that mary is not in the park.	fully	no	True	The context sentences only mention Mary moving to the office, but there is no mention of the park. Therefore, we cannot conclude that Mary is in the park.		"Reasoning: The context sentences only mention Mary moving to the office, but there is no mention of the park. Therefore, we cannot conclude that Mary is in the park.
+
+Answer: no"	0.0	0.0256	False	False	False	True	0

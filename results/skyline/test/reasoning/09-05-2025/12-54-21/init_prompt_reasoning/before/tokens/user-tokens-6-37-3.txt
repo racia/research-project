@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+8	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠJohn	Ġin	Ġthe	Ġoffice	?Ċ

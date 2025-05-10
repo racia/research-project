@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+49	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+50	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠJohn	Ġcarrying	?Ċ

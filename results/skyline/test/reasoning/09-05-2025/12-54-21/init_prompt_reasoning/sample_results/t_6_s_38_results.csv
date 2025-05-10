@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+186	6	38	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the garden.
+2. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Is Daniel in the garden?"	yes	"according to context sentence 1, ""daniel moved to the garden"", which explicitly states that daniel's location is now the garden. therefore, the answer to the question ""is daniel in the garden?"" is indeed ""yes""."	fully	yes	True	According to context sentence 1, Daniel moved to the garden, which implies that Daniel is currently in the garden.		"assistant
+
+Reasoning: According to context sentence 1, Daniel moved to the garden, which implies that Daniel is currently in the garden.
+
+Answer: yes"	0.0909	0.0303	False	False	False	False	0
+187	6	38	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the garden.
+5. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	"according to context sentence 5, ""mary journeyed to the kitchen"", which explicitly states that mary's location is now the kitchen. therefore, the answer to the question ""is mary in the kitchen?"" is indeed ""yes""."	fully	yes	True	According to context sentence 5, Mary journeyed to the kitchen, which implies that Mary is currently in the kitchen.		"Reasoning: According to context sentence 5, Mary journeyed to the kitchen, which implies that Mary is currently in the kitchen.
+
+Answer: yes"	0.1613	0.0323	False	False	False	False	0
+188	6	38	3	"*TASK*
+Here are the context sentences:
+7. John travelled to the bedroom.
+8. Daniel moved to the kitchen.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	yes	"according to context sentence 8, ""daniel moved to the kitchen"", which explicitly states that daniel's location is now the kitchen. therefore, the answer to the question ""is daniel in the kitchen?"" is indeed ""yes""."	fully	yes	True	According to context sentence 8, Daniel moved to the kitchen, which implies that Daniel is currently in the kitchen.		"Reasoning: According to context sentence 8, Daniel moved to the kitchen, which implies that Daniel is currently in the kitchen.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+189	6	38	4	"*TASK*
+Here are the context sentences:
+10. Mary journeyed to the hallway.
+11. John journeyed to the bathroom.
+
+Now, answer the following question:
+Is John in the bathroom?"	yes	"according to context sentence 11, ""john journeyed to the bathroom"", which explicitly states that john's location is now the bathroom. therefore, the answer to the question ""is john in the bathroom?"" is indeed ""yes""."	fully	yes	True	According to context sentence 11, John journeyed to the bathroom, which implies that John is currently in the bathroom.		"Reasoning: According to context sentence 11, John journeyed to the bathroom, which implies that John is currently in the bathroom.
+
+Answer: yes"	0.2258	0.0323	False	False	False	False	0
+190	6	38	5	"*TASK*
+Here are the context sentences:
+13. Mary grabbed the apple there.
+14. Daniel went to the bathroom.
+
+Now, answer the following question:
+Is Daniel in the garden?"	no	"according to context sentence 14, ""daniel went to the bathroom"", which explicitly states that daniel's location is now the bathroom. there is no mention of daniel being in the garden. therefore, the answer to the question ""is daniel in the garden?"" is indeed ""no""."	fully	no	True	According to context sentence 1, Daniel moved to the garden, but later, according to context sentence 14, Daniel went to the bathroom, which implies that Daniel is no longer in the garden.		"Reasoning: According to context sentence 1, Daniel moved to the garden, but later, according to context sentence 14, Daniel went to the bathroom, which implies that Daniel is no longer in the garden.
+
+Answer: no"	0.0426	0.0213	False	False	False	False	0

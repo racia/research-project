@@ -1,0 +1,1 @@
+*T	ASK	*ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

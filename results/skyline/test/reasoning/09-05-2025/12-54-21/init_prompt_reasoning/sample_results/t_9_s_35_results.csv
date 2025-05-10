@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1671	9	35	1	"*TASK*
+Here are the context sentences:
+1. Mary is no longer in the bathroom.
+2. Daniel moved to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	"the context sentence ""mary is no longer in the bathroom"" directly states that mary is not in the bathroom, which answers the question ""is mary in the bathroom?"" as ""no"". the sentence about daniel moving to the bedroom is irrelevant to mary's location in the bathroom."	fully	no	True	According to context sentence 1, Mary is no longer in the bathroom, which implies that she was in the bathroom previously but is not there now.		"assistant
+
+Reasoning: According to context sentence 1, Mary is no longer in the bathroom, which implies that she was in the bathroom previously but is not there now.
+
+Answer: no"	0.0732	0.0244	False	False	False	False	0
+1672	9	35	2	"*TASK*
+Here are the context sentences:
+4. Daniel is not in the bedroom.
+5. John is not in the bathroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	"the answer to the question ""is mary in the bathroom?"" is ""no"" because in a previous part of the conversation (context line 1), it was stated that ""mary is no longer in the bathroom"". this information is still valid and has not been contradicted or updated by the new context lines 4 and 5, which provide information about daniel and john's locations, but do not mention mary's location."	none	not mentioned	False	There is no information provided about Mary's location in the context sentences 4 and 5. The information only talks about Daniel and John's locations.		"Reasoning: There is no information provided about Mary's location in the context sentences 4 and 5. The information only talks about Daniel and John's locations.
+
+Answer: not mentioned"	0.0789	0.0263	False	False	False	True	0
+1673	9	35	3	"*TASK*
+Here are the context sentences:
+7. John went to the kitchen.
+8. John is no longer in the kitchen.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	"the answer to the question ""is daniel in the bedroom?"" is ""no"" because in a previous part of the conversation (context line 4), it was stated that ""daniel is not in the bedroom"". this information is still valid and has not been contradicted or updated by the new context lines 7 and 8, which provide information about john's movements, but do not mention daniel's location."	none	not mentioned	False	There is no information provided about Daniel's location in the context sentences 7 and 8. The information only talks about John's movement to and from the kitchen.		"Reasoning: There is no information provided about Daniel's location in the context sentences 7 and 8. The information only talks about John's movement to and from the kitchen.
+
+Answer: not mentioned"	0.0244	0.0244	False	False	False	True	0
+1674	9	35	4	"*TASK*
+Here are the context sentences:
+10. John is not in the bedroom.
+11. Mary went back to the bathroom.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	"the answer to the question ""is john in the bedroom?"" is ""no"" because context line 10 directly states ""john is not in the bedroom"". this statement explicitly denies john's presence in the bedroom, making the answer to the question a clear ""no"". the information about mary going back to the bathroom in context line 11 is irrelevant to john's location."	fully	no	True	According to context sentence 10, John is not in the bedroom.		"Reasoning: According to context sentence 10, John is not in the bedroom.
+
+Answer: no"	0.0	0.0476	False	False	False	False	0
+1675	9	35	5	"*TASK*
+Here are the context sentences:
+13. John is no longer in the office.
+14. Mary is no longer in the bathroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	"the answer to the question ""is mary in the bathroom?"" is ""no"" because context line 14 directly states ""mary is no longer in the bathroom"". this statement explicitly denies mary's presence in the bathroom, making the answer to the question a clear ""no"". the information about john's location in context line 13 is irrelevant to mary's location."	fully	no	True	According to context sentence 14, Mary is no longer in the bathroom, which implies that she was in the bathroom previously but is not there now.		"Reasoning: According to context sentence 14, Mary is no longer in the bathroom, which implies that she was in the bathroom previously but is not there now.
+
+Answer: no"	0.0	0.027	False	False	False	False	0

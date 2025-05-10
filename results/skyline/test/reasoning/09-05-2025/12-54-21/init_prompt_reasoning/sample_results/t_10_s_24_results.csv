@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2116	10	24	1	"*TASK*
+Here are the context sentences:
+1. Julie is in the cinema.
+2. Fred is in the bedroom.
+
+Now, answer the following question:
+Is Julie in the cinema?"	yes	"the context sentence ""1. julie is in the cinema"" directly states that julie is in the cinema, which answers the question affirmatively. the second sentence ""2. fred is in the bedroom"" provides information about fred's location, but it does not contradict or affect julie's location, which is the focus of the question. therefore, the answer is indeed ""yes"", julie is in the cinema."	fully	yes	True	The context sentence 1 explicitly states that Julie is in the cinema.		"assistant
+
+Reasoning: The context sentence 1 explicitly states that Julie is in the cinema.
+
+Answer: yes"	0.0	0.04	False	False	False	False	0
+2117	10	24	2	"*TASK*
+Here are the context sentences:
+4. Julie is in the park.
+5. Mary is in the school.
+
+Now, answer the following question:
+Is Mary in the cinema?"	no	"the context sentences do not mention mary being in the cinema. in fact, sentence 5 explicitly states that mary is in the school, which is a different location. there is no information provided that would suggest mary is in the cinema. therefore, the answer is ""no"", mary is not in the cinema."	fully	no	True	There is no information provided about Mary being in the cinema. The context sentence 5 states that Mary is in the school.		"Reasoning: There is no information provided about Mary being in the cinema. The context sentence 5 states that Mary is in the school.
+
+Answer: no"	0.1562	0.0312	False	False	False	True	0
+2118	10	24	3	"*TASK*
+Here are the context sentences:
+7. Mary is either in the school or the park.
+8. Mary is in the school.
+
+Now, answer the following question:
+Is Mary in the school?"	yes	"sentence 8 explicitly states ""mary is in the school"", which directly answers the question affirmatively. additionally, sentence 7 provides a disjunction that mary is either in the school or the park, but sentence 8 resolves this disjunction by specifying that mary is indeed in the school. therefore, the answer is ""yes"", mary is in the school."	fully	yes	True	The context sentence 8 explicitly states that Mary is in the school.		"Reasoning: The context sentence 8 explicitly states that Mary is in the school.
+
+Answer: yes"	0.0952	0.0476	False	False	False	False	0
+2119	10	24	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the bedroom.
+11. Fred is either in the cinema or the office.
+
+Now, answer the following question:
+Is Mary in the school?"	no	"there is no information provided in the context sentences that suggests mary is in the school. in fact, sentence 10 states that mary travelled to the bedroom, which implies that mary is currently in the bedroom, not in the school. additionally, sentence 11 provides information about fred's location, but it does not provide any information about mary's location being in the school. therefore, the answer is ""no"", mary is not in the school."	fully	no	True	The context sentence 10 states that Mary travelled to the bedroom, which implies that Mary is no longer in the school.		"Reasoning: The context sentence 10 states that Mary travelled to the bedroom, which implies that Mary is no longer in the school.
+
+Answer: no"	0.0323	0.0323	False	False	False	False	0
+2120	10	24	5	"*TASK*
+Here are the context sentences:
+13. Bill is in the cinema.
+14. Bill is either in the school or the bedroom.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	the context sentences do not provide direct information about mary's location. however, sentence 14 states that bill is either in the school or the bedroom, but sentence 13 contradicts this by stating that bill is in the cinema, which means bill cannot be in the school or the bedroom. since sentence 10 (from previous context) stated that mary travelled to the bedroom, and there is no information suggesting mary left the bedroom, it can be inferred that mary is still in the bedroom	none	yes	True	The context sentence 10 states that Mary travelled to the bedroom, and there is no information provided about Mary leaving the bedroom.		"Reasoning: The context sentence 10 states that Mary travelled to the bedroom, and there is no information provided about Mary leaving the bedroom.
+
+Answer: yes"	0.1562	0.0312	False	False	False	True	0

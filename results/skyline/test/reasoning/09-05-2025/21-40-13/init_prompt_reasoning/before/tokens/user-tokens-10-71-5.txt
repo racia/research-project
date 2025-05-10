@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠFred	Ġis	Ġin	Ġthe	Ġkitchen	.Ċ
+14	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠBill	Ġin	Ġthe	Ġkitchen	?Ċ

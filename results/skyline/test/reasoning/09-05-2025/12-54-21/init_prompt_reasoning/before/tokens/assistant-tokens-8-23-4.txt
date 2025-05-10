@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	32	,	Ġ"	Mary	Ġgot	Ġthe	Ġapple	Ġthere	."	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġapple	<|eot_id|>

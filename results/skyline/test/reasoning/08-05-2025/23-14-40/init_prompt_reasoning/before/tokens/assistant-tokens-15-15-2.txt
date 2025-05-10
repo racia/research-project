@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠEmily	Ġis	Ġa	Ġcat	.	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠCats	Ġare	Ġafraid	Ġof	Ġsheep	.	ĠTherefore	,	ĠEmily	Ġis	Ġafraid	Ġof	Ġsheep	.ĊĊ	Answer	:	Ġsheep	<|eot_id|>

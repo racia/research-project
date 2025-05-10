@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1746	9	50	1	"*TASK*
+Here are the context sentences:
+1. Sandra went back to the bathroom.
+2. Sandra moved to the office.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	no	sandra was in the bathroom (context sentence 1) and then moved to the office (context sentence 2), but there is no mention of her being in the bedroom. therefore, based on the provided information, it can be logically concluded that sandra is not in the bedroom.	fully	no	True	There is no mention of Sandra being in the bedroom in the context sentences. In fact, sentence 1 mentions Sandra going back to the bathroom, and sentence 2 mentions her moving to the office, but there is no mention of the bedroom.		"Reasoning: There is no mention of Sandra being in the bedroom in the context sentences. In fact, sentence 1 mentions Sandra going back to the bathroom, and sentence 2 mentions her moving to the office, but there is no mention of the bedroom.
+
+Answer: no"	0.125	0.0179	False	False	False	True	0
+1747	9	50	2	"*TASK*
+Here are the context sentences:
+4. Daniel moved to the kitchen.
+5. Daniel moved to the garden.
+
+Now, answer the following question:
+Is Daniel in the garden?"	yes	"according to context sentence 5, ""daniel moved to the garden"", which explicitly states that daniel's current location is the garden. therefore, it can be logically concluded that daniel is indeed in the garden."	fully	yes	True	Sentence 5 explicitly states that Daniel moved to the garden, which implies that Daniel is currently in the garden.		"Reasoning: Sentence 5 explicitly states that Daniel moved to the garden, which implies that Daniel is currently in the garden.
+
+Answer: yes"	0.069	0.0345	False	False	False	False	0
+1748	9	50	3	"*TASK*
+Here are the context sentences:
+7. John is in the bathroom.
+8. Mary travelled to the garden.
+
+Now, answer the following question:
+Is Daniel in the office?"	no	"there is no mention of daniel in the provided context sentences. the sentences only mention john being in the bathroom and mary traveling to the garden. there is no information about daniel's location, and there is no mention of the office. therefore, it can be logically concluded that the answer ""no"" is correct, as there is no evidence to suggest that daniel is in the office."	none	not mentioned	False	There is no mention of Daniel in the context sentences. The sentences only talk about John being in the bathroom and Mary traveling to the garden, but do not provide any information about Daniel's location.		"Reasoning: There is no mention of Daniel in the context sentences. The sentences only talk about John being in the bathroom and Mary traveling to the garden, but do not provide any information about Daniel's location.
+
+Answer: not mentioned"	0.0851	0.0213	False	False	False	True	0
+1749	9	50	4	"*TASK*
+Here are the context sentences:
+10. John is in the garden.
+11. John is no longer in the garden.
+
+Now, answer the following question:
+Is Daniel in the garden?"	yes	"the context sentences only provide information about john's location, not daniel's. sentence 10 states that john is in the garden, but sentence 11 updates this information to indicate that john is no longer in the garden. however, there is no information about daniel's location in the context sentences. therefore, it is not possible to logically conclude that daniel is in the garden based on the provided information. the answer ""yes"" seems to be incorrect, as there is no"	none	not mentioned	False	The context sentences only talk about John's location, and there is no mention of Daniel. Sentence 11 states that John is no longer in the garden, but it does not provide any information about Daniel's location.		"Reasoning: The context sentences only talk about John's location, and there is no mention of Daniel. Sentence 11 states that John is no longer in the garden, but it does not provide any information about Daniel's location.
+
+Answer: not mentioned"	0.0784	0.0196	False	False	False	True	0
+1750	9	50	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the office.
+14. Daniel journeyed to the hallway.
+
+Now, answer the following question:
+Is Daniel in the garden?"	no	"according to context sentence 14, ""daniel journeyed to the hallway"", which explicitly states that daniel's current location is the hallway, not the garden. therefore, it can be logically concluded that daniel is not in the garden."	fully	no	True	Sentence 14 explicitly states that Daniel journeyed to the hallway, which implies that Daniel is currently in the hallway, not in the garden.		"Reasoning: Sentence 14 explicitly states that Daniel journeyed to the hallway, which implies that Daniel is currently in the hallway, not in the garden.
+
+Answer: no"	0.0286	0.0286	False	False	False	False	0

@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1276	8	56	1	"*TASK*
+Here are the context sentences:
+1. Mary took the milk there.
+2. Mary travelled to the garden.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	"from context sentence 1, ""mary took the milk there"", we can infer that mary is carrying milk. the phrase ""took the milk there"" implies that mary has the milk with her and is transporting it to a location. the fact that she travelled to the garden in sentence 2 does not change the fact that she is still carrying the milk. therefore, the answer to the question ""what is mary carrying?"" is indeed ""milk""."	fully	milk	True	According to sentence 1, Mary took the milk there, which implies that Mary is carrying the milk. There is no other information about Mary carrying or dropping anything else.		"assistant
+
+Reasoning: According to sentence 1, Mary took the milk there, which implies that Mary is carrying the milk. There is no other information about Mary carrying or dropping anything else.
+
+Answer: milk"	0.0222	0.0222	False	False	False	True	0
+1277	8	56	2	"*TASK*
+Here are the context sentences:
+4. Mary put down the milk.
+5. Sandra journeyed to the garden.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	"in the previous context, we knew that mary was carrying milk (from context sentences 1 and 2). however, in context sentence 4, ""mary put down the milk"", it is explicitly stated that mary has put down the milk, which implies that she is no longer carrying it. the action of putting down the milk indicates that mary has relinquished her hold on the milk, and it is now in a stationary position. the fact that sandra journeyed to the garden in"	partially	nothing	True	According to sentence 4, Mary put down the milk, which implies that Mary is no longer carrying the milk. There is no other information about Mary carrying or picking up anything else.		"Reasoning: According to sentence 4, Mary put down the milk, which implies that Mary is no longer carrying the milk. There is no other information about Mary carrying or picking up anything else.
+
+Answer: nothing"	0.0	0.0455	False	False	False	True	0
+1278	8	56	3	"*TASK*
+Here are the context sentences:
+7. Mary moved to the hallway.
+8. Sandra went to the bedroom.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	we already knew that mary was not carrying anything because she put down the milk in context sentence 4. the fact that mary moved to the hallway in sentence 7 and sandra went to the bedroom in sentence 8 does not change the fact that mary is not carrying anything. there is no new information provided that would suggest mary picked up an object, so the answer remains that mary is carrying nothing.	none	nothing	True	There is no new information about Mary carrying or picking up anything. The previous information (sentence 4) stated that Mary put down the milk, and there is no update about Mary carrying anything else.		"Reasoning: There is no new information about Mary carrying or picking up anything. The previous information (sentence 4) stated that Mary put down the milk, and there is no update about Mary carrying anything else.
+
+Answer: nothing"	0.0426	0.0426	False	False	False	True	0
+1279	8	56	4	"*TASK*
+Here are the context sentences:
+10. John journeyed to the bathroom.
+11. Daniel went back to the hallway.
+12. Sandra got the apple there.
+13. Mary journeyed to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"in context sentence 12, ""sandra got the apple there"", it is explicitly stated that sandra obtained an apple. the phrase ""got the apple"" implies that sandra now has possession of the apple, which means she is carrying it. there is no subsequent information provided that would suggest sandra put down or relinquished the apple, so the answer to the question ""what is sandra carrying?"" is indeed ""apple""."	fully	apple	True	According to sentence 12, Sandra got the apple there, which implies that Sandra is carrying the apple.		"Reasoning: According to sentence 12, Sandra got the apple there, which implies that Sandra is carrying the apple.
+
+Answer: apple"	0.1429	0.0357	False	False	False	False	0
+1280	8	56	5	"*TASK*
+Here are the context sentences:
+15. John went to the hallway.
+16. Daniel moved to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"the context sentences 15 and 16 provide information about john and daniel's movements, but they do not mention sandra or the apple. however, we already knew from context sentence 12 that ""sandra got the apple there"", which means sandra is carrying the apple. there is no new information provided that would suggest sandra put down or relinquished the apple, so the answer to the question ""what is sandra carrying?"" remains ""apple""."	none	apple	True	There is no new information about Sandra carrying or putting down anything. The previous information (sentence 12) stated that Sandra got the apple there, and there is no update about Sandra carrying anything else.		"Reasoning: There is no new information about Sandra carrying or putting down anything. The previous information (sentence 12) stated that Sandra got the apple there, and there is no update about Sandra carrying anything else.
+
+Answer: apple"	0.0638	0.0213	False	False	False	True	0

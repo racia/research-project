@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġthat	Ġsuggests	ĠJohn	Ġis	Ġin	Ġthe	Ġoffice	.	ĠSentence	Ġ	7	Ġmentions	ĠJohn	Ġgoing	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġsubsequent	Ġinformation	Ġthat	Ġchanges	Ġhis	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

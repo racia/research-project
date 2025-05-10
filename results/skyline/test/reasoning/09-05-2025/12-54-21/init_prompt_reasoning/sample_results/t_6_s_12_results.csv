@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+56	6	12	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the office.
+2. Daniel picked up the football there.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	there is no mention of john being in the bathroom in the context sentences. the context sentences only mention john traveling to the office and daniel picking up a football, but they do not provide any information about john's location being the bathroom. therefore, based on the provided information, it can be concluded that john is not in the bathroom.	fully	no	True	There is no mention of John going to the bathroom in the context sentences. In fact, sentence 1 states that John travelled to the office, which is a different location.		"assistant
+
+Reasoning: There is no mention of John going to the bathroom in the context sentences. In fact, sentence 1 states that John travelled to the office, which is a different location.
+
+Answer: no"	0.087	0.0217	False	False	False	True	0
+57	6	12	2	"*TASK*
+Here are the context sentences:
+4. John grabbed the apple there.
+5. Mary went to the bathroom.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	according to the context sentence 5, mary went to the bathroom, which implies that mary is currently in the bathroom. there is no mention of mary being in the bedroom in the context sentences. therefore, based on the provided information, it can be concluded that mary is not in the bedroom.	fully	no	True	Sentence 5 states that Mary went to the bathroom, but there is no mention of Mary going to the bedroom. The context sentences do not provide any information about Mary being in the bedroom.		"Reasoning: Sentence 5 states that Mary went to the bathroom, but there is no mention of Mary going to the bedroom. The context sentences do not provide any information about Mary being in the bedroom.
+
+Answer: no"	0.0889	0.0222	False	False	False	True	0
+58	6	12	3	"*TASK*
+Here are the context sentences:
+7. Daniel picked up the milk there.
+8. Daniel discarded the football.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	yes	"the context sentences 7 and 8 only provide information about daniel's actions, but they do not mention mary's location. however, we can refer to the previous context sentence 5, which states ""mary went to the bathroom."" this sentence explicitly mentions mary's location as the bathroom. therefore, based on the provided information, it can be concluded that mary is indeed in the bathroom."	none	yes	True	Sentence 5 (from previous context) states that Mary went to the bathroom, and there is no mention of Mary leaving the bathroom or going to a different location.		"Reasoning: Sentence 5 (from previous context) states that Mary went to the bathroom, and there is no mention of Mary leaving the bathroom or going to a different location.
+
+Answer: yes"	0.1	0.025	False	False	False	True	0
+59	6	12	4	"*TASK*
+Here are the context sentences:
+10. Mary went back to the office.
+11. Daniel took the football there.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	according to the context sentence 10, mary went back to the office, which implies that mary is currently in the office. there is no mention of mary being in the bedroom in the context sentences. therefore, based on the provided information, it can be concluded that mary is not in the bedroom.	fully	no	True	Sentence 10 states that Mary went back to the office, and there is no mention of Mary going to the bedroom. The context sentences do not provide any information about Mary being in the bedroom.		"Reasoning: Sentence 10 states that Mary went back to the office, and there is no mention of Mary going to the bedroom. The context sentences do not provide any information about Mary being in the bedroom.
+
+Answer: no"	0.0	0.0217	False	False	False	True	0
+60	6	12	5	"*TASK*
+Here are the context sentences:
+13. Mary went back to the garden.
+14. John dropped the apple.
+
+Now, answer the following question:
+Is Mary in the office?"	no	according to the context sentence 13, mary went back to the garden, which implies that mary is currently in the garden. previously, in context sentence 10, mary went back to the office, but now she has moved to the garden. therefore, based on the provided information, it can be concluded that mary is not in the office.	fully	no	True	Sentence 10 (from previous context) states that Mary went back to the office, but sentence 13 states that Mary went back to the garden, which means Mary is no longer in the office.		"Reasoning: Sentence 10 (from previous context) states that Mary went back to the office, but sentence 13 states that Mary went back to the garden, which means Mary is no longer in the office.
+
+Answer: no"	0.0	0.0213	False	False	False	False	0

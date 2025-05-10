@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	13	Ġexplicitly	Ġstates	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

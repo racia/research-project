@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠBill	Ġis	Ġeither	Ġin	Ġthe	Ġcinema	Ġor	Ġthe	Ġschool	.Ċ
+8	.	ĠFred	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠBill	Ġin	Ġthe	Ġschool	?Ċ

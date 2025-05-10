@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+146	10	30	1	"*TASK*
+Here are the context sentences:
+1. Fred went back to the bedroom.
+2. Mary moved to the cinema.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	according to the context sentences, mary moved to the cinema (sentence 2), which implies that she is currently at the cinema. there is no information suggesting that she returned to the bedroom or is currently in the bedroom. additionally, fred is the one who went back to the bedroom (sentence 1), not mary. therefore, based on the provided information, it can be logically concluded that mary is not in the bedroom.	fully	no	True	According to sentence 2, Mary moved to the cinema, which means she is not in the bedroom.		"assistant
+
+Reasoning: According to sentence 2, Mary moved to the cinema, which means she is not in the bedroom. 
+
+Answer: no"	0.1212	0.0303	False	False	False	False	0
+147	10	30	2	"*TASK*
+Here are the context sentences:
+4. Bill is either in the park or the park.
+5. Fred is either in the kitchen or the office.
+
+Now, answer the following question:
+Is Fred in the kitchen?"	maybe	"the context sentences do not provide a definitive location for fred. sentence 5 states that fred is either in the kitchen or the office, but it does not specify which one. therefore, based on the provided information, it is uncertain whether fred is in the kitchen or not, hence the answer ""maybe""."	fully	maybe	True	Sentence 5 states that Fred is either in the kitchen or the office, but it does not provide a definitive location. Therefore, we can only conclude that Fred might be in the kitchen.		"Reasoning: Sentence 5 states that Fred is either in the kitchen or the office, but it does not provide a definitive location. Therefore, we can only conclude that Fred might be in the kitchen.
+
+Answer: maybe"	0.1111	0.0222	False	False	False	False	0
+148	10	30	3	"*TASK*
+Here are the context sentences:
+7. Bill travelled to the cinema.
+8. Bill moved to the school.
+
+Now, answer the following question:
+Is Fred in the kitchen?"	maybe	"there is no information provided about fred or the kitchen in the context sentences. the sentences only mention bill and his movements to the cinema and school. there is no logical connection between bill's actions and fred's location, especially with regards to the kitchen. therefore, it is impossible to determine whether fred is in the kitchen or not, hence the answer ""maybe""."	none	not mentioned	False	There is no information about Fred's location in the provided context sentences. Sentences 7 and 8 only mention Bill's movements, but do not provide any information about Fred.		"Reasoning: There is no information about Fred's location in the provided context sentences. Sentences 7 and 8 only mention Bill's movements, but do not provide any information about Fred.
+
+Answer: not mentioned"	0.2045	0.0227	False	False	False	True	0
+149	10	30	4	"*TASK*
+Here are the context sentences:
+10. Mary went back to the office.
+11. Bill is in the cinema.
+
+Now, answer the following question:
+Is Bill in the cinema?"	yes	"according to sentence 11, ""bill is in the cinema"", which directly states that bill's current location is the cinema. there is no conflicting or contradictory information in the context sentences, and sentence 10 only mentions mary's movement to the office, which does not affect bill's location. therefore, based on the provided information, it can be logically concluded that bill is indeed in the cinema, hence the answer ""yes""."	fully	yes	True	Sentence 11 explicitly states that Bill is in the cinema.		"Reasoning: Sentence 11 explicitly states that Bill is in the cinema.
+
+Answer: yes"	0.1053	0.0526	False	False	False	False	0
+150	10	30	5	"*TASK*
+Here are the context sentences:
+13. Mary went to the school.
+14. Julie is either in the park or the office.
+
+Now, answer the following question:
+Is Bill in the cinema?"	yes	"there is no information provided about bill in the context sentences. however, the answer ""yes"" suggests that the information about bill's location is already known. since there is no new information about bill, we need to look for previous context sentences that might have mentioned bill. unfortunately, the provided context sentences (13 and 14) do not mention bill at all. therefore, i assume that the answer ""yes"" is based on previous context sentences that are not provided in this part of"	none	yes	True	Sentence 11 (from previous context) explicitly stated that Bill is in the cinema, and there is no new information that would change this.		"Reasoning: Sentence 11 (from previous context) explicitly stated that Bill is in the cinema, and there is no new information that would change this.
+
+Answer: yes"	0.1714	0.0286	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	10	,	ĠDaniel	Ġgave	Ġthe	Ġapple	Ġto	ĠSandra	,	Ġso	Ġshe	Ġis	Ġnow	Ġcarrying	Ġthe	Ġapple	.	ĠIn	Ġsentence	Ġ	11	,	ĠSandra	Ġleft	Ġthe	Ġfootball	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġfootball	.	ĠĊĊ	Answer	:	Ġone	<|eot_id|>

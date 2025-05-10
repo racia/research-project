@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	10	,	ĠDaniel	Ġhanded	Ġthe	Ġapple	Ġto	ĠSandra	,	Ġso	Ġhe	Ġwas	Ġnot	Ġcarrying	Ġit	.	ĠBut	Ġin	Ġsentence	Ġ	11	,	ĠSandra	Ġgave	Ġthe	Ġapple	Ġback	Ġto	ĠDaniel	,	Ġso	Ġnow	Ġhe	Ġis	Ġcarrying	Ġit	Ġagain	.ĊĊ	Answer	:	Ġone	<|eot_id|>

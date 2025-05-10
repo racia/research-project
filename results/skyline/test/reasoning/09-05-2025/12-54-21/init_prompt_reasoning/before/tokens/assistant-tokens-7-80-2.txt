@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠJohn	,	Ġand	Ġthe	Ġprevious	Ġinformation	Ġ(	sentence	Ġ	3	)	Ġstated	Ġthat	ĠJohn	Ġpicked	Ġup	Ġthe	Ġfootball	Ġin	Ġthe	Ġoffice	.	ĠThe	Ġnew	Ġsentences	Ġ(	6	Ġand	Ġ	7	)	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠSandra	Ġand	ĠMary	.ĊĊ	Answer	:	Ġone	<|eot_id|>

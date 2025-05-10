@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	2	Ġ(	from	Ġprevious	Ġcontext	)	Ġstated	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġsentence	Ġ	5	Ġ(	current	Ġcontext	)	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġimplying	Ġthat	Ġshe	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

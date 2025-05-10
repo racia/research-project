@@ -1,0 +1,42 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+261	15	66	1	"*TASK*
+Here are the context sentences:
+1. Mice are afraid of wolves.
+2. Sheep are afraid of mice.
+3. Winona is a mouse.
+4. Gertrude is a sheep.
+5. Jessica is a sheep.
+6. Wolves are afraid of cats.
+7. Cats are afraid of wolves.
+8. Emily is a wolf.
+
+Now, answer the following question:
+What is emily afraid of?"	cat	"from sentence 7, we know that ""cats are afraid of wolves"". this implies that the relationship between wolves and cats is reciprocal, meaning that wolves are also afraid of cats. since emily is a wolf (sentence 8), we can conclude that emily is afraid of cats."	fully	not mentioned	False	"According to sentence 7, ""Cats are afraid of wolves."" Since Emily is a wolf (sentence 8), Emily is not afraid of anything mentioned in the context sentences. However, we can infer that cats are afraid of Emily because she is a wolf."		"assistant
+
+Reasoning: According to sentence 7, ""Cats are afraid of wolves."" Since Emily is a wolf (sentence 8), Emily is not afraid of anything mentioned in the context sentences. However, we can infer that cats are afraid of Emily because she is a wolf.
+
+Answer: not mentioned"	0.1212	0.0303	False	False	False	True	0
+262	15	66	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	cat	"from the previous context sentences, we know that ""wolves are afraid of cats"" (sentence 6). since emily is a wolf (sentence 8), we can conclude that emily is afraid of cats."	none	cat	True	"According to sentence 6, ""Wolves are afraid of cats."" Since Emily is a wolf (sentence 8), we can infer that Emily is afraid of cats."		"Reasoning: According to sentence 6, ""Wolves are afraid of cats."" Since Emily is a wolf (sentence 8), we can infer that Emily is afraid of cats.
+
+Answer: cat"	0.0732	0.0488	False	False	False	False	0
+263	15	66	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	wolf	since winona is a mouse (sentence 3), and mice are afraid of wolves (sentence 1), we can conclude that winona is afraid of wolves.	none	wolf	True	"According to sentence 1, ""Mice are afraid of wolves."" Since Winona is a mouse (sentence 3), we can infer that Winona is afraid of wolves."		"Reasoning: According to sentence 1, ""Mice are afraid of wolves."" Since Winona is a mouse (sentence 3), we can infer that Winona is afraid of wolves.
+
+Answer: wolf"	0.0465	0.0465	False	False	False	False	0
+264	15	66	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is jessica afraid of?"	mouse	since jessica is a sheep (sentence 5), and sheep are afraid of mice (sentence 2), we can conclude that jessica is afraid of mice.	none	mouse	True	"According to sentence 2, ""Sheep are afraid of mice."" Since Jessica is a sheep (sentence 5), we can infer that Jessica is afraid of mice."		"Reasoning: According to sentence 2, ""Sheep are afraid of mice."" Since Jessica is a sheep (sentence 5), we can infer that Jessica is afraid of mice.
+
+Answer: mouse"	0.0	0.0488	False	False	False	False	0

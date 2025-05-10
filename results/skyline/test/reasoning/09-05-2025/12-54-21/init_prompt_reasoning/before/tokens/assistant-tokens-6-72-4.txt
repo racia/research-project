@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġreturning	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

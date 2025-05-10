@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+286	10	58	1	"*TASK*
+Here are the context sentences:
+1. Fred is in the school.
+2. Bill went back to the kitchen.
+
+Now, answer the following question:
+Is Bill in the kitchen?"	yes	"the context sentence ""bill went back to the kitchen"" implies that bill was not in the kitchen initially, but then he moved to the kitchen. the phrase ""went back"" suggests that bill returned to a place he had been before, which is the kitchen. therefore, after bill went back to the kitchen, he must be in the kitchen, which is why the answer is ""yes""."	fully	yes	True	"According to context sentence 2, ""Bill went back to the kitchen"", which implies that Bill was not in the kitchen previously, but now he is."		"assistant
+
+Reasoning: According to context sentence 2, ""Bill went back to the kitchen"", which implies that Bill was not in the kitchen previously, but now he is.
+
+Answer: yes"	0.0	0.0238	False	False	False	False	0
+287	10	58	2	"*TASK*
+Here are the context sentences:
+4. Bill is either in the cinema or the bedroom.
+5. Bill is in the school.
+
+Now, answer the following question:
+Is Bill in the school?"	yes	"the context sentence ""bill is either in the cinema or the bedroom"" suggests that bill's location is limited to two possibilities: the cinema or the bedroom. however, the subsequent sentence ""bill is in the school"" provides a contradictory information, which implies that the initial assumption about bill's location is incorrect. therefore, we can conclude that bill is indeed in the school, as stated in sentence 5, which is why the answer is ""yes""."	fully	yes	True	"Context sentence 5 explicitly states ""Bill is in the school"", which contradicts the possibility mentioned in sentence 4."		"Reasoning: Context sentence 5 explicitly states ""Bill is in the school"", which contradicts the possibility mentioned in sentence 4.
+
+Answer: yes"	0.1935	0.0323	False	False	False	True	0
+288	10	58	3	"*TASK*
+Here are the context sentences:
+7. Julie travelled to the school.
+8. Fred went to the bedroom.
+
+Now, answer the following question:
+Is Bill in the school?"	yes	"there is no direct information about bill's location in the provided context sentences. however, we can look back at the previous context sentences (4 and 5) which mentioned bill's location. sentence 5 explicitly stated ""bill is in the school"". this information is still valid and has not been contradicted or updated by the new context sentences (7 and 8). therefore, we can conclude that bill is indeed in the school, which is why the answer is ""yes""."	none	not mentioned	False	There is no mention of Bill in the provided context sentences. The sentences only talk about Julie and Fred.		"Reasoning: There is no mention of Bill in the provided context sentences. The sentences only talk about Julie and Fred.
+
+Answer: not mentioned"	0.1034	0.0345	False	False	False	True	0
+289	10	58	4	"*TASK*
+Here are the context sentences:
+10. Bill journeyed to the office.
+11. Julie is in the kitchen.
+
+Now, answer the following question:
+Is Bill in the office?"	yes	"the context sentence ""bill journeyed to the office"" explicitly states that bill moved to the office. there is no subsequent information that suggests bill left the office or moved to a different location. therefore, we can logically conclude that bill is still in the office, which is why the answer is ""yes""."	fully	yes	True	"According to context sentence 10, ""Bill journeyed to the office"", which implies that Bill has moved to the office."		"Reasoning: According to context sentence 10, ""Bill journeyed to the office"", which implies that Bill has moved to the office.
+
+Answer: yes"	0.0	0.0312	False	False	False	False	0
+290	10	58	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the office.
+14. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Is Fred in the school?"	no	"there is no direct information about fred's location in the provided context sentences (13 and 14). however, we can look back at the previous context sentences (1 and 2) which mentioned fred's initial location as ""in the school"". there is no subsequent information that suggests fred moved from the school or is no longer in the school. the context sentences (13 and 14) only provide information about mary's movements, which do not affect fred's location. therefore, we"	none	not mentioned	False	There is no mention of Fred in the provided context sentences. The sentences only talk about Mary's movements.		"Reasoning: There is no mention of Fred in the provided context sentences. The sentences only talk about Mary's movements.
+
+Answer: not mentioned"	0.0	0.0345	False	False	False	True	0

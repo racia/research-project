@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠSandra	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+8	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠSandra	Ġcarrying	?Ċ

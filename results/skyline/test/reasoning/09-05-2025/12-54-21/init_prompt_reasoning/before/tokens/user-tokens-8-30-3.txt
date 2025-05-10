@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+9	.	ĠSandra	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
+10	.	ĠJohn	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠMary	Ġcarrying	?Ċ

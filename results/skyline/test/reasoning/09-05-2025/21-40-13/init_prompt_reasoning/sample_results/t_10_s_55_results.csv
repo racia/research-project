@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+271	10	55	1	"*TASK*
+Here are the context sentences:
+1. Bill is either in the bedroom or the cinema.
+2. Mary travelled to the park.
+
+Now, answer the following question:
+Is Mary in the park?"	yes	"since the context sentence ""mary travelled to the park"" explicitly states that mary went to the park, it can be logically concluded that mary is indeed in the park. the sentence does not provide any information about mary leaving the park, so it is reasonable to assume that she is still there. the information about bill's location is irrelevant to mary's location, so it does not affect the conclusion."	fully	yes	True	According to sentence 2, Mary travelled to the park, which implies that she is now in the park.		"assistant
+
+Reasoning: According to sentence 2, Mary travelled to the park, which implies that she is now in the park.
+
+Answer: yes"	0.1515	0.0303	False	False	False	False	0
+272	10	55	2	"*TASK*
+Here are the context sentences:
+4. Fred moved to the park.
+5. Mary journeyed to the office.
+
+Now, answer the following question:
+Is Bill in the kitchen?"	no	"there is no information provided about bill's location in the context sentences. the sentences only mention fred moving to the park and mary journeying to the office. there is no mention of bill or the kitchen. therefore, it can be logically concluded that the answer ""no"" is correct, as there is no evidence to suggest that bill is in the kitchen. the information about bill's possible locations in the previous context sentences (1. bill is either in the bedroom or the cinema) is"	none	not mentioned	False	There is no information about Bill's location in the context sentences provided (4 and 5). The context sentences only mention Fred and Mary's movements, but not Bill's.		"Reasoning: There is no information about Bill's location in the context sentences provided (4 and 5). The context sentences only mention Fred and Mary's movements, but not Bill's.
+
+Answer: not mentioned"	0.1163	0.0233	False	False	False	True	0
+273	10	55	3	"*TASK*
+Here are the context sentences:
+7. Bill is either in the cinema or the school.
+8. Fred went to the office.
+
+Now, answer the following question:
+Is Bill in the school?"	maybe	"the context sentence ""bill is either in the cinema or the school"" indicates that bill's location is one of two possible places: the cinema or the school. there is no additional information provided that would allow us to determine which of these two locations bill is actually in. therefore, the answer ""maybe"" is correct, as it is possible that bill is in the school, but it is also possible that bill is in the cinema. the information about fred's location (going to the"	fully	maybe	True	According to sentence 7, Bill is either in the cinema or the school, but it doesn't specify which one. There is no additional information to determine his exact location.		"Reasoning: According to sentence 7, Bill is either in the cinema or the school, but it doesn't specify which one. There is no additional information to determine his exact location.
+
+Answer: maybe"	0.0	0.0238	False	False	False	True	0
+274	10	55	4	"*TASK*
+Here are the context sentences:
+10. Bill is either in the kitchen or the kitchen.
+11. Mary is in the kitchen.
+
+Now, answer the following question:
+Is Bill in the school?"	no	"the context sentence ""bill is either in the kitchen or the kitchen"" indicates that bill's location is the kitchen, as the two options are the same. this means that bill is definitely in the kitchen. the additional information ""mary is in the kitchen"" does not affect bill's location. since bill is in the kitchen, it can be logically concluded that bill is not in the school, which is a different location. therefore, the answer ""no"" is correct."	fully	no	True	Sentence 10 implies that Bill is in the kitchen, as it lists the kitchen as both options. Sentence 11 confirms that Mary is also in the kitchen. There is no information about Bill being in the school.		"Reasoning: Sentence 10 implies that Bill is in the kitchen, as it lists the kitchen as both options. Sentence 11 confirms that Mary is also in the kitchen. There is no information about Bill being in the school.
+
+Answer: no"	0.08	0.02	False	False	False	True	0
+275	10	55	5	"*TASK*
+Here are the context sentences:
+13. Mary is either in the park or the cinema.
+14. Fred is in the school.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	no	"the context sentence ""mary is either in the park or the cinema"" indicates that mary's location is one of two possible places: the park or the cinema. there is no mention of the kitchen as a possible location for mary. therefore, it can be logically concluded that mary is not in the kitchen. the information about fred's location (being in the school) does not provide any additional information about mary's location, so it does not affect the conclusion."	fully	no	True	There is no information about Mary being in the kitchen in the context sentences provided (13 and 14). Sentence 13 mentions Mary being either in the park or the cinema, but not the kitchen.		"Reasoning: There is no information about Mary being in the kitchen in the context sentences provided (13 and 14). Sentence 13 mentions Mary being either in the park or the cinema, but not the kitchen.
+
+Answer: no"	0.0426	0.0213	False	False	False	True	0

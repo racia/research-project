@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠSandra	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+5	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠJohn	Ġin	Ġthe	Ġbedroom	?Ċ

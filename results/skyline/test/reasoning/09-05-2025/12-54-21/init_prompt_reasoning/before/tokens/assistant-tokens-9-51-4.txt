@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġhallway	.	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	10	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġaccording	Ġto	Ġcontext	Ġsentence	Ġ	11	,	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

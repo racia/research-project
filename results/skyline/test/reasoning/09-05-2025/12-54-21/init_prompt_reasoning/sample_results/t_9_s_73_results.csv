@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1861	9	73	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the garden.
+2. John moved to the bathroom.
+
+Now, answer the following question:
+Is John in the kitchen?"	no	the context sentences describe john's movements, but neither of them mentions the kitchen. sentence 1 states that john journeyed to the garden, and sentence 2 states that john moved to the bathroom. there is no information provided about john being in the kitchen. therefore, based on the given information, it can be logically concluded that john is not in the kitchen.	fully	no	True	There is no mention of John being in the kitchen in the context sentences. John's movements are tracked from the garden to the bathroom, but there is no mention of the kitchen.		"Reasoning: There is no mention of John being in the kitchen in the context sentences. John's movements are tracked from the garden to the bathroom, but there is no mention of the kitchen.
+
+Answer: no"	0.093	0.0233	False	False	False	True	0
+1862	9	73	2	"*TASK*
+Here are the context sentences:
+4. Daniel moved to the kitchen.
+5. John travelled to the hallway.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	the context sentences describe the movements of two individuals, daniel and john. sentence 4 states that daniel moved to the kitchen, which does not provide any information about john's location. sentence 5 states that john travelled to the hallway, which explicitly mentions john's location as the hallway, but not the bedroom. since there is no information provided about john being in the bedroom, and john's current location is known to be the hallway, it can be logically concluded that john is not in	fully	no	True	There is no mention of John being in the bedroom in the context sentences. John's movement is tracked to the hallway, but there is no mention of the bedroom.		"Reasoning: There is no mention of John being in the bedroom in the context sentences. John's movement is tracked to the hallway, but there is no mention of the bedroom.
+
+Answer: no"	0.15	0.025	False	False	False	True	0
+1863	9	73	3	"*TASK*
+Here are the context sentences:
+7. Sandra is no longer in the bathroom.
+8. Sandra went back to the hallway.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	the context sentences describe sandra's movements, but the question asks about john's location. sentence 8 states that sandra went back to the hallway, but it does not provide direct information about john's location. however, in a previous part of the conversation (sentence 5), it was established that john travelled to the hallway. there is no information provided that suggests john left the hallway, so it can be logically concluded that john is still in the hallway.	none	unknown	False	The context sentences only provide information about Sandra's movements, but not about John's current location. In the previous context sentences (5), John travelled to the hallway, but there is no update about John's location since then.		"Reasoning: The context sentences only provide information about Sandra's movements, but not about John's current location. In the previous context sentences (5), John travelled to the hallway, but there is no update about John's location since then.
+
+Answer: unknown"	0.0385	0.0192	False	False	False	True	0
+1864	9	73	4	"*TASK*
+Here are the context sentences:
+10. John is in the bedroom.
+11. John is not in the bedroom.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	the context sentences provide contradictory information about john's location. sentence 10 states that john is in the bedroom, while sentence 11 states that john is not in the bedroom. since sentence 11 is the most recent and direct statement about john's location, it takes precedence over sentence 10. therefore, it can be logically concluded that john is not in the bedroom.	fully	no	True	The context sentences provide contradictory information about John's location. Sentence 10 states that John is in the bedroom, but sentence 11 states that John is not in the bedroom. Since the latter sentence is the most recent update, it overrides the previous information.		"Reasoning: The context sentences provide contradictory information about John's location. Sentence 10 states that John is in the bedroom, but sentence 11 states that John is not in the bedroom. Since the latter sentence is the most recent update, it overrides the previous information.
+
+Answer: no"	0.0	0.0172	False	False	False	True	0
+1865	9	73	5	"*TASK*
+Here are the context sentences:
+13. Sandra is not in the hallway.
+14. Daniel moved to the office.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	the context sentences do not provide any new information about john's location. sentence 13 states that sandra is not in the hallway, and sentence 14 states that daniel moved to the office, but neither of these sentences mentions john or the bedroom. however, in a previous part of the conversation (sentence 11), it was established that john is not in the bedroom. since there is no new information that suggests john's location has changed, it can be logically concluded that john	none	no	True	The context sentences do not provide any new information about John's location. The previous information (11) stated that John is not in the bedroom, and there is no update to change this information.		"Reasoning: The context sentences do not provide any new information about John's location. The previous information (11) stated that John is not in the bedroom, and there is no update to change this information.
+
+Answer: no"	0.0	0.0217	False	False	False	True	0

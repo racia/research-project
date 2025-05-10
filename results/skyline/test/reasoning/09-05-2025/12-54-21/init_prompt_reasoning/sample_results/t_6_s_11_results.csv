@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+51	6	11	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the kitchen.
+2. Daniel picked up the football there.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	"since mary ""journeyed to the kitchen"" in the first context sentence, it implies that she moved to the kitchen and is currently located there. the second sentence about daniel picking up the football in the kitchen does not provide any information that would suggest mary left the kitchen. therefore, based on the information provided, it can be logically concluded that mary is indeed in the kitchen."	fully	yes	True	According to sentence 1, Mary journeyed to the kitchen, which implies that she is currently in the kitchen.		"assistant
+
+Reasoning: According to sentence 1, Mary journeyed to the kitchen, which implies that she is currently in the kitchen.
+
+Answer: yes"	0.0909	0.0303	False	False	False	False	0
+52	6	11	2	"*TASK*
+Here are the context sentences:
+4. John picked up the apple there.
+5. John discarded the apple there.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	the context sentences 4 and 5 only provide information about john and the apple, but they do not mention mary or her location. to answer the question about mary's location, we need to refer to the previous context sentences. since the previous context sentences (1 and 2) mentioned mary journeying to the kitchen and did not provide any information about her leaving the kitchen, we can conclude that mary is still in the kitchen. the actions of john picking up and discarding the	none	yes	True	The context sentences 4 and 5 only mention John and do not provide any new information about Mary's location. The last information about Mary's location was in sentence 1, where she journeyed to the kitchen.		"Reasoning: The context sentences 4 and 5 only mention John and do not provide any new information about Mary's location. The last information about Mary's location was in sentence 1, where she journeyed to the kitchen.
+
+Answer: yes"	0.0588	0.0196	False	False	False	True	0
+53	6	11	3	"*TASK*
+Here are the context sentences:
+7. John picked up the apple there.
+8. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	yes	"the context sentence 8 explicitly states that ""daniel journeyed to the kitchen"", which implies that daniel moved to the kitchen and is currently located there. this information directly answers the question of whether daniel is in the kitchen, and the answer is indeed ""yes"". the context sentence 7 about john picking up the apple is not relevant to daniel's location and does not provide any contradictory information."	fully	yes	True	According to sentence 8, Daniel journeyed to the kitchen, which implies that he is currently in the kitchen.		"Reasoning: According to sentence 8, Daniel journeyed to the kitchen, which implies that he is currently in the kitchen.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+54	6	11	4	"*TASK*
+Here are the context sentences:
+10. Daniel put down the football.
+11. Mary moved to the garden.
+
+Now, answer the following question:
+Is Mary in the garden?"	yes	"the context sentence 11 explicitly states that ""mary moved to the garden"", which implies that mary changed her location to the garden. this direct information answers the question of whether mary is in the garden, and the answer is indeed ""yes"". the context sentence 10 about daniel putting down the football is not relevant to mary's location and does not provide any contradictory information."	fully	yes	True	According to sentence 11, Mary moved to the garden, which implies that she is currently in the garden.		"Reasoning: According to sentence 11, Mary moved to the garden, which implies that she is currently in the garden.
+
+Answer: yes"	0.1034	0.0345	False	False	False	False	0
+55	6	11	5	"*TASK*
+Here are the context sentences:
+13. Sandra went back to the kitchen.
+14. Daniel moved to the office.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	yes	"the context sentence 13 explicitly states that ""sandra went back to the kitchen"", which implies that sandra returned to the kitchen and is currently located there. this direct information answers the question of whether sandra is in the kitchen, and the answer is indeed ""yes"". the context sentence 14 about daniel moving to the office is not relevant to sandra's location and does not provide any contradictory information."	fully	yes	True	According to sentence 13, Sandra went back to the kitchen, which implies that she is currently in the kitchen.		"Reasoning: According to sentence 13, Sandra went back to the kitchen, which implies that she is currently in the kitchen.
+
+Answer: yes"	0.0333	0.0333	False	False	False	False	0

@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠSandra	Ġis	Ġin	Ġthe	Ġoffice	.Ċ
+11	.	ĠDaniel	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠDaniel	Ġin	Ġthe	Ġoffice	?Ċ

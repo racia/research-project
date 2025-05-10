@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+381	6	77	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the garden.
+2. Sandra got the milk there.
+
+Now, answer the following question:
+Is Sandra in the garden?"	yes	"from context sentence 1, ""sandra moved to the garden"", we can infer that sandra's location is now in the garden. this information is further supported by context sentence 2, ""sandra got the milk there"", which implies that ""there"" refers to the garden, and sandra is still in the garden to perform the action of getting the milk. therefore, the answer to the question ""is sandra in the garden?"" is indeed ""yes""."	fully	yes	True	According to context sentence 1, Sandra moved to the garden, which implies that she is currently in the garden. This information is not contradicted or updated by context sentence 2, which only mentions that she got the milk there (in the garden).		"assistant
+
+Reasoning: According to context sentence 1, Sandra moved to the garden, which implies that she is currently in the garden. This information is not contradicted or updated by context sentence 2, which only mentions that she got the milk there (in the garden).
+
+Answer: yes"	0.0656	0.0164	False	False	False	True	0
+382	6	77	2	"*TASK*
+Here are the context sentences:
+4. Sandra went to the bedroom.
+5. Mary journeyed to the garden.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	yes	"from context sentence 4, ""sandra went to the bedroom"", we can directly infer that sandra's current location is in the bedroom. there is no information provided that suggests sandra has moved from the bedroom, so it is logical to conclude that sandra is still in the bedroom. therefore, the answer to the question ""is sandra in the bedroom?"" is indeed ""yes""."	fully	yes	True	According to context sentence 4, Sandra went to the bedroom, which implies that she is currently in the bedroom. This information is not contradicted or updated by context sentence 5, which only mentions Mary's movement to the garden.		"Reasoning: According to context sentence 4, Sandra went to the bedroom, which implies that she is currently in the bedroom. This information is not contradicted or updated by context sentence 5, which only mentions Mary's movement to the garden.
+
+Answer: yes"	0.0185	0.0185	False	False	False	True	0
+383	6	77	3	"*TASK*
+Here are the context sentences:
+7. John went back to the office.
+8. Daniel went back to the office.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	"there is no information provided about john going to the bedroom. in fact, the context sentence 7 states that ""john went back to the office"", which implies that john's current location is in the office, not in the bedroom. therefore, the answer to the question ""is john in the bedroom?"" is indeed ""no""."	fully	no	True	There is no information in the context sentences that suggests John was ever in the bedroom. The context sentences only mention John going back to the office, which implies that he is currently in the office.		"Reasoning: There is no information in the context sentences that suggests John was ever in the bedroom. The context sentences only mention John going back to the office, which implies that he is currently in the office.
+
+Answer: no"	0.0652	0.0217	False	False	False	True	0
+384	6	77	4	"*TASK*
+Here are the context sentences:
+10. Daniel moved to the hallway.
+11. Daniel went to the bathroom.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	yes	"from context sentence 11, ""daniel went to the bathroom"", we can directly infer that daniel's current location is in the bathroom. the previous sentence 10, ""daniel moved to the hallway"", does not contradict this information, as it only provides information about daniel's previous location, not his current one. therefore, the answer to the question ""is daniel in the bathroom?"" is indeed ""yes""."	fully	yes	True	According to context sentence 11, Daniel went to the bathroom, which implies that he is currently in the bathroom. The previous movement to the hallway (context sentence 10) is overridden by this new information.		"Reasoning: According to context sentence 11, Daniel went to the bathroom, which implies that he is currently in the bathroom. The previous movement to the hallway (context sentence 10) is overridden by this new information.
+
+Answer: yes"	0.0	0.0204	False	False	False	True	0
+385	6	77	5	"*TASK*
+Here are the context sentences:
+13. Daniel took the football there.
+14. Sandra put down the milk.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	no	"there is no direct information provided about daniel's current location in the context sentences. however, we can infer that daniel is not in the hallway because in a previous context (sentence 11), ""daniel went to the bathroom"", and there is no information provided about daniel leaving the bathroom or moving back to the hallway. therefore, the answer to the question ""is daniel in the hallway?"" is indeed ""no""."	none	no	True	There is no new information that suggests Daniel left the bathroom. The context sentence 11 still holds, and context sentence 13 only mentions Daniel taking the football, which does not imply a change in location.		"Reasoning: There is no new information that suggests Daniel left the bathroom. The context sentence 11 still holds, and context sentence 13 only mentions Daniel taking the football, which does not imply a change in location. 
+
+Answer: no"	0.0	0.0204	False	False	False	True	0

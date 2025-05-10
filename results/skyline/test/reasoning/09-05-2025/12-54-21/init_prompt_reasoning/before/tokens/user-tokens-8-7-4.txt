@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+14	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġapple	Ġthere	.Ċ
+15	.	ĠDaniel	Ġleft	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠJohn	Ġcarrying	?Ċ

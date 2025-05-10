@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2076	10	16	1	"*TASK*
+Here are the context sentences:
+1. Julie is in the cinema.
+2. Julie went to the school.
+
+Now, answer the following question:
+Is Julie in the school?"	yes	"the context sentences provide information about julie's locations at different times. sentence 1 states that julie is in the cinema, but sentence 2 states that julie went to the school. the verb ""went"" implies that julie's action of going to the school happened after she was in the cinema. therefore, it can be inferred that julie is no longer in the cinema and has moved to the school. hence, the answer to the question ""is julie in the school?"" is indeed """	fully	yes	True	According to sentence 2, Julie went to the school, which implies that she is now in the school.		"assistant
+
+Reasoning: According to sentence 2, Julie went to the school, which implies that she is now in the school.
+
+Answer: yes"	0.0606	0.0303	False	False	False	False	0
+2077	10	16	2	"*TASK*
+Here are the context sentences:
+4. Fred went back to the cinema.
+5. Julie went back to the park.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	no	there is no mention of julie being in the kitchen in any of the context sentences. the context sentences only mention julie going back to the park (sentence 5), and fred going back to the cinema (sentence 4). there is no information provided about julie being in the kitchen, so it can be logically concluded that julie is not in the kitchen.	fully	no	True	There is no information about Julie being in the kitchen in the context sentences. The last known location of Julie is the park, according to sentence 5.		"Reasoning: There is no information about Julie being in the kitchen in the context sentences. The last known location of Julie is the park, according to sentence 5.
+
+Answer: no"	0.0789	0.0263	False	False	False	True	0
+2078	10	16	3	"*TASK*
+Here are the context sentences:
+7. Julie is in the bedroom.
+8. Mary is either in the kitchen or the bedroom.
+
+Now, answer the following question:
+Is Fred in the office?"	no	"there is no information provided about fred's location in the context sentences. the context sentences only mention julie's location (sentence 7) and mary's possible locations (sentence 8), but there is no mention of fred or the office. therefore, it cannot be determined whether fred is in the office or not based on the provided information. however, since the answer is ""no"", it can be inferred that the absence of information about fred's location implies that he is not in the"	none	not mentioned	False	There is no information about Fred's location in the context sentences. The sentences only mention Julie and Mary's locations.		"Reasoning: There is no information about Fred's location in the context sentences. The sentences only mention Julie and Mary's locations.
+
+Answer: not mentioned"	0.0323	0.0323	False	False	False	True	0
+2079	10	16	4	"*TASK*
+Here are the context sentences:
+10. Mary is in the office.
+11. Fred went to the school.
+
+Now, answer the following question:
+Is Mary in the school?"	no	according to sentence 10, mary is in the office. sentence 11 mentions fred going to the school, but there is no information about mary going to the school. since mary's location is explicitly stated to be the office, it can be logically concluded that mary is not in the school.	fully	no	True	According to sentence 10, Mary is in the office, and there is no information about her moving to the school.		"Reasoning: According to sentence 10, Mary is in the office, and there is no information about her moving to the school.
+
+Answer: no"	0.0645	0.0323	False	False	False	True	0
+2080	10	16	5	"*TASK*
+Here are the context sentences:
+13. Mary went to the park.
+14. Bill is either in the school or the park.
+
+Now, answer the following question:
+Is Mary in the park?"	yes	according to sentence 13, mary went to the park, which implies that mary is currently in the park. this information directly answers the question, confirming that mary is indeed in the park. the additional information in sentence 14 about bill's possible locations does not affect mary's location, which is explicitly stated to be the park.	fully	yes	True	According to sentence 13, Mary went to the park, which implies that she is now in the park.		"Reasoning: According to sentence 13, Mary went to the park, which implies that she is now in the park.
+
+Answer: yes"	0.0345	0.0345	False	False	False	False	0

@@ -1,0 +1,44 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+229	15	58	1	"*TASK*
+Here are the context sentences:
+1. Mice are afraid of sheep.
+2. Winona is a mouse.
+3. Sheep are afraid of mice.
+4. Wolves are afraid of sheep.
+5. Jessica is a mouse.
+6. Cats are afraid of mice.
+7. Emily is a cat.
+8. Gertrude is a mouse.
+
+Now, answer the following question:
+What is emily afraid of?"	mouse	from sentence 7, we know that emily is a cat. from sentence 6, we know that cats are afraid of mice. therefore, emily, being a cat, is afraid of mice.	fully	mice	True	According to sentence 7, Emily is a cat. According to sentence 6, Cats are afraid of mice.		"assistant
+
+Reasoning: According to sentence 7, Emily is a cat. According to sentence 6, Cats are afraid of mice.
+
+Answer: mice"	0.2059	0.0588	False	False	False	False	0
+230	15	58	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	mouse	from the previous context sentences, we know that emily is a cat (sentence 7). additionally, sentence 6 states that cats are afraid of mice. therefore, emily, being a cat, is afraid of mice.	none	mice	True	According to sentence 7, Emily is a cat. According to sentence 6, Cats are afraid of mice.		"assistant
+
+Reasoning: According to sentence 7, Emily is a cat. According to sentence 6, Cats are afraid of mice.
+
+Answer: mice"	0.2059	0.0588	False	False	False	False	0
+231	15	58	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is gertrude afraid of?"	sheep	from the previous context sentences, we know that gertrude is a mouse (sentence 8). additionally, sentence 1 states that mice are afraid of sheep. therefore, gertrude, being a mouse, is afraid of sheep.	none	sheep	True	According to sentence 8, Gertrude is a mouse. According to sentence 1, Mice are afraid of sheep.		"Reasoning: According to sentence 8, Gertrude is a mouse. According to sentence 1, Mice are afraid of sheep.
+
+Answer: sheep"	0.0	0.0606	False	False	False	False	0
+232	15	58	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is gertrude afraid of?"	sheep	from the previous context sentences, we know that gertrude is a mouse (sentence 8). additionally, sentence 1 states that mice are afraid of sheep. therefore, gertrude, being a mouse, is afraid of sheep.	none	sheep	True	According to sentence 8, Gertrude is a mouse. According to sentence 1, Mice are afraid of sheep.		"Reasoning: According to sentence 8, Gertrude is a mouse. According to sentence 1, Mice are afraid of sheep.
+
+Answer: sheep"	0.0	0.0606	False	False	False	False	0

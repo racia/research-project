@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJohn	Ġgoing	Ġto	Ġthe	Ġbathroom	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	Ġand	ĠMary	Ġtraveling	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	<|eot_id|>

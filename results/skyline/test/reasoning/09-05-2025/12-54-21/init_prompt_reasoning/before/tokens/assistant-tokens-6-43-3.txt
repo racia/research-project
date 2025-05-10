@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġthat	Ġsuggests	ĠJohn	Ġis	Ġin	Ġthe	Ġbathroom	.	ĠIn	Ġfact	,	Ġcontext	Ġsentence	Ġ	8	Ġexplicitly	Ġstates	Ġthat	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>
