@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġmentioned	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġleaving	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

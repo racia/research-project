@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠJohn	Ġpassed	Ġthe	Ġmilk	Ġto	ĠSandra	.Ċ
+8	.	ĠSandra	Ġpassed	Ġthe	Ġmilk	Ġto	ĠJohn	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠSandra	Ġcarrying	?Ċ

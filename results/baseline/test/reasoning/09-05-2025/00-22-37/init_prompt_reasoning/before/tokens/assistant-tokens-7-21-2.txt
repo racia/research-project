@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġcarrying	Ġany	Ġobjects	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġtravel	Ġto	Ġthe	Ġhallway	,	Ġand	ĠSandra	's	Ġjourney	Ġto	Ġthe	Ġkitchen	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġtaking	Ġor	Ġcarrying	Ġany	Ġobjects	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

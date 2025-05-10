@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+556	7	12	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the garden.
+2. John took the apple there.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	from the context sentences, we know that john took the apple to the garden. this implies that john is carrying the apple. there is no mention of john carrying any other objects. therefore, we can logically conclude that john is carrying only one object, which is the apple.	fully	one	True	The context sentences only mention John taking the apple, but do not mention him carrying anything else. Therefore, we can infer that John is carrying only one object, which is the apple.		"Reasoning: The context sentences only mention John taking the apple, but do not mention him carrying anything else. Therefore, we can infer that John is carrying only one object, which is the apple.
+
+Answer: one"	0.0455	0.0227	False	False	False	True	0
+557	7	12	2	"*TASK*
+Here are the context sentences:
+4. Mary went back to the hallway.
+5. John travelled to the hallway.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	the question asks about the number of objects john is carrying, but the provided context sentences (4 and 5) do not mention john carrying any objects. however, we can look back at the previous context sentences (1 and 2) which mentioned john taking an apple to the garden. since there is no information about john dropping or giving away the apple, we can logically assume that john is still carrying the apple. therefore, john is carrying one object, which is the apple.	none	none	False	The context sentences do not mention John carrying any objects. They only mention John travelling to the hallway. Therefore, we can infer that John is not carrying any objects.		"Reasoning: The context sentences do not mention John carrying any objects. They only mention John travelling to the hallway. Therefore, we can infer that John is not carrying any objects.
+
+Answer: none"	0.1	0.025	False	False	False	True	0
+558	7	12	3	"*TASK*
+Here are the context sentences:
+7. John journeyed to the garden.
+8. Daniel went to the bathroom.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	the question asks about the number of objects john is carrying. the provided context sentences (7 and 8) do not mention john carrying any objects, but we can look back at the previous context sentences (1 and 2) which mentioned john taking an apple to the garden. sentence 7 mentions john journeying to the garden, which implies that john is returning to the garden, but it does not mention john dropping or giving away the apple. therefore, we can logically assume that	none	none	False	The context sentences do not mention John carrying any objects. They only mention John journeying to the garden. Therefore, we can infer that John is not carrying any objects.		"Reasoning: The context sentences do not mention John carrying any objects. They only mention John journeying to the garden. Therefore, we can infer that John is not carrying any objects.
+
+Answer: none"	0.0244	0.0244	False	False	False	True	0
+559	7	12	4	"*TASK*
+Here are the context sentences:
+10. John passed the apple to Sandra.
+11. Sandra passed the apple to John.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	the question asks about the number of objects sandra is carrying. from the context sentences, we know that john passed the apple to sandra (sentence 10), which means sandra received the apple from john. then, sandra passed the apple back to john (sentence 11), which means sandra no longer has the apple. therefore, sandra is not carrying any objects.	fully	one	False	The context sentences mention Sandra receiving the apple from John, but do not mention her carrying anything else. Therefore, we can infer that Sandra is carrying only one object, which is the apple.		"Reasoning: The context sentences mention Sandra receiving the apple from John, but do not mention her carrying anything else. Therefore, we can infer that Sandra is carrying only one object, which is the apple.
+
+Answer: one"	0.0222	0.0444	False	False	False	True	0
+560	7	12	5	"*TASK*
+Here are the context sentences:
+13. John gave the apple to Sandra.
+14. Sandra went to the office.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	the question asks about the number of objects sandra is carrying. from the context sentences, we know that john gave the apple to sandra (sentence 13), which means sandra received the apple from john. there is no information about sandra dropping or giving away the apple, and sentence 14 only mentions sandra going to the office, but does not mention her doing anything with the apple. therefore, we can logically conclude that sandra is still carrying the apple, which is one object.	partially	one	True	The context sentences mention Sandra receiving the apple from John, but do not mention her carrying anything else. Therefore, we can infer that Sandra is carrying only one object, which is the apple.		"Reasoning: The context sentences mention Sandra receiving the apple from John, but do not mention her carrying anything else. Therefore, we can infer that Sandra is carrying only one object, which is the apple.
+
+Answer: one"	0.0222	0.0667	False	False	False	True	0

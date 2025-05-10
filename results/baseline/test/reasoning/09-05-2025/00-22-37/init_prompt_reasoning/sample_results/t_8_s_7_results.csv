@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1031	8	7	1	"*TASK*
+Here are the context sentences:
+1. Sandra went to the kitchen.
+2. John moved to the bathroom.
+3. John journeyed to the office.
+4. Sandra travelled to the garden.
+5. Sandra went to the bathroom.
+6. Sandra grabbed the football there.
+
+Now, answer the following question:
+What is Sandra carrying?"	football	from the context sentences, we know that sandra went to the bathroom (sentence 5) and then grabbed the football there (sentence 6). therefore, it can be logically concluded that sandra is carrying the football.	fully	football	True	Sandra grabbed the football in the bathroom, which is the last location mentioned in the context sentences. Since she grabbed the football, it is likely that she is carrying it.		"Reasoning: Sandra grabbed the football in the bathroom, which is the last location mentioned in the context sentences. Since she grabbed the football, it is likely that she is carrying it.
+
+Answer: football"	0.0976	0.0244	False	False	False	True	0
+1032	8	7	2	"*TASK*
+Here are the context sentences:
+8. Daniel took the milk there.
+9. Sandra dropped the football there.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	according to sentence 8, daniel took the milk there, which implies that daniel is carrying the milk. there is no information provided that suggests daniel dropped or put down the milk, so it can be logically concluded that daniel is still carrying the milk.	fully	milk	True	The context sentences mention that Daniel took the milk, but do not specify where. However, the previous context sentences (6) mention that Sandra grabbed the football in the bathroom, and sentence 9 mentions that Sandra dropped the football there. It is likely that Daniel took the milk in the same location, which is the bathroom.		"Reasoning: The context sentences mention that Daniel took the milk, but do not specify where. However, the previous context sentences (6) mention that Sandra grabbed the football in the bathroom, and sentence 9 mentions that Sandra dropped the football there. It is likely that Daniel took the milk in the same location, which is the bathroom.
+
+Answer: milk"	0.0278	0.0139	False	False	False	True	0
+1033	8	7	3	"*TASK*
+Here are the context sentences:
+11. John got the apple there.
+12. Mary went to the bathroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"the context sentences provided do not mention daniel at all, but the answer suggests that daniel is carrying milk. to find the relevant information, we need to look at the previous parts of the conversation history. in the previous parts, we found that sentence 8 states ""daniel took the milk there"", which implies that daniel is carrying the milk. there is no information provided that suggests daniel dropped or put down the milk, so it can be logically concluded that daniel is still carrying the milk."	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only mention John getting an apple, Mary going to the bathroom, and previous sentences mentioning Sandra and Daniel's actions. Since Daniel is not mentioned, it is not possible to determine what Daniel is carrying.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only mention John getting an apple, Mary going to the bathroom, and previous sentences mentioning Sandra and Daniel's actions. Since Daniel is not mentioned, it is not possible to determine what Daniel is carrying.
+
+Answer: not mentioned"	0.0484	0.0161	False	False	False	True	0
+1034	8	7	4	"*TASK*
+Here are the context sentences:
+14. John put down the apple there.
+15. Daniel left the milk there.
+
+Now, answer the following question:
+What is John carrying?"	nothing	according to sentence 14, john put down the apple there, which implies that john is no longer carrying the apple. there is no information provided that suggests john picked up or took anything else, so it can be logically concluded that john is not carrying anything, i.e., john is carrying nothing.	partially	apple	False	The context sentences mention that John put down the apple, which implies that he was holding it before putting it down. Therefore, John was carrying the apple.		"Reasoning: The context sentences mention that John put down the apple, which implies that he was holding it before putting it down. Therefore, John was carrying the apple.
+
+Answer: apple"	0.0	0.0526	False	False	False	True	0
+1035	8	7	5	"*TASK*
+Here are the context sentences:
+17. Mary grabbed the football there.
+18. Mary left the football.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"the context sentences provided do not mention daniel at all, but the answer suggests that daniel is carrying nothing. to find the relevant information, we need to look at the previous parts of the conversation history. in the previous parts, we found that sentence 8 states ""daniel took the milk there"", which implies that daniel was carrying the milk. however, sentence 15 states ""daniel left the milk there"", which implies that daniel is no longer carrying the milk"	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only mention Mary's actions with the football. Since Daniel is not mentioned, it is not possible to determine what Daniel is carrying.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only mention Mary's actions with the football. Since Daniel is not mentioned, it is not possible to determine what Daniel is carrying.
+
+Answer: not mentioned"	0.0625	0.0417	False	False	False	True	0

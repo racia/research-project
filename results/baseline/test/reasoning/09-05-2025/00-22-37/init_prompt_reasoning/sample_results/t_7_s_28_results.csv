@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+636	7	28	1	"*TASK*
+Here are the context sentences:
+1. John took the milk there.
+2. Daniel travelled to the garden.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	"from the context sentence ""john took the milk there"", we can infer that john is carrying the milk. there is no mention of john carrying any other object. therefore, the logical conclusion is that john is carrying only one object, which is the milk."	fully	one	True	The question asks about John's carrying, but the context sentences only mention John taking the milk, which implies he is carrying it. There is no mention of John giving away or dropping the milk, so it can be inferred that John is still carrying the milk.		"Reasoning: The question asks about John's carrying, but the context sentences only mention John taking the milk, which implies he is carrying it. There is no mention of John giving away or dropping the milk, so it can be inferred that John is still carrying the milk.
+
+Answer: one"	0.0678	0.0169	False	False	False	True	0
+637	7	28	2	"*TASK*
+Here are the context sentences:
+4. John went to the office.
+5. John dropped the milk.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	"from the previous context sentence ""john took the milk there"" (sentence 1), we knew that john was carrying the milk. however, in the new context sentence ""john dropped the milk"" (sentence 5), it is stated that john dropped the milk, which implies that john is no longer carrying the milk. therefore, the logical conclusion is that john is not carrying any objects, i.e., none."	partially	none	True	The previous context sentence (1. John took the milk there.) mentioned John taking the milk, and the current context sentence (5. John dropped the milk.) implies that John has dropped the milk. Since John dropped the milk, it can be inferred that John was carrying the milk, but now he is not.		"Reasoning: The previous context sentence (1. John took the milk there.) mentioned John taking the milk, and the current context sentence (5. John dropped the milk.) implies that John has dropped the milk. Since John dropped the milk, it can be inferred that John was carrying the milk, but now he is not.
+
+Answer: none"	0.0286	0.0286	False	False	False	True	0
+638	7	28	3	"*TASK*
+Here are the context sentences:
+7. Mary grabbed the apple there.
+8. Mary put down the apple.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	"from the context sentence ""mary grabbed the apple there"" (sentence 7), we know that mary was carrying the apple. however, in the subsequent sentence ""mary put down the apple"" (sentence 8), it is stated that mary put down the apple, which implies that mary is no longer carrying the apple. therefore, the logical conclusion is that mary is not carrying any objects, i.e., none."	fully	none	True	The context sentence (7. Mary grabbed the apple there.) implies that Mary is holding the apple, and the subsequent sentence (8. Mary put down the apple.) indicates that Mary has put the apple down. Since Mary has put the apple down, it can be inferred that Mary was carrying the apple, but now she is not.		"Reasoning: The context sentence (7. Mary grabbed the apple there.) implies that Mary is holding the apple, and the subsequent sentence (8. Mary put down the apple.) indicates that Mary has put the apple down. Since Mary has put the apple down, it can be inferred that Mary was carrying the apple, but now she is not.
+
+Answer: none"	0.2297	0.027	False	False	False	False	0
+639	7	28	4	"*TASK*
+Here are the context sentences:
+10. Mary went back to the hallway.
+11. Mary grabbed the football there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"from the previous context sentence ""mary put down the apple"" (sentence 8), we knew that mary was not carrying any objects. however, in the new context sentence ""mary grabbed the football there"" (sentence 11), it is stated that mary grabbed the football, which implies that mary is now carrying the football. therefore, the logical conclusion is that mary is carrying one object, which is the football."	partially	one	True	The context sentence (11. Mary grabbed the football there.) implies that Mary is holding the football, which means she is carrying it.		"Reasoning: The context sentence (11. Mary grabbed the football there.) implies that Mary is holding the football, which means she is carrying it.
+
+Answer: one"	0.0882	0.0882	False	False	False	False	0
+640	7	28	5	"*TASK*
+Here are the context sentences:
+13. John got the milk there.
+14. Mary put down the football.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	"from the previous context sentence ""mary grabbed the football there"" (sentence 11), we knew that mary was carrying the football. however, in the new context sentence ""mary put down the football"" (sentence 14), it is stated that mary put down the football, which implies that mary is no longer carrying the football. therefore, the logical conclusion is that mary is not carrying any objects, i.e., none."	partially	none	True	The previous context sentence (14. Mary put down the football.) implies that Mary has put the football down, which means she is not carrying it anymore.		"Reasoning: The previous context sentence (14. Mary put down the football.) implies that Mary has put the football down, which means she is not carrying it anymore.
+
+Answer: none"	0.1316	0.1053	False	False	False	False	0

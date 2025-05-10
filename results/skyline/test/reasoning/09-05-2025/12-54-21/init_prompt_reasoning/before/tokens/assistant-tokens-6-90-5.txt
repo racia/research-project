@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġbeing	Ġin	Ġthe	Ġkitchen	.	ĠThey	Ġonly	Ġmention	ĠDaniel	Ġgoing	Ġback	Ġto	Ġthe	Ġhallway	Ġand	Ġgetting	Ġthe	Ġfootball	Ġthere	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

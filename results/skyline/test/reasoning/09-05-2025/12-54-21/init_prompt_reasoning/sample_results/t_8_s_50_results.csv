@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1246	8	50	1	"*TASK*
+Here are the context sentences:
+1. John moved to the kitchen.
+2. Daniel went back to the office.
+3. John went to the garden.
+4. John travelled to the hallway.
+5. John picked up the milk there.
+6. Daniel went to the bedroom.
+
+Now, answer the following question:
+What is John carrying?"	milk	from the context sentences, we know that john went to the hallway (sentence 4) and picked up the milk there (sentence 5). therefore, it can be logically concluded that john is carrying the milk.	fully	milk	True	From sentence 5, we know that John picked up the milk in the hallway. There is no information about John putting down the milk or giving it to someone else. Therefore, we can infer that John is still carrying the milk.		"assistant
+
+Reasoning: From sentence 5, we know that John picked up the milk in the hallway. There is no information about John putting down the milk or giving it to someone else. Therefore, we can infer that John is still carrying the milk.
+
+Answer: milk"	0.0526	0.0175	False	False	False	True	0
+1247	8	50	2	"*TASK*
+Here are the context sentences:
+8. Sandra went back to the office.
+9. John moved to the bedroom.
+
+Now, answer the following question:
+What is John carrying?"	milk	"although the context sentences 8 and 9 do not mention john carrying anything, we can infer the answer from the previous context sentences (sentences 1-6). specifically, sentence 5 states that ""john picked up the milk there"" (in the hallway). there is no information provided that john dropped or put down the milk, so it can be logically concluded that john is still carrying the milk."	none	milk	True	The last information we have about John carrying something is that he picked up the milk in the hallway (sentence 5). There is no new information about John putting down the milk or giving it to someone else. Therefore, we can still infer that John is carrying the milk.		"Reasoning: The last information we have about John carrying something is that he picked up the milk in the hallway (sentence 5). There is no new information about John putting down the milk or giving it to someone else. Therefore, we can still infer that John is carrying the milk.
+
+Answer: milk"	0.0484	0.0161	False	False	False	True	0
+1248	8	50	3	"*TASK*
+Here are the context sentences:
+11. Sandra travelled to the hallway.
+12. Mary went to the bedroom.
+13. John journeyed to the bathroom.
+14. John put down the milk there.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"according to sentence 14, ""john put down the milk there"" (in the bathroom). this implies that john was carrying the milk before putting it down, and now the milk is no longer in his possession. therefore, it can be logically concluded that john is carrying nothing."	partially	nothing	True	In sentence 14, it is stated that John put down the milk in the bathroom. This means that John is no longer carrying the milk.		"Reasoning: In sentence 14, it is stated that John put down the milk in the bathroom. This means that John is no longer carrying the milk.
+
+Answer: nothing"	0.0278	0.0556	False	False	False	False	0
+1249	8	50	4	"*TASK*
+Here are the context sentences:
+16. Mary went to the garden.
+17. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+What is John carrying?"	nothing	the context sentences 16 and 17 do not provide any new information about john. however, we can refer to the previous context sentences (sentences 11-14) where it was established that john put down the milk in the bathroom (sentence 14). since there is no new information suggesting that john picked up anything else, it can be logically concluded that john is still carrying nothing.	none	nothing	True	The last information we have about John carrying something is that he put down the milk in the bathroom (sentence 14). There is no new information about John picking up something else. Therefore, we can still infer that John is not carrying anything.		"Reasoning: The last information we have about John carrying something is that he put down the milk in the bathroom (sentence 14). There is no new information about John picking up something else. Therefore, we can still infer that John is not carrying anything.
+
+Answer: nothing"	0.0536	0.0357	False	False	False	True	0
+1250	8	50	5	"*TASK*
+Here are the context sentences:
+19. John grabbed the football there.
+20. Sandra picked up the milk there.
+
+Now, answer the following question:
+What is John carrying?"	football	"according to sentence 19, ""john grabbed the football there"", which implies that john picked up the football. there is no information suggesting that john dropped or put down the football, so it can be logically concluded that john is still carrying the football."	partially	football	True	In sentence 19, it is stated that John grabbed the football in the bathroom (since that's where John was last mentioned to be). This means that John is now carrying the football.		"Reasoning: In sentence 19, it is stated that John grabbed the football in the bathroom (since that's where John was last mentioned to be). This means that John is now carrying the football.
+
+Answer: football"	0.0222	0.0667	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	7	,	ĠSandra	Ġhanded	Ġthe	Ġfootball	Ġto	ĠJohn	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġfootball	.	ĠSentence	Ġ	8	Ġis	Ġabout	Ġher	Ġmovement	Ġand	Ġdoes	Ġnot	Ġaffect	Ġthe	Ġnumber	Ġof	Ġobjects	Ġshe	Ġis	Ġcarrying	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

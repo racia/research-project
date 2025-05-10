@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+2	.	ĠJohn	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+3	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+4	.	ĠJohn	Ġdropped	Ġthe	Ġfootball	.Ċ
+5	.	ĠMary	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+6	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠDaniel	Ġin	Ġthe	Ġbedroom	?Ċ

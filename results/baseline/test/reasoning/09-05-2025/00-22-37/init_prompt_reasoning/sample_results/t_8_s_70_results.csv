@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1346	8	70	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the hallway.
+2. Daniel picked up the milk there.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"according to context sentence 2, ""daniel picked up the milk there"", which implies that daniel has taken possession of the milk and is currently holding it. therefore, the answer to the question ""what is daniel carrying?"" is indeed ""milk""."	fully	milk	True	The context sentences mention that Daniel picked up the milk in the hallway, which implies that he is holding or carrying the milk.		"Reasoning: The context sentences mention that Daniel picked up the milk in the hallway, which implies that he is holding or carrying the milk.
+
+Answer: milk"	0.1562	0.0312	False	False	False	True	0
+1347	8	70	2	"*TASK*
+Here are the context sentences:
+4. Mary took the football there.
+5. Mary left the football.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	"according to context sentence 4, ""mary took the football there"", which implies that mary initially had possession of the football. however, context sentence 5, ""mary left the football"", indicates that mary relinquished her possession of the football. therefore, as of the current state, mary is not carrying anything, which aligns with the answer ""nothing""."	fully	nothing	True	The context sentences mention that Mary took the football, but then left it, which implies that she is no longer carrying the football.		"Reasoning: The context sentences mention that Mary took the football, but then left it, which implies that she is no longer carrying the football.
+
+Answer: nothing"	0.2121	0.0606	False	False	False	True	0
+1348	8	70	3	"*TASK*
+Here are the context sentences:
+7. Mary went to the bedroom.
+8. Mary went to the kitchen.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	"the context sentences 7 and 8 only provide information about mary's movements between locations (bedroom and kitchen), but do not mention mary carrying or holding any object. there is no mention of mary picking up or taking anything in these sentences. therefore, based on the provided information, it can be logically inferred that mary is not carrying anything, which aligns with the answer ""nothing""."	none	not mentioned	False	There is no mention of Mary picking up or holding anything in the given context sentences. She only went to the bedroom and kitchen, but no object is mentioned.		"Reasoning: There is no mention of Mary picking up or holding anything in the given context sentences. She only went to the bedroom and kitchen, but no object is mentioned.
+
+Answer: not mentioned"	0.075	0.05	False	False	False	True	0
+1349	8	70	4	"*TASK*
+Here are the context sentences:
+10. Daniel discarded the milk there.
+11. Daniel got the milk there.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"according to context sentence 11, ""daniel got the milk there"", which implies that daniel acquired or obtained the milk. although context sentence 10, ""daniel discarded the milk there"", suggests that daniel got rid of the milk, it is mentioned after sentence 11, implying that the action of discarding happened after getting the milk. therefore, the most recent action is not applicable, and the correct state is that daniel got the milk, which means he is"	partially	milk	True	The context sentences mention that Daniel discarded the milk, which implies that he was previously holding or carrying the milk. Then, he got the milk, which means he is holding or carrying it again.		"Reasoning: The context sentences mention that Daniel discarded the milk, which implies that he was previously holding or carrying the milk. Then, he got the milk, which means he is holding or carrying it again.
+
+Answer: milk"	0.1087	0.0652	False	False	False	True	0
+1350	8	70	5	"*TASK*
+Here are the context sentences:
+13. Sandra took the football there.
+14. Sandra left the football.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"the context sentences 13 and 14 only provide information about sandra's actions with the football, but do not mention daniel at all. however, the answer ""milk"" suggests that the question is actually referring to a previous context. since the previous context mentioned daniel getting the milk (context lines 10 and 11), it can be logically inferred that the question ""what is daniel carrying?"" is referring to that previous context, and the correct answer is indeed """	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only mention Sandra taking and leaving the football, but do not mention Daniel.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only mention Sandra taking and leaving the football, but do not mention Daniel.
+
+Answer: not mentioned"	0.1351	0.0811	False	False	False	True	0

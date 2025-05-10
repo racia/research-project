@@ -1,0 +1,1 @@
+<|start_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	2	,	ĠJohn	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġmoving	Ġto	Ġthe	Ġgarden	.	ĠĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠDaniel	Ġbeing	Ġin	Ġthe	Ġbedroom	.	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠDaniel	Ġtravelling	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġnot	Ġabout	Ġhim	Ġbeing	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

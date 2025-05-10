@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1391	8	79	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the bathroom.
+2. Mary moved to the bathroom.
+3. Sandra picked up the apple there.
+4. John travelled to the kitchen.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"from context sentence 3, ""sandra picked up the apple there"", we know that sandra picked up an apple in the bathroom (since ""there"" refers to the bathroom, which is the location mentioned in context sentences 1 and 2). therefore, sandra is carrying the apple."	fully	apple	True	According to sentence 3, Sandra picked up the apple in the bathroom. This implies that Sandra is carrying the apple.		"assistant
+
+Reasoning: According to sentence 3, Sandra picked up the apple in the bathroom. This implies that Sandra is carrying the apple.
+
+Answer: apple"	0.0882	0.0294	False	False	False	False	0
+1392	8	79	2	"*TASK*
+Here are the context sentences:
+6. Sandra travelled to the office.
+7. Mary travelled to the hallway.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"although the context sentences 6 and 7 do not provide direct information about what sandra is carrying, we can infer the answer from the previous context sentences. in context sentence 3, ""sandra picked up the apple there"", we know that sandra picked up an apple in the bathroom. there is no information provided that suggests sandra dropped or put down the apple, so it is logical to assume that sandra is still carrying the apple. the fact that sandra travelled to the office (context"	none	apple	True	The context sentences 6 and 7 do not provide any new information about what Sandra is carrying. However, from the previous context sentences, we know that Sandra picked up the apple in the bathroom (sentence 3). There is no information that suggests Sandra dropped or put down the apple, so it can be inferred that Sandra is still carrying the apple.		"Reasoning: The context sentences 6 and 7 do not provide any new information about what Sandra is carrying. However, from the previous context sentences, we know that Sandra picked up the apple in the bathroom (sentence 3). There is no information that suggests Sandra dropped or put down the apple, so it can be inferred that Sandra is still carrying the apple.
+
+Answer: apple"	0.0385	0.0128	False	False	False	True	0
+1393	8	79	3	"*TASK*
+Here are the context sentences:
+9. Sandra grabbed the milk there.
+10. Sandra dropped the milk.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"in context sentence 9, ""sandra grabbed the milk there"", sandra grabbed the milk, but in context sentence 10, ""sandra dropped the milk"", sandra dropped the milk, which means she is no longer carrying the milk. however, the question asks what sandra is carrying, and the answer is ""apple"". this is because, as previously established in context sentence 3, ""sandra picked up the apple there"", sandra picked up an apple in the bathroom and there"	partially	apple	True	According to sentence 9, Sandra grabbed the milk, but then according to sentence 10, Sandra dropped the milk. This means that Sandra is no longer carrying the milk. Previously, we knew that Sandra was carrying the apple (sentence 3), and there is no information that suggests Sandra dropped or put down the apple.		"Reasoning: According to sentence 9, Sandra grabbed the milk, but then according to sentence 10, Sandra dropped the milk. This means that Sandra is no longer carrying the milk. Previously, we knew that Sandra was carrying the apple (sentence 3), and there is no information that suggests Sandra dropped or put down the apple.
+
+Answer: apple"	0.0	0.0417	False	False	False	True	0
+1394	8	79	4	"*TASK*
+Here are the context sentences:
+12. Sandra picked up the milk there.
+13. John travelled to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple milk	"in context sentence 12, ""sandra picked up the milk there"", sandra picked up the milk, which means she is now carrying the milk. previously, in context sentence 3, ""sandra picked up the apple there"", sandra picked up an apple in the bathroom and there is no information provided that suggests she dropped or put down the apple, so it is logical to assume that sandra is still carrying the apple. therefore, sandra is carrying both the apple"	partially	apple, milk	True	According to sentence 12, Sandra picked up the milk again. Previously, we knew that Sandra was carrying the apple (sentence 3). Now, Sandra is carrying both the apple and the milk.		"Reasoning: According to sentence 12, Sandra picked up the milk again. Previously, we knew that Sandra was carrying the apple (sentence 3). Now, Sandra is carrying both the apple and the milk.
+
+Answer: apple, milk"	0.0	0.0816	False	False	False	False	0
+1395	8	79	5	"*TASK*
+Here are the context sentences:
+15. John went back to the bathroom.
+16. Daniel went to the bathroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple milk	"the context sentences 15 and 16 do not provide any new information about sandra or what she is carrying. however, we can refer back to the previous context sentences to determine what sandra is carrying. in context sentence 12, ""sandra picked up the milk there"", sandra picked up the milk, and in context sentence 3, ""sandra picked up the apple there"", sandra picked up an apple in the bathroom. there is no information provided that suggests sandra dropped or put"	none	apple, milk	True	The context sentences 15 and 16 do not provide any new information about what Sandra is carrying. Previously, we knew that Sandra was carrying both the apple and the milk (sentence 12).		"Reasoning: The context sentences 15 and 16 do not provide any new information about what Sandra is carrying. Previously, we knew that Sandra was carrying both the apple and the milk (sentence 12).
+
+Answer: apple, milk"	0.0208	0.0833	False	False	False	True	0

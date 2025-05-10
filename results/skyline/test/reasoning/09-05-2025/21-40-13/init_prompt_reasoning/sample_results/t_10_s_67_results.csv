@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+331	10	67	1	"*TASK*
+Here are the context sentences:
+1. Fred is in the school.
+2. Mary is in the cinema.
+
+Now, answer the following question:
+Is Mary in the cinema?"	yes	"the answer is ""yes"" because the context sentence 2 explicitly states ""mary is in the cinema"", which directly indicates mary's location as the cinema."	fully	yes	True	The context sentence 2 explicitly states that Mary is in the cinema.		"assistant
+
+Reasoning: The context sentence 2 explicitly states that Mary is in the cinema.
+
+Answer: yes"	0.08	0.04	False	False	False	False	0
+332	10	67	2	"*TASK*
+Here are the context sentences:
+4. Bill went back to the office.
+5. Mary is in the school.
+
+Now, answer the following question:
+Is Fred in the office?"	no	"the answer is ""no"" because there is no mention of fred being in the office in the provided context sentences. sentence 4 mentions bill going back to the office, but it does not mention fred. additionally, sentence 5 mentions mary being in the school, which is a different location altogether. there is no information provided about fred's location, and the only information about the office is about bill, so it can be logically inferred that fred is not in the office."	none	not mentioned	False	There is no information about Fred's location in the given context sentences. The context sentences only mention Bill and Mary's locations.		"Reasoning: There is no information about Fred's location in the given context sentences. The context sentences only mention Bill and Mary's locations.
+
+Answer: not mentioned"	0.1212	0.0303	False	False	False	True	0
+333	10	67	3	"*TASK*
+Here are the context sentences:
+7. Mary went back to the cinema.
+8. Julie journeyed to the office.
+
+Now, answer the following question:
+Is Mary in the cinema?"	yes	"the answer is ""yes"" because sentence 7 explicitly states ""mary went back to the cinema"", which implies that mary was previously in the cinema and has now returned to the same location. this information directly indicates that mary is currently in the cinema."	fully	yes	True	The context sentence 7 explicitly states that Mary went back to the cinema, which implies that Mary is currently in the cinema.		"Reasoning: The context sentence 7 explicitly states that Mary went back to the cinema, which implies that Mary is currently in the cinema.
+
+Answer: yes"	0.0938	0.0312	False	False	False	False	0
+334	10	67	4	"*TASK*
+Here are the context sentences:
+10. Mary went to the park.
+11. Fred travelled to the bedroom.
+
+Now, answer the following question:
+Is Julie in the office?"	yes	"the answer is ""yes"" because sentence 8 in the previous part of the conversation history states ""julie journeyed to the office"", which directly indicates that julie is in the office. the current context sentences (10 and 11) do not provide any information about julie's location, but they do not contradict or update the previous information about julie being in the office. therefore, it can be logically inferred that julie is still in the office."	none	yes	True	The context sentence 8 (from previous parts of the conversation) explicitly states that Julie journeyed to the office, and there is no information about Julie leaving the office.		"Reasoning: The context sentence 8 (from previous parts of the conversation) explicitly states that Julie journeyed to the office, and there is no information about Julie leaving the office.
+
+Answer: yes"	0.0732	0.0244	False	False	False	True	0
+335	10	67	5	"*TASK*
+Here are the context sentences:
+13. Mary is either in the bedroom or the park.
+14. Julie is in the bedroom.
+
+Now, answer the following question:
+Is Mary in the school?"	no	"the answer is ""no"" because there is no information provided that suggests mary is in the school. sentence 13 states that mary is either in the bedroom or the park, which implies that mary's location is limited to these two options. sentence 14 provides additional information that julie is in the bedroom, but it does not mention mary being in the school. therefore, it can be logically inferred that mary is not in the school."	fully	no	True	There is no information about Mary being in the school in the given context sentences. The context sentences only mention Mary's possible locations as the bedroom or the park.		"Reasoning: There is no information about Mary being in the school in the given context sentences. The context sentences only mention Mary's possible locations as the bedroom or the park.
+
+Answer: no"	0.0	0.0256	False	False	False	True	0

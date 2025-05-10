@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1086	8	18	1	"*TASK*
+Here are the context sentences:
+1. Sandra went back to the office.
+2. Sandra took the milk there.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	"from context sentence 2, ""sandra took the milk there"", we can infer that sandra is carrying the milk. the word ""took"" implies that sandra has possession of the milk and is transporting it to the office (as mentioned in context sentence 1). therefore, the correct answer is that sandra is carrying milk."	fully	milk	True	According to sentence 2, Sandra took the milk at the office, which implies that she is carrying the milk.		"assistant
+
+Reasoning: According to sentence 2, Sandra took the milk at the office, which implies that she is carrying the milk.
+
+Answer: milk"	0.0882	0.0294	False	False	False	False	0
+1087	8	18	2	"*TASK*
+Here are the context sentences:
+4. Daniel went back to the kitchen.
+5. Sandra went back to the bedroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	"although the context sentences 4 and 5 do not provide direct information about what sandra is carrying, we can refer to the previous context sentences (1 and 2) which mentioned that ""sandra took the milk there"" (sentence 2). since there is no information about sandra putting down or giving away the milk, it is logical to assume that sandra is still carrying the milk. therefore, the correct answer is that sandra is carrying milk."	none	not mentioned	False	There is no information provided about Sandra carrying anything. The context sentences only mention her location, not what she is carrying.		"Reasoning: There is no information provided about Sandra carrying anything. The context sentences only mention her location, not what she is carrying.
+
+Answer: not mentioned"	0.0625	0.0312	False	False	False	True	0
+1088	8	18	3	"*TASK*
+Here are the context sentences:
+7. John grabbed the apple there.
+8. Sandra put down the milk.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"from context sentence 8, ""sandra put down the milk"", we can infer that sandra is no longer carrying the milk. the phrase ""put down"" implies that sandra has relinquished possession of the milk, placing it on a surface or in a location. therefore, the correct answer is that sandra is carrying nothing."	partially	nothing	True	According to sentence 8, Sandra put down the milk, which implies that she is no longer carrying the milk.		"Reasoning: According to sentence 8, Sandra put down the milk, which implies that she is no longer carrying the milk.
+
+Answer: nothing"	0.0333	0.0667	False	False	False	False	0
+1089	8	18	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the bedroom.
+11. Sandra picked up the milk there.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	"from context sentence 11, ""sandra picked up the milk there"", we can infer that sandra is now carrying the milk. the phrase ""picked up"" implies that sandra has taken possession of the milk, lifting it from a surface or location. this action reverses the previous state where sandra had put down the milk (sentence 8), and now sandra is carrying the milk again. therefore, the correct answer is that sandra is carrying milk."	partially	milk	True	According to sentence 11, Sandra picked up the milk, which implies that she is now carrying the milk.		"Reasoning: According to sentence 11, Sandra picked up the milk, which implies that she is now carrying the milk.
+
+Answer: milk"	0.0345	0.1034	False	False	False	False	0
+1090	8	18	5	"*TASK*
+Here are the context sentences:
+13. John moved to the office.
+14. John journeyed to the hallway.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	"the context sentences 13 and 14 only provide information about john's movements, but do not mention sandra or the milk. to answer the question, we need to refer to the previous context sentences. from sentence 11, ""sandra picked up the milk there"", we know that sandra is carrying the milk. there is no information in the current context sentences that would change this state, so the correct answer remains that sandra is carrying milk."	none	milk	True	The context sentences 13 and 14 only provide information about John's movements, but do not mention Sandra or what she is carrying. The previous information about Sandra carrying the milk is still valid.		"Reasoning: The context sentences 13 and 14 only provide information about John's movements, but do not mention Sandra or what she is carrying. The previous information about Sandra carrying the milk is still valid.
+
+Answer: milk"	0.1739	0.0652	False	False	False	True	0

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+906	7	82	1	"*TASK*
+Here are the context sentences:
+1. John grabbed the apple there.
+2. Sandra grabbed the milk there.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	from the context sentences, we know that john grabbed an apple (sentence 1) and sandra grabbed the milk (sentence 2). there is no mention of john grabbing anything else. therefore, we can logically conclude that john is carrying only one object, which is the apple.	fully	one	True	From sentence 1, we know that John grabbed the apple, which means he is carrying one object, the apple.		"assistant
+
+Reasoning: From sentence 1, we know that John grabbed the apple, which means he is carrying one object, the apple.
+
+Answer: one"	0.0571	0.0286	False	False	False	False	0
+907	7	82	2	"*TASK*
+Here are the context sentences:
+4. Mary got the football there.
+5. John put down the apple.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	from the previous context sentences (1 and 2), we know that john was carrying an apple. in the new context sentence (5), it is stated that john put down the apple. this implies that john is no longer carrying the apple. therefore, we can logically conclude that john is carrying none.	partially	none	True	From the previous context, we know that John was carrying the apple (sentence 1). However, in sentence 5, it is stated that John put down the apple, which means he is no longer carrying it.		"Reasoning: From the previous context, we know that John was carrying the apple (sentence 1). However, in sentence 5, it is stated that John put down the apple, which means he is no longer carrying it.
+
+Answer: none"	0.1765	0.0392	False	False	False	False	0
+908	7	82	3	"*TASK*
+Here are the context sentences:
+7. John journeyed to the bathroom.
+8. Mary put down the football.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	from the previous context sentence (4), we know that mary got the football. in the new context sentence (8), it is stated that mary put down the football. this implies that mary is no longer carrying the football. therefore, we can logically conclude that mary is carrying none.	partially	none	True	From the previous context, we know that Mary was carrying the football (sentence 4). However, in sentence 8, it is stated that Mary put down the football, which means she is no longer carrying it.		"Reasoning: From the previous context, we know that Mary was carrying the football (sentence 4). However, in sentence 8, it is stated that Mary put down the football, which means she is no longer carrying it.
+
+Answer: none"	0.0588	0.0392	False	False	False	False	0
+909	7	82	4	"*TASK*
+Here are the context sentences:
+10. Sandra passed the milk to John.
+11. John left the milk there.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	from the context sentence (10), we know that sandra passed the milk to john, which implies that john is carrying the milk. however, in the next sentence (11), it is stated that john left the milk there, which means john is no longer carrying the milk. therefore, we can logically conclude that john is carrying none.	partially	none	True	From sentence 10, we know that John received the milk from Sandra. However, in sentence 11, it is stated that John left the milk there, which means he is no longer carrying it.		"Reasoning: From sentence 10, we know that John received the milk from Sandra. However, in sentence 11, it is stated that John left the milk there, which means he is no longer carrying it.
+
+Answer: none"	0.1042	0.0833	False	False	False	False	0
+910	7	82	5	"*TASK*
+Here are the context sentences:
+13. Sandra got the milk there.
+14. Sandra left the milk.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	from the context sentence (13), we know that sandra got the milk, which implies that sandra is carrying the milk. however, in the next sentence (14), it is stated that sandra left the milk, which means sandra is no longer carrying the milk. therefore, we can logically conclude that sandra is carrying none.	partially	none	True	From sentence 13, we know that Sandra got the milk, which means she is carrying it. However, in sentence 14, it is stated that Sandra left the milk, which means she is no longer carrying it.		"Reasoning: From sentence 13, we know that Sandra got the milk, which means she is carrying it. However, in sentence 14, it is stated that Sandra left the milk, which means she is no longer carrying it.
+
+Answer: none"	0.2308	0.0769	False	False	False	False	0

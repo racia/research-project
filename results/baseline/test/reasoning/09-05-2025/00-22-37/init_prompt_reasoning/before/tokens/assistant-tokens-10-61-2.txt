@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	4	Ġstates	Ġthat	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġbedroom	Ġor	Ġthe	Ġcinema	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġspecify	Ġwhich	Ġone	.	ĠThere	Ġis	Ġno	Ġadditional	Ġinformation	Ġthat	Ġwould	Ġallow	Ġus	Ġto	Ġdetermine	Ġwhich	Ġoption	Ġis	Ġcorrect	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġthe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.	ĠSince	ĠMary	Ġis	Ġin	Ġthe	Ġkitchen	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġleaving	Ġthe	Ġkitchen	Ġor	Ġgoing	Ġto	Ġthe	Ġbedroom	,	Ġwe	Ġcan	Ġconclude	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

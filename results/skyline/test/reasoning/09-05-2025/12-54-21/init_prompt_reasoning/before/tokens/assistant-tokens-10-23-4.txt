@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	10	Ġstates	Ġthat	ĠFred	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	Ġbeing	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

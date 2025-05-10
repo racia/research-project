@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġcarrying	Ġany	Ġobject	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġdropping	Ġthe	Ġapple	Ġand	ĠDaniel	Ġtaking	Ġthe	Ġmilk	,	Ġbut	Ġneither	Ġof	Ġthese	Ġactions	Ġinvolves	ĠJohn	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

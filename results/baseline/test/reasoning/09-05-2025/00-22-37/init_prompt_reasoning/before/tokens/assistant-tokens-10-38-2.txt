@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJulie	's	Ġlocation	,	Ġand	Ġwe	Ġhave	Ġa	Ġstatement	Ġin	Ġcontext	Ġsentence	Ġ	4	Ġthat	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġbedroom	Ġor	Ġthe	Ġkitchen	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJulie	Ġbeing	Ġin	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġno	<|eot_id|>

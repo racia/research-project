@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠSandra	's	Ġlocation	,	Ġand	Ġwe	Ġknow	Ġfrom	Ġsentence	Ġ	11	Ġthat	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.	ĠSentence	Ġ	10	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġbefore	Ġher	Ġmove	,	Ġso	Ġwe	Ġcan	Ġconclude	Ġthat	ĠSandra	Ġis	Ġindeed	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

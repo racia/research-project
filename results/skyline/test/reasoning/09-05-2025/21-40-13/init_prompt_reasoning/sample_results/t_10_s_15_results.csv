@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+71	10	15	1	"*TASK*
+Here are the context sentences:
+1. Bill travelled to the kitchen.
+2. Julie went to the school.
+
+Now, answer the following question:
+Is Bill in the kitchen?"	yes	"according to context sentence 1, ""bill travelled to the kitchen"", which implies that bill's destination was the kitchen and he has reached there. there is no information provided that suggests bill has left the kitchen or moved to a different location. therefore, it can be logically concluded that bill is indeed in the kitchen."	fully	yes	True	According to context sentence 1, Bill travelled to the kitchen, which implies that Bill is currently in the kitchen.		"Reasoning: According to context sentence 1, Bill travelled to the kitchen, which implies that Bill is currently in the kitchen.
+
+Answer: yes"	0.1	0.0333	False	False	False	False	0
+72	10	15	2	"*TASK*
+Here are the context sentences:
+4. Julie is either in the bedroom or the cinema.
+5. Julie went to the kitchen.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	yes	"according to context sentence 5, ""julie went to the kitchen"", which implies that julie's destination was the kitchen and she has reached there. context sentence 4, ""julie is either in the bedroom or the cinema"", is contradictory to julie's current location, as it suggests julie is in one of the two mentioned places, but sentence 5 provides more recent and specific information about julie's location, which is the kitchen. therefore, it can be logically concluded that julie"	fully	yes	True	According to context sentence 4, Julie was either in the bedroom or the cinema, but then according to context sentence 5, Julie went to the kitchen, which means Julie is no longer in the bedroom or the cinema, but now in the kitchen.		"Reasoning: According to context sentence 4, Julie was either in the bedroom or the cinema, but then according to context sentence 5, Julie went to the kitchen, which means Julie is no longer in the bedroom or the cinema, but now in the kitchen.
+
+Answer: yes"	0.1034	0.0172	False	False	False	False	0
+73	10	15	3	"*TASK*
+Here are the context sentences:
+7. Julie went back to the park.
+8. Bill journeyed to the bedroom.
+
+Now, answer the following question:
+Is Julie in the kitchen?"	no	"according to the previous context sentences, we knew that julie went to the kitchen (sentence 5), but there is no information that suggests julie stayed in the kitchen. the new information provided in sentence 7, ""julie went back to the park"", implies that julie left the kitchen and went to the park. therefore, it can be logically concluded that julie is no longer in the kitchen."	fully	no	True	According to previous context sentences, Julie was in the kitchen (sentence 5), but then according to context sentence 7, Julie went back to the park, which means Julie is no longer in the kitchen.		"Reasoning: According to previous context sentences, Julie was in the kitchen (sentence 5), but then according to context sentence 7, Julie went back to the park, which means Julie is no longer in the kitchen.
+
+Answer: no"	0.0612	0.0204	False	False	False	False	0
+74	10	15	4	"*TASK*
+Here are the context sentences:
+10. Fred is in the school.
+11. Fred moved to the kitchen.
+
+Now, answer the following question:
+Is Fred in the kitchen?"	yes	"according to context sentence 10, ""fred is in the school"", which implies that fred's initial location was the school. however, sentence 11, ""fred moved to the kitchen"", indicates that fred changed his location from the school to the kitchen. since there is no information provided that suggests fred left the kitchen or moved to a different location, it can be logically concluded that fred is currently in the kitchen."	fully	yes	True	According to context sentence 10, Fred was in the school, but then according to context sentence 11, Fred moved to the kitchen, which means Fred is no longer in the school, but now in the kitchen.		"Reasoning: According to context sentence 10, Fred was in the school, but then according to context sentence 11, Fred moved to the kitchen, which means Fred is no longer in the school, but now in the kitchen.
+
+Answer: yes"	0.1176	0.0196	False	False	False	False	0
+75	10	15	5	"*TASK*
+Here are the context sentences:
+13. Mary went to the school.
+14. Mary went to the park.
+
+Now, answer the following question:
+Is Mary in the park?"	yes	"according to context sentence 13, ""mary went to the school"", which implies that mary's initial destination was the school. however, sentence 14, ""mary went to the park"", indicates that mary changed her location from the school to the park. since there is no information provided that suggests mary left the park or moved to a different location, it can be logically concluded that mary is currently in the park."	fully	yes	True	According to context sentence 13, Mary went to the school, but then according to context sentence 14, Mary went to the park, which means Mary is no longer in the school, but now in the park.		"Reasoning: According to context sentence 13, Mary went to the school, but then according to context sentence 14, Mary went to the park, which means Mary is no longer in the school, but now in the park.
+
+Answer: yes"	0.0784	0.0196	False	False	False	False	0

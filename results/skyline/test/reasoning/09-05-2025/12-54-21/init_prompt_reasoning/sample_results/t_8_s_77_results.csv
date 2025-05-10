@@ -1,0 +1,106 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1381	8	77	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the office.
+2. John moved to the office.
+3. Sandra travelled to the hallway.
+4. Daniel went to the garden.
+5. John moved to the bedroom.
+6. Mary went back to the garden.
+7. John went back to the bathroom.
+8. Daniel went back to the kitchen.
+9. Mary journeyed to the office.
+10. John went to the hallway.
+11. Daniel journeyed to the hallway.
+12. John journeyed to the bedroom.
+13. John moved to the hallway.
+14. Sandra moved to the office.
+15. Mary travelled to the bedroom.
+16. John journeyed to the garden.
+17. Sandra travelled to the bedroom.
+18. Mary went back to the hallway.
+19. Mary journeyed to the bedroom.
+20. John went to the kitchen.
+21. John journeyed to the bedroom.
+22. Sandra moved to the kitchen.
+23. Mary moved to the office.
+24. Mary travelled to the hallway.
+25. Mary journeyed to the kitchen.
+26. Daniel journeyed to the bedroom.
+27. Mary went back to the bathroom.
+28. Mary went to the bedroom.
+29. Mary went back to the hallway.
+30. Daniel travelled to the kitchen.
+31. Mary travelled to the office.
+32. John moved to the bathroom.
+33. John went back to the garden.
+34. Sandra went to the bathroom.
+35. Sandra journeyed to the office.
+36. John went to the bedroom.
+37. Mary journeyed to the garden.
+38. Mary went to the office.
+39. John moved to the office.
+40. John travelled to the kitchen.
+41. Sandra travelled to the kitchen.
+42. John journeyed to the bathroom.
+43. John took the milk there.
+44. John put down the milk there.
+
+Now, answer the following question:
+What is John carrying?"	nothing	from the context sentences, we can track john's movements and actions. in sentence 43, it is mentioned that john took the milk there, which implies that john picked up the milk. however, in the very next sentence 44, it is stated that john put down the milk there. this means that john is no longer carrying the milk. therefore, the correct answer is that john is carrying nothing.	fully	nothing	True	In sentence 43, John took the milk, but in sentence 44, John put down the milk, which means John is no longer carrying the milk.		"assistant
+
+Reasoning: In sentence 43, John took the milk, but in sentence 44, John put down the milk, which means John is no longer carrying the milk.
+
+Answer: nothing"	0.186	0.0465	False	False	False	False	0
+1382	8	77	2	"*TASK*
+Here are the context sentences:
+46. Mary travelled to the kitchen.
+47. Mary went back to the bedroom.
+
+Now, answer the following question:
+What is John carrying?"	nothing	the context sentences 46 and 47 only provide information about mary's movements, but the question asks about john. since there is no new information about john's actions or possessions, we can refer to the previous parts of the conversation history. in the previous parts, we established that john put down the milk in sentence 44, which means he is no longer carrying it. there is no other information about john carrying anything else. therefore, the correct answer is that john is carrying	none	nothing	True	The new context sentences (46 and 47) do not provide any new information about John. The previous information about John is that he took the milk and then put it down, so he is not carrying anything.		"Reasoning: The new context sentences (46 and 47) do not provide any new information about John. The previous information about John is that he took the milk and then put it down, so he is not carrying anything.
+
+Answer: nothing"	0.1	0.04	False	False	False	True	0
+1383	8	77	3	"*TASK*
+Here are the context sentences:
+49. Sandra moved to the hallway.
+50. Mary moved to the garden.
+
+Now, answer the following question:
+What is John carrying?"	nothing	the context sentences 49 and 50 only provide information about sandra's and mary's movements, but the question asks about john. since there is no new information about john's actions or possessions, we can refer to the previous parts of the conversation history. in the previous parts, we established that john put down the milk in sentence 44, which means he is no longer carrying it. there is no other information about john carrying anything else. therefore, the correct answer is	none	nothing	True	The new context sentences (49 and 50) do not provide any new information about John. The previous information about John is that he took the milk and then put it down, so he is not carrying anything.		"Reasoning: The new context sentences (49 and 50) do not provide any new information about John. The previous information about John is that he took the milk and then put it down, so he is not carrying anything.
+
+Answer: nothing"	0.12	0.04	False	False	False	True	0
+1384	8	77	4	"*TASK*
+Here are the context sentences:
+52. Daniel went back to the bathroom.
+53. John moved to the hallway.
+54. Mary journeyed to the kitchen.
+55. Mary moved to the garden.
+56. Sandra travelled to the office.
+57. Daniel went to the office.
+58. Sandra went back to the bathroom.
+59. Sandra grabbed the apple there.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	in sentence 59, it is explicitly stated that sandra grabbed the apple there, which means she picked it up and is now carrying it. there is no subsequent information about sandra putting down the apple or giving it to someone else, so we can conclude that sandra is still carrying the apple. therefore, the correct answer is that sandra is carrying an apple.	fully	apple	True	In sentence 59, Sandra grabbed the apple, which means she is carrying the apple.		"Reasoning: In sentence 59, Sandra grabbed the apple, which means she is carrying the apple.
+
+Answer: apple"	0.0	0.04	False	False	False	False	0
+1385	8	77	5	"*TASK*
+Here are the context sentences:
+61. Sandra dropped the apple.
+62. Sandra travelled to the bedroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	" and provide a reasoning that leads to the provided answer.
+as a basis for your reasoning, use only the information provided to you in the conversation.
+
+follow each actor and object in the sentences separately paying attention to their relations.
+the questions might refer to previous parts of the conversation history.
+if so, inspect all the previous parts to find the correct reasoning.
+
+aim to give a specific and objective reasoning rather than a subjective one.
+
+if information you need to answer the question is not specified directly,
+infer it"	partially	nothing	True	In sentence 61, Sandra dropped the apple, which means she is no longer carrying the apple.		"Reasoning: In sentence 61, Sandra dropped the apple, which means she is no longer carrying the apple.
+
+Answer: nothing"	0.0	0.0741	False	False	False	False	0

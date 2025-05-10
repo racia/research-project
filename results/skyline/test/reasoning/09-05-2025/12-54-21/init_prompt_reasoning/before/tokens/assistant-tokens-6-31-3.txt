@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġ	7	Ġand	Ġ	8	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġactions	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+91	6	19	1	"*TASK*
+Here are the context sentences:
+1. Mary picked up the apple there.
+2. Mary went to the bathroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	yes	"the context sentence ""mary went to the bathroom"" explicitly states that mary went to the bathroom, which implies that she is currently in the bathroom. the first sentence ""mary picked up the apple there"" does not provide any information that would suggest she left the bathroom, so it can be inferred that she is still in the bathroom."	fully	yes	True	The context sentences indicate that Mary went to the bathroom (sentence 2), which implies that she is currently in the bathroom.		"Reasoning: The context sentences indicate that Mary went to the bathroom (sentence 2), which implies that she is currently in the bathroom.
+
+Answer: yes"	0.0625	0.0312	False	False	False	False	0
+92	6	19	2	"*TASK*
+Here are the context sentences:
+4. Sandra went to the bathroom.
+5. Sandra grabbed the football there.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	no	there is no mention of mary or the kitchen in the provided context sentences. the sentences only talk about sandra and her actions in the bathroom. there is no information that would suggest mary is in the kitchen or even exists in the context. therefore, it can be logically concluded that mary is not in the kitchen.	none	no	True	There is no mention of Mary going to the kitchen or being in the kitchen in the given context sentences. The sentences only mention Sandra's actions, not Mary's.		"Reasoning: There is no mention of Mary going to the kitchen or being in the kitchen in the given context sentences. The sentences only mention Sandra's actions, not Mary's.
+
+Answer: no"	0.075	0.025	False	False	False	True	0
+93	6	19	3	"*TASK*
+Here are the context sentences:
+7. Sandra went back to the bedroom.
+8. Mary went back to the kitchen.
+
+Now, answer the following question:
+Is Mary in the office?"	no	"the context sentence ""mary went back to the kitchen"" explicitly states that mary went back to the kitchen, which implies that she is currently in the kitchen. there is no information that suggests she is in the office. therefore, it can be logically concluded that mary is not in the office."	fully	no	True	The context sentences do not mention Mary going to the office or being in the office. Sentence 7 mentions Sandra going back to the bedroom, and sentence 8 mentions Mary going back to the kitchen, but there is no mention of the office.		"Reasoning: The context sentences do not mention Mary going to the office or being in the office. Sentence 7 mentions Sandra going back to the bedroom, and sentence 8 mentions Mary going back to the kitchen, but there is no mention of the office.
+
+Answer: no"	0.0714	0.0179	False	False	False	True	0
+94	6	19	4	"*TASK*
+Here are the context sentences:
+10. Sandra went back to the office.
+11. Sandra left the football.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	there is no information in the provided context sentences that mentions mary or her location. the sentences only talk about sandra and her actions, specifically that she went back to the office and left the football. there is no connection to mary or the bathroom, and we already know from previous context (sentence 8) that mary went back to the kitchen. therefore, it can be logically concluded that mary is not in the bathroom.	none	not mentioned	False	There is no mention of Mary in the context sentences. The sentences only mention Sandra's actions, not Mary's.		"Reasoning: There is no mention of Mary in the context sentences. The sentences only mention Sandra's actions, not Mary's.
+
+Answer: not mentioned"	0.0323	0.0323	False	False	False	True	0
+95	6	19	5	"*TASK*
+Here are the context sentences:
+13. Daniel got the football there.
+14. Sandra went back to the bedroom.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	"the question asks about mary's location, and the answer is ""yes"", indicating that mary is in the kitchen. this is supported by the previous context sentence 8, which states ""mary went back to the kitchen"". the current context sentences 13 and 14 do not provide any new information about mary's location, and they only talk about daniel and sandra's actions. therefore, it can be logically concluded that mary is still in the kitchen, as there is no information to suggest"	none	not mentioned	False	The context sentences do not mention Mary's location. Sentence 13 mentions Daniel getting the football, and sentence 14 mentions Sandra going back to the bedroom, but there is no mention of Mary's location.		"Reasoning: The context sentences do not mention Mary's location. Sentence 13 mentions Daniel getting the football, and sentence 14 mentions Sandra going back to the bedroom, but there is no mention of Mary's location.
+
+Answer: not mentioned"	0.0204	0.0204	False	False	False	True	0

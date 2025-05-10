@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2051	10	11	1	"*TASK*
+Here are the context sentences:
+1. Julie moved to the kitchen.
+2. Fred is either in the bedroom or the bedroom.
+
+Now, answer the following question:
+Is Fred in the cinema?"	no	the context sentences do not mention the cinema at all, and the second sentence only mentions the bedroom as a possible location for fred. there is no information provided that would suggest fred is in the cinema. therefore, based on the given information, it can be logically concluded that fred is not in the cinema.	fully	no	True	The question asks about Fred's location, and the context sentences provide information about Fred's possible locations. Sentence 2 states that Fred is either in the bedroom or the bedroom, which seems to be a contradiction. However, we can infer that the sentence is trying to convey that Fred is in the bedroom. There is no mention of Fred being in the cinema.		"Reasoning: The question asks about Fred's location, and the context sentences provide information about Fred's possible locations. Sentence 2 states that Fred is either in the bedroom or the bedroom, which seems to be a contradiction. However, we can infer that the sentence is trying to convey that Fred is in the bedroom. There is no mention of Fred being in the cinema.
+
+Answer: no"	0.0759	0.0127	False	False	False	True	0
+2052	10	11	2	"*TASK*
+Here are the context sentences:
+4. Bill went to the bedroom.
+5. Bill moved to the office.
+
+Now, answer the following question:
+Is Fred in the bedroom?"	maybe	"the context sentences do not provide any information about fred's location. the sentences only mention bill's movements, first going to the bedroom and then moving to the office. there is no information provided about fred's whereabouts, so it is uncertain whether fred is in the bedroom or not, hence the answer ""maybe""."	none	not mentioned	False	The question asks about Fred's location, but the context sentences only provide information about Bill's locations. Bill went to the bedroom and then moved to the office, but there is no mention of Fred's location.		"Reasoning: The question asks about Fred's location, but the context sentences only provide information about Bill's locations. Bill went to the bedroom and then moved to the office, but there is no mention of Fred's location.
+
+Answer: not mentioned"	0.08	0.02	False	False	False	True	0
+2053	10	11	3	"*TASK*
+Here are the context sentences:
+7. Fred is in the kitchen.
+8. Fred is in the school.
+
+Now, answer the following question:
+Is Fred in the school?"	yes	"the context sentence 8 explicitly states ""fred is in the school"", which directly answers the question ""is fred in the school?"" with a ""yes"". the fact that sentence 7 mentions fred being in the kitchen does not contradict this information, as it is possible for fred to be in multiple locations (although this might be unlikely in a real-world scenario). however, based on the provided information, we can conclude that fred is indeed in the school."	fully	yes	True	The question asks about Fred's location, and the context sentences provide two contradictory statements. Sentence 7 states that Fred is in the kitchen, while Sentence 8 states that Fred is in the school. Since both statements cannot be true, we can infer that Fred is actually in one of these locations, but the correct one is not specified.		"Reasoning: The question asks about Fred's location, and the context sentences provide two contradictory statements. Sentence 7 states that Fred is in the kitchen, while Sentence 8 states that Fred is in the school. Since both statements cannot be true, we can infer that Fred is actually in one of these locations, but the correct one is not specified.
+
+Answer: yes"	0.08	0.0133	False	False	False	False	0
+2054	10	11	4	"*TASK*
+Here are the context sentences:
+10. Julie is either in the cinema or the office.
+11. Mary went back to the kitchen.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	"the context sentence 11 explicitly states ""mary went back to the kitchen"", which implies that mary was previously in the kitchen and has now returned to it. this directly answers the question ""is mary in the kitchen?"" with a ""yes"". the information about julie's location in sentence 10 is irrelevant to mary's location, so it does not affect the conclusion that mary is indeed in the kitchen."	fully	yes	True	The question asks about Mary's location, and the context sentences provide information about Mary's possible location. Sentence 11 states that Mary went back to the kitchen, which implies that Mary was previously somewhere else and has now returned to the kitchen.		"Reasoning: The question asks about Mary's location, and the context sentences provide information about Mary's possible location. Sentence 11 states that Mary went back to the kitchen, which implies that Mary was previously somewhere else and has now returned to the kitchen.
+
+Answer: yes"	0.0	0.0182	False	False	False	True	0
+2055	10	11	5	"*TASK*
+Here are the context sentences:
+13. Julie journeyed to the kitchen.
+14. Julie moved to the school.
+
+Now, answer the following question:
+Is Fred in the school?"	yes	"the provided answer ""yes"" seems incorrect based on the given context. the context sentences only mention julie's movements, first journeying to the kitchen and then moving to the school. there is no information provided about fred's location. the answer ""yes"" would require additional information about fred being in the school, which is not present in the context."	none	not mentioned	False	The question asks about Fred's location, but the context sentences only provide information about Julie's locations. Julie journeyed to the kitchen and then moved to the school, but there is no mention of Fred's location.		"Reasoning: The question asks about Fred's location, but the context sentences only provide information about Julie's locations. Julie journeyed to the kitchen and then moved to the school, but there is no mention of Fred's location.
+
+Answer: not mentioned"	0.0	0.0196	False	False	False	True	0

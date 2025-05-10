@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	2	Ġpreviously	Ġmentioned	ĠJohn	Ġgoing	Ġto	Ġthe	Ġbathroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġleaving	Ġthe	Ġbathroom	.	ĠSentence	Ġ	7	Ġmentions	ĠJohn	Ġdropping	Ġthe	Ġapple	Ġ"	there	",	Ġwhich	Ġcould	Ġimply	Ġthat	Ġ"	there	"	Ġrefers	Ġto	Ġthe	Ġbathroom	,	Ġas	Ġit	Ġis	Ġthe	Ġlast	Ġknown	Ġlocation	Ġof	ĠJohn	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

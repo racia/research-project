@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+2	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+3	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+4	.	ĠJohn	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠJohn	Ġcarrying	?Ċ

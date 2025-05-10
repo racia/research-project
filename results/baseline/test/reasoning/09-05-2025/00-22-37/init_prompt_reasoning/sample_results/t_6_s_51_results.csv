@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+251	6	51	1	"*TASK*
+Here are the context sentences:
+1. Mary got the apple there.
+2. John moved to the office.
+
+Now, answer the following question:
+Is John in the office?"	yes	"the context sentence ""john moved to the office"" explicitly states that john has moved to the office, which implies that he is currently located in the office. therefore, the answer to the question ""is john in the office?"" is indeed ""yes""."	fully	yes	True	The question asks about John's location, and the context sentence (2) explicitly states that John moved to the office. This implies that John is currently in the office.		"Reasoning: The question asks about John's location, and the context sentence (2) explicitly states that John moved to the office. This implies that John is currently in the office.
+
+Answer: yes"	0.0488	0.0244	False	False	False	False	0
+252	6	51	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the garden.
+5. Mary discarded the apple.
+
+Now, answer the following question:
+Is John in the office?"	yes	"the context sentences 4 and 5 provide information about mary's actions, but they do not mention john or the office. however, we can refer back to the previous context sentence 2, which states ""john moved to the office."" this sentence explicitly states that john is in the office, and there is no information provided to suggest that he has left the office. therefore, the answer to the question ""is john in the office?"" remains ""yes""."	none	yes	True	The question asks about John's location, and the context sentences (1) and (2) from the previous task mentioned John's movement to the office. However, there is no new information provided in these additional context sentences that would change John's location. Therefore, we can still conclude that John is in the office.		"Reasoning: The question asks about John's location, and the context sentences (1) and (2) from the previous task mentioned John's movement to the office. However, there is no new information provided in these additional context sentences that would change John's location. Therefore, we can still conclude that John is in the office.
+
+Answer: yes"	0.0423	0.0141	False	False	False	True	0
+253	6	51	3	"*TASK*
+Here are the context sentences:
+7. Mary took the apple there.
+8. Mary travelled to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	"the context sentence 8 states that ""mary travelled to the bedroom"", which implies that mary is currently in the bedroom. there is no information provided to suggest that mary is in the bathroom. therefore, the answer to the question ""is mary in the bathroom?"" is indeed ""no""."	fully	not mentioned	False	The context sentences (7) and (8) mention Mary's actions, but they don't specify the location. However, we can infer that Mary is not in the garden, as she travelled to the bedroom. There is no information that suggests Mary is in the bathroom, so we can't conclude that she is.		"Reasoning: The context sentences (7) and (8) mention Mary's actions, but they don't specify the location. However, we can infer that Mary is not in the garden, as she travelled to the bedroom. There is no information that suggests Mary is in the bathroom, so we can't conclude that she is.
+
+Answer: not mentioned"	0.0	0.0139	False	False	False	True	0
+254	6	51	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the hallway.
+11. John grabbed the football there.
+
+Now, answer the following question:
+Is Mary in the hallway?"	yes	"the context sentence 10 states that ""mary travelled to the hallway"", which explicitly indicates that mary is currently in the hallway. there is no information provided to suggest that mary has left the hallway. therefore, the answer to the question ""is mary in the hallway?"" is indeed ""yes""."	fully	yes	True	The context sentence (10) explicitly states that Mary travelled to the hallway, which implies that Mary is currently in the hallway.		"Reasoning: The context sentence (10) explicitly states that Mary travelled to the hallway, which implies that Mary is currently in the hallway.
+
+Answer: yes"	0.0312	0.0312	False	False	False	False	0
+255	6	51	5	"*TASK*
+Here are the context sentences:
+13. John put down the football there.
+14. Mary left the apple.
+
+Now, answer the following question:
+Is Mary in the hallway?"	yes	"the context sentence 10 (from previous parts) states that ""mary travelled to the hallway"", which explicitly indicates that mary is currently in the hallway. there is no information provided to suggest that mary has left the hallway. the context sentences 13 and 14 do not provide any information about mary's location, they only mention john's action with the football and mary's action with the apple, respectively. therefore, the answer to the question ""is mary in the hallway?"" remains """	none	yes	True	The context sentences (13) and (14) don't provide any new information about Mary's location. We already know from the previous task that Mary is in the hallway (from context sentence 10). There is no reason to assume she has moved or changed locations.		"Reasoning: The context sentences (13) and (14) don't provide any new information about Mary's location. We already know from the previous task that Mary is in the hallway (from context sentence 10). There is no reason to assume she has moved or changed locations.
+
+Answer: yes"	0.0	0.0164	False	False	False	True	0

@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠJohn	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
+5	.	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠJohn	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠMary	Ġcarrying	?Ċ

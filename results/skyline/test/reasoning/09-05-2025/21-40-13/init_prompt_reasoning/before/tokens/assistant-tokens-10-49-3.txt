@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġsuggesting	Ġshe	Ġhas	Ġleft	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

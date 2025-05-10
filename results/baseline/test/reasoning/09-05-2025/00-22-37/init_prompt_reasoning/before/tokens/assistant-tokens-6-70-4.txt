@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠDaniel	Ġbeing	Ġin	Ġthe	Ġbedroom	.	ĠSentence	Ġ	10	Ġmentions	ĠMary	Ġpicking	Ġup	Ġa	Ġfootball	,	Ġand	ĠSentence	Ġ	11	Ġmentions	ĠMary	Ġgoing	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	Ġor	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

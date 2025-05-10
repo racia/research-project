@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+2	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+3	.	ĠDaniel	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+4	.	ĠSandra	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠDaniel	Ġcarrying	?Ċ

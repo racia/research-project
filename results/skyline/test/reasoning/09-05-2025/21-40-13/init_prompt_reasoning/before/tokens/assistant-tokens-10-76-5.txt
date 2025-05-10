@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	13	Ġand	Ġ	14	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠHowever	,	Ġwe	Ġcan	Ġrefer	Ġto	Ġa	Ġprevious	Ġcontext	Ġsentence	Ġ(	10	)	Ġwhich	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

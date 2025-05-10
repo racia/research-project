@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġthat	Ġsuggests	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	.	ĠSentence	Ġ	11	Ġonly	Ġmentions	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġhallway	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġmention	Ġthe	Ġbedroom	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

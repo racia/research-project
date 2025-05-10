@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1461	8	93	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the bathroom.
+2. Daniel grabbed the milk there.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"according to the context sentences, daniel grabbed the milk in the bathroom (as indicated by ""there"" in sentence 2, which refers to the location mentioned in sentence 1, ""the bathroom""). therefore, it can be logically concluded that daniel is carrying the milk."	fully	milk	True	According to sentence 2, Daniel grabbed the milk in the bathroom, which implies that Daniel is carrying the milk.		"assistant
+
+Reasoning: According to sentence 2, Daniel grabbed the milk in the bathroom, which implies that Daniel is carrying the milk.
+
+Answer: milk"	0.0909	0.0303	False	False	False	False	0
+1462	8	93	2	"*TASK*
+Here are the context sentences:
+4. Mary went to the hallway.
+5. Sandra moved to the hallway.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	the question asks about daniel, but the context sentences 4 and 5 only mention mary and sandra moving to the hallway. however, we can look back at the previous context sentences (1 and 2) which mentioned daniel grabbing the milk in the bathroom. there is no information provided that suggests daniel has put down the milk or moved to a different location. therefore, it can be logically concluded that daniel is still carrying the milk.	none	milk	True	There is no new information about Daniel, and the previous information about Daniel carrying milk (sentence 2) is still valid.		"Reasoning: There is no new information about Daniel, and the previous information about Daniel carrying milk (sentence 2) is still valid.
+
+Answer: milk"	0.0312	0.0312	False	False	False	True	0
+1463	8	93	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the bathroom.
+8. John travelled to the kitchen.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	the context sentences 7 and 8 mention sandra and john moving to different locations, but they do not provide any new information about daniel. however, we can look back at the previous context sentences (1 and 2) which mentioned daniel grabbing the milk in the bathroom. there is no information provided that suggests daniel has put down the milk or moved to a different location. therefore, it can be logically concluded that daniel is still carrying the milk.	none	milk	True	There is no new information about Daniel, and the previous information about Daniel carrying milk (sentence 2) is still valid.		"Reasoning: There is no new information about Daniel, and the previous information about Daniel carrying milk (sentence 2) is still valid.
+
+Answer: milk"	0.0	0.0312	False	False	False	True	0
+1464	8	93	4	"*TASK*
+Here are the context sentences:
+10. Sandra moved to the kitchen.
+11. Mary moved to the office.
+12. Daniel journeyed to the bathroom.
+13. Sandra moved to the garden.
+14. Mary went back to the bedroom.
+15. Mary moved to the kitchen.
+16. Daniel left the milk there.
+17. Sandra got the football there.
+
+Now, answer the following question:
+What is Sandra carrying?"	football	"according to sentence 17, sandra got the football in the garden (as indicated by ""there"", which refers to the location mentioned in sentence 13, ""the garden""). since there is no information provided that suggests sandra has put down the football, it can be logically concluded that sandra is carrying the football."	fully	football	True	According to sentence 17, Sandra got the football in the garden (since sentence 13 mentions Sandra moving to the garden, and sentence 17 doesn't specify a new location), which implies that Sandra is carrying the football.		"Reasoning: According to sentence 17, Sandra got the football in the garden (since sentence 13 mentions Sandra moving to the garden, and sentence 17 doesn't specify a new location), which implies that Sandra is carrying the football.
+
+Answer: football"	0.0385	0.0192	False	False	False	True	0
+1465	8	93	5	"*TASK*
+Here are the context sentences:
+19. Sandra went to the bedroom.
+20. Sandra went to the office.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	according to the previous context sentences (1 and 2), daniel was carrying the milk. however, in sentence 16, it is mentioned that daniel left the milk in the kitchen. since then, there is no information provided that suggests daniel picked up or is carrying anything else. therefore, it can be logically concluded that daniel is carrying nothing.	none	nothing	True	According to sentence 16, Daniel left the milk, which implies that Daniel is no longer carrying the milk.		"Reasoning: According to sentence 16, Daniel left the milk, which implies that Daniel is no longer carrying the milk.
+
+Answer: nothing"	0.0	0.069	False	False	False	False	0

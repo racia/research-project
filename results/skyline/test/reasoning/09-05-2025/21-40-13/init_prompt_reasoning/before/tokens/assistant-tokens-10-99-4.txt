@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	8	Ġstates	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġschool	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġa	Ġcurrent	Ġlocation	.	ĠHowever	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġschool	Ġsince	Ġshe	Ġjourney	ed	Ġthere	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

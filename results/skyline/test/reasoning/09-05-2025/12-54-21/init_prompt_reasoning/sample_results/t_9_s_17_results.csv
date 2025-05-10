@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1581	9	17	1	"*TASK*
+Here are the context sentences:
+1. Sandra is in the hallway.
+2. John went back to the kitchen.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	yes	"the context sentence ""1. sandra is in the hallway"" explicitly states that sandra is in the hallway. the second sentence ""2. john went back to the kitchen"" does not provide any information that would change sandra's location. therefore, based on the provided information, it can be concluded that sandra is indeed in the hallway, which aligns with the answer ""yes""."	fully	yes	True	The context sentence 1 explicitly states that Sandra is in the hallway, and there is no subsequent information that suggests she has moved or left the hallway.		"assistant
+
+Reasoning: The context sentence 1 explicitly states that Sandra is in the hallway, and there is no subsequent information that suggests she has moved or left the hallway.
+
+Answer: yes"	0.0714	0.0238	False	False	False	True	0
+1582	9	17	2	"*TASK*
+Here are the context sentences:
+4. Daniel went back to the garden.
+5. Daniel is not in the garden.
+
+Now, answer the following question:
+Is John in the garden?"	no	"the context sentences do not provide any information about john's location. the sentences only mention daniel, stating that he went back to the garden (sentence 4) but then contradicting this by saying he is not in the garden (sentence 5). since there is no information about john, we cannot conclude that he is in the garden. therefore, the answer ""no"" is reasonable, as there is no evidence to suggest that john is in the garden."	none	not mentioned	False	There is no information provided about John's location in the context sentences. The sentences only mention Daniel's movement and location, but do not provide any information about John.		"Reasoning: There is no information provided about John's location in the context sentences. The sentences only mention Daniel's movement and location, but do not provide any information about John.
+
+Answer: not mentioned"	0.0	0.0244	False	False	False	True	0
+1583	9	17	3	"*TASK*
+Here are the context sentences:
+7. John is in the garden.
+8. John is in the kitchen.
+
+Now, answer the following question:
+Is Daniel in the garden?"	no	"the context sentences only provide information about john's location, stating that he is in the garden (sentence 7) and then contradicting this by saying he is in the kitchen (sentence 8). there is no information provided about daniel's location. since there is no mention of daniel being in the garden, it is reasonable to conclude that daniel is not in the garden, which aligns with the answer ""no""."	none	not mentioned	False	The context sentences only provide information about John's location, but do not mention Daniel's location. There is no information about Daniel's movement or location in the provided context sentences.		"Reasoning: The context sentences only provide information about John's location, but do not mention Daniel's location. There is no information about Daniel's movement or location in the provided context sentences.
+
+Answer: not mentioned"	0.1395	0.0233	False	False	False	True	0
+1584	9	17	4	"*TASK*
+Here are the context sentences:
+10. Mary went back to the bedroom.
+11. John journeyed to the bathroom.
+
+Now, answer the following question:
+Is Daniel in the garden?"	no	"the context sentences only provide information about mary and john's locations, stating that mary went back to the bedroom (sentence 10) and john journeyed to the bathroom (sentence 11). there is no information provided about daniel's location, and no mention of the garden. since there is no evidence to suggest that daniel is in the garden, it is reasonable to conclude that daniel is not in the garden, which aligns with the answer ""no""."	none	not mentioned	False	The context sentences only provide information about Mary's and John's movements and locations, but do not mention Daniel's location. There is no information about Daniel's movement or location in the provided context sentences.		"Reasoning: The context sentences only provide information about Mary's and John's movements and locations, but do not mention Daniel's location. There is no information about Daniel's movement or location in the provided context sentences.
+
+Answer: not mentioned"	0.0833	0.0208	False	False	False	True	0
+1585	9	17	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the bathroom.
+14. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	yes	"the context sentence ""13. sandra journeyed to the bathroom"" explicitly states that sandra went to the bathroom. there is no subsequent information that suggests she left the bathroom. therefore, based on the provided information, it is reasonable to conclude that sandra is indeed in the bathroom, which aligns with the answer ""yes""."	fully	yes	True	The context sentence 13 explicitly states that Sandra journeyed to the bathroom, and there is no subsequent information that suggests she has left the bathroom.		"Reasoning: The context sentence 13 explicitly states that Sandra journeyed to the bathroom, and there is no subsequent information that suggests she has left the bathroom.
+
+Answer: yes"	0.0278	0.0278	False	False	False	True	0

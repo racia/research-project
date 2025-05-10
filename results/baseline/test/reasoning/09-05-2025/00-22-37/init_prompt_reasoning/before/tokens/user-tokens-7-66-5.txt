@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+29	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+30	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+31	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+32	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+33	.	ĠSandra	Ġdiscarded	Ġthe	Ġapple	Ġthere	.Ċ
+34	.	ĠDaniel	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠDaniel	Ġcarrying	?Ċ

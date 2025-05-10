@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġcurrent	Ġlocation	.	ĠSentence	Ġ	13	Ġmentions	ĠSandra	Ġtravelling	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġimply	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġkitchen	.	ĠSentence	Ġ	14	Ġmentions	ĠJohn	Ġdropping	Ġthe	Ġfootball	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

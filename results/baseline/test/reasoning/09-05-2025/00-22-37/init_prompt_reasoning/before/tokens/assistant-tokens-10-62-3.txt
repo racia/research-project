@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġcinema	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġarrived	Ġat	Ġthe	Ġcinema	.	ĠSentence	Ġ	7	Ġmentions	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġthis	Ġdoes	Ġnot	Ġcontradict	Ġthe	Ġfact	Ġthat	Ġshe	Ġarrived	Ġat	Ġthe	Ġcinema	.ĊĊ	Answer	:	ĠYes	<|eot_id|>

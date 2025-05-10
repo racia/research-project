@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+381	10	77	1	"*TASK*
+Here are the context sentences:
+1. Bill went to the park.
+2. Bill is in the office.
+
+Now, answer the following question:
+Is Bill in the office?"	yes	"the context sentences provide two separate statements about bill's location. sentence 1 states that bill went to the park, but sentence 2 explicitly states that bill is in the office. since sentence 2 is a more recent and direct statement about bill's current location, it takes precedence over sentence 1. therefore, the correct answer is ""yes"", bill is indeed in the office."	fully	yes	True	"The context sentence 2 explicitly states that ""Bill is in the office"". This contradicts the information in sentence 1, which implies that Bill was in the park at some point. However, sentence 2 provides the most up-to-date information about Bill's location, which is the office."		"assistant
+
+Reasoning: The context sentence 2 explicitly states that ""Bill is in the office"". This contradicts the information in sentence 1, which implies that Bill was in the park at some point. However, sentence 2 provides the most up-to-date information about Bill's location, which is the office.
+
+Answer: yes"	0.1571	0.0143	False	False	False	True	0
+382	10	77	2	"*TASK*
+Here are the context sentences:
+4. Fred is in the school.
+5. Fred went to the cinema.
+
+Now, answer the following question:
+Is Fred in the cinema?"	yes	"the context sentences provide two separate statements about fred's location. sentence 4 states that fred is in the school, but sentence 5 states that fred went to the cinema. the verb ""went"" in sentence 5 implies that fred's location has changed from the school to the cinema. therefore, the more recent and relevant information about fred's location is that he is in the cinema, so the correct answer is ""yes"", fred is indeed in the cinema."	fully	yes	True	"The context sentence 4 states that ""Fred is in the school"", but sentence 5 updates the information by saying ""Fred went to the cinema"". This implies that Fred's location has changed from the school to the cinema."		"Reasoning: The context sentence 4 states that ""Fred is in the school"", but sentence 5 updates the information by saying ""Fred went to the cinema"". This implies that Fred's location has changed from the school to the cinema.
+
+Answer: yes"	0.0962	0.0192	False	False	False	True	0
+383	10	77	3	"*TASK*
+Here are the context sentences:
+7. Julie travelled to the park.
+8. Fred is in the bedroom.
+
+Now, answer the following question:
+Is Fred in the cinema?"	no	"the context sentences provide information about two separate individuals, julie and fred. sentence 7 states that julie travelled to the park, which is irrelevant to fred's location. sentence 8 states that fred is in the bedroom, which explicitly indicates that fred is not in the cinema. therefore, the correct answer is ""no"", fred is not in the cinema."	fully	no	True	There is no information provided about Fred being in the cinema. The context sentences only mention Fred being in the bedroom (sentence 8) and Julie travelling to the park (sentence 7).		"Reasoning: There is no information provided about Fred being in the cinema. The context sentences only mention Fred being in the bedroom (sentence 8) and Julie travelling to the park (sentence 7).
+
+Answer: no"	0.0444	0.0222	False	False	False	True	0
+384	10	77	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the office.
+11. Mary moved to the bedroom.
+
+Now, answer the following question:
+Is Mary in the cinema?"	no	"the context sentences provide information about mary's movements. sentence 10 states that mary travelled to the office, but sentence 11 updates mary's location to the bedroom. there is no mention of mary going to the cinema in either sentence. therefore, based on the provided information, it can be logically concluded that mary is not in the cinema, which aligns with the answer ""no""."	fully	no	True	There is no information provided about Mary being in the cinema. The context sentences only mention Mary travelling to the office (sentence 10) and then moving to the bedroom (sentence 11), but do not mention the cinema.		"Reasoning: There is no information provided about Mary being in the cinema. The context sentences only mention Mary travelling to the office (sentence 10) and then moving to the bedroom (sentence 11), but do not mention the cinema.
+
+Answer: no"	0.0192	0.0192	False	False	False	True	0
+385	10	77	5	"*TASK*
+Here are the context sentences:
+13. Mary is either in the office or the cinema.
+14. Fred is either in the school or the bedroom.
+
+Now, answer the following question:
+Is Fred in the park?"	no	"the context sentences provide information about the possible locations of mary and fred. sentence 13 states that mary is either in the office or the cinema, which is irrelevant to fred's location. sentence 14 states that fred is either in the school or the bedroom, but does not mention the park as a possible location. therefore, based on the provided information, it can be logically concluded that fred is not in the park, which aligns with the answer ""no""."	fully	no	True	There is no information provided about Fred being in the park. The context sentences only mention Fred being either in the school or the bedroom (sentence 14), but do not mention the park.		"Reasoning: There is no information provided about Fred being in the park. The context sentences only mention Fred being either in the school or the bedroom (sentence 14), but do not mention the park.
+
+Answer: no"	0.0	0.0222	False	False	False	True	0

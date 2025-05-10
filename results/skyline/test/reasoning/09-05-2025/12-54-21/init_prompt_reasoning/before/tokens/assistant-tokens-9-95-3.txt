@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	5	,	Ġ"	Mary	Ġmoved	Ġto	Ġthe	Ġkitchen	",	Ġwhich	Ġimplies	ĠMary	Ġis	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

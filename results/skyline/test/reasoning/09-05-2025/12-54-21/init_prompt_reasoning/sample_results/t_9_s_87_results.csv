@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1931	9	87	1	"*TASK*
+Here are the context sentences:
+1. John is not in the office.
+2. John is in the kitchen.
+
+Now, answer the following question:
+Is John in the kitchen?"	yes	"the context sentences provide information about john's location. sentence 1 states that john is not in the office, which implies that john is somewhere else. sentence 2 explicitly states that john is in the kitchen. therefore, the answer to the question ""is john in the kitchen?"" is indeed ""yes"", as directly stated in sentence 2."	fully	yes	True	"According to context sentence 2, ""John is in the kitchen"", which explicitly states John's location as the kitchen."		"assistant
+
+Reasoning: According to context sentence 2, ""John is in the kitchen"", which explicitly states John's location as the kitchen.
+
+Answer: yes"	0.0571	0.0286	False	False	False	False	0
+1932	9	87	2	"*TASK*
+Here are the context sentences:
+4. Sandra is in the garden.
+5. John travelled to the bedroom.
+
+Now, answer the following question:
+Is John in the office?"	no	"there is no information provided about john being in the office. in fact, sentence 5 states that john travelled to the bedroom, which implies that john is in the bedroom, not in the office. additionally, sentence 4 provides information about sandra's location, but it does not mention john or the office. therefore, based on the provided information, the answer to the question ""is john in the office?"" is indeed ""no""."	fully	no	True	"There is no information provided about John being in the office. In fact, context sentence 1 (not provided in this task, but mentioned earlier) states ""John is not in the office"". Additionally, context sentence 5 mentions John travelling to the bedroom, which further supports the idea that John is not in the office."		"Reasoning: There is no information provided about John being in the office. In fact, context sentence 1 (not provided in this task, but mentioned earlier) states ""John is not in the office"". Additionally, context sentence 5 mentions John travelling to the bedroom, which further supports the idea that John is not in the office.
+
+Answer: no"	0.125	0.0139	False	False	False	True	0
+1933	9	87	3	"*TASK*
+Here are the context sentences:
+7. Mary is no longer in the kitchen.
+8. Sandra went back to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	yes	"sentence 8 explicitly states that sandra went back to the bathroom, which implies that sandra is currently in the bathroom. there is no information provided that suggests she left the bathroom after going back to it. therefore, the answer to the question ""is sandra in the bathroom?"" is indeed ""yes""."	fully	yes	True	"According to context sentence 8, ""Sandra went back to the bathroom"", which explicitly states that Sandra has returned to the bathroom."		"Reasoning: According to context sentence 8, ""Sandra went back to the bathroom"", which explicitly states that Sandra has returned to the bathroom.
+
+Answer: yes"	0.0294	0.0294	False	False	False	False	0
+1934	9	87	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the kitchen.
+11. Sandra is in the office.
+
+Now, answer the following question:
+Is Sandra in the garden?"	no	"sentence 11 explicitly states that sandra is in the office, which implies that sandra is not in the garden. there is no information provided that suggests sandra is in the garden, and the information provided directly contradicts the idea that sandra is in the garden. therefore, the answer to the question ""is sandra in the garden?"" is indeed ""no""."	fully	no	True	"There is no information provided about Sandra being in the garden. In fact, context sentence 4 (not provided in this task, but mentioned earlier) states ""Sandra is in the garden"", but the current context sentence 11 states ""Sandra is in the office"", which suggests that Sandra's location has changed."		"Reasoning: There is no information provided about Sandra being in the garden. In fact, context sentence 4 (not provided in this task, but mentioned earlier) states ""Sandra is in the garden"", but the current context sentence 11 states ""Sandra is in the office"", which suggests that Sandra's location has changed.
+
+Answer: no"	0.0986	0.0141	False	False	False	True	0
+1935	9	87	5	"*TASK*
+Here are the context sentences:
+13. Sandra is in the hallway.
+14. Daniel travelled to the garden.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	yes	"sentence 13 explicitly states that sandra is in the hallway, which directly answers the question ""is sandra in the hallway?"" with a ""yes"". there is no information provided that suggests sandra has moved or changed locations, so the answer remains ""yes""."	fully	yes	True	"According to context sentence 13, ""Sandra is in the hallway"", which explicitly states Sandra's current location as the hallway."		"Reasoning: According to context sentence 13, ""Sandra is in the hallway"", which explicitly states Sandra's current location as the hallway.
+
+Answer: yes"	0.0	0.0303	False	False	False	False	0

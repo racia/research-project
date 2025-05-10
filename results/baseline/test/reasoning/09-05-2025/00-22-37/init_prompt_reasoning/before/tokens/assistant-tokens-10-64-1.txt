@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġthe	Ġcontext	Ġsentence	Ġ	2	Ġprovides	Ġtwo	Ġpossible	Ġlocations	Ġfor	ĠMary	:	Ġthe	Ġschool	Ġor	Ġthe	Ġcinema	.	ĠSince	Ġthe	Ġquestion	Ġspecifically	Ġasks	Ġabout	Ġthe	Ġschool	,	Ġwe	Ġneed	Ġto	Ġconsider	Ġthe	Ġpossibility	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	ĠMaybe	<|eot_id|>

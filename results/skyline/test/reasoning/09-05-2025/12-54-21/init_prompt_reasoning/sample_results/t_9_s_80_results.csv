@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1896	9	80	1	"*TASK*
+Here are the context sentences:
+1. Sandra went to the bathroom.
+2. Sandra is in the office.
+
+Now, answer the following question:
+Is Sandra in the office?"	yes	"the context sentence ""sandra is in the office"" directly states that sandra is in the office. the first sentence ""sandra went to the bathroom"" does not contradict this statement, as it does not imply that she left the office, but rather that she went to the bathroom, which is likely a part of the office. therefore, based on the provided information, it can be concluded that sandra is indeed in the office."	fully	yes	True	Sentence 2 explicitly states that Sandra is in the office.		"assistant
+
+Reasoning: Sentence 2 explicitly states that Sandra is in the office.
+
+Answer: yes"	0.0435	0.0435	False	False	False	False	0
+1897	9	80	2	"*TASK*
+Here are the context sentences:
+4. Mary is in the hallway.
+5. Mary went to the garden.
+
+Now, answer the following question:
+Is Mary in the garden?"	yes	"the context sentence ""mary went to the garden"" implies that mary moved from her previous location (the hallway) to the garden. there is no information suggesting that she left the garden after arriving, so it can be logically concluded that mary is currently in the garden."	fully	yes	True	Sentence 5 states that Mary went to the garden, implying that she is now in the garden.		"Reasoning: Sentence 5 states that Mary went to the garden, implying that she is now in the garden.
+
+Answer: yes"	0.1481	0.037	False	False	False	False	0
+1898	9	80	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the bathroom.
+8. Mary is in the bedroom.
+
+Now, answer the following question:
+Is Mary in the garden?"	no	"the context sentence ""mary is in the bedroom"" directly states mary's location as the bedroom. there is no information suggesting that mary moved to the garden, and the sentence ""daniel travelled to the bathroom"" is about daniel's action, not related to mary's location. therefore, it can be logically concluded that mary is not in the garden."	fully	no	True	Sentence 8 states that Mary is in the bedroom, and there is no information about Mary being in the garden.		"Reasoning: Sentence 8 states that Mary is in the bedroom, and there is no information about Mary being in the garden.
+
+Answer: no"	0.0667	0.0333	False	False	False	True	0
+1899	9	80	4	"*TASK*
+Here are the context sentences:
+10. John travelled to the office.
+11. John moved to the bedroom.
+
+Now, answer the following question:
+Is John in the garden?"	no	"the context sentences ""john travelled to the office"" and ""john moved to the bedroom"" describe john's movements, but neither of them mentions the garden. the last known location of john is the bedroom, as stated in sentence 11. there is no information suggesting that john moved to the garden after that. therefore, it can be logically concluded that john is not in the garden."	fully	no	True	Sentence 11 states that John moved to the bedroom, and there is no information about John being in the garden.		"Reasoning: Sentence 11 states that John moved to the bedroom, and there is no information about John being in the garden.
+
+Answer: no"	0.1667	0.0333	False	False	False	True	0
+1900	9	80	5	"*TASK*
+Here are the context sentences:
+13. John is no longer in the bedroom.
+14. John went to the bedroom.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	"the context sentence ""john went to the bedroom"" implies that john moved to the bedroom at some point. however, the sentence ""john is no longer in the bedroom"" indicates that john has left the bedroom. there is no information suggesting that john went to the bathroom, and the question asks specifically about the bathroom. therefore, it can be logically concluded that john is not in the bathroom."	fully	no	True	Sentence 14 states that John went to the bedroom, but there is no information about John being in the bathroom.		"Reasoning: Sentence 14 states that John went to the bedroom, but there is no information about John being in the bathroom.
+
+Answer: no"	0.0	0.0333	False	False	False	True	0

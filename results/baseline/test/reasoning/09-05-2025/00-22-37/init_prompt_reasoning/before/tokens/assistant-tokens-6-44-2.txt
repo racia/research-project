@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġexplicitly	Ġstate	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	Ġand	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġlocated	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

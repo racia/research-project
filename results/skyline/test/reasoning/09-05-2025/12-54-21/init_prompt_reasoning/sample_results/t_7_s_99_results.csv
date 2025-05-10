@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+991	7	99	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the bedroom.
+2. Daniel got the apple there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from the context sentences, we know that daniel went to the bedroom (sentence 1) and got the apple there (sentence 2). this implies that daniel picked up the apple in the bedroom and is now carrying it. there is no mention of daniel carrying any other objects, so we can logically conclude that daniel is carrying only one object, which is the apple.	fully	one	True	According to sentence 2, Daniel got the apple in the bedroom, which means he is carrying the apple.		"assistant
+
+Reasoning: According to sentence 2, Daniel got the apple in the bedroom, which means he is carrying the apple.
+
+Answer: one"	0.0909	0.0303	False	False	False	False	0
+992	7	99	2	"*TASK*
+Here are the context sentences:
+4. Daniel picked up the milk there.
+5. Daniel gave the apple to Sandra.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from the previous context (sentence 2), we know that daniel was carrying the apple. however, in sentence 5, it is stated that daniel gave the apple to sandra, which means daniel is no longer carrying the apple. in sentence 4, it is mentioned that daniel picked up the milk, which implies that daniel is now carrying the milk. therefore, daniel is carrying one object, which is the milk.	partially	one	True	In sentence 4, Daniel picked up the milk, so he is carrying the milk. In sentence 5, Daniel gave the apple to Sandra, so he is no longer carrying the apple.		"Reasoning: In sentence 4, Daniel picked up the milk, so he is carrying the milk. In sentence 5, Daniel gave the apple to Sandra, so he is no longer carrying the apple.
+
+Answer: one"	0.1522	0.0652	False	False	False	False	0
+993	7	99	3	"*TASK*
+Here are the context sentences:
+7. Sandra gave the apple to Daniel.
+8. Sandra journeyed to the bathroom.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	two	from the previous context (sentence 5), we know that daniel gave the apple to sandra. however, in sentence 7, it is stated that sandra gave the apple back to daniel, which means daniel is now carrying the apple again. additionally, from sentence 4, we know that daniel picked up the milk, and there is no mention of daniel putting it down or giving it away. therefore, daniel is carrying two objects: the apple	partially	two	True	In sentence 7, Sandra gave the apple to Daniel, so Daniel is now carrying the apple in addition to the milk he was already carrying (from sentence 4).		"Reasoning: In sentence 7, Sandra gave the apple to Daniel, so Daniel is now carrying the apple in addition to the milk he was already carrying (from sentence 4).
+
+Answer: two"	0.2195	0.0976	False	False	False	False	0
+994	7	99	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the office.
+11. Daniel discarded the milk.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from the previous context (sentence 7 and 4), we know that daniel is carrying two objects: the apple and the milk. however, in sentence 11, it is stated that daniel discarded the milk, which means daniel is no longer carrying the milk. therefore, daniel is now carrying only one object, which is the apple.	partially	one	True	In sentence 11, Daniel discarded the milk, so he is no longer carrying the milk. However, he is still carrying the apple (from sentence 7).		"Reasoning: In sentence 11, Daniel discarded the milk, so he is no longer carrying the milk. However, he is still carrying the apple (from sentence 7).
+
+Answer: one"	0.225	0.125	False	False	False	False	0
+995	7	99	5	"*TASK*
+Here are the context sentences:
+13. Daniel picked up the milk there.
+14. John moved to the hallway.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	two	from the previous context (sentence 11), we know that daniel discarded the milk. however, in sentence 13, it is stated that daniel picked up the milk again, which means daniel is now carrying the milk again. additionally, from the previous context (sentence 7), we know that daniel is also carrying the apple. therefore, daniel is carrying two objects: the apple and the milk.	partially	two	True	In sentence 13, Daniel picked up the milk again, so he is now carrying both the apple (from sentence 7) and the milk.		"Reasoning: In sentence 13, Daniel picked up the milk again, so he is now carrying both the apple (from sentence 7) and the milk.
+
+Answer: two"	0.1892	0.1622	False	False	False	False	0

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+946	7	90	1	"*TASK*
+Here are the context sentences:
+1. Mary took the milk there.
+2. Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"from context sentence 1, ""mary took the milk there"", we can infer that mary is carrying one object, which is the milk. there is no mention of mary carrying any other objects in the context sentences. therefore, the answer is one."	fully	one	True	According to sentence 1, Mary took the milk, which implies that Mary is carrying the milk.		"assistant
+
+Reasoning: According to sentence 1, Mary took the milk, which implies that Mary is carrying the milk.
+
+Answer: one"	0.0645	0.0323	False	False	False	False	0
+947	7	90	2	"*TASK*
+Here are the context sentences:
+4. Mary passed the milk to Daniel.
+5. Daniel gave the milk to Mary.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"from context sentence 4, ""mary passed the milk to daniel"", we know that mary no longer has the milk. then, from context sentence 5, ""daniel gave the milk to mary"", we know that mary received the milk back from daniel. therefore, mary is now carrying one object, which is the milk."	partially	one	True	In sentence 4, Mary passed the milk to Daniel, so Mary was no longer carrying the milk. Then, in sentence 5, Daniel gave the milk back to Mary, so Mary is now carrying the milk again.		"Reasoning: In sentence 4, Mary passed the milk to Daniel, so Mary was no longer carrying the milk. Then, in sentence 5, Daniel gave the milk back to Mary, so Mary is now carrying the milk again.
+
+Answer: one"	0.0962	0.0577	False	False	False	False	0
+948	7	90	3	"*TASK*
+Here are the context sentences:
+7. Daniel moved to the kitchen.
+8. Mary put down the milk.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	from the context sentences, there is no mention of daniel carrying any objects. in fact, the milk was with mary, and she put it down (sentence 8), which means daniel never had the milk. additionally, sentence 7 only mentions daniel moving to the kitchen, but does not mention him carrying anything. therefore, the answer is that daniel is carrying none.	none	none	True	There is no information about Daniel carrying any objects. Sentence 7 only mentions Daniel moving to the kitchen, and sentence 8 is about Mary putting down the milk, which doesn't affect Daniel.		"Reasoning: There is no information about Daniel carrying any objects. Sentence 7 only mentions Daniel moving to the kitchen, and sentence 8 is about Mary putting down the milk, which doesn't affect Daniel.
+
+Answer: none"	0.1087	0.0435	False	False	False	True	0
+949	7	90	4	"*TASK*
+Here are the context sentences:
+10. Daniel picked up the football there.
+11. Daniel travelled to the office.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	"from context sentence 10, ""daniel picked up the football there"", we know that daniel picked up the football, which means he is now carrying it. there is no mention of daniel putting down the football or giving it to anyone else. additionally, sentence 11, ""daniel travelled to the office"", does not mention daniel dropping or losing the football. therefore, we can logically conclude that daniel is still carrying the football, which is one object."	partially	one	True	In sentence 10, Daniel picked up the football, which means Daniel is carrying the football. Sentence 11 only mentions Daniel traveling to the office, but it doesn't change the fact that Daniel is carrying the football.		"Reasoning: In sentence 10, Daniel picked up the football, which means Daniel is carrying the football. Sentence 11 only mentions Daniel traveling to the office, but it doesn't change the fact that Daniel is carrying the football.
+
+Answer: one"	0.098	0.0588	False	False	False	True	0
+950	7	90	5	"*TASK*
+Here are the context sentences:
+13. Daniel left the football.
+14. Mary took the milk there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	"from context sentence 10 (previous part of the conversation), we know that daniel picked up the football and was carrying it. however, in sentence 13, ""daniel left the football"", we are told that daniel left the football, which means he is no longer carrying it. there is no mention of daniel picking up any other objects or receiving any objects from others. therefore, we can logically conclude that daniel is not carrying any objects, and the answer is none."	partially	none	True	In sentence 10, Daniel picked up the football, but in sentence 13, Daniel left the football, which means Daniel is no longer carrying the football.		"Reasoning: In sentence 10, Daniel picked up the football, but in sentence 13, Daniel left the football, which means Daniel is no longer carrying the football.
+
+Answer: none"	0.1795	0.1026	False	False	False	False	0

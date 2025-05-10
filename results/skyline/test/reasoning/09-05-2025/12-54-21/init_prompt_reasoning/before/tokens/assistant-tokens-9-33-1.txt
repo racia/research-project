@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġbeing	Ġin	Ġthe	Ġoffice	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠIn	Ġfact	,	Ġsentence	Ġ	2	Ġstates	Ġthat	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġin	Ġthe	Ġgarden	,	Ġnot	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

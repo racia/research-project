@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	15	Ġand	Ġ	16	Ġare	Ġabout	ĠSandra	's	Ġmovements	,	Ġbut	Ġthey	Ġdon	't	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠMary	Ġor	Ġthe	Ġobjects	Ġshe	Ġis	Ġcarrying	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠMary	Ġwas	Ġthat	Ġshe	Ġwas	Ġcarrying	Ġthe	Ġapple	Ġ(	sentence	Ġ	13	).ĊĊ	Answer	:	Ġone	<|eot_id|>

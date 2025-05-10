@@ -3,7 +3,7 @@
 # Job name
 #SBATCH --job-name=skyline
 
-#SBATCH --time=8:00:00              # Job time limit (30 minutes)
+#SBATCH --time=5:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task

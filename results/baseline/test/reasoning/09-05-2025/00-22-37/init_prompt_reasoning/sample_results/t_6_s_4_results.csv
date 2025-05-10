@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+16	6	4	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the hallway.
+2. John got the apple there.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	"since john ""journeyed to the hallway"" in sentence 1, it implies that john moved to the hallway and is currently located there. this is further supported by sentence 2, which states that john ""got the apple there"", indicating that john is still in the hallway when he gets the apple. therefore, the answer to the question ""is john in the hallway?"" is indeed ""yes""."	fully	yes	True	According to sentence 1, John journeyed to the hallway, which implies that John is currently in the hallway.		"Reasoning: According to sentence 1, John journeyed to the hallway, which implies that John is currently in the hallway.
+
+Answer: yes"	0.0667	0.0333	False	False	False	False	0
+17	6	4	2	"*TASK*
+Here are the context sentences:
+4. Daniel journeyed to the hallway.
+5. Daniel went back to the kitchen.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	"the context sentences provided (4 and 5) only mention daniel, but the question asks about john. since there is no information about john's location in the provided context sentences, we need to look at the previous parts of the conversation. in the previous parts, we had sentences 1 and 2, which stated ""john journeyed to the hallway"" and ""john got the apple there"". from these sentences, we can infer that john is indeed in the hallway. the actions"	none	not mentioned	False	The context sentences do not mention John's location. Sentence 4 is about Daniel's journey to the hallway, and sentence 5 is about Daniel's return to the kitchen. There is no information about John's location.		"Reasoning: The context sentences do not mention John's location. Sentence 4 is about Daniel's journey to the hallway, and sentence 5 is about Daniel's return to the kitchen. There is no information about John's location.
+
+Answer: not mentioned"	0.0577	0.0192	False	False	False	True	0
+18	6	4	3	"*TASK*
+Here are the context sentences:
+7. John put down the apple.
+8. Daniel went back to the garden.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	no	"the question asks about daniel's location, and the answer is ""no"", implying that daniel is not in the kitchen. from the context sentences, we can see that sentence 8 states ""daniel went back to the garden"". this implies that daniel was previously in a different location and then moved to the garden. in sentence 5, we had ""daniel went back to the kitchen"", which means daniel was in the kitchen at some point. however, since daniel ""went back to the"	fully	no	True	Sentence 5 mentioned that Daniel went back to the kitchen, but sentence 8 says Daniel went back to the garden, which implies that Daniel is currently in the garden, not the kitchen.		"Reasoning: Sentence 5 mentioned that Daniel went back to the kitchen, but sentence 8 says Daniel went back to the garden, which implies that Daniel is currently in the garden, not the kitchen.
+
+Answer: no"	0.0	0.0222	False	False	False	True	0
+19	6	4	4	"*TASK*
+Here are the context sentences:
+10. John travelled to the bedroom.
+11. Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	"the question asks about john's location, and the answer is ""no"", implying that john is not in the bathroom. from the context sentences, we can see that sentence 10 states ""john travelled to the bedroom"". this implies that john is currently in the bedroom, not in the bathroom. there is no information provided about john being in the bathroom, and the most recent information about john's location is that he is in the bedroom. therefore, the answer to the question ""is"	fully	not mentioned	False	The context sentences do not mention John's location in the bathroom. Sentences 10 and 11 mention John and Sandra journeying to the bedroom, but there is no information about their location in the bathroom.		"Reasoning: The context sentences do not mention John's location in the bathroom. Sentences 10 and 11 mention John and Sandra journeying to the bedroom, but there is no information about their location in the bathroom.
+
+Answer: not mentioned"	0.04	0.02	False	False	False	True	0
+20	6	4	5	"*TASK*
+Here are the context sentences:
+13. Sandra travelled to the bathroom.
+14. John went to the office.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	"the question asks about daniel's location, and the answer is ""no"", implying that daniel is not in the bedroom. there is no direct information about daniel's location in the provided context sentences (13 and 14), which only mention sandra and john. however, we can look at the previous parts of the conversation. in sentence 8, we had ""daniel went back to the garden"", which implies that daniel is in the garden, not in the bedroom. therefore, the answer"	none	not mentioned	False	The context sentences do not mention Daniel's location. Sentences 13 and 14 mention Sandra's journey to the bathroom and John's journey to the office, but there is no information about Daniel's location in the bedroom.		"Reasoning: The context sentences do not mention Daniel's location. Sentences 13 and 14 mention Sandra's journey to the bathroom and John's journey to the office, but there is no information about Daniel's location in the bedroom.
+
+Answer: not mentioned"	0.0	0.0189	False	False	False	True	0

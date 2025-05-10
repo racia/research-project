@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġdropped	Ġthe	Ġapple	Ġthere	,	Ġit	Ġimplies	Ġthat	Ġhe	Ġwas	Ġpreviously	Ġin	Ġthe	Ġbathroom	,	Ġas	Ġhe	Ġdropped	Ġthe	Ġapple	Ġthere	.	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġleaving	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

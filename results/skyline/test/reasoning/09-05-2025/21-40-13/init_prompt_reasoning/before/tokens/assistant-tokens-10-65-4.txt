@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġkitchen	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġbeing	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġpark	,	Ġand	ĠBill	Ġbeing	Ġeither	Ġin	Ġthe	Ġpark	Ġor	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

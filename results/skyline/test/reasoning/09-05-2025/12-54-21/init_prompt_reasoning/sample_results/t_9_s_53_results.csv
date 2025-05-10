@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1761	9	53	1	"*TASK*
+Here are the context sentences:
+1. Mary is not in the bedroom.
+2. Daniel went to the garden.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	"the answer is ""no"" because the first context sentence explicitly states ""mary is not in the bedroom"", which directly indicates that mary's location is not in the bedroom. the second sentence about daniel going to the garden is irrelevant to mary's location, so it does not affect the answer."	fully	no	True	According to context sentence 1, Mary is not in the bedroom.		"assistant
+
+Reasoning: According to context sentence 1, Mary is not in the bedroom.
+
+Answer: no"	0.08	0.04	False	False	False	False	0
+1762	9	53	2	"*TASK*
+Here are the context sentences:
+4. Sandra is in the bathroom.
+5. John is no longer in the garden.
+
+Now, answer the following question:
+Is Daniel in the garden?"	yes	"the answer is ""yes"" because although sentence 5 states ""john is no longer in the garden"", it does not provide any information about daniel's location. sentence 4 is also irrelevant to daniel's location. we need to look at the previous context sentences to find the relevant information. since sentence 2 from the previous part states ""daniel went to the garden"", and there is no information about daniel leaving the garden, we can infer that daniel is still in the garden."	none	not mentioned	False	There is no information about Daniel's location in the context sentences. Context sentence 2 mentioned Daniel's location, but it is not provided in this part of the conversation.		"Reasoning: There is no information about Daniel's location in the context sentences. Context sentence 2 mentioned Daniel's location, but it is not provided in this part of the conversation.
+
+Answer: not mentioned"	0.0238	0.0238	False	False	False	True	0
+1763	9	53	3	"*TASK*
+Here are the context sentences:
+7. Daniel is in the office.
+8. Sandra is not in the bathroom.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	no	"the answer is ""no"" because sentence 8 explicitly states ""sandra is not in the bathroom"", which directly indicates that sandra's location is not in the bathroom. sentence 7 about daniel being in the office is irrelevant to sandra's location, so it does not affect the answer."	fully	no	True	According to context sentence 8, Sandra is not in the bathroom.		"Reasoning: According to context sentence 8, Sandra is not in the bathroom.
+
+Answer: no"	0.0	0.0476	False	False	False	False	0
+1764	9	53	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the hallway.
+11. Sandra travelled to the kitchen.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	yes	"the answer is ""yes"" because sentence 11 explicitly states ""sandra travelled to the kitchen"", which directly indicates that sandra's current location is in the kitchen. the fact that she went to the hallway in sentence 10 is irrelevant to her current location, as it only provides information about her previous movement, and sentence 11 updates her location to the kitchen."	fully	yes	True	According to context sentence 11, Sandra travelled to the kitchen, which implies that she is now in the kitchen.		"Reasoning: According to context sentence 11, Sandra travelled to the kitchen, which implies that she is now in the kitchen.
+
+Answer: yes"	0.0667	0.0333	False	False	False	False	0
+1765	9	53	5	"*TASK*
+Here are the context sentences:
+13. Mary went back to the bedroom.
+14. John went back to the garden.
+
+Now, answer the following question:
+Is John in the office?"	no	"the answer is ""no"" because there is no information provided that suggests john is in the office. in fact, sentence 14 states ""john went back to the garden"", which indicates that john's current location is in the garden, not in the office. sentence 13 about mary going back to the bedroom is irrelevant to john's location."	fully	not mentioned	False	There is no information about John's location in the office in the context sentences. According to context sentence 14, John went back to the garden, but it does not mention the office.		"Reasoning: There is no information about John's location in the office in the context sentences. According to context sentence 14, John went back to the garden, but it does not mention the office.
+
+Answer: not mentioned"	0.0	0.0217	False	False	False	True	0

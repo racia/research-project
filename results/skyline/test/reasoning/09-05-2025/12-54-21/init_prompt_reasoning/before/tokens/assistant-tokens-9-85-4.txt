@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġseem	Ġto	Ġbe	Ġcontradictory	,	Ġbut	Ġsentence	Ġ	11	Ġ"	Daniel	Ġtravelled	Ġto	Ġthe	Ġoffice	"	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġnow	Ġin	Ġthe	Ġoffice	,	Ġoverriding	Ġthe	Ġprevious	Ġstatement	Ġ"	Daniel	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġoffice	".ĊĊ	Answer	:	Ġyes	<|eot_id|>

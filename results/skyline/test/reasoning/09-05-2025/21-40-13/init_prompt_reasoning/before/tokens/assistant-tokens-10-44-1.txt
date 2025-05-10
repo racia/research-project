@@ -1,0 +1,1 @@
+*T	ASK	*ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠSentence	Ġ	1	Ġonly	Ġmentions	ĠMary	Ġbeing	Ġin	Ġthe	Ġpark	Ġor	Ġthe	Ġbedroom	,	Ġand	Ġsentence	Ġ	2	Ġis	Ġabout	ĠFred	's	Ġlocation	,	Ġwhich	Ġis	Ġnot	Ġrelated	Ġto	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

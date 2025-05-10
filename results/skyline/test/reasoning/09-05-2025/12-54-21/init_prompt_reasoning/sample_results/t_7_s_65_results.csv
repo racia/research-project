@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+821	7	65	1	"*TASK*
+Here are the context sentences:
+1. Daniel got the milk there.
+2. Sandra moved to the bathroom.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from the context sentences, we know that daniel got the milk there, which implies that daniel is carrying the milk. there is no mention of daniel carrying any other objects. therefore, we can logically conclude that daniel is carrying only one object, which is the milk.	fully	one	True	From sentence 1, we know that Daniel got the milk, which implies that Daniel is carrying the milk. There is no information about Daniel putting down or giving away the milk.		"assistant
+
+Reasoning: From sentence 1, we know that Daniel got the milk, which implies that Daniel is carrying the milk. There is no information about Daniel putting down or giving away the milk.
+
+Answer: one"	0.0426	0.0213	False	False	False	True	0
+822	7	65	2	"*TASK*
+Here are the context sentences:
+4. Sandra travelled to the office.
+5. Daniel gave the milk to John.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	"from the previous context sentences, we know that daniel got the milk there (sentence 1). however, in the current context, it is stated that daniel gave the milk to john (sentence 5). this implies that daniel is no longer carrying the milk, as he has given it to john. therefore, we can logically conclude that daniel is not carrying any objects, which is consistent with the answer ""none""."	partially	none	True	From the previous context, we knew Daniel was carrying the milk. However, in sentence 5, Daniel gave the milk to John, which means Daniel is no longer carrying the milk.		"Reasoning: From the previous context, we knew Daniel was carrying the milk. However, in sentence 5, Daniel gave the milk to John, which means Daniel is no longer carrying the milk.
+
+Answer: none"	0.1591	0.0455	False	False	False	False	0
+823	7	65	3	"*TASK*
+Here are the context sentences:
+7. John discarded the milk there.
+8. John went back to the garden.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	"from the previous context sentences, we know that daniel gave the milk to john (sentence 5). however, in the current context, it is stated that john discarded the milk there (sentence 7). this implies that john is no longer carrying the milk, as he has discarded it. additionally, there is no mention of john picking up or acquiring any other objects. therefore, we can logically conclude that john is not carrying any objects, which is consistent with the answer ""none""."	partially	none	True	In sentence 5, John received the milk from Daniel. In sentence 7, John discarded the milk, which means John is no longer carrying the milk.		"Reasoning: In sentence 5, John received the milk from Daniel. In sentence 7, John discarded the milk, which means John is no longer carrying the milk.
+
+Answer: none"	0.1026	0.0513	False	False	False	False	0
+824	7	65	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the kitchen.
+11. Sandra went back to the bathroom.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	"the context sentences 10 and 11 only provide information about sandra's movements, but they do not mention daniel or any objects being carried by him. to answer the question, we need to refer to the previous context sentences. we know that daniel gave the milk to john (sentence 5), and there is no mention of daniel picking up or acquiring any other objects. therefore, we can logically conclude that daniel is not carrying any objects, which is consistent with the answer ""none""."	none	none	True	The context sentences 10 and 11 are about Sandra's movements and do not provide any new information about Daniel. We already knew that Daniel is not carrying any objects (from the previous answer).		"Reasoning: The context sentences 10 and 11 are about Sandra's movements and do not provide any new information about Daniel. We already knew that Daniel is not carrying any objects (from the previous answer).
+
+Answer: none"	0.0217	0.0435	False	False	False	True	0
+825	7	65	5	"*TASK*
+Here are the context sentences:
+13. John went to the kitchen.
+14. Daniel picked up the milk there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	"in sentence 14, it is stated that daniel picked up the milk there. this implies that daniel is now carrying the milk. there is no mention of daniel picking up or carrying any other objects. therefore, we can logically conclude that daniel is carrying one object, which is the milk, consistent with the answer ""one"". note that the previous information about john discarding the milk (sentence 7) is no longer relevant, as daniel has now picked it"	partially	one	True	In sentence 14, Daniel picked up the milk, which means Daniel is now carrying the milk.		"Reasoning: In sentence 14, Daniel picked up the milk, which means Daniel is now carrying the milk.
+
+Answer: one"	0.0741	0.1111	False	False	False	False	0

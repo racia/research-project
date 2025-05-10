@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	13	Ġand	Ġ	14	Ġare	Ġabout	ĠSandra	's	Ġmovements	,	Ġbut	Ġthey	Ġdon	't	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠMary	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠMary	Ġwas	Ġthat	Ġshe	Ġput	Ġdown	Ġthe	Ġfootball	Ġin	Ġsentence	Ġ	11	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

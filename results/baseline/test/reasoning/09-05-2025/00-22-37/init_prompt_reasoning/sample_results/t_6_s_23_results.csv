@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+111	6	23	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the bathroom.
+2. Mary went back to the bedroom.
+
+Now, answer the following question:
+Is Daniel in the office?"	no	there is no mention of daniel being in the office in the context sentences. in fact, sentence 1 states that daniel travelled to the bathroom, which implies that he is currently in the bathroom, not in the office.	fully	no	True	The context sentences do not mention Daniel going to the office or being in the office. The only information provided is that Daniel travelled to the bathroom and Mary went back to the bedroom. There is no connection between Daniel and the office.		"Reasoning: The context sentences do not mention Daniel going to the office or being in the office. The only information provided is that Daniel travelled to the bathroom and Mary went back to the bedroom. There is no connection between Daniel and the office.
+
+Answer: no"	0.0566	0.0189	False	False	False	True	0
+112	6	23	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the bathroom.
+5. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	according to sentence 5, daniel journeyed to the kitchen, which implies that he is currently in the kitchen. there is no mention of daniel being in the bedroom in the context sentences, and the information provided suggests that he is in a different location (the kitchen).	fully	no	True	The context sentences do not mention Daniel going to the bedroom or being in the bedroom. The only information provided is that Mary travelled to the bathroom and Daniel journeyed to the kitchen. There is no connection between Daniel and the bedroom.		"Reasoning: The context sentences do not mention Daniel going to the bedroom or being in the bedroom. The only information provided is that Mary travelled to the bathroom and Daniel journeyed to the kitchen. There is no connection between Daniel and the bedroom.
+
+Answer: no"	0.0943	0.0189	False	False	False	True	0
+113	6	23	3	"*TASK*
+Here are the context sentences:
+7. Mary took the apple there.
+8. John travelled to the office.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	yes	"there is no information about daniel in the provided context sentences (7 and 8). however, since the answer is ""yes"", i need to look at the previous parts of the conversation history. in the previous parts, sentence 5 states ""daniel journeyed to the kitchen"", which implies that daniel is indeed in the kitchen."	none	no	False	The context sentences do not mention Daniel going to the kitchen or being in the kitchen. The only information provided is that Mary took the apple (location not specified) and John travelled to the office. There is no connection between Daniel and the kitchen.		"Reasoning: The context sentences do not mention Daniel going to the kitchen or being in the kitchen. The only information provided is that Mary took the apple (location not specified) and John travelled to the office. There is no connection between Daniel and the kitchen.
+
+Answer: no"	0.0893	0.0179	False	False	False	True	0
+114	6	23	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the garden.
+11. Sandra went back to the office.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	yes	"there is no new information about daniel in the provided context sentences (10 and 11). however, since the answer is ""yes"", i need to look at the previous parts of the conversation history. in the previous parts, sentence 5 states ""daniel journeyed to the kitchen"", which implies that daniel is indeed in the kitchen. the movements of mary and sandra in sentences 10 and 11 do not provide any information that would change daniel's location."	none	no	False	The context sentences do not mention Daniel going to the kitchen or being in the kitchen. The only information provided is that Mary moved to the garden and Sandra went back to the office. There is no connection between Daniel and the kitchen.		"Reasoning: The context sentences do not mention Daniel going to the kitchen or being in the kitchen. The only information provided is that Mary moved to the garden and Sandra went back to the office. There is no connection between Daniel and the kitchen.
+
+Answer: no"	0.0189	0.0189	False	False	False	True	0
+115	6	23	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the bedroom.
+14. John went to the hallway.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	"according to sentence 14, ""john went to the hallway"", which explicitly states that john is in the hallway. this direct information from the context sentence confirms that john is indeed in the hallway."	fully	yes	True	According to the context sentence, John went to the hallway, which implies that he is currently in the hallway.		"Reasoning: According to the context sentence, John went to the hallway, which implies that he is currently in the hallway.
+
+Answer: yes"	0.0	0.0345	False	False	False	False	0

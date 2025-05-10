@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+171	6	35	1	"*TASK*
+Here are the context sentences:
+1. John got the apple there.
+2. Daniel took the football there.
+3. Daniel put down the football.
+4. John went back to the hallway.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	"according to context sentence 4, ""john went back to the hallway"", which explicitly states that john is in the hallway. this sentence provides direct information about john's location, and there is no contradictory information in the previous sentences to suggest otherwise. therefore, the answer is indeed ""yes"", john is in the hallway."	fully	yes	True	"According to sentence 4, ""John went back to the hallway"", which implies that John is currently in the hallway."		"assistant
+
+Reasoning: According to sentence 4, ""John went back to the hallway"", which implies that John is currently in the hallway.
+
+Answer: yes"	0.0	0.0286	False	False	False	False	0
+172	6	35	2	"*TASK*
+Here are the context sentences:
+6. Sandra went back to the garden.
+7. John went to the bathroom.
+
+Now, answer the following question:
+Is John in the kitchen?"	no	"according to context sentence 7, ""john went to the bathroom"", which explicitly states that john's location is the bathroom. there is no mention of john being in the kitchen in any of the context sentences, and the provided information suggests that john is in a different location (the bathroom). therefore, the answer is indeed ""no"", john is not in the kitchen."	fully	no	True	"There is no mention of John going to the kitchen in the context sentences. In fact, sentence 7 states that ""John went to the bathroom"", which implies that John is currently in the bathroom, not the kitchen."		"Reasoning: There is no mention of John going to the kitchen in the context sentences. In fact, sentence 7 states that ""John went to the bathroom"", which implies that John is currently in the bathroom, not the kitchen.
+
+Answer: no"	0.1176	0.0196	False	False	False	True	0
+173	6	35	3	"*TASK*
+Here are the context sentences:
+9. Mary journeyed to the bathroom.
+10. John moved to the office.
+
+Now, answer the following question:
+Is John in the kitchen?"	no	"according to context sentence 10, ""john moved to the office"", which explicitly states that john's location is the office. there is no mention of john being in the kitchen in any of the context sentences, and the provided information suggests that john is in a different location (the office). therefore, the answer is indeed ""no"", john is not in the kitchen."	fully	no	True	"There is no mention of John going to the kitchen in the context sentences. In fact, sentence 10 states that ""John moved to the office"", which implies that John is currently in the office, not the kitchen."		"Reasoning: There is no mention of John going to the kitchen in the context sentences. In fact, sentence 10 states that ""John moved to the office"", which implies that John is currently in the office, not the kitchen.
+
+Answer: no"	0.0	0.0196	False	False	False	True	0
+174	6	35	4	"*TASK*
+Here are the context sentences:
+12. Mary went back to the kitchen.
+13. John left the apple.
+
+Now, answer the following question:
+Is John in the hallway?"	no	"there is no information provided about john's location in the context sentences. sentence 13 only mentions that john left the apple, but it does not specify where john is. sentence 12 mentions mary going back to the kitchen, but it does not provide any information about john's location. since there is no information suggesting that john is in the hallway, and no information about john's location at all, the answer is ""no"", john is not in the hallway."	none	no	True	"There is no mention of John going back to the hallway in the context sentences. In fact, sentence 10 (from previous context) states that ""John moved to the office"", which implies that John is currently in the office, not the hallway."		"Reasoning: There is no mention of John going back to the hallway in the context sentences. In fact, sentence 10 (from previous context) states that ""John moved to the office"", which implies that John is currently in the office, not the hallway.
+
+Answer: no"	0.0	0.0175	False	False	False	True	0
+175	6	35	5	"*TASK*
+Here are the context sentences:
+15. Daniel travelled to the bedroom.
+16. Sandra moved to the office.
+
+Now, answer the following question:
+Is Daniel in the office?"	no	"according to context sentence 15, ""daniel travelled to the bedroom"", which explicitly states that daniel's location is the bedroom. there is no mention of daniel being in the office in any of the context sentences, and sentence 16 mentions sandra moving to the office, not daniel. therefore, the answer is indeed ""no"", daniel is not in the office."	fully	no	True	"According to sentence 15, ""Daniel travelled to the bedroom"", which implies that Daniel is currently in the bedroom, not the office."		"Reasoning: According to sentence 15, ""Daniel travelled to the bedroom"", which implies that Daniel is currently in the bedroom, not the office.
+
+Answer: no"	0.0294	0.0294	False	False	False	False	0

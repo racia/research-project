@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠDaniel	's	Ġlocation	.	ĠThe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġabout	ĠMary	Ġleaving	Ġthe	Ġfootball	Ġand	ĠJohn	Ġtraveling	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	Ġbeing	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

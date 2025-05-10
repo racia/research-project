@@ -1,0 +1,15 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+23	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+24	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+25	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+26	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+27	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+28	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+29	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+30	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+31	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+32	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+33	.	ĠSandra	Ġleft	Ġthe	Ġapple	.Ċ
+34	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠSandra	Ġcarrying	?Ċ

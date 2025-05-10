@@ -1,0 +1,1 @@
+*T	ASK	*ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJulie	Ġbeing	Ġin	Ġthe	Ġschool	.	ĠSentence	Ġ	1	Ġstates	ĠJulie	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġsentence	Ġ	2	Ġstates	ĠJulie	Ġis	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	Ġbeing	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1936	9	88	1	"*TASK*
+Here are the context sentences:
+1. John is in the bathroom.
+2. John is in the garden.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	the context sentences provide information about john's location, stating that he is in the bathroom (sentence 1) and then in the garden (sentence 2). there is no mention of john being in the bedroom in either sentence. therefore, based on the provided information, it can be logically concluded that john is not in the bedroom.	fully	no	True	The context sentences only mention John being in the bathroom and the garden, but there is no information about John being in the bedroom.		"*TASK*
+
+Reasoning: The context sentences only mention John being in the bathroom and the garden, but there is no information about John being in the bedroom.
+
+Answer: no"	0.0571	0.0286	False	False	False	True	0
+1937	9	88	2	"*TASK*
+Here are the context sentences:
+4. John is in the bathroom.
+5. John is in the bedroom.
+
+Now, answer the following question:
+Is John in the bedroom?"	yes	"the context sentence 5 explicitly states ""john is in the bedroom"", which directly answers the question ""is john in the bedroom?"" with a ""yes"". therefore, the answer is affirmative, and john is indeed in the bedroom."	fully	yes	True	The context sentence 5 explicitly states that John is in the bedroom.		"*TASK*
+
+Reasoning: The context sentence 5 explicitly states that John is in the bedroom.
+
+Answer: yes"	0.1739	0.0435	False	False	False	False	0
+1938	9	88	3	"*TASK*
+Here are the context sentences:
+7. Daniel is in the bathroom.
+8. Mary is not in the garden.
+
+Now, answer the following question:
+Is John in the garden?"	no	"there is no mention of john in the context sentences. the sentences only provide information about daniel being in the bathroom and mary not being in the garden. there is no direct or indirect information about john's location. however, the answer is ""no"", which implies that john's location is being referred to. since there is no information about john being in the garden, it can be logically inferred that john is not in the garden."	none	not mentioned	False	There is no information about John in the context sentences. The sentences only mention Daniel and Mary, but not John.		"*TASK*
+
+Reasoning: There is no information about John in the context sentences. The sentences only mention Daniel and Mary, but not John.
+
+Answer: not mentioned"	0.1212	0.0303	False	False	False	True	0
+1939	9	88	4	"*TASK*
+Here are the context sentences:
+10. Daniel moved to the kitchen.
+11. John moved to the hallway.
+
+Now, answer the following question:
+Is Mary in the garden?"	no	"there is no mention of mary in the context sentences. the sentences only provide information about daniel moving to the kitchen and john moving to the hallway. there is no direct or indirect information about mary's location. since mary is not mentioned at all, it can be logically inferred that there is no information about mary being in the garden, and therefore, the answer is ""no""."	none	not mentioned	False	There is no information about Mary or the garden in the context sentences. The sentences only mention Daniel moving to the kitchen and John moving to the hallway.		"*TASK*
+
+Reasoning: There is no information about Mary or the garden in the context sentences. The sentences only mention Daniel moving to the kitchen and John moving to the hallway.
+
+Answer: not mentioned"	0.0	0.025	False	False	False	True	0
+1940	9	88	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the kitchen.
+14. Sandra went to the hallway.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	yes	"the context sentence 14 explicitly states ""sandra went to the hallway"", which directly indicates that sandra is in the hallway. this sentence provides a clear and direct answer to the question ""is sandra in the hallway?"", and therefore, the answer is ""yes""."	fully	yes	True	The context sentence 14 explicitly states that Sandra went to the hallway, which implies that she is currently in the hallway.		"*TASK*
+
+Reasoning: The context sentence 14 explicitly states that Sandra went to the hallway, which implies that she is currently in the hallway.
+
+Answer: yes"	0.0	0.0303	False	False	False	False	0

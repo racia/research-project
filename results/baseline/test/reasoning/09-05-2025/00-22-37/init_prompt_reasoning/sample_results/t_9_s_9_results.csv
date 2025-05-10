@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1541	9	9	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the bedroom.
+2. Mary journeyed to the garden.
+
+Now, answer the following question:
+Is Mary in the garden?"	yes	the context sentences indicate that mary went to the bedroom (sentence 1) and then journeyed to the garden (sentence 2). since mary went to the garden after being in the bedroom, it can be logically concluded that mary is currently in the garden.	fully	yes	True	Mary went to the garden, which implies she is currently in the garden.		"Reasoning: Mary went to the garden, which implies she is currently in the garden.
+
+Answer: yes"	0.0455	0.0455	False	False	False	False	0
+1542	9	9	2	"*TASK*
+Here are the context sentences:
+4. Mary is in the bathroom.
+5. John is not in the kitchen.
+
+Now, answer the following question:
+Is John in the kitchen?"	no	"the context sentence 5 explicitly states ""john is not in the kitchen"", which directly answers the question and confirms that john is not in the kitchen."	fully	no	True	The context sentence 5 explicitly states that John is not in the kitchen.		"Reasoning: The context sentence 5 explicitly states that John is not in the kitchen.
+
+Answer: no"	0.1364	0.0455	False	False	False	False	0
+1543	9	9	3	"*TASK*
+Here are the context sentences:
+7. John is in the bathroom.
+8. Mary is in the bedroom.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	"the context sentence 8 explicitly states ""mary is in the bedroom"", which directly answers the question and confirms that mary is indeed in the bedroom."	fully	yes	True	The context sentence 8 explicitly states that Mary is in the bedroom.		"Reasoning: The context sentence 8 explicitly states that Mary is in the bedroom.
+
+Answer: yes"	0.0	0.0476	False	False	False	False	0
+1544	9	9	4	"*TASK*
+Here are the context sentences:
+10. Sandra is in the hallway.
+11. John moved to the kitchen.
+
+Now, answer the following question:
+Is John in the garden?"	no	there is no mention of john being in the garden in the context sentences. in fact, sentence 11 states that john moved to the kitchen, which implies that john is currently in the kitchen, not in the garden.	fully	no	True	There is no mention of John being in the garden. The context sentence 11 only mentions John moving to the kitchen, but not to the garden.		"Reasoning: There is no mention of John being in the garden. The context sentence 11 only mentions John moving to the kitchen, but not to the garden.
+
+Answer: no"	0.0	0.027	False	False	False	True	0
+1545	9	9	5	"*TASK*
+Here are the context sentences:
+13. Mary is in the garden.
+14. Sandra travelled to the kitchen.
+
+Now, answer the following question:
+Is John in the kitchen?"	yes	there is no direct information about john's location in the context sentences. however, the answer states that john is in the kitchen. since sentence 14 mentions that sandra travelled to the kitchen, but there is no mention of john, it can be inferred that john was already in the kitchen before sandra arrived.	none	no	False	The context sentence 14 mentions Sandra travelling to the kitchen, but there is no mention of John being in the kitchen.		"Reasoning: The context sentence 14 mentions Sandra travelling to the kitchen, but there is no mention of John being in the kitchen.
+
+Answer: no"	0.0323	0.0323	False	False	False	True	0

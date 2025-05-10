@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2171	10	35	1	"*TASK*
+Here are the context sentences:
+1. Julie is in the school.
+2. Bill moved to the school.
+
+Now, answer the following question:
+Is Julie in the school?"	yes	"the context sentence ""julie is in the school"" directly states that julie is in the school. this information is not changed or updated by the second sentence ""bill moved to the school"", which only provides information about bill's action and does not affect julie's location. therefore, the answer to the question ""is julie in the school?"" is indeed ""yes""."	fully	yes	True	The context sentences provide information about Julie's and Bill's locations. Julie is already mentioned to be in the school, and Bill has moved to the school, which means he is also in the school. However, the question asks about Julie's location, not Bill's.		"Reasoning: The context sentences provide information about Julie's and Bill's locations. Julie is already mentioned to be in the school, and Bill has moved to the school, which means he is also in the school. However, the question asks about Julie's location, not Bill's.
+
+Answer: yes"	0.0492	0.0164	False	False	False	True	0
+2172	10	35	2	"*TASK*
+Here are the context sentences:
+4. Fred is in the cinema.
+5. Julie went to the kitchen.
+
+Now, answer the following question:
+Is Fred in the park?"	no	"the context sentence ""fred is in the cinema"" explicitly states fred's location as the cinema, and there is no information provided that suggests fred moved to the park. the sentence ""julie went to the kitchen"" only provides information about julie's action and does not affect fred's location. therefore, based on the provided information, the answer to the question ""is fred in the park?"" is indeed ""no""."	fully	no	True	The context sentences provide information about Fred's and Julie's locations. Fred is mentioned to be in the cinema, and Julie went to the kitchen, which means she is not in the cinema. However, the question asks about Fred's location, not Julie's. Since Fred is in the cinema, not in the park, the answer is no.		"Reasoning: The context sentences provide information about Fred's and Julie's locations. Fred is mentioned to be in the cinema, and Julie went to the kitchen, which means she is not in the cinema. However, the question asks about Fred's location, not Julie's. Since Fred is in the cinema, not in the park, the answer is no.
+
+Answer: no"	0.0395	0.0132	False	False	False	True	0
+2173	10	35	3	"*TASK*
+Here are the context sentences:
+7. Mary is either in the bedroom or the office.
+8. Fred is either in the bedroom or the office.
+
+Now, answer the following question:
+Is Fred in the bedroom?"	maybe	"the context sentences ""mary is either in the bedroom or the office"" and ""fred is either in the bedroom or the office"" both provide information about the possible locations of mary and fred, respectively. however, neither sentence provides a definitive location for either person. the sentences only indicate that each person could be in one of two locations, but do not provide enough information to determine which location they are actually in. therefore, based on the provided information, the answer to the question ""is"	fully	maybe	True	The context sentences provide information about Mary's and Fred's locations. According to the sentences, Fred is either in the bedroom or the office, but it does not specify which one. Therefore, we cannot determine Fred's exact location.		"Reasoning: The context sentences provide information about Mary's and Fred's locations. According to the sentences, Fred is either in the bedroom or the office, but it does not specify which one. Therefore, we cannot determine Fred's exact location.
+
+Answer: maybe"	0.0755	0.0189	False	False	False	True	0
+2174	10	35	4	"*TASK*
+Here are the context sentences:
+10. Mary went to the bedroom.
+11. Julie is in the cinema.
+
+Now, answer the following question:
+Is Julie in the cinema?"	yes	"the context sentence ""julie is in the cinema"" directly states that julie is in the cinema. the sentence ""mary went to the bedroom"" provides information about mary's action, but it does not affect julie's location. therefore, based on the provided information, the answer to the question ""is julie in the cinema?"" is indeed ""yes""."	fully	yes	True	The context sentences provide information about Mary's and Julie's locations. According to sentence 11, Julie is in the cinema.		"Reasoning: The context sentences provide information about Mary's and Julie's locations. According to sentence 11, Julie is in the cinema.
+
+Answer: yes"	0.0	0.0312	False	False	False	True	0
+2175	10	35	5	"*TASK*
+Here are the context sentences:
+13. Julie went back to the park.
+14. Mary went back to the school.
+
+Now, answer the following question:
+Is Julie in the school?"	no	"the context sentence ""julie went back to the park"" explicitly states that julie went back to the park, which implies that julie is currently in the park. the sentence ""mary went back to the school"" provides information about mary's action, but it does not affect julie's location. therefore, based on the provided information, the answer to the question ""is julie in the school?"" is indeed ""no"", as julie is in the park, not"	fully	no	True	The context sentences provide information about Julie's and Mary's locations. According to sentence 13, Julie went back to the park, which means she is not in the school. The question asks about Julie's location, and since she is not in the school, the answer is no.		"Reasoning: The context sentences provide information about Julie's and Mary's locations. According to sentence 13, Julie went back to the park, which means she is not in the school. The question asks about Julie's location, and since she is not in the school, the answer is no.
+
+Answer: no"	0.0469	0.0156	False	False	False	True	0

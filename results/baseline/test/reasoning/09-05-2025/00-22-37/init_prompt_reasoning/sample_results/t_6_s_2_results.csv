@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+6	6	2	1	"*TASK*
+Here are the context sentences:
+1. Daniel went back to the kitchen.
+2. Mary grabbed the apple there.
+
+Now, answer the following question:
+Is Daniel in the office?"	no	since the context sentences only mention daniel going back to the kitchen and mary grabbing an apple there, there is no mention of daniel being in the office. in fact, the first sentence explicitly states that daniel went back to the kitchen, implying that he is currently in the kitchen, not in the office.	fully	no	True	The context sentences do not mention Daniel going to the office. Sentence 1 states that Daniel went back to the kitchen, but there is no mention of him going to the office. Sentence 2 mentions Mary grabbing an apple in the kitchen, but it does not provide any information about Daniel's location.		"Reasoning: The context sentences do not mention Daniel going to the office. Sentence 1 states that Daniel went back to the kitchen, but there is no mention of him going to the office. Sentence 2 mentions Mary grabbing an apple in the kitchen, but it does not provide any information about Daniel's location.
+
+Answer: no"	0.0597	0.0149	False	False	False	True	0
+7	6	2	2	"*TASK*
+Here are the context sentences:
+4. Daniel journeyed to the office.
+5. John went back to the office.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	no	according to the context sentences, daniel journeyed to the office (sentence 4), which implies that daniel is currently in the office. there is no mention of daniel being in the hallway. in fact, the context suggests that daniel is in the office, not in the hallway.	fully	not mentioned	False	The context sentences do not mention Daniel being in the hallway. Sentence 4 states that Daniel journeyed to the office, but it does not specify that he is in the hallway. Sentence 5 states that John went back to the office, but it does not provide any information about Daniel's location.		"Reasoning: The context sentences do not mention Daniel being in the hallway. Sentence 4 states that Daniel journeyed to the office, but it does not specify that he is in the hallway. Sentence 5 states that John went back to the office, but it does not provide any information about Daniel's location.
+
+Answer: not mentioned"	0.0294	0.0147	False	False	False	True	0
+8	6	2	3	"*TASK*
+Here are the context sentences:
+7. Mary left the apple.
+8. Daniel went to the hallway.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	yes	"according to sentence 8, ""daniel went to the hallway"", which explicitly states that daniel's current location is the hallway. therefore, the answer to the question ""is daniel in the hallway?"" is indeed ""yes""."	fully	yes	True	Sentence 8 explicitly states that Daniel went to the hallway, providing direct evidence that he is indeed in the hallway.		"Reasoning: Sentence 8 explicitly states that Daniel went to the hallway, providing direct evidence that he is indeed in the hallway.
+
+Answer: yes"	0.0667	0.0333	False	False	False	False	0
+9	6	2	4	"*TASK*
+Here are the context sentences:
+10. John went to the hallway.
+11. Daniel picked up the milk there.
+
+Now, answer the following question:
+Is John in the kitchen?"	no	"according to sentence 10, ""john went to the hallway"", which implies that john's current location is the hallway. there is no mention of john being in the kitchen. in fact, the context suggests that john is in the hallway, not in the kitchen."	fully	no	True	The context sentences do not mention John being in the kitchen. Sentence 10 states that John went to the hallway, but it does not specify that he is in the kitchen. Sentence 11 mentions Daniel picking up milk in the hallway, but it does not provide any information about John's location.		"Reasoning: The context sentences do not mention John being in the kitchen. Sentence 10 states that John went to the hallway, but it does not specify that he is in the kitchen. Sentence 11 mentions Daniel picking up milk in the hallway, but it does not provide any information about John's location.
+
+Answer: no"	0.0152	0.0152	False	False	False	True	0
+10	6	2	5	"*TASK*
+Here are the context sentences:
+13. John grabbed the football there.
+14. Mary got the apple there.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	yes	"although the context sentences 13 and 14 do not mention daniel, we can infer the answer from previous context sentences. specifically, sentence 8 states ""daniel went to the hallway"", which implies that daniel's current location is the hallway. there is no information provided that would suggest daniel has moved from the hallway, so we can conclude that daniel is still in the hallway."	none	not mentioned	False	The context sentences do not provide any information about Daniel's location. Sentences 13 and 14 mention John grabbing a football and Mary getting an apple, but they do not mention Daniel's whereabouts.		"Reasoning: The context sentences do not provide any information about Daniel's location. Sentences 13 and 14 mention John grabbing a football and Mary getting an apple, but they do not mention Daniel's whereabouts.
+
+Answer: not mentioned"	0.0833	0.0208	False	False	False	True	0

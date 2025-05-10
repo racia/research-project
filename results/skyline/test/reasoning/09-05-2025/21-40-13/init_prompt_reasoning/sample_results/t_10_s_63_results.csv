@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+311	10	63	1	"*TASK*
+Here are the context sentences:
+1. Bill journeyed to the school.
+2. Fred went to the kitchen.
+
+Now, answer the following question:
+Is Fred in the park?"	no	according to the context sentences, fred went to the kitchen (sentence 2), but there is no mention of fred going to the park. therefore, based on the provided information, it can be logically concluded that fred is not in the park.	fully	no	True	There is no information provided about Fred being in the park. The context sentences only mention Fred going to the kitchen, but not the park.		"Reasoning: There is no information provided about Fred being in the park. The context sentences only mention Fred going to the kitchen, but not the park.
+
+Answer: no"	0.0571	0.0286	False	False	False	True	0
+312	10	63	2	"*TASK*
+Here are the context sentences:
+4. Fred is in the park.
+5. Fred travelled to the cinema.
+
+Now, answer the following question:
+Is Bill in the school?"	yes	the question asks about bill, but the provided context sentences (4 and 5) only mention fred's movements, which are unrelated to bill's location. however, we can look back at the previous context sentences (1 and 2) which mentioned bill journeying to the school. since there is no information about bill leaving the school, it can be logically concluded that bill is still in the school.	none	yes	True	According to context sentence 1, Bill journeyed to the school, and there is no information provided about Bill leaving the school.		"Reasoning: According to context sentence 1, Bill journeyed to the school, and there is no information provided about Bill leaving the school. 
+
+Answer: yes"	0.0882	0.0294	False	False	False	True	0
+313	10	63	3	"*TASK*
+Here are the context sentences:
+7. Fred is in the office.
+8. Fred moved to the cinema.
+
+Now, answer the following question:
+Is Fred in the cinema?"	yes	according to the context sentences, fred was initially in the office (sentence 7), but then fred moved to the cinema (sentence 8). this implies that fred's location was updated from the office to the cinema, so it can be logically concluded that fred is currently in the cinema.	fully	yes	True	According to context sentence 8, Fred moved to the cinema, which implies that Fred is now in the cinema.		"Reasoning: According to context sentence 8, Fred moved to the cinema, which implies that Fred is now in the cinema.
+
+Answer: yes"	0.0333	0.0333	False	False	False	False	0
+314	10	63	4	"*TASK*
+Here are the context sentences:
+10. Bill is either in the cinema or the office.
+11. Mary moved to the bedroom.
+
+Now, answer the following question:
+Is Mary in the school?"	no	according to the context sentences, there is no mention of mary being in the school. in fact, sentence 11 specifically states that mary moved to the bedroom, which implies that mary is currently in the bedroom, not in the school.	fully	no	True	There is no information provided about Mary being in the school. According to context sentence 11, Mary moved to the bedroom, but there is no mention of the school.		"Reasoning: There is no information provided about Mary being in the school. According to context sentence 11, Mary moved to the bedroom, but there is no mention of the school.
+
+Answer: no"	0.122	0.0244	False	False	False	True	0
+315	10	63	5	"*TASK*
+Here are the context sentences:
+13. Julie journeyed to the kitchen.
+14. Mary is either in the office or the office.
+
+Now, answer the following question:
+Is Bill in the park?"	no	there is no mention of bill in the provided context sentences (13 and 14). previously, we knew that fred was in the park (sentence 4), but there is no information about bill being in the park. therefore, it can be logically concluded that bill is not in the park.	none	no	True	There is no information provided about Bill being in the park. The context sentences only mention Bill's possible locations as the cinema or the office (sentence 10), but not the park.		"Reasoning: There is no information provided about Bill being in the park. The context sentences only mention Bill's possible locations as the cinema or the office (sentence 10), but not the park.
+
+Answer: no"	0.0	0.0227	False	False	False	True	0

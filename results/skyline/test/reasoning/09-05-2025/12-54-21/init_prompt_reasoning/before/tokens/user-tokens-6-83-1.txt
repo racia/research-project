@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+2	.	ĠDaniel	Ġleft	Ġthe	Ġfootball	.Ċ
+3	.	ĠMary	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
+4	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠDaniel	Ġin	Ġthe	Ġoffice	?Ċ

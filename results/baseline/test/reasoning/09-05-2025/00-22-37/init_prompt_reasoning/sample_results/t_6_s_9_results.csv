@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+41	6	9	1	"*TASK*
+Here are the context sentences:
+1. John went back to the kitchen.
+2. Mary got the football there.
+
+Now, answer the following question:
+Is John in the kitchen?"	yes	"the context sentence ""john went back to the kitchen"" explicitly states that john's action is going back to the kitchen, which implies that john is now in the kitchen. the second sentence ""mary got the football there"" does not provide any information that would suggest john is no longer in the kitchen. therefore, based on the information provided, it can be concluded that john is indeed in the kitchen."	fully	yes	True	The context sentences indicate that John went back to the kitchen, which implies that John is currently in the kitchen.		"Reasoning: The context sentences indicate that John went back to the kitchen, which implies that John is currently in the kitchen.
+
+Answer: yes"	0.069	0.0345	False	False	False	False	0
+42	6	9	2	"*TASK*
+Here are the context sentences:
+4. Sandra picked up the apple there.
+5. Sandra travelled to the bedroom.
+
+Now, answer the following question:
+Is John in the hallway?"	no	"there is no information provided about john's location in the context sentences. the sentences only mention sandra's actions, picking up an apple and traveling to the bedroom. there is no mention of john or the hallway. therefore, based on the provided information, it cannot be concluded that john is in the hallway, and the answer is ""no""."	none	not mentioned	False	There is no mention of John in the context sentences, and no information about the hallway. The sentences only mention Sandra's actions and locations, but not John's presence or location.		"Reasoning: There is no mention of John in the context sentences, and no information about the hallway. The sentences only mention Sandra's actions and locations, but not John's presence or location.
+
+Answer: not mentioned"	0.1136	0.0227	False	False	False	True	0
+43	6	9	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the bathroom.
+8. Sandra dropped the apple there.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	no	"the context sentences do not mention the kitchen at all. however, in previous parts of the conversation (sentence 4), it was mentioned that sandra picked up the apple ""there"", which implies that sandra was in the same location where the apple was. now, in sentence 8, it is stated that sandra dropped the apple ""there"", which suggests that sandra is still in the same location. since sentence 7 mentions that daniel travelled to the bathroom, it can be inferred that sandra"	none	no	True	The context sentences do not mention Sandra being in the kitchen. In fact, sentence 8 mentions Sandra dropping the apple in the bathroom, which implies that Sandra is in the bathroom, not the kitchen.		"Reasoning: The context sentences do not mention Sandra being in the kitchen. In fact, sentence 8 mentions Sandra dropping the apple in the bathroom, which implies that Sandra is in the bathroom, not the kitchen.
+
+Answer: no"	0.0426	0.0213	False	False	False	True	0
+44	6	9	4	"*TASK*
+Here are the context sentences:
+10. John moved to the office.
+11. Mary went to the garden.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	the context sentences explicitly state mary's location as the garden (sentence 11), which is different from the bathroom. there is no information provided that would suggest mary is in the bathroom or has ever been there. therefore, based on the provided information, it can be concluded that mary is not in the bathroom.	fully	no	True	There is no mention of Mary being in the bathroom in the context sentences. Sentence 11 mentions Mary going to the garden, but not the bathroom.		"Reasoning: There is no mention of Mary being in the bathroom in the context sentences. Sentence 11 mentions Mary going to the garden, but not the bathroom.
+
+Answer: no"	0.0541	0.027	False	False	False	True	0
+45	6	9	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the office.
+14. Sandra went back to the bathroom.
+
+Now, answer the following question:
+Is Mary in the office?"	yes	"the context sentence 13 explicitly states that ""mary moved to the office"", which directly indicates that mary's current location is the office. there is no subsequent information provided that would suggest mary has left the office or changed her location. therefore, based on the provided information, it can be concluded that mary is indeed in the office."	fully	yes	True	According to sentence 13, Mary moved to the office, which implies that Mary is currently in the office.		"Reasoning: According to sentence 13, Mary moved to the office, which implies that Mary is currently in the office.
+
+Answer: yes"	0.0	0.0345	False	False	False	False	0

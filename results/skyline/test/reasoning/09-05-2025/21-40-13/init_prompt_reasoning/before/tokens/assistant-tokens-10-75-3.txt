@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġsince	Ġthe	Ġprevious	Ġcontext	Ġsentences	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠJulie	Ġwas	Ġthat	Ġshe	Ġmoved	Ġto	Ġthe	Ġpark	Ġ(	sentence	Ġ	2	).	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġleft	Ġthe	Ġpark	Ġor	Ġwent	Ġto	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġno	<|eot_id|>

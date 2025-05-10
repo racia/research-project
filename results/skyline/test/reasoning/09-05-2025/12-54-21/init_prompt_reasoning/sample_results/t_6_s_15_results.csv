@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+71	6	15	1	"*TASK*
+Here are the context sentences:
+1. Sandra went to the bathroom.
+2. Mary got the milk there.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	no	the context sentences do not mention sandra being in the bedroom. in fact, sentence 1 states that sandra went to the bathroom, which implies that she is in the bathroom, not the bedroom. there is no information provided that would suggest she moved to the bedroom after going to the bathroom. therefore, based on the given information, it can be concluded that sandra is not in the bedroom.	fully	no	True	The context sentences only mention Sandra going to the bathroom, but there is no information about her being in the bedroom.		"assistant
+
+Reasoning: The context sentences only mention Sandra going to the bathroom, but there is no information about her being in the bedroom. 
+
+Answer: no"	0.0286	0.0286	False	False	False	True	0
+72	6	15	2	"*TASK*
+Here are the context sentences:
+4. Mary went to the bathroom.
+5. Mary went back to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	"according to sentence 5, ""mary went back to the bedroom"", which explicitly states that mary's current location is the bedroom. this sentence implies that mary's action of going to the bathroom (sentence 4) has been completed, and she has returned to the bedroom. therefore, based on the given information, it can be concluded that mary is indeed in the bedroom."	fully	yes	True	According to sentence 5, Mary went back to the bedroom, which implies that she is currently in the bedroom.		"Reasoning: According to sentence 5, Mary went back to the bedroom, which implies that she is currently in the bedroom.
+
+Answer: yes"	0.0333	0.0333	False	False	False	False	0
+73	6	15	3	"*TASK*
+Here are the context sentences:
+7. Sandra moved to the bedroom.
+8. Daniel journeyed to the hallway.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	no	"according to sentence 7, ""sandra moved to the bedroom"", which explicitly states that sandra's current location is the bedroom. there is no mention of sandra being in the bathroom in the provided context sentences. in fact, sentence 7 implies that sandra has moved away from her previous location, which could be anywhere, but definitely not the bathroom. therefore, based on the given information, it can be concluded that sandra is not in the bathroom."	fully	no	True	According to sentence 7, Sandra moved to the bedroom, which implies that she is currently in the bedroom, not in the bathroom.		"Reasoning: According to sentence 7, Sandra moved to the bedroom, which implies that she is currently in the bedroom, not in the bathroom.
+
+Answer: no"	0.0	0.0294	False	False	False	False	0
+74	6	15	4	"*TASK*
+Here are the context sentences:
+10. Mary journeyed to the garden.
+11. Daniel went back to the garden.
+
+Now, answer the following question:
+Is Mary in the garden?"	yes	"according to sentence 10, ""mary journeyed to the garden"", which explicitly states that mary's current location is the garden. there is no information provided that suggests mary has left the garden. additionally, sentence 11 mentions daniel going back to the garden, which implies that daniel is now in the garden as well, but it does not affect mary's location. therefore, based on the given information, it can be concluded that mary is indeed in the garden."	fully	yes	True	According to sentence 10, Mary journeyed to the garden, which implies that she is currently in the garden.		"Reasoning: According to sentence 10, Mary journeyed to the garden, which implies that she is currently in the garden.
+
+Answer: yes"	0.0333	0.0333	False	False	False	False	0
+75	6	15	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the bedroom.
+14. Mary dropped the milk.
+
+Now, answer the following question:
+Is John in the garden?"	no	"according to sentence 13, ""john travelled to the bedroom"", which explicitly states that john's current location is the bedroom. there is no information provided that suggests john is in the garden. in fact, the context sentences do not mention john being in the garden at all. sentence 14 mentions mary dropping the milk, but it does not provide any information about john's location. therefore, based on the given information, it can be concluded that john is not in the garden."	fully	no	True	According to sentence 13, John travelled to the bedroom, which implies that he is currently in the bedroom, not in the garden.		"Reasoning: According to sentence 13, John travelled to the bedroom, which implies that he is currently in the bedroom, not in the garden.
+
+Answer: no"	0.0	0.0294	False	False	False	False	0

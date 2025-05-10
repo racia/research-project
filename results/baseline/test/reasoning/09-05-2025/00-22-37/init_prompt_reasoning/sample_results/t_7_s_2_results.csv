@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+506	7	2	1	"*TASK*
+Here are the context sentences:
+1. Daniel took the milk there.
+2. John moved to the hallway.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	"from context sentence 1, ""daniel took the milk there"", we can infer that daniel is carrying the milk. there is no mention of daniel carrying any other objects. therefore, the number of objects daniel is carrying is one, which is the milk."	fully	one	True	The question asks about the number of objects Daniel is carrying, and the only sentence mentioning Daniel is sentence 1, which states that Daniel took the milk there. This implies that Daniel is carrying the milk.		"Reasoning: The question asks about the number of objects Daniel is carrying, and the only sentence mentioning Daniel is sentence 1, which states that Daniel took the milk there. This implies that Daniel is carrying the milk.
+
+Answer: one"	0.0417	0.0208	False	False	False	True	0
+507	7	2	2	"*TASK*
+Here are the context sentences:
+4. Daniel left the milk.
+5. Daniel journeyed to the office.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	"from context sentence 4, ""daniel left the milk"", we can infer that daniel is no longer carrying the milk. there is no mention of daniel picking up or taking any other objects in context sentence 5, ""daniel journeyed to the office"". therefore, daniel is not carrying any objects, which is consistent with the answer ""none""."	partially	none	True	Sentence 4 states that Daniel left the milk, implying that Daniel was previously carrying the milk. However, sentence 5 does not mention Daniel carrying anything. Therefore, it can be inferred that Daniel is no longer carrying the milk.		"Reasoning: Sentence 4 states that Daniel left the milk, implying that Daniel was previously carrying the milk. However, sentence 5 does not mention Daniel carrying anything. Therefore, it can be inferred that Daniel is no longer carrying the milk.
+
+Answer: none"	0.0189	0.0377	False	False	False	True	0
+508	7	2	3	"*TASK*
+Here are the context sentences:
+7. John went back to the office.
+8. John went to the hallway.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	"the context sentences 7 and 8 only provide information about john's movements, but do not mention daniel or any objects being carried by daniel. since we already know from previous context (sentence 4) that daniel left the milk, and there is no new information about daniel picking up or carrying any objects, the answer remains that daniel is not carrying any objects, which is consistent with the answer ""none""."	none	not mentioned	False	There is no mention of Daniel in sentences 7 and 8, which only involve John. Therefore, the question about Daniel's carrying is not relevant to these sentences.		"Reasoning: There is no mention of Daniel in sentences 7 and 8, which only involve John. Therefore, the question about Daniel's carrying is not relevant to these sentences.
+
+Answer: not mentioned"	0.0952	0.0476	False	False	False	True	0
+509	7	2	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the bedroom.
+11. Mary got the football there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"from context sentence 11, ""mary got the football there"", we can infer that mary picked up the football in the bedroom. there is no mention of mary carrying any other objects. therefore, mary is carrying one object, which is the football, which is consistent with the answer ""one""."	fully	one	True	Sentence 11 states that Mary got the football there, implying that Mary is now carrying the football.		"Reasoning: Sentence 11 states that Mary got the football there, implying that Mary is now carrying the football.
+
+Answer: one"	0.0	0.037	False	False	False	False	0
+510	7	2	5	"*TASK*
+Here are the context sentences:
+13. Sandra went back to the kitchen.
+14. Daniel moved to the kitchen.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"the context sentences 13 and 14 only provide information about sandra and daniel's movements, but do not mention mary or the object she is carrying. we already know from previous context (sentence 11) that mary got the football and is carrying it. there is no new information that would change the number of objects mary is carrying. therefore, the answer remains that mary is carrying one object, which is the football, which is consistent with the answer ""one""."	none	not mentioned	False	There is no mention of Mary in sentences 13 and 14, which only involve Sandra and Daniel. Therefore, the question about Mary's carrying is not relevant to these sentences.		"Reasoning: There is no mention of Mary in sentences 13 and 14, which only involve Sandra and Daniel. Therefore, the question about Mary's carrying is not relevant to these sentences.
+
+Answer: not mentioned"	0.0	0.0227	False	False	False	True	0

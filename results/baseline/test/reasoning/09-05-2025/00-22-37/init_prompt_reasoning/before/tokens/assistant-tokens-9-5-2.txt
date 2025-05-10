@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠSentence	Ġ	4	Ġstates	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġkitchen	,	Ġwhich	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	Ġher	Ġcurrent	Ġlocation	.	ĠSentence	Ġ	5	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġhallway	,	Ġwhich	Ġdirectly	Ġanswers	Ġthe	Ġquestion	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

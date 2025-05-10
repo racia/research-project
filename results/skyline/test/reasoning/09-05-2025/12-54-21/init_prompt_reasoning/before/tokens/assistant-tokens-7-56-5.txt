@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	17	Ġand	Ġ	18	Ġare	Ġabout	ĠJohn	's	Ġmovements	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠMary	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠMary	Ġwas	Ġthat	Ġshe	Ġdiscarded	Ġthe	Ġapple	Ġ(	sentence	Ġ	15	).	ĠTherefore	,	Ġthe	Ġanswer	Ġremains	Ġthe	Ġsame	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1856	9	72	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the hallway.
+2. Mary moved to the bathroom.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	according to the context sentences, daniel went to the hallway (sentence 1), and there is no mention of him moving to the bathroom. mary, on the other hand, moved to the bathroom (sentence 2). since there is no information about daniel entering the bathroom, and mary is the one who moved there, it can be logically concluded that daniel is not in the bathroom.	fully	no	True	The question asks about Daniel's location, and we know from sentence 1 that Daniel went to the hallway. There is no information that suggests Daniel moved to the bathroom. Therefore, we can conclude that Daniel is not in the bathroom.		"Reasoning: The question asks about Daniel's location, and we know from sentence 1 that Daniel went to the hallway. There is no information that suggests Daniel moved to the bathroom. Therefore, we can conclude that Daniel is not in the bathroom.
+
+Answer: no"	0.0741	0.0185	False	False	False	True	0
+1857	9	72	2	"*TASK*
+Here are the context sentences:
+4. Sandra travelled to the bedroom.
+5. John is in the bathroom.
+
+Now, answer the following question:
+Is John in the garden?"	no	according to the context sentences, there is no mention of john being in the garden. in fact, sentence 5 explicitly states that john is in the bathroom, which is a different location from the garden. therefore, it can be logically concluded that john is not in the garden.	fully	no	True	The question asks about John's location, and we know from sentence 5 that John is in the bathroom. There is no information that suggests John moved to the garden. Therefore, we can conclude that John is not in the garden.		"Reasoning: The question asks about John's location, and we know from sentence 5 that John is in the bathroom. There is no information that suggests John moved to the garden. Therefore, we can conclude that John is not in the garden.
+
+Answer: no"	0.1296	0.0185	False	False	False	True	0
+1858	9	72	3	"*TASK*
+Here are the context sentences:
+7. Sandra is no longer in the bedroom.
+8. Daniel journeyed to the bathroom.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	yes	"according to sentence 8, ""daniel journeyed to the bathroom"", which implies that daniel has moved to the bathroom. there is no information suggesting that daniel left the bathroom after arriving, so it can be logically concluded that daniel is still in the bathroom."	fully	yes	True	The question asks about Daniel's location, and we know from sentence 8 that Daniel journeyed to the bathroom. Sentence 7 does not provide any information about Daniel's location before his journey, so we can conclude that Daniel is indeed in the bathroom.		"Reasoning: The question asks about Daniel's location, and we know from sentence 8 that Daniel journeyed to the bathroom. Sentence 7 does not provide any information about Daniel's location before his journey, so we can conclude that Daniel is indeed in the bathroom.
+
+Answer: yes"	0.069	0.0172	False	False	False	True	0
+1859	9	72	4	"*TASK*
+Here are the context sentences:
+10. Mary is no longer in the bathroom.
+11. Sandra moved to the office.
+
+Now, answer the following question:
+Is Sandra in the office?"	yes	"according to sentence 11, ""sandra moved to the office"", which explicitly states that sandra has changed her location to the office. there is no information suggesting that sandra left the office after arriving, so it can be logically concluded that sandra is still in the office."	fully	yes	True	The question asks about Sandra's location, and we know from sentence 11 that Sandra moved to the office. Sentence 10 does not provide any information about Sandra's location before her move, so we can conclude that Sandra is indeed in the office.		"Reasoning: The question asks about Sandra's location, and we know from sentence 11 that Sandra moved to the office. Sentence 10 does not provide any information about Sandra's location before her move, so we can conclude that Sandra is indeed in the office.
+
+Answer: yes"	0.0	0.0175	False	False	False	True	0
+1860	9	72	5	"*TASK*
+Here are the context sentences:
+13. Mary is in the bathroom.
+14. Mary went back to the hallway.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	"according to sentence 13, ""mary is in the bathroom"", which initially places mary in the bathroom. however, sentence 14, ""mary went back to the hallway"", indicates that mary has moved from the bathroom to the hallway. since mary has left the bathroom, it can be logically concluded that mary is no longer in the bathroom."	fully	no	True	The question asks about Mary's location, and we know from sentence 14 that Mary went back to the hallway. Sentence 13 states that Mary is in the bathroom, but this information is superseded by the fact that Mary went back to the hallway. Therefore, we can conclude that Mary is not in the bathroom.		"Reasoning: The question asks about Mary's location, and we know from sentence 14 that Mary went back to the hallway. Sentence 13 states that Mary is in the bathroom, but this information is superseded by the fact that Mary went back to the hallway. Therefore, we can conclude that Mary is not in the bathroom.
+
+Answer: no"	0.0141	0.0141	False	False	False	True	0

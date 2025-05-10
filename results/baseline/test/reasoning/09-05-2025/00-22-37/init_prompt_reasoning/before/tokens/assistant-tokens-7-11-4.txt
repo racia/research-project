@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠJohn	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġwas	Ġholding	Ġthe	Ġfootball	.	ĠSince	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠJohn	,	Ġshe	Ġis	Ġno	Ġlonger	Ġholding	Ġit	.	ĠTherefore	,	ĠMary	Ġis	Ġnot	Ġcarrying	Ġany	Ġobjects	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

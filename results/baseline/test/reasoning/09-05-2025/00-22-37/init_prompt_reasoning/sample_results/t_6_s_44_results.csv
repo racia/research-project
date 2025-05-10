@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+216	6	44	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the bedroom.
+2. John travelled to the garden.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	"the context sentences only mention daniel moving to the bedroom and john travelling to the garden, but there is no mention of daniel being in the bathroom. in fact, the first sentence explicitly states that daniel moved to the bedroom, which implies that he is not in the bathroom. therefore, the answer is ""no"", daniel is not in the bathroom."	fully	no	True	The context sentences do not mention Daniel going to the bathroom. Sentence 1 states that Daniel moved to the bedroom, but there is no mention of him going to the bathroom. Sentence 2 is about John travelling to the garden, which is unrelated to Daniel's location.		"Reasoning: The context sentences do not mention Daniel going to the bathroom. Sentence 1 states that Daniel moved to the bedroom, but there is no mention of him going to the bathroom. Sentence 2 is about John travelling to the garden, which is unrelated to Daniel's location.
+
+Answer: no"	0.0656	0.0164	False	False	False	True	0
+217	6	44	2	"*TASK*
+Here are the context sentences:
+4. Mary went to the hallway.
+5. Mary picked up the football there.
+
+Now, answer the following question:
+Is Mary in the hallway?"	yes	"the context sentence 4 explicitly states that ""mary went to the hallway"", which implies that mary is currently in the hallway. additionally, sentence 5 mentions that mary picked up the football ""there"", which suggests that ""there"" refers to the hallway, further supporting the conclusion that mary is indeed in the hallway. therefore, the answer is ""yes"", mary is in the hallway."	fully	yes	True	The context sentences explicitly state that Mary went to the hallway and picked up the football there. This implies that Mary is currently located in the hallway.		"Reasoning: The context sentences explicitly state that Mary went to the hallway and picked up the football there. This implies that Mary is currently located in the hallway.
+
+Answer: yes"	0.0278	0.0278	False	False	False	False	0
+218	6	44	3	"*TASK*
+Here are the context sentences:
+7. Mary dropped the football.
+8. John went back to the bedroom.
+
+Now, answer the following question:
+Is John in the kitchen?"	no	"there is no mention of john going to the kitchen in the context sentences. in fact, sentence 8 explicitly states that john went back to the bedroom, which implies that john is currently in the bedroom, not in the kitchen. therefore, the answer is ""no"", john is not in the kitchen."	fully	no	True	The context sentences do not mention John going to the kitchen. Sentence 7 is about Mary dropping the football, and Sentence 8 is about John going back to the bedroom. There is no mention of John's location being the kitchen.		"Reasoning: The context sentences do not mention John going to the kitchen. Sentence 7 is about Mary dropping the football, and Sentence 8 is about John going back to the bedroom. There is no mention of John's location being the kitchen.
+
+Answer: no"	0.0185	0.0185	False	False	False	True	0
+219	6	44	4	"*TASK*
+Here are the context sentences:
+10. Mary journeyed to the kitchen.
+11. Mary got the apple there.
+
+Now, answer the following question:
+Is Mary in the office?"	no	"according to sentence 10, mary journeyed to the kitchen, which implies that mary is currently in the kitchen. there is no mention of mary going to the office or being in the office. in fact, the context suggests that mary is in the kitchen, where she got the apple (sentence 11). therefore, the answer is ""no"", mary is not in the office."	fully	no	True	The context sentences do not mention Mary going to the office. Sentence 10 states that Mary journeyed to the kitchen, and Sentence 11 states that she got the apple there. There is no mention of Mary's location being the office.		"Reasoning: The context sentences do not mention Mary going to the office. Sentence 10 states that Mary journeyed to the kitchen, and Sentence 11 states that she got the apple there. There is no mention of Mary's location being the office.
+
+Answer: no"	0.0364	0.0182	False	False	False	True	0
+220	6	44	5	"*TASK*
+Here are the context sentences:
+13. Mary dropped the apple there.
+14. Daniel travelled to the office.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	"sentence 11 (from previous context) states that ""mary got the apple there"" (in the kitchen), and sentence 13 states that ""mary dropped the apple there"", which implies that ""there"" still refers to the kitchen. there is no mention of mary leaving the kitchen or going to a different location. therefore, the answer is ""yes"", mary is still in the kitchen."	none	yes	True	The context sentences do not explicitly state that Mary is not in the kitchen, but Sentence 13 mentions Mary dropping the apple there, which implies that she was previously in the kitchen. Since there is no contradictory information, it can be inferred that Mary was in the kitchen.		"Reasoning: The context sentences do not explicitly state that Mary is not in the kitchen, but Sentence 13 mentions Mary dropping the apple there, which implies that she was previously in the kitchen. Since there is no contradictory information, it can be inferred that Mary was in the kitchen.
+
+Answer: yes"	0.0492	0.0164	False	False	False	True	0

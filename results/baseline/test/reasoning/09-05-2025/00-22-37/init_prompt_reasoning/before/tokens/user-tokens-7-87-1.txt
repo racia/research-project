@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+2	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+3	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+4	.	ĠSandra	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠSandra	Ġcarrying	?Ċ

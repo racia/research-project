@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1246	8	50	1	"*TASK*
+Here are the context sentences:
+1. John moved to the kitchen.
+2. Daniel went back to the office.
+3. John went to the garden.
+4. John travelled to the hallway.
+5. John picked up the milk there.
+6. Daniel went to the bedroom.
+
+Now, answer the following question:
+What is John carrying?"	milk	from the context sentences, we know that john went to the hallway (sentence 4) and picked up the milk there (sentence 5). therefore, it can be logically concluded that john is carrying the milk.	fully	milk	True	John picked up the milk in the hallway, and he is the only one who did so. Therefore, John is carrying the milk.		"Reasoning: John picked up the milk in the hallway, and he is the only one who did so. Therefore, John is carrying the milk.
+
+Answer: milk"	0.1176	0.0294	False	False	False	False	0
+1247	8	50	2	"*TASK*
+Here are the context sentences:
+8. Sandra went back to the office.
+9. John moved to the bedroom.
+
+Now, answer the following question:
+What is John carrying?"	milk	"although the context sentences 8 and 9 do not mention john carrying anything, we can infer the answer from the previous context sentences (sentences 1-6). specifically, sentence 5 states that ""john picked up the milk there"" (in the hallway). there is no information provided that john dropped or put down the milk, so it can be logically concluded that john is still carrying the milk."	none	nothing	False	There is no mention of John carrying anything in the given context sentences. John's actions are moving to the bedroom and moving to the kitchen (from previous context), but there is no mention of him picking up or carrying anything.		"Reasoning: There is no mention of John carrying anything in the given context sentences. John's actions are moving to the bedroom and moving to the kitchen (from previous context), but there is no mention of him picking up or carrying anything.
+
+Answer: nothing"	0.0577	0.0192	False	False	False	True	0
+1248	8	50	3	"*TASK*
+Here are the context sentences:
+11. Sandra travelled to the hallway.
+12. Mary went to the bedroom.
+13. John journeyed to the bathroom.
+14. John put down the milk there.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"according to sentence 14, ""john put down the milk there"" (in the bathroom). this implies that john was carrying the milk before putting it down, and now the milk is no longer in his possession. therefore, it can be logically concluded that john is carrying nothing."	partially	milk	False	John put down the milk in the bathroom, which means he was carrying the milk before putting it down.		"Reasoning: John put down the milk in the bathroom, which means he was carrying the milk before putting it down.
+
+Answer: milk"	0.0714	0.0714	False	False	False	False	0
+1249	8	50	4	"*TASK*
+Here are the context sentences:
+16. Mary went to the garden.
+17. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+What is John carrying?"	nothing	the context sentences 16 and 17 do not provide any new information about john. however, we can refer to the previous context sentences (sentences 11-14) where it was established that john put down the milk in the bathroom (sentence 14). since there is no new information suggesting that john picked up anything else, it can be logically concluded that john is still carrying nothing.	none	nothing	True	There is no mention of John's actions or what he is carrying in the given context sentences. The sentences only mention Mary and Sandra's actions, but not John's.		"Reasoning: There is no mention of John's actions or what he is carrying in the given context sentences. The sentences only mention Mary and Sandra's actions, but not John's.
+
+Answer: nothing"	0.0	0.0488	False	False	False	True	0
+1250	8	50	5	"*TASK*
+Here are the context sentences:
+19. John grabbed the football there.
+20. Sandra picked up the milk there.
+
+Now, answer the following question:
+What is John carrying?"	football	"according to sentence 19, ""john grabbed the football there"", which implies that john picked up the football. there is no information suggesting that john dropped or put down the football, so it can be logically concluded that john is still carrying the football."	partially	football	True	John grabbed the football, which means he is carrying the football.		"Reasoning: John grabbed the football, which means he is carrying the football.
+
+Answer: football"	0.05	0.15	False	False	False	False	0

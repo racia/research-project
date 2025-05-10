@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	13	,	Ġ"	John	Ġwent	Ġto	Ġthe	Ġhallway	",	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	Ġand	Ġis	Ġlikely	Ġto	Ġbe	Ġthere	Ġnow	.	ĠThe	Ġfact	Ġthat	ĠMary	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġhallway	Ġ(	context	Ġsentence	Ġ	14	)	Ġdoes	Ġnot	Ġaffect	ĠJohn	's	Ġlocation	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

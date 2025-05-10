@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	4	Ġstates	Ġthat	ĠFred	Ġis	Ġin	Ġthe	Ġcinema	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġhe	Ġhas	Ġmoved	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġno	<|eot_id|>

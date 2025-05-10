@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġinitially	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	10	),	Ġbut	Ġthen	Ġshe	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	11	),	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġleft	Ġthe	Ġkitchen	Ġand	Ġis	Ġnow	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

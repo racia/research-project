@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1941	9	89	1	"*TASK*
+Here are the context sentences:
+1. Daniel is in the kitchen.
+2. Sandra is not in the office.
+
+Now, answer the following question:
+Is Sandra in the office?"	no	"the answer is ""no"" because the context sentence ""sandra is not in the office"" explicitly states that sandra is not in the office. this sentence directly provides the information that sandra's location is not the office."	fully	no	True	The question asks about Sandra's location in the office, but sentence 2 explicitly states that Sandra is not in the office. Therefore, we can conclude that Sandra is not in the office.		"Reasoning: The question asks about Sandra's location in the office, but sentence 2 explicitly states that Sandra is not in the office. Therefore, we can conclude that Sandra is not in the office.
+
+Answer: no"	0.0444	0.0222	False	False	False	False	0
+1942	9	89	2	"*TASK*
+Here are the context sentences:
+4. John moved to the hallway.
+5. Mary is in the kitchen.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	"there is no information provided about daniel's location in the context sentences. the context sentences only mention john moving to the hallway and mary being in the kitchen, but they do not provide any information about daniel or the bathroom. therefore, we cannot conclude that daniel is in the bathroom, and the answer is ""no"" because there is no evidence to suggest that he is."	none	not mentioned	False	There is no mention of Daniel's location in the context sentences. The sentences only mention John's movement to the hallway and Mary's location in the kitchen. Since there is no information about Daniel's location, we cannot determine if he is in the bathroom or not.		"Reasoning: There is no mention of Daniel's location in the context sentences. The sentences only mention John's movement to the hallway and Mary's location in the kitchen. Since there is no information about Daniel's location, we cannot determine if he is in the bathroom or not.
+
+Answer: not mentioned"	0.082	0.0164	False	False	False	True	0
+1943	9	89	3	"*TASK*
+Here are the context sentences:
+7. Mary is not in the kitchen.
+8. Mary is no longer in the bedroom.
+
+Now, answer the following question:
+Is Sandra in the office?"	no	"there is no information provided about sandra or the office in the context sentences. the context sentences only mention mary's locations, stating that she is not in the kitchen and no longer in the bedroom. there is no connection or mention of sandra or the office, so we cannot conclude anything about sandra's location. the answer ""no"" is likely due to previous context (not provided in this part of the conversation), but based on the current context, we cannot logically deduce the answer."	none	not mentioned	False	The context sentences do not mention Sandra's location at all. They only provide information about Mary's location, stating that she is not in the kitchen and is no longer in the bedroom. Since there is no mention of Sandra, we cannot determine her location in the office or anywhere else.		"Reasoning: The context sentences do not mention Sandra's location at all. They only provide information about Mary's location, stating that she is not in the kitchen and is no longer in the bedroom. Since there is no mention of Sandra, we cannot determine her location in the office or anywhere else.
+
+Answer: not mentioned"	0.0308	0.0154	False	False	False	True	0
+1944	9	89	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the office.
+11. Mary travelled to the garden.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	no	"the answer is ""no"" because the context sentence ""mary travelled to the garden"" explicitly states that mary's location is the garden, not the kitchen. this sentence directly provides the information that mary is not in the kitchen, but rather in the garden."	fully	no	True	Sentence 11 states that Mary travelled to the garden, which implies that she is no longer in the kitchen. Since Mary is not in the kitchen, the answer is no.		"Reasoning: Sentence 11 states that Mary travelled to the garden, which implies that she is no longer in the kitchen. Since Mary is not in the kitchen, the answer is no.
+
+Answer: no"	0.0476	0.0238	False	False	False	False	0
+1945	9	89	5	"*TASK*
+Here are the context sentences:
+13. Mary went to the office.
+14. Mary is not in the office.
+
+Now, answer the following question:
+Is Mary in the office?"	no	"the answer is ""no"" because the context sentence ""mary is not in the office"" explicitly states that mary's location is not the office. this sentence directly contradicts the previous sentence ""mary went to the office"", implying that mary may have gone to the office initially, but is no longer there. the most recent information about mary's location takes precedence, so we can conclude that mary is not in the office."	fully	no	True	Sentence 14 explicitly states that Mary is not in the office. This contradicts sentence 13, which says Mary went to the office. However, since sentence 14 is more recent and provides more specific information, we can conclude that Mary is not in the office.		"Reasoning: Sentence 14 explicitly states that Mary is not in the office. This contradicts sentence 13, which says Mary went to the office. However, since sentence 14 is more recent and provides more specific information, we can conclude that Mary is not in the office.
+
+Answer: no"	0.0656	0.0164	False	False	False	True	0

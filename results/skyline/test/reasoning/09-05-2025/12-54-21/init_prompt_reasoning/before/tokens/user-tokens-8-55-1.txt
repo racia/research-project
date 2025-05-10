@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+2	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+3	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+4	.	ĠDaniel	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠDaniel	Ġcarrying	?Ċ

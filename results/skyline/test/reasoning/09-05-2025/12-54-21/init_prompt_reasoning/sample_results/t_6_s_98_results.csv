@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+486	6	98	1	"*TASK*
+Here are the context sentences:
+1. Sandra grabbed the milk there.
+2. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	yes	"the context sentence ""daniel journeyed to the kitchen"" explicitly states that daniel went to the kitchen, which implies that he is now in the kitchen. therefore, the answer to the question ""is daniel in the kitchen?"" is indeed ""yes""."	fully	yes	True	According to sentence 2, Daniel journeyed to the kitchen, which implies that Daniel has moved to the kitchen.		"assistant
+
+Reasoning: According to sentence 2, Daniel journeyed to the kitchen, which implies that Daniel has moved to the kitchen.
+
+Answer: yes"	0.0588	0.0294	False	False	False	False	0
+487	6	98	2	"*TASK*
+Here are the context sentences:
+4. Daniel picked up the football there.
+5. Mary went to the office.
+
+Now, answer the following question:
+Is Mary in the office?"	yes	"the context sentence ""mary went to the office"" explicitly states that mary went to the office, which implies that she is now in the office. therefore, the answer to the question ""is mary in the office?"" is indeed ""yes""."	fully	yes	True	According to sentence 5, Mary went to the office, which implies that Mary has moved to the office.		"Reasoning: According to sentence 5, Mary went to the office, which implies that Mary has moved to the office.
+
+Answer: yes"	0.1724	0.0345	False	False	False	False	0
+488	6	98	3	"*TASK*
+Here are the context sentences:
+7. John went to the bedroom.
+8. Daniel went to the garden.
+
+Now, answer the following question:
+Is Daniel in the garden?"	yes	"the context sentence ""daniel went to the garden"" explicitly states that daniel went to the garden, which implies that he is now in the garden. therefore, the answer to the question ""is daniel in the garden?"" is indeed ""yes""."	fully	yes	True	According to sentence 8, Daniel went to the garden, which implies that Daniel has moved to the garden.		"Reasoning: According to sentence 8, Daniel went to the garden, which implies that Daniel has moved to the garden.
+
+Answer: yes"	0.0	0.0345	False	False	False	False	0
+489	6	98	4	"*TASK*
+Here are the context sentences:
+10. Sandra went back to the office.
+11. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Is John in the office?"	no	there is no mention of john in the provided context sentences. the sentences only mention sandra going back to the office and mary journeying to the bedroom. there is no information about john's location, and the previous context sentences (7 and 8) mentioned john going to the bedroom, but there is no indication that he is still there or that he went to the office. therefore, based on the provided information, it can be concluded that john is not in the office.	none	no	True	There is no information in the context sentences that suggests John is in the office. Sentence 7 mentions John going to the bedroom, and there is no subsequent information that changes his location.		"Reasoning: There is no information in the context sentences that suggests John is in the office. Sentence 7 mentions John going to the bedroom, and there is no subsequent information that changes his location.
+
+Answer: no"	0.0	0.0227	False	False	False	True	0
+490	6	98	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the hallway.
+14. Sandra left the milk.
+
+Now, answer the following question:
+Is Daniel in the garden?"	yes	"the answer to the question ""is daniel in the garden?"" is ""yes"" because in a previous context sentence (8), it was stated that ""daniel went to the garden"". there is no information provided that suggests daniel left the garden, so it can be logically inferred that he is still in the garden. the current context sentences (13 and 14) do not provide any new information about daniel's location, so the previous information remains valid."	none	yes	True	Sentence 8 mentions Daniel going to the garden, and there is no subsequent information that changes his location.		"Reasoning: Sentence 8 mentions Daniel going to the garden, and there is no subsequent information that changes his location.
+
+Answer: yes"	0.0	0.0357	False	False	False	True	0
