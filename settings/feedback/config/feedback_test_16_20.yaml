@@ -7,7 +7,7 @@ teacher:
   max_new_tokens: 150
 
 student:
-  max_new_tokens: 200
+  max_new_tokens: 150
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
@@ -31,4 +31,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "${oc.env:HOME}/research-project/results/test-feedback-run/test/reasoning/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "${oc.env:HOME}/research-project/results/feedback/test/reasoning/${now:%d-%m-%Y}/${now:%H-%M-%S}"
