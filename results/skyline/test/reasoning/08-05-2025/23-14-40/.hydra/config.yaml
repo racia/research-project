@@ -1,0 +1,81 @@
+model:
+  name: meta-llama/Meta-Llama-3-70B-Instruct
+  max_new_tokens: 150
+  temperature: 0.1
+  to_continue: false
+  mode: eval
+  interpretability:
+    use: true
+    aggregate: true
+setting:
+  name: Skyline
+data:
+  path: ${oc.env:HOME}/tasks_1-20_v1-2/en-valid/
+  baseline_results: ''
+  splits:
+    train: false
+    valid: false
+    test: true
+  task_ids:
+  - 15
+  samples_per_task: 100
+  to_enumerate:
+    context: true
+    question: false
+  wrapper:
+    context: '*TASK*
+
+      Here are the context sentences:
+
+      {context}
+
+      '
+    question: 'Now, answer the following question:
+
+      {question}
+
+      '
+    reasoning: ''
+    answer: ''
+init_prompt:
+  paths:
+  - ${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt
+  examples:
+    add: true
+    enumerated: true
+    handpicked: true
+    not_mentioned: true
+    number: 1
+    wrapper: '*EXAMPLE*
+
+      {example}
+
+      *END OF EXAMPLE*
+
+      '
+logging:
+  print_to_file: true
+results:
+  headers:
+  - id_
+  - task_id
+  - sample_id
+  - part_id
+  - task
+  - answer_lies_in_self
+  - golden_answer
+  - silver_reasoning
+  - model_output_before
+  - model_answer_before
+  - model_reasoning_before
+  - answer_correct_before
+  - reasoning_correct_before
+  - exact_match_accuracy_before
+  - soft_match_accuracy_before
+  - max_supp_attn_before
+  - attn_on_target_before
+  - verbs_before
+  - there_before
+  - pronouns_before
+  - not_mentioned_before
+  - context_sents_hall_before

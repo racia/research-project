@@ -1,0 +1,42 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+153	15	39	1	"*TASK*
+Here are the context sentences:
+1. Cats are afraid of sheep.
+2. Mice are afraid of wolves.
+3. Emily is a cat.
+4. Sheep are afraid of mice.
+5. Jessica is a cat.
+6. Wolves are afraid of cats.
+7. Gertrude is a wolf.
+8. Winona is a cat.
+
+Now, answer the following question:
+What is gertrude afraid of?"	cat	from context sentence 7, we know that gertrude is a wolf. from context sentence 6, we know that wolves are afraid of cats. therefore, gertrude, being a wolf, is afraid of cats.	fully	cat	True	"According to sentence 6, ""Wolves are afraid of cats."" Gertrude is a wolf (sentence 7), so Gertrude is afraid of cats."		"assistant
+
+Reasoning: According to sentence 6, ""Wolves are afraid of cats."" Gertrude is a wolf (sentence 7), so Gertrude is afraid of cats.
+
+Answer: cat"	0.2667	0.0444	False	False	False	False	0
+154	15	39	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	sheep	from context sentence 8, we know that winona is a cat. from context sentence 1, we know that cats are afraid of sheep. therefore, winona, being a cat, is afraid of sheep.	none	sheep	True	"According to sentence 1, ""Cats are afraid of sheep."" Winona is a cat (sentence 8), so Winona is afraid of sheep."		"Reasoning: According to sentence 1, ""Cats are afraid of sheep."" Winona is a cat (sentence 8), so Winona is afraid of sheep.
+
+Answer: sheep"	0.0	0.0513	False	False	False	False	0
+155	15	39	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	sheep	from context sentence 8, we know that winona is a cat. from context sentence 1, we know that cats are afraid of sheep. therefore, winona, being a cat, is afraid of sheep.	none	sheep	True	"According to sentence 1, ""Cats are afraid of sheep."" Winona is a cat (sentence 8), so Winona is afraid of sheep."		"Reasoning: According to sentence 1, ""Cats are afraid of sheep."" Winona is a cat (sentence 8), so Winona is afraid of sheep.
+
+Answer: sheep"	0.0256	0.0513	False	False	False	False	0
+156	15	39	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is jessica afraid of?"	sheep	from context sentence 5, we know that jessica is a cat. from context sentence 1, we know that cats are afraid of sheep. therefore, jessica, being a cat, is afraid of sheep.	none	sheep	True	"According to sentence 4, ""Sheep are afraid of mice."" Jessica is not a sheep, but a cat (sentence 5), so we need to find what cats are afraid of. According to sentence 1, ""Cats are afraid of sheep."""		"Reasoning: According to sentence 4, ""Sheep are afraid of mice."" Jessica is not a sheep, but a cat (sentence 5), so we need to find what cats are afraid of. According to sentence 1, ""Cats are afraid of sheep."" 
+
+Answer: sheep"	0.1475	0.0328	False	False	False	False	0
