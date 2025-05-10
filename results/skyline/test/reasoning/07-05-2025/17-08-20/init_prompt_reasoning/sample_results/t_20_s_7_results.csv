@@ -1,0 +1,103 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1572	20	7	1	"*TASK*
+Here are the context sentences:
+1. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	when jason is tired, it is logical to assume that he will go to a place where he can rest. in most cases, people go to their bedroom to rest or sleep when they are tired. therefore, based on the context, it is reasonable to conclude that jason will go to his bedroom.	fully	bedroom	True	Since Jason is tired, it is logical to assume that he will go to a place where he can rest. Based on the previous context sentences, when someone is tired, they go to the bedroom.		"assistant
+
+Reasoning: Since Jason is tired, it is logical to assume that he will go to a place where he can rest. Based on the previous context sentences, when someone is tired, they go to the bedroom.
+
+Answer: bedroom"	0.0192	0.0192	False	False	False	False	0
+1573	20	7	2	"*TASK*
+Here are the context sentences:
+3. Jason moved to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	"in the previous context, it was mentioned that ""jason is tired"" (context line 1). now, it is stated that ""jason moved to the bedroom"" (context line 3). it can be logically inferred that jason's tiredness is the reason for him moving to the bedroom, as people often go to their bedroom to rest or sleep when they are tired. therefore, the answer ""tired"" is a reasonable explanation for why jason went to the bedroom."	none	tired	True	According to the previous context sentence, Jason is tired. It is logical to assume that Jason went to the bedroom because he is tired.		"Reasoning: According to the previous context sentence, Jason is tired. It is logical to assume that Jason went to the bedroom because he is tired.
+
+Answer: tired"	0.0882	0.0294	False	False	False	False	0
+1574	20	7	3	"*TASK*
+Here are the context sentences:
+5. Antoine is hungry.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	when antoine is hungry, it is logical to assume that he will go to a place where he can find food. in most households, the kitchen is the primary location where food is prepared and consumed. therefore, based on the context, it is reasonable to conclude that antoine will go to the kitchen to satisfy his hunger.	fully	kitchen	True	Since Antoine is hungry, it is logical to assume that he will go to a place where he can eat or find food. Based on the previous context sentences, when someone is thirsty, they go to the kitchen. It is reasonable to assume that the kitchen is also a place where people can find food, so Antoine will likely go to the kitchen.		"Reasoning: Since Antoine is hungry, it is logical to assume that he will go to a place where he can eat or find food. Based on the previous context sentences, when someone is thirsty, they go to the kitchen. It is reasonable to assume that the kitchen is also a place where people can find food, so Antoine will likely go to the kitchen.
+
+Answer: kitchen"	0.0909	0.013	False	False	False	False	0
+1575	20	7	4	"*TASK*
+Here are the context sentences:
+7. Yann is hungry.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	when yann is hungry, it is logical to assume that he will go to a place where he can find food. in most households, the kitchen is the primary location where food is prepared and consumed. therefore, based on the context, it is reasonable to conclude that yann will go to the kitchen to satisfy his hunger.	fully	kitchen	True	Since Yann is hungry, it is logical to assume that he will go to a place where he can eat or find food. Based on the previous context sentences, when someone is hungry or thirsty, they go to the kitchen. It is reasonable to assume that the kitchen is a place where people can find food, so Yann will likely go to the kitchen.		"Reasoning: Since Yann is hungry, it is logical to assume that he will go to a place where he can eat or find food. Based on the previous context sentences, when someone is hungry or thirsty, they go to the kitchen. It is reasonable to assume that the kitchen is a place where people can find food, so Yann will likely go to the kitchen.
+
+Answer: kitchen"	0.0	0.0125	False	False	False	False	0
+1576	20	7	5	"*TASK*
+Here are the context sentences:
+9. Yann moved to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	hungry	"in the previous context, it was mentioned that ""yann is hungry"" (context line 7). now, it is stated that ""yann moved to the kitchen"" (context line 9). it can be logically inferred that yann's hunger is the reason for him moving to the kitchen, as people often go to the kitchen to find food when they are hungry. therefore, the answer ""hungry"" is a reasonable explanation for why yann went to the kitchen."	none	hungry	True	According to the previous context sentence, Yann is hungry. It is logical to assume that Yann went to the kitchen because he is hungry.		"Reasoning: According to the previous context sentence, Yann is hungry. It is logical to assume that Yann went to the kitchen because he is hungry.
+
+Answer: hungry"	0.0	0.0278	False	False	False	False	0
+1577	20	7	6	"*TASK*
+Here are the context sentences:
+11. Sumit is thirsty.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	" the context lines: 
+this is the question: who is tired?
+this is the answer: jason"	fully	kitchen	True	Since Sumit is thirsty, it is logical to assume that he will go to a place where he can quench his thirst. Based on the previous context sentences, when someone is thirsty, they go to the kitchen.		"Reasoning: Since Sumit is thirsty, it is logical to assume that he will go to a place where he can quench his thirst. Based on the previous context sentences, when someone is thirsty, they go to the kitchen.
+
+Answer: kitchen"	0.0	0.0196	False	False	False	False	0
+1578	20	7	7	"*TASK*
+Here are the context sentences:
+13. Antoine went to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	hungry	" the context lines: 
+this is the question: what is jason doing?
+this is the answer: sleeping"	none	hungry	True	Although Antoine's initial state was hunger, there is no information about Antoine's current state. However, based on the context sentence, Antoine went to the kitchen, which is a place where people usually go when they are thirsty or hungry. Since Antoine's initial state was hunger, it is logical to assume that Antoine went to the kitchen because he is hungry.		"Reasoning: Although Antoine's initial state was hunger, there is no information about Antoine's current state. However, based on the context sentence, Antoine went to the kitchen, which is a place where people usually go when they are thirsty or hungry. Since Antoine's initial state was hunger, it is logical to assume that Antoine went to the kitchen because he is hungry.
+
+Answer: hungry"	0.0897	0.0128	False	False	False	True	0
+1579	20	7	8	"*TASK*
+Here are the context sentences:
+15. Jason took the pajamas there.
+
+Now, answer the following question:
+Why did jason get the pajamas?"	tired	" the context lines: 
+this is the question: who is tired?
+this is the answer: jason"	none	tired	True	According to the previous context sentence, Jason moved to the bedroom. It is logical to assume that Jason took the pajamas in the bedroom, and since Jason is tired, he likely got the pajamas because he is tired.		"Reasoning: According to the previous context sentence, Jason moved to the bedroom. It is logical to assume that Jason took the pajamas in the bedroom, and since Jason is tired, he likely got the pajamas because he is tired.
+
+Answer: tired"	0.0	0.0192	False	False	False	False	0
+1580	20	7	9	"*TASK*
+Here are the context sentences:
+17. Sumit travelled to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	thirsty	" the context lines: 
+this is the question: who is tired?
+this is the answer: jason"	none	not mentioned	False	Although Sumit's initial state was tired, there is no information about Sumit's current state. However, based on the context sentence, Sumit travelled to the kitchen, which is a place where people usually go when they are thirsty or hungry. Since there is no information about Sumit's current state, it is not possible to determine the exact reason why Sumit went to the kitchen.		"Reasoning: Although Sumit's initial state was tired, there is no information about Sumit's current state. However, based on the context sentence, Sumit travelled to the kitchen, which is a place where people usually go when they are thirsty or hungry. Since there is no information about Sumit's current state, it is not possible to determine the exact reason why Sumit went to the kitchen.
+
+Answer: not mentioned"	0.0	0.0115	False	False	False	True	0
+1581	20	7	10	"*TASK*
+Here are the context sentences:
+19. Yann took the apple there.
+
+Now, answer the following question:
+Why did yann get the apple?"	hungry	" the context lines: 
+this is the question: who is tired?
+this is the answer: jason"	none	hungry	True	According to the previous context sentence, Yann moved to the kitchen. It is logical to assume that Yann took the apple in the kitchen, and since Yann is hungry, he likely got the apple because he is hungry.		"Reasoning: According to the previous context sentence, Yann moved to the kitchen. It is logical to assume that Yann took the apple in the kitchen, and since Yann is hungry, he likely got the apple because he is hungry.
+
+Answer: hungry"	0.0	0.0189	False	False	False	False	0
+1582	20	7	11	"*TASK*
+Here are the context sentences:
+21. Sumit grabbed the milk there.
+
+Now, answer the following question:
+Why did sumit get the milk?"	thirsty	" the context lines: 
+this is the question: who is tired?
+this is the answer: jason"	none	thirsty	True	Although Sumit's initial state was tired, Sumit travelled to the kitchen, which is a place where people usually go when they are thirsty or hungry. Since Sumit grabbed the milk in the kitchen, it is logical to assume that Sumit got the milk because he is thirsty.		"Reasoning: Although Sumit's initial state was tired, Sumit travelled to the kitchen, which is a place where people usually go when they are thirsty or hungry. Since Sumit grabbed the milk in the kitchen, it is logical to assume that Sumit got the milk because he is thirsty.
+
+Answer: thirsty"	0.0	0.0156	False	False	False	False	0

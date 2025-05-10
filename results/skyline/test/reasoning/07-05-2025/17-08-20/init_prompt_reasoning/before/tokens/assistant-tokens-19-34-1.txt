@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġbedroom	Ġis	Ġsouth	Ġof	Ġthe	Ġkitchen	,	Ġand	Ġthe	Ġhallway	Ġis	Ġwest	Ġof	Ġthe	Ġkitchen	,	Ġwe	Ġneed	Ġto	Ġgo	Ġnorth	Ġfrom	Ġthe	Ġbedroom	Ġto	Ġreach	Ġthe	Ġkitchen	,	Ġand	Ġthen	Ġwest	Ġfrom	Ġthe	Ġkitchen	Ġto	Ġreach	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġnorth	,	Ġwest	<|eot_id|>

@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1300	18	80	1	"*TASK*
+Here are the context sentences:
+1. The box fits inside the chest.
+2. The chest is bigger than the chocolate.
+3. The box of chocolates fits inside the container.
+4. The box fits inside the chest.
+5. The chocolate fits inside the box of chocolates.
+
+Now, answer the following question:
+Does the container fit in the chocolate?"	no	from sentence 3, we know that the box of chocolates fits inside the container. from sentence 5, we know that the chocolate fits inside the box of chocolates. therefore, the chocolate is smaller than the box of chocolates. from sentence 2, we know that the chest is bigger than the chocolate. since the box of chocolates fits inside the chest (sentence 4), the chest is bigger than the box of chocolates. this means that the container, which the box of chocolates	fully	no	True	From sentence 3, we know the box of chocolates fits inside the container. From sentence 5, we know the chocolate fits inside the box of chocolates. Therefore, the container is bigger than the box of chocolates, and the box of chocolates is bigger than the chocolate. So, the container cannot fit inside the chocolate.		"Reasoning: From sentence 3, we know the box of chocolates fits inside the container. From sentence 5, we know the chocolate fits inside the box of chocolates. Therefore, the container is bigger than the box of chocolates, and the box of chocolates is bigger than the chocolate. So, the container cannot fit inside the chocolate.
+
+Answer: no"	0.1644	0.0274	False	False	False	False	0
+1301	18	80	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the container?"	yes	from sentence 5, we know that the chocolate fits inside the box of chocolates. from sentence 3, we know that the box of chocolates fits inside the container. therefore, since the chocolate fits inside the box of chocolates and the box of chocolates fits inside the container, we can logically conclude that the chocolate fits inside the container.	none	yes	True	From sentence 5, we know the chocolate fits inside the box of chocolates. From sentence 3, we know the box of chocolates fits inside the container. Therefore, the chocolate, which fits inside the box of chocolates, also fits inside the container.		"Reasoning: From sentence 5, we know the chocolate fits inside the box of chocolates. From sentence 3, we know the box of chocolates fits inside the container. Therefore, the chocolate, which fits inside the box of chocolates, also fits inside the container.
+
+Answer: yes"	0.0517	0.0345	False	False	False	False	0
+1302	18	80	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the container?"	yes	from sentence 3, we know that the box of chocolates fits inside the container. from sentence 5, we know that the chocolate fits inside the box of chocolates. therefore, since the chocolate fits inside the box of chocolates and the box of chocolates fits inside the container, we can logically conclude that the chocolate fits inside the container.	none	yes	True	From sentence 5, we know the chocolate fits inside the box of chocolates. From sentence 3, we know the box of chocolates fits inside the container. Therefore, the chocolate, which fits inside the box of chocolates, also fits inside the container.		"Reasoning: From sentence 5, we know the chocolate fits inside the box of chocolates. From sentence 3, we know the box of chocolates fits inside the container. Therefore, the chocolate, which fits inside the box of chocolates, also fits inside the container.
+
+Answer: yes"	0.0345	0.0345	False	False	False	False	0
+1303	18	80	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the container?"	no	from the previous question, we know that the chocolate fits inside the container. if the chocolate fits inside the container, it means that the container is bigger than or equal to the chocolate in terms of size. therefore, the chocolate is not bigger than the container.	none	no	True	From sentence 5, we know the chocolate fits inside the box of chocolates. From sentence 3, we know the box of chocolates fits inside the container. Therefore, the container is bigger than the box of chocolates, and the box of chocolates is bigger than the chocolate. So, the chocolate is not bigger than the container.		"Reasoning: From sentence 5, we know the chocolate fits inside the box of chocolates. From sentence 3, we know the box of chocolates fits inside the container. Therefore, the container is bigger than the box of chocolates, and the box of chocolates is bigger than the chocolate. So, the chocolate is not bigger than the container.
+
+Answer: no"	0.0274	0.0274	False	False	False	False	0
+1304	18	80	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the container fit in the chocolate?"	no	from the previous questions, we know that the chocolate fits inside the container. if the chocolate fits inside the container, it means that the container is bigger than the chocolate. therefore, the container cannot fit inside the chocolate, which is smaller than the container.	none	no	True	From sentence 5, we know the chocolate fits inside the box of chocolates. From sentence 3, we know the box of chocolates fits inside the container. Therefore, the container is bigger than the box of chocolates, and the box of chocolates is bigger than the chocolate. So, the container cannot fit inside the chocolate.		"Reasoning: From sentence 5, we know the chocolate fits inside the box of chocolates. From sentence 3, we know the box of chocolates fits inside the container. Therefore, the container is bigger than the box of chocolates, and the box of chocolates is bigger than the chocolate. So, the container cannot fit inside the chocolate.
+
+Answer: no"	0.0278	0.0278	False	False	False	False	0

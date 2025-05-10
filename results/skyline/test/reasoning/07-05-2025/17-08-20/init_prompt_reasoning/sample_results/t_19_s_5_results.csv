@@ -1,0 +1,19 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1409	19	5	1	"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the bathroom.
+2. The hallway is east of the bedroom.
+3. The kitchen is west of the garden.
+4. The office is south of the bedroom.
+5. The office is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the bedroom to the kitchen?"	south south	from the context sentences, we know the relative positions of the rooms.	fully	south, west	False	From sentence 1, we know the bedroom is east of the bathroom.		"Reasoning: 
+From sentence 1, we know the bedroom is east of the bathroom. 
+From sentence 2, we know the hallway is east of the bedroom, so the bedroom is west of the hallway. 
+From sentence 4, we know the office is south of the bedroom. 
+From sentence 5, we know the office is north of the kitchen, so the kitchen is south of the office. 
+Since the office is south of the bedroom, the kitchen must be southwest of the bedroom. 
+To go from the bedroom to the kitchen, we need to go south and then west.
+
+Answer: south, west"	0.1395	0.0155	False	False	False	False	0

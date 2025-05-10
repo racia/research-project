@@ -1,0 +1,13 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1481	19	77	1	"*TASK*
+Here are the context sentences:
+1. The garden is south of the bathroom.
+2. The bedroom is west of the bathroom.
+3. The bedroom is south of the office.
+4. The bathroom is west of the hallway.
+5. The hallway is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the hallway to the bedroom?"	west west	from sentence 4, we know the bathroom is west of the hallway. from sentence 2, we know the bedroom is west of the bathroom. therefore, to go from the hallway to the bedroom, we need to go west from the hallway to reach the bathroom, and then go west again from the bathroom to reach the bedroom. hence, the correct direction is west west.	fully	west	True	From sentence 4, we know the bathroom is west of the hallway. From sentence 2, we know the bedroom is west of the bathroom. Therefore, the bedroom is west of the hallway.		"Reasoning: From sentence 4, we know the bathroom is west of the hallway. From sentence 2, we know the bedroom is west of the bathroom. Therefore, the bedroom is west of the hallway.
+
+Answer: west"	0.0426	0.0426	False	False	False	False	0

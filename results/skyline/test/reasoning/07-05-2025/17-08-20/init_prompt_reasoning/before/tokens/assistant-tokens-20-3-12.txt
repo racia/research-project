@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġgrabbed	Ġthe	Ġfootball	,	Ġit	Ġis	Ġlogical	Ġto	Ġassume	Ġthat	Ġhe	Ġgot	Ġit	Ġbecause	Ġhe	Ġwas	Ġbored	.	ĠThis	Ġis	Ġbased	Ġon	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġthat	Ġstated	Ġ"	Jason	Ġis	Ġbored	".ĊĊ	Answer	:	Ġbored	<|eot_id|>

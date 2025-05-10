@@ -1,0 +1,19 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+62	16	62	1	"*TASK*
+Here are the context sentences:
+1. Julius is a lion.
+2. Greg is a rhino.
+3. Greg is green.
+4. Julius is gray.
+5. Lily is a swan.
+6. Bernhard is a lion.
+7. Lily is gray.
+8. Bernhard is yellow.
+9. Brian is a swan.
+
+Now, answer the following question:
+What color is Brian?"	gray	since brian is a swan (sentence 9), and lily is also a swan (sentence 5), and lily is gray (sentence 7), it can be logically inferred that brian, being a swan like lily, is also gray.	fully	gray	True	Since Brian is a swan (sentence 9), and Lily is also a swan (sentence 5) and gray (sentence 7), it can be logically inferred that Brian, being a swan like Lily, is also gray.		"assistant
+
+Reasoning: Since Brian is a swan (sentence 9), and Lily is also a swan (sentence 5) and gray (sentence 7), it can be logically inferred that Brian, being a swan like Lily, is also gray.
+
+Answer: gray"	0.2167	0.05	False	False	False	False	0

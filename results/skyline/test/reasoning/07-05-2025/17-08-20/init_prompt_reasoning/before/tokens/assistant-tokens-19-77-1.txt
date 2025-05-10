@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	4	,	Ġwe	Ġknow	Ġthe	Ġbathroom	Ġis	Ġwest	Ġof	Ġthe	Ġhallway	.	ĠFrom	Ġsentence	Ġ	2	,	Ġwe	Ġknow	Ġthe	Ġbedroom	Ġis	Ġwest	Ġof	Ġthe	Ġbathroom	.	ĠTherefore	,	Ġthe	Ġbedroom	Ġis	Ġwest	Ġof	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġwest	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠĊ	From	Ġsentence	Ġ	5	,	Ġwe	Ġknow	Ġthe	Ġbathroom	Ġis	Ġwest	Ġof	Ġthe	Ġgarden	.	ĠFrom	Ġsentence	Ġ	3	,	Ġwe	Ġknow	Ġthe	Ġgarden	Ġis	Ġwest	Ġof	Ġthe	Ġkitchen	.	ĠTherefore	,	Ġthe	Ġbathroom	Ġis	Ġwest	Ġof	Ġthe	Ġkitchen	,	Ġso	Ġto	Ġgo	Ġfrom	Ġthe	Ġbathroom	Ġto	Ġthe	Ġkitchen	,	Ġwe	Ġneed	Ġto	Ġgo	Ġeast	.ĊĊ	Answer	:	Ġeast	<|eot_id|>

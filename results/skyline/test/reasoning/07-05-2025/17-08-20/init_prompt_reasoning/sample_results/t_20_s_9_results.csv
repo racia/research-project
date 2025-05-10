@@ -1,0 +1,19 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1594	20	9	1	"*TASK*
+Here are the context sentences:
+1. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	when jason is tired, it is logical to assume that he will go to a place where he can rest. in most cases, a bedroom is a common place where people go to rest or sleep when they are tired. therefore, based on the context, it is reasonable to conclude that jason will go to the bedroom.	fully	bedroom	True	Since Jason is tired, it is logical to assume that he will go to a place where he can rest. Based on the previous context sentences, when someone is tired, they go to the bedroom.		"assistant
+
+Reasoning: Since Jason is tired, it is logical to assume that he will go to a place where he can rest. Based on the previous context sentences, when someone is tired, they go to the bedroom.
+
+Answer: bedroom"	0.0192	0.0192	False	False	False	False	0
+1595	20	9	2	"*TASK*
+Here are the context sentences:
+3. Jason travelled to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	"in the previous context, it was mentioned that ""jason is tired"" (context line 1). now, it is stated that ""jason travelled to the bedroom"" (context line 3). it can be logically inferred that jason's tiredness is the reason for him going to the bedroom, as people often go to their bedrooms to rest when they are tired. therefore, the answer ""tired"" is a reasonable explanation for jason's action."	none	tired	True	According to the previous context sentence, Jason is tired. It is logical to assume that Jason went to the bedroom because he is tired.		"Reasoning: According to the previous context sentence, Jason is tired. It is logical to assume that Jason went to the bedroom because he is tired.
+
+Answer: tired"	0.0882	0.0294	False	False	False	False	0

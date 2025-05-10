@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	Ġis	Ġbored	Ġ(	context	Ġsentence	Ġ	7	)	Ġand	Ġwent	Ġto	Ġthe	Ġgarden	Ġ(	context	Ġsentence	Ġ	13	),	Ġit	Ġis	Ġlogical	Ġto	Ġassume	Ġthat	ĠSum	it	Ġgot	Ġthe	Ġfootball	Ġto	Ġplay	Ġwith	Ġand	Ġalleviate	Ġtheir	Ġboredom	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

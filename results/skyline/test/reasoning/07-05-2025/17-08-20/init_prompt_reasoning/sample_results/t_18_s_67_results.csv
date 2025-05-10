@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1235	18	67	1	"*TASK*
+Here are the context sentences:
+1. The chest is bigger than the chocolate.
+2. The chest is bigger than the chocolate.
+3. The container is bigger than the box of chocolates.
+4. The container is bigger than the chocolate.
+5. The box fits inside the suitcase.
+6. The box of chocolates fits inside the container.
+7. The box of chocolates fits inside the box.
+8. The container is bigger than the suitcase.
+9. The box of chocolates fits inside the container.
+10. The container is bigger than the suitcase.
+
+Now, answer the following question:
+Does the box fit in the container?"	yes	from sentence 5, we know that the box fits inside the suitcase. from sentence 8, we know that the container is bigger than the suitcase. therefore, the container is bigger than the box (by transitive property). additionally, from sentence 6, we know that the box of chocolates fits inside the container, and from sentence 7, we know that the box of chocolates fits inside the box. this implies that the box is not bigger than the box of chocolates.	fully	yes	True	From sentence 6, we know that the box of chocolates fits inside the container. From sentence 7, we know that the box of chocolates fits inside the box. Therefore, the box is smaller than the container.		"Reasoning: From sentence 6, we know that the box of chocolates fits inside the container. From sentence 7, we know that the box of chocolates fits inside the box. Therefore, the box is smaller than the container.
+
+Answer: yes"	0.0392	0.0392	False	False	False	False	0
+1236	18	67	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the box of chocolates?"	yes	from sentence 5, we know that the box fits inside the suitcase. from sentence 6, we know that the box of chocolates fits inside the container. from sentence 8, we know that the container is bigger than the suitcase. therefore, the suitcase is smaller than the container. since the box of chocolates fits inside the container, the suitcase must be smaller than the box of chocolates as well. hence, the suitcase is not bigger than the box of chocolates, which means the	none	yes	True	From sentence 5, we know that the box fits inside the suitcase. From sentence 6, we know that the box of chocolates fits inside the container. From sentence 8, we know that the container is bigger than the suitcase. Therefore, the suitcase is bigger than the box, and the box is bigger than the box of chocolates.		"Reasoning: From sentence 5, we know that the box fits inside the suitcase. From sentence 6, we know that the box of chocolates fits inside the container. From sentence 8, we know that the container is bigger than the suitcase. Therefore, the suitcase is bigger than the box, and the box is bigger than the box of chocolates. 
+
+Answer: yes"	0.0779	0.026	False	False	False	False	0
+1237	18	67	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the box?"	yes	from sentence 6, we know that the box of chocolates fits inside the container. from sentence 7, we know that the box of chocolates fits inside the box. this implies that the box of chocolates is not bigger than the box. since the box of chocolates fits inside the container, and the box of chocolates is not bigger than the box, the container must be bigger than the box.	none	yes	True	From sentence 3, we know that the container is bigger than the box of chocolates. From sentence 7, we know that the box of chocolates fits inside the box. Therefore, the container is bigger than the box of chocolates, and the box of chocolates is smaller than the box. So, the container is bigger than the box.		"Reasoning: From sentence 3, we know that the container is bigger than the box of chocolates. From sentence 7, we know that the box of chocolates fits inside the box. Therefore, the container is bigger than the box of chocolates, and the box of chocolates is smaller than the box. So, the container is bigger than the box.
+
+Answer: yes"	0.0667	0.0267	False	False	False	False	0
+1238	18	67	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the box?"	yes	from sentence 8, we know that the container is bigger than the suitcase. from sentence 5, we know that the box fits inside the suitcase. therefore, the container is bigger than the box, since the container is bigger than the suitcase and the box fits inside the suitcase.	none	yes	True	From sentence 6, we know that the box of chocolates fits inside the container. From sentence 7, we know that the box of chocolates fits inside the box. From sentence 9, we know that the box of chocolates fits inside the container. Therefore, the container is bigger than the box of chocolates, and the box of chocolates is smaller than the box. So, the container is bigger than the box.		"Reasoning: From sentence 6, we know that the box of chocolates fits inside the container. From sentence 7, we know that the box of chocolates fits inside the box. From sentence 9, we know that the box of chocolates fits inside the container. Therefore, the container is bigger than the box of chocolates, and the box of chocolates is smaller than the box. So, the container is bigger than the box.
+
+Answer: yes"	0.0879	0.022	False	False	False	False	0
+1239	18	67	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the container?"	yes	from sentence 6, we know that the box of chocolates fits inside the container. from sentence 7, we know that the box of chocolates fits inside the box. this implies that the box is not bigger than the box of chocolates. since the box of chocolates fits inside the container, and the box is not bigger than the box of chocolates, the box must fit inside the container.	none	yes	True	From sentence 6, we know that the box of chocolates fits inside the container. From sentence 7, we know that the box of chocolates fits inside the box. From sentence 9, we know that the box of chocolates fits inside the container. Therefore, the box is smaller than the container, and the box of chocolates is smaller than the box. So, the box fits in the container.		"Reasoning: From sentence 6, we know that the box of chocolates fits inside the container. From sentence 7, we know that the box of chocolates fits inside the box. From sentence 9, we know that the box of chocolates fits inside the container. Therefore, the box is smaller than the container, and the box of chocolates is smaller than the box. So, the box fits in the container.
+
+Answer: yes"	0.1023	0.0227	False	False	False	False	0

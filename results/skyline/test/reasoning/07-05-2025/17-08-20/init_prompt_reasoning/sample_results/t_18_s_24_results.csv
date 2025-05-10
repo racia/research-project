@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1016	18	24	1	"*TASK*
+Here are the context sentences:
+1. The box is bigger than the box of chocolates.
+2. The box of chocolates fits inside the suitcase.
+3. The box is bigger than the box of chocolates.
+4. The box of chocolates fits inside the suitcase.
+5. The chocolate fits inside the chest.
+6. The box of chocolates is bigger than the chocolate.
+7. The chest is bigger than the container.
+8. The chocolate fits inside the box.
+9. The container is bigger than the chocolate.
+10. The chocolate fits inside the container.
+
+Now, answer the following question:
+Is the chocolate bigger than the chest?"	no	from sentence 5, we know that the chocolate fits inside the chest. this implies that the chest is bigger than the chocolate. therefore, the answer is no, the chocolate is not bigger than the chest.	fully	no	True	From sentence 5, we know the chocolate fits inside the chest. If the chocolate were bigger than the chest, it wouldn't fit inside it. Therefore, the chocolate is not bigger than the chest.		"Reasoning: From sentence 5, we know the chocolate fits inside the chest. If the chocolate were bigger than the chest, it wouldn't fit inside it. Therefore, the chocolate is not bigger than the chest.
+
+Answer: no"	0.0625	0.0417	False	False	False	False	0
+1017	18	24	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the chest?"	no	"from the context sentences, we know that ""the chocolate fits inside the chest"" (sentence 5). this implies that the chest is bigger than the chocolate, because the chocolate can fit inside it. therefore, the answer is no, the chocolate is not bigger than the chest."	none	no	True	From sentence 5, we know the chocolate fits inside the chest. If the chocolate were bigger than the chest, it wouldn't fit inside it. Therefore, the chocolate is not bigger than the chest.		"Reasoning: From sentence 5, we know the chocolate fits inside the chest. If the chocolate were bigger than the chest, it wouldn't fit inside it. Therefore, the chocolate is not bigger than the chest.
+
+Answer: no"	0.0208	0.0417	False	False	False	False	0
+1018	18	24	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the chest?"	no	"since the question asks if the chocolate is bigger than the chest, and the answer is ""no"", it implies that the chest is either equal to or bigger than the chocolate. the only relevant information provided in the context is that ""the chocolate fits inside the chest"" (not provided in this case, but i assume it was in a previous part of the conversation). this statement directly indicates that the chest is bigger than the chocolate, which aligns with the answer ""no""."	none	no	True	From sentence 5, we know the chocolate fits inside the chest. If the chocolate were bigger than the chest, it wouldn't fit inside it. Therefore, the chocolate is not bigger than the chest.		"Reasoning: From sentence 5, we know the chocolate fits inside the chest. If the chocolate were bigger than the chest, it wouldn't fit inside it. Therefore, the chocolate is not bigger than the chest.
+
+Answer: no"	0.0208	0.0417	False	False	False	False	0
+1019	18	24	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the chest?"	no	"since the answer is ""no"", it implies that the chest is either equal to or bigger than the chocolate. without any additional context, we can't determine the exact relationship between the chocolate and the chest. however, the answer ""no"" suggests that the chest is not smaller than the chocolate, which means it must be either equal to or bigger than the chocolate."	none	no	True	From sentence 5, we know the chocolate fits inside the chest. If the chocolate were bigger than the chest, it wouldn't fit inside it. Therefore, the chocolate is not bigger than the chest.		"Reasoning: From sentence 5, we know the chocolate fits inside the chest. If the chocolate were bigger than the chest, it wouldn't fit inside it. Therefore, the chocolate is not bigger than the chest.
+
+Answer: no"	0.0417	0.0417	False	False	False	False	0
+1020	18	24	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the chest?"	no	"since the answer is ""no"", it implies that the chest is either equal to or bigger than the chocolate. without any additional context, we can't determine the exact relationship between the chocolate and the chest. the answer ""no"" simply rules out the possibility that the chocolate is bigger than the chest, but it doesn't provide any further information about their relative sizes."	none	no	True	From sentence 5, we know the chocolate fits inside the chest. If the chocolate were bigger than the chest, it wouldn't fit inside it. Therefore, the chocolate is not bigger than the chest.		"Reasoning: From sentence 5, we know the chocolate fits inside the chest. If the chocolate were bigger than the chest, it wouldn't fit inside it. Therefore, the chocolate is not bigger than the chest.
+
+Answer: no"	0.0417	0.0417	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠĊ	From	Ġsentence	Ġ	4	,	Ġwe	Ġknow	Ġthe	Ġbedroom	Ġis	Ġnorth	Ġof	Ġthe	Ġgarden	.	ĠFrom	Ġsentence	Ġ	3	,	Ġwe	Ġknow	Ġthe	Ġoffice	Ġis	Ġwest	Ġof	Ġthe	Ġgarden	.	ĠSo	,	Ġto	Ġgo	Ġfrom	Ġthe	Ġbedroom	Ġto	Ġthe	Ġoffice	,	Ġwe	Ġneed	Ġto	Ġgo	Ġsouth	Ġto	Ġreach	Ġthe	Ġgarden	Ġand	Ġthen	Ġwest	Ġto	Ġreach	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġsouth	,	Ġwest	<|eot_id|>

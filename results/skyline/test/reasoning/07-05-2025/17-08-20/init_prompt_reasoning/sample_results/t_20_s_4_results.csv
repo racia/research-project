@@ -1,0 +1,99 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1539	20	4	1	"*TASK*
+Here are the context sentences:
+1. Yann is thirsty.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	since yann is thirsty, it is logical to assume that he needs to quench his thirst. the most common place to find something to drink is the kitchen, where water, juice, or other beverages are typically stored. therefore, it is reasonable to conclude that yann will go to the kitchen to satisfy his thirst.	fully	kitchen	True	Since Yann is thirsty, it is logical to assume that Yann will go to a place where they can quench their thirst, which is typically the kitchen where drinks are usually found.		"assistant
+
+Reasoning: Since Yann is thirsty, it is logical to assume that Yann will go to a place where they can quench their thirst, which is typically the kitchen where drinks are usually found.
+
+Answer: kitchen"	0.0204	0.0204	False	False	False	False	0
+1540	20	4	2	"*TASK*
+Here are the context sentences:
+3. Yann travelled to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	thirsty	"in the previous context, it was established that ""yann is thirsty"" (context line 1). now, we are told that ""yann travelled to the kitchen"" (context line 3). it is logical to conclude that yann's thirst is the reason for his action of going to the kitchen, as the kitchen is a common place to find something to drink and quench one's thirst. therefore, the answer ""thirsty"" is a direct connection to y"	none	thirsty	True	According to the previous context sentence (1), Yann is thirsty. It is logical to assume that Yann went to the kitchen to quench their thirst.		"Reasoning: According to the previous context sentence (1), Yann is thirsty. It is logical to assume that Yann went to the kitchen to quench their thirst.
+
+Answer: thirsty"	0.0769	0.0256	False	False	False	False	0
+1541	20	4	3	"*TASK*
+Here are the context sentences:
+5. Yann took the milk there.
+
+Now, answer the following question:
+Why did yann get the milk?"	thirsty	"previously, it was established that ""yann is thirsty"" (context line 1) and ""yann travelled to the kitchen"" (context line 3) to quench his thirst. now, we are told that ""yann took the milk there"" (context line 5), which implies that yann found something to drink in the kitchen. it is logical to conclude that yann got the milk because he was thirsty, as milk is a common beverage that can satisfy"	none	thirsty	True	Since Yann is thirsty (context sentence 1) and went to the kitchen (context sentence 3), it is logical to assume that Yann got the milk to quench their thirst.		"Reasoning: Since Yann is thirsty (context sentence 1) and went to the kitchen (context sentence 3), it is logical to assume that Yann got the milk to quench their thirst.
+
+Answer: thirsty"	0.087	0.0217	False	False	False	False	0
+1542	20	4	4	"*TASK*
+Here are the context sentences:
+7. Sumit is bored.
+
+Now, answer the following question:
+Where will sumit go?"	garden	there is no direct information provided about sumit's intentions or preferences, but we can make a logical inference based on the context. when someone is bored, they often seek a change of environment or activity to alleviate their boredom. in this case, the garden is a common outdoor space that can provide a change of scenery and potentially offer activities that can help sumit overcome their boredom, such as taking a walk, reading, or engaging in outdoor games. therefore, it is reasonable to conclude	fully	garden	True	Since Sumit is bored, it is logical to assume that Sumit will go to a place where they can engage in an activity to alleviate their boredom, which is typically the garden where people often go to relax or play.		"Reasoning: Since Sumit is bored, it is logical to assume that Sumit will go to a place where they can engage in an activity to alleviate their boredom, which is typically the garden where people often go to relax or play.
+
+Answer: garden"	0.0	0.0192	False	False	False	False	0
+1543	20	4	5	"*TASK*
+Here are the context sentences:
+9. Jason is hungry.
+
+Now, answer the following question:
+Where will jason go?"	kitchen	since jason is hungry, it is logical to assume that he needs to eat or find food to satisfy his hunger. the kitchen is a common place where food is typically prepared and stored, making it a likely destination for jason to find something to eat. therefore, it is reasonable to conclude that jason will go to the kitchen to address his hunger.	fully	kitchen	True	Since Jason is hungry, it is logical to assume that Jason will go to a place where they can find food, which is typically the kitchen.		"Reasoning: Since Jason is hungry, it is logical to assume that Jason will go to a place where they can find food, which is typically the kitchen.
+
+Answer: kitchen"	0.0	0.0278	False	False	False	False	0
+1544	20	4	6	"*TASK*
+Here are the context sentences:
+11. Jason journeyed to the kitchen.
+
+Now, answer the following question:
+Why did jason go to the kitchen?"	hungry	"""reasoning: <reasoning>"""	none	hungry	True	According to the previous context sentence (9), Jason is hungry. It is logical to assume that Jason went to the kitchen to find food to satisfy their hunger.		"Reasoning: According to the previous context sentence (9), Jason is hungry. It is logical to assume that Jason went to the kitchen to find food to satisfy their hunger.
+
+Answer: hungry"	0.1282	0.0256	False	False	False	False	0
+1545	20	4	7	"*TASK*
+Here are the context sentences:
+13. Sumit journeyed to the garden.
+
+Now, answer the following question:
+Why did sumit go to the garden?"	bored	"""reasoning: <reasoning>"""	none	bored	True	According to the previous context sentence (7), Sumit is bored. It is logical to assume that Sumit went to the garden to alleviate their boredom.		"Reasoning: According to the previous context sentence (7), Sumit is bored. It is logical to assume that Sumit went to the garden to alleviate their boredom.
+
+Answer: bored"	0.0	0.0263	False	True	False	False	0
+1546	20	4	8	"*TASK*
+Here are the context sentences:
+15. Sumit took the football there.
+
+Now, answer the following question:
+Why did sumit get the football?"	bored	"""reasoning: <reasoning>"""	none	bored	True	Since Sumit is bored (context sentence 7) and went to the garden (context sentence 13), it is logical to assume that Sumit got the football to play with and alleviate their boredom.		"Reasoning: Since Sumit is bored (context sentence 7) and went to the garden (context sentence 13), it is logical to assume that Sumit got the football to play with and alleviate their boredom.
+
+Answer: bored"	0.0	0.0208	False	True	False	False	0
+1547	20	4	9	"*TASK*
+Here are the context sentences:
+17. Jason took the apple there.
+
+Now, answer the following question:
+Why did jason get the apple?"	hungry	"""reasoning: <reasoning>"""	none	hungry	True	Since Jason is hungry (context sentence 9) and went to the kitchen (context sentence 11), it is logical to assume that Jason got the apple to eat and satisfy their hunger.		"Reasoning: Since Jason is hungry (context sentence 9) and went to the kitchen (context sentence 11), it is logical to assume that Jason got the apple to eat and satisfy their hunger.
+
+Answer: hungry"	0.0	0.0222	False	False	False	False	0
+1548	20	4	10	"*TASK*
+Here are the context sentences:
+19. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	"""reasoning: <reasoning>"""	fully	bedroom	True	Since Antoine is tired, it is logical to assume that Antoine will go to a place where they can rest, which is typically the bedroom.		"Reasoning: Since Antoine is tired, it is logical to assume that Antoine will go to a place where they can rest, which is typically the bedroom.
+
+Answer: bedroom"	0.0286	0.0286	False	False	False	False	0
+1549	20	4	11	"*TASK*
+Here are the context sentences:
+21. Antoine went back to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	"""reasoning: <reasoning>"""	none	tired	True	According to the previous context sentence (19), Antoine is tired. It is logical to assume that Antoine went to the bedroom to rest and sleep.		"Reasoning: According to the previous context sentence (19), Antoine is tired. It is logical to assume that Antoine went to the bedroom to rest and sleep.
+
+Answer: tired"	0.0	0.0278	False	False	False	False	0
+1550	20	4	12	"*TASK*
+Here are the context sentences:
+23. Antoine picked up the pajamas there.
+
+Now, answer the following question:
+Why did antoine get the pajamas?"	tired	"""reasoning: <reasoning>"""	none	tired	True	Since Antoine is tired (context sentence 19) and went to the bedroom (context sentence 21), it is logical to assume that Antoine got the pajamas to wear to bed and sleep.		"Reasoning: Since Antoine is tired (context sentence 19) and went to the bedroom (context sentence 21), it is logical to assume that Antoine got the pajamas to wear to bed and sleep.
+
+Answer: tired"	0.0	0.0217	False	False	False	False	0

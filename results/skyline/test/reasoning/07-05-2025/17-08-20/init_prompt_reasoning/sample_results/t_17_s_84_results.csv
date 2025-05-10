@@ -1,0 +1,66 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+765	17	84	1	"*TASK*
+Here are the context sentences:
+1. The blue square is above the red square.
+2. The red square is to the left of the triangle.
+
+Now, answer the following question:
+Is the triangle to the right of the blue square?"	yes	from the context sentences, we know that the blue square is above the red square (sentence 1), and the red square is to the left of the triangle (sentence 2). since the blue square is above the red square, and the red square is to the left of the triangle, we can logically conclude that the triangle is to the right of the blue square.	fully	yes	True	From sentence 1, we know the blue square is above the red square. From sentence 2, we know the red square is to the left of the triangle. Since the red square is to the left of the triangle, and the blue square is above the red square, we can logically conclude that the triangle is to the right of the blue square.		"Reasoning: From sentence 1, we know the blue square is above the red square. From sentence 2, we know the red square is to the left of the triangle. Since the red square is to the left of the triangle, and the blue square is above the red square, we can logically conclude that the triangle is to the right of the blue square.
+
+Answer: yes"	0.2785	0.0253	False	False	False	False	0
+766	17	84	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle above the blue square?"	no	from the previous context sentences, we know that the blue square is above the red square (sentence 1), and the red square is to the left of the triangle (sentence 2). there is no information suggesting that the triangle is above the blue square. in fact, the information implies that the triangle is at a lower level than the red square, since the red square is to the left of the triangle, and the blue square is above the red square. therefore, we can	none	no	True	From sentence 1, we know the blue square is above the red square. There is no information about the triangle being above or below the blue square. The relationship between the triangle and the blue square is only established through the red square, which is to the left of the triangle and below the blue square.		"Reasoning: From sentence 1, we know the blue square is above the red square. There is no information about the triangle being above or below the blue square. The relationship between the triangle and the blue square is only established through the red square, which is to the left of the triangle and below the blue square.
+
+Answer: no"	0.1449	0.029	False	False	False	True	0
+767	17	84	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the right of the blue square?"	yes	we already established in a previous question that the triangle is to the right of the blue square. this was inferred from the fact that the blue square is above the red square (sentence 1), and the red square is to the left of the triangle (sentence 2). since the red square is to the left of the triangle, and the blue square is above the red square, it logically follows that the triangle is to the right of the blue square.	none	yes	True	We already established this relationship in the previous question. The red square is to the left of the triangle, and the blue square is above the red square. Therefore, the triangle is to the right of the blue square.		"Reasoning: We already established this relationship in the previous question. The red square is to the left of the triangle, and the blue square is above the red square. Therefore, the triangle is to the right of the blue square.
+
+Answer: yes"	0.1569	0.0392	False	False	False	False	0
+768	17	84	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the left of the blue square?"	no	we already established that the triangle is to the right of the blue square (previous question). this was inferred from the fact that the blue square is above the red square (sentence 1), and the red square is to the left of the triangle (sentence 2). since the triangle is to the right of the blue square, it cannot be to the left of the blue square.	none	no	True	We already established that the triangle is to the right of the blue square, not to the left. The red square is to the left of the triangle, and the blue square is above the red square.		"Reasoning: We already established that the triangle is to the right of the blue square, not to the left. The red square is to the left of the triangle, and the blue square is above the red square.
+
+Answer: no"	0.0417	0.0417	False	False	False	False	0
+769	17	84	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the left of the triangle?"	yes	from the context sentences, we know that the red square is to the left of the triangle (sentence 2), and the blue square is above the red square (sentence 1). since the blue square is above the red square, and the red square is to the left of the triangle, it logically follows that the blue square is also to the left of the triangle, albeit at a higher level.	none	yes	True	We already established that the triangle is to the right of the blue square, which means the blue square is to the left of the triangle.		"Reasoning: We already established that the triangle is to the right of the blue square, which means the blue square is to the left of the triangle.
+
+Answer: yes"	0.0	0.0571	False	False	False	False	0
+770	17	84	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the right of the triangle?"	no	"""reasoning: <reasoning>"""	none	no	True	We already established that the triangle is to the right of the blue square, which means the blue square is to the left of the triangle, not to the right.		"Reasoning: We already established that the triangle is to the right of the blue square, which means the blue square is to the left of the triangle, not to the right.
+
+Answer: no"	0.05	0.05	False	False	False	False	0
+771	17	84	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the right of the blue square?"	yes	"""reasoning: <reasoning>"""	none	yes	True	We already established this relationship in previous questions. The red square is to the left of the triangle, and the blue square is above the red square. Therefore, the triangle is to the right of the blue square.		"Reasoning: We already established this relationship in previous questions. The red square is to the left of the triangle, and the blue square is above the red square. Therefore, the triangle is to the right of the blue square.
+
+Answer: yes"	0.0	0.04	False	False	False	False	0
+772	17	84	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square above the triangle?"	yes	"""reasoning: <reasoning>"""	none	unknown	False	There is no direct information about the blue square being above or below the triangle. However, we know the blue square is above the red square, and the red square is to the left of the triangle. We can't conclude the blue square is above the triangle.		"Reasoning: There is no direct information about the blue square being above or below the triangle. However, we know the blue square is above the red square, and the red square is to the left of the triangle. We can't conclude the blue square is above the triangle.
+
+Answer: unknown"	0.0667	0.0333	False	False	False	True	0

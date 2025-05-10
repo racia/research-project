@@ -1,0 +1,17 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+23	16	23	1	"*TASK*
+Here are the context sentences:
+1. Greg is a swan.
+2. Greg is gray.
+3. Julius is a frog.
+4. Lily is a rhino.
+5. Lily is yellow.
+6. Julius is green.
+7. Brian is a frog.
+8. Brian is green.
+9. Bernhard is a rhino.
+
+Now, answer the following question:
+What color is Bernhard?"	yellow	since bernhard is a rhino (sentence 9), and lily is also a rhino (sentence 4) and yellow (sentence 5), it can be logically inferred that bernhard, being a rhino like lily, is also yellow.	fully	yellow	True	Since Bernhard is a rhino (sentence 9), and Lily is also a rhino and yellow (sentence 4 and 5), we can infer that Bernhard's color is not specified directly, but it is likely to be yellow as well, following the pattern of rhinos being yellow.		"Reasoning: Since Bernhard is a rhino (sentence 9), and Lily is also a rhino and yellow (sentence 4 and 5), we can infer that Bernhard's color is not specified directly, but it is likely to be yellow as well, following the pattern of rhinos being yellow.
+
+Answer: yellow"	0.1176	0.0441	False	False	False	False	0

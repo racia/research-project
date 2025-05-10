@@ -1,0 +1,17 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+24	16	24	1	"*TASK*
+Here are the context sentences:
+1. Julius is a lion.
+2. Julius is white.
+3. Lily is a frog.
+4. Brian is a frog.
+5. Bernhard is a rhino.
+6. Lily is gray.
+7. Greg is a lion.
+8. Brian is gray.
+9. Bernhard is yellow.
+
+Now, answer the following question:
+What color is Greg?"	white	since greg is a lion (sentence 7), and julius is also a lion (sentence 1) and is white (sentence 2), we can logically infer that greg, being a lion like julius, is also white.	fully	white	True	Since Greg is a lion (sentence 7), and Julius is also a lion (sentence 1) and white (sentence 2), it can be inferred that Greg, being a lion like Julius, is also white.		"Reasoning: Since Greg is a lion (sentence 7), and Julius is also a lion (sentence 1) and white (sentence 2), it can be inferred that Greg, being a lion like Julius, is also white.
+
+Answer: white"	0.1154	0.0577	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠĊ	From	Ġsentence	Ġ	5	,	Ġwe	Ġknow	Ġthe	Ġbedroom	Ġis	Ġwest	Ġof	Ġthe	Ġgarden	.	ĠFrom	Ġsentence	Ġ	4	,	Ġwe	Ġknow	Ġthe	Ġhallway	Ġis	Ġeast	Ġof	Ġthe	Ġgarden	.	ĠTherefore	,	Ġto	Ġgo	Ġfrom	Ġthe	Ġbedroom	Ġto	Ġthe	Ġhallway	,	Ġwe	Ġneed	Ġto	Ġgo	Ġeast	.ĊĊ	Answer	:	Ġeast	<|eot_id|>

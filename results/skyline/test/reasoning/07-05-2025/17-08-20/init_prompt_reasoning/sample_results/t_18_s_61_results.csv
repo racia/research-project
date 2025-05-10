@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1205	18	61	1	"*TASK*
+Here are the context sentences:
+1. The suitcase is bigger than the box.
+2. The container fits inside the suitcase.
+3. The suitcase is bigger than the chest.
+4. The suitcase is bigger than the box.
+5. The chocolate fits inside the chest.
+
+Now, answer the following question:
+Is the suitcase bigger than the chocolate?"	yes	from context sentence 5, we know that the chocolate fits inside the chest. from context sentence 3, we know that the suitcase is bigger than the chest. therefore, we can logically conclude that the suitcase is bigger than the chocolate, since the chocolate fits inside the chest and the suitcase is bigger than the chest.	fully	yes	True	From sentence 3, we know the suitcase is bigger than the chest. From sentence 5, we know the chocolate fits inside the chest. Therefore, the suitcase is bigger than the chest, and the chest is bigger than the chocolate, so the suitcase is bigger than the chocolate.		"Reasoning: 
+From sentence 3, we know the suitcase is bigger than the chest. From sentence 5, we know the chocolate fits inside the chest. Therefore, the suitcase is bigger than the chest, and the chest is bigger than the chocolate, so the suitcase is bigger than the chocolate.
+
+Answer: yes"	0.0154	0.0308	False	False	False	False	0
+1206	18	61	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	from the previous context sentences, we know that the chocolate fits inside the chest (sentence 5), and the suitcase is bigger than the chest (sentence 3). therefore, we can logically conclude that the chocolate is smaller than the suitcase, since it fits inside the chest and the suitcase is bigger than the chest. hence, the answer is no, the chocolate is not bigger than the suitcase.	none	no	True	From the previous question, we concluded that the suitcase is bigger than the chest, and the chest is bigger than the chocolate. Therefore, the chocolate cannot be bigger than the suitcase.		"Reasoning: 
+From the previous question, we concluded that the suitcase is bigger than the chest, and the chest is bigger than the chocolate. Therefore, the chocolate cannot be bigger than the suitcase.
+
+Answer: no"	0.0	0.0455	False	False	False	False	0
+1207	18	61	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the chocolate?"	yes	we already established in the previous conversation that the chocolate fits inside the chest (sentence 5), and the suitcase is bigger than the chest (sentence 3). therefore, we can logically conclude that the suitcase is bigger than the chocolate, since the chocolate fits inside the chest and the suitcase is bigger than the chest.	none	yes	True	From the previous question, we concluded that the suitcase is bigger than the chest, and the chest is bigger than the chocolate. Therefore, the suitcase is bigger than the chocolate.		"Reasoning: 
+From the previous question, we concluded that the suitcase is bigger than the chest, and the chest is bigger than the chocolate. Therefore, the suitcase is bigger than the chocolate.
+
+Answer: yes"	0.0	0.0465	False	False	False	False	0
+1208	18	61	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the chocolate?"	yes	from the context sentences, we know that the chocolate fits inside the chest (sentence 5), and the suitcase is bigger than the chest (sentence 3). therefore, we can logically conclude that the suitcase is bigger than the chocolate, since the chocolate fits inside the chest and the suitcase is bigger than the chest.	none	yes	True	We already answered this question before, and the answer is still the same. The suitcase is bigger than the chest, and the chest is bigger than the chocolate, so the suitcase is bigger than the chocolate.		"Reasoning: 
+We already answered this question before, and the answer is still the same. The suitcase is bigger than the chest, and the chest is bigger than the chocolate, so the suitcase is bigger than the chocolate.
+
+Answer: yes"	0.0	0.0408	False	False	False	False	0
+1209	18	61	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the chocolate?"	yes	we already established that the suitcase is bigger than the chest (sentence 3), and the chocolate fits inside the chest (sentence 5). therefore, it can be logically concluded that the suitcase is bigger than the chocolate, since the chocolate is contained within the chest and the suitcase is larger than the chest.	none	yes	True	We have already established that the suitcase is bigger than the chest, and the chest is bigger than the chocolate. Therefore, the suitcase is bigger than the chocolate.		"Reasoning: 
+We have already established that the suitcase is bigger than the chest, and the chest is bigger than the chocolate. Therefore, the suitcase is bigger than the chocolate.
+
+Answer: yes"	0.0	0.05	False	False	False	False	0

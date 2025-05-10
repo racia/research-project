@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+931	18	7	1	"*TASK*
+Here are the context sentences:
+1. The chest is bigger than the chocolate.
+2. The suitcase is bigger than the chocolate.
+3. The chocolate fits inside the suitcase.
+4. The suitcase is bigger than the container.
+5. The box of chocolates fits inside the suitcase.
+6. The box is bigger than the container.
+7. The box is bigger than the chest.
+8. The container fits inside the box.
+9. The suitcase is bigger than the box of chocolates.
+10. The chest fits inside the suitcase.
+
+Now, answer the following question:
+Is the suitcase bigger than the chocolate?"	yes	from sentence 3, we know that the chocolate fits inside the suitcase. this implies that the suitcase is bigger than the chocolate.	fully	yes	True	"From sentence 2, we know that ""The suitcase is bigger than the chocolate."" This sentence directly states the relationship between the suitcase and the chocolate, indicating that the suitcase is indeed bigger than the chocolate."		"assistant
+
+Reasoning: From sentence 2, we know that ""The suitcase is bigger than the chocolate."" This sentence directly states the relationship between the suitcase and the chocolate, indicating that the suitcase is indeed bigger than the chocolate.
+
+Answer: yes"	0.1538	0.0385	False	False	False	False	0
+932	18	7	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the box?"	no	from sentence 5, we know that the box of chocolates fits inside the suitcase. since the box of chocolates includes the chocolate, the box must be at least as big as the chocolate. additionally, from sentence 9, we know that the suitcase is bigger than the box of chocolates. if the suitcase is bigger than the box of chocolates, and the box of chocolates is at least as big as the chocolate, then the suitcase must be bigger than the chocolate. from sentence 3	none	no	True	"From sentence 7, we know that ""The box is bigger than the chest."" From sentence 1, we know that ""The chest is bigger than the chocolate."" Therefore, we can logically conclude that the box is bigger than the chocolate."		"Reasoning: From sentence 7, we know that ""The box is bigger than the chest."" From sentence 1, we know that ""The chest is bigger than the chocolate."" Therefore, we can logically conclude that the box is bigger than the chocolate.
+
+Answer: no"	0.0714	0.0357	False	False	False	False	0
+933	18	7	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the chocolate?"	no	from sentence 5, we know that the box of chocolates fits inside the suitcase. this implies that the box is smaller than the suitcase. additionally, from sentence 3, we know that the chocolate fits inside the suitcase. if the chocolate fits inside the suitcase and the box fits inside the suitcase, then the box cannot be bigger than the chocolate. therefore, the box cannot fit inside the chocolate, as it would require the box to be smaller than itself.	none	no	True	"From sentence 7, we know that ""The box is bigger than the chest."" From sentence 1, we know that ""The chest is bigger than the chocolate."" Therefore, we can logically conclude that the box is bigger than the chocolate, and it cannot fit inside the chocolate."		"Reasoning: From sentence 7, we know that ""The box is bigger than the chest."" From sentence 1, we know that ""The chest is bigger than the chocolate."" Therefore, we can logically conclude that the box is bigger than the chocolate, and it cannot fit inside the chocolate.
+
+Answer: no"	0.0312	0.0312	False	False	False	False	0
+934	18	7	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the box?"	yes	from sentence 5, we know that the box of chocolates fits inside the suitcase. this implies that the box contains chocolates. since the box contains chocolates, it is logical to assume that the chocolate fits inside the box.	none	yes	True	"From sentence 7, we know that ""The box is bigger than the chest."" From sentence 1, we know that ""The chest is bigger than the chocolate."" Therefore, we can logically conclude that the box is bigger than the chocolate, and the chocolate can fit inside the box."		"Reasoning: From sentence 7, we know that ""The box is bigger than the chest."" From sentence 1, we know that ""The chest is bigger than the chocolate."" Therefore, we can logically conclude that the box is bigger than the chocolate, and the chocolate can fit inside the box.
+
+Answer: yes"	0.0154	0.0308	False	False	False	False	0
+935	18	7	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the chocolate?"	yes	we already established this in a previous question. from sentence 3, we know that the chocolate fits inside the suitcase. this implies that the suitcase is bigger than the chocolate.	none	yes	True	"This question has already been answered earlier. From sentence 2, we know that ""The suitcase is bigger than the chocolate."" This sentence directly states the relationship between the suitcase and the chocolate, indicating that the suitcase is indeed bigger than the chocolate."		"Reasoning: This question has already been answered earlier. From sentence 2, we know that ""The suitcase is bigger than the chocolate."" This sentence directly states the relationship between the suitcase and the chocolate, indicating that the suitcase is indeed bigger than the chocolate.
+
+Answer: yes"	0.0	0.0357	False	False	False	False	0

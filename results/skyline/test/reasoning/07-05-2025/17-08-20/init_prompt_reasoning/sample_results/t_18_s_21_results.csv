@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1001	18	21	1	"*TASK*
+Here are the context sentences:
+1. The box is bigger than the chocolate.
+2. The chest is bigger than the box of chocolates.
+3. The box fits inside the chest.
+4. The chest is bigger than the chocolate.
+5. The box is bigger than the box of chocolates.
+
+Now, answer the following question:
+Does the chocolate fit in the chest?"	yes	from context sentence 1, we know the box is bigger than the chocolate. from context sentence 3, we know the box fits inside the chest. therefore, if the box can fit inside the chest and the chocolate is smaller than the box, it logically follows that the chocolate can also fit inside the chest.	fully	yes	True	From sentence 3, we know the box fits inside the chest. From sentence 1, we know the box is bigger than the chocolate. Therefore, if the box fits inside the chest, the chocolate will also fit inside the chest.		"Reasoning: From sentence 3, we know the box fits inside the chest. From sentence 1, we know the box is bigger than the chocolate. Therefore, if the box fits inside the chest, the chocolate will also fit inside the chest.
+
+Answer: yes"	0.0364	0.0364	False	False	False	False	0
+1002	18	21	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chest bigger than the chocolate?"	yes	"from context sentence 4, we directly know that ""the chest is bigger than the chocolate."" therefore, the answer to the question is indeed ""yes""."	none	yes	True	Sentence 4 directly states that the chest is bigger than the chocolate.		"Reasoning: Sentence 4 directly states that the chest is bigger than the chocolate.
+
+Answer: yes"	0.0476	0.0952	False	False	False	False	0
+1003	18	21	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chest fit in the chocolate?"	no	"from context sentence 4, we know that ""the chest is bigger than the chocolate"". if the chest is bigger than the chocolate, it cannot fit inside the chocolate. therefore, the answer to the question is indeed ""no""."	none	no	True	Sentence 4 states that the chest is bigger than the chocolate. This implies that the chest cannot fit inside the chocolate.		"Reasoning: Sentence 4 states that the chest is bigger than the chocolate. This implies that the chest cannot fit inside the chocolate.
+
+Answer: no"	0.0323	0.0645	False	False	False	False	0
+1004	18	21	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the chest?"	yes	"from context sentence 4, we know that ""the chest is bigger than the chocolate"". if the chest is bigger than the chocolate, it logically follows that the chocolate can fit inside the chest. therefore, the answer to the question is indeed ""yes""."	none	yes	True	Sentence 4 states that the chest is bigger than the chocolate. This implies that the chocolate can fit inside the chest.		"Reasoning: Sentence 4 states that the chest is bigger than the chocolate. This implies that the chocolate can fit inside the chest.
+
+Answer: yes"	0.0	0.0645	False	False	False	False	0
+1005	18	21	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the chest?"	no	"from context sentence 4, we know that ""the chest is bigger than the chocolate"". this directly implies that the chocolate is not bigger than the chest. therefore, the answer to the question is indeed ""no""."	none	no	True	Sentence 4 directly states that the chest is bigger than the chocolate. This implies that the chocolate is not bigger than the chest.		"Reasoning: Sentence 4 directly states that the chest is bigger than the chocolate. This implies that the chocolate is not bigger than the chest.
+
+Answer: no"	0.0	0.0606	False	False	False	False	0

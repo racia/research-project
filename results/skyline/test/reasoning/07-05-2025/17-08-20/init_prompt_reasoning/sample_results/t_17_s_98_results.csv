@@ -1,0 +1,66 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+877	17	98	1	"*TASK*
+Here are the context sentences:
+1. The blue square is above the pink rectangle.
+2. The triangle is to the left of the blue square.
+
+Now, answer the following question:
+Is the triangle to the right of the pink rectangle?"	no	from the context sentences, we know that the blue square is above the pink rectangle (sentence 1), and the triangle is to the left of the blue square (sentence 2). since the triangle is to the left of the blue square, and the blue square is above the pink rectangle, it can be logically inferred that the triangle is to the left of the pink rectangle as well. therefore, the triangle is not to the right of the pink rectangle, which leads to the answer	fully	no	True	Since the triangle is to the left of the blue square, and the blue square is above the pink rectangle, the triangle must be to the left of the pink rectangle as well. Therefore, it cannot be to the right of the pink rectangle.		"Reasoning: Since the triangle is to the left of the blue square, and the blue square is above the pink rectangle, the triangle must be to the left of the pink rectangle as well. Therefore, it cannot be to the right of the pink rectangle.
+
+Answer: no"	0.2456	0.0351	False	False	False	False	0
+878	17	98	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the right of the triangle?"	yes	from the previous context sentences, we know that the blue square is above the pink rectangle (sentence 1), and the triangle is to the left of the blue square (sentence 2). since the triangle is to the left of the blue square, and the blue square is above the pink rectangle, it can be logically inferred that the triangle is to the left of the pink rectangle as well. therefore, the pink rectangle must be to the right of the triangle, which leads to the	none	yes	True	From the previous context, we know that the triangle is to the left of the blue square, and the blue square is above the pink rectangle. This implies that the triangle is to the left of the pink rectangle as well. Therefore, the pink rectangle must be to the right of the triangle.		"Reasoning: From the previous context, we know that the triangle is to the left of the blue square, and the blue square is above the pink rectangle. This implies that the triangle is to the left of the pink rectangle as well. Therefore, the pink rectangle must be to the right of the triangle.
+
+Answer: yes"	0.2121	0.0303	False	False	False	False	0
+879	17	98	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle above the triangle?"	no	"from the previous context sentences, we know that the blue square is above the pink rectangle (sentence 1), and the triangle is to the left of the blue square (sentence 2). since the triangle is to the left of the blue square, and the blue square is above the pink rectangle, it can be logically inferred that the pink rectangle is below the blue square. therefore, the pink rectangle cannot be above the triangle, which leads to the answer ""no""."	none	yes	False	From the previous context, we know that the blue square is above the pink rectangle, and the triangle is to the left of the blue square. There is no information about the vertical relationship between the pink rectangle and the triangle. However, we can infer that the blue square is above both the pink rectangle and the triangle, so the pink rectangle must be below the blue square and above the triangle.		"Reasoning: From the previous context, we know that the blue square is above the pink rectangle, and the triangle is to the left of the blue square. There is no information about the vertical relationship between the pink rectangle and the triangle. However, we can infer that the blue square is above both the pink rectangle and the triangle, so the pink rectangle must be below the blue square and above the triangle.
+
+Answer: yes"	0.1744	0.0233	False	False	False	True	0
+880	17	98	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle below the pink rectangle?"	no	from the previous context sentences, we know that the blue square is above the pink rectangle (sentence 1), and the triangle is to the left of the blue square (sentence 2). since the triangle is to the left of the blue square, and the blue square is above the pink rectangle, it can be logically inferred that the triangle is at the same level or above the pink rectangle, but not below it. therefore, the triangle is not below the pink rectangle, which leads	none	no	True	From the previous context, we know that the pink rectangle is above the triangle.		"Reasoning: From the previous context, we know that the pink rectangle is above the triangle.
+
+Answer: no"	0.2609	0.087	False	False	False	False	0
+881	17	98	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the right of the pink rectangle?"	no	from the previous context sentences, we know that the blue square is above the pink rectangle (sentence 1), and the triangle is to the left of the blue square (sentence 2). since the triangle is to the left of the blue square, and the blue square is above the pink rectangle, it can be logically inferred that the triangle is to the left of the pink rectangle as well. therefore, the triangle is not to the right of the pink rectangle, which leads to the	none	no	True	From the previous context, we know that the triangle is to the left of the blue square, and the blue square is above the pink rectangle. This implies that the triangle is to the left of the pink rectangle as well.		"Reasoning: From the previous context, we know that the triangle is to the left of the blue square, and the blue square is above the pink rectangle. This implies that the triangle is to the left of the pink rectangle as well.
+
+Answer: no"	0.0962	0.0385	False	False	False	False	0
+882	17	98	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the left of the pink rectangle?"	yes	"""reasoning: <reasoning>"""	none	yes	True	From the previous context, we know that the triangle is to the left of the blue square, and the blue square is above the pink rectangle. This implies that the triangle is to the left of the pink rectangle as well.		"Reasoning: From the previous context, we know that the triangle is to the left of the blue square, and the blue square is above the pink rectangle. This implies that the triangle is to the left of the pink rectangle as well.
+
+Answer: yes"	0.0577	0.0385	False	False	False	False	0
+883	17	98	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle below the pink rectangle?"	no	"""reasoning: <reasoning>"""	none	yes	False	From the previous context, we know that the pink rectangle is above the triangle.		"Reasoning: From the previous context, we know that the pink rectangle is above the triangle.
+
+Answer: yes"	0.0	0.087	False	False	False	False	0
+884	17	98	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the right of the pink rectangle?"	no	"""reasoning: <reasoning>"""	none	no	True	From the previous context, we know that the triangle is to the left of the blue square, and the blue square is above the pink rectangle. This implies that the triangle is to the left of the pink rectangle as well.		"Reasoning: From the previous context, we know that the triangle is to the left of the blue square, and the blue square is above the pink rectangle. This implies that the triangle is to the left of the pink rectangle as well.
+
+Answer: no"	0.0385	0.0385	False	False	False	False	0

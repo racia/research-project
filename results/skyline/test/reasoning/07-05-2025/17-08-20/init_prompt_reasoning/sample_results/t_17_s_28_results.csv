@@ -1,0 +1,66 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+317	17	28	1	"*TASK*
+Here are the context sentences:
+1. The red sphere is below the red square.
+2. The pink rectangle is to the left of the red sphere.
+
+Now, answer the following question:
+Is the pink rectangle to the left of the red square?"	yes	from context sentence 1, we know that the red sphere is below the red square. from context sentence 2, we know that the pink rectangle is to the left of the red sphere. since the pink rectangle is to the left of the red sphere, and the red sphere is below the red square, we can logically conclude that the pink rectangle is to the left of the red square.	fully	yes	True	Since the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1), we can infer that the pink rectangle is to the left of the red square.		"Reasoning: Since the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1), we can infer that the pink rectangle is to the left of the red square.
+
+Answer: yes"	0.3148	0.037	False	False	False	False	0
+318	17	28	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle below the red square?"	yes	from the previous context sentences, we know that the red sphere is below the red square (sentence 1), and the pink rectangle is to the left of the red sphere (sentence 2). since the pink rectangle is to the left of the red sphere, and the red sphere is below the red square, we can logically conclude that the pink rectangle is also below the red square.	none	no	False	We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). There is no information about the pink rectangle being below or above the red square, only about its left-right relation with the red sphere.		"Reasoning: We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). There is no information about the pink rectangle being below or above the red square, only about its left-right relation with the red sphere.
+
+Answer: no"	0.209	0.0299	False	False	False	True	0
+319	17	28	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square above the pink rectangle?"	yes	from the previous context sentences, we know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). since the pink rectangle is to the left of the red sphere, and the red sphere is below the red square, we can logically conclude that the red square is above the pink rectangle.	none	yes	True	We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). This implies that the red square is above the red sphere, and since the pink rectangle is to the left of the red sphere, the red square is also above the pink rectangle.		"Reasoning: We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). This implies that the red square is above the red sphere, and since the pink rectangle is to the left of the red sphere, the red square is also above the pink rectangle.
+
+Answer: yes"	0.0526	0.0263	False	False	False	False	0
+320	17	28	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the right of the pink rectangle?"	yes	from the previous context sentences, we know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). since the pink rectangle is to the left of the red sphere, and the red sphere is below the red square, we can logically conclude that the red square is to the right of the pink rectangle.	none	unknown	False	We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). There is no information about the left-right relation between the red square and the pink rectangle, only about the pink rectangle being to the left of the red sphere.		"Reasoning: We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). There is no information about the left-right relation between the red square and the pink rectangle, only about the pink rectangle being to the left of the red sphere.
+
+Answer: unknown"	0.0278	0.0278	False	False	False	True	0
+321	17	28	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the right of the pink rectangle?"	yes	we know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). since the pink rectangle is to the left of the red sphere, and the red sphere is below the red square, we can logically conclude that the red square is above the pink rectangle. additionally, since the pink rectangle is to the left of the red sphere, and the red sphere is below the red square, it means	none	yes	True	We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). Since the pink rectangle is to the left of the red sphere, and the red sphere is below the red square, we can infer that the red square is to the right of the pink rectangle.		"Reasoning: We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). Since the pink rectangle is to the left of the red sphere, and the red sphere is below the red square, we can infer that the red square is to the right of the pink rectangle.
+
+Answer: yes"	0.0253	0.0253	False	False	False	False	0
+322	17	28	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square below the pink rectangle?"	no	"""reasoning: <reasoning>"""	none	no	True	We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). This implies that the red square is above the red sphere, and since the pink rectangle is to the left of the red sphere, the red square is also above the pink rectangle.		"Reasoning: We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). This implies that the red square is above the red sphere, and since the pink rectangle is to the left of the red sphere, the red square is also above the pink rectangle.
+
+Answer: no"	0.0526	0.0263	False	False	False	False	0
+323	17	28	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle above the red square?"	no	"""reasoning: <reasoning>"""	none	no	True	We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). This implies that the red square is above the red sphere, and since the pink rectangle is to the left of the red sphere, the red square is also above the pink rectangle.		"Reasoning: We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). This implies that the red square is above the red sphere, and since the pink rectangle is to the left of the red sphere, the red square is also above the pink rectangle.
+
+Answer: no"	0.0132	0.0263	False	False	False	False	0
+324	17	28	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square below the pink rectangle?"	no	"""reasoning: <reasoning>"""	none	no	True	We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). This implies that the red square is above the red sphere, and since the pink rectangle is to the left of the red sphere, the red square is also above the pink rectangle.		"Reasoning: We know that the pink rectangle is to the left of the red sphere (sentence 2), and the red sphere is below the red square (sentence 1). This implies that the red square is above the red sphere, and since the pink rectangle is to the left of the red sphere, the red square is also above the pink rectangle.
+
+Answer: no"	0.0395	0.0263	False	False	False	False	0

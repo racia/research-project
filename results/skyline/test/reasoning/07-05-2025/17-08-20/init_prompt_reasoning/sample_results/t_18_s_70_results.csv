@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1250	18	70	1	"*TASK*
+Here are the context sentences:
+1. The container fits inside the suitcase.
+2. The box is bigger than the container.
+3. The container is bigger than the chocolate.
+4. The container is bigger than the chest.
+5. The box of chocolates fits inside the suitcase.
+
+Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	from context sentence 3, we know that the container is bigger than the chocolate. from context sentence 1, we know that the container fits inside the suitcase. therefore, if the container fits inside the suitcase, and the chocolate is smaller than the container, it logically follows that the chocolate must also fit inside the suitcase, and thus cannot be bigger than the suitcase.	fully	no	True	From sentence 3, we know the container is bigger than the chocolate. From sentence 1, we know the container fits inside the suitcase. Therefore, the chocolate must be smaller than the suitcase.		"Reasoning: From sentence 3, we know the container is bigger than the chocolate. From sentence 1, we know the container fits inside the suitcase. Therefore, the chocolate must be smaller than the suitcase.
+
+Answer: no"	0.0426	0.0426	False	False	False	False	0
+1251	18	70	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the suitcase fit in the chocolate?"	no	from the previous context sentences, we know that the container fits inside the suitcase (sentence 1) and the chocolate is smaller than the container (sentence 3). therefore, it is logical to conclude that the suitcase cannot fit inside the chocolate, as the chocolate is smaller than the container, which in turn fits inside the suitcase.	none	no	True	From sentence 3, we know the container is bigger than the chocolate. From sentence 1, we know the container fits inside the suitcase. This means the suitcase is bigger than the container, and the container is bigger than the chocolate. Therefore, the suitcase cannot fit inside the chocolate.		"Reasoning: From sentence 3, we know the container is bigger than the chocolate. From sentence 1, we know the container fits inside the suitcase. This means the suitcase is bigger than the container, and the container is bigger than the chocolate. Therefore, the suitcase cannot fit inside the chocolate.
+
+Answer: no"	0.0769	0.0308	False	False	False	False	0
+1252	18	70	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the suitcase fit in the chest?"	no	from context sentence 4, we know that the container is bigger than the chest. from context sentence 1, we know that the container fits inside the suitcase. if the container is bigger than the chest and fits inside the suitcase, it logically follows that the suitcase must also be bigger than the chest, and therefore cannot fit inside the chest.	none	not mentioned	False	There is no direct information about the size relationship between the suitcase and the chest. We only know the container is bigger than the chest (sentence 4), and the container fits inside the suitcase (sentence 1). We cannot infer the size relationship between the suitcase and the chest.		"Reasoning: There is no direct information about the size relationship between the suitcase and the chest. We only know the container is bigger than the chest (sentence 4), and the container fits inside the suitcase (sentence 1). We cannot infer the size relationship between the suitcase and the chest.
+
+Answer: not mentioned"	0.0469	0.0312	False	False	False	True	0
+1253	18	70	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	we already established in a previous question that the chocolate is smaller than the container (context sentence 3), and the container fits inside the suitcase (context sentence 1). therefore, it logically follows that the chocolate, being smaller than the container, must also be smaller than the suitcase.	none	no	True	From sentence 3, we know the container is bigger than the chocolate. From sentence 1, we know the container fits inside the suitcase. Therefore, the chocolate must be smaller than the suitcase.		"Reasoning: From sentence 3, we know the container is bigger than the chocolate. From sentence 1, we know the container fits inside the suitcase. Therefore, the chocolate must be smaller than the suitcase.
+
+Answer: no"	0.0	0.0426	False	False	False	False	0
+1254	18	70	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	from the previous context sentences, we know that the container is bigger than the chocolate (sentence 3) and the container fits inside the suitcase (sentence 1). therefore, it logically follows that the chocolate, being smaller than the container, must also be smaller than the suitcase, and thus cannot be bigger than the suitcase.	none	no	True	We already answered this question before, and the answer remains the same. From sentence 3, we know the container is bigger than the chocolate. From sentence 1, we know the container fits inside the suitcase. Therefore, the chocolate must be smaller than the suitcase.		"Reasoning: We already answered this question before, and the answer remains the same. From sentence 3, we know the container is bigger than the chocolate. From sentence 1, we know the container fits inside the suitcase. Therefore, the chocolate must be smaller than the suitcase.
+
+Answer: no"	0.0	0.0328	False	False	False	False	0

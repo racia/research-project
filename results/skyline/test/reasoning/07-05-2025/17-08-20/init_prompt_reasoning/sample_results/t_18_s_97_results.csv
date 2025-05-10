@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1385	18	97	1	"*TASK*
+Here are the context sentences:
+1. The box of chocolates fits inside the box.
+2. The chest is bigger than the chocolate.
+3. The box fits inside the chest.
+4. The container fits inside the suitcase.
+5. The suitcase is bigger than the container.
+
+Now, answer the following question:
+Is the chest bigger than the box of chocolates?"	yes	from sentence 1, we know the box of chocolates fits inside the box. from sentence 3, we know the box fits inside the chest. this implies that the chest is bigger than the box. since the box of chocolates fits inside the box (sentence 1), the chest must be bigger than the box of chocolates as well.	fully	yes	True	From sentence 3, we know the box fits inside the chest. This implies the chest is bigger than the box. From sentence 1, we know the box of chocolates fits inside the box. This implies the box is bigger than the box of chocolates. Therefore, the chest is bigger than the box of chocolates.		"Reasoning: 
+From sentence 3, we know the box fits inside the chest. This implies the chest is bigger than the box. From sentence 1, we know the box of chocolates fits inside the box. This implies the box is bigger than the box of chocolates. Therefore, the chest is bigger than the box of chocolates.
+
+Answer: yes"	0.0972	0.0278	False	False	False	False	0
+1386	18	97	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box of chocolates fit in the chest?"	yes	from sentence 1, we know the box of chocolates fits inside the box. from sentence 3, we know the box fits inside the chest. therefore, we can logically conclude that the box of chocolates, which fits inside the box, also fits inside the chest.	none	yes	True	From sentence 1, we know the box of chocolates fits inside the box. From sentence 3, we know the box fits inside the chest. Therefore, the box of chocolates, which fits inside the box, also fits inside the chest.		"Reasoning: 
+From sentence 1, we know the box of chocolates fits inside the box. From sentence 3, we know the box fits inside the chest. Therefore, the box of chocolates, which fits inside the box, also fits inside the chest.
+
+Answer: yes"	0.0351	0.0351	False	False	False	False	0
+1387	18	97	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box of chocolates bigger than the chest?"	no	from sentence 2, we know the chest is bigger than the chocolate. since the box of chocolates contains the chocolate, the chest must be bigger than the box of chocolates as well. therefore, the box of chocolates is not bigger than the chest.	none	no	True	From sentence 3, we know the box fits inside the chest. This implies the chest is bigger than the box. From sentence 1, we know the box of chocolates fits inside the box. This implies the box is bigger than the box of chocolates. Therefore, the chest is bigger than the box, and the box is bigger than the box of chocolates, so the chest is bigger than the box of chocolates.		"Reasoning: 
+From sentence 3, we know the box fits inside the chest. This implies the chest is bigger than the box. From sentence 1, we know the box of chocolates fits inside the box. This implies the box is bigger than the box of chocolates. Therefore, the chest is bigger than the box, and the box is bigger than the box of chocolates, so the chest is bigger than the box of chocolates.
+
+Answer: no"	0.0109	0.0217	False	False	False	False	0
+1388	18	97	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box of chocolates bigger than the chest?"	no	we know from sentence 2 that the chest is bigger than the chocolate. since the box of chocolates contains the chocolate, it is logical to conclude that the chest is also bigger than the box of chocolates. therefore, the box of chocolates is not bigger than the chest.	none	no	True	From sentence 3, we know the box fits inside the chest. This implies the chest is bigger than the box. From sentence 1, we know the box of chocolates fits inside the box. This implies the box is bigger than the box of chocolates. Therefore, the chest is bigger than the box, and the box is bigger than the box of chocolates, so the chest is bigger than the box of chocolates.		"Reasoning: 
+From sentence 3, we know the box fits inside the chest. This implies the chest is bigger than the box. From sentence 1, we know the box of chocolates fits inside the box. This implies the box is bigger than the box of chocolates. Therefore, the chest is bigger than the box, and the box is bigger than the box of chocolates, so the chest is bigger than the box of chocolates.
+
+Answer: no"	0.0326	0.0217	False	False	False	False	0
+1389	18	97	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box of chocolates bigger than the chest?"	no	from sentence 3, we know the box fits inside the chest. this implies that the chest is bigger than the box. since the box of chocolates fits inside the box (sentence 1), the chest must be bigger than the box of chocolates as well. therefore, the box of chocolates is not bigger than the chest.	none	no	True	From sentence 3, we know the box fits inside the chest. This implies the chest is bigger than the box. From sentence 1, we know the box of chocolates fits inside the box. This implies the box is bigger than the box of chocolates. Therefore, the chest is bigger than the box, and the box is bigger than the box of chocolates, so the chest is bigger than the box of chocolates.		"Reasoning: 
+From sentence 3, we know the box fits inside the chest. This implies the chest is bigger than the box. From sentence 1, we know the box of chocolates fits inside the box. This implies the box is bigger than the box of chocolates. Therefore, the chest is bigger than the box, and the box is bigger than the box of chocolates, so the chest is bigger than the box of chocolates.
+
+Answer: no"	0.0217	0.0217	False	False	False	False	0

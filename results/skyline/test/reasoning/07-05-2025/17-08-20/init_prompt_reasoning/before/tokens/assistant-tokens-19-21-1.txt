@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġoffice	Ġis	Ġwest	Ġof	Ġthe	Ġhallway	Ġ(	sentence	Ġ	5	),	Ġand	Ġthe	Ġgarden	Ġis	Ġsouth	Ġof	Ġthe	Ġhallway	Ġ(	sentence	Ġ	4	),	Ġwe	Ġneed	Ġto	Ġgo	Ġeast	Ġfrom	Ġthe	Ġoffice	Ġto	Ġreach	Ġthe	Ġhallway	,	Ġand	Ġthen	Ġsouth	Ġto	Ġreach	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġeast	,	Ġsouth	<|eot_id|>

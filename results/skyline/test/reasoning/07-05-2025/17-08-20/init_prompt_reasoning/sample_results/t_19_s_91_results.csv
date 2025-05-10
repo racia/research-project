@@ -1,0 +1,13 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1495	19	91	1	"*TASK*
+Here are the context sentences:
+1. The hallway is east of the bathroom.
+2. The office is west of the bathroom.
+3. The bedroom is north of the office.
+4. The hallway is north of the kitchen.
+5. The garden is south of the bathroom.
+
+Now, answer the following question:
+How do you go from the office to the hallway?"	east east	to go from the office to the hallway, we need to find the relative positions of the office and the hallway. from sentence 2, we know the office is west of the bathroom. from sentence 1, we know the hallway is east of the bathroom. therefore, to go from the office to the hallway, we need to move east from the office, and since the hallway is east of the bathroom, we need to move east again. hence, the correct direction is east	fully	east	True	According to sentence 1, the hallway is east of the bathroom. According to sentence 2, the office is west of the bathroom. Therefore, to go from the office to the hallway, we need to move east.		"Reasoning: According to sentence 1, the hallway is east of the bathroom. According to sentence 2, the office is west of the bathroom. Therefore, to go from the office to the hallway, we need to move east.
+
+Answer: east"	0.1538	0.0385	False	False	False	False	0
