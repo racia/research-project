@@ -11,6 +11,7 @@ from data.DataSaver import DataSaver
 from inference.Chat import Chat
 from inference.DataLevels import Sample, SamplePart, Task, print_metrics
 from inference.Prompt import Prompt
+from inference.utils import Source
 from interpretability.utils import InterpretabilityResult
 from settings.Model import Model
 
@@ -100,8 +101,6 @@ class Setting(ABC):
             output_tensor=output_tensor,
             chat=self.model.chat,
             chat_ids=chat_ids,
-            part=self.part,
-            keyword="after",
         )
         return interpretability
 
@@ -170,12 +169,11 @@ class Setting(ABC):
                     "*-",
                     end="\n\n\n",
                 )
-                sample.add_golden_answers(self.part.golden_answer)
-                if self.part.silver_reasoning:
-                    sample.add_silver_reasoning(self.part.silver_reasoning)
-
                 # Only run the model if the results are not loaded
-                if not self.part.results:
+                if not self.part.results or not any(
+                    [self.part.results[-1].ids, self.part.results[-1].tokens]
+                ):
+                    print("Calling the model...")
                     decoded_output, interpretability = self.model.call(self.part)
                     self.part.set_output(
                         messages=self.model.chat.messages[-2:],
@@ -185,6 +183,29 @@ class Setting(ABC):
                     print(
                         f"The output of the {'student' if self.multi_system else 'model'}:",
                         decoded_output,
+                        end="\n\n\n",
+                        sep="\n",
+                        flush=True,
+                    )
+                else:
+                    print("The results are already loaded, skipping the model call...")
+                    self.model.chat.add_message(
+                        part=self.part,
+                        source=Source.user,
+                        ids=self.part.results[-1].ids[Source.user],
+                        tokens=self.part.results[-1].tokens[Source.user],
+                        wrapper=self.model.wrapper,
+                    )
+                    self.model.chat.add_message(
+                        part=self.part.results[-1].model_output,
+                        source=Source.assistant,
+                        ids=self.part.results[-1].ids[Source.assistant],
+                        tokens=self.part.results[-1].tokens[Source.assistant],
+                    )
+                    self.model.chat.identify_supp_sent_spans()
+                    print(
+                        "The output of the model:",
+                        self.part.results[-1].model_output,
                         end="\n\n\n",
                         sep="\n",
                         flush=True,
@@ -226,7 +247,7 @@ class Setting(ABC):
 
             sample.print_sample_predictions()
             sample.calculate_metrics()
-            print_metrics(sample, table=True)
+            print_metrics(sample)
             task.add_sample(sample)
 
             # save the sample result
@@ -237,7 +258,7 @@ class Setting(ABC):
             #     )
 
         print("\n- TASK RESULTS -", end="\n\n")
-        print_metrics(task, table=True)
+        print_metrics(task)
         task.set_results()
 
         print(f"The work on task {task_id} is finished successfully")

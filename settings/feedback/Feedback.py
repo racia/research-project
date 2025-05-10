@@ -98,7 +98,7 @@ class Feedback(Setting):
 
         self.feedback_prompt: Prompt = feedback_prompt
         self.refine_prompt: Prompt = refine_prompt
-        self.interation = 0
+        self.iteration = 0
         self.curr_eval_dict = {
             "iterations": 0,
             "max_supp_attn": [],
@@ -183,9 +183,10 @@ class Feedback(Setting):
         self.teacher.chat.add_message(part=teacher_message)
 
         print("Golden answer:", self.part.golden_answer)
+        print("Student message:", student_message["content"])
 
         # The teacher message is already added to the chat, so no need to pass it (the call is on the whole chat)
-        teacher_feedback, _ = self.teacher.call(from_chat=True, subfolder="teacher")
+        teacher_feedback, _ = self.teacher.call(from_chat=True)
 
         # Validate feedback
         is_valid = self.check_feedback(teacher_feedback)
@@ -195,8 +196,8 @@ class Feedback(Setting):
 
         print(
             "Teacher's feedback:",
-            f"is valid: {is_valid}",
-            "feedback:",
+            f"- is valid: {is_valid}",
+            "- feedback:",
             teacher_feedback,
             " ------------- ",
             end="\n\n\n",
@@ -221,7 +222,6 @@ class Feedback(Setting):
             # subfolder will be removed as no plotting is done during the main run
             self.part,
             from_chat=True,
-            subfolder=f"iterations/{self.iteration}",
         )
 
     def apply_setting(
@@ -252,14 +252,13 @@ class Feedback(Setting):
         print(
             " ------------- Starting Feedback ------------- ", end="\n\n\n", flush=True
         )
-        print(" ---- Feedback iteration 0 ---- ", end="\n\n\n", flush=True)
+        self.iteration = 0
+        print(
+            f" ---- Feedback iteration {self.iteration} ---- ", end="\n\n\n", flush=True
+        )
 
         print(" ---- Teacher ---- ", end="\n\n\n", flush=True)
         is_valid = self.give_feedback(self.student.chat.messages[-1])
-
-        self.iteration = 1
-        # without iterations, interpretability will stay None
-        interpretability = None
 
         if self.saver and self.part:
             # interpretability for the "first iteration" is saved as "before"
@@ -319,7 +318,6 @@ class Feedback(Setting):
         original_student_chat.remove_message(-1)
         original_student_chat.move_approved_message(self.student.chat)
         self.student.chat = original_student_chat
-        print("DEBUG: self.student.chat updated", self.student.chat)
 
         self.curr_eval_dict = {"iterations": self.iteration}
 

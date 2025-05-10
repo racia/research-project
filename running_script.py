@@ -25,7 +25,7 @@ from settings.skyline.Skyline import Skyline
 from settings.utils import set_device
 
 
-@hydra.main(version_base=None,config_path=None, config_name=None)
+@hydra.main(version_base=None, config_path=None, config_name=None)
 def run_setting(cfg: DictConfig) -> None:
     """
     The function to run a model without modifications
@@ -101,7 +101,10 @@ def run_setting(cfg: DictConfig) -> None:
                 multi_system=multi_system,
             )
 
-    saver = DataSaver(save_to=HydraConfig.get().run.dir)
+    saver = DataSaver(
+        save_to=HydraConfig.get().run.dir,
+        loaded_baseline_results=bool(cfg.data.baseline_results),
+    )
     print(f"Results will be saved to: {saver.results_path}")
     plotter = Plotter(results_path=saver.results_path)
 
@@ -336,7 +339,7 @@ def run_setting(cfg: DictConfig) -> None:
                 #     plot_name_add=[prompt_name, split.name, version],
                 # )
 
-            print_metrics(split, table=True)
+            print_metrics(split)
             saver.save_split_accuracy(
                 split=split,
                 accuracy_file_name=metrics_file_names[split.name],
@@ -365,11 +368,7 @@ def run_setting(cfg: DictConfig) -> None:
             loader.samples_per_task,
             "samples in each",
         )
-        print(
-            "Total samples processed",
-            loader.number_of_tasks * loader.samples_per_task,
-            end="\n\n",
-        )
+        print("Total runs:", setting.total_parts, end="\n\n")
 
         if cfg.logging.print_to_file:
             # console printing must be returned
@@ -388,8 +387,6 @@ def run_setting(cfg: DictConfig) -> None:
                 splits=prompts_splits,
                 split_name=split_name,
             )
-
-    print("Plots are saved successfully and general accuracies are saved", end="\n\n")
 
     print("The script has finished running successfully")
 

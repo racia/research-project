@@ -289,6 +289,12 @@ def print_metrics_table(
                 if len(evaluator.max_supp_attn) > 1
                 else evaluator.max_supp_attn.get_mean()
             )
+        if evaluator.attn_on_target:
+            metric_values["Attention on Target"][version] = (
+                f"{evaluator.attn_on_target.get_mean()} ± {evaluator.attn_on_target.get_std()}"
+                if len(evaluator.attn_on_target) > 1
+                else evaluator.attn_on_target.get_mean()
+            )
 
     for metric_name, values in metric_values.items():
         row = [metric_name]

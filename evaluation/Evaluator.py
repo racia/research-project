@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from evaluation.Metrics import Accuracy, AttnDistribution, Metric
+from evaluation.Metrics import Accuracy, AttnDistribution, Metric, AttnOnTarget
 from evaluation.Statistics import Statistics
 
 
@@ -43,6 +43,13 @@ class Evaluator:
             f"Standard Deviation for Max Attention Distribution {self.version.capitalize()}"
         )
 
+        self.attn_on_target: AttnOnTarget = AttnOnTarget(
+            f"Attention on Target Tokens {self.version.capitalize()}"
+        )
+        self.attn_on_target_std: Metric = Metric(
+            f"Standard Deviation for Attention on Target Tokens {self.version.capitalize()}"
+        )
+
     def __repr__(self):
         return (
             f"<{self.level.capitalize()} Evaluator [{self.version}]: "
@@ -52,53 +59,9 @@ class Evaluator:
             f"soft_match_std={self.soft_match_accuracy.get_std()}>, "
             f"max_supp_attn={self.max_supp_attn.get_mean()}>, "
             f"max_supp_attn_std={self.max_supp_attn.get_std()}>"
+            f"attn_on_target={self.attn_on_target.get_mean()}>, "
+            f"attn_on_target_std={self.attn_on_target.get_std()}>"
         )
-
-    def print_accuracies(self, id_, exact_match_acc=None, soft_match_acc=None) -> None:
-        """
-        Print the accuracy scores for the level and id.
-
-        :return: None
-        """
-        if exact_match_acc and soft_match_acc:
-            print(
-                f"\n[{self.version}] Exact-match accuracy score for {self.level} {id_}:",
-                round(exact_match_acc, 2),
-            )
-            print(
-                f"[{self.version}] Soft-match accuracy score for {self.level} {id_}:",
-                round(soft_match_acc, 2),
-            )
-        else:
-            print(
-                f"\n[{self.version}] Exact-match accuracy score for {self.level} {id_}:",
-                self.exact_match_accuracy.get_mean(),
-                (
-                    f"-- std: {self.exact_match_accuracy.get_std()}"
-                    if len(self.exact_match_accuracy) > 1
-                    else ""
-                ),
-            )
-            print(
-                f"[{self.version}] Soft-match accuracy score for {self.level} {id_}:",
-                self.soft_match_accuracy.get_mean(),
-                (
-                    f"-- std: {self.soft_match_accuracy.get_std()}"
-                    if len(self.soft_match_accuracy) > 1
-                    else ""
-                ),
-            )
-        if self.max_supp_attn:
-            print(
-                f"[{self.version}] Max attention distribution for {self.level} {id_}:",
-                self.max_supp_attn.get_mean(),
-                (
-                    f"-- std: {self.max_supp_attn.get_std()}"
-                    if len(self.max_supp_attn) > 1
-                    else ""
-                ),
-                end="\n\n",
-            )
 
 
 class MetricEvaluator(Evaluator):
@@ -127,6 +90,8 @@ class MetricEvaluator(Evaluator):
         self.soft_match_std.add(smaller_evaluator.soft_match_accuracy.get_std())
         self.max_supp_attn.add(smaller_evaluator.max_supp_attn)
         self.max_supp_attn_std.add(smaller_evaluator.max_supp_attn.get_std())
+        self.attn_on_target.add(smaller_evaluator.attn_on_target)
+        self.attn_on_target_std.add(smaller_evaluator.attn_on_target.get_std())
 
     def calculate_std(self):
         """
@@ -160,20 +125,24 @@ class MetricEvaluator(Evaluator):
             f"soft_match_std_{self.version}": self.soft_match_accuracy.get_std(),
         }
 
-    def get_max_attn_dist(self, as_lists: bool = False) -> dict[str, float | Metric]:
+    def get_attentions(self, as_lists: bool = False) -> dict[str, float | Metric]:
         """
-        Get the max attention distribution for the evaluator.
+        Get the attention metrics for the evaluator.
 
-        :return: the max attention distribution
+        :return: the max attention distribution and attention on target
         """
         if as_lists:
             return {
                 f"max_attn_dist_{self.version}": self.max_supp_attn,
                 f"max_attn_dist_std_{self.version}": self.max_supp_attn_std,
+                f"max_attn_on_target_{self.version}": self.attn_on_target,
+                f"attn_on_target_std_{self.version}": self.attn_on_target_std,
             }
         return {
             f"max_supp_attn_{self.version}": self.max_supp_attn.get_mean(),
             f"max_supp_attn_std_{self.version}": self.max_supp_attn.get_std(),
+            f"attn_on_target_{self.version}": self.attn_on_target.get_mean(),
+            f"attn_on_target_std_{self.version}": self.attn_on_target_std.get_std(),
         }
 
 

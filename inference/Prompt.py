@@ -136,7 +136,6 @@ class Prompt:
             intro, outro = hist["before"], hist.get("after", hist["before"])
             chunks = [intro, *student_messages, outro]
             for chunk in chunks:
-                print("DEBUG: chunk", chunk)
                 is_history_wrapper = "role" not in chunk
                 is_student_message = "role" in chunk and chunk["role"] != "assistant"
                 if is_history_wrapper or is_student_message:
@@ -204,15 +203,19 @@ class Prompt:
             for chunk in chunks:
                 assert type(chunk) is dict
                 # this is an empty message
-                if not chunk.get("content", False):
+                if not (chunk.get("content", False) or teacher_ids):
+                    print(
+                        "Empty chunk when formatting teacher message, adding generation token ids..."
+                    )
                     generation_token_ids = [
                         self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")
                     ] + get_generation_token_ids(self.tokenizer, Source.assistant)
-                    teacher_ids.extend(generation_token_ids)
+                    teacher_ids.append(generation_token_ids)
                     continue
 
                 teacher_string += chunk.get("content", "")
                 orig_teacher_string += chunk.get("original_content", "")
+
                 # this is a flat message
                 if chunk["ids"] and type(chunk["ids"][0]) is int:
                     teacher_ids.append(chunk["ids"])
@@ -237,8 +240,6 @@ class Prompt:
                     spans_with_types[span] = "wrap"
 
                 # otherwise, empty message
-
-        print("DEBUG: spans_with_types", spans_with_types)
 
         print(
             "Teacher's message:",
@@ -285,6 +286,11 @@ class Prompt:
             chunks = [intro, message, outro]
             for chunk in chunks:
                 assert type(chunk) is dict
+                # to make sure that the chunks will be separated by a newline
+                if resume_ids and resume_tokens[-1][-1] != "Ċ":
+                    resume_str += "\n"
+                    resume_ids[-1].append(271)
+                    resume_tokens[-1].append("Ċ")
                 resume_str += chunk["content"]
                 resume_ids.append(chunk["ids"])
                 filtered_ids = [id_ for id_ in chunk["ids"] if id_ is not None]
@@ -293,7 +299,7 @@ class Prompt:
 
                 resume_tokens.append(chunk["tokens"])
         print(
-            "Formatted refine message:",
+            "Formatted resume message:",
             resume_str,
             sep="\n",
             end="\n\n\n",
@@ -319,13 +325,12 @@ class Prompt:
         refine_str = ""
         refine_ids = []
         refine_tokens = []
-        print("DEBUG: Refine Prompt", self.original_text)
-        print("DEBUG: prompt_lines", self.prompt_lines)
-        print("len(prompt_lines)", len(self.prompt_lines))
-        print("len(self.orig_ids)", len(self.orig_ids))
-        print("len(self.orig_tokens)", len(self.orig_tokens))
-        print("self.orig_tokens", self.orig_tokens, sep="\n")
         for i, line in enumerate(self.prompt_lines):
+            # to make sure that the chunks will be separated by a newline
+            if refine_ids and refine_tokens[-1][-1] != "Ċ":
+                refine_str += "\n"
+                refine_ids[-1].append(271)
+                refine_tokens[-1].append("Ċ")
             if "student_output" in line:
                 refine_str += student_message["content"]
                 refine_ids.extend(student_message["ids"])

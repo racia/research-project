@@ -92,3 +92,14 @@ class AttnDistribution(Metric):
         :param max_supp_target: the list of attention distribution values
         """
         super().__init__(name, max_supp_target)
+
+
+class AttnOnTarget(Metric):
+    def __init__(self, name: str, attn_on_target: list[float] = None):
+        """
+        Initialize the class for tracking the attention on target tokens.
+
+        :param name: the type of attention
+        :param attn_on_target: the list of attention values on target tokens
+        """
+        super().__init__(name, attn_on_target)

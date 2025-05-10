@@ -1,0 +1,34 @@
+defaults:
+  # running this script will pull the prompt in this file over the prompt in baseline_config file
+  - feedback_config
+  - _self_
+
+teacher:
+  max_new_tokens: 150
+
+student:
+  max_new_tokens: 200
+
+data:
+  path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
+  baseline_results: "${oc.env:HOME}/research-project/results/baseline/test/reasoning/06-05-2025/21-28-46/init_prompt_reasoning/test_init_prompt_reasoning_results.csv"
+  task_ids: [ 16, 17, 18, 19, 20 ]
+  samples_per_task: 100
+  splits:
+    train: False
+    valid: False
+    test: True
+
+init_prompt:
+  paths:
+    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
+
+logging:
+  # if to print the results to a log file, otherwise will print to console
+  print_to_file: True
+
+hydra:
+  run:
+    # the run directory with logs, plots, and csv results will be created here
+    # use more folders if needed for distinguishing between different experiments
+    dir: "${oc.env:HOME}/research-project/results/test-feedback-run/test/reasoning/${now:%d-%m-%Y}/${now:%H-%M-%S}"

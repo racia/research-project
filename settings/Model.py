@@ -117,7 +117,6 @@ class Model:
         self,
         data: SamplePart | str = None,
         from_chat: bool = False,
-        subfolder: str = None,
         to_continue: bool = False,
     ) -> tuple[str, InterpretabilityResult]:
         """
@@ -128,7 +127,6 @@ class Model:
 
         :param data: The data to be used for the model call. It can be a SamplePart or a string.
         :param from_chat: Whether the message is from the chat or not
-        :param subfolder: The subfolder for the interpretability results (only for "iterations")
         :param to_continue: Whether the model should continue the last message or not
         :return: The decoded model output
         """
@@ -185,8 +183,7 @@ class Model:
                 if self.role == "student" and not self.interpretability:
                     raise ValueError("Interpretability is not set for student model!")
 
-                if self.interpretability and decoded_output:
-                    print("DEBUG starting interpretability")
+                if self.role == "student" and self.interpretability and decoded_output:
                     try:
                         # output tensor includes all the previous ids + the model output
                         output_tensor = self.model(

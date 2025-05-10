@@ -48,7 +48,6 @@ class Interpretability:
         assert attn_scores.ndim == 2
         ids_to_remove = []
         task_indices = get_indices(span_ids, "task")
-        print("task_indices:", task_indices)
         chat_tokens = self.tokenizer.batch_decode(chat_ids)
 
         for output_row in attn_scores:
@@ -58,11 +57,9 @@ class Interpretability:
                 #     # ids_to_remove.append(task_idx)
                 #     continue
                 token = chat_tokens[task_idx].strip().lower()
-                print(token)
                 for token_ in nlp(token):
                     if token_.lemma_ not in self.scenery_words:
                         ids_to_remove.append(task_idx)
-        print(ids_to_remove)
         return ids_to_remove
 
     @staticmethod
@@ -165,7 +162,6 @@ class Interpretability:
         output_tensor: CausalLMOutputWithPast,
         chat: Chat,
         chat_ids: torch.Tensor,
-        aggregate: bool = True,
     ) -> InterpretabilityResult:
         """
         Process the attention scores and return the interpretability result ready for plotting.
@@ -176,9 +172,10 @@ class Interpretability:
         :param output_tensor: model output tensor for the current chat
         :param chat: the student chat (contains all the messages including the last model output)
         :param chat_ids: the ids of the current chat (including the last model output)
-        :param aggregate: if to aggregate the attention scores over the sentences
         :return: InterpretabilityResult object
         """
+        if not chat.supp_sent_spans:
+            raise ValueError("The chat does not contain any supporting sentence spans.")
         # should not include the model output span!
         spans_with_types = chat.get_sentence_spans(remove_last=True)
         sent_spans = list(spans_with_types.keys())
@@ -186,7 +183,7 @@ class Interpretability:
             i for i, span in enumerate(sent_spans) if span in chat.supp_sent_spans
         ]
         # TODO: test verbose attention
-        if aggregate:
+        if self.aggregate_attn:
             # only aggregated sentences, no verbose tokens
             attn_scores = self.get_attention_scores(
                 output_tensor=output_tensor,
@@ -243,6 +240,6 @@ class Interpretability:
             y_tokens,
             max_supp_attn_ratio,
             attn_on_target,
-            "aggregated" if aggregate else "verbose",
+            "aggregated" if self.aggregate_attn else "verbose",
         )
         return result

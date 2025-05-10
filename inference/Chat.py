@@ -160,7 +160,6 @@ class Chat:
             raise ValueError(
                 "Wrapper can only be used for the messages created from scratch, and now, ids are passed."
             )
-
         message_fields = (
             "role",
             "content",
@@ -169,13 +168,11 @@ class Chat:
             "ids",
             "spans_with_types",
         )
-        self.part = part
         spans_with_types = {}
         part_dict = {}
         # it is a pre-created message (used in SD and Feedback)
         if isinstance(part, dict):
             if all(key in part for key in message_fields):
-                print("DEBUG: case dict and all keys present")
                 part["spans_with_types"] = {
                     update_span(span, self.offset): f"{type_}_"
                     for span, type_ in part["spans_with_types"].items()
@@ -188,6 +185,7 @@ class Chat:
                 )
         # it is certainly a task
         elif isinstance(part, SamplePart):
+            self.part = part
             if wrapper:
                 tokens, ids = [], []
                 for key, wrap in wrapper.items():
@@ -221,7 +219,6 @@ class Chat:
                             ids.append(chunk["ids"])
                             type_ = chunk["type"] if chunk.get("type", None) else "wrap"
                             upd_span = update_span(chunk["sent_spans"], self.offset)
-
                             if last_span and last_span[1] != upd_span[0]:
                                 print("DEBUG: chunks", *chunks)
                                 raise ValueError(
@@ -233,38 +230,37 @@ class Chat:
                             self.offset += len(flat_chunk_ids)
 
                             if len(flat_chunk_ids) != upd_span[1] - upd_span[0]:
-                                print("DEBUG: chunks", *chunks)
-                                print("flat_chunk_ids", flat_chunk_ids)
-                                print("upd_span difference", upd_span[1] - upd_span[0])
-                                raise ValueError(
-                                    f"Span length mismatch: {flatten(chunk['ids'])}, {chunk['sent_spans']} vs {upd_span}"
+                                print("DEBUG chunks:", *chunks)
+                                print(
+                                    "DEBUG upd_span difference:",
+                                    upd_span[1] - upd_span[0],
                                 )
-
+                                raise ValueError(
+                                    f"Span length mismatch: {len(flat_chunk_ids)} {flat_chunk_ids}:\n{chunk['sent_spans']} vs {upd_span}"
+                                )
                         else:
-                            print("Chat ids is none")
-                            print("DEBUG: chunks", *chunks)
+                            warnings.warn("Chat ids is none")
+                            warnings.warn(f"DEBUG: chunks\n{chunks}")
 
             else:
                 tokens, ids, sent_spans = sents_to_ids(
                     part.unwrapped_task.split("\n"), self.tokenizer
                 )
-                spans_with_types.update(
-                    {update_span(span, self.offset): "task" for span in sent_spans}
-                )
+                for span, i in zip(sent_spans, ids):
+                    upd_span = update_span(span, self.offset)
+                    spans_with_types[upd_span] = "task"
+                    self.offset += len(flatten(i))
         else:
             # it is a string
             if ids is None:
                 # it is a formatted prompt (string prompt) => task
                 tokens, ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
-                spans_with_types.update(
-                    {
-                        update_span(span, self.offset): "teacher task"
-                        for span in sent_spans
-                    }
-                )
+                for span, i in zip(sent_spans, ids):
+                    upd_span = update_span(span, self.offset)
+                    spans_with_types[upd_span] = "teacher task"
+                    self.offset += len(flatten(i))
             else:
                 # it is certainly an assistant output
-                # TODO: optionally divide it into reasoning and answer
                 ids = ids.tolist() if not isinstance(ids, list) else ids
                 # not flat because they count as "one sentence"
                 if type(ids[0]) is int:
@@ -275,9 +271,10 @@ class Chat:
                     ]
                 elif type(tokens[0]) is str:
                     tokens = [tokens]
-                label = "ans" if source == Source.assistant else "task"
-                spans_with_types[update_span((0, len(ids)), self.offset)] = label
-                self.offset += len(ids)
+                type_ = "ans" if source == Source.assistant else "task"
+                upd_span = update_span((0, len(ids)), self.offset)
+                spans_with_types[upd_span] = type_
+                self.offset += len(flatten(ids))
 
         part_dict = part_dict or {
             "role": source,
@@ -299,6 +296,8 @@ class Chat:
         """
         approved_message = other_chat.messages[-1]
         offset_difference = other_chat.offset - self.offset
+        self.part = other_chat.part
+        self.identify_supp_sent_spans()
         spans_with_types = {}
 
         if "The student's response was:" in approved_message["original_content"]:
@@ -348,13 +347,13 @@ class Chat:
         """
         Get the all sentence spans of the chat messages for only a specified type of them.
 
-        :param span_type: "sys" (system prompt),
-                          "ex" (example),
+        :param span_type: "sys"  (system prompt),
+                          "ex"   (example),
                           "wrap" (wrappers),
                           "task" (context sentences and questions),
                           "cont" (context sentences),
                           "ques" (questions),
-                          "ans" (model output)
+                          "ans"  (model output)
         :param remove_last: whether to remove the last message span from the list
         :return: returns list of sentence spans if span type is specified otherwise returns all the spans with their
         types
@@ -419,10 +418,6 @@ class Chat:
         # including the system prompt
         for i, message in enumerate(self.messages):
             message_ids = get_generation_token_ids(self.tokenizer, message["role"])
-            if type(message[datatype][0]) is str:
-                raise ValueError(
-                    "Detected tokens instead of ids. Please check the input."
-                )
             message_ids.extend(flatten(message[datatype]))
             conversation_length = len(chat_ids) + len(message_ids)
             if conversation_length > max_length:

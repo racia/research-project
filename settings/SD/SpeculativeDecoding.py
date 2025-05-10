@@ -725,7 +725,7 @@ class SpeculativeDecoding(Setting):
             "spans_with_types": {(0, 1): "ans"},
         }
         teacher_message = self.eval_prompt.format_teacher_message(empty_message)
-        self.teacher.chat.add_message(**teacher_message)
+        self.teacher.chat.add_message(teacher_message)
 
         # reset evaluation dict for each part
         self.curr_eval_dict = {
