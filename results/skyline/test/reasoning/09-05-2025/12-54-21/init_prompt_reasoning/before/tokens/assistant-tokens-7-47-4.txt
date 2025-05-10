@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	11	,	ĠSandra	Ġtook	Ġthe	Ġfootball	,	Ġwhich	Ġmeans	Ġshe	Ġwas	Ġcarrying	Ġit	.	ĠBut	Ġin	Ġsentence	Ġ	14	,	ĠSandra	Ġput	Ġdown	Ġthe	Ġfootball	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

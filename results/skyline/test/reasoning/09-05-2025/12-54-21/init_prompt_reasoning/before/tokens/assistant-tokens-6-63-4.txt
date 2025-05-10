@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġrecent	Ġinformation	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġ	10	Ġand	Ġ	11	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġmovements	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠMary	Ġwas	Ġin	Ġthe	Ġoffice	Ġ(	from	Ġcontext	Ġsentence	Ġ	5	).ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

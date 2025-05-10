@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	Ġcarrying	Ġany	Ġobjects	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġand	ĠJohn	's	Ġmovements	,	Ġbut	Ġnot	ĠSandra	's	Ġactions	Ġor	Ġobjects	Ġshe	Ġis	Ġcarrying	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

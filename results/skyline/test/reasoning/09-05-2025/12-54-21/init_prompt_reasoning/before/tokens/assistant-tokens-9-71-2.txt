@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠSandra	's	Ġlocation	Ġbeing	Ġthe	Ġbedroom	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġleaving	Ġthe	Ġbathroom	Ġand	ĠSandra	Ġgoing	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	Ġinformation	<|eot_id|>

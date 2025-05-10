@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1736	9	48	1	"*TASK*
+Here are the context sentences:
+1. Daniel is in the garden.
+2. John is in the bedroom.
+
+Now, answer the following question:
+Is John in the garden?"	no	"according to context sentence 2, ""john is in the bedroom"", which explicitly states john's location as the bedroom. there is no mention of john being in the garden. in fact, context sentence 1 mentions daniel being in the garden, but it does not mention john. therefore, based on the provided information, it can be logically concluded that john is not in the garden."	fully	no	True	According to context sentence 2, John is in the bedroom, and there is no information about John moving to the garden.		"Reasoning: According to context sentence 2, John is in the bedroom, and there is no information about John moving to the garden. 
+
+Answer: no"	0.0882	0.0294	False	False	False	True	0
+1737	9	48	2	"*TASK*
+Here are the context sentences:
+4. Mary went back to the hallway.
+5. Daniel moved to the office.
+
+Now, answer the following question:
+Is Mary in the hallway?"	yes	"according to context sentence 4, ""mary went back to the hallway"", which explicitly states that mary's current location is the hallway. there is no subsequent information that suggests mary has moved from the hallway, so it can be logically concluded that mary is still in the hallway."	fully	yes	True	According to context sentence 4, Mary went back to the hallway, and there is no information about Mary leaving the hallway.		"Reasoning: According to context sentence 4, Mary went back to the hallway, and there is no information about Mary leaving the hallway. 
+
+Answer: yes"	0.0606	0.0303	False	False	False	True	0
+1738	9	48	3	"*TASK*
+Here are the context sentences:
+7. Mary moved to the bedroom.
+8. Sandra is not in the garden.
+
+Now, answer the following question:
+Is Sandra in the garden?"	no	"according to context sentence 8, ""sandra is not in the garden"", which explicitly states that sandra's location is not the garden. this direct statement provides conclusive evidence that sandra is not in the garden, making the answer to the question ""is sandra in the garden?"" a definitive ""no""."	fully	no	True	According to context sentence 8, Sandra is not in the garden, which explicitly states her location.		"Reasoning: According to context sentence 8, Sandra is not in the garden, which explicitly states her location. 
+
+Answer: no"	0.0	0.0357	False	False	False	False	0
+1739	9	48	4	"*TASK*
+Here are the context sentences:
+10. John moved to the bathroom.
+11. Sandra is not in the bathroom.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	no	"according to context sentence 11, ""sandra is not in the bathroom"", which explicitly states that sandra's location is not the bathroom. this direct statement provides conclusive evidence that sandra is not in the bathroom, making the answer to the question ""is sandra in the bathroom?"" a definitive ""no""."	fully	no	True	According to context sentence 11, Sandra is not in the bathroom, which explicitly states her location.		"Reasoning: According to context sentence 11, Sandra is not in the bathroom, which explicitly states her location. 
+
+Answer: no"	0.1429	0.0357	False	False	False	False	0
+1740	9	48	5	"*TASK*
+Here are the context sentences:
+13. John went to the bedroom.
+14. Sandra journeyed to the kitchen.
+
+Now, answer the following question:
+Is John in the office?"	no	"according to context sentence 13, ""john went to the bedroom"", which explicitly states that john's current location is the bedroom. there is no mention of john being in the office. in fact, the context sentences only mention john being in the bedroom and sandra being in the kitchen, with no connection to the office. therefore, it can be logically concluded that john is not in the office."	fully	not mentioned	False	There is no information about John being in the office. According to context sentence 13, John went to the bedroom, which does not mention the office.		"Reasoning: There is no information about John being in the office. According to context sentence 13, John went to the bedroom, which does not mention the office. 
+
+Answer: not mentioned"	0.0	0.025	False	False	False	True	0

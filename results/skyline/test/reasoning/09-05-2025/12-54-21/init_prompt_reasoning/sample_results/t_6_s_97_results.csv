@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+481	6	97	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the bedroom.
+2. John went to the bedroom.
+
+Now, answer the following question:
+Is John in the bedroom?"	yes	"from context sentence 2, ""john went to the bedroom"", we can infer that john's destination was the bedroom, and since there is no information about him leaving the bedroom, it is logical to conclude that john is still in the bedroom. therefore, the answer is yes, john is in the bedroom."	fully	yes	True	According to context sentence 2, John went to the bedroom, which implies that John is currently in the bedroom.		"assistant
+
+Reasoning: According to context sentence 2, John went to the bedroom, which implies that John is currently in the bedroom.
+
+Answer: yes"	0.0909	0.0303	False	False	False	False	0
+482	6	97	2	"*TASK*
+Here are the context sentences:
+4. Sandra took the football there.
+5. Daniel moved to the garden.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	"from context sentence 1 (not provided in this part, but mentioned in the conversation history), ""sandra journeyed to the bedroom"", we can infer that sandra's initial location was the bedroom. there is no information about sandra moving to the hallway, but in context sentence 4, ""sandra took the football there"", the word ""there"" implies that sandra is still in the same location, which is the bedroom. therefore, the answer is no, sandra is not in"	none	no	True	There is no information provided about Sandra being in the hallway. In context sentence 1, Sandra journeyed to the bedroom, and in context sentence 4, Sandra took the football there, which implies that Sandra is still in the bedroom.		"Reasoning: There is no information provided about Sandra being in the hallway. In context sentence 1, Sandra journeyed to the bedroom, and in context sentence 4, Sandra took the football there, which implies that Sandra is still in the bedroom.
+
+Answer: no"	0.0	0.0182	False	False	False	True	0
+483	6	97	3	"*TASK*
+Here are the context sentences:
+7. Sandra went to the hallway.
+8. Sandra went back to the garden.
+
+Now, answer the following question:
+Is John in the garden?"	no	"there is no information about john's movement to the garden in the provided context sentences. in fact, the last information about john's location was in context sentence 2 (from the conversation history), ""john went to the bedroom"", which implies that john is still in the bedroom. there is no mention of john leaving the bedroom or moving to the garden. therefore, the answer is no, john is not in the garden."	none	no	True	There is no information provided about John being in the garden. In context sentence 2, John went to the bedroom, and there is no mention of John moving to the garden.		"Reasoning: There is no information provided about John being in the garden. In context sentence 2, John went to the bedroom, and there is no mention of John moving to the garden.
+
+Answer: no"	0.0233	0.0233	False	False	False	True	0
+484	6	97	4	"*TASK*
+Here are the context sentences:
+10. Sandra discarded the football.
+11. Daniel picked up the apple there.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	"from context sentence 5 (from the conversation history), ""daniel moved to the garden"", we can infer that daniel's location is the garden. there is no information about daniel leaving the garden or moving to the bedroom. in fact, context sentence 11, ""daniel picked up the apple there"", implies that daniel is still in the same location, which is the garden, as ""there"" refers to the garden. therefore, the answer is no, d"	none	no	True	There is no information provided about Daniel being in the bedroom. In context sentence 5, Daniel moved to the garden, and in context sentence 17 (from the example), Sandra picked up an apple there, which implies that Daniel is still in the garden.		"Reasoning: There is no information provided about Daniel being in the bedroom. In context sentence 5, Daniel moved to the garden, and in context sentence 17 (from the example), Sandra picked up an apple there, which implies that Daniel is still in the garden.
+
+Answer: no"	0.0339	0.0169	False	False	False	True	0
+485	6	97	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the garden.
+14. John journeyed to the kitchen.
+
+Now, answer the following question:
+Is John in the garden?"	no	"from context sentence 13, ""john travelled to the garden"", we can infer that john was in the garden at some point. however, context sentence 14, ""john journeyed to the kitchen"", implies that john left the garden and moved to the kitchen. there is no information about john returning to the garden, so it is logical to conclude that john is no longer in the garden. therefore, the answer is no, john is not in the garden."	fully	no	True	According to context sentence 13, John travelled to the garden, but then according to context sentence 14, John journeyed to the kitchen, which implies that John is no longer in the garden.		"Reasoning: According to context sentence 13, John travelled to the garden, but then according to context sentence 14, John journeyed to the kitchen, which implies that John is no longer in the garden.
+
+Answer: no"	0.0213	0.0213	False	False	False	False	0

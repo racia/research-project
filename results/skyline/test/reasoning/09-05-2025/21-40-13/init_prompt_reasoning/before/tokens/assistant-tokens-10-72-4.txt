@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	11	Ġstates	Ġthat	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġcinema	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġa	Ġdefinitive	Ġlocation	Ġfor	ĠJulie	.	ĠTherefore	,	Ġwe	Ġcan	Ġonly	Ġconclude	Ġthat	ĠJulie	Ġmight	Ġbe	Ġin	Ġthe	Ġoffice	,	Ġbut	Ġit	's	Ġnot	Ġcertain	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

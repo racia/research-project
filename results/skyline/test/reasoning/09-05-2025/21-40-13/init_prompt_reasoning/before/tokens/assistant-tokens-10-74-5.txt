@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠBill	's	Ġlocation	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJulie	Ġmoving	Ġto	Ġthe	Ġoffice	Ġand	ĠMary	Ġbeing	Ġin	Ġeither	Ġthe	Ġpark	Ġor	Ġthe	Ġcinema	,	Ġbut	Ġdo	Ġnot	Ġmention	ĠBill	Ġor	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

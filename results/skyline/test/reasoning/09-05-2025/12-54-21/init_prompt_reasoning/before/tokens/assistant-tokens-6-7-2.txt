@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġor	Ġthe	Ġbathroom	Ġin	Ġthe	Ġprovided	Ġcontext	Ġsentences	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġtalk	Ġabout	ĠSandra	Ġand	ĠMary	's	Ġactions	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

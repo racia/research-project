@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+111	6	23	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the bathroom.
+2. Mary went back to the bedroom.
+
+Now, answer the following question:
+Is Daniel in the office?"	no	there is no mention of daniel being in the office in the context sentences. in fact, sentence 1 states that daniel travelled to the bathroom, which implies that he is currently in the bathroom, not in the office.	fully	no	True	There is no mention of Daniel going to the office in the context sentences. In sentence 1, Daniel travelled to the bathroom, and there is no information about him going to the office.		"Reasoning: There is no mention of Daniel going to the office in the context sentences. In sentence 1, Daniel travelled to the bathroom, and there is no information about him going to the office.
+
+Answer: no"	0.0889	0.0222	False	False	False	True	0
+112	6	23	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the bathroom.
+5. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	according to sentence 5, daniel journeyed to the kitchen, which implies that he is currently in the kitchen. there is no mention of daniel being in the bedroom in the context sentences, and the information provided suggests that he is in a different location (the kitchen).	fully	no	True	According to sentence 5, Daniel journeyed to the kitchen, but there is no mention of him going to the bedroom.		"Reasoning: According to sentence 5, Daniel journeyed to the kitchen, but there is no mention of him going to the bedroom. 
+
+Answer: no"	0.2727	0.0303	False	False	False	True	0
+113	6	23	3	"*TASK*
+Here are the context sentences:
+7. Mary took the apple there.
+8. John travelled to the office.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	yes	"there is no information about daniel in the provided context sentences (7 and 8). however, since the answer is ""yes"", i need to look at the previous parts of the conversation history. in the previous parts, sentence 5 states ""daniel journeyed to the kitchen"", which implies that daniel is indeed in the kitchen."	none	yes	True	Sentence 5 (from previous context) mentioned that Daniel journeyed to the kitchen, and there is no information about him leaving the kitchen.		"Reasoning: Sentence 5 (from previous context) mentioned that Daniel journeyed to the kitchen, and there is no information about him leaving the kitchen. 
+
+Answer: yes"	0.0556	0.0278	False	False	False	True	0
+114	6	23	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the garden.
+11. Sandra went back to the office.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	yes	"there is no new information about daniel in the provided context sentences (10 and 11). however, since the answer is ""yes"", i need to look at the previous parts of the conversation history. in the previous parts, sentence 5 states ""daniel journeyed to the kitchen"", which implies that daniel is indeed in the kitchen. the movements of mary and sandra in sentences 10 and 11 do not provide any information that would change daniel's location."	none	yes	True	There is no new information about Daniel's location, and previously (sentence 5) it was mentioned that Daniel journeyed to the kitchen.		"Reasoning: There is no new information about Daniel's location, and previously (sentence 5) it was mentioned that Daniel journeyed to the kitchen. 
+
+Answer: yes"	0.1667	0.0278	False	False	False	True	0
+115	6	23	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the bedroom.
+14. John went to the hallway.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	"according to sentence 14, ""john went to the hallway"", which explicitly states that john is in the hallway. this direct information from the context sentence confirms that john is indeed in the hallway."	fully	yes	True	According to sentence 14, John went to the hallway, and there is no information about him leaving the hallway.		"Reasoning: According to sentence 14, John went to the hallway, and there is no information about him leaving the hallway.
+
+Answer: yes"	0.0	0.0333	False	False	False	True	0

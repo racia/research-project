@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1036	8	8	1	"*TASK*
+Here are the context sentences:
+1. Sandra grabbed the milk there.
+2. Sandra went back to the office.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	from context sentence 1, we know that sandra grabbed the milk, which implies that she took possession of the milk and is likely holding or carrying it. there is no information in the context sentences that suggests she put the milk down or handed it over to someone else. therefore, it is logical to conclude that sandra is still carrying the milk when she went back to the office (context sentence 2).	fully	milk	True	According to sentence 1, Sandra grabbed the milk there, which implies that Sandra is carrying the milk. There is no information about Sandra putting down or leaving the milk, so we can infer that she is still carrying it.		"assistant
+
+Reasoning: According to sentence 1, Sandra grabbed the milk there, which implies that Sandra is carrying the milk. There is no information about Sandra putting down or leaving the milk, so we can infer that she is still carrying it.
+
+Answer: milk"	0.0364	0.0182	False	False	False	True	0
+1037	8	8	2	"*TASK*
+Here are the context sentences:
+4. Daniel journeyed to the hallway.
+5. Sandra went back to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	although the context sentences 4 and 5 do not directly mention what sandra is carrying, we can infer the answer by looking at the previous context sentences. in the previous part of the conversation, we learned that sandra grabbed the milk (context sentence 1) and went back to the office (context sentence 2). there is no information that suggests she put the milk down or handed it over to someone else. therefore, it is logical to conclude that sandra is still carrying the milk	none	milk	True	From the previous context sentences (1 and 2), we know that Sandra grabbed the milk there. There is no information about Sandra putting down or leaving the milk, so we can infer that she is still carrying it. The new context sentences (4 and 5) do not provide any information that would change this fact.		"Reasoning: From the previous context sentences (1 and 2), we know that Sandra grabbed the milk there. There is no information about Sandra putting down or leaving the milk, so we can infer that she is still carrying it. The new context sentences (4 and 5) do not provide any information that would change this fact.
+
+Answer: milk"	0.1111	0.0139	False	False	False	True	0
+1038	8	8	3	"*TASK*
+Here are the context sentences:
+7. Mary journeyed to the garden.
+8. Daniel travelled to the bathroom.
+9. Mary travelled to the kitchen.
+10. Sandra travelled to the office.
+11. John travelled to the office.
+12. Sandra discarded the milk there.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	in the previous parts of the conversation, we learned that sandra grabbed the milk (context sentence 1) and went back to the office (context sentence 2). later, we see that sandra travelled to the office again (context sentence 10). importantly, in context sentence 12, it is stated that sandra discarded the milk there, which implies that she got rid of the milk in the office. therefore, it is logical to conclude that sandra is no longer carrying the milk,	partially	nothing	True	From the previous context sentences, we knew that Sandra was carrying the milk. However, in sentence 12, it is stated that Sandra discarded the milk there, which means she is no longer carrying it.		"Reasoning: From the previous context sentences, we knew that Sandra was carrying the milk. However, in sentence 12, it is stated that Sandra discarded the milk there, which means she is no longer carrying it.
+
+Answer: nothing"	0.0833	0.0417	False	False	False	False	0
+1039	8	8	4	"*TASK*
+Here are the context sentences:
+14. Mary got the apple there.
+15. Mary went back to the office.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	the context sentences 14 and 15 do not provide any new information about sandra, but rather focus on mary's actions. we already know from previous context sentences (12) that sandra discarded the milk in the office, which means she is not carrying the milk anymore. there is no new information that suggests sandra picked up or grabbed any other object, so it is logical to conclude that sandra is still carrying nothing.	none	nothing	True	The new context sentences (14 and 15) provide information about Mary, but they do not change the fact that Sandra discarded the milk in sentence 12 and is not carrying anything.		"Reasoning: The new context sentences (14 and 15) provide information about Mary, but they do not change the fact that Sandra discarded the milk in sentence 12 and is not carrying anything.
+
+Answer: nothing"	0.0455	0.0455	False	False	False	True	0
+1040	8	8	5	"*TASK*
+Here are the context sentences:
+17. Mary took the football there.
+18. John picked up the milk there.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	the context sentences 17 and 18 do not provide any new information about sandra, but rather focus on mary and john's actions. we already know from previous context sentences (12) that sandra discarded the milk in the office, which means she is not carrying the milk anymore. there is no new information that suggests sandra picked up or grabbed any other object, so it is logical to conclude that sandra is still carrying nothing.	none	nothing	True	The new context sentences (17 and 18) provide information about Mary and John, but they do not change the fact that Sandra discarded the milk in sentence 12 and is not carrying anything.		"Reasoning: The new context sentences (17 and 18) provide information about Mary and John, but they do not change the fact that Sandra discarded the milk in sentence 12 and is not carrying anything.
+
+Answer: nothing"	0.0217	0.0435	False	False	False	True	0

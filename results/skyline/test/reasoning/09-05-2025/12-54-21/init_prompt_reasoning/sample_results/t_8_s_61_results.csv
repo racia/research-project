@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1301	8	61	1	"*TASK*
+Here are the context sentences:
+1. Sandra grabbed the milk there.
+2. Mary travelled to the office.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	"from context sentence 1, ""sandra grabbed the milk there"", we can infer that sandra is carrying the milk because ""grabbed"" implies taking hold of something, and in this case, it's the milk."	fully	milk	True	According to context sentence 1, Sandra grabbed the milk there, which implies that Sandra is carrying the milk.		"assistant
+
+Reasoning: According to context sentence 1, Sandra grabbed the milk there, which implies that Sandra is carrying the milk.
+
+Answer: milk"	0.0588	0.0294	False	False	False	False	0
+1302	8	61	2	"*TASK*
+Here are the context sentences:
+4. Sandra grabbed the apple there.
+5. Sandra discarded the milk.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"from context sentence 4, ""sandra grabbed the apple there"", we can infer that sandra is carrying the apple because ""grabbed"" implies taking hold of something, and in this case, it's the apple. additionally, context sentence 5, ""sandra discarded the milk"", implies that sandra is no longer carrying the milk, which was previously mentioned in a previous part of the conversation. therefore, the correct answer is that sandra is carrying the apple."	partially	apple	True	According to context sentence 4, Sandra grabbed the apple there, which implies that Sandra is carrying the apple. Additionally, context sentence 5 states that Sandra discarded the milk, which means she is no longer carrying the milk.		"Reasoning: According to context sentence 4, Sandra grabbed the apple there, which implies that Sandra is carrying the apple. Additionally, context sentence 5 states that Sandra discarded the milk, which means she is no longer carrying the milk.
+
+Answer: apple"	0.1346	0.0577	False	False	False	False	0
+1303	8	61	3	"*TASK*
+Here are the context sentences:
+7. Mary got the milk there.
+8. Sandra put down the apple.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"from context sentence 8, ""sandra put down the apple"", we can infer that sandra is no longer carrying the apple because ""put down"" implies releasing or setting down an object. previously, we knew that sandra was carrying the apple (from context sentence 4), but now that she has put it down, she is not carrying anything."	partially	nothing	True	According to context sentence 8, Sandra put down the apple, which implies that Sandra is no longer carrying the apple.		"Reasoning: According to context sentence 8, Sandra put down the apple, which implies that Sandra is no longer carrying the apple.
+
+Answer: nothing"	0.129	0.129	False	False	False	False	0
+1304	8	61	4	"*TASK*
+Here are the context sentences:
+10. Mary left the milk there.
+11. Mary grabbed the apple there.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	"from context sentence 11, ""mary grabbed the apple there"", we can infer that mary is carrying the apple because ""grabbed"" implies taking hold of something, and in this case, it's the apple."	partially	apple	True	According to context sentence 10, Mary left the milk there, which implies that Mary is no longer carrying the milk. However, according to context sentence 11, Mary grabbed the apple there, which implies that Mary is carrying the apple.		"Reasoning: According to context sentence 10, Mary left the milk there, which implies that Mary is no longer carrying the milk. However, according to context sentence 11, Mary grabbed the apple there, which implies that Mary is carrying the apple.
+
+Answer: apple"	0.1636	0.0545	False	False	False	False	0
+1305	8	61	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the garden.
+14. Sandra journeyed to the kitchen.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	from the context sentences, there is no information about sandra carrying or holding any object. in the previous parts of the conversation, we knew that sandra was carrying an apple, but then she put it down (context sentence 8). since then, there is no information about sandra picking up or carrying any object. therefore, the logical conclusion is that sandra is not carrying anything.	none	nothing	True	The context sentences 13 and 14 only provide information about the locations of Mary and Sandra, but do not provide any new information about what Sandra is carrying. From the previous context, we know that Sandra is not carrying anything (Answer: nothing).		"Reasoning: The context sentences 13 and 14 only provide information about the locations of Mary and Sandra, but do not provide any new information about what Sandra is carrying. From the previous context, we know that Sandra is not carrying anything (Answer: nothing).
+
+Answer: nothing"	0.0526	0.0702	False	False	False	True	0

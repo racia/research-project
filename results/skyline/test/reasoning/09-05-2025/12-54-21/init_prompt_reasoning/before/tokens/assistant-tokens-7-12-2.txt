@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġcarrying	Ġany	Ġobjects	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSentence	Ġ	2	Ġmentioned	ĠJohn	Ġtaking	Ġthe	Ġapple	,	Ġbut	Ġthat	Ġwas	Ġin	Ġthe	Ġgarden	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġbringing	Ġthe	Ġapple	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

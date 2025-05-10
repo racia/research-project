@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1166	8	34	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the hallway.
+2. John went to the hallway.
+3. Mary took the milk there.
+4. Mary travelled to the kitchen.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	"from sentence 3, we know that mary took the milk ""there"", which refers to the hallway (as indicated by sentence 4, where mary travelled to the kitchen, implying that she was in the hallway before that). since mary took the milk in the hallway, it can be logically inferred that she is still carrying it."	fully	milk	True	According to sentence 3, Mary took the milk in the hallway. Then, she travelled to the kitchen (sentence 4). There is no information about her putting down or leaving the milk, so it can be inferred that she is still carrying it.		"assistant
+
+Reasoning: According to sentence 3, Mary took the milk in the hallway. Then, she travelled to the kitchen (sentence 4). There is no information about her putting down or leaving the milk, so it can be inferred that she is still carrying it.
+
+Answer: milk"	0.0492	0.0164	False	False	False	True	0
+1167	8	34	2	"*TASK*
+Here are the context sentences:
+6. Daniel travelled to the kitchen.
+7. Daniel travelled to the bedroom.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	the context sentences 6 and 7 only provide information about daniel's movements, but they do not mention mary or the milk. to answer the question, we need to refer to the previous context sentences. from sentence 3, we know that mary took the milk in the hallway, and there is no information about her putting it down or giving it to someone else. therefore, it can be logically inferred that mary is still carrying the milk.	none	milk	True	The new context sentences (6 and 7) only provide information about Daniel's movements, but they do not mention Mary or the milk. Therefore, the previous information about Mary carrying the milk (sentence 3) is still valid.		"Reasoning: The new context sentences (6 and 7) only provide information about Daniel's movements, but they do not mention Mary or the milk. Therefore, the previous information about Mary carrying the milk (sentence 3) is still valid.
+
+Answer: milk"	0.0926	0.0185	False	False	False	True	0
+1168	8	34	3	"*TASK*
+Here are the context sentences:
+9. Sandra moved to the bathroom.
+10. Mary discarded the milk.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	from sentence 10, we know that mary discarded the milk, which means she is no longer carrying it. since there is no information about mary picking up or taking anything else, it can be logically inferred that mary is carrying nothing.	partially	nothing	True	According to sentence 10, Mary discarded the milk, which means she is no longer carrying it.		"Reasoning: According to sentence 10, Mary discarded the milk, which means she is no longer carrying it.
+
+Answer: nothing"	0.1111	0.0741	False	False	False	False	0
+1169	8	34	4	"*TASK*
+Here are the context sentences:
+12. John went back to the kitchen.
+13. John moved to the bathroom.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	the context sentences 12 and 13 only provide information about john's movements, but they do not mention mary or what she is carrying. to answer the question, we need to refer to the previous context sentences. from sentence 10, we know that mary discarded the milk, which means she is no longer carrying it. there is no information about mary picking up or taking anything else, so it can be logically inferred that mary is carrying nothing.	none	nothing	True	The new context sentences (12 and 13) only provide information about John's movements, but they do not mention Mary or change the fact that she discarded the milk (sentence 10).		"Reasoning: The new context sentences (12 and 13) only provide information about John's movements, but they do not mention Mary or change the fact that she discarded the milk (sentence 10).
+
+Answer: nothing"	0.1333	0.0444	False	False	False	True	0
+1170	8	34	5	"*TASK*
+Here are the context sentences:
+15. Mary moved to the bathroom.
+16. Mary moved to the hallway.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	the context sentences 15 and 16 only provide information about mary's movements, but they do not mention her carrying anything. to answer the question, we need to refer to the previous context sentences. from sentence 10, we know that mary discarded the milk, which means she is no longer carrying it. there is no information about mary picking up or taking anything else, so it can be logically inferred that mary is carrying nothing.	none	nothing	True	The new context sentences (15 and 16) only provide information about Mary's movements, but they do not mention her picking up or carrying any object. According to sentence 10, Mary discarded the milk, and there is no new information that suggests she is carrying anything.		"Reasoning: The new context sentences (15 and 16) only provide information about Mary's movements, but they do not mention her picking up or carrying any object. According to sentence 10, Mary discarded the milk, and there is no new information that suggests she is carrying anything.
+
+Answer: nothing"	0.0484	0.0323	False	False	False	True	0

@@ -1,0 +1,1 @@
+*T	ASK	*ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġor	Ġthe	Ġgarden	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġmoving	Ġto	Ġthe	Ġkitchen	Ġand	ĠJohn	Ġmoving	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,70 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1111	8	23	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the bedroom.
+2. John travelled to the hallway.
+3. Mary journeyed to the office.
+4. Daniel journeyed to the bathroom.
+5. John moved to the office.
+6. John moved to the kitchen.
+7. Mary travelled to the hallway.
+8. Daniel got the football there.
+
+Now, answer the following question:
+What is Daniel carrying?"	football	"from sentence 8, ""daniel got the football there"", we can infer that daniel is carrying the football. the word ""got"" implies possession or holding, and ""there"" refers to the location where daniel is, which is the bathroom (from sentence 4). therefore, it can be logically concluded that daniel is carrying the football."	fully	football	True	"According to sentence 8, ""Daniel got the football there."" This implies that Daniel is carrying the football."		"assistant
+
+Reasoning: According to sentence 8, ""Daniel got the football there."" This implies that Daniel is carrying the football.
+
+Answer: football"	0.0606	0.0303	False	False	False	False	0
+1112	8	23	2	"*TASK*
+Here are the context sentences:
+10. Daniel dropped the football.
+11. Daniel journeyed to the office.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"from sentence 10, ""daniel dropped the football"", we can infer that daniel is no longer carrying the football because ""dropped"" implies releasing or letting go of an object. therefore, as of sentence 10, daniel is not carrying the football. sentence 11, ""daniel journeyed to the office"", does not provide any information about daniel carrying anything, so we can conclude that daniel is still not carrying anything. hence, the answer is ""nothing""."	partially	nothing	True	"According to sentence 10, ""Daniel dropped the football."" This implies that Daniel is no longer carrying the football. There is no mention of Daniel picking up anything else."		"Reasoning: According to sentence 10, ""Daniel dropped the football."" This implies that Daniel is no longer carrying the football. There is no mention of Daniel picking up anything else.
+
+Answer: nothing"	0.0	0.0488	False	False	False	True	0
+1113	8	23	3	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the office.
+14. John journeyed to the bedroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	the question asks about daniel, but the context sentences 13 and 14 only provide information about mary and john, respectively. there is no new information about daniel. we need to refer to the previous parts of the conversation history. in the previous parts, we learned that daniel dropped the football (sentence 10), which means daniel is not carrying the football anymore. there is no other information about daniel carrying anything else. therefore, we can conclude that daniel is carrying nothing.	none	nothing	True	The context sentences 13 and 14 do not provide any new information about Daniel. The previous information about Daniel is that he dropped the football (sentence 10) and there is no mention of him picking up anything else.		"Reasoning: The context sentences 13 and 14 do not provide any new information about Daniel. The previous information about Daniel is that he dropped the football (sentence 10) and there is no mention of him picking up anything else.
+
+Answer: nothing"	0.0	0.0385	False	False	False	True	0
+1114	8	23	4	"*TASK*
+Here are the context sentences:
+16. Daniel journeyed to the hallway.
+17. Sandra went to the office.
+18. Mary moved to the bedroom.
+19. Mary went to the office.
+20. John journeyed to the hallway.
+21. Daniel journeyed to the kitchen.
+22. Daniel went back to the bathroom.
+23. Daniel moved to the garden.
+24. Daniel travelled to the bedroom.
+25. Daniel went to the garden.
+26. Mary moved to the bedroom.
+27. Mary travelled to the garden.
+28. Daniel moved to the kitchen.
+29. Daniel went back to the office.
+30. Sandra went to the bedroom.
+31. Daniel moved to the hallway.
+32. Mary got the apple there.
+33. Sandra went to the office.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	"from sentence 32, ""mary got the apple there"", we can infer that mary is carrying the apple. the word ""got"" implies possession or holding, and ""there"" refers to the location where mary is, which is the garden (from sentence 27). therefore, it can be logically concluded that mary is carrying the apple."	fully	apple	True	"According to sentence 32, ""Mary got the apple there."" This implies that Mary is carrying the apple."		"Reasoning: According to sentence 32, ""Mary got the apple there."" This implies that Mary is carrying the apple.
+
+Answer: apple"	0.0	0.0345	False	False	False	False	0
+1115	8	23	5	"*TASK*
+Here are the context sentences:
+35. Daniel went back to the bedroom.
+36. Sandra travelled to the hallway.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	the question asks about mary, but the context sentences 35 and 36 only provide information about daniel and sandra, respectively. there is no new information about mary. we need to refer to the previous parts of the conversation history. in the previous parts, we learned that mary got the apple (sentence 32), which means mary is carrying the apple. there is no information that suggests mary dropped or lost the apple, so we can conclude that mary is still carrying the apple	none	apple	True	The context sentences 35 and 36 do not provide any new information about Mary. The previous information about Mary is that she got the apple (sentence 32) and there is no mention of her dropping or giving up the apple.		"Reasoning: The context sentences 35 and 36 do not provide any new information about Mary. The previous information about Mary is that she got the apple (sentence 32) and there is no mention of her dropping or giving up the apple.
+
+Answer: apple"	0.0926	0.0185	False	False	False	True	0

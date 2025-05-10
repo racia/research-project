@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+346	6	70	1	"*TASK*
+Here are the context sentences:
+1. Mary grabbed the milk there.
+2. John moved to the garden.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	since the context sentences do not explicitly mention john being in the bedroom, and the second sentence states that john moved to the garden, it can be logically inferred that john is not in the bedroom. the first sentence about mary grabbing the milk is irrelevant to john's location.	fully	no	True	There is no mention of John being in the bedroom in the context sentences. In fact, sentence 2 states that John moved to the garden, which implies that John is currently in the garden, not in the bedroom.		"assistant
+
+Reasoning: There is no mention of John being in the bedroom in the context sentences. In fact, sentence 2 states that John moved to the garden, which implies that John is currently in the garden, not in the bedroom.
+
+Answer: no"	0.0545	0.0182	False	False	False	True	0
+347	6	70	2	"*TASK*
+Here are the context sentences:
+4. Sandra took the apple there.
+5. Sandra went to the hallway.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	"there is no mention of john in the context sentences, and the sentences only talk about sandra's actions. therefore, we cannot infer john's location from the given information. however, since the answer is ""no"", we can assume that john's location is not mentioned or implied to be in the bedroom."	none	not mentioned	False	There is no mention of John in the context sentences. The sentences only talk about Sandra's actions, and there is no information provided about John's location.		"Reasoning: There is no mention of John in the context sentences. The sentences only talk about Sandra's actions, and there is no information provided about John's location.
+
+Answer: not mentioned"	0.1026	0.0256	False	False	False	True	0
+348	6	70	3	"*TASK*
+Here are the context sentences:
+7. Daniel went back to the hallway.
+8. John journeyed to the bedroom.
+
+Now, answer the following question:
+Is John in the garden?"	no	according to sentence 8, john journeyed to the bedroom, which implies that john is currently in the bedroom. there is no mention of john being in the garden. therefore, it can be logically concluded that john is not in the garden.	fully	no	True	Sentence 8 states that John journeyed to the bedroom, which implies that John is currently in the bedroom, not in the garden.		"Reasoning: Sentence 8 states that John journeyed to the bedroom, which implies that John is currently in the bedroom, not in the garden.
+
+Answer: no"	0.0882	0.0294	False	False	False	False	0
+349	6	70	4	"*TASK*
+Here are the context sentences:
+10. Mary picked up the football there.
+11. Mary went to the garden.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	"there is no mention of daniel's location in the provided context sentences. the sentences only talk about mary's actions, picking up the football and going to the garden. since there is no information about daniel's location, we cannot infer that he is in the bedroom. the answer ""no"" suggests that daniel's location is not in the bedroom, but it is not specified where he is."	none	no	True	There is no mention of Daniel being in the bedroom in the context sentences. Sentence 7 states that Daniel went back to the hallway, which implies that Daniel is currently in the hallway, not in the bedroom.		"Reasoning: There is no mention of Daniel being in the bedroom in the context sentences. Sentence 7 states that Daniel went back to the hallway, which implies that Daniel is currently in the hallway, not in the bedroom.
+
+Answer: no"	0.1429	0.0204	False	False	False	True	0
+350	6	70	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the garden.
+14. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Is John in the hallway?"	no	according to sentence 13, john travelled to the garden, which implies that john is currently in the garden. there is no mention of john being in the hallway. therefore, it can be logically concluded that john is not in the hallway.	fully	no	True	Sentence 13 states that John travelled to the garden, which implies that John is currently in the garden, not in the hallway.		"Reasoning: Sentence 13 states that John travelled to the garden, which implies that John is currently in the garden, not in the hallway.
+
+Answer: no"	0.0	0.0303	False	False	False	False	0

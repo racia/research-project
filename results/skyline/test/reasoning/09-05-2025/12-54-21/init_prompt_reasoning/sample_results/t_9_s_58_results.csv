@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1786	9	58	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the kitchen.
+2. Mary journeyed to the hallway.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	no	since sandra travelled to the kitchen (context sentence 1), it is implied that she is currently in the kitchen. there is no mention of her returning to the bedroom or going to any other room. therefore, based on the provided information, it can be logically concluded that sandra is not in the bedroom.	fully	no	True	The context sentences only mention Sandra travelling to the kitchen and Mary journeying to the hallway. There is no information about Sandra being in the bedroom.		"Reasoning: The context sentences only mention Sandra travelling to the kitchen and Mary journeying to the hallway. There is no information about Sandra being in the bedroom.
+
+Answer: no"	0.0556	0.0278	False	False	False	True	0
+1787	9	58	2	"*TASK*
+Here are the context sentences:
+4. Daniel travelled to the bathroom.
+5. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	according to context sentence 5, mary journeyed to the bedroom, which implies that she has arrived at the bedroom and is currently there. there is no information provided that suggests she has left the bedroom or gone to any other location. therefore, it can be logically concluded that mary is indeed in the bedroom.	fully	yes	True	The context sentence 5 explicitly states that Mary journeyed to the bedroom, which implies that Mary is in the bedroom.		"Reasoning: The context sentence 5 explicitly states that Mary journeyed to the bedroom, which implies that Mary is in the bedroom.
+
+Answer: yes"	0.1613	0.0323	False	False	False	False	0
+1788	9	58	3	"*TASK*
+Here are the context sentences:
+7. Daniel is in the kitchen.
+8. Sandra travelled to the garden.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	no	according to context sentence 7, daniel is in the kitchen, which implies that he is currently in the kitchen and not in any other location, including the hallway. there is no information provided that suggests he has moved from the kitchen to the hallway. therefore, it can be logically concluded that daniel is not in the hallway.	fully	no	True	The context sentence 7 states that Daniel is in the kitchen, but there is no information about Daniel being in the hallway.		"Reasoning: The context sentence 7 states that Daniel is in the kitchen, but there is no information about Daniel being in the hallway.
+
+Answer: no"	0.0	0.0312	False	False	False	True	0
+1789	9	58	4	"*TASK*
+Here are the context sentences:
+10. John journeyed to the bathroom.
+11. Sandra moved to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	yes	according to context sentence 11, sandra moved to the bathroom, which implies that she has arrived at the bathroom and is currently there. there is no information provided that suggests she has left the bathroom or gone to any other location. therefore, it can be logically concluded that sandra is indeed in the bathroom.	fully	yes	True	The context sentence 11 explicitly states that Sandra moved to the bathroom, which implies that Sandra is in the bathroom.		"Reasoning: The context sentence 11 explicitly states that Sandra moved to the bathroom, which implies that Sandra is in the bathroom.
+
+Answer: yes"	0.1333	0.0333	False	False	False	False	0
+1790	9	58	5	"*TASK*
+Here are the context sentences:
+13. John went to the office.
+14. Daniel went back to the garden.
+
+Now, answer the following question:
+Is John in the office?"	yes	according to context sentence 13, john went to the office, which implies that he has arrived at the office and is currently there. there is no information provided that suggests he has left the office or gone to any other location. therefore, it can be logically concluded that john is indeed in the office.	fully	yes	True	The context sentence 13 explicitly states that John went to the office, which implies that John is in the office.		"Reasoning: The context sentence 13 explicitly states that John went to the office, which implies that John is in the office.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0

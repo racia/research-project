@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	13	,	ĠDaniel	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJohn	,	Ġso	ĠJohn	Ġwas	Ġcarrying	Ġthe	Ġfootball	.	ĠHowever	,	Ġin	Ġsentence	Ġ	14	,	Ġit	Ġis	Ġstated	Ġthat	ĠJohn	Ġdropped	Ġthe	Ġfootball	,	Ġwhich	Ġmeans	Ġhe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

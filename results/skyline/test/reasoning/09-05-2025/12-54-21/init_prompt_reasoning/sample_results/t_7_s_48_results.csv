@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+736	7	48	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the garden.
+2. Sandra went to the hallway.
+3. Sandra picked up the apple there.
+4. John went to the garden.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from context sentence 3, we know that sandra picked up the apple in the hallway. this implies that sandra is carrying the apple. there is no mention of sandra picking up or carrying any other object. therefore, we can conclude that sandra is carrying only one object, which is the apple.	fully	one	True	According to sentence 3, Sandra picked up the apple in the hallway, which means she is carrying the apple.		"assistant
+
+Reasoning: According to sentence 3, Sandra picked up the apple in the hallway, which means she is carrying the apple.
+
+Answer: one"	0.1176	0.0294	False	False	False	False	0
+737	7	48	2	"*TASK*
+Here are the context sentences:
+6. John journeyed to the bathroom.
+7. John moved to the office.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	the context sentences 6 and 7 only provide information about john's movements, but the question asks about sandra. to answer this question, we need to refer to the previous context sentences. from context sentence 3, we know that sandra picked up the apple in the hallway, and there is no mention of her dropping or putting down the apple. therefore, we can conclude that sandra is still carrying the apple, which is one object.	none	one	True	The context sentences 6 and 7 are about John's movements, but they do not provide any new information about Sandra. We can refer back to the previous context sentences, where we know that Sandra picked up the apple in the hallway (sentence 3). There is no information about Sandra putting down the apple or giving it to someone else.		"Reasoning: The context sentences 6 and 7 are about John's movements, but they do not provide any new information about Sandra. We can refer back to the previous context sentences, where we know that Sandra picked up the apple in the hallway (sentence 3). There is no information about Sandra putting down the apple or giving it to someone else.
+
+Answer: one"	0.0263	0.0132	False	False	False	True	0
+738	7	48	3	"*TASK*
+Here are the context sentences:
+9. Sandra moved to the office.
+10. Daniel got the milk there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from context sentence 10, we know that daniel got the milk in the office. this implies that daniel is carrying the milk. there is no mention of daniel picking up or carrying any other object. therefore, we can conclude that daniel is carrying only one object, which is the milk.	fully	one	True	According to sentence 10, Daniel got the milk in the office, which means he is carrying the milk.		"Reasoning: According to sentence 10, Daniel got the milk in the office, which means he is carrying the milk.
+
+Answer: one"	0.0	0.0345	False	False	False	False	0
+739	7	48	4	"*TASK*
+Here are the context sentences:
+12. Sandra got the football there.
+13. Sandra handed the apple to John.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	the context sentences 12 and 13 provide information about sandra and john, but the question asks about daniel. to answer this question, we need to refer to the previous context sentences. from context sentence 10, we know that daniel got the milk in the office. there is no mention of daniel dropping or putting down the milk, or picking up any other object. therefore, we can conclude that daniel is still carrying the milk, which is one object.	none	one	True	The context sentences 12 and 13 are about Sandra's actions, but they do not provide any new information about Daniel. We can refer back to the previous context sentences, where we know that Daniel got the milk in the office (sentence 10). There is no information about Daniel putting down the milk or giving it to someone else.		"Reasoning: The context sentences 12 and 13 are about Sandra's actions, but they do not provide any new information about Daniel. We can refer back to the previous context sentences, where we know that Daniel got the milk in the office (sentence 10). There is no information about Daniel putting down the milk or giving it to someone else.
+
+Answer: one"	0.0133	0.0133	False	False	False	True	0
+740	7	48	5	"*TASK*
+Here are the context sentences:
+15. Mary went to the bathroom.
+16. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	the context sentences 15 and 16 provide information about mary and sandra's movements, but the question asks about daniel. to answer this question, we need to refer to the previous context sentences. from context sentence 10, we know that daniel got the milk in the office. there is no mention of daniel dropping or putting down the milk, or picking up any other object. therefore, we can conclude that daniel is still carrying the milk, which is one object.	none	one	True	The context sentences 15 and 16 are about Mary and Sandra's movements, but they do not provide any new information about Daniel. We can refer back to the previous context sentences, where we know that Daniel got the milk in the office (sentence 10). There is no information about Daniel putting down the milk or giving it to someone else.		"Reasoning: The context sentences 15 and 16 are about Mary and Sandra's movements, but they do not provide any new information about Daniel. We can refer back to the previous context sentences, where we know that Daniel got the milk in the office (sentence 10). There is no information about Daniel putting down the milk or giving it to someone else.
+
+Answer: one"	0.0	0.013	False	False	False	True	0

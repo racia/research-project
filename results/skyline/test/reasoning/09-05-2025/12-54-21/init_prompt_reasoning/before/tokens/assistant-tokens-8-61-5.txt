@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	13	Ġand	Ġ	14	Ġonly	Ġprovide	Ġinformation	Ġabout	Ġthe	Ġlocations	Ġof	ĠMary	Ġand	ĠSandra	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	Ġwhat	ĠSandra	Ġis	Ġcarrying	.	ĠFrom	Ġthe	Ġprevious	Ġcontext	,	Ġwe	Ġknow	Ġthat	ĠSandra	Ġis	Ġnot	Ġcarrying	Ġanything	Ġ(	Answer	:	Ġnothing	).ĊĊ	Answer	:	Ġnothing	<|eot_id|>

@@ -1,0 +1,15 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+14	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+15	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+16	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+17	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+18	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+19	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+20	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+21	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+22	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+23	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+24	.	ĠJohn	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠJohn	Ġcarrying	?Ċ

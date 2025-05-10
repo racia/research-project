@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+86	6	18	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the office.
+2. Daniel went back to the kitchen.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	there is no mention of john going to the bathroom in the context sentences. in fact, sentence 1 states that john travelled to the office, which implies that he is in the office, not in the bathroom. additionally, sentence 2 talks about daniel going back to the kitchen, which is unrelated to john's location. therefore, based on the provided information, it can be logically concluded that john is not in the bathroom.	fully	no	True	The context sentences do not mention John going to the bathroom. In fact, sentence 1 states that John travelled to the office, which is a different location.		"assistant
+
+Reasoning: The context sentences do not mention John going to the bathroom. In fact, sentence 1 states that John travelled to the office, which is a different location.
+
+Answer: no"	0.0465	0.0233	False	False	False	True	0
+87	6	18	2	"*TASK*
+Here are the context sentences:
+4. Daniel got the milk there.
+5. Sandra went to the office.
+
+Now, answer the following question:
+Is Sandra in the office?"	yes	sentence 5 explicitly states that sandra went to the office, which implies that she is currently in the office. there is no information provided that suggests she left the office or went somewhere else. therefore, based on the provided information, it can be logically concluded that sandra is indeed in the office.	fully	yes	True	Sentence 5 explicitly states that Sandra went to the office, which implies that she is currently in the office.		"Reasoning: Sentence 5 explicitly states that Sandra went to the office, which implies that she is currently in the office.
+
+Answer: yes"	0.0	0.0345	False	False	False	False	0
+88	6	18	3	"*TASK*
+Here are the context sentences:
+7. Sandra travelled to the hallway.
+8. John went to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	no	there is no mention of sandra going to the kitchen in the context sentences. in fact, sentence 7 states that sandra travelled to the hallway, which implies that she is currently in the hallway, not in the kitchen. sentence 8 talks about john going to the bathroom, which is unrelated to sandra's location. therefore, based on the provided information, it can be logically concluded that sandra is not in the kitchen.	fully	no	True	There is no mention of Sandra going to the kitchen in the context sentences. In fact, sentence 7 states that Sandra travelled to the hallway, which is a different location.		"Reasoning: There is no mention of Sandra going to the kitchen in the context sentences. In fact, sentence 7 states that Sandra travelled to the hallway, which is a different location.
+
+Answer: no"	0.119	0.0238	False	False	False	True	0
+89	6	18	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the bathroom.
+11. Mary took the football there.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	yes	"the question asks about sandra's location, but the context sentences only provide information about mary's actions. however, we can infer the answer by looking at the previous context sentences. in sentence 7, it was stated that ""sandra travelled to the hallway."" there is no information provided that suggests sandra left the hallway or went somewhere else. therefore, based on the previous information, it can be logically concluded that sandra is still in the hallway."	none	yes	True	Sentence 7 previously stated that Sandra travelled to the hallway, and there is no mention of her leaving the hallway or going to a different location.		"Reasoning: Sentence 7 previously stated that Sandra travelled to the hallway, and there is no mention of her leaving the hallway or going to a different location.
+
+Answer: yes"	0.0833	0.0278	False	False	False	True	0
+90	6	18	5	"*TASK*
+Here are the context sentences:
+13. Mary left the football.
+14. Daniel went to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	yes	"sentence 10 previously stated that ""mary travelled to the bathroom."" there is no information provided that suggests mary left the bathroom or went somewhere else. the fact that mary left the football (sentence 13) does not imply that she left the bathroom, as she could have left the football in the bathroom. therefore, based on the previous information, it can be logically concluded that mary is still in the bathroom."	none	yes	True	Sentence 10 previously stated that Mary travelled to the bathroom, and there is no mention of her leaving the bathroom or going to a different location.		"Reasoning: Sentence 10 previously stated that Mary travelled to the bathroom, and there is no mention of her leaving the bathroom or going to a different location.
+
+Answer: yes"	0.0	0.0278	False	False	False	True	0

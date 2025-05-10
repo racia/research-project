@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+326	6	66	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the bathroom.
+2. John went to the kitchen.
+
+Now, answer the following question:
+Is John in the office?"	no	"the context sentences do not mention john being in the office. in fact, sentence 2 explicitly states that john went to the kitchen, which implies that john is in the kitchen, not in the office. therefore, the answer is ""no"", john is not in the office."	fully	no	True	The context sentences do not mention John going to the office. In fact, sentence 2 states that John went to the kitchen.		"assistant
+
+Reasoning: The context sentences do not mention John going to the office. In fact, sentence 2 states that John went to the kitchen.
+
+Answer: no"	0.027	0.027	False	False	False	True	0
+327	6	66	2	"*TASK*
+Here are the context sentences:
+4. John got the apple there.
+5. John moved to the bedroom.
+
+Now, answer the following question:
+Is John in the hallway?"	no	"sentence 5 states that john moved to the bedroom, which implies that john is currently in the bedroom. there is no information provided that suggests john is in the hallway. in fact, the context suggests that john is in a different location (the bedroom), so the answer is ""no"", john is not in the hallway."	fully	no	True	The context sentences do not mention John going to the hallway. In fact, sentence 5 states that John moved to the bedroom.		"Reasoning: The context sentences do not mention John going to the hallway. In fact, sentence 5 states that John moved to the bedroom.
+
+Answer: no"	0.1212	0.0303	False	False	False	True	0
+328	6	66	3	"*TASK*
+Here are the context sentences:
+7. John journeyed to the office.
+8. Daniel travelled to the office.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	"sentence 7 states that john journeyed to the office, which implies that john is currently in the office. there is no information provided that suggests john is in the bathroom. in fact, the context suggests that john is in a different location (the office), so the answer is ""no"", john is not in the bathroom."	fully	no	True	The context sentences do not mention John going to the bathroom. In fact, sentence 7 states that John journeyed to the office.		"Reasoning: The context sentences do not mention John going to the bathroom. In fact, sentence 7 states that John journeyed to the office.
+
+Answer: no"	0.0588	0.0294	False	False	False	True	0
+329	6	66	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the bathroom.
+11. John discarded the apple.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	no	"sentence 10 states that mary moved to the bathroom, which implies that mary is currently in the bathroom. there is no information provided that suggests mary is in the kitchen. in fact, the context suggests that mary is in a different location (the bathroom), so the answer is ""no"", mary is not in the kitchen."	fully	no	True	The context sentences do not mention Mary going to the kitchen. In fact, sentence 10 states that Mary moved to the bathroom.		"Reasoning: The context sentences do not mention Mary going to the kitchen. In fact, sentence 10 states that Mary moved to the bathroom.
+
+Answer: no"	0.0	0.0303	False	False	False	True	0
+330	6	66	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the kitchen.
+14. John moved to the kitchen.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	"sentence 14 states that john moved to the kitchen, which implies that john is currently in the kitchen. there is no information provided that suggests john is in the bathroom. in fact, the context suggests that john is in a different location (the kitchen), so the answer is ""no"", john is not in the bathroom."	fully	no	True	The context sentences do not mention John going to the bathroom. In fact, sentence 14 states that John moved to the kitchen.		"Reasoning: The context sentences do not mention John going to the bathroom. In fact, sentence 14 states that John moved to the kitchen.
+
+Answer: no"	0.0	0.0303	False	False	False	True	0

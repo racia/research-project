@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	10	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġleaving	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

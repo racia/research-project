@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġmovements	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	's	Ġcurrent	Ġlocation	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠFred	Ġ(	sent	ences	Ġ	1	Ġand	Ġ	2	)	Ġis	Ġnot	Ġrelevant	Ġin	Ġthis	Ġcontext	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġdiscarded	Ġthe	Ġfootball	Ġ(	sentence	Ġ	12	),	Ġbut	Ġthen	Ġpicked	Ġit	Ġup	Ġagain	Ġ(	sentence	Ġ	13	),	Ġso	Ġhe	Ġis	Ġstill	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġone	<|eot_id|>

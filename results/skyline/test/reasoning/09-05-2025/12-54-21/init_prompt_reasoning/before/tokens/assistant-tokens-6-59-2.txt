@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	5	Ġstates	Ġthat	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġmention	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠSandra	Ġbeing	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

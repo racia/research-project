@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	7	,	ĠMary	Ġis	Ġin	Ġthe	Ġpark	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠMary	Ġhas	Ġmoved	Ġfrom	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

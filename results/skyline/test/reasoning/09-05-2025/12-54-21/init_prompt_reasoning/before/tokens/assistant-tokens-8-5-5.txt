@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	13	Ġmentions	ĠDaniel	's	Ġmovement	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġchange	Ġthe	Ġfact	Ġthat	ĠDaniel	Ġis	Ġcarrying	Ġthe	Ġfootball	Ġ(	as	Ġmentioned	Ġin	Ġsentence	Ġ	10	).	ĠSentence	Ġ	14	Ġis	Ġabout	ĠMary	Ġputting	Ġdown	Ġthe	Ġmilk	,	Ġwhich	Ġdoes	Ġnot	Ġaffect	Ġwhat	ĠDaniel	Ġis	Ġcarrying	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

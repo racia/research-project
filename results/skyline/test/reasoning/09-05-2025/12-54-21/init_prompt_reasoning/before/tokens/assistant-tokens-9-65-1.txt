@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġbathroom	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġtraveling	Ġto	Ġthe	Ġgarden	Ġand	ĠDaniel	Ġbeing	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	<|eot_id|>

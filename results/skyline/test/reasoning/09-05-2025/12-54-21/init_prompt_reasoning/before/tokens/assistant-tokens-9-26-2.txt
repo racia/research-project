@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

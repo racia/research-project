@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1161	8	33	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the garden.
+2. Sandra moved to the office.
+3. John journeyed to the bedroom.
+4. Sandra journeyed to the bedroom.
+5. Sandra moved to the garden.
+6. Daniel moved to the office.
+7. Daniel journeyed to the kitchen.
+8. Daniel went to the bedroom.
+9. Mary journeyed to the hallway.
+10. Mary journeyed to the bathroom.
+11. John went back to the garden.
+12. Mary took the milk there.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	"according to sentence 12, ""mary took the milk there"", which implies that mary is carrying the milk. the phrase ""there"" likely refers to the location mary was in, which is the bathroom (sentence 10)."	fully	milk	True	According to sentence 12, Mary took the milk there, which implies that Mary is carrying the milk.		"assistant
+
+Reasoning: According to sentence 12, Mary took the milk there, which implies that Mary is carrying the milk.
+
+Answer: milk"	0.0323	0.0323	False	False	False	False	0
+1162	8	33	2	"*TASK*
+Here are the context sentences:
+14. John went to the kitchen.
+15. Mary left the milk.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	"according to sentence 15, ""mary left the milk"", which implies that mary is no longer carrying the milk. the phrase ""left"" suggests that mary intentionally put the milk down or abandoned it, so it is logical to conclude that mary is not carrying anything."	partially	nothing	True	According to sentence 12, Mary took the milk there, but then according to sentence 15, Mary left the milk, which implies that Mary is no longer carrying the milk.		"Reasoning: According to sentence 12, Mary took the milk there, but then according to sentence 15, Mary left the milk, which implies that Mary is no longer carrying the milk.
+
+Answer: nothing"	0.2093	0.0465	False	False	False	False	0
+1163	8	33	3	"*TASK*
+Here are the context sentences:
+17. Mary picked up the milk there.
+18. John got the football there.
+
+Now, answer the following question:
+What is John carrying?"	football	"according to sentence 18, ""john got the football there"", which implies that john acquired or obtained the football at the location ""there"". the phrase ""got"" suggests that john is now in possession of the football, and therefore, john is carrying the football."	fully	football	True	According to sentence 18, John got the football there, which implies that John is carrying the football.		"Reasoning: According to sentence 18, John got the football there, which implies that John is carrying the football.
+
+Answer: football"	0.0357	0.0357	False	False	False	False	0
+1164	8	33	4	"*TASK*
+Here are the context sentences:
+20. John travelled to the garden.
+21. Mary left the milk.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	"according to sentence 21, ""mary left the milk"", which implies that mary is no longer carrying the milk. there is no other information provided about mary picking up or carrying any other object, so it is logical to conclude that mary is not carrying anything."	partially	nothing	True	According to sentence 17, Mary picked up the milk there, but then according to sentence 21, Mary left the milk, which implies that Mary is no longer carrying the milk.		"Reasoning: According to sentence 17, Mary picked up the milk there, but then according to sentence 21, Mary left the milk, which implies that Mary is no longer carrying the milk.
+
+Answer: nothing"	0.1136	0.0909	False	False	False	False	0
+1165	8	33	5	"*TASK*
+Here are the context sentences:
+23. John put down the football there.
+24. John took the football there.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	the context sentences only provide information about john's actions with the football, but do not mention mary carrying or interacting with any objects. therefore, based on the provided information, it can be logically concluded that mary is not carrying anything.	none	nothing	True	The context sentences 23 and 24 are about John and the football, but they do not provide any new information about Mary. The last information about Mary was that she left the milk (sentence 21), so Mary is still not carrying anything.		"Reasoning: The context sentences 23 and 24 are about John and the football, but they do not provide any new information about Mary. The last information about Mary was that she left the milk (sentence 21), so Mary is still not carrying anything.
+
+Answer: nothing"	0.0351	0.0702	False	False	False	True	0

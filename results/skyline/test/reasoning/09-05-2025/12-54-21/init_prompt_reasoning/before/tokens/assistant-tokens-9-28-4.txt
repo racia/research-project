@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	11	,	Ġ"	Mary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	",	Ġwhich	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

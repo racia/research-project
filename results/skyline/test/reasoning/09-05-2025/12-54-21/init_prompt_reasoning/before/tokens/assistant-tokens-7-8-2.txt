@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	4	,	ĠMary	Ġpassed	Ġthe	Ġapple	Ġto	ĠJohn	,	Ġso	ĠJohn	Ġwas	Ġcarrying	Ġone	Ġobject	.	ĠIn	Ġsentence	Ġ	5	,	ĠJohn	Ġdiscarded	Ġthe	Ġapple	,	Ġwhich	Ġmeans	Ġhe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

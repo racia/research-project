@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġgoing	Ġto	Ġthe	Ġbathroom	.	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	11	,	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġaccording	Ġto	Ġcontext	Ġsentence	Ġ	13	,	Ġshe	Ġgot	Ġthe	Ġapple	Ġthere	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġstill	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

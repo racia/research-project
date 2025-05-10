@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġbeing	Ġin	Ġthe	Ġkitchen	Ġand	ĠMary	Ġtravelling	Ġto	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠDaniel	Ġbeing	Ġin	Ġthe	Ġbathroom	Ġor	Ġmoving	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	10	,	ĠJohn	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	,	Ġso	ĠMary	Ġis	Ġcarrying	Ġthe	Ġapple	.	ĠSentence	Ġ	11	Ġonly	Ġmentions	ĠMary	's	Ġlocation	Ġchange	,	Ġbut	Ġit	Ġdoesn	't	Ġaffect	Ġthe	Ġnumber	Ġof	Ġobjects	Ġshe	's	Ġcarrying	.ĊĊ	Answer	:	Ġone	<|eot_id|>

@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1326	8	66	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the kitchen.
+2. John journeyed to the garden.
+3. Mary moved to the office.
+4. Daniel moved to the hallway.
+5. Sandra got the apple there.
+6. Sandra travelled to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"from sentence 5, we know that sandra got the apple there, which implies that sandra is carrying the apple. the ""there"" in sentence 5 refers to the location where sandra got the apple, which is not specified. however, in sentence 6, it is mentioned that sandra travelled to the garden. since sandra got the apple before travelling to the garden, it can be inferred that sandra got the apple in the previous location. therefore, sandra is carrying the apple."	fully	apple	True	From sentence 5, we know that Sandra got the apple in the hallway. Then, in sentence 6, Sandra travelled to the garden, but there is no mention of her dropping or leaving the apple. Therefore, it can be inferred that Sandra is still carrying the apple.		"assistant
+
+Reasoning: From sentence 5, we know that Sandra got the apple in the hallway. Then, in sentence 6, Sandra travelled to the garden, but there is no mention of her dropping or leaving the apple. Therefore, it can be inferred that Sandra is still carrying the apple.
+
+Answer: apple"	0.0441	0.0147	False	False	False	True	0
+1327	8	66	2	"*TASK*
+Here are the context sentences:
+8. Mary went to the garden.
+9. Daniel went to the bedroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	the question asks about what sandra is carrying, but the provided context lines (8 and 9) do not mention sandra at all. they only talk about mary and daniel's movements. however, we can look back at the previous context lines (1-6) to find the relevant information. from sentence 5, we know that sandra got the apple there, and from sentence 6, we know that sandra travelled to the garden. therefore, we can conclude that sandra is carrying	none	apple	True	The new context sentences (8 and 9) do not provide any new information about Sandra or what she is carrying. The last mention of Sandra was in sentence 6, where she travelled to the garden, and sentence 5, where she got the apple in the hallway. Since there is no new information, the previous answer still stands.		"Reasoning: The new context sentences (8 and 9) do not provide any new information about Sandra or what she is carrying. The last mention of Sandra was in sentence 6, where she travelled to the garden, and sentence 5, where she got the apple in the hallway. Since there is no new information, the previous answer still stands.
+
+Answer: apple"	0.0263	0.0132	False	False	False	True	0
+1328	8	66	3	"*TASK*
+Here are the context sentences:
+11. Sandra left the apple.
+12. Mary moved to the kitchen.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	from sentence 11, we know that sandra left the apple, which implies that sandra is no longer carrying the apple. this is a direct indication that sandra is not carrying anything, as she has left the only object (the apple) that was previously associated with her. therefore, the correct answer is that sandra is carrying nothing.	partially	nothing	True	In sentence 11, Sandra left the apple, which means she is no longer carrying it. There is no new information about Sandra picking up or carrying anything else.		"Reasoning: In sentence 11, Sandra left the apple, which means she is no longer carrying it. There is no new information about Sandra picking up or carrying anything else.
+
+Answer: nothing"	0.125	0.05	False	False	False	True	0
+1329	8	66	4	"*TASK*
+Here are the context sentences:
+14. Mary went back to the office.
+15. John went back to the office.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	the question asks about what sandra is carrying, but the provided context lines (14 and 15) do not mention sandra at all. they only talk about mary and john's movements. however, we can look back at the previous context lines (11) to find the relevant information. from sentence 11, we know that sandra left the apple, which implies that sandra is no longer carrying the apple. there is no new information that suggests sandra picked up anything else, so we can	none	nothing	True	The new context sentences (14 and 15) do not provide any new information about Sandra or what she is carrying. The last mention of Sandra was in sentence 11, where she left the apple, and there is no new information about her picking up or carrying anything else.		"Reasoning: The new context sentences (14 and 15) do not provide any new information about Sandra or what she is carrying. The last mention of Sandra was in sentence 11, where she left the apple, and there is no new information about her picking up or carrying anything else.
+
+Answer: nothing"	0.1111	0.0317	False	False	False	True	0
+1330	8	66	5	"*TASK*
+Here are the context sentences:
+17. Sandra went back to the office.
+18. Daniel went back to the bathroom.
+19. Mary went back to the bedroom.
+20. Mary travelled to the hallway.
+21. John moved to the hallway.
+22. Daniel moved to the hallway.
+23. Daniel picked up the milk there.
+24. John moved to the bedroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"from sentence 23, we know that daniel picked up the milk there, which implies that daniel is carrying the milk. the ""there"" in sentence 23 refers to the location where daniel picked up the milk, which is the hallway (as mentioned in sentence 22). there is no subsequent information that suggests daniel dropped or left the milk, so we can conclude that daniel is still carrying the milk."	fully	milk	True	In sentence 23, Daniel picked up the milk in the hallway. There is no new information about Daniel dropping or leaving the milk.		"Reasoning: In sentence 23, Daniel picked up the milk in the hallway. There is no new information about Daniel dropping or leaving the milk.
+
+Answer: milk"	0.0	0.0294	False	False	False	True	0

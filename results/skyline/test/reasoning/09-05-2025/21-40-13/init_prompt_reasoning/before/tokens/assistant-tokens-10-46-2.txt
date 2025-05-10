@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	4	Ġstates	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġcinema	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġhas	Ġmoved	Ġto	Ġthe	Ġcinema	.	ĠĊĊ	Answer	:	Ġyes	<|eot_id|>
