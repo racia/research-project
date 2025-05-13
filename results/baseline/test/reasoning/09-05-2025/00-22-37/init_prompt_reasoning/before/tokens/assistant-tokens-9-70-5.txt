@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠJohn	's	Ġlocation	Ġas	Ġthe	Ġgarden	,	Ġbut	Ġdo	Ġnot	Ġmention	Ġhis	Ġlocation	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠJohn	Ġmoved	Ġfrom	Ġthe	Ġgarden	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

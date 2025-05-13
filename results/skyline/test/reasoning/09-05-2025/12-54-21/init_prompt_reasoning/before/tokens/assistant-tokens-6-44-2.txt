@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	Ġand	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

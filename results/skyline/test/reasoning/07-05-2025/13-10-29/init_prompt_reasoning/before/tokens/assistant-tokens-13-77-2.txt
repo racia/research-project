@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠSandra	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	4	)	Ġand	Ġthen	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	5	).	ĠTherefore	,	ĠSandra	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

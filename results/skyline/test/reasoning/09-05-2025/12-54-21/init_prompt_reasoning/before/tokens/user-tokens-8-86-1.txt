@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-2	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-3	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
-4	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠMary	Ġcarrying	?Ċ

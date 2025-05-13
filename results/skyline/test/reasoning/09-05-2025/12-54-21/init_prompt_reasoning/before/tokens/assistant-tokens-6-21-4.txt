@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	11	Ġmentions	ĠJohn	Ġjourney	ing	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġhas	Ġleft	Ġthe	Ġbathroom	Ġand	Ġis	Ġnow	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

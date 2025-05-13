@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠWe	Ġknow	Ġfrom	Ġsentence	Ġ	14	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġpreviously	Ġin	Ġthe	Ġschool	Ġor	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	13	).	ĠSince	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġit	's	Ġlikely	Ġthat	Ġshe	Ġwas	Ġin	Ġthe	Ġschool	Ġor	Ġthe	Ġkitchen	Ġbefore	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

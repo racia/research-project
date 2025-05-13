@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠJohn	Ġgave	Ġthe	Ġapple	Ġto	ĠSandra	,	Ġso	ĠSandra	Ġis	Ġcarrying	Ġthe	Ġapple	.	ĠSentence	Ġ	14	Ġonly	Ġmentions	ĠSandra	Ġgoing	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġit	Ġdoesn	't	Ġchange	Ġthe	Ġfact	Ġthat	ĠSandra	Ġis	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġone	<|eot_id|>

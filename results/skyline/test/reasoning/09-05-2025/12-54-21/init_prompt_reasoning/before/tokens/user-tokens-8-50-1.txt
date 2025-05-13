@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-2	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
-3	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
-4	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
-5	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
-6	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠJohn	Ġcarrying	?Ċ

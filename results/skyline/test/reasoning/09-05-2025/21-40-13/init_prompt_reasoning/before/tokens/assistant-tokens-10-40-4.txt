@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	7	Ġstates	Ġthat	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġcinema	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġleft	Ġthe	Ġcinema	Ġafterwards	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

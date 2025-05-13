@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġwas	Ġnot	Ġin	Ġthe	Ġhallway	Ġinitially	.	ĠHowever	,	Ġshe	Ġdid	Ġgo	Ġback	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

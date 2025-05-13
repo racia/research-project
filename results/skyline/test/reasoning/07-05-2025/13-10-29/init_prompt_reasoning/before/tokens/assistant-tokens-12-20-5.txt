@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠJohn	Ġand	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġmeans	ĠDaniel	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

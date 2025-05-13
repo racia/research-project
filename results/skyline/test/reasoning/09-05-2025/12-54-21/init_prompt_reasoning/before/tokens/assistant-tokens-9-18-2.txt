@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	4	,	Ġ"	S	andra	Ġtravelled	Ġto	Ġthe	Ġoffice	",	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġoffice	.	ĠThe	Ġfact	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	5	)	Ġdoes	Ġnot	Ġchange	ĠSandra	's	Ġlocation	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

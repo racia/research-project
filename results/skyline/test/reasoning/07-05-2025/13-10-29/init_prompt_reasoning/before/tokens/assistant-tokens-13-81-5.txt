@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠSandra	Ġwas	Ġthe	Ġgarden	Ġ(	from	Ġprevious	Ġcontext	Ġsentences	).ĊĊ	Answer	:	Ġgarden	<|eot_id|>

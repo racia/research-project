@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġpicking	Ġup	Ġor	Ġcarrying	Ġany	Ġobjects	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġthis	Ġaction	Ġdoes	Ġnot	Ġimply	Ġthat	Ġhe	Ġis	Ġcarrying	Ġany	Ġobjects	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

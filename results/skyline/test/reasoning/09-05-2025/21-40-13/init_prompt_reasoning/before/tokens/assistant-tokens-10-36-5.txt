@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	8	Ġ(	from	Ġprevious	Ġparts	),	ĠMary	Ġtravelled	Ġto	Ġthe	Ġschool	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġleft	Ġthe	Ġschool	.	ĠĊĊ	Answer	:	Ġyes	<|eot_id|>

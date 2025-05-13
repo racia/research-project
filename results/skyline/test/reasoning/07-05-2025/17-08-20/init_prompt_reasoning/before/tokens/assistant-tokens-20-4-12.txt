@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠAntoine	Ġis	Ġtired	Ġ(	context	Ġsentence	Ġ	19	)	Ġand	Ġwent	Ġto	Ġthe	Ġbedroom	Ġ(	context	Ġsentence	Ġ	21	),	Ġit	Ġis	Ġlogical	Ġto	Ġassume	Ġthat	ĠAntoine	Ġgot	Ġthe	Ġpaj	amas	Ġto	Ġwear	Ġto	Ġbed	Ġand	Ġsleep	.ĊĊ	Answer	:	Ġtired	<|eot_id|>

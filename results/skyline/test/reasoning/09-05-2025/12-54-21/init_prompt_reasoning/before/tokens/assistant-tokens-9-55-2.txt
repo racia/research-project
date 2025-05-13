@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠSandra	Ġbeing	Ġin	Ġthe	Ġbathroom	.	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠSandra	Ġmoving	Ġto	Ġthe	Ġbedroom	Ġand	Ġthen	Ġjourney	ing	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

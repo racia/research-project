@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	Ġyesterday	.	ĠThere	Ġis	Ġno	Ġother	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠJulie	Ġwas	Ġat	Ġthe	Ġkitchen	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

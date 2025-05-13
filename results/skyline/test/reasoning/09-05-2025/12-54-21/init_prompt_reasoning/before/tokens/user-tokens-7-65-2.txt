@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-4	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
-5	.	ĠDaniel	Ġgave	Ġthe	Ġmilk	Ġto	ĠJohn	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠDaniel	Ġcarrying	?Ċ

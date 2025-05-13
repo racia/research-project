@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġwas	Ġin	Ġsentence	Ġ	8	,	Ġwhere	Ġit	Ġwas	Ġmentioned	Ġthat	ĠDaniel	Ġand	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

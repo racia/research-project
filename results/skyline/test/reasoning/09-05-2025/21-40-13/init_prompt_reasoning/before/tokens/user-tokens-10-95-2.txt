@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-4	.	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġbedroom	.Ċ
-5	.	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġcinema	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠMary	Ġin	Ġthe	Ġschool	?Ċ

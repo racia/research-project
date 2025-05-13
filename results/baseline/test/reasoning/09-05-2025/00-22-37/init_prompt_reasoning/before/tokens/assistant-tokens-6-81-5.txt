@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġbathroom	.	ĠMary	Ġhas	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġthe	Ġhallway	,	Ġbut	Ġthere	Ġis	Ġno	Ġindication	Ġof	Ġher	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

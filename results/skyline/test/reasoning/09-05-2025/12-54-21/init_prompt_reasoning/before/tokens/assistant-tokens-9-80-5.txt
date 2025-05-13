@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	14	Ġstates	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

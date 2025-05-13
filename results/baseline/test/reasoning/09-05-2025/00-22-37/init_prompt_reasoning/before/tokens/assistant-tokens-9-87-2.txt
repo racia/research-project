@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠWe	Ġknow	Ġthat	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġwe	Ġdon	't	Ġhave	Ġany	Ġinformation	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	Ġin	Ġthe	Ġoffice	.	ĠSince	ĠJohn	's	Ġlocation	Ġis	Ġnot	Ġspecified	,	Ġwe	Ġcan	't	Ġconclude	Ġthat	Ġhe	Ġis	Ġor	Ġisn	't	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

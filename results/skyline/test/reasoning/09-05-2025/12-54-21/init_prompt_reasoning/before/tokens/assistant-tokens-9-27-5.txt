@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	14	Ġmentions	ĠJohn	Ġgoing	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġstill	Ġbeing	Ġin	Ġthe	Ġhallway	Ġor	Ġmoving	Ġback	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

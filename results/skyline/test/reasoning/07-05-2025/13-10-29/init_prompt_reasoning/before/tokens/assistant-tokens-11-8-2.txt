@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovided	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġcurrent	Ġlocation	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġwas	Ġthat	Ġshe	Ġwent	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	2	).	ĠThere	Ġis	Ġno	Ġupdate	Ġabout	ĠMary	's	Ġlocation	Ġsince	Ġthen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

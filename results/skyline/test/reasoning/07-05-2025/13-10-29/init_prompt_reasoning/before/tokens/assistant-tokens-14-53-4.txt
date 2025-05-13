@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġyesterday	,	Ġand	Ġthen	Ġshe	Ġwent	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġbedroom	Ġbefore	Ġcoming	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

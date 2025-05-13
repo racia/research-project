@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	4	,	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġit	Ġimplies	Ġthat	Ġhe	Ġis	Ġnot	Ġin	Ġthe	Ġhallway	.	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġbeing	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

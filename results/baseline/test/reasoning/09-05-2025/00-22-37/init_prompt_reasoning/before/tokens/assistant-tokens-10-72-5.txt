@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġbut	Ġwe	Ġdon	't	Ġhave	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġonly	Ġinformation	Ġwe	Ġhave	Ġis	Ġabout	ĠFred	Ġmoving	Ġto	Ġthe	Ġpark	Ġand	ĠJulie	Ġbeing	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

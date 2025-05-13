@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	8	Ġstates	Ġthat	ĠJohn	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġwas	Ġpreviously	Ġin	Ġthe	Ġbedroom	.	ĠHowever	,	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

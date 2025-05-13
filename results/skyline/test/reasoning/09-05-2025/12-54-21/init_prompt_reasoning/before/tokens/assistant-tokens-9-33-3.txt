@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġor	Ġthe	Ġhallway	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġtalk	Ġabout	ĠJohn	's	Ġmovements	Ġto	Ġthe	Ġbathroom	Ġand	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

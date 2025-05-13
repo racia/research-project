@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-10	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
-11	.	ĠBill	Ġis	Ġin	Ġthe	Ġschool	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠJulie	Ġin	Ġthe	Ġoffice	?Ċ

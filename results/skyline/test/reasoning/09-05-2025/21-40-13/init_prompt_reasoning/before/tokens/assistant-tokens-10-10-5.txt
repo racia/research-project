@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠMary	Ġwas	Ġinitially	Ġin	Ġthe	Ġbedroom	.	ĠHowever	,	Ġsentence	Ġ	14	Ġstates	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

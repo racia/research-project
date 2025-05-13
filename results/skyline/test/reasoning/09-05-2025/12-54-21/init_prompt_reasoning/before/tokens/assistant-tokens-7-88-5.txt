@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠJohn	Ġhanded	Ġthe	Ġmilk	Ġto	ĠDaniel	,	Ġwhich	Ġmeans	ĠJohn	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

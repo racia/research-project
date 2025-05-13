@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-12	.	ĠYesterday	ĠJulie	Ġtravelled	Ġto	Ġthe	Ġschool	.Ċ
-13	.	ĠThis	Ġafternoon	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġpark	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠFred	Ġbefore	Ġthe	Ġkitchen	?Ċ

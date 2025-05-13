@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġkitchen	.	ĠSentence	Ġ	14	Ġstates	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġmention	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

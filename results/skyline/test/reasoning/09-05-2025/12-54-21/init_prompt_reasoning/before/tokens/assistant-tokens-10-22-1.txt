@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġbedroom	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthere	Ġis	Ġno	Ġprevious	Ġinformation	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

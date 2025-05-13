@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġare	Ġabout	ĠDaniel	's	Ġmovements	,	Ġbut	Ġthe	Ġquestion	Ġis	Ġabout	ĠSandra	's	Ġlocation	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠSandra	Ġwas	Ġin	Ġthe	Ġhallway	Ġ(	from	Ġthe	Ġprevious	Ġcontext	Ġsentences	).	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠSandra	's	Ġmovements	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

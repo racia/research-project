@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠFred	Ġbeing	Ġin	Ġthe	Ġkitchen	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġmeans	Ġhe	Ġis	Ġlikely	Ġin	Ġthe	Ġoffice	,	Ġand	ĠJulie	Ġis	Ġalready	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġsuggesting	ĠFred	Ġhas	Ġever	Ġbeen	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

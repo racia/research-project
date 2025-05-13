@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġcarrying	Ġanything	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentence	Ġ"	S	andra	Ġleft	Ġthe	Ġfootball	"	Ġimplies	Ġthat	Ġshe	Ġwas	Ġholding	Ġthe	Ġfootball	Ġpreviously	,	Ġbut	Ġit	Ġdoesn	't	Ġimply	Ġthat	Ġshe	Ġis	Ġcarrying	Ġit	Ġnow	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

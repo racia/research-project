@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
-14	.	ĠBill	Ġis	Ġeither	Ġin	Ġthe	Ġcinema	Ġor	Ġthe	Ġpark	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠBill	Ġin	Ġthe	Ġcinema	?Ċ

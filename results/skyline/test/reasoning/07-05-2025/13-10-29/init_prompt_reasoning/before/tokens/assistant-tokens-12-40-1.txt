@@ -1,1 +1,0 @@
-<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	1	,	ĠJohn	Ġwas	Ġin	Ġthe	Ġbedroom	,	Ġbut	Ġthen	Ġin	Ġsentence	Ġ	2	,	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġwith	ĠMary	.	ĠSo	,	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġgarden	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġjourney	ing	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

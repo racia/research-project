@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠBill	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġlocation	,	Ġwhich	Ġis	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġbedroom	.	ĠSince	ĠBill	Ġis	Ġnot	Ġmentioned	,	Ġwe	Ġcannot	Ġdetermine	Ġhis	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

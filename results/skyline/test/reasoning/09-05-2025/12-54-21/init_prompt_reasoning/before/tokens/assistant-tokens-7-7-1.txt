@@ -1,1 +1,0 @@
-<|start_header_id|>	<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠMary	Ġgot	Ġthe	Ġapple	Ġin	Ġsentence	Ġ	5	,	Ġbut	Ġthen	Ġshe	Ġleft	Ġthe	Ġapple	Ġin	Ġsentence	Ġ	6	,	Ġso	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠBill	's	Ġcurrent	Ġlocation	.	ĠHowever	,	ĠMary	Ġis	Ġin	Ġthe	Ġpark	,	Ġand	ĠFred	Ġtravelled	Ġto	Ġthe	Ġcinema	,	Ġwhich	Ġimplies	Ġthey	Ġare	Ġnot	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġsuggesting	ĠBill	Ġmoved	Ġaway	Ġfrom	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġcarrying	Ġany	Ġobjects	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġand	ĠJohn	's	Ġactions	,	Ġbut	Ġnot	ĠMary	's	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

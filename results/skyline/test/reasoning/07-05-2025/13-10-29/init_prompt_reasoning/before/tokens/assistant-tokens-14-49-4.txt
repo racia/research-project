@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġprevious	Ġlocation	Ġbefore	Ġthe	Ġcinema	.	ĠSentence	Ġ	4	Ġmentioned	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġyesterday	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġmovement	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

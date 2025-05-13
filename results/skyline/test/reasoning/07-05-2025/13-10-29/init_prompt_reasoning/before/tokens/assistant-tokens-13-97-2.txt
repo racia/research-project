@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠDaniel	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	4	)	Ġand	Ġthen	Ġwent	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	5	).	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

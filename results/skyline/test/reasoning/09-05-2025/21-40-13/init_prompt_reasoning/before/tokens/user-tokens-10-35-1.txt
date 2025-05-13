@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠJulie	Ġis	Ġin	Ġthe	Ġschool	.Ċ
-2	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġschool	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠJulie	Ġin	Ġthe	Ġschool	?Ċ

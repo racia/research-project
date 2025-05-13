@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠMary	Ġcarrying	Ġany	Ġobjects	.	ĠThe	Ġprevious	Ġinformation	Ġ(	sentence	Ġ	13	)	Ġstated	Ġthat	ĠMary	Ġis	Ġnot	Ġcarrying	Ġany	Ġobjects	,	Ġand	Ġthe	Ġnew	Ġsentences	Ġ(	15	Ġand	Ġ	16	)	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠJohn	Ġand	ĠDaniel	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

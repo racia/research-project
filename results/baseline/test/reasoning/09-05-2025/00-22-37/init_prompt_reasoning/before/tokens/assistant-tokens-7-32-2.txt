@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	Ġthat	ĠDaniel	Ġhanded	Ġthe	Ġfootball	Ġto	ĠSandra	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġwas	Ġcarrying	Ġthe	Ġfootball	Ġbut	Ġis	Ġno	Ġlonger	Ġcarrying	Ġit	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġhim	Ġpicking	Ġup	Ġor	Ġcarrying	Ġany	Ġother	Ġobject	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

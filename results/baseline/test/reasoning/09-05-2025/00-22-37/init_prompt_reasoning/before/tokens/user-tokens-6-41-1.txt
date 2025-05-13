@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
-2	.	ĠSandra	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
-3	.	ĠDaniel	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
-4	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠJohn	Ġin	Ġthe	Ġbathroom	?Ċ

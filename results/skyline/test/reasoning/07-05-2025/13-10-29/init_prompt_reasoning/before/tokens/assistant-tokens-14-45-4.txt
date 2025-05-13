@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġcinema	.	ĠAccording	Ġto	Ġsentence	Ġ	6	,	ĠThis	Ġafternoon	ĠJulie	Ġwent	Ġto	Ġthe	Ġcinema	.	ĠBefore	Ġthat	,	Ġaccording	Ġto	Ġsentence	Ġ	7	,	ĠJulie	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.	ĠTherefore	,	ĠJulie	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

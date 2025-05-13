@@ -1,0 +1,76 @@
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/data/DataLoader.py:394: UserWarning: The number of parts does not match the number of loaded data: 2100 != 1000
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:06<00:20,  6.85s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:09<00:08,  4.40s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:12<00:03,  3.57s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:13<00:00,  2.65s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:13<00:00,  3.34s/it]
+Loading checkpoint shards:   0%|          | 0/30 [00:00<?, ?it/s]Loading checkpoint shards:   3%|▎         | 1/30 [00:02<01:13,  2.52s/it]Loading checkpoint shards:   7%|▋         | 2/30 [00:05<01:13,  2.62s/it]Loading checkpoint shards:  10%|█         | 3/30 [00:08<01:13,  2.71s/it]Loading checkpoint shards:  13%|█▎        | 4/30 [00:10<01:11,  2.74s/it]Loading checkpoint shards:  17%|█▋        | 5/30 [00:13<01:07,  2.70s/it]Loading checkpoint shards:  20%|██        | 6/30 [00:16<01:04,  2.68s/it]Loading checkpoint shards:  23%|██▎       | 7/30 [00:18<01:01,  2.67s/it]Loading checkpoint shards:  27%|██▋       | 8/30 [00:21<00:59,  2.70s/it]Loading checkpoint shards:  30%|███       | 9/30 [00:24<00:57,  2.72s/it]Loading checkpoint shards:  33%|███▎      | 10/30 [00:26<00:53,  2.70s/it]Loading checkpoint shards:  37%|███▋      | 11/30 [00:29<00:50,  2.68s/it]Loading checkpoint shards:  40%|████      | 12/30 [00:32<00:47,  2.66s/it]Loading checkpoint shards:  43%|████▎     | 13/30 [00:34<00:45,  2.69s/it]Loading checkpoint shards:  47%|████▋     | 14/30 [00:37<00:43,  2.71s/it]Loading checkpoint shards:  50%|█████     | 15/30 [00:40<00:40,  2.68s/it]Loading checkpoint shards:  53%|█████▎    | 16/30 [00:42<00:37,  2.67s/it]Loading checkpoint shards:  57%|█████▋    | 17/30 [00:45<00:34,  2.65s/it]Loading checkpoint shards:  60%|██████    | 18/30 [00:48<00:32,  2.68s/it]Loading checkpoint shards:  63%|██████▎   | 19/30 [00:51<00:29,  2.70s/it]Loading checkpoint shards:  67%|██████▋   | 20/30 [00:53<00:26,  2.68s/it]Loading checkpoint shards:  70%|███████   | 21/30 [00:56<00:24,  2.68s/it]Loading checkpoint shards:  73%|███████▎  | 22/30 [01:02<00:28,  3.60s/it]Loading checkpoint shards:  77%|███████▋  | 23/30 [01:05<00:24,  3.52s/it]Loading checkpoint shards:  80%|████████  | 24/30 [01:08<00:19,  3.31s/it]Loading checkpoint shards:  83%|████████▎ | 25/30 [01:11<00:15,  3.14s/it]Loading checkpoint shards:  87%|████████▋ | 26/30 [01:13<00:11,  2.98s/it]Loading checkpoint shards:  90%|█████████ | 27/30 [01:16<00:08,  2.88s/it]Loading checkpoint shards:  93%|█████████▎| 28/30 [01:19<00:05,  2.85s/it]Loading checkpoint shards:  97%|█████████▋| 29/30 [01:21<00:02,  2.83s/it]Loading checkpoint shards: 100%|██████████| 30/30 [01:23<00:00,  2.46s/it]Loading checkpoint shards: 100%|██████████| 30/30 [01:23<00:00,  2.78s/it]
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:242: UserWarning: Chat ids is none
+  warnings.warn("Chat ids is none")
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:243: UserWarning: DEBUG: chunks
+[{'content': '*TASK*\nHere are the context sentences:\n', 'tokens': ['*T', 'ASK', '*Ċ', 'Here', 'Ġare', 'Ġthe', 'Ġcontext', 'Ġsentences', ':Ċ'], 'ids': [61734, 7536, 5736, 8586, 527, 279, 2317, 23719, 512], 'sent_spans': (0, 9)}, {'tokens': ['1', '.', 'ĠJohn', 'Ġtravelled', 'Ġto', 'Ġthe', 'Ġhallway', '.Ċ'], 'ids': [16, 13, 3842, 46368, 311, 279, 51902, 627], 'sent_spans': (0, 8), 'type': 'cont'}, {'tokens': ['2', '.', 'ĠMary', 'Ġjourney', 'ed', 'Ġto', 'Ġthe', 'Ġbathroom', '.Ċ'], 'ids': [17, 13, 10455, 11879, 291, 311, 279, 15197, 627], 'sent_spans': (8, 17), 'type': 'cont'}, {'content': '', 'tokens': [], 'ids': [], 'sent_spans': ()}]
+  warnings.warn(f"DEBUG: chunks\n{chunks}")
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:243: UserWarning: DEBUG: chunks
+[{'content': 'Now, answer the following question:\n', 'tokens': ['Now', ',', 'Ġanswer', 'Ġthe', 'Ġfollowing', 'Ġquestion', ':Ċ'], 'ids': [7184, 11, 4320, 279, 2768, 3488, 512], 'sent_spans': (0, 7)}, {'tokens': ['Where', 'Ġis', 'ĠJohn', '?Ċ'], 'ids': [9241, 374, 3842, 5380], 'sent_spans': (0, 4), 'type': 'ques'}, {'content': '', 'tokens': [], 'ids': [], 'sent_spans': ()}]
+  warnings.warn(f"DEBUG: chunks\n{chunks}")
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+`torch.nn.functional.scaled_dot_product_attention` does not support `output_attentions=True`. Falling back to eager attention. This warning can be removed using the argument `attn_implementation="eager"` when loading the model.
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:243: UserWarning: DEBUG: chunks
+[{'content': '*TASK*\nHere are the context sentences:\n', 'tokens': ['*T', 'ASK', '*Ċ', 'Here', 'Ġare', 'Ġthe', 'Ġcontext', 'Ġsentences', ':Ċ'], 'ids': [61734, 7536, 5736, 8586, 527, 279, 2317, 23719, 512], 'sent_spans': (0, 9)}, {'tokens': ['4', '.', 'ĠDaniel', 'Ġwent', 'Ġback', 'Ġto', 'Ġthe', 'Ġbathroom', '.Ċ'], 'ids': [19, 13, 15469, 4024, 1203, 311, 279, 15197, 627], 'sent_spans': (0, 9), 'type': 'cont'}, {'tokens': ['5', '.', 'ĠJohn', 'Ġmoved', 'Ġto', 'Ġthe', 'Ġbedroom', '.Ċ'], 'ids': [20, 13, 3842, 7882, 311, 279, 14150, 627], 'sent_spans': (9, 17), 'type': 'cont'}, {'content': '', 'tokens': [], 'ids': [], 'sent_spans': ()}]
+  warnings.warn(f"DEBUG: chunks\n{chunks}")
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:243: UserWarning: DEBUG: chunks
+[{'content': 'Now, answer the following question:\n', 'tokens': ['Now', ',', 'Ġanswer', 'Ġthe', 'Ġfollowing', 'Ġquestion', ':Ċ'], 'ids': [7184, 11, 4320, 279, 2768, 3488, 512], 'sent_spans': (0, 7)}, {'tokens': ['Where', 'Ġis', 'ĠMary', '?Ċ'], 'ids': [9241, 374, 10455, 5380], 'sent_spans': (0, 4), 'type': 'ques'}, {'content': '', 'tokens': [], 'ids': [], 'sent_spans': ()}]
+  warnings.warn(f"DEBUG: chunks\n{chunks}")
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:243: UserWarning: DEBUG: chunks
+[{'content': '*TASK*\nHere are the context sentences:\n', 'tokens': ['*T', 'ASK', '*Ċ', 'Here', 'Ġare', 'Ġthe', 'Ġcontext', 'Ġsentences', ':Ċ'], 'ids': [61734, 7536, 5736, 8586, 527, 279, 2317, 23719, 512], 'sent_spans': (0, 9)}, {'tokens': ['7', '.', 'ĠJohn', 'Ġwent', 'Ġto', 'Ġthe', 'Ġhallway', '.Ċ'], 'ids': [22, 13, 3842, 4024, 311, 279, 51902, 627], 'sent_spans': (0, 8), 'type': 'cont'}, {'tokens': ['8', '.', 'ĠSandra', 'Ġjourney', 'ed', 'Ġto', 'Ġthe', 'Ġkitchen', '.Ċ'], 'ids': [23, 13, 56786, 11879, 291, 311, 279, 9979, 627], 'sent_spans': (8, 17), 'type': 'cont'}, {'content': '', 'tokens': [], 'ids': [], 'sent_spans': ()}]
+  warnings.warn(f"DEBUG: chunks\n{chunks}")
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:243: UserWarning: DEBUG: chunks
+[{'content': 'Now, answer the following question:\n', 'tokens': ['Now', ',', 'Ġanswer', 'Ġthe', 'Ġfollowing', 'Ġquestion', ':Ċ'], 'ids': [7184, 11, 4320, 279, 2768, 3488, 512], 'sent_spans': (0, 7)}, {'tokens': ['Where', 'Ġis', 'ĠSandra', '?Ċ'], 'ids': [9241, 374, 56786, 5380], 'sent_spans': (0, 4), 'type': 'ques'}, {'content': '', 'tokens': [], 'ids': [], 'sent_spans': ()}]
+  warnings.warn(f"DEBUG: chunks\n{chunks}")
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:243: UserWarning: DEBUG: chunks
+[{'content': '*TASK*\nHere are the context sentences:\n', 'tokens': ['*T', 'ASK', '*Ċ', 'Here', 'Ġare', 'Ġthe', 'Ġcontext', 'Ġsentences', ':Ċ'], 'ids': [61734, 7536, 5736, 8586, 527, 279, 2317, 23719, 512], 'sent_spans': (0, 9)}, {'tokens': ['10', '.', 'ĠSandra', 'Ġtravelled', 'Ġto', 'Ġthe', 'Ġhallway', '.Ċ'], 'ids': [605, 13, 56786, 46368, 311, 279, 51902, 627], 'sent_spans': (0, 8), 'type': 'cont'}, {'tokens': ['11', '.', 'ĠJohn', 'Ġwent', 'Ġto', 'Ġthe', 'Ġgarden', '.Ċ'], 'ids': [806, 13, 3842, 4024, 311, 279, 13863, 627], 'sent_spans': (8, 16), 'type': 'cont'}, {'content': '', 'tokens': [], 'ids': [], 'sent_spans': ()}]
+  warnings.warn(f"DEBUG: chunks\n{chunks}")
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/running_script.py", line 294, in run_setting
+    task_result = setting.iterate_task(
+  File "/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/settings/Setting.py", line 220, in iterate_task
+    decoded_output, eval_dict, interpretability = self.apply_setting(
+  File "/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/settings/feedback/Feedback.py", line 324, in apply_setting
+    return decoded_output, self.curr_eval_dict, self.get_after_interpretability()
+  File "/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/settings/Setting.py", line 93, in get_after_interpretability
+    output_tensor = self.model.model(
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/accelerate/hooks.py", line 165, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/transformers/models/llama/modeling_llama.py", line 842, in forward
+    outputs = self.model(
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/transformers/models/llama/modeling_llama.py", line 594, in forward
+    layer_outputs = decoder_layer(
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/accelerate/hooks.py", line 165, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/transformers/models/llama/modeling_llama.py", line 336, in forward
+    hidden_states, self_attn_weights = self.self_attn(
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/accelerate/hooks.py", line 165, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/transformers/models/llama/modeling_llama.py", line 275, in forward
+    query_states, key_states = apply_rotary_pos_emb(query_states, key_states, cos, sin)
+  File "/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/transformers/models/llama/modeling_llama.py", line 173, in apply_rotary_pos_emb
+    q_embed = (q * cos) + (rotate_half(q) * sin)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 1 has a total capacity of 79.19 GiB of which 12.62 MiB is free. Including non-PyTorch memory, this process has 79.14 GiB memory in use. Of the allocated memory 78.54 GiB is allocated by PyTorch, and 19.66 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

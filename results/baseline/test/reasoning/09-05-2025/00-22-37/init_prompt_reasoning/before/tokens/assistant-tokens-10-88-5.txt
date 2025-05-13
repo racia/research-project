@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġcinema	,	Ġbut	Ġdo	Ġnot	Ġmention	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	ĠNo	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġcarrying	Ġanything	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġleaving	Ġthe	Ġapple	,	Ġbut	Ġnot	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

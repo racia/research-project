@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	1	Ġmentions	ĠSandra	Ġtravelling	Ġto	Ġthe	Ġbedroom	,	Ġso	Ġit	Ġis	Ġpossible	Ġthat	Ġshe	Ġis	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

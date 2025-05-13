@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-9	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġfootball	Ġthere	.Ċ
-10	.	ĠMary	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠJohn	Ġin	Ġthe	Ġgarden	?Ċ

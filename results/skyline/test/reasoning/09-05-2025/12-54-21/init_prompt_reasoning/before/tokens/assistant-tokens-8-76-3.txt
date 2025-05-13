@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	Ġin	Ġsentence	Ġ	11	,	Ġso	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġit	.	ĠThen	,	Ġshe	Ġpicked	Ġup	Ġthe	Ġapple	Ġin	Ġsentence	Ġ	12	,	Ġso	Ġshe	Ġis	Ġnow	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġapple	<|eot_id|>

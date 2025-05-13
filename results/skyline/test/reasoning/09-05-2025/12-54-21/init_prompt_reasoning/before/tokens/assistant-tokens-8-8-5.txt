@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġnew	Ġcontext	Ġsentences	Ġ(	17	Ġand	Ġ	18	)	Ġprovide	Ġinformation	Ġabout	ĠMary	Ġand	ĠJohn	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġchange	Ġthe	Ġfact	Ġthat	ĠSandra	Ġdiscarded	Ġthe	Ġmilk	Ġin	Ġsentence	Ġ	12	Ġand	Ġis	Ġnot	Ġcarrying	Ġanything	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

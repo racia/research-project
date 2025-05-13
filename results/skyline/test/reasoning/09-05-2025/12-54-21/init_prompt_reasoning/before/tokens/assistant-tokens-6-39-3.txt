@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	4	,	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġhas	Ġleft	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

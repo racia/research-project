@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	14	Ġstates	Ġthat	ĠJohn	Ġis	Ġnot	Ġin	Ġthe	Ġhallway	,	Ġwhich	Ġprovides	Ġdirect	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

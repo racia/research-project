@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠDaniel	's	Ġlocation	.	ĠSentence	Ġ	10	Ġmentions	ĠJohn	Ġtravelling	Ġto	Ġthe	Ġgarden	,	Ġand	Ġsentence	Ġ	11	Ġmentions	ĠJohn	Ġbeing	Ġin	Ġthe	Ġoffice	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠDaniel	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

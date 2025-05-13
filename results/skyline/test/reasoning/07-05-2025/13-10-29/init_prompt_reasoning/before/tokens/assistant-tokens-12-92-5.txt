@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	14	,	Ġwe	Ġknow	Ġthat	ĠDaniel	Ġand	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠDaniel	Ġmoving	Ġto	Ġa	Ġdifferent	Ġlocation	Ġafter	Ġthat	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

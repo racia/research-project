@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	ĠNo	<|eot_id|>

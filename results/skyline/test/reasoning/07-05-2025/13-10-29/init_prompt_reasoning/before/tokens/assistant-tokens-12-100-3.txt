@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠSandra	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.	ĠHowever	,	Ġin	Ġsentence	Ġ	8	,	ĠSandra	Ġand	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġmoved	Ġfrom	Ġthe	Ġoffice	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

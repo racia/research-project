@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġcarrying	Ġanything	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġand	ĠDaniel	's	Ġmovements	,	Ġbut	Ġnot	ĠJohn	's	Ġactions	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

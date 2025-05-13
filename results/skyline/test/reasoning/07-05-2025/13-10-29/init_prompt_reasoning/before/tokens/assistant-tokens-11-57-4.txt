@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠJohn	Ġfirst	Ġwent	Ġto	Ġthe	Ġbathroom	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġgarden	.	ĠTherefore	,	Ġhis	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

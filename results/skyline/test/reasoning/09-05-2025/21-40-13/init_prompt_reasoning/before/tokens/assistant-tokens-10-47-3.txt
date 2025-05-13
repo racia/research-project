@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġthat	Ġsuggests	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	.	ĠSentence	Ġ	8	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

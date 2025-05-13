@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠY	ann	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlogical	Ġto	Ġassume	Ġthat	Ġhe	Ġwent	Ġthere	Ġbecause	Ġhe	Ġwas	Ġtired	.	ĠThis	Ġis	Ġbased	Ġon	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġthat	Ġstated	Ġ"	Y	ann	Ġis	Ġtired	".ĊĊ	Answer	:	Ġtired	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJohn	's	Ġcarrying	Ġobjects	,	Ġand	Ġthe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġtaking	Ġor	Ġcarrying	Ġany	Ġobjects	Ġin	Ġthe	Ġgiven	Ġsentences	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

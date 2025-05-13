@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.	ĠSince	ĠSandra	Ġis	Ġmentioned	Ġas	Ġmoving	Ġto	Ġthe	Ġhallway	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

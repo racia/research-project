@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJason	Ġgetting	Ġpaj	amas	Ġdue	Ġto	Ġbeing	Ġtired	Ġor	Ġany	Ġother	Ġreason	.	ĠThe	Ġprevious	Ġcontext	Ġsentences	Ġmentioned	ĠJason	Ġbeing	Ġtired	Ġand	Ġgoing	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġit	Ġdidn	't	Ġmention	Ġgetting	Ġpaj	amas	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

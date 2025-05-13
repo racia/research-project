@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	Ġwith	ĠDaniel	Ġ(	sentence	Ġ	10	),	Ġbut	Ġthen	Ġhe	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġwith	ĠMary	Ġ(	sentence	Ġ	11	).	ĠTherefore	,	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	13	Ġstates	Ġthat	ĠJulie	Ġis	Ġin	Ġthe	Ġkitchen	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġbeing	Ġin	Ġthe	Ġpark	.	ĠPreviously	,	Ġwe	Ġknew	Ġthat	ĠJulie	Ġwas	Ġin	Ġthe	Ġschool	,	Ġbut	Ġnow	Ġshe	Ġis	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

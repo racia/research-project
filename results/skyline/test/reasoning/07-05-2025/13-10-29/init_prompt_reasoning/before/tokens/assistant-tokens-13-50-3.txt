@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	7	)	Ġand	Ġthen	Ġjourney	ed	Ġto	Ġthe	Ġhallway	Ġ(	sentence	Ġ	8	).	ĠTherefore	,	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġcarrying	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġdropping	Ġthe	Ġfootball	,	Ġwhich	Ġimplies	Ġshe	Ġwas	Ġcarrying	Ġit	.	ĠHowever	,	Ġsince	Ġshe	Ġdropped	Ġit	,	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	10	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġwith	ĠDaniel	,	Ġbut	Ġthen	Ġfrom	Ġsentence	Ġ	11	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġwith	ĠJohn	,	Ġso	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

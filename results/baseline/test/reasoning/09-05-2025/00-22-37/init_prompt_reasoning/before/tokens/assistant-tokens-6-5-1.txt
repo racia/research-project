@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġif	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġand	Ġthe	Ġcontext	Ġsentence	Ġ	2	Ġstates	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

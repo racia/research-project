@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	's	Ġactions	Ġand	Ġlocations	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

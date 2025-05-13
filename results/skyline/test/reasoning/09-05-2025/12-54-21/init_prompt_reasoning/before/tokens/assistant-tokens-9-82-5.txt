@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġbedroom	.	ĠThe	Ġcontext	Ġsentence	Ġ"	Mary	Ġis	Ġin	Ġthe	Ġoffice	"	Ġ(	sentence	Ġ	14	)	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġoffice	,	Ġnot	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

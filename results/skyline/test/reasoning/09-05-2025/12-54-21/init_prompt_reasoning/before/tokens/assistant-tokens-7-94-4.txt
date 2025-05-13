@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	10	,	ĠJohn	Ġpassed	Ġthe	Ġmilk	Ġto	ĠSandra	,	Ġwhich	Ġimplies	Ġshe	Ġis	Ġcarrying	Ġit	.	ĠSentence	Ġ	11	Ġis	Ġabout	ĠMary	Ġand	Ġdoes	Ġnot	Ġaffect	ĠSandra	Ġor	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġone	<|eot_id|>

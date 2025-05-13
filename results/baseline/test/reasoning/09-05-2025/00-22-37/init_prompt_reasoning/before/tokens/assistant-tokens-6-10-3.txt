@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġbathroom	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSent	ences	Ġ	7	Ġand	Ġ	8	Ġmention	ĠMary	Ġgoing	Ġto	Ġthe	Ġkitchen	Ġand	Ġdisc	arding	Ġthe	Ġmilk	,	Ġbut	Ġnot	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	14	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġoffice	.	ĠThis	Ġcontrad	icts	Ġsentence	Ġ	13	,	Ġwhich	Ġsays	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.	ĠHowever	,	Ġsince	Ġsentence	Ġ	14	Ġis	Ġmore	Ġrecent	Ġand	Ġprovides	Ġmore	Ġspecific	Ġinformation	,	Ġwe	Ġcan	Ġconclude	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

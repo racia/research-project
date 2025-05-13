@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAlthough	ĠSum	it	's	Ġinitial	Ġstate	Ġwas	Ġtired	,	ĠSum	it	Ġtravelled	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġis	Ġa	Ġplace	Ġwhere	Ġpeople	Ġusually	Ġgo	Ġwhen	Ġthey	Ġare	Ġthirsty	Ġor	Ġhungry	.	ĠSince	ĠSum	it	Ġgrabbed	Ġthe	Ġmilk	Ġin	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlogical	Ġto	Ġassume	Ġthat	ĠSum	it	Ġgot	Ġthe	Ġmilk	Ġbecause	Ġhe	Ġis	Ġthirsty	.ĊĊ	Answer	:	Ġthirsty	<|eot_id|>

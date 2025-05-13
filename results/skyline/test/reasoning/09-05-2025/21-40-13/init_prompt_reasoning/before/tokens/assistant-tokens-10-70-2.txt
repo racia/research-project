@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġbedroom	.	ĠIn	Ġfact	,	Ġsentence	Ġ	5	Ġstates	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

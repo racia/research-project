@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJessica	Ġis	Ġa	Ġmouse	Ġ(	sentence	Ġ	6	).	ĠAccording	Ġto	Ġsentence	Ġ	5	,	ĠM	ice	Ġare	Ġafraid	Ġof	Ġwolves	.	ĠTherefore	,	ĠJessica	Ġis	Ġafraid	Ġof	Ġwolves	.ĊĊ	Answer	:	Ġwolves	<|eot_id|>

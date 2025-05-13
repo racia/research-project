@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġcurrent	Ġlocation	.	ĠThe	Ġlast	Ġmention	Ġof	ĠMary	Ġwas	Ġin	Ġsentence	Ġ	5	,	Ġwhere	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġhallway	Ġwith	ĠDaniel	.	ĠThere	Ġis	Ġno	Ġupdate	Ġon	ĠMary	's	Ġlocation	Ġafter	Ġthat	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

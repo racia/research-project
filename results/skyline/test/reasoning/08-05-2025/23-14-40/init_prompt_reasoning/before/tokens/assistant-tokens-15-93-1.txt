@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	2	,	Ġ"	M	ice	Ġare	Ġafraid	Ġof	Ġwolves	."	ĠEmily	Ġis	Ġa	Ġmouse	Ġ(	sentence	Ġ	4	),	Ġso	ĠEmily	Ġis	Ġafraid	Ġof	Ġwolves	.ĊĊ	Answer	:	Ġwolf	<|eot_id|>

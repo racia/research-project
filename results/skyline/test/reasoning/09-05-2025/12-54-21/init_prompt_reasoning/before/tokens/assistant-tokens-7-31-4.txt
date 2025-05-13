@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠĊ	In	Ġsentence	Ġ	13	,	ĠJohn	Ġhanded	Ġthe	Ġfootball	Ġto	ĠSandra	,	Ġso	ĠJohn	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġfootball	.	ĠThe	Ġnew	Ġcontext	Ġsentences	Ġ(	16	Ġand	Ġ	17	)	Ġdo	Ġnot	Ġmention	ĠJohn	Ġreceiving	Ġor	Ġpicking	Ġup	Ġany	Ġobjects	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

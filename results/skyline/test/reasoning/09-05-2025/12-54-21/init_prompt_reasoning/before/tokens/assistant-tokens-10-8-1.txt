@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġschool	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġgoing	Ġto	Ġthe	Ġoffice	Ġand	ĠBill	Ġmoving	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

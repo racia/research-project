@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovided	Ġdo	Ġnot	Ġmention	ĠSandra	's	Ġcurrent	Ġlocation	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġwas	Ġthat	Ġit	Ġwas	Ġnot	Ġspecified	Ġ(	from	Ġsentences	Ġ	10	Ġand	Ġ	11	).ĊĊ	Answer	:	Ġnot	Ġspecified	<|eot_id|>

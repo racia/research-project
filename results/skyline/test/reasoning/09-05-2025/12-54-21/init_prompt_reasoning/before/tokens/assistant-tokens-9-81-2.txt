@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	1	Ġstated	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġkitchen	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠMary	's	Ġlocation	Ġhas	Ġchanged	.ĊĊ	Answer	:	Ġno	<|eot_id|>

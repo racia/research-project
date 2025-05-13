@@ -1,1 +1,0 @@
-<|start_header_id|>	<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġtraveling	Ġto	Ġthe	Ġbathroom	Ġand	Ġthen	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġbeing	Ġin	Ġthe	Ġhallway	.	ĠĊĊ	Answer	:	Ġno	<|eot_id|>

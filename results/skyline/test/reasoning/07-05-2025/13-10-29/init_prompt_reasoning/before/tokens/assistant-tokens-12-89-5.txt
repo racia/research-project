@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġcontext	Ġsentence	Ġ	14	,	Ġit	Ġis	Ġstated	Ġthat	ĠSandra	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.	ĠThis	Ġimplies	Ġthat	ĠSandra	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġhallway	,	Ġoverriding	Ġher	Ġprevious	Ġlocation	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

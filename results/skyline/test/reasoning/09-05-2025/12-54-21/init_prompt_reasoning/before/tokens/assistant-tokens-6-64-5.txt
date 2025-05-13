@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	13	Ġmentioned	Ġthat	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġleaving	Ġthe	Ġbathroom	.	ĠĊĊ	Answer	:	Ġyes	<|eot_id|>

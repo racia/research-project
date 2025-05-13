@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġthe	Ġcontext	Ġsentences	,	Ġwe	Ġknow	Ġthat	ĠSandra	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġ(	sentence	Ġ	8	).	ĠTherefore	,	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

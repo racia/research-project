@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġpicking	Ġup	Ġor	Ġholding	Ġany	Ġobject	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	's	Ġactions	,	Ġbut	Ġnot	ĠSandra	's	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

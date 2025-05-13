@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠSandra	Ġgoing	Ġto	Ġthe	Ġhallway	Ġand	ĠDaniel	Ġputting	Ġdown	Ġthe	Ġfootball	Ġthere	Ġ(	in	Ġthe	Ġhallway	),	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġmoving	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	Ġgoing	Ġto	Ġthe	Ġbedroom	.	ĠĊĊ	Answer	:	Ġno	<|eot_id|>

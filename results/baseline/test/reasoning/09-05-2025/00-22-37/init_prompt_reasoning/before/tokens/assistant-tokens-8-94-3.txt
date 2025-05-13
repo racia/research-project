@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	8	Ġmentions	Ġthat	ĠMary	Ġ"	took	Ġthe	Ġfootball	Ġthere	",	Ġimplying	Ġthat	Ġshe	Ġis	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

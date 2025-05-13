@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠJohn	Ġgrabbing	Ġor	Ġcarrying	Ġanything	Ġin	Ġsentences	Ġ	19	Ġand	Ġ	20	,	Ġwhich	Ġare	Ġabout	ĠMary	's	Ġand	ĠSandra	's	Ġmovements	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠJohn	Ġcarrying	Ġsomething	Ġwas	Ġin	Ġsentence	Ġ	17	,	Ġwhere	ĠJohn	Ġtook	Ġthe	Ġfootball	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

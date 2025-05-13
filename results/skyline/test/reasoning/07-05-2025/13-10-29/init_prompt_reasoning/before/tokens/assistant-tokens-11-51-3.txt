@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovided	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġcurrent	Ġlocation	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠMary	Ġwas	Ġthe	Ġhallway	Ġ(	from	Ġprevious	Ġcontext	Ġsentences	).	ĠHowever	,	Ġthe	Ġcurrent	Ġcontext	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġmovements	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	33	Ġmentions	Ġthat	ĠSandra	Ġdiscarded	Ġthe	Ġapple	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġwas	Ġpreviously	Ġholding	Ġthe	Ġapple	.	ĠSince	ĠSandra	Ġdiscarded	Ġit	,	ĠDaniel	Ġmust	Ġhave	Ġgrabbed	Ġit	,	Ġimplying	Ġthat	ĠDaniel	Ġis	Ġnow	Ġholding	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġone	<|eot_id|>

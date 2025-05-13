@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠDaniel	Ġgoing	Ġto	Ġthe	Ġbedroom	Ġor	Ġbeing	Ġin	Ġthe	Ġbedroom	.	ĠThe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġand	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.	ĠThere	Ġis	Ġno	Ġconnection	Ġbetween	ĠDaniel	Ġand	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠMary	Ġwas	Ġlast	Ġmentioned	Ġto	Ġbe	Ġwith	ĠDaniel	,	Ġgoing	Ġto	Ġthe	Ġgarden	Ġin	Ġsentence	Ġ	2	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

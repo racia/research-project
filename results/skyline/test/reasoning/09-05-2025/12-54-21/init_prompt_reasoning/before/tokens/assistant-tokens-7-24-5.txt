@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	21	,	ĠSandra	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	,	Ġso	ĠMary	Ġis	Ġcarrying	Ġthe	Ġapple	.	ĠThen	,	Ġin	Ġsentence	Ġ	22	,	ĠMary	Ġdropped	Ġthe	Ġapple	,	Ġso	ĠMary	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠY	ann	Ġwent	Ġto	Ġthe	Ġbedroom	Ġbecause	ĠY	ann	Ġwas	Ġtired	,	Ġand	Ġbased	Ġon	Ġthe	Ġcontext	Ġsentences	Ġprovided	Ġearlier	,	Ġwhen	Ġsomeone	Ġis	Ġtired	,	Ġthey	Ġgo	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġtired	<|eot_id|>

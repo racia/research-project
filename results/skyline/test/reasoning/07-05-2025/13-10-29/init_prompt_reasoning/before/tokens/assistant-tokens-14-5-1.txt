@@ -1,1 +1,0 @@
-<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	2	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġschool	Ġyesterday	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	1	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġcoming	Ġback	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

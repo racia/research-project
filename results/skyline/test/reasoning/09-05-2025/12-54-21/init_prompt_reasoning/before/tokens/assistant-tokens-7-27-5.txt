@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	14	,	ĠJohn	Ġpassed	Ġthe	Ġapple	Ġto	ĠDaniel	,	Ġso	ĠJohn	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

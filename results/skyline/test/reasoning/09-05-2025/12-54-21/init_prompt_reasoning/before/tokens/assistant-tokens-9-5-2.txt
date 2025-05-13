@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	5	,	Ġ"	Mary	Ġis	Ġin	Ġthe	Ġhallway	",	Ġwhich	Ġdirectly	Ġstates	ĠMary	's	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

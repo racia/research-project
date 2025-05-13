@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	,	Ġand	Ġwe	Ġhave	Ġone	Ġsentence	Ġthat	Ġprovides	Ġinformation	Ġabout	Ġher	Ġmovement	.	ĠSentence	Ġ	4	Ġstates	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġarrived	Ġat	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

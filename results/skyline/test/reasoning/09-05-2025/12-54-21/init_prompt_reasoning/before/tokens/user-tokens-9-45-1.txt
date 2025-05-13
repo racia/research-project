@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġkitchen	.Ċ
-2	.	ĠDaniel	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġhallway	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠDaniel	Ġin	Ġthe	Ġhallway	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠSandra	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠThey	Ġonly	Ġmention	ĠJohn	Ġgoing	Ġback	Ġto	Ġthe	Ġgarden	Ġand	ĠSandra	Ġgoing	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġnot	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠSentence	Ġ	1	Ġonly	Ġmentions	Ġthe	Ġpark	Ġor	Ġthe	Ġbedroom	,	Ġand	Ġsentence	Ġ	2	Ġis	Ġabout	ĠFred	's	Ġjourney	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġdoes	Ġnot	Ġrelate	Ġto	ĠMary	's	Ġlocation	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠMary	Ġis	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	ĠNo	<|eot_id|>

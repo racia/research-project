@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovided	Ġ(	6	Ġand	Ġ	7	)	Ġare	Ġabout	ĠMary	,	Ġbut	Ġthe	Ġquestion	Ġis	Ġabout	ĠJulie	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġkitchen	Ġin	Ġthese	Ġsentences	.	ĠWe	Ġneed	Ġto	Ġrefer	Ġto	Ġthe	Ġprevious	Ġcontext	Ġsentences	Ġ(	1	-	4	)	Ġto	Ġfind	Ġthe	Ġanswer	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

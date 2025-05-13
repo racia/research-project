@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġ(	from	Ġprevious	Ġcontext	)	Ġstated	Ġthat	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	Ġleaving	Ġthe	Ġoffice	.	ĠĊĊ	Answer	:	Ġyes	<|eot_id|>

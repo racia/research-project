@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	8	,	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.	ĠTherefore	,	ĠMary	Ġis	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

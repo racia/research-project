@@ -1,1 +1,0 @@
-<|start_header_id|>	<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	1	,	Ġwe	Ġknow	ĠMary	Ġand	ĠJohn	Ġwere	Ġin	Ġthe	Ġgarden	.	ĠHowever	,	Ġsentence	Ġ	2	Ġstates	Ġthat	ĠSandra	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġmeans	ĠJohn	Ġleft	Ġthe	Ġgarden	Ġand	Ġis	Ġnow	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

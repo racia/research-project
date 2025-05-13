@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠBill	's	Ġlocation	Ġin	Ġthe	Ġcinema	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	13	Ġstates	Ġthat	ĠBill	Ġtravelled	Ġto	Ġthe	Ġschool	,	Ġand	Ġsentence	Ġ	14	Ġmentions	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġschool	,	Ġbut	Ġneither	Ġsentence	Ġmentions	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġno	<|eot_id|>

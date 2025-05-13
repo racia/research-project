@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġdirect	Ġinformation	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	.	ĠSentence	Ġ	7	Ġmentions	Ġthat	Ġ"	Yesterday	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġcinema	",	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġinformation	Ġabout	ĠFred	's	Ġlocation	Ġimmediately	Ġbefore	Ġmoving	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

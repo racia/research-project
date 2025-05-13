@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠSandra	Ġbeing	Ġin	Ġthe	Ġbathroom	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġbeing	Ġin	Ġthe	Ġhallway	Ġand	ĠJohn	Ġmoving	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.ĊĊ	Answer	:	Ġunknown	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	13	Ġstates	Ġthat	ĠDaniel	Ġis	Ġin	Ġthe	Ġbathroom	,	Ġwhich	Ġis	Ġa	Ġdifferent	Ġlocation	Ġfrom	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġsuggesting	Ġthat	ĠDaniel	Ġis	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

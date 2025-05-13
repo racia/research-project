@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThey	Ġonly	Ġmention	ĠDaniel	's	Ġlocation	Ġin	Ġthe	Ġkitchen	Ġand	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

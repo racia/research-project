@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġpossible	Ġlocations	.	ĠSentence	Ġ	14	Ġstates	Ġthat	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġkitchen	.	ĠTherefore	,	Ġwe	Ġcannot	Ġconclude	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

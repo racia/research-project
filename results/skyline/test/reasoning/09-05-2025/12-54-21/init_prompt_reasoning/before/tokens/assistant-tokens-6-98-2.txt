@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	5	,	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġhas	Ġmoved	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

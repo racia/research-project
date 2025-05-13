@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	3	,	Ġwe	Ġknow	Ġthe	Ġhallway	Ġis	Ġwest	Ġof	Ġthe	Ġkitchen	.	ĠFrom	Ġsentence	Ġ	4	,	Ġwe	Ġknow	Ġthe	Ġkitchen	Ġis	Ġsouth	Ġof	Ġthe	Ġbedroom	.	ĠTherefore	,	Ġif	Ġwe	Ġare	Ġin	Ġthe	Ġhallway	,	Ġwe	Ġneed	Ġto	Ġgo	Ġeast	Ġto	Ġreach	Ġthe	Ġkitchen	,	Ġand	Ġthen	Ġgo	Ġnorth	Ġto	Ġreach	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġeast	,	Ġnorth	<|eot_id|>

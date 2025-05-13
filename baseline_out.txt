@@ -1,0 +1,145 @@
+Activating the project environment: venv
+The project environment 'venv' activated successfully.
+Checking for data directory: /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2
+Data directory '/home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2' exists.
+Running the script with config: CONFIG_PATH=/home/hd/hd_hd/hd_ea226/research-project/settings/baseline/config, CONFIG_NAME=baseline_test_1_5
+Torch version:  2.6.0+cu124
+CUDA version:  12.4
+CUDA available:  True
+Device: cuda
+Config data for the run:
+model:
+  name: meta-llama/Meta-Llama-3-8B-Instruct
+  max_new_tokens: 150
+  temperature: 0.1
+  to_continue: false
+  mode: eval
+  interpretability:
+    use: true
+    aggregate: true
+setting:
+  name: Baseline
+data:
+  path: /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/
+  baseline_results: ''
+  splits:
+    train: false
+    valid: false
+    test: true
+  task_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  samples_per_task: 100
+  to_enumerate:
+    context: true
+    question: false
+  wrapper:
+    context: '*TASK*
+
+      Here are the context sentences:
+
+      {context}
+
+      '
+    question: 'Now, answer the following question:
+
+      {question}
+
+      '
+    reasoning: ''
+    answer: ''
+init_prompt:
+  paths:
+  - /home/hd/hd_hd/hd_ea226/research-project/inference/prompts/init_prompt_reasoning.txt
+  examples:
+    add: true
+    enumerated: true
+    handpicked: true
+    not_mentioned: true
+    number: 1
+    wrapper: '*EXAMPLE*
+
+      {example}
+
+      *END OF EXAMPLE*
+
+      '
+logging:
+  print_to_file: true
+results:
+  headers:
+  - id_
+  - task_id
+  - sample_id
+  - part_id
+  - task
+  - answer_lies_in_self
+  - golden_answer
+  - silver_reasoning
+  - model_output_before
+  - model_answer_before
+  - model_reasoning_before
+  - answer_correct_before
+  - reasoning_correct_before
+  - exact_match_accuracy_before
+  - soft_match_accuracy_before
+  - max_supp_attn_before
+  - attn_on_target_before
+  - verbs_before
+  - there_before
+  - pronouns_before
+  - not_mentioned_before
+  - context_sents_hall_before
+
+
+Running the script...
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa5_test.txt is read.
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa3_test.txt is read.
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa2_test.txt is read.
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa4_test.txt is read.
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa1_test.txt is read.
+Results will be saved to: /home/hd/hd_hd/hd_ea226/research-project/results/baseline/test/reasoning/07-05-2025/20-48-18
+The model meta-llama/Meta-Llama-3-8B-Instruct is being loaded in mode 'eval'...
+
+[2025-05-07 20:48:22,344][HYDRA] We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+The model meta-llama/Meta-Llama-3-8B-Instruct was  loaded successfully
+Wrapper values:
+((0, 9), ['*T', 'ASK', '*Ċ', 'Here', 'Ġare', 'Ġthe', 'Ġcontext', 'Ġsentences', ':Ċ'], [61734, 7536, 5736, 8586, 527, 279, 2317, 23719, 512], '*TASK*\nHere are the context sentences:\n')
+((), [], [], '\n')
+Wrapper values:
+((0, 7), ['Now', ',', 'Ġanswer', 'Ġthe', 'Ġfollowing', 'Ġquestion', ':Ċ'], [7184, 11, 4320, 279, 2768, 3488, 512], 'Now, answer the following question:\n')
+((), [], [], '\n')
+The model meta-llama/Meta-Llama-3-8B-Instruct was loaded successfully.
+
+The results will be saved to /home/hd/hd_hd/hd_ea226/research-project/results/baseline/test/reasoning/07-05-2025/20-48-18/init_prompt_reasoning
+
+Starting to query with the prompt: init_prompt_reasoning
+Prompt path: /home/hd/hd_hd/hd_ea226/research-project/inference/prompts/init_prompt_reasoning.txt
+
+Redirecting the system output to: /home/hd/hd_hd/hd_ea226/research-project/results/baseline/test/reasoning/07-05-2025/20-48-18/init_prompt_reasoning/init_prompt_reasoning.log
+The run is finished successfully
+______________________________
+Plots are saved successfully and general accuracies are saved
+
+The script has finished running successfully
+Python script 'running_script.py' executed successfully.
+Job completed successfully.
+Deactivating the environment: venv
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n906
+Job ID: 164870
+Cluster: uc3
+User/Group: hd_ea226/hd_hd
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 2
+CPU Utilized: 03:32:24
+CPU Efficiency: 48.40% of 07:18:48 core-walltime
+Job Wall-clock time: 03:39:24
+Memory Utilized: 26.42 GB
+Memory Efficiency: 20.64% of 128.00 GB (128.00 GB/node)

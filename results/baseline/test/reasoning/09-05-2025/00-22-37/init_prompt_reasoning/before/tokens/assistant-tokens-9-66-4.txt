@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠSandra	Ġis	Ġnot	Ġin	Ġthe	Ġhallway	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġnot	Ġcurrently	Ġlocated	Ġthere	.ĊĊ	Answer	:	Ġno	<|eot_id|>

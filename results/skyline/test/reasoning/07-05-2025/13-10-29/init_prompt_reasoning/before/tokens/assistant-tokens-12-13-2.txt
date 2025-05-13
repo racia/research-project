@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġthe	Ġprevious	Ġcontext	,	ĠSandra	Ġwas	Ġin	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	2	).	ĠHowever	,	Ġin	Ġsentence	Ġ	5	,	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.	ĠSo	,	ĠSandra	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

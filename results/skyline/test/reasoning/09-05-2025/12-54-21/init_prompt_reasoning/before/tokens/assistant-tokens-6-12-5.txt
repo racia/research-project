@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġ(	from	Ġprevious	Ġcontext	)	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġsentence	Ġ	13	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġmeans	ĠMary	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠMary	Ġis	Ġin	Ġthe	Ġbathroom	.	ĠAccording	Ġto	Ġsentence	Ġ	13	Ġand	Ġ	14	,	ĠMary	Ġhas	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

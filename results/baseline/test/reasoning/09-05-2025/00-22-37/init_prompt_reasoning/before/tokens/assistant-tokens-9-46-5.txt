@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠDaniel	's	Ġlocation	.	ĠSentence	Ġ	13	Ġmentions	ĠMary	Ġjourney	ing	Ġto	Ġthe	Ġgarden	,	Ġand	Ġsentence	Ġ	14	Ġmentions	ĠSandra	Ġis	Ġnot	Ġin	Ġthe	Ġgarden	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠDaniel	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

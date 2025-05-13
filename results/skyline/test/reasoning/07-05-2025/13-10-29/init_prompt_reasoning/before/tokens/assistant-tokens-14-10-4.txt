@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThis	Ġis	Ġa	Ġtrick	Ġquestion	.	ĠThe	Ġcontext	Ġsentences	Ġare	Ġin	Ġreverse	Ġchronological	Ġorder	.	ĠSentence	Ġ	13	Ġhappens	Ġbefore	Ġsentence	Ġ	12	.	ĠTherefore	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.	ĠSo	,	ĠMary	Ġwas	Ġin	Ġthe	Ġoffice	Ġbefore	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

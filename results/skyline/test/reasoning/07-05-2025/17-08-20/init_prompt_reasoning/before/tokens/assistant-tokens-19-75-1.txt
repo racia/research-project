@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠĊ	From	Ġsentence	Ġ	1	,	Ġwe	Ġknow	Ġthe	Ġoffice	Ġis	Ġeast	Ġof	Ġthe	Ġbathroom	.	ĠĊ	From	Ġsentence	Ġ	4	,	Ġwe	Ġknow	Ġthe	Ġhallway	Ġis	Ġwest	Ġof	Ġthe	Ġbathroom	.	ĠĊ	So	,	Ġto	Ġgo	Ġfrom	Ġthe	Ġhallway	Ġto	Ġthe	Ġoffice	,	Ġwe	Ġneed	Ġto	Ġgo	Ġeast	Ġfrom	Ġthe	Ġhallway	,	Ġthen	Ġeast	Ġagain	Ġto	Ġreach	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġeast	,	Ġeast	<|eot_id|>

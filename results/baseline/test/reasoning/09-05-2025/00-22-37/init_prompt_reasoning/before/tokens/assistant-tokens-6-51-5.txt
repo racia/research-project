@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ(	13	)	Ġand	Ġ(	14	)	Ġdon	't	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠWe	Ġalready	Ġknow	Ġfrom	Ġthe	Ġprevious	Ġtask	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġhallway	Ġ(	from	Ġcontext	Ġsentence	Ġ	10	).	ĠThere	Ġis	Ġno	Ġreason	Ġto	Ġassume	Ġshe	Ġhas	Ġmoved	Ġor	Ġchanged	Ġlocations	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

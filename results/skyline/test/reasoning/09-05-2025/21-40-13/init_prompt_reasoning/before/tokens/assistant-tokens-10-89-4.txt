@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġ(	from	Ġa	Ġprevious	Ġtask	)	Ġstated	Ġthat	ĠJulie	Ġis	Ġin	Ġthe	Ġoffice	,	Ġand	Ġthere	Ġis	Ġno	Ġnew	Ġinformation	Ġthat	Ġsuggests	ĠJulie	Ġhas	Ġmoved	Ġor	Ġchanged	Ġlocations	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

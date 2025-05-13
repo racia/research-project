@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġsentence	Ġ"	John	Ġwent	Ġto	Ġthe	Ġoffice	"	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.	ĠAdditionally	,	Ġthe	Ġsentence	Ġ"	Daniel	Ġis	Ġin	Ġthe	Ġoffice	"	Ġdoes	Ġnot	Ġcontradict	ĠJohn	's	Ġpresence	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

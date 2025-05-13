@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠThe	Ġtriangle	Ġis	Ġabove	Ġthe	Ġred	Ġsquare	.Ċ
-2	.	ĠThe	Ġred	Ġsquare	Ġis	Ġabove	Ġthe	Ġpink	Ġrectangle	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	Ġthe	Ġtriangle	Ġabove	Ġthe	Ġpink	Ġrectangle	?Ċ

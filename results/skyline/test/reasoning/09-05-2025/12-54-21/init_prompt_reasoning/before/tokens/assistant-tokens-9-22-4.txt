@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġor	Ġthe	Ġgarden	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġtalk	Ġabout	ĠDaniel	's	Ġlocations	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	13	Ġinforms	Ġus	Ġthat	ĠJohn	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġhallway	,	Ġwhich	Ġmeans	Ġhe	Ġleft	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

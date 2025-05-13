@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠBill	Ġis	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġbedroom	.Ċ
-2	.	ĠBill	Ġis	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠBill	Ġin	Ġthe	Ġschool	?Ċ

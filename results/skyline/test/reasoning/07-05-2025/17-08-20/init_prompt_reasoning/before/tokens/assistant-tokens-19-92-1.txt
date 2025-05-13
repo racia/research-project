@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠĊ	From	Ġsentence	Ġ	5	,	Ġwe	Ġknow	Ġthe	Ġbedroom	Ġis	Ġwest	Ġof	Ġthe	Ġkitchen	.	ĠFrom	Ġsentence	Ġ	4	,	Ġwe	Ġknow	Ġthe	Ġkitchen	Ġis	Ġwest	Ġof	Ġthe	Ġoffice	.	ĠTherefore	,	Ġto	Ġgo	Ġfrom	Ġthe	Ġbedroom	Ġto	Ġthe	Ġoffice	,	Ġwe	Ġneed	Ġto	Ġgo	Ġeast	.ĊĊ	Answer	:	Ġeast	<|eot_id|>

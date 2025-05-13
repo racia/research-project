@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġbathroom	.	ĠSentence	Ġ	1	Ġstates	ĠMary	Ġis	Ġin	Ġthe	Ġhallway	,	Ġand	Ġsentence	Ġ	2	Ġis	Ġabout	ĠJohn	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

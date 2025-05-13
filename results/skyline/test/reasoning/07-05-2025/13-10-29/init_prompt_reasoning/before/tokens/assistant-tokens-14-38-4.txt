@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	1	,	Ġ"	Yesterday	ĠJulie	Ġmoved	Ġto	Ġthe	Ġcinema	."	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbetween	Ġyesterday	Ġand	Ġthis	Ġmorning	,	Ġbut	Ġwe	Ġcan	Ġinfer	Ġthat	ĠJulie	Ġwas	Ġin	Ġthe	Ġcinema	Ġbefore	Ġmoving	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	Ġ(	sentence	Ġ	10	).ĊĊ	Answer	:	Ġcinema	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	3	,	Ġwe	Ġknow	Ġthe	Ġsuitcase	Ġfits	Ġinside	Ġthe	Ġchest	.	ĠFrom	Ġsentence	Ġ	1	,	Ġwe	Ġknow	Ġthe	Ġsuitcase	Ġis	Ġbigger	Ġthan	Ġthe	Ġcontainer	.	ĠTherefore	,	Ġthe	Ġcontainer	Ġfits	Ġinside	Ġthe	Ġchest	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

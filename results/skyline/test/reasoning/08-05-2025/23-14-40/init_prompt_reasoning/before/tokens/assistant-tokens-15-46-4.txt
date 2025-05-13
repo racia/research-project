@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	2	,	Ġ"	W	olves	Ġare	Ġafraid	Ġof	Ġmice	."	ĠJessica	Ġis	Ġa	Ġwolf	Ġ(	sentence	Ġ	3	),	Ġso	ĠJessica	Ġis	Ġafraid	Ġof	Ġmice	.ĊĊ	Answer	:	Ġmice	<|eot_id|>

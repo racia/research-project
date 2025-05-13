@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	12	,	ĠJohn	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	,	Ġwhich	Ġmeans	Ġshe	Ġwas	Ġcarrying	Ġthe	Ġfootball	.	ĠIn	Ġsentence	Ġ	15	,	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠJohn	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	5	Ġstates	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġimplying	Ġthat	Ġshe	Ġis	Ġnow	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

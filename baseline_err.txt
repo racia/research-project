@@ -1,0 +1,49 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:06<00:20,  6.67s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:09<00:08,  4.22s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:11<00:03,  3.42s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:12<00:00,  2.52s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:12<00:00,  3.19s/it]
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+`torch.nn.functional.scaled_dot_product_attention` does not support `output_attentions=True`. Falling back to eager attention. This warning can be removed using the argument `attn_implementation="eager"` when loading the model.
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2227. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/interpretability/Interpretability.py:111: RuntimeWarning: Mean of empty slice.
+  attn_scores[:, start:stop].mean(axis=-1)
+/pfs/data5/home/hd/hd_hd/hd_ea226/research-project/venv/lib64/python3.9/site-packages/numpy/core/_methods.py:121: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2461. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2054. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2067. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2097. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2157. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2250. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2056. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2256. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2070. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2212. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2200. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2225. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2268. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2065. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2105. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2360. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2107. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2288. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2133. Truncating the input.
+  warnings.warn(
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/inference/Chat.py:403: UserWarning: Exceeded max length with 2106. Truncating the input.
+  warnings.warn(

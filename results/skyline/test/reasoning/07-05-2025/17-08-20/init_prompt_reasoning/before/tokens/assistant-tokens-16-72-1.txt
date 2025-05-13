@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠBern	hard	Ġis	Ġa	Ġlion	Ġ(	sentence	Ġ	6	),	Ġand	Ġwe	Ġknow	Ġthat	ĠBrian	Ġis	Ġa	Ġlion	Ġand	Ġwhite	Ġ(	sent	ences	Ġ	1	Ġand	Ġ	2	),	Ġwe	Ġcan	Ġinfer	Ġthat	ĠBern	hard	,	Ġbeing	Ġa	Ġlion	,	Ġis	Ġlikely	Ġto	Ġhave	Ġthe	Ġsame	Ġcolor	Ġas	ĠBrian	,	Ġwhich	Ġis	Ġwhite	.ĊĊ	Answer	:	Ġwhite	<|eot_id|>

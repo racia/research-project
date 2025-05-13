@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	10	Ġand	Ġ	11	Ġare	Ġabout	ĠMary	Ġand	ĠDaniel	,	Ġbut	Ġthere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠJohn	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠJohn	Ġwas	Ġthat	Ġhe	Ġpicked	Ġup	Ġthe	Ġapple	Ġ(	sentence	Ġ	7	).ĊĊ	Answer	:	Ġone	<|eot_id|>

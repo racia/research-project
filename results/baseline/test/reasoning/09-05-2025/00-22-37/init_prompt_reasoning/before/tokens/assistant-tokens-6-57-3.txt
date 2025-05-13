@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	's	Ġaction	Ġand	ĠMary	's	Ġmovement	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

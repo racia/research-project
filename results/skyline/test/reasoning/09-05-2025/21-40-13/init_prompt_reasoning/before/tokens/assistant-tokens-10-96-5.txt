@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġcontext	Ġsentence	Ġ	13	,	Ġ"	Jul	ie	Ġis	Ġin	Ġthe	Ġcinema	",	Ġwe	Ġcan	Ġinfer	Ġthat	ĠJulie	's	Ġlocation	Ġis	Ġexplicitly	Ġstated	Ġas	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

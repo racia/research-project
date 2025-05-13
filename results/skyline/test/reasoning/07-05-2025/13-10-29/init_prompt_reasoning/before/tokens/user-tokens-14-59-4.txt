@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-10	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	.Ċ
-11	.	ĠThis	Ġmorning	ĠBill	Ġwent	Ġto	Ġthe	Ġcinema	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠJulie	Ġbefore	Ġthe	Ġpark	?Ċ

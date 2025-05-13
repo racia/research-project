@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġgoing	Ġto	Ġthe	Ġkitchen	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠIn	Ġfact	,	Ġsentence	Ġ	10	Ġstates	Ġthat	Ġ"	John	Ġmoved	Ġto	Ġthe	Ġoffice	",	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	,	Ġnot	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

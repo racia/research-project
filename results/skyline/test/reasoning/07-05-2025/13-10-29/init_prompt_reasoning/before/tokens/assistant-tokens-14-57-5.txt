@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġcontext	Ġsentence	Ġ	12	Ġ(	from	Ġprevious	Ġpart	),	Ġwe	Ġknow	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.	ĠThen	,	Ġfrom	Ġcontext	Ġsentence	Ġ	15	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġpark	Ġthis	Ġevening	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

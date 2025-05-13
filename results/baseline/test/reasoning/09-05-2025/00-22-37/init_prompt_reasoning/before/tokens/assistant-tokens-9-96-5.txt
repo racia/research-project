@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	's	Ġabsence	Ġfrom	Ġthe	Ġoffice	Ġand	ĠJohn	's	Ġreturn	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

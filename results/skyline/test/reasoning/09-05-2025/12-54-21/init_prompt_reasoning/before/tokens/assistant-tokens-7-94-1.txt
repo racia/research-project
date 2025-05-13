@@ -1,1 +1,0 @@
-<|start_header_id|>	<|end_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	1	,	ĠMary	Ġgot	Ġthe	Ġfootball	,	Ġwhich	Ġimplies	Ġshe	Ġis	Ġcarrying	Ġit	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġputting	Ġit	Ġdown	Ġor	Ġgiving	Ġit	Ġto	Ġsomeone	Ġelse	.ĊĊ	Answer	:	Ġone	<|eot_id|>

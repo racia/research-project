@@ -1,0 +1,253 @@
+Activating the project environment: venv
+The project environment 'venv' activated successfully.
+Checking for data directory: /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2
+Data directory '/home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2' exists.
+Running the script with config: CONFIG_PATH=/home/hd/hd_hd/hd_ea226/research-project/settings/feedback/config, CONFIG_NAME=feedback_test_1_5
+Torch version:  2.6.0+cu124
+CUDA version:  12.4
+CUDA available:  True
+Device: cuda
+Config data for the run:
+teacher:
+  name: meta-llama/Meta-Llama-3-70B-Instruct
+  max_new_tokens: 150
+  temperature: 0.1
+  to_continue: false
+  mode: eval
+  interpretability:
+    use: false
+student:
+  name: meta-llama/Meta-Llama-3-8B-Instruct
+  max_new_tokens: 150
+  temperature: 0.1
+  to_continue: false
+  mode: eval
+  interpretability:
+    use: true
+    aggregate: true
+setting:
+  name: Feedback
+data:
+  path: /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/
+  baseline_results: /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/07-05-2025/20-48-18/init_prompt_reasoning/test_init_prompt_reasoning_results.csv
+  splits:
+    train: false
+    valid: false
+    test: true
+  task_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  samples_per_task: 100
+  to_enumerate:
+    context: true
+    question: false
+  wrapper:
+    context: '*TASK*
+
+      Here are the context sentences:
+
+      {context}
+
+      '
+    question: 'Now, answer the following question:
+
+      {question}
+
+      '
+    reasoning: ''
+    answer: ''
+init_prompt:
+  paths:
+  - /home/hd/hd_hd/hd_ea226/research-project/inference/prompts/init_prompt_reasoning.txt
+  examples:
+    add: true
+    enumerated: true
+    handpicked: true
+    not_mentioned: true
+    number: 1
+    wrapper: '*EXAMPLE*
+
+      {example}
+
+      *END OF EXAMPLE*
+
+      '
+feedback_prompt:
+  paths:
+  - /home/hd/hd_hd/hd_ea226/research-project/inference/prompts/feedback_prompt.txt
+  history: 'Your student was given the following task:
+
+    """
+
+    {chat_history}
+
+    """
+
+    '
+  wrapper: 'The student''s response was:
+
+    {student_output}
+
+    '
+refine_prompt:
+  paths:
+  - /home/hd/hd_hd/hd_ea226/research-project/inference/prompts/refine_prompt.txt
+logging:
+  print_to_file: true
+results:
+  headers:
+  - id_
+  - task_id
+  - sample_id
+  - part_id
+  - task
+  - answer_lies_in_self
+  - golden_answer
+  - silver_reasoning
+  - model_answer_after
+  - answer_correct_after
+  - reasoning_correct_after
+  - model_reasoning_after
+  - model_output_after
+  - exact_match_accuracy_after
+  - soft_match_accuracy_after
+  - max_supp_attn_after
+  - attn_on_target_after
+  - there_after
+  - verbs_after
+  - pronouns_after
+  - not_mentioned_after
+  - context_sents_hall_after
+  - model_answer_before
+  - answer_correct_before
+  - reasoning_correct_before
+  - model_reasoning_before
+  - model_output_before
+  - exact_match_accuracy_before
+  - soft_match_accuracy_before
+  - max_supp_attn_before
+  - attn_on_target_before
+  - there_before
+  - verbs_before
+  - pronouns_before
+  - not_mentioned_before
+  - iterations
+  - context_sents_hall_before
+  hydra:
+    run:
+      dir: /pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/13-05-2025/12-41-52
+
+
+Running the script...
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa5_test.txt is read.
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa3_test.txt is read.
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa2_test.txt is read.
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa4_test.txt is read.
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa1_test.txt is read.
+Results will be saved to: /pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/13-05-2025/12-41-52
+The model meta-llama/Meta-Llama-3-8B-Instruct is being loaded in mode 'eval'...
+
+The model meta-llama/Meta-Llama-3-8B-Instruct was  loaded successfully
+The model meta-llama/Meta-Llama-3-8B-Instruct was loaded successfully.
+The model meta-llama/Meta-Llama-3-70B-Instruct is being loaded in mode 'eval'...
+
+The model meta-llama/Meta-Llama-3-70B-Instruct was  loaded successfully
+- THE FEEDBACK PROMPT -
+______________________________
+You are a strict, logical, and highly attentive teacher.
+Your job is to provide precise, structured feedback to the students answers in a defined format.
+
+INSTRUCTION:
+Evaluate whether the student's answer and reasoning are correct based on the given context and respond using exactly one of the following formats:
+
+1. Template for correct answers:
+Correct.
+[Optional explanation]
+
+2. Template for incorrect answers:
+Incorrect.
+Hint: [One clear hint pointing to the logical error, max 2 sentences]
+Issue: [Brief explanation of the main reasoning problem]
+
+Always use one of these two templates, and do not add any additional text or formatting.
+Focus on the most important error if there are multiple issues and make sure to not provide the correct answer directly
+
+EXAMPLES:
+*example 1*
+Context sentences:
+1. Daniel journeyed to the bedroom in the morning.
+2. Daniel journeyed to the kitchen yesterday.
+Question: Where is Daniel?
+Student: "Daniel is in the kitchen because he went there yesterday."
+Response:
+"""
+Incorrect.
+Hint: The question asks where Daniel is now, not where he went yesterday.
+Issue: The reasoning fails to consider that past locations don't necessarily indicate current location.
+"""
+*end of example 1*
+
+*example 2*
+Context sentences:
+1. Mary put down the football.
+2. Mary moved to the bedroom.
+3. John grabbed the apple.
+Question: Where is Mary?
+Student: "Mary is in the bedroom because she moved there in sentence 2 and hasn't moved since."
+Response:
+"""
+Correct.
+This correctly tracks Mary's location through the sequence of events.
+"""
+*end of example 2*
+______________________________
+
+- THE REFINE PROMPT -
+______________________________
+Your teacher evaluated your answer and reasoning and found them to be flawed.
+You will receive your previous answer and feedback to it.
+
+Instructions:
+1. Please correct your answer according to the teacher's feedback without referencing the original answer nor the feedback.
+2. Keep the previous style and format and only change the parts that need correction.
+3. Do not repeat the original answer and provide a corrected version based on the hint.
+
+Original answer:
+{student_output}
+
+Teacher's feedback:
+{teacher_feedback}
+
+Template for the corrected answer:
+Reasoning: <REASONING>
+Answer: <ANSWER>
+
+Always use it to fill in your answer.
+______________________________
+
+
+The results will be saved to /pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/13-05-2025/12-41-52/init_prompt_reasoning
+
+Starting to query with the prompt: init_prompt_reasoning
+Prompt path: /home/hd/hd_hd/hd_ea226/research-project/inference/prompts/init_prompt_reasoning.txt
+
+Redirecting the system output to: /pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/13-05-2025/12-41-52/init_prompt_reasoning/init_prompt_reasoning.log
+Error: Python script 'running_script.py' failed.
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n916
+Job ID: 189688
+Cluster: uc3
+User/Group: hd_ea226/hd_hd
+State: FAILED (exit code 1)
+Nodes: 1
+Cores per node: 2
+CPU Utilized: 00:02:17
+CPU Efficiency: 15.97% of 00:14:18 core-walltime
+Job Wall-clock time: 00:07:09
+Memory Utilized: 5.67 GB
+Memory Efficiency: 4.43% of 128.00 GB (128.00 GB/node)

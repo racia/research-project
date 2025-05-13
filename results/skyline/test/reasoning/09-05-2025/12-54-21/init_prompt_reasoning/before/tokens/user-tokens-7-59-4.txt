@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-16	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-17	.	ĠMary	Ġhanded	Ġthe	Ġmilk	Ġto	ĠDaniel	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠDaniel	Ġcarrying	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJulie	's	Ġlocation	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġjourney	Ġto	Ġthe	Ġschool	Ġand	ĠBill	's	Ġlocation	Ġin	Ġthe	Ġbedroom	,	Ġbut	Ġnot	ĠJulie	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	4	,	Ġwe	Ġknow	Ġthe	Ġbedroom	Ġis	Ġwest	Ġof	Ġthe	Ġkitchen	.	ĠFrom	Ġsentence	Ġ	2	,	Ġwe	Ġknow	Ġthe	Ġbedroom	Ġis	Ġnorth	Ġof	Ġthe	Ġhallway	.	ĠTherefore	,	Ġthe	Ġhallway	Ġmust	Ġbe	Ġeast	Ġof	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġwest	<|eot_id|>

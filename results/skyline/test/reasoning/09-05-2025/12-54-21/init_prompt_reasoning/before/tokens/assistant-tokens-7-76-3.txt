@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġnew	Ġcontext	Ġsentences	Ġ(	13	Ġand	Ġ	14	)	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠMary	Ġcarrying	Ġany	Ġobjects	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠMary	Ġwas	Ġthat	Ġshe	Ġleft	Ġthe	Ġapple	Ġin	Ġsentence	Ġ	11	,	Ġso	Ġshe	Ġis	Ġstill	Ġnot	Ġcarrying	Ġany	Ġobjects	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

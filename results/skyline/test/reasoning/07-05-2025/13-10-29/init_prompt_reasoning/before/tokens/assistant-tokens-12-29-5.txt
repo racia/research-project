@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠDaniel	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	13	),	Ġbut	Ġthis	Ġdoes	Ġnot	Ġaffect	ĠSandra	's	Ġlocation	.	ĠThen	,	ĠDaniel	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	Ġ(	sentence	Ġ	14	),	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

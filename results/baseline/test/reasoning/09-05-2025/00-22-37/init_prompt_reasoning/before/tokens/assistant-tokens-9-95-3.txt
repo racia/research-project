@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	's	Ġpresence	Ġin	Ġthe	Ġkitchen	Ġor	Ġany	Ġother	Ġlocation	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	's	Ġdeparture	Ġfrom	Ġthe	Ġbedroom	Ġand	ĠDaniel	's	Ġpresence	Ġin	Ġthe	Ġoffice	,	Ġbut	Ġnot	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

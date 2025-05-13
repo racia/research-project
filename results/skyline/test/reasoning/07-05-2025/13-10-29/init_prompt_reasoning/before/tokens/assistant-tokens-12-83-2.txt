@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentence	Ġ	5	,	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	Ġwith	ĠDaniel	.	ĠTherefore	,	ĠSandra	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

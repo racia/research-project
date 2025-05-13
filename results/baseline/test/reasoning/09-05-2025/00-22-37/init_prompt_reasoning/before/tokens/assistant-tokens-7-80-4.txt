@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	12	,	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠJohn	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġwas	Ġholding	Ġthe	Ġapple	.	ĠSince	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġdropping	Ġor	Ġgiving	Ġaway	Ġthe	Ġapple	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġis	Ġno	Ġlonger	Ġholding	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

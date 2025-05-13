@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJulie	's	Ġlocation	,	Ġand	Ġwe	Ġhave	Ġtwo	Ġcontext	Ġsentences	Ġthat	Ġprovide	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	.	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠJulie	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	ĠJulie	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJulie	Ġbeing	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġno	<|eot_id|>

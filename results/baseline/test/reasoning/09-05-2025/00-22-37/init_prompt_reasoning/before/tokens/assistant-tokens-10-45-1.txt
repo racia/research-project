@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġgoing	Ġto	Ġthe	Ġcinema	.	ĠMary	's	Ġactivities	Ġare	Ġlimited	Ġto	Ġthe	Ġpark	Ġand	Ġthe	Ġkitchen	,	Ġbut	Ġnot	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġno	<|eot_id|>

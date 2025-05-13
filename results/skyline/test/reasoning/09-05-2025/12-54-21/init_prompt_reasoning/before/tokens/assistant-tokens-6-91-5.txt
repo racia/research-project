@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġgoing	Ġto	Ġthe	Ġkitchen	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġand	Ġthere	Ġis	Ġno	Ġsubsequent	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġleft	Ġthe	Ġgarden	Ġand	Ġwent	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

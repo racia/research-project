@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	Ġthe	Ġmovements	Ġof	ĠJohn	Ġand	ĠSandra	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġmeans	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġhe	Ġleft	Ġthe	Ġoffice	Ġor	Ġmoved	Ġto	Ġa	Ġdifferent	Ġlocation	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

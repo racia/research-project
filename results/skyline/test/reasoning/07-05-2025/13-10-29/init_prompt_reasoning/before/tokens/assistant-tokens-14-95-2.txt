@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġyesterday	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	6	,	ĠJulie	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	.	ĠTherefore	,	ĠJulie	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

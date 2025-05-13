@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	14	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠFred	's	Ġmovement	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	9	)	Ġand	ĠMary	's	Ġmovement	Ġto	Ġthe	Ġpark	Ġ(	sentence	Ġ	10	),	Ġbut	Ġdo	Ġnot	Ġprovide	Ġinformation	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

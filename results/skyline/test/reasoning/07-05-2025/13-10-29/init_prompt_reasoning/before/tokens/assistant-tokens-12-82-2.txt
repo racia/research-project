@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠJohn	Ġand	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġin	Ġsentence	Ġ	5	,	Ġwhich	Ġmeans	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

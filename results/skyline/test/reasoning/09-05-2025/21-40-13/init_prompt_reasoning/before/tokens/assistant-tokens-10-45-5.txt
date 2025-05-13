@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	13	Ġstates	Ġthat	ĠJulie	Ġis	Ġin	Ġthe	Ġcinema	,	Ġwhich	Ġcontrad	icts	Ġthe	Ġpossibility	Ġof	Ġher	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠSentence	Ġ	14	Ġalso	Ġdoes	Ġnot	Ġmention	Ġthe	Ġoffice	Ġas	Ġa	Ġpossible	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

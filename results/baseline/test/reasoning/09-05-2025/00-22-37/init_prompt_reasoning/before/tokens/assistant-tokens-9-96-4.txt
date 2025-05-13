@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	's	Ġlocation	Ġat	Ġall	.	ĠThe	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġlocation	,	Ġwhich	Ġis	Ġcontradictory	Ġ(	she	Ġis	Ġboth	Ġin	Ġand	Ġnot	Ġin	Ġthe	Ġbathroom	).ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

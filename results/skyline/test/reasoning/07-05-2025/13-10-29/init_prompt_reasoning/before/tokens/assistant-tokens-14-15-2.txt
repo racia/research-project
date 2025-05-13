@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġthe	Ġprevious	Ġcontext	Ġsentences	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	Ġ(	sentence	Ġ	2	).	ĠBefore	Ġthat	,	ĠMary	Ġwas	Ġin	Ġthe	Ġoffice	Ġyesterday	Ġ(	sentence	Ġ	4	).	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġthat	Ġchanges	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

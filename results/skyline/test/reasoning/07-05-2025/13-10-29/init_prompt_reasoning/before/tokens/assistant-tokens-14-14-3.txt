@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠFred	's	Ġmovement	Ġto	Ġthe	Ġschool	Ġand	ĠBill	's	Ġmovement	Ġto	Ġthe	Ġcinema	,	Ġbut	Ġnot	ĠFred	's	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

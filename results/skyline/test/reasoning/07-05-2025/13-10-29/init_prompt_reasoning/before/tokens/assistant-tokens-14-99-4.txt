@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	12	,	ĠMary	Ġwent	Ġto	Ġthe	Ġpark	Ġthis	Ġevening	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġbedroom	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-10	.	ĠBill	Ġis	Ġeither	Ġin	Ġthe	Ġcinema	Ġor	Ġthe	Ġbedroom	.Ċ
-11	.	ĠJulie	Ġwent	Ġto	Ġthe	Ġcinema	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠBill	Ġin	Ġthe	Ġcinema	?Ċ

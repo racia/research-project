@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġpicked	Ġup	Ġthe	Ġmilk	Ġ(	sentence	Ġ	15	),	Ġand	Ġpreviously	,	Ġshe	Ġwas	Ġnot	Ġcarrying	Ġany	Ġobjects	Ġ(	sentence	Ġ	13	),	Ġso	Ġshe	Ġis	Ġnow	Ġcarrying	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġone	<|eot_id|>

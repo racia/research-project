@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	10	,	ĠMary	Ġwas	Ġinitially	Ġin	Ġthe	Ġbedroom	,	Ġbut	Ġthen	Ġshe	Ġwent	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	11	),	Ġand	Ġlater	Ġmoved	Ġto	Ġthe	Ġschool	Ġ(	sentence	Ġ	14	).	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

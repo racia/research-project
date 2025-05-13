@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠMary	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġoffice	,	Ġimplying	Ġthat	Ġshe	Ġwas	Ġin	Ġthe	Ġoffice	Ġat	Ġsome	Ġpoint	,	Ġbut	Ġnot	Ġanymore	.	ĠSentence	Ġ	11	Ġstates	Ġthat	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġdoes	Ġnot	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

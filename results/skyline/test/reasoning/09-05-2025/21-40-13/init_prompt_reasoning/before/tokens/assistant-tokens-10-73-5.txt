@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	's	Ġlocation	Ġin	Ġsentences	Ġ	13	Ġand	Ġ	14	.	ĠSentence	Ġ	11	Ġ(	from	Ġthe	Ġprevious	Ġpart	)	Ġstated	Ġthat	ĠFred	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġthere	Ġis	Ġno	Ġupdate	Ġto	Ġchange	Ġthis	Ġinformation	.	ĠSentence	Ġ	14	Ġis	Ġabout	ĠMary	's	Ġlocation	,	Ġnot	ĠFred	's	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

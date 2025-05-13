@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	7	,	Ġ"	Mary	Ġis	Ġnot	Ġin	Ġthe	Ġkitchen	",	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġreturning	Ġto	Ġthe	Ġkitchen	.	ĠAdditionally	,	Ġcontext	Ġsentence	Ġ	11	Ġmentions	ĠMary	Ġtraveling	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġfurther	Ġsupports	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

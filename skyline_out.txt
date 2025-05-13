@@ -1,0 +1,136 @@
+Activating the project environment: venv
+The project environment 'venv' activated successfully.
+Checking for data directory: /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2
+Data directory '/home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2' exists.
+Running the script with config: CONFIG_PATH=/home/hd/hd_hd/hd_ea226/research-project/settings/skyline/config, CONFIG_NAME=skyline_test_1_5
+Torch version:  2.6.0+cu124
+CUDA version:  12.4
+CUDA available:  True
+Device: cuda
+Config data for the run:
+model:
+  name: meta-llama/Meta-Llama-3-70B-Instruct
+  max_new_tokens: 12
+  temperature: 0.1
+  to_continue: false
+  mode: eval
+  interpretability:
+    use: true
+    aggregate: true
+setting:
+  name: Skyline
+data:
+  path: /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/
+  baseline_results: ''
+  splits:
+    train: false
+    valid: false
+    test: true
+  task_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  samples_per_task: 100
+  to_enumerate:
+    context: true
+    question: false
+  wrapper:
+    context: '*TASK*
+
+      Here are the context sentences:
+
+      {context}
+
+      '
+    question: 'Now, answer the following question:
+
+      {question}
+
+      '
+    reasoning: ''
+    answer: ''
+init_prompt:
+  paths:
+  - /home/hd/hd_hd/hd_ea226/research-project/inference/prompts/init_prompt_direct_answer.txt
+  examples:
+    add: true
+    enumerated: true
+    handpicked: true
+    not_mentioned: true
+    number: 1
+    wrapper: '*EXAMPLE*
+
+      {example}
+
+      *END OF EXAMPLE*
+
+      '
+logging:
+  print_to_file: true
+results:
+  headers:
+  - id_
+  - task_id
+  - sample_id
+  - part_id
+  - task
+  - answer_lies_in_self
+  - golden_answer
+  - silver_reasoning
+  - model_output_before
+  - model_answer_before
+  - model_reasoning_before
+  - answer_correct_before
+  - reasoning_correct_before
+  - exact_match_accuracy_before
+  - soft_match_accuracy_before
+  - max_supp_attn_before
+  - attn_on_target_before
+  - verbs_before
+  - there_before
+  - pronouns_before
+  - not_mentioned_before
+  - context_sents_hall_before
+
+
+Running the script...
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa5_test.txt is read.
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa3_test.txt is read.
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa2_test.txt is read.
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa4_test.txt is read.
+File /home/hd/hd_hd/hd_ea226/tasks_1-20_v1-2/en-valid/qa1_test.txt is read.
+Results will be saved to: /pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/da/11-05-2025/23-05-27
+The model meta-llama/Meta-Llama-3-70B-Instruct is being loaded in mode 'eval'...
+
+The model meta-llama/Meta-Llama-3-70B-Instruct was  loaded successfully
+The model meta-llama/Meta-Llama-3-70B-Instruct was loaded successfully.
+
+The results will be saved to /pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/da/11-05-2025/23-05-27/init_prompt_direct_answer
+
+Starting to query with the prompt: init_prompt_direct_answer
+Prompt path: /home/hd/hd_hd/hd_ea226/research-project/inference/prompts/init_prompt_direct_answer.txt
+
+Redirecting the system output to: /pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/da/11-05-2025/23-05-27/init_prompt_direct_answer/init_prompt_direct_answer.log
+The run is finished successfully
+______________________________
+The script has finished running successfully
+Python script 'running_script.py' executed successfully.
+Job completed successfully.
+Deactivating the environment: venv
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n913
+Job ID: 180841
+Cluster: uc3
+User/Group: hd_ea226/hd_hd
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 2
+CPU Utilized: 01:48:53
+CPU Efficiency: 47.87% of 03:47:28 core-walltime
+Job Wall-clock time: 01:53:44
+Memory Utilized: 5.51 GB
+Memory Efficiency: 4.31% of 128.00 GB (128.00 GB/node)

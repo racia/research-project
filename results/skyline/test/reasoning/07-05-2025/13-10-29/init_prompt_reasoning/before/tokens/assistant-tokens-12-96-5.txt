@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠSandra	Ġand	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġis	Ġthe	Ġmost	Ġrecent	Ġand	Ġrelevant	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

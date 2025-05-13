@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠWe	Ġknow	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġpark	Ġ(	sentence	Ġ	13	),	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠSandra	's	Ġabsence	Ġfrom	Ġthe	Ġoffice	Ġand	ĠJohn	's	Ġpresence	Ġin	Ġthe	Ġoffice	.	ĠThis	Ġinformation	Ġcontrad	icts	Ġthe	Ġpossibility	Ġof	ĠSandra	Ġbeing	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

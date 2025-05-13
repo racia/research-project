@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġthe	Ġcontext	Ġsentences	,	Ġwe	Ġknow	Ġthat	ĠSandra	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	Ġ(	sentence	Ġ	7	),	Ġbut	Ġthen	ĠMary	Ġand	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	8	).	ĠTherefore	,	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

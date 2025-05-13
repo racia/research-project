@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠDaniel	Ġleft	Ġthe	Ġfootball	,	Ġwhich	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

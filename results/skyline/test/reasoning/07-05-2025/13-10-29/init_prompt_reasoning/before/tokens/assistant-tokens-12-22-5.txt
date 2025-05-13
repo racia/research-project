@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentence	,	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġwith	ĠMary	Ġ(	sentence	Ġ	13	).	ĠThere	Ġis	Ġno	Ġsubsequent	Ġsentence	Ġthat	Ġchanges	Ġher	Ġlocation	.	ĠTherefore	,	ĠSandra	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

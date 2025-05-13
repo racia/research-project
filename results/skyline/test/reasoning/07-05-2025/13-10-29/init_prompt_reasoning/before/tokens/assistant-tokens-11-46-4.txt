@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdescribe	ĠSandra	's	Ġmovements	.	ĠIn	Ġsentence	Ġ	10	,	ĠSandra	Ġjourneys	Ġto	Ġthe	Ġhallway	,	Ġand	Ġin	Ġsentence	Ġ	11	,	Ġshe	Ġgoes	Ġback	Ġto	Ġthe	Ġgarden	.	ĠThis	Ġimplies	Ġthat	ĠSandra	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

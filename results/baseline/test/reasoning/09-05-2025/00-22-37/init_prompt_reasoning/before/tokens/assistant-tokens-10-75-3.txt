@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġcurrent	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠJulie	's	Ġlocation	Ġis	Ġnot	Ġmentioned	,	Ġand	ĠBill	's	Ġjourney	Ġto	Ġthe	Ġschool	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJulie	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

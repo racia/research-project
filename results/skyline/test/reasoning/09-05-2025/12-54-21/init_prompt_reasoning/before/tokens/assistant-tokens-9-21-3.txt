@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	8	,	ĠSandra	Ġis	Ġin	Ġthe	Ġoffice	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠDaniel	Ġbeing	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	10	Ġstates	Ġthat	ĠBill	Ġis	Ġin	Ġthe	Ġcinema	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠBill	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠThe	Ġcontext	Ġsentence	Ġ	11	Ġis	Ġirrelevant	Ġto	Ġthe	Ġoffice	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

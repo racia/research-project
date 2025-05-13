@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġabout	ĠJohn	Ġcarrying	Ġanything	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġactions	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

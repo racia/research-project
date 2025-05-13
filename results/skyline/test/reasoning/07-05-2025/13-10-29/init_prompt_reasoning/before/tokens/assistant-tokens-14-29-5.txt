@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġkitchen	.	ĠSentence	Ġ	13	Ġmentioned	ĠMary	Ġgoing	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġit	's	Ġnot	Ġrelated	Ġto	Ġthe	Ġcurrent	Ġquestion	.	ĠSentence	Ġ	15	Ġmentions	ĠMary	Ġmoving	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġit	Ġdoesn	't	Ġprovide	Ġinformation	Ġabout	Ġher	Ġlocation	Ġbefore	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

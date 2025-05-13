@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠDaniel	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġis	Ġthe	Ġmost	Ġrecent	Ġinformation	Ġabout	ĠDaniel	's	Ġlocation	.	ĠTherefore	,	ĠDaniel	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

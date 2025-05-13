@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠFred	Ġgoing	Ġto	Ġthe	Ġschool	.	ĠSentence	Ġ	13	Ġmentions	ĠFred	Ġtravelling	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġnot	Ġto	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

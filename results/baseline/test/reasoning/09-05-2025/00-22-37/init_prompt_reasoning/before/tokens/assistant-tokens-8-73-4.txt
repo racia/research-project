@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	's	Ġactions	Ġor	Ġcarrying	Ġanything	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJohn	's	Ġmovement	Ġto	Ġthe	Ġgarden	Ġand	ĠSandra	's	Ġmovement	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġnot	Ġanything	Ġrelated	Ġto	ĠMary	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

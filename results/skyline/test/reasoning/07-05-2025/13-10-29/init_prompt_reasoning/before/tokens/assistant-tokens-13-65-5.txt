@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠDaniel	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġkitchen	.	ĠTherefore	,	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

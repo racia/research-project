@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠJohn	Ġleft	Ġthe	Ġfootball	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

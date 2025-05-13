@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	14	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġnow	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġone	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	Ġin	Ġthe	Ġprovided	Ġcontext	Ġsentences	.	ĠThe	Ġlast	Ġmention	Ġof	ĠMary	's	Ġlocation	Ġwas	Ġin	Ġcontext	Ġsentence	Ġ	5	,	Ġwhere	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġmoving	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

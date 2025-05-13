@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġexplicitly	Ġstates	Ġthat	ĠJohn	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġnot	Ġin	Ġthe	Ġoffice	Ġcurrently	.ĊĊ	Answer	:	Ġno	<|eot_id|>

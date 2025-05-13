@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	Ġbeing	Ġin	Ġthe	Ġschool	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠBill	Ġbeing	Ġin	Ġthe	Ġbedroom	Ġand	ĠFred	Ġbeing	Ġin	Ġeither	Ġthe	Ġpark	Ġor	Ġthe	Ġoffice	,	Ġbut	Ġdo	Ġnot	Ġmention	ĠJulie	Ġor	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

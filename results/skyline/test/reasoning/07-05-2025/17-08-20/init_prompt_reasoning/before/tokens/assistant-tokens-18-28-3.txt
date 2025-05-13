@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	1	,	Ġwe	Ġknow	Ġthat	Ġthe	Ġsuitcase	Ġfits	Ġinside	Ġthe	Ġcontainer	,	Ġwhich	Ġimplies	Ġthat	Ġthe	Ġcontainer	Ġis	Ġbigger	Ġthan	Ġthe	Ġsuitcase	.ĊĊ	Answer	:	Ġno	<|eot_id|>

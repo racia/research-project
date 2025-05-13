@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	19	Ġand	Ġ	20	Ġare	Ġabout	ĠSandra	's	Ġmovements	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠMary	.	ĠWe	Ġalready	Ġknow	Ġfrom	Ġsentence	Ġ	16	Ġthat	ĠMary	Ġdiscarded	Ġthe	Ġapple	Ġand	Ġis	Ġnot	Ġcarrying	Ġanything	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

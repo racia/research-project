@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	Ġleaving	Ġthe	Ġbathroom	,	Ġso	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġshe	Ġis	Ġstill	Ġthere	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

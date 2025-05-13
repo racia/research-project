@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	2	,	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	.	ĠThere	Ġis	Ġno	Ġother	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġkitchen	Ġthis	Ġafternoon	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

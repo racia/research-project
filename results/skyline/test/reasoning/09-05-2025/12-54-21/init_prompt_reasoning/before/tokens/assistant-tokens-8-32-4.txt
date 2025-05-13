@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠMary	Ġtook	Ġthe	Ġmilk	Ġthere	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcarrying	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġmilk	<|eot_id|>

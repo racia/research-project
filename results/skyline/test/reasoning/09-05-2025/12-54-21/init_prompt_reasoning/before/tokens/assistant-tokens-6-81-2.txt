@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	5	,	Ġ"	Mary	Ġtravelled	Ġto	Ġthe	Ġgarden	",	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġnow	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

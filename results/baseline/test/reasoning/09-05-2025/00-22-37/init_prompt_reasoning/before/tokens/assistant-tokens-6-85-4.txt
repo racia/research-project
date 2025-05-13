@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġgoing	Ġto	Ġthe	Ġhallway	Ġor	Ġbeing	Ġin	Ġthe	Ġhallway	.	ĠThe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

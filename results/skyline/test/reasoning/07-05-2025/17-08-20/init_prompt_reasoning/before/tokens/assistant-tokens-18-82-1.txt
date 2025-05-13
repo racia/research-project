@@ -1,1 +1,0 @@
-<|start_header_id|>	<|end_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠSentence	Ġ	2	Ġstates	Ġthat	Ġ"	The	Ġbox	Ġis	Ġbigger	Ġthan	Ġthe	Ġbox	Ġof	Ġchocolates	",	Ġwhich	Ġdirectly	Ġanswers	Ġthe	Ġquestion	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

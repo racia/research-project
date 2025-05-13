@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	,	Ġwhich	Ġmeans	Ġshe	Ġwas	Ġholding	Ġit	,	Ġbut	Ġnow	Ġit	's	Ġnot	Ġspecified	Ġwhat	Ġhappened	Ġto	Ġthe	Ġfootball	.	ĠSince	ĠMary	Ġput	Ġit	Ġdown	,	Ġit	's	Ġlikely	Ġthat	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

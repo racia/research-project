@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentence	Ġ	10	,	ĠSandra	Ġwas	Ġin	Ġthe	Ġgarden	Ġwith	ĠMary	,	Ġand	Ġthen	Ġaccording	Ġto	Ġsentence	Ġ	11	,	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġwith	ĠMary	.	ĠTherefore	,	ĠSandra	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

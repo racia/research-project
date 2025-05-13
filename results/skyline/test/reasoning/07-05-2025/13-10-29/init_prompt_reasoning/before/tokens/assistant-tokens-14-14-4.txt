@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠBill	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġmovements	,	Ġbut	Ġnot	ĠBill	's	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

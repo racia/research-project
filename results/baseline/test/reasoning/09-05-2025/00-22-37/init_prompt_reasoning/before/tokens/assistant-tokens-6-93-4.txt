@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠSandra	's	Ġpresence	Ġin	Ġthe	Ġhallway	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġbeing	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

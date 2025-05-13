@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġinitially	Ġjourney	ed	Ġto	Ġthe	Ġhallway	Ġwith	ĠJohn	Ġ(	sentence	Ġ	13	),	Ġbut	Ġthen	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġwith	ĠSandra	Ġ(	sentence	Ġ	14	).	ĠTherefore	,	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

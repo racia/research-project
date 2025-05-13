@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġcarrying	Ġany	Ġobjects	.	ĠThe	Ġonly	Ġmention	Ġof	ĠMary	Ġis	Ġher	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	Ġand	Ġgetting	Ġan	Ġapple	Ġin	Ġthe	Ġgarden	.	ĠThere	Ġis	Ġno	Ġindication	Ġthat	Ġshe	Ġis	Ġcarrying	Ġanything	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

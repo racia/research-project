@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġreceived	Ġthe	Ġapple	Ġfrom	ĠMary	Ġ(	sentence	Ġ	6	),	Ġbut	Ġthen	Ġpassed	Ġit	Ġback	Ġto	ĠMary	Ġ(	sentence	Ġ	7	),	Ġso	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġadditional	Ġcontext	Ġsentences	Ġ	6	Ġand	Ġ	7	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġis	Ġstill	Ġvalid	,	Ġwhich	Ġis	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġcinema	Ġbefore	Ġgoing	Ġto	Ġthe	Ġbedroom	Ġ(	from	Ġsentences	Ġ	1	Ġand	Ġ	2	).ĊĊ	Answer	:	Ġcinema	<|eot_id|>

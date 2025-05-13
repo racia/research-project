@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġdirect	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	,	Ġbut	Ġwe	Ġknow	Ġthat	ĠJulie	Ġmoved	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	3	)	Ġand	Ġnow	Ġshe	Ġis	Ġback	Ġat	Ġthe	Ġoffice	Ġthis	Ġevening	Ġ(	sentence	Ġ	6	).	ĠThis	Ġimplies	Ġthat	ĠJulie	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

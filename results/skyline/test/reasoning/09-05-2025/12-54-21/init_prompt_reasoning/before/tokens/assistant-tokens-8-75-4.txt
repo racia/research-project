@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	10	Ġand	Ġ	11	Ġare	Ġabout	ĠMary	's	Ġmovements	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠSandra	.	ĠThe	Ġprevious	Ġinformation	Ġwas	Ġthat	ĠSandra	Ġleft	Ġthe	Ġmilk	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	5	),	Ġso	ĠSandra	Ġis	Ġnot	Ġcarrying	Ġanything	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

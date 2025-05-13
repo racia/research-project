@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġgoing	Ġto	Ġthe	Ġoffice	Ġor	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠSentence	Ġ	7	Ġmentions	ĠSandra	Ġgoing	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġsentence	Ġ	8	Ġmentions	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

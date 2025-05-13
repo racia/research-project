@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	10	,	Ġwe	Ġknow	ĠMary	Ġwas	Ġin	Ġthe	Ġoffice	Ġwith	ĠSandra	.	ĠHowever	,	Ġin	Ġsentence	Ġ	11	,	Ġit	Ġis	Ġmentioned	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	Ġwith	ĠDaniel	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġoffice	Ġand	Ġhas	Ġrelocated	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	8	,	Ġwe	Ġknow	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

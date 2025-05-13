@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġsentence	Ġ	8	Ġoverrides	Ġthis	Ġinformation	Ġby	Ġstating	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	,	Ġimplying	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġyes	<|eot_id|>
