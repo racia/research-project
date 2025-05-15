@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġis	Ġchanging	.	ĠIn	Ġsentence	Ġ	13	,	Ġshe	Ġis	Ġin	Ġthe	Ġbedroom	Ġwith	ĠJohn	.	ĠIn	Ġsentence	Ġ	14	,	Ġshe	Ġis	Ġin	Ġthe	Ġbathroom	Ġwith	ĠJohn	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

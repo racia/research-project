@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+12	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+13	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

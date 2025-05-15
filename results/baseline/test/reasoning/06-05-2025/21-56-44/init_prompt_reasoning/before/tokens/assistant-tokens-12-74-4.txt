@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSandra	Ġis	Ġmentioned	Ġin	Ġtwo	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġchanges	.	ĠInitially	,	Ġshe	Ġis	Ġin	Ġthe	Ġbedroom	Ġwith	ĠDaniel	Ġ(	sentence	Ġ	10	).	ĠThen	,	Ġshe	Ġjourneys	Ġto	Ġthe	Ġoffice	Ġwith	ĠDaniel	Ġ(	sentence	Ġ	11	).	ĠSince	Ġher	Ġlocation	Ġchanged	,	Ġher	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

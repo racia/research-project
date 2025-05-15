@@ -1,0 +1,35 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1390	18	98	1	"*TASK*
+Here are the context sentences:
+1. The chocolate fits inside the box of chocolates.
+2. The container is bigger than the box of chocolates.
+3. The container is bigger than the chocolate.
+4. The box of chocolates fits inside the container.
+5. The box fits inside the suitcase.
+
+Now, answer the following question:
+Is the chocolate bigger than the container?"	no	"from context sentence 3, we know that ""the container is bigger than the chocolate."" this directly implies that the chocolate is not bigger than the container, but rather the opposite. therefore, the answer is ""no"", the chocolate is not bigger than the container."	fully	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1391	18	98	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the container?"	yes	"from context sentence 1, we know that ""the chocolate fits inside the box of chocolates."" from context sentence 4, we know that ""the box of chocolates fits inside the container."" therefore, we can logically conclude that the chocolate, which fits inside the box of chocolates, also fits inside the container."	none	yes	True			Answer: yes	0.25	0.5	False	False	False	False	0
+1392	18	98	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the chocolate?"	yes	"from context sentence 3, we know that ""the container is bigger than the chocolate."" this directly states that the container is bigger than the chocolate, which leads to the answer ""yes""."	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+1393	18	98	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the container?"	yes	"we already established in a previous question that the chocolate fits inside the box of chocolates, and the box of chocolates fits inside the container. therefore, it can be logically concluded that the chocolate also fits inside the container, leading to the answer ""yes""."	none	yes	True			Answer: yes	0.25	0.5	False	False	False	False	0
+1394	18	98	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the container?"	yes	"from context sentence 1, we know that ""the chocolate fits inside the box of chocolates."" from context sentence 4, we know that ""the box of chocolates fits inside the container."" therefore, we can logically conclude that the chocolate, which fits inside the box of chocolates, also fits inside the container, leading to the answer ""yes""."	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0

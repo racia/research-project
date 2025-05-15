@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġgarden	.	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	5	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġshe	Ġis	Ġin	Ġthe	Ġoffice	,	Ġnot	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	<|eot_id|>

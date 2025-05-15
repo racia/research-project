@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJohn	Ġbeing	Ġin	Ġthe	Ġkitchen	.	ĠThe	Ġcontext	Ġsentence	Ġ	14	Ġstates	Ġthat	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġis	Ġa	Ġdifferent	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	7	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġyesterday	.	ĠSince	ĠMary	Ġwent	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	,	Ġit	Ġimplies	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

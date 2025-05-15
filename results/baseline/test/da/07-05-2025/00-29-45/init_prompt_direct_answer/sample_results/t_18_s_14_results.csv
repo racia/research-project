@@ -1,0 +1,35 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+966	18	14	1	"*TASK*
+Here are the context sentences:
+1. The chocolate fits inside the suitcase.
+2. The container fits inside the chest.
+3. The chocolate fits inside the box.
+4. The chest is bigger than the chocolate.
+5. The suitcase fits inside the box.
+
+Now, answer the following question:
+Does the box fit in the chocolate?"	no	"from context sentence 3, we know that the chocolate fits inside the box, which implies that the box is bigger than the chocolate. if the box were to fit inside the chocolate, it would mean that the chocolate is bigger than the box, which contradicts the established fact. therefore, the box cannot fit inside the chocolate, and the correct answer is ""no""."	fully	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+967	18	14	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the box?"	yes	"from context sentence 3, we know that ""the chocolate fits inside the box."" this sentence directly states that the chocolate fits in the box, which is the exact question being asked. therefore, the answer is indeed ""yes""."	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+968	18	14	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the chocolate?"	no	"from the previous context sentence 3, we know that ""the chocolate fits inside the box."" this implies that the box is larger than the chocolate. if the box were to fit inside the chocolate, it would mean that the chocolate is larger than the box, which contradicts the established fact. therefore, the box cannot fit inside the chocolate, and the correct answer is ""no""."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+969	18	14	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the box?"	yes	"we already know from the previous context sentence 3 that ""the chocolate fits inside the box."" this sentence directly states that the chocolate fits in the box, which is the exact question being asked. therefore, the answer is indeed ""yes""."	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+970	18	14	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the chocolate?"	no	"we know from the previous context sentence 3 that ""the chocolate fits inside the box."" this implies that the box is larger than the chocolate. if the box were to fit inside the chocolate, it would mean that the chocolate is larger than the box, which contradicts the established fact. therefore, the box cannot fit inside the chocolate, and the correct answer is ""no""."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0

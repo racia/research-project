@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġbedroom	.	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġand	ĠSentence	Ġ	11	Ġshows	Ġthat	ĠDaniel	Ġtook	Ġthe	Ġfootball	Ġthere	,	Ġimplying	Ġthat	Ġthey	Ġare	Ġboth	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,11 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2035	19	128	1	"*TASK*
+Here are the context sentences:
+1. The bathroom is west of the bedroom.
+2. The hallway is north of the bedroom.
+3. The office is east of the hallway.
+4. The kitchen is north of the garden.
+5. The garden is north of the hallway.
+
+Now, answer the following question:
+How do you go from the bedroom to the garden?"	north north	to go from the bedroom to the garden, we need to find the correct direction. from sentence 2, we know the hallway is north of the bedroom, so we need to go north from the bedroom to reach the hallway. then, from sentence 5, we know the garden is north of the hallway, so we need to go north again from the hallway to reach the garden. therefore, the correct direction is north north.	fully		False	Since the bedroom is west of the bathroom (sentence 1), and the hallway is north of the bedroom (sentence 2), we can infer that the bedroom is not directly north of the hallway. Additionally, the kitchen is north of the garden (sentence 4), and the garden is north of the hallway (sentence 5). This suggests that the hallway is not directly north of the garden. Therefore, to go from the bedroom to the garden, we need to move east		Reasoning: Since the bedroom is west of the bathroom (sentence 1), and the hallway is north of the bedroom (sentence 2), we can infer that the bedroom is not directly north of the hallway. Additionally, the kitchen is north of the garden (sentence 4), and the garden is north of the hallway (sentence 5). This suggests that the hallway is not directly north of the garden. Therefore, to go from the bedroom to the garden, we need to move east	0.202	0.0202	False	False	False	False	0

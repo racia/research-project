@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠJulie	Ġwent	Ġto	Ġthe	Ġschool	.Ċ
+11	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠBill	Ġin	Ġthe	Ġbedroom	?Ċ

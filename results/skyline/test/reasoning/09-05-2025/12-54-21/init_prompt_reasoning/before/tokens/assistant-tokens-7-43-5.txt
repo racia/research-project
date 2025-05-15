@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	15	,	ĠDaniel	Ġgave	Ġthe	Ġfootball	Ġto	ĠSandra	,	Ġso	ĠDaniel	Ġwas	Ġnot	Ġcarrying	Ġthe	Ġfootball	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	16	,	ĠSandra	Ġgave	Ġthe	Ġfootball	Ġback	Ġto	ĠDaniel	,	Ġso	Ġnow	ĠDaniel	Ġis	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġone	<|eot_id|>

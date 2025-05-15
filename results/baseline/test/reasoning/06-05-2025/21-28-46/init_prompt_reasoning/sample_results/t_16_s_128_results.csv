@@ -1,0 +1,17 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+128	16	128	1	"*TASK*
+Here are the context sentences:
+1. Brian is a swan.
+2. Bernhard is a frog.
+3. Brian is gray.
+4. Julius is a frog.
+5. Greg is a rhino.
+6. Bernhard is yellow.
+7. Greg is green.
+8. Lily is a rhino.
+9. Julius is yellow.
+
+Now, answer the following question:
+What color is Lily?"	green	since lily is a rhino (from context sentence 8), and greg is also a rhino (from context sentence 5), it can be inferred that they share the same characteristics. from context sentence 7, we know that greg is green. therefore, it is logical to assume that lily, being a rhino like greg, is also green.	fully	green	True	The question asks about the color of Lily, who is a rhino according to sentence 8. Since Greg, who is also a rhino, is green according to sentence 7, it is likely that Lily, being a rhino, is also green.		"Reasoning: The question asks about the color of Lily, who is a rhino according to sentence 8. Since Greg, who is also a rhino, is green according to sentence 7, it is likely that Lily, being a rhino, is also green.
+
+Answer: green"	0.15	0.05	False	False	False	False	0

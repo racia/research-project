@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġbedroom	Ġis	Ġwest	Ġof	Ġthe	Ġhallway	Ġ(	sentence	Ġ	5	),	Ġand	Ġthe	Ġhallway	Ġis	Ġnorth	Ġof	Ġthe	Ġgarden	Ġ(	sentence	Ġ	2	),	Ġwe	Ġneed	Ġto	Ġmove	Ġeast	Ġand	Ġthen	Ġsouth	Ġto	Ġreach	Ġthe	Ġgarden	Ġfrom	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġeast	,	Ġthen	Ġsouth	<|eot_id|>

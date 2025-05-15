@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	6	Ġstates	Ġthat	ĠBill	Ġpassed	Ġthe	Ġmilk	Ġto	ĠMary	,	Ġwhich	Ġmeans	ĠBill	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

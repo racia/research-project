@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	7	Ġstates	Ġthat	ĠJulie	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġbedroom	.	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	4	,	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

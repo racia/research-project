@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1560	18	82	1	"*TASK*
+Here are the context sentences:
+1. The box of chocolates fits inside the suitcase.
+2. The box is bigger than the box of chocolates.
+3. The suitcase fits inside the box.
+4. The box of chocolates fits inside the container.
+5. The box of chocolates fits inside the box.
+
+Now, answer the following question:
+Is the box bigger than the box of chocolates?"	yes	"from sentence 2, we know that ""the box is bigger than the box of chocolates."" this directly states that the box is bigger than the box of chocolates, which answers the question affirmatively."	fully	yes	True	The box is bigger than the box of chocolates (sentence 2), and the box of chocolates fits inside the box (sentence 5). This implies that the box is larger than the box of chocolates.		"Reasoning: The box is bigger than the box of chocolates (sentence 2), and the box of chocolates fits inside the box (sentence 5). This implies that the box is larger than the box of chocolates.
+
+Answer: yes"	0.1875	0.0417	False	False	False	False	0
+1561	18	82	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box of chocolates bigger than the box?"	no	"from sentence 2, we know that ""the box is bigger than the box of chocolates."" this implies that the box of chocolates is not bigger than the box, which answers the question negatively."	none	no	True	The box of chocolates fits inside the box (sentence 5), which means the box of chocolates is smaller than the box.		"Reasoning: The box of chocolates fits inside the box (sentence 5), which means the box of chocolates is smaller than the box.
+
+Answer: no"	0.125	0.0625	False	False	False	False	0
+1562	18	82	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box of chocolates fit in the box?"	yes	"from sentence 5, we know that ""the box of chocolates fits inside the box."" this directly states that the box of chocolates fits in the box, which answers the question affirmatively."	none	yes	True	The box of chocolates fits inside the box (sentence 5), which means the box of chocolates can fit inside the box.		"Reasoning: The box of chocolates fits inside the box (sentence 5), which means the box of chocolates can fit inside the box.
+
+Answer: yes"	0.0625	0.0625	False	False	False	False	0
+1563	18	82	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box of chocolates fit in the box?"	yes	"from sentence 5, we know that ""the box of chocolates fits inside the box."" this directly states that the box of chocolates fits in the box, which answers the question affirmatively."	none	yes	True	The box of chocolates fits inside the box (sentence 5), which means the box of chocolates can fit inside the box.		"Reasoning: The box of chocolates fits inside the box (sentence 5), which means the box of chocolates can fit inside the box.
+
+Answer: yes"	0.0312	0.0625	False	False	False	False	0
+1564	18	82	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box bigger than the box of chocolates?"	yes	"from sentence 2, we know that ""the box is bigger than the box of chocolates."" this directly states that the box is bigger than the box of chocolates, which answers the question affirmatively."	none	yes	True	The box is bigger than the box of chocolates (sentence 2), and the box of chocolates fits inside the box (sentence 5). This implies that the box is larger than the box of chocolates.		"Reasoning: The box is bigger than the box of chocolates (sentence 2), and the box of chocolates fits inside the box (sentence 5). This implies that the box is larger than the box of chocolates.
+
+Answer: yes"	0.0625	0.0417	False	False	False	False	0

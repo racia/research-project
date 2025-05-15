@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠFred	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	.	ĠSince	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġthis	Ġevening	Ġ(	sentence	Ġ	7	),	Ġit	Ġimplies	Ġthat	Ġhe	Ġwas	Ġat	Ġthe	Ġbedroom	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

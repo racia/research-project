@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2306	14	12	1	"*TASK*
+Here are the context sentences:
+1. This morning Fred journeyed to the kitchen.
+2. Julie travelled to the cinema yesterday.
+3. This afternoon Fred went back to the cinema.
+4. Yesterday Fred journeyed to the office.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	office	"from context sentence 4, ""yesterday fred journeyed to the office"", we know that fred was at the office yesterday. from context sentence 1, ""this morning fred journeyed to the kitchen"", we know that fred went to the kitchen this morning. since fred went to the kitchen this morning, and he was at the office yesterday, it can be logically inferred that fred was at the office before going to the kitchen."	fully	cinema	False	Since Fred journeyed to the kitchen this morning, and he went back to the cinema this afternoon, it implies that Fred was at the cinema before going to the kitchen.		"Reasoning: Since Fred journeyed to the kitchen this morning, and he went back to the cinema this afternoon, it implies that Fred was at the cinema before going to the kitchen.
+
+Answer: cinema"	0.1463	0.0488	False	False	False	False	0
+2307	14	12	2	"*TASK*
+Here are the context sentences:
+6. Yesterday Mary went back to the office.
+7. Yesterday Bill went to the park.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	kitchen	"this question refers to a previous part of the conversation history. from context sentence 3, ""this afternoon fred went back to the cinema"", we know that fred went to the cinema in the afternoon. from context sentence 1, ""this morning fred journeyed to the kitchen"", we know that fred went to the kitchen in the morning. since fred went to the cinema in the afternoon and the kitchen in the morning, it can be logically inferred that fred was at the kitchen before going"	none	office	False	There is no mention of Fred going to the cinema in the given context sentences. However, we can infer that Fred was at the office yesterday, as stated in context sentence 4.		"Reasoning: There is no mention of Fred going to the cinema in the given context sentences. However, we can infer that Fred was at the office yesterday, as stated in context sentence 4.
+
+Answer: office"	0.1818	0.0455	False	False	False	True	0
+2308	14	12	3	"*TASK*
+Here are the context sentences:
+9. This morning Bill journeyed to the kitchen.
+10. Fred travelled to the kitchen this evening.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	kitchen	"this question refers to a previous part of the conversation history. from context sentence 3, ""this afternoon fred went back to the cinema"", we know that fred went to the cinema in the afternoon. from context sentence 10, ""fred travelled to the kitchen this evening"", we know that fred went to the kitchen in the evening. since fred went to the cinema in the afternoon and the kitchen in the evening, it can be logically inferred that fred was at the kitchen before going to"	none	Not mentioned	False	There is no mention of Fred going to the cinema in the given context sentences. The sentences only mention Fred going to the kitchen this evening, but not going to the cinema.		"Reasoning: There is no mention of Fred going to the cinema in the given context sentences. The sentences only mention Fred going to the kitchen this evening, but not going to the cinema.
+
+Answer: Not mentioned"	0.1163	0.0465	False	False	False	True	0
+2309	14	12	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Bill journeyed to the school.
+13. Mary went to the cinema this morning.
+
+Now, answer the following question:
+Where was Bill before the school?"	kitchen	"there is no direct information about bill's location before going to the school. however, we can infer the answer by looking at the previous parts of the conversation history. from context sentence 9, ""this morning bill journeyed to the kitchen"", we know that bill went to the kitchen in the morning. from context sentence 12, ""this afternoon bill journeyed to the school"", we know that bill went to the school in the afternoon. since bill went to the kitchen in the"	partially	kitchen	True	According to context sentence 9, Bill journeyed to the kitchen this morning. Since Bill journeyed to the school this afternoon, it implies that Bill was at the kitchen before going to the school.		"Reasoning: According to context sentence 9, Bill journeyed to the kitchen this morning. Since Bill journeyed to the school this afternoon, it implies that Bill was at the kitchen before going to the school.
+
+Answer: kitchen"	0.0426	0.0426	False	False	False	False	0
+2310	14	12	5	"*TASK*
+Here are the context sentences:
+15. This evening Bill travelled to the kitchen.
+16. This afternoon Mary moved to the kitchen.
+
+Now, answer the following question:
+Where was Bill before the school?"	kitchen	"there is no direct information about bill's location before going to the school. however, we can infer the answer by looking at the previous parts of the conversation history. from context sentence 12, ""this afternoon bill journeyed to the school"", we know that bill went to the school in the afternoon. from context sentence 15, ""this evening bill travelled to the kitchen"", we know that bill went to the kitchen in the evening. since bill went to the school in the afternoon"	none	school	False	According to context sentence 12, Bill journeyed to the school this afternoon. Since Bill travelled to the kitchen this evening, it implies that Bill was at the school before going to the kitchen.		"Reasoning: According to context sentence 12, Bill journeyed to the school this afternoon. Since Bill travelled to the kitchen this evening, it implies that Bill was at the school before going to the kitchen.
+
+Answer: school"	0.087	0.0435	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġat	Ġall	.	ĠThey	Ġonly	Ġmention	ĠJohn	Ġgoing	Ġto	Ġthe	Ġoffice	Ġand	Ġgrabbing	Ġthe	Ġmilk	.	ĠTherefore	,	Ġwe	Ġcannot	Ġinfer	Ġanything	Ġabout	ĠMary	's	Ġcarrying	Ġstatus	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

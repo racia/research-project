@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġstates	Ġthat	ĠJohn	Ġand	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	ĠDaniel	Ġwas	Ġin	Ġthe	Ġbedroom	.	ĠHowever	,	Ġsentence	Ġ	8	Ġstates	Ġthat	ĠSandra	Ġand	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	ĠDaniel	Ġreturned	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

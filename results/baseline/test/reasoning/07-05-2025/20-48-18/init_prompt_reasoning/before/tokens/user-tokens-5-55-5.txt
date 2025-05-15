@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+35	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+36	.	ĠJeff	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠJeff	Ġgive	Ġto	ĠFred	?Ċ

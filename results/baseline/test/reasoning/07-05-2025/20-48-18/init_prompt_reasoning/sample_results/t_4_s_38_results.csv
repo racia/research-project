@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1538	4	38	1	"*TASK*
+Here are the context sentences:
+1. The hallway is south of the bathroom.
+2. The bedroom is north of the bathroom.
+
+Now, answer the following question:
+What is north of the bathroom?"	bedroom	"according to context sentence 2, ""the bedroom is north of the bathroom."" this sentence directly states that the bedroom is located north of the bathroom, which answers the question of what is north of the bathroom."	fully	bedroom	True	The hallway is south of the bathroom, which means it is not north of the bathroom. The bedroom is north of the bathroom, so the bedroom is the correct answer.		"Reasoning: The hallway is south of the bathroom, which means it is not north of the bathroom. The bedroom is north of the bathroom, so the bedroom is the correct answer.
+
+Answer: bedroom"	0.1951	0.0244	False	False	False	False	0

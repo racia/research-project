@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	1	Ġstates	Ġthat	ĠJohn	Ġpicked	Ġup	Ġthe	Ġapple	Ġ"	there	",	Ġbut	Ġit	Ġdoesn	't	Ġspecify	Ġwhere	Ġ"	there	"	Ġis	.	ĠHowever	,	Ġcontext	Ġsentence	Ġ	2	Ġstates	Ġthat	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġ"	there	"	Ġis	Ġlikely	Ġreferring	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

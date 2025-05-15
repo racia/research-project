@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	Ġin	Ġsentence	Ġ	62	,	Ġand	Ġthen	Ġshe	Ġwent	Ġto	Ġthe	Ġbedroom	Ġin	Ġsentence	Ġ	67	.	ĠSince	Ġthe	Ġfootball	Ġwas	Ġgrabbed	Ġbefore	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġthe	Ġfootball	Ġwas	Ġin	Ġthe	Ġbedroom	Ġbefore	ĠSandra	Ġwent	Ġthere	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

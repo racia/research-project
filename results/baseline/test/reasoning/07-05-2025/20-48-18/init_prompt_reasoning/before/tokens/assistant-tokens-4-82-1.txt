@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġoffice	Ġis	Ġeast	Ġof	Ġthe	Ġbedroom	,	Ġand	Ġthe	Ġhallway	Ġis	Ġeast	Ġof	Ġthe	Ġoffice	,	Ġit	Ġimplies	Ġthat	Ġthe	Ġhallway	Ġis	Ġalso	Ġeast	Ġof	Ġthe	Ġbedroom	.	ĠThis	Ġmeans	Ġthat	Ġthe	Ġbedroom	Ġis	Ġnot	Ġeast	Ġof	Ġanything	,	Ġand	Ġtherefore	,	Ġit	Ġcannot	Ġbe	Ġwest	Ġof	Ġanything	Ġeither	.ĊĊ	Answer	:	ĠNothing	<|eot_id|>

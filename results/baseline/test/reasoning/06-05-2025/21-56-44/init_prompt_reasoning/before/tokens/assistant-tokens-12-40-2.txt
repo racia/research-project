@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠDaniel	's	Ġlocation	Ġis	Ġdetermined	Ġby	Ġthe	Ġcontext	Ġsentences	.	ĠHe	Ġhas	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġwith	ĠSandra	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġhim	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	Ġor	Ġany	Ġother	Ġlocation	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

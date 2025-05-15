@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠJeff	Ġgave	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
+14	.	ĠJeff	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠJeff	Ġgive	Ġthe	Ġfootball	Ġto	?Ċ

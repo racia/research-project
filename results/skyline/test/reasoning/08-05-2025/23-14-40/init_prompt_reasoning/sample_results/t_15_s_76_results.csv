@@ -1,0 +1,42 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+301	15	76	1	"*TASK*
+Here are the context sentences:
+1. Cats are afraid of mice.
+2. Jessica is a cat.
+3. Mice are afraid of sheep.
+4. Sheep are afraid of cats.
+5. Emily is a sheep.
+6. Winona is a cat.
+7. Wolves are afraid of cats.
+8. Gertrude is a sheep.
+
+Now, answer the following question:
+What is jessica afraid of?"	mouse	since jessica is a cat (context sentence 2), and cats are afraid of mice (context sentence 1), we can logically conclude that jessica is afraid of mice.	fully	mice	True	Since Jessica is a cat (sentence 2), and cats are afraid of mice (sentence 1), Jessica is afraid of mice.		"assistant
+
+Reasoning: Since Jessica is a cat (sentence 2), and cats are afraid of mice (sentence 1), Jessica is afraid of mice.
+
+Answer: mice"	0.2105	0.0526	False	False	False	False	0
+302	15	76	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is gertrude afraid of?"	cat	since gertrude is a sheep (context sentence 8), and sheep are afraid of cats (context sentence 4), we can logically conclude that gertrude is afraid of cats.	none	cats	True	Since Gertrude is a sheep (sentence 8), and sheep are afraid of cats (sentence 4), Gertrude is afraid of cats.		"Reasoning: Since Gertrude is a sheep (sentence 8), and sheep are afraid of cats (sentence 4), Gertrude is afraid of cats.
+
+Answer: cats"	0.0789	0.0526	False	False	False	False	0
+303	15	76	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is jessica afraid of?"	mouse	since jessica is a cat (context sentence 2), and cats are afraid of mice (context sentence 1), we can logically conclude that jessica is afraid of mice.	none	mice	True	Since Jessica is a cat (sentence 2), and cats are afraid of mice (sentence 1), Jessica is afraid of mice.		"Reasoning: Since Jessica is a cat (sentence 2), and cats are afraid of mice (sentence 1), Jessica is afraid of mice.
+
+Answer: mice"	0.1471	0.0588	False	False	False	False	0
+304	15	76	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	mouse	since winona is a cat (context sentence 6), and cats are afraid of mice (context sentence 1), we can logically conclude that winona is afraid of mice.	none	mice	True	Since Winona is a cat (sentence 6), and cats are afraid of mice (sentence 1), Winona is afraid of mice.		"Reasoning: Since Winona is a cat (sentence 6), and cats are afraid of mice (sentence 1), Winona is afraid of mice.
+
+Answer: mice"	0.0278	0.0556	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġwe	Ġknow	Ġfrom	Ġsentence	Ġ	10	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġnow	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

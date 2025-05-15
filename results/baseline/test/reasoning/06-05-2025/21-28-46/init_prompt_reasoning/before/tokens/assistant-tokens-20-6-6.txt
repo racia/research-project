@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠSum	it	Ġgoing	Ġto	Ġthe	Ġkitchen	,	Ġso	ĠI	Ġwill	Ġnot	Ġmake	Ġan	Ġassumption	.	ĠThe	Ġprevious	Ġcontext	Ġsentences	Ġonly	Ġmentioned	ĠJason	Ġand	ĠY	ann	,	Ġand	ĠSum	it	's	Ġcontext	Ġsentence	Ġmentioned	Ġhim	Ġbeing	Ġtired	,	Ġnot	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

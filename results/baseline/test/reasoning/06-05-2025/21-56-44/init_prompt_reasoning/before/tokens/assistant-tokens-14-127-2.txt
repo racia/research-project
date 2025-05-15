@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	Ġ(	sentence	Ġ	7	),	Ġand	Ġshe	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	6	),	Ġit	Ġimplies	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġoffice	Ġthis	Ġmorning	Ġand	Ġthen	Ġwent	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

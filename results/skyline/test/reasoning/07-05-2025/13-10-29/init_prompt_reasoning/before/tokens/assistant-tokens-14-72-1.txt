@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	.	ĠTo	Ġgo	Ġ"	back	"	Ġto	Ġa	Ġplace	Ġimplies	Ġthat	Ġshe	Ġhad	Ġbeen	Ġthere	Ġbefore	.	ĠSentence	Ġ	3	Ġstates	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	Ġyesterday	,	Ġwhich	Ġmeans	Ġshe	Ġwas	Ġin	Ġthe	Ġkitchen	Ġbefore	Ġcoming	Ġback	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+316	6	64	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the garden.
+2. John picked up the milk there.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	the context sentences do not mention sandra being in the hallway. in fact, sentence 1 states that sandra journeyed to the garden, which implies that she is in the garden, not in the hallway. there is no information provided that would suggest she moved to the hallway after going to the garden. therefore, based on the given information, it can be concluded that sandra is not in the hallway.	fully	no	True	The context sentences only mention Sandra journeying to the garden and John picking up the milk there, but there is no mention of Sandra being in the hallway.		"Reasoning: The context sentences only mention Sandra journeying to the garden and John picking up the milk there, but there is no mention of Sandra being in the hallway.
+
+Answer: no"	0.0789	0.0263	False	False	False	True	0
+317	6	64	2	"*TASK*
+Here are the context sentences:
+4. John put down the milk there.
+5. Mary went to the hallway.
+
+Now, answer the following question:
+Is Sandra in the garden?"	yes	"sentence 1 from the previous context (not provided in this part, but referred to in the question) states that ""sandra journeyed to the garden."" there is no information provided that suggests sandra left the garden or moved to a different location. therefore, based on the initial information, it can be logically concluded that sandra is still in the garden. the actions of john (putting down the milk) and mary (going to the hallway) do not provide any information that would"	none	yes	True	The context sentences only mention Sandra journeying to the garden in sentence 1, but there is no subsequent mention of Sandra's location. Sentence 5 mentions Mary going to the hallway, but it does not affect Sandra's location.		"Reasoning: The context sentences only mention Sandra journeying to the garden in sentence 1, but there is no subsequent mention of Sandra's location. Sentence 5 mentions Mary going to the hallway, but it does not affect Sandra's location.
+
+Answer: yes"	0.0566	0.0189	False	False	False	True	0
+318	6	64	3	"*TASK*
+Here are the context sentences:
+7. Daniel journeyed to the bedroom.
+8. Sandra picked up the football there.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	"sentence 5 from the previous context states that ""mary went to the hallway."" there is no information provided that suggests mary left the hallway or moved to a different location, such as the bedroom. additionally, sentence 7 states that daniel journeyed to the bedroom, but it does not mention mary being there. therefore, based on the provided information, it can be logically concluded that mary is not in the bedroom."	none	no	True	The context sentences do not mention Mary at all. Sentence 7 mentions Daniel journeying to the bedroom, and sentence 8 mentions Sandra picking up the football there. There is no information about Mary's location.		"Reasoning: The context sentences do not mention Mary at all. Sentence 7 mentions Daniel journeying to the bedroom, and sentence 8 mentions Sandra picking up the football there. There is no information about Mary's location.
+
+Answer: no"	0.0204	0.0204	False	False	False	True	0
+319	6	64	4	"*TASK*
+Here are the context sentences:
+10. John got the milk there.
+11. John travelled to the hallway.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	no	"there is no information provided about daniel being in the kitchen. sentence 7 from the previous context states that ""daniel journeyed to the bedroom"", which implies that daniel is in the bedroom, not in the kitchen. the actions of john (getting the milk and traveling to the hallway) do not provide any information about daniel's location, and therefore, it can be logically concluded that daniel is not in the kitchen."	none	no	True	There is no mention of Daniel in the context sentences. Sentence 10 mentions John getting the milk, and sentence 11 mentions John travelling to the hallway. There is no information about Daniel's location, and no mention of the kitchen.		"Reasoning: There is no mention of Daniel in the context sentences. Sentence 10 mentions John getting the milk, and sentence 11 mentions John travelling to the hallway. There is no information about Daniel's location, and no mention of the kitchen.
+
+Answer: no"	0.037	0.0185	False	False	False	True	0
+320	6	64	5	"*TASK*
+Here are the context sentences:
+13. Sandra travelled to the bathroom.
+14. John travelled to the bedroom.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	yes	"sentence 13 states that ""sandra travelled to the bathroom"", which explicitly indicates that sandra is in the bathroom. there is no information provided that suggests she left the bathroom or moved to a different location. therefore, based on the provided information, it can be logically concluded that sandra is indeed in the bathroom."	fully	yes	True	According to sentence 13, Sandra travelled to the bathroom, which implies that she is currently in the bathroom.		"Reasoning: According to sentence 13, Sandra travelled to the bathroom, which implies that she is currently in the bathroom.
+
+Answer: yes"	0.0	0.0345	False	False	False	False	0

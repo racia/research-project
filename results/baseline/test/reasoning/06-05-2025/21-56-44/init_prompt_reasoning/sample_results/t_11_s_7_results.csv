@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+31	11	7	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the kitchen.
+2. After that she went back to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"from the context sentences, we know that mary moved to the kitchen (sentence 1) and then went back to the hallway (sentence 2). since the last action mentioned is her going back to the hallway, it can be inferred that she is currently in the hallway. therefore, the answer to the question ""where is mary?"" is indeed ""hallway""."	fully	hallway	True	Mary moved to the kitchen initially, and then she went back to the hallway, which means she is currently in the hallway.		"Reasoning: Mary moved to the kitchen initially, and then she went back to the hallway, which means she is currently in the hallway.
+
+Answer: hallway"	0.1562	0.0625	False	False	False	False	0
+32	11	7	2	"*TASK*
+Here are the context sentences:
+4. Mary moved to the bedroom.
+5. Then she went to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"from the context sentences, we know that mary moved to the bedroom (sentence 4) and then went to the hallway (sentence 5). since the last action mentioned is her going to the hallway, it can be inferred that she is currently in the hallway. therefore, the answer to the question ""where is mary?"" is indeed ""hallway""."	fully	hallway	True	Mary moved to the bedroom initially, and then she went to the hallway, which means she is currently in the hallway.		"Reasoning: Mary moved to the bedroom initially, and then she went to the hallway, which means she is currently in the hallway.
+
+Answer: hallway"	0.1935	0.0645	False	False	False	False	0
+33	11	7	3	"*TASK*
+Here are the context sentences:
+7. Sandra moved to the bedroom.
+8. Afterwards she travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"the context sentences only mention sandra's movements, but the question asks about mary's location. since there is no information about mary's movements in the provided context, we cannot determine mary's location based on the current context. the answer ""hallway"" seems to be incorrect, as it is not supported by the provided information."	none	not mentioned	False	The question is asking about Mary's location, but the context sentences provided are about Sandra's movements. Since Mary is not mentioned in the context sentences, we cannot determine her location.		"Reasoning: The question is asking about Mary's location, but the context sentences provided are about Sandra's movements. Since Mary is not mentioned in the context sentences, we cannot determine her location.
+
+Answer: not mentioned"	0.0909	0.0455	False	False	False	True	0
+34	11	7	4	"*TASK*
+Here are the context sentences:
+10. Sandra went back to the hallway.
+11. Then she travelled to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	"from the context sentences, we know that sandra went back to the hallway (sentence 10) and then travelled to the office (sentence 11). since the last action mentioned is her travelling to the office, it can be inferred that she is currently in the office. therefore, the answer to the question ""where is sandra?"" is indeed ""office""."	fully	office	True	Sandra went back to the hallway initially, and then she travelled to the office, which means she is currently in the office.		"Reasoning: Sandra went back to the hallway initially, and then she travelled to the office, which means she is currently in the office.
+
+Answer: office"	0.125	0.0625	False	False	False	False	0
+35	11	7	5	"*TASK*
+Here are the context sentences:
+13. Daniel moved to the hallway.
+14. After that he went back to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	office	the context sentences only mention daniel's movements, but the question asks about sandra's location. since there is no new information about sandra's movements in the provided context, we need to look at the previous parts of the conversation. in the previous parts, we learned that sandra travelled to the office (sentence 11). there is no information that suggests sandra moved from the office, so it can be inferred that she is still in the office. therefore, the answer	none	not mentioned	False	The question is asking about Sandra's location, but the context sentences provided are about Daniel's movements. Since Sandra is not mentioned in the context sentences, we cannot determine her location.		"Reasoning: The question is asking about Sandra's location, but the context sentences provided are about Daniel's movements. Since Sandra is not mentioned in the context sentences, we cannot determine her location.
+
+Answer: not mentioned"	0.0909	0.0455	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġgarden	Ġis	Ġnorth	Ġof	Ġthe	Ġbedroom	,	Ġit	Ġcannot	Ġbe	Ġsouth	Ġof	Ġthe	Ġbedroom	.	ĠThe	Ġbathroom	Ġis	Ġnorth	Ġof	Ġthe	Ġgarden	,	Ġwhich	Ġmeans	Ġthe	Ġbathroom	Ġis	Ġalso	Ġnorth	Ġof	Ġthe	Ġbedroom	.	ĠTherefore	,	Ġthe	Ġgarden	Ġis	Ġsouth	Ġof	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

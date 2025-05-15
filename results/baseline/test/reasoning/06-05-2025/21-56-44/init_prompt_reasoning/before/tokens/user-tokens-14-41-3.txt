@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+9	.	ĠJulie	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġthis	Ġevening	.Ċ
+10	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠJulie	Ġbefore	Ġthe	Ġbedroom	?Ċ

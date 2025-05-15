@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+17	.	ĠMary	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+18	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠSandra	Ġcarrying	?Ċ

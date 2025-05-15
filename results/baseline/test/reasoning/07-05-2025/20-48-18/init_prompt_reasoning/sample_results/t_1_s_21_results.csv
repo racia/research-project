@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+101	1	21	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the garden.
+2. Mary moved to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"the context sentences describe mary's movements, with the first sentence stating that she travelled to the garden, and the second sentence stating that she moved to the bedroom. since the second sentence is the most recent action described, it implies that mary's current location is the bedroom, as she has moved there after being in the garden. therefore, the answer to the question ""where is mary?"" is indeed the bedroom."	fully	bedroom	True	Mary's location changes from the garden to the bedroom, so the most recent location mentioned is the bedroom.		"Reasoning: Mary's location changes from the garden to the bedroom, so the most recent location mentioned is the bedroom.
+
+Answer: bedroom"	0.1071	0.0357	False	False	False	True	0
+102	1	21	2	"*TASK*
+Here are the context sentences:
+4. Sandra went to the bathroom.
+5. Daniel travelled to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"the context sentences describe the movements of two individuals, sandra and daniel. sentence 4 states that sandra went to the bathroom, which implies that she is currently in the bathroom. there is no subsequent sentence that suggests sandra has left the bathroom. therefore, based on the information provided, it can be logically concluded that sandra is still in the bathroom, which is the answer to the question ""where is sandra?""."	fully	bathroom	True	The context sentences only mention Sandra going to the bathroom, but do not mention her leaving or moving from the bathroom. Therefore, it can be inferred that Sandra is still in the bathroom.		"Reasoning: The context sentences only mention Sandra going to the bathroom, but do not mention her leaving or moving from the bathroom. Therefore, it can be inferred that Sandra is still in the bathroom.
+
+Answer: bathroom"	0.0455	0.0227	False	False	False	True	0
+103	1	21	3	"*TASK*
+Here are the context sentences:
+7. Mary travelled to the office.
+8. Daniel moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	office	"the context sentences describe the movements of two individuals, mary and daniel. sentence 7 states that mary travelled to the office, which implies that she is currently in the office. there is no subsequent sentence that suggests mary has left the office. therefore, based on the information provided, it can be logically concluded that mary is still in the office, which is the answer to the question ""where is mary?"". the movement of daniel to the hallway in sentence 8 does not provide any"	fully	office	True	The context sentences only mention Mary travelling to the office, but do not mention her leaving or moving from the office. Therefore, it can be inferred that Mary is still in the office.		"Reasoning: The context sentences only mention Mary travelling to the office, but do not mention her leaving or moving from the office. Therefore, it can be inferred that Mary is still in the office.
+
+Answer: office"	0.0455	0.0227	False	False	False	True	0
+104	1	21	4	"*TASK*
+Here are the context sentences:
+10. John moved to the kitchen.
+11. Daniel went to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"the context sentences describe the movements of two individuals, john and daniel. sentence 11 states that daniel went to the garden, which implies that he is currently in the garden. there is no subsequent sentence that suggests daniel has left the garden. therefore, based on the information provided, it can be logically concluded that daniel is still in the garden, which is the answer to the question ""where is daniel?"". the movement of john to the kitchen in sentence 10 does not provide any"	fully	garden	True	The context sentences only mention Daniel going to the garden, but do not mention him leaving or moving from the garden. Therefore, it can be inferred that Daniel is still in the garden.		"Reasoning: The context sentences only mention Daniel going to the garden, but do not mention him leaving or moving from the garden. Therefore, it can be inferred that Daniel is still in the garden.
+
+Answer: garden"	0.0909	0.0227	False	False	False	True	0
+105	1	21	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the garden.
+14. John journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"there is no mention of daniel in the context sentences. the sentences only describe the movements of mary and john. therefore, it is not possible to determine daniel's location based on the provided information. the answer ""garden"" seems to be incorrect, as there is no mention of daniel going to the garden."	none	not mentioned	False	The context sentences do not mention Daniel at all, so there is no information about his location.		"Reasoning: The context sentences do not mention Daniel at all, so there is no information about his location.
+
+Answer: not mentioned"	0.037	0.037	False	False	False	True	0

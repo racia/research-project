@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1516	14	4	1	"*TASK*
+Here are the context sentences:
+1. This morning Fred journeyed to the cinema.
+2. Yesterday Fred went back to the office.
+3. Yesterday Julie travelled to the office.
+4. This morning Julie travelled to the bedroom.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	office	from context sentence 4, we know that julie travelled to the bedroom this morning. to determine where julie was before the bedroom, we need to look at julie's previous location. context sentence 3 states that julie travelled to the office yesterday. there is no information about julie's location between yesterday and this morning, but we can logically assume that julie was still at the office when this morning began, as there is no mention of her travelling anywhere else. therefore, julie was at the	fully	office	True	"According to sentence 3, ""Yesterday Julie travelled to the office."" This implies that Julie was in the office before she travelled to the bedroom this morning (sentence 4)."		"assistant
+
+Reasoning: According to sentence 3, ""Yesterday Julie travelled to the office."" This implies that Julie was in the office before she travelled to the bedroom this morning (sentence 4).
+
+Answer: office"	0.2889	0.0444	False	False	False	False	0
+1517	14	4	2	"*TASK*
+Here are the context sentences:
+6. Mary went to the park yesterday.
+7. Yesterday Bill went back to the cinema.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	office	the question asks about fred's location before the cinema, but the provided context sentences (6 and 7) do not mention fred at all. however, we can look back at the previous context sentences (1-4) to find the relevant information. from context sentence 1, we know that fred journeyed to the cinema this morning. to determine where fred was before the cinema, we need to look at fred's previous location. context sentence 2 states that fred went back	none	not mentioned	False	There is no information about Fred's location before the cinema in the provided context sentences. The sentences only mention Mary and Bill's movements.		"Reasoning: There is no information about Fred's location before the cinema in the provided context sentences. The sentences only mention Mary and Bill's movements.
+
+Answer: not mentioned"	0.2	0.0571	False	False	False	True	0
+1518	14	4	3	"*TASK*
+Here are the context sentences:
+9. Mary journeyed to the office this afternoon.
+10. Mary moved to the bedroom this morning.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	office	the question asks about fred's location before the cinema, but the provided context sentences (9 and 10) only mention mary's movements and do not provide any new information about fred. however, we can look back at the previous context sentences (1-4) to find the relevant information. from context sentence 1, we know that fred journeyed to the cinema this morning. to determine where fred was before the cinema, we need to look at fred's previous location. context	none	not mentioned	False	There is no information about Fred's location before the cinema in the provided context sentences. The sentences only mention Mary's movements.		"Reasoning: There is no information about Fred's location before the cinema in the provided context sentences. The sentences only mention Mary's movements.
+
+Answer: not mentioned"	0.0909	0.0606	False	False	False	True	0
+1519	14	4	4	"*TASK*
+Here are the context sentences:
+12. Fred journeyed to the office this evening.
+13. Fred travelled to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Mary before the office?"	bedroom	the question asks about mary's location before the office, but the provided context sentences (12 and 13) only mention fred's movements and do not provide any direct information about mary's location. however, we can look back at the previous context sentences (1-10) to find the relevant information. from context sentence 9, we know that mary journeyed to the office this afternoon, but we need to find her location before that. from context sentence 10, we know	none	bedroom	True	"According to sentence 10, ""Mary moved to the bedroom this morning."" This implies that Mary was in the bedroom before she journeyed to the office this afternoon (sentence 9)."		"Reasoning: According to sentence 10, ""Mary moved to the bedroom this morning."" This implies that Mary was in the bedroom before she journeyed to the office this afternoon (sentence 9).
+
+Answer: bedroom"	0.0909	0.0455	False	False	False	False	0
+1520	14	4	5	"*TASK*
+Here are the context sentences:
+15. This evening Julie moved to the office.
+16. Julie journeyed to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	bedroom	the question asks about julie's location before the kitchen. from context sentence 16, we know that julie journeyed to the kitchen this afternoon. to determine where julie was before the kitchen, we need to look at julie's previous location. although there is no direct information about julie's location before the kitchen, we can look back at the previous context sentences (1-14) to find the relevant information. from context sentence 4, we know that julie travelled to the bedroom this	partially	not mentioned	False	There is no information about Julie's location before the kitchen in the provided context sentences. The sentences only mention Julie's movements to the kitchen and the office, but do not provide information about her location before the kitchen.		"Reasoning: There is no information about Julie's location before the kitchen in the provided context sentences. The sentences only mention Julie's movements to the kitchen and the office, but do not provide information about her location before the kitchen.
+
+Answer: not mentioned"	0.0	0.0392	False	False	False	True	0

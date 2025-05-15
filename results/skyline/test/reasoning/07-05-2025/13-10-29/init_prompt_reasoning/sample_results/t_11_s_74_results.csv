@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+366	11	74	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the kitchen.
+2. After that she went to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	the context sentences describe mary's movements in a sequence. first, she went back to the kitchen, and then she went to the office. since the office is the last location mentioned in the sequence, it can be inferred that mary is currently in the office.	fully	office	True	According to the context sentences, Mary went back to the kitchen and then went to the office. Therefore, her current location is the office.		"assistant
+
+Reasoning: According to the context sentences, Mary went back to the kitchen and then went to the office. Therefore, her current location is the office.
+
+Answer: office"	0.2632	0.0526	False	False	False	False	0
+367	11	74	2	"*TASK*
+Here are the context sentences:
+4. Daniel went to the bathroom.
+5. Then he went back to the garden.
+
+Now, answer the following question:
+Where is Mary?"	office	"the context sentences provided do not mention mary at all, but rather describe daniel's movements. the answer ""office"" is only relevant to mary's location, which was established in the previous context (mary went back to the kitchen and then to the office). since there is no new information about mary's movements, her location remains the same, which is the office."	none	office	True	The context sentences do not provide any new information about Mary's location. The last known location of Mary was the office (from the previous context).		"Reasoning: The context sentences do not provide any new information about Mary's location. The last known location of Mary was the office (from the previous context).
+
+Answer: office"	0.1944	0.0556	False	False	False	True	0
+368	11	74	3	"*TASK*
+Here are the context sentences:
+7. Mary journeyed to the garden.
+8. Afterwards she went to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	the context sentences describe mary's movements in a sequence. first, she journeyed to the garden, and afterwards she went to the kitchen. since the kitchen is the last location mentioned in the sequence, it can be inferred that mary is currently in the kitchen.	fully	kitchen	True	According to the context sentences, Mary journeyed to the garden and then went to the kitchen. Therefore, her current location is the kitchen.		"Reasoning: According to the context sentences, Mary journeyed to the garden and then went to the kitchen. Therefore, her current location is the kitchen.
+
+Answer: kitchen"	0.0571	0.0571	False	False	False	False	0
+369	11	74	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the kitchen.
+11. Afterwards he travelled to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	the context sentences describe daniel's movements in a sequence. first, he went back to the kitchen, and afterwards he travelled to the office. since the office is the last location mentioned in the sequence, it can be inferred that daniel is currently in the office.	fully	office	True	According to the context sentences, Daniel went back to the kitchen and then travelled to the office. Therefore, his current location is the office.		"Reasoning: According to the context sentences, Daniel went back to the kitchen and then travelled to the office. Therefore, his current location is the office.
+
+Answer: office"	0.0	0.0571	False	False	False	False	0
+370	11	74	5	"*TASK*
+Here are the context sentences:
+13. John journeyed to the office.
+14. Afterwards he went to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	the context sentences describe john's movements in a sequence. first, he journeyed to the office, and afterwards he went to the hallway. since the hallway is the last location mentioned in the sequence, it can be inferred that john is currently in the hallway.	fully	hallway	True	According to the context sentences, John journeyed to the office and then went to the hallway. Therefore, his current location is the hallway.		"Reasoning: According to the context sentences, John journeyed to the office and then went to the hallway. Therefore, his current location is the hallway.
+
+Answer: hallway"	0.0286	0.0571	False	False	False	False	0

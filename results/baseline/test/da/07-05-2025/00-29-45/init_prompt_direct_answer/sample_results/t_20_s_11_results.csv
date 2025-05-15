@@ -1,0 +1,73 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1616	20	11	1	"*TASK*
+Here are the context sentences:
+1. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	when antoine is tired, it is logical to assume that he will go to a place where he can rest. in most cases, people go to their bedroom to rest or sleep when they are tired. therefore, based on the context, it is reasonable to conclude that antoine will go to his bedroom.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+1617	20	11	2	"*TASK*
+Here are the context sentences:
+3. Yann is thirsty.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	when yann is thirsty, it is logical to assume that he will go to a place where he can quench his thirst. in most households, the kitchen is where people typically go to get a drink, as it is where the water, refrigerator, and other beverages are usually located. therefore, based on the context, it is reasonable to conclude that yann will go to the kitchen.	fully	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1618	20	11	3	"*TASK*
+Here are the context sentences:
+5. Sumit is tired.
+
+Now, answer the following question:
+Where will sumit go?"	bedroom	when sumit is tired, it is logical to assume that he will go to a place where he can rest. based on the previous context (1. antoine is tired.... where will antoine go?... bedroom), we can infer that when someone is tired, they tend to go to their bedroom to rest or sleep. therefore, it is reasonable to conclude that sumit will also go to his bedroom.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+1619	20	11	4	"*TASK*
+Here are the context sentences:
+7. Antoine travelled to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	in the previous context (1. antoine is tired.), it was established that antoine is tired. now, it is stated that antoine travelled to the bedroom. based on this information, it can be logically inferred that antoine went to the bedroom because he was tired, as people often go to their bedroom to rest or sleep when they are tired.	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+1620	20	11	5	"*TASK*
+Here are the context sentences:
+9. Sumit moved to the bedroom.
+
+Now, answer the following question:
+Why did sumit go to the bedroom?"	tired	in the previous context (5. sumit is tired.), it was established that sumit is tired. now, it is stated that sumit moved to the bedroom. based on this information, it can be logically inferred that sumit went to the bedroom because he was tired, as people often go to their bedroom to rest or sleep when they are tired.	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+1621	20	11	6	"*TASK*
+Here are the context sentences:
+11. Yann travelled to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	thirsty	" yann go to the kitchen?
+this is the answer: thirsty"	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1622	20	11	7	"*TASK*
+Here are the context sentences:
+13. Antoine grabbed the pajamas there.
+
+Now, answer the following question:
+Why did antoine get the pajamas?"	tired	" yann go to the kitchen?
+this is the answer: thirsty"	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1623	20	11	8	"*TASK*
+Here are the context sentences:
+15. Jason is bored.
+
+Now, answer the following question:
+Where will jason go?"	garden	" yann go to the kitchen?
+this is the answer: thirsty"	fully	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1624	20	11	9	"*TASK*
+Here are the context sentences:
+17. Jason went back to the garden.
+
+Now, answer the following question:
+Why did jason go to the garden?"	bored	" yann go to the kitchen?
+this is the answer: thirsty"	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1625	20	11	10	"*TASK*
+Here are the context sentences:
+19. Jason grabbed the football there.
+
+Now, answer the following question:
+Why did jason get the football?"	bored	" yann go to the kitchen?
+this is the answer: thirsty"	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1626	20	11	11	"*TASK*
+Here are the context sentences:
+21. Yann took the milk there.
+
+Now, answer the following question:
+Why did yann get the milk?"	thirsty	" yann go to the kitchen?
+this is the answer: thirsty"	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0

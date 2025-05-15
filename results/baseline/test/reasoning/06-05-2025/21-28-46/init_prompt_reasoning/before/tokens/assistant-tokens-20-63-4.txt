@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	Ġis	Ġtired	,	Ġhe	Ġwill	Ġlikely	Ġgo	Ġto	Ġa	Ġplace	Ġwhere	Ġhe	Ġcan	Ġrest	Ġand	Ġrelax	.	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġspecify	Ġa	Ġparticular	Ġlocation	,	Ġbut	Ġbased	Ġon	Ġcommon	Ġhuman	Ġbehavior	,	Ġit	Ġis	Ġreasonable	Ġto	Ġassume	Ġthat	ĠSum	it	Ġwill	Ġgo	Ġto	Ġa	Ġplace	Ġwhere	Ġhe	Ġcan	Ġsleep	Ġor	Ġtake	Ġa	Ġbreak	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

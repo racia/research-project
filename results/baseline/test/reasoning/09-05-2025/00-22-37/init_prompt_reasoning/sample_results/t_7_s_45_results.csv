@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+721	7	45	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the bathroom.
+2. Mary travelled to the office.
+3. Sandra went back to the bathroom.
+4. John went to the bedroom.
+5. Mary went to the hallway.
+6. Mary took the apple there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	from the context sentences, we know that mary went to the office (sentence 2) and then went to the hallway (sentence 5). in the hallway, she took an apple (sentence 6). there is no mention of mary putting down the apple or giving it to anyone, so we can logically infer that she is still carrying the apple. there is no mention of mary carrying any other objects, so the answer is one.	fully	one	True	The context sentences do not mention Mary carrying any objects until sentence 6, where it is mentioned that Mary took the apple there. This implies that Mary is carrying the apple.		"Reasoning: The context sentences do not mention Mary carrying any objects until sentence 6, where it is mentioned that Mary took the apple there. This implies that Mary is carrying the apple.
+
+Answer: one"	0.0238	0.0238	False	False	False	True	0
+722	7	45	2	"*TASK*
+Here are the context sentences:
+8. Sandra went to the kitchen.
+9. Sandra picked up the football there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	the context sentences 8 and 9 are about sandra, not mary. they inform us that sandra went to the kitchen and picked up a football there. however, the question asks about mary. to answer this question, we need to refer to the previous context sentences. from the previous context sentences, we know that mary took an apple in the hallway (sentence 6). there is no mention of mary putting down the apple or giving it to anyone, so we can logically infer that	none	none	False	There is no mention of Mary in the given context sentences. The sentences only mention Sandra's actions, and there is no mention of Mary carrying any objects.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Sandra's actions, and there is no mention of Mary carrying any objects.
+
+Answer: none"	0.0	0.0263	False	False	False	True	0
+723	7	45	3	"*TASK*
+Here are the context sentences:
+11. John travelled to the office.
+12. Sandra dropped the football.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	"from the context sentence 9, we know that sandra picked up the football in the kitchen. however, in sentence 12, it is stated that sandra dropped the football. this implies that sandra is no longer carrying the football. therefore, the answer to the question ""how many objects is sandra carrying?"" is none."	partially	none	True	According to sentence 9, Sandra picked up the football, but in sentence 12, it is mentioned that Sandra dropped the football. This implies that Sandra was carrying the football, but dropped it.		"Reasoning: According to sentence 9, Sandra picked up the football, but in sentence 12, it is mentioned that Sandra dropped the football. This implies that Sandra was carrying the football, but dropped it.
+
+Answer: none"	0.0	0.0426	False	False	False	True	0
+724	7	45	4	"*TASK*
+Here are the context sentences:
+14. Mary dropped the apple.
+15. Sandra went to the bathroom.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	from the previous context sentences, we know that sandra picked up the football in the kitchen (sentence 9) and then dropped it (sentence 12). there is no mention of sandra picking up any other object after that. the new context sentences (14 and 15) do not provide any information about sandra carrying any objects. therefore, we can logically infer that sandra is not carrying any objects, and the answer to the question is none.	none	none	True	There is no mention of Sandra carrying any objects in the given context sentences. The sentences only mention Sandra's actions, and there is no mention of Sandra carrying any objects.		"Reasoning: There is no mention of Sandra carrying any objects in the given context sentences. The sentences only mention Sandra's actions, and there is no mention of Sandra carrying any objects.
+
+Answer: none"	0.0488	0.0488	False	False	False	True	0
+725	7	45	5	"*TASK*
+Here are the context sentences:
+17. Sandra went back to the kitchen.
+18. Sandra grabbed the football there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	"from the previous context sentences, we know that sandra dropped the football (sentence 12). however, in sentence 18, it is stated that sandra grabbed the football again in the kitchen. this implies that sandra is now carrying the football. there is no mention of sandra carrying any other objects, so the answer to the question ""how many objects is sandra carrying?"" is one."	partially	one	True	According to sentence 18, Sandra grabbed the football, which implies that Sandra is carrying the football.		"Reasoning: According to sentence 18, Sandra grabbed the football, which implies that Sandra is carrying the football.
+
+Answer: one"	0.037	0.1111	False	False	False	False	0

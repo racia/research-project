@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+496	11	100	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the bathroom.
+2. After that he moved to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"the context sentences describe daniel's movements, first to the bathroom and then to the bedroom. since the last movement mentioned is ""he moved to the bedroom"", it can be logically inferred that daniel's current location is the bedroom."	fully	bedroom	True	According to the context sentences, Daniel first went to the bathroom and then moved to the bedroom. Therefore, his current location is the bedroom.		"assistant
+
+Reasoning: According to the context sentences, Daniel first went to the bathroom and then moved to the bedroom. Therefore, his current location is the bedroom.
+
+Answer: bedroom"	0.2308	0.0513	False	False	False	False	0
+497	11	100	2	"*TASK*
+Here are the context sentences:
+4. Daniel went back to the office.
+5. Then he went to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"the context sentences describe daniel's movements, first going back to the office and then moving to the hallway. since the last movement mentioned is ""he went to the hallway"", it can be logically inferred that daniel's current location is the hallway."	fully	hallway	True	According to the context sentences, Daniel went back to the office and then moved to the hallway. Therefore, his current location is the hallway.		"Reasoning: According to the context sentences, Daniel went back to the office and then moved to the hallway. Therefore, his current location is the hallway.
+
+Answer: hallway"	0.1143	0.0571	False	False	False	False	0
+498	11	100	3	"*TASK*
+Here are the context sentences:
+7. John went to the bedroom.
+8. Following that he journeyed to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	"the context sentences describe john's movements, first going to the bedroom and then journeying to the bathroom. since the last movement mentioned is ""he journeyed to the bathroom"", it can be logically inferred that john's current location is the bathroom."	fully	bathroom	True	According to the context sentences, John went to the bedroom and then journeyed to the bathroom. Therefore, his current location is the bathroom.		"Reasoning: According to the context sentences, John went to the bedroom and then journeyed to the bathroom. Therefore, his current location is the bathroom.
+
+Answer: bathroom"	0.0571	0.0571	False	False	False	False	0
+499	11	100	4	"*TASK*
+Here are the context sentences:
+10. Sandra travelled to the hallway.
+11. Following that she went to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"the context sentences describe sandra's movements, first traveling to the hallway and then going to the bathroom. since the last movement mentioned is ""she went to the bathroom"", it can be logically inferred that sandra's current location is the bathroom."	fully	bathroom	True	According to the context sentences, Sandra travelled to the hallway and then went to the bathroom. Therefore, her current location is the bathroom.		"Reasoning: According to the context sentences, Sandra travelled to the hallway and then went to the bathroom. Therefore, her current location is the bathroom.
+
+Answer: bathroom"	0.0294	0.0588	False	False	False	False	0
+500	11	100	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the bathroom.
+14. Then she journeyed to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	"the context sentences describe mary's movements, first moving to the bathroom and then journeying to the garden. since the last movement mentioned is ""she journeyed to the garden"", it can be logically inferred that mary's current location is the garden."	fully	garden	True	According to the context sentences, Mary moved to the bathroom and then journeyed to the garden. Therefore, her current location is the garden.		"Reasoning: According to the context sentences, Mary moved to the bathroom and then journeyed to the garden. Therefore, her current location is the garden.
+
+Answer: garden"	0.0571	0.0571	False	False	False	False	0

@@ -1,0 +1,15 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+92	16	92	1	"*TASK*
+Here are the context sentences:
+1. Bernhard is a frog.
+2. Brian is a frog.
+3. Greg is a rhino.
+4. Brian is yellow.
+5. Lily is a frog.
+6. Greg is yellow.
+7. Lily is gray.
+8. Bernhard is gray.
+9. Julius is a frog.
+
+Now, answer the following question:
+What color is Julius?"	gray	since there is no direct information about julius's color, we need to make an inference. we know that bernhard and lily are both gray, and they are both frogs. julius is also a frog. it is logical to assume that, like bernhard and lily, julius is also gray, as there is no information to suggest otherwise.	fully	gray	True			Answer: gray	0.0	0.75	False	False	False	False	0

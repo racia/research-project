@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġoffice	Ġor	Ġany	Ġother	Ġlocation	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠSandra	's	Ġmovements	,	Ġwhich	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJohn	's	Ġwhereabouts	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

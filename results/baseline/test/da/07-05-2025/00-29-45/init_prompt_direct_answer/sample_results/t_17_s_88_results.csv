@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+797	17	88	1	"*TASK*
+Here are the context sentences:
+1. The red sphere is to the right of the yellow square.
+2. The red sphere is above the pink rectangle.
+
+Now, answer the following question:
+Is the yellow square to the right of the pink rectangle?"	no	from the context sentences, we know that the red sphere is to the right of the yellow square (sentence 1) and the red sphere is above the pink rectangle (sentence 2). since the red sphere is above the pink rectangle, it means the pink rectangle is below the red sphere. now, if the yellow square were to the right of the pink rectangle, the red sphere would be above and to the right of the pink rectangle, which would mean the yellow square is also	fully	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+798	17	88	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the yellow square below the pink rectangle?"	no	from the context sentences, we know that the red sphere is above the pink rectangle (sentence 2). we also know that the red sphere is to the right of the yellow square (sentence 1). since the red sphere is above the pink rectangle, and the yellow square is to the right of the red sphere, it can be logically inferred that the yellow square is not below the pink rectangle. if the yellow square were below the pink rectangle, it would mean the red sphere is	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+799	17	88	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle above the yellow square?"	no	from the context sentences, we know that the red sphere is above the pink rectangle (sentence 2) and the red sphere is to the right of the yellow square (sentence 1). since the red sphere is above the pink rectangle, and the pink rectangle is below the red sphere, it can be logically inferred that the pink rectangle is not above the yellow square. if the pink rectangle were above the yellow square, it would mean the red sphere is above the pink rectangle and also	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+800	17	88	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle above the yellow square?"	no	"we already established in the previous question that the yellow square is not below the pink rectangle. if the pink rectangle were above the yellow square, it would mean the yellow square is below the pink rectangle, which contradicts our previous conclusion. therefore, the pink rectangle cannot be above the yellow square, and the correct answer is indeed ""no""."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+801	17	88	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the yellow square below the pink rectangle?"	no	we know that the red sphere is above the pink rectangle (sentence 2) and the red sphere is to the right of the yellow square (sentence 1). if the yellow square were below the pink rectangle, it would mean the red sphere is above and to the right of the pink rectangle, which would also mean the yellow square is below the red sphere. however, there is no information suggesting the yellow square is below the red sphere. therefore, it can be logically inferred that	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+802	17	88	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the yellow square to the right of the pink rectangle?"	no	"""reasoning: <reasoning>"""	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+803	17	88	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the yellow square to the right of the pink rectangle?"	no	"""reasoning: <reasoning>"""	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+804	17	88	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the yellow square to the left of the pink rectangle?"	yes	"""reasoning: <reasoning>"""	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	5	,	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġcinema	,	Ġwhich	Ġimplies	Ġthat	ĠJulie	Ġis	Ġnow	Ġin	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

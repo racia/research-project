@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+226	6	46	1	"*TASK*
+Here are the context sentences:
+1. Mary picked up the milk there.
+2. John journeyed to the garden.
+
+Now, answer the following question:
+Is John in the garden?"	yes	"the context sentence ""john journeyed to the garden"" implies that john's action of journeying is directed towards the garden, which suggests that he has reached his destination. therefore, it can be logically concluded that john is in the garden."	fully	yes	True	"According to context sentence 2, ""John journeyed to the garden"", which implies that John has moved to the garden."		"assistant
+
+Reasoning: According to context sentence 2, ""John journeyed to the garden"", which implies that John has moved to the garden.
+
+Answer: yes"	0.0571	0.0286	False	False	False	False	0
+227	6	46	2	"*TASK*
+Here are the context sentences:
+4. Mary put down the milk.
+5. Sandra grabbed the football there.
+
+Now, answer the following question:
+Is John in the garden?"	yes	"the question ""is john in the garden?"" does not relate to the new context sentences ""mary put down the milk"" and ""sandra grabbed the football there"" as they do not provide any new information about john's location. however, we can refer back to the previous context sentence ""john journeyed to the garden"" which implies that john is in the garden. therefore, the answer remains ""yes""."	none	yes	True	"The context sentences 4 and 5 do not provide any new information about John's location. We can refer back to context sentence 2, ""John journeyed to the garden"", which still holds true."		"Reasoning: The context sentences 4 and 5 do not provide any new information about John's location. We can refer back to context sentence 2, ""John journeyed to the garden"", which still holds true.
+
+Answer: yes"	0.0612	0.0204	False	False	False	True	0
+228	6	46	3	"*TASK*
+Here are the context sentences:
+7. John journeyed to the bathroom.
+8. John grabbed the apple there.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	"the context sentence ""john journeyed to the bathroom"" implies that john's current location is the bathroom. there is no information provided about john being in the bedroom. in fact, the sentence ""john grabbed the apple there"" further reinforces that john is in the bathroom, as ""there"" likely refers to the bathroom. therefore, the answer is ""no"", john is not in the bedroom."	fully	no	True	There is no information about John being in the bedroom. Initially, John was in the garden (context sentence 2), and then he moved to the bathroom (context sentence 7).		"Reasoning: There is no information about John being in the bedroom. Initially, John was in the garden (context sentence 2), and then he moved to the bathroom (context sentence 7).
+
+Answer: no"	0.0	0.0227	False	False	False	True	0
+229	6	46	4	"*TASK*
+Here are the context sentences:
+10. Sandra discarded the football.
+11. Mary travelled to the bedroom.
+
+Now, answer the following question:
+Is John in the bathroom?"	yes	"the question ""is john in the bathroom?"" does not relate to the new context sentences ""sandra discarded the football"" and ""mary travelled to the bedroom"" as they do not provide any new information about john's location. however, we can refer back to the previous context sentence ""john journeyed to the bathroom"" which implies that john is in the bathroom. additionally, there is no information provided that suggests john has left the bathroom. therefore, the answer remains ""yes"", john"	none	yes	True	"The context sentences 10 and 11 do not provide any new information about John's location. We can refer back to context sentence 7, ""John journeyed to the bathroom"", and context sentence 8, ""John grabbed the apple there"", which still hold true."		"Reasoning: The context sentences 10 and 11 do not provide any new information about John's location. We can refer back to context sentence 7, ""John journeyed to the bathroom"", and context sentence 8, ""John grabbed the apple there"", which still hold true.
+
+Answer: yes"	0.0	0.0161	False	False	False	True	0
+230	6	46	5	"*TASK*
+Here are the context sentences:
+13. Sandra grabbed the football there.
+14. Sandra went back to the kitchen.
+
+Now, answer the following question:
+Is Mary in the hallway?"	no	"there is no information provided about mary's location in the current context sentences ""sandra grabbed the football there"" and ""sandra went back to the kitchen"". however, we can refer back to the previous context sentence ""mary travelled to the bedroom"" which implies that mary is in the bedroom, not in the hallway. therefore, the answer is ""no"", mary is not in the hallway."	none	no	True	"There is no information about Mary being in the hallway. According to context sentence 11, ""Mary travelled to the bedroom"", which implies that Mary is in the bedroom."		"Reasoning: There is no information about Mary being in the hallway. According to context sentence 11, ""Mary travelled to the bedroom"", which implies that Mary is in the bedroom.
+
+Answer: no"	0.0	0.0244	False	False	False	True	0

@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+206	10	42	1	"*TASK*
+Here are the context sentences:
+1. Mary is either in the bedroom or the park.
+2. Bill went to the park.
+
+Now, answer the following question:
+Is Bill in the bedroom?"	no	since bill went to the park (context sentence 2), and mary is either in the bedroom or the park (context sentence 1), it can be inferred that bill is not in the bedroom. if bill were in the bedroom, it would contradict the fact that he went to the park. therefore, the answer is no, bill is not in the bedroom.	fully	no	True	According to sentence 2, Bill went to the park, which means Bill is not in the bedroom.		"Reasoning: According to sentence 2, Bill went to the park, which means Bill is not in the bedroom. 
+Answer: no"	0.1724	0.0345	False	False	False	False	0
+207	10	42	2	"*TASK*
+Here are the context sentences:
+4. Mary went to the office.
+5. Fred journeyed to the office.
+
+Now, answer the following question:
+Is Fred in the park?"	no	since fred journeyed to the office (context sentence 5), it can be inferred that fred is not in the park. if fred were in the park, it would contradict the fact that he journeyed to the office, which implies a change of location from one place to another. therefore, the answer is no, fred is not in the park.	fully	no	True	There is no information about Fred being in the park. Sentence 5 only mentions Fred journeying to the office, which does not imply Fred being in the park.		"Reasoning: There is no information about Fred being in the park. Sentence 5 only mentions Fred journeying to the office, which does not imply Fred being in the park. 
+Answer: no"	0.1463	0.0244	False	False	False	True	0
+208	10	42	3	"*TASK*
+Here are the context sentences:
+7. Mary is in the bedroom.
+8. Mary is in the school.
+
+Now, answer the following question:
+Is Mary in the school?"	yes	"according to context sentence 8, ""mary is in the school"", which directly states that mary is in the school. this sentence explicitly confirms the location of mary, and therefore, the answer is yes, mary is in the school."	fully	yes	True	Sentence 8 explicitly states that Mary is in the school.		"Reasoning: Sentence 8 explicitly states that Mary is in the school. 
+Answer: yes"	0.1	0.05	False	False	False	False	0
+209	10	42	4	"*TASK*
+Here are the context sentences:
+10. Fred moved to the kitchen.
+11. Fred journeyed to the cinema.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	"there is no information provided about mary's location in the context sentences. the context sentences only mention fred's movements, but do not provide any information about mary. therefore, it cannot be determined whether mary is in the bedroom or not, based on the provided context. however, since the answer is ""no"", it can be inferred that mary's location was previously mentioned in a previous part of the conversation history, and it was stated that she was not in the bedroom."	none	yes	False	Sentence 7 (from previous context) stated that Mary is in the bedroom, and there is no new information that suggests Mary has moved.		"Reasoning: Sentence 7 (from previous context) stated that Mary is in the bedroom, and there is no new information that suggests Mary has moved. 
+Answer: yes"	0.0556	0.0278	False	False	False	True	0
+210	10	42	5	"*TASK*
+Here are the context sentences:
+13. Bill went to the kitchen.
+14. Bill is either in the school or the park.
+
+Now, answer the following question:
+Is Fred in the school?"	no	"the context sentences do not provide any information about fred's location. the sentences only mention bill's movements and possible locations, but do not mention fred at all. therefore, it cannot be determined whether fred is in the school or not, based on the provided context. the answer ""no"" seems to be unrelated to the provided context, and it is likely that the correct answer depends on previous parts of the conversation history that are not provided."	none	not mentioned	False	There is no information about Fred being in the school. The context only mentions Fred moving to the kitchen and then journeying to the cinema (sentences 10 and 11), but not about being in the school.		"Reasoning: There is no information about Fred being in the school. The context only mentions Fred moving to the kitchen and then journeying to the cinema (sentences 10 and 11), but not about being in the school. 
+Answer: not mentioned"	0.0943	0.0189	False	False	False	True	0

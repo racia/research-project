@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+485	17	49	1	"*TASK*
+Here are the context sentences:
+1. The yellow square is to the right of the blue square.
+2. The yellow square is to the left of the triangle.
+
+Now, answer the following question:
+Is the triangle to the left of the blue square?"	no	from the context sentences, we know that the yellow square is to the right of the blue square (sentence 1) and to the left of the triangle (sentence 2). this means that the yellow square is between the blue square and the triangle. since the yellow square is to the right of the blue square, the triangle must be to the right of the yellow square, which in turn means that the triangle is to the right of the blue square. therefore, the triangle is	fully	no	True			Answer: no	0.5	0.5	False	False	False	False	0
+486	17	49	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the left of the triangle?"	yes	from the previous context sentences, we know that the yellow square is to the right of the blue square (sentence 1) and to the left of the triangle (sentence 2). since the yellow square is between the blue square and the triangle, and it is to the left of the triangle, the blue square must be to the left of the triangle.	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+487	17	49	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle above the blue square?"	no	"there is no information provided about the vertical positions of the objects (blue square, yellow square, and triangle). the context sentences only mention the left-right relationships between them. therefore, we cannot conclude that the triangle is above or below the blue square. the answer ""no"" simply means that there is no evidence to suggest that the triangle is above the blue square, but it does not imply that it is below or at the same level as the blue square."	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0
+488	17	49	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the left of the triangle?"	yes	from the previous context sentences, we know that the yellow square is to the right of the blue square (sentence 1) and to the left of the triangle (sentence 2). since the yellow square is between the blue square and the triangle, and it is to the left of the triangle, the blue square must be to the left of the triangle.	none	no	False			Answer: no	0.25	0.5	False	False	False	False	0
+489	17	49	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the right of the blue square?"	yes	from the previous context sentences, we know that the yellow square is to the right of the blue square (sentence 1) and to the left of the triangle (sentence 2). since the yellow square is between the blue square and the triangle, and it is to the left of the triangle, the triangle must be to the right of the blue square.	none	not mentioned	False			Answer: not mentioned	0.2	0.4	False	False	False	True	0
+490	17	49	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the right of the blue square?"	yes	"""reasoning: <reasoning>"""	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+491	17	49	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the right of the blue square?"	yes	"""reasoning: <reasoning>"""	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+492	17	49	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle below the blue square?"	no	"""reasoning: <reasoning>"""	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0

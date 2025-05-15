@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+646	12	30	1	"*TASK*
+Here are the context sentences:
+1. Daniel and John journeyed to the bedroom.
+2. Sandra and Mary went to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"according to context sentence 1, ""daniel and john journeyed to the bedroom"", which explicitly states that daniel went to the bedroom. therefore, the answer to the question ""where is daniel?"" is indeed the bedroom."	fully	bedroom	True	According to context sentence 1, Daniel and John journeyed to the bedroom, which means Daniel is currently in the bedroom.		"assistant
+
+Reasoning: According to context sentence 1, Daniel and John journeyed to the bedroom, which means Daniel is currently in the bedroom.
+
+Answer: bedroom"	0.0571	0.0286	False	False	False	False	0
+647	12	30	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Mary travelled to the hallway.
+5. Mary and Sandra went to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"according to context sentence 5, ""mary and sandra went to the bedroom"", which explicitly states that mary went to the bedroom. therefore, the answer to the question ""where is mary?"" is indeed the bedroom."	fully	bedroom	True	According to context sentence 5, Mary and Sandra went to the bedroom, which means Mary is currently in the bedroom.		"Reasoning: According to context sentence 5, Mary and Sandra went to the bedroom, which means Mary is currently in the bedroom.
+
+Answer: bedroom"	0.1935	0.0323	False	False	False	False	0
+648	12	30	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Daniel journeyed to the hallway.
+8. Daniel and John journeyed to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	"according to context sentence 8, ""daniel and john journeyed to the kitchen"", which explicitly states that john went to the kitchen. therefore, the answer to the question ""where is john?"" is indeed the kitchen."	fully	kitchen	True	According to context sentence 8, Daniel and John journeyed to the kitchen, which means John is currently in the kitchen.		"Reasoning: According to context sentence 8, Daniel and John journeyed to the kitchen, which means John is currently in the kitchen.
+
+Answer: kitchen"	0.0312	0.0312	False	False	False	False	0
+649	12	30	4	"*TASK*
+Here are the context sentences:
+10. John and Sandra moved to the bathroom.
+11. Mary and John went back to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	"according to context sentence 10, ""john and sandra moved to the bathroom"", which means john was in the bathroom. however, context sentence 11, ""mary and john went back to the kitchen"", indicates that john moved from the bathroom to the kitchen. therefore, the answer to the question ""where is john?"" is indeed the kitchen."	fully	kitchen	True	According to context sentence 11, Mary and John went back to the kitchen, which means John is currently in the kitchen.		"Reasoning: According to context sentence 11, Mary and John went back to the kitchen, which means John is currently in the kitchen.
+
+Answer: kitchen"	0.125	0.0312	False	False	False	False	0
+650	12	30	5	"*TASK*
+Here are the context sentences:
+13. Mary and Daniel moved to the office.
+14. Daniel and John went back to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"according to context sentence 13, ""mary and daniel moved to the office"", which means daniel was in the office. however, context sentence 14, ""daniel and john went back to the hallway"", indicates that daniel moved from the office to the hallway. therefore, the answer to the question ""where is daniel?"" is indeed the hallway."	fully	hallway	True	According to context sentence 14, Daniel and John went back to the hallway, which means Daniel is currently in the hallway.		"Reasoning: According to context sentence 14, Daniel and John went back to the hallway, which means Daniel is currently in the hallway.
+
+Answer: hallway"	0.0312	0.0312	False	False	False	False	0

@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1395	18	49	1	"*TASK*
+Here are the context sentences:
+1. The box of chocolates fits inside the box.
+2. The suitcase fits inside the chest.
+3. The container is bigger than the box.
+4. The container is bigger than the suitcase.
+5. The box of chocolates fits inside the box.
+
+Now, answer the following question:
+Does the box of chocolates fit in the container?"	yes	from context lines 1 and 5, we know that the box of chocolates fits inside the box. from context line 3, we know that the container is bigger than the box. therefore, since the box of chocolates fits inside the box, and the container is bigger than the box, it can be logically inferred that the box of chocolates will also fit inside the container.	fully	yes	True	Since the container is bigger than the box (sentence 3), and the box of chocolates fits inside the box (sentence 5), it can be inferred that the box of chocolates can also fit inside the container.		"Reasoning: Since the container is bigger than the box (sentence 3), and the box of chocolates fits inside the box (sentence 5), it can be inferred that the box of chocolates can also fit inside the container.
+
+Answer: yes"	0.1	0.04	False	False	False	False	0
+1396	18	49	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the box of chocolates?"	yes	from the previous context lines, we know that the container is bigger than the box (context line 3), and the box of chocolates fits inside the box (context lines 1 and 5). therefore, since the container is bigger than the box, and the box of chocolates fits inside the box, it can be logically inferred that the container is bigger than the box of chocolates.	none	yes	True	The container is bigger than the box (sentence 3), and the box of chocolates fits inside the box (sentence 5). Therefore, the container is also bigger than the box of chocolates.		"Reasoning: The container is bigger than the box (sentence 3), and the box of chocolates fits inside the box (sentence 5). Therefore, the container is also bigger than the box of chocolates.
+
+Answer: yes"	0.0435	0.0435	False	False	False	False	0
+1397	18	49	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the box of chocolates?"	yes	we know that the container is bigger than the box (context line 3) and the box of chocolates fits inside the box (context lines 1 and 5). since the box of chocolates fits inside the box, the box is at least as big as the box of chocolates. therefore, if the container is bigger than the box, it must also be bigger than the box of chocolates.	none	yes	True	The container is bigger than the box (sentence 3), and the box of chocolates fits inside the box (sentence 5). Therefore, the container is also bigger than the box of chocolates.		"Reasoning: The container is bigger than the box (sentence 3), and the box of chocolates fits inside the box (sentence 5). Therefore, the container is also bigger than the box of chocolates.
+
+Answer: yes"	0.0217	0.0435	False	False	False	False	0
+1398	18	49	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the box of chocolates?"	yes	we know that the container is bigger than the box (context line 3) and the box of chocolates fits inside the box (context lines 1 and 5). since the box of chocolates fits inside the box, it means the box is at least as big as the box of chocolates. therefore, if the container is bigger than the box, it must also be bigger than the box of chocolates, which is a smaller entity that fits inside the box.	none	yes	True	The container is bigger than the box (sentence 3), and the box of chocolates fits inside the box (sentence 5). Therefore, the container is also bigger than the box of chocolates.		"Reasoning: The container is bigger than the box (sentence 3), and the box of chocolates fits inside the box (sentence 5). Therefore, the container is also bigger than the box of chocolates.
+
+Answer: yes"	0.0217	0.0435	False	False	False	False	0
+1399	18	49	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box of chocolates fit in the container?"	yes	we know that the box of chocolates fits inside the box (context lines 1 and 5), and the container is bigger than the box (context line 3). since the box of chocolates fits inside the box, and the container is bigger than the box, it can be logically inferred that the box of chocolates will also fit inside the container.	none	yes	True	The container is bigger than the box (sentence 3), and the box of chocolates fits inside the box (sentence 5). Since the container is bigger than the box, it can accommodate the box of chocolates, which fits inside the box.		"Reasoning: The container is bigger than the box (sentence 3), and the box of chocolates fits inside the box (sentence 5). Since the container is bigger than the box, it can accommodate the box of chocolates, which fits inside the box.
+
+Answer: yes"	0.0179	0.0357	False	False	False	False	0

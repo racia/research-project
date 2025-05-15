@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+23	.	ĠBill	Ġpassed	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
+24	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġapple	?Ċ

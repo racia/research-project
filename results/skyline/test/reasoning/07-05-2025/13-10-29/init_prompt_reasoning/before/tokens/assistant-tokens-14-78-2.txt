@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	2	,	Ġwe	Ġknow	Ġthat	ĠJulie	Ġwent	Ġto	Ġthe	Ġcinema	Ġyesterday	.	ĠThere	Ġis	Ġno	Ġother	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	ĠJulie	's	Ġexact	Ġlocation	Ġbefore	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġcinema	<|eot_id|>

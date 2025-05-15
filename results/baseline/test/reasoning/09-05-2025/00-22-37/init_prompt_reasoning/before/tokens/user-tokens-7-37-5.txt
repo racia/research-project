@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+14	.	ĠMary	Ġhanded	Ġthe	Ġmilk	Ġto	ĠSandra	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠMary	Ġcarrying	?Ċ

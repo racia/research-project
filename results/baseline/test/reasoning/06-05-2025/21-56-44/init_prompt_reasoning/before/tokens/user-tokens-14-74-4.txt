@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠThis	Ġafternoon	ĠFred	Ġwent	Ġto	Ġthe	Ġcinema	.Ċ
+11	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠFred	Ġbefore	Ġthe	Ġschool	?Ċ

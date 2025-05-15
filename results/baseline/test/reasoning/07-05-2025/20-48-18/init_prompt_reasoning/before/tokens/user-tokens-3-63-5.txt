@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+61	.	ĠDaniel	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+62	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġbedroom	?Ċ

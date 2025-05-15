@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSandra	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġchanges	.	ĠInitially	,	Ġshe	Ġis	Ġwith	ĠMary	Ġin	Ġthe	Ġoffice	.	ĠThen	,	Ġshe	Ġmoves	Ġto	Ġthe	Ġbedroom	Ġwith	ĠMary	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

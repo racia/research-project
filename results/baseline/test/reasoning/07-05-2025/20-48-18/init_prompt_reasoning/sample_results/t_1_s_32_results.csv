@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+156	1	32	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the bathroom.
+2. Daniel journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"according to context sentence 1, ""mary moved to the bathroom"", which explicitly states mary's location as the bathroom. therefore, the answer to the question ""where is mary?"" is indeed the bathroom."	fully	bathroom	True	Mary moved to the bathroom, which means she is currently located in the bathroom. There is no information about Daniel's location, so we can't infer anything about Mary's location from his journey.		"Reasoning: Mary moved to the bathroom, which means she is currently located in the bathroom. There is no information about Daniel's location, so we can't infer anything about Mary's location from his journey.
+
+Answer: bathroom"	0.0217	0.0217	False	False	False	True	0
+157	1	32	2	"*TASK*
+Here are the context sentences:
+4. Daniel went to the garden.
+5. John went to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"according to context sentence 4, ""daniel went to the garden"", which explicitly states daniel's location as the garden. therefore, the answer to the question ""where is daniel?"" is indeed the garden."	fully	garden	True	Daniel went to the garden, which means he is currently located in the garden. There is no information about John's location, so we can't infer anything about Daniel's location from his journey.		"Reasoning: Daniel went to the garden, which means he is currently located in the garden. There is no information about John's location, so we can't infer anything about Daniel's location from his journey.
+
+Answer: garden"	0.0435	0.0217	False	False	False	True	0
+158	1	32	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the office.
+8. Sandra went to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"there is no information provided about john's movement or location in the given context sentences (7 and 8), which only mention sandra's movements. however, we can infer the answer from the previous context sentences (not provided in this part, but assumed to exist in the conversation history). specifically, sentence 5 from the previous part states ""john went to the bedroom"", which explicitly sets john's location as the bedroom. therefore, the answer to the question ""where is john?"" is"	none	not mentioned	False	There is no information about John's location in the given context sentences. The sentences only mention Sandra's journeys to the office and bathroom, but do not provide any information about John.		"Reasoning: There is no information about John's location in the given context sentences. The sentences only mention Sandra's journeys to the office and bathroom, but do not provide any information about John.
+
+Answer: not mentioned"	0.0227	0.0227	False	False	False	True	0
+159	1	32	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the bedroom.
+11. John went back to the office.
+
+Now, answer the following question:
+Where is John?"	office	"according to context sentence 11, ""john went back to the office"", which explicitly states john's location as the office. therefore, the answer to the question ""where is john?"" is indeed the office."	fully	office	True	John went back to the office, which means he is currently located in the office.		"Reasoning: John went back to the office, which means he is currently located in the office.
+
+Answer: office"	0.0	0.0417	False	False	False	False	0
+160	1	32	5	"*TASK*
+Here are the context sentences:
+13. Mary went back to the office.
+14. Mary journeyed to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"according to context sentence 13, ""mary went back to the office"", which sets mary's initial location as the office. however, context sentence 14, ""mary journeyed to the hallway"", indicates that mary moved from the office to the hallway. therefore, the answer to the question ""where is mary?"" is indeed the hallway, as it is her current location after moving from the office."	fully	hallway	True	Mary went back to the office, which means she was previously in the office. Then, she journeyed to the hallway, which means she is currently located in the hallway.		"Reasoning: Mary went back to the office, which means she was previously in the office. Then, she journeyed to the hallway, which means she is currently located in the hallway.
+
+Answer: hallway"	0.0	0.0238	False	False	False	False	0

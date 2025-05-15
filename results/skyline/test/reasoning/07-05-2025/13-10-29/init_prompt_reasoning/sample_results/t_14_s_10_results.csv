@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1546	14	10	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Fred travelled to the bedroom.
+2. Bill travelled to the bedroom yesterday.
+3. Yesterday Julie went to the cinema.
+4. This morning Fred went to the school.
+
+Now, answer the following question:
+Where was Fred before the school?"	bedroom	"from context sentence 1, ""yesterday fred travelled to the bedroom"", we know that fred was in the bedroom yesterday. then, from context sentence 4, ""this morning fred went to the school"", we can infer that before going to the school, fred was at the place he was at yesterday, which is the bedroom. therefore, the answer is the bedroom."	fully	bedroom	True	From context sentence 1, we know that Fred was in the bedroom yesterday. There is no other information about Fred's location between yesterday and this morning. Therefore, we can infer that Fred was in the bedroom before going to the school this morning.		"assistant
+
+Reasoning: From context sentence 1, we know that Fred was in the bedroom yesterday. There is no other information about Fred's location between yesterday and this morning. Therefore, we can infer that Fred was in the bedroom before going to the school this morning.
+
+Answer: bedroom"	0.1	0.0333	False	False	False	True	0
+1547	14	10	2	"*TASK*
+Here are the context sentences:
+6. This morning Julie moved to the bedroom.
+7. Fred moved to the office this afternoon.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	cinema	"from context sentence 3, ""yesterday julie went to the cinema"", we know that julie was at the cinema yesterday. then, from context sentence 6, ""this morning julie moved to the bedroom"", we can infer that before moving to the bedroom, julie was at the place she was at yesterday, which is the cinema. therefore, the answer is the cinema."	partially	cinema	True	From context sentence 3, we know that Julie was in the cinema yesterday. There is no other information about Julie's location between yesterday and this morning. Therefore, we can infer that Julie was in the cinema before moving to the bedroom this morning.		"assistant
+
+Reasoning: From context sentence 3, we know that Julie was in the cinema yesterday. There is no other information about Julie's location between yesterday and this morning. Therefore, we can infer that Julie was in the cinema before moving to the bedroom this morning.
+
+Answer: cinema"	0.0167	0.0333	False	False	False	True	0
+1548	14	10	3	"*TASK*
+Here are the context sentences:
+9. Mary travelled to the kitchen yesterday.
+10. This evening Fred went back to the school.
+
+Now, answer the following question:
+Where was Fred before the school?"	office	"from context sentence 7, ""fred moved to the office this afternoon"", we know that fred was at the office in the afternoon. then, from context sentence 10, ""this evening fred went back to the school"", we can infer that before going back to the school, fred was at the place he was at in the afternoon, which is the office. therefore, the answer is the office."	partially	office	True	From context sentence 7, we know that Fred was in the office this afternoon. There is no other information about Fred's location between this afternoon and this evening. Therefore, we can infer that Fred was in the office before going back to the school this evening.		"Reasoning: From context sentence 7, we know that Fred was in the office this afternoon. There is no other information about Fred's location between this afternoon and this evening. Therefore, we can infer that Fred was in the office before going back to the school this evening.
+
+Answer: office"	0.1833	0.0333	False	False	False	True	0
+1549	14	10	4	"*TASK*
+Here are the context sentences:
+12. Mary moved to the school this afternoon.
+13. Mary went back to the office this morning.
+
+Now, answer the following question:
+Where was Mary before the school?"	office	"from context sentence 13, ""mary went back to the office this morning"", we can infer that mary was at the office in the morning. then, from context sentence 12, ""mary moved to the school this afternoon"", we can infer that before moving to the school, mary was at the place she was at in the morning, which is the office. therefore, the answer is the office."	fully	office	True	This is a trick question. The context sentences are in reverse chronological order. Sentence 13 happens before sentence 12. Therefore, Mary went back to the office this morning, and then moved to the school this afternoon. So, Mary was in the office before the school.		"Reasoning: This is a trick question. The context sentences are in reverse chronological order. Sentence 13 happens before sentence 12. Therefore, Mary went back to the office this morning, and then moved to the school this afternoon. So, Mary was in the office before the school.
+
+Answer: office"	0.0323	0.0323	False	False	False	False	0
+1550	14	10	5	"*TASK*
+Here are the context sentences:
+15. Julie went back to the park this afternoon.
+16. Bill went to the school this morning.
+
+Now, answer the following question:
+Where was Julie before the park?"	bedroom	"there is no direct information about julie's location before the park in the provided context sentences. however, we can look at the previous context sentences. from context sentence 6, ""this morning julie moved to the bedroom"", we know that julie was at the bedroom in the morning. then, from context sentence 15, ""julie went back to the park this afternoon"", we can infer that before going back to the park, julie was at the place she was at in"	partially	not mentioned	False	There is no information about Julie's location before going back to the park this afternoon. The context sentences only mention Julie's movement to the park, but not her previous location.		"Reasoning: There is no information about Julie's location before going back to the park this afternoon. The context sentences only mention Julie's movement to the park, but not her previous location.
+
+Answer: not mentioned"	0.0233	0.0465	False	False	False	True	0

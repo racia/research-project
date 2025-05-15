@@ -1,0 +1,62 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1056	3	12	1	"*TASK*
+Here are the context sentences:
+1. Mary got the football.
+2. Mary discarded the football.
+3. Mary picked up the football.
+4. John went to the kitchen.
+5. Mary moved to the office.
+6. Mary went to the hallway.
+
+Now, answer the following question:
+Where was the football before the hallway?"	office	from the context sentences, we know that mary got the football (sentence 1), discarded it (sentence 2), and then picked it up again (sentence 3). this implies that the football was with mary after she picked it up. then, mary moved to the office (sentence 5). since the football was with mary, it is logical to assume that the football also moved to the office with mary. therefore, before mary went to the hallway (sentence 6),	fully	office	True	The football was discarded by Mary, and then Mary picked it up again. After that, Mary went to the hallway. Since the football was picked up by Mary before she went to the hallway, it was in the office, where Mary moved to before going to the hallway.		"Reasoning: The football was discarded by Mary, and then Mary picked it up again. After that, Mary went to the hallway. Since the football was picked up by Mary before she went to the hallway, it was in the office, where Mary moved to before going to the hallway.
+
+Answer: office"	0.2742	0.0484	False	False	False	False	0
+1057	3	12	2	"*TASK*
+Here are the context sentences:
+8. Mary picked up the apple.
+9. Sandra moved to the office.
+10. Daniel moved to the kitchen.
+11. Daniel moved to the hallway.
+12. Mary travelled to the garden.
+13. Mary travelled to the kitchen.
+14. Daniel moved to the bathroom.
+15. Mary moved to the office.
+16. Mary put down the apple.
+17. Mary went to the garden.
+
+Now, answer the following question:
+Where was the apple before the office?"	kitchen	from the context sentences, we know that mary picked up the apple (sentence 8). then, mary travelled to the garden (sentence 12) and then to the kitchen (sentence 13), which implies that the apple was with mary in the kitchen. after that, mary moved to the office (sentence 15) and put down the apple (sentence 16). therefore, before mary went to the office, the apple was in the kitchen.	fully	not mentioned	False	The apple was picked up by Mary, and then Mary moved to the office. Since the apple was picked up before Mary moved to the office, it was not in the office initially. The context sentences do not mention where the apple was before Mary picked it up, so we cannot determine its exact location before the office.		"Reasoning: The apple was picked up by Mary, and then Mary moved to the office. Since the apple was picked up before Mary moved to the office, it was not in the office initially. The context sentences do not mention where the apple was before Mary picked it up, so we cannot determine its exact location before the office.
+
+Answer: not mentioned"	0.0694	0.0417	False	False	False	True	0
+1058	3	12	3	"*TASK*
+Here are the context sentences:
+19. Sandra took the apple.
+20. Sandra journeyed to the garden.
+21. Mary went to the office.
+22. Daniel went to the hallway.
+23. Mary journeyed to the bedroom.
+24. Mary discarded the football there.
+
+Now, answer the following question:
+Where was the football before the garden?"	office	from the context sentences, we know that mary went to the office (sentence 21) before she journeyed to the bedroom (sentence 23) and discarded the football there (sentence 24). this implies that the football was with mary in the office before she moved to the bedroom. there is no mention of the football being in the garden or being moved to the garden, so it is logical to conclude that the football was not in the garden before mary discarded it in the bedroom	partially	not mentioned	False	The football was not mentioned in the context sentences until sentence 24, where Mary discarded it in the bedroom. Since the football was not mentioned before that, we cannot determine its location before the garden.		"Reasoning: The football was not mentioned in the context sentences until sentence 24, where Mary discarded it in the bedroom. Since the football was not mentioned before that, we cannot determine its location before the garden.
+
+Answer: not mentioned"	0.0417	0.0625	False	False	False	True	0
+1059	3	12	4	"*TASK*
+Here are the context sentences:
+26. Sandra moved to the hallway.
+27. Daniel travelled to the bedroom.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	office	there is no direct information about the football in the provided context sentences. however, we can infer the answer from the previous conversation history. in the previous conversation, we established that mary discarded the football in the bedroom (sentence 24). before that, mary journeyed to the bedroom from the office (sentence 23). therefore, it is logical to conclude that the football was in the office before it was discarded in the bedroom.	none	not mentioned	False	The football was not mentioned in the context sentences until sentence 24, where Mary discarded it in the bedroom. Since the football was discarded in the bedroom, it was not in the bedroom before that. The context sentences do not mention where the football was before the bedroom.		"Reasoning: The football was not mentioned in the context sentences until sentence 24, where Mary discarded it in the bedroom. Since the football was discarded in the bedroom, it was not in the bedroom before that. The context sentences do not mention where the football was before the bedroom.
+
+Answer: not mentioned"	0.0161	0.0484	False	False	False	True	0
+1060	3	12	5	"*TASK*
+Here are the context sentences:
+29. Sandra discarded the apple.
+30. Mary got the football.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	garden	from the previous conversation history, we know that sandra took the apple (sentence 19) and journeyed to the garden (sentence 20). there is no information about the apple being moved from the garden until sandra discarded it (sentence 29). since sandra discarded the apple, it is logical to conclude that the apple was in the garden before sandra moved to the hallway.	partially	not mentioned	False	The apple was discarded by Sandra, but there is no mention of the apple being in the hallway. The context sentences do not provide information about the apple's location before the hallway.		"Reasoning: The apple was discarded by Sandra, but there is no mention of the apple being in the hallway. The context sentences do not provide information about the apple's location before the hallway.
+
+Answer: not mentioned"	0.1364	0.0682	False	False	False	True	0

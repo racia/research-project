@@ -1,0 +1,31 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2477	20	91	1	"*TASK*
+Here are the context sentences:
+1. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	when antoine is tired, it is logical to assume that he will go to a place where he can rest. in most cases, people go to their bedroom to rest or sleep when they are tired. therefore, based on the context, it is reasonable to conclude that antoine will go to his bedroom.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+2478	20	91	2	"*TASK*
+Here are the context sentences:
+3. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	the context states that jason is tired, which implies that he needs to rest. in the absence of any other information, it is logical to assume that jason will go to a place where he can rest, which is typically a bedroom. this reasoning is similar to the previous scenario with antoine, where being tired led to going to the bedroom.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+2479	20	91	3	"*TASK*
+Here are the context sentences:
+5. Jason went back to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	the context states that jason went back to the bedroom, and the answer is that he is tired. this implies that jason's tiredness is the reason for him going to the bedroom. this is a logical connection, as people often go to their bedroom to rest when they are tired.	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2480	20	91	4	"*TASK*
+Here are the context sentences:
+7. Antoine journeyed to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	earlier in the conversation, it was established that antoine is tired (context line 1). it is logical to assume that antoine's tiredness is the reason for him journeying to the bedroom, as people often go to their bedroom to rest when they are tired. this connection is similar to the one made for jason in context lines 3 and 5.	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2481	20	91	5	"*TASK*
+Here are the context sentences:
+9. Jason got the pajamas there.
+
+Now, answer the following question:
+Why did jason get the pajamas?"	tired	the context states that jason got the pajamas, and the answer is that he is tired. however, being tired does not directly imply getting pajamas. but, considering the previous context (line 3 and 5) where jason is tired and goes to the bedroom, it can be logically inferred that jason got the pajamas because he is preparing to sleep, which is a common activity people do when they are tired.	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0

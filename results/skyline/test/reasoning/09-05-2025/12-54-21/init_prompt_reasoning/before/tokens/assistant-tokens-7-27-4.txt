@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	10	,	ĠJohn	Ġpassed	Ġthe	Ġapple	Ġto	ĠDaniel	,	Ġso	ĠJohn	Ġwas	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.	ĠThen	,	Ġin	Ġsentence	Ġ	11	,	ĠDaniel	Ġhanded	Ġthe	Ġapple	Ġback	Ġto	ĠJohn	,	Ġso	ĠJohn	Ġis	Ġnow	Ġcarrying	Ġthe	Ġapple	Ġagain	.ĊĊ	Answer	:	Ġone	<|eot_id|>

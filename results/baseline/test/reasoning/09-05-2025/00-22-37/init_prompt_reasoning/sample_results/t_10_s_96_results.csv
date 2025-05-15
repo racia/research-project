@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2476	10	96	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the school.
+2. Fred travelled to the school.
+
+Now, answer the following question:
+Is Fred in the school?"	yes	"since fred travelled to the school (context sentence 2), it can be logically inferred that he has arrived at the school. there is no information provided that suggests he left the school after arriving. therefore, it is reasonable to conclude that fred is currently in the school, which aligns with the provided answer ""yes""."	fully	yes	True	According to sentence 2, Fred travelled to the school, which implies that Fred is currently in the school. Additionally, sentence 1 does not contradict this information, as Mary's action of going to the school does not affect Fred's location.		"Reasoning: According to sentence 2, Fred travelled to the school, which implies that Fred is currently in the school. Additionally, sentence 1 does not contradict this information, as Mary's action of going to the school does not affect Fred's location.
+
+Answer: yes"	0.1607	0.0179	False	False	False	True	0
+2477	10	96	2	"*TASK*
+Here are the context sentences:
+4. Julie travelled to the office.
+5. Mary moved to the kitchen.
+
+Now, answer the following question:
+Is Julie in the office?"	yes	"since julie travelled to the office (context sentence 4), it can be logically inferred that she has arrived at the office. there is no information provided that suggests she left the office after arriving. therefore, it is reasonable to conclude that julie is currently in the office, which aligns with the provided answer ""yes"". the information about mary moving to the kitchen (context sentence 5) is irrelevant to julie's location, so it does not affect the conclusion."	fully	yes	True	According to sentence 4, Julie travelled to the office, which implies that Julie is currently in the office.		"Reasoning: According to sentence 4, Julie travelled to the office, which implies that Julie is currently in the office.
+
+Answer: yes"	0.0345	0.0345	False	False	False	False	0
+2478	10	96	3	"*TASK*
+Here are the context sentences:
+7. Mary is either in the park or the bedroom.
+8. Fred moved to the cinema.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	maybe	"the context sentence 7 states that mary is either in the park or the bedroom, which means we have two possible locations for mary. there is no additional information provided that would allow us to eliminate one of these options, so we cannot conclude that mary is definitely in the bedroom. the information about fred moving to the cinema (context sentence 8) is irrelevant to mary's location. therefore, the most logical answer is ""maybe"", as we cannot determine mary's exact location with certainty"	fully	maybe	True	According to sentence 7, Mary is either in the park or the bedroom, but it does not specify which one. Since we don't have any additional information, we cannot determine with certainty whether Mary is in the bedroom or not.		"Reasoning: According to sentence 7, Mary is either in the park or the bedroom, but it does not specify which one. Since we don't have any additional information, we cannot determine with certainty whether Mary is in the bedroom or not.
+
+Answer: maybe"	0.0185	0.0185	False	False	False	True	0
+2479	10	96	4	"*TASK*
+Here are the context sentences:
+10. Fred is either in the school or the bedroom.
+11. Bill is in the kitchen.
+
+Now, answer the following question:
+Is Bill in the kitchen?"	yes	"the context sentence 11 explicitly states that bill is in the kitchen. this direct information confirms that bill's location is indeed the kitchen, which aligns with the provided answer ""yes"". the information about fred's possible locations (context sentence 10) is irrelevant to bill's location, so it does not affect the conclusion."	fully	yes	True	According to sentence 11, Bill is indeed in the kitchen.		"Reasoning: According to sentence 11, Bill is indeed in the kitchen.
+
+Answer: yes"	0.0	0.05	False	False	False	False	0
+2480	10	96	5	"*TASK*
+Here are the context sentences:
+13. Julie is in the cinema.
+14. Fred is in the office.
+
+Now, answer the following question:
+Is Julie in the cinema?"	yes	"the context sentence 13 explicitly states that julie is in the cinema. this direct information confirms that julie's location is indeed the cinema, which aligns with the provided answer ""yes"". the information about fred's location (context sentence 14) is irrelevant to julie's location, so it does not affect the conclusion."	fully	yes	True	According to sentence 13, Julie is indeed in the cinema.		"Reasoning: According to sentence 13, Julie is indeed in the cinema.
+
+Answer: yes"	0.05	0.05	False	False	False	False	0

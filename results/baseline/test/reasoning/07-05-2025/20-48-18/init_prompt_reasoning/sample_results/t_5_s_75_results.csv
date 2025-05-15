@@ -1,0 +1,70 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1971	5	75	1	"*TASK*
+Here are the context sentences:
+1. Bill moved to the bedroom.
+2. Mary took the football there.
+3. Mary dropped the football.
+4. Bill went to the bathroom.
+5. Bill moved to the bedroom.
+6. Mary got the football there.
+7. Mary handed the football to Fred.
+8. Fred discarded the football.
+
+Now, answer the following question:
+Who did Mary give the football to?"	fred	in sentence 6, mary got the football in the bedroom. then, in sentence 7, mary handed the football to someone. since mary handed the football to someone after getting it in the bedroom, and the question asks who mary gave the football to, the answer is the person mentioned in sentence 7, which is fred.	fully	Fred	True	Mary handed the football to Fred, but Fred discarded the football, so Mary didn't actually give the football to anyone.		"Reasoning: Mary handed the football to Fred, but Fred discarded the football, so Mary didn't actually give the football to anyone.
+
+Answer: Fred"	0.0968	0.0323	False	False	False	False	0
+1972	5	75	2	"*TASK*
+Here are the context sentences:
+10. Fred moved to the bedroom.
+11. Mary travelled to the office.
+
+Now, answer the following question:
+Who gave the football to Fred?"	mary	in the previous context (sentences 1-8), it was mentioned that mary handed the football to fred (sentence 7). this event occurred before the current context (sentences 10-11). therefore, based on the previous information, we can conclude that mary gave the football to fred.	none	Not mentioned	False	There is no mention of a football being given to Fred in the provided context sentences. The sentences only mention Mary taking the football to the bedroom, dropping it, and handing it to Fred, but do not mention anyone giving the football to Fred.		"Reasoning: There is no mention of a football being given to Fred in the provided context sentences. The sentences only mention Mary taking the football to the bedroom, dropping it, and handing it to Fred, but do not mention anyone giving the football to Fred.
+
+Answer: Not mentioned"	0.0351	0.0175	False	False	False	True	0
+1973	5	75	3	"*TASK*
+Here are the context sentences:
+13. Jeff went back to the office.
+14. Fred travelled to the office.
+15. Bill went back to the garden.
+16. Fred picked up the apple there.
+17. Fred travelled to the bathroom.
+18. Fred picked up the football there.
+19. Fred travelled to the kitchen.
+20. Fred grabbed the milk there.
+21. Fred dropped the apple.
+22. Fred took the apple there.
+23. Fred travelled to the hallway.
+24. Fred went back to the garden.
+25. Bill travelled to the office.
+26. Jeff travelled to the garden.
+27. Bill went to the bedroom.
+28. Mary went to the kitchen.
+29. Fred left the apple.
+30. Jeff went to the kitchen.
+31. Fred went back to the kitchen.
+32. Fred handed the football to Mary.
+
+Now, answer the following question:
+Who gave the football to Mary?"	fred	in sentence 32, it is explicitly stated that fred handed the football to mary. this direct statement indicates that fred is the one who gave the football to mary.	fully	Fred	True	According to sentence 32, Fred handed the football to Mary.		"Reasoning: According to sentence 32, Fred handed the football to Mary.
+
+Answer: Fred"	0.1	0.05	False	False	False	False	0
+1974	5	75	4	"*TASK*
+Here are the context sentences:
+34. Fred journeyed to the hallway.
+35. Mary handed the football to Jeff.
+
+Now, answer the following question:
+Who did Mary give the football to?"	jeff	in sentence 35, it is explicitly stated that mary handed the football to jeff. this direct statement indicates that mary gave the football to jeff.	fully	Jeff	True	According to sentence 35, Mary handed the football to Jeff.		"Reasoning: According to sentence 35, Mary handed the football to Jeff.
+
+Answer: Jeff"	0.0	0.05	False	False	False	False	0
+1975	5	75	5	"*TASK*
+Here are the context sentences:
+37. Jeff left the football.
+38. Fred discarded the milk.
+
+Now, answer the following question:
+What did Mary give to Jeff?"	football	in sentence 35 (from previous context), it was stated that mary handed the football to jeff. this event occurred before the current context (sentences 37-38). therefore, based on the previous information, we can conclude that mary gave the football to jeff.	none	Football	True	According to sentence 35, Mary handed the football to Jeff, but there is no mention of Mary giving milk to Jeff.		"Reasoning: According to sentence 35, Mary handed the football to Jeff, but there is no mention of Mary giving milk to Jeff.
+
+Answer: Football"	0.0	0.0312	False	False	False	True	0

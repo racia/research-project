@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+41	.	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+42	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġhallway	?Ċ

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1136	8	28	1	"*TASK*
+Here are the context sentences:
+1. Sandra took the apple there.
+2. Sandra moved to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"from context sentence 1, ""sandra took the apple there"", we can infer that sandra is carrying an apple. the fact that she moved to the garden in sentence 2 does not change the fact that she is still carrying the apple. therefore, the answer is ""apple""."	fully	apple	True	According to sentence 1, Sandra took the apple there, which implies that Sandra is carrying the apple. Sentence 2 only mentions Sandra moving to the garden, but it doesn't mention her putting down or leaving the apple.		"assistant
+
+Reasoning: According to sentence 1, Sandra took the apple there, which implies that Sandra is carrying the apple. Sentence 2 only mentions Sandra moving to the garden, but it doesn't mention her putting down or leaving the apple.
+
+Answer: apple"	0.0357	0.0179	False	False	False	True	0
+1137	8	28	2	"*TASK*
+Here are the context sentences:
+4. John went back to the bedroom.
+5. Sandra went to the bedroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	although the context sentences 4 and 5 do not explicitly mention what sandra is carrying, we can infer the answer from the previous context. in the previous part of the conversation, we established that sandra took the apple (sentence 1) and moved to the garden (sentence 2). there is no information provided that suggests she dropped or gave away the apple. therefore, it is logical to assume that sandra is still carrying the apple when she goes to the bedroom (sentence 5	none	not mentioned	False	There is no information provided about Sandra carrying anything in the given context sentences. Sentence 1, which mentioned Sandra taking the apple, is not part of the current context. The current context only mentions Sandra moving to the bedroom.		"Reasoning: There is no information provided about Sandra carrying anything in the given context sentences. Sentence 1, which mentioned Sandra taking the apple, is not part of the current context. The current context only mentions Sandra moving to the bedroom.
+
+Answer: not mentioned"	0.0566	0.0189	False	False	False	True	0
+1138	8	28	3	"*TASK*
+Here are the context sentences:
+7. Mary picked up the milk there.
+8. John went back to the office.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	"from context sentence 7, ""mary picked up the milk there"", we can directly infer that mary is carrying the milk. the action of picking up an object implies that mary has taken possession of the milk and is holding it. the subsequent sentence 8, ""john went back to the office"", does not provide any information that would change mary's state of carrying the milk. therefore, the answer is ""milk""."	fully	milk	True	According to sentence 7, Mary picked up the milk there, which implies that Mary is carrying the milk.		"Reasoning: According to sentence 7, Mary picked up the milk there, which implies that Mary is carrying the milk.
+
+Answer: milk"	0.0	0.0345	False	False	False	False	0
+1139	8	28	4	"*TASK*
+Here are the context sentences:
+10. Sandra left the apple.
+11. Daniel moved to the hallway.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	the context sentences 10 and 11 do not provide any information about mary or what she is carrying. however, we can infer the answer from the previous part of the conversation. in the previous part, we established that mary picked up the milk (sentence 7) and there is no information provided that suggests she dropped or gave away the milk. therefore, it is logical to assume that mary is still carrying the milk.	none	milk	True	Sentence 10 mentions Sandra leaving the apple, which doesn't affect Mary. Sentence 11 mentions Daniel moving to the hallway, which also doesn't affect Mary. The previous information about Mary carrying the milk (sentence 7) is still valid.		"Reasoning: Sentence 10 mentions Sandra leaving the apple, which doesn't affect Mary. Sentence 11 mentions Daniel moving to the hallway, which also doesn't affect Mary. The previous information about Mary carrying the milk (sentence 7) is still valid.
+
+Answer: milk"	0.0893	0.0179	False	False	False	True	0
+1140	8	28	5	"*TASK*
+Here are the context sentences:
+13. Mary went back to the garden.
+14. Daniel went back to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"in the previous part of the conversation, we established that sandra took the apple (sentence 1) and moved to the garden (sentence 2). however, in sentence 10, it is stated that ""sandra left the apple"". this implies that sandra is no longer carrying the apple. there is no other information provided that suggests sandra picked up or took any other object. therefore, it is logical to conclude that sandra is carrying nothing."	none	nothing	True	According to sentence 10, Sandra left the apple, which implies that Sandra is not carrying anything.		"Reasoning: According to sentence 10, Sandra left the apple, which implies that Sandra is not carrying anything.
+
+Answer: nothing"	0.037	0.0741	False	False	False	False	0

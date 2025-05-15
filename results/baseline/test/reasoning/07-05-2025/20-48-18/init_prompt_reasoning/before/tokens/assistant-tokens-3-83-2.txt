@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġpicked	Ġup	Ġby	ĠMary	Ġ(	sentence	Ġ	30	),	Ġand	Ġthen	Ġleft	Ġby	ĠMary	Ġ(	sentence	Ġ	34	).	ĠSandra	Ġpicked	Ġup	Ġthe	Ġfootball	Ġafter	Ġthat	Ġ(	sentence	Ġ	35	).	ĠSince	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	38	),	Ġthe	Ġfootball	Ġwas	Ġwith	ĠSandra	Ġin	Ġthe	Ġoffice	Ġbefore	Ġshe	Ġwent	Ġback	.ĊĊ	Answer	:	Ġwith	ĠSandra	<|eot_id|>

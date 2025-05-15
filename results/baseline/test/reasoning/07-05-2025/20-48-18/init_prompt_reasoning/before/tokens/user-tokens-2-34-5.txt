@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+19	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+20	.	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

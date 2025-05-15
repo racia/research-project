@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+2	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+3	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+4	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+5	.	ĠSandra	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+6	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

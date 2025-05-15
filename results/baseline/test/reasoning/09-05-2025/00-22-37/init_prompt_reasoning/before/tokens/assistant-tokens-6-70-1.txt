@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbedroom	.	ĠSentence	Ġ	1	Ġmentions	ĠMary	Ġgrabbing	Ġmilk	,	Ġand	ĠSentence	Ġ	2	Ġmentions	ĠJohn	Ġmoving	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

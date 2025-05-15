@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+626	11	126	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the bedroom.
+2. Afterwards he went to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	the context sentences describe daniel's movements, first going to the bedroom and then afterwards going to the hallway. since the last location mentioned is the hallway, it can be inferred that daniel is currently in the hallway.	fully	hallway	True	Daniel journeyed to the bedroom, and then he went to the hallway. This implies that he is currently in the hallway.		"Reasoning: Daniel journeyed to the bedroom, and then he went to the hallway. This implies that he is currently in the hallway.
+
+Answer: hallway"	0.1875	0.0625	False	False	False	False	0
+627	11	126	2	"*TASK*
+Here are the context sentences:
+4. Sandra went back to the office.
+5. Following that she went to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	the context sentences describe sandra's movements, first going back to the office and then following that, going to the kitchen. since the last location mentioned is the kitchen, it can be inferred that sandra is currently in the kitchen.	fully	kitchen	True	Sandra went back to the office, and then she went to the kitchen. This implies that she is currently in the kitchen.		"Reasoning: Sandra went back to the office, and then she went to the kitchen. This implies that she is currently in the kitchen.
+
+Answer: kitchen"	0.1562	0.0625	False	False	False	False	0
+628	11	126	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the office.
+8. After that she went to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	the context sentences describe sandra's movements, first journeying to the office and then afterwards going to the bedroom. since the last location mentioned is the bedroom, it can be inferred that sandra is currently in the bedroom.	fully	bedroom	True	Sandra journeyed to the office, and then she went to the bedroom. This implies that she is currently in the bedroom.		"Reasoning: Sandra journeyed to the office, and then she went to the bedroom. This implies that she is currently in the bedroom.
+
+Answer: bedroom"	0.0	0.0625	False	False	False	False	0
+629	11	126	4	"*TASK*
+Here are the context sentences:
+10. John moved to the bathroom.
+11. Then he travelled to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"the context sentences describe john's movements, but they do not provide any information about sandra's current location. however, we can infer that the answer is still referring to sandra's location mentioned in a previous part of the conversation (sentence 8: ""after that she went to the bedroom.""). since there is no new information about sandra's movements, it can be assumed that she is still in the bedroom."	none	not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only mention John's movements.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention John's movements.
+
+Answer: not mentioned"	0.1429	0.0714	False	False	False	True	0
+630	11	126	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the bathroom.
+14. After that she went back to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	the context sentences describe mary's movements, first journeying to the bathroom and then afterwards going back to the office. since the last location mentioned is the office, it can be inferred that mary is currently in the office.	fully	office	True	Mary journeyed to the bathroom, and then she went back to the office. This implies that she is currently in the office.		"Reasoning: Mary journeyed to the bathroom, and then she went back to the office. This implies that she is currently in the office.
+
+Answer: office"	0.0606	0.0606	False	False	False	False	0

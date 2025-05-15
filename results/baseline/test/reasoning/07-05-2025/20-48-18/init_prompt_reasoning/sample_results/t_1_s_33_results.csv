@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+161	1	33	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the bedroom.
+2. Sandra journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"according to context sentence 1, ""daniel moved to the bedroom"", which explicitly states that daniel's current location is the bedroom. therefore, the answer to the question ""where is daniel?"" is indeed the bedroom."	fully	bedroom	True	The context sentence 1 states that Daniel moved to the bedroom, which implies that Daniel is currently located in the bedroom.		"Reasoning: The context sentence 1 states that Daniel moved to the bedroom, which implies that Daniel is currently located in the bedroom.
+Answer: bedroom"	0.0645	0.0323	False	False	False	False	0
+162	1	33	2	"*TASK*
+Here are the context sentences:
+4. Mary journeyed to the kitchen.
+5. Mary went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"the question asks about daniel's location, but the context sentences 4 and 5 only provide information about mary's movements. to answer the question, we need to refer to the previous context sentences. since the answer is ""bedroom"", we can infer that the relevant information about daniel's location was provided in a previous part of the conversation. indeed, context sentence 1 (not provided in this part, but assumed to exist) must have stated that ""daniel moved to the bedroom"	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only talk about Mary's movements, but do not provide any information about Daniel's location.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only talk about Mary's movements, but do not provide any information about Daniel's location.
+Answer: not mentioned"	0.1	0.025	False	False	False	True	0
+163	1	33	3	"*TASK*
+Here are the context sentences:
+7. Mary journeyed to the hallway.
+8. Mary went to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"according to context sentence 8, ""mary went to the bedroom"", which explicitly states that mary's current location is the bedroom. this sentence overrides the previous information about mary's location in sentence 7, as it provides a more recent and updated location for mary. therefore, the answer to the question ""where is mary?"" is indeed the bedroom."	fully	bedroom	True	The context sentence 8 states that Mary went to the bedroom, which implies that Mary is currently located in the bedroom.		"Reasoning: The context sentence 8 states that Mary went to the bedroom, which implies that Mary is currently located in the bedroom.
+Answer: bedroom"	0.0	0.0323	False	False	False	False	0
+164	1	33	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the garden.
+11. Sandra travelled to the office.
+
+Now, answer the following question:
+Where is Mary?"	garden	"according to context sentence 10, ""mary moved to the garden"", which explicitly states that mary's current location is the garden. this sentence provides direct information about mary's location, and there is no conflicting or overriding information in sentence 11, which only provides information about sandra's location. therefore, the answer to the question ""where is mary?"" is indeed the garden."	fully	garden	True	The context sentence 10 states that Mary moved to the garden, which implies that Mary is currently located in the garden.		"Reasoning: The context sentence 10 states that Mary moved to the garden, which implies that Mary is currently located in the garden.
+Answer: garden"	0.0645	0.0323	False	False	False	False	0
+165	1	33	5	"*TASK*
+Here are the context sentences:
+13. Daniel travelled to the bathroom.
+14. Sandra went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"according to context sentence 13, ""daniel travelled to the bathroom"", which explicitly states that daniel's current location is the bathroom. sentence 14 provides information about sandra's movement, but it does not change or update daniel's location. therefore, the answer to the question ""where is daniel?"" is still the bathroom."	fully	bathroom	True	The context sentence 13 states that Daniel travelled to the bathroom, which implies that Daniel is currently located in the bathroom.		"Reasoning: The context sentence 13 states that Daniel travelled to the bathroom, which implies that Daniel is currently located in the bathroom.
+Answer: bathroom"	0.0	0.0323	False	False	False	False	0

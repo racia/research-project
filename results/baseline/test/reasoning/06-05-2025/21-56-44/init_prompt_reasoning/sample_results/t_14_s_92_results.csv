@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2706	14	92	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Julie went to the bedroom.
+2. Yesterday Bill journeyed to the office.
+3. This morning Mary went back to the kitchen.
+4. Yesterday Mary moved to the school.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	school	"from context sentence 4, ""yesterday mary moved to the school"", we know that mary was at the school yesterday. then, from context sentence 3, ""this morning mary went back to the kitchen"", we can infer that mary was not in the kitchen before this morning, and she went back to the kitchen, implying that she was somewhere else before coming to the kitchen. since we know she was at the school yesterday, it is logical to assume that she was still at the"	fully	school	True	Since Mary went back to the kitchen this morning, it implies that she was somewhere else before coming back to the kitchen. The only information we have about Mary's previous location is that she moved to the school yesterday. Therefore, it is logical to assume that Mary was at the school before going back to the kitchen.		"Reasoning: Since Mary went back to the kitchen this morning, it implies that she was somewhere else before coming back to the kitchen. The only information we have about Mary's previous location is that she moved to the school yesterday. Therefore, it is logical to assume that Mary was at the school before going back to the kitchen.
+
+Answer: school"	0.2286	0.0286	False	False	False	True	0
+2707	14	92	2	"*TASK*
+Here are the context sentences:
+6. Fred travelled to the cinema yesterday.
+7. This morning Julie moved to the school.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	school	"there is no information about mary in the provided context sentences (6 and 7). the context sentences only mention fred and julie, but not mary. however, i noticed that the answer is ""school"", which seems to be related to a previous conversation. upon reviewing the previous conversation, i found that sentence 4 states ""yesterday mary moved to the school."" therefore, i can conclude that mary was at the school before going to the kitchen."	none	school	True	There is no new information about Mary's location in these context sentences. The previous information we had about Mary was that she moved to the school yesterday (from context sentence 4). Since there is no new information, we can still infer that Mary was at the school before going back to the kitchen (from context sentence 3).		"Reasoning: There is no new information about Mary's location in these context sentences. The previous information we had about Mary was that she moved to the school yesterday (from context sentence 4). Since there is no new information, we can still infer that Mary was at the school before going back to the kitchen (from context sentence 3).
+
+Answer: school"	0.1507	0.0274	False	False	False	True	0
+2708	14	92	3	"*TASK*
+Here are the context sentences:
+9. Fred went to the school this morning.
+10. Julie travelled to the park this afternoon.
+
+Now, answer the following question:
+Where was Julie before the park?"	school	"there is no direct information about julie's location before the park in the provided context sentences (9 and 10). however, sentence 10 states that julie travelled to the park this afternoon, implying that she was somewhere else before going to the park. there is no information about julie's previous location in sentences 9 and 10. but, i noticed that the answer is ""school"", which seems to be related to a previous conversation. upon reviewing the previous conversation, i didn't"	partially	school	True	We know that Julie moved to the school this morning (from context sentence 7). Since she travelled to the park this afternoon, it implies that she was at the school before going to the park.		"Reasoning: We know that Julie moved to the school this morning (from context sentence 7). Since she travelled to the park this afternoon, it implies that she was at the school before going to the park.
+
+Answer: school"	0.0851	0.0426	False	False	False	False	0
+2709	14	92	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Mary went back to the office.
+13. This afternoon Fred journeyed to the office.
+
+Now, answer the following question:
+Where was Julie before the park?"	school	"there is no information about julie's location before the park in the provided context sentences (12 and 13). these sentences only mention mary and fred, but not julie. the answer ""school"" seems to be related to a previous conversation, but there is no logical connection between the current context sentences and the answer. the previous conversation mentioned julie, but it didn't provide any information about her location before the park. therefore, i cannot provide a logical reasoning for the answer ""school"""	none	school	True	The new information provided in context sentences 12 and 13 does not mention Julie's location. The previous information we had about Julie was that she moved to the school this morning (from context sentence 7). Since there is no new information about Julie's location, we can still infer that Julie was at the school before going to the park (from context sentence 10).		"Reasoning: The new information provided in context sentences 12 and 13 does not mention Julie's location. The previous information we had about Julie was that she moved to the school this morning (from context sentence 7). Since there is no new information about Julie's location, we can still infer that Julie was at the school before going to the park (from context sentence 10).
+
+Answer: school"	0.0488	0.0244	False	False	False	True	0
+2710	14	92	5	"*TASK*
+Here are the context sentences:
+15. Mary went to the kitchen this evening.
+16. This evening Julie went back to the office.
+
+Now, answer the following question:
+Where was Fred before the office?"	school	"there is no information about fred's location before the office in the provided context sentences (15 and 16). these sentences only mention mary and julie, but not fred. the answer ""school"" seems to be related to a previous conversation, but there is no logical connection between the current context sentences and the answer. upon reviewing the previous conversation, i found that sentence 9 states ""fred went to the school this morning"", which implies that fred was at the school before going to"	none	office	False	We know that Fred journeyed to the office this afternoon (from context sentence 13). Since he went back to the office this evening, it implies that he was at the office before going back to it.		"Reasoning: We know that Fred journeyed to the office this afternoon (from context sentence 13). Since he went back to the office this evening, it implies that he was at the office before going back to it.
+
+Answer: office"	0.0	0.0408	False	False	False	False	0

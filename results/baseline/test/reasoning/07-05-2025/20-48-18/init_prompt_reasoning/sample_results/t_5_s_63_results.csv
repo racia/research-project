@@ -1,0 +1,88 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1911	5	63	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the kitchen.
+2. Mary went to the bedroom.
+3. Mary moved to the bathroom.
+4. Mary grabbed the football there.
+5. Mary moved to the garden.
+6. Mary dropped the football.
+7. Fred went back to the kitchen.
+8. Jeff went back to the office.
+9. Jeff went to the bathroom.
+10. Bill took the apple there.
+11. Mary picked up the milk there.
+12. Mary picked up the football there.
+13. Bill went back to the kitchen.
+14. Bill went back to the hallway.
+15. Fred journeyed to the office.
+16. Bill discarded the apple.
+17. Mary journeyed to the kitchen.
+18. Fred journeyed to the garden.
+19. Mary went to the hallway.
+20. Mary gave the football to Bill.
+
+Now, answer the following question:
+Who gave the football to Bill?"	mary	"the answer is mary because according to sentence 20, ""mary gave the football to bill."" this sentence explicitly states that mary is the one who gave the football to bill."	fully	Mary	True	The context sentences indicate that Mary moved to the garden, dropped the football, and then gave the football to Bill. There is no mention of Fred giving the football to Bill.		"Reasoning: The context sentences indicate that Mary moved to the garden, dropped the football, and then gave the football to Bill. There is no mention of Fred giving the football to Bill.
+
+Answer: Mary"	0.0	0.0238	False	False	False	True	0
+1912	5	63	2	"*TASK*
+Here are the context sentences:
+22. Bill passed the football to Mary.
+23. Bill took the apple there.
+
+Now, answer the following question:
+Who gave the football?"	bill	"the answer is bill because according to sentence 22, ""bill passed the football to mary."" this sentence explicitly states that bill is the one who passed (or gave) the football to mary."	fully	Bill	True	The context sentences indicate that Bill passed the football to Mary, which means Bill gave the football to Mary.		"Reasoning: The context sentences indicate that Bill passed the football to Mary, which means Bill gave the football to Mary.
+
+Answer: Bill"	0.0357	0.0357	False	False	False	False	0
+1913	5	63	3	"*TASK*
+Here are the context sentences:
+25. Bill gave the apple to Mary.
+26. Jeff travelled to the kitchen.
+
+Now, answer the following question:
+What did Bill give to Mary?"	football	"the answer is not correct. according to sentence 25, ""bill gave the apple to mary."" this sentence explicitly states that bill gave an apple to mary, not a football. there is no mention of a football being given to mary by bill in the provided context."	none	apple	False	The context sentences indicate that Bill gave the apple to Mary.		"Reasoning: The context sentences indicate that Bill gave the apple to Mary.
+
+Answer: apple"	0.0526	0.0526	False	False	False	False	0
+1914	5	63	4	"*TASK*
+Here are the context sentences:
+28. Bill journeyed to the office.
+29. Jeff went to the bathroom.
+
+Now, answer the following question:
+What did Bill give to Mary?"	apple	"there is no information in the provided context (sentences 28 and 29) that mentions bill giving anything to mary. however, if we consider the previous conversation history, we can find the relevant information. in the previous conversation, sentence 25 stated ""bill gave the apple to mary."" therefore, the correct answer is indeed ""apple""."	none	apple	True	The context sentences do not provide any new information about what Bill gave to Mary. The previous context sentences (25. Bill gave the apple to Mary.) still stand.		"Reasoning: The context sentences do not provide any new information about what Bill gave to Mary. The previous context sentences (25. Bill gave the apple to Mary.) still stand.
+
+Answer: apple"	0.025	0.025	False	False	False	True	0
+1915	5	63	5	"*TASK*
+Here are the context sentences:
+31. Fred travelled to the office.
+32. Mary went back to the office.
+33. Bill travelled to the bedroom.
+34. Fred travelled to the hallway.
+35. Bill went to the hallway.
+36. Fred travelled to the kitchen.
+37. Mary left the milk there.
+38. Bill journeyed to the kitchen.
+39. Mary travelled to the garden.
+40. Mary left the apple.
+41. Mary put down the football there.
+42. Mary picked up the football there.
+43. Mary left the football there.
+44. Mary journeyed to the kitchen.
+45. Bill went back to the office.
+46. Jeff went to the garden.
+47. Fred went to the bathroom.
+48. Fred journeyed to the bedroom.
+49. Jeff picked up the football there.
+50. Bill travelled to the hallway.
+51. Jeff took the apple there.
+52. Fred went to the hallway.
+53. Jeff put down the apple.
+54. Bill travelled to the garden.
+55. Jeff handed the football to Bill.
+56. Jeff took the apple there.
+
+Now, answer the following question:
+Who did Jeff give the football to?"	bill	"the answer is indeed ""bill"" because according to sentence 55, ""jeff handed the football to bill."" this sentence explicitly states that jeff gave the football to bill."	fully	Bill	True	The context sentences indicate that Jeff handed the football to Bill.		"Reasoning: The context sentences indicate that Jeff handed the football to Bill.
+
+Answer: Bill"	0.0	0.0526	False	False	False	False	0

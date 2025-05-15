@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2156	13	132	1	"*TASK*
+Here are the context sentences:
+1. John and Sandra went back to the garden.
+2. Following that they moved to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	from the context sentences, we know that john and sandra went back to the garden (sentence 1) and then moved to the office (sentence 2). since sandra was with john in both locations, it can be logically inferred that sandra is currently in the office, which is the last location mentioned in the sequence of events.	fully	office	True	Sandra is mentioned in both sentences, and her location changes from the garden to the office. Since the last sentence mentioned is about the office, it implies that Sandra is currently in the office.		"Reasoning: Sandra is mentioned in both sentences, and her location changes from the garden to the office. Since the last sentence mentioned is about the office, it implies that Sandra is currently in the office.
+
+Answer: office"	0.1556	0.0444	False	False	False	True	0
+2157	13	132	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Daniel went to the hallway.
+5. Then they travelled to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from the context sentences, we know that sandra and daniel went to the hallway (sentence 4) and then travelled to the garden (sentence 5). since daniel was with sandra in both locations, it can be logically inferred that daniel is currently in the garden, which is the last location mentioned in the sequence of events.	fully	garden	True	Daniel is mentioned in both sentences, and his location changes from the hallway to the garden. Since the last sentence mentioned is about the garden, it implies that Daniel is currently in the garden.		"Reasoning: Daniel is mentioned in both sentences, and his location changes from the hallway to the garden. Since the last sentence mentioned is about the garden, it implies that Daniel is currently in the garden.
+
+Answer: garden"	0.2667	0.0444	False	False	False	True	0
+2158	13	132	3	"*TASK*
+Here are the context sentences:
+7. John and Mary went to the garden.
+8. Following that they moved to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	from the context sentences, we know that john and mary went to the garden (sentence 7) and then moved to the office (sentence 8). since mary was with john in both locations, it can be logically inferred that mary is currently in the office, which is the last location mentioned in the sequence of events.	fully	office	True	Mary is mentioned in both sentences, and her location changes from the garden to the office. Since the last sentence mentioned is about the office, it implies that Mary is currently in the office.		"Reasoning: Mary is mentioned in both sentences, and her location changes from the garden to the office. Since the last sentence mentioned is about the office, it implies that Mary is currently in the office.
+
+Answer: office"	0.0667	0.0444	False	False	False	True	0
+2159	13	132	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Mary went back to the kitchen.
+11. Following that they travelled to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	from the context sentences, we know that daniel and mary went back to the kitchen (sentence 10) and then travelled to the garden (sentence 11). since mary was with daniel in both locations, it can be logically inferred that mary is currently in the garden, which is the last location mentioned in the sequence of events.	fully	garden	True	Mary is mentioned in both sentences, and her location changes from the kitchen to the garden. Since the last sentence mentioned is about the garden, it implies that Mary is currently in the garden.		"Reasoning: Mary is mentioned in both sentences, and her location changes from the kitchen to the garden. Since the last sentence mentioned is about the garden, it implies that Mary is currently in the garden.
+
+Answer: garden"	0.0444	0.0444	False	False	False	True	0
+2160	13	132	5	"*TASK*
+Here are the context sentences:
+13. Mary and Daniel went back to the kitchen.
+14. Then they went to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentences, we know that mary and daniel went back to the kitchen (sentence 13) and then went to the hallway (sentence 14). since mary was with daniel in both locations, it can be logically inferred that mary is currently in the hallway, which is the last location mentioned in the sequence of events.	fully	hallway	True	Mary is mentioned in both sentences, and her location changes from the kitchen to the hallway. Since the last sentence mentioned is about the hallway, it implies that Mary is currently in the hallway.		"Reasoning: Mary is mentioned in both sentences, and her location changes from the kitchen to the hallway. Since the last sentence mentioned is about the hallway, it implies that Mary is currently in the hallway.
+
+Answer: hallway"	0.0667	0.0444	False	False	False	True	0

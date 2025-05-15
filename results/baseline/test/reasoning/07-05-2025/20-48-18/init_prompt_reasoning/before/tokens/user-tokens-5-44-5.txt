@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+59	.	ĠBill	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+60	.	ĠMary	Ġhanded	Ġthe	Ġmilk	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġapple	?Ċ

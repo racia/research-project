@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+17	.	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
+18	.	ĠBill	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	?Ċ

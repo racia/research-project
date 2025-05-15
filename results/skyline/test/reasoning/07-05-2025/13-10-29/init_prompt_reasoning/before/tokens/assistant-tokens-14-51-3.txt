@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	8	Ġtells	Ġus	Ġthat	ĠFred	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	.	ĠSentence	Ġ	7	Ġinforms	Ġus	Ġthat	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġthis	Ġevening	,	Ġimplying	Ġthat	Ġhe	Ġwas	Ġsomewhere	Ġelse	Ġ(	the	Ġbedroom	)	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

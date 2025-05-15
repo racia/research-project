@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+176	10	36	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the kitchen.
+2. Fred moved to the kitchen.
+
+Now, answer the following question:
+Is Fred in the kitchen?"	yes	"according to context sentence 2, ""fred moved to the kitchen"", which implies that fred changed his location to the kitchen. since there is no information about fred leaving the kitchen, it can be logically concluded that fred is still in the kitchen, hence the answer is ""yes""."	fully	yes	True	According to context sentence 2, Fred moved to the kitchen, which implies that Fred is currently in the kitchen.		"assistant
+
+Reasoning: According to context sentence 2, Fred moved to the kitchen, which implies that Fred is currently in the kitchen.
+
+Answer: yes"	0.0588	0.0294	False	False	False	False	0
+177	10	36	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the cinema.
+5. Bill is either in the bedroom or the cinema.
+
+Now, answer the following question:
+Is Bill in the cinema?"	maybe	"according to context sentence 5, ""bill is either in the bedroom or the cinema"", which implies that bill's location is limited to two possibilities: the bedroom or the cinema. there is no additional information to pinpoint bill's exact location, so it cannot be determined with certainty whether bill is in the cinema or not, hence the answer is ""maybe""."	fully	maybe	True	According to context sentence 5, Bill is either in the bedroom or the cinema, but we don't have enough information to determine his exact location.		"Reasoning: According to context sentence 5, Bill is either in the bedroom or the cinema, but we don't have enough information to determine his exact location. 
+
+Answer: maybe"	0.1316	0.0263	False	False	False	True	0
+178	10	36	3	"*TASK*
+Here are the context sentences:
+7. Mary is in the office.
+8. Mary travelled to the school.
+
+Now, answer the following question:
+Is Mary in the school?"	yes	"according to context sentence 7, ""mary is in the office"", which implies that mary's initial location was the office. then, according to context sentence 8, ""mary travelled to the school"", which implies that mary changed her location from the office to the school. since there is no information about mary leaving the school, it can be logically concluded that mary is currently in the school, hence the answer is ""yes""."	fully	yes	True	According to context sentence 7, Mary was initially in the office, but then according to context sentence 8, Mary travelled to the school, which implies that Mary is currently in the school.		"Reasoning: According to context sentence 7, Mary was initially in the office, but then according to context sentence 8, Mary travelled to the school, which implies that Mary is currently in the school.
+
+Answer: yes"	0.0	0.0217	False	False	False	False	0
+179	10	36	4	"*TASK*
+Here are the context sentences:
+10. Bill travelled to the bedroom.
+11. Fred is either in the cinema or the cinema.
+
+Now, answer the following question:
+Is Mary in the office?"	no	"there is no information about mary's location in the provided context sentences. context sentences 10 and 11 mention bill and fred, but not mary. the only information about mary's location was provided in previous context sentences (7 and 8), which stated that mary was initially in the office and then travelled to the school. since there is no new information about mary returning to the office, it can be logically concluded that mary is not in the office, hence the answer is ""no"	none	no	True	According to context sentence 7 (from previous parts), Mary was initially in the office, but then according to context sentence 8 (from previous parts), Mary travelled to the school, which implies that Mary is no longer in the office.		"Reasoning: According to context sentence 7 (from previous parts), Mary was initially in the office, but then according to context sentence 8 (from previous parts), Mary travelled to the school, which implies that Mary is no longer in the office.
+
+Answer: no"	0.1636	0.0182	False	False	False	False	0
+180	10	36	5	"*TASK*
+Here are the context sentences:
+13. Fred is either in the cinema or the school.
+14. Bill is in the cinema.
+
+Now, answer the following question:
+Is Mary in the school?"	yes	there is no direct information about mary's location in the provided context sentences. however, we can use the information from previous context sentences (7 and 8) which stated that mary was initially in the office and then travelled to the school. there is no new information about mary leaving the school, so it can be logically concluded that mary is still in the school.	none	yes	True	According to context sentence 8 (from previous parts), Mary travelled to the school, and there is no information that suggests she left the school.		"Reasoning: According to context sentence 8 (from previous parts), Mary travelled to the school, and there is no information that suggests she left the school. 
+
+Answer: yes"	0.0	0.027	False	False	False	True	0

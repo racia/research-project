@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+789	17	87	1	"*TASK*
+Here are the context sentences:
+1. The pink rectangle is to the left of the red square.
+2. The red square is to the left of the blue square.
+
+Now, answer the following question:
+Is the pink rectangle to the left of the blue square?"	yes	from the context sentences, we know that the pink rectangle is to the left of the red square (sentence 1), and the red square is to the left of the blue square (sentence 2). by transitivity, we can conclude that the pink rectangle is to the left of the blue square. this is because if a is to the left of b, and b is to the left of c, then a is to the left of c. in this case, a is	fully	yes	True			Answer: yes	0.25	0.5	False	False	False	False	0
+790	17	87	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the left of the pink rectangle?"	no	"from the previous context sentences, we know that the pink rectangle is to the left of the red square (sentence 1), and the red square is to the left of the blue square (sentence 2). this implies that the blue square is to the right of the red square, and the red square is to the right of the pink rectangle. therefore, the blue square cannot be to the left of the pink rectangle, which leads to the answer ""no""."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+791	17	87	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the right of the pink rectangle?"	yes	"from the previous context sentences, we know that the pink rectangle is to the left of the red square (sentence 1), and the red square is to the left of the blue square (sentence 2). this implies that the blue square is to the right of the red square, and the red square is to the right of the pink rectangle. therefore, the blue square is to the right of the pink rectangle, which leads to the answer ""yes""."	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+792	17	87	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the right of the pink rectangle?"	yes	"we know that the pink rectangle is to the left of the red square (from previous context), and the red square is to the left of the blue square (from previous context). by transitivity, we can conclude that the blue square is to the right of the pink rectangle, since the pink rectangle is to the left of the red square, and the red square is to the left of the blue square. this logical chain of relationships leads to the answer ""yes""."	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+793	17	87	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle above the blue square?"	no	"there is no information provided about the vertical relationships between the pink rectangle, the red square, and the blue square. the context sentences only mention left and right relationships, but not up or down relationships. therefore, we cannot conclude that the pink rectangle is above the blue square, and the answer is ""no"" because there is no evidence to support this claim."	none	not mentioned	False			Answer: not mentioned	0.2	0.4	False	False	False	True	0
+794	17	87	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square above the pink rectangle?"	no	"""reasoning: <reasoning>"""	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0
+795	17	87	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the right of the pink rectangle?"	yes	"""reasoning: <reasoning>"""	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+796	17	87	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the left of the blue square?"	yes	"""reasoning: <reasoning>"""	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0

@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+786	7	58	1	"*TASK*
+Here are the context sentences:
+1. Daniel went back to the hallway.
+2. Mary journeyed to the kitchen.
+3. Mary grabbed the apple there.
+4. Mary moved to the office.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	from the context sentences, we know that mary grabbed the apple in the kitchen (sentence 3). there is no mention of mary putting the apple down or dropping it. therefore, it can be logically inferred that mary is still carrying the apple when she moves to the office (sentence 4). there is no mention of mary carrying any other objects, so the answer is one object, which is the apple.	fully	one	True	Mary grabbed the apple in the kitchen (sentence 3) and then moved to the office (sentence 4), so she is still carrying the apple.		"assistant
+
+Reasoning: Mary grabbed the apple in the kitchen (sentence 3) and then moved to the office (sentence 4), so she is still carrying the apple.
+
+Answer: one"	0.0714	0.0238	False	False	False	False	0
+787	7	58	2	"*TASK*
+Here are the context sentences:
+6. Mary handed the apple to Sandra.
+7. Sandra passed the apple to Mary.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	from the context sentences, we know that mary handed the apple to sandra (sentence 6), which means sandra was carrying the apple. however, in the next sentence (7), sandra passed the apple back to mary. this implies that sandra no longer has possession of the apple, and therefore, she is not carrying any objects.	fully	none	True	Sandra received the apple from Mary (sentence 6), but then passed it back to Mary (sentence 7), so she is no longer carrying the apple.		"Reasoning: Sandra received the apple from Mary (sentence 6), but then passed it back to Mary (sentence 7), so she is no longer carrying the apple.
+
+Answer: none"	0.0513	0.0513	False	False	False	False	0
+788	7	58	3	"*TASK*
+Here are the context sentences:
+9. John went back to the garden.
+10. Sandra took the football there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from the context sentences, we know that sandra took the football in the garden (sentence 10). there is no mention of sandra putting the football down or giving it to someone else. therefore, it can be logically inferred that sandra is still carrying the football, which means she is carrying one object.	partially	one	True	Sandra took the football in the garden (sentence 10), so she is carrying the football.		"Reasoning: Sandra took the football in the garden (sentence 10), so she is carrying the football.
+
+Answer: one"	0.0769	0.1154	False	False	False	False	0
+789	7	58	4	"*TASK*
+Here are the context sentences:
+12. Daniel moved to the bathroom.
+13. Mary passed the apple to Sandra.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	from the context sentences, we know that mary passed the apple to sandra (sentence 13). this implies that mary no longer has possession of the apple, as she has given it to sandra. there is no mention of mary carrying any other objects, so it can be logically inferred that mary is not carrying any objects, which means she is carrying none.	partially	none	True	Mary was carrying the apple (from previous context), but then passed it to Sandra (sentence 13), so she is no longer carrying the apple.		"Reasoning: Mary was carrying the apple (from previous context), but then passed it to Sandra (sentence 13), so she is no longer carrying the apple.
+
+Answer: none"	0.0541	0.1081	False	False	False	False	0
+790	7	58	5	"*TASK*
+Here are the context sentences:
+15. Mary picked up the milk there.
+16. John moved to the kitchen.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	from the context sentences, we know that mary picked up the milk (sentence 15). there is no mention of mary putting the milk down or giving it to someone else. therefore, it can be logically inferred that mary is still carrying the milk, which means she is carrying one object.	partially	one	True	Mary picked up the milk (sentence 15), and previously, she was not carrying any objects (sentence 13), so she is now carrying the milk.		"Reasoning: Mary picked up the milk (sentence 15), and previously, she was not carrying any objects (sentence 13), so she is now carrying the milk.
+
+Answer: one"	0.1282	0.1282	False	False	False	False	0

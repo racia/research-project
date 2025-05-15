@@ -1,0 +1,96 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1876	5	56	1	"*TASK*
+Here are the context sentences:
+1. Fred journeyed to the bathroom.
+2. Bill went back to the kitchen.
+3. Fred moved to the office.
+4. Bill grabbed the milk there.
+5. Bill discarded the milk.
+6. Bill journeyed to the hallway.
+7. Mary moved to the garden.
+8. Mary grabbed the apple there.
+9. Fred went back to the hallway.
+10. Mary dropped the apple there.
+11. Jeff moved to the bathroom.
+12. Fred journeyed to the kitchen.
+13. Fred moved to the bedroom.
+14. Mary took the apple there.
+15. Bill went to the office.
+16. Mary journeyed to the bedroom.
+17. Mary discarded the apple.
+18. Bill journeyed to the bedroom.
+19. Fred got the apple there.
+20. Fred put down the apple.
+21. Fred went back to the kitchen.
+22. Mary travelled to the office.
+23. Bill travelled to the hallway.
+24. Mary travelled to the hallway.
+25. Fred went back to the bathroom.
+26. Jeff moved to the kitchen.
+27. Mary journeyed to the garden.
+28. Mary went to the kitchen.
+29. Mary journeyed to the hallway.
+30. Mary went to the kitchen.
+31. Mary went back to the hallway.
+32. Mary moved to the kitchen.
+33. Mary travelled to the bathroom.
+34. Fred went to the garden.
+35. Bill went to the bathroom.
+36. Mary went to the garden.
+37. Fred went back to the office.
+38. Jeff moved to the office.
+39. Jeff moved to the kitchen.
+40. Bill travelled to the hallway.
+41. Jeff went to the garden.
+42. Mary went back to the kitchen.
+43. Mary took the football there.
+44. Mary picked up the milk there.
+45. Mary dropped the football.
+46. Mary took the football there.
+47. Mary put down the milk there.
+48. Mary travelled to the bathroom.
+49. Fred went back to the bathroom.
+50. Mary went back to the garden.
+51. Mary gave the football to Jeff.
+52. Jeff gave the football to Mary.
+
+Now, answer the following question:
+Who received the football?"	mary	the question asks who received the football.	fully	Mary	True	The question asks who received the football. We can infer that the football was received by someone because Mary gave the football to Jeff, and then Jeff gave the football back to Mary. This suggests that Mary received the football from Jeff.		"Reasoning: The question asks who received the football. We can infer that the football was received by someone because Mary gave the football to Jeff, and then Jeff gave the football back to Mary. This suggests that Mary received the football from Jeff.
+
+Answer: Mary"	0.0566	0.0189	False	False	False	False	0
+1877	5	56	2	"*TASK*
+Here are the context sentences:
+54. Mary put down the football.
+55. Jeff picked up the football there.
+
+Now, answer the following question:
+Who received the football?"	mary	the question asks who received the football.	none	Jeff	False	The question asks who received the football. We can infer that Jeff received the football because Jeff picked up the football there, implying that he received it.		"Reasoning: The question asks who received the football. We can infer that Jeff received the football because Jeff picked up the football there, implying that he received it.
+
+Answer: Jeff"	0.027	0.027	False	False	False	False	0
+1878	5	56	3	"*TASK*
+Here are the context sentences:
+57. Jeff handed the football to Mary.
+58. Mary passed the football to Jeff.
+
+Now, answer the following question:
+What did Mary give to Jeff?"	football	the question asks what mary gave to jeff.	fully	the football	False	The question asks what Mary gave to Jeff. We can infer that Mary gave the football to Jeff because Mary passed the football to Jeff.		"Reasoning: The question asks what Mary gave to Jeff. We can infer that Mary gave the football to Jeff because Mary passed the football to Jeff.
+
+Answer: the football"	0.0	0.0286	False	False	False	False	0
+1879	5	56	4	"*TASK*
+Here are the context sentences:
+60. Jeff handed the football to Mary.
+61. Fred travelled to the garden.
+
+Now, answer the following question:
+Who did Jeff give the football to?"	mary	the question asks who jeff gave the football to.	fully	Mary	True	The question asks who Jeff gave the football to. We can infer that Jeff gave the football to Mary because Jeff handed the football to Mary.		"Reasoning: The question asks who Jeff gave the football to. We can infer that Jeff gave the football to Mary because Jeff handed the football to Mary.
+
+Answer: Mary"	0.0286	0.0286	False	False	False	False	0
+1880	5	56	5	"*TASK*
+Here are the context sentences:
+63. Mary handed the football to Fred.
+64. Fred passed the football to Mary.
+
+Now, answer the following question:
+Who received the football?"	mary	"""reasoning: <reasoning>"""	fully	Mary	True	The question asks who received the football. We can infer that Mary received the football because Fred passed the football to Mary.		"Reasoning: The question asks who received the football. We can infer that Mary received the football because Fred passed the football to Mary.
+
+Answer: Mary"	0.0	0.0323	False	False	False	False	0

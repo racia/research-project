@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+2	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+3	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+4	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+5	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+6	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠDaniel	Ġcarrying	?Ċ

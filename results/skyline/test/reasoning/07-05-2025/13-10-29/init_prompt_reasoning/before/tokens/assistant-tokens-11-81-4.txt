@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠMary	's	Ġmovements	,	Ġbut	Ġthere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠSandra	Ġwas	Ġthe	Ġbathroom	Ġ(	from	Ġthe	Ġprevious	Ġcontext	Ġsentences	).ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,0 +1,59 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+829	17	92	1	"*TASK*
+Here are the context sentences:
+1. The red square is to the right of the triangle.
+2. The pink rectangle is below the red square.
+
+Now, answer the following question:
+Is the triangle to the left of the pink rectangle?"	yes	from the first context sentence, we know that the red square is to the right of the triangle. from the second context sentence, we know that the pink rectangle is below the red square. since the pink rectangle is below the red square, and the red square is to the right of the triangle, it logically follows that the triangle must be to the left of the pink rectangle.	fully	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+830	17	92	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the right of the pink rectangle?"	no	from the previous context sentences, we know that the red square is to the right of the triangle, and the pink rectangle is below the red square. since the pink rectangle is below the red square, and the red square is to the right of the triangle, it logically follows that the triangle must be to the left of the pink rectangle, not to the right. therefore, the answer is no.	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+831	17	92	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle below the pink rectangle?"	no	from the previous context sentences, we know that the red square is to the right of the triangle, and the pink rectangle is below the red square. since the pink rectangle is below the red square, and the red square is to the right of the triangle, it logically follows that the triangle must be above the pink rectangle, not below it. therefore, the answer is no.	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+832	17	92	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle above the pink rectangle?"	yes	from the previous context sentences, we know that the red square is to the right of the triangle, and the pink rectangle is below the red square. since the pink rectangle is below the red square, and the red square is to the right of the triangle, it logically follows that the triangle must be above the pink rectangle. therefore, the answer is yes.	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0
+833	17	92	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the right of the triangle?"	yes	from the previous context sentences, we know that the red square is to the right of the triangle, and the pink rectangle is below the red square. since the pink rectangle is below the red square, and the red square is to the right of the triangle, it logically follows that the pink rectangle must be to the right of the triangle as well, although it is below the red square. therefore, the answer is yes.	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+834	17	92	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle below the triangle?"	yes	" the context lines: 1. the red square is to the right of the triangle.
+2. the pink rectangle is below the red square.
+this is the question: is the pink rectangle to the left of the triangle?
+this is the answer: no"	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0
+835	17	92	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle to the right of the pink rectangle?"	no	" the context lines: 1. the red square is to the right of the triangle.
+2. the pink rectangle is below the red square.
+this is the question: is the pink rectangle to the left of the triangle?
+this is the answer: no"	none	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+836	17	92	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the right of the triangle?"	yes	" the context lines: 1. the red square is to the right of the triangle.
+2. the pink rectangle is below the red square.
+this is the question: is the pink rectangle to the left of the triangle?
+this is the answer: no"	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0

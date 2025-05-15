@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+431	11	87	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the bedroom.
+2. Afterwards she went back to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	"the context sentences describe mary's movements. in sentence 1, mary moves to the bedroom, but then in sentence 2, she goes back to the office. this implies that mary's final location is the office, as she moved there after leaving the bedroom. therefore, the answer to the question ""where is mary?"" is indeed the office."	fully	office	True	According to the context sentences, Mary moved to the bedroom and then went back to the office. Therefore, her current location is the office.		"assistant
+
+Reasoning: According to the context sentences, Mary moved to the bedroom and then went back to the office. Therefore, her current location is the office.
+
+Answer: office"	0.2051	0.0513	False	False	False	False	0
+432	11	87	2	"*TASK*
+Here are the context sentences:
+4. Sandra journeyed to the bedroom.
+5. After that she went back to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"the context sentences describe sandra's movements. in sentence 4, sandra journeys to the bedroom, but then in sentence 5, she goes back to the hallway. this implies that sandra's final location is the hallway, as she moved there after leaving the bedroom. therefore, the answer to the question ""where is sandra?"" is indeed the hallway."	fully	hallway	True	According to the context sentences, Sandra journeyed to the bedroom and then went back to the hallway. Therefore, her current location is the hallway.		"Reasoning: According to the context sentences, Sandra journeyed to the bedroom and then went back to the hallway. Therefore, her current location is the hallway.
+
+Answer: hallway"	0.1944	0.0556	False	False	False	False	0
+433	11	87	3	"*TASK*
+Here are the context sentences:
+7. Sandra went back to the office.
+8. Then she went to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"the context sentences describe sandra's movements. in sentence 7, sandra goes back to the office, but then in sentence 8, she goes to the hallway. this implies that sandra's final location is the hallway, as she moved there after leaving the office. therefore, the answer to the question ""where is sandra?"" is indeed the hallway."	fully	hallway	True	According to the context sentences, Sandra went back to the office and then went to the hallway. Therefore, her current location is the hallway.		"Reasoning: According to the context sentences, Sandra went back to the office and then went to the hallway. Therefore, her current location is the hallway.
+
+Answer: hallway"	0.0571	0.0571	False	False	False	False	0
+434	11	87	4	"*TASK*
+Here are the context sentences:
+10. Daniel journeyed to the bathroom.
+11. Following that he travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"the context sentences describe daniel's movements, but the question asks about sandra's location. since there is no information about sandra's movements in the provided context, we cannot determine her location based on the current context. the answer ""hallway"" seems to be incorrect, as there is no information about sandra being in the hallway."	none	hallway	True	The context sentences do not provide any new information about Sandra's location. The previous information about Sandra's location is that she is in the hallway.		"Reasoning: The context sentences do not provide any new information about Sandra's location. The previous information about Sandra's location is that she is in the hallway.
+
+Answer: hallway"	0.0278	0.0556	False	False	False	True	0
+435	11	87	5	"*TASK*
+Here are the context sentences:
+13. Daniel travelled to the kitchen.
+14. Then he went to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"the context sentences describe daniel's movements. in sentence 13, daniel travels to the kitchen, but then in sentence 14, he goes to the bathroom. this implies that daniel's final location is the bathroom, as he moved there after leaving the kitchen. therefore, the answer to the question ""where is daniel?"" is indeed the bathroom."	fully	bathroom	True	According to the context sentences, Daniel travelled to the kitchen and then went to the bathroom. Therefore, his current location is the bathroom.		"Reasoning: According to the context sentences, Daniel travelled to the kitchen and then went to the bathroom. Therefore, his current location is the bathroom.
+
+Answer: bathroom"	0.0588	0.0588	False	False	False	False	0

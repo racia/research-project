@@ -1,0 +1,15 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+97	16	97	1	"*TASK*
+Here are the context sentences:
+1. Brian is a frog.
+2. Bernhard is a lion.
+3. Brian is gray.
+4. Julius is a frog.
+5. Bernhard is gray.
+6. Julius is white.
+7. Greg is a frog.
+8. Lily is a lion.
+9. Greg is yellow.
+
+Now, answer the following question:
+What color is Lily?"	gray	since lily is a lion (sentence 8), and bernhard is also a lion (sentence 2), we can infer that lily's color is likely to be similar to bernhard's color. bernhard is gray (sentence 5), so it is logical to assume that lily is also gray.	fully	not mentioned	False			Answer: not mentioned	0.0	0.6	False	False	False	True	0

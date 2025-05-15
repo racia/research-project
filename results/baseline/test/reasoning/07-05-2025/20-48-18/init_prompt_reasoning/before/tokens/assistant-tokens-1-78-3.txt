@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġtravelling	Ġto	Ġthe	Ġbedroom	Ġand	ĠJohn	Ġtravelling	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġthey	Ġdon	't	Ġmention	ĠSandra	's	Ġcurrent	Ġlocation	.	ĠTherefore	,	Ġwe	Ġcan	Ġonly	Ġinfer	ĠJohn	's	Ġcurrent	Ġlocation	.Ċ	Answer	:	Ġoffice	<|eot_id|>

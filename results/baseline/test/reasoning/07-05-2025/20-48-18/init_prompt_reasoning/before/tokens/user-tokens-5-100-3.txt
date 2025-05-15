@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+23	.	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
+24	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġfootball	?Ċ

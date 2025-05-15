@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	Ġinitially	,	Ġand	Ġthen	Ġhe	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

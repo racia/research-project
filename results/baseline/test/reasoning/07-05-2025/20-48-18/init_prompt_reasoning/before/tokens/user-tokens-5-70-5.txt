@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+21	.	ĠJeff	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+22	.	ĠBill	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġmilk	Ġto	ĠFred	?Ċ

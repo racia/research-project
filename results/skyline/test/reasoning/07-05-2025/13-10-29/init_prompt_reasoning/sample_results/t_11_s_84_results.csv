@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+416	11	84	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the hallway.
+2. Afterwards she went to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	the context sentences describe sandra's movements, first moving to the hallway and then going to the bedroom. since the last action mentioned is her going to the bedroom, it can be logically inferred that she is currently in the bedroom.	fully	bedroom	True	According to the context sentences, Sandra moved to the hallway (1) and then went to the bedroom (2), which means she is currently in the bedroom.		"assistant
+
+Reasoning: According to the context sentences, Sandra moved to the hallway (1) and then went to the bedroom (2), which means she is currently in the bedroom.
+
+Answer: bedroom"	0.2381	0.0476	False	False	False	False	0
+417	11	84	2	"*TASK*
+Here are the context sentences:
+4. Mary journeyed to the bathroom.
+5. Afterwards she travelled to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"the context sentences describe mary's movements, but there is no mention of sandra. the answer ""bedroom"" suggests that sandra's location was established in a previous part of the conversation. indeed, in the previous part, it was established that sandra moved to the hallway and then went to the bedroom. therefore, the correct answer is still that sandra is in the bedroom, and the context sentences about mary's movements do not change this."	none	bedroom	True	The context sentences (4 and 5) are about Mary's movements, but they do not provide any new information about Sandra's location. The last known location of Sandra was the bedroom (from previous context sentences 1 and 2).		"Reasoning: The context sentences (4 and 5) are about Mary's movements, but they do not provide any new information about Sandra's location. The last known location of Sandra was the bedroom (from previous context sentences 1 and 2).
+
+Answer: bedroom"	0.1273	0.0364	False	False	False	True	0
+418	11	84	3	"*TASK*
+Here are the context sentences:
+7. Mary travelled to the hallway.
+8. Afterwards she travelled to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	the context sentences describe mary's movements, first travelling to the hallway and then afterwards travelling to the kitchen. since the last action mentioned is her travelling to the kitchen, it can be logically inferred that she is currently in the kitchen.	fully	kitchen	True	According to the context sentences, Mary travelled to the hallway (7) and then travelled to the kitchen (8), which means she is currently in the kitchen.		"Reasoning: According to the context sentences, Mary travelled to the hallway (7) and then travelled to the kitchen (8), which means she is currently in the kitchen.
+
+Answer: kitchen"	0.0256	0.0513	False	False	False	False	0
+419	11	84	4	"*TASK*
+Here are the context sentences:
+10. John moved to the office.
+11. Then he moved to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"the context sentences describe john's movements, but there is no mention of mary's movements or location in these sentences. however, the answer ""kitchen"" suggests that mary's location was established in a previous part of the conversation. indeed, in a previous part, it was established that mary travelled to the hallway and then to the kitchen. therefore, the correct answer is still that mary is in the kitchen, and the context sentences about john's movements do not change this."	none	kitchen	True	The context sentences (10 and 11) are about John's movements, but they do not provide any new information about Mary's location. The last known location of Mary was the kitchen (from previous context sentences 7 and 8).		"Reasoning: The context sentences (10 and 11) are about John's movements, but they do not provide any new information about Mary's location. The last known location of Mary was the kitchen (from previous context sentences 7 and 8).
+
+Answer: kitchen"	0.0545	0.0364	False	False	False	True	0
+420	11	84	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the garden.
+14. Following that she went to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"the context sentences describe sandra's movements, but there is no mention of mary's movements or location in these sentences. however, the answer ""kitchen"" suggests that mary's location was established in a previous part of the conversation. indeed, in a previous part, it was established that mary travelled to the hallway and then to the kitchen. therefore, the correct answer is still that mary is in the kitchen, and the context sentences about sandra's movements do not change this."	none	kitchen	True	The context sentences (13 and 14) are about Sandra's movements, but they do not provide any new information about Mary's location. The last known location of Mary was the kitchen (from previous context sentences 7 and 8).		"Reasoning: The context sentences (13 and 14) are about Sandra's movements, but they do not provide any new information about Mary's location. The last known location of Mary was the kitchen (from previous context sentences 7 and 8).
+
+Answer: kitchen"	0.0364	0.0364	False	False	False	True	0

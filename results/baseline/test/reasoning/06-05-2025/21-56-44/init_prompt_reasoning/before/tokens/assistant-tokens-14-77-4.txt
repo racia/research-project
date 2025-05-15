@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġschool	,	Ġbut	Ġthe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġschool	.	ĠThe	Ġsentences	Ġonly	Ġmention	Ġher	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	Ġthis	Ġevening	Ġ(	sentence	Ġ	13	),	Ġbut	Ġnot	Ġher	Ġlocation	Ġbefore	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

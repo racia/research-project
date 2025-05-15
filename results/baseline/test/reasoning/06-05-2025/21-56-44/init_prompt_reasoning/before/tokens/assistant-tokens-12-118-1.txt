@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġit	Ġimplies	Ġthat	ĠJohn	Ġwas	Ġpreviously	Ġsomewhere	Ġelse	.	ĠThen	,	ĠDaniel	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġmeans	ĠJohn	Ġwas	Ġwith	ĠDaniel	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġgarden	.	ĠTherefore	,	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

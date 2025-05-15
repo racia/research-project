@@ -1,0 +1,43 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1605	18	91	1	"*TASK*
+Here are the context sentences:
+1. The suitcase fits inside the chest.
+2. The box of chocolates is bigger than the chocolate.
+3. The box of chocolates fits inside the box.
+4. The suitcase fits inside the chest.
+5. The chest is bigger than the chocolate.
+
+Now, answer the following question:
+Does the box fit in the chocolate?"	no	from context sentence 2, we know that the box of chocolates is bigger than the chocolate. this implies that the chocolate is smaller than the box of chocolates. therefore, it is not possible for the box (of chocolates) to fit inside the chocolate, as the chocolate is smaller than the box.	fully		False	The box of chocolates is bigger than the chocolate (sentence 2), which means the box of chocolates has a larger volume than the chocolate. The box of chocolates fits inside the box (sentence 3), which means the box of chocolates has a smaller volume than the box. Since the suitcase fits inside the chest (sentences 1 and 4), the chest is larger than the suitcase. The chest is bigger than the chocolate (sentence 5), which means the chest has		Reasoning: The box of chocolates is bigger than the chocolate (sentence 2), which means the box of chocolates has a larger volume than the chocolate. The box of chocolates fits inside the box (sentence 3), which means the box of chocolates has a smaller volume than the box. Since the suitcase fits inside the chest (sentences 1 and 4), the chest is larger than the suitcase. The chest is bigger than the chocolate (sentence 5), which means the chest has	0.2121	0.0202	False	False	False	False	0
+1606	18	91	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box bigger than the chocolate?"	yes	"from context sentence 2, we know that ""the box of chocolates is bigger than the chocolate."" since the question is asking about the box (without specifying ""of chocolates""), it is logical to assume that the box referred to is the same as the ""box of chocolates"" mentioned in the context sentence. therefore, according to context sentence 2, the box is indeed bigger than the chocolate."	none	yes	True	The box of chocolates is bigger than the chocolate (sentence 2), which means the box of chocolates has a larger volume than the chocolate. The box of chocolates fits inside the box (sentence 3), which means the box of chocolates has a smaller volume than the box. Since the box of chocolates is bigger than the chocolate, the box is also bigger than the chocolate.		"Reasoning: The box of chocolates is bigger than the chocolate (sentence 2), which means the box of chocolates has a larger volume than the chocolate. The box of chocolates fits inside the box (sentence 3), which means the box of chocolates has a smaller volume than the box. Since the box of chocolates is bigger than the chocolate, the box is also bigger than the chocolate.
+
+Answer: yes"	0.1098	0.0244	False	False	False	False	0
+1607	18	91	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the box?"	no	from the previous question, we established that the box is bigger than the chocolate (context sentence 2). therefore, it is not possible for the chocolate to be bigger than the box. the correct relationship is that the box is bigger than the chocolate, so the answer is no.	none	no	True	The box of chocolates is bigger than the chocolate (sentence 2), which means the box of chocolates has a larger volume than the chocolate. The box of chocolates fits inside the box (sentence 3), which means the box of chocolates has a smaller volume than the box. Since the box of chocolates is bigger than the chocolate, the box is also bigger than the chocolate.		"Reasoning: The box of chocolates is bigger than the chocolate (sentence 2), which means the box of chocolates has a larger volume than the chocolate. The box of chocolates fits inside the box (sentence 3), which means the box of chocolates has a smaller volume than the box. Since the box of chocolates is bigger than the chocolate, the box is also bigger than the chocolate.
+
+Answer: no"	0.0976	0.0244	False	False	False	False	0
+1608	18	91	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the box?"	yes	"from context sentence 3, we know that ""the box of chocolates fits inside the box."" this implies that the box of chocolates is smaller than the box. since the box of chocolates contains the chocolate, it is logical to assume that the chocolate is also smaller than the box. therefore, the chocolate fits inside the box."	none	yes	True	The box of chocolates fits inside the box (sentence 3), which means the box of chocolates has a smaller volume than the box. Since the box of chocolates is bigger than the chocolate (sentence 2), the chocolate has a smaller volume than the box of chocolates. Therefore, the chocolate can fit inside the box.		"Reasoning: The box of chocolates fits inside the box (sentence 3), which means the box of chocolates has a smaller volume than the box. Since the box of chocolates is bigger than the chocolate (sentence 2), the chocolate has a smaller volume than the box of chocolates. Therefore, the chocolate can fit inside the box.
+
+Answer: yes"	0.0845	0.0282	False	False	False	False	0
+1609	18	91	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the box?"	yes	"from context sentence 3, we know that ""the box of chocolates fits inside the box."" since the box of chocolates contains the chocolate, it is logical to assume that the chocolate is also smaller than the box. therefore, the chocolate fits inside the box."	none	yes	True	The box of chocolates fits inside the box (sentence 3), which means the box of chocolates has a smaller volume than the box. Since the box of chocolates is bigger than the chocolate (sentence 2), the chocolate has a smaller volume than the box of chocolates. Therefore, the chocolate can fit inside the box.		"Reasoning: The box of chocolates fits inside the box (sentence 3), which means the box of chocolates has a smaller volume than the box. Since the box of chocolates is bigger than the chocolate (sentence 2), the chocolate has a smaller volume than the box of chocolates. Therefore, the chocolate can fit inside the box.
+
+Answer: yes"	0.0986	0.0282	False	False	False	False	0

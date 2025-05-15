@@ -1,0 +1,62 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1976	5	76	1	"*TASK*
+Here are the context sentences:
+1. Bill moved to the bathroom.
+2. Mary went to the bathroom.
+3. Jeff journeyed to the hallway.
+4. Fred moved to the bathroom.
+5. Bill grabbed the apple there.
+6. Bill dropped the apple.
+7. Bill went to the office.
+8. Mary grabbed the apple there.
+9. Mary journeyed to the hallway.
+10. Mary discarded the apple.
+11. Mary journeyed to the garden.
+12. Bill travelled to the hallway.
+13. Bill got the apple there.
+14. Bill travelled to the office.
+15. Mary moved to the kitchen.
+16. Bill journeyed to the bathroom.
+17. Bill passed the apple to Fred.
+18. Jeff moved to the garden.
+
+Now, answer the following question:
+Who received the apple?"	fred	from the context sentences, we can track the movement of the apple and the characters. the apple was initially grabbed by bill in the bathroom (sentence 5). then, bill dropped the apple (sentence 6). later, mary grabbed the apple in the bathroom (sentence 8). mary discarded the apple in the hallway (sentence 10). bill then got the apple again in the hallway (sentence 13). finally, bill passed the apple to fred in the bathroom (sentence	fully	Fred	True	Bill passed the apple to Fred, which means Fred received the apple.		"Reasoning: Bill passed the apple to Fred, which means Fred received the apple.
+
+Answer: Fred"	0.0	0.0476	False	False	False	False	0
+1977	5	76	2	"*TASK*
+Here are the context sentences:
+20. Fred handed the apple to Bill.
+21. Jeff travelled to the bathroom.
+
+Now, answer the following question:
+Who gave the apple?"	fred	"the question asks who gave the apple. according to the context sentence 20, ""fred handed the apple to bill."" this sentence explicitly states that fred gave the apple to bill, which directly answers the question. therefore, the correct answer is indeed fred."	fully	Fred	True	Fred handed the apple to Bill, which means Fred gave the apple.		"Reasoning: Fred handed the apple to Bill, which means Fred gave the apple.
+
+Answer: Fred"	0.0476	0.0476	False	False	False	False	0
+1978	5	76	3	"*TASK*
+Here are the context sentences:
+23. Bill passed the apple to Fred.
+24. Mary went to the office.
+
+Now, answer the following question:
+Who gave the apple?"	bill	"the question asks who gave the apple. according to the context sentence 23, ""bill passed the apple to fred."" this sentence explicitly states that bill gave the apple to fred, which directly answers the question. therefore, the correct answer is indeed bill."	fully	Bill	True	Bill passed the apple to Fred, which means Bill gave the apple.		"Reasoning: Bill passed the apple to Fred, which means Bill gave the apple.
+
+Answer: Bill"	0.0	0.0476	False	False	False	False	0
+1979	5	76	4	"*TASK*
+Here are the context sentences:
+26. Jeff moved to the office.
+27. Fred handed the apple to Bill.
+
+Now, answer the following question:
+What did Fred give to Bill?"	apple	"the question asks what did fred give to bill. according to the context sentence 27, ""fred handed the apple to bill."" this sentence explicitly states that fred gave the apple to bill, which directly answers the question. therefore, the correct answer is indeed the apple."	fully	apple	True	Fred handed the apple to Bill, which means Fred gave the apple to Bill.		"Reasoning: Fred handed the apple to Bill, which means Fred gave the apple to Bill.
+
+Answer: apple"	0.0	0.0435	False	False	False	False	0
+1980	5	76	5	"*TASK*
+Here are the context sentences:
+29. Jeff travelled to the bedroom.
+30. Bill passed the apple to Fred.
+
+Now, answer the following question:
+Who did Bill give the apple to?"	fred	"the question asks who did bill give the apple to. according to the context sentence 30, ""bill passed the apple to fred."" this sentence explicitly states that bill gave the apple to fred, which directly answers the question. therefore, the correct answer is indeed fred."	fully	Fred	True	Bill passed the apple to Fred, which means Bill gave the apple to Fred.		"Reasoning: Bill passed the apple to Fred, which means Bill gave the apple to Fred.
+
+Answer: Fred"	0.0435	0.0435	False	False	False	False	0

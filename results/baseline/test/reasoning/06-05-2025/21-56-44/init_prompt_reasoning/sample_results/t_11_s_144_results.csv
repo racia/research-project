@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+716	11	144	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the office.
+2. Then he went back to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"from the context sentences, we know that daniel moved to the office (sentence 1) and then went back to the bedroom (sentence 2). this implies that daniel's current location is the bedroom, as he moved there after being in the office. therefore, the answer to the question ""where is daniel?"" is indeed the bedroom."	fully	bedroom	True	Daniel moved to the office initially, but then he went back to the bedroom, which means he is currently in the bedroom.		"Reasoning: Daniel moved to the office initially, but then he went back to the bedroom, which means he is currently in the bedroom.
+
+Answer: bedroom"	0.1562	0.0625	False	False	False	False	0
+717	11	144	2	"*TASK*
+Here are the context sentences:
+4. Daniel travelled to the office.
+5. Then he went back to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"from the context sentences, we know that daniel travelled to the office (sentence 4) and then went back to the hallway (sentence 5). this implies that daniel's current location is the hallway, as he moved there after being in the office. therefore, the answer to the question ""where is daniel?"" is indeed the hallway."	fully	hallway	True	Daniel initially travelled to the office, but then he went back to the hallway, which means he is currently in the hallway.		"Reasoning: Daniel initially travelled to the office, but then he went back to the hallway, which means he is currently in the hallway.
+
+Answer: hallway"	0.1875	0.0625	False	False	False	False	0
+718	11	144	3	"*TASK*
+Here are the context sentences:
+7. Daniel went back to the kitchen.
+8. Afterwards he went back to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"from the context sentences, we know that daniel went back to the kitchen (sentence 7) and afterwards he went back to the office (sentence 8). this implies that daniel's current location is the office, as he moved there after being in the kitchen. therefore, the answer to the question ""where is daniel?"" is indeed the office."	fully	office	True	Daniel went back to the kitchen, but then he went back to the office, which means he is currently in the office.		"Reasoning: Daniel went back to the kitchen, but then he went back to the office, which means he is currently in the office.
+
+Answer: office"	0.0	0.0625	False	False	False	False	0
+719	11	144	4	"*TASK*
+Here are the context sentences:
+10. Daniel moved to the bathroom.
+11. After that he went to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"from the context sentences, we know that daniel moved to the bathroom (sentence 10) and after that he went to the kitchen (sentence 11). this implies that daniel's current location is the kitchen, as he moved there after being in the bathroom. therefore, the answer to the question ""where is daniel?"" is indeed the kitchen."	fully	kitchen	True	Daniel moved to the bathroom, and then he went to the kitchen, which means he is currently in the kitchen.		"Reasoning: Daniel moved to the bathroom, and then he went to the kitchen, which means he is currently in the kitchen.
+
+Answer: kitchen"	0.0667	0.0667	False	False	False	False	0
+720	11	144	5	"*TASK*
+Here are the context sentences:
+13. Sandra went to the kitchen.
+14. Following that she went to the office.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"the context sentences mention sandra's movements, not daniel's. sentence 13 states that sandra went to the kitchen, and sentence 14 states that she went to the office afterwards. there is no information about daniel's location. therefore, it is not possible to determine daniel's location based on the provided context. the answer ""kitchen"" is incorrect, as it refers to sandra's previous location, not daniel's current location."	none	not mentioned	False	The question is asking about Daniel's location, but the context sentences only mention Sandra's movements. Since there is no information about Daniel's location, we cannot determine where he is.		"Reasoning: The question is asking about Daniel's location, but the context sentences only mention Sandra's movements. Since there is no information about Daniel's location, we cannot determine where he is.
+
+Answer: not mentioned"	0.0682	0.0455	False	False	False	True	0

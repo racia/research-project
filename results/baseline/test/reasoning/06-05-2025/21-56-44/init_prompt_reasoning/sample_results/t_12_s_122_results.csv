@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1356	12	122	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Sandra moved to the hallway.
+2. Mary and John travelled to the office.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"from context sentence 1, ""daniel and sandra moved to the hallway"", we can infer that daniel's current location is the hallway. this sentence directly states daniel's movement to the hallway, which implies that he is currently present in the hallway."	fully	hallway	True	Daniel and Sandra moved to the hallway, which implies that Daniel is currently in the hallway.		"Reasoning: Daniel and Sandra moved to the hallway, which implies that Daniel is currently in the hallway.
+
+Answer: hallway"	0.0	0.04	False	False	False	False	0
+1357	12	122	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Daniel travelled to the office.
+5. Sandra and John moved to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"from context sentence 5, ""sandra and john moved to the bedroom"", we can infer that john's current location is the bedroom. this sentence directly states john's movement to the bedroom, which implies that he is currently present in the bedroom."	fully	bedroom	True	Sandra and John moved to the bedroom, which implies that John is currently in the bedroom.		"Reasoning: Sandra and John moved to the bedroom, which implies that John is currently in the bedroom.
+
+Answer: bedroom"	0.2	0.04	False	False	False	False	0
+1358	12	122	3	"*TASK*
+Here are the context sentences:
+7. Mary and Daniel journeyed to the kitchen.
+8. Mary and John travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"from context sentence 7, ""mary and daniel journeyed to the kitchen"", we know that mary was in the kitchen. however, context sentence 8, ""mary and john travelled to the bathroom"", indicates that mary has moved from the kitchen to the bathroom. therefore, mary's current location is the bathroom."	fully	kitchen	False	Mary and Daniel journeyed to the kitchen, which implies that Mary is currently in the kitchen. There is no information that contradicts this, so we can conclude that Mary is in the kitchen.		"Reasoning: Mary and Daniel journeyed to the kitchen, which implies that Mary is currently in the kitchen. There is no information that contradicts this, so we can conclude that Mary is in the kitchen.
+
+Answer: kitchen"	0.0	0.0217	False	False	False	True	0
+1359	12	122	4	"*TASK*
+Here are the context sentences:
+10. Mary and John went to the office.
+11. Mary and Daniel went to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"from context sentence 11, ""mary and daniel went to the garden"", we can directly infer that daniel's current location is the garden. this sentence explicitly states daniel's movement to the garden, which implies that he is currently present in the garden."	fully	garden	True	Mary and Daniel went to the garden, which implies that Daniel is currently in the garden.		"Reasoning: Mary and Daniel went to the garden, which implies that Daniel is currently in the garden.
+
+Answer: garden"	0.0	0.04	False	False	False	False	0
+1360	12	122	5	"*TASK*
+Here are the context sentences:
+13. Mary and Daniel went to the kitchen.
+14. Mary and Daniel moved to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"from context sentence 13, ""mary and daniel went to the kitchen"", we know that mary was in the kitchen. however, context sentence 14, ""mary and daniel moved to the bedroom"", indicates that mary has moved from the kitchen to the bedroom. therefore, mary's current location is the bedroom."	fully	bedroom	True	Mary and Daniel went to the kitchen, and then they moved to the bedroom, which implies that Mary is currently in the bedroom.		"Reasoning: Mary and Daniel went to the kitchen, and then they moved to the bedroom, which implies that Mary is currently in the bedroom.
+
+Answer: bedroom"	0.0303	0.0303	False	False	False	False	0

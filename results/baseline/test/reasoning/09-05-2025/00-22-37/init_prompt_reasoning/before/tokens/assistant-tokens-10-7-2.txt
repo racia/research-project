@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	Ġthe	Ġlocations	Ġof	ĠFred	Ġand	ĠBill	.	ĠFred	Ġis	Ġin	Ġthe	Ġschool	,	Ġand	ĠBill	Ġwent	Ġto	Ġthe	Ġcinema	,	Ġwhich	Ġimplies	Ġthat	ĠBill	Ġis	Ġnot	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġno	<|eot_id|>

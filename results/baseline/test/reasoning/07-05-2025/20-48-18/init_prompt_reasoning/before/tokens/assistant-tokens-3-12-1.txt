@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġdiscarded	Ġby	ĠMary	,	Ġand	Ġthen	ĠMary	Ġpicked	Ġit	Ġup	Ġagain	.	ĠAfter	Ġthat	,	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.	ĠSince	Ġthe	Ġfootball	Ġwas	Ġpicked	Ġup	Ġby	ĠMary	Ġbefore	Ġshe	Ġwent	Ġto	Ġthe	Ġhallway	,	Ġit	Ġwas	Ġin	Ġthe	Ġoffice	,	Ġwhere	ĠMary	Ġmoved	Ġto	Ġbefore	Ġgoing	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

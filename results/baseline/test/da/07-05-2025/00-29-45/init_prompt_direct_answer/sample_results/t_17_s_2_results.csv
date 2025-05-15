@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+109	17	2	1	"*TASK*
+Here are the context sentences:
+1. The red square is below the blue square.
+2. The red square is to the left of the pink rectangle.
+
+Now, answer the following question:
+Is the blue square below the pink rectangle?"	no	from the context sentences, we know that the red square is below the blue square (sentence 1), and the red square is to the left of the pink rectangle (sentence 2). since the red square is below the blue square, the blue square must be above the red square. additionally, the red square is to the left of the pink rectangle, which means the pink rectangle is to the right of the red square. therefore, the blue square, which is above the red	fully	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+110	17	2	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the left of the blue square?"	no	from the previous context sentences, we know that the red square is below the blue square (sentence 1), and the red square is to the left of the pink rectangle (sentence 2). since the red square is to the left of the pink rectangle, the pink rectangle must be to the right of the red square. additionally, the red square is below the blue square, which means the blue square is above the red square. therefore, the pink rectangle, which is to the	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+111	17	2	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the left of the pink rectangle?"	yes	from the previous context sentences, we know that the red square is below the blue square (sentence 1), and the red square is to the left of the pink rectangle (sentence 2). since the red square is to the left of the pink rectangle, the pink rectangle must be to the right of the red square. additionally, the red square is below the blue square, which means the blue square is above the red square. therefore, the blue square, which is above the	none	no	False			Answer: no	0.25	0.5	False	False	False	False	0
+112	17	2	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the left of the blue square?"	no	from the previous context sentences, we know that the red square is below the blue square (sentence 1), and the red square is to the left of the pink rectangle (sentence 2). since the red square is to the left of the pink rectangle, the pink rectangle must be to the right of the red square. additionally, the red square is below the blue square, which means the blue square is above the red square. therefore, the blue square is to the left of	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+113	17	2	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle above the blue square?"	no	from the previous context sentences, we know that the red square is below the blue square (sentence 1), and the red square is to the left of the pink rectangle (sentence 2). since the red square is below the blue square, the blue square is above the red square. additionally, the pink rectangle is to the right of the red square (inferred from sentence 2). there is no information suggesting that the pink rectangle is above or below the blue square, but	none	not mentioned	False			Answer: not mentioned	0.2	0.4	False	False	False	True	0
+114	17	2	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the left of the blue square?"	no	"""reasoning: <reasoning>"""	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+115	17	2	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle above the blue square?"	no	"""reasoning: <reasoning>"""	none	not mentioned	False			Answer: not mentioned	0.2	0.4	False	False	False	True	0
+116	17	2	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square above the pink rectangle?"	yes	"""reasoning: <reasoning>"""	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0

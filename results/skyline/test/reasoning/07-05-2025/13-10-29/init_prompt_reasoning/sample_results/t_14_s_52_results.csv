@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1756	14	52	1	"*TASK*
+Here are the context sentences:
+1. This morning Mary went to the kitchen.
+2. Mary went back to the office yesterday.
+3. This afternoon Mary went to the cinema.
+4. Fred journeyed to the office yesterday.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	kitchen	from the context sentences, we know that mary went to the kitchen this morning (sentence 1). there is no information about mary going anywhere else before going to the cinema this afternoon (sentence 3). therefore, logically, mary was in the kitchen before going to the cinema. the information about mary going back to the office yesterday (sentence 2) and fred journeying to the office yesterday (sentence 4) is not relevant to mary's location before going to the cinema.	fully	kitchen	True	According to sentence 1, Mary was in the kitchen this morning. Then, according to sentence 3, Mary went to the cinema this afternoon. Therefore, Mary was in the kitchen before going to the cinema.		"assistant
+
+Reasoning: According to sentence 1, Mary was in the kitchen this morning. Then, according to sentence 3, Mary went to the cinema this afternoon. Therefore, Mary was in the kitchen before going to the cinema.
+
+Answer: kitchen"	0.0943	0.0377	False	False	False	False	0
+1757	14	52	2	"*TASK*
+Here are the context sentences:
+6. This morning Bill went back to the park.
+7. Bill went back to the kitchen yesterday.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	office	"there is no information about mary in the provided context sentences. the sentences only talk about bill's movements. therefore, we cannot determine where mary was before the kitchen based on the provided information. the answer ""office"" seems to be incorrect, as there is no connection between mary and the office in the given context."	none	not mentioned	False	There is no information about Mary's location before the kitchen. The context sentences only mention Bill's movements.		"Reasoning: There is no information about Mary's location before the kitchen. The context sentences only mention Bill's movements.
+
+Answer: not mentioned"	0.1724	0.069	False	False	False	True	0
+1758	14	52	3	"*TASK*
+Here are the context sentences:
+9. Mary went back to the park this evening.
+10. Bill moved to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Bill before the park?"	kitchen	"the question asks about bill's location before the park, but there is no information about bill going to the park. however, we know that bill moved to the kitchen this afternoon (sentence 10). there is no other information about bill's movements before that. therefore, we cannot determine where bill was before the park, as bill never went to the park according to the provided context. the answer ""kitchen"" seems to be incorrect, as it is bill's current location, not"	none	not mentioned	False	There is no information about Bill going to the park. According to sentence 10, Bill moved to the kitchen this afternoon, but there is no mention of Bill going to the park.		"Reasoning: There is no information about Bill going to the park. According to sentence 10, Bill moved to the kitchen this afternoon, but there is no mention of Bill going to the park.
+
+Answer: not mentioned"	0.1111	0.0444	False	False	False	True	0
+1759	14	52	4	"*TASK*
+Here are the context sentences:
+12. Julie went back to the office yesterday.
+13. This evening Bill journeyed to the bedroom.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	park	"there is no information about bill going to the kitchen in the provided context sentences. the sentences only talk about julie going back to the office yesterday (sentence 12) and bill journeying to the bedroom this evening (sentence 13). there is no connection between bill and the kitchen. additionally, there is no information about bill being at the park before going to the kitchen, as bill's journey is only mentioned to the bedroom, not the kitchen. the answer ""park"" seems"	none	not mentioned	False	There is no information about Bill going to the kitchen. The context sentences only mention Julie's movement to the office and Bill's movement to the bedroom.		"Reasoning: There is no information about Bill going to the kitchen. The context sentences only mention Julie's movement to the office and Bill's movement to the bedroom.
+
+Answer: not mentioned"	0.1053	0.0526	False	False	False	True	0
+1760	14	52	5	"*TASK*
+Here are the context sentences:
+15. Julie moved to the bedroom this afternoon.
+16. This morning Julie travelled to the cinema.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	cinema	according to sentence 15, julie moved to the bedroom this afternoon. sentence 16 states that julie travelled to the cinema this morning. since julie moved to the bedroom in the afternoon, it is logical to assume that she was at the cinema before moving to the bedroom, as the morning comes before the afternoon. therefore, julie was at the cinema before the bedroom.	fully	cinema	True	According to sentence 16, Julie travelled to the cinema this morning. Then, according to sentence 15, Julie moved to the bedroom this afternoon. Therefore, Julie was at the cinema before going to the bedroom.		"Reasoning: According to sentence 16, Julie travelled to the cinema this morning. Then, according to sentence 15, Julie moved to the bedroom this afternoon. Therefore, Julie was at the cinema before going to the bedroom.
+
+Answer: cinema"	0.0	0.04	False	False	False	False	0

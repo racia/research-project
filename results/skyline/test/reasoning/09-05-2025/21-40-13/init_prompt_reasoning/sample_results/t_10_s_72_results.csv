@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+356	10	72	1	"*TASK*
+Here are the context sentences:
+1. Julie is in the park.
+2. Fred is in the bedroom.
+
+Now, answer the following question:
+Is Julie in the park?"	yes	"the context sentence ""1. julie is in the park"" directly states that julie is in the park, which answers the question affirmatively. the second context sentence ""2. fred is in the bedroom"" does not provide any contradictory or relevant information about julie's location, so it can be ignored in this case."	fully	yes	True	The context sentence 1 explicitly states that Julie is in the park.		"assistant
+
+Reasoning: The context sentence 1 explicitly states that Julie is in the park.
+
+Answer: yes"	0.0	0.04	False	False	False	False	0
+357	10	72	2	"*TASK*
+Here are the context sentences:
+4. Mary went to the park.
+5. Bill travelled to the office.
+
+Now, answer the following question:
+Is Bill in the office?"	yes	"the context sentence ""5. bill travelled to the office"" implies that bill has arrived at the office, as ""travelled to"" suggests a completed action of moving to a location. therefore, it can be logically concluded that bill is currently in the office. the context sentence ""4. mary went to the park"" does not provide any information about bill's location, so it can be ignored in this case."	fully	yes	True	The context sentence 5 explicitly states that Bill travelled to the office, which implies that Bill is in the office.		"Reasoning: The context sentence 5 explicitly states that Bill travelled to the office, which implies that Bill is in the office.
+
+Answer: yes"	0.1333	0.0333	False	False	False	False	0
+358	10	72	3	"*TASK*
+Here are the context sentences:
+7. Bill went to the park.
+8. Fred went to the office.
+
+Now, answer the following question:
+Is Fred in the office?"	yes	"the context sentence ""8. fred went to the office"" implies that fred has arrived at the office, as ""went to"" suggests a completed action of moving to a location. therefore, it can be logically concluded that fred is currently in the office. the context sentence ""7. bill went to the park"" does not provide any information about fred's location, so it can be ignored in this case."	fully	yes	True	The context sentence 8 explicitly states that Fred went to the office, which implies that Fred is in the office.		"Reasoning: The context sentence 8 explicitly states that Fred went to the office, which implies that Fred is in the office.
+
+Answer: yes"	0.0333	0.0333	False	False	False	False	0
+359	10	72	4	"*TASK*
+Here are the context sentences:
+10. Mary is in the bedroom.
+11. Julie is either in the office or the cinema.
+
+Now, answer the following question:
+Is Julie in the office?"	maybe	"the context sentence ""11. julie is either in the office or the cinema"" provides two possible locations for julie, but it does not specify which one is correct. therefore, it is uncertain whether julie is in the office or not, and the answer ""maybe"" is a correct reflection of this uncertainty. the context sentence ""10. mary is in the bedroom"" does not provide any information about julie's location, so it can be ignored in this case."	fully	maybe	True	The context sentence 11 states that Julie is either in the office or the cinema, but it does not provide a definitive location for Julie. Therefore, we can only conclude that Julie might be in the office, but it's not certain.		"Reasoning: The context sentence 11 states that Julie is either in the office or the cinema, but it does not provide a definitive location for Julie. Therefore, we can only conclude that Julie might be in the office, but it's not certain.
+
+Answer: maybe"	0.0364	0.0182	False	False	False	False	0
+360	10	72	5	"*TASK*
+Here are the context sentences:
+13. Fred moved to the park.
+14. Julie is in the bedroom.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	"there is no mention of mary in the context sentences. the context sentence ""14. julie is in the bedroom"" only provides information about julie's location, not mary's. therefore, it is not possible to conclude that mary is in the bedroom based on the provided information. the answer ""yes"" seems to be incorrect."	none	yes	True	The context sentence 10 previously stated that Mary is in the bedroom, and there is no information that suggests Mary has moved or changed locations.		"Reasoning: The context sentence 10 previously stated that Mary is in the bedroom, and there is no information that suggests Mary has moved or changed locations.
+
+Answer: yes"	0.1429	0.0286	False	False	False	True	0

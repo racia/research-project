@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1131	8	27	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the garden.
+2. Mary went to the office.
+3. Daniel moved to the hallway.
+4. John journeyed to the kitchen.
+5. John moved to the office.
+6. Sandra journeyed to the garden.
+7. Daniel went back to the garden.
+8. Daniel journeyed to the kitchen.
+9. Mary went to the bedroom.
+10. Daniel grabbed the milk there.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"from the context sentences, we can track daniel's movements and actions. in sentence 3, daniel moved to the hallway. then, in sentence 7, daniel went back to the garden. after that, in sentence 8, daniel journeyed to the kitchen. finally, in sentence 10, daniel grabbed the milk there, implying that ""there"" refers to the kitchen. therefore, daniel is carrying the milk."	fully	milk	True	The question asks about what Daniel is carrying. We need to find the last action performed by Daniel that involves carrying something. In sentence 10, Daniel grabbed the milk, which implies that he is carrying the milk.		"Reasoning: The question asks about what Daniel is carrying. We need to find the last action performed by Daniel that involves carrying something. In sentence 10, Daniel grabbed the milk, which implies that he is carrying the milk.
+
+Answer: milk"	0.04	0.02	False	False	False	False	0
+1132	8	27	2	"*TASK*
+Here are the context sentences:
+12. Sandra went to the bedroom.
+13. Mary journeyed to the bathroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"the context sentences provided (12 and 13) do not mention daniel or what he is carrying. however, we can look back at the previous context sentences (1-10) to find the relevant information. in sentence 10, it is stated that ""daniel grabbed the milk there"", which implies that daniel is carrying milk. the new context sentences (12 and 13) do not provide any information that would change this fact, so we can conclude that daniel is still carrying milk"	none	not mentioned	False	The question asks about what Daniel is carrying. However, there is no mention of Daniel carrying anything in the given context sentences. The sentences only mention Sandra and Mary's actions, but not Daniel's.		"Reasoning: The question asks about what Daniel is carrying. However, there is no mention of Daniel carrying anything in the given context sentences. The sentences only mention Sandra and Mary's actions, but not Daniel's.
+
+Answer: not mentioned"	0.0	0.0208	False	False	False	True	0
+1133	8	27	3	"*TASK*
+Here are the context sentences:
+15. John travelled to the bathroom.
+16. John journeyed to the kitchen.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"the context sentences provided (15 and 16) only mention john's movements and do not provide any new information about daniel. we can look back at the previous context sentences (1-10) to find the relevant information. in sentence 10, it is stated that ""daniel grabbed the milk there"", which implies that daniel is carrying milk. the new context sentences (15 and 16) do not provide any information that would change this fact, so we can conclude that daniel is"	none	not mentioned	False	The question asks about what Daniel is carrying. However, there is no mention of Daniel carrying anything in the given context sentences. The sentences only mention John's actions, but not Daniel's.		"Reasoning: The question asks about what Daniel is carrying. However, there is no mention of Daniel carrying anything in the given context sentences. The sentences only mention John's actions, but not Daniel's.
+
+Answer: not mentioned"	0.0217	0.0217	False	False	False	True	0
+1134	8	27	4	"*TASK*
+Here are the context sentences:
+18. Daniel journeyed to the bathroom.
+19. Daniel moved to the bedroom.
+20. Daniel put down the milk there.
+21. Sandra picked up the apple there.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	"from the context sentences, we can track sandra's actions. in sentence 21, it is stated that ""sandra picked up the apple there"", which implies that sandra is carrying the apple. the phrase ""there"" refers to the bedroom, as indicated by sentence 19, where daniel moved to the bedroom, and sentence 20, where daniel put down the milk. since sandra picked up the apple in the same location, we can conclude that sandra is carrying the apple."	fully	apple	True	The question asks about what Sandra is carrying. In sentence 21, Sandra picked up the apple, which implies that she is carrying the apple.		"Reasoning: The question asks about what Sandra is carrying. In sentence 21, Sandra picked up the apple, which implies that she is carrying the apple.
+
+Answer: apple"	0.1667	0.0278	False	False	False	False	0
+1135	8	27	5	"*TASK*
+Here are the context sentences:
+23. Mary went back to the office.
+24. Sandra took the milk there.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"previously, in sentence 10, it was stated that ""daniel grabbed the milk there"", implying that daniel was carrying the milk. however, in sentence 20, it was stated that ""daniel put down the milk there"", which means daniel is no longer carrying the milk. subsequently, in sentence 24, it is stated that ""sandra took the milk there"", which further confirms that the milk is no longer with daniel. therefore, we can conclude that"	none	not mentioned	False	The question asks about what Daniel is carrying. However, there is no mention of Daniel carrying anything in the given context sentences. The sentences only mention Mary's and Sandra's actions, but not Daniel's.		"Reasoning: The question asks about what Daniel is carrying. However, there is no mention of Daniel carrying anything in the given context sentences. The sentences only mention Mary's and Sandra's actions, but not Daniel's.
+
+Answer: not mentioned"	0.0612	0.0408	False	False	False	True	0

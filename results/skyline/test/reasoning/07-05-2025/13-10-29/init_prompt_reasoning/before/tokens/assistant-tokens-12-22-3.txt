@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġwith	ĠDaniel	Ġ(	sentence	Ġ	7	),	Ġbut	Ġthen	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġwith	ĠMary	Ġ(	sentence	Ġ	8	).	ĠTherefore	,	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,0 +1,1 @@
+*T	ASK	*ĊĊ	Reason	ing	:	ĠEmily	Ġis	Ġa	Ġwolf	Ġ(	sentence	Ġ	7	).	ĠWolves	Ġare	Ġafraid	Ġof	Ġsheep	Ġ(	sentence	Ġ	1	).ĊĊ	Answer	:	Ġsheep	<|eot_id|>

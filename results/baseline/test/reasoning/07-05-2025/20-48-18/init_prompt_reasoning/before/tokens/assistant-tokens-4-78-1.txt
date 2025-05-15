@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġbathroom	Ġis	Ġnorth	Ġof	Ġthe	Ġoffice	,	Ġand	Ġthe	Ġoffice	Ġis	Ġnorth	Ġof	Ġthe	Ġgarden	.	ĠThis	Ġimplies	Ġthat	Ġthe	Ġbathroom	Ġis	Ġalso	Ġnorth	Ġof	Ġthe	Ġgarden	.	ĠSince	Ġthe	Ġoffice	Ġis	Ġnorth	Ġof	Ġthe	Ġgarden	,	Ġit	Ġmeans	Ġthe	Ġoffice	Ġis	Ġnot	Ġnorth	Ġof	Ġitself	.	ĠTherefore	,	Ġthe	Ġbathroom	Ġis	Ġnorth	Ġof	Ġthe	Ġoffice	.ĊĊ	Answer	:	ĠBathroom	<|eot_id|>

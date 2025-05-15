@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	16	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġcinema	Ġthis	Ġevening	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġanywhere	Ġelse	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.	ĠThe	Ġcontext	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġwhereabouts	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

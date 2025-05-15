@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1621	9	25	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the office.
+2. Daniel is in the kitchen.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	no	the context sentences provide information about the locations of two individuals, sandra and daniel. sentence 1 states that sandra travelled to the office, which does not provide any information about daniel's location. sentence 2 explicitly states that daniel is in the kitchen. there is no mention of the hallway in either sentence. therefore, based on the provided information, it can be logically concluded that daniel is not in the hallway, as his location is specified to be the kitchen.	fully	no	True	The context sentences do not mention Daniel being in the hallway. In fact, sentence 2 states that Daniel is in the kitchen, which is a different location.		"Reasoning: The context sentences do not mention Daniel being in the hallway. In fact, sentence 2 states that Daniel is in the kitchen, which is a different location.
+
+Answer: no"	0.05	0.025	False	False	False	True	0
+1622	9	25	2	"*TASK*
+Here are the context sentences:
+4. Daniel is in the hallway.
+5. John moved to the office.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	no	"there is no mention of sandra or the bathroom in the provided context sentences. sentences 4 and 5 provide information about daniel's location (hallway) and john's location (office), but do not mention sandra or the bathroom. therefore, based on the provided information, it can be logically concluded that there is no evidence to suggest sandra is in the bathroom, and the answer is ""no""."	none	unknown	False	There is no information provided about Sandra being in the bathroom. The context sentences only mention Daniel being in the hallway and John moving to the office, but do not provide any information about Sandra's location.		"Reasoning: There is no information provided about Sandra being in the bathroom. The context sentences only mention Daniel being in the hallway and John moving to the office, but do not provide any information about Sandra's location.
+
+Answer: unknown"	0.0426	0.0213	False	False	False	True	0
+1623	9	25	3	"*TASK*
+Here are the context sentences:
+7. Sandra is in the bedroom.
+8. Sandra is no longer in the bedroom.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	no	"the context sentences provide information about sandra's location. sentence 7 states that sandra is in the bedroom, but sentence 8 updates this information by stating that sandra is no longer in the bedroom. this implies that sandra's location has changed, and she is no longer in the bedroom. therefore, based on the provided information, it can be logically concluded that sandra is not in the bedroom, and the answer is ""no""."	fully	no	True	Sentence 7 initially states that Sandra is in the bedroom, but sentence 8 contradicts this by saying that Sandra is no longer in the bedroom. This implies that Sandra has left the bedroom.		"Reasoning: Sentence 7 initially states that Sandra is in the bedroom, but sentence 8 contradicts this by saying that Sandra is no longer in the bedroom. This implies that Sandra has left the bedroom.
+
+Answer: no"	0.0	0.0217	False	False	False	False	0
+1624	9	25	4	"*TASK*
+Here are the context sentences:
+10. Daniel is in the kitchen.
+11. Sandra went to the bedroom.
+
+Now, answer the following question:
+Is John in the office?"	yes	"the context sentences provide information about the locations of daniel and sandra, but do not mention john's location directly. however, we can infer john's location by looking at the previous context sentences ( sentences 1-5). sentence 5 states that ""john moved to the office"", which implies that john is in the office. this information is not contradicted or updated by the new context sentences (10 and 11), so we can conclude that john is still in the office. therefore"	none	unknown	False	There is no information provided about John's location in the given context sentences. Sentence 5 mentioned John moving to the office, but that information is not relevant to the current context.		"Reasoning: There is no information provided about John's location in the given context sentences. Sentence 5 mentioned John moving to the office, but that information is not relevant to the current context.
+
+Answer: unknown"	0.0	0.0233	False	False	False	True	0
+1625	9	25	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the bedroom.
+14. Daniel is in the bathroom.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	"the context sentences provide information about the locations of john and daniel. sentence 13 states that john travelled to the bedroom, but it does not mention daniel's location in relation to the bedroom. sentence 14 explicitly states that daniel is in the bathroom, which is a different location from the bedroom. therefore, based on the provided information, it can be logically concluded that daniel is not in the bedroom, and the answer is ""no""."	fully	no	True	Sentence 14 states that Daniel is in the bathroom, which is a different location from the bedroom. There is no information provided about Daniel being in the bedroom.		"Reasoning: Sentence 14 states that Daniel is in the bathroom, which is a different location from the bedroom. There is no information provided about Daniel being in the bedroom.
+
+Answer: no"	0.0	0.0256	False	False	False	True	0

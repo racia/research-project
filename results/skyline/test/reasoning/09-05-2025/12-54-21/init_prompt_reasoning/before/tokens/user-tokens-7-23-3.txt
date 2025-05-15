@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+8	.	ĠJohn	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠMary	Ġcarrying	?Ċ

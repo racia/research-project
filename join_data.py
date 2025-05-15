@@ -8,38 +8,24 @@
 
 from __future__ import annotations
 
+import argparse
 import re
 import shutil
 import warnings
+from collections import defaultdict
 from pathlib import Path
-from typing import Generator, Iterable
 
 from prettytable import PrettyTable
-from spacy.tokens.doc import defaultdict
 
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
+from data.utils import level_down
+from inference.utils import flatten
 from plots.utils import find_difference_in_paths, get_paths
 
 PREFIX = Path.cwd()
 while PREFIX.name != "research-project":
     PREFIX = PREFIX.parent
-
-
-def flatten(items: list) -> Generator:
-    """
-    Flatten a list of items.
-
-    :param items: list of items
-    :return: flattened list
-    """
-    for item in items:
-        if isinstance(item, list):
-            yield from flatten(item)
-        elif isinstance(item, Iterable) and not isinstance(item, str):
-            yield from flatten(list(item))
-        else:
-            yield item
 
 
 def print_counts_table(
@@ -99,6 +85,7 @@ def define_sources(
 
     :param id_counts: dictionary of task IDs and counts of parts
     :param paths: list of paths to the result files
+    :param level: level of the data to join, either 'task' or 'sample'
     :return: dictionary of paths and task IDs for each path
     """
     items = defaultdict(list)
@@ -121,10 +108,11 @@ def join_headers(all_headers: list[list[str]]) -> tuple:
     """
     headers = []
     lengths = [len(headers) for headers in all_headers]
-
     for i in range(max(lengths)):
+        print(i)
         for header_list in all_headers:
-            if len(header_list) >= i and header_list[i] not in headers:
+            print(header_list)
+            if len(header_list) > i and header_list[i] not in headers:
                 headers.append(header_list[i])
     return tuple(headers)
 
@@ -148,22 +136,21 @@ def get_headers(data: dict[Path, dict[str, list]]) -> tuple:
     if max(set_lengths) != fewest_headers_no:
         print("Headers do not match:", *set_headers, sep="\n", end="\n\n")
 
-        all_headers = set(flatten(set_headers))
+        full_headers = set(flatten(all_headers))
         for headers, path in zip(set_headers, data.keys()):
             if len(headers) > fewest_headers_no:
                 surplus_headers = headers - fewest_headers
                 warnings.warn(
                     f"* Surplus * headers in {Path(*Path(path).parts[-6:])}:\n{surplus_headers}\n\n",
                 )
-            if len(headers) < len(all_headers):
-                missing_headers = all_headers - headers
+            if len(headers) < len(full_headers):
+                missing_headers = full_headers - headers
                 warnings.warn(
                     f"* Missing * headers in {Path(*Path(path).parts[-6:])}:\n{missing_headers}\n\n",
                 )
-
-    all_unique_headers = join_headers(all_headers)
-
-    return all_unique_headers
+    if not all_headers:
+        raise ValueError("No headers found in the data. Please check the data files.")
+    return join_headers(all_headers)
 
 
 def get_level_result(
@@ -245,7 +232,7 @@ def join_data(
 
 
 def run(
-    paths: list[str],
+    paths: list[str] | str,
     result_directory: str,
     level: str = "task",
     keyword: str = "results",
@@ -256,23 +243,23 @@ def run(
     :param paths: list of paths to the result files
     :param result_directory: path to save the all_samples data
     :param level: level of the data to join, either 'task' or 'sample'
-    :param keyword: keyword to search for in the paths
-    :return:
+    :param keyword: filtering keyword for the paths, for example or 'task_2' (default: 'results')
+    :return: None
     """
     print("You are running the data join script.", end="\n\n")
+    print(f"Paths to the result files:\n{paths}", end="\n\n")
+    print(f"Result directory:\n{result_directory}", end="\n\n")
+    print(f"Level of the data to join:\n{level}", end="\n\n")
 
     if level not in ["task", "sample"]:
         raise ValueError(
             f"Level '{level}' not recognized. Please choose 'task' or 'sample''."
         )
 
-    if len(paths) < 2:
-        raise ValueError(
-            "Please provide at least two paths to join. Now provided:", len(paths)
-        )
-
     data = {}
     loader = DataLoader()
+    if type(paths) is str:
+        paths = [paths]
     data_paths = [get_paths(PREFIX / path, keyword=keyword) for path in paths]
     flat_paths = list(flatten(data_paths))
 
@@ -294,20 +281,20 @@ def run(
     print(f"\n{level.capitalize()}s saved from each path:")
     for path, item_ids in zip(flat_paths, sources_items.values()):
         print("Path:", Path(*path.parts[-4:]))
-        print(f"{level.capitalize()}s:", *item_ids, end="\n\n")
+        print(f"{level_down(level).capitalize()}s:", *item_ids, end="\n\n")
 
     full_result_directory = PREFIX / result_directory
     full_result_directory.mkdir(parents=True, exist_ok=True)
     if next(full_result_directory.iterdir(), None):
         raise FileExistsError(
-            f"Directory {result_directory} is not empty. Please provide an empty directory."
+            f"Directory {result_directory} is not empty. Please provide an empty directory for results."
         )
 
     saver = DataSaver(save_to=full_result_directory)
     saver.save_output(
         data=joined_data,
         headers=tuple(headers),
-        file_name=f"joined_{level}_results.csv",
+        file_name=f"joined_{keyword}_{level}_results.csv",
     )
 
     logs = [get_paths(PREFIX / path, keyword="", file_format="log") for path in paths]
@@ -344,20 +331,16 @@ def run(
         get_paths(PREFIX / path.parent, keyword="interpretability", file_format="")
         for path in flat_paths
     ]
-    if interpretability:
-        flat_interpretability = list(flatten(interpretability))
+    flat_interpretability = flatten(interpretability)
+    if flat_interpretability:
 
-        attn_scores = [path / "attn_scores" for path in flat_interpretability]
-        plots = [path / "plots" for path in flat_interpretability]
-
-        if not (
-            len(attn_scores) == len(plots) == len(flat_paths) == len(sources_items)
-        ):
+        if not len(flat_interpretability) == len(flat_paths) == len(sources_items):
             raise ValueError(
-                "The number of paths for attention scores and plots do not match."
+                f"The number of paths for attention scores and paths do not match: "
+                f"{len(flat_interpretability)} != {len(flat_paths)} != {len(sources_items)}"
             )
-        for (source_path, item_ids), attn_scores_path, plots_path, path in zip(
-            sources_items.items(), attn_scores, plots, flat_paths
+        for (source_path, item_ids), attn_scores_path, path in zip(
+            sources_items.items(), flat_interpretability, flat_paths
         ):
             assert str(source_path.parent.name) in str(
                 attn_scores_path
@@ -369,34 +352,23 @@ def run(
                 attn_path_add = Path("after", "interpretability")
 
             attn_scores_count = 0
-            plots_count = 0
 
             for item_id in item_ids:
-                (
-                    attn_scores_pattern,
-                    x_tokens_pattern,
-                    y_tokens_pattern,
-                    attn_map_pattern,
-                ) = (
-                    None,
-                    None,
-                    None,
-                    None,
-                )
+                attn_scores_pattern = ""
+                x_tokens_pattern = ""
+                y_tokens_pattern = ""
                 if level == "task":
                     attn_scores_pattern = re.compile(
                         rf"attn_scores-{item_id}-\d+-\d+\.txt"
                     )
                     x_tokens_pattern = re.compile(rf"x_tokens-{item_id}-\d+-\d+\.txt")
                     y_tokens_pattern = re.compile(rf"y_tokens-{item_id}-\d+-\d+\.txt")
-                    attn_map_pattern = re.compile(rf"attn_map-{item_id}-\d+-\d+\.pdf")
                 elif level == "sample":
                     attn_scores_pattern = re.compile(
                         rf"attn_scores-\d+-{item_id}-\d+\.txt"
                     )
                     x_tokens_pattern = re.compile(rf"x_tokens-\d+-{item_id}-\d+\.txt")
                     y_tokens_pattern = re.compile(rf"y_tokens-\d+-{item_id}-\d+\.txt")
-                    attn_map_pattern = re.compile(rf"attn_map-\d+-{item_id}-\d+\.pdf")
 
                 for attn_scores_file in attn_scores_path.iterdir():
                     if (
@@ -422,23 +394,6 @@ def run(
                         f"No attention scores found for {item_id} in {attn_scores_path}"
                     )
 
-                if plots_path.exists():
-                    for plot_file in plots_path.iterdir():
-                        if attn_map_pattern.match(plot_file.name):
-                            plots_count += 1
-                            dest_path = (
-                                PREFIX / result_directory / attn_path_add / "plots"
-                            )
-                            dest_path.mkdir(parents=True, exist_ok=True)
-                            try:
-                                shutil.copy2(plot_file, dest_path / plot_file.name)
-                            except shutil.SameFileError:
-                                warnings.warn(
-                                    f"File {plot_file.name} already exists in the destination: {dest_path}"
-                                )
-                else:
-                    warnings.warn(f"No plots found in {plots_path}")
-
             print(
                 f"\n\nCopied interpretability files for {level} {', '.join(map(str, item_ids))} "
                 f"in the following directories:"
@@ -448,11 +403,43 @@ def run(
                 f"==> {Path(*Path(result_directory / attn_path_add / 'attn_scores').parts[-6:])}"
                 f"\t\t({attn_scores_count} files)"
             )
-            print(
-                f"{Path(*Path(path, plots_path).parts[-6:])} "
-                f"==> {Path(*Path(result_directory / attn_path_add / 'plots').parts[-6:])}"
-                f"\t\t({plots_count} files)"
-            )
+
+        # TODO: add moving of iterations for Feedback and SD
+        plots = [path / "plots" for path in flat_interpretability]
+        plots_count = 0
+        for (source_path, item_ids), plots_path, path in zip(
+            sources_items.items(), plots, paths
+        ):
+            if "before" in str(plots_path):
+                attn_path_add = Path("before", "interpretability")
+            else:
+                attn_path_add = Path("after", "interpretability")
+            attn_map_pattern = ""
+            for item_id in item_ids:
+                if level == "task":
+                    attn_map_pattern = re.compile(rf"attn_map-{item_id}-\d+-\d+\.pdf")
+                elif level == "sample":
+                    attn_map_pattern = re.compile(rf"attn_map-\d+-{item_id}-\d+\.pdf")
+            if plots_path.exists():
+                for plot_file in plots_path.iterdir():
+                    if attn_map_pattern.match(plot_file.name):
+                        plots_count += 1
+                        dest_path = PREFIX / result_directory / attn_path_add / "plots"
+                        dest_path.mkdir(parents=True, exist_ok=True)
+                        try:
+                            shutil.copy2(plot_file, dest_path / plot_file.name)
+                        except shutil.SameFileError:
+                            warnings.warn(
+                                f"File {plot_file.name} already exists in the destination: {dest_path}"
+                            )
+            else:
+                warnings.warn(f"No plots found in {plots_path}")
+            if plots_count > 0:
+                print(
+                    f"{Path(*Path(path, plots_path).parts[-6:])} "
+                    f"==> {Path(*Path(result_directory / attn_path_add / 'plots').parts[-6:])}"
+                    f"\t\t({plots_count} files)"
+                )
 
     print(
         "\nTo obtain the accuracy of the all_samples data, run the evaluation script.",
@@ -462,14 +449,48 @@ def run(
     print("Data join completed successfully.")
 
 
+def parse_args():
+    """
+    Parse command line arguments.
+    """
+    parser = argparse.ArgumentParser(
+        description="Join data from different sources into a single file."
+    )
+    parser.add_argument(
+        "--paths",
+        type=str,
+        nargs="+",
+        required=True,
+        help="Paths to the result directories.",
+    )
+    parser.add_argument(
+        "--result_directory",
+        type=str,
+        required=True,
+        help="Path to save the all_samples data.",
+    )
+    parser.add_argument(
+        "--level",
+        type=str,
+        choices=["task", "sample"],
+        default="task",
+        help="Level of the data to join, either 'task' or 'sample'.",
+    )
+    parser.add_argument(
+        "--keyword",
+        type=str,
+        default="results",
+        help="Keyword to search for in the paths.",
+    )
+
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
-    # TODO: add paths of result directories that should be all_samples
-    paths = [
-        "results/skyline/valid/with_examples/reasoning/tasks_1_2",
-        "results/skyline/valid/with_examples/reasoning/tasks_3/all_samples",
-        "results/skyline/valid/with_examples/reasoning/tasks_4_10",
-        "results/skyline/valid/with_examples/reasoning/tasks_11_20",
-    ]
-    # TODO: path to save the all_samples data
-    result_directory = "results/skyline/valid/with_examples/reasoning/all_tasks"
-    run(paths=paths, result_directory=result_directory, level="task")
+    args = parse_args()
+    run(
+        paths=args.paths,
+        result_directory=args.result_directory,
+        level=args.level,
+        keyword=args.keyword,
+    )

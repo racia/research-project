@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠAntoine	Ġis	Ġtired	,	Ġhe	Ġwill	Ġlikely	Ġgo	Ġto	Ġa	Ġplace	Ġwhere	Ġhe	Ġcan	Ġrest	Ġor	Ġsleep	.	ĠThe	Ġcontext	Ġsentence	Ġmentions	Ġnothing	Ġabout	ĠAntoine	's	Ġcurrent	Ġlocation	,	Ġso	Ġwe	Ġcan	Ġinfer	Ġthat	Ġhe	Ġwill	Ġgo	Ġto	Ġa	Ġplace	Ġwhere	Ġhe	Ġcan	Ġget	Ġsome	Ġrest	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

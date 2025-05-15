@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1806	14	62	1	"*TASK*
+Here are the context sentences:
+1. This morning Bill moved to the cinema.
+2. Bill went to the school yesterday.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	school	from the context sentences, we know that bill moved to the cinema this morning (sentence 1). to determine where bill was before the cinema, we need to look at the previous actions of bill. sentence 2 states that bill went to the school yesterday. since bill went to the school yesterday and moved to the cinema this morning, it can be logically inferred that bill was at the school before moving to the cinema.	fully	school	True	From sentence 2, we know that Bill was at the school yesterday. Since sentence 1 states that Bill moved to the cinema this morning, it implies that Bill was at the school before moving to the cinema.		"assistant
+
+Reasoning: From sentence 2, we know that Bill was at the school yesterday. Since sentence 1 states that Bill moved to the cinema this morning, it implies that Bill was at the school before moving to the cinema.
+
+Answer: school"	0.2593	0.037	False	False	False	False	0
+1807	14	62	2	"*TASK*
+Here are the context sentences:
+4. Yesterday Mary moved to the kitchen.
+5. This afternoon Bill journeyed to the kitchen.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	school	"the provided context sentences (4 and 5) do not mention bill being at the cinema or school. the question asks about bill's location before the cinema, but the context sentences only mention mary moving to the kitchen yesterday and bill journeying to the kitchen this afternoon. there is no information about bill's location before the cinema. the answer ""school"" seems to be based on a previous conversation (context sentences 1 and 2), where it was established that bill went to the"	none	not mentioned	False	There is no information provided about Bill's location before the cinema in the given context sentences. The context sentences only mention Mary moving to the kitchen yesterday and Bill journeying to the kitchen this afternoon, but they do not provide any information about Bill's location before the cinema.		"Reasoning: There is no information provided about Bill's location before the cinema in the given context sentences. The context sentences only mention Mary moving to the kitchen yesterday and Bill journeying to the kitchen this afternoon, but they do not provide any information about Bill's location before the cinema.
+
+Answer: not mentioned"	0.129	0.0323	False	False	False	True	0
+1808	14	62	3	"*TASK*
+Here are the context sentences:
+7. Yesterday Fred moved to the cinema.
+8. Julie journeyed to the kitchen yesterday.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	cinema	"there is no information about bill in the provided context sentences (7 and 8). the context sentences only mention fred moving to the cinema and julie journeying to the kitchen, but do not mention bill at all. the answer ""cinema"" seems to be based on a previous conversation (context sentences 1 and 2), where it was established that bill moved to the cinema this morning, but there is no connection between bill and the kitchen in the current context."	none	not mentioned	False	There is no information provided about Bill's location before the kitchen in the given context sentences. The context sentences only mention Fred moving to the cinema yesterday and Julie journeying to the kitchen yesterday, but they do not provide any information about Bill's location before the kitchen.		"Reasoning: There is no information provided about Bill's location before the kitchen in the given context sentences. The context sentences only mention Fred moving to the cinema yesterday and Julie journeying to the kitchen yesterday, but they do not provide any information about Bill's location before the kitchen.
+
+Answer: not mentioned"	0.0984	0.0328	False	False	False	True	0
+1809	14	62	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the office this morning.
+11. This morning Fred went to the park.
+
+Now, answer the following question:
+Where was Mary before the office?"	kitchen	"there is no information in the provided context sentences (10 and 11) that mentions mary being in the kitchen before the office. the context sentences only mention mary moving to the office this morning and fred going to the park this morning, but do not provide any information about mary's previous location. the answer ""kitchen"" seems to be based on a previous conversation (context sentences 4 and 5), where mary was not mentioned at all. therefore, it is not possible to"	partially	not mentioned	False	There is no information provided about Mary's location before the office in the given context sentences. The context sentences only mention Mary moving to the office this morning and Fred going to the park this morning, but they do not provide any information about Mary's location before the office.		"Reasoning: There is no information provided about Mary's location before the office in the given context sentences. The context sentences only mention Mary moving to the office this morning and Fred going to the park this morning, but they do not provide any information about Mary's location before the office.
+
+Answer: not mentioned"	0.0	0.0323	False	False	False	True	0
+1810	14	62	5	"*TASK*
+Here are the context sentences:
+13. Fred went to the kitchen this afternoon.
+14. Bill went back to the office this evening.
+
+Now, answer the following question:
+Where was Bill before the office?"	kitchen	from the context sentences, we know that bill went back to the office this evening (sentence 14). to determine where bill was before the office, we need to look at the previous actions of bill. although bill is not mentioned in sentence 13, we can infer that bill was in the kitchen before the office because the answer states that bill was in the kitchen before the office, and sentence 13 mentions the kitchen as a location. it is logical to assume that bill was in	partially	not mentioned	False	There is no information provided about Bill's location before the office in the given context sentences. The context sentences only mention Fred going to the kitchen this afternoon and Bill going back to the office this evening, but they do not provide any information about Bill's location before the office.		"Reasoning: There is no information provided about Bill's location before the office in the given context sentences. The context sentences only mention Fred going to the kitchen this afternoon and Bill going back to the office this evening, but they do not provide any information about Bill's location before the office.
+
+Answer: not mentioned"	0.127	0.0317	False	False	False	True	0

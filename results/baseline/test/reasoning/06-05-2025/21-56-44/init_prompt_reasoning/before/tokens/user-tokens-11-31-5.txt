@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+14	.	ĠAfterwards	Ġhe	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	ĠDaniel	?Ċ

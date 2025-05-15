@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠJulie	Ġis	Ġin	Ġthe	Ġkitchen	.Ċ
+14	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠJulie	Ġin	Ġthe	Ġpark	?Ċ

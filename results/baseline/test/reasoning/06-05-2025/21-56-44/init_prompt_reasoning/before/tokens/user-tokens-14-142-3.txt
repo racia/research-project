@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+9	.	ĠThis	Ġafternoon	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+10	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠBill	Ġbefore	Ġthe	Ġkitchen	?Ċ

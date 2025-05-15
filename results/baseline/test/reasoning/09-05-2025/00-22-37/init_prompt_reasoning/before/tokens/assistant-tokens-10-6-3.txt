@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠSentence	Ġ	8	Ġmentions	ĠFred	's	Ġlocation	,	Ġbut	Ġit	's	Ġnot	Ġrelevant	Ġto	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

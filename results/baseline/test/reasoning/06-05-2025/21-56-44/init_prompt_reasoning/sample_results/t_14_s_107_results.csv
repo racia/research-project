@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2781	14	107	1	"*TASK*
+Here are the context sentences:
+1. This morning Julie journeyed to the cinema.
+2. Julie went back to the office yesterday.
+
+Now, answer the following question:
+Where was Julie before the cinema?"	office	"from the context sentences, we know that julie went to the cinema ""this morning"" (sentence 1) and that she was at the office ""yesterday"" (sentence 2). since ""this morning"" implies a more recent event than ""yesterday"", we can infer that julie was at the office before going to the cinema. therefore, the answer is the office."	fully	office	True	Since Julie went back to the office yesterday, it implies that she was somewhere else before returning to the office. Since she journeyed to the cinema this morning, it is likely that she was at the office before the cinema.		"Reasoning: Since Julie went back to the office yesterday, it implies that she was somewhere else before returning to the office. Since she journeyed to the cinema this morning, it is likely that she was at the office before the cinema.
+
+Answer: office"	0.1346	0.0385	False	False	False	False	0
+2782	14	107	2	"*TASK*
+Here are the context sentences:
+4. Bill moved to the office yesterday.
+5. Yesterday Mary moved to the office.
+
+Now, answer the following question:
+Where was Julie before the cinema?"	office	"there is no information about julie in the provided context sentences (4 and 5). the context sentences only mention bill and mary moving to the office yesterday. there is no connection between julie and the office or the cinema in these sentences. the answer ""office"" seems to be based on the previous context (sentences 1 and 2), which mentioned julie going to the cinema and being at the office yesterday. therefore, the reasoning is based on the previous context, not the current"	none	Not mentioned	False	The previous context sentences do not mention Julie's location before the cinema. The information provided only talks about Bill and Mary's movements, but not Julie's.		"Reasoning: The previous context sentences do not mention Julie's location before the cinema. The information provided only talks about Bill and Mary's movements, but not Julie's.
+
+Answer: Not mentioned"	0.2051	0.0513	False	False	False	True	0
+2783	14	107	3	"*TASK*
+Here are the context sentences:
+7. This afternoon Julie went back to the kitchen.
+8. Yesterday Fred travelled to the kitchen.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	cinema	"from the context sentences, we know that julie went back to the kitchen ""this afternoon"" (sentence 7). there is no direct information about where julie was before the kitchen. however, we can infer that julie was at the cinema before the kitchen because in a previous part of the conversation (sentences 1 and 2), it was established that julie went to the cinema in the morning and was at the office yesterday. since sentence 7 mentions julie going back to the kitchen"	partially	kitchen	False	Since Julie went back to the kitchen this afternoon, it implies that she was somewhere else before returning to the kitchen. The previous sentence (7) does not mention Julie's location before the kitchen, but the sentence before that (8) mentions Fred's movement to the kitchen yesterday. Since Julie went back to the kitchen this afternoon, it is likely that she was at the kitchen yesterday, and then returned to it this afternoon.		"Reasoning: Since Julie went back to the kitchen this afternoon, it implies that she was somewhere else before returning to the kitchen. The previous sentence (7) does not mention Julie's location before the kitchen, but the sentence before that (8) mentions Fred's movement to the kitchen yesterday. Since Julie went back to the kitchen this afternoon, it is likely that she was at the kitchen yesterday, and then returned to it this afternoon.
+
+Answer: kitchen"	0.0978	0.0217	False	False	False	True	0
+2784	14	107	4	"*TASK*
+Here are the context sentences:
+10. This morning Fred moved to the bedroom.
+11. This morning Bill journeyed to the cinema.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	kitchen	there is no direct information about where fred was before the bedroom in the provided context sentences (10 and 11). sentence 10 only mentions fred moving to the bedroom this morning, and sentence 11 is about bill going to the cinema. however, we can infer that fred was at the kitchen before the bedroom because in a previous part of the conversation (sentence 8), it was mentioned that fred travelled to the kitchen yesterday. since sentence 10 mentions fred moving to the bedroom this	partially	Not mentioned	False	Since Fred moved to the bedroom this morning, it implies that he was somewhere else before moving to the bedroom. The information provided does not mention Fred's location before the bedroom, but it does mention Bill's movement to the cinema this morning.		"Reasoning: Since Fred moved to the bedroom this morning, it implies that he was somewhere else before moving to the bedroom. The information provided does not mention Fred's location before the bedroom, but it does mention Bill's movement to the cinema this morning.
+
+Answer: Not mentioned"	0.0357	0.0357	False	False	False	True	0
+2785	14	107	5	"*TASK*
+Here are the context sentences:
+13. This morning Mary travelled to the cinema.
+14. Fred went back to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	kitchen	from the context sentences, we know that fred went back to the kitchen this afternoon (sentence 14). there is no direct information about where fred was before the bedroom. however, we can infer that fred was at the kitchen before the bedroom because sentence 10 (from a previous part of the conversation) mentions fred moving to the bedroom this morning, and sentence 14 mentions fred going back to the kitchen this afternoon. this implies that fred was at the bedroom at some point between this	none	Not mentioned	False	The previous context sentences do not mention Fred's location before the bedroom. The information provided only talks about Mary's movement to the cinema this morning and Fred's movement to the kitchen this afternoon, but not Fred's location before the bedroom.		"Reasoning: The previous context sentences do not mention Fred's location before the bedroom. The information provided only talks about Mary's movement to the cinema this morning and Fred's movement to the kitchen this afternoon, but not Fred's location before the bedroom.
+
+Answer: Not mentioned"	0.0	0.0364	False	False	False	True	0

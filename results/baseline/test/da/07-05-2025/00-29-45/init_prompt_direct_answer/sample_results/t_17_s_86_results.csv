@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+781	17	86	1	"*TASK*
+Here are the context sentences:
+1. The yellow square is to the right of the blue square.
+2. The yellow square is below the red square.
+
+Now, answer the following question:
+Is the blue square to the right of the red square?"	no	from the context sentences, we know that the yellow square is to the right of the blue square (sentence 1) and the yellow square is below the red square (sentence 2). if the blue square were to the right of the red square, then the yellow square would also be to the right of the red square (since it's to the right of the blue square). however, sentence 2 states that the yellow square is below the red square, which implies that the	fully	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+782	17	86	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square above the blue square?"	yes	from the previous context sentences, we know that the yellow square is to the right of the blue square (sentence 1) and the yellow square is below the red square (sentence 2). since the yellow square is below the red square, it can be inferred that the red square is above the yellow square. additionally, the yellow square is to the right of the blue square, which means the red square (being above the yellow square) must be above the blue square as well	none	no	False			Answer: no	0.25	0.5	False	False	False	False	0
+783	17	86	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square below the red square?"	yes	from the previous context sentences, we know that the yellow square is below the red square (sentence 2). additionally, we know that the yellow square is to the right of the blue square (sentence 1). since the yellow square is below the red square and to the right of the blue square, it can be inferred that the blue square is also below the red square.	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+784	17	86	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square above the red square?"	no	we previously established that the blue square is below the red square (in the previous question). therefore, it cannot be above the red square. the answer is no because it contradicts the previously established spatial relationship between the blue and red squares.	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+785	17	86	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square above the blue square?"	yes	"we previously established that the blue square is below the red square (in the previous question). this implies that the red square is above the blue square, which is consistent with the answer ""yes""."	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+786	17	86	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the right of the blue square?"	yes	we know that the yellow square is to the right of the blue square (sentence 1) and the yellow square is below the red square (sentence 2). since the yellow square is below the red square, the red square must be above the yellow square. therefore, the red square is also to the right of the blue square, as the yellow square is to the right of the blue square.	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+787	17	86	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square below the red square?"	yes	we know that the yellow square is to the right of the blue square (sentence 1) and the yellow square is below the red square (sentence 2). since the yellow square is below the red square, the red square must be above the yellow square. therefore, the red square is also to the right of the blue square, as the yellow square is to the right of the blue square.	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+788	17	86	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square below the red square?"	yes	we know that the yellow square is to the right of the blue square (sentence 1) and the yellow square is below the red square (sentence 2). since the yellow square is below the red square, the red square must be above the yellow square. therefore, the red square is also to the right of the blue square, as the yellow square is to the right of the blue square.	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0

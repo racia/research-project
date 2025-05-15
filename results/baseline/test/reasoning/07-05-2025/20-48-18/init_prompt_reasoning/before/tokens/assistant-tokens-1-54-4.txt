@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	,	Ġonly	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	Ġearlier	.	ĠSince	Ġthere	Ġis	Ġno	Ġupdate	Ġon	Ġhis	Ġlocation	,	Ġit	Ġis	Ġassumed	Ġthat	Ġhe	Ġis	Ġstill	Ġin	Ġthe	Ġbathroom	.Ċ	Answer	:	Ġbathroom	<|eot_id|>

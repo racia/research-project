@@ -1,0 +1,114 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1386	3	78	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the bedroom.
+2. Sandra grabbed the apple.
+3. Sandra put down the apple.
+4. Sandra picked up the apple.
+5. John went back to the kitchen.
+6. Daniel went to the bathroom.
+7. Sandra journeyed to the hallway.
+8. Sandra discarded the apple.
+9. Daniel journeyed to the garden.
+10. John moved to the bathroom.
+11. John got the milk there.
+12. Sandra moved to the bathroom.
+13. Sandra went to the bedroom.
+14. Daniel journeyed to the bathroom.
+15. John dropped the milk.
+16. Daniel went back to the kitchen.
+17. Sandra went to the kitchen.
+18. John moved to the office.
+19. Sandra journeyed to the bathroom.
+20. Daniel went to the garden.
+21. Sandra picked up the milk.
+22. Mary journeyed to the office.
+23. John went back to the garden.
+24. John moved to the bathroom.
+25. John travelled to the garden.
+26. John moved to the bathroom.
+27. Mary went to the bathroom.
+28. Daniel journeyed to the hallway.
+29. Daniel travelled to the kitchen.
+30. John moved to the kitchen.
+31. Sandra moved to the hallway.
+32. Sandra took the football.
+33. Daniel went back to the bathroom.
+34. Sandra grabbed the apple.
+35. Daniel moved to the hallway.
+36. Daniel moved to the bathroom.
+37. Mary moved to the hallway.
+38. Daniel went to the garden.
+39. Mary went to the bedroom.
+40. Daniel travelled to the kitchen.
+41. Sandra dropped the football.
+42. Sandra discarded the apple.
+43. Sandra grabbed the football.
+44. Sandra went to the office.
+45. Mary travelled to the garden.
+46. John went back to the hallway.
+47. John travelled to the bathroom.
+48. Daniel travelled to the bathroom.
+49. Sandra travelled to the bathroom.
+50. John went to the garden.
+51. John went back to the office.
+52. Sandra discarded the milk.
+
+Now, answer the following question:
+Where was the milk before the bathroom?"	office	to find the location of the milk before the bathroom, we need to track the movement of the milk. the milk was first obtained by john in the bathroom (step 11). then, john dropped the milk (step 15), which means the milk was in the bathroom at that point. after that, sandra picked up the milk (step 21), and she moved to the bathroom (step 19) with the milk. later, sandra discarded the milk (step	fully	kitchen	False	The milk was picked up by John in the garden (sentence 11). Then, John dropped the milk (sentence 15). After that, Daniel went back to the kitchen (sentence 16), and Sandra picked up the milk (sentence 21). Since the milk was picked up by Sandra in the bathroom, it implies that the milk was already in the bathroom before Sandra picked it up.		"Reasoning: The milk was picked up by John in the garden (sentence 11). Then, John dropped the milk (sentence 15). After that, Daniel went back to the kitchen (sentence 16), and Sandra picked up the milk (sentence 21). Since the milk was picked up by Sandra in the bathroom, it implies that the milk was already in the bathroom before Sandra picked it up.
+
+Answer: kitchen"	0.0	0.0349	False	False	False	False	0
+1387	3	78	2	"*TASK*
+Here are the context sentences:
+54. Sandra took the milk there.
+55. Sandra discarded the milk there.
+56. Sandra travelled to the kitchen.
+57. John travelled to the bathroom.
+58. John picked up the milk.
+59. John dropped the milk.
+60. John got the milk.
+61. Sandra discarded the football there.
+
+Now, answer the following question:
+Where was the football before the bathroom?"	office	to find the location of the football before the bathroom, we need to track the movement of the football. the football was last discarded by sandra in the bathroom (step 61). before that, sandra had the football, and she travelled to the bathroom (step 57). prior to that, sandra had taken the football (step 32) and moved to the hallway (step 31). then, she dropped the football (step 41) and later grabbed	partially	not mentioned	False	The football was not mentioned before the bathroom in the given context sentences. The only mention of the football is in sentence 61, where Sandra discarded the football in an unspecified location, and sentence 32, where Sandra took the football. However, there is no information about where the football was before the bathroom.		"Reasoning: The football was not mentioned before the bathroom in the given context sentences. The only mention of the football is in sentence 61, where Sandra discarded the football in an unspecified location, and sentence 32, where Sandra took the football. However, there is no information about where the football was before the bathroom.
+
+Answer: not mentioned"	0.0	0.0429	False	False	False	True	0
+1388	3	78	3	"*TASK*
+Here are the context sentences:
+63. John moved to the hallway.
+64. Daniel moved to the garden.
+
+Now, answer the following question:
+Where was the football before the bathroom?"	office	the context lines provided (63 and 64) do not mention the football, so we need to look at the previous parts of the conversation history. in the previous part, we found that the football was last discarded by sandra in the bathroom (step 61). before that, sandra had the football, and she travelled to the bathroom (step 57). prior to that, sandra had taken the football (step 32) and moved to the hallway (step	none	not mentioned	False	There is no information about the football's location before the bathroom in the given context sentences. The sentences only mention John and Daniel's movements, but not the football's location.		"Reasoning: There is no information about the football's location before the bathroom in the given context sentences. The sentences only mention John and Daniel's movements, but not the football's location.
+
+Answer: not mentioned"	0.0698	0.0698	False	False	False	True	0
+1389	3	78	4	"*TASK*
+Here are the context sentences:
+66. John picked up the apple.
+67. John left the apple.
+
+Now, answer the following question:
+Where was the football before the kitchen?"	bathroom	the context lines provided (66 and 67) do not mention the football, so we need to look at the previous parts of the conversation history. in the previous part, we found that the football was last discarded by sandra in the bathroom (step 61). there is no information about the football being moved to the kitchen, so it is logical to assume that the football was still in the bathroom before the kitchen.	none	not mentioned	False	There is no information about the football's location before the kitchen in the given context sentences. The sentences only mention John's actions with the apple, but not the football's location.		"Reasoning: There is no information about the football's location before the kitchen in the given context sentences. The sentences only mention John's actions with the apple, but not the football's location.
+
+Answer: not mentioned"	0.0682	0.0682	False	False	False	True	0
+1390	3	78	5	"*TASK*
+Here are the context sentences:
+69. Daniel journeyed to the bedroom.
+70. John left the milk.
+71. Sandra picked up the football.
+72. Daniel travelled to the hallway.
+73. John took the milk there.
+74. Sandra travelled to the bathroom.
+75. Mary went back to the bathroom.
+76. Sandra went to the office.
+77. Daniel journeyed to the kitchen.
+78. John got the apple.
+79. Daniel went to the bedroom.
+80. Sandra journeyed to the bedroom.
+81. John went to the office.
+82. Sandra left the football.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	office	 football being moved to the kitchen, so it is logical to assume that the football was still in the bathroom before the kitchen.	fully	bathroom	False	The football was picked up by Sandra (sentence 71), and then Sandra travelled to the bathroom (sentence 74). After that, Sandra left the football (sentence 82). Since Sandra left the football, it implies that the football was in the bathroom before Sandra left it.		"Reasoning: The football was picked up by Sandra (sentence 71), and then Sandra travelled to the bathroom (sentence 74). After that, Sandra left the football (sentence 82). Since Sandra left the football, it implies that the football was in the bathroom before Sandra left it.
+
+Answer: bathroom"	0.0	0.0476	False	False	False	False	0

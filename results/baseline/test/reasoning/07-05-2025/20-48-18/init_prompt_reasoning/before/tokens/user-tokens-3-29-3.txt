@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+21	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+22	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġbedroom	?Ċ

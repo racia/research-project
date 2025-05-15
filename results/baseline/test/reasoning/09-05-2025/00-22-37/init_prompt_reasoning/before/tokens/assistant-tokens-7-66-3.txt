@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	23	Ġmentions	Ġthat	ĠSandra	Ġpicked	Ġup	Ġthe	Ġapple	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġnow	Ġholding	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġone	<|eot_id|>

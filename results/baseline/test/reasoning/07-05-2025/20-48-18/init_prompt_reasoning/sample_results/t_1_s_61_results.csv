@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+301	1	61	1	"*TASK*
+Here are the context sentences:
+1. Sandra went to the bathroom.
+2. Mary journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"from the context sentences, we know that mary journeyed to the bathroom (sentence 2). this implies that mary's current location is the bathroom, as she has completed her journey to that location. therefore, the answer to the question ""where is mary?"" is indeed ""bathroom""."	fully	bathroom	True	Since Mary journeyed to the bathroom, it implies that she is currently in the bathroom.		"Reasoning: Since Mary journeyed to the bathroom, it implies that she is currently in the bathroom.
+Answer: bathroom"	0.0	0.04	False	False	False	False	0
+302	1	61	2	"*TASK*
+Here are the context sentences:
+4. Sandra went back to the kitchen.
+5. Daniel went back to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"the question asks about mary's location, but the context sentences (4 and 5) do not provide any new information about mary. however, we can refer back to the previous context sentences (1 and 2) where it was mentioned that mary journeyed to the bathroom. there is no information that suggests mary has moved from the bathroom, so we can infer that mary is still in the bathroom. therefore, the answer to the question ""where is mary?"" is indeed ""b"	none	not mentioned	False	There is no mention of Mary in the given context sentences, so we cannot determine her location.		"Reasoning: There is no mention of Mary in the given context sentences, so we cannot determine her location.
+Answer: not mentioned"	0.037	0.037	False	False	False	True	0
+303	1	61	3	"*TASK*
+Here are the context sentences:
+7. John moved to the garden.
+8. Daniel went to the office.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"the context sentences (7 and 8) provide information about john and daniel's movements, but they do not mention mary. to answer the question ""where is mary?"", we need to refer back to the previous context sentences (1 and 2) where it was mentioned that mary journeyed to the bathroom. there is no new information that suggests mary has moved from the bathroom, so we can infer that mary is still in the bathroom. therefore, the answer to the question ""where"	none	not mentioned	False	There is no mention of Mary in the given context sentences, so we cannot determine her location.		"Reasoning: There is no mention of Mary in the given context sentences, so we cannot determine her location.
+Answer: not mentioned"	0.037	0.037	False	False	False	True	0
+304	1	61	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the hallway.
+11. John travelled to the office.
+
+Now, answer the following question:
+Where is John?"	office	"the context sentence (11) explicitly states that john travelled to the office, which implies that john's current location is the office. therefore, the answer to the question ""where is john?"" is indeed ""office""."	fully	office	True	According to the context sentence 11, John travelled to the office, which implies that he is currently in the office.		"Reasoning: According to the context sentence 11, John travelled to the office, which implies that he is currently in the office.
+Answer: office"	0.0323	0.0323	False	False	False	False	0
+305	1	61	5	"*TASK*
+Here are the context sentences:
+13. Daniel journeyed to the kitchen.
+14. Sandra went to the office.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"the context sentences (13 and 14) provide information about daniel and sandra's movements, but they do not mention mary's current location. however, we can refer back to the previous context sentence (10) where it was mentioned that mary moved to the hallway. there is no new information that suggests mary has moved from the hallway, so we can infer that mary is still in the hallway. therefore, the answer to the question ""where is mary?"" is indeed ""hall"	none	not mentioned	False	There is no mention of Mary in the given context sentences, so we cannot determine her location.		"Reasoning: There is no mention of Mary in the given context sentences, so we cannot determine her location.
+Answer: not mentioned"	0.1852	0.037	False	False	False	True	0

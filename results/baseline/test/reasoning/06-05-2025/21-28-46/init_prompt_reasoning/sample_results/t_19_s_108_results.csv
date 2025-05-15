@@ -1,0 +1,11 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2015	19	108	1	"*TASK*
+Here are the context sentences:
+1. The hallway is east of the bathroom.
+2. The office is west of the bathroom.
+3. The bedroom is south of the garden.
+4. The bedroom is north of the bathroom.
+5. The garden is south of the kitchen.
+
+Now, answer the following question:
+How do you go from the bathroom to the garden?"	north north	from context sentence 4, we know that the bedroom is north of the bathroom. from context sentence 3, we know that the bedroom is south of the garden. therefore, if we go north from the bathroom, we will reach the bedroom. then, if we go north again from the bedroom, we will reach the garden.	fully		False	Since the bathroom is not adjacent to the garden, we need to find a path that connects them. From sentence 1, we know the hallway is east of the bathroom. From sentence 5, we know the garden is south of the kitchen. However, we don't know the exact location of the kitchen relative to the bathroom. From sentence 4, we know the bedroom is north of the bathroom. Sentence 3 tells us the bedroom is south of the garden. Comb		Reasoning: Since the bathroom is not adjacent to the garden, we need to find a path that connects them. From sentence 1, we know the hallway is east of the bathroom. From sentence 5, we know the garden is south of the kitchen. However, we don't know the exact location of the kitchen relative to the bathroom. From sentence 4, we know the bedroom is north of the bathroom. Sentence 3 tells us the bedroom is south of the garden. Comb	0.1515	0.0202	False	False	False	False	0

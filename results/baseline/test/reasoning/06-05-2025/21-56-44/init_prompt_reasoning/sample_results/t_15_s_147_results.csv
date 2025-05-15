@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3585	15	147	1	"*TASK*
+Here are the context sentences:
+1. Mice are afraid of wolves.
+2. Emily is a mouse.
+3. Sheep are afraid of mice.
+4. Wolves are afraid of cats.
+5. Gertrude is a wolf.
+6. Cats are afraid of mice.
+7. Winona is a mouse.
+8. Jessica is a mouse.
+
+Now, answer the following question:
+What is jessica afraid of?"	wolf	from context sentence 2, we know emily is a mouse, and from context sentence 1, we know mice are afraid of wolves. therefore, we can infer that all mice are afraid of wolves. since jessica is a mouse (context sentence 8), we can conclude that jessica is afraid of wolves.	fully	Wolves	True	Since Jessica is a mouse (from sentence 8), and mice are afraid of wolves (from sentence 1), it is logical to infer that Jessica is afraid of wolves.		"Reasoning: Since Jessica is a mouse (from sentence 8), and mice are afraid of wolves (from sentence 1), it is logical to infer that Jessica is afraid of wolves.
+
+Answer: Wolves"	0.0714	0.0476	False	False	False	False	0
+3586	15	147	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is jessica afraid of?"	wolf	from the previous context sentences, we know that mice are afraid of wolves (sentence 1). we also know that jessica is a mouse (sentence 8). therefore, we can logically conclude that jessica, being a mouse, is afraid of wolves.	none	Wolves	True	Since Jessica is a mouse (from sentence 8), and mice are afraid of wolves (from sentence 1), it is logical to infer that Jessica is afraid of wolves.		"Reasoning: Since Jessica is a mouse (from sentence 8), and mice are afraid of wolves (from sentence 1), it is logical to infer that Jessica is afraid of wolves.
+
+Answer: Wolves"	0.0476	0.0476	False	False	False	False	0
+3587	15	147	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is gertrude afraid of?"	cat	from the context sentences, we know that gertrude is a wolf (sentence 5). we also know that wolves are afraid of cats (sentence 4). therefore, we can logically conclude that gertrude, being a wolf, is afraid of cats.	none	Cats	True	Since Gertrude is a wolf (from sentence 5), and wolves are afraid of cats (from sentence 4), it is logical to infer that Gertrude is afraid of cats.		"Reasoning: Since Gertrude is a wolf (from sentence 5), and wolves are afraid of cats (from sentence 4), it is logical to infer that Gertrude is afraid of cats.
+
+Answer: Cats"	0.0652	0.0435	False	False	False	False	0
+3588	15	147	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	wolf	from the context sentences, we know that winona is a mouse (sentence 7). we also know that mice are afraid of wolves (sentence 1). therefore, we can logically conclude that winona, being a mouse, is afraid of wolves.	none	Wolves	True	Since Winona is a mouse (from sentence 7), and mice are afraid of wolves (from sentence 1), it is logical to infer that Winona is afraid of wolves.		"Reasoning: Since Winona is a mouse (from sentence 7), and mice are afraid of wolves (from sentence 1), it is logical to infer that Winona is afraid of wolves.
+
+Answer: Wolves"	0.0909	0.0455	False	False	False	False	0

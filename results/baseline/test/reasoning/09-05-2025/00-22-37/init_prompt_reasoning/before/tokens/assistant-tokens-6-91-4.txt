@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	7	),	Ġbut	Ġthen	Ġtravelled	Ġto	Ġthe	Ġgarden	Ġ(	sentence	Ġ	10	).	ĠSince	Ġshe	Ġtook	Ġthe	Ġmilk	Ġthere	Ġ(	sentence	Ġ	11	),	Ġit	's	Ġlikely	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	,	Ġnot	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1544	4	44	1	"*TASK*
+Here are the context sentences:
+1. The garden is north of the bathroom.
+2. The garden is south of the bedroom.
+
+Now, answer the following question:
+What is south of the bedroom?"	garden	"from context sentence 2, we know that ""the garden is south of the bedroom."" this directly states that the garden is located south of the bedroom, which answers the question ""what is south of the bedroom?"""	fully	garden	True	The garden is south of the bedroom, and the garden is north of the bathroom. This means the bedroom is not adjacent to the bathroom. Since the garden is south of the bedroom, it is the only option.		"Reasoning: The garden is south of the bedroom, and the garden is north of the bathroom. This means the bedroom is not adjacent to the bathroom. Since the garden is south of the bedroom, it is the only option.
+
+Answer: garden"	0.2	0.02	False	False	False	False	0

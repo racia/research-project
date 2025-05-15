@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	Ġin	Ġsentence	Ġ	4	,	Ġit	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.	ĠHowever	,	Ġsentence	Ġ	5	Ġmentions	Ġthat	ĠSandra	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġit	Ġdoesn	't	Ġmention	ĠMary	.	ĠTherefore	,	Ġwe	Ġcan	't	Ġconclude	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

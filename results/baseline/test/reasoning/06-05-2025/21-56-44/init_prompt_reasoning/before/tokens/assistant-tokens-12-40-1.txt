@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	's	Ġlocation	Ġis	Ġdetermined	Ġby	Ġthe	Ġcontext	Ġsentences	.	ĠHe	Ġhas	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġwith	ĠSandra	Ġand	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġwith	ĠMary	.	ĠSince	Ġhe	Ġhas	Ġbeen	Ġto	Ġboth	Ġplaces	,	Ġhis	Ġcurrent	Ġlocation	Ġis	Ġnot	Ġspecified	Ġin	Ġthe	Ġcontext	Ġsentences	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdescribe	ĠSandra	's	Ġmovements	.	ĠIn	Ġsentence	Ġ	13	,	ĠSandra	Ġtravels	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġin	Ġsentence	Ġ	14	,	Ġshe	Ġgoes	Ġto	Ġthe	Ġgarden	.	ĠThis	Ġimplies	Ġthat	ĠSandra	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

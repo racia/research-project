@@ -1,0 +1,66 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+841	2	69	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the office.
+2. John journeyed to the garden.
+3. Mary got the football there.
+4. Mary left the football there.
+5. Daniel got the football there.
+6. Sandra got the milk there.
+7. John travelled to the office.
+8. Mary travelled to the garden.
+9. Sandra travelled to the garden.
+10. John moved to the bedroom.
+
+Now, answer the following question:
+Where is the milk?"	garden	"from sentence 6, we know that sandra got the milk there, and ""there"" refers to the garden because sentence 6 is placed between sentences 5 and 7, which both mention the garden. therefore, the milk is in the garden."	fully	office	False	The context sentences mention Sandra getting the milk at the office (sentence 6), but there is no mention of her leaving the office or the milk being moved to another location. Therefore, it is likely that the milk is still at the office.		"Reasoning: The context sentences mention Sandra getting the milk at the office (sentence 6), but there is no mention of her leaving the office or the milk being moved to another location. Therefore, it is likely that the milk is still at the office.
+
+Answer: office"	0.0179	0.0357	False	False	False	True	0
+842	2	69	2	"*TASK*
+Here are the context sentences:
+12. Daniel travelled to the hallway.
+13. Sandra put down the milk.
+
+Now, answer the following question:
+Where is the milk?"	garden	from the previous context (sentence 6), we know that sandra got the milk in the garden. there is no information about sandra moving the milk from the garden to any other location. in the new context, sentence 13 only mentions sandra putting down the milk, but it doesn't specify a new location. therefore, we can infer that sandra put down the milk in the same location where she got it, which is the garden.	partially	hallway	False	The context sentences mention Sandra putting down the milk, and the location mentioned is the hallway (sentence 12). Therefore, it is likely that the milk is in the hallway.		"Reasoning: The context sentences mention Sandra putting down the milk, and the location mentioned is the hallway (sentence 12). Therefore, it is likely that the milk is in the hallway.
+
+Answer: hallway"	0.0714	0.0476	False	False	False	True	0
+843	2	69	3	"*TASK*
+Here are the context sentences:
+15. Mary grabbed the milk there.
+16. Daniel journeyed to the bedroom.
+17. John journeyed to the hallway.
+18. John went back to the office.
+19. Sandra went back to the office.
+20. John journeyed to the bedroom.
+21. John went to the bathroom.
+22. John travelled to the kitchen.
+23. Daniel moved to the hallway.
+24. John travelled to the bedroom.
+25. Daniel put down the football.
+26. Mary went to the kitchen.
+
+Now, answer the following question:
+Where is the football?"	hallway	from sentence 25, we know that daniel put down the football. the location where daniel put down the football is not explicitly mentioned, but we can infer it from the context. sentence 23 mentions that daniel moved to the hallway, and sentence 25 is placed immediately after it, suggesting that daniel put down the football in the same location where he moved to, which is the hallway.	fully	garden	False	The context sentences mention Daniel putting down the football, but the location mentioned is not specified. However, earlier sentences (1-2) mention John travelling to the office and then to the garden, and Mary getting the football in the garden. Since there is no mention of the football being moved from the garden, it is likely that the football is still in the garden.		"Reasoning: The context sentences mention Daniel putting down the football, but the location mentioned is not specified. However, earlier sentences (1-2) mention John travelling to the office and then to the garden, and Mary getting the football in the garden. Since there is no mention of the football being moved from the garden, it is likely that the football is still in the garden.
+
+Answer: garden"	0.0864	0.0247	False	False	False	True	0
+844	2	69	4	"*TASK*
+Here are the context sentences:
+28. Daniel travelled to the garden.
+29. Mary journeyed to the hallway.
+
+Now, answer the following question:
+Where is the football?"	hallway	from the previous context (sentence 25), we know that daniel put down the football in the hallway. there is no information about the football being moved from the hallway to any other location. the new context sentences (28 and 29) do not mention the football being moved or touched by anyone. therefore, we can conclude that the football is still in the hallway, where daniel put it down.	none	garden	False	The context sentences do not provide any new information about the location of the football. The previous answer (garden) is still the most likely location, as there is no mention of the football being moved from the garden.		"Reasoning: The context sentences do not provide any new information about the location of the football. The previous answer (garden) is still the most likely location, as there is no mention of the football being moved from the garden.
+
+Answer: garden"	0.0784	0.0392	False	False	False	True	0
+845	2	69	5	"*TASK*
+Here are the context sentences:
+31. Sandra went back to the bedroom.
+32. John moved to the office.
+33. Daniel journeyed to the hallway.
+34. Mary discarded the milk.
+
+Now, answer the following question:
+Where is the milk?"	hallway	from the previous context (sentence 13), we know that sandra put down the milk, and from the previous context (sentence 6), we know that sandra got the milk in the garden. however, there is no information about the milk being moved from the garden to any other location until sentence 34, where mary discarded the milk. since mary discarded the milk, it is likely that mary had the milk before discarding it. from the previous context (sentence 29), we	partially	hallway	True	The context sentences mention Mary discarding the milk, but the location mentioned is not specified. However, earlier sentences (13) mention Sandra putting down the milk in the hallway. Since there is no mention of the milk being moved from the hallway, it is likely that the milk is still in the hallway.		"Reasoning: The context sentences mention Mary discarding the milk, but the location mentioned is not specified. However, earlier sentences (13) mention Sandra putting down the milk in the hallway. Since there is no mention of the milk being moved from the hallway, it is likely that the milk is still in the hallway.
+
+Answer: hallway"	0.0	0.0294	False	False	False	True	0

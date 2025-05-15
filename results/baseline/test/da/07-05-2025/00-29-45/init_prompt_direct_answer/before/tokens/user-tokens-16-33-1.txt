@@ -1,0 +1,12 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠLily	Ġis	Ġa	Ġfrog	.Ċ
+2	.	ĠGreg	Ġis	Ġa	Ġlion	.Ċ
+3	.	ĠBern	hard	Ġis	Ġa	Ġrh	ino	.Ċ
+4	.	ĠLily	Ġis	Ġgray	.Ċ
+5	.	ĠJulius	Ġis	Ġa	Ġsw	an	.Ċ
+6	.	ĠJulius	Ġis	Ġgreen	.Ċ
+7	.	ĠBern	hard	Ġis	Ġgreen	.Ċ
+8	.	ĠGreg	Ġis	Ġgray	.Ċ
+9	.	ĠBrian	Ġis	Ġa	Ġsw	an	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġcolor	Ġis	ĠBrian	?Ċ

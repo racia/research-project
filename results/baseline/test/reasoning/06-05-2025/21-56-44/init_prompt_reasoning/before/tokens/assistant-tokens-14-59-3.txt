@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJulie	's	Ġlocation	Ġor	Ġactions	Ġrelated	Ġto	Ġthe	Ġkitchen	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġand	ĠBill	's	Ġjourneys	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġnot	ĠJulie	's	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,62 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+556	2	12	1	"*TASK*
+Here are the context sentences:
+1. John went to the bathroom.
+2. Daniel travelled to the kitchen.
+3. John journeyed to the kitchen.
+4. Daniel journeyed to the hallway.
+5. Sandra travelled to the kitchen.
+6. Mary moved to the office.
+7. Daniel went back to the office.
+8. Sandra went back to the bathroom.
+9. John grabbed the milk there.
+10. John grabbed the apple there.
+11. Sandra journeyed to the office.
+12. Mary went to the hallway.
+13. John went to the bathroom.
+14. John discarded the apple.
+
+Now, answer the following question:
+Where is the apple?"	bathroom	from the context sentences, we know that john grabbed the apple in the kitchen (sentence 10). later, john went back to the bathroom (sentence 13) and discarded the apple (sentence 14). therefore, the apple is in the bathroom.	fully	bathroom	True	The apple was grabbed by John in the bathroom (sentence 10), and then discarded by John (sentence 14). Since John discarded the apple, it is likely that the apple is no longer in the bathroom. However, there is no mention of the apple being moved to another location. Therefore, the most likely answer is that the apple is still in the bathroom.		"Reasoning: The apple was grabbed by John in the bathroom (sentence 10), and then discarded by John (sentence 14). Since John discarded the apple, it is likely that the apple is no longer in the bathroom. However, there is no mention of the apple being moved to another location. Therefore, the most likely answer is that the apple is still in the bathroom.
+
+Answer: bathroom"	0.0247	0.0247	False	False	False	True	0
+557	2	12	2	"*TASK*
+Here are the context sentences:
+16. John put down the milk.
+17. John picked up the apple there.
+
+Now, answer the following question:
+Where is the milk?"	bathroom	from the previous context sentences, we know that john grabbed the milk in the kitchen (sentence 9). later, john went back to the bathroom (sentence 13). now, in sentence 16, john put down the milk, which implies that john put down the milk in the bathroom, as that is his current location. therefore, the milk is in the bathroom.	partially	there	False	The milk was put down by John (sentence 16), but there is no mention of it being moved to another location. Therefore, the most likely answer is that the milk is still where John put it down.		"Reasoning: The milk was put down by John (sentence 16), but there is no mention of it being moved to another location. Therefore, the most likely answer is that the milk is still where John put it down.
+
+Answer: there"	0.04	0.04	True	False	False	True	0
+558	2	12	3	"*TASK*
+Here are the context sentences:
+19. Daniel went back to the bathroom.
+20. John took the milk there.
+21. Daniel travelled to the garden.
+22. Sandra journeyed to the bathroom.
+23. John travelled to the kitchen.
+24. Mary went back to the office.
+
+Now, answer the following question:
+Where is the milk?"	kitchen	from the previous context sentences, we know that john put down the milk in the bathroom (sentence 16). then, in sentence 20, john took the milk in the bathroom, which means john picked up the milk again. later, john travelled to the kitchen (sentence 23), and since john was holding the milk, the milk also went to the kitchen. therefore, the milk is in the kitchen.	fully	bathroom	False	The milk was taken by John to the bathroom (sentence 20), and there is no mention of it being moved to another location. Therefore, the most likely answer is that the milk is still in the bathroom.		"Reasoning: The milk was taken by John to the bathroom (sentence 20), and there is no mention of it being moved to another location. Therefore, the most likely answer is that the milk is still in the bathroom.
+
+Answer: bathroom"	0.14	0.04	False	False	False	True	0
+559	2	12	4	"*TASK*
+Here are the context sentences:
+26. Mary moved to the hallway.
+27. John left the milk.
+
+Now, answer the following question:
+Where is the milk?"	kitchen	in the previous context sentences, we know that john travelled to the kitchen (sentence 23) and was holding the milk. then, in sentence 27, john left the milk, which implies that john left the milk in the kitchen, as that is his current location. therefore, the milk is still in the kitchen.	partially	unknown	False	The milk was left by John (sentence 27), but there is no mention of where it was left. Since John left the milk, it is likely that the milk is no longer in the bathroom. However, there is no information about the milk being moved to another location. Therefore, the most likely answer is that the milk is still where John left it, but the exact location is unknown.		"Reasoning: The milk was left by John (sentence 27), but there is no mention of where it was left. Since John left the milk, it is likely that the milk is no longer in the bathroom. However, there is no information about the milk being moved to another location. Therefore, the most likely answer is that the milk is still where John left it, but the exact location is unknown.
+
+Answer: unknown"	0.046	0.023	False	False	False	True	0
+560	2	12	5	"*TASK*
+Here are the context sentences:
+29. John went back to the bedroom.
+30. John left the apple there.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	in the previous context sentences, we know that john discarded the apple in the bathroom (sentence 14). however, there is no information about john picking up the apple again. then, in sentence 30, john left the apple, which implies that john must have picked up the apple from the bathroom and taken it to the bedroom, where he left it. therefore, the apple is in the bedroom.	fully	bedroom	True	The apple was left by John in the bedroom (sentence 30). Since John left the apple there, it is likely that the apple is still in the bedroom.		"Reasoning: The apple was left by John in the bedroom (sentence 30). Since John left the apple there, it is likely that the apple is still in the bedroom.
+
+Answer: bedroom"	0.075	0.05	False	False	False	False	0

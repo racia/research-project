@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1966	9	94	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the kitchen.
+2. Daniel went back to the garden.
+
+Now, answer the following question:
+Is Daniel in the garden?"	yes	"from the context sentences, we know that daniel went to the kitchen (sentence 1) and then went back to the garden (sentence 2). this implies that daniel was in the kitchen at some point, but then he returned to the garden. therefore, based on the sequence of events, we can conclude that daniel is currently in the garden, which aligns with the answer ""yes""."	fully	yes	True	According to sentence 2, Daniel went back to the garden, which implies that Daniel is currently in the garden.		"assistant
+
+Reasoning: According to sentence 2, Daniel went back to the garden, which implies that Daniel is currently in the garden.
+
+Answer: yes"	0.0294	0.0294	False	False	False	False	0
+1967	9	94	2	"*TASK*
+Here are the context sentences:
+4. Daniel is in the hallway.
+5. Sandra went back to the garden.
+
+Now, answer the following question:
+Is Sandra in the garden?"	yes	"from sentence 5, we know that sandra went back to the garden. the phrase ""went back"" implies that sandra was in the garden previously and then left, but now she has returned to the garden. therefore, based on this information, we can conclude that sandra is currently in the garden, which aligns with the answer ""yes""."	fully	yes	True	According to sentence 5, Sandra went back to the garden, which implies that Sandra is currently in the garden.		"Reasoning: According to sentence 5, Sandra went back to the garden, which implies that Sandra is currently in the garden.
+
+Answer: yes"	0.1667	0.0333	False	False	False	False	0
+1968	9	94	3	"*TASK*
+Here are the context sentences:
+7. John is in the garden.
+8. Daniel is in the office.
+
+Now, answer the following question:
+Is Daniel in the garden?"	no	"from sentence 8, we know that daniel is in the office. there is no mention of daniel being in the garden. in fact, sentence 7 states that john is in the garden, which implies that daniel is not in the garden. therefore, based on this information, we can conclude that daniel is not in the garden, which aligns with the answer ""no""."	fully	no	True	According to sentence 8, Daniel is in the office, which implies that Daniel is not in the garden.		"Reasoning: According to sentence 8, Daniel is in the office, which implies that Daniel is not in the garden.
+
+Answer: no"	0.0	0.0345	False	False	False	False	0
+1969	9	94	4	"*TASK*
+Here are the context sentences:
+10. Mary went to the office.
+11. Daniel is in the bathroom.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	no	"there is no mention of sandra or the kitchen in the provided context sentences. the sentences only mention mary going to the office and daniel being in the bathroom. there is no information about sandra's location, and it is not possible to infer her location from the given information. therefore, we cannot conclude that sandra is in the kitchen, and the answer ""no"" is a correct assumption based on the lack of information."	none	not mentioned	False	There is no mention of Sandra or the kitchen in the provided context sentences.		"Reasoning: There is no mention of Sandra or the kitchen in the provided context sentences.
+
+Answer: not mentioned"	0.0	0.0435	False	False	False	True	0
+1970	9	94	5	"*TASK*
+Here are the context sentences:
+13. Daniel went back to the hallway.
+14. Mary is not in the office.
+
+Now, answer the following question:
+Is Daniel in the office?"	no	from sentence 13, we know that daniel went back to the hallway. this implies that daniel was not in the hallway previously, but now he is. there is no mention of daniel being in the office. additionally, sentence 14 states that mary is not in the office, but it does not provide any information about daniel's location in relation to the office. based on the information provided, it is logical to conclude that daniel is not in the office, which aligns with the	fully	no	True	According to sentence 13, Daniel went back to the hallway, which implies that Daniel is not in the office.		"Reasoning: According to sentence 13, Daniel went back to the hallway, which implies that Daniel is not in the office.
+
+Answer: no"	0.0	0.0333	False	False	False	False	0

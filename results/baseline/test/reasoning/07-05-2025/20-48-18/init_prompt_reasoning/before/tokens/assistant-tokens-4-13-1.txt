@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġbathroom	Ġis	Ġeast	Ġof	Ġthe	Ġkitchen	,	Ġand	Ġthe	Ġbedroom	Ġis	Ġeast	Ġof	Ġthe	Ġbathroom	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġthe	Ġbedroom	Ġis	Ġalso	Ġeast	Ġof	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

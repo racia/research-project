@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+29	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+30	.	ĠJeff	Ġdropped	Ġthe	Ġapple	.Ċ
+31	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+32	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+33	.	ĠMary	Ġleft	Ġthe	Ġfootball	.Ċ
+34	.	ĠFred	Ġhanded	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠFred	Ġgive	Ġthe	Ġmilk	Ġto	?Ċ

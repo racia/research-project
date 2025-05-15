@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1176	8	36	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the office.
+2. Sandra travelled to the office.
+3. Daniel moved to the office.
+4. Mary journeyed to the garden.
+5. John went back to the hallway.
+6. Mary took the apple there.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	"from the context sentences, we know that mary initially journeyed to the office (sentence 1), then journeyed to the garden (sentence 4). in sentence 6, it is stated that mary took the apple there, which implies that ""there"" refers to the garden, as it is the last location mentioned in mary's journey. therefore, mary is carrying the apple."	fully	apple	True	The question asks about what Mary is carrying. Mary took the apple in sentence 6, and there is no mention of her dropping or giving it away. Therefore, it is likely that Mary is still carrying the apple.		"Reasoning: The question asks about what Mary is carrying. Mary took the apple in sentence 6, and there is no mention of her dropping or giving it away. Therefore, it is likely that Mary is still carrying the apple.
+
+Answer: apple"	0.0392	0.0196	False	False	False	True	0
+1177	8	36	2	"*TASK*
+Here are the context sentences:
+8. Daniel went back to the bathroom.
+9. Mary left the apple there.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	in the previous context sentences, we knew that mary took the apple in the garden (sentence 6). now, in sentence 9, it is stated that mary left the apple there. this implies that mary is no longer carrying the apple, as she has left it in the garden. therefore, mary is carrying nothing.	partially	nothing	True	Mary left the apple in sentence 9, which implies that she was carrying it before leaving it. Since she left it, it is likely that Mary is no longer carrying the apple.		"Reasoning: Mary left the apple in sentence 9, which implies that she was carrying it before leaving it. Since she left it, it is likely that Mary is no longer carrying the apple.
+
+Answer: nothing"	0.0909	0.0455	False	False	False	False	0
+1178	8	36	3	"*TASK*
+Here are the context sentences:
+11. Mary grabbed the apple there.
+12. Daniel journeyed to the garden.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	in the previous context sentences, we knew that mary left the apple in the garden (sentence 9). now, in sentence 11, it is stated that mary grabbed the apple there, which implies that mary picked up the apple again in the garden. therefore, mary is carrying the apple.	partially	apple	True	Mary grabbed the apple in sentence 11, which implies that she is now carrying it.		"Reasoning: Mary grabbed the apple in sentence 11, which implies that she is now carrying it.
+
+Answer: apple"	0.16	0.12	False	False	False	False	0
+1179	8	36	4	"*TASK*
+Here are the context sentences:
+14. John went back to the office.
+15. Daniel got the football there.
+
+Now, answer the following question:
+What is Daniel carrying?"	football	"in sentence 15, it is stated that daniel got the football there, which implies that daniel acquired the football in the location he is currently in. since daniel journeyed to the garden in sentence 12, it can be inferred that ""there"" refers to the garden. therefore, daniel is carrying the football."	fully	football	True	Daniel got the football in sentence 15, which implies that he is now carrying it.		"Reasoning: Daniel got the football in sentence 15, which implies that he is now carrying it.
+
+Answer: football"	0.0	0.04	False	False	False	False	0
+1180	8	36	5	"*TASK*
+Here are the context sentences:
+17. Mary discarded the apple there.
+18. Sandra travelled to the garden.
+
+Now, answer the following question:
+What is Daniel carrying?"	football	the question asks about what daniel is carrying, and the answer is football. this answer is consistent with the previous information, where it was stated that daniel got the football there (sentence 15). the actions of mary (discarding the apple) and sandra (travelling to the garden) do not affect what daniel is carrying, so the answer remains the same: daniel is carrying the football.	none	not mentioned	False	There is no mention of Daniel carrying anything in the given context sentences. The question only asks about Daniel's carrying, but there is no information about it.		"Reasoning: There is no mention of Daniel carrying anything in the given context sentences. The question only asks about Daniel's carrying, but there is no information about it.
+
+Answer: not mentioned"	0.0	0.0256	False	False	False	True	0

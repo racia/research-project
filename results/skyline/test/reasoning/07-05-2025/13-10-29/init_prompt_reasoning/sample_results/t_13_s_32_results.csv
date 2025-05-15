@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1156	13	32	1	"*TASK*
+Here are the context sentences:
+1. Mary and Daniel moved to the office.
+2. After that they went back to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	from the context sentences, we know that mary and daniel moved to the office (sentence 1) and then went back to the garden (sentence 2). since the last action mentioned is them going back to the garden, it can be inferred that mary is currently in the garden.	fully	garden	True	According to the context sentences, Mary and Daniel moved to the office (sentence 1) and then went back to the garden (sentence 2). This implies that Mary's current location is the garden.		"assistant
+
+Reasoning: According to the context sentences, Mary and Daniel moved to the office (sentence 1) and then went back to the garden (sentence 2). This implies that Mary's current location is the garden.
+
+Answer: garden"	0.2692	0.0385	False	False	False	False	0
+1157	13	32	2	"*TASK*
+Here are the context sentences:
+4. Mary and Sandra journeyed to the bathroom.
+5. After that they journeyed to the office.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"the context sentences (4 and 5) do not mention daniel at all, but they talk about mary and sandra's movements. however, the answer ""garden"" suggests that we need to look at previous parts of the conversation history. in the previous part, we had sentences 1 and 2, which mentioned mary and daniel moving to the office and then going back to the garden. since there is no new information about daniel's movements, we can infer that daniel is still"	none	unknown	False	The context sentences only mention Mary and Sandra's movements, but not Daniel's. Therefore, we cannot determine Daniel's current location based on the provided information.		"Reasoning: The context sentences only mention Mary and Sandra's movements, but not Daniel's. Therefore, we cannot determine Daniel's current location based on the provided information.
+
+Answer: unknown"	0.2105	0.0526	False	False	False	True	0
+1158	13	32	3	"*TASK*
+Here are the context sentences:
+7. John and Daniel moved to the bedroom.
+8. Then they went to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from the context sentences, we know that john and daniel moved to the bedroom (sentence 7) and then went to the hallway (sentence 8). since the last action mentioned is them going to the hallway, it can be inferred that daniel is currently in the hallway.	fully	hallway	True	According to the context sentences, John and Daniel moved to the bedroom (sentence 7) and then went to the hallway (sentence 8). This implies that Daniel's current location is the hallway.		"Reasoning: According to the context sentences, John and Daniel moved to the bedroom (sentence 7) and then went to the hallway (sentence 8). This implies that Daniel's current location is the hallway.
+
+Answer: hallway"	0.2128	0.0426	False	False	False	False	0
+1159	13	32	4	"*TASK*
+Here are the context sentences:
+10. John and Sandra journeyed to the bedroom.
+11. Following that they journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from the context sentences, we know that john and sandra journeyed to the bedroom (sentence 10) and then journeyed to the bathroom (sentence 11). since the last action mentioned is them going to the bathroom, it can be inferred that sandra is currently in the bathroom.	fully	bathroom	True	According to the context sentences, John and Sandra journeyed to the bedroom (sentence 10) and then journeyed to the bathroom (sentence 11). This implies that Sandra's current location is the bathroom.		"Reasoning: According to the context sentences, John and Sandra journeyed to the bedroom (sentence 10) and then journeyed to the bathroom (sentence 11). This implies that Sandra's current location is the bathroom.
+
+Answer: bathroom"	0.0204	0.0408	False	False	False	False	0
+1160	13	32	5	"*TASK*
+Here are the context sentences:
+13. John and Sandra travelled to the garden.
+14. After that they journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	from the context sentences, we know that john and sandra travelled to the garden (sentence 13) and then journeyed to the hallway (sentence 14). since the last action mentioned is them going to the hallway, it can be inferred that sandra is currently in the hallway.	fully	hallway	True	According to the context sentences, John and Sandra travelled to the garden (sentence 13) and then journeyed to the hallway (sentence 14). This implies that Sandra's current location is the hallway.		"Reasoning: According to the context sentences, John and Sandra travelled to the garden (sentence 13) and then journeyed to the hallway (sentence 14). This implies that Sandra's current location is the hallway.
+
+Answer: hallway"	0.0417	0.0417	False	False	False	False	0

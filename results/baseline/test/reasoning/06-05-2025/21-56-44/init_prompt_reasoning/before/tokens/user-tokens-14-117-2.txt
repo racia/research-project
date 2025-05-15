@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+6	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	Ġyesterday	.Ċ
+7	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠJulie	Ġbefore	Ġthe	Ġcinema	?Ċ

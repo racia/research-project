@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠBill	Ġmoved	Ġto	Ġthe	Ġpark	Ġthis	Ġafternoon	.	ĠThis	Ġmeans	Ġthat	ĠBill	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġmoving	Ġto	Ġthe	Ġpark	.	ĠSince	ĠBill	Ġmoved	Ġto	Ġthe	Ġpark	,	Ġit	's	Ġlikely	Ġthat	Ġhe	Ġwas	Ġat	Ġthe	Ġschool	Ġthis	Ġmorning	Ġ(	sentence	Ġ	9	),	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

@@ -1,0 +1,108 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1791	5	39	1	"*TASK*
+Here are the context sentences:
+1. Bill went back to the office.
+2. Bill moved to the garden.
+3. Fred picked up the football there.
+4. Fred grabbed the milk there.
+5. Mary went to the bathroom.
+6. Mary journeyed to the bedroom.
+7. Fred dropped the football.
+8. Fred grabbed the football there.
+9. Fred left the milk.
+10. Bill travelled to the bedroom.
+11. Jeff moved to the garden.
+12. Bill went to the office.
+13. Fred discarded the football.
+14. Fred took the football there.
+15. Jeff moved to the office.
+16. Mary moved to the garden.
+17. Bill went back to the hallway.
+18. Mary moved to the office.
+19. Mary went back to the bathroom.
+20. Jeff journeyed to the bedroom.
+21. Fred moved to the hallway.
+22. Jeff travelled to the hallway.
+23. Fred left the football.
+24. Jeff moved to the bathroom.
+25. Jeff journeyed to the hallway.
+26. Fred picked up the football there.
+27. Mary went back to the kitchen.
+28. Fred went back to the office.
+29. Bill journeyed to the bathroom.
+30. Fred discarded the football there.
+31. Fred moved to the kitchen.
+32. Fred went back to the bedroom.
+33. Jeff went back to the bedroom.
+34. Bill went back to the hallway.
+35. Bill moved to the kitchen.
+36. Bill grabbed the milk there.
+37. Bill put down the milk.
+38. Mary went back to the bathroom.
+39. Bill went to the bathroom.
+40. Bill moved to the office.
+41. Bill went back to the garden.
+42. Fred travelled to the garden.
+43. Jeff journeyed to the garden.
+44. Jeff went to the office.
+45. Jeff took the football there.
+46. Fred moved to the office.
+47. Jeff passed the football to Fred.
+48. Fred passed the football to Jeff.
+
+Now, answer the following question:
+Who gave the football?"	fred	the question asks who gave the football. from the context sentences, we can see that the football was passed between fred and jeff. in sentence 47, jeff passed the football to fred, and in sentence 48, fred passed the football back to jeff. therefore, fred is the one who gave the football to jeff in sentence 48.	fully	Fred	True	The context sentences describe various individuals (Bill, Fred, Jeff, and Mary) moving to different locations, picking up or dropping objects, and interacting with each other. The football is mentioned as being picked up, dropped, grabbed, and passed between Fred and Jeff. There is no mention of anyone giving the football, only passing it between Fred and Jeff.		"Reasoning: The context sentences describe various individuals (Bill, Fred, Jeff, and Mary) moving to different locations, picking up or dropping objects, and interacting with each other. The football is mentioned as being picked up, dropped, grabbed, and passed between Fred and Jeff. There is no mention of anyone giving the football, only passing it between Fred and Jeff.
+
+Answer: Fred"	0.1154	0.0128	False	False	False	True	0
+1792	5	39	2	"*TASK*
+Here are the context sentences:
+50. Mary journeyed to the bedroom.
+51. Jeff left the football.
+
+Now, answer the following question:
+Who gave the football to Jeff?"	fred	the question asks who gave the football to jeff. from the context sentences, we can see that jeff left the football in sentence 51, but it doesn't directly state who gave the football to jeff. however, we can look at the previous parts of the conversation history. in sentence 48, fred passed the football to jeff. therefore, it can be logically inferred that fred gave the football to jeff.	none	Not mentioned	False	There is no mention of anyone giving the football to Jeff in the provided context sentences. In fact, the only mention of the football is Jeff leaving it, but there is no information about who gave it to him.		"Reasoning: There is no mention of anyone giving the football to Jeff in the provided context sentences. In fact, the only mention of the football is Jeff leaving it, but there is no information about who gave it to him.
+
+Answer: Not mentioned"	0.1569	0.0196	False	False	False	True	0
+1793	5	39	3	"*TASK*
+Here are the context sentences:
+53. Jeff got the football there.
+54. Jeff discarded the football there.
+
+Now, answer the following question:
+What did Fred give to Jeff?"	football	the question asks what did fred give to jeff. from the context sentences, we can see that jeff got the football in sentence 53, but it doesn't directly state who gave the football to jeff. however, we can look at the previous parts of the conversation history. in sentence 48, fred passed the football to jeff. therefore, it can be logically inferred that fred gave the football to jeff.	none	Nothing	False	There is no mention of Fred giving anything to Jeff in the provided context sentences. The sentences only mention Jeff getting and discarding the football, but do not mention Fred's involvement.		"Reasoning: There is no mention of Fred giving anything to Jeff in the provided context sentences. The sentences only mention Jeff getting and discarding the football, but do not mention Fred's involvement.
+
+Answer: Nothing"	0.0233	0.0233	False	False	False	True	0
+1794	5	39	4	"*TASK*
+Here are the context sentences:
+56. Bill grabbed the apple there.
+57. Fred travelled to the hallway.
+58. Jeff got the football there.
+59. Fred travelled to the kitchen.
+60. Bill moved to the hallway.
+61. Fred went to the hallway.
+62. Bill passed the apple to Fred.
+63. Mary went back to the garden.
+
+Now, answer the following question:
+What did Bill give to Fred?"	apple	the question asks what did bill give to fred. from the context sentences, we can see that bill passed the apple to fred in sentence 62. this directly states that bill gave the apple to fred. therefore, the answer is apple.	fully	Apple	True	According to sentence 62, Bill passed the apple to Fred, indicating that Bill gave the apple to Fred.		"Reasoning: According to sentence 62, Bill passed the apple to Fred, indicating that Bill gave the apple to Fred.
+
+Answer: Apple"	0.069	0.0345	False	False	False	False	0
+1795	5	39	5	"*TASK*
+Here are the context sentences:
+65. Bill went to the garden.
+66. Mary travelled to the bedroom.
+
+Now, answer the following question:
+Who gave the apple to Fred?"	bill	" to you in the conversation.
+
+follow each actor and object in the sentences separately paying attention to their relations.
+the questions might refer to previous parts of the conversation history.
+if so, inspect all the previous parts to find the correct reasoning.
+
+aim to give a specific and objective reasoning rather than a subjective one.
+
+if information you need to answer the question is not specified directly,
+infer it logically employing the information about the connected entities.
+if you need to make an assumption, please make it as logical as"	none	Not mentioned	False	There is no mention of the apple being given to Fred in the provided context sentences. In fact, the only mention of the apple is Bill grabbing it, but there is no information about who gave it to Fred.		"Reasoning: There is no mention of the apple being given to Fred in the provided context sentences. In fact, the only mention of the apple is Bill grabbing it, but there is no information about who gave it to Fred.
+
+Answer: Not mentioned"	0.0784	0.0196	False	False	False	True	0

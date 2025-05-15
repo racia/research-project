@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+837	17	93	1	"*TASK*
+Here are the context sentences:
+1. The red sphere is above the blue square.
+2. The red sphere is to the right of the yellow square.
+
+Now, answer the following question:
+Is the yellow square below the blue square?"	no	from the context sentences, we know that the red sphere is above the blue square (sentence 1) and the red sphere is to the right of the yellow square (sentence 2). since the red sphere is above the blue square, it means the blue square is below the red sphere. if the yellow square were below the blue square, it would mean the yellow square is also below the red sphere. however, sentence 2 states that the red sphere is to the right of	fully	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+838	17	93	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the left of the yellow square?"	no	from the previous context sentences, we know that the red sphere is above the blue square (sentence 1) and the red sphere is to the right of the yellow square (sentence 2). since the red sphere is to the right of the yellow square, it means the yellow square is to the left of the red sphere. if the blue square were to the left of the yellow square, it would mean the blue square is to the left of the red sphere, which contradicts	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+839	17	93	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the yellow square above the blue square?"	yes	from the previous context sentences, we know that the red sphere is above the blue square (sentence 1) and the red sphere is to the right of the yellow square (sentence 2). since the red sphere is above the blue square and to the right of the yellow square, it means the yellow square is below the red sphere and to the left of the red sphere. therefore, the yellow square must be below the blue square (since the red sphere is above the blue square	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+840	17	93	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the yellow square to the right of the blue square?"	no	from the previous context sentences, we know that the red sphere is above the blue square (sentence 1) and the red sphere is to the right of the yellow square (sentence 2). since the red sphere is to the right of the yellow square, it means the yellow square is to the left of the red sphere. if the yellow square were to the right of the blue square, it would mean the yellow square is to the right of the red sphere, which contradicts	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+841	17	93	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the yellow square above the blue square?"	yes	from the previous context sentences, we know that the red sphere is above the blue square (sentence 1) and the red sphere is to the right of the yellow square (sentence 2). in a previous question, we established that the yellow square is below the red sphere (since the red sphere is above the blue square and to the right of the yellow square). therefore, the yellow square is below the red sphere and above the blue square, which means the yellow square is above	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+842	17	93	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the left of the yellow square?"	no	"""reasoning: <reasoning>"""	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+843	17	93	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the right of the yellow square?"	yes	"""reasoning: <reasoning>"""	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0
+844	17	93	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the yellow square to the right of the blue square?"	no	"""reasoning: <reasoning>"""	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0

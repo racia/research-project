@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+14	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠJohn	Ġcarrying	?Ċ

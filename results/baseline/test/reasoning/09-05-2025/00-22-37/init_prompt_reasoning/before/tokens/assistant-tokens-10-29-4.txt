@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġin	Ġthe	Ġoffice	Ġand	ĠMary	's	Ġtravel	Ġto	Ġthe	Ġoffice	.	ĠSince	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

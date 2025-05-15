@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġis	Ġmentioned	Ġin	Ġsentences	Ġ	7	Ġand	Ġ	8	,	Ġwhich	Ġstate	Ġthat	ĠJohn	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	,	Ġand	ĠJohn	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.	ĠSince	ĠJohn	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġit	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġone	Ġof	Ġthese	Ġtwo	Ġlocations	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġand	ĠDaniel	's	Ġlocations	.	ĠSentence	Ġ	1	Ġstates	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠJohn	Ġleft	Ġthe	Ġkitchen	Ġor	Ġmoved	Ġto	Ġa	Ġdifferent	Ġlocation	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

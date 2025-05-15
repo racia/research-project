@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+421	1	85	1	"*TASK*
+Here are the context sentences:
+1. Sandra went back to the hallway.
+2. Mary went back to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"according to context sentence 1, ""sandra went back to the hallway"", which explicitly states that sandra's location is the hallway. therefore, the answer to the question ""where is sandra?"" is indeed the hallway."	fully	hallway	True	Sandra went back to the hallway, which implies that she was previously somewhere else and then returned to the hallway. There is no information about her current location being the kitchen, as Mary is the one who went back to the kitchen.		"Reasoning: Sandra went back to the hallway, which implies that she was previously somewhere else and then returned to the hallway. There is no information about her current location being the kitchen, as Mary is the one who went back to the kitchen.
+
+Answer: hallway"	0.0	0.0189	False	False	False	True	0
+422	1	85	2	"*TASK*
+Here are the context sentences:
+4. John journeyed to the bathroom.
+5. Daniel went back to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"there is no mention of sandra in the provided context sentences (4 and 5). however, the answer ""hallway"" suggests that sandra's location is already known from previous context sentences. upon reviewing the previous parts of the conversation, we find that context sentence 1 states ""sandra went back to the hallway"". therefore, the answer to the question ""where is sandra?"" is indeed the hallway."	none	not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only mention John, Daniel, and their movements. Therefore, we cannot determine Sandra's location.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention John, Daniel, and their movements. Therefore, we cannot determine Sandra's location.
+
+Answer: not mentioned"	0.122	0.0244	False	False	False	True	0
+423	1	85	3	"*TASK*
+Here are the context sentences:
+7. Sandra moved to the office.
+8. Sandra journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"according to context sentence 7, ""sandra moved to the office"", which initially places sandra in the office. however, context sentence 8, ""sandra journeyed to the bathroom"", indicates that sandra has moved from the office to the bathroom. therefore, the most recent and up-to-date information about sandra's location is that she is in the bathroom, which is the answer to the question ""where is sandra?""."	fully	bathroom	True	Sandra moved to the office and then journeyed to the bathroom, which implies that she was in the office initially and then changed her location to the bathroom.		"Reasoning: Sandra moved to the office and then journeyed to the bathroom, which implies that she was in the office initially and then changed her location to the bathroom.
+
+Answer: bathroom"	0.0	0.0263	False	False	False	False	0
+424	1	85	4	"*TASK*
+Here are the context sentences:
+10. Sandra journeyed to the bedroom.
+11. John went to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"there is no mention of daniel in the provided context sentences (10 and 11). however, the answer ""hallway"" suggests that daniel's location is already known from previous context sentences. upon reviewing the previous parts of the conversation, we find that context sentence 5 states ""daniel went back to the hallway"". therefore, the answer to the question ""where is daniel?"" is indeed the hallway."	none	not mentioned	False	There is no mention of Daniel's location in the given context sentences. The sentences only mention Sandra's journey to the bedroom and John's movement to the hallway.		"Reasoning: There is no mention of Daniel's location in the given context sentences. The sentences only mention Sandra's journey to the bedroom and John's movement to the hallway.
+
+Answer: not mentioned"	0.0	0.025	False	False	False	True	0
+425	1	85	5	"*TASK*
+Here are the context sentences:
+13. Mary went to the bathroom.
+14. Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"according to context sentence 13, ""mary went to the bathroom"", which initially places mary in the bathroom. however, context sentence 14, ""mary travelled to the bedroom"", indicates that mary has moved from the bathroom to the bedroom. therefore, the most recent and up-to-date information about mary's location is that she is in the bedroom, which is the answer to the question ""where is mary?""."	fully	bedroom	True	Mary went to the bathroom and then travelled to the bedroom, which implies that she was in the bathroom initially and then changed her location to the bedroom.		"Reasoning: Mary went to the bathroom and then travelled to the bedroom, which implies that she was in the bathroom initially and then changed her location to the bedroom.
+
+Answer: bedroom"	0.0	0.027	False	False	False	False	0

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2321	10	65	1	"*TASK*
+Here are the context sentences:
+1. Fred went back to the park.
+2. Mary is in the school.
+
+Now, answer the following question:
+Is Fred in the cinema?"	no	there is no mention of fred going to the cinema in the context sentences. in fact, sentence 1 states that fred went back to the park, which implies that he is currently in the park, not in the cinema.	fully	no	True	The question asks about Fred's location, and we know from sentence 1 that Fred went back to the park. This implies that Fred is currently in the park, not in the cinema.		"Reasoning: The question asks about Fred's location, and we know from sentence 1 that Fred went back to the park. This implies that Fred is currently in the park, not in the cinema.
+
+Answer: no"	0.0667	0.0222	False	False	False	False	0
+2322	10	65	2	"*TASK*
+Here are the context sentences:
+4. Bill is either in the bedroom or the cinema.
+5. Fred is either in the park or the office.
+
+Now, answer the following question:
+Is Fred in the park?"	maybe	"according to sentence 5, fred is either in the park or the office, but it does not specify which one. therefore, we cannot conclude with certainty that fred is in the park, and the answer is ""maybe""."	fully	yes	False	The question asks about Fred's location, and we know from sentence 5 that Fred is either in the park or the office. Since we are asked if Fred is in the park, we can conclude that Fred is indeed in the park.		"Reasoning: The question asks about Fred's location, and we know from sentence 5 that Fred is either in the park or the office. Since we are asked if Fred is in the park, we can conclude that Fred is indeed in the park.
+
+Answer: yes"	0.1091	0.0182	False	False	False	False	0
+2323	10	65	3	"*TASK*
+Here are the context sentences:
+7. Julie journeyed to the bedroom.
+8. Fred went to the bedroom.
+
+Now, answer the following question:
+Is Julie in the bedroom?"	yes	according to sentence 7, julie journeyed to the bedroom, which implies that she has arrived at the bedroom. there is no information suggesting that she left the bedroom afterwards. therefore, we can conclude that julie is indeed in the bedroom.	fully	yes	True	The question asks about Julie's location, and we know from sentence 7 that Julie journeyed to the bedroom. This implies that Julie is currently in the bedroom.		"Reasoning: The question asks about Julie's location, and we know from sentence 7 that Julie journeyed to the bedroom. This implies that Julie is currently in the bedroom.
+
+Answer: yes"	0.025	0.025	False	False	False	False	0
+2324	10	65	4	"*TASK*
+Here are the context sentences:
+10. Mary is either in the office or the park.
+11. Bill is either in the park or the office.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	no	according to sentence 10, mary is either in the office or the park, but there is no mention of the kitchen as one of her possible locations. therefore, we can conclude that mary is not in the kitchen.	fully	no (not mentioned)	False	The question asks about Mary's location, and we know from sentence 10 that Mary is either in the office or the park. However, there is no information about Mary being in the kitchen. Therefore, we cannot conclude that Mary is in the kitchen.		"Reasoning: The question asks about Mary's location, and we know from sentence 10 that Mary is either in the office or the park. However, there is no information about Mary being in the kitchen. Therefore, we cannot conclude that Mary is in the kitchen.
+
+Answer: no (not mentioned)"	0.0161	0.0161	False	False	False	True	0
+2325	10	65	5	"*TASK*
+Here are the context sentences:
+13. Bill went to the cinema.
+14. Bill is either in the park or the office.
+
+Now, answer the following question:
+Is Bill in the cinema?"	no	sentence 14 states that bill is either in the park or the office, which contradicts sentence 13 that states bill went to the cinema. this implies that sentence 13 is no longer true, and bill is no longer in the cinema. therefore, the correct answer is that bill is not in the cinema.	fully	yes	False	The question asks about Bill's location, and we know from sentence 13 that Bill went to the cinema. This implies that Bill is currently in the cinema.		"Reasoning: The question asks about Bill's location, and we know from sentence 13 that Bill went to the cinema. This implies that Bill is currently in the cinema.
+
+Answer: yes"	0.0	0.0256	False	False	False	False	0

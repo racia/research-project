@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+14	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠJohn	Ġin	Ġthe	Ġhallway	?Ċ

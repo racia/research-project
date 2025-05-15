@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+446	11	90	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the kitchen.
+2. Following that he travelled to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"the context sentences describe daniel's movements, first going to the kitchen and then travelling to the bedroom. since the second sentence mentions that daniel travelled to the bedroom ""following that"" (i.e., after going to the kitchen), it implies that daniel's current location is the bedroom. therefore, the answer to the question ""where is daniel?"" is indeed the bedroom."	fully	bedroom	True	Daniel went to the kitchen initially and then travelled to the bedroom, which means he is currently in the bedroom.		"Reasoning: Daniel went to the kitchen initially and then travelled to the bedroom, which means he is currently in the bedroom.
+
+Answer: bedroom"	0.1724	0.069	False	False	False	False	0
+447	11	90	2	"*TASK*
+Here are the context sentences:
+4. Sandra went back to the kitchen.
+5. Then she journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"the context sentences describe sandra's movements, first going back to the kitchen and then journeying to the hallway. since the second sentence mentions that sandra journeyed to the hallway ""then"" (i.e., after going back to the kitchen), it implies that sandra's current location is the hallway. therefore, the answer to the question ""where is sandra?"" is indeed the hallway."	fully	hallway	True	Sandra went back to the kitchen initially and then journeyed to the hallway, which means she is currently in the hallway.		"Reasoning: Sandra went back to the kitchen initially and then journeyed to the hallway, which means she is currently in the hallway.
+
+Answer: hallway"	0.2258	0.0645	False	False	False	False	0
+448	11	90	3	"*TASK*
+Here are the context sentences:
+7. John travelled to the bedroom.
+8. Following that he moved to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	the context sentences describe john's movements, but they do not provide any information about sandra's current location. however, we can infer that the answer is still referring to the previous information about sandra, which was that she journeyed to the hallway (context lines 4 and 5). there is no new information about sandra's movements, so her location remains the same, which is the hallway.	none	not mentioned	False	There is no information about Sandra's location in the given context sentences. The sentences only provide information about John's location.		"Reasoning: There is no information about Sandra's location in the given context sentences. The sentences only provide information about John's location.
+
+Answer: not mentioned"	0.125	0.0625	False	False	False	True	0
+449	11	90	4	"*TASK*
+Here are the context sentences:
+10. Mary went to the office.
+11. Following that she moved to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	the context sentences describe mary's movements, but the question asks about john's location. however, we can look back at the previous context lines (7 and 8) which described john's movements, and we see that john travelled to the bedroom and then moved to the garden. there is no new information about john's movements, so his location remains the same, which is the garden.	none	not mentioned	False	There is no information about John's location in the given context sentences. The sentences only provide information about Mary's location.		"Reasoning: There is no information about John's location in the given context sentences. The sentences only provide information about Mary's location.
+
+Answer: not mentioned"	0.0312	0.0625	False	False	False	True	0
+450	11	90	5	"*TASK*
+Here are the context sentences:
+13. Sandra went to the kitchen.
+14. Then she went back to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	garden	the context sentences describe sandra's movements, but the question asks about mary's location. we can look back at the previous context lines (10 and 11) which described mary's movements, and we see that mary went to the office and then moved to the garden. there is no new information about mary's movements, so her location remains the same, which is the garden.	none	not mentioned	False	There is no information about Mary's location in the given context sentences. The sentences only provide information about Sandra's location.		"Reasoning: There is no information about Mary's location in the given context sentences. The sentences only provide information about Sandra's location.
+
+Answer: not mentioned"	0.0312	0.0625	False	False	False	True	0

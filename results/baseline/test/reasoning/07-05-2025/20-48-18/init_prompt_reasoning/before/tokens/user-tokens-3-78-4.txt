@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+66	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+67	.	ĠJohn	Ġleft	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġkitchen	?Ċ

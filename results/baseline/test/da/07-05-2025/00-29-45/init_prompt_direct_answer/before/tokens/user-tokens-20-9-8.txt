@@ -1,0 +1,4 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+15	.	ĠSum	it	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Why	Ġdid	Ġsum	it	Ġget	Ġthe	Ġapple	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	10	,	ĠJohn	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	,	Ġso	Ġhe	Ġwas	Ġno	Ġlonger	Ġcarrying	Ġit	.	ĠThen	,	Ġin	Ġsentence	Ġ	11	,	ĠMary	Ġpassed	Ġthe	Ġapple	Ġback	Ġto	ĠJohn	,	Ġso	Ġnow	ĠJohn	Ġis	Ġcarrying	Ġthe	Ġapple	Ġagain	.ĊĊ	Answer	:	Ġone	<|eot_id|>

@@ -10,7 +10,7 @@ from typing import Union
 import numpy as np
 
 from data.DataProcessor import DataProcessor
-from data.utils import get_real_value, get_samples_per_task
+from data.utils import get_real_value, get_samples_per_task, structure_parts
 from inference.DataLevels import SamplePart
 from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits, Enumerate, Wrapper
@@ -50,28 +50,27 @@ class SilverReasoning:
         :param get_all: Whether to return all reasoning data.
         :return: The silver reasoning for the part.
         """
-        # reload the data if task_id or split changes
-        if type(task_id) is int and (task_id != self.task_id or split != self.split):
-            self.task_id = task_id
-            self.split = split
-            self.silver_reasoning_data = self.loader.load_reasoning_data(
-                task_id=task_id, split=split
-            )
-
-        # enable getting all reasoning data for a specific task (not only one part)
-        if get_all and isinstance(task_id, int):
-            assert type(self.silver_reasoning_data) == dict
-            return self.silver_reasoning_data
+        if isinstance(task_id, int):
+            # reload the data if task_id or split changes
+            if task_id != self.task_id or split != self.split:
+                self.task_id = task_id
+                self.split = split
+                self.silver_reasoning_data = self.loader.load_reasoning_data(
+                    task_id=task_id, split=split
+                )
+            # enable getting all reasoning data for a specific task (not only one part)
+            if get_all:
+                assert type(self.silver_reasoning_data) == dict
+                return self.silver_reasoning_data
 
         # enable getting all reasoning data for a list of tasks
         elif isinstance(task_id, list):
             all_reasoning = {}
             for t in task_id:
                 task_reasoning = self.get(
-                    t, sample_id, part_id, split, from_zero, get_all=True
+                    t, split=split, from_zero=from_zero, get_all=True
                 )
                 all_reasoning.update(task_reasoning)
-            assert type(self.silver_reasoning_data) == dict
             return all_reasoning
 
         if not (sample_id or part_id):
@@ -212,8 +211,13 @@ class DataLoader:
         split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
         multi_system: bool,
         tasks: list[int] = None,
+        flat: bool = False,
         lookup: bool = False,
-    ) -> dict | list[SamplePart]:
+    ) -> (
+        list[SamplePart]
+        | dict[tuple, SamplePart]
+        | dict[int, dict[int, list[SamplePart]]]
+    ):
         """
         Prepare the data: load raw data and process it.
 
@@ -221,6 +225,7 @@ class DataLoader:
         :param split: should be of type DataSplits ("train", "valid", or "test")
         :param multi_system: if as_parts is True, the multi_system parameter should be specified
         :param tasks: list of task numbers to read, use None to read all tasks
+        :param flat: if the data should be returned flat or in a nested structure of tasks and samples
         :param lookup: if the data should be returned as a lookup dictionary
         :return: processed data
         """
@@ -242,13 +247,21 @@ class DataLoader:
         if self.number_of_tasks == 0:
             self.number_of_parts = len(processed_data)
 
-        if lookup:
-            lookup_data = {}
-            for part in processed_data:
-                lookup_data[(part.task_id, part.sample_id, part.part_id)] = part
-            return lookup_data
+        if flat and lookup:
+            raise ValueError(
+                "The 'flat' and 'lookup' parameters cannot be used together."
+            )
+        if not (flat or lookup):
+            return structure_parts(processed_data)
 
-        return processed_data
+        if flat:
+            return processed_data
+
+        lookup_data = {}
+        for part in processed_data:
+            lookup_data[(part.task_id, part.sample_id, part.part_id)] = part
+
+        return lookup_data
 
     def load_results(
         self,
@@ -262,18 +275,19 @@ class DataLoader:
         sep: str = "\t",
     ) -> (
         dict[str, list[Union[int, float]]]
-        or dict[int, list[dict[str, Union[int, float, str]]]]
+        | dict[int, list[dict[str, Union[int, float, str]]]]
+        | dict[int, dict[int, list[SamplePart]]]
     ):
         """
         Load the results or any csv file from the path.
         Please specify the headers to ensure the desired order of the data.
 
         :param results_path: path to the results, if None, the data_path is used
-        :param data_path: path to the source data
+        :param data_path: path to the source data (bAbI tasks)
         :param headers: list of headers in the file, if None, the headers are read from the file
         :param list_output: if the output should be a list of dictionaries instead of a dictionary of lists
         :param as_parts: if the output should be a list of SamplePart objects
-        :param split: split of the data (to find the file)
+        :param split: split of the data (to find the file when results_path is a directory)
         :param tasks: list of task ids to load
         :param sep: separator for the csv file
         :return: result data
@@ -322,13 +336,14 @@ class DataLoader:
         if tasks is None:
             tasks = list(range(1, 21))
 
-        for i, row in enumerate(data):
-            if type(row["task_id"]) is not int:
-                raise ValueError(
-                    f"Task id in row {i} is not an integer: {row['task_id']}"
-                )
-            if row["task_id"] not in tasks:
-                data.pop(i)
+        if list_output or as_parts:
+            for i, row in enumerate(data):
+                if type(row["task_id"]) is not int:
+                    raise ValueError(
+                        f"Task id in row {i} is not an integer: {row['task_id']}"
+                    )
+                if tasks and row["task_id"] not in tasks:
+                    data.pop(i)
 
         self.number_of_parts = len(data)
         self.number_of_tasks = len(tasks)
@@ -343,6 +358,7 @@ class DataLoader:
                 multi_system=True,
                 lookup=True,
             )
+            # TODO: implement loading ids and tokens for all parts
             for row in data:
                 raw_part = raw_parts[(row["task_id"], row["sample_id"], row["part_id"])]
                 if not row["model_output_before"]:
@@ -364,38 +380,9 @@ class DataLoader:
                     "The number of parts does not match the number of loaded data: %d != %d"
                     % (len(parts), self.number_of_parts)
                 )
-            return parts
+            return structure_parts(parts)
 
         return data
-
-    @staticmethod
-    def load_scenery(
-        word_types: tuple[str, ...] = (
-            "attr",
-            "loc",
-            "nh-subj",
-            "obj",
-            "part",
-            "rel",
-            "subj-attr",
-            "subj",
-            "other",
-            "base_phrasal_verbs",
-        ),
-    ) -> set:
-        """
-        Get scenery words from the scenery_words folder and the Scenery base phrases verbs.
-        Additionally, adds Scenery base phrasal words.
-
-        :return: set of scenery words for filtering attention scores
-        """
-        scenery_words = set()
-        for entry in os.scandir("data/scenery_words"):
-            word_type = entry.name.strip(".txt")
-            if word_type in word_types:
-                with open(entry.path, "r", encoding="UTF-8") as f:
-                    scenery_words.update(f.read().splitlines())
-        return scenery_words
 
     def load_reasoning_data(
         self, task_id: int, split: str = DataSplits.valid
@@ -416,7 +403,7 @@ class DataLoader:
         for path in self.silver_reasoning_path.iterdir():
             if f"{split}_{task_id}." in path.name:
                 silver_reasoning_data = self.load_results(
-                    Path.cwd() / path, list_output=True, sep=","
+                    Path.cwd() / path, list_output=True, sep=",", as_parts=False
                 )
                 break
 
@@ -450,7 +437,7 @@ class DataLoader:
             warnings.warn(
                 f"The interpretability data is not found at path: {attn_scores_path}"
             )
-            return InterpretabilityResult(np.array(0), [], [], 0)
+            return InterpretabilityResult(np.array([]), [], [], 0.0, 0.0)
 
         if path.name != "attn_scores":
             raise ValueError("The attention subdirectory is not located.")

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġindicates	Ġthat	ĠBill	Ġis	Ġeither	Ġin	Ġthe	Ġbedroom	Ġor	Ġthe	Ġschool	,	Ġand	Ġsentence	Ġ	11	Ġstates	Ġthat	ĠBill	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	ĠBill	Ġis	Ġnow	Ġin	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠBill	Ġbeing	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

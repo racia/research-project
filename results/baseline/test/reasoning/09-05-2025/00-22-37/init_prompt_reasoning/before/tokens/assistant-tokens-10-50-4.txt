@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġpark	Ġor	Ġthe	Ġpark	,	Ġwhich	Ġis	Ġa	Ġcontradictory	Ġstatement	Ġand	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠSentence	Ġ	11	Ġis	Ġabout	ĠFred	's	Ġlocation	Ġin	Ġthe	Ġcinema	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġmention	ĠMary	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

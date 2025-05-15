@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġthe	Ġcontext	Ġsentence	Ġ	2	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġcontrad	icts	Ġthis	Ġstatement	,	Ġso	Ġwe	Ġcan	Ġconclude	Ġthat	ĠMary	's	Ġlocation	Ġis	Ġindeed	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

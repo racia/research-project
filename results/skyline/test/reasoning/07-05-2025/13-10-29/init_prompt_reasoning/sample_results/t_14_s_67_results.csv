@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1831	14	67	1	"*TASK*
+Here are the context sentences:
+1. Bill moved to the bedroom yesterday.
+2. Yesterday Fred moved to the bedroom.
+3. Mary travelled to the kitchen yesterday.
+4. Bill travelled to the park this morning.
+
+Now, answer the following question:
+Where was Bill before the park?"	bedroom	from context line 1, we know that bill moved to the bedroom yesterday. there is no information about bill moving out of the bedroom or going anywhere else until context line 4, which states that bill travelled to the park this morning. therefore, we can logically conclude that bill was in the bedroom before going to the park.	fully	bedroom	True	From context sentence 1, we know that Bill moved to the bedroom yesterday. There is no information about Bill's movement after that until this morning when he travelled to the park (context sentence 4). Therefore, we can infer that Bill was in the bedroom before going to the park.		"assistant
+
+Reasoning: From context sentence 1, we know that Bill moved to the bedroom yesterday. There is no information about Bill's movement after that until this morning when he travelled to the park (context sentence 4). Therefore, we can infer that Bill was in the bedroom before going to the park.
+
+Answer: bedroom"	0.0882	0.0294	False	False	False	True	0
+1832	14	67	2	"*TASK*
+Here are the context sentences:
+6. This morning Fred journeyed to the cinema.
+7. Mary moved to the cinema this morning.
+
+Now, answer the following question:
+Where was Bill before the park?"	bedroom	the context lines 6 and 7 provide information about fred and mary, but they do not mention bill. to find the answer to the question, we need to refer to the previous context lines. from context line 4, we know that bill travelled to the park this morning. to find out where bill was before the park, we need to look at the previous context lines again. from context line 1, we know that bill moved to the bedroom yesterday. there is no	none	bedroom	True	The new context sentences (6 and 7) do not provide any new information about Bill's movement. We still rely on the previous context sentences (1-4). From context sentence 1, we know that Bill moved to the bedroom yesterday. There is no information about Bill's movement after that until this morning when he travelled to the park (context sentence 4). Therefore, we can still infer that Bill was in the bedroom before going to the park.		"Reasoning: The new context sentences (6 and 7) do not provide any new information about Bill's movement. We still rely on the previous context sentences (1-4). From context sentence 1, we know that Bill moved to the bedroom yesterday. There is no information about Bill's movement after that until this morning when he travelled to the park (context sentence 4). Therefore, we can still infer that Bill was in the bedroom before going to the park.
+
+Answer: bedroom"	0.09	0.02	False	False	False	True	0
+1833	14	67	3	"*TASK*
+Here are the context sentences:
+9. Fred travelled to the park this evening.
+10. Fred moved to the school this afternoon.
+
+Now, answer the following question:
+Where was Fred before the school?"	cinema	from context line 6, we know that fred journeyed to the cinema this morning. there is no information about fred moving out of the cinema or going anywhere else until context line 10, which states that fred moved to the school this afternoon. therefore, we can logically conclude that fred was at the cinema before moving to the school.	partially	park	False	From context sentence 9, we know that Fred travelled to the park this evening. However, this information is not relevant to the question about Fred's location before the school. From context sentence 10, we know that Fred moved to the school this afternoon. There is no information about Fred's movement before that, but we can infer that Fred was in the park before going to the school because context sentence 9 mentions Fred's travel to the park this evening, and context sentence 10 mentions Fred's move to the school this afternoon, which is before this evening.		"Reasoning: From context sentence 9, we know that Fred travelled to the park this evening. However, this information is not relevant to the question about Fred's location before the school. From context sentence 10, we know that Fred moved to the school this afternoon. There is no information about Fred's movement before that, but we can infer that Fred was in the park before going to the school because context sentence 9 mentions Fred's travel to the park this evening, and context sentence 10 mentions Fred's move to the school this afternoon, which is before this evening.
+
+Answer: park"	0.0744	0.0165	False	False	False	True	0
+1834	14	67	4	"*TASK*
+Here are the context sentences:
+12. Mary went back to the office this afternoon.
+13. Julie went to the bedroom yesterday.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	bedroom	from context line 2, we know that fred moved to the bedroom yesterday. there is no information about fred moving out of the bedroom or going anywhere else until context line 6, which states that fred journeyed to the cinema this morning. therefore, we can logically conclude that fred was in the bedroom before going to the cinema.	none	bedroom	True	The new context sentences (12 and 13) do not provide any new information about Fred's movement before the cinema. We still rely on the previous context sentences (6 and 7). From context sentence 6, we know that Fred journeyed to the cinema this morning. There is no information about Fred's movement before that, but we can infer that Fred was in the bedroom before going to the cinema because context sentence 2 mentions Fred's move to the bedroom yesterday, and context sentence 6 mentions Fred's journey to the cinema this morning, which is after yesterday.		"Reasoning: The new context sentences (12 and 13) do not provide any new information about Fred's movement before the cinema. We still rely on the previous context sentences (6 and 7). From context sentence 6, we know that Fred journeyed to the cinema this morning. There is no information about Fred's movement before that, but we can infer that Fred was in the bedroom before going to the cinema because context sentence 2 mentions Fred's move to the bedroom yesterday, and context sentence 6 mentions Fred's journey to the cinema this morning, which is after yesterday.
+
+Answer: bedroom"	0.0163	0.0163	False	False	False	True	0
+1835	14	67	5	"*TASK*
+Here are the context sentences:
+15. Bill went to the park this evening.
+16. This afternoon Bill went to the office.
+
+Now, answer the following question:
+Where was Fred before the park?"	school	the question asks about fred, but the context lines 15 and 16 only provide information about bill. to find the answer, we need to refer to the previous context lines. from context line 10, we know that fred moved to the school this afternoon. from context line 9, we know that fred travelled to the park this evening. therefore, we can logically conclude that fred was at the school before going to the park.	none	school	True	The new context sentences (15 and 16) do not provide any new information about Fred's movement before the park. We still rely on the previous context sentences (9 and 10). From context sentence 9, we know that Fred travelled to the park this evening. There is no information about Fred's movement before that, but we can infer that Fred was in the school before going to the park because context sentence 10 mentions Fred's move to the school this afternoon, and context sentence 9 mentions Fred's travel to the park this evening, which is after this afternoon.		"Reasoning: The new context sentences (15 and 16) do not provide any new information about Fred's movement before the park. We still rely on the previous context sentences (9 and 10). From context sentence 9, we know that Fred travelled to the park this evening. There is no information about Fred's movement before that, but we can infer that Fred was in the school before going to the park because context sentence 10 mentions Fred's move to the school this afternoon, and context sentence 9 mentions Fred's travel to the park this evening, which is after this afternoon.
+
+Answer: school"	0.1048	0.0161	False	False	False	True	0

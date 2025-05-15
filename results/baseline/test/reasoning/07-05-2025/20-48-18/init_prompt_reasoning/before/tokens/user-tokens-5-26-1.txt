@@ -1,0 +1,15 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+2	.	ĠFred	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+3	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+4	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+5	.	ĠFred	Ġdiscarded	Ġthe	Ġapple	.Ċ
+6	.	ĠFred	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+7	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+8	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+9	.	ĠJeff	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+10	.	ĠJeff	Ġleft	Ġthe	Ġfootball	.Ċ
+11	.	ĠBill	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+12	.	ĠBill	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġfootball	?Ċ

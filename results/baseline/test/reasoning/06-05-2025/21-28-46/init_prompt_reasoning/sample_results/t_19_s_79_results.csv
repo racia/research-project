@@ -1,0 +1,13 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1986	19	79	1	"*TASK*
+Here are the context sentences:
+1. The hallway is north of the bathroom.
+2. The bathroom is west of the garden.
+3. The office is south of the garden.
+4. The bedroom is south of the kitchen.
+5. The kitchen is east of the garden.
+
+Now, answer the following question:
+How do you go from the kitchen to the bathroom?"	west west	from the context sentences, we know the relative positions of the different rooms.	fully	west, north	False	Since the kitchen is east of the garden (sentence 5), and the bathroom is west of the garden (sentence 2), we can infer that the bathroom is also west of the kitchen. Additionally, the hallway is north of the bathroom (sentence 1). Therefore, to go from the kitchen to the bathroom, we need to move west from the kitchen and then north along the hallway.		"Reasoning: Since the kitchen is east of the garden (sentence 5), and the bathroom is west of the garden (sentence 2), we can infer that the bathroom is also west of the kitchen. Additionally, the hallway is north of the bathroom (sentence 1). Therefore, to go from the kitchen to the bathroom, we need to move west from the kitchen and then north along the hallway.
+
+Answer: west, north"	0.125	0.0227	False	False	False	False	0

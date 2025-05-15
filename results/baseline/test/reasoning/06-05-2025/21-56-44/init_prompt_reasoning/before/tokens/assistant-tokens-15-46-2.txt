@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠEmily	Ġis	Ġa	Ġsheep	,	Ġand	Ġaccording	Ġto	Ġsentence	Ġ	1	,	Ġcats	Ġare	Ġafraid	Ġof	Ġsheep	.	ĠHowever	,	Ġthere	Ġis	Ġno	Ġinformation	Ġindicating	Ġthat	ĠEmily	Ġis	Ġafraid	Ġof	Ġcats	.	ĠSince	ĠEmily	Ġis	Ġa	Ġsheep	,	Ġand	Ġsentence	Ġ	4	Ġstates	Ġthat	Ġsheep	Ġare	Ġafraid	Ġof	Ġwolves	,	ĠEmily	Ġis	Ġlikely	Ġto	Ġbe	Ġafraid	Ġof	Ġwolves	.ĊĊ	Answer	:	Ġwolves	<|eot_id|>

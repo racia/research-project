@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+23	.	ĠMary	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+24	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġapple	?Ċ

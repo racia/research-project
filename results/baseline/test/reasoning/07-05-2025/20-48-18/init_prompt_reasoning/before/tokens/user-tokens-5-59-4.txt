@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+12	.	ĠJeff	Ġdiscarded	Ġthe	Ġapple	.Ċ
+13	.	ĠBill	Ġdropped	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠMary	Ġgive	Ġthe	Ġmilk	Ġto	?Ċ

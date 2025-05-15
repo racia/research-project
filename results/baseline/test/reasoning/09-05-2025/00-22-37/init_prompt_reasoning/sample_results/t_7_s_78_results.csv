@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+886	7	78	1	"*TASK*
+Here are the context sentences:
+1. John picked up the milk there.
+2. John handed the milk to Mary.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	from context sentence 1, we know that john picked up the milk, which means he was carrying the milk. however, in context sentence 2, it is stated that john handed the milk to mary. this implies that john is no longer carrying the milk, as he has given it to mary. therefore, the correct answer is that john is carrying none.	fully	none	True	John picked up the milk, and then handed it to Mary, which means he is no longer carrying the milk.		"Reasoning: John picked up the milk, and then handed it to Mary, which means he is no longer carrying the milk.
+
+Answer: none"	0.2	0.0667	False	False	False	False	0
+887	7	78	2	"*TASK*
+Here are the context sentences:
+4. Mary put down the milk there.
+5. Mary journeyed to the garden.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	the question asks about john, but the context sentences 4 and 5 only provide information about mary's actions. to answer the question, we need to refer back to the previous context sentences. from the previous context sentences 1 and 2, we know that john picked up the milk and then handed it to mary. since then, there is no information about john picking up any other objects. therefore, the correct answer remains that john is carrying none.	none	none	True	There is no mention of John in the given context sentences. The sentences only mention Mary's actions, and there is no indication that John is carrying anything.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Mary's actions, and there is no indication that John is carrying anything.
+
+Answer: none"	0.2105	0.0526	False	False	False	True	0
+888	7	78	3	"*TASK*
+Here are the context sentences:
+7. John went back to the bedroom.
+8. John journeyed to the garden.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	the context sentences 7 and 8 describe john's movements, but they do not mention john picking up or carrying any objects. the question asks about the number of objects john is carrying, and since there is no new information about john carrying any objects, the previous answer remains valid. from the previous context sentences 1 and 2, we know that john picked up the milk and then handed it to mary, and there is no information about john picking up any other objects. therefore	none	none	True	There is no mention of John carrying any objects in the given context sentences. The sentences only mention John's actions, but do not specify what he is carrying.		"Reasoning: There is no mention of John carrying any objects in the given context sentences. The sentences only mention John's actions, but do not specify what he is carrying.
+
+Answer: none"	0.1795	0.0513	False	False	False	True	0
+889	7	78	4	"*TASK*
+Here are the context sentences:
+10. Sandra moved to the garden.
+11. Daniel picked up the milk there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from context sentence 11, we know that daniel picked up the milk, which means he is carrying one object, namely the milk. there is no information about daniel picking up or carrying any other objects, so the correct answer is that daniel is carrying one object, the milk.	fully	one	True	Daniel picked up the milk, which means he is carrying the milk.		"Reasoning: Daniel picked up the milk, which means he is carrying the milk.
+
+Answer: one"	0.0	0.0476	False	False	False	False	0
+890	7	78	5	"*TASK*
+Here are the context sentences:
+13. Daniel dropped the milk.
+14. Sandra went back to the kitchen.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	from context sentence 11, we know that daniel picked up the milk, which means he was carrying one object, the milk. however, in context sentence 13, it is stated that daniel dropped the milk. this implies that daniel is no longer carrying the milk. therefore, the correct answer is that daniel is carrying none.	partially	none	True	Daniel dropped the milk, which means he is no longer carrying it.		"Reasoning: Daniel dropped the milk, which means he is no longer carrying it.
+
+Answer: none"	0.0	0.0952	False	False	False	False	0

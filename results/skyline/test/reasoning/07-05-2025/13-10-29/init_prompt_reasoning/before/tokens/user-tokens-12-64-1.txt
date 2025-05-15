@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠSandra	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+2	.	ĠJohn	Ġand	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	ĠDaniel	?Ċ

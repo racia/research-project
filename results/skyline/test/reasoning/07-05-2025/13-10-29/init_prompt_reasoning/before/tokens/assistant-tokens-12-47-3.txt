@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	7	,	ĠJohn	Ġand	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġthen	Ġin	Ġsentence	Ġ	8	,	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġwith	ĠSandra	.	ĠSo	,	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

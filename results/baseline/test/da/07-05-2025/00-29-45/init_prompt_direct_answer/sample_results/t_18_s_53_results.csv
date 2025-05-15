@@ -1,0 +1,35 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1165	18	53	1	"*TASK*
+Here are the context sentences:
+1. The container fits inside the suitcase.
+2. The chocolate fits inside the box.
+3. The chest fits inside the box.
+4. The chocolate fits inside the chest.
+5. The box is bigger than the chest.
+
+Now, answer the following question:
+Does the chocolate fit in the box?"	yes	from sentence 2, we know that the chocolate fits inside the box. this directly answers the question, confirming that the chocolate does fit in the box.	fully	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+1166	18	53	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the box?"	no	from sentence 2, we know that the chocolate fits inside the box. if the chocolate fits inside the box, it means the box is bigger than the chocolate. therefore, the chocolate is not bigger than the box.	none	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+1167	18	53	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box bigger than the chocolate?"	yes	from sentence 2, we know that the chocolate fits inside the box. if the chocolate fits inside the box, it means the box is bigger than the chocolate. therefore, the answer is yes, the box is bigger than the chocolate.	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+1168	18	53	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the chocolate?"	no	from sentence 2, we know that the chocolate fits inside the box. this implies that the box is larger than the chocolate. if the box is larger than the chocolate, it cannot fit inside the chocolate. therefore, the answer is no, the box does not fit in the chocolate.	none	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+1169	18	53	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the box?"	no	from sentence 2, we know that the chocolate fits inside the box. if the chocolate fits inside the box, it means the box is bigger than the chocolate. therefore, the answer is no, the chocolate is not bigger than the box.	none	no	True			Answer: no	0.25	0.5	False	False	False	False	0

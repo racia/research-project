@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1841	9	69	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the bathroom.
+2. Daniel is in the office.
+
+Now, answer the following question:
+Is Daniel in the office?"	yes	"the context sentence ""2. daniel is in the office"" directly states that daniel is in the office. this sentence provides explicit information about daniel's location, which is the office. therefore, the answer to the question ""is daniel in the office?"" is indeed ""yes""."	fully	yes	True	The question asks about Daniel's location, and the only information provided is that Daniel is in the office, which is mentioned in sentence 2.		"Reasoning: The question asks about Daniel's location, and the only information provided is that Daniel is in the office, which is mentioned in sentence 2.
+
+Answer: yes"	0.0278	0.0278	False	False	False	True	0
+1842	9	69	2	"*TASK*
+Here are the context sentences:
+4. Sandra travelled to the kitchen.
+5. Daniel went to the hallway.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	yes	"the context sentence ""4. sandra travelled to the kitchen"" directly states that sandra went to the kitchen. this sentence provides explicit information about sandra's location, which is the kitchen. therefore, the answer to the question ""is sandra in the kitchen?"" is indeed ""yes""."	fully	yes	True	The question asks about Sandra's location, and the only information provided is that Sandra travelled to the kitchen, which is mentioned in sentence 4.		"Reasoning: The question asks about Sandra's location, and the only information provided is that Sandra travelled to the kitchen, which is mentioned in sentence 4.
+
+Answer: yes"	0.0556	0.0278	False	False	False	True	0
+1843	9	69	3	"*TASK*
+Here are the context sentences:
+7. John is in the office.
+8. Mary travelled to the garden.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	yes	"the context sentences provided do not mention daniel's location in sentences 7 and 8. however, we can infer the answer from the previous context sentences (5. daniel went to the hallway). this sentence explicitly states that daniel went to the hallway, and there is no information provided that suggests he left the hallway. therefore, the answer to the question ""is daniel in the hallway?"" is indeed ""yes""."	none	not mentioned	False	There is no information provided about Daniel's location, and the question asks about his location in the hallway. Since Daniel is not mentioned in the context sentences, we cannot determine his location.		"Reasoning: There is no information provided about Daniel's location, and the question asks about his location in the hallway. Since Daniel is not mentioned in the context sentences, we cannot determine his location.
+
+Answer: not mentioned"	0.0889	0.0222	False	False	False	True	0
+1844	9	69	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the bathroom.
+11. Sandra travelled to the bedroom.
+
+Now, answer the following question:
+Is John in the office?"	yes	"the context sentences provided (10 and 11) only mention sandra's movements, but the question asks about john's location. to answer this question, we need to refer to a previous context sentence (7. john is in the office). this sentence explicitly states that john is in the office, and there is no information provided that suggests he left the office. therefore, the answer to the question ""is john in the office?"" is indeed ""yes""."	none	yes	True	The question asks about John's location, and the only information provided is that John is in the office, which is mentioned in sentence 7.		"Reasoning: The question asks about John's location, and the only information provided is that John is in the office, which is mentioned in sentence 7.
+
+Answer: yes"	0.0278	0.0278	False	False	False	True	0
+1845	9	69	5	"*TASK*
+Here are the context sentences:
+13. Sandra went back to the hallway.
+14. Daniel is not in the hallway.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	no	"the context sentence ""14. daniel is not in the hallway"" directly states that daniel is not in the hallway. this sentence provides explicit information about daniel's location, which is not in the hallway. therefore, the answer to the question ""is daniel in the hallway?"" is indeed ""no""."	fully	no	True	The question asks about Daniel's location, and the only information provided is that Daniel is not in the hallway, which is mentioned in sentence 14.		"Reasoning: The question asks about Daniel's location, and the only information provided is that Daniel is not in the hallway, which is mentioned in sentence 14.
+
+Answer: no"	0.027	0.027	False	False	False	True	0

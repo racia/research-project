@@ -1,0 +1,1 @@
+*T	ASK	*ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	5	,	ĠSandra	Ġis	Ġnot	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

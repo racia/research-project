@@ -1,0 +1,19 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+11	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+12	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+13	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+14	.	ĠFred	Ġput	Ġdown	Ġthe	Ġapple	Ġthere	.Ċ
+15	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+16	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+17	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+18	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+19	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+20	.	ĠBill	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+21	.	ĠBill	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+22	.	ĠBill	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+23	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+24	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+25	.	ĠBill	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
+26	.	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠBill	Ġgive	Ġthe	Ġfootball	Ġto	?Ċ

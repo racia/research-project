@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġyesterday	,	Ġwhich	Ġmeans	Ġshe	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġschool	.	ĠThen	,	Ġthis	Ġmorning	,	Ġshe	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġmoving	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

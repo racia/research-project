@@ -1,0 +1,4 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+19	.	ĠAntoine	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Why	Ġdid	Ġant	oine	Ġget	Ġthe	Ġapple	?Ċ

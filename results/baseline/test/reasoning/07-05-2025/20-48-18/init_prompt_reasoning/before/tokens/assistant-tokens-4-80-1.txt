@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġwhat	Ġis	Ġthe	Ġkitchen	Ġsouth	Ġof	,	Ġand	Ġwe	Ġknow	Ġthat	Ġthe	Ġoffice	Ġis	Ġsouth	Ġof	Ġthe	Ġkitchen	Ġfrom	Ġsentence	Ġ	1	.	ĠTherefore	,	Ġthe	Ġanswer	Ġis	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

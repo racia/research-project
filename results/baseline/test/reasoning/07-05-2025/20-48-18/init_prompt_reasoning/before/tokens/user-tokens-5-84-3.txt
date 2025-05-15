@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+31	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+32	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġmilk	?Ċ

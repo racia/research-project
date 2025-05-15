@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġpark	.Ċ
+11	.	ĠJulie	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠFred	Ġin	Ġthe	Ġschool	?Ċ

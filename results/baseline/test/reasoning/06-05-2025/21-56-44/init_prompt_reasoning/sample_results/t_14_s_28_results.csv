@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2386	14	28	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Julie went back to the bedroom.
+2. This morning Bill travelled to the park.
+3. Yesterday Bill went to the office.
+4. Yesterday Mary went to the bedroom.
+
+Now, answer the following question:
+Where was Bill before the park?"	office	from the context sentences, we know that bill travelled to the park this morning (sentence 2). to determine where bill was before the park, we need to look at the previous actions of bill. sentence 3 states that yesterday bill went to the office. there is no information about bill's actions between yesterday and this morning, so we can logically assume that bill was still at the office before he travelled to the park this morning.	fully	office	True	Since Bill went to the office yesterday, and he travelled to the park this morning, it is likely that he was at the office before going to the park.		"Reasoning: Since Bill went to the office yesterday, and he travelled to the park this morning, it is likely that he was at the office before going to the park.
+
+Answer: office"	0.2308	0.0513	False	False	False	False	0
+2387	14	28	2	"*TASK*
+Here are the context sentences:
+6. Julie travelled to the cinema this morning.
+7. Mary travelled to the office this morning.
+
+Now, answer the following question:
+Where was Mary before the office?"	bedroom	from the context sentences, we know that mary travelled to the office this morning (sentence 7). to determine where mary was before the office, we need to look at the previous actions of mary. although there is no direct information about mary's actions before this morning, we can look at the previous parts of the conversation history. in sentence 4, we know that yesterday mary went to the bedroom. there is no information about mary's actions between yesterday and this morning, so we	partially	home	False	Since Mary travelled to the office this morning, and there is no information about her going to the office earlier, it is likely that she was at home or somewhere else before going to the office.		"Reasoning: Since Mary travelled to the office this morning, and there is no information about her going to the office earlier, it is likely that she was at home or somewhere else before going to the office.
+
+Answer: home"	0.1739	0.0435	False	False	False	True	0
+2388	14	28	3	"*TASK*
+Here are the context sentences:
+9. This afternoon Mary travelled to the park.
+10. This afternoon Bill went to the school.
+
+Now, answer the following question:
+Where was Bill before the park?"	office	the question asks where bill was before the park, but the context sentences (9 and 10) do not mention bill going to the park. sentence 10 states that bill went to the school this afternoon. there is no information about bill going to the park. however, we can look at the previous parts of the conversation history. in sentence 3, we know that yesterday bill went to the office. there is no information about bill's actions between yesterday and this afternoon, so	none	home	False	Since Bill went to the school this afternoon, and there is no information about him going to the park earlier, it is likely that he was at home or somewhere else before going to the school.		"Reasoning: Since Bill went to the school this afternoon, and there is no information about him going to the park earlier, it is likely that he was at home or somewhere else before going to the school.
+
+Answer: home"	0.0	0.0435	False	False	False	True	0
+2389	14	28	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Julie went to the office.
+13. Mary went back to the cinema this evening.
+
+Now, answer the following question:
+Where was Julie before the office?"	cinema	the question asks where julie was before the office. sentence 12 states that julie went to the office this afternoon. there is no direct information about julie's actions before this afternoon. however, we can look at the previous parts of the conversation history. in sentence 6, we know that julie travelled to the cinema this morning. there is no information about julie's actions between this morning and this afternoon, so we can logically assume that julie was still at the cinema before she went to	partially	home	False	Since Julie went to the office this afternoon, and there is no information about her going to the office earlier, it is likely that she was at home or somewhere else before going to the office.		"Reasoning: Since Julie went to the office this afternoon, and there is no information about her going to the office earlier, it is likely that she was at home or somewhere else before going to the office.
+
+Answer: home"	0.0652	0.0435	False	False	False	True	0
+2390	14	28	5	"*TASK*
+Here are the context sentences:
+15. Yesterday Fred went back to the bedroom.
+16. Julie journeyed to the school this evening.
+
+Now, answer the following question:
+Where was Mary before the park?"	office	the question asks where mary was before the park, but the context sentences (15 and 16) do not mention mary going to the park. however, we can look at the previous parts of the conversation history. in sentence 9, we know that mary travelled to the park this afternoon. to determine where mary was before the park, we need to look at mary's actions before this afternoon. in sentence 7, we know that mary travelled to the office this morning. there	none	Not mentioned	False	There is no information about Mary going to the park. The question asks about Mary's location before the park, but there is no mention of her going to the park.		"Reasoning: There is no information about Mary going to the park. The question asks about Mary's location before the park, but there is no mention of her going to the park.
+
+Answer: Not mentioned"	0.0238	0.0476	False	False	False	True	0

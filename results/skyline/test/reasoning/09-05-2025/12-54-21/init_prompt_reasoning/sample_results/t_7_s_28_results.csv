@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+636	7	28	1	"*TASK*
+Here are the context sentences:
+1. John took the milk there.
+2. Daniel travelled to the garden.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	"from the context sentence ""john took the milk there"", we can infer that john is carrying the milk. there is no mention of john carrying any other object. therefore, the logical conclusion is that john is carrying only one object, which is the milk."	fully	one	True	From sentence 1, we know that John took the milk, which implies that John is carrying the milk. There is no information about John putting down the milk or giving it to someone else.		"assistant
+
+Reasoning: From sentence 1, we know that John took the milk, which implies that John is carrying the milk. There is no information about John putting down the milk or giving it to someone else.
+
+Answer: one"	0.04	0.02	False	False	False	True	0
+637	7	28	2	"*TASK*
+Here are the context sentences:
+4. John went to the office.
+5. John dropped the milk.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	"from the previous context sentence ""john took the milk there"" (sentence 1), we knew that john was carrying the milk. however, in the new context sentence ""john dropped the milk"" (sentence 5), it is stated that john dropped the milk, which implies that john is no longer carrying the milk. therefore, the logical conclusion is that john is not carrying any objects, i.e., none."	partially	none	True	From sentence 5, we know that John dropped the milk, which implies that John is no longer carrying the milk.		"Reasoning: From sentence 5, we know that John dropped the milk, which implies that John is no longer carrying the milk.
+
+Answer: none"	0.0323	0.0645	False	False	False	False	0
+638	7	28	3	"*TASK*
+Here are the context sentences:
+7. Mary grabbed the apple there.
+8. Mary put down the apple.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	"from the context sentence ""mary grabbed the apple there"" (sentence 7), we know that mary was carrying the apple. however, in the subsequent sentence ""mary put down the apple"" (sentence 8), it is stated that mary put down the apple, which implies that mary is no longer carrying the apple. therefore, the logical conclusion is that mary is not carrying any objects, i.e., none."	fully	none	True	From sentence 7, we know that Mary grabbed the apple, which implies that Mary was carrying the apple. However, from sentence 8, we know that Mary put down the apple, which implies that Mary is no longer carrying the apple.		"Reasoning: From sentence 7, we know that Mary grabbed the apple, which implies that Mary was carrying the apple. However, from sentence 8, we know that Mary put down the apple, which implies that Mary is no longer carrying the apple.
+
+Answer: none"	0.0893	0.0357	False	False	False	False	0
+639	7	28	4	"*TASK*
+Here are the context sentences:
+10. Mary went back to the hallway.
+11. Mary grabbed the football there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"from the previous context sentence ""mary put down the apple"" (sentence 8), we knew that mary was not carrying any objects. however, in the new context sentence ""mary grabbed the football there"" (sentence 11), it is stated that mary grabbed the football, which implies that mary is now carrying the football. therefore, the logical conclusion is that mary is carrying one object, which is the football."	partially	one	True	From sentence 11, we know that Mary grabbed the football, which implies that Mary is carrying the football. There is no information about Mary putting down the football or giving it to someone else.		"Reasoning: From sentence 11, we know that Mary grabbed the football, which implies that Mary is carrying the football. There is no information about Mary putting down the football or giving it to someone else.
+
+Answer: one"	0.2609	0.0652	False	False	False	True	0
+640	7	28	5	"*TASK*
+Here are the context sentences:
+13. John got the milk there.
+14. Mary put down the football.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	"from the previous context sentence ""mary grabbed the football there"" (sentence 11), we knew that mary was carrying the football. however, in the new context sentence ""mary put down the football"" (sentence 14), it is stated that mary put down the football, which implies that mary is no longer carrying the football. therefore, the logical conclusion is that mary is not carrying any objects, i.e., none."	partially	none	True	From sentence 14, we know that Mary put down the football, which implies that Mary is no longer carrying the football.		"Reasoning: From sentence 14, we know that Mary put down the football, which implies that Mary is no longer carrying the football.
+
+Answer: none"	0.125	0.125	False	False	False	False	0

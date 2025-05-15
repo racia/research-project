@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+76	6	16	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the garden.
+2. Daniel travelled to the bathroom.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	yes	"the context sentence ""daniel travelled to the bathroom"" explicitly states that daniel went to the bathroom, which implies that he is currently in the bathroom. there is no information provided that suggests he left the bathroom, so it can be logically concluded that daniel is indeed in the bathroom."	fully	yes	True	According to context sentence 2, Daniel travelled to the bathroom, which implies that Daniel is currently in the bathroom.		"assistant
+
+Reasoning: According to context sentence 2, Daniel travelled to the bathroom, which implies that Daniel is currently in the bathroom.
+
+Answer: yes"	0.0	0.0303	False	False	False	False	0
+77	6	16	2	"*TASK*
+Here are the context sentences:
+4. John moved to the bedroom.
+5. Mary went back to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	"the context sentence ""mary went back to the bedroom"" explicitly states that mary returned to the bedroom, which implies that she is currently in the bedroom. there is no information provided that suggests she left the bedroom after returning, so it can be logically concluded that mary is indeed in the bedroom."	fully	yes	True	According to context sentence 5, Mary went back to the bedroom, which implies that Mary is currently in the bedroom.		"Reasoning: According to context sentence 5, Mary went back to the bedroom, which implies that Mary is currently in the bedroom.
+
+Answer: yes"	0.1613	0.0323	False	False	False	False	0
+78	6	16	3	"*TASK*
+Here are the context sentences:
+7. John got the apple there.
+8. John discarded the apple.
+
+Now, answer the following question:
+Is John in the bedroom?"	yes	"although the context sentences 7 and 8 do not explicitly mention john's location, we can infer john's location from the previous context sentence 4, which states ""john moved to the bedroom"". there is no information provided that suggests john left the bedroom, so it can be logically concluded that john is still in the bedroom. the actions of getting and discarding the apple do not provide any information about john's location, but they do not contradict the previous information about john being in"	none	yes	True	Although context sentence 7 mentions John getting the apple, it doesn't specify the location. However, context sentence 4 mentions John moving to the bedroom, and there is no information about John leaving the bedroom. Therefore, it can be inferred that John is still in the bedroom.		"Reasoning: Although context sentence 7 mentions John getting the apple, it doesn't specify the location. However, context sentence 4 mentions John moving to the bedroom, and there is no information about John leaving the bedroom. Therefore, it can be inferred that John is still in the bedroom.
+
+Answer: yes"	0.0317	0.0159	False	False	False	True	0
+79	6	16	4	"*TASK*
+Here are the context sentences:
+10. John took the apple there.
+11. Sandra moved to the office.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	there is no information provided about mary's current location in the context sentences 10 and 11. however, we can infer that mary is not in the bathroom because in the previous context sentences (1 and 2), mary was in the garden, and there is no information provided that suggests she went to the bathroom.	none	no	True	There is no information about Mary's current location in the provided context sentences. The last mention of Mary's location was in context sentence 5, where she went back to the bedroom. There is no information about her moving to the bathroom.		"Reasoning: There is no information about Mary's current location in the provided context sentences. The last mention of Mary's location was in context sentence 5, where she went back to the bedroom. There is no information about her moving to the bathroom.
+
+Answer: no"	0.0545	0.0182	False	False	False	True	0
+80	6	16	5	"*TASK*
+Here are the context sentences:
+13. John moved to the office.
+14. John travelled to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the office?"	yes	"the context sentence 11 states ""sandra moved to the office"", which implies that sandra is in the office. there is no information provided that suggests sandra left the office, and john's movements (sentence 13 and 14) do not affect sandra's location. therefore, it can be logically concluded that sandra is still in the office."	none	yes	True	According to context sentence 11, Sandra moved to the office, and there is no information about her leaving the office. Therefore, it can be inferred that Sandra is still in the office.		"Reasoning: According to context sentence 11, Sandra moved to the office, and there is no information about her leaving the office. Therefore, it can be inferred that Sandra is still in the office.
+
+Answer: yes"	0.1111	0.0222	False	False	False	True	0

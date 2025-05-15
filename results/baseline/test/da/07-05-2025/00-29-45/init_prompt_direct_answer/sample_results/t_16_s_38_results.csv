@@ -1,0 +1,15 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+38	16	38	1	"*TASK*
+Here are the context sentences:
+1. Julius is a swan.
+2. Lily is a rhino.
+3. Julius is yellow.
+4. Bernhard is a swan.
+5. Lily is green.
+6. Brian is a frog.
+7. Greg is a frog.
+8. Greg is green.
+9. Brian is green.
+
+Now, answer the following question:
+What color is Bernhard?"	yellow	since bernhard is a swan (sentence 4), and julius is also a swan (sentence 1), we can infer that bernhard shares similar characteristics with julius. one of julius' characteristics is being yellow (sentence 3). therefore, it is logical to assume that bernhard, being a swan like julius, is also yellow.	fully	yellow	True			Answer: yellow	0.25	0.75	False	False	False	False	0

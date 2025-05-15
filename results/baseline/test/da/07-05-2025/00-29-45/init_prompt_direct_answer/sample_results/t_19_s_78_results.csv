@@ -1,0 +1,11 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1482	19	78	1	"*TASK*
+Here are the context sentences:
+1. The office is north of the bathroom.
+2. The bathroom is east of the garden.
+3. The hallway is south of the garden.
+4. The bedroom is east of the bathroom.
+5. The kitchen is north of the garden.
+
+Now, answer the following question:
+How do you go from the office to the garden?"	south west	from the context sentences, we know the relative positions of the office, bathroom, garden, and hallway.	fully	south	False			Answer: south	0.25	0.5	False	False	False	False	0

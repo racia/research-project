@@ -1,0 +1,64 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1681	5	17	1	"*TASK*
+Here are the context sentences:
+1. Fred moved to the garden.
+2. Jeff went back to the garden.
+3. Mary travelled to the bathroom.
+4. Fred travelled to the bathroom.
+5. Fred journeyed to the kitchen.
+6. Jeff went to the bedroom.
+7. Jeff travelled to the office.
+8. Fred took the football there.
+9. Jeff moved to the bedroom.
+10. Jeff picked up the milk there.
+11. Fred left the football.
+12. Fred travelled to the bathroom.
+13. Fred moved to the bedroom.
+14. Jeff dropped the milk.
+15. Jeff grabbed the milk there.
+16. Jeff discarded the milk there.
+17. Mary moved to the kitchen.
+18. Bill travelled to the kitchen.
+19. Fred got the milk there.
+20. Fred handed the milk to Jeff.
+
+Now, answer the following question:
+What did Fred give to Jeff?"	milk	"from the context sentences, we can track the movements and actions of each person. in sentence 20, it is explicitly stated that ""fred handed the milk to jeff."" this directly answers the question of what fred gave to jeff, which is the milk."	fully	milk	True	Fred handed the milk to Jeff in sentence 20, and there is no mention of Fred giving anything else to Jeff.		"Reasoning: Fred handed the milk to Jeff in sentence 20, and there is no mention of Fred giving anything else to Jeff.
+
+Answer: milk"	0.0	0.0323	False	False	False	True	0
+1682	5	17	2	"*TASK*
+Here are the context sentences:
+22. Bill took the football there.
+23. Mary moved to the garden.
+
+Now, answer the following question:
+What did Fred give to Jeff?"	milk	"the context sentences provided (22 and 23) do not mention fred giving anything to jeff. however, we can look at the previous context sentences (1-21) to find the relevant information. in sentence 20, it is stated that ""fred handed the milk to jeff."" this directly answers the question of what fred gave to jeff, which is the milk. the new context sentences (22 and 23) do not provide any contradictory information, so we can rely on"	none	nothing	False	There is no mention of Fred giving anything to Jeff in the given context sentences. The sentences only mention Bill taking the football, Mary moving to the garden, and Fred's actions in the bathroom, kitchen, and bedroom, but not giving anything to Jeff.		"Reasoning: There is no mention of Fred giving anything to Jeff in the given context sentences. The sentences only mention Bill taking the football, Mary moving to the garden, and Fred's actions in the bathroom, kitchen, and bedroom, but not giving anything to Jeff.
+
+Answer: nothing"	0.0	0.0172	False	False	False	True	0
+1683	5	17	3	"*TASK*
+Here are the context sentences:
+25. Bill discarded the football.
+26. Jeff gave the milk to Fred.
+
+Now, answer the following question:
+Who did Jeff give the milk to?"	fred	"the answer to the question ""who did jeff give the milk to?"" is directly stated in sentence 26: ""jeff gave the milk to fred."" this sentence explicitly mentions that jeff gave the milk to fred, which answers the question."	fully	Fred	True	According to sentence 26, Jeff gave the milk to Fred.		"Reasoning: According to sentence 26, Jeff gave the milk to Fred.
+
+Answer: Fred"	0.0	0.05	False	False	False	False	0
+1684	5	17	4	"*TASK*
+Here are the context sentences:
+28. Jeff went to the hallway.
+29. Bill grabbed the football there.
+
+Now, answer the following question:
+What did Jeff give to Fred?"	milk	"the context sentences provided (28 and 29) do not mention jeff giving anything to fred. however, we can look at the previous context sentences to find the relevant information. in sentence 26, it is stated that ""jeff gave the milk to fred."" this directly answers the question of what jeff gave to fred, which is the milk. the new context sentences (28 and 29) do not provide any contradictory information, so we can rely on the previous"	none	nothing	False	There is no mention of Jeff giving anything to Fred in the given context sentences. Sentence 28 mentions Jeff going to the hallway, and sentence 29 mentions Bill grabbing the football, but there is no mention of Jeff giving anything to Fred.		"Reasoning: There is no mention of Jeff giving anything to Fred in the given context sentences. Sentence 28 mentions Jeff going to the hallway, and sentence 29 mentions Bill grabbing the football, but there is no mention of Jeff giving anything to Fred.
+
+Answer: nothing"	0.0	0.0182	False	False	False	True	0
+1685	5	17	5	"*TASK*
+Here are the context sentences:
+31. Fred discarded the milk.
+32. Fred got the milk there.
+
+Now, answer the following question:
+Who gave the milk to Fred?"	jeff	"the answer to the question ""who gave the milk to fred?"" is not directly stated in the provided context sentences (31 and 32). however, we can look at the previous context sentences to find the relevant information. in sentence 20, it is stated that ""fred handed the milk to jeff"", but then in sentence 26, it is stated that ""jeff gave the milk to fred"". this implies that jeff gave the milk to fred, which answers the"	none	Jeff	True	According to sentence 26, Jeff gave the milk to Fred.		"Reasoning: According to sentence 26, Jeff gave the milk to Fred.
+
+Answer: Jeff"	0.0	0.05	False	False	False	False	0

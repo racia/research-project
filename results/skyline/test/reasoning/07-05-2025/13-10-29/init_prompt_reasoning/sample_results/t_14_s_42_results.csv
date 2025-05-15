@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1706	14	42	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the kitchen yesterday.
+2. Yesterday Bill moved to the bedroom.
+3. This morning Bill travelled to the park.
+4. Yesterday Julie moved to the park.
+
+Now, answer the following question:
+Where was Bill before the park?"	bedroom	from context sentence 3, we know that bill travelled to the park this morning. to determine where bill was before the park, we need to look at the previous actions of bill. in context sentence 2, we are told that bill moved to the bedroom yesterday. there is no other information about bill's movements between yesterday and this morning, so we can logically conclude that bill was in the bedroom before he travelled to the park this morning.	fully	bedroom	True	"According to sentence 2, ""Yesterday Bill moved to the bedroom."" This implies that Bill was in the bedroom before moving to the park (sentence 3)."		"assistant
+
+Reasoning: According to sentence 2, ""Yesterday Bill moved to the bedroom."" This implies that Bill was in the bedroom before moving to the park (sentence 3).
+
+Answer: bedroom"	0.2857	0.0476	False	False	False	False	0
+1707	14	42	2	"*TASK*
+Here are the context sentences:
+6. Mary moved to the park this morning.
+7. Yesterday Fred journeyed to the cinema.
+
+Now, answer the following question:
+Where was Mary before the park?"	kitchen	from context sentence 1 (not provided in this part, but presumably available in the conversation history), we know that mary journeyed to the kitchen yesterday. there is no other information about mary's movements between yesterday and this morning, so we can logically conclude that mary was in the kitchen before she moved to the park this morning (as stated in context sentence 6).	partially	kitchen	True	"According to sentence 1, ""Mary journeyed to the kitchen yesterday."" This implies that Mary was in the kitchen before moving to the park (sentence 6)."		"Reasoning: According to sentence 1, ""Mary journeyed to the kitchen yesterday."" This implies that Mary was in the kitchen before moving to the park (sentence 6).
+
+Answer: kitchen"	0.025	0.05	False	False	False	False	0
+1708	14	42	3	"*TASK*
+Here are the context sentences:
+9. This afternoon Mary went to the school.
+10. Fred travelled to the office this morning.
+
+Now, answer the following question:
+Where was Mary before the park?"	kitchen	"the context sentences provided (9 and 10) do not mention mary's location before the park. however, the answer suggests that mary was in the kitchen before the park. this information must have been provided in a previous part of the conversation (context sentence 1: ""mary journeyed to the kitchen yesterday""). therefore, we can conclude that mary was in the kitchen before the park."	none	kitchen	True	"According to sentence 1, ""Mary journeyed to the kitchen yesterday."" This implies that Mary was in the kitchen before moving to the park (sentence 6)."		"Reasoning: According to sentence 1, ""Mary journeyed to the kitchen yesterday."" This implies that Mary was in the kitchen before moving to the park (sentence 6).
+
+Answer: kitchen"	0.075	0.05	False	False	False	False	0
+1709	14	42	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Bill went back to the school.
+13. This afternoon Fred journeyed to the bedroom.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	office	from context sentence 10 (not provided in this part, but presumably available in the conversation history), we know that fred travelled to the office this morning. there is no other information about fred's movements between this morning and this afternoon, so we can logically conclude that fred was in the office before he journeyed to the bedroom this afternoon (as stated in context sentence 13).	partially	office	True	"According to sentence 10, ""Fred travelled to the office this morning."" This implies that Fred was in the office before moving to the bedroom (sentence 13)."		"Reasoning: According to sentence 10, ""Fred travelled to the office this morning."" This implies that Fred was in the office before moving to the bedroom (sentence 13).
+
+Answer: office"	0.075	0.05	False	False	False	False	0
+1710	14	42	5	"*TASK*
+Here are the context sentences:
+15. Mary went back to the kitchen this evening.
+16. This evening Bill journeyed to the park.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	school	from context sentence 9 (not provided in this part, but presumably available in the conversation history), we know that mary went to the school this afternoon. there is no other information about mary's movements between this afternoon and this evening, so we can logically conclude that mary was in the school before she went back to the kitchen this evening (as stated in context sentence 15).	partially	school	True	"According to sentence 9, ""This afternoon Mary went to the school."" This implies that Mary was in the school before moving back to the kitchen (sentence 15)."		"Reasoning: According to sentence 9, ""This afternoon Mary went to the school."" This implies that Mary was in the school before moving back to the kitchen (sentence 15).
+
+Answer: school"	0.0488	0.0488	False	False	False	False	0

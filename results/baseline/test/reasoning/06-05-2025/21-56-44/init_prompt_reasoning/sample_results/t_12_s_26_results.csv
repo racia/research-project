@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+876	12	26	1	"*TASK*
+Here are the context sentences:
+1. John and Mary moved to the bedroom.
+2. Sandra and Daniel moved to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	"according to context sentence 2, ""sandra and daniel moved to the office"", which explicitly states that sandra moved to the office. therefore, the answer to the question ""where is sandra?"" is indeed ""office""."	fully	office	True	Sandra and Daniel moved to the office, which implies that Sandra is in the office.		"Reasoning: Sandra and Daniel moved to the office, which implies that Sandra is in the office.
+Answer: office"	0.0	0.0417	False	False	False	False	0
+877	12	26	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Mary travelled to the hallway.
+5. Mary and Daniel went to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"from context sentence 5, ""mary and daniel went to the bedroom"", we can infer that daniel is in the bedroom because the sentence explicitly states that daniel, along with mary, went to the bedroom."	fully	bedroom	True	Daniel and Mary travelled to the hallway, and then they went to the bedroom, which implies that Daniel is in the bedroom.		"Reasoning: Daniel and Mary travelled to the hallway, and then they went to the bedroom, which implies that Daniel is in the bedroom.
+Answer: bedroom"	0.1875	0.0312	False	False	False	False	0
+878	12	26	3	"*TASK*
+Here are the context sentences:
+7. John and Sandra went back to the garden.
+8. Sandra and Daniel travelled to the hallway.
+
+Now, answer the following question:
+Where is John?"	garden	"from context sentence 7, ""john and sandra went back to the garden"", we can infer that john is in the garden because the sentence explicitly states that john, along with sandra, went back to the garden."	fully	not mentioned	False	"The context sentences do not mention John's location after sentence 1, which was ""John and Mary moved to the bedroom"". However, John is not mentioned in sentences 7 and 8, which implies that his location is not specified."		"Reasoning: The context sentences do not mention John's location after sentence 1, which was ""John and Mary moved to the bedroom"". However, John is not mentioned in sentences 7 and 8, which implies that his location is not specified.
+Answer: not mentioned"	0.0357	0.0179	False	False	False	True	0
+879	12	26	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel went to the bedroom.
+11. Sandra and Mary went back to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"from context sentence 10, ""john and daniel went to the bedroom"", we can infer that daniel is in the bedroom because the sentence explicitly states that daniel, along with john, went to the bedroom."	fully	bedroom	True	Daniel went to the bedroom with John in sentence 10. Since there is no mention of Daniel leaving the bedroom, it can be inferred that Daniel is still in the bedroom.		"Reasoning: Daniel went to the bedroom with John in sentence 10. Since there is no mention of Daniel leaving the bedroom, it can be inferred that Daniel is still in the bedroom.
+Answer: bedroom"	0.0238	0.0238	False	False	False	True	0
+880	12	26	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John travelled to the garden.
+14. Daniel and John moved to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"from context sentence 14, ""daniel and john moved to the bedroom"", we can infer that john is in the bedroom because the sentence explicitly states that john, along with daniel, moved to the bedroom. the previous sentence 13, ""daniel and john travelled to the garden"", is overridden by the more recent action in sentence 14, which indicates that john's current location is the bedroom."	fully	bedroom	True	John travelled to the garden with Daniel in sentence 13, and then they moved to the bedroom in sentence 14. This implies that John is in the bedroom.		"Reasoning: John travelled to the garden with Daniel in sentence 13, and then they moved to the bedroom in sentence 14. This implies that John is in the bedroom.
+Answer: bedroom"	0.0	0.025	False	False	False	False	0

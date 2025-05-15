@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2026	5	86	1	"*TASK*
+Here are the context sentences:
+1. Jeff journeyed to the bedroom.
+2. Jeff went back to the bathroom.
+3. Bill went back to the bedroom.
+4. Fred grabbed the apple there.
+5. Jeff moved to the kitchen.
+6. Bill travelled to the office.
+7. Mary went to the hallway.
+8. Fred handed the apple to Bill.
+
+Now, answer the following question:
+What did Fred give to Bill?"	apple	from sentence 4, we know that fred grabbed the apple in the bedroom. then, in sentence 8, it is stated that fred handed the apple to bill. therefore, it can be logically concluded that the object fred handed to bill is the apple that he grabbed earlier.	fully	apple	True	Fred handed the apple to Bill, and there is no mention of Fred giving anything else to Bill. Therefore, it can be inferred that Fred gave the apple to Bill.		"Reasoning: Fred handed the apple to Bill, and there is no mention of Fred giving anything else to Bill. Therefore, it can be inferred that Fred gave the apple to Bill.
+
+Answer: apple"	0.0488	0.0244	False	False	False	True	0
+2027	5	86	2	"*TASK*
+Here are the context sentences:
+10. Bill handed the apple to Fred.
+11. Fred journeyed to the hallway.
+
+Now, answer the following question:
+Who received the apple?"	fred	according to sentence 10, bill handed the apple to fred, which explicitly states that fred is the recipient of the apple.	fully	Fred	True	According to sentence 10, Bill handed the apple to Fred. Therefore, Fred received the apple.		"Reasoning: According to sentence 10, Bill handed the apple to Fred. Therefore, Fred received the apple.
+
+Answer: Fred"	0.037	0.037	False	False	False	False	0
+2028	5	86	3	"*TASK*
+Here are the context sentences:
+13. Fred gave the apple to Mary.
+14. Jeff journeyed to the garden.
+
+Now, answer the following question:
+What did Fred give to Mary?"	apple	according to sentence 13, fred gave the apple to mary, which explicitly states that the object fred gave to mary is the apple.	fully	apple	True	According to sentence 13, Fred gave the apple to Mary.		"Reasoning: According to sentence 13, Fred gave the apple to Mary.
+
+Answer: apple"	0.05	0.05	False	False	False	False	0
+2029	5	86	4	"*TASK*
+Here are the context sentences:
+16. Mary gave the apple to Fred.
+17. Bill travelled to the bedroom.
+
+Now, answer the following question:
+Who received the apple?"	fred	according to sentence 16, mary gave the apple to fred, which explicitly states that fred is the recipient of the apple.	fully	Fred	True	According to sentence 16, Mary gave the apple to Fred. Therefore, Fred received the apple.		"Reasoning: According to sentence 16, Mary gave the apple to Fred. Therefore, Fred received the apple.
+
+Answer: Fred"	0.037	0.037	False	False	False	False	0
+2030	5	86	5	"*TASK*
+Here are the context sentences:
+19. Jeff went to the bedroom.
+20. Fred dropped the apple.
+
+Now, answer the following question:
+Who gave the apple?"	mary	from sentence 16 (previous context), we know that mary gave the apple to fred. this information is still valid in the current context, and there is no indication that the apple has been given to anyone else. therefore, we can logically conclude that mary is the one who gave the apple.	none	Fred	False	According to previous sentences, Mary gave the apple to Fred (sentence 16). Then, Fred dropped the apple (sentence 20). Therefore, Fred gave the apple.		"Reasoning: According to previous sentences, Mary gave the apple to Fred (sentence 16). Then, Fred dropped the apple (sentence 20). Therefore, Fred gave the apple.
+
+Answer: Fred"	0.0	0.0244	False	False	False	False	0

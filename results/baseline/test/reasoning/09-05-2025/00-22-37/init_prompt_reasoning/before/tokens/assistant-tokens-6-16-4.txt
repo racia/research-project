@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJohn	's	Ġaction	Ġ(	taking	Ġan	Ġapple	)	Ġand	ĠSandra	's	Ġmovement	Ġ(	to	Ġthe	Ġoffice	),	Ġbut	Ġnot	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

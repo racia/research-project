@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+46	10	10	1	"*TASK*
+Here are the context sentences:
+1. Bill is in the bedroom.
+2. Fred is either in the bedroom or the office.
+
+Now, answer the following question:
+Is Fred in the park?"	no	from the context sentences, we know that fred is either in the bedroom or the office (sentence 2). there is no mention of the park as a possible location for fred. therefore, based on the information provided, it can be logically concluded that fred is not in the park.	fully	no	True	There is no information provided about Fred being in the park. The context sentences only mention the bedroom and the office as possible locations for Fred.		"Reasoning: There is no information provided about Fred being in the park. The context sentences only mention the bedroom and the office as possible locations for Fred.
+
+Answer: no"	0.0286	0.0286	False	False	False	True	0
+47	10	10	2	"*TASK*
+Here are the context sentences:
+4. Bill is either in the kitchen or the cinema.
+5. Fred went to the office.
+
+Now, answer the following question:
+Is Bill in the park?"	no	from the context sentences, we know that bill is either in the kitchen or the cinema (sentence 4). there is no mention of the park as a possible location for bill. therefore, based on the information provided, it can be logically concluded that bill is not in the park.	fully	no	True	There is no information provided about Bill being in the park. The context sentences only mention the kitchen and the cinema as possible locations for Bill.		"Reasoning: There is no information provided about Bill being in the park. The context sentences only mention the kitchen and the cinema as possible locations for Bill.
+
+Answer: no"	0.0857	0.0286	False	False	False	True	0
+48	10	10	3	"*TASK*
+Here are the context sentences:
+7. Mary travelled to the school.
+8. Fred went back to the cinema.
+
+Now, answer the following question:
+Is Fred in the cinema?"	yes	according to sentence 8, fred went back to the cinema, which implies that fred was in the cinema previously and then left, but now he has returned to the cinema. therefore, it can be logically concluded that fred is currently in the cinema.	fully	yes	True	According to sentence 8, Fred went back to the cinema, which implies that Fred is currently in the cinema.		"Reasoning: According to sentence 8, Fred went back to the cinema, which implies that Fred is currently in the cinema.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+49	10	10	4	"*TASK*
+Here are the context sentences:
+10. Mary is in the bedroom.
+11. Mary went to the kitchen.
+
+Now, answer the following question:
+Is Fred in the cinema?"	yes	"the question asks about fred's location, but the context sentences only provide information about mary's movements. sentence 11 states that mary went to the kitchen, but it does not provide any new information about fred. the answer ""yes"" suggests that fred is in the cinema, but this information is not present in the current context sentences. however, we can look back at previous context sentences and find sentence 8, which states ""fred went back to the cinema."" this sentence directly indicates"	none	yes	True	There is no new information provided about Fred's location. The context sentences 10 and 11 only mention Mary's movements and do not update our knowledge about Fred's location. Previously, we knew that Fred went back to the cinema (sentence 8).		"Reasoning: There is no new information provided about Fred's location. The context sentences 10 and 11 only mention Mary's movements and do not update our knowledge about Fred's location. Previously, we knew that Fred went back to the cinema (sentence 8).
+
+Answer: yes"	0.0345	0.0172	False	False	False	True	0
+50	10	10	5	"*TASK*
+Here are the context sentences:
+13. Julie journeyed to the kitchen.
+14. Mary moved to the school.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	according to sentence 10, mary was initially in the bedroom. however, sentence 11 states that mary went to the kitchen, which implies that mary left the bedroom. further, sentence 14 states that mary moved to the school, which means mary is no longer in the kitchen either. therefore, it can be logically concluded that mary is not in the bedroom.	fully	no	True	According to sentence 10, Mary was initially in the bedroom. However, sentence 14 states that Mary moved to the school, which implies that Mary is no longer in the bedroom.		"Reasoning: According to sentence 10, Mary was initially in the bedroom. However, sentence 14 states that Mary moved to the school, which implies that Mary is no longer in the bedroom.
+
+Answer: no"	0.0682	0.0227	False	False	False	False	0

@@ -1,0 +1,15 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+50	16	50	1	"*TASK*
+Here are the context sentences:
+1. Julius is a lion.
+2. Lily is a rhino.
+3. Brian is a lion.
+4. Greg is a rhino.
+5. Bernhard is a swan.
+6. Bernhard is white.
+7. Greg is yellow.
+8. Lily is yellow.
+9. Brian is gray.
+
+Now, answer the following question:
+What color is Julius?"	gray	since julius is a lion (context sentence 1), and brian is also a lion (context sentence 3), it can be inferred that julius and brian share similar characteristics. additionally, it is stated that brian is gray (context sentence 9). therefore, it is logical to assume that julius, being a lion like brian, also shares the same color, which is gray.	fully	gray	True			Answer: gray	0.0	0.75	False	False	False	False	0

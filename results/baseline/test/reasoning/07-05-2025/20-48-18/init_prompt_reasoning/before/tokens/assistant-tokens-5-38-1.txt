@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠBill	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgiving	Ġanything	Ġelse	Ġto	ĠBill	.	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġgiving	Ġmilk	Ġor	Ġany	Ġother	Ġitem	Ġto	ĠBill	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

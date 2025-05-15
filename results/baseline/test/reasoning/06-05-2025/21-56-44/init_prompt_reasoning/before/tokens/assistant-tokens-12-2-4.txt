@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠDaniel	Ġwas	Ġpreviously	Ġin	Ġthe	Ġoffice	Ġwith	ĠJohn	Ġ(	sentence	Ġ	10	),	Ġbut	Ġthen	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	Ġwith	ĠMary	Ġ(	sentence	Ġ	11	).	ĠSince	ĠDaniel	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġoffice	,	Ġit	Ġis	Ġlogical	Ġto	Ġconclude	Ġthat	ĠDaniel	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

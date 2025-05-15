@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1001	8	1	1	"*TASK*
+Here are the context sentences:
+1. Mary got the milk there.
+2. John moved to the bedroom.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	"from context sentence 1, ""mary got the milk there"", we can infer that mary has possession of the milk. the phrase ""got"" implies that mary has acquired or obtained the milk, and the word ""there"" suggests that she is currently holding or carrying it. therefore, it is logical to conclude that mary is carrying the milk."	fully	milk	True	According to sentence 1, Mary got the milk there, which implies that Mary is carrying the milk.		"assistant
+
+Reasoning: According to sentence 1, Mary got the milk there, which implies that Mary is carrying the milk.
+
+Answer: milk"	0.0312	0.0312	False	False	False	False	0
+1002	8	1	2	"*TASK*
+Here are the context sentences:
+4. John picked up the football there.
+5. John journeyed to the bathroom.
+
+Now, answer the following question:
+What is John carrying?"	football	"from context sentence 4, ""john picked up the football there"", we can infer that john has possession of the football. the phrase ""picked up"" implies that john has taken hold of the football, and the word ""there"" suggests that he is currently holding or carrying it. the subsequent action in sentence 5, ""john journeyed to the bathroom"", does not imply that john has put down the football, so it is logical to conclude that john is still carrying the football"	fully	football	True	According to sentence 4, John picked up the football there, which implies that John is carrying the football. The fact that John journeyed to the bathroom in sentence 5 does not change what John is carrying.		"Reasoning: According to sentence 4, John picked up the football there, which implies that John is carrying the football. The fact that John journeyed to the bathroom in sentence 5 does not change what John is carrying.
+
+Answer: football"	0.0	0.02	False	False	False	False	0
+1003	8	1	3	"*TASK*
+Here are the context sentences:
+7. John went to the garden.
+8. Daniel went back to the hallway.
+
+Now, answer the following question:
+What is John carrying?"	football	although the context sentences 7 and 8 do not explicitly mention john carrying anything, we can infer the answer from the previous context. in the previous part of the conversation, we established that john picked up the football (sentence 4) and was carrying it. there is no information provided that suggests john has put down the football or given it to someone else. therefore, it is logical to assume that john is still carrying the football, even after going to the garden (sentence	none	football	True	The context sentences 7 and 8 do not provide any new information about what John is carrying. We can refer back to sentence 4, where John picked up the football there, which implies that John is still carrying the football.		"Reasoning: The context sentences 7 and 8 do not provide any new information about what John is carrying. We can refer back to sentence 4, where John picked up the football there, which implies that John is still carrying the football.
+
+Answer: football"	0.037	0.0185	False	False	False	True	0
+1004	8	1	4	"*TASK*
+Here are the context sentences:
+10. John went back to the bathroom.
+11. Mary went to the office.
+12. Sandra went back to the kitchen.
+13. Mary travelled to the hallway.
+14. John travelled to the bedroom.
+15. John picked up the apple there.
+
+Now, answer the following question:
+What is John carrying?"	football apple	"from the previous parts of the conversation, we established that john picked up the football (sentence 4) and was carrying it. there is no information provided that suggests john has put down the football or given it to someone else. therefore, it is logical to assume that john is still carrying the football. additionally, in sentence 15, ""john picked up the apple there"", we can infer that john has acquired another object, the apple, and is carrying it as well. therefore"	partially	apple	False	According to sentence 15, John picked up the apple there, which implies that John is now carrying the apple. The fact that John was previously carrying the football (sentence 4) is no longer relevant, as there is no indication that John is still carrying the football.		"Reasoning: According to sentence 15, John picked up the apple there, which implies that John is now carrying the apple. The fact that John was previously carrying the football (sentence 4) is no longer relevant, as there is no indication that John is still carrying the football.
+
+Answer: apple"	0.0806	0.0323	False	False	False	False	0
+1005	8	1	5	"*TASK*
+Here are the context sentences:
+17. Sandra travelled to the bedroom.
+18. Sandra journeyed to the kitchen.
+
+Now, answer the following question:
+What is John carrying?"	football apple	the context sentences 17 and 18 only provide information about sandra's movements, but do not mention john or the objects he is carrying. to answer the question, we need to refer to the previous parts of the conversation. from sentence 4, we know that john picked up the football, and from sentence 15, we know that john picked up the apple. there is no information provided that suggests john has put down either the football or the apple, so it is logical to	none	apple	False	The context sentences 17 and 18 do not provide any new information about what John is carrying. We can refer back to sentence 15, where John picked up the apple there, which implies that John is still carrying the apple.		"Reasoning: The context sentences 17 and 18 do not provide any new information about what John is carrying. We can refer back to sentence 15, where John picked up the apple there, which implies that John is still carrying the apple.
+
+Answer: apple"	0.0556	0.037	False	False	False	True	0

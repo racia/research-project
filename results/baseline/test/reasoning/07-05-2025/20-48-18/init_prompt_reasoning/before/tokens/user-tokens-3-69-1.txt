@@ -1,0 +1,83 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠSandra	Ġtook	Ġthe	Ġmilk	.Ċ
+2	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+3	.	ĠSandra	Ġdropped	Ġthe	Ġmilk	.Ċ
+4	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+5	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+6	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+7	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+8	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+9	.	ĠMary	Ġdropped	Ġthe	Ġapple	.Ċ
+10	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+11	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+12	.	ĠDaniel	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+13	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+14	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+15	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+16	.	ĠDaniel	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+17	.	ĠSandra	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+18	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+19	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+20	.	ĠJohn	Ġgot	Ġthe	Ġapple	.Ċ
+21	.	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	Ġthere	.Ċ
+22	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+23	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+24	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+25	.	ĠJohn	Ġdropped	Ġthe	Ġapple	.Ċ
+26	.	ĠSandra	Ġdropped	Ġthe	Ġmilk	.Ċ
+27	.	ĠSandra	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+28	.	ĠJohn	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+29	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+30	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+31	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+32	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+33	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+34	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+35	.	ĠSandra	Ġleft	Ġthe	Ġmilk	.Ċ
+36	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+37	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+38	.	ĠSandra	Ġgot	Ġthe	Ġmilk	.Ċ
+39	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+40	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+41	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+42	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+43	.	ĠSandra	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+44	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+45	.	ĠSandra	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+46	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+47	.	ĠSandra	Ġdiscarded	Ġthe	Ġapple	.Ċ
+48	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+49	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+50	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+51	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+52	.	ĠSandra	Ġgrabbed	Ġthe	Ġmilk	.Ċ
+53	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+54	.	ĠSandra	Ġdiscarded	Ġthe	Ġmilk	Ġthere	.Ċ
+55	.	ĠSandra	Ġgot	Ġthe	Ġmilk	.Ċ
+56	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+57	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+58	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+59	.	ĠSandra	Ġleft	Ġthe	Ġmilk	.Ċ
+60	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
+61	.	ĠDaniel	Ġtook	Ġthe	Ġapple	.Ċ
+62	.	ĠDaniel	Ġdiscarded	Ġthe	Ġapple	.Ċ
+63	.	ĠMary	Ġdropped	Ġthe	Ġmilk	.Ċ
+64	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+65	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
+66	.	ĠSandra	Ġgot	Ġthe	Ġmilk	.Ċ
+67	.	ĠDaniel	Ġgot	Ġthe	Ġfootball	.Ċ
+68	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+69	.	ĠDaniel	Ġdropped	Ġthe	Ġfootball	Ġthere	.Ċ
+70	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġfootball	.Ċ
+71	.	ĠSandra	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+72	.	ĠDaniel	Ġtook	Ġthe	Ġmilk	.Ċ
+73	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+74	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+75	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+76	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+77	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+78	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+79	.	ĠMary	Ġleft	Ġthe	Ġapple	.Ċ
+80	.	ĠDaniel	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġgarden	?Ċ

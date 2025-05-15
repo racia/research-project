@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1306	12	112	1	"*TASK*
+Here are the context sentences:
+1. Mary and Sandra journeyed to the kitchen.
+2. Sandra and John journeyed to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from context sentence 1, we know that mary and sandra journeyed to the kitchen. there is no information provided that suggests mary left the kitchen or moved to a different location. therefore, based on the last known location of mary, we can conclude that mary is still in the kitchen.	fully	kitchen	True	Since Mary and Sandra journeyed to the kitchen in sentence 1, it implies that Mary is in the kitchen. However, sentence 2 does not mention Mary's location, but it does mention Sandra's location as the hallway. Since Mary and Sandra were together in the kitchen initially, it is likely that Mary is still in the kitchen.		"Reasoning: Since Mary and Sandra journeyed to the kitchen in sentence 1, it implies that Mary is in the kitchen. However, sentence 2 does not mention Mary's location, but it does mention Sandra's location as the hallway. Since Mary and Sandra were together in the kitchen initially, it is likely that Mary is still in the kitchen.
+
+Answer: kitchen"	0.0667	0.0133	False	False	False	True	0
+1307	12	112	2	"*TASK*
+Here are the context sentences:
+4. John and Daniel went back to the office.
+5. Sandra and Mary moved to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	office	from context sentence 4, we know that john and daniel went back to the office. there is no information provided that suggests daniel left the office or moved to a different location. therefore, based on the last known location of daniel, we can conclude that daniel is still in the office.	fully	office	True	According to sentence 4, John and Daniel went back to the office, which implies that Daniel is in the office. There is no mention of Daniel's location in sentence 5, which only mentions Sandra and Mary moving to the bathroom.		"Reasoning: According to sentence 4, John and Daniel went back to the office, which implies that Daniel is in the office. There is no mention of Daniel's location in sentence 5, which only mentions Sandra and Mary moving to the bathroom.
+
+Answer: office"	0.0364	0.0182	False	False	False	True	0
+1308	12	112	3	"*TASK*
+Here are the context sentences:
+7. Mary and John moved to the kitchen.
+8. Daniel and Mary went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from context sentence 8, we know that daniel and mary went back to the bathroom. there is no information provided that suggests daniel left the bathroom or moved to a different location. therefore, based on the last known location of daniel, we can conclude that daniel is still in the bathroom.	fully	bathroom	True	Sentence 7 mentions Mary and John moving to the kitchen, but it does not mention Daniel's location. Sentence 8 mentions Daniel and Mary going back to the bathroom, which implies that Daniel is in the bathroom.		"Reasoning: Sentence 7 mentions Mary and John moving to the kitchen, but it does not mention Daniel's location. Sentence 8 mentions Daniel and Mary going back to the bathroom, which implies that Daniel is in the bathroom.
+
+Answer: bathroom"	0.02	0.02	False	False	False	True	0
+1309	12	112	4	"*TASK*
+Here are the context sentences:
+10. John and Sandra journeyed to the garden.
+11. John and Daniel travelled to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	there is no new information provided about mary's location in the given context sentences (10 and 11). however, from the previous context (sentence 8), we know that mary went back to the bathroom with daniel. there is no information that suggests mary left the bathroom or moved to a different location. therefore, based on the last known location of mary, we can conclude that mary is still in the bathroom.	none	not mentioned	False	There is no mention of Mary's location in the given context sentences. Mary's location was previously mentioned in sentences 1 and 5, but not in the current sentences.		"Reasoning: There is no mention of Mary's location in the given context sentences. Mary's location was previously mentioned in sentences 1 and 5, but not in the current sentences.
+
+Answer: not mentioned"	0.0	0.0233	False	False	False	True	0
+1310	12	112	5	"*TASK*
+Here are the context sentences:
+13. Mary and John went back to the office.
+14. Daniel and John went back to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from context sentence 14, we know that daniel and john went back to the garden. there is no information provided that suggests daniel left the garden or moved to a different location. therefore, based on the last known location of daniel, we can conclude that daniel is still in the garden.	fully	garden	True	Sentence 14 mentions Daniel and John going back to the garden, which implies that Daniel is in the garden.		"Reasoning: Sentence 14 mentions Daniel and John going back to the garden, which implies that Daniel is in the garden.
+
+Answer: garden"	0.0	0.0345	False	False	False	True	0

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+311	6	63	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the bathroom.
+2. Sandra went to the hallway.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	yes	"according to context sentence 2, ""sandra went to the hallway"", which explicitly states that sandra's destination is the hallway. therefore, it can be logically concluded that sandra is indeed in the hallway."	fully	yes	True	According to context sentence 2, Sandra went to the hallway, which implies that she is currently in the hallway.		"assistant
+
+Reasoning: According to context sentence 2, Sandra went to the hallway, which implies that she is currently in the hallway.
+
+Answer: yes"	0.0	0.0294	False	False	False	False	0
+312	6	63	2	"*TASK*
+Here are the context sentences:
+4. Mary journeyed to the hallway.
+5. Mary journeyed to the office.
+
+Now, answer the following question:
+Is Mary in the hallway?"	no	"according to context sentence 4, ""mary journeyed to the hallway"", which initially places mary in the hallway. however, context sentence 5, ""mary journeyed to the office"", indicates that mary has moved from the hallway to the office. therefore, it can be logically concluded that mary is no longer in the hallway."	fully	no	True	According to context sentence 4, Mary journeyed to the hallway, but then according to context sentence 5, she journeyed to the office, which implies that she is no longer in the hallway.		"Reasoning: According to context sentence 4, Mary journeyed to the hallway, but then according to context sentence 5, she journeyed to the office, which implies that she is no longer in the hallway.
+
+Answer: no"	0.1458	0.0208	False	False	False	False	0
+313	6	63	3	"*TASK*
+Here are the context sentences:
+7. Daniel took the football there.
+8. Sandra moved to the kitchen.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	yes	"according to context sentence 8, ""sandra moved to the kitchen"", which explicitly states that sandra's destination is the kitchen. therefore, it can be logically concluded that sandra is indeed in the kitchen."	fully	yes	True	According to context sentence 8, Sandra moved to the kitchen, which implies that she is currently in the kitchen.		"Reasoning: According to context sentence 8, Sandra moved to the kitchen, which implies that she is currently in the kitchen.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+314	6	63	4	"*TASK*
+Here are the context sentences:
+10. John went back to the hallway.
+11. John went to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	"there is no mention of mary in the provided context sentences. the context sentences only mention john's movements, and there is no information about mary's location. therefore, it cannot be determined whether mary is in the bathroom or not based on the provided information. however, the answer is ""no"", which implies that mary's location is known to be somewhere else, but this information is not provided in the context sentences."	none	not mentioned	False	There is no recent information about Mary's location, and the context sentences 10 and 11 only provide information about John's movements. The last known location of Mary was in the office (from context sentence 5).		"Reasoning: There is no recent information about Mary's location, and the context sentences 10 and 11 only provide information about John's movements. The last known location of Mary was in the office (from context sentence 5).
+
+Answer: not mentioned"	0.0385	0.0192	False	False	False	True	0
+315	6	63	5	"*TASK*
+Here are the context sentences:
+13. John went back to the hallway.
+14. Daniel left the football.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	"according to context sentence 13, ""john went back to the hallway"", which explicitly states that john's destination is the hallway. therefore, it can be logically concluded that john is indeed in the hallway."	fully	yes	True	According to context sentence 13, John went back to the hallway, which implies that he is currently in the hallway.		"Reasoning: According to context sentence 13, John went back to the hallway, which implies that he is currently in the hallway.
+
+Answer: yes"	0.0645	0.0323	False	False	False	False	0

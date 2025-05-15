@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1596	4	96	1	"*TASK*
+Here are the context sentences:
+1. The garden is north of the kitchen.
+2. The hallway is north of the garden.
+
+Now, answer the following question:
+What is north of the garden?"	hallway	"according to context sentence 2, ""the hallway is north of the garden."" this sentence directly states that the hallway is north of the garden, which answers the question."	fully	hallway	True	The hallway is north of the garden, according to sentence 2. Therefore, the answer is the hallway.		"Reasoning: The hallway is north of the garden, according to sentence 2. Therefore, the answer is the hallway.
+
+Answer: hallway"	0.1034	0.0345	False	False	False	False	0

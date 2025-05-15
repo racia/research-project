@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġat	Ġall	.	ĠThe	Ġsentences	Ġonly	Ġtalk	Ġabout	ĠJohn	Ġand	Ġthe	Ġapple	.	ĠTherefore	,	Ġwe	Ġcannot	Ġinfer	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

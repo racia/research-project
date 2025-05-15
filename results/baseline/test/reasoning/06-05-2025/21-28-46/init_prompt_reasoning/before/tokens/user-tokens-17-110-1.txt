@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠThe	Ġyellow	Ġsquare	Ġis	Ġbelow	Ġthe	Ġpink	Ġrectangle	.Ċ
+2	.	ĠThe	Ġpink	Ġrectangle	Ġis	Ġbelow	Ġthe	Ġred	Ġsquare	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	Ġthe	Ġyellow	Ġsquare	Ġabove	Ġthe	Ġred	Ġsquare	?Ċ

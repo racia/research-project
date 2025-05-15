@@ -1,0 +1,4 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠAntoine	Ġis	Ġbored	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwill	Ġant	oine	Ġgo	?Ċ

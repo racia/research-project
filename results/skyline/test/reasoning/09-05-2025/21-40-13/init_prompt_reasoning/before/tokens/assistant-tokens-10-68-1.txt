@@ -1,0 +1,1 @@
+<|start_header_id|>	<|end_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	2	,	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġpark	Ġor	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġoffice	.	ĠSentence	Ġ	1	Ġonly	Ġmentions	ĠMary	Ġtraveling	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġdoes	Ġnot	Ġimply	Ġshe	Ġis	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

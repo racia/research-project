@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠMary	Ġand	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.	ĠThis	Ġaction	Ġhappens	Ġafter	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġso	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

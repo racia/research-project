@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	13	,	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	,	Ġnot	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

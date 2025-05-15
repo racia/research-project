@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	11	Ġstates	Ġthat	ĠJulie	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	,	Ġand	Ġsentence	Ġ	10	Ġstates	Ġthat	ĠJulie	Ġtravelled	Ġto	Ġthe	Ġcinema	Ġthis	Ġevening	.	ĠThis	Ġimplies	Ġthat	ĠJulie	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

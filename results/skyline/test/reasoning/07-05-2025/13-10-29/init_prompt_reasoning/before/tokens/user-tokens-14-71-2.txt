@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+6	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	.Ċ
+7	.	ĠYesterday	ĠMary	Ġwent	Ġto	Ġthe	Ġschool	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠBill	Ġbefore	Ġthe	Ġbedroom	?Ċ

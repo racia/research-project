@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1971	9	95	1	"*TASK*
+Here are the context sentences:
+1. John went to the bedroom.
+2. Daniel is not in the kitchen.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	no	"the answer is ""no"" because the context sentence ""daniel is not in the kitchen"" explicitly states that daniel is not in the kitchen. this sentence directly provides the information that daniel's location is not the kitchen."	fully	no	True	The question asks about Daniel's location, and since John went to the bedroom, it's not directly related to Daniel's location. However, sentence 2 explicitly states that Daniel is not in the kitchen, which is the only location mentioned in the context.		"Reasoning: The question asks about Daniel's location, and since John went to the bedroom, it's not directly related to Daniel's location. However, sentence 2 explicitly states that Daniel is not in the kitchen, which is the only location mentioned in the context.
+
+Answer: no"	0.0862	0.0172	False	False	False	True	0
+1972	9	95	2	"*TASK*
+Here are the context sentences:
+4. Daniel went back to the kitchen.
+5. Mary moved to the kitchen.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	no	"the answer is ""no"" because the context sentence ""daniel went back to the kitchen"" indicates that daniel's current location is the kitchen, not the hallway. this sentence directly provides the information about daniel's location, which is not the hallway."	fully	no	True	The question asks about Daniel's location, but there is no mention of Daniel being in the hallway. The context sentences only mention Daniel going back to the kitchen and Mary moving to the kitchen, but not Daniel's presence in the hallway.		"Reasoning: The question asks about Daniel's location, but there is no mention of Daniel being in the hallway. The context sentences only mention Daniel going back to the kitchen and Mary moving to the kitchen, but not Daniel's presence in the hallway.
+
+Answer: no"	0.037	0.0185	False	False	False	True	0
+1973	9	95	3	"*TASK*
+Here are the context sentences:
+7. John is no longer in the bedroom.
+8. Daniel is in the office.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	yes	"the answer is ""yes"" because in the previous context (sentence 5), it was stated that ""mary moved to the kitchen"". there is no information provided that suggests mary has left the kitchen, so it can be logically inferred that mary is still in the kitchen."	none	not mentioned	False	The question asks about Mary's location, but there is no mention of Mary's presence in the kitchen or any other location. The context sentences only mention John's departure from the bedroom and Daniel's presence in the office, but not Mary's location.		"Reasoning: The question asks about Mary's location, but there is no mention of Mary's presence in the kitchen or any other location. The context sentences only mention John's departure from the bedroom and Daniel's presence in the office, but not Mary's location.
+
+Answer: not mentioned"	0.069	0.0172	False	False	False	True	0
+1974	9	95	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the hallway.
+11. Daniel is no longer in the office.
+
+Now, answer the following question:
+Is Daniel in the office?"	no	"the answer is ""no"" because the context sentence ""daniel is no longer in the office"" explicitly states that daniel is not in the office. this sentence directly provides the information about daniel's location, which is not the office."	fully	no	True	The question asks about Daniel's location, and sentence 11 explicitly states that Daniel is no longer in the office. This implies that Daniel was previously in the office, but is no longer there.		"Reasoning: The question asks about Daniel's location, and sentence 11 explicitly states that Daniel is no longer in the office. This implies that Daniel was previously in the office, but is no longer there.
+
+Answer: no"	0.0	0.0217	False	False	False	False	0
+1975	9	95	5	"*TASK*
+Here are the context sentences:
+13. Daniel went back to the bedroom.
+14. John is in the garden.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	yes	"the answer is ""yes"" because the context sentence ""daniel went back to the bedroom"" explicitly states that daniel's current location is the bedroom. this sentence directly provides the information about daniel's location, which is the bedroom."	fully	yes	True	The question asks about Daniel's location, and sentence 13 explicitly states that Daniel went back to the bedroom. This implies that Daniel is currently in the bedroom.		"Reasoning: The question asks about Daniel's location, and sentence 13 explicitly states that Daniel went back to the bedroom. This implies that Daniel is currently in the bedroom.
+
+Answer: yes"	0.0	0.0256	False	False	False	False	0

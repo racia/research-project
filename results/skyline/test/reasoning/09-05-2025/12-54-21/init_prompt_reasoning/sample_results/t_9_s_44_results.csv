@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1716	9	44	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the garden.
+2. Mary is in the bathroom.
+
+Now, answer the following question:
+Is Mary in the garden?"	no	"according to the context sentences, mary initially moved to the garden (sentence 1), but later, she is mentioned to be in the bathroom (sentence 2). this implies that mary has changed her location from the garden to the bathroom. therefore, the answer to the question ""is mary in the garden?"" is ""no"", as she is currently in the bathroom."	fully	no	True	Sentence 1 states that Mary moved to the garden, but sentence 2 contradicts this by stating that Mary is in the bathroom. This implies that Mary is no longer in the garden.		"assistant
+
+Reasoning: Sentence 1 states that Mary moved to the garden, but sentence 2 contradicts this by stating that Mary is in the bathroom. This implies that Mary is no longer in the garden.
+
+Answer: no"	0.1633	0.0204	False	False	False	False	0
+1717	9	44	2	"*TASK*
+Here are the context sentences:
+4. Mary is in the office.
+5. Mary journeyed to the bathroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	yes	"according to the context sentences, mary was initially in the office (sentence 4), but then she journeyed to the bathroom (sentence 5). this implies that mary has changed her location from the office to the bathroom. therefore, the answer to the question ""is mary in the bathroom?"" is ""yes"", as she has moved to the bathroom."	fully	yes	True	Sentence 4 states that Mary is in the office, but sentence 5 indicates that Mary journeyed to the bathroom, implying that Mary is now in the bathroom.		"Reasoning: Sentence 4 states that Mary is in the office, but sentence 5 indicates that Mary journeyed to the bathroom, implying that Mary is now in the bathroom.
+
+Answer: yes"	0.075	0.025	False	False	False	False	0
+1718	9	44	3	"*TASK*
+Here are the context sentences:
+7. Sandra moved to the garden.
+8. John is no longer in the garden.
+
+Now, answer the following question:
+Is Mary in the garden?"	no	"the context sentences do not mention mary at all. they only talk about sandra moving to the garden and john no longer being in the garden. there is no information provided about mary's location. therefore, we cannot conclude that mary is in the garden, and the answer to the question ""is mary in the garden?"" is ""no"" by default, as there is no evidence to suggest otherwise."	none	not mentioned	False	The context sentences do not mention Mary at all. They only talk about Sandra and John. Therefore, we cannot infer anything about Mary's location.		"Reasoning: The context sentences do not mention Mary at all. They only talk about Sandra and John. Therefore, we cannot infer anything about Mary's location.
+
+Answer: not mentioned"	0.027	0.027	False	False	False	True	0
+1719	9	44	4	"*TASK*
+Here are the context sentences:
+10. Sandra moved to the office.
+11. Sandra journeyed to the garden.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	yes	"the context sentences do not mention mary at all. they only talk about sandra moving to the office and then journeying to the garden. there is no information provided about mary's location, let alone her being in the bathroom. therefore, it seems that the answer ""yes"" to the question ""is mary in the bathroom?"" is not supported by the provided context."	none	not mentioned	False	The context sentences do not mention Mary at all. They only talk about Sandra's movements between the office and the garden. Therefore, we cannot infer anything about Mary's location.		"Reasoning: The context sentences do not mention Mary at all. They only talk about Sandra's movements between the office and the garden. Therefore, we cannot infer anything about Mary's location.
+
+Answer: not mentioned"	0.0233	0.0233	False	False	False	True	0
+1720	9	44	5	"*TASK*
+Here are the context sentences:
+13. John is no longer in the hallway.
+14. Sandra went to the hallway.
+
+Now, answer the following question:
+Is Sandra in the garden?"	no	"the context sentences do not mention sandra being in the garden. in fact, sentence 14 states that sandra went to the hallway, which implies that she is currently in the hallway. there is no information provided that suggests she is in the garden. therefore, the answer to the question ""is sandra in the garden?"" is indeed ""no"", as she is in the hallway."	fully	no	True	Sentence 14 states that Sandra went to the hallway, but there is no information about Sandra being in the garden. Sentence 11 from a previous part mentioned that Sandra journeyed to the garden, but that information is no longer relevant since Sandra's location has been updated.		"Reasoning: Sentence 14 states that Sandra went to the hallway, but there is no information about Sandra being in the garden. Sentence 11 from a previous part mentioned that Sandra journeyed to the garden, but that information is no longer relevant since Sandra's location has been updated.
+
+Answer: no"	0.0328	0.0164	False	False	False	True	0

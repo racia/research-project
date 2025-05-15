@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠJohn	Ġand	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+11	.	ĠAfterwards	Ġthey	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	ĠMary	?Ċ

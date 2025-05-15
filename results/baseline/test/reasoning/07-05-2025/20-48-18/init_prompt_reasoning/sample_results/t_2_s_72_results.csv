@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+856	2	72	1	"*TASK*
+Here are the context sentences:
+1. John went to the bedroom.
+2. John moved to the garden.
+3. Daniel travelled to the bathroom.
+4. Sandra moved to the hallway.
+5. Sandra got the football there.
+6. Sandra put down the football.
+
+Now, answer the following question:
+Where is the football?"	hallway	from sentence 5, we know that sandra got the football in the hallway. in sentence 6, it is mentioned that sandra put down the football, but it doesn't specify that she moved it to a different location. therefore, we can logically conclude that the football is still in the hallway where sandra put it down.	fully	hallway	True	The football was last mentioned in the hallway, where Sandra got it. After that, Sandra put it down, but the location where she put it down is not specified. However, since John and Daniel are not mentioned to have interacted with the football, it is likely that Sandra put it down in the hallway.		"Reasoning: The football was last mentioned in the hallway, where Sandra got it. After that, Sandra put it down, but the location where she put it down is not specified. However, since John and Daniel are not mentioned to have interacted with the football, it is likely that Sandra put it down in the hallway.
+
+Answer: hallway"	0.1429	0.0286	False	False	False	True	0
+857	2	72	2	"*TASK*
+Here are the context sentences:
+8. Daniel moved to the hallway.
+9. Mary took the milk there.
+
+Now, answer the following question:
+Where is the football?"	hallway	the question asks about the location of the football, but the provided context sentences (8 and 9) do not mention the football at all. however, we can look back at the previous context sentences (1-6) and find that the football was last mentioned in sentence 6, where sandra put it down in the hallway. there is no information that suggests the football was moved from the hallway, so we can logically conclude that the football is still in the hallway.	none	not mentioned	False	There is no mention of the football in these context sentences. The previous context sentences mentioned Sandra getting and putting down the football, but these sentences do not provide any information about the football's current location.		"Reasoning: There is no mention of the football in these context sentences. The previous context sentences mentioned Sandra getting and putting down the football, but these sentences do not provide any information about the football's current location.
+
+Answer: not mentioned"	0.0833	0.0417	False	False	False	True	0
+858	2	72	3	"*TASK*
+Here are the context sentences:
+11. Mary moved to the office.
+12. Sandra went to the garden.
+
+Now, answer the following question:
+Where is the milk?"	office	the question asks about the location of the milk. in the provided context sentences (11 and 12), there is no direct mention of the milk. however, we can look back at the previous context sentences (8 and 9) and find that mary took the milk to the hallway in sentence 9. there is no information that suggests the milk was moved from the hallway, but in sentence 11, mary moved to the office. since mary had the milk, it is logical	partially	office	True	The milk was last mentioned in the hallway, where Mary took it. There is no information about the milk's current location, but since Mary moved to the office, it is likely that she took the milk with her.		"Reasoning: The milk was last mentioned in the hallway, where Mary took it. There is no information about the milk's current location, but since Mary moved to the office, it is likely that she took the milk with her.
+
+Answer: office"	0.1765	0.0392	False	False	False	True	0
+859	2	72	4	"*TASK*
+Here are the context sentences:
+14. Daniel went to the office.
+15. Mary went to the hallway.
+
+Now, answer the following question:
+Where is the milk?"	hallway	the question asks about the location of the milk. in the previous context sentences (8 and 9), we know that mary took the milk to the hallway. in sentence 11, mary moved to the office, but there is no information that suggests she took the milk with her. then, in sentence 15, mary went back to the hallway. since mary had the milk and went back to the hallway, it is logical to conclude that the milk is still in the hallway.	partially	hallway	True	The milk was last mentioned in the office, where Mary moved. Since Mary went to the hallway, it is likely that she took the milk with her to the hallway.		"Reasoning: The milk was last mentioned in the office, where Mary moved. Since Mary went to the hallway, it is likely that she took the milk with her to the hallway.
+
+Answer: hallway"	0.0976	0.0488	False	False	False	True	0
+860	2	72	5	"*TASK*
+Here are the context sentences:
+17. John journeyed to the hallway.
+18. Mary discarded the milk.
+
+Now, answer the following question:
+Where is the milk?"	hallway	the question asks about the location of the milk. in sentence 18, mary discarded the milk, which implies that the milk is no longer being held or carried by mary. since mary was in the hallway (as established in sentence 15), it is logical to conclude that the milk was discarded in the hallway, where mary was located. therefore, the milk is still in the hallway.	partially	not mentioned	False	The milk was last mentioned in the hallway, where Mary took it. After that, Mary discarded the milk, which means it is no longer present in the hallway.		"Reasoning: The milk was last mentioned in the hallway, where Mary took it. After that, Mary discarded the milk, which means it is no longer present in the hallway.
+
+Answer: not mentioned"	0.0244	0.0488	False	False	False	True	0

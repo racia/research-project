@@ -1,0 +1,84 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1096	3	20	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the garden.
+2. Mary travelled to the bedroom.
+3. Mary went to the garden.
+4. Sandra journeyed to the hallway.
+5. Daniel grabbed the apple there.
+6. Sandra grabbed the football.
+7. Sandra put down the football.
+8. Mary went to the hallway.
+9. Daniel moved to the bathroom.
+10. Sandra went back to the office.
+11. Mary got the football.
+12. Daniel left the apple there.
+13. John took the milk.
+14. Daniel picked up the apple there.
+15. Mary put down the football.
+16. Sandra moved to the hallway.
+17. Mary got the football.
+18. Sandra travelled to the bedroom.
+19. John moved to the garden.
+20. Daniel journeyed to the kitchen.
+21. Mary left the football there.
+22. Daniel put down the apple.
+23. Mary grabbed the football.
+24. John went back to the bathroom.
+25. Daniel took the apple there.
+26. Daniel journeyed to the hallway.
+27. Daniel went back to the kitchen.
+28. Daniel journeyed to the hallway.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	kitchen	from sentence 25, we know that daniel took the apple there, which implies that the apple was already in that location before daniel took it. from sentence 20, we know that daniel journeyed to the kitchen, and from sentence 22, we know that daniel put down the apple. therefore, we can infer that the apple was in the kitchen before daniel took it to the hallway.	fully	kitchen	True	The apple was last mentioned in sentence 22, where Daniel put it down. Since Daniel then journeyed to the hallway in sentence 26, it can be inferred that the apple was in the hallway before Daniel arrived.		"Reasoning: The apple was last mentioned in sentence 22, where Daniel put it down. Since Daniel then journeyed to the hallway in sentence 26, it can be inferred that the apple was in the hallway before Daniel arrived.
+
+Answer: kitchen"	0.1569	0.0588	False	False	False	True	0
+1097	3	20	2	"*TASK*
+Here are the context sentences:
+30. Mary left the football.
+31. Daniel took the football.
+32. Daniel discarded the apple.
+33. John went back to the bedroom.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	kitchen	this question refers to a previous part of the conversation history. from the previous context (sentence 25), we know that daniel took the apple there, and from sentence 20, we know that daniel journeyed to the kitchen. from sentence 22, we know that daniel put down the apple. therefore, we can infer that the apple was in the kitchen before daniel took it to the hallway. the new context lines (30-33) do not provide any new information about	partially	kitchen	True	The apple was last mentioned in sentence 32, where Daniel discarded it. Since there is no mention of the apple being in the hallway before this point, it can be inferred that the apple was not in the hallway before Daniel discarded it.		"Reasoning: The apple was last mentioned in sentence 32, where Daniel discarded it. Since there is no mention of the apple being in the hallway before this point, it can be inferred that the apple was not in the hallway before Daniel discarded it.
+
+Answer: kitchen"	0.0727	0.0545	False	False	False	True	0
+1098	3	20	3	"*TASK*
+Here are the context sentences:
+35. Daniel went to the kitchen.
+36. Sandra went to the bathroom.
+
+Now, answer the following question:
+Where was the apple before the kitchen?"	hallway	from the previous context (sentence 28), we know that daniel journeyed to the hallway. from sentence 25, we know that daniel took the apple there, which implies that the apple was already in the hallway before daniel took it to the kitchen. therefore, we can infer that the apple was in the hallway before the kitchen.	none	there	False	The apple was last mentioned in sentence 32, where Daniel discarded it. Since Daniel then went to the kitchen in sentence 35, it can be inferred that the apple was in the kitchen before Daniel arrived.		"Reasoning: The apple was last mentioned in sentence 32, where Daniel discarded it. Since Daniel then went to the kitchen in sentence 35, it can be inferred that the apple was in the kitchen before Daniel arrived.
+
+Answer: there"	0.0204	0.0612	True	False	False	True	0
+1099	3	20	4	"*TASK*
+Here are the context sentences:
+38. Daniel put down the football.
+39. Mary took the apple.
+40. John travelled to the bathroom.
+41. Mary left the apple.
+42. John went back to the bedroom.
+43. Daniel journeyed to the bathroom.
+44. John left the milk.
+45. Mary picked up the apple.
+
+Now, answer the following question:
+Where was the milk before the bathroom?"	bedroom	from sentence 44, we know that john left the milk. from sentence 42, we know that john went back to the bedroom. therefore, we can infer that john left the milk in the bedroom before going to the bathroom.	partially	bedroom	True	The milk was last mentioned in sentence 44, where John left it. Since John then went to the bathroom, it can be inferred that the milk was in the bathroom before John left it.		"Reasoning: The milk was last mentioned in sentence 44, where John left it. Since John then went to the bathroom, it can be inferred that the milk was in the bathroom before John left it.
+
+Answer: bedroom"	0.0652	0.0652	False	False	False	True	0
+1100	3	20	5	"*TASK*
+Here are the context sentences:
+47. John went back to the hallway.
+48. Daniel travelled to the hallway.
+
+Now, answer the following question:
+Where was the milk before the bedroom?"	bathroom	" the bedroom.
+49. mary went to the kitchen.
+50. john left the milk.
+this is the question: where was the milk before the hallway?
+this is the answer: bedroom"	none	not mentioned	False	There is no mention of the milk being in the bedroom. The milk was last mentioned in sentence 44, where John left it, but there is no connection made between the milk and the bedroom.		"Reasoning: There is no mention of the milk being in the bedroom. The milk was last mentioned in sentence 44, where John left it, but there is no connection made between the milk and the bedroom.
+
+Answer: not mentioned"	0.1042	0.0625	False	False	False	True	0

@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+206	1	42	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the hallway.
+2. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"according to context sentence 2, ""sandra travelled to the bathroom"", which explicitly states that sandra's destination is the bathroom. therefore, it can be logically concluded that sandra is currently in the bathroom."	fully	bathroom	True	Sandra travelled to the bathroom, which is a specific location mentioned in the context sentences. There is no information about Sandra moving away from the bathroom or going to a different location.		"Reasoning: Sandra travelled to the bathroom, which is a specific location mentioned in the context sentences. There is no information about Sandra moving away from the bathroom or going to a different location.
+Answer: bathroom"	0.0238	0.0238	False	False	False	True	0
+207	1	42	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the kitchen.
+5. Sandra went to the garden.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"according to context sentence 4, ""mary travelled to the kitchen"", which explicitly states that mary's destination is the kitchen. therefore, it can be logically concluded that mary is currently in the kitchen."	fully	kitchen	True	Mary travelled to the kitchen, which is a specific location mentioned in the context sentences. There is no information about Mary moving away from the kitchen or going to a different location.		"Reasoning: Mary travelled to the kitchen, which is a specific location mentioned in the context sentences. There is no information about Mary moving away from the kitchen or going to a different location.
+Answer: kitchen"	0.0476	0.0238	False	False	False	True	0
+208	1	42	3	"*TASK*
+Here are the context sentences:
+7. Sandra travelled to the hallway.
+8. John went to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"according to context sentence 7, ""sandra travelled to the hallway"", which explicitly states that sandra's destination is the hallway. therefore, it can be logically concluded that sandra is currently in the hallway."	fully	hallway	True	Sandra travelled to the hallway, which is a specific location mentioned in the context sentences. There is no information about Sandra moving away from the hallway or going to a different location.		"Reasoning: Sandra travelled to the hallway, which is a specific location mentioned in the context sentences. There is no information about Sandra moving away from the hallway or going to a different location.
+Answer: hallway"	0.0952	0.0238	False	False	False	True	0
+209	1	42	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the bathroom.
+11. Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"according to context sentence 10, ""daniel went to the bathroom"", which explicitly states that daniel's destination is the bathroom. therefore, it can be logically concluded that daniel is currently in the bathroom."	fully	bathroom	True	Daniel went to the bathroom, which is a specific location mentioned in the context sentences. There is no information about Daniel moving away from the bathroom or going to a different location.		"Reasoning: Daniel went to the bathroom, which is a specific location mentioned in the context sentences. There is no information about Daniel moving away from the bathroom or going to a different location.
+Answer: bathroom"	0.0	0.0238	False	False	False	True	0
+210	1	42	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the garden.
+14. Sandra went to the kitchen.
+
+Now, answer the following question:
+Where is John?"	hallway	"there is no information provided about john's movement or location in the given context sentences (13 and 14). however, it is possible that john's location was mentioned in a previous part of the conversation history. since the answer is ""hallway"", it can be inferred that john's location was mentioned earlier, and he was in the hallway."	none	not mentioned	False	There is no information about John in the context sentences. The sentences only mention Mary and Sandra, and their locations.		"Reasoning: There is no information about John in the context sentences. The sentences only mention Mary and Sandra, and their locations.
+Answer: not mentioned"	0.0	0.0323	False	False	False	True	0

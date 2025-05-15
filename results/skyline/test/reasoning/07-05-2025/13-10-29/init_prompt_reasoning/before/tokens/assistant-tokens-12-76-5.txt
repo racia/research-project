@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	13	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.	ĠHowever	,	Ġin	Ġsentence	Ġ	14	,	Ġit	Ġis	Ġmentioned	Ġthat	ĠSandra	Ġand	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	ĠSandra	Ġleft	Ġthe	Ġhallway	Ġand	Ġis	Ġnow	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

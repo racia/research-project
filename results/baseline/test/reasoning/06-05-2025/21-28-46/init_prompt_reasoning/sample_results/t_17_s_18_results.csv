@@ -1,0 +1,66 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+287	17	18	1	"*TASK*
+Here are the context sentences:
+1. The red square is to the right of the red sphere.
+2. The red sphere is to the right of the yellow square.
+
+Now, answer the following question:
+Is the yellow square to the left of the red square?"	yes	from context sentence 1, we know that the red square is to the right of the red sphere. from context sentence 2, we know that the red sphere is to the right of the yellow square. therefore, we can logically conclude that the yellow square is to the left of the red sphere, and since the red square is to the right of the red sphere, the yellow square must be to the left of the red square.	fully	yes	True	From sentence 1, we know the red square is to the right of the red sphere. From sentence 2, we know the red sphere is to the right of the yellow square. This implies that the yellow square is to the left of the red sphere. Since the red square is to the right of the red sphere, the yellow square must be to the left of the red square.		"Reasoning: From sentence 1, we know the red square is to the right of the red sphere. From sentence 2, we know the red sphere is to the right of the yellow square. This implies that the yellow square is to the left of the red sphere. Since the red square is to the right of the red sphere, the yellow square must be to the left of the red square.
+
+Answer: yes"	0.2326	0.0233	False	False	False	False	0
+288	17	18	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the yellow square to the right of the red square?"	no	from the previous context sentences, we know that the red square is to the right of the red sphere (sentence 1), and the red sphere is to the right of the yellow square (sentence 2). therefore, we can logically conclude that the yellow square is to the left of the red sphere, and since the red square is to the right of the red sphere, the yellow square must be to the left of the red square. hence, the yellow square is not to the	none	no	True	From sentence 1, we know the red square is to the right of the red sphere. From sentence 2, we know the red sphere is to the right of the yellow square. This implies that the yellow square is to the left of the red sphere. Since the red square is to the right of the red sphere, the yellow square must be to the left of the red square.		"Reasoning: From sentence 1, we know the red square is to the right of the red sphere. From sentence 2, we know the red sphere is to the right of the yellow square. This implies that the yellow square is to the left of the red sphere. Since the red square is to the right of the red sphere, the yellow square must be to the left of the red square.
+
+Answer: no"	0.1744	0.0233	False	False	False	False	0
+289	17	18	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the yellow square to the left of the red square?"	yes	we already established in the previous question that the yellow square is to the left of the red sphere, and the red square is to the right of the red sphere. therefore, it logically follows that the yellow square is to the left of the red square.	none	yes	True	From sentence 1, we know the red square is to the right of the red sphere. From sentence 2, we know the red sphere is to the right of the yellow square. This implies that the yellow square is to the left of the red sphere. Since the red square is to the right of the red sphere, the yellow square must be to the left of the red square.		"Reasoning: From sentence 1, we know the red square is to the right of the red sphere. From sentence 2, we know the red sphere is to the right of the yellow square. This implies that the yellow square is to the left of the red sphere. Since the red square is to the right of the red sphere, the yellow square must be to the left of the red square.
+
+Answer: yes"	0.093	0.0233	False	False	False	False	0
+290	17	18	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square above the yellow square?"	no	"there is no information provided about the vertical positions of the red square and the yellow square. the context sentences only mention their relative horizontal positions. therefore, we cannot conclude that the red square is above or below the yellow square, and the answer ""no"" simply means that there is no evidence to suggest that the red square is above the yellow square."	none	not mentioned	False	There is no information provided about the vertical position of the red square and the yellow square. The context sentences only provide information about their horizontal positions.		"Reasoning: There is no information provided about the vertical position of the red square and the yellow square. The context sentences only provide information about their horizontal positions.
+
+Answer: not mentioned"	0.0811	0.0541	False	False	False	True	0
+291	17	18	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square above the yellow square?"	no	"the context sentences only provide information about the horizontal positions of the objects, stating that the red square is to the right of the red sphere and the red sphere is to the right of the yellow square. there is no information provided about the vertical positions of the objects. therefore, we cannot conclude that the red square is above or below the yellow square, and the answer ""no"" simply means that there is no evidence to suggest that the red square is above the yellow square."	none	not mentioned	False	There is no information provided about the vertical position of the red square and the yellow square. The context sentences only provide information about their horizontal positions.		"Reasoning: There is no information provided about the vertical position of the red square and the yellow square. The context sentences only provide information about their horizontal positions.
+
+Answer: not mentioned"	0.0541	0.0541	False	False	False	True	0
+292	17	18	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the right of the yellow square?"	yes	"<reasoning>"""	none	no	False	From sentence 1, we know the red square is to the right of the red sphere. From sentence 2, we know the red sphere is to the right of the yellow square. This implies that the red square is to the right of the yellow square.		"Reasoning: From sentence 1, we know the red square is to the right of the red sphere. From sentence 2, we know the red sphere is to the right of the yellow square. This implies that the red square is to the right of the yellow square.
+
+Answer: no"	0.1333	0.0333	False	False	False	False	0
+293	17	18	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the left of the yellow square?"	no	"<reasoning>"""	none	yes	False	From sentence 1, we know the red square is to the right of the red sphere. From sentence 2, we know the red sphere is to the right of the yellow square. This implies that the yellow square is to the left of the red sphere. Since the red square is to the right of the red sphere, the yellow square must be to the left of the red square.		"Reasoning: From sentence 1, we know the red square is to the right of the red sphere. From sentence 2, we know the red sphere is to the right of the yellow square. This implies that the yellow square is to the left of the red sphere. Since the red square is to the right of the red sphere, the yellow square must be to the left of the red square.
+
+Answer: yes"	0.0233	0.0233	False	False	False	False	0
+294	17	18	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the yellow square below the red square?"	no	"<reasoning>"""	none	not mentioned	False	There is no information provided about the vertical position of the yellow square and the red square. The context sentences only provide information about their horizontal positions.		"Reasoning: There is no information provided about the vertical position of the yellow square and the red square. The context sentences only provide information about their horizontal positions.
+
+Answer: not mentioned"	0.0	0.0541	False	False	False	True	0

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+116	6	24	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the hallway.
+2. Mary got the football there.
+
+Now, answer the following question:
+Is Daniel in the office?"	no	since daniel travelled to the hallway (context sentence 1), it implies that daniel is currently in the hallway. there is no mention of daniel being in the office. therefore, based on the provided information, it can be concluded that daniel is not in the office.	fully	no	True	The question asks about Daniel's location, and the context sentences provide information about Daniel's travel and Mary's action. Since Daniel travelled to the hallway, it is not mentioned that he went to the office. Additionally, Mary got the football in the hallway, which implies that the football is located in the hallway, not the office.		"Reasoning: The question asks about Daniel's location, and the context sentences provide information about Daniel's travel and Mary's action. Since Daniel travelled to the hallway, it is not mentioned that he went to the office. Additionally, Mary got the football in the hallway, which implies that the football is located in the hallway, not the office.
+
+Answer: no"	0.0548	0.0137	False	False	False	True	0
+117	6	24	2	"*TASK*
+Here are the context sentences:
+4. Mary dropped the football.
+5. Mary grabbed the football there.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	yes	the question asks about daniel's location, but the provided context sentences (4 and 5) only mention mary's actions with the football. however, we can infer daniel's location by looking at the previous context sentences (1 and 2) which mentioned daniel travelling to the hallway. there is no information that suggests daniel left the hallway, so it can be logically concluded that daniel is still in the hallway.	none	yes	True	The question asks about Daniel's location, and the context sentences provide information about Mary's actions. Since Daniel travelled to the hallway in the previous context, and Mary's actions (dropping and grabbing the football) occurred in the hallway, it is likely that Daniel is still in the hallway.		"Reasoning: The question asks about Daniel's location, and the context sentences provide information about Mary's actions. Since Daniel travelled to the hallway in the previous context, and Mary's actions (dropping and grabbing the football) occurred in the hallway, it is likely that Daniel is still in the hallway.
+
+Answer: yes"	0.0615	0.0154	False	False	False	True	0
+118	6	24	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the bedroom.
+8. Mary left the football there.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	yes	according to context sentence 7, sandra journeyed to the bedroom, which implies that sandra has arrived at the bedroom and is currently located there. there is no information provided that suggests sandra left the bedroom, so it can be logically concluded that sandra is still in the bedroom.	fully	yes	True	The question asks about Sandra's location, and the context sentence provides information about Sandra's journey. Since Sandra journeyed to the bedroom, it is likely that she is currently in the bedroom.		"Reasoning: The question asks about Sandra's location, and the context sentence provides information about Sandra's journey. Since Sandra journeyed to the bedroom, it is likely that she is currently in the bedroom.
+
+Answer: yes"	0.0444	0.0222	False	False	False	True	0
+119	6	24	4	"*TASK*
+Here are the context sentences:
+10. Sandra got the apple there.
+11. Sandra grabbed the milk there.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	yes	"the context sentences 10 and 11 mention sandra performing actions (getting the apple and grabbing the milk) with the phrase ""there"", which implies that sandra is still in the same location where she journeyed to earlier (sentence 7). since sentence 7 states that sandra journeyed to the bedroom, it can be logically concluded that sandra is still in the bedroom."	none	yes	True	The question asks about Sandra's location, and the context sentences provide information about Sandra's actions. Since Sandra got and grabbed something in the previous sentences, it implies that she is still in the same location. However, in the previous context, Sandra was in the bedroom. Since there is no information contradicting this, it is likely that Sandra is still in the bedroom.		"Reasoning: The question asks about Sandra's location, and the context sentences provide information about Sandra's actions. Since Sandra got and grabbed something in the previous sentences, it implies that she is still in the same location. However, in the previous context, Sandra was in the bedroom. Since there is no information contradicting this, it is likely that Sandra is still in the bedroom.
+
+Answer: yes"	0.0	0.0123	False	False	False	True	0
+120	6	24	5	"*TASK*
+Here are the context sentences:
+13. Mary travelled to the bathroom.
+14. Daniel travelled to the kitchen.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	according to context sentence 14, daniel travelled to the kitchen, which implies that daniel is currently in the kitchen. there is no information provided that suggests daniel is in the bathroom. in fact, sentence 14 explicitly states that daniel travelled to the kitchen, which is a different location from the bathroom. therefore, it can be logically concluded that daniel is not in the bathroom.	fully	no	True	The question asks about Daniel's location, and the context sentences provide information about Mary's and Daniel's travels. Since Mary travelled to the bathroom, it is not mentioned that Daniel went to the bathroom. Additionally, Daniel travelled to the kitchen, which implies that he is currently in the kitchen.		"Reasoning: The question asks about Daniel's location, and the context sentences provide information about Mary's and Daniel's travels. Since Mary travelled to the bathroom, it is not mentioned that Daniel went to the bathroom. Additionally, Daniel travelled to the kitchen, which implies that he is currently in the kitchen.
+
+Answer: no"	0.0923	0.0154	False	False	False	True	0

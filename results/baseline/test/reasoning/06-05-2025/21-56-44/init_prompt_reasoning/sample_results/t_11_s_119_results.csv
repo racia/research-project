@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+591	11	119	1	"*TASK*
+Here are the context sentences:
+1. Daniel went back to the office.
+2. After that he travelled to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"from the context sentences, we know that daniel went back to the office (sentence 1) and then travelled to the bathroom (sentence 2). since the second sentence mentions that daniel travelled to the bathroom ""after that"", it implies that daniel's current location is the bathroom. therefore, the answer to the question ""where is daniel?"" is the bathroom."	fully	bathroom	True	Daniel went back to the office initially, and then he travelled to the bathroom. This implies that he is currently in the bathroom.		"Reasoning: Daniel went back to the office initially, and then he travelled to the bathroom. This implies that he is currently in the bathroom.
+
+Answer: bathroom"	0.2121	0.0606	False	False	False	False	0
+592	11	119	2	"*TASK*
+Here are the context sentences:
+4. Daniel travelled to the office.
+5. Then he moved to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"from the context sentences, we know that daniel travelled to the office (sentence 4) and then moved to the bedroom (sentence 5). the word ""then"" in sentence 5 implies a sequence of events, where daniel's movement to the bedroom occurs after he travelled to the office. therefore, daniel's current location is the bedroom, which is the answer to the question ""where is daniel?""."	fully	bedroom	True	Daniel travelled to the office initially, and then he moved to the bedroom. This implies that he is currently in the bedroom.		"Reasoning: Daniel travelled to the office initially, and then he moved to the bedroom. This implies that he is currently in the bedroom.
+
+Answer: bedroom"	0.1562	0.0625	False	False	False	False	0
+593	11	119	3	"*TASK*
+Here are the context sentences:
+7. Mary travelled to the bathroom.
+8. Then she went to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	"from the context sentences, we know that mary travelled to the bathroom (sentence 7) and then went to the garden (sentence 8). the word ""then"" in sentence 8 implies a sequence of events, where mary's movement to the garden occurs after she travelled to the bathroom. therefore, mary's current location is the garden, which is the answer to the question ""where is mary?""."	fully	garden	True	Mary travelled to the bathroom initially, and then she went to the garden. This implies that she is currently in the garden.		"Reasoning: Mary travelled to the bathroom initially, and then she went to the garden. This implies that she is currently in the garden.
+
+Answer: garden"	0.0625	0.0625	False	False	False	False	0
+594	11	119	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the kitchen.
+11. After that he moved to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	garden	"the context sentences only provide information about daniel's movements, but the question asks about mary's location. since there is no information about mary's movements or location in the provided context, we cannot determine mary's location based on the given information. the answer ""garden"" seems to be incorrect, as there is no logical connection between the context sentences and the answer."	none	not mentioned	False	There is no mention of Mary in the given context sentences. The sentences only mention Daniel's movements.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Daniel's movements.
+
+Answer: not mentioned"	0.0357	0.0714	False	False	False	True	0
+595	11	119	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the bedroom.
+14. Then she moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"from the context sentences, we know that mary moved to the bedroom (sentence 13) and then moved to the hallway (sentence 14). the word ""then"" in sentence 14 implies a sequence of events, where mary's movement to the hallway occurs after she moved to the bedroom. therefore, mary's current location is the hallway, which is the answer to the question ""where is mary?""."	fully	hallway	True	Mary moved to the bedroom initially, and then she moved to the hallway. This implies that she is currently in the hallway.		"Reasoning: Mary moved to the bedroom initially, and then she moved to the hallway. This implies that she is currently in the hallway.
+
+Answer: hallway"	0.0312	0.0625	False	False	False	False	0

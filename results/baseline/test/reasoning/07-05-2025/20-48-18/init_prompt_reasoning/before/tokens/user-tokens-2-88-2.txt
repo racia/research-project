@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠSandra	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+11	.	ĠSandra	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+12	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+13	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

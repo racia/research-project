@@ -1,0 +1,13 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2014	19	107	1	"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the office.
+2. The hallway is north of the kitchen.
+3. The bedroom is west of the office.
+4. The office is south of the kitchen.
+5. The garden is east of the hallway.
+
+Now, answer the following question:
+How do you go from the office to the hallway?"	north north	from context sentence 4, we know that the office is south of the kitchen. from context sentence 2, we know that the hallway is north of the kitchen. therefore, if we are in the office and want to go to the hallway, we need to go north to reach the kitchen first, and then go north again to reach the hallway. hence, the correct direction is north north.	fully	north	True	Since the office is south of the kitchen (sentence 4), and the hallway is north of the kitchen (sentence 2), we need to move north from the office to reach the hallway. Since the office is south of the kitchen, it means the office is located south of the kitchen's northern boundary. To reach the hallway, we need to move north from the office, which means we need to move north from the office's southern boundary.		"Reasoning: Since the office is south of the kitchen (sentence 4), and the hallway is north of the kitchen (sentence 2), we need to move north from the office to reach the hallway. Since the office is south of the kitchen, it means the office is located south of the kitchen's northern boundary. To reach the hallway, we need to move north from the office, which means we need to move north from the office's southern boundary.
+
+Answer: north"	0.0722	0.0206	False	False	False	False	0

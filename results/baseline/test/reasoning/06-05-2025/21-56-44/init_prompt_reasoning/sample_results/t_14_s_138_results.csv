@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2936	14	138	1	"*TASK*
+Here are the context sentences:
+1. Bill went to the cinema yesterday.
+2. This morning Fred journeyed to the bedroom.
+3. Yesterday Julie went back to the cinema.
+4. Yesterday Fred journeyed to the office.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	office	"from context sentence 4, ""yesterday fred journeyed to the office"", we know that fred was at the office yesterday. then, from context sentence 2, ""this morning fred journeyed to the bedroom"", we can infer that fred was at the office before going to the bedroom this morning. therefore, the answer is the office."	fully	office	True	Since Fred journeyed to the bedroom this morning, it implies that he was somewhere else before going to the bedroom. The only information we have about Fred's previous location is that he journeyed to the office yesterday (sentence 4). This suggests that Fred was not at the office this morning, as he would have been there yesterday. Therefore, we can infer that Fred was somewhere else before going to the bedroom.		"Reasoning: Since Fred journeyed to the bedroom this morning, it implies that he was somewhere else before going to the bedroom. The only information we have about Fred's previous location is that he journeyed to the office yesterday (sentence 4). This suggests that Fred was not at the office this morning, as he would have been there yesterday. Therefore, we can infer that Fred was somewhere else before going to the bedroom.
+
+Answer: office"	0.0333	0.0222	False	False	False	True	0
+2937	14	138	2	"*TASK*
+Here are the context sentences:
+6. Yesterday Mary journeyed to the park.
+7. This morning Bill journeyed to the park.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	office	"the context sentences 6 and 7 do not provide any information about fred or the bedroom. however, we can look back at the previous context sentences (1-4) to find the relevant information. from context sentence 4, ""yesterday fred journeyed to the office"", we know that fred was at the office yesterday. then, from context sentence 2, ""this morning fred journeyed to the bedroom"", we can infer that fred was at the office before going to the"	none	Not mentioned (since the question is about Mary or Bill's location, not Fred's)	False	The question is not about Fred's location, but about Mary's or Bill's location. The context sentences only mention Mary and Bill's journey to the park, but do not provide information about Fred's location.		"Reasoning: The question is not about Fred's location, but about Mary's or Bill's location. The context sentences only mention Mary and Bill's journey to the park, but do not provide information about Fred's location.
+
+Answer: Not mentioned (since the question is about Mary or Bill's location, not Fred's)"	0.1364	0.0303	False	False	False	True	0
+2938	14	138	3	"*TASK*
+Here are the context sentences:
+9. This morning Mary went back to the school.
+10. This morning Julie moved to the kitchen.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	office	"the context sentences 9 and 10 do not provide any information about fred or the bedroom. however, we can look back at the previous context sentences (1-4) to find the relevant information. from context sentence 4, ""yesterday fred journeyed to the office"", we know that fred was at the office yesterday. then, from context sentence 2, ""this morning fred journeyed to the bedroom"", we can infer that fred was at the office before going to the"	none	office (since Fred journeyed to the office yesterday)	False	The question is not related to the new context sentences, which introduce new information about Mary and Julie's locations. The previous context sentences (1-4) mentioned Fred's journey to the office yesterday and his journey to the bedroom this morning. The new information does not provide any additional details about Fred's location before the bedroom.		"Reasoning: The question is not related to the new context sentences, which introduce new information about Mary and Julie's locations. The previous context sentences (1-4) mentioned Fred's journey to the office yesterday and his journey to the bedroom this morning. The new information does not provide any additional details about Fred's location before the bedroom.
+
+Answer: office (since Fred journeyed to the office yesterday)"	0.0366	0.0244	False	False	False	True	0
+2939	14	138	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Julie went to the cinema.
+13. Bill travelled to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Mary before the school?"	park	"from context sentence 6, ""yesterday mary journeyed to the park"", we know that mary was at the park yesterday. then, from context sentence 9, ""this morning mary went back to the school"", we can infer that mary was at the park before going to the school this morning. therefore, the answer is the park."	none	Not mentioned (since the context sentences do not provide any information about Mary's previous location)	False	The question is about Mary's location before going to the school, but the context sentences do not provide any information about Mary's previous location. The sentences only mention Julie's and Bill's journeys to the cinema, which is not related to Mary's location.		"Reasoning: The question is about Mary's location before going to the school, but the context sentences do not provide any information about Mary's previous location. The sentences only mention Julie's and Bill's journeys to the cinema, which is not related to Mary's location.
+
+Answer: Not mentioned (since the context sentences do not provide any information about Mary's previous location)"	0.08	0.0267	False	False	False	True	0
+2940	14	138	5	"*TASK*
+Here are the context sentences:
+15. This evening Fred travelled to the park.
+16. Fred moved to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	park	"the context sentences 15 and 16 do not provide any information about bill. however, we can look back at the previous context sentences (1-13) to find the relevant information. from context sentence 1, ""bill went to the cinema yesterday"", we know that bill was at the cinema yesterday. then, from context sentence 13, ""bill travelled to the cinema this afternoon"", we can infer that bill was somewhere else before going to the cinema this afternoon. since we"	none	Not mentioned (since the context sentences do not provide any information about Bill's location before going to the cinema)	False	The question is about Bill's location before going to the cinema, and the context sentences mention Bill's journey to the cinema this afternoon (sentence 13). Therefore, we can infer that Bill was somewhere else before going to the cinema.		"Reasoning: The question is about Bill's location before going to the cinema, and the context sentences mention Bill's journey to the cinema this afternoon (sentence 13). Therefore, we can infer that Bill was somewhere else before going to the cinema.
+
+Answer: Not mentioned (since the context sentences do not provide any information about Bill's location before going to the cinema)"	0.04	0.0267	False	False	False	True	0

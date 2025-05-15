@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġcurrent	Ġlocation	Ġbeing	Ġthe	Ġcinema	.	ĠContext	Ġsentence	Ġ	14	Ġonly	Ġmentions	Ġthe	Ġbedroom	Ġas	Ġa	Ġpossible	Ġlocation	Ġfor	ĠJulie	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġno	<|eot_id|>

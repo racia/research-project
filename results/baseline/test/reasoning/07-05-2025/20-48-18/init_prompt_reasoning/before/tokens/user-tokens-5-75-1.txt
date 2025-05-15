@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+2	.	ĠMary	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+3	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+4	.	ĠBill	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+5	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+6	.	ĠMary	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+7	.	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
+8	.	ĠFred	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠMary	Ġgive	Ġthe	Ġfootball	Ġto	?Ċ

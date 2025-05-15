@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1921	5	65	1	"*TASK*
+Here are the context sentences:
+1. Jeff moved to the garden.
+2. Mary picked up the apple there.
+3. Mary travelled to the bathroom.
+4. Jeff journeyed to the kitchen.
+5. Mary moved to the office.
+6. Mary took the football there.
+7. Jeff moved to the bedroom.
+8. Bill moved to the hallway.
+9. Jeff journeyed to the hallway.
+10. Mary went to the kitchen.
+11. Fred went to the bedroom.
+12. Mary went back to the hallway.
+13. Mary handed the apple to Bill.
+14. Fred got the milk there.
+
+Now, answer the following question:
+Who gave the apple?"	mary	"in sentence 13, it is stated that ""mary handed the apple to bill."" this implies that mary was the one who gave the apple to bill. therefore, the correct answer is indeed ""mary""."	fully	Mary	True	Mary picked up the apple in the garden (sentence 2), and then handed it to Bill (sentence 13). There is no mention of anyone else handling the apple before Mary handed it to Bill.		"Reasoning: Mary picked up the apple in the garden (sentence 2), and then handed it to Bill (sentence 13). There is no mention of anyone else handling the apple before Mary handed it to Bill.
+
+Answer: Mary"	0.0208	0.0208	False	False	False	True	0
+1922	5	65	2	"*TASK*
+Here are the context sentences:
+16. Mary left the football there.
+17. Jeff grabbed the football there.
+
+Now, answer the following question:
+What did Mary give to Bill?"	apple	"the question asks about what mary gave to bill, but the provided context lines (16 and 17) do not mention mary giving anything to bill. however, we can look back at the previous context lines (1-15) to find the relevant information. in sentence 13, it is stated that ""mary handed the apple to bill."" therefore, the correct answer is indeed ""apple"", which mary gave to bill. the context lines 16 and 17 are not relevant to"	none	Nothing	False	There is no mention of Mary giving anything to Bill in the given context sentences. Mary left the football (sentence 16), and Jeff grabbed the football (sentence 17), but there is no mention of Bill receiving anything from Mary.		"Reasoning: There is no mention of Mary giving anything to Bill in the given context sentences. Mary left the football (sentence 16), and Jeff grabbed the football (sentence 17), but there is no mention of Bill receiving anything from Mary.
+
+Answer: Nothing"	0.0185	0.0185	False	False	False	True	0
+1923	5	65	3	"*TASK*
+Here are the context sentences:
+19. Bill went back to the bathroom.
+20. Jeff handed the football to Mary.
+
+Now, answer the following question:
+Who did Jeff give the football to?"	mary	"in sentence 20, it is explicitly stated that ""jeff handed the football to mary."" this direct statement indicates that jeff gave the football to mary, which aligns with the provided answer."	fully	Mary	True	According to sentence 20, Jeff handed the football to Mary.		"Reasoning: According to sentence 20, Jeff handed the football to Mary.
+
+Answer: Mary"	0.05	0.05	False	False	False	False	0
+1924	5	65	4	"*TASK*
+Here are the context sentences:
+22. Bill put down the apple.
+23. Fred put down the milk.
+
+Now, answer the following question:
+Who received the football?"	mary	"the question asks about who received the football, but the provided context lines (22 and 23) do not mention the football or mary. however, we can look back at the previous context lines to find the relevant information. in sentence 20, it is stated that ""jeff handed the football to mary."" this implies that mary received the football from jeff. therefore, the correct answer is indeed ""mary"". the context lines 22 and 23 are not relevant to this question."	none	Not mentioned	False	There is no mention of anyone receiving the football in the given context sentences. The sentences only mention Bill putting down the apple and Fred putting down the milk, but not receiving or giving anything.		"Reasoning: There is no mention of anyone receiving the football in the given context sentences. The sentences only mention Bill putting down the apple and Fred putting down the milk, but not receiving or giving anything.
+
+Answer: Not mentioned"	0.0435	0.0217	False	False	False	True	0
+1925	5	65	5	"*TASK*
+Here are the context sentences:
+25. Mary gave the football to Jeff.
+26. Jeff handed the football to Mary.
+
+Now, answer the following question:
+Who received the football?"	mary	"in sentence 26, it is stated that ""jeff handed the football to mary."" this direct statement indicates that mary received the football from jeff. therefore, the correct answer is indeed ""mary"". the context line 25 is not relevant to this question, as it describes a previous event where mary gave the football to jeff, but the question is asking about who received the football, which is answered by sentence 26."	fully	Mary	True	According to sentence 25, Mary gave the football to Jeff. Then, according to sentence 26, Jeff handed the football back to Mary.		"Reasoning: According to sentence 25, Mary gave the football to Jeff. Then, according to sentence 26, Jeff handed the football back to Mary.
+
+Answer: Mary"	0.0	0.0278	False	False	False	False	0

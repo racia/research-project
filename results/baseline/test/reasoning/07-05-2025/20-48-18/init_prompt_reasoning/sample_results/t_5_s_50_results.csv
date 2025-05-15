@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1846	5	50	1	"*TASK*
+Here are the context sentences:
+1. Jeff went back to the garden.
+2. Mary journeyed to the garden.
+3. Jeff took the football there.
+4. Bill journeyed to the garden.
+5. Mary took the milk there.
+6. Jeff handed the football to Mary.
+
+Now, answer the following question:
+What did Jeff give to Mary?"	football	"from sentence 6, ""jeff handed the football to mary"", we can directly infer that jeff gave the football to mary. this is because ""handed"" is a verb that implies giving or passing something to someone, and in this case, the object being handed is the football, and the recipient is mary."	fully	football	True	Jeff handed the football to Mary, and there is no mention of Jeff giving milk to Mary. Therefore, Jeff gave the football to Mary.		"Reasoning: Jeff handed the football to Mary, and there is no mention of Jeff giving milk to Mary. Therefore, Jeff gave the football to Mary.
+
+Answer: football"	0.1143	0.0286	False	False	False	True	0
+1847	5	50	2	"*TASK*
+Here are the context sentences:
+8. Mary handed the football to Bill.
+9. Bill put down the football.
+
+Now, answer the following question:
+Who gave the football?"	mary	"from sentence 8, ""mary handed the football to bill"", we can directly infer that mary gave the football. the verb ""handed"" implies giving or passing something to someone, and in this case, the object being handed is the football, and the giver is mary."	fully	Mary	True	Mary handed the football to Bill, and Bill put down the football, but there is no mention of Jeff giving the football. Therefore, Mary gave the football to Bill.		"Reasoning: Mary handed the football to Bill, and Bill put down the football, but there is no mention of Jeff giving the football. Therefore, Mary gave the football to Bill.
+
+Answer: Mary"	0.0244	0.0244	False	False	False	True	0
+1848	5	50	3	"*TASK*
+Here are the context sentences:
+11. Fred went back to the bathroom.
+12. Mary got the apple there.
+
+Now, answer the following question:
+Who gave the football?"	mary	"this question is not related to the provided context lines (11 and 12), which talk about fred going to the bathroom and mary getting an apple. the answer ""mary"" is likely related to a previous part of the conversation history. from the previous conversation, we know that mary handed the football to bill (sentence 8), so it can be inferred that mary gave the football."	none	Not mentioned	False	There is no mention of football in the given context sentences. The sentences only mention Fred, Mary, and the bathroom, but not football. Therefore, it is not possible to determine who gave the football.		"Reasoning: There is no mention of football in the given context sentences. The sentences only mention Fred, Mary, and the bathroom, but not football. Therefore, it is not possible to determine who gave the football.
+
+Answer: Not mentioned"	0.0612	0.0204	False	False	False	True	0
+1849	5	50	4	"*TASK*
+Here are the context sentences:
+14. Mary gave the apple to Bill.
+15. Bill handed the apple to Mary.
+
+Now, answer the following question:
+Who gave the apple?"	bill	"from sentence 15, ""bill handed the apple to mary"", we can directly infer that bill gave the apple. the verb ""handed"" implies giving or passing something to someone, and in this case, the object being handed is the apple, and the giver is bill."	fully	Mary	False	Mary gave the apple to Bill, and then Bill handed the apple back to Mary. Therefore, Mary gave the apple to Bill initially.		"Reasoning: Mary gave the apple to Bill, and then Bill handed the apple back to Mary. Therefore, Mary gave the apple to Bill initially.
+
+Answer: Mary"	0.0294	0.0294	False	False	False	False	0
+1850	5	50	5	"*TASK*
+Here are the context sentences:
+17. Mary handed the apple to Bill.
+18. Bill took the football there.
+
+Now, answer the following question:
+Who gave the apple to Bill?"	mary	"from sentence 17, ""mary handed the apple to bill"", we can directly infer that mary gave the apple to bill. the verb ""handed"" implies giving or passing something to someone, and in this case, the object being handed is the apple, and the giver is mary, and the recipient is bill."	fully	Mary	True	According to the context sentence 14, Mary gave the apple to Bill. There is no mention of anyone else giving the apple to Bill.		"Reasoning: According to the context sentence 14, Mary gave the apple to Bill. There is no mention of anyone else giving the apple to Bill.
+
+Answer: Mary"	0.0286	0.0286	False	False	False	True	0

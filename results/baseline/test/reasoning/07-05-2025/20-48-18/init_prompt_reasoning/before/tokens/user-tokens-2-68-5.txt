@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+35	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+36	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+37	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+38	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+39	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+40	.	ĠMary	Ġleft	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

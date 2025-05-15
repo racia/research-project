@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġtogether	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠSince	ĠJohn	Ġis	Ġwith	ĠSandra	,	Ġand	Ġthere	Ġis	Ġno	Ġindication	Ġthat	Ġthey	Ġseparated	,	ĠJohn	's	Ġlocation	Ġis	Ġthe	Ġsame	Ġas	ĠSandra	's	.	ĠTherefore	,	ĠJohn	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

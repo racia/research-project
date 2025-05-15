@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	2	,	Ġsheep	Ġare	Ġafraid	Ġof	Ġmice	.	ĠSentence	Ġ	5	Ġand	Ġ	4	Ġstate	Ġthat	ĠJessica	Ġand	ĠGer	tr	ude	Ġare	Ġsheep	.	ĠSince	Ġsheep	Ġare	Ġafraid	Ġof	Ġmice	,	ĠJessica	Ġand	ĠGer	tr	ude	Ġare	Ġafraid	Ġof	Ġmice	.ĊĊ	Answer	:	Ġmouse	<|eot_id|>

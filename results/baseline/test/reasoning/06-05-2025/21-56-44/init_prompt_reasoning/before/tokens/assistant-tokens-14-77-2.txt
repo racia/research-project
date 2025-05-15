@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	Ġ(	sentence	Ġ	6	),	Ġit	Ġimplies	Ġthat	Ġshe	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġlocation	Ġbefore	Ġthe	Ġoffice	,	Ġso	Ġwe	Ġcannot	Ġinfer	Ġa	Ġspecific	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

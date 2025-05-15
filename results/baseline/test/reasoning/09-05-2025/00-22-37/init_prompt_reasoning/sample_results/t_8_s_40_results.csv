@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1196	8	40	1	"*TASK*
+Here are the context sentences:
+1. John picked up the milk there.
+2. John discarded the milk there.
+
+Now, answer the following question:
+What is John carrying?"	nothing	from the context sentences, we know that john picked up the milk (sentence 1) and then discarded it (sentence 2). since john discarded the milk, it means he is no longer holding or carrying it. therefore, john is carrying nothing.	fully	milk	False	Since John discarded the milk, it implies that he was carrying the milk initially. The context sentences do not mention John carrying anything else.		"Reasoning: Since John discarded the milk, it implies that he was carrying the milk initially. The context sentences do not mention John carrying anything else.
+
+Answer: milk"	0.2059	0.0588	False	False	False	True	0
+1197	8	40	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the bedroom.
+5. Sandra travelled to the hallway.
+
+Now, answer the following question:
+What is John carrying?"	nothing	there is no mention of john in the context sentences (4 and 5), which only talk about mary and sandra's movements. there is no information provided about john's actions or possessions. therefore, we cannot infer what john is carrying, but since there is no information suggesting he is carrying anything, the most logical answer is that john is carrying nothing.	none	nothing	True	There is no mention of John in the given context sentences. The sentences only mention Mary and Sandra's actions, but not John's.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Mary and Sandra's actions, but not John's.
+
+Answer: nothing"	0.2353	0.0588	False	False	False	True	0
+1198	8	40	3	"*TASK*
+Here are the context sentences:
+7. John took the milk there.
+8. Sandra grabbed the football there.
+
+Now, answer the following question:
+What is John carrying?"	milk	in sentence 7, it is stated that john took the milk there, which implies that john has possession of the milk. there is no subsequent information that suggests john has released or given up the milk. therefore, it can be logically concluded that john is still carrying the milk.	partially	milk	True	According to sentence 7, John took the milk there, which implies that he is carrying the milk.		"Reasoning: According to sentence 7, John took the milk there, which implies that he is carrying the milk.
+
+Answer: milk"	0.2143	0.1071	False	False	False	False	0
+1199	8	40	4	"*TASK*
+Here are the context sentences:
+10. Daniel travelled to the bedroom.
+11. John left the milk.
+
+Now, answer the following question:
+What is John carrying?"	nothing	in sentence 11, it is stated that john left the milk, which implies that john is no longer in possession of the milk. there is no other information suggesting that john has acquired or is carrying any other object. therefore, it can be logically concluded that john is carrying nothing.	partially	milk	False	According to sentence 11, John left the milk, which implies that he was carrying the milk initially. Since he left it, it's likely that he was carrying it.		"Reasoning: According to sentence 11, John left the milk, which implies that he was carrying the milk initially. Since he left it, it's likely that he was carrying it.
+
+Answer: milk"	0.0952	0.0952	False	False	False	False	0
+1200	8	40	5	"*TASK*
+Here are the context sentences:
+13. John grabbed the milk there.
+14. John discarded the milk.
+
+Now, answer the following question:
+What is John carrying?"	nothing	in sentence 13, john grabbed the milk, which means john had possession of the milk. however, in sentence 14, john discarded the milk, which means john released or got rid of the milk. since john discarded the milk, it can be logically concluded that john is no longer carrying the milk. therefore, john is carrying nothing.	partially	milk	False	According to sentence 14, John discarded the milk, which implies that he was carrying the milk initially. The context sentences do not mention John carrying anything else.		"Reasoning: According to sentence 14, John discarded the milk, which implies that he was carrying the milk initially. The context sentences do not mention John carrying anything else.
+
+Answer: milk"	0.0513	0.1538	False	False	False	True	0

@@ -7,31 +7,38 @@ class InterpretabilityResult:
         attn_scores: np.ndarray,
         x_tokens: list[str],
         y_tokens: list[str],
-        max_supp_target: float = None,
+        max_supp_attn: float = None,
+        attn_on_target: float = None,
+        type_: str = None,
     ):
         """
         Interpretability result class
         :param attn_scores: attention scores
         :param x_tokens: tokenized x tokens
         :param y_tokens: tokenized y tokens
-        :param max_supp_target: ratio of max supporting target
+        :param max_supp_attn: ratio of max supporting sent
+        :param attn_on_target: average attention on supporting sentences
+        :param type_: keyword for the result (aggregated or verbose)
         """
         self.attn_scores: np.ndarray = attn_scores
         self.x_tokens: list[str] = x_tokens
         self.y_tokens: list[str] = y_tokens
-        self.max_supp_target: float = max_supp_target
+        self.max_supp_attn: float = max_supp_attn
+        self.attn_on_target: float = attn_on_target
 
         self.result = {
             "attn_scores": self.attn_scores,
             "x_tokens": self.x_tokens,
             "y_tokens": self.y_tokens,
-            "max_supp_target": self.max_supp_target,
+            "max_supp_attn": self.max_supp_attn,
+            "attn_on_target": self.attn_on_target,
         }
+        self.type_: str = type_
 
     def __repr__(self) -> str:
         return (
             f"InterpretabilityResult(attn_scores={self.attn_scores.shape}, x_tokens={len(self.x_tokens)}, "
-            f"y_tokens={len(self.y_tokens)}, max_supp_target={self.max_supp_target})"
+            f"y_tokens={len(self.y_tokens)}, max_supp_attn={self.max_supp_attn}, attn_on_target={self.attn_on_target})"
         )
 
     def empty(self) -> bool:
@@ -39,63 +46,88 @@ class InterpretabilityResult:
         Check if the result is empty.
         :return: True if the result is empty, False otherwise
         """
-        if not (
-            self.x_tokens
-            or self.y_tokens
-            or (self.attn_scores and self.attn_scores.size <= 1)
-        ):
+        print("DEBUG: checking if InterpretabilityResult is empty...")
+        print("self.x_tokens", bool(self.x_tokens), self.x_tokens)
+        print("self.y_tokens", bool(self.y_tokens), self.y_tokens)
+        print("self.attn_scores.shape != ()", self.attn_scores.shape != ())
+        if not (self.x_tokens or self.y_tokens or self.attn_scores.shape != ()):
             return True
         return False
 
 
-def get_supp_tok_idx(
-    context_sent_spans: list[tuple[int, int]], supp_sent_idx: list[int]
-) -> list[int]:
+def get_indices(spans_with_types: dict, type_: str):
     """
-    Return the indices of the supporting tokens of current chat
-    :param context_sent_spans: The indices of sentence spans of current chat (based on chat ids)
-    :param supp_sent_idx: the indices of the supporting sentence
+    Get indices for the spans of the current chat for a desired type of chunk.
+
+    :param spans_with_types: the sentence spans of the current chat for all types of chunks
+    :param type_: the type of chunk to get indices for
     """
-    supp_tok_idx = []
-    supp_sent_idx = [i - 1 for i in supp_sent_idx]
-
-    for supp_sent_id in supp_sent_idx:
-        try:
-            supp_tok_range = list(
-                range(
-                    context_sent_spans[supp_sent_id][0],
-                    context_sent_spans[supp_sent_id][1],
-                )
-            )
-            supp_tok_idx.extend(supp_tok_range)
-        except IndexError:
-            return []
-    return supp_tok_idx
+    if type_ not in ("sys", "ex", "wrap", "task", "ans"):
+        raise ValueError(
+            "Invalid type. Must be one of 'sys', 'ex', 'wrap', 'task', or 'ans'."
+        )
+    spans = spans_with_types[type_].keys()
+    indices = []
+    for span in spans:
+        indices.extend(range(span[0], span[1] + 1))
+    return indices
 
 
-def get_attention_distrib(
-    attn_scores: np.ndarray, supp_tok_idx, supp_sent_idx: list = None
+# def get_supp_tok_idx(
+#     context_sent_spans: list[tuple[int, int]], supp_sent_idx: list[int]
+# ) -> list[int]:
+#     """
+#     Calculates the percentage of output tokens which maximum attention is on supporting sentences.
+#
+#     :param context_sent_spans: The indices of sentence spans of current chat (based on chat ids)
+#     :param supp_sent_idx: the indices of the supporting sentence
+#     """
+#     supp_tok_idx = []
+#     for supp_sent_id in supp_sent_idx:
+#         try:
+#             supp_tok_range = list(
+#                 range(
+#                     context_sent_spans[supp_sent_id - 1][0],
+#                     context_sent_spans[supp_sent_id - 1][1],
+#                 )
+#             )
+#             supp_tok_idx.extend(supp_tok_range)
+#         except IndexError:
+#             return []
+#     return supp_tok_idx
+
+
+def get_max_attn_ratio(
+    attn_scores: np.ndarray,
+    supp_sent_idx: list[int],
 ) -> float:
     """
-    Returns the ratio of most attended supporting target.
+    Returns the ratio of most attended supporting target sentences.
+
     :param attn_scores: The attention scores
-    :param supp_tok_idx: The supporting token indices
-    :param supp_sent_idx: The supporting sentence indices
-    :return: Most attended target ratio
+    :param supp_sent_idx: The indices of the supporting sentences
+    :return: Most attended sentence ratio
     """
-    max_supp_target = 0
+    max_attn_inx = np.argmax(attn_scores, axis=1)
+    attention_on_supp = np.isin(max_attn_inx, supp_sent_idx)
+    max_supp_attn = attention_on_supp.mean()
+    return round(float(max_supp_attn), 4)
 
-    for output_row in attn_scores:
-        # Get index of maximum (mean) attention task token / sentence score
-        max_attn_ind = np.argmax(
-            output_row[1:]
-        )  # Don't consider high attention "user" token
-        supp_range = supp_sent_idx if supp_sent_idx else supp_tok_idx
-        # If i is in supporting token indices
-        if max_attn_ind in supp_range:
-            max_supp_target += 1
 
-    # Take ratio
-    max_supp_target = max_supp_target / attn_scores.shape[0]
+def get_attn_on_target(
+    attn_scores: np.ndarray,
+    supp_sent_idx: list[int],
+) -> float:
+    """
+    Calculates the average percentage of attention directed to supporting target sentences.
+    Both attn scores and indices of the supporting sentences should be for the same values:
+    either verbose tokens or aggregated into sentences.
 
-    return max_supp_target
+    :param attn_scores: The attention scores
+    :param supp_sent_idx: The indices of the supporting sentences
+    :return: Average attention on supporting sentences
+    """
+    attn_on_supp = attn_scores[:, supp_sent_idx]
+    total_attn_per_token = attn_on_supp.sum(axis=1)
+    avg_attn_on_supp = total_attn_per_token.mean()
+    return round(float(avg_attn_on_supp), 4)

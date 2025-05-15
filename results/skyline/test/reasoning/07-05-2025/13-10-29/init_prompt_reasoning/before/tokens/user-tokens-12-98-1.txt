@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+2	.	ĠMary	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	ĠMary	?Ċ

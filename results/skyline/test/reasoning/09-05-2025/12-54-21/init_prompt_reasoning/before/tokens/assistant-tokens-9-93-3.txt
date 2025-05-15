@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġbeing	Ġin	Ġthe	Ġoffice	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġcontext	Ġsentences	Ġ	7	Ġand	Ġ	8	Ġmention	ĠJohn	Ġgoing	Ġto	Ġthe	Ġgarden	Ġand	ĠSandra	Ġgoing	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

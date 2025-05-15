@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+14	.	ĠJohn	Ġis	Ġin	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠDaniel	Ġin	Ġthe	Ġbedroom	?Ċ

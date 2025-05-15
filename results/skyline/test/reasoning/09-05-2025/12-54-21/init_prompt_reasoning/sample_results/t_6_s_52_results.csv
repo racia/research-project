@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+256	6	52	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the bathroom.
+2. Daniel went to the garden.
+
+Now, answer the following question:
+Is Daniel in the garden?"	yes	"according to context sentence 2, ""daniel went to the garden"", which explicitly states that daniel's location is the garden. therefore, the answer to the question ""is daniel in the garden?"" is indeed ""yes""."	fully	yes	True	According to context sentence 2, Daniel went to the garden, which implies that Daniel is currently in the garden.		"assistant
+
+Reasoning: According to context sentence 2, Daniel went to the garden, which implies that Daniel is currently in the garden.
+
+Answer: yes"	0.0606	0.0303	False	False	False	False	0
+257	6	52	2	"*TASK*
+Here are the context sentences:
+4. Sandra journeyed to the office.
+5. Mary went back to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the office?"	yes	"according to context sentence 4, ""sandra journeyed to the office"", which explicitly states that sandra's destination is the office. there is no information provided that suggests sandra left the office or moved to a different location. therefore, the answer to the question ""is sandra in the office?"" is indeed ""yes""."	fully	yes	True	According to context sentence 4, Sandra journeyed to the office, which implies that Sandra is currently in the office.		"Reasoning: According to context sentence 4, Sandra journeyed to the office, which implies that Sandra is currently in the office.
+
+Answer: yes"	0.0323	0.0323	False	False	False	False	0
+258	6	52	3	"*TASK*
+Here are the context sentences:
+7. Mary picked up the apple there.
+8. Daniel grabbed the football there.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	yes	"in context sentence 5, ""mary went back to the bathroom"", it is established that mary's location is the bathroom. there is no information provided that suggests mary left the bathroom or moved to a different location. in context sentence 7, ""mary picked up the apple there"", the word ""there"" implies that mary is still in the same location, which is the bathroom. therefore, the answer to the question ""is mary in the bathroom?"" is indeed ""yes""."	none	yes	True	"Although the current sentence doesn't explicitly mention Mary's location, context sentence 5 mentioned that Mary went back to the bathroom, and there is no indication that she left the bathroom. Additionally, sentence 7 mentions that Mary picked up the apple ""there"", implying that ""there"" refers to the bathroom."		"Reasoning: Although the current sentence doesn't explicitly mention Mary's location, context sentence 5 mentioned that Mary went back to the bathroom, and there is no indication that she left the bathroom. Additionally, sentence 7 mentions that Mary picked up the apple ""there"", implying that ""there"" refers to the bathroom.
+
+Answer: yes"	0.0882	0.0147	False	False	False	True	0
+259	6	52	4	"*TASK*
+Here are the context sentences:
+10. Mary journeyed to the office.
+11. Daniel put down the football.
+
+Now, answer the following question:
+Is Mary in the garden?"	no	"according to context sentence 10, ""mary journeyed to the office"", which explicitly states that mary's destination is the office. there is no information provided that suggests mary went to the garden. in fact, mary's previous location was the bathroom (established in context sentence 5), and she moved to the office, not the garden. therefore, the answer to the question ""is mary in the garden?"" is indeed ""no""."	fully	no	True	According to context sentence 10, Mary journeyed to the office, which implies that Mary is currently in the office, not in the garden.		"Reasoning: According to context sentence 10, Mary journeyed to the office, which implies that Mary is currently in the office, not in the garden.
+
+Answer: no"	0.0	0.0278	False	False	False	False	0
+260	6	52	5	"*TASK*
+Here are the context sentences:
+13. John grabbed the football there.
+14. John moved to the bathroom.
+
+Now, answer the following question:
+Is John in the bathroom?"	yes	"according to context sentence 14, ""john moved to the bathroom"", which explicitly states that john's destination is the bathroom. there is no information provided that suggests john left the bathroom or moved to a different location. therefore, the answer to the question ""is john in the bathroom?"" is indeed ""yes""."	fully	yes	True	According to context sentence 14, John moved to the bathroom, which implies that John is currently in the bathroom.		"Reasoning: According to context sentence 14, John moved to the bathroom, which implies that John is currently in the bathroom.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0

@@ -1,0 +1,67 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1940	20	41	1	"*TASK*
+Here are the context sentences:
+1. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	when jason is tired, it is logical to assume that he will go to a place where he can rest. in most cases, people go to their bedroom to rest or sleep when they are tired. therefore, based on the context, it is reasonable to conclude that jason will go to his bedroom.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+1941	20	41	2	"*TASK*
+Here are the context sentences:
+3. Antoine is hungry.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	when antoine is hungry, it is logical to assume that he will go to a place where he can find food. in most households, the kitchen is the primary location where food is prepared and consumed. therefore, based on the context, it is reasonable to conclude that antoine will go to the kitchen to satisfy his hunger.	fully	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1942	20	41	3	"*TASK*
+Here are the context sentences:
+5. Yann is hungry.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	when yann is hungry, it is logical to assume that he will go to a place where he can find food. in most households, the kitchen is the primary location where food is prepared and consumed. therefore, based on the context, it is reasonable to conclude that yann will go to the kitchen to satisfy his hunger.	fully	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1943	20	41	4	"*TASK*
+Here are the context sentences:
+7. Jason journeyed to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	in a previous context (1. jason is tired), it was established that jason is tired. now, it is stated that jason journeyed to the bedroom. it is logical to assume that jason went to the bedroom because he is tired, as bedrooms are typically associated with rest and sleep. therefore, the reason jason went to the bedroom is because he is tired.	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+1944	20	41	5	"*TASK*
+Here are the context sentences:
+9. Yann travelled to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	hungry	in a previous context (5. yann is hungry), it was established that yann is hungry. now, it is stated that yann travelled to the kitchen. it is logical to assume that yann went to the kitchen because he is hungry, as kitchens are typically associated with food preparation and consumption. therefore, the reason yann went to the kitchen is because he is hungry.	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1945	20	41	6	"*TASK*
+Here are the context sentences:
+11. Yann grabbed the apple there.
+
+Now, answer the following question:
+Why did yann get the apple?"	hungry	in a previous context (5. yann is hungry), it was established that yann is hungry. now, it is stated that yann grabbed the apple. it is logical to assume that yann got the apple because he is hungry, as apples are a type of food that can satisfy hunger. therefore, the reason yann got the apple is because he is hungry.	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1946	20	41	7	"*TASK*
+Here are the context sentences:
+13. Jason took the pajamas there.
+
+Now, answer the following question:
+Why did jason get the pajamas?"	tired	ing: in a previous context (5. yann is hungry), it was established that yann is hungry. now, it is stated that yann grabbed the apple. it is logical to assume that yann got the apple because he is hungry, as apples are a type of food that can satisfy hunger. therefore, the reason yann got the apple is because he is hungry.	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1947	20	41	8	"*TASK*
+Here are the context sentences:
+15. Sumit is bored.
+
+Now, answer the following question:
+Where will sumit go?"	garden	ing: in a previous context (5. yann is hungry), it was established that yann is hungry. now, it is stated that yann grabbed the apple. it is logical to assume that yann got the apple because he is hungry, as apples are a type of food that can satisfy hunger. therefore, the reason yann got the apple is because he is hungry.	fully	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1948	20	41	9	"*TASK*
+Here are the context sentences:
+17. Sumit went back to the garden.
+
+Now, answer the following question:
+Why did sumit go to the garden?"	bored	ing: in a previous context (5. yann is hungry), it was established that yann is hungry. now, it is stated that yann grabbed the apple. it is logical to assume that yann got the apple because he is hungry, as apples are a type of food that can satisfy hunger. therefore, the reason yann got the apple is because he is hungry.	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1949	20	41	10	"*TASK*
+Here are the context sentences:
+19. Antoine moved to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	hungry	ing: in a previous context (5. yann is hungry), it was established that yann is hungry. now, it is stated that yann grabbed the apple. it is logical to assume that yann got the apple because he is hungry, as apples are a type of food that can satisfy hunger. therefore, the reason yann got the apple is because he is hungry.	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+1950	20	41	11	"*TASK*
+Here are the context sentences:
+21. Sumit took the football there.
+
+Now, answer the following question:
+Why did sumit get the football?"	bored	ing: in a previous context (5. yann is hungry), it was established that yann is hungry. now, it is stated that yann grabbed the apple. it is logical to assume that yann got the apple because he is hungry, as apples are a type of food that can satisfy hunger. therefore, the reason yann got the apple is because he is hungry.	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0

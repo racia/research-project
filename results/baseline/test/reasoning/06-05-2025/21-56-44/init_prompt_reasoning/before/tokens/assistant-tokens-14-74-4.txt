@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	.	ĠThis	Ġimplies	Ġthat	ĠFred	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.	ĠSince	ĠFred	Ġwent	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	10	),	Ġit	Ġmeans	Ġthat	Ġhe	Ġwas	Ġat	Ġthe	Ġschool	Ġthis	Ġmorning	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

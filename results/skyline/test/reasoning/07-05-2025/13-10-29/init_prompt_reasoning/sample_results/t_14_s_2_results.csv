@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1506	14	2	1	"*TASK*
+Here are the context sentences:
+1. Julie went back to the school yesterday.
+2. Fred journeyed to the cinema yesterday.
+3. Bill went back to the school this morning.
+4. Yesterday Bill travelled to the bedroom.
+
+Now, answer the following question:
+Where was Bill before the school?"	bedroom	"from context sentence 4, ""yesterday bill travelled to the bedroom"", we know that bill was in the bedroom yesterday. since sentence 3 states ""bill went back to the school this morning"", it implies that bill was not in the school before this morning. therefore, bill must have been in the bedroom before going to the school, as it is the last known location of bill before he went to the school."	fully	bedroom	True	"According to sentence 4, ""Yesterday Bill travelled to the bedroom."" This implies that Bill was in the bedroom before going to the school this morning (sentence 3)."		"assistant
+
+Reasoning: According to sentence 4, ""Yesterday Bill travelled to the bedroom."" This implies that Bill was in the bedroom before going to the school this morning (sentence 3).
+
+Answer: bedroom"	0.1333	0.0444	False	False	False	False	0
+1507	14	2	2	"*TASK*
+Here are the context sentences:
+6. Mary travelled to the cinema this morning.
+7. Yesterday Mary moved to the office.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	office	"from context sentence 7, ""yesterday mary moved to the office"", we know that mary was in the office yesterday. since sentence 6 states ""mary travelled to the cinema this morning"", it implies that mary was not in the cinema before this morning. therefore, mary must have been in the office before going to the cinema, as it is the last known location of mary before she went to the cinema."	fully	office	True	"According to sentence 7, ""Yesterday Mary moved to the office."" This implies that Mary was in the office before going to the cinema this morning (sentence 6)."		"Reasoning: According to sentence 7, ""Yesterday Mary moved to the office."" This implies that Mary was in the office before going to the cinema this morning (sentence 6).
+
+Answer: office"	0.1951	0.0488	False	False	False	False	0
+1508	14	2	3	"*TASK*
+Here are the context sentences:
+9. This morning Fred journeyed to the park.
+10. This afternoon Mary moved to the kitchen.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	office	"there is no information provided about mary going to the cinema, so we cannot determine where mary was before the cinema based on the given context sentences. the answer ""office"" seems to be incorrect, as there is no mention of mary being in the office in the provided context sentences. the context sentences only mention fred going to the park and mary moving to the kitchen, but do not provide any information about mary going to the cinema or being in the office."	none	not mentioned	False	There is no information about Mary's location before the cinema in the provided context sentences. The context sentences only mention Mary's movement to the kitchen (sentence 10), but not to the cinema.		"Reasoning: There is no information about Mary's location before the cinema in the provided context sentences. The context sentences only mention Mary's movement to the kitchen (sentence 10), but not to the cinema.
+
+Answer: not mentioned"	0.0426	0.0426	False	False	False	True	0
+1509	14	2	4	"*TASK*
+Here are the context sentences:
+12. Bill moved to the bedroom this afternoon.
+13. This morning Julie travelled to the office.
+
+Now, answer the following question:
+Where was Julie before the office?"	school	"there is no information provided about julie being in the school before the office. the context sentences only mention bill moving to the bedroom and julie traveling to the office, but do not provide any information about julie's location before the office. the answer ""school"" seems to be incorrect, as there is no mention of julie being in the school in the provided context sentences."	partially	not mentioned	False	There is no information about Julie's location before the office in the provided context sentences. The context sentences only mention Julie's movement to the office (sentence 13), but not her previous location.		"Reasoning: There is no information about Julie's location before the office in the provided context sentences. The context sentences only mention Julie's movement to the office (sentence 13), but not her previous location.
+
+Answer: not mentioned"	0.1489	0.0426	False	False	False	True	0
+1510	14	2	5	"*TASK*
+Here are the context sentences:
+15. This afternoon Julie went to the kitchen.
+16. This evening Mary moved to the school.
+
+Now, answer the following question:
+Where was Julie before the office?"	school	"there is no information provided about julie being in the office in the given context sentences. however, if we look at the previous parts of the conversation history, we can find the relevant information. in a previous part, we had the context sentence ""1. julie went back to the school yesterday."" the phrase ""went back"" implies that julie was in the school before, and then she returned to the school yesterday. therefore, it can be inferred that julie was in"	none	not mentioned	False	There is no information about Julie's location before the office in the provided context sentences. The context sentences only mention Julie's movement to the kitchen (sentence 15) and Mary's movement to the school (sentence 16), but not Julie's previous location before the office.		"Reasoning: There is no information about Julie's location before the office in the provided context sentences. The context sentences only mention Julie's movement to the kitchen (sentence 15) and Mary's movement to the school (sentence 16), but not Julie's previous location before the office.
+
+Answer: not mentioned"	0.0635	0.0317	False	False	False	True	0

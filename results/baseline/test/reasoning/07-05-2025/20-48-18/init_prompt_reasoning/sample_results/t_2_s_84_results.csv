@@ -1,0 +1,62 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+916	2	84	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the bedroom.
+2. Sandra picked up the football there.
+3. Sandra discarded the football.
+4. Mary moved to the office.
+
+Now, answer the following question:
+Where is the football?"	bedroom	from context line 1, we know sandra journeyed to the bedroom.	fully	not mentioned	False	Sandra discarded the football, which means she was holding it before discarding it. Since she picked it up in the bedroom, it's likely that the football is no longer in the bedroom. Mary moved to the office, but there's no mention of her interacting with the football. Therefore, the most likely location of the football is where Sandra discarded it, which is not specified.		"Reasoning: Sandra discarded the football, which means she was holding it before discarding it. Since she picked it up in the bedroom, it's likely that the football is no longer in the bedroom. Mary moved to the office, but there's no mention of her interacting with the football. Therefore, the most likely location of the football is where Sandra discarded it, which is not specified.
+
+Answer: not mentioned"	0.119	0.0238	False	False	False	True	0
+917	2	84	2	"*TASK*
+Here are the context sentences:
+6. Mary went back to the hallway.
+7. Sandra journeyed to the garden.
+
+Now, answer the following question:
+Where is the football?"	bedroom	the question asks about the location of the football, which was previously discussed in context lines 1-4.	none	not mentioned	False	There is no mention of the football in the given context sentences. The sentences only mention Mary and Sandra moving to different locations, but do not mention the football. Therefore, it's not possible to determine the location of the football.		"Reasoning: There is no mention of the football in the given context sentences. The sentences only mention Mary and Sandra moving to different locations, but do not mention the football. Therefore, it's not possible to determine the location of the football.
+
+Answer: not mentioned"	0.2407	0.037	False	False	False	True	0
+918	2	84	3	"*TASK*
+Here are the context sentences:
+9. Mary picked up the apple there.
+10. John went back to the garden.
+11. Mary put down the apple.
+12. Sandra went to the hallway.
+
+Now, answer the following question:
+Where is the apple?"	hallway	from context line 4 (from previous part), we know mary moved to the office.	partially	garden	False	Mary picked up the apple and put it down, but the location where she picked it up is not specified. However, Mary put it down, and since John went back to the garden, it's possible that Mary put the apple down in the garden. Sandra went to the hallway, but there's no mention of her interacting with the apple.		"Reasoning: Mary picked up the apple and put it down, but the location where she picked it up is not specified. However, Mary put it down, and since John went back to the garden, it's possible that Mary put the apple down in the garden. Sandra went to the hallway, but there's no mention of her interacting with the apple.
+
+Answer: garden"	0.0921	0.0263	False	False	False	True	0
+919	2	84	4	"*TASK*
+Here are the context sentences:
+14. Daniel went back to the bedroom.
+15. Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where is the apple?"	hallway	from the previous part, we know the apple was in the office (reasoning: from context line 4, we know mary moved to the office. from context line 9, we know mary picked up the apple there, which implies mary picked up the apple in the office. from context line 11, we know mary put down the apple, which means mary dropped the apple in the same location, i.e., the office).	none	not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only mention Daniel and Mary moving to the bedroom, but do not mention the apple. Therefore, it's not possible to determine the location of the apple.		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only mention Daniel and Mary moving to the bedroom, but do not mention the apple. Therefore, it's not possible to determine the location of the apple.
+
+Answer: not mentioned"	0.0926	0.037	False	False	False	True	0
+920	2	84	5	"*TASK*
+Here are the context sentences:
+17. Sandra took the apple there.
+18. Daniel went back to the kitchen.
+19. John went to the office.
+20. John went back to the garden.
+21. Daniel journeyed to the bedroom.
+22. Sandra went back to the bathroom.
+23. Daniel went back to the bathroom.
+24. Mary moved to the kitchen.
+25. John travelled to the kitchen.
+26. Mary went back to the bedroom.
+27. Mary took the football there.
+28. Daniel went back to the garden.
+29. Mary travelled to the office.
+30. Sandra went back to the garden.
+
+Now, answer the following question:
+Where is the football?"	office	from context line 27, we know mary took the football there, which implies mary took the football in the bedroom (since context line 26 says mary went back to the bedroom).	fully	bedroom	False	Mary took the football in the bedroom, but there's no mention of her doing anything with it after that. Daniel went back to the garden, but there's no mention of him interacting with the football. Sandra went back to the garden, but there's no mention of her interacting with the football. Therefore, the most likely location of the football is still the bedroom, where Mary took it.		"Reasoning: Mary took the football in the bedroom, but there's no mention of her doing anything with it after that. Daniel went back to the garden, but there's no mention of him interacting with the football. Sandra went back to the garden, but there's no mention of her interacting with the football. Therefore, the most likely location of the football is still the bedroom, where Mary took it.
+
+Answer: bedroom"	0.0581	0.0233	False	False	False	True	0

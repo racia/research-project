@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+101	6	21	1	"*TASK*
+Here are the context sentences:
+1. John took the apple there.
+2. John went to the bathroom.
+
+Now, answer the following question:
+Is John in the hallway?"	no	"from the context sentences, we know that john took the apple ""there"" (sentence 1), which implies that john was in a specific location, but it doesn't specify what that location is. then, in sentence 2, it is stated that john went to the bathroom. this implies that john moved from his initial location to the bathroom. since john is now in the bathroom, he is not in the hallway. therefore, the answer is ""no"", john is not in"	fully	no	True	"The context sentences do not explicitly mention John being in the hallway. Sentence 1 only mentions John taking the apple ""there"", which does not specify the location as the hallway. Sentence 2 mentions John going to the bathroom, which also does not imply John being in the hallway."		"Reasoning: The context sentences do not explicitly mention John being in the hallway. Sentence 1 only mentions John taking the apple ""there"", which does not specify the location as the hallway. Sentence 2 mentions John going to the bathroom, which also does not imply John being in the hallway.
+
+Answer: no"	0.1111	0.0159	False	False	False	True	0
+102	6	21	2	"*TASK*
+Here are the context sentences:
+4. John moved to the office.
+5. Mary picked up the milk there.
+
+Now, answer the following question:
+Is John in the hallway?"	no	"from the context sentences, we know that john moved to the office (sentence 4), which implies that john is currently in the office. there is no information provided about john being in the hallway. additionally, sentence 5 mentions mary picking up the milk ""there"", which likely refers to the office, but it doesn't provide any information about john's location. since we know john is in the office, and there is no evidence to suggest he is in the hallway, the answer"	fully	no	True	Sentence 4 mentions John moving to the office, which implies that John is no longer in the previous location (where he took the apple). There is no mention of John being in the hallway.		"Reasoning: Sentence 4 mentions John moving to the office, which implies that John is no longer in the previous location (where he took the apple). There is no mention of John being in the hallway. 
+
+Answer: no"	0.0213	0.0213	False	False	False	True	0
+103	6	21	3	"*TASK*
+Here are the context sentences:
+7. John dropped the apple there.
+8. Mary picked up the football there.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	"there is no information provided in sentences 7 and 8 that suggests john is in the bathroom. in fact, sentence 7 mentions john dropping the apple ""there"", which implies that john is in a specific location, but it doesn't specify what that location is. sentence 8 mentions mary picking up the football ""there"", which likely refers to the same location as sentence 7, but again, it doesn't provide any information about john's location. since we don't have"	none	yes	False	"Sentence 2 previously mentioned John going to the bathroom, but there is no information about John leaving the bathroom. Sentence 7 mentions John dropping the apple ""there"", which could imply that ""there"" refers to the bathroom, as it is the last known location of John."		"Reasoning: Sentence 2 previously mentioned John going to the bathroom, but there is no information about John leaving the bathroom. Sentence 7 mentions John dropping the apple ""there"", which could imply that ""there"" refers to the bathroom, as it is the last known location of John.
+
+Answer: yes"	0.0484	0.0161	False	False	False	True	0
+104	6	21	4	"*TASK*
+Here are the context sentences:
+10. John got the apple there.
+11. John journeyed to the hallway.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	"from sentence 11, we know that john journeyed to the hallway, which implies that john is currently in the hallway. there is no information provided that suggests john is in the bathroom. in fact, the information provided suggests the opposite: john is in the hallway, not in the bathroom. therefore, the answer is ""no"", john is not in the bathroom."	fully	no	True	Sentence 11 mentions John journeying to the hallway, which implies that John has left the bathroom and is now in the hallway.		"Reasoning: Sentence 11 mentions John journeying to the hallway, which implies that John has left the bathroom and is now in the hallway.
+
+Answer: no"	0.0	0.0303	False	False	False	True	0
+105	6	21	5	"*TASK*
+Here are the context sentences:
+13. John left the apple.
+14. John took the apple there.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	"there is no information provided in sentences 13 and 14 that suggests john is in the bedroom. in fact, sentence 14 mentions john taking the apple ""there"", which implies that john is in a specific location, but it doesn't specify what that location is. additionally, sentence 13 mentions john leaving the apple, but it doesn't provide any information about john's current location. since there is no evidence to suggest john is in the bedroom, the answer is ""no"","	none	not mentioned	False	There is no information about John being in the bedroom. The context sentences only mention John's actions with the apple, but do not provide information about his location.		"Reasoning: There is no information about John being in the bedroom. The context sentences only mention John's actions with the apple, but do not provide information about his location.
+
+Answer: not mentioned"	0.05	0.025	False	False	False	True	0

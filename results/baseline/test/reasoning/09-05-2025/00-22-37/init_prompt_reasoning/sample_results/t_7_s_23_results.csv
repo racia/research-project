@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+611	7	23	1	"*TASK*
+Here are the context sentences:
+1. Mary picked up the milk there.
+2. Sandra travelled to the office.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"from context sentence 1, ""mary picked up the milk there"", we can infer that mary is carrying the milk. there is no mention of mary carrying any other objects. therefore, the number of objects mary is carrying is one, which is the milk."	fully	one	True	The context sentences only mention Mary picking up the milk, but do not mention her carrying any other objects. Additionally, Sandra's travel to the office is not related to Mary's actions.		"Reasoning: The context sentences only mention Mary picking up the milk, but do not mention her carrying any other objects. Additionally, Sandra's travel to the office is not related to Mary's actions.
+
+Answer: one"	0.0455	0.0227	False	False	False	True	0
+612	7	23	2	"*TASK*
+Here are the context sentences:
+4. Mary handed the milk to Sandra.
+5. Sandra dropped the milk.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	"from context sentence 4, ""mary handed the milk to sandra"", we know that mary gave the milk to sandra. this implies that mary is no longer carrying the milk. additionally, there is no mention of mary picking up or carrying any other objects. therefore, the number of objects mary is carrying is none."	partially	none	True	Since Mary handed the milk to Sandra in sentence 4, she is no longer carrying the milk. The subsequent sentence 5 shows that Sandra dropped the milk, which does not affect Mary's carrying status.		"Reasoning: Since Mary handed the milk to Sandra in sentence 4, she is no longer carrying the milk. The subsequent sentence 5 shows that Sandra dropped the milk, which does not affect Mary's carrying status.
+
+Answer: none"	0.0833	0.0417	False	False	False	False	0
+613	7	23	3	"*TASK*
+Here are the context sentences:
+7. John went to the office.
+8. John grabbed the milk there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	the question asks about mary, but the context sentences 7 and 8 only provide information about john. there is no new information about mary. we can refer back to the previous context sentences 4 and 5, where mary handed the milk to sandra and sandra dropped the milk. from that, we concluded that mary is not carrying any objects. this conclusion still holds true, as there is no new information that would change mary's situation. therefore, the answer remains that mary is	none	not mentioned	False	The context sentences do not mention Mary at all. They only mention John going to the office and grabbing the milk. Therefore, we cannot infer anything about Mary's carrying status.		"Reasoning: The context sentences do not mention Mary at all. They only mention John going to the office and grabbing the milk. Therefore, we cannot infer anything about Mary's carrying status.
+
+Answer: not mentioned"	0.093	0.0465	False	False	False	True	0
+614	7	23	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the bedroom.
+11. John passed the milk to Mary.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	"the question asks about sandra, and we need to refer back to the previous context sentences to find the relevant information. from context sentence 5, ""sandra dropped the milk"", we know that sandra is not carrying the milk. there is no new information in context sentences 10 and 11 that would suggest sandra is carrying any objects. in fact, context sentence 11, ""john passed the milk to mary"", implies that the milk is now with mary, not"	none	none	True	The context sentences do not mention Sandra carrying any objects. The sentences only mention Daniel going to the bedroom and John passing the milk to Mary, which does not affect Sandra's carrying status.		"Reasoning: The context sentences do not mention Sandra carrying any objects. The sentences only mention Daniel going to the bedroom and John passing the milk to Mary, which does not affect Sandra's carrying status.
+
+Answer: none"	0.0909	0.0455	False	False	False	True	0
+615	7	23	5	"*TASK*
+Here are the context sentences:
+13. Mary gave the milk to John.
+14. Daniel went to the garden.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	"from context sentence 13, ""mary gave the milk to john"", we know that mary handed over the milk to john. this implies that mary is no longer carrying the milk. there is no mention of mary picking up or carrying any other objects in context sentence 14 or in any previous context sentences. therefore, the number of objects mary is carrying is none."	partially	none	True	Since Mary gave the milk to John in sentence 13, she is no longer carrying the milk.		"Reasoning: Since Mary gave the milk to John in sentence 13, she is no longer carrying the milk.
+
+Answer: none"	0.0741	0.1481	False	False	False	False	0

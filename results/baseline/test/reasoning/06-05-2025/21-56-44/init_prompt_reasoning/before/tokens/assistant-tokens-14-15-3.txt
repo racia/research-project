@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġwent	Ġto	Ġthe	Ġpark	Ġthis	Ġevening	Ġ(	sentence	Ġ	9	),	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġgoing	Ġto	Ġthe	Ġpark	Ġearlier	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġwas	Ġnot	Ġat	Ġthe	Ġpark	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġcarrying	Ġor	Ġhandling	Ġany	Ġobject	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġand	ĠSandra	,	Ġand	ĠJohn	's	Ġaction	Ġwas	Ġdropping	Ġthe	Ġapple	Ġin	Ġa	Ġprevious	Ġcontext	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

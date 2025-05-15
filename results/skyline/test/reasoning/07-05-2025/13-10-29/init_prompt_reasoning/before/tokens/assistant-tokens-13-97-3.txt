@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ(	7	Ġand	Ġ	8	)	Ġonly	Ġmention	ĠDaniel	Ġand	ĠJohn	,	Ġbut	Ġnot	ĠMary	.	ĠTo	Ġfind	ĠMary	's	Ġlocation	,	Ġwe	Ġneed	Ġto	Ġrefer	Ġto	Ġthe	Ġprevious	Ġcontext	Ġsentences	.	ĠAccording	Ġto	Ġsentence	Ġ	5	,	ĠMary	Ġwas	Ġlast	Ġseen	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+136	6	28	1	"*TASK*
+Here are the context sentences:
+1. John went back to the hallway.
+2. Sandra picked up the football there.
+
+Now, answer the following question:
+Is John in the office?"	no	"since john ""went back to the hallway"" in the first context sentence, it implies that john was not in the hallway initially and moved to the hallway from some other location. the second context sentence mentions sandra picking up the football ""there"", which refers to the hallway. there is no mention of john entering an office or being in an office at any point. therefore, based on the provided information, it can be logically concluded that john is not in the office."	fully	no	True	There is no mention of John going to the office in the context sentences. In fact, sentence 1 states that John went back to the hallway, which does not imply that he is in the office.		"Reasoning: There is no mention of John going to the office in the context sentences. In fact, sentence 1 states that John went back to the hallway, which does not imply that he is in the office.
+
+Answer: no"	0.1042	0.0208	False	False	False	True	0
+137	6	28	2	"*TASK*
+Here are the context sentences:
+4. Mary moved to the kitchen.
+5. Daniel grabbed the apple there.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	there is no mention of john in the provided context sentences. the sentences only talk about mary moving to the kitchen and daniel grabbing an apple there. there is no information about john's location, and there is no mention of a bathroom at all. therefore, based on the provided information, it can be logically concluded that there is no evidence to suggest john is in the bathroom, and the answer is no.	none	not mentioned	False	There is no mention of John in the context sentences. The sentences only talk about Mary moving to the kitchen and Daniel grabbing the apple there. There is no information about John's location.		"Reasoning: There is no mention of John in the context sentences. The sentences only talk about Mary moving to the kitchen and Daniel grabbing the apple there. There is no information about John's location.
+
+Answer: not mentioned"	0.0	0.0222	False	False	False	True	0
+138	6	28	3	"*TASK*
+Here are the context sentences:
+7. Sandra left the football.
+8. Sandra grabbed the football there.
+
+Now, answer the following question:
+Is Mary in the office?"	no	the context sentences only talk about sandra and the football, with no mention of mary or the office. sentence 7 says sandra left the football, and sentence 8 says she grabbed the football there, implying that she grabbed it back. there is no information about mary's location, and the office is not mentioned at all. therefore, based on the provided information, it can be logically concluded that there is no evidence to suggest mary is in the office, and the answer is no.	none	not mentioned	False	There is no mention of Mary's location in the context sentences. The sentences only talk about Sandra leaving and grabbing the football, but do not provide any information about Mary's location.		"Reasoning: There is no mention of Mary's location in the context sentences. The sentences only talk about Sandra leaving and grabbing the football, but do not provide any information about Mary's location.
+
+Answer: not mentioned"	0.0682	0.0227	False	False	False	True	0
+139	6	28	4	"*TASK*
+Here are the context sentences:
+10. John moved to the bedroom.
+11. Daniel discarded the apple there.
+
+Now, answer the following question:
+Is John in the hallway?"	no	according to sentence 10, john moved to the bedroom, which implies that john is currently in the bedroom. there is no mention of john returning to the hallway or moving back to the hallway. therefore, based on the provided information, it can be logically concluded that john is not in the hallway, and the answer is no.	fully	no	True	Sentence 10 states that John moved to the bedroom, which implies that he is no longer in the hallway.		"Reasoning: Sentence 10 states that John moved to the bedroom, which implies that he is no longer in the hallway.
+
+Answer: no"	0.0345	0.0345	False	False	False	False	0
+140	6	28	5	"*TASK*
+Here are the context sentences:
+13. Daniel grabbed the apple there.
+14. Mary went back to the bedroom.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	no	according to sentence 14, mary went back to the bedroom, which implies that mary is currently in the bedroom. there is no mention of mary moving to the kitchen or being in the kitchen at any point. therefore, based on the provided information, it can be logically concluded that mary is not in the kitchen, and the answer is no.	fully	no	True	Sentence 14 states that Mary went back to the bedroom, which implies that she is not in the kitchen. There is no previous information that suggests Mary was in the kitchen.		"Reasoning: Sentence 14 states that Mary went back to the bedroom, which implies that she is not in the kitchen. There is no previous information that suggests Mary was in the kitchen.
+
+Answer: no"	0.0238	0.0238	False	False	False	True	0

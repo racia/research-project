@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2571	14	65	1	"*TASK*
+Here are the context sentences:
+1. This morning Julie travelled to the kitchen.
+2. Julie moved to the school this afternoon.
+3. Bill went to the park yesterday.
+4. Yesterday Julie journeyed to the office.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	office	"from context sentence 4, ""yesterday julie journeyed to the office"", we know that julie was at the office yesterday. from context sentence 1, ""this morning julie travelled to the kitchen"", we know that julie travelled to the kitchen this morning. since julie travelled to the kitchen this morning, she must have been somewhere else before that, and based on the information provided, the most logical place for her to be before the kitchen is the office, which is where she was yesterday"	fully	office	True	Since Julie moved to the school this afternoon, it implies that she was somewhere else before moving to the school. According to sentence 4, Julie journeyed to the office yesterday, which means she was somewhere else before going to the office. Since Julie travelled to the kitchen this morning, it implies that she was at the office yesterday and moved to the school this afternoon, and then travelled to the kitchen this morning.		"Reasoning: Since Julie moved to the school this afternoon, it implies that she was somewhere else before moving to the school. According to sentence 4, Julie journeyed to the office yesterday, which means she was somewhere else before going to the office. Since Julie travelled to the kitchen this morning, it implies that she was at the office yesterday and moved to the school this afternoon, and then travelled to the kitchen this morning.
+
+Answer: office"	0.0444	0.0222	False	False	False	False	0
+2572	14	65	2	"*TASK*
+Here are the context sentences:
+6. This morning Mary went back to the cinema.
+7. Mary went back to the kitchen yesterday.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	office	"the context sentences provided (6 and 7) are about mary, but the question is about julie. there is no information about julie in these sentences. however, we can look at the previous context sentences (1-4) which mentioned julie. from those sentences, we know that ""yesterday julie journeyed to the office"" (sentence 4), and ""this morning julie travelled to the kitchen"" (sentence 1). therefore, julie was at the office before the kitchen"	none	Not mentioned	False	There is no information about Julie in the given context sentences. The sentences only mention Mary's actions, and there is no connection between Mary and Julie.		"Reasoning: There is no information about Julie in the given context sentences. The sentences only mention Mary's actions, and there is no connection between Mary and Julie.
+
+Answer: Not mentioned"	0.1316	0.0526	False	False	False	True	0
+2573	14	65	3	"*TASK*
+Here are the context sentences:
+9. Bill went back to the office this morning.
+10. Fred went to the park yesterday.
+
+Now, answer the following question:
+Where was Bill before the office?"	park	"there is no direct information about bill's location before the office in the provided context sentences (9 and 10). however, we can look at the previous context sentences (1-8) which mentioned bill. from sentence 3, we know that ""bill went to the park yesterday"". since bill went back to the office this morning (sentence 9), it is logical to assume that bill was at the park before the office."	partially	Not mentioned	False	According to sentence 10, Fred went to the park yesterday, but there is no information about Bill's actions yesterday. Sentence 9 states that Bill went back to the office this morning, implying that he was somewhere else before going back to the office.		"Reasoning: According to sentence 10, Fred went to the park yesterday, but there is no information about Bill's actions yesterday. Sentence 9 states that Bill went back to the office this morning, implying that he was somewhere else before going back to the office.
+
+Answer: Not mentioned"	0.0169	0.0339	False	False	False	True	0
+2574	14	65	4	"*TASK*
+Here are the context sentences:
+12. Bill moved to the bedroom this evening.
+13. Bill went back to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Bill before the office?"	park	"the provided context sentences (12 and 13) do not mention bill's location before the office. however, we can look at the previous context sentences (1-11) which mentioned bill. from sentence 3, we know that ""bill went to the park yesterday"". there is no information about bill's movement from the park to the office, but we know that bill went back to the office this morning (sentence 9). therefore, it is logical to assume that bill was"	none	Not mentioned	False	There is no information about Bill going to the office in the given context sentences. The sentences only mention Bill's actions in the bedroom and cinema, but not in the office.		"Reasoning: There is no information about Bill going to the office in the given context sentences. The sentences only mention Bill's actions in the bedroom and cinema, but not in the office.
+
+Answer: Not mentioned"	0.0698	0.0465	False	False	False	True	0
+2575	14	65	5	"*TASK*
+Here are the context sentences:
+15. Fred journeyed to the kitchen this morning.
+16. Julie travelled to the park this evening.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	office	"the provided context sentences (15 and 16) do not mention bill's location before the cinema. however, we can look at the previous context sentences (1-14) which mentioned bill. from sentence 9, we know that ""bill went back to the office this morning"". and from sentence 13, we know that ""bill went back to the cinema this afternoon"". therefore, it is logical to assume that bill was at the office before the cinema."	none	Not mentioned	False	There is no information about Bill's actions in the given context sentences. The sentences only mention Fred's journey to the kitchen and Julie's travel to the park, but not Bill's actions.		"Reasoning: There is no information about Bill's actions in the given context sentences. The sentences only mention Fred's journey to the kitchen and Julie's travel to the park, but not Bill's actions.
+
+Answer: Not mentioned"	0.0217	0.0435	False	False	False	True	0

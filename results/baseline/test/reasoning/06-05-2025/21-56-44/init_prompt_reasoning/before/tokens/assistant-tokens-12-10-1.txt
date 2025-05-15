@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġis	Ġmentioned	Ġin	Ġsentence	Ġ	1	Ġas	Ġgoing	Ġto	Ġthe	Ġkitchen	Ġwith	ĠMary	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġhim	Ġgoing	Ġanywhere	Ġelse	.	ĠTherefore	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

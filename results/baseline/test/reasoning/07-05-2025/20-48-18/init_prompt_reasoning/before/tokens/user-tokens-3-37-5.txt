@@ -1,0 +1,25 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+97	.	ĠSandra	Ġdiscarded	Ġthe	Ġapple	.Ċ
+98	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+99	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+100	.	ĠJohn	Ġgot	Ġthe	Ġfootball	.Ċ
+101	.	ĠJohn	Ġdropped	Ġthe	Ġfootball	.Ċ
+102	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+103	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+104	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+105	.	ĠJohn	Ġgot	Ġthe	Ġfootball	.Ċ
+106	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+107	.	ĠSandra	Ġgot	Ġthe	Ġapple	.Ċ
+108	.	ĠSandra	Ġdiscarded	Ġthe	Ġapple	Ġthere	.Ċ
+109	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+110	.	ĠSandra	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
+111	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+112	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+113	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+114	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+115	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+116	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+117	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+118	.	ĠSandra	Ġdiscarded	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġbathroom	?Ċ

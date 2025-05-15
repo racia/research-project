@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ(	14	)	Ġexplicitly	Ġstates	Ġthat	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġmeans	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

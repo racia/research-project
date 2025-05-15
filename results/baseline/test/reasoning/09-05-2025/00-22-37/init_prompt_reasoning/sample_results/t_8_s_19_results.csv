@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1091	8	19	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the garden.
+2. Sandra took the football there.
+
+Now, answer the following question:
+What is Sandra carrying?"	football	"according to context sentence 2, ""sandra took the football there"", which implies that sandra is carrying the football. the phrase ""took the football there"" suggests that sandra has the football with her, and she is carrying it to the garden (as mentioned in context sentence 1). therefore, the correct answer is that sandra is carrying the football."	fully	football	True	Sandra took the football in the garden, which implies that she is carrying the football.		"Reasoning: Sandra took the football in the garden, which implies that she is carrying the football.
+
+Answer: football"	0.1667	0.0417	False	False	False	False	0
+1092	8	19	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the bathroom.
+5. Sandra left the football.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"according to context sentence 5, ""sandra left the football"", which implies that sandra is no longer carrying the football. the phrase ""left the football"" suggests that sandra has relinquished possession of the football, and it is no longer with her. therefore, the correct answer is that sandra is carrying nothing."	partially	nothing	True	"There is no mention of Sandra carrying anything in the given context sentences. The sentence ""Sandra left the football"" implies that she was holding the football previously, but it doesn't imply that she is carrying it now."		"Reasoning: There is no mention of Sandra carrying anything in the given context sentences. The sentence ""Sandra left the football"" implies that she was holding the football previously, but it doesn't imply that she is carrying it now.
+
+Answer: nothing"	0.1569	0.0392	False	False	False	True	0
+1093	8	19	3	"*TASK*
+Here are the context sentences:
+7. Mary moved to the bathroom.
+8. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"the context sentences 7 and 8 only provide information about mary's movements, but they do not mention sandra or what she is carrying. to answer the question, we need to refer to the previous context sentences. in context sentence 5, it was established that ""sandra left the football"", which implies that sandra is no longer carrying the football. therefore, the correct answer is that sandra is carrying nothing."	none	nothing	True	There is no mention of Sandra in the given context sentences. The sentences only mention Mary's movements, but not what she is carrying.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention Mary's movements, but not what she is carrying.
+
+Answer: nothing"	0.0882	0.0588	False	False	False	True	0
+1094	8	19	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the kitchen.
+11. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"the context sentences 10 and 11 only provide information about mary's movements, but they do not mention sandra or what she is carrying. to answer the question, we need to refer to the previous context sentences. in context sentence 5, it was established that ""sandra left the football"", which implies that sandra is no longer carrying the football. therefore, the correct answer is that sandra is carrying nothing."	none	nothing	True	There is no mention of Sandra in the given context sentences. The sentences only mention Mary's movements, but not what she is carrying. The previous context sentences didn't mention Sandra carrying anything either.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention Mary's movements, but not what she is carrying. The previous context sentences didn't mention Sandra carrying anything either.
+
+Answer: nothing"	0.0	0.0435	False	False	False	True	0
+1095	8	19	5	"*TASK*
+Here are the context sentences:
+13. John went back to the bedroom.
+14. Sandra took the football there.
+
+Now, answer the following question:
+What is Sandra carrying?"	football	"according to context sentence 14, ""sandra took the football there"", which implies that sandra has taken possession of the football and is carrying it. this sentence overrides the previous information that sandra left the football (context sentence 5), and now sandra is carrying the football again. therefore, the correct answer is that sandra is carrying the football."	partially	football	True	"The sentence ""Sandra took the football there"" implies that Sandra is carrying the football."		"Reasoning: The sentence ""Sandra took the football there"" implies that Sandra is carrying the football.
+
+Answer: football"	0.0	0.12	False	False	False	False	0

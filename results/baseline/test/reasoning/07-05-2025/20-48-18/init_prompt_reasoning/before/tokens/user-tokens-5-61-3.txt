@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+23	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+24	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġfootball	Ġto	ĠFred	?Ċ

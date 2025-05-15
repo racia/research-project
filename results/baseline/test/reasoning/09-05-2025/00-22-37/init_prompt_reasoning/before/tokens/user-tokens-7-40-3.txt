@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+11	.	ĠDaniel	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+12	.	ĠDaniel	Ġdropped	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠSandra	Ġcarrying	?Ċ

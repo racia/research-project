@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1146	8	30	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the bedroom.
+2. Mary travelled to the bathroom.
+3. Mary took the apple there.
+4. Mary went to the bedroom.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	from context line 3, we know that mary took the apple in the bathroom. there is no information about mary putting down or dropping the apple, so we can infer that she is still carrying it. in context line 4, mary goes to the bedroom, but there is no mention of her putting down the apple or giving it to anyone. therefore, logically, mary is still carrying the apple.	fully	apple	True	Mary took the apple in the bathroom, and then she went to the bedroom. Since she didn't leave the bathroom with anything else, she is still carrying the apple.		"Reasoning: Mary took the apple in the bathroom, and then she went to the bedroom. Since she didn't leave the bathroom with anything else, she is still carrying the apple.
+
+Answer: apple"	0.0732	0.0244	False	False	False	False	0
+1147	8	30	2	"*TASK*
+Here are the context sentences:
+6. Mary put down the apple there.
+7. Sandra went to the bedroom.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	in the previous context lines (1-4), we knew that mary was carrying an apple. however, in the new context line 6, it is explicitly stated that mary put down the apple. this implies that mary is no longer carrying the apple. there is no information about mary picking up anything else, so logically, mary is carrying nothing.	partially	nothing	True	Mary put down the apple in the bathroom, and then she went to the bedroom. Since she put down the apple, she is not carrying anything.		"Reasoning: Mary put down the apple in the bathroom, and then she went to the bedroom. Since she put down the apple, she is not carrying anything.
+
+Answer: nothing"	0.1081	0.0541	False	False	False	False	0
+1148	8	30	3	"*TASK*
+Here are the context sentences:
+9. Sandra got the apple there.
+10. John grabbed the milk there.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	the question asks about what mary is carrying, but the context lines 9 and 10 do not provide any new information about mary. they mention sandra getting the apple and john grabbing the milk, but there is no mention of mary picking up or carrying anything. we already knew from the previous context lines (6) that mary put down the apple, and there is no new information that would suggest she is carrying anything. therefore, the answer remains that mary is carrying nothing.	none	not mentioned	False	There is no information about Mary's actions or possessions in these sentences. The context only mentions Sandra getting the apple and John grabbing the milk, but it doesn't provide any information about Mary.		"Reasoning: There is no information about Mary's actions or possessions in these sentences. The context only mentions Sandra getting the apple and John grabbing the milk, but it doesn't provide any information about Mary.
+
+Answer: not mentioned"	0.1304	0.0435	False	False	False	True	0
+1149	8	30	4	"*TASK*
+Here are the context sentences:
+12. John dropped the milk.
+13. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+What is John carrying?"	nothing	in context line 10, we knew that john grabbed the milk. however, in context line 12, it is explicitly stated that john dropped the milk. this implies that john is no longer carrying the milk. there is no information about john picking up anything else, so logically, john is carrying nothing.	partially	nothing	True	John grabbed the milk, but then he dropped it. Therefore, he is no longer carrying the milk.		"Reasoning: John grabbed the milk, but then he dropped it. Therefore, he is no longer carrying the milk.
+
+Answer: nothing"	0.0	0.0714	False	False	False	False	0
+1150	8	30	5	"*TASK*
+Here are the context sentences:
+15. John got the milk there.
+16. John discarded the milk there.
+
+Now, answer the following question:
+What is John carrying?"	nothing	in context line 15, john got the milk, which implies that john is carrying the milk. however, in context line 16, it is explicitly stated that john discarded the milk. this implies that john is no longer carrying the milk. there is no information about john picking up anything else, so logically, john is carrying nothing.	partially	nothing	True	John got the milk, but then he discarded it. Therefore, he is not carrying the milk anymore.		"Reasoning: John got the milk, but then he discarded it. Therefore, he is not carrying the milk anymore.
+
+Answer: nothing"	0.1071	0.1429	False	False	False	False	0

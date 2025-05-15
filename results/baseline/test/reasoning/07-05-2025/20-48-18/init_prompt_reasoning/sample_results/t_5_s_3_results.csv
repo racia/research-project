@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1611	5	3	1	"*TASK*
+Here are the context sentences:
+1. Fred journeyed to the bedroom.
+2. Fred got the milk there.
+3. Fred went back to the kitchen.
+4. Bill picked up the football there.
+5. Fred handed the milk to Mary.
+6. Mary moved to the garden.
+
+Now, answer the following question:
+Who received the milk?"	mary	"according to sentence 5, ""fred handed the milk to mary"", which explicitly states that mary received the milk from fred."	fully	Mary	True	Fred got the milk in the bedroom, and then handed it to Mary.		"Reasoning: Fred got the milk in the bedroom, and then handed it to Mary.
+
+Answer: Mary"	0.0	0.0455	False	False	False	False	0
+1612	5	3	2	"*TASK*
+Here are the context sentences:
+8. Bill dropped the football.
+9. Mary gave the milk to Bill.
+
+Now, answer the following question:
+What did Mary give to Bill?"	milk	"according to sentence 9, ""mary gave the milk to bill"", which explicitly states that mary gave the milk to bill."	fully	milk	True	According to sentence 9, Mary gave the milk to Bill.		"Reasoning: According to sentence 9, Mary gave the milk to Bill.
+
+Answer: milk"	0.05	0.05	False	False	False	False	0
+1613	5	3	3	"*TASK*
+Here are the context sentences:
+11. Bill handed the milk to Mary.
+12. Mary passed the milk to Bill.
+
+Now, answer the following question:
+Who received the milk?"	bill	"according to sentence 12, ""mary passed the milk to bill"", which explicitly states that bill received the milk from mary."	fully	Mary	False	According to sentence 11, Bill handed the milk to Mary, which means Mary received the milk.		"Reasoning: According to sentence 11, Bill handed the milk to Mary, which means Mary received the milk.
+
+Answer: Mary"	0.037	0.037	False	False	False	False	0
+1614	5	3	4	"*TASK*
+Here are the context sentences:
+14. Jeff went to the garden.
+15. Jeff journeyed to the kitchen.
+
+Now, answer the following question:
+Who did Mary give the milk to?"	bill	"this question does not relate to the provided context lines (14 and 15), which only describe jeff's movements. the answer ""bill"" is actually related to the previous context lines (11 and 12), where it is stated that mary passed the milk to bill."	none	Not mentioned	False	There is no mention of Mary giving the milk to anyone in the provided context sentences. The sentences only mention Fred, Bill, and Jeff, but not Mary giving the milk to anyone.		"Reasoning: There is no mention of Mary giving the milk to anyone in the provided context sentences. The sentences only mention Fred, Bill, and Jeff, but not Mary giving the milk to anyone.
+
+Answer: Not mentioned"	0.0	0.0222	False	False	False	True	0
+1615	5	3	5	"*TASK*
+Here are the context sentences:
+17. Jeff moved to the bedroom.
+18. Bill picked up the football there.
+
+Now, answer the following question:
+What did Mary give to Bill?"	milk	"this question does not relate to the provided context lines (17 and 18), which describe jeff's movement and bill picking up the football. the answer ""milk"" is actually related to the previous context lines (11 and 12), where it is stated that mary passed the milk to bill."	none	Not mentioned	False	There is no mention of Mary giving anything to Bill in the provided context sentences. The sentences only mention Jeff and Bill, but not Mary giving anything to Bill.		"Reasoning: There is no mention of Mary giving anything to Bill in the provided context sentences. The sentences only mention Jeff and Bill, but not Mary giving anything to Bill.
+
+Answer: Not mentioned"	0.025	0.025	False	False	False	True	0

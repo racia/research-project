@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1506	9	2	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the office.
+2. Mary went back to the garden.
+
+Now, answer the following question:
+Is Mary in the office?"	no	"according to the context sentences, mary initially journeyed to the office (sentence 1), which implies that she was in the office at some point. however, the second sentence states that mary went back to the garden, which means she left the office and returned to the garden. therefore, mary is no longer in the office, and the correct answer is ""no""."	fully	no	True	According to sentence 1, Mary journeyed to the office, but then sentence 2 states that Mary went back to the garden, implying that she left the office.		"assistant
+
+Reasoning: According to sentence 1, Mary journeyed to the office, but then sentence 2 states that Mary went back to the garden, implying that she left the office.
+
+Answer: no"	0.2	0.0222	False	False	False	False	0
+1507	9	2	2	"*TASK*
+Here are the context sentences:
+4. Daniel is no longer in the kitchen.
+5. John is no longer in the bathroom.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	no	"the context sentence 4 explicitly states that ""daniel is no longer in the kitchen"", which directly implies that daniel is not in the kitchen. therefore, the answer to the question ""is daniel in the kitchen?"" is indeed ""no""."	fully	no	True	Sentence 4 explicitly states that Daniel is no longer in the kitchen.		"Reasoning: Sentence 4 explicitly states that Daniel is no longer in the kitchen.
+
+Answer: no"	0.0476	0.0476	False	False	False	False	0
+1508	9	2	3	"*TASK*
+Here are the context sentences:
+7. John is in the garden.
+8. Sandra travelled to the bedroom.
+
+Now, answer the following question:
+Is John in the garden?"	yes	"the context sentence 7 explicitly states that ""john is in the garden"", which directly implies that john's current location is the garden. there is no information provided that suggests john has moved from the garden, and sentence 8 only mentions sandra's action, which does not affect john's location. therefore, the answer to the question ""is john in the garden?"" is indeed ""yes""."	fully	yes	True	Sentence 7 explicitly states that John is in the garden, and there is no subsequent information that suggests he left the garden.		"Reasoning: Sentence 7 explicitly states that John is in the garden, and there is no subsequent information that suggests he left the garden.
+
+Answer: yes"	0.0	0.0312	False	False	False	True	0
+1509	9	2	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the kitchen.
+11. Sandra is not in the bedroom.
+
+Now, answer the following question:
+Is John in the garden?"	yes	"there is no new information provided about john's location in the context sentences 10 and 11. however, we can infer that the answer is still ""yes"" because there is no information that suggests john has moved from the garden. the previous context (sentence 7) stated that ""john is in the garden"", and there is no update or contradiction to this information in the new context sentences. therefore, the answer remains ""yes""."	none	yes	True	The context sentences 10 and 11 do not provide any new information about John's location. Sentence 7 from the previous context still holds, which states that John is in the garden.		"Reasoning: The context sentences 10 and 11 do not provide any new information about John's location. Sentence 7 from the previous context still holds, which states that John is in the garden.
+
+Answer: yes"	0.0222	0.0222	False	False	False	True	0
+1510	9	2	5	"*TASK*
+Here are the context sentences:
+13. John went back to the hallway.
+14. Daniel travelled to the bathroom.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	yes	"the context sentence 14 explicitly states that ""daniel travelled to the bathroom"", which directly implies that daniel's current location is the bathroom. there is no information provided that suggests daniel has left the bathroom, so it can be logically concluded that daniel is indeed in the bathroom, and the answer to the question is ""yes""."	fully	yes	True	Sentence 14 explicitly states that Daniel travelled to the bathroom, and there is no subsequent information that suggests he left the bathroom.		"Reasoning: Sentence 14 explicitly states that Daniel travelled to the bathroom, and there is no subsequent information that suggests he left the bathroom.
+
+Answer: yes"	0.0	0.0312	False	False	False	True	0

@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+17	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+18	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠMary	Ġgive	Ġto	ĠFred	?Ċ

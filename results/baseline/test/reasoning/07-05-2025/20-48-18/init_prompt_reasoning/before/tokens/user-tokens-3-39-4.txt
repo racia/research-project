@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+76	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+77	.	ĠDaniel	Ġleft	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġkitchen	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠSandra	Ġmoving	Ġto	Ġthe	Ġgarden	.	ĠSandra	Ġhas	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġand	Ġthen	Ġto	Ġthe	Ġbathroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġmoving	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	<|eot_id|>

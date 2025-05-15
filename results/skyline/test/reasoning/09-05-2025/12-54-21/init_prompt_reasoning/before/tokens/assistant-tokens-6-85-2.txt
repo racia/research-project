@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbedroom	.	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	4	,	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	,	Ġnot	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġpicked	Ġup	Ġthe	Ġmilk	Ġin	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġgot	Ġthe	Ġmilk	Ġbecause	Ġhe	Ġis	Ġthirsty	,	Ġas	Ġmentioned	Ġin	Ġthe	Ġprevious	Ġcontext	Ġsentence	.ĊĊ	Answer	:	Ġthirsty	<|eot_id|>

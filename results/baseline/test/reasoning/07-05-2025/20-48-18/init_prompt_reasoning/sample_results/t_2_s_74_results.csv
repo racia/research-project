@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+866	2	74	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the hallway.
+2. Daniel journeyed to the kitchen.
+3. Sandra journeyed to the garden.
+4. Daniel grabbed the apple there.
+5. Sandra got the milk there.
+6. Daniel dropped the apple there.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	from context sentence 4, we know that daniel grabbed the apple in the kitchen (since he journeyed to the kitchen in sentence 2). although daniel dropped the apple in sentence 6, it is still in the kitchen because there is no information suggesting that he moved to a different location before dropping it. therefore, the apple is in the kitchen.	fully	garden	False	The apple was grabbed by Daniel in the garden (sentence 4), and then dropped by Daniel in the same location (sentence 6). There is no mention of the apple being moved to a different location, so it is likely still in the garden.		"Reasoning: The apple was grabbed by Daniel in the garden (sentence 4), and then dropped by Daniel in the same location (sentence 6). There is no mention of the apple being moved to a different location, so it is likely still in the garden.
+
+Answer: garden"	0.0345	0.0345	False	False	False	True	0
+867	2	74	2	"*TASK*
+Here are the context sentences:
+8. Sandra discarded the milk there.
+9. Sandra went to the hallway.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	the question asks about the location of the apple, but the provided context sentences (8 and 9) do not mention the apple. to find the answer, we need to refer to the previous context sentences. from the previous context, we know that daniel dropped the apple in the kitchen (sentence 6). there is no information suggesting that the apple was moved from the kitchen, so it is still in the kitchen. the actions of sandra (discarding the milk and going to the	none	garden	False	The context sentences provided do not mention the apple at all. The previous question mentioned the apple being dropped in the garden, but there is no new information about its location.		"Reasoning: The context sentences provided do not mention the apple at all. The previous question mentioned the apple being dropped in the garden, but there is no new information about its location.
+
+Answer: garden"	0.0244	0.0488	False	False	False	True	0
+868	2	74	3	"*TASK*
+Here are the context sentences:
+11. John moved to the kitchen.
+12. Mary moved to the hallway.
+
+Now, answer the following question:
+Where is the milk?"	garden	the question asks about the location of the milk. from the previous context, we know that sandra got the milk in the garden (sentence 5). there is no information suggesting that the milk was moved from the garden, so it is still in the garden. the movements of john and mary (sentences 11 and 12) do not affect the location of the milk, as they do not interact with it. therefore, the milk remains in the garden.	none	not mentioned	False	The context sentences do not provide any information about the milk's current location. The only mention of the milk is in sentence 8, where Sandra discarded it, but it does not specify where she discarded it.		"Reasoning: The context sentences do not provide any information about the milk's current location. The only mention of the milk is in sentence 8, where Sandra discarded it, but it does not specify where she discarded it.
+
+Answer: not mentioned"	0.06	0.04	False	False	False	True	0
+869	2	74	4	"*TASK*
+Here are the context sentences:
+14. John journeyed to the office.
+15. Daniel took the apple there.
+16. Daniel put down the apple.
+17. Daniel got the apple there.
+18. John journeyed to the hallway.
+19. Daniel travelled to the bedroom.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	the question asks about the location of the apple. from the previous context, we know that the apple was in the kitchen (sentence 6). however, in sentence 15, daniel took the apple, which means he moved it from the kitchen. then, in sentence 16, daniel put down the apple, but we don't know where. in sentence 17, daniel got the apple again, which implies that he picked it up from where he put it down. finally,	fully	office	False	The apple was taken by Daniel to the office (sentence 15), put down (sentence 16), and then got again (sentence 17) in the same location. There is no mention of the apple being moved to a different location, so it is likely still in the office.		"Reasoning: The apple was taken by Daniel to the office (sentence 15), put down (sentence 16), and then got again (sentence 17) in the same location. There is no mention of the apple being moved to a different location, so it is likely still in the office.
+
+Answer: office"	0.0154	0.0308	False	False	False	True	0
+870	2	74	5	"*TASK*
+Here are the context sentences:
+21. Daniel put down the apple.
+22. Sandra went to the office.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	the question asks about the location of the apple. from the previous context, we know that daniel got the apple in sentence 17 and didn't drop it or give it to anyone. in sentence 19, daniel travelled to the bedroom, and there is no information suggesting that he dropped the apple or gave it to anyone before or after that. therefore, it is logical to assume that daniel still has the apple with him, and since he is in the bedroom (sentence 19),	partially	office	False	The apple was previously put down by Daniel in the office (sentence 21), and there is no new information about its location. Therefore, it is likely still in the office.		"Reasoning: The apple was previously put down by Daniel in the office (sentence 21), and there is no new information about its location. Therefore, it is likely still in the office.
+
+Answer: office"	0.0233	0.0465	False	False	False	True	0

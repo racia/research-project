@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġpark	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentence	Ġonly	Ġmentions	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġpark	Ġthis	Ġevening	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġinformation	Ġabout	Ġher	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

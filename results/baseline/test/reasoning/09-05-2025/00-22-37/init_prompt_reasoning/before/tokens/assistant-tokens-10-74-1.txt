@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġschool	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġschool	.	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġpark	,	Ġwhich	Ġis	Ġa	Ġseparate	Ġlocation	Ġand	Ġdoes	Ġnot	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	ĠNo	<|eot_id|>

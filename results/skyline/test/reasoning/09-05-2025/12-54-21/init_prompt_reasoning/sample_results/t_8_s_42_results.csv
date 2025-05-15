@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1206	8	42	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the office.
+2. John got the milk there.
+
+Now, answer the following question:
+What is John carrying?"	milk	"from context sentence 2, ""john got the milk there"", we can infer that john obtained milk at the office. since john got the milk, it is logical to assume that john is carrying the milk."	fully	milk	True	According to sentence 2, John got the milk at the office, which implies that John is carrying the milk.		"assistant
+
+Reasoning: According to sentence 2, John got the milk at the office, which implies that John is carrying the milk.
+
+Answer: milk"	0.0882	0.0294	False	False	False	False	0
+1207	8	42	2	"*TASK*
+Here are the context sentences:
+4. Mary picked up the apple there.
+5. Daniel went back to the office.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	"from context sentence 4, ""mary picked up the apple there"", we can infer that mary obtained the apple and is holding it. since there is no information about mary putting the apple down or giving it to someone else, it is logical to assume that mary is still carrying the apple."	fully	apple	True	According to sentence 4, Mary picked up the apple, which implies that Mary is carrying the apple.		"Reasoning: According to sentence 4, Mary picked up the apple, which implies that Mary is carrying the apple.
+
+Answer: apple"	0.0357	0.0357	False	False	False	False	0
+1208	8	42	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the garden.
+8. John went back to the bathroom.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	"there is no information about mary in the provided context sentences (7 and 8). however, the answer ""apple"" suggests that the question is referring to a previous part of the conversation history. upon inspecting the previous parts, i found that mary was mentioned in context sentence 4, ""mary picked up the apple there"", which implies that mary is carrying an apple."	none	apple	True	The context sentences 7 and 8 do not provide any new information about Mary. We can refer to the previous context sentence 4, which states that Mary picked up the apple.		"Reasoning: The context sentences 7 and 8 do not provide any new information about Mary. We can refer to the previous context sentence 4, which states that Mary picked up the apple.
+
+Answer: apple"	0.0227	0.0227	False	False	False	True	0
+1209	8	42	4	"*TASK*
+Here are the context sentences:
+10. Daniel journeyed to the kitchen.
+11. John discarded the milk.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"from context sentence 11, ""john discarded the milk"", we can infer that john got rid of the milk he was carrying. since john discarded the milk, it is logical to assume that john is no longer carrying anything, which leads to the answer ""nothing""."	partially	nothing	True	According to sentence 11, John discarded the milk, which implies that John is no longer carrying the milk.		"Reasoning: According to sentence 11, John discarded the milk, which implies that John is no longer carrying the milk.
+
+Answer: nothing"	0.1724	0.069	False	False	False	False	0
+1210	8	42	5	"*TASK*
+Here are the context sentences:
+13. John went back to the kitchen.
+14. Daniel went back to the office.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"the provided context sentences (13 and 14) do not mention john carrying or obtaining any object. however, the answer ""nothing"" suggests that the question is referring to a previous part of the conversation history. upon inspecting the previous parts, i found that john discarded the milk in context sentence 11, ""john discarded the milk"", which implies that john is no longer carrying anything, leading to the answer ""nothing""."	none	nothing	True	The context sentences 13 and 14 do not provide any new information about what John is carrying. We can refer to the previous context sentence 11, which states that John discarded the milk.		"Reasoning: The context sentences 13 and 14 do not provide any new information about what John is carrying. We can refer to the previous context sentence 11, which states that John discarded the milk.
+
+Answer: nothing"	0.0652	0.0435	False	False	False	True	0

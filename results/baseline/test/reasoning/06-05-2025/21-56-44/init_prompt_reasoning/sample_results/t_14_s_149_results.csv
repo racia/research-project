@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2991	14	149	1	"*TASK*
+Here are the context sentences:
+1. Julie went back to the bedroom yesterday.
+2. This morning Bill moved to the office.
+3. Yesterday Bill journeyed to the kitchen.
+4. Mary journeyed to the cinema yesterday.
+
+Now, answer the following question:
+Where was Bill before the office?"	kitchen	"from context sentence 3, ""yesterday bill journeyed to the kitchen"", we know that bill was in the kitchen yesterday. then, from context sentence 2, ""this morning bill moved to the office"", we can infer that bill was in the kitchen before moving to the office this morning. therefore, the answer is the kitchen."	fully	kitchen	True	Bill journeyed to the kitchen yesterday, and then he moved to the office this morning. This implies that Bill was in the kitchen yesterday, and before that, he was somewhere else. Since Bill journeyed to the kitchen yesterday, it means he was not in the office yesterday. Therefore, Bill was in the kitchen before moving to the office.		"Reasoning: Bill journeyed to the kitchen yesterday, and then he moved to the office this morning. This implies that Bill was in the kitchen yesterday, and before that, he was somewhere else. Since Bill journeyed to the kitchen yesterday, it means he was not in the office yesterday. Therefore, Bill was in the kitchen before moving to the office.
+
+Answer: kitchen"	0.1842	0.0263	False	False	False	False	0
+2992	14	149	2	"*TASK*
+Here are the context sentences:
+6. This morning Mary journeyed to the bedroom.
+7. Bill travelled to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	cinema	"from context sentence 4 in the previous part of the conversation, ""mary journeyed to the cinema yesterday"", we know that mary was at the cinema yesterday. then, from context sentence 6, ""this morning mary journeyed to the bedroom"", we can infer that mary was at the cinema before coming to the bedroom this morning. therefore, the answer is the cinema."	partially	not mentioned	False	There is no information provided about Mary's location before she journeyed to the bedroom this morning. The context sentences do not mention her previous location.		"Reasoning: There is no information provided about Mary's location before she journeyed to the bedroom this morning. The context sentences do not mention her previous location.
+
+Answer: not mentioned"	0.1081	0.0541	False	False	False	True	0
+2993	14	149	3	"*TASK*
+Here are the context sentences:
+9. Mary journeyed to the kitchen this evening.
+10. Mary travelled to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	bedroom	"from context sentence 6, ""this morning mary journeyed to the bedroom"", we know that mary was in the bedroom this morning. then, from context sentence 10, ""mary travelled to the cinema this afternoon"", we can infer that mary was in the bedroom before going to the cinema this afternoon. therefore, the answer is the bedroom."	partially	not mentioned	False	According to context sentence 10, Mary travelled to the cinema this afternoon. There is no information about her location before that. However, we can infer that Mary was somewhere else before she travelled to the cinema, but the exact location is not specified.		"Reasoning: According to context sentence 10, Mary travelled to the cinema this afternoon. There is no information about her location before that. However, we can infer that Mary was somewhere else before she travelled to the cinema, but the exact location is not specified.
+
+Answer: not mentioned"	0.0862	0.0345	False	False	False	True	0
+2994	14	149	4	"*TASK*
+Here are the context sentences:
+12. Yesterday Fred went to the bedroom.
+13. Julie travelled to the office this morning.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	bedroom	"the context sentences provided (12 and 13) do not mention mary or her location before the cinema. however, we can look back at the previous parts of the conversation history. from context sentence 4, ""mary journeyed to the cinema yesterday"", and context sentence 6, ""this morning mary journeyed to the bedroom"", we can infer that mary was in the bedroom before going to the cinema yesterday. therefore, the answer is the bedroom."	none	not mentioned	False	There is no information about Mary's location in context sentences 12 and 13. The question asks about Mary's location before the cinema, but there is no mention of Mary's activities or location related to the cinema in these sentences.		"Reasoning: There is no information about Mary's location in context sentences 12 and 13. The question asks about Mary's location before the cinema, but there is no mention of Mary's activities or location related to the cinema in these sentences.
+
+Answer: not mentioned"	0.0545	0.0364	False	False	False	True	0
+2995	14	149	5	"*TASK*
+Here are the context sentences:
+15. This afternoon Julie journeyed to the kitchen.
+16. Bill went back to the school this evening.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	office	"there is no direct information about julie's location before the kitchen in the provided context sentences (15 and 16). however, we can look back at the previous parts of the conversation history. from context sentence 13, ""julie travelled to the office this morning"", we can infer that julie was in the office before going to the kitchen this afternoon. therefore, the answer is the office."	partially	not mentioned	False	According to context sentence 15, Julie journeyed to the kitchen this afternoon. There is no information about her location before that. However, we can infer that Julie was somewhere else before she journeyed to the kitchen, but the exact location is not specified.		"Reasoning: According to context sentence 15, Julie journeyed to the kitchen this afternoon. There is no information about her location before that. However, we can infer that Julie was somewhere else before she journeyed to the kitchen, but the exact location is not specified.
+
+Answer: not mentioned"	0.0833	0.0333	False	False	False	True	0

@@ -1,0 +1,3 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	Ġthe	Ġblue	Ġsquare	Ġabove	Ġthe	Ġred	Ġsquare	?Ċ

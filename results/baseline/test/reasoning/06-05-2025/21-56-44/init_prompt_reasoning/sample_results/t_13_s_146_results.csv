@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2226	13	146	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Sandra went to the office.
+2. Following that they travelled to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from the context sentences, we know that daniel and sandra went to the office (sentence 1) and then they travelled to the bathroom (sentence 2). since sandra was with daniel in both locations, it can be logically inferred that sandra is currently in the bathroom, as that is the last location mentioned in the sequence of events.	fully	bathroom	True	Sandra is mentioned in both sentences, and her location changes from the office to the bathroom. Since the second sentence mentions that they travelled to the bathroom, it implies that Sandra is currently in the bathroom.		"Reasoning: Sandra is mentioned in both sentences, and her location changes from the office to the bathroom. Since the second sentence mentions that they travelled to the bathroom, it implies that Sandra is currently in the bathroom.
+
+Answer: bathroom"	0.1702	0.0426	False	False	False	True	0
+2227	13	146	2	"*TASK*
+Here are the context sentences:
+4. Mary and John moved to the hallway.
+5. After that they went to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that mary and john moved to the hallway (sentence 4) and then they went to the kitchen (sentence 5). since john was with mary in both locations, it can be logically inferred that john is currently in the kitchen, as that is the last location mentioned in the sequence of events.	fully	kitchen	True	John is mentioned in both sentences, and his location changes from the hallway to the kitchen. Since the second sentence mentions that they went to the kitchen, it implies that John is currently in the kitchen.		"Reasoning: John is mentioned in both sentences, and his location changes from the hallway to the kitchen. Since the second sentence mentions that they went to the kitchen, it implies that John is currently in the kitchen.
+
+Answer: kitchen"	0.2128	0.0426	False	False	False	True	0
+2228	13	146	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary went back to the hallway.
+8. Then they travelled to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	from the context sentences, we know that sandra and mary went back to the hallway (sentence 7) and then they travelled to the office (sentence 8). since sandra was with mary in both locations, it can be logically inferred that sandra is currently in the office, as that is the last location mentioned in the sequence of events.	fully	office	True	Sandra is mentioned in both sentences, and her location changes from the hallway to the office. Since the second sentence mentions that they travelled to the office, it implies that Sandra is currently in the office.		"Reasoning: Sandra is mentioned in both sentences, and her location changes from the hallway to the office. Since the second sentence mentions that they travelled to the office, it implies that Sandra is currently in the office.
+
+Answer: office"	0.0851	0.0426	False	False	False	True	0
+2229	13	146	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Sandra went to the garden.
+11. After that they went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from the context sentences, we know that daniel and sandra went to the garden (sentence 10) and then they went back to the bathroom (sentence 11). since daniel was with sandra in both locations, it can be logically inferred that daniel is currently in the bathroom, as that is the last location mentioned in the sequence of events.	fully	bathroom	True	Daniel is mentioned in both sentences, and his location changes from the garden to the bathroom. Since the second sentence mentions that they went back to the bathroom, it implies that Daniel is currently in the bathroom.		"Reasoning: Daniel is mentioned in both sentences, and his location changes from the garden to the bathroom. Since the second sentence mentions that they went back to the bathroom, it implies that Daniel is currently in the bathroom.
+
+Answer: bathroom"	0.0208	0.0417	False	False	False	True	0
+2230	13	146	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Daniel went back to the garden.
+14. After that they travelled to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	from the context sentences, we know that sandra and daniel went back to the garden (sentence 13) and then they travelled to the kitchen (sentence 14). since daniel was with sandra in both locations, it can be logically inferred that daniel is currently in the kitchen, as that is the last location mentioned in the sequence of events.	fully	kitchen	True	Daniel is mentioned in both sentences, and his location changes from the garden to the kitchen. Since the second sentence mentions that they travelled to the kitchen, it implies that Daniel is currently in the kitchen.		"Reasoning: Daniel is mentioned in both sentences, and his location changes from the garden to the kitchen. Since the second sentence mentions that they travelled to the kitchen, it implies that Daniel is currently in the kitchen.
+
+Answer: kitchen"	0.1915	0.0426	False	False	False	True	0

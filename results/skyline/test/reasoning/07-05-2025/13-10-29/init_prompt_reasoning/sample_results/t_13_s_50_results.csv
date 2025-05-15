@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1246	13	50	1	"*TASK*
+Here are the context sentences:
+1. Mary and John went back to the office.
+2. Following that they moved to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that mary and john went back to the office (sentence 1) and then moved to the hallway (sentence 2). since john was with mary in both actions, it can be logically inferred that john is currently in the hallway, as that is the last location mentioned where they moved to.	fully	hallway	True	According to the context sentences, Mary and John went back to the office (sentence 1) and then moved to the hallway (sentence 2). Therefore, John's current location is the hallway.		"assistant
+
+Reasoning: According to the context sentences, Mary and John went back to the office (sentence 1) and then moved to the hallway (sentence 2). Therefore, John's current location is the hallway.
+
+Answer: hallway"	0.3	0.04	False	False	False	False	0
+1247	13	50	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Mary moved to the bedroom.
+5. Afterwards they went back to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from the context sentences, we know that sandra and mary moved to the bedroom (sentence 4) and then went back to the kitchen (sentence 5). since sandra was with mary in both actions, it can be logically inferred that sandra is currently in the kitchen, as that is the last location mentioned where they moved to.	fully	kitchen	True	According to the context sentences, Sandra and Mary moved to the bedroom (sentence 4) and then went back to the kitchen (sentence 5). Therefore, Sandra's current location is the kitchen.		"Reasoning: According to the context sentences, Sandra and Mary moved to the bedroom (sentence 4) and then went back to the kitchen (sentence 5). Therefore, Sandra's current location is the kitchen.
+
+Answer: kitchen"	0.1489	0.0426	False	False	False	False	0
+1248	13	50	3	"*TASK*
+Here are the context sentences:
+7. Mary and Sandra went back to the bathroom.
+8. Following that they journeyed to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentences, we know that mary and sandra went back to the bathroom (sentence 7) and then journeyed to the hallway (sentence 8). since mary was with sandra in both actions, it can be logically inferred that mary is currently in the hallway, as that is the last location mentioned where they moved to.	fully	hallway	True	According to the context sentences, Mary and Sandra went back to the bathroom (sentence 7) and then journeyed to the hallway (sentence 8). Therefore, Mary's current location is the hallway.		"Reasoning: According to the context sentences, Mary and Sandra went back to the bathroom (sentence 7) and then journeyed to the hallway (sentence 8). Therefore, Mary's current location is the hallway.
+
+Answer: hallway"	0.2083	0.0417	False	False	False	False	0
+1249	13	50	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Daniel travelled to the bedroom.
+11. Afterwards they journeyed to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	from the context sentences, we know that sandra and daniel travelled to the bedroom (sentence 10) and then journeyed to the office (sentence 11). since daniel was with sandra in both actions, it can be logically inferred that daniel is currently in the office, as that is the last location mentioned where they moved to.	fully	office	True	According to the context sentences, Sandra and Daniel travelled to the bedroom (sentence 10) and then journeyed to the office (sentence 11). Therefore, Daniel's current location is the office.		"Reasoning: According to the context sentences, Sandra and Daniel travelled to the bedroom (sentence 10) and then journeyed to the office (sentence 11). Therefore, Daniel's current location is the office.
+
+Answer: office"	0.0213	0.0426	False	False	False	False	0
+1250	13	50	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John went to the bedroom.
+14. Afterwards they went to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	from the context sentences, we know that daniel and john went to the bedroom (sentence 13) and then went to the office (sentence 14). since daniel was with john in both actions, it can be logically inferred that daniel is currently in the office, as that is the last location mentioned where they moved to.	fully	office	True	According to the context sentences, Daniel and John went to the bedroom (sentence 13) and then went to the office (sentence 14). Therefore, Daniel's current location is the office.		"Reasoning: According to the context sentences, Daniel and John went to the bedroom (sentence 13) and then went to the office (sentence 14). Therefore, Daniel's current location is the office.
+
+Answer: office"	0.1087	0.0435	False	False	False	False	0

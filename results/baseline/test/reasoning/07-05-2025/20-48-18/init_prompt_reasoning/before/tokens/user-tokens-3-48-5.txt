@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+23	.	ĠDaniel	Ġdiscarded	Ġthe	Ġapple	.Ċ
+24	.	ĠMary	Ġgot	Ġthe	Ġapple	.Ċ
+25	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+26	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+27	.	ĠDaniel	Ġleft	Ġthe	Ġfootball	.Ċ
+28	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġbedroom	?Ċ

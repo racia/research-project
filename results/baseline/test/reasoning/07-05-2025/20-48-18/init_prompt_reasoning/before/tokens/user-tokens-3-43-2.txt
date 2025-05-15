@@ -1,0 +1,19 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+30	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+31	.	ĠJohn	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+32	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+33	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+34	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+35	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+36	.	ĠJohn	Ġdropped	Ġthe	Ġfootball	.Ċ
+37	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+38	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+39	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	.Ċ
+40	.	ĠMary	Ġdropped	Ġthe	Ġmilk	.Ċ
+41	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+42	.	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+43	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+44	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+45	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġkitchen	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	13	,	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.	ĠSince	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	,	Ġit	Ġimplies	Ġthat	Ġhe	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

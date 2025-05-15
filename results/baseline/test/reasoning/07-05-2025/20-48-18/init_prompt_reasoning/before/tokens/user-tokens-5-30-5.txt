@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+31	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+32	.	ĠMary	Ġleft	Ġthe	Ġfootball	.Ċ
+33	.	ĠFred	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+34	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+35	.	ĠFred	Ġgave	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
+36	.	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġfootball	?Ċ

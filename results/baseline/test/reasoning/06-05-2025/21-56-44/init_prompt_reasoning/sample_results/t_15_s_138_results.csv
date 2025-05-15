@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3549	15	138	1	"*TASK*
+Here are the context sentences:
+1. Mice are afraid of cats.
+2. Gertrude is a mouse.
+3. Wolves are afraid of cats.
+4. Cats are afraid of sheep.
+5. Winona is a mouse.
+6. Sheep are afraid of mice.
+7. Jessica is a wolf.
+8. Emily is a cat.
+
+Now, answer the following question:
+What is emily afraid of?"	sheep	from context sentence 8, we know that emily is a cat. from context sentence 4, we know that cats are afraid of sheep. therefore, emily, being a cat, is afraid of sheep.	fully		False	According to sentence 1, mice are afraid of cats. Since Emily is a cat (sentence 8), it can be inferred that Emily is not afraid of anything mentioned in the context. However, we need to consider the fear relationships between entities. Sentence 3 states that wolves are afraid of cats, which implies that cats are not afraid of wolves. Sentence 4 states that cats are afraid of sheep. Since Emily is a cat, she is afraid of sheep.		"Reasoning: According to sentence 1, mice are afraid of cats. Since Emily is a cat (sentence 8), it can be inferred that Emily is not afraid of anything mentioned in the context. However, we need to consider the fear relationships between entities. Sentence 3 states that wolves are afraid of cats, which implies that cats are not afraid of wolves. Sentence 4 states that cats are afraid of sheep. Since Emily is a cat, she is afraid of sheep.
+
+Answer:"	0.1212	0.0202	False	False	False	True	0
+3550	15	138	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is jessica afraid of?"	cat	from the previous context sentences, we know that jessica is a wolf (sentence 7). we also know that wolves are afraid of cats (sentence 3). therefore, jessica, being a wolf, is afraid of a cat.	none	cats	True	According to sentence 3, wolves are afraid of cats. Since Jessica is a wolf (sentence 7), she is afraid of cats.		"Reasoning: According to sentence 3, wolves are afraid of cats. Since Jessica is a wolf (sentence 7), she is afraid of cats.
+
+Answer: cats"	0.0286	0.0571	False	False	False	False	0
+3551	15	138	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is jessica afraid of?"	cat	from the previous context sentences, we know that jessica is a wolf (sentence 7). we also know that wolves are afraid of cats (sentence 3). therefore, jessica, being a wolf, is afraid of a cat.	none	cats	True	Since Jessica is a wolf (sentence 7), and wolves are afraid of cats (sentence 3), it can be inferred that Jessica is afraid of cats.		"Reasoning: Since Jessica is a wolf (sentence 7), and wolves are afraid of cats (sentence 3), it can be inferred that Jessica is afraid of cats.
+
+Answer: cats"	0.0	0.0513	False	False	False	False	0
+3552	15	138	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	cat	from the previous context sentences, we know that winona is a mouse (sentence 5). we also know that mice are afraid of cats (sentence 1). therefore, winona, being a mouse, is afraid of a cat.	none	not mentioned	False	According to sentence 6, sheep are afraid of mice. Since Winona is a mouse (sentence 5), it can be inferred that Winona is not afraid of anything mentioned in the context. However, we need to consider the fear relationships between entities. Sentence 1 states that mice are afraid of cats, which implies that mice are not afraid of anything mentioned in the context.		"Reasoning: According to sentence 6, sheep are afraid of mice. Since Winona is a mouse (sentence 5), it can be inferred that Winona is not afraid of anything mentioned in the context. However, we need to consider the fear relationships between entities. Sentence 1 states that mice are afraid of cats, which implies that mice are not afraid of anything mentioned in the context.
+
+Answer: not mentioned"	0.0353	0.0235	False	False	False	True	0

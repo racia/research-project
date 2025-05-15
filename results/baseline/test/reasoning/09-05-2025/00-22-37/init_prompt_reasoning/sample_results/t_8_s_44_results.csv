@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1216	8	44	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the office.
+2. John grabbed the apple there.
+
+Now, answer the following question:
+What is John carrying?"	apple	"from the context sentences, we know that john grabbed the apple at the office (sentence 2). the act of grabbing implies that john took possession of the apple and is now carrying it. therefore, the answer to the question ""what is john carrying?"" is indeed ""apple""."	fully	apple	True	The question asks about what John is carrying, and the only information provided is that John grabbed the apple in the office. This implies that John is carrying the apple.		"Reasoning: The question asks about what John is carrying, and the only information provided is that John grabbed the apple in the office. This implies that John is carrying the apple.
+
+Answer: apple"	0.075	0.025	False	False	False	True	0
+1217	8	44	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the kitchen.
+5. John dropped the apple.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"from the previous context (sentence 2), we knew that john was carrying an apple. however, in the new context (sentence 5), it is stated that john dropped the apple. the act of dropping implies that john released the apple and is no longer carrying it. therefore, the answer to the question ""what is john carrying?"" is indeed ""nothing""."	partially	apple	False	The question asks about what John is carrying, and the information provided is that John travelled to the kitchen and dropped the apple. This implies that John was carrying the apple, but dropped it.		"Reasoning: The question asks about what John is carrying, and the information provided is that John travelled to the kitchen and dropped the apple. This implies that John was carrying the apple, but dropped it.
+
+Answer: apple"	0.2	0.0444	False	False	False	True	0
+1218	8	44	3	"*TASK*
+Here are the context sentences:
+7. Daniel took the football there.
+8. Daniel put down the football.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"from sentence 7, we know that daniel took the football, which implies that daniel was carrying the football. however, in sentence 8, it is stated that daniel put down the football. the act of putting down implies that daniel released the football and is no longer carrying it. therefore, the answer to the question ""what is daniel carrying?"" is indeed ""nothing""."	fully	football	False	The question asks about what Daniel is carrying, and the information provided is that Daniel took the football and put it down. This implies that Daniel was carrying the football, but put it down.		"Reasoning: The question asks about what Daniel is carrying, and the information provided is that Daniel took the football and put it down. This implies that Daniel was carrying the football, but put it down.
+
+Answer: football"	0.0	0.0444	False	False	False	True	0
+1219	8	44	4	"*TASK*
+Here are the context sentences:
+10. John grabbed the apple there.
+11. Daniel took the football there.
+
+Now, answer the following question:
+What is John carrying?"	apple	"from sentence 10, we know that john grabbed the apple, which implies that john took possession of the apple and is carrying it. there is no subsequent information that suggests john released or dropped the apple. therefore, the answer to the question ""what is john carrying?"" is indeed ""apple""."	partially	apple	True	The question asks about what John is carrying, and the information provided is that John grabbed the apple. There is no mention of John dropping or putting down the apple, so it can be inferred that John is still carrying the apple.		"Reasoning: The question asks about what John is carrying, and the information provided is that John grabbed the apple. There is no mention of John dropping or putting down the apple, so it can be inferred that John is still carrying the apple.
+
+Answer: apple"	0.0566	0.0566	False	False	False	True	0
+1220	8	44	5	"*TASK*
+Here are the context sentences:
+13. Daniel discarded the football.
+14. Sandra went to the garden.
+
+Now, answer the following question:
+What is John carrying?"	apple	"the context sentences 13 and 14 do not provide any new information about john or the apple. we need to look at the previous context to find the relevant information. from sentence 10, we know that john grabbed the apple, which implies that john took possession of the apple and is carrying it. there is no subsequent information that suggests john released or dropped the apple. therefore, the answer to the question ""what is john carrying?"" is indeed ""apple""."	none	apple	True	The question asks about what John is carrying, and there is no new information provided about John. The previous information is that John grabbed the apple, and there is no mention of John dropping or putting down the apple, so it can be inferred that John is still carrying the apple.		"Reasoning: The question asks about what John is carrying, and there is no new information provided about John. The previous information is that John grabbed the apple, and there is no mention of John dropping or putting down the apple, so it can be inferred that John is still carrying the apple.
+
+Answer: apple"	0.0794	0.0476	False	False	False	True	0

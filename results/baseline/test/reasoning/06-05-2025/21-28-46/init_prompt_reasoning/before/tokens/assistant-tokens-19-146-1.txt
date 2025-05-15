@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġoffice	Ġis	Ġwest	Ġof	Ġthe	Ġkitchen	,	Ġand	Ġthe	Ġgarden	Ġis	Ġnorth	Ġof	Ġthe	Ġoffice	,	Ġwe	Ġneed	Ġto	Ġmove	Ġeast	Ġfrom	Ġthe	Ġkitchen	Ġto	Ġreach	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġnorth	Ġfrom	Ġthe	Ġoffice	Ġto	Ġreach	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġeast	,	Ġthen	Ġnorth	<|eot_id|>

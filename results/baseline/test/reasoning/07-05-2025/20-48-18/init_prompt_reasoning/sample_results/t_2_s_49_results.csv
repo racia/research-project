@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+741	2	49	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the hallway.
+2. Mary took the apple there.
+3. John moved to the garden.
+4. John moved to the bedroom.
+5. Daniel moved to the kitchen.
+6. John went to the garden.
+7. Mary put down the apple there.
+8. Mary picked up the apple there.
+9. Mary moved to the hallway.
+10. Daniel journeyed to the office.
+
+Now, answer the following question:
+Where is the apple?"	hallway	from sentence 2, we know mary took the apple to the hallway. then, in sentence 7, mary put down the apple there, which implies that the apple was still in the hallway. there is no subsequent action that moves the apple from the hallway, so it remains there. therefore, the apple is in the hallway.	fully	hallway	True	The apple was taken to the hallway by Mary in sentence 2. It was then put down and picked up again in the hallway by Mary in sentences 7 and 8. Since Mary moved to the hallway again in sentence 9, the apple is likely still in the hallway.		"Reasoning: The apple was taken to the hallway by Mary in sentence 2. It was then put down and picked up again in the hallway by Mary in sentences 7 and 8. Since Mary moved to the hallway again in sentence 9, the apple is likely still in the hallway.
+
+Answer: hallway"	0.2188	0.0312	False	False	False	False	0
+742	2	49	2	"*TASK*
+Here are the context sentences:
+12. John journeyed to the bedroom.
+13. John journeyed to the kitchen.
+
+Now, answer the following question:
+Where is the apple?"	hallway	"the provided context lines (12 and 13) do not mention the apple at all. however, the answer ""hallway"" suggests that the apple's location is already known from previous context. since the previous context is not provided in this part, i will assume that it is the same conversation and the previous context is still valid."	none	not mentioned	False	There is no mention of the apple in these sentences, and the previous sentences did not specify where the apple was taken or left. Therefore, we cannot determine the current location of the apple.		"Reasoning: There is no mention of the apple in these sentences, and the previous sentences did not specify where the apple was taken or left. Therefore, we cannot determine the current location of the apple.
+
+Answer: not mentioned"	0.0217	0.0435	False	False	False	True	0
+743	2	49	3	"*TASK*
+Here are the context sentences:
+15. Mary discarded the apple there.
+16. Mary took the apple there.
+17. Sandra moved to the bathroom.
+18. Mary went back to the kitchen.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	from sentence 16, we know mary took the apple there, which implies that mary picked up the apple in the current location. since sentence 16 comes after sentence 15, where mary discarded the apple, it means mary picked up the apple that she had previously discarded.	fully	kitchen	True	The apple was taken to the kitchen by Mary in sentence 16 and then discarded there in sentence 15. Since Mary went back to the kitchen in sentence 18, the apple is likely still in the kitchen.		"Reasoning: The apple was taken to the kitchen by Mary in sentence 16 and then discarded there in sentence 15. Since Mary went back to the kitchen in sentence 18, the apple is likely still in the kitchen.
+
+Answer: kitchen"	0.14	0.04	False	False	False	False	0
+744	2	49	4	"*TASK*
+Here are the context sentences:
+20. Daniel moved to the kitchen.
+21. Mary journeyed to the bathroom.
+
+Now, answer the following question:
+Where is the apple?"	bathroom	from the previous context (sentences 15-18), we know that mary took the apple in the kitchen (sentence 16) and then went back to the kitchen (sentence 18).	partially	not mentioned	False	There is no mention of the apple in these sentences, and the previous sentences did not specify where the apple was taken or left. Therefore, we cannot determine the current location of the apple.		"Reasoning: There is no mention of the apple in these sentences, and the previous sentences did not specify where the apple was taken or left. Therefore, we cannot determine the current location of the apple.
+
+Answer: not mentioned"	0.0435	0.0435	False	False	False	True	0
+745	2	49	5	"*TASK*
+Here are the context sentences:
+23. Mary put down the apple.
+24. John moved to the bedroom.
+
+Now, answer the following question:
+Where is the apple?"	bathroom	from the previous context (sentences 20-21), we know that mary journeyed to the bathroom.	partially	bathroom	True	The apple was put down, but the location is not specified. However, the previous sentence mentioned Mary putting down the apple, and the sentence before that mentioned Mary journeying to the bathroom. Therefore, it is likely that the apple is in the bathroom.		"Reasoning: The apple was put down, but the location is not specified. However, the previous sentence mentioned Mary putting down the apple, and the sentence before that mentioned Mary journeying to the bathroom. Therefore, it is likely that the apple is in the bathroom.
+
+Answer: bathroom"	0.0	0.0345	False	False	False	True	0

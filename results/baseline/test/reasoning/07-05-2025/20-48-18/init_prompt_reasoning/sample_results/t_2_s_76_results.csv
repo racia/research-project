@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+876	2	76	1	"*TASK*
+Here are the context sentences:
+1. John grabbed the milk there.
+2. John left the milk.
+3. Sandra took the milk there.
+4. Sandra moved to the kitchen.
+
+Now, answer the following question:
+Where is the milk?"	kitchen	from sentence 1, we know john grabbed the milk at some location (not specified). in sentence 2, john left the milk, implying that the milk was left at the same location where john grabbed it. in sentence 3, sandra took the milk there, which means sandra took the milk from the location where john left it. in sentence 4, sandra moved to the kitchen, and since she took the milk with her (as indicated in sentence 3), the milk	fully	kitchen	True	The milk was initially grabbed by John, and then left by him. Sandra took the milk and moved to the kitchen, which implies that the milk is now with Sandra in the kitchen.		"Reasoning: The milk was initially grabbed by John, and then left by him. Sandra took the milk and moved to the kitchen, which implies that the milk is now with Sandra in the kitchen.
+
+Answer: kitchen"	0.2273	0.0455	False	False	False	False	0
+877	2	76	2	"*TASK*
+Here are the context sentences:
+6. Sandra put down the milk.
+7. John journeyed to the office.
+
+Now, answer the following question:
+Where is the milk?"	kitchen	we can infer the location of the milk by tracing its movement from the previous context sentences. in the previous context sentences, we learned that sandra took the milk to the kitchen (sentence 4). there is no indication that the milk was moved from the kitchen after that. in the current context sentences, sandra put down the milk (sentence 6), which implies that the milk was still in the kitchen when she put it down. john's journey to the office (sentence 7)	partially	not mentioned (or on the floor/surface)	False	Previously, the milk was in the kitchen with Sandra. Then, Sandra put it down, which implies that the milk is now on the floor or a surface. John journeyed to the office, which is a separate location, and there is no mention of the milk being taken to the office.		"Reasoning: Previously, the milk was in the kitchen with Sandra. Then, Sandra put it down, which implies that the milk is now on the floor or a surface. John journeyed to the office, which is a separate location, and there is no mention of the milk being taken to the office.
+
+Answer: not mentioned (or on the floor/surface)"	0.0533	0.0267	False	False	False	True	0
+878	2	76	3	"*TASK*
+Here are the context sentences:
+9. Daniel journeyed to the bedroom.
+10. John went back to the kitchen.
+
+Now, answer the following question:
+Where is the milk?"	kitchen	the question asks about the location of the milk. from the previous context sentences, we know that the milk was last mentioned in sentence 6, where sandra put down the milk. at that point, the milk was in the kitchen (inferred from sentence 4). there is no indication that the milk was moved from the kitchen after sandra put it down. in the current context sentences, daniel journeyed to the bedroom (sentence 9) and john went back to the kitchen (	none	kitchen	True	The previous context mentioned that Sandra put down the milk, and John went back to the kitchen. This implies that the milk is still in the kitchen, where John returned.		"Reasoning: The previous context mentioned that Sandra put down the milk, and John went back to the kitchen. This implies that the milk is still in the kitchen, where John returned.
+
+Answer: kitchen"	0.0488	0.0488	False	False	False	True	0
+879	2	76	4	"*TASK*
+Here are the context sentences:
+12. Daniel went back to the garden.
+13. John grabbed the apple there.
+14. Sandra got the milk there.
+15. Daniel moved to the bathroom.
+16. John travelled to the hallway.
+17. John moved to the office.
+
+Now, answer the following question:
+Where is the apple?"	office	to determine the location of the apple, we need to track its movement. in sentence 13, john grabbed the apple there, which implies that the apple was in the same location as john at that time. from the previous context sentences, we know that john went back to the kitchen (sentence 10), so the apple was initially in the kitchen. there is no indication that the apple was moved from the kitchen until john travelled to the hallway (sentence 16) and then moved	fully	garden	False	The apple was grabbed by John in the garden, but there is no mention of John moving the apple to a different location. Therefore, the apple is likely still in the garden.		"Reasoning: The apple was grabbed by John in the garden, but there is no mention of John moving the apple to a different location. Therefore, the apple is likely still in the garden.
+
+Answer: garden"	0.093	0.0465	False	False	False	True	0
+880	2	76	5	"*TASK*
+Here are the context sentences:
+19. Sandra put down the milk there.
+20. Sandra took the milk there.
+21. John went back to the kitchen.
+22. Daniel picked up the football there.
+23. John went to the office.
+24. John travelled to the hallway.
+25. John went to the office.
+26. John dropped the apple there.
+
+Now, answer the following question:
+Where is the apple?"	office	to determine the location of the apple, we need to track its movement. in sentence 13, john grabbed the apple there, which implies that the apple was in the same location as john at that time. from the previous context sentences, we know that john went back to the kitchen (sentence 10), so the apple was initially in the kitchen. then, john travelled to the hallway (sentence 24) and went to the office (sentence 25). finally, john dropped	fully	hallway	False	The apple was dropped by John in the hallway, which implies that the apple is now in the hallway.		"Reasoning: The apple was dropped by John in the hallway, which implies that the apple is now in the hallway.
+
+Answer: hallway"	0.0	0.0714	False	False	False	False	0

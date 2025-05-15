@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+636	2	28	1	"*TASK*
+Here are the context sentences:
+1. Sandra went back to the hallway.
+2. Mary travelled to the hallway.
+3. Mary picked up the football there.
+4. John travelled to the bathroom.
+5. Daniel moved to the bedroom.
+6. Sandra moved to the bedroom.
+7. Sandra travelled to the hallway.
+8. Sandra travelled to the office.
+9. Mary moved to the office.
+10. Mary put down the football.
+
+Now, answer the following question:
+Where is the football?"	office	from sentence 3, we know that mary picked up the football in the hallway.	fully	office	True	The football was picked up by Mary in the hallway (sentence 3). Then, Mary moved to the office (sentence 9) and put down the football (sentence 10). Since Mary is in the office and has put down the football, the football is likely to be in the office.		"Reasoning: The football was picked up by Mary in the hallway (sentence 3). Then, Mary moved to the office (sentence 9) and put down the football (sentence 10). Since Mary is in the office and has put down the football, the football is likely to be in the office.
+
+Answer: office"	0.1642	0.0299	False	False	False	False	0
+637	2	28	2	"*TASK*
+Here are the context sentences:
+12. Sandra grabbed the milk there.
+13. Sandra left the milk.
+
+Now, answer the following question:
+Where is the milk?"	office	we don't have any information about the location where sandra grabbed the milk (sentence 12), but we know that sandra was in the office in sentence 8.	partially	not mentioned	False	The context sentences only mention Sandra grabbing the milk and then leaving it, but they don't specify where she grabbed it or left it. Therefore, we can't determine the exact location of the milk.		"Reasoning: The context sentences only mention Sandra grabbing the milk and then leaving it, but they don't specify where she grabbed it or left it. Therefore, we can't determine the exact location of the milk.
+
+Answer: not mentioned"	0.0417	0.0417	False	False	False	True	0
+638	2	28	3	"*TASK*
+Here are the context sentences:
+15. Mary took the football there.
+16. Sandra took the milk there.
+17. Mary dropped the football.
+18. Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where is the football?"	office	from the previous context, we know that mary moved to the office (sentence 9) and put down the football there (sentence 10).	partially	not mentioned	False	The football was taken by Mary to an unspecified location (sentence 15). Then, Mary dropped the football (sentence 17). After that, Mary travelled to the bedroom (sentence 18). Since Mary dropped the football before going to the bedroom, the football is likely to be in the location where Mary dropped it, which is not specified.		"Reasoning: The football was taken by Mary to an unspecified location (sentence 15). Then, Mary dropped the football (sentence 17). After that, Mary travelled to the bedroom (sentence 18). Since Mary dropped the football before going to the bedroom, the football is likely to be in the location where Mary dropped it, which is not specified.
+
+Answer: not mentioned"	0.0649	0.026	False	False	False	True	0
+639	2	28	4	"*TASK*
+Here are the context sentences:
+20. John went to the hallway.
+21. Sandra took the football there.
+22. Mary went back to the hallway.
+23. Sandra travelled to the kitchen.
+
+Now, answer the following question:
+Where is the football?"	kitchen	from the previous context, we know that the football was in the office (sentence 10).	fully	hallway	False	The football was taken by Sandra to the hallway (sentence 21). Then, Mary went back to the hallway (sentence 22), which suggests that the football is still in the hallway.		"Reasoning: The football was taken by Sandra to the hallway (sentence 21). Then, Mary went back to the hallway (sentence 22), which suggests that the football is still in the hallway.
+
+Answer: hallway"	0.0444	0.0444	False	False	False	False	0
+640	2	28	5	"*TASK*
+Here are the context sentences:
+25. John journeyed to the garden.
+26. Sandra journeyed to the bathroom.
+
+Now, answer the following question:
+Where is the football?"	bathroom	from the previous context, we know that the football was with sandra (sentence 21) and she travelled to the kitchen (sentence 23).	partially	not mentioned	False	There is no mention of the football in these sentences, and the previous sentences didn't specify what happened to the football after it was taken to the hallway. Therefore, we can't determine the current location of the football.		"Reasoning: There is no mention of the football in these sentences, and the previous sentences didn't specify what happened to the football after it was taken to the hallway. Therefore, we can't determine the current location of the football.
+
+Answer: not mentioned"	0.0385	0.0385	False	False	False	True	0

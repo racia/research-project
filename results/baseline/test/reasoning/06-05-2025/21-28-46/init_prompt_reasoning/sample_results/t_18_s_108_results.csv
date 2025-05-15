@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1690	18	108	1	"*TASK*
+Here are the context sentences:
+1. The suitcase is bigger than the box.
+2. The container is bigger than the suitcase.
+3. The container is bigger than the chocolate.
+4. The box fits inside the chest.
+5. The container is bigger than the chocolate.
+
+Now, answer the following question:
+Is the box bigger than the container?"	no	"from context sentence 1, we know the suitcase is bigger than the box. from context sentence 2, we know the container is bigger than the suitcase. therefore, we can logically conclude that the container is bigger than the box. this directly answers the question, ""is the box bigger than the container?"" with a ""no""."	fully		False	From sentence 1, we know the suitcase is bigger than the box. From sentence 2, we know the container is bigger than the suitcase. Therefore, the container is bigger than the box. However, we need to determine if the box is bigger than the container. From sentence 3, we know the container is bigger than the chocolate. This doesn't provide any information about the box's size relative to the container. From sentence 4, we know the box fits		Reasoning: From sentence 1, we know the suitcase is bigger than the box. From sentence 2, we know the container is bigger than the suitcase. Therefore, the container is bigger than the box. However, we need to determine if the box is bigger than the container. From sentence 3, we know the container is bigger than the chocolate. This doesn't provide any information about the box's size relative to the container. From sentence 4, we know the box fits	0.1616	0.0202	False	False	False	True	0
+1691	18	108	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the box?"	yes	from context sentence 2, we know the container is bigger than the suitcase. from context sentence 1, we know the suitcase is bigger than the box. therefore, we can logically conclude that the container is bigger than the box, since the container is bigger than the suitcase and the suitcase is bigger than the box.	none	yes	True	From sentence 1, we know the suitcase is bigger than the box. From sentence 2, we know the container is bigger than the suitcase. Since the suitcase is bigger than the box, and the container is bigger than the suitcase, it can be inferred that the container is also bigger than the box.		"Reasoning: From sentence 1, we know the suitcase is bigger than the box. From sentence 2, we know the container is bigger than the suitcase. Since the suitcase is bigger than the box, and the container is bigger than the suitcase, it can be inferred that the container is also bigger than the box.
+
+Answer: yes"	0.1304	0.029	False	False	False	False	0
+1692	18	108	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the container?"	yes	from context sentence 2, we know the container is bigger than the suitcase. from context sentence 1, we know the suitcase is bigger than the box. therefore, we can logically conclude that the container is bigger than the box. since the box fits inside the chest (context sentence 4), and the container is bigger than the box, it is reasonable to assume that the box will fit inside the container.	none		False	From sentence 1, we know the suitcase is bigger than the box. From sentence 2, we know the container is bigger than the suitcase. Since the container is bigger than the suitcase, it is also bigger than the box. From sentence 4, we know the box fits inside the chest. However, this information doesn't provide any direct evidence about whether the box fits inside the container. Since the container is bigger than the box, it is possible that the box fits		Reasoning: From sentence 1, we know the suitcase is bigger than the box. From sentence 2, we know the container is bigger than the suitcase. Since the container is bigger than the suitcase, it is also bigger than the box. From sentence 4, we know the box fits inside the chest. However, this information doesn't provide any direct evidence about whether the box fits inside the container. Since the container is bigger than the box, it is possible that the box fits	0.0404	0.0202	False	False	False	True	0
+1693	18	108	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the box?"	yes	from context sentence 2, we know the container is bigger than the suitcase. from context sentence 1, we know the suitcase is bigger than the box. therefore, we can logically conclude that the container is bigger than the box, since the container is bigger than the suitcase and the suitcase is bigger than the box.	none	yes	True	This question has already been answered in a previous task. The answer is yes, the container is bigger than the box.		"Reasoning: This question has already been answered in a previous task. The answer is yes, the container is bigger than the box.
+
+Answer: yes"	0.0323	0.0645	False	False	False	False	0
+1694	18	108	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the container?"	yes	since we know that the container is bigger than the box (from previous question), and the box fits inside the chest (context sentence 4), it is logical to conclude that the box will fit inside the container, as the container is larger than the box.	none	yes	True	Since the container is bigger than the box (as established in a previous task), it is possible for the box to fit inside the container.		"Reasoning: Since the container is bigger than the box (as established in a previous task), it is possible for the box to fit inside the container.
+
+Answer: yes"	0.0286	0.0571	False	False	False	False	0

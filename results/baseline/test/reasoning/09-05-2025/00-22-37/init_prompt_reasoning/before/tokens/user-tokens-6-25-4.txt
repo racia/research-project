@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠSandra	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+11	.	ĠSandra	Ġdropped	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠDaniel	Ġin	Ġthe	Ġbedroom	?Ċ

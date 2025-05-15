@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠSentence	Ġ	13	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġoffice	.	ĠSentence	Ġ	14	Ġmentions	ĠJohn	Ġdropping	Ġan	Ġapple	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġspecify	Ġwhere	.ĊĊ	Answer	:	Ġno	<|eot_id|>

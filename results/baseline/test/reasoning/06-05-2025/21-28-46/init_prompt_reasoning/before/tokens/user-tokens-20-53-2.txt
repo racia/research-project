@@ -1,0 +1,4 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+3	.	ĠY	ann	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Why	Ġdid	Ġy	ann	Ġgo	Ġto	Ġthe	Ġgarden	?Ċ

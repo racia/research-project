@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1741	9	49	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the bedroom.
+2. Mary went to the bathroom.
+
+Now, answer the following question:
+Is John in the bedroom?"	yes	"the context sentence ""john journeyed to the bedroom"" explicitly states that john went to the bedroom, which implies that he is currently in the bedroom. there is no information provided that suggests john left the bedroom or moved to a different location. therefore, based on the given information, it can be logically concluded that john is indeed in the bedroom."	fully	yes	True	According to sentence 1, John journeyed to the bedroom, which implies that he is currently in the bedroom.		"Reasoning: According to sentence 1, John journeyed to the bedroom, which implies that he is currently in the bedroom.
+Answer: yes"	0.0667	0.0333	False	False	False	False	0
+1742	9	49	2	"*TASK*
+Here are the context sentences:
+4. Mary is not in the bathroom.
+5. John is no longer in the bedroom.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	"the context sentence ""john is no longer in the bedroom"" explicitly states that john is not in the bedroom, which directly answers the question. this sentence overrides the previous information in sentence 1 ""john journeyed to the bedroom"" because it provides a more up-to-date status of john's location. therefore, based on the given information, it can be logically concluded that john is not in the bedroom."	fully	no	True	According to sentence 5, John is no longer in the bedroom, which implies that he is not currently in the bedroom.		"Reasoning: According to sentence 5, John is no longer in the bedroom, which implies that he is not currently in the bedroom.
+Answer: no"	0.125	0.0312	False	False	False	False	0
+1743	9	49	3	"*TASK*
+Here are the context sentences:
+7. Daniel is not in the bathroom.
+8. Daniel moved to the garden.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	no	"there is no information provided about daniel being in the kitchen. in fact, the context sentence ""daniel moved to the garden"" suggests that daniel is currently in the garden, not in the kitchen. additionally, the sentence ""daniel is not in the bathroom"" only rules out the bathroom as a possible location, but does not imply that daniel is in the kitchen. therefore, based on the given information, it can be logically concluded that daniel is not in the"	fully	not mentioned	False	There is no mention of Daniel being in the kitchen or not being in the kitchen. The only information provided is that Daniel is not in the bathroom and moved to the garden.		"Reasoning: There is no mention of Daniel being in the kitchen or not being in the kitchen. The only information provided is that Daniel is not in the bathroom and moved to the garden.
+Answer: not mentioned"	0.1395	0.0233	False	False	False	True	0
+1744	9	49	4	"*TASK*
+Here are the context sentences:
+10. Daniel journeyed to the bedroom.
+11. Daniel is in the garden.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	"the context sentence ""daniel is in the garden"" explicitly states that daniel's current location is the garden. there is no information provided that suggests daniel is in the bathroom. additionally, the sentence ""daniel journeyed to the bedroom"" is contradictory to the current location of daniel being in the garden, implying that daniel must have moved from the bedroom to the garden. therefore, based on the given information, it can be logically concluded that daniel is not in the bathroom."	fully	no	True	According to sentence 11, Daniel is in the garden, not the bathroom. Sentence 10 only mentions that Daniel journeyed to the bedroom, but it doesn't imply that he is currently in the bathroom.		"Reasoning: According to sentence 11, Daniel is in the garden, not the bathroom. Sentence 10 only mentions that Daniel journeyed to the bedroom, but it doesn't imply that he is currently in the bathroom.
+Answer: no"	0.0612	0.0204	False	False	False	True	0
+1745	9	49	5	"*TASK*
+Here are the context sentences:
+13. Daniel journeyed to the kitchen.
+14. Sandra is no longer in the office.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	no	"the context sentence ""daniel journeyed to the kitchen"" explicitly states that daniel's current location is the kitchen. there is no information provided that suggests daniel is in the hallway. the sentence ""sandra is no longer in the office"" is irrelevant to daniel's location, as it only provides information about sandra's location. therefore, based on the given information, it can be logically concluded that daniel is not in the hallway."	fully	not mentioned	False	There is no mention of Daniel being in the hallway or not being in the hallway. The only information provided is that Daniel journeyed to the kitchen and Sandra is no longer in the office. There is no connection between Daniel and the hallway.		"Reasoning: There is no mention of Daniel being in the hallway or not being in the hallway. The only information provided is that Daniel journeyed to the kitchen and Sandra is no longer in the office. There is no connection between Daniel and the hallway.
+Answer: not mentioned"	0.0714	0.0179	False	False	False	True	0

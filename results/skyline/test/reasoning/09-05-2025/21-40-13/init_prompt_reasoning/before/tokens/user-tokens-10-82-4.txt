@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġcinema	.Ċ
+11	.	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġpark	Ġor	Ġthe	Ġschool	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠMary	Ġin	Ġthe	Ġcinema	?Ċ

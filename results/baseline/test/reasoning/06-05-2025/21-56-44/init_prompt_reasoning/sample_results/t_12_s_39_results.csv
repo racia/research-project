@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+941	12	39	1	"*TASK*
+Here are the context sentences:
+1. Mary and Sandra went back to the kitchen.
+2. Daniel and Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"according to context sentence 2, ""daniel and sandra travelled to the bathroom"", which explicitly states that daniel went to the bathroom. therefore, the answer to the question ""where is daniel?"" is indeed ""bathroom""."	fully	bathroom	True	Since Daniel and Sandra travelled to the bathroom in sentence 2, it implies that Daniel is currently in the bathroom.		"Reasoning: Since Daniel and Sandra travelled to the bathroom in sentence 2, it implies that Daniel is currently in the bathroom.
+
+Answer: bathroom"	0.0333	0.0333	False	False	False	False	0
+942	12	39	2	"*TASK*
+Here are the context sentences:
+4. Sandra and John moved to the garden.
+5. Sandra and John travelled to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	"according to context sentence 4, ""sandra and john moved to the garden"", which indicates that sandra was initially in the garden. however, context sentence 5, ""sandra and john travelled to the office"", implies that sandra and john left the garden and went to the office. therefore, the most recent and up-to-date information about sandra's location is that she is in the office, which is the answer to the question ""where is sandra?""."	fully	office	True	Since Sandra and John moved to the garden in sentence 4, it implies that Sandra was there. However, sentence 5 states that Sandra and John travelled to the office, which means Sandra is currently in the office.		"Reasoning: Since Sandra and John moved to the garden in sentence 4, it implies that Sandra was there. However, sentence 5 states that Sandra and John travelled to the office, which means Sandra is currently in the office.
+
+Answer: office"	0.1176	0.0196	False	False	False	False	0
+943	12	39	3	"*TASK*
+Here are the context sentences:
+7. Mary and Sandra journeyed to the bedroom.
+8. Sandra and Mary moved to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	"according to context sentence 7, ""mary and sandra journeyed to the bedroom"", which indicates that sandra was initially in the bedroom. however, context sentence 8, ""sandra and mary moved to the kitchen"", implies that sandra and mary left the bedroom and went to the kitchen. therefore, the most recent and up-to-date information about sandra's location is that she is in the kitchen, which is the answer to the question ""where is sandra?"	fully	kitchen	True	Since Sandra and Mary journeyed to the bedroom in sentence 7, it implies that Sandra was there. However, sentence 8 states that Sandra and Mary moved to the kitchen, which means Sandra is currently in the kitchen.		"Reasoning: Since Sandra and Mary journeyed to the bedroom in sentence 7, it implies that Sandra was there. However, sentence 8 states that Sandra and Mary moved to the kitchen, which means Sandra is currently in the kitchen.
+
+Answer: kitchen"	0.0385	0.0192	False	False	False	False	0
+944	12	39	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Sandra went back to the bedroom.
+11. Daniel and John moved to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"according to context sentence 10, ""daniel and sandra went back to the bedroom"", which indicates that daniel was initially in the bedroom. however, context sentence 11, ""daniel and john moved to the garden"", implies that daniel left the bedroom and went to the garden with john. therefore, the most recent and up-to-date information about daniel's location is that he is in the garden, which is the answer to the question ""where is daniel"	fully	garden	True	Since Daniel and Sandra went back to the bedroom in sentence 10, it implies that Daniel was there. However, sentence 11 states that Daniel and John moved to the garden, which means Daniel is currently in the garden.		"Reasoning: Since Daniel and Sandra went back to the bedroom in sentence 10, it implies that Daniel was there. However, sentence 11 states that Daniel and John moved to the garden, which means Daniel is currently in the garden.
+
+Answer: garden"	0.0385	0.0192	False	False	False	False	0
+945	12	39	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Mary travelled to the bathroom.
+14. John and Sandra went to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"according to context sentence 13, ""sandra and mary travelled to the bathroom"", which indicates that sandra was initially in the bathroom. however, context sentence 14, ""john and sandra went to the hallway"", implies that sandra left the bathroom and went to the hallway with john. therefore, the most recent and up-to-date information about sandra's location is that she is in the hallway, which is the answer to the question ""where is sandra?""."	fully	hallway	True	Since Sandra and Mary travelled to the bathroom in sentence 13, it implies that Sandra was there. However, sentence 14 states that John and Sandra went to the hallway, which means Sandra is currently in the hallway.		"Reasoning: Since Sandra and Mary travelled to the bathroom in sentence 13, it implies that Sandra was there. However, sentence 14 states that John and Sandra went to the hallway, which means Sandra is currently in the hallway.
+
+Answer: hallway"	0.0	0.0196	False	False	False	False	0

@@ -1,0 +1,61 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2121	20	58	1	"*TASK*
+Here are the context sentences:
+1. Antoine is hungry.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	since antoine is hungry, it is logical to assume that he will go to a place where he can satisfy his hunger. the most common place in a household where people go to eat is the kitchen, which is where food is typically prepared and consumed. therefore, it is reasonable to conclude that antoine will go to the kitchen.	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+2122	20	58	2	"*TASK*
+Here are the context sentences:
+3. Yann is hungry.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	since yann is hungry, it is logical to assume that he will go to a place where he can satisfy his hunger. based on the previous context about antoine, who was also hungry and went to the kitchen, it is reasonable to conclude that yann will also go to the kitchen, as it is a common place in a household where people go to eat.	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+2123	20	58	3	"*TASK*
+Here are the context sentences:
+5. Antoine went back to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	hungry	since antoine went back to the kitchen, and we know from the previous context that antoine was hungry, it is logical to conclude that antoine went to the kitchen because he was hungry. this is a direct connection between antoine's hunger and his action of going to the kitchen, which is a common place to satisfy hunger.	none	hungry	True			Answer: hungry	0.0	0.25	False	False	False	False	0
+2124	20	58	4	"*TASK*
+Here are the context sentences:
+7. Antoine took the apple there.
+
+Now, answer the following question:
+Why did antoine get the apple?"	hungry	since antoine took the apple, and we know from the previous context that antoine was hungry, it is logical to conclude that antoine got the apple because he was hungry. apples are a type of food, and people often eat food when they are hungry, so it is a reasonable assumption that antoine took the apple to satisfy his hunger.	none	hungry	True			Answer: hungry	0.0	0.25	False	False	False	False	0
+2125	20	58	5	"*TASK*
+Here are the context sentences:
+9. Sumit is hungry.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	since sumit is hungry, it is logical to assume that he will go to a place where he can satisfy his hunger. based on the previous context about antoine and yann, who were also hungry and went to the kitchen, it is reasonable to conclude that sumit will also go to the kitchen, as it is a common place in a household where people go to eat.	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+2126	20	58	6	"*TASK*
+Here are the context sentences:
+11. Sumit went to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	hungry	since sumit went to the kitchen, and we know from the previous context that sumit is hungry, it is logical to conclude that sumit went to the kitchen because he was hungry. the kitchen is a common place where people go to eat and satisfy their hunger, so it is a reasonable assumption that sumit's hunger led him to go to the kitchen.	none	hungry	True			Answer: hungry	0.0	0.25	False	False	False	False	0
+2127	20	58	7	"*TASK*
+Here are the context sentences:
+13. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	since sumit went to the kitchen, and we know from the previous context that sumit is hungry, it is logical to conclude that sumit went to the kitchen because he was hungry. the kitchen is a common place where people go to eat and satisfy their hunger, so it is a reasonable assumption that sumit's hunger led him to go to the kitchen.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+2128	20	58	8	"*TASK*
+Here are the context sentences:
+15. Yann journeyed to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	hungry	since sumit went to the kitchen, and we know from the previous context that sumit is hungry, it is logical to conclude that sumit went to the kitchen because he was hungry. the kitchen is a common place where people go to eat and satisfy their hunger, so it is a reasonable assumption that sumit's hunger led him to go to the kitchen.	none	hungry	True			Answer: hungry	0.0	0.25	False	False	False	False	0
+2129	20	58	9	"*TASK*
+Here are the context sentences:
+17. Jason travelled to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	since sumit went to the kitchen, and we know from the previous context that sumit is hungry, it is logical to conclude that sumit went to the kitchen because he was hungry. the kitchen is a common place where people go to eat and satisfy their hunger, so it is a reasonable assumption that sumit's hunger led him to go to the kitchen.	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2130	20	58	10	"*TASK*
+Here are the context sentences:
+19. Jason took the pajamas there.
+
+Now, answer the following question:
+Why did jason get the pajamas?"	tired	since sumit went to the kitchen, and we know from the previous context that sumit is hungry, it is logical to conclude that sumit went to the kitchen because he was hungry. the kitchen is a common place where people go to eat and satisfy their hunger, so it is a reasonable assumption that sumit's hunger led him to go to the kitchen.	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0

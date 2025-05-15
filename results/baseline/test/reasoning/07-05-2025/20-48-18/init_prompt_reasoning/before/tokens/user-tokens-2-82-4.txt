@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+20	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+21	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+22	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+23	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

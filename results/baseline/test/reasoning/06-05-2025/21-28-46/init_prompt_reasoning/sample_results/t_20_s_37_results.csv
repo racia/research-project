@@ -1,0 +1,101 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2450	20	37	1	"*TASK*
+Here are the context sentences:
+1. Antoine is bored.
+
+Now, answer the following question:
+Where will antoine go?"	garden	there is no direct information provided about antoine's destination. however, it is mentioned that antoine is bored, which implies that he might want to do something to alleviate his boredom. going to the garden is a common activity people do to relax and get some fresh air, which could help alleviate boredom. therefore, it is a logical inference that antoine might go to the garden to alleviate his boredom.	fully	garden	True	Since Antoine is bored, he might want to do something to alleviate his boredom. The context sentences do not provide any specific information about Antoine's preferences or activities, but based on the assumption that he wants to do something to overcome his boredom, it is likely that he will go somewhere where he can engage in an activity that interests him.		"Reasoning: Since Antoine is bored, he might want to do something to alleviate his boredom. The context sentences do not provide any specific information about Antoine's preferences or activities, but based on the assumption that he wants to do something to overcome his boredom, it is likely that he will go somewhere where he can engage in an activity that interests him.
+
+Answer: garden"	0.0405	0.0135	False	False	False	True	0
+2451	20	37	2	"*TASK*
+Here are the context sentences:
+3. Jason is bored.
+
+Now, answer the following question:
+Where will jason go?"	garden	the context only mentions that jason is bored, but it does not provide any direct information about his destination. however, in the previous conversation, it was inferred that going to the garden is a possible solution to alleviate boredom (as seen in antoine's case). since jason is also bored, it is a logical assumption that he might also go to the garden to alleviate his boredom, following a similar pattern of behavior as antoine.	fully	kitchen	False	Since Jason is bored, he might want to do something to alleviate his boredom. However, in the previous context, Jason was thirsty and went to the kitchen. This suggests that Jason might go to a place where he can find something to do or engage in an activity that interests him.		"Reasoning: Since Jason is bored, he might want to do something to alleviate his boredom. However, in the previous context, Jason was thirsty and went to the kitchen. This suggests that Jason might go to a place where he can find something to do or engage in an activity that interests him.
+
+Answer: kitchen"	0.0312	0.0156	False	False	False	False	0
+2452	20	37	3	"*TASK*
+Here are the context sentences:
+5. Yann is hungry.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	when yann is hungry, it is a logical inference that he will go to a place where he can find food. the kitchen is a common location in a household where food is typically prepared and consumed. therefore, it is a reasonable assumption that yann will go to the kitchen to satisfy his hunger.	fully	Not enough information to answer.	False	There is no previous information about Yann's actions or preferences, so we cannot make an assumption about where Yann will go. The context sentence only provides information about Yann's current state (being hungry), but it does not provide any information about what Yann will do next.		"Reasoning: There is no previous information about Yann's actions or preferences, so we cannot make an assumption about where Yann will go. The context sentence only provides information about Yann's current state (being hungry), but it does not provide any information about what Yann will do next.
+
+Answer: Not enough information to answer."	0.1304	0.0145	False	False	False	True	0
+2453	20	37	4	"*TASK*
+Here are the context sentences:
+7. Antoine moved to the garden.
+
+Now, answer the following question:
+Why did antoine go to the garden?"	bored	in a previous conversation, it was mentioned that antoine was bored (context line 1). it was inferred that going to the garden might be a solution to alleviate his boredom. now, it is stated that antoine moved to the garden. therefore, it is a logical conclusion that antoine went to the garden because he was bored, as previously suspected.	none	bored	True	Based on the previous context, Antoine was bored, and it is likely that he went to the garden to alleviate his boredom. The context sentence does not provide any other information about Antoine's motivations, but it is reasonable to assume that he went to the garden because he was bored.		"Reasoning: Based on the previous context, Antoine was bored, and it is likely that he went to the garden to alleviate his boredom. The context sentence does not provide any other information about Antoine's motivations, but it is reasonable to assume that he went to the garden because he was bored.
+
+Answer: bored"	0.0635	0.0159	False	True	False	True	0
+2454	20	37	5	"*TASK*
+Here are the context sentences:
+9. Jason travelled to the garden.
+
+Now, answer the following question:
+Why did jason go to the garden?"	bored	in a previous conversation, it was mentioned that jason was bored (context line 3). it was also inferred that going to the garden might be a solution to alleviate boredom, as seen in antoine's case (context lines 1 and 7). now, it is stated that jason travelled to the garden. therefore, it is a logical conclusion that jason went to the garden because he was bored, following a similar pattern of behavior as antoine.	none	Not enough information to answer.	False	There is no previous information about Jason's actions or preferences, and the context sentence only provides information about Jason's current action (traveling to the garden). However, based on the previous context, Jason was thirsty and went to the kitchen. It is unlikely that Jason would go to the garden for the same reason, as the context sentence suggests that Jason has changed his destination.		"Reasoning: There is no previous information about Jason's actions or preferences, and the context sentence only provides information about Jason's current action (traveling to the garden). However, based on the previous context, Jason was thirsty and went to the kitchen. It is unlikely that Jason would go to the garden for the same reason, as the context sentence suggests that Jason has changed his destination.
+
+Answer: Not enough information to answer."	0.023	0.0115	False	False	False	True	0
+2455	20	37	6	"*TASK*
+Here are the context sentences:
+11. Antoine picked up the football there.
+
+Now, answer the following question:
+Why did antoine get the football?"	bored	" your reasoning.
+
+these are the context lines: 
+this is the question: where is yann?
+this is the answer: kitchen"	none	bored	True	Based on the previous context, Antoine was bored, and it is likely that he got the football because he was bored. The context sentence suggests that Antoine went to the garden, which might be a place where he can engage in an activity that interests him, such as playing with the football.		"Reasoning: Based on the previous context, Antoine was bored, and it is likely that he got the football because he was bored. The context sentence suggests that Antoine went to the garden, which might be a place where he can engage in an activity that interests him, such as playing with the football.
+
+Answer: bored"	0.0154	0.0154	False	True	False	False	0
+2456	20	37	7	"*TASK*
+Here are the context sentences:
+13. Yann went to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	hungry	" your reasoning.
+
+these are the context lines: 
+this is the question: where is yann?
+this is the answer: kitchen"	none	Not enough information to answer.	False	There is no previous information about Yann's actions or preferences, and the context sentence only provides information about Yann's current action (going to the kitchen). However, based on the previous context, Yann was bored, and it is unlikely that Yann would go to the kitchen for the same reason, as the context sentence suggests that Yann has changed his destination.		"Reasoning: There is no previous information about Yann's actions or preferences, and the context sentence only provides information about Yann's current action (going to the kitchen). However, based on the previous context, Yann was bored, and it is unlikely that Yann would go to the kitchen for the same reason, as the context sentence suggests that Yann has changed his destination.
+
+Answer: Not enough information to answer."	0.092	0.0115	False	False	False	True	0
+2457	20	37	8	"*TASK*
+Here are the context sentences:
+15. Yann got the apple there.
+
+Now, answer the following question:
+Why did yann get the apple?"	hungry	" your reasoning.
+
+these are the context lines: 
+this is the question: where is yann?
+this is the answer: kitchen"	none	Not enough information to answer.	False	There is no previous information about Yann's actions or preferences, and the context sentence only provides information about Yann's current action (getting the apple). However, based on the previous context, Yann was bored, and it is unlikely that Yann would get an apple for the same reason, as the context sentence suggests that Yann has changed his activity.		"Reasoning: There is no previous information about Yann's actions or preferences, and the context sentence only provides information about Yann's current action (getting the apple). However, based on the previous context, Yann was bored, and it is unlikely that Yann would get an apple for the same reason, as the context sentence suggests that Yann has changed his activity.
+
+Answer: Not enough information to answer."	0.1059	0.0118	False	False	False	True	0
+2458	20	37	9	"*TASK*
+Here are the context sentences:
+17. Sumit is hungry.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	" your reasoning.
+
+these are the context lines: 
+this is the question: where is yann?
+this is the answer: kitchen"	fully	kitchen	True	There is no previous information about Sumit's actions or preferences, but based on the assumption that Sumit is hungry, he might want to go somewhere where he can find something to eat.		"Reasoning: There is no previous information about Sumit's actions or preferences, but based on the assumption that Sumit is hungry, he might want to go somewhere where he can find something to eat.
+
+Answer: kitchen"	0.0889	0.0222	False	False	False	True	0
+2459	20	37	10	"*TASK*
+Here are the context sentences:
+19. Sumit travelled to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	hungry	" your reasoning.
+
+these are the context lines: 
+this is the question: where is yann?
+this is the answer: kitchen"	none	hungry	True	Based on the previous context, Sumit was hungry, and it is likely that he went to the kitchen to find something to eat.		"Reasoning: Based on the previous context, Sumit was hungry, and it is likely that he went to the kitchen to find something to eat.
+
+Answer: hungry"	0.0	0.0294	False	False	False	False	0

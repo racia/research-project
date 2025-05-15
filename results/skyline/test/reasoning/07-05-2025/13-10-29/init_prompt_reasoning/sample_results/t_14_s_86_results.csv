@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1926	14	86	1	"*TASK*
+Here are the context sentences:
+1. Fred journeyed to the school yesterday.
+2. Fred travelled to the office this morning.
+3. Yesterday Bill went back to the cinema.
+4. Yesterday Mary journeyed to the school.
+
+Now, answer the following question:
+Where was Fred before the office?"	school	from context sentence 2, we know that fred travelled to the office this morning. to determine where fred was before the office, we need to look at fred's previous location. context sentence 1 states that fred journeyed to the school yesterday. since fred travelled to the office this morning, it implies that fred was at the school before going to the office.	fully	school	True	According to sentence 1, Fred was at the school yesterday. Then, according to sentence 2, Fred travelled to the office this morning. Therefore, Fred was at the school before going to the office.		"assistant
+
+Reasoning: According to sentence 1, Fred was at the school yesterday. Then, according to sentence 2, Fred travelled to the office this morning. Therefore, Fred was at the school before going to the office.
+
+Answer: school"	0.2115	0.0385	False	False	False	False	0
+1927	14	86	2	"*TASK*
+Here are the context sentences:
+6. Yesterday Julie travelled to the office.
+7. Mary journeyed to the cinema this morning.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	school	from context sentence 7, we know that mary journeyed to the cinema this morning. to determine where mary was before the cinema, we need to look at mary's previous location. although there is no direct information about mary's previous location in sentences 6 and 7, we can infer it from previous context sentences. sentence 4 states that mary journeyed to the school yesterday. since mary journeyed to the cinema this morning, it implies that mary was at the school before	partially	school	True	According to sentence 4, Mary journeyed to the school yesterday. There is no other information about Mary's location before going to the cinema. Therefore, we can infer that Mary was at the school before going to the cinema.		"Reasoning: According to sentence 4, Mary journeyed to the school yesterday. There is no other information about Mary's location before going to the cinema. Therefore, we can infer that Mary was at the school before going to the cinema.
+
+Answer: school"	0.0755	0.0377	False	False	False	True	0
+1928	14	86	3	"*TASK*
+Here are the context sentences:
+9. This morning Julie went back to the kitchen.
+10. This morning Bill moved to the park.
+
+Now, answer the following question:
+Where was Bill before the park?"	cinema	from context sentence 10, we know that bill moved to the park this morning. to determine where bill was before the park, we need to look at bill's previous location. although there is no direct information about bill's previous location in sentences 9 and 10, we can infer it from previous context sentences. sentence 3 states that bill went back to the cinema yesterday. since bill moved to the park this morning, it implies that bill was at the cinema before the park	partially	cinema	True	According to sentence 3, Bill went back to the cinema yesterday. There is no other information about Bill's location before going to the park. Therefore, we can infer that Bill was at the cinema before going to the park.		"Reasoning: According to sentence 3, Bill went back to the cinema yesterday. There is no other information about Bill's location before going to the park. Therefore, we can infer that Bill was at the cinema before going to the park.
+
+Answer: cinema"	0.0189	0.0377	False	False	False	True	0
+1929	14	86	4	"*TASK*
+Here are the context sentences:
+12. Mary travelled to the bedroom this afternoon.
+13. This afternoon Julie moved to the school.
+
+Now, answer the following question:
+Where was Julie before the school?"	kitchen	from context sentence 13, we know that julie moved to the school this afternoon. to determine where julie was before the school, we need to look at julie's previous location. although there is no direct information about julie's previous location in sentences 12 and 13, we can infer it from previous context sentences. sentence 9 states that julie went back to the kitchen this morning. since julie moved to the school this afternoon, it implies that jul	partially	kitchen	True	According to sentence 9, Julie went back to the kitchen this morning. There is no other information about Julie's location before going to the school. Therefore, we can infer that Julie was at the kitchen before going to the school.		"Reasoning: According to sentence 9, Julie went back to the kitchen this morning. There is no other information about Julie's location before going to the school. Therefore, we can infer that Julie was at the kitchen before going to the school.
+
+Answer: kitchen"	0.1111	0.037	False	False	False	True	0
+1930	14	86	5	"*TASK*
+Here are the context sentences:
+15. Fred went back to the cinema this afternoon.
+16. This evening Mary travelled to the office.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	office	from context sentence 15, we know that fred went back to the cinema this afternoon. to determine where fred was before the cinema, we need to look at fred's previous location. although there is no direct information about fred's previous location in sentences 15 and 16, we can infer it from previous context sentences. sentence 2 states that fred travelled to the office this morning. since fred went back to the cinema this afternoon, it implies that fred was at the office before	partially	office	True	According to sentence 2, Fred travelled to the office this morning. Then, according to sentence 15, Fred went back to the cinema this afternoon. Therefore, we can infer that Fred was at the office before going to the cinema.		"Reasoning: According to sentence 2, Fred travelled to the office this morning. Then, according to sentence 15, Fred went back to the cinema this afternoon. Therefore, we can infer that Fred was at the office before going to the cinema.
+
+Answer: office"	0.0182	0.0364	False	False	False	False	0

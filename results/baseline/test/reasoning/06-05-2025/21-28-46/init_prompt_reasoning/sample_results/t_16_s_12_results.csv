@@ -1,0 +1,17 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+12	16	12	1	"*TASK*
+Here are the context sentences:
+1. Bernhard is a swan.
+2. Greg is a frog.
+3. Brian is a swan.
+4. Julius is a lion.
+5. Greg is gray.
+6. Julius is yellow.
+7. Lily is a lion.
+8. Lily is green.
+9. Brian is yellow.
+
+Now, answer the following question:
+What color is Bernhard?"	yellow	since bernhard is a swan (context 1), and brian is also a swan (context 3), we can infer that bernhard and brian share similar characteristics. we know that brian is yellow (context 9), so it is logical to assume that bernhard, being the same type of animal, is also yellow.	fully	yellow	True	Since Bernhard is a swan, and swans are typically white, it is likely that Bernhard is white. However, there is no direct mention of Bernhard's color in the context sentences. We can infer Bernhard's color by considering the colors of other swans. Since Brian is also a swan and is yellow, it is possible that Bernhard is also yellow.		"Reasoning: Since Bernhard is a swan, and swans are typically white, it is likely that Bernhard is white. However, there is no direct mention of Bernhard's color in the context sentences. We can infer Bernhard's color by considering the colors of other swans. Since Brian is also a swan and is yellow, it is possible that Bernhard is also yellow.
+
+Answer: yellow"	0.1294	0.0353	False	False	False	True	0

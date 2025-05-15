@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+94	.	ĠMary	Ġdiscarded	Ġthe	Ġapple	.Ċ
+95	.	ĠSandra	Ġgrabbed	Ġthe	Ġapple	.Ċ
+96	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+97	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġbathroom	?Ċ

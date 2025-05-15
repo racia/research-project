@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+28	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+29	.	ĠJohn	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+30	.	ĠJohn	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+31	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

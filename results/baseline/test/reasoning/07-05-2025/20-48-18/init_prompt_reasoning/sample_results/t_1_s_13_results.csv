@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+61	1	13	1	"*TASK*
+Here are the context sentences:
+1. Sandra went back to the hallway.
+2. John moved to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"according to context sentence 1, ""sandra went back to the hallway"", which explicitly states that sandra's location is the hallway. therefore, the answer to the question ""where is sandra?"" is indeed the hallway."	fully	hallway	True	Sandra went back to the hallway, which implies that she was previously somewhere else, but the context does not provide information about where she was before going back to the hallway. However, John moved to the hallway, which suggests that Sandra is also in the hallway, as she went back to it.		"Reasoning: Sandra went back to the hallway, which implies that she was previously somewhere else, but the context does not provide information about where she was before going back to the hallway. However, John moved to the hallway, which suggests that Sandra is also in the hallway, as she went back to it.
+
+Answer: hallway"	0.0	0.0152	False	False	False	True	0
+62	1	13	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the bathroom.
+5. Daniel travelled to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"according to context sentence 5, ""daniel travelled to the office"", which explicitly states that daniel's location is the office. therefore, the answer to the question ""where is daniel?"" is indeed the office."	fully	office	True	The context sentences do not provide any information about Daniel's location after he travelled to the office. There is no mention of him moving or going anywhere else.		"Reasoning: The context sentences do not provide any information about Daniel's location after he travelled to the office. There is no mention of him moving or going anywhere else.
+
+Answer: office"	0.0	0.0263	False	False	False	True	0
+63	1	13	3	"*TASK*
+Here are the context sentences:
+7. John moved to the office.
+8. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"according to context sentence 8, ""sandra travelled to the bathroom"", which explicitly states that sandra's location is the bathroom. therefore, the answer to the question ""where is sandra?"" is indeed the bathroom."	fully	bathroom	True	Sandra travelled to the bathroom, which implies that she is currently in the bathroom.		"Reasoning: Sandra travelled to the bathroom, which implies that she is currently in the bathroom.
+
+Answer: bathroom"	0.0	0.0435	False	False	False	False	0
+64	1	13	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the bedroom.
+11. Daniel went back to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"according to context sentence 10, ""daniel went back to the bedroom"", which indicates that daniel's location is the bedroom. however, context sentence 11, ""daniel went back to the garden"", overrides the previous location and updates daniel's location to the garden. therefore, the answer to the question ""where is daniel?"" is indeed the garden."	fully	garden	True	Daniel went back to the bedroom, but then he went back to the garden, which implies that he was in the bedroom initially, but then moved to the garden.		"Reasoning: Daniel went back to the bedroom, but then he went back to the garden, which implies that he was in the bedroom initially, but then moved to the garden.
+
+Answer: garden"	0.0	0.025	False	False	False	False	0
+65	1	13	5	"*TASK*
+Here are the context sentences:
+13. Sandra moved to the hallway.
+14. John went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"there is no information provided about daniel's location in the given context sentences (13 and 14). however, the answer ""garden"" suggests that daniel's location was established in a previous part of the conversation. since the conversation history is not provided, it can be inferred that daniel's location was established earlier, and it is still valid. therefore, the answer to the question ""where is daniel?"" is indeed the garden."	none	not mentioned	False	There is no mention of Daniel in the context sentences, so his location is not specified.		"Reasoning: There is no mention of Daniel in the context sentences, so his location is not specified.
+
+Answer: not mentioned"	0.0	0.0385	False	False	False	True	0

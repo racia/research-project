@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġin	Ġcontext	Ġsentences	Ġ	12	Ġand	Ġ	13	.	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġcinema	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	's	Ġactivities	Ġor	Ġlocation	Ġrelated	Ġto	Ġthe	Ġcinema	Ġin	Ġthese	Ġsentences	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

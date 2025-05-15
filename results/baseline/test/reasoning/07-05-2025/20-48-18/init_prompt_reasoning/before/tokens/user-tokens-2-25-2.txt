@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+8	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+9	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+10	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+11	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

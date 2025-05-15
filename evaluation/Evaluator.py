@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from evaluation.Metrics import Accuracy, Metric, AttnDistribution
+from evaluation.Metrics import Accuracy, AttnDistribution, Metric
 from evaluation.Statistics import Statistics
 
 
@@ -36,10 +36,10 @@ class Evaluator:
             f"Standard Deviation for Soft-Match Accuracy {self.version.capitalize()}"
         )
 
-        self.max_supp_target: AttnDistribution = AttnDistribution(
+        self.max_supp_attn: AttnDistribution = AttnDistribution(
             f"Max Attention Distribution {self.version.capitalize()}"
         )
-        self.max_supp_target_std: Metric = Metric(
+        self.max_supp_attn_std: Metric = Metric(
             f"Standard Deviation for Max Attention Distribution {self.version.capitalize()}"
         )
 
@@ -50,8 +50,8 @@ class Evaluator:
             f"soft_match={self.soft_match_accuracy.get_mean()}), "
             f"exact_match_std={self.exact_match_accuracy.get_std()}, "
             f"soft_match_std={self.soft_match_accuracy.get_std()}>, "
-            f"max_supp_target={self.max_supp_target.get_mean()}>, "
-            f"max_supp_target_std={self.max_supp_target.get_std()}>"
+            f"max_supp_attn={self.max_supp_attn.get_mean()}>, "
+            f"max_supp_attn_std={self.max_supp_attn.get_std()}>"
         )
 
     def print_accuracies(self, id_, exact_match_acc=None, soft_match_acc=None) -> None:
@@ -88,13 +88,13 @@ class Evaluator:
                     else ""
                 ),
             )
-        if self.max_supp_target:
+        if self.max_supp_attn:
             print(
                 f"[{self.version}] Max attention distribution for {self.level} {id_}:",
-                self.max_supp_target.get_mean(),
+                self.max_supp_attn.get_mean(),
                 (
-                    f"-- std: {self.max_supp_target.get_std()}"
-                    if len(self.max_supp_target) > 1
+                    f"-- std: {self.max_supp_attn.get_std()}"
+                    if len(self.max_supp_attn) > 1
                     else ""
                 ),
                 end="\n\n",
@@ -125,8 +125,8 @@ class MetricEvaluator(Evaluator):
         self.soft_match_accuracy.add(smaller_evaluator.soft_match_accuracy)
         self.exact_match_std.add(smaller_evaluator.exact_match_accuracy.get_std())
         self.soft_match_std.add(smaller_evaluator.soft_match_accuracy.get_std())
-        self.max_supp_target.add(smaller_evaluator.max_supp_target)
-        self.max_supp_target_std.add(smaller_evaluator.max_supp_target.get_std())
+        self.max_supp_attn.add(smaller_evaluator.max_supp_attn)
+        self.max_supp_attn_std.add(smaller_evaluator.max_supp_attn.get_std())
 
     def calculate_std(self):
         """
@@ -136,8 +136,8 @@ class MetricEvaluator(Evaluator):
         self.exact_match_std.add(exact_match_std)
         soft_match_std = self.soft_match_accuracy.get_std()
         self.soft_match_std.add(soft_match_std)
-        max_supp_target_std = self.max_supp_target.get_std()
-        self.max_supp_target_std.add(max_supp_target_std)
+        max_supp_attn_std = self.max_supp_attn.get_std()
+        self.max_supp_attn_std.add(max_supp_attn_std)
         return exact_match_std, soft_match_std
 
     def get_accuracies(self, as_lists: bool = False) -> dict[str, float | Metric]:
@@ -168,12 +168,12 @@ class MetricEvaluator(Evaluator):
         """
         if as_lists:
             return {
-                f"max_attn_dist_{self.version}": self.max_supp_target,
-                f"max_attn_dist_std_{self.version}": self.max_supp_target_std,
+                f"max_attn_dist_{self.version}": self.max_supp_attn,
+                f"max_attn_dist_std_{self.version}": self.max_supp_attn_std,
             }
         return {
-            f"max_supp_target_{self.version}": self.max_supp_target.get_mean(),
-            f"max_supp_target_std_{self.version}": self.max_supp_target.get_std(),
+            f"max_supp_attn_{self.version}": self.max_supp_attn.get_mean(),
+            f"max_supp_attn_std_{self.version}": self.max_supp_attn.get_std(),
         }
 
 

@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+12	.	ĠSandra	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+13	.	ĠSandra	Ġleft	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

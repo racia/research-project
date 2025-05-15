@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+21	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+22	.	ĠDaniel	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+23	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+24	.	ĠJohn	Ġdiscarded	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġapple	?Ċ

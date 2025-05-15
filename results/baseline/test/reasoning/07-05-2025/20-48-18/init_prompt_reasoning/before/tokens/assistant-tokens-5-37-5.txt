@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	15	,	ĠFred	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	,	Ġand	Ġthen	Ġaccording	Ġto	Ġsentence	Ġ	16	,	ĠMary	Ġgave	Ġthe	Ġmilk	Ġback	Ġto	ĠFred	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġreceived	Ġthe	Ġmilk	Ġinitially	,	Ġand	Ġthen	ĠFred	Ġreceived	Ġit	Ġback	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġbathroom	Ġis	Ġeast	Ġof	Ġthe	Ġgarden	,	Ġand	Ġthe	Ġkitchen	Ġis	Ġeast	Ġof	Ġthe	Ġbathroom	,	Ġthe	Ġgarden	Ġis	Ġwest	Ġof	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

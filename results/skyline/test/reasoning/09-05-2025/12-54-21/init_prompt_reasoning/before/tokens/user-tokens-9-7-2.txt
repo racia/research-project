@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠSandra	Ġis	Ġnot	Ġin	Ġthe	Ġbathroom	.Ċ
+5	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠSandra	Ġin	Ġthe	Ġbathroom	?Ċ

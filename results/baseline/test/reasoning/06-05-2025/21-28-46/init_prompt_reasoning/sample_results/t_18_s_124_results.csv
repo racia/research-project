@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1773	18	124	1	"*TASK*
+Here are the context sentences:
+1. The chocolate fits inside the container.
+2. The box of chocolates fits inside the box.
+3. The chocolate fits inside the suitcase.
+4. The suitcase is bigger than the container.
+5. The chest is bigger than the box of chocolates.
+
+Now, answer the following question:
+Is the suitcase bigger than the chocolate?"	yes	from context sentence 3, we know that the chocolate fits inside the suitcase. this implies that the suitcase is larger than the chocolate. therefore, the answer to the question is yes, the suitcase is bigger than the chocolate.	fully	yes	True	The question asks if the suitcase is bigger than the chocolate. From sentence 3, we know the chocolate fits inside the suitcase, which means the chocolate is smaller than the suitcase. Sentence 4 states that the suitcase is bigger than the container, but this information is not relevant to the comparison between the suitcase and the chocolate. Therefore, we can conclude that the suitcase is indeed bigger than the chocolate.		"Reasoning: The question asks if the suitcase is bigger than the chocolate. From sentence 3, we know the chocolate fits inside the suitcase, which means the chocolate is smaller than the suitcase. Sentence 4 states that the suitcase is bigger than the container, but this information is not relevant to the comparison between the suitcase and the chocolate. Therefore, we can conclude that the suitcase is indeed bigger than the chocolate.
+
+Answer: yes"	0.1379	0.023	False	False	False	True	0
+1774	18	124	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	from the previous context sentences, we know that the chocolate fits inside the suitcase (sentence 3). this implies that the suitcase is larger than the chocolate. therefore, the answer to the question is no, the chocolate is not bigger than the suitcase.	none	no	True	The question asks if the chocolate is bigger than the suitcase. From sentence 3, we know the chocolate fits inside the suitcase, which means the chocolate is smaller than the suitcase. This information is sufficient to conclude that the chocolate is not bigger than the suitcase.		"Reasoning: The question asks if the chocolate is bigger than the suitcase. From sentence 3, we know the chocolate fits inside the suitcase, which means the chocolate is smaller than the suitcase. This information is sufficient to conclude that the chocolate is not bigger than the suitcase.
+
+Answer: no"	0.0678	0.0339	False	False	False	True	0
+1775	18	124	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the suitcase?"	yes	"from the previous context sentences, we know that ""the chocolate fits inside the suitcase"" (sentence 3). this directly states that the chocolate fits in the suitcase. therefore, the answer to the question is yes, the chocolate fits in the suitcase."	none	yes	True	The question asks if the chocolate fits in the suitcase. From sentence 3, we know the chocolate fits inside the suitcase, which means the answer is yes.		"Reasoning: The question asks if the chocolate fits in the suitcase. From sentence 3, we know the chocolate fits inside the suitcase, which means the answer is yes.
+
+Answer: yes"	0.0256	0.0513	False	False	False	False	0
+1776	18	124	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the suitcase fit in the chocolate?"	no	"from the previous context sentences, we know that ""the chocolate fits inside the suitcase"" (sentence 3). this implies that the suitcase is larger than the chocolate. therefore, it is not possible for the suitcase to fit inside the chocolate, and the answer to the question is no, the suitcase does not fit in the chocolate."	none	no	True	The question asks if the suitcase fits in the chocolate. However, from sentence 3, we know the chocolate fits inside the suitcase, which means the chocolate is smaller than the suitcase. It is impossible for the suitcase to fit inside the chocolate, so the answer is no.		"Reasoning: The question asks if the suitcase fits in the chocolate. However, from sentence 3, we know the chocolate fits inside the suitcase, which means the chocolate is smaller than the suitcase. It is impossible for the suitcase to fit inside the chocolate, so the answer is no.
+
+Answer: no"	0.0323	0.0323	False	False	False	False	0
+1777	18	124	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the chocolate?"	yes	"from the previous context sentences, we know that ""the chocolate fits inside the suitcase"" (sentence 3). this implies that the suitcase is larger than the chocolate. therefore, the answer to the question is yes, the suitcase is bigger than the chocolate."	none	yes	True	The question asks if the suitcase is bigger than the chocolate. From sentence 3, we know the chocolate fits inside the suitcase, which means the chocolate is smaller than the suitcase. This information is sufficient to conclude that the suitcase is indeed bigger than the chocolate.		"Reasoning: The question asks if the suitcase is bigger than the chocolate. From sentence 3, we know the chocolate fits inside the suitcase, which means the chocolate is smaller than the suitcase. This information is sufficient to conclude that the suitcase is indeed bigger than the chocolate.
+
+Answer: yes"	0.0339	0.0339	False	False	False	True	0

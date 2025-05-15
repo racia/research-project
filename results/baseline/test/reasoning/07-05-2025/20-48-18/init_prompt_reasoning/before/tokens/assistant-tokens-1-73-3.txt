@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġgarden	Ġor	Ġbeing	Ġat	Ġthe	Ġgarden	.	ĠThe	Ġonly	Ġmention	Ġof	ĠMary	Ġis	Ġher	Ġtravelling	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġshe	Ġis	Ġcurrently	Ġthere	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

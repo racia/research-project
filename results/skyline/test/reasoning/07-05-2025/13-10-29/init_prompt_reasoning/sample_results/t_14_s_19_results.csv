@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1591	14	19	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the bedroom yesterday.
+2. Bill travelled to the office yesterday.
+3. This morning Mary went to the cinema.
+4. Yesterday Fred journeyed to the cinema.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	bedroom	from context sentence 1, we know that mary was in the bedroom yesterday. there is no information about mary's movement from the bedroom to any other location until this morning, when she went to the cinema (context sentence 3). therefore, it can be logically inferred that mary was in the bedroom before going to the cinema this morning.	fully	bedroom	True	According to sentence 1, Mary was in the bedroom yesterday. Then, according to sentence 3, Mary went to the cinema this morning. Therefore, Mary was in the bedroom before going to the cinema.		"assistant
+
+Reasoning: According to sentence 1, Mary was in the bedroom yesterday. Then, according to sentence 3, Mary went to the cinema this morning. Therefore, Mary was in the bedroom before going to the cinema.
+
+Answer: bedroom"	0.0769	0.0385	False	False	False	False	0
+1592	14	19	2	"*TASK*
+Here are the context sentences:
+6. Julie journeyed to the kitchen yesterday.
+7. Mary travelled to the office this afternoon.
+
+Now, answer the following question:
+Where was Mary before the office?"	cinema	from the provided context, we can see that there is no direct information about mary's location before going to the office. however, we can look at the previous context sentences (1-4) and find that mary went to the cinema this morning (sentence 3). there is no information about mary's movement from the cinema to any other location until this afternoon, when she went to the office (sentence 7). therefore, it can be logically inferred that mary was at the cinema	partially	cinema	True	There is no direct information about Mary's location before the office. However, we know that Mary went to the cinema in the morning (sentence 3) and now she is in the office (sentence 7). Therefore, we can infer that Mary was in the cinema before the office.		"Reasoning: There is no direct information about Mary's location before the office. However, we know that Mary went to the cinema in the morning (sentence 3) and now she is in the office (sentence 7). Therefore, we can infer that Mary was in the cinema before the office.
+
+Answer: cinema"	0.0923	0.0308	False	False	False	True	0
+1593	14	19	3	"*TASK*
+Here are the context sentences:
+9. Mary moved to the bedroom this evening.
+10. Fred travelled to the park this morning.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	office	from the provided context, we can see that sentence 7 mentions mary travelled to the office this afternoon. there is no information about mary's movement from the office to any other location until this evening, when she moved to the bedroom (sentence 9). therefore, it can be logically inferred that mary was at the office before moving to the bedroom this evening.	partially	office	True	According to sentence 7, Mary was in the office this afternoon. Then, according to sentence 9, Mary moved to the bedroom this evening. Therefore, Mary was in the office before the bedroom.		"Reasoning: According to sentence 7, Mary was in the office this afternoon. Then, according to sentence 9, Mary moved to the bedroom this evening. Therefore, Mary was in the office before the bedroom.
+
+Answer: office"	0.1458	0.0417	False	False	False	False	0
+1594	14	19	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Fred moved to the cinema.
+13. Julie went back to the office this morning.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	office	this question refers to a previous part of the conversation history. from the previous context sentences (7 and 9), we know that mary travelled to the office this afternoon and then moved to the bedroom this evening. therefore, it can be logically inferred that mary was at the office before moving to the bedroom. the new context sentences (12 and 13) do not provide any new information about mary's location, so the previous inference still holds.	none	office	True	According to sentence 7, Mary was in the office this afternoon. Then, according to sentence 9, Mary moved to the bedroom this evening. Therefore, Mary was in the office before the bedroom.		"Reasoning: According to sentence 7, Mary was in the office this afternoon. Then, according to sentence 9, Mary moved to the bedroom this evening. Therefore, Mary was in the office before the bedroom.
+
+Answer: office"	0.125	0.0417	False	False	False	False	0
+1595	14	19	5	"*TASK*
+Here are the context sentences:
+15. Julie travelled to the school this evening.
+16. Julie travelled to the bedroom this afternoon.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	office	this question refers to a previous part of the conversation history. the context sentences provided (15 and 16) are about julie's movements, but they do not provide any new information about mary's location. we can look at the previous context sentences (7 and 9) and see that mary travelled to the office this afternoon and then moved to the bedroom this evening. therefore, it can be logically inferred that mary was at the office before moving to the bedroom.	none	office	True	According to sentence 7, Mary was in the office this afternoon. Then, according to sentence 9, Mary moved to the bedroom this evening. Therefore, Mary was in the office before the bedroom.		"Reasoning: According to sentence 7, Mary was in the office this afternoon. Then, according to sentence 9, Mary moved to the bedroom this evening. Therefore, Mary was in the office before the bedroom.
+
+Answer: office"	0.0833	0.0417	False	False	False	False	0

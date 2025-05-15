@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	10	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġlocation	Ġbefore	Ġthat	.	ĠHowever	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġshe	Ġtravelled	Ġto	Ġthe	Ġcinema	,	Ġbut	Ġthe	Ġexact	Ġlocation	Ġis	Ġnot	Ġspecified	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

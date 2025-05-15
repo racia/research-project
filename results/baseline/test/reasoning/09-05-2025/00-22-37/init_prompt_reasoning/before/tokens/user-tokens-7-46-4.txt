@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠSandra	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJohn	.Ċ
+11	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠSandra	Ġcarrying	?Ċ

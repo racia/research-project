@@ -1,15 +1,69 @@
+from __future__ import annotations
+
 import re
 import textwrap
 from collections import defaultdict
+from dataclasses import dataclass
 from typing import Any
 
 import en_core_web_sm
+import torch
 from prettytable import PrettyTable
+from spacy.tokens.span import Span
 from transformers import PreTrainedTokenizerFast
 
 from evaluation.Evaluator import MetricEvaluator
+from settings.config import Enumerate
 
 nlp = en_core_web_sm.load()
+
+
+@dataclass
+class Source:
+    """
+    This class handles the roles of the participants in the conversation.
+    """
+
+    system: str = "system"
+    user: str = "user"
+    assistant: str = "assistant"
+
+    options = (system, user, assistant)
+
+
+def numerate_lines(lines: dict[int, str]) -> list[str]:
+    """
+    Adds line numbers to the beginning of each line.
+
+    :param lines: lines to numerate
+    :return: numerated lines
+    """
+    return [f"{i}. {line}" for i, line in lines.items()]
+
+
+def structure_part(
+    part: dict[str, dict[int, str]],
+    to_enumerate: Enumerate,
+) -> tuple[str, str]:
+    """
+    Structures the lines into a readable format.
+
+    :param part: part of the sample to structure
+    :param to_enumerate: if to add line numbers to the beginning of lines
+    :return: structured context and question
+    """
+    context = []
+    question = []
+    if part["context"]:
+        if to_enumerate.context:
+            context.extend(numerate_lines(part["context"]))
+        else:
+            context.extend(list(part["context"].values()))
+    if to_enumerate.question:
+        question.extend(numerate_lines(part["question"]))
+    else:
+        question.extend(list(part["question"].values()))
+    return "\n".join(context).strip(), "\n".join(question).strip()
 
 
 def contains_there(answer) -> bool:
@@ -61,22 +115,119 @@ def contains_not_mentioned(answer) -> bool:
     return False
 
 
-def generation_tokens(
-    tokenizer: PreTrainedTokenizerFast, role: str, eot: bool
+def get_generation_token_ids(
+    tokenizer: PreTrainedTokenizerFast, role: str
 ) -> list[float]:
     """
     Returns the token id for the role of the message.
 
     :param tokenizer: tokenizer to use
     :param role: role of the message
-    :param eot: whether to add the end of text token
     :return: token id and special tokens
     """
-    generation_token = "<|eot_id|>" if eot else "<|begin_of_text|>"
+    tokens = ["<|eot_id|>", "<|start_header_id|>", role, "<|end_header_id|>"]
+    return tokenizer.convert_tokens_to_ids(tokens)
 
-    return tokenizer.convert_tokens_to_ids(
-        [generation_token, "<|start_header_id|>", role, "<|end_header_id|>"]
+
+def sents_to_ids(
+    sentences: list[str | Span],
+    tokenizer: PreTrainedTokenizerFast,
+    output_empty: bool = False,
+) -> tuple[list[list[str]], list[list[int]], list[tuple]]:
+    """
+    Converts a message into ids using the tokenizer.
+    Additionally, it saves the start and end index of each sentence.
+
+    :param sentences: structured message to convert
+    :param tokenizer: tokenizer to use
+    :param output_empty: whether to include empty sentences into the output
+    :return: tokens and ids that represent sentences, and sentence spans
+    """
+    flat_ids = []
+    tokens, ids, sent_spans = [], [], []
+    for sentence in sentences:
+        if type(sentence) == Span:
+            sentence = sentence.text
+        sentence = sentence.strip() + "\n"
+        # \n\n in source produces empty sentences
+        if not sentence or sentence.isspace():
+            if output_empty:
+                tokens.append([])
+                ids.append([])
+                sent_spans.append(())
+            continue
+        sentence_tokens = tokenizer.tokenize(sentence)
+        sentence_ids = tokenizer.convert_tokens_to_ids(sentence_tokens)
+        torch.cuda.empty_cache()
+        tokens.append(sentence_tokens)
+        ids.append(sentence_ids)
+
+        start = len(flat_ids)
+        flat_ids.extend(sentence_ids)
+        end = len(flat_ids)
+        sent_spans.append((start, end))
+
+    return tokens, ids, sent_spans
+
+
+def flatten(lst: list[list] | list) -> list:
+    """
+    Flattens a list of lists into a single list.
+
+    :param lst: list of lists to flatten
+    :return: flattened list
+    """
+    if not lst:
+        return []
+    if all(isinstance(i, list) for i in lst):
+        return [item for sublist in lst for item in sublist]
+    elif not any(isinstance(obj, list) for obj in lst):
+        return lst
+    raise TypeError(
+        "Expected a list of lists or a list of integers, got:",
+        *[type(obj) for obj in lst],
     )
+
+
+def flatten_message(message: dict) -> list[dict]:
+    """
+    Flattens the message into a list of dictionaries.
+
+    :param message: message to flatten
+    :return: flattened message (list of dictionaries)
+    """
+    flat_message = []
+    spans = list(message["spans_with_types"].items())
+    for i in range(len(message["ids"])):
+        if not message["ids"][i]:
+            continue
+        span = spans[i][0]
+        flat_message.append(
+            {
+                "content": message["content"][span[0] : span[1]],
+                "ids": message["ids"][i],
+                "tokens": message["tokens"][i],
+                "spans_with_types": (spans[i],),
+            }
+        )
+    return flat_message
+
+
+def upd_span(span: tuple, offset: int) -> tuple[int, int]:
+    """
+    Update the span by adding an offset.
+
+    :param span: span to update
+    :param offset: offset to add
+    :return: updated span
+    """
+    if len(span) == 0:
+        return offset, offset
+    if len(span) != 2:
+        raise ValueError(
+            "Span must be a tuple of two integers representing the start and end indices."
+        )
+    return span[0] + offset, span[1] + offset
 
 
 def context_sentences(text: str) -> int:
@@ -98,77 +249,53 @@ def wrap_text(text, width=40):
 
 
 def print_metrics_table(
-    eval_before: MetricEvaluator = None,
-    eval_after: MetricEvaluator = None,
+    evaluators: list[MetricEvaluator],
     id_: Any = None,
 ) -> None:
     """
     Print a table comparing metrics before and after a process.
 
-    :param eval_before: MetricEvaluator object before the setting was applied
-    :param eval_after: MetricEvaluator object after the setting was applied
+    :param evaluators: MetricEvaluator objects with metrics before and after the setting was applied to compare
     :param id_: ID of the data level
     :return: None
     """
     table = PrettyTable()
 
-    if eval_before and eval_after:
-        table.field_names = ["Metric", "Before", "After"]
-    elif eval_before:
-        table.field_names = ["Metric", "Before"]
-    elif eval_after:
-        table.field_names = ["Metric", "After"]
+    if len(evaluators) == 2:
+        versions = ["Before", "After"]
+        table.field_names = ["Metric", *versions]
+    elif len(evaluators) == 1:
+        versions = ["Before"]
+        table.field_names = ["Metric", *versions]
     else:
-        raise ValueError("At least one MetricEvaluator must be provided.")
+        raise ValueError("Only one or two MetricEvaluators can be provided.")
 
     metric_values = defaultdict(dict)
 
-    if eval_before:
-        metric_values["Exact-match accuracy"]["Before"] = (
-            f"{eval_before.exact_match_accuracy.get_mean()} ± {eval_before.exact_match_accuracy.get_std()}"
-            if len(eval_before.exact_match_accuracy) > 1
-            else eval_before.exact_match_accuracy.get_mean()
+    for evaluator, version in zip(evaluators, versions):
+        metric_values["Exact-match accuracy"][version] = (
+            f"{evaluator.exact_match_accuracy.get_mean()} ± {evaluator.exact_match_accuracy.get_std()}"
+            if len(evaluator.exact_match_accuracy) > 1
+            else evaluator.exact_match_accuracy.get_mean()
         )
-        metric_values["Soft-match accuracy"]["Before"] = (
-            f"{eval_before.soft_match_accuracy.get_mean()} ± {eval_before.soft_match_accuracy.get_std()}"
-            if len(eval_before.soft_match_accuracy) > 1
-            else eval_before.soft_match_accuracy.get_mean()
+        metric_values["Soft-match accuracy"][version] = (
+            f"{evaluator.soft_match_accuracy.get_mean()} ± {evaluator.soft_match_accuracy.get_std()}"
+            if len(evaluator.soft_match_accuracy) > 1
+            else evaluator.soft_match_accuracy.get_mean()
         )
-        if eval_before.max_supp_target:
-            metric_values["Max attention distribution"]["Before"] = (
-                f"{eval_before.max_supp_target.get_mean()} ± {eval_before.max_attn_dist.get_std()}"
-                if len(eval_before.max_supp_target) > 1
-                else eval_before.max_supp_target.get_mean()
-            )
-
-    if eval_after:
-        metric_values["Exact-match accuracy"]["After"] = (
-            f"{eval_after.exact_match_accuracy.get_mean()} ± {eval_after.exact_match_accuracy.get_std()}"
-            if len(eval_after.exact_match_accuracy) > 1
-            else eval_after.exact_match_accuracy.get_mean()
-        )
-        metric_values["Soft-match accuracy"]["After"] = (
-            f"{eval_after.soft_match_accuracy.get_mean()} ± {eval_after.soft_match_accuracy.get_std()}"
-            if len(eval_after.soft_match_accuracy) > 1
-            else eval_after.soft_match_accuracy.get_mean()
-        )
-        if eval_after.max_supp_target:
-            metric_values["Max attention distribution"]["After"] = (
-                f"{eval_after.max_supp_target.get_mean()} ± {eval_after.max_supp_target_std.get_std()}"
-                if len(eval_after.max_supp_target) > 1
-                else eval_after.max_supp_target.get_mean()
+        if evaluator.max_supp_attn:
+            metric_values["Max attention distribution"][version] = (
+                f"{evaluator.max_supp_attn.get_mean()} ± {evaluator.max_supp_attn.get_std()}"
+                if len(evaluator.max_supp_attn) > 1
+                else evaluator.max_supp_attn.get_mean()
             )
 
     for metric_name, values in metric_values.items():
         row = [metric_name]
-        if eval_before:
-            row.append(values["Before"])
-        if eval_after:
-            row.append(values["After"])
+        for version in versions:
+            row.append(values.get(version, None))
         table.add_row(row)
 
     if id_:
-        print(
-            f"\nMetrics for {eval_after.level if eval_after else eval_before.level} {id_}:"
-        )
+        print(f"\nMetrics for {evaluators[0].level} {id_}:")
     print(table)

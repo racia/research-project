@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠMary	Ġand	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+14	.	ĠAfterwards	Ġthey	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	ĠJohn	?Ċ

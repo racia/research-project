@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+26	.	ĠMary	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+27	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+28	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+29	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+30	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+31	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+32	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+33	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

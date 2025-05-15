@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+541	2	9	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the hallway.
+2. Mary went back to the kitchen.
+3. John got the milk there.
+4. John put down the milk.
+5. John got the milk there.
+6. Mary went back to the garden.
+7. John went back to the bedroom.
+8. Mary picked up the football there.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	from sentence 3, we know john got the milk in the kitchen. then, in sentence 4, john put down the milk, which implies that the milk was placed in the kitchen. later, in sentence 5, john got the milk again, which means he picked it up from the kitchen. after that, john went back to the bedroom (sentence 7), and since he had the milk, it is logical to assume that he took the milk with him to the	fully	kitchen	False	The context sentences mention John getting the milk twice, and putting it down once. This implies that the milk is not with John anymore, and it was likely put down in the same location where John got it. Since John got the milk in the kitchen (sentence 3), it is likely that the milk is still in the kitchen.		"Reasoning: The context sentences mention John getting the milk twice, and putting it down once. This implies that the milk is not with John anymore, and it was likely put down in the same location where John got it. Since John got the milk in the kitchen (sentence 3), it is likely that the milk is still in the kitchen.
+
+Answer: kitchen"	0.1081	0.027	False	False	False	True	0
+542	2	9	2	"*TASK*
+Here are the context sentences:
+10. John went to the office.
+11. John left the milk.
+
+Now, answer the following question:
+Where is the milk?"	office	from sentence 10, we know john went to the office. then, in sentence 11, john left the milk, which implies that john left the milk in the location he was in, which is the office. therefore, the milk is in the office.	fully	office	True	The context sentences mention John leaving the milk, which implies that the milk is no longer with John. Since John was in the office when he left the milk, it is likely that the milk is still in the office.		"Reasoning: The context sentences mention John leaving the milk, which implies that the milk is no longer with John. Since John was in the office when he left the milk, it is likely that the milk is still in the office.
+
+Answer: office"	0.1176	0.0392	False	False	False	True	0
+543	2	9	3	"*TASK*
+Here are the context sentences:
+13. Mary went to the bedroom.
+14. John went to the bedroom.
+
+Now, answer the following question:
+Where is the milk?"	office	"the context lines 13 and 14 only provide information about mary and john going to the bedroom, but they do not mention the milk. to answer the question ""where is the milk?"", we need to look at the previous parts of the conversation history. in the previous conversation, we established that the milk is in the office (sentence 11). there is no information that suggests the milk has been moved from the office, so we can conclude that the milk is still in the office"	none	office	True	There is no mention of the milk in the context sentences, and the sentences only mention John and Mary going to the bedroom. Since the milk was previously left in the office (sentence 11), it is likely that the milk is still in the office.		"Reasoning: There is no mention of the milk in the context sentences, and the sentences only mention John and Mary going to the bedroom. Since the milk was previously left in the office (sentence 11), it is likely that the milk is still in the office.
+
+Answer: office"	0.0517	0.0345	False	False	False	True	0
+544	2	9	4	"*TASK*
+Here are the context sentences:
+16. John went to the bathroom.
+17. Mary moved to the bathroom.
+
+Now, answer the following question:
+Where is the milk?"	office	"the context lines 16 and 17 only provide information about john and mary moving to the bathroom, but they do not mention the milk. to answer the question ""where is the milk?"", we need to look at the previous parts of the conversation history. in the previous conversation, we established that the milk is in the office (sentence 11). there is no information that suggests the milk has been moved from the office, so we can conclude that the milk is still in the office"	none	office	True	There is no mention of the milk in the context sentences, and the sentences only mention John and Mary going to the bathroom. Since the milk was previously left in the office (sentence 11), it is likely that the milk is still in the office.		"Reasoning: There is no mention of the milk in the context sentences, and the sentences only mention John and Mary going to the bathroom. Since the milk was previously left in the office (sentence 11), it is likely that the milk is still in the office.
+
+Answer: office"	0.1034	0.0345	False	False	False	True	0
+545	2	9	5	"*TASK*
+Here are the context sentences:
+19. Mary went to the kitchen.
+20. Mary travelled to the office.
+21. Sandra moved to the kitchen.
+22. Daniel picked up the apple there.
+23. Sandra travelled to the garden.
+24. Mary travelled to the bedroom.
+25. Daniel went to the kitchen.
+26. Mary put down the football.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	from sentence 22, we know that daniel picked up the apple in the kitchen. there is no information that suggests daniel moved the apple from the kitchen or put it down elsewhere. additionally, in sentence 25, daniel went to the kitchen, which implies that daniel is still in the kitchen. therefore, it is logical to conclude that the apple is still in the kitchen.	fully	kitchen	True	The context sentences mention Daniel picking up the apple in the kitchen (sentence 22), but there is no mention of him putting it down or leaving the kitchen. Therefore, it is likely that the apple is still in the kitchen.		"Reasoning: The context sentences mention Daniel picking up the apple in the kitchen (sentence 22), but there is no mention of him putting it down or leaving the kitchen. Therefore, it is likely that the apple is still in the kitchen.
+
+Answer: kitchen"	0.0189	0.0377	False	False	False	True	0

@@ -1,0 +1,64 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+691	2	39	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the bedroom.
+2. Daniel grabbed the apple there.
+3. Daniel went to the garden.
+4. John travelled to the office.
+
+Now, answer the following question:
+Where is the apple?"	garden	from context line 2, we know that daniel grabbed the apple in the bedroom. then, from context line 3, we know that daniel went to the garden. since daniel was holding the apple when he went to the garden, it is logical to assume that the apple is now in the garden with daniel.	fully	bedroom	False	The context sentences mention Mary travelling to the bedroom, Daniel grabbing the apple there, and then Daniel going to the garden. There is no mention of John or the office in relation to the apple. Therefore, the apple must be in the bedroom or the garden.		"Reasoning: The context sentences mention Mary travelling to the bedroom, Daniel grabbing the apple there, and then Daniel going to the garden. There is no mention of John or the office in relation to the apple. Therefore, the apple must be in the bedroom or the garden.
+
+Answer: bedroom"	0.2203	0.0339	False	False	False	True	0
+692	2	39	2	"*TASK*
+Here are the context sentences:
+6. Daniel left the apple.
+7. John travelled to the hallway.
+
+Now, answer the following question:
+Where is the apple?"	garden	from the previous context (context lines 1-4), we know that daniel grabbed the apple in the bedroom and then went to the garden. we can infer that the apple was with daniel in the garden. now, from context line 6, we know that daniel left the apple. since daniel was in the garden with the apple, it is logical to assume that daniel left the apple in the garden. therefore, the apple is still in the garden.	partially	not mentioned	False	The context sentences mention Daniel leaving the apple, but there is no mention of where he left it. However, John travelled to the hallway, which implies that the apple is not in the hallway, as John didn't bring it there. Therefore, the apple must be somewhere else, possibly where Daniel left it.		"Reasoning: The context sentences mention Daniel leaving the apple, but there is no mention of where he left it. However, John travelled to the hallway, which implies that the apple is not in the hallway, as John didn't bring it there. Therefore, the apple must be somewhere else, possibly where Daniel left it.
+
+Answer: not mentioned"	0.0857	0.0286	False	False	False	True	0
+693	2	39	3	"*TASK*
+Here are the context sentences:
+9. Sandra went to the office.
+10. Daniel journeyed to the hallway.
+
+Now, answer the following question:
+Where is the apple?"	garden	the context lines 9 and 10 do not provide any new information about the apple. to answer the question, we need to refer to the previous context (context lines 1-7). from the previous context, we know that daniel grabbed the apple in the bedroom, went to the garden, and then left the apple. therefore, the apple is still in the garden.	none	not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only mention Sandra going to the office and Daniel journeying to the hallway, but neither of them is related to the apple.		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only mention Sandra going to the office and Daniel journeying to the hallway, but neither of them is related to the apple.
+
+Answer: not mentioned"	0.0833	0.0417	False	False	False	True	0
+694	2	39	4	"*TASK*
+Here are the context sentences:
+12. Daniel went to the kitchen.
+13. John journeyed to the kitchen.
+14. Mary moved to the office.
+15. Mary went back to the garden.
+16. Mary moved to the office.
+17. John went back to the bathroom.
+18. John travelled to the office.
+19. Daniel went back to the garden.
+20. John travelled to the kitchen.
+21. Mary went to the bedroom.
+22. Daniel moved to the bathroom.
+23. Daniel picked up the football there.
+24. Sandra travelled to the hallway.
+25. Daniel picked up the milk there.
+26. Daniel dropped the milk.
+27. Daniel took the milk there.
+28. Daniel moved to the bedroom.
+29. Sandra went to the garden.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	from context lines 25-26, we know that daniel picked up the milk in the hallway and then dropped it. then, from context line 27, we know that daniel took the milk again. afterwards, from context line 28, we know that daniel moved to the bedroom. since daniel was holding the milk when he moved to the bedroom, it is logical to assume that the milk is now in the bedroom with daniel.	fully	bedroom	True	The context sentences mention Daniel picking up the milk in the hallway, dropping it, and then taking it somewhere. The last sentence mentions Daniel moving to the bedroom, which implies that the milk is in the bedroom.		"Reasoning: The context sentences mention Daniel picking up the milk in the hallway, dropping it, and then taking it somewhere. The last sentence mentions Daniel moving to the bedroom, which implies that the milk is in the bedroom.
+
+Answer: bedroom"	0.0	0.0408	False	False	False	True	0
+695	2	39	5	"*TASK*
+Here are the context sentences:
+31. Sandra travelled to the kitchen.
+32. Sandra travelled to the office.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	the context lines 31 and 32 do not provide any new information about the milk. to answer the question, we need to refer to the previous context (context lines 25-28). from the previous context, we know that daniel picked up the milk in the hallway, dropped it, took it again, and then moved to the bedroom. therefore, the milk is still in the bedroom.	none	not mentioned	False	There is no mention of the milk in the given context sentences. The sentences only mention Sandra travelling to the kitchen and the office, but neither of them is related to the milk.		"Reasoning: There is no mention of the milk in the given context sentences. The sentences only mention Sandra travelling to the kitchen and the office, but neither of them is related to the milk.
+
+Answer: not mentioned"	0.0227	0.0455	False	False	False	True	0

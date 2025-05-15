@@ -1,0 +1,17 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+75	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġmilk	.Ċ
+76	.	ĠSandra	Ġtook	Ġthe	Ġfootball	.Ċ
+77	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+78	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+79	.	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+80	.	ĠMary	Ġdropped	Ġthe	Ġmilk	.Ċ
+81	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+82	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+83	.	ĠMary	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
+84	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+85	.	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+86	.	ĠSandra	Ġtook	Ġthe	Ġfootball	.Ċ
+87	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+88	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġbathroom	?Ċ

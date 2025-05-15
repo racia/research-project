@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠSandra	Ġhanded	Ġthe	Ġapple	Ġto	ĠDaniel	.Ċ
+8	.	ĠDaniel	Ġpassed	Ġthe	Ġapple	Ġto	ĠSandra	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠDaniel	Ġcarrying	?Ċ

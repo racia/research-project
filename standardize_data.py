@@ -122,18 +122,20 @@ def run(data_path: str) -> None:
             multi_system=multi_system,
         )
         if "model_answer_before" in row and row["model_answer_before"]:
-            part.result_before = Results(
-                **dict(
-                    [
-                        (
-                            (h_patt.match(result)[1], str(row[result]))
-                            if h_patt.match(result)
-                            else (result, row[result])
-                        )
-                        for result in headers_results_before
-                    ]
-                ),
-                version="before",
+            part.results.append(
+                Results(
+                    **dict(
+                        [
+                            (
+                                (h_patt.match(result)[1], str(row[result]))
+                                if h_patt.match(result)
+                                else (result, row[result])
+                            )
+                            for result in headers_results_before
+                        ]
+                    ),
+                    version="before",
+                )
             )
 
         if "model_answer_after" in row and row["model_answer_after"]:
@@ -144,18 +146,20 @@ def run(data_path: str) -> None:
                 ),
                 end="\n\n",
             )
-            part.result_after = Results(
-                **dict(
-                    [
-                        (
-                            (h_patt.match(result)[1], str(row[result]))
-                            if h_patt.match(result)
-                            else (result, row[result])
-                        )
-                        for result in headers_results_after
-                    ]
-                ),
-                version="after",
+            part.results.append(
+                Results(
+                    **dict(
+                        [
+                            (
+                                (h_patt.match(result)[1], str(row[result]))
+                                if h_patt.match(result)
+                                else (result, row[result])
+                            )
+                            for result in headers_results_after
+                        ]
+                    ),
+                    version="after",
+                )
             )
         else:
             print(
@@ -165,18 +169,20 @@ def run(data_path: str) -> None:
                 ),
                 end="\n\n",
             )
-            part.result_after = Results(
-                **dict(
-                    [
-                        (
-                            (h_patt.match(result)[1], str(row[result]))
-                            if h_patt.match(result)
-                            else (result, row[result])
-                        )
-                        for result in headers["results"]
-                    ]
-                ),
-                version="after",
+            part.results.append(
+                Results(
+                    **dict(
+                        [
+                            (
+                                (h_patt.match(result)[1], str(row[result]))
+                                if h_patt.match(result)
+                                else (result, row[result])
+                            )
+                            for result in headers["results"]
+                        ]
+                    ),
+                    version="after",
+                )
             )
 
         parts.append(part)

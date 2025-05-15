@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1296	8	60	1	"*TASK*
+Here are the context sentences:
+1. Sandra got the milk there.
+2. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	"from context sentence 1, ""sandra got the milk there"", we can infer that sandra has the milk with her, implying that she is carrying it. the word ""got"" suggests possession or holding, and ""there"" likely refers to a location, which is not relevant to the question of what sandra is carrying. the second context sentence about daniel journeying to the kitchen does not provide any information about what sandra is carrying, so we can ignore it for this question. therefore"	fully	milk	True	Sandra got the milk there, which implies that she obtained the milk at a specific location. Since Daniel journeyed to the kitchen, it is likely that Sandra got the milk in the kitchen.		"Reasoning: Sandra got the milk there, which implies that she obtained the milk at a specific location. Since Daniel journeyed to the kitchen, it is likely that Sandra got the milk in the kitchen.
+
+Answer: milk"	0.0222	0.0222	False	False	False	False	0
+1297	8	60	2	"*TASK*
+Here are the context sentences:
+4. Sandra travelled to the bathroom.
+5. Sandra put down the milk.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"from context sentence 5, ""sandra put down the milk"", we can infer that sandra was carrying the milk before putting it down. the phrase ""put down"" implies that sandra was holding or carrying the milk and then placed it somewhere. since she put it down, it means she is no longer carrying it. the context sentence 4, ""sandra travelled to the bathroom"", does not provide any information about what sandra is carrying, so we can ignore it for this question"	partially	milk	False	Sandra put down the milk, which implies that she was carrying the milk before putting it down. Since she travelled to the bathroom, it is likely that she was carrying the milk when she arrived at the bathroom.		"Reasoning: Sandra put down the milk, which implies that she was carrying the milk before putting it down. Since she travelled to the bathroom, it is likely that she was carrying the milk when she arrived at the bathroom.
+
+Answer: milk"	0.1224	0.0408	False	False	False	False	0
+1298	8	60	3	"*TASK*
+Here are the context sentences:
+7. Daniel got the football there.
+8. Daniel left the football.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"from context sentence 7, ""daniel got the football there"", we can infer that daniel obtained or acquired the football, implying that he had possession of it. however, context sentence 8, ""daniel left the football"", indicates that daniel relinquished or abandoned the football, which means he is no longer in possession of it. therefore, daniel is not carrying the football anymore, and the correct answer is that he is carrying nothing."	fully	football	False	Daniel got the football there, which implies that he obtained the football at a specific location. Since he left the football, it is likely that he was carrying the football before leaving it.		"Reasoning: Daniel got the football there, which implies that he obtained the football at a specific location. Since he left the football, it is likely that he was carrying the football before leaving it.
+
+Answer: football"	0.0227	0.0455	False	False	False	False	0
+1299	8	60	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the kitchen.
+11. Sandra grabbed the football there.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	the context sentences 10 and 11 only provide information about sandra's actions, but the question asks about what daniel is carrying. since there is no new information about daniel, we need to refer to the previous context sentences. from the previous context sentences 7 and 8, we know that daniel got the football and then left it, implying that he is not carrying the football anymore. therefore, the correct answer is that daniel is carrying nothing.	none	Not mentioned	False	There is no information provided about Daniel's actions or possessions in these sentences. The sentences only mention Sandra's actions.		"Reasoning: There is no information provided about Daniel's actions or possessions in these sentences. The sentences only mention Sandra's actions.
+
+Answer: Not mentioned"	0.0645	0.0645	False	False	False	True	0
+1300	8	60	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the kitchen.
+14. Sandra dropped the football.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"from context sentence 14, ""sandra dropped the football"", we can infer that sandra was carrying the football before dropping it. the verb ""dropped"" implies that sandra released or let go of the football, which means she is no longer carrying it. therefore, the correct answer is that sandra is carrying nothing."	partially	football	False	Sandra dropped the football, which implies that she was carrying the football before dropping it. Since she dropped the football, it is likely that she was carrying the football.		"Reasoning: Sandra dropped the football, which implies that she was carrying the football before dropping it. Since she dropped the football, it is likely that she was carrying the football.
+
+Answer: football"	0.075	0.1	False	False	False	False	0

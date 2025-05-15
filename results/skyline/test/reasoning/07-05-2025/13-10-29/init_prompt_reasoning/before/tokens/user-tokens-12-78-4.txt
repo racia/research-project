@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠDaniel	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+11	.	ĠSandra	Ġand	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	ĠDaniel	?Ċ

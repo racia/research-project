@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġcarrying	,	Ġand	Ġthe	Ġonly	Ġsentence	Ġmentioning	ĠMary	Ġis	Ġsentence	Ġ	1	,	Ġwhich	Ġstates	Ġthat	ĠMary	Ġtook	Ġthe	Ġmilk	Ġthere	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcarrying	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġone	<|eot_id|>

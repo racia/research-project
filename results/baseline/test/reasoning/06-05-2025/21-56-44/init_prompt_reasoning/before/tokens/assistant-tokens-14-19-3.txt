@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġthis	Ġevening	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	Ġher	Ġlocation	Ġbefore	Ġmoving	Ġto	Ġthe	Ġbedroom	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	Ġher	Ġmovement	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġnot	Ġher	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+976	12	96	1	"*TASK*
+Here are the context sentences:
+1. Mary and John journeyed to the hallway.
+2. Sandra and John travelled to the office.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from context sentence 1, we know that mary and john journeyed to the hallway. there is no information provided that suggests mary left the hallway or moved to a different location. therefore, based on the last known location of mary, we can conclude that mary is in the hallway.	fully	hallway	True	According to context sentence 1, Mary and John journeyed to the hallway, and there is no subsequent information that suggests Mary moved to a different location.		"assistant
+
+Reasoning: According to context sentence 1, Mary and John journeyed to the hallway, and there is no subsequent information that suggests Mary moved to a different location.
+
+Answer: hallway"	0.0732	0.0244	False	False	False	True	0
+977	12	96	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Daniel moved to the hallway.
+5. Mary and John journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from context sentence 5, we know that mary and john journeyed to the bedroom. there is no information provided that suggests mary left the bedroom or moved to a different location. therefore, based on the last known location of mary, we can conclude that mary is in the bedroom.	fully	bedroom	True	According to context sentence 5, Mary and John journeyed to the bedroom, which is the most recent and relevant information about Mary's location.		"Reasoning: According to context sentence 5, Mary and John journeyed to the bedroom, which is the most recent and relevant information about Mary's location.
+
+Answer: bedroom"	0.1667	0.0278	False	False	False	True	0
+978	12	96	3	"*TASK*
+Here are the context sentences:
+7. Sandra and John went to the kitchen.
+8. John and Mary went back to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	from context sentence 7, we know that sandra and john went to the kitchen. then, in context sentence 8, it is stated that john and mary went back to the garden. this implies that john moved from the kitchen to the garden. therefore, based on the last known location of john, we can conclude that john is in the garden.	fully	garden	True	According to context sentence 8, John and Mary went back to the garden, which is the most recent and relevant information about John's location.		"Reasoning: According to context sentence 8, John and Mary went back to the garden, which is the most recent and relevant information about John's location.
+
+Answer: garden"	0.0	0.0278	False	False	False	True	0
+979	12	96	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John journeyed to the office.
+11. Mary and Sandra moved to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from context sentence 11, we know that mary and sandra moved to the kitchen. there is no information provided that suggests mary left the kitchen or moved to a different location. therefore, based on the last known location of mary, we can conclude that mary is in the kitchen.	fully	kitchen	True	According to context sentence 11, Mary and Sandra moved to the kitchen, which is the most recent and relevant information about Mary's location.		"Reasoning: According to context sentence 11, Mary and Sandra moved to the kitchen, which is the most recent and relevant information about Mary's location.
+
+Answer: kitchen"	0.0571	0.0286	False	False	False	True	0
+980	12	96	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Mary travelled to the bathroom.
+14. Sandra and Daniel moved to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	from context sentence 14, we know that sandra and daniel moved to the bedroom. there is no information provided that suggests sandra left the bedroom or moved to a different location. therefore, based on the last known location of sandra, we can conclude that sandra is in the bedroom.	fully	bedroom	True	According to context sentence 14, Sandra and Daniel moved to the bedroom, which is the most recent and relevant information about Sandra's location.		"Reasoning: According to context sentence 14, Sandra and Daniel moved to the bedroom, which is the most recent and relevant information about Sandra's location.
+
+Answer: bedroom"	0.0	0.0286	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġ(	from	Ġprevious	Ġcontext	)	Ġstated	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġnew	Ġinformation	Ġthat	Ġsuggests	ĠMary	Ġhas	Ġmoved	.	ĠĊ	Answer	:	Ġyes	<|eot_id|>

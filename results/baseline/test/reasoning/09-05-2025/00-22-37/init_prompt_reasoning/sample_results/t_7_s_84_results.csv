@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+916	7	84	1	"*TASK*
+Here are the context sentences:
+1. John went back to the bedroom.
+2. John went to the bathroom.
+3. Mary went back to the office.
+4. Sandra moved to the kitchen.
+5. Sandra grabbed the football there.
+6. Daniel moved to the hallway.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from the context sentences, we know that sandra moved to the kitchen (sentence 4) and grabbed the football there (sentence 5). there is no information about sandra putting down the football or grabbing any other object. therefore, we can logically conclude that sandra is carrying one object, which is the football.	fully	one	True	Sandra grabbed the football in the kitchen, but there is no mention of her dropping or giving it away. Therefore, she is still holding the football.		"Reasoning: Sandra grabbed the football in the kitchen, but there is no mention of her dropping or giving it away. Therefore, she is still holding the football.
+
+Answer: one"	0.0811	0.027	False	False	False	True	0
+917	7	84	2	"*TASK*
+Here are the context sentences:
+8. Daniel moved to the garden.
+9. Sandra dropped the football.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	from the previous context sentences, we know that sandra grabbed the football in the kitchen (sentence 5). however, in the new context sentence 9, it is stated that sandra dropped the football. this implies that sandra is no longer carrying the football. therefore, we can logically conclude that sandra is carrying none objects.	partially	none	True	Sandra dropped the football in sentence 9, which means she was holding it but no longer has it. Therefore, she is not carrying any objects.		"Reasoning: Sandra dropped the football in sentence 9, which means she was holding it but no longer has it. Therefore, she is not carrying any objects.
+
+Answer: none"	0.0541	0.0541	False	False	False	False	0
+918	7	84	3	"*TASK*
+Here are the context sentences:
+11. Daniel picked up the apple there.
+12. Sandra picked up the football there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from the previous context sentences, we know that sandra dropped the football (sentence 9). however, in the new context sentence 12, it is stated that sandra picked up the football again. this implies that sandra is now carrying the football. there is no information about sandra carrying any other objects. therefore, we can logically conclude that sandra is carrying one object, which is the football.	partially	one	True	Sandra picked up the football in sentence 12, which means she is now holding it. There is no mention of her dropping or giving it away. Therefore, she is still holding the football.		"Reasoning: Sandra picked up the football in sentence 12, which means she is now holding it. There is no mention of her dropping or giving it away. Therefore, she is still holding the football.
+
+Answer: one"	0.1522	0.0652	False	False	False	True	0
+919	7	84	4	"*TASK*
+Here are the context sentences:
+14. Sandra left the football there.
+15. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	from the previous context sentences, we know that sandra picked up the football (sentence 12). however, in the new context sentence 14, it is stated that sandra left the football there. this implies that sandra is no longer carrying the football. there is no information about sandra carrying any other objects. therefore, we can logically conclude that sandra is carrying none objects.	partially	none	True	Sandra left the football in sentence 14, which means she was holding it but no longer has it. Therefore, she is not carrying any objects.		"Reasoning: Sandra left the football in sentence 14, which means she was holding it but no longer has it. Therefore, she is not carrying any objects.
+
+Answer: none"	0.1081	0.1081	False	False	False	False	0
+920	7	84	5	"*TASK*
+Here are the context sentences:
+17. John journeyed to the office.
+18. Sandra picked up the football there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from the previous context sentences, we know that sandra left the football (sentence 14). however, in the new context sentence 18, it is stated that sandra picked up the football again. this implies that sandra is now carrying the football. there is no information about sandra carrying any other objects. therefore, we can logically conclude that sandra is carrying one object, which is the football.	partially	one	True	Sandra picked up the football in sentence 18, which means she is now holding it. There is no mention of her dropping or giving it away. Therefore, she is still holding the football.		"Reasoning: Sandra picked up the football in sentence 18, which means she is now holding it. There is no mention of her dropping or giving it away. Therefore, she is still holding the football.
+
+Answer: one"	0.087	0.1087	False	False	False	True	0

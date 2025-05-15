@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+936	12	88	1	"*TASK*
+Here are the context sentences:
+1. Daniel and John moved to the garden.
+2. Sandra and Mary moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"from context sentence 2, ""sandra and mary moved to the hallway"", we can directly infer that mary is in the hallway."	fully	hallway	True	According to context sentence 2, Sandra and Mary moved to the hallway. Therefore, Mary's current location is the hallway.		"assistant
+
+Reasoning: According to context sentence 2, Sandra and Mary moved to the hallway. Therefore, Mary's current location is the hallway.
+
+Answer: hallway"	0.0286	0.0286	False	False	False	False	0
+937	12	88	2	"*TASK*
+Here are the context sentences:
+4. John and Mary journeyed to the bedroom.
+5. John and Sandra moved to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	"from context sentence 5, ""john and sandra moved to the kitchen"", we can directly infer that john is in the kitchen. the fact that john was previously mentioned in sentence 4, ""john and mary journeyed to the bedroom"", does not change the current location of john, as sentence 5 provides more recent information about john's movement."	fully	kitchen	True	According to context sentence 5, John and Sandra moved to the kitchen. This is the most recent information about John's location. Therefore, John's current location is the kitchen.		"Reasoning: According to context sentence 5, John and Sandra moved to the kitchen. This is the most recent information about John's location. Therefore, John's current location is the kitchen.
+
+Answer: kitchen"	0.1628	0.0233	False	False	False	True	0
+938	12	88	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John journeyed to the hallway.
+8. John and Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	"from context sentence 8, ""john and sandra travelled to the bathroom"", we can directly infer that john is in the bathroom. the fact that john was previously mentioned in sentence 7, ""daniel and john journeyed to the hallway"", does not change the current location of john, as sentence 8 provides more recent information about john's movement."	fully	bathroom	True	According to context sentence 8, John and Sandra travelled to the bathroom. This is the most recent information about John's location. Therefore, John's current location is the bathroom.		"Reasoning: According to context sentence 8, John and Sandra travelled to the bathroom. This is the most recent information about John's location. Therefore, John's current location is the bathroom.
+
+Answer: bathroom"	0.0	0.0233	False	False	False	True	0
+939	12	88	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Mary moved to the kitchen.
+11. Mary and John went back to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	"from context sentence 10, ""sandra and mary moved to the kitchen"", we can infer that sandra is in the kitchen. the fact that mary moved to the hallway in sentence 11, ""mary and john went back to the hallway"", does not change the location of sandra, as there is no information about sandra moving from the kitchen."	fully	kitchen	True	According to context sentence 10, Sandra and Mary moved to the kitchen. There is no subsequent information about Sandra moving to a different location. Therefore, Sandra's current location is the kitchen.		"Reasoning: According to context sentence 10, Sandra and Mary moved to the kitchen. There is no subsequent information about Sandra moving to a different location. Therefore, Sandra's current location is the kitchen.
+
+Answer: kitchen"	0.0222	0.0222	False	False	False	True	0
+940	12	88	5	"*TASK*
+Here are the context sentences:
+13. John and Sandra moved to the bathroom.
+14. Daniel and Sandra travelled to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"from context sentence 14, ""daniel and sandra travelled to the office"", we can directly infer that daniel is in the office. the fact that sandra was previously mentioned in sentence 13, ""john and sandra moved to the bathroom"", does not change the current location of daniel, as sentence 14 provides more recent information about daniel's movement."	fully	office	True	According to context sentence 14, Daniel and Sandra travelled to the office. This is the most recent information about Daniel's location. Therefore, Daniel's current location is the office.		"Reasoning: According to context sentence 14, Daniel and Sandra travelled to the office. This is the most recent information about Daniel's location. Therefore, Daniel's current location is the office.
+
+Answer: office"	0.0	0.0233	False	False	False	True	0

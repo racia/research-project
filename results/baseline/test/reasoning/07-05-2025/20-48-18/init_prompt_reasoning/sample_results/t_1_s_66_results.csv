@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+326	1	66	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the bedroom.
+2. Sandra moved to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"according to context sentence 2, ""sandra moved to the bathroom"", which explicitly states that sandra's current location is the bathroom."	fully	bathroom	True	Sandra moved to the bathroom, which is a specific location, and there is no information that suggests she has moved from the bathroom or is currently in a different location.		"Reasoning: Sandra moved to the bathroom, which is a specific location, and there is no information that suggests she has moved from the bathroom or is currently in a different location.
+Answer: bathroom"	0.075	0.025	False	False	False	True	0
+327	1	66	2	"*TASK*
+Here are the context sentences:
+4. John went back to the bedroom.
+5. Sandra travelled to the kitchen.
+
+Now, answer the following question:
+Where is John?"	bedroom	"according to context sentence 4, ""john went back to the bedroom"", which explicitly states that john's current location is the bedroom."	fully	bedroom	True	John went back to the bedroom, which means he was previously in the bedroom and has returned to it. There is no information that suggests he has moved from the bedroom or is currently in a different location.		"Reasoning: John went back to the bedroom, which means he was previously in the bedroom and has returned to it. There is no information that suggests he has moved from the bedroom or is currently in a different location.
+Answer: bedroom"	0.0417	0.0208	False	False	False	True	0
+328	1	66	3	"*TASK*
+Here are the context sentences:
+7. Sandra went back to the office.
+8. Sandra moved to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"according to context sentence 7, ""sandra went back to the office"", which indicates that sandra's location was the office at some point. however, context sentence 8, ""sandra moved to the garden"", implies that sandra changed her location from the office to the garden. therefore, her current location is the garden."	fully	office	False	Sandra went back to the office, which means she was previously in the office and has returned to it. There is no information that suggests she has moved from the office or is currently in a different location.		"Reasoning: Sandra went back to the office, which means she was previously in the office and has returned to it. There is no information that suggests she has moved from the office or is currently in a different location.
+Answer: office"	0.0	0.0208	False	False	False	True	0
+329	1	66	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the kitchen.
+11. John travelled to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	garden	the context sentences 10 and 11 provide information about the locations of daniel and john, but they do not mention sandra. however, we can infer the answer from the previous context sentences. in the previous context sentences, we learned that sandra moved to the garden (sentence 8). there is no new information that suggests sandra changed her location, so we can conclude that sandra is still in the garden.	none	not mentioned	False	There is no information about Sandra's current location in the given context sentences. The sentences only mention Daniel and John's movements, but not Sandra's.		"Reasoning: There is no information about Sandra's current location in the given context sentences. The sentences only mention Daniel and John's movements, but not Sandra's.
+Answer: not mentioned"	0.0	0.0263	False	False	False	True	0
+330	1	66	5	"*TASK*
+Here are the context sentences:
+13. Daniel went to the bedroom.
+14. Mary went back to the office.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"according to context sentence 13, ""daniel went to the bedroom"", which explicitly states that daniel's current location is the bedroom."	fully	bedroom	True	Daniel went to the bedroom, which means he is currently in the bedroom. There is no information that suggests he has moved from the bedroom or is currently in a different location.		"Reasoning: Daniel went to the bedroom, which means he is currently in the bedroom. There is no information that suggests he has moved from the bedroom or is currently in a different location.
+Answer: bedroom"	0.119	0.0238	False	False	False	True	0

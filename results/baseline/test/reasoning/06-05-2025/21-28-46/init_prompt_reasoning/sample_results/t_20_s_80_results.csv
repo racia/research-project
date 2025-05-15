@@ -1,0 +1,89 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2908	20	80	1	"*TASK*
+Here are the context sentences:
+1. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	when antoine is tired, it is logical to assume that he will go to a place where he can rest. in most cases, people go to their bedroom to rest or sleep when they are tired. therefore, based on the context, it is reasonable to conclude that antoine will go to his bedroom.	fully	bedroom	True	Since Antoine is tired, it is likely that he will go to a place where he can rest and sleep.		"Reasoning: Since Antoine is tired, it is likely that he will go to a place where he can rest and sleep.
+
+Answer: bedroom"	0.0	0.0345	False	False	False	False	0
+2909	20	80	2	"*TASK*
+Here are the context sentences:
+3. Antoine went back to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	"in the previous context, it was mentioned that ""antoine is tired"" (context line 1). now, it is stated that ""antoine went back to the bedroom"" (context line 3). it can be logically inferred that antoine went to the bedroom because he was tired, as people often go to their bedroom to rest or sleep when they are tired. therefore, the reason antoine went to the bedroom is that he was tired."	none	tired	True	Since Antoine went back to the bedroom, it is likely that he went there to rest and sleep, as he was previously described as being tired.		"Reasoning: Since Antoine went back to the bedroom, it is likely that he went there to rest and sleep, as he was previously described as being tired.
+
+Answer: tired"	0.0	0.0278	False	False	False	False	0
+2910	20	80	3	"*TASK*
+Here are the context sentences:
+5. Jason is hungry.
+
+Now, answer the following question:
+Where will jason go?"	kitchen	when jason is hungry, it is logical to assume that he will go to a place where he can find food. in most households, the kitchen is the primary location where food is prepared and consumed. therefore, based on the context, it is reasonable to conclude that jason will go to the kitchen to satisfy his hunger.	fully	kitchen	True	Since Jason is hungry, it is likely that he will go to a place where he can find food.		"Reasoning: Since Jason is hungry, it is likely that he will go to a place where he can find food.
+
+Answer: kitchen"	0.0	0.0357	False	False	False	False	0
+2911	20	80	4	"*TASK*
+Here are the context sentences:
+7. Sumit is tired.
+
+Now, answer the following question:
+Where will sumit go?"	bedroom	when sumit is tired, it is logical to assume that he will go to a place where he can rest. in most cases, people go to their bedroom to rest or sleep when they are tired. this is a common pattern of behavior, as seen in the previous context where antoine went to the bedroom when he was tired (context lines 1 and 3). therefore, based on this pattern, it is reasonable to conclude that sumit will also go to his bedroom when	fully	bedroom	True	Since Sumit is tired, it is likely that he will go to a place where he can rest and sleep.		"Reasoning: Since Sumit is tired, it is likely that he will go to a place where he can rest and sleep.
+
+Answer: bedroom"	0.0	0.0333	False	False	False	False	0
+2912	20	80	5	"*TASK*
+Here are the context sentences:
+9. Yann is bored.
+
+Now, answer the following question:
+Where will yann go?"	garden	when yann is bored, it is logical to assume that he will go to a place where he can find something interesting to do or entertain himself. although the context does not provide direct information about yann's preferences or habits, it is common for people to go outdoors or engage in outdoor activities when they are bored. in this case, the garden is a plausible destination for yann, as it is a common outdoor space where people often go to relax, play, or engage in	fully	garden	True	Since Yann is bored, it is likely that he will go to a place where he can find something to do or entertain himself.		"Reasoning: Since Yann is bored, it is likely that he will go to a place where he can find something to do or entertain himself.
+
+Answer: garden"	0.0294	0.0294	False	False	False	False	0
+2913	20	80	6	"*TASK*
+Here are the context sentences:
+11. Sumit went back to the bedroom.
+
+Now, answer the following question:
+Why did sumit go to the bedroom?"	tired	"<reasoning>"""	none	tired	True	Since Sumit went back to the bedroom, it is likely that he went there to rest and sleep, as he was previously described as being tired.		"Reasoning: Since Sumit went back to the bedroom, it is likely that he went there to rest and sleep, as he was previously described as being tired.
+
+Answer: tired"	0.0	0.027	False	False	False	False	0
+2914	20	80	7	"*TASK*
+Here are the context sentences:
+13. Yann went to the garden.
+
+Now, answer the following question:
+Why did yann go to the garden?"	bored	"<reasoning>"""	none	bored	True	Since Yann went to the garden, it is likely that he went there to find something to do or entertain himself, as he was previously described as being bored.		"Reasoning: Since Yann went to the garden, it is likely that he went there to find something to do or entertain himself, as he was previously described as being bored.
+
+Answer: bored"	0.075	0.025	False	True	False	False	0
+2915	20	80	8	"*TASK*
+Here are the context sentences:
+15. Antoine picked up the pajamas there.
+
+Now, answer the following question:
+Why did antoine get the pajamas?"	tired	"<reasoning>"""	none	tired	True	Since Antoine picked up the pajamas, it is likely that he got them because he was tired and needed something to wear to sleep.		"Reasoning: Since Antoine picked up the pajamas, it is likely that he got them because he was tired and needed something to wear to sleep.
+
+Answer: tired"	0.0	0.0294	False	False	False	False	0
+2916	20	80	9	"*TASK*
+Here are the context sentences:
+17. Yann got the football there.
+
+Now, answer the following question:
+Why did yann get the football?"	bored	"<reasoning>"""	none	bored	True	Since Yann got the football, it is likely that he got it because he was bored and wanted to find something to do.		"Reasoning: Since Yann got the football, it is likely that he got it because he was bored and wanted to find something to do.
+
+Answer: bored"	0.0303	0.0303	False	True	False	False	0
+2917	20	80	10	"*TASK*
+Here are the context sentences:
+19. Jason moved to the kitchen.
+
+Now, answer the following question:
+Why did jason go to the kitchen?"	hungry	"<reasoning>"""	none	thirsty	False	Since Jason moved to the kitchen, it is likely that he went there to find something to drink, as he was previously described as being thirsty.		"Reasoning: Since Jason moved to the kitchen, it is likely that he went there to find something to drink, as he was previously described as being thirsty.
+
+Answer: thirsty"	0.0	0.0278	False	False	False	False	0
+2918	20	80	11	"*TASK*
+Here are the context sentences:
+21. Jason grabbed the apple there.
+
+Now, answer the following question:
+Why did jason get the apple?"	hungry	"<reasoning>"""	none	thirsty	False	Since Jason grabbed the apple, it is likely that he got it because he was thirsty and wanted something to eat or drink.		"Reasoning: Since Jason grabbed the apple, it is likely that he got it because he was thirsty and wanted something to eat or drink.
+
+Answer: thirsty"	0.0	0.0312	False	False	False	False	0

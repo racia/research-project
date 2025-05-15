@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġmoving	Ġto	Ġthe	Ġkitchen	Ġand	ĠDaniel	Ġgrabbing	Ġan	Ġapple	Ġthere	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	,	Ġincluding	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,4 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+3	.	ĠAntoine	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Why	Ġdid	Ġant	oine	Ġgo	Ġto	Ġthe	Ġkitchen	?Ċ

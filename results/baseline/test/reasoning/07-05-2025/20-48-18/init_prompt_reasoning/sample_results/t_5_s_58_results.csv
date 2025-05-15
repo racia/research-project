@@ -1,0 +1,66 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1886	5	58	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the hallway.
+2. Jeff went back to the bathroom.
+3. Jeff travelled to the office.
+4. Fred went back to the hallway.
+5. Jeff went to the garden.
+6. Mary travelled to the bedroom.
+7. Jeff moved to the hallway.
+8. Mary journeyed to the office.
+9. Bill journeyed to the office.
+10. Bill went back to the bathroom.
+11. Fred travelled to the kitchen.
+12. Mary went back to the bathroom.
+13. Mary journeyed to the bedroom.
+14. Fred moved to the hallway.
+15. Fred journeyed to the bedroom.
+16. Bill moved to the garden.
+17. Fred travelled to the kitchen.
+18. Fred took the apple there.
+19. Fred took the football there.
+20. Fred travelled to the garden.
+21. Fred passed the apple to Bill.
+22. Jeff went to the bedroom.
+
+Now, answer the following question:
+Who gave the apple?"	fred	from sentence 18, we know that fred took the apple in the kitchen. then, in sentence 21, it is stated that fred passed the apple to bill. therefore, it can be logically concluded that fred gave the apple.	fully	Fred	True	The context sentences suggest that Fred took the apple in the kitchen (sentence 18) and then passed it to Bill (sentence 21). There is no mention of anyone else giving the apple.		"Reasoning: The context sentences suggest that Fred took the apple in the kitchen (sentence 18) and then passed it to Bill (sentence 21). There is no mention of anyone else giving the apple.
+
+Answer: Fred"	0.0217	0.0217	False	False	False	True	0
+1887	5	58	2	"*TASK*
+Here are the context sentences:
+24. Bill put down the apple.
+25. Fred picked up the apple there.
+
+Now, answer the following question:
+Who gave the apple to Bill?"	fred	from the previous context (sentence 21), we know that fred passed the apple to bill. then, in sentence 24, it is stated that bill put down the apple, implying that bill had the apple at some point. finally, in sentence 25, fred picks up the apple again. therefore, it can be logically concluded that fred gave the apple to bill, as stated in the previous context.	none	Not mentioned (or Unknown)	False	The context sentences suggest that Fred picked up the apple in the same location where Bill put it down (sentence 24). However, there is no mention of Fred giving the apple to Bill. Instead, it seems that Fred picked up the apple that Bill had put down.		"Reasoning: The context sentences suggest that Fred picked up the apple in the same location where Bill put it down (sentence 24). However, there is no mention of Fred giving the apple to Bill. Instead, it seems that Fred picked up the apple that Bill had put down.
+
+Answer: Not mentioned (or Unknown)"	0.0	0.0152	False	False	False	True	0
+1888	5	58	3	"*TASK*
+Here are the context sentences:
+27. Jeff travelled to the kitchen.
+28. Fred passed the apple to Bill.
+
+Now, answer the following question:
+Who gave the apple to Bill?"	fred	"the answer to the question ""who gave the apple to bill?"" is directly stated in sentence 28, which says ""fred passed the apple to bill"". this explicitly indicates that fred gave the apple to bill."	fully	Fred	True	The context sentences suggest that Fred passed the apple to Bill (sentence 28). There is no mention of anyone else giving the apple to Bill.		"Reasoning: The context sentences suggest that Fred passed the apple to Bill (sentence 28). There is no mention of anyone else giving the apple to Bill.
+
+Answer: Fred"	0.0278	0.0278	False	False	False	True	0
+1889	5	58	4	"*TASK*
+Here are the context sentences:
+30. Jeff went to the bedroom.
+31. Bill journeyed to the bedroom.
+
+Now, answer the following question:
+What did Fred give to Bill?"	apple	"although the context lines 30 and 31 do not directly mention what fred gave to bill, we can infer the answer from previous context. in sentence 28, it was stated that ""fred passed the apple to bill"". therefore, we can logically conclude that fred gave the apple to bill."	none	Not mentioned (or Unknown)	False	The context sentences do not mention Fred giving anything to Bill. The sentences only mention Jeff going to the bedroom and Bill journeying to the bedroom, but there is no mention of Fred's actions.		"Reasoning: The context sentences do not mention Fred giving anything to Bill. The sentences only mention Jeff going to the bedroom and Bill journeying to the bedroom, but there is no mention of Fred's actions.
+
+Answer: Not mentioned (or Unknown)"	0.0588	0.0196	False	False	False	True	0
+1890	5	58	5	"*TASK*
+Here are the context sentences:
+33. Bill handed the apple to Mary.
+34. Fred left the football.
+
+Now, answer the following question:
+Who gave the apple to Mary?"	bill	"the answer to the question ""who gave the apple to mary?"" is directly stated in sentence 33, which says ""bill handed the apple to mary"". this explicitly indicates that bill gave the apple to mary."	fully	Bill	True	The context sentences suggest that Bill handed the apple to Mary (sentence 33). There is no mention of anyone else giving the apple to Mary.		"Reasoning: The context sentences suggest that Bill handed the apple to Mary (sentence 33). There is no mention of anyone else giving the apple to Mary.
+
+Answer: Bill"	0.0556	0.0278	False	False	False	True	0

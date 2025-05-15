@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+251	11	51	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the bedroom.
+2. Following that she went to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	the context sentences describe mary's movements, first going to the bedroom and then going to the garden. since the last location mentioned is the garden, it can be inferred that mary is currently in the garden.	fully	garden	True	Mary's journey to the bedroom is followed by her going to the garden, which means she is currently in the garden.		"Reasoning: Mary's journey to the bedroom is followed by her going to the garden, which means she is currently in the garden.
+
+Answer: garden"	0.1613	0.0645	False	False	False	False	0
+252	11	51	2	"*TASK*
+Here are the context sentences:
+4. Mary went to the bathroom.
+5. Afterwards she moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	the context sentences describe mary's movements, first going to the bathroom and then moving to the hallway. since the last location mentioned is the hallway, it can be inferred that mary is currently in the hallway.	fully	hallway	True	Mary went to the bathroom initially, and then moved to the hallway, which means she is currently in the hallway.		"Reasoning: Mary went to the bathroom initially, and then moved to the hallway, which means she is currently in the hallway.
+
+Answer: hallway"	0.1667	0.0667	False	False	False	False	0
+253	11	51	3	"*TASK*
+Here are the context sentences:
+7. John moved to the hallway.
+8. Afterwards he travelled to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	hallway	the context sentences describe john's movements, but they do not provide any new information about mary's location. the last information about mary's location was provided in the previous parts of the conversation, where it was stated that mary moved to the hallway (sentence 5). there is no information that suggests mary has moved from the hallway, so it can be inferred that mary is still in the hallway.	none	not mentioned	False	The question asks about Mary's location, but the context sentences only provide information about John's movements. Since Mary's location is not mentioned, we cannot determine her exact location.		"Reasoning: The question asks about Mary's location, but the context sentences only provide information about John's movements. Since Mary's location is not mentioned, we cannot determine her exact location.
+
+Answer: not mentioned"	0.1163	0.0465	False	False	False	True	0
+254	11	51	4	"*TASK*
+Here are the context sentences:
+10. John journeyed to the hallway.
+11. Afterwards he went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	hallway	the context sentences describe john's movements, but they do not provide any new information about mary's location. the last information about mary's location was provided in the previous parts of the conversation, where it was stated that mary moved to the hallway (sentence 5). there is no information that suggests mary has moved from the hallway, so it can be inferred that mary is still in the hallway.	none	not mentioned	False	The question asks about Mary's location, but the context sentences only provide information about John's movements. Since Mary's location is not mentioned, we cannot determine her exact location.		"Reasoning: The question asks about Mary's location, but the context sentences only provide information about John's movements. Since Mary's location is not mentioned, we cannot determine her exact location.
+
+Answer: not mentioned"	0.093	0.0465	False	False	False	True	0
+255	11	51	5	"*TASK*
+Here are the context sentences:
+13. John went to the office.
+14. Afterwards he went back to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	the context sentences describe john's movements, first going to the office and then going back to the hallway. since the last location mentioned is the hallway, it can be inferred that john is currently in the hallway.	fully	hallway	True	John went to the office and then returned to the hallway, which means he is currently in the hallway.		"Reasoning: John went to the office and then returned to the hallway, which means he is currently in the hallway.
+
+Answer: hallway"	0.0	0.0714	False	False	False	False	0

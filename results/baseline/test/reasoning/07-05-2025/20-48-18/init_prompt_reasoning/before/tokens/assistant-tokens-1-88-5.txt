@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġtalk	Ġabout	ĠMary	's	Ġmovement	Ġto	Ġthe	Ġhallway	Ġand	ĠDaniel	's	Ġmovement	Ġto	Ġthe	Ġgarden	,	Ġbut	ĠJohn	Ġis	Ġnot	Ġmentioned	Ġat	Ġall	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

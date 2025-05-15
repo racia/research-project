@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	7	,	ĠMary	Ġwas	Ġinitially	Ġin	Ġthe	Ġoffice	,	Ġbut	Ġthen	Ġaccording	Ġto	Ġcontext	Ġsentence	Ġ	8	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

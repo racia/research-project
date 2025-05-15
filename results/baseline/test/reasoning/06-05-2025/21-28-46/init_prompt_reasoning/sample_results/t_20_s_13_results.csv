@@ -1,0 +1,81 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2191	20	13	1	"*TASK*
+Here are the context sentences:
+1. Jason is thirsty.
+
+Now, answer the following question:
+Where will jason go?"	kitchen	since jason is thirsty, it can be logically inferred that he needs to quench his thirst. the most common place to find a drink to quench thirst is the kitchen, where water, juice, or other beverages are typically stored. therefore, it is reasonable to assume that jason will go to the kitchen to get a drink and satisfy his thirst.	fully	kitchen	True	Jason is thirsty, which means he needs to quench his thirst. The context sentence does not specify what he needs to drink, but based on the common association of thirst with drinking, it is likely that he will go somewhere where he can get a drink.		"Reasoning: Jason is thirsty, which means he needs to quench his thirst. The context sentence does not specify what he needs to drink, but based on the common association of thirst with drinking, it is likely that he will go somewhere where he can get a drink.
+
+Answer: kitchen"	0.0169	0.0169	False	False	False	False	0
+2192	20	13	2	"*TASK*
+Here are the context sentences:
+3. Sumit is bored.
+
+Now, answer the following question:
+Where will sumit go?"	garden	since sumit is bored, it can be logically inferred that he needs to find something to do or a change of environment to alleviate his boredom. in the absence of any specific information about sumit's interests or preferences, it is reasonable to assume that he might go to a common outdoor area like a garden, where he can engage in some physical activity, relax, or simply get some fresh air, which could help to alleviate his boredom.	fully	garden	True	Sumit is bored, which means he needs to find something to do or entertain himself. The context sentence does not specify what he wants to do, but based on the common association of boredom with seeking entertainment, it is likely that he will go somewhere where he can find something to do.		"Reasoning: Sumit is bored, which means he needs to find something to do or entertain himself. The context sentence does not specify what he wants to do, but based on the common association of boredom with seeking entertainment, it is likely that he will go somewhere where he can find something to do.
+
+Answer: garden"	0.0308	0.0154	False	False	False	False	0
+2193	20	13	3	"*TASK*
+Here are the context sentences:
+5. Jason journeyed to the kitchen.
+
+Now, answer the following question:
+Why did jason go to the kitchen?"	thirsty	in a previous context (1. jason is thirsty), it was established that jason is thirsty. subsequently, jason journeyed to the kitchen (5. jason journeyed to the kitchen). it can be logically inferred that jason went to the kitchen to quench his thirst, as the kitchen is a common place to find a drink. therefore, the reason jason went to the kitchen is because he is thirsty.	none	thirsty	True	Jason journeyed to the kitchen, which means he went to the kitchen. The context sentence does not specify why he went, but based on the previous context sentence (1. Jason is thirsty), it is likely that he went to the kitchen to quench his thirst.		"Reasoning: Jason journeyed to the kitchen, which means he went to the kitchen. The context sentence does not specify why he went, but based on the previous context sentence (1. Jason is thirsty), it is likely that he went to the kitchen to quench his thirst.
+
+Answer: thirsty"	0.0328	0.0164	False	False	False	False	0
+2194	20	13	4	"*TASK*
+Here are the context sentences:
+7. Jason took the milk there.
+
+Now, answer the following question:
+Why did jason get the milk?"	thirsty	in a previous context (1. jason is thirsty), it was established that jason is thirsty. subsequently, jason journeyed to the kitchen (5. jason journeyed to the kitchen) and took the milk there (7. jason took the milk there). it can be logically inferred that jason got the milk to quench his thirst, as milk is a common beverage that can satisfy thirst. therefore, the reason jason got the milk is because he is	none	thirsty	True	Jason took the milk, which means he got the milk. The context sentence does not specify why he got the milk, but based on the previous context sentence (1. Jason is thirsty), it is likely that he got the milk to quench his thirst.		"Reasoning: Jason took the milk, which means he got the milk. The context sentence does not specify why he got the milk, but based on the previous context sentence (1. Jason is thirsty), it is likely that he got the milk to quench his thirst.
+
+Answer: thirsty"	0.0	0.0169	False	False	False	False	0
+2195	20	13	5	"*TASK*
+Here are the context sentences:
+9. Sumit moved to the garden.
+
+Now, answer the following question:
+Why did sumit go to the garden?"	bored	in a previous context (3. sumit is bored), it was established that sumit is bored. subsequently, sumit moved to the garden (9. sumit moved to the garden). it can be logically inferred that sumit went to the garden to alleviate his boredom, as a change of environment or outdoor activities in the garden could help to alleviate boredom. therefore, the reason sumit went to the garden is because he is bored.	none	bored	True	Sumit moved to the garden, which means he went to the garden. The context sentence does not specify why he went, but based on the previous context sentence (3. Sumit is bored), it is likely that he went to the garden to find something to do or entertain himself.		"Reasoning: Sumit moved to the garden, which means he went to the garden. The context sentence does not specify why he went, but based on the previous context sentence (3. Sumit is bored), it is likely that he went to the garden to find something to do or entertain himself.
+
+Answer: bored"	0.0154	0.0154	False	True	False	False	0
+2196	20	13	6	"*TASK*
+Here are the context sentences:
+11. Antoine is thirsty.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	"""reasoning: <reasoning>"""	fully	kitchen	True	Antoine is thirsty, which means he needs to quench his thirst. The context sentence does not specify what he needs to drink, but based on the common association of thirst with drinking, it is likely that he will go somewhere where he can get a drink.		"Reasoning: Antoine is thirsty, which means he needs to quench his thirst. The context sentence does not specify what he needs to drink, but based on the common association of thirst with drinking, it is likely that he will go somewhere where he can get a drink.
+
+Answer: kitchen"	0.0678	0.0169	False	False	False	False	0
+2197	20	13	7	"*TASK*
+Here are the context sentences:
+13. Antoine travelled to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	thirsty	"""reasoning: <reasoning>"""	none	thirsty	True	Antoine travelled to the kitchen, which means he went to the kitchen. The context sentence does not specify why he went, but based on the previous context sentence (11. Antoine is thirsty), it is likely that he went to the kitchen to quench his thirst.		"Reasoning: Antoine travelled to the kitchen, which means he went to the kitchen. The context sentence does not specify why he went, but based on the previous context sentence (11. Antoine is thirsty), it is likely that he went to the kitchen to quench his thirst.
+
+Answer: thirsty"	0.05	0.0167	False	False	False	False	0
+2198	20	13	8	"*TASK*
+Here are the context sentences:
+15. Sumit got the football there.
+
+Now, answer the following question:
+Why did sumit get the football?"	bored	"""reasoning: <reasoning>"""	none	bored	True	Sumit got the football, which means he obtained the football. The context sentence does not specify why he got the football, but based on the previous context sentence (3. Sumit is bored), it is likely that he got the football to find something to do or entertain himself.		"Reasoning: Sumit got the football, which means he obtained the football. The context sentence does not specify why he got the football, but based on the previous context sentence (3. Sumit is bored), it is likely that he got the football to find something to do or entertain himself.
+
+Answer: bored"	0.0469	0.0156	False	True	False	False	0
+2199	20	13	9	"*TASK*
+Here are the context sentences:
+17. Yann is thirsty.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	"""reasoning: <reasoning>"""	fully	garden	False	Yann is thirsty, which means he needs to quench his thirst. The context sentence does not specify what he needs to drink, but based on the common association of thirst with drinking, it is likely that he will go somewhere where he can get a drink.		"Reasoning: Yann is thirsty, which means he needs to quench his thirst. The context sentence does not specify what he needs to drink, but based on the common association of thirst with drinking, it is likely that he will go somewhere where he can get a drink.
+
+Answer: garden"	0.0	0.0167	False	False	False	False	0
+2200	20	13	10	"*TASK*
+Here are the context sentences:
+19. Yann went to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	thirsty	"""reasoning: <reasoning>"""	none	thirsty	True	Yann went to the kitchen, which means he went to the kitchen. The context sentence does not specify why he went, but based on the previous context sentence (17. Yann is thirsty), it is likely that he went to the kitchen to quench his thirst.		"Reasoning: Yann went to the kitchen, which means he went to the kitchen. The context sentence does not specify why he went, but based on the previous context sentence (17. Yann is thirsty), it is likely that he went to the kitchen to quench his thirst.
+
+Answer: thirsty"	0.0968	0.0161	False	False	False	False	0

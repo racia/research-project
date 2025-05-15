@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+261	10	53	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the park.
+2. Fred is either in the bedroom or the kitchen.
+
+Now, answer the following question:
+Is Fred in the cinema?"	no	the context sentences do not mention fred being in the cinema. in fact, sentence 2 explicitly states that fred is either in the bedroom or the kitchen, which are two locations that do not include the cinema. therefore, based on the provided information, it can be logically concluded that fred is not in the cinema.	fully	no	True	The context sentences do not mention Fred being in the cinema. Sentence 2 only mentions the bedroom or the kitchen as possible locations for Fred.		"Reasoning: The context sentences do not mention Fred being in the cinema. Sentence 2 only mentions the bedroom or the kitchen as possible locations for Fred.
+
+Answer: no"	0.0571	0.0286	False	False	False	True	0
+262	10	53	2	"*TASK*
+Here are the context sentences:
+4. Julie travelled to the office.
+5. Bill travelled to the cinema.
+
+Now, answer the following question:
+Is Bill in the kitchen?"	no	according to sentence 5, bill travelled to the cinema, which implies that bill is currently at the cinema. there is no mention of bill being in the kitchen in the context sentences. therefore, based on the provided information, it can be logically concluded that bill is not in the kitchen.	fully	no	True	The context sentences do not mention Bill being in the kitchen. Sentence 5 mentions Bill travelling to the cinema, but there is no information about Bill being in the kitchen.		"Reasoning: The context sentences do not mention Bill being in the kitchen. Sentence 5 mentions Bill travelling to the cinema, but there is no information about Bill being in the kitchen.
+
+Answer: no"	0.122	0.0244	False	False	False	True	0
+263	10	53	3	"*TASK*
+Here are the context sentences:
+7. Bill is in the bedroom.
+8. Fred is either in the park or the office.
+
+Now, answer the following question:
+Is Julie in the school?"	no	"there is no mention of julie in the context sentences (7 and 8). the sentences only provide information about bill and fred, but not julie. therefore, based on the provided information, it can be logically concluded that there is no information about julie being in the school, and the answer is ""no""."	none	not mentioned	False	There is no information about Julie being in the school in the context sentences. The context sentences only mention Bill being in the bedroom and Fred being in either the park or the office, but do not mention Julie or the school.		"Reasoning: There is no information about Julie being in the school in the context sentences. The context sentences only mention Bill being in the bedroom and Fred being in either the park or the office, but do not mention Julie or the school.
+
+Answer: not mentioned"	0.0566	0.0189	False	False	False	True	0
+264	10	53	4	"*TASK*
+Here are the context sentences:
+10. Bill travelled to the cinema.
+11. Bill went back to the school.
+
+Now, answer the following question:
+Is Bill in the kitchen?"	no	according to sentence 10, bill travelled to the cinema, and then according to sentence 11, bill went back to the school. there is no mention of bill being in the kitchen in the context sentences. in fact, the sentences explicitly state that bill is in the cinema and then goes back to the school, which are two locations that do not include the kitchen. therefore, based on the provided information, it can be logically concluded that bill is not in the kitchen.	fully	no	True	The context sentences do not mention Bill being in the kitchen. Sentence 10 mentions Bill travelling to the cinema, and sentence 11 mentions Bill going back to the school, but there is no information about Bill being in the kitchen.		"Reasoning: The context sentences do not mention Bill being in the kitchen. Sentence 10 mentions Bill travelling to the cinema, and sentence 11 mentions Bill going back to the school, but there is no information about Bill being in the kitchen.
+
+Answer: no"	0.0943	0.0189	False	False	False	True	0
+265	10	53	5	"*TASK*
+Here are the context sentences:
+13. Bill travelled to the kitchen.
+14. Mary moved to the bedroom.
+
+Now, answer the following question:
+Is Bill in the kitchen?"	yes	according to sentence 13, bill travelled to the kitchen, which explicitly states that bill is in the kitchen. there is no subsequent information that suggests bill has left the kitchen. therefore, based on the provided information, it can be logically concluded that bill is indeed in the kitchen.	fully	yes	True	Sentence 13 explicitly states that Bill travelled to the kitchen, which implies that Bill is currently in the kitchen.		"Reasoning: Sentence 13 explicitly states that Bill travelled to the kitchen, which implies that Bill is currently in the kitchen.
+
+Answer: yes"	0.0	0.0345	False	False	False	False	0

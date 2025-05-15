@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+43	.	ĠFred	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+44	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠFred	Ġgive	Ġto	ĠJeff	?Ċ

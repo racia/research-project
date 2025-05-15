@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1626	14	26	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Mary travelled to the cinema.
+2. This morning Fred went back to the bedroom.
+3. Yesterday Julie went to the school.
+4. Fred went to the office yesterday.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	office	"from the context sentences, we know that fred went to the office yesterday (sentence 4). there is no information about fred's location between yesterday and this morning. however, sentence 2 states that ""this morning fred went back to the bedroom"", implying that fred was somewhere else before coming back to the bedroom. the most recent location mentioned for fred before this morning is the office, so it is logical to conclude that fred was at the office before going back to the bedroom."	fully	office	True	According to sentence 4, Fred went to the office yesterday. Then, according to sentence 2, this morning Fred went back to the bedroom. This implies that Fred was at the office before going back to the bedroom.		"assistant
+
+Reasoning: According to sentence 4, Fred went to the office yesterday. Then, according to sentence 2, this morning Fred went back to the bedroom. This implies that Fred was at the office before going back to the bedroom.
+
+Answer: office"	0.0182	0.0364	False	False	False	False	0
+1627	14	26	2	"*TASK*
+Here are the context sentences:
+6. This morning Julie went to the cinema.
+7. Yesterday Bill moved to the school.
+
+Now, answer the following question:
+Where was Julie before the cinema?"	school	"there is no direct information about julie's location before going to the cinema this morning. however, sentence 3 from the previous context (not provided in this part, but still relevant) states ""yesterday julie went to the school."" since julie went to the school yesterday and went to the cinema this morning, it is logical to assume that julie was at the school before going to the cinema, as there is no other information about her location between yesterday and this morning."	partially	not mentioned	False	There is no information provided about Julie's location before going to the cinema this morning.		"Reasoning: There is no information provided about Julie's location before going to the cinema this morning. 
+
+Answer: not mentioned"	0.1923	0.0769	False	False	False	True	0
+1628	14	26	3	"*TASK*
+Here are the context sentences:
+9. This evening Fred travelled to the school.
+10. This afternoon Fred went to the park.
+
+Now, answer the following question:
+Where was Fred before the school?"	park	"sentence 10 states that ""this afternoon fred went to the park"", and sentence 9 states that ""this evening fred travelled to the school"". since ""this evening"" comes after ""this afternoon"", it can be inferred that fred was at the park before going to the school. the sequence of events suggests that fred went to the park in the afternoon and then travelled to the school in the evening."	fully	park	True	According to sentence 10, Fred went to the park this afternoon. Then, according to sentence 9, this evening Fred travelled to the school. This implies that Fred was at the park before going to the school.		"Reasoning: According to sentence 10, Fred went to the park this afternoon. Then, according to sentence 9, this evening Fred travelled to the school. This implies that Fred was at the park before going to the school.
+
+Answer: park"	0.2353	0.0392	False	False	False	False	0
+1629	14	26	4	"*TASK*
+Here are the context sentences:
+12. Julie went to the park this afternoon.
+13. This morning Bill went to the cinema.
+
+Now, answer the following question:
+Where was Fred before the school?"	park	"there is no information about fred's location in the provided context sentences. sentences 12 and 13 mention julie and bill, but not fred. the answer ""park"" cannot be logically deduced from the provided context. it seems that the correct context sentences for this question are missing."	none	not mentioned	False	There is no information provided about Fred's location before going to the school. The context sentences only mention Julie and Bill's movements.		"Reasoning: There is no information provided about Fred's location before going to the school. The context sentences only mention Julie and Bill's movements.
+
+Answer: not mentioned"	0.2353	0.0588	False	False	False	True	0
+1630	14	26	5	"*TASK*
+Here are the context sentences:
+15. Bill went back to the park this evening.
+16. Bill went back to the bedroom this afternoon.
+
+Now, answer the following question:
+Where was Bill before the park?"	bedroom	"sentence 15 states that ""bill went back to the park this evening"", and sentence 16 states that ""bill went back to the bedroom this afternoon"". the phrase ""went back"" implies that bill was already at the bedroom before going to the park. the sequence of events suggests that bill went back to the bedroom in the afternoon and then went back to the park in the evening, so bill was at the bedroom before going to the park."	fully	bedroom	True	According to sentence 16, Bill went back to the bedroom this afternoon. Then, according to sentence 15, Bill went back to the park this evening. This implies that Bill was at the bedroom before going back to the park.		"Reasoning: According to sentence 16, Bill went back to the bedroom this afternoon. Then, according to sentence 15, Bill went back to the park this evening. This implies that Bill was at the bedroom before going back to the park.
+
+Answer: bedroom"	0.0	0.037	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġfirst	,	Ġand	Ġthen	Ġhe	Ġtravelled	Ġto	Ġthe	Ġhallway	.	ĠThis	Ġimplies	Ġthat	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+2	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+3	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+4	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+5	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+6	.	ĠMary	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠMary	Ġcarrying	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

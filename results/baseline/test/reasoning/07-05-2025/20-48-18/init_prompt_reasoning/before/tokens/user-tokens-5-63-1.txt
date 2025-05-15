@@ -1,0 +1,23 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+2	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+3	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+4	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+5	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+6	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
+7	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+8	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+9	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+10	.	ĠBill	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+11	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
+12	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+13	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+14	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+15	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+16	.	ĠBill	Ġdiscarded	Ġthe	Ġapple	.Ċ
+17	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+18	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+19	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+20	.	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠBill	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġfootball	Ġto	ĠBill	?Ċ

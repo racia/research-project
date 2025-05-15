@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	Ġ"	Yesterday	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	."	ĠThere	Ġis	Ġno	Ġother	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbetween	Ġyesterday	Ġand	Ġthis	Ġmorning	,	Ġso	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġbedroom	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

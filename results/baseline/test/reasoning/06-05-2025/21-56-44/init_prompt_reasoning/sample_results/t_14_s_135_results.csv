@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2921	14	135	1	"*TASK*
+Here are the context sentences:
+1. This morning Julie moved to the school.
+2. Yesterday Bill journeyed to the cinema.
+3. Yesterday Julie went back to the cinema.
+4. Mary travelled to the park yesterday.
+
+Now, answer the following question:
+Where was Julie before the school?"	cinema	"from context sentence 3, ""yesterday julie went back to the cinema"", we can infer that julie was at the cinema yesterday. then, from context sentence 1, ""this morning julie moved to the school"", we can conclude that julie moved from the cinema to the school this morning. therefore, julie was at the cinema before she moved to the school."	fully	cinema	True	Julie moved to the school this morning, and yesterday she went back to the cinema. This implies that Julie was at the cinema yesterday, and before moving to the school this morning.		"Reasoning: Julie moved to the school this morning, and yesterday she went back to the cinema. This implies that Julie was at the cinema yesterday, and before moving to the school this morning.
+
+Answer: cinema"	0.1163	0.0465	False	False	False	False	0
+2922	14	135	2	"*TASK*
+Here are the context sentences:
+6. This morning Bill went to the park.
+7. Mary went to the school this morning.
+
+Now, answer the following question:
+Where was Mary before the school?"	park	"from context sentence 4, ""mary travelled to the park yesterday"", we know that mary was at the park yesterday. then, from context sentence 7, ""mary went to the school this morning"", we can infer that mary moved from the park to the school this morning. therefore, mary was at the park before she went to the school."	partially	not mentioned	False	There is no information about Mary's location before going to the school this morning. The context sentences only provide information about Bill's and Mary's locations at the time of going to the park and school, respectively.		"Reasoning: There is no information about Mary's location before going to the school this morning. The context sentences only provide information about Bill's and Mary's locations at the time of going to the park and school, respectively.
+
+Answer: not mentioned"	0.14	0.04	False	False	False	True	0
+2923	14	135	3	"*TASK*
+Here are the context sentences:
+9. This afternoon Mary went back to the park.
+10. Julie moved to the bedroom this afternoon.
+
+Now, answer the following question:
+Where was Bill before the park?"	cinema	"there is no direct information about bill's location before the park in the provided context sentences. however, we can look at the previous context sentences. from context sentence 2, ""yesterday bill journeyed to the cinema"", we know that bill was at the cinema yesterday. there is no information about bill moving from the cinema, so it is logical to assume that bill was still at the cinema before going to the park."	none	not mentioned	False	There is no information about Bill's location before going to the park. The context sentences only provide information about Mary's and Julie's locations, and Bill's location is only mentioned as going to the park this morning (sentence 6).		"Reasoning: There is no information about Bill's location before going to the park. The context sentences only provide information about Mary's and Julie's locations, and Bill's location is only mentioned as going to the park this morning (sentence 6).
+
+Answer: not mentioned"	0.0909	0.0364	False	False	False	True	0
+2924	14	135	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Bill journeyed to the cinema.
+13. Mary went to the cinema this evening.
+
+Now, answer the following question:
+Where was Mary before the park?"	school	"from context sentence 7, ""mary went to the school this morning"", we know that mary was at the school in the morning. then, from context sentence 9, ""this afternoon mary went back to the park"", we can infer that mary moved from the school to the park in the afternoon. therefore, mary was at the school before she went to the park."	none	not mentioned	False	There is no information about Mary's location before going to the park. The context sentences only provide information about Mary's and Bill's locations at the cinema, but not about Mary's location before going to the park.		"Reasoning: There is no information about Mary's location before going to the park. The context sentences only provide information about Mary's and Bill's locations at the cinema, but not about Mary's location before going to the park.
+
+Answer: not mentioned"	0.0392	0.0392	False	False	False	True	0
+2925	14	135	5	"*TASK*
+Here are the context sentences:
+15. Fred moved to the park yesterday.
+16. Julie travelled to the cinema this evening.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	park	"there is no direct information about mary's location before the cinema in the provided context sentences. however, we can look at the previous context sentences. from context sentence 9, ""this afternoon mary went back to the park"", we know that mary was at the park in the afternoon. then, from the question, we can infer that mary moved from the park to the cinema, since the question asks about mary's location before the cinema. therefore, mary was at the park before the"	none	not mentioned	False	There is no information about Mary's location before going to the cinema. The context sentences only provide information about Fred's and Julie's locations, and Mary's location is only mentioned as going to the park yesterday (sentence 4).		"Reasoning: There is no information about Mary's location before going to the cinema. The context sentences only provide information about Fred's and Julie's locations, and Mary's location is only mentioned as going to the park yesterday (sentence 4).
+
+Answer: not mentioned"	0.1111	0.037	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġchanges	.	ĠInitially	,	Ġshe	Ġis	Ġwith	ĠJohn	Ġin	Ġthe	Ġbedroom	.	ĠThen	,	Ġshe	Ġmoves	Ġto	Ġthe	Ġhallway	Ġwith	ĠSandra	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

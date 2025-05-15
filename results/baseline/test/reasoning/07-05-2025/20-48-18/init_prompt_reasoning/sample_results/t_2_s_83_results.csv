@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+911	2	83	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the office.
+2. Daniel went to the bathroom.
+3. John went back to the bedroom.
+4. John went to the hallway.
+5. Mary journeyed to the bathroom.
+6. Sandra picked up the apple there.
+7. John moved to the bathroom.
+8. John got the milk there.
+9. Daniel moved to the bedroom.
+10. John moved to the garden.
+
+Now, answer the following question:
+Where is the milk?"	garden	from the context sentences, we know that john got the milk in the bathroom (sentence 8). later, john moved to the garden (sentence 10). since there is no information about john putting the milk down or giving it to someone else, we can logically assume that john still has the milk with him. therefore, the milk is in the garden, where john is currently located.	fully	garden	True	The context sentences suggest that John went to the bathroom, got the milk there, and then moved to the garden. This implies that the milk is currently with John in the garden.		"Reasoning: The context sentences suggest that John went to the bathroom, got the milk there, and then moved to the garden. This implies that the milk is currently with John in the garden.
+
+Answer: garden"	0.0465	0.0465	False	False	False	False	0
+912	2	83	2	"*TASK*
+Here are the context sentences:
+12. Sandra put down the apple.
+13. John got the football there.
+
+Now, answer the following question:
+Where is the milk?"	garden	the question asks about the location of the milk, but the provided context sentences (12 and 13) do not mention the milk at all. however, we can look back at the previous context sentences (1-10) to find the relevant information. from sentence 8, we know that john got the milk in the bathroom. later, john moved to the garden (sentence 10). since there is no information about john putting the milk down or giving it to someone else	none	not mentioned	False	The context sentences do not mention the milk at all. The previous conversation only mentioned the apple and the football, but not the milk.		"Reasoning: The context sentences do not mention the milk at all. The previous conversation only mentioned the apple and the football, but not the milk.
+
+Answer: not mentioned"	0.0	0.0571	False	False	False	True	0
+913	2	83	3	"*TASK*
+Here are the context sentences:
+15. Sandra journeyed to the office.
+16. Daniel picked up the apple there.
+17. Mary journeyed to the kitchen.
+18. Daniel left the apple there.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	the question asks about the location of the apple. from sentence 16, we know that daniel picked up the apple in the office. then, in sentence 18, it is stated that daniel left the apple in the kitchen (not in the office or bedroom). however, the answer provided is that the apple is in the bedroom, which contradicts the information in the context sentences. therefore, the answer cannot be logically deduced from the provided context.	partially	office	False	The context sentences suggest that Sandra journeyed to the office, where Daniel picked up the apple. Then, Daniel left the apple there, implying that the apple is still in the office.		"Reasoning: The context sentences suggest that Sandra journeyed to the office, where Daniel picked up the apple. Then, Daniel left the apple there, implying that the apple is still in the office.
+
+Answer: office"	0.0909	0.0455	False	False	False	False	0
+914	2	83	4	"*TASK*
+Here are the context sentences:
+20. Daniel got the apple there.
+21. John went back to the bathroom.
+22. Daniel put down the apple.
+23. John moved to the garden.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	"the question asks about the location of the apple. from sentence 20, we know that daniel got the apple, but the location is not specified. then, in sentence 22, it is stated that daniel put down the apple, but again, the location is not specified. there is no information in the context sentences that suggests the apple is in the bedroom. in fact, the context sentences do not mention the bedroom at all. therefore, the answer ""bedroom"	partially	bathroom	False	The context sentences suggest that Daniel got the apple, put it down, and there is no mention of the apple being moved or taken away. Therefore, it can be inferred that the apple is still in the same location where Daniel put it down.		"Reasoning: The context sentences suggest that Daniel got the apple, put it down, and there is no mention of the apple being moved or taken away. Therefore, it can be inferred that the apple is still in the same location where Daniel put it down.
+
+Answer: bathroom"	0.0357	0.0357	False	False	False	True	0
+915	2	83	5	"*TASK*
+Here are the context sentences:
+25. Sandra travelled to the bathroom.
+26. Sandra moved to the kitchen.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	"there is no information in the provided context sentences (25 and 26) about the apple. the sentences only describe sandra's movements between the bathroom and the kitchen. there is no mention of the apple or the bedroom. therefore, it is not possible to logically deduce the location of the apple from the provided context. the answer ""bedroom"" seems to be unrelated to the context sentences."	none	not mentioned	False	The context sentences do not mention the apple at all. The previous conversation mentioned the apple, but these new sentences do not provide any information about its current location.		"Reasoning: The context sentences do not mention the apple at all. The previous conversation mentioned the apple, but these new sentences do not provide any information about its current location.
+
+Answer: not mentioned"	0.05	0.05	False	False	False	True	0

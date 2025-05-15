@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+636	12	28	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary travelled to the garden.
+2. John and Sandra journeyed to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that john and sandra journeyed to the kitchen (sentence 2). since john is mentioned as part of this journey, it can be logically concluded that john is currently in the kitchen.	fully	kitchen	True	From sentence 2, we know that John and Sandra journeyed to the kitchen. Therefore, John's current location is the kitchen.		"assistant
+
+Reasoning: From sentence 2, we know that John and Sandra journeyed to the kitchen. Therefore, John's current location is the kitchen.
+
+Answer: kitchen"	0.0541	0.027	False	False	False	False	0
+637	12	28	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Daniel journeyed to the bedroom.
+5. John and Mary travelled to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from the context sentence 4, we know that sandra and daniel journeyed to the bedroom. since daniel is mentioned as part of this journey, it can be logically concluded that daniel is currently in the bedroom.	fully	bedroom	True	From sentence 4, we know that Sandra and Daniel journeyed to the bedroom. Therefore, Daniel's current location is the bedroom.		"Reasoning: From sentence 4, we know that Sandra and Daniel journeyed to the bedroom. Therefore, Daniel's current location is the bedroom.
+
+Answer: bedroom"	0.0294	0.0294	False	False	False	False	0
+638	12	28	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary went back to the hallway.
+8. Daniel and Sandra travelled to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentence 7, we know that sandra and mary went back to the hallway. since mary is mentioned as part of this action, it can be logically concluded that mary is currently in the hallway. the fact that sandra then travelled to the kitchen with daniel in sentence 8 does not change mary's location, as mary was not part of that journey.	fully	hallway	True	From sentence 7, we know that Sandra and Mary went back to the hallway. There is no subsequent information that changes Mary's location. Therefore, Mary's current location is the hallway.		"Reasoning: From sentence 7, we know that Sandra and Mary went back to the hallway. There is no subsequent information that changes Mary's location. Therefore, Mary's current location is the hallway.
+
+Answer: hallway"	0.0222	0.0222	False	False	False	True	0
+639	12	28	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Sandra went to the bedroom.
+11. Mary and Sandra journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from the context sentence 11, we know that mary and sandra journeyed to the kitchen. since mary is mentioned as part of this journey, it can be logically concluded that mary is currently in the kitchen. the fact that sandra was previously with daniel in sentence 10 does not change mary's location, as mary was not part of that journey.	fully	kitchen	True	From sentence 11, we know that Mary and Sandra journeyed to the kitchen. Therefore, Mary's current location is the kitchen.		"Reasoning: From sentence 11, we know that Mary and Sandra journeyed to the kitchen. Therefore, Mary's current location is the kitchen.
+
+Answer: kitchen"	0.1765	0.0294	False	False	False	False	0
+640	12	28	5	"*TASK*
+Here are the context sentences:
+13. Sandra and John travelled to the garden.
+14. Mary and John went to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	from the context sentence 13, we know that sandra and john travelled to the garden. however, in sentence 14, it is stated that mary and john went to the bedroom. this implies that john moved from the garden to the bedroom with mary. therefore, it can be logically concluded that john is currently in the bedroom.	fully	bedroom	True	From sentence 14, we know that Mary and John went to the bedroom. Therefore, John's current location is the bedroom.		"Reasoning: From sentence 14, we know that Mary and John went to the bedroom. Therefore, John's current location is the bedroom.
+
+Answer: bedroom"	0.0303	0.0303	False	False	False	False	0

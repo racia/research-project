@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġbathroom	,	Ġand	Ġhe	Ġtravelled	Ġto	Ġthe	Ġgarden	Ġafter	Ġthat	.	ĠSince	Ġthere	Ġis	Ġno	Ġinformation	Ġindicating	Ġhe	Ġmoved	Ġfrom	Ġthe	Ġgarden	Ġto	Ġa	Ġdifferent	Ġlocation	,	Ġit	Ġis	Ġlikely	Ġhe	Ġis	Ġstill	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

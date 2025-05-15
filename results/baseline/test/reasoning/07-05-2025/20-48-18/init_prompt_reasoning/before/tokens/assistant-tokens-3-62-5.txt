@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġleft	Ġby	ĠDaniel	Ġin	Ġthe	Ġbathroom	Ġ(	100	th	Ġsentence	).	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġbeing	Ġin	Ġthe	Ġhallway	Ġbefore	Ġthat	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

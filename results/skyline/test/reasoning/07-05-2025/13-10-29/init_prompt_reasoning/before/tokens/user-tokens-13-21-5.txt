@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠSandra	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+14	.	ĠAfter	Ġthat	Ġthey	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	ĠMary	?Ċ

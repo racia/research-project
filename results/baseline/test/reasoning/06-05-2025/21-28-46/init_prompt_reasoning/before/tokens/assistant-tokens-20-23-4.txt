@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJason	Ġis	Ġtired	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġneeds	Ġrest	.	ĠSince	Ġthe	Ġcontext	Ġdoesn	't	Ġspecify	Ġwhat	Ġhe	Ġwants	Ġto	Ġdo	,	ĠI	'll	Ġassume	Ġhe	's	Ġlooking	Ġfor	Ġa	Ġplace	Ġto	Ġsleep	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

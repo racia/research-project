@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1426	12	136	1	"*TASK*
+Here are the context sentences:
+1. Mary and Daniel moved to the bedroom.
+2. John and Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"according to context sentence 2, ""john and sandra journeyed to the bedroom"", which explicitly states that john went to the bedroom. therefore, the answer to the question ""where is john?"" is indeed ""bedroom""."	fully	bedroom	True	The question asks about John's location. Since John and Sandra journeyed to the bedroom in sentence 2, it implies that John is in the bedroom.		"Reasoning: The question asks about John's location. Since John and Sandra journeyed to the bedroom in sentence 2, it implies that John is in the bedroom.
+
+Answer: bedroom"	0.0526	0.0263	False	False	False	False	0
+1427	12	136	2	"*TASK*
+Here are the context sentences:
+4. John and Sandra journeyed to the kitchen.
+5. Daniel and Sandra went to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	"from context sentence 4, we know that john and sandra went to the kitchen. however, this information is overridden by context sentence 5, which states that daniel and sandra went to the office. this implies that sandra left the kitchen and went to the office with daniel. therefore, the answer to the question ""where is sandra?"" is indeed ""office""."	fully	kitchen	False	The question asks about Sandra's location. According to sentence 4, John and Sandra journeyed to the kitchen, which implies that Sandra is in the kitchen. However, sentence 5 states that Daniel and Sandra went to the office, which means Sandra is also present in the office.		"Reasoning: The question asks about Sandra's location. According to sentence 4, John and Sandra journeyed to the kitchen, which implies that Sandra is in the kitchen. However, sentence 5 states that Daniel and Sandra went to the office, which means Sandra is also present in the office.
+
+Answer: kitchen"	0.0781	0.0156	False	False	False	False	0
+1428	12	136	3	"*TASK*
+Here are the context sentences:
+7. Mary and Sandra went to the hallway.
+8. Daniel and Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"from context sentence 7, we know that mary and sandra went to the hallway. however, this information is overridden by context sentence 8, which states that daniel and mary journeyed to the kitchen. this implies that mary left the hallway and went to the kitchen with daniel. therefore, the answer to the question ""where is mary?"" is indeed ""kitchen""."	fully	kitchen	True	The question asks about Mary's location. According to sentence 8, Daniel and Mary journeyed to the kitchen, which implies that Mary is in the kitchen.		"Reasoning: The question asks about Mary's location. According to sentence 8, Daniel and Mary journeyed to the kitchen, which implies that Mary is in the kitchen.
+
+Answer: kitchen"	0.0	0.0256	False	False	False	False	0
+1429	12	136	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John travelled to the bedroom.
+11. Daniel and John journeyed to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	"from context sentence 10, we know that sandra and john travelled to the bedroom. however, this information is overridden by context sentence 11, which states that daniel and john journeyed to the hallway. this implies that john left the bedroom and went to the hallway with daniel. therefore, the answer to the question ""where is john?"" is indeed ""hallway""."	fully	bedroom	False	The question asks about John's location. According to sentence 10, Sandra and John travelled to the bedroom, which implies that John is in the bedroom. However, sentence 11 states that Daniel and John journeyed to the hallway, which means John is also present in the hallway.		"Reasoning: The question asks about John's location. According to sentence 10, Sandra and John travelled to the bedroom, which implies that John is in the bedroom. However, sentence 11 states that Daniel and John journeyed to the hallway, which means John is also present in the hallway.
+
+Answer: bedroom"	0.0781	0.0156	False	False	False	False	0
+1430	12	136	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John travelled to the bathroom.
+14. Mary and Daniel moved to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	"from context sentence 13, we know that daniel and john travelled to the bathroom. there is no subsequent information that suggests john left the bathroom. in context sentence 14, it is mentioned that mary and daniel moved to the bedroom, but there is no mention of john accompanying them. therefore, the answer to the question ""where is john?"" is indeed ""bathroom"", as there is no evidence to suggest he moved to a different location."	fully	bathroom	True	The question asks about John's location. According to sentence 13, Daniel and John travelled to the bathroom, which implies that John is in the bathroom.		"Reasoning: The question asks about John's location. According to sentence 13, Daniel and John travelled to the bathroom, which implies that John is in the bathroom.
+
+Answer: bathroom"	0.0526	0.0263	False	False	False	False	0

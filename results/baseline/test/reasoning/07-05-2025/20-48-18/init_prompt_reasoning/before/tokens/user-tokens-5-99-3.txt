@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+15	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+16	.	ĠJeff	Ġgave	Ġthe	Ġmilk	Ġto	ĠFred	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠJeff	Ġgive	Ġto	ĠFred	?Ċ

@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+29	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+30	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+31	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+32	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+33	.	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+34	.	ĠDaniel	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
+35	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+36	.	ĠMary	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġmilk	Ġthere	.Ċ
+11	.	ĠDaniel	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠJohn	Ġcarrying	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

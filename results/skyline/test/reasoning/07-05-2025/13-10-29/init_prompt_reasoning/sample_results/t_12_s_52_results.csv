@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+756	12	52	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary went back to the kitchen.
+2. Daniel and John moved to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"from the context sentences, we know that daniel was part of the group that ""moved to the kitchen"" (sentence 2). this implies that daniel's current location is the kitchen, which is the answer to the question."	fully	kitchen	True	According to context sentence 2, Daniel and John moved to the kitchen.		"assistant
+
+Reasoning: According to context sentence 2, Daniel and John moved to the kitchen.
+
+Answer: kitchen"	0.08	0.04	False	False	False	False	0
+757	12	52	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Mary journeyed to the hallway.
+5. Daniel and Mary travelled to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	"from the context sentences, we know that mary was part of the group that ""journeyed to the hallway"" (sentence 4) and then ""travelled to the garden"" (sentence 5). this implies that mary's current location is the garden, which is the answer to the question."	fully	garden	True	According to context sentence 5, Daniel and Mary travelled to the garden.		"Reasoning: According to context sentence 5, Daniel and Mary travelled to the garden.
+
+Answer: garden"	0.2727	0.0455	False	False	False	False	0
+758	12	52	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary went back to the hallway.
+8. John and Daniel journeyed to the office.
+
+Now, answer the following question:
+Where is John?"	office	"from the context sentences, we know that john was part of the group that ""journeyed to the office"" (sentence 8). this implies that john's current location is the office, which is the answer to the question."	fully	office	True	According to context sentence 8, John and Daniel journeyed to the office.		"Reasoning: According to context sentence 8, John and Daniel journeyed to the office.
+
+Answer: office"	0.0	0.0435	False	False	False	False	0
+759	12	52	4	"*TASK*
+Here are the context sentences:
+10. Daniel and John travelled to the bathroom.
+11. Daniel and Sandra moved to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"from sentence 10, we know that daniel was in the bathroom. however, sentence 11 states that daniel and sandra ""moved to the office"". this implies that daniel left the bathroom and is now in the office, which is the answer to the question."	fully	office	True	According to context sentence 11, Daniel and Sandra moved to the office.		"Reasoning: According to context sentence 11, Daniel and Sandra moved to the office.
+
+Answer: office"	0.0455	0.0455	False	False	False	False	0
+760	12	52	5	"*TASK*
+Here are the context sentences:
+13. Mary and Daniel moved to the kitchen.
+14. Mary and Sandra went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"from sentence 13, we know that mary was in the kitchen. however, sentence 14 states that mary and sandra ""went back to the bedroom"". this implies that mary left the kitchen and is now in the bedroom, which is the answer to the question."	fully	bedroom	True	According to context sentence 14, Mary and Sandra went back to the bedroom.		"Reasoning: According to context sentence 14, Mary and Sandra went back to the bedroom.
+
+Answer: bedroom"	0.0	0.0435	False	False	False	False	0

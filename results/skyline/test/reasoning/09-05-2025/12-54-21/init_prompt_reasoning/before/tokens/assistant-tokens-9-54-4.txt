@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	11	,	Ġ"	Daniel	Ġwent	Ġto	Ġthe	Ġhallway	",	Ġwhich	Ġexplicitly	Ġstates	Ġthat	ĠDaniel	Ġhas	Ġmoved	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

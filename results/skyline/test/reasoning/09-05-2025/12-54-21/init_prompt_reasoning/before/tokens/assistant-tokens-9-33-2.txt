@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġstates	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġin	Ġthe	Ġbathroom	.	ĠAdditionally	,	Ġsentence	Ġ	5	Ġconfirms	Ġthat	ĠDaniel	Ġis	Ġalso	Ġin	Ġthe	Ġbathroom	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġcontradict	ĠMary	's	Ġpresence	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

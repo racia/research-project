@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1071	12	65	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Sandra went back to the kitchen.
+2. John and Mary moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"according to context sentence 2, ""john and mary moved to the hallway"", which explicitly states that mary moved to the hallway. therefore, mary is in the hallway."	fully	hallway	True	The question asks about Mary's location, and the only information provided is that John and Mary moved to the hallway. This implies that Mary is currently in the hallway.		"Reasoning: The question asks about Mary's location, and the only information provided is that John and Mary moved to the hallway. This implies that Mary is currently in the hallway.
+
+Answer: hallway"	0.0	0.025	False	False	False	True	0
+1072	12	65	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Sandra journeyed to the hallway.
+5. Mary and Daniel travelled to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"according to context sentence 5, ""mary and daniel travelled to the kitchen"", which explicitly states that daniel moved to the kitchen. therefore, daniel is in the kitchen."	fully	kitchen	True	The question asks about Daniel's location, and the information provided shows that Daniel journeyed to the hallway with Sandra, and then travelled to the kitchen with Mary. This implies that Daniel's current location is the kitchen.		"Reasoning: The question asks about Daniel's location, and the information provided shows that Daniel journeyed to the hallway with Sandra, and then travelled to the kitchen with Mary. This implies that Daniel's current location is the kitchen.
+
+Answer: kitchen"	0.16	0.02	False	False	False	True	0
+1073	12	65	3	"*TASK*
+Here are the context sentences:
+7. Mary and Daniel went to the bedroom.
+8. Sandra and John travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"according to context sentence 8, ""sandra and john travelled to the bedroom"", which explicitly states that sandra moved to the bedroom. therefore, sandra is in the bedroom."	fully	bedroom	True	The question asks about Sandra's location, and the information provided shows that Sandra and John travelled to the bedroom. This implies that Sandra is currently in the bedroom.		"Reasoning: The question asks about Sandra's location, and the information provided shows that Sandra and John travelled to the bedroom. This implies that Sandra is currently in the bedroom.
+
+Answer: bedroom"	0.0	0.0256	False	False	False	True	0
+1074	12	65	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Sandra went back to the kitchen.
+11. Sandra and Mary went back to the garden.
+
+Now, answer the following question:
+Where is John?"	bedroom	"there is no direct information about john's location in the provided context sentences (10 and 11). however, we can infer john's location by looking at the previous context sentences. in sentence 8, ""sandra and john travelled to the bedroom"", it is stated that john moved to the bedroom. there is no information about john moving to a different location after that. therefore, it is logical to assume that john is still in the bedroom."	none	not mentioned	False	The question asks about John's location, but there is no information provided about John's current location. The context sentences only mention Sandra and Daniel's movements, and Sandra and Mary's movements. Since John's location is not mentioned, it cannot be determined.		"Reasoning: The question asks about John's location, but there is no information provided about John's current location. The context sentences only mention Sandra and Daniel's movements, and Sandra and Mary's movements. Since John's location is not mentioned, it cannot be determined.
+
+Answer: not mentioned"	0.0169	0.0169	False	False	False	True	0
+1075	12	65	5	"*TASK*
+Here are the context sentences:
+13. Sandra and John travelled to the hallway.
+14. Sandra and Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Where is John?"	hallway	"according to context sentence 13, ""sandra and john travelled to the hallway"", which explicitly states that john moved to the hallway. there is no information about john moving to a different location after that. therefore, it is logical to conclude that john is still in the hallway."	fully	hallway	True	The question asks about John's location, and the information provided shows that Sandra and John travelled to the hallway. This implies that John is currently in the hallway.		"Reasoning: The question asks about John's location, and the information provided shows that Sandra and John travelled to the hallway. This implies that John is currently in the hallway.
+
+Answer: hallway"	0.0256	0.0256	False	False	False	True	0

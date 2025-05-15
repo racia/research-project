@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġsentences	Ġ	13	Ġand	Ġ	14	,	Ġwhich	Ġdescribe	Ġher	Ġgoing	Ġto	Ġthe	Ġgarden	Ġwith	ĠJohn	Ġand	Ġthen	Ġgoing	Ġto	Ġthe	Ġbedroom	Ġwith	ĠSandra	.	ĠThe	Ġmost	Ġrecent	Ġaction	Ġmentioned	Ġis	Ġgoing	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġsuggests	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

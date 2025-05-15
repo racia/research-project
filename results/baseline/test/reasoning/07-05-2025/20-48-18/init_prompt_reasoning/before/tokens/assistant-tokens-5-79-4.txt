@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	12	,	ĠFred	Ġhanded	Ġthe	Ġapple	Ġto	ĠJeff	,	Ġand	Ġthen	ĠJeff	Ġpassed	Ġthe	Ġapple	Ġto	ĠFred	,	Ġso	ĠFred	Ġreceived	Ġthe	Ġapple	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

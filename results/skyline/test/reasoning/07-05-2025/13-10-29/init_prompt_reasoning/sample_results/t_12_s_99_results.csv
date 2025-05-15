@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+991	12	99	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary went back to the hallway.
+2. Daniel and John travelled to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"according to context sentence 1, ""sandra and mary went back to the hallway"", which explicitly states that sandra is in the hallway."	fully	hallway	True	According to context sentence 1, Sandra and Mary went back to the hallway, which means Sandra is currently in the hallway.		"assistant
+
+Reasoning: According to context sentence 1, Sandra and Mary went back to the hallway, which means Sandra is currently in the hallway.
+
+Answer: hallway"	0.0571	0.0286	False	False	False	False	0
+992	12	99	2	"*TASK*
+Here are the context sentences:
+4. Sandra and John went back to the bathroom.
+5. Mary and John went to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	"according to context sentence 5, ""mary and john went to the garden"", which explicitly states that john is in the garden. the fact that john also went to the bathroom with sandra in sentence 4 does not change the fact that he is currently in the garden with mary."	fully	garden	True	According to context sentence 5, Mary and John went to the garden, which means John is currently in the garden.		"Reasoning: According to context sentence 5, Mary and John went to the garden, which means John is currently in the garden.
+
+Answer: garden"	0.2258	0.0323	False	False	False	False	0
+993	12	99	3	"*TASK*
+Here are the context sentences:
+7. John and Sandra journeyed to the office.
+8. Sandra and John journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"according to context sentence 8, ""sandra and john journeyed to the bedroom"", which explicitly states that sandra is in the bedroom. the fact that sandra and john previously journeyed to the office in sentence 7 does not change the fact that she is currently in the bedroom."	fully	bedroom	True	According to context sentence 8, Sandra and John journeyed to the bedroom, which means Sandra is currently in the bedroom.		"Reasoning: According to context sentence 8, Sandra and John journeyed to the bedroom, which means Sandra is currently in the bedroom.
+
+Answer: bedroom"	0.0	0.0312	False	False	False	False	0
+994	12	99	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John went to the kitchen.
+11. Mary and Sandra travelled to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"according to context sentence 11, ""mary and sandra travelled to the hallway"", which explicitly states that mary is in the hallway."	fully	hallway	True	According to context sentence 11, Mary and Sandra travelled to the hallway, which means Mary is currently in the hallway.		"Reasoning: According to context sentence 11, Mary and Sandra travelled to the hallway, which means Mary is currently in the hallway.
+
+Answer: hallway"	0.129	0.0323	False	False	False	False	0
+995	12	99	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra journeyed to the garden.
+14. John and Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"according to context sentence 13, ""mary and sandra journeyed to the garden"", which explicitly states that sandra is in the garden. the fact that mary later travelled to the bedroom with john in sentence 14 does not change the fact that sandra is still in the garden."	fully	hallway	False	The last mention of Sandra's location was in context sentence 11, where Mary and Sandra travelled to the hallway. There is no subsequent mention of Sandra moving to a different location.		"Reasoning: The last mention of Sandra's location was in context sentence 11, where Mary and Sandra travelled to the hallway. There is no subsequent mention of Sandra moving to a different location.
+
+Answer: hallway"	0.0	0.0233	False	False	False	True	0

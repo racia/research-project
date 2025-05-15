@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovided	Ġdo	Ġnot	Ġmention	ĠMary	,	Ġso	Ġwe	Ġcannot	Ġdetermine	Ġwhere	ĠMary	Ġwas	Ġbefore	Ġthe	Ġoffice	.	ĠThe	Ġsentences	Ġonly	Ġtalk	Ġabout	ĠFred	's	Ġmovements	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

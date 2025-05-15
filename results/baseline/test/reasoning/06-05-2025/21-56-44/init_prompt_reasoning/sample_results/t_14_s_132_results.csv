@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2906	14	132	1	"*TASK*
+Here are the context sentences:
+1. Fred moved to the office this morning.
+2. Yesterday Fred went back to the park.
+3. Yesterday Bill journeyed to the kitchen.
+4. Yesterday Mary travelled to the school.
+
+Now, answer the following question:
+Where was Fred before the office?"	park	"from context sentence 1, we know that fred moved to the office this morning. to find out where fred was before the office, we need to look at the previous actions of fred. context sentence 2 states that yesterday fred went back to the park. the phrase ""went back"" implies that fred was at the park before, and then returned to it. therefore, it can be inferred that fred was at the park before moving to the office this morning."	fully	park	True	"The question asks about Fred's location before moving to the office. Since Fred moved to the office this morning, we need to find out where he was before that. The context sentence ""Yesterday Fred went back to the park"" suggests that Fred was at the park yesterday. Since the question asks about Fred's location before moving to the office, we need to consider the time before this morning. Therefore, Fred was at the park yesterday."		"Reasoning: The question asks about Fred's location before moving to the office. Since Fred moved to the office this morning, we need to find out where he was before that. The context sentence ""Yesterday Fred went back to the park"" suggests that Fred was at the park yesterday. Since the question asks about Fred's location before moving to the office, we need to consider the time before this morning. Therefore, Fred was at the park yesterday.
+
+Answer: park"	0.1915	0.0213	False	False	False	False	0
+2907	14	132	2	"*TASK*
+Here are the context sentences:
+6. Mary journeyed to the office this morning.
+7. Yesterday Julie moved to the office.
+
+Now, answer the following question:
+Where was Fred before the office?"	park	"there is no information about fred in the provided context sentences (6 and 7). the context sentences only mention mary and julie, but not fred. however, we can look at the previous parts of the conversation history. in the previous part, we had context sentences 1-4, which mentioned fred. specifically, context sentence 2 stated ""yesterday fred went back to the park."" this implies that fred was at the park before moving to the office. therefore, the answer is"	none	not mentioned	False	The question asks about Fred's location before the office, but the context sentences only mention Mary and Julie's movements. Since Fred's location is not mentioned in the given context, we cannot determine where Fred was before the office.		"Reasoning: The question asks about Fred's location before the office, but the context sentences only mention Mary and Julie's movements. Since Fred's location is not mentioned in the given context, we cannot determine where Fred was before the office.
+
+Answer: not mentioned"	0.1321	0.0377	False	False	False	True	0
+2908	14	132	3	"*TASK*
+Here are the context sentences:
+9. Julie journeyed to the school this morning.
+10. This afternoon Mary went to the bedroom.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	office	"there is no direct information about mary's location before the bedroom in the provided context sentences (9 and 10). however, we can look at the previous parts of the conversation history. in a previous part, we had context sentence 6, which stated ""mary journeyed to the office this morning."" this implies that mary was at the office before going to the bedroom this afternoon. therefore, the answer is office."	partially		False	"The question asks about Mary's location before going to the bedroom. The context sentence ""This afternoon Mary went to the bedroom"" suggests that Mary was somewhere else before going to the bedroom. The previous context sentence ""Julie journeyed to the school this morning"" does not provide information about Mary's location. However, we can infer that Mary was not at the school, as Julie went to the school this morning, and Mary went to the bedroom this afternoon. Therefore, we can"		"Reasoning: The question asks about Mary's location before going to the bedroom. The context sentence ""This afternoon Mary went to the bedroom"" suggests that Mary was somewhere else before going to the bedroom. The previous context sentence ""Julie journeyed to the school this morning"" does not provide information about Mary's location. However, we can infer that Mary was not at the school, as Julie went to the school this morning, and Mary went to the bedroom this afternoon. Therefore, we can"	0.0606	0.0202	False	False	False	True	0
+2909	14	132	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Julie went back to the office.
+13. This morning Bill moved to the park.
+
+Now, answer the following question:
+Where was Julie before the school?"	office	"there is no direct information about julie's location before the school in the provided context sentences (12 and 13). however, we can look at the previous parts of the conversation history. in a previous part, we had context sentence 9, which stated ""julie journeyed to the school this morning."" this implies that julie was somewhere before going to the school this morning. additionally, context sentence 12 states ""this afternoon julie went back to the office."" the phrase ""went"	none	not mentioned	False	"The question asks about Julie's location before the school, but the context sentences do not mention Julie going to the school. The context sentence ""This afternoon Julie went back to the office"" suggests that Julie was somewhere else before going back to the office. However, there is no information about Julie's location before going to the office, which is not the same as the school."		"Reasoning: The question asks about Julie's location before the school, but the context sentences do not mention Julie going to the school. The context sentence ""This afternoon Julie went back to the office"" suggests that Julie was somewhere else before going back to the office. However, there is no information about Julie's location before going to the office, which is not the same as the school.
+
+Answer: not mentioned"	0.0361	0.0241	False	False	False	True	0
+2910	14	132	5	"*TASK*
+Here are the context sentences:
+15. This evening Mary went back to the kitchen.
+16. Bill went back to the office this afternoon.
+
+Now, answer the following question:
+Where was Bill before the park?"	kitchen	"there is no direct information about bill's location before the park in the provided context sentences (15 and 16). however, we can look at the previous parts of the conversation history. in a previous part, we had context sentence 13, which stated ""this morning bill moved to the park."" this implies that bill was somewhere before going to the park this morning. additionally, context sentence 16 states ""bill went back to the office this afternoon."" the phrase ""went back"""	none	not mentioned	False	"The question asks about Bill's location before the park, but the context sentences do not mention Bill going to the park. The context sentence ""Bill went back to the office this afternoon"" suggests that Bill was somewhere else before going back to the office. However, there is no information about Bill's location before going to the office, which is not the same as the park."		"Reasoning: The question asks about Bill's location before the park, but the context sentences do not mention Bill going to the park. The context sentence ""Bill went back to the office this afternoon"" suggests that Bill was somewhere else before going back to the office. However, there is no information about Bill's location before going to the office, which is not the same as the park.
+
+Answer: not mentioned"	0.0723	0.0241	False	False	False	True	0

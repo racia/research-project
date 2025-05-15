@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠDaniel	Ġand	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġand	Ġthen	Ġto	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

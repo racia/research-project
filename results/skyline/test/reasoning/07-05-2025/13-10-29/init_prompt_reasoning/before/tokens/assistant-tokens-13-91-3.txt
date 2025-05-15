@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ(	7	Ġand	Ġ	8	)	Ġonly	Ġmention	ĠMary	Ġand	ĠDaniel	,	Ġbut	Ġnot	ĠJohn	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	Ġwas	Ġthat	Ġhe	Ġwas	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	5	).	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġthat	Ġwould	Ġchange	ĠJohn	's	Ġlocation	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

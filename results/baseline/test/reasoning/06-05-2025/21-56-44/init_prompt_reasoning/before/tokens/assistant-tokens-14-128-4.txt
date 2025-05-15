@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	,	Ġit	Ġimplies	Ġthat	Ġhe	Ġwas	Ġat	Ġthe	Ġcinema	Ġyesterday	.	ĠTherefore	,	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġpark	,	ĠFred	Ġwas	Ġat	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġcinema	<|eot_id|>

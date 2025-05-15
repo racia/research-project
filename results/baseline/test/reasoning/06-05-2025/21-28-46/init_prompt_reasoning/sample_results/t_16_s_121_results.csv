@@ -1,0 +1,15 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+121	16	121	1	"*TASK*
+Here are the context sentences:
+1. Greg is a rhino.
+2. Julius is a lion.
+3. Lily is a swan.
+4. Julius is green.
+5. Lily is white.
+6. Bernhard is a frog.
+7. Greg is yellow.
+8. Bernhard is gray.
+9. Brian is a lion.
+
+Now, answer the following question:
+What color is Brian?"	green	since brian is a lion (sentence 9), and julius is also a lion (sentence 2), and julius is green (sentence 4), we can logically infer that brian, being of the same species as julius, shares the same color, which is green.	fully		False	The question asks about the color of Brian, who is a lion according to sentence 9. Since Julius, who is also a lion, is green (sentence 4), it is possible that Brian's color is also green. However, there is no direct information about Brian's color in the given sentences. The only information about Brian's color is that Julius, a lion, is green, but this does not necessarily imply that Brian, another lion, has the same color.		Reasoning: The question asks about the color of Brian, who is a lion according to sentence 9. Since Julius, who is also a lion, is green (sentence 4), it is possible that Brian's color is also green. However, there is no direct information about Brian's color in the given sentences. The only information about Brian's color is that Julius, a lion, is green, but this does not necessarily imply that Brian, another lion, has the same color.	0.0404	0.0303	False	False	False	True	0

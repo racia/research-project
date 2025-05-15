@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1316	12	114	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Mary travelled to the office.
+2. Daniel and Mary travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	according to the context sentences, mary travelled to the office (sentence 1) and then travelled to the bathroom (sentence 2). since there is no information about her leaving the bathroom, it can be logically inferred that mary is still in the bathroom.	fully	bathroom	True	Since Mary and Daniel travelled to the office in sentence 1, it implies that Mary was with Daniel in the office. Then, in sentence 2, they travelled to the bathroom together, which means Mary is currently in the bathroom with Daniel.		"Reasoning: Since Mary and Daniel travelled to the office in sentence 1, it implies that Mary was with Daniel in the office. Then, in sentence 2, they travelled to the bathroom together, which means Mary is currently in the bathroom with Daniel.
+
+Answer: bathroom"	0.0893	0.0179	False	False	False	False	0
+1317	12	114	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John journeyed to the kitchen.
+5. Daniel and John travelled to the office.
+
+Now, answer the following question:
+Where is John?"	office	according to the context sentences, daniel and john journeyed to the kitchen (sentence 4) and then travelled to the office (sentence 5). since there is no information about john leaving the office, it can be logically inferred that john is still in the office.	fully	office	True	According to sentence 4, Daniel and John journeyed to the kitchen, which implies that John is currently in the kitchen with Daniel. Then, in sentence 5, they travelled to the office together, which means John is still with Daniel in the office.		"Reasoning: According to sentence 4, Daniel and John journeyed to the kitchen, which implies that John is currently in the kitchen with Daniel. Then, in sentence 5, they travelled to the office together, which means John is still with Daniel in the office.
+
+Answer: office"	0.0678	0.0169	False	False	False	False	0
+1318	12	114	3	"*TASK*
+Here are the context sentences:
+7. John and Daniel went to the hallway.
+8. Daniel and Mary went back to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	according to the context sentences, john and daniel went to the hallway (sentence 7), but then daniel went back to the garden with mary (sentence 8). since there is no information about daniel leaving the garden, it can be logically inferred that daniel is still in the garden.	fully	garden	True	According to sentence 7, John and Daniel went to the hallway, which implies that Daniel is currently in the hallway with John. Then, in sentence 8, Daniel and Mary went back to the garden, which means Daniel is now in the garden with Mary.		"Reasoning: According to sentence 7, John and Daniel went to the hallway, which implies that Daniel is currently in the hallway with John. Then, in sentence 8, Daniel and Mary went back to the garden, which means Daniel is now in the garden with Mary.
+
+Answer: garden"	0.0	0.0167	False	False	False	False	0
+1319	12	114	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel went back to the kitchen.
+11. John and Sandra moved to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	according to the context sentences, john and daniel went back to the kitchen (sentence 10), but then john moved to the bathroom with sandra (sentence 11). since there is no information about john leaving the bathroom, it can be logically inferred that john is still in the bathroom.	fully	bathroom	True	According to sentence 10, John and Daniel went back to the kitchen, which implies that John is currently in the kitchen. Then, in sentence 11, John and Sandra moved to the bathroom, which means John is now in the bathroom with Sandra.		"Reasoning: According to sentence 10, John and Daniel went back to the kitchen, which implies that John is currently in the kitchen. Then, in sentence 11, John and Sandra moved to the bathroom, which means John is now in the bathroom with Sandra.
+
+Answer: bathroom"	0.0	0.0172	False	False	False	False	0
+1320	12	114	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Daniel went back to the office.
+14. Daniel and Sandra journeyed to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	according to the context sentences, sandra and daniel went back to the office (sentence 13), but then daniel and sandra journeyed to the garden (sentence 14). since there is no information about sandra leaving the garden, it can be logically inferred that sandra is still in the garden.	fully	garden	True	According to sentence 13, Sandra and Daniel went back to the office, which implies that Sandra is currently in the office with Daniel. Then, in sentence 14, Daniel and Sandra journeyed to the garden, which means Sandra is now in the garden with Daniel.		"Reasoning: According to sentence 13, Sandra and Daniel went back to the office, which implies that Sandra is currently in the office with Daniel. Then, in sentence 14, Daniel and Sandra journeyed to the garden, which means Sandra is now in the garden with Daniel.
+
+Answer: garden"	0.0492	0.0164	False	False	False	False	0

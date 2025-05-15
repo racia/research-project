@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+6	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+7	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġmilk	.Ċ
+8	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+9	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġkitchen	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	34	,	ĠBill	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	,	Ġand	Ġthen	ĠMary	Ġdiscarded	Ġit	Ġin	Ġsentence	Ġ	35	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

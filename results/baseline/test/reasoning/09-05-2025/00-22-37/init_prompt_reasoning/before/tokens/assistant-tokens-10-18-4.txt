@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġsentence	Ġ	11	Ġstates	Ġthat	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġpark	Ġor	Ġthe	Ġkitchen	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġspecify	Ġwhich	Ġone	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	Ġif	ĠMary	Ġis	Ġin	Ġthe	Ġpark	Ġor	Ġnot	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

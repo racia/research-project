@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+18	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+19	.	ĠJeff	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+20	.	ĠJeff	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+21	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+22	.	ĠMary	Ġdiscarded	Ġthe	Ġapple	.Ċ
+23	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+24	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+25	.	ĠBill	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠBill	Ġgive	Ġto	ĠMary	?Ċ

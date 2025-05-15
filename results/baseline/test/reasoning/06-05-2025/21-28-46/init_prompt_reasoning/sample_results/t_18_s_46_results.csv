@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1380	18	46	1	"*TASK*
+Here are the context sentences:
+1. The box of chocolates fits inside the box.
+2. The container is bigger than the chest.
+3. The chest is bigger than the box of chocolates.
+4. The chest is bigger than the chocolate.
+5. The container is bigger than the chest.
+
+Now, answer the following question:
+Is the box of chocolates bigger than the container?"	no	from context sentence 2, we know that the container is bigger than the chest. from context sentence 3, we know that the chest is bigger than the box of chocolates. therefore, we can logically conclude that the container is bigger than the box of chocolates, since the container is bigger than the chest and the chest is bigger than the box of chocolates. this means that the box of chocolates is not bigger than the container, which is the correct answer.	fully	no	True	From sentence 1, we know that the box of chocolates fits inside the box. From sentence 3, we know that the chest is bigger than the box of chocolates. From sentence 5, we know that the container is bigger than the chest. Therefore, the container is bigger than the box of chocolates, which is bigger than the box of chocolates.		"Reasoning: From sentence 1, we know that the box of chocolates fits inside the box. From sentence 3, we know that the chest is bigger than the box of chocolates. From sentence 5, we know that the container is bigger than the chest. Therefore, the container is bigger than the box of chocolates, which is bigger than the box of chocolates.
+
+Answer: no"	0.1772	0.0253	False	False	False	False	0
+1381	18	46	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box of chocolates bigger than the container?"	no	"since there is no context provided, we cannot make a direct comparison between the box of chocolates and the container. however, the answer ""no"" suggests that the box of chocolates is not bigger than the container. without additional context, we can only assume that the container is either equal to or bigger than the box of chocolates, which aligns with the provided answer."	none	no	True	From sentence 2, we know that the container is bigger than the chest. From sentence 3, we know that the chest is bigger than the box of chocolates. Therefore, the container is bigger than the box of chocolates.		"Reasoning: From sentence 2, we know that the container is bigger than the chest. From sentence 3, we know that the chest is bigger than the box of chocolates. Therefore, the container is bigger than the box of chocolates.
+
+Answer: no"	0.1698	0.0377	False	False	False	False	0
+1382	18	46	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the container?"	no	"there is no context provided, so we cannot make a direct comparison between the chocolate and the container. however, the answer ""no"" suggests that the chocolate is not bigger than the container. without additional context, we can only assume that the container is either equal to or bigger than the chocolate, which aligns with the provided answer."	none	no	True	From sentence 4, we know that the chest is bigger than the chocolate. From sentence 5, we know that the container is bigger than the chest. Therefore, the container is bigger than the chocolate, and the chocolate is smaller than the container.		"Reasoning: From sentence 4, we know that the chest is bigger than the chocolate. From sentence 5, we know that the container is bigger than the chest. Therefore, the container is bigger than the chocolate, and the chocolate is smaller than the container.
+
+Answer: no"	0.0345	0.0345	False	False	False	False	0
+1383	18	46	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the container fit in the chocolate?"	no	"there is no context provided, so we cannot make a direct comparison between the container and the chocolate in terms of size. however, the answer ""no"" suggests that the container does not fit in the chocolate. this implies that the chocolate is smaller than the container, as it cannot hold the container."	none	no	True	From sentence 2, we know that the container is bigger than the chest. From sentence 4, we know that the chest is bigger than the chocolate. Therefore, the container is bigger than the chocolate, which means the container cannot fit inside the chocolate.		"Reasoning: From sentence 2, we know that the container is bigger than the chest. From sentence 4, we know that the chest is bigger than the chocolate. Therefore, the container is bigger than the chocolate, which means the container cannot fit inside the chocolate.
+
+Answer: no"	0.0508	0.0339	False	False	False	False	0
+1384	18	46	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the container fit in the chocolate?"	no	"since the question asks if the container fits in the chocolate, and the answer is ""no"", it implies that the container is larger than the chocolate. if the container were smaller than or equal to the chocolate, it would fit inside the chocolate, but since it doesn't, it must be larger."	none	not mentioned	False	The question asks if the container fits in the chocolate, but the context sentences do not provide any information about the relationship between the container and the chocolate in terms of size or fit. Therefore, we cannot determine if the container fits in the chocolate based on the given information.		"Reasoning: The question asks if the container fits in the chocolate, but the context sentences do not provide any information about the relationship between the container and the chocolate in terms of size or fit. Therefore, we cannot determine if the container fits in the chocolate based on the given information.
+
+Answer: not mentioned"	0.0484	0.0323	False	False	False	True	0

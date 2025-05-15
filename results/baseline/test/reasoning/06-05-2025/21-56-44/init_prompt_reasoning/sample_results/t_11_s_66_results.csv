@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+326	11	66	1	"*TASK*
+Here are the context sentences:
+1. Daniel went back to the kitchen.
+2. Then he went back to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"the context sentences describe daniel's movements, and the last movement mentioned is ""he went back to the garden"" (sentence 2). this implies that daniel's current location is the garden, as there is no subsequent movement mentioned that would change his location. therefore, the answer is that daniel is in the garden."	fully	garden	True	Daniel went back to the kitchen initially, and then he went back to the garden. Since he went back to the garden, it implies that he was at the kitchen before going to the garden.		"Reasoning: Daniel went back to the kitchen initially, and then he went back to the garden. Since he went back to the garden, it implies that he was at the kitchen before going to the garden.
+
+Answer: garden"	0.1522	0.0435	False	False	False	False	0
+327	11	66	2	"*TASK*
+Here are the context sentences:
+4. Daniel moved to the bedroom.
+5. Then he went back to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"the context sentences describe daniel's movements, and the last movement mentioned is ""he went back to the hallway"" (sentence 5). this implies that daniel's current location is the hallway, as there is no subsequent movement mentioned that would change his location. therefore, the answer is that daniel is in the hallway."	fully	hallway	True	Daniel moved to the bedroom initially, and then he went back to the hallway. This implies that he was at the bedroom before going to the hallway.		"Reasoning: Daniel moved to the bedroom initially, and then he went back to the hallway. This implies that he was at the bedroom before going to the hallway.
+
+Answer: hallway"	0.1892	0.0541	False	False	False	False	0
+328	11	66	3	"*TASK*
+Here are the context sentences:
+7. Mary travelled to the kitchen.
+8. After that she went to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"the context sentences describe mary's movements, but there is no information about daniel's movements in these sentences. however, the answer refers to daniel's location, which was previously established in the conversation history. since the previous conversation mentioned daniel's location as ""hallway"" (in the previous part), and there is no new information about daniel's movements, the answer remains the same, and daniel is still in the hallway."	none	not mentioned	False	The question asks about Daniel's location, but the context sentences only mention Mary's movements. There is no information about Daniel's location.		"Reasoning: The question asks about Daniel's location, but the context sentences only mention Mary's movements. There is no information about Daniel's location.
+
+Answer: not mentioned"	0.0571	0.0571	False	False	False	True	0
+329	11	66	4	"*TASK*
+Here are the context sentences:
+10. Daniel moved to the garden.
+11. Following that he went back to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"the context sentences describe daniel's movements, but the question asks about mary's location. however, the answer provided is ""bathroom"", which is a location that was previously mentioned in the context sentences, but only in relation to daniel's movements. there is no direct information about mary's movements or location in the provided context sentences. therefore, the answer ""bathroom"" can only be correct if we assume that mary was already in the bathroom and her location didn't change, which is"	none	not mentioned	False	The question asks about Mary's location, but the context sentences only mention Daniel's movements. There is no information about Mary's location.		"Reasoning: The question asks about Mary's location, but the context sentences only mention Daniel's movements. There is no information about Mary's location.
+
+Answer: not mentioned"	0.0286	0.0571	False	False	False	True	0
+330	11	66	5	"*TASK*
+Here are the context sentences:
+13. Sandra went back to the bedroom.
+14. After that she journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"the context sentences describe sandra's movements, and the last movement mentioned is ""she journeyed to the bathroom"" (sentence 14). this implies that sandra's current location is the bathroom, as there is no subsequent movement mentioned that would change her location. therefore, the answer is that sandra is in the bathroom."	fully	bathroom	True	Sandra went back to the bedroom initially, and then she journeyed to the bathroom. This implies that she was at the bedroom before going to the bathroom.		"Reasoning: Sandra went back to the bedroom initially, and then she journeyed to the bathroom. This implies that she was at the bedroom before going to the bathroom.
+
+Answer: bathroom"	0.1842	0.0526	False	False	False	False	0

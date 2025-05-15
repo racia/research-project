@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+118	.	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+119	.	ĠMary	Ġtook	Ġthe	Ġapple	.Ċ
+120	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+121	.	ĠMary	Ġleft	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġkitchen	?Ċ

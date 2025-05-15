@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1310	18	32	1	"*TASK*
+Here are the context sentences:
+1. The box of chocolates fits inside the chest.
+2. The chest fits inside the box.
+3. The chest is bigger than the chocolate.
+4. The container fits inside the box.
+5. The box of chocolates fits inside the container.
+
+Now, answer the following question:
+Does the box fit in the box of chocolates?"	no	from context sentence 1, we know that the box of chocolates fits inside the chest. from context sentence 3, we know that the chest is bigger than the chocolate. this implies that the chest is also bigger than the box of chocolates. now, if the box fits inside the box of chocolates, it would mean that the box is smaller than the box of chocolates. however, from context sentence 2, we know that the chest fits inside the box, which means the box	fully	Not mentioned	False	The question is asking if the box (referring to the outer box) fits inside the box of chocolates (referring to the inner box containing chocolates). However, the context sentences do not provide any information about the size or dimensions of the outer box. Therefore, we cannot determine if the outer box fits inside the inner box of chocolates.		"Reasoning: The question is asking if the box (referring to the outer box) fits inside the box of chocolates (referring to the inner box containing chocolates). However, the context sentences do not provide any information about the size or dimensions of the outer box. Therefore, we cannot determine if the outer box fits inside the inner box of chocolates.
+
+Answer: Not mentioned"	0.1974	0.0263	False	False	False	True	0
+1311	18	32	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box of chocolates fit in the box?"	yes	from context sentence 2, we know that the chest fits inside the box. from context sentence 1, we know that the box of chocolates fits inside the chest. therefore, since the box of chocolates fits inside the chest and the chest fits inside the box, we can logically conclude that the box of chocolates also fits inside the box.	none	Yes	True	The question is asking if the box of chocolates (the inner box containing chocolates) fits inside the box (the outer box). According to context sentence 5, the box of chocolates fits inside the container, and according to context sentence 4, the container fits inside the box. Therefore, it is logical to conclude that the box of chocolates also fits inside the box.		"Reasoning: The question is asking if the box of chocolates (the inner box containing chocolates) fits inside the box (the outer box). According to context sentence 5, the box of chocolates fits inside the container, and according to context sentence 4, the container fits inside the box. Therefore, it is logical to conclude that the box of chocolates also fits inside the box.
+
+Answer: Yes"	0.1481	0.0247	False	False	False	False	0
+1312	18	32	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box of chocolates fit in the box?"	yes	from context sentence 5, we know that the box of chocolates fits inside the container. from context sentence 4, we know that the container fits inside the box. therefore, since the box of chocolates fits inside the container and the container fits inside the box, we can logically conclude that the box of chocolates also fits inside the box.	none	Yes	True	The question is asking if the box of chocolates (the inner box containing chocolates) fits inside the box (the outer box). According to context sentence 2, the chest fits inside the box, and according to context sentence 1, the box of chocolates fits inside the chest. Therefore, it is logical to conclude that the box of chocolates also fits inside the box.		"Reasoning: The question is asking if the box of chocolates (the inner box containing chocolates) fits inside the box (the outer box). According to context sentence 2, the chest fits inside the box, and according to context sentence 1, the box of chocolates fits inside the chest. Therefore, it is logical to conclude that the box of chocolates also fits inside the box.
+
+Answer: Yes"	0.0617	0.0247	False	False	False	False	0
+1313	18	32	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box of chocolates bigger than the box?"	no	from context sentence 2, we know that the chest fits inside the box. from context sentence 1, we know that the box of chocolates fits inside the chest. this implies that the box of chocolates is smaller than or equal to the chest in size. since the chest fits inside the box, the box of chocolates must also be smaller than or equal to the box in size. therefore, the box of chocolates is not bigger than the box.	none	Not mentioned	False	The context sentences do not provide any information about the size or dimensions of the box of chocolates compared to the box. The sentences only describe the relationships between the box, the chest, and the container, but not the size of the box of chocolates.		"Reasoning: The context sentences do not provide any information about the size or dimensions of the box of chocolates compared to the box. The sentences only describe the relationships between the box, the chest, and the container, but not the size of the box of chocolates.
+
+Answer: Not mentioned"	0.069	0.0345	False	False	False	True	0
+1314	18	32	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the box of chocolates?"	no	from context sentence 1, we know that the box of chocolates fits inside the chest. from context sentence 3, we know that the chest is bigger than the chocolate. this implies that the chest is also bigger than the box of chocolates. from context sentence 2, we know that the chest fits inside the box. if the box fits inside the box of chocolates, it would mean that the box is smaller than the box of chocolates. however, since the chest fits inside the	none	Not mentioned	False	The question is asking if the box (the outer box) fits inside the box of chocolates (the inner box containing chocolates). However, the context sentences do not provide any information about the size or dimensions of the outer box compared to the inner box. Therefore, we cannot determine if the box fits inside the box of chocolates.		"Reasoning: The question is asking if the box (the outer box) fits inside the box of chocolates (the inner box containing chocolates). However, the context sentences do not provide any information about the size or dimensions of the outer box compared to the inner box. Therefore, we cannot determine if the box fits inside the box of chocolates.
+
+Answer: Not mentioned"	0.0274	0.0274	False	False	False	True	0

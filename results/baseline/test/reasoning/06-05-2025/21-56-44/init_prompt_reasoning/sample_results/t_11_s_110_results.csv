@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+546	11	110	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the kitchen.
+2. Following that he moved to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	from the context sentences, we know that john first went to the kitchen (sentence 1) and then moved to the garden (sentence 2). since there is no information about john moving to any other location after the garden, we can logically conclude that john is currently in the garden.	fully	garden	True	John's last known location was the kitchen, and then he moved to the garden, so he is likely to be in the garden.		"Reasoning: John's last known location was the kitchen, and then he moved to the garden, so he is likely to be in the garden.
+
+Answer: garden"	0.1176	0.0588	False	False	False	False	0
+547	11	110	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the office.
+5. Afterwards she moved to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from the context sentences, we know that mary first went to the office (sentence 4) and then moved to the kitchen (sentence 5). since there is no information about mary moving to any other location after the kitchen, we can logically conclude that mary is currently in the kitchen.	fully	kitchen	True	Mary's last known location was the office, and then she moved to the kitchen, so she is likely to be in the kitchen.		"Reasoning: Mary's last known location was the office, and then she moved to the kitchen, so she is likely to be in the kitchen.
+
+Answer: kitchen"	0.2059	0.0588	False	False	False	False	0
+548	11	110	3	"*TASK*
+Here are the context sentences:
+7. Sandra went to the bedroom.
+8. Then she journeyed to the bathroom.
+
+Now, answer the following question:
+Where is John?"	garden	"there is no information about john in the provided context sentences. the context sentences only mention sandra and her movements to the bedroom and then to the bathroom. the answer ""garden"" seems to be referring to a previous part of the conversation history, where john was mentioned (context lines 1 and 2). in that previous part, it was established that john moved to the garden. therefore, the answer ""garden"" is correct, but it is based on the previous conversation history"	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only mention Sandra's movements to the bedroom and bathroom.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Sandra's movements to the bedroom and bathroom.
+
+Answer: not mentioned"	0.2121	0.0606	False	False	False	True	0
+549	11	110	4	"*TASK*
+Here are the context sentences:
+10. Mary went to the office.
+11. Following that she went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that mary first went to the office (sentence 10) and then went to the bathroom (sentence 11). since there is no information about mary moving to any other location after the bathroom, we can logically conclude that mary is currently in the bathroom.	fully	bathroom	True	Mary's last known location was the office, and then she went to the bathroom, so she is likely to be in the bathroom.		"Reasoning: Mary's last known location was the office, and then she went to the bathroom, so she is likely to be in the bathroom.
+
+Answer: bathroom"	0.1765	0.0588	False	False	False	False	0
+550	11	110	5	"*TASK*
+Here are the context sentences:
+13. Sandra went back to the garden.
+14. Following that she went back to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	from the context sentences, we know that sandra first went back to the garden (sentence 13) and then went back to the bedroom (sentence 14). since there is no information about sandra moving to any other location after the bedroom, we can logically conclude that sandra is currently in the bedroom.	fully	garden	False	Sandra's last known location was the bedroom, and then she went back to the garden, so she is likely to be in the garden.		"Reasoning: Sandra's last known location was the bedroom, and then she went back to the garden, so she is likely to be in the garden.
+
+Answer: garden"	0.0571	0.0571	False	False	False	False	0

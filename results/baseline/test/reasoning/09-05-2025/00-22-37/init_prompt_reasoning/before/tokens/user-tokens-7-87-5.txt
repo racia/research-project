@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+15	.	ĠSandra	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
+16	.	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġto	ĠSandra	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠMary	Ġcarrying	?Ċ

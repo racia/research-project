@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1361	13	73	1	"*TASK*
+Here are the context sentences:
+1. Daniel and John moved to the garden.
+2. Afterwards they went back to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from the context sentences, we know that daniel and john moved to the garden (sentence 1), and afterwards they went back to the bedroom (sentence 2). since daniel was with john in both actions, it can be inferred that daniel is currently in the bedroom, as they went back to the bedroom after being in the garden.	fully	bedroom	True	According to the context sentences, Daniel and John moved to the garden (sentence 1) and then went back to the bedroom (sentence 2). This implies that Daniel's current location is the bedroom.		"assistant
+
+Reasoning: According to the context sentences, Daniel and John moved to the garden (sentence 1) and then went back to the bedroom (sentence 2). This implies that Daniel's current location is the bedroom.
+
+Answer: bedroom"	0.25	0.0385	False	False	False	False	0
+1362	13	73	2	"*TASK*
+Here are the context sentences:
+4. John and Sandra went to the hallway.
+5. Afterwards they went back to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from the context sentences, we know that john and sandra went to the hallway (sentence 4), and afterwards they went back to the kitchen (sentence 5). since sandra was with john in both actions, it can be inferred that sandra is currently in the kitchen, as they went back to the kitchen after being in the hallway.	fully	kitchen	True	According to the context sentences, John and Sandra went to the hallway (sentence 4) and then went back to the kitchen (sentence 5). This implies that Sandra's current location is the kitchen.		"Reasoning: According to the context sentences, John and Sandra went to the hallway (sentence 4) and then went back to the kitchen (sentence 5). This implies that Sandra's current location is the kitchen.
+
+Answer: kitchen"	0.125	0.0417	False	False	False	False	0
+1363	13	73	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Sandra went to the hallway.
+8. After that they travelled to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	from the context sentences, we know that daniel and sandra went to the hallway (sentence 7), and after that they travelled to the office (sentence 8). since sandra was with daniel in both actions, it can be inferred that sandra is currently in the office, as they travelled to the office after being in the hallway.	fully	office	True	According to the context sentences, Daniel and Sandra went to the hallway (sentence 7) and then travelled to the office (sentence 8). This implies that Sandra's current location is the office.		"Reasoning: According to the context sentences, Daniel and Sandra went to the hallway (sentence 7) and then travelled to the office (sentence 8). This implies that Sandra's current location is the office.
+
+Answer: office"	0.2553	0.0426	False	False	False	False	0
+1364	13	73	4	"*TASK*
+Here are the context sentences:
+10. John and Mary travelled to the bedroom.
+11. After that they went back to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	office	the context sentences (10 and 11) do not mention sandra at all. they only talk about john and mary moving between the bedroom and the bathroom. however, the answer provided is that sandra is in the office. this can only be true if we consider the previous context sentences (7 and 8) which mentioned that daniel and sandra went to the hallway and then travelled to the office. since there is no information about sandra moving from the office, it can be inferred that sandra	none	office	True	The context sentences (10 and 11) do not mention Sandra. The last mention of Sandra was in sentence 8, where she travelled to the office.		"Reasoning: The context sentences (10 and 11) do not mention Sandra. The last mention of Sandra was in sentence 8, where she travelled to the office.
+
+Answer: office"	0.1538	0.0513	False	False	False	True	0
+1365	13	73	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John went to the garden.
+14. Then they moved to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from the context sentences, we know that daniel and john went to the garden (sentence 13), and then they moved to the bedroom (sentence 14). since daniel was with john in both actions, it can be inferred that daniel is currently in the bedroom, as they moved to the bedroom after being in the garden.	fully	bedroom	True	According to the context sentences, Daniel and John went to the garden (sentence 13) and then moved to the bedroom (sentence 14). This implies that Daniel's current location is the bedroom.		"Reasoning: According to the context sentences, Daniel and John went to the garden (sentence 13) and then moved to the bedroom (sentence 14). This implies that Daniel's current location is the bedroom.
+
+Answer: bedroom"	0.1064	0.0426	False	False	False	False	0

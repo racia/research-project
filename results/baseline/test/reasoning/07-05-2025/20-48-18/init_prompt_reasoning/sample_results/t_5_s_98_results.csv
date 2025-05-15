@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2086	5	98	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the hallway.
+2. Fred picked up the football there.
+3. Fred picked up the apple there.
+4. Fred handed the apple to Bill.
+
+Now, answer the following question:
+Who did Fred give the apple to?"	bill	"according to sentence 4, ""fred handed the apple to bill"", which explicitly states that fred gave the apple to bill."	fully	Bill	True	Fred handed the apple to Bill, and there is no mention of Fred giving the apple to anyone else, so it can be inferred that Fred gave the apple to Bill.		"Reasoning: Fred handed the apple to Bill, and there is no mention of Fred giving the apple to anyone else, so it can be inferred that Fred gave the apple to Bill.
+
+Answer: Bill"	0.0488	0.0244	False	False	False	True	0
+2087	5	98	2	"*TASK*
+Here are the context sentences:
+6. Bill journeyed to the bedroom.
+7. Jeff went back to the garden.
+
+Now, answer the following question:
+What did Fred give to Bill?"	apple	"although the context sentences 6 and 7 do not directly mention what fred gave to bill, we can infer the answer from the previous context sentences. specifically, sentence 4 states ""fred handed the apple to bill"", which explicitly indicates that fred gave an apple to bill."	none	Nothing (or Not mentioned)	False	There is no mention of Fred giving anything to Bill in the provided context sentences. The sentences only mention Bill journeying to the bedroom and Jeff going back to the garden, but do not mention any interaction between Fred and Bill.		"Reasoning: There is no mention of Fred giving anything to Bill in the provided context sentences. The sentences only mention Bill journeying to the bedroom and Jeff going back to the garden, but do not mention any interaction between Fred and Bill.
+
+Answer: Nothing (or Not mentioned)"	0.0175	0.0175	False	False	False	True	0
+2088	5	98	3	"*TASK*
+Here are the context sentences:
+9. Bill moved to the hallway.
+10. Bill handed the apple to Mary.
+
+Now, answer the following question:
+Who gave the apple?"	bill	"the answer ""bill"" seems incorrect at first glance, because according to the previous context sentences, fred handed the apple to bill (sentence 4). however, upon closer inspection, we see that bill handed the apple to mary in sentence 10. this implies that bill must have possessed the apple before handing it to mary. since fred handed the apple to bill earlier (sentence 4), it can be inferred that bill received the apple from fred and then handed it to mary. therefore"	fully	Bill	True	According to sentence 10, Bill handed the apple to Mary, which implies that Bill gave the apple to Mary.		"Reasoning: According to sentence 10, Bill handed the apple to Mary, which implies that Bill gave the apple to Mary.
+
+Answer: Bill"	0.0333	0.0333	False	False	False	False	0
+2089	5	98	4	"*TASK*
+Here are the context sentences:
+12. Bill moved to the office.
+13. Fred put down the football.
+
+Now, answer the following question:
+Who gave the apple to Mary?"	bill	"according to sentence 10, ""bill handed the apple to mary"", which explicitly states that bill gave the apple to mary. this sentence directly answers the question, and no further inference or assumption is needed."	none	Bill	True	The context sentences do not mention the apple being given to Mary. Sentence 10 mentioned Bill handing the apple to Mary, but the current sentences do not provide any new information about the apple.		"Reasoning: The context sentences do not mention the apple being given to Mary. Sentence 10 mentioned Bill handing the apple to Mary, but the current sentences do not provide any new information about the apple.
+
+Answer: Bill"	0.0444	0.0222	False	False	False	True	0
+2090	5	98	5	"*TASK*
+Here are the context sentences:
+15. Mary took the milk there.
+16. Jeff moved to the kitchen.
+
+Now, answer the following question:
+Who gave the apple?"	bill	"although the current context sentences (15 and 16) do not directly mention who gave the apple, we can infer the answer from the previous context sentences. specifically, sentence 10 states ""bill handed the apple to mary"", which implies that bill gave the apple to mary."	none	Not mentioned	False	The context sentences do not mention the apple at all. They only mention Mary taking the milk and Jeff moving to the kitchen, but do not provide any information about the apple.		"Reasoning: The context sentences do not mention the apple at all. They only mention Mary taking the milk and Jeff moving to the kitchen, but do not provide any information about the apple.
+
+Answer: Not mentioned"	0.0233	0.0233	False	False	False	True	0

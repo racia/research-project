@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+20	.	ĠDaniel	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
+21	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+22	.	ĠDaniel	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+23	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġapple	?Ċ

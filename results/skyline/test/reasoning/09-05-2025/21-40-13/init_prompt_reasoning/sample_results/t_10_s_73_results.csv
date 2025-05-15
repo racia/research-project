@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+361	10	73	1	"*TASK*
+Here are the context sentences:
+1. Mary is in the cinema.
+2. Bill moved to the school.
+
+Now, answer the following question:
+Is Bill in the cinema?"	no	"according to the context sentences, mary is in the cinema (sentence 1), but there is no mention of bill being in the cinema. in fact, sentence 2 states that bill moved to the school, which implies that bill is at the school, not in the cinema. therefore, the answer is ""no"", bill is not in the cinema."	fully	no	True	According to sentence 2, Bill moved to the school, which means Bill is not in the cinema. Mary is in the cinema (sentence 1), but there is no information about Bill being in the cinema.		"assistant
+
+Reasoning: According to sentence 2, Bill moved to the school, which means Bill is not in the cinema. Mary is in the cinema (sentence 1), but there is no information about Bill being in the cinema.
+
+Answer: no"	0.1667	0.0185	False	False	False	True	0
+362	10	73	2	"*TASK*
+Here are the context sentences:
+4. Bill is either in the bedroom or the school.
+5. Fred is either in the office or the bedroom.
+
+Now, answer the following question:
+Is Mary in the cinema?"	yes	"the question asks about mary's location, but the context sentences (4 and 5) do not provide any information about mary's location. however, we have a previous context sentence (1) that states ""mary is in the cinema."" since this sentence is part of the conversation history, we can use it to answer the question. therefore, the answer is ""yes"", mary is in the cinema."	none	yes	True	There is no new information about Mary's location in sentences 4 and 5. Sentence 1 (from the previous part) stated that Mary is in the cinema, and there is no update to change this information.		"Reasoning: There is no new information about Mary's location in sentences 4 and 5. Sentence 1 (from the previous part) stated that Mary is in the cinema, and there is no update to change this information.
+
+Answer: yes"	0.0588	0.0196	False	False	False	True	0
+363	10	73	3	"*TASK*
+Here are the context sentences:
+7. Bill is either in the office or the school.
+8. Julie went back to the office.
+
+Now, answer the following question:
+Is Julie in the office?"	yes	"according to sentence 8, ""julie went back to the office"", which implies that julie's current location is the office. this sentence directly states julie's location, so we can conclude that the answer to the question ""is julie in the office?"" is indeed ""yes""."	fully	yes	True	Sentence 8 explicitly states that Julie went back to the office, which means Julie is in the office.		"Reasoning: Sentence 8 explicitly states that Julie went back to the office, which means Julie is in the office.
+
+Answer: yes"	0.0357	0.0357	False	False	False	False	0
+364	10	73	4	"*TASK*
+Here are the context sentences:
+10. Mary is in the office.
+11. Fred went to the kitchen.
+
+Now, answer the following question:
+Is Mary in the school?"	no	"according to sentence 10, ""mary is in the office"", which explicitly states mary's location as the office. there is no mention of mary being in the school. therefore, we can conclude that the answer to the question ""is mary in the school?"" is indeed ""no""."	fully	no	True	Sentence 1 (from the previous part) stated that Mary is in the cinema, and sentence 10 updated Mary's location to the office. There is no information about Mary being in the school.		"Reasoning: Sentence 1 (from the previous part) stated that Mary is in the cinema, and sentence 10 updated Mary's location to the office. There is no information about Mary being in the school.
+
+Answer: no"	0.0	0.0213	False	False	False	True	0
+365	10	73	5	"*TASK*
+Here are the context sentences:
+13. Mary went back to the school.
+14. Mary is either in the park or the kitchen.
+
+Now, answer the following question:
+Is Fred in the park?"	no	"the question asks about fred's location, but the context sentences (13 and 14) do not provide any information about fred's location. sentence 13 mentions mary going back to the school, and sentence 14 mentions mary being either in the park or the kitchen, but there is no mention of fred. therefore, we cannot conclude anything about fred's location, and the answer ""no"" does not seem to be supported by the provided context."	none	not mentioned	False	There is no information about Fred's location in sentences 13 and 14. Sentence 11 (from the previous part) stated that Fred went to the kitchen, but there is no update to change this information. Sentence 14 is about Mary's location, not Fred's.		"Reasoning: There is no information about Fred's location in sentences 13 and 14. Sentence 11 (from the previous part) stated that Fred went to the kitchen, but there is no update to change this information. Sentence 14 is about Mary's location, not Fred's.
+
+Answer: not mentioned"	0.0	0.0156	False	False	False	True	0

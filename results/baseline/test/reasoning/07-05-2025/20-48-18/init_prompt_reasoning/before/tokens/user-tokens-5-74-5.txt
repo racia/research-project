@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+27	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+28	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠMary	Ġgive	Ġthe	Ġfootball	Ġto	?Ċ

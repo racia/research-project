@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJulius	Ġis	Ġa	Ġlion	Ġand	ĠJulius	Ġis	Ġwhite	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠGreg	Ġis	Ġalso	Ġa	Ġlion	.	ĠAdditionally	,	ĠBern	hard	Ġis	Ġa	Ġlion	,	Ġand	ĠBern	hard	Ġis	Ġyellow	,	Ġwhich	Ġis	Ġa	Ġdifferent	Ġcolor	Ġfrom	ĠJulius	.	ĠTherefore	,	Ġit	Ġis	Ġlikely	Ġthat	ĠGreg	's	Ġcolor	Ġis	Ġdifferent	Ġfrom	ĠJulius	'	Ġand	ĠBern	hard	's	.ĊĊ	Answer	:	Ġwhite	<|eot_id|>

@@ -1,0 +1,74 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1256	3	52	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the bedroom.
+2. Mary went to the office.
+3. Sandra journeyed to the bathroom.
+4. Daniel journeyed to the bedroom.
+5. John travelled to the garden.
+6. Daniel journeyed to the kitchen.
+7. Daniel went to the office.
+8. Daniel moved to the kitchen.
+9. Sandra travelled to the bedroom.
+10. Sandra journeyed to the kitchen.
+11. John went back to the office.
+12. John moved to the bathroom.
+13. Sandra went back to the garden.
+14. Daniel took the apple.
+15. Sandra travelled to the office.
+16. John travelled to the bedroom.
+17. John travelled to the kitchen.
+18. Daniel discarded the apple.
+19. Sandra went to the garden.
+20. Mary went to the bedroom.
+21. Daniel grabbed the apple.
+22. John went to the bedroom.
+23. John went back to the hallway.
+24. Daniel went to the bedroom.
+25. John travelled to the office.
+26. Daniel travelled to the kitchen.
+27. Daniel dropped the apple.
+28. John moved to the garden.
+
+Now, answer the following question:
+Where was the apple before the kitchen?"	bedroom	from sentence 14, we know that daniel took the apple.	fully	bedroom	True	The apple was taken by Daniel in sentence 14, and then it was discarded in sentence 18. Before being discarded, the apple was grabbed by Daniel in sentence 21. Since Daniel grabbed the apple in the bedroom (sentence 24), the apple was in the bedroom before being taken to the kitchen.		"Reasoning: The apple was taken by Daniel in sentence 14, and then it was discarded in sentence 18. Before being discarded, the apple was grabbed by Daniel in sentence 21. Since Daniel grabbed the apple in the bedroom (sentence 24), the apple was in the bedroom before being taken to the kitchen.
+
+Answer: bedroom"	0.1014	0.0435	False	False	False	False	0
+1257	3	52	2	"*TASK*
+Here are the context sentences:
+30. Sandra went to the kitchen.
+31. Sandra picked up the apple.
+32. Sandra went back to the bathroom.
+33. Sandra went to the hallway.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	bathroom	from sentence 31, we know that sandra picked up the apple in the kitchen.	fully	kitchen	False	The apple was picked up by Sandra in sentence 31, and then she went to the hallway in sentence 33. Before going to the hallway, Sandra was in the kitchen (sentence 30), where she picked up the apple.		"Reasoning: The apple was picked up by Sandra in sentence 31, and then she went to the hallway in sentence 33. Before going to the hallway, Sandra was in the kitchen (sentence 30), where she picked up the apple.
+
+Answer: kitchen"	0.1667	0.0556	False	False	False	False	0
+1258	3	52	3	"*TASK*
+Here are the context sentences:
+35. John travelled to the office.
+36. Sandra put down the apple.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	bathroom	from the previous conversation, we know that sandra picked up the apple in the kitchen (sentence 31) and then went back to the bathroom (sentence 32).	partially	kitchen	False	The apple was put down by Sandra in sentence 36, but there is no mention of the apple being in the hallway. The context sentences only mention the apple being in the kitchen (sentence 31) and then being put down, but not being in the hallway.		"Reasoning: The apple was put down by Sandra in sentence 36, but there is no mention of the apple being in the hallway. The context sentences only mention the apple being in the kitchen (sentence 31) and then being put down, but not being in the hallway.
+
+Answer: kitchen"	0.0656	0.0492	False	False	False	True	0
+1259	3	52	4	"*TASK*
+Here are the context sentences:
+38. Sandra went back to the kitchen.
+39. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	bathroom	from the previous conversation, we know that sandra picked up the apple in the kitchen (sentence 31) and then went back to the bathroom (sentence 32).	none	not mentioned	False	The apple was put down by Sandra in sentence 36, and then she went back to the kitchen in sentence 38. There is no mention of the apple being in the hallway. The context sentences do not provide information about the apple's location before the hallway.		"Reasoning: The apple was put down by Sandra in sentence 36, and then she went back to the kitchen in sentence 38. There is no mention of the apple being in the hallway. The context sentences do not provide information about the apple's location before the hallway.
+
+Answer: not mentioned"	0.0656	0.0492	False	False	False	True	0
+1260	3	52	5	"*TASK*
+Here are the context sentences:
+41. Mary went to the kitchen.
+42. John went back to the hallway.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	bathroom	"""reasoning: <reasoning>"""	none	not mentioned	False	The context sentences do not mention the apple's location before the hallway. The apple's previous location is not mentioned in the given sentences.		"Reasoning: The context sentences do not mention the apple's location before the hallway. The apple's previous location is not mentioned in the given sentences.
+
+Answer: not mentioned"	0.0	0.0857	False	False	False	True	0

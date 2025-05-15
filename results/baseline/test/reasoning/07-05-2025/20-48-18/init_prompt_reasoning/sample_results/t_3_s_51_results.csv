@@ -1,0 +1,81 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1251	3	51	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the hallway.
+2. Daniel went to the kitchen.
+3. Daniel went to the office.
+4. Mary travelled to the garden.
+5. John went to the office.
+6. Sandra moved to the hallway.
+7. Daniel grabbed the football there.
+8. Mary travelled to the office.
+9. Sandra went to the bedroom.
+10. Sandra went to the garden.
+11. John went back to the bedroom.
+12. Daniel put down the football.
+13. Sandra moved to the office.
+14. Sandra grabbed the football.
+15. Sandra moved to the hallway.
+16. John went back to the hallway.
+17. John got the milk.
+18. Daniel moved to the garden.
+19. John left the milk.
+20. Mary went to the bathroom.
+21. John went to the garden.
+22. Sandra got the milk.
+23. Sandra went back to the bathroom.
+24. Sandra left the football there.
+
+Now, answer the following question:
+Where was the football before the bathroom?"	hallway	from sentence 7, we know that daniel grabbed the football in the office. then, in sentence 12, daniel put down the football, which means the football was still in the office.	fully	hallway	True	The football was last mentioned in sentence 24, where Sandra left the football there. Since Sandra went back to the bathroom after getting the milk, it is likely that the football was left in the hallway, where Sandra was before going to the bathroom.		"Reasoning: The football was last mentioned in sentence 24, where Sandra left the football there. Since Sandra went back to the bathroom after getting the milk, it is likely that the football was left in the hallway, where Sandra was before going to the bathroom.
+
+Answer: hallway"	0.193	0.0526	False	False	False	True	0
+1252	3	51	2	"*TASK*
+Here are the context sentences:
+26. Sandra journeyed to the kitchen.
+27. John journeyed to the kitchen.
+
+Now, answer the following question:
+Where was the football before the bathroom?"	hallway	the context lines provided (26 and 27) do not mention the football at all. however, the question asks about the location of the football before the bathroom.	none	hallway	True	There is no mention of the football in the given context sentences. The previous question about the football's location was answered as being in the hallway. Since there is no new information about the football's location, the previous answer remains valid.		"Reasoning: There is no mention of the football in the given context sentences. The previous question about the football's location was answered as being in the hallway. Since there is no new information about the football's location, the previous answer remains valid.
+
+Answer: hallway"	0.0	0.0556	False	False	False	True	0
+1253	3	51	3	"*TASK*
+Here are the context sentences:
+29. John picked up the apple there.
+30. John travelled to the garden.
+
+Now, answer the following question:
+Where was the football before the bathroom?"	hallway	the context lines provided (29 and 30) do not mention the football at all. they only talk about john picking up an apple and traveling to the garden.	none	hallway	True	The context sentences do not mention the football at all. The previous question about the football's location was answered as being in the hallway. Since there is no new information about the football's location, the previous answer remains valid.		"Reasoning: The context sentences do not mention the football at all. The previous question about the football's location was answered as being in the hallway. Since there is no new information about the football's location, the previous answer remains valid.
+
+Answer: hallway"	0.0	0.0577	False	False	False	True	0
+1254	3	51	4	"*TASK*
+Here are the context sentences:
+32. Daniel went to the kitchen.
+33. Mary grabbed the football.
+34. Sandra dropped the milk.
+35. Mary dropped the football.
+
+Now, answer the following question:
+Where was the milk before the kitchen?"	bathroom	from sentence 34, we know that sandra dropped the milk. however, the location where she dropped the milk is not specified.	partially	not mentioned	False	The context sentences do not mention the milk's location before the kitchen. However, sentence 34 mentions Sandra dropping the milk, but it does not specify where the milk was before being dropped. Since the context sentences do not provide enough information, it is not possible to determine the milk's location before the kitchen.		"Reasoning: The context sentences do not mention the milk's location before the kitchen. However, sentence 34 mentions Sandra dropping the milk, but it does not specify where the milk was before being dropped. Since the context sentences do not provide enough information, it is not possible to determine the milk's location before the kitchen.
+
+Answer: not mentioned"	0.0286	0.0429	False	False	False	True	0
+1255	3	51	5	"*TASK*
+Here are the context sentences:
+37. Daniel took the milk.
+38. Mary picked up the football.
+39. Daniel put down the milk there.
+40. Mary travelled to the garden.
+41. Daniel travelled to the hallway.
+42. Sandra moved to the hallway.
+43. Mary went back to the hallway.
+44. Sandra journeyed to the kitchen.
+45. Daniel travelled to the office.
+46. Mary put down the football.
+
+Now, answer the following question:
+Where was the football before the hallway?"	garden	" apple.
+38. john went to the office.
+this is the question: where was the milk before the kitchen?
+this is the answer: bathroom"	fully	hallway	False	The context sentences mention that Mary picked up the football (sentence 38) and then Mary put down the football (sentence 46). Since Mary put down the football, it is likely that the football was in the hallway, where Mary went back to (sentence 43).		"Reasoning: The context sentences mention that Mary picked up the football (sentence 38) and then Mary put down the football (sentence 46). Since Mary put down the football, it is likely that the football was in the hallway, where Mary went back to (sentence 43).
+
+Answer: hallway"	0.0161	0.0484	False	False	False	True	0

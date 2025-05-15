@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

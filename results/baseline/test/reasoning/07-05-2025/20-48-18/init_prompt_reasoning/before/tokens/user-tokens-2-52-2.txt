@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠDaniel	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
+11	.	ĠJohn	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+12	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+13	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġapple	?Ċ

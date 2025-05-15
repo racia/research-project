@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJohn	's	Ġlocation	,	Ġand	Ġwe	Ġknow	Ġfrom	Ġsentence	Ġ	14	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġhe	Ġhas	Ġmoved	Ġto	Ġthe	Ġhallway	.	ĠSentence	Ġ	13	Ġonly	Ġmentions	ĠMary	's	Ġdeparture	Ġfrom	Ġthe	Ġbedroom	,	Ġwhich	Ġdoes	Ġnot	Ġaffect	ĠJohn	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

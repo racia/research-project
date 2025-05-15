@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+246	6	50	1	"*TASK*
+Here are the context sentences:
+1. Daniel grabbed the apple there.
+2. John journeyed to the hallway.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	"the context sentence ""john journeyed to the hallway"" implies that john moved to the hallway, which means he is now located in the hallway. therefore, the answer to the question ""is john in the hallway?"" is indeed ""yes""."	fully	yes	True	The question asks if John is in the hallway, and the only information provided is that John journeyed to the hallway. This implies that John is currently in the hallway.		"Reasoning: The question asks if John is in the hallway, and the only information provided is that John journeyed to the hallway. This implies that John is currently in the hallway.
+
+Answer: yes"	0.0244	0.0244	False	False	False	True	0
+247	6	50	2	"*TASK*
+Here are the context sentences:
+4. John journeyed to the kitchen.
+5. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	yes	"the context sentence ""sandra travelled to the bathroom"" implies that sandra moved to the bathroom, which means she is now located in the bathroom. therefore, the answer to the question ""is sandra in the bathroom?"" is indeed ""yes""."	fully	yes	True	The question asks if Sandra is in the bathroom, and the only information provided is that Sandra travelled to the bathroom. This implies that Sandra is currently in the bathroom.		"Reasoning: The question asks if Sandra is in the bathroom, and the only information provided is that Sandra travelled to the bathroom. This implies that Sandra is currently in the bathroom.
+
+Answer: yes"	0.1	0.025	False	False	False	True	0
+248	6	50	3	"*TASK*
+Here are the context sentences:
+7. John took the football there.
+8. Sandra journeyed to the office.
+
+Now, answer the following question:
+Is Sandra in the office?"	yes	"the context sentence ""sandra journeyed to the office"" implies that sandra moved to the office, which means she is now located in the office. therefore, the answer to the question ""is sandra in the office?"" is indeed ""yes""."	fully	yes	True	The question asks if Sandra is in the office, and the only information provided is that Sandra journeyed to the office. This implies that Sandra is currently in the office.		"Reasoning: The question asks if Sandra is in the office, and the only information provided is that Sandra journeyed to the office. This implies that Sandra is currently in the office.
+
+Answer: yes"	0.0	0.0244	False	False	False	True	0
+249	6	50	4	"*TASK*
+Here are the context sentences:
+10. Sandra travelled to the hallway.
+11. John left the football.
+
+Now, answer the following question:
+Is Sandra in the garden?"	no	"there is no mention of sandra travelling to the garden in the context sentences. in fact, the context sentence ""sandra travelled to the hallway"" implies that sandra moved to the hallway, not the garden. therefore, the answer to the question ""is sandra in the garden?"" is indeed ""no""."	fully	no	True	There is no information provided that suggests Sandra is in the garden. In fact, the last information provided is that Sandra travelled to the hallway, which implies she is not in the garden.		"Reasoning: There is no information provided that suggests Sandra is in the garden. In fact, the last information provided is that Sandra travelled to the hallway, which implies she is not in the garden.
+
+Answer: no"	0.0682	0.0227	False	False	False	True	0
+250	6	50	5	"*TASK*
+Here are the context sentences:
+13. Sandra travelled to the bedroom.
+14. Daniel discarded the apple.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	yes	"the context sentence ""sandra travelled to the bedroom"" implies that sandra moved to the bedroom, which means she is now located in the bedroom. therefore, the answer to the question ""is sandra in the bedroom?"" is indeed ""yes""."	fully	yes	True	The question asks if Sandra is in the bedroom, and the only information provided is that Sandra travelled to the bedroom. This implies that Sandra is currently in the bedroom.		"Reasoning: The question asks if Sandra is in the bedroom, and the only information provided is that Sandra travelled to the bedroom. This implies that Sandra is currently in the bedroom.
+
+Answer: yes"	0.125	0.025	False	False	False	True	0

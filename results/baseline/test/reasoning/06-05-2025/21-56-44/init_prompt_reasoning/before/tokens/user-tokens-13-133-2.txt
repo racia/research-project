@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+4	.	ĠJohn	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+5	.	ĠFollowing	Ġthat	Ġthey	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	ĠJohn	?Ċ

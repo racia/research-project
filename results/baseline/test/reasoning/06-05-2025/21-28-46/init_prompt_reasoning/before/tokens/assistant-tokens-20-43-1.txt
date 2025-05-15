@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġis	Ġthirsty	,	Ġhe	Ġwill	Ġlikely	Ġgo	Ġto	Ġa	Ġplace	Ġwhere	Ġhe	Ġcan	Ġqu	ench	Ġhis	Ġthirst	.	ĠThe	Ġcontext	Ġsentence	Ġmentions	Ġnothing	Ġabout	ĠJason	's	Ġcurrent	Ġlocation	,	Ġbut	Ġit	Ġdoes	Ġmention	Ġhis	Ġthirst	.	ĠTherefore	,	ĠI	Ġwill	Ġinfer	Ġthat	ĠJason	Ġwill	Ġgo	Ġto	Ġa	Ġplace	Ġwhere	Ġhe	Ġcan	Ġget	Ġa	Ġdrink	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

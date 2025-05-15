@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2201	13	141	1	"*TASK*
+Here are the context sentences:
+1. Mary and Daniel went to the kitchen.
+2. Afterwards they went back to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentences, we know that mary and daniel went to the kitchen (sentence 1) and then went back to the hallway (sentence 2). since mary was with daniel in both actions, it can be logically inferred that mary is currently in the hallway with daniel.	fully	hallway	True	Mary and Daniel went to the kitchen together, and then they went back to the hallway. Since Mary and Daniel are together, Mary is also in the hallway.		"Reasoning: Mary and Daniel went to the kitchen together, and then they went back to the hallway. Since Mary and Daniel are together, Mary is also in the hallway.
+
+Answer: hallway"	0.1795	0.0513	False	False	False	False	0
+2202	13	141	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Sandra went back to the bathroom.
+5. Then they moved to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	according to the context sentences, daniel and sandra went back to the bathroom (sentence 4) and then moved to the kitchen (sentence 5). since daniel was with sandra in both actions, it can be logically inferred that daniel is currently in the kitchen with sandra.	fully	kitchen	True	Daniel and Sandra went to the bathroom together, and then they moved to the kitchen. Since Daniel is with Sandra, and they are in the kitchen, Daniel is also in the kitchen.		"Reasoning: Daniel and Sandra went to the bathroom together, and then they moved to the kitchen. Since Daniel is with Sandra, and they are in the kitchen, Daniel is also in the kitchen.
+
+Answer: kitchen"	0.1364	0.0455	False	False	False	False	0
+2203	13	141	3	"*TASK*
+Here are the context sentences:
+7. John and Sandra went back to the office.
+8. Following that they moved to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	according to the context sentences, john and sandra went back to the office (sentence 7) and then moved to the garden (sentence 8). since sandra was with john in both actions, it can be logically inferred that sandra is currently in the garden with john.	fully	garden	True	John and Sandra went to the office together, and then they moved to the garden. Since Sandra is with John, and they are in the garden, Sandra is also in the garden.		"Reasoning: John and Sandra went to the office together, and then they moved to the garden. Since Sandra is with John, and they are in the garden, Sandra is also in the garden.
+
+Answer: garden"	0.1136	0.0455	False	False	False	False	0
+2204	13	141	4	"*TASK*
+Here are the context sentences:
+10. Mary and John travelled to the kitchen.
+11. Afterwards they went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	according to the context sentences, mary and john travelled to the kitchen (sentence 10) and afterwards they went to the bathroom (sentence 11). since mary was with john in both actions, it can be logically inferred that mary is currently in the bathroom with john.	fully	bathroom	True	Mary and John went to the kitchen together, and then they went to the bathroom. Since Mary is with John, and they are in the bathroom, Mary is also in the bathroom.		"Reasoning: Mary and John went to the kitchen together, and then they went to the bathroom. Since Mary is with John, and they are in the bathroom, Mary is also in the bathroom.
+
+Answer: bathroom"	0.0227	0.0455	False	False	False	False	0
+2205	13	141	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Mary journeyed to the bedroom.
+14. After that they moved to the office.
+
+Now, answer the following question:
+Where is John?"	bathroom	the context sentences (13 and 14) do not provide any information about john's location. however, we can infer the answer from the previous context (sentence 11), which stated that mary and john went to the bathroom. since there is no information about john moving to a different location, it can be logically assumed that john is still in the bathroom.	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only mention Daniel and Mary.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Daniel and Mary.
+
+Answer: not mentioned"	0.0357	0.0714	False	False	False	True	0

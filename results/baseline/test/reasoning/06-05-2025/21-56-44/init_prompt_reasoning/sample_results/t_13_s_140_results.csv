@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2196	13	140	1	"*TASK*
+Here are the context sentences:
+1. Mary and Sandra went to the bathroom.
+2. Then they went to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from the context sentences, we know that mary and sandra went to the bathroom (sentence 1) and then they went to the kitchen (sentence 2). since sandra was with mary in both locations, it can be logically inferred that sandra is currently in the kitchen, which is the last location mentioned in the sequence of events.	fully	kitchen	True	Sandra's last known location was the bathroom, and then she went to the kitchen with Mary, so it's likely that she is currently in the kitchen.		"Reasoning: Sandra's last known location was the bathroom, and then she went to the kitchen with Mary, so it's likely that she is currently in the kitchen.
+
+Answer: kitchen"	0.1316	0.0526	False	False	False	False	0
+2197	13	140	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Daniel went to the bathroom.
+5. Following that they moved to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	from the context sentences, we know that sandra and daniel went to the bathroom (sentence 4) and then they moved to the bedroom (sentence 5). since sandra was with daniel in both locations, it can be logically inferred that sandra is currently in the bedroom, which is the last location mentioned in the sequence of events.	fully	bedroom	True	Sandra's last known location was the bathroom, and then she moved to the bedroom with Daniel, so it's likely that she is currently in the bedroom.		"Reasoning: Sandra's last known location was the bathroom, and then she moved to the bedroom with Daniel, so it's likely that she is currently in the bedroom.
+
+Answer: bedroom"	0.2105	0.0526	False	False	False	False	0
+2198	13	140	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Sandra went to the kitchen.
+8. Afterwards they journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from the context sentences, we know that daniel and sandra went to the kitchen (sentence 7) and afterwards they journeyed to the hallway (sentence 8). since daniel was with sandra in both locations, it can be logically inferred that daniel is currently in the hallway, which is the last location mentioned in the sequence of events.	fully	hallway	True	Daniel's last known location was the kitchen, and then he journeyed to the hallway with Sandra, so it's likely that he is currently in the hallway.		"Reasoning: Daniel's last known location was the kitchen, and then he journeyed to the hallway with Sandra, so it's likely that he is currently in the hallway.
+
+Answer: hallway"	0.0256	0.0513	False	False	False	False	0
+2199	13	140	4	"*TASK*
+Here are the context sentences:
+10. Mary and John journeyed to the bathroom.
+11. Then they went back to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	from the context sentences, we know that mary and john journeyed to the bathroom (sentence 10) and then they went back to the office (sentence 11). since mary was with john in both locations, it can be logically inferred that mary is currently in the office, which is the last location mentioned in the sequence of events.	fully	office	True	Mary's last known location was the bathroom, and then she went back to the office with John, so it's likely that she is currently in the office.		"Reasoning: Mary's last known location was the bathroom, and then she went back to the office with John, so it's likely that she is currently in the office.
+
+Answer: office"	0.1026	0.0513	False	False	False	False	0
+2200	13	140	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra went back to the bathroom.
+14. After that they journeyed to the garden.
+
+Now, answer the following question:
+Where is John?"	office	from the context sentences, we know that mary and sandra went back to the bathroom (sentence 13) and then they journeyed to the garden (sentence 14). however, there is no mention of john in these sentences. to find the answer, we need to look at the previous context sentences. from sentence 11, we know that mary and john went back to the office. since there is no mention of john moving from the office, it can be logically inferred that	none	not mentioned	False	There is no mention of John in the given context sentences, so his current location is unknown.		"Reasoning: There is no mention of John in the given context sentences, so his current location is unknown.
+
+Answer: not mentioned"	0.0741	0.0741	False	False	False	True	0

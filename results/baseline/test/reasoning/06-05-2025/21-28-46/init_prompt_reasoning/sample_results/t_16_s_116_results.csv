@@ -1,0 +1,17 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+116	16	116	1	"*TASK*
+Here are the context sentences:
+1. Lily is a frog.
+2. Julius is a lion.
+3. Julius is green.
+4. Brian is a lion.
+5. Brian is yellow.
+6. Bernhard is a lion.
+7. Lily is green.
+8. Bernhard is yellow.
+9. Greg is a frog.
+
+Now, answer the following question:
+What color is Greg?"	green	since greg is a frog (sentence 9), and lily is also a frog (sentence 1) and green (sentence 7), it can be logically inferred that greg, being a frog like lily, is also green.	fully	green	True	The question asks about the color of Greg, who is a frog according to sentence 9. Since Lily, who is also a frog, is green according to sentence 7, it is likely that Greg, being a frog, is also green.		"Reasoning: The question asks about the color of Greg, who is a frog according to sentence 9. Since Lily, who is also a frog, is green according to sentence 7, it is likely that Greg, being a frog, is also green.
+
+Answer: green"	0.1404	0.0526	False	False	False	False	0

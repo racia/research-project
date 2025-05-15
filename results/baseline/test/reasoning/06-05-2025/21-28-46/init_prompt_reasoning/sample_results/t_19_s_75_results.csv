@@ -1,0 +1,13 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1982	19	75	1	"*TASK*
+Here are the context sentences:
+1. The office is east of the bathroom.
+2. The garden is south of the bathroom.
+3. The bedroom is north of the bathroom.
+4. The hallway is west of the bathroom.
+5. The kitchen is west of the hallway.
+
+Now, answer the following question:
+How do you go from the hallway to the office?"	east east	to go from the hallway to the office, we need to find the direction from the hallway to the bathroom first, and then from the bathroom to the office. from sentence 4, we know the hallway is west of the bathroom, so we need to go east to reach the bathroom from the hallway. then, from sentence 1, we know the office is east of the bathroom, so we need to go east again to reach the office from the bathroom. therefore, the correct	fully	east	True	Since the hallway is west of the bathroom, and the office is east of the bathroom, to go from the hallway to the office, you need to move east.		"Reasoning: Since the hallway is west of the bathroom, and the office is east of the bathroom, to go from the hallway to the office, you need to move east.
+
+Answer: east"	0.05	0.05	False	False	False	False	0

@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠSandra	Ġand	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+14	.	ĠAfterwards	Ġthey	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	ĠDaniel	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	13	,	ĠJohn	Ġgave	Ġthe	Ġapple	Ġto	ĠSandra	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġnow	Ġcarrying	Ġthe	Ġapple	Ġagain	.ĊĊ	Answer	:	Ġone	<|eot_id|>

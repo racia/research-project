@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+11	10	3	1	"*TASK*
+Here are the context sentences:
+1. Bill is in the kitchen.
+2. Julie is either in the school or the cinema.
+
+Now, answer the following question:
+Is Bill in the bedroom?"	no	the context sentences only mention bill being in the kitchen, and julie's possible locations being the school or the cinema. there is no mention of bill being in the bedroom, and the kitchen is a different location from the bedroom. therefore, based on the provided information, it can be logically concluded that bill is not in the bedroom.	fully	no	True	The context sentences do not mention Bill being in the bedroom. In fact, sentence 1 explicitly states that Bill is in the kitchen, which is a different location.		"Reasoning: The context sentences do not mention Bill being in the bedroom. In fact, sentence 1 explicitly states that Bill is in the kitchen, which is a different location.
+
+Answer: no"	0.05	0.025	False	False	False	True	0
+12	10	3	2	"*TASK*
+Here are the context sentences:
+4. Fred is in the bedroom.
+5. Bill is in the school.
+
+Now, answer the following question:
+Is Julie in the bedroom?"	no	the context sentences mention fred being in the bedroom, but there is no mention of julie being in the bedroom. additionally, the previous context sentences (1 and 2) mentioned julie's possible locations as the school or the cinema, but not the bedroom. therefore, based on the provided information, it can be logically concluded that julie is not in the bedroom.	none	unknown	False	The context sentences do not provide any information about Julie's location in relation to the bedroom. Sentence 2 mentioned that Julie is either in the school or the cinema, but it does not mention the bedroom.		"Reasoning: The context sentences do not provide any information about Julie's location in relation to the bedroom. Sentence 2 mentioned that Julie is either in the school or the cinema, but it does not mention the bedroom.
+
+Answer: unknown"	0.0	0.0208	False	False	False	True	0
+13	10	3	3	"*TASK*
+Here are the context sentences:
+7. Julie is either in the bedroom or the office.
+8. Fred is in the park.
+
+Now, answer the following question:
+Is Julie in the bedroom?"	maybe	"the context sentence 7 states that julie is either in the bedroom or the office, which means julie's location is uncertain and could be either of the two options. there is no additional information that would allow us to determine julie's exact location, so the answer is ""maybe"", indicating that julie might be in the bedroom, but it's not certain."	fully	maybe	True	Sentence 7 states that Julie is either in the bedroom or the office, which means it is possible that Julie is in the bedroom, but it is not certain.		"Reasoning: Sentence 7 states that Julie is either in the bedroom or the office, which means it is possible that Julie is in the bedroom, but it is not certain.
+
+Answer: maybe"	0.05	0.025	False	False	False	False	0
+14	10	3	4	"*TASK*
+Here are the context sentences:
+10. Fred is either in the school or the bedroom.
+11. Mary went to the kitchen.
+
+Now, answer the following question:
+Is Bill in the school?"	yes	"previously, in context sentence 5, it was stated that ""bill is in the school"". this information is still valid and has not been contradicted or updated by any subsequent context sentences. therefore, based on the provided information, it can be logically concluded that bill is indeed in the school."	none	yes	True	Sentence 5 mentioned that Bill is in the school, and there is no information that suggests Bill has moved or changed locations.		"Reasoning: Sentence 5 mentioned that Bill is in the school, and there is no information that suggests Bill has moved or changed locations.
+
+Answer: yes"	0.0312	0.0313	False	False	False	True	0
+15	10	3	5	"*TASK*
+Here are the context sentences:
+13. Julie is either in the kitchen or the bedroom.
+14. Julie is in the school.
+
+Now, answer the following question:
+Is Julie in the school?"	yes	"context sentence 14 explicitly states that ""julie is in the school"", which directly answers the question and confirms that julie is indeed in the school. the previous context sentence 13, which mentioned julie being either in the kitchen or the bedroom, is contradicted by this new information, and can be disregarded."	fully	yes	True	Sentence 14 explicitly states that Julie is in the school, which contradicts the uncertainty in sentence 13.		"Reasoning: Sentence 14 explicitly states that Julie is in the school, which contradicts the uncertainty in sentence 13.
+
+Answer: yes"	0.0	0.0345	False	False	False	False	0

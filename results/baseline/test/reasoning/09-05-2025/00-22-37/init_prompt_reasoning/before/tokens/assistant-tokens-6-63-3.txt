@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	8	Ġstates	Ġthat	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

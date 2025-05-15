@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+686	11	138	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the hallway.
+2. Then she went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	mary went back to the hallway initially, but then she went back to the bedroom, which means she moved from the hallway to the bedroom. therefore, her current location is the bedroom.	fully	bedroom	True	Mary went back to the hallway initially, and then she went back to the bedroom. This implies that she is currently in the bedroom.		"Reasoning: Mary went back to the hallway initially, and then she went back to the bedroom. This implies that she is currently in the bedroom.
+
+Answer: bedroom"	0.1765	0.0588	False	False	False	False	0
+687	11	138	2	"*TASK*
+Here are the context sentences:
+4. Sandra went to the kitchen.
+5. After that she journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	according to the context, sandra went to the kitchen initially, and then she journeyed to the hallway. this implies that she moved from the kitchen to the hallway, so her current location is the hallway.	fully	hallway	True	Sandra went to the kitchen first, and then she journeyed to the hallway. This implies that she is currently in the hallway.		"Reasoning: Sandra went to the kitchen first, and then she journeyed to the hallway. This implies that she is currently in the hallway.
+
+Answer: hallway"	0.1818	0.0606	False	False	False	False	0
+688	11	138	3	"*TASK*
+Here are the context sentences:
+7. John went back to the bedroom.
+8. Afterwards he went back to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"the context sentences provided only mention john's movements, but the question asks about sandra's location. since there is no information about sandra's movements in the provided context, we need to look at the previous parts of the conversation. in the previous parts, it was mentioned that ""sandra went to the kitchen"" and ""after that she journeyed to the hallway"". there is no information that suggests sandra moved from the hallway, so her current location is still the hallway."	none	not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only mention John's movements.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention John's movements.
+
+Answer: not mentioned"	0.0714	0.0714	False	False	False	True	0
+689	11	138	4	"*TASK*
+Here are the context sentences:
+10. John moved to the kitchen.
+11. Following that he journeyed to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	according to the context, john moved to the kitchen initially, and then he journeyed to the garden. this implies that he moved from the kitchen to the garden, so his current location is the garden.	fully	garden	True	John moved to the kitchen initially, and then he journeyed to the garden. This implies that he is currently in the garden.		"Reasoning: John moved to the kitchen initially, and then he journeyed to the garden. This implies that he is currently in the garden.
+
+Answer: garden"	0.1212	0.0606	False	False	False	False	0
+690	11	138	5	"*TASK*
+Here are the context sentences:
+13. Sandra travelled to the bedroom.
+14. Afterwards she journeyed to the office.
+
+Now, answer the following question:
+Where is John?"	garden	"the context sentences provided only mention sandra's movements, but the question asks about john's location. since there is no new information about john's movements, we need to look at the previous parts of the conversation. in the previous parts, it was mentioned that ""john moved to the kitchen"" and ""following that he journeyed to the garden"". there is no information that suggests john moved from the garden, so his current location is still the garden."	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only mention Sandra's movements.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Sandra's movements.
+
+Answer: not mentioned"	0.0714	0.0714	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġis	Ġhungry	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwill	Ġgo	Ġsomewhere	Ġto	Ġsatisfy	Ġhis	Ġhunger	.	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġspecific	Ġinformation	Ġabout	Ġwhere	ĠJason	Ġwill	Ġgo	,	Ġbut	Ġbased	Ġon	Ġthe	Ġassumption	Ġthat	Ġhe	Ġwill	Ġgo	Ġsomewhere	Ġto	Ġeat	,	ĠI	Ġwill	Ġmake	Ġan	Ġinference	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

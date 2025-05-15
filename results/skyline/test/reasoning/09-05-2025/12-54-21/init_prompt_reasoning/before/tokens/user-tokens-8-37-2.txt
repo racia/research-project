@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+6	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
+7	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠDaniel	Ġcarrying	?Ċ

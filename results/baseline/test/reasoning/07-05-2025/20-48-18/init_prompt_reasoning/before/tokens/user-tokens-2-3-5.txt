@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+19	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+20	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+21	.	ĠMary	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+22	.	ĠMary	Ġdropped	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġapple	?Ċ

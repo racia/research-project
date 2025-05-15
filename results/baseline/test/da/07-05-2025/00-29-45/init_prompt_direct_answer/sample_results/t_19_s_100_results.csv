@@ -1,0 +1,11 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1504	19	100	1	"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the garden.
+2. The kitchen is north of the garden.
+3. The hallway is south of the office.
+4. The bedroom is south of the bathroom.
+5. The bedroom is west of the office.
+
+Now, answer the following question:
+How do you go from the office to the garden?"	west west	"from sentence 5, we know that the bedroom is west of the office. from sentence 1, we know that the garden is east of the bedroom. therefore, to go from the office to the garden, we need to go west from the office to reach the bedroom, and then go east from the bedroom to reach the garden. since we need to go west twice, the correct direction is ""west west""."	fully	north, east	False			Answer: north, east	0.0	0.3333	False	False	False	False	0

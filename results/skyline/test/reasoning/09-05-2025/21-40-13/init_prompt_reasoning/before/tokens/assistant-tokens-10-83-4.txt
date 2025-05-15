@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	11	,	ĠJulie	Ġis	Ġin	Ġthe	Ġpark	,	Ġwhich	Ġimplies	Ġthat	ĠJulie	Ġis	Ġnot	Ġin	Ġthe	Ġschool	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	Ġbeing	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġno	<|eot_id|>

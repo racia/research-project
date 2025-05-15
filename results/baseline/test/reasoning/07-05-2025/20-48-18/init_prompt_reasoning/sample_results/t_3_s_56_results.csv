@@ -1,0 +1,79 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1276	3	56	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the bedroom.
+2. John moved to the kitchen.
+3. John went to the hallway.
+4. Sandra went to the bathroom.
+5. John went back to the kitchen.
+6. Daniel went to the hallway.
+7. Sandra got the football.
+8. Sandra travelled to the garden.
+9. Daniel journeyed to the garden.
+10. Daniel journeyed to the kitchen.
+11. Daniel went back to the office.
+12. Daniel travelled to the bedroom.
+13. John went back to the bedroom.
+14. Sandra went to the bedroom.
+15. Sandra went to the hallway.
+16. Sandra travelled to the office.
+17. Sandra went back to the bedroom.
+18. Sandra moved to the office.
+19. Sandra journeyed to the kitchen.
+20. Sandra travelled to the garden.
+21. John went back to the bathroom.
+22. Daniel moved to the office.
+23. John grabbed the apple.
+24. Daniel got the milk there.
+25. Daniel left the milk.
+26. Mary travelled to the bedroom.
+27. Mary moved to the kitchen.
+28. Daniel grabbed the milk.
+29. Daniel left the milk.
+30. Sandra left the football there.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	office	from sentence 7, we know that sandra got the football. then, from sentence 8, we know that sandra travelled to the garden with the football. from sentence 14, we know that sandra went to the bedroom. finally, from sentence 30, we know that sandra left the football there, which means she left it in the bedroom. since the question asks where the football was before the bedroom, we need to track back sandra's movements. before the bedroom,	fully	garden	False	The football was last mentioned in sentence 7, where Sandra got the football. Since Sandra then journeyed to the garden (sentence 8), it is likely that the football was with Sandra in the garden before she went to the bedroom.		"Reasoning: The football was last mentioned in sentence 7, where Sandra got the football. Since Sandra then journeyed to the garden (sentence 8), it is likely that the football was with Sandra in the garden before she went to the bedroom.
+
+Answer: garden"	0.0364	0.0545	False	False	False	True	0
+1277	3	56	2	"*TASK*
+Here are the context sentences:
+32. John travelled to the office.
+33. Mary went back to the bedroom.
+
+Now, answer the following question:
+Where was the football before the garden?"	kitchen	from sentence 7, we know that sandra got the football. then, from sentence 8, we know that sandra travelled to the garden with the football. to find where the football was before the garden, we need to track back sandra's movements. before sentence 8, sandra was in sentence 6, where daniel went to the hallway, and sentence 5, where john went back to the kitchen. but we don't have any information about sandra's location before sentence	none	not mentioned	False	There is no mention of the football in the given context sentences. The sentences only mention John travelling to the office and Mary going back to the bedroom, but do not provide any information about the football.		"Reasoning: There is no mention of the football in the given context sentences. The sentences only mention John travelling to the office and Mary going back to the bedroom, but do not provide any information about the football.
+
+Answer: not mentioned"	0.0	0.0625	False	False	False	True	0
+1278	3	56	3	"*TASK*
+Here are the context sentences:
+35. John went back to the bathroom.
+36. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Where was the football before the hallway?"	bedroom	from sentence 7, we know that sandra got the football. then, from sentence 4, we know that sandra went to the bathroom. but before that, sandra was in sentence 1, where sandra journeyed to the bedroom. since sandra had the football and was in the bedroom before going to the bathroom, we can conclude that the football was in the bedroom before the hallway.	none	not mentioned	False	There is no mention of the football in the given context sentences. The sentences only mention John going back to the bathroom and Mary journeying to the kitchen, but do not provide any information about the football.		"Reasoning: There is no mention of the football in the given context sentences. The sentences only mention John going back to the bathroom and Mary journeying to the kitchen, but do not provide any information about the football.
+
+Answer: not mentioned"	0.0408	0.0612	False	False	False	True	0
+1279	3	56	4	"*TASK*
+Here are the context sentences:
+38. Sandra went to the bedroom.
+39. John went back to the garden.
+40. Mary travelled to the office.
+41. John dropped the apple.
+
+Now, answer the following question:
+Where was the apple before the garden?"	bathroom	from sentence 23, we know that john grabbed the apple. then, from sentence 21, we know that john went back to the bathroom. since john had the apple and went back to the bathroom, we can conclude that the apple was in the bathroom before the garden.	partially	with John	False	The apple was last mentioned in sentence 41, where John dropped the apple. Since John went back to the garden (sentence 39), it is likely that the apple was with John in the garden before he dropped it.		"Reasoning: The apple was last mentioned in sentence 41, where John dropped the apple. Since John went back to the garden (sentence 39), it is likely that the apple was with John in the garden before he dropped it.
+
+Answer: with John"	0.1509	0.0566	False	False	False	True	0
+1280	3	56	5	"*TASK*
+Here are the context sentences:
+43. Daniel got the milk there.
+44. Sandra went to the office.
+
+Now, answer the following question:
+Where was the apple before the bathroom?"	office	": 42. mary went back to the bedroom.
+43. john travelled to the office.
+this is the question: where was the milk before the office?
+this is the answer: garden"	none	not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only mention Daniel getting the milk and Sandra going to the office, but do not provide any information about the apple.		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only mention Daniel getting the milk and Sandra going to the office, but do not provide any information about the apple.
+
+Answer: not mentioned"	0.1304	0.0652	False	False	False	True	0
