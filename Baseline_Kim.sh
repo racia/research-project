@@ -3,7 +3,7 @@
 # Job name
 #SBATCH --job-name=baseline
 
-#SBATCH --time=4:30:00              # Job time limit (30 minutes)
+#SBATCH --time=3:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:1                 # Request 1 GPU
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
@@ -69,6 +69,8 @@ export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 
 # declare array of config paths and names, e.g. "/path/to/config config_name"
 declare -a CONFIGS=(
+  "$HOME/research-project/settings/baseline/config baseline_test_1_5"
+  "$HOME/research-project/settings/baseline/config baseline_test_6_10"
   "$HOME/research-project/settings/baseline/config baseline_test_11_15"
 )
 

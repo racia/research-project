@@ -20,7 +20,7 @@ class DataSaver:
     This class handles everything related to saving data.
     """
 
-    def __init__(self, save_to: str) -> None:
+    def __init__(self, save_to: str, loaded_baseline_results: bool) -> None:
         """
         Initialize the DataSaver.
         The datasaver handles everything related to saving data.
@@ -32,6 +32,8 @@ class DataSaver:
         self.results_path: Path = Path(save_to)
         self.run_path: Path = Path(save_to)
         self.prompt_name: str = ""
+
+        self.loaded_baseline_results: bool = loaded_baseline_results
 
     def create_result_paths(
         self,
@@ -222,31 +224,18 @@ class DataSaver:
             raise ValueError(
                 "Version should be either 'before', 'after' or an iteration number."
             )
-        print("Version:", version)
         if result and not result.empty():
             if version.isdigit():
                 add = f"{version}_"
                 version = "iterations"
             else:
                 add = ""
-            attn_scores_subdir = (
-                self.results_path / version / "interpretability" / "attn_scores"
-            )
+            attn_scores_subdir = self.results_path / version / "interpretability"
             Path.mkdir(attn_scores_subdir, exist_ok=True, parents=True)
 
             try:
                 file_name = f"{add}attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
-                print("DEBUG", result)
-                print("ATTN raw type:", type(result.attn_scores))
-                print(
-                    "ATTN raw shape:", getattr(result.attn_scores, "shape", "no shape")
-                )
-                print(
-                    "DEBUG result.interpretability.attn_scores",
-                    result.attn_scores.size,
-                    "\n",
-                    result.attn_scores,
-                )
+
                 if result.attn_scores.size != 0:
                     attn_scores = [
                         "\t".join(map(str, row)) for row in result.attn_scores.tolist()
@@ -271,12 +260,13 @@ class DataSaver:
                         data=getattr(result, tokens),
                     )
 
-            except AttributeError as e:
-                print(f"AttributeError: {e} in {result}")
-
                 print(
                     f"Interpretability results for task {part.task_id} saved to {attn_scores_subdir}"
                 )
+
+            except AttributeError as e:
+                warnings.warn(f"AttributeError: {e} in {result}")
+
         else:
             warnings.warn("No interpretability results found and saved.")
 
@@ -319,10 +309,11 @@ class DataSaver:
         student_file = iterations_dir / f"{iteration}_student_{part_identifier}.txt"
         teacher_file = iterations_dir / f"{iteration}_teacher_{part_identifier}.txt"
 
-        with open(student_file, "w", encoding="UTF-8") as sf, open(
-            teacher_file, "w", encoding="UTF-8"
-        ) as tf:
-            sf.write(student_message)
+        if iteration > 0:
+            with open(student_file, "w", encoding="UTF-8") as sf:
+                sf.write(student_message)
+
+        with open(teacher_file, "w", encoding="UTF-8") as tf:
             tf.write(teacher_message)
 
         if interpretability:
@@ -371,6 +362,9 @@ class DataSaver:
             path_add="sample_results",
         )
         for result, version in zip(part.results, part.versions):
+            if version == "before" and self.loaded_baseline_results:
+                continue
+
             self.save_part_interpretability(result.interpretability, version, part)
 
             part_identifier = f"{part.task_id}-{part.sample_id}-{part.part_id}"

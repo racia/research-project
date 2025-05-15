@@ -10,7 +10,7 @@ from typing import Union
 import numpy as np
 
 from data.DataProcessor import DataProcessor
-from data.utils import get_real_value, get_samples_per_task, structure_parts
+from data.utils import get_real_value, structure_parts
 from inference.DataLevels import SamplePart
 from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits, Enumerate, Wrapper
@@ -283,11 +283,11 @@ class DataLoader:
         Please specify the headers to ensure the desired order of the data.
 
         :param results_path: path to the results, if None, the data_path is used
-        :param data_path: path to the source data (bAbI tasks)
+        :param data_path: path to the source data
         :param headers: list of headers in the file, if None, the headers are read from the file
         :param list_output: if the output should be a list of dictionaries instead of a dictionary of lists
         :param as_parts: if the output should be a list of SamplePart objects
-        :param split: split of the data (to find the file when results_path is a directory)
+        :param split: split of the data (to find the file)
         :param tasks: list of task ids to load
         :param sep: separator for the csv file
         :return: result data
@@ -336,21 +336,19 @@ class DataLoader:
         if tasks is None:
             tasks = list(range(1, 21))
 
-        if list_output or as_parts:
-            for i, row in enumerate(data):
-                if type(row["task_id"]) is not int:
-                    raise ValueError(
-                        f"Task id in row {i} is not an integer: {row['task_id']}"
-                    )
-                if tasks and row["task_id"] not in tasks:
-                    data.pop(i)
+        for i, row in enumerate(data):
+            if type(row["task_id"]) is not int:
+                raise ValueError(
+                    f"Task id in row {i} is not an integer: {row['task_id']}"
+                )
+            if row["task_id"] not in tasks:
+                data.pop(i)
 
         self.number_of_parts = len(data)
         self.number_of_tasks = len(tasks)
 
         if as_parts:
             parts = []
-            self.samples_per_task = get_samples_per_task(data)
             raw_parts = self.load_task_data(
                 path=data_path,
                 split=split,
@@ -358,21 +356,43 @@ class DataLoader:
                 multi_system=True,
                 lookup=True,
             )
-            # TODO: implement loading ids and tokens for all parts
             for row in data:
-                raw_part = raw_parts[(row["task_id"], row["sample_id"], row["part_id"])]
+                if row["sample_id"] > self.samples_per_task:
+                    continue
+
+                identifier = (row["task_id"], row["sample_id"], row["part_id"])
+                raw_part = raw_parts.get(identifier, None)
+
+                if not raw_part:
+                    continue
+
                 if not row["model_output_before"]:
                     raise ValueError(
                         f"Model output before is not found in row {row['id_']}: {row['model_output_before']}"
                     )
+
+                interpretability = InterpretabilityResult(
+                    np.array([]),
+                    [],
+                    [],
+                    row["max_supp_attn_before"],
+                    row["attn_on_target_before"],
+                )
                 raw_part.set_output(
                     model_output=str(row["model_output_before"]),
                     model_answer=str(row["model_answer_before"]),
                     model_reasoning=str(row["model_reasoning_before"]),
-                    interpretability=None,
+                    interpretability=interpretability,
                     full_task=row["task"],
                     version="before",
                 )
+                ids, tokens = self.load_ids_and_tokens(
+                    run_directory=Path(results_path).parent,
+                    task_id=row["task_id"],
+                    sample_id=row["sample_id"],
+                    part_id=row["part_id"],
+                )
+                raw_part.results[-1].ids, raw_part.results[-1].tokens = ids, tokens
                 parts.append(raw_part)
 
             if len(parts) != self.number_of_parts:
@@ -383,6 +403,49 @@ class DataLoader:
             return structure_parts(parts)
 
         return data
+
+    @staticmethod
+    def load_ids_and_tokens(
+        run_directory: Path, task_id: int, sample_id: int, part_id: int
+    ) -> tuple[dict[str, list[int] | list[str]], ...]:
+        """
+        Load the ids and tokens from the specified directory.
+
+        :param run_directory: path to the run directory
+        :param task_id: task id
+        :param sample_id: sample id
+        :param part_id: part id
+        :return: ids and tokens as dictionaries of roles and their respective values
+        """
+        ids, tokens = {}, {}
+
+        for value, result_dict in zip(["ids", "tokens"], [ids, tokens]):
+            subdirectory = run_directory / "before" / value
+            file_identifier = f"{task_id}-{sample_id}-{part_id}"
+
+            for role in ["user", "assistant"]:
+                file_path = subdirectory / f"{role}-{value}-{file_identifier}.txt"
+
+                if file_path.exists():
+                    with open(file_path, "r", encoding="UTF-8") as f:
+                        lines = f.read().splitlines()
+                        structured_lines = [
+                            [int(v) if value == "ids" else v for v in line.split("\t")]
+                            for line in lines
+                        ]
+                        if type(structured_lines[0]) in [int, str]:
+                            structured_lines = [structured_lines]
+                        if not all([type(line) is list for line in structured_lines]):
+                            raise ValueError(
+                                f"Invalid format of data in file {file_path}:\n{structured_lines}"
+                            )
+                        result_dict[role] = structured_lines
+
+                else:
+                    warnings.warn("Path does not exist: %s" % file_path)
+                    return ids, tokens
+
+        return ids, tokens
 
     def load_reasoning_data(
         self, task_id: int, split: str = DataSplits.valid
