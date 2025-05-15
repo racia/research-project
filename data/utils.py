@@ -293,10 +293,10 @@ def level_down(level_id: str) -> str | None:
     :param level_id: the level id to convert
     :return: the lower case level id
     """
-    if "task" in level_id:
-        return level_id.replace("task", "sample")
-    elif "sample" in level_id:
-        return level_id.replace("sample", "part")
+    if level_id == "task_id":
+        return "sample_id"
+    elif level_id == "sample_id":
+        return "part_id"
     return None
 
 

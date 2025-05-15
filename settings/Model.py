@@ -183,7 +183,7 @@ class Model:
                 if self.role == "student" and not self.interpretability:
                     raise ValueError("Interpretability is not set for student model!")
 
-                if self.role != "teacher" and self.interpretability and decoded_output:
+                if self.role == "student" and self.interpretability and decoded_output:
                     try:
                         # output tensor includes all the previous ids + the model output
                         output_tensor = self.model(

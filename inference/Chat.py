@@ -98,12 +98,14 @@ class Chat:
         if not self.messages:
             raise ValueError("No messages to adjust.")
 
-        if type(partial_ids) == torch.Tensor:
+        if type(partial_ids) is torch.Tensor:
             partial_ids = partial_ids.tolist()
-        elif type(partial_ids) == int:
+        if type(partial_ids) is int:
             partial_ids = [partial_ids]
         else:
             partial_ids = flatten(partial_ids)
+
+        assert type(partial_ids[0]) is int
 
         if type(self.messages[-1]["tokens"]) is str:
             raise ValueError(
@@ -112,10 +114,16 @@ class Chat:
 
         self.messages[-1]["content"] += partial_output
         self.messages[-1]["original_content"] += partial_output
-        self.messages[-1]["tokens"][-1].extend(
-            self.tokenizer.convert_ids_to_tokens(partial_ids)
-        )
-        self.messages[-1]["ids"][-1].extend(partial_ids)
+        try:
+            self.messages[-1]["tokens"][-1].extend(
+                self.tokenizer.convert_ids_to_tokens(partial_ids)
+            )
+            self.messages[-1]["ids"][-1].extend(partial_ids)
+        except TypeError:
+            print("DEBUG: content", self.messages[-1]["content"])
+            print("DEBUG: ids", self.messages[-1]["ids"])
+            print("DEBUG: tokens", self.messages[-1]["tokens"])
+            raise TypeError()
         spans_with_types = self.messages[-1]["spans_with_types"]
         model_output_span = list(spans_with_types.keys())[-1]
         model_output_span_type = {
@@ -210,6 +218,7 @@ class Chat:
                             "type": type_,
                         }
                         for tokens, ids, spans in zip(task_tokens, task_ids, task_spans)
+                        if ids
                     ]
                     chunks = [intro, *task_chunks, outro]
                     last_span = ()
@@ -236,12 +245,8 @@ class Chat:
                                     upd_span[1] - upd_span[0],
                                 )
                                 raise ValueError(
-                                    f"Span length mismatch: {len(flat_chunk_ids)} {flat_chunk_ids}:\n"
-                                    f"{chunk['sent_spans']} vs {upd_span}"
+                                    f"Span length mismatch: {len(flat_chunk_ids)} {flat_chunk_ids}:\n{chunk['sent_spans']} vs {upd_span}"
                                 )
-                        else:
-                            warnings.warn("Chat ids is none")
-                            warnings.warn(f"DEBUG: chunks\n{chunks}")
 
             else:
                 tokens, ids, sent_spans = sents_to_ids(
@@ -298,6 +303,7 @@ class Chat:
         approved_message = other_chat.messages[-1]
         offset_difference = other_chat.offset - self.offset
         self.part = other_chat.part
+        assert type(self.part) is not None
         self.identify_supp_sent_spans()
         spans_with_types = {}
 
@@ -314,16 +320,21 @@ class Chat:
                 chunks = [intro, approved_message, outro]
                 for chunk in chunks:
                     assert type(chunk) is dict
+                    if not chunk["ids"]:
+                        continue
+
                     content += chunk.get("original_content", chunk["content"])
                     original_content += chunk.get("original_content", "")
-                    if type(chunk["ids"]) is int:
+
+                    if type(chunk["ids"][0]) is int:
                         message_ids.append(chunk["ids"])
                         message_tokens.append(chunk["tokens"])
                     else:
                         message_ids.extend(chunk["ids"])
                         message_tokens.extend(chunk["tokens"])
 
-                    updated_span = update_span(chunk["sent_spans"], self.offset)
+                    orig_span = list(chunk["spans_with_types"].keys())[0]
+                    updated_span = update_span(orig_span, self.offset)
                     spans_with_types[updated_span] = chunk.get("type", "wrap")
                     self.offset += len(flatten(chunk["ids"]))
             approved_message = {

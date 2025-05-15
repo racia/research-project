@@ -101,5 +101,8 @@ def encode_wrapper(
                 wrapper_dict[key][order]["tokens"] = tokens[i]
                 wrapper_dict[key][order]["ids"] = ids[i]
                 wrapper_dict[key][order]["sent_spans"] = sent_spans[i]
+                wrapper_dict[key][order]["spans_with_types"] = (
+                    {sent_spans[i]: "wrap"} if sent_spans[i] else {}
+                )
 
     return wrapper_dict

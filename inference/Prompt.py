@@ -10,9 +10,9 @@ from data.TaskExamples import Task, TaskExample, TaskExamples
 from inference.utils import (
     Source,
     flatten,
+    get_generation_token_ids,
     sents_to_ids,
     update_span,
-    get_generation_token_ids,
 )
 from settings.config import Examples
 from settings.utils import encode_wrapper
@@ -225,21 +225,13 @@ class Prompt:
                     teacher_ids.extend(chunk["ids"])
                     teacher_tokens.extend(chunk["tokens"])
 
-                if chunk.get("spans_with_types", False):
-                    # this is the actual student message
-                    spans_types = chunk["spans_with_types"]
-                    for span, type_ in spans_types.items():
-                        spans_with_types[update_span(span, offset)] = type_
-                        offset += span[1] - span[0]
-                elif chunk.get("sent_spans", False):
-                    # this is a wrapper
-                    span = chunk.get("sent_spans", ())
-                    if spans_with_types:
-                        span = update_span(span, offset)
-                        offset += span[1] - span[0]
-                    spans_with_types[span] = "wrap"
-
-                # otherwise, empty message
+                spans_types = chunk.get("spans_with_types", {})
+                print("Spans with types:", spans_types)
+                for span, type_ in spans_types.items():
+                    print(f"Span {span}: {type_}")
+                    upd_span = update_span(span, offset)
+                    spans_with_types[upd_span] = type_
+                    offset += span[1] - span[0]
 
         print(
             "Teacher's message:",
