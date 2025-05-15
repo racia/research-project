@@ -361,16 +361,11 @@ class DataLoader:
                     continue
 
                 identifier = (row["task_id"], row["sample_id"], row["part_id"])
-                raw_part = raw_parts.get(identifier, None)
-
-                if not raw_part:
-                    continue
-
+                raw_part = raw_parts[identifier]
                 if not row["model_output_before"]:
                     raise ValueError(
                         f"Model output before is not found in row {row['id_']}: {row['model_output_before']}"
                     )
-
                 interpretability = InterpretabilityResult(
                     np.array([]),
                     [],
