@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3329	15	83	1	"*TASK*
+Here are the context sentences:
+1. Wolves are afraid of sheep.
+2. Winona is a wolf.
+3. Gertrude is a wolf.
+4. Cats are afraid of mice.
+5. Mice are afraid of sheep.
+6. Jessica is a mouse.
+7. Emily is a wolf.
+8. Sheep are afraid of cats.
+
+Now, answer the following question:
+What is jessica afraid of?"	sheep	from context sentence 5, we know that mice are afraid of sheep. since jessica is a mouse (context sentence 6), we can logically conclude that jessica is afraid of sheep.	fully	sheep	True	Since Jessica is a mouse, and mice are afraid of sheep (sentence 5), it is logical to infer that Jessica is afraid of sheep.		"Reasoning: Since Jessica is a mouse, and mice are afraid of sheep (sentence 5), it is logical to infer that Jessica is afraid of sheep.
+
+Answer: sheep"	0.1944	0.0556	False	False	False	False	0
+3330	15	83	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	sheep	from context sentence 2, we know that winona is a wolf, and from context sentence 3, we know that gertrude is a wolf. since emily is also a wolf (context sentence 7), we can logically conclude that emily, being a wolf, is afraid of sheep, just like other wolves (context sentence 1).	none	sheep	True	Since Emily is a wolf (sentence 7), and wolves are afraid of sheep (sentence 1), it is logical to infer that Emily is afraid of sheep.		"Reasoning: Since Emily is a wolf (sentence 7), and wolves are afraid of sheep (sentence 1), it is logical to infer that Emily is afraid of sheep.
+
+Answer: sheep"	0.075	0.05	False	False	False	False	0
+3331	15	83	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is gertrude afraid of?"	sheep	from context sentence 1, we know that wolves are afraid of sheep. since gertrude is a wolf (context sentence 3), we can logically conclude that gertrude, being a wolf, is afraid of sheep.	none	sheep	True	Since Gertrude is a wolf (sentence 3), and wolves are afraid of sheep (sentence 1), it is logical to infer that Gertrude is afraid of sheep.		"Reasoning: Since Gertrude is a wolf (sentence 3), and wolves are afraid of sheep (sentence 1), it is logical to infer that Gertrude is afraid of sheep.
+
+Answer: sheep"	0.0455	0.0455	False	False	False	False	0
+3332	15	83	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	sheep	from context sentence 1, we know that wolves are afraid of sheep. since winona is a wolf (context sentence 2), we can logically conclude that winona, being a wolf, is afraid of sheep.	none	sheep	True	Since Winona is a wolf (sentence 2), and wolves are afraid of sheep (sentence 1), it is logical to infer that Winona is afraid of sheep.		"Reasoning: Since Winona is a wolf (sentence 2), and wolves are afraid of sheep (sentence 1), it is logical to infer that Winona is afraid of sheep.
+
+Answer: sheep"	0.0952	0.0476	False	False	False	False	0

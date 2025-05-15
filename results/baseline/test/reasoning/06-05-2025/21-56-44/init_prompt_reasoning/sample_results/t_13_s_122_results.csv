@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2106	13	122	1	"*TASK*
+Here are the context sentences:
+1. Mary and John went back to the kitchen.
+2. After that they moved to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that mary and john went back to the kitchen (sentence 1) and then moved to the hallway (sentence 2). since john was with mary in both locations, it can be logically inferred that john is currently in the hallway, as that is the last location mentioned where they moved to.	fully	hallway	True	Since John and Mary went back to the kitchen, and then they moved to the hallway, it is logical to conclude that John is now in the hallway.		"Reasoning: Since John and Mary went back to the kitchen, and then they moved to the hallway, it is logical to conclude that John is now in the hallway.
+
+Answer: hallway"	0.2105	0.0526	False	False	False	False	0
+2107	13	122	2	"*TASK*
+Here are the context sentences:
+4. Mary and Daniel travelled to the garden.
+5. After that they went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that mary and daniel travelled to the garden (sentence 4) and then went back to the bedroom (sentence 5). since mary was with daniel in both locations, it can be logically inferred that mary is currently in the bedroom, as that is the last location mentioned where they went back to.	fully	bedroom	True	Since Mary and Daniel travelled to the garden, and then they went back to the bedroom, it is logical to conclude that Mary is now in the bedroom.		"Reasoning: Since Mary and Daniel travelled to the garden, and then they went back to the bedroom, it is logical to conclude that Mary is now in the bedroom.
+
+Answer: bedroom"	0.1579	0.0526	False	False	False	False	0
+2108	13	122	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Sandra went to the bathroom.
+8. Following that they travelled to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from the context sentences, we know that daniel and sandra went to the bathroom (sentence 7) and then travelled to the garden (sentence 8). since daniel was with sandra in both locations, it can be logically inferred that daniel is currently in the garden, as that is the last location mentioned where they travelled to.	fully	garden	True	Since Daniel and Sandra went to the bathroom, and then they travelled to the garden, it is logical to conclude that Daniel is now in the garden.		"Reasoning: Since Daniel and Sandra went to the bathroom, and then they travelled to the garden, it is logical to conclude that Daniel is now in the garden.
+
+Answer: garden"	0.0541	0.0541	False	False	False	False	0
+2109	13	122	4	"*TASK*
+Here are the context sentences:
+10. Mary and Daniel travelled to the hallway.
+11. Following that they journeyed to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from the context sentences, we know that mary and daniel travelled to the hallway (sentence 10) and then journeyed to the garden (sentence 11). since daniel was with mary in both locations, it can be logically inferred that daniel is currently in the garden, as that is the last location mentioned where they journeyed to.	fully	garden	True	Since Mary and Daniel travelled to the hallway, and then they journeyed to the garden, it is logical to conclude that Daniel is now in the garden.		"Reasoning: Since Mary and Daniel travelled to the hallway, and then they journeyed to the garden, it is logical to conclude that Daniel is now in the garden.
+
+Answer: garden"	0.0526	0.0526	False	False	False	False	0
+2110	13	122	5	"*TASK*
+Here are the context sentences:
+13. John and Daniel went to the bedroom.
+14. Following that they journeyed to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	from the context sentences, we know that john and daniel went to the bedroom (sentence 13) and then journeyed to the bathroom (sentence 14). since john was with daniel in both locations, it can be logically inferred that john is currently in the bathroom, as that is the last location mentioned where they journeyed to.	fully	bathroom	True	Since John and Daniel went to the bedroom, and then they journeyed to the bathroom, it is logical to conclude that John is now in the bathroom.		"Reasoning: Since John and Daniel went to the bedroom, and then they journeyed to the bathroom, it is logical to conclude that John is now in the bathroom.
+
+Answer: bathroom"	0.0263	0.0526	False	False	False	False	0

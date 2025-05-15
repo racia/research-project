@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2976	14	146	1	"*TASK*
+Here are the context sentences:
+1. This morning Mary travelled to the kitchen.
+2. Mary went back to the park yesterday.
+3. Bill journeyed to the school yesterday.
+4. Yesterday Julie moved to the park.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	park	from sentence 1, we know that mary travelled to the kitchen this morning. to find out where mary was before the kitchen, we need to look at the previous events. sentence 2 states that mary went back to the park yesterday, which implies that mary was at the park at some point before coming to the kitchen this morning. there is no other information about mary's location before the kitchen, so we can conclude that mary was at the park before coming to the kitchen.	fully	park	True	Since Mary went back to the park yesterday (sentence 2), it implies that she was somewhere else before going back to the park. The only other information we have is that she travelled to the kitchen this morning (sentence 1). Therefore, we can infer that Mary was somewhere else before going to the kitchen, which is the park.		"Reasoning: Since Mary went back to the park yesterday (sentence 2), it implies that she was somewhere else before going back to the park. The only other information we have is that she travelled to the kitchen this morning (sentence 1). Therefore, we can infer that Mary was somewhere else before going to the kitchen, which is the park.
+
+Answer: park"	0.2	0.0267	False	False	False	True	0
+2977	14	146	2	"*TASK*
+Here are the context sentences:
+6. This afternoon Bill moved to the school.
+7. This morning Bill travelled to the park.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	park	"the provided context lines (6 and 7) do not mention mary at all, they only talk about bill's movements. to answer the question ""where was mary before the kitchen?"", we need to refer to the previous context lines (1-4). from sentence 2, we know that mary went back to the park yesterday, which implies that mary was at the park at some point before coming to the kitchen this morning. therefore, the answer is indeed ""park""."	none	Not mentioned	False	The question asks about Mary's location before the kitchen, but there is no information about Mary's location in the given context sentences. The sentences only provide information about Bill's movements, not Mary's.		"Reasoning: The question asks about Mary's location before the kitchen, but there is no information about Mary's location in the given context sentences. The sentences only provide information about Bill's movements, not Mary's.
+
+Answer: Not mentioned"	0.1458	0.0417	False	False	False	True	0
+2978	14	146	3	"*TASK*
+Here are the context sentences:
+9. Bill moved to the office this evening.
+10. Yesterday Fred went to the kitchen.
+
+Now, answer the following question:
+Where was Bill before the park?"	school	"to answer the question ""where was bill before the park?"", we need to refer to the previous context lines (6 and 7). from sentence 6, we know that bill moved to the school this afternoon, and from sentence 7, we know that bill travelled to the park this morning. therefore, we can infer that bill was at the school before coming to the park."	none	Not mentioned	False	There is no information about Bill's location before the park. The given context sentences do not mention Bill's location before the park. The sentences only provide information about Bill's movement to the office this evening (sentence 9) and Fred's movement to the kitchen yesterday (sentence 10).		"Reasoning: There is no information about Bill's location before the park. The given context sentences do not mention Bill's location before the park. The sentences only provide information about Bill's movement to the office this evening (sentence 9) and Fred's movement to the kitchen yesterday (sentence 10).
+
+Answer: Not mentioned"	0.1061	0.0303	False	False	False	True	0
+2979	14	146	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Fred moved to the kitchen.
+13. Fred travelled to the school this morning.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	school	from sentence 13, we know that fred travelled to the school this morning. then, from sentence 12, we know that fred moved to the kitchen this afternoon. since fred moved to the kitchen after being at the school, we can conclude that fred was at the school before coming to the kitchen.	fully	school	True	According to sentence 13, Fred travelled to the school this morning. Since Fred moved to the kitchen this afternoon (sentence 12), we can infer that Fred was at the school before moving to the kitchen.		"Reasoning: According to sentence 13, Fred travelled to the school this morning. Since Fred moved to the kitchen this afternoon (sentence 12), we can infer that Fred was at the school before moving to the kitchen.
+
+Answer: school"	0.0612	0.0408	False	False	False	False	0
+2980	14	146	5	"*TASK*
+Here are the context sentences:
+15. This afternoon Julie went back to the school.
+16. This morning Julie travelled to the office.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	school	"the provided context lines (15 and 16) do not mention fred at all, they only talk about julie's movements. to answer the question ""where was fred before the kitchen?"", we need to refer to the previous context lines (12 and 13). from sentence 13, we know that fred travelled to the school this morning, and then from sentence 12, we know that fred moved to the kitchen this afternoon. since fred moved to the kitchen after being at the"	none	Not mentioned	False	The question asks about Fred's location before the kitchen, but there is no information about Fred's location in the given context sentences. The sentences only provide information about Julie's movements, not Fred's.		"Reasoning: The question asks about Fred's location before the kitchen, but there is no information about Fred's location in the given context sentences. The sentences only provide information about Julie's movements, not Fred's.
+
+Answer: Not mentioned"	0.0417	0.0417	False	False	False	True	0

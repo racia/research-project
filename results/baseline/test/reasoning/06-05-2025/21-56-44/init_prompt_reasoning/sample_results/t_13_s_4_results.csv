@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1516	13	4	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Mary went back to the hallway.
+2. Following that they went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that daniel and mary went back to the hallway (sentence 1) and then they went to the bathroom (sentence 2). since mary was with daniel in both actions, it can be logically inferred that mary is currently in the bathroom, as that was the last location mentioned where they went together.	fully	bathroom	True	Mary is mentioned in the first sentence as going back to the hallway with Daniel. Since they then went to the bathroom, it is likely that Mary is still in the bathroom.		"Reasoning: Mary is mentioned in the first sentence as going back to the hallway with Daniel. Since they then went to the bathroom, it is likely that Mary is still in the bathroom.
+
+Answer: bathroom"	0.2857	0.0476	False	False	False	True	0
+1517	13	4	2	"*TASK*
+Here are the context sentences:
+4. John and Mary travelled to the kitchen.
+5. After that they moved to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	from the context sentences, we know that john and mary travelled to the kitchen (sentence 4) and then they moved to the garden (sentence 5). since mary was with john in both actions, it can be logically inferred that mary is currently in the garden, as that was the last location mentioned where they moved together.	fully	garden	True	Mary is mentioned in the first sentence as travelling to the kitchen with John. Then, they moved to the garden, which implies that Mary is currently in the garden.		"Reasoning: Mary is mentioned in the first sentence as travelling to the kitchen with John. Then, they moved to the garden, which implies that Mary is currently in the garden.
+
+Answer: garden"	0.2	0.05	False	False	False	True	0
+1518	13	4	3	"*TASK*
+Here are the context sentences:
+7. Mary and Sandra went to the office.
+8. Following that they travelled to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that mary and sandra went to the office (sentence 7) and then they travelled to the bedroom (sentence 8). since mary was with sandra in both actions, it can be logically inferred that mary is currently in the bedroom, as that was the last location mentioned where they travelled together.	fully	bedroom	True	Mary is mentioned in the first sentence as going to the office with Sandra. Then, they travelled to the bedroom, which implies that Mary is currently in the bedroom.		"Reasoning: Mary is mentioned in the first sentence as going to the office with Sandra. Then, they travelled to the bedroom, which implies that Mary is currently in the bedroom.
+
+Answer: bedroom"	0.025	0.05	False	False	False	True	0
+1519	13	4	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Mary went back to the kitchen.
+11. Following that they travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	from the context sentences, we know that sandra and mary went back to the kitchen (sentence 10) and then they travelled to the bedroom (sentence 11). since sandra was with mary in both actions, it can be logically inferred that sandra is currently in the bedroom, as that was the last location mentioned where they travelled together.	fully	bedroom	True	Sandra is mentioned in the first sentence as going back to the kitchen with Mary. Then, they travelled to the bedroom, which implies that Sandra is currently in the bedroom.		"Reasoning: Sandra is mentioned in the first sentence as going back to the kitchen with Mary. Then, they travelled to the bedroom, which implies that Sandra is currently in the bedroom.
+
+Answer: bedroom"	0.0976	0.0488	False	False	False	True	0
+1520	13	4	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Mary moved to the kitchen.
+14. Following that they journeyed to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	from the context sentences, we know that daniel and mary moved to the kitchen (sentence 13) and then they journeyed to the office (sentence 14). since daniel was with mary in both actions, it can be logically inferred that daniel is currently in the office, as that was the last location mentioned where they journeyed together.	fully	office	True	Daniel is mentioned in the first sentence as moving to the kitchen with Mary. Then, they journeyed to the office, which implies that Daniel is currently in the office.		"Reasoning: Daniel is mentioned in the first sentence as moving to the kitchen with Mary. Then, they journeyed to the office, which implies that Daniel is currently in the office.
+
+Answer: office"	0.0732	0.0488	False	False	False	True	0

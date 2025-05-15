@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+14	.	ĠAfterwards	Ġhe	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	ĠSandra	?Ċ

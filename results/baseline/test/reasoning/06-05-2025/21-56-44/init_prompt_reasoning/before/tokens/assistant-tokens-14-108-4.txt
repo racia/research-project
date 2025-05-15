@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġkitchen	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġtravel	Ġto	Ġthe	Ġcinema	Ġand	ĠBill	's	Ġreturn	Ġto	Ġthe	Ġcinema	,	Ġbut	Ġnot	ĠJulie	's	Ġlocation	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠBern	hard	Ġis	Ġmentioned	Ġin	Ġsentence	Ġ	9	Ġas	Ġa	Ġsw	an	,	Ġand	Ġsw	ans	Ġare	Ġtypically	Ġyellow	,	Ġas	Ġmentioned	Ġin	Ġsentence	Ġ	8	.	ĠSince	ĠBern	hard	Ġis	Ġa	Ġsw	an	,	Ġit	Ġis	Ġlikely	Ġthat	ĠBern	hard	Ġis	Ġyellow	.ĊĊ	Answer	:	Ġyellow	<|eot_id|>

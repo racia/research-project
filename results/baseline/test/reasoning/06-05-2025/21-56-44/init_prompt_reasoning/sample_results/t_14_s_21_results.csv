@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2351	14	21	1	"*TASK*
+Here are the context sentences:
+1. This morning Bill moved to the park.
+2. This morning Mary travelled to the bedroom.
+3. Bill travelled to the cinema yesterday.
+4. Yesterday Mary moved to the office.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	office	"from context sentence 4, ""yesterday mary moved to the office"", we can infer that mary was in the office yesterday. since the question asks about mary's location before the bedroom, and context sentence 2 states ""this morning mary travelled to the bedroom"", we can logically conclude that mary was in the office before moving to the bedroom this morning."	fully	office	True	Since Mary moved to the office yesterday (sentence 4), and she travelled to the bedroom this morning (sentence 2), it is logical to infer that she was somewhere else before moving to the bedroom. The only other information provided is that Bill moved to the park this morning (sentence 1), which does not directly relate to Mary's location. Therefore, we can conclude that Mary was at the office before moving to the bedroom.		"Reasoning: Since Mary moved to the office yesterday (sentence 4), and she travelled to the bedroom this morning (sentence 2), it is logical to infer that she was somewhere else before moving to the bedroom. The only other information provided is that Bill moved to the park this morning (sentence 1), which does not directly relate to Mary's location. Therefore, we can conclude that Mary was at the office before moving to the bedroom.
+
+Answer: office"	0.117	0.0213	False	False	False	True	0
+2352	14	21	2	"*TASK*
+Here are the context sentences:
+6. This evening Bill travelled to the cinema.
+7. This afternoon Bill went to the kitchen.
+
+Now, answer the following question:
+Where was Mary before the bedroom?"	office	"the provided context sentences (6 and 7) only mention bill's movements and do not provide any new information about mary's location. therefore, we need to refer to the previous context sentences. from the previous context sentences, we know that ""yesterday mary moved to the office"" (sentence 4) and ""this morning mary travelled to the bedroom"" (sentence 2). since the question asks about mary's location before the bedroom, we can conclude that mary was in the office"	none	not mentioned	False	The question asks about Mary's location before the bedroom, but the context sentences provided do not mention Mary's location at all. The sentences only mention Bill's locations, which are the cinema and the kitchen. Since there is no information about Mary's location, we cannot provide a specific answer.		"Reasoning: The question asks about Mary's location before the bedroom, but the context sentences provided do not mention Mary's location at all. The sentences only mention Bill's locations, which are the cinema and the kitchen. Since there is no information about Mary's location, we cannot provide a specific answer.
+
+Answer: not mentioned"	0.1364	0.0303	False	False	False	True	0
+2353	14	21	3	"*TASK*
+Here are the context sentences:
+9. Yesterday Julie went to the school.
+10. Mary went back to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	kitchen	"the provided context sentences (9 and 10) do not mention bill's movements before the cinema. however, we can refer to the previous context sentences. from sentence 6, we know that ""this evening bill travelled to the cinema"". since the question asks about bill's location before the cinema, we need to find bill's location before this evening. sentence 7 states that ""this afternoon bill went to the kitchen"". since this afternoon is before this evening, we can conclude that"	none		False	The question asks about Bill's location before the cinema, and we know that Bill travelled to the cinema yesterday (sentence 3 from the previous task). Therefore, we can infer that Bill was somewhere else before going to the cinema. The only information provided is that Julie went to the school yesterday (sentence 9), which does not directly relate to Bill's location. However, we know that Bill went back to the cinema this afternoon (sentence 10), which implies that he was		Reasoning: The question asks about Bill's location before the cinema, and we know that Bill travelled to the cinema yesterday (sentence 3 from the previous task). Therefore, we can infer that Bill was somewhere else before going to the cinema. The only information provided is that Julie went to the school yesterday (sentence 9), which does not directly relate to Bill's location. However, we know that Bill went back to the cinema this afternoon (sentence 10), which implies that he was	0.0808	0.0202	False	False	False	True	0
+2354	14	21	4	"*TASK*
+Here are the context sentences:
+12. This morning Julie went back to the bedroom.
+13. Fred travelled to the office yesterday.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	bedroom	"the provided context sentences (12 and 13) do not mention mary's movements before the cinema. however, we can refer to the previous context sentences. from sentence 10, we know that ""mary went back to the cinema this afternoon"". since the question asks about mary's location before the cinema, we need to find mary's location before this afternoon. sentence 2 states that ""this morning mary travelled to the bedroom"". since mary went back to the cinema this afternoon, it"	none	not mentioned	False	The question asks about Mary's location before the cinema, and we know that Mary went back to the cinema this afternoon (sentence 10 from the previous task). However, we do not have any information about Mary's location before going back to the cinema. The sentences provided do not mention Mary's location at all, and the only information about Mary's movement is that she went back to the cinema this afternoon.		"Reasoning: The question asks about Mary's location before the cinema, and we know that Mary went back to the cinema this afternoon (sentence 10 from the previous task). However, we do not have any information about Mary's location before going back to the cinema. The sentences provided do not mention Mary's location at all, and the only information about Mary's movement is that she went back to the cinema this afternoon.
+
+Answer: not mentioned"	0.0111	0.0222	False	False	False	True	0
+2355	14	21	5	"*TASK*
+Here are the context sentences:
+15. Julie travelled to the park this evening.
+16. This afternoon Julie moved to the cinema.
+
+Now, answer the following question:
+Where was Julie before the park?"	cinema	"from sentence 15, we know that ""julie travelled to the park this evening"". since the question asks about julie's location before the park, we need to find julie's location before this evening. sentence 16 states that ""this afternoon julie moved to the cinema"". since this afternoon is before this evening, we can conclude that julie was in the cinema before going to the park."	fully	cinema	True	The question asks about Julie's location before the park, and we know that Julie travelled to the park this evening (sentence 15). We also know that Julie moved to the cinema this afternoon (sentence 16). Therefore, we can infer that Julie was at the cinema before going to the park.		"Reasoning: The question asks about Julie's location before the park, and we know that Julie travelled to the park this evening (sentence 15). We also know that Julie moved to the cinema this afternoon (sentence 16). Therefore, we can infer that Julie was at the cinema before going to the park.
+
+Answer: cinema"	0.0	0.0299	False	False	False	False	0

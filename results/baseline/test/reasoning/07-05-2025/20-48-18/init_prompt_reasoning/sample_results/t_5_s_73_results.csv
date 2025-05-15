@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1961	5	73	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the bathroom.
+2. Jeff journeyed to the kitchen.
+3. Jeff picked up the milk there.
+4. Jeff picked up the football there.
+5. Jeff put down the football there.
+6. Jeff journeyed to the office.
+7. Jeff picked up the apple there.
+8. Mary moved to the office.
+9. Bill travelled to the hallway.
+10. Jeff gave the apple to Mary.
+
+Now, answer the following question:
+Who received the apple?"	mary	"according to sentence 10, ""jeff gave the apple to mary."" this sentence explicitly states that mary received the apple from jeff."	fully	Mary	True	The context sentences indicate that Jeff picked up the apple in the office (sentence 7) and then gave it to Mary (sentence 10). Since Mary received the apple from Jeff, she is the one who received the apple.		"Reasoning: The context sentences indicate that Jeff picked up the apple in the office (sentence 7) and then gave it to Mary (sentence 10). Since Mary received the apple from Jeff, she is the one who received the apple.
+
+Answer: Mary"	0.0	0.0189	False	False	False	False	0
+1962	5	73	2	"*TASK*
+Here are the context sentences:
+12. Bill went to the office.
+13. Mary gave the apple to Bill.
+
+Now, answer the following question:
+Who did Mary give the apple to?"	bill	"according to sentence 13, ""mary gave the apple to bill."" this sentence explicitly states that mary gave the apple to bill, which directly answers the question of who mary gave the apple to."	fully	Bill	True	The context sentences indicate that Mary gave the apple to Bill (sentence 13).		"Reasoning: The context sentences indicate that Mary gave the apple to Bill (sentence 13).
+
+Answer: Bill"	0.1304	0.0435	False	False	False	False	0
+1963	5	73	3	"*TASK*
+Here are the context sentences:
+15. Bill passed the apple to Mary.
+16. Mary gave the apple to Bill.
+
+Now, answer the following question:
+What did Mary give to Bill?"	apple	"according to sentence 16, ""mary gave the apple to bill."" this sentence explicitly states that mary gave the apple to bill, which directly answers the question of what mary gave to bill."	fully	the apple	False	The context sentences indicate that Mary gave the apple to Bill (sentence 16).		"Reasoning: The context sentences indicate that Mary gave the apple to Bill (sentence 16).
+
+Answer: the apple"	0.0417	0.0417	False	False	False	False	0
+1964	5	73	4	"*TASK*
+Here are the context sentences:
+18. Bill gave the apple to Mary.
+19. Jeff went to the bedroom.
+
+Now, answer the following question:
+Who did Bill give the apple to?"	mary	"according to sentence 18, ""bill gave the apple to mary."" this sentence explicitly states that bill gave the apple to mary, which directly answers the question of who bill gave the apple to."	fully	Mary	True	The context sentences indicate that Bill gave the apple to Mary (sentence 18).		"Reasoning: The context sentences indicate that Bill gave the apple to Mary (sentence 18).
+
+Answer: Mary"	0.0	0.0435	False	False	False	False	0
+1965	5	73	5	"*TASK*
+Here are the context sentences:
+21. Fred journeyed to the bedroom.
+22. Mary handed the apple to Bill.
+
+Now, answer the following question:
+Who received the apple?"	bill	"according to sentence 22, ""mary handed the apple to bill."" this sentence explicitly states that bill received the apple from mary, which directly answers the question of who received the apple."	fully	Bill	True	The context sentences indicate that Mary handed the apple to Bill (sentence 22).		"Reasoning: The context sentences indicate that Mary handed the apple to Bill (sentence 22).
+
+Answer: Bill"	0.0435	0.0435	False	False	False	False	0

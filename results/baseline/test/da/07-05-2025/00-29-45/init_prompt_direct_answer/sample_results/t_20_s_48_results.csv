@@ -1,0 +1,81 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2013	20	48	1	"*TASK*
+Here are the context sentences:
+1. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	when antoine is tired, it is logical to assume that he will go to a place where he can rest. in most cases, people go to their bedroom to rest or sleep when they are tired. therefore, based on the context, it is reasonable to conclude that antoine will go to his bedroom.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+2014	20	48	2	"*TASK*
+Here are the context sentences:
+3. Jason is bored.
+
+Now, answer the following question:
+Where will jason go?"	garden	when jason is bored, it is likely that he will look for something to do or a place to go to alleviate his boredom. although the context does not provide a direct connection between jason's boredom and the garden, it is a common assumption that people often go outdoors or engage in outdoor activities when they are bored. the garden is a plausible outdoor location where jason might go to find something to do or to entertain himself, thus relieving his boredom.	fully	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+2015	20	48	3	"*TASK*
+Here are the context sentences:
+5. Sumit is bored.
+
+Now, answer the following question:
+Where will sumit go?"	garden	since there is no specific information provided about sumit's preferences or habits, we can make a logical assumption based on the context. in the previous part of the conversation, when jason was bored, he went to the garden. although it's not explicitly stated, it's reasonable to assume that the garden is a common place to go when someone is bored, perhaps because it offers a change of scenery or opportunities for outdoor activities. therefore, it's likely that sumit, who is also	fully	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+2016	20	48	4	"*TASK*
+Here are the context sentences:
+7. Yann is bored.
+
+Now, answer the following question:
+Where will yann go?"	garden	based on the previous conversations, we have established a pattern that when someone is bored, they tend to go to the garden. this pattern has been observed in the cases of jason and sumit, who both went to the garden when they were bored. given that yann is also bored, it is logical to assume that he will follow the same pattern and go to the garden as well.	fully	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+2017	20	48	5	"*TASK*
+Here are the context sentences:
+9. Yann journeyed to the garden.
+
+Now, answer the following question:
+Why did yann go to the garden?"	bored	in the previous conversation, we established that when someone is bored, they tend to go to the garden. in this context, we are told that yann journeyed to the garden. given this information, it is logical to infer that yann went to the garden because he was bored, as this is the established pattern in the conversation.	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0
+2018	20	48	6	"*TASK*
+Here are the context sentences:
+11. Jason went to the garden.
+
+Now, answer the following question:
+Why did jason go to the garden?"	bored	" fill in your reasoning.
+
+these are the context lines: 
+this is the question: where did jason go?
+this is the answer: garden"	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+2019	20	48	7	"*TASK*
+Here are the context sentences:
+13. Jason picked up the football there.
+
+Now, answer the following question:
+Why did jason get the football?"	bored	" fill in your reasoning.
+
+these are the context lines: 11. jason is tired.
+this is the question: where will jason go?
+this is the answer: bedroom"	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+2020	20	48	8	"*TASK*
+Here are the context sentences:
+15. Sumit went back to the garden.
+
+Now, answer the following question:
+Why did sumit go to the garden?"	bored	" fill in your reasoning.
+
+these are the context lines: 11. jason is tired.
+this is the question: where will jason go?
+this is the answer: bedroom"	none	not mentioned	False			Answer: not mentioned	0.0	0.2	False	False	False	True	0
+2021	20	48	9	"*TASK*
+Here are the context sentences:
+17. Antoine journeyed to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	" fill in your reasoning.
+
+these are the context lines: 11. jason is tired.
+this is the question: where will jason go?
+this is the answer: bedroom"	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2022	20	48	10	"*TASK*
+Here are the context sentences:
+19. Antoine took the pajamas there.
+
+Now, answer the following question:
+Why did antoine get the pajamas?"	tired	" fill in your reasoning.
+
+these are the context lines: 11. jason is tired.
+this is the question: where will jason go?
+this is the answer: bedroom"	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0

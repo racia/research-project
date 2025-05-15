@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1838	18	137	1	"*TASK*
+Here are the context sentences:
+1. The box of chocolates is bigger than the chocolate.
+2. The chocolate fits inside the chest.
+3. The chest is bigger than the chocolate.
+4. The chocolate fits inside the box of chocolates.
+5. The box of chocolates fits inside the chest.
+
+Now, answer the following question:
+Is the chest bigger than the chocolate?"	yes	"from context sentence 3, we directly know that ""the chest is bigger than the chocolate."" this sentence explicitly states the relationship between the chest and the chocolate, indicating that the chest is indeed bigger than the chocolate."	fully	yes	True	The context sentences provide information about the relationships between the box of chocolates, the chocolate, and the chest. Sentences 1 and 3 establish that the box of chocolates is bigger than the chocolate, and the chest is bigger than the chocolate. Sentence 2 states that the chocolate fits inside the chest, which implies that the chest is larger than the chocolate.		"Reasoning: The context sentences provide information about the relationships between the box of chocolates, the chocolate, and the chest. Sentences 1 and 3 establish that the box of chocolates is bigger than the chocolate, and the chest is bigger than the chocolate. Sentence 2 states that the chocolate fits inside the chest, which implies that the chest is larger than the chocolate.
+
+Answer: yes"	0.0759	0.0253	False	False	False	True	0
+1839	18	137	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the chest?"	yes	"from context sentence 2, we know that ""the chocolate fits inside the chest."" this sentence directly states that the chocolate fits inside the chest, which answers the question affirmatively."	none	yes	True	Sentence 2 states that the chocolate fits inside the chest, which implies that the chocolate can be accommodated within the chest.		"Reasoning: Sentence 2 states that the chocolate fits inside the chest, which implies that the chocolate can be accommodated within the chest.
+
+Answer: yes"	0.0625	0.0625	False	False	False	False	0
+1840	18	137	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chest bigger than the chocolate?"	yes	"from context sentence 3, we directly know that ""the chest is bigger than the chocolate."" this sentence explicitly states the relationship between the chest and the chocolate, indicating that the chest is indeed bigger than the chocolate."	none	yes	True	This question is already answered in the previous task. The answer is yes, as established in sentence 3.		"Reasoning: This question is already answered in the previous task. The answer is yes, as established in sentence 3.
+
+Answer: yes"	0.1034	0.069	False	False	False	False	0
+1841	18	137	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the chest?"	yes	"from context sentence 2, we know that ""the chocolate fits inside the chest."" this sentence directly states that the chocolate fits inside the chest, which answers the question affirmatively."	none	yes	True	This question was already answered in the previous task. The answer is yes, as established in sentence 2.		"Reasoning: This question was already answered in the previous task. The answer is yes, as established in sentence 2.
+
+Answer: yes"	0.069	0.069	False	False	False	False	0
+1842	18	137	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the chest?"	yes	"from context sentence 4, we know that ""the chocolate fits inside the box of chocolates."" additionally, from context sentence 5, we know that ""the box of chocolates fits inside the chest."" therefore, we can logically infer that the chocolate, which fits inside the box of chocolates, also fits inside the chest."	none	yes	True	This question was already answered in the previous task. The answer is yes, as established in sentence 2.		"Reasoning: This question was already answered in the previous task. The answer is yes, as established in sentence 2.
+
+Answer: yes"	0.0345	0.069	False	False	False	False	0

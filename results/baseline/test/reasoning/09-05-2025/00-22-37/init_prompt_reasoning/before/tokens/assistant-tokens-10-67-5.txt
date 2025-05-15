@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġwe	Ġhave	Ġa	Ġstatement	Ġin	Ġsentence	Ġ	13	Ġthat	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġbedroom	Ġor	Ġthe	Ġpark	.	ĠHowever	,	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġno	<|eot_id|>

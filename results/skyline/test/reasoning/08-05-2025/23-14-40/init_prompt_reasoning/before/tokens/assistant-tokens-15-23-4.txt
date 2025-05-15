@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJessica	Ġis	Ġa	Ġsheep	Ġ(	sentence	Ġ	5	),	Ġand	Ġsheep	Ġare	Ġafraid	Ġof	Ġwolves	Ġ(	sentence	Ġ	2	),	Ġbut	Ġthere	Ġare	Ġalso	Ġwolves	Ġlike	ĠEmily	Ġ(	sentence	Ġ	4	)	Ġand	ĠWin	ona	Ġ(	sentence	Ġ	8	),	ĠJessica	Ġis	Ġafraid	Ġof	ĠEmily	Ġand	ĠWin	ona	.ĊĊ	Answer	:	ĠEmily	Ġand	ĠWin	ona	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	13	,	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠSandra	,	Ġso	ĠMary	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.	ĠSentence	Ġ	14	Ġonly	Ġmentions	ĠSandra	's	Ġlocation	Ġchange	,	Ġbut	Ġit	Ġdoesn	't	Ġaffect	ĠMary	's	Ġobject	Ġcount	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

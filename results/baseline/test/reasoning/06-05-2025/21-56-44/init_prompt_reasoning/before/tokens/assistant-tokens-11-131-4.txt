@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġinitially	,	Ġand	Ġthen	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

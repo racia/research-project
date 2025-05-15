@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġgoing	Ġto	Ġthe	Ġkitchen	.	ĠIn	Ġfact	,	Ġsentence	Ġ	10	Ġstates	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

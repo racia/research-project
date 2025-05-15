@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	9	,	ĠJulie	Ġwent	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJulie	Ġbeing	Ġanywhere	Ġelse	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.	ĠThe	Ġcontext	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJulie	's	Ġwhereabouts	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

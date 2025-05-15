@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+321	1	65	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the garden.
+2. John went to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	from the context sentences, we know that john went to the garden (sentence 2). this implies that john's current location is the garden, which is the answer to the question. the fact that sandra also moved to the garden (sentence 1) is not relevant to john's location, but it does indicate that both john and sandra are in the same location, which is the garden.	fully	garden	True	John went to the garden, which means he is currently in the garden. Sandra also moved to the garden, but this doesn't affect John's location.		"Reasoning: John went to the garden, which means he is currently in the garden. Sandra also moved to the garden, but this doesn't affect John's location.
+
+Answer: garden"	0.1316	0.0263	False	False	False	False	0
+322	1	65	2	"*TASK*
+Here are the context sentences:
+4. Sandra went to the bathroom.
+5. Sandra went to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	the context sentences indicate that sandra went to the bathroom (sentence 4) and then went to the kitchen (sentence 5). this implies that sandra's current location is the kitchen, as it is the most recent location mentioned. the fact that she previously went to the bathroom is no longer relevant to her current location, as she has since moved to the kitchen.	fully	kitchen	True	Sandra went to the bathroom and then went to the kitchen, which means she is currently in the kitchen.		"Reasoning: Sandra went to the bathroom and then went to the kitchen, which means she is currently in the kitchen.
+
+Answer: kitchen"	0.1429	0.0357	False	False	False	False	0
+323	1	65	3	"*TASK*
+Here are the context sentences:
+7. Daniel moved to the kitchen.
+8. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	"there is no mention of sandra in the provided context sentences. the sentences only mention daniel and mary moving to the kitchen. therefore, it is not possible to determine sandra's location based on the provided information. the answer ""kitchen"" seems to be incorrect, as there is no evidence to suggest that sandra is in the kitchen."	none	not mentioned	False	There is no mention of Sandra in the given context sentences, so we cannot determine her location.		"Reasoning: There is no mention of Sandra in the given context sentences, so we cannot determine her location.
+
+Answer: not mentioned"	0.1111	0.037	False	False	False	True	0
+324	1	65	4	"*TASK*
+Here are the context sentences:
+10. Daniel journeyed to the office.
+11. Daniel went to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	the context sentences indicate that daniel journeyed to the office (sentence 10) and then went to the garden (sentence 11). this implies that daniel's current location is the garden, as it is the most recent location mentioned. the fact that he previously went to the office is no longer relevant to his current location, as he has since moved to the garden.	fully	garden	True	Daniel journeyed to the office, but then went to the garden, which means he is currently in the garden.		"Reasoning: Daniel journeyed to the office, but then went to the garden, which means he is currently in the garden.
+
+Answer: garden"	0.0333	0.0333	False	False	False	False	0
+325	1	65	5	"*TASK*
+Here are the context sentences:
+13. John moved to the bedroom.
+14. Mary went back to the office.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"there is no mention of daniel in the provided context sentences. the sentences only mention john moving to the bedroom and mary going back to the office. however, the answer ""garden"" suggests that the correct answer is related to a previous part of the conversation history. since there is no information about daniel in the current context, we need to look at previous parts of the conversation. unfortunately, the conversation history provided is incomplete, and there is no previous mention of daniel."	none	not mentioned	False	There is no mention of Daniel in the given context sentences, so we cannot determine his location.		"Reasoning: There is no mention of Daniel in the given context sentences, so we cannot determine his location.
+
+Answer: not mentioned"	0.037	0.037	False	False	False	True	0

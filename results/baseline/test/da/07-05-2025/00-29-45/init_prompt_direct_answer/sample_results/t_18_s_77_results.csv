@@ -1,0 +1,35 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1285	18	77	1	"*TASK*
+Here are the context sentences:
+1. The container fits inside the suitcase.
+2. The chest fits inside the container.
+3. The box is bigger than the chocolate.
+4. The container is bigger than the chocolate.
+5. The container is bigger than the box of chocolates.
+
+Now, answer the following question:
+Is the box of chocolates bigger than the suitcase?"	no	from context sentence 1, we know the container fits inside the suitcase, which implies the container is smaller than or equal to the suitcase in size. from context sentence 4, we know the container is bigger than the chocolate, and from context sentence 5, we know the container is bigger than the box of chocolates. therefore, the box of chocolates is smaller than the container. since the container is smaller than or equal to the suitcase, the box of chocolates must be smaller than	fully	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1286	18	77	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box of chocolates bigger than the suitcase?"	no	"from the context sentences, we know that the container fits inside the suitcase (sentence 1), and the container is bigger than the box of chocolates (sentence 5). this implies that the box of chocolates is smaller than the container. since the container fits inside the suitcase, the box of chocolates must also be smaller than the suitcase. therefore, the answer to the question is ""no"", the box of chocolates is not bigger than the suitcase."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1287	18	77	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the suitcase fit in the chest?"	no	"from the context sentences, we know that the container fits inside the suitcase (sentence 1), and the chest fits inside the container (sentence 2). this implies that the chest is smaller than the container, and the container is smaller than the suitcase. therefore, the chest cannot fit inside the suitcase, and the answer to the question is ""no"", the suitcase does not fit in the chest."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1288	18	77	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chest fit in the suitcase?"	yes	"from the context sentences, we know that the container fits inside the suitcase (sentence 1), and the chest fits inside the container (sentence 2). this implies that the chest is smaller than the container, and the container is smaller than the suitcase. therefore, the chest, being smaller than the container, can fit inside the suitcase, and the answer to the question is ""yes"", the chest fits in the suitcase."	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+1289	18	77	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the chest?"	yes	"from the context sentences, we know that the container fits inside the suitcase (sentence 1), and the chest fits inside the container (sentence 2). this implies that the chest is smaller than the container, and the container is smaller than the suitcase. therefore, the suitcase is bigger than the chest, and the answer to the question is ""yes"", the suitcase is bigger than the chest."	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0

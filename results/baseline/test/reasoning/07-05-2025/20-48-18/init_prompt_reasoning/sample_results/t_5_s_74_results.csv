@@ -1,0 +1,60 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1966	5	74	1	"*TASK*
+Here are the context sentences:
+1. Jeff moved to the hallway.
+2. Jeff picked up the football there.
+3. Bill journeyed to the office.
+4. Fred got the apple there.
+5. Bill went back to the garden.
+6. Jeff dropped the football.
+7. Jeff grabbed the football there.
+8. Jeff discarded the football.
+9. Bill got the milk there.
+10. Fred left the apple.
+11. Fred took the apple there.
+12. Mary went back to the hallway.
+13. Mary picked up the football there.
+14. Jeff went back to the office.
+15. Fred gave the apple to Jeff.
+16. Bill went to the office.
+
+Now, answer the following question:
+Who received the apple?"	jeff	"from sentence 15, ""fred gave the apple to jeff"", we can directly infer that jeff received the apple. this sentence explicitly states the action of giving the apple from fred to jeff, which implies that jeff is the recipient of the apple."	fully	Jeff	True	The context sentences suggest that Fred got the apple (sentence 4) and then left the apple (sentence 10). Later, Fred gave the apple to Jeff (sentence 15). Therefore, Jeff received the apple.		"Reasoning: The context sentences suggest that Fred got the apple (sentence 4) and then left the apple (sentence 10). Later, Fred gave the apple to Jeff (sentence 15). Therefore, Jeff received the apple.
+
+Answer: Jeff"	0.0196	0.0196	False	False	False	False	0
+1967	5	74	2	"*TASK*
+Here are the context sentences:
+18. Jeff gave the apple to Fred.
+19. Fred discarded the apple.
+
+Now, answer the following question:
+Who gave the apple?"	jeff	"from sentence 18, ""jeff gave the apple to fred"", we can directly infer that jeff gave the apple. this sentence explicitly states the action of giving the apple by jeff, which implies that jeff is the one who gave the apple."	fully	Jeff	True	The context sentences suggest that Jeff gave the apple to Fred (sentence 18), and then Fred discarded the apple (sentence 19). Therefore, Jeff gave the apple.		"Reasoning: The context sentences suggest that Jeff gave the apple to Fred (sentence 18), and then Fred discarded the apple (sentence 19). Therefore, Jeff gave the apple.
+
+Answer: Jeff"	0.0244	0.0244	False	False	False	False	0
+1968	5	74	3	"*TASK*
+Here are the context sentences:
+21. Bill went to the hallway.
+22. Mary gave the football to Bill.
+
+Now, answer the following question:
+Who received the football?"	bill	"from sentence 22, ""mary gave the football to bill"", we can directly infer that bill received the football. this sentence explicitly states the action of giving the football from mary to bill, which implies that bill is the recipient of the football."	fully	Bill	True	The context sentences suggest that Mary gave the football to Bill (sentence 22), and Bill went to the hallway (sentence 21). Therefore, Bill received the football.		"Reasoning: The context sentences suggest that Mary gave the football to Bill (sentence 22), and Bill went to the hallway (sentence 21). Therefore, Bill received the football.
+
+Answer: Bill"	0.122	0.0244	False	False	False	False	0
+1969	5	74	4	"*TASK*
+Here are the context sentences:
+24. Bill left the milk.
+25. Mary went back to the bedroom.
+
+Now, answer the following question:
+Who received the football?"	bill	"there is no direct information in sentences 24 and 25 about who received the football. however, we can infer the answer by looking at the previous context. since the question asks about who received the football, we need to find the relevant information about the football. from the previous context, we can see that sentence 22 states ""mary gave the football to bill"", which implies that bill received the football. therefore, the answer is still bill."	none	Not mentioned	False	The context sentences do not mention the football at all. The previous question mentioned Bill receiving the football, but there is no new information about the football in these sentences.		"Reasoning: The context sentences do not mention the football at all. The previous question mentioned Bill receiving the football, but there is no new information about the football in these sentences.
+
+Answer: Not mentioned"	0.0244	0.0244	False	False	False	True	0
+1970	5	74	5	"*TASK*
+Here are the context sentences:
+27. Jeff went to the garden.
+28. Fred moved to the kitchen.
+
+Now, answer the following question:
+Who did Mary give the football to?"	bill	"there is no direct information in sentences 27 and 28 about who mary gave the football to. however, we can infer the answer by looking at the previous context. from sentence 22, ""mary gave the football to bill"", we can directly infer that mary gave the football to bill. this sentence explicitly states the action of giving the football from mary to bill, which implies that bill is the recipient of the football."	none	Not mentioned	False	The context sentences do not mention Mary giving the football to anyone. The previous question mentioned Mary giving the football to Bill, but there is no new information about Mary giving the football in these sentences.		"Reasoning: The context sentences do not mention Mary giving the football to anyone. The previous question mentioned Mary giving the football to Bill, but there is no new information about Mary giving the football in these sentences.
+
+Answer: Not mentioned"	0.0213	0.0213	False	False	False	True	0

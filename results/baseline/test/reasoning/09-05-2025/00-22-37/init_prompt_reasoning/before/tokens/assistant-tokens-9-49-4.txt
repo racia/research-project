@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠDaniel	Ġis	Ġin	Ġthe	Ġgarden	,	Ġnot	Ġthe	Ġbathroom	.	ĠSentence	Ġ	10	Ġonly	Ġmentions	Ġthat	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġit	Ġdoesn	't	Ġimply	Ġthat	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.Ċ	Answer	:	Ġno	<|eot_id|>

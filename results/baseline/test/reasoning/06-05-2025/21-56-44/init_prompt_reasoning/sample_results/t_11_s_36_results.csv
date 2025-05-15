@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+176	11	36	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the hallway.
+2. Following that she travelled to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	mary's location is determined by tracing her movements. initially, she was in the hallway (sentence 1). then, she travelled to the kitchen (sentence 2), which means she left the hallway and arrived at the kitchen. therefore, her current location is the kitchen.	fully	kitchen	True	Mary's last known location was the kitchen, as stated in sentence 2. Since there is no information indicating she has moved to a different location, it is reasonable to assume she is still in the kitchen.		"Reasoning: Mary's last known location was the kitchen, as stated in sentence 2. Since there is no information indicating she has moved to a different location, it is reasonable to assume she is still in the kitchen.
+
+Answer: kitchen"	0.102	0.0408	False	False	False	True	0
+177	11	36	2	"*TASK*
+Here are the context sentences:
+4. Daniel journeyed to the office.
+5. After that he journeyed to the garden.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	the question asks about mary's location, but the context sentences (4 and 5) only provide information about daniel's movements. there is no mention of mary in these sentences. to answer the question, we need to refer to the previous parts of the conversation history. in the previous part, we established that mary was in the kitchen (sentence 2). there is no new information about mary's movements, so her location remains the same, which is the kitchen.	none	not mentioned	False	There is no mention of Mary in the given context sentences. The sentences only mention Daniel's movements, and there is no connection between Daniel and Mary.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Daniel's movements, and there is no connection between Daniel and Mary.
+
+Answer: not mentioned"	0.2632	0.0526	False	False	False	True	0
+178	11	36	3	"*TASK*
+Here are the context sentences:
+7. Sandra travelled to the kitchen.
+8. Then she went to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	sandra's location is determined by tracing her movements. initially, she was in the kitchen (sentence 7). then, she went to the bedroom (sentence 8), which means she left the kitchen and arrived at the bedroom. therefore, her current location is the bedroom.	fully	bedroom	True	Sandra's last known location was the bedroom, as stated in sentence 8. Since there is no information indicating she has moved to a different location, it is reasonable to assume she is still in the bedroom.		"Reasoning: Sandra's last known location was the bedroom, as stated in sentence 8. Since there is no information indicating she has moved to a different location, it is reasonable to assume she is still in the bedroom.
+
+Answer: bedroom"	0.1633	0.0408	False	False	False	True	0
+179	11	36	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the kitchen.
+11. Then he travelled to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	daniel's location is determined by tracing his movements. initially, he was in the kitchen (sentence 10). then, he travelled to the bedroom (sentence 11), which means he left the kitchen and arrived at the bedroom. therefore, his current location is the bedroom.	fully	bedroom	True	Daniel's last known location was the bedroom, as stated in sentence 11. Since there is no information indicating he has moved to a different location, it is reasonable to assume he is still in the bedroom.		"Reasoning: Daniel's last known location was the bedroom, as stated in sentence 11. Since there is no information indicating he has moved to a different location, it is reasonable to assume he is still in the bedroom.
+
+Answer: bedroom"	0.0	0.0408	False	False	False	True	0
+180	11	36	5	"*TASK*
+Here are the context sentences:
+13. Mary went to the office.
+14. Then she moved to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	mary's location is determined by tracing her movements. initially, she was in the office (sentence 13). then, she moved to the kitchen (sentence 14), which means she left the office and arrived at the kitchen. therefore, her current location is the kitchen.	fully	kitchen	True	Mary's last known location was the kitchen, as stated in sentence 14. Since there is no information indicating she has moved to a different location, it is reasonable to assume she is still in the kitchen.		"Reasoning: Mary's last known location was the kitchen, as stated in sentence 14. Since there is no information indicating she has moved to a different location, it is reasonable to assume she is still in the kitchen.
+
+Answer: kitchen"	0.0204	0.0408	False	False	False	True	0

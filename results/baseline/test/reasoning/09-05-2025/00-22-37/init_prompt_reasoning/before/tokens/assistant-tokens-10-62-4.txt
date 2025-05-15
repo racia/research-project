@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġpark	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠBill	Ġand	ĠJulie	Ġbeing	Ġin	Ġthe	Ġcinema	,	Ġbut	Ġnot	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	ĠNo	<|eot_id|>

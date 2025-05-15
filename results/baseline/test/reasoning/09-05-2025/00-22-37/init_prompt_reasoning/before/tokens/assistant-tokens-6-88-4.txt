@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġexplicitly	Ġstates	Ġthat	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġlocated	Ġthere	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

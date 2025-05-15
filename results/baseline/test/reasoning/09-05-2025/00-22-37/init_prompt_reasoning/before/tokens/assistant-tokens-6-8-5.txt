@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġdoes	Ġnot	Ġmention	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġpresence	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

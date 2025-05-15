@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+2	.	ĠFred	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+3	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+4	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+5	.	ĠMary	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+6	.	ĠMary	Ġpassed	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	?Ċ

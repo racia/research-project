@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1490	18	68	1	"*TASK*
+Here are the context sentences:
+1. The box of chocolates is bigger than the chocolate.
+2. The container is bigger than the box.
+3. The chocolate fits inside the box.
+4. The box is bigger than the suitcase.
+5. The box is bigger than the chest.
+
+Now, answer the following question:
+Is the container bigger than the chocolate?"	yes	from context sentence 1, we know that the box of chocolates is bigger than the chocolate. from context sentence 2, we know that the container is bigger than the box. since the container is bigger than the box, and the box is bigger than the chocolate, we can logically conclude that the container is bigger than the chocolate.	fully	yes	True	The container is bigger than the box (from sentence 2), and the box is bigger than the chocolate (from sentence 1). Therefore, the container is bigger than the chocolate.		"Reasoning: The container is bigger than the box (from sentence 2), and the box is bigger than the chocolate (from sentence 1). Therefore, the container is bigger than the chocolate.
+
+Answer: yes"	0.3636	0.0455	False	False	False	False	0
+1491	18	68	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chest bigger than the container?"	no	from context sentence 5, we know that the box is bigger than the chest. from context sentence 2, we know that the container is bigger than the box. since the container is bigger than the box, and the box is bigger than the chest, we can logically conclude that the container is bigger than the chest, which means the chest is not bigger than the container.	none	yes	False	The box is bigger than the chest (from sentence 5), and the container is bigger than the box (from sentence 2). Therefore, the container is bigger than the chest.		"Reasoning: The box is bigger than the chest (from sentence 5), and the container is bigger than the box (from sentence 2). Therefore, the container is bigger than the chest.
+
+Answer: yes"	0.0682	0.0455	False	False	False	False	0
+1492	18	68	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the chocolate?"	yes	from context sentence 1, we know that the box of chocolates is bigger than the chocolate. from context sentence 2, we know that the container is bigger than the box. since the container is bigger than the box, and the box is bigger than the chocolate, we can logically conclude that the container is bigger than the chocolate.	none	yes	True	The container is bigger than the box (from sentence 2), and the box is bigger than the chocolate (from sentence 1). Therefore, the container is bigger than the chocolate.		"Reasoning: The container is bigger than the box (from sentence 2), and the box is bigger than the chocolate (from sentence 1). Therefore, the container is bigger than the chocolate.
+
+Answer: yes"	0.1364	0.0455	False	False	False	False	0
+1493	18	68	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chest bigger than the container?"	no	from context sentence 5, we know that the box is bigger than the chest. from context sentence 2, we know that the container is bigger than the box. since the container is bigger than the box, and the box is bigger than the chest, we can logically conclude that the container is bigger than the chest, which means the chest is not bigger than the container.	none	no	True	The box is bigger than the chest (from sentence 5), and the container is bigger than the box (from sentence 2). Therefore, the container is bigger than the chest.		"Reasoning: The box is bigger than the chest (from sentence 5), and the container is bigger than the box (from sentence 2). Therefore, the container is bigger than the chest.
+
+Answer: no"	0.0455	0.0455	False	False	False	False	0
+1494	18	68	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the container?"	no	from context sentence 4, we know that the box is bigger than the suitcase. from context sentence 2, we know that the container is bigger than the box. since the container is bigger than the box, and the box is bigger than the suitcase, we can logically conclude that the container is bigger than the suitcase, which means the suitcase is not bigger than the container.	none	yes	False	The box is bigger than the suitcase (not mentioned in the context sentences), but the container is bigger than the box (from sentence 2). Therefore, the container is bigger than the suitcase.		"Reasoning: The box is bigger than the suitcase (not mentioned in the context sentences), but the container is bigger than the box (from sentence 2). Therefore, the container is bigger than the suitcase.
+
+Answer: yes"	0.0435	0.0435	False	False	False	True	0

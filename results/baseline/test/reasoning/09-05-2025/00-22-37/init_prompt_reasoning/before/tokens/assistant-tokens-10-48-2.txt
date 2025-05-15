@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠFred	Ġbeing	Ġin	Ġthe	Ġcinema	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġimplies	Ġhe	Ġis	Ġlikely	Ġto	Ġbe	Ġthere	.	ĠThere	Ġis	Ġno	Ġinformation	Ġsuggesting	ĠFred	Ġmoved	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġfootball	Ġin	Ġthese	Ġcontext	Ġsentences	.	ĠThe	Ġprevious	Ġcontext	Ġsentences	Ġmentioned	Ġthe	Ġfootball	,	Ġbut	Ġthese	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	Ġits	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

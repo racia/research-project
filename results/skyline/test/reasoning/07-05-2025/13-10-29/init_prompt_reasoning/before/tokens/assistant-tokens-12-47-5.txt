@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	13	,	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġgarden	Ġwith	ĠMary	,	Ġbut	Ġthen	Ġin	Ġsentence	Ġ	14	,	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġwith	ĠSandra	.	ĠSo	,	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

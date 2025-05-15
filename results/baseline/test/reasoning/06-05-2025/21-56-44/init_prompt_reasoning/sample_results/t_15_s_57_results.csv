@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3225	15	57	1	"*TASK*
+Here are the context sentences:
+1. Cats are afraid of wolves.
+2. Mice are afraid of wolves.
+3. Wolves are afraid of cats.
+4. Sheep are afraid of mice.
+5. Emily is a cat.
+6. Jessica is a sheep.
+7. Winona is a cat.
+8. Gertrude is a cat.
+
+Now, answer the following question:
+What is emily afraid of?"	wolf	from context sentence 5, we know that emily is a cat. from context sentence 1, we know that cats are afraid of wolves. therefore, we can logically conclude that emily, being a cat, is afraid of wolves.	fully	wolves	True	According to sentence 1, cats are afraid of wolves. Since Emily is a cat (sentence 5), it can be inferred that Emily is afraid of wolves.		"Reasoning: According to sentence 1, cats are afraid of wolves. Since Emily is a cat (sentence 5), it can be inferred that Emily is afraid of wolves.
+
+Answer: wolves"	0.1	0.05	False	False	False	False	0
+3226	15	57	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is gertrude afraid of?"	wolf	from context sentence 8, we know that gertrude is a cat. from context sentence 1, we know that cats are afraid of wolves. therefore, we can logically conclude that gertrude, being a cat, is afraid of wolves.	none	wolves	True	There is no specific information about Gertrude's fear in the given context sentences. However, since Gertrude is a cat (sentence 8), we can infer that Gertrude is afraid of wolves, based on sentence 1.		"Reasoning: There is no specific information about Gertrude's fear in the given context sentences. However, since Gertrude is a cat (sentence 8), we can infer that Gertrude is afraid of wolves, based on sentence 1.
+
+Answer: wolves"	0.125	0.0357	False	False	False	True	0
+3227	15	57	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	wolf	from context sentence 5, we know that emily is a cat. from context sentence 1, we know that cats are afraid of wolves. therefore, we can logically conclude that emily, being a cat, is afraid of wolves.	none	wolves	True	According to sentence 1, cats are afraid of wolves. Since Emily is a cat (sentence 5), it can be inferred that Emily is afraid of wolves.		"Reasoning: According to sentence 1, cats are afraid of wolves. Since Emily is a cat (sentence 5), it can be inferred that Emily is afraid of wolves.
+
+Answer: wolves"	0.0	0.05	False	False	False	False	0
+3228	15	57	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is gertrude afraid of?"	wolf	from context sentence 8, we know that gertrude is a cat. from context sentence 1, we know that cats are afraid of wolves. therefore, we can logically conclude that gertrude, being a cat, is afraid of wolves.	none	wolves	True	There is no specific information about Gertrude's fear in the given context sentences. However, since Gertrude is a cat (sentence 8), we can infer that Gertrude is afraid of wolves, based on sentence 1.		"Reasoning: There is no specific information about Gertrude's fear in the given context sentences. However, since Gertrude is a cat (sentence 8), we can infer that Gertrude is afraid of wolves, based on sentence 1.
+
+Answer: wolves"	0.0357	0.0357	False	False	False	True	0

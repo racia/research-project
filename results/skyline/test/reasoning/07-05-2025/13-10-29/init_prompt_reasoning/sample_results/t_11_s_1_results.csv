@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1	11	1	1	"*TASK*
+Here are the context sentences:
+1. John journeyed to the hallway.
+2. After that he journeyed to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	from the context sentences, we know that john first journeyed to the hallway (sentence 1) and then journeyed to the garden (sentence 2). since the second sentence indicates that john moved from the hallway to the garden, we can logically conclude that john's current location is the garden.	fully	garden	True	According to the context sentences, John first went to the hallway (sentence 1) and then moved to the garden (sentence 2). Therefore, his current location is the garden.		"assistant
+
+Reasoning: According to the context sentences, John first went to the hallway (sentence 1) and then moved to the garden (sentence 2). Therefore, his current location is the garden.
+
+Answer: garden"	0.1875	0.0417	False	False	False	False	0
+2	11	1	2	"*TASK*
+Here are the context sentences:
+4. John moved to the office.
+5. Following that he went to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that john moved to the office (sentence 4) and then went to the hallway (sentence 5). since the second sentence indicates that john moved from the office to the hallway, we can logically conclude that john's current location is the hallway.	fully	hallway	True	According to the context sentences, John first went to the office (sentence 4) and then moved to the hallway (sentence 5). Therefore, his current location is the hallway.		"Reasoning: According to the context sentences, John first went to the office (sentence 4) and then moved to the hallway (sentence 5). Therefore, his current location is the hallway.
+
+Answer: hallway"	0.1364	0.0455	False	False	False	False	0
+3	11	1	3	"*TASK*
+Here are the context sentences:
+7. Sandra travelled to the bedroom.
+8. Then she moved to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	from the context sentences, we know that sandra travelled to the bedroom (sentence 7) and then moved to the hallway (sentence 8). since the second sentence indicates that sandra moved from the bedroom to the hallway, we can logically conclude that sandra's current location is the hallway.	fully	hallway	True	According to the context sentences, Sandra first went to the bedroom (sentence 7) and then moved to the hallway (sentence 8). Therefore, her current location is the hallway.		"Reasoning: According to the context sentences, Sandra first went to the bedroom (sentence 7) and then moved to the hallway (sentence 8). Therefore, her current location is the hallway.
+
+Answer: hallway"	0.25	0.0455	False	False	False	False	0
+4	11	1	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the hallway.
+11. Afterwards she went to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"there is no information about sandra in the provided context sentences. the sentences only mention mary, who travelled to the hallway and then went to the bathroom. there is no logical connection between mary's actions and sandra's location. therefore, it is not possible to determine sandra's location based on the provided information. the answer ""hallway"" seems to be incorrect, as it is mary who was in the hallway, not sandra."	none	hallway	True	The context sentences (10 and 11) provide information about Mary's movements, but they do not mention Sandra's current location. The last information about Sandra's location was in sentences 7 and 8, where she was in the hallway.		"Reasoning: The context sentences (10 and 11) provide information about Mary's movements, but they do not mention Sandra's current location. The last information about Sandra's location was in sentences 7 and 8, where she was in the hallway.
+
+Answer: hallway"	0.125	0.0357	False	False	False	True	0
+5	11	1	5	"*TASK*
+Here are the context sentences:
+13. John went back to the office.
+14. After that he moved to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"there is no information about mary in the provided context sentences. the sentences only mention john, who went back to the office and then moved to the bathroom. there is no logical connection between john's actions and mary's location. therefore, it is not possible to determine mary's location based on the provided information. the answer ""bathroom"" seems to be incorrect, as it is john who moved to the bathroom, not mary."	none	bathroom	True	The context sentences (13 and 14) provide information about John's movements, but they do not mention Mary's current location. The last information about Mary's location was in sentences 10 and 11, where she was in the bathroom.		"Reasoning: The context sentences (13 and 14) provide information about John's movements, but they do not mention Mary's current location. The last information about Mary's location was in sentences 10 and 11, where she was in the bathroom.
+
+Answer: bathroom"	0.0	0.0357	False	False	False	True	0

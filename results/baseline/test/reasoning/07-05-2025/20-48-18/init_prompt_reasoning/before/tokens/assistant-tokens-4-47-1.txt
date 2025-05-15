@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġgarden	Ġis	Ġsouth	Ġof	Ġthe	Ġoffice	,	Ġand	Ġthe	Ġbedroom	Ġis	Ġsouth	Ġof	Ġthe	Ġgarden	.	ĠThis	Ġimplies	Ġthat	Ġthe	Ġbedroom	Ġis	Ġalso	Ġsouth	Ġof	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

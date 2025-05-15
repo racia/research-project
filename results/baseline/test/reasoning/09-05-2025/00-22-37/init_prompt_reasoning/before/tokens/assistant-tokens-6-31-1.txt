@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠSandra	's	Ġmovement	,	Ġwhich	Ġis	Ġtravelling	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

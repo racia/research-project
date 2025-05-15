@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠWe	Ġknow	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġcinema	Ġyesterday	Ġ(	sentence	Ġ	1	)	Ġand	Ġnow	Ġshe	Ġis	Ġat	Ġthe	Ġcinema	Ġagain	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	9	).	ĠBefore	Ġgoing	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	,	ĠMary	Ġwas	Ġat	Ġthe	Ġbedroom	Ġthis	Ġmorning	Ġ(	sentence	Ġ	7	).ĊĊ	Answer	:	Ġcinema	<|eot_id|>

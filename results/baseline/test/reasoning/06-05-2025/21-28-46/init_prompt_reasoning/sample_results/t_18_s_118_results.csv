@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1743	18	118	1	"*TASK*
+Here are the context sentences:
+1. The suitcase is bigger than the chocolate.
+2. The container is bigger than the chocolate.
+3. The chest is bigger than the suitcase.
+4. The box fits inside the container.
+5. The chest is bigger than the chocolate.
+
+Now, answer the following question:
+Is the chocolate bigger than the chest?"	no	"from context sentence 5, we know that ""the chest is bigger than the chocolate."" this directly implies that the chocolate is not bigger than the chest, but rather the opposite. therefore, the answer is ""no""."	fully	no	True	The context sentences provide information about the relative sizes of the suitcase, container, chest, and chocolate. From sentences 1 and 2, we know that the suitcase and container are both bigger than the chocolate. Sentence 3 states that the chest is bigger than the suitcase, which implies that the chest is also bigger than the chocolate (since the suitcase is bigger than the chocolate). Sentence 5 reiterates that the chest is bigger than the chocolate.		"Reasoning: The context sentences provide information about the relative sizes of the suitcase, container, chest, and chocolate. From sentences 1 and 2, we know that the suitcase and container are both bigger than the chocolate. Sentence 3 states that the chest is bigger than the suitcase, which implies that the chest is also bigger than the chocolate (since the suitcase is bigger than the chocolate). Sentence 5 reiterates that the chest is bigger than the chocolate.
+
+Answer: no"	0.1837	0.0204	False	False	False	True	0
+1744	18	118	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chest bigger than the chocolate?"	yes	"from context sentence 5, we know that ""the chest is bigger than the chocolate."" this directly states that the chest is bigger than the chocolate, which aligns with the answer ""yes""."	none	yes	True	The context sentences provide information about the relative sizes of the suitcase, container, chest, and chocolate. From sentences 1 and 2, we know that the suitcase and container are both bigger than the chocolate. Sentence 3 states that the chest is bigger than the suitcase, which implies that the chest is also bigger than the chocolate (since the suitcase is bigger than the chocolate). Sentence 5 reiterates that the chest is bigger than the chocolate.		"Reasoning: The context sentences provide information about the relative sizes of the suitcase, container, chest, and chocolate. From sentences 1 and 2, we know that the suitcase and container are both bigger than the chocolate. Sentence 3 states that the chest is bigger than the suitcase, which implies that the chest is also bigger than the chocolate (since the suitcase is bigger than the chocolate). Sentence 5 reiterates that the chest is bigger than the chocolate.
+
+Answer: yes"	0.1122	0.0204	False	False	False	True	0
+1745	18	118	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chest fit in the chocolate?"	no	"from context sentence 5, we know that ""the chest is bigger than the chocolate."" this implies that the chest is larger in size than the chocolate. therefore, it is not possible for the chest to fit inside the chocolate, which aligns with the answer ""no""."	none	no	True	The context sentences provide information about the relative sizes of the suitcase, container, chest, and chocolate. Sentences 1, 2, and 5 all state that the chest is bigger than the chocolate, which implies that the chest cannot fit inside the chocolate.		"Reasoning: The context sentences provide information about the relative sizes of the suitcase, container, chest, and chocolate. Sentences 1, 2, and 5 all state that the chest is bigger than the chocolate, which implies that the chest cannot fit inside the chocolate.
+
+Answer: no"	0.0333	0.0333	False	False	False	True	0
+1746	18	118	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chest fit in the chocolate?"	no	"from context sentence 5, we know that ""the chest is bigger than the chocolate."" this implies that the chest is larger in size than the chocolate. since the chest is larger, it cannot fit inside the chocolate, which aligns with the answer ""no""."	none	no	True	The context sentences provide information about the relative sizes of the suitcase, container, chest, and chocolate. Sentences 1, 2, and 5 all state that the chest is bigger than the chocolate, which implies that the chest cannot fit inside the chocolate.		"Reasoning: The context sentences provide information about the relative sizes of the suitcase, container, chest, and chocolate. Sentences 1, 2, and 5 all state that the chest is bigger than the chocolate, which implies that the chest cannot fit inside the chocolate.
+
+Answer: no"	0.0167	0.0333	False	False	False	True	0
+1747	18	118	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the chest?"	no	"from context sentence 5, we know that ""the chest is bigger than the chocolate."" this directly implies that the chocolate is not bigger than the chest, but rather the opposite. therefore, the answer is ""no""."	none	no	True	The context sentences provide information about the relative sizes of the suitcase, container, chest, and chocolate. Sentences 1, 2, and 5 all state that the chest is bigger than the chocolate, which implies that the chocolate is not bigger than the chest.		"Reasoning: The context sentences provide information about the relative sizes of the suitcase, container, chest, and chocolate. Sentences 1, 2, and 5 all state that the chest is bigger than the chocolate, which implies that the chocolate is not bigger than the chest.
+
+Answer: no"	0.0164	0.0328	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	5	Ġmentions	ĠJohn	Ġgoing	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.ĊĊ	Answer	:	Ġunknown	<|eot_id|>

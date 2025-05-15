@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import re
 
+from data.utils import expand_cardinal_points
 from inference.DataLevels import SamplePart
-from settings.config import Wrapper, Enumerate
-from settings.utils import expand_cardinal_points
+from settings.config import Enumerate, Wrapper
 
 
 class DataProcessor:
@@ -41,33 +41,6 @@ class DataProcessor:
         :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
         :param silver_reasoning: the silver reasoning to add to the data
         :return: processed data of type
-                 dict[int, dict[str, dict[str, dict[str, str] | dict[str, list[str]] | list[list[int]]]]
-
-                 Example:
-                 {
-                     task_id: int: {
-                        sample_id: str = 0-n:
-                        [ # there might be multiple parts for one sample
-                             {
-                                 "context": {
-                                     line_num: str
-                                     sentence: str
-                                 }
-                                 "question": {
-                                     line_num: str
-                                     question: str
-                                 }
-                                 "answer": {
-                                     line_num: str
-                                     answers: list[str]
-                                 }
-                                 "supporting_fact": [
-                                     [int], [int, int]
-                                 ]
-                             }
-                         ]
-                     }
-                 }
         """
         from_zero = False
         parts = []
@@ -79,14 +52,15 @@ class DataProcessor:
             if 0 in task.keys():
                 from_zero = True
 
-            for sample_id, sample in samples:
+            for sample_id_, sample in samples:
+                sample_id = sample_id_ + 1 if from_zero else sample_id_
+                part_id = 1
                 raw_part = {
                     "context": {},
                     "question": {},
                     "answer": {},
                     "supporting_facts": [],
                 }
-                part_id = 1
                 for line in sample:
                     cleaned = line.strip()
                     # regex: group 1: line number: \d+\s+
@@ -122,11 +96,13 @@ class DataProcessor:
                         part = SamplePart(
                             id_=self.part_counter,
                             task_id=task_id,
-                            sample_id=sample_id + 1 if from_zero else sample_id,
+                            sample_id=sample_id,
                             part_id=part_id,
                             raw=raw_part,
                             golden_answer=" ".join(expand_cardinal_points(answers)),
-                            silver_reasoning=reasoning,
+                            silver_reasoning=(
+                                reasoning["silver_reasoning"] if reasoning else None
+                            ),
                             multi_system=multi_system,
                             wrapper=self.wrapper,
                             to_enumerate=self.to_enumerate,

@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+54	.	ĠSandra	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+55	.	ĠSandra	Ġdiscarded	Ġthe	Ġmilk	Ġthere	.Ċ
+56	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+57	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+58	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġmilk	.Ċ
+59	.	ĠJohn	Ġdropped	Ġthe	Ġmilk	.Ċ
+60	.	ĠJohn	Ġgot	Ġthe	Ġmilk	.Ċ
+61	.	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġbathroom	?Ċ

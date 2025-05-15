@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1916	13	84	1	"*TASK*
+Here are the context sentences:
+1. John and Daniel journeyed to the hallway.
+2. Afterwards they travelled to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	from the context sentences, we know that john and daniel journeyed to the hallway (sentence 1) and then travelled to the kitchen (sentence 2). since john was with daniel in both instances, it can be logically inferred that john is currently in the kitchen, as that is the last location mentioned in the sequence of events.	fully	kitchen	True	John and Daniel journeyed to the hallway, and then they travelled to the kitchen. Since John is not mentioned to have left the kitchen, it is inferred that John is still in the kitchen.		"Reasoning: John and Daniel journeyed to the hallway, and then they travelled to the kitchen. Since John is not mentioned to have left the kitchen, it is inferred that John is still in the kitchen.
+
+Answer: kitchen"	0.1522	0.0435	False	False	False	True	0
+1917	13	84	2	"*TASK*
+Here are the context sentences:
+4. Mary and Daniel went to the garden.
+5. Following that they travelled to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that mary and daniel went to the garden (sentence 4) and then travelled to the bedroom (sentence 5). since mary was with daniel in both instances, it can be logically inferred that mary is currently in the bedroom, as that is the last location mentioned in the sequence of events.	fully	bedroom	True	Mary and Daniel went to the garden, and then they travelled to the bedroom. Since Mary is not mentioned to have left the bedroom, it is inferred that Mary is still in the bedroom.		"Reasoning: Mary and Daniel went to the garden, and then they travelled to the bedroom. Since Mary is not mentioned to have left the bedroom, it is inferred that Mary is still in the bedroom.
+
+Answer: bedroom"	0.1111	0.0444	False	False	False	True	0
+1918	13	84	3	"*TASK*
+Here are the context sentences:
+7. John and Mary went to the hallway.
+8. Following that they went back to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	the question asks about daniel's location, but the context sentences (7 and 8) only mention john and mary's movements. however, we can infer daniel's location by looking at the previous context sentences (4 and 5) which mentioned that mary and daniel went to the garden and then travelled to the bedroom. since there is no information about daniel moving from the bedroom, it can be logically inferred that daniel is still in the bedroom.	none	garden	False	The context sentences do not mention Daniel's location after John and Mary went to the hallway. However, Mary and Daniel went to the garden in previous context sentences (4 and 5). Since there is no information contradicting this, it is inferred that Daniel is still in the garden.		"Reasoning: The context sentences do not mention Daniel's location after John and Mary went to the hallway. However, Mary and Daniel went to the garden in previous context sentences (4 and 5). Since there is no information contradicting this, it is inferred that Daniel is still in the garden.
+
+Answer: garden"	0.0781	0.0313	False	False	False	True	0
+1919	13	84	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John journeyed to the kitchen.
+11. Afterwards they went to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	from the context sentences, we know that sandra and john journeyed to the kitchen (sentence 10) and then went to the garden (sentence 11). since sandra was with john in both instances, it can be logically inferred that sandra is currently in the garden, as that is the last location mentioned in the sequence of events.	fully	garden	True	Sandra and John journeyed to the kitchen, and then they went to the garden. Since Sandra is not mentioned to have left the garden, it is inferred that Sandra is still in the garden.		"Reasoning: Sandra and John journeyed to the kitchen, and then they went to the garden. Since Sandra is not mentioned to have left the garden, it is inferred that Sandra is still in the garden.
+
+Answer: garden"	0.0217	0.0435	False	False	False	True	0
+1920	13	84	5	"*TASK*
+Here are the context sentences:
+13. John and Daniel went to the bathroom.
+14. Then they went to the office.
+
+Now, answer the following question:
+Where is John?"	office	from the context sentences, we know that john and daniel went to the bathroom (sentence 13) and then went to the office (sentence 14). since john was with daniel in both instances, it can be logically inferred that john is currently in the office, as that is the last location mentioned in the sequence of events.	fully	office	True	John and Daniel went to the bathroom, and then they went to the office. Since John is not mentioned to have left the office, it is inferred that John is still in the office.		"Reasoning: John and Daniel went to the bathroom, and then they went to the office. Since John is not mentioned to have left the office, it is inferred that John is still in the office.
+
+Answer: office"	0.1333	0.0444	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġhallway	.	ĠSentence	Ġ	13	Ġmentions	Ġher	Ġgoing	Ġto	Ġthe	Ġoffice	,	Ġand	Ġsentence	Ġ	14	Ġmentions	Ġher	Ġbeing	Ġin	Ġthe	Ġgarden	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

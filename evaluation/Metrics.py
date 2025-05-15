@@ -35,21 +35,22 @@ class Metric:
         """
         return len(self.all)
 
-    def add(self, metric: Metric | float | list[float]) -> None:
+    def add(self, metric: Metric | float | list[float] | None) -> None:
         """
         Add metric values to the list of all metric values.
 
         :param metric: the metric values
         """
-        type_ = type(metric)
-        if type_ is Metric or issubclass(type_, Metric):
-            self.all.append(metric.get_mean())
-        elif type_ is float:
-            self.all.append(metric)
-        elif type_ is list:
-            self.all.extend(metric)
-        else:
-            raise TypeError(f"{self.name} must be a float or a list of floats.")
+        if metric:
+            type_ = type(metric)
+            if type_ is Metric or issubclass(type_, Metric):
+                self.all.append(metric.get_mean())
+            elif type_ is float:
+                self.all.append(metric)
+            elif type_ is list:
+                self.all.extend(metric)
+            else:
+                raise TypeError(f"{self.name} must be a float or a list of floats.")
 
     def get_mean(self) -> float:
         """

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJessica	Ġis	Ġa	Ġmouse	Ġ(	sentence	Ġ	6	).	ĠM	ice	Ġare	Ġafraid	Ġof	Ġcats	Ġ(	sentence	Ġ	2	).	ĠTherefore	,	ĠJessica	Ġis	Ġafraid	Ġof	Ġcats	.ĊĊ	Answer	:	Ġcats	<|eot_id|>

@@ -1,0 +1,13 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+18	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+19	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+20	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+21	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+22	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+23	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+24	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+25	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+26	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+27	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

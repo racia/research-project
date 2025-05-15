@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJason	Ġwent	Ġto	Ġthe	Ġbedroom	Ġbecause	Ġof	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġstating	Ġthat	ĠJason	Ġis	Ġtired	.	ĠThe	Ġmost	Ġlogical	Ġreason	Ġfor	ĠJason	Ġto	Ġgo	Ġto	Ġthe	Ġbedroom	Ġis	Ġto	Ġsleep	Ġor	Ġrest	.ĊĊ	Answer	:	Ġtired	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+191	11	39	1	"*TASK*
+Here are the context sentences:
+1. Sandra went back to the garden.
+2. Following that she moved to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"the context sentences describe sandra's movements, with sentence 1 stating she went back to the garden, and sentence 2 stating she moved to the bathroom ""following that"", implying that she moved to the bathroom after being in the garden. therefore, based on the sequence of events, sandra's current location is the bathroom."	fully	bathroom	True	Sandra went back to the garden initially, and then she moved to the bathroom. This implies that she is currently in the bathroom.		"Reasoning: Sandra went back to the garden initially, and then she moved to the bathroom. This implies that she is currently in the bathroom.
+
+Answer: bathroom"	0.1818	0.0606	False	False	False	False	0
+192	11	39	2	"*TASK*
+Here are the context sentences:
+4. Sandra travelled to the hallway.
+5. Following that she went back to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	"the context sentences describe sandra's movements, with sentence 4 stating she travelled to the hallway, and sentence 5 stating she went back to the office ""following that"", implying that she moved to the office after being in the hallway. therefore, based on the sequence of events, sandra's current location is the office."	fully	office	True	Sandra travelled to the hallway and then went back to the office. This implies that she is currently in the office.		"Reasoning: Sandra travelled to the hallway and then went back to the office. This implies that she is currently in the office.
+
+Answer: office"	0.1	0.0667	False	False	False	False	0
+193	11	39	3	"*TASK*
+Here are the context sentences:
+7. Sandra went back to the bedroom.
+8. Afterwards she went to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"the context sentences describe sandra's movements, with sentence 7 stating she went back to the bedroom, and sentence 8 stating she went to the bathroom ""afterwards"", implying that she moved to the bathroom after being in the bedroom. therefore, based on the sequence of events, sandra's current location is the bathroom."	fully	bathroom	True	Sandra went back to the bedroom and then went to the bathroom. This implies that she is currently in the bathroom.		"Reasoning: Sandra went back to the bedroom and then went to the bathroom. This implies that she is currently in the bathroom.
+
+Answer: bathroom"	0.0	0.0667	False	False	False	False	0
+194	11	39	4	"*TASK*
+Here are the context sentences:
+10. Sandra went back to the kitchen.
+11. After that she travelled to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"the context sentences describe sandra's movements, with sentence 10 stating she went back to the kitchen, and sentence 11 stating she travelled to the hallway ""after that"", implying that she moved to the hallway after being in the kitchen. therefore, based on the sequence of events, sandra's current location is the hallway."	fully	hallway	True	Sandra went back to the kitchen and then travelled to the hallway. This implies that she is currently in the hallway.		"Reasoning: Sandra went back to the kitchen and then travelled to the hallway. This implies that she is currently in the hallway.
+
+Answer: hallway"	0.1333	0.0667	False	False	False	False	0
+195	11	39	5	"*TASK*
+Here are the context sentences:
+13. Daniel moved to the kitchen.
+14. After that he moved to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	the context sentences describe daniel's movements, but the question asks about sandra's location. since the context sentences do not provide any new information about sandra's movements, we need to refer to the previous parts of the conversation history. in the previous parts, we established that sandra's last known location was the hallway (from context lines 10 and 11). there is no new information that would change sandra's location, so her current location remains the hallway.	none	not mentioned	False	There is no information about Sandra in these context sentences. The sentences only mention Daniel's movements.		"Reasoning: There is no information about Sandra in these context sentences. The sentences only mention Daniel's movements.
+
+Answer: not mentioned"	0.0741	0.0741	False	False	False	True	0

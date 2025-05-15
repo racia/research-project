@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+131	6	27	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the bedroom.
+2. Sandra moved to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the garden?"	no	sandra moved to the bedroom and then to the bathroom, but there is no mention of her moving to the garden. therefore, based on the provided information, it can be logically concluded that sandra is not in the garden.	fully	no	True	The context sentences only mention Sandra moving to the bedroom and then to the bathroom, but there is no mention of her moving to the garden.		"assistant
+
+Reasoning: The context sentences only mention Sandra moving to the bedroom and then to the bathroom, but there is no mention of her moving to the garden.
+
+Answer: no"	0.0769	0.0256	False	False	False	True	0
+132	6	27	2	"*TASK*
+Here are the context sentences:
+4. Daniel travelled to the bathroom.
+5. Mary travelled to the kitchen.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	yes	according to context line 4, daniel travelled to the bathroom, and there is no subsequent information about him leaving the bathroom. therefore, it can be logically concluded that daniel is still in the bathroom.	fully	yes	True	The context sentence 4 explicitly states that Daniel travelled to the bathroom, which implies that he is currently in the bathroom.		"Reasoning: The context sentence 4 explicitly states that Daniel travelled to the bathroom, which implies that he is currently in the bathroom.
+
+Answer: yes"	0.0323	0.0323	False	False	False	False	0
+133	6	27	3	"*TASK*
+Here are the context sentences:
+7. Mary picked up the milk there.
+8. Sandra travelled to the kitchen.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	no	according to context line 8, sandra travelled to the kitchen, which implies that she was not in the kitchen before and is now in the kitchen. there is no information about her being in the bedroom, and the context does not suggest that she was in the bedroom before moving to the kitchen. therefore, it can be logically concluded that sandra is not in the bedroom.	fully	no	True	The context sentence 8 states that Sandra travelled to the kitchen, but there is no mention of her being in the bedroom. In fact, sentence 1 (from a previous part of the conversation) mentioned Sandra moving to the bedroom, but then sentence 2 mentioned her moving to the bathroom, and now sentence 8 mentions her moving to the kitchen.		"Reasoning: The context sentence 8 states that Sandra travelled to the kitchen, but there is no mention of her being in the bedroom. In fact, sentence 1 (from a previous part of the conversation) mentioned Sandra moving to the bedroom, but then sentence 2 mentioned her moving to the bathroom, and now sentence 8 mentions her moving to the kitchen.
+
+Answer: no"	0.0	0.0128	False	False	False	True	0
+134	6	27	4	"*TASK*
+Here are the context sentences:
+10. John went back to the garden.
+11. Mary discarded the milk.
+
+Now, answer the following question:
+Is John in the garden?"	yes	according to context line 10, john went back to the garden, which implies that he moved to the garden and is now there. there is no subsequent information about him leaving the garden, so it can be logically concluded that john is still in the garden.	fully	yes	True	The context sentence 10 explicitly states that John went back to the garden, which implies that he is currently in the garden.		"Reasoning: The context sentence 10 explicitly states that John went back to the garden, which implies that he is currently in the garden.
+
+Answer: yes"	0.0	0.0312	False	False	False	False	0
+135	6	27	5	"*TASK*
+Here are the context sentences:
+13. Sandra travelled to the office.
+14. John picked up the apple there.
+
+Now, answer the following question:
+Is John in the hallway?"	no	"according to context line 14, john picked up the apple ""there"", which implies that john is in the same location where the apple was, but the location is not specified as the hallway. however, since context line 13 mentions that sandra travelled to the office, it can be logically inferred that the location where john picked up the apple is likely the office, not the hallway. therefore, it can be concluded that john is not in the hallway."	none	no	True	"The context sentence 14 mentions John picking up the apple ""there"", which implies that John is in the same location where the action is taking place. Since sentence 13 mentions Sandra travelling to the office, it can be inferred that John is also in the office, as the action is happening ""there"". There is no mention of John being in the hallway."		"Reasoning: The context sentence 14 mentions John picking up the apple ""there"", which implies that John is in the same location where the action is taking place. Since sentence 13 mentions Sandra travelling to the office, it can be inferred that John is also in the office, as the action is happening ""there"". There is no mention of John being in the hallway.
+
+Answer: no"	0.0	0.0127	False	False	False	True	0

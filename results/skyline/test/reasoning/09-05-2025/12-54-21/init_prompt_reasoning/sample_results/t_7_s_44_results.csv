@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+716	7	44	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the bedroom.
+2. Mary journeyed to the office.
+3. Sandra grabbed the milk there.
+4. John went back to the garden.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from sentence 3, we know that sandra grabbed the milk, which implies that she is carrying the milk. there is no other information provided about sandra carrying any other objects. therefore, we can logically conclude that sandra is carrying only one object, which is the milk.	fully	one	True	According to sentence 3, Sandra grabbed the milk in the office, which means she is carrying the milk.		"assistant
+
+Reasoning: According to sentence 3, Sandra grabbed the milk in the office, which means she is carrying the milk.
+
+Answer: one"	0.0909	0.0303	False	False	False	False	0
+717	7	44	2	"*TASK*
+Here are the context sentences:
+6. Sandra moved to the garden.
+7. Sandra handed the milk to John.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	from sentence 7, we know that sandra handed the milk to john, which implies that she is no longer carrying the milk. there is no other information provided about sandra carrying any other objects. therefore, we can logically conclude that sandra is not carrying any objects, i.e., she is carrying none.	partially	none	True	According to sentence 7, Sandra handed the milk to John, which means she is no longer carrying the milk.		"Reasoning: According to sentence 7, Sandra handed the milk to John, which means she is no longer carrying the milk.
+
+Answer: none"	0.2	0.0667	False	False	False	False	0
+718	7	44	3	"*TASK*
+Here are the context sentences:
+9. John travelled to the kitchen.
+10. Mary moved to the hallway.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	the question asks about sandra, but the provided context sentences (9 and 10) do not mention sandra at all. they only talk about john and mary. however, we can look back at the previous context sentences (6 and 7) where sandra was mentioned. from sentence 7, we know that sandra handed the milk to john, which implies that she is no longer carrying the milk. there is no other information provided about sandra carrying any other objects. therefore, we can	none	none	True	There is no new information about Sandra, and the previous information (sentence 7) stated that she handed the milk to John, so she is still not carrying any objects.		"Reasoning: There is no new information about Sandra, and the previous information (sentence 7) stated that she handed the milk to John, so she is still not carrying any objects.
+
+Answer: none"	0.0952	0.0476	False	False	False	True	0
+719	7	44	4	"*TASK*
+Here are the context sentences:
+12. Sandra moved to the hallway.
+13. Daniel moved to the kitchen.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	the question asks about the number of objects sandra is carrying. we can look back at the previous context sentences (6 and 7) where sandra was mentioned. from sentence 7, we know that sandra handed the milk to john, which implies that she is no longer carrying the milk. there is no other information provided about sandra carrying any other objects. therefore, we can logically conclude that sandra is not carrying any objects, i.e., she is carrying none. the new context sentences	none	none	True	There is no new information about Sandra carrying any objects, and the previous information (sentence 7) stated that she handed the milk to John, so she is still not carrying any objects.		"Reasoning: There is no new information about Sandra carrying any objects, and the previous information (sentence 7) stated that she handed the milk to John, so she is still not carrying any objects.
+
+Answer: none"	0.1111	0.0444	False	False	False	True	0
+720	7	44	5	"*TASK*
+Here are the context sentences:
+15. John gave the milk to Daniel.
+16. Daniel discarded the milk.
+
+Now, answer the following question:
+How many objects is John carrying?"	none	the question asks about the number of objects john is carrying. we can look back at the previous context sentences (7) where john was mentioned. from sentence 7, we know that sandra handed the milk to john, which implies that john was carrying the milk. however, in sentence 15, john gave the milk to daniel, which means john is no longer carrying the milk. there is no other information provided about john carrying any other objects. therefore, we can logically conclude that	partially	none	True	According to sentence 7, John received the milk from Sandra, but there is no information about him carrying any objects after that.		"Reasoning: According to sentence 7, John received the milk from Sandra, but there is no information about him carrying any objects after that. 
+
+Answer: none"	0.0294	0.0588	False	False	False	True	0

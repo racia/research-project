@@ -1,0 +1,44 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2566	14	64	1	"*TASK*
+Here are the context sentences:
+1. This morning Mary went back to the kitchen.
+2. Mary went to the park yesterday.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	park	"from the context sentences, we know that mary went to the park yesterday (sentence 2) and this morning she went back to the kitchen (sentence 1). since she went ""back"" to the kitchen, it implies that she was somewhere else before coming to the kitchen. the only other location mentioned in the context is the park, which she visited yesterday. therefore, it is logical to assume that mary was at the park before coming to the kitchen this morning."	fully	park	True	Since Mary went to the park yesterday, it implies that she was not in the kitchen yesterday. The question asks about where she was before the kitchen, which means we need to find out where she was this morning. Since she went back to the kitchen this morning, it implies that she was somewhere else before coming back to the kitchen. The only information we have is that she went back to the kitchen, which means she was not in the kitchen before this morning.		"Reasoning: Since Mary went to the park yesterday, it implies that she was not in the kitchen yesterday. The question asks about where she was before the kitchen, which means we need to find out where she was this morning. Since she went back to the kitchen this morning, it implies that she was somewhere else before coming back to the kitchen. The only information we have is that she went back to the kitchen, which means she was not in the kitchen before this morning.
+
+Answer: park"	0.2323	0.0202	False	False	False	True	0
+2567	14	64	2	"*TASK*
+Here are the context sentences:
+4. This morning Bill travelled to the kitchen.
+5. Bill moved to the office yesterday.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	office	"from the context sentences, we know that bill moved to the office yesterday (sentence 5) and this morning he travelled to the kitchen (sentence 4). the phrase ""this morning"" implies that bill was somewhere else before coming to the kitchen, and the only other location mentioned in the context is the office, which he moved to yesterday. therefore, it is logical to assume that bill was at the office before coming to the kitchen this morning."	fully		False	Since Bill moved to the office yesterday, it implies that he was not in the kitchen yesterday. The question asks about where he was before the kitchen, which means we need to find out where he was this morning. Since he travelled to the kitchen this morning, it implies that he was somewhere else before coming to the kitchen. The only information we have is that he travelled to the kitchen, which means he was not in the kitchen before this morning. The only other information we have		Reasoning: Since Bill moved to the office yesterday, it implies that he was not in the kitchen yesterday. The question asks about where he was before the kitchen, which means we need to find out where he was this morning. Since he travelled to the kitchen this morning, it implies that he was somewhere else before coming to the kitchen. The only information we have is that he travelled to the kitchen, which means he was not in the kitchen before this morning. The only other information we have	0.1212	0.0202	False	False	False	True	0
+2568	14	64	3	"*TASK*
+Here are the context sentences:
+7. Julie travelled to the bedroom yesterday.
+8. Yesterday Fred travelled to the school.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	office	"there is no information about bill in the provided context sentences. the context sentences only mention julie and fred, and their travels to the bedroom and school, respectively. there is no mention of bill or the kitchen. therefore, it is not possible to determine where bill was before the kitchen based on the provided information. the answer ""office"" seems to be incorrect, as there is no context to support it."	none	Not mentioned	False	There is no information about Bill in the given context sentences. The sentences only mention Julie and Fred, but not Bill.		"Reasoning: There is no information about Bill in the given context sentences. The sentences only mention Julie and Fred, but not Bill.
+
+Answer: Not mentioned"	0.125	0.0625	False	False	False	True	0
+2569	14	64	4	"*TASK*
+Here are the context sentences:
+10. This morning Fred went back to the kitchen.
+11. Bill went to the park this afternoon.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	school	"there is no information in the provided context sentences that suggests fred was at the school before the kitchen. the context sentences only mention fred going ""back"" to the kitchen this morning, and bill going to the park this afternoon. there is no mention of fred being at the school. the answer ""school"" seems to be incorrect, as there is no context to support it."	partially	Not mentioned	False	Since Fred went back to the kitchen this morning, it implies that he was not in the kitchen before this morning. The question asks about where he was before the kitchen, which means we need to find out where he was before coming back to the kitchen. The only information we have is that he went back to the kitchen, which means he was somewhere else before coming back.		"Reasoning: Since Fred went back to the kitchen this morning, it implies that he was not in the kitchen before this morning. The question asks about where he was before the kitchen, which means we need to find out where he was before coming back to the kitchen. The only information we have is that he went back to the kitchen, which means he was somewhere else before coming back.
+
+Answer: Not mentioned"	0.0964	0.0241	False	False	False	True	0
+2570	14	64	5	"*TASK*
+Here are the context sentences:
+13. This morning Julie went to the office.
+14. This afternoon Mary journeyed to the office.
+
+Now, answer the following question:
+Where was Julie before the office?"	bedroom	"there is no information in the provided context sentences that suggests julie was at the bedroom before the office. the context sentences only mention julie going to the office this morning, and mary journeying to the office this afternoon. there is no mention of julie being at the bedroom. the answer ""bedroom"" seems to be incorrect, as there is no context to support it."	partially	Not mentioned	False	Since Julie went to the office this morning, it implies that she was not in the office before this morning. The question asks about where she was before the office, which means we need to find out where she was before going to the office. The only information we have is that she went to the office this morning, which means she was somewhere else before coming to the office.		"Reasoning: Since Julie went to the office this morning, it implies that she was not in the office before this morning. The question asks about where she was before the office, which means we need to find out where she was before going to the office. The only information we have is that she went to the office this morning, which means she was somewhere else before coming to the office.
+
+Answer: Not mentioned"	0.0476	0.0238	False	False	False	True	0

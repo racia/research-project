@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+34	.	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
+35	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠMary	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

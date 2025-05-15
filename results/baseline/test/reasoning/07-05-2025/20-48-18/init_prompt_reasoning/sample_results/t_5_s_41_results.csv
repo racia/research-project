@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1801	5	41	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the bedroom.
+2. Mary went back to the office.
+3. Jeff got the milk there.
+4. Bill journeyed to the kitchen.
+5. Mary went to the bathroom.
+6. Mary got the football there.
+7. Jeff discarded the milk there.
+8. Bill went back to the garden.
+9. Jeff took the milk there.
+10. Jeff handed the milk to Bill.
+
+Now, answer the following question:
+What did Jeff give to Bill?"	milk	from the context sentences, we can follow the actions of jeff and bill. in sentence 3, jeff got the milk in the office (inferred from sentence 2, where mary went back to the office). then, in sentence 7, jeff discarded the milk in the bathroom (inferred from sentence 5, where mary went to the bathroom). however, in sentence 9, jeff took the milk again, implying that he picked it up from where he discarded it,	fully	milk	True	Jeff handed the milk to Bill, and Bill is the recipient of the milk, so Jeff gave the milk to Bill.		"Reasoning: Jeff handed the milk to Bill, and Bill is the recipient of the milk, so Jeff gave the milk to Bill.
+
+Answer: milk"	0.0323	0.0323	False	False	False	False	0
+1802	5	41	2	"*TASK*
+Here are the context sentences:
+12. Mary journeyed to the bedroom.
+13. Fred journeyed to the bedroom.
+
+Now, answer the following question:
+What did Jeff give to Bill?"	milk	"the provided context sentences (12 and 13) do not mention jeff, bill, or milk. the question and answer seem to be unrelated to the context. the context only talks about mary and fred journeying to the bedroom. therefore, it is not possible to provide a logical reasoning for the answer ""milk"" based on the given context. the answer appears to be from a previous part of the conversation history, which is not provided in this part."	none	not mentioned	False	There is no mention of Jeff or Bill in the given context sentences, so it's not possible to determine what Jeff gave to Bill.		"Reasoning: There is no mention of Jeff or Bill in the given context sentences, so it's not possible to determine what Jeff gave to Bill.
+
+Answer: not mentioned"	0.0286	0.0286	False	False	False	True	0
+1803	5	41	3	"*TASK*
+Here are the context sentences:
+15. Jeff journeyed to the hallway.
+16. Mary gave the football to Fred.
+
+Now, answer the following question:
+What did Jeff give to Bill?"	milk	"the provided context sentences (15 and 16) do not mention jeff giving anything to bill, nor do they mention milk. sentence 15 talks about jeff journeying to the hallway, and sentence 16 talks about mary giving the football to fred. there is no connection between jeff, bill, and milk in the provided context. the answer ""milk"" seems to be from a previous part of the conversation history, which is not provided in this part."	none	not mentioned	False	There is no mention of Jeff giving anything to Bill in the given context sentences. In fact, Jeff is not even mentioned in relation to Bill.		"Reasoning: There is no mention of Jeff giving anything to Bill in the given context sentences. In fact, Jeff is not even mentioned in relation to Bill.
+
+Answer: not mentioned"	0.027	0.027	False	False	False	True	0
+1804	5	41	4	"*TASK*
+Here are the context sentences:
+18. Fred discarded the football.
+19. Bill went to the bathroom.
+
+Now, answer the following question:
+Who gave the football?"	mary	"the answer ""mary"" is supported by the context sentence 16 from a previous part of the conversation history, which states ""mary gave the football to fred."" this sentence directly indicates that mary is the one who gave the football. the current context sentences (18 and 19) do not provide new information about the football being given, but they do mention fred discarding the football, which is consistent with the previous information that fred received the football from mary."	none	Mary	True	According to sentence 16, Mary gave the football to Fred. There is no mention of anyone else giving the football.		"Reasoning: According to sentence 16, Mary gave the football to Fred. There is no mention of anyone else giving the football.
+
+Answer: Mary"	0.0323	0.0323	False	False	False	True	0
+1805	5	41	5	"*TASK*
+Here are the context sentences:
+21. Mary took the football there.
+22. Mary handed the football to Fred.
+
+Now, answer the following question:
+Who did Mary give the football to?"	fred	"the answer ""fred"" is directly supported by context sentence 22, which states ""mary handed the football to fred."" this sentence explicitly indicates that mary gave the football to fred."	fully	Fred	True	According to sentence 22, Mary handed the football to Fred.		"Reasoning: According to sentence 22, Mary handed the football to Fred.
+
+Answer: Fred"	0.05	0.05	False	False	False	False	0

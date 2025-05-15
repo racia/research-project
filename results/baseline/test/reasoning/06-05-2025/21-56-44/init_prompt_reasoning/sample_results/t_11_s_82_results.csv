@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+406	11	82	1	"*TASK*
+Here are the context sentences:
+1. John went back to the bathroom.
+2. Then he went to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	the context sentences describe john's movements, and the last location mentioned is the bedroom. in sentence 1, john goes to the bathroom, and in sentence 2, he goes to the bedroom, implying that he left the bathroom and moved to the bedroom. therefore, based on the sequence of events, john is currently in the bedroom.	fully	bedroom	True	John went back to the bathroom initially, and then he went to the bedroom. This implies that John is currently in the bedroom.		"Reasoning: John went back to the bathroom initially, and then he went to the bedroom. This implies that John is currently in the bedroom.
+
+Answer: bedroom"	0.2121	0.0606	False	False	False	False	0
+407	11	82	2	"*TASK*
+Here are the context sentences:
+4. Mary went to the hallway.
+5. After that she journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	the context sentences describe mary's movements, and the last location mentioned is the bedroom. in sentence 4, mary goes to the hallway, and in sentence 5, she journeys to the bedroom, implying that she left the hallway and moved to the bedroom. therefore, based on the sequence of events, mary is currently in the bedroom.	fully	bedroom	True	Mary went to the hallway initially, and then she journeyed to the bedroom. This implies that Mary is currently in the bedroom.		"Reasoning: Mary went to the hallway initially, and then she journeyed to the bedroom. This implies that Mary is currently in the bedroom.
+
+Answer: bedroom"	0.1818	0.0606	False	False	False	False	0
+408	11	82	3	"*TASK*
+Here are the context sentences:
+7. Mary journeyed to the kitchen.
+8. After that she travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	the context sentences describe mary's movements, and the last location mentioned is the bathroom. in sentence 7, mary journeys to the kitchen, and in sentence 8, she travels to the bathroom, implying that she left the kitchen and moved to the bathroom. therefore, based on the sequence of events, mary is currently in the bathroom.	fully	bathroom	True	Mary journeyed to the kitchen initially, and then she travelled to the bathroom. This implies that Mary is currently in the bathroom.		"Reasoning: Mary journeyed to the kitchen initially, and then she travelled to the bathroom. This implies that Mary is currently in the bathroom.
+
+Answer: bathroom"	0.0606	0.0606	False	False	False	False	0
+409	11	82	4	"*TASK*
+Here are the context sentences:
+10. John went back to the garden.
+11. After that he went to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	the context sentences describe john's movements, and the last location mentioned is the kitchen. in sentence 10, john goes back to the garden, and in sentence 11, he goes to the kitchen, implying that he left the garden and moved to the kitchen. therefore, based on the sequence of events, john is currently in the kitchen.	fully	kitchen	True	John went back to the garden initially, and then he went to the kitchen. This implies that John is currently in the kitchen.		"Reasoning: John went back to the garden initially, and then he went to the kitchen. This implies that John is currently in the kitchen.
+
+Answer: kitchen"	0.1515	0.0606	False	False	False	False	0
+410	11	82	5	"*TASK*
+Here are the context sentences:
+13. Daniel journeyed to the bathroom.
+14. After that he went to the bedroom.
+
+Now, answer the following question:
+Where is John?"	kitchen	"the context sentences describe daniel's movements, but the question asks about john's location. there is no information provided about john's movements in the given context lines. however, the answer ""kitchen"" suggests that john's location was established in a previous part of the conversation. since the conversation history is not provided, it is not possible to determine the correct reasoning for john's location being the kitchen."	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only mention Daniel's actions.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Daniel's actions.
+
+Answer: not mentioned"	0.0714	0.0714	False	False	False	True	0

@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+285	15	72	1	"*TASK*
+Here are the context sentences:
+1. Sheep are afraid of mice.
+2. Gertrude is a sheep.
+3. Winona is a sheep.
+4. Mice are afraid of sheep.
+5. Wolves are afraid of sheep.
+6. Cats are afraid of wolves.
+7. Jessica is a mouse.
+8. Emily is a mouse.
+
+Now, answer the following question:
+What is emily afraid of?"	sheep	from context sentence 4, we know that mice are afraid of sheep. emily is a mouse (context sentence 8), so we can logically conclude that emily is afraid of sheep.	fully	sheep	True	"According to sentence 4, ""Mice are afraid of sheep"". Emily is a mouse (sentence 8), so Emily is afraid of sheep."		"Reasoning: According to sentence 4, ""Mice are afraid of sheep"". Emily is a mouse (sentence 8), so Emily is afraid of sheep.
+
+Answer: sheep"	0.0541	0.0541	False	False	False	False	0
+286	15	72	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is jessica afraid of?"	sheep	from context sentence 7, we know that jessica is a mouse. from context sentence 4, we know that mice are afraid of sheep. therefore, we can logically conclude that jessica, being a mouse, is afraid of sheep.	none	sheep	True	Jessica is a mouse (sentence 7), and mice are afraid of sheep (sentence 4). Therefore, Jessica is afraid of sheep.		"Reasoning: Jessica is a mouse (sentence 7), and mice are afraid of sheep (sentence 4). Therefore, Jessica is afraid of sheep.
+
+Answer: sheep"	0.0	0.0571	False	False	False	False	0
+287	15	72	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	sheep	from context sentence 8, we know that emily is a mouse. from context sentence 4, we know that mice are afraid of sheep. therefore, we can logically conclude that emily, being a mouse, is afraid of sheep.	none	sheep	True	Emily is a mouse (sentence 8), and mice are afraid of sheep (sentence 4). Therefore, Emily is afraid of sheep.		"Reasoning: Emily is a mouse (sentence 8), and mice are afraid of sheep (sentence 4). Therefore, Emily is afraid of sheep.
+
+Answer: sheep"	0.0571	0.0571	False	False	False	False	0
+288	15	72	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	sheep	from context sentence 8, we know that emily is a mouse. from context sentence 4, we know that mice are afraid of sheep. therefore, we can logically conclude that emily, being a mouse, is afraid of sheep.	none	sheep	True	Emily is a mouse (sentence 8), and mice are afraid of sheep (sentence 4). Therefore, Emily is afraid of sheep.		"Reasoning: Emily is a mouse (sentence 8), and mice are afraid of sheep (sentence 4). Therefore, Emily is afraid of sheep.
+
+Answer: sheep"	0.0	0.0571	False	False	False	False	0

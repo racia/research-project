@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1461	12	143	1	"*TASK*
+Here are the context sentences:
+1. Sandra and John journeyed to the bedroom.
+2. Daniel and Sandra went back to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	from the context sentences, we know that daniel was with sandra in sentence 2, and they went back to the kitchen together. there is no information about daniel leaving the kitchen after that. therefore, it is logical to conclude that daniel is still in the kitchen.	fully	kitchen	True	Since Sandra and John journeyed to the bedroom, it implies that Sandra and John were together. Later, Daniel and Sandra went back to the kitchen, which suggests that Sandra was with Daniel in the kitchen. This implies that Sandra was with Daniel in the kitchen, but it doesn't explicitly state that Daniel was in the kitchen. However, since Sandra and Daniel were together, it's likely that Daniel was also in the kitchen.		"Reasoning: Since Sandra and John journeyed to the bedroom, it implies that Sandra and John were together. Later, Daniel and Sandra went back to the kitchen, which suggests that Sandra was with Daniel in the kitchen. This implies that Sandra was with Daniel in the kitchen, but it doesn't explicitly state that Daniel was in the kitchen. However, since Sandra and Daniel were together, it's likely that Daniel was also in the kitchen.
+
+Answer: kitchen"	0.087	0.0109	False	False	False	False	0
+1462	12	143	2	"*TASK*
+Here are the context sentences:
+4. Sandra and Mary travelled to the hallway.
+5. Mary and John travelled to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	in sentence 4, sandra and mary travelled to the hallway together. there is no information about sandra leaving the hallway or going anywhere else after that. therefore, it is logical to conclude that sandra is still in the hallway.	fully	hallway	True	Sandra and Mary travelled to the hallway, which implies that Sandra was with Mary in the hallway. Later, Mary and John travelled to the garden, but this doesn't provide any information about Sandra's location. Since Sandra was with Mary in the hallway, it's likely that Sandra is still in the hallway.		"Reasoning: Sandra and Mary travelled to the hallway, which implies that Sandra was with Mary in the hallway. Later, Mary and John travelled to the garden, but this doesn't provide any information about Sandra's location. Since Sandra was with Mary in the hallway, it's likely that Sandra is still in the hallway.
+
+Answer: hallway"	0.0441	0.0147	False	False	False	True	0
+1463	12	143	3	"*TASK*
+Here are the context sentences:
+7. Sandra and John went back to the bedroom.
+8. John and Mary went back to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	in sentence 7, john was with sandra and they went back to the bedroom together. then, in sentence 8, john (who was already in the bedroom) went back to the bathroom with mary. there is no information about john leaving the bathroom after that. therefore, it is logical to conclude that john is in the bathroom.	fully	bathroom	True	Sandra and John went back to the bedroom, which implies that John was with Sandra in the bedroom. Later, John and Mary went back to the bathroom, which suggests that John was with Mary in the bathroom. Since John was with Sandra in the bedroom initially, it's likely that John's current location is with Mary in the bathroom.		"Reasoning: Sandra and John went back to the bedroom, which implies that John was with Sandra in the bedroom. Later, John and Mary went back to the bathroom, which suggests that John was with Mary in the bathroom. Since John was with Sandra in the bedroom initially, it's likely that John's current location is with Mary in the bathroom.
+
+Answer: bathroom"	0.0541	0.0135	False	False	False	False	0
+1464	12	143	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Sandra travelled to the hallway.
+11. Daniel and John travelled to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	in sentence 10, daniel and sandra travelled to the hallway together. there is no information about sandra leaving the hallway or going anywhere else after that. in sentence 11, daniel (who was with sandra in the hallway) travelled to the garden with john, but there is no mention of sandra going with them. therefore, it is logical to conclude that sandra is still in the hallway.	fully	hallway	True	Daniel and Sandra travelled to the hallway, which implies that Sandra was with Daniel in the hallway. Later, Daniel and John travelled to the garden, but this doesn't provide any information about Sandra's location. Since Sandra was with Daniel in the hallway, it's likely that Sandra is still in the hallway.		"Reasoning: Daniel and Sandra travelled to the hallway, which implies that Sandra was with Daniel in the hallway. Later, Daniel and John travelled to the garden, but this doesn't provide any information about Sandra's location. Since Sandra was with Daniel in the hallway, it's likely that Sandra is still in the hallway.
+
+Answer: hallway"	0.0588	0.0147	False	False	False	True	0
+1465	12	143	5	"*TASK*
+Here are the context sentences:
+13. John and Mary moved to the kitchen.
+14. John and Daniel went to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	in sentence 13, john and mary moved to the kitchen together. then, in sentence 14, john (who was in the kitchen with mary) went to the bedroom with daniel. there is no information about john leaving the bedroom after that. therefore, it is logical to conclude that john is in the bedroom.	fully	bedroom	True	John and Mary moved to the kitchen, which implies that John was with Mary in the kitchen. Later, John and Daniel went to the bedroom, which suggests that John was with Daniel in the bedroom. Since John was with Mary in the kitchen initially, it's likely that John's current location is with Daniel in the bedroom.		"Reasoning: John and Mary moved to the kitchen, which implies that John was with Mary in the kitchen. Later, John and Daniel went to the bedroom, which suggests that John was with Daniel in the bedroom. Since John was with Mary in the kitchen initially, it's likely that John's current location is with Daniel in the bedroom.
+
+Answer: bedroom"	0.0	0.0139	False	False	False	False	0

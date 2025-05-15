@@ -1,0 +1,62 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1751	5	31	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the kitchen.
+2. Mary took the milk there.
+3. Jeff moved to the garden.
+4. Jeff went back to the office.
+5. Jeff went to the hallway.
+6. Fred journeyed to the office.
+7. Fred travelled to the garden.
+8. Bill journeyed to the office.
+9. Bill journeyed to the garden.
+10. Bill got the apple there.
+11. Bill went back to the hallway.
+12. Mary went back to the office.
+13. Bill passed the apple to Jeff.
+14. Jeff handed the apple to Bill.
+
+Now, answer the following question:
+Who received the apple?"	bill	from the context sentences, we can track the movement of the apple. initially, bill got the apple in the garden (sentence 10). then, bill went back to the hallway (sentence 11) and passed the apple to jeff (sentence 13). however, jeff handed the apple back to bill (sentence 14). therefore, the person who ultimately received the apple is bill.	fully	Bill	True	Bill passed the apple to Jeff, and then Jeff handed the apple back to Bill, which means the apple was passed between Bill and Jeff. Since the question asks who received the apple, it implies that the apple was given to someone. Since Bill passed the apple to Jeff and Jeff handed it back to Bill, it's likely that Bill received the apple again.		"Reasoning: Bill passed the apple to Jeff, and then Jeff handed the apple back to Bill, which means the apple was passed between Bill and Jeff. Since the question asks who received the apple, it implies that the apple was given to someone. Since Bill passed the apple to Jeff and Jeff handed it back to Bill, it's likely that Bill received the apple again.
+
+Answer: Bill"	0.0886	0.0127	False	False	False	False	0
+1752	5	31	2	"*TASK*
+Here are the context sentences:
+16. Mary left the milk.
+17. Jeff journeyed to the garden.
+
+Now, answer the following question:
+Who gave the apple to Bill?"	jeff	"from the provided context sentences, we can see that sentences 16 and 17 are not related to the apple or bill. however, we can look back at the previous context sentences (1-15) to find the relevant information. in sentence 13, it is stated that ""bill passed the apple to jeff"", and in sentence 14, it is stated that ""jeff handed the apple to bill"". this implies that jeff had the apple and gave it back to bill."	none	Not mentioned	False	There is no mention of the apple being given to Bill in the provided context sentences. The only mention of the apple is in sentence 10, where Bill got the apple in the garden. However, there is no information about who gave the apple to Bill.		"Reasoning: There is no mention of the apple being given to Bill in the provided context sentences. The only mention of the apple is in sentence 10, where Bill got the apple in the garden. However, there is no information about who gave the apple to Bill.
+
+Answer: Not mentioned"	0.0333	0.0167	False	False	False	True	0
+1753	5	31	3	"*TASK*
+Here are the context sentences:
+19. Fred journeyed to the kitchen.
+20. Bill travelled to the bedroom.
+
+Now, answer the following question:
+Who received the apple?"	bill	"the context sentences 19 and 20 do not provide any information about the apple. however, we can look back at the previous context sentences (1-18) to find the relevant information. in sentence 10, it is stated that ""bill got the apple there"" (in the garden). then, in sentence 13, bill passed the apple to jeff, and in sentence 14, jeff handed the apple back to bill. therefore, bill is the one who ultimately"	none	Not mentioned	False	There is no mention of the apple being received by anyone in the provided context sentences. The only mention of the apple is in sentence 10, where Bill got the apple in the garden, but there is no information about who received it.		"Reasoning: There is no mention of the apple being received by anyone in the provided context sentences. The only mention of the apple is in sentence 10, where Bill got the apple in the garden, but there is no information about who received it.
+
+Answer: Not mentioned"	0.0	0.0179	False	False	False	True	0
+1754	5	31	4	"*TASK*
+Here are the context sentences:
+22. Mary went to the hallway.
+23. Jeff journeyed to the hallway.
+24. Jeff went back to the office.
+25. Fred went to the bedroom.
+26. Bill journeyed to the office.
+27. Bill handed the apple to Jeff.
+
+Now, answer the following question:
+Who gave the apple to Jeff?"	bill	"from the context sentences, we can see that sentence 27 directly states ""bill handed the apple to jeff"". this explicitly indicates that bill is the one who gave the apple to jeff."	fully	Bill	True	According to sentence 27, Bill handed the apple to Jeff.		"Reasoning: According to sentence 27, Bill handed the apple to Jeff.
+
+Answer: Bill"	0.0	0.05	False	False	False	False	0
+1755	5	31	5	"*TASK*
+Here are the context sentences:
+29. Jeff discarded the apple there.
+30. Bill got the apple there.
+
+Now, answer the following question:
+What did Bill give to Jeff?"	apple	"from the context sentences, we can see that sentence 27 (from previous context) states ""bill handed the apple to jeff"". this indicates that bill gave the apple to jeff."	none	The apple	False	According to sentence 27, Bill handed the apple to Jeff, but there is no mention of Bill giving something else to Jeff. The only interaction mentioned is Bill giving the apple to Jeff.		"Reasoning: According to sentence 27, Bill handed the apple to Jeff, but there is no mention of Bill giving something else to Jeff. The only interaction mentioned is Bill giving the apple to Jeff.
+
+Answer: The apple"	0.0	0.0217	False	False	False	True	0

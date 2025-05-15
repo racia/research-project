@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	9	,	ĠMary	Ġgot	Ġthe	Ġfootball	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġcarrying	Ġit	.	ĠHowever	,	Ġsentence	Ġ	8	Ġmentions	Ġthat	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠSandra	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġwas	Ġcarrying	Ġthe	Ġapple	Ġbefore	Ġhanding	Ġit	Ġover	.	ĠTherefore	,	ĠMary	Ġis	Ġcarrying	Ġone	Ġobject	,	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġone	<|eot_id|>

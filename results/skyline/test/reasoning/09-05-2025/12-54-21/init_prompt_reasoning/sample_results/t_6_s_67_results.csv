@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+331	6	67	1	"*TASK*
+Here are the context sentences:
+1. John went back to the kitchen.
+2. John moved to the garden.
+
+Now, answer the following question:
+Is John in the garden?"	yes	the context sentences indicate that john went back to the kitchen (sentence 1) and then moved to the garden (sentence 2). since john moved to the garden after being in the kitchen, it can be logically concluded that john is currently in the garden.	fully	yes	True	According to sentence 2, John moved to the garden, which implies that John is currently in the garden.		"assistant
+
+Reasoning: According to sentence 2, John moved to the garden, which implies that John is currently in the garden.
+
+Answer: yes"	0.0312	0.0312	False	False	False	False	0
+332	6	67	2	"*TASK*
+Here are the context sentences:
+4. Sandra went back to the office.
+5. Mary took the milk there.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	the context sentences indicate that sandra went back to the office (sentence 4), and mary took the milk there (sentence 5). since sandra went back to the office, it can be logically concluded that sandra is currently in the office. there is no mention of sandra being in the hallway, and the context suggests that she is in the office. therefore, the answer is no, sandra is not in the hallway.	fully	no	True	According to sentence 4, Sandra went back to the office, which implies that Sandra is currently in the office. There is no mention of the hallway.		"Reasoning: According to sentence 4, Sandra went back to the office, which implies that Sandra is currently in the office. There is no mention of the hallway.
+
+Answer: no"	0.0	0.0263	False	False	False	True	0
+333	6	67	3	"*TASK*
+Here are the context sentences:
+7. Mary discarded the milk there.
+8. Mary went to the office.
+
+Now, answer the following question:
+Is Sandra in the office?"	yes	the context sentences indicate that mary went to the office (sentence 8), but there is no information about mary interacting with sandra. however, in a previous part of the conversation (sentence 4), it was established that sandra went back to the office. since sandra was already in the office, and mary also went to the office, it can be logically concluded that sandra is still in the office.	none	yes	True	Sentence 4 (from previous context) stated that Sandra went back to the office, and there is no information about Sandra leaving the office.		"Reasoning: Sentence 4 (from previous context) stated that Sandra went back to the office, and there is no information about Sandra leaving the office. 
+
+Answer: yes"	0.0556	0.0278	False	False	False	True	0
+334	6	67	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the garden.
+11. Daniel took the football there.
+
+Now, answer the following question:
+Is Mary in the office?"	yes	the context sentences (10 and 11) provide information about daniel's actions in the garden, but they do not mention mary or the office. however, in a previous part of the conversation (sentence 8), it was established that mary went to the office. there is no information that suggests mary left the office, so it can be logically concluded that mary is still in the office.	none	yes	True	Sentence 8 stated that Mary went to the office, and there is no information about Mary leaving the office.		"Reasoning: Sentence 8 stated that Mary went to the office, and there is no information about Mary leaving the office.
+
+Answer: yes"	0.1034	0.0345	False	False	False	True	0
+335	6	67	5	"*TASK*
+Here are the context sentences:
+13. Daniel put down the football there.
+14. Daniel travelled to the hallway.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	yes	the context sentences indicate that daniel travelled to the hallway (sentence 14). this action implies that daniel moved to the hallway and is currently located there. there is no information suggesting that daniel left the hallway after arriving, so it can be logically concluded that daniel is indeed in the hallway.	fully	yes	True	According to sentence 14, Daniel travelled to the hallway, which implies that Daniel is currently in the hallway.		"Reasoning: According to sentence 14, Daniel travelled to the hallway, which implies that Daniel is currently in the hallway.
+
+Answer: yes"	0.0	0.0345	False	False	False	False	0

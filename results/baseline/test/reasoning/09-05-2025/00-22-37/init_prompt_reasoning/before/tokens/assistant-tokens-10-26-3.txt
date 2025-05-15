@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	8	Ġstates	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġoffice	.	ĠThe	Ġcontext	Ġsentence	Ġ	7	Ġdoes	Ġnot	Ġcontradict	Ġthis	Ġinformation	,	Ġas	Ġit	Ġonly	Ġmentions	ĠMary	's	Ġtravel	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġdoes	Ġnot	Ġnecessarily	Ġmean	Ġshe	Ġis	Ġstill	Ġthere	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

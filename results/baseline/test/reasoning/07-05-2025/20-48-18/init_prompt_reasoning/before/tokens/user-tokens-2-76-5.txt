@@ -1,0 +1,11 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+19	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġmilk	Ġthere	.Ċ
+20	.	ĠSandra	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+21	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+22	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+23	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+24	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+25	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+26	.	ĠJohn	Ġdropped	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġapple	?Ċ

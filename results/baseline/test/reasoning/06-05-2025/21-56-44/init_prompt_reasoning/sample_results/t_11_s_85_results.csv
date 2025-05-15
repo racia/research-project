@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+421	11	85	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the office.
+2. Then she went back to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	mary initially moved to the office, but then she went back to the kitchen, which implies that she changed her location from the office to the kitchen. therefore, her current location is the kitchen.	fully	kitchen	True	Mary moved to the office initially, but then she went back to the kitchen, which means she is currently in the kitchen.		"Reasoning: Mary moved to the office initially, but then she went back to the kitchen, which means she is currently in the kitchen.
+
+Answer: kitchen"	0.1562	0.0625	False	False	False	False	0
+422	11	85	2	"*TASK*
+Here are the context sentences:
+4. John journeyed to the kitchen.
+5. Afterwards he travelled to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	john initially journeyed to the kitchen, but afterwards he travelled to the bedroom, which implies that he changed his location from the kitchen to the bedroom. therefore, his current location is the bedroom.	fully	bedroom	True	John initially journeyed to the kitchen, and then he travelled to the bedroom, which means he is currently in the bedroom.		"Reasoning: John initially journeyed to the kitchen, and then he travelled to the bedroom, which means he is currently in the bedroom.
+
+Answer: bedroom"	0.125	0.0625	False	False	False	False	0
+423	11	85	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the hallway.
+8. Then he went back to the kitchen.
+
+Now, answer the following question:
+Where is John?"	bedroom	"the context sentences provided do not mention john at all, they only talk about daniel's movements. therefore, we cannot determine john's location based on the provided information. the answer ""bedroom"" seems to be incorrect, as there is no mention of john in the context sentences."	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only mention Daniel's movements, which are to the hallway and then back to the kitchen.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Daniel's movements, which are to the hallway and then back to the kitchen.
+
+Answer: not mentioned"	0.075	0.05	False	False	False	True	0
+424	11	85	4	"*TASK*
+Here are the context sentences:
+10. Sandra went back to the office.
+11. After that she went to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	sandra initially went back to the office, but after that, she went to the garden, which implies that she changed her location from the office to the garden. therefore, her current location is the garden.	fully	garden	True	Sandra went back to the office initially, and then she went to the garden, which means she is currently in the garden.		"Reasoning: Sandra went back to the office initially, and then she went to the garden, which means she is currently in the garden.
+
+Answer: garden"	0.125	0.0625	False	False	False	False	0
+425	11	85	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the office.
+14. After that she went back to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"the context sentences provided talk about mary's movements, but the question asks about sandra's location. there is no information provided about sandra's movements or location in the current context. the answer ""garden"" seems to be incorrect, as there is no mention of sandra in the context sentences."	none	not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only mention Mary's movements, which are to the office and then back to the bathroom.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention Mary's movements, which are to the office and then back to the bathroom.
+
+Answer: not mentioned"	0.075	0.05	False	False	False	True	0

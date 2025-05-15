@@ -1,0 +1,38 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3241	15	61	1	"*TASK*
+Here are the context sentences:
+1. Mice are afraid of wolves.
+2. Sheep are afraid of mice.
+3. Cats are afraid of wolves.
+4. Wolves are afraid of sheep.
+5. Gertrude is a mouse.
+6. Jessica is a wolf.
+7. Emily is a wolf.
+8. Winona is a wolf.
+
+Now, answer the following question:
+What is emily afraid of?"	sheep	from context sentence 3, we know that cats are afraid of wolves. however, emily is a wolf (sentence 7), so she cannot be afraid of wolves. from sentence 4, we know that wolves are afraid of sheep. since emily is a wolf, we can logically conclude that emily is afraid of sheep.	fully	Nothing mentioned	False	According to sentence 1, mice are afraid of wolves. Since Emily is a wolf (sentence 7), it is likely that Emily is not afraid of anything mentioned in the context. However, we can infer that Emily is not afraid of mice, as mice are afraid of wolves, and Emily is a wolf. Therefore, Emily is not afraid of anything mentioned in the context.		"Reasoning: According to sentence 1, mice are afraid of wolves. Since Emily is a wolf (sentence 7), it is likely that Emily is not afraid of anything mentioned in the context. However, we can infer that Emily is not afraid of mice, as mice are afraid of wolves, and Emily is a wolf. Therefore, Emily is not afraid of anything mentioned in the context.
+
+Answer: Nothing mentioned"	0.0357	0.0238	False	False	False	True	0
+3242	15	61	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	sheep	from sentence 8, we know that winona is a wolf. from sentence 4, we know that wolves are afraid of sheep. therefore, we can logically conclude that winona, being a wolf, is afraid of sheep.	none		False	According to sentence 1, mice are afraid of wolves. Since Winona is a wolf (sentence 8), it is likely that Winona is not afraid of anything mentioned in the context. However, we can infer that Winona is not afraid of mice, as mice are afraid of wolves, and Winona is a wolf. Additionally, we can infer that Winona is not afraid of sheep, as wolves are afraid of sheep (sentence 4). Therefore, Winona		Reasoning: According to sentence 1, mice are afraid of wolves. Since Winona is a wolf (sentence 8), it is likely that Winona is not afraid of anything mentioned in the context. However, we can infer that Winona is not afraid of mice, as mice are afraid of wolves, and Winona is a wolf. Additionally, we can infer that Winona is not afraid of sheep, as wolves are afraid of sheep (sentence 4). Therefore, Winona	0.1414	0.0202	False	False	False	True	0
+3243	15	61	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is jessica afraid of?"	sheep	from sentence 6, we know that jessica is a wolf. from sentence 4, we know that wolves are afraid of sheep. therefore, we can logically conclude that jessica, being a wolf, is afraid of sheep.	none	Sheep	True	According to sentence 4, wolves are afraid of sheep. Since Jessica is a wolf (sentence 6), it is likely that Jessica is afraid of sheep, as wolves are afraid of sheep.		"Reasoning: According to sentence 4, wolves are afraid of sheep. Since Jessica is a wolf (sentence 6), it is likely that Jessica is afraid of sheep, as wolves are afraid of sheep.
+
+Answer: Sheep"	0.0435	0.0435	False	False	False	False	0
+3244	15	61	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is gertrude afraid of?"	wolf	from sentence 5, we know that gertrude is a mouse. from sentence 1, we know that mice are afraid of wolves. therefore, we can logically conclude that gertrude, being a mouse, is afraid of a wolf.	none	Sheep	False	According to sentence 2, sheep are afraid of mice. Since Gertrude is a mouse (sentence 5), it is likely that Gertrude is afraid of sheep, as sheep are afraid of mice.		"Reasoning: According to sentence 2, sheep are afraid of mice. Since Gertrude is a mouse (sentence 5), it is likely that Gertrude is afraid of sheep, as sheep are afraid of mice.
+
+Answer: Sheep"	0.02	0.04	False	False	False	False	0

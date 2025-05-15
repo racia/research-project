@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+956	12	92	1	"*TASK*
+Here are the context sentences:
+1. Daniel and John went to the hallway.
+2. John and Sandra travelled to the office.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from context sentence 1, we know that daniel and john went to the hallway together. there is no information provided about daniel leaving the hallway or going to any other location. therefore, based on the last known location of daniel, we can conclude that daniel is still in the hallway.	fully	hallway	True	From sentence 1, we know that Daniel and John went to the hallway. There is no information about Daniel moving to a different location after that.		"assistant
+
+Reasoning: From sentence 1, we know that Daniel and John went to the hallway. There is no information about Daniel moving to a different location after that. 
+
+Answer: hallway"	0.0476	0.0238	False	False	False	True	0
+957	12	92	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Sandra travelled to the kitchen.
+5. John and Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	from context sentence 5, we know that john and mary travelled to the bedroom together. there is no information provided about john leaving the bedroom or going to any other location. therefore, based on the last known location of john, we can conclude that john is still in the bedroom.	fully	bedroom	True	From sentence 5, we know that John and Mary travelled to the bedroom. There is no information about John moving to a different location after that.		"Reasoning: From sentence 5, we know that John and Mary travelled to the bedroom. There is no information about John moving to a different location after that.
+
+Answer: bedroom"	0.1892	0.027	False	False	False	True	0
+958	12	92	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Daniel went to the bedroom.
+8. Daniel and Sandra moved to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	from context sentence 7, we know that sandra and daniel went to the bedroom together. then, from context sentence 8, we know that daniel and sandra moved to the garden. since sandra was with daniel in both locations, we can conclude that sandra is now in the garden.	fully	garden	True	From sentence 8, we know that Daniel and Sandra moved to the garden. There is no information about Sandra moving to a different location after that.		"Reasoning: From sentence 8, we know that Daniel and Sandra moved to the garden. There is no information about Sandra moving to a different location after that.
+
+Answer: garden"	0.0	0.027	False	False	False	True	0
+959	12	92	4	"*TASK*
+Here are the context sentences:
+10. Daniel and John journeyed to the kitchen.
+11. Mary and Sandra journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from context sentence 11, we know that mary and sandra journeyed to the bathroom together. there is no information provided about mary leaving the bathroom or going to any other location. therefore, based on the last known location of mary, we can conclude that mary is still in the bathroom.	fully	bathroom	True	From sentence 11, we know that Mary and Sandra journeyed to the bathroom. There is no information about Mary moving to a different location after that.		"Reasoning: From sentence 11, we know that Mary and Sandra journeyed to the bathroom. There is no information about Mary moving to a different location after that.
+
+Answer: bathroom"	0.0263	0.0263	False	False	False	True	0
+960	12	92	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Sandra journeyed to the bedroom.
+14. Daniel and John journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from context sentence 13, we know that daniel and sandra journeyed to the bedroom together. however, from context sentence 14, we know that daniel and john journeyed to the bathroom. this implies that daniel left the bedroom and went to the bathroom with john. therefore, based on the last known location of daniel, we can conclude that daniel is in the bathroom.	fully	bathroom	True	From sentence 14, we know that Daniel and John journeyed to the bathroom. There is no information about Daniel moving to a different location after that.		"Reasoning: From sentence 14, we know that Daniel and John journeyed to the bathroom. There is no information about Daniel moving to a different location after that.
+
+Answer: bathroom"	0.0	0.0263	False	False	False	True	0

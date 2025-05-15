@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġspecific	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġschool	.	ĠSentence	Ġ	10	Ġmentions	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	,	Ġbut	Ġit	Ġdoesn	't	Ġprovide	Ġinformation	Ġabout	Ġher	Ġlocation	Ġbefore	Ġthat	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

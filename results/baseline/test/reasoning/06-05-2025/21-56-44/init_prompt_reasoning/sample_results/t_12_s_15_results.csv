@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+821	12	15	1	"*TASK*
+Here are the context sentences:
+1. Daniel and John travelled to the hallway.
+2. John and Mary went back to the office.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from the context sentences, we know that daniel and john travelled to the hallway together (sentence 1). there is no information about daniel leaving the hallway or going anywhere else. although john went back to the office with mary (sentence 2), there is no mention of daniel accompanying them. therefore, based on the available information, it is logical to conclude that daniel is still in the hallway.	fully	hallway	True	Since Daniel and John travelled to the hallway together, it is likely that Daniel is still in the hallway. However, John and Mary went back to the office, which does not necessarily mean that Daniel is not in the office as well. There is no information that suggests Daniel left the office.		"Reasoning: Since Daniel and John travelled to the hallway together, it is likely that Daniel is still in the hallway. However, John and Mary went back to the office, which does not necessarily mean that Daniel is not in the office as well. There is no information that suggests Daniel left the office.
+
+Answer: hallway"	0.0154	0.0154	False	False	False	True	0
+822	12	15	2	"*TASK*
+Here are the context sentences:
+4. John and Sandra travelled to the bedroom.
+5. John and Sandra went to the garden.
+
+Now, answer the following question:
+Where is Mary?"	office	"there is no mention of mary in the provided context sentences (4 and 5). however, we can look back at the previous context sentences (1 and 2) which mentioned mary. in sentence 2, it was stated that ""john and mary went back to the office"". there is no information about mary leaving the office or going anywhere else. therefore, based on the available information, it is logical to conclude that mary is still in the office."	none	not mentioned	False	There is no information about Mary's location in the given context sentences. Mary was mentioned in sentence 2, but her location was not specified. Since John and Sandra travelled to the bedroom and then to the garden, there is no direct connection between Mary's location and these locations.		"Reasoning: There is no information about Mary's location in the given context sentences. Mary was mentioned in sentence 2, but her location was not specified. Since John and Sandra travelled to the bedroom and then to the garden, there is no direct connection between Mary's location and these locations.
+
+Answer: not mentioned"	0.0469	0.0156	False	False	False	True	0
+823	12	15	3	"*TASK*
+Here are the context sentences:
+7. Mary and Daniel travelled to the garden.
+8. Daniel and John journeyed to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	in sentence 7, mary and daniel travelled to the garden together. then, in sentence 8, daniel and john journeyed to the office. there is no information about daniel leaving the office or going anywhere else after that. therefore, based on the available information, it is logical to conclude that daniel is in the office.	fully	garden	False	According to sentence 7, Mary and Daniel travelled to the garden together. Since there is no information that suggests Daniel left the garden, it is likely that Daniel is still in the garden. However, sentence 8 mentions that Daniel and John journeyed to the office, which does not necessarily mean that Daniel is not in the office as well. Since Daniel and John travelled together, it is possible that Daniel is in the office.		"Reasoning: According to sentence 7, Mary and Daniel travelled to the garden together. Since there is no information that suggests Daniel left the garden, it is likely that Daniel is still in the garden. However, sentence 8 mentions that Daniel and John journeyed to the office, which does not necessarily mean that Daniel is not in the office as well. Since Daniel and John travelled together, it is possible that Daniel is in the office.
+
+Answer: garden"	0.1183	0.0108	False	False	False	True	0
+824	12	15	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel went to the hallway.
+11. Mary and Daniel went back to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	in sentence 10, john and daniel went to the hallway together. then, in sentence 11, mary and daniel went back to the kitchen. this implies that daniel left the hallway and went to the kitchen with mary. there is no information about daniel leaving the kitchen or going anywhere else after that. therefore, based on the available information, it is logical to conclude that daniel is in the kitchen.	fully	kitchen	True	According to sentence 10, John and Daniel went to the hallway together. Since there is no information that suggests Daniel left the hallway, it is likely that Daniel is still in the hallway. However, sentence 11 mentions that Mary and Daniel went back to the kitchen, which suggests that Daniel is now in the kitchen.		"Reasoning: According to sentence 10, John and Daniel went to the hallway together. Since there is no information that suggests Daniel left the hallway, it is likely that Daniel is still in the hallway. However, sentence 11 mentions that Mary and Daniel went back to the kitchen, which suggests that Daniel is now in the kitchen.
+
+Answer: kitchen"	0.0	0.0141	False	False	False	True	0
+825	12	15	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John went back to the office.
+14. Mary and John travelled to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	office	in sentence 13, daniel and john went back to the office together. there is no information about daniel leaving the office or going anywhere else after that. sentence 14 mentions mary and john travelling to the garden, but it does not mention daniel. therefore, based on the available information, it is logical to conclude that daniel is still in the office.	fully	office	True	According to sentence 13, Daniel and John went back to the office together. Since there is no information that suggests Daniel left the office, it is likely that Daniel is still in the office. However, sentence 14 mentions that Mary and John travelled to the garden, which does not provide any information about Daniel's location.		"Reasoning: According to sentence 13, Daniel and John went back to the office together. Since there is no information that suggests Daniel left the office, it is likely that Daniel is still in the office. However, sentence 14 mentions that Mary and John travelled to the garden, which does not provide any information about Daniel's location.
+
+Answer: office"	0.0556	0.0139	False	False	False	True	0

@@ -1,0 +1,15 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+98	16	98	1	"*TASK*
+Here are the context sentences:
+1. Greg is a frog.
+2. Bernhard is a rhino.
+3. Greg is yellow.
+4. Lily is a frog.
+5. Lily is white.
+6. Julius is a frog.
+7. Julius is green.
+8. Brian is a rhino.
+9. Bernhard is yellow.
+
+Now, answer the following question:
+What color is Brian?"	yellow	since brian is a rhino (sentence 8), and bernhard is also a rhino (sentence 2) and yellow (sentence 9), it can be logically inferred that brian, being a rhino like bernhard, is also yellow.	fully		False	The question asks about the color of Brian, who is a rhino according to sentence 2. Since the color of a rhino is not mentioned in the given context, we need to infer the answer based on the information provided. Sentence 8 states that Brian is a rhino, and sentence 2 states that Bernhard is a rhino. However, there is no mention of the color of Bernhard's rhino. Therefore, we cannot determine the color of Brian		Reasoning: The question asks about the color of Brian, who is a rhino according to sentence 2. Since the color of a rhino is not mentioned in the given context, we need to infer the answer based on the information provided. Sentence 8 states that Brian is a rhino, and sentence 2 states that Bernhard is a rhino. However, there is no mention of the color of Bernhard's rhino. Therefore, we cannot determine the color of Brian	0.0707	0.0303	False	False	False	True	0

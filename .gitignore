@@ -31,12 +31,8 @@ settings/baseline/init_bl.txt
 settings/baseline/prompts/results/*
 settings/baseline/results/*
 
-# Old baseline
-baseline/
-
 # Results
 outputs/
-results/
 
 # Testing scripts
 test*.sh

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+311	1	63	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the garden.
+2. Daniel journeyed to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"from the context sentences, we know that daniel journeyed to the garden (sentence 2). this implies that daniel's current location is the garden, as he has traveled to that location. therefore, the answer to the question ""where is daniel?"" is indeed ""garden""."	fully	garden	True	The context sentences mention Sandra and Daniel journeying to the garden, which implies that they are both currently in the garden.		"Reasoning: The context sentences mention Sandra and Daniel journeying to the garden, which implies that they are both currently in the garden.
+
+Answer: garden"	0.0323	0.0323	False	False	False	True	0
+312	1	63	2	"*TASK*
+Here are the context sentences:
+4. John journeyed to the bedroom.
+5. Daniel journeyed to the office.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"the question asks about sandra's location, but the provided context sentences (4 and 5) do not mention sandra at all. however, we can look back at the previous context sentences (1 and 2) which mentioned sandra: ""1. sandra journeyed to the garden."" this sentence indicates that sandra's current location is the garden. therefore, the answer to the question ""where is sandra?"" is indeed ""garden""."	none	not mentioned	False	There is no mention of Sandra in the given context sentences, so we cannot determine her location.		"Reasoning: There is no mention of Sandra in the given context sentences, so we cannot determine her location.
+
+Answer: not mentioned"	0.1481	0.037	False	False	False	True	0
+313	1	63	3	"*TASK*
+Here are the context sentences:
+7. Mary journeyed to the garden.
+8. Sandra travelled to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	office	"the question asks about daniel's location, but the provided context sentences (7 and 8) do not mention daniel at all. however, we can look back at the previous context sentences (5) which mentioned daniel: ""5. daniel journeyed to the office."" this sentence indicates that daniel's current location is the office. therefore, the answer to the question ""where is daniel?"" is indeed ""office""."	none	office	True	The context sentences do not mention Daniel's location, but we know that Daniel journeyed to the office in a previous context (sentence 5). Since there is no new information about Daniel's location, we can assume he is still in the office.		"Reasoning: The context sentences do not mention Daniel's location, but we know that Daniel journeyed to the office in a previous context (sentence 5). Since there is no new information about Daniel's location, we can assume he is still in the office.
+
+Answer: office"	0.0877	0.0175	False	False	False	True	0
+314	1	63	4	"*TASK*
+Here are the context sentences:
+10. John travelled to the garden.
+11. Sandra travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"the question asks about sandra's location, and the provided context sentence (11) directly answers this question: ""11. sandra travelled to the bedroom."" this sentence indicates that sandra's current location is the bedroom. therefore, the answer to the question ""where is sandra?"" is indeed ""bedroom""."	fully	bedroom	True	According to the context sentence 11, Sandra travelled to the bedroom, which implies that she is currently in the bedroom.		"Reasoning: According to the context sentence 11, Sandra travelled to the bedroom, which implies that she is currently in the bedroom.
+
+Answer: bedroom"	0.0323	0.0323	False	False	False	False	0
+315	1	63	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the hallway.
+14. Mary went back to the kitchen.
+
+Now, answer the following question:
+Where is John?"	garden	"the question asks about john's location, but the provided context sentences (13 and 14) do not mention john at all. however, we can look back at the previous context sentences (10) which mentioned john: ""10. john travelled to the garden."" this sentence indicates that john's current location is the garden. therefore, the answer to the question ""where is john?"" is indeed ""garden""."	none	not mentioned	False	There is no mention of John's location in the given context sentences. We only know that John travelled to the garden in a previous context (sentence 10), but there is no new information about his current location.		"Reasoning: There is no mention of John's location in the given context sentences. We only know that John travelled to the garden in a previous context (sentence 10), but there is no new information about his current location.
+
+Answer: not mentioned"	0.0784	0.0196	False	False	False	True	0

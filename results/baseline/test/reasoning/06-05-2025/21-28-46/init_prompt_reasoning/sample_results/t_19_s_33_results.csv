@@ -1,0 +1,13 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1940	19	33	1	"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the bathroom.
+2. The hallway is north of the bedroom.
+3. The office is east of the bedroom.
+4. The kitchen is south of the bathroom.
+5. The garden is south of the bedroom.
+
+Now, answer the following question:
+How do you go from the garden to the bathroom?"	north west	from the context sentences, we know the relative positions of the rooms and areas. to go from the garden to the bathroom, we need to find the path that connects them.	fully	east, north	False	Since the garden is south of the bedroom (sentence 5), and the bedroom is east of the bathroom (sentence 1), we need to move east from the garden to reach the bedroom, and then north from the bedroom to reach the bathroom.		"Reasoning: Since the garden is south of the bedroom (sentence 5), and the bedroom is east of the bathroom (sentence 1), we need to move east from the garden to reach the bedroom, and then north from the bedroom to reach the bathroom.
+
+Answer: east, north"	0.1525	0.0339	False	False	False	False	0

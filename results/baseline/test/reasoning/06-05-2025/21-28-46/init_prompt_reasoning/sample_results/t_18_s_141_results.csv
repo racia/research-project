@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1858	18	141	1	"*TASK*
+Here are the context sentences:
+1. The suitcase is bigger than the chocolate.
+2. The suitcase is bigger than the box of chocolates.
+3. The chest is bigger than the box of chocolates.
+4. The box of chocolates fits inside the container.
+5. The box is bigger than the box of chocolates.
+6. The box of chocolates fits inside the box.
+7. The box of chocolates is bigger than the chocolate.
+8. The container is bigger than the suitcase.
+9. The box of chocolates is bigger than the chocolate.
+10. The container is bigger than the box of chocolates.
+
+Now, answer the following question:
+Is the container bigger than the chocolate?"	yes	from sentence 10, we know that the container is bigger than the box of chocolates.	fully	yes	True	The container is bigger than the box of chocolates (from sentence 10), and the box of chocolates is bigger than the chocolate (from sentence 7). Therefore, the container is bigger than the chocolate.		"Reasoning: The container is bigger than the box of chocolates (from sentence 10), and the box of chocolates is bigger than the chocolate (from sentence 7). Therefore, the container is bigger than the chocolate.
+
+Answer: yes"	0.2292	0.0417	False	False	False	False	0
+1859	18	141	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	from sentence 1, we know that the suitcase is bigger than the chocolate.	none	no	True	The suitcase is bigger than the chocolate (from sentence 1). Therefore, the chocolate is not bigger than the suitcase.		"Reasoning: The suitcase is bigger than the chocolate (from sentence 1). Therefore, the chocolate is not bigger than the suitcase.
+
+Answer: no"	0.129	0.0645	False	False	False	False	0
+1860	18	141	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the suitcase fit in the chocolate?"	no	from sentence 1, we know that the suitcase is bigger than the chocolate.	none	no	True	The suitcase is bigger than the chocolate (from sentence 1), which means the suitcase cannot fit inside the chocolate.		"Reasoning: The suitcase is bigger than the chocolate (from sentence 1), which means the suitcase cannot fit inside the chocolate.
+
+Answer: no"	0.1	0.0667	False	False	False	False	0
+1861	18	141	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	from sentence 1, we know that the suitcase is bigger than the chocolate.	none	no	True	The suitcase is bigger than the chocolate (from sentence 1). Therefore, the chocolate is not bigger than the suitcase.		"Reasoning: The suitcase is bigger than the chocolate (from sentence 1). Therefore, the chocolate is not bigger than the suitcase.
+
+Answer: no"	0.0968	0.0645	False	False	False	False	0
+1862	18	141	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	from sentence 1, we know that the suitcase is bigger than the chocolate.	none	no	True	The suitcase is bigger than the chocolate (from sentence 1). Therefore, the chocolate is not bigger than the suitcase.		"Reasoning: The suitcase is bigger than the chocolate (from sentence 1). Therefore, the chocolate is not bigger than the suitcase.
+
+Answer: no"	0.0968	0.0645	False	False	False	False	0

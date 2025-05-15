@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+94	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+95	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġoffice	?Ċ

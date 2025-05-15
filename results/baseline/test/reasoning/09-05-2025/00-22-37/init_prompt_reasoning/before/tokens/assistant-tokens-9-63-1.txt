@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠDaniel	's	Ġand	ĠMary	's	Ġlocations	.	ĠSentence	Ġ	1	Ġstates	Ġthat	ĠDaniel	Ġis	Ġnot	Ġin	Ġthe	Ġbathroom	,	Ġand	ĠSentence	Ġ	2	Ġstates	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.	ĠSince	ĠMary	Ġis	Ġin	Ġthe	Ġbathroom	,	Ġit	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġnot	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

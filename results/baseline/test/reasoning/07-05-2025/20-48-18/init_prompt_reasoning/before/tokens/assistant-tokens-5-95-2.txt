@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġsentence	Ġthat	Ġmentions	ĠFred	Ġgiving	Ġsomething	Ġto	ĠMary	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠBill	Ġgoing	Ġto	Ġthe	Ġkitchen	,	Ġand	ĠFred	Ġgoing	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠFred	Ġgiving	Ġsomething	Ġto	ĠMary	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

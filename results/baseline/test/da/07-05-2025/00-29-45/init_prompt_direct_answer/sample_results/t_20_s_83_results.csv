@@ -1,0 +1,67 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2388	20	83	1	"*TASK*
+Here are the context sentences:
+1. Yann is bored.
+
+Now, answer the following question:
+Where will yann go?"	garden	there is no direct information provided about yann's destination. however, it is mentioned that yann is bored. a common activity people do when they are bored is to go outside or engage in a leisure activity. a garden is a common outdoor location where people often go to relax or engage in leisure activities. therefore, it is a logical inference that yann, being bored, might go to the garden to alleviate their boredom.	fully	garden	True			Answer: garden	0.0	0.25	False	False	False	False	0
+2389	20	83	2	"*TASK*
+Here are the context sentences:
+3. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	when someone is tired, a common and logical action they take is to go to a place where they can rest. a bedroom is a typical location in a house where people go to sleep or rest. therefore, it is a reasonable inference that antoine, being tired, will go to the bedroom to rest or sleep.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+2390	20	83	3	"*TASK*
+Here are the context sentences:
+5. Yann moved to the garden.
+
+Now, answer the following question:
+Why did yann go to the garden?"	bored	in a previous context (1. yann is bored), it was mentioned that yann is bored. now, it is stated that yann moved to the garden. a logical connection can be made between these two statements. when someone is bored, they often look for a change of environment or an activity to alleviate their boredom. the garden is a common outdoor location where people often go to relax or engage in leisure activities. therefore, it is a reasonable inference that yann, being	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0
+2391	20	83	4	"*TASK*
+Here are the context sentences:
+7. Antoine moved to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	in a previous context (3. antoine is tired), it was mentioned that antoine is tired. now, it is stated that antoine moved to the bedroom. a logical connection can be made between these two statements. when someone is tired, they often look for a place to rest or sleep. the bedroom is a typical location in a house where people go to sleep or rest. therefore, it is a reasonable inference that antoine, being tired, went to the bedroom to	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2392	20	83	5	"*TASK*
+Here are the context sentences:
+9. Yann picked up the football there.
+
+Now, answer the following question:
+Why did yann get the football?"	bored	in a previous context (1. yann is bored), it was mentioned that yann is bored. now, it is stated that yann picked up the football. a logical connection can be made between these two statements. when someone is bored, they often look for an activity to engage in to alleviate their boredom. picking up a football is a common action that can lead to playing with it, which is a leisure activity. therefore, it is a reasonable inference that yann,	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0
+2393	20	83	6	"*TASK*
+Here are the context sentences:
+11. Sumit is thirsty.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	"""reasoning: <reasoning>"""	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+2394	20	83	7	"*TASK*
+Here are the context sentences:
+13. Antoine grabbed the pajamas there.
+
+Now, answer the following question:
+Why did antoine get the pajamas?"	tired	"""reasoning: <reasoning>"""	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2395	20	83	8	"*TASK*
+Here are the context sentences:
+15. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	"""reasoning: <reasoning>"""	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+2396	20	83	9	"*TASK*
+Here are the context sentences:
+17. Jason went back to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	"""reasoning: <reasoning>"""	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2397	20	83	10	"*TASK*
+Here are the context sentences:
+19. Sumit went back to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	thirsty	"""reasoning: <reasoning>"""	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0
+2398	20	83	11	"*TASK*
+Here are the context sentences:
+21. Sumit picked up the milk there.
+
+Now, answer the following question:
+Why did sumit get the milk?"	thirsty	"""reasoning: <reasoning>"""	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0

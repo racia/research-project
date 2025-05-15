@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2501	14	51	1	"*TASK*
+Here are the context sentences:
+1. This morning Mary journeyed to the park.
+2. Yesterday Mary moved to the school.
+
+Now, answer the following question:
+Where was Mary before the park?"	school	"from the context sentences, we know that mary journeyed to the park this morning (sentence 1). however, the question asks about mary's location before she went to the park. since sentence 2 mentions that mary moved to the school yesterday, it can be inferred that mary was at the school before she went to the park this morning. this is because ""yesterday"" implies that mary was at the school before this morning, and there is no other information provided about mary's"	fully	school	True	Since Mary moved to the school yesterday, it is likely that she was at the school before going to the park. However, the question asks about her location before the park, which implies that we need to consider her journey to the park. Mary journeyed to the park, which means she was not at the park before she went there. Therefore, we need to look for her location before she journeyed to the park.		"Reasoning: Since Mary moved to the school yesterday, it is likely that she was at the school before going to the park. However, the question asks about her location before the park, which implies that we need to consider her journey to the park. Mary journeyed to the park, which means she was not at the park before she went there. Therefore, we need to look for her location before she journeyed to the park.
+
+Answer: school"	0.2283	0.0217	False	False	False	False	0
+2502	14	51	2	"*TASK*
+Here are the context sentences:
+4. This morning Fred moved to the cinema.
+5. Fred journeyed to the kitchen yesterday.
+
+Now, answer the following question:
+Where was Mary before the park?"	school	"there is no information about mary in the provided context sentences. the context sentences only talk about fred's movements, mentioning the cinema and the kitchen. the question asks about mary's location before the park, but there is no relevant information about mary in the context sentences. the answer ""school"" seems to be unrelated to the provided context. it appears that the context sentences and the question are referring to different entities and scenarios."	none	Not mentioned	False	The question asks about Mary's location before the park, but the context sentences provided do not mention Mary's location before the park. The sentences only mention Fred's locations, which are the cinema and the kitchen. Since Mary is not mentioned in the provided context, we cannot determine her location before the park.		"Reasoning: The question asks about Mary's location before the park, but the context sentences provided do not mention Mary's location before the park. The sentences only mention Fred's locations, which are the cinema and the kitchen. Since Mary is not mentioned in the provided context, we cannot determine her location before the park.
+
+Answer: Not mentioned"	0.1884	0.029	False	False	False	True	0
+2503	14	51	3	"*TASK*
+Here are the context sentences:
+7. Fred went back to the school this evening.
+8. Fred travelled to the bedroom this afternoon.
+
+Now, answer the following question:
+Where was Fred before the school?"	bedroom	"from the context sentences, we know that fred went back to the school this evening (sentence 7). the question asks about fred's location before he went to the school. sentence 8 mentions that fred travelled to the bedroom this afternoon. since ""this evening"" is later than ""this afternoon"", it can be inferred that fred was in the bedroom before he went back to the school."	fully	bedroom	True	According to sentence 8, Fred travelled to the bedroom this afternoon. Since he went back to the school this evening (sentence 7), it implies that he was at the bedroom before going back to the school.		"Reasoning: According to sentence 8, Fred travelled to the bedroom this afternoon. Since he went back to the school this evening (sentence 7), it implies that he was at the bedroom before going back to the school.
+
+Answer: bedroom"	0.1	0.04	False	False	False	False	0
+2504	14	51	4	"*TASK*
+Here are the context sentences:
+10. This evening Mary moved to the cinema.
+11. Mary went to the school this afternoon.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	school	"from the context sentences, we know that mary moved to the cinema this evening (sentence 10). the question asks about mary's location before she went to the cinema. sentence 11 mentions that mary went to the school this afternoon. since ""this evening"" is later than ""this afternoon"", it can be inferred that mary was at the school before she moved to the cinema."	fully	school	True	According to sentence 11, Mary went to the school this afternoon. Since she moved to the cinema this evening (sentence 10), it implies that she was at the school before going to the cinema.		"Reasoning: According to sentence 11, Mary went to the school this afternoon. Since she moved to the cinema this evening (sentence 10), it implies that she was at the school before going to the cinema.
+
+Answer: school"	0.0625	0.0417	False	False	False	False	0
+2505	14	51	5	"*TASK*
+Here are the context sentences:
+13. Julie moved to the park this morning.
+14. Julie journeyed to the cinema yesterday.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	school	"the provided context sentences and the question do not mention mary at all. the context sentences only talk about julie's movements, mentioning the park and the cinema. the question asks about mary's location before the cinema, but there is no relevant information about mary in the context sentences. the answer ""school"" seems to be unrelated to the provided context. it appears that the context sentences and the question are referring to different entities and scenarios."	none	Not mentioned	False	The question asks about Mary's location before the cinema, but the context sentences provided do not mention Mary's location. The sentences only mention Julie's locations, which are the park and the cinema. Since Mary is not mentioned in the provided context, we cannot determine her location before the cinema.		"Reasoning: The question asks about Mary's location before the cinema, but the context sentences provided do not mention Mary's location. The sentences only mention Julie's locations, which are the park and the cinema. Since Mary is not mentioned in the provided context, we cannot determine her location before the cinema.
+
+Answer: Not mentioned"	0.0	0.0303	False	False	False	True	0

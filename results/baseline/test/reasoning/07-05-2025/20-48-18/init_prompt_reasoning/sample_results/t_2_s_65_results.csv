@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+821	2	65	1	"*TASK*
+Here are the context sentences:
+1. Daniel grabbed the football there.
+2. Sandra picked up the apple there.
+3. Daniel dropped the football.
+4. Sandra discarded the apple.
+5. John got the football there.
+6. Sandra got the apple there.
+7. John went to the bathroom.
+8. Mary journeyed to the garden.
+
+Now, answer the following question:
+Where is the football?"	bathroom	from the context sentences, we know that daniel initially grabbed the football (sentence 1), then dropped it (sentence 3). later, john got the football (sentence 5). after that, john went to the bathroom (sentence 7). since john had the football when he went to the bathroom, it can be inferred that the football is now in the bathroom.	fully	bathroom	True	"The football was grabbed by Daniel, then dropped by him, and later got by John. Since John got the football ""there"", and John went to the bathroom, it is likely that the football is in the bathroom."		"Reasoning: The football was grabbed by Daniel, then dropped by him, and later got by John. Since John got the football ""there"", and John went to the bathroom, it is likely that the football is in the bathroom.
+
+Answer: bathroom"	0.098	0.0392	False	False	False	False	0
+822	2	65	2	"*TASK*
+Here are the context sentences:
+10. Sandra dropped the apple.
+11. Daniel went back to the bedroom.
+12. Sandra got the apple there.
+13. Daniel travelled to the garden.
+14. Daniel moved to the bedroom.
+15. John dropped the football.
+
+Now, answer the following question:
+Where is the football?"	bathroom	there is no direct information about the football being in the bathroom in the provided context sentences. however, we can infer the location of the football by connecting the context sentences with the previous parts of the conversation history. in the previous parts, we learned that john got the football (sentence 5) and then went to the bathroom (sentence 7). although there is no direct mention of the football in the current context sentences, it can be logically assumed that john still had the football when	partially	not mentioned	False	The football was dropped by John, but there is no information about where John dropped it. However, Daniel travelled to the garden, and since there is no mention of the football being moved or dropped again, it is likely that the football is still where John dropped it.		"Reasoning: The football was dropped by John, but there is no information about where John dropped it. However, Daniel travelled to the garden, and since there is no mention of the football being moved or dropped again, it is likely that the football is still where John dropped it.
+
+Answer: not mentioned"	0.1129	0.0323	False	False	False	True	0
+823	2	65	3	"*TASK*
+Here are the context sentences:
+17. Sandra left the apple.
+18. John grabbed the football there.
+19. Daniel got the apple there.
+20. John left the football.
+
+Now, answer the following question:
+Where is the football?"	bathroom	"the answer ""bathroom"" seems to be referring to the previous parts of the conversation history. in the previous parts, we learned that john got the football (sentence 5) and then went to the bathroom (sentence 7). although there is no direct mention of the football being in the bathroom in the current context sentences, we can infer that the football was still with john when he went to the bathroom. the current context sentences do not provide any new information about the football's"	partially	there	False	"The football was grabbed by John, and then John left the football. Since John left the football ""there"", and John grabbed the football ""there"", it is likely that the football is still ""there""."		"Reasoning: The football was grabbed by John, and then John left the football. Since John left the football ""there"", and John grabbed the football ""there"", it is likely that the football is still ""there"".
+
+Answer: there"	0.0208	0.0417	True	False	False	False	0
+824	2	65	4	"*TASK*
+Here are the context sentences:
+22. Daniel discarded the apple.
+23. Sandra went back to the bathroom.
+
+Now, answer the following question:
+Where is the football?"	bathroom	"the answer ""bathroom"" is consistent with the previous parts of the conversation history. in the previous parts, we learned that john got the football (sentence 5) and then went to the bathroom (sentence 7). although there is no direct mention of the football being in the bathroom in the current context sentences, we can infer that the football was still with john when he went to the bathroom. the current context sentences do not provide any new information about the football's location,"	none	not mentioned	False	"There is no mention of the football being moved or discarded in the given context sentences. The last mention of the football was John leaving it ""there"", but the location ""there"" is not specified. Since the football's location is not mentioned, it is unknown where the football is."		"Reasoning: There is no mention of the football being moved or discarded in the given context sentences. The last mention of the football was John leaving it ""there"", but the location ""there"" is not specified. Since the football's location is not mentioned, it is unknown where the football is.
+
+Answer: not mentioned"	0.0154	0.0308	False	False	False	True	0
+825	2	65	5	"*TASK*
+Here are the context sentences:
+25. Sandra went to the kitchen.
+26. Daniel travelled to the hallway.
+
+Now, answer the following question:
+Where is the football?"	bathroom	"the answer ""bathroom"" is consistent with the previous parts of the conversation history. in the previous parts, we learned that john got the football (sentence 5) and then went to the bathroom (sentence 7). there is no new information in the current context sentences that would suggest the football has been moved from the bathroom. the current sentences only provide information about sandra and daniel's movements, which do not affect the location of the football. therefore, it can be inferred that"	none	not mentioned	False	"There is no mention of the football being moved or mentioned in the given context sentences. The last mention of the football was John leaving it ""there"", but the location ""there"" is not specified. Since the football's location is not mentioned, it is unknown where the football is."		"Reasoning: There is no mention of the football being moved or mentioned in the given context sentences. The last mention of the football was John leaving it ""there"", but the location ""there"" is not specified. Since the football's location is not mentioned, it is unknown where the football is.
+
+Answer: not mentioned"	0.0154	0.0308	False	False	False	True	0

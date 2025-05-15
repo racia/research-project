@@ -1,0 +1,67 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1790	20	27	1	"*TASK*
+Here are the context sentences:
+1. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	when jason is tired, it is logical to assume that he will go to a place where he can rest. in most cases, people go to their bedroom to rest or sleep when they are tired. therefore, based on the context, it is reasonable to conclude that jason will go to his bedroom.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+1791	20	27	2	"*TASK*
+Here are the context sentences:
+3. Yann is tired.
+
+Now, answer the following question:
+Where will yann go?"	bedroom	the context states that yann is tired, which implies that he needs to rest. in most cases, people go to their bedroom to rest or sleep when they are tired. therefore, based on the context, it is reasonable to conclude that yann will go to his bedroom.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+1792	20	27	3	"*TASK*
+Here are the context sentences:
+5. Sumit is hungry.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	the context states that sumit is hungry, which implies that he needs to eat. in most cases, people go to the kitchen to prepare or find food when they are hungry. therefore, based on the context, it is reasonable to conclude that sumit will go to the kitchen.	fully		False	No answer provided. The context sentences do not mention where Sumit will		No answer provided. The context sentences do not mention where Sumit will	0.0	0.0714	False	False	False	True	0
+1793	20	27	4	"*TASK*
+Here are the context sentences:
+7. Sumit went to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	hungry	the context states that sumit went to the kitchen, and we know from the previous context (5) that sumit is hungry. it is logical to assume that sumit went to the kitchen because he is hungry, as the kitchen is a common place where people go to prepare or find food when they are hungry. therefore, it is reasonable to conclude that sumit went to the kitchen because he is hungry.	none	hungry	True			Answer: hungry	0.0	0.25	False	False	False	False	0
+1794	20	27	5	"*TASK*
+Here are the context sentences:
+9. Yann journeyed to the bedroom.
+
+Now, answer the following question:
+Why did yann go to the bedroom?"	tired	the context states that yann journeyed to the bedroom, and we know from the previous context (3) that yann is tired. it is logical to assume that yann went to the bedroom because he is tired, as the bedroom is a common place where people go to rest or sleep when they are tired. therefore, it is reasonable to conclude that yann went to the bedroom because he is tired.	none		False	No answer provided. The context sentences do not mention Yann going to		No answer provided. The context sentences do not mention Yann going to	0.0	0.0714	False	False	False	True	0
+1795	20	27	6	"*TASK*
+Here are the context sentences:
+11. Antoine is thirsty.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	the context states that antoine is thirsty, which implies that he needs to quench his thirst. in most cases, people go to the kitchen to get a drink when they are thirsty, as it is a common place where drinks are typically found. therefore, it is reasonable to conclude that antoine will go to the kitchen.	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+1796	20	27	7	"*TASK*
+Here are the context sentences:
+13. Sumit picked up the apple there.
+
+Now, answer the following question:
+Why did sumit get the apple?"	hungry	 implies that he needs to quench his thirst. in most cases, people go to the kitchen to get a drink when they are thirsty, as it is a common place where drinks are typically found. therefore, based on the context, it is reasonable to conclude that antoine will go to the kitchen.	none		False	No answer provided. The context sentences do not mention Sumit getting an		No answer provided. The context sentences do not mention Sumit getting an	0.0	0.0714	False	False	False	True	0
+1797	20	27	8	"*TASK*
+Here are the context sentences:
+15. Yann took the pajamas there.
+
+Now, answer the following question:
+Why did yann get the pajamas?"	tired	 implies that he needs to quench his thirst. in most cases, people go to the kitchen to get a drink when they are thirsty, as it is a common place where drinks are typically found. therefore, based on the context, it is reasonable to conclude that antoine will go to the kitchen.	none		False	No answer provided. The context sentences do not mention Yann getting paj		No answer provided. The context sentences do not mention Yann getting paj	0.0	0.0714	False	False	False	True	0
+1798	20	27	9	"*TASK*
+Here are the context sentences:
+17. Jason went back to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	 implies that he needs to quench his thirst. in most cases, people go to the kitchen to get a drink when they are thirsty, as it is a common place where drinks are typically found. therefore, based on the context, it is reasonable to conclude that antoine will go to the kitchen.	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+1799	20	27	10	"*TASK*
+Here are the context sentences:
+19. Antoine journeyed to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	thirsty	 implies that he needs to quench his thirst. in most cases, people go to the kitchen to get a drink when they are thirsty, as it is a common place where drinks are typically found. therefore, based on the context, it is reasonable to conclude that antoine will go to the kitchen.	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0
+1800	20	27	11	"*TASK*
+Here are the context sentences:
+21. Antoine got the milk there.
+
+Now, answer the following question:
+Why did antoine get the milk?"	thirsty	 implies that he needs to quench his thirst. in most cases, people go to the kitchen to get a drink when they are thirsty, as it is a common place where drinks are typically found. therefore, based on the context, it is reasonable to conclude that antoine will go to the kitchen.	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0

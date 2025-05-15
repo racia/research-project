@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+757	17	83	1	"*TASK*
+Here are the context sentences:
+1. The red square is above the red sphere.
+2. The triangle is to the right of the red sphere.
+
+Now, answer the following question:
+Is the red square to the left of the triangle?"	yes	from context sentence 1, we know that the red square is above the red sphere. from context sentence 2, we know that the triangle is to the right of the red sphere. since the red sphere is below the red square (from sentence 1) and to the left of the triangle (from sentence 2), we can logically conclude that the red square is above and to the left of the triangle, which means the red square is to the left of the triangle.	fully	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+758	17	83	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square below the triangle?"	no	from the previous context sentences, we know that the red square is above the red sphere (sentence 1), and the triangle is to the right of the red sphere (sentence 2). since the red square is above the red sphere, and the triangle is to the right of the red sphere, it can be logically concluded that the red square is not below the triangle, but rather above it.	none	not mentioned	False			Answer: not mentioned	0.2	0.4	False	False	False	True	0
+759	17	83	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square above the triangle?"	yes	from the previous context sentences, we know that the red square is above the red sphere (sentence 1), and the triangle is to the right of the red sphere (sentence 2). since the red square is above the red sphere, and the triangle is to the right of the red sphere, it can be logically concluded that the red square is above the triangle.	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+760	17	83	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the right of the triangle?"	no	from the previous context sentences, we know that the red square is above the red sphere (sentence 1), and the triangle is to the right of the red sphere (sentence 2). since the triangle is to the right of the red sphere, and the red square is above the red sphere, it can be logically concluded that the red square is to the left of the triangle, not to the right of it.	none	not mentioned	False			Answer: not mentioned	0.2	0.4	False	False	False	True	0
+761	17	83	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle above the red square?"	no	from the previous context sentences, we know that the red square is above the red sphere (sentence 1), and the triangle is to the right of the red sphere (sentence 2). since the red square is above the red sphere, and the triangle is to the right of the red sphere, it can be logically concluded that the triangle is not above the red square, but rather below or at the same level as it.	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+762	17	83	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square above the triangle?"	yes	"""reasoning: <reasoning>"""	none	no	False			Answer: no	0.25	0.5	False	False	False	False	0
+763	17	83	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle below the red square?"	yes	"""reasoning: <reasoning>"""	none	not mentioned	False			Answer: not mentioned	0.2	0.4	False	False	False	True	0
+764	17	83	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle below the red square?"	yes	"""reasoning: <reasoning>"""	none	not mentioned	False			Answer: not mentioned	0.2	0.4	False	False	False	True	0

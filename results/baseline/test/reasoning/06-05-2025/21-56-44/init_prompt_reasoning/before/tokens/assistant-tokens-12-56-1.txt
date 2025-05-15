@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġin	Ġsentence	Ġ	1	,	Ġit	Ġimplies	Ġthat	Ġthey	Ġwere	Ġpreviously	Ġin	Ġthe	Ġoffice	.	ĠThen	,	Ġin	Ġsentence	Ġ	2	,	Ġthey	Ġmoved	Ġto	Ġthe	Ġgarden	Ġtogether	.	ĠThis	Ġsuggests	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	Ġwith	ĠSandra	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

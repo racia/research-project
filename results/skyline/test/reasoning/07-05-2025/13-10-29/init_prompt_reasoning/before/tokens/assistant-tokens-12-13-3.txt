@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	5	,	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.	ĠThen	,	Ġin	Ġsentence	Ġ	7	,	ĠSandra	Ġand	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	.	ĠSo	,	ĠSandra	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

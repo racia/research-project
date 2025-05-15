@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1696	5	20	1	"*TASK*
+Here are the context sentences:
+1. Mary grabbed the apple there.
+2. Mary gave the apple to Jeff.
+
+Now, answer the following question:
+Who did Mary give the apple to?"	jeff	"the context sentence ""mary gave the apple to jeff"" explicitly states that mary gave the apple to jeff, which directly answers the question of who mary gave the apple to."	fully	Jeff	True	Mary gave the apple to Jeff, and there is no other information about Mary giving the apple to anyone else, so it can be inferred that Mary gave the apple to Jeff.		"Reasoning: Mary gave the apple to Jeff, and there is no other information about Mary giving the apple to anyone else, so it can be inferred that Mary gave the apple to Jeff.
+
+Answer: Jeff"	0.0952	0.0238	False	False	False	True	0
+1697	5	20	2	"*TASK*
+Here are the context sentences:
+4. Jeff moved to the bathroom.
+5. Fred went to the bathroom.
+
+Now, answer the following question:
+Who gave the apple to Jeff?"	mary	"the question asks who gave the apple to jeff, and the answer is mary. although the provided context lines (4 and 5) do not directly mention the apple or mary, we can infer the answer by looking at the previous context lines (1 and 2) which stated ""mary grabbed the apple there"" and ""mary gave the apple to jeff"". these lines establish that mary gave the apple to jeff, which directly answers the question. the context lines 4 and 5"	none	Not mentioned	False	There is no information about who gave the apple to Jeff in the provided context sentences. The sentences only mention Jeff moving to the bathroom and Fred going to the bathroom, but do not mention the apple or its origin.		"Reasoning: There is no information about who gave the apple to Jeff in the provided context sentences. The sentences only mention Jeff moving to the bathroom and Fred going to the bathroom, but do not mention the apple or its origin.
+
+Answer: Not mentioned"	0.0392	0.0196	False	False	False	True	0
+1698	5	20	3	"*TASK*
+Here are the context sentences:
+7. Jeff passed the apple to Fred.
+8. Mary went to the bedroom.
+
+Now, answer the following question:
+What did Jeff give to Fred?"	apple	"the question asks what jeff gave to fred, and the answer is ""apple"". this is directly stated in context line 7, ""jeff passed the apple to fred"", which explicitly shows that jeff gave the apple to fred."	fully	Apple	True	According to sentence 7, Jeff passed the apple to Fred, so it can be inferred that Jeff gave the apple to Fred.		"Reasoning: According to sentence 7, Jeff passed the apple to Fred, so it can be inferred that Jeff gave the apple to Fred.
+
+Answer: Apple"	0.0	0.0303	False	False	False	False	0
+1699	5	20	4	"*TASK*
+Here are the context sentences:
+10. Fred journeyed to the office.
+11. Fred journeyed to the garden.
+
+Now, answer the following question:
+Who did Jeff give the apple to?"	fred	"the question asks who jeff gave the apple to, and the answer is ""fred"". this is inferred from the previous context lines (7) ""jeff passed the apple to fred"", which explicitly states that jeff gave the apple to fred. the current context lines (10 and 11) do not provide any new information about the apple or jeff, but we can rely on the previous information to answer the question."	none	Not mentioned	False	The context sentences do not provide any information about Jeff giving the apple to anyone. The sentences only mention Fred's journeys to the office and the garden, but do not mention Jeff or the apple.		"Reasoning: The context sentences do not provide any information about Jeff giving the apple to anyone. The sentences only mention Fred's journeys to the office and the garden, but do not mention Jeff or the apple.
+
+Answer: Not mentioned"	0.0213	0.0213	False	False	False	True	0
+1700	5	20	5	"*TASK*
+Here are the context sentences:
+13. Fred left the apple.
+14. Jeff journeyed to the hallway.
+15. Mary grabbed the milk there.
+16. Bill travelled to the bedroom.
+17. Mary passed the milk to Bill.
+18. Bill passed the milk to Mary.
+
+Now, answer the following question:
+What did Bill give to Mary?"	milk	"the question asks what bill gave to mary, and the answer is ""milk"". this is inferred from the context lines 17 and 18, which show that mary passed the milk to bill, and then bill passed the milk back to mary. therefore, bill gave the milk to mary."	fully	Milk	True	According to sentence 17, Bill passed the milk to Mary, so it can be inferred that Bill gave the milk to Mary.		"Reasoning: According to sentence 17, Bill passed the milk to Mary, so it can be inferred that Bill gave the milk to Mary.
+
+Answer: Milk"	0.0303	0.0303	False	False	False	False	0

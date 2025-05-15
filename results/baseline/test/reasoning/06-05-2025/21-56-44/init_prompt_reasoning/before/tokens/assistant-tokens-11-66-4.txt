@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġbut	Ġthe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠDaniel	's	Ġmovements	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

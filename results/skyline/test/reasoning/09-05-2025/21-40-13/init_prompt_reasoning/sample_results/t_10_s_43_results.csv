@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+211	10	43	1	"*TASK*
+Here are the context sentences:
+1. Julie went to the office.
+2. Bill is in the park.
+
+Now, answer the following question:
+Is Bill in the cinema?"	no	the context sentences provide information about the locations of two individuals, julie and bill. sentence 1 states that julie went to the office, which does not provide any information about bill's location. sentence 2 explicitly states that bill is in the park. there is no mention of bill being in the cinema. therefore, based on the provided information, it can be logically concluded that bill is not in the cinema.	fully	no	True	The context sentences do not mention Bill being in the cinema. In fact, sentence 2 states that Bill is in the park, which is a different location.		"Reasoning: The context sentences do not mention Bill being in the cinema. In fact, sentence 2 states that Bill is in the park, which is a different location.
+
+Answer: no"	0.075	0.025	False	False	False	True	0
+212	10	43	2	"*TASK*
+Here are the context sentences:
+4. Julie journeyed to the park.
+5. Bill journeyed to the cinema.
+
+Now, answer the following question:
+Is Julie in the bedroom?"	no	the context sentences provide information about the locations of two individuals, julie and bill. sentence 4 states that julie journeyed to the park, which implies that julie is currently in the park. there is no mention of julie being in the bedroom. similarly, sentence 5 provides information about bill's location, but it does not mention julie's location in relation to the bedroom. therefore, based on the provided information, it can be logically concluded that julie is not in the bedroom.	fully	no	True	The context sentences do not mention Julie being in the bedroom. In fact, sentence 4 states that Julie journeyed to the park, which is a different location.		"Reasoning: The context sentences do not mention Julie being in the bedroom. In fact, sentence 4 states that Julie journeyed to the park, which is a different location.
+
+Answer: no"	0.05	0.025	False	False	False	True	0
+213	10	43	3	"*TASK*
+Here are the context sentences:
+7. Mary moved to the kitchen.
+8. Mary is in the office.
+
+Now, answer the following question:
+Is Mary in the office?"	yes	sentence 8 explicitly states that mary is in the office. this sentence directly answers the question, and therefore, it can be logically concluded that mary is indeed in the office. the previous sentence 7, which states that mary moved to the kitchen, seems to contradict sentence 8, but since sentence 8 is more recent and directly answers the question, it takes precedence, and we can conclude that mary is in the office.	fully	yes	True	Sentence 8 explicitly states that Mary is in the office.		"Reasoning: Sentence 8 explicitly states that Mary is in the office.
+
+Answer: yes"	0.0	0.0526	False	False	False	False	0
+214	10	43	4	"*TASK*
+Here are the context sentences:
+10. Fred is in the cinema.
+11. Mary journeyed to the park.
+
+Now, answer the following question:
+Is Bill in the cinema?"	yes	"there is no mention of bill in the context sentences. sentence 10 states that fred is in the cinema, and sentence 11 states that mary journeyed to the park. there is no information provided about bill's location. therefore, it cannot be logically concluded that bill is in the cinema. the answer ""yes"" seems to be incorrect based on the provided information."	none	not mentioned	False	The context sentences do not mention Bill being in the cinema. In fact, sentence 10 states that Fred is in the cinema, which is a different person.		"Reasoning: The context sentences do not mention Bill being in the cinema. In fact, sentence 10 states that Fred is in the cinema, which is a different person.
+
+Answer: not mentioned"	0.025	0.025	False	False	False	True	0
+215	10	43	5	"*TASK*
+Here are the context sentences:
+13. Julie moved to the office.
+14. Julie went to the bedroom.
+
+Now, answer the following question:
+Is Julie in the office?"	no	sentence 13 states that julie moved to the office, which initially suggests that julie is in the office. however, sentence 14 states that julie went to the bedroom, which implies that julie has left the office and is now in the bedroom. therefore, based on the sequence of events, it can be logically concluded that julie is no longer in the office, but rather in the bedroom.	fully	no	True	Sentence 13 states that Julie moved to the office, but sentence 14 states that Julie went to the bedroom, which implies that Julie is no longer in the office.		"Reasoning: Sentence 13 states that Julie moved to the office, but sentence 14 states that Julie went to the bedroom, which implies that Julie is no longer in the office.
+
+Answer: no"	0.0244	0.0244	False	False	False	False	0

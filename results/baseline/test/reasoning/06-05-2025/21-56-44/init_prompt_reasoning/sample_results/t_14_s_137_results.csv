@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2931	14	137	1	"*TASK*
+Here are the context sentences:
+1. Julie moved to the cinema yesterday.
+2. Bill went back to the bedroom yesterday.
+3. This morning Julie journeyed to the bedroom.
+4. Mary journeyed to the cinema this morning.
+5. Fred travelled to the cinema yesterday.
+6. Mary moved to the bedroom yesterday.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	cinema	from context sentence 3, we know that julie journeyed to the bedroom this morning. to determine where julie was before the bedroom, we need to look at julie's previous location. in context sentence 1, we are told that julie moved to the cinema yesterday. since julie was in the cinema yesterday and journeyed to the bedroom this morning, we can logically conclude that julie was at the cinema before the bedroom.	fully		False	Julie moved to the cinema yesterday, and then journeyed to the bedroom this morning. This implies that Julie was not in the bedroom yesterday, but rather somewhere else. Since Julie moved to the cinema yesterday, it is likely that she was somewhere else before moving to the cinema. The only other context sentence that mentions Julie's location before moving to the cinema is sentence 1, which states that Julie moved to the cinema yesterday. Therefore, Julie was likely at a location other than the		Reasoning: Julie moved to the cinema yesterday, and then journeyed to the bedroom this morning. This implies that Julie was not in the bedroom yesterday, but rather somewhere else. Since Julie moved to the cinema yesterday, it is likely that she was somewhere else before moving to the cinema. The only other context sentence that mentions Julie's location before moving to the cinema is sentence 1, which states that Julie moved to the cinema yesterday. Therefore, Julie was likely at a location other than the	0.1111	0.0202	False	False	False	True	0
+2932	14	137	2	"*TASK*
+Here are the context sentences:
+8. Fred journeyed to the office this morning.
+9. This morning Bill moved to the office.
+
+Now, answer the following question:
+Where was Fred before the office?"	cinema	from context sentence 8, we know that fred journeyed to the office this morning. to determine where fred was before the office, we need to look at fred's previous location. in a previous part of the conversation (context sentence 5), we are told that fred travelled to the cinema yesterday. there is no information about fred's movements between yesterday and this morning, so we can logically assume that fred was still at the cinema before journeying to the office this morning.	partially	not mentioned	False	Fred journeyed to the office this morning, which implies that he was not at the office before this morning. The only other context sentence that mentions Fred's location is sentence 5, which states that Fred travelled to the cinema yesterday. However, this sentence does not provide information about Fred's location before the cinema. Since Fred journeyed to the office this morning, it is likely that he was somewhere else before moving to the office.		"Reasoning: Fred journeyed to the office this morning, which implies that he was not at the office before this morning. The only other context sentence that mentions Fred's location is sentence 5, which states that Fred travelled to the cinema yesterday. However, this sentence does not provide information about Fred's location before the cinema. Since Fred journeyed to the office this morning, it is likely that he was somewhere else before moving to the office.
+
+Answer: not mentioned"	0.0316	0.0211	False	False	False	True	0
+2933	14	137	3	"*TASK*
+Here are the context sentences:
+11. Fred went back to the park this afternoon.
+12. This afternoon Bill travelled to the school.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	cinema	this question is not related to the new context sentences (11 and 12), but rather refers to a previous part of the conversation. we need to look at the previous context sentences to find the answer. in context sentence 3, we know that julie journeyed to the bedroom this morning. to determine where julie was before the bedroom, we need to look at julie's previous location. in context sentence 1, we are told that julie moved to the cinema	none	not mentioned	False	The question asks about Julie's location before the bedroom, but Julie is not mentioned in the given context sentences. The sentences only mention Fred and Bill's locations, but not Julie's. Therefore, we cannot determine Julie's location before the bedroom based on the provided information.		"Reasoning: The question asks about Julie's location before the bedroom, but Julie is not mentioned in the given context sentences. The sentences only mention Fred and Bill's locations, but not Julie's. Therefore, we cannot determine Julie's location before the bedroom based on the provided information.
+
+Answer: not mentioned"	0.129	0.0323	False	False	False	True	0
+2934	14	137	4	"*TASK*
+Here are the context sentences:
+14. Bill went back to the bedroom this evening.
+15. Julie journeyed to the office this afternoon.
+
+Now, answer the following question:
+Where was Fred before the park?"	office	this question refers to a previous part of the conversation. we need to look at the previous context sentences to find the answer. in context sentence 8, we know that fred journeyed to the office this morning. there is no information about fred's movements between this morning and this afternoon, so we can logically assume that fred was still at the office before going back to the park this afternoon (context sentence 11).	none	office	True	Fred went back to the park this afternoon, which implies that he was not at the park before this afternoon. The only other context sentence that mentions Fred's location is sentence 8, which states that Fred journeyed to the office this morning. Since Fred went back to the park this afternoon, it is likely that he was at the office before moving to the park.		"Reasoning: Fred went back to the park this afternoon, which implies that he was not at the park before this afternoon. The only other context sentence that mentions Fred's location is sentence 8, which states that Fred journeyed to the office this morning. Since Fred went back to the park this afternoon, it is likely that he was at the office before moving to the park.
+
+Answer: office"	0.0741	0.0247	False	False	False	True	0
+2935	14	137	5	"*TASK*
+Here are the context sentences:
+17. Mary went to the school this afternoon.
+18. This evening Fred went to the school.
+
+Now, answer the following question:
+Where was Fred before the school?"	park	this question refers to a previous part of the conversation. we need to look at the previous context sentences to find the answer. in context sentence 11, we know that fred went back to the park this afternoon. then, in context sentence 18, we are told that this evening fred went to the school. to determine where fred was before the school, we can logically conclude that fred was at the park before going to the school this evening.	partially	park	True	Fred went to the school this evening, which implies that he was not at the school before this evening. The only other context sentence that mentions Fred's location is sentence 14, which states that Fred went back to the park this afternoon. Since Fred went to the school this evening, it is likely that he was at the park before moving to the school.		"Reasoning: Fred went to the school this evening, which implies that he was not at the school before this evening. The only other context sentence that mentions Fred's location is sentence 14, which states that Fred went back to the park this afternoon. Since Fred went to the school this evening, it is likely that he was at the park before moving to the school.
+
+Answer: park"	0.0886	0.0253	False	False	False	True	0

@@ -1,0 +1,17 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+109	16	109	1	"*TASK*
+Here are the context sentences:
+1. Julius is a lion.
+2. Greg is a frog.
+3. Lily is a rhino.
+4. Brian is a frog.
+5. Julius is white.
+6. Lily is white.
+7. Greg is green.
+8. Bernhard is a lion.
+9. Brian is green.
+
+Now, answer the following question:
+What color is Bernhard?"	white	since bernhard is a lion (sentence 8), and julius is also a lion (sentence 1) and is white (sentence 5), it can be logically inferred that bernhard, being of the same species as julius, is also white.	fully	white	True	Bernhard is a lion, and Julius is also a lion, and Julius is white. Since Bernhard is also a lion, it is likely that Bernhard is also white.		"Reasoning: Bernhard is a lion, and Julius is also a lion, and Julius is white. Since Bernhard is also a lion, it is likely that Bernhard is also white.
+
+Answer: white"	0.0465	0.0698	False	False	False	False	0

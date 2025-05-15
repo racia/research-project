@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1281	12	107	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Sandra journeyed to the bedroom.
+2. John and Daniel went back to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from the context sentences, we know that daniel and sandra initially went to the bedroom (sentence 1). however, in sentence 2, it is stated that john and daniel went back to the hallway. this implies that daniel left the bedroom and moved to the hallway with john. therefore, the current location of daniel is the hallway.	fully	hallway	True	Daniel is mentioned in two sentences. In sentence 1, he is journeying to the bedroom with Sandra. In sentence 2, he is going back to the hallway with John. Since he is going back to the hallway, it implies that he was previously at the bedroom with Sandra.		"Reasoning: Daniel is mentioned in two sentences. In sentence 1, he is journeying to the bedroom with Sandra. In sentence 2, he is going back to the hallway with John. Since he is going back to the hallway, it implies that he was previously at the bedroom with Sandra.
+
+Answer: hallway"	0.2	0.0154	False	False	False	True	0
+1282	12	107	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Mary travelled to the bathroom.
+5. Mary and Daniel travelled to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that daniel and mary travelled to the bathroom (sentence 4). then, in sentence 5, it is stated that mary and daniel travelled to the bedroom. this implies that mary left the bathroom and moved to the bedroom with daniel. therefore, the current location of mary is the bedroom.	fully	bedroom	True	Mary is mentioned in two sentences. In sentence 4, she is travelling to the bathroom with Daniel. In sentence 5, she is travelling to the bedroom with Daniel. Since she is travelling to the bedroom, it implies that she is currently there.		"Reasoning: Mary is mentioned in two sentences. In sentence 4, she is travelling to the bathroom with Daniel. In sentence 5, she is travelling to the bedroom with Daniel. Since she is travelling to the bedroom, it implies that she is currently there.
+
+Answer: bedroom"	0.1379	0.0172	False	False	False	True	0
+1283	12	107	3	"*TASK*
+Here are the context sentences:
+7. Mary and Daniel went to the bathroom.
+8. Mary and John travelled to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from the context sentences, we know that mary and daniel went to the bathroom (sentence 7). however, in sentence 8, it is stated that mary and john travelled to the kitchen. this implies that mary left the bathroom and moved to the kitchen with john. therefore, the current location of mary is the kitchen.	fully	kitchen	True	Mary is mentioned in two sentences. In sentence 7, she is going to the bathroom with Daniel. In sentence 8, she is travelling to the kitchen with John. Since she is travelling to the kitchen, it implies that she is currently there.		"Reasoning: Mary is mentioned in two sentences. In sentence 7, she is going to the bathroom with Daniel. In sentence 8, she is travelling to the kitchen with John. Since she is travelling to the kitchen, it implies that she is currently there.
+
+Answer: kitchen"	0.1379	0.0172	False	False	False	True	0
+1284	12	107	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel moved to the bedroom.
+11. John and Daniel moved to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	from the context sentences, we know that john and daniel moved to the bedroom (sentence 10). however, in sentence 11, it is stated that john and daniel moved to the office. this implies that daniel left the bedroom and moved to the office with john. therefore, the current location of daniel is the office.	fully	office	True	Daniel is mentioned in two sentences. In sentence 10, he is moving to the bedroom with John. In sentence 11, he is moving to the office with John. Since he is moving to the office, it implies that he is currently there.		"Reasoning: Daniel is mentioned in two sentences. In sentence 10, he is moving to the bedroom with John. In sentence 11, he is moving to the office with John. Since he is moving to the office, it implies that he is currently there.
+
+Answer: office"	0.0	0.0172	False	False	False	True	0
+1285	12	107	5	"*TASK*
+Here are the context sentences:
+13. John and Daniel journeyed to the bathroom.
+14. Mary and Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that john and daniel journeyed to the bathroom (sentence 13). then, in sentence 14, it is stated that mary and sandra travelled to the bathroom. this implies that mary moved to the bathroom with sandra. therefore, the current location of mary is the bathroom.	fully	bathroom	True	Mary is mentioned in one sentence, which is sentence 14. According to this sentence, Mary is travelling to the bathroom with Sandra.		"Reasoning: Mary is mentioned in one sentence, which is sentence 14. According to this sentence, Mary is travelling to the bathroom with Sandra.
+
+Answer: bathroom"	0.0294	0.0294	False	False	False	True	0

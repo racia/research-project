@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	10	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.	ĠHowever	,	Ġin	Ġsentence	Ġ	11	,	Ġit	Ġis	Ġmentioned	Ġthat	ĠMary	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	ĠMary	Ġleft	Ġthe	Ġhallway	Ġand	Ġis	Ġnow	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

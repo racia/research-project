@@ -1,0 +1,41 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġtook	Ġthe	Ġfootball	.Ċ
+2	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+3	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+4	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+5	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+6	.	ĠJohn	Ġdropped	Ġthe	Ġfootball	.Ċ
+7	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+8	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+9	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+10	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+11	.	ĠSandra	Ġtook	Ġthe	Ġfootball	.Ċ
+12	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+13	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+14	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+15	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+16	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+17	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
+18	.	ĠMary	Ġdiscarded	Ġthe	Ġapple	.Ċ
+19	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+20	.	ĠMary	Ġgot	Ġthe	Ġapple	.Ċ
+21	.	ĠMary	Ġleft	Ġthe	Ġapple	.Ċ
+22	.	ĠMary	Ġtook	Ġthe	Ġapple	.Ċ
+23	.	ĠMary	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+24	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
+25	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+26	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+27	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+28	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+29	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+30	.	ĠMary	Ġgot	Ġthe	Ġapple	.Ċ
+31	.	ĠMary	Ġdiscarded	Ġthe	Ġapple	.Ċ
+32	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+33	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+34	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+35	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+36	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+37	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+38	.	ĠSandra	Ġdropped	Ġthe	Ġfootball	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġhallway	?Ċ

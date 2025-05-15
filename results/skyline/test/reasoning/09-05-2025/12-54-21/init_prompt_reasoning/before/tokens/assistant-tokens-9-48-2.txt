@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	4	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġleaving	Ġthe	Ġhallway	.	ĠĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,0 +1,67 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1929	20	40	1	"*TASK*
+Here are the context sentences:
+1. Yann is bored.
+
+Now, answer the following question:
+Where will yann go?"	garden	there is no direct information provided about yann's destination. however, it is mentioned that yann is bored. a common activity people do when they are bored is to go outside or engage in a leisure activity. a garden is a common outdoor location where people often go to relax or engage in leisure activities. therefore, it can be logically inferred that yann will go to the garden to alleviate their boredom.	fully	garden	True			Answer: garden	0.0	0.25	False	False	False	False	0
+1930	20	40	2	"*TASK*
+Here are the context sentences:
+3. Sumit is tired.
+
+Now, answer the following question:
+Where will sumit go?"	bedroom	when someone is tired, a common and logical action they take is to go to a place where they can rest. a bedroom is a typical location in a house where people go to sleep or rest. therefore, it can be inferred that sumit will go to the bedroom to rest and alleviate his tiredness.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+1931	20	40	3	"*TASK*
+Here are the context sentences:
+5. Antoine is thirsty.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	when someone is thirsty, a common and logical action they take is to go to a place where they can quench their thirst. a kitchen is a typical location in a house where people go to get a drink, as it is where the refrigerator, sink, and other sources of water are usually located. therefore, it can be inferred that antoine will go to the kitchen to get a drink and alleviate his thirst.	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+1932	20	40	4	"*TASK*
+Here are the context sentences:
+7. Jason is tired.
+
+Now, answer the following question:
+Where will jason go?"	bedroom	when someone is tired, a common and logical action they take is to go to a place where they can rest. a bedroom is a typical location in a house where people go to sleep or rest. therefore, it can be inferred that jason will go to the bedroom to rest and alleviate his tiredness.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+1933	20	40	5	"*TASK*
+Here are the context sentences:
+9. Sumit journeyed to the bedroom.
+
+Now, answer the following question:
+Why did sumit go to the bedroom?"	tired	"in a previous context (3), it was mentioned that ""sumit is tired"". it is logical to infer that sumit's tiredness led him to go to the bedroom, as bedrooms are typical locations where people go to rest and sleep. therefore, it can be concluded that sumit went to the bedroom because he was tired."	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+1934	20	40	6	"*TASK*
+Here are the context sentences:
+11. Antoine travelled to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	thirsty	"in a previous context (5), it was mentioned that ""antoine is thirsty"". it is logical to infer that antoine's thirst led him to go to the kitchen, as kitchens are typical locations where people go to get a drink. therefore, it can be concluded that antoine went to the kitchen because he was thirsty."	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0
+1935	20	40	7	"*TASK*
+Here are the context sentences:
+13. Yann travelled to the garden.
+
+Now, answer the following question:
+Why did yann go to the garden?"	bored	"in a previous context (5), it was mentioned that ""antoine is thirsty"". it is logical to infer that antoine's thirst led him to go to the kitchen, as kitchens are typical locations where people go to get a drink. therefore, it can be concluded that antoine went to the kitchen because he was thirsty."	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0
+1936	20	40	8	"*TASK*
+Here are the context sentences:
+15. Sumit grabbed the pajamas there.
+
+Now, answer the following question:
+Why did sumit get the pajamas?"	tired	"in a previous context (5), it was mentioned that ""antoine is thirsty"". it is logical to infer that antoine's thirst led him to go to the kitchen, as kitchens are typical locations where people go to get a drink. therefore, it can be concluded that antoine went to the kitchen because he was thirsty."	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+1937	20	40	9	"*TASK*
+Here are the context sentences:
+17. Yann grabbed the football there.
+
+Now, answer the following question:
+Why did yann get the football?"	bored	"in a previous context (5), it was mentioned that ""antoine is thirsty"". it is logical to infer that antoine's thirst led him to go to the kitchen, as kitchens are typical locations where people go to get a drink. therefore, it can be concluded that antoine went to the kitchen because he was thirsty."	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0
+1938	20	40	10	"*TASK*
+Here are the context sentences:
+19. Jason journeyed to the bedroom.
+
+Now, answer the following question:
+Why did jason go to the bedroom?"	tired	"in a previous context (5), it was mentioned that ""antoine is thirsty"". it is logical to infer that antoine's thirst led him to go to the kitchen, as kitchens are typical locations where people go to get a drink. therefore, it can be concluded that antoine went to the kitchen because he was thirsty."	none	tired	True			Answer: tired	0.25	0.25	False	False	False	False	0
+1939	20	40	11	"*TASK*
+Here are the context sentences:
+21. Antoine took the milk there.
+
+Now, answer the following question:
+Why did antoine get the milk?"	thirsty	"in a previous context (5), it was mentioned that ""antoine is thirsty"". it is logical to infer that antoine's thirst led him to go to the kitchen, as kitchens are typical locations where people go to get a drink. therefore, it can be concluded that antoine went to the kitchen because he was thirsty."	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0

@@ -1,0 +1,92 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1156	3	32	1	"*TASK*
+Here are the context sentences:
+1. Daniel went back to the garden.
+2. Mary got the apple.
+3. Sandra travelled to the bedroom.
+4. Daniel travelled to the office.
+5. Mary went back to the office.
+6. Mary left the apple.
+7. Mary moved to the bathroom.
+8. Mary moved to the bedroom.
+9. Sandra journeyed to the office.
+10. Sandra grabbed the apple.
+11. John went back to the hallway.
+12. John went back to the bedroom.
+13. Sandra discarded the apple.
+14. Sandra got the apple.
+15. John went back to the bathroom.
+16. Mary travelled to the bathroom.
+17. Daniel went to the hallway.
+18. Sandra travelled to the bathroom.
+19. Mary journeyed to the garden.
+20. John went back to the hallway.
+21. Mary moved to the bedroom.
+22. John journeyed to the garden.
+23. John moved to the bedroom.
+24. Sandra travelled to the office.
+25. Mary moved to the bathroom.
+26. Daniel moved to the bedroom.
+27. Sandra moved to the bathroom.
+28. Sandra put down the apple there.
+
+Now, answer the following question:
+Where was the apple before the office?"	bathroom	from the context sentences, we can track the movement of the apple. initially, mary got the apple (sentence 2). then, mary left the apple (sentence 6), but the location is not specified. later, sandra grabbed the apple (sentence 10), and then discarded it (sentence 13). after that, sandra got the apple again (sentence 14). finally, sandra put down the apple in the bathroom (sentence 28).	fully	bedroom	False	The apple was initially obtained by Mary (sentence 2). Then, Sandra grabbed the apple (sentence 10). After that, Sandra discarded the apple (sentence 13), and then got the apple again (sentence 14). Since the question asks about the apple before the office, we need to find the apple's location before Sandra travelled to the office (sentence 4). Since Sandra got the apple again after discarding it, the apple was with Sandra before she travelled to the office.		"Reasoning: The apple was initially obtained by Mary (sentence 2). Then, Sandra grabbed the apple (sentence 10). After that, Sandra discarded the apple (sentence 13), and then got the apple again (sentence 14). Since the question asks about the apple before the office, we need to find the apple's location before Sandra travelled to the office (sentence 4). Since Sandra got the apple again after discarding it, the apple was with Sandra before she travelled to the office.
+
+Answer: bedroom"	0.0094	0.0283	False	False	False	False	0
+1157	3	32	2	"*TASK*
+Here are the context sentences:
+30. John journeyed to the office.
+31. Sandra went back to the bedroom.
+
+Now, answer the following question:
+Where was the apple before the office?"	bathroom	to answer this question, we need to refer to the previous context sentences. the question asks about the location of the apple before it was in the office. from the previous context sentences, we know that sandra put down the apple in the bathroom (sentence 28). then, sandra travelled to the office (sentence 24). therefore, the apple was in the bathroom before it was in the office.	none	not mentioned	False	The context sentences provided are limited, and the previous conversation history is not available. However, based on the given sentences, we can infer that the apple's location before the office is not mentioned.		"Reasoning: The context sentences provided are limited, and the previous conversation history is not available. However, based on the given sentences, we can infer that the apple's location before the office is not mentioned.
+
+Answer: not mentioned"	0.0	0.0638	False	False	False	True	0
+1158	3	32	3	"*TASK*
+Here are the context sentences:
+33. John moved to the bathroom.
+34. John grabbed the apple.
+35. John left the apple.
+36. Mary went to the bedroom.
+37. John took the apple.
+38. Daniel moved to the office.
+39. Mary went to the kitchen.
+40. John journeyed to the bedroom.
+41. Mary took the football.
+42. Daniel went to the bathroom.
+43. Daniel journeyed to the kitchen.
+44. John went to the bathroom.
+45. Sandra travelled to the hallway.
+46. John left the apple.
+
+Now, answer the following question:
+Where was the apple before the bathroom?"	bedroom	to answer this question, we need to track the movement of the apple. from the context sentences, we know that john grabbed the apple in the bathroom (sentence 34), but then left it (sentence 35). later, john took the apple again (sentence 37), and then journeyed to the bedroom (sentence 40). before going to the bathroom, john was in the bedroom (sentence 40), and he had the apple with him. therefore, the apple	fully	bedroom	True	The apple was initially grabbed by John (sentence 34) and then left by him (sentence 46). Before the bathroom, John journeyed to the bedroom (sentence 40), so the apple was with John in the bedroom before he went to the bathroom.		"Reasoning: The apple was initially grabbed by John (sentence 34) and then left by him (sentence 46). Before the bathroom, John journeyed to the bedroom (sentence 40), so the apple was with John in the bedroom before he went to the bathroom.
+
+Answer: bedroom"	0.1333	0.05	False	False	False	False	0
+1159	3	32	4	"*TASK*
+Here are the context sentences:
+48. Mary put down the football.
+49. Daniel took the football there.
+
+Now, answer the following question:
+Where was the apple before the bathroom?"	bedroom	this question refers to a previous part of the conversation history. the context sentences provided (48 and 49) do not mention the apple, but the question asks about its location. to answer this, we need to refer to the previous context sentences. from the previous context sentences, we know that john took the apple (sentence 37) and then journeyed to the bedroom (sentence 40). before going to the bathroom, john was in the bedroom (sentence 40),	none	not mentioned	False	The context sentences provided do not mention the apple at all. The sentences only talk about the football. Therefore, we cannot determine the location of the apple before the bathroom.		"Reasoning: The context sentences provided do not mention the apple at all. The sentences only talk about the football. Therefore, we cannot determine the location of the apple before the bathroom.
+
+Answer: not mentioned"	0.0714	0.0714	False	False	False	True	0
+1160	3	32	5	"*TASK*
+Here are the context sentences:
+51. John took the apple.
+52. John travelled to the garden.
+53. John got the milk there.
+54. Sandra went to the bedroom.
+55. Daniel put down the football.
+56. John journeyed to the hallway.
+57. Mary went to the hallway.
+58. Mary went to the bedroom.
+59. John put down the apple.
+60. Sandra went to the hallway.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	garden	"""reasoning: <reasoning>"""	fully	garden	True	The apple was taken by John (sentence 51) and then put down by him (sentence 59). Before the hallway, John journeyed to the garden (sentence 52), so the apple was with John in the garden before he went to the hallway.		"Reasoning: The apple was taken by John (sentence 51) and then put down by him (sentence 59). Before the hallway, John journeyed to the garden (sentence 52), so the apple was with John in the garden before he went to the hallway.
+
+Answer: garden"	0.0	0.05	False	False	False	False	0

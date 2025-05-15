@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1866	5	54	1	"*TASK*
+Here are the context sentences:
+1. Jeff moved to the bedroom.
+2. Jeff moved to the office.
+3. Mary got the apple there.
+4. Bill got the milk there.
+5. Mary put down the apple.
+6. Fred went to the garden.
+7. Fred got the football there.
+8. Fred handed the football to Bill.
+
+Now, answer the following question:
+What did Fred give to Bill?"	football	from sentence 7, we know that fred got the football in the garden. then, in sentence 8, it is stated that fred handed the football to bill. therefore, it can be logically concluded that fred gave the football to bill.	fully	football	True	Fred handed the football to Bill, and there is no mention of Fred giving anything else to Bill. Therefore, it can be inferred that Fred gave the football to Bill.		"Reasoning: Fred handed the football to Bill, and there is no mention of Fred giving anything else to Bill. Therefore, it can be inferred that Fred gave the football to Bill.
+
+Answer: football"	0.0732	0.0244	False	False	False	True	0
+1867	5	54	2	"*TASK*
+Here are the context sentences:
+10. Fred went back to the hallway.
+11. Bill discarded the milk.
+
+Now, answer the following question:
+Who gave the football?"	fred	"from sentence 8 in the previous context, we know that ""fred handed the football to bill"". this implies that fred was the one who gave the football to bill. therefore, the answer to the question ""who gave the football?"" is indeed fred."	none	Fred	True	The context sentences only mention Fred getting the football (sentence 7) and handing it to Bill (sentence 8), but do not mention anyone else getting or giving the football. Therefore, it can be inferred that Fred gave the football to Bill.		"Reasoning: The context sentences only mention Fred getting the football (sentence 7) and handing it to Bill (sentence 8), but do not mention anyone else getting or giving the football. Therefore, it can be inferred that Fred gave the football to Bill.
+
+Answer: Fred"	0.1053	0.0175	False	False	False	True	0
+1868	5	54	3	"*TASK*
+Here are the context sentences:
+13. Fred grabbed the apple there.
+14. Mary moved to the bedroom.
+
+Now, answer the following question:
+Who gave the football to Bill?"	fred	"this question refers to a previous event in the conversation history. from sentence 8, we know that ""fred handed the football to bill"". this directly states that fred gave the football to bill. therefore, the answer to the question ""who gave the football to bill?"" is indeed fred."	none	Fred	True	The context sentences do not mention anyone giving the football to Bill. The previous question mentioned Fred handing the football to Bill, but this new information does not contradict that.		"Reasoning: The context sentences do not mention anyone giving the football to Bill. The previous question mentioned Fred handing the football to Bill, but this new information does not contradict that.
+
+Answer: Fred"	0.025	0.025	False	False	False	True	0
+1869	5	54	4	"*TASK*
+Here are the context sentences:
+16. Bill journeyed to the bedroom.
+17. Bill passed the football to Mary.
+
+Now, answer the following question:
+Who did Bill give the football to?"	mary	"from sentence 17, we know that ""bill passed the football to mary"". this directly states that bill gave the football to mary. therefore, the answer to the question ""who did bill give the football to?"" is indeed mary."	fully	Mary	True	The context sentence 17 explicitly states that Bill passed the football to Mary.		"Reasoning: The context sentence 17 explicitly states that Bill passed the football to Mary.
+
+Answer: Mary"	0.0455	0.0455	False	False	False	False	0
+1870	5	54	5	"*TASK*
+Here are the context sentences:
+19. Mary gave the football to Bill.
+20. Fred dropped the apple.
+
+Now, answer the following question:
+Who gave the football?"	mary	"this question refers to a previous event in the conversation history. from sentence 17, we know that ""bill passed the football to mary"", and then in sentence 19, we know that ""mary gave the football to bill"". this implies that mary had the football before giving it back to bill. therefore, mary must have received the football from someone earlier, and since sentence 8 states that ""fred handed the football to bill"", it can be inferred that mary received the football from"	fully	Mary	True	The context sentence 17 explicitly states that Mary passed the football to Bill, and sentence 19 contradicts that, stating that Mary gave the football to Bill. However, sentence 19 is the more recent and accurate information. Therefore, it can be inferred that Mary gave the football to Bill.		"Reasoning: The context sentence 17 explicitly states that Mary passed the football to Bill, and sentence 19 contradicts that, stating that Mary gave the football to Bill. However, sentence 19 is the more recent and accurate information. Therefore, it can be inferred that Mary gave the football to Bill.
+
+Answer: Mary"	0.0152	0.0152	False	False	False	True	0

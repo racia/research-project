@@ -1,0 +1,13 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1979	19	72	1	"*TASK*
+Here are the context sentences:
+1. The hallway is north of the office.
+2. The garden is west of the office.
+3. The garden is east of the bedroom.
+4. The kitchen is south of the office.
+5. The bathroom is south of the kitchen.
+
+Now, answer the following question:
+How do you go from the garden to the kitchen?"	east south	to go from the garden to the kitchen, we need to find the shortest path. from sentence 2, we know the garden is west of the office. from sentence 4, we know the kitchen is south of the office. therefore, to reach the kitchen from the garden, we need to move east to reach the office (since the garden is west of the office) and then move south to reach the kitchen (since the kitchen is south of the office). hence, the	fully	east, south	True	Since the garden is west of the office (sentence 2), and the kitchen is south of the office (sentence 4), we need to move east from the garden to reach the office, and then south from the office to reach the kitchen.		"Reasoning: Since the garden is west of the office (sentence 2), and the kitchen is south of the office (sentence 4), we need to move east from the garden to reach the office, and then south from the office to reach the kitchen.
+
+Answer: east, south"	0.1695	0.0339	False	False	False	False	0

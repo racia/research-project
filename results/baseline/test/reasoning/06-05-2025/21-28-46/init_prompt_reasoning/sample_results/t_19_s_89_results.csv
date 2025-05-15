@@ -1,0 +1,13 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1996	19	89	1	"*TASK*
+Here are the context sentences:
+1. The garden is east of the kitchen.
+2. The kitchen is north of the hallway.
+3. The bedroom is north of the office.
+4. The bathroom is south of the office.
+5. The kitchen is east of the office.
+
+Now, answer the following question:
+How do you go from the bathroom to the kitchen?"	north east	from the context sentences, we know the relative positions of the rooms.	fully	east	False	Since the bathroom is south of the office (sentence 4), and the kitchen is east of the office (sentence 5), we need to move from the bathroom to the office first, and then east to reach the kitchen.		"Reasoning: Since the bathroom is south of the office (sentence 4), and the kitchen is east of the office (sentence 5), we need to move from the bathroom to the office first, and then east to reach the kitchen.
+
+Answer: east"	0.2075	0.0377	False	False	False	False	0

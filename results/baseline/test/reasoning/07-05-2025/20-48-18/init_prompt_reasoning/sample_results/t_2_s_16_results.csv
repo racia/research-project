@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+576	2	16	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the garden.
+2. Sandra travelled to the bathroom.
+3. Daniel went back to the garden.
+4. Sandra got the apple there.
+5. Mary travelled to the bedroom.
+6. John went to the hallway.
+7. Sandra travelled to the office.
+8. Mary grabbed the milk there.
+
+Now, answer the following question:
+Where is the apple?"	office	from context sentence 4, we know that sandra got the apple in the garden. then, in context sentence 7, we see that sandra travelled to the office. since there is no mention of sandra dropping or giving away the apple, it is logical to assume that sandra still has the apple with her when she travels to the office. therefore, the apple is in the office.	fully	garden	False	The context sentences mention Sandra getting the apple in the garden (sentence 4), and there is no mention of the apple being moved or taken away from the garden. Therefore, it is likely that the apple is still in the garden.		"Reasoning: The context sentences mention Sandra getting the apple in the garden (sentence 4), and there is no mention of the apple being moved or taken away from the garden. Therefore, it is likely that the apple is still in the garden.
+
+Answer: garden"	0.1296	0.037	False	False	False	True	0
+577	2	16	2	"*TASK*
+Here are the context sentences:
+10. John went to the kitchen.
+11. Mary moved to the hallway.
+
+Now, answer the following question:
+Where is the milk?"	hallway	from the provided context, we don't have any direct information about the milk. however, we can refer to the previous parts of the conversation history. in context sentence 8, we know that mary grabbed the milk there (in the bedroom). then, in context sentence 11, we see that mary moved to the hallway. since there is no mention of mary dropping or giving away the milk, it is logical to assume that mary still has the milk with her when she moves	partially	office	False	The context sentences mention Mary grabbing the milk in the office (sentence 8), but there is no mention of the milk being moved or taken away from the office. Therefore, it is likely that the milk is still in the office.		"Reasoning: The context sentences mention Mary grabbing the milk in the office (sentence 8), but there is no mention of the milk being moved or taken away from the office. Therefore, it is likely that the milk is still in the office.
+
+Answer: office"	0.1481	0.037	False	False	False	True	0
+578	2	16	3	"*TASK*
+Here are the context sentences:
+13. Sandra discarded the apple.
+14. Mary left the milk.
+
+Now, answer the following question:
+Where is the milk?"	hallway	from the previous parts of the conversation history, we know that mary grabbed the milk in the bedroom (context sentence 8) and then moved to the hallway (context sentence 11). there is no mention of mary dropping or giving away the milk until context sentence 14, where it is stated that mary left the milk. it is logical to assume that mary left the milk in the last location she was in, which is the hallway.	partially	office or hallway	False	The context sentences mention Mary leaving the milk, but it doesn't specify where she left it. However, since Mary grabbed the milk in the office (sentence 8), it is likely that she left it in the office or hallway, as she moved to the hallway (sentence 11). There is no mention of the milk being moved or taken away from the office or hallway.		"Reasoning: The context sentences mention Mary leaving the milk, but it doesn't specify where she left it. However, since Mary grabbed the milk in the office (sentence 8), it is likely that she left it in the office or hallway, as she moved to the hallway (sentence 11). There is no mention of the milk being moved or taken away from the office or hallway.
+
+Answer: office or hallway"	0.0941	0.0235	False	False	False	True	0
+579	2	16	4	"*TASK*
+Here are the context sentences:
+16. Mary took the milk there.
+17. Mary left the milk.
+
+Now, answer the following question:
+Where is the milk?"	hallway	from the previous parts of the conversation history, we know that mary moved to the hallway (context sentence 11) and left the milk (context sentence 17). however, in context sentence 16, it is stated that mary took the milk there, which implies that mary took the milk in the hallway. then, mary left the milk (context sentence 17), which means mary left the milk in the same location where she took it, i.e., the hallway.	partially	not specified	False	The context sentences mention Mary taking the milk and then leaving it, but it doesn't specify where she took it or left it. However, since Mary took the milk, it is likely that she took it to a location where she left it. Since there is no mention of the milk being moved or taken away from that location, it is likely that the milk is still at that location.		"Reasoning: The context sentences mention Mary taking the milk and then leaving it, but it doesn't specify where she took it or left it. However, since Mary took the milk, it is likely that she took it to a location where she left it. Since there is no mention of the milk being moved or taken away from that location, it is likely that the milk is still at that location.
+
+Answer: not specified"	0.0465	0.0233	False	False	False	True	0
+580	2	16	5	"*TASK*
+Here are the context sentences:
+19. John got the football there.
+20. John moved to the hallway.
+
+Now, answer the following question:
+Where is the milk?"	hallway	the question asks about the location of the milk, but the provided context sentences (19 and 20) do not mention the milk. however, we can refer to the previous parts of the conversation history. in context sentence 17, we know that mary left the milk, and from the previous reasoning, we concluded that the milk was left in the hallway. the new context sentences (19 and 20) do not provide any information that would change the location of the milk,	none	not mentioned	False	There is no mention of the milk in the given context sentences. The sentences only mention John getting the football and moving to the hallway, but do not mention the milk.		"Reasoning: There is no mention of the milk in the given context sentences. The sentences only mention John getting the football and moving to the hallway, but do not mention the milk.
+
+Answer: not mentioned"	0.0238	0.0476	False	False	False	True	0

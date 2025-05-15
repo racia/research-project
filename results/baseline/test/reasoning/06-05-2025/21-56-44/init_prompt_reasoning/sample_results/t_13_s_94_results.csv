@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1966	13	94	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Sandra went back to the bedroom.
+2. Afterwards they went to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	from the context sentences, we know that daniel and sandra went back to the bedroom (sentence 1) and afterwards they went to the office (sentence 2). since the sequence of events is provided, we can infer that they moved from the bedroom to the office. therefore, sandra's current location is the office.	fully	office	True	Sandra's last known location was the bedroom, and then she went to the office with Daniel, so she is likely to be in the office.		"Reasoning: Sandra's last known location was the bedroom, and then she went to the office with Daniel, so she is likely to be in the office.
+
+Answer: office"	0.1389	0.0556	False	False	False	False	0
+1967	13	94	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Mary went to the kitchen.
+5. Afterwards they went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that daniel and mary went to the kitchen (sentence 4) and afterwards they went to the bathroom (sentence 5). since the sequence of events is provided, we can infer that they moved from the kitchen to the bathroom. therefore, mary's current location is the bathroom.	fully	bathroom	True	Mary's last known location was the kitchen, and then she went to the bathroom with Daniel, so she is likely to be in the bathroom.		"Reasoning: Mary's last known location was the kitchen, and then she went to the bathroom with Daniel, so she is likely to be in the bathroom.
+
+Answer: bathroom"	0.2222	0.0556	False	False	False	False	0
+1968	13	94	3	"*TASK*
+Here are the context sentences:
+7. John and Mary went back to the garden.
+8. Following that they went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that john and mary went back to the garden (sentence 7) and following that they went back to the bedroom (sentence 8). since the sequence of events is provided, we can infer that they moved from the garden to the bedroom. therefore, mary's current location is the bedroom.	fully	bedroom	True	Mary's last known location was the garden, and then she went back to the bedroom with John, so she is likely to be in the bedroom.		"Reasoning: Mary's last known location was the garden, and then she went back to the bedroom with John, so she is likely to be in the bedroom.
+
+Answer: bedroom"	0.0541	0.0541	False	False	False	False	0
+1969	13	94	4	"*TASK*
+Here are the context sentences:
+10. Mary and Daniel went back to the hallway.
+11. Then they went back to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	from the context sentences, we know that mary and daniel went back to the hallway (sentence 10) and then they went back to the office (sentence 11). since the sequence of events is provided, we can infer that they moved from the hallway to the office. therefore, mary's current location is the office.	fully	office	True	Mary's last known location was the hallway, and then she went back to the office with Daniel, so she is likely to be in the office.		"Reasoning: Mary's last known location was the hallway, and then she went back to the office with Daniel, so she is likely to be in the office.
+
+Answer: office"	0.2162	0.0541	False	False	False	False	0
+1970	13	94	5	"*TASK*
+Here are the context sentences:
+13. Sandra and Daniel went back to the bedroom.
+14. Afterwards they moved to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from the context sentences, we know that sandra and daniel went back to the bedroom (sentence 13) and afterwards they moved to the kitchen (sentence 14). since the sequence of events is provided, we can infer that they moved from the bedroom to the kitchen. therefore, sandra's current location is the kitchen.	fully	kitchen	True	Sandra's last known location was the bedroom, and then she moved to the kitchen with Daniel, so she is likely to be in the kitchen.		"Reasoning: Sandra's last known location was the bedroom, and then she moved to the kitchen with Daniel, so she is likely to be in the kitchen.
+
+Answer: kitchen"	0.0	0.0556	False	False	False	False	0

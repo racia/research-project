@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgiving	Ġanything	Ġto	ĠBill	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠMary	Ġleft	Ġthe	Ġfootball	Ġ(	sentence	Ġ	16	),	Ġand	ĠJeff	Ġgrabbed	Ġthe	Ġfootball	Ġ(	sentence	Ġ	17	),	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠBill	Ġreceiving	Ġanything	Ġfrom	ĠMary	.ĊĊ	Answer	:	ĠNothing	<|eot_id|>

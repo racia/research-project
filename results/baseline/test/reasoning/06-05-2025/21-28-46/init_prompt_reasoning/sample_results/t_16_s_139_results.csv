@@ -1,0 +1,17 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+139	16	139	1	"*TASK*
+Here are the context sentences:
+1. Brian is a rhino.
+2. Julius is a swan.
+3. Brian is gray.
+4. Bernhard is a frog.
+5. Greg is a rhino.
+6. Greg is gray.
+7. Bernhard is green.
+8. Lily is a swan.
+9. Julius is yellow.
+
+Now, answer the following question:
+What color is Lily?"	yellow	since lily is a swan (sentence 8), and julius is also a swan (sentence 2), we can infer that they share similar characteristics. julius is yellow (sentence 9), so it is logical to assume that lily, being a swan like julius, is also yellow.	fully	white	False	The question asks about the color of Lily, who is described as a swan in sentence 8. Since swans are typically white, and there is no mention of Lily having a different color, it can be inferred that Lily is likely white.		"Reasoning: The question asks about the color of Lily, who is described as a swan in sentence 8. Since swans are typically white, and there is no mention of Lily having a different color, it can be inferred that Lily is likely white.
+
+Answer: white"	0.1754	0.0526	False	False	False	True	0

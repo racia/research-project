@@ -1,0 +1,66 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1856	5	52	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the office.
+2. Jeff went to the garden.
+3. Jeff took the milk there.
+4. Jeff dropped the milk.
+5. Bill moved to the bathroom.
+6. Bill journeyed to the kitchen.
+7. Bill took the football there.
+8. Mary travelled to the bathroom.
+9. Mary journeyed to the office.
+10. Mary travelled to the bathroom.
+11. Jeff got the milk there.
+12. Jeff left the milk.
+13. Bill discarded the football.
+14. Jeff got the milk there.
+15. Bill took the football there.
+16. Jeff went back to the bedroom.
+17. Bill discarded the football there.
+18. Jeff handed the milk to Fred.
+
+Now, answer the following question:
+Who received the milk?"	fred	from the context sentences, we can track the movement of the milk. initially, jeff took the milk to the garden (sentence 3). then, he dropped it (sentence 4). later, jeff got the milk again in the bathroom (sentence 11). after that, jeff left the milk (sentence 12), but got it again (sentence 14). finally, jeff handed the milk to fred in the bedroom (sentence 18). therefore, the person who received	fully	Fred	True	The context sentences indicate that Jeff took the milk to the garden, dropped it, got it again, and then handed it to Fred.		"Reasoning: The context sentences indicate that Jeff took the milk to the garden, dropped it, got it again, and then handed it to Fred.
+
+Answer: Fred"	0.0	0.0294	False	False	False	False	0
+1857	5	52	2	"*TASK*
+Here are the context sentences:
+20. Bill took the football there.
+21. Bill went to the bathroom.
+
+Now, answer the following question:
+Who gave the milk to Fred?"	jeff	"the question asks who gave the milk to fred. from the provided context sentences, we don't see any information about bill giving milk to fred. however, we can look at the previous parts of the conversation history. in sentence 18, we see ""jeff handed the milk to fred."" this directly states that jeff gave the milk to fred. the new context sentences (20 and 21) don't provide any contradictory information, so we can conclude that jeff is the one who"	none	Not mentioned	False	There is no mention of milk in the given context sentences. The sentences only mention Bill taking the football to the bathroom.		"Reasoning: There is no mention of milk in the given context sentences. The sentences only mention Bill taking the football to the bathroom.
+
+Answer: Not mentioned"	0.0	0.0312	False	False	False	True	0
+1858	5	52	3	"*TASK*
+Here are the context sentences:
+23. Bill gave the football to Mary.
+24. Jeff journeyed to the hallway.
+
+Now, answer the following question:
+Who gave the milk?"	jeff	"the question asks who gave the milk. from the provided context sentences, we don't see any information about bill giving milk. however, we can look at the previous parts of the conversation history. in sentence 18, we see ""jeff handed the milk to fred."" this directly states that jeff gave the milk to fred. the new context sentences (23 and 24) don't provide any contradictory information, so we can conclude that jeff is the one who gave"	none	Not mentioned	False	The context sentences do not mention milk at all. They only mention Bill giving the football to Mary and Jeff journeying to the hallway.		"Reasoning: The context sentences do not mention milk at all. They only mention Bill giving the football to Mary and Jeff journeying to the hallway.
+
+Answer: Not mentioned"	0.0	0.0286	False	False	False	True	0
+1859	5	52	4	"*TASK*
+Here are the context sentences:
+26. Mary left the football.
+27. Jeff got the apple there.
+
+Now, answer the following question:
+What did Bill give to Mary?"	football	"the question asks what bill gave to mary. from the provided context sentences, we don't see any direct information about what bill gave to mary. however, we can look at the previous parts of the conversation history. in sentence 23, we see ""bill gave the football to mary."" this directly states that bill gave the football to mary. the new context sentences (26 and 27) don't provide any contradictory information, so we can conclude that bill gave the football to"	none	Not mentioned	False	The context sentences do not mention Bill giving anything to Mary. They only mention Mary leaving the football and Jeff getting an apple.		"Reasoning: The context sentences do not mention Bill giving anything to Mary. They only mention Mary leaving the football and Jeff getting an apple.
+
+Answer: Not mentioned"	0.0	0.0303	False	False	False	True	0
+1860	5	52	5	"*TASK*
+Here are the context sentences:
+29. Fred went back to the office.
+30. Jeff dropped the apple.
+31. Fred travelled to the bathroom.
+32. Mary picked up the football there.
+33. Mary left the football.
+34. Fred handed the milk to Mary.
+
+Now, answer the following question:
+Who did Fred give the milk to?"	mary	"the question asks who did fred give the milk to. from the provided context sentences, we can directly see the answer in sentence 34, ""fred handed the milk to mary."" this sentence explicitly states that fred gave the milk to mary. therefore, the correct answer is mary."	fully	Mary	True	According to context sentence 34, Fred handed the milk to Mary.		"Reasoning: According to context sentence 34, Fred handed the milk to Mary.
+
+Answer: Mary"	0.0	0.0476	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġwho	Ġgave	Ġthe	Ġapple	.	ĠWe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	Ġbecause	Ġsentence	Ġ	29	Ġstates	Ġ"	Mary	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	".ĊĊ	Answer	:	ĠMary	<|eot_id|>

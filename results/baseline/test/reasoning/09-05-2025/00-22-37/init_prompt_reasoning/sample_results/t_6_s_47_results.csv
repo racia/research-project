@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+231	6	47	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the hallway.
+2. Sandra picked up the apple there.
+
+Now, answer the following question:
+Is Daniel in the office?"	no	since daniel moved to the hallway (context sentence 1), it implies that daniel was previously in a different location, likely the office, and then moved to the hallway. there is no mention of daniel returning to the office or moving to any other location after that. therefore, based on the provided information, it can be logically concluded that daniel is not in the office.	fully	no	True	The question asks about Daniel's location, and the context sentences provide information about his movement to the hallway. There is no mention of Daniel going to the office or any other location besides the hallway.		"Reasoning: The question asks about Daniel's location, and the context sentences provide information about his movement to the hallway. There is no mention of Daniel going to the office or any other location besides the hallway.
+
+Answer: no"	0.087	0.0217	False	False	False	True	0
+232	6	47	2	"*TASK*
+Here are the context sentences:
+4. Daniel travelled to the garden.
+5. Daniel went back to the kitchen.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	yes	according to context sentence 4, daniel travelled to the garden, which means he was in the garden at some point. however, context sentence 5 states that daniel went back to the kitchen, implying that he returned to the kitchen from the garden. since there is no further information about daniel moving to another location, it can be logically concluded that daniel is currently in the kitchen.	fully	yes	True	The context sentences indicate that Daniel went to the garden and then returned to the kitchen. This implies that Daniel is currently in the kitchen.		"Reasoning: The context sentences indicate that Daniel went to the garden and then returned to the kitchen. This implies that Daniel is currently in the kitchen.
+
+Answer: yes"	0.0882	0.0294	False	False	False	False	0
+233	6	47	3	"*TASK*
+Here are the context sentences:
+7. Mary went back to the hallway.
+8. Sandra moved to the office.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	no	according to context sentence 8, sandra moved to the office, which means she is currently in the office. there is no mention of sandra moving to the bathroom or being in the bathroom at any point. therefore, based on the provided information, it can be logically concluded that sandra is not in the bathroom.	fully	no	True	The context sentences do not mention Sandra going to the bathroom or any other location besides the office. There is no information to suggest Sandra is in the bathroom.		"Reasoning: The context sentences do not mention Sandra going to the bathroom or any other location besides the office. There is no information to suggest Sandra is in the bathroom.
+
+Answer: no"	0.0263	0.0263	False	False	False	True	0
+234	6	47	4	"*TASK*
+Here are the context sentences:
+10. Daniel picked up the football there.
+11. Daniel put down the football.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	yes	"although the context sentences 10 and 11 do not explicitly mention daniel's location, they do mention daniel performing actions with the football, which implies that daniel is in the same location where the football is. since context sentence 5 (from a previous part of the conversation) states that ""daniel went back to the kitchen"", and there is no further information about daniel moving to another location, it can be logically concluded that daniel is still in the kitchen."	none	unknown	False	"The context sentences do not mention Daniel's location besides the mention of ""there"", which is not specific enough to determine the location. There is no information to suggest Daniel is in the kitchen."		"Reasoning: The context sentences do not mention Daniel's location besides the mention of ""there"", which is not specific enough to determine the location. There is no information to suggest Daniel is in the kitchen.
+
+Answer: unknown"	0.0444	0.0222	False	False	False	True	0
+235	6	47	5	"*TASK*
+Here are the context sentences:
+13. Sandra left the apple.
+14. Sandra travelled to the hallway.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	yes	according to context sentence 14, sandra travelled to the hallway, which explicitly states that sandra moved to the hallway. there is no further information about sandra leaving the hallway or moving to another location. therefore, it can be logically concluded that sandra is currently in the hallway.	fully	yes	True	The context sentences indicate that Sandra left the apple and then travelled to the hallway. This implies that Sandra is currently in the hallway.		"Reasoning: The context sentences indicate that Sandra left the apple and then travelled to the hallway. This implies that Sandra is currently in the hallway.
+
+Answer: yes"	0.0303	0.0303	False	False	False	False	0

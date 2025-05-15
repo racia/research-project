@@ -2,19 +2,23 @@ teacher:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
   max_new_tokens: 200
   temperature: 0.1
-  to_continue: false
+  to_continue: False
   mode: "eval"
+  interpretability:
+    use: False
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
   max_new_tokens: 200
   temperature: 0.1
-  to_continue: false
+  to_continue: False
   mode: "eval"
+  interpretability:
+    use: True
+    aggregate: True
 
 setting:
   name: 'Feedback'
-  interpretability: True
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
@@ -24,18 +28,20 @@ data:
     train: False
     valid: True
     test: False
-  # to get all tasks use (will be converted to None)
-  task_ids: ~
+  # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
+  task_ids: ~
   samples_per_task: 5
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
     context: True
     question: False
-  wrapper: # Added this section to align with SD
+  # if to wrap the part prompt with the task description
+  wrapper:
     context: |
+      *TASK*
       Here are the context sentences:
       {context}
     question: |
@@ -47,22 +53,25 @@ data:
 init_prompt:
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
-  # name of the prompt files serves as a basis for logging and result files
-  examples: # Added this section to align with SD
+  examples:
     add: True
     enumerated: True
     handpicked: True
     not_mentioned: True
     number: 1
     wrapper: |
-      *EXAMPLE{number}*
+      *EXAMPLE*
       {example}
-      *END OF EXAMPLE{number}*
+      *END OF EXAMPLE*
 
 feedback_prompt:
-  # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/feedback_prompt.txt"
+  history: |
+    Your student was given the following task:
+    """
+    {chat_history}
+    """
   wrapper: |
     The student's response was:
     {student_output}
@@ -77,7 +86,6 @@ logging:
   print_to_file: True
 
 results:
-  save_heatmaps: False
   headers:
     - id_
     - task_id
@@ -94,13 +102,13 @@ results:
     - model_output_after
     - exact_match_accuracy_after
     - soft_match_accuracy_after
-    - max_supp_target_after
+    - max_supp_attn_after
+    - attn_on_target_after
     - there_after
     - verbs_after
     - pronouns_after
     - not_mentioned_after
     - context_sents_hall_after
-    - feedback_iterations
     - model_answer_before
     - answer_correct_before
     - reasoning_correct_before
@@ -108,12 +116,13 @@ results:
     - model_output_before
     - exact_match_accuracy_before
     - soft_match_accuracy_before
-    - max_supp_target_before
+    - max_supp_attn_before
+    - attn_on_target_before
     - there_before
     - verbs_before
     - pronouns_before
     - not_mentioned_before
-    - feedback_iterations
+    - iterations
     - context_sents_hall_before
 
   hydra:

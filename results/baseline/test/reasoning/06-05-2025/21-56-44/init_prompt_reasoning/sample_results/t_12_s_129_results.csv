@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1391	12	129	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary journeyed to the bathroom.
+2. Daniel and Sandra went to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from the context sentences, we know that sandra initially went to the bathroom with mary (sentence 1). however, in sentence 2, it is stated that daniel and sandra went to the kitchen. this implies that sandra left the bathroom and went to the kitchen with daniel. therefore, the current location of sandra is the kitchen.	fully	kitchen	True	Sandra is mentioned in both sentences, and her location is not explicitly stated. However, we can infer that Sandra is with Mary in the bathroom (sentence 1) and later with Daniel in the kitchen (sentence 2).		"Reasoning: Sandra is mentioned in both sentences, and her location is not explicitly stated. However, we can infer that Sandra is with Mary in the bathroom (sentence 1) and later with Daniel in the kitchen (sentence 2).
+
+Answer: kitchen"	0.1346	0.0192	False	False	False	True	0
+1392	12	129	2	"*TASK*
+Here are the context sentences:
+4. John and Mary travelled to the hallway.
+5. Mary and Sandra journeyed to the bathroom.
+
+Now, answer the following question:
+Where is John?"	hallway	according to sentence 4, john and mary travelled to the hallway together. there is no subsequent information that suggests john left the hallway. therefore, it can be logically concluded that john is still in the hallway.	fully	hallway	True	John is mentioned in sentence 4, where he is traveling to the hallway with Mary. There is no mention of John's location after that. Since Sandra and Mary are in the bathroom (sentence 5), it's possible that John is still in the hallway.		"Reasoning: John is mentioned in sentence 4, where he is traveling to the hallway with Mary. There is no mention of John's location after that. Since Sandra and Mary are in the bathroom (sentence 5), it's possible that John is still in the hallway.
+
+Answer: hallway"	0.0333	0.0167	False	False	False	True	0
+1393	12	129	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary travelled to the office.
+8. Sandra and Mary moved to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	according to sentence 7, sandra and mary initially travelled to the office together. however, in sentence 8, it is stated that sandra and mary moved to the hallway. this implies that sandra left the office and went to the hallway with mary. therefore, the current location of sandra is the hallway.	fully	hallway	True	Sandra is mentioned in both sentences, and her location is not explicitly stated. However, we can infer that Sandra is with Mary in the office (sentence 7) and later with Mary in the hallway (sentence 8).		"Reasoning: Sandra is mentioned in both sentences, and her location is not explicitly stated. However, we can infer that Sandra is with Mary in the office (sentence 7) and later with Mary in the hallway (sentence 8).
+
+Answer: hallway"	0.0192	0.0192	False	False	False	True	0
+1394	12	129	4	"*TASK*
+Here are the context sentences:
+10. John and Sandra travelled to the kitchen.
+11. John and Daniel went back to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	according to sentence 10, john and sandra travelled to the kitchen together. there is no subsequent information that suggests sandra left the kitchen. in sentence 11, it is stated that john and daniel went back to the garden, but there is no mention of sandra accompanying them. therefore, it can be logically concluded that sandra remained in the kitchen.	fully	kitchen	True	Sandra is mentioned in sentence 10, where she is traveling to the kitchen with John. There is no mention of Sandra's location after that. However, we can infer that Sandra is still in the kitchen since John and Daniel are in the garden (sentence 11), which implies that Sandra is not with John in the garden.		"Reasoning: Sandra is mentioned in sentence 10, where she is traveling to the kitchen with John. There is no mention of Sandra's location after that. However, we can infer that Sandra is still in the kitchen since John and Daniel are in the garden (sentence 11), which implies that Sandra is not with John in the garden.
+
+Answer: kitchen"	0.0	0.0137	False	False	False	True	0
+1395	12	129	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Sandra travelled to the bedroom.
+14. Mary and Daniel moved to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	according to sentence 13, daniel and sandra travelled to the bedroom together. however, in sentence 14, it is stated that mary and daniel moved to the kitchen. this implies that daniel left the bedroom and went to the kitchen with mary. therefore, the current location of daniel is the kitchen.	fully	kitchen	True	Daniel is mentioned in both sentences, and his location is not explicitly stated. However, we can infer that Daniel is with Sandra in the bedroom (sentence 13) and later with Mary in the kitchen (sentence 14).		"Reasoning: Daniel is mentioned in both sentences, and his location is not explicitly stated. However, we can infer that Daniel is with Sandra in the bedroom (sentence 13) and later with Mary in the kitchen (sentence 14).
+
+Answer: kitchen"	0.0192	0.0192	False	False	False	True	0

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+876	12	76	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Daniel journeyed to the bedroom.
+2. John and Sandra travelled to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from context sentence 1, we know that sandra and daniel journeyed to the bedroom together. there is no information provided about daniel leaving the bedroom or going anywhere else. therefore, it can be logically concluded that daniel is still in the bedroom.	fully	bedroom	True	From sentence 1, we know that Sandra and Daniel journeyed to the bedroom. There is no information about Daniel leaving the bedroom.		"assistant
+
+Reasoning: From sentence 1, we know that Sandra and Daniel journeyed to the bedroom. There is no information about Daniel leaving the bedroom. 
+
+Answer: bedroom"	0.0513	0.0256	False	False	False	True	0
+877	12	76	2	"*TASK*
+Here are the context sentences:
+4. Sandra and John travelled to the bedroom.
+5. Mary and Sandra went back to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from context sentence 5, we know that mary and sandra went back to the kitchen. there is no information provided about sandra leaving the kitchen or going anywhere else after that. therefore, it can be logically concluded that sandra is in the kitchen.	fully	kitchen	True	From sentence 4, we know that Sandra and John travelled to the bedroom. However, in sentence 5, it is mentioned that Mary and Sandra went back to the kitchen, which means Sandra left the bedroom and is now in the kitchen.		"Reasoning: From sentence 4, we know that Sandra and John travelled to the bedroom. However, in sentence 5, it is mentioned that Mary and Sandra went back to the kitchen, which means Sandra left the bedroom and is now in the kitchen.
+
+Answer: kitchen"	0.1607	0.0179	False	False	False	True	0
+878	12	76	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Mary travelled to the bedroom.
+8. John and Mary moved to the office.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	from context sentence 7, we know that sandra and mary travelled to the bedroom together. there is no information provided about sandra leaving the bedroom or going anywhere else after that. mary's movement to the office with john in sentence 8 does not affect sandra's location, as sandra is not mentioned to be with them. therefore, it can be logically concluded that sandra is still in the bedroom.	fully	bedroom	True	From sentence 7, we know that Sandra and Mary travelled to the bedroom. There is no information about Sandra leaving the bedroom.		"Reasoning: From sentence 7, we know that Sandra and Mary travelled to the bedroom. There is no information about Sandra leaving the bedroom.
+
+Answer: bedroom"	0.0303	0.0303	False	False	False	True	0
+879	12	76	4	"*TASK*
+Here are the context sentences:
+10. Mary and John travelled to the hallway.
+11. Mary and Sandra went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from context sentence 10, we know that mary and john travelled to the hallway together. however, in sentence 11, mary's location is updated as she goes to the bathroom with sandra. this new information overrides mary's previous location in the hallway. therefore, it can be logically concluded that mary is currently in the bathroom.	fully	bathroom	True	From sentence 10, we know that Mary and John travelled to the hallway. However, in sentence 11, it is mentioned that Mary and Sandra went to the bathroom, which means Mary left the hallway and is now in the bathroom.		"Reasoning: From sentence 10, we know that Mary and John travelled to the hallway. However, in sentence 11, it is mentioned that Mary and Sandra went to the bathroom, which means Mary left the hallway and is now in the bathroom.
+
+Answer: bathroom"	0.1091	0.0182	False	False	False	True	0
+880	12	76	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra went back to the hallway.
+14. Sandra and Daniel travelled to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from context sentence 13, we know that mary and sandra went back to the hallway together. however, in sentence 14, sandra's location is updated as she travels to the bathroom with daniel. this new information overrides sandra's previous location in the hallway. therefore, it can be logically concluded that sandra is currently in the bathroom.	fully	bathroom	True	From sentence 13, we know that Mary and Sandra went back to the hallway. However, in sentence 14, it is mentioned that Sandra and Daniel travelled to the bathroom, which means Sandra left the hallway and is now in the bathroom.		"Reasoning: From sentence 13, we know that Mary and Sandra went back to the hallway. However, in sentence 14, it is mentioned that Sandra and Daniel travelled to the bathroom, which means Sandra left the hallway and is now in the bathroom.
+
+Answer: bathroom"	0.1429	0.0179	False	False	False	True	0

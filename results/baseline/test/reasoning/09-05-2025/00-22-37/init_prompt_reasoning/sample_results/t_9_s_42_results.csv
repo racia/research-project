@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1706	9	42	1	"*TASK*
+Here are the context sentences:
+1. Daniel is no longer in the office.
+2. Sandra journeyed to the hallway.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	yes	"the context sentence ""sandra journeyed to the hallway"" implies that sandra moved to the hallway, which means she is now located in the hallway. there is no information provided that suggests she left the hallway or moved to a different location, so it can be logically concluded that sandra is indeed in the hallway."	fully	yes	True	The question asks about Sandra's current location, and the only information provided is that Sandra journeyed to the hallway. This implies that Sandra is currently in the hallway, as she has just arrived there.		"Reasoning: The question asks about Sandra's current location, and the only information provided is that Sandra journeyed to the hallway. This implies that Sandra is currently in the hallway, as she has just arrived there.
+
+Answer: yes"	0.0638	0.0213	False	False	False	True	0
+1707	9	42	2	"*TASK*
+Here are the context sentences:
+4. Sandra is not in the hallway.
+5. Daniel is in the garden.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	"the context sentence ""sandra is not in the hallway"" directly states that sandra is not in the hallway, which is a clear and explicit statement about sandra's location. therefore, it can be logically concluded that sandra is not in the hallway. the information about daniel's location in the garden is irrelevant to sandra's location, so it does not affect the conclusion."	fully	no	True	The question asks about Sandra's current location, and the information provided is that Sandra is not in the hallway. This implies that Sandra is not currently in the hallway.		"Reasoning: The question asks about Sandra's current location, and the information provided is that Sandra is not in the hallway. This implies that Sandra is not currently in the hallway.
+
+Answer: no"	0.025	0.025	False	False	False	True	0
+1708	9	42	3	"*TASK*
+Here are the context sentences:
+7. Sandra went to the garden.
+8. John went back to the garden.
+
+Now, answer the following question:
+Is Sandra in the garden?"	yes	"the context sentence ""sandra went to the garden"" implies that sandra moved to the garden, which means she is now located in the garden. there is no information provided that suggests she left the garden or moved to a different location, so it can be logically concluded that sandra is indeed in the garden. the information about john going back to the garden is irrelevant to sandra's location, so it does not affect the conclusion."	fully	yes	True	The question asks about Sandra's current location, and the information provided is that Sandra went to the garden. This implies that Sandra is currently in the garden.		"Reasoning: The question asks about Sandra's current location, and the information provided is that Sandra went to the garden. This implies that Sandra is currently in the garden.
+
+Answer: yes"	0.0263	0.0263	False	False	False	True	0
+1709	9	42	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the bedroom.
+11. John journeyed to the office.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	"the context sentence ""daniel went back to the bedroom"" implies that daniel moved to the bedroom, which means he is now located in the bedroom. there is no information provided that suggests daniel is in the bathroom. in fact, the sentence explicitly states that he went back to the bedroom, which is a different location. therefore, it can be logically concluded that daniel is not in the bathroom."	fully	not mentioned	False	There is no information provided about Daniel's current location or his movement to the bathroom. The only information provided is about Daniel going back to the bedroom and John journeying to the office, but neither of these mentions the bathroom.		"Reasoning: There is no information provided about Daniel's current location or his movement to the bathroom. The only information provided is about Daniel going back to the bedroom and John journeying to the office, but neither of these mentions the bathroom.
+
+Answer: not mentioned"	0.0	0.0189	False	False	False	True	0
+1710	9	42	5	"*TASK*
+Here are the context sentences:
+13. Sandra is not in the garden.
+14. John travelled to the garden.
+
+Now, answer the following question:
+Is John in the garden?"	yes	"the context sentence ""john travelled to the garden"" implies that john moved to the garden, which means he is now located in the garden. there is no information provided that suggests john left the garden or moved to a different location, so it can be logically concluded that john is indeed in the garden. the information about sandra not being in the garden is irrelevant to john's location, so it does not affect the conclusion."	fully	yes	True	The question asks about John's current location, and the information provided is that John travelled to the garden. This implies that John is currently in the garden.		"Reasoning: The question asks about John's current location, and the information provided is that John travelled to the garden. This implies that John is currently in the garden.
+
+Answer: yes"	0.0	0.0263	False	False	False	True	0

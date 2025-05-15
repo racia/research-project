@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2841	14	119	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the bedroom yesterday.
+2. Yesterday Bill journeyed to the office.
+3. Yesterday Julie moved to the kitchen.
+4. Mary went back to the kitchen this morning.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	bedroom	"from context line 1, we know that mary went back to the bedroom yesterday. then, in context line 4, it is stated that mary went back to the kitchen this morning. the phrase ""went back"" implies that mary was in the bedroom before going to the kitchen. therefore, mary was in the bedroom before the kitchen."	fully	bedroom	True	Since Mary went back to the kitchen this morning, it implies that she was somewhere else before coming to the kitchen. The only previous mention of Mary's location is in sentence 1, where it is mentioned that she went back to the bedroom yesterday. This suggests that Mary was in the bedroom yesterday, and it is likely that she returned to the bedroom before coming to the kitchen this morning.		"Reasoning: Since Mary went back to the kitchen this morning, it implies that she was somewhere else before coming to the kitchen. The only previous mention of Mary's location is in sentence 1, where it is mentioned that she went back to the bedroom yesterday. This suggests that Mary was in the bedroom yesterday, and it is likely that she returned to the bedroom before coming to the kitchen this morning.
+
+Answer: bedroom"	0.0941	0.0235	False	False	False	True	0
+2842	14	119	2	"*TASK*
+Here are the context sentences:
+6. Mary travelled to the school this afternoon.
+7. Fred travelled to the cinema yesterday.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	bedroom	the context lines 6 and 7 do not provide any information about mary's location before the kitchen. however, we can look back at the previous context lines (1-4) to find the relevant information. from context line 4, we know that mary went back to the kitchen this morning, and from context line 1, we know that mary went back to the bedroom yesterday. therefore, mary was in the bedroom before the kitchen.	none	Not mentioned	False	There is no mention of Mary's location before the kitchen in the given context sentences. The sentences only mention Mary's location at the school this afternoon, but not her previous location.		"Reasoning: There is no mention of Mary's location before the kitchen in the given context sentences. The sentences only mention Mary's location at the school this afternoon, but not her previous location.
+
+Answer: Not mentioned"	0.0909	0.0455	False	False	False	True	0
+2843	14	119	3	"*TASK*
+Here are the context sentences:
+9. This evening Mary went to the office.
+10. Fred went to the school this morning.
+
+Now, answer the following question:
+Where was Mary before the office?"	school	there is no direct information in context lines 9 and 10 that suggests mary was at the school before the office. however, we can look back at the previous context lines (1-8) to find the relevant information. there is no mention of mary being at the school in the previous context lines. the only information we have about mary's previous locations is that she went back to the bedroom yesterday (line 1) and then went back to the kitchen this morning (line	partially		False	According to sentence 4, Mary went back to the kitchen this morning. Since she went to the office this evening, it implies that she was somewhere else before going to the office. The only previous mention of Mary's location is in sentence 4, where it is mentioned that she went back to the kitchen this morning. This suggests that Mary was in the kitchen this morning, and it is likely that she returned to the kitchen before going to the office this evening.		"Reasoning: According to sentence 4, Mary went back to the kitchen this morning. Since she went to the office this evening, it implies that she was somewhere else before going to the office. The only previous mention of Mary's location is in sentence 4, where it is mentioned that she went back to the kitchen this morning. This suggests that Mary was in the kitchen this morning, and it is likely that she returned to the kitchen before going to the office this evening.
+
+Answer:"	0.101	0.0202	False	False	False	True	0
+2844	14	119	4	"*TASK*
+Here are the context sentences:
+12. This morning Julie travelled to the cinema.
+13. This afternoon Fred journeyed to the office.
+
+Now, answer the following question:
+Where was Mary before the office?"	school	there is no information in context lines 12 and 13 that mentions mary or her location before the office. however, we can look back at the previous context lines (1-11) to find the relevant information. in context line 6, it is mentioned that mary travelled to the school this afternoon. later, in context line 9, it is mentioned that mary went to the office this evening. therefore, we can infer that mary was at the school before the office.	none	Not mentioned	False	There is no mention of Mary's location in the given context sentences. The sentences only mention Julie's location at the cinema this morning and Fred's location at the office this afternoon, but not Mary's location.		"Reasoning: There is no mention of Mary's location in the given context sentences. The sentences only mention Julie's location at the cinema this morning and Fred's location at the office this afternoon, but not Mary's location.
+
+Answer: Not mentioned"	0.08	0.04	False	False	False	True	0
+2845	14	119	5	"*TASK*
+Here are the context sentences:
+15. This evening Julie travelled to the bedroom.
+16. This afternoon Julie journeyed to the kitchen.
+
+Now, answer the following question:
+Where was Mary before the office?"	school	the context lines 15 and 16 only provide information about julie's movements, but the question is about mary's location before the office. to answer this question, we need to look back at the previous context lines (1-14). in context line 6, it is mentioned that mary travelled to the school this afternoon. later, in context line 9, it is mentioned that mary went to the office this evening. therefore, we can infer that mary was at the school	none	Not mentioned	False	There is no mention of Mary's location in the given context sentences. The sentences only mention Julie's location at the bedroom this evening and kitchen this afternoon, but not Mary's location.		"Reasoning: There is no mention of Mary's location in the given context sentences. The sentences only mention Julie's location at the bedroom this evening and kitchen this afternoon, but not Mary's location.
+
+Answer: Not mentioned"	0.0222	0.0444	False	False	False	True	0

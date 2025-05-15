@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġgoing	Ġto	Ġthe	Ġgarden	.	ĠThey	Ġonly	Ġmention	ĠMary	Ġgrabbing	Ġthe	Ġapple	Ġin	Ġthe	Ġbedroom	,	Ġwhich	Ġis	Ġa	Ġdifferent	Ġlocation	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠMary	Ġhas	Ġever	Ġbeen	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	9	,	ĠMary	Ġgave	Ġthe	Ġmilk	Ġto	ĠFred	,	Ġand	Ġthen	ĠFred	Ġpassed	Ġthe	Ġmilk	Ġback	Ġto	ĠMary	Ġ(	sentence	Ġ	10	).	ĠThis	Ġimplies	Ġthat	ĠFred	Ġreceived	Ġthe	Ġmilk	Ġinitially	,	Ġand	Ġthen	ĠMary	Ġreceived	Ġit	Ġback	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

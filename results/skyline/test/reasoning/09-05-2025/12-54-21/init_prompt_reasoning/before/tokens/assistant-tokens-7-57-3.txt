@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	7	,	ĠJohn	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	,	Ġso	ĠMary	Ġwas	Ġcarrying	Ġthe	Ġapple	.	ĠBut	Ġin	Ġsentence	Ġ	8	,	ĠMary	Ġhanded	Ġthe	Ġapple	Ġback	Ġto	ĠJohn	,	Ġso	ĠMary	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

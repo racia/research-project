@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2626	14	76	1	"*TASK*
+Here are the context sentences:
+1. Fred went back to the park yesterday.
+2. This morning Mary journeyed to the park.
+3. Mary journeyed to the cinema yesterday.
+4. Julie went back to the kitchen yesterday.
+
+Now, answer the following question:
+Where was Mary before the park?"	cinema	"from context sentence 3, ""mary journeyed to the cinema yesterday"", we can infer that mary was at the cinema yesterday. since sentence 2 states ""this morning mary journeyed to the park"", it implies that mary traveled from somewhere to the park this morning. given that mary was at the cinema yesterday, it is logical to assume that she was still at the cinema before coming to the park this morning. therefore, mary was at the cinema before the park."	fully	cinema	True	Since Mary journeyed to the park this morning, it implies that she was somewhere else before going to the park. The only information provided about Mary's previous location is that she journeyed to the cinema yesterday. This suggests that Mary was somewhere else before going to the cinema, and it is likely that she was at the same location before going to the park.		"Reasoning: Since Mary journeyed to the park this morning, it implies that she was somewhere else before going to the park. The only information provided about Mary's previous location is that she journeyed to the cinema yesterday. This suggests that Mary was somewhere else before going to the cinema, and it is likely that she was at the same location before going to the park.
+
+Answer: cinema"	0.2278	0.0253	False	False	False	True	0
+2627	14	76	2	"*TASK*
+Here are the context sentences:
+6. Julie journeyed to the office this morning.
+7. This afternoon Mary moved to the office.
+
+Now, answer the following question:
+Where was Julie before the office?"	kitchen	"from context sentence 4, ""julie went back to the kitchen yesterday"", we can infer that julie was at the kitchen yesterday. since sentence 6 states ""julie journeyed to the office this morning"", it implies that julie traveled from somewhere to the office this morning. given that julie was at the kitchen yesterday, it is logical to assume that she was still at the kitchen before coming to the office this morning. therefore, julie was at the kitchen before the office."	partially	kitchen	True	Since Julie journeyed to the office this morning, it implies that she was somewhere else before going to the office. The only information provided about Julie's previous location is that she journeyed to the office, which means she was not at the office before going to the office.		"Reasoning: Since Julie journeyed to the office this morning, it implies that she was somewhere else before going to the office. The only information provided about Julie's previous location is that she journeyed to the office, which means she was not at the office before going to the office.
+
+Answer: kitchen"	0.0806	0.0323	False	False	False	True	0
+2628	14	76	3	"*TASK*
+Here are the context sentences:
+9. Mary travelled to the school this evening.
+10. This morning Fred travelled to the school.
+
+Now, answer the following question:
+Where was Mary before the office?"	park	"from context sentence 2, ""this morning mary journeyed to the park"", we can infer that mary was at the park this morning. there is no information about mary's location between morning and evening, but we know that mary travelled to the school this evening (sentence 9). since the question asks about mary's location before the office, and we don't have any information about mary visiting the office, we can infer that the question is referring to a previous event. therefore,"	none	Not mentioned	False	There is no information provided about Mary going to the office. The question asks about Mary's location before the office, but the context sentences only mention Mary's location at the school this evening. Therefore, we cannot determine Mary's location before the office.		"Reasoning: There is no information provided about Mary going to the office. The question asks about Mary's location before the office, but the context sentences only mention Mary's location at the school this evening. Therefore, we cannot determine Mary's location before the office.
+
+Answer: Not mentioned"	0.0172	0.0345	False	False	False	True	0
+2629	14	76	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Julie went back to the bedroom.
+13. This afternoon Fred went back to the bedroom.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	office	"from context sentence 6, ""julie journeyed to the office this morning"", we can infer that julie was at the office this morning. there is no information about julie's location between morning and afternoon, but we know that julie went back to the bedroom this afternoon (sentence 12). it is logical to assume that julie was still at the office before coming back to the bedroom this afternoon. therefore, julie was at the office before the bedroom."	partially	office	True	Since Julie went back to the bedroom, it implies that she was somewhere else before going back to the bedroom. The only information provided about Julie's previous location is that she journeyed to the office this morning. This suggests that Julie was at the office before going back to the bedroom.		"Reasoning: Since Julie went back to the bedroom, it implies that she was somewhere else before going back to the bedroom. The only information provided about Julie's previous location is that she journeyed to the office this morning. This suggests that Julie was at the office before going back to the bedroom.
+
+Answer: office"	0.0469	0.0312	False	False	False	True	0
+2630	14	76	5	"*TASK*
+Here are the context sentences:
+15. Julie went back to the school this evening.
+16. Fred travelled to the school this evening.
+
+Now, answer the following question:
+Where was Julie before the school?"	bedroom	"from context sentence 12, ""this afternoon julie went back to the bedroom"", we can infer that julie was at the bedroom this afternoon. there is no information about julie's location between afternoon and evening, but we know that julie went back to the school this evening (sentence 15). it is logical to assume that julie was still at the bedroom before coming back to the school this evening. therefore, julie was at the bedroom before the school."	partially	bedroom	True	Since Julie went back to the school this evening, it implies that she was somewhere else before going back to the school. The only information provided about Julie's previous location is that she went back to the bedroom this afternoon. This suggests that Julie was at the bedroom before going back to the school.		"Reasoning: Since Julie went back to the school this evening, it implies that she was somewhere else before going back to the school. The only information provided about Julie's previous location is that she went back to the bedroom this afternoon. This suggests that Julie was at the bedroom before going back to the school.
+
+Answer: bedroom"	0.0606	0.0303	False	False	False	True	0

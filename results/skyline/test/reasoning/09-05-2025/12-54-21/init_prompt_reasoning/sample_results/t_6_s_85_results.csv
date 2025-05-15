@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+421	6	85	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the hallway.
+2. John travelled to the garden.
+
+Now, answer the following question:
+Is John in the garden?"	yes	the context sentences indicate that john travelled to the hallway (sentence 1) and then travelled to the garden (sentence 2). since john travelled to the garden after being in the hallway, it can be logically concluded that john is currently in the garden.	fully	yes	True	According to context sentence 2, John travelled to the garden, which implies that John is currently in the garden.		"assistant
+
+Reasoning: According to context sentence 2, John travelled to the garden, which implies that John is currently in the garden.
+
+Answer: yes"	0.0	0.0303	False	False	False	False	0
+422	6	85	2	"*TASK*
+Here are the context sentences:
+4. John moved to the kitchen.
+5. Daniel grabbed the apple there.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	there is no mention of john being in the bedroom in the context sentences. in fact, sentence 4 states that john moved to the kitchen, which implies that john is currently in the kitchen, not in the bedroom.	fully	no	True	There is no information about John being in the bedroom. According to context sentence 4, John moved to the kitchen, which implies that John is currently in the kitchen, not in the bedroom.		"Reasoning: There is no information about John being in the bedroom. According to context sentence 4, John moved to the kitchen, which implies that John is currently in the kitchen, not in the bedroom.
+
+Answer: no"	0.0	0.0217	False	False	False	True	0
+423	6	85	3	"*TASK*
+Here are the context sentences:
+7. John moved to the bathroom.
+8. Daniel put down the apple there.
+
+Now, answer the following question:
+Is John in the bathroom?"	yes	sentence 7 explicitly states that john moved to the bathroom, which implies that john is currently in the bathroom. there is no information provided that suggests john left the bathroom, so it can be logically concluded that john is still in the bathroom.	fully	yes	True	According to context sentence 7, John moved to the bathroom, which implies that John is currently in the bathroom.		"Reasoning: According to context sentence 7, John moved to the bathroom, which implies that John is currently in the bathroom.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+424	6	85	4	"*TASK*
+Here are the context sentences:
+10. John went to the office.
+11. Daniel went to the bedroom.
+
+Now, answer the following question:
+Is John in the hallway?"	no	sentence 10 states that john went to the office, which implies that john is currently in the office. there is no information provided that suggests john is in the hallway. in fact, the context sentences explicitly mention john's location as the office, ruling out the possibility of john being in the hallway.	fully	no	True	There is no information about John being in the hallway. According to context sentence 10, John went to the office, which implies that John is currently in the office, not in the hallway.		"Reasoning: There is no information about John being in the hallway. According to context sentence 10, John went to the office, which implies that John is currently in the office, not in the hallway.
+
+Answer: no"	0.0	0.0217	False	False	False	True	0
+425	6	85	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the hallway.
+14. John took the football there.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	sentence 13 explicitly states that john travelled to the hallway, which implies that john is currently in the hallway. additionally, sentence 14 mentions that john took the football there, which further reinforces the fact that john is indeed in the hallway.	fully	yes	True	According to context sentence 13, John travelled to the hallway, which implies that John is currently in the hallway.		"Reasoning: According to context sentence 13, John travelled to the hallway, which implies that John is currently in the hallway.
+
+Answer: yes"	0.0333	0.0333	False	False	False	False	0

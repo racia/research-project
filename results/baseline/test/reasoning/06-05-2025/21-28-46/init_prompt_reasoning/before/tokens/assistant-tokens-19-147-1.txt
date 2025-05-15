@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġhallway	Ġis	Ġwest	Ġof	Ġthe	Ġgarden	Ġ(	sentence	Ġ	5	),	Ġand	Ġthe	Ġkitchen	Ġis	Ġeast	Ġof	Ġthe	Ġgarden	Ġ(	sentence	Ġ	2	),	Ġwe	Ġcan	Ġinfer	Ġthat	Ġthe	Ġhallway	Ġand	Ġkitchen	Ġare	Ġon	Ġopposite	Ġsides	Ġof	Ġthe	Ġgarden	.	ĠTo	Ġgo	Ġfrom	Ġthe	Ġhallway	Ġto	Ġthe	Ġkitchen	,	Ġwe	Ġneed	Ġto	Ġmove	Ġeast	ward	.ĊĊ	Answer	:	Ġeast	<|eot_id|>

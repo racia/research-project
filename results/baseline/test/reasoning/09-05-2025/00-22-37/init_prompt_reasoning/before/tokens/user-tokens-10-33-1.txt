@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġkitchen	Ġor	Ġthe	Ġschool	.Ċ
+2	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġpark	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠMary	Ġin	Ġthe	Ġcinema	?Ċ

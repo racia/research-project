@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	10	Ġstates	Ġthat	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġbedroom	Ġor	Ġthe	Ġschool	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġa	Ġdefinitive	Ġlocation	.	ĠTherefore	,	Ġwe	Ġcan	Ġonly	Ġconclude	Ġthat	ĠJulie	Ġmight	Ġbe	Ġin	Ġthe	Ġschool	,	Ġbut	Ġwe	Ġcannot	Ġbe	Ġcertain	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

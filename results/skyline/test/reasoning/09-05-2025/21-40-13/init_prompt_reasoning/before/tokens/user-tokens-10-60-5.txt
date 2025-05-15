@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġcinema	.Ċ
+14	.	ĠBill	Ġis	Ġeither	Ġin	Ġthe	Ġkitchen	Ġor	Ġthe	Ġcinema	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠBill	Ġin	Ġthe	Ġkitchen	?Ċ

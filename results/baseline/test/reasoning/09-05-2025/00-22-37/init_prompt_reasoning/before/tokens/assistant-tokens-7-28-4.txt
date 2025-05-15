@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ(	11	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.)	Ġimplies	Ġthat	ĠMary	Ġis	Ġholding	Ġthe	Ġfootball	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġone	<|eot_id|>

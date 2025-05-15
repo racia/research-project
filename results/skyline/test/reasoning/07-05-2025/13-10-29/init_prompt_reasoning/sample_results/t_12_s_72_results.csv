@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+856	12	72	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Mary went back to the office.
+2. Daniel and Mary moved to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from the context sentences, we know that daniel and mary went back to the office (sentence 1), but then they moved to the kitchen (sentence 2). since mary was with daniel in both actions, we can infer that mary is currently in the kitchen, as that is the last location mentioned where they moved to.	fully	kitchen	True	According to the context sentences, Mary was with Daniel and they moved from the office to the kitchen. Therefore, Mary's current location is the same as Daniel's, which is the kitchen.		"assistant
+
+Reasoning: According to the context sentences, Mary was with Daniel and they moved from the office to the kitchen. Therefore, Mary's current location is the same as Daniel's, which is the kitchen.
+
+Answer: kitchen"	0.0625	0.0208	False	False	False	False	0
+857	12	72	2	"*TASK*
+Here are the context sentences:
+4. Mary and Sandra journeyed to the office.
+5. Sandra and John went to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	from sentence 5, we know that sandra and john went to the garden. since john was with sandra when they went to the garden, we can infer that john is currently in the garden.	fully	garden	True	According to the context sentences, Sandra was with Mary and they journeyed to the office. Then, Sandra and John went to the garden. Therefore, John's current location is the garden.		"Reasoning: According to the context sentences, Sandra was with Mary and they journeyed to the office. Then, Sandra and John went to the garden. Therefore, John's current location is the garden.
+
+Answer: garden"	0.1556	0.0222	False	False	False	False	0
+858	12	72	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Sandra went to the office.
+8. John and Mary went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from sentence 8, we know that john and mary went to the bathroom. since mary was with john when they went to the bathroom, we can infer that mary is currently in the bathroom.	fully	bathroom	True	According to the context sentences, Mary was with John and they went to the bathroom. Therefore, Mary's current location is the bathroom.		"Reasoning: According to the context sentences, Mary was with John and they went to the bathroom. Therefore, Mary's current location is the bathroom.
+
+Answer: bathroom"	0.0294	0.0294	False	False	False	False	0
+859	12	72	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John moved to the garden.
+11. John and Sandra went to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from sentence 10, we know that sandra and john moved to the garden. however, sentence 11 updates their location, stating that john and sandra went to the hallway. since john was with sandra in both actions, we can infer that john is currently in the hallway, as that is the last location mentioned where they went to.	fully	hallway	True	According to the context sentences, John was with Sandra and they moved from the garden to the hallway. Therefore, John's current location is the hallway.		"Reasoning: According to the context sentences, John was with Sandra and they moved from the garden to the hallway. Therefore, John's current location is the hallway.
+
+Answer: hallway"	0.0	0.027	False	False	False	False	0
+860	12	72	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John went to the bedroom.
+14. Daniel and John went back to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	from sentence 13, we know that daniel and john went to the bedroom. however, sentence 14 updates their location, stating that daniel and john went back to the bathroom. since john was with daniel in both actions, we can infer that john is currently in the bathroom, as that is the last location mentioned where they went to.	fully	bathroom	True	According to the context sentences, John was with Daniel and they went from the bedroom to the bathroom. Therefore, John's current location is the bathroom.		"Reasoning: According to the context sentences, John was with Daniel and they went from the bedroom to the bathroom. Therefore, John's current location is the bathroom.
+
+Answer: bathroom"	0.027	0.027	False	False	False	False	0

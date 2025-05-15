@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1758	18	121	1	"*TASK*
+Here are the context sentences:
+1. The chocolate fits inside the box.
+2. The chocolate fits inside the chest.
+3. The box of chocolates fits inside the container.
+4. The chest is bigger than the container.
+5. The box of chocolates fits inside the chest.
+
+Now, answer the following question:
+Is the box of chocolates bigger than the chest?"	no	"from sentence 5, we know that ""the box of chocolates fits inside the chest."" this implies that the chest is bigger than the box of chocolates. additionally, sentence 1 states that ""the chocolate fits inside the box,"" which means the box is bigger than the chocolate. since the box of chocolates is the box with chocolates inside, it is not bigger than the box. therefore, the chest is bigger than the box of chocolates, so the answer is ""no"", the box"	fully	no	True	The box of chocolates fits inside the chest, which means the box of chocolates is smaller than the chest. The chest is bigger than the container, which means the chest is larger than the box of chocolates. Therefore, the box of chocolates is not bigger than the chest.		"Reasoning: The box of chocolates fits inside the chest, which means the box of chocolates is smaller than the chest. The chest is bigger than the container, which means the chest is larger than the box of chocolates. Therefore, the box of chocolates is not bigger than the chest.
+
+Answer: no"	0.1475	0.0328	False	False	False	False	0
+1759	18	121	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chest fit in the box of chocolates?"	no	"from sentence 5, we know that ""the box of chocolates fits inside the chest."" this implies that the chest is bigger than the box of chocolates. if the chest were to fit inside the box of chocolates, it would mean that the box of chocolates is bigger than the chest, which contradicts the established fact. therefore, the chest cannot fit inside the box of chocolates, and the answer is ""no""."	none	no	True	The box of chocolates fits inside the chest, which means the box of chocolates is smaller than the chest. The chest is bigger than the container, which means the chest is larger than the box of chocolates. Therefore, the chest does not fit inside the box of chocolates.		"Reasoning: The box of chocolates fits inside the chest, which means the box of chocolates is smaller than the chest. The chest is bigger than the container, which means the chest is larger than the box of chocolates. Therefore, the chest does not fit inside the box of chocolates.
+
+Answer: no"	0.0984	0.0328	False	False	False	False	0
+1760	18	121	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box of chocolates fit in the chest?"	yes	"from sentence 5, we know that ""the box of chocolates fits inside the chest."" this directly states that the box of chocolates fits inside the chest, so the answer is ""yes""."	none	yes	True	The box of chocolates fits inside the chest, which means the box of chocolates does fit inside the chest.		"Reasoning: The box of chocolates fits inside the chest, which means the box of chocolates does fit inside the chest.
+
+Answer: yes"	0.0714	0.0714	False	False	False	False	0
+1761	18	121	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box of chocolates bigger than the chest?"	no	"from sentence 5, we know that ""the box of chocolates fits inside the chest."" this implies that the chest is bigger than the box of chocolates. if the box of chocolates were bigger than the chest, it would not fit inside the chest, which contradicts the established fact. therefore, the box of chocolates is not bigger than the chest, and the answer is ""no""."	none	no	True	The box of chocolates fits inside the chest, which means the box of chocolates is smaller than the chest. The chest is bigger than the container, which means the chest is larger than the box of chocolates. Therefore, the box of chocolates is not bigger than the chest.		"Reasoning: The box of chocolates fits inside the chest, which means the box of chocolates is smaller than the chest. The chest is bigger than the container, which means the chest is larger than the box of chocolates. Therefore, the box of chocolates is not bigger than the chest.
+
+Answer: no"	0.0984	0.0328	False	False	False	False	0
+1762	18	121	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chest bigger than the box of chocolates?"	yes	"from sentence 5, we know that ""the box of chocolates fits inside the chest."" this implies that the chest is bigger than the box of chocolates, as the box of chocolates can fit inside it. therefore, the answer is ""yes"", the chest is bigger than the box of chocolates."	none	yes	True	The box of chocolates fits inside the chest, which means the box of chocolates is smaller than the chest. This implies that the chest is indeed bigger than the box of chocolates.		"Reasoning: The box of chocolates fits inside the chest, which means the box of chocolates is smaller than the chest. This implies that the chest is indeed bigger than the box of chocolates.
+
+Answer: yes"	0.0952	0.0476	False	False	False	False	0

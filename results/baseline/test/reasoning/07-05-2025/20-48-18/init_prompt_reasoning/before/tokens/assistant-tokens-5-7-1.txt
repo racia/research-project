@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġhanded	Ġthe	Ġmilk	Ġto	ĠBill	,	Ġand	ĠBill	Ġreceived	Ġthe	Ġmilk	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġwho	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	.	ĠTherefore	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġgot	Ġthe	Ġmilk	Ġfrom	Ġsomeone	,	Ġbut	Ġthat	Ġperson	Ġis	Ġnot	Ġspecified	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

@@ -1,0 +1,17 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+87	16	87	1	"*TASK*
+Here are the context sentences:
+1. Greg is a rhino.
+2. Greg is yellow.
+3. Lily is a lion.
+4. Lily is yellow.
+5. Bernhard is a frog.
+6. Bernhard is gray.
+7. Brian is a rhino.
+8. Brian is green.
+9. Julius is a lion.
+
+Now, answer the following question:
+What color is Julius?"	yellow	since julius is a lion (sentence 9), and we know that lily is also a lion (sentence 3) and is yellow (sentence 4), we can logically infer that julius, being a lion as well, is also yellow.	fully	Not mentioned	False	Since Julius is a lion (sentence 9), and lions are not typically yellow (as Lily is yellow, but a lion), and not gray (as Bernhard is gray, but a frog), and not green (as Brian is green, but a rhino), the most logical inference is that Julius is not mentioned to have a specific color.		"Reasoning: Since Julius is a lion (sentence 9), and lions are not typically yellow (as Lily is yellow, but a lion), and not gray (as Bernhard is gray, but a frog), and not green (as Brian is green, but a rhino), the most logical inference is that Julius is not mentioned to have a specific color.
+
+Answer: Not mentioned"	0.141	0.0385	False	False	False	True	0

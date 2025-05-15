@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1531	14	7	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the bedroom yesterday.
+2. Bill went to the school yesterday.
+3. Yesterday Julie journeyed to the kitchen.
+4. Bill travelled to the park this morning.
+
+Now, answer the following question:
+Where was Bill before the park?"	school	from the context sentences, we know that bill went to the school yesterday (sentence 2). there is no information about bill's location between yesterday and this morning. however, we are told that bill travelled to the park this morning (sentence 4). therefore, it can be logically inferred that bill was at the school before going to the park this morning, as there is no other location mentioned for bill between yesterday and this morning.	fully	school	True	According to sentence 2, Bill went to the school yesterday. There is no information about Bill's movement after that until sentence 4, where Bill travelled to the park this morning. Therefore, we can infer that Bill was at the school before going to the park.		"assistant
+
+Reasoning: According to sentence 2, Bill went to the school yesterday. There is no information about Bill's movement after that until sentence 4, where Bill travelled to the park this morning. Therefore, we can infer that Bill was at the school before going to the park.
+
+Answer: school"	0.0312	0.0312	False	False	False	True	0
+1532	14	7	2	"*TASK*
+Here are the context sentences:
+6. Bill went back to the kitchen this afternoon.
+7. Julie moved to the bedroom this morning.
+
+Now, answer the following question:
+Where was Bill before the park?"	school	the question asks about bill's location before the park, but the provided context sentences (6 and 7) do not directly mention bill's location before the park. however, we can look back at the previous context sentences (1-4) to find the relevant information. from sentence 4, we know that bill travelled to the park this morning. to find bill's location before the park, we need to look at the previous sentence that mentions bill, which is sentence 2	none	school	True	The new context sentences (6 and 7) do not provide any new information about Bill's movement before the park. We still rely on the previous information from sentence 4, which stated that Bill travelled to the park this morning. Before that, according to sentence 2, Bill was at the school yesterday.		"Reasoning: The new context sentences (6 and 7) do not provide any new information about Bill's movement before the park. We still rely on the previous information from sentence 4, which stated that Bill travelled to the park this morning. Before that, according to sentence 2, Bill was at the school yesterday.
+
+Answer: school"	0.0143	0.0286	False	False	False	True	0
+1533	14	7	3	"*TASK*
+Here are the context sentences:
+9. This evening Julie journeyed to the school.
+10. This afternoon Julie journeyed to the kitchen.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	bedroom	to find julie's location before the kitchen, we need to look at the previous sentence that mentions julie, which is sentence 7. according to sentence 7, julie moved to the bedroom this morning. there is no other information about julie's location between this morning and this afternoon. therefore, it can be logically inferred that julie was in the bedroom before going to the kitchen this afternoon.	partially	bedroom	True	According to sentence 7, Julie moved to the bedroom this morning. There is no information about Julie's movement after that until sentence 10, where Julie journeyed to the kitchen this afternoon. Therefore, we can infer that Julie was at the bedroom before going to the kitchen.		"Reasoning: According to sentence 7, Julie moved to the bedroom this morning. There is no information about Julie's movement after that until sentence 10, where Julie journeyed to the kitchen this afternoon. Therefore, we can infer that Julie was at the bedroom before going to the kitchen.
+
+Answer: bedroom"	0.1905	0.0317	False	False	False	True	0
+1534	14	7	4	"*TASK*
+Here are the context sentences:
+12. Bill travelled to the office this evening.
+13. Fred journeyed to the bedroom yesterday.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	park	to find bill's location before the kitchen, we need to look at the previous sentences that mention bill. sentence 6 mentions that bill went back to the kitchen this afternoon. to find bill's location before the kitchen, we need to look at the previous sentence that mentions bill, which is sentence 4. according to sentence 4, bill travelled to the park this morning. there is no other information about bill's location between this morning and this afternoon. therefore, it can be	none	park	True	According to sentence 6, Bill went back to the kitchen this afternoon. Before that, there is no information about Bill's movement. We can go back to sentence 4, which stated that Bill travelled to the park this morning. Before that, according to sentence 2, Bill was at the school yesterday.		"Reasoning: According to sentence 6, Bill went back to the kitchen this afternoon. Before that, there is no information about Bill's movement. We can go back to sentence 4, which stated that Bill travelled to the park this morning. Before that, according to sentence 2, Bill was at the school yesterday.
+
+Answer: park"	0.0143	0.0286	False	False	False	True	0
+1535	14	7	5	"*TASK*
+Here are the context sentences:
+15. Fred travelled to the bedroom this afternoon.
+16. This morning Fred travelled to the office.
+
+Now, answer the following question:
+Where was Julie before the school?"	kitchen	to find julie's location before the school, we need to look at the previous sentences that mention julie. sentence 9 mentions that julie journeyed to the school this evening. to find julie's location before the school, we need to look at the previous sentence that mentions julie, which is sentence 10. according to sentence 10, julie journeyed to the kitchen this afternoon. there is no other information about julie's location between this afternoon and	none	kitchen	True	The new context sentences (15 and 16) do not provide any new information about Julie's movement before the school. We still rely on the previous information from sentence 9, which stated that Julie journeyed to the school this evening. Before that, according to sentence 10, Julie journeyed to the kitchen this afternoon. Before that, according to sentence 7, Julie moved to the bedroom this morning.		"Reasoning: The new context sentences (15 and 16) do not provide any new information about Julie's movement before the school. We still rely on the previous information from sentence 9, which stated that Julie journeyed to the school this evening. Before that, according to sentence 10, Julie journeyed to the kitchen this afternoon. Before that, according to sentence 7, Julie moved to the bedroom this morning.
+
+Answer: kitchen"	0.0778	0.0222	False	False	False	True	0

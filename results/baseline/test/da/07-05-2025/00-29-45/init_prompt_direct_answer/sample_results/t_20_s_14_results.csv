@@ -1,0 +1,71 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1648	20	14	1	"*TASK*
+Here are the context sentences:
+1. Antoine is bored.
+
+Now, answer the following question:
+Where will antoine go?"	garden	there is no direct information provided about antoine's destination. however, it is mentioned that antoine is bored, which implies that he might want to do something to alleviate his boredom. going to the garden could be a possible activity to overcome boredom, as it provides a change of environment and potentially some fresh air and relaxation. therefore, it can be logically inferred that antoine might go to the garden to alleviate his boredom.	fully	garden	True			Answer: garden	0.0	0.25	False	False	False	False	0
+1649	20	14	2	"*TASK*
+Here are the context sentences:
+3. Jason is bored.
+
+Now, answer the following question:
+Where will jason go?"	garden	the context only mentions that jason is bored, but it does not provide any direct information about his destination. however, since the same situation was presented earlier with antoine, who was also bored and went to the garden, it can be logically inferred that jason, being in a similar state of boredom, might also go to the garden to alleviate his boredom, just like antoine did.	fully	garden	True			Answer: garden	0.0	0.25	False	False	False	False	0
+1650	20	14	3	"*TASK*
+Here are the context sentences:
+5. Jason travelled to the garden.
+
+Now, answer the following question:
+Why did jason go to the garden?"	bored	the context states that jason travelled to the garden, and the answer is that he was bored. this implies that jason's boredom was the reason for him to go to the garden. this is a logical connection, as people often seek a change of environment or activity to alleviate boredom, and going to the garden could be a way for jason to do so.	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0
+1651	20	14	4	"*TASK*
+Here are the context sentences:
+7. Yann is hungry.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	the context states that yann is hungry, which implies that he needs to eat or find food. a logical place to find food is the kitchen, as it is a common location where food is prepared and stored. therefore, it can be inferred that yann will go to the kitchen to satisfy his hunger.	fully	not mentioned (since there is no previous information about Yann	False			Answer: not mentioned (since there is no previous information about Yann	0.0	0.0714	True	False	False	True	0
+1652	20	14	5	"*TASK*
+Here are the context sentences:
+9. Yann journeyed to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	hungry	the context states that yann journeyed to the kitchen, and the answer is that he was hungry. this implies that yann's hunger was the reason for him to go to the kitchen. this is a logical connection, as people often go to the kitchen to find food when they are hungry, and yann's hunger likely motivated him to go to the kitchen to satisfy his need for food.	none	not mentioned (since there is no previous information about Yann	False			Answer: not mentioned (since there is no previous information about Yann	0.0	0.0714	True	False	False	True	0
+1653	20	14	6	"*TASK*
+Here are the context sentences:
+11. Sumit is hungry.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	" is tired.
+this is the question: where will sumit go?
+this is the answer: bedroom"	fully	not mentioned (since there is no previous information about Sumit	False			Answer: not mentioned (since there is no previous information about Sumit	0.1429	0.0714	True	False	False	True	0
+1654	20	14	7	"*TASK*
+Here are the context sentences:
+13. Sumit journeyed to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	hungry	" is tired.
+this is the question: where will sumit go?
+this is the answer: bedroom"	none	not mentioned (since there is no previous information about Sumit	False			Answer: not mentioned (since there is no previous information about Sumit	0.1429	0.0714	True	False	False	True	0
+1655	20	14	8	"*TASK*
+Here are the context sentences:
+15. Yann grabbed the apple there.
+
+Now, answer the following question:
+Why did yann get the apple?"	hungry	" is tired.
+this is the question: where will sumit go?
+this is the answer: bedroom"	none	not mentioned (since there is no previous information about Yann	False			Answer: not mentioned (since there is no previous information about Yann	0.0714	0.0714	True	False	False	True	0
+1656	20	14	9	"*TASK*
+Here are the context sentences:
+17. Antoine journeyed to the garden.
+
+Now, answer the following question:
+Why did antoine go to the garden?"	bored	" is tired.
+this is the question: where will sumit go?
+this is the answer: bedroom"	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0
+1657	20	14	10	"*TASK*
+Here are the context sentences:
+19. Jason picked up the football there.
+
+Now, answer the following question:
+Why did jason get the football?"	bored	" is tired.
+this is the question: where will sumit go?
+this is the answer: bedroom"	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0

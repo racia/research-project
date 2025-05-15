@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1101	12	71	1	"*TASK*
+Here are the context sentences:
+1. John and Daniel journeyed to the garden.
+2. Sandra and Mary went to the bathroom.
+
+Now, answer the following question:
+Where is John?"	garden	"according to context sentence 1, ""john and daniel journeyed to the garden"", which explicitly states that john went to the garden. therefore, the answer to the question ""where is john?"" is indeed ""garden""."	fully	garden	True	John and Daniel journeyed to the garden, which implies that John is in the garden. Since Sandra and Mary went to the bathroom, it doesn't provide any information about John's location.		"Reasoning: John and Daniel journeyed to the garden, which implies that John is in the garden. Since Sandra and Mary went to the bathroom, it doesn't provide any information about John's location.
+
+Answer: garden"	0.0222	0.0222	False	False	False	True	0
+1102	12	71	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John moved to the office.
+5. John and Mary went to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"according to context sentence 4, ""daniel and john moved to the office"", which indicates that john was in the office. however, context sentence 5, ""john and mary went to the bedroom"", implies that john left the office and went to the bedroom. therefore, the most recent and up-to-date information about john's location is that he is in the bedroom, which is the correct answer to the question ""where is john?""."	fully	bedroom	True	According to sentence 4, John moved to the office. However, sentence 5 states that John and Mary went to the bedroom, which implies that John's current location is the bedroom.		"Reasoning: According to sentence 4, John moved to the office. However, sentence 5 states that John and Mary went to the bedroom, which implies that John's current location is the bedroom.
+
+Answer: bedroom"	0.0667	0.0222	False	False	False	False	0
+1103	12	71	3	"*TASK*
+Here are the context sentences:
+7. John and Mary moved to the office.
+8. Mary and John went to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"according to context sentence 7, ""john and mary moved to the office"", which indicates that john was in the office. however, context sentence 8, ""mary and john went to the bedroom"", implies that john left the office and went to the bedroom. since this is the most recent action involving john, it can be concluded that john is currently in the bedroom, which is the correct answer to the question ""where is john?""."	fully	bedroom	True	Sentence 7 states that John and Mary moved to the office, which implies that John's initial location was the office. However, sentence 8 states that Mary and John went to the bedroom, which implies that John's current location is the bedroom.		"Reasoning: Sentence 7 states that John and Mary moved to the office, which implies that John's initial location was the office. However, sentence 8 states that Mary and John went to the bedroom, which implies that John's current location is the bedroom.
+
+Answer: bedroom"	0.0	0.0175	False	False	False	False	0
+1104	12	71	4	"*TASK*
+Here are the context sentences:
+10. Daniel and John went back to the bathroom.
+11. Mary and Sandra went back to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	"according to context sentence 10, ""daniel and john went back to the bathroom"", which explicitly states that daniel went to the bathroom. this sentence provides direct information about daniel's location, and there is no subsequent sentence that suggests daniel left the bathroom. therefore, the correct answer to the question ""where is daniel?"" is indeed ""bathroom""."	fully	bathroom	True	Sentence 10 states that Daniel and John went back to the bathroom, which implies that Daniel's current location is the bathroom.		"Reasoning: Sentence 10 states that Daniel and John went back to the bathroom, which implies that Daniel's current location is the bathroom.
+
+Answer: bathroom"	0.0	0.0312	False	False	False	False	0
+1105	12	71	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Sandra went to the kitchen.
+14. Mary and Sandra went to the office.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"according to context sentence 13, ""daniel and sandra went to the kitchen"", which explicitly states that daniel went to the kitchen. there is no subsequent sentence that suggests daniel left the kitchen. although sentence 14 mentions sandra going to the office, it does not provide any information about daniel's location. therefore, the correct answer to the question ""where is daniel?"" is indeed ""kitchen""."	fully	kitchen	True	Sentence 13 states that Daniel and Sandra went to the kitchen, which implies that Daniel's current location is the kitchen.		"Reasoning: Sentence 13 states that Daniel and Sandra went to the kitchen, which implies that Daniel's current location is the kitchen.
+
+Answer: kitchen"	0.1613	0.0323	False	False	False	False	0

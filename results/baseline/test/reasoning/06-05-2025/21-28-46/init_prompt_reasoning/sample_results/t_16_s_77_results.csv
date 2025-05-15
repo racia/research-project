@@ -1,0 +1,17 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+77	16	77	1	"*TASK*
+Here are the context sentences:
+1. Brian is a swan.
+2. Lily is a lion.
+3. Julius is a frog.
+4. Julius is yellow.
+5. Lily is green.
+6. Brian is green.
+7. Bernhard is a lion.
+8. Greg is a frog.
+9. Greg is white.
+
+Now, answer the following question:
+What color is Bernhard?"	green	since bernhard is a lion (sentence 7), and lily is also a lion (sentence 2), we can infer that bernhard and lily share the same characteristics. we know that lily is green (sentence 5), so it is logical to assume that bernhard, being a lion like lily, is also green.	fully	Not mentioned	False	Bernhard is a lion, and Lily is also a lion. Since Lily is green, it's possible that Bernhard's color is also green, but there's no direct information about Bernhard's color. However, since Bernhard is a lion, and lions are typically not green, it's more likely that Bernhard's color is not specified.		"Reasoning: Bernhard is a lion, and Lily is also a lion. Since Lily is green, it's possible that Bernhard's color is also green, but there's no direct information about Bernhard's color. However, since Bernhard is a lion, and lions are typically not green, it's more likely that Bernhard's color is not specified.
+
+Answer: Not mentioned"	0.2025	0.038	False	False	False	True	0

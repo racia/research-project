@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJohn	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġhis	Ġlocation	Ġchanges	Ġfrom	Ġthe	Ġkitchen	Ġto	Ġthe	Ġoffice	.	ĠSince	Ġthe	Ġsecond	Ġsentence	Ġmentions	Ġthem	Ġmoving	Ġto	Ġthe	Ġoffice	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSandra	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġis	Ġchanging	.	ĠIn	Ġsentence	Ġ	4	,	Ġshe	Ġtravels	Ġto	Ġthe	Ġbedroom	Ġwith	ĠJohn	.	ĠIn	Ġsentence	Ġ	5	,	Ġshe	Ġgoes	Ġback	Ġto	Ġthe	Ġkitchen	Ġwith	ĠMary	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġwas	Ġpreviously	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJulie	Ġis	Ġin	Ġthe	Ġpark	.Ċ
+2	.	ĠFred	Ġis	Ġin	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠJulie	Ġin	Ġthe	Ġpark	?Ċ

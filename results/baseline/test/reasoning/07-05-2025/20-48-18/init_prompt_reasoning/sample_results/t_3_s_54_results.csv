@@ -1,0 +1,110 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1266	3	54	1	"*TASK*
+Here are the context sentences:
+1. John got the football.
+2. John discarded the football.
+3. Sandra moved to the hallway.
+4. John travelled to the garden.
+5. Daniel went back to the garden.
+6. Mary went back to the bathroom.
+7. Daniel got the milk.
+8. John went back to the hallway.
+9. Sandra journeyed to the bathroom.
+10. Daniel left the milk.
+11. Daniel picked up the milk.
+12. Daniel dropped the milk.
+13. Daniel grabbed the milk there.
+14. John went to the kitchen.
+15. Sandra journeyed to the kitchen.
+16. Daniel went to the bathroom.
+17. Daniel moved to the office.
+18. Sandra went back to the bathroom.
+19. Sandra travelled to the garden.
+20. John journeyed to the bedroom.
+21. Mary moved to the office.
+22. Daniel dropped the milk.
+
+Now, answer the following question:
+Where was the milk before the office?"	bathroom	from the context sentences, we can track the movement of the milk. the milk was first obtained by daniel in sentence 7. then, in sentence 10, daniel left the milk, implying that the milk was dropped or placed somewhere. in sentence 11, daniel picked up the milk, and in sentence 12, daniel dropped the milk again. in sentence 13, daniel grabbed the milk, indicating that the milk was still in the same location.	fully	bathroom	True	The milk was dropped by Daniel, and then he moved to the office. Therefore, the milk was before the office in the bathroom, where Daniel dropped it.		"Reasoning: The milk was dropped by Daniel, and then he moved to the office. Therefore, the milk was before the office in the bathroom, where Daniel dropped it.
+
+Answer: bathroom"	0.0769	0.0769	False	False	False	False	0
+1267	3	54	2	"*TASK*
+Here are the context sentences:
+24. Mary took the milk.
+25. Mary picked up the football.
+26. John got the apple.
+27. John discarded the apple there.
+28. John picked up the apple.
+29. John left the apple.
+30. Mary journeyed to the kitchen.
+31. Sandra went to the bedroom.
+32. Sandra travelled to the garden.
+33. Mary discarded the milk.
+34. Mary dropped the football there.
+35. Mary went back to the hallway.
+36. Daniel travelled to the bathroom.
+37. Mary went back to the bedroom.
+38. Sandra journeyed to the kitchen.
+39. Mary took the apple.
+40. Sandra journeyed to the bathroom.
+41. Mary dropped the apple there.
+42. Mary picked up the apple.
+43. Mary travelled to the bathroom.
+44. Sandra journeyed to the kitchen.
+45. Sandra picked up the milk.
+46. Daniel went to the bedroom.
+47. Sandra went to the office.
+48. Mary went back to the garden.
+49. Mary left the apple.
+
+Now, answer the following question:
+Where was the apple before the garden?"	bathroom	from the context sentences, we can track the movement of the apple. the apple was first obtained by john in sentence 26. then, in sentence 27, john discarded the apple, implying that the apple was dropped or placed somewhere. in sentence 28, john picked up the apple, and in sentence 29, john left the apple again.	fully	bathroom	True	The apple was dropped by Mary, and then she journeyed to the garden. Therefore, the apple was before the garden in the bathroom, where Mary dropped it.		"Reasoning: The apple was dropped by Mary, and then she journeyed to the garden. Therefore, the apple was before the garden in the bathroom, where Mary dropped it.
+
+Answer: bathroom"	0.05	0.075	False	False	False	False	0
+1268	3	54	3	"*TASK*
+Here are the context sentences:
+51. Mary travelled to the hallway.
+52. Sandra dropped the milk.
+
+Now, answer the following question:
+Where was the apple before the garden?"	bathroom	the question asks about the location of the apple before the garden, but the provided context lines (51 and 52) do not mention the apple. to find the answer, we need to refer to the previous parts of the conversation history.	none	not mentioned	False	There is no information about the apple in the given context sentences. The question asks about the apple's location before the garden, but the context sentences do not provide any information about the apple's movement or location.		"Reasoning: There is no information about the apple in the given context sentences. The question asks about the apple's location before the garden, but the context sentences do not provide any information about the apple's movement or location.
+
+Answer: not mentioned"	0.0	0.06	False	False	False	True	0
+1269	3	54	4	"*TASK*
+Here are the context sentences:
+54. John moved to the garden.
+55. John journeyed to the kitchen.
+
+Now, answer the following question:
+Where was the apple before the garden?"	bathroom	the question asks about the location of the apple before the garden, but the provided context lines (54 and 55) do not mention the apple. to find the answer, we need to refer to the previous parts of the conversation history.	none	not mentioned	False	There is no information about the apple in the given context sentences. The question asks about the apple's location before the garden, but the context sentences do not provide any information about the apple's movement or location.		"Reasoning: There is no information about the apple in the given context sentences. The question asks about the apple's location before the garden, but the context sentences do not provide any information about the apple's movement or location.
+
+Answer: not mentioned"	0.0	0.06	False	False	False	True	0
+1270	3	54	5	"*TASK*
+Here are the context sentences:
+57. Sandra grabbed the milk.
+58. John journeyed to the office.
+59. Mary moved to the kitchen.
+60. John moved to the hallway.
+61. Sandra put down the milk.
+62. John went back to the kitchen.
+63. John went back to the hallway.
+64. Sandra picked up the milk.
+65. Mary got the football there.
+66. Mary moved to the garden.
+67. Mary went to the hallway.
+68. Sandra put down the milk.
+
+Now, answer the following question:
+Where was the football before the hallway?"	garden	" a reasoning that leads to the provided answer.
+as a basis for your reasoning, use only the information provided to you in the conversation.
+
+follow each actor and object in the sentences separately paying attention to their relations.
+the questions might refer to previous parts of the conversation history.
+if so, inspect all the previous parts to find the correct reasoning.
+
+aim to give a specific and objective reasoning rather than a subjective one.
+
+if information you need to answer the question is not specified directly,
+infer it logically employing"	fully	kitchen	False	The football was got by Mary, and then she moved to the garden and went to the hallway. Therefore, the football was before the hallway in the kitchen, where Mary got it.		"Reasoning: The football was got by Mary, and then she moved to the garden and went to the hallway. Therefore, the football was before the hallway in the kitchen, where Mary got it.
+
+Answer: kitchen"	0.0227	0.0682	False	False	False	False	0

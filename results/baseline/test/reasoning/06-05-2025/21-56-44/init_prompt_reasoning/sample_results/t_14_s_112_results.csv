@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2806	14	112	1	"*TASK*
+Here are the context sentences:
+1. This morning Bill moved to the office.
+2. Bill journeyed to the bedroom yesterday.
+
+Now, answer the following question:
+Where was Bill before the office?"	bedroom	from the context sentences, we know that bill moved to the office this morning (sentence 1). this implies that bill was somewhere else before moving to the office. the only other location mentioned in the context sentences is the bedroom, where bill journeyed to yesterday (sentence 2). since bill was in the bedroom yesterday and moved to the office this morning, it can be logically inferred that bill was in the bedroom before moving to the office.	fully	bedroom	True	Bill moved to the office this morning, and yesterday he journeyed to the bedroom. This suggests that Bill was in the bedroom yesterday, and before moving to the office this morning.		"Reasoning: Bill moved to the office this morning, and yesterday he journeyed to the bedroom. This suggests that Bill was in the bedroom yesterday, and before moving to the office this morning.
+
+Answer: bedroom"	0.2093	0.0465	False	False	False	False	0
+2807	14	112	2	"*TASK*
+Here are the context sentences:
+4. Fred journeyed to the kitchen yesterday.
+5. This afternoon Bill moved to the school.
+
+Now, answer the following question:
+Where was Bill before the school?"	office	there is no information provided about bill's location before moving to the school in the given context sentences (4 and 5). however, we can look back at the previous parts of the conversation history. in the previous part, we had context sentences about bill's movements, and we found that bill moved to the office this morning. there is no information about bill moving out of the office, so it can be logically assumed that bill was still in the office before moving to the school this	partially	not mentioned	False	Bill moved to the school this afternoon, and there is no information about his location before that. However, we can infer that Bill was not in the kitchen yesterday, since Fred journeyed to the kitchen yesterday, and Bill moved to the school this afternoon.		"Reasoning: Bill moved to the school this afternoon, and there is no information about his location before that. However, we can infer that Bill was not in the kitchen yesterday, since Fred journeyed to the kitchen yesterday, and Bill moved to the school this afternoon.
+
+Answer: not mentioned"	0.1186	0.0339	False	False	False	True	0
+2808	14	112	3	"*TASK*
+Here are the context sentences:
+7. This morning Fred moved to the office.
+8. Yesterday Mary journeyed to the office.
+
+Now, answer the following question:
+Where was Bill before the school?"	office	there is no direct information about bill's movements in the provided context sentences (7 and 8). however, we can look back at the previous parts of the conversation history. in a previous part, we had context sentences about bill's movements, and we found that bill moved to the office this morning. later, we had no information about bill moving out of the office. therefore, it can be logically assumed that bill was still in the office before moving to the school.	none	not mentioned	False	There is no information about Bill's location in the given context sentences. The sentences only mention Fred and Mary's movements, but not Bill's.		"Reasoning: There is no information about Bill's location in the given context sentences. The sentences only mention Fred and Mary's movements, but not Bill's.
+
+Answer: not mentioned"	0.0541	0.0541	False	False	False	True	0
+2809	14	112	4	"*TASK*
+Here are the context sentences:
+10. This afternoon Mary journeyed to the office.
+11. Mary moved to the cinema this morning.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	office	according to sentence 11, mary moved to the cinema this morning. this implies that mary was somewhere else before moving to the cinema. sentence 10 provides the information that mary journeyed to the office this afternoon, but since mary moved to the cinema this morning, it can be logically inferred that mary was in the office before moving to the cinema.	partially	office	True	Mary moved to the cinema this morning, and yesterday she journeyed to the office. This suggests that Mary was in the office yesterday, and before moving to the cinema this morning.		"Reasoning: Mary moved to the cinema this morning, and yesterday she journeyed to the office. This suggests that Mary was in the office yesterday, and before moving to the cinema this morning.
+
+Answer: office"	0.0233	0.0465	False	False	False	False	0
+2810	14	112	5	"*TASK*
+Here are the context sentences:
+13. This evening Bill journeyed to the cinema.
+14. Fred travelled to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	office	there is no direct information about mary's movements in the provided context sentences (13 and 14). however, we can look back at the previous parts of the conversation history. in a previous part, we had context sentences about mary's movements, and we found that mary moved to the cinema this morning and mary journeyed to the office this afternoon. therefore, it can be logically assumed that mary was in the office before moving to the cinema.	none	not mentioned	False	There is no information about Mary's location in the given context sentences. The sentences only mention Bill's and Fred's movements, but not Mary's.		"Reasoning: There is no information about Mary's location in the given context sentences. The sentences only mention Bill's and Fred's movements, but not Mary's.
+
+Answer: not mentioned"	0.1053	0.0526	False	False	False	True	0

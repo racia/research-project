@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+416	10	84	1	"*TASK*
+Here are the context sentences:
+1. Julie is in the bedroom.
+2. Mary is in the kitchen.
+
+Now, answer the following question:
+Is Julie in the bedroom?"	yes	"the context sentence ""1. julie is in the bedroom"" directly states that julie is in the bedroom, which answers the question affirmatively."	fully	yes	True	The context sentence 1 explicitly states that Julie is in the bedroom.		"assistant
+
+Reasoning: The context sentence 1 explicitly states that Julie is in the bedroom.
+
+Answer: yes"	0.0	0.04	False	False	False	False	0
+417	10	84	2	"*TASK*
+Here are the context sentences:
+4. Fred is in the park.
+5. Fred moved to the kitchen.
+
+Now, answer the following question:
+Is Fred in the office?"	no	the context sentences do not mention fred being in the office. in fact, they mention fred being in the park initially and then moving to the kitchen, but there is no mention of the office. therefore, based on the provided information, it can be logically concluded that fred is not in the office.	fully	no	True	There is no mention of Fred being in the office in the context sentences. Sentence 4 states that Fred is in the park, and sentence 5 states that Fred moved to the kitchen, but there is no information about the office.		"Reasoning: There is no mention of Fred being in the office in the context sentences. Sentence 4 states that Fred is in the park, and sentence 5 states that Fred moved to the kitchen, but there is no information about the office.
+
+Answer: no"	0.1111	0.0185	False	False	False	True	0
+418	10	84	3	"*TASK*
+Here are the context sentences:
+7. Bill moved to the school.
+8. Fred is either in the office or the office.
+
+Now, answer the following question:
+Is Fred in the office?"	maybe	"the context sentence ""8. fred is either in the office or the office"" is a tautology, meaning it does not provide any new information about fred's location. it simply states that fred is in the office or in the office, which is a redundant and unclear statement. therefore, based on the provided information, it cannot be determined with certainty whether fred is in the office or not, hence the answer ""maybe""."	fully	yes	False	Sentence 8 states that Fred is either in the office or the office, which means Fred is definitely in the office because the two options are the same.		"Reasoning: Sentence 8 states that Fred is either in the office or the office, which means Fred is definitely in the office because the two options are the same.
+
+Answer: yes"	0.0526	0.0263	False	False	False	False	0
+419	10	84	4	"*TASK*
+Here are the context sentences:
+10. Bill went to the office.
+11. Julie moved to the kitchen.
+
+Now, answer the following question:
+Is Fred in the office?"	maybe	"there is no information provided about fred's location in the context sentences. the sentences only mention bill going to the office and julie moving to the kitchen, but do not provide any information about fred. therefore, it cannot be determined with certainty whether fred is in the office or not, hence the answer ""maybe""."	none	not mentioned	False	There is no mention of Fred being in the office in the context sentences. Sentence 10 states that Bill went to the office, and sentence 11 states that Julie moved to the kitchen, but there is no information about Fred's location.		"Reasoning: There is no mention of Fred being in the office in the context sentences. Sentence 10 states that Bill went to the office, and sentence 11 states that Julie moved to the kitchen, but there is no information about Fred's location.
+
+Answer: not mentioned"	0.0714	0.0179	False	False	False	True	0
+420	10	84	5	"*TASK*
+Here are the context sentences:
+13. Julie moved to the cinema.
+14. Mary went back to the school.
+
+Now, answer the following question:
+Is Bill in the cinema?"	no	"there is no information provided about bill's location in the context sentences. the sentences only mention julie moving to the cinema and mary going back to the school, but do not provide any information about bill's location. therefore, it cannot be determined that bill is in the cinema, and the answer is ""no""."	none	not mentioned	False	There is no mention of Bill being in the cinema in the context sentences. Sentence 13 states that Julie moved to the cinema, and sentence 14 states that Mary went back to the school, but there is no information about Bill's location.		"Reasoning: There is no mention of Bill being in the cinema in the context sentences. Sentence 13 states that Julie moved to the cinema, and sentence 14 states that Mary went back to the school, but there is no information about Bill's location.
+
+Answer: not mentioned"	0.1228	0.0175	False	False	False	True	0

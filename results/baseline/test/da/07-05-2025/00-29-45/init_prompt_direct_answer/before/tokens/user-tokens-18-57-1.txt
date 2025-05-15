@@ -1,0 +1,8 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠThe	Ġbox	Ġof	Ġchocolates	Ġfits	Ġinside	Ġthe	Ġchest	.Ċ
+2	.	ĠThe	Ġcontainer	Ġfits	Ġinside	Ġthe	Ġbox	.Ċ
+3	.	ĠThe	Ġchest	Ġfits	Ġinside	Ġthe	Ġcontainer	.Ċ
+4	.	ĠThe	Ġcontainer	Ġfits	Ġinside	Ġthe	Ġbox	.Ċ
+5	.	ĠThe	Ġchest	Ġis	Ġbigger	Ġthan	Ġthe	Ġbox	Ġof	Ġchocolates	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Does	Ġthe	Ġbox	Ġfit	Ġin	Ġthe	Ġchest	?Ċ

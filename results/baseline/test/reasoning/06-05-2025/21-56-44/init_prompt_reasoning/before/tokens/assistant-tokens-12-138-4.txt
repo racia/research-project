@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠSandra	's	Ġlocation	.	ĠSince	ĠSandra	Ġand	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	Ġin	Ġsentence	Ġ	10	,	Ġit	Ġis	Ġinferred	Ġthat	ĠSandra	Ġis	Ġnot	Ġin	Ġthe	Ġbathroom	.	ĠHowever	,	Ġsentence	Ġ	11	Ġstates	Ġthat	ĠSandra	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+81	6	17	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the office.
+2. Daniel grabbed the football there.
+
+Now, answer the following question:
+Is Sandra in the office?"	yes	"from context sentence 1, ""sandra travelled to the office"", we can infer that sandra's destination was the office, and since she travelled there, it is logical to assume that she arrived at the office. therefore, sandra is in the office. the action of daniel grabbing the football in sentence 2 does not provide any information that would contradict sandra's presence in the office."	fully	yes	True	According to context sentence 1, Sandra travelled to the office, which implies that she is currently in the office.		"Reasoning: According to context sentence 1, Sandra travelled to the office, which implies that she is currently in the office.
+
+Answer: yes"	0.0667	0.0333	False	False	False	False	0
+82	6	17	2	"*TASK*
+Here are the context sentences:
+4. Daniel moved to the garden.
+5. Daniel moved to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the bedroom?"	no	there is no information provided about sandra's location in the context sentences 4 and 5, which only describe daniel's movements to the garden and the bathroom. additionally, there is no mention of the bedroom in the context sentences. however, we can infer that sandra's location was previously established in the office (from the previous conversation), and there is no information provided to suggest that she moved to the bedroom. therefore, it is reasonable to conclude that sandra is not in the bedroom.	none	unknown	False	There is no information provided about Sandra's location in the context sentences. The context sentences only mention Daniel's movements to the garden and the bathroom.		"Reasoning: There is no information provided about Sandra's location in the context sentences. The context sentences only mention Daniel's movements to the garden and the bathroom.
+
+Answer: unknown"	0.0556	0.0278	False	False	False	True	0
+83	6	17	3	"*TASK*
+Here are the context sentences:
+7. John went to the bedroom.
+8. Sandra grabbed the milk there.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	yes	the context sentences 7 and 8 describe john and sandra's actions, but do not provide any new information about daniel's location. however, from the previous conversation (context sentence 5), we know that daniel moved to the bathroom, and there is no information provided to suggest that he left the bathroom. therefore, it is reasonable to conclude that daniel is still in the bathroom.	none	yes	True	The context sentences only provide information about John and Sandra's actions, but do not mention Daniel's current location. Previously, it was mentioned that Daniel moved to the bathroom (context sentence 5), but there is no new information to suggest that he has moved from there.		"Reasoning: The context sentences only provide information about John and Sandra's actions, but do not mention Daniel's current location. Previously, it was mentioned that Daniel moved to the bathroom (context sentence 5), but there is no new information to suggest that he has moved from there.
+
+Answer: yes"	0.0164	0.0164	False	False	False	True	0
+84	6	17	4	"*TASK*
+Here are the context sentences:
+10. John went to the hallway.
+11. Mary went to the hallway.
+
+Now, answer the following question:
+Is Mary in the hallway?"	yes	"according to context sentence 11, ""mary went to the hallway"", which explicitly states that mary's destination was the hallway, and since she went there, it is logical to assume that she arrived at the hallway. therefore, mary is in the hallway."	fully	yes	True	According to context sentence 11, Mary went to the hallway, which implies that she is currently in the hallway.		"Reasoning: According to context sentence 11, Mary went to the hallway, which implies that she is currently in the hallway.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+85	6	17	5	"*TASK*
+Here are the context sentences:
+13. Sandra travelled to the bathroom.
+14. Sandra put down the milk.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	there is no information provided about john's location in the context sentences 13 and 14, which only describe sandra's actions. however, we can infer that john is not in the bedroom because in a previous conversation (context sentence 7), john went to the bedroom, and there is no information provided to suggest that he stayed there. instead, john went to the hallway (context sentence 10). therefore, it is reasonable to conclude that john is not in the bedroom.	none	unknown	False	Although John's location has changed since he went to the hallway (context sentence 10), there is no new information to suggest that he has returned to the bedroom. His last known location was the hallway.		"Reasoning: Although John's location has changed since he went to the hallway (context sentence 10), there is no new information to suggest that he has returned to the bedroom. His last known location was the hallway.
+
+Answer: unknown"	0.0625	0.0208	False	False	False	True	0

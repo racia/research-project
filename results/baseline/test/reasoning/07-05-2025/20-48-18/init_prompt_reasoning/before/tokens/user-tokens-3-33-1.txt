@@ -1,0 +1,21 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġmilk	.Ċ
+2	.	ĠMary	Ġgot	Ġthe	Ġfootball	.Ċ
+3	.	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+4	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+5	.	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+6	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+7	.	ĠJohn	Ġleft	Ġthe	Ġmilk	Ġthere	.Ċ
+8	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+9	.	ĠJohn	Ġtook	Ġthe	Ġmilk	.Ċ
+10	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+11	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+12	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+13	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+14	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġfootball	.Ċ
+15	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+16	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+17	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+18	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġkitchen	?Ċ

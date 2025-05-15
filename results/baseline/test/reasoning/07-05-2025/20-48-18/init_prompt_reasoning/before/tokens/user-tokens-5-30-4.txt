@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+28	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+29	.	ĠMary	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġfootball	Ġto	ĠMary	?Ċ

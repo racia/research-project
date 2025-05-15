@@ -12,6 +12,7 @@
 # 10) It saves the categorized results to the specified path.
 from __future__ import annotations
 
+import argparse
 import re
 import warnings
 from collections import defaultdict
@@ -20,13 +21,7 @@ from pathlib import Path
 from data.DataLoader import DataLoader, SilverReasoning
 from data.DataSaver import DataSaver
 from data.utils import structure_parts
-from inference.DataLevels import (
-    Task,
-    Sample,
-    Split,
-    Results,
-    print_metrics,
-)
+from inference.DataLevels import Results, Sample, Split, Task, print_metrics
 from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
 from settings.config import DataSplits
@@ -309,12 +304,11 @@ def run(
         )
 
     if verbose:
-        print_metrics_table(*split.evaluators, id_=data_split)
+        print_metrics_table(evaluators=split.evaluators, id_=data_split)
 
     saver.save_split_accuracy(
-        evaluators=split.evaluators,
+        split=split,
         accuracy_file_name="eval_script_accuracies.csv",
-        multi_system=multi_system,
     )
 
     for version, evaluator, features in zip(
@@ -351,15 +345,53 @@ def run(
     print("\nThe evaluation pipeline has finished successfully.")
 
 
+def parse_args():
+    """
+    Parse the command line arguments.
+
+    :return: None
+    """
+
+    parser = argparse.ArgumentParser(description="Evaluate the results of the model.")
+    parser.add_argument(
+        "--data_path",
+        type=str,
+        required=True,
+        help="Path to the data.",
+    )
+    parser.add_argument(
+        "--save_path",
+        type=str,
+        required=True,
+        help="Path where to save the results.",
+    )
+    parser.add_argument(
+        "--samples_per_task",
+        type=int,
+        default=50,
+        help="Number of samples per task the results were ran with.",
+    )
+    parser.add_argument(
+        "--create_heatmaps",
+        action="store_true",
+        help="Whether to create heatmaps for the interpretability results.",
+    )
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        help="Whether to print the results to the console.",
+    )
+
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
-    # TODO: consider running standardize_data.py before running this script if there are not part_ids or silver_reasoning
-    data_path = "results/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
-    # TODO: provide a path to directory to save the standardized data
-    save_directory = "results/baseline/valid/basic_baseline/baseline_prompt/eval"
+    args = parse_args()
+
     run(
-        data_path=data_path,
-        save_path=save_directory,
-        samples_per_task=50,
-        create_heatmaps=False,
-        verbose=False,
+        data_path=args.data_path,
+        save_path=args.save_directory,
+        samples_per_task=args.samples_per_task,
+        create_heatmaps=args.create_heatmaps,
+        verbose=args.verbose,
     )

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ"	Mary	Ġis	Ġin	Ġthe	Ġbedroom	"	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

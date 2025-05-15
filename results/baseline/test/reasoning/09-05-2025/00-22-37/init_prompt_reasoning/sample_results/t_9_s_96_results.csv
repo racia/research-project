@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1976	9	96	1	"*TASK*
+Here are the context sentences:
+1. Daniel is in the bathroom.
+2. Daniel is not in the bathroom.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	"the context sentences provide two contradictory statements about daniel's location. sentence 1 states that daniel is in the bathroom, while sentence 2 states that daniel is not in the bathroom. since both sentences cannot be true at the same time, we need to consider the most recent information. sentence 2 is the latest statement, which explicitly denies daniel's presence in the bathroom. therefore, based on the most recent and direct information, the answer to the question ""is daniel in the bathroom?"""	fully	no	True	The context sentences provide contradictory information about Daniel's location in the bathroom. Sentence 1 states that Daniel is in the bathroom, while sentence 2 states that he is not. This suggests that Daniel's location in the bathroom is uncertain or changing.		"Reasoning: The context sentences provide contradictory information about Daniel's location in the bathroom. Sentence 1 states that Daniel is in the bathroom, while sentence 2 states that he is not. This suggests that Daniel's location in the bathroom is uncertain or changing.
+
+Answer: no"	0.2143	0.0179	False	False	False	True	0
+1977	9	96	2	"*TASK*
+Here are the context sentences:
+4. Sandra is no longer in the kitchen.
+5. John is not in the bedroom.
+
+Now, answer the following question:
+Is Sandra in the kitchen?"	no	"the context sentence 4 explicitly states that ""sandra is no longer in the kitchen"", which directly implies that sandra is not in the kitchen. this sentence provides a clear and direct answer to the question ""is sandra in the kitchen?"", and the answer is indeed ""no""."	fully	no	True	Sentence 4 states that Sandra is no longer in the kitchen, which implies that she was previously in the kitchen but is no longer there. There is no information that suggests she is currently in the kitchen.		"Reasoning: Sentence 4 states that Sandra is no longer in the kitchen, which implies that she was previously in the kitchen but is no longer there. There is no information that suggests she is currently in the kitchen.
+
+Answer: no"	0.0208	0.0208	False	False	False	True	0
+1978	9	96	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the office.
+8. Daniel journeyed to the garden.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	there is no information provided about john's location in the context sentences. the context sentences only mention sandra journeying to the office and daniel journeying to the garden, but they do not provide any information about john's location. since there is no information about john being in the bedroom, and there is no information suggesting that john is in the bedroom, the most logical conclusion is that john is not in the bedroom.	none	not mentioned	False	There is no information about John's location in the context sentences. Sentence 7 mentions Sandra's journey to the office, and sentence 8 mentions Daniel's journey to the garden, but neither of these sentences provides information about John's location.		"Reasoning: There is no information about John's location in the context sentences. Sentence 7 mentions Sandra's journey to the office, and sentence 8 mentions Daniel's journey to the garden, but neither of these sentences provides information about John's location.
+
+Answer: not mentioned"	0.1071	0.0179	False	False	False	True	0
+1979	9	96	4	"*TASK*
+Here are the context sentences:
+10. Mary is in the bathroom.
+11. Mary is not in the bathroom.
+
+Now, answer the following question:
+Is John in the bedroom?"	no	"the context sentences 10 and 11 provide contradictory information about mary's location, but they do not provide any information about john's location. the question asks about john's location in the bedroom, but there is no information provided about john in the context sentences. therefore, it is not possible to determine john's location based on the provided information, and the answer ""no"" seems to be an arbitrary assumption. however, since there is no information suggesting that john is in the bedroom,"	none	not mentioned	False	The context sentences do not mention John's location at all. The sentences only provide information about Mary's location, which is contradictory (she is both in and not in the bathroom).		"Reasoning: The context sentences do not mention John's location at all. The sentences only provide information about Mary's location, which is contradictory (she is both in and not in the bathroom).
+
+Answer: not mentioned"	0.0682	0.0227	False	False	False	True	0
+1980	9	96	5	"*TASK*
+Here are the context sentences:
+13. Sandra is not in the office.
+14. John went back to the garden.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	"there is no information provided about mary's location in the context sentences. the context sentences only mention sandra's absence from the office and john's movement to the garden, but they do not provide any information about mary's location. since there is no information suggesting that mary is in the bathroom, the most logical conclusion is that we cannot determine mary's location, and the answer ""no"" seems to be an arbitrary assumption."	none	not mentioned	False	The context sentences do not provide any information about Mary's location. The sentences only mention Sandra's absence from the office and John's return to the garden, but do not mention Mary's location.		"Reasoning: The context sentences do not provide any information about Mary's location. The sentences only mention Sandra's absence from the office and John's return to the garden, but do not mention Mary's location.
+
+Answer: not mentioned"	0.0	0.0213	False	False	False	True	0

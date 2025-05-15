@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠY	ann	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġit	Ġis	Ġlikely	Ġthat	ĠY	ann	Ġwent	Ġto	Ġthe	Ġgarden	Ġbecause	Ġthey	Ġwere	Ġbored	.	ĠThis	Ġis	Ġinferred	Ġfrom	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġthat	Ġstated	ĠY	ann	Ġwas	Ġbored	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

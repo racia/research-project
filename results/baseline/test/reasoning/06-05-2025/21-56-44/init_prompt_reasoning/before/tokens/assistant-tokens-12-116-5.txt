@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġthe	Ġfour	teenth	Ġsentence	Ġas	Ġmoving	Ġto	Ġthe	Ġoffice	Ġwith	ĠJohn	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġleaving	Ġthe	Ġoffice	Ġor	Ġgoing	Ġanywhere	Ġelse	.	ĠTherefore	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

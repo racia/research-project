@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+11	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+12	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+13	.	ĠDaniel	Ġdropped	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠDaniel	Ġcarrying	?Ċ

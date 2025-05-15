@@ -1,0 +1,67 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2238	20	69	1	"*TASK*
+Here are the context sentences:
+1. Jason is bored.
+
+Now, answer the following question:
+Where will jason go?"	garden	there is no direct information provided about jason's destination. however, we know that jason is bored, which implies that he might be looking for something to do or a change of environment to alleviate his boredom. a garden is a common outdoor space where people often go to relax, take a walk, or engage in leisure activities. therefore, it is a logical inference that jason might go to the garden to alleviate his boredom.	fully	kitchen	False			Answer: kitchen	0.0	0.25	False	False	False	False	0
+2239	20	69	2	"*TASK*
+Here are the context sentences:
+3. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	antoine is tired, which implies that he needs rest. a bedroom is a common place where people go to rest or sleep. therefore, it is a logical inference that antoine will go to the bedroom to rest and alleviate his tiredness.	fully	bedroom	True			Answer: bedroom	0.0	0.25	False	False	False	False	0
+2240	20	69	3	"*TASK*
+Here are the context sentences:
+5. Sumit is thirsty.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	sumit is thirsty, which implies that he needs to quench his thirst. a kitchen is a common place where people go to get a drink, as it is where water, juice, and other beverages are typically stored. therefore, it is a logical inference that sumit will go to the kitchen to get a drink and alleviate his thirst.	fully	kitchen	True			Answer: kitchen	0.0	0.25	False	False	False	False	0
+2241	20	69	4	"*TASK*
+Here are the context sentences:
+7. Yann is tired.
+
+Now, answer the following question:
+Where will yann go?"	bedroom	yann is tired, which implies that he needs rest. a bedroom is a common place where people go to rest or sleep. therefore, it is a logical inference that yann will go to the bedroom to rest and alleviate his tiredness.	fully	not mentioned (since there is no mention of Yann going	False			Answer: not mentioned (since there is no mention of Yann going	0.0	0.0714	True	False	False	True	0
+2242	20	69	5	"*TASK*
+Here are the context sentences:
+9. Antoine went to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	"in a previous context (3), it was mentioned that ""antoine is tired"". given that antoine went to the bedroom, it is a logical inference that he went there because he was tired, as bedrooms are commonly associated with rest and sleep."	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2243	20	69	6	"*TASK*
+Here are the context sentences:
+11. Jason went back to the garden.
+
+Now, answer the following question:
+Why did jason go to the garden?"	bored	"in a previous context (1), it was mentioned that ""jason is bored"". given that jason went to the garden, it is a logical inference that he went there because he was bored, as gardens are commonly associated with leisure activities and relaxation, which can help alleviate boredom."	none	not mentioned (since there is no mention of Jason going to	False			Answer: not mentioned (since there is no mention of Jason going to	0.0	0.0714	True	False	False	True	0
+2244	20	69	7	"*TASK*
+Here are the context sentences:
+13. Yann journeyed to the bedroom.
+
+Now, answer the following question:
+Why did yann go to the bedroom?"	tired	 relaxation, which can help alleviate boredom.	none	not mentioned (since there is no mention of Yann going	False			Answer: not mentioned (since there is no mention of Yann going	0.0	0.0714	True	False	False	True	0
+2245	20	69	8	"*TASK*
+Here are the context sentences:
+15. Antoine grabbed the pajamas there.
+
+Now, answer the following question:
+Why did antoine get the pajamas?"	tired	 relaxation, which can help alleviate boredom.	none	tired	True			Answer: tired	0.0	0.25	False	False	False	False	0
+2246	20	69	9	"*TASK*
+Here are the context sentences:
+17. Sumit went back to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	thirsty	 relaxation, which can help alleviate boredom.	none	not mentioned (since there is no mention of Sumit going	False			Answer: not mentioned (since there is no mention of Sumit going	0.0	0.0714	True	False	False	True	0
+2247	20	69	10	"*TASK*
+Here are the context sentences:
+19. Sumit picked up the milk there.
+
+Now, answer the following question:
+Why did sumit get the milk?"	thirsty	 relaxation, which can help alleviate boredom.	none	thirsty	True			Answer: thirsty	0.0	0.25	False	False	False	False	0
+2248	20	69	11	"*TASK*
+Here are the context sentences:
+21. Jason took the football there.
+
+Now, answer the following question:
+Why did jason get the football?"	bored	 relaxation, which can help alleviate boredom.	none	bored	True			Answer: bored	0.0	0.25	False	True	False	False	0

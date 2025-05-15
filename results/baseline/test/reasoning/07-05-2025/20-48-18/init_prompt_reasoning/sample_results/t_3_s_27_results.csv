@@ -1,0 +1,102 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1131	3	27	1	"*TASK*
+Here are the context sentences:
+1. Daniel grabbed the apple there.
+2. John grabbed the football.
+3. John dropped the football.
+4. Daniel dropped the apple there.
+5. Daniel took the apple.
+6. Mary travelled to the hallway.
+7. John went to the garden.
+8. Mary grabbed the football.
+9. Daniel put down the apple there.
+10. Sandra journeyed to the hallway.
+11. Daniel took the apple.
+12. Sandra journeyed to the bedroom.
+13. Mary travelled to the kitchen.
+14. Daniel put down the apple.
+15. Sandra went to the garden.
+16. John took the milk.
+17. John travelled to the office.
+18. Sandra travelled to the bathroom.
+19. John dropped the milk there.
+20. Daniel moved to the bedroom.
+21. John picked up the milk.
+22. Mary put down the football.
+23. Sandra got the apple there.
+24. John dropped the milk.
+25. Daniel went back to the office.
+26. John got the milk.
+27. John travelled to the kitchen.
+28. John dropped the milk.
+29. Daniel travelled to the hallway.
+30. Sandra discarded the apple.
+31. Sandra took the apple.
+32. Mary got the football.
+33. John went back to the bedroom.
+34. Mary moved to the hallway.
+35. Mary put down the football.
+36. John journeyed to the kitchen.
+37. Sandra moved to the garden.
+38. Mary went back to the kitchen.
+39. Daniel journeyed to the bedroom.
+40. Daniel journeyed to the garden.
+41. Daniel moved to the kitchen.
+42. Daniel picked up the milk.
+43. Sandra put down the apple.
+44. Sandra moved to the bedroom.
+45. Sandra moved to the garden.
+46. Mary moved to the garden.
+47. Daniel journeyed to the bathroom.
+48. Daniel moved to the garden.
+49. Sandra got the apple.
+50. John travelled to the bedroom.
+51. Mary travelled to the bathroom.
+52. Daniel went to the kitchen.
+53. Mary moved to the bedroom.
+54. Sandra journeyed to the bathroom.
+55. Mary moved to the office.
+56. Daniel dropped the milk.
+
+Now, answer the following question:
+Where was the milk before the kitchen?"	garden	to find where the milk was before the kitchen, we need to track the movement of the milk. the milk was first introduced in sentence 16, where john took the milk. then, in sentence 17, john travelled to the office with the milk. in sentence 19, john dropped the milk there, so the milk was in the office.	fully	bedroom	False	The milk was dropped by John in the bathroom (question 19), and then picked up by Daniel in the bedroom (question 41). Since Daniel moved to the kitchen (question 41), the milk was before the kitchen in the bedroom.		"Reasoning: The milk was dropped by John in the bathroom (question 19), and then picked up by Daniel in the bedroom (question 41). Since Daniel moved to the kitchen (question 41), the milk was before the kitchen in the bedroom.
+
+Answer: bedroom"	0.0	0.0536	False	False	False	False	0
+1132	3	27	2	"*TASK*
+Here are the context sentences:
+58. Daniel picked up the milk.
+59. Daniel went to the bathroom.
+60. John went to the office.
+61. Daniel went back to the office.
+
+Now, answer the following question:
+Where was the milk before the office?"	bathroom	to find where the milk was before the office, we need to track the movement of the milk. the milk was last mentioned in sentence 58, where daniel picked up the milk. then, in sentence 59, daniel went to the bathroom. since daniel had the milk, it is logical to assume that the milk also went to the bathroom with daniel. after that, in sentence 61, daniel went back to the office. therefore, the milk was in the bathroom before	fully	bathroom	True	The milk was picked up by Daniel (question 58), and then Daniel went to the bathroom (question 59). Since Daniel went back to the office (question 61), the milk was before the office in the bathroom.		"Reasoning: The milk was picked up by Daniel (question 58), and then Daniel went to the bathroom (question 59). Since Daniel went back to the office (question 61), the milk was before the office in the bathroom.
+
+Answer: bathroom"	0.0755	0.0566	False	False	False	False	0
+1133	3	27	3	"*TASK*
+Here are the context sentences:
+63. Sandra journeyed to the hallway.
+64. Daniel dropped the milk.
+
+Now, answer the following question:
+Where was the milk before the office?"	bathroom	to find where the milk was before the office, we need to track the movement of the milk. the milk was last mentioned in sentence 58 (from previous context), where daniel picked up the milk. then, in sentence 59 (from previous context), daniel went to the bathroom. since daniel had the milk, it is logical to assume that the milk also went to the bathroom with daniel. after that, in sentence 61 (from previous context),	partially	Not mentioned	False	The milk was dropped by Daniel (question 64), but there is no information about the milk being in the office. The context sentences only mention the hallway and bathroom, but not the office.		"Reasoning: The milk was dropped by Daniel (question 64), but there is no information about the milk being in the office. The context sentences only mention the hallway and bathroom, but not the office.
+
+Answer: Not mentioned"	0.0426	0.0638	False	False	False	True	0
+1134	3	27	4	"*TASK*
+Here are the context sentences:
+66. Mary journeyed to the bedroom.
+67. Sandra left the apple.
+
+Now, answer the following question:
+Where was the milk before the office?"	bathroom	"the context lines provided (66 and 67) do not mention the milk or its location. however, the answer to the question ""where was the milk before the office?"" is still ""bathroom"". this is because the previous context (sentences 58-61) established that daniel picked up the milk, went to the bathroom, and then went back to the office. the milk's location before the office was the bathroom, and this information is not changed or updated by"	none	Not mentioned	False	There is no information about the milk in the context sentences. The sentences only mention the bedroom and the apple, but not the milk or the office.		"Reasoning: There is no information about the milk in the context sentences. The sentences only mention the bedroom and the apple, but not the milk or the office.
+
+Answer: Not mentioned"	0.1316	0.0789	False	False	False	True	0
+1135	3	27	5	"*TASK*
+Here are the context sentences:
+69. John grabbed the milk there.
+70. Sandra picked up the football.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	bathroom	 picked up the milk, went to the bathroom, and then went back to the office. this information is still relevant and has not been contradicted or updated by the new context lines. therefore, the milk was still in the bathroom before the office.	none	Not mentioned	False	There is no information about the apple being in the hallway. The context sentences only mention the milk and the football, but not the apple or the hallway.		"Reasoning: There is no information about the apple being in the hallway. The context sentences only mention the milk and the football, but not the apple or the hallway.
+
+Answer: Not mentioned"	0.0256	0.0769	False	False	False	True	0

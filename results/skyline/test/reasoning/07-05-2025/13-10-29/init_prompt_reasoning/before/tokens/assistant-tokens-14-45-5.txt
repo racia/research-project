@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠBill	's	Ġlocation	Ġbefore	Ġthe	Ġcinema	.	ĠAccording	Ġto	Ġsentence	Ġ	9	,	ĠThis	Ġmorning	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġcinema	.	ĠBefore	Ġthat	,	Ġaccording	Ġto	Ġsentence	Ġ	1	,	ĠBill	Ġwent	Ġto	Ġthe	Ġschool	Ġyesterday	.	ĠTherefore	,	ĠBill	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

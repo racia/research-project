@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbathroom	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	13	Ġmentions	ĠJohn	Ġmoving	Ġto	Ġthe	Ġoffice	,	Ġand	Ġsentence	Ġ	14	Ġmentions	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbedroom	,	Ġbut	Ġneither	Ġmentions	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

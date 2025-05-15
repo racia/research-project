@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2236	13	148	1	"*TASK*
+Here are the context sentences:
+1. John and Mary went back to the bedroom.
+2. Following that they journeyed to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentences, we know that john and mary went back to the bedroom (sentence 1) and then they journeyed to the hallway (sentence 2). since mary was with john in both actions, it can be logically inferred that mary is currently in the hallway, as that is the last location mentioned where she was present.	fully	hallway	True	Mary is mentioned together with John in the first sentence, and they are both moving together in the second sentence. There is no indication that Mary would be separated from John or that she would be in a different location. Therefore, it is logical to assume that Mary is in the same location as John.		"Reasoning: Mary is mentioned together with John in the first sentence, and they are both moving together in the second sentence. There is no indication that Mary would be separated from John or that she would be in a different location. Therefore, it is logical to assume that Mary is in the same location as John.
+
+Answer: hallway"	0.1642	0.0299	False	False	False	True	0
+2237	13	148	2	"*TASK*
+Here are the context sentences:
+4. John and Sandra went to the bathroom.
+5. After that they went to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that john and sandra went to the bathroom (sentence 4) and then they went to the hallway (sentence 5). since john was with sandra in both actions, it can be logically inferred that john is currently in the hallway, as that is the last location mentioned where he was present.	fully	hallway	True	John is mentioned together with Sandra in the first sentence, and they are both moving together in the second sentence. There is no indication that John would be separated from Sandra or that he would be in a different location. Therefore, it is logical to assume that John is in the same location as Sandra.		"Reasoning: John is mentioned together with Sandra in the first sentence, and they are both moving together in the second sentence. There is no indication that John would be separated from Sandra or that he would be in a different location. Therefore, it is logical to assume that John is in the same location as Sandra.
+
+Answer: hallway"	0.1642	0.0299	False	False	False	True	0
+2238	13	148	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Sandra went back to the bedroom.
+8. Following that they moved to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from the context sentences, we know that daniel and sandra went back to the bedroom (sentence 7) and then they moved to the bathroom (sentence 8). since daniel was with sandra in both actions, it can be logically inferred that daniel is currently in the bathroom, as that is the last location mentioned where he was present.	fully	bathroom	True	Daniel is mentioned together with Sandra in the first sentence, and they are both moving together in the second sentence. There is no indication that Daniel would be separated from Sandra or that he would be in a different location. Therefore, it is logical to assume that Daniel is in the same location as Sandra.		"Reasoning: Daniel is mentioned together with Sandra in the first sentence, and they are both moving together in the second sentence. There is no indication that Daniel would be separated from Sandra or that he would be in a different location. Therefore, it is logical to assume that Daniel is in the same location as Sandra.
+
+Answer: bathroom"	0.209	0.0299	False	False	False	True	0
+2239	13	148	4	"*TASK*
+Here are the context sentences:
+10. John and Sandra went to the bedroom.
+11. Following that they travelled to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	from the context sentences, we know that john and sandra went to the bedroom (sentence 10) and then they travelled to the office (sentence 11). since sandra was with john in both actions, it can be logically inferred that sandra is currently in the office, as that is the last location mentioned where she was present.	fully	office	True	Sandra is mentioned together with John in the first sentence, and they are both moving together in the second sentence. There is no indication that Sandra would be separated from John or that she would be in a different location. Therefore, it is logical to assume that Sandra is in the same location as John.		"Reasoning: Sandra is mentioned together with John in the first sentence, and they are both moving together in the second sentence. There is no indication that Sandra would be separated from John or that she would be in a different location. Therefore, it is logical to assume that Sandra is in the same location as John.
+
+Answer: office"	0.0149	0.0299	False	False	False	True	0
+2240	13	148	5	"*TASK*
+Here are the context sentences:
+13. John and Daniel went back to the kitchen.
+14. Afterwards they journeyed to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	from the context sentences, we know that john and daniel went back to the kitchen (sentence 13) and then they journeyed to the bedroom (sentence 14). since john was with daniel in both actions, it can be logically inferred that john is currently in the bedroom, as that is the last location mentioned where he was present.	fully	bedroom	True	John is mentioned together with Daniel in the first sentence, and they are both moving together in the second sentence. There is no indication that John would be separated from Daniel or that he would be in a different location. Therefore, it is logical to assume that John is in the same location as Daniel.		"Reasoning: John is mentioned together with Daniel in the first sentence, and they are both moving together in the second sentence. There is no indication that John would be separated from Daniel or that he would be in a different location. Therefore, it is logical to assume that John is in the same location as Daniel.
+
+Answer: bedroom"	0.194	0.0299	False	False	False	True	0

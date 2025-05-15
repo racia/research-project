@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbathroom	.	ĠSentence	Ġ	1	Ġstates	Ġthat	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	,	Ġand	ĠSentence	Ġ	2	Ġshows	Ġthat	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	,	Ġimplying	Ġthat	Ġthey	Ġare	Ġboth	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġat	Ġall	.	ĠThey	Ġonly	Ġtalk	Ġabout	ĠSandra	's	Ġmovements	Ġbetween	Ġthe	Ġoffice	Ġand	Ġthe	Ġgarden	.	ĠTherefore	,	Ġwe	Ġcannot	Ġinfer	Ġanything	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJulie	's	Ġlocation	,	Ġand	Ġsince	ĠJulie	Ġmoved	Ġto	Ġthe	Ġschool	Ġ(	from	Ġcontext	Ġsentence	Ġ	8	),	Ġit	Ġis	Ġlikely	Ġthat	ĠJulie	Ġis	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

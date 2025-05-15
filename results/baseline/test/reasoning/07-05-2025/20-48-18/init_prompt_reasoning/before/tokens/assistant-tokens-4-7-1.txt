@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġwhat	Ġis	Ġeast	Ġof	Ġthe	Ġbedroom	.	ĠSentence	Ġ	1	Ġstates	Ġthat	Ġthe	Ġkitchen	Ġis	Ġeast	Ġof	Ġthe	Ġbedroom	,	Ġso	Ġthe	Ġkitchen	Ġis	Ġthe	Ġcorrect	Ġanswer	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

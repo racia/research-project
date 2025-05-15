@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠWe	Ġknow	Ġthat	ĠJulie	Ġmoved	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	Ġ(	from	Ġcontext	Ġsentence	Ġ	7	).	ĠSince	Ġshe	Ġtravelled	Ġto	Ġthe	Ġpark	Ġthis	Ġafternoon	,	Ġit	Ġimplies	Ġthat	Ġshe	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

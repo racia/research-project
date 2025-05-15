@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġand	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġafterwards	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġimplies	Ġthat	Ġthey	Ġmoved	Ġfrom	Ġthe	Ġkitchen	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġmeans	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

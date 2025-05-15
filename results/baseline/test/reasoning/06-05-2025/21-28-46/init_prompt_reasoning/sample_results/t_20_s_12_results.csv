@@ -1,0 +1,89 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2180	20	12	1	"*TASK*
+Here are the context sentences:
+1. Antoine is tired.
+
+Now, answer the following question:
+Where will antoine go?"	bedroom	when antoine is tired, it is logical to assume that he will go to a place where he can rest. the most common place for resting is a bedroom, as it is typically associated with sleeping and relaxation. therefore, based on antoine's state of being tired, it is reasonable to conclude that he will go to the bedroom.	fully	bedroom	True	Antoine is tired, which implies he needs rest. The context does not specify a particular location, but based on the assumption that Antoine will go somewhere to rest, the most logical choice is the bedroom.		"Reasoning: Antoine is tired, which implies he needs rest. The context does not specify a particular location, but based on the assumption that Antoine will go somewhere to rest, the most logical choice is the bedroom.
+
+Answer: bedroom"	0.0213	0.0213	False	False	False	False	0
+2181	20	12	2	"*TASK*
+Here are the context sentences:
+3. Sumit is thirsty.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	when sumit is thirsty, it is logical to assume that he will go to a place where he can quench his thirst. in a typical household, the kitchen is where people usually go to get a drink, as it is where the water, refrigerator, and other beverages are usually located. therefore, based on sumit's state of being thirsty, it is reasonable to conclude that he will go to the kitchen.	fully	kitchen	True	Sumit is thirsty, which implies he needs a drink. The context does not specify a particular location, but based on the assumption that Sumit will go somewhere to quench his thirst, the most logical choice is the kitchen.		"Reasoning: Sumit is thirsty, which implies he needs a drink. The context does not specify a particular location, but based on the assumption that Sumit will go somewhere to quench his thirst, the most logical choice is the kitchen.
+
+Answer: kitchen"	0.0377	0.0189	False	False	False	False	0
+2182	20	12	3	"*TASK*
+Here are the context sentences:
+5. Jason is hungry.
+
+Now, answer the following question:
+Where will jason go?"	kitchen	when jason is hungry, it is logical to assume that he will go to a place where he can find food. in a typical household, the kitchen is where food is usually prepared and stored, making it a likely location for jason to go to satisfy his hunger. therefore, based on jason's state of being hungry, it is reasonable to conclude that he will go to the kitchen.	fully	kitchen	True	Jason is hungry, which implies he needs food. The context does not specify a particular location, but based on the assumption that Jason will go somewhere to eat, the most logical choice is the kitchen.		"Reasoning: Jason is hungry, which implies he needs food. The context does not specify a particular location, but based on the assumption that Jason will go somewhere to eat, the most logical choice is the kitchen.
+
+Answer: kitchen"	0.1702	0.0213	False	False	False	False	0
+2183	20	12	4	"*TASK*
+Here are the context sentences:
+7. Jason moved to the kitchen.
+
+Now, answer the following question:
+Why did jason go to the kitchen?"	hungry	"in the previous context, it was stated that ""jason is hungry"" (context line 5). this implies that jason has a need or desire for food. when jason moves to the kitchen (context line 7), it is logical to infer that he is going to the kitchen to satisfy his hunger, as the kitchen is a common place where food is prepared and consumed. therefore, the reason jason went to the kitchen is because he is hungry."	none	hungry	True	Jason moved to the kitchen, which implies that he went there for a specific reason. Since Jason is hungry, the most logical reason for him going to the kitchen is to get food.		"Reasoning: Jason moved to the kitchen, which implies that he went there for a specific reason. Since Jason is hungry, the most logical reason for him going to the kitchen is to get food.
+
+Answer: hungry"	0.1136	0.0227	False	False	False	False	0
+2184	20	12	5	"*TASK*
+Here are the context sentences:
+9. Jason grabbed the apple there.
+
+Now, answer the following question:
+Why did jason get the apple?"	hungry	"in the previous context, it was stated that ""jason is hungry"" (context line 5) and ""jason moved to the kitchen"" (context line 7). it was inferred that jason went to the kitchen because he is hungry. now, in the kitchen, jason grabbed an apple (context line 9). it is logical to conclude that jason got the apple because he is hungry, as apples are a type of food that can satisfy hunger. therefore"	none	hungry	True	Jason grabbed the apple in the kitchen, which implies that he got the apple for a specific reason. Since Jason is hungry, the most logical reason for him getting the apple is to satisfy his hunger.		"Reasoning: Jason grabbed the apple in the kitchen, which implies that he got the apple for a specific reason. Since Jason is hungry, the most logical reason for him getting the apple is to satisfy his hunger.
+
+Answer: hungry"	0.0851	0.0213	False	False	False	False	0
+2185	20	12	6	"*TASK*
+Here are the context sentences:
+11. Antoine went back to the bedroom.
+
+Now, answer the following question:
+Why did antoine go to the bedroom?"	tired	"""reasoning: <reasoning>"""	none	tired	True	Antoine went back to the bedroom, which implies that he returned to the bedroom for a specific reason. Since Antoine is tired, the most logical reason for him going to the bedroom is to rest.		"Reasoning: Antoine went back to the bedroom, which implies that he returned to the bedroom for a specific reason. Since Antoine is tired, the most logical reason for him going to the bedroom is to rest.
+
+Answer: tired"	0.0	0.0217	False	False	False	False	0
+2186	20	12	7	"*TASK*
+Here are the context sentences:
+13. Antoine picked up the pajamas there.
+
+Now, answer the following question:
+Why did antoine get the pajamas?"	tired	"""reasoning: <reasoning>"""	none	tired	True	Antoine picked up the pajamas in the bedroom, which implies that he got the pajamas for a specific reason. Since Antoine is tired, the most logical reason for him getting the pajamas is to wear them to sleep.		"Reasoning: Antoine picked up the pajamas in the bedroom, which implies that he got the pajamas for a specific reason. Since Antoine is tired, the most logical reason for him getting the pajamas is to wear them to sleep.
+
+Answer: tired"	0.0	0.0192	False	False	False	False	0
+2187	20	12	8	"*TASK*
+Here are the context sentences:
+15. Sumit moved to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	thirsty	"""reasoning: <reasoning>"""	none	thirsty	True	Sumit moved to the kitchen, which implies that he went there for a specific reason. Since Sumit is thirsty, the most logical reason for him going to the kitchen is to get a drink.		"Reasoning: Sumit moved to the kitchen, which implies that he went there for a specific reason. Since Sumit is thirsty, the most logical reason for him going to the kitchen is to get a drink.
+
+Answer: thirsty"	0.0213	0.0213	False	False	False	False	0
+2188	20	12	9	"*TASK*
+Here are the context sentences:
+17. Sumit took the milk there.
+
+Now, answer the following question:
+Why did sumit get the milk?"	thirsty	"""reasoning: <reasoning>"""	none	thirsty	True	Sumit took the milk in the kitchen, which implies that he got the milk for a specific reason. Since Sumit is thirsty, the most logical reason for him getting the milk is to quench his thirst.		"Reasoning: Sumit took the milk in the kitchen, which implies that he got the milk for a specific reason. Since Sumit is thirsty, the most logical reason for him getting the milk is to quench his thirst.
+
+Answer: thirsty"	0.06	0.02	False	False	False	False	0
+2189	20	12	10	"*TASK*
+Here are the context sentences:
+19. Yann is hungry.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	"""reasoning: <reasoning>"""	fully	kitchen	True	Yann is hungry, which implies he needs food. The context does not specify a particular location, but based on the assumption that Yann will go somewhere to eat, the most logical choice is the kitchen.		"Reasoning: Yann is hungry, which implies he needs food. The context does not specify a particular location, but based on the assumption that Yann will go somewhere to eat, the most logical choice is the kitchen.
+
+Answer: kitchen"	0.0	0.0204	False	False	False	False	0
+2190	20	12	11	"*TASK*
+Here are the context sentences:
+21. Yann went back to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	hungry	"""reasoning: <reasoning>"""	none	hungry	True	Yann went back to the kitchen, which implies that he returned to the kitchen for a specific reason. Since Yann is hungry, the most logical reason for him going to the kitchen is to get food.		"Reasoning: Yann went back to the kitchen, which implies that he returned to the kitchen for a specific reason. Since Yann is hungry, the most logical reason for him going to the kitchen is to get food.
+
+Answer: hungry"	0.0	0.0204	False	False	False	False	0

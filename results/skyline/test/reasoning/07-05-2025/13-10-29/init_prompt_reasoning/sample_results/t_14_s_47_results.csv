@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1731	14	47	1	"*TASK*
+Here are the context sentences:
+1. This morning Fred went to the school.
+2. Yesterday Mary journeyed to the kitchen.
+3. Fred journeyed to the office yesterday.
+4. Bill went back to the park yesterday.
+
+Now, answer the following question:
+Where was Fred before the school?"	office	from context sentence 3, we know that fred journeyed to the office yesterday. since the question asks about where fred was before going to the school (which happened this morning, according to context sentence 1), and we know that fred was at the office yesterday, it is logical to assume that fred was at the office before going to the school.	fully	not mentioned	False	According to sentence 3, Fred journeyed to the office yesterday. There is no information about Fred's location before going to the office. Therefore, we cannot determine Fred's location before the school.		"assistant
+
+Reasoning: According to sentence 3, Fred journeyed to the office yesterday. There is no information about Fred's location before going to the office. Therefore, we cannot determine Fred's location before the school.
+
+Answer: not mentioned"	0.0577	0.0385	False	False	False	True	0
+1732	14	47	2	"*TASK*
+Here are the context sentences:
+6. Julie went back to the school yesterday.
+7. This morning Mary journeyed to the park.
+
+Now, answer the following question:
+Where was Mary before the park?"	kitchen	from context sentence 2, we know that mary journeyed to the kitchen yesterday. since the question asks about where mary was before going to the park (which happened this morning, according to context sentence 7), and we know that mary was at the kitchen yesterday, it is logical to assume that mary was at the kitchen before going to the park.	partially	kitchen	True	According to sentence 2 (from the previous context), Mary journeyed to the kitchen yesterday. There is no other information about Mary's location before going to the park. Therefore, we can infer that Mary was in the kitchen before going to the park.		"Reasoning: According to sentence 2 (from the previous context), Mary journeyed to the kitchen yesterday. There is no other information about Mary's location before going to the park. Therefore, we can infer that Mary was in the kitchen before going to the park.
+
+Answer: kitchen"	0.069	0.0345	False	False	False	True	0
+1733	14	47	3	"*TASK*
+Here are the context sentences:
+9. Bill went back to the kitchen this morning.
+10. Mary journeyed to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Fred before the school?"	office	this question refers to a previous part of the conversation history. from context sentence 3, we know that fred journeyed to the office yesterday. since the question asks about where fred was before going to the school (which happened this morning, according to context sentence 1), and we know that fred was at the office yesterday, it is logical to assume that fred was at the office before going to the school. the new context sentences 9 and 10 do not provide any new	none	not mentioned	False	The question is asking about Fred's location before the school, but the provided context sentences (9 and 10) do not provide any new information about Fred. The previous context sentences (1, 2, 3, and 4) did not provide enough information to determine Fred's location before the school. Therefore, the answer remains the same.		"Reasoning: The question is asking about Fred's location before the school, but the provided context sentences (9 and 10) do not provide any new information about Fred. The previous context sentences (1, 2, 3, and 4) did not provide enough information to determine Fred's location before the school. Therefore, the answer remains the same.
+
+Answer: not mentioned"	0.0633	0.0253	False	False	False	True	0
+1734	14	47	4	"*TASK*
+Here are the context sentences:
+12. Julie went back to the bedroom this morning.
+13. Fred went back to the cinema this afternoon.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	park	this question refers to a previous part of the conversation history. from context sentence 4, we know that bill went back to the park yesterday. since the question asks about where bill was before going to the kitchen (which happened this morning, according to context sentence 9), and we know that bill was at the park yesterday, it is logical to assume that bill was at the park before going to the kitchen. the new context sentences 12 and 13 do not provide any new	none	park	True	According to sentence 4 (from the previous context), Bill went back to the park yesterday. There is no other information about Bill's location before going to the kitchen. Therefore, we can infer that Bill was in the park before going to the kitchen.		"Reasoning: According to sentence 4 (from the previous context), Bill went back to the park yesterday. There is no other information about Bill's location before going to the kitchen. Therefore, we can infer that Bill was in the park before going to the kitchen.
+
+Answer: park"	0.0172	0.0345	False	False	False	True	0
+1735	14	47	5	"*TASK*
+Here are the context sentences:
+15. This evening Mary journeyed to the kitchen.
+16. Bill went to the park this afternoon.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	school	this question refers to a previous part of the conversation history. from context sentence 1, we know that fred went to the school this morning. from context sentence 3, we know that fred journeyed to the office yesterday. from context sentence 13, we know that fred went back to the cinema this afternoon. since the question asks about where fred was before going to the cinema, and we know that fred was at the school this morning and then went to the cinema this afternoon	none	office	False	According to sentence 3 (from the previous context), Fred journeyed to the office yesterday. There is no other information about Fred's location before going to the cinema. Therefore, we can infer that Fred was in the office before going to the cinema.		"Reasoning: According to sentence 3 (from the previous context), Fred journeyed to the office yesterday. There is no other information about Fred's location before going to the cinema. Therefore, we can infer that Fred was in the office before going to the cinema.
+
+Answer: office"	0.0172	0.0345	False	False	False	True	0

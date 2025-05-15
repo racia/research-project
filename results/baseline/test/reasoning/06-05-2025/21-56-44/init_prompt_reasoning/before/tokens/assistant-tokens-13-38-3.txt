@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġtogether	Ġand	Ġthen	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.	ĠSince	ĠMary	Ġis	Ġnot	Ġmentioned	Ġto	Ġhave	Ġseparated	Ġfrom	ĠSandra	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġstill	Ġwith	ĠSandra	.	ĠTherefore	,	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+9	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġoffice	Ġthis	Ġevening	.Ċ
+10	.	ĠThis	Ġafternoon	ĠBill	Ġmoved	Ġto	Ġthe	Ġcinema	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠBill	Ġbefore	Ġthe	Ġcinema	?Ċ

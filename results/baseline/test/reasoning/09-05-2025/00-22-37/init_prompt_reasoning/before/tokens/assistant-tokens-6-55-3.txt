@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġthat	Ġdirectly	Ġstates	ĠMary	's	Ġlocation	.	ĠHowever	,	Ġsentence	Ġ	7	Ġmentions	ĠMary	Ġtaking	Ġthe	Ġfootball	Ġ"	there	",	Ġbut	Ġit	Ġdoesn	't	Ġspecify	Ġwhere	Ġ"	there	"	Ġis	.	ĠSentence	Ġ	8	Ġstates	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġit	Ġdoesn	't	Ġmention	ĠMary	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

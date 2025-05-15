@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2996	14	150	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the kitchen yesterday.
+2. This morning Mary travelled to the cinema.
+3. This afternoon Mary went to the park.
+4. Yesterday Bill went back to the cinema.
+
+Now, answer the following question:
+Where was Mary before the park?"	cinema	"from the context sentences, we know that mary travelled to the kitchen yesterday (sentence 1). then, this morning, mary travelled to the cinema (sentence 2). after that, this afternoon, mary went to the park (sentence 3). since sentence 3 mentions ""this afternoon"", it implies that mary was somewhere else before going to the park. the only other location mentioned in the context sentences that mary visited is the cinema, which she visited this morning. therefore, it"	fully	cinema	True	Since Mary went to the park this afternoon, we need to find out where she was before that. We know she travelled to the kitchen yesterday, and then went to the cinema this morning. This means she was not at the park before this afternoon.		"Reasoning: Since Mary went to the park this afternoon, we need to find out where she was before that. We know she travelled to the kitchen yesterday, and then went to the cinema this morning. This means she was not at the park before this afternoon.
+
+Answer: cinema"	0.2982	0.0351	False	False	False	False	0
+2997	14	150	2	"*TASK*
+Here are the context sentences:
+6. Bill went to the bedroom this morning.
+7. Yesterday Fred travelled to the school.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	cinema	"there is no direct information about bill's location before the bedroom in the provided context sentences. however, we can infer the answer by looking at the previous parts of the conversation history. in sentence 4, it is mentioned that ""yesterday bill went back to the cinema."" since bill went back to the cinema yesterday, it is logical to assume that bill was at the cinema before going to the bedroom this morning."	partially	not mentioned	False	Since Bill went to the bedroom this morning, we need to find out where he was before that. There is no information provided about Bill's whereabouts before this morning, so we cannot determine a specific location.		"Reasoning: Since Bill went to the bedroom this morning, we need to find out where he was before that. There is no information provided about Bill's whereabouts before this morning, so we cannot determine a specific location.
+
+Answer: not mentioned"	0.1429	0.0408	False	False	False	True	0
+2998	14	150	3	"*TASK*
+Here are the context sentences:
+9. Fred went to the bedroom this morning.
+10. Julie went to the kitchen yesterday.
+
+Now, answer the following question:
+Where was Mary before the park?"	cinema	"to answer this question, we need to look at the previous parts of the conversation history. sentences 1-4 are relevant to mary's movements. from sentence 2, we know that ""this morning mary travelled to the cinema."" then, from sentence 3, we know that ""this afternoon mary went to the park."" therefore, it is logical to conclude that mary was at the cinema before going to the park. the provided context sentences 9 and 10 do not provide"	none	not mentioned	False	There is no information provided about Mary's whereabouts before the park. The context sentences only mention Fred's and Julie's activities, but not Mary's.		"Reasoning: There is no information provided about Mary's whereabouts before the park. The context sentences only mention Fred's and Julie's activities, but not Mary's.
+
+Answer: not mentioned"	0.0789	0.0526	False	False	False	True	0
+2999	14	150	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Fred went back to the cinema.
+13. This morning Julie journeyed to the office.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	cinema	"to answer this question, we need to look at the previous parts of the conversation history. sentence 6 is relevant to bill's movements. from sentence 6, we know that ""bill went to the bedroom this morning."" to find out where bill was before the bedroom, we need to look at the previous movements of bill. sentence 4 is relevant to bill's movements. from sentence 4, we know that ""yesterday bill went back to the cinema."" since bill went"	none	not mentioned	False	There is no information provided about Bill's whereabouts before the bedroom. The context sentences only mention Fred's and Julie's activities, but not Bill's.		"Reasoning: There is no information provided about Bill's whereabouts before the bedroom. The context sentences only mention Fred's and Julie's activities, but not Bill's.
+
+Answer: not mentioned"	0.0263	0.0526	False	False	False	True	0
+3000	14	150	5	"*TASK*
+Here are the context sentences:
+15. Mary went to the cinema this evening.
+16. This evening Fred travelled to the kitchen.
+
+Now, answer the following question:
+Where was Mary before the cinema?"	park	"to answer this question, we need to look at the previous parts of the conversation history. sentences 1-4 are relevant to mary's movements. from sentence 3, we know that ""this afternoon mary went to the park."" then, from sentence 15, we know that ""mary went to the cinema this evening."" therefore, it is logical to conclude that mary was at the park before going to the cinema."	partially	kitchen	False	We know Mary went to the cinema this evening, and we need to find out where she was before that. We know she travelled to the kitchen yesterday (from previous context sentences), and then went to the cinema this morning (from previous context sentences). This means she was not at the cinema before this evening.		"Reasoning: We know Mary went to the cinema this evening, and we need to find out where she was before that. We know she travelled to the kitchen yesterday (from previous context sentences), and then went to the cinema this morning (from previous context sentences). This means she was not at the cinema before this evening.
+
+Answer: kitchen"	0.058	0.029	False	False	False	False	0

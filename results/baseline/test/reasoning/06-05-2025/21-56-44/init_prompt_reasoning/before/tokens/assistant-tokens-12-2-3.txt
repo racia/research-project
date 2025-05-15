@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġwas	Ġpreviously	Ġin	Ġthe	Ġkitchen	Ġwith	ĠJohn	Ġ(	sentence	Ġ	7	),	Ġbut	Ġthen	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġwith	ĠDaniel	Ġ(	sentence	Ġ	8	).	ĠSince	ĠMary	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlogical	Ġto	Ġconclude	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

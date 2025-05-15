@@ -1,0 +1,17 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠDaniel	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+2	.	ĠDaniel	Ġdropped	Ġthe	Ġapple	.Ċ
+3	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+4	.	ĠDaniel	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+5	.	ĠDaniel	Ġleft	Ġthe	Ġapple	.Ċ
+6	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+7	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+8	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+9	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+10	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+11	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+12	.	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+13	.	ĠJohn	Ġleft	Ġthe	Ġapple	.Ċ
+14	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġapple	?Ċ

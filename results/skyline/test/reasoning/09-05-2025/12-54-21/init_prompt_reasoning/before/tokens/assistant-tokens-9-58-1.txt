@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġtravelling	Ġto	Ġthe	Ġkitchen	Ġand	ĠMary	Ġjourney	ing	Ġto	Ġthe	Ġhallway	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	Ġbeing	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

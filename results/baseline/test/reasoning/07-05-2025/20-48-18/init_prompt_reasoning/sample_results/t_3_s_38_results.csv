@@ -1,0 +1,158 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1186	3	38	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the office.
+2. Daniel moved to the garden.
+3. Daniel got the apple there.
+4. Daniel discarded the apple.
+5. Mary went back to the hallway.
+6. John travelled to the bedroom.
+7. Mary got the milk.
+8. Mary put down the milk there.
+9. John moved to the hallway.
+10. Mary picked up the milk.
+11. Mary moved to the bedroom.
+12. Mary took the football.
+13. Mary put down the football.
+14. Daniel picked up the apple.
+15. Mary grabbed the football.
+16. Sandra travelled to the kitchen.
+17. Mary travelled to the bathroom.
+18. Daniel discarded the apple.
+19. Daniel picked up the apple there.
+20. Sandra went back to the bedroom.
+21. Daniel dropped the apple there.
+22. John went to the office.
+23. Mary moved to the hallway.
+24. Mary discarded the football.
+
+Now, answer the following question:
+Where was the football before the hallway?"	bathroom	"from the context sentences, we can track the movement of the football. the football was first taken by mary in sentence 12: ""mary took the football."" then, mary put it down in sentence 13: ""mary put down the football."" after that, mary grabbed the football again in sentence 15: ""mary grabbed the football."""	fully	bedroom	False	The football was taken by Mary in the bedroom (sentence 12), and then put down (sentence 13). Later, Mary picked it up again in the hallway (sentence 23), so the football was in the bedroom before the hallway.		"Reasoning: The football was taken by Mary in the bedroom (sentence 12), and then put down (sentence 13). Later, Mary picked it up again in the hallway (sentence 23), so the football was in the bedroom before the hallway.
+
+Answer: bedroom"	0.0893	0.0536	False	False	False	False	0
+1187	3	38	2	"*TASK*
+Here are the context sentences:
+26. Mary took the football.
+27. Daniel took the apple.
+28. John went to the kitchen.
+29. Mary dropped the football.
+30. Mary put down the milk there.
+31. John went to the bathroom.
+
+Now, answer the following question:
+Where was the milk before the bathroom?"	bedroom	"from the context sentences, we can track the movement of the milk. the milk was first taken by mary in sentence 7: ""mary got the milk."" then, mary put it down in sentence 8: ""mary put down the milk there."" at that point, mary was in the hallway (sentence 5: ""mary went back to the hallway."")."	partially	kitchen	False	The milk was put down by Mary in the kitchen (sentence 30), and then John went to the bathroom (sentence 31), so the milk was in the kitchen before the bathroom.		"Reasoning: The milk was put down by Mary in the kitchen (sentence 30), and then John went to the bathroom (sentence 31), so the milk was in the kitchen before the bathroom.
+
+Answer: kitchen"	0.0222	0.0667	False	False	False	False	0
+1188	3	38	3	"*TASK*
+Here are the context sentences:
+33. Sandra journeyed to the office.
+34. Mary got the milk.
+35. Mary picked up the football there.
+36. Daniel discarded the apple.
+37. Daniel journeyed to the kitchen.
+38. Mary went back to the kitchen.
+39. Mary dropped the milk.
+40. Daniel took the milk.
+41. John travelled to the office.
+42. Daniel discarded the milk.
+43. Mary grabbed the milk.
+44. Sandra went back to the bathroom.
+45. John went to the bedroom.
+46. Mary put down the football there.
+47. Daniel took the football.
+48. Sandra journeyed to the garden.
+49. Daniel journeyed to the hallway.
+50. Mary discarded the milk there.
+51. Sandra got the apple.
+52. Mary picked up the milk.
+53. Daniel left the football.
+54. Sandra travelled to the bedroom.
+55. Daniel grabbed the football.
+56. Sandra left the apple.
+57. John travelled to the kitchen.
+58. Sandra got the apple.
+59. Daniel discarded the football.
+60. Mary discarded the milk.
+61. Mary went to the garden.
+62. Daniel moved to the garden.
+63. Sandra moved to the garden.
+64. Mary moved to the kitchen.
+65. Sandra moved to the kitchen.
+66. John moved to the bathroom.
+67. Mary got the milk.
+68. Sandra journeyed to the office.
+69. Sandra dropped the apple.
+70. John journeyed to the kitchen.
+
+Now, answer the following question:
+Where was the apple before the office?"	kitchen	"from the context sentences, we can track the movement of the apple. in sentence 58, ""sandra got the apple"", which implies that the apple was in the same location as sandra. before that, in sentence 57, ""john travelled to the kitchen"", and in sentence 56, ""sandra left the apple"", which implies that sandra was in the kitchen when she left the apple. therefore, the apple was in the kitchen before the office."	fully	bedroom	False	The apple was picked up by Sandra in the garden (sentence 51), and then she got it again in the bedroom (sentence 58), and finally dropped it in the office (sentence 69), so the apple was in the bedroom before the office.		"Reasoning: The apple was picked up by Sandra in the garden (sentence 51), and then she got it again in the bedroom (sentence 58), and finally dropped it in the office (sentence 69), so the apple was in the bedroom before the office.
+
+Answer: bedroom"	0.0169	0.0508	False	False	False	False	0
+1189	3	38	4	"*TASK*
+Here are the context sentences:
+72. Sandra picked up the apple there.
+73. Mary went to the bathroom.
+74. Mary dropped the milk.
+75. Daniel went back to the office.
+76. Mary took the milk there.
+77. Mary dropped the milk there.
+78. Daniel moved to the hallway.
+79. Daniel went to the bathroom.
+80. Sandra put down the apple.
+81. Sandra picked up the apple there.
+82. Daniel travelled to the bedroom.
+83. John went to the hallway.
+84. John journeyed to the bedroom.
+85. Daniel went to the bathroom.
+86. Daniel travelled to the bedroom.
+87. Mary got the milk.
+88. Daniel moved to the office.
+89. Mary went to the garden.
+90. Mary went back to the office.
+91. Sandra discarded the apple.
+
+Now, answer the following question:
+Where was the milk before the office?"	garden	" travelled to the bedroom.
+81. mary picked up the milk.
+82. mary put down the milk there.
+83. daniel went back to the office.
+84. mary went to the bedroom.
+85. mary took the milk there.
+86. mary dropped the milk there.
+87. daniel moved to the hallway.
+88. daniel went to the bathroom.
+this is the question: where was the milk before mary dropped it in sentence 74?
+this is the answer: hallway"	fully	bathroom	False	The milk was dropped by Mary in the bathroom (sentence 74), and then she took it to the office (sentence 76), so the milk was in the bathroom before the office.		"Reasoning: The milk was dropped by Mary in the bathroom (sentence 74), and then she took it to the office (sentence 76), so the milk was in the bathroom before the office.
+
+Answer: bathroom"	0.0889	0.0667	False	False	False	False	0
+1190	3	38	5	"*TASK*
+Here are the context sentences:
+93. Sandra went back to the bedroom.
+94. Sandra moved to the office.
+95. Mary got the apple.
+96. Mary put down the apple.
+97. Daniel travelled to the garden.
+98. Daniel moved to the kitchen.
+99. Sandra journeyed to the kitchen.
+100. Daniel moved to the garden.
+101. Sandra went back to the hallway.
+102. Sandra picked up the football.
+103. Mary discarded the milk.
+104. Mary picked up the apple.
+
+Now, answer the following question:
+Where was the milk before the office?"	garden	" travelled to the bedroom.
+81. mary picked up the milk.
+82. daniel went back to the office.
+83. mary moved to the bedroom.
+84. daniel picked up the apple there.
+85. mary dropped the milk.
+86. daniel went back to the hallway.
+87. mary went to the office.
+88. daniel picked up the milk there.
+89. mary went back to the bedroom.
+90. daniel moved to the bedroom.
+91. mary picked up the apple there.
+92."	partially	bathroom	False	The milk was discarded by Mary (sentence 103), but there is no mention of the milk being in the office. The previous question about the milk before the office was answered as being in the bathroom.		"Reasoning: The milk was discarded by Mary (sentence 103), but there is no mention of the milk being in the office. The previous question about the milk before the office was answered as being in the bathroom.
+
+Answer: bathroom"	0.0208	0.0625	False	False	False	True	0

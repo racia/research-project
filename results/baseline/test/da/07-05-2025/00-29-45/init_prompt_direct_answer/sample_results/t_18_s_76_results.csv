@@ -1,0 +1,35 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1280	18	76	1	"*TASK*
+Here are the context sentences:
+1. The container is bigger than the suitcase.
+2. The container is bigger than the box.
+3. The chocolate fits inside the suitcase.
+4. The suitcase is bigger than the chocolate.
+5. The chest is bigger than the box of chocolates.
+
+Now, answer the following question:
+Is the chocolate bigger than the container?"	no	from context sentence 3, we know the chocolate fits inside the suitcase. from context sentence 4, we know the suitcase is bigger than the chocolate. from context sentence 1, we know the container is bigger than the suitcase. therefore, we can logically conclude that the container is bigger than the chocolate, which means the chocolate is not bigger than the container.	fully	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1281	18	76	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the container?"	yes	from context sentence 3, we know the chocolate fits inside the suitcase. from context sentence 1, we know the container is bigger than the suitcase. since the chocolate fits inside the suitcase and the container is bigger than the suitcase, we can logically conclude that the chocolate will also fit inside the container.	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+1282	18	76	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the container?"	no	we already established in the previous question that the chocolate fits inside the container. if the chocolate fits inside the container, it means the container is bigger than the chocolate. therefore, the chocolate is not bigger than the container.	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1283	18	76	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the container?"	yes	we already established in previous questions that the chocolate fits inside the suitcase, and the container is bigger than the suitcase. therefore, it is logical to conclude that the chocolate will also fit inside the container, which is larger than the suitcase.	none	yes	True			Answer: yes	0.25	0.5	False	False	False	False	0
+1284	18	76	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the container?"	yes	we already established that the chocolate fits inside the suitcase (context sentence 3), and the container is bigger than the suitcase (context sentence 1). since the chocolate fits inside the suitcase and the container is larger than the suitcase, it is logical to conclude that the chocolate will also fit inside the container.	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0

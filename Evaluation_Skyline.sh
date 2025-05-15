@@ -1,0 +1,90 @@
+#!/bin/bash
+#
+# Job name
+#SBATCH --job-name=eval_skyline
+
+#SBATCH --time=5:00:00              # Job time limit (30 minutes)
+#SBATCH --ntasks=1                   # Total number of tasks
+#SBATCH --gres=gpu:1                 # Request 1 GPU
+#SBATCH --cpus-per-task=2            # Number of CPU cores per task
+#SBATCH --mem=128G                    # Total memory requested
+
+# Output and error logs
+#SBATCH --output="eval_skyline.txt"
+#SBATCH --error="eval_skyline_err.txt"
+
+# Email notifications
+#SBATCH --mail-user=""              # TODO: Add your email address
+#SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
+
+### JOB STEPS START HERE ###
+
+if command -v module >/dev/null 2>&1; then
+    echo "Module util is available. Loading python and CUDA..."
+    module load devel/python/3.12.3-gnu-14.2
+    module load devel/cuda/12.8
+else
+    echo "Module util is not available. Using manually installed python and CUDA..."
+fi
+
+# initialize shell to work with bash
+source ~/.bashrc 2>/dev/null
+
+# Activate the conda environment
+ENV_NAME=".env"
+echo "Activating the project environment: $ENV_NAME"
+if ! source $ENV_NAME/bin/activate; then
+    echo "Error: Failed to activate the project environment '$ENV_NAME'."
+    exit 1
+else
+    echo "The project environment '$ENV_NAME' activated successfully."
+fi
+
+# Check if data directory exists
+DATA_DIR="$HOME/tasks_1-20_v1-2"
+echo "Checking for data directory: $DATA_DIR"
+if [ -d "$DATA_DIR" ]; then
+    echo "Data directory '$DATA_DIR' exists."
+else
+    echo "Error: Data directory '$DATA_DIR' does not exist in your home directory."
+    exit 1
+fi
+
+# Monitor GPU usage in background
+(
+    while true; do
+        echo "== GPU Status: $(date) =="
+        nvidia-smi --query-gpu=index,memory.used,memory.total,utilization.gpu --format=csv
+        sleep 30
+    done
+) > gpu_monitor.log &
+MONITOR_PID=$!#
+
+# Set the environment variable to allow PyTorch to allocate more memory
+export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
+
+REP_DIR="$HOME/research-project"
+
+PATHS=(
+"$REP_DIR/results/skyline/test/reasoning/07-05-2025/13-10-29/init_prompt_reasoning"
+"$REP_DIR/results/skyline/test/reasoning/08-05-2025/23-14-40/init_prompt_reasoning"
+"$REP_DIR/results/skyline/test/reasoning/09-05-2025/12-54-21/init_prompt_reasoning"
+"$REP_DIR/results/skyline/test/reasoning/09-05-2025/21-40-13/init_prompt_reasoning"
+)
+
+JOINED_DATA_PATH="$REP_DIR/results/skyline/test/reasoning"
+
+python3 join_data.py --paths "${PATHS[@]}" --result_directory $JOINED_DATA_PATH --level "task"
+python3 evaluate_data.py --data_path $JOINED_DATA_PATH --save_path "" --samples_per_task 100 --create_heatmaps True --verbose False
+
+# Verify if the script executed successfully
+if [ $? -eq 0 ]; then
+    echo "Python script '$SCRIPT' executed successfully."
+else
+    echo "Error: Python script '$SCRIPT' failed."
+    exit 1
+fi
+
+echo "Job completed successfully."
+echo "Deactivating the environment: $ENV_NAME"
+deactivate

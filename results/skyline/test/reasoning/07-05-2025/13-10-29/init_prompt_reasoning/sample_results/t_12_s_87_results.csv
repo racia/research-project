@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+931	12	87	1	"*TASK*
+Here are the context sentences:
+1. John and Mary journeyed to the hallway.
+2. Sandra and Mary moved to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from the context sentences, we know that sandra was with mary in sentence 2, and they moved to the kitchen together. therefore, it can be logically concluded that sandra is in the kitchen.	fully	kitchen	True	From sentence 2, we know that Sandra and Mary moved to the kitchen. Since Sandra is mentioned as moving to the kitchen, we can infer that Sandra is currently in the kitchen.		"assistant
+
+Reasoning: From sentence 2, we know that Sandra and Mary moved to the kitchen. Since Sandra is mentioned as moving to the kitchen, we can infer that Sandra is currently in the kitchen.
+
+Answer: kitchen"	0.0213	0.0213	False	False	False	True	0
+932	12	87	2	"*TASK*
+Here are the context sentences:
+4. Mary and Sandra went back to the bedroom.
+5. John and Daniel went back to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	from the context sentence 4, we know that mary and sandra went back to the bedroom together. therefore, it can be logically concluded that sandra is in the bedroom.	fully	bedroom	True	From sentence 4, we know that Mary and Sandra went back to the bedroom. Since Sandra is mentioned as going back to the bedroom, we can infer that Sandra is currently in the bedroom.		"Reasoning: From sentence 4, we know that Mary and Sandra went back to the bedroom. Since Sandra is mentioned as going back to the bedroom, we can infer that Sandra is currently in the bedroom.
+
+Answer: bedroom"	0.0	0.0217	False	False	False	True	0
+933	12	87	3	"*TASK*
+Here are the context sentences:
+7. John and Daniel went to the bedroom.
+8. Sandra and John journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	in sentence 7, it is stated that john and daniel went to the bedroom together. in sentence 8, it is stated that sandra and john journeyed to the bathroom, but there is no mention of daniel going with them. therefore, it can be logically concluded that daniel remained in the bedroom.	fully	bedroom	True	From sentence 7, we know that John and Daniel went to the bedroom. However, in sentence 8, John is mentioned as journeying to the bathroom with Sandra, but there is no mention of Daniel going to the bathroom. Therefore, we can infer that Daniel is still in the bedroom.		"Reasoning: From sentence 7, we know that John and Daniel went to the bedroom. However, in sentence 8, John is mentioned as journeying to the bathroom with Sandra, but there is no mention of Daniel going to the bathroom. Therefore, we can infer that Daniel is still in the bedroom.
+
+Answer: bedroom"	0.0448	0.0149	False	False	False	True	0
+934	12	87	4	"*TASK*
+Here are the context sentences:
+10. John and Mary moved to the garden.
+11. John and Sandra moved to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	in sentence 10, john moved to the garden with mary, but in sentence 11, john moved to the kitchen with sandra. this implies that john left the garden and went to the kitchen, so his current location is the kitchen.	fully	kitchen	True	From sentence 11, we know that John and Sandra moved to the kitchen. This is the most recent mention of John's location, so we can infer that John is currently in the kitchen.		"Reasoning: From sentence 11, we know that John and Sandra moved to the kitchen. This is the most recent mention of John's location, so we can infer that John is currently in the kitchen.
+
+Answer: kitchen"	0.0217	0.0217	False	False	False	True	0
+935	12	87	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John journeyed to the garden.
+14. Daniel and Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	in sentence 13, daniel and john journeyed to the garden together, but in sentence 14, daniel and sandra journeyed to the bedroom. this implies that daniel left the garden and went to the bedroom with sandra, so his current location is the bedroom.	fully	bedroom	True	From sentence 13, we know that Daniel and John journeyed to the garden. However, in sentence 14, Daniel is mentioned as journeying to the bedroom with Sandra. This is the most recent mention of Daniel's location, so we can infer that Daniel is currently in the bedroom.		"Reasoning: From sentence 13, we know that Daniel and John journeyed to the garden. However, in sentence 14, Daniel is mentioned as journeying to the bedroom with Sandra. This is the most recent mention of Daniel's location, so we can infer that Daniel is currently in the bedroom.
+
+Answer: bedroom"	0.0758	0.0152	False	False	False	True	0

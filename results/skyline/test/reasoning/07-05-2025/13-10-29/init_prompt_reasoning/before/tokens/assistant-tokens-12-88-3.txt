@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	8	,	ĠJohn	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġis	Ġthe	Ġmost	Ġrecent	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	.	ĠTherefore	,	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

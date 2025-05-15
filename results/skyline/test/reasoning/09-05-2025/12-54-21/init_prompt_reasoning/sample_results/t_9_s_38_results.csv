@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1686	9	38	1	"*TASK*
+Here are the context sentences:
+1. Daniel went back to the office.
+2. Sandra is in the hallway.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	yes	"the context sentence ""sandra is in the hallway"" directly states that sandra is in the hallway, which answers the question affirmatively. the sentence about daniel going back to the office does not provide any contradictory information, so we can conclude that sandra is indeed in the hallway."	fully	yes	True	The context sentence 2 explicitly states that Sandra is in the hallway.		"assistant
+
+Reasoning: The context sentence 2 explicitly states that Sandra is in the hallway.
+
+Answer: yes"	0.08	0.04	False	False	False	False	0
+1687	9	38	2	"*TASK*
+Here are the context sentences:
+4. Mary travelled to the hallway.
+5. Daniel travelled to the bathroom.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	the context sentences do not mention daniel being in the bedroom. in fact, sentence 5 states that daniel travelled to the bathroom, which implies that daniel is in the bathroom, not in the bedroom. there is no information provided that would suggest daniel is in the bedroom, so the answer is no.	fully	no	True	There is no information provided about Daniel being in the bedroom. The context sentence 5 states that Daniel travelled to the bathroom, which is a different location.		"Reasoning: There is no information provided about Daniel being in the bedroom. The context sentence 5 states that Daniel travelled to the bathroom, which is a different location.
+
+Answer: no"	0.1316	0.0263	False	False	False	True	0
+1688	9	38	3	"*TASK*
+Here are the context sentences:
+7. Sandra is in the kitchen.
+8. Sandra is in the garden.
+
+Now, answer the following question:
+Is Sandra in the garden?"	yes	"sentence 8 directly states that ""sandra is in the garden"", which explicitly answers the question affirmatively. the fact that sentence 7 mentions sandra being in the kitchen does not contradict this information, as it is possible for sandra to have moved from the kitchen to the garden. however, based on the most recent information provided, we can conclude that sandra is indeed in the garden."	fully	yes	True	The context sentence 8 explicitly states that Sandra is in the garden.		"Reasoning: The context sentence 8 explicitly states that Sandra is in the garden.
+
+Answer: yes"	0.0476	0.0476	False	False	False	False	0
+1689	9	38	4	"*TASK*
+Here are the context sentences:
+10. Sandra is in the hallway.
+11. Daniel journeyed to the garden.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	no	"sentence 11 states that ""daniel journeyed to the garden"", which implies that daniel is in the garden, not in the hallway. there is no information provided that suggests daniel is in the hallway, and the fact that sandra is in the hallway (sentence 10) does not imply daniel's presence there. therefore, we can conclude that daniel is not in the hallway."	fully	no	True	There is no information provided about Daniel being in the hallway. The context sentence 11 states that Daniel journeyed to the garden, which is a different location.		"Reasoning: There is no information provided about Daniel being in the hallway. The context sentence 11 states that Daniel journeyed to the garden, which is a different location.
+
+Answer: no"	0.1026	0.0256	False	False	False	True	0
+1690	9	38	5	"*TASK*
+Here are the context sentences:
+13. Mary is in the bedroom.
+14. John went back to the bedroom.
+
+Now, answer the following question:
+Is John in the kitchen?"	no	"sentence 14 states that ""john went back to the bedroom"", which implies that john is in the bedroom. there is no information provided that suggests john is in the kitchen. in fact, the context suggests that john is in the bedroom, along with mary (sentence 13). therefore, we can conclude that john is not in the kitchen."	fully	no	True	There is no information provided about John being in the kitchen. The context sentence 14 states that John went back to the bedroom, which is a different location.		"Reasoning: There is no information provided about John being in the kitchen. The context sentence 14 states that John went back to the bedroom, which is a different location.
+
+Answer: no"	0.0	0.0256	False	False	False	True	0

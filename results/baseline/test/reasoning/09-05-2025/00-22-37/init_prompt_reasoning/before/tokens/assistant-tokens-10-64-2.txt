@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġcontext	Ġsentence	Ġ	4	Ġstates	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	.	ĠAdditionally	,	Ġcontext	Ġsentence	Ġ	5	Ġprovides	Ġtwo	Ġpossible	Ġlocations	Ġfor	ĠBill	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	ĠYes	<|eot_id|>

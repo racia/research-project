@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	Ġbeing	Ġin	Ġthe	Ġbedroom	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġand	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

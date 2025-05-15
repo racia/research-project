@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠFred	Ġis	Ġin	Ġthe	Ġcinema	,	Ġand	ĠSentence	Ġ	11	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġcinema	.	ĠHowever	,	Ġthere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJulie	's	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+781	7	57	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the kitchen.
+2. John took the apple there.
+
+Now, answer the following question:
+How many objects is John carrying?"	one	according to the context sentences, john took the apple to the kitchen, which implies that john is carrying the apple. there is no mention of john carrying any other objects. therefore, it can be logically concluded that john is carrying only one object, which is the apple.	fully	one	True	The question asks about the number of objects John is carrying. Since John took the apple there, it implies that John has the apple with him. There is no mention of John dropping or giving away the apple, so it can be inferred that John is still carrying the apple.		"Reasoning: The question asks about the number of objects John is carrying. Since John took the apple there, it implies that John has the apple with him. There is no mention of John dropping or giving away the apple, so it can be inferred that John is still carrying the apple.
+
+Answer: one"	0.0323	0.0161	False	False	False	True	0
+782	7	57	2	"*TASK*
+Here are the context sentences:
+4. John passed the apple to Mary.
+5. Mary handed the apple to John.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	according to the context sentences, john passed the apple to mary (sentence 4), which means mary received the apple from john. then, mary handed the apple back to john (sentence 5), which means mary no longer has the apple. therefore, it can be logically concluded that mary is not carrying any objects, specifically, she is not carrying the apple.	fully	none	True	The question asks about the number of objects Mary is carrying. Since Mary received the apple from John in sentence 4, she initially had the apple. However, in sentence 5, Mary handed the apple back to John, which means Mary is no longer carrying the apple.		"Reasoning: The question asks about the number of objects Mary is carrying. Since Mary received the apple from John in sentence 4, she initially had the apple. However, in sentence 5, Mary handed the apple back to John, which means Mary is no longer carrying the apple.
+
+Answer: none"	0.1613	0.0323	False	False	False	False	0
+783	7	57	3	"*TASK*
+Here are the context sentences:
+7. John passed the apple to Mary.
+8. Mary handed the apple to John.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	the sequence of events is that john passed the apple to mary (sentence 7), which means mary received the apple from john. then, mary handed the apple back to john (sentence 8), which means mary no longer has the apple. therefore, it can be logically concluded that mary is not carrying any objects, specifically, she is not carrying the apple.	partially	one	False	The question asks about the number of objects Mary is carrying. Since Mary received the apple from John in sentence 7, she initially had the apple. Mary then handed the apple back to John in sentence 8, but before that, she was carrying the apple.		"Reasoning: The question asks about the number of objects Mary is carrying. Since Mary received the apple from John in sentence 7, she initially had the apple. Mary then handed the apple back to John in sentence 8, but before that, she was carrying the apple.
+
+Answer: one"	0.3667	0.0667	False	False	False	False	0
+784	7	57	4	"*TASK*
+Here are the context sentences:
+10. John handed the apple to Mary.
+11. Mary went back to the bedroom.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	according to the context sentences, john handed the apple to mary (sentence 10), which means mary received the apple from john. there is no subsequent action mentioned that would suggest mary gave up or lost the apple. mary then went back to the bedroom (sentence 11), but there is no indication that she dropped or left the apple behind. therefore, it can be logically concluded that mary is still carrying the apple, which is one object.	partially	one	True	The question asks about the number of objects Mary is carrying. Since Mary received the apple from John in sentence 10, she initially had the apple. However, there is no mention of Mary dropping or giving away the apple, so it can be inferred that Mary is still carrying the apple.		"Reasoning: The question asks about the number of objects Mary is carrying. Since Mary received the apple from John in sentence 10, she initially had the apple. However, there is no mention of Mary dropping or giving away the apple, so it can be inferred that Mary is still carrying the apple.
+
+Answer: one"	0.3538	0.0769	False	False	False	True	0
+785	7	57	5	"*TASK*
+Here are the context sentences:
+13. Mary gave the apple to Sandra.
+14. Sandra travelled to the office.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	none	according to the context sentences, mary gave the apple to sandra (sentence 13), which means mary no longer has the apple. there is no subsequent action mentioned that would suggest mary acquired a new object. therefore, it can be logically concluded that mary is not carrying any objects.	partially	none	True	The question asks about the number of objects Mary is carrying. Since Mary gave the apple to Sandra in sentence 13, Mary is no longer carrying the apple.		"Reasoning: The question asks about the number of objects Mary is carrying. Since Mary gave the apple to Sandra in sentence 13, Mary is no longer carrying the apple.
+
+Answer: none"	0.2051	0.1538	False	False	False	False	0

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2276	14	6	1	"*TASK*
+Here are the context sentences:
+1. Fred went to the school yesterday.
+2. Yesterday Julie journeyed to the kitchen.
+3. Bill went to the bedroom yesterday.
+4. This morning Bill went to the kitchen.
+
+Now, answer the following question:
+Where was Bill before the kitchen?"	bedroom	from context sentence 3, we know that bill went to the bedroom yesterday. then, from context sentence 4, we know that this morning bill went to the kitchen. since bill went to the kitchen this morning, it implies that he was somewhere else before going to the kitchen. the most recent location mentioned for bill before the kitchen is the bedroom, which he visited yesterday. therefore, it is logical to conclude that bill was in the bedroom before going to the kitchen.	fully	bedroom	True	Bill went to the bedroom yesterday, and then he went to the kitchen this morning. This implies that Bill was in the bedroom before going to the kitchen.		"Reasoning: Bill went to the bedroom yesterday, and then he went to the kitchen this morning. This implies that Bill was in the bedroom before going to the kitchen.
+
+Answer: bedroom"	0.1316	0.0526	False	False	False	False	0
+2277	14	6	2	"*TASK*
+Here are the context sentences:
+6. Fred moved to the kitchen this morning.
+7. Julie moved to the office this morning.
+
+Now, answer the following question:
+Where was Julie before the office?"	kitchen	"there is no direct information about julie's location before the office. however, from context sentence 2, we know that ""yesterday julie journeyed to the kitchen."" although it doesn't directly state that julie was in the kitchen this morning, it is logical to assume that she was still in the kitchen this morning since there is no information about her moving to a different location between yesterday and this morning. then, from context sentence 7, we know that julie moved to the office this"	partially	not mentioned	False	Julie moved to the office this morning, but there is no information about her location before moving to the office. However, we know that Julie journeyed to the kitchen yesterday (from context sentence 2), but there is no information about her location after that. Therefore, we cannot determine Julie's location before the office.		"Reasoning: Julie moved to the office this morning, but there is no information about her location before moving to the office. However, we know that Julie journeyed to the kitchen yesterday (from context sentence 2), but there is no information about her location after that. Therefore, we cannot determine Julie's location before the office.
+
+Answer: not mentioned"	0.0694	0.0278	False	False	False	True	0
+2278	14	6	3	"*TASK*
+Here are the context sentences:
+9. This afternoon Fred travelled to the cinema.
+10. This afternoon Bill went to the bedroom.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	kitchen	"from context sentence 6, we know that ""fred moved to the kitchen this morning."" there is no information about fred moving to a different location between this morning and this afternoon. therefore, it is logical to assume that fred was still in the kitchen this morning and remained there until this afternoon when he travelled to the cinema."	partially	kitchen	True	Fred moved to the kitchen this morning (from context sentence 6), and then he travelled to the cinema this afternoon. This implies that Fred was in the kitchen before going to the cinema.		"Reasoning: Fred moved to the kitchen this morning (from context sentence 6), and then he travelled to the cinema this afternoon. This implies that Fred was in the kitchen before going to the cinema.
+
+Answer: kitchen"	0.0667	0.0444	False	False	False	False	0
+2279	14	6	4	"*TASK*
+Here are the context sentences:
+12. Mary went to the park yesterday.
+13. This evening Fred journeyed to the bedroom.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	cinema	"from context sentence 9, we know that ""this afternoon fred travelled to the cinema."" there is no information about fred moving to a different location between this afternoon and this evening. therefore, it is logical to assume that fred was still in the cinema this evening and then journeyed to the bedroom."	partially	not mentioned	False	There is no information about Fred's location before he journeyed to the bedroom this evening. However, we know that Fred moved to the kitchen this morning (from context sentence 6), but there is no information about his location after that. Therefore, we cannot determine Fred's location before the bedroom.		"Reasoning: There is no information about Fred's location before he journeyed to the bedroom this evening. However, we know that Fred moved to the kitchen this morning (from context sentence 6), but there is no information about his location after that. Therefore, we cannot determine Fred's location before the bedroom.
+
+Answer: not mentioned"	0.0294	0.0294	False	False	False	True	0
+2280	14	6	5	"*TASK*
+Here are the context sentences:
+15. Bill journeyed to the school this evening.
+16. This morning Mary moved to the kitchen.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	cinema	"this question refers to a previous part of the conversation history. from context sentence 13, we know that ""this evening fred journeyed to the bedroom."" to find where fred was before the bedroom, we need to look at the previous context sentences. from context sentence 9, we know that ""this afternoon fred travelled to the cinema."" there is no information about fred moving to a different location between this afternoon and this evening. therefore, it is logical to assume that fred was still"	none	not mentioned	False	The question is asking about Fred's location before the bedroom, but the context sentences provided do not mention Fred's location before the bedroom. The context sentences only mention Bill's journey to the school and Mary's movement to the kitchen.		"Reasoning: The question is asking about Fred's location before the bedroom, but the context sentences provided do not mention Fred's location before the bedroom. The context sentences only mention Bill's journey to the school and Mary's movement to the kitchen.
+
+Answer: not mentioned"	0.0185	0.037	False	False	False	True	0

@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1898	18	149	1	"*TASK*
+Here are the context sentences:
+1. The box is bigger than the chocolate.
+2. The chocolate fits inside the suitcase.
+3. The chocolate fits inside the box.
+4. The container is bigger than the chest.
+5. The chocolate fits inside the box.
+6. The container is bigger than the box of chocolates.
+7. The chocolate fits inside the box.
+8. The chocolate fits inside the suitcase.
+9. The container is bigger than the chocolate.
+10. The container is bigger than the box.
+
+Now, answer the following question:
+Is the container bigger than the chocolate?"	yes	"from context line 9, it is directly stated that ""the container is bigger than the chocolate."" this statement explicitly answers the question, confirming that the container is indeed bigger than the chocolate."	fully	yes	True	The container is bigger than the box (sentence 10), and the box is bigger than the chocolate (sentence 1). Therefore, the container is bigger than the chocolate.		"Reasoning: The container is bigger than the box (sentence 10), and the box is bigger than the chocolate (sentence 1). Therefore, the container is bigger than the chocolate.
+
+Answer: yes"	0.0952	0.0476	False	False	False	False	0
+1899	18	149	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the container?"	yes	"from context line 9, we know that ""the container is bigger than the chocolate."" this implies that the chocolate can fit inside the container, as the container is larger in size. therefore, the answer to the question is yes, the chocolate fits in the container."	none	yes	True	The chocolate fits inside the box (sentences 3, 5, and 7), and the container is bigger than the box (sentence 10). Therefore, the container is bigger than the box, which means the chocolate can fit inside the container.		"Reasoning: The chocolate fits inside the box (sentences 3, 5, and 7), and the container is bigger than the box (sentence 10). Therefore, the container is bigger than the box, which means the chocolate can fit inside the container.
+
+Answer: yes"	0.0339	0.0339	False	False	False	False	0
+1900	18	149	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the chocolate?"	yes	"this question has already been answered in context line 9, which states ""the container is bigger than the chocolate."" this directly confirms that the container is indeed bigger than the chocolate, leading to the answer ""yes""."	none	yes	True	The container is bigger than the box (sentence 10), and the box is bigger than the chocolate (sentence 1). Therefore, the container is bigger than the chocolate.		"Reasoning: The container is bigger than the box (sentence 10), and the box is bigger than the chocolate (sentence 1). Therefore, the container is bigger than the chocolate.
+
+Answer: yes"	0.0238	0.0476	False	False	False	False	0
+1901	18	149	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the container bigger than the chocolate?"	yes	"from context lines 9 and 10, we know that ""the container is bigger than the chocolate"" and ""the container is bigger than the box"". since the chocolate fits inside the box (context lines 3, 5, and 7), and the container is bigger than the box, it can be logically inferred that the container is also bigger than the chocolate, leading to the answer ""yes""."	none	yes	True	The container is bigger than the box (sentence 10), and the box is bigger than the chocolate (sentence 1). Therefore, the container is bigger than the chocolate.		"Reasoning: The container is bigger than the box (sentence 10), and the box is bigger than the chocolate (sentence 1). Therefore, the container is bigger than the chocolate.
+
+Answer: yes"	0.0	0.0476	False	False	False	False	0
+1902	18	149	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the container?"	yes	"from context line 9, we know that ""the container is bigger than the chocolate"". this implies that the chocolate can fit inside the container, as the container is larger in size. therefore, the answer to the question is yes, the chocolate fits in the container."	none	yes	True	The chocolate fits inside the box (sentences 3, 5, and 7), and the container is bigger than the box (sentence 10). Since the container is bigger than the box, it is also bigger than the chocolate, which means the chocolate can fit inside the container.		"Reasoning: The chocolate fits inside the box (sentences 3, 5, and 7), and the container is bigger than the box (sentence 10). Since the container is bigger than the box, it is also bigger than the chocolate, which means the chocolate can fit inside the container.
+
+Answer: yes"	0.0152	0.0303	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġmoved	Ġto	Ġthe	Ġgarden	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwent	Ġthere	Ġto	Ġdo	Ġsomething	.	ĠThe	Ġcontext	Ġsentence	Ġ	1	Ġmentioned	Ġthat	ĠJason	Ġis	Ġbored	,	Ġwhich	Ġsuggests	Ġthat	Ġhe	Ġwent	Ġto	Ġthe	Ġgarden	Ġto	Ġalleviate	Ġhis	Ġboredom	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

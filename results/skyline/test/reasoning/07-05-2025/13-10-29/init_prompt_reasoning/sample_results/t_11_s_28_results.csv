@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+136	11	28	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the kitchen.
+2. Then she went to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	the context sentences describe mary's movements, first going back to the kitchen and then going to the garden. since the last movement mentioned is her going to the garden, it can be logically inferred that mary is currently in the garden.	fully	garden	True	The context sentences describe Mary's movements, and the last location mentioned is the garden.		"assistant
+
+Reasoning: The context sentences describe Mary's movements, and the last location mentioned is the garden.
+
+Answer: garden"	0.1111	0.0741	False	False	False	True	0
+137	11	28	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the garden.
+5. After that he moved to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	garden	"the context sentences describe john's movements, but there is no mention of mary's movements or location in the provided context. the answer ""garden"" seems to be incorrect, as the context does not provide any information about mary's location. the correct answer would be ""unknown"" or ""cannot be determined"" based on the provided context."	none	garden	True	The context sentences describe John's movements, but there is no new information about Mary's location. The last known location of Mary was the garden (from previous context sentences).		"Reasoning: The context sentences describe John's movements, but there is no new information about Mary's location. The last known location of Mary was the garden (from previous context sentences).
+
+Answer: garden"	0.1707	0.0488	False	False	False	True	0
+138	11	28	3	"*TASK*
+Here are the context sentences:
+7. Daniel went to the garden.
+8. After that he went to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	the context sentences describe daniel's movements, first going to the garden and then going to the office. since the last movement mentioned is his going to the office, it can be logically inferred that daniel is currently in the office.	fully	office	True	The context sentences describe Daniel's movements, and the last location mentioned is the office.		"Reasoning: The context sentences describe Daniel's movements, and the last location mentioned is the office.
+
+Answer: office"	0.0	0.0833	False	False	False	True	0
+139	11	28	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the kitchen.
+11. Afterwards she journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	office	"the context sentences describe mary's movements, but there is no mention of daniel's movements or location in the provided context. the answer ""office"" seems to be incorrect, as the context does not provide any information about daniel's location. the correct answer would be ""unknown"" or ""cannot be determined"" based on the provided context."	none	office	True	The context sentences describe Mary's movements, but there is no new information about Daniel's location. The last known location of Daniel was the office (from previous context sentences).		"Reasoning: The context sentences describe Mary's movements, but there is no new information about Daniel's location. The last known location of Daniel was the office (from previous context sentences).
+
+Answer: office"	0.0	0.0488	False	False	False	True	0
+140	11	28	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the office.
+14. Following that he went back to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"the context sentences describe john's movements, but there is no mention of mary's movements or location in the provided context. the answer ""hallway"" seems to be incorrect, as the context does not provide any information about mary's location. the correct answer would be ""unknown"" or ""cannot be determined"" based on the provided context."	none	hallway	True	The context sentences describe John's movements, but there is no new information about Mary's location. The last known location of Mary was the hallway (from previous context sentences).		"Reasoning: The context sentences describe John's movements, but there is no new information about Mary's location. The last known location of Mary was the hallway (from previous context sentences).
+
+Answer: hallway"	0.2927	0.0488	False	False	False	True	0

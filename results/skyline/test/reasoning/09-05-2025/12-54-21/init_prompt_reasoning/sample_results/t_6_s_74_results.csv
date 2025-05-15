@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+366	6	74	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the bedroom.
+2. Sandra grabbed the milk there.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	the context sentences do not mention mary going to the bathroom. in fact, sentence 1 states that mary went to the bedroom, which is a different room from the bathroom. there is no information provided that suggests mary left the bedroom and went to the bathroom. therefore, based on the given information, it can be concluded that mary is not in the bathroom.	fully	no	True	The context sentences only mention Mary going to the bedroom, and there is no information about Mary going to the bathroom.		"assistant
+
+Reasoning: The context sentences only mention Mary going to the bedroom, and there is no information about Mary going to the bathroom. 
+
+Answer: no"	0.0286	0.0286	False	False	False	True	0
+367	6	74	2	"*TASK*
+Here are the context sentences:
+4. Sandra journeyed to the bedroom.
+5. Sandra dropped the milk.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	according to sentence 4, sandra journeyed to the bedroom, which implies that she is currently in the bedroom. there is no information provided that suggests she left the bedroom and went to the hallway. additionally, sentence 5 mentions that sandra dropped the milk, which further supports the idea that she is still in the bedroom. therefore, based on the given information, it can be concluded that sandra is not in the hallway.	fully	no	True	The context sentences only mention Sandra journeying to the bedroom, but there is no information about Sandra going to the hallway.		"Reasoning: The context sentences only mention Sandra journeying to the bedroom, but there is no information about Sandra going to the hallway. 
+
+Answer: no"	0.0312	0.0312	False	False	False	True	0
+368	6	74	3	"*TASK*
+Here are the context sentences:
+7. Daniel went back to the office.
+8. John went to the kitchen.
+
+Now, answer the following question:
+Is Daniel in the office?"	yes	according to sentence 7, daniel went back to the office, which explicitly states that daniel's current location is the office. there is no information provided that suggests daniel left the office or went to a different location. therefore, based on the given information, it can be concluded that daniel is indeed in the office.	fully	yes	True	The context sentence 7 explicitly states that Daniel went back to the office, which implies that Daniel is currently in the office.		"Reasoning: The context sentence 7 explicitly states that Daniel went back to the office, which implies that Daniel is currently in the office.
+
+Answer: yes"	0.0	0.0312	False	False	False	False	0
+369	6	74	4	"*TASK*
+Here are the context sentences:
+10. Daniel journeyed to the kitchen.
+11. Mary went back to the bathroom.
+
+Now, answer the following question:
+Is John in the hallway?"	no	"there is no information provided about john's location in the given context sentences (10 and 11). the sentences only mention daniel and mary's movements, but do not provide any information about john. since there is no information suggesting john is in the hallway, and no information about john's location at all, it can be concluded that the answer ""no"" is correct, as there is no evidence to suggest john is in the hallway."	none	not mentioned	False	There is no information about John going to the hallway in the context sentences. John's last known location was the kitchen (sentence 8), but there is no update about John moving to the hallway.		"Reasoning: There is no information about John going to the hallway in the context sentences. John's last known location was the kitchen (sentence 8), but there is no update about John moving to the hallway.
+
+Answer: not mentioned"	0.0	0.0208	False	False	False	True	0
+370	6	74	5	"*TASK*
+Here are the context sentences:
+13. Sandra picked up the milk there.
+14. Sandra left the milk.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	"there is no information provided about mary's location in the given context sentences (13 and 14). the sentences only mention sandra's actions with the milk, but do not provide any information about mary's location. since there is no information suggesting mary is in the bedroom, and no information about mary's location at all, it can be concluded that the answer ""no"" is correct, as there is no evidence to suggest mary is in the bedroom."	none	yes	False	The context sentences 1 and 4 mentioned Mary going to the bedroom, but there is no update about Mary leaving the bedroom.		"Reasoning: The context sentences 1 and 4 mentioned Mary going to the bedroom, but there is no update about Mary leaving the bedroom. 
+
+Answer: yes"	0.0882	0.0294	False	False	False	True	0

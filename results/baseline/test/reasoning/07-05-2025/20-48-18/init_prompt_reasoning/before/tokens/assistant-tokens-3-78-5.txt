@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġpicked	Ġup	Ġby	ĠSandra	Ġ(	sentence	Ġ	71	),	Ġand	Ġthen	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	74	).	ĠAfter	Ġthat	,	ĠSandra	Ġleft	Ġthe	Ġfootball	Ġ(	sentence	Ġ	82	).	ĠSince	ĠSandra	Ġleft	Ġthe	Ġfootball	,	Ġit	Ġimplies	Ġthat	Ġthe	Ġfootball	Ġwas	Ġin	Ġthe	Ġbathroom	Ġbefore	ĠSandra	Ġleft	Ġit	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

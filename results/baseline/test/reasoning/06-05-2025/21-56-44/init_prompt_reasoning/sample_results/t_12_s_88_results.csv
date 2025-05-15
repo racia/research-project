@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1186	12	88	1	"*TASK*
+Here are the context sentences:
+1. Daniel and John moved to the garden.
+2. Sandra and Mary moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"from context sentence 2, ""sandra and mary moved to the hallway"", we can directly infer that mary is in the hallway."	fully	hallway	True	The question asks about Mary's location. Since Sandra and Mary moved to the hallway in sentence 2, it is logical to infer that Mary is in the hallway.		"Reasoning: The question asks about Mary's location. Since Sandra and Mary moved to the hallway in sentence 2, it is logical to infer that Mary is in the hallway.
+
+Answer: hallway"	0.05	0.025	False	False	False	False	0
+1187	12	88	2	"*TASK*
+Here are the context sentences:
+4. John and Mary journeyed to the bedroom.
+5. John and Sandra moved to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	"from context sentence 5, ""john and sandra moved to the kitchen"", we can directly infer that john is in the kitchen. the fact that john was previously mentioned in sentence 4, ""john and mary journeyed to the bedroom"", does not change the current location of john, as sentence 5 provides more recent information about john's movement."	fully	kitchen	True	The question asks about John's location. Since John and Mary journeyed to the bedroom in sentence 4, it is possible that John is in the bedroom. However, sentence 5 states that John and Sandra moved to the kitchen, which implies that John's current location is the kitchen.		"Reasoning: The question asks about John's location. Since John and Mary journeyed to the bedroom in sentence 4, it is possible that John is in the bedroom. However, sentence 5 states that John and Sandra moved to the kitchen, which implies that John's current location is the kitchen.
+
+Answer: kitchen"	0.0923	0.0154	False	False	False	False	0
+1188	12	88	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John journeyed to the hallway.
+8. John and Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	"from context sentence 8, ""john and sandra travelled to the bathroom"", we can directly infer that john is in the bathroom. the fact that john was previously mentioned in sentence 7, ""daniel and john journeyed to the hallway"", does not change the current location of john, as sentence 8 provides more recent information about john's movement."	fully	bathroom	True	The question asks about John's location. Since Daniel and John journeyed to the hallway in sentence 7, it is possible that John is in the hallway. However, sentence 8 states that John and Sandra travelled to the bathroom, which implies that John's current location is the bathroom.		"Reasoning: The question asks about John's location. Since Daniel and John journeyed to the hallway in sentence 7, it is possible that John is in the hallway. However, sentence 8 states that John and Sandra travelled to the bathroom, which implies that John's current location is the bathroom.
+
+Answer: bathroom"	0.0	0.0154	False	False	False	False	0
+1189	12	88	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Mary moved to the kitchen.
+11. Mary and John went back to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	"from context sentence 10, ""sandra and mary moved to the kitchen"", we can infer that sandra is in the kitchen. the fact that mary moved to the hallway in sentence 11, ""mary and john went back to the hallway"", does not change the location of sandra, as there is no information about sandra moving from the kitchen."	fully	kitchen	True	The question asks about Sandra's location. Since Sandra and Mary moved to the kitchen in sentence 10, it is logical to infer that Sandra is in the kitchen.		"Reasoning: The question asks about Sandra's location. Since Sandra and Mary moved to the kitchen in sentence 10, it is logical to infer that Sandra is in the kitchen.
+
+Answer: kitchen"	0.0	0.025	False	False	False	False	0
+1190	12	88	5	"*TASK*
+Here are the context sentences:
+13. John and Sandra moved to the bathroom.
+14. Daniel and Sandra travelled to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	"from context sentence 14, ""daniel and sandra travelled to the office"", we can directly infer that daniel is in the office. the fact that sandra was previously mentioned in sentence 13, ""john and sandra moved to the bathroom"", does not change the current location of daniel, as sentence 14 provides more recent information about daniel's movement."	fully	office	True	The question asks about Daniel's location. Since Daniel is not mentioned in sentences 13 and 14, we need to look for his previous location. In sentence 14, Sandra and Daniel travelled to the office, which implies that Daniel is in the office.		"Reasoning: The question asks about Daniel's location. Since Daniel is not mentioned in sentences 13 and 14, we need to look for his previous location. In sentence 14, Sandra and Daniel travelled to the office, which implies that Daniel is in the office.
+
+Answer: office"	0.0169	0.0169	False	False	False	True	0

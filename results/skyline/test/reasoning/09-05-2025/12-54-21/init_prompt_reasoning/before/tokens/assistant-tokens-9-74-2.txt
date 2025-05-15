@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġstates	Ġthat	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	Ġbeing	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	<|eot_id|>

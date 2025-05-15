@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠEmily	's	Ġfear	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠHowever	,	Ġsince	ĠEmily	Ġis	Ġa	Ġwolf	Ġ(	sentence	Ġ	5	),	Ġshe	Ġis	Ġlikely	Ġto	Ġbe	Ġafraid	Ġof	Ġmice	,	Ġbased	Ġon	Ġsentence	Ġ	4	.ĊĊ	Answer	:	Ġwolves	<|eot_id|>

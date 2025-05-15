@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2691	14	89	1	"*TASK*
+Here are the context sentences:
+1. This morning Fred moved to the bedroom.
+2. Yesterday Mary moved to the bedroom.
+3. Yesterday Bill travelled to the school.
+4. Yesterday Fred moved to the school.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	school	"from context sentence 4, ""yesterday fred moved to the school"", we know that fred was at the school yesterday. then, from context sentence 1, ""this morning fred moved to the bedroom"", we can infer that fred moved from the school to the bedroom this morning. therefore, fred was at the school before moving to the bedroom."	fully	school	True	Since Fred moved to the bedroom this morning, it implies that he was somewhere else before moving to the bedroom. The only other place mentioned where Fred was previously is the school, which he moved to yesterday. Therefore, Fred was at the school before moving to the bedroom.		"Reasoning: Since Fred moved to the bedroom this morning, it implies that he was somewhere else before moving to the bedroom. The only other place mentioned where Fred was previously is the school, which he moved to yesterday. Therefore, Fred was at the school before moving to the bedroom.
+
+Answer: school"	0.0492	0.0328	False	False	False	True	0
+2692	14	89	2	"*TASK*
+Here are the context sentences:
+6. This morning Mary journeyed to the school.
+7. This morning Bill journeyed to the bedroom.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	school	"there is no direct information about bill's previous location in the provided context sentences. however, we can make a logical connection with the previous parts of the conversation. in context sentence 3, ""yesterday bill travelled to the school"", we know that bill was at the school yesterday. there is no information about bill moving from the school to any other location yesterday. then, in context sentence 7, ""this morning bill journeyed to the bedroom"", we can infer that bill moved from"	partially	school	True	Since Bill journeyed to the bedroom this morning, it implies that he was somewhere else before journeying to the bedroom. The only other place mentioned where Bill was previously is the school, which he travelled to yesterday. Therefore, Bill was at the school before journeying to the bedroom.		"Reasoning: Since Bill journeyed to the bedroom this morning, it implies that he was somewhere else before journeying to the bedroom. The only other place mentioned where Bill was previously is the school, which he travelled to yesterday. Therefore, Bill was at the school before journeying to the bedroom.
+
+Answer: school"	0.1406	0.0312	False	False	False	True	0
+2693	14	89	3	"*TASK*
+Here are the context sentences:
+9. Fred went back to the park this evening.
+10. Fred moved to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	bedroom	"from context sentence 1, ""this morning fred moved to the bedroom"", we know that fred was in the bedroom this morning. there is no information about fred moving from the bedroom to any other location until context sentence 10, ""fred moved to the kitchen this afternoon"". therefore, we can infer that fred was in the bedroom before moving to the kitchen this afternoon."	partially		False	Since Fred moved to the kitchen this afternoon, it implies that he was somewhere else before moving to the kitchen. The only other place mentioned where Fred was previously is the park, which he went back to this evening. However, this information is about his evening activity, not his afternoon activity. Therefore, we need to consider the context sentences before this one. Fred moved to the kitchen this afternoon, which means he was somewhere else before moving to the kitchen. The only other place mentioned		Reasoning: Since Fred moved to the kitchen this afternoon, it implies that he was somewhere else before moving to the kitchen. The only other place mentioned where Fred was previously is the park, which he went back to this evening. However, this information is about his evening activity, not his afternoon activity. Therefore, we need to consider the context sentences before this one. Fred moved to the kitchen this afternoon, which means he was somewhere else before moving to the kitchen. The only other place mentioned	0.0101	0.0202	False	False	False	True	0
+2694	14	89	4	"*TASK*
+Here are the context sentences:
+12. Yesterday Julie travelled to the school.
+13. This afternoon Mary went back to the park.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	bedroom	"the provided context sentences (12 and 13) do not mention fred or his movements. however, we can refer to the previous parts of the conversation history. from context sentence 1, ""this morning fred moved to the bedroom"", we know that fred was in the bedroom this morning. then, from context sentence 10, ""fred moved to the kitchen this afternoon"", we can infer that fred was in the bedroom before moving to the kitchen this afternoon."	none	Not mentioned	False	There is no information about Fred's location before the kitchen in these context sentences. The sentences only mention Julie's travel to the school yesterday and Mary's return to the park this afternoon, but do not provide any information about Fred's whereabouts.		"Reasoning: There is no information about Fred's location before the kitchen in these context sentences. The sentences only mention Julie's travel to the school yesterday and Mary's return to the park this afternoon, but do not provide any information about Fred's whereabouts.
+
+Answer: Not mentioned"	0.1071	0.0357	False	False	False	True	0
+2695	14	89	5	"*TASK*
+Here are the context sentences:
+15. Julie journeyed to the office this afternoon.
+16. Julie moved to the cinema this morning.
+
+Now, answer the following question:
+Where was Fred before the park?"	kitchen	"the provided context sentences (15 and 16) do not mention fred or his movements. however, we can refer to the previous parts of the conversation history. from context sentence 10, ""fred moved to the kitchen this afternoon"", we know that fred was in the kitchen this afternoon. then, from context sentence 9, ""fred went back to the park this evening"", we can infer that fred was in the kitchen before moving to the park this evening."	none	Not mentioned	False	There is no information about Fred's location before the park in these context sentences. The sentences only mention Julie's journey to the office and movement to the cinema, but do not provide any information about Fred's whereabouts.		"Reasoning: There is no information about Fred's location before the park in these context sentences. The sentences only mention Julie's journey to the office and movement to the cinema, but do not provide any information about Fred's whereabouts.
+
+Answer: Not mentioned"	0.0588	0.0392	False	False	False	True	0

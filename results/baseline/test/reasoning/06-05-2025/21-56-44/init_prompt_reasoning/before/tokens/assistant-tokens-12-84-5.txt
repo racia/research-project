@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġsentence	Ġ	14	,	Ġwhich	Ġstates	Ġthat	ĠMary	Ġand	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

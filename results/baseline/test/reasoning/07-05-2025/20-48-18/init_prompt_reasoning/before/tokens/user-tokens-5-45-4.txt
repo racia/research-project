@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+74	.	ĠBill	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
+75	.	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġdid	ĠMary	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

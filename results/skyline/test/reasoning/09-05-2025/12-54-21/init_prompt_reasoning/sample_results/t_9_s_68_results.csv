@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1836	9	68	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the bedroom.
+2. Mary went to the bedroom.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	yes	since mary went to the bedroom (context sentence 2), it can be logically concluded that mary is in the bedroom. the fact that daniel also journeyed to the bedroom (context sentence 1) does not affect mary's location, so the answer is yes, mary is in the bedroom.	fully	yes	True	According to sentence 2, Mary went to the bedroom, which implies that she is currently in the bedroom.		"Reasoning: According to sentence 2, Mary went to the bedroom, which implies that she is currently in the bedroom.
+
+Answer: yes"	0.1034	0.0345	False	False	False	False	0
+1837	9	68	2	"*TASK*
+Here are the context sentences:
+4. John is no longer in the office.
+5. John journeyed to the hallway.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	since john journeyed to the hallway (context sentence 5), it can be logically concluded that john is in the hallway. the fact that john is no longer in the office (context sentence 4) implies that john has moved to a different location, which in this case is the hallway, supporting the conclusion that john is indeed in the hallway.	fully	yes	True	According to sentence 5, John journeyed to the hallway, which implies that he is currently in the hallway.		"Reasoning: According to sentence 5, John journeyed to the hallway, which implies that he is currently in the hallway.
+
+Answer: yes"	0.2	0.0333	False	False	False	False	0
+1838	9	68	3	"*TASK*
+Here are the context sentences:
+7. Daniel is not in the bedroom.
+8. Mary went back to the bathroom.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	yes	since mary went back to the bathroom (context sentence 8), it can be logically concluded that mary is in the bathroom. the fact that daniel is not in the bedroom (context sentence 7) does not provide any information about mary's location, but the explicit statement about mary's action (going back to the bathroom) directly implies that mary is in the bathroom.	fully	yes	True	According to sentence 8, Mary went back to the bathroom, which implies that she is currently in the bathroom.		"Reasoning: According to sentence 8, Mary went back to the bathroom, which implies that she is currently in the bathroom.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+1839	9	68	4	"*TASK*
+Here are the context sentences:
+10. Sandra is not in the office.
+11. Daniel travelled to the kitchen.
+
+Now, answer the following question:
+Is Daniel in the office?"	no	since daniel travelled to the kitchen (context sentence 11), it can be logically concluded that daniel is not in the office. the fact that sandra is not in the office (context sentence 10) does not provide any direct information about daniel's location, but the explicit statement about daniel's action (travelling to the kitchen) implies that daniel is not in the office.	fully	no	True	According to sentence 11, Daniel travelled to the kitchen, which implies that he is not in the office.		"Reasoning: According to sentence 11, Daniel travelled to the kitchen, which implies that he is not in the office.
+
+Answer: no"	0.069	0.0345	False	False	False	False	0
+1840	9	68	5	"*TASK*
+Here are the context sentences:
+13. Sandra is no longer in the garden.
+14. John is not in the hallway.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	"there is no information provided about mary's location in the context sentences (13 and 14), which only mention sandra and john's locations. therefore, it cannot be logically concluded that mary is in the bedroom based on the provided information. the answer ""no"" implies that mary is not in the bedroom, but this information is not supported by the context sentences."	none	not mentioned	False	There is no information about Mary's location in the given context sentences.		"Reasoning: There is no information about Mary's location in the given context sentences.
+
+Answer: not mentioned"	0.0	0.0455	False	False	False	True	0

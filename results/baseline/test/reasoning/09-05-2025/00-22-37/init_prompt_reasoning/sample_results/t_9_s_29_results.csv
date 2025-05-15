@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1641	9	29	1	"*TASK*
+Here are the context sentences:
+1. John is not in the bathroom.
+2. John went back to the garden.
+
+Now, answer the following question:
+Is John in the garden?"	yes	"from the context sentences, we know that john went back to the garden (sentence 2). there is no information provided that suggests john left the garden after going back to it. therefore, we can logically conclude that john is still in the garden, which aligns with the answer ""yes""."	fully	yes	True	"Since John went back to the garden, it implies that he was not in the garden initially. However, the sentence ""John is not in the bathroom"" suggests that John is not in the bathroom. There is no information that contradicts John being in the garden. Additionally, the sentence ""John went back to the garden"" implies that John was in the garden at some point, which is consistent with the initial statement."		"Reasoning: Since John went back to the garden, it implies that he was not in the garden initially. However, the sentence ""John is not in the bathroom"" suggests that John is not in the bathroom. There is no information that contradicts John being in the garden. Additionally, the sentence ""John went back to the garden"" implies that John was in the garden at some point, which is consistent with the initial statement.
+
+Answer: yes"	0.1319	0.011	False	False	False	True	0
+1642	9	29	2	"*TASK*
+Here are the context sentences:
+4. John went to the office.
+5. Daniel is in the office.
+
+Now, answer the following question:
+Is John in the office?"	yes	"according to sentence 4, ""john went to the office"", which implies that john's current location is the office. there is no information provided that suggests john left the office after going there. therefore, we can logically conclude that john is still in the office, which aligns with the answer ""yes""."	fully	yes	True	"The sentence ""John went to the office"" implies that John is currently in the office. Additionally, the sentence ""Daniel is in the office"" does not contradict John's presence in the office."		"Reasoning: The sentence ""John went to the office"" implies that John is currently in the office. Additionally, the sentence ""Daniel is in the office"" does not contradict John's presence in the office.
+
+Answer: yes"	0.0435	0.0217	False	False	False	False	0
+1643	9	29	3	"*TASK*
+Here are the context sentences:
+7. John went to the hallway.
+8. Daniel went to the bedroom.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	"according to sentence 7, ""john went to the hallway"", which implies that john's current location is the hallway. there is no information provided that suggests john left the hallway after going there. therefore, we can logically conclude that john is still in the hallway, which aligns with the answer ""yes""."	fully	yes	True	"The sentence ""John went to the hallway"" implies that John is currently in the hallway."		"Reasoning: The sentence ""John went to the hallway"" implies that John is currently in the hallway.
+
+Answer: yes"	0.12	0.04	False	False	False	False	0
+1644	9	29	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the office.
+11. Mary went to the hallway.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	"there is no information provided about daniel's location in the context sentences. the sentences only mention sandra going to the office and mary going to the hallway. there is no mention of daniel or the bathroom. therefore, we can logically conclude that we don't have enough information to determine daniel's location, but since the answer is ""no"", we can infer that daniel is not in the bathroom."	none	not mentioned	False	There is no information provided that suggests Daniel's location. The sentences only mention Sandra and Mary's movements, but not Daniel's.		"Reasoning: There is no information provided that suggests Daniel's location. The sentences only mention Sandra and Mary's movements, but not Daniel's.
+
+Answer: not mentioned"	0.1471	0.0294	False	False	False	True	0
+1645	9	29	5	"*TASK*
+Here are the context sentences:
+13. John is not in the hallway.
+14. Mary moved to the bedroom.
+
+Now, answer the following question:
+Is Sandra in the office?"	yes	"the context sentences do not provide any direct information about sandra's location. however, sentence 10 from a previous part of the conversation history states ""sandra went to the office"". there is no information provided that suggests sandra left the office after going there. therefore, we can logically conclude that sandra is still in the office, which aligns with the answer ""yes""."	none	yes	True	"The sentence ""Sandra went to the office"" implies that Sandra is currently in the office. There is no information that contradicts this statement."		"Reasoning: The sentence ""Sandra went to the office"" implies that Sandra is currently in the office. There is no information that contradicts this statement.
+
+Answer: yes"	0.0556	0.0278	False	False	False	True	0

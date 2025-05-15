@@ -1,0 +1,95 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2406	20	33	1	"*TASK*
+Here are the context sentences:
+1. Jason is bored.
+
+Now, answer the following question:
+Where will jason go?"	garden	there is no direct information provided about jason's destination. however, it is mentioned that jason is bored, which implies that he might be looking for something to do or a change of environment. a garden is a common outdoor space where people often go to relax, get some fresh air, or engage in activities like gardening or reading. it is a logical assumption that jason, being bored, might go to the garden to alleviate his boredom.	fully	kitchen	False	Since Jason is bored, he might want to do something to alleviate his boredom. The context sentences do not provide any specific information about Jason's preferences or activities, but based on the assumption that Jason is looking for something to do, I will make an inference.		"Reasoning: Since Jason is bored, he might want to do something to alleviate his boredom. The context sentences do not provide any specific information about Jason's preferences or activities, but based on the assumption that Jason is looking for something to do, I will make an inference.
+
+Answer: kitchen"	0.0508	0.0169	False	False	False	True	0
+2407	20	33	2	"*TASK*
+Here are the context sentences:
+3. Antoine is bored.
+
+Now, answer the following question:
+Where will antoine go?"	garden	"the context sentence ""antoine is bored"" is similar to the previous context sentence ""jason is bored"" where jason went to the garden. although there is no direct information about antoine's destination, it is logical to assume that antoine, being bored, might go to the same place jason went to alleviate his boredom, which is the garden."	fully	garden	True	Since Antoine is bored, he might want to do something to alleviate his boredom. The context sentences do not provide any specific information about Antoine's preferences or activities, but based on the assumption that Antoine is looking for something to do, I will make an inference.		"Reasoning: Since Antoine is bored, he might want to do something to alleviate his boredom. The context sentences do not provide any specific information about Antoine's preferences or activities, but based on the assumption that Antoine is looking for something to do, I will make an inference.
+
+Answer: garden"	0.0339	0.0169	False	False	False	True	0
+2408	20	33	3	"*TASK*
+Here are the context sentences:
+5. Yann is tired.
+
+Now, answer the following question:
+Where will yann go?"	bedroom	there is no direct information about yann's destination, but it is mentioned that yann is tired. a bedroom is a common place where people go to rest and sleep when they are tired. it is a logical assumption that yann, being tired, might go to the bedroom to rest or take a nap.	fully	bedroom	True	Since Yann is tired, he might want to rest or sleep. The context sentences do not provide any specific information about Yann's preferences or activities, but based on the assumption that Yann is looking for a place to rest, I will make an inference.		"Reasoning: Since Yann is tired, he might want to rest or sleep. The context sentences do not provide any specific information about Yann's preferences or activities, but based on the assumption that Yann is looking for a place to rest, I will make an inference.
+
+Answer: bedroom"	0.1333	0.0167	False	False	False	True	0
+2409	20	33	4	"*TASK*
+Here are the context sentences:
+7. Antoine travelled to the garden.
+
+Now, answer the following question:
+Why did antoine go to the garden?"	bored	"in a previous context, it was mentioned that ""antoine is bored"" and it was inferred that antoine might go to the garden to alleviate his boredom. now, it is stated that antoine travelled to the garden, which confirms this previous inference. therefore, it is logical to conclude that antoine went to the garden because he was bored."	none	bored	True	Since Antoine travelled to the garden, it is likely that Antoine went to the garden because Antoine is bored (as mentioned in context sentence 3). The context sentences do not provide any other information about Antoine's motivations, so I will make an inference based on the assumption that Antoine's boredom led to the decision to go to the garden.		"Reasoning: Since Antoine travelled to the garden, it is likely that Antoine went to the garden because Antoine is bored (as mentioned in context sentence 3). The context sentences do not provide any other information about Antoine's motivations, so I will make an inference based on the assumption that Antoine's boredom led to the decision to go to the garden.
+
+Answer: bored"	0.0135	0.0135	False	True	False	True	0
+2410	20	33	5	"*TASK*
+Here are the context sentences:
+9. Yann went to the bedroom.
+
+Now, answer the following question:
+Why did yann go to the bedroom?"	tired	"in a previous context, it was mentioned that ""yann is tired"", and it was inferred that yann, being tired, might go to the bedroom to rest or take a nap. now, it is stated that yann went to the bedroom, which confirms this previous inference. therefore, it is logical to conclude that yann went to the bedroom because he was tired."	none	tired	True	Since Yann went to the bedroom, it is likely that Yann went to the bedroom because Yann is tired (as mentioned in context sentence 5). The context sentences do not provide any other information about Yann's motivations, so I will make an inference based on the assumption that Yann's tiredness led to the decision to go to the bedroom.		"Reasoning: Since Yann went to the bedroom, it is likely that Yann went to the bedroom because Yann is tired (as mentioned in context sentence 5). The context sentences do not provide any other information about Yann's motivations, so I will make an inference based on the assumption that Yann's tiredness led to the decision to go to the bedroom.
+
+Answer: tired"	0.1	0.0125	False	False	False	True	0
+2411	20	33	6	"*TASK*
+Here are the context sentences:
+11. Yann took the pajamas there.
+
+Now, answer the following question:
+Why did yann get the pajamas?"	tired	" question: where did yann take the pajamas?
+this is the answer: bedroom"	none	tired	True	Since Yann took the pajamas, it is likely that Yann got the pajamas because Yann is tired (as mentioned in context sentence 5). The context sentences do not provide any other information about Yann's motivations, so I will make an inference based on the assumption that Yann's tiredness led to the decision to get the pajamas.		"Reasoning: Since Yann took the pajamas, it is likely that Yann got the pajamas because Yann is tired (as mentioned in context sentence 5). The context sentences do not provide any other information about Yann's motivations, so I will make an inference based on the assumption that Yann's tiredness led to the decision to get the pajamas.
+
+Answer: tired"	0.075	0.0125	False	False	False	True	0
+2412	20	33	7	"*TASK*
+Here are the context sentences:
+13. Jason went to the garden.
+
+Now, answer the following question:
+Why did jason go to the garden?"	bored	" question: where did yann take the pajamas?
+this is the answer: bedroom"	none	bored	True	Since Jason went to the garden, it is likely that Jason went to the garden because Jason is bored (as mentioned in context sentence 1). The context sentences do not provide any other information about Jason's motivations, so I will make an inference based on the assumption that Jason's boredom led to the decision to go to the garden.		"Reasoning: Since Jason went to the garden, it is likely that Jason went to the garden because Jason is bored (as mentioned in context sentence 1). The context sentences do not provide any other information about Jason's motivations, so I will make an inference based on the assumption that Jason's boredom led to the decision to go to the garden.
+
+Answer: bored"	0.027	0.0135	False	True	False	True	0
+2413	20	33	8	"*TASK*
+Here are the context sentences:
+15. Jason took the football there.
+
+Now, answer the following question:
+Why did jason get the football?"	bored	" question: where did yann take the pajamas?
+this is the answer: bedroom"	none	bored	True	Since Jason took the football, it is likely that Jason got the football because Jason is bored (as mentioned in context sentence 1). The context sentences do not provide any other information about Jason's motivations, so I will make an inference based on the assumption that Jason's boredom led to the decision to get the football.		"Reasoning: Since Jason took the football, it is likely that Jason got the football because Jason is bored (as mentioned in context sentence 1). The context sentences do not provide any other information about Jason's motivations, so I will make an inference based on the assumption that Jason's boredom led to the decision to get the football.
+
+Answer: bored"	0.0141	0.0141	False	True	False	True	0
+2414	20	33	9	"*TASK*
+Here are the context sentences:
+17. Sumit is thirsty.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	" question: where did yann take the pajamas?
+this is the answer: bedroom"	fully	kitchen	True	Since Sumit is thirsty, Sumit might want to quench their thirst. The context sentences do not provide any specific information about Sumit's preferences or activities, but based on the assumption that Sumit is looking for something to drink, I will make an inference.		"Reasoning: Since Sumit is thirsty, Sumit might want to quench their thirst. The context sentences do not provide any specific information about Sumit's preferences or activities, but based on the assumption that Sumit is looking for something to drink, I will make an inference.
+
+Answer: kitchen"	0.0492	0.0164	False	False	False	True	0
+2415	20	33	10	"*TASK*
+Here are the context sentences:
+19. Sumit went to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	thirsty	" question: where did yann take the pajamas?
+this is the answer: bedroom"	none	thirsty	True	Since Sumit went to the kitchen, it is likely that Sumit went to the kitchen because Sumit is thirsty (as mentioned in context sentence 17). The context sentences do not provide any other information about Sumit's motivations, so I will make an inference based on the assumption that Sumit's thirst led to the decision to go to the kitchen.		"Reasoning: Since Sumit went to the kitchen, it is likely that Sumit went to the kitchen because Sumit is thirsty (as mentioned in context sentence 17). The context sentences do not provide any other information about Sumit's motivations, so I will make an inference based on the assumption that Sumit's thirst led to the decision to go to the kitchen.
+
+Answer: thirsty"	0.0633	0.0127	False	False	False	True	0
+2416	20	33	11	"*TASK*
+Here are the context sentences:
+21. Sumit got the milk there.
+
+Now, answer the following question:
+Why did sumit get the milk?"	thirsty	" question: where did yann take the pajamas?
+this is the answer: bedroom"	none	thirsty	True	Since Sumit got the milk, it is likely that Sumit got the milk because Sumit is thirsty (as mentioned in context sentence 17). The context sentences do not provide any other information about Sumit's motivations, so I will make an inference based on the assumption that Sumit's thirst led to the decision to get the milk.		"Reasoning: Since Sumit got the milk, it is likely that Sumit got the milk because Sumit is thirsty (as mentioned in context sentence 17). The context sentences do not provide any other information about Sumit's motivations, so I will make an inference based on the assumption that Sumit's thirst led to the decision to get the milk.
+
+Answer: thirsty"	0.0132	0.0132	False	False	False	True	0

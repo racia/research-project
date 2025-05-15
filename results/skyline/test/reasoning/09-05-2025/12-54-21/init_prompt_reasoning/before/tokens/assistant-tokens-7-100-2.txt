@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġstates	Ġthat	ĠSandra	Ġgot	Ġthe	Ġfootball	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcarrying	Ġthe	Ġfootball	.	ĠSentence	Ġ	5	Ġis	Ġabout	ĠJohn	's	Ġaction	Ġand	Ġdoes	Ġnot	Ġaffect	ĠSandra	's	Ġstate	.ĊĊ	Answer	:	Ġone	<|eot_id|>

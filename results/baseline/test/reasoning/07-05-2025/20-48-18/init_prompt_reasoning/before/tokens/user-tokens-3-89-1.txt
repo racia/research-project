@@ -1,0 +1,23 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġfootball	.Ċ
+2	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+3	.	ĠJohn	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+4	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+5	.	ĠDaniel	Ġgot	Ġthe	Ġfootball	.Ċ
+6	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+7	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+8	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+9	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+10	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+11	.	ĠMary	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+12	.	ĠDaniel	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
+13	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+14	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġfootball	.Ċ
+15	.	ĠDaniel	Ġdropped	Ġthe	Ġfootball	.Ċ
+16	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġmilk	.Ċ
+17	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+18	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+19	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+20	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġoffice	?Ċ

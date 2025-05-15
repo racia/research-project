@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ(	10	Ġand	Ġ	11	)	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġmovements	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġmention	ĠSandra	's	Ġcurrent	Ġlocation	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġwas	Ġin	Ġsentences	Ġ	7	Ġand	Ġ	8	,	Ġwhere	Ġshe	Ġwas	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,0 +1,44 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2851	14	121	1	"*TASK*
+Here are the context sentences:
+1. This morning Bill went to the cinema.
+2. Yesterday Fred travelled to the bedroom.
+3. Yesterday Julie travelled to the bedroom.
+4. Yesterday Bill went back to the kitchen.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	kitchen	"from context sentence 4, ""yesterday bill went back to the kitchen"", we can infer that bill was in the kitchen at some point yesterday. since the question asks about bill's location before going to the cinema (which happened this morning, according to context sentence 1), and there is no other information about bill's movements between yesterday and this morning, it is logical to assume that bill was still in the kitchen before going to the cinema."	fully	kitchen	True	The question asks about Bill's location before going to the cinema. Since Bill went back to the kitchen yesterday, it implies that he was somewhere else before going back to the kitchen. The only information provided about Bill's location before going back to the kitchen is that he went to the cinema this morning. Therefore, we can infer that Bill was in the kitchen before going to the cinema.		"Reasoning: The question asks about Bill's location before going to the cinema. Since Bill went back to the kitchen yesterday, it implies that he was somewhere else before going back to the kitchen. The only information provided about Bill's location before going back to the kitchen is that he went to the cinema this morning. Therefore, we can infer that Bill was in the kitchen before going to the cinema.
+
+Answer: kitchen"	0.0476	0.0238	False	False	False	True	0
+2852	14	121	2	"*TASK*
+Here are the context sentences:
+6. This morning Julie travelled to the office.
+7. This morning Fred travelled to the school.
+
+Now, answer the following question:
+Where was Julie before the office?"	bedroom	from the previous context sentences (2 and 3), we know that julie travelled to the bedroom yesterday. there is no information about julie's movements between yesterday and this morning, so it is logical to assume that julie was still in the bedroom before travelling to the office this morning.	partially		False	The question asks about Julie's location before travelling to the office. The context sentence 7 mentions that Fred travelled to the school this morning, but it does not provide any information about Julie's location. However, we can infer that Julie was not at the school because Fred was at the school, and Julie was at the office. The only other information provided is that Julie travelled to the bedroom yesterday (from context sentences 2 and 3). Therefore, we can conclude that Julie		Reasoning: The question asks about Julie's location before travelling to the office. The context sentence 7 mentions that Fred travelled to the school this morning, but it does not provide any information about Julie's location. However, we can infer that Julie was not at the school because Fred was at the school, and Julie was at the office. The only other information provided is that Julie travelled to the bedroom yesterday (from context sentences 2 and 3). Therefore, we can conclude that Julie	0.0707	0.0202	False	False	False	True	0
+2853	14	121	3	"*TASK*
+Here are the context sentences:
+9. Bill went back to the park this afternoon.
+10. This afternoon Fred travelled to the kitchen.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	school	"from context sentence 7, ""this morning fred travelled to the school"", we know that fred was at the school this morning. there is no information about fred's movements between this morning and this afternoon, so it is logical to assume that fred was still at the school before travelling to the kitchen this afternoon."	partially		False	The question asks about Fred's location before travelling to the kitchen. The context sentence 10 mentions that Fred travelled to the kitchen this afternoon, but it does not provide any information about Fred's location before that. However, we can infer that Fred was not at the park because Bill went back to the park this afternoon, and Fred was at the kitchen. The only other information provided is that Fred travelled to the school yesterday (from context sentences 2 and 3). Therefore,		Reasoning: The question asks about Fred's location before travelling to the kitchen. The context sentence 10 mentions that Fred travelled to the kitchen this afternoon, but it does not provide any information about Fred's location before that. However, we can infer that Fred was not at the park because Bill went back to the park this afternoon, and Fred was at the kitchen. The only other information provided is that Fred travelled to the school yesterday (from context sentences 2 and 3). Therefore,	0.101	0.0202	False	False	False	True	0
+2854	14	121	4	"*TASK*
+Here are the context sentences:
+12. This afternoon Julie travelled to the kitchen.
+13. This evening Bill travelled to the office.
+
+Now, answer the following question:
+Where was Fred before the kitchen?"	school	"this question is asking about fred, but the context sentences 12 and 13 are about julie and bill, respectively. to find the answer, we need to look at the previous context sentences. from context sentence 7, ""this morning fred travelled to the school"", we know that fred was at the school this morning. there is no information about fred's movements between this morning and this afternoon, so it is logical to assume that fred was still at the school before (someone else"	none	Not mentioned	False	The question asks about Fred's location before travelling to the kitchen. However, there is no information provided about Fred's location in the given context sentences. Fred's location is not mentioned in sentences 12 and 13, and we cannot infer his location from the information provided.		"Reasoning: The question asks about Fred's location before travelling to the kitchen. However, there is no information provided about Fred's location in the given context sentences. Fred's location is not mentioned in sentences 12 and 13, and we cannot infer his location from the information provided.
+
+Answer: Not mentioned"	0.0794	0.0317	False	False	False	True	0
+2855	14	121	5	"*TASK*
+Here are the context sentences:
+15. This evening Julie journeyed to the bedroom.
+16. Yesterday Mary went to the kitchen.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	kitchen	"from context sentence 12, ""this afternoon julie travelled to the kitchen"", we know that julie was at the kitchen this afternoon. there is no information about julie's movements between this afternoon and this evening, so it is logical to assume that julie was still at the kitchen before travelling to the bedroom this evening."	partially	kitchen	True	The question asks about Julie's location before journeying to the bedroom. The context sentence 15 mentions that Julie journeyed to the bedroom this evening, and we know that Julie travelled to the kitchen this afternoon (from context sentence 12). Therefore, we can infer that Julie was at the kitchen before journeying to the bedroom.		"Reasoning: The question asks about Julie's location before journeying to the bedroom. The context sentence 15 mentions that Julie journeyed to the bedroom this evening, and we know that Julie travelled to the kitchen this afternoon (from context sentence 12). Therefore, we can infer that Julie was at the kitchen before journeying to the bedroom.
+
+Answer: kitchen"	0.0	0.0274	False	False	False	True	0

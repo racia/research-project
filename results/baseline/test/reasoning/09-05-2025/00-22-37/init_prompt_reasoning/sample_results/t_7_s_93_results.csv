@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+961	7	93	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the kitchen.
+2. Daniel went to the garden.
+3. Mary went to the bedroom.
+4. Mary journeyed to the bathroom.
+5. Sandra went back to the hallway.
+6. Daniel travelled to the bedroom.
+7. Mary got the football there.
+8. Daniel got the milk there.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"from the context sentences, we know that mary went to the kitchen, then to the bedroom, and then to the bathroom. in sentence 7, it is stated that mary got the football there, which implies that ""there"" refers to one of the locations mary visited. since mary got the football, it is likely that she is carrying it. there is no mention of mary getting or carrying any other objects. therefore, we can conclude that mary is carrying one object, which is"	fully	none	False	Mary got the football there in sentence 7, which implies that she acquired the football. However, there is no mention of her carrying any objects in the previous sentences. Therefore, we can infer that Mary is not carrying any objects.		"Reasoning: Mary got the football there in sentence 7, which implies that she acquired the football. However, there is no mention of her carrying any objects in the previous sentences. Therefore, we can infer that Mary is not carrying any objects.
+
+Answer: none"	0.0	0.0185	False	False	False	True	0
+962	7	93	2	"*TASK*
+Here are the context sentences:
+10. Daniel left the milk.
+11. Sandra grabbed the apple there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	from the context sentences, we know that daniel got the milk in sentence 8. however, in sentence 10, it is stated that daniel left the milk. this implies that daniel is no longer carrying the milk. there is no other mention of daniel getting or carrying any other objects. therefore, we can conclude that daniel is carrying none.	partially	none	True	Daniel got the milk there in sentence 8, which implies that he acquired the milk. However, in sentence 10, Daniel left the milk, which means he was holding the milk initially. After leaving the milk, Daniel is no longer carrying any objects.		"Reasoning: Daniel got the milk there in sentence 8, which implies that he acquired the milk. However, in sentence 10, Daniel left the milk, which means he was holding the milk initially. After leaving the milk, Daniel is no longer carrying any objects.
+
+Answer: none"	0.0169	0.0339	False	False	False	False	0
+963	7	93	3	"*TASK*
+Here are the context sentences:
+13. Sandra gave the apple to John.
+14. John handed the apple to Sandra.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	the context sentences 13 and 14 only mention sandra and john, and the apple being exchanged between them. there is no mention of daniel in these sentences. however, we already know from the previous context (sentence 10) that daniel left the milk, implying that he is not carrying any objects. there is no new information that would suggest daniel is carrying any objects. therefore, we can conclude that daniel is still carrying none.	none	none	True	There is no mention of Daniel in sentences 13 and 14, which means Daniel's situation remains unchanged. In the previous context, Daniel left the milk (sentence 10) and didn't acquire any new objects. Therefore, Daniel is still not carrying any objects.		"Reasoning: There is no mention of Daniel in sentences 13 and 14, which means Daniel's situation remains unchanged. In the previous context, Daniel left the milk (sentence 10) and didn't acquire any new objects. Therefore, Daniel is still not carrying any objects.
+
+Answer: none"	0.0492	0.0328	False	False	False	True	0
+964	7	93	4	"*TASK*
+Here are the context sentences:
+16. Mary went back to the kitchen.
+17. Mary went back to the bedroom.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	the context sentences 16 and 17 only mention mary's movements, but do not provide any information about sandra or the objects she is carrying. however, we can refer back to sentence 11, where sandra grabbed the apple. there is no subsequent information that suggests sandra dropped or gave away the apple. therefore, we can conclude that sandra is still carrying one object, which is the apple.	none	one	True	There is no new information about Sandra's situation in sentences 16 and 17. Sandra's previous situation was that she grabbed the apple (sentence 11), but then gave it to John (sentence 13). After that, there is no mention of Sandra acquiring or carrying any new objects. Therefore, Sandra is still carrying the same object, which is the apple.		"Reasoning: There is no new information about Sandra's situation in sentences 16 and 17. Sandra's previous situation was that she grabbed the apple (sentence 11), but then gave it to John (sentence 13). After that, there is no mention of Sandra acquiring or carrying any new objects. Therefore, Sandra is still carrying the same object, which is the apple.
+
+Answer: one"	0.1358	0.037	False	False	False	True	0
+965	7	93	5	"*TASK*
+Here are the context sentences:
+19. Sandra left the apple.
+20. Mary gave the football to Daniel.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	in sentence 19, it is stated that sandra left the apple. this implies that sandra is no longer carrying the apple. there is no subsequent information that suggests sandra picked up or received any other objects. therefore, we can conclude that sandra is carrying none.	partially	none	True	Sandra left the apple (sentence 19), which means she was holding the apple initially. After leaving the apple, Sandra is no longer carrying any objects.		"Reasoning: Sandra left the apple (sentence 19), which means she was holding the apple initially. After leaving the apple, Sandra is no longer carrying any objects.
+
+Answer: none"	0.0526	0.1053	False	False	False	False	0

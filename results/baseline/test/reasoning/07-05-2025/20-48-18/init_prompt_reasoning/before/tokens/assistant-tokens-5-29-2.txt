@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠMary	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJeff	,	Ġand	Ġaccording	Ġto	Ġsentence	Ġ	11	,	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.	ĠThis	Ġshows	Ġthat	Ġthe	Ġfootball	Ġwas	Ġpassed	Ġback	Ġand	Ġforth	Ġbetween	ĠMary	Ġand	ĠJeff	.ĊĊ	Answer	:	Ġboth	ĠMary	Ġand	ĠJeff	<|eot_id|>

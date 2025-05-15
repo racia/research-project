@@ -1,0 +1,1 @@
+*T	ASK	*ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2326	14	16	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Mary moved to the bedroom.
+2. Julie moved to the office this morning.
+3. Fred went back to the kitchen yesterday.
+4. This morning Bill journeyed to the office.
+5. Bill went back to the school yesterday.
+6. Julie went to the cinema yesterday.
+
+Now, answer the following question:
+Where was Bill before the office?"	school	"from sentence 4, we know that bill journeyed to the office this morning. to find out where bill was before the office, we need to look at the previous actions of bill. sentence 5 states that bill went back to the school yesterday. the phrase ""went back"" implies that bill was already at the school at some point in the past and returned to it yesterday. therefore, it is logical to assume that bill was at the school before coming to the office this morning"	fully	school	True	Bill went back to the office this morning, which means he was somewhere else before coming to the office. Since he went back to the office, it implies that he was at the school yesterday (from sentence 5). Therefore, Bill was at the school before coming to the office.		"Reasoning: Bill went back to the office this morning, which means he was somewhere else before coming to the office. Since he went back to the office, it implies that he was at the school yesterday (from sentence 5). Therefore, Bill was at the school before coming to the office.
+
+Answer: school"	0.1875	0.0312	False	False	False	False	0
+2327	14	16	2	"*TASK*
+Here are the context sentences:
+8. This morning Fred travelled to the school.
+9. This afternoon Julie moved to the bedroom.
+
+Now, answer the following question:
+Where was Julie before the office?"	cinema	the question asks about julie's location before the office, but there is no direct information about julie's movement to the office in the provided context lines. however, we can look at the previous context lines (sentences 1-6) to find the relevant information. sentence 2 states that julie moved to the office this morning, but we don't have information about julie's location before that. sentence 6 informs us that julie went to the cinema yesterday. there is no information	none	not mentioned	False	Julie moved to the bedroom this afternoon (from sentence 9), but there is no mention of her going to the office. Therefore, we need to look at the previous context to find her location before the office. From sentence 2, Julie moved to the office this morning, which means she was somewhere else before that. However, we don't have any information about her location before the office, so we cannot pinpoint a specific location.		"Reasoning: Julie moved to the bedroom this afternoon (from sentence 9), but there is no mention of her going to the office. Therefore, we need to look at the previous context to find her location before the office. From sentence 2, Julie moved to the office this morning, which means she was somewhere else before that. However, we don't have any information about her location before the office, so we cannot pinpoint a specific location.
+
+Answer: not mentioned"	0.0104	0.0208	False	False	False	True	0
+2328	14	16	3	"*TASK*
+Here are the context sentences:
+11. Mary went back to the kitchen this morning.
+12. This afternoon Bill went back to the cinema.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	office	the question asks about bill's location before the cinema. sentence 12 informs us that bill went back to the cinema this afternoon, which implies that bill was at the cinema before and is returning to it. to find out where bill was before the cinema, we need to look at the previous context lines (sentences 1-10). sentence 4 states that bill journeyed to the office this morning. there is no information about bill leaving the office, so it is logical to	partially	office	True	Bill went back to the cinema this afternoon (from sentence 12), which means he was somewhere else before that. From sentence 5, Bill went back to the school yesterday, and since he went back to the cinema this afternoon, it implies that he was at the office this morning (from sentence 4). Therefore, Bill was at the office before going to the cinema.		"Reasoning: Bill went back to the cinema this afternoon (from sentence 12), which means he was somewhere else before that. From sentence 5, Bill went back to the school yesterday, and since he went back to the cinema this afternoon, it implies that he was at the office this morning (from sentence 4). Therefore, Bill was at the office before going to the cinema.
+
+Answer: office"	0.0723	0.0241	False	False	False	False	0
+2329	14	16	4	"*TASK*
+Here are the context sentences:
+14. This afternoon Fred journeyed to the cinema.
+15. This evening Julie went to the park.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	office	the question asks about bill's location before the cinema, but the provided context lines (14 and 15) do not mention bill. however, we can look at the previous context lines (sentences 1-13) to find the relevant information. sentence 4 states that bill journeyed to the office this morning, and there is no information about bill leaving the office. sentence 12 informs us that bill went back to the cinema this afternoon, which implies that bill was at	none	office	True	The question is asking about Bill's location before the cinema, but the new context sentences (14 and 15) do not provide any information about Bill's location. The previous context sentences (11 and 12) mentioned Bill's location before the cinema, which was the office. Since there is no new information contradicting this, we can stick with the previous answer.		"Reasoning: The question is asking about Bill's location before the cinema, but the new context sentences (14 and 15) do not provide any information about Bill's location. The previous context sentences (11 and 12) mentioned Bill's location before the cinema, which was the office. Since there is no new information contradicting this, we can stick with the previous answer.
+
+Answer: office"	0.0	0.0247	False	False	False	True	0
+2330	14	16	5	"*TASK*
+Here are the context sentences:
+17. This afternoon Mary went to the park.
+18. Fred journeyed to the park this evening.
+
+Now, answer the following question:
+Where was Fred before the park?"	cinema	the question asks about fred's location before the park. sentence 18 informs us that fred journeyed to the park this evening, but we need to look at the previous context lines to find out where fred was before that. sentence 14 states that fred journeyed to the cinema this afternoon. there is no information about fred leaving the cinema, so it is logical to assume that fred was at the cinema before going to the park.	partially	cinema	True	Fred journeyed to the park this evening (from sentence 18), which means he was somewhere else before that. From sentence 14, Fred journeyed to the cinema this afternoon, and since he went to the park this evening, it implies that he was at the cinema before that. Therefore, Fred was at the cinema before going to the park.		"Reasoning: Fred journeyed to the park this evening (from sentence 18), which means he was somewhere else before that. From sentence 14, Fred journeyed to the cinema this afternoon, and since he went to the park this evening, it implies that he was at the cinema before that. Therefore, Fred was at the cinema before going to the park.
+
+Answer: cinema"	0.0385	0.0256	False	False	False	False	0

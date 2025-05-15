@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+571	7	15	1	"*TASK*
+Here are the context sentences:
+1. Sandra grabbed the milk there.
+2. John went back to the hallway.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	"from context sentence 1, ""sandra grabbed the milk there"", we can infer that sandra is carrying the milk. there is no mention of sandra carrying any other objects. therefore, the number of objects sandra is carrying is one, which is the milk."	fully	one	True	Sandra grabbed the milk, which implies she is holding or carrying the milk. There is no mention of her dropping or giving away the milk, so it can be inferred that she is still carrying it.		"Reasoning: Sandra grabbed the milk, which implies she is holding or carrying the milk. There is no mention of her dropping or giving away the milk, so it can be inferred that she is still carrying it.
+
+Answer: one"	0.0	0.0213	False	False	False	True	0
+572	7	15	2	"*TASK*
+Here are the context sentences:
+4. Sandra moved to the garden.
+5. Sandra discarded the milk there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	"from context sentence 5, ""sandra discarded the milk there"", we can infer that sandra is no longer carrying the milk. since there is no mention of sandra picking up or carrying any other objects, we can conclude that sandra is not carrying any objects. therefore, the number of objects sandra is carrying is none."	partially	none	True	Sandra discarded the milk in the garden, which implies she was holding or carrying the milk before discarding it. Since she discarded it, she is no longer carrying it.		"Reasoning: Sandra discarded the milk in the garden, which implies she was holding or carrying the milk before discarding it. Since she discarded it, she is no longer carrying it.
+
+Answer: none"	0.1463	0.0488	False	False	False	False	0
+573	7	15	3	"*TASK*
+Here are the context sentences:
+7. Sandra got the milk there.
+8. Mary moved to the bedroom.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	"from context sentence 7, ""sandra got the milk there"", we can infer that sandra is now carrying the milk. there is no mention of sandra carrying any other objects, and sentence 8 is about mary, which does not affect sandra's actions. therefore, the number of objects sandra is carrying is one, which is the milk."	partially	one	True	Sandra got the milk, which implies she is holding or carrying the milk. There is no mention of her dropping or giving away the milk, so it can be inferred that she is still carrying it.		"Reasoning: Sandra got the milk, which implies she is holding or carrying the milk. There is no mention of her dropping or giving away the milk, so it can be inferred that she is still carrying it.
+
+Answer: one"	0.234	0.0638	False	False	False	True	0
+574	7	15	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the hallway.
+11. Daniel got the apple there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	"from context sentence 11, ""daniel got the apple there"", we can infer that daniel is carrying the apple. there is no mention of daniel carrying any other objects. therefore, the number of objects daniel is carrying is one, which is the apple."	fully	one	True	There is no mention of Daniel grabbing or holding anything, only that he got the apple. Since he got it, it can be inferred that he is holding or carrying it.		"Reasoning: There is no mention of Daniel grabbing or holding anything, only that he got the apple. Since he got it, it can be inferred that he is holding or carrying it.
+
+Answer: one"	0.0	0.0238	False	False	False	True	0
+575	7	15	5	"*TASK*
+Here are the context sentences:
+13. Daniel moved to the office.
+14. Sandra passed the milk to John.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	"from context sentence 11 (previous part), ""daniel got the apple there"", we know that daniel is carrying the apple. the subsequent sentences (13 and 14) do not mention daniel dropping or giving away the apple, so we can infer that daniel is still carrying the apple. therefore, the number of objects daniel is carrying is one, which is the apple."	none	one	True	Since Daniel moved to the office, it implies that he was holding or carrying the apple. There is no mention of him dropping or giving away the apple, so it can be inferred that he is still carrying it.		"Reasoning: Since Daniel moved to the office, it implies that he was holding or carrying the apple. There is no mention of him dropping or giving away the apple, so it can be inferred that he is still carrying it.
+
+Answer: one"	0.0	0.02	False	False	False	True	0

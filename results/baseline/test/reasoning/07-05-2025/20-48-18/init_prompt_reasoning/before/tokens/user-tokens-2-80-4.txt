@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+18	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+19	.	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+20	.	ĠJohn	Ġleft	Ġthe	Ġfootball	.Ċ
+21	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

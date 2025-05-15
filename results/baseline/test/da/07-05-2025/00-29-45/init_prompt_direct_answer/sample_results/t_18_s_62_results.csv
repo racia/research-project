@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1210	18	62	1	"*TASK*
+Here are the context sentences:
+1. The chest fits inside the suitcase.
+2. The box is bigger than the chest.
+3. The box is bigger than the chocolate.
+4. The box is bigger than the chocolate.
+5. The chest fits inside the suitcase.
+6. The chest is bigger than the box of chocolates.
+7. The chest is bigger than the chocolate.
+8. The box fits inside the suitcase.
+9. The box is bigger than the chocolate.
+10. The suitcase is bigger than the box.
+
+Now, answer the following question:
+Is the box of chocolates bigger than the suitcase?"	no	"from sentence 10, we know that ""the suitcase is bigger than the box."" this implies that the box is smaller than the suitcase. additionally, from sentence 6, we know that ""the chest is bigger than the box of chocolates."" since the box of chocolates is the same as the chocolate (as mentioned in sentences 3 and 4), we can infer that the box of chocolates is smaller than the chest. now, from sentence 1, we know that ""the"	fully	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1211	18	62	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	"from sentence 7, we know that ""the chest is bigger than the chocolate."" from sentence 1, we know that ""the chest fits inside the suitcase."" this implies that the suitcase is bigger than the chest. since the chest is bigger than the chocolate, we can logically conclude that the suitcase is also bigger than the chocolate. therefore, the answer is ""no"", the chocolate is not bigger than the suitcase."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1212	18	62	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the suitcase?"	no	"from sentence 10, we know that ""the suitcase is bigger than the box."" from sentence 9, we know that ""the box is bigger than the chocolate."" using transitive property, we can conclude that the suitcase is bigger than the chocolate. therefore, the answer is ""no"", the chocolate is not bigger than the suitcase."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1213	18	62	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the suitcase fit in the box of chocolates?"	no	"from sentence 6, we know that ""the chest is bigger than the box of chocolates."" from sentence 1, we know that ""the chest fits inside the suitcase."" this implies that the suitcase is at least as big as the chest. since the chest is bigger than the box of chocolates, the suitcase must also be bigger than the box of chocolates. therefore, the suitcase cannot fit inside the box of chocolates, and the answer is ""no""."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1214	18	62	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the suitcase bigger than the chest?"	yes	"from sentence 1, we know that ""the chest fits inside the suitcase."" this implies that the suitcase is bigger than the chest, as it can contain the chest. therefore, the answer is ""yes"", the suitcase is bigger than the chest."	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0

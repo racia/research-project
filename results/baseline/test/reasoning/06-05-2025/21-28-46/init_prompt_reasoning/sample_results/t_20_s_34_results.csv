@@ -1,0 +1,101 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2417	20	34	1	"*TASK*
+Here are the context sentences:
+1. Sumit is bored.
+
+Now, answer the following question:
+Where will sumit go?"	garden	there is no direct information provided about sumit's intentions or preferences, but we know that sumit is bored. a common human behavior when feeling bored is to seek a change of environment or engage in an activity to alleviate the boredom. a garden is a common outdoor space that people often visit to relax, take a walk, or engage in leisure activities. therefore, it is a logical inference that sumit might go to the garden to alleviate his boredom.	fully	garden	True	Since Sumit is bored, he might want to do something to alleviate his boredom. Given the context, it's likely that he will go somewhere to engage in an activity that can entertain him.		"Reasoning: Since Sumit is bored, he might want to do something to alleviate his boredom. Given the context, it's likely that he will go somewhere to engage in an activity that can entertain him.
+
+Answer: garden"	0.0	0.0217	False	False	False	False	0
+2418	20	34	2	"*TASK*
+Here are the context sentences:
+3. Antoine is thirsty.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	antoine is thirsty, which implies that he needs to quench his thirst. a common place where people go to get a drink is the kitchen, as it is typically where water, beverages, and other drinks are stored and prepared. therefore, it is a logical inference that antoine will go to the kitchen to satisfy his thirst.	fully	kitchen	True	Since Antoine is thirsty, he needs to quench his thirst. Given the context, it's likely that he will go somewhere to get a drink.		"Reasoning: Since Antoine is thirsty, he needs to quench his thirst. Given the context, it's likely that he will go somewhere to get a drink.
+
+Answer: kitchen"	0.027	0.027	False	False	False	False	0
+2419	20	34	3	"*TASK*
+Here are the context sentences:
+5. Antoine went to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	thirsty	in the previous context, it was established that antoine is thirsty (context line 3). now, it is stated that antoine went to the kitchen. a logical connection can be made between these two pieces of information, suggesting that antoine's thirst was the motivation for him to go to the kitchen, as kitchens are typically where people go to get a drink to quench their thirst.	none	thirsty	True	Since Antoine went to the kitchen, it's likely that he went there to get a drink to quench his thirst, which was mentioned in the previous context sentence.		"Reasoning: Since Antoine went to the kitchen, it's likely that he went there to get a drink to quench his thirst, which was mentioned in the previous context sentence.
+
+Answer: thirsty"	0.0	0.025	False	False	False	True	0
+2420	20	34	4	"*TASK*
+Here are the context sentences:
+7. Yann is hungry.
+
+Now, answer the following question:
+Where will yann go?"	kitchen	yann is hungry, which implies that he needs to eat or find food. a common place where people go to prepare or find food is the kitchen, as it is typically where meals are prepared and food is stored. therefore, it is a logical inference that yann will go to the kitchen to satisfy his hunger.	fully	(Note: There is no information provided about Yann's destination, so I cannot provide a specific answer. The previous context sentences did not mention Yann's destination, and this new information does not provide enough context to determine where Yann will go.)	False	Since Yann is hungry, he needs to find food. Given the context, it's likely that he will go somewhere to eat.		"Reasoning: Since Yann is hungry, he needs to find food. Given the context, it's likely that he will go somewhere to eat.
+
+Answer: (Note: There is no information provided about Yann's destination, so I cannot provide a specific answer. The previous context sentences did not mention Yann's destination, and this new information does not provide enough context to determine where Yann will go.)"	0.0119	0.0119	False	False	False	True	0
+2421	20	34	5	"*TASK*
+Here are the context sentences:
+9. Antoine picked up the milk there.
+
+Now, answer the following question:
+Why did antoine get the milk?"	thirsty	previously, it was established that antoine went to the kitchen (context line 5) because he was thirsty (context line 3). now, it is stated that antoine picked up the milk in the kitchen. a logical connection can be made between these pieces of information, suggesting that antoine got the milk to quench his thirst, as milk is a common beverage that can satisfy thirst.	none	thirsty	True	Since Antoine picked up the milk, it's likely that he got it to quench his thirst, which was mentioned in the previous context sentence.		"Reasoning: Since Antoine picked up the milk, it's likely that he got it to quench his thirst, which was mentioned in the previous context sentence.
+
+Answer: thirsty"	0.0556	0.0278	False	False	False	True	0
+2422	20	34	6	"*TASK*
+Here are the context sentences:
+11. Jason is bored.
+
+Now, answer the following question:
+Where will jason go?"	garden	" tired.
+this is the question: where will jason go?
+this is the answer: bed"	fully	garden	True	Since Jason is bored, he might want to do something to alleviate his boredom. Given the context, it's likely that he will go somewhere to engage in an activity that can entertain him.		"Reasoning: Since Jason is bored, he might want to do something to alleviate his boredom. Given the context, it's likely that he will go somewhere to engage in an activity that can entertain him.
+
+Answer: garden"	0.0	0.0222	False	False	False	False	0
+2423	20	34	7	"*TASK*
+Here are the context sentences:
+13. Yann journeyed to the kitchen.
+
+Now, answer the following question:
+Why did yann go to the kitchen?"	hungry	" tired.
+this is the question: where will jason go?
+this is the answer: bed"	none	hungry	True	Since Yann journeyed to the kitchen, it's likely that he went there to get something, possibly food, given the context of his previous sentence mentioning he is hungry.		"Reasoning: Since Yann journeyed to the kitchen, it's likely that he went there to get something, possibly food, given the context of his previous sentence mentioning he is hungry.
+
+Answer: hungry"	0.0	0.0238	False	False	False	True	0
+2424	20	34	8	"*TASK*
+Here are the context sentences:
+15. Yann got the apple there.
+
+Now, answer the following question:
+Why did yann get the apple?"	hungry	" tired.
+this is the question: where will jason go?
+this is the answer: bed"	none	hungry	True	Since Yann got the apple, it's likely that he got it because he was hungry, which was mentioned in the previous context sentence.		"Reasoning: Since Yann got the apple, it's likely that he got it because he was hungry, which was mentioned in the previous context sentence.
+
+Answer: hungry"	0.0	0.0286	False	False	False	True	0
+2425	20	34	9	"*TASK*
+Here are the context sentences:
+17. Jason travelled to the garden.
+
+Now, answer the following question:
+Why did jason go to the garden?"	bored	" tired.
+this is the question: where will jason go?
+this is the answer: bed"	none	bored	True	Since Jason travelled to the garden, it's likely that he went there to engage in an activity that can entertain him, given that he was bored in the previous context sentence.		"Reasoning: Since Jason travelled to the garden, it's likely that he went there to engage in an activity that can entertain him, given that he was bored in the previous context sentence.
+
+Answer: bored"	0.0	0.0238	False	True	False	False	0
+2426	20	34	10	"*TASK*
+Here are the context sentences:
+19. Jason took the football there.
+
+Now, answer the following question:
+Why did jason get the football?"	bored	" tired.
+this is the question: where will jason go?
+this is the answer: bed"	none	bored	True	Since Jason took the football, it's likely that he got it because he was bored, which was mentioned in the previous context sentence.		"Reasoning: Since Jason took the football, it's likely that he got it because he was bored, which was mentioned in the previous context sentence.
+
+Answer: bored"	0.0	0.0294	False	True	False	True	0
+2427	20	34	11	"*TASK*
+Here are the context sentences:
+21. Sumit went back to the garden.
+
+Now, answer the following question:
+Why did sumit go to the garden?"	bored	" tired.
+this is the question: where will jason go?
+this is the answer: bed"	none	bored	True	Since Sumit went back to the garden, it's likely that he went there because he was bored, which was mentioned in the previous context sentence.		"Reasoning: Since Sumit went back to the garden, it's likely that he went there because he was bored, which was mentioned in the previous context sentence.
+
+Answer: bored"	0.0	0.027	False	True	False	True	0

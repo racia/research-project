@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠJason	Ġis	Ġhungry	,	Ġwhich	Ġimplies	Ġhe	Ġneeds	Ġfood	.	ĠThe	Ġcontext	Ġdoes	Ġnot	Ġspecify	Ġa	Ġparticular	Ġlocation	,	Ġbut	Ġbased	Ġon	Ġthe	Ġassumption	Ġthat	ĠJason	Ġwill	Ġgo	Ġsomewhere	Ġto	Ġeat	,	Ġthe	Ġmost	Ġlogical	Ġchoice	Ġis	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

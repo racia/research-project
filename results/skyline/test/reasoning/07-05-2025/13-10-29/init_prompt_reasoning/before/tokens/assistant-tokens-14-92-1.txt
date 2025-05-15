@@ -1,0 +1,1 @@
+<|start_header_id|>	<|end_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	Ġ"	Yesterday	ĠMary	Ġmoved	Ġto	Ġthe	Ġschool	."	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġcoming	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	Ġ(	sentence	Ġ	3	).ĊĊ	Answer	:	Ġschool	<|eot_id|>

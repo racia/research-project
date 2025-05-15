@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġoffice	Ġis	Ġwest	Ġof	Ġthe	Ġhallway	,	Ġand	Ġthe	Ġgarden	Ġis	Ġsouth	Ġof	Ġthe	Ġhallway	,	Ġto	Ġgo	Ġfrom	Ġthe	Ġoffice	Ġto	Ġthe	Ġgarden	,	Ġyou	Ġneed	Ġto	Ġmove	Ġeast	Ġfrom	Ġthe	Ġoffice	Ġto	Ġreach	Ġthe	Ġhallway	,	Ġand	Ġthen	Ġmove	Ġsouth	Ġfrom	Ġthe	Ġhallway	Ġto	Ġreach	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġeast	,	Ġthen	Ġsouth	<|eot_id|>

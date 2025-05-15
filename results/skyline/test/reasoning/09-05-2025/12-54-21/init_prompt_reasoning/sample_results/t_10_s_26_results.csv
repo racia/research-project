@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2126	10	26	1	"*TASK*
+Here are the context sentences:
+1. Bill moved to the cinema.
+2. Mary is in the office.
+
+Now, answer the following question:
+Is Mary in the office?"	yes	"the context sentence ""mary is in the office"" directly states that mary is in the office, which answers the question affirmatively. the sentence about bill moving to the cinema does not provide any information about mary's location, so it does not affect the answer to the question."	fully	yes	True	The context sentence 2 explicitly states that Mary is in the office.		"assistant
+
+Reasoning: The context sentence 2 explicitly states that Mary is in the office.
+
+Answer: yes"	0.12	0.04	False	False	False	False	0
+2127	10	26	2	"*TASK*
+Here are the context sentences:
+4. Julie moved to the school.
+5. Fred is in the office.
+
+Now, answer the following question:
+Is Julie in the park?"	no	"the context sentence ""julie moved to the school"" indicates that julie is in the school, not in the park. there is no information provided about julie being in the park, and the sentence about fred being in the office does not provide any information about julie's location. therefore, based on the provided information, it can be concluded that julie is not in the park."	fully	no	True	The context sentence 4 states that Julie moved to the school, but there is no mention of Julie being in the park.		"Reasoning: The context sentence 4 states that Julie moved to the school, but there is no mention of Julie being in the park.
+
+Answer: no"	0.0	0.0312	False	False	False	True	0
+2128	10	26	3	"*TASK*
+Here are the context sentences:
+7. Mary travelled to the kitchen.
+8. Mary moved to the office.
+
+Now, answer the following question:
+Is Mary in the office?"	yes	"the context sentence ""mary moved to the office"" directly states that mary is in the office, which answers the question affirmatively. the sentence ""mary travelled to the kitchen"" suggests that mary was in the kitchen at some point, but the subsequent sentence ""mary moved to the office"" implies that mary left the kitchen and is now in the office. therefore, the most up-to-date information about mary's location is that she is in the office."	fully	yes	True	The context sentence 8 states that Mary moved to the office, which implies that Mary is currently in the office.		"Reasoning: The context sentence 8 states that Mary moved to the office, which implies that Mary is currently in the office.
+
+Answer: yes"	0.0	0.0333	False	False	False	False	0
+2129	10	26	4	"*TASK*
+Here are the context sentences:
+10. Mary is in the school.
+11. Fred went back to the kitchen.
+
+Now, answer the following question:
+Is Mary in the school?"	yes	"the context sentence ""mary is in the school"" directly states that mary is in the school, which answers the question affirmatively. the sentence ""fred went back to the kitchen"" provides information about fred's location, but it does not provide any information that would change mary's location. therefore, the initial statement about mary's location remains true, and the answer to the question is yes."	fully	yes	True	The context sentence 10 explicitly states that Mary is in the school.		"Reasoning: The context sentence 10 explicitly states that Mary is in the school.
+
+Answer: yes"	0.1905	0.0476	False	False	False	False	0
+2130	10	26	5	"*TASK*
+Here are the context sentences:
+13. Fred moved to the office.
+14. Mary is either in the bedroom or the office.
+
+Now, answer the following question:
+Is Fred in the kitchen?"	no	"the context sentence ""fred moved to the office"" directly states that fred is in the office. there is no information provided about fred being in the kitchen. the sentence ""mary is either in the bedroom or the office"" provides information about mary's location, but it does not provide any information about fred's location being in the kitchen. therefore, based on the provided information, it can be concluded that fred is not in the kitchen."	fully	no	True	The context sentence 13 states that Fred moved to the office, but there is no mention of Fred being in the kitchen.		"Reasoning: The context sentence 13 states that Fred moved to the office, but there is no mention of Fred being in the kitchen.
+
+Answer: no"	0.0	0.0312	False	False	False	True	0

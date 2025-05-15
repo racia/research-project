@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠThe	Ġred	Ġsquare	Ġis	Ġbelow	Ġthe	Ġred	Ġsphere	.Ċ
+2	.	ĠThe	Ġred	Ġsphere	Ġis	Ġbelow	Ġthe	Ġtriangle	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	Ġthe	Ġtriangle	Ġabove	Ġthe	Ġred	Ġsquare	?Ċ

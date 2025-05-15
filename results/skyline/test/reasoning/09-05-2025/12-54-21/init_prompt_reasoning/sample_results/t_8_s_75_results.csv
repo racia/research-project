@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1371	8	75	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the kitchen.
+2. Sandra took the milk there.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	"from context sentence 2, ""sandra took the milk there"", we can infer that sandra is carrying the milk. the phrase ""took the milk"" implies that sandra has possession of the milk, and ""there"" refers to the kitchen, which is the location mentioned in context sentence 1. therefore, it can be logically concluded that sandra is carrying the milk."	fully	milk	True	According to sentence 2, Sandra took the milk in the kitchen, which implies that Sandra is carrying the milk.		"assistant
+
+Reasoning: According to sentence 2, Sandra took the milk in the kitchen, which implies that Sandra is carrying the milk.
+
+Answer: milk"	0.1212	0.0303	False	False	False	False	0
+1372	8	75	2	"*TASK*
+Here are the context sentences:
+4. John went back to the office.
+5. Sandra left the milk there.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"from context sentence 5, ""sandra left the milk there"", we can infer that sandra is no longer carrying the milk. the phrase ""left the milk"" implies that sandra has relinquished possession of the milk, and ""there"" likely refers to the office, which is the location mentioned in context sentence 4. since sandra left the milk, it can be logically concluded that sandra is not carrying anything, specifically the milk."	partially	nothing	True	According to sentence 5, Sandra left the milk in the office, which implies that Sandra is no longer carrying the milk.		"Reasoning: According to sentence 5, Sandra left the milk in the office, which implies that Sandra is no longer carrying the milk.
+
+Answer: nothing"	0.2188	0.0625	False	False	False	False	0
+1373	8	75	3	"*TASK*
+Here are the context sentences:
+7. Sandra moved to the office.
+8. Sandra went back to the bedroom.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	the context sentences 7 and 8 only provide information about sandra's movements, but they do not mention her carrying anything. additionally, in the previous context (sentences 4 and 5), it was established that sandra left the milk in the office. there is no information suggesting that sandra picked up the milk again or acquired any other object. therefore, it can be logically concluded that sandra is not carrying anything.	none	nothing	True	There is no new information about Sandra carrying or taking any object. The previous information was that Sandra left the milk in the office (sentence 5), so Sandra is not carrying anything.		"Reasoning: There is no new information about Sandra carrying or taking any object. The previous information was that Sandra left the milk in the office (sentence 5), so Sandra is not carrying anything.
+
+Answer: nothing"	0.0909	0.0455	False	False	False	True	0
+1374	8	75	4	"*TASK*
+Here are the context sentences:
+10. Mary travelled to the hallway.
+11. Mary went back to the kitchen.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	the context sentences 10 and 11 only provide information about mary's movements, but they do not mention sandra or what she is carrying. the previous context (sentences 4, 5, 7, and 8) established that sandra left the milk in the office and did not pick it up again. there is no new information that would suggest sandra is carrying anything. therefore, it can be logically concluded that sandra is still not carrying anything.	none	nothing	True	The context sentences 10 and 11 are about Mary's movements, but they do not provide any new information about Sandra. The previous information was that Sandra left the milk in the office (sentence 5), so Sandra is not carrying anything.		"Reasoning: The context sentences 10 and 11 are about Mary's movements, but they do not provide any new information about Sandra. The previous information was that Sandra left the milk in the office (sentence 5), so Sandra is not carrying anything.
+
+Answer: nothing"	0.125	0.0357	False	False	False	True	0
+1375	8	75	5	"*TASK*
+Here are the context sentences:
+13. John journeyed to the garden.
+14. Daniel went to the office.
+15. Daniel journeyed to the kitchen.
+16. John journeyed to the bedroom.
+17. Mary journeyed to the bathroom.
+18. Sandra went back to the hallway.
+19. Daniel took the milk there.
+20. John travelled to the bathroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	milk	"from context sentence 19, ""daniel took the milk there"", we can infer that daniel is carrying the milk. the phrase ""took the milk"" implies that daniel has possession of the milk, and ""there"" refers to the kitchen, which is the location mentioned in context sentence 15. there is no subsequent information that suggests daniel relinquished possession of the milk, so it can be logically concluded that daniel is still carrying the milk."	fully	milk	True	According to sentence 19, Daniel took the milk in the hallway, which implies that Daniel is carrying the milk.		"Reasoning: According to sentence 19, Daniel took the milk in the hallway, which implies that Daniel is carrying the milk.
+
+Answer: milk"	0.0	0.0333	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠFrom	Ġcontext	Ġsentence	Ġ	2	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	Ġyesterday	.	ĠThere	Ġis	Ġno	Ġother	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġcinema	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġbedroom	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+906	12	32	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary went to the garden.
+2. Sandra and Mary moved to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that sandra and mary went to the garden initially (sentence 1). then, they moved to the bathroom (sentence 2). since mary was with sandra in both locations, it can be inferred that mary is currently in the bathroom, as that is the last location mentioned where they moved to.	fully	bathroom	True	Since Sandra and Mary went to the garden in sentence 1, and then moved to the bathroom in sentence 2, it implies that Mary's location changed from the garden to the bathroom. Therefore, Mary's current location is the bathroom.		"Reasoning: Since Sandra and Mary went to the garden in sentence 1, and then moved to the bathroom in sentence 2, it implies that Mary's location changed from the garden to the bathroom. Therefore, Mary's current location is the bathroom.
+
+Answer: bathroom"	0.1091	0.0182	False	False	False	False	0
+907	12	32	2	"*TASK*
+Here are the context sentences:
+4. John and Sandra went to the hallway.
+5. Sandra and Daniel travelled to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from sentence 5, we know that sandra and daniel travelled to the bathroom. since daniel was with sandra when they travelled to the bathroom, it can be logically inferred that daniel is currently in the bathroom.	fully	bathroom	True	Since Sandra and Daniel travelled to the bathroom in sentence 5, it implies that Daniel's location changed to the bathroom.		"Reasoning: Since Sandra and Daniel travelled to the bathroom in sentence 5, it implies that Daniel's location changed to the bathroom.
+
+Answer: bathroom"	0.129	0.0323	False	False	False	False	0
+908	12	32	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Mary went to the garden.
+8. Mary and Daniel moved to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	from sentence 7, we know that daniel and mary went to the garden. then, according to sentence 8, mary and daniel moved to the bedroom. since daniel was with mary in both locations, it can be logically inferred that daniel is currently in the bedroom, as that is the last location mentioned where they moved to.	fully	bedroom	True	Since Mary and Daniel moved to the bedroom in sentence 8, it implies that Daniel's location changed to the bedroom.		"Reasoning: Since Mary and Daniel moved to the bedroom in sentence 8, it implies that Daniel's location changed to the bedroom.
+
+Answer: bedroom"	0.0323	0.0323	False	False	False	False	0
+909	12	32	4	"*TASK*
+Here are the context sentences:
+10. Mary and John travelled to the bathroom.
+11. Sandra and John travelled to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from sentence 10, we know that mary and john travelled to the bathroom. then, according to sentence 11, sandra and john travelled to the hallway. since john was with mary in the bathroom and then with sandra in the hallway, it can be logically inferred that john is currently in the hallway, as that is the last location mentioned where he travelled to.	fully	hallway	True	Since Mary and John travelled to the bathroom in sentence 10, and Sandra and John travelled to the hallway in sentence 11, it implies that John's location changed from the bathroom to the hallway.		"Reasoning: Since Mary and John travelled to the bathroom in sentence 10, and Sandra and John travelled to the hallway in sentence 11, it implies that John's location changed from the bathroom to the hallway.
+
+Answer: hallway"	0.0	0.0213	False	False	False	False	0
+910	12	32	5	"*TASK*
+Here are the context sentences:
+13. Sandra and John went back to the garden.
+14. Mary and Sandra journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	from sentence 13, we know that sandra and john went back to the garden. then, according to sentence 14, mary and sandra journeyed to the hallway. since sandra was in the garden and then journeyed to the hallway with mary, it can be logically inferred that sandra is currently in the hallway, as that is the last location mentioned where she journeyed to.	fully	hallway	True	Since Sandra and John went back to the garden in sentence 13, and Mary and Sandra journeyed to the hallway in sentence 14, it implies that Sandra's location changed from the garden to the hallway.		"Reasoning: Since Sandra and John went back to the garden in sentence 13, and Mary and Sandra journeyed to the hallway in sentence 14, it implies that Sandra's location changed from the garden to the hallway.
+
+Answer: hallway"	0.0	0.0204	False	False	False	False	0

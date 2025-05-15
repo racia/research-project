@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+15	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+16	.	ĠJohn	Ġgave	Ġthe	Ġapple	Ġto	ĠDaniel	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+How	Ġmany	Ġobjects	Ġis	ĠMary	Ġcarrying	?Ċ

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	Ġin	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

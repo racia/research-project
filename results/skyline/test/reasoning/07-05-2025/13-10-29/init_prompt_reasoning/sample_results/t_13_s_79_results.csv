@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1391	13	79	1	"*TASK*
+Here are the context sentences:
+1. Mary and Daniel travelled to the bathroom.
+2. Following that they went to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from the context sentences, we know that mary and daniel travelled to the bathroom (sentence 1) and then went to the garden (sentence 2). since there is no information about daniel leaving the garden, we can logically conclude that daniel is still in the garden.	fully	garden	True	According to the context sentences, Mary and Daniel travelled to the bathroom and then went to the garden. Therefore, Daniel's current location is the garden.		"assistant
+
+Reasoning: According to the context sentences, Mary and Daniel travelled to the bathroom and then went to the garden. Therefore, Daniel's current location is the garden.
+
+Answer: garden"	0.25	0.05	False	False	False	False	0
+1392	13	79	2	"*TASK*
+Here are the context sentences:
+4. Mary and John journeyed to the bathroom.
+5. Afterwards they moved to the office.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"the context sentences (4 and 5) do not mention daniel at all. they only talk about mary and john's movements. however, the answer provided is ""garden"", which suggests that daniel's location was established in a previous part of the conversation. since we don't have that previous part, we cannot provide a logical reasoning for this answer based on the given context. the answer seems to be inconsistent with the provided context."	none	garden	True	The context sentences only mention Mary and John's movements, but not Daniel's. The previous information about Daniel's location was that he was in the garden (from sentences 1 and 2). There is no new information about Daniel's movements, so his location remains the same.		"Reasoning: The context sentences only mention Mary and John's movements, but not Daniel's. The previous information about Daniel's location was that he was in the garden (from sentences 1 and 2). There is no new information about Daniel's movements, so his location remains the same.
+
+Answer: garden"	0.1587	0.0317	False	False	False	True	0
+1393	13	79	3	"*TASK*
+Here are the context sentences:
+7. John and Mary travelled to the garden.
+8. After that they went to the office.
+
+Now, answer the following question:
+Where is John?"	office	from the context sentences, we know that john and mary travelled to the garden (sentence 7) and then went to the office (sentence 8). since there is no information about john leaving the office, we can logically conclude that john is still in the office.	fully	office	True	According to the context sentences, John and Mary travelled to the garden and then went to the office. Therefore, John's current location is the office.		"Reasoning: According to the context sentences, John and Mary travelled to the garden and then went to the office. Therefore, John's current location is the office.
+
+Answer: office"	0.0811	0.0541	False	False	False	False	0
+1394	13	79	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Mary moved to the hallway.
+11. After that they went back to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that sandra and mary moved to the hallway (sentence 10) and then went back to the bathroom (sentence 11). since there is no information about mary leaving the bathroom, we can logically conclude that mary is still in the bathroom.	fully	bathroom	True	According to the context sentences, Sandra and Mary moved to the hallway and then went back to the bathroom. Therefore, Mary's current location is the bathroom.		"Reasoning: According to the context sentences, Sandra and Mary moved to the hallway and then went back to the bathroom. Therefore, Mary's current location is the bathroom.
+
+Answer: bathroom"	0.0263	0.0526	False	False	False	False	0
+1395	13	79	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra moved to the hallway.
+14. After that they went to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from the context sentences, we know that mary and sandra moved to the hallway (sentence 13) and then went to the kitchen (sentence 14). since there is no information about sandra leaving the kitchen, we can logically conclude that sandra is still in the kitchen.	fully	kitchen	True	According to the context sentences, Mary and Sandra moved to the hallway and then went to the kitchen. Therefore, Sandra's current location is the kitchen.		"Reasoning: According to the context sentences, Mary and Sandra moved to the hallway and then went to the kitchen. Therefore, Sandra's current location is the kitchen.
+
+Answer: kitchen"	0.0	0.0541	False	False	False	False	0

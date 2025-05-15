@@ -1,0 +1,23 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+14	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+15	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+16	.	ĠFred	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+17	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+18	.	ĠFred	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+19	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+20	.	ĠFred	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+21	.	ĠFred	Ġdropped	Ġthe	Ġapple	.Ċ
+22	.	ĠFred	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+23	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+24	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+25	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+26	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+27	.	ĠBill	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+28	.	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+29	.	ĠFred	Ġleft	Ġthe	Ġapple	.Ċ
+30	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+31	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+32	.	ĠFred	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġfootball	Ġto	ĠMary	?Ċ

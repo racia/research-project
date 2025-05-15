@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2471	14	45	1	"*TASK*
+Here are the context sentences:
+1. Bill went to the school yesterday.
+2. Fred went to the office yesterday.
+3. Yesterday Julie journeyed to the park.
+4. This morning Fred went to the cinema.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	office	from context sentence 2, we know that fred went to the office yesterday. there is no information about fred's location between yesterday and this morning. therefore, we can logically assume that fred was at home or some other unknown location overnight. however, the question asks about fred's location before going to the cinema this morning, which means we need to consider fred's location immediately before going to the cinema. since there is no information about fred going anywhere else after yesterday, it is reasonable	fully	office	True	Fred went to the office yesterday (sentence 2), and then went to the cinema this morning (sentence 4). Since he went to the office yesterday, it is likely that he was there before going to the cinema.		"Reasoning: Fred went to the office yesterday (sentence 2), and then went to the cinema this morning (sentence 4). Since he went to the office yesterday, it is likely that he was there before going to the cinema.
+
+Answer: office"	0.0577	0.0385	False	False	False	False	0
+2472	14	45	2	"*TASK*
+Here are the context sentences:
+6. This afternoon Julie went to the cinema.
+7. Julie travelled to the office this morning.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	office	"the question asks about fred's location before the cinema, but the provided context sentences (6 and 7) only mention julie's movements. there is no new information about fred's location. therefore, we need to refer back to the previous context sentences. from context sentence 4, we know that fred went to the cinema this morning. to find fred's location before the cinema, we need to look at the previous sentence, which is sentence 2: ""fred went to the"	none	Not mentioned	False	The question asks about Fred's location before the cinema, but the context sentences only mention Julie's activities. There is no information about Fred's location before the cinema.		"Reasoning: The question asks about Fred's location before the cinema, but the context sentences only mention Julie's activities. There is no information about Fred's location before the cinema.
+
+Answer: Not mentioned"	0.0976	0.0488	False	False	False	True	0
+2473	14	45	3	"*TASK*
+Here are the context sentences:
+9. This morning Bill journeyed to the cinema.
+10. Fred journeyed to the park this afternoon.
+
+Now, answer the following question:
+Where was Julie before the cinema?"	office	"the question asks about julie's location before the cinema, but the provided context sentences (9 and 10) do not mention julie's movements. however, we can refer back to the previous context sentences. from sentence 6, we know that julie went to the cinema this afternoon. to find julie's location before the cinema, we need to look at the previous sentence, which is sentence 7: ""julie travelled to the office this morning"". therefore, julie was at the"	none	Not mentioned	False	There is no information about Julie's location before the cinema in the given context sentences. The sentences only mention Bill's journey to the cinema and Fred's journey to the park.		"Reasoning: There is no information about Julie's location before the cinema in the given context sentences. The sentences only mention Bill's journey to the cinema and Fred's journey to the park.
+
+Answer: Not mentioned"	0.1163	0.0465	False	False	False	True	0
+2474	14	45	4	"*TASK*
+Here are the context sentences:
+12. This evening Julie went to the bedroom.
+13. Mary moved to the park yesterday.
+
+Now, answer the following question:
+Where was Julie before the cinema?"	office	"the question asks about julie's location before the cinema, and the answer is ""office"". the provided context sentences (12 and 13) do not mention julie's movements before the cinema, but we can refer back to the previous context sentences. from sentence 6, we know that julie went to the cinema this afternoon. to find julie's location before the cinema, we need to look at the previous sentence, which is sentence 7: ""julie travelled to the office this"	none	Not mentioned	False	There is no information about Julie's location before the cinema in the given context sentences. The sentences only mention Julie's journey to the bedroom and Mary's movement to the park yesterday. There is no mention of Julie's activity or location related to the cinema.		"Reasoning: There is no information about Julie's location before the cinema in the given context sentences. The sentences only mention Julie's journey to the bedroom and Mary's movement to the park yesterday. There is no mention of Julie's activity or location related to the cinema.
+
+Answer: Not mentioned"	0.0678	0.0339	False	False	False	True	0
+2475	14	45	5	"*TASK*
+Here are the context sentences:
+15. This afternoon Bill went back to the school.
+16. This evening Fred went back to the office.
+
+Now, answer the following question:
+Where was Bill before the cinema?"	school	"the question asks about bill's location before the cinema, and the answer is ""school"". the provided context sentences (15 and 16) do not mention bill's movements before the cinema, but we can refer back to the previous context sentences. from sentence 1, we know that bill went to the school yesterday. there is no information about bill's movements between yesterday and this morning. however, from sentence 9, we know that bill journeyed to the cinema this morning."	none	Not mentioned	False	The question asks about Bill's location before the cinema, but the context sentences only mention Bill's journey back to the school. There is no information about Bill's location before the cinema.		"Reasoning: The question asks about Bill's location before the cinema, but the context sentences only mention Bill's journey back to the school. There is no information about Bill's location before the cinema.
+
+Answer: Not mentioned"	0.0444	0.0444	False	False	False	True	0

@@ -1,0 +1,122 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1421	3	85	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the kitchen.
+2. Sandra went to the office.
+3. John moved to the garden.
+4. Mary went to the garden.
+5. John went to the office.
+6. Mary moved to the office.
+7. Daniel travelled to the office.
+8. Mary travelled to the bathroom.
+9. John journeyed to the hallway.
+10. Daniel moved to the bathroom.
+11. Sandra travelled to the bedroom.
+12. John journeyed to the office.
+13. John journeyed to the kitchen.
+14. John travelled to the bedroom.
+15. Daniel travelled to the kitchen.
+16. John went back to the bathroom.
+17. Mary went back to the bedroom.
+18. Mary grabbed the football.
+19. Mary travelled to the kitchen.
+20. Daniel travelled to the bedroom.
+21. Mary put down the football.
+22. Daniel journeyed to the kitchen.
+23. Mary took the football.
+24. Sandra travelled to the garden.
+25. Mary dropped the football.
+26. Daniel grabbed the football there.
+27. Mary journeyed to the office.
+28. Mary moved to the hallway.
+29. Mary travelled to the bathroom.
+30. Sandra went to the bathroom.
+31. Mary journeyed to the office.
+32. Sandra travelled to the kitchen.
+33. Daniel put down the football there.
+34. Sandra went to the office.
+35. Daniel took the football.
+36. John went back to the garden.
+37. Mary went back to the hallway.
+38. John went to the kitchen.
+39. John went back to the office.
+40. Daniel journeyed to the bathroom.
+41. John went to the bedroom.
+42. Sandra went back to the bedroom.
+43. John went back to the bathroom.
+44. Mary went back to the garden.
+45. Daniel moved to the bedroom.
+46. Daniel left the football.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	bathroom	to find the location of the football before it was in the bedroom, we need to track the movement of the football. the football was last in the bedroom when daniel left it there (sentence 46). before that, daniel had taken the football (sentence 35). prior to that, the football was put down in the kitchen by daniel (sentence 33). however, the football was not in the kitchen initially. it was dropped in the garden by mary (sentence 25	fully	office	False	The football was last mentioned in sentence 35, where Daniel took the football. Before that, it was dropped by Mary in sentence 25. Since Mary was in the office when she dropped the football, the football was in the office before the bedroom.		"Reasoning: The football was last mentioned in sentence 35, where Daniel took the football. Before that, it was dropped by Mary in sentence 25. Since Mary was in the office when she dropped the football, the football was in the office before the bedroom.
+
+Answer: office"	0.0	0.0517	False	False	False	True	0
+1422	3	85	2	"*TASK*
+Here are the context sentences:
+48. Mary moved to the bedroom.
+49. Mary travelled to the bathroom.
+
+Now, answer the following question:
+Where was the football before the bedroom?"	bathroom	the question asks about the location of the football before it was in the bedroom. since the context sentences provided are 48 and 49, which only describe mary's movements, we need to look at the previous context sentences to find the relevant information about the football.	none	Not mentioned	False	There is no mention of the football in the given context sentences. The previous context sentences (1-47) mentioned the football, but not in these two sentences.		"Reasoning: There is no mention of the football in the given context sentences. The previous context sentences (1-47) mentioned the football, but not in these two sentences.
+
+Answer: Not mentioned"	0.0244	0.0732	False	False	False	True	0
+1423	3	85	3	"*TASK*
+Here are the context sentences:
+51. Sandra picked up the football.
+52. John journeyed to the bedroom.
+53. Daniel went back to the hallway.
+54. Sandra discarded the football.
+55. Sandra grabbed the football.
+56. Sandra dropped the football.
+57. Sandra picked up the football.
+58. Sandra moved to the hallway.
+59. Daniel picked up the apple.
+60. Sandra discarded the football.
+61. Sandra got the milk there.
+62. Sandra put down the milk there.
+63. Mary journeyed to the office.
+64. John journeyed to the kitchen.
+65. Sandra moved to the bathroom.
+66. Sandra moved to the kitchen.
+67. Daniel travelled to the bathroom.
+68. Daniel went to the hallway.
+69. John travelled to the hallway.
+70. Mary journeyed to the bathroom.
+71. Daniel got the football.
+72. Sandra went back to the hallway.
+73. John took the milk there.
+74. Mary went back to the kitchen.
+75. Mary went back to the bedroom.
+76. Daniel travelled to the garden.
+77. Sandra went to the bathroom.
+78. Mary travelled to the office.
+79. Mary journeyed to the bedroom.
+80. Sandra moved to the bedroom.
+81. Daniel dropped the apple.
+82. Daniel went to the hallway.
+
+Now, answer the following question:
+Where was the apple before the garden?"	hallway	the question asks about the location of the apple before it was in the garden. from the context sentences, we know that daniel dropped the apple in the garden (sentence 81). to find the location of the apple before that, we need to track daniel's movements with the apple.	fully	hallway	True	The apple was last mentioned in sentence 81, where Daniel dropped the apple. Before that, it was picked up by Daniel in sentence 59.		"Reasoning: The apple was last mentioned in sentence 81, where Daniel dropped the apple. Before that, it was picked up by Daniel in sentence 59.
+
+Answer: hallway"	0.0541	0.0811	False	False	False	True	0
+1424	3	85	4	"*TASK*
+Here are the context sentences:
+84. John went to the kitchen.
+85. Sandra journeyed to the kitchen.
+
+Now, answer the following question:
+Where was the apple before the hallway?"	bathroom	"""reasoning: <reasoning>"""	none	Not mentioned	False	There is no mention of the apple in the given context sentences. The previous context sentences (1-83) mentioned the apple, but not in these two sentences.		"Reasoning: There is no mention of the apple in the given context sentences. The previous context sentences (1-83) mentioned the apple, but not in these two sentences.
+
+Answer: Not mentioned"	0.0	0.0732	False	False	False	True	0
+1425	3	85	5	"*TASK*
+Here are the context sentences:
+87. John travelled to the bedroom.
+88. John moved to the hallway.
+89. Mary journeyed to the kitchen.
+90. Daniel discarded the football.
+
+Now, answer the following question:
+Where was the football before the hallway?"	garden	"""reasoning: <reasoning>"""	partially	Not mentioned	False	The football was last mentioned in sentence 90, where Daniel discarded the football. Before that, it is not mentioned where the football was.		"Reasoning: The football was last mentioned in sentence 90, where Daniel discarded the football. Before that, it is not mentioned where the football was.
+
+Answer: Not mentioned"	0.0	0.0833	False	False	False	True	0

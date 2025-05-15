@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+7	.	ĠDaniel	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġhallway	.Ċ
+8	.	ĠJohn	Ġis	Ġin	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	ĠJohn	Ġin	Ġthe	Ġbathroom	?Ċ

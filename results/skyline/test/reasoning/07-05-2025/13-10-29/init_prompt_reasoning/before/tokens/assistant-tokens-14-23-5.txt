@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġschool	.	ĠSentence	Ġ	12	Ġmentions	Ġthat	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	,	Ġbut	Ġit	Ġdoesn	't	Ġprovide	Ġinformation	Ġabout	Ġhis	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġcinema	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJulie	's	Ġjourney	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	,	Ġbut	Ġnot	Ġher	Ġlocation	Ġbefore	Ġthat	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

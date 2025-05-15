@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	11	,	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġkitchen	Ġor	Ġthe	Ġbedroom	,	Ġbut	Ġwe	Ġdon	't	Ġhave	Ġspecific	Ġinformation	Ġabout	Ġher	Ġexact	Ġlocation	.	ĠTherefore	,	Ġwe	Ġcan	't	Ġbe	Ġcertain	Ġabout	Ġher	Ġlocation	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġbathroom	.	ĠSentence	Ġ	1	Ġstates	ĠMary	Ġis	Ġin	Ġthe	Ġoffice	,	Ġand	Ġsentence	Ġ	2	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgoing	Ġto	Ġthe	Ġbathroom	Ġor	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

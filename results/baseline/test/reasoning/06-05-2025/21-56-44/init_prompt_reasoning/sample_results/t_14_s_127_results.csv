@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2881	14	127	1	"*TASK*
+Here are the context sentences:
+1. This morning Bill went back to the school.
+2. Bill went to the cinema yesterday.
+3. Mary went to the bedroom yesterday.
+4. Yesterday Fred moved to the bedroom.
+
+Now, answer the following question:
+Where was Bill before the school?"	cinema	from context sentence 1, we know that bill went back to the school this morning. this implies that bill was somewhere else before going to the school. from context sentence 2, we know that bill went to the cinema yesterday. since bill went to the cinema yesterday and went back to the school this morning, it can be logically inferred that bill was at the cinema before going to the school.	fully	cinema	True	Since Bill went to the cinema yesterday (sentence 2), and he went back to the school this morning (sentence 1), it implies that Bill was at the cinema yesterday and then returned to the school this morning.		"Reasoning: Since Bill went to the cinema yesterday (sentence 2), and he went back to the school this morning (sentence 1), it implies that Bill was at the cinema yesterday and then returned to the school this morning.
+
+Answer: cinema"	0.2353	0.0392	False	False	False	False	0
+2882	14	127	2	"*TASK*
+Here are the context sentences:
+6. This afternoon Mary travelled to the bedroom.
+7. Mary went to the office this morning.
+
+Now, answer the following question:
+Where was Mary before the office?"	bedroom	from context sentence 7, we know that mary went to the office this morning. this implies that mary was somewhere else before going to the office. since context sentence 6 mentions that mary travelled to the bedroom this afternoon, it is not possible for mary to have been in the bedroom after going to the office. therefore, it can be logically inferred that mary was in the bedroom before going to the office, as there is no other information provided about mary's location before the office.	partially	office	False	Since Mary went to the office this morning (sentence 7), and she travelled to the bedroom this afternoon (sentence 6), it implies that Mary was at the office this morning and then went to the bedroom this afternoon.		"Reasoning: Since Mary went to the office this morning (sentence 7), and she travelled to the bedroom this afternoon (sentence 6), it implies that Mary was at the office this morning and then went to the bedroom this afternoon.
+
+Answer: office"	0.1538	0.0385	False	False	False	False	0
+2883	14	127	3	"*TASK*
+Here are the context sentences:
+9. Julie went to the kitchen this morning.
+10. Yesterday Julie journeyed to the park.
+
+Now, answer the following question:
+Where was Bill before the school?"	cinema	"this question is not related to the provided context sentences 9 and 10, which only talk about julie's movements. the answer ""cinema"" is actually related to bill's movement, which was mentioned in context sentence 2 of a previous part of the conversation: ""bill went to the cinema yesterday."" therefore, the correct reasoning is based on the previous context, not the current one."	none	Not mentioned (since there is no information about Bill's whereabouts before going to the school)	False	The question is not about Julie, but about Bill. The context sentences provided do not mention Bill's whereabouts before going to the school. The information about Bill is only mentioned in sentences 1 and 2, which are not related to Julie's activities.		"Reasoning: The question is not about Julie, but about Bill. The context sentences provided do not mention Bill's whereabouts before going to the school. The information about Bill is only mentioned in sentences 1 and 2, which are not related to Julie's activities.
+
+Answer: Not mentioned (since there is no information about Bill's whereabouts before going to the school)"	0.08	0.0267	True	False	False	True	0
+2884	14	127	4	"*TASK*
+Here are the context sentences:
+12. This evening Mary went back to the kitchen.
+13. This afternoon Julie went to the cinema.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	park	"there is no information provided about julie going to the kitchen, so the question ""where was julie before the kitchen?"" is not applicable. the context sentences 12 and 13 do not mention julie going to the kitchen. sentence 12 talks about mary going back to the kitchen, and sentence 13 talks about julie going to the cinema. the answer ""park"" is not supported by the provided context."	none	Not mentioned	False	Since Julie went to the cinema this afternoon (sentence 13), and there is no information about Julie's whereabouts before going to the cinema, we cannot determine where Julie was before the kitchen. The context sentences do not provide enough information to answer this question.		"Reasoning: Since Julie went to the cinema this afternoon (sentence 13), and there is no information about Julie's whereabouts before going to the cinema, we cannot determine where Julie was before the kitchen. The context sentences do not provide enough information to answer this question.
+
+Answer: Not mentioned"	0.0339	0.0339	False	False	False	True	0
+2885	14	127	5	"*TASK*
+Here are the context sentences:
+15. Bill went back to the park this afternoon.
+16. Fred went to the cinema this morning.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	bedroom	"there is no information provided about mary going to the kitchen, so the question ""where was mary before the kitchen?"" is not applicable. the context sentences 15 and 16 do not mention mary going to the kitchen. sentence 15 talks about bill going back to the park, and sentence 16 talks about fred going to the cinema. the answer ""bedroom"" is not supported by the provided context."	none	Not mentioned (since there is no information about Mary's whereabouts before going to the kitchen)	False	The question is not about Bill or Fred, but about Mary. The context sentences provided do not mention Mary's whereabouts before going to the kitchen. The information about Mary is only mentioned in sentences 1, 3, and 6, which are not related to the question.		"Reasoning: The question is not about Bill or Fred, but about Mary. The context sentences provided do not mention Mary's whereabouts before going to the kitchen. The information about Mary is only mentioned in sentences 1, 3, and 6, which are not related to the question.
+
+Answer: Not mentioned (since there is no information about Mary's whereabouts before going to the kitchen)"	0.025	0.025	True	False	False	True	0

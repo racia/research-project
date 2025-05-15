@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	12	),	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.	ĠThe	Ġonly	Ġinformation	Ġabout	Ġher	Ġlocation	Ġis	Ġthat	Ġshe	Ġwent	Ġto	Ġthe	Ġschool	,	Ġbut	Ġnot	Ġwhat	Ġshe	Ġwas	Ġdoing	Ġbefore	Ġthat	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	's	Ġlocation	Ġat	Ġall	,	Ġthey	Ġonly	Ġtalk	Ġabout	ĠSandra	Ġgoing	Ġto	Ġthe	Ġgarden	Ġand	ĠDaniel	Ġputting	Ġdown	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġat	Ġall	.	ĠThey	Ġonly	Ġtalk	Ġabout	ĠDaniel	's	Ġactions	,	Ġpicking	Ġup	Ġmilk	Ġand	Ġdisc	arding	Ġa	Ġfootball	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	's	Ġlocation	Ġor	Ġactivity	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

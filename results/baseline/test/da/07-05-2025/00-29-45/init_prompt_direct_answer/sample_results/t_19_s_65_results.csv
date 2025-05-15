@@ -1,0 +1,11 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1469	19	65	1	"*TASK*
+Here are the context sentences:
+1. The kitchen is north of the office.
+2. The garden is north of the hallway.
+3. The bedroom is east of the office.
+4. The office is east of the bathroom.
+5. The garden is south of the office.
+
+Now, answer the following question:
+How do you go from the garden to the bedroom?"	north east	from sentence 5, we know the garden is south of the office. to go from the garden to the bedroom, we need to move in the opposite direction, which is north. sentence 1 tells us the kitchen is north of the office, so we can move north from the garden to reach the office.	fully	east	False			Answer: east	0.25	0.5	False	False	False	False	0

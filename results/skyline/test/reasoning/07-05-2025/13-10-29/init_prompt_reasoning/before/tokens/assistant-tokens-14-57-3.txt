@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠFrom	Ġcontext	Ġsentence	Ġ	6	Ġ(	from	Ġprevious	Ġpart	),	Ġwe	Ġknow	Ġthat	ĠFred	Ġwent	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	.	ĠThen	,	Ġfrom	Ġcontext	Ġsentence	Ġ	10	,	Ġwe	Ġknow	Ġthat	ĠFred	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġthis	Ġevening	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠFred	Ġwas	Ġat	Ġthe	Ġbedroom	Ġbefore	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

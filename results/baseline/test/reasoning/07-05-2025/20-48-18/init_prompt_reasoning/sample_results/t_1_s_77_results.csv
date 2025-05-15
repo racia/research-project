@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+381	1	77	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the bedroom.
+2. Mary went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"according to context sentence 2, ""mary went to the bathroom"", which explicitly states mary's location as the bathroom. therefore, the answer to the question ""where is mary?"" is indeed ""bathroom""."	fully	bathroom	True	The question asks about Mary's location, and the only information provided is that Mary went to the bathroom. Since there is no mention of John's location affecting Mary's, we can focus on Mary's specific action. The sentence only mentions Mary's action, not John's, so we can't infer Mary's location from John's.		"Reasoning: The question asks about Mary's location, and the only information provided is that Mary went to the bathroom. Since there is no mention of John's location affecting Mary's, we can focus on Mary's specific action. The sentence only mentions Mary's action, not John's, so we can't infer Mary's location from John's.
+Answer: bathroom"	0.0811	0.0135	False	False	False	True	0
+382	1	77	2	"*TASK*
+Here are the context sentences:
+4. Mary journeyed to the bedroom.
+5. Sandra travelled to the hallway.
+
+Now, answer the following question:
+Where is John?"	bedroom	"there is no information about john's location in the provided context sentences (4 and 5). however, we can look at the previous context sentences (1 and 2) which were ""john travelled to the bedroom."" and ""mary went to the bathroom."". from sentence 1, we know that john travelled to the bedroom, and there is no information that suggests he has moved from there. therefore, the answer to the question ""where is john?"" is indeed ""bedroom""."	none	not mentioned	False	The question asks about John's location, but there is no mention of John in the provided context sentences. The sentences only mention Mary and Sandra, and their actions. Since John is not mentioned, we cannot determine his location.		"Reasoning: The question asks about John's location, but there is no mention of John in the provided context sentences. The sentences only mention Mary and Sandra, and their actions. Since John is not mentioned, we cannot determine his location.
+Answer: not mentioned"	0.0943	0.0189	False	False	False	True	0
+383	1	77	3	"*TASK*
+Here are the context sentences:
+7. Daniel went back to the hallway.
+8. Sandra journeyed to the office.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"there is no information about mary's location in the provided context sentences (7 and 8). however, we can look at the previous context sentences (4) which was ""mary journeyed to the bedroom."". there is no information that suggests mary has moved from the bedroom, so we can infer that mary is still in the bedroom. therefore, the answer to the question ""where is mary?"" is indeed ""bedroom""."	none	not mentioned	False	The question asks about Mary's location, but there is no mention of Mary in the provided context sentences. The sentences only mention Daniel and Sandra, and their actions. Since Mary is not mentioned, we cannot determine her location.		"Reasoning: The question asks about Mary's location, but there is no mention of Mary in the provided context sentences. The sentences only mention Daniel and Sandra, and their actions. Since Mary is not mentioned, we cannot determine her location.
+Answer: not mentioned"	0.0755	0.0189	False	False	False	True	0
+384	1	77	4	"*TASK*
+Here are the context sentences:
+10. John moved to the garden.
+11. Mary travelled to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	"there is no information about sandra's location in the provided context sentences (10 and 11). however, we can look at the previous context sentences (5) which was ""sandra travelled to the hallway."". there is no information that suggests sandra has moved from the hallway, but we know that mary travelled to the office (11). we also know that daniel went back to the hallway (7). since sandra was in the hallway and daniel went back to the hallway, it is logical"	none	office	True	The question asks about Sandra's location, and the only information provided is that Sandra journeyed to the office in a previous context (sentence 8). Since there is no new information about Sandra's location, we can infer that Sandra is still in the office.		"Reasoning: The question asks about Sandra's location, and the only information provided is that Sandra journeyed to the office in a previous context (sentence 8). Since there is no new information about Sandra's location, we can infer that Sandra is still in the office.
+Answer: office"	0.0169	0.0169	False	False	False	True	0
+385	1	77	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the kitchen.
+14. Daniel went back to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	office	"there is no new information about mary's location in the provided context sentences (13 and 14). however, we can look at the previous context sentences (11) which was ""mary travelled to the office."". there is no information that suggests mary has moved from the office, so we can infer that mary is still in the office. therefore, the answer to the question ""where is mary?"" is indeed ""office""."	none	not mentioned	False	The question asks about Mary's location, but there is no mention of Mary in the provided context sentences. The sentences only mention John and Daniel, and their actions. Since Mary is not mentioned, we cannot determine her location.		"Reasoning: The question asks about Mary's location, but there is no mention of Mary in the provided context sentences. The sentences only mention John and Daniel, and their actions. Since Mary is not mentioned, we cannot determine her location.
+Answer: not mentioned"	0.0189	0.0189	False	False	False	True	0

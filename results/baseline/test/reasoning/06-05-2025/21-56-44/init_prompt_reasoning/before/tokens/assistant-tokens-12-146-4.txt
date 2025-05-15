@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġwith	ĠSandra	Ġin	Ġboth	Ġsentences	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġwith	ĠSandra	.	ĠSince	Ġthey	Ġwent	Ġto	Ġthe	Ġgarden	Ġand	Ġthen	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

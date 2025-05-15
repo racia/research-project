@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1466	8	94	1	"*TASK*
+Here are the context sentences:
+1. Sandra went back to the kitchen.
+2. Mary got the milk there.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	since mary got the milk in the kitchen (sentence 2), it can be logically inferred that mary is carrying the milk. the fact that sandra went back to the kitchen (sentence 1) is not directly related to what mary is carrying, but it does provide context that both mary and sandra are in the kitchen, which is where mary obtained the milk.	fully	milk	True	According to sentence 2, Mary got the milk in the kitchen. This implies that Mary is carrying the milk.		"assistant
+
+Reasoning: According to sentence 2, Mary got the milk in the kitchen. This implies that Mary is carrying the milk.
+
+Answer: milk"	0.0909	0.0303	False	False	False	False	0
+1467	8	94	2	"*TASK*
+Here are the context sentences:
+4. Sandra moved to the hallway.
+5. Daniel travelled to the hallway.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	the context sentences 4 and 5 do not provide any new information about mary or what she is carrying. however, we can refer back to the previous context sentences 1 and 2, which stated that mary got the milk in the kitchen. there is no information that suggests mary has put down the milk or given it to someone else, so it can be logically inferred that mary is still carrying the milk.	none	milk	True	There is no new information about Mary in sentences 4 and 5. The last information about Mary was in sentence 2, where she got the milk in the kitchen. Therefore, Mary is still carrying the milk.		"Reasoning: There is no new information about Mary in sentences 4 and 5. The last information about Mary was in sentence 2, where she got the milk in the kitchen. Therefore, Mary is still carrying the milk.
+
+Answer: milk"	0.0196	0.0196	False	False	False	True	0
+1468	8	94	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the kitchen.
+8. Mary took the football there.
+
+Now, answer the following question:
+What is Mary carrying?"	milk football	the context sentence 8 states that mary took the football in the kitchen. this new information adds to our previous knowledge that mary got the milk in the kitchen (sentence 2). there is no information that suggests mary has put down the milk or given it to someone else, so it can be logically inferred that mary is still carrying the milk. additionally, mary has now taken the football, so it can be inferred that mary is carrying both the milk and the football.	partially	milk, football	True	According to sentence 8, Mary took the football in the kitchen. This implies that Mary is now carrying the football, in addition to the milk she was already carrying.		"Reasoning: According to sentence 8, Mary took the football in the kitchen. This implies that Mary is now carrying the football, in addition to the milk she was already carrying.
+
+Answer: milk, football"	0.0	0.0465	False	False	False	False	0
+1469	8	94	4	"*TASK*
+Here are the context sentences:
+10. Sandra journeyed to the bedroom.
+11. Sandra moved to the garden.
+
+Now, answer the following question:
+What is Mary carrying?"	milk football	the context sentences 10 and 11 only provide information about sandra's movements, but they do not provide any new information about mary or what she is carrying. we can refer back to our previous knowledge that mary got the milk in the kitchen (sentence 2) and took the football in the kitchen (sentence 8). there is no information that suggests mary has put down the milk or the football or given them to someone else, so it can be logically inferred that mary is still	none	milk, football	True	There is no new information about Mary in sentences 10 and 11. The last information about Mary was in sentence 8, where she took the football in the kitchen. Therefore, Mary is still carrying the milk and the football.		"Reasoning: There is no new information about Mary in sentences 10 and 11. The last information about Mary was in sentence 8, where she took the football in the kitchen. Therefore, Mary is still carrying the milk and the football.
+
+Answer: milk, football"	0.0	0.0357	False	False	False	True	0
+1470	8	94	5	"*TASK*
+Here are the context sentences:
+13. Mary dropped the milk.
+14. Mary moved to the bedroom.
+
+Now, answer the following question:
+What is Mary carrying?"	football	the context sentence 13 states that mary dropped the milk, which means she is no longer carrying it. however, we previously knew that mary took the football in the kitchen (sentence 8) and there is no information that suggests she has put down the football or given it to someone else. therefore, it can be logically inferred that mary is still carrying the football. the fact that mary moved to the bedroom (sentence 14) does not provide any new information about what she is	partially	football	True	According to sentence 13, Mary dropped the milk, which means she is no longer carrying it. However, she still has the football from sentence 8. Sentence 14 only mentions her moving to the bedroom, but it doesn't affect what she's carrying.		"Reasoning: According to sentence 13, Mary dropped the milk, which means she is no longer carrying it. However, she still has the football from sentence 8. Sentence 14 only mentions her moving to the bedroom, but it doesn't affect what she's carrying.
+
+Answer: football"	0.0167	0.05	False	False	False	True	0

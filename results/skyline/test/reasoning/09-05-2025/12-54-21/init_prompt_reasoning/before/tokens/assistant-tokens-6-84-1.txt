@@ -1,0 +1,1 @@
+<|start_header_id|>	<|end_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġmoving	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġbeing	Ġin	Ġthe	Ġgarden	.	ĠĊĊ	Answer	:	Ġno	<|eot_id|>

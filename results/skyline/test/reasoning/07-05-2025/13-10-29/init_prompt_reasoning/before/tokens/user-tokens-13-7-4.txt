@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+10	.	ĠSandra	Ġand	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+11	.	ĠFollowing	Ġthat	Ġthey	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	ĠSandra	?Ċ

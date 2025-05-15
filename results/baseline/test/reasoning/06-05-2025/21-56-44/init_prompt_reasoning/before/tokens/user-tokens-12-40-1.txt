@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġand	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+2	.	ĠJohn	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	ĠJohn	?Ċ

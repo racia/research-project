@@ -1,0 +1,68 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1746	5	30	1	"*TASK*
+Here are the context sentences:
+1. Bill went to the garden.
+2. Mary journeyed to the hallway.
+3. Jeff picked up the apple there.
+4. Mary went back to the bedroom.
+5. Jeff handed the apple to Fred.
+6. Jeff journeyed to the bedroom.
+
+Now, answer the following question:
+Who received the apple?"	fred	"according to sentence 5, ""jeff handed the apple to fred."" this sentence explicitly states that jeff handed the apple to fred, which means fred received the apple."	fully	Fred	True	The apple was picked up by Jeff, and then handed to Fred, so Fred is the one who received the apple.		"Reasoning: The apple was picked up by Jeff, and then handed to Fred, so Fred is the one who received the apple.
+
+Answer: Fred"	0.0323	0.0323	False	False	False	False	0
+1747	5	30	2	"*TASK*
+Here are the context sentences:
+8. Jeff journeyed to the hallway.
+9. Mary went to the garden.
+
+Now, answer the following question:
+Who received the apple?"	fred	"the context lines provided (8 and 9) do not mention the apple or fred. however, the answer is given as ""fred"". this implies that the question is referring to a previous part of the conversation history. upon reviewing the previous conversation, i found that sentence 5 states ""jeff handed the apple to fred."" therefore, the correct answer is indeed ""fred"", who received the apple."	none	Not mentioned	False	There is no mention of the apple being given or received in these sentences, and the previous sentences did not mention the apple being given to anyone. Therefore, we cannot determine who received the apple.		"Reasoning: There is no mention of the apple being given or received in these sentences, and the previous sentences did not mention the apple being given to anyone. Therefore, we cannot determine who received the apple.
+
+Answer: Not mentioned"	0.0213	0.0213	False	False	False	True	0
+1748	5	30	3	"*TASK*
+Here are the context sentences:
+11. Fred travelled to the office.
+12. Jeff went back to the bedroom.
+13. Jeff journeyed to the garden.
+14. Fred put down the apple there.
+15. Fred moved to the garden.
+16. Jeff moved to the bedroom.
+17. Fred travelled to the bedroom.
+18. Fred journeyed to the kitchen.
+19. Bill travelled to the bathroom.
+20. Bill grabbed the football there.
+21. Bill discarded the football.
+22. Bill grabbed the football there.
+23. Fred went back to the bedroom.
+24. Mary moved to the bathroom.
+25. Bill handed the football to Mary.
+26. Mary put down the football there.
+
+Now, answer the following question:
+Who did Bill give the football to?"	mary	"according to sentence 25, ""bill handed the football to mary."" this sentence explicitly states that bill gave the football to mary, which directly answers the question."	fully	Mary	True	According to sentence 25, Bill handed the football to Mary.		"Reasoning: According to sentence 25, Bill handed the football to Mary.
+
+Answer: Mary"	0.05	0.05	False	False	False	False	0
+1749	5	30	4	"*TASK*
+Here are the context sentences:
+28. Bill went back to the bedroom.
+29. Mary took the football there.
+
+Now, answer the following question:
+Who gave the football to Mary?"	bill	"according to sentence 25, ""bill handed the football to mary."" this sentence explicitly states that bill gave the football to mary, which directly answers the question."	none	Bill	True	According to sentence 25, Bill handed the football to Mary. There is no new information in sentences 28 and 29 that contradicts this.		"Reasoning: According to sentence 25, Bill handed the football to Mary. There is no new information in sentences 28 and 29 that contradicts this.
+
+Answer: Bill"	0.0	0.027	False	False	False	True	0
+1750	5	30	5	"*TASK*
+Here are the context sentences:
+31. Mary went to the bedroom.
+32. Mary left the football.
+33. Fred took the football there.
+34. Jeff moved to the garden.
+35. Fred gave the football to Mary.
+36. Mary handed the football to Fred.
+
+Now, answer the following question:
+Who received the football?"	fred	"according to sentence 36, ""mary handed the football to fred."" this sentence explicitly states that mary gave the football to fred, which means fred received the football."	fully	Fred	True	The football was taken by Mary, then left by Mary, then taken by Fred, then given to Mary, and finally handed back to Fred. Therefore, Fred received the football.		"Reasoning: The football was taken by Mary, then left by Mary, then taken by Fred, then given to Mary, and finally handed back to Fred. Therefore, Fred received the football.
+
+Answer: Fred"	0.0	0.0233	False	False	False	False	0

@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1921	9	85	1	"*TASK*
+Here are the context sentences:
+1. Mary is in the bedroom.
+2. Sandra moved to the office.
+
+Now, answer the following question:
+Is Mary in the bathroom?"	no	the context sentences do not mention mary being in the bathroom. in fact, sentence 1 explicitly states that mary is in the bedroom, which is a different room from the bathroom. there is no information provided that suggests mary moved from the bedroom to the bathroom. therefore, based on the given information, it can be logically concluded that mary is not in the bathroom.	fully	no	True	The context sentences only mention Mary being in the bedroom and Sandra moving to the office. There is no information about Mary being in the bathroom.		"Reasoning: The context sentences only mention Mary being in the bedroom and Sandra moving to the office. There is no information about Mary being in the bathroom.
+
+Answer: no"	0.0286	0.0286	False	False	False	True	0
+1922	9	85	2	"*TASK*
+Here are the context sentences:
+4. John journeyed to the garden.
+5. Daniel is not in the hallway.
+
+Now, answer the following question:
+Is Mary in the garden?"	no	there is no mention of mary in the context sentences. sentence 4 mentions john journeying to the garden, but it does not provide any information about mary. sentence 5 mentions daniel's location, but again, there is no mention of mary. since there is no information provided about mary's location, it cannot be concluded that mary is in the garden. therefore, the answer is no.	none	not mentioned	False	There is no information about Mary in the context sentences. The sentences only mention John journeying to the garden and Daniel not being in the hallway.		"Reasoning: There is no information about Mary in the context sentences. The sentences only mention John journeying to the garden and Daniel not being in the hallway.
+
+Answer: not mentioned"	0.0811	0.027	False	False	False	True	0
+1923	9	85	3	"*TASK*
+Here are the context sentences:
+7. John went to the bathroom.
+8. Daniel journeyed to the office.
+
+Now, answer the following question:
+Is John in the hallway?"	no	according to sentence 7, john went to the bathroom. this implies that john is currently in the bathroom. there is no information provided that suggests john is in the hallway. in fact, the context sentences do not mention the hallway at all, except in the question. therefore, based on the given information, it can be logically concluded that john is not in the hallway.	fully	not mentioned	False	The context sentences only mention John going to the bathroom and Daniel journeying to the office. There is no information about John being in the hallway.		"Reasoning: The context sentences only mention John going to the bathroom and Daniel journeying to the office. There is no information about John being in the hallway.
+
+Answer: not mentioned"	0.0	0.027	False	False	False	True	0
+1924	9	85	4	"*TASK*
+Here are the context sentences:
+10. Daniel is no longer in the office.
+11. Daniel travelled to the office.
+
+Now, answer the following question:
+Is Daniel in the office?"	yes	sentence 11 states that daniel travelled to the office, which implies that daniel has arrived at the office. sentence 10 states that daniel is no longer in the office, but this sentence is contradictory to sentence 11. since sentence 11 is the more recent action, it can be inferred that daniel is currently in the office. therefore, the answer is yes, daniel is in the office.	fully	yes	True	"The context sentences seem to be contradictory, but sentence 11 ""Daniel travelled to the office"" implies that Daniel is now in the office, overriding the previous statement ""Daniel is no longer in the office""."		"Reasoning: The context sentences seem to be contradictory, but sentence 11 ""Daniel travelled to the office"" implies that Daniel is now in the office, overriding the previous statement ""Daniel is no longer in the office"".
+
+Answer: yes"	0.0	0.0208	False	False	False	False	0
+1925	9	85	5	"*TASK*
+Here are the context sentences:
+13. John went to the garden.
+14. Sandra is in the kitchen.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	no	there is no mention of daniel in the context sentences. sentence 13 mentions john going to the garden, and sentence 14 mentions sandra being in the kitchen. neither of these sentences provides any information about daniel's location. since there is no information provided about daniel's location, it cannot be concluded that daniel is in the bedroom. therefore, the answer is no, daniel is not in the bedroom.	none	not mentioned	False	There is no information about Daniel in the context sentences. The sentences only mention John going to the garden and Sandra being in the kitchen.		"Reasoning: There is no information about Daniel in the context sentences. The sentences only mention John going to the garden and Sandra being in the kitchen.
+
+Answer: not mentioned"	0.0857	0.0286	False	False	False	True	0

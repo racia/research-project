@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġbathroom	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	11	Ġmentions	ĠMary	Ġgoing	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġnot	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

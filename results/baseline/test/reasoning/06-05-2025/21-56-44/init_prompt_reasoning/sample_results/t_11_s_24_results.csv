@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+116	11	24	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the kitchen.
+2. Following that she went to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	the context sentences describe mary's movements in a sequence. first, she went back to the kitchen, and then she went to the office. since the office is the last location mentioned in the sequence, it can be inferred that mary is currently in the office.	fully	office	True	Mary went back to the kitchen initially, and then she went to the office. This implies that she is currently in the office.		"Reasoning: Mary went back to the kitchen initially, and then she went to the office. This implies that she is currently in the office.
+
+Answer: office"	0.2121	0.0606	False	False	False	False	0
+117	11	24	2	"*TASK*
+Here are the context sentences:
+4. Daniel went back to the hallway.
+5. Then he went back to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	the context sentences describe daniel's movements in a sequence. first, he went back to the hallway, and then he went back to the office. since the office is the last location mentioned in the sequence, it can be inferred that daniel is currently in the office.	fully	office	True	Daniel went back to the hallway initially, and then he went back to the office. This implies that he is currently in the office.		"Reasoning: Daniel went back to the hallway initially, and then he went back to the office. This implies that he is currently in the office.
+
+Answer: office"	0.1765	0.0588	False	False	False	False	0
+118	11	24	3	"*TASK*
+Here are the context sentences:
+7. Sandra went to the bedroom.
+8. Then she went to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	the context sentences describe sandra's movements in a sequence. first, she went to the bedroom, and then she went to the bathroom. since the bathroom is the last location mentioned in the sequence, it can be inferred that sandra is currently in the bathroom.	fully	bathroom	True	Sandra went to the bedroom initially, and then she went to the bathroom. This implies that she is currently in the bathroom.		"Reasoning: Sandra went to the bedroom initially, and then she went to the bathroom. This implies that she is currently in the bathroom.
+
+Answer: bathroom"	0.0312	0.0625	False	False	False	False	0
+119	11	24	4	"*TASK*
+Here are the context sentences:
+10. John went to the hallway.
+11. Then he went back to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	office	"the context sentences describe john's movements, but the question asks about daniel's location. there is no information provided about daniel's movements or location in the given context sentences. the answer ""office"" cannot be logically inferred from the provided context sentences, as they only mention john's movements and do not provide any information about daniel."	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only mention John's movements.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only mention John's movements.
+
+Answer: not mentioned"	0.0714	0.0714	False	False	False	True	0
+120	11	24	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the kitchen.
+14. Afterwards she moved to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"the context sentences describe mary's movements, but the question asks about sandra's location. there is no information provided about sandra's movements or location in the given context sentences. the answer ""bathroom"" cannot be logically inferred from the provided context sentences, as they only mention mary's movements and do not provide any information about sandra."	none	not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only mention Mary's movements.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention Mary's movements.
+
+Answer: not mentioned"	0.0357	0.0714	False	False	False	True	0

@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+931	2	87	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the office.
+2. John took the football there.
+3. John journeyed to the bedroom.
+4. Sandra went to the bedroom.
+
+Now, answer the following question:
+Where is the football?"	bedroom	from context line 2, we know that john took the football to the office. then, from context line 3, we know that john journeyed to the bedroom. since john had the football with him, it is logical to assume that he took the football with him to the bedroom. therefore, the football is in the bedroom.	fully	office	False	The football was taken to the office, and John journeyed to the bedroom, but there is no information about the football being moved from the office to the bedroom. Therefore, the football is still in the office.		"Reasoning: The football was taken to the office, and John journeyed to the bedroom, but there is no information about the football being moved from the office to the bedroom. Therefore, the football is still in the office.
+
+Answer: office"	0.18	0.04	False	False	False	True	0
+932	2	87	2	"*TASK*
+Here are the context sentences:
+6. Daniel went to the bathroom.
+7. Sandra went back to the bathroom.
+
+Now, answer the following question:
+Where is the football?"	bedroom	the context lines 6 and 7 do not provide any information about the football. however, we can refer to the previous context lines (1-4) to find the answer. from the previous context, we know that the football was taken to the bedroom by john (context line 3). there is no information that suggests the football was moved from the bedroom. therefore, the football is still in the bedroom.	none	not mentioned	False	There is no mention of a football in the given context sentences. The sentences only mention Daniel and Sandra going to the bathroom, but do not mention a football.		"Reasoning: There is no mention of a football in the given context sentences. The sentences only mention Daniel and Sandra going to the bathroom, but do not mention a football.
+
+Answer: not mentioned"	0.15	0.05	False	False	False	True	0
+933	2	87	3	"*TASK*
+Here are the context sentences:
+9. Sandra picked up the apple there.
+10. Sandra went to the office.
+
+Now, answer the following question:
+Where is the apple?"	office	from context line 9, we know that sandra picked up the apple in the bedroom (since the previous context established that sandra was in the bedroom). then, from context line 10, we know that sandra went to the office. since sandra had the apple with her (she picked it up), it is logical to assume that she took the apple with her to the office. therefore, the apple is in the office.	fully	office	True	"The apple was picked up ""there"", but the context sentence does not specify where ""there"" is. However, Sandra went to the office after picking up the apple, so it is likely that the apple is with Sandra in the office."		"Reasoning: The apple was picked up ""there"", but the context sentence does not specify where ""there"" is. However, Sandra went to the office after picking up the apple, so it is likely that the apple is with Sandra in the office.
+
+Answer: office"	0.0909	0.0364	False	False	False	False	0
+934	2	87	4	"*TASK*
+Here are the context sentences:
+12. Daniel went back to the garden.
+13. Sandra moved to the hallway.
+
+Now, answer the following question:
+Where is the apple?"	hallway	from the previous context, we know that the apple was with sandra in the office (context lines 9-10). there is no information that suggests the apple was moved or taken by anyone else. now, from context line 13, we know that sandra moved to the hallway. since sandra had the apple with her, it is logical to assume that she took the apple with her to the hallway. therefore, the apple is in the hallway.	partially	not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only mention Daniel going back to the garden and Sandra moving to the hallway, but do not mention the apple.		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only mention Daniel going back to the garden and Sandra moving to the hallway, but do not mention the apple.
+
+Answer: not mentioned"	0.0222	0.0444	False	False	False	True	0
+935	2	87	5	"*TASK*
+Here are the context sentences:
+15. John went to the bathroom.
+16. Daniel moved to the hallway.
+17. Sandra travelled to the bedroom.
+18. Sandra put down the apple there.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	from the previous context, we know that the apple was with sandra in the hallway (context lines 12-13). then, from context line 17, we know that sandra travelled to the bedroom. finally, from context line 18, we know that sandra put down the apple in the bedroom. therefore, the apple is in the bedroom.	fully	bedroom	True	"The apple was put down ""there"", and ""there"" is specified as the bedroom, where Sandra travelled to."		"Reasoning: The apple was put down ""there"", and ""there"" is specified as the bedroom, where Sandra travelled to.
+
+Answer: bedroom"	0.0	0.0667	False	False	False	False	0

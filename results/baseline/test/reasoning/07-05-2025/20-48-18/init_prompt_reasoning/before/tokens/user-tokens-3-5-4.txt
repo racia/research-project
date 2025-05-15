@@ -1,0 +1,21 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+46	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+47	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+48	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+49	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+50	.	ĠJohn	Ġtook	Ġthe	Ġapple	.Ċ
+51	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+52	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+53	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
+54	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+55	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+56	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+57	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+58	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+59	.	ĠSandra	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+60	.	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+61	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+62	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+63	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġkitchen	?Ċ

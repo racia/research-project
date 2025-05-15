@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+13	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+14	.	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠMary	Ġgive	Ġto	ĠJeff	?Ċ

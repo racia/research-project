@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1156	8	32	1	"*TASK*
+Here are the context sentences:
+1. John got the milk there.
+2. John left the milk.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"from the context sentences, we know that john got the milk there (sentence 1), which implies that john had the milk in his possession at some point. however, sentence 2 states that john left the milk, which means he is no longer holding or carrying the milk. therefore, the answer to the question ""what is john carrying?"" is ""nothing"", as john is not carrying the milk anymore."	fully	nothing	True	John got the milk initially, and then he left it, which implies that he was carrying the milk at some point. Since he left it, it's likely that he's not carrying it anymore.		"Reasoning: John got the milk initially, and then he left it, which implies that he was carrying the milk at some point. Since he left it, it's likely that he's not carrying it anymore.
+
+Answer: nothing"	0.1064	0.0426	False	False	False	False	0
+1157	8	32	2	"*TASK*
+Here are the context sentences:
+4. Daniel went to the garden.
+5. John got the milk there.
+
+Now, answer the following question:
+What is John carrying?"	milk	"in sentence 5, it is stated that ""john got the milk there"", which implies that john obtained the milk at some location (not specified as ""there"" is not defined). since john got the milk, it can be logically inferred that john is carrying the milk. therefore, the answer to the question ""what is john carrying?"" is indeed ""milk"". the sentence about daniel going to the garden (sentence 4) does not provide any information about john or the milk"	partially	milk	True	"The context sentence ""John got the milk there"" implies that John got the milk at the location mentioned in sentence 4, which is the garden. Since John got the milk, it's likely that he was carrying it."		"Reasoning: The context sentence ""John got the milk there"" implies that John got the milk at the location mentioned in sentence 4, which is the garden. Since John got the milk, it's likely that he was carrying it.
+
+Answer: milk"	0.1731	0.0577	False	False	False	True	0
+1158	8	32	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the bedroom.
+8. John discarded the milk.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"in sentence 8, it is stated that ""john discarded the milk"", which implies that john got rid of the milk and is no longer holding or carrying it. therefore, the answer to the question ""what is john carrying?"" is indeed ""nothing"", as john is not carrying the milk anymore. the sentence about daniel travelling to the bedroom (sentence 7) does not provide any information about john or what he is carrying."	partially	nothing	True	Sentence 8 states that John discarded the milk, which implies that John had the milk at some point. Since he discarded it, it's likely that he's not carrying it anymore.		"Reasoning: Sentence 8 states that John discarded the milk, which implies that John had the milk at some point. Since he discarded it, it's likely that he's not carrying it anymore.
+
+Answer: nothing"	0.1364	0.0909	False	False	False	False	0
+1159	8	32	4	"*TASK*
+Here are the context sentences:
+10. Mary took the milk there.
+11. Daniel went to the hallway.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	"in sentence 10, it is stated that ""mary took the milk there"", which implies that mary obtained the milk at some location (not specified as ""there"" is not defined). since mary took the milk, it can be logically inferred that mary is carrying the milk. therefore, the answer to the question ""what is mary carrying?"" is indeed ""milk"". the sentence about daniel going to the hallway (sentence 11) does not provide any information about mary or what she"	fully	not mentioned	False	"There is no mention of Mary carrying anything in the given context sentences. The sentence ""Mary took the milk there"" implies that Mary took the milk to a location, but it doesn't specify what she's carrying."		"Reasoning: There is no mention of Mary carrying anything in the given context sentences. The sentence ""Mary took the milk there"" implies that Mary took the milk to a location, but it doesn't specify what she's carrying.
+
+Answer: not mentioned"	0.0	0.0196	False	False	False	True	0
+1160	8	32	5	"*TASK*
+Here are the context sentences:
+13. Daniel travelled to the office.
+14. Sandra moved to the office.
+
+Now, answer the following question:
+What is Mary carrying?"	milk	"the context sentences 13 and 14 do not provide any new information about mary or what she is carrying. however, we can look back at the previous context sentences and find that in sentence 10, it was stated that ""mary took the milk there"", which implies that mary obtained the milk at some location and is carrying it. therefore, the answer to the question ""what is mary carrying?"" is still ""milk"", as there is no new information that suggests mary has dropped"	none	not mentioned	False	There is no mention of Mary in the given context sentences. The sentences only mention Daniel and Sandra, but not Mary.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Daniel and Sandra, but not Mary.
+
+Answer: not mentioned"	0.0	0.0312	False	False	False	True	0

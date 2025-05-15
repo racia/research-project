@@ -1,0 +1,17 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+2	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+3	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+4	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+5	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+6	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+7	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+8	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+9	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+10	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+11	.	ĠMary	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
+12	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+13	.	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
+14	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠMary	Ġgive	Ġto	ĠFred	?Ċ

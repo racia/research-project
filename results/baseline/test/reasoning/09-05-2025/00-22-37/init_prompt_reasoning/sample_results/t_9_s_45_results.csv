@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1721	9	45	1	"*TASK*
+Here are the context sentences:
+1. Mary is not in the kitchen.
+2. Daniel is no longer in the hallway.
+
+Now, answer the following question:
+Is Daniel in the hallway?"	no	"the answer is ""no"" because the context sentence ""daniel is no longer in the hallway"" explicitly states that daniel is not in the hallway. this sentence implies that daniel was in the hallway at some point, but he is not there anymore."	fully	no	True	Since Daniel is no longer in the hallway, it implies that he was in the hallway at some point, but not anymore. This information is sufficient to conclude that Daniel is not currently in the hallway.		"Reasoning: Since Daniel is no longer in the hallway, it implies that he was in the hallway at some point, but not anymore. This information is sufficient to conclude that Daniel is not currently in the hallway.
+
+Answer: no"	0.0426	0.0213	False	False	False	True	0
+1722	9	45	2	"*TASK*
+Here are the context sentences:
+4. John is no longer in the hallway.
+5. Daniel is no longer in the kitchen.
+
+Now, answer the following question:
+Is Mary in the kitchen?"	no	"there is no information provided about mary's location in the context sentences. the sentences only mention john and daniel, and their locations (or lack thereof) in the hallway and kitchen, respectively. however, we can infer that the answer is ""no"" because in a previous part of the conversation (sentence 1), it was stated that ""mary is not in the kitchen"". this information is still valid, and there is no new information that would suggest mary's location has changed."	none	not mentioned	False	There is no information provided about Mary's location in the context sentences. Sentence 4 is about John, and sentence 5 is about Daniel. Since Mary is not mentioned, we cannot conclude anything about her location.		"Reasoning: There is no information provided about Mary's location in the context sentences. Sentence 4 is about John, and sentence 5 is about Daniel. Since Mary is not mentioned, we cannot conclude anything about her location.
+
+Answer: not mentioned"	0.0784	0.0196	False	False	False	True	0
+1723	9	45	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the garden.
+8. Mary went to the bathroom.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	no	"there is no information provided about daniel's location in the context sentences. the sentences only mention sandra and mary, and their respective journeys to the garden and bathroom. however, we can infer that the answer is ""no"" because in a previous part of the conversation (sentence 5), it was stated that ""daniel is no longer in the kitchen"". this information is still valid, and there is no new information that would suggest daniel's location has changed."	none	not mentioned	False	There is no information provided about Daniel's location in the context sentences. Sentence 7 is about Sandra, and sentence 8 is about Mary. Since Daniel is not mentioned, we cannot conclude anything about his location.		"Reasoning: There is no information provided about Daniel's location in the context sentences. Sentence 7 is about Sandra, and sentence 8 is about Mary. Since Daniel is not mentioned, we cannot conclude anything about his location.
+
+Answer: not mentioned"	0.0	0.0196	False	False	False	True	0
+1724	9	45	4	"*TASK*
+Here are the context sentences:
+10. Daniel moved to the hallway.
+11. Daniel went back to the garden.
+
+Now, answer the following question:
+Is Daniel in the kitchen?"	no	"the answer is ""no"" because there is no information that suggests daniel is in the kitchen. in fact, the context sentences indicate that daniel has moved to the hallway (sentence 10) and then went back to the garden (sentence 11), but there is no mention of him going to the kitchen. additionally, in a previous part of the conversation (sentence 5), it was stated that ""daniel is no longer in the kitchen"", which further supports the conclusion that daniel is"	fully	no	True	Since Daniel moved to the hallway and then went back to the garden, it implies that he was in the hallway at some point, but not currently. There is no information provided about Daniel's location in the kitchen.		"Reasoning: Since Daniel moved to the hallway and then went back to the garden, it implies that he was in the hallway at some point, but not currently. There is no information provided about Daniel's location in the kitchen.
+
+Answer: no"	0.02	0.02	False	False	False	True	0
+1725	9	45	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the bathroom.
+14. John is not in the garden.
+
+Now, answer the following question:
+Is John in the garden?"	no	"the answer is ""no"" because the context sentence ""john is not in the garden"" (sentence 14) explicitly states that john is not in the garden. this sentence directly answers the question, leaving no room for interpretation or inference."	fully	no	True	According to sentence 14, John is not in the garden. This information is sufficient to conclude that John is not currently in the garden.		"Reasoning: According to sentence 14, John is not in the garden. This information is sufficient to conclude that John is not currently in the garden.
+
+Answer: no"	0.0	0.0286	False	False	False	True	0

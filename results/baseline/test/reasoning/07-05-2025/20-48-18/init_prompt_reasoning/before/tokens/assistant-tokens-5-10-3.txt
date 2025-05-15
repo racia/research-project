@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġgave	Ġthe	Ġmilk	Ġto	ĠBill	Ġin	Ġsentence	Ġ	28	,	Ġand	Ġthere	Ġis	Ġno	Ġother	Ġmention	Ġof	Ġanyone	Ġgiving	Ġmilk	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

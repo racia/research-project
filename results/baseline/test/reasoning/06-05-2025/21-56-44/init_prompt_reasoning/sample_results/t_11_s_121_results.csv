@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+601	11	121	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the garden.
+2. Then she moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	mary's initial location was the garden, but then she moved to the hallway, which means her current location is the hallway.	fully	hallway	True	Mary moved to the garden initially, and then she moved to the hallway, which means she is currently in the hallway.		"Reasoning: Mary moved to the garden initially, and then she moved to the hallway, which means she is currently in the hallway.
+
+Answer: hallway"	0.1613	0.0645	False	False	False	False	0
+602	11	121	2	"*TASK*
+Here are the context sentences:
+4. John journeyed to the hallway.
+5. Then he travelled to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	john's initial location is not specified, but he journeyed to the hallway, which means he was not in the hallway initially. then, he travelled to the garden, which means he left the hallway and is now in the garden. therefore, john's current location is the garden.	fully	garden	True	John journeyed to the hallway initially, and then he travelled to the garden, which means he is currently in the garden.		"Reasoning: John journeyed to the hallway initially, and then he travelled to the garden, which means he is currently in the garden.
+
+Answer: garden"	0.2188	0.0625	False	False	False	False	0
+603	11	121	3	"*TASK*
+Here are the context sentences:
+7. Daniel went back to the bedroom.
+8. Following that he went to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	"the context sentences only mention daniel, but the question asks about john. there is no information provided about john's movements or location. the answer ""garden"" cannot be logically deduced from the given context sentences, as they only describe daniel's actions."	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only mention Daniel's movements.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Daniel's movements.
+
+Answer: not mentioned"	0.0714	0.0714	False	False	False	True	0
+604	11	121	4	"*TASK*
+Here are the context sentences:
+10. John travelled to the bathroom.
+11. After that he moved to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"the context sentences only describe john's movements, but the question asks about daniel's location. there is no information provided about daniel's movements or location in the given context sentences. the answer ""garden"" cannot be logically deduced from the given context sentences, as they only describe john's actions and do not mention daniel at all."	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only mention John's movements.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only mention John's movements.
+
+Answer: not mentioned"	0.1786	0.0714	False	False	False	True	0
+605	11	121	5	"*TASK*
+Here are the context sentences:
+13. Sandra travelled to the hallway.
+14. Then she went back to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	sandra's initial location is not specified, but she travelled to the hallway, which means she was not in the hallway initially. then, she went back to the bedroom, which means she left the hallway and is now in the bedroom. therefore, sandra's current location is the bedroom.	fully	bedroom	True	Sandra travelled to the hallway initially, and then she went back to the bedroom, which means she is currently in the bedroom.		"Reasoning: Sandra travelled to the hallway initially, and then she went back to the bedroom, which means she is currently in the bedroom.
+
+Answer: bedroom"	0.0625	0.0625	False	False	False	False	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠWe	Ġknow	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġcinema	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġarrived	Ġat	Ġthe	Ġcinema	.	ĠAdditionally	,	ĠJulie	Ġis	Ġalready	Ġin	Ġthe	Ġcinema	.	ĠSince	ĠMary	Ġarrived	Ġat	Ġthe	Ġcinema	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġis	Ġalso	Ġin	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

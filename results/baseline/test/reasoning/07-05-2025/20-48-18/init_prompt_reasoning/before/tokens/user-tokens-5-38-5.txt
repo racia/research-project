@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+21	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+22	.	ĠJeff	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠBill	Ġgive	Ġto	ĠMary	?Ċ

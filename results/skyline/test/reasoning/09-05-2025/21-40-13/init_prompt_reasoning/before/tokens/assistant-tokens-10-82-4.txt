@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġcinema	,	Ġbut	Ġsentence	Ġ	11	Ġcreates	Ġa	Ġcontradiction	Ġby	Ġsaying	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġpark	Ġor	Ġthe	Ġschool	.	ĠHowever	,	Ġsince	Ġsentence	Ġ	10	Ġis	Ġa	Ġmore	Ġspecific	Ġand	Ġdirect	Ġstatement	,	Ġit	Ġtakes	Ġprecedence	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

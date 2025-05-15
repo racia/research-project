@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1611	9	23	1	"*TASK*
+Here are the context sentences:
+1. Sandra is not in the bathroom.
+2. Daniel is no longer in the bathroom.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	no	"the context sentence ""1. sandra is not in the bathroom"" directly states that sandra is not in the bathroom, which answers the question ""is sandra in the bathroom?"" as ""no"". the second sentence ""2. daniel is no longer in the bathroom"" provides information about daniel, but it does not contradict or change the fact that sandra is not in the bathroom."	fully	no	True	The context sentences provide information about Sandra and Daniel's locations. Sentence 1 states that Sandra is not in the bathroom, and Sentence 2 states that Daniel is no longer in the bathroom. There is no information that suggests Sandra is in the bathroom.		"Reasoning: The context sentences provide information about Sandra and Daniel's locations. Sentence 1 states that Sandra is not in the bathroom, and Sentence 2 states that Daniel is no longer in the bathroom. There is no information that suggests Sandra is in the bathroom.
+
+Answer: no"	0.0877	0.0175	False	False	False	True	0
+1612	9	23	2	"*TASK*
+Here are the context sentences:
+4. Mary moved to the hallway.
+5. Daniel is no longer in the office.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	no	"there is no information provided about sandra or the bathroom in the given context sentences. the context sentences only mention mary moving to the hallway and daniel no longer being in the office. however, we can look back at the previous parts of the conversation history, where we had the context sentence ""1. sandra is not in the bathroom."" this sentence directly states that sandra is not in the bathroom, which answers the question ""is sandra in the bathroom?"" as ""no""."	none	not mentioned	False	The context sentences do not provide any information about Sandra's location. Sentence 4 mentions Mary moving to the hallway, and Sentence 5 mentions Daniel no longer being in the office, but there is no mention of Sandra.		"Reasoning: The context sentences do not provide any information about Sandra's location. Sentence 4 mentions Mary moving to the hallway, and Sentence 5 mentions Daniel no longer being in the office, but there is no mention of Sandra.
+
+Answer: not mentioned"	0.0192	0.0192	False	False	False	True	0
+1613	9	23	3	"*TASK*
+Here are the context sentences:
+7. Daniel went to the bathroom.
+8. John journeyed to the garden.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	"there is no information provided about mary or the bedroom in the given context sentences. the context sentences only mention daniel going to the bathroom and john journeying to the garden. there is no previous information about mary's location, and we cannot infer her location logically from the given information. therefore, we cannot conclude that mary is in the bedroom, and the answer ""no"" is correct by default, as there is no evidence to suggest otherwise."	none	not mentioned	False	The context sentences do not provide any information about Mary's location. Sentence 7 mentions Daniel going to the bathroom, and Sentence 8 mentions John journeying to the garden, but there is no mention of Mary.		"Reasoning: The context sentences do not provide any information about Mary's location. Sentence 7 mentions Daniel going to the bathroom, and Sentence 8 mentions John journeying to the garden, but there is no mention of Mary.
+
+Answer: not mentioned"	0.0588	0.0196	False	False	False	True	0
+1614	9	23	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the bedroom.
+11. Daniel is no longer in the bathroom.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	"the context sentence ""11. daniel is no longer in the bathroom"" directly states that daniel is no longer in the bathroom, which implies that he was in the bathroom at some point in the past, but he is not there now. this sentence provides a clear and direct answer to the question ""is daniel in the bathroom?"" as ""no""."	fully	no	True	Sentence 11 states that Daniel is no longer in the bathroom, which implies that Daniel was in the bathroom at some point, but is no longer there.		"Reasoning: Sentence 11 states that Daniel is no longer in the bathroom, which implies that Daniel was in the bathroom at some point, but is no longer there.
+
+Answer: no"	0.0263	0.0263	False	False	False	False	0
+1615	9	23	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the bathroom.
+14. John is no longer in the garden.
+
+Now, answer the following question:
+Is John in the garden?"	no	"the context sentence ""14. john is no longer in the garden"" directly states that john is no longer in the garden, which implies that he was in the garden at some point in the past, but he is not there now. this sentence provides a clear and direct answer to the question ""is john in the garden?"" as ""no""."	fully	no	True	Sentence 14 states that John is no longer in the garden, which implies that John was in the garden at some point, but is no longer there.		"Reasoning: Sentence 14 states that John is no longer in the garden, which implies that John was in the garden at some point, but is no longer there.
+
+Answer: no"	0.0	0.0263	False	False	False	False	0

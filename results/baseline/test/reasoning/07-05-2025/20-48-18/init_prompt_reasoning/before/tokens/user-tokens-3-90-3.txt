@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+31	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+32	.	ĠSandra	Ġtook	Ġthe	Ġmilk	.Ċ
+33	.	ĠSandra	Ġleft	Ġthe	Ġmilk	.Ċ
+34	.	ĠSandra	Ġgrabbed	Ġthe	Ġmilk	.Ċ
+35	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+36	.	ĠDaniel	Ġput	Ġdown	Ġthe	Ġfootball	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġbathroom	?Ċ

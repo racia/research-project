@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġgarden	Ġ(	sentence	Ġ	13	),	Ġbut	Ġthen	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġwith	ĠSandra	Ġ(	sentence	Ġ	14	).	ĠThis	Ġimplies	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

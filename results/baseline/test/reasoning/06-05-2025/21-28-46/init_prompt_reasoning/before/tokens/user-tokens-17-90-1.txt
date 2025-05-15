@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠThe	Ġblue	Ġsquare	Ġis	Ġabove	Ġthe	Ġpink	Ġrectangle	.Ċ
+2	.	ĠThe	Ġpink	Ġrectangle	Ġis	Ġto	Ġthe	Ġleft	Ġof	Ġthe	Ġred	Ġsphere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Is	Ġthe	Ġred	Ġsphere	Ġto	Ġthe	Ġleft	Ġof	Ġthe	Ġblue	Ġsquare	?Ċ

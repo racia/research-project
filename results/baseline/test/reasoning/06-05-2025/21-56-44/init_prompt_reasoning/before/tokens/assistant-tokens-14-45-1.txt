@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠFred	Ġwent	Ġto	Ġthe	Ġoffice	Ġyesterday	Ġ(	sentence	Ġ	2	),	Ġand	Ġthen	Ġwent	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	Ġ(	sentence	Ġ	4	).	ĠSince	Ġhe	Ġwent	Ġto	Ġthe	Ġoffice	Ġyesterday	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwas	Ġthere	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

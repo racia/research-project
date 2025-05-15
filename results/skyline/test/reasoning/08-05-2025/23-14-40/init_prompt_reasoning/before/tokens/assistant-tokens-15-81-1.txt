@@ -1,0 +1,1 @@
+<|start_header_id|>	<|end_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠGer	tr	ude	Ġis	Ġa	Ġmouse	Ġ(	sentence	Ġ	4	).	ĠM	ice	Ġare	Ġafraid	Ġof	Ġwolves	Ġ(	sentence	Ġ	3	).ĊĊ	Answer	:	Ġwolf	<|eot_id|>

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+501	12	1	1	"*TASK*
+Here are the context sentences:
+1. John and Mary travelled to the hallway.
+2. Sandra and Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	from the context sentences, we know that mary travelled to the hallway with john (sentence 1) and then journeyed to the bedroom with sandra (sentence 2). since mary's last known location was the bedroom, it is logical to conclude that mary is currently in the bedroom.	fully	bedroom	True	According to the context sentences, Mary was first in the hallway with John (sentence 1), and then she journeyed to the bedroom with Sandra (sentence 2). Therefore, Mary's current location is the bedroom.		"assistant
+
+Reasoning: According to the context sentences, Mary was first in the hallway with John (sentence 1), and then she journeyed to the bedroom with Sandra (sentence 2). Therefore, Mary's current location is the bedroom.
+
+Answer: bedroom"	0.1455	0.0182	False	False	False	False	0
+502	12	1	2	"*TASK*
+Here are the context sentences:
+4. Mary and Daniel travelled to the bathroom.
+5. Daniel and Sandra journeyed to the office.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	from the context sentences, we know that mary travelled to the bathroom with daniel (sentence 4). there is no subsequent information about mary's movement, so it is logical to conclude that mary is still in the bathroom. the fact that daniel later journeyed to the office with sandra (sentence 5) does not change mary's location, as mary was not involved in that journey.	fully	bathroom	True	According to the context sentences, Mary travelled to the bathroom with Daniel (sentence 4), and there is no subsequent information about her moving to a different location. Therefore, Mary's current location is the bathroom.		"Reasoning: According to the context sentences, Mary travelled to the bathroom with Daniel (sentence 4), and there is no subsequent information about her moving to a different location. Therefore, Mary's current location is the bathroom.
+
+Answer: bathroom"	0.0204	0.0204	False	False	False	True	0
+503	12	1	3	"*TASK*
+Here are the context sentences:
+7. Daniel and Mary went to the bedroom.
+8. Daniel and Sandra travelled to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	from the context sentences, we know that daniel and mary went to the bedroom (sentence 7), but this information does not provide any information about sandra's location. however, in sentence 8, we are told that daniel and sandra travelled to the hallway. since sandra was involved in this journey, it is logical to conclude that sandra is currently in the hallway.	fully	hallway	True	According to the context sentences, Daniel and Sandra travelled to the hallway (sentence 8), and there is no subsequent information about her moving to a different location. Therefore, Sandra's current location is the hallway.		"Reasoning: According to the context sentences, Daniel and Sandra travelled to the hallway (sentence 8), and there is no subsequent information about her moving to a different location. Therefore, Sandra's current location is the hallway.
+
+Answer: hallway"	0.0408	0.0204	False	False	False	True	0
+504	12	1	4	"*TASK*
+Here are the context sentences:
+10. Mary and Sandra journeyed to the garden.
+11. Sandra and Mary travelled to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentences, we know that mary and sandra journeyed to the garden (sentence 10), but then they travelled to the hallway (sentence 11). since mary was involved in both journeys, it is logical to conclude that mary's current location is the hallway, as it is the last known location mentioned in the sequence of events.	fully	hallway	True	According to the context sentences, Mary and Sandra journeyed to the garden (sentence 10), and then they travelled to the hallway (sentence 11). Therefore, Mary's current location is the hallway.		"Reasoning: According to the context sentences, Mary and Sandra journeyed to the garden (sentence 10), and then they travelled to the hallway (sentence 11). Therefore, Mary's current location is the hallway.
+
+Answer: hallway"	0.0	0.0208	False	False	False	False	0
+505	12	1	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John journeyed to the bathroom.
+14. Daniel and Mary went back to the office.
+
+Now, answer the following question:
+Where is John?"	bathroom	from the context sentences, we know that daniel and john journeyed to the bathroom (sentence 13), but there is no subsequent information about john's movement. however, we are told that daniel went back to the office with mary (sentence 14), which does not involve john. therefore, it is logical to conclude that john remained in the bathroom, as there is no information to suggest he left.	fully	bathroom	True	According to the context sentences, Daniel and John journeyed to the bathroom (sentence 13), and there is no subsequent information about John moving to a different location. Therefore, John's current location is the bathroom.		"Reasoning: According to the context sentences, Daniel and John journeyed to the bathroom (sentence 13), and there is no subsequent information about John moving to a different location. Therefore, John's current location is the bathroom.
+
+Answer: bathroom"	0.14	0.02	False	False	False	True	0

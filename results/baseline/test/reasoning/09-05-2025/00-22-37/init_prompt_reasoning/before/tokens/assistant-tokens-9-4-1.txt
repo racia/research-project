@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbathroom	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	Ġand	Ġthen	Ġjourney	ed	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġhim	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

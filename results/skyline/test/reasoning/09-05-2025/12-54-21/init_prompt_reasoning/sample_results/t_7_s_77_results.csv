@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+881	7	77	1	"*TASK*
+Here are the context sentences:
+1. John went to the office.
+2. Sandra picked up the apple there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from the context sentences, we know that sandra picked up the apple at the office (sentence 2). there is no mention of sandra carrying any other objects besides the apple. therefore, we can logically conclude that sandra is carrying only one object, which is the apple.	fully	one	True	According to sentence 2, Sandra picked up the apple in the office, which means she is carrying one object, the apple.		"assistant
+
+Reasoning: According to sentence 2, Sandra picked up the apple in the office, which means she is carrying one object, the apple.
+
+Answer: one"	0.0811	0.027	False	False	False	False	0
+882	7	77	2	"*TASK*
+Here are the context sentences:
+4. Daniel journeyed to the bedroom.
+5. Daniel got the milk there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from the context sentences, we know that daniel got the milk in the bedroom (sentence 5). there is no mention of daniel carrying any other objects besides the milk. therefore, we can logically conclude that daniel is carrying only one object, which is the milk.	fully	one	True	According to sentence 5, Daniel got the milk in the bedroom, which means he is carrying one object, the milk.		"Reasoning: According to sentence 5, Daniel got the milk in the bedroom, which means he is carrying one object, the milk.
+
+Answer: one"	0.1562	0.0312	False	False	False	False	0
+883	7	77	3	"*TASK*
+Here are the context sentences:
+7. Daniel dropped the milk.
+8. Sandra put down the apple.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	from the context sentences, we know that sandra previously picked up the apple (sentence 2) and was carrying it. however, in sentence 8, it is stated that sandra put down the apple, which implies that she is no longer carrying it. therefore, we can logically conclude that sandra is not carrying any objects, including the apple.	partially	none	True	According to sentence 8, Sandra put down the apple, which means she is no longer carrying the apple.		"Reasoning: According to sentence 8, Sandra put down the apple, which means she is no longer carrying the apple.
+
+Answer: none"	0.0	0.069	False	False	False	False	0
+884	7	77	4	"*TASK*
+Here are the context sentences:
+10. John journeyed to the kitchen.
+11. Sandra picked up the milk there.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	there is no information provided about daniel picking up or carrying any objects in the current context sentences (10 and 11). in fact, the previous information about daniel (sentence 5) mentioned that he got the milk, but then he dropped it (sentence 7). therefore, we can logically conclude that daniel is not carrying any objects.	none	none	True	There is no new information about Daniel carrying any objects. The last information about Daniel was that he dropped the milk in sentence 7.		"Reasoning: There is no new information about Daniel carrying any objects. The last information about Daniel was that he dropped the milk in sentence 7.
+
+Answer: none"	0.0588	0.0588	False	False	False	True	0
+885	7	77	5	"*TASK*
+Here are the context sentences:
+13. Sandra gave the milk to Daniel.
+14. John went back to the bedroom.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	in sentence 11, sandra picked up the milk. then, in sentence 13, sandra gave the milk to daniel. this implies that sandra no longer has the milk, as she has given it to daniel. therefore, we can logically conclude that sandra is not carrying any objects.	partially	none	True	According to sentence 13, Sandra gave the milk to Daniel, which means she is no longer carrying the milk.		"Reasoning: According to sentence 13, Sandra gave the milk to Daniel, which means she is no longer carrying the milk.
+
+Answer: none"	0.0667	0.1333	False	False	False	False	0

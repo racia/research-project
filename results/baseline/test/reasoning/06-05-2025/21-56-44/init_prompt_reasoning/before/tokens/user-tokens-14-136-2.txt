@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+8	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	.Ċ
+9	.	ĠThis	Ġafternoon	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠMary	Ġbefore	Ġthe	Ġschool	?Ċ

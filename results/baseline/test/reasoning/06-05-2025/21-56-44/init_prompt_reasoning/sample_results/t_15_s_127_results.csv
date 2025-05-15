@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3505	15	127	1	"*TASK*
+Here are the context sentences:
+1. Mice are afraid of sheep.
+2. Gertrude is a mouse.
+3. Winona is a mouse.
+4. Sheep are afraid of wolves.
+5. Jessica is a mouse.
+6. Emily is a mouse.
+7. Cats are afraid of mice.
+8. Wolves are afraid of cats.
+
+Now, answer the following question:
+What is winona afraid of?"	sheep	since winona is a mouse (sentence 3), and mice are afraid of sheep (sentence 1), we can logically conclude that winona is afraid of sheep.	fully	sheep	True	Since Winona is a mouse (sentence 3), and mice are afraid of sheep (sentence 1), Winona is likely afraid of sheep.		"Reasoning: Since Winona is a mouse (sentence 3), and mice are afraid of sheep (sentence 1), Winona is likely afraid of sheep.
+
+Answer: sheep"	0.1351	0.0541	False	False	False	False	0
+3506	15	127	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	sheep	since the context sentences are not provided, i will assume that the previous conversation history is still available. from the previous conversation, we know that winona is a mouse (sentence 3) and mice are afraid of sheep (sentence 1). therefore, we can logically conclude that winona is afraid of sheep.	none	sheep	True	Since Winona is a mouse (sentence 3), and mice are afraid of sheep (sentence 1), Winona is likely afraid of sheep.		"Reasoning: Since Winona is a mouse (sentence 3), and mice are afraid of sheep (sentence 1), Winona is likely afraid of sheep.
+
+Answer: sheep"	0.0541	0.0541	False	False	False	False	0
+3507	15	127	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is jessica afraid of?"	sheep	since jessica is a mouse (not provided in the current context, but assumed to be available from previous conversation history), and mice are afraid of sheep (sentence 1), we can logically conclude that jessica is afraid of sheep.	none	sheep	True	Since Jessica is a mouse (sentence 5), and mice are afraid of sheep (sentence 1), Jessica is likely afraid of sheep.		"Reasoning: Since Jessica is a mouse (sentence 5), and mice are afraid of sheep (sentence 1), Jessica is likely afraid of sheep.
+
+Answer: sheep"	0.0857	0.0571	False	False	False	False	0
+3508	15	127	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	sheep	since emily is a mouse (sentence 7), and mice are afraid of sheep (sentence 1), we can logically conclude that emily is afraid of sheep.	none	sheep	True	Since Emily is a mouse (sentence 6), and mice are afraid of sheep (sentence 1), Emily is likely afraid of sheep.		"Reasoning: Since Emily is a mouse (sentence 6), and mice are afraid of sheep (sentence 1), Emily is likely afraid of sheep.
+
+Answer: sheep"	0.0	0.0571	False	False	False	False	0

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2821	14	115	1	"*TASK*
+Here are the context sentences:
+1. This morning Bill journeyed to the school.
+2. Fred travelled to the cinema yesterday.
+3. Yesterday Bill journeyed to the park.
+4. Mary went back to the cinema yesterday.
+
+Now, answer the following question:
+Where was Bill before the school?"	park	from context sentence 1, we know that bill journeyed to the school this morning. to determine where bill was before the school, we need to look at the previous day's events. context sentence 3 states that yesterday bill journeyed to the park. since bill went to the park yesterday and then went to the school this morning, it can be logically inferred that bill was at the park before going to the school.	fully	park	True	Bill journeyed to the school this morning, and yesterday he journeyed to the park. This implies that Bill was at the park yesterday, and before going to the school this morning.		"Reasoning: Bill journeyed to the school this morning, and yesterday he journeyed to the park. This implies that Bill was at the park yesterday, and before going to the school this morning.
+
+Answer: park"	0.0455	0.0455	False	False	False	False	0
+2822	14	115	2	"*TASK*
+Here are the context sentences:
+6. This morning Mary went to the office.
+7. Yesterday Julie travelled to the school.
+
+Now, answer the following question:
+Where was Bill before the school?"	park	"this question seems to be referring to a previous part of the conversation history. upon inspecting the previous parts, i found that context sentence 3 states ""yesterday bill journeyed to the park."" this sentence directly answers the question of where bill was before going to the school, which implies that bill went to the school after going to the park. the new context sentences 6 and 7 do not provide any new information about bill's journey, so the answer remains the same: bill"	none	Not mentioned	False	There is no information about Bill's location in the given context sentences. The sentences only mention Mary and Julie's locations, but not Bill's.		"Reasoning: There is no information about Bill's location in the given context sentences. The sentences only mention Mary and Julie's locations, but not Bill's.
+
+Answer: Not mentioned"	0.1892	0.0541	False	False	False	True	0
+2823	14	115	3	"*TASK*
+Here are the context sentences:
+9. This evening Mary went back to the bedroom.
+10. Mary went back to the school this afternoon.
+
+Now, answer the following question:
+Where was Mary before the office?"	cinema	"to answer this question, we need to find information about mary's journey before the office. however, the provided context sentences 9 and 10 do not mention the office at all. we need to inspect the previous parts of the conversation history to find the relevant information. upon inspecting the previous parts, i found that context sentence 6 states ""this morning mary went to the office."" to determine where mary was before the office, we need to look at the previous day's events"	none	Not mentioned	False	There is no information about Mary's location before going to the office. The given context sentences only mention Mary's locations after going to the office, which are the bedroom and the school.		"Reasoning: There is no information about Mary's location before going to the office. The given context sentences only mention Mary's locations after going to the office, which are the bedroom and the school.
+
+Answer: Not mentioned"	0.0667	0.0444	False	False	False	True	0
+2824	14	115	4	"*TASK*
+Here are the context sentences:
+12. Julie journeyed to the cinema this morning.
+13. This afternoon Bill travelled to the bedroom.
+
+Now, answer the following question:
+Where was Mary before the office?"	cinema	"to answer this question, we need to find information about mary's journey before the office. upon inspecting the previous parts of the conversation history, i found that context sentence 4 states ""mary went back to the cinema yesterday."" this implies that mary was at the cinema before going to the office. the new context sentences 12 and 13 do not provide any new information about mary's journey, so the answer remains the same: mary was at the cinema before going to the office"	none	Not mentioned	False	There is no information about Mary's location in the given context sentences. The sentences only mention Julie's location and Bill's location, but not Mary's.		"Reasoning: There is no information about Mary's location in the given context sentences. The sentences only mention Julie's location and Bill's location, but not Mary's.
+
+Answer: Not mentioned"	0.0769	0.0513	False	False	False	True	0
+2825	14	115	5	"*TASK*
+Here are the context sentences:
+15. Julie went back to the park this afternoon.
+16. Fred journeyed to the kitchen this morning.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	school	"to answer this question, we need to find information about bill's journey before the bedroom. upon inspecting the previous parts of the conversation history, i found that context sentence 1 states ""this morning bill journeyed to the school."" later, context sentence 13 states ""this afternoon bill travelled to the bedroom."" this implies that bill went to the bedroom after going to the school. the new context sentences 15 and 16 do not provide any new information about bill's journey,"	none	Not mentioned	False	There is no information about Bill's location before going to the bedroom. The given context sentences only mention Julie's location and Fred's location, but not Bill's.		"Reasoning: There is no information about Bill's location before going to the bedroom. The given context sentences only mention Julie's location and Fred's location, but not Bill's.
+
+Answer: Not mentioned"	0.1463	0.0488	False	False	False	True	0

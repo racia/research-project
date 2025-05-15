@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+86	11	18	1	"*TASK*
+Here are the context sentences:
+1. Sandra travelled to the bathroom.
+2. Then she went to the office.
+
+Now, answer the following question:
+Where is Sandra?"	office	"the context sentences describe sandra's movements, with sentence 1 stating she travelled to the bathroom and sentence 2 stating she went to the office after that. since sentence 2 is a subsequent action, it implies that sandra is currently in the office. therefore, the answer to the question ""where is sandra?"" is indeed ""office""."	fully	office	True	According to the context sentences, Sandra first travelled to the bathroom and then went to the office. This implies that she is currently in the office.		"assistant
+
+Reasoning: According to the context sentences, Sandra first travelled to the bathroom and then went to the office. This implies that she is currently in the office.
+
+Answer: office"	0.275	0.05	False	False	False	False	0
+87	11	18	2	"*TASK*
+Here are the context sentences:
+4. Sandra moved to the bedroom.
+5. Afterwards she journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	the context sentences describe sandra's movements, with sentence 4 stating she moved to the bedroom and sentence 5 stating she journeyed to the bathroom afterwards. this implies that sandra's movement to the bathroom occurred after her movement to the bedroom, and therefore, her current location is the bathroom.	fully	bathroom	True	According to the context sentences, Sandra moved to the bedroom and afterwards journeyed to the bathroom. This implies that she is currently in the bathroom.		"Reasoning: According to the context sentences, Sandra moved to the bedroom and afterwards journeyed to the bathroom. This implies that she is currently in the bathroom.
+
+Answer: bathroom"	0.1111	0.0556	False	False	False	False	0
+88	11	18	3	"*TASK*
+Here are the context sentences:
+7. John journeyed to the bathroom.
+8. After that he went to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	the context sentences describe john's movements, with sentence 7 stating he journeyed to the bathroom and sentence 8 stating he went to the garden after that. this implies that john's movement to the garden occurred after his movement to the bathroom, and therefore, his current location is the garden.	fully	garden	True	According to the context sentences, John first journeyed to the bathroom and then went to the garden. This implies that he is currently in the garden.		"Reasoning: According to the context sentences, John first journeyed to the bathroom and then went to the garden. This implies that he is currently in the garden.
+
+Answer: garden"	0.1351	0.0541	False	False	False	False	0
+89	11	18	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the office.
+11. Then she moved to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	the context sentences describe sandra's movements, with sentence 10 stating she went to the office and sentence 11 stating she moved to the hallway afterwards. this implies that sandra's movement to the hallway occurred after her movement to the office, and therefore, her current location is the hallway.	fully	hallway	True	According to the context sentences, Sandra went to the office and then moved to the hallway. This implies that she is currently in the hallway.		"Reasoning: According to the context sentences, Sandra went to the office and then moved to the hallway. This implies that she is currently in the hallway.
+
+Answer: hallway"	0.0571	0.0571	False	False	False	False	0
+90	11	18	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the kitchen.
+14. Afterwards she journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	the context sentences describe sandra's movements, with sentence 13 stating she journeyed to the kitchen and sentence 14 stating she journeyed to the bedroom afterwards. this implies that sandra's movement to the bedroom occurred after her movement to the kitchen, and therefore, her current location is the bedroom.	fully	bedroom	True	According to the context sentences, Sandra journeyed to the kitchen and afterwards journeyed to the bedroom. This implies that she is currently in the bedroom.		"Reasoning: According to the context sentences, Sandra journeyed to the kitchen and afterwards journeyed to the bedroom. This implies that she is currently in the bedroom.
+
+Answer: bedroom"	0.0811	0.0541	False	False	False	False	0

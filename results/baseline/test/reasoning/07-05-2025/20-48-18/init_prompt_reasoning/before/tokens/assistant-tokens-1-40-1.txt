@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġgoing	Ġto	Ġthe	Ġoffice	Ġand	ĠMary	Ġtravelling	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġat	Ġthe	Ġoffice	.	ĠTherefore	,	Ġthe	Ġmost	Ġlikely	Ġlocation	Ġfor	ĠMary	Ġis	Ġthe	Ġgarden	.Ċ	Answer	:	Ġgarden	<|eot_id|>

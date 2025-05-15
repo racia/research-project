@@ -1,0 +1,10 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1582	4	82	1	"*TASK*
+Here are the context sentences:
+1. The office is east of the bedroom.
+2. The hallway is east of the office.
+
+Now, answer the following question:
+What is the bedroom west of?"	office	"from the first context sentence, we know that the office is east of the bedroom. this implies that the bedroom is west of the office. therefore, the answer to the question ""what is the bedroom west of?"" is indeed the office."	fully	Nothing	False	Since the office is east of the bedroom, and the hallway is east of the office, it implies that the hallway is also east of the bedroom. This means that the bedroom is not east of anything, and therefore, it cannot be west of anything either.		"Reasoning: Since the office is east of the bedroom, and the hallway is east of the office, it implies that the hallway is also east of the bedroom. This means that the bedroom is not east of anything, and therefore, it cannot be west of anything either.
+
+Answer: Nothing"	0.0169	0.0169	False	False	False	False	0

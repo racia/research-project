@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+12	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	.Ċ
+13	.	ĠThis	Ġmorning	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġcinema	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠJulie	Ġbefore	Ġthe	Ġkitchen	?Ċ

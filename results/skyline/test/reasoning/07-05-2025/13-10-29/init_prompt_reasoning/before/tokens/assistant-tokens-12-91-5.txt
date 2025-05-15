@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠDaniel	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	13	),	Ġbut	ĠMary	Ġwas	Ġnot	Ġinvolved	Ġin	Ġthat	Ġaction	.	ĠThen	,	ĠDaniel	Ġand	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	14	).	ĠTherefore	,	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

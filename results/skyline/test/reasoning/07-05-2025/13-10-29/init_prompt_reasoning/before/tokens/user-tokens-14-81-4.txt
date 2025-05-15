@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+12	.	ĠThis	Ġevening	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġpark	.Ċ
+13	.	ĠThis	Ġevening	ĠBill	Ġwent	Ġto	Ġthe	Ġschool	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	ĠFred	Ġbefore	Ġthe	Ġcinema	?Ċ

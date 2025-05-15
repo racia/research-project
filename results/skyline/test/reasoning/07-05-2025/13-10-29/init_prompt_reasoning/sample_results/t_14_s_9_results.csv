@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1541	14	9	1	"*TASK*
+Here are the context sentences:
+1. This morning Mary went to the kitchen.
+2. Yesterday Mary travelled to the cinema.
+
+Now, answer the following question:
+Where was Mary before the kitchen?"	cinema	from the context sentences, we know that mary went to the kitchen this morning (sentence 1). we also know that mary travelled to the cinema yesterday (sentence 2). since mary went to the kitchen this morning, it implies that she was somewhere else before going to the kitchen. the only other location mentioned in the context sentences is the cinema, which mary visited yesterday. therefore, it is logical to assume that mary was at home or some other unknown location after visiting the cinema yesterday	fully	cinema	True	According to sentence 2, Mary was at the cinema yesterday. Sentence 1 states that Mary went to the kitchen this morning, implying that she was somewhere else before going to the kitchen. Since sentence 2 mentions Mary's location yesterday, it is logical to assume that Mary was at the cinema before going to the kitchen this morning.		"assistant
+
+Reasoning: According to sentence 2, Mary was at the cinema yesterday. Sentence 1 states that Mary went to the kitchen this morning, implying that she was somewhere else before going to the kitchen. Since sentence 2 mentions Mary's location yesterday, it is logical to assume that Mary was at the cinema before going to the kitchen this morning.
+
+Answer: cinema"	0.2436	0.0256	False	False	False	True	0
+1542	14	9	2	"*TASK*
+Here are the context sentences:
+4. Bill travelled to the park yesterday.
+5. This afternoon Mary went back to the office.
+
+Now, answer the following question:
+Where was Mary before the office?"	kitchen	"there is no direct information about mary's location before the office in the provided context sentences. however, we can look at the previous parts of the conversation history. in the previous part, we had the context sentences ""1. this morning mary went to the kitchen."" and ""2. yesterday mary travelled to the cinema."" from these sentences, we know that mary went to the kitchen this morning. since the current context sentence ""5. this afternoon mary went back to the office"" implies"	partially	not mentioned	False	There is no information provided about Mary's location before the office. Sentence 5 only mentions that Mary went back to the office this afternoon, but it does not provide any information about her previous location. Sentence 4 is about Bill's location, which is not relevant to Mary's location.		"Reasoning: There is no information provided about Mary's location before the office. Sentence 5 only mentions that Mary went back to the office this afternoon, but it does not provide any information about her previous location. Sentence 4 is about Bill's location, which is not relevant to Mary's location.
+
+Answer: not mentioned"	0.0758	0.0303	False	False	False	True	0
+1543	14	9	3	"*TASK*
+Here are the context sentences:
+7. Bill went to the bedroom this morning.
+8. Yesterday Julie went back to the cinema.
+
+Now, answer the following question:
+Where was Mary before the office?"	kitchen	"the context sentences provided in this part (7 and 8) do not mention mary or her location. however, we can look at the previous parts of the conversation history. in a previous part, we had the context sentences ""1. this morning mary went to the kitchen."" and ""2. yesterday mary travelled to the cinema."" from these sentences, we know that mary went to the kitchen this morning. the question asks about mary's location before the office, and we know that"	none	not mentioned	False	There is no information provided about Mary's location before the office. The context sentences only mention Bill's location (sentence 7) and Julie's location (sentence 8), but there is no mention of Mary's location.		"Reasoning: There is no information provided about Mary's location before the office. The context sentences only mention Bill's location (sentence 7) and Julie's location (sentence 8), but there is no mention of Mary's location.
+
+Answer: not mentioned"	0.1132	0.0377	False	False	False	True	0
+1544	14	9	4	"*TASK*
+Here are the context sentences:
+10. This afternoon Bill moved to the park.
+11. Julie moved to the school this morning.
+
+Now, answer the following question:
+Where was Bill before the bedroom?"	park	"there is no direct information about bill's location before the bedroom in the provided context sentences. however, we can look at the previous parts of the conversation history. in a previous part, we had the context sentence ""7. bill went to the bedroom this morning."" this sentence implies that bill was somewhere else before going to the bedroom this morning. the only other location mentioned in the context sentences related to bill is the park, where bill moved to this afternoon (sentence 10). it"	none	not mentioned	False	There is no information provided about Bill's location before the bedroom. Sentence 10 mentions Bill's location this afternoon, and sentence 7 (from previous context) mentions Bill's location this morning, but neither provides information about Bill's location before the bedroom.		"Reasoning: There is no information provided about Bill's location before the bedroom. Sentence 10 mentions Bill's location this afternoon, and sentence 7 (from previous context) mentions Bill's location this morning, but neither provides information about Bill's location before the bedroom.
+
+Answer: not mentioned"	0.0339	0.0339	False	False	False	True	0
+1545	14	9	5	"*TASK*
+Here are the context sentences:
+13. Fred went back to the park yesterday.
+14. Mary travelled to the park this evening.
+
+Now, answer the following question:
+Where was Mary before the park?"	office	"the context sentences provided in this part (13 and 14) do not directly mention mary's location before the park. however, we can look at the previous parts of the conversation history. in a previous part, we had the context sentence ""5. this afternoon mary went back to the office."" this sentence implies that mary was at the office before going to the park this evening (sentence 14). therefore, it is logical to conclude that mary was at the office before the park"	partially	not mentioned	False	There is no information provided about Mary's location before the park. Sentence 14 mentions Mary's location this evening, but it does not provide any information about her previous location. Sentence 13 is about Fred's location, which is not relevant to Mary's location.		"Reasoning: There is no information provided about Mary's location before the park. Sentence 14 mentions Mary's location this evening, but it does not provide any information about her previous location. Sentence 13 is about Fred's location, which is not relevant to Mary's location.
+
+Answer: not mentioned"	0.082	0.0328	False	False	False	True	0

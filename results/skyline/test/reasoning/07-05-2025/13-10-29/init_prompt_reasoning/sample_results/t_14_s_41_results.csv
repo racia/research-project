@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1701	14	41	1	"*TASK*
+Here are the context sentences:
+1. This morning Julie went back to the office.
+2. Yesterday Bill went to the office.
+3. Yesterday Fred moved to the cinema.
+4. Yesterday Julie moved to the school.
+
+Now, answer the following question:
+Where was Julie before the office?"	school	"from context sentence 4, ""yesterday julie moved to the school"", we know that julie was at the school yesterday. then, from context sentence 1, ""this morning julie went back to the office"", we can infer that julie went from the school to the office this morning. therefore, julie was at the school before going to the office."	fully	school	True	"According to sentence 4, ""Yesterday Julie moved to the school."" This implies that Julie was at the school before coming to the office this morning (sentence 1)."		"assistant
+
+Reasoning: According to sentence 4, ""Yesterday Julie moved to the school."" This implies that Julie was at the school before coming to the office this morning (sentence 1).
+
+Answer: school"	0.0889	0.0444	False	False	False	False	0
+1702	14	41	2	"*TASK*
+Here are the context sentences:
+6. Yesterday Mary went to the school.
+7. This afternoon Julie journeyed to the park.
+
+Now, answer the following question:
+Where was Julie before the office?"	school	this question refers to a previous part of the conversation history. from the previous context sentences (1. this morning julie went back to the office. 2. yesterday bill went to the office. 3. yesterday fred moved to the cinema. 4. yesterday julie moved to the school.), we know that julie moved to the school yesterday (sentence 4). then, julie went back to the office this morning (sentence 1). the new context sentences (6. yesterday mary	none	school	True	"The new context sentences do not provide any new information about Julie's location before the office. We still rely on the previous information from sentence 4, ""Yesterday Julie moved to the school."""		"Reasoning: The new context sentences do not provide any new information about Julie's location before the office. We still rely on the previous information from sentence 4, ""Yesterday Julie moved to the school."" 
+
+Answer: school"	0.087	0.0435	False	False	False	True	0
+1703	14	41	3	"*TASK*
+Here are the context sentences:
+9. Julie moved to the bedroom this evening.
+10. Fred journeyed to the bedroom this morning.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	park	from the previous context sentences, we know that julie journeyed to the park this afternoon (sentence 7). there is no information about julie moving to any other location between the afternoon and this evening. therefore, it is logical to assume that julie was at the park before moving to the bedroom this evening.	partially	park	True	"According to sentence 7, ""This afternoon Julie journeyed to the park."" This implies that Julie was at the park before coming to the bedroom this evening (sentence 9)."		"Reasoning: According to sentence 7, ""This afternoon Julie journeyed to the park."" This implies that Julie was at the park before coming to the bedroom this evening (sentence 9).
+
+Answer: park"	0.2093	0.0465	False	False	False	False	0
+1704	14	41	4	"*TASK*
+Here are the context sentences:
+12. Mary journeyed to the bedroom this morning.
+13. Fred went to the school this afternoon.
+
+Now, answer the following question:
+Where was Fred before the bedroom?"	cinema	from the previous context sentences, we know that fred moved to the cinema yesterday (sentence 3). there is no information about fred moving to any other location between yesterday and this afternoon. then, sentence 13 states that fred went to the school this afternoon, but the question asks about fred's location before the bedroom, which is not mentioned in sentence 13. therefore, we need to look further back in the conversation history. since fred was at the cinema yesterday and there is no	none	not mentioned	False	There is no information about Fred being in the bedroom. Sentence 10 mentions Fred journeying to the bedroom this morning, but the question asks about Fred's location before the bedroom, which is not specified.		"Reasoning: There is no information about Fred being in the bedroom. Sentence 10 mentions Fred journeying to the bedroom this morning, but the question asks about Fred's location before the bedroom, which is not specified.
+
+Answer: not mentioned"	0.0204	0.0408	False	False	False	True	0
+1705	14	41	5	"*TASK*
+Here are the context sentences:
+15. Bill went to the park this morning.
+16. Fred moved to the bedroom this evening.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	park	from the previous context sentences, we know that julie journeyed to the park this afternoon (sentence 7). there is no information about julie moving to any other location between the afternoon and this evening. then, sentence 9 states that julie moved to the bedroom this evening. therefore, it is logical to conclude that julie was at the park before moving to the bedroom this evening.	none	park	True	"The new context sentences do not provide any new information about Julie's location before the bedroom. We still rely on the previous information from sentence 7, ""This afternoon Julie journeyed to the park."" This implies that Julie was at the park before coming to the bedroom this evening (sentence 9)."		"Reasoning: The new context sentences do not provide any new information about Julie's location before the bedroom. We still rely on the previous information from sentence 7, ""This afternoon Julie journeyed to the park."" This implies that Julie was at the park before coming to the bedroom this evening (sentence 9).
+
+Answer: park"	0.0448	0.0299	False	False	False	True	0

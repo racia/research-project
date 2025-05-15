@@ -1,0 +1,29 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+2	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+3	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+4	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+5	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+6	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+7	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+8	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+9	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
+10	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+11	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
+12	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+13	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+14	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+15	.	ĠSandra	Ġgrabbed	Ġthe	Ġmilk	.Ċ
+16	.	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	.Ċ
+17	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+18	.	ĠJohn	Ġleft	Ġthe	Ġfootball	.Ċ
+19	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+20	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+21	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+22	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+23	.	ĠMary	Ġgot	Ġthe	Ġapple	.Ċ
+24	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+25	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+26	.	ĠSandra	Ġdiscarded	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġkitchen	?Ċ

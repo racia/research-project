@@ -1,0 +1,62 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+606	2	22	1	"*TASK*
+Here are the context sentences:
+1. Sandra took the football there.
+2. Mary travelled to the kitchen.
+3. John went to the office.
+4. Daniel travelled to the bedroom.
+5. Daniel journeyed to the bathroom.
+6. Mary went back to the bedroom.
+7. Sandra travelled to the kitchen.
+8. Mary went to the bathroom.
+9. Sandra went back to the bathroom.
+10. Sandra discarded the football.
+
+Now, answer the following question:
+Where is the football?"	bathroom	"from the context sentences, we can track the movement of sandra and the football. in sentence 1, sandra took the football to an unspecified location (""there""). later, in sentence 7, sandra travelled to the kitchen, but there is no mention of the football being discarded or left behind. in sentence 9, sandra went back to the bathroom, and in sentence 10, sandra discarded the football. therefore, it can be logically inferred that sandra had the football with her"	fully	bathroom	True	Sandra took the football there, and then discarded it. Since Sandra discarded the football, it is likely that the football was in the location where Sandra discarded it. Sandra went back to the bathroom after going to the kitchen, and then discarded the football. Therefore, the football is likely in the bathroom.		"Reasoning: Sandra took the football there, and then discarded it. Since Sandra discarded the football, it is likely that the football was in the location where Sandra discarded it. Sandra went back to the bathroom after going to the kitchen, and then discarded the football. Therefore, the football is likely in the bathroom.
+
+Answer: bathroom"	0.1194	0.0299	False	False	False	False	0
+607	2	22	2	"*TASK*
+Here are the context sentences:
+12. Mary journeyed to the bedroom.
+13. Sandra picked up the football there.
+14. Mary grabbed the milk there.
+15. Mary discarded the milk.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	from the context sentences, we can track the movement of mary and the milk. in sentence 12, mary journeyed to the bedroom. in sentence 14, mary grabbed the milk there, implying that mary grabbed the milk in the bedroom. in sentence 15, mary discarded the milk, but there is no mention of mary leaving the bedroom. therefore, it can be logically inferred that mary discarded the milk in the bedroom, and the milk remains there.	fully	bedroom	True	Mary grabbed the milk there, and then discarded it. Since Mary discarded the milk, it is likely that the milk was in the location where Mary discarded it. Mary journeyed to the bedroom, grabbed the milk, and then discarded it. Therefore, the milk is likely in the bedroom.		"Reasoning: Mary grabbed the milk there, and then discarded it. Since Mary discarded the milk, it is likely that the milk was in the location where Mary discarded it. Mary journeyed to the bedroom, grabbed the milk, and then discarded it. Therefore, the milk is likely in the bedroom.
+
+Answer: bedroom"	0.1538	0.0308	False	False	False	False	0
+608	2	22	3	"*TASK*
+Here are the context sentences:
+17. Daniel moved to the bedroom.
+18. Mary picked up the milk there.
+19. Mary got the apple there.
+20. Sandra went back to the kitchen.
+21. Mary discarded the apple there.
+22. Daniel took the apple there.
+23. Mary put down the milk there.
+24. Daniel travelled to the bathroom.
+
+Now, answer the following question:
+Where is the apple?"	bathroom	from the context sentences, we can track the movement of mary, daniel, and the apple. in sentence 19, mary got the apple in the bedroom. in sentence 21, mary discarded the apple there, implying that the apple was still in the bedroom. in sentence 22, daniel took the apple there, so daniel picked up the apple in the bedroom. in sentence 24, daniel travelled to the bathroom, and since there is no mention of	fully	bedroom	False	Mary picked up the apple there, and then discarded it. Since Mary discarded the apple, it is likely that the apple was in the location where Mary discarded it. Mary picked up the apple in the bedroom, discarded it, and then Daniel took the apple there. Therefore, the apple is likely in the location where Daniel took it, which is the bedroom.		"Reasoning: Mary picked up the apple there, and then discarded it. Since Mary discarded the apple, it is likely that the apple was in the location where Mary discarded it. Mary picked up the apple in the bedroom, discarded it, and then Daniel took the apple there. Therefore, the apple is likely in the location where Daniel took it, which is the bedroom.
+
+Answer: bedroom"	0.0886	0.0253	False	False	False	False	0
+609	2	22	4	"*TASK*
+Here are the context sentences:
+26. Mary journeyed to the hallway.
+27. Daniel went to the kitchen.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	from the context sentences, we can track the movement of mary and daniel, but there is no new information about the milk. however, we can refer to previous parts of the conversation history. in sentence 23, mary put down the milk in the bedroom, and there is no subsequent mention of the milk being moved or discarded. therefore, it can be logically inferred that the milk remains in the bedroom.	none	bedroom	True	There is no mention of the milk being moved or discarded after sentence 15. Therefore, it is likely that the milk is still in the location where Mary discarded it, which is the bedroom.		"Reasoning: There is no mention of the milk being moved or discarded after sentence 15. Therefore, it is likely that the milk is still in the location where Mary discarded it, which is the bedroom.
+
+Answer: bedroom"	0.0217	0.0435	False	False	False	True	0
+610	2	22	5	"*TASK*
+Here are the context sentences:
+29. Daniel went back to the bathroom.
+30. Daniel dropped the apple.
+
+Now, answer the following question:
+Where is the apple?"	bathroom	from the context sentences, we can track the movement of daniel and the apple. in sentence 29, daniel went back to the bathroom. in sentence 30, daniel dropped the apple, implying that daniel dropped the apple in the bathroom, since that is where daniel is located. therefore, it can be logically inferred that the apple is now in the bathroom.	fully	bathroom	True	Daniel dropped the apple, and since he dropped it in the bathroom, it is likely that the apple is now on the floor in the bathroom.		"Reasoning: Daniel dropped the apple, and since he dropped it in the bathroom, it is likely that the apple is now on the floor in the bathroom.
+
+Answer: bathroom"	0.0556	0.0556	False	False	False	False	0

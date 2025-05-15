@@ -1,0 +1,64 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1616	5	4	1	"*TASK*
+Here are the context sentences:
+1. Fred got the football there.
+2. Fred travelled to the garden.
+3. Fred passed the football to Jeff.
+4. Mary went to the kitchen.
+
+Now, answer the following question:
+Who received the football?"	jeff	"from context sentence 3, ""fred passed the football to jeff"", we can directly infer that jeff received the football. this sentence explicitly states that fred passed the football to jeff, which means jeff is the recipient of the football."	fully	Jeff	True	Fred passed the football to Jeff, which means Jeff received the football.		"Reasoning: Fred passed the football to Jeff, which means Jeff received the football.
+
+Answer: Jeff"	0.0476	0.0476	False	False	False	False	0
+1617	5	4	2	"*TASK*
+Here are the context sentences:
+6. Jeff passed the football to Fred.
+7. Fred handed the football to Jeff.
+
+Now, answer the following question:
+Who gave the football to Jeff?"	fred	"from context sentence 7, ""fred handed the football to jeff"", we can directly infer that fred gave the football to jeff. this sentence explicitly states that fred handed the football to jeff, which means fred is the one who gave the football to jeff."	fully	Fred	True	Fred handed the football to Jeff, which means Fred gave the football to Jeff.		"Reasoning: Fred handed the football to Jeff, which means Fred gave the football to Jeff.
+
+Answer: Fred"	0.1739	0.0435	False	False	False	False	0
+1618	5	4	3	"*TASK*
+Here are the context sentences:
+9. Mary grabbed the milk there.
+10. Jeff journeyed to the kitchen.
+
+Now, answer the following question:
+What did Fred give to Jeff?"	football	"the question asks about what fred gave to jeff, but the provided context sentences (9 and 10) do not mention fred or jeff interacting with each other. however, we can look back at the previous context sentences (6 and 7) which mentioned fred and jeff exchanging the football. specifically, sentence 7 states ""fred handed the football to jeff"". therefore, we can infer that fred gave the football to jeff."	none	Nothing (or not mentioned)	False	There is no mention of Fred giving anything to Jeff in the given context sentences. The sentences only mention Mary grabbing the milk and Jeff journeying to the kitchen, but do not mention Fred giving anything to Jeff.		"Reasoning: There is no mention of Fred giving anything to Jeff in the given context sentences. The sentences only mention Mary grabbing the milk and Jeff journeying to the kitchen, but do not mention Fred giving anything to Jeff.
+
+Answer: Nothing (or not mentioned)"	0.037	0.0185	False	False	False	True	0
+1619	5	4	4	"*TASK*
+Here are the context sentences:
+12. Jeff moved to the garden.
+13. Bill travelled to the bedroom.
+
+Now, answer the following question:
+Who received the football?"	jeff	"the question asks who received the football, and the answer is jeff. to find the reasoning, we need to look back at the previous context sentences. in sentence 3, ""fred passed the football to jeff"", we can see that jeff received the football from fred. this sentence directly states that jeff is the recipient of the football, which aligns with the provided answer."	none	Not mentioned	False	There is no mention of the football in the given context sentences. The sentences only mention Jeff moving to the garden and Bill travelling to the bedroom, but do not mention the football.		"Reasoning: There is no mention of the football in the given context sentences. The sentences only mention Jeff moving to the garden and Bill travelling to the bedroom, but do not mention the football.
+
+Answer: Not mentioned"	0.0	0.0227	False	False	False	True	0
+1620	5	4	5	"*TASK*
+Here are the context sentences:
+15. Jeff put down the football.
+16. Bill took the apple there.
+17. Jeff went back to the bathroom.
+18. Jeff journeyed to the office.
+19. Fred grabbed the football there.
+20. Fred left the football.
+21. Fred moved to the bathroom.
+22. Mary discarded the milk.
+23. Fred travelled to the hallway.
+24. Bill left the apple.
+25. Fred moved to the bathroom.
+26. Bill grabbed the apple there.
+27. Bill dropped the apple there.
+28. Mary picked up the milk there.
+29. Bill travelled to the hallway.
+30. Mary went back to the office.
+31. Bill moved to the garden.
+32. Mary passed the milk to Jeff.
+
+Now, answer the following question:
+Who gave the milk?"	mary	"the question asks who gave the milk, and the answer is mary. to find the reasoning, we need to look at the relevant context sentences. in sentence 32, ""mary passed the milk to jeff"", we can see that mary is the one who gave the milk to jeff. this sentence directly states that mary is the giver of the milk, which aligns with the provided answer."	fully	Mary	True	According to sentence 32, Mary passed the milk to Jeff, which means Mary gave the milk to Jeff.		"Reasoning: According to sentence 32, Mary passed the milk to Jeff, which means Mary gave the milk to Jeff.
+
+Answer: Mary"	0.0345	0.0345	False	False	False	False	0

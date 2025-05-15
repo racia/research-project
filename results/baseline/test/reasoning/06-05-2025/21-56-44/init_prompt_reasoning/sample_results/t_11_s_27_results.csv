@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+131	11	27	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the garden.
+2. Afterwards he journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	the context sentences provide a sequence of events, where daniel first travels to the garden and then journeys to the hallway. since the question asks about daniel's current location, we can infer that the last location mentioned in the sequence is his current location, which is the hallway.	fully	hallway	True	Daniel travelled to the garden and then journeyed to the hallway, which means he is currently in the hallway.		"Reasoning: Daniel travelled to the garden and then journeyed to the hallway, which means he is currently in the hallway.
+
+Answer: hallway"	0.1724	0.069	False	False	False	False	0
+132	11	27	2	"*TASK*
+Here are the context sentences:
+4. Daniel went to the garden.
+5. Following that he went to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	the context sentences describe a sequence of events, where daniel first goes to the garden and then goes to the hallway. since the question asks about daniel's current location, we can infer that the last location mentioned in the sequence is his current location, which is the hallway.	fully	hallway	True	Daniel went to the garden and then went to the hallway, which means he is currently in the hallway.		"Reasoning: Daniel went to the garden and then went to the hallway, which means he is currently in the hallway.
+
+Answer: hallway"	0.1786	0.0714	False	False	False	False	0
+133	11	27	3	"*TASK*
+Here are the context sentences:
+7. John travelled to the kitchen.
+8. After that he went back to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	the context sentences describe the actions of john, but the question asks about the location of daniel. since there is no information provided about daniel's actions or location in the given context sentences, we cannot infer daniel's location from the current context. however, we can look back at the previous parts of the conversation history, where we found that daniel went to the hallway (context lines 4 and 5). therefore, we can conclude that daniel is still in the hallway, as there is	none	not mentioned	False	There is no information about Daniel's location in the given context sentences. The sentences only mention John's movements.		"Reasoning: There is no information about Daniel's location in the given context sentences. The sentences only mention John's movements.
+
+Answer: not mentioned"	0.1	0.0667	False	False	False	True	0
+134	11	27	4	"*TASK*
+Here are the context sentences:
+10. John went to the garden.
+11. Following that he travelled to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	the context sentences describe a sequence of events, where john first goes to the garden and then travels to the bedroom. since the question asks about john's current location, we can infer that the last location mentioned in the sequence is his current location, which is the bedroom.	fully	bedroom	True	John went to the garden and then travelled to the bedroom, which means he is currently in the bedroom.		"Reasoning: John went to the garden and then travelled to the bedroom, which means he is currently in the bedroom.
+
+Answer: bedroom"	0.1071	0.0714	False	False	False	False	0
+135	11	27	5	"*TASK*
+Here are the context sentences:
+13. John journeyed to the kitchen.
+14. Following that he went back to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	the context sentences describe a sequence of events, where john first journeys to the kitchen and then goes back to the bathroom. since the question asks about john's current location, we can infer that the last location mentioned in the sequence is his current location, which is the bathroom.	fully	bathroom	True	John journeyed to the kitchen and then went back to the bathroom, which means he is currently in the bathroom.		"Reasoning: John journeyed to the kitchen and then went back to the bathroom, which means he is currently in the bathroom.
+
+Answer: bathroom"	0.1	0.0667	False	False	False	False	0

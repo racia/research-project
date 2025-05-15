@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	2	Ġstates	Ġthat	ĠSandra	Ġis	Ġnot	Ġin	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	's	Ġcurrent	Ġlocation	Ġis	Ġnot	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	<|eot_id|>

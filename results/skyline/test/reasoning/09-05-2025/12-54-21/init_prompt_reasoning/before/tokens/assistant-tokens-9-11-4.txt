@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	10	,	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

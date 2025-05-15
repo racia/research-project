@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġfootball	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠFred	,	ĠMary	,	Ġand	Ġthe	Ġbathroom	,	Ġbut	Ġnot	Ġfootball	.	ĠTherefore	,	Ġit	Ġis	Ġnot	Ġpossible	Ġto	Ġdetermine	Ġwho	Ġgave	Ġthe	Ġfootball	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

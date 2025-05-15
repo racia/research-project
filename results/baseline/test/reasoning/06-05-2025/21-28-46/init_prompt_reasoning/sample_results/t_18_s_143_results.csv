@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1868	18	143	1	"*TASK*
+Here are the context sentences:
+1. The suitcase fits inside the box.
+2. The chest fits inside the box.
+3. The chocolate fits inside the box.
+4. The box is bigger than the container.
+5. The suitcase is bigger than the box of chocolates.
+
+Now, answer the following question:
+Does the box fit in the box of chocolates?"	no	"from context sentence 5, we know that ""the suitcase is bigger than the box of chocolates."" since the suitcase fits inside the box (context sentence 1), it means the box is bigger than the box of chocolates. therefore, the box cannot fit inside the box of chocolates, leading to the answer ""no""."	fully	no	True	The box is bigger than the container, and the suitcase is bigger than the box of chocolates. This implies that the box is larger than the box of chocolates. Since the box fits inside the box of chocolates, it is not possible for the box to fit inside the box of chocolates.		"Reasoning: The box is bigger than the container, and the suitcase is bigger than the box of chocolates. This implies that the box is larger than the box of chocolates. Since the box fits inside the box of chocolates, it is not possible for the box to fit inside the box of chocolates.
+
+Answer: no"	0.1562	0.0312	False	False	False	False	0
+1869	18	143	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the box bigger than the box of chocolates?"	yes	"from context sentence 5, we know that ""the suitcase is bigger than the box of chocolates."" since the suitcase fits inside the box (context sentence 1), it means the box is bigger than the suitcase. therefore, the box is also bigger than the box of chocolates, leading to the answer ""yes""."	none	no	False	The suitcase is bigger than the box of chocolates, and the box is bigger than the container. This implies that the box is larger than the box of chocolates.		"Reasoning: The suitcase is bigger than the box of chocolates, and the box is bigger than the container. This implies that the box is larger than the box of chocolates.
+
+Answer: no"	0.1538	0.0513	False	False	False	False	0
+1870	18	143	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box of chocolates fit in the box?"	yes	"from context sentence 5, we know that ""the suitcase is bigger than the box of chocolates."" since the suitcase fits inside the box (context sentence 1), it means the box is bigger than the suitcase, and therefore, the box is also bigger than the box of chocolates. this implies that the box of chocolates can fit inside the box, leading to the answer ""yes""."	none	yes	True	The box of chocolates is smaller than the suitcase, and the suitcase fits inside the box. This implies that the box of chocolates is also smaller than the box.		"Reasoning: The box of chocolates is smaller than the suitcase, and the suitcase fits inside the box. This implies that the box of chocolates is also smaller than the box.
+
+Answer: yes"	0.0513	0.0513	False	False	False	False	0
+1871	18	143	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box of chocolates fit in the box?"	yes	"from the previous question, we know that the box is bigger than the box of chocolates. since the box is bigger, it can contain the box of chocolates, which means the box of chocolates fits inside the box, leading to the answer ""yes""."	none	yes	True	The box of chocolates fits inside the box (from sentence 3), which means that the box of chocolates is smaller than the box.		"Reasoning: The box of chocolates fits inside the box (from sentence 3), which means that the box of chocolates is smaller than the box.
+
+Answer: yes"	0.1176	0.0588	False	False	False	False	0
+1872	18	143	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the box of chocolates?"	no	"from the previous question, we know that the box is bigger than the box of chocolates. since the box is bigger, it cannot fit inside the box of chocolates, leading to the answer ""no""."	none	no	True	The box is bigger than the box of chocolates (from sentence 5), which means that the box cannot fit inside the box of chocolates.		"Reasoning: The box is bigger than the box of chocolates (from sentence 5), which means that the box cannot fit inside the box of chocolates.
+
+Answer: no"	0.0857	0.0571	False	False	False	False	0

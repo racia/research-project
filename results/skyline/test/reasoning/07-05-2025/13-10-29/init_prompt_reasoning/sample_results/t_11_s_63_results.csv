@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+311	11	63	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the kitchen.
+2. Then she travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	sandra's location is determined by tracking her movements. initially, she was in an unknown location, but then she journeyed to the kitchen, which means she was in the kitchen. after that, she travelled to the bedroom, which means she left the kitchen and is now in the bedroom. therefore, sandra is currently in the bedroom.	fully	bedroom	True	According to the context sentences, Sandra first went to the kitchen and then travelled to the bedroom. Therefore, her current location is the bedroom.		"assistant
+
+Reasoning: According to the context sentences, Sandra first went to the kitchen and then travelled to the bedroom. Therefore, her current location is the bedroom.
+
+Answer: bedroom"	0.2564	0.0513	False	False	False	False	0
+312	11	63	2	"*TASK*
+Here are the context sentences:
+4. Mary moved to the kitchen.
+5. After that she went back to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	mary's location is determined by tracking her movements. initially, mary's location is unknown, but then she moved to the kitchen, which means she was in the kitchen. after that, she went back to the garden, which means she left the kitchen and returned to the garden. therefore, mary is currently in the garden.	fully	garden	True	According to the context sentences, Mary first moved to the kitchen and then went back to the garden. Therefore, her current location is the garden.		"Reasoning: According to the context sentences, Mary first moved to the kitchen and then went back to the garden. Therefore, her current location is the garden.
+
+Answer: garden"	0.1667	0.0556	False	False	False	False	0
+313	11	63	3	"*TASK*
+Here are the context sentences:
+7. Sandra journeyed to the kitchen.
+8. Afterwards she went to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	sandra's location is determined by tracking her movements. initially, sandra journeyed to the kitchen, which means she was in the kitchen. afterwards, she went to the garden, which means she left the kitchen and moved to the garden. therefore, sandra is currently in the garden.	fully	garden	True	According to the context sentences, Sandra first went to the kitchen and then went to the garden. Therefore, her current location is the garden.		"Reasoning: According to the context sentences, Sandra first went to the kitchen and then went to the garden. Therefore, her current location is the garden.
+
+Answer: garden"	0.0571	0.0571	False	False	False	False	0
+314	11	63	4	"*TASK*
+Here are the context sentences:
+10. John went back to the kitchen.
+11. After that he journeyed to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"the question asks about sandra's location, but the context sentences only provide information about john's movements. there is no mention of sandra in the context sentences. however, the answer provided is ""garden"", which suggests that sandra's location was established in a previous part of the conversation. since the previous parts of the conversation are not provided, we cannot determine sandra's location based on the current context. the answer ""garden"" seems to be based on information not provided in the current"	none	garden	True	The context sentences only provide information about John's movements, but not about Sandra's current location. The previous information about Sandra's location was that she was in the garden (from sentences 7 and 8).		"Reasoning: The context sentences only provide information about John's movements, but not about Sandra's current location. The previous information about Sandra's location was that she was in the garden (from sentences 7 and 8).
+
+Answer: garden"	0.102	0.0408	False	False	False	True	0
+315	11	63	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the bathroom.
+14. After that she journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	sandra's location is determined by tracking her movements. initially, sandra journeyed to the bathroom, which means she was in the bathroom. after that, she journeyed to the kitchen, which means she left the bathroom and moved to the kitchen. therefore, sandra is currently in the kitchen.	fully	kitchen	True	According to the context sentences, Sandra first went to the bathroom and then journeyed to the kitchen. Therefore, her current location is the kitchen.		"Reasoning: According to the context sentences, Sandra first went to the bathroom and then journeyed to the kitchen. Therefore, her current location is the kitchen.
+
+Answer: kitchen"	0.0278	0.0556	False	False	False	False	0

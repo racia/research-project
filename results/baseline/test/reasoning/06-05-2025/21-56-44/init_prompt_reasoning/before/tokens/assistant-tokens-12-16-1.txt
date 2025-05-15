@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġimplies	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġbedroom	.	ĠThen	,	ĠJohn	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġmeans	ĠMary	Ġis	Ġwith	ĠJohn	.	ĠSince	ĠJohn	Ġis	Ġin	Ġthe	Ġbedroom	,	ĠMary	Ġmust	Ġbe	Ġin	Ġthe	Ġbedroom	Ġas	Ġwell	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

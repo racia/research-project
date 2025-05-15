@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3409	15	103	1	"*TASK*
+Here are the context sentences:
+1. Mice are afraid of wolves.
+2. Jessica is a mouse.
+3. Winona is a mouse.
+4. Sheep are afraid of cats.
+5. Wolves are afraid of cats.
+6. Cats are afraid of sheep.
+7. Gertrude is a wolf.
+8. Emily is a mouse.
+
+Now, answer the following question:
+What is emily afraid of?"	wolf	from context sentence 2, we know that jessica is a mouse, and from sentence 1, we know that mice are afraid of wolves. since emily is also a mouse (sentence 8), we can logically infer that emily is afraid of wolves.	fully	wolves	True	According to sentence 1, mice are afraid of wolves. Since Emily is a mouse (sentence 8), it can be inferred that Emily is afraid of wolves.		"Reasoning: According to sentence 1, mice are afraid of wolves. Since Emily is a mouse (sentence 8), it can be inferred that Emily is afraid of wolves.
+
+Answer: wolves"	0.05	0.05	False	False	False	False	0
+3410	15	103	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	wolf	from the previous context sentences, we know that emily is a mouse (sentence 8). we also know that mice are afraid of wolves (sentence 1). therefore, we can logically conclude that emily, being a mouse, is afraid of wolves.	none	wolves	True	According to sentence 1, mice are afraid of wolves. Since Emily is a mouse (sentence 8), it can be inferred that Emily is afraid of wolves.		"Reasoning: According to sentence 1, mice are afraid of wolves. Since Emily is a mouse (sentence 8), it can be inferred that Emily is afraid of wolves.
+
+Answer: wolves"	0.05	0.05	False	False	False	False	0
+3411	15	103	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	wolf	there is no context provided about emily or what she is afraid of. however, i was previously provided with context sentences, and from those sentences, i know that emily is a mouse (sentence 8) and mice are afraid of wolves (sentence 1). therefore, i can logically conclude that emily, being a mouse, is afraid of wolves.	none	wolves	True	According to sentence 1, mice are afraid of wolves. Since Emily is a mouse (sentence 8), it can be inferred that Emily is afraid of wolves.		"Reasoning: According to sentence 1, mice are afraid of wolves. Since Emily is a mouse (sentence 8), it can be inferred that Emily is afraid of wolves.
+
+Answer: wolves"	0.0	0.05	False	False	False	False	0
+3412	15	103	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	wolf	i was previously provided with context sentences, and from those sentences, i know that emily is a mouse (sentence 8) and mice are afraid of wolves (sentence 1). therefore, i can logically conclude that emily, being a mouse, is afraid of wolves.	none	wolves	True	According to sentence 1, mice are afraid of wolves. Since Emily is a mouse (sentence 8), it can be inferred that Emily is afraid of wolves.		"Reasoning: According to sentence 1, mice are afraid of wolves. Since Emily is a mouse (sentence 8), it can be inferred that Emily is afraid of wolves.
+
+Answer: wolves"	0.0	0.05	False	False	False	False	0

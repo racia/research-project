@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠFred	's	Ġtravel	Ġto	Ġthe	Ġpark	Ġand	ĠMary	's	Ġvisit	Ġto	Ġthe	Ġschool	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġinformation	Ġabout	Ġher	Ġprevious	Ġlocation	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

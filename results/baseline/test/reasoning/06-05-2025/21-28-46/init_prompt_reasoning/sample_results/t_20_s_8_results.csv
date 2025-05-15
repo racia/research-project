@@ -1,0 +1,89 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2136	20	8	1	"*TASK*
+Here are the context sentences:
+1. Yann is tired.
+
+Now, answer the following question:
+Where will yann go?"	bedroom	when yann is tired, it is logical to assume that he will go to a place where he can rest. in most cases, a bedroom is a common place where people go to rest or sleep when they are tired. therefore, based on the context, it is reasonable to conclude that yann will go to the bedroom.	fully	bedroom	True	Since Yann is tired, it is likely that Yann will go to a place where they can rest and sleep.		"Reasoning: Since Yann is tired, it is likely that Yann will go to a place where they can rest and sleep.
+
+Answer: bedroom"	0.0	0.0323	False	False	False	False	0
+2137	20	8	2	"*TASK*
+Here are the context sentences:
+3. Jason is bored.
+
+Now, answer the following question:
+Where will jason go?"	garden	when jason is bored, it is likely that he will look for a change of environment or an activity to engage in. since there is no specific information about jason's preferences or available options, a logical assumption is that he will go to a nearby location that offers a change of scenery or a potential activity. in many cases, a garden is a common outdoor space that people visit to relax, take a walk, or engage in outdoor activities, which could help alleviate boredom. therefore, based	fully	garden	True	Since Jason is bored, it is likely that Jason will go to a place where they can find something interesting or entertaining to alleviate their boredom.		"Reasoning: Since Jason is bored, it is likely that Jason will go to a place where they can find something interesting or entertaining to alleviate their boredom.
+
+Answer: garden"	0.0	0.0286	False	False	False	False	0
+2138	20	8	3	"*TASK*
+Here are the context sentences:
+5. Antoine is bored.
+
+Now, answer the following question:
+Where will antoine go?"	garden	the situation with antoine is similar to the one with jason in the previous context, where jason was also bored and went to the garden. since there is no additional information about antoine's specific preferences or available options, it is logical to assume that antoine, like jason, will also go to the garden to alleviate his boredom. the garden seems to be a common destination for people who are bored, as it offers a change of environment and potential activities.	fully	garden	True	Since Antoine is bored, it is likely that Antoine will go to a place where they can find something interesting or entertaining to alleviate their boredom.		"Reasoning: Since Antoine is bored, it is likely that Antoine will go to a place where they can find something interesting or entertaining to alleviate their boredom.
+
+Answer: garden"	0.0	0.0286	False	False	False	False	0
+2139	20	8	4	"*TASK*
+Here are the context sentences:
+7. Antoine moved to the garden.
+
+Now, answer the following question:
+Why did antoine go to the garden?"	bored	in the previous context, it was established that antoine was bored (context line 5). now, it is stated that antoine moved to the garden (context line 7). given this information, it is logical to conclude that antoine went to the garden because he was bored. the garden seems to be a destination that people go to when they are bored, as seen in previous contexts (jason and antoine). therefore, antoine's boredom is the reason why he	none	bored	True	Since Antoine moved to the garden, it is likely that Antoine went to the garden because they were bored.		"Reasoning: Since Antoine moved to the garden, it is likely that Antoine went to the garden because they were bored.
+
+Answer: bored"	0.0357	0.0357	False	True	False	False	0
+2140	20	8	5	"*TASK*
+Here are the context sentences:
+9. Antoine got the football there.
+
+Now, answer the following question:
+Why did antoine get the football?"	bored	previously, it was established that antoine was bored (context line 5) and went to the garden (context line 7). now, it is stated that antoine got the football there (context line 9). given that antoine was bored and went to the garden, it is logical to assume that he got the football to alleviate his boredom. playing with a football is a common activity that people engage in to have fun and entertain themselves, which would help to alleviate boredom	none	bored	True	Since Antoine got the football in the garden, it is likely that Antoine got the football because they were bored and the garden is a place where they went to alleviate their boredom.		"Reasoning: Since Antoine got the football in the garden, it is likely that Antoine got the football because they were bored and the garden is a place where they went to alleviate their boredom.
+
+Answer: bored"	0.0	0.0238	False	True	False	False	0
+2141	20	8	6	"*TASK*
+Here are the context sentences:
+11. Sumit is hungry.
+
+Now, answer the following question:
+Where will sumit go?"	kitchen	"""reasoning: <reasoning>"""	fully	kitchen	True	Since Sumit is hungry, it is likely that Sumit will go to a place where they can find food to satisfy their hunger.		"Reasoning: Since Sumit is hungry, it is likely that Sumit will go to a place where they can find food to satisfy their hunger.
+
+Answer: kitchen"	0.0	0.0294	False	False	False	False	0
+2142	20	8	7	"*TASK*
+Here are the context sentences:
+13. Sumit travelled to the kitchen.
+
+Now, answer the following question:
+Why did sumit go to the kitchen?"	hungry	"""reasoning: <reasoning>"""	none	hungry	True	Since Sumit travelled to the kitchen, it is likely that Sumit went to the kitchen because they were hungry.		"Reasoning: Since Sumit travelled to the kitchen, it is likely that Sumit went to the kitchen because they were hungry.
+
+Answer: hungry"	0.0	0.0333	False	False	False	False	0
+2143	20	8	8	"*TASK*
+Here are the context sentences:
+15. Yann travelled to the bedroom.
+
+Now, answer the following question:
+Why did yann go to the bedroom?"	tired	"""reasoning: <reasoning>"""	none	tired	True	Since Yann travelled to the bedroom, it is likely that Yann went to the bedroom because they were tired.		"Reasoning: Since Yann travelled to the bedroom, it is likely that Yann went to the bedroom because they were tired.
+
+Answer: tired"	0.0	0.0333	False	False	False	False	0
+2144	20	8	9	"*TASK*
+Here are the context sentences:
+17. Sumit grabbed the apple there.
+
+Now, answer the following question:
+Why did sumit get the apple?"	hungry	"""reasoning: <reasoning>"""	none	hungry	True	Since Sumit grabbed the apple in the kitchen, it is likely that Sumit got the apple because they were hungry and the kitchen is a place where they went to find food.		"Reasoning: Since Sumit grabbed the apple in the kitchen, it is likely that Sumit got the apple because they were hungry and the kitchen is a place where they went to find food.
+
+Answer: hungry"	0.0	0.0233	False	False	False	False	0
+2145	20	8	10	"*TASK*
+Here are the context sentences:
+19. Yann took the pajamas there.
+
+Now, answer the following question:
+Why did yann get the pajamas?"	tired	"""reasoning: <reasoning>"""	none	tired	True	Since Yann took the pajamas in the bedroom, it is likely that Yann got the pajamas because they were tired and the bedroom is a place where they went to rest.		"Reasoning: Since Yann took the pajamas in the bedroom, it is likely that Yann got the pajamas because they were tired and the bedroom is a place where they went to rest.
+
+Answer: tired"	0.0	0.0227	False	False	False	False	0
+2146	20	8	11	"*TASK*
+Here are the context sentences:
+21. Jason moved to the garden.
+
+Now, answer the following question:
+Why did jason go to the garden?"	bored	"""reasoning: <reasoning>"""	none	bored	True	Since Jason moved to the garden, it is likely that Jason went to the garden because they were bored.		"Reasoning: Since Jason moved to the garden, it is likely that Jason went to the garden because they were bored.
+
+Answer: bored"	0.0	0.0357	False	True	False	False	0

@@ -1,0 +1,45 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1216	18	14	1	"*TASK*
+Here are the context sentences:
+1. The chocolate fits inside the suitcase.
+2. The container fits inside the chest.
+3. The chocolate fits inside the box.
+4. The chest is bigger than the chocolate.
+5. The suitcase fits inside the box.
+
+Now, answer the following question:
+Does the box fit in the chocolate?"	no	"from context sentence 3, we know that the chocolate fits inside the box, which implies that the box is bigger than the chocolate. if the box were to fit inside the chocolate, it would mean that the chocolate is bigger than the box, which contradicts the established fact. therefore, the box cannot fit inside the chocolate, and the correct answer is ""no""."	fully	No	True	The question asks if the box fits inside the chocolate. However, the context sentences do not mention the chocolate being a container that can hold other objects. In fact, sentence 4 states that the chest is bigger than the chocolate, implying that the chocolate is a small object. Therefore, it is not possible for the box to fit inside the chocolate.		"Reasoning: The question asks if the box fits inside the chocolate. However, the context sentences do not mention the chocolate being a container that can hold other objects. In fact, sentence 4 states that the chest is bigger than the chocolate, implying that the chocolate is a small object. Therefore, it is not possible for the box to fit inside the chocolate.
+
+Answer: No"	0.2208	0.026	False	False	False	True	0
+1217	18	14	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the box?"	yes	"from context sentence 3, we know that ""the chocolate fits inside the box."" this sentence directly states that the chocolate fits in the box, which is the exact question being asked. therefore, the answer is indeed ""yes""."	none	Yes	True	According to sentence 3, the chocolate fits inside the box, which implies that the box is large enough to accommodate the chocolate.		"Reasoning: According to sentence 3, the chocolate fits inside the box, which implies that the box is large enough to accommodate the chocolate.
+
+Answer: Yes"	0.1818	0.0606	False	False	False	False	0
+1218	18	14	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the chocolate?"	no	"from the previous context sentence 3, we know that ""the chocolate fits inside the box."" this implies that the box is larger than the chocolate. if the box were to fit inside the chocolate, it would mean that the chocolate is larger than the box, which contradicts the established fact. therefore, the box cannot fit inside the chocolate, and the correct answer is ""no""."	none	No	True	The context sentences do not provide any information that suggests the box can fit inside the chocolate. In fact, sentence 4 states that the chest is bigger than the chocolate, implying that the chocolate is a small object. Therefore, it is not possible for the box to fit inside the chocolate.		"Reasoning: The context sentences do not provide any information that suggests the box can fit inside the chocolate. In fact, sentence 4 states that the chest is bigger than the chocolate, implying that the chocolate is a small object. Therefore, it is not possible for the box to fit inside the chocolate.
+
+Answer: No"	0.1692	0.0308	False	False	False	True	0
+1219	18	14	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chocolate fit in the box?"	yes	"we already know from the previous context sentence 3 that ""the chocolate fits inside the box."" this sentence directly states that the chocolate fits in the box, which is the exact question being asked. therefore, the answer is indeed ""yes""."	none	Yes	True	According to sentence 3, the chocolate fits inside the box, which implies that the box is large enough to accommodate the chocolate.		"Reasoning: According to sentence 3, the chocolate fits inside the box, which implies that the box is large enough to accommodate the chocolate.
+
+Answer: Yes"	0.0	0.0606	False	False	False	False	0
+1220	18	14	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the box fit in the chocolate?"	no	"we know from the previous context sentence 3 that ""the chocolate fits inside the box."" this implies that the box is larger than the chocolate. if the box were to fit inside the chocolate, it would mean that the chocolate is larger than the box, which contradicts the established fact. therefore, the box cannot fit inside the chocolate, and the correct answer is ""no""."	none	No	True	The context sentences do not provide any information that suggests the box can fit inside the chocolate. In fact, sentence 3 states that the chocolate fits inside the box, implying that the box is larger than the chocolate. Therefore, it is not possible for the box to fit inside the chocolate.		"Reasoning: The context sentences do not provide any information that suggests the box can fit inside the chocolate. In fact, sentence 3 states that the chocolate fits inside the box, implying that the box is larger than the chocolate. Therefore, it is not possible for the box to fit inside the chocolate.
+
+Answer: No"	0.0462	0.0308	False	False	False	True	0

@@ -1,0 +1,59 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+725	17	79	1	"*TASK*
+Here are the context sentences:
+1. The red square is to the left of the triangle.
+2. The triangle is to the left of the blue square.
+
+Now, answer the following question:
+Is the red square to the right of the blue square?"	no	from the context sentences, we know that the red square is to the left of the triangle (sentence 1), and the triangle is to the left of the blue square (sentence 2). this means that the red square is to the left of the triangle, and the triangle is to the left of the blue square. therefore, the red square must be to the left of the blue square, not to the right of it.	fully	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+726	17	79	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the left of the blue square?"	yes	from the previous context sentences, we know that the red square is to the left of the triangle (sentence 1), and the triangle is to the left of the blue square (sentence 2). therefore, we can logically conclude that the red square is to the left of the blue square, as it is to the left of the triangle and the triangle is to the left of the blue square.	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+727	17	79	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square above the red square?"	no	"the context sentences do not provide any information about the vertical positions of the red square and the blue square. they only describe their horizontal positions relative to each other and the triangle. therefore, we cannot conclude that the blue square is above the red square, and the answer is ""no"" because there is no evidence to suggest that it is."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+728	17	79	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square above the blue square?"	no	"the context sentences do not provide any information about the vertical positions of the red square and the blue square. they only describe their horizontal positions relative to each other and the triangle. therefore, we cannot conclude that the red square is above the blue square, and the answer is ""no"" because there is no evidence to suggest that it is."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+729	17	79	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the left of the blue square?"	yes	we know from the previous context sentences that the red square is to the left of the triangle (sentence 1), and the triangle is to the left of the blue square (sentence 2). therefore, we can logically conclude that the red square is to the left of the blue square, as it is to the left of the triangle and the triangle is to the left of the blue square.	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+730	17	79	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square to the right of the blue square?"	no	" the context lines: 1. the red square is to the left of the triangle.
+2. the triangle is to the left of the blue square.
+this is the question: is the triangle to the right of the red square?
+this is the answer: yes"	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+731	17	79	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the left of the red square?"	no	" the context lines: 1. the red square is to the left of the triangle.
+2. the triangle is to the left of the blue square.
+this is the question: is the triangle to the left of the red square?
+this is the answer: no"	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+732	17	79	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red square below the blue square?"	no	" the context lines: 1. the red square is to the left of the triangle.
+2. the triangle is to the left of the blue square.
+this is the question: is the triangle to the left of the red square?
+this is the answer: no"	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0

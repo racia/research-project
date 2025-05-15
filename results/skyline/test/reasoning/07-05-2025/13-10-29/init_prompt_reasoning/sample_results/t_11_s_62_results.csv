@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+306	11	62	1	"*TASK*
+Here are the context sentences:
+1. John went back to the office.
+2. Following that he went back to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"the context sentences describe john's movements, with sentence 1 stating that john went back to the office, and sentence 2 stating that following that, he went back to the bedroom. this implies that john's most recent location is the bedroom, as he went there after leaving the office. therefore, the answer to the question ""where is john?"" is the bedroom."	fully	bedroom	True	The context sentences indicate that John went back to the office (sentence 1) and then went back to the bedroom (sentence 2). This implies that John's current location is the bedroom.		"assistant
+
+Reasoning: The context sentences indicate that John went back to the office (sentence 1) and then went back to the bedroom (sentence 2). This implies that John's current location is the bedroom.
+
+Answer: bedroom"	0.22	0.04	False	False	False	False	0
+307	11	62	2	"*TASK*
+Here are the context sentences:
+4. Sandra travelled to the bedroom.
+5. Then she moved to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"the context sentences describe sandra's movements, with sentence 4 stating that sandra travelled to the bedroom, and sentence 5 stating that then she moved to the garden. this implies that sandra's current location is the garden, as she moved there after being in the bedroom. therefore, the answer to the question ""where is sandra?"" is the garden."	fully	garden	True	The context sentences indicate that Sandra travelled to the bedroom (sentence 4) and then moved to the garden (sentence 5). This implies that Sandra's current location is the garden.		"Reasoning: The context sentences indicate that Sandra travelled to the bedroom (sentence 4) and then moved to the garden (sentence 5). This implies that Sandra's current location is the garden.
+
+Answer: garden"	0.0909	0.0455	False	False	False	False	0
+308	11	62	3	"*TASK*
+Here are the context sentences:
+7. Sandra travelled to the kitchen.
+8. Following that she travelled to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"the context sentences describe sandra's movements, with sentence 7 stating that sandra travelled to the kitchen, and sentence 8 stating that following that, she travelled to the garden. this implies that sandra's current location is the garden, as she travelled there after being in the kitchen. therefore, the answer to the question ""where is sandra?"" is the garden."	fully	garden	True	The context sentences indicate that Sandra travelled to the kitchen (sentence 7) and then travelled to the garden (sentence 8). This implies that Sandra's current location is the garden.		"Reasoning: The context sentences indicate that Sandra travelled to the kitchen (sentence 7) and then travelled to the garden (sentence 8). This implies that Sandra's current location is the garden.
+
+Answer: garden"	0.25	0.0455	False	False	False	False	0
+309	11	62	4	"*TASK*
+Here are the context sentences:
+10. Mary journeyed to the hallway.
+11. Afterwards she journeyed to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"the context sentences describe mary's movements, not sandra's. there is no information provided about sandra's movements or location. the answer ""garden"" does not logically follow from the provided context sentences, as they only mention mary's journey to the hallway and then to the garden. the question asks about sandra's location, but there is no information about sandra in the context sentences."	none	garden	True	The context sentences (10 and 11) are about Mary's movements, but the question asks about Sandra's location. The last known location of Sandra was in the garden (sentence 8).		"Reasoning: The context sentences (10 and 11) are about Mary's movements, but the question asks about Sandra's location. The last known location of Sandra was in the garden (sentence 8).
+
+Answer: garden"	0.1957	0.0435	False	False	False	False	0
+310	11	62	5	"*TASK*
+Here are the context sentences:
+13. Mary moved to the bathroom.
+14. Afterwards she travelled to the office.
+
+Now, answer the following question:
+Where is Mary?"	office	"the context sentences describe mary's movements, with sentence 13 stating that mary moved to the bathroom, and sentence 14 stating that afterwards she travelled to the office. this implies that mary's current location is the office, as she travelled there after being in the bathroom. therefore, the answer to the question ""where is mary?"" is the office."	fully	office	True	The context sentences indicate that Mary moved to the bathroom (sentence 13) and then travelled to the office (sentence 14). This implies that Mary's current location is the office.		"Reasoning: The context sentences indicate that Mary moved to the bathroom (sentence 13) and then travelled to the office (sentence 14). This implies that Mary's current location is the office.
+
+Answer: office"	0.1136	0.0455	False	False	False	False	0

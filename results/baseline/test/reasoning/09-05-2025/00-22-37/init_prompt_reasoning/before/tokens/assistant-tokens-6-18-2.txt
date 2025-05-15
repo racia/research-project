@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSentence	Ġ	5	Ġexplicitly	Ġstates	Ġthat	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġindicating	Ġthat	Ġshe	Ġis	Ġindeed	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

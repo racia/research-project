@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+921	12	85	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Mary moved to the bedroom.
+2. John and Sandra went to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	"according to context sentence 2, ""john and sandra went to the hallway"", which explicitly states that john is in the hallway."	fully	hallway	True	According to context sentence 2, John and Sandra went to the hallway, which means John is currently in the hallway.		"assistant
+
+Reasoning: According to context sentence 2, John and Sandra went to the hallway, which means John is currently in the hallway.
+
+Answer: hallway"	0.0	0.0294	False	False	False	False	0
+922	12	85	2	"*TASK*
+Here are the context sentences:
+4. John and Mary moved to the kitchen.
+5. John and Sandra travelled to the garden.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"according to context sentence 4, ""john and mary moved to the kitchen"", which explicitly states that mary is in the kitchen."	fully	kitchen	True	According to context sentence 4, John and Mary moved to the kitchen, but there is no subsequent information about Mary moving to a different location. Therefore, Mary is still in the kitchen.		"Reasoning: According to context sentence 4, John and Mary moved to the kitchen, but there is no subsequent information about Mary moving to a different location. Therefore, Mary is still in the kitchen.
+
+Answer: kitchen"	0.0222	0.0222	False	False	False	True	0
+923	12	85	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John moved to the hallway.
+8. John and Daniel travelled to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	"according to context sentence 7, ""daniel and john moved to the hallway"", john was initially in the hallway. then, according to context sentence 8, ""john and daniel travelled to the garden"", which means john moved from the hallway to the garden. therefore, john is currently in the garden."	fully	garden	True	According to context sentence 7, Daniel and John moved to the hallway, and then according to context sentence 8, John and Daniel travelled to the garden. This means John is currently in the garden.		"Reasoning: According to context sentence 7, Daniel and John moved to the hallway, and then according to context sentence 8, John and Daniel travelled to the garden. This means John is currently in the garden.
+
+Answer: garden"	0.0	0.0208	False	False	False	False	0
+924	12	85	4	"*TASK*
+Here are the context sentences:
+10. Mary and Daniel went to the office.
+11. John and Daniel moved to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"according to context sentence 10, ""mary and daniel went to the office"", daniel was initially in the office. then, according to context sentence 11, ""john and daniel moved to the hallway"", which means daniel moved from the office to the hallway. therefore, daniel is currently in the hallway."	fully	hallway	True	According to context sentence 10, Mary and Daniel went to the office, but then according to context sentence 11, John and Daniel moved to the hallway. This means Daniel is currently in the hallway.		"Reasoning: According to context sentence 10, Mary and Daniel went to the office, but then according to context sentence 11, John and Daniel moved to the hallway. This means Daniel is currently in the hallway.
+
+Answer: hallway"	0.1042	0.0208	False	False	False	False	0
+925	12	85	5	"*TASK*
+Here are the context sentences:
+13. John and Mary moved to the garden.
+14. John and Sandra went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"there is no mention of daniel in the provided context sentences (13 and 14). however, since the answer is ""hallway"", we can infer that the information about daniel's location must have been provided in previous context sentences."	none	hallway	True	There is no information about Daniel's current location in the provided context sentences. The last information about Daniel was in context sentence 11, where John and Daniel moved to the hallway.		"Reasoning: There is no information about Daniel's current location in the provided context sentences. The last information about Daniel was in context sentence 11, where John and Daniel moved to the hallway.
+
+Answer: hallway"	0.093	0.0233	False	False	False	True	0

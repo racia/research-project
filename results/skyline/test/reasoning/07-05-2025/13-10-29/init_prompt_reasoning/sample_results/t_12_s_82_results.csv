@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+906	12	82	1	"*TASK*
+Here are the context sentences:
+1. Mary and Sandra went to the kitchen.
+2. Sandra and Mary went to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	according to the context sentences, sandra went to the kitchen with mary in sentence 1, and then they both went to the bedroom in sentence 2. since there is no information about sandra leaving the bedroom, it can be logically inferred that sandra is still in the bedroom.	fully	bedroom	True	According to the context sentences, Sandra and Mary went to the bedroom in sentence 2, which means Sandra is currently in the bedroom.		"assistant
+
+Reasoning: According to the context sentences, Sandra and Mary went to the bedroom in sentence 2, which means Sandra is currently in the bedroom.
+
+Answer: bedroom"	0.0263	0.0263	False	False	False	False	0
+907	12	82	2	"*TASK*
+Here are the context sentences:
+4. Mary and Sandra journeyed to the office.
+5. John and Daniel went back to the office.
+
+Now, answer the following question:
+Where is John?"	office	according to sentence 5, john went back to the office with daniel, which implies that john is currently located in the office.	fully	office	True	According to the context sentences, John and Daniel went back to the office in sentence 5, which means John is currently in the office.		"Reasoning: According to the context sentences, John and Daniel went back to the office in sentence 5, which means John is currently in the office.
+
+Answer: office"	0.1714	0.0286	False	False	False	False	0
+908	12	82	3	"*TASK*
+Here are the context sentences:
+7. John and Mary travelled to the bedroom.
+8. Daniel and Sandra went back to the garden.
+
+Now, answer the following question:
+Where is John?"	bedroom	according to sentence 7, john travelled to the bedroom with mary, and there is no subsequent information about john leaving the bedroom. therefore, it can be logically inferred that john is still in the bedroom.	fully	bedroom	True	According to the context sentences, John and Mary travelled to the bedroom in sentence 7, which means John is currently in the bedroom.		"Reasoning: According to the context sentences, John and Mary travelled to the bedroom in sentence 7, which means John is currently in the bedroom.
+
+Answer: bedroom"	0.0	0.0294	False	False	False	False	0
+909	12	82	4	"*TASK*
+Here are the context sentences:
+10. Mary and Sandra moved to the kitchen.
+11. Sandra and Mary moved to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	according to sentence 10, sandra moved to the kitchen with mary, and then according to sentence 11, sandra and mary moved to the hallway. since there is no information about sandra leaving the hallway, it can be logically inferred that sandra is currently in the hallway.	fully	hallway	True	According to the context sentences, Sandra and Mary moved to the hallway in sentence 11, which means Sandra is currently in the hallway.		"Reasoning: According to the context sentences, Sandra and Mary moved to the hallway in sentence 11, which means Sandra is currently in the hallway.
+
+Answer: hallway"	0.1471	0.0294	False	False	False	False	0
+910	12	82	5	"*TASK*
+Here are the context sentences:
+13. John and Mary journeyed to the kitchen.
+14. Mary and John journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	according to sentence 13, mary journeyed to the kitchen with john, and then according to sentence 14, mary and john journeyed to the bedroom. since there is no information about mary leaving the bedroom, it can be logically inferred that mary is currently in the bedroom.	fully	bedroom	True	According to the context sentences, Mary and John journeyed to the bedroom in sentence 14, which means Mary is currently in the bedroom.		"Reasoning: According to the context sentences, Mary and John journeyed to the bedroom in sentence 14, which means Mary is currently in the bedroom.
+
+Answer: bedroom"	0.0	0.0286	False	False	False	False	0

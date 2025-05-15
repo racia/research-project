@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1106	8	22	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the office.
+2. John took the apple there.
+
+Now, answer the following question:
+What is John carrying?"	apple	"from the context sentences, we know that john took the apple at the office (sentence 2). the verb ""took"" implies that john picked up the apple and is now holding or carrying it. therefore, the answer to the question ""what is john carrying?"" is indeed ""apple"", as john is carrying the apple he took at the office."	fully	apple	True	In sentence 2, it is mentioned that John took the apple there, which implies that John is carrying the apple.		"assistant
+
+Reasoning: In sentence 2, it is mentioned that John took the apple there, which implies that John is carrying the apple.
+
+Answer: apple"	0.0588	0.0294	False	False	False	True	0
+1107	8	22	2	"*TASK*
+Here are the context sentences:
+4. Sandra journeyed to the bathroom.
+5. John left the apple.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"in the previous context, we knew that john took the apple at the office (sentence 2). however, in the new context, sentence 5 states that john left the apple. the verb ""left"" implies that john is no longer holding or carrying the apple. therefore, the answer to the question ""what is john carrying?"" is indeed ""nothing"", as john is not carrying the apple anymore."	partially	nothing	True	In sentence 5, it is mentioned that John left the apple, which implies that John is no longer carrying the apple.		"Reasoning: In sentence 5, it is mentioned that John left the apple, which implies that John is no longer carrying the apple.
+
+Answer: nothing"	0.1562	0.0625	False	False	False	True	0
+1108	8	22	3	"*TASK*
+Here are the context sentences:
+7. Daniel moved to the kitchen.
+8. John got the apple there.
+
+Now, answer the following question:
+What is John carrying?"	apple	"in the previous context, we knew that john left the apple (sentence 5). however, in the new context, sentence 8 states that john got the apple in the kitchen. the verb ""got"" implies that john picked up or acquired the apple again. therefore, the answer to the question ""what is john carrying?"" is indeed ""apple"", as john is now carrying the apple he got in the kitchen."	partially	apple	True	In sentence 8, it is mentioned that John got the apple there, which implies that John is carrying the apple.		"Reasoning: In sentence 8, it is mentioned that John got the apple there, which implies that John is carrying the apple.
+
+Answer: apple"	0.1935	0.0968	False	False	False	True	0
+1109	8	22	4	"*TASK*
+Here are the context sentences:
+10. Daniel went back to the bathroom.
+11. John discarded the apple.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"in the previous context, we knew that john got the apple in the kitchen (sentence 8). however, in the new context, sentence 11 states that john discarded the apple. the verb ""discarded"" implies that john got rid of or let go of the apple. therefore, the answer to the question ""what is john carrying?"" is indeed ""nothing"", as john is no longer carrying the apple after discarding it."	partially	nothing	True	In sentence 11, it is mentioned that John discarded the apple, which implies that John is no longer carrying the apple.		"Reasoning: In sentence 11, it is mentioned that John discarded the apple, which implies that John is no longer carrying the apple.
+
+Answer: nothing"	0.125	0.125	False	False	False	True	0
+1110	8	22	5	"*TASK*
+Here are the context sentences:
+13. Daniel travelled to the kitchen.
+14. John moved to the garden.
+
+Now, answer the following question:
+What is John carrying?"	nothing	"in the previous context, we knew that john discarded the apple (sentence 11). there is no new information about john picking up or carrying any object. john's movement to the garden (sentence 14) does not imply that he is carrying anything. therefore, the answer to the question ""what is john carrying?"" is indeed ""nothing"", as there is no indication that john is carrying any object."	none	nothing	True	There is no information about John picking up or carrying anything in the garden. The previous information about John discarding the apple is still valid.		"Reasoning: There is no information about John picking up or carrying anything in the garden. The previous information about John discarding the apple is still valid.
+
+Answer: nothing"	0.2	0.1143	False	False	False	True	0

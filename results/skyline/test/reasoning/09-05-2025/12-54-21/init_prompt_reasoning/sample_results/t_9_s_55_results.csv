@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1771	9	55	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the bathroom.
+2. Sandra travelled to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	since sandra travelled to the bathroom, it can be inferred that she is currently in the bathroom. the bathroom is a separate location from the hallway, as evidenced by daniel and sandra both going/traveling to the bathroom, implying that they were not already there. therefore, sandra is not in the hallway.	fully	no	True	There is no information provided about Sandra being in the hallway. The context sentences only mention Daniel and Sandra going to the bathroom.		"Reasoning: There is no information provided about Sandra being in the hallway. The context sentences only mention Daniel and Sandra going to the bathroom.
+
+Answer: no"	0.0938	0.0312	False	False	False	True	0
+1772	9	55	2	"*TASK*
+Here are the context sentences:
+4. Sandra moved to the bedroom.
+5. Sandra journeyed to the hallway.
+
+Now, answer the following question:
+Is Sandra in the bathroom?"	no	from the context lines, we know that sandra moved to the bedroom (line 4) and then journeyed to the hallway (line 5). there is no mention of sandra returning to the bathroom or being in the bathroom at any point after her initial travel to the bathroom (line 2). therefore, it can be logically concluded that sandra is not in the bathroom.	fully	no	True	There is no information provided about Sandra being in the bathroom. The context sentences mention Sandra moving to the bedroom and then journeying to the hallway, but there is no mention of the bathroom.		"Reasoning: There is no information provided about Sandra being in the bathroom. The context sentences mention Sandra moving to the bedroom and then journeying to the hallway, but there is no mention of the bathroom.
+
+Answer: no"	0.1556	0.0222	False	False	False	True	0
+1773	9	55	3	"*TASK*
+Here are the context sentences:
+7. Daniel is in the hallway.
+8. Sandra journeyed to the bathroom.
+
+Now, answer the following question:
+Is Sandra in the office?"	no	there is no mention of sandra being in the office or traveling to the office in the context lines. in fact, the last known location of sandra is the bathroom, as stated in line 8. therefore, it can be logically concluded that sandra is not in the office.	fully	no	True	There is no information provided about Sandra being in the office. The context sentences mention Daniel being in the hallway and Sandra journeying to the bathroom, but there is no mention of the office.		"Reasoning: There is no information provided about Sandra being in the office. The context sentences mention Daniel being in the hallway and Sandra journeying to the bathroom, but there is no mention of the office.
+
+Answer: no"	0.0222	0.0222	False	False	False	True	0
+1774	9	55	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the bedroom.
+11. John moved to the hallway.
+
+Now, answer the following question:
+Is Daniel in the bedroom?"	yes	the context lines explicitly state that daniel went to the bedroom (line 10), and there is no subsequent information that suggests he left the bedroom. therefore, it can be logically concluded that daniel is still in the bedroom.	fully	yes	True	The context sentence 10 explicitly states that Daniel went to the bedroom, which implies that Daniel is in the bedroom.		"Reasoning: The context sentence 10 explicitly states that Daniel went to the bedroom, which implies that Daniel is in the bedroom.
+
+Answer: yes"	0.0333	0.0333	False	False	False	False	0
+1775	9	55	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the hallway.
+14. Daniel is not in the bedroom.
+
+Now, answer the following question:
+Is John in the hallway?"	yes	the context lines do not provide direct information about john's location. however, we know that mary journeyed to the hallway (line 13) and daniel is not in the bedroom (line 14). from previous context lines, we know that john moved to the hallway (line 11). there is no information that suggests john left the hallway, so it can be logically concluded that john is still in the hallway.	none	not mentioned	False	There is no recent information provided about John's location. The context sentence 11 mentioned John moving to the hallway, but that was before the new information about Mary and Daniel. Without any update about John's location, we cannot confirm if John is still in the hallway.		"Reasoning: There is no recent information provided about John's location. The context sentence 11 mentioned John moving to the hallway, but that was before the new information about Mary and Daniel. Without any update about John's location, we cannot confirm if John is still in the hallway.
+
+Answer: not mentioned"	0.0968	0.0161	False	False	False	True	0

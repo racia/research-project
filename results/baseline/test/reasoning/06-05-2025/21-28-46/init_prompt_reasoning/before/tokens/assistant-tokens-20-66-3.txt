@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	Ġis	Ġthirsty	,	Ġhe	Ġmight	Ġwant	Ġto	Ġqu	ench	Ġhis	Ġthirst	.	ĠGiven	Ġthe	Ġcontext	,	Ġit	's	Ġlikely	Ġthat	Ġhe	'll	Ġgo	Ġsomewhere	Ġto	Ġget	Ġa	Ġdrink	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

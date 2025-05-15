@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+893	17	100	1	"*TASK*
+Here are the context sentences:
+1. The red square is to the left of the pink rectangle.
+2. The red square is below the blue square.
+
+Now, answer the following question:
+Is the pink rectangle below the blue square?"	yes	from context sentence 1, we know that the red square is to the left of the pink rectangle, which implies that the pink rectangle is to the right of the red square. from context sentence 2, we know that the red square is below the blue square. since the pink rectangle is to the right of the red square, and the red square is below the blue square, we can logically conclude that the pink rectangle is also below the blue square.	fully	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+894	17	100	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle above the blue square?"	no	from the previous context sentences, we know that the red square is below the blue square (sentence 2). we also know that the pink rectangle is to the right of the red square (sentence 1), and we previously concluded that the pink rectangle is below the blue square. therefore, it is not possible for the pink rectangle to be above the blue square, hence the answer is no.	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+895	17	100	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square above the pink rectangle?"	yes	from the previous context sentences, we know that the red square is below the blue square (sentence 2), and the pink rectangle is below the blue square (previously concluded). therefore, the blue square must be above the pink rectangle, hence the answer is yes.	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+896	17	100	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle below the blue square?"	yes	"we previously concluded that the pink rectangle is below the blue square (in the answer to the question ""is the pink rectangle below the blue square?""), and this conclusion was based on the context sentences: the red square is to the left of the pink rectangle, and the red square is below the blue square. therefore, the answer to this question is indeed yes, as we have already logically established that the pink rectangle is below the blue square."	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+897	17	100	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the left of the blue square?"	no	from the original context sentences, we know that the red square is to the left of the pink rectangle (sentence 1), and the red square is below the blue square (sentence 2). we also know that the pink rectangle is below the blue square (previously concluded). if the pink rectangle were to the left of the blue square, it would imply that the pink rectangle is both below and to the left of the blue square, which would mean the red square is also to	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+898	17	100	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the left of the blue square?"	no	"""reasoning: <reasoning>"""	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+899	17	100	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the left of the pink rectangle?"	yes	"""reasoning: <reasoning>"""	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+900	17	100	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square below the pink rectangle?"	no	"""reasoning: <reasoning>"""	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0

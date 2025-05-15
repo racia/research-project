@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1801	13	61	1	"*TASK*
+Here are the context sentences:
+1. Daniel and Sandra moved to the kitchen.
+2. Following that they went back to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	from the context sentences, we know that daniel and sandra moved to the kitchen (sentence 1) and then went back to the garden (sentence 2). since there is no further information about daniel's movement after going back to the garden, we can logically conclude that daniel is still in the garden.	fully	garden	True	Since Daniel and Sandra moved to the kitchen, it implies that Daniel was in the kitchen initially. Then, they went back to the garden, which means Daniel is currently in the garden.		"Reasoning: Since Daniel and Sandra moved to the kitchen, it implies that Daniel was in the kitchen initially. Then, they went back to the garden, which means Daniel is currently in the garden.
+
+Answer: garden"	0.25	0.0455	False	False	False	False	0
+1802	13	61	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Mary travelled to the kitchen.
+5. Afterwards they moved to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from the context sentences, we know that daniel and mary travelled to the kitchen (sentence 4) and then moved to the hallway (sentence 5). since there is no further information about daniel's movement after moving to the hallway, we can logically conclude that daniel is still in the hallway.	fully	hallway	True	According to sentence 4, Daniel and Mary travelled to the kitchen. Then, in sentence 5, they moved to the hallway. This implies that Daniel is currently in the hallway.		"Reasoning: According to sentence 4, Daniel and Mary travelled to the kitchen. Then, in sentence 5, they moved to the hallway. This implies that Daniel is currently in the hallway.
+
+Answer: hallway"	0.1136	0.0455	False	False	False	False	0
+1803	13	61	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John went to the garden.
+8. Following that they travelled to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	from the context sentences, we know that daniel and john went to the garden (sentence 7) and then travelled to the bathroom (sentence 8). since there is no further information about john's movement after travelling to the bathroom, we can logically conclude that john is still in the bathroom.	fully	bathroom	True	Since Daniel and John went to the garden together, it implies that John was also in the garden initially. Then, they travelled to the bathroom, which means John is currently in the bathroom.		"Reasoning: Since Daniel and John went to the garden together, it implies that John was also in the garden initially. Then, they travelled to the bathroom, which means John is currently in the bathroom.
+
+Answer: bathroom"	0.0667	0.0444	False	False	False	False	0
+1804	13	61	4	"*TASK*
+Here are the context sentences:
+10. Mary and Sandra journeyed to the office.
+11. Following that they went to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	"there is no information about john's movement or location in the provided context sentences (10 and 11). the context sentences only mention mary and sandra's movements, and they do not mention john at all. the answer ""bathroom"" cannot be logically deduced from the provided context sentences. it seems that the answer is referring to a previous part of the conversation history, where john's location was mentioned (sentence 8). in sentence 8, it was stated that daniel and john"	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only mention Mary and Sandra's movements.		"Reasoning: There is no mention of John in the given context sentences. The sentences only mention Mary and Sandra's movements.
+
+Answer: not mentioned"	0.0667	0.0667	False	False	False	True	0
+1805	13	61	5	"*TASK*
+Here are the context sentences:
+13. Daniel and Mary moved to the garden.
+14. Then they went to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	from the context sentences, we know that daniel and mary moved to the garden (sentence 13) and then went to the kitchen (sentence 14). since there is no further information about mary's movement after going to the kitchen, we can logically conclude that mary is still in the kitchen.	fully	kitchen	True	According to sentence 13, Daniel and Mary moved to the garden. Then, in sentence 14, they went to the kitchen. This implies that Mary is currently in the kitchen.		"Reasoning: According to sentence 13, Daniel and Mary moved to the garden. Then, in sentence 14, they went to the kitchen. This implies that Mary is currently in the kitchen.
+
+Answer: kitchen"	0.1136	0.0455	False	False	False	False	0

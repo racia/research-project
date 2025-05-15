@@ -1,0 +1,7 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+2	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+3	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
+4	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

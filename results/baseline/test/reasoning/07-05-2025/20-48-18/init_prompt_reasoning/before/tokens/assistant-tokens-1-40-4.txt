@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentence	Ġ	10	,	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġso	Ġthe	Ġmost	Ġlikely	Ġlocation	Ġfor	ĠMary	Ġis	Ġthe	Ġbathroom	.Ċ	Answer	:	Ġbathroom	<|eot_id|>

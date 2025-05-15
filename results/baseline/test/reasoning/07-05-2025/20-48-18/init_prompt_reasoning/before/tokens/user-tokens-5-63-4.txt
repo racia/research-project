@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+28	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+29	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠBill	Ġgive	Ġto	ĠMary	?Ċ

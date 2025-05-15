@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+266	10	54	1	"*TASK*
+Here are the context sentences:
+1. Bill is either in the office or the bedroom.
+2. Bill is either in the office or the bedroom.
+
+Now, answer the following question:
+Is Bill in the school?"	no	"the context sentences (1 and 2) explicitly state that bill is either in the office or the bedroom, which implies that bill is not in any other location. since ""school"" is not mentioned as one of the possible locations, we can logically conclude that bill is not in the school."	fully	no	True	The context sentences only mention two possible locations for Bill: the office or the bedroom. There is no mention of the school as a possible location for Bill.		"*TASK*
+
+Reasoning: The context sentences only mention two possible locations for Bill: the office or the bedroom. There is no mention of the school as a possible location for Bill.
+
+Answer: no"	0.1707	0.0244	False	False	False	True	0
+267	10	54	2	"*TASK*
+Here are the context sentences:
+4. Julie journeyed to the cinema.
+5. Bill is either in the bedroom or the kitchen.
+
+Now, answer the following question:
+Is Bill in the bedroom?"	maybe	"the context sentence (5) states that bill is either in the bedroom or the kitchen, which implies that bill's location is one of these two options. however, it does not provide a definitive answer to whether bill is in the bedroom or not. therefore, the most logical conclusion is that bill might be in the bedroom, but it's also possible that he's in the kitchen, hence the answer ""maybe"". the context sentence (4) about julie journeying to the cinema is"	fully	maybe	True	The context sentence 5 mentions that Bill is either in the bedroom or the kitchen, but it does not provide a definitive location for Bill. Therefore, we can only conclude that Bill might be in the bedroom, but we cannot be certain.		"*TASK*
+
+Reasoning: The context sentence 5 mentions that Bill is either in the bedroom or the kitchen, but it does not provide a definitive location for Bill. Therefore, we can only conclude that Bill might be in the bedroom, but we cannot be certain.
+
+Answer: maybe"	0.1053	0.0175	False	False	False	True	0
+268	10	54	3	"*TASK*
+Here are the context sentences:
+7. Mary travelled to the bedroom.
+8. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Is Bill in the bedroom?"	maybe	"the context sentences (7 and 8) provide information about mary's movements, but they do not provide any direct information about bill's location. the question asks about bill's location, but the context sentences only mention mary's travels to the bedroom and kitchen. since there is no information about bill's location, we cannot conclude whether bill is in the bedroom or not, hence the answer ""maybe""."	none	not mentioned	False	The context sentences 7 and 8 only provide information about Mary's locations, but they do not mention Bill's location. The previous information about Bill's location (sentence 5) is no longer relevant, as it is not mentioned again.		"*TASK*
+
+Reasoning: The context sentences 7 and 8 only provide information about Mary's locations, but they do not mention Bill's location. The previous information about Bill's location (sentence 5) is no longer relevant, as it is not mentioned again.
+
+Answer: not mentioned"	0.1017	0.0169	False	False	False	True	0
+269	10	54	4	"*TASK*
+Here are the context sentences:
+10. Bill is in the office.
+11. Fred journeyed to the park.
+
+Now, answer the following question:
+Is Fred in the park?"	yes	"the context sentence (11) explicitly states that fred journeyed to the park, which implies that fred has arrived at the park. there is no information suggesting that fred left the park or went somewhere else. therefore, we can logically conclude that fred is indeed in the park, which aligns with the answer ""yes"". the context sentence (10) about bill being in the office is irrelevant to fred's location and does not affect the conclusion."	fully	yes	True	The context sentence 11 explicitly states that Fred journeyed to the park, which implies that Fred is currently in the park.		"*TASK*
+
+Reasoning: The context sentence 11 explicitly states that Fred journeyed to the park, which implies that Fred is currently in the park.
+
+Answer: yes"	0.0294	0.0294	False	False	False	False	0
+270	10	54	5	"*TASK*
+Here are the context sentences:
+13. Fred went to the bedroom.
+14. Bill journeyed to the bedroom.
+
+Now, answer the following question:
+Is Fred in the school?"	no	"the context sentences (13 and 14) provide information about fred and bill's movements, but neither of them mentions the school. sentence (13) states that fred went to the bedroom, and sentence (14) states that bill journeyed to the bedroom. there is no information suggesting that fred went to the school or is currently in the school. therefore, we can logically conclude that fred is not in the school, which aligns with the answer ""no""."	fully	no	True	The context sentences 13 and 14 only mention Fred and Bill going to the bedroom, but there is no mention of the school as a location for Fred or anyone else.		"*TASK*
+
+Reasoning: The context sentences 13 and 14 only mention Fred and Bill going to the bedroom, but there is no mention of the school as a location for Fred or anyone else.
+
+Answer: no"	0.0455	0.0227	False	False	False	True	0

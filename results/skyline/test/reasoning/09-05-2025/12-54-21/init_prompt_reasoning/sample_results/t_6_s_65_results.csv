@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+321	6	65	1	"*TASK*
+Here are the context sentences:
+1. John went to the kitchen.
+2. Sandra travelled to the hallway.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	yes	"according to context sentence 2, ""sandra travelled to the hallway"", which explicitly states that sandra went to the hallway. therefore, it can be logically concluded that sandra is indeed in the hallway."	fully	yes	True	According to context sentence 2, Sandra travelled to the hallway, which implies that she is currently in the hallway.		"assistant
+
+Reasoning: According to context sentence 2, Sandra travelled to the hallway, which implies that she is currently in the hallway.
+
+Answer: yes"	0.0294	0.0294	False	False	False	False	0
+322	6	65	2	"*TASK*
+Here are the context sentences:
+4. John went to the bedroom.
+5. Sandra travelled to the bedroom.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	no	"according to context sentence 5, ""sandra travelled to the bedroom"", which indicates that sandra is currently in the bedroom. previously, in context sentence 2, it was mentioned that ""sandra travelled to the hallway"", but since sandra has moved to the bedroom, she is no longer in the hallway. therefore, the correct answer is ""no"", sandra is not in the hallway."	fully	no	True	According to context sentence 2, Sandra travelled to the hallway, but then according to context sentence 5, she travelled to the bedroom, which means she is no longer in the hallway.		"Reasoning: According to context sentence 2, Sandra travelled to the hallway, but then according to context sentence 5, she travelled to the bedroom, which means she is no longer in the hallway.
+
+Answer: no"	0.1778	0.0222	False	False	False	False	0
+323	6	65	3	"*TASK*
+Here are the context sentences:
+7. Mary moved to the office.
+8. Sandra travelled to the hallway.
+
+Now, answer the following question:
+Is Mary in the bedroom?"	no	"according to context sentence 7, ""mary moved to the office"", which explicitly states that mary is currently in the office. there is no mention of mary being in the bedroom, and the context does not provide any information that would suggest mary was in the bedroom previously. therefore, the correct answer is ""no"", mary is not in the bedroom."	fully	no	True	According to context sentence 7, Mary moved to the office, which does not mention the bedroom at all. There is no information that suggests Mary is in the bedroom.		"Reasoning: According to context sentence 7, Mary moved to the office, which does not mention the bedroom at all. There is no information that suggests Mary is in the bedroom.
+
+Answer: no"	0.0	0.0244	False	False	False	True	0
+324	6	65	4	"*TASK*
+Here are the context sentences:
+10. Mary grabbed the football there.
+11. Daniel journeyed to the bedroom.
+
+Now, answer the following question:
+Is Sandra in the hallway?"	yes	"although the current context sentences (10 and 11) do not mention sandra or the hallway, we can refer back to previous context sentence 8, ""sandra travelled to the hallway"", which explicitly states that sandra went to the hallway. there is no information provided that would suggest sandra has moved from the hallway, so it can be logically concluded that sandra is still in the hallway. therefore, the correct answer is ""yes"", sandra is in the hallway."	none	yes	True	According to context sentence 8, Sandra travelled to the hallway, and there is no subsequent information that suggests she left the hallway.		"Reasoning: According to context sentence 8, Sandra travelled to the hallway, and there is no subsequent information that suggests she left the hallway.
+
+Answer: yes"	0.0	0.0303	False	False	False	True	0
+325	6	65	5	"*TASK*
+Here are the context sentences:
+13. John travelled to the bathroom.
+14. John travelled to the hallway.
+
+Now, answer the following question:
+Is Sandra in the garden?"	no	"there is no mention of sandra or the garden in the provided context sentences (13 and 14), nor is there any previous information about sandra being in the garden. in fact, the previous information about sandra (sentence 8) states that ""sandra travelled to the hallway"", which does not imply that she went to the garden. therefore, based on the lack of information suggesting sandra is in the garden, the correct answer is ""no"", sandra is not"	none	not mentioned	False	There is no information about Sandra being in the garden. The context sentences only mention John's movements and Sandra's previous location in the hallway (context sentence 8).		"Reasoning: There is no information about Sandra being in the garden. The context sentences only mention John's movements and Sandra's previous location in the hallway (context sentence 8).
+
+Answer: not mentioned"	0.0	0.0244	False	False	False	True	0

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġlast	Ġmentioned	Ġin	Ġsentence	Ġ	49	,	Ġwhere	ĠDaniel	Ġleft	Ġthe	Ġapple	.	ĠSince	ĠDaniel	Ġwas	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	47	),	Ġthe	Ġapple	Ġwas	Ġin	Ġthe	Ġoffice	Ġbefore	ĠDaniel	Ġleft	Ġit	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

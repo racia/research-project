@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	Ġwhat	Ġis	Ġwest	Ġof	Ġthe	Ġhallway	,	Ġand	Ġsentence	Ġ	2	Ġstates	Ġthat	Ġthe	Ġkitchen	Ġis	Ġwest	Ġof	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

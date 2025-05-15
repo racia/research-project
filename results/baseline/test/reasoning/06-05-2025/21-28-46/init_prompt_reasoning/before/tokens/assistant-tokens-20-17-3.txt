@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	Ġis	Ġhungry	,	Ġit	Ġis	Ġlikely	Ġthat	ĠSum	it	Ġwill	Ġgo	Ġsomewhere	Ġto	Ġeat	.	ĠHowever	,	Ġthe	Ġcontext	Ġsentence	Ġdoes	Ġnot	Ġspecify	Ġa	Ġparticular	Ġlocation	.	ĠSince	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠSum	it	's	Ġhunger	,	ĠI	Ġwill	Ġassume	Ġthat	Ġthe	Ġinformation	Ġis	Ġnot	Ġspecified	Ġdirectly	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

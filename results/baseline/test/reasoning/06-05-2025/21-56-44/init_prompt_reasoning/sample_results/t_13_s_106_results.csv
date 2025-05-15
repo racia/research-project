@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2026	13	106	1	"*TASK*
+Here are the context sentences:
+1. Mary and John went back to the bathroom.
+2. After that they went to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	"from the context sentences, we know that mary and john went back to the bathroom (sentence 1) and then they went to the garden (sentence 2). since there is no information about john leaving the garden, we can logically conclude that john is still in the garden. therefore, the answer is ""garden""."	fully	garden	True	Since John and Mary went back to the bathroom, and then they went to the garden, it implies that John is still with Mary, and they are currently in the garden.		"Reasoning: Since John and Mary went back to the bathroom, and then they went to the garden, it implies that John is still with Mary, and they are currently in the garden.
+
+Answer: garden"	0.2143	0.0476	False	False	False	False	0
+2027	13	106	2	"*TASK*
+Here are the context sentences:
+4. Daniel and Mary journeyed to the office.
+5. Following that they went back to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"from the context sentences, we know that daniel and mary journeyed to the office (sentence 4) and then they went back to the bedroom (sentence 5). since there is no information about daniel leaving the bedroom, we can logically conclude that daniel is still in the bedroom. therefore, the answer is ""bedroom""."	fully	bedroom	True	Since Daniel and Mary journeyed to the office, and then they went back to the bedroom, it implies that Daniel is still with Mary, and they are currently in the bedroom.		"Reasoning: Since Daniel and Mary journeyed to the office, and then they went back to the bedroom, it implies that Daniel is still with Mary, and they are currently in the bedroom.
+
+Answer: bedroom"	0.1628	0.0465	False	False	False	False	0
+2028	13	106	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Daniel moved to the garden.
+8. Then they went back to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"there is no information about mary's movements in the provided context sentences. the sentences only mention sandra and daniel moving to the garden and then back to the hallway. however, we can infer that mary's location is not affected by sandra and daniel's movements. since we don't have any information about mary's movements, we need to look at previous parts of the conversation history. in the previous conversation, we had the context sentences ""4. daniel and mary journeyed to the office."	none	not mentioned	False	There is no mention of Mary in the given context sentences. The sentences only mention Sandra and Daniel, and their movements. Therefore, we cannot determine Mary's location.		"Reasoning: There is no mention of Mary in the given context sentences. The sentences only mention Sandra and Daniel, and their movements. Therefore, we cannot determine Mary's location.
+
+Answer: not mentioned"	0.122	0.0488	False	False	False	True	0
+2029	13	106	4	"*TASK*
+Here are the context sentences:
+10. Sandra and Daniel went to the kitchen.
+11. After that they journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	"from the context sentences, we know that sandra and daniel went to the kitchen (sentence 10) and then they journeyed to the hallway (sentence 11). since there is no information about daniel leaving the hallway, we can logically conclude that daniel is still in the hallway. therefore, the answer is ""hallway""."	fully	hallway	True	Since Sandra and Daniel went to the kitchen, and then they journeyed to the hallway, it implies that Daniel is still with Sandra, and they are currently in the hallway.		"Reasoning: Since Sandra and Daniel went to the kitchen, and then they journeyed to the hallway, it implies that Daniel is still with Sandra, and they are currently in the hallway.
+
+Answer: hallway"	0.0476	0.0476	False	False	False	False	0
+2030	13	106	5	"*TASK*
+Here are the context sentences:
+13. Daniel and John travelled to the kitchen.
+14. Then they travelled to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	"from the context sentences, we know that daniel and john travelled to the kitchen (sentence 13) and then they travelled to the bathroom (sentence 14). since there is no information about john leaving the bathroom, we can logically conclude that john is still in the bathroom. therefore, the answer is ""bathroom""."	fully	bathroom	True	Since Daniel and John travelled to the kitchen, and then they travelled to the bathroom, it implies that John is still with Daniel, and they are currently in the bathroom.		"Reasoning: Since Daniel and John travelled to the kitchen, and then they travelled to the bathroom, it implies that John is still with Daniel, and they are currently in the bathroom.
+
+Answer: bathroom"	0.1463	0.0488	False	False	False	False	0

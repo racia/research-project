@@ -1,0 +1,15 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+24	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+25	.	ĠSandra	Ġgot	Ġthe	Ġapple	.Ċ
+26	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+27	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+28	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+29	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+30	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+31	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
+32	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+33	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+34	.	ĠJohn	Ġleft	Ġthe	Ġmilk	Ġthere	.Ċ
+35	.	ĠSandra	Ġdiscarded	Ġthe	Ġapple	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġoffice	?Ċ

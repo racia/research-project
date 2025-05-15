@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+666	11	134	1	"*TASK*
+Here are the context sentences:
+1. Daniel journeyed to the office.
+2. Afterwards he travelled to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"from the context sentences, we know that daniel first journeyed to the office (sentence 1) and afterwards travelled to the kitchen (sentence 2). since the second sentence mentions ""afterwards"", it implies that daniel's journey to the kitchen happened after he was at the office. therefore, his current location is the kitchen, as he has moved from the office to the kitchen."	fully	kitchen	True	Daniel has moved from the office to the kitchen, so he is currently in the kitchen.		"Reasoning: Daniel has moved from the office to the kitchen, so he is currently in the kitchen.
+
+Answer: kitchen"	0.12	0.08	False	False	False	False	0
+667	11	134	2	"*TASK*
+Here are the context sentences:
+4. Daniel journeyed to the office.
+5. Then he went back to the bedroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"from the context sentences, we know that daniel journeyed to the office (sentence 4), but then he went back to the bedroom (sentence 5). the word ""then"" implies a sequence of events, and ""went back"" suggests that daniel returned to a previous location. therefore, daniel's current location is the bedroom, as he has moved from the office back to the bedroom."	fully	bedroom	True	Daniel initially went to the office, then went back to the bedroom, so he is currently in the bedroom.		"Reasoning: Daniel initially went to the office, then went back to the bedroom, so he is currently in the bedroom.
+
+Answer: bedroom"	0.1379	0.069	False	False	False	False	0
+668	11	134	3	"*TASK*
+Here are the context sentences:
+7. John went back to the bathroom.
+8. After that he journeyed to the kitchen.
+
+Now, answer the following question:
+Where is John?"	kitchen	"from the context sentences, we know that john went back to the bathroom (sentence 7), and after that he journeyed to the kitchen (sentence 8). the phrase ""after that"" implies a sequence of events, indicating that john's journey to the kitchen happened after he went back to the bathroom. therefore, john's current location is the kitchen, as he has moved from the bathroom to the kitchen."	fully	kitchen	True	John went back to the bathroom, then journeyed to the kitchen, so he is currently in the kitchen.		"Reasoning: John went back to the bathroom, then journeyed to the kitchen, so he is currently in the kitchen.
+
+Answer: kitchen"	0.1034	0.069	False	False	False	False	0
+669	11	134	4	"*TASK*
+Here are the context sentences:
+10. Daniel journeyed to the garden.
+11. Afterwards he went to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"from the context sentences, we know that daniel journeyed to the garden (sentence 10), and afterwards he went to the kitchen (sentence 11). the word ""afterwards"" implies a sequence of events, indicating that daniel's movement to the kitchen happened after he was in the garden. therefore, daniel's current location is the kitchen, as he has moved from the garden to the kitchen."	fully	kitchen	True	Daniel journeyed to the garden, then went to the kitchen, so he is currently in the kitchen.		"Reasoning: Daniel journeyed to the garden, then went to the kitchen, so he is currently in the kitchen.
+
+Answer: kitchen"	0.2143	0.0714	False	False	False	False	0
+670	11	134	5	"*TASK*
+Here are the context sentences:
+13. John moved to the hallway.
+14. Then he travelled to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"from the context sentences, we know that john moved to the hallway (sentence 13), and then he travelled to the bedroom (sentence 14). the word ""then"" implies a sequence of events, indicating that john's movement to the bedroom happened after he was in the hallway. therefore, john's current location is the bedroom, as he has moved from the hallway to the bedroom."	fully	bedroom	True	John moved to the hallway, then travelled to the bedroom, so he is currently in the bedroom.		"Reasoning: John moved to the hallway, then travelled to the bedroom, so he is currently in the bedroom.
+
+Answer: bedroom"	0.0	0.0741	False	False	False	False	0

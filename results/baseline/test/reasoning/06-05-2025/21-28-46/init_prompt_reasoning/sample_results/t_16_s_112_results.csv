@@ -1,0 +1,17 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+112	16	112	1	"*TASK*
+Here are the context sentences:
+1. Bernhard is a rhino.
+2. Lily is a frog.
+3. Julius is a lion.
+4. Bernhard is white.
+5. Brian is a swan.
+6. Lily is yellow.
+7. Brian is yellow.
+8. Julius is gray.
+9. Greg is a swan.
+
+Now, answer the following question:
+What color is Greg?"	yellow	since greg is a swan (sentence 9), and brian is also a swan (sentence 5), it can be inferred that greg and brian share similar characteristics as they belong to the same species. additionally, it is mentioned that brian is yellow (sentence 7). therefore, it is logical to assume that greg, being a swan like brian, also shares the same color, which is yellow.	fully	yellow	True	The question asks about the color of Greg, who is a swan according to sentence 9. Since Brian, who is also a swan, is yellow according to sentence 7, it is logical to assume that Greg, being a swan, is also yellow.		"Reasoning: The question asks about the color of Greg, who is a swan according to sentence 9. Since Brian, who is also a swan, is yellow according to sentence 7, it is logical to assume that Greg, being a swan, is also yellow.
+
+Answer: yellow"	0.0323	0.0484	False	False	False	False	0

@@ -1,0 +1,1 @@
+<|start_header_id|>	<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠEmily	Ġis	Ġa	Ġcat	.	ĠAccording	Ġto	Ġsentence	Ġ	6	,	ĠCats	Ġare	Ġafraid	Ġof	Ġmice	.ĊĊ	Answer	:	Ġmice	<|eot_id|>

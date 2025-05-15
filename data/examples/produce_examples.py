@@ -4,7 +4,7 @@ from pathlib import Path
 script_dir = Path(__file__).resolve().parent.parent
 os.chdir(script_dir)
 
-from settings.utils import expand_cardinal_points
+from data.utils import expand_cardinal_points
 from data.DataLoader import DataLoader
 
 

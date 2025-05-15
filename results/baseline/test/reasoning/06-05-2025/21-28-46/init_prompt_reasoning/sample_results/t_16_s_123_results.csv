@@ -1,0 +1,15 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+123	16	123	1	"*TASK*
+Here are the context sentences:
+1. Brian is a frog.
+2. Lily is a frog.
+3. Brian is green.
+4. Greg is a frog.
+5. Bernhard is a frog.
+6. Lily is yellow.
+7. Julius is a frog.
+8. Julius is white.
+9. Greg is white.
+
+Now, answer the following question:
+What color is Bernhard?"	white	since there is no direct information about bernhard's color, we need to make an inference. we know that there are three colors mentioned: green, yellow, and white. we also know that each frog has a unique color, as there are no duplicates in the colors mentioned for the other frogs (brian is green, lily is yellow, julius and greg are white). therefore, the only remaining color for bernhard is white, as it is the only color that has not been assigned	fully		False	The question asks about the color of Bernhard, who is a frog according to sentence 5. Since Bernhard is a frog, we can infer that Bernhard's color is not mentioned in the given context sentences. However, we can look for any clues about the color of frogs in general. Sentences 1, 2, and 5 mention that Brian, Lily, and Bernhard are all frogs. Sentences 3 and 6 mention that Brian is green		Reasoning: The question asks about the color of Bernhard, who is a frog according to sentence 5. Since Bernhard is a frog, we can infer that Bernhard's color is not mentioned in the given context sentences. However, we can look for any clues about the color of frogs in general. Sentences 1, 2, and 5 mention that Brian, Lily, and Bernhard are all frogs. Sentences 3 and 6 mention that Brian is green	0.0707	0.0303	False	False	False	True	0

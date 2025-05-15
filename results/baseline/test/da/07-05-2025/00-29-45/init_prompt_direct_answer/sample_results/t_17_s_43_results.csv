@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+437	17	43	1	"*TASK*
+Here are the context sentences:
+1. The triangle is above the red sphere.
+2. The triangle is to the right of the blue square.
+
+Now, answer the following question:
+Is the red sphere to the right of the blue square?"	yes	from the context sentences, we know that the triangle is above the red sphere (sentence 1) and the triangle is to the right of the blue square (sentence 2). since the triangle is above the red sphere, the red sphere must be below the triangle. and since the triangle is to the right of the blue square, the red sphere (which is below the triangle) must also be to the right of the blue square. therefore, the answer is yes, the red	fully	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+438	17	43	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red sphere above the blue square?"	no	from the previous context sentences, we know that the triangle is above the red sphere (sentence 1) and the triangle is to the right of the blue square (sentence 2). since the triangle is above the red sphere, the red sphere must be below the triangle. if the red sphere were above the blue square, the triangle would also be above the blue square, which contradicts the fact that the triangle is to the right of the blue square. therefore, the answer is	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+439	17	43	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square below the red sphere?"	no	from the previous context sentences, we know that the triangle is above the red sphere (sentence 1) and the triangle is to the right of the blue square (sentence 2). since the triangle is above the red sphere, the red sphere must be below the triangle. if the blue square were below the red sphere, the blue square would also be below the triangle, which contradicts the fact that the triangle is to the right of the blue square. therefore, the answer is	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+440	17	43	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red sphere below the blue square?"	yes	from the previous context sentences, we know that the triangle is above the red sphere (sentence 1) and the triangle is to the right of the blue square (sentence 2). since the triangle is above the red sphere, the red sphere must be below the triangle. and since the triangle is to the right of the blue square, the red sphere (which is below the triangle) must also be below the blue square. therefore, the answer is yes, the red sphere is	none	no	False			Answer: no	0.25	0.5	False	False	False	False	0
+441	17	43	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square above the red sphere?"	yes	from the previous context sentences, we know that the triangle is above the red sphere (sentence 1) and the triangle is to the right of the blue square (sentence 2). since the triangle is above the red sphere, the red sphere must be below the triangle. and since the triangle is to the right of the blue square, the blue square must be to the left of the triangle. therefore, the blue square is above the red sphere (which is below the triangle).	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+442	17	43	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the red sphere to the right of the blue square?"	yes	"""reasoning: <reasoning>"""	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+443	17	43	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square above the red sphere?"	yes	"""reasoning: <reasoning>"""	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+444	17	43	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the blue square to the left of the red sphere?"	yes	"""reasoning: <reasoning>"""	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0

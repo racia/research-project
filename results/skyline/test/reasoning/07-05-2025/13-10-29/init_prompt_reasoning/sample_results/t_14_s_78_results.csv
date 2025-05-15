@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1886	14	78	1	"*TASK*
+Here are the context sentences:
+1. Mary went to the cinema yesterday.
+2. Yesterday Julie went to the cinema.
+3. This morning Mary travelled to the office.
+4. Yesterday Bill travelled to the park.
+
+Now, answer the following question:
+Where was Mary before the office?"	cinema	from context sentence 1, we know that mary went to the cinema yesterday. then, from context sentence 3, we know that this morning mary travelled to the office. since mary went to the office this morning, and she was at the cinema yesterday, it can be logically inferred that mary was at the cinema before going to the office.	fully	cinema	True	From sentence 1, we know that Mary went to the cinema yesterday. Then, in sentence 3, it is mentioned that Mary travelled to the office this morning. Therefore, we can infer that Mary was at the cinema before going to the office.		"assistant
+
+Reasoning: From sentence 1, we know that Mary went to the cinema yesterday. Then, in sentence 3, it is mentioned that Mary travelled to the office this morning. Therefore, we can infer that Mary was at the cinema before going to the office.
+
+Answer: cinema"	0.082	0.0328	False	False	False	True	0
+1887	14	78	2	"*TASK*
+Here are the context sentences:
+6. This morning Julie went to the park.
+7. Bill went to the bedroom this morning.
+
+Now, answer the following question:
+Where was Julie before the park?"	cinema	from context sentence 2, we know that julie went to the cinema yesterday. then, from context sentence 6, we know that this morning julie went to the park. since julie went to the park this morning, and she was at the cinema yesterday, it can be logically inferred that julie was at the cinema before going to the park.	partially	cinema	True	From sentence 2, we know that Julie went to the cinema yesterday. There is no other information about Julie's location before going to the park. Therefore, we cannot determine Julie's exact location before the park.		"Reasoning: From sentence 2, we know that Julie went to the cinema yesterday. There is no other information about Julie's location before going to the park. Therefore, we cannot determine Julie's exact location before the park.
+
+Answer: cinema"	0.04	0.04	False	False	False	True	0
+1888	14	78	3	"*TASK*
+Here are the context sentences:
+9. This evening Julie went back to the kitchen.
+10. Julie moved to the school this afternoon.
+
+Now, answer the following question:
+Where was Julie before the park?"	cinema	this question refers to a previous part of the conversation history. from context sentence 2, we know that julie went to the cinema yesterday. then, from context sentence 6, we know that this morning julie went to the park. since julie went to the park this morning, and she was at the cinema yesterday, it can be logically inferred that julie was at the cinema before going to the park. the additional context sentences 9 and 10 do not provide any new information that	none	cinema	True	From sentence 2, we know that Julie went to the cinema yesterday. There is no other information about Julie's location before going to the park. Therefore, we cannot determine Julie's exact location before the park.		"Reasoning: From sentence 2, we know that Julie went to the cinema yesterday. There is no other information about Julie's location before going to the park. Therefore, we cannot determine Julie's exact location before the park.
+
+Answer: cinema"	0.06	0.04	False	False	False	True	0
+1889	14	78	4	"*TASK*
+Here are the context sentences:
+12. Fred went to the park yesterday.
+13. This afternoon Bill moved to the park.
+
+Now, answer the following question:
+Where was Julie before the school?"	park	this question refers to a previous part of the conversation history. from context sentence 6, we know that this morning julie went to the park. then, from context sentence 10, we know that julie moved to the school this afternoon. since julie went to the school this afternoon, and she was at the park this morning, it can be logically inferred that julie was at the park before going to the school.	none	park	True	From sentence 10, we know that Julie moved to the school this afternoon. Before that, there is no specific information about Julie's location. However, from sentence 6, we know that Julie went to the park this morning. Therefore, we can infer that Julie was at the park before going to the school.		"Reasoning: From sentence 10, we know that Julie moved to the school this afternoon. Before that, there is no specific information about Julie's location. However, from sentence 6, we know that Julie went to the park this morning. Therefore, we can infer that Julie was at the park before going to the school.
+
+Answer: park"	0.0986	0.0282	False	False	False	True	0
+1890	14	78	5	"*TASK*
+Here are the context sentences:
+15. Mary travelled to the bedroom this afternoon.
+16. This evening Bill travelled to the bedroom.
+
+Now, answer the following question:
+Where was Bill before the park?"	bedroom	this question is asking about bill's location before going to the park, but there is no direct information about bill going to the park in the provided context sentences. however, from context sentence 4, we know that bill travelled to the park yesterday. since bill travelled to the park yesterday, and there is no other information about bill's location before the park, it can be logically inferred that bill was at the bedroom before going to the park, as it is the only other location mentioned	none	not mentioned	False	From sentence 4, we know that Bill travelled to the park yesterday. There is no other information about Bill's location before going to the park. Therefore, we cannot determine Bill's exact location before the park.		"Reasoning: From sentence 4, we know that Bill travelled to the park yesterday. There is no other information about Bill's location before going to the park. Therefore, we cannot determine Bill's exact location before the park.
+
+Answer: not mentioned"	0.0392	0.0392	False	False	False	True	0

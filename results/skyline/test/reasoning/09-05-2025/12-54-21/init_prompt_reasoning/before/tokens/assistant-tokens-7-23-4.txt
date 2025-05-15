@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	10	Ġand	Ġ	11	Ġare	Ġabout	ĠDaniel	Ġand	ĠJohn	,	Ġbut	Ġnot	Ġabout	ĠSandra	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠSandra	Ġis	Ġthat	Ġshe	Ġdropped	Ġthe	Ġmilk	Ġ(	sentence	Ġ	5	),	Ġand	Ġthere	Ġis	Ġno	Ġother	Ġobject	Ġmentioned	Ġthat	ĠSandra	Ġis	Ġcarrying	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

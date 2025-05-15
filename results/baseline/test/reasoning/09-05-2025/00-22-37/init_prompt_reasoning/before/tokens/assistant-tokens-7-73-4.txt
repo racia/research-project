@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġin	Ġthe	Ġgiven	Ġcontext	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġgoing	Ġback	Ġto	Ġthe	Ġbathroom	Ġand	ĠJohn	Ġmoving	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

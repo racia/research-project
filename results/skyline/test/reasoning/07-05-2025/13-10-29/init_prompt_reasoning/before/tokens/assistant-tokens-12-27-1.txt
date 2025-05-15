@@ -1,0 +1,1 @@
+<|start_header_id|>	<|end_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	1	,	ĠMary	Ġand	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġmoving	Ġto	Ġa	Ġdifferent	Ġlocation	Ġafterwards	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

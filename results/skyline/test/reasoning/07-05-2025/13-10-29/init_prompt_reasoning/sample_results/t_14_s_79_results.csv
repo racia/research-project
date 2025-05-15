@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1891	14	79	1	"*TASK*
+Here are the context sentences:
+1. Yesterday Mary travelled to the school.
+2. Mary travelled to the kitchen this morning.
+3. Mary went to the office this afternoon.
+4. Bill travelled to the cinema yesterday.
+
+Now, answer the following question:
+Where was Mary before the office?"	kitchen	from the context sentences, we know mary's movements throughout the day. sentence 2 states that mary travelled to the kitchen this morning, and sentence 3 states that mary went to the office this afternoon. since mary went to the office in the afternoon, and she was in the kitchen in the morning, it can be logically inferred that mary was in the kitchen before she went to the office.	fully	kitchen	True	According to the context sentences, Mary travelled to the kitchen this morning (sentence 2) and then went to the office this afternoon (sentence 3). Therefore, Mary was in the kitchen before going to the office.		"assistant
+
+Reasoning: According to the context sentences, Mary travelled to the kitchen this morning (sentence 2) and then went to the office this afternoon (sentence 3). Therefore, Mary was in the kitchen before going to the office.
+
+Answer: kitchen"	0.2037	0.037	False	False	False	False	0
+1892	14	79	2	"*TASK*
+Here are the context sentences:
+6. Mary moved to the school this evening.
+7. Julie journeyed to the park yesterday.
+
+Now, answer the following question:
+Where was Mary before the school?"	office	from the provided context sentences, sentence 6 mentions mary moving to the school this evening, but it does not provide information about mary's location before the school. however, we can look at the previous context sentences (sentences 1-5) to find the relevant information. sentence 3 states that mary went to the office this afternoon. since sentence 6 mentions mary moving to the school this evening, it can be logically inferred that mary was in the office before she went to	partially	office	True	According to the context sentences, Mary went to the office this afternoon (sentence 3) and then moved to the school this evening (sentence 6). Therefore, Mary was in the office before going to the school.		"Reasoning: According to the context sentences, Mary went to the office this afternoon (sentence 3) and then moved to the school this evening (sentence 6). Therefore, Mary was in the office before going to the school.
+
+Answer: office"	0.0588	0.0392	False	False	False	False	0
+1893	14	79	3	"*TASK*
+Here are the context sentences:
+9. Fred travelled to the cinema yesterday.
+10. Julie went back to the cinema this morning.
+
+Now, answer the following question:
+Where was Mary before the school?"	office	the provided context sentences (9 and 10) do not mention mary or her location before the school. however, we can look at the previous context sentences (sentences 1-8) to find the relevant information. sentence 3 states that mary went to the office this afternoon, and sentence 6 mentions mary moving to the school this evening. since mary went to the school in the evening, and she was in the office in the afternoon, it can be logically inferred that	none	office	True	The context sentences 9 and 10 do not provide new information about Mary's location. We still have the previous information that Mary went to the office this afternoon (sentence 3) and then moved to the school this evening (sentence 6). Therefore, Mary was in the office before going to the school.		"Reasoning: The context sentences 9 and 10 do not provide new information about Mary's location. We still have the previous information that Mary went to the office this afternoon (sentence 3) and then moved to the school this evening (sentence 6). Therefore, Mary was in the office before going to the school.
+
+Answer: office"	0.0286	0.0286	False	False	False	True	0
+1894	14	79	4	"*TASK*
+Here are the context sentences:
+12. Julie journeyed to the school this afternoon.
+13. Fred went back to the office this morning.
+
+Now, answer the following question:
+Where was Mary before the school?"	office	the provided context sentences (12 and 13) do not directly mention mary's location before the school. however, we can look at the previous context sentences (sentences 1-11) to find the relevant information. sentence 3 states that mary went to the office this afternoon, and sentence 6 mentions mary moving to the school this evening. since mary went to the school in the evening, and she was in the office in the afternoon, it can be logically inferred that	none	office	True	The context sentences 12 and 13 do not provide new information about Mary's location. We still have the previous information that Mary went to the office this afternoon (sentence 3) and then moved to the school this evening (sentence 6). Therefore, Mary was in the office before going to the school.		"Reasoning: The context sentences 12 and 13 do not provide new information about Mary's location. We still have the previous information that Mary went to the office this afternoon (sentence 3) and then moved to the school this evening (sentence 6). Therefore, Mary was in the office before going to the school.
+
+Answer: office"	0.0429	0.0286	False	False	False	True	0
+1895	14	79	5	"*TASK*
+Here are the context sentences:
+15. This afternoon Fred went back to the cinema.
+16. This evening Julie went back to the office.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	office	the provided context sentences (15 and 16) do not directly mention fred's location before the cinema. however, we can look at the previous context sentences (sentences 9-14) to find the relevant information. sentence 13 states that fred went back to the office this morning. since fred went back to the cinema this afternoon, and he was in the office in the morning, it can be logically inferred that fred was in the office before he went to the cinema.	partially	office	True	According to the context sentences, Fred went back to the office this morning (sentence 13) and then went back to the cinema this afternoon (sentence 15). Therefore, Fred was in the office before going to the cinema.		"Reasoning: According to the context sentences, Fred went back to the office this morning (sentence 13) and then went back to the cinema this afternoon (sentence 15). Therefore, Fred was in the office before going to the cinema.
+
+Answer: office"	0.0377	0.0377	False	False	False	False	0

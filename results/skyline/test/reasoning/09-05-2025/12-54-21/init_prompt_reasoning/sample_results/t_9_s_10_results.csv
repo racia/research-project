@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1546	9	10	1	"*TASK*
+Here are the context sentences:
+1. John went back to the kitchen.
+2. Mary travelled to the garden.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	the context sentences do not mention john being in the bathroom. in fact, sentence 1 states that john went back to the kitchen, which implies that john is in the kitchen, not in the bathroom. there is no information provided that would suggest john moved to the bathroom after going to the kitchen. therefore, based on the given information, it can be concluded that john is not in the bathroom.	fully	no	True	There is no information provided about John going to the bathroom. The context sentences only mention John going back to the kitchen and Mary traveling to the garden.		"Reasoning: There is no information provided about John going to the bathroom. The context sentences only mention John going back to the kitchen and Mary traveling to the garden.
+
+Answer: no"	0.0541	0.027	False	False	False	True	0
+1547	9	10	2	"*TASK*
+Here are the context sentences:
+4. Daniel is not in the bathroom.
+5. Mary is no longer in the garden.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	the context sentences do not provide any direct information about john's location. however, the previous context sentences (1 and 2) mentioned john going back to the kitchen, and there is no information provided that would suggest john moved to the bathroom after going to the kitchen. additionally, sentence 4 states that daniel is not in the bathroom, but it does not provide any information about john. therefore, based on the given information, it can be concluded that john is not in the bathroom	none	not mentioned	False	There is no information provided about John's location in the context sentences. The context sentences only mention Daniel not being in the bathroom and Mary no longer being in the garden. The previous information about John going back to the kitchen is still valid, but it doesn't provide any information about John being in the bathroom.		"Reasoning: There is no information provided about John's location in the context sentences. The context sentences only mention Daniel not being in the bathroom and Mary no longer being in the garden. The previous information about John going back to the kitchen is still valid, but it doesn't provide any information about John being in the bathroom.
+
+Answer: not mentioned"	0.0857	0.0143	False	False	False	True	0
+1548	9	10	3	"*TASK*
+Here are the context sentences:
+7. Daniel travelled to the office.
+8. John moved to the office.
+
+Now, answer the following question:
+Is Daniel in the bathroom?"	no	sentence 7 states that daniel travelled to the office, which implies that daniel is in the office. there is no information provided that would suggest daniel moved to the bathroom after going to the office. additionally, sentence 4 from the previous context stated that daniel is not in the bathroom. therefore, based on the given information, it can be concluded that daniel is not in the bathroom.	fully	no	True	The context sentence 4 mentioned that Daniel is not in the bathroom. Later, Daniel travelled to the office, but there is no information about Daniel going to the bathroom.		"Reasoning: The context sentence 4 mentioned that Daniel is not in the bathroom. Later, Daniel travelled to the office, but there is no information about Daniel going to the bathroom.
+
+Answer: no"	0.0	0.0244	False	False	False	True	0
+1549	9	10	4	"*TASK*
+Here are the context sentences:
+10. Daniel is no longer in the office.
+11. Mary is no longer in the bedroom.
+
+Now, answer the following question:
+Is John in the office?"	yes	sentence 8 from the previous context stated that john moved to the office. there is no information provided that would suggest john left the office after moving there. sentence 10 states that daniel is no longer in the office, but it does not provide any information about john's location. therefore, based on the given information, it can be concluded that john is still in the office.	none	yes	True	The context sentence 8 mentioned that John moved to the office. There is no information about John leaving the office.		"Reasoning: The context sentence 8 mentioned that John moved to the office. There is no information about John leaving the office.
+
+Answer: yes"	0.0333	0.0333	False	False	False	True	0
+1550	9	10	5	"*TASK*
+Here are the context sentences:
+13. Mary went back to the bedroom.
+14. John went to the garden.
+
+Now, answer the following question:
+Is John in the bathroom?"	no	sentence 14 states that john went to the garden, which implies that john is in the garden. there is no information provided that would suggest john moved to the bathroom after going to the garden. previously, sentence 2 stated that mary travelled to the garden, but john's current location is in the garden, not in the bathroom. therefore, based on the given information, it can be concluded that john is not in the bathroom.	fully	no	True	There is no information provided about John going to the bathroom. The context sentences only mention John going to the garden, and previously John was in the office.		"Reasoning: There is no information provided about John going to the bathroom. The context sentences only mention John going to the garden, and previously John was in the office.
+
+Answer: no"	0.0	0.0263	False	False	False	True	0

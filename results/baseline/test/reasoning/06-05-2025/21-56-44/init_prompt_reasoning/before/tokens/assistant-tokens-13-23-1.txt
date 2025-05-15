@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġthe	Ġfirst	Ġsentence	Ġas	Ġgoing	Ġto	Ġthe	Ġbathroom	Ġwith	ĠJohn	.	ĠIn	Ġthe	Ġsecond	Ġsentence	,	Ġthey	Ġmove	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġstill	Ġwith	ĠJohn	Ġand	Ġin	Ġthe	Ġsame	Ġlocation	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

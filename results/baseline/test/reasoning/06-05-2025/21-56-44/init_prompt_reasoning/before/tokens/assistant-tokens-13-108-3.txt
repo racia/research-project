@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠSandra	's	Ġlocation	Ġis	Ġspecified	Ġin	Ġsentence	Ġ	7	Ġas	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġshe	Ġwent	Ġto	Ġthe	Ġoffice	Ġalong	Ġwith	ĠMary	Ġin	Ġsentence	Ġ	8	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

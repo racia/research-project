@@ -1,0 +1,60 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1956	5	72	1	"*TASK*
+Here are the context sentences:
+1. Jeff moved to the bedroom.
+2. Fred journeyed to the kitchen.
+3. Fred took the milk there.
+4. Mary travelled to the office.
+5. Fred gave the milk to Bill.
+6. Bill passed the milk to Fred.
+
+Now, answer the following question:
+Who gave the milk?"	bill	from the context sentences, we know that fred took the milk in the kitchen (sentence 3). then, fred gave the milk to bill (sentence 5). later, bill passed the milk back to fred (sentence 6). the question asks who gave the milk, and the answer is bill because bill passed the milk to fred, which implies that bill had the milk and gave it to fred.	fully	Fred	False	Fred gave the milk to Bill, and then Bill passed it back to Fred, so Fred is the one who ultimately gave the milk to someone.		"Reasoning: Fred gave the milk to Bill, and then Bill passed it back to Fred, so Fred is the one who ultimately gave the milk to someone.
+
+Answer: Fred"	0.0833	0.0278	False	False	False	False	0
+1957	5	72	2	"*TASK*
+Here are the context sentences:
+8. Fred moved to the bathroom.
+9. Jeff went to the kitchen.
+
+Now, answer the following question:
+Who gave the milk to Fred?"	bill	"from the provided context sentences, we don't have any information about the milk or bill in sentences 8 and 9. however, we can refer to the previous parts of the conversation history. in sentence 6, we know that bill passed the milk to fred. therefore, the answer to the question ""who gave the milk to fred?"" is indeed bill."	none	Not mentioned	False	There is no mention of milk being given to Fred in the provided context sentences. The previous sentences mentioned Fred giving the milk to Bill, but there is no mention of Fred receiving milk.		"Reasoning: There is no mention of milk being given to Fred in the provided context sentences. The previous sentences mentioned Fred giving the milk to Bill, but there is no mention of Fred receiving milk.
+
+Answer: Not mentioned"	0.0889	0.0222	False	False	False	True	0
+1958	5	72	3	"*TASK*
+Here are the context sentences:
+11. Fred journeyed to the garden.
+12. Bill went back to the bedroom.
+
+Now, answer the following question:
+Who gave the milk to Fred?"	bill	"from the provided context sentences, we don't have any information about the milk in sentences 11 and 12. however, we can refer to the previous parts of the conversation history. in sentence 6, we know that bill passed the milk to fred. therefore, the answer to the question ""who gave the milk to fred?"" is indeed bill."	none	Not mentioned	False	There is no mention of milk being given to Fred in the provided context sentences. The previous sentences mentioned Fred giving the milk to Bill, but there is no mention of Fred receiving milk.		"Reasoning: There is no mention of milk being given to Fred in the provided context sentences. The previous sentences mentioned Fred giving the milk to Bill, but there is no mention of Fred receiving milk.
+
+Answer: Not mentioned"	0.0667	0.0222	False	False	False	True	0
+1959	5	72	4	"*TASK*
+Here are the context sentences:
+14. Fred picked up the apple there.
+15. Fred left the milk.
+16. Fred put down the apple.
+17. Mary journeyed to the bedroom.
+18. Bill moved to the hallway.
+19. Mary went back to the office.
+20. Jeff went back to the garden.
+21. Bill journeyed to the kitchen.
+22. Jeff picked up the apple there.
+23. Mary journeyed to the bedroom.
+24. Jeff passed the apple to Fred.
+25. Fred went to the bathroom.
+
+Now, answer the following question:
+What did Jeff give to Fred?"	apple	"from sentence 24, we know that jeff passed the apple to fred. this directly answers the question ""what did jeff give to fred?"" and the answer is indeed the apple."	fully	Apple	True	According to sentence 24, Jeff passed the apple to Fred.		"Reasoning: According to sentence 24, Jeff passed the apple to Fred.
+
+Answer: Apple"	0.0	0.05	False	False	False	False	0
+1960	5	72	5	"*TASK*
+Here are the context sentences:
+27. Jeff travelled to the kitchen.
+28. Fred put down the apple.
+
+Now, answer the following question:
+Who did Jeff give the apple to?"	fred	"from the previous parts of the conversation history, we know that jeff picked up the apple in sentence 22 and passed the apple to fred in sentence 24. therefore, the answer to the question ""who did jeff give the apple to?"" is indeed fred."	none	Not mentioned	False	According to sentence 24, Jeff passed the apple to Fred, but there is no mention of Jeff giving the apple to anyone in the provided context sentences.		"Reasoning: According to sentence 24, Jeff passed the apple to Fred, but there is no mention of Jeff giving the apple to anyone in the provided context sentences.
+
+Answer: Not mentioned"	0.0	0.0256	False	False	False	True	0

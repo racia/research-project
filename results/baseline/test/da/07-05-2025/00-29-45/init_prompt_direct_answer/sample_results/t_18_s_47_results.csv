@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1135	18	47	1	"*TASK*
+Here are the context sentences:
+1. The suitcase is bigger than the chocolate.
+2. The box fits inside the suitcase.
+3. The box fits inside the chest.
+4. The box fits inside the suitcase.
+5. The chocolate fits inside the container.
+6. The chest is bigger than the container.
+7. The chest is bigger than the chocolate.
+8. The suitcase is bigger than the box.
+9. The box fits inside the suitcase.
+10. The chest is bigger than the suitcase.
+
+Now, answer the following question:
+Is the chest bigger than the chocolate?"	yes	"from sentence 7, we directly know that ""the chest is bigger than the chocolate."" this sentence explicitly states the relationship between the chest and the chocolate, and since it is a direct statement, we can conclude that the answer to the question is indeed ""yes"", the chest is bigger than the chocolate."	fully	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+1136	18	47	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chocolate bigger than the chest?"	no	"from sentence 7, we know that ""the chest is bigger than the chocolate."" this directly implies that the chocolate is not bigger than the chest, so the answer to the question is ""no""."	none	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+1137	18	47	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Does the chest fit in the chocolate?"	no	"from sentence 7, we know that ""the chest is bigger than the chocolate."" this implies that the chest cannot fit inside the chocolate, as it is larger than the chocolate. therefore, the answer to the question is ""no"", the chest does not fit in the chocolate."	none	no	True			Answer: no	0.0	0.5	False	False	False	False	0
+1138	18	47	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chest bigger than the chocolate?"	yes	"from sentence 7, we directly know that ""the chest is bigger than the chocolate."" this sentence explicitly states the relationship between the chest and the chocolate, and since it is a direct statement, we can conclude that the answer to the question is indeed ""yes"", the chest is bigger than the chocolate."	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0
+1139	18	47	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the chest bigger than the chocolate?"	yes	"from sentence 10, we know that ""the chest is bigger than the suitcase."" from sentence 1, we know that ""the suitcase is bigger than the chocolate."" using transitive property, we can conclude that the chest is bigger than the chocolate, since the chest is bigger than the suitcase and the suitcase is bigger than the chocolate. therefore, the answer to the question is indeed ""yes"", the chest is bigger than the chocolate."	none	yes	True			Answer: yes	0.0	0.5	False	False	False	False	0

@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+17	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+18	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
+19	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+20	.	ĠDaniel	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+21	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+22	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

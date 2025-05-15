@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1361	8	73	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the kitchen.
+2. Sandra moved to the kitchen.
+3. Sandra travelled to the bedroom.
+4. Mary grabbed the apple there.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	"from context line 4, ""mary grabbed the apple there"", we know that mary grabbed an apple in the kitchen (since ""there"" refers to the kitchen, which is the location mentioned in context lines 1 and 2). therefore, mary is carrying the apple."	fully	apple	True	According to sentence 4, Mary grabbed the apple in the kitchen, which means she is carrying the apple.		"assistant
+
+Reasoning: According to sentence 4, Mary grabbed the apple in the kitchen, which means she is carrying the apple.
+
+Answer: apple"	0.0938	0.0312	False	False	False	False	0
+1362	8	73	2	"*TASK*
+Here are the context sentences:
+6. Sandra picked up the milk there.
+7. Mary dropped the apple there.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	"from context line 4 (from previous conversation), we know that mary grabbed the apple in the kitchen. however, in context line 7, it is stated that ""mary dropped the apple there"", which implies that mary is no longer carrying the apple. therefore, mary is carrying nothing."	partially	nothing	True	According to sentence 4, Mary was carrying the apple, but according to sentence 7, Mary dropped the apple, which means she is no longer carrying it.		"Reasoning: According to sentence 4, Mary was carrying the apple, but according to sentence 7, Mary dropped the apple, which means she is no longer carrying it.
+
+Answer: nothing"	0.2	0.05	False	False	False	False	0
+1363	8	73	3	"*TASK*
+Here are the context sentences:
+9. Sandra moved to the garden.
+10. Mary travelled to the office.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	from the previous conversation, we know that mary dropped the apple in context line 7, which means mary is not carrying the apple anymore. there is no new information in context lines 9 and 10 that suggests mary picked up or grabbed any object. therefore, mary is still carrying nothing.	none	nothing	True	The previous information about Mary dropping the apple (sentence 7) is still valid, and there is no new information about Mary picking up or carrying anything else.		"Reasoning: The previous information about Mary dropping the apple (sentence 7) is still valid, and there is no new information about Mary picking up or carrying anything else.
+
+Answer: nothing"	0.0769	0.0513	False	False	False	True	0
+1364	8	73	4	"*TASK*
+Here are the context sentences:
+12. John went back to the garden.
+13. Sandra moved to the hallway.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	the context lines 12 and 13 do not provide any information about mary or what she is carrying. the last information we had about mary was that she travelled to the office in context line 10, and we knew she was carrying nothing since she dropped the apple in context line 7. there is no new information that suggests mary picked up or grabbed any object, so mary is still carrying nothing.	none	nothing	True	The previous information about Mary dropping the apple (sentence 7) is still valid, and there is no new information about Mary picking up or carrying anything else.		"Reasoning: The previous information about Mary dropping the apple (sentence 7) is still valid, and there is no new information about Mary picking up or carrying anything else.
+
+Answer: nothing"	0.0513	0.0513	False	False	False	True	0
+1365	8	73	5	"*TASK*
+Here are the context sentences:
+15. Mary journeyed to the bedroom.
+16. Sandra went back to the garden.
+17. John moved to the bedroom.
+18. Sandra travelled to the kitchen.
+19. Sandra dropped the milk.
+20. Sandra moved to the hallway.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	"from context line 6, we know that sandra picked up the milk in the kitchen. then, in context line 19, it is stated that ""sandra dropped the milk"", which implies that sandra is no longer carrying the milk. there is no new information that suggests sandra picked up or grabbed any object after dropping the milk, so sandra is carrying nothing."	partially	nothing	True	According to sentence 6, Sandra picked up the milk, but according to sentence 19, Sandra dropped the milk, which means she is no longer carrying it.		"Reasoning: According to sentence 6, Sandra picked up the milk, but according to sentence 19, Sandra dropped the milk, which means she is no longer carrying it.
+
+Answer: nothing"	0.05	0.05	False	False	False	False	0

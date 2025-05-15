@@ -1,0 +1,40 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+3461	15	116	1	"*TASK*
+Here are the context sentences:
+1. Cats are afraid of mice.
+2. Mice are afraid of wolves.
+3. Wolves are afraid of mice.
+4. Winona is a mouse.
+5. Jessica is a wolf.
+6. Sheep are afraid of mice.
+7. Emily is a wolf.
+8. Gertrude is a mouse.
+
+Now, answer the following question:
+What is emily afraid of?"	mouse	since emily is a wolf (sentence 7), and wolves are afraid of mice (sentence 2), emily is afraid of mice.	fully	mice	True	Since Emily is a wolf (sentence 7), and wolves are afraid of mice (sentence 3), Emily is likely afraid of mice.		"Reasoning: Since Emily is a wolf (sentence 7), and wolves are afraid of mice (sentence 3), Emily is likely afraid of mice.
+
+Answer: mice"	0.0571	0.0571	False	False	False	False	0
+3462	15	116	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is emily afraid of?"	mouse	since the context sentences are not provided, i will rely on the previous conversation history. in the previous conversation, it was established that emily is a wolf (sentence 7) and wolves are afraid of mice (sentence 2). therefore, emily is afraid of a mouse.	none	mice	True	Since Emily is a wolf (sentence 7), and wolves are afraid of mice (sentence 3), Emily is likely afraid of mice.		"Reasoning: Since Emily is a wolf (sentence 7), and wolves are afraid of mice (sentence 3), Emily is likely afraid of mice.
+
+Answer: mice"	0.0857	0.0571	False	False	False	False	0
+3463	15	116	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	wolf	since winona is a mouse (sentence 4), and mice are afraid of wolves (sentence 2), winona is afraid of a wolf.	none	wolves	True	Since Winona is a mouse (sentence 4), and mice are afraid of wolves (sentence 2), Winona is likely afraid of wolves.		"Reasoning: Since Winona is a mouse (sentence 4), and mice are afraid of wolves (sentence 2), Winona is likely afraid of wolves.
+
+Answer: wolves"	0.0811	0.0541	False	False	False	False	0
+3464	15	116	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+What is winona afraid of?"	wolf	since winona is a mouse (sentence 4), and mice are afraid of wolves (sentence 2), winona is afraid of a wolf.	none	wolves	True	Since Winona is a mouse (sentence 4), and mice are afraid of wolves (sentence 2), Winona is likely afraid of wolves.		"Reasoning: Since Winona is a mouse (sentence 4), and mice are afraid of wolves (sentence 2), Winona is likely afraid of wolves.
+
+Answer: wolves"	0.027	0.0541	False	False	False	False	0

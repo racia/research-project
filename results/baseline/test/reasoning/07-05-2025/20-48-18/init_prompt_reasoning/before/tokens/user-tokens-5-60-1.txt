@@ -1,0 +1,21 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+2	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+3	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+4	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+5	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+6	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+7	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+8	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+9	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+10	.	ĠJeff	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+11	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+12	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+13	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+14	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+15	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
+16	.	ĠJeff	Ġdropped	Ġthe	Ġmilk	.Ċ
+17	.	ĠMary	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+18	.	ĠMary	Ġpassed	Ġthe	Ġmilk	Ġto	ĠJeff	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġdid	ĠMary	Ġgive	Ġto	ĠJeff	?Ċ

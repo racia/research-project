@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+871	12	75	1	"*TASK*
+Here are the context sentences:
+1. John and Sandra went back to the garden.
+2. John and Daniel journeyed to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	from the context sentences, we know that john was in the garden initially (sentence 1). however, sentence 2 states that john and daniel journeyed to the hallway, which implies that john moved from the garden to the hallway. therefore, the current location of john is the hallway.	fully	hallway	True	From sentence 2, we know that John and Daniel journeyed to the hallway. There is no information about John leaving the hallway, so we can conclude that John is still in the hallway.		"assistant
+
+Reasoning: From sentence 2, we know that John and Daniel journeyed to the hallway. There is no information about John leaving the hallway, so we can conclude that John is still in the hallway.
+
+Answer: hallway"	0.0816	0.0204	False	False	False	True	0
+872	12	75	2	"*TASK*
+Here are the context sentences:
+4. Mary and John went back to the office.
+5. Sandra and John moved to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	from sentence 5, we know that sandra and john moved to the kitchen. this implies that sandra's current location is the kitchen, as she was involved in the action of moving to the kitchen.	fully	kitchen	True	From sentence 5, we know that Sandra and John moved to the kitchen. There is no information about Sandra leaving the kitchen, so we can conclude that Sandra is still in the kitchen.		"Reasoning: From sentence 5, we know that Sandra and John moved to the kitchen. There is no information about Sandra leaving the kitchen, so we can conclude that Sandra is still in the kitchen.
+
+Answer: kitchen"	0.1556	0.0222	False	False	False	True	0
+873	12	75	3	"*TASK*
+Here are the context sentences:
+7. Mary and Daniel went to the kitchen.
+8. Mary and Sandra went to the garden.
+
+Now, answer the following question:
+Where is John?"	kitchen	"there is no mention of john in the provided context sentences. the sentences only mention mary, daniel, and sandra, but not john. therefore, it is not possible to determine john's location based on the provided information. the answer ""kitchen"" seems to be incorrect, as there is no mention of john in the context."	none	kitchen	True	There is no new information about John's location in sentences 7 and 8. The last information about John's location was in sentence 5, where Sandra and John moved to the kitchen. There is no information about John leaving the kitchen, so we can conclude that John is still in the kitchen.		"Reasoning: There is no new information about John's location in sentences 7 and 8. The last information about John's location was in sentence 5, where Sandra and John moved to the kitchen. There is no information about John leaving the kitchen, so we can conclude that John is still in the kitchen.
+
+Answer: kitchen"	0.0882	0.0147	False	False	False	True	0
+874	12	75	4	"*TASK*
+Here are the context sentences:
+10. John and Mary moved to the hallway.
+11. Mary and Sandra moved to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from sentence 11, we know that mary and sandra moved to the bathroom. this implies that sandra's current location is the bathroom, as she was involved in the action of moving to the bathroom.	fully	bathroom	True	From sentence 11, we know that Mary and Sandra moved to the bathroom. There is no information about Sandra leaving the bathroom, so we can conclude that Sandra is still in the bathroom.		"Reasoning: From sentence 11, we know that Mary and Sandra moved to the bathroom. There is no information about Sandra leaving the bathroom, so we can conclude that Sandra is still in the bathroom.
+
+Answer: bathroom"	0.0	0.0222	False	False	False	True	0
+875	12	75	5	"*TASK*
+Here are the context sentences:
+13. John and Sandra went back to the bedroom.
+14. Sandra and John moved to the garden.
+
+Now, answer the following question:
+Where is Sandra?"	garden	from sentence 13, we know that john and sandra went back to the bedroom. however, sentence 14 states that sandra and john moved to the garden. this implies that sandra's location was updated from the bedroom to the garden, as she was involved in the action of moving to the garden. therefore, sandra's current location is the garden.	fully	garden	True	From sentence 14, we know that Sandra and John moved to the garden. There is no information about Sandra leaving the garden, so we can conclude that Sandra is still in the garden.		"Reasoning: From sentence 14, we know that Sandra and John moved to the garden. There is no information about Sandra leaving the garden, so we can conclude that Sandra is still in the garden.
+
+Answer: garden"	0.1333	0.0222	False	False	False	True	0

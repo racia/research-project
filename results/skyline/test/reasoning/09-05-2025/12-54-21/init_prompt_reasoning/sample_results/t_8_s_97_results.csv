@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1481	8	97	1	"*TASK*
+Here are the context sentences:
+1. John went to the bathroom.
+2. Daniel travelled to the garden.
+3. Mary moved to the hallway.
+4. Sandra moved to the bedroom.
+5. Daniel journeyed to the hallway.
+6. Mary picked up the apple there.
+
+Now, answer the following question:
+What is Mary carrying?"	apple	"from sentence 6, ""mary picked up the apple there"", we know that mary picked up an apple in the hallway. since mary is still in the hallway (as indicated by sentence 5, ""daniel journeyed to the hallway""), and she picked up the apple, it can be logically concluded that mary is carrying the apple."	fully	apple	True	According to sentence 6, Mary picked up the apple in the hallway, which means she is carrying the apple.		"assistant
+
+Reasoning: According to sentence 6, Mary picked up the apple in the hallway, which means she is carrying the apple.
+
+Answer: apple"	0.0294	0.0294	False	False	False	False	0
+1482	8	97	2	"*TASK*
+Here are the context sentences:
+8. Sandra travelled to the bathroom.
+9. Mary dropped the apple.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	"from the previous context (sentence 6), we knew that mary was carrying an apple. however, in sentence 9, ""mary dropped the apple"", it is stated that mary dropped the apple. this implies that mary is no longer carrying the apple, as she has dropped it. therefore, the correct answer is that mary is carrying nothing."	partially	nothing	True	According to sentence 6, Mary picked up the apple, but then according to sentence 9, Mary dropped the apple, which means she is no longer carrying it.		"Reasoning: According to sentence 6, Mary picked up the apple, but then according to sentence 9, Mary dropped the apple, which means she is no longer carrying it.
+
+Answer: nothing"	0.1951	0.0488	False	False	False	False	0
+1483	8	97	3	"*TASK*
+Here are the context sentences:
+11. Daniel moved to the office.
+12. Daniel grabbed the football there.
+
+Now, answer the following question:
+What is Mary carrying?"	nothing	the question asks about what mary is carrying, but the provided context sentences (11 and 12) only mention daniel's actions, not mary's. we can infer that mary's state has not changed since the last mention of her in sentence 9, where she dropped the apple. therefore, mary is still carrying nothing.	none	nothing	True	The new context sentences (11 and 12) are about Daniel, but the question is about Mary. According to the previous context, Mary dropped the apple (sentence 9), so she is still not carrying anything.		"Reasoning: The new context sentences (11 and 12) are about Daniel, but the question is about Mary. According to the previous context, Mary dropped the apple (sentence 9), so she is still not carrying anything.
+
+Answer: nothing"	0.098	0.0392	False	False	False	False	0
+1484	8	97	4	"*TASK*
+Here are the context sentences:
+14. Daniel moved to the bedroom.
+15. Mary got the apple there.
+
+Now, answer the following question:
+What is Daniel carrying?"	football	"the question asks about what daniel is carrying, and the answer is ""football"". this information is not directly mentioned in the current context sentences (14 and 15), but we can infer it from the previous context. in sentence 12, ""daniel grabbed the football there"", it is stated that daniel grabbed a football in the office. there is no information about daniel dropping or putting down the football, so we can logically assume that daniel is still carrying the football. the current context sentences"	none	football	True	According to sentence 12, Daniel grabbed the football in the office, and there is no information about him dropping or putting it down. Although he moved to a different location (sentence 14), it doesn't change the fact that he is still carrying the football.		"Reasoning: According to sentence 12, Daniel grabbed the football in the office, and there is no information about him dropping or putting it down. Although he moved to a different location (sentence 14), it doesn't change the fact that he is still carrying the football.
+
+Answer: football"	0.0167	0.0167	False	False	False	True	0
+1485	8	97	5	"*TASK*
+Here are the context sentences:
+17. Daniel dropped the football.
+18. Daniel journeyed to the bathroom.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"in sentence 17, ""daniel dropped the football"", it is stated that daniel dropped the football. this implies that daniel is no longer carrying the football. there is no information about daniel picking up or grabbing any other object after that, so we can logically conclude that daniel is carrying nothing."	partially	nothing	True	According to sentence 17, Daniel dropped the football, which means he is no longer carrying it. The fact that he journeyed to the bathroom (sentence 18) doesn't change this.		"Reasoning: According to sentence 17, Daniel dropped the football, which means he is no longer carrying it. The fact that he journeyed to the bathroom (sentence 18) doesn't change this.
+
+Answer: nothing"	0.1304	0.0435	False	False	False	False	0

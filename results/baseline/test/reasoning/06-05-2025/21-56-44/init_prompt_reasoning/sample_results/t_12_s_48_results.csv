@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+986	12	48	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Daniel journeyed to the kitchen.
+2. Mary and Sandra moved to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	from the context sentences, we know that mary and sandra moved to the hallway (sentence 2). since mary was with sandra when they moved to the hallway, it can be logically concluded that mary is currently in the hallway.	fully	hallway	True	Since Sandra and Daniel journeyed to the kitchen, it implies that Sandra is in the kitchen. Then, Mary and Sandra moved to the hallway, which means Mary is with Sandra in the hallway.		"Reasoning: Since Sandra and Daniel journeyed to the kitchen, it implies that Sandra is in the kitchen. Then, Mary and Sandra moved to the hallway, which means Mary is with Sandra in the hallway.
+
+Answer: hallway"	0.1522	0.0217	False	False	False	False	0
+987	12	48	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John went to the bedroom.
+5. Sandra and Daniel went to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from sentence 5, we know that sandra and daniel went to the bathroom. since sandra was with daniel when they moved to the bathroom, it can be logically concluded that sandra is currently in the bathroom.	fully	bathroom	True	According to sentence 5, Sandra and Daniel went to the bathroom, which implies that Sandra is in the bathroom.		"Reasoning: According to sentence 5, Sandra and Daniel went to the bathroom, which implies that Sandra is in the bathroom.
+
+Answer: bathroom"	0.1	0.0333	False	False	False	False	0
+988	12	48	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Daniel went back to the hallway.
+8. Mary and Sandra moved to the garden.
+
+Now, answer the following question:
+Where is Mary?"	garden	from sentence 8, we know that mary and sandra moved to the garden. since mary was with sandra when they moved to the garden, it can be logically concluded that mary is currently in the garden.	fully	garden	True	Since Sandra and Daniel went back to the hallway, it implies that Sandra is in the hallway. Then, Mary and Sandra moved to the garden, which means Mary is with Sandra in the garden.		"Reasoning: Since Sandra and Daniel went back to the hallway, it implies that Sandra is in the hallway. Then, Mary and Sandra moved to the garden, which means Mary is with Sandra in the garden.
+
+Answer: garden"	0.0	0.0217	False	False	False	False	0
+989	12	48	4	"*TASK*
+Here are the context sentences:
+10. John and Daniel travelled to the garden.
+11. Mary and Sandra moved to the hallway.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	from sentence 11, we know that mary and sandra moved to the hallway. since sandra was with mary when they moved to the hallway, it can be logically concluded that sandra is currently in the hallway.	fully	hallway	True	According to sentence 11, Mary and Sandra moved to the hallway, which implies that Sandra is in the hallway.		"Reasoning: According to sentence 11, Mary and Sandra moved to the hallway, which implies that Sandra is in the hallway.
+
+Answer: hallway"	0.0	0.0333	False	False	False	False	0
+990	12	48	5	"*TASK*
+Here are the context sentences:
+13. Mary and John travelled to the bedroom.
+14. John and Daniel journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bathroom	from sentence 14, we know that john and daniel journeyed to the bathroom. since daniel was with john when they moved to the bathroom, it can be logically concluded that daniel is currently in the bathroom.	fully	bathroom	True	According to sentence 14, John and Daniel journeyed to the bathroom, which implies that Daniel is in the bathroom.		"Reasoning: According to sentence 14, John and Daniel journeyed to the bathroom, which implies that Daniel is in the bathroom.
+
+Answer: bathroom"	0.0	0.0323	False	False	False	False	0

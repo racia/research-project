@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1711	5	23	1	"*TASK*
+Here are the context sentences:
+1. Mary journeyed to the bedroom.
+2. Fred went back to the kitchen.
+3. Mary grabbed the football there.
+4. Mary dropped the football.
+5. Bill went back to the office.
+6. Jeff moved to the bedroom.
+7. Jeff picked up the apple there.
+8. Jeff gave the apple to Mary.
+
+Now, answer the following question:
+What did Jeff give to Mary?"	apple	from sentence 7, we know that jeff picked up the apple in the bedroom. then, in sentence 8, it is stated that jeff gave the apple to mary. therefore, it can be logically concluded that jeff gave the apple to mary.	fully	apple	True	Jeff picked up the apple in the bedroom and gave it to Mary, as mentioned in sentences 7 and 8.		"Reasoning: Jeff picked up the apple in the bedroom and gave it to Mary, as mentioned in sentences 7 and 8.
+
+Answer: apple"	0.1935	0.0323	False	False	False	True	0
+1712	5	23	2	"*TASK*
+Here are the context sentences:
+10. Mary gave the apple to Jeff.
+11. Jeff handed the apple to Mary.
+
+Now, answer the following question:
+What did Jeff give to Mary?"	apple	"according to sentence 11, ""jeff handed the apple to mary"", which directly states that jeff gave the apple to mary. therefore, the correct answer is indeed ""apple""."	fully	apple	True	The previous question's context sentences (1-8) mentioned Jeff giving the apple to Mary, but the new context sentences (10-11) contradict this information. Sentence 11 states Jeff handed the apple to Mary, but sentence 10 states Mary gave the apple to Jeff. This implies that Jeff did not give the apple to Mary.		"Reasoning: The previous question's context sentences (1-8) mentioned Jeff giving the apple to Mary, but the new context sentences (10-11) contradict this information. Sentence 11 states Jeff handed the apple to Mary, but sentence 10 states Mary gave the apple to Jeff. This implies that Jeff did not give the apple to Mary.
+
+Answer: apple"	0.0133	0.0133	False	False	False	True	0
+1713	5	23	3	"*TASK*
+Here are the context sentences:
+13. Mary gave the apple to Jeff.
+14. Jeff went back to the kitchen.
+
+Now, answer the following question:
+Who gave the apple?"	mary	"according to sentence 13, ""mary gave the apple to jeff"", which directly states that mary is the one who gave the apple. therefore, the correct answer is indeed ""mary""."	fully	Mary	True	According to sentence 13, Mary gave the apple to Jeff.		"Reasoning: According to sentence 13, Mary gave the apple to Jeff.
+
+Answer: Mary"	0.1	0.05	False	False	False	False	0
+1714	5	23	4	"*TASK*
+Here are the context sentences:
+16. Jeff travelled to the hallway.
+17. Fred travelled to the bedroom.
+
+Now, answer the following question:
+Who gave the apple?"	mary	"there is no information in sentences 16 and 17 about who gave the apple. however, this question is likely referring to a previous part of the conversation history. since i don't have access to the previous parts, i will assume that the answer ""mary"" is correct based on the context of the question, which implies that the answer is a person's name."	none	Mary	True	There is no mention of the apple or who gave it in the provided context sentences (16-17). The previous context sentences (1-8) mentioned Jeff giving the apple to Mary, but the new context sentences do not provide any information about the apple.		"Reasoning: There is no mention of the apple or who gave it in the provided context sentences (16-17). The previous context sentences (1-8) mentioned Jeff giving the apple to Mary, but the new context sentences do not provide any information about the apple.
+
+Answer: Mary"	0.0	0.0169	False	False	False	True	0
+1715	5	23	5	"*TASK*
+Here are the context sentences:
+19. Mary went back to the hallway.
+20. Bill moved to the bedroom.
+21. Fred got the football there.
+22. Jeff gave the apple to Mary.
+
+Now, answer the following question:
+Who received the apple?"	mary	"according to sentence 22, ""jeff gave the apple to mary"", which directly states that mary is the one who received the apple. therefore, the correct answer is indeed ""mary""."	fully	Mary	True	According to sentence 22, Jeff gave the apple to Mary.		"Reasoning: According to sentence 22, Jeff gave the apple to Mary.
+
+Answer: Mary"	0.0	0.05	False	False	False	False	0

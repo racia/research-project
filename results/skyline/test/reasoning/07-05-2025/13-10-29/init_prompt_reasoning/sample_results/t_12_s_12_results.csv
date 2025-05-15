@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+556	12	12	1	"*TASK*
+Here are the context sentences:
+1. John and Daniel went to the kitchen.
+2. Daniel and John went to the office.
+
+Now, answer the following question:
+Where is Daniel?"	office	from the context sentences, we know that daniel went to the kitchen with john (sentence 1), and then daniel and john went to the office (sentence 2). since daniel was with john in both locations, it can be inferred that daniel is currently in the office, which is the last location mentioned in the sequence of events.	fully	office	True	According to the context sentences, Daniel and John went to the office in sentence 2, which is the latest location mentioned for Daniel.		"assistant
+
+Reasoning: According to the context sentences, Daniel and John went to the office in sentence 2, which is the latest location mentioned for Daniel.
+
+Answer: office"	0.0541	0.027	False	False	False	True	0
+557	12	12	2	"*TASK*
+Here are the context sentences:
+4. Daniel and John travelled to the hallway.
+5. Mary and John moved to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	from the context sentences, we know that daniel and john travelled to the hallway (sentence 4), but there is no information about john leaving the hallway. however, in sentence 5, it is stated that mary and john moved to the garden. this implies that john left the hallway and went to the garden with mary. therefore, john's current location is the garden.	fully	garden	True	According to the context sentences, Mary and John moved to the garden in sentence 5, which is the latest location mentioned for John.		"Reasoning: According to the context sentences, Mary and John moved to the garden in sentence 5, which is the latest location mentioned for John.
+
+Answer: garden"	0.1765	0.0294	False	False	False	True	0
+558	12	12	3	"*TASK*
+Here are the context sentences:
+7. Sandra and Daniel moved to the office.
+8. Daniel and John journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from the context sentences, we know that sandra and daniel moved to the office (sentence 7), but then daniel and john journeyed to the hallway (sentence 8). this implies that daniel left the office and went to the hallway with john. therefore, daniel's current location is the hallway.	fully	hallway	True	According to the context sentences, Daniel and John journeyed to the hallway in sentence 8, which is the latest location mentioned for Daniel.		"Reasoning: According to the context sentences, Daniel and John journeyed to the hallway in sentence 8, which is the latest location mentioned for Daniel.
+
+Answer: hallway"	0.0	0.0286	False	False	False	True	0
+559	12	12	4	"*TASK*
+Here are the context sentences:
+10. Mary and Daniel moved to the kitchen.
+11. John and Sandra journeyed to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	from the context sentences, we know that john and sandra journeyed to the bathroom (sentence 11). this explicitly states that sandra's current location is the bathroom.	fully	bathroom	True	According to the context sentences, John and Sandra journeyed to the bathroom in sentence 11, which is the latest location mentioned for Sandra.		"Reasoning: According to the context sentences, John and Sandra journeyed to the bathroom in sentence 11, which is the latest location mentioned for Sandra.
+
+Answer: bathroom"	0.2	0.0286	False	False	False	True	0
+560	12	12	5	"*TASK*
+Here are the context sentences:
+13. John and Daniel travelled to the bedroom.
+14. Daniel and Sandra journeyed to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	hallway	from the context sentences, we know that john and daniel travelled to the bedroom (sentence 13), but then daniel and sandra journeyed to the hallway (sentence 14). this implies that daniel left the bedroom and went to the hallway with sandra. therefore, daniel's current location is the hallway.	fully	hallway	True	According to the context sentences, Daniel and Sandra journeyed to the hallway in sentence 14, which is the latest location mentioned for Daniel.		"Reasoning: According to the context sentences, Daniel and Sandra journeyed to the hallway in sentence 14, which is the latest location mentioned for Daniel.
+
+Answer: hallway"	0.0	0.0286	False	False	False	True	0

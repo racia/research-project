@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġkitchen	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

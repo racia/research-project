@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2266	14	4	1	"*TASK*
+Here are the context sentences:
+1. This morning Fred journeyed to the cinema.
+2. Yesterday Fred went back to the office.
+3. Yesterday Julie travelled to the office.
+4. This morning Julie travelled to the bedroom.
+
+Now, answer the following question:
+Where was Julie before the bedroom?"	office	from context sentence 4, we know that julie travelled to the bedroom this morning. to determine where julie was before the bedroom, we need to look at julie's previous location. context sentence 3 states that julie travelled to the office yesterday. there is no information about julie's location between yesterday and this morning, but we can logically assume that julie was still at the office when this morning began, as there is no mention of her travelling anywhere else. therefore, julie was at the	fully	office	True	Since Julie travelled to the bedroom this morning, and she was at the office yesterday, it is logical to infer that Julie was at the office before the bedroom.		"Reasoning: Since Julie travelled to the bedroom this morning, and she was at the office yesterday, it is logical to infer that Julie was at the office before the bedroom.
+
+Answer: office"	0.1795	0.0513	False	False	False	False	0
+2267	14	4	2	"*TASK*
+Here are the context sentences:
+6. Mary went to the park yesterday.
+7. Yesterday Bill went back to the cinema.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	office	the question asks about fred's location before the cinema, but the provided context sentences (6 and 7) do not mention fred at all. however, we can look back at the previous context sentences (1-4) to find the relevant information. from context sentence 1, we know that fred journeyed to the cinema this morning. to determine where fred was before the cinema, we need to look at fred's previous location. context sentence 2 states that fred went back	none	office	True	There is no mention of Fred going to the cinema in the given context sentences. However, we can infer that Fred was at the office yesterday (from context sentence 2 in the previous task) and went to the cinema this morning (from context sentence 1 in the previous task).		"Reasoning: There is no mention of Fred going to the cinema in the given context sentences. However, we can infer that Fred was at the office yesterday (from context sentence 2 in the previous task) and went to the cinema this morning (from context sentence 1 in the previous task).
+
+Answer: office"	0.2031	0.0312	False	False	False	True	0
+2268	14	4	3	"*TASK*
+Here are the context sentences:
+9. Mary journeyed to the office this afternoon.
+10. Mary moved to the bedroom this morning.
+
+Now, answer the following question:
+Where was Fred before the cinema?"	office	the question asks about fred's location before the cinema, but the provided context sentences (9 and 10) only mention mary's movements and do not provide any new information about fred. however, we can look back at the previous context sentences (1-4) to find the relevant information. from context sentence 1, we know that fred journeyed to the cinema this morning. to determine where fred was before the cinema, we need to look at fred's previous location. context	none	Not mentioned	False	The question is asking about Fred's location before the cinema, but there is no mention of Fred going to the cinema in these context sentences. The previous task's context sentences (1-4) mentioned Fred's location, but not in relation to the cinema. Therefore, we cannot provide an answer to this question based on the given information.		"Reasoning: The question is asking about Fred's location before the cinema, but there is no mention of Fred going to the cinema in these context sentences. The previous task's context sentences (1-4) mentioned Fred's location, but not in relation to the cinema. Therefore, we cannot provide an answer to this question based on the given information.
+
+Answer: Not mentioned"	0.1711	0.0263	False	False	False	True	0
+2269	14	4	4	"*TASK*
+Here are the context sentences:
+12. Fred journeyed to the office this evening.
+13. Fred travelled to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Mary before the office?"	bedroom	the question asks about mary's location before the office, but the provided context sentences (12 and 13) only mention fred's movements and do not provide any direct information about mary's location. however, we can look back at the previous context sentences (1-10) to find the relevant information. from context sentence 9, we know that mary journeyed to the office this afternoon, but we need to find her location before that. from context sentence 10, we know	none	Not mentioned	False	There is no mention of Mary going to the office in these context sentences. The previous tasks' context sentences (1-4 and 9-10) mentioned Mary's location, but not in relation to the office.		"Reasoning: There is no mention of Mary going to the office in these context sentences. The previous tasks' context sentences (1-4 and 9-10) mentioned Mary's location, but not in relation to the office.
+
+Answer: Not mentioned"	0.0577	0.0385	False	False	False	True	0
+2270	14	4	5	"*TASK*
+Here are the context sentences:
+15. This evening Julie moved to the office.
+16. Julie journeyed to the kitchen this afternoon.
+
+Now, answer the following question:
+Where was Julie before the kitchen?"	bedroom	the question asks about julie's location before the kitchen. from context sentence 16, we know that julie journeyed to the kitchen this afternoon. to determine where julie was before the kitchen, we need to look at julie's previous location. although there is no direct information about julie's location before the kitchen, we can look back at the previous context sentences (1-14) to find the relevant information. from context sentence 4, we know that julie travelled to the bedroom this	partially	office	False	According to context sentence 16, Julie journeyed to the kitchen this afternoon. Since Julie moved to the office this evening (context sentence 15), it is logical to infer that Julie was at the office before the kitchen.		"Reasoning: According to context sentence 16, Julie journeyed to the kitchen this afternoon. Since Julie moved to the office this evening (context sentence 15), it is logical to infer that Julie was at the office before the kitchen.
+
+Answer: office"	0.0962	0.0385	False	False	False	False	0

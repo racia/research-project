@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1241	12	99	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary went back to the hallway.
+2. Daniel and John travelled to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	hallway	"according to context sentence 1, ""sandra and mary went back to the hallway"", which explicitly states that sandra is in the hallway."	fully	hallway	True	Sandra and Mary went back to the hallway, which implies that Sandra is in the hallway along with Mary.		"Reasoning: Sandra and Mary went back to the hallway, which implies that Sandra is in the hallway along with Mary.
+
+Answer: hallway"	0.0	0.0357	False	False	False	False	0
+1242	12	99	2	"*TASK*
+Here are the context sentences:
+4. Sandra and John went back to the bathroom.
+5. Mary and John went to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	"according to context sentence 5, ""mary and john went to the garden"", which explicitly states that john is in the garden. the fact that john also went to the bathroom with sandra in sentence 4 does not change the fact that he is currently in the garden with mary."	fully	bathroom	False	Sandra and John went back to the bathroom, which implies that John is in the bathroom. Additionally, Mary and John went to the garden, which suggests that John was in the garden with Mary before going back to the bathroom.		"Reasoning: Sandra and John went back to the bathroom, which implies that John is in the bathroom. Additionally, Mary and John went to the garden, which suggests that John was in the garden with Mary before going back to the bathroom.
+
+Answer: bathroom"	0.1346	0.0192	False	False	False	False	0
+1243	12	99	3	"*TASK*
+Here are the context sentences:
+7. John and Sandra journeyed to the office.
+8. Sandra and John journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"according to context sentence 8, ""sandra and john journeyed to the bedroom"", which explicitly states that sandra is in the bedroom. the fact that sandra and john previously journeyed to the office in sentence 7 does not change the fact that she is currently in the bedroom."	fully	bedroom	True	Sandra and John journeyed to the office, which implies that Sandra is in the office. Later, Sandra and John journeyed to the bedroom, which suggests that Sandra was in the office initially and then moved to the bedroom with John.		"Reasoning: Sandra and John journeyed to the office, which implies that Sandra is in the office. Later, Sandra and John journeyed to the bedroom, which suggests that Sandra was in the office initially and then moved to the bedroom with John.
+
+Answer: bedroom"	0.0	0.0185	False	False	False	False	0
+1244	12	99	4	"*TASK*
+Here are the context sentences:
+10. Sandra and John went to the kitchen.
+11. Mary and Sandra travelled to the hallway.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"according to context sentence 11, ""mary and sandra travelled to the hallway"", which explicitly states that mary is in the hallway."	fully	not mentioned	False	There is no mention of Mary's location in the given context sentences. However, we can infer that Mary was in the garden with John (from previous context sentences) and then her location is not specified.		"Reasoning: There is no mention of Mary's location in the given context sentences. However, we can infer that Mary was in the garden with John (from previous context sentences) and then her location is not specified.
+
+Answer: not mentioned"	0.0	0.0204	False	False	False	True	0
+1245	12	99	5	"*TASK*
+Here are the context sentences:
+13. Mary and Sandra journeyed to the garden.
+14. John and Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	garden	"according to context sentence 13, ""mary and sandra journeyed to the garden"", which explicitly states that sandra is in the garden. the fact that mary later travelled to the bedroom with john in sentence 14 does not change the fact that sandra is still in the garden."	fully	garden	True	Sandra journeyed to the garden with Mary, which implies that Sandra is in the garden.		"Reasoning: Sandra journeyed to the garden with Mary, which implies that Sandra is in the garden.
+
+Answer: garden"	0.0	0.04	False	False	False	False	0

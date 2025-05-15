@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+956	7	92	1	"*TASK*
+Here are the context sentences:
+1. John went to the bedroom.
+2. John went back to the bathroom.
+3. Mary travelled to the hallway.
+4. Sandra went back to the office.
+5. Daniel went back to the garden.
+6. Daniel journeyed to the office.
+7. Mary went to the bathroom.
+8. Mary travelled to the garden.
+9. Daniel went back to the hallway.
+10. Sandra grabbed the apple there.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	one	from the context sentences, we can see that sandra went back to the office (sentence 4) and then grabbed the apple there (sentence 10). there is no mention of sandra grabbing or carrying any other objects. therefore, we can logically conclude that sandra is carrying only one object, which is the apple.	fully	one	True	The question asks about Sandra's carrying objects, and we need to find the answer based on the given context sentences. We can see that Sandra went back to the office (sentence 4) and grabbed the apple there (sentence 10). This implies that Sandra is carrying the apple.		"Reasoning: The question asks about Sandra's carrying objects, and we need to find the answer based on the given context sentences. We can see that Sandra went back to the office (sentence 4) and grabbed the apple there (sentence 10). This implies that Sandra is carrying the apple.
+
+Answer: one"	0.0	0.0156	False	False	False	False	0
+957	7	92	2	"*TASK*
+Here are the context sentences:
+12. Sandra journeyed to the bathroom.
+13. Sandra handed the apple to John.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	from the previous context sentences, we know that sandra grabbed the apple in the office (sentence 10). now, in sentence 12, sandra journeys to the bathroom, but there is no mention of her dropping or losing the apple. however, in sentence 13, sandra hands the apple to john, which implies that she is no longer carrying the apple. therefore, we can logically conclude that sandra is not carrying any objects, as she has handed the apple to john.	partially	none	True	We need to find the answer based on the given context sentences. We can see that Sandra handed the apple to John (sentence 13), which means Sandra was carrying the apple before handing it over. Now, Sandra is no longer carrying the apple.		"Reasoning: We need to find the answer based on the given context sentences. We can see that Sandra handed the apple to John (sentence 13), which means Sandra was carrying the apple before handing it over. Now, Sandra is no longer carrying the apple.
+
+Answer: none"	0.0175	0.0351	False	False	False	False	0
+958	7	92	3	"*TASK*
+Here are the context sentences:
+15. John passed the apple to Sandra.
+16. Sandra gave the apple to John.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	in sentence 15, john passes the apple to sandra, so sandra is now carrying the apple. however, in sentence 16, sandra gives the apple back to john. this means that sandra no longer has possession of the apple, as she has given it back to john. therefore, we can logically conclude that sandra is not carrying any objects, as she has handed the apple back to john.	partially	none	True	We need to find the answer based on the given context sentences. We can see that Sandra received the apple from John (sentence 15), and then gave it back to John (sentence 16). This implies that Sandra was carrying the apple temporarily, but then handed it back to John.		"Reasoning: We need to find the answer based on the given context sentences. We can see that Sandra received the apple from John (sentence 15), and then gave it back to John (sentence 16). This implies that Sandra was carrying the apple temporarily, but then handed it back to John.
+
+Answer: none"	0.2	0.0615	False	False	False	False	0
+959	7	92	4	"*TASK*
+Here are the context sentences:
+18. John passed the apple to Sandra.
+19. Sandra passed the apple to John.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	in sentence 18, john passes the apple to sandra, so sandra is now carrying the apple. however, in sentence 19, sandra passes the apple back to john. this means that sandra no longer has possession of the apple, as she has given it back to john. therefore, we can logically conclude that sandra is not carrying any objects, as she has handed the apple back to john.	partially	none	True	We need to find the answer based on the given context sentences. We can see that Sandra received the apple from John (sentence 18), and then handed it back to John (sentence 19). This implies that Sandra was carrying the apple temporarily, but then handed it back to John.		"Reasoning: We need to find the answer based on the given context sentences. We can see that Sandra received the apple from John (sentence 18), and then handed it back to John (sentence 19). This implies that Sandra was carrying the apple temporarily, but then handed it back to John.
+
+Answer: none"	0.2462	0.0923	False	False	False	False	0
+960	7	92	5	"*TASK*
+Here are the context sentences:
+21. John passed the apple to Sandra.
+22. Sandra gave the apple to John.
+
+Now, answer the following question:
+How many objects is Sandra carrying?"	none	in sentence 21, john passes the apple to sandra, so sandra is now carrying the apple. however, in sentence 22, sandra gives the apple back to john. this means that sandra no longer has possession of the apple, as she has handed it back to john. therefore, we can logically conclude that sandra is not carrying any objects, as she has given the apple back to john.	partially	none	True	We need to find the answer based on the given context sentences. We can see that Sandra received the apple from John (sentence 21), and then gave it back to John (sentence 22). This implies that Sandra was carrying the apple temporarily, but then handed it back to John.		"Reasoning: We need to find the answer based on the given context sentences. We can see that Sandra received the apple from John (sentence 21), and then gave it back to John (sentence 22). This implies that Sandra was carrying the apple temporarily, but then handed it back to John.
+
+Answer: none"	0.2	0.1231	False	False	False	False	0

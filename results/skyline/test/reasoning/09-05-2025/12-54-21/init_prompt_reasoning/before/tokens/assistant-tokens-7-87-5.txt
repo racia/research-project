@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	15	,	ĠSandra	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	,	Ġso	ĠMary	Ġwas	Ġcarrying	Ġthe	Ġfootball	.	ĠThen	,	Ġin	Ġsentence	Ġ	16	,	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġback	Ġto	ĠSandra	,	Ġwhich	Ġmeans	ĠMary	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

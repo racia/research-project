@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġgot	Ġby	ĠMary	Ġin	Ġthe	Ġgarden	,	Ġand	Ġthen	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġand	Ġlater	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.	ĠSince	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	Ġafter	Ġbeing	Ġin	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġapple	Ġwas	Ġwith	ĠMary	Ġin	Ġthe	Ġkitchen	Ġbefore	Ġshe	Ġwent	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	3	,	Ġwolves	Ġare	Ġafraid	Ġof	Ġsheep	.	ĠSince	ĠJessica	Ġis	Ġa	Ġwolf	Ġ(	sentence	Ġ	7	),	Ġshe	Ġis	Ġlikely	Ġto	Ġbe	Ġafraid	Ġof	Ġsheep	.ĊĊ	Answer	:	Ġsheep	<|eot_id|>

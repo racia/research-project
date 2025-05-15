@@ -1,0 +1,49 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+15	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+16	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+17	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+18	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+19	.	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+20	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+21	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+22	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+23	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
+24	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+25	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+26	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+27	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
+28	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+29	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+30	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+31	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
+32	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+33	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+34	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
+35	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+36	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+37	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+38	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+39	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+40	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
+41	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+42	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+43	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
+44	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+45	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+46	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
+47	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+48	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
+49	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
+50	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+51	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+52	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
+53	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
+54	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+55	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+56	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
+57	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+58	.	ĠJohn	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+59	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+60	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġmilk	?Ċ

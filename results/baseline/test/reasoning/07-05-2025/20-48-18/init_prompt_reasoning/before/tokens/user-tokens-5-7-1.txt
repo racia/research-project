@@ -1,0 +1,13 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+1	.	ĠFred	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
+2	.	ĠJeff	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+3	.	ĠBill	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
+4	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+5	.	ĠBill	Ġdropped	Ġthe	Ġmilk	.Ċ
+6	.	ĠJeff	Ġleft	Ġthe	Ġapple	.Ċ
+7	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
+8	.	ĠMary	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
+9	.	ĠMary	Ġhanded	Ġthe	Ġmilk	Ġto	ĠBill	.Ċ
+10	.	ĠFred	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġgave	Ġthe	Ġmilk	?Ċ

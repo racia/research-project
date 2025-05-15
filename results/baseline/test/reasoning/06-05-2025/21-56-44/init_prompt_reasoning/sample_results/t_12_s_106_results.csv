@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1276	12	106	1	"*TASK*
+Here are the context sentences:
+1. Sandra and Mary went back to the bedroom.
+2. Sandra and Daniel went back to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"according to context sentence 2, ""sandra and daniel went back to the kitchen"", which explicitly states that daniel went to the kitchen with sandra. therefore, the answer to the question ""where is daniel?"" is the kitchen."	fully	kitchen	True	Since Sandra and Daniel went back to the kitchen in sentence 2, it implies that Daniel is currently in the kitchen.		"Reasoning: Since Sandra and Daniel went back to the kitchen in sentence 2, it implies that Daniel is currently in the kitchen.
+
+Answer: kitchen"	0.0	0.0323	False	False	False	False	0
+1277	12	106	2	"*TASK*
+Here are the context sentences:
+4. Sandra and John journeyed to the bedroom.
+5. Sandra and John went back to the bathroom.
+
+Now, answer the following question:
+Where is Sandra?"	bathroom	"according to context sentence 5, ""sandra and john went back to the bathroom"", which explicitly states that sandra went to the bathroom with john. therefore, the answer to the question ""where is sandra?"" is the bathroom."	fully	bathroom	True	Since Sandra and John journeyed to the bedroom in sentence 4, it implies that Sandra was in the bedroom. Then, in sentence 5, Sandra and John went back to the bathroom, which means Sandra is currently in the bathroom.		"Reasoning: Since Sandra and John journeyed to the bedroom in sentence 4, it implies that Sandra was in the bedroom. Then, in sentence 5, Sandra and John went back to the bathroom, which means Sandra is currently in the bathroom.
+
+Answer: bathroom"	0.1636	0.0182	False	False	False	False	0
+1278	12	106	3	"*TASK*
+Here are the context sentences:
+7. Daniel and John went back to the hallway.
+8. Sandra and John journeyed to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"the context sentence 7 states that ""daniel and john went back to the hallway"", but the more recent sentence 8 states that ""sandra and john journeyed to the bedroom"". this implies that john left the hallway and went to the bedroom with sandra. therefore, the answer to the question ""where is john?"" is the bedroom."	fully	hallway	False	Since Daniel and John went back to the hallway in sentence 7, it implies that John is currently in the hallway. However, sentence 8 states that Sandra and John journeyed to the bedroom, which means John is also in the bedroom.		"Reasoning: Since Daniel and John went back to the hallway in sentence 7, it implies that John is currently in the hallway. However, sentence 8 states that Sandra and John journeyed to the bedroom, which means John is also in the bedroom.
+
+Answer: hallway"	0.0714	0.0179	False	False	False	False	0
+1279	12	106	4	"*TASK*
+Here are the context sentences:
+10. Daniel and Sandra moved to the office.
+11. Daniel and Sandra went to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"the context sentence 10 states that ""daniel and sandra moved to the office"", but the more recent sentence 11 states that ""daniel and sandra went to the kitchen"". this implies that daniel left the office and went to the kitchen with sandra. therefore, the answer to the question ""where is daniel?"" is the kitchen."	fully	kitchen	True	Since Daniel and Sandra moved to the office in sentence 10, it implies that Daniel was in the office. However, sentence 11 states that Daniel and Sandra went to the kitchen, which means Daniel is currently in the kitchen.		"Reasoning: Since Daniel and Sandra moved to the office in sentence 10, it implies that Daniel was in the office. However, sentence 11 states that Daniel and Sandra went to the kitchen, which means Daniel is currently in the kitchen.
+
+Answer: kitchen"	0.0755	0.0189	False	False	False	False	0
+1280	12	106	5	"*TASK*
+Here are the context sentences:
+13. John and Daniel went to the office.
+14. Daniel and John journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	"there is no mention of sandra in the provided context sentences. the sentences only mention john and daniel moving between the office and the kitchen. therefore, it is not possible to determine sandra's location based on the provided information. the answer ""kitchen"" seems to be incorrect, as there is no logical connection between the context sentences and sandra's location."	none	not mentioned	False	There is no mention of Sandra in the given context sentences. The sentences only mention John and Daniel.		"Reasoning: There is no mention of Sandra in the given context sentences. The sentences only mention John and Daniel.
+
+Answer: not mentioned"	0.0	0.0357	False	False	False	True	0

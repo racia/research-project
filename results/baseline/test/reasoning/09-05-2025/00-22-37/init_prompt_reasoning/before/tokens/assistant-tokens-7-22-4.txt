@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġpicking	Ġup	Ġor	Ġholding	Ġany	Ġobjects	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSandra	Ġis	Ġonly	Ġmentioned	Ġas	Ġgoing	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġnot	Ġdoing	Ġanything	Ġwith	Ġan	Ġobject	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

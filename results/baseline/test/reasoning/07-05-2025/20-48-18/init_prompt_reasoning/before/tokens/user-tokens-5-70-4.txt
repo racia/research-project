@@ -1,0 +1,5 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+18	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+19	.	ĠFred	Ġdropped	Ġthe	Ġmilk	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Who	Ġreceived	Ġthe	Ġmilk	?Ċ

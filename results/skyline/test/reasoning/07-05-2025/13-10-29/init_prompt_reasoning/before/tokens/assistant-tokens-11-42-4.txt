@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠDaniel	's	Ġmovements	,	Ġbut	Ġnot	ĠSandra	's	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġwas	Ġthat	Ġshe	Ġwas	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2036	5	88	1	"*TASK*
+Here are the context sentences:
+1. Jeff went back to the garden.
+2. Mary travelled to the office.
+3. Bill went back to the bedroom.
+4. Mary moved to the hallway.
+5. Bill went back to the garden.
+6. Mary went back to the bedroom.
+7. Jeff journeyed to the office.
+8. Mary went to the kitchen.
+9. Bill travelled to the hallway.
+10. Mary moved to the hallway.
+11. Fred went to the hallway.
+12. Bill picked up the football there.
+13. Bill picked up the apple there.
+14. Bill passed the apple to Mary.
+
+Now, answer the following question:
+What did Bill give to Mary?"	apple	"from sentence 14, it is directly stated that ""bill passed the apple to mary."" this explicitly indicates that bill gave the apple to mary."	fully	apple	True	Bill picked up the apple and passed it to Mary, but there is no mention of him giving the football to Mary. Therefore, the correct answer is the apple.		"Reasoning: Bill picked up the apple and passed it to Mary, but there is no mention of him giving the football to Mary. Therefore, the correct answer is the apple.
+
+Answer: apple"	0.1	0.025	False	False	False	True	0
+2037	5	88	2	"*TASK*
+Here are the context sentences:
+16. Bill discarded the football.
+17. Mary grabbed the milk there.
+
+Now, answer the following question:
+Who did Bill give the apple to?"	mary	"in the previous context (sentence 14), it was stated that ""bill passed the apple to mary."" this information is still relevant and has not been contradicted or updated in the new context sentences (16 and 17). therefore, we can conclude that bill gave the apple to mary."	none	not mentioned	False	There is no mention of Bill giving the apple to anyone. Bill picked up the apple and passed it to Mary, but there is no indication that he gave it to her.		"Reasoning: There is no mention of Bill giving the apple to anyone. Bill picked up the apple and passed it to Mary, but there is no indication that he gave it to her.
+
+Answer: not mentioned"	0.093	0.0233	False	False	False	True	0
+2038	5	88	3	"*TASK*
+Here are the context sentences:
+19. Mary gave the apple to Fred.
+20. Fred gave the apple to Mary.
+
+Now, answer the following question:
+Who gave the apple?"	fred	the question asks who gave the apple, but it doesn't specify to whom the apple was given. from the context sentences, we see that mary gave the apple to fred (sentence 19), and then fred gave the apple back to mary (sentence 20). since the question doesn't specify the recipient, we can conclude that fred gave the apple (to mary) in the last transaction involving the apple.	fully	Mary and Fred	False	According to the context sentences, Bill passed the apple to Mary, but there is no mention of Bill giving the apple to anyone else. However, Fred gave the apple to Mary, and Mary gave the apple to Fred. This suggests that the apple was passed between Mary and Fred, but not given by Bill.		"Reasoning: According to the context sentences, Bill passed the apple to Mary, but there is no mention of Bill giving the apple to anyone else. However, Fred gave the apple to Mary, and Mary gave the apple to Fred. This suggests that the apple was passed between Mary and Fred, but not given by Bill.
+
+Answer: Mary and Fred"	0.0423	0.0141	False	False	False	True	0
+2039	5	88	4	"*TASK*
+Here are the context sentences:
+22. Mary gave the apple to Fred.
+23. Bill travelled to the bathroom.
+
+Now, answer the following question:
+Who received the apple?"	fred	"from sentence 22, it is directly stated that ""mary gave the apple to fred."" this explicitly indicates that fred received the apple. sentence 23 is not relevant to the question, as it only mentions bill travelling to the bathroom and does not provide any information about the apple or fred."	fully	Fred	True	According to the context sentences, Mary gave the apple to Fred.		"Reasoning: According to the context sentences, Mary gave the apple to Fred.
+
+Answer: Fred"	0.0	0.05	False	False	False	False	0
+2040	5	88	5	"*TASK*
+Here are the context sentences:
+25. Mary moved to the office.
+26. Mary dropped the milk.
+
+Now, answer the following question:
+Who gave the apple to Fred?"	mary	"from the previous context (sentence 19), it was stated that ""mary gave the apple to fred."" this information is still relevant and has not been contradicted or updated in the new context sentences (25 and 26). therefore, we can conclude that mary gave the apple to fred."	none	Mary	True	According to the context sentences, Mary gave the apple to Fred (sentence 22).		"Reasoning: According to the context sentences, Mary gave the apple to Fred (sentence 22).
+
+Answer: Mary"	0.0	0.0417	False	False	False	False	0

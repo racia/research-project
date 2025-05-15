@@ -1,0 +1,50 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+861	7	73	1	"*TASK*
+Here are the context sentences:
+1. Sandra journeyed to the garden.
+2. John journeyed to the hallway.
+3. Mary went back to the office.
+4. Daniel journeyed to the hallway.
+5. Daniel grabbed the milk there.
+6. Daniel put down the milk.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	none	from the context sentences, we can track daniel's actions: daniel journeyed to the hallway (sentence 4), then grabbed the milk there (sentence 5), and finally put down the milk (sentence 6). since daniel put down the milk, it means he is no longer carrying it. therefore, daniel is carrying none objects.	fully	none	True	Daniel grabbed the milk in the hallway (sentence 5), and then put it down (sentence 6). This implies that Daniel was carrying the milk initially, but then he put it down, so he is not carrying it anymore.		"Reasoning: Daniel grabbed the milk in the hallway (sentence 5), and then put it down (sentence 6). This implies that Daniel was carrying the milk initially, but then he put it down, so he is not carrying it anymore.
+
+Answer: none"	0.1667	0.037	False	False	False	False	0
+862	7	73	2	"*TASK*
+Here are the context sentences:
+8. Daniel got the milk there.
+9. Daniel travelled to the bedroom.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from the context sentences, we can track daniel's actions: daniel got the milk there (sentence 8), which implies that daniel acquired the milk and is now carrying it. then, daniel travelled to the bedroom (sentence 9), but there is no mention of daniel putting down the milk or giving it to someone else. therefore, it can be logically inferred that daniel is still carrying the milk, which is one object.	partially	one	True	Daniel got the milk in the previous context (sentence 8), and then travelled to the bedroom (sentence 9). Since he got the milk, it's likely that he's still carrying it.		"Reasoning: Daniel got the milk in the previous context (sentence 8), and then travelled to the bedroom (sentence 9). Since he got the milk, it's likely that he's still carrying it.
+
+Answer: one"	0.1915	0.0638	False	False	False	False	0
+863	7	73	3	"*TASK*
+Here are the context sentences:
+11. Mary picked up the football there.
+12. Daniel went to the garden.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	"the context sentences do not provide any information about daniel picking up or carrying any objects. however, we can look back at the previous parts of the conversation history. in sentence 8, it was mentioned that ""daniel got the milk there"", which implies that daniel acquired the milk and is still carrying it (since there is no mention of putting it down or giving it to someone else). the current context sentences (11 and 12) do not provide any information that"	none	none	False	There is no mention of Daniel getting or carrying any object in the given context. The sentences only mention Mary picking up the football and Daniel going to the garden.		"Reasoning: There is no mention of Daniel getting or carrying any object in the given context. The sentences only mention Mary picking up the football and Daniel going to the garden.
+
+Answer: none"	0.1795	0.0769	False	False	False	True	0
+864	7	73	4	"*TASK*
+Here are the context sentences:
+14. Daniel went back to the bathroom.
+15. John moved to the bathroom.
+
+Now, answer the following question:
+How many objects is Mary carrying?"	one	"the context sentences (14 and 15) do not provide any information about mary carrying or picking up any objects. however, we can look back at the previous parts of the conversation history. in sentence 11, it was mentioned that ""mary picked up the football there"", which implies that mary acquired the football and is still carrying it (since there is no mention of putting it down or giving it to someone else). the current context sentences (14 and 15) do not"	none	none	False	There is no mention of Mary in the given context. The sentences only mention Daniel going back to the bathroom and John moving to the bathroom.		"Reasoning: There is no mention of Mary in the given context. The sentences only mention Daniel going back to the bathroom and John moving to the bathroom.
+
+Answer: none"	0.0286	0.0286	False	False	False	True	0
+865	7	73	5	"*TASK*
+Here are the context sentences:
+17. Daniel grabbed the apple there.
+18. Daniel gave the apple to John.
+
+Now, answer the following question:
+How many objects is Daniel carrying?"	one	from the context sentences, we can track daniel's actions: daniel grabbed the apple there (sentence 17), which implies that daniel acquired the apple and is carrying it. however, in the next sentence (18), it is mentioned that daniel gave the apple to john, which means daniel is no longer carrying the apple. but we know from previous parts of the conversation history (sentence 8) that daniel got the milk and is still carrying it (	partially	none	False	Daniel grabbed the apple (sentence 17) and then gave it to John (sentence 18). This implies that Daniel was carrying the apple initially, but then he gave it away, so he is not carrying it anymore.		"Reasoning: Daniel grabbed the apple (sentence 17) and then gave it to John (sentence 18). This implies that Daniel was carrying the apple initially, but then he gave it away, so he is not carrying it anymore.
+
+Answer: none"	0.0962	0.0962	False	False	False	False	0

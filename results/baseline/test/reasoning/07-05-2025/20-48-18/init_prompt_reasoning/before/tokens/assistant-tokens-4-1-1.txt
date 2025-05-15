@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġhallway	Ġis	Ġeast	Ġof	Ġthe	Ġbathroom	,	Ġand	Ġthe	Ġbedroom	Ġis	Ġwest	Ġof	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	Ġthe	Ġbathroom	Ġis	Ġnot	Ġeast	Ġof	Ġthe	Ġhallway	,	Ġbut	Ġrather	Ġthe	Ġhallway	Ġis	Ġeast	Ġof	Ġthe	Ġbathroom	.	ĠTherefore	,	Ġthere	Ġis	Ġno	Ġentity	Ġthat	Ġis	Ġeast	Ġof	Ġthe	Ġbathroom	.ĊĊ	Answer	:	ĠNone	<|eot_id|>

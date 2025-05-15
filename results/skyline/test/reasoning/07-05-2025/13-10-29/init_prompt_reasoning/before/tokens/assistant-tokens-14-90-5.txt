@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	12	,	ĠBill	Ġmoved	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	.	ĠThere	Ġis	Ġno	Ġother	Ġinformation	Ġabout	ĠBill	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	Ġthis	Ġevening	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠBill	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

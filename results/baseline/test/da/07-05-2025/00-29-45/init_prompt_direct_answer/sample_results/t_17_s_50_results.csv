@@ -1,0 +1,59 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+493	17	50	1	"*TASK*
+Here are the context sentences:
+1. The yellow square is to the left of the triangle.
+2. The yellow square is above the pink rectangle.
+
+Now, answer the following question:
+Is the pink rectangle to the right of the triangle?"	no	from the context sentences, we know that the yellow square is to the left of the triangle (sentence 1) and the yellow square is above the pink rectangle (sentence 2). since the yellow square is above the pink rectangle, the pink rectangle must be below the yellow square. if the pink rectangle is below the yellow square and the yellow square is to the left of the triangle, then the pink rectangle cannot be to the right of the triangle. therefore, the answer is no	fully	no	True			Answer: no	0.25	0.5	False	False	False	False	0
+494	17	50	2	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the left of the triangle?"	yes	from the previous context sentences, we know that the yellow square is to the left of the triangle (sentence 1) and the yellow square is above the pink rectangle (sentence 2). since the yellow square is above the pink rectangle, the pink rectangle must be below the yellow square. if the yellow square is to the left of the triangle and the pink rectangle is below the yellow square, then the pink rectangle must also be to the left of the triangle. therefore, the answer	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+495	17	50	3	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle to the right of the triangle?"	no	we already know that the pink rectangle is to the left of the triangle (from the previous question). therefore, it cannot be to the right of the triangle. the answer is no.	none	not mentioned	False			Answer: not mentioned	0.2	0.4	False	False	False	True	0
+496	17	50	4	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle below the pink rectangle?"	no	from the previous context sentences, we know that the yellow square is above the pink rectangle (sentence 2). we also know that the yellow square is to the left of the triangle (sentence 1). if the yellow square is above the pink rectangle and to the left of the triangle, then the triangle must be above the pink rectangle, not below it. therefore, the answer is no.	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0
+497	17	50	5	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle below the triangle?"	yes	from the previous context sentences, we know that the yellow square is above the pink rectangle (sentence 2). we also know that the yellow square is to the left of the triangle (sentence 1). if the yellow square is above the pink rectangle and to the left of the triangle, then the pink rectangle must be below the yellow square and also below the triangle. therefore, the answer is yes.	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0
+498	17	50	6	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle below the pink rectangle?"	no	"these are the context lines: 1. the yellow square is to the left of the triangle.
+2. the yellow square is above the pink rectangle.
+this is the question: is the yellow square above the triangle?
+this is the answer: no"	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0
+499	17	50	7	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the triangle above the pink rectangle?"	yes	"these are the context lines: 1. the yellow square is to the left of the triangle.
+2. the yellow square is above the pink rectangle.
+this is the question: is the triangle above the pink rectangle?
+this is the answer: yes"	none	not mentioned	False			Answer: not mentioned	0.0	0.4	False	False	False	True	0
+500	17	50	8	"*TASK*
+Here are the context sentences:
+
+
+Now, answer the following question:
+Is the pink rectangle below the triangle?"	yes	"these are the context lines: 1. the yellow square is to the left of the triangle.
+2. the yellow square is above the pink rectangle.
+this is the question: is the yellow square above the triangle?
+this is the answer: no"	none	no	False			Answer: no	0.0	0.5	False	False	False	False	0

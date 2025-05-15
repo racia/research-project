@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠEmily	Ġis	Ġa	Ġwolf	.	ĠAccording	Ġto	Ġsentence	Ġ	6	,	Ġwolves	Ġare	Ġafraid	Ġof	Ġsheep	.	ĠTherefore	,	ĠEmily	Ġis	Ġafraid	Ġof	Ġsheep	.ĊĊ	Answer	:	Ġsheep	<|eot_id|>

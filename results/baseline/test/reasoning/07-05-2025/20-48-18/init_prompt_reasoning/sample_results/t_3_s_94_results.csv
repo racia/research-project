@@ -1,0 +1,112 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1466	3	94	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the kitchen.
+2. Mary went back to the bedroom.
+3. Daniel went to the bathroom.
+4. Mary moved to the office.
+5. Mary journeyed to the bedroom.
+6. John moved to the office.
+7. Daniel went back to the garden.
+8. Daniel went back to the hallway.
+9. Daniel journeyed to the garden.
+10. John went back to the bathroom.
+11. Daniel travelled to the bedroom.
+12. John picked up the milk.
+13. John left the milk.
+14. Mary got the apple there.
+15. Sandra journeyed to the garden.
+16. John went back to the office.
+17. Sandra went to the bathroom.
+18. Mary left the apple.
+19. Sandra moved to the kitchen.
+20. Sandra moved to the office.
+21. Daniel journeyed to the hallway.
+22. Mary went back to the kitchen.
+23. John went to the garden.
+24. Mary journeyed to the bathroom.
+25. John travelled to the office.
+26. Mary picked up the milk.
+27. Mary went back to the hallway.
+28. Sandra moved to the kitchen.
+29. Daniel went to the office.
+30. Mary journeyed to the bedroom.
+
+Now, answer the following question:
+Where was the milk before the bedroom?"	hallway	from sentence 26, we know that mary picked up the milk. before that, in sentence 27, mary went back to the hallway. therefore, mary picked up the milk in the hallway.	fully	hallway	True	The milk was picked up by John in the office (sentence 12). Then, John left the milk (sentence 13). After that, Mary picked up the milk (sentence 26). Since Mary journeyed to the bedroom (sentence 30), the milk was in the hallway before the bedroom.		"Reasoning: The milk was picked up by John in the office (sentence 12). Then, John left the milk (sentence 13). After that, Mary picked up the milk (sentence 26). Since Mary journeyed to the bedroom (sentence 30), the milk was in the hallway before the bedroom.
+
+Answer: hallway"	0.1029	0.0441	False	False	False	False	0
+1467	3	94	2	"*TASK*
+Here are the context sentences:
+32. Mary took the apple.
+33. Mary journeyed to the kitchen.
+34. Sandra moved to the bedroom.
+35. John went to the bedroom.
+36. Mary left the milk.
+37. Mary discarded the apple there.
+
+Now, answer the following question:
+Where was the milk before the bedroom?"	hallway	from sentence 36, we know that mary left the milk. before that, there is no information about mary having the milk. however, we can look at previous conversations (sentences 12-31, not provided in this part but available in the conversation history) where we find that john left the milk (sentence 13) and mary picked up the milk (sentence 26). mary then went back to the hallway (sentence 27). therefore, mary left the milk	partially	office	False	The milk was left by John (sentence 36). There is no information about where John left the milk before the bedroom. However, we can infer that the milk was in the office because John travelled to the office earlier (sentence 1). Since Mary journeyed to the bedroom (sentence 35), the milk was in the office before the bedroom.		"Reasoning: The milk was left by John (sentence 36). There is no information about where John left the milk before the bedroom. However, we can infer that the milk was in the office because John travelled to the office earlier (sentence 1). Since Mary journeyed to the bedroom (sentence 35), the milk was in the office before the bedroom.
+
+Answer: office"	0.0513	0.0385	False	False	False	True	0
+1468	3	94	3	"*TASK*
+Here are the context sentences:
+39. Sandra moved to the hallway.
+40. John moved to the bathroom.
+
+Now, answer the following question:
+Where was the milk before the kitchen?"	bedroom	from the provided context lines, there is no direct information about the milk. however, we can look at previous conversations (sentences 32-38, not provided in this part but available in the conversation history) where we find that mary left the milk (sentence 36) and mary journeyed to the kitchen (sentence 33). therefore, the milk was in the same location as mary before she went to the kitchen, which is the bedroom.	none	not mentioned	False	There is no information about the milk's location before the kitchen in these context sentences. The milk's previous location is not mentioned.		"Reasoning: There is no information about the milk's location before the kitchen in these context sentences. The milk's previous location is not mentioned.
+
+Answer: not mentioned"	0.0588	0.0882	False	False	False	True	0
+1469	3	94	4	"*TASK*
+Here are the context sentences:
+42. John went back to the bedroom.
+43. Daniel went back to the bathroom.
+44. John journeyed to the hallway.
+45. Daniel moved to the kitchen.
+46. Daniel took the apple.
+47. Daniel got the milk.
+48. Sandra journeyed to the bathroom.
+49. Daniel put down the milk.
+50. Daniel picked up the milk there.
+51. Daniel left the milk.
+52. Daniel discarded the apple there.
+53. John went back to the bathroom.
+54. Sandra picked up the football.
+55. Daniel got the milk there.
+56. Sandra discarded the football.
+57. Daniel went to the office.
+58. John grabbed the football.
+59. John dropped the football.
+60. Sandra grabbed the football.
+61. Sandra journeyed to the office.
+62. Daniel went to the bedroom.
+63. John went to the bedroom.
+64. Daniel discarded the milk.
+65. Daniel took the milk.
+66. Sandra dropped the football.
+67. Mary took the apple.
+68. Sandra moved to the kitchen.
+69. Daniel went to the office.
+70. John travelled to the garden.
+71. Daniel dropped the milk.
+72. Mary went back to the bathroom.
+73. Mary put down the apple.
+74. Daniel went back to the bathroom.
+75. Daniel grabbed the apple.
+76. Daniel journeyed to the kitchen.
+77. Daniel journeyed to the bedroom.
+
+Now, answer the following question:
+Where was the apple before the bedroom?"	kitchen	from sentence 77, we know that daniel journeyed to the bedroom. before that, in sentence 76, daniel journeyed to the kitchen. in sentence 75, daniel grabbed the apple, which means he picked it up from the location he was in, which is the kitchen. therefore, the apple was in the kitchen before the bedroom.	fully	bathroom	False	The apple was taken by Mary (sentence 67). Then, Mary put down the apple (sentence 73). After that, Daniel grabbed the apple (sentence 75). Since Daniel journeyed to the bedroom (sentence 77), the apple was in the bathroom before the bedroom.		"Reasoning: The apple was taken by Mary (sentence 67). Then, Mary put down the apple (sentence 73). After that, Daniel grabbed the apple (sentence 75). Since Daniel journeyed to the bedroom (sentence 77), the apple was in the bathroom before the bedroom.
+
+Answer: bathroom"	0.0312	0.0469	False	False	False	False	0
+1470	3	94	5	"*TASK*
+Here are the context sentences:
+79. Sandra went back to the office.
+80. Daniel went back to the garden.
+
+Now, answer the following question:
+Where was the apple before the bedroom?"	kitchen	75, daniel grabbed the apple. therefore, daniel grabbed the apple in the kitchen.	none	not mentioned	False	There is no information about the apple's location before the bedroom in these context sentences. The apple's previous location is not mentioned.		"Reasoning: There is no information about the apple's location before the bedroom in these context sentences. The apple's previous location is not mentioned.
+
+Answer: not mentioned"	0.0	0.0882	False	False	False	True	0

@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+46	11	10	1	"*TASK*
+Here are the context sentences:
+1. Sandra moved to the garden.
+2. Then she journeyed to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	sandra's location is determined by tracing her movements. initially, she moved to the garden, which means she was in the garden. then, she journeyed to the bedroom, which implies that she left the garden and is now in the bedroom. therefore, sandra is currently in the bedroom.	fully	bedroom	True	According to the context sentences, Sandra moved to the garden (1) and then journeyed to the bedroom (2), which means she is currently in the bedroom.		"assistant
+
+Reasoning: According to the context sentences, Sandra moved to the garden (1) and then journeyed to the bedroom (2), which means she is currently in the bedroom.
+
+Answer: bedroom"	0.25	0.0455	False	False	False	False	0
+47	11	10	2	"*TASK*
+Here are the context sentences:
+4. John went back to the kitchen.
+5. Then he went to the bathroom.
+
+Now, answer the following question:
+Where is John?"	bathroom	john's location is determined by tracing his movements. in the given context, john went back to the kitchen, which means he was in the kitchen. then, he went to the bathroom, which implies that he left the kitchen and is now in the bathroom. therefore, john is currently in the bathroom.	fully	bathroom	True	According to the context sentences, John went back to the kitchen (4) and then went to the bathroom (5), which means he is currently in the bathroom.		"Reasoning: According to the context sentences, John went back to the kitchen (4) and then went to the bathroom (5), which means he is currently in the bathroom.
+
+Answer: bathroom"	0.15	0.05	False	False	False	False	0
+48	11	10	3	"*TASK*
+Here are the context sentences:
+7. Mary travelled to the kitchen.
+8. Following that she travelled to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"the question asks about sandra's location, but the context sentences only mention mary's movements. there is no information about sandra's movements or location. the answer ""bedroom"" cannot be logically deduced from the provided context, as it only describes mary's journey. the correct answer would be ""unknown"" or ""not specified"", as sandra's location is not mentioned in the context."	none	bedroom	True	The context sentences only mention Mary's movements, but not Sandra's. The previous information about Sandra's location was that she was in the bedroom (2).		"Reasoning: The context sentences only mention Mary's movements, but not Sandra's. The previous information about Sandra's location was that she was in the bedroom (2).
+
+Answer: bedroom"	0.1053	0.0526	False	False	False	True	0
+49	11	10	4	"*TASK*
+Here are the context sentences:
+10. Daniel went to the bedroom.
+11. After that he went to the office.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"the question asks about mary's location, but the context sentences only mention daniel's movements. there is no information about mary's movements or location. the answer ""bedroom"" cannot be logically deduced from the provided context, as it only describes daniel's journey and does not mention mary at all. the correct answer would be ""unknown"" or ""not specified"", as mary's location is not mentioned in the context."	none	bedroom	True	The context sentences only mention Daniel's movements, but not Mary's. The previous information about Mary's location was that she was in the bedroom (8).		"Reasoning: The context sentences only mention Daniel's movements, but not Mary's. The previous information about Mary's location was that she was in the bedroom (8).
+
+Answer: bedroom"	0.0789	0.0526	False	False	False	True	0
+50	11	10	5	"*TASK*
+Here are the context sentences:
+13. Daniel moved to the hallway.
+14. Following that he went to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bedroom	"the question asks about mary's location, but the context sentences only mention daniel's movements. there is no information about mary's movements or location. the answer ""bedroom"" cannot be logically deduced from the provided context, as it only describes daniel's journey and does not mention mary at all. the correct answer would be ""unknown"" or ""not specified"", as mary's location is not mentioned in the context."	none	bedroom	True	The context sentences only mention Daniel's movements, but not Mary's. The previous information about Mary's location was that she was in the bedroom (8).		"Reasoning: The context sentences only mention Daniel's movements, but not Mary's. The previous information about Mary's location was that she was in the bedroom (8).
+
+Answer: bedroom"	0.0526	0.0526	False	False	False	True	0

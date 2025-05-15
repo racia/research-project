@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġoffice	Ġin	Ġrelation	Ġto	ĠMary	.ĊĊ	Answer	:	Ġno	<|eot_id|>

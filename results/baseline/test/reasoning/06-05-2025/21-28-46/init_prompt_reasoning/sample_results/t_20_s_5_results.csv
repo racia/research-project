@@ -1,0 +1,81 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+2104	20	5	1	"*TASK*
+Here are the context sentences:
+1. Sumit is bored.
+
+Now, answer the following question:
+Where will sumit go?"	garden	there is no direct information provided about sumit's intended destination. however, it is mentioned that sumit is bored, which implies that he might be looking for a change of environment or something to do. a garden is a common outdoor space where people often go to relax, take a walk, or engage in leisure activities. therefore, it is a logical inference that sumit might go to the garden to alleviate his boredom.	fully	garden	True	Since Sumit is bored, he might want to do something to alleviate his boredom. Given the context, it's likely that he will go somewhere to engage in an activity that interests him.		"Reasoning: Since Sumit is bored, he might want to do something to alleviate his boredom. Given the context, it's likely that he will go somewhere to engage in an activity that interests him.
+
+Answer: garden"	0.0	0.0222	False	False	False	False	0
+2105	20	5	2	"*TASK*
+Here are the context sentences:
+3. Antoine is hungry.
+
+Now, answer the following question:
+Where will antoine go?"	kitchen	when antoine is hungry, it implies that he needs to eat or find food. the kitchen is a common place in a household where food is prepared and consumed. therefore, it is a logical inference that antoine will go to the kitchen to satisfy his hunger.	fully	kitchen	True	Since Antoine is hungry, he needs to satisfy his hunger. Given the context, it's likely that he will go somewhere to find food.		"Reasoning: Since Antoine is hungry, he needs to satisfy his hunger. Given the context, it's likely that he will go somewhere to find food.
+
+Answer: kitchen"	0.0571	0.0286	False	False	False	False	0
+2106	20	5	3	"*TASK*
+Here are the context sentences:
+5. Yann is bored.
+
+Now, answer the following question:
+Where will yann go?"	garden	previously, it was established that when sumit was bored, he went to the garden. similarly, yann is also bored, which suggests that he might be looking for a change of environment or something to do. given the precedent set by sumit's action, it is a logical inference that yann will also go to the garden to alleviate his boredom.	fully	garden	True	Since Yann is bored, he might want to do something to alleviate his boredom. Given the context, it's likely that he will go somewhere to engage in an activity that interests him.		"Reasoning: Since Yann is bored, he might want to do something to alleviate his boredom. Given the context, it's likely that he will go somewhere to engage in an activity that interests him.
+
+Answer: garden"	0.0667	0.0222	False	False	False	False	0
+2107	20	5	4	"*TASK*
+Here are the context sentences:
+7. Sumit journeyed to the garden.
+
+Now, answer the following question:
+Why did sumit go to the garden?"	bored	previously, it was mentioned that sumit is bored. subsequently, it is stated that sumit journeyed to the garden. it can be logically inferred that sumit's boredom was the reason for him to go to the garden, as it is a common response to alleviate boredom.	none	bored	True	Since Sumit journeyed to the garden, it's likely that he went there to alleviate his boredom, which was mentioned earlier.		"Reasoning: Since Sumit journeyed to the garden, it's likely that he went there to alleviate his boredom, which was mentioned earlier.
+
+Answer: bored"	0.0606	0.0303	False	True	False	True	0
+2108	20	5	5	"*TASK*
+Here are the context sentences:
+9. Jason is hungry.
+
+Now, answer the following question:
+Where will jason go?"	kitchen	when jason is hungry, it implies that he needs to eat or find food. the kitchen is a common place in a household where food is prepared and consumed. therefore, it is a logical inference that jason will go to the kitchen to satisfy his hunger, similar to antoine's situation when he was hungry and went to the kitchen.	fully	kitchen	True	Since Jason is hungry, he needs to satisfy his hunger. Given the context, it's likely that he will go somewhere to find food.		"Reasoning: Since Jason is hungry, he needs to satisfy his hunger. Given the context, it's likely that he will go somewhere to find food.
+
+Answer: kitchen"	0.0571	0.0286	False	False	False	False	0
+2109	20	5	6	"*TASK*
+Here are the context sentences:
+11. Sumit picked up the football there.
+
+Now, answer the following question:
+Why did sumit get the football?"	bored	previously, it was established that sumit went to the garden when he was bored. now, it is mentioned that sumit picked up the football there. it can be logically inferred that sumit got the football in the garden, and since he was bored, it is likely that he picked up the football to alleviate his boredom, possibly to play with it or engage in some activity.	none	bored	True	Since Sumit picked up the football, it's likely that he got it because he was bored, which was mentioned earlier.		"Reasoning: Since Sumit picked up the football, it's likely that he got it because he was bored, which was mentioned earlier.
+
+Answer: bored"	0.0	0.0312	False	True	False	True	0
+2110	20	5	7	"*TASK*
+Here are the context sentences:
+13. Antoine travelled to the kitchen.
+
+Now, answer the following question:
+Why did antoine go to the kitchen?"	hungry	. now, it is mentioned that sumit picked up the football there. it can be logically inferred that sumit got the football in the garden, and he did so because he was bored, likely to alleviate his boredom by engaging in a physical activity like playing with the football.	none	hungry	True	Since Antoine travelled to the kitchen, it's likely that he went there to satisfy his hunger, which was mentioned earlier.		"Reasoning: Since Antoine travelled to the kitchen, it's likely that he went there to satisfy his hunger, which was mentioned earlier.
+
+Answer: hungry"	0.0	0.0323	False	False	False	True	0
+2111	20	5	8	"*TASK*
+Here are the context sentences:
+15. Yann went to the garden.
+
+Now, answer the following question:
+Why did yann go to the garden?"	bored	. now, it is mentioned that sumit picked up the football there. it can be logically inferred that sumit got the football in the garden, and since he was bored, he likely picked up the football to alleviate his boredom, possibly to play with it or engage in some activity.	none	bored	True	Since Yann went to the garden, it's likely that he went there to alleviate his boredom, which was mentioned earlier.		"Reasoning: Since Yann went to the garden, it's likely that he went there to alleviate his boredom, which was mentioned earlier.
+
+Answer: bored"	0.0312	0.0312	False	True	False	True	0
+2112	20	5	9	"*TASK*
+Here are the context sentences:
+17. Jason went to the kitchen.
+
+Now, answer the following question:
+Why did jason go to the kitchen?"	hungry	. now, it is mentioned that sumit picked up the football there. it can be logically inferred that sumit got the football in the garden, and since he was bored, it is likely that he picked up the football to alleviate his boredom, possibly to play with it or engage in some activity.	none	thirsty	False	Since Jason went to the kitchen, it's likely that he went there to satisfy his thirst, which was mentioned earlier.		"Reasoning: Since Jason went to the kitchen, it's likely that he went there to satisfy his thirst, which was mentioned earlier.
+
+Answer: thirsty"	0.0323	0.0323	False	False	False	True	0
+2113	20	5	10	"*TASK*
+Here are the context sentences:
+19. Antoine took the apple there.
+
+Now, answer the following question:
+Why did antoine get the apple?"	hungry	. now, it is mentioned that sumit picked up the football there. it can be logically inferred that sumit got the football in the garden, and since he was bored, he likely picked up the football to alleviate his boredom, possibly to play with it or engage in some activity.	none	Not mentioned	False	"There is no mention of Antoine getting an apple in the context sentences. Antoine's action is mentioned as ""travelled to the kitchen"", but not getting an apple."		"Reasoning: There is no mention of Antoine getting an apple in the context sentences. Antoine's action is mentioned as ""travelled to the kitchen"", but not getting an apple.
+
+Answer: Not mentioned"	0.0	0.0244	False	False	False	True	0

@@ -1,0 +1,54 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1041	8	9	1	"*TASK*
+Here are the context sentences:
+1. Mary moved to the bedroom.
+2. Sandra got the milk there.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	"the context sentence ""sandra got the milk there"" implies that sandra obtained the milk in the location mentioned in the previous sentence, which is the bedroom. since she got the milk, it can be logically inferred that she is carrying it."	fully	milk	True	According to sentence 2, Sandra got the milk in the bedroom, which implies that she is carrying the milk.		"assistant
+
+Reasoning: According to sentence 2, Sandra got the milk in the bedroom, which implies that she is carrying the milk.
+
+Answer: milk"	0.0909	0.0303	False	False	False	False	0
+1042	8	9	2	"*TASK*
+Here are the context sentences:
+4. Sandra moved to the bathroom.
+5. Sandra went back to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	in the previous parts of the conversation, it was established that sandra got the milk (sentence 2). there is no information provided that suggests she put the milk down or gave it to someone else. therefore, it can be logically inferred that sandra is still carrying the milk. the fact that she moved to the bathroom (sentence 4) and then went back to the garden (sentence 5) does not change the fact that she is carrying the milk.	none	milk	True	Although Sandra moved to different locations (bathroom and garden), there is no information about her putting down or leaving the milk. Therefore, it can be inferred that she is still carrying the milk.		"Reasoning: Although Sandra moved to different locations (bathroom and garden), there is no information about her putting down or leaving the milk. Therefore, it can be inferred that she is still carrying the milk.
+
+Answer: milk"	0.1304	0.0217	False	False	False	True	0
+1043	8	9	3	"*TASK*
+Here are the context sentences:
+7. Sandra went back to the bathroom.
+8. Sandra went back to the garden.
+
+Now, answer the following question:
+What is Sandra carrying?"	milk	the question asks what sandra is carrying, and the answer is milk. to determine this, we need to look at the previous parts of the conversation. in sentence 2, it was established that sandra got the milk, and there is no information provided that suggests she put the milk down or gave it to someone else. even though sandra has moved to different locations (bathroom and garden) in sentences 4, 5, 7, and 8, there is no indication	none	milk	True	There is no new information about Sandra putting down or leaving the milk, and she is still moving between locations. Therefore, it can be inferred that she is still carrying the milk.		"Reasoning: There is no new information about Sandra putting down or leaving the milk, and she is still moving between locations. Therefore, it can be inferred that she is still carrying the milk.
+
+Answer: milk"	0.0	0.0233	False	False	False	True	0
+1044	8	9	4	"*TASK*
+Here are the context sentences:
+10. Sandra travelled to the hallway.
+11. Mary journeyed to the hallway.
+12. John moved to the bathroom.
+13. Mary travelled to the kitchen.
+14. Mary travelled to the bathroom.
+15. Mary went back to the office.
+16. John got the football there.
+17. Sandra discarded the milk.
+
+Now, answer the following question:
+What is Sandra carrying?"	nothing	the question asks what sandra is carrying, and the answer is nothing. to determine this, we need to look at the previous parts of the conversation. in sentence 2, it was established that sandra got the milk, and she was carrying it. however, in sentence 17, it is stated that sandra discarded the milk. this means that sandra is no longer carrying the milk. there is no other information provided that suggests sandra picked up or obtained any other object, so it can	partially	nothing	True	According to sentence 17, Sandra discarded the milk, which means she is no longer carrying it.		"Reasoning: According to sentence 17, Sandra discarded the milk, which means she is no longer carrying it.
+
+Answer: nothing"	0.0	0.0741	False	False	False	False	0
+1045	8	9	5	"*TASK*
+Here are the context sentences:
+19. Sandra travelled to the bathroom.
+20. Sandra got the apple there.
+
+Now, answer the following question:
+What is Sandra carrying?"	apple	the question asks what sandra is carrying, and the answer is apple. to determine this, we need to look at the previous parts of the conversation. in sentence 17, it was established that sandra discarded the milk, so she is no longer carrying the milk. then, in sentence 19, sandra travelled to the bathroom, and in sentence 20, she got the apple there. this implies that sandra obtained the apple in the bathroom and is now carrying it. therefore, the	partially	apple	True	According to sentence 20, Sandra got the apple in the bathroom, which implies that she is carrying the apple.		"Reasoning: According to sentence 20, Sandra got the apple in the bathroom, which implies that she is carrying the apple.
+
+Answer: apple"	0.0333	0.1	False	False	False	False	0

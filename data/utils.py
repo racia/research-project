@@ -2,10 +2,58 @@ from __future__ import annotations
 
 import os
 from collections import defaultdict
+from mailbox import FormatError
 from pathlib import Path
 
 from evaluation.Metrics import Accuracy, Metric
 from inference.DataLevels import Features, SamplePart
+
+
+def load_scenery(
+    word_types: tuple[str, ...] = (
+        "attr",
+        "loc",
+        "nh-subj",
+        "obj",
+        "part",
+        "rel",
+        "subj-attr",
+        "subj",
+        "other",
+        "base_phrasal_verbs",
+    ),
+) -> set:
+    """
+    Get scenery words from the scenery_words folder and the Scenery base phrases verbs.
+    Additionally, adds Scenery base phrasal words.
+
+    :return: set of scenery words for filtering attention scores
+    """
+    scenery_words = set()
+    for entry in os.scandir("data/scenery_words"):
+        word_type = entry.name.strip(".txt")
+        if word_type in word_types:
+            with open(entry.path, "r", encoding="UTF-8") as f:
+                scenery_words.update(f.read().splitlines())
+    return scenery_words
+
+
+def expand_cardinal_points(abbr_news: list[str]) -> list[str]:
+    """
+    Expands the abbreviations of cardinal points into full words by checking
+    if any word as a list item belongs to possible abbreviations.
+
+    :param abbr_news: list of possible abbreviations
+    :return: list of words with cardinal points expanded with order preserved
+    """
+    cardinal_points = {"n": "north", "e": "east", "w": "west", "s": "south"}
+    expanded_news = []
+    for abbr in abbr_news:
+        if abbr in cardinal_points.keys():
+            expanded_news.append(cardinal_points[abbr])
+        else:
+            expanded_news.append(abbr)
+    return expanded_news
 
 
 def is_empty_file(file_path: Path) -> bool:
@@ -173,11 +221,11 @@ def format_task_accuracies(
 
 def _select_metric(metric_values: dict[str, float], keyword: str) -> list[float]:
     """
-    Select accuracies from a dictionary of accuracies based on the keyword.
+    Select accuracies from a dictionary of accuracies based on the type_.
 
     :param metric_values: the accuracies
-    :param keyword: the keyword to select the accuracies
-    :return: a list of accuracies by the keyword
+    :param keyword: the type_ to select the accuracies
+    :return: a list of accuracies by the type_
     """
     return [value for type_, value in metric_values.items() if keyword in type_]
 
@@ -245,38 +293,53 @@ def level_down(level_id: str) -> str | None:
     :param level_id: the level id to convert
     :return: the lower case level id
     """
-    if level_id == "task_id":
-        return "sample_id"
-    elif level_id == "sample_id":
-        return "part_id"
+    if "task" in level_id:
+        return level_id.replace("task", "sample")
+    elif "sample" in level_id:
+        return level_id.replace("sample", "part")
     return None
 
 
 def structure_parts(
-    parts: list[SamplePart], id_: str | None = "task_id"
-) -> dict[int, dict[int, list[SamplePart]]]:
+    parts: list[SamplePart], level_id: str | None = "task_id"
+) -> (
+    dict[int, dict[int, list[SamplePart]]]
+    | dict[int, list[SamplePart]]
+    | list[SamplePart]
+):
     """
     Structure the parts of the sample into samples and tasks.
 
     :param parts: the parts of the sample
-    :param id_: the id to structure the parts by
-                "task_id" or "sample_id"
+    :param level_id: the level name for id to structure the parts by
+                    "task_id" or "sample_id"
     :return: the structured parts
     """
-    if id_ == "part_id":
+    if type(parts) == dict:
+        raise FormatError(
+            "Parts should be a list, not a dict. They might be already structured."
+        )
+
+    if level_id not in ["task_id", "sample_id", "part_id"]:
+        raise ValueError(
+            f"Invalid id_ value: {level_id}. Expected 'task_id' or 'sample_id'."
+        )
+
+    if level_id is None:
+        return parts
+
+    if level_id == "part_id":
         return sorted(parts, key=lambda p: getattr(p, "part_id"))
 
-    if id_ not in ["task_id", "sample_id"]:
-        raise ValueError(
-            f"Invalid id_ value: {id_}. Expected 'task_id' or 'sample_id'."
-        )
+    assert type(parts) == list
 
     id_parts = defaultdict(list)
     for part in parts:
-        id_parts[getattr(part, id_)].append(part)
+        id_parts[getattr(part, level_id)].append(part)
 
-    for key, value in id_parts.items():
-        id_parts[key] = structure_parts(value, level_down(id_))
+    for key, parts_ in id_parts.items():
+        assert type(parts_) == list
+        id_parts[key] = structure_parts(parts_, level_down(level_id))
 
     return dict(sorted(id_parts.items(), key=lambda p: p[0]))
 

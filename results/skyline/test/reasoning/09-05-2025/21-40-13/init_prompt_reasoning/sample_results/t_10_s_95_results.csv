@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+471	10	95	1	"*TASK*
+Here are the context sentences:
+1. Fred moved to the office.
+2. Julie journeyed to the park.
+
+Now, answer the following question:
+Is Julie in the park?"	yes	"the context sentence ""julie journeyed to the park"" explicitly states that julie went to the park, which implies that she is currently in the park. there is no information provided that suggests she left the park or went somewhere else, so it is logical to conclude that julie is indeed in the park."	fully	yes	True	According to context sentence 2, Julie journeyed to the park, which implies that she is currently in the park.		"assistant
+
+Reasoning: According to context sentence 2, Julie journeyed to the park, which implies that she is currently in the park.
+
+Answer: yes"	0.0	0.0294	False	False	False	False	0
+472	10	95	2	"*TASK*
+Here are the context sentences:
+4. Mary is either in the office or the bedroom.
+5. Mary is either in the office or the cinema.
+
+Now, answer the following question:
+Is Mary in the school?"	no	the context sentences provide information about mary's possible locations, but neither of them mentions the school as a possible location for mary. sentence 4 states that mary is either in the office or the bedroom, and sentence 5 states that mary is either in the office or the cinema. there is no mention of the school in either sentence, so it can be logically concluded that mary is not in the school.	fully	no	True	There is no mention of Mary being in the school in the context sentences. The options provided are office, bedroom, and cinema, but school is not one of them.		"Reasoning: There is no mention of Mary being in the school in the context sentences. The options provided are office, bedroom, and cinema, but school is not one of them.
+
+Answer: no"	0.0732	0.0244	False	False	False	True	0
+473	10	95	3	"*TASK*
+Here are the context sentences:
+7. Fred is in the park.
+8. Bill is in the cinema.
+
+Now, answer the following question:
+Is Bill in the bedroom?"	no	the context sentences provide information about the locations of fred and bill. sentence 7 states that fred is in the park, which is not relevant to bill's location. sentence 8 states that bill is in the cinema, which explicitly indicates that bill is not in the bedroom. there is no information provided that suggests bill is in the bedroom, and the information about bill's location points to a different location (the cinema), so it can be logically concluded that bill is not in the bedroom	fully	no	True	According to context sentence 8, Bill is in the cinema, but there is no mention of him being in the bedroom.		"Reasoning: According to context sentence 8, Bill is in the cinema, but there is no mention of him being in the bedroom.
+
+Answer: no"	0.0938	0.0312	False	False	False	True	0
+474	10	95	4	"*TASK*
+Here are the context sentences:
+10. Julie travelled to the cinema.
+11. Bill is either in the office or the school.
+
+Now, answer the following question:
+Is Fred in the cinema?"	no	the context sentences provide information about julie's and bill's locations, but there is no information provided about fred's location. sentence 10 states that julie travelled to the cinema, which does not mention fred. sentence 11 states that bill is either in the office or the school, which also does not mention fred or the cinema. since there is no information provided about fred's location, and the information about julie and bill's locations does not imply anything about fred's location, it can	none	not mentioned	False	There is no mention of Fred being in the cinema in the context sentences. The information provided is about Julie traveling to the cinema and Bill's possible locations, but it does not mention Fred's location.		"Reasoning: There is no mention of Fred being in the cinema in the context sentences. The information provided is about Julie traveling to the cinema and Bill's possible locations, but it does not mention Fred's location.
+
+Answer: not mentioned"	0.0	0.0208	False	False	False	True	0
+475	10	95	5	"*TASK*
+Here are the context sentences:
+13. Bill went to the kitchen.
+14. Bill travelled to the bedroom.
+
+Now, answer the following question:
+Is Bill in the school?"	no	the context sentences provide information about bill's movements and locations. sentence 13 states that bill went to the kitchen, and sentence 14 states that bill travelled to the bedroom. there is no mention of the school as one of bill's locations. since bill's movements are described as going to the kitchen and then travelling to the bedroom, it can be logically concluded that bill is not in the school.	fully	no	True	According to context sentences 13 and 14, Bill went to the kitchen and then travelled to the bedroom, but there is no mention of him being in the school.		"Reasoning: According to context sentences 13 and 14, Bill went to the kitchen and then travelled to the bedroom, but there is no mention of him being in the school.
+
+Answer: no"	0.0	0.0244	False	False	False	True	0

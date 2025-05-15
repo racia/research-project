@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+12	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
+13	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
+14	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
+15	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+16	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
+17	.	ĠJohn	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+What	Ġis	ĠJohn	Ġcarrying	?Ċ

@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+1331	8	67	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the bathroom.
+2. Mary went back to the bedroom.
+3. Daniel grabbed the apple there.
+4. Mary travelled to the office.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple	"from context sentence 3, ""daniel grabbed the apple there"", we know that daniel picked up an apple in the bathroom (since that's where he moved to in sentence 1). there is no information about daniel putting the apple down or giving it to someone else, so it can be logically inferred that daniel is still carrying the apple."	fully	apple	True	According to sentence 3, Daniel grabbed the apple in the bathroom, which implies that Daniel is carrying the apple.		"assistant
+
+Reasoning: According to sentence 3, Daniel grabbed the apple in the bathroom, which implies that Daniel is carrying the apple.
+
+Answer: apple"	0.0	0.0294	False	False	False	False	0
+1332	8	67	2	"*TASK*
+Here are the context sentences:
+6. Sandra moved to the bedroom.
+7. Sandra journeyed to the kitchen.
+
+Now, answer the following question:
+What is Daniel carrying?"	apple	the context sentences 6 and 7 only provide information about sandra's movements, but the question asks about daniel. to answer this question, we need to refer to the previous parts of the conversation history. from the previous context sentences, we know that daniel grabbed an apple in the bathroom (sentence 3). there is no information about daniel putting the apple down or giving it to someone else, so it can be logically inferred that daniel is still carrying the apple.	none	apple	True	The new context sentences (6 and 7) do not provide any new information about Daniel. The previous information about Daniel is that he grabbed the apple in the bathroom (sentence 3). There is no update about Daniel dropping or leaving the apple, so we can infer that Daniel is still carrying the apple.		"Reasoning: The new context sentences (6 and 7) do not provide any new information about Daniel. The previous information about Daniel is that he grabbed the apple in the bathroom (sentence 3). There is no update about Daniel dropping or leaving the apple, so we can infer that Daniel is still carrying the apple.
+
+Answer: apple"	0.0435	0.0145	False	False	False	True	0
+1333	8	67	3	"*TASK*
+Here are the context sentences:
+9. John went to the bedroom.
+10. Daniel moved to the garden.
+11. Daniel grabbed the football there.
+12. Daniel left the apple.
+
+Now, answer the following question:
+What is Daniel carrying?"	football	"from context sentence 11, ""daniel grabbed the football there"", we know that daniel picked up a football in the garden (since that's where he moved to in sentence 10). in sentence 12, ""daniel left the apple"", we know that daniel put down the apple he was carrying (as established in previous parts of the conversation). there is no information about daniel putting the football down or giving it to someone else, so it can be logically inferred"	partially	football	True	According to sentence 11, Daniel grabbed the football in the garden. Additionally, sentence 12 states that Daniel left the apple, which means Daniel is no longer carrying the apple. Therefore, Daniel is now carrying the football.		"Reasoning: According to sentence 11, Daniel grabbed the football in the garden. Additionally, sentence 12 states that Daniel left the apple, which means Daniel is no longer carrying the apple. Therefore, Daniel is now carrying the football.
+
+Answer: football"	0.0	0.0577	False	False	False	False	0
+1334	8	67	4	"*TASK*
+Here are the context sentences:
+14. Mary journeyed to the kitchen.
+15. Daniel put down the football there.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	"from context sentence 15, ""daniel put down the football there"", we know that daniel put down the football in the garden (since that's where he was last mentioned to be). this implies that daniel is no longer carrying the football. there is no information about daniel picking up any other object, so it can be logically inferred that daniel is not carrying anything."	partially	nothing	True	According to sentence 15, Daniel put down the football in the kitchen, which means Daniel is no longer carrying the football.		"Reasoning: According to sentence 15, Daniel put down the football in the kitchen, which means Daniel is no longer carrying the football.
+
+Answer: nothing"	0.0938	0.125	False	False	False	False	0
+1335	8	67	5	"*TASK*
+Here are the context sentences:
+17. Sandra went back to the bedroom.
+18. John moved to the garden.
+
+Now, answer the following question:
+What is Daniel carrying?"	nothing	the context sentences 17 and 18 only provide information about sandra and john's movements, but the question asks about daniel. to answer this question, we need to refer to the previous parts of the conversation history. from the previous context sentences, we know that daniel put down the football in the garden (sentence 15). there is no information about daniel picking up any other object, so it can be logically inferred that daniel is still not carrying anything.	none	nothing	True	The new context sentences (17 and 18) do not provide any new information about Daniel. The previous information about Daniel is that he put down the football in the kitchen (sentence 15), and there is no update about Daniel picking up or carrying anything else.		"Reasoning: The new context sentences (17 and 18) do not provide any new information about Daniel. The previous information about Daniel is that he put down the football in the kitchen (sentence 15), and there is no update about Daniel picking up or carrying anything else.
+
+Answer: nothing"	0.1333	0.0667	False	False	False	True	0
