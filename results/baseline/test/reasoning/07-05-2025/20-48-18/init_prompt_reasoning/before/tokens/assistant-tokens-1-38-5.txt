@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠSandra	's	Ġmovement	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.Ċ	Answer	:	Ġoffice	<|eot_id|>

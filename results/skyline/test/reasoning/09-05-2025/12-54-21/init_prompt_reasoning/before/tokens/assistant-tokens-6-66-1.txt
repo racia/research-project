@@ -1,1 +1,0 @@
-<|start_header_id|>	<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġgoing	Ġto	Ġthe	Ġoffice	.	ĠIn	Ġfact	,	Ġsentence	Ġ	2	Ġstates	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

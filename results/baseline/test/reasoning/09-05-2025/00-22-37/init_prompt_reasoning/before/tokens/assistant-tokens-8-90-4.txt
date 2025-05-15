@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	Ġwhat	ĠSandra	Ġis	Ġcarrying	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	's	Ġactions	Ġor	Ġpossessions	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġand	ĠJohn	's	Ġmovements	,	Ġbut	Ġnot	ĠSandra	's	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

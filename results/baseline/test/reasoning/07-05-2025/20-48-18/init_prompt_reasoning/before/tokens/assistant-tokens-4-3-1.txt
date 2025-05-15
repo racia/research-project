@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġhallway	Ġis	Ġnorth	Ġof	Ġthe	Ġbathroom	,	Ġand	Ġthe	Ġbathroom	Ġis	Ġnorth	Ġof	Ġthe	Ġgarden	.	ĠTherefore	,	Ġthe	Ġhallway	Ġis	Ġnorth	Ġof	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

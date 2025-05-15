@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġbedroom	,	Ġand	Ġsentence	Ġ	1	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	.	ĠThis	Ġinformation	Ġis	Ġsufficient	Ġto	Ġconclude	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

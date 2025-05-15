@@ -1,1 +1,0 @@
-<|start_header_id|>	<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbathroom	Ġand	Ġthen	Ġgoing	Ġto	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġbeing	Ġin	Ġthe	Ġhallway	Ġor	Ġgoing	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

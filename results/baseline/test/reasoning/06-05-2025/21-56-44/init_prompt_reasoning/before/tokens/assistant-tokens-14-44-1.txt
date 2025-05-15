@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠFred	Ġmoved	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	,	Ġand	Ġhe	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġyesterday	,	Ġit	Ġimplies	Ġthat	Ġhe	Ġwas	Ġin	Ġthe	Ġbedroom	Ġbefore	Ġmoving	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

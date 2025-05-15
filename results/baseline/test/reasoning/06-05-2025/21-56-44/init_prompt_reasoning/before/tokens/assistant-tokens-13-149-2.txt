@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠJohn	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	,	Ġas	Ġthey	Ġhave	Ġjust	Ġmoved	Ġthere	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

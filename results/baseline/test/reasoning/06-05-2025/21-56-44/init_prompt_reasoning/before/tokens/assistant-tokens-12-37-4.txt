@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠSandra	Ġand	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.	ĠHowever	,	Ġsentence	Ġ	11	Ġreveals	Ġthat	ĠDaniel	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġsuggests	Ġthat	ĠDaniel	Ġmoved	Ġfrom	Ġthe	Ġoffice	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

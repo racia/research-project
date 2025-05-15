@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	6	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġyesterday	,	Ġand	Ġthen	Ġaccording	Ġto	Ġsentence	Ġ	9	,	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġkitchen	Ġbefore	Ġgoing	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

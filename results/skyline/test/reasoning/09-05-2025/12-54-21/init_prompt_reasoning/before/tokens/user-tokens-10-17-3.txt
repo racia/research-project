@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
-8	.	ĠFred	Ġis	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġcinema	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠFred	Ġin	Ġthe	Ġcinema	?Ċ

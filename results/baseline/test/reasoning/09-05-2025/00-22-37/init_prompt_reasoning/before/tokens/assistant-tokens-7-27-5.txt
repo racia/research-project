@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġholding	Ġor	Ġcarrying	Ġanything	.	ĠThe	Ġsentence	Ġabout	ĠSandra	Ġmoving	Ġto	Ġthe	Ġkitchen	Ġis	Ġirrelevant	Ġto	ĠJohn	's	Ġcurrent	Ġstate	.	ĠTherefore	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠJohn	Ġis	Ġnot	Ġcarrying	Ġany	Ġobjects	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

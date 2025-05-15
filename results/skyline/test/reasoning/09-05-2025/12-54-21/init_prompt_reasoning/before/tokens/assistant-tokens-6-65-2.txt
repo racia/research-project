@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	2	,	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġthen	Ġaccording	Ġto	Ġcontext	Ġsentence	Ġ	5	,	Ġshe	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-16	.	ĠMary	Ġhanded	Ġthe	Ġmilk	Ġto	ĠBill	.Ċ
-17	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġmilk	Ġto	ĠBill	?Ċ

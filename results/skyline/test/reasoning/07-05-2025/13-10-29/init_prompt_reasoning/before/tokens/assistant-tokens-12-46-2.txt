@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	5	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

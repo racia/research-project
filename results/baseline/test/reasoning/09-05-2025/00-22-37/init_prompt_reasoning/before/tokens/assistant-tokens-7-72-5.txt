@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġcarrying	Ġany	Ġobject	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġmoving	Ġto	Ġthe	Ġoffice	Ġand	Ġpicking	Ġup	Ġthe	Ġapple	,	Ġbut	Ġthis	Ġinformation	Ġdoes	Ġnot	Ġrelate	Ġto	ĠMary	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

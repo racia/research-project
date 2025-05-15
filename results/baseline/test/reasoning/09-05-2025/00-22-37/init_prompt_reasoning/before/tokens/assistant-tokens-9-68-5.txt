@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSentence	Ġ	13	Ġand	Ġ	14	Ġonly	Ġmention	ĠSandra	Ġand	ĠJohn	's	Ġlocations	,	Ġrespectively	,	Ġbut	Ġdo	Ġnot	Ġmention	ĠMary	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

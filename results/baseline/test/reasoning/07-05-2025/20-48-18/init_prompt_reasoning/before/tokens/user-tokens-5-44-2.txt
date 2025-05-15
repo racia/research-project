@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-50	.	ĠFred	Ġdropped	Ġthe	Ġfootball	.Ċ
-51	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġapple	?Ċ

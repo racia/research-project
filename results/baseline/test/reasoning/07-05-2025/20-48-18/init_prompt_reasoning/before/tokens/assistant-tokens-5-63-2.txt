@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠBill	Ġpassed	Ġthe	Ġfootball	Ġto	ĠMary	,	Ġwhich	Ġmeans	ĠBill	Ġgave	Ġthe	Ġfootball	Ġto	ĠMary	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġit	Ġimplies	Ġthat	ĠMary	Ġwas	Ġwith	ĠSandra	.	ĠThen	,	ĠMary	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġmeans	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

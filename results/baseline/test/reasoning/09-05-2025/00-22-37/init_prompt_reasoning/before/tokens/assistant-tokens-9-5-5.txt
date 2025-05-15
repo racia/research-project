@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	14	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġdirectly	Ġanswers	Ġthe	Ġquestion	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

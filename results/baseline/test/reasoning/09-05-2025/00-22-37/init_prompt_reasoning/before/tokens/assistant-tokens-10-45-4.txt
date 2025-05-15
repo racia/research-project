@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġbedroom	.	ĠSince	Ġwe	Ġdon	't	Ġhave	Ġany	Ġinformation	Ġthat	Ġcontrad	icts	Ġthis	,	Ġwe	Ġcan	Ġconclude	Ġthat	ĠJulie	's	Ġlocation	Ġis	Ġeither	Ġthe	Ġoffice	Ġor	Ġthe	Ġbedroom	,	Ġbut	Ġwe	Ġcan	't	Ġpinpoint	Ġit	Ġto	Ġbe	Ġspecifically	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

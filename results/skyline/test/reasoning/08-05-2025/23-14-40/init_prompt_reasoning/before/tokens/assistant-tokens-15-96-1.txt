@@ -1,1 +1,0 @@
-<|start_header_id|>	<|end_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	1	,	ĠSheep	Ġare	Ġafraid	Ġof	Ġmice	.	ĠJessica	Ġis	Ġa	Ġsheep	Ġ(	sentence	Ġ	2	).	ĠTherefore	,	ĠJessica	Ġis	Ġafraid	Ġof	Ġmice	.ĊĊ	Answer	:	Ġmice	<|eot_id|>

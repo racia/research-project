@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	14	,	Ġwe	Ġknow	Ġthat	ĠDaniel	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

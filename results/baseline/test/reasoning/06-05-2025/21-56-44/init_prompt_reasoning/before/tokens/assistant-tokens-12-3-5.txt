@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	Ġtogether	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġhallway	Ġtogether	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.Ċ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġinitially	,	Ġand	Ġthen	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.	ĠSince	Ġthe	Ġquestion	Ġasks	Ġabout	Ġher	Ġcurrent	Ġlocation	,	ĠI	Ġwill	Ġconsider	Ġthe	Ġmost	Ġrecent	Ġaction	,	Ġwhich	Ġis	Ġgoing	Ġback	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

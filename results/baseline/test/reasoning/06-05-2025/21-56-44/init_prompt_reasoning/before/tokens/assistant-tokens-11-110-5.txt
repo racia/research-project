@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġso	Ġshe	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

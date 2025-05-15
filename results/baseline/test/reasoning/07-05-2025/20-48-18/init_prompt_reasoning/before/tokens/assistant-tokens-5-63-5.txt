@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġto	ĠBill	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

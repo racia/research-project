@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	Ġinitially	,	Ġand	Ġthen	Ġshe	Ġmoved	Ġto	Ġthe	Ġoffice	.	ĠSince	Ġthe	Ġlast	Ġknown	Ġlocation	Ġis	Ġthe	Ġoffice	,	Ġit	Ġis	Ġlikely	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

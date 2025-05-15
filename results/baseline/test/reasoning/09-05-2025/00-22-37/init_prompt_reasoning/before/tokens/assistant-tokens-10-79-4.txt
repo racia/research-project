@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġexplicitly	Ġstates	Ġthat	ĠFred	Ġmoved	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

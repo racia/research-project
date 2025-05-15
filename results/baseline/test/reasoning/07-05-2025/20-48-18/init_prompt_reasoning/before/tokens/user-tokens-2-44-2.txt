@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-22	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
-23	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
-24	.	ĠSandra	Ġleft	Ġthe	Ġapple	.Ċ
-25	.	ĠSandra	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
-26	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
-27	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

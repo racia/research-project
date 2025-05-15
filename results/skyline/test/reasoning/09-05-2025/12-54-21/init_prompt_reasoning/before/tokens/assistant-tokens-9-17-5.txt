@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	13	Ġexplicitly	Ġstates	Ġthat	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthere	Ġis	Ġno	Ġsubsequent	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġhas	Ġleft	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

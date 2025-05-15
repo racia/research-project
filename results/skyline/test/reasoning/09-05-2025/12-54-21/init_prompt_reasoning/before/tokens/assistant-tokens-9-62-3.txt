@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġstates	Ġthat	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġgarden	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠSandra	Ġleft	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

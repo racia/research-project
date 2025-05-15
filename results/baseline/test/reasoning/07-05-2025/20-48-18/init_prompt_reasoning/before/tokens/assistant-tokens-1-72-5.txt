@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġis	Ġa	Ġspecific	Ġlocation	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġmoving	Ġto	Ġa	Ġdifferent	Ġlocation	.	ĠTherefore	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

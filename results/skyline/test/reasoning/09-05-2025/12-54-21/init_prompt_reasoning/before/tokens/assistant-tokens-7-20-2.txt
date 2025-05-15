@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠSandra	,	Ġand	Ġthe	Ġprevious	Ġinformation	Ġ(	sent	ences	Ġ	1	Ġand	Ġ	2	)	Ġstated	Ġthat	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	Ġin	Ġthe	Ġbedroom	.	ĠThe	Ġnew	Ġsentences	Ġ(	4	Ġand	Ġ	5	)	Ġtalk	Ġabout	ĠJohn	Ġand	ĠMary	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠSandra	.ĊĊ	Answer	:	Ġone	<|eot_id|>

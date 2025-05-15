@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	11	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġand	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġmoving	Ġto	Ġa	Ġdifferent	Ġlocation	Ġafter	Ġthat	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

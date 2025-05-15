@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠDaniel	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	11	,	Ġ"	Daniel	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	",	Ġwhich	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġin	Ġthe	Ġkitchen	,	Ġnot	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

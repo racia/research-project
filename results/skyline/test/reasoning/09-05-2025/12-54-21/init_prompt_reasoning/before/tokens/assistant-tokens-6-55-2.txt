@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	4	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġthen	Ġaccording	Ġto	Ġcontext	Ġsentence	Ġ	5	,	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

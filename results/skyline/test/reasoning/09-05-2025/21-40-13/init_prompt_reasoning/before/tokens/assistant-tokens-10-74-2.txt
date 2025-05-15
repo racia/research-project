@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJulie	Ġbeing	Ġin	Ġthe	Ġschool	.	ĠSentence	Ġ	4	Ġstates	ĠJulie	Ġis	Ġin	Ġthe	Ġkitchen	,	Ġand	Ġsentence	Ġ	5	Ġprovides	Ġalternative	Ġlocations	Ġ(	office	Ġor	Ġcinema	),	Ġbut	Ġschool	Ġis	Ġnot	Ġmentioned	.ĊĊ	Answer	:	Ġno	<|eot_id|>

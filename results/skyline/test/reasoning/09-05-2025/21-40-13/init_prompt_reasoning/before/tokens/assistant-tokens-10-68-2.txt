@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġrecent	Ġinformation	Ġsuggesting	Ġshe	Ġis	Ġin	Ġthe	Ġbedroom	.	ĠSentence	Ġ	5	Ġis	Ġabout	ĠJulie	's	Ġmovement	Ġand	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	Ġthat	Ġmentions	ĠMary	's	Ġlocation	.	ĠThe	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġand	ĠSandra	's	Ġlocations	,	Ġand	ĠDaniel	's	Ġlocation	Ġin	Ġthe	Ġgarden	.	ĠSince	ĠMary	's	Ġlocation	Ġis	Ġnot	Ġmentioned	,	Ġit	Ġcannot	Ġbe	Ġdetermined	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

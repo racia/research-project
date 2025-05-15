@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	13	Ġstates	Ġthat	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġpark	,	Ġand	Ġsentence	Ġ	14	Ġmentions	ĠBill	Ġgoing	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġit	Ġdoesn	't	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠTherefore	,	Ġwe	Ġcan	't	Ġconclude	ĠMary	's	Ġexact	Ġlocation	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

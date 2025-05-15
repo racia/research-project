@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-18	.	ĠFred	Ġhanded	Ġthe	Ġmilk	Ġto	ĠJeff	.Ċ
-19	.	ĠFred	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠFred	Ġgive	Ġto	ĠJeff	?Ċ

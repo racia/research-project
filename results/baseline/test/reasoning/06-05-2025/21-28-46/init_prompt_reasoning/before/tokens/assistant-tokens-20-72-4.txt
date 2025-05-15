@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠY	ann	Ġis	Ġthirsty	,	Ġhe	Ġmight	Ġwant	Ġto	Ġqu	ench	Ġhis	Ġthirst	.	ĠGiven	Ġthe	Ġcontext	,	Ġit	's	Ġlikely	Ġthat	Ġhe	Ġwill	Ġgo	Ġsomewhere	Ġto	Ġget	Ġa	Ġdrink	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

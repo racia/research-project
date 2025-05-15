@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-20	.	ĠJeff	Ġdropped	Ġthe	Ġmilk	.Ċ
-21	.	ĠJeff	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġmilk	?Ċ

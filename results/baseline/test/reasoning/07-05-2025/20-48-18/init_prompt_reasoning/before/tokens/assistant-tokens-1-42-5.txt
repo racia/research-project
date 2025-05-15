@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġand	ĠSandra	,	Ġand	Ġtheir	Ġlocations	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

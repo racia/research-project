@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġlocation	Ġexplicitly	.	ĠHowever	,	Ġsentence	Ġ	11	Ġstates	Ġthat	ĠJohn	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

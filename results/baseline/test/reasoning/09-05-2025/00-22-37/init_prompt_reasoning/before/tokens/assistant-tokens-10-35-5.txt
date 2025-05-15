@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠJulie	's	Ġand	ĠMary	's	Ġlocations	.	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġpark	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġschool	.	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJulie	's	Ġlocation	,	Ġand	Ġsince	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġschool	,	Ġthe	Ġanswer	Ġis	Ġno	.ĊĊ	Answer	:	Ġno	<|eot_id|>

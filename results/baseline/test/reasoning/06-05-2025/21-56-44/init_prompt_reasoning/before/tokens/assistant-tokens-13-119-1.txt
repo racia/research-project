@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

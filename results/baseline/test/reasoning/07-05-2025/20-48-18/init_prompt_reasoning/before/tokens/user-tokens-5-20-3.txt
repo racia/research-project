@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠJeff	Ġpassed	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
-8	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠJeff	Ġgive	Ġto	ĠFred	?Ċ

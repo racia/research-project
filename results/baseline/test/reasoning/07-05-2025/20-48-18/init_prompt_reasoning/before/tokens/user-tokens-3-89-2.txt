@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-22	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-23	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġoffice	?Ċ

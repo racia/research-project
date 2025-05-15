@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
-2	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
-3	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
-4	.	ĠJohn	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠJohn	Ġcarrying	?Ċ

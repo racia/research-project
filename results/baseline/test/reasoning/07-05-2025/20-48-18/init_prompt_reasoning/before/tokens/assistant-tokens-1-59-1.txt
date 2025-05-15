@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġis	Ġthe	Ġsame	Ġlocation	Ġas	ĠJohn	.	ĠTherefore	,	ĠMary	Ġis	Ġin	Ġthe	Ġkitchen	.Ċ	Answer	:	Ġkitchen	<|eot_id|>

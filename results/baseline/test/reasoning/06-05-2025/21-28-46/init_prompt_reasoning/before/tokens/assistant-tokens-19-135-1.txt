@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġhallway	Ġis	Ġnorth	Ġof	Ġthe	Ġoffice	,	Ġand	Ġthe	Ġbedroom	Ġis	Ġwest	Ġof	Ġthe	Ġoffice	,	Ġwe	Ġneed	Ġto	Ġmove	Ġwest	Ġfrom	Ġthe	Ġhallway	Ġto	Ġreach	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġwest	<|eot_id|>

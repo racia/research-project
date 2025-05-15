@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-16	.	ĠBill	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
-17	.	ĠBill	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠMary	Ġgive	Ġto	ĠBill	?Ċ

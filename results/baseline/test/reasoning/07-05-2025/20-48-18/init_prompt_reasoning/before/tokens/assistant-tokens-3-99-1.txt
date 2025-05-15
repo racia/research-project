@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġtaken	Ġby	ĠMary	Ġin	Ġsentence	Ġ	11	,	Ġand	Ġthen	Ġdiscarded	Ġin	Ġsentence	Ġ	15	.	ĠSince	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	Ġin	Ġsentence	Ġ	20	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġapple	Ġwas	Ġdiscarded	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

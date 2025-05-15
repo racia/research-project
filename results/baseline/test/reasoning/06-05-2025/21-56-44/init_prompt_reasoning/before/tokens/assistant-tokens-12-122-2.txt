@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

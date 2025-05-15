@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġtalk	Ġabout	ĠMary	Ġand	ĠJohn	,	Ġbut	Ġnot	Ġabout	ĠSandra	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġbeing	Ġin	Ġthe	Ġgarden	Ġor	Ġany	Ġother	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

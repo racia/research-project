@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-10	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-11	.	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠSandra	Ġin	Ġthe	Ġkitchen	?Ċ

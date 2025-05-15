@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	5	Ġstates	Ġthat	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġnow	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

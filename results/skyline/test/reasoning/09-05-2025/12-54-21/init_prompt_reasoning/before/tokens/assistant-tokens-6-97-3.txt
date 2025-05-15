@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJohn	Ġbeing	Ġin	Ġthe	Ġgarden	.	ĠIn	Ġcontext	Ġsentence	Ġ	2	,	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġmoving	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	<|eot_id|>

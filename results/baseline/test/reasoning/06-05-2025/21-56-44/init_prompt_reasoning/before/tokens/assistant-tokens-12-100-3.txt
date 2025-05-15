@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	Ġwith	ĠMary	,	Ġbut	Ġthen	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	Ġwith	ĠDaniel	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

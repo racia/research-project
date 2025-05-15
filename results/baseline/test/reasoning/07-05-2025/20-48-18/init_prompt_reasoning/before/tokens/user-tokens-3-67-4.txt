@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-38	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	.Ċ
-39	.	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġbedroom	?Ċ

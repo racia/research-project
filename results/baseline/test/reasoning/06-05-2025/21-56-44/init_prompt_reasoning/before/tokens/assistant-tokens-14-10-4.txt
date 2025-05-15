@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġmoved	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	12	),	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	Ġ(	sentence	Ġ	13	),	Ġit	Ġis	Ġlogical	Ġto	Ġinfer	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

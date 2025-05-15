@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
-8	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠJohn	Ġin	Ġthe	Ġbathroom	?Ċ

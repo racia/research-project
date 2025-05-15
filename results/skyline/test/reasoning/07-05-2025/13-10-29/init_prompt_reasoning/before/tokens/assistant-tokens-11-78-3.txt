@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠSandra	's	Ġmovements	,	Ġbut	Ġnot	ĠMary	's	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġis	Ġthat	Ġshe	Ġwas	Ġin	Ġthe	Ġoffice	Ġ(	from	Ġthe	Ġprevious	Ġconversation	).ĊĊ	Answer	:	Ġoffice	<|eot_id|>

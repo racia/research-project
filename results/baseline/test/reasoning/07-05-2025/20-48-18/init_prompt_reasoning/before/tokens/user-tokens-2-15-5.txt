@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-27	.	ĠJohn	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
-28	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
-29	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
-30	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
-31	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
-32	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

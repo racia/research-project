@@ -1,8 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠThe	Ġchest	Ġis	Ġbigger	Ġthan	Ġthe	Ġchocolate	.Ċ
-2	.	ĠThe	Ġchocolate	Ġfits	Ġinside	Ġthe	Ġcontainer	.Ċ
-3	.	ĠThe	Ġcontainer	Ġis	Ġbigger	Ġthan	Ġthe	Ġchocolate	.Ċ
-4	.	ĠThe	Ġchocolate	Ġfits	Ġinside	Ġthe	Ġbox	.Ċ
-5	.	ĠThe	Ġcontainer	Ġfits	Ġinside	Ġthe	Ġchest	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	Ġthe	Ġchest	Ġbigger	Ġthan	Ġthe	Ġchocolate	?Ċ

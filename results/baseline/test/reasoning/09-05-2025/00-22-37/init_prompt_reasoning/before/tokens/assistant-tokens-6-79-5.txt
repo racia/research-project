@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġbeing	Ġin	Ġthe	Ġkitchen	.	ĠThey	Ġonly	Ġmention	ĠMary	Ġtravelling	Ġto	Ġthe	Ġoffice	Ġand	ĠJohn	Ġgoing	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġnot	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

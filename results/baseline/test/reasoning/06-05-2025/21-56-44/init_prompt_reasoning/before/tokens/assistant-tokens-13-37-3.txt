@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.	ĠSince	ĠMary	Ġis	Ġwith	ĠJohn	,	Ġand	Ġthey	Ġare	Ġin	Ġthe	Ġoffice	,	Ġit	's	Ġlikely	Ġthat	ĠMary	Ġis	Ġalso	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

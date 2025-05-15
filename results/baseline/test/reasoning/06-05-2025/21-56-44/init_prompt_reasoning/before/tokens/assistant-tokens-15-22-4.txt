@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠGer	tr	ude	Ġis	Ġa	Ġmouse	,	Ġand	Ġmice	Ġare	Ġafraid	Ġof	Ġsheep	Ġ(	from	Ġsentence	Ġ	1	),	ĠGer	tr	ude	Ġis	Ġlikely	Ġafraid	Ġof	Ġsheep	.ĊĊ	Answer	:	Ġsheep	<|eot_id|>

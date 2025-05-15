@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġmilk	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġtravelling	Ġto	Ġthe	Ġgarden	Ġand	Ġleaving	Ġthe	Ġfootball	,	Ġbut	Ġdo	Ġnot	Ġmention	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

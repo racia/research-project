@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	2	),	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

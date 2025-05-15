@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġin	Ġthe	Ġmorning	,	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġcinema	Ġin	Ġthe	Ġafternoon	.	ĠSince	Ġshe	Ġmoved	Ġfrom	Ġthe	Ġkitchen	Ġto	Ġthe	Ġcinema	,	Ġit	Ġis	Ġlogical	Ġto	Ġinfer	Ġthat	Ġshe	Ġwas	Ġin	Ġthe	Ġkitchen	Ġbefore	Ġmoving	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

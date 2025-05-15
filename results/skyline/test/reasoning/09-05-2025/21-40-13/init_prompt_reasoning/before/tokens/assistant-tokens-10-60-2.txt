@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	4	Ġstates	Ġthat	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġpark	,	Ġwhich	Ġimplies	Ġthat	ĠJulie	Ġis	Ġcurrently	Ġin	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

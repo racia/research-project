@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-9	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
-10	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-11	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
-12	.	ĠJohn	Ġdropped	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġfootball	?Ċ

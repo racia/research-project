@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
-14	.	ĠAfter	Ġthat	Ġshe	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠMary	?Ċ

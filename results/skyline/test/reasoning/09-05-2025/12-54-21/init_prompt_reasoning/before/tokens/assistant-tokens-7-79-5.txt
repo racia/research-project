@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	1	,	Ġwe	Ġknow	Ġthat	ĠJohn	Ġgrabbed	Ġthe	Ġapple	,	Ġbut	Ġin	Ġsentence	Ġ	8	,	ĠJohn	Ġhanded	Ġthe	Ġapple	Ġto	ĠSandra	.	ĠSince	Ġthen	,	Ġthe	Ġapple	Ġhas	Ġbeen	Ġgiven	Ġto	ĠMary	,	Ġso	ĠJohn	Ġis	Ġnot	Ġcarrying	Ġthe	Ġapple	Ġanymore	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

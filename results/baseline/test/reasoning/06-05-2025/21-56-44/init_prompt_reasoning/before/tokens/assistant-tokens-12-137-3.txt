@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġis	Ġmentioned	Ġin	Ġonly	Ġone	Ġsentence	,	Ġwhich	Ġis	Ġsentence	Ġ	8	.	ĠAccording	Ġto	Ġthis	Ġsentence	,	ĠJohn	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

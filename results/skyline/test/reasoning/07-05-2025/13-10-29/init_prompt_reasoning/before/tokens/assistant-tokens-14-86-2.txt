@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġyesterday	.	ĠThere	Ġis	Ġno	Ġother	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

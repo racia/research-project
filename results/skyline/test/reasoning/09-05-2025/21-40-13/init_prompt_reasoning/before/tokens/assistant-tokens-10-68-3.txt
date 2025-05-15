@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġstates	Ġthat	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġbedroom	Ġor	Ġthe	Ġschool	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġcinema	.	ĠSentence	Ġ	8	Ġis	Ġabout	ĠFred	's	Ġlocation	Ġand	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

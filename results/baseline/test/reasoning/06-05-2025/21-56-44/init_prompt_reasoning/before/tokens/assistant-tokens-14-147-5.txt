@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFred	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	Ġ(	from	Ġcontext	Ġsentence	Ġ	16	),	Ġand	Ġthen	Ġhe	Ġjourney	ed	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	Ġ(	from	Ġcontext	Ġsentence	Ġ	15	).	ĠSince	Ġhe	Ġwas	Ġin	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwas	Ġthere	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

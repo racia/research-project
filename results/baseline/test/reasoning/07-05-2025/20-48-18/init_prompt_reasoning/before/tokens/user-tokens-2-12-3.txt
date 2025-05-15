@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-19	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
-20	.	ĠJohn	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
-21	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-22	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
-23	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
-24	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

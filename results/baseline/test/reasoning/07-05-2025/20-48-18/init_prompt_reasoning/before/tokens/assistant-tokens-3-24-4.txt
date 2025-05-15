@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġlast	Ġmentioned	Ġin	Ġsentence	Ġ	84	,	Ġwhere	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	.	ĠSince	ĠJohn	Ġthen	Ġwent	Ġto	Ġthe	Ġoffice	Ġin	Ġsentence	Ġ	92	,	Ġthe	Ġfootball	Ġwas	Ġin	Ġthe	Ġhallway	Ġbefore	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

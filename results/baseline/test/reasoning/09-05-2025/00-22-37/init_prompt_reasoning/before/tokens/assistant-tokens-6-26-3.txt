@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġjourney	ing	Ġto	Ġthe	Ġbedroom	Ġand	Ġgoing	Ġback	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

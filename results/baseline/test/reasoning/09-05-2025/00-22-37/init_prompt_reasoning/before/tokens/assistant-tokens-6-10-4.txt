@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentences	Ġ	7	Ġand	Ġ	11	,	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	Ġand	Ġtook	Ġthe	Ġmilk	Ġthere	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

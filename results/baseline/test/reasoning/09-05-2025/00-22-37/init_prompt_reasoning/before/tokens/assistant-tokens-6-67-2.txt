@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠSandra	Ġbeing	Ġin	Ġthe	Ġhallway	.	ĠSentence	Ġ	4	Ġstates	Ġthat	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġit	Ġdoesn	't	Ġmention	Ġthe	Ġhallway	.	ĠSentence	Ġ	5	Ġmentions	Ġthe	Ġoffice	,	Ġbut	Ġit	Ġdoesn	't	Ġprovide	Ġany	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

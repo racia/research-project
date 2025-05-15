@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġbedroom	Ġis	Ġeast	Ġof	Ġthe	Ġkitchen	,	Ġand	Ġthe	Ġoffice	Ġis	Ġeast	Ġof	Ġthe	Ġbedroom	.	ĠThis	Ġimplies	Ġthat	Ġthe	Ġoffice	Ġis	Ġalso	Ġeast	Ġof	Ġthe	Ġkitchen	,	Ġsince	Ġthe	Ġoffice	Ġis	Ġeast	Ġof	Ġthe	Ġbedroom	Ġand	Ġthe	Ġbedroom	Ġis	Ġeast	Ġof	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

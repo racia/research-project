@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠBill	Ġmoved	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġarrived	Ġat	Ġthe	Ġschool	.	ĠSince	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġcinema	Ġin	Ġsentence	Ġ	8	,	Ġit	's	Ġlikely	Ġthat	Ġhe	Ġarrived	Ġat	Ġthe	Ġschool	Ġfirst	Ġand	Ġthen	Ġleft	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

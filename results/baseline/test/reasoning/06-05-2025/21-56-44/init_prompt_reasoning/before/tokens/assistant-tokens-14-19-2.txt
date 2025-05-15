@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġjourney	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġnot	Ġher	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

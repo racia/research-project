@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	8	Ġ(	from	Ġprevious	Ġcontext	)	Ġstates	Ġthat	ĠFred	Ġtravelled	Ġto	Ġthe	Ġcinema	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	Ġleaving	Ġthe	Ġcinema	.	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġcinema	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġimply	Ġthat	ĠFred	Ġis	Ġnot	Ġin	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

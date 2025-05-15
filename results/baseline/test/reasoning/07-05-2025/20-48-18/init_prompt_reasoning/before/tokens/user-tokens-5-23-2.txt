@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-10	.	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠJeff	.Ċ
-11	.	ĠJeff	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠJeff	Ġgive	Ġto	ĠMary	?Ċ

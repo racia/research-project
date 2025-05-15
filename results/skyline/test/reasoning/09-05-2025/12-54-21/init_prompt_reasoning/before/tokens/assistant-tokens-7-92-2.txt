@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	10	,	ĠSandra	Ġgrabbed	Ġthe	Ġapple	,	Ġso	Ġshe	Ġwas	Ġcarrying	Ġone	Ġobject	.	ĠIn	Ġsentence	Ġ	13	,	ĠSandra	Ġhanded	Ġthe	Ġapple	Ġto	ĠJohn	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

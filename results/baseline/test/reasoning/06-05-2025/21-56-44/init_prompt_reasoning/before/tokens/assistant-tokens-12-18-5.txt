@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠMary	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġwas	Ġwith	ĠSandra	Ġin	Ġthe	Ġoffice	.	ĠHowever	,	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠMary	Ġleft	Ġthe	Ġoffice	.	ĠSentence	Ġ	14	Ġmentions	ĠSandra	Ġand	ĠJohn	Ġtravelling	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġit	Ġdoesn	't	Ġmention	ĠMary	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	Ġwith	ĠDaniel	Ġ(	sentence	Ġ	4	),	Ġand	Ġthen	Ġshe	Ġand	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	5	).	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠY	ann	Ġis	Ġtired	,	Ġhe	Ġwill	Ġlikely	Ġgo	Ġto	Ġa	Ġplace	Ġwhere	Ġhe	Ġcan	Ġrest	Ġand	Ġrelax	.	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	Ġany	Ġspecific	Ġlocation	,	Ġbut	Ġbased	Ġon	Ġcommon	Ġhuman	Ġbehavior	,	Ġit	Ġis	Ġreasonable	Ġto	Ġassume	Ġthat	ĠY	ann	Ġwill	Ġgo	Ġto	Ġa	Ġplace	Ġwhere	Ġhe	Ġcan	Ġsleep	Ġor	Ġrest	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

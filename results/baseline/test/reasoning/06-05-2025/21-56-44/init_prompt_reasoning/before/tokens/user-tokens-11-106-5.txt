@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-14	.	ĠFollowing	Ġthat	Ġshe	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠJohn	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġshe	Ġis	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	Ġwith	ĠJohn	Ġin	Ġsentence	Ġ	10	.	ĠHowever	,	Ġin	Ġsentence	Ġ	11	,	Ġshe	Ġis	Ġgoing	Ġto	Ġthe	Ġbathroom	Ġwith	ĠSandra	.	ĠThis	Ġsuggests	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

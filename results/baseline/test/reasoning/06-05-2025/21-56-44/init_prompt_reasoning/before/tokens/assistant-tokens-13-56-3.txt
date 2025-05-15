@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġhallway	.	ĠSince	Ġthey	Ġwent	Ġfrom	Ġthe	Ġoffice	Ġto	Ġthe	Ġhallway	,	Ġit	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

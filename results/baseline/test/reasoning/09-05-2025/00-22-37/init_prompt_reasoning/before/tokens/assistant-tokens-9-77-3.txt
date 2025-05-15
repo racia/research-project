@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġhallway	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġjourney	Ġto	Ġthe	Ġkitchen	Ġand	ĠSandra	's	Ġmovement	Ġto	Ġthe	Ġbathroom	,	Ġbut	Ġnot	Ġher	Ġcurrent	Ġlocation	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

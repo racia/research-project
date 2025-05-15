@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	13	Ġstates	Ġthat	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġis	Ġin	Ġthe	Ġoffice	,	Ġnot	Ġin	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

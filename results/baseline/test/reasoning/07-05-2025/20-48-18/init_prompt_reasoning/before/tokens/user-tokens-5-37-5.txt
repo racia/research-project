@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-15	.	ĠFred	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
-16	.	ĠMary	Ġgave	Ġthe	Ġmilk	Ġto	ĠFred	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġmilk	?Ċ

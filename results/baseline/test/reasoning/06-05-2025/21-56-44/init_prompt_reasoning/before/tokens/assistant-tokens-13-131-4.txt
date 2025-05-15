@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġtogether	,	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġimplies	Ġthat	ĠJohn	Ġis	Ġstill	Ġwith	ĠSandra	Ġand	Ġis	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

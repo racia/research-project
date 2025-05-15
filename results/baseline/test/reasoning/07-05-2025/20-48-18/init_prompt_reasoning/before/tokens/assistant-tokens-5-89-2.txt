@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	18	,	ĠBill	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	,	Ġand	Ġthere	Ġis	Ġno	Ġindication	Ġthat	ĠBill	Ġgave	Ġthe	Ġapple	Ġto	Ġanyone	Ġelse	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

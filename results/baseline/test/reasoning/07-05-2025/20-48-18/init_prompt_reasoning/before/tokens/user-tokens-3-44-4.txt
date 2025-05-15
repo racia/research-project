@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-80	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
-81	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġbedroom	?Ċ

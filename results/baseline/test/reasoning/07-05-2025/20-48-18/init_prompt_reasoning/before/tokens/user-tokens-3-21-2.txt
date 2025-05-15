@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-118	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
-119	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġbathroom	?Ċ

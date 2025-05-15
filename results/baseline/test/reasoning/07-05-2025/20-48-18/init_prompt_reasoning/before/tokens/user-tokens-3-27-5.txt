@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-69	.	ĠJohn	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
-70	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġhallway	?Ċ

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-30	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-31	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠFred	Ġgive	Ġto	ĠBill	?Ċ

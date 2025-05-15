@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠFred	Ġpassed	Ġthe	Ġmilk	Ġto	ĠMary	,	Ġso	Ġhe	Ġgave	Ġthe	Ġmilk	Ġto	Ġher	.ĊĊ	Answer	:	Ġmilk	<|eot_id|>

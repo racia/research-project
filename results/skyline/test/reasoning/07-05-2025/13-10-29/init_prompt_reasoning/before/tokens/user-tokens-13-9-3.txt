@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠDaniel	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-8	.	ĠFollowing	Ġthat	Ġthey	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠMary	?Ċ

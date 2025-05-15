@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠBill	Ġwent	Ġto	Ġthe	Ġoffice	Ġyesterday	,	Ġand	Ġhe	Ġtravelled	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

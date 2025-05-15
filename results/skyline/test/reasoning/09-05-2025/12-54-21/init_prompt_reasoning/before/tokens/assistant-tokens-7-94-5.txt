@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġcarrying	Ġor	Ġreceiving	Ġany	Ġobjects	Ġin	Ġthe	Ġgiven	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġand	ĠDaniel	Ġmoving	Ġto	Ġdifferent	Ġlocations	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

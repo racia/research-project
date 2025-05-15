@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-9	.	ĠDaniel	Ġdropped	Ġthe	Ġmilk	.Ċ
-10	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠDaniel	Ġcarrying	?Ċ

@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-28	.	ĠJeff	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
-29	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
-30	.	ĠJeff	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
-31	.	ĠFred	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠFred	Ġgive	Ġto	ĠBill	?Ċ

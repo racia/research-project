@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġfirst	Ġmoved	Ġto	Ġthe	Ġoffice	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġbedroom	.	ĠTherefore	,	Ġher	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

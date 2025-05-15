@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġdiscarded	Ġby	ĠJohn	Ġin	Ġsentence	Ġ	45	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġwhere	Ġit	Ġwas	Ġbefore	Ġbeing	Ġdiscarded	.	ĠSince	Ġthe	Ġquestion	Ġasks	Ġabout	Ġthe	Ġapple	Ġbefore	Ġthe	Ġbedroom	,	Ġand	Ġthe	Ġapple	Ġwas	Ġdiscarded	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġapple	Ġwas	Ġdiscarded	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

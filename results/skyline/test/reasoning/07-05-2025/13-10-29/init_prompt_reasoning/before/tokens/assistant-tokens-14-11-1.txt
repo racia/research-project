@@ -1,1 +1,0 @@
-<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	2	,	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	Ġyesterday	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	3	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.	ĠTherefore	,	ĠMary	Ġwas	Ġin	Ġthe	Ġbedroom	Ġbefore	Ġmoving	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

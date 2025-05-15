@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ"	Mary	Ġgrabbed	Ġthe	Ġapple	"	Ġimplies	Ġthat	ĠMary	Ġwas	Ġholding	Ġthe	Ġapple	Ġbefore	Ġgrabbing	Ġit	.	ĠSince	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġgarden	Ġwhen	Ġshe	Ġgrabbed	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	10	),	Ġbut	Ġthen	ĠJohn	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	11	).	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġmoved	Ġfrom	Ġthe	Ġbedroom	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

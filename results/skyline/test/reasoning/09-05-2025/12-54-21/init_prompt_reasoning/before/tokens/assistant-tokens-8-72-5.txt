@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	18	,	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	Ġin	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	ĠSandra	Ġis	Ġnow	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

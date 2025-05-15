@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-29	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
-30	.	ĠBill	Ġpassed	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠBill	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

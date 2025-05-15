@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġtravelling	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġdo	Ġnot	Ġmention	Ġher	Ġleaving	Ġor	Ġmoving	Ġfrom	Ġthe	Ġoffice	.	ĠTherefore	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	4	,	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġbedroom	Ġor	Ġthe	Ġschool	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġa	Ġdefinitive	Ġlocation	.	ĠTherefore	,	Ġwe	Ġcan	Ġonly	Ġconclude	Ġthat	ĠMary	Ġmight	Ġbe	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

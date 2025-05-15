@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġsuggest	Ġthat	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠBill	Ġ(	sentence	Ġ	22	),	Ġand	ĠBill	Ġwent	Ġto	Ġthe	Ġhallway	Ġ(	sentence	Ġ	21	).	ĠTherefore	,	ĠBill	Ġreceived	Ġthe	Ġfootball	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

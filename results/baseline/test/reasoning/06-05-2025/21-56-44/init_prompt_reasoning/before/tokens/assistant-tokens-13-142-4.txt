@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	Ġtogether	,	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġbathroom	Ġwith	ĠJohn	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	35	,	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġto	ĠJeff	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgiving	Ġmilk	Ġto	ĠJeff	.ĊĊ	Answer	:	ĠFootball	<|eot_id|>

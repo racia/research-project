@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSent	ences	Ġ	10	Ġand	Ġ	11	Ġimply	Ġthat	ĠMary	Ġperformed	Ġactions	Ġ(	p	icking	Ġup	Ġthe	Ġfootball	Ġand	Ġtaking	Ġthe	Ġmilk	)	Ġin	Ġthe	Ġsame	Ġlocation	,	Ġwhich	Ġis	Ġthe	Ġkitchen	Ġ(	as	Ġestablished	Ġin	Ġsentence	Ġ	7	).ĊĊ	Answer	:	Ġyes	<|eot_id|>

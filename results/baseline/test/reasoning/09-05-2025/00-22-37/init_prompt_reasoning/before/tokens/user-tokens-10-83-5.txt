@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġschool	.Ċ
-14	.	ĠJulie	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠFred	Ġin	Ġthe	Ġbedroom	?Ċ

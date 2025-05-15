@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠMary	Ġis	Ġin	Ġthe	Ġpark	.Ċ
-8	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġcinema	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠBill	Ġin	Ġthe	Ġoffice	?Ċ

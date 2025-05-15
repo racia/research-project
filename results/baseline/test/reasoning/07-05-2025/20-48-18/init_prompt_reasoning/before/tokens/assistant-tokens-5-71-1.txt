@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠJeff	Ġgetting	Ġthe	Ġmilk	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	10	)	Ġand	Ġthen	Ġgiving	Ġit	Ġto	ĠMary	Ġ(	sentence	Ġ	14	).	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġanyone	Ġelse	Ġgetting	Ġor	Ġgiving	Ġmilk	.ĊĊ	Answer	:	ĠJeff	<|eot_id|>

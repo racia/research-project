@@ -1,4 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-17	.	ĠY	ann	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Why	Ġdid	Ġy	ann	Ġgo	Ġto	Ġthe	Ġbedroom	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	's	Ġlocation	Ġchanges	.	ĠInitially	,	Ġshe	Ġis	Ġin	Ġthe	Ġbedroom	Ġwith	ĠJohn	,	Ġbut	Ġthen	Ġshe	Ġmoves	Ġto	Ġthe	Ġgarden	Ġwith	ĠJohn	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

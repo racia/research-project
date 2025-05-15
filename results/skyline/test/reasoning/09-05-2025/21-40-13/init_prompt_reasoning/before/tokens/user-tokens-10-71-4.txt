@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-10	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġpark	.Ċ
-11	.	ĠBill	Ġis	Ġin	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠBill	Ġin	Ġthe	Ġkitchen	?Ċ

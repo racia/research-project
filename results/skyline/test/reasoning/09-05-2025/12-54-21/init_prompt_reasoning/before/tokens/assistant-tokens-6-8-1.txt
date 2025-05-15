@@ -1,1 +1,0 @@
-<|start_header_id|>	<|end_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġkitchen	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠIn	Ġfact	,	Ġsentence	Ġ	2	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġimplying	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	,	Ġnot	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

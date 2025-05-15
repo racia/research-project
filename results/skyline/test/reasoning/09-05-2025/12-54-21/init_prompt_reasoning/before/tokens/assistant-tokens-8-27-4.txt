@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	21	,	ĠSandra	Ġpicked	Ġup	Ġthe	Ġapple	Ġin	Ġthe	Ġbedroom	.	ĠThis	Ġmeans	ĠSandra	Ġis	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġapple	<|eot_id|>

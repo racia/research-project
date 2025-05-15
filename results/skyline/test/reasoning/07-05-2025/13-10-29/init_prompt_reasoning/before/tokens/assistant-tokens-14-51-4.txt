@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	11	Ġtells	Ġus	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.	ĠSentence	Ġ	10	Ġinforms	Ġus	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġcinema	Ġthis	Ġevening	,	Ġimplying	Ġthat	Ġshe	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

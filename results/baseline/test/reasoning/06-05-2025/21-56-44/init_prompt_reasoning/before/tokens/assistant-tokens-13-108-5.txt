@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	's	Ġlocation	Ġis	Ġspecified	Ġin	Ġsentence	Ġ	14	Ġas	Ġthe	Ġkitchen	,	Ġalong	Ġwith	ĠDaniel	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

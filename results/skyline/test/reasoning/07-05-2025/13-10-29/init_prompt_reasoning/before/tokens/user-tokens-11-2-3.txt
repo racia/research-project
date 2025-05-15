@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
-8	.	ĠFollowing	Ġthat	Ġshe	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠMary	?Ċ

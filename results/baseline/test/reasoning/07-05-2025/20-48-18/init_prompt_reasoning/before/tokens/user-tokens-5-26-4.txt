@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-20	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
-21	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠJeff	Ġgive	Ġto	ĠBill	?Ċ

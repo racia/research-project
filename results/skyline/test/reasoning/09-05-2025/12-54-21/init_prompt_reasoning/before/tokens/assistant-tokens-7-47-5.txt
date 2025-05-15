@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	18	,	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠSandra	,	Ġwhich	Ġmeans	ĠSandra	Ġis	Ġnow	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġone	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgoing	Ġto	Ġor	Ġbeing	Ġin	Ġthe	Ġschool	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġmoving	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

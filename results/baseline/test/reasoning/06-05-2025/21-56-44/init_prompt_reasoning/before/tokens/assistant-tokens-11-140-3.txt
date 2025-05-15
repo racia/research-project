@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġinitially	,	Ġand	Ġthen	Ġshe	Ġtravelled	Ġto	Ġthe	Ġgarden	.	ĠSince	Ġshe	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġit	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

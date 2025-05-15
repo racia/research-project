@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-2	.	ĠFollowing	Ġthat	Ġhe	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠJohn	?Ċ

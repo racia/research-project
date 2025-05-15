@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-68	.	ĠMary	Ġdropped	Ġthe	Ġapple	.Ċ
-69	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	?Ċ

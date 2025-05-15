@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	's	Ġcurrent	Ġlocation	Ġin	Ġthese	Ġsentences	.	ĠThe	Ġprevious	Ġmention	Ġof	Ġthe	Ġapple	Ġwas	Ġin	Ġsentence	Ġ	13	,	Ġwhere	Ġit	Ġwas	Ġput	Ġdown	,	Ġbut	Ġthe	Ġlocation	Ġwas	Ġnot	Ġspecified	.	ĠTherefore	,	Ġthe	Ġanswer	Ġcannot	Ġbe	Ġdetermined	Ġbased	Ġon	Ġthese	Ġsentences	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

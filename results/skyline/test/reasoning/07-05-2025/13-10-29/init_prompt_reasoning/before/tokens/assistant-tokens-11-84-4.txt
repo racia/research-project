@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ(	10	Ġand	Ġ	11	)	Ġare	Ġabout	ĠJohn	's	Ġmovements	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠMary	Ġwas	Ġthe	Ġkitchen	Ġ(	from	Ġprevious	Ġcontext	Ġsentences	Ġ	7	Ġand	Ġ	8	).ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

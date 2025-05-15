@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-32	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-33	.	ĠMary	Ġtook	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġgarden	?Ċ

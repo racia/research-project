@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġwe	Ġhave	Ġa	Ġcontext	Ġsentence	Ġthat	Ġstates	ĠMary	Ġtravelled	Ġto	Ġthe	Ġpark	.	ĠAdditionally	,	Ġwe	Ġhave	Ġanother	Ġsentence	Ġthat	Ġstates	ĠFred	Ġis	Ġeither	Ġin	Ġthe	Ġcinema	Ġor	Ġthe	Ġpark	,	Ġwhich	Ġdoes	Ġnot	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

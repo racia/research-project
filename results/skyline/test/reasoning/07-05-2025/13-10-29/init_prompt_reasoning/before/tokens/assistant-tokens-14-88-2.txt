@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovided	Ġ(	4	Ġand	Ġ	5	)	Ġdo	Ġnot	Ġmention	ĠJulie	Ġat	Ġall	.	ĠThey	Ġtalk	Ġabout	ĠMary	Ġand	ĠBill	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġbedroom	.	ĠWe	Ġneed	Ġto	Ġrefer	Ġto	Ġthe	Ġprevious	Ġcontext	Ġsentences	Ġ(	1	Ġand	Ġ	2	)	Ġwhich	Ġmentioned	ĠJulie	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	8	,	ĠBill	Ġis	Ġin	Ġthe	Ġcinema	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġhim	Ġbeing	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

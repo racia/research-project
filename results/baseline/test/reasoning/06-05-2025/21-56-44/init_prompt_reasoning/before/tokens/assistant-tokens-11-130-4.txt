@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġinitially	,	Ġand	Ġthen	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.	ĠThis	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

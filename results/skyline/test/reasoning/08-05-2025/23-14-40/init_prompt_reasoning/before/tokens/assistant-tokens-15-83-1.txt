@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠJessica	Ġis	Ġa	Ġmouse	Ġ(	sentence	Ġ	6	).	ĠM	ice	Ġare	Ġafraid	Ġof	Ġsheep	Ġ(	sentence	Ġ	5	).ĊĊ	Answer	:	Ġsheep	<|eot_id|>

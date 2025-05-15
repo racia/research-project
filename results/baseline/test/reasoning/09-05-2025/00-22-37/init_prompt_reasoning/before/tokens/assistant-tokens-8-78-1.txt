@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	Ġwhat	ĠMary	Ġis	Ġcarrying	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġ(	sentence	Ġ	2	),	Ġand	Ġthen	Ġgrabbed	Ġthe	Ġfootball	Ġthere	Ġ(	sentence	Ġ	4	).	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

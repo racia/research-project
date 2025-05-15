@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠSandra	Ġcarrying	Ġany	Ġobjects	.	ĠHowever	,	ĠSandra	Ġhanded	Ġthe	Ġapple	Ġto	ĠJohn	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġwas	Ġcarrying	Ġthe	Ġapple	Ġbefore	Ġhanding	Ġit	Ġto	ĠJohn	.ĊĊ	Answer	:	Ġone	<|eot_id|>

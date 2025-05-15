@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠĊ	The	Ġnew	Ġcontext	Ġsentences	Ġ(	13	Ġand	Ġ	14	)	Ġdo	Ġnot	Ġmention	ĠDaniel	,	Ġso	Ġthey	Ġdo	Ġnot	Ġchange	Ġthe	Ġfact	Ġthat	ĠDaniel	Ġhanded	Ġthe	Ġfootball	Ġto	ĠJohn	Ġin	Ġsentence	Ġ	8	.	ĠDaniel	Ġis	Ġstill	Ġnot	Ġcarrying	Ġany	Ġobjects	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

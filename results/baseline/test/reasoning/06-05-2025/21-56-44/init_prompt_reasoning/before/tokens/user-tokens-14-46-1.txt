@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠThis	Ġmorning	ĠJulie	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
-2	.	ĠJulie	Ġtravelled	Ġto	Ġthe	Ġcinema	Ġyesterday	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠJulie	Ġbefore	Ġthe	Ġkitchen	?Ċ

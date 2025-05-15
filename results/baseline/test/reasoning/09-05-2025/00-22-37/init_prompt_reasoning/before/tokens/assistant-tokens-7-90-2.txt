@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	5	Ġstates	Ġthat	ĠDaniel	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġnow	Ġholding	Ġthe	Ġmilk	.	ĠSince	ĠMary	Ġwas	Ġpreviously	Ġholding	Ġthe	Ġmilk	Ġ(	from	Ġsentence	Ġ	1	),	Ġshe	Ġis	Ġstill	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġone	<|eot_id|>

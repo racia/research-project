@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġin	Ġthe	Ġcontext	Ġsentences	Ġprovided	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġgoing	Ġback	Ġto	Ġthe	Ġbedroom	Ġand	ĠSandra	Ġtraveling	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġnot	ĠMary	's	Ġlocation	.	ĠAdditionally	,	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

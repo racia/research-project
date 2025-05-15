@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠDaniel	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġgarden	.Ċ
-8	.	ĠDaniel	Ġis	Ġnot	Ġin	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠDaniel	Ġin	Ġthe	Ġoffice	?Ċ

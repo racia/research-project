@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġsuggest	Ġthat	ĠFred	Ġpassed	Ġthe	Ġfootball	Ġto	ĠMary	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġanyone	Ġelse	Ġgiving	Ġthe	Ġfootball	Ġto	ĠMary	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-16	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-17	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠJohn	Ġcarrying	?Ċ

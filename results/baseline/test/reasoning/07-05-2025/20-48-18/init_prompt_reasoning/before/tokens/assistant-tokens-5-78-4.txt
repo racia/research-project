@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġpassed	Ġthe	Ġfootball	Ġto	ĠFred	,	Ġso	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠFred	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

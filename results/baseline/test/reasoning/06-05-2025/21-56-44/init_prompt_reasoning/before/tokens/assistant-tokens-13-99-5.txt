@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠDaniel	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġsuggests	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	,	Ġas	Ġthere	Ġis	Ġno	Ġindication	Ġthat	Ġshe	Ġleft	Ġthe	Ġbedroom	Ġafter	Ġmoving	Ġthere	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

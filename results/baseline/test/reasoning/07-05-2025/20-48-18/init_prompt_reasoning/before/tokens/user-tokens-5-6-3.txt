@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-23	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
-24	.	ĠFred	Ġpassed	Ġthe	Ġapple	Ġto	ĠJeff	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġapple	?Ċ

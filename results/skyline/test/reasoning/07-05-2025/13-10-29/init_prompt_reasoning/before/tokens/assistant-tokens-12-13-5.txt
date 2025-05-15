@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	13	,	ĠMary	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.	ĠThen	,	Ġin	Ġsentence	Ġ	14	,	ĠJohn	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.	ĠSo	,	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	Ġyesterday	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	6	,	Ġthis	Ġmorning	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	.	ĠTherefore	,	ĠMary	Ġwas	Ġin	Ġthe	Ġoffice	Ġbefore	Ġmoving	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

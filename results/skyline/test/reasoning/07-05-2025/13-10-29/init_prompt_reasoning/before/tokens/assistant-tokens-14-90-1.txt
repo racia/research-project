@@ -1,1 +1,0 @@
-<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	ĠMary	Ġwent	Ġto	Ġthe	Ġpark	Ġyesterday	.	ĠThere	Ġis	Ġno	Ġother	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġpark	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġpark	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	14	Ġexplicitly	Ġstates	Ġthat	ĠJohn	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.	ĠThis	Ġinformation	Ġis	Ġthe	Ġmost	Ġrecent	Ġand	Ġrelevant	Ġto	ĠJohn	's	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

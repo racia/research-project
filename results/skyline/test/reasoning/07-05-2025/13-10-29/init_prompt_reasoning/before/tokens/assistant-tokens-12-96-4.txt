@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	11	,	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġis	Ġthe	Ġmost	Ġrecent	Ġand	Ġrelevant	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

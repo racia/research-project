@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	Ġthe	Ġfootball	's	Ġlocation	Ġafter	ĠMary	Ġleft	Ġit	.	ĠHowever	,	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġand	ĠMary	Ġleft	Ġthe	Ġfootball	,	Ġbut	Ġthere	Ġis	Ġno	Ġdirect	Ġconnection	Ġbetween	ĠDaniel	's	Ġaction	Ġand	Ġthe	Ġfootball	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	Ġtogether	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġbedroom	.	ĠSince	ĠDaniel	Ġis	Ġstill	Ġwith	ĠMary	,	Ġand	Ġthey	Ġare	Ġin	Ġthe	Ġbedroom	,	ĠDaniel	Ġmust	Ġbe	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

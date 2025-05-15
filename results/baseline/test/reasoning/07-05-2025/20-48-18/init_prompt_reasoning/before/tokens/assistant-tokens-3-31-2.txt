@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġnot	Ġmentioned	Ġin	Ġthe	Ġcontext	Ġsentences	Ġuntil	Ġsentence	Ġ	113	,	Ġwhere	ĠSandra	Ġleft	Ġthe	Ġapple	.	ĠSince	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġwhere	ĠSandra	Ġgot	Ġthe	Ġapple	,	Ġwe	Ġcannot	Ġdetermine	Ġwhere	Ġit	Ġwas	Ġbefore	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

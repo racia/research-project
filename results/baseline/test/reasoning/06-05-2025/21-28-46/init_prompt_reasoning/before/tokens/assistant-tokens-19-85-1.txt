@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġoffice	Ġis	Ġwest	Ġof	Ġthe	Ġbathroom	,	Ġand	Ġthe	Ġbathroom	Ġis	Ġnorth	Ġof	Ġthe	Ġhallway	,	Ġwe	Ġcan	Ġinfer	Ġthat	Ġthe	Ġhallway	Ġis	Ġeast	Ġof	Ġthe	Ġoffice	.	ĠTo	Ġgo	Ġfrom	Ġthe	Ġhallway	Ġto	Ġthe	Ġoffice	,	Ġwe	Ġneed	Ġto	Ġmove	Ġwest	.ĊĊ	Answer	:	Ġwest	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġis	Ġmentioned	Ġin	Ġthe	Ġfirst	Ġsentence	Ġas	Ġtraveling	Ġto	Ġthe	Ġkitchen	Ġwith	ĠMary	.	ĠSince	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	Ġafterwards	,	ĠSandra	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

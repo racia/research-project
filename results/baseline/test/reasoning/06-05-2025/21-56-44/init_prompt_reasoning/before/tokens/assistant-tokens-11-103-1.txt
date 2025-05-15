@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġhas	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġinitially	,	Ġand	Ġthen	Ġshe	Ġtravelled	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	Ġshe	Ġhas	Ġmoved	Ġfrom	Ġthe	Ġbedroom	Ġto	Ġthe	Ġoffice	,	Ġand	Ġcurrently	,	Ġshe	Ġis	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

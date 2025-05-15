@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	13	,	ĠJohn	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġsubsequent	Ġinformation	Ġthat	Ġsuggests	ĠMary	Ġmoved	Ġto	Ġa	Ġdifferent	Ġlocation	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

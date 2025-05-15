@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġthat	Ġsuggests	ĠJulie	Ġis	Ġin	Ġthe	Ġschool	.	ĠIn	Ġfact	,	Ġcontext	Ġsentence	Ġ	10	Ġstates	Ġthat	ĠJulie	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	,	Ġnot	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġno	<|eot_id|>

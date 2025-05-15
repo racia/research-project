@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-12	.	ĠBill	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-13	.	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠMary	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġleaving	Ġthe	Ġgarden	.	ĠĊĊ	Answer	:	Ġyes	<|eot_id|>

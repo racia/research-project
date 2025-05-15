@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	13	,	ĠMary	Ġwent	Ġto	Ġthe	Ġschool	,	Ġbut	Ġthen	Ġaccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠMary	Ġwent	Ġto	Ġthe	Ġpark	,	Ġwhich	Ġmeans	ĠMary	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġschool	,	Ġbut	Ġnow	Ġin	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġgrabbed	Ġthe	Ġfootball	Ġin	Ġthe	Ġlocation	Ġwhere	ĠJohn	Ġtook	Ġthe	Ġapple	Ġ(	sent	ences	Ġ	13	Ġand	Ġ	14	).	ĠSince	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	Ġ(	sentence	Ġ	15	),	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġfootball	Ġis	Ġstill	Ġwith	ĠMary	,	Ġwho	Ġhas	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	16	).ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

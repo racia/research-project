@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġif	ĠSandra	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġand	Ġthe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġthat	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

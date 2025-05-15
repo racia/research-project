@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠMary	Ġdropped	Ġthe	Ġmilk	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġit	.	ĠHowever	,	Ġshe	Ġstill	Ġhas	Ġthe	Ġfootball	Ġfrom	Ġsentence	Ġ	8	.	ĠSentence	Ġ	14	Ġonly	Ġmentions	Ġher	Ġmoving	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġit	Ġdoesn	't	Ġaffect	Ġwhat	Ġshe	's	Ġcarrying	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

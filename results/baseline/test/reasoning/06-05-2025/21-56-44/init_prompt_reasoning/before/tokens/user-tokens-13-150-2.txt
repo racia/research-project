@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-4	.	ĠSandra	Ġand	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
-5	.	ĠFollowing	Ġthat	Ġthey	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠJohn	?Ċ

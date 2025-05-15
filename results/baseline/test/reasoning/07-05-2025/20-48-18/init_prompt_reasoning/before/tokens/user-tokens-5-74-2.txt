@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-18	.	ĠJeff	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
-19	.	ĠFred	Ġdiscarded	Ġthe	Ġapple	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġapple	?Ċ

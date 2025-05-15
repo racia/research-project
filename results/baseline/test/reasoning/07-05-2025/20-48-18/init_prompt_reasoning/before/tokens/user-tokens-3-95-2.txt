@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-28	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-29	.	ĠDaniel	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġhallway	?Ċ

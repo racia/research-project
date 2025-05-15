@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġthe	Ġinformation	Ġprovided	Ġis	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	4	),	Ġnot	Ġin	Ġthe	Ġhallway	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

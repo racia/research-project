@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-12	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-13	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠDaniel	Ġcarrying	?Ċ

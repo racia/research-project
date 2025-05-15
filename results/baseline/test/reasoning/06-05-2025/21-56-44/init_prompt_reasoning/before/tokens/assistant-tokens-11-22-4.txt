@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġgarden	.	ĠThere	Ġis	Ġno	Ġinformation	Ġsuggesting	Ġshe	Ġleft	Ġthe	Ġgarden	,	Ġso	Ġit	's	Ġlikely	Ġshe	Ġis	Ġstill	Ġthere	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

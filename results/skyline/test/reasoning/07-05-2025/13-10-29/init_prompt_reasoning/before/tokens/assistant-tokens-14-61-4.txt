@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠFred	's	Ġmovements	Ġbefore	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	.	ĠSentence	Ġ	7	Ġmentioned	Ġthat	ĠFred	Ġmoved	Ġto	Ġthe	Ġoffice	Ġyesterday	,	Ġbut	Ġthere	Ġis	Ġno	Ġconnection	Ġto	Ġhis	Ġcurrent	Ġmovement	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

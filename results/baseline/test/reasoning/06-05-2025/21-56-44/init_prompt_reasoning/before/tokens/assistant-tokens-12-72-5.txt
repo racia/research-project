@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠDaniel	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	Ġin	Ġsentence	Ġ	13	,	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	Ġin	Ġsentence	Ġ	14	,	Ġit	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
-2	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-3	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
-4	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-5	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
-6	.	ĠSandra	Ġdropped	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

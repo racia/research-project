@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġis	Ġchanging	.	ĠIn	Ġsentence	Ġ	10	,	Ġshe	Ġtravels	Ġto	Ġthe	Ġhallway	Ġwith	ĠJohn	.	ĠIn	Ġsentence	Ġ	11	,	Ġshe	Ġgoes	Ġto	Ġthe	Ġbathroom	Ġwith	ĠSandra	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġwas	Ġpreviously	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

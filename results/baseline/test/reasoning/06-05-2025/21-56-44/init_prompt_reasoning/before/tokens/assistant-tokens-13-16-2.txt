@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	Ġfirst	,	Ġand	Ġthen	Ġto	Ġthe	Ġoffice	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

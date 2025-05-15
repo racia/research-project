@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	8	Ġexplicitly	Ġstates	Ġthat	ĠDaniel	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġinformation	Ġis	Ġmore	Ġrecent	Ġand	Ġrelevant	Ġto	ĠDaniel	's	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

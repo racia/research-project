@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġwas	Ġnot	Ġin	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġcontrad	icts	Ġthis	,	Ġso	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

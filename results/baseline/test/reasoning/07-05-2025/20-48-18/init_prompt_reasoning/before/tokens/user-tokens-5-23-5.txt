@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-19	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
-20	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
-21	.	ĠFred	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
-22	.	ĠJeff	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġapple	?Ċ

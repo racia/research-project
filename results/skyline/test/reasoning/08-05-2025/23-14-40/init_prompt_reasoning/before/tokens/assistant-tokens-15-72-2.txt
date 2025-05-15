@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJessica	Ġis	Ġa	Ġmouse	Ġ(	sentence	Ġ	7	),	Ġand	Ġmice	Ġare	Ġafraid	Ġof	Ġsheep	Ġ(	sentence	Ġ	4	).	ĠTherefore	,	ĠJessica	Ġis	Ġafraid	Ġof	Ġsheep	.ĊĊ	Answer	:	Ġsheep	<|eot_id|>

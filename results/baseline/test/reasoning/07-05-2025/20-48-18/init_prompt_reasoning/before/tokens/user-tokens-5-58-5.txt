@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-33	.	ĠBill	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
-34	.	ĠFred	Ġleft	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	?Ċ

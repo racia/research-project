@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠMary	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcarrying	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġmilk	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSum	it	Ġgot	Ġthe	Ġfootball	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġhad	Ġa	Ġreason	Ġto	Ġget	Ġit	.	ĠThe	Ġcontext	Ġsentence	Ġdoes	Ġnot	Ġspecify	Ġwhy	ĠSum	it	Ġgot	Ġthe	Ġfootball	,	Ġbut	Ġbased	Ġon	Ġthe	Ġprevious	Ġtask	,	Ġit	Ġis	Ġlikely	Ġthat	ĠSum	it	Ġgot	Ġthe	Ġfootball	Ġbecause	Ġhe	Ġwas	Ġbored	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

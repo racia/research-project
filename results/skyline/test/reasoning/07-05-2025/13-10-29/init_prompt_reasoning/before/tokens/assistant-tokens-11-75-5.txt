@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġmovements	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġmention	ĠJohn	's	Ġcurrent	Ġlocation	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	Ġwas	Ġthat	Ġhe	Ġtravelled	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

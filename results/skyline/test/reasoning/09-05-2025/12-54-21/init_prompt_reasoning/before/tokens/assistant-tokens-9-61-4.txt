@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	8	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbedroom	.	Ġexplicitly	Ġstates	Ġthat	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġsubsequent	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġleft	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġshow	Ġthat	ĠJohn	Ġreceived	Ġthe	Ġapple	Ġfrom	ĠDaniel	,	Ġand	Ġthen	ĠDaniel	Ġhanded	Ġit	Ġback	Ġto	ĠJohn	.	ĠThis	Ġmeans	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġholding	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġone	<|eot_id|>

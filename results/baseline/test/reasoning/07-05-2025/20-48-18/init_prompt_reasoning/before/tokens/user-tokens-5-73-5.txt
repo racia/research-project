@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-21	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-22	.	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġapple	?Ċ

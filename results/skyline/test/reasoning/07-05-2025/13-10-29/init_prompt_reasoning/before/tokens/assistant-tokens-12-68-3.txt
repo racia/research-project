@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	8	,	ĠSandra	Ġand	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.	ĠTherefore	,	ĠJohn	Ġis	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

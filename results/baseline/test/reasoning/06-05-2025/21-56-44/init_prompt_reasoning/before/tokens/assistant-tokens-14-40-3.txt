@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġpark	Ġthis	Ġafternoon	,	Ġand	Ġwe	Ġalready	Ġknow	Ġthat	ĠFred	Ġwent	Ġto	Ġthe	Ġschool	Ġyesterday	,	Ġit	Ġis	Ġlogical	Ġto	Ġassume	Ġthat	ĠFred	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

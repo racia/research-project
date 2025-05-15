@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠDaniel	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	Ġtogether	,	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġit	Ġis	Ġlikely	Ġthat	ĠDaniel	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	Ġwith	ĠMary	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

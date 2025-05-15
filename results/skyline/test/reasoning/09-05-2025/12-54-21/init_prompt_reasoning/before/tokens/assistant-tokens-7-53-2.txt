@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	8	,	ĠJohn	Ġhanded	Ġthe	Ġapple	Ġto	ĠDaniel	,	Ġso	ĠJohn	Ġwas	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.	ĠThen	,	Ġin	Ġsentence	Ġ	9	,	ĠDaniel	Ġpassed	Ġthe	Ġapple	Ġback	Ġto	ĠJohn	.	ĠTherefore	,	ĠJohn	Ġis	Ġnow	Ġcarrying	Ġthe	Ġapple	Ġagain	.ĊĊ	Answer	:	Ġone	<|eot_id|>

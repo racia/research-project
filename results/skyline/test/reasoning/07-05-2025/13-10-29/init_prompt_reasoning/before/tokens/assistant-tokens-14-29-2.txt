@@ -1,1 +1,0 @@
-<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġyesterday	.	ĠSentence	Ġ	6	Ġstates	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.	ĠTherefore	,	ĠMary	Ġmust	Ġhave	Ġbeen	Ġin	Ġthe	Ġbedroom	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-2	.	ĠDaniel	Ġis	Ġnot	Ġin	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠDaniel	Ġin	Ġthe	Ġkitchen	?Ċ

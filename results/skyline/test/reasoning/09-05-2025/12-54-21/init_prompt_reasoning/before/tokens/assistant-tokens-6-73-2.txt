@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	2	Ġmentioned	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġgoing	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġunknown	<|eot_id|>

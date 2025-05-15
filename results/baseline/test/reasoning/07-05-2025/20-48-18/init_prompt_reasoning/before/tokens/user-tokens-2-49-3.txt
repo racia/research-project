@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-15	.	ĠMary	Ġdiscarded	Ġthe	Ġapple	Ġthere	.Ċ
-16	.	ĠMary	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
-17	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-18	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

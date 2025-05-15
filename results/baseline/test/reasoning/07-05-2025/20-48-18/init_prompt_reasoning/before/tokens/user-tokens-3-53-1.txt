@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
-2	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	.Ċ
-3	.	ĠDaniel	Ġgot	Ġthe	Ġmilk	.Ċ
-4	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
-5	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
-6	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġbathroom	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġtwo	Ġsentences	.	ĠIn	Ġsentence	Ġ	4	,	Ġshe	Ġis	Ġtravelling	Ġto	Ġthe	Ġbathroom	Ġwith	ĠDaniel	.	ĠIn	Ġsentence	Ġ	5	,	Ġshe	Ġis	Ġtravelling	Ġto	Ġthe	Ġbedroom	Ġwith	ĠDaniel	.	ĠSince	Ġshe	Ġis	Ġtravelling	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġthere	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

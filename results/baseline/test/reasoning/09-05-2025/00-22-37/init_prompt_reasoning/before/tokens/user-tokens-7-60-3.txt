@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠSandra	Ġpassed	Ġthe	Ġfootball	Ġto	ĠDaniel	.Ċ
-8	.	ĠDaniel	Ġpassed	Ġthe	Ġfootball	Ġto	ĠSandra	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠSandra	Ġcarrying	?Ċ

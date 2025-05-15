@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġhas	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġwith	ĠMary	Ġin	Ġsentence	Ġ	5	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġleaving	Ġthe	Ġkitchen	Ġor	Ġgoing	Ġanywhere	Ġelse	.	ĠTherefore	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

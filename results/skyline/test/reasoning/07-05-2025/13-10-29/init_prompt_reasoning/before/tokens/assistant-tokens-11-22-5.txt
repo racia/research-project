@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	13	)	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	14	).	ĠTherefore	,	Ġhis	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

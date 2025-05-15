@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġhallway	,	Ġso	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

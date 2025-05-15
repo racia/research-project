@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġnot	Ġmentioned	Ġin	Ġeither	Ġof	Ġthe	Ġgiven	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	,	ĠJohn	,	Ġand	ĠDaniel	.	ĠSince	ĠMary	's	Ġlocation	Ġis	Ġnot	Ġspecified	,	Ġwe	Ġcannot	Ġdetermine	Ġher	Ġexact	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

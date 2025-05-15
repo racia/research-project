@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
-14	.	ĠSandra	Ġleft	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠMary	Ġin	Ġthe	Ġbedroom	?Ċ

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠMary	Ġand	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-8	.	ĠAfter	Ġthat	Ġthey	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠDaniel	?Ċ

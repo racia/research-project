@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġmoving	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġindicates	Ġher	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

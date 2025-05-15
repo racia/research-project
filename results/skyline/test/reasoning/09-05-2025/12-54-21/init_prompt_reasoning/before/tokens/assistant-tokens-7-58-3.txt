@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġtook	Ġthe	Ġfootball	Ġin	Ġthe	Ġgarden	Ġ(	sentence	Ġ	10	),	Ġso	Ġshe	Ġis	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġone	<|eot_id|>

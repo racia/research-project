@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	Ġor	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.	ĠSentence	Ġ	14	Ġonly	Ġstates	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġgarden	,	Ġbut	Ġit	Ġdoesn	't	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

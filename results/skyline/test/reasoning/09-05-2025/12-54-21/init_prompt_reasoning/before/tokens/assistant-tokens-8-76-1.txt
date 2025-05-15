@@ -1,1 +1,0 @@
-<|start_header_id|>	<|end_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠMary	Ġpicked	Ġup	Ġthe	Ġfootball	Ġin	Ġsentence	Ġ	5	,	Ġbut	Ġthen	Ġshe	Ġput	Ġit	Ġdown	Ġin	Ġsentence	Ġ	6	,	Ġso	Ġshe	Ġis	Ġnot	Ġcarrying	Ġanything	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

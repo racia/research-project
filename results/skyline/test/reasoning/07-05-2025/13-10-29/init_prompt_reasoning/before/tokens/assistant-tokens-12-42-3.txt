@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġthe	Ġcontext	Ġsentences	,	Ġwe	Ġknow	Ġthat	ĠJohn	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	7	),	Ġbut	Ġthen	ĠJohn	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	Ġ(	sentence	Ġ	8	).	ĠThis	Ġmeans	ĠJohn	Ġleft	Ġthe	Ġkitchen	Ġand	Ġwent	Ġto	Ġthe	Ġgarden	Ġwith	ĠMary	.	ĠTherefore	,	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

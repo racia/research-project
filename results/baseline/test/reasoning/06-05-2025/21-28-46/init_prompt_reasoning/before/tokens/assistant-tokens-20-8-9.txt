@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	Ġgrabbed	Ġthe	Ġapple	Ġin	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	ĠSum	it	Ġgot	Ġthe	Ġapple	Ġbecause	Ġthey	Ġwere	Ġhungry	Ġand	Ġthe	Ġkitchen	Ġis	Ġa	Ġplace	Ġwhere	Ġthey	Ġwent	Ġto	Ġfind	Ġfood	.ĊĊ	Answer	:	Ġhungry	<|eot_id|>

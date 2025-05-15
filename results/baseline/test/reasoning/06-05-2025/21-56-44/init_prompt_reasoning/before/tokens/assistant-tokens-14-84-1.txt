@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġyesterday	,	Ġit	Ġimplies	Ġthat	Ġshe	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġmoving	Ġto	Ġthe	Ġkitchen	.	ĠSince	Ġshe	Ġwent	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġwas	Ġin	Ġthe	Ġkitchen	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

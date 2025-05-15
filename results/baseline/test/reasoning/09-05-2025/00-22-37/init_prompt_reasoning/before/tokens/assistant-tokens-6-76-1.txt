@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġentering	Ġthe	Ġbathroom	.	ĠThe	Ġonly	Ġlocation	Ġmentioned	Ġis	Ġthe	Ġhallway	,	Ġwhere	ĠMary	Ġtravelled	Ġto	.	ĠThere	Ġis	Ġno	Ġindication	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

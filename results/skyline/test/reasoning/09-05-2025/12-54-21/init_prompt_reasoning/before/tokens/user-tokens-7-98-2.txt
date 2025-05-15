@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-4	.	ĠMary	Ġleft	Ġthe	Ġfootball	.Ċ
-5	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠMary	Ġcarrying	?Ċ

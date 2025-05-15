@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠJeff	Ġpicked	Ġup	Ġthe	Ġapple	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	7	)	Ġand	Ġthen	Ġgave	Ġit	Ġto	ĠMary	Ġ(	sentence	Ġ	10	).	ĠSince	ĠMary	Ġreceived	Ġthe	Ġapple	Ġfrom	ĠJeff	,	Ġshe	Ġis	Ġthe	Ġone	Ġwho	Ġreceived	Ġthe	Ġapple	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

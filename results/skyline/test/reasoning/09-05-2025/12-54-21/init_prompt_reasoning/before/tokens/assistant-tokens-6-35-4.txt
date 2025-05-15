@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġgoing	Ġback	Ġto	Ġthe	Ġhallway	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠIn	Ġfact	,	Ġsentence	Ġ	10	Ġ(	from	Ġprevious	Ġcontext	)	Ġstates	Ġthat	Ġ"	John	Ġmoved	Ġto	Ġthe	Ġoffice	",	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	,	Ġnot	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

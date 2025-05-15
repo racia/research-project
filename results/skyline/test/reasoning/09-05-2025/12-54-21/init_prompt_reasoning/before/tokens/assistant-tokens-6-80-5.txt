@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentence	Ġ	10	,	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġleaving	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

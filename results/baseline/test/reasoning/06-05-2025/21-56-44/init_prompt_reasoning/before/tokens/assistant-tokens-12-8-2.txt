@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwas	Ġinitially	Ġwith	ĠJohn	Ġin	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	4	).	ĠHowever	,	Ġthe	Ġcontext	Ġdoes	Ġnot	Ġmention	ĠMary	's	Ġmovement	Ġafter	Ġthat	.	ĠSentence	Ġ	5	Ġonly	Ġmentions	ĠJohn	's	Ġmovement	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġspecify	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

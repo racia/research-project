@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	's	Ġlocation	Ġis	Ġdetermined	Ġby	Ġthe	Ġcontext	Ġsentences	.	ĠShe	Ġhas	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġwith	ĠDaniel	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġgoing	Ġto	Ġthe	Ġbathroom	Ġor	Ġany	Ġother	Ġlocation	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

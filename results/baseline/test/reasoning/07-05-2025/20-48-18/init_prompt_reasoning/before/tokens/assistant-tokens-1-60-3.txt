@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġin	Ġthe	Ġcontext	Ġsentences	,	Ġand	Ġno	Ġinformation	Ġabout	Ġhis	Ġlocation	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	,	Ġand	Ġher	Ġmovements	Ġto	Ġthe	Ġbathroom	Ġand	Ġgarden	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

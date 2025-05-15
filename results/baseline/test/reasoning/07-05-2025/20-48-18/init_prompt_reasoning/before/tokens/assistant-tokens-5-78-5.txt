@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	Ġanyone	Ġgiving	Ġthe	Ġfootball	.	ĠThe	Ġprevious	Ġcontext	Ġsentences	Ġmentioned	ĠMary	Ġpassing	Ġthe	Ġfootball	Ġto	ĠFred	,	Ġbut	Ġthere	Ġis	Ġno	Ġfurther	Ġinformation	Ġabout	Ġwho	Ġgave	Ġthe	Ġfootball	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

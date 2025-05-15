@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-17	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
-18	.	ĠJeff	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠBill	Ġgive	Ġthe	Ġfootball	Ġto	?Ċ

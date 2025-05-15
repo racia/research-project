@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠMary	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.	ĠSince	Ġshe	Ġmoved	Ġto	Ġthe	Ġcinema	Ġthis	Ġevening	Ġ(	sentence	Ġ	10	),	Ġit	Ġimplies	Ġthat	Ġshe	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

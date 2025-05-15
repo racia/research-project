@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġprevious	Ġcontext	Ġsentence	Ġmentioning	ĠSum	it	's	Ġreason	Ġfor	Ġgoing	Ġto	Ġthe	Ġgarden	.	ĠSince	ĠSum	it	Ġis	Ġnot	Ġmentioned	Ġas	Ġbeing	Ġbored	Ġor	Ġtired	,	Ġwe	Ġcannot	Ġinfer	Ġa	Ġspecific	Ġreason	Ġfor	Ġhis	Ġgoing	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

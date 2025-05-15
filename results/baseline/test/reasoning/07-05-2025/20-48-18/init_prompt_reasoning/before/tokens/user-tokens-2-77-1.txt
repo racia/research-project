@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
-2	.	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	.Ċ
-3	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
-4	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
-5	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
-6	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġfootball	?Ċ

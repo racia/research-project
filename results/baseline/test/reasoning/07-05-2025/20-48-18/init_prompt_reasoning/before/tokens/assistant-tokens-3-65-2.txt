@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġpicked	Ġup	Ġby	ĠMary	,	Ġthen	Ġput	Ġdown	Ġby	ĠMary	Ġin	Ġthe	Ġhallway	.	ĠAfter	Ġthat	,	Ġit	Ġwas	Ġgrabbed	Ġby	ĠSandra	,	Ġthen	Ġleft	Ġby	ĠSandra	.	ĠThen	,	Ġit	Ġwas	Ġpicked	Ġup	Ġby	ĠSandra	Ġagain	Ġin	Ġthe	Ġhallway	,	Ġand	Ġleft	Ġby	ĠSandra	Ġagain	.	ĠFinally	,	Ġit	Ġwas	Ġpicked	Ġup	Ġby	ĠMary	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

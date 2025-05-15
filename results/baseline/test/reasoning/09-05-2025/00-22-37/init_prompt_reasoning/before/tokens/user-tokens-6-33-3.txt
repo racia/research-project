@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-8	.	ĠDaniel	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠDaniel	Ġin	Ġthe	Ġkitchen	?Ċ

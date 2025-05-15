@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	7	Ġand	Ġ	8	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠJulie	,	Ġbut	Ġwe	Ġknow	Ġfrom	Ġprevious	Ġcontext	Ġsentence	Ġ	4	Ġthat	ĠJulie	Ġjourney	ed	Ġto	Ġthe	Ġschool	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġleaving	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

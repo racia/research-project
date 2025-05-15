@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠBill	's	Ġactivities	,	Ġand	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

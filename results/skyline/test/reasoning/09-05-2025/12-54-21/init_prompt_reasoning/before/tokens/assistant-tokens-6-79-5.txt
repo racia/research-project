@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠJohn	Ġgoing	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

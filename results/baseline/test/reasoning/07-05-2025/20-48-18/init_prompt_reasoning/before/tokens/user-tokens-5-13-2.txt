@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-26	.	ĠJeff	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
-27	.	ĠBill	Ġpassed	Ġthe	Ġapple	Ġto	ĠJeff	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġapple	Ġto	ĠJeff	?Ċ

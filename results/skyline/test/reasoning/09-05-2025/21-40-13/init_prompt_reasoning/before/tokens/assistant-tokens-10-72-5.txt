@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	10	Ġpreviously	Ġstated	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠMary	Ġhas	Ġmoved	Ġor	Ġchanged	Ġlocations	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

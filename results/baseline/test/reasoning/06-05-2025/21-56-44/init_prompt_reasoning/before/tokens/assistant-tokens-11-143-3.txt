@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġand	Ġthen	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.	ĠThis	Ġimplies	Ġthat	Ġshe	Ġhas	Ġvisited	Ġboth	Ġlocations	,	Ġbut	Ġthe	Ġquestion	Ġasks	Ġabout	Ġher	Ġcurrent	Ġlocation	.	ĠSince	Ġthe	Ġlast	Ġaction	Ġmentioned	Ġis	Ġjourney	ing	Ġto	Ġthe	Ġgarden	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġpreviously	Ġmentioned	Ġin	Ġsentence	Ġ	11	Ġas	Ġbeing	Ġpicked	Ġup	Ġby	ĠSandra	,	Ġand	Ġthen	Ġdiscarded	Ġin	Ġsentence	Ġ	20	.	ĠSince	Ġit	Ġwas	Ġdiscarded	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġfootball	Ġis	Ġno	Ġlonger	Ġpresent	Ġin	Ġany	Ġof	Ġthe	Ġlocations	Ġmentioned	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-46	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
-47	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġfootball	Ġto	ĠMary	?Ċ

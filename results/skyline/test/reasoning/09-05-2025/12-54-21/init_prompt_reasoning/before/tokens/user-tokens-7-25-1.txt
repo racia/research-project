@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠMary	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
-2	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠMary	Ġcarrying	?Ċ

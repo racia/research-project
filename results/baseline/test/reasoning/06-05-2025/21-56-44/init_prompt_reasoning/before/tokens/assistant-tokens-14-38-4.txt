@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠWe	Ġknow	Ġthat	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	Ġ(	sentence	Ġ	10	),	Ġbut	Ġwe	Ġdon	't	Ġhave	Ġany	Ġinformation	Ġabout	Ġher	Ġwhereabouts	Ġbefore	Ġthat	.	ĠWe	Ġcan	't	Ġinfer	Ġher	Ġlocation	Ġbefore	Ġthe	Ġbedroom	Ġfrom	Ġthe	Ġgiven	Ġcontext	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġwe	Ġknow	Ġfrom	Ġsentence	Ġ	5	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġschool	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġkitchen	,	Ġso	Ġwe	Ġcan	Ġconclude	Ġthat	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

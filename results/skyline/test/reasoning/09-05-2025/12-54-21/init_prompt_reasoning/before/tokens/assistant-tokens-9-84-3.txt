@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġstates	Ġthat	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	,	Ġbut	Ġsentence	Ġ	8	Ġindicates	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġimplying	Ġthat	ĠJohn	Ġhas	Ġleft	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

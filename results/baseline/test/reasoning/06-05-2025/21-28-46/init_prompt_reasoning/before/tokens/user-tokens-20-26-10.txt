@@ -1,4 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-19	.	ĠY	ann	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Why	Ġdid	Ġy	ann	Ġget	Ġthe	Ġapple	?Ċ

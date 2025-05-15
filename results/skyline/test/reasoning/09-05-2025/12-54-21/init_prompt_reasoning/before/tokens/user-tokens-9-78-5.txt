@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
-14	.	ĠJohn	Ġis	Ġin	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠSandra	Ġin	Ġthe	Ġkitchen	?Ċ

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-6	.	ĠThis	Ġmorning	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġschool	.Ċ
-7	.	ĠYesterday	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠFred	Ġbefore	Ġthe	Ġbedroom	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġthat	Ġsuggests	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠIn	Ġfact	,	Ġcontext	Ġsentence	Ġ	11	Ġmentioned	ĠSandra	Ġmoving	Ġto	Ġthe	Ġhallway	,	Ġand	Ġthere	Ġis	Ġno	Ġupdate	Ġon	Ġher	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

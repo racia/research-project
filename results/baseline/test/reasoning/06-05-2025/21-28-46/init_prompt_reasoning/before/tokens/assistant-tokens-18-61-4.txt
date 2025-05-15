@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSame	Ġreasoning	Ġas	Ġbefore	.	ĠThe	Ġchocolate	Ġfits	Ġinside	Ġthe	Ġchest	,	Ġand	Ġthe	Ġsuitcase	Ġis	Ġbigger	Ġthan	Ġthe	Ġchest	.	ĠSince	Ġthe	Ġchocolate	Ġfits	Ġinside	Ġthe	Ġchest	,	Ġand	Ġthe	Ġchest	Ġis	Ġsmaller	Ġthan	Ġthe	Ġsuitcase	,	Ġwe	Ġcan	Ġinfer	Ġthat	Ġthe	Ġchocolate	Ġis	Ġsmaller	Ġthan	Ġthe	Ġsuitcase	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

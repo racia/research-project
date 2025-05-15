@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-12	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-13	.	ĠFred	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	?Ċ

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-12	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġschool	Ġthis	Ġevening	.Ċ
-13	.	ĠBill	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġevening	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠBill	Ġbefore	Ġthe	Ġschool	?Ċ

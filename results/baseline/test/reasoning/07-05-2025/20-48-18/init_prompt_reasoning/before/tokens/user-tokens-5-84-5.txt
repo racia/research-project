@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-39	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
-40	.	ĠJeff	Ġhanded	Ġthe	Ġmilk	Ġto	ĠFred	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġmilk	Ġto	ĠFred	?Ċ

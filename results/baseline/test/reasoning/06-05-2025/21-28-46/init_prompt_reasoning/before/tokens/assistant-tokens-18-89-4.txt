@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġsuitcase	Ġis	Ġbigger	Ġthan	Ġthe	Ġbox	Ġof	Ġchocolates	,	Ġand	Ġthe	Ġbox	Ġof	Ġchocolates	Ġfits	Ġinside	Ġthe	Ġchocolate	.	ĠTherefore	,	Ġthe	Ġsuitcase	Ġis	Ġbigger	Ġthan	Ġthe	Ġchocolate	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

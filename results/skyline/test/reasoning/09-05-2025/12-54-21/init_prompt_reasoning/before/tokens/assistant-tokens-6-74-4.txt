@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġgoing	Ġto	Ġthe	Ġhallway	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠJohn	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	8	),	Ġbut	Ġthere	Ġis	Ġno	Ġupdate	Ġabout	ĠJohn	Ġmoving	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

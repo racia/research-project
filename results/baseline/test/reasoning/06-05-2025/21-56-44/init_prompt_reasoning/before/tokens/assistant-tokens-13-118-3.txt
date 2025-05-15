@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġthen	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġwith	ĠMary	,	Ġand	Ġsince	ĠMary	Ġis	Ġin	Ġthe	Ġoffice	,	ĠSandra	Ġis	Ġlikely	Ġin	Ġthe	Ġoffice	Ġas	Ġwell	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

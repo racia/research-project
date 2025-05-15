@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-77	.	ĠBill	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
-78	.	ĠMary	Ġleft	Ġthe	Ġapple	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠBill	Ġgive	Ġto	ĠMary	?Ċ

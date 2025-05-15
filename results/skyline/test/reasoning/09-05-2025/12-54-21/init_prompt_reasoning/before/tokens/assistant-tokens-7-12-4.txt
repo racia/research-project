@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠJohn	Ġpassed	Ġthe	Ġapple	Ġto	ĠSandra	,	Ġso	ĠSandra	Ġwas	Ġcarrying	Ġthe	Ġapple	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	11	,	ĠSandra	Ġpassed	Ġthe	Ġapple	Ġback	Ġto	ĠJohn	,	Ġso	ĠSandra	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

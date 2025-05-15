@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-8	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.Ċ
-9	.	ĠJulie	Ġmoved	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠBill	Ġbefore	Ġthe	Ġpark	?Ċ

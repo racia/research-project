@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	Ġfirst	,	Ġand	Ġthen	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.	ĠThis	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

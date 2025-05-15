@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠBill	's	Ġwhereabouts	Ġbefore	Ġthe	Ġbedroom	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠFred	's	Ġactivities	,	Ġbut	Ġnot	ĠBill	's	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

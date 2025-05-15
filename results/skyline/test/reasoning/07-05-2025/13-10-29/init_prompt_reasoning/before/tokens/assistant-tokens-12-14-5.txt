@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠMary	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠTherefore	,	ĠDaniel	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġwhat	Ġis	Ġwest	Ġof	Ġthe	Ġkitchen	.	ĠFrom	Ġsentence	Ġ	2	,	Ġwe	Ġknow	Ġthat	Ġthe	Ġbathroom	Ġis	Ġwest	Ġof	Ġthe	Ġkitchen	.	ĠTherefore	,	Ġthe	Ġanswer	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

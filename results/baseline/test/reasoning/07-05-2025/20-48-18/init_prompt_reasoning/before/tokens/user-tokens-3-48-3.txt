@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-17	.	ĠMary	Ġdropped	Ġthe	Ġmilk	.Ċ
-18	.	ĠDaniel	Ġtook	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġoffice	?Ċ

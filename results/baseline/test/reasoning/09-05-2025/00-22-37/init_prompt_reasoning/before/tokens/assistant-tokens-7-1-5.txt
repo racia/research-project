@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠSandra	Ġgave	Ġthe	Ġmilk	Ġto	ĠJohn	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġacquired	Ġthe	Ġmilk	.	ĠSince	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	Ġ(	sentence	Ġ	14	),	Ġwe	Ġcan	Ġinfer	Ġthat	ĠJohn	Ġis	Ġcarrying	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġone	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJulie	Ġbeing	Ġat	Ġthe	Ġoffice	Ġin	Ġthese	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJulie	's	Ġjourney	Ġto	Ġthe	Ġpark	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	7	),	Ġand	ĠMary	's	Ġvisit	Ġto	Ġthe	Ġschool	Ġyesterday	Ġ(	sentence	Ġ	6	).ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

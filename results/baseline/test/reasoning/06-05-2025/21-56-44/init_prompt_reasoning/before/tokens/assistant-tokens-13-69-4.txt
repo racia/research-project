@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġthey	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.	ĠSince	ĠJohn	Ġis	Ġstill	Ġwith	ĠDaniel	,	Ġand	Ġthey	Ġare	Ġin	Ġthe	Ġoffice	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJohn	Ġis	Ġalso	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

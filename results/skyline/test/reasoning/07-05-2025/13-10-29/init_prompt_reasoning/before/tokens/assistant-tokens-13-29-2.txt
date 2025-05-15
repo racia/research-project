@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġhallway	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

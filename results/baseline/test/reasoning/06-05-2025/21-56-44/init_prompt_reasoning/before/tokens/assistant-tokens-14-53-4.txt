@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġpark	,	Ġbut	Ġthe	Ġgiven	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġactivity	Ġbefore	Ġthe	Ġpark	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġactivities	Ġafter	Ġthe	Ġpark	,	Ġwhich	Ġare	Ġgoing	Ġback	Ġto	Ġthe	Ġcinema	Ġand	Ġtravelling	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

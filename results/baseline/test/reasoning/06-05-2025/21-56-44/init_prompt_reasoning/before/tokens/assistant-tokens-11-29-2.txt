@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġand	Ġthen	Ġwent	Ġto	Ġthe	Ġgarden	.	ĠThis	Ġimplies	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	,	Ġas	Ġshe	Ġmoved	Ġfrom	Ġthe	Ġoffice	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

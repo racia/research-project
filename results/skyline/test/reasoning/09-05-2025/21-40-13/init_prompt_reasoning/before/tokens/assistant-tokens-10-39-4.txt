@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġlocations	,	Ġwhich	Ġare	Ġthe	Ġcinema	Ġand	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

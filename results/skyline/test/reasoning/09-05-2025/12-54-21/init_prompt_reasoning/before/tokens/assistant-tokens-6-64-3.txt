@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	5	Ġmentioned	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġgoing	Ġto	Ġthe	Ġbedroom	.	ĠĊĊ	Answer	:	Ġno	<|eot_id|>

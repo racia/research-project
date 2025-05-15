@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	Ġand	Ġthen	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠTherefore	,	Ġhis	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

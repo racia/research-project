@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	Ġwith	ĠDaniel	,	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġwith	ĠJohn	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.Ċ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-32	.	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-33	.	ĠMary	Ġgave	Ġthe	Ġmilk	Ġto	ĠJeff	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġapple	?Ċ

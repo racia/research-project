@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġwhat	Ġis	Ġwest	Ġof	Ġthe	Ġbathroom	,	Ġand	Ġsentence	Ġ	2	Ġstates	Ġthat	Ġthe	Ġhallway	Ġis	Ġwest	Ġof	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

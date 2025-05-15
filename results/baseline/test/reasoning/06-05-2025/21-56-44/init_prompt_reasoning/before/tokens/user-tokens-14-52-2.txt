@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-6	.	ĠThis	Ġmorning	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġpark	.Ċ
-7	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	Ġyesterday	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠMary	Ġbefore	Ġthe	Ġkitchen	?Ċ

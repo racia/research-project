@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJason	Ġwent	Ġto	Ġthe	Ġbedroom	Ġbecause	Ġthey	Ġwere	Ġtired	,	Ġas	Ġmentioned	Ġin	Ġthe	Ġprevious	Ġcontext	Ġsentence	.ĊĊ	Answer	:	Ġtired	<|eot_id|>

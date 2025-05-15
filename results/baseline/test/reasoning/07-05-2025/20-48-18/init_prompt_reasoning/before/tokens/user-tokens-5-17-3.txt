@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-25	.	ĠBill	Ġdiscarded	Ġthe	Ġfootball	.Ċ
-26	.	ĠJeff	Ġgave	Ġthe	Ġmilk	Ġto	ĠFred	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠJeff	Ġgive	Ġthe	Ġmilk	Ġto	?Ċ

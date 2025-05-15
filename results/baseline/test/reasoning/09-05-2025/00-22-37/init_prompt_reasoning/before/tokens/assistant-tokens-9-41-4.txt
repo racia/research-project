@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠSandra	's	Ġlocation	,	Ġand	Ġthe	Ġonly	Ġrelevant	Ġinformation	Ġis	Ġthat	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	Ġ(	from	Ġcontext	Ġsentence	Ġ	10	).	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠSandra	Ġis	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠDaniel	Ġinitially	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġhe	Ġmoved	Ġto	Ġthe	Ġoffice	.	ĠSince	Ġthe	Ġquestion	Ġasks	Ġabout	Ġhis	Ġcurrent	Ġlocation	,	Ġwe	Ġneed	Ġto	Ġconsider	Ġhis	Ġmost	Ġrecent	Ġmovement	,	Ġwhich	Ġis	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠYesterday	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
-2	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.Ċ
-3	.	ĠYesterday	ĠMary	Ġwent	Ġto	Ġthe	Ġschool	.Ċ
-4	.	ĠYesterday	ĠBill	Ġwent	Ġto	Ġthe	Ġpark	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠBill	Ġbefore	Ġthe	Ġoffice	?Ċ

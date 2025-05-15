@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġcinema	Ġyesterday	,	Ġwhich	Ġmeans	Ġhe	Ġwas	Ġat	Ġthe	Ġcinema	Ġthe	Ġday	Ġbefore	.	ĠSince	Ġhe	Ġwent	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġit	Ġimplies	Ġthat	Ġhe	Ġwas	Ġnot	Ġat	Ġthe	Ġoffice	Ġthe	Ġday	Ġbefore	.	ĠTherefore	,	ĠBill	Ġwas	Ġat	Ġthe	Ġcinema	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġcinema	<|eot_id|>

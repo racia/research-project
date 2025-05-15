@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-2	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
-3	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
-4	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
-5	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-6	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠMary	Ġcarrying	?Ċ

@@ -1,4 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-11	.	ĠY	ann	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Why	Ġdid	Ġy	ann	Ġgo	Ġto	Ġthe	Ġkitchen	?Ċ

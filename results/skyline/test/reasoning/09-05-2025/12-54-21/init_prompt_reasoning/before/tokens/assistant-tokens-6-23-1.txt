@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	Ġgoing	Ġto	Ġthe	Ġoffice	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠIn	Ġsentence	Ġ	1	,	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġhim	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

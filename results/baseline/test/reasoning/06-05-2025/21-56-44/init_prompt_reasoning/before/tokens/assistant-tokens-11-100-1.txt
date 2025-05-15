@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠDaniel	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġhe	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġso	Ġit	's	Ġlikely	Ġthat	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

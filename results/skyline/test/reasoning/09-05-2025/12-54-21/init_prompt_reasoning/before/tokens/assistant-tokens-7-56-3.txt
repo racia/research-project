@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	11	,	Ġit	Ġis	Ġmentioned	Ġthat	ĠDaniel	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	.	ĠThis	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

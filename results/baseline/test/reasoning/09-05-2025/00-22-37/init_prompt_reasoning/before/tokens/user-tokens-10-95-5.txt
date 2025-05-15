@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠBill	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
-14	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠBill	Ġin	Ġthe	Ġschool	?Ċ

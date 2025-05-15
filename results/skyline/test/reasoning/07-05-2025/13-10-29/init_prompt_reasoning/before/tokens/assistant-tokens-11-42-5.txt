@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġmovements	,	Ġbut	Ġnot	ĠDaniel	's	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠDaniel	's	Ġlocation	Ġwas	Ġthat	Ġhe	Ġwas	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

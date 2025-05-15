@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	Ġthe	Ġlocation	Ġof	Ġthe	Ġkitchen	Ġand	Ġthe	Ġgarden	Ġrelative	Ġto	Ġthe	Ġbedroom	.	ĠThe	Ġkitchen	Ġis	Ġnorth	Ġof	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	Ġthat	Ġthe	Ġbedroom	Ġis	Ġnot	Ġnorth	Ġof	Ġanything	Ġelse	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

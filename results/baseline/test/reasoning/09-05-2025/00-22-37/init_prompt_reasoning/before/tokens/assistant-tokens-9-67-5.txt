@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġmovement	Ġto	Ġthe	Ġbedroom	Ġand	ĠDaniel	's	Ġjourney	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġnot	ĠSandra	's	.ĊĊ	Answer	:	Ġunknown	Ġ(	since	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	)	<|eot_id|>

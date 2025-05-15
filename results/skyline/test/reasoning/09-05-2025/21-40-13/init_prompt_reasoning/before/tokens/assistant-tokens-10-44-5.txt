@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠBill	Ġtravelled	Ġto	Ġthe	Ġcinema	,	Ġwhich	Ġimplies	Ġthat	ĠBill	Ġis	Ġin	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

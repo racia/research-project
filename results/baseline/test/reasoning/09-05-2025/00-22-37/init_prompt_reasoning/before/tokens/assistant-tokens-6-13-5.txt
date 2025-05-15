@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġmention	ĠJohn	Ġmoving	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

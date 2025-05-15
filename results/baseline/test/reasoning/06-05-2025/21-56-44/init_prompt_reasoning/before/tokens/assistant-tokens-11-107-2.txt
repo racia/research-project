@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	,	Ġthen	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	,	Ġas	Ġshe	Ġhas	Ġmoved	Ġfrom	Ġthe	Ġhallway	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

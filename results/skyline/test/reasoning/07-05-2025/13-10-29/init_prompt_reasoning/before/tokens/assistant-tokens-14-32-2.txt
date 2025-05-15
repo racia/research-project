@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġbedroom	Ġin	Ġthe	Ġprovided	Ġcontext	Ġsentences	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġand	ĠFred	,	Ġbut	Ġnot	ĠJulie	's	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

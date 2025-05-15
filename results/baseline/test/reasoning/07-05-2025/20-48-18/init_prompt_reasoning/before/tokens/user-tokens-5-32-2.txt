@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-24	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-25	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠMary	Ġgive	Ġto	ĠBill	?Ċ

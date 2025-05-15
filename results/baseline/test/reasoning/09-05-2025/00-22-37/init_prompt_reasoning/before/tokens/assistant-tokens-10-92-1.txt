@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġand	ĠBill	's	Ġmovements	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġschool	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġcontrad	icts	Ġthis	Ġassumption	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

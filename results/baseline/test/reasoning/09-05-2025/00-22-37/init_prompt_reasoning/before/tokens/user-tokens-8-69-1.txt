@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
-2	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
-3	.	ĠJohn	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
-4	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠJohn	Ġcarrying	?Ċ

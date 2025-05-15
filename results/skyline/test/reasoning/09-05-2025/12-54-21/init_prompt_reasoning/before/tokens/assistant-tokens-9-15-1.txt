@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġrelation	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġdo	Ġnot	Ġmention	Ġthe	Ġhallway	.	ĠTherefore	,	Ġwe	Ġcannot	Ġinfer	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġhallway	Ġbased	Ġon	Ġthe	Ġprovided	Ġinformation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

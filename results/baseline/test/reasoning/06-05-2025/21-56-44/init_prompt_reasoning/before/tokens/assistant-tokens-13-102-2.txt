@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠDaniel	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġin	Ġthe	Ġsame	Ġlocation	Ġas	ĠJohn	,	Ġwhich	Ġis	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

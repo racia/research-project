@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġtook	Ġthe	Ġapple	Ġin	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġshe	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠSince	Ġshe	Ġdidn	't	Ġleave	Ġthe	Ġbathroom	Ġwith	Ġanything	Ġelse	,	Ġshe	Ġis	Ġstill	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġapple	<|eot_id|>

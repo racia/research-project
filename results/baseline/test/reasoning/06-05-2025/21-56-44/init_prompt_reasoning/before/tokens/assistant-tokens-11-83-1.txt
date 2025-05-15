@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	Ġinitially	,	Ġand	Ġthen	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

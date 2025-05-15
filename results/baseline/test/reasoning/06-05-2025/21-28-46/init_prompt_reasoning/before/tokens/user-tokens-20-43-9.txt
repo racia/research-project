@@ -1,4 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-17	.	ĠJason	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Why	Ġdid	Ġj	ason	Ġgo	Ġto	Ġthe	Ġkitchen	?Ċ

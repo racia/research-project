@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġinitially	,	Ġand	Ġthen	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	Ġshe	Ġhas	Ġvisited	Ġboth	Ġlocations	,	Ġbut	Ġthe	Ġlast	Ġknown	Ġlocation	Ġis	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

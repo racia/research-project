@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-54	.	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
-55	.	ĠJeff	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġfootball	?Ċ

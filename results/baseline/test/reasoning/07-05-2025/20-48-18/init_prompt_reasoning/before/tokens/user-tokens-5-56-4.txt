@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-60	.	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
-61	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠJeff	Ġgive	Ġthe	Ġfootball	Ġto	?Ċ

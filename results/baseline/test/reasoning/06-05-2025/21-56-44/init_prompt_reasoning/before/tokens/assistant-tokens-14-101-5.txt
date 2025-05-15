@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġkitchen	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġand	ĠBill	's	Ġmovements	,	Ġnot	ĠFred	's	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

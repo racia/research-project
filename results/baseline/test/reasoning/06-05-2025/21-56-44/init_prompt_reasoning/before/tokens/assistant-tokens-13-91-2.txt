@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġoffice	.	ĠSince	ĠJohn	Ġis	Ġnot	Ġmentioned	Ġas	Ġleaving	Ġthe	Ġoffice	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġis	Ġstill	Ġthere	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

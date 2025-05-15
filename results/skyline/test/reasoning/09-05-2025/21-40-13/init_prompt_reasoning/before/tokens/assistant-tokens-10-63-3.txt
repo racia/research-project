@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	8	,	ĠFred	Ġmoved	Ġto	Ġthe	Ġcinema	,	Ġwhich	Ġimplies	Ġthat	ĠFred	Ġis	Ġnow	Ġin	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

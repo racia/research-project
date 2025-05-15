@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-10	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
-11	.	ĠSandra	Ġis	Ġin	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠDaniel	Ġin	Ġthe	Ġbathroom	?Ċ

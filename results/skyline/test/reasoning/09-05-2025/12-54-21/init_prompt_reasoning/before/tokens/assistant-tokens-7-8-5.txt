@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	13	,	ĠDaniel	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	,	Ġso	ĠMary	Ġwas	Ġcarrying	Ġone	Ġobject	.	ĠIn	Ġsentence	Ġ	14	,	ĠMary	Ġpassed	Ġthe	Ġapple	Ġto	ĠDaniel	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

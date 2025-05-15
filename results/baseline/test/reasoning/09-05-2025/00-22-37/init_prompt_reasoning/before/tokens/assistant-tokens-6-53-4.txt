@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠSandra	Ġgoing	Ġto	Ġthe	Ġbedroom	.	ĠSandra	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġhallway	,	Ġand	Ġthen	Ġshe	Ġwent	Ġto	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġbeing	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

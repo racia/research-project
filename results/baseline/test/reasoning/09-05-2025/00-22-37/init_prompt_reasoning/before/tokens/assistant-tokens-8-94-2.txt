@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġand	ĠDaniel	,	Ġbut	Ġnot	ĠMary	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	Ġwhat	ĠMary	Ġis	Ġcarrying	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

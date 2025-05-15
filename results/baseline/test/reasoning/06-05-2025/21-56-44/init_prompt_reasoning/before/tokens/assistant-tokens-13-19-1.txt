@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġbedroom	.	ĠSince	ĠJohn	Ġis	Ġnot	Ġmentioned	Ġas	Ġleaving	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġinferred	Ġthat	ĠJohn	Ġis	Ġstill	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

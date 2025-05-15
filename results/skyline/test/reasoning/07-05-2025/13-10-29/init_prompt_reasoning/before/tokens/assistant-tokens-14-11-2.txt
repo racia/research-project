@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠSentence	Ġ	3	Ġmentioned	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġbut	Ġthe	Ġcurrent	Ġquestion	Ġis	Ġasking	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	,	Ġwhich	Ġis	Ġalready	Ġknown	Ġto	Ġbe	Ġthe	Ġbedroom	Ġ(	from	Ġprevious	Ġquestion	).ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

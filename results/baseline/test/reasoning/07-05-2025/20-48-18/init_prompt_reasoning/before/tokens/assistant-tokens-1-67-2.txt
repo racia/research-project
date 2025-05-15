@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJohn	's	Ġlocation	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġprovide	Ġtwo	Ġpieces	Ġof	Ġinformation	:	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

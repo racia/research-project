@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠFred	's	Ġwhereabouts	Ġbefore	Ġthe	Ġschool	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠFred	's	Ġjourney	Ġback	Ġto	Ġthe	Ġbedroom	Ġthis	Ġevening	Ġand	ĠBill	's	Ġjourney	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġschool	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

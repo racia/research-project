@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-4	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġyesterday	.Ċ
-5	.	ĠThis	Ġafternoon	ĠBill	Ġmoved	Ġto	Ġthe	Ġschool	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠBill	Ġbefore	Ġthe	Ġschool	?Ċ

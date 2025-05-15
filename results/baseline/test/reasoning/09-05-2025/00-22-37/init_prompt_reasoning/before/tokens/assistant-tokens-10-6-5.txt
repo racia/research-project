@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠFred	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġsentences	.	ĠSentence	Ġ	13	Ġmentions	ĠBill	's	Ġpossible	Ġlocations	,	Ġbut	Ġit	's	Ġnot	Ġrelevant	Ġto	ĠFred	's	Ġlocation	.	ĠSentence	Ġ	14	Ġmentions	ĠJulie	's	Ġpossible	Ġlocations	,	Ġbut	Ġit	's	Ġnot	Ġrelevant	Ġto	ĠFred	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

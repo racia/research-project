@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwas	Ġcarrying	Ġthe	Ġapple	Ġ(	from	Ġprevious	Ġcontext	),	Ġbut	Ġthen	Ġpassed	Ġit	Ġto	ĠSandra	Ġ(	sentence	Ġ	13	),	Ġso	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

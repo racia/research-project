@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	Ġ(	7	Ġand	Ġ	8	)	Ġthat	Ġsuggests	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	.	ĠIn	Ġfact	,	Ġcontext	Ġsentence	Ġ	7	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġshe	Ġis	Ġin	Ġthe	Ġoffice	,	Ġnot	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

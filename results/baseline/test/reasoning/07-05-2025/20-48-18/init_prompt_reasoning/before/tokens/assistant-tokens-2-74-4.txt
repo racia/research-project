@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġtaken	Ġby	ĠDaniel	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	15	),	Ġput	Ġdown	Ġ(	sentence	Ġ	16	),	Ġand	Ġthen	Ġgot	Ġagain	Ġ(	sentence	Ġ	17	)	Ġin	Ġthe	Ġsame	Ġlocation	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġbeing	Ġmoved	Ġto	Ġa	Ġdifferent	Ġlocation	,	Ġso	Ġit	Ġis	Ġlikely	Ġstill	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

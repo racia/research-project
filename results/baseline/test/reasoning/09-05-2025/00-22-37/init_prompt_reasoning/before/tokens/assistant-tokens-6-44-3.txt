@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġgoing	Ġto	Ġthe	Ġkitchen	.	ĠSentence	Ġ	7	Ġis	Ġabout	ĠMary	Ġdropping	Ġthe	Ġfootball	,	Ġand	ĠSentence	Ġ	8	Ġis	Ġabout	ĠJohn	Ġgoing	Ġback	Ġto	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	's	Ġlocation	Ġbeing	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

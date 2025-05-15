@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġis	Ġmentioned	Ġin	Ġtwo	Ġsentences	,	Ġand	Ġhis	Ġmovement	Ġis	Ġtracked	.	ĠIn	Ġsentence	Ġ	1	,	ĠJohn	Ġmoves	Ġto	Ġthe	Ġgarden	Ġwith	ĠMary	.	ĠIn	Ġsentence	Ġ	2	,	ĠJohn	Ġgoes	Ġback	Ġto	Ġthe	Ġoffice	Ġwith	ĠSandra	.	ĠThis	Ġimplies	Ġthat	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

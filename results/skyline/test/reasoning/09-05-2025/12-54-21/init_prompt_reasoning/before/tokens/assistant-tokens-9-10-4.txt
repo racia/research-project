@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	8	Ġmentioned	Ġthat	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġleaving	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

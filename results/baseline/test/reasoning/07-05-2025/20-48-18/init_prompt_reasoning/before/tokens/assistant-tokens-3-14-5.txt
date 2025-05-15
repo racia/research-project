@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġtook	Ġthe	Ġfootball	Ġin	Ġsentence	Ġ	76	,	Ġand	Ġthen	ĠMary	Ġpicked	Ġup	Ġthe	Ġfootball	Ġin	Ġsentence	Ġ	82	.	ĠSince	ĠMary	Ġpicked	Ġup	Ġthe	Ġfootball	Ġin	Ġthe	Ġbathroom	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġthe	Ġfootball	Ġwas	Ġin	Ġthe	Ġbathroom	Ġbefore	ĠMary	Ġpicked	Ġit	Ġup	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

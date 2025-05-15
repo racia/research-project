@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	Ġtogether	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġhallway	.	ĠSince	ĠJohn	Ġis	Ġstill	Ġwith	ĠMary	,	Ġand	Ġthey	Ġare	Ġin	Ġthe	Ġhallway	,	ĠJohn	Ġmust	Ġbe	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

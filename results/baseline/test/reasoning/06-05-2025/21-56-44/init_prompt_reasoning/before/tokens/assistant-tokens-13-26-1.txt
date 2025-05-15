@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	Ġtogether	,	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJohn	Ġis	Ġstill	Ġwith	ĠMary	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

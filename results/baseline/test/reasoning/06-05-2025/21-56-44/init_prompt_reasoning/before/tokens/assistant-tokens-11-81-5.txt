@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

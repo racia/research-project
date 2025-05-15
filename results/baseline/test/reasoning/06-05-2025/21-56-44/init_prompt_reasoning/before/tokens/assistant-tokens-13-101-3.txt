@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġwas	Ġpreviously	Ġwith	ĠDaniel	Ġin	Ġthe	Ġkitchen	Ġand	Ġthen	Ġin	Ġthe	Ġbedroom	,	Ġbut	Ġthe	Ġcontext	Ġsentences	Ġnow	Ġmention	ĠDaniel	Ġand	ĠMary	,	Ġit	Ġimplies	Ġthat	ĠSandra	Ġis	Ġnot	Ġwith	Ġthem	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	's	Ġcurrent	Ġlocation	,	Ġso	Ġit	's	Ġunknown	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-17	.	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġthis	Ġevening	.Ċ
-18	.	ĠThis	Ġevening	ĠMary	Ġwent	Ġto	Ġthe	Ġcinema	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠJulie	Ġbefore	Ġthe	Ġschool	?Ċ

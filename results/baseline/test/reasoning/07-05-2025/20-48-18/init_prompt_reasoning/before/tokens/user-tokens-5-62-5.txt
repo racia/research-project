@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-31	.	ĠFred	Ġhanded	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
-32	.	ĠMary	Ġgave	Ġthe	Ġmilk	Ġto	ĠFred	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġmilk	?Ċ

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-14	.	ĠAfter	Ġthat	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠSandra	?Ċ

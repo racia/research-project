@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġbeing	Ġin	Ġthe	Ġoffice	.	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	13	,	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġdoes	Ġnot	Ġmention	Ġthe	Ġoffice	.	ĠĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠDaniel	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
-2	.	ĠJohn	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠDaniel	?Ċ

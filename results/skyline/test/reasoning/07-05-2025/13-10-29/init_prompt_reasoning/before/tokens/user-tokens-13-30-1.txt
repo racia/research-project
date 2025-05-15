@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠDaniel	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
-2	.	ĠThen	Ġthey	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠDaniel	?Ċ

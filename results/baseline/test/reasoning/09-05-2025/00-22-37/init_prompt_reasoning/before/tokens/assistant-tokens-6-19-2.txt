@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgoing	Ġto	Ġthe	Ġkitchen	Ġor	Ġbeing	Ġin	Ġthe	Ġkitchen	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	's	Ġactions	,	Ġnot	ĠMary	's	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	6	,	Ġ"	Mary	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	."	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbetween	Ġthis	Ġmorning	Ġand	Ġthis	Ġafternoon	,	Ġbut	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġschool	Ġbefore	Ġmoving	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	16	).ĊĊ	Answer	:	Ġschool	<|eot_id|>

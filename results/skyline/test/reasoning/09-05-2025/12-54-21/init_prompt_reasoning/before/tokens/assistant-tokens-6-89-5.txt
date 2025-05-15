@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	14	,	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	6	Ġstates	Ġthat	ĠEmily	Ġis	Ġa	Ġcat	.	ĠSentence	Ġ	1	Ġstates	Ġthat	Ġwolves	Ġare	Ġafraid	Ġof	Ġcats	,	Ġand	ĠSentence	Ġ	2	Ġstates	Ġthat	Ġmice	Ġare	Ġafraid	Ġof	Ġcats	.	ĠSince	ĠEmily	Ġis	Ġa	Ġcat	,	Ġshe	Ġis	Ġnot	Ġafraid	Ġof	Ġanything	Ġmentioned	Ġin	Ġthe	Ġcontext	Ġsentences	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

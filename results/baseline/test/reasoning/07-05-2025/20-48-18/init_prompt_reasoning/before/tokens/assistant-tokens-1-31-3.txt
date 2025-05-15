@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġand	ĠSandra	's	Ġlocations	,	Ġwhich	Ġare	Ġthe	Ġoffice	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

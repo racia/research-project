@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġtravelled	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġwhere	Ġshe	Ġwas	Ġbefore	Ġthat	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	Ġher	Ġcurrent	Ġlocation	Ġ(	school	)	Ġand	ĠFred	's	Ġlocation	Ġ(	office	),	Ġbut	Ġnot	Ġabout	ĠMary	's	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

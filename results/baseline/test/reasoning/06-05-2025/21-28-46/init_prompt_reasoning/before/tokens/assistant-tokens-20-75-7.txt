@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAntoine	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġhad	Ġpreviously	Ġgone	Ġto	Ġthe	Ġkitchen	.	ĠThe	Ġcontext	Ġsentence	Ġdoes	Ġnot	Ġspecify	Ġwhy	ĠAntoine	Ġwent	Ġto	Ġthe	Ġkitchen	Ġinitially	,	Ġbut	Ġbased	Ġon	Ġthe	Ġprevious	Ġtask	,	Ġit	Ġis	Ġlikely	Ġthat	ĠAntoine	Ġwent	Ġto	Ġthe	Ġkitchen	Ġbecause	Ġhe	Ġwas	Ġthirsty	.ĊĊ	Answer	:	Ġthirsty	<|eot_id|>

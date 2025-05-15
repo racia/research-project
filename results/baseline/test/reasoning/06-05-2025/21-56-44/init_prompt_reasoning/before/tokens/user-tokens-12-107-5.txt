@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠJohn	Ġand	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
-14	.	ĠMary	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠMary	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġhallway	Ġis	Ġnorth	Ġof	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	Ġthe	Ġbedroom	Ġis	Ġnot	Ġat	Ġthe	Ġtop	Ġof	Ġthe	Ġlayout	.	ĠThe	Ġbathroom	Ġis	Ġsouth	Ġof	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	Ġit	Ġis	Ġbelow	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

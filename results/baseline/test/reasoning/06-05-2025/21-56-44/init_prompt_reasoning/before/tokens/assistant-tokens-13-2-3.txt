@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġand	Ġthen	Ġto	Ġthe	Ġoffice	,	Ġit	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	,	Ġas	Ġthey	Ġtravelled	Ġto	Ġit	Ġtogether	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

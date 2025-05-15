@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġcontext	Ġsentence	Ġmentioning	ĠSum	it	Ġgetting	Ġan	Ġapple	.	ĠThe	Ġcontext	Ġsentence	Ġ	5	Ġmentioned	Ġthat	ĠSum	it	Ġis	Ġtired	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġmention	Ġanything	Ġabout	ĠSum	it	Ġgetting	Ġan	Ġapple	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

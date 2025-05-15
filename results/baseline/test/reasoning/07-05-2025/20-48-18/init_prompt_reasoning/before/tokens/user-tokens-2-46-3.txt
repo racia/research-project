@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-9	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-10	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
-11	.	ĠMary	Ġleft	Ġthe	Ġfootball	.Ċ
-12	.	ĠDaniel	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġfootball	?Ċ

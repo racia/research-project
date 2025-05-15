@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġwith	ĠMary	,	Ġand	Ġsince	ĠMary	Ġis	Ġin	Ġthe	Ġbathroom	,	ĠJohn	Ġis	Ġlikely	Ġin	Ġthe	Ġbathroom	Ġas	Ġwell	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

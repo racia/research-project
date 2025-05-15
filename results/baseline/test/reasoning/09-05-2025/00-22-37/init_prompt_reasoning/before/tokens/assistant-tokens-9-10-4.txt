@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġnew	Ġinformation	Ġis	Ġthat	ĠDaniel	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġoffice	,	Ġbut	Ġthis	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	.	ĠThe	Ġprevious	Ġinformation	Ġis	Ġthat	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġso	Ġit	Ġis	Ġlikely	Ġthat	ĠJohn	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

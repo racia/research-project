@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	10	Ġstates	Ġthat	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

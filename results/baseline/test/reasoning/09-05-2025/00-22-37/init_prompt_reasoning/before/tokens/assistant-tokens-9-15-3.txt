@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	's	Ġpresence	Ġor	Ġabsence	Ġin	Ġthe	Ġkitchen	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠDaniel	's	Ġabsence	Ġfrom	Ġthe	Ġkitchen	Ġand	ĠJohn	's	Ġabsence	Ġfrom	Ġthe	Ġoffice	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

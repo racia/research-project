@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġpicked	Ġup	Ġby	ĠMary	Ġin	Ġthe	Ġhallway	Ġ(	sentence	Ġ	3	).	ĠThen	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	9	)	Ġand	Ġput	Ġdown	Ġthe	Ġfootball	Ġ(	sentence	Ġ	10	).	ĠSince	ĠMary	Ġis	Ġin	Ġthe	Ġoffice	Ġand	Ġhas	Ġput	Ġdown	Ġthe	Ġfootball	,	Ġthe	Ġfootball	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

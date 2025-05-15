@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠBill	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġthis	Ġafternoon	.	ĠSince	ĠBill	Ġwent	Ġto	Ġthe	Ġoffice	Ġthis	Ġevening	Ġ(	sentence	Ġ	12	),	Ġwe	Ġcan	Ġinfer	Ġthat	ĠBill	Ġwas	Ġin	Ġthe	Ġkitchen	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

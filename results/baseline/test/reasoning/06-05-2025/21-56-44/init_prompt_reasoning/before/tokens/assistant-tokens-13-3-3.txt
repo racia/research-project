@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

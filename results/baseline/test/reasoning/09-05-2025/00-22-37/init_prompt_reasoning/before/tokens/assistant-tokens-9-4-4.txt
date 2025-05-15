@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġbeing	Ġin	Ġthe	Ġkitchen	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSentence	Ġ	10	Ġand	Ġ	11	Ġonly	Ġmention	ĠJohn	's	Ġmovements	Ġto	Ġthe	Ġbathroom	Ġand	Ġoffice	,	Ġrespectively	,	Ġbut	Ġdo	Ġnot	Ġmention	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

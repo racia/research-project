@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠBill	Ġwent	Ġto	Ġthe	Ġcinema	Ġyesterday	Ġ(	sentence	Ġ	2	),	Ġand	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	Ġ(	sentence	Ġ	1	),	Ġit	Ġimplies	Ġthat	ĠBill	Ġwas	Ġat	Ġthe	Ġcinema	Ġyesterday	Ġand	Ġthen	Ġreturned	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	.ĊĊ	Answer	:	Ġcinema	<|eot_id|>

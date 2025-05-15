@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠBill	's	Ġcurrent	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSentence	Ġ	11	,	Ġwhich	Ġmentioned	ĠBill	,	Ġis	Ġnot	Ġprovided	Ġin	Ġthis	Ġtask	.	ĠĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

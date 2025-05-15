@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentence	Ġ	14	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

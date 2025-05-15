@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	10	)	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġgarden	Ġ(	sentence	Ġ	11	).	ĠTherefore	,	Ġher	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

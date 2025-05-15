@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġdiscarded	Ġin	Ġsentence	Ġ	18	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġit	Ġbeing	Ġmoved	Ġor	Ġtaken	Ġaway	Ġfrom	Ġthe	Ġlocation	Ġwhere	Ġit	Ġwas	Ġdiscarded	.	ĠSince	Ġthere	Ġis	Ġno	Ġupdate	Ġon	Ġthe	Ġfootball	's	Ġlocation	,	Ġit	Ġis	Ġlikely	Ġstill	Ġnot	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

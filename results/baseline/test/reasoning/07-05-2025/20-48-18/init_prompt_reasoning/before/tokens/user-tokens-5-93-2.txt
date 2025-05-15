@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-32	.	ĠJeff	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
-33	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠMary	Ġgive	Ġto	ĠBill	?Ċ

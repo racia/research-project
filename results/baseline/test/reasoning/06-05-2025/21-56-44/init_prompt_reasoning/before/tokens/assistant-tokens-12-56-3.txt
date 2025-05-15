@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġshows	Ġthat	ĠSandra	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġit	Ġdoesn	't	Ġmention	ĠMary	.	ĠSentence	Ġ	8	Ġreveals	Ġthat	ĠMary	Ġand	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	Ġwith	ĠDaniel	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

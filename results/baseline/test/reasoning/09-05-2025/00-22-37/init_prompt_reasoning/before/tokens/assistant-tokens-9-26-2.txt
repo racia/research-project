@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġwe	Ġhave	Ġa	Ġcontext	Ġsentence	Ġthat	Ġprovides	Ġinformation	Ġabout	Ġher	Ġlocation	.	ĠSentence	Ġ	4	Ġstates	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

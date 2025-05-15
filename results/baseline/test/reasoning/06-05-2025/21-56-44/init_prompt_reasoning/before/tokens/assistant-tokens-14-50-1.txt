@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġyesterday	Ġ(	sentence	Ġ	2	),	Ġand	Ġshe	Ġwent	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	Ġ(	sentence	Ġ	1	),	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġshe	Ġwas	Ġin	Ġthe	Ġbedroom	Ġbefore	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

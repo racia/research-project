@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSentence	Ġ	13	Ġmentions	ĠJohn	's	Ġabsence	Ġfrom	Ġthe	Ġbathroom	,	Ġand	Ġsentence	Ġ	14	Ġmentions	ĠMary	's	Ġpresence	Ġin	Ġthe	Ġhallway	,	Ġbut	Ġneither	Ġof	Ġthese	Ġsentences	Ġprovides	Ġinformation	Ġabout	ĠDaniel	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

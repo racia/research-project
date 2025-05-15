@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġchanges	.	ĠInitially	,	Ġshe	Ġtravels	Ġto	Ġthe	Ġbathroom	Ġwith	ĠJohn	.	ĠThen	,	Ġshe	Ġgoes	Ġto	Ġthe	Ġoffice	Ġwith	ĠDaniel	.	ĠThis	Ġimplies	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

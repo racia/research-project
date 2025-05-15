@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġmilk	Ġwas	Ġgrabbed	Ġby	ĠJohn	Ġin	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġleft	Ġby	ĠJohn	Ġin	Ġthe	Ġsame	Ġlocation	Ġ(	office	).	ĠThere	Ġis	Ġno	Ġindication	Ġthat	Ġthe	Ġmilk	Ġwas	Ġmoved	Ġto	Ġa	Ġdifferent	Ġlocation	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

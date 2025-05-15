@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġhallway	Ġis	Ġsouth	Ġof	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	Ġit	Ġis	Ġnot	Ġnorth	Ġof	Ġthe	Ġbathroom	.	ĠThe	Ġbedroom	Ġis	Ġnorth	Ġof	Ġthe	Ġbathroom	,	Ġso	Ġthe	Ġbedroom	Ġis	Ġthe	Ġcorrect	Ġanswer	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

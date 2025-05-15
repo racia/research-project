@@ -1,1 +1,0 @@
-<|start_header_id|>	<|end_header_id|>	<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	1	Ġexplicitly	Ġstates	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġhallway	,	Ġand	Ġthere	Ġis	Ġno	Ġsubsequent	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġhas	Ġmoved	Ġor	Ġleft	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

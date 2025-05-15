@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġcarrying	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġgetting	Ġand	Ġleaving	Ġthe	Ġfootball	.	ĠSince	ĠMary	Ġleft	Ġthe	Ġfootball	,	Ġit	Ġimplies	Ġshe	Ġwas	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

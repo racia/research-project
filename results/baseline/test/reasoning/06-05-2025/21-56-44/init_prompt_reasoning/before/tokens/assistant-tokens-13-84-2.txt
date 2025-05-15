@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġand	Ġthen	Ġthey	Ġtravelled	Ġto	Ġthe	Ġbedroom	.	ĠSince	ĠMary	Ġis	Ġnot	Ġmentioned	Ġto	Ġhave	Ġleft	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġinferred	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

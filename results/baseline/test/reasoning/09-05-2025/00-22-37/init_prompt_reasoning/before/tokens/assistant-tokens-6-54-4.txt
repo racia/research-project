@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSentence	Ġ	10	Ġmentions	ĠJohn	Ġjourney	ing	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġsentence	Ġ	11	Ġmentions	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġneither	Ġof	Ġthese	Ġsentences	Ġprovides	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

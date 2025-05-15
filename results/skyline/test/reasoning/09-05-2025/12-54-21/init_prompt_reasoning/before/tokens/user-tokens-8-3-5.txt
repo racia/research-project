@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
-14	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
-15	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
-16	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
-17	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	Ġthere	.Ċ
-18	.	ĠSandra	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠMary	Ġcarrying	?Ċ

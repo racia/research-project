@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġnow	Ġholding	Ġthe	Ġfootball	.	ĠSince	ĠMary	Ġis	Ġholding	Ġthe	Ġfootball	,	Ġshe	Ġis	Ġcarrying	Ġone	Ġobject	.ĊĊ	Answer	:	Ġone	<|eot_id|>

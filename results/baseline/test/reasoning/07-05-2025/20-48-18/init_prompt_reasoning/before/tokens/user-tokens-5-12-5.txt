@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-37	.	ĠBill	Ġgave	Ġthe	Ġapple	Ġto	ĠJeff	.Ċ
-38	.	ĠJeff	Ġdiscarded	Ġthe	Ġapple	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠBill	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

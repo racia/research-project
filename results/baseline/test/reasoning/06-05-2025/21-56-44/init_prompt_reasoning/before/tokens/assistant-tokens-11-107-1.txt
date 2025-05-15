@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	,	Ġthen	Ġtravelled	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	,	Ġas	Ġhe	Ġhas	Ġmoved	Ġfrom	Ġthe	Ġgarden	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

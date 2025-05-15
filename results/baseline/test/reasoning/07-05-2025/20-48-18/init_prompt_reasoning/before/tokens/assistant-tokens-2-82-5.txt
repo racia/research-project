@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġfootball	Ġin	Ġthese	Ġsentences	,	Ġand	Ġno	Ġprevious	Ġsentence	Ġmentioned	Ġthe	Ġfootball	's	Ġlocation	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	Ġthe	Ġfootball	's	Ġcurrent	Ġlocation	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

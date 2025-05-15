@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	Ġtogether	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġstill	Ġwith	ĠSandra	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

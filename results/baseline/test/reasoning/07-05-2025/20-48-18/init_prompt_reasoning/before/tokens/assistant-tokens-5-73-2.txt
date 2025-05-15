@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	Ġ(	sentence	Ġ	13	).ĊĊ	Answer	:	ĠBill	<|eot_id|>

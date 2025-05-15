@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠThis	Ġafternoon	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġpark	.Ċ
-2	.	ĠThis	Ġmorning	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-3	.	ĠYesterday	ĠJulie	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-4	.	ĠYesterday	ĠMary	Ġtravelled	Ġto	Ġthe	Ġschool	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠMary	Ġbefore	Ġthe	Ġpark	?Ċ

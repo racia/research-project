@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFred	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	,	Ġand	Ġhe	Ġwent	Ġto	Ġthe	Ġbedroom	Ġyesterday	.	ĠThis	Ġsuggests	Ġthat	ĠFred	Ġwas	Ġat	Ġthe	Ġbedroom	Ġyesterday	,	Ġand	Ġthen	Ġhe	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

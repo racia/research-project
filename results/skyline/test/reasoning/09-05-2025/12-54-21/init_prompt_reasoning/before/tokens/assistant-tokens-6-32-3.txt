@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġgoing	Ġto	Ġthe	Ġbedroom	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠIn	Ġfact	,	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġat	Ġall	Ġin	Ġthe	Ġgiven	Ġsentences	.	ĠĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

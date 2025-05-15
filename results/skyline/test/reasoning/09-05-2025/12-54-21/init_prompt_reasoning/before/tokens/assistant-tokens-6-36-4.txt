@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġbeing	Ġin	Ġthe	Ġgarden	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	8	Ġmentions	ĠSandra	Ġtravelling	Ġto	Ġthe	Ġbathroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġbeing	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġunknown	<|eot_id|>

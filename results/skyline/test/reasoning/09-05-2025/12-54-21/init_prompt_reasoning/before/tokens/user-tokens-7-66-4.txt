@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-26	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
-27	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠSandra	Ġcarrying	?Ċ

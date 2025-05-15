@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġoffice	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	's	Ġmovement	Ġto	Ġthe	Ġkitchen	Ġand	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

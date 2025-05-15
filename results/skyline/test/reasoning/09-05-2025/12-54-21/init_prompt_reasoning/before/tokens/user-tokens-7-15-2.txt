@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-4	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
-5	.	ĠSandra	Ġdiscarded	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠSandra	Ġcarrying	?Ċ

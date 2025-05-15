@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠBill	's	Ġlocation	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	.	ĠWe	Ġknow	Ġthat	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	12	),	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠBill	's	Ġlocation	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

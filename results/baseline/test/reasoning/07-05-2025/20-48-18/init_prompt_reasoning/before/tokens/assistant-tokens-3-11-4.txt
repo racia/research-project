@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġpicked	Ġup	Ġby	ĠSandra	Ġin	Ġsentence	Ġ	63	,	Ġand	Ġthen	Ġdropped	Ġby	ĠSandra	Ġin	Ġsentence	Ġ	76	.	ĠSince	ĠSandra	Ġdropped	Ġthe	Ġapple	Ġbefore	Ġgoing	Ġto	Ġthe	Ġbedroom	Ġin	Ġsentence	Ġ	72	,	Ġthe	Ġapple	Ġwas	Ġin	Ġthe	Ġlocation	Ġwhere	ĠSandra	Ġdropped	Ġit	Ġbefore	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġcurrently	Ġlocated	Ġin	Ġthe	Ġkitchen	.Ċ	Answer	:	Ġkitchen	<|eot_id|>

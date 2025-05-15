@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	Ġinitially	,	Ġand	Ġthen	Ġshe	Ġtravelled	Ġto	Ġthe	Ġbedroom	.	ĠSince	Ġshe	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġthe	Ġmost	Ġrecent	Ġlocation	Ġshe	Ġhas	Ġbeen	Ġto	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

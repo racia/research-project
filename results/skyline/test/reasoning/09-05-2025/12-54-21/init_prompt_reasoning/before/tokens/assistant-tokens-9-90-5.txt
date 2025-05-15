@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	,	Ġwhich	Ġexplicitly	Ġstates	Ġher	Ġabsence	Ġfrom	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

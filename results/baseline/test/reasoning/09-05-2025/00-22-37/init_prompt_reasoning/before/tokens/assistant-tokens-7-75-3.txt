@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġleaving	Ġthe	Ġapple	Ġand	ĠSandra	Ġgoing	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġnot	ĠDaniel	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

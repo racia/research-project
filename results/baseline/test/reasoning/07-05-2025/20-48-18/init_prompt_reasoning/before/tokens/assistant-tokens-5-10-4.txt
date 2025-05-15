@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBill	Ġpassed	Ġthe	Ġmilk	Ġto	ĠMary	Ġin	Ġsentence	Ġ	39	,	Ġand	Ġthere	Ġis	Ġno	Ġother	Ġmention	Ġof	ĠBill	Ġgiving	Ġthe	Ġmilk	Ġto	Ġanyone	Ġelse	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

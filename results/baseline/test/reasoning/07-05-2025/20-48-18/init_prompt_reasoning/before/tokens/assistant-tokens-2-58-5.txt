@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	Ġthe	Ġfootball	Ġat	Ġall	.	ĠThe	Ġonly	Ġmention	Ġof	Ġan	Ġobject	Ġis	Ġthe	Ġmilk	,	Ġwhich	Ġis	Ġgrabbed	Ġby	ĠMary	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġthe	Ġfootball	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

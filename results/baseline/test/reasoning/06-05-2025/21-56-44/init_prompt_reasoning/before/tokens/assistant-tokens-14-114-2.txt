@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġpark	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJulie	's	Ġmovement	Ġto	Ġthe	Ġkitchen	Ġand	ĠMary	's	Ġmovement	Ġto	Ġthe	Ġpark	,	Ġbut	Ġnot	Ġher	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

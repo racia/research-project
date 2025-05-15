@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġgoing	Ġto	Ġthe	Ġkitchen	.	ĠInstead	,	Ġthey	Ġmention	ĠJohn	Ġgoing	Ġback	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

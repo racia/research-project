@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠBill	Ġgiving	Ġanything	Ġto	ĠMary	.	ĠThey	Ġonly	Ġmention	ĠMary	Ġleaving	Ġthe	Ġfootball	Ġand	ĠJeff	Ġgetting	Ġan	Ġapple	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

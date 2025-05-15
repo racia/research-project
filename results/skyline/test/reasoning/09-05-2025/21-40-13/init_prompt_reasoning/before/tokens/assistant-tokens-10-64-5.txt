@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	13	Ġstates	Ġthat	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġkitchen	Ġor	Ġthe	Ġbedroom	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġa	Ġdefinitive	Ġlocation	Ġfor	ĠJulie	.	ĠTherefore	,	Ġwe	Ġcan	Ġonly	Ġconclude	Ġthat	ĠJulie	Ġmight	Ġbe	Ġin	Ġthe	Ġbedroom	,	Ġbut	Ġwe	Ġcannot	Ġbe	Ġcertain	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

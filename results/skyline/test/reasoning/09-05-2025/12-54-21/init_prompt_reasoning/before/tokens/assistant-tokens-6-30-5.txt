@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġbeing	Ġin	Ġthe	Ġkitchen	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠJohn	Ġwas	Ġin	Ġthe	Ġhallway	Ġ(	sentence	Ġ	11	),	Ġand	Ġthen	Ġhe	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	14	),	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġhim	Ġbeing	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

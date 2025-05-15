@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	Ġpicking	Ġup	Ġor	Ġholding	Ġany	Ġobjects	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	's	Ġmovements	Ġand	Ġlocations	,	Ġbut	Ġnot	Ġany	Ġactions	Ġinvolving	Ġobjects	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

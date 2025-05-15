@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	24	Ġstates	Ġthat	ĠMary	Ġhanded	Ġthe	Ġmilk	Ġto	ĠJeff	,	Ġindicating	Ġthat	Ġshe	Ġgave	Ġthe	Ġmilk	Ġto	Ġhim	.ĊĊ	Answer	:	Ġmilk	<|eot_id|>

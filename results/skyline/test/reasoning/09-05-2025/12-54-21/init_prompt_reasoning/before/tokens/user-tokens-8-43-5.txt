@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-19	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-20	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
-21	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
-22	.	ĠMary	Ġdiscarded	Ġthe	Ġapple	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠMary	Ġcarrying	?Ċ

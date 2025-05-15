@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠFred	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
-2	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-3	.	ĠFred	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
-4	.	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġfootball	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	18	,	ĠJohn	Ġgrabbed	Ġthe	Ġapple	Ġin	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġleft	Ġit	Ġin	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	21	).	ĠTherefore	,	Ġthe	Ġapple	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

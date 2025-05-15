@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠSandra	,	Ġbut	Ġthe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	.	ĠSince	ĠSandra	's	Ġactions	Ġare	Ġnot	Ġmentioned	Ġin	Ġthe	Ġgiven	Ġcontext	,	Ġwe	Ġcannot	Ġdetermine	Ġwhat	ĠSandra	Ġis	Ġcarrying	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

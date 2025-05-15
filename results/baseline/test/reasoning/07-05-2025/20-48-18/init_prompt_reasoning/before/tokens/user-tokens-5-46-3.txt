@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠFred	Ġhanded	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
-8	.	ĠJeff	Ġgave	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠJeff	Ġgive	Ġto	ĠFred	?Ċ

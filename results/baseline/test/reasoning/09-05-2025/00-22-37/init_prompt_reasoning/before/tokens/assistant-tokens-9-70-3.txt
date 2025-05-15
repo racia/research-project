@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠSandra	's	Ġlocation	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġor	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

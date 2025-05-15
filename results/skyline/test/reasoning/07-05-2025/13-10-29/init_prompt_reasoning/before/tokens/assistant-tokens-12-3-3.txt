@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	8	,	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġoffice	Ġwith	ĠMary	,	Ġwhich	Ġis	Ġthe	Ġmost	Ġrecent	Ġlocation	Ġmentioned	Ġfor	ĠDaniel	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

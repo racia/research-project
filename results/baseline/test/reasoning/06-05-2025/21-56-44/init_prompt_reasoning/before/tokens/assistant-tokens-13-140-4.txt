@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġwith	ĠJohn	,	Ġso	Ġit	's	Ġlikely	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

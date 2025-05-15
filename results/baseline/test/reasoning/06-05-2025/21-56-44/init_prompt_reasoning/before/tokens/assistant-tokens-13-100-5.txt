@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġhallway	.	ĠThis	Ġimplies	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

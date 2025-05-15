@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġchanges	Ġfrom	Ġthe	Ġgarden	Ġto	Ġthe	Ġoffice	.	ĠSince	Ġthe	Ġlast	Ġsentence	Ġmentioned	Ġis	Ġabout	Ġthe	Ġoffice	,	Ġit	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

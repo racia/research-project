@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-10	.	ĠSandra	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
-11	.	ĠMary	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠMary	?Ċ

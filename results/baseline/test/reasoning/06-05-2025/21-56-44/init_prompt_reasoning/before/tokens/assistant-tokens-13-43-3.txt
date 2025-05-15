@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠSandra	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġand	Ġthen	Ġwent	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠMary	's	Ġlocation	Ġis	Ġthe	Ġsame	Ġas	ĠSandra	's	,	Ġwhich	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

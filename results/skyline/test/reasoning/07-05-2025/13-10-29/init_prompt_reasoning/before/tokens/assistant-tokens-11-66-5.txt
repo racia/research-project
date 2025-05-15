@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdescribe	ĠSandra	's	Ġmovements	,	Ġand	Ġthe	Ġlast	Ġlocation	Ġmentioned	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġoffice	,	Ġas	Ġhe	Ġmoved	Ġthere	Ġafter	Ġgoing	Ġto	Ġthe	Ġbathroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġsuggesting	Ġhe	Ġleft	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

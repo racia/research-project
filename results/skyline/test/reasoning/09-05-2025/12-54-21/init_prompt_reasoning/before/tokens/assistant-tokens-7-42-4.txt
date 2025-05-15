@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	12	,	ĠJohn	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġfootball	.	ĠHe	Ġwas	Ġpreviously	Ġcarrying	Ġthe	Ġmilk	Ġ(	sentence	Ġ	3	),	Ġbut	Ġthere	Ġis	Ġno	Ġupdate	Ġabout	Ġthe	Ġmilk	,	Ġso	Ġwe	Ġcan	Ġinfer	Ġthat	ĠJohn	Ġis	Ġstill	Ġcarrying	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġone	<|eot_id|>

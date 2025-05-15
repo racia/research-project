@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġtogether	,	Ġand	Ġthen	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.	ĠSince	ĠJohn	Ġis	Ġnot	Ġmentioned	Ġseparately	Ġafter	Ġthe	Ġgarden	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġis	Ġstill	Ġwith	ĠMary	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġpassed	Ġthe	Ġapple	Ġto	ĠBill	,	Ġand	Ġit	Ġis	Ġmentioned	Ġin	Ġsentence	Ġ	13	Ġthat	ĠMary	Ġpassed	Ġthe	Ġapple	Ġto	ĠBill	.	ĠThere	Ġis	Ġno	Ġother	Ġcontext	Ġthat	Ġsuggests	Ġanyone	Ġelse	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġif	ĠSandra	Ġis	Ġin	Ġthe	Ġoffice	,	Ġand	Ġthe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġthat	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

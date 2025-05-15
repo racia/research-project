@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġgarden	Ġis	Ġnorth	Ġof	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	2	),	Ġand	Ġthe	Ġoffice	Ġis	Ġnorth	Ġof	Ġthe	Ġgarden	Ġ(	sentence	Ġ	1	),	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġthe	Ġoffice	Ġis	Ġnorth	Ġof	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

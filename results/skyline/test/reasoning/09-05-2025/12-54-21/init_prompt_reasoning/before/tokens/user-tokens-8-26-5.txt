@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
-14	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
-15	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-16	.	ĠSandra	Ġdiscarded	Ġthe	Ġapple	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠSandra	Ġcarrying	?Ċ

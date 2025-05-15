@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġhanding	Ġthe	Ġmilk	Ġto	ĠBill	Ġ(	sentence	Ġ	16	),	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġanyone	Ġelse	Ġgiving	Ġmilk	Ġto	ĠBill	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġoffice	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġinformation	Ġabout	ĠDaniel	's	Ġlocation	.	ĠContext	Ġsentence	Ġ	13	Ġstates	Ġthat	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	,	Ġimplying	Ġthat	Ġhe	Ġwas	Ġnot	Ġin	Ġthe	Ġoffice	Ġinitially	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-19	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-20	.	ĠMary	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
-21	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
-22	.	ĠMary	Ġleft	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

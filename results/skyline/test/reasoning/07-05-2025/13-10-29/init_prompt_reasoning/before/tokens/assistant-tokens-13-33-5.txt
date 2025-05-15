@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġa	Ġsequence	Ġof	Ġmovements	Ġof	ĠMary	Ġand	ĠSandra	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġmention	ĠJohn	's	Ġcurrent	Ġlocation	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	Ġwas	Ġthat	Ġhe	Ġwas	Ġin	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	11	).ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

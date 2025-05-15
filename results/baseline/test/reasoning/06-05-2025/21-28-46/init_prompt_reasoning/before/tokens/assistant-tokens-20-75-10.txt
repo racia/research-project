@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠY	ann	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġhad	Ġa	Ġreason	Ġto	Ġgo	Ġthere	.	ĠThe	Ġcontext	Ġsentence	Ġdoes	Ġnot	Ġspecify	Ġwhy	ĠY	ann	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġbased	Ġon	Ġthe	Ġprevious	Ġtask	,	Ġit	Ġis	Ġlikely	Ġthat	ĠY	ann	Ġwent	Ġto	Ġthe	Ġkitchen	Ġbecause	Ġhe	Ġwas	Ġhungry	.ĊĊ	Answer	:	Ġhungry	<|eot_id|>

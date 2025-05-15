@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġschool	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġschool	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġis	Ġa	Ġseparate	Ġlocation	Ġand	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

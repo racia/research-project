@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠFred	,	Ġbut	Ġthe	Ġquestion	Ġasks	Ġwho	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	,	Ġwhich	Ġis	ĠFred	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

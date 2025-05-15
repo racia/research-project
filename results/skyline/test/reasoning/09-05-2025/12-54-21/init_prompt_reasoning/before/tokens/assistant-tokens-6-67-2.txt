@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

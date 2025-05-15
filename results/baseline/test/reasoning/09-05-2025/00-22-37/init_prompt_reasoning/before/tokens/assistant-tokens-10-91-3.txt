@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	8	Ġstates	Ġthat	ĠJulie	Ġjourney	ed	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠJulie	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-25	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
-26	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
-27	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	.Ċ
-28	.	ĠFred	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠFred	Ġgive	Ġto	ĠMary	?Ċ

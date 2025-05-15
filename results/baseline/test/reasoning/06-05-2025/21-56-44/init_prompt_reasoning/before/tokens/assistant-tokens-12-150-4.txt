@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

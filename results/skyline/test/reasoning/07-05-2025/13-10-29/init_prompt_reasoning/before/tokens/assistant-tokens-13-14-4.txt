@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġback	Ġto	Ġthe	Ġbedroom	.	ĠThe	Ġlast	Ġlocation	Ġmentioned	Ġfor	ĠMary	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

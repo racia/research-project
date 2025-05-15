@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġchanges	Ġfrom	Ġthe	Ġkitchen	Ġto	Ġthe	Ġgarden	.	ĠSince	Ġthe	Ġsecond	Ġsentence	Ġmentions	Ġthem	Ġjourney	ing	Ġto	Ġthe	Ġgarden	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

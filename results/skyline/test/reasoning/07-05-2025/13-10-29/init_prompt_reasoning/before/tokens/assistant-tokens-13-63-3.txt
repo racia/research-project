@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġto	Ġthe	Ġbathroom	.	ĠThe	Ġmost	Ġrecent	Ġlocation	Ġmentioned	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

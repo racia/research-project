@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	1	,	Ġsheep	Ġare	Ġafraid	Ġof	Ġmice	.	ĠSince	ĠJessica	Ġis	Ġa	Ġsheep	Ġ(	sentence	Ġ	2	),	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠJessica	Ġis	Ġafraid	Ġof	Ġmice	.ĊĊ	Answer	:	Ġmice	<|eot_id|>

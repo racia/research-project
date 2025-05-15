@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġgave	Ġthe	Ġfootball	Ġto	ĠDaniel	,	Ġwhich	Ġmeans	ĠJohn	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġfootball	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġthere	Ġis	Ġno	Ġindication	Ġthat	ĠJohn	Ġis	Ġcarrying	Ġanything	Ġelse	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

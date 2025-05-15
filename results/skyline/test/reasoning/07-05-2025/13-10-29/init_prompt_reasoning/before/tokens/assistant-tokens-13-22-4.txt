@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	Ġand	Ġthen	Ġto	Ġthe	Ġbathroom	.	ĠSince	Ġthere	Ġis	Ġno	Ġfurther	Ġinformation	Ġabout	ĠJohn	's	Ġmovement	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠJohn	Ġis	Ġstill	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

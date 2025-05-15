@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	Ġin	Ġsentence	Ġ	1	,	Ġit	Ġimplies	Ġthat	ĠJohn	Ġwas	Ġin	Ġthe	Ġoffice	Ġinitially	.	ĠThen	,	Ġin	Ġsentence	Ġ	2	,	ĠJohn	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	ĠJohn	Ġis	Ġnow	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

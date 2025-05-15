@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-24	.	ĠBill	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
-25	.	ĠFred	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	?Ċ

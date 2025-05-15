@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġwho	Ġgave	Ġthe	Ġfootball	Ġto	ĠBill	.	ĠAccording	Ġto	Ġsentence	Ġ	15	,	ĠJeff	Ġpassed	Ġthe	Ġfootball	Ġto	ĠBill	,	Ġso	ĠJeff	Ġgave	Ġthe	Ġfootball	Ġto	ĠBill	.ĊĊ	Answer	:	ĠJeff	<|eot_id|>

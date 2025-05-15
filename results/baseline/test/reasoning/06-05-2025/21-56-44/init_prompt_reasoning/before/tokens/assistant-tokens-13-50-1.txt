@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġhallway	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

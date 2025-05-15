@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġkitchen	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJulie	's	Ġlocation	Ġas	Ġthe	Ġoffice	Ġyesterday	,	Ġbut	Ġnot	Ġher	Ġlocation	Ġbefore	Ġthe	Ġkitchen	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

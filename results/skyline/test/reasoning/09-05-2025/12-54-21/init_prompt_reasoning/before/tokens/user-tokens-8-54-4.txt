@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-22	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
-23	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠSandra	Ġcarrying	?Ċ

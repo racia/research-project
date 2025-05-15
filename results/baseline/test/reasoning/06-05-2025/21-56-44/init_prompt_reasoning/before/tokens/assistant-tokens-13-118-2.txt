@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġand	Ġthen	Ġthey	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġwith	ĠMary	,	Ġand	Ġsince	ĠMary	Ġis	Ġin	Ġthe	Ġoffice	,	ĠSandra	Ġis	Ġlikely	Ġin	Ġthe	Ġoffice	Ġas	Ġwell	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

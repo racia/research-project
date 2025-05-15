@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	10	,	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġleaving	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	's	Ġactions	,	Ġbut	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġwhereabouts	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-34	.	ĠBill	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
-35	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġapple	?Ċ

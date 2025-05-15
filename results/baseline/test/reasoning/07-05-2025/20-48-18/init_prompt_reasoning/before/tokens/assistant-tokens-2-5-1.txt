@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġtaken	Ġby	ĠMary	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġleft	Ġthere	.	ĠSince	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġapple	Ġis	Ġstill	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġis	Ġmentioned	Ġin	Ġone	Ġsentence	,	Ġand	Ġhis	Ġlocation	Ġis	Ġspecified	.	ĠHe	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġwith	ĠMary	Ġ(	sentence	Ġ	14	).	ĠSince	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġhim	Ġleaving	Ġthe	Ġhallway	,	Ġhis	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

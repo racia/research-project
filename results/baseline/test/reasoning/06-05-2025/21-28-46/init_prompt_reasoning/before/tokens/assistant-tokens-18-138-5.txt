@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠNone	Ġneeded	,	Ġas	Ġthe	Ġquestion	Ġdirectly	Ġasks	Ġif	Ġthe	Ġchocolate	Ġis	Ġbigger	Ġthan	Ġthe	Ġsuitcase	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġstate	Ġthat	Ġthe	Ġchocolate	Ġfits	Ġinside	Ġthe	Ġsuitcase	,	Ġimplying	Ġit	Ġis	Ġnot	Ġbigger	.ĊĊ	Answer	:	Ġno	<|eot_id|>

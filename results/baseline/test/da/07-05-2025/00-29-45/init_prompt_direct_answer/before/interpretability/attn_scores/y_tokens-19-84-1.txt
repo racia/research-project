@@ -1,8 +1,0 @@
-
-Answer
-:
-east
-,
-south
-,
-north

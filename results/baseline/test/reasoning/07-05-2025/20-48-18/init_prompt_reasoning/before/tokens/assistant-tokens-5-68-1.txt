@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġtook	Ġthe	Ġapple	Ġin	Ġthe	Ġgarden	,	Ġand	Ġthen	Ġpassed	Ġit	Ġto	ĠFred	Ġin	Ġthe	Ġhallway	.	ĠSince	ĠMary	Ġis	Ġthe	Ġone	Ġwho	Ġpicked	Ġup	Ġthe	Ġapple	Ġand	Ġpassed	Ġit	Ġto	ĠFred	,	Ġshe	Ġis	Ġthe	Ġone	Ġwho	Ġgave	Ġthe	Ġapple	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

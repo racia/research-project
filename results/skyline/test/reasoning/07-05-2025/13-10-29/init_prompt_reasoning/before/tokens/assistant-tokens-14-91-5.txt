@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	Ġ"	Bill	Ġwent	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	."	ĠThis	Ġimplies	Ġthat	ĠBill	Ġwas	Ġat	Ġthe	Ġcinema	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	.ĊĊ	Answer	:	Ġcinema	<|eot_id|>

@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-33	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-34	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
-35	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-36	.	ĠMary	Ġpassed	Ġthe	Ġapple	Ġto	ĠBill	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġapple	?Ċ

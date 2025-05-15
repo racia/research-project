@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġgarden	.	ĠSentence	Ġ	5	Ġonly	Ġmentions	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġgarden	,	Ġnot	ĠSandra	's	.ĊĊ	Answer	:	Ġno	<|eot_id|>

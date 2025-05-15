@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	's	Ġlocation	Ġis	Ġdetermined	Ġby	Ġthe	Ġcontext	Ġsentences	.	ĠShe	Ġhas	Ġnot	Ġbeen	Ġmentioned	Ġin	Ġthe	Ġcontext	Ġsentences	Ġ	13	Ġand	Ġ	14	,	Ġwhich	Ġonly	Ġmention	ĠJohn	Ġand	ĠDaniel	's	Ġmovements	.	ĠTherefore	,	Ġher	Ġcurrent	Ġlocation	Ġis	Ġnot	Ġspecified	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

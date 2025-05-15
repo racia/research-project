@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	14	Ġstates	Ġthat	Ġ"	John	Ġmoved	Ġto	Ġthe	Ġgarden	",	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

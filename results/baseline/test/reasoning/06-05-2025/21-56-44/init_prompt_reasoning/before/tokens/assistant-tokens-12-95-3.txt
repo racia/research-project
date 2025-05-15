@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠDaniel	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġhis	Ġlocation	Ġchanges	.	ĠIn	Ġsentence	Ġ	7	,	Ġhe	Ġis	Ġin	Ġthe	Ġbedroom	Ġwith	ĠJohn	.	ĠIn	Ġsentence	Ġ	8	,	Ġhe	Ġmoves	Ġto	Ġthe	Ġoffice	Ġwith	ĠMary	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

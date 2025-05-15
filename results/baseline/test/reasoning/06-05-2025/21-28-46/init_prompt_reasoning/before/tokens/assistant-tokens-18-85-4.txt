@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThis	Ġquestion	Ġhas	Ġalready	Ġbeen	Ġanswered	,	Ġand	Ġthe	Ġanswer	Ġis	Ġyes	,	Ġthe	Ġsuitcase	Ġis	Ġbigger	Ġthan	Ġthe	Ġchocolate	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

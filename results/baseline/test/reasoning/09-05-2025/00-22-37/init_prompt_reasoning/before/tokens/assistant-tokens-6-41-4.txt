@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġif	ĠSandra	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġand	Ġsentence	Ġ	13	Ġmentions	ĠMary	Ġtravelling	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġdoes	Ġnot	Ġmention	ĠSandra	.	ĠHowever	,	Ġsentence	Ġ	12	Ġmentions	ĠSandra	Ġtravelling	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠFred	Ġbeing	Ġin	Ġthe	Ġcinema	.	ĠThey	Ġonly	Ġmention	ĠFred	Ġmoving	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġnot	Ġgoing	Ġto	Ġthe	Ġcinema	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	Ġbeing	Ġin	Ġthe	Ġcinema	.ĊĊ	Answer	:	ĠNo	<|eot_id|>

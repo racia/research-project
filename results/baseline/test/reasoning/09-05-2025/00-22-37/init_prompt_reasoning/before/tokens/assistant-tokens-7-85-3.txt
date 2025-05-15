@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠSandra	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	,	Ġwhich	Ġmeans	ĠSandra	Ġwas	Ġcarrying	Ġthe	Ġapple	Ġbefore	Ġhanding	Ġit	Ġover	.	ĠHowever	,	Ġsentence	Ġ	12	Ġmentions	Ġthat	ĠMary	Ġgave	Ġthe	Ġapple	Ġback	Ġto	ĠSandra	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġnow	Ġcarrying	Ġthe	Ġapple	Ġagain	.ĊĊ	Answer	:	Ġone	<|eot_id|>

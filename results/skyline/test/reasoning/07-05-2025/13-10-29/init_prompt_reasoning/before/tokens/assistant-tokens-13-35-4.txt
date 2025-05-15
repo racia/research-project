@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġthe	Ġcontext	Ġsentences	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	10	)	Ġand	Ġthen	Ġthey	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	11	).	ĠSince	ĠJohn	Ġwas	Ġwith	ĠMary	Ġin	Ġboth	Ġlocations	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġsuggest	Ġthat	ĠSandra	Ġgrabbed	Ġthe	Ġmilk	Ġsomewhere	,	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	20	).	ĠSince	ĠSandra	Ġgrabbed	Ġthe	Ġmilk	Ġthere	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġmilk	Ġis	Ġwhere	ĠSandra	Ġgrabbed	Ġit	.ĊĊ	Answer	:	Ġthere	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġafter	Ġthat	Ġthey	Ġmoved	Ġto	Ġthe	Ġoffice	.	ĠSince	ĠDaniel	Ġis	Ġwith	ĠMary	,	Ġand	Ġthey	Ġare	Ġin	Ġthe	Ġoffice	,	Ġit	's	Ġlikely	Ġthat	ĠDaniel	Ġis	Ġalso	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠSandra	's	Ġpresence	Ġin	Ġthe	Ġbedroom	Ġand	Ġher	Ġjourney	Ġto	Ġthe	Ġkitchen	.	ĠHowever	,	Ġthere	Ġis	Ġno	Ġdirect	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġor	Ġpresence	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

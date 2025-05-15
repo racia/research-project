@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	ĠJulie	Ġjourney	ed	Ġto	Ġthe	Ġoffice	Ġyesterday	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	9	,	ĠJulie	Ġmoved	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	.	ĠThis	Ġimplies	Ġthat	ĠJulie	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

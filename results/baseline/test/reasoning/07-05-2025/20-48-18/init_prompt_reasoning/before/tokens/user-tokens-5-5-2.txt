@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-48	.	ĠMary	Ġpassed	Ġthe	Ġmilk	Ġto	ĠJeff	.Ċ
-49	.	ĠFred	Ġdropped	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġmilk	Ġto	ĠJeff	?Ċ

@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
-2	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
-3	.	ĠJohn	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
-4	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
-5	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
-6	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

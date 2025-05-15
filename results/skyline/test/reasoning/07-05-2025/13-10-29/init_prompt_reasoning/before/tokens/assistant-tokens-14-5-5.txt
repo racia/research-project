@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	11	Ġprovides	Ġthe	Ġnecessary	Ġinformation	.	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	13	,	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġthis	Ġevening	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġcinema	Ġbefore	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġcinema	<|eot_id|>

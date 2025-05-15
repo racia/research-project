@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-27	.	ĠSandra	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
-28	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-29	.	ĠJohn	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
-30	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
-31	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-32	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġwe	Ġknow	Ġfrom	Ġsentence	Ġ	10	Ġthat	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġoffice	Ġor	Ġthe	Ġpark	.	ĠHowever	,	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġkitchen	.	ĠTherefore	,	Ġwe	Ġcannot	Ġconclude	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	Ġ(	not	Ġmentioned	)	<|eot_id|>

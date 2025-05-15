@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠDaniel	Ġis	Ġin	Ġthe	Ġgarden	.Ċ
-2	.	ĠJohn	Ġis	Ġin	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠJohn	Ġin	Ġthe	Ġgarden	?Ċ

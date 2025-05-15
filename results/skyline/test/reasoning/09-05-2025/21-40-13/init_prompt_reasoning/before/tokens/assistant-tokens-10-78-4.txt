@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠBill	Ġbeing	Ġin	Ġthe	Ġcinema	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	11	Ġonly	Ġmentions	Ġtwo	Ġpossible	Ġlocations	Ġfor	ĠBill	:	Ġthe	Ġschool	Ġor	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

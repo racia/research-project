@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġcontext	Ġsentence	Ġ	12	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.	ĠSince	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	Ġ(	context	Ġsentence	Ġ	13	),	Ġit	Ġimplies	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

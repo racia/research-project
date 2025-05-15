@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġit	Ġis	Ġlogical	Ġto	Ġconclude	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġgarden	,	Ġsince	Ġthere	Ġis	Ġno	Ġindication	Ġthat	Ġshe	Ġleft	ĠJohn	's	Ġside	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

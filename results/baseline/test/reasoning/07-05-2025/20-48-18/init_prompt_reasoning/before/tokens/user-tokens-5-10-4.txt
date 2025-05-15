@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-36	.	ĠFred	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
-37	.	ĠBill	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
-38	.	ĠJeff	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
-39	.	ĠBill	Ġpassed	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠBill	Ġgive	Ġthe	Ġmilk	Ġto	?Ċ

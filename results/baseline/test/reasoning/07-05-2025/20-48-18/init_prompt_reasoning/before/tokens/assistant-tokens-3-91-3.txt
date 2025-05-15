@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġthe	Ġfootball	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠJohn	Ġmoving	Ġto	Ġthe	Ġhallway	Ġand	ĠSandra	Ġtravelling	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġdo	Ġnot	Ġmention	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

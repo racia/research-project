@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	4	,	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġleaving	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

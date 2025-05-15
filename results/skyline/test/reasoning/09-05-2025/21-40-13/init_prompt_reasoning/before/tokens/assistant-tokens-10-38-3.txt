@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJulie	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġ	7	Ġand	Ġ	8	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġis	Ġin	Ġcontext	Ġsentence	Ġ	4	,	Ġwhich	Ġstates	Ġthat	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġbedroom	Ġor	Ġthe	Ġkitchen	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

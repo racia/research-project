@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġdropped	Ġby	ĠJohn	,	Ġand	Ġthen	Ġhe	Ġgot	Ġit	Ġback	.	ĠAfter	Ġthat	,	Ġhe	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġand	Ġthen	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.	ĠSo	,	Ġthe	Ġapple	Ġwas	Ġwith	ĠJohn	Ġbefore	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

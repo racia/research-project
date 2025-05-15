@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠBill	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.	ĠSince	ĠBill	Ġwent	Ġto	Ġthe	Ġoffice	Ġyesterday	Ġ(	sentence	Ġ	3	),	Ġand	Ġhe	Ġjourney	ed	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	Ġ(	sentence	Ġ	4	),	Ġit	Ġis	Ġlogical	Ġto	Ġassume	Ġthat	ĠBill	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-16	.	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
-17	.	ĠBill	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
-18	.	ĠJeff	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
-19	.	ĠBill	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġfootball	?Ċ

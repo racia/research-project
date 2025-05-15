@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠSandra	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	Ġand	Ġafterwards	Ġthey	Ġwent	Ġto	Ġthe	Ġkitchen	.	ĠTherefore	,	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

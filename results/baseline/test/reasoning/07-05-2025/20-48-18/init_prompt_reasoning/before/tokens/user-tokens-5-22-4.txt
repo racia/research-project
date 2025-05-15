@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-10	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-11	.	ĠJeff	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
-12	.	ĠBill	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
-13	.	ĠBill	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠBill	Ġgive	Ġto	ĠMary	?Ċ

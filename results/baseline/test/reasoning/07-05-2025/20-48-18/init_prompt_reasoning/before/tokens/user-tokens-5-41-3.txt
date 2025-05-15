@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-15	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
-16	.	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠJeff	Ġgive	Ġto	ĠBill	?Ċ

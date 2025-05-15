@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	5	),	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġleft	Ġthe	Ġbedroom	.	ĠSince	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	7	),	Ġit	's	Ġpossible	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

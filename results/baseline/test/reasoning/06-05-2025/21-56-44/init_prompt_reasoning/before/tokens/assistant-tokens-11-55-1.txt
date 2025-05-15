@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġbathroom	,	Ġso	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

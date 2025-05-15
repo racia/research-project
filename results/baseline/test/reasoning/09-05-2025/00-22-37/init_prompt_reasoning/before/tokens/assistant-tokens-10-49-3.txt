@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	,	Ġand	Ġwe	Ġhave	Ġone	Ġsentence	Ġthat	Ġprovides	Ġinformation	Ġabout	Ġher	Ġlocation	.	ĠSentence	Ġ	7	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġwhich	Ġsuggests	Ġthat	Ġshe	Ġis	Ġcurrently	Ġlocated	Ġthere	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġkitchen	Ġor	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġkitchen	,	Ġso	Ġit	Ġis	Ġpossible	Ġthat	Ġshe	Ġis	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

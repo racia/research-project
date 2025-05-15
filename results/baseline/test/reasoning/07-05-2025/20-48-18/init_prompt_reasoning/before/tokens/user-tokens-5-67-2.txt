@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-6	.	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
-7	.	ĠFred	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠFred	Ġgive	Ġto	ĠMary	?Ċ

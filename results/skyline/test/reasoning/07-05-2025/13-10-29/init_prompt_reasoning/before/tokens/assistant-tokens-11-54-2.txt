@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġwas	Ġthat	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	2	).	ĠThere	Ġis	Ġno	Ġupdate	Ġabout	Ġher	Ġmovement	Ġafter	Ġthat	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

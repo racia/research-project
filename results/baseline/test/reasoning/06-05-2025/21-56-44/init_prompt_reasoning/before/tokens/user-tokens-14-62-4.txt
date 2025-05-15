@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-10	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.Ċ
-11	.	ĠThis	Ġmorning	ĠFred	Ġwent	Ġto	Ġthe	Ġpark	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠMary	Ġbefore	Ġthe	Ġoffice	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠDaniel	Ġgoing	Ġto	Ġthe	Ġkitchen	Ġor	Ġbeing	Ġin	Ġthe	Ġkitchen	.	ĠThe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġthat	ĠMary	Ġtook	Ġthe	Ġapple	Ġ(	location	Ġnot	Ġspecified	)	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġconnection	Ġbetween	ĠDaniel	Ġand	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

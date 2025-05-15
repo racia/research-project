@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġyesterday	,	Ġit	Ġimplies	Ġthat	Ġhe	Ġwas	Ġat	Ġthe	Ġoffice	Ġthe	Ġday	Ġbefore	Ġyesterday	.	ĠTherefore	,	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	,	ĠBill	Ġwas	Ġat	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

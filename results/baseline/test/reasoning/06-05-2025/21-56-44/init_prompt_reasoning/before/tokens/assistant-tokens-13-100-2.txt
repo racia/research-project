@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġimplies	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

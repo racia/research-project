@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	28	,	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠJeff	,	Ġso	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠJeff	.ĊĊ	Answer	:	ĠApple	<|eot_id|>

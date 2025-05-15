@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġchanges	.	ĠInitially	,	Ġshe	Ġis	Ġin	Ġthe	Ġbedroom	Ġwith	ĠJohn	.	ĠThen	,	Ġshe	Ġmoves	Ġto	Ġthe	Ġbathroom	Ġwith	ĠDaniel	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

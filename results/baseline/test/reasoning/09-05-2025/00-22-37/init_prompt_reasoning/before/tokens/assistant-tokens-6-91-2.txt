@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġthat	Ġsuggests	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġgoing	Ġto	Ġthe	Ġbathroom	Ġand	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġno	Ġmention	Ġof	ĠSandra	Ġbeing	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

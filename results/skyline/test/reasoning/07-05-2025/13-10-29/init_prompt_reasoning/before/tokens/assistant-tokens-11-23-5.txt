@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdescribe	ĠSandra	's	Ġmovements	.	ĠShe	Ġwent	Ġto	Ġthe	Ġgarden	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.	ĠTherefore	,	Ġher	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

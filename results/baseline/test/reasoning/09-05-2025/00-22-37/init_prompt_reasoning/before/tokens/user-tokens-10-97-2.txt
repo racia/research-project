@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-4	.	ĠJulie	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-5	.	ĠBill	Ġis	Ġeither	Ġin	Ġthe	Ġpark	Ġor	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠJulie	Ġin	Ġthe	Ġpark	?Ċ

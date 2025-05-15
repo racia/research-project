@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	4	,	Ġ"	Mary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	",	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġand	Ġis	Ġlikely	Ġto	Ġbe	Ġthere	Ġnow	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

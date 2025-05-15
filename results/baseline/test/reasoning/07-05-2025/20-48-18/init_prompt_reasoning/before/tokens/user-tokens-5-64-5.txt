@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-31	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
-32	.	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠMary	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġis	Ġmentioned	Ġin	Ġsentences	Ġ	8	,	Ġ	10	,	Ġ	13	,	Ġand	Ġ	17	.	ĠIn	Ġsentence	Ġ	17	,	Ġit	Ġis	Ġmentioned	Ġthat	ĠSandra	Ġ"	got	Ġthe	Ġfootball	Ġthere	",	Ġimplying	Ġthat	ĠSandra	Ġis	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

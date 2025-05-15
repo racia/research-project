@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-14	.	ĠJohn	Ġtook	Ġthe	Ġmilk	.Ċ
-15	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-16	.	ĠDaniel	Ġdiscarded	Ġthe	Ġfootball	.Ċ
-17	.	ĠJohn	Ġdropped	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġoffice	?Ċ

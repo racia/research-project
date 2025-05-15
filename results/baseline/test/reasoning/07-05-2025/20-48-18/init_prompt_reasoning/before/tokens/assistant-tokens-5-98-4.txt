@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	Ġthe	Ġapple	Ġbeing	Ġgiven	Ġto	ĠMary	.	ĠSentence	Ġ	10	Ġmentioned	ĠBill	Ġhanding	Ġthe	Ġapple	Ġto	ĠMary	,	Ġbut	Ġthe	Ġcurrent	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	Ġthe	Ġapple	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

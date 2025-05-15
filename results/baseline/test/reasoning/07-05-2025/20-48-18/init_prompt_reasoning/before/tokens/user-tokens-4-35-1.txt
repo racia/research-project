@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠThe	Ġhallway	Ġis	Ġsouth	Ġof	Ġthe	Ġkitchen	.Ċ
-2	.	ĠThe	Ġbedroom	Ġis	Ġnorth	Ġof	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	Ġthe	Ġkitchen	Ġsouth	Ġof	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	15	,	Ġit	Ġis	Ġmentioned	Ġthat	ĠSandra	Ġhanded	Ġthe	Ġfootball	Ġto	ĠJohn	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġfootball	.	ĠShe	Ġhas	Ġgiven	Ġit	Ġto	ĠJohn	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-22	.	ĠFred	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
-23	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	13	Ġstates	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	,	Ġproviding	Ġdirect	Ġinformation	Ġabout	ĠMary	's	Ġlocation	,	Ġwhich	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

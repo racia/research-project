@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
-14	.	ĠFred	Ġis	Ġeither	Ġin	Ġthe	Ġcinema	Ġor	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠFred	Ġin	Ġthe	Ġcinema	?Ċ

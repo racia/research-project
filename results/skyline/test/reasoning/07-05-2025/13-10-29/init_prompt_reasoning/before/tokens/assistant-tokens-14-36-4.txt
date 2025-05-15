@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġbedroom	.	ĠSentence	Ġ	2	Ġmentioned	Ġthat	ĠJulie	Ġwent	Ġto	Ġthe	Ġkitchen	Ġyesterday	,	Ġbut	Ġit	Ġdoesn	't	Ġprovide	Ġinformation	Ġabout	Ġthis	Ġmorning	,	Ġbefore	Ġgoing	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

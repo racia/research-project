@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	13	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthere	Ġis	Ġno	Ġsubsequent	Ġmention	Ġof	Ġher	Ġleaving	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

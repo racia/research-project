@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġcarrying	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġgetting	Ġthe	Ġfootball	,	Ġbut	Ġnot	Ġany	Ġobject	Ġbeing	Ġcarried	Ġbefore	Ġthat	.	ĠSince	ĠMary	Ġgot	Ġthe	Ġfootball	,	Ġit	Ġimplies	Ġshe	Ġis	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġone	<|eot_id|>

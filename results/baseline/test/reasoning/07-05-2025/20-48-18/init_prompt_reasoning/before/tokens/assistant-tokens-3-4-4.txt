@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġthe	Ġmilk	Ġin	Ġthese	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġbathroom	Ġand	Ġjourney	ing	Ġto	Ġthe	Ġgarden	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġmilk	Ġor	Ġits	Ġlocation	Ġbefore	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

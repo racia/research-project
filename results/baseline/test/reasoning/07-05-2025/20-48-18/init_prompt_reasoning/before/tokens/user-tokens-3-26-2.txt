@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-22	.	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	.Ċ
-23	.	ĠDaniel	Ġdropped	Ġthe	Ġapple	Ġthere	.Ċ
-24	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
-25	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-26	.	ĠMary	Ġdropped	Ġthe	Ġmilk	Ġthere	.Ċ
-27	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġgarden	?Ċ

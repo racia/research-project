@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġbathroom	,	Ġsince	Ġshe	Ġwent	Ġthere	Ġafter	Ġtravelling	Ġto	Ġthe	Ġhallway	.	ĠThere	Ġis	Ġno	Ġinformation	Ġsuggesting	Ġshe	Ġmoved	Ġto	Ġa	Ġdifferent	Ġlocation	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

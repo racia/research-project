@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġshows	Ġthat	ĠMary	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġit	Ġdoesn	't	Ġmention	ĠJohn	.	ĠSentence	Ġ	11	Ġreveals	Ġthat	ĠSandra	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	Ġwith	ĠSandra	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

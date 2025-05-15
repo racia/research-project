@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠSandra	Ġat	Ġall	.	ĠThey	Ġonly	Ġtalk	Ġabout	ĠMary	Ġtravelling	Ġto	Ġthe	Ġgarden	Ġand	ĠDaniel	Ġmoving	Ġto	Ġthe	Ġbedroom	.	ĠSince	ĠSandra	Ġis	Ġnot	Ġmentioned	,	Ġwe	Ġcannot	Ġdetermine	Ġher	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

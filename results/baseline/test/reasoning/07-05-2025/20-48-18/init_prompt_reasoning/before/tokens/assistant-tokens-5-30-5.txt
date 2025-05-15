@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġtaken	Ġby	ĠMary	,	Ġthen	Ġleft	Ġby	ĠMary	,	Ġthen	Ġtaken	Ġby	ĠFred	,	Ġthen	Ġgiven	Ġto	ĠMary	,	Ġand	Ġfinally	Ġhanded	Ġback	Ġto	ĠFred	.	ĠTherefore	,	ĠFred	Ġreceived	Ġthe	Ġfootball	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

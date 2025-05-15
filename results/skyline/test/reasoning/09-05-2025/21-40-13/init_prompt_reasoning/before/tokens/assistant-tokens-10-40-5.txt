@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	14	Ġexplicitly	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

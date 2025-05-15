@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġsuggest	Ġthat	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġto	ĠFred	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġanyone	Ġelse	Ġreceiving	Ġthe	Ġfootball	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

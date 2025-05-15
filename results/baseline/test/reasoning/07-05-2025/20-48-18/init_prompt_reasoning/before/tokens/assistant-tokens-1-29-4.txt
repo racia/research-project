@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠDaniel	Ġand	ĠMary	's	Ġlocations	,	Ġbut	Ġnot	Ġabout	ĠSandra	.	ĠSince	ĠSandra	's	Ġlocation	Ġis	Ġnot	Ġmentioned	,	Ġwe	Ġcan	't	Ġinfer	Ġher	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

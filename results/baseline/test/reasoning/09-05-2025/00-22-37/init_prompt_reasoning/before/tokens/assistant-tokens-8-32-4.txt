@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġcarrying	Ġanything	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentence	Ġ"	Mary	Ġtook	Ġthe	Ġmilk	Ġthere	"	Ġimplies	Ġthat	ĠMary	Ġtook	Ġthe	Ġmilk	Ġto	Ġa	Ġlocation	,	Ġbut	Ġit	Ġdoesn	't	Ġspecify	Ġwhat	Ġshe	's	Ġcarrying	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

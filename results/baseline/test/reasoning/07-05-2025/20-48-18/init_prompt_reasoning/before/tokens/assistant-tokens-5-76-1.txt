@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBill	Ġpassed	Ġthe	Ġapple	Ġto	ĠFred	,	Ġwhich	Ġmeans	ĠFred	Ġreceived	Ġthe	Ġapple	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġbeing	Ġin	Ġthe	Ġgarden	.	ĠSentence	Ġ	7	Ġmentions	ĠDaniel	Ġmoving	Ġto	Ġthe	Ġbedroom	,	Ġand	ĠSentence	Ġ	8	Ġmentions	ĠDaniel	Ġgoing	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġbeing	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġno	<|eot_id|>

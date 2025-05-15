@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-6	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	.Ċ
-7	.	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġyesterday	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠFred	Ġbefore	Ġthe	Ġbedroom	?Ċ

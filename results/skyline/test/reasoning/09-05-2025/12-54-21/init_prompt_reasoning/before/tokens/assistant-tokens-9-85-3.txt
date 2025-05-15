@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġgoing	Ġto	Ġthe	Ġbathroom	Ġand	ĠDaniel	Ġjourney	ing	Ġto	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġbeing	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

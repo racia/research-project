@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġif	ĠJohn	Ġis	Ġin	Ġthe	Ġbedroom	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġtravel	Ġto	Ġthe	Ġbedroom	Ġand	ĠDaniel	's	Ġaction	Ġof	Ġgetting	Ġthe	Ġfootball	Ġthere	.	ĠSince	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

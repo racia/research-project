@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġtravel	Ġto	Ġthe	Ġkitchen	Ġand	ĠSandra	's	Ġabsence	Ġfrom	Ġthe	Ġbedroom	.	ĠSince	ĠJohn	's	Ġlocation	Ġis	Ġnot	Ġmentioned	,	Ġwe	Ġcannot	Ġdetermine	Ġwhether	Ġhe	Ġis	Ġin	Ġthe	Ġgarden	Ġor	Ġnot	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

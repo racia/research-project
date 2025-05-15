@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠMary	Ġis	Ġin	Ġthe	Ġbathroom	,	Ġbut	Ġthen	Ġsentence	Ġ	14	Ġstates	Ġthat	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

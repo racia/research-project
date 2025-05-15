@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġto	ĠBill	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgiving	Ġanything	Ġelse	Ġto	ĠBill	.	ĠTherefore	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠBill	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

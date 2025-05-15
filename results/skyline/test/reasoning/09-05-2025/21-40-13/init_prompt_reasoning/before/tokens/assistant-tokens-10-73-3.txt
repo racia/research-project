@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	8	Ġexplicitly	Ġstates	Ġthat	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġmeans	ĠJulie	Ġis	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

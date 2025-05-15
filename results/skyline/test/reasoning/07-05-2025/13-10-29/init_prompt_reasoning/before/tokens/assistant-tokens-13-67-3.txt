@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ(	7	Ġand	Ġ	8	)	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠMary	Ġwas	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	5	).ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

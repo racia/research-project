@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġcinema	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġtravelling	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	10	)	Ġand	Ġthen	Ġmoving	Ġto	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	11	),	Ġbut	Ġdo	Ġnot	Ġmention	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġno	<|eot_id|>

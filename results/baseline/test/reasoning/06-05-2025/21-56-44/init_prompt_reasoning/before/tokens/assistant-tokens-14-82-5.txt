@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġschool	,	Ġas	Ġthe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġlocation	Ġat	Ġthe	Ġpark	Ġyesterday	Ġand	ĠJulie	's	Ġlocation	Ġat	Ġthe	Ġschool	Ġthis	Ġevening	.	ĠWe	Ġcannot	Ġinfer	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġschool	Ġfrom	Ġthe	Ġgiven	Ġinformation	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

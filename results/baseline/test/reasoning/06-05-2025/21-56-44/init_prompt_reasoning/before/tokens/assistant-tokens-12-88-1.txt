@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	.	ĠSince	ĠSandra	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	Ġin	Ġsentence	Ġ	2	,	Ġit	Ġis	Ġlogical	Ġto	Ġinfer	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

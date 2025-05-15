@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-34	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-35	.	ĠDaniel	Ġdropped	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġhallway	?Ċ

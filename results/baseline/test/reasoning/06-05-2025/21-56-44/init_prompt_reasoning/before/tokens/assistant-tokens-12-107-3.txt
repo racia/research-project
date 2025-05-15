@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġtwo	Ġsentences	.	ĠIn	Ġsentence	Ġ	7	,	Ġshe	Ġis	Ġgoing	Ġto	Ġthe	Ġbathroom	Ġwith	ĠDaniel	.	ĠIn	Ġsentence	Ġ	8	,	Ġshe	Ġis	Ġtravelling	Ġto	Ġthe	Ġkitchen	Ġwith	ĠJohn	.	ĠSince	Ġshe	Ġis	Ġtravelling	Ġto	Ġthe	Ġkitchen	,	Ġit	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġthere	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

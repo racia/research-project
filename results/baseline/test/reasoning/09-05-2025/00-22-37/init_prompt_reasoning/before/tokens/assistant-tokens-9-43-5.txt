@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	.	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠJohn	Ġis	Ġin	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġis	Ġindeed	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

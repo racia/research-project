@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġmentions	ĠMary	Ġand	ĠJohn	Ġmoving	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġmention	ĠDaniel	's	Ġlocation	.	ĠSentence	Ġ	8	Ġmentions	ĠDaniel	Ġand	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

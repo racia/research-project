@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-11	.	ĠThis	Ġafternoon	ĠJulie	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
-12	.	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġthis	Ġevening	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠFred	Ġbefore	Ġthe	Ġschool	?Ċ

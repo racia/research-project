@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-44	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
-45	.	ĠBill	Ġdiscarded	Ġthe	Ġapple	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠJeff	Ġgive	Ġto	ĠMary	?Ċ

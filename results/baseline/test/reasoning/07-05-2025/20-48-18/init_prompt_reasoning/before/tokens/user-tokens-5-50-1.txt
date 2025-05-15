@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
-2	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
-3	.	ĠJeff	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
-4	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
-5	.	ĠMary	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
-6	.	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠJeff	Ġgive	Ġto	ĠMary	?Ċ

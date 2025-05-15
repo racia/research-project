@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJulie	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠBill	Ġand	ĠFred	's	Ġlocations	,	Ġbut	Ġnot	ĠJulie	's	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

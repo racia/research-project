@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-14	.	ĠJohn	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġgarden	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠJohn	Ġin	Ġthe	Ġgarden	?Ċ

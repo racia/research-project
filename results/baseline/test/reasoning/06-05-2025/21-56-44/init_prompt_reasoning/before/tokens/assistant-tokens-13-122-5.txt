@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġthey	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġlogical	Ġto	Ġconclude	Ġthat	ĠJohn	Ġis	Ġnow	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

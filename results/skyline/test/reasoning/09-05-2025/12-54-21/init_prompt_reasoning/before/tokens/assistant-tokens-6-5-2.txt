@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	2	Ġmentioned	ĠMary	Ġtravelling	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġupdate	Ġabout	Ġher	Ġmoving	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġunknown	<|eot_id|>

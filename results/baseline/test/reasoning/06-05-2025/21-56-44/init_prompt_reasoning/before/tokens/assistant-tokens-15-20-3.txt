@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJessica	Ġis	Ġa	Ġsheep	Ġ(	not	Ġmentioned	Ġin	Ġthe	Ġcontext	Ġsentences	,	Ġbut	Ġimplied	Ġsince	Ġsheep	Ġare	Ġmentioned	Ġin	Ġsentence	Ġ	3	Ġand	ĠJessica	Ġis	Ġnot	Ġmentioned	Ġas	Ġa	Ġwolf	,	Ġmouse	,	Ġor	Ġcat	),	Ġand	Ġsheep	Ġare	Ġafraid	Ġof	Ġcats	Ġ(	sentence	Ġ	1	),	ĠJessica	Ġis	Ġlikely	Ġafraid	Ġof	Ġcats	.ĊĊ	Answer	:	Ġcats	<|eot_id|>

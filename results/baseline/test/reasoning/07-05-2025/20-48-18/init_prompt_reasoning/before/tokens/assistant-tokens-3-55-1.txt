@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġlast	Ġmentioned	Ġin	Ġsentence	Ġ	21	,	Ġwhere	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	Ġin	Ġthe	Ġkitchen	.	ĠBefore	Ġthat	,	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	Ġin	Ġthe	Ġhallway	Ġ(	sentence	Ġ	11	).	ĠTherefore	,	Ġthe	Ġfootball	Ġwas	Ġin	Ġthe	Ġhallway	Ġbefore	Ġit	Ġwas	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġshe	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġwith	ĠMary	.	ĠSince	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	,	Ġit	's	Ġlikely	Ġthat	ĠSandra	Ġis	Ġstill	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

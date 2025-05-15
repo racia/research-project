@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠFred	Ġbeing	Ġin	Ġthe	Ġcinema	.	ĠSent	ences	Ġ	10	Ġand	Ġ	11	Ġare	Ġabout	ĠMary	's	Ġlocation	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠFred	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

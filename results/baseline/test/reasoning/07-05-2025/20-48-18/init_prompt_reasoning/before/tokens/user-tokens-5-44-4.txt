@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-56	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-57	.	ĠFred	Ġpassed	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠFred	Ġgive	Ġthe	Ġmilk	Ġto	?Ċ

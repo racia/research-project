@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	,	Ġdropped	Ġthe	Ġfootball	,	Ġand	Ġthen	Ġgave	Ġthe	Ġfootball	Ġto	ĠBill	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠFred	Ġgiving	Ġthe	Ġfootball	Ġto	ĠBill	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

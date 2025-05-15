@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġare	Ġabout	ĠSandra	,	Ġbut	Ġthe	Ġquestion	Ġasks	Ġabout	ĠMary	.	ĠWe	Ġneed	Ġto	Ġrefer	Ġto	Ġthe	Ġprevious	Ġcontext	Ġsentences	Ġabout	ĠMary	.	ĠAccording	Ġto	Ġthe	Ġprevious	Ġcontext	Ġsentences	,	ĠMary	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

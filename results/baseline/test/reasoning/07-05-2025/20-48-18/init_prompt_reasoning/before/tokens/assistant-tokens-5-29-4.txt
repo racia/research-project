@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	16	,	ĠJeff	Ġpassed	Ġthe	Ġfootball	Ġto	ĠMary	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġanyone	Ġelse	Ġgiving	Ġthe	Ġfootball	.ĊĊ	Answer	:	ĠJeff	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġpicked	Ġup	Ġby	ĠSandra	Ġ(	sentence	Ġ	52	),	Ġand	Ġthen	Ġdiscarded	Ġby	ĠSandra	Ġ(	sentence	Ġ	54	).	ĠBefore	Ġthe	Ġhallway	,	Ġthe	Ġfootball	Ġwas	Ġdiscarded	Ġby	ĠSandra	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

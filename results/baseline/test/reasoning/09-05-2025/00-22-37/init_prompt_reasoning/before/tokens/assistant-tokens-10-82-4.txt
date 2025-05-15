@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġwe	Ġare	Ġgiven	Ġinformation	Ġabout	ĠMary	's	Ġmovement	Ġto	Ġthe	Ġcinema	Ġ(	sentence	Ġ	10	).	ĠAdditionally	,	Ġsentence	Ġ	10	Ġstates	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġcinema	,	Ġwhich	Ġdirectly	Ġanswers	Ġthe	Ġquestion	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

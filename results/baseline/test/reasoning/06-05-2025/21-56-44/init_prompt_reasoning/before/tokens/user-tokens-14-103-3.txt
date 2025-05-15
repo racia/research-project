@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-9	.	ĠThis	Ġmorning	ĠFred	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-10	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠFred	Ġbefore	Ġthe	Ġkitchen	?Ċ

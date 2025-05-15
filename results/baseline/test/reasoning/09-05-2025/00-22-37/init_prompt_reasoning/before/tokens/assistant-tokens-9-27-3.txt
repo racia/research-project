@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġwe	Ġknow	Ġfrom	Ġsentence	Ġ	7	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġhas	Ġmoved	Ġto	Ġthe	Ġgarden	.	ĠSentence	Ġ	8	Ġonly	Ġmentions	ĠSandra	's	Ġmovement	Ġback	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġdoes	Ġnot	Ġaffect	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

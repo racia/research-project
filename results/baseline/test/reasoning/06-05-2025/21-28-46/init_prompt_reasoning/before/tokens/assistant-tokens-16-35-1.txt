@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBern	hard	Ġis	Ġa	Ġlion	,	Ġand	ĠJulius	,	Ġwho	Ġis	Ġalso	Ġa	Ġlion	,	Ġis	Ġwhite	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠBern	hard	's	Ġcolor	,	Ġbut	Ġsince	ĠJulius	,	Ġa	Ġlion	,	Ġis	Ġwhite	,	Ġit	's	Ġlikely	Ġthat	ĠBern	hard	,	Ġalso	Ġa	Ġlion	,	Ġis	Ġwhite	.ĊĊ	Answer	:	Ġwhite	<|eot_id|>

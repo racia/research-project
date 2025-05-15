@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	32	,	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

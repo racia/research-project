@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-9	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
-10	.	ĠJohn	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠJohn	Ġcarrying	?Ċ

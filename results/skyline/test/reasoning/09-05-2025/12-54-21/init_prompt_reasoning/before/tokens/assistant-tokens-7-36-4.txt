@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	14	,	ĠJohn	Ġdropped	Ġthe	Ġfootball	,	Ġwhich	Ġmeans	ĠJohn	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġfootball	.	ĠHowever	,	ĠJohn	Ġwas	Ġstill	Ġcarrying	Ġthe	Ġmilk	Ġ(	as	Ġestablished	Ġin	Ġsentence	Ġ	9	).	ĠĊĊ	Answer	:	Ġone	<|eot_id|>

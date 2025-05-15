@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-9	.	ĠMary	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
-10	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
-11	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-12	.	ĠSandra	Ġdropped	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

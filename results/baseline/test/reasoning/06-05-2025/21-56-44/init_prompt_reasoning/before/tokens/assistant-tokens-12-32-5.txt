@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	Ġin	Ġsentence	Ġ	13	,	Ġand	ĠMary	Ġand	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġhallway	Ġin	Ġsentence	Ġ	14	,	Ġit	Ġimplies	Ġthat	ĠSandra	's	Ġlocation	Ġchanged	Ġfrom	Ġthe	Ġgarden	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

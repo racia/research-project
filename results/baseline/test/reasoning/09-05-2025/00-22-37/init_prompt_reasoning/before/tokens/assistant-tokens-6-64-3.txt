@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġat	Ġall	.	ĠSentence	Ġ	7	Ġmentions	ĠDaniel	Ġjourney	ing	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġsentence	Ġ	8	Ġmentions	ĠSandra	Ġpicking	Ġup	Ġthe	Ġfootball	Ġthere	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠFred	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	13	Ġtalks	Ġabout	ĠMary	,	Ġand	Ġsentence	Ġ	14	Ġtalks	Ġabout	ĠBill	,	Ġbut	Ġneither	Ġmentions	ĠFred	Ġor	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

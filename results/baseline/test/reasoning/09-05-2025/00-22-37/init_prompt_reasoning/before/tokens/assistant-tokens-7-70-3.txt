@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġdropping	Ġthe	Ġfootball	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġwas	Ġpreviously	Ġholding	Ġor	Ġcarrying	Ġthe	Ġfootball	.	ĠHowever	,	Ġsince	Ġshe	Ġdropped	Ġit	,	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

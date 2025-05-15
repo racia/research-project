@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġkitchen	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	,	Ġas	Ġthey	Ġmoved	Ġthere	Ġafter	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
-2	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-3	.	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
-4	.	ĠJohn	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
-5	.	ĠSandra	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
-6	.	ĠSandra	Ġleft	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

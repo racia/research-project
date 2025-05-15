@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
-2	.	ĠFred	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
-3	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-4	.	ĠFred	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠFred	Ġgive	Ġto	ĠMary	?Ċ

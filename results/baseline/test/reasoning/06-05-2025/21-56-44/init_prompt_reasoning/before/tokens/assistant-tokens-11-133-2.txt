@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.	ĠThis	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

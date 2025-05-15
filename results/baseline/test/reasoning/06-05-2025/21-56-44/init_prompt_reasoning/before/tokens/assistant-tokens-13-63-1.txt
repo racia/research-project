@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	Ġand	Ġthen	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġimplies	Ġthat	ĠMary	Ġis	Ġwith	ĠJohn	Ġin	Ġthe	Ġbedroom	.Ċ	Answer	:	Ġbedroom	<|eot_id|>

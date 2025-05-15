@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-9	.	ĠBill	Ġleft	Ġthe	Ġfootball	.Ċ
-10	.	ĠFred	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
-11	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-12	.	ĠFred	Ġpassed	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġfootball	?Ċ

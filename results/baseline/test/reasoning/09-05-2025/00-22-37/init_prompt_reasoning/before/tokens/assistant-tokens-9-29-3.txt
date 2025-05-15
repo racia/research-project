@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġsentence	Ġ"	John	Ġwent	Ġto	Ġthe	Ġhallway	"	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

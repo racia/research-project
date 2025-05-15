@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġmoving	Ġto	Ġthe	Ġgarden	Ġand	Ġthen	Ġgoing	Ġto	Ġthe	Ġhallway	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	Ġwhere	Ġthe	Ġapple	Ġwas	Ġbefore	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

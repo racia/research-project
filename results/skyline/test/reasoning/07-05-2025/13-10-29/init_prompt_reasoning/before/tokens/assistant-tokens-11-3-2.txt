@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠSandra	Ġfirst	Ġwent	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.	ĠTherefore	,	Ġher	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

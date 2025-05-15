@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJulie	's	Ġlocation	,	Ġbut	Ġnone	Ġof	Ġthe	Ġgiven	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġpossible	Ġlocations	Ġand	ĠBill	's	Ġtravel	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

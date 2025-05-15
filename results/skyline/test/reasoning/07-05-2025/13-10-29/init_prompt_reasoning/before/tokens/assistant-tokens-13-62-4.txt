@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġoffice	Ġand	Ġafterwards	Ġthey	Ġmoved	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠDaniel	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

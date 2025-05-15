@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-125	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-126	.	ĠMary	Ġtook	Ġthe	Ġfootball	.Ċ
-127	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
-128	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġbedroom	?Ċ

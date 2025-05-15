@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġbathroom	.Ċ	Answer	:	Ġbathroom	<|eot_id|>

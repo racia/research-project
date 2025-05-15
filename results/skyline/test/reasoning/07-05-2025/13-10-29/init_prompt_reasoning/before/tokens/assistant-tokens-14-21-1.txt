@@ -1,1 +1,0 @@
-<|start_header_id|>	<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	Ġ"	Yesterday	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	."	ĠSince	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	Ġ(	sentence	Ġ	2	),	Ġshe	Ġmust	Ġhave	Ġbeen	Ġin	Ġthe	Ġoffice	Ġbefore	Ġmoving	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

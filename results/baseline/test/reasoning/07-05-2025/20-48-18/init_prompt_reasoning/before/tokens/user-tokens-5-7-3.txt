@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-15	.	ĠMary	Ġdropped	Ġthe	Ġmilk	.Ċ
-16	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	?Ċ

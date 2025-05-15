@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġpark	Ġor	Ġthe	Ġcinema	.	ĠSince	ĠMary	Ġwent	Ġto	Ġthe	Ġschool	Ġ(	sentence	Ġ	10	),	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġschool	.	ĠTherefore	,	ĠMary	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġeither	Ġthe	Ġpark	Ġor	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

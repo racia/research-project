@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-12	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-13	.	ĠJohn	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
-14	.	ĠJohn	Ġdiscarded	Ġthe	Ġmilk	.Ċ
-15	.	ĠMary	Ġdiscarded	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġfootball	?Ċ

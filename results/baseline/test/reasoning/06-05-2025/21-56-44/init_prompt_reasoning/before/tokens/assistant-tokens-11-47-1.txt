@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	's	Ġjourney	Ġto	Ġthe	Ġgarden	Ġis	Ġfollowed	Ġby	Ġher	Ġgoing	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġlocated	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

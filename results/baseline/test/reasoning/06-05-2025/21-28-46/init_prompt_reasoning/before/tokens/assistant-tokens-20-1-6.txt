@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠAntoine	Ġgrabbed	Ġthe	Ġfootball	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġgot	Ġit	Ġbecause	Ġhe	Ġwas	Ġbored	,	Ġas	Ġmentioned	Ġin	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġ(	3	.	ĠAntoine	Ġis	Ġbored	).	ĠGrab	bing	Ġthe	Ġfootball	Ġcould	Ġbe	Ġa	Ġway	Ġfor	ĠAntoine	Ġto	Ġentertain	Ġhimself	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

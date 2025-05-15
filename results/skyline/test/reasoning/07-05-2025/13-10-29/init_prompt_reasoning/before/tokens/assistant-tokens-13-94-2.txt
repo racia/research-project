@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠDaniel	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġafterwards	Ġthey	Ġwent	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

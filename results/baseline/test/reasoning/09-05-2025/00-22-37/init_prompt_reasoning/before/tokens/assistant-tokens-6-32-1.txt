@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġhallway	,	Ġthere	Ġis	Ġno	Ġdirect	Ġinformation	Ġabout	Ġhim	Ġentering	Ġthe	Ġbedroom	.	ĠWe	Ġcan	't	Ġconclude	Ġthat	Ġhe	Ġis	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

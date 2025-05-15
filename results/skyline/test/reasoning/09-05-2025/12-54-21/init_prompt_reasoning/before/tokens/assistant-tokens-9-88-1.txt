@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbathroom	Ġand	Ġthe	Ġgarden	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

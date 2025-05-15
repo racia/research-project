@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġhallway	Ġis	Ġeast	Ġof	Ġthe	Ġgarden	,	Ġand	Ġthe	Ġoffice	Ġis	Ġeast	Ġof	Ġthe	Ġhallway	.	ĠTherefore	,	Ġthe	Ġoffice	Ġis	Ġalso	Ġeast	Ġof	Ġthe	Ġgarden	.	ĠSince	Ġthe	Ġhallway	Ġis	Ġeast	Ġof	Ġthe	Ġgarden	,	Ġthe	Ġoffice	Ġmust	Ġbe	Ġeast	Ġof	Ġthe	Ġhallway	Ġas	Ġwell	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-33	.	ĠBill	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
-34	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġmilk	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġbeing	Ġin	Ġthe	Ġkitchen	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠFred	Ġbeing	Ġin	Ġthe	Ġbedroom	Ġand	ĠJulie	Ġgoing	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġnot	ĠMary	.ĊĊ	Answer	:	Ġno	<|eot_id|>

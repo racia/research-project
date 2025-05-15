@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-12	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-13	.	ĠDaniel	Ġdiscarded	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠDaniel	Ġcarrying	?Ċ

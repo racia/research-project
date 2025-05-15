@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġgrabbed	Ġby	ĠJohn	Ġin	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	7	),	Ġand	Ġthen	Ġput	Ġdown	Ġby	ĠJohn	Ġ(	sentence	Ġ	9	).	ĠSince	ĠJohn	Ġput	Ġit	Ġdown	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġfootball	Ġis	Ġstill	Ġin	Ġthe	Ġsame	Ġlocation	Ġwhere	ĠJohn	Ġput	Ġit	Ġdown	,	Ġwhich	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

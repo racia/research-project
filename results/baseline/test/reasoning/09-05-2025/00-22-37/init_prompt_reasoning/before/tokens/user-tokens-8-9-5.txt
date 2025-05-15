@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-19	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
-20	.	ĠSandra	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠSandra	Ġcarrying	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBern	hard	Ġis	Ġa	Ġsw	an	,	Ġand	Ġsw	ans	Ġare	Ġtypically	Ġwhite	.	ĠHowever	,	Ġthere	Ġis	Ġno	Ġdirect	Ġmention	Ġof	ĠBern	hard	's	Ġcolor	.	ĠSince	ĠBern	hard	Ġis	Ġa	Ġsw	an	,	Ġit	Ġis	Ġreasonable	Ġto	Ġassume	Ġthat	ĠBern	hard	Ġis	Ġwhite	,	Ġas	Ġsw	ans	Ġare	Ġtypically	Ġwhite	.ĊĊ	Answer	:	Ġwhite	<|eot_id|>

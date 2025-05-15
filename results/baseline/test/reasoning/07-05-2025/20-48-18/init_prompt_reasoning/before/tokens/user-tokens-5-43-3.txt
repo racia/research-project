@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠJeff	Ġhanded	Ġthe	Ġmilk	Ġto	ĠFred	.Ċ
-14	.	ĠFred	Ġleft	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġmilk	Ġto	ĠFred	?Ċ

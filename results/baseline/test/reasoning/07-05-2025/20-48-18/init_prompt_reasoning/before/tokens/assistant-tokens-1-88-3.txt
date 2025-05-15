@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġtalk	Ġabout	ĠDaniel	's	Ġmovements	,	Ġand	ĠJohn	Ġis	Ġnot	Ġmentioned	Ġat	Ġall	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

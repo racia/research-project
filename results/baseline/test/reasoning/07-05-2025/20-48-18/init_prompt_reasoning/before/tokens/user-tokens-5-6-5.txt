@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-29	.	ĠFred	Ġdiscarded	Ġthe	Ġapple	.Ċ
-30	.	ĠJeff	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠJeff	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

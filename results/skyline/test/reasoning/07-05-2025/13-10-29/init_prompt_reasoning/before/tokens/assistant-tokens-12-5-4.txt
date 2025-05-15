@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	11	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	.	ĠThis	Ġsentence	Ġupdates	ĠMary	's	Ġlocation	,	Ġso	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

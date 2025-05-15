@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġkitchen	Ġin	Ġthe	Ġcontext	Ġsentences	Ġprovided	Ġ(	13	Ġand	Ġ	14	).	ĠSentence	Ġ	13	Ġmentions	ĠMary	Ġbeing	Ġeither	Ġin	Ġthe	Ġpark	Ġor	Ġthe	Ġcinema	,	Ġbut	Ġnot	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

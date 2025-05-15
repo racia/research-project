@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġand	ĠDaniel	's	Ġlocations	,	Ġand	Ġboth	Ġof	Ġthem	Ġtravelled	Ġto	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġthem	Ġmoving	Ġto	Ġa	Ġdifferent	Ġlocation	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

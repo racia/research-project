@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

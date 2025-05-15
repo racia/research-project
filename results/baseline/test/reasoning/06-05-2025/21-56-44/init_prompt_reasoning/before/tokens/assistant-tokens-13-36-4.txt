@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġit	Ġimplies	Ġthat	Ġthey	Ġmoved	Ġfrom	Ġthe	Ġbedroom	Ġto	Ġthe	Ġoffice	.	ĠSince	ĠSandra	Ġis	Ġpart	Ġof	Ġthe	Ġpair	Ġthat	Ġmoved	,	Ġshe	Ġmust	Ġbe	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠSandra	's	Ġmovements	,	Ġbut	Ġnot	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	Ġwas	Ġin	Ġsentence	Ġ	8	,	Ġwhere	Ġhe	Ġwent	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

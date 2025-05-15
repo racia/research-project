@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġthe	Ġsecond	Ġsentence	,	Ġwhere	Ġshe	Ġtravels	Ġto	Ġthe	Ġgarden	Ġwith	ĠSandra	.	ĠThis	Ġimplies	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

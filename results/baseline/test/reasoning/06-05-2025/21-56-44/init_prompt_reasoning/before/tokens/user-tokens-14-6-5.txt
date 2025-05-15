@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-15	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġthis	Ġevening	.Ċ
-16	.	ĠThis	Ġmorning	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠFred	Ġbefore	Ġthe	Ġbedroom	?Ċ

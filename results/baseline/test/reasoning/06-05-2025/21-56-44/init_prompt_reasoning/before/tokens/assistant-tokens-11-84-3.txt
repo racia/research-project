@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġinitially	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġand	Ġthen	Ġto	Ġthe	Ġkitchen	.	ĠSince	Ġthe	Ġlast	Ġknown	Ġlocation	Ġof	ĠMary	Ġis	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġhallway	Ġis	Ġnorth	Ġof	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	3	),	Ġand	Ġthe	Ġbedroom	Ġis	Ġnorth	Ġof	Ġthe	Ġgarden	Ġ(	sentence	Ġ	2	),	Ġwe	Ġcan	Ġinfer	Ġthat	Ġthe	Ġhallway	Ġis	Ġalso	Ġnorth	Ġof	Ġthe	Ġgarden	.	ĠTo	Ġget	Ġfrom	Ġthe	Ġhallway	Ġto	Ġthe	Ġbedroom	,	Ġwe	Ġneed	Ġto	Ġmove	Ġeast	ward	,	Ġas	Ġthe	Ġbedroom	Ġis	Ġnorth	Ġof	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġeast	<|eot_id|>

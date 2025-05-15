@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwent	Ġthere	Ġto	Ġdo	Ġsomething	.	ĠThe	Ġcontext	Ġsentence	Ġ	5	Ġmentioned	Ġthat	ĠSum	it	Ġis	Ġtired	,	Ġwhich	Ġsuggests	Ġthat	Ġhe	Ġwent	Ġto	Ġthe	Ġkitchen	Ġto	Ġrest	Ġor	Ġsleep	.ĊĊ	Answer	:	Ġtired	<|eot_id|>

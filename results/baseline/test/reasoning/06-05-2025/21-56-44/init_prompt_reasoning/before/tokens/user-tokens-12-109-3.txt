@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠJohn	Ġand	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-8	.	ĠJohn	Ġand	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠJohn	?Ċ

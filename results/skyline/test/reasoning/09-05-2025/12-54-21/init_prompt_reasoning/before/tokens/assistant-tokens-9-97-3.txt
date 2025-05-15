@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	5	,	Ġ"	John	Ġwent	Ġto	Ġthe	Ġhallway	",	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġhallway	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠJohn	Ġleft	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

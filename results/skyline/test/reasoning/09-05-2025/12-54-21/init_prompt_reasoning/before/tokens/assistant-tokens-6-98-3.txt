@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	ĠDaniel	Ġhas	Ġmoved	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

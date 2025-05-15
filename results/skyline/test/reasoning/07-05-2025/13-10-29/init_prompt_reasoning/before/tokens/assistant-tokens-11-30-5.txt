@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdescribe	ĠSandra	's	Ġmovements	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġwas	Ġthat	Ġshe	Ġwent	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

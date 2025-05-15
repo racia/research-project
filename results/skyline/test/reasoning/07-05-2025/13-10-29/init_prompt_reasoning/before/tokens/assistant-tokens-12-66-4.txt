@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	11	,	ĠMary	Ġand	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġis	Ġthe	Ġmost	Ġrecent	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

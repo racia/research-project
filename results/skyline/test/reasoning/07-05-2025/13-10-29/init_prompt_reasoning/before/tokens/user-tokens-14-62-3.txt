@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠYesterday	ĠFred	Ġmoved	Ġto	Ġthe	Ġcinema	.Ċ
-8	.	ĠJulie	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġyesterday	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠBill	Ġbefore	Ġthe	Ġkitchen	?Ċ

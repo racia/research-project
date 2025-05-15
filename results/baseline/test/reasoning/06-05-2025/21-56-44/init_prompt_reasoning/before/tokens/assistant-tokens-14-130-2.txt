@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġis	Ġnot	Ġabout	ĠFred	,	Ġbut	Ġabout	ĠMary	.	ĠThe	Ġcontext	Ġsentences	Ġprovided	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġwhereabouts	Ġbefore	Ġthe	Ġschool	.	ĠTherefore	,	Ġwe	Ġcannot	Ġanswer	Ġthe	Ġquestion	Ġbased	Ġon	Ġthe	Ġgiven	Ġinformation	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

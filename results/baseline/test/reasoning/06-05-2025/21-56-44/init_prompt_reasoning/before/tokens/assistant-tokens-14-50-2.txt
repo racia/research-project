@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	Ġ(	sentence	Ġ	7	),	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠBill	's	Ġlocation	Ġbefore	Ġthat	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠBill	's	Ġlocation	Ġbefore	Ġthe	Ġcinema	Ġis	Ġunknown	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

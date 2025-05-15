@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-12	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-13	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
-14	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
-15	.	ĠMary	Ġdiscarded	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-14	.	ĠJohn	Ġdropped	Ġthe	Ġfootball	.Ċ
-15	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠJohn	Ġcarrying	?Ċ

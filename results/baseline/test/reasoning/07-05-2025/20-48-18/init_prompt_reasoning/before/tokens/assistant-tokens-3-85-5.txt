@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġlast	Ġmentioned	Ġin	Ġsentence	Ġ	90	,	Ġwhere	ĠDaniel	Ġdiscarded	Ġthe	Ġfootball	.	ĠBefore	Ġthat	,	Ġit	Ġis	Ġnot	Ġmentioned	Ġwhere	Ġthe	Ġfootball	Ġwas	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

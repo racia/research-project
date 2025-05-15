@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	Ġpicked	Ġup	Ġthe	Ġfootball	,	Ġwe	Ġcan	Ġinfer	Ġthat	Ġhe	Ġgot	Ġit	Ġbecause	Ġhe	Ġwas	Ġbored	,	Ġwhich	Ġwas	Ġmentioned	Ġin	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġ(	1	).	ĠThe	Ġfootball	Ġis	Ġan	Ġobject	Ġthat	Ġmight	Ġbe	Ġused	Ġto	Ġalleviate	Ġboredom	,	Ġsuch	Ġas	Ġby	Ġplaying	Ġa	Ġgame	Ġor	Ġengaging	Ġin	Ġa	Ġphysical	Ġactivity	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

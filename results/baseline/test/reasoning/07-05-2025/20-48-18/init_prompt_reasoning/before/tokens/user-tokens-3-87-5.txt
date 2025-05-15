@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-69	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
-70	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-71	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
-72	.	ĠSandra	Ġdiscarded	Ġthe	Ġapple	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġoffice	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	Ġgoing	Ġto	Ġthe	Ġoffice	.	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	,	Ġbut	Ġthe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġlocation	Ġat	Ġthe	Ġschool	Ġthis	Ġevening	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

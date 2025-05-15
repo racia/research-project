@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġis	Ġthat	Ġshe	Ġis	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġshow	Ġthat	ĠMary	Ġpassed	Ġthe	Ġapple	Ġto	ĠFred	Ġ(	sentence	Ġ	13	),	Ġand	Ġthen	ĠFred	Ġpassed	Ġit	Ġback	Ġto	ĠMary	Ġ(	sentence	Ġ	14	).	ĠThis	Ġmeans	Ġthat	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	,	Ġand	ĠFred	Ġgave	Ġit	Ġback	Ġto	ĠMary	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

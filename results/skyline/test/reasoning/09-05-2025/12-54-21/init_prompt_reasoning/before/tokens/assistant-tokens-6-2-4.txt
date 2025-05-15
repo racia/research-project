@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġbeing	Ġin	Ġthe	Ġkitchen	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġgoing	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġnot	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġno	<|eot_id|>

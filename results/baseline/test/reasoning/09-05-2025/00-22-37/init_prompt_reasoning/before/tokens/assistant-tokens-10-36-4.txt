@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	,	Ġbut	Ġwe	Ġknow	Ġshe	Ġwas	Ġin	Ġthe	Ġoffice	Ġ(	from	Ġsentence	Ġ	7	).	ĠSince	Ġthere	Ġis	Ġno	Ġcontradictory	Ġinformation	,	Ġwe	Ġcan	Ġassume	Ġshe	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

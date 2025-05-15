@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠDaniel	Ġwent	Ġto	Ġthe	Ġkitchen	Ġinitially	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

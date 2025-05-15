@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	12	),	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġwhereabouts	Ġbefore	Ġthat	.	ĠHowever	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġwas	Ġnot	Ġat	Ġthe	Ġbedroom	Ġbefore	Ġthis	Ġafternoon	,	Ġas	Ġshe	Ġwent	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

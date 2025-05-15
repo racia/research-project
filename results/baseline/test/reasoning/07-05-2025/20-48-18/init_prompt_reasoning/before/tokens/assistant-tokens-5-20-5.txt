@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	17	,	ĠBill	Ġpassed	Ġthe	Ġmilk	Ġto	ĠMary	,	Ġso	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠBill	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	.ĊĊ	Answer	:	ĠMilk	<|eot_id|>

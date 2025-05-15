@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-4	.	ĠJohn	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
-5	.	ĠDaniel	Ġand	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠMary	?Ċ

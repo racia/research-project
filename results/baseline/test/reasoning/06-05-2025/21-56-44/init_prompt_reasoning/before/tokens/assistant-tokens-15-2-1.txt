@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠEmily	Ġis	Ġa	Ġwolf	,	Ġand	Ġaccording	Ġto	Ġsentence	Ġ	1	,	Ġwolves	Ġare	Ġafraid	Ġof	Ġsheep	.	ĠHowever	,	ĠEmily	's	Ġspecies	Ġis	Ġnot	Ġmentioned	Ġin	Ġthe	Ġcontext	Ġof	Ġbeing	Ġafraid	Ġof	Ġsomething	.	ĠWe	Ġneed	Ġto	Ġfind	Ġa	Ġconnection	Ġbetween	ĠEmily	Ġand	Ġsomething	Ġshe	Ġmight	Ġbe	Ġafraid	Ġof	.ĊĊ	Answer	:	Ġsheep	<|eot_id|>

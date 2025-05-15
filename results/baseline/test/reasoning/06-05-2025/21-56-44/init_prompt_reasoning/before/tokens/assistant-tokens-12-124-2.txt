@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	Ġwith	ĠSandra	.	ĠHowever	,	Ġsentence	Ġ	5	Ġreveals	Ġthat	ĠMary	Ġand	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

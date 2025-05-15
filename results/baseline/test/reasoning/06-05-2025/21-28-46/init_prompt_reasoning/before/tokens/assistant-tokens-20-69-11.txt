@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġis	Ġbored	Ġ(	from	Ġcontext	Ġsentence	Ġ	1	),	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġgot	Ġthe	Ġfootball	Ġto	Ġalleviate	Ġhis	Ġboredom	,	Ġas	Ġplaying	Ġwith	Ġa	Ġfootball	Ġcould	Ġbe	Ġan	Ġactivity	Ġto	Ġentertain	Ġhimself	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

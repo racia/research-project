@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġbeing	Ġin	Ġthe	Ġhallway	Ġor	Ġthe	Ġkitchen	Ġin	Ġthese	Ġsentences	.	ĠThe	Ġlast	Ġsentence	Ġmentioning	ĠSandra	Ġis	Ġsentence	Ġ	8	,	Ġwhich	Ġstates	Ġshe	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

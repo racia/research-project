@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-19	.	ĠFred	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
-20	.	ĠFred	Ġpassed	Ġthe	Ġmilk	Ġto	ĠBill	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġmilk	?Ċ

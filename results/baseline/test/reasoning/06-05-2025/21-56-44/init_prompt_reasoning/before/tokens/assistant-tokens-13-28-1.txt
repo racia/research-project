@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġshe	Ġwent	Ġto	Ġthe	Ġkitchen	Ġwith	ĠDaniel	,	Ġso	Ġit	's	Ġlikely	Ġshe	Ġis	Ġstill	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

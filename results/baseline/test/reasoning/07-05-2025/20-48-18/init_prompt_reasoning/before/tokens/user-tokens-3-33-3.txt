@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-23	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
-24	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
-25	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-26	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
-27	.	ĠSandra	Ġdiscarded	Ġthe	Ġfootball	.Ċ
-28	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġkitchen	?Ċ

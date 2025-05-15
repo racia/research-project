@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġbathroom	,	Ġsince	Ġhe	Ġjourney	ed	Ġthere	Ġafter	Ġgoing	Ġto	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġsuggesting	Ġhe	Ġmoved	Ġto	Ġa	Ġdifferent	Ġlocation	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

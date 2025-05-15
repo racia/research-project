@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgoing	Ġto	Ġthe	Ġcinema	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠShe	Ġwent	Ġto	Ġthe	Ġpark	Ġand	Ġthe	Ġkitchen	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġno	<|eot_id|>

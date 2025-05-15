@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	5	Ġexplicitly	Ġstates	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

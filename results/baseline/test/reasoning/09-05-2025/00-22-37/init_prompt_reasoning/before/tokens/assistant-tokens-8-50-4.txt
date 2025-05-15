@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	's	Ġactions	Ġor	Ġwhat	Ġhe	Ġis	Ġcarrying	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġand	ĠSandra	's	Ġactions	,	Ġbut	Ġnot	ĠJohn	's	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

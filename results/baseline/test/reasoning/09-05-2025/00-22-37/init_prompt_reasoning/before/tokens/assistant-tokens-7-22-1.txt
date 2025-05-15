@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	Ġin	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	Ġhe	Ġis	Ġholding	Ġthe	Ġfootball	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġhim	Ġdropping	Ġor	Ġputting	Ġdown	Ġthe	Ġfootball	,	Ġso	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġis	Ġstill	Ġholding	Ġit	.ĊĊ	Answer	:	Ġone	<|eot_id|>

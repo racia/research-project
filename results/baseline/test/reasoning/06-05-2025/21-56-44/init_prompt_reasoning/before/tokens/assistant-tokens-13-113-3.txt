@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġand	ĠSandra	,	Ġand	Ġtheir	Ġmovements	Ġto	Ġthe	Ġbedroom	Ġand	Ġhallway	.	ĠSince	ĠJohn	Ġis	Ġnot	Ġmentioned	,	Ġhis	Ġlocation	Ġcannot	Ġbe	Ġdetermined	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

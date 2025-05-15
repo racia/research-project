@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠThis	Ġmorning	ĠJulie	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-14	.	ĠThis	Ġafternoon	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠJulie	Ġbefore	Ġthe	Ġoffice	?Ċ
