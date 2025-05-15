@@ -236,7 +236,8 @@ class Chat:
                                     upd_span[1] - upd_span[0],
                                 )
                                 raise ValueError(
-                                    f"Span length mismatch: {len(flat_chunk_ids)} {flat_chunk_ids}:\n{chunk['sent_spans']} vs {upd_span}"
+                                    f"Span length mismatch: {len(flat_chunk_ids)} {flat_chunk_ids}:\n"
+                                    f"{chunk['sent_spans']} vs {upd_span}"
                                 )
                         else:
                             warnings.warn("Chat ids is none")
