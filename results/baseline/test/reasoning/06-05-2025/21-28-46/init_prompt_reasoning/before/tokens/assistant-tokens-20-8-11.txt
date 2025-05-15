@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġmoved	Ġto	Ġthe	Ġgarden	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJason	Ġwent	Ġto	Ġthe	Ġgarden	Ġbecause	Ġthey	Ġwere	Ġbored	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

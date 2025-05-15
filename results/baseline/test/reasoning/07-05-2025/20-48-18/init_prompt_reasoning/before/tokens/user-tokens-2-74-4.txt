@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-14	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-15	.	ĠDaniel	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
-16	.	ĠDaniel	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
-17	.	ĠDaniel	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
-18	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
-19	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

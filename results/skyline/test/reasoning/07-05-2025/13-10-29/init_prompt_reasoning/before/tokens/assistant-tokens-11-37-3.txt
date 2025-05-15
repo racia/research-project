@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdescribe	ĠMary	's	Ġmovements	.	ĠShe	Ġfirst	Ġwent	Ġto	Ġthe	Ġhallway	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġgarden	.	ĠTherefore	,	Ġher	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

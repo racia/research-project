@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġmilk	Ġwas	Ġgrabbed	Ġby	ĠMary	Ġin	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġleft	Ġby	ĠMary	.	ĠSince	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġmilk	Ġis	Ġstill	Ġwith	ĠMary	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-37	.	ĠJeff	Ġleft	Ġthe	Ġfootball	.Ċ
-38	.	ĠFred	Ġdiscarded	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠMary	Ġgive	Ġto	ĠJeff	?Ċ

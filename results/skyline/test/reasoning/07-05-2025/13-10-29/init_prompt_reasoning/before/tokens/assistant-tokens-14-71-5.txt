@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	13	Ġ(	from	Ġprevious	Ġcontext	)	Ġtold	Ġus	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	.	ĠThere	Ġis	Ġno	Ġadditional	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġmovements	Ġbefore	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

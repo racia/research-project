@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-147	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-148	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-149	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbedroom	.Ċ
-150	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġbathroom	?Ċ

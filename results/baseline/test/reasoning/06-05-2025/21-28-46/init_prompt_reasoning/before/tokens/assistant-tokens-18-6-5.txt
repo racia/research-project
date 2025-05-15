@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	5	Ġstates	Ġthat	Ġthe	Ġsuitcase	Ġis	Ġbigger	Ġthan	Ġthe	Ġbox	Ġof	Ġchocolates	.	ĠSince	Ġthe	Ġchocolate	Ġfits	Ġinside	Ġthe	Ġbox	Ġof	Ġchocolates	Ġ(	sentence	Ġ	1	),	Ġthe	Ġsuitcase	Ġis	Ġbigger	Ġthan	Ġthe	Ġchocolate	.ĊĊ	Answer	:	ĠYes	<|eot_id|>

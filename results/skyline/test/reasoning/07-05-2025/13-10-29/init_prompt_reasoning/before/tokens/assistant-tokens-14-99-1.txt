@@ -1,1 +1,0 @@
-<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	3	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġyesterday	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	4	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

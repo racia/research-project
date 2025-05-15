@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġleft	Ġby	ĠMary	Ġ(	sentence	Ġ	20	),	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġits	Ġlocation	Ġafter	Ġthat	.	ĠHowever	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġgot	Ġthe	Ġfootball	Ġin	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	18	),	Ġso	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġfootball	Ġis	Ġstill	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	8	Ġexplicitly	Ġstates	Ġthat	ĠSandra	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġbedroom	,	Ġimplying	Ġthat	Ġshe	Ġhas	Ġleft	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

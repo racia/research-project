@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-21	.	ĠMary	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
-22	.	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠMary	Ġgive	Ġthe	Ġfootball	Ġto	?Ċ

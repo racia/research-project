@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġsentence	Ġ	11	Ġas	Ġmoving	Ġto	Ġthe	Ġhallway	Ġwith	ĠSandra	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġleft	Ġthe	Ġhallway	.	ĠTherefore	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

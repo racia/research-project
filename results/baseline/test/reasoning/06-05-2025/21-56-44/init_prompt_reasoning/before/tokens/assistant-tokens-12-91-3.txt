@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠMary	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġkitchen	.	ĠHowever	,	Ġsentence	Ġ	8	Ġstates	Ġthat	ĠJohn	Ġand	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	ĠMary	Ġis	Ġnow	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġgarden	Ġtogether	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġoffice	.	ĠSince	ĠMary	Ġand	ĠJohn	Ġare	Ġtogether	,	ĠMary	's	Ġlocation	Ġis	Ġthe	Ġsame	Ġas	ĠJohn	's	.	ĠSince	Ġthey	Ġare	Ġin	Ġthe	Ġoffice	,	ĠMary	Ġis	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġin	Ġsentence	Ġ	2	,	Ġit	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.	ĠJohn	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġin	Ġsentence	Ġ	1	,	Ġbut	Ġthis	Ġdoes	Ġnot	Ġaffect	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

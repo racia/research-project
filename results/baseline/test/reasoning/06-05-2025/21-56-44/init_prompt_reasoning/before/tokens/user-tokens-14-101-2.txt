@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-6	.	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	.Ċ
-7	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠJulie	Ġbefore	Ġthe	Ġbedroom	?Ċ

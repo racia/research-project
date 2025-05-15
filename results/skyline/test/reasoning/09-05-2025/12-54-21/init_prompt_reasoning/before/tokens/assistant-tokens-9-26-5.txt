@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġkitchen	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	13	Ġstates	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġhallway	,	Ġand	Ġsentence	Ġ	14	Ġcorrect	s	Ġthis	Ġby	Ġsaying	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

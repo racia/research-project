@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	10	Ġstates	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġlocated	Ġin	Ġthe	Ġgarden	.Ċ	Answer	:	Ġgarden	<|eot_id|>

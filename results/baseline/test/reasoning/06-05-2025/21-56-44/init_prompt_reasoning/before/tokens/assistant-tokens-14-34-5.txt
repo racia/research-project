@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	Ġgoing	Ġto	Ġthe	Ġschool	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġjourney	ing	Ġto	Ġthe	Ġcinema	Ġthis	Ġevening	,	Ġand	ĠBill	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	Ġthis	Ġevening	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

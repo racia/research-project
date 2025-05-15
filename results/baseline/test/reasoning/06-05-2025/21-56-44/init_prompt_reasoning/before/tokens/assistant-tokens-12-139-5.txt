@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġhe	Ġis	Ġpaired	Ġwith	ĠMary	,	Ġgoing	Ġto	Ġthe	Ġbedroom	Ġin	Ġthe	Ġfirst	Ġsentence	,	Ġand	Ġwith	ĠDaniel	,	Ġmoving	Ġto	Ġthe	Ġhallway	Ġin	Ġthe	Ġsecond	Ġsentence	.	ĠThis	Ġsuggests	Ġthat	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	28	,	ĠFred	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	.ĊĊ	Answer	:	ĠApple	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠSandra	Ġis	Ġnot	Ġin	Ġthe	Ġgarden	.Ċ
-14	.	ĠDaniel	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠMary	Ġin	Ġthe	Ġbathroom	?Ċ

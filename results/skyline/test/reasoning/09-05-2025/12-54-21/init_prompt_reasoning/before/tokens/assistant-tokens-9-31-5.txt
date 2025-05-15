@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġthat	Ġsuggests	ĠMary	Ġis	Ġin	Ġthe	Ġhallway	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbathroom	Ġand	ĠDaniel	Ġjourney	ing	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

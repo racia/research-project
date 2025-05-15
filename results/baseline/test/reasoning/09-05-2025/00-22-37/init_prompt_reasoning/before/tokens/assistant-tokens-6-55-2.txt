@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġhallway	Ġat	Ġsome	Ġpoint	.	ĠHowever	,	Ġsentence	Ġ	5	Ġstates	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġsuggests	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	,	Ġnot	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġno	<|eot_id|>

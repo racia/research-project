@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġbeing	Ġin	Ġthe	Ġbedroom	Ġin	Ġthe	Ġcurrent	Ġor	Ġprevious	Ġcontext	Ġsentences	.	ĠThe	Ġcontext	Ġonly	Ġmentions	ĠJohn	Ġand	ĠDaniel	Ġbeing	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

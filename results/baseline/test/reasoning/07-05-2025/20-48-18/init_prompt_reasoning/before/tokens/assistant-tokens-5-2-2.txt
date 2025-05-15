@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġwho	Ġreceived	Ġthe	Ġapple	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	Ġwho	Ġhanded	Ġthe	Ġapple	Ġ(	Fred	)	Ġand	Ġwho	Ġreceived	Ġthe	Ġapple	Ġ(	Bill	).	ĠSince	ĠFred	Ġhanded	Ġthe	Ġapple	Ġto	ĠBill	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠBill	Ġreceived	Ġthe	Ġapple	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

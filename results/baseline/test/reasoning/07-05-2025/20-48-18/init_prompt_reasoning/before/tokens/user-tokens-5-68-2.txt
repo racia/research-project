@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-22	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-23	.	ĠMary	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠMary	Ġgive	Ġto	ĠFred	?Ċ

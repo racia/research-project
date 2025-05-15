@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġstates	Ġthat	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġentering	Ġthe	Ġkitchen	.	ĠSentence	Ġ	8	Ġmentions	ĠJohn	Ġgoing	Ġto	Ġthe	Ġbathroom	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġmention	ĠSandra	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

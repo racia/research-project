@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠDaniel	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	,	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠDaniel	Ġis	Ġstill	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

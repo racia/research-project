@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-17	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-18	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
-19	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-20	.	ĠDaniel	Ġdiscarded	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠYesterday	ĠMary	Ġtravelled	Ġto	Ġthe	Ġcinema	.Ċ
-2	.	ĠThis	Ġmorning	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
-3	.	ĠYesterday	ĠJulie	Ġwent	Ġto	Ġthe	Ġschool	.Ċ
-4	.	ĠFred	Ġwent	Ġto	Ġthe	Ġoffice	Ġyesterday	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠFred	Ġbefore	Ġthe	Ġbedroom	?Ċ

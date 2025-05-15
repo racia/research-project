@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJulie	Ġjourney	ed	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	Ġ(	sentence	Ġ	7	),	Ġit	Ġimplies	Ġthat	Ġshe	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġwhereabouts	Ġbefore	Ġthis	Ġmorning	,	Ġso	Ġwe	Ġneed	Ġto	Ġinfer	Ġit	Ġbased	Ġon	Ġthe	Ġgiven	Ġinformation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-2	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-3	.	ĠSandra	Ġgot	Ġthe	Ġmilk	Ġthere	.Ċ
-4	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġis	ĠSandra	Ġcarrying	?Ċ

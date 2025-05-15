@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ(	13	)	Ġmentions	Ġthat	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġschool	Ġor	Ġthe	Ġoffice	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġbeing	Ġin	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġno	<|eot_id|>

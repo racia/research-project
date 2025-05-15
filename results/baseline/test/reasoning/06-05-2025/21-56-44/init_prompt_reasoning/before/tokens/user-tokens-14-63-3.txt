@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-9	.	ĠThis	Ġmorning	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġpark	.Ċ
-10	.	ĠThis	Ġmorning	ĠMary	Ġtravelled	Ġto	Ġthe	Ġcinema	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠMary	Ġbefore	Ġthe	Ġcinema	?Ċ

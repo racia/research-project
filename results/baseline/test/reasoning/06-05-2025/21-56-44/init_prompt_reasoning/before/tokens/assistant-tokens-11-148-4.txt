@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	Ġinitially	,	Ġand	Ġthen	Ġhe	Ġmoved	Ġto	Ġthe	Ġbathroom	.	ĠSince	Ġhe	Ġhasn	't	Ġmoved	Ġback	Ġto	Ġthe	Ġoffice	,	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

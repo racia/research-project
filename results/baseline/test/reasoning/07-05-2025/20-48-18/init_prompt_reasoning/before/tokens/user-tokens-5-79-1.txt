@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠBill	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
-2	.	ĠJeff	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
-3	.	ĠJeff	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
-4	.	ĠFred	Ġpassed	Ġthe	Ġapple	Ġto	ĠJeff	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġapple	?Ċ

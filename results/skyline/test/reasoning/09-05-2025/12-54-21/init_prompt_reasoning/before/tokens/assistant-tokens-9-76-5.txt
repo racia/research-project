@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġ	13	Ġand	Ġ	14	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠDaniel	's	Ġand	ĠSandra	's	Ġlocations	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

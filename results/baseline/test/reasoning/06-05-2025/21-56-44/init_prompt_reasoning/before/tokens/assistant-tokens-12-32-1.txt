@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	Ġin	Ġsentence	Ġ	1	,	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġin	Ġsentence	Ġ	2	,	Ġit	Ġimplies	Ġthat	ĠMary	's	Ġlocation	Ġchanged	Ġfrom	Ġthe	Ġgarden	Ġto	Ġthe	Ġbathroom	.	ĠTherefore	,	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

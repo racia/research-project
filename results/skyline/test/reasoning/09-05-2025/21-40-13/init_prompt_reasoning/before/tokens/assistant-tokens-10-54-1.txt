@@ -1,1 +1,0 @@
-<|start_header_id|>	*T	ASK	*ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	Ġtwo	Ġpossible	Ġlocations	Ġfor	ĠBill	:	Ġthe	Ġoffice	Ġor	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġschool	Ġas	Ġa	Ġpossible	Ġlocation	Ġfor	ĠBill	.ĊĊ	Answer	:	Ġno	<|eot_id|>

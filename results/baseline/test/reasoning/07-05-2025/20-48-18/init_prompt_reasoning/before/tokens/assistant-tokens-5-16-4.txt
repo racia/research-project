@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	14	,	ĠMary	Ġpassed	Ġthe	Ġfootball	Ġto	ĠFred	,	Ġso	ĠMary	Ġis	Ġthe	Ġone	Ġwho	Ġgave	Ġthe	Ġfootball	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

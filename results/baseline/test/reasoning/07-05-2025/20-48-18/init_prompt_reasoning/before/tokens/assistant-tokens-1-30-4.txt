@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	11	),	Ġbut	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	10	).	ĠSince	Ġthe	Ġlast	Ġaction	Ġmentioned	Ġis	Ġgoing	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.Ċ	Answer	:	Ġbathroom	<|eot_id|>

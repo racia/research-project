@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

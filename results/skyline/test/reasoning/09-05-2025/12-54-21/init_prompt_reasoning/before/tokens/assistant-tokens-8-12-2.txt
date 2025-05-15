@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠMary	,	Ġand	Ġthe	Ġprevious	Ġinformation	Ġabout	ĠMary	Ġcarrying	Ġthe	Ġfootball	Ġ(	sentence	Ġ	1	)	Ġis	Ġstill	Ġvalid	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠDaniel	Ġgrabbed	Ġthe	Ġapple	Ġ(	sentence	Ġ	17	)	Ġand	Ġthen	Ġgave	Ġit	Ġto	ĠJohn	Ġ(	sentence	Ġ	18	).	ĠThis	Ġimplies	Ġthat	ĠDaniel	Ġwas	Ġcarrying	Ġthe	Ġapple	Ġinitially	,	Ġbut	Ġthen	Ġhe	Ġgave	Ġit	Ġaway	,	Ġso	Ġhe	Ġis	Ġnot	Ġcarrying	Ġit	Ġanymore	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

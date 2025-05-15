@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġis	Ġtired	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwill	Ġgo	Ġto	Ġa	Ġplace	Ġwhere	Ġhe	Ġcan	Ġrest	Ġand	Ġsleep	.	ĠThe	Ġcontext	Ġdoes	Ġnot	Ġspecify	Ġwhat	Ġtype	Ġof	Ġplace	,	Ġbut	Ġit	Ġis	Ġreasonable	Ġto	Ġassume	Ġthat	Ġhe	Ġwill	Ġgo	Ġto	Ġa	Ġplace	Ġwhere	Ġhe	Ġcan	Ġsleep	Ġor	Ġrest	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	2	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġcinema	.	ĠSentence	Ġ	1	Ġonly	Ġprovides	Ġinformation	Ġabout	ĠFred	's	Ġpossible	Ġlocations	,	Ġwhich	Ġdoes	Ġnot	Ġaffect	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-25	.	ĠBill	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	.Ċ
-26	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠBill	Ġgive	Ġto	ĠMary	?Ċ

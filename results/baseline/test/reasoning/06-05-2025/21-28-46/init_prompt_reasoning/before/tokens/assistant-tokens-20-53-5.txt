@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġit	Ġis	Ġlikely	Ġthat	ĠSum	it	Ġwent	Ġto	Ġthe	Ġgarden	Ġfor	Ġthe	Ġsame	Ġreason	Ġas	Ġbefore	,	Ġwhich	Ġwas	Ġmentioned	Ġin	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġ(	7	.	ĠSum	it	Ġis	Ġbored	).	ĠTherefore	,	Ġthe	Ġreason	ĠSum	it	Ġwent	Ġto	Ġthe	Ġgarden	Ġis	Ġto	Ġalleviate	Ġboredom	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

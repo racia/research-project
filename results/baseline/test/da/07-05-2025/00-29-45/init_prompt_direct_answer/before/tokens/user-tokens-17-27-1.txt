@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠThe	Ġpink	Ġrectangle	Ġis	Ġto	Ġthe	Ġright	Ġof	Ġthe	Ġred	Ġsphere	.Ċ
-2	.	ĠThe	Ġred	Ġsquare	Ġis	Ġbelow	Ġthe	Ġpink	Ġrectangle	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	Ġthe	Ġred	Ġsphere	Ġto	Ġthe	Ġright	Ġof	Ġthe	Ġred	Ġsquare	?Ċ

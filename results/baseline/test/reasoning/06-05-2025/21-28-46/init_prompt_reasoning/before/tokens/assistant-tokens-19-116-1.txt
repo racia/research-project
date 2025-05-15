@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġgarden	Ġis	Ġwest	Ġof	Ġthe	Ġoffice	Ġ(	sentence	Ġ	4	),	Ġand	Ġthe	Ġhallway	Ġis	Ġnorth	Ġof	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	2	),	Ġwe	Ġneed	Ġto	Ġmove	Ġeast	Ġfrom	Ġthe	Ġgarden	Ġto	Ġreach	Ġthe	Ġoffice	.	ĠThen	,	Ġwe	Ġneed	Ġto	Ġmove	Ġnorth	Ġfrom	Ġthe	Ġoffice	Ġto	Ġreach	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġeast	,	Ġthen	Ġnorth	<|eot_id|>

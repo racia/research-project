@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	's	Ġwhereabouts	Ġin	Ġrelation	Ġto	Ġthe	Ġpark	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġmovements	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġnot	Ġto	Ġthe	Ġpark	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	Ġwhere	ĠMary	Ġwas	Ġbefore	Ġthe	Ġpark	Ġbased	Ġon	Ġthe	Ġprovided	Ġinformation	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġcarrying	Ġany	Ġobjects	Ġin	Ġthese	Ġsentences	.	ĠThe	Ġonly	Ġmention	Ġof	ĠSandra	Ġis	Ġher	Ġgiving	Ġthe	Ġapple	Ġto	ĠMary	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġwas	Ġcarrying	Ġthe	Ġapple	Ġbefore	Ġgiving	Ġit	Ġaway	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

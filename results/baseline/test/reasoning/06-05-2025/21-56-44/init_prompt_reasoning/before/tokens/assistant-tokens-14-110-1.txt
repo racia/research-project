@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġyesterday	,	Ġwhich	Ġimplies	Ġshe	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġoffice	.	ĠThen	,	Ġshe	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	.	ĠSince	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġyesterday	,	Ġit	's	Ġlikely	Ġthat	Ġshe	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġmoving	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġtaken	Ġby	ĠMary	Ġ(	sentence	Ġ	67	).	ĠThen	,	ĠMary	Ġput	Ġdown	Ġthe	Ġapple	Ġ(	sentence	Ġ	73	).	ĠAfter	Ġthat	,	ĠDaniel	Ġgrabbed	Ġthe	Ġapple	Ġ(	sentence	Ġ	75	).	ĠSince	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	77	),	Ġthe	Ġapple	Ġwas	Ġin	Ġthe	Ġbathroom	Ġbefore	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

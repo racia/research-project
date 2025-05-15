@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġshe	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġso	Ġshe	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

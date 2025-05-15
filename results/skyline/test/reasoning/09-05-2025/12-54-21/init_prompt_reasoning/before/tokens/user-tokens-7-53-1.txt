@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
-2	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
-3	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
-4	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
-5	.	ĠJohn	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
-6	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠJohn	Ġcarrying	?Ċ

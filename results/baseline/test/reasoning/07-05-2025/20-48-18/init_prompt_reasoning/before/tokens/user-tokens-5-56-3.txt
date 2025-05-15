@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-57	.	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
-58	.	ĠMary	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠMary	Ġgive	Ġto	ĠJeff	?Ċ

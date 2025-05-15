@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġfootball	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġlast	Ġmention	Ġof	Ġthe	Ġfootball	Ġwas	Ġin	Ġthe	Ġhallway	,	Ġbut	Ġthere	Ġis	Ġno	Ġconnection	Ġbetween	Ġthe	Ġfootball	Ġand	Ġthe	Ġoffice	Ġor	Ġbedroom	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

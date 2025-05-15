@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġin	Ġsentence	Ġ	10	,	Ġand	ĠSandra	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġin	Ġsentence	Ġ	11	,	Ġit	Ġimplies	Ġthat	ĠJohn	's	Ġlocation	Ġchanged	Ġfrom	Ġthe	Ġbathroom	Ġto	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

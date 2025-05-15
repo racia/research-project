@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġgrabbed	Ġthe	Ġapple	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJason	Ġgot	Ġthe	Ġapple	Ġto	Ġeat	,	Ġas	ĠJason	Ġwas	Ġpreviously	Ġdescribed	Ġas	Ġbeing	Ġhungry	Ġ(	although	Ġthe	Ġcontext	Ġsentence	Ġdoes	Ġnot	Ġspecify	Ġthat	ĠJason	Ġgot	Ġthe	Ġapple	Ġin	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġa	Ġreasonable	Ġassumption	).ĊĊ	Answer	:	Ġhungry	<|eot_id|>

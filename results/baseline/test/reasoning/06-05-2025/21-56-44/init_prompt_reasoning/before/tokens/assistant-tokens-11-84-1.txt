@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	Ġinitially	,	Ġand	Ġthen	Ġshe	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠSince	Ġthe	Ġlast	Ġknown	Ġlocation	Ġof	ĠSandra	Ġis	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	7	Ġexplicitly	Ġstates	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġhallway	,	Ġproviding	Ġdirect	Ġevidence	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

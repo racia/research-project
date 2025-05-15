@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġlast	Ġmentioned	Ġin	Ġsentence	Ġ	35	,	Ġwhere	ĠDaniel	Ġtook	Ġthe	Ġfootball	.	ĠBefore	Ġthat	,	Ġit	Ġwas	Ġdropped	Ġby	ĠMary	Ġin	Ġsentence	Ġ	25	.	ĠSince	ĠMary	Ġwas	Ġin	Ġthe	Ġoffice	Ġwhen	Ġshe	Ġdropped	Ġthe	Ġfootball	,	Ġthe	Ġfootball	Ġwas	Ġin	Ġthe	Ġoffice	Ġbefore	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

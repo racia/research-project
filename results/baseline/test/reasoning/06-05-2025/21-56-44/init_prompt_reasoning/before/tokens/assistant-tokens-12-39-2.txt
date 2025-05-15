@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	Ġin	Ġsentence	Ġ	4	,	Ġit	Ġimplies	Ġthat	ĠSandra	Ġwas	Ġthere	.	ĠHowever	,	Ġsentence	Ġ	5	Ġstates	Ġthat	ĠSandra	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġmeans	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

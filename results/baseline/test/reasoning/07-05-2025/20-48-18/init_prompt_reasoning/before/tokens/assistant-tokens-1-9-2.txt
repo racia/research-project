@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠSandra	Ġor	ĠJohn	,	Ġbut	Ġinstead	Ġmention	ĠMary	Ġand	ĠDaniel	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġbut	ĠDaniel	Ġis	Ġnot	Ġmentioned	Ġin	Ġrelation	Ġto	Ġthe	Ġbedroom	.	ĠThe	Ġonly	Ġother	Ġlocation	Ġmentioned	Ġis	Ġthe	Ġgarden	,	Ġwhere	ĠDaniel	Ġmoved	Ġto	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġwas	Ġpreviously	Ġin	Ġthe	Ġhallway	Ġwith	ĠDaniel	Ġ(	sentence	Ġ	4	),	Ġand	Ġthen	Ġshe	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġwith	ĠMary	Ġ(	sentence	Ġ	5	).	ĠSince	ĠSandra	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġlogical	Ġto	Ġconclude	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

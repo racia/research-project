@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠFred	's	Ġwhereabouts	Ġbefore	Ġthe	Ġschool	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġand	ĠJulie	's	Ġmovements	,	Ġbut	Ġnot	ĠFred	's	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

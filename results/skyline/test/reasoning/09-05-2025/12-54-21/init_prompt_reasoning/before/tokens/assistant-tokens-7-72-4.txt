@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠJohn	,	Ġand	Ġthe	Ġprevious	Ġinformation	Ġwas	Ġthat	ĠJohn	Ġhanded	Ġthe	Ġfootball	Ġto	ĠDaniel	Ġ(	sentence	Ġ	11	),	Ġwhich	Ġmeans	ĠJohn	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

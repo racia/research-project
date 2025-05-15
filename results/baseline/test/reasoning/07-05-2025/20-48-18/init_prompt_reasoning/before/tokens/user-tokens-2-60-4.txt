@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-28	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-29	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
-30	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-31	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
-32	.	ĠMary	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
-33	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

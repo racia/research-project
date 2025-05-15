@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġdropped	Ġthe	Ġapple	Ġ(	sentence	Ġ	14	),	Ġwhich	Ġmeans	ĠMary	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

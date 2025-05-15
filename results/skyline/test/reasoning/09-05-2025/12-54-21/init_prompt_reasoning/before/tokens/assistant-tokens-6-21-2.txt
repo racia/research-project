@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġmentions	ĠJohn	Ġmoving	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġprevious	Ġlocation	Ġ(	where	Ġhe	Ġtook	Ġthe	Ġapple	).	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġbeing	Ġin	Ġthe	Ġhallway	.	ĠĊĊ	Answer	:	Ġno	<|eot_id|>

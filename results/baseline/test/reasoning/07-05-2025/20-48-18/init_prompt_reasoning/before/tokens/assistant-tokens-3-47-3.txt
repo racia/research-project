@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġdropped	Ġby	ĠDaniel	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	85	).	ĠThen	,	ĠDaniel	Ġpicked	Ġit	Ġup	Ġ(	sentence	Ġ	86	)	Ġand	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	87	).	ĠBefore	Ġthat	,	Ġit	Ġwas	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

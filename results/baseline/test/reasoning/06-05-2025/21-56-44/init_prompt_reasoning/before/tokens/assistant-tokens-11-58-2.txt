@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġkitchen	,	Ġbut	Ġthen	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġso	Ġhe	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwent	Ġthere	Ġto	Ġget	Ġsomething	Ġto	Ġdrink	,	Ġas	Ġhe	Ġwas	Ġthirsty	,	Ġwhich	Ġwas	Ġmentioned	Ġin	Ġa	Ġprevious	Ġcontext	Ġsentence	.ĊĊ	Answer	:	Ġthirsty	<|eot_id|>

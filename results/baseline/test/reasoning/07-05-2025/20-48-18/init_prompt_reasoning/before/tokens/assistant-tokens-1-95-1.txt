@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġlocated	Ġin	Ġthe	Ġhallway	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	Ġaffecting	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

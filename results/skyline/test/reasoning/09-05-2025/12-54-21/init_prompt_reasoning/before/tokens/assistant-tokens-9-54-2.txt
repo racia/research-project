@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	5	,	Ġ"	Daniel	Ġtravelled	Ġto	Ġthe	Ġoffice	",	Ġwhich	Ġimplies	Ġthat	ĠDaniel	Ġhas	Ġmoved	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

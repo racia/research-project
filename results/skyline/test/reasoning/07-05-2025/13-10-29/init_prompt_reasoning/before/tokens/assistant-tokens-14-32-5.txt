@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġmentions	Ġ"	This	Ġmorning	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġpark	."	ĠSentence	Ġ	9	Ġmentions	Ġ"	Mary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	."	ĠTherefore	,	ĠMary	Ġwas	Ġat	Ġthe	Ġbedroom	Ġbefore	Ġthe	Ġoffice	Ġ(	sentence	Ġ	12	).ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

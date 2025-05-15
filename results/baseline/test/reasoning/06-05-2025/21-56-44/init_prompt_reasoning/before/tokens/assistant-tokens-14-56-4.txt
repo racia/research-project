@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġpark	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠFred	's	Ġmovement	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	,	Ġbut	Ġnot	Ġhis	Ġlocation	Ġbefore	Ġthat	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

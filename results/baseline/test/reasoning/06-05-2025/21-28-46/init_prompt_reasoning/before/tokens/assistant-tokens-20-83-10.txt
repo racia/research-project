@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	ĠSum	it	Ġwent	Ġto	Ġthe	Ġkitchen	Ġbecause	Ġof	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġstating	Ġthat	ĠSum	it	Ġis	Ġthirsty	.	ĠThe	Ġmost	Ġlogical	Ġreason	Ġfor	ĠSum	it	Ġto	Ġgo	Ġto	Ġthe	Ġkitchen	Ġis	Ġto	Ġget	Ġa	Ġdrink	.ĊĊ	Answer	:	Ġthirsty	<|eot_id|>

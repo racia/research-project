@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	7	,	ĠMary	Ġgot	Ġthe	Ġapple	,	Ġbut	Ġin	Ġsentence	Ġ	11	,	ĠMary	Ġleft	Ġthe	Ġapple	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

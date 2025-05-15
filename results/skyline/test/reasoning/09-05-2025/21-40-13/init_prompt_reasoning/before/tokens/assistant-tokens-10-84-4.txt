@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠFred	Ġbeing	Ġin	Ġthe	Ġoffice	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠBill	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġand	Ġsentence	Ġ	11	Ġstates	Ġthat	ĠJulie	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġgrabbed	Ġthe	Ġapple	Ġin	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġgot	Ġit	Ġto	Ġsatisfy	Ġhis	Ġhunger	,	Ġwhich	Ġwas	Ġmentioned	Ġearlier	.ĊĊ	Answer	:	Ġhungry	<|eot_id|>

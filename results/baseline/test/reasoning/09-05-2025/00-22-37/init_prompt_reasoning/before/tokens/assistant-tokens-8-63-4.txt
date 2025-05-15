@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	17	,	ĠMary	Ġpicked	Ġup	Ġthe	Ġmilk	Ġin	Ġthe	Ġbedroom	,	Ġwhere	ĠJohn	Ġwent	Ġin	Ġsentence	Ġ	16	.	ĠTherefore	,	ĠMary	Ġis	Ġcarrying	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġmilk	<|eot_id|>

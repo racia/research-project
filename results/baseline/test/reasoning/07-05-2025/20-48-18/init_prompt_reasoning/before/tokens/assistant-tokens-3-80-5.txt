@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠNone	Ġof	Ġthe	Ġgiven	Ġcontext	Ġsentences	Ġmention	Ġthe	Ġapple	Ġor	Ġits	Ġlocation	Ġbefore	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

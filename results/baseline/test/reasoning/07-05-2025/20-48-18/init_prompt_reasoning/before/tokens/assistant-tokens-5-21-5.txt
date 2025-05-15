@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	,	Ġwhich	Ġis	Ġstated	Ġin	Ġsentence	Ġ	37	.ĊĊ	Answer	:	Ġapple	<|eot_id|>

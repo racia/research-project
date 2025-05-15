@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	2	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġwas	Ġpreviously	Ġsomewhere	Ġelse	Ġand	Ġthen	Ġreturned	Ġto	Ġthe	Ġoffice	.	ĠSince	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġmoving	Ġfrom	Ġthe	Ġoffice	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġshe	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	.Ċ	Answer	:	Ġoffice	<|eot_id|>

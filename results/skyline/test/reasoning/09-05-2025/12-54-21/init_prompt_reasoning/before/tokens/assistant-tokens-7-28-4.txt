@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	11	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġgrabbed	Ġthe	Ġfootball	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcarrying	Ġthe	Ġfootball	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġputting	Ġdown	Ġthe	Ġfootball	Ġor	Ġgiving	Ġit	Ġto	Ġsomeone	Ġelse	.ĊĊ	Answer	:	Ġone	<|eot_id|>

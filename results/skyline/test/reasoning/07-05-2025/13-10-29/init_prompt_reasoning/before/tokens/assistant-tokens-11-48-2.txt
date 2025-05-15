@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	Ġand	Ġafterwards	Ġmoved	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġmeans	Ġher	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

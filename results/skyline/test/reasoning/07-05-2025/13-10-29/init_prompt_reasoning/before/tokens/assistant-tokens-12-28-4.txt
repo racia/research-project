@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	11	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġand	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.	ĠTherefore	,	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

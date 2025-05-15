@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	's	Ġmovement	Ġor	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġmovement	Ġto	Ġthe	Ġkitchen	Ġand	ĠSandra	's	Ġmovement	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġnot	ĠJohn	's	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

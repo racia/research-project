@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġkitchen	.	ĠSince	ĠMary	Ġis	Ġnot	Ġmentioned	Ġto	Ġhave	Ġmoved	Ġaway	Ġfrom	Ġthe	Ġkitchen	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

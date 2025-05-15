@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	11	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġand	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġsubsequent	Ġsentence	Ġthat	Ġmentions	ĠJohn	Ġmoving	Ġto	Ġa	Ġdifferent	Ġlocation	.	ĠTherefore	,	Ġwe	Ġcan	Ġconclude	Ġthat	ĠJohn	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

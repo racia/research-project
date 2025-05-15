@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠY	ann	Ġpicked	Ġup	Ġthe	Ġfootball	,	Ġit	Ġis	Ġlikely	Ġthat	ĠY	ann	Ġgot	Ġthe	Ġfootball	Ġbecause	Ġof	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġstating	Ġthat	ĠY	ann	Ġis	Ġbored	.	ĠThe	Ġmost	Ġlogical	Ġreason	Ġfor	ĠY	ann	Ġto	Ġget	Ġthe	Ġfootball	Ġis	Ġto	Ġentertain	Ġthemselves	Ġand	Ġalleviate	Ġtheir	Ġboredom	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

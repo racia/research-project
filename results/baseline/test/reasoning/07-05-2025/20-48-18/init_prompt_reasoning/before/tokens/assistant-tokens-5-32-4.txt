@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	27	Ġstates	Ġthat	ĠBill	Ġgave	Ġthe	Ġfootball	Ġto	ĠMary	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠBill	Ġgiving	Ġanything	Ġelse	Ġto	ĠMary	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

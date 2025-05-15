@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġleft	Ġby	ĠJohn	Ġin	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	30	).	ĠSince	ĠJohn	Ġleft	Ġthe	Ġapple	Ġthere	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġapple	Ġis	Ġstill	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

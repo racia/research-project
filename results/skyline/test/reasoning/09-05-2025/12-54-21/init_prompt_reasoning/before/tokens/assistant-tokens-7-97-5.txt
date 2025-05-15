@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	8	,	ĠDaniel	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	,	Ġand	Ġthen	Ġaccording	Ġto	Ġcontext	Ġsentence	Ġ	13	,	ĠMary	Ġpassed	Ġthe	Ġapple	Ġto	ĠJohn	,	Ġwhich	Ġmeans	ĠMary	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

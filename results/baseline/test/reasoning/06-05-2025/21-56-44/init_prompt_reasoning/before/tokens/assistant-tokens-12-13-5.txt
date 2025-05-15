@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġhas	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġwith	ĠSandra	Ġin	Ġsentence	Ġ	13	,	Ġand	Ġthen	Ġshe	Ġhas	Ġgone	Ġback	Ġto	Ġthe	Ġgarden	Ġwith	ĠJohn	Ġin	Ġsentence	Ġ	14	.	ĠSince	Ġthe	Ġlast	Ġaction	Ġmentioned	Ġis	Ġher	Ġgoing	Ġback	Ġto	Ġthe	Ġgarden	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-2	.	ĠBill	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
-3	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
-4	.	ĠBill	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠBill	Ġgive	Ġto	ĠMary	?Ċ

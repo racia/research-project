@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġoffice	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġmoving	Ġto	Ġa	Ġdifferent	Ġlocation	.	ĠTherefore	,	Ġit	's	Ġlikely	Ġthat	Ġshe	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

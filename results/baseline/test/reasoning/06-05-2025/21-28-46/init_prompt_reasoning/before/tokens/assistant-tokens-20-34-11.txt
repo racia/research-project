@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġit	's	Ġlikely	Ġthat	Ġhe	Ġwent	Ġthere	Ġbecause	Ġhe	Ġwas	Ġbored	,	Ġwhich	Ġwas	Ġmentioned	Ġin	Ġthe	Ġprevious	Ġcontext	Ġsentence	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

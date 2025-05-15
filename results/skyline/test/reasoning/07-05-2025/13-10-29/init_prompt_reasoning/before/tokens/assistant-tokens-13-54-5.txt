@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	's	Ġmovement	Ġin	Ġthe	Ġprovided	Ġcontext	Ġsentences	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠMary	Ġwas	Ġin	Ġthe	Ġgarden	Ġ(	sentence	Ġ	11	).ĊĊ	Answer	:	Ġgarden	<|eot_id|>

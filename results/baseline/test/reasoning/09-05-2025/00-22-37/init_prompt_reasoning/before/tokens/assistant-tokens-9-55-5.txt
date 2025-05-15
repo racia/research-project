@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	Ġbeing	Ġin	Ġthe	Ġhallway	.	ĠThey	Ġonly	Ġmention	ĠMary	Ġjourney	ing	Ġto	Ġthe	Ġhallway	,	Ġand	ĠDaniel	Ġbeing	Ġin	Ġa	Ġlocation	Ġother	Ġthan	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

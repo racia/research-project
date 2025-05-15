@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġand	Ġthen	Ġthey	Ġtravelled	Ġto	Ġthe	Ġbathroom	.	ĠSince	ĠSandra	Ġis	Ġnot	Ġmentioned	Ġas	Ġleaving	Ġthe	Ġgarden	,	Ġit	Ġis	Ġinferred	Ġthat	ĠSandra	Ġis	Ġstill	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

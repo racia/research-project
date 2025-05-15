@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġfootball	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġand	ĠDaniel	,	Ġbut	Ġnot	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-19	.	ĠSandra	Ġtook	Ġthe	Ġapple	.Ċ
-20	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
-21	.	ĠMary	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-22	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
-23	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-24	.	ĠMary	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġgarden	?Ċ

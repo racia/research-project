@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠFred	Ġgoing	Ġto	Ġthe	Ġcinema	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠHowever	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠFred	Ġwas	Ġat	Ġthe	Ġoffice	Ġyesterday	Ġ(	from	Ġcontext	Ġsentence	Ġ	2	Ġin	Ġthe	Ġprevious	Ġtask	)	Ġand	Ġwent	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	Ġ(	from	Ġcontext	Ġsentence	Ġ	1	Ġin	Ġthe	Ġprevious	Ġtask	).ĊĊ	Answer	:	Ġoffice	<|eot_id|>

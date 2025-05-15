@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġtaken	Ġby	ĠJohn	Ġin	Ġthe	Ġhallway	Ġ(	sentence	Ġ	52	),	Ġand	Ġthen	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	Ġand	Ġthen	Ġto	Ġthe	Ġbedroom	,	Ġso	Ġthe	Ġapple	Ġwas	Ġwith	ĠJohn	Ġbefore	Ġhe	Ġwent	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

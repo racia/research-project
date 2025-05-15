@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġhallway	Ġalong	Ġwith	ĠMary	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

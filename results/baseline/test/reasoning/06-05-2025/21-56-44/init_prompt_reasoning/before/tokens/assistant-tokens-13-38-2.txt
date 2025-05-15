@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	Ġtogether	Ġand	Ġthen	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.	ĠSince	ĠJohn	Ġis	Ġnot	Ġmentioned	Ġto	Ġhave	Ġseparated	Ġfrom	ĠMary	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJohn	Ġis	Ġstill	Ġwith	ĠMary	.	ĠTherefore	,	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

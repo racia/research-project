@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġgiving	Ġanything	Ġto	ĠBill	.	ĠIn	Ġfact	,	Ġsentence	Ġ	7	Ġstates	Ġthat	ĠBill	Ġleft	Ġthe	Ġapple	,	Ġwhich	Ġimplies	Ġthat	ĠBill	Ġhad	Ġthe	Ġapple	Ġpreviously	.	ĠSentence	Ġ	8	Ġis	Ġunrelated	Ġto	Ġthe	Ġquestion	.ĊĊ	Answer	:	ĠNothing	<|eot_id|>

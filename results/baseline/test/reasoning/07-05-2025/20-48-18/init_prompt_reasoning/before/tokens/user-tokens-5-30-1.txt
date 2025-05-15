@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠBill	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
-2	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
-3	.	ĠJeff	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
-4	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
-5	.	ĠJeff	Ġhanded	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
-6	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġapple	?Ċ

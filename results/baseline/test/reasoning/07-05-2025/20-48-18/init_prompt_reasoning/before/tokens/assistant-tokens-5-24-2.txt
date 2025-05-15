@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	12	,	ĠMary	Ġgave	Ġthe	Ġmilk	Ġto	ĠBill	.ĊĊ	Answer	:	Ġmilk	<|eot_id|>

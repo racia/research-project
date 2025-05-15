@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-16	.	ĠBill	Ġdiscarded	Ġthe	Ġfootball	.Ċ
-17	.	ĠMary	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠBill	Ġgive	Ġthe	Ġapple	Ġto	?Ċ

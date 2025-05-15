@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-15	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.Ċ
-16	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
-17	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
-18	.	ĠDaniel	Ġleft	Ġthe	Ġapple	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

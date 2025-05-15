@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġpark	Ġthis	Ġafternoon	,	Ġit	Ġimplies	Ġthat	Ġhe	Ġwas	Ġnot	Ġat	Ġthe	Ġcinema	Ġyesterday	.	ĠTherefore	,	Ġwe	Ġneed	Ġto	Ġconsider	Ġthe	Ġprevious	Ġinformation	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	,	Ġand	Ġbefore	Ġthat	,	Ġhe	Ġwas	Ġat	Ġthe	Ġoffice	Ġyesterday	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

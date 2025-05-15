@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġdiscarded	Ġby	ĠJohn	Ġ(	sentence	Ġ	47	),	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġthe	Ġfootball	's	Ġlocation	Ġbefore	Ġthe	Ġkitchen	.	ĠThe	Ġprevious	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġenough	Ġinformation	Ġto	Ġanswer	Ġthis	Ġquestion	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

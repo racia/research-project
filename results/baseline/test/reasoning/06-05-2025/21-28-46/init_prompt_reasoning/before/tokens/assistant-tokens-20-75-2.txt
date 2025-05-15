@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAntoine	Ġis	Ġthirsty	,	Ġwhich	Ġmeans	Ġhe	Ġneeds	Ġto	Ġqu	ench	Ġhis	Ġthirst	.	ĠThe	Ġcontext	Ġsentence	Ġdoes	Ġnot	Ġspecify	Ġwhat	ĠAntoine	Ġneeds	Ġto	Ġdo	Ġto	Ġqu	ench	Ġhis	Ġthirst	,	Ġbut	Ġbased	Ġon	Ġthe	Ġcommon	Ġhuman	Ġbehavior	Ġof	Ġseeking	Ġwater	Ġwhen	Ġthirsty	,	Ġit	Ġis	Ġlikely	Ġthat	ĠAntoine	Ġwill	Ġgo	Ġsomewhere	Ġto	Ġget	Ġa	Ġdrink	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

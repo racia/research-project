@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	Ġthe	Ġfootball	Ġat	Ġall	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġtravelling	Ġto	Ġthe	Ġoffice	Ġand	ĠSandra	Ġdropping	Ġthe	Ġmilk	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

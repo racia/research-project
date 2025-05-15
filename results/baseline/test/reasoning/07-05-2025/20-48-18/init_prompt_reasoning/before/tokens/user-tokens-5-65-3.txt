@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-19	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.Ċ
-20	.	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠJeff	Ġgive	Ġthe	Ġfootball	Ġto	?Ċ

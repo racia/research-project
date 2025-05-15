@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġoffice	Ġis	Ġeast	Ġof	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	4	),	Ġand	Ġthe	Ġbathroom	Ġis	Ġsouth	Ġof	Ġthe	Ġhallway	Ġ(	sentence	Ġ	3	),	Ġwe	Ġneed	Ġto	Ġmove	Ġeast	Ġfrom	Ġthe	Ġbathroom	Ġto	Ġreach	Ġthe	Ġoffice	.	ĠThen	,	Ġwe	Ġneed	Ġto	Ġmove	Ġwest	Ġfrom	Ġthe	Ġoffice	Ġto	Ġreach	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġwest	<|eot_id|>

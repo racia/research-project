@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBill	Ġis	Ġeither	Ġin	Ġthe	Ġbedroom	Ġor	Ġthe	Ġcinema	,	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġcinema	,	Ġwhich	Ġdoesn	't	Ġnecessarily	Ġmean	ĠBill	Ġis	Ġin	Ġthe	Ġcinema	.	ĠThe	Ġinformation	Ġonly	Ġtells	Ġus	Ġthat	ĠBill	Ġcould	Ġbe	Ġin	Ġthe	Ġcinema	,	Ġbut	Ġit	Ġdoesn	't	Ġconfirm	Ġit	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

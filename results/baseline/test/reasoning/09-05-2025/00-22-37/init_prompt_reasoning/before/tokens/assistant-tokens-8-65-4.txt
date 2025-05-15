@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	14	Ġstates	Ġthat	ĠMary	Ġgot	Ġthe	Ġapple	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġnow	Ġcarrying	Ġit	.	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġthat	Ġwould	Ġsuggest	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġit	.ĊĊ	Answer	:	Ġapple	<|eot_id|>

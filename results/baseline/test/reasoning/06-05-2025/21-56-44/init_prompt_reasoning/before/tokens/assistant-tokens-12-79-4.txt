@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġnot	Ġwith	ĠMary	.	ĠThen	,	ĠDaniel	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	ĠMary	Ġis	Ġwith	ĠDaniel	.	ĠSince	ĠSandra	Ġis	Ġnot	Ġwith	ĠMary	,	Ġand	ĠMary	Ġis	Ġwith	ĠDaniel	,	Ġit	's	Ġlikely	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

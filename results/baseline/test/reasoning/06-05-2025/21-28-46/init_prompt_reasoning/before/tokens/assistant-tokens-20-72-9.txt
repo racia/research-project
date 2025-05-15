@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠY	ann	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġit	's	Ġlikely	Ġthat	Ġhe	Ġwent	Ġthere	Ġto	Ġget	Ġsomething	,	Ġgiven	Ġthe	Ġcontext	.	ĠSince	ĠY	ann	Ġis	Ġthirsty	Ġ(	context	Ġsentence	Ġ	7	),	Ġit	's	Ġpossible	Ġthat	Ġhe	Ġwent	Ġto	Ġthe	Ġkitchen	Ġto	Ġget	Ġa	Ġdrink	.ĊĊ	Answer	:	Ġthirsty	<|eot_id|>

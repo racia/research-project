@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBill	Ġhanded	Ġthe	Ġfootball	Ġto	ĠFred	Ġ(	sentence	Ġ	28	),	Ġso	ĠBill	Ġis	Ġthe	Ġone	Ġwho	Ġgave	Ġthe	Ġfootball	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

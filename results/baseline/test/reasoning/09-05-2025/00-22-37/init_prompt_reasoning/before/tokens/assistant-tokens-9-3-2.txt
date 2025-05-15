@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	5	Ġstates	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġhallway	,	Ġproviding	Ġdirect	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBill	Ġmoved	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġhis	Ġlocation	Ġbefore	Ġthat	.	ĠHowever	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠBill	Ġwas	Ġnot	Ġin	Ġthe	Ġkitchen	Ġyesterday	,	Ġsince	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġyesterday	,	Ġand	ĠBill	Ġmoved	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

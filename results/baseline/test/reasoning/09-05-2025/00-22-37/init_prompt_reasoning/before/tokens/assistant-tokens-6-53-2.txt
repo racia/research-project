@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġmoving	Ġto	Ġthe	Ġbathroom	Ġand	Ġthen	Ġtravelling	Ġto	Ġthe	Ġhallway	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

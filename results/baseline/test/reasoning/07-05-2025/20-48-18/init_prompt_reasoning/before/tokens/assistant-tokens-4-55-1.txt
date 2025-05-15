@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġbathroom	Ġis	Ġwest	Ġof	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġother	Ġinformation	Ġthat	Ġsuggests	Ġanything	Ġelse	Ġis	Ġwest	Ġof	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

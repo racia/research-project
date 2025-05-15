@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	Ġcarrying	Ġany	Ġobjects	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġgoing	Ġto	Ġthe	Ġgarden	Ġand	ĠDaniel	Ġgoing	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġnot	Ġwhat	Ġthey	're	Ġcarrying	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

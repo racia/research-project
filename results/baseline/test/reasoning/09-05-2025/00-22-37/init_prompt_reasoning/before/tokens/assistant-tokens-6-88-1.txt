@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġmoving	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġlocated	Ġthere	.	ĠAdditionally	,	ĠSandra	Ġtook	Ġthe	Ġapple	Ġin	Ġthe	Ġoffice	,	Ġwhich	Ġfurther	Ġsupports	Ġthe	Ġidea	Ġthat	ĠMary	Ġis	Ġindeed	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

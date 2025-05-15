@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-4	.	ĠBill	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-5	.	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġpark	Ġor	Ġthe	Ġschool	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠBill	Ġin	Ġthe	Ġschool	?Ċ

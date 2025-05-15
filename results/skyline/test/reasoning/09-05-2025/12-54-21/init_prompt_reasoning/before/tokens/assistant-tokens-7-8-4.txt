@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	10	,	ĠMary	Ġgot	Ġthe	Ġapple	,	Ġso	Ġshe	Ġwas	Ġcarrying	Ġone	Ġobject	.	ĠIn	Ġsentence	Ġ	11	,	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠDaniel	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

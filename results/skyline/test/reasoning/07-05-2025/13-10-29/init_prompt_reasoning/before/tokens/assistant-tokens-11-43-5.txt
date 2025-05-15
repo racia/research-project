@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġare	Ġabout	ĠMary	's	Ġmovements	,	Ġbut	Ġthe	Ġquestion	Ġasks	Ġabout	ĠDaniel	's	Ġlocation	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠDaniel	's	Ġlocation	Ġis	Ġthat	Ġhe	Ġis	Ġin	Ġthe	Ġkitchen	Ġ(	from	Ġcontext	Ġsentences	Ġ	10	Ġand	Ġ	11	).ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

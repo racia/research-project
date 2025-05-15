@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġsuggest	Ġthat	ĠSandra	Ġgot	Ġthe	Ġmilk	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	10	),	Ġand	Ġthen	Ġleft	Ġthe	Ġmilk	Ġ(	sentence	Ġ	12	).	ĠSince	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	9	),	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġmilk	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

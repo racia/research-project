@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġmilk	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġjourney	ing	Ġto	Ġthe	Ġkitchen	Ġand	ĠSandra	Ġgoing	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġdo	Ġnot	Ġmention	Ġmilk	Ġat	Ġall	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠSentence	Ġ	14	Ġexplicitly	Ġstates	Ġthat	ĠBill	Ġis	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

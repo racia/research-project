@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJason	Ġgrabbed	Ġthe	Ġapple	Ġin	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġgot	Ġthe	Ġapple	Ġfor	Ġa	Ġspecific	Ġreason	.	ĠSince	ĠJason	Ġis	Ġhungry	,	Ġthe	Ġmost	Ġlogical	Ġreason	Ġfor	Ġhim	Ġgetting	Ġthe	Ġapple	Ġis	Ġto	Ġsatisfy	Ġhis	Ġhunger	.ĊĊ	Answer	:	Ġhungry	<|eot_id|>

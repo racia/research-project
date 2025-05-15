@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	14	Ġand	Ġ	15	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠMary	Ġor	Ġthe	Ġobjects	Ġshe	Ġis	Ġcarrying	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠMary	Ġwas	Ġthat	Ġshe	Ġleft	Ġthe	Ġfootball	Ġin	Ġsentence	Ġ	12	,	Ġso	Ġshe	Ġis	Ġstill	Ġnot	Ġcarrying	Ġany	Ġobjects	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

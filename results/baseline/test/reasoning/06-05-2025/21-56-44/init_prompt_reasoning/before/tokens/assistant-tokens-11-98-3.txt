@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġwent	Ġto	Ġthe	Ġgarden	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

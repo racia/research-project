@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġand	ĠMary	Ġmoving	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġdo	Ġnot	Ġmention	Ġthe	Ġapple	.	ĠTherefore	,	Ġit	's	Ġnot	Ġpossible	Ġto	Ġdetermine	Ġthe	Ġlocation	Ġof	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovided	Ġdo	Ġnot	Ġmention	Ġthe	Ġfootball	Ġat	Ġall	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	's	Ġmovements	Ġbetween	Ġthe	Ġbathroom	Ġand	Ġthe	Ġoffice	.	ĠTherefore	,	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġthe	Ġfootball	's	Ġlocation	Ġbefore	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

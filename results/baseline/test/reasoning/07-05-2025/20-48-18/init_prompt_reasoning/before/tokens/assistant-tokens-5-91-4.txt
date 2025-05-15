@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	22	,	ĠFred	Ġhanded	Ġthe	Ġapple	Ġto	ĠBill	.	ĠThis	Ġcontrad	icts	Ġthe	Ġprevious	Ġanswer	Ġthat	ĠBill	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

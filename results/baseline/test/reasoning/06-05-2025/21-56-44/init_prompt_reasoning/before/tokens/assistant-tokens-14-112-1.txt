@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBill	Ġmoved	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġand	Ġyesterday	Ġhe	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġsuggests	Ġthat	ĠBill	Ġwas	Ġin	Ġthe	Ġbedroom	Ġyesterday	,	Ġand	Ġbefore	Ġmoving	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

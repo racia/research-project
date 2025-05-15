@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġ	13	Ġand	Ġ	14	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġwas	Ġthat	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	8	),	Ġbut	Ġthere	Ġis	Ġno	Ġupdate	Ġabout	Ġher	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

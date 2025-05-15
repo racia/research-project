@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠMary	Ġwent	Ġto	Ġthe	Ġpark	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

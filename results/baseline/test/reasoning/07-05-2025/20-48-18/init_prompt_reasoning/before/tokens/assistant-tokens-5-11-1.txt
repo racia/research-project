@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	,	Ġas	Ġit	Ġis	Ġmentioned	Ġin	Ġsentence	Ġ	20	Ġthat	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

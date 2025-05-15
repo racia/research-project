@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.	ĠSentence	Ġ	7	Ġdoes	Ġnot	Ġmention	ĠMary	's	Ġpresence	Ġin	Ġthe	Ġbathroom	,	Ġbut	Ġit	Ġonly	Ġstates	Ġthat	ĠDaniel	Ġis	Ġnot	Ġin	Ġthe	Ġbedroom	,	Ġwhich	Ġis	Ġirrelevant	Ġto	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

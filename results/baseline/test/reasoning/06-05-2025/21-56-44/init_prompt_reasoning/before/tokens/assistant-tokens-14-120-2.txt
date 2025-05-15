@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠJulie	Ġin	Ġthese	Ġcontext	Ġsentences	.	ĠThe	Ġprevious	Ġinformation	Ġis	Ġthat	ĠJulie	Ġmoved	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġand	Ġyesterday	Ġshe	Ġwent	Ġto	Ġthe	Ġschool	.	ĠThis	Ġimplies	Ġthat	ĠJulie	Ġwas	Ġat	Ġthe	Ġschool	Ġyesterday	,	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

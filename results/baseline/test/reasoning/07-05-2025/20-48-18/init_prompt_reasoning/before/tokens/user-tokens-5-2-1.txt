@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
-2	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
-3	.	ĠJeff	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
-4	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
-5	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-6	.	ĠJeff	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġapple	?Ċ

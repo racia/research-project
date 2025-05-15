@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠMary	Ġand	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	,	Ġas	Ġthey	Ġhave	Ġjust	Ġmoved	Ġthere	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

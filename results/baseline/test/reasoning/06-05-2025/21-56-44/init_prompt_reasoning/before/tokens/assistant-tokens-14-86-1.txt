@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġyesterday	,	Ġwhich	Ġmeans	Ġhe	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.	ĠThen	,	Ġhe	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġwhich	Ġmeans	Ġhe	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

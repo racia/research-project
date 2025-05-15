@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġhallway	Ġ(	7	)	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġ(	8	),	Ġwhich	Ġmeans	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

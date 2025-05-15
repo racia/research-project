@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġtravelled	Ġto	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJason	Ġwent	Ġto	Ġthe	Ġkitchen	Ġbecause	Ġof	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġstating	Ġthat	ĠJason	Ġis	Ġthirsty	.	ĠThe	Ġmost	Ġlogical	Ġreason	Ġfor	ĠJason	Ġto	Ġgo	Ġto	Ġthe	Ġkitchen	Ġis	Ġto	Ġget	Ġa	Ġdrink	Ġand	Ġqu	ench	Ġhis	Ġthirst	.ĊĊ	Answer	:	Ġthirsty	<|eot_id|>

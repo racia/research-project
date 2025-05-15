@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġthat	Ġdirectly	Ġstates	ĠSandra	's	Ġlocation	.	ĠSentence	Ġ	13	Ġmentions	ĠDaniel	Ġtaking	Ġthe	Ġapple	Ġ"	there	",	Ġbut	Ġit	Ġdoesn	't	Ġspecify	Ġwhere	Ġ"	there	"	Ġis	.	ĠSentence	Ġ	14	Ġstates	Ġthat	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġit	Ġdoesn	't	Ġmention	ĠSandra	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

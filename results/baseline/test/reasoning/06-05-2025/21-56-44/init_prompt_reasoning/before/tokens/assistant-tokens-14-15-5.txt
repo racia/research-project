@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠBill	Ġgoing	Ġto	Ġthe	Ġbedroom	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	16	),	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġhim	Ġgoing	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

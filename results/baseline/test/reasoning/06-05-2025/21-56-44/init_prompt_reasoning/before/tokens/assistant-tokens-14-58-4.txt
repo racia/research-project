@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠBill	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.	ĠThe	Ġonly	Ġother	Ġplace	Ġmentioned	Ġis	Ġthe	Ġbedroom	,	Ġwhich	Ġis	Ġthe	Ġlast	Ġplace	ĠBill	Ġwas	Ġknown	Ġto	Ġbe	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

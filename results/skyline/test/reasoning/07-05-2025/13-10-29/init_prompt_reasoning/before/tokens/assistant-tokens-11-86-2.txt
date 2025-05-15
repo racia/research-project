@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovided	Ġare	Ġabout	ĠMary	's	Ġmovements	,	Ġbut	Ġthere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠJohn	Ġwas	Ġthe	Ġoffice	Ġ(	from	Ġthe	Ġprevious	Ġcontext	).ĊĊ	Answer	:	Ġoffice	<|eot_id|>

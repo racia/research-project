@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġchanges	.	ĠInitially	,	Ġshe	Ġmoves	Ġto	Ġthe	Ġoffice	Ġwith	ĠDaniel	.	ĠLater	,	Ġshe	Ġmoves	Ġto	Ġthe	Ġhallway	Ġwith	ĠJohn	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

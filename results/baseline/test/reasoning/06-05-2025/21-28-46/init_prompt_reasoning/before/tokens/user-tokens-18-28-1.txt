@@ -1,8 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠThe	Ġsuitcase	Ġfits	Ġinside	Ġthe	Ġcontainer	.Ċ
-2	.	ĠThe	Ġbox	Ġof	Ġchocolates	Ġfits	Ġinside	Ġthe	Ġcontainer	.Ċ
-3	.	ĠThe	Ġchest	Ġis	Ġbigger	Ġthan	Ġthe	Ġbox	Ġof	Ġchocolates	.Ċ
-4	.	ĠThe	Ġsuitcase	Ġfits	Ġinside	Ġthe	Ġbox	.Ċ
-5	.	ĠThe	Ġbox	Ġfits	Ġinside	Ġthe	Ġcontainer	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Does	Ġthe	Ġsuitcase	Ġfit	Ġin	Ġthe	Ġcontainer	?Ċ

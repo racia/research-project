@@ -1,1 +1,0 @@
-<|start_header_id|>	<|end_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	2	,	ĠBill	Ġmoved	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġmeans	ĠBill	Ġis	Ġnot	Ġin	Ġthe	Ġcinema	.	ĠMary	Ġis	Ġin	Ġthe	Ġcinema	Ġ(	sentence	Ġ	1	),	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠBill	Ġbeing	Ġin	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġno	<|eot_id|>

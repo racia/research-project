@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	,	Ġand	Ġwe	Ġdon	't	Ġhave	Ġany	Ġcontext	Ġthat	Ġsuggests	Ġshe	Ġis	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

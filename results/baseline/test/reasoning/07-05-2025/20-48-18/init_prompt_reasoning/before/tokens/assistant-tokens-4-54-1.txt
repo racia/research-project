@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġbathroom	Ġis	Ġeast	Ġof	Ġthe	Ġgarden	Ġ(	sentence	Ġ	2	),	Ġand	Ġthe	Ġkitchen	Ġis	Ġeast	Ġof	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	1	),	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġthe	Ġkitchen	Ġis	Ġalso	Ġeast	Ġof	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

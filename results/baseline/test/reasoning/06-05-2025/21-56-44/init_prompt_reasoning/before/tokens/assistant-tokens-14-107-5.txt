@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġprevious	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġbedroom	.	ĠThe	Ġinformation	Ġprovided	Ġonly	Ġtalks	Ġabout	ĠMary	's	Ġmovement	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	Ġand	ĠFred	's	Ġmovement	Ġto	Ġthe	Ġkitchen	Ġthis	Ġafternoon	,	Ġbut	Ġnot	ĠFred	's	Ġlocation	Ġbefore	Ġthe	Ġbedroom	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

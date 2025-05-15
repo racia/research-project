@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġkitchen	Ġis	Ġeast	Ġof	Ġthe	Ġhallway	Ġ(	sentence	Ġ	3	),	Ġand	Ġthe	Ġbathroom	Ġis	Ġwest	Ġof	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	1	),	Ġwe	Ġcan	Ġinfer	Ġthat	Ġthe	Ġbedroom	Ġis	Ġeast	Ġof	Ġthe	Ġbathroom	.	ĠThis	Ġmeans	Ġthat	Ġto	Ġgo	Ġfrom	Ġthe	Ġkitchen	Ġto	Ġthe	Ġbathroom	,	Ġwe	Ġneed	Ġto	Ġmove	Ġwest	ward	.ĊĊ	Answer	:	Ġwest	<|eot_id|>

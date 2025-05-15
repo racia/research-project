@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	10	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġaccording	Ġto	Ġcontext	Ġsentence	Ġ	13	,	ĠSandra	Ġalso	Ġtravelled	Ġto	Ġthe	Ġkitchen	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġleaving	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

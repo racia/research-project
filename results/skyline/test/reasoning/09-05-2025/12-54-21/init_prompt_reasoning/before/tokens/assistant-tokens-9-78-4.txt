@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAlthough	Ġcontext	Ġsentence	Ġ	11	Ġstates	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġbathroom	,	Ġcontext	Ġsentence	Ġ	10	Ġexplicitly	Ġstates	Ġthat	ĠSandra	Ġis	Ġin	Ġthe	Ġbedroom	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġcan	Ġbe	Ġin	Ġmultiple	Ġlocations	Ġsimultaneously	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

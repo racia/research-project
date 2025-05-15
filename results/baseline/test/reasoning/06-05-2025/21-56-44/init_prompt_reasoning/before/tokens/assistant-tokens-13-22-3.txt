@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġand	Ġthen	Ġthey	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġimplies	Ġthat	Ġthey	Ġmoved	Ġfrom	Ġthe	Ġhallway	Ġto	Ġthe	Ġbedroom	.	ĠTherefore	,	ĠMary	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

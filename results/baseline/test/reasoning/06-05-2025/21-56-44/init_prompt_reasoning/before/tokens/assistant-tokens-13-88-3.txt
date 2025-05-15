@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġafterwards	Ġthey	Ġwent	Ġto	Ġthe	Ġhallway	.	ĠSince	ĠMary	Ġis	Ġnot	Ġmentioned	Ġas	Ġleaving	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġinferred	Ġthat	Ġshe	Ġis	Ġstill	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

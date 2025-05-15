@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSum	it	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġwent	Ġthere	Ġfor	Ġa	Ġspecific	Ġreason	.	ĠSince	ĠSum	it	Ġis	Ġthirsty	,	Ġthe	Ġmost	Ġlogical	Ġreason	Ġfor	Ġhim	Ġgoing	Ġto	Ġthe	Ġkitchen	Ġis	Ġto	Ġget	Ġa	Ġdrink	.ĊĊ	Answer	:	Ġthirsty	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠFred	Ġgave	Ġthe	Ġfootball	Ġto	ĠBill	Ġin	Ġsentence	Ġ	15	,	Ġand	ĠBill	Ġpassed	Ġthe	Ġfootball	Ġto	ĠFred	Ġin	Ġsentence	Ġ	14	.	ĠHowever	,	Ġsentence	Ġ	15	Ġis	Ġthe	Ġonly	Ġone	Ġthat	Ġmentions	ĠFred	Ġgiving	Ġthe	Ġfootball	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

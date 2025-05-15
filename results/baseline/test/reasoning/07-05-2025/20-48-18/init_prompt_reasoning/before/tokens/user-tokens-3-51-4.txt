@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-32	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
-33	.	ĠMary	Ġgrabbed	Ġthe	Ġfootball	.Ċ
-34	.	ĠSandra	Ġdropped	Ġthe	Ġmilk	.Ċ
-35	.	ĠMary	Ġdropped	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġkitchen	?Ċ

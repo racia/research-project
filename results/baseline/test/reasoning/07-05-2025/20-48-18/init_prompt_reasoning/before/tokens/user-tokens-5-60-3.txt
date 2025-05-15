@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-23	.	ĠJeff	Ġpassed	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
-24	.	ĠMary	Ġhanded	Ġthe	Ġmilk	Ġto	ĠJeff	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠMary	Ġgive	Ġto	ĠJeff	?Ċ

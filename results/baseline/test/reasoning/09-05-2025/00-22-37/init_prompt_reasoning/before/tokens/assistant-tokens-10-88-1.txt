@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠBill	Ġgoing	Ġto	Ġthe	Ġcinema	.	ĠThey	Ġonly	Ġmention	ĠBill	Ġgoing	Ġback	Ġto	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠBill	Ġbeing	Ġin	Ġthe	Ġcinema	.ĊĊ	Answer	:	ĠNo	<|eot_id|>

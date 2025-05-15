@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġand	Ġthen	Ġthey	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	,	Ġas	Ġthey	Ġmoved	Ġthere	Ġafter	Ġbeing	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

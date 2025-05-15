@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	14	,	ĠMary	Ġleft	Ġthe	Ġmilk	,	Ġwhich	Ġmeans	Ġshe	Ġwas	Ġcarrying	Ġit	.	ĠTherefore	,	ĠMary	Ġwas	Ġcarrying	Ġthe	Ġmilk	.ĊĊ	Answer	:	Ġmilk	<|eot_id|>

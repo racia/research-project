@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-18	.	ĠBill	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-19	.	ĠMary	Ġwent	Ġto	Ġthe	Ġhallway	.Ċ
-20	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
-21	.	ĠBill	Ġpassed	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠBill	Ġgive	Ġthe	Ġfootball	Ġto	?Ċ

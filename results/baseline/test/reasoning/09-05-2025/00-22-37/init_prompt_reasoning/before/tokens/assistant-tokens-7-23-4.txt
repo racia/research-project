@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠSandra	Ġcarrying	Ġany	Ġobjects	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	Ġgoing	Ġto	Ġthe	Ġbedroom	Ġand	ĠJohn	Ġpassing	Ġthe	Ġmilk	Ġto	ĠMary	,	Ġwhich	Ġdoes	Ġnot	Ġaffect	ĠSandra	's	Ġcarrying	Ġstatus	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	Ġthat	ĠMary	Ġpicked	Ġup	Ġthe	Ġapple	,	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġone	<|eot_id|>

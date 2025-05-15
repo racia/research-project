@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJulie	Ġat	Ġall	,	Ġand	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.	ĠThere	Ġis	Ġno	Ġdirect	Ġor	Ġindirect	Ġmention	Ġof	ĠJulie	Ġbeing	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	ĠNo	<|eot_id|>

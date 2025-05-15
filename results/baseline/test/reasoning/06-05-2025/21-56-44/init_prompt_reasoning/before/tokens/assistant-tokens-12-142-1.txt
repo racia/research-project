@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	1	),	Ġand	Ġthen	Ġjourney	ed	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	2	),	Ġit	Ġis	Ġlikely	Ġthat	ĠJohn	Ġis	Ġstill	Ġwith	ĠMary	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

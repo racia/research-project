@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	ĠSum	it	Ġwent	Ġto	Ġthe	Ġkitchen	Ġbecause	Ġthey	Ġwere	Ġthirsty	.ĊĊ	Answer	:	Ġthirsty	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠFred	Ġwent	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	.	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠJohn	Ġwas	Ġthe	Ġoffice	Ġ(	from	Ġprevious	Ġcontext	Ġsentences	).ĊĊ	Answer	:	Ġoffice	<|eot_id|>

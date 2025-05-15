@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġtravelling	Ġto	Ġthe	Ġoffice	Ġand	ĠJohn	Ġtravelling	Ġto	Ġthe	Ġbathroom	,	Ġbut	ĠDaniel	Ġis	Ġnot	Ġmentioned	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

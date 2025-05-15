@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFred	Ġwent	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġwhere	Ġhe	Ġwas	Ġbefore	Ġgoing	Ġto	Ġthe	Ġbedroom	.	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠFred	's	Ġprevious	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

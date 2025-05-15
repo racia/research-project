@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-63	.	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġto	ĠFred	.Ċ
-64	.	ĠFred	Ġpassed	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġfootball	?Ċ

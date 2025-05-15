@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġhis	Ġlocation	Ġchanges	.	ĠInitially	,	Ġhe	Ġis	Ġin	Ġthe	Ġbathroom	Ġwith	ĠMary	.	ĠThen	,	Ġhe	Ġmoves	Ġback	Ġto	Ġthe	Ġoffice	Ġwith	ĠDaniel	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

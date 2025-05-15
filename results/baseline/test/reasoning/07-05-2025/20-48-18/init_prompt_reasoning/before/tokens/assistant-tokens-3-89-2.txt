@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġthe	Ġmilk	Ġbeing	Ġin	Ġthe	Ġoffice	Ġor	Ġbefore	Ġthe	Ġoffice	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	Ġthe	Ġmilk	Ġbeing	Ġdiscarded	Ġby	ĠMary	,	Ġbut	Ġnot	Ġwhere	Ġit	Ġwas	Ġbefore	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

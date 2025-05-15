@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġand	Ġthen	Ġthey	Ġtravelled	Ġto	Ġthe	Ġbedroom	.	ĠSince	ĠJohn	Ġis	Ġnot	Ġmentioned	Ġas	Ġgoing	Ġanywhere	Ġelse	,	Ġit	Ġis	Ġinferred	Ġthat	ĠJohn	Ġis	Ġstill	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

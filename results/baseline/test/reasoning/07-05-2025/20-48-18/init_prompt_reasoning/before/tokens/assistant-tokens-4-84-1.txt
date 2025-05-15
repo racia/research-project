@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġgarden	Ġis	Ġeast	Ġof	Ġthe	Ġoffice	,	Ġand	Ġthe	Ġbedroom	Ġis	Ġeast	Ġof	Ġthe	Ġgarden	,	Ġit	Ġimplies	Ġthat	Ġthe	Ġoffice	Ġis	Ġwest	Ġof	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

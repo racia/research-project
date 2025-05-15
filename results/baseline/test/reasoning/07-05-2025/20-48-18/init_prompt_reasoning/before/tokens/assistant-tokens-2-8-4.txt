@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġsuggest	Ġthat	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	Ġ(	sentence	Ġ	26	),	Ġbut	Ġthen	Ġleft	Ġit	Ġ(	sentence	Ġ	28	).	ĠSince	ĠJohn	Ġleft	Ġthe	Ġfootball	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġfootball	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġlocation	Ġwhere	ĠJohn	Ġgrabbed	Ġit	,	Ġbut	Ġits	Ġcurrent	Ġlocation	Ġis	Ġnot	Ġspecified	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

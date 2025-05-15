@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġsuggest	Ġthat	ĠBill	Ġdropped	Ġthe	Ġmilk	,	Ġand	ĠMary	Ġgot	Ġthe	Ġapple	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠBill	Ġreceiving	Ġthe	Ġapple	.	ĠJeff	Ġreceived	Ġthe	Ġapple	Ġfrom	ĠMary	.ĊĊ	Answer	:	ĠJeff	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġtaken	Ġby	ĠMary	Ġin	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	12	),	Ġand	Ġthen	Ġput	Ġdown	Ġ(	sentence	Ġ	13	).	ĠLater	,	ĠMary	Ġpicked	Ġit	Ġup	Ġagain	Ġin	Ġthe	Ġhallway	Ġ(	sentence	Ġ	23	),	Ġso	Ġthe	Ġfootball	Ġwas	Ġin	Ġthe	Ġbedroom	Ġbefore	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

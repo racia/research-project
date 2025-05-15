@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	8	Ġexplicitly	Ġstates	Ġthat	ĠJulie	Ġmoved	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġnow	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

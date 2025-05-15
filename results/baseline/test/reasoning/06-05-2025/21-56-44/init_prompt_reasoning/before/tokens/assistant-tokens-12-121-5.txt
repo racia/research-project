@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġand	ĠJohn	Ġgoing	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.	ĠHowever	,	Ġthe	Ġnext	Ġsentence	Ġmentions	ĠMary	Ġand	ĠSandra	Ġgoing	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġdoes	Ġnot	Ġchange	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

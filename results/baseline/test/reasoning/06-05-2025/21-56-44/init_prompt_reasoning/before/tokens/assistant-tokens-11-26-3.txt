@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	's	Ġmovements	,	Ġwhich	Ġare	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġto	Ġthe	Ġbathroom	.	ĠSince	ĠJohn	Ġis	Ġnot	Ġmentioned	,	Ġhis	Ġlocation	Ġis	Ġunknown	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

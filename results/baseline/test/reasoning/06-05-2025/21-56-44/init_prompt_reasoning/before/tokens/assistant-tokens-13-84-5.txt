@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġoffice	.	ĠSince	ĠJohn	Ġis	Ġnot	Ġmentioned	Ġto	Ġhave	Ġleft	Ġthe	Ġoffice	,	Ġit	Ġis	Ġinferred	Ġthat	ĠJohn	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

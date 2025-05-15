@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġoffice	,	Ġas	Ġhe	Ġmoved	Ġthere	Ġwith	ĠMary	Ġafter	Ġbeing	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

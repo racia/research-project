@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	13	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	.	ĠThen	,	Ġfrom	Ġsentence	Ġ	12	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġkitchen	Ġbefore	Ġgoing	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

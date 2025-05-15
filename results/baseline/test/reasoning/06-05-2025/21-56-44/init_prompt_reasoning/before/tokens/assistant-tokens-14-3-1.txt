@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġpark	Ġyesterday	Ġ(	sentence	Ġ	3	),	Ġand	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	Ġ(	sentence	Ġ	4	),	Ġit	Ġis	Ġinferred	Ġthat	Ġshe	Ġwas	Ġin	Ġthe	Ġpark	Ġbefore	Ġjourney	ing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġpark	<|eot_id|>

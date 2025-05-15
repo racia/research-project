@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	12	,	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġindication	Ġthat	ĠSandra	Ġhas	Ġgone	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwent	Ġthere	Ġto	Ġrest	Ġand	Ġsleep	,	Ġwhich	Ġwas	Ġmentioned	Ġin	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġ(	13	.	ĠJason	Ġis	Ġtired	).ĊĊ	Answer	:	Ġtired	<|eot_id|>

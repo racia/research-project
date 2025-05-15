@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.	ĠThe	Ġgiven	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġlocations	Ġafter	Ġgoing	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġare	Ġthe	Ġbedroom	Ġand	Ġthe	Ġschool	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

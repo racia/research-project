@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġpassed	Ġthe	Ġapple	Ġto	ĠBill	,	Ġwhich	Ġmeans	ĠBill	Ġreceived	Ġthe	Ġapple	Ġfrom	ĠMary	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

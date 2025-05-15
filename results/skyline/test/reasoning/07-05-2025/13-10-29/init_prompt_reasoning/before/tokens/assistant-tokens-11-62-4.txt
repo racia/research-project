@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ(	10	Ġand	Ġ	11	)	Ġare	Ġabout	ĠMary	's	Ġmovements	,	Ġbut	Ġthe	Ġquestion	Ġasks	Ġabout	ĠSandra	's	Ġlocation	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠSandra	Ġwas	Ġin	Ġthe	Ġgarden	Ġ(	sentence	Ġ	8	).ĊĊ	Answer	:	Ġgarden	<|eot_id|>

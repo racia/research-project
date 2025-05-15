@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġis	Ġmentioned	Ġin	Ġsentence	Ġ	38	,	Ġwhere	ĠJohn	Ġdiscarded	Ġthe	Ġfootball	.	ĠSince	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġin	Ġsentence	Ġ	35	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġfootball	Ġwas	Ġdiscarded	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

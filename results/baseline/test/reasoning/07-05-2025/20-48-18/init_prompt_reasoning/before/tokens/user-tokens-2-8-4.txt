@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-26	.	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
-27	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
-28	.	ĠJohn	Ġleft	Ġthe	Ġfootball	.Ċ
-29	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġfootball	?Ċ

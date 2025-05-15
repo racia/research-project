@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	6	,	Ġ"	Fred	Ġwent	Ġto	Ġthe	Ġkitchen	Ġyesterday	."	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	's	Ġlocation	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	.	ĠĊĊ	Answer	:	Ġkitchen	<|eot_id|>

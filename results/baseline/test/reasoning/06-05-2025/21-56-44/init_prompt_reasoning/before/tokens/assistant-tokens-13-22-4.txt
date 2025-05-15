@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġthey	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġimplies	Ġthat	Ġthey	Ġmoved	Ġfrom	Ġthe	Ġoffice	Ġto	Ġthe	Ġbathroom	.	ĠTherefore	,	ĠJohn	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

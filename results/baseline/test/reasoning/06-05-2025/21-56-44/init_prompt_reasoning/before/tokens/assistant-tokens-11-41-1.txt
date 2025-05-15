@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	Ġinitially	,	Ġand	Ġthen	Ġshe	Ġwent	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	,	Ġas	Ġshe	Ġdidn	't	Ġgo	Ġanywhere	Ġelse	Ġafter	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

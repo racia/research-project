@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	's	Ġmovement	Ġis	Ġtracked	Ġfrom	Ġthe	Ġgarden	Ġto	Ġthe	Ġbedroom	,	Ġindicating	Ġa	Ġchange	Ġin	Ġlocation	.	ĠSince	Ġthe	Ġlast	Ġknown	Ġlocation	Ġis	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġinferred	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

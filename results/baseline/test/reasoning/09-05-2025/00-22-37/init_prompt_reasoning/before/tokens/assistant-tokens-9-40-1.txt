@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠSandra	's	Ġlocation	,	Ġand	Ġthe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġthat	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	,	Ġas	Ġshe	Ġhas	Ġjust	Ġarrived	Ġthere	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

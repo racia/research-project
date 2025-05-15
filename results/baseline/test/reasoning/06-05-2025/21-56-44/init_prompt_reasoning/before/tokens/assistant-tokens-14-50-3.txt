@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠBill	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	10	),	Ġand	Ġhe	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġthis	Ġevening	Ġ(	sentence	Ġ	9	),	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠBill	Ġwas	Ġin	Ġthe	Ġbedroom	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

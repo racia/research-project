@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġwent	Ġto	Ġthe	Ġpark	Ġthis	Ġafternoon	,	Ġwe	Ġneed	Ġto	Ġfind	Ġout	Ġwhere	Ġshe	Ġwas	Ġbefore	Ġthat	.	ĠWe	Ġknow	Ġshe	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġyesterday	,	Ġand	Ġthen	Ġwent	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	.	ĠThis	Ġmeans	Ġshe	Ġwas	Ġnot	Ġat	Ġthe	Ġpark	Ġbefore	Ġthis	Ġafternoon	.ĊĊ	Answer	:	Ġcinema	<|eot_id|>

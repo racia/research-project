@@ -1,1 +1,0 @@
-<|start_header_id|>	<|end_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠSince	ĠEmily	Ġis	Ġa	Ġwolf	Ġ(	sentence	Ġ	6	),	Ġand	Ġwolves	Ġare	Ġafraid	Ġof	Ġmice	Ġ(	sentence	Ġ	5	),	ĠEmily	Ġis	Ġafraid	Ġof	Ġmice	.ĊĊ	Answer	:	Ġmice	<|eot_id|>

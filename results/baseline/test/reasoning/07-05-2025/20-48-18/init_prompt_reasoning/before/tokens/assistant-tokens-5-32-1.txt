@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġhanded	Ġthe	Ġfootball	Ġto	ĠBill	Ġin	Ġsentence	Ġ	21	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgiving	Ġanything	Ġelse	Ġto	ĠBill	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

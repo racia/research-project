@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	13	Ġstates	Ġthat	ĠSandra	Ġand	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġthere	Ġis	Ġno	Ġsubsequent	Ġsentence	Ġindicating	Ġthat	ĠSandra	Ġleft	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

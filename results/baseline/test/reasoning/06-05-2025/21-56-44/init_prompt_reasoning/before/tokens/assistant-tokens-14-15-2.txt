@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	6	),	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġgoing	Ġto	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġwas	Ġnot	Ġat	Ġthe	Ġkitchen	Ġbefore	Ġgoing	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	11	,	Ġit	Ġwas	Ġmentioned	Ġthat	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthere	Ġis	Ġno	Ġnew	Ġinformation	Ġto	Ġsuggest	Ġthat	ĠJohn	Ġhas	Ġleft	Ġthe	Ġoffice	.	ĠSentence	Ġ	14	Ġonly	Ġmentions	ĠJohn	's	Ġaction	Ġof	Ġleaving	Ġthe	Ġapple	,	Ġbut	Ġdoes	Ġnot	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

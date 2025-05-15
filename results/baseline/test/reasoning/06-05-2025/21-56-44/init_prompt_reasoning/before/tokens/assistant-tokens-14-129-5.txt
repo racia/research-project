@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	18	),	Ġand	Ġthen	Ġhe	Ġwent	Ġto	Ġthe	Ġcinema	Ġthis	Ġevening	Ġ(	sentence	Ġ	17	).	ĠThis	Ġimplies	Ġthat	ĠBill	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġtaken	Ġto	Ġthe	Ġbathroom	,	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġthe	Ġapple	Ġbeing	Ġmoved	Ġfrom	Ġthe	Ġbathroom	Ġto	Ġthe	Ġoffice	.	ĠTherefore	,	Ġthe	Ġapple	Ġis	Ġstill	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

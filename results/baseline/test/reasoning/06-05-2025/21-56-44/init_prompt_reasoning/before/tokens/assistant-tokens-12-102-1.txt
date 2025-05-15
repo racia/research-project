@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠDaniel	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	2	),	Ġand	ĠMary	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	Ġ(	sentence	Ġ	1	),	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	Ġgoing	Ġto	Ġthe	Ġhallway	.	ĠTherefore	,	ĠDaniel	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-14	.	ĠJeff	Ġpassed	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
-15	.	ĠBill	Ġdiscarded	Ġthe	Ġapple	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġreceived	Ġthe	Ġfootball	?Ċ

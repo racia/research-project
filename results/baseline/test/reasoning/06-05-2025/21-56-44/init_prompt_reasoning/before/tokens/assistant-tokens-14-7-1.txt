@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠBill	Ġwent	Ġto	Ġthe	Ġschool	Ġyesterday	Ġ(	sentence	Ġ	2	),	Ġand	Ġhe	Ġtravelled	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	Ġ(	sentence	Ġ	4	),	Ġit	Ġis	Ġlogical	Ġto	Ġinfer	Ġthat	ĠBill	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

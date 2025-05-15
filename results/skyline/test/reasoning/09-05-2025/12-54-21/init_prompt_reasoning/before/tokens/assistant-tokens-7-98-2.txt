@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	5	,	ĠMary	Ġgrabbed	Ġthe	Ġfootball	Ġthere	,	Ġwhich	Ġmeans	ĠMary	Ġis	Ġcarrying	Ġthe	Ġfootball	.	ĠThe	Ġprevious	Ġaction	Ġof	Ġleaving	Ġthe	Ġfootball	Ġ(	sentence	Ġ	4	)	Ġis	Ġoverridden	Ġby	Ġthe	Ġnew	Ġaction	Ġof	Ġgrabbing	Ġit	.ĊĊ	Answer	:	Ġone	<|eot_id|>

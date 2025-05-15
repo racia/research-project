@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġmentions	Ġ"	This	Ġmorning	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġpark	."	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġpark	.	ĠĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

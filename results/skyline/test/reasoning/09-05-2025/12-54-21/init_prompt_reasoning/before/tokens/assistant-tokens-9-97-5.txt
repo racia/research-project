@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	Ġ"	Daniel	Ġwent	Ġto	Ġthe	Ġhallway	",	Ġwhich	Ġimplies	Ġthat	ĠDaniel	Ġis	Ġin	Ġthe	Ġhallway	,	Ġnot	Ġin	Ġthe	Ġbathroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

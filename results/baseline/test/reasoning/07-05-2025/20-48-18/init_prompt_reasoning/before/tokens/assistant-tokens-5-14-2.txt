@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	9	,	ĠMary	Ġpassed	Ġthe	Ġapple	Ġto	ĠBill	,	Ġbut	Ġsentence	Ġ	8	Ġstates	Ġthat	ĠBill	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	,	Ġwhich	Ġmeans	Ġthat	ĠMary	Ġdid	Ġnot	Ġgive	Ġthe	Ġapple	Ġto	Ġanyone	.ĊĊ	Answer	:	ĠNo	Ġone	<|eot_id|>

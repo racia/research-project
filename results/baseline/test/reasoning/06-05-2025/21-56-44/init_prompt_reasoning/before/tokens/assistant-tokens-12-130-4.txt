@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	Ġwith	ĠJohn	,	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġwith	ĠSandra	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.Ċ	Answer	:	Ġkitchen	<|eot_id|>

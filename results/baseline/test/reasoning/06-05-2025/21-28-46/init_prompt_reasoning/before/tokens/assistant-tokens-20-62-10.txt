@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġpicked	Ġup	Ġthe	Ġfootball	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġgot	Ġit	Ġto	Ġplay	Ġwith	Ġor	Ġdo	Ġsomething	Ġrelated	Ġto	Ġhis	Ġboredom	.	ĠThe	Ġcontext	Ġsentence	Ġ	1	Ġmentioned	Ġthat	ĠJason	Ġis	Ġbored	,	Ġwhich	Ġsuggests	Ġthat	Ġhe	Ġgot	Ġthe	Ġfootball	Ġto	Ġalleviate	Ġhis	Ġboredom	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

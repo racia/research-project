@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠGer	tr	ude	Ġis	Ġa	Ġmouse	.	ĠAccording	Ġto	Ġsentence	Ġ	1	,	ĠM	ice	Ġare	Ġafraid	Ġof	Ġsheep	.ĊĊ	Answer	:	Ġsheep	<|eot_id|>

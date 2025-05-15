@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	17	Ġexplicitly	Ġstates	Ġthat	ĠBill	Ġpassed	Ġthe	Ġfootball	Ġto	ĠMary	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

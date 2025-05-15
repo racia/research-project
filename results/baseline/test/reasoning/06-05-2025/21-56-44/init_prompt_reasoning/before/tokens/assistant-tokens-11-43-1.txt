@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġinitially	,	Ġand	Ġthen	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.	ĠThis	Ġimplies	Ġthat	Ġshe	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

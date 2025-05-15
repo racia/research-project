@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	Ġ(	sentence	Ġ	13	),	Ġwhich	Ġimplies	Ġthat	Ġshe	Ġis	Ġnow	Ġin	Ġthe	Ġgarden	.	ĠThe	Ġaction	Ġof	ĠDaniel	Ġdropping	Ġthe	Ġmilk	Ġ(	sentence	Ġ	14	)	Ġdoes	Ġnot	Ġchange	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

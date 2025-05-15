@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠEmily	Ġis	Ġa	Ġmouse	,	Ġand	Ġaccording	Ġto	Ġsentence	Ġ	4	,	Ġmice	Ġare	Ġafraid	Ġof	Ġsheep	.	ĠSince	ĠEmily	Ġis	Ġa	Ġmouse	,	Ġshe	Ġis	Ġlikely	Ġto	Ġbe	Ġafraid	Ġof	Ġsheep	.ĊĊ	Answer	:	Ġsheep	<|eot_id|>

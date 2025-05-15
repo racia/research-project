@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġgrabbed	Ġby	ĠSandra	Ġ(	sentence	Ġ	95	),	Ġand	Ġthen	Ġshe	Ġtravelled	Ġto	Ġthe	Ġgarden	Ġ(	sentence	Ġ	96	).	ĠLater	,	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	97	).	ĠTherefore	,	Ġthe	Ġapple	Ġwas	Ġwith	ĠSandra	Ġin	Ġthe	Ġgarden	Ġbefore	Ġshe	Ġarrived	Ġat	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

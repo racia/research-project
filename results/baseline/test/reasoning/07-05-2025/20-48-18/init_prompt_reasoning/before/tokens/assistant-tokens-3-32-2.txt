@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovided	Ġare	Ġlimited	,	Ġand	Ġthe	Ġprevious	Ġconversation	Ġhistory	Ġis	Ġnot	Ġavailable	.	ĠHowever	,	Ġbased	Ġon	Ġthe	Ġgiven	Ġsentences	,	Ġwe	Ġcan	Ġinfer	Ġthat	Ġthe	Ġapple	's	Ġlocation	Ġbefore	Ġthe	Ġoffice	Ġis	Ġnot	Ġmentioned	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠDaniel	's	Ġlocation	.	ĠSent	ences	Ġ	13	Ġand	Ġ	14	Ġmention	ĠJohn	Ġgrabbing	Ġa	Ġfootball	Ġand	ĠMary	Ġgetting	Ġan	Ġapple	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġmention	ĠDaniel	's	Ġwhereabouts	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

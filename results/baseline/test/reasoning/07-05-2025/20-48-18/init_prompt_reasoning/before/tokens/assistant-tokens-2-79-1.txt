@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġmilk	Ġwas	Ġpicked	Ġup	Ġat	Ġthe	Ġoffice	Ġand	Ġdropped	Ġat	Ġthe	Ġhallway	.	ĠSince	Ġit	Ġwas	Ġdropped	,	Ġit	Ġis	Ġlikely	Ġto	Ġbe	Ġat	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

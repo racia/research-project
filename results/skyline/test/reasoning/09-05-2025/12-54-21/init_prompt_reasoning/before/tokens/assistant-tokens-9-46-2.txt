@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	2	Ġ(	from	Ġprevious	Ġcontext	)	Ġstated	Ġthat	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġsentences	Ġ	4	Ġand	Ġ	5	Ġindicate	Ġthat	Ġshe	Ġthen	Ġmoved	Ġto	Ġthe	Ġhallway	Ġand	Ġthen	Ġto	Ġthe	Ġgarden	,	Ġimplying	Ġthat	Ġshe	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

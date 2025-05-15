@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġlast	Ġseen	Ġin	Ġthe	Ġhallway	,	Ġwhere	ĠDaniel	Ġwent	Ġback	Ġto	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġanyone	Ġmoving	Ġthe	Ġfootball	Ġafter	Ġthat	.	ĠTherefore	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġfootball	Ġis	Ġstill	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġbedroom	Ġis	Ġwest	Ġof	Ġthe	Ġbathroom	,	Ġand	Ġthe	Ġbathroom	Ġis	Ġwest	Ġof	Ġthe	Ġoffice	,	Ġit	Ġmeans	Ġthat	Ġthe	Ġoffice	Ġis	Ġeast	Ġof	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

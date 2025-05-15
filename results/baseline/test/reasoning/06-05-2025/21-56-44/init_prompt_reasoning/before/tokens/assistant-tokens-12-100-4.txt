@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠJohn	Ġis	Ġnot	Ġin	Ġthe	Ġbathroom	Ġwith	ĠMary	.	ĠSince	ĠMary	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġtogether	,	Ġit	Ġimplies	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠFred	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSentence	Ġ	10	Ġtalks	Ġabout	ĠBill	Ġgoing	Ġto	Ġthe	Ġoffice	,	Ġand	Ġsentence	Ġ	11	Ġtalks	Ġabout	ĠJulie	Ġmoving	Ġto	Ġthe	Ġkitchen	.	ĠWe	Ġhave	Ġno	Ġinformation	Ġabout	ĠFred	's	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

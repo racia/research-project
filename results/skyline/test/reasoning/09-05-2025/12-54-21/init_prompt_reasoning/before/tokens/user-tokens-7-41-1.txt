@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-2	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	.Ċ
-3	.	ĠJohn	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
-4	.	ĠJohn	Ġhanded	Ġthe	Ġapple	Ġto	ĠSandra	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġmany	Ġobjects	Ġis	ĠJohn	Ġcarrying	?Ċ

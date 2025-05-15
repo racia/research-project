@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġshe	Ġwas	Ġin	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġmoving	Ġfrom	Ġthe	Ġoffice	Ġto	Ġthe	Ġbedroom	,	Ġso	Ġit	Ġis	Ġnot	Ġpossible	Ġto	Ġdetermine	Ġher	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

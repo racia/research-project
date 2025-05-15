@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	11	,	ĠDaniel	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġmeans	ĠSandra	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

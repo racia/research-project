@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	13	Ġand	Ġ	14	Ġare	Ġabout	ĠJohn	's	Ġactions	Ġand	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠDaniel	.	ĠThe	Ġprevious	Ġstate	Ġof	ĠDaniel	Ġwas	Ġthat	Ġhe	Ġwas	Ġcarrying	Ġthe	Ġmilk	Ġ(	from	Ġsentence	Ġ	11	).ĊĊ	Answer	:	Ġone	<|eot_id|>

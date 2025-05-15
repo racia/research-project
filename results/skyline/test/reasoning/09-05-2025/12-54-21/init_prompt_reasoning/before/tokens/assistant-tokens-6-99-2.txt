@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġgoing	Ġto	Ġthe	Ġoffice	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠJohn	Ġis	Ġthe	Ġhallway	,	Ġas	Ġstated	Ġin	Ġsentence	Ġ	5	.ĊĊ	Answer	:	Ġno	<|eot_id|>

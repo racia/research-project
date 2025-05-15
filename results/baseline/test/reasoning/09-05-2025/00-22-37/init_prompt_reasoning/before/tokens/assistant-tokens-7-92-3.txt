@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠWe	Ġneed	Ġto	Ġfind	Ġthe	Ġanswer	Ġbased	Ġon	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠWe	Ġcan	Ġsee	Ġthat	ĠSandra	Ġreceived	Ġthe	Ġapple	Ġfrom	ĠJohn	Ġ(	sentence	Ġ	15	),	Ġand	Ġthen	Ġgave	Ġit	Ġback	Ġto	ĠJohn	Ġ(	sentence	Ġ	16	).	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġwas	Ġcarrying	Ġthe	Ġapple	Ġtemporarily	,	Ġbut	Ġthen	Ġhanded	Ġit	Ġback	Ġto	ĠJohn	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

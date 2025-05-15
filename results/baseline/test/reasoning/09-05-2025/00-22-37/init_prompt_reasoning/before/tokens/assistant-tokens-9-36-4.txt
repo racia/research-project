@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSentence	Ġ	10	Ġis	Ġabout	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġbathroom	,	Ġand	Ġsentence	Ġ	11	Ġis	Ġabout	ĠDaniel	's	Ġlocation	Ġin	Ġthe	Ġhallway	.	ĠHowever	,	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

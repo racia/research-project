@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBill	Ġgrabbed	Ġthe	Ġmilk	Ġin	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	14	)	Ġand	Ġlater	Ġhanded	Ġit	Ġto	ĠJeff	Ġ(	sentence	Ġ	20	).ĊĊ	Answer	:	Ġmilk	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġbathroom	.	ĠSince	ĠJohn	Ġis	Ġnot	Ġmentioned	Ġas	Ġgoing	Ġanywhere	Ġelse	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġis	Ġstill	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

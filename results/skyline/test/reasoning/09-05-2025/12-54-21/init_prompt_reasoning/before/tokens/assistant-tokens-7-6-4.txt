@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	12	Ġand	Ġ	13	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠMary	Ġcarrying	Ġany	Ġobjects	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠMary	Ġwas	Ġthat	Ġshe	Ġdropped	Ġthe	Ġfootball	Ġin	Ġsentence	Ġ	10	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

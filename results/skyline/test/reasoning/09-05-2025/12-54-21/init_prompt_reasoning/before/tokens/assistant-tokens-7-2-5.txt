@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	13	Ġand	Ġ	14	Ġare	Ġabout	ĠSandra	's	Ġand	ĠDaniel	's	Ġmovements	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠMary	.	ĠWe	Ġshould	Ġrefer	Ġto	Ġthe	Ġprevious	Ġinformation	Ġabout	ĠMary	,	Ġwhich	Ġis	Ġthat	ĠMary	Ġgot	Ġthe	Ġfootball	Ġ(	sentence	Ġ	11	)	Ġand	Ġis	Ġcarrying	Ġthe	Ġfootball	.ĊĊ	Answer	:	Ġone	<|eot_id|>

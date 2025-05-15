@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġfootball	Ġor	ĠBill	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġmovements	Ġto	Ġthe	Ġbedroom	Ġand	Ġback	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

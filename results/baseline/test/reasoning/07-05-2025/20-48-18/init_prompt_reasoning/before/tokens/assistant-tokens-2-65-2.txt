@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġdropped	Ġby	ĠJohn	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġwhere	ĠJohn	Ġdropped	Ġit	.	ĠHowever	,	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġand	Ġsince	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġfootball	Ġbeing	Ġmoved	Ġor	Ġdropped	Ġagain	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġfootball	Ġis	Ġstill	Ġwhere	ĠJohn	Ġdropped	Ġit	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

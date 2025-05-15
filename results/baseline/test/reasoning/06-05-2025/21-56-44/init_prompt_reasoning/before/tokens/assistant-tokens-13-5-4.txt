@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġbathroom	.	ĠSince	ĠMary	Ġis	Ġnot	Ġmentioned	Ġas	Ġgoing	Ġanywhere	Ġelse	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġis	Ġstill	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

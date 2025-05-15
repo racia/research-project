@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġand	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġin	Ġsentence	Ġ	4	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	's	Ġlocation	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.	ĠHowever	,	Ġin	Ġsentence	Ġ	5	,	ĠMary	Ġand	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	ĠSandra	's	Ġlocation	Ġhas	Ġchanged	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

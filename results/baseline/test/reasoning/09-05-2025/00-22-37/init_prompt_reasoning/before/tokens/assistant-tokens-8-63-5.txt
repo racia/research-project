@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	20	,	ĠMary	Ġdropped	Ġthe	Ġmilk	Ġin	Ġthe	Ġbathroom	,	Ġwhere	ĠJohn	Ġmoved	Ġin	Ġsentence	Ġ	19	.	ĠSince	ĠMary	Ġdropped	Ġthe	Ġmilk	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġshe	Ġwas	Ġcarrying	Ġthe	Ġmilk	Ġbefore	Ġdropping	Ġit	.ĊĊ	Answer	:	Ġmilk	<|eot_id|>

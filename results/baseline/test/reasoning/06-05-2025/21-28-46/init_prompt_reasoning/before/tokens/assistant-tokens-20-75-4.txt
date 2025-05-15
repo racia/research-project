@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSum	it	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġhad	Ġpreviously	Ġgone	Ġto	Ġthe	Ġgarden	.	ĠThe	Ġcontext	Ġsentence	Ġdoes	Ġnot	Ġspecify	Ġwhy	ĠSum	it	Ġwent	Ġto	Ġthe	Ġgarden	Ġinitially	,	Ġbut	Ġbased	Ġon	Ġthe	Ġprevious	Ġtask	,	Ġit	Ġis	Ġlikely	Ġthat	ĠSum	it	Ġwent	Ġto	Ġthe	Ġgarden	Ġbecause	Ġhe	Ġwas	Ġbored	.ĊĊ	Answer	:	Ġbored	<|eot_id|>

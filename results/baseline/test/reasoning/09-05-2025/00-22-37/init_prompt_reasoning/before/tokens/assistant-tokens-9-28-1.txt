@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	,	Ġand	Ġsentence	Ġ	2	Ġstates	Ġthat	ĠMary	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġoffice	Ġanymore	.	ĠAdditionally	,	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠMary	Ġhas	Ġmoved	Ġto	Ġthe	Ġoffice	Ġagain	.ĊĊ	Answer	:	Ġno	<|eot_id|>

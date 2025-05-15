@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	19	,	ĠBill	Ġhanded	Ġthe	Ġapple	Ġto	ĠFred	,	Ġand	Ġaccording	Ġto	Ġsentence	Ġ	20	,	ĠFred	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	.	ĠThis	Ġshows	Ġthat	Ġthe	Ġapple	Ġwas	Ġpassed	Ġback	Ġand	Ġforth	Ġbetween	ĠBill	Ġand	ĠFred	.ĊĊ	Answer	:	Ġboth	ĠBill	Ġand	ĠFred	<|eot_id|>

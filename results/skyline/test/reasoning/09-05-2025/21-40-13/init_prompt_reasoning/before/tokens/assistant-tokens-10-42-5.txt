@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠFred	Ġbeing	Ġin	Ġthe	Ġschool	.	ĠThe	Ġcontext	Ġonly	Ġmentions	ĠFred	Ġmoving	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġjourney	ing	Ġto	Ġthe	Ġcinema	Ġ(	sent	ences	Ġ	10	Ġand	Ġ	11	),	Ġbut	Ġnot	Ġabout	Ġbeing	Ġin	Ġthe	Ġschool	.	ĠĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

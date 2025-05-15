@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠDaniel	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġhis	Ġlocation	Ġchanges	Ġfrom	Ġthe	Ġbathroom	Ġto	Ġthe	Ġoffice	.	ĠSince	Ġthe	Ġlast	Ġsentence	Ġmentioned	Ġis	Ġthe	Ġoffice	,	Ġit	Ġis	Ġlikely	Ġthat	ĠDaniel	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

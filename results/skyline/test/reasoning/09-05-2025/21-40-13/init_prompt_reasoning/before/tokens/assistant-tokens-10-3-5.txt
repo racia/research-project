@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	14	Ġexplicitly	Ġstates	Ġthat	ĠJulie	Ġis	Ġin	Ġthe	Ġschool	,	Ġwhich	Ġcontrad	icts	Ġthe	Ġuncertainty	Ġin	Ġsentence	Ġ	13	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

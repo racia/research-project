@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠIn	Ġsentence	Ġ	15	,	ĠMary	Ġgave	Ġthe	Ġfootball	Ġto	ĠJohn	,	Ġwhich	Ġmeans	Ġshe	Ġwas	Ġnot	Ġcarrying	Ġthe	Ġfootball	.	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠMary	Ġcarrying	Ġany	Ġobjects	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

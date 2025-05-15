@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠSandra	's	Ġlocation	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġindicate	Ġthat	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġleaving	Ġthe	Ġoffice	Ġor	Ġgoing	Ġanywhere	Ġelse	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

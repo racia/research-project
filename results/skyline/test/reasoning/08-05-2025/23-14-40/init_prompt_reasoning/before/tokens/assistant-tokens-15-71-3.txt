@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	3	,	ĠCats	Ġare	Ġafraid	Ġof	Ġsheep	.	ĠJessica	Ġis	Ġa	Ġcat	Ġ(	sentence	Ġ	8	),	Ġso	ĠJessica	Ġis	Ġafraid	Ġof	Ġsheep	.ĊĊ	Answer	:	Ġsheep	<|eot_id|>

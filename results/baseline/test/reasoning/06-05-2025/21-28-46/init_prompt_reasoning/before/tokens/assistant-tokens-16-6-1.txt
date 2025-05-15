@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBern	hard	Ġis	Ġa	Ġfrog	,	Ġand	ĠLily	Ġis	Ġalso	Ġa	Ġfrog	.	ĠSince	ĠLily	Ġis	Ġgreen	,	Ġit	Ġis	Ġlikely	Ġthat	ĠBern	hard	,	Ġbeing	Ġa	Ġfrog	Ġas	Ġwell	,	Ġis	Ġalso	Ġgreen	.ĊĊ	Answer	:	Ġgreen	<|eot_id|>

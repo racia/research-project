@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠFred	Ġgiving	Ġthe	Ġapple	Ġto	Ġanyone	.	ĠSentence	Ġ	8	Ġmentions	ĠMary	Ġhanding	Ġthe	Ġapple	Ġto	ĠBill	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠFred	Ġbeing	Ġinvolved	Ġin	Ġgiving	Ġthe	Ġapple	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

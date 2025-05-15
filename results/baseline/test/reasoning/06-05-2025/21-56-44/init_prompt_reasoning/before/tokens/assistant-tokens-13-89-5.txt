@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġhallway	,	Ġand	Ġthen	Ġhe	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġmeans	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

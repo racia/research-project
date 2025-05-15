@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	5	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġnot	Ġin	Ġthe	Ġhallway	Ġanymore	.	ĠSentence	Ġ	4	Ġonly	Ġmentions	ĠSandra	Ġgoing	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġit	Ġdoesn	't	Ġmention	ĠMary	.ĊĊ	Answer	:	Ġno	<|eot_id|>

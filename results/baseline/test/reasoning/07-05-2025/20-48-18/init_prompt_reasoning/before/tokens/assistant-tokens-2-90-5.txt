@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġgrabbed	Ġby	ĠMary	Ġin	Ġthe	Ġsame	Ġlocation	Ġas	Ġwhere	ĠDaniel	Ġgot	Ġthe	Ġmilk	Ġ(	sentence	Ġ	27	),	Ġbut	Ġit	Ġwas	Ġleft	Ġby	ĠMary	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġbeing	Ġpicked	Ġup	Ġor	Ġmoved	Ġagain	.	ĠTherefore	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġapple	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġsame	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

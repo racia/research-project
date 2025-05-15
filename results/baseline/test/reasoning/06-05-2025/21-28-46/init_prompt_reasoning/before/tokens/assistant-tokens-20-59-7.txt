@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠY	ann	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	,	Ġwe	Ġcan	Ġinfer	Ġthat	Ġhe	Ġwent	Ġthere	Ġto	Ġrest	Ġor	Ġsleep	,	Ġwhich	Ġwas	Ġmentioned	Ġin	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġ(	9	).	ĠY	ann	Ġwas	Ġtired	,	Ġand	Ġthe	Ġbedroom	Ġis	Ġa	Ġcommon	Ġplace	Ġwhere	Ġpeople	Ġmight	Ġgo	Ġto	Ġsleep	Ġor	Ġrest	.ĊĊ	Answer	:	Ġtired	<|eot_id|>

@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-30	.	ĠMary	Ġleft	Ġthe	Ġfootball	.Ċ
-31	.	ĠDaniel	Ġtook	Ġthe	Ġfootball	.Ċ
-32	.	ĠDaniel	Ġdiscarded	Ġthe	Ġapple	.Ċ
-33	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġhallway	?Ċ

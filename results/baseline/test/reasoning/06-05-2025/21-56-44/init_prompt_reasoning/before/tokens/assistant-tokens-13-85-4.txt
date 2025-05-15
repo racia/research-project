@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠDaniel	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġkitchen	.	ĠThen	,	Ġin	Ġsentence	Ġ	11	,	Ġthey	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠSince	Ġthey	Ġwent	Ġto	Ġthe	Ġbedroom	Ġafter	Ġbeing	Ġin	Ġthe	Ġkitchen	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

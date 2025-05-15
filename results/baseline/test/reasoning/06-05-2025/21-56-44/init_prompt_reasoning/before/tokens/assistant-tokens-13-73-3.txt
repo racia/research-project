@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠDaniel	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	Ġand	Ġafterwards	Ġthey	Ġtravelled	Ġto	Ġthe	Ġoffice	,	Ġit	Ġimplies	Ġthat	ĠSandra	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	,	Ġas	Ġthere	Ġis	Ġno	Ġindication	Ġthat	Ġshe	Ġleft	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

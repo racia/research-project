@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	20	,	ĠBill	Ġgave	Ġthe	Ġfootball	Ġto	ĠFred	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġis	Ġcurrently	Ġlocated	Ġin	Ġthe	Ġoffice	.Ċ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAntoine	Ġis	Ġtired	,	Ġwhich	Ġimplies	Ġhe	Ġneeds	Ġrest	.	ĠThe	Ġcontext	Ġdoes	Ġnot	Ġspecify	Ġa	Ġparticular	Ġlocation	,	Ġbut	Ġbased	Ġon	Ġthe	Ġassumption	Ġthat	ĠAntoine	Ġwill	Ġgo	Ġsomewhere	Ġto	Ġrest	,	Ġthe	Ġmost	Ġlogical	Ġchoice	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

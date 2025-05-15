@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠEmily	Ġis	Ġa	Ġcat	,	Ġand	Ġcats	Ġare	Ġafraid	Ġof	Ġmice	.	ĠSince	ĠEmily	Ġis	Ġa	Ġcat	,	Ġshe	Ġis	Ġafraid	Ġof	Ġmice	.ĊĊ	Answer	:	Ġmice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġnew	Ġcontext	Ġsentences	Ġ(	6	Ġand	Ġ	7	)	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġkitchen	.	ĠWe	Ġstill	Ġrely	Ġon	Ġthe	Ġprevious	Ġinformation	Ġ(	sentence	Ġ	4	),	Ġwhich	Ġstates	Ġthat	Ġ"	Yesterday	ĠMary	Ġmoved	Ġto	Ġthe	Ġschool	."	ĠĊĊ	Answer	:	Ġschool	<|eot_id|>

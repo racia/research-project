@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	,	Ġwhich	Ġimplies	Ġthat	Ġ"	there	"	Ġrefers	Ġto	Ġthe	Ġlocation	Ġwhere	ĠSandra	Ġmoved	,	Ġwhich	Ġis	Ġthe	Ġsame	Ġlocation	Ġwhere	ĠMary	Ġmoved	,	Ġwhich	Ġis	Ġthe	Ġbedroom	.	ĠSince	ĠMary	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠSandra	Ġpicked	Ġup	Ġthe	Ġfootball	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

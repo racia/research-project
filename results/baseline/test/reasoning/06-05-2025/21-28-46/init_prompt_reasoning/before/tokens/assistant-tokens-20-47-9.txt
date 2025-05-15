@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġprevious	Ġinformation	Ġabout	ĠSum	it	's	Ġreason	Ġfor	Ġgetting	Ġthe	Ġapple	.	ĠThe	Ġcontext	Ġonly	Ġmentioned	ĠSum	it	Ġgoing	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġnot	Ġgetting	Ġan	Ġapple	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

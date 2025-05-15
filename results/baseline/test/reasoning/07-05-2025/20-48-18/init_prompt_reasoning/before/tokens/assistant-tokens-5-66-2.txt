@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġcontext	Ġthat	Ġsuggests	Ġanyone	Ġgave	Ġthe	Ġfootball	.	ĠThe	Ġcontext	Ġonly	Ġmentions	ĠMary	Ġgrabbing	Ġthe	Ġfootball	,	Ġbut	Ġit	Ġdoesn	't	Ġmention	Ġwho	Ġgave	Ġit	Ġto	Ġher	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġthe	Ġfirst	Ġsentence	Ġas	Ġmoving	Ġto	Ġthe	Ġbathroom	Ġwith	ĠSandra	.	ĠIn	Ġthe	Ġsecond	Ġsentence	,	Ġthey	Ġgo	Ġback	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġstill	Ġwith	ĠSandra	Ġand	Ġin	Ġthe	Ġsame	Ġlocation	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

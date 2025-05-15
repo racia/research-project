@@ -1,1 +1,0 @@
-*T	ASK	*ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠJohn	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġbathroom	,	Ġbut	Ġsentence	Ġ	11	Ġcontrad	icts	Ġthis	Ġby	Ġsaying	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	ĠJohn	Ġis	Ġnow	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

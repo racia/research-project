@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAntoine	Ġtravelled	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġwent	Ġthere	Ġfor	Ġa	Ġspecific	Ġpurpose	.	ĠSince	Ġhe	Ġwas	Ġthirsty	Ġearlier	,	Ġit	's	Ġlikely	Ġthat	Ġhe	Ġwent	Ġto	Ġthe	Ġkitchen	Ġto	Ġget	Ġsomething	Ġto	Ġdrink	.ĊĊ	Answer	:	Ġthirsty	<|eot_id|>

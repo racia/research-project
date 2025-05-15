@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	9	,	Ġ"	Fred	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	."	ĠThis	Ġimplies	Ġthat	ĠFred	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	13	).ĊĊ	Answer	:	Ġschool	<|eot_id|>

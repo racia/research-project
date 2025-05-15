@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	Ġ"	Fred	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	."	ĠThis	Ġimplies	Ġthat	ĠFred	Ġwas	Ġin	Ġthe	Ġoffice	Ġbefore	Ġmoving	Ġto	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	13	).ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	7	,	ĠJessica	Ġis	Ġa	Ġmouse	.	ĠSentence	Ġ	4	Ġstates	Ġthat	Ġsheep	Ġare	Ġafraid	Ġof	Ġmice	.	ĠTherefore	,	ĠJessica	,	Ġbeing	Ġa	Ġmouse	,	Ġis	Ġafraid	Ġof	Ġsheep	.ĊĊ	Answer	:	Ġsheep	<|eot_id|>

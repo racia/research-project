@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠFred	Ġgoing	Ġto	Ġthe	Ġcinema	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠIn	Ġfact	,	Ġthe	Ġcontext	Ġsentence	Ġ	8	Ġstates	Ġthat	ĠFred	Ġmoved	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġno	<|eot_id|>

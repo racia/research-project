@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġis	Ġmentioned	Ġin	Ġsentence	Ġ	8	,	Ġand	Ġshe	Ġis	Ġtravelling	Ġto	Ġthe	Ġhallway	Ġwith	ĠSandra	,	Ġit	's	Ġlikely	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

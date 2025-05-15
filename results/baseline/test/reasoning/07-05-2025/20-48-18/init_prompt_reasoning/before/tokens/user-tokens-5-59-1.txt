@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠJeff	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
-2	.	ĠBill	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
-3	.	ĠBill	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
-4	.	ĠMary	Ġhanded	Ġthe	Ġmilk	Ġto	ĠBill	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġmilk	Ġto	ĠBill	?Ċ

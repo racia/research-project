@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBill	Ġwent	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	Ġ(	from	Ġcontext	Ġsentences	Ġ	1	Ġand	Ġ	4	),	Ġand	Ġthen	Ġhe	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.	ĠSince	Ġhe	Ġwas	Ġin	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwas	Ġthere	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

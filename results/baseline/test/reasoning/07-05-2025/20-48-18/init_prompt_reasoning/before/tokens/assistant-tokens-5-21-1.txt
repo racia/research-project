@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	,	Ġand	ĠBill	Ġput	Ġdown	Ġthe	Ġapple	,	Ġwhich	Ġmeans	ĠBill	Ġreceived	Ġthe	Ġapple	Ġfrom	ĠMary	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

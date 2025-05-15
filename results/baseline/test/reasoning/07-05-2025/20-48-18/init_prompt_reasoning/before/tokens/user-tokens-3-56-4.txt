@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-38	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-39	.	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	.Ċ
-40	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
-41	.	ĠJohn	Ġdropped	Ġthe	Ġapple	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġgarden	?Ċ

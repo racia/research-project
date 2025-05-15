@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	Ġtogether	,	Ġand	Ġthen	Ġthey	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.	ĠSince	ĠMary	Ġand	ĠSandra	Ġare	Ġtogether	,	ĠSandra	's	Ġlocation	Ġis	Ġthe	Ġsame	Ġas	ĠMary	's	.	ĠSince	Ġthey	Ġare	Ġin	Ġthe	Ġhallway	,	ĠSandra	Ġis	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

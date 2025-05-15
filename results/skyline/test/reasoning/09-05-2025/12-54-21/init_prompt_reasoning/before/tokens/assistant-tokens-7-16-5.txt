@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠSandra	Ġin	Ġthe	Ġcontext	Ġsentences	Ġ	13	Ġand	Ġ	14	.	ĠThe	Ġlast	Ġinformation	Ġabout	ĠSandra	Ġwas	Ġin	Ġcontext	Ġsentence	Ġ	10	,	Ġwhere	ĠSandra	Ġdropped	Ġthe	Ġmilk	.	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġpicking	Ġup	Ġor	Ġcarrying	Ġany	Ġobject	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

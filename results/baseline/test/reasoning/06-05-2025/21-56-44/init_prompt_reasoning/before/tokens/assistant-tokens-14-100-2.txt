@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	,	Ġwhich	Ġmeans	Ġhe	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.	ĠAccording	Ġto	Ġthe	Ġprevious	Ġcontext	,	ĠBill	Ġtravelled	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġwhich	Ġmeans	Ġhe	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġto	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

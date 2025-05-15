@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	Ġ"	This	Ġmorning	ĠJulie	Ġmoved	Ġto	Ġthe	Ġpark	."	ĠSince	Ġsentence	Ġ	15	Ġstates	,	Ġ"	This	Ġafternoon	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	,"	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠJulie	Ġwas	Ġat	Ġthe	Ġpark	Ġbefore	Ġgoing	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġpark	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠMary	Ġmoved	Ġto	Ġthe	Ġcinema	Ġyesterday	,	Ġit	Ġimplies	Ġthat	Ġshe	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġmoving	Ġto	Ġthe	Ġcinema	.	ĠSince	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	,	Ġit	Ġmeans	Ġshe	Ġwas	Ġat	Ġthe	Ġcinema	Ġyesterday	Ġand	Ġthen	Ġreturned	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	.ĊĊ	Answer	:	Ġcinema	<|eot_id|>

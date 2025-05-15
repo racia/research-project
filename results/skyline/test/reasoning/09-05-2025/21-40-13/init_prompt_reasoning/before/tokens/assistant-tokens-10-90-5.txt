@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġthat	Ġsuggests	ĠMary	Ġis	Ġin	Ġthe	Ġkitchen	.	ĠThe	Ġpossible	Ġlocations	Ġfor	ĠMary	Ġare	Ġthe	Ġoffice	Ġor	Ġthe	Ġbedroom	,	Ġaccording	Ġto	Ġcontext	Ġsentence	Ġ	14	.ĊĊ	Answer	:	Ġno	<|eot_id|>

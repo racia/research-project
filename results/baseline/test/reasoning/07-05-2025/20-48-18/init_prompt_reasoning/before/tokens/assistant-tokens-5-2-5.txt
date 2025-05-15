@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġwho	Ġreceived	Ġthe	Ġapple	,	Ġbut	Ġthe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	Ġthe	Ġapple	Ġbeing	Ġgiven	Ġor	Ġreceived	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġtravelling	Ġto	Ġthe	Ġbedroom	Ġand	Ġtaking	Ġthe	Ġmilk	Ġthere	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	Ġthe	Ġapple	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

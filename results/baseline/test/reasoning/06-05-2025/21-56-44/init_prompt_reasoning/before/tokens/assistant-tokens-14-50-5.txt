@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJulie	Ġwent	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	Ġ(	sentence	Ġ	15	),	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġbefore	Ġthat	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠJulie	's	Ġlocation	Ġbefore	Ġthe	Ġschool	Ġis	Ġunknown	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

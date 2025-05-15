@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġthe	Ġfirst	Ġsentence	Ġas	Ġgoing	Ġto	Ġthe	Ġoffice	Ġwith	ĠSandra	.	ĠThen	,	Ġthey	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

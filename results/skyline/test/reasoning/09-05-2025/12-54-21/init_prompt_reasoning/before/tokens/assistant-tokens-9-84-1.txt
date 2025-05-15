@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	1	Ġstates	Ġthat	ĠJohn	Ġis	Ġnot	Ġin	Ġthe	Ġgarden	,	Ġbut	Ġsentence	Ġ	2	Ġindicates	Ġthat	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	,	Ġimplying	Ġthat	ĠJohn	Ġhas	Ġmoved	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

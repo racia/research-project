@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	,	Ġit	Ġimplies	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġgarden	.	ĠThen	,	ĠJohn	Ġand	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġmeans	ĠJohn	Ġis	Ġin	Ġthe	Ġbedroom	.	ĠSince	ĠJohn	Ġis	Ġin	Ġthe	Ġbedroom	,	ĠDaniel	Ġmust	Ġbe	Ġin	Ġthe	Ġbedroom	Ġas	Ġwell	,	Ġsince	Ġthey	Ġmoved	Ġtogether	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	4	Ġindicates	Ġthat	ĠJulie	Ġis	Ġeither	Ġin	Ġthe	Ġschool	Ġor	Ġthe	Ġoffice	,	Ġbut	Ġsentence	Ġ	5	Ġstates	Ġthat	ĠJulie	Ġmoved	Ġto	Ġthe	Ġcinema	,	Ġwhich	Ġmeans	ĠJulie	Ġleft	Ġher	Ġprevious	Ġlocation	Ġ(	school	Ġor	Ġoffice	)	Ġand	Ġis	Ġnow	Ġin	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

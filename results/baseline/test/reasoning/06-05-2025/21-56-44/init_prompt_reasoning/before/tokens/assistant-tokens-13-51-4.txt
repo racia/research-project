@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġand	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġkitchen	,	Ġand	Ġthen	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠDaniel	Ġis	Ġin	Ġthe	Ġbedroom	Ġas	Ġwell	,	Ġsince	Ġthey	Ġmoved	Ġtogether	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

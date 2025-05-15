@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġthe	Ġprevious	Ġcontext	Ġsentences	,	Ġwe	Ġknow	Ġthat	ĠFred	Ġwent	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	Ġ(	sentence	Ġ	7	).	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġthat	Ġchanges	ĠFred	's	Ġlocation	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġschool	Ġthis	Ġafternoon	.ĊĊ	Answer	:	Ġcinema	<|eot_id|>

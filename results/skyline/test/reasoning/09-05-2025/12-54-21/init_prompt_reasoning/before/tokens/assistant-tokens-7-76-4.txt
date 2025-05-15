@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	17	Ġindicates	Ġthat	ĠMary	Ġgot	Ġthe	Ġapple	Ġagain	,	Ġwhich	Ġmeans	Ġshe	Ġis	Ġnow	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġone	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġdiscarded	Ġby	ĠDaniel	Ġ(	sentence	Ġ	16	),	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġwhere	Ġit	Ġwas	Ġbefore	Ġbeing	Ġdiscarded	.	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	Ġthe	Ġfootball	's	Ġlocation	Ġbefore	ĠDaniel	Ġdiscarded	Ġit	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

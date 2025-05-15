@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġand	Ġthen	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġhallway	Ġinitially	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġbathroom	.	ĠSince	Ġthe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġis	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

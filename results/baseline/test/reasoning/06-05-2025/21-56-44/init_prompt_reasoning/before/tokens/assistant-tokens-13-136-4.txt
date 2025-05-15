@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġhe	Ġwent	Ġto	Ġthe	Ġoffice	Ġwith	ĠSandra	,	Ġso	Ġit	's	Ġlikely	Ġhe	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

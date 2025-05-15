@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-30	.	ĠBill	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	.Ċ
-31	.	ĠMary	Ġpassed	Ġthe	Ġmilk	Ġto	ĠBill	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġmilk	?Ċ

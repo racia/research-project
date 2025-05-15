@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠBill	's	Ġlocation	Ġbefore	Ġthe	Ġcinema	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJulie	's	Ġmove	Ġto	Ġthe	Ġbedroom	Ġand	ĠMary	's	Ġtravel	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġnot	ĠBill	's	Ġlocation	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

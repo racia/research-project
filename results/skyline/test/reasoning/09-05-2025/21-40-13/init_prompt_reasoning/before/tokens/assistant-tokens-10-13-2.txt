@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJulie	Ġin	Ġthe	Ġprovided	Ġcontext	Ġsentences	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġtalk	Ġabout	ĠMary	Ġand	ĠFred	,	Ġbut	Ġnot	ĠJulie	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	ĠJulie	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

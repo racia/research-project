@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	Ġgoing	Ġto	Ġthe	Ġbedroom	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠHe	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	4	)	Ġand	Ġthen	Ġwent	Ġto	Ġthe	Ġgarden	Ġ(	sentence	Ġ	5	),	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġhim	Ġbeing	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

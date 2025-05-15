@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġhallway	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠSandra	's	Ġcurrent	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSent	ences	Ġ	10	Ġand	Ġ	11	Ġonly	Ġmention	ĠMary	's	Ġlocation	,	Ġbut	Ġnot	ĠSandra	's	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

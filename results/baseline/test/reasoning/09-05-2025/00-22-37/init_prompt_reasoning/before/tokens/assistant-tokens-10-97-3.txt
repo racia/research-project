@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJulie	's	Ġcurrent	Ġlocation	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠJulie	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠFred	Ġand	ĠMary	,	Ġbut	Ġnot	ĠJulie	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

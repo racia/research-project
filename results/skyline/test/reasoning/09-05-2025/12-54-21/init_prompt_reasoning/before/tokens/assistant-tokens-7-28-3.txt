@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	7	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġgrabbed	Ġthe	Ġapple	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġwas	Ġcarrying	Ġthe	Ġapple	.	ĠHowever	,	Ġfrom	Ġsentence	Ġ	8	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġput	Ġdown	Ġthe	Ġapple	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġno	Ġlonger	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

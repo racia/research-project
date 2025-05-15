@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġinitially	,	Ġand	Ġthen	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	Ġthe	Ġapple	Ġbeing	Ġin	Ġthe	Ġbathroom	Ġbefore	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.	ĠThe	Ġonly	Ġmention	Ġof	Ġthe	Ġapple	Ġis	Ġin	Ġsentence	Ġ	2	,	Ġwhere	ĠMary	Ġpicked	Ġit	Ġup	.	ĠSince	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġtook	Ġthe	Ġapple	Ġwith	Ġher	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

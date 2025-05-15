@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	Ġ"	Mary	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġthis	Ġmorning	."	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġbedroom	Ġbefore	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	Ġ(	sentence	Ġ	9	).ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġprevious	Ġcontext	Ġsentence	Ġmentioning	ĠY	ann	's	Ġaction	Ġor	Ġhis	Ġdestination	.	ĠThe	Ġprevious	Ġcontext	Ġsentence	Ġmentioned	ĠY	ann	's	Ġboredom	,	Ġbut	Ġnot	Ġhis	Ġaction	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

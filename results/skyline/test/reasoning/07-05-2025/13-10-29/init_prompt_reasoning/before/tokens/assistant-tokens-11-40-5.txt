@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovided	Ġdo	Ġnot	Ġmention	ĠJohn	's	Ġcurrent	Ġlocation	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	Ġwas	Ġthat	Ġhe	Ġmoved	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	11	).	ĠThere	Ġis	Ġno	Ġupdate	Ġabout	Ġhis	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

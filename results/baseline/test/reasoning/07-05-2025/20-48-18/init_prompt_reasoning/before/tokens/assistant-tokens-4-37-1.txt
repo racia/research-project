@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġhallway	Ġis	Ġsouth	Ġof	Ġthe	Ġbathroom	,	Ġand	Ġthe	Ġoffice	Ġis	Ġsouth	Ġof	Ġthe	Ġhallway	.	ĠTherefore	,	Ġthe	Ġoffice	Ġis	Ġsouth	Ġof	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

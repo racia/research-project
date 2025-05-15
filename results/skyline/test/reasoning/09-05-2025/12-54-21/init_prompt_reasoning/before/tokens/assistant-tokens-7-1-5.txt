@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠSandra	Ġgave	Ġthe	Ġmilk	Ġto	ĠJohn	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġnow	Ġcarrying	Ġthe	Ġmilk	.	ĠSentence	Ġ	14	Ġdoes	Ġnot	Ġchange	Ġthis	Ġinformation	.ĊĊ	Answer	:	Ġone	<|eot_id|>

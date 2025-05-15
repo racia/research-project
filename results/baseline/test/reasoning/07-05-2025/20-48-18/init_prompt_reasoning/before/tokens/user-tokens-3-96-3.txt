@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-65	.	ĠMary	Ġgrabbed	Ġthe	Ġapple	.Ċ
-66	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
-67	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
-68	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	.Ċ
-69	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-70	.	ĠMary	Ġput	Ġdown	Ġthe	Ġapple	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġapple	Ġbefore	Ġthe	Ġoffice	?Ċ

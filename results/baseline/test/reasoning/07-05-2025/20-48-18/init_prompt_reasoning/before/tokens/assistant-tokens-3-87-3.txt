@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġmilk	Ġwas	Ġtaken	Ġby	ĠMary	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	15	).	ĠThen	,	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	43	),	Ġso	Ġthe	Ġmilk	Ġwas	Ġmoved	Ġfrom	Ġthe	Ġoffice	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

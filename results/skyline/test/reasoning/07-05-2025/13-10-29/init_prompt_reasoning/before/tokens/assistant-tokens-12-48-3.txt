@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠMary	Ġand	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	.	ĠSince	ĠMary	Ġis	Ġmentioned	Ġas	Ġmoving	Ġto	Ġthe	Ġgarden	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

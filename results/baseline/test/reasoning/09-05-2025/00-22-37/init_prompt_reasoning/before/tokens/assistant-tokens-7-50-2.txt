@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġcarrying	Ġany	Ġobjects	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSentence	Ġ	4	Ġis	Ġabout	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġsentence	Ġ	5	Ġis	Ġabout	ĠSandra	Ġtaking	Ġthe	Ġfootball	Ġto	Ġa	Ġlocation	,	Ġbut	Ġit	Ġdoesn	't	Ġspecify	Ġwhat	ĠSandra	Ġis	Ġcarrying	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

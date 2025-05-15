@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgiving	Ġanything	Ġto	ĠBill	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġmovements	Ġto	Ġthe	Ġoffice	Ġand	Ġkitchen	,	Ġbut	Ġdo	Ġnot	Ġmention	Ġany	Ġinteraction	Ġwith	ĠBill	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.	ĠSince	ĠSandra	Ġis	Ġnot	Ġmentioned	Ġas	Ġleaving	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġinferred	Ġthat	Ġshe	Ġis	Ġstill	Ġin	Ġthe	Ġbathroom	Ġor	Ġhas	Ġmoved	Ġto	Ġthe	Ġhallway	Ġwith	ĠMary	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

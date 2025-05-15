@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	,	Ġand	Ġthen	ĠFred	Ġpassed	Ġthe	Ġapple	Ġback	Ġto	ĠMary	Ġ(	sentence	Ġ	5	).	ĠHowever	,	Ġthe	Ġquestion	Ġasks	Ġwho	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	,	Ġand	Ġthe	Ġanswer	Ġis	Ġnot	ĠFred	Ġpassing	Ġit	Ġback	,	Ġbut	ĠMary	Ġgiving	Ġit	Ġto	ĠFred	Ġinitially	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

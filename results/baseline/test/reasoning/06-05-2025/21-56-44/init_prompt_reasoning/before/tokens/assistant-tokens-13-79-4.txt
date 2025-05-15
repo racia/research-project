@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠSandra	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	Ġtogether	,	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	.	ĠSince	ĠMary	Ġis	Ġmentioned	Ġin	Ġthe	Ġsentences	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġis	Ġalso	Ġin	Ġthe	Ġbathroom	,	Ġas	Ġthey	Ġmoved	Ġtogether	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

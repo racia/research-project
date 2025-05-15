@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġoffice	Ġis	Ġeast	Ġof	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġalso	Ġeast	Ġof	Ġthe	Ġgarden	Ġ(	from	Ġsentence	Ġ	5	).	ĠThe	Ġbedroom	Ġis	Ġnorth	Ġof	Ġthe	Ġoffice	Ġ(	from	Ġsentence	Ġ	2	),	Ġwhich	Ġmeans	Ġthat	Ġto	Ġget	Ġto	Ġthe	Ġbedroom	Ġfrom	Ġthe	Ġgarden	,	Ġyou	Ġneed	Ġto	Ġgo	Ġeast	Ġto	Ġthe	Ġoffice	Ġand	Ġthen	Ġnorth	.ĊĊ	Answer	:	Ġeast	,	Ġnorth	<|eot_id|>

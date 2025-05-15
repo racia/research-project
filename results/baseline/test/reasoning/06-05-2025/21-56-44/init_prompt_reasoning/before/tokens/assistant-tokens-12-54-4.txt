@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	11	Ġmentions	Ġthat	ĠMary	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġit	Ġdoesn	't	Ġmention	ĠSandra	.	ĠTherefore	,	Ġwe	Ġcan	Ġconclude	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

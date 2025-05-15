@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠAntoine	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwent	Ġthere	Ġto	Ġrest	Ġor	Ġsleep	.	ĠThe	Ġcontext	Ġsentence	Ġ	3	Ġmentioned	Ġthat	ĠAntoine	Ġis	Ġtired	,	Ġwhich	Ġsuggests	Ġthat	Ġhe	Ġwent	Ġto	Ġthe	Ġbedroom	Ġto	Ġget	Ġsome	Ġrest	.ĊĊ	Answer	:	Ġtired	<|eot_id|>

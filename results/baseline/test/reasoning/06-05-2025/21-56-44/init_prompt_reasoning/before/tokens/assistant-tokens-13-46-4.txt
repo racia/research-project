@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġhis	Ġlocation	Ġchanges	Ġfrom	Ġthe	Ġbathroom	Ġto	Ġthe	Ġbedroom	.	ĠSince	Ġthe	Ġlast	Ġsentence	Ġmentioned	Ġis	Ġabout	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

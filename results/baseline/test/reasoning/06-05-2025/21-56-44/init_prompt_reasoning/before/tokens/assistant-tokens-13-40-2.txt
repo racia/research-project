@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġthe	Ġfirst	Ġsentence	Ġas	Ġgoing	Ġto	Ġthe	Ġhallway	Ġwith	ĠDaniel	.	ĠSince	Ġthey	Ġmoved	Ġto	Ġthe	Ġbedroom	Ġafterwards	,	ĠMary	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

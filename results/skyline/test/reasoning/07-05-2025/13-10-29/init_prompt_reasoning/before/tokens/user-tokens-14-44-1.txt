@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠBill	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġyesterday	.Ċ
-2	.	ĠThis	Ġmorning	ĠFred	Ġmoved	Ġto	Ġthe	Ġcinema	.Ċ
-3	.	ĠFred	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġyesterday	.Ċ
-4	.	ĠYesterday	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠFred	Ġbefore	Ġthe	Ġcinema	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠSandra	Ġand	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbedroom	.	ĠThen	,	Ġsentence	Ġ	11	Ġstates	Ġthat	ĠSandra	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġmeans	ĠMary	Ġis	Ġnow	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

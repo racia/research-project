@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠDaniel	Ġdropped	Ġthe	Ġapple	,	Ġand	Ġsince	Ġhe	Ġdropped	Ġit	Ġin	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġapple	Ġis	Ġnow	Ġon	Ġthe	Ġfloor	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

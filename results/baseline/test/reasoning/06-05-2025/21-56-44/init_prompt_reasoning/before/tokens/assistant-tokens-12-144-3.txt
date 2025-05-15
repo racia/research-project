@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġsentence	Ġ	8	,	Ġand	Ġshe	Ġis	Ġgoing	Ġback	Ġto	Ġthe	Ġgarden	Ġwith	ĠJohn	.	ĠThis	Ġsuggests	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġnot	Ġthe	Ġbedroom	,	Ġbut	Ġrather	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

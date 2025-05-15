@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġmovement	Ġin	Ġthe	Ġprovided	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	,	ĠSandra	,	Ġand	ĠJohn	Ġmoving	Ġto	Ġdifferent	Ġlocations	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠSandra	's	Ġmovements	,	Ġbut	Ġnot	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	.	ĠThe	Ġlast	Ġknown	Ġlocation	Ġof	ĠJohn	Ġwas	Ġin	Ġthe	Ġoffice	Ġ(	from	Ġprevious	Ġcontext	Ġsentences	).ĊĊ	Answer	:	Ġoffice	<|eot_id|>

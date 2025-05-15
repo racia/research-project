@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġmovement	Ġis	Ġtracked	.	ĠIn	Ġthe	Ġfirst	Ġsentence	,	Ġshe	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġwith	ĠDaniel	.	ĠIn	Ġthe	Ġsecond	Ġsentence	,	Ġshe	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġwith	ĠSandra	.	ĠSince	ĠMary	Ġis	Ġstill	Ġwith	ĠSandra	,	Ġshe	Ġis	Ġlikely	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġthey	Ġtravelled	Ġto	Ġthe	Ġbathroom	.	ĠSince	ĠMary	Ġis	Ġstill	Ġwith	ĠDaniel	,	Ġand	Ġthey	Ġare	Ġin	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

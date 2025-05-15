@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	3	,	ĠBill	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	.	ĠThen	,	Ġaccording	Ġto	Ġsentence	Ġ	4	,	ĠMary	Ġhanded	Ġthe	Ġmilk	Ġto	ĠBill	.	ĠThis	Ġmeans	Ġthat	ĠMary	Ġgave	Ġthe	Ġmilk	Ġto	ĠBill	,	Ġnot	Ġthe	Ġother	Ġway	Ġaround	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

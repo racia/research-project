@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġoffice	,	Ġas	Ġhe	Ġjourney	ed	Ġthere	Ġwith	ĠMary	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

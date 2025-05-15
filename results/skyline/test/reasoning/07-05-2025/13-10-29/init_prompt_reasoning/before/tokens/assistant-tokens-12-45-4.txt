@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	11	,	ĠSandra	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġmeans	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

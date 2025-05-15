@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-8	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠMary	Ġgive	Ġthe	Ġmilk	Ġto	?Ċ

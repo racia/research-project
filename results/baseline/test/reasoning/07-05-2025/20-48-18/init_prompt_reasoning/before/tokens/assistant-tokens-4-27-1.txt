@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġbedroom	Ġis	Ġnorth	Ġof	Ġthe	Ġhallway	Ġ(	sentence	Ġ	2	),	Ġand	Ġthe	Ġoffice	Ġis	Ġnorth	Ġof	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	1	).	ĠTherefore	,	Ġthe	Ġoffice	Ġis	Ġnorth	Ġof	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

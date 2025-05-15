@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-66	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
-67	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
-68	.	ĠSandra	Ġdropped	Ġthe	Ġapple	.Ċ
-69	.	ĠMary	Ġgot	Ġthe	Ġapple	.Ċ
-70	.	ĠSandra	Ġtook	Ġthe	Ġfootball	.Ċ
-71	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġkitchen	?Ċ

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġhallway	Ġis	Ġsouth	Ġof	Ġthe	Ġoffice	,	Ġwhich	Ġmeans	Ġthe	Ġhallway	Ġis	Ġnot	Ġnorth	Ġof	Ġthe	Ġoffice	.	ĠThe	Ġgarden	Ġis	Ġnorth	Ġof	Ġthe	Ġoffice	,	Ġso	Ġthe	Ġgarden	Ġis	Ġthe	Ġonly	Ġoption	Ġthat	Ġis	Ġnorth	Ġof	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

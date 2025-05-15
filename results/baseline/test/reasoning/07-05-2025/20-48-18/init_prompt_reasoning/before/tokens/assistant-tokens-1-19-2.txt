@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	Ġjourney	ing	Ġto	Ġthe	Ġbedroom	Ġand	ĠJohn	Ġjourney	ing	Ġto	Ġthe	Ġbathroom	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	's	Ġcurrent	Ġlocation	Ġafter	Ġthat	.	ĠTherefore	,	Ġwe	Ġcan	Ġonly	Ġinfer	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

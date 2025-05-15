@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġhallway	Ġis	Ġwest	Ġof	Ġthe	Ġbedroom	,	Ġand	Ġthe	Ġgarden	Ġis	Ġwest	Ġof	Ġthe	Ġhallway	.	ĠTherefore	,	Ġthe	Ġgarden	Ġis	Ġwest	Ġof	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

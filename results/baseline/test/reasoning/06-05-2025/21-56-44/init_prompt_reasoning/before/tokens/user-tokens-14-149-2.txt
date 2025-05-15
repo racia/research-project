@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-6	.	ĠThis	Ġmorning	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-7	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġthis	Ġafternoon	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠMary	Ġbefore	Ġthe	Ġbedroom	?Ċ

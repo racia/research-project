@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	11	Ġmentions	Ġthat	ĠBill	Ġwent	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	.	ĠSentence	Ġ	14	Ġthen	Ġmentions	Ġthat	ĠBill	Ġwent	Ġto	Ġthe	Ġcinema	Ġthis	Ġafternoon	.	ĠThis	Ġimplies	Ġthat	ĠBill	Ġwas	Ġat	Ġthe	Ġkitchen	Ġbefore	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

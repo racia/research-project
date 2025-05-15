@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	8	,	ĠMary	Ġpassed	Ġthe	Ġmilk	Ġto	ĠBill	,	Ġbut	Ġsentence	Ġ	7	Ġstates	Ġthat	ĠBill	Ġhanded	Ġthe	Ġmilk	Ġto	ĠMary	,	Ġnot	Ġthe	Ġother	Ġway	Ġaround	.	ĠThis	Ġimplies	Ġthat	ĠBill	Ġgave	Ġthe	Ġmilk	Ġto	ĠMary	,	Ġnot	Ġthe	Ġother	Ġway	Ġaround	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

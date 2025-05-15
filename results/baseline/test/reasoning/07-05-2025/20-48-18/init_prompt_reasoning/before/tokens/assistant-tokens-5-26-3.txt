@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġwhat	ĠJeff	Ġgave	Ġto	ĠBill	.	ĠAccording	Ġto	Ġsentence	Ġ	18	,	ĠJeff	Ġgave	Ġthe	Ġfootball	Ġto	ĠBill	.ĊĊ	Answer	:	Ġfootball	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġgrabbed	Ġby	ĠDaniel	,	Ġthen	Ġdropped	Ġby	Ġhim	,	Ġand	Ġlater	Ġgot	Ġby	ĠJohn	.	ĠSince	ĠJohn	Ġgot	Ġthe	Ġfootball	Ġ"	there	",	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġfootball	Ġis	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

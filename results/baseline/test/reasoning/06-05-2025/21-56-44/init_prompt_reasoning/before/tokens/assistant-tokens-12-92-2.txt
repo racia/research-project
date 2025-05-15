@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġkitchen	,	Ġand	ĠJohn	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġtogether	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

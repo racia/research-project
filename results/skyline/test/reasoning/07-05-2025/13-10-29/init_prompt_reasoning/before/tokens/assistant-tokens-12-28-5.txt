@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	14	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠTherefore	,	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

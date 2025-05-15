@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġis	Ġthirsty	,	Ġhe	Ġneeds	Ġto	Ġqu	ench	Ġhis	Ġthirst	.	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġspecific	Ġinformation	Ġabout	ĠJason	's	Ġpreferences	Ġor	Ġactivities	,	Ġbut	Ġbased	Ġon	Ġthe	Ġassumption	Ġthat	Ġhe	Ġwants	Ġto	Ġdrink	Ġsomething	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwill	Ġgo	Ġsomewhere	Ġto	Ġget	Ġa	Ġdrink	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

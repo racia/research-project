@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġoffice	.	ĠHowever	,	ĠDaniel	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġsuggests	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

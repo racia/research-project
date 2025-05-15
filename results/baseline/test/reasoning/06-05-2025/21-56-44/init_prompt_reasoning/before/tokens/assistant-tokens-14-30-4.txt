@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġis	Ġnot	Ġabout	ĠBill	Ġor	ĠFred	,	Ġbut	Ġabout	ĠMary	.	ĠHowever	,	ĠMary	's	Ġlocation	Ġis	Ġnot	Ġmentioned	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠWe	Ġonly	Ġknow	Ġthat	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	Ġthis	Ġevening	Ġand	ĠFred	Ġwent	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

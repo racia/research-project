@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġtravelling	Ġto	Ġthe	Ġbathroom	Ġand	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġkitchen	,	Ġbut	ĠJohn	's	Ġlocation	Ġis	Ġnot	Ġspecified	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

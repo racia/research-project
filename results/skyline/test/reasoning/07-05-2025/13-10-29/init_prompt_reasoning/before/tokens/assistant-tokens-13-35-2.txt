@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġthe	Ġcontext	Ġsentences	,	Ġwe	Ġknow	Ġthat	ĠMary	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	4	)	Ġand	Ġthen	Ġthey	Ġmoved	Ġto	Ġthe	Ġhallway	Ġ(	sentence	Ġ	5	).	ĠSince	ĠJohn	Ġwas	Ġwith	ĠMary	Ġin	Ġboth	Ġlocations	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġinitially	Ġmoved	Ġto	Ġthe	Ġhallway	,	Ġand	Ġthen	Ġshe	Ġtravelled	Ġto	Ġthe	Ġkitchen	.	ĠSince	Ġthe	Ġquestion	Ġasks	Ġabout	Ġher	Ġcurrent	Ġlocation	,	Ġwe	Ġneed	Ġto	Ġconsider	Ġher	Ġmost	Ġrecent	Ġmovement	,	Ġwhich	Ġis	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

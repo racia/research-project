@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġgiving	Ġanything	Ġto	ĠFred	.	ĠIn	Ġfact	,	Ġsentence	Ġ	32	Ġshows	ĠMary	Ġhanding	Ġthe	Ġapple	Ġto	ĠFred	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġimply	Ġthat	ĠMary	Ġgave	Ġsomething	Ġto	ĠFred	Ġin	Ġthe	Ġfirst	Ġplace	.ĊĊ	Answer	:	ĠNothing	<|eot_id|>

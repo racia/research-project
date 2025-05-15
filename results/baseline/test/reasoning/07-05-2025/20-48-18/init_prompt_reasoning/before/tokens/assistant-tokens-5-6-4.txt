@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJeff	Ġgave	Ġthe	Ġapple	Ġto	ĠFred	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠBill	Ġgiving	Ġthe	Ġapple	.ĊĊ	Answer	:	ĠJeff	<|eot_id|>

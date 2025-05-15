@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġmilk	Ġwas	Ġleft	Ġby	ĠMary	Ġ(	sentence	Ġ	20	),	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġmilk	Ġbeing	Ġin	Ġthe	Ġhallway	Ġbefore	Ġthat	.	ĠThe	Ġlast	Ġmention	Ġof	Ġthe	Ġmilk	Ġwas	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

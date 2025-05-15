@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠBill	's	Ġwhereabouts	Ġbefore	Ġthe	Ġpark	Ġin	Ġthe	Ġgiven	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠBill	's	Ġmovements	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġnot	Ġhis	Ġlocation	Ġbefore	Ġthe	Ġpark	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

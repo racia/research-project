@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġtravelled	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġis	Ġa	Ġspecific	Ġlocation	Ġmentioned	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġmoving	Ġaway	Ġfrom	Ġthe	Ġkitchen	Ġor	Ġgoing	Ġto	Ġa	Ġdifferent	Ġlocation	.Ċ	Answer	:	Ġkitchen	<|eot_id|>

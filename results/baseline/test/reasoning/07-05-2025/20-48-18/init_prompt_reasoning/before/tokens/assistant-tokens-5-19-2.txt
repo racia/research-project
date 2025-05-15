@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠJeff	Ġhanded	Ġthe	Ġfootball	Ġto	ĠMary	,	Ġand	Ġthen	Ġsentence	Ġ	14	Ġstates	Ġthat	ĠJeff	Ġpassed	Ġthe	Ġfootball	Ġto	ĠMary	.	ĠTherefore	,	ĠMary	Ġreceived	Ġthe	Ġfootball	.ĊĊ	Answer	:	ĠMary	<|eot_id|>

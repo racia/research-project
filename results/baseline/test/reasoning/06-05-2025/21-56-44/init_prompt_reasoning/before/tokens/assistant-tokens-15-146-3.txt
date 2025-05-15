@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠGer	tr	ude	Ġis	Ġa	Ġwolf	Ġ(	sentence	Ġ	6	),	Ġand	Ġwolves	Ġare	Ġafraid	Ġof	Ġsheep	Ġ(	sentence	Ġ	4	),	Ġit	Ġis	Ġlikely	Ġthat	ĠGer	tr	ude	Ġis	Ġafraid	Ġof	Ġsheep	.ĊĊ	Answer	:	Ġsheep	<|eot_id|>

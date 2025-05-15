@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠFred	Ġgoing	Ġto	Ġthe	Ġcinema	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠFred	Ġgoing	Ġto	Ġthe	Ġkitchen	Ġthis	Ġevening	,	Ġbut	Ġnot	Ġgoing	Ġto	Ġthe	Ġcinema	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġgoing	Ġto	Ġthe	Ġbedroom	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠMary	's	Ġlast	Ġknown	Ġlocation	Ġwas	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	5	).ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠAntoine	Ġgrabbed	Ġthe	Ġpaj	amas	,	Ġit	Ġis	Ġlikely	Ġthat	ĠAntoine	Ġgot	Ġthe	Ġpaj	amas	Ġbecause	Ġof	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġstating	Ġthat	ĠAntoine	Ġis	Ġtired	.	ĠThe	Ġmost	Ġlogical	Ġreason	Ġfor	ĠAntoine	Ġto	Ġget	Ġthe	Ġpaj	amas	Ġis	Ġto	Ġwear	Ġthem	Ġto	Ġsleep	Ġor	Ġrest	.ĊĊ	Answer	:	Ġtired	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	7	Ġstates	Ġthat	ĠJohn	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	's	Ġinitial	Ġlocation	Ġwas	Ġthe	Ġoffice	.	ĠHowever	,	Ġsentence	Ġ	8	Ġstates	Ġthat	ĠMary	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

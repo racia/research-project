@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠJohn	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
-2	.	ĠJohn	Ġleft	Ġthe	Ġmilk	.Ċ
-3	.	ĠSandra	Ġtook	Ġthe	Ġmilk	Ġthere	.Ċ
-4	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

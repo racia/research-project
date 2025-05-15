@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠSandra	's	Ġcarrying	Ġobjects	,	Ġand	Ġwe	Ġneed	Ġto	Ġfind	Ġthe	Ġanswer	Ġbased	Ġon	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠWe	Ġcan	Ġsee	Ġthat	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	4	)	Ġand	Ġgrabbed	Ġthe	Ġapple	Ġthere	Ġ(	sentence	Ġ	10	).	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcarrying	Ġthe	Ġapple	.ĊĊ	Answer	:	Ġone	<|eot_id|>

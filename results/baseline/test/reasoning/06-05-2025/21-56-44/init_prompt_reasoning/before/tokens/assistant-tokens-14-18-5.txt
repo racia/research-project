@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	13	,	ĠFred	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	Ġthis	Ġafternoon	.	ĠSince	ĠFred	's	Ġlocation	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġbedroom	Ġis	Ġnot	Ġspecified	,	Ġwe	Ġcannot	Ġpinpoint	Ġa	Ġspecific	Ġlocation	Ġwhere	ĠFred	Ġwas	Ġbefore	Ġgoing	Ġback	Ġto	Ġthe	Ġbedroom	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

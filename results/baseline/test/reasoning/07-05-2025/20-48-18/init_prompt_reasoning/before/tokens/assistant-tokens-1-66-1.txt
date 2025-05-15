@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġmoved	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġis	Ġa	Ġspecific	Ġlocation	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	Ġshe	Ġhas	Ġmoved	Ġfrom	Ġthe	Ġbathroom	Ġor	Ġis	Ġcurrently	Ġin	Ġa	Ġdifferent	Ġlocation	.Ċ	Answer	:	Ġbathroom	<|eot_id|>

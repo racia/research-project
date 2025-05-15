@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġabsence	Ġfrom	Ġthe	Ġbedroom	Ġand	ĠMary	's	Ġpresence	Ġin	Ġthe	Ġbathroom	.	ĠThere	Ġis	Ġno	Ġcontradictory	Ġinformation	Ġthat	Ġwould	Ġsuggest	ĠMary	Ġis	Ġnot	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

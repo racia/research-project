@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġgarden	Ġis	Ġsouth	Ġof	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	3	),	Ġand	Ġthe	Ġbedroom	Ġis	Ġeast	Ġof	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	1	),	Ġto	Ġgo	Ġfrom	Ġthe	Ġgarden	Ġto	Ġthe	Ġbedroom	,	Ġyou	Ġneed	Ġto	Ġmove	Ġeast	Ġfrom	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġeast	<|eot_id|>

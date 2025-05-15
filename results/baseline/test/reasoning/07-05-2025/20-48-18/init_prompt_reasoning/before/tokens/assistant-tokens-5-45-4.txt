@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġshow	Ġthat	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠBill	Ġ(	sentence	Ġ	72	),	Ġand	Ġthen	Ġit	Ġis	Ġmentioned	Ġthat	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	Ġ(	sentence	Ġ	75	).	ĠThis	Ġimplies	Ġthat	ĠMary	Ġgave	Ġthe	Ġapple	Ġto	ĠBill	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

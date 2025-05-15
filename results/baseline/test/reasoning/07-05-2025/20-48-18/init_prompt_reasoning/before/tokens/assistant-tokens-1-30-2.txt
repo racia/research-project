@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSandra	's	Ġlocation	Ġis	Ġnot	Ġspecified	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġmoving	Ġor	Ġgoing	Ġanywhere	.	ĠTherefore	,	Ġit	Ġcannot	Ġbe	Ġdetermined	Ġwhere	ĠSandra	Ġis	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

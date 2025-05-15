@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠSandra	's	Ġlocation	,	Ġbut	ĠSandra	Ġis	Ġnot	Ġmentioned	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠTherefore	,	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

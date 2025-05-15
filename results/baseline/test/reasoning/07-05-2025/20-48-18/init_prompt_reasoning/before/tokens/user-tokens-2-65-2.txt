@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-10	.	ĠSandra	Ġdropped	Ġthe	Ġapple	.Ċ
-11	.	ĠDaniel	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
-12	.	ĠSandra	Ġgot	Ġthe	Ġapple	Ġthere	.Ċ
-13	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-14	.	ĠDaniel	Ġmoved	Ġto	Ġthe	Ġbedroom	.Ċ
-15	.	ĠJohn	Ġdropped	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġfootball	?Ċ

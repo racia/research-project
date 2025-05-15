@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġfirst	,	Ġand	Ġthen	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

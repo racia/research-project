@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġbathroom	.	ĠSince	ĠMary	Ġand	ĠJohn	Ġare	Ġtogether	,	Ġit	's	Ġlikely	Ġthat	ĠMary	Ġis	Ġalso	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

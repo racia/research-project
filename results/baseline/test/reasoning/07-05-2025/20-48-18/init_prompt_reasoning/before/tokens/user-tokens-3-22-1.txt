@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
-2	.	ĠDaniel	Ġtook	Ġthe	Ġfootball	.Ċ
-3	.	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
-4	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
-5	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
-6	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġoffice	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġfootball	Ġbefore	Ġthe	Ġbathroom	?Ċ

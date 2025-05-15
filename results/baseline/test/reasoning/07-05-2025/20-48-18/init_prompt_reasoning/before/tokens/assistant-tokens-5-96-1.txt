@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġhanded	Ġthe	Ġapple	Ġto	ĠFred	,	Ġand	Ġthere	Ġis	Ġno	Ġother	Ġinstance	Ġwhere	ĠMary	Ġgave	Ġsomething	Ġto	ĠFred	Ġin	Ġthe	Ġcontext	Ġsentences	.ĊĊ	Answer	:	Ġapple	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġmovement	Ġis	Ġtracked	.	ĠInitially	,	Ġshe	Ġmoved	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthen	Ġshe	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

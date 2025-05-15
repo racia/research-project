@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-12	.	ĠThis	Ġevening	ĠBill	Ġtravelled	Ġto	Ġthe	Ġcinema	.Ċ
-13	.	ĠJulie	Ġjourney	ed	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠBill	Ġbefore	Ġthe	Ġcinema	?Ċ

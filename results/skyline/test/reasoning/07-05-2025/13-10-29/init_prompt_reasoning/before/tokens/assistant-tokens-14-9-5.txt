@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġlocation	Ġbefore	Ġthe	Ġpark	.	ĠSentence	Ġ	14	Ġmentions	ĠMary	's	Ġlocation	Ġthis	Ġevening	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	Ġher	Ġprevious	Ġlocation	.	ĠSentence	Ġ	13	Ġis	Ġabout	ĠFred	's	Ġlocation	,	Ġwhich	Ġis	Ġnot	Ġrelevant	Ġto	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

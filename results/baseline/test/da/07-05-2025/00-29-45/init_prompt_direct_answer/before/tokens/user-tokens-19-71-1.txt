@@ -1,8 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠThe	Ġgarden	Ġis	Ġsouth	Ġof	Ġthe	Ġhallway	.Ċ
-2	.	ĠThe	Ġbedroom	Ġis	Ġsouth	Ġof	Ġthe	Ġkitchen	.Ċ
-3	.	ĠThe	Ġbathroom	Ġis	Ġsouth	Ġof	Ġthe	Ġbedroom	.Ċ
-4	.	ĠThe	Ġhallway	Ġis	Ġeast	Ġof	Ġthe	Ġoffice	.Ċ
-5	.	ĠThe	Ġhallway	Ġis	Ġsouth	Ġof	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-How	Ġdo	Ġyou	Ġgo	Ġfrom	Ġthe	Ġbedroom	Ġto	Ġthe	Ġhallway	?Ċ

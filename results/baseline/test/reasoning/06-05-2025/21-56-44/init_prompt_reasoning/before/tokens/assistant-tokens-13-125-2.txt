@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	Ġwith	ĠJohn	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġgarden	Ġtogether	.	ĠSince	ĠSandra	Ġis	Ġwith	ĠJohn	,	Ġand	Ġthere	Ġis	Ġno	Ġindication	Ġthat	Ġthey	Ġseparated	,	ĠSandra	's	Ġlocation	Ġis	Ġthe	Ġsame	Ġas	ĠJohn	's	.	ĠTherefore	,	ĠSandra	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	14	Ġstates	Ġthat	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	,	Ġand	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġleaving	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

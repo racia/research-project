@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ	10	Ġand	Ġ	11	Ġare	Ġabout	ĠMary	's	Ġmovements	,	Ġbut	Ġthey	Ġdo	Ġnot	Ġprovide	Ġany	Ġnew	Ġinformation	Ġabout	ĠSandra	.	ĠThe	Ġlast	Ġknown	Ġinformation	Ġabout	ĠSandra	Ġis	Ġthat	Ġshe	Ġleft	Ġthe	Ġfootball	Ġ(	sentence	Ġ	5	).ĊĊ	Answer	:	Ġnothing	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJulie	Ġwent	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	,	Ġand	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġcinema	Ġyesterday	,	Ġit	Ġimplies	Ġthat	ĠJulie	Ġwas	Ġat	Ġthe	Ġcinema	Ġyesterday	.	ĠTherefore	,	Ġbefore	Ġgoing	Ġto	Ġthe	Ġpark	,	ĠJulie	Ġwas	Ġat	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġcinema	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġjourney	ing	Ġto	Ġthe	Ġbedroom	Ġand	ĠMary	Ġjourney	ing	Ġto	Ġthe	Ġgarden	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	Ġafter	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	Ġher	Ġexact	Ġlocation	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

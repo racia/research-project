@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġis	Ġfirst	Ġmentioned	Ġin	Ġsentence	Ġ	62	,	Ġwhere	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	.	ĠThen	,	Ġin	Ġsentence	Ġ	67	,	ĠJohn	Ġdropped	Ġthe	Ġfootball	Ġin	Ġthe	Ġbedroom	.	ĠTherefore	,	Ġthe	Ġfootball	Ġwas	Ġin	Ġthe	Ġhallway	Ġbefore	Ġbeing	Ġdropped	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

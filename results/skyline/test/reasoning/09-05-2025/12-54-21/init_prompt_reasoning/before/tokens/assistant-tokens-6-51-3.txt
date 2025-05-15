@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	8	,	Ġ"	Mary	Ġtravelled	Ġto	Ġthe	Ġbedroom	",	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġbedroom	.	ĠThere	Ġis	Ġno	Ġinformation	Ġthat	Ġsuggests	ĠMary	Ġis	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

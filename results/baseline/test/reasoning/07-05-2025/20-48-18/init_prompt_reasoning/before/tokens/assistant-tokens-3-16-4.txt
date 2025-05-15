@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġpicked	Ġup	Ġby	ĠDaniel	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	44	),	Ġand	Ġthen	Ġdropped	Ġby	ĠDaniel	Ġ(	sentence	Ġ	47	).	ĠSince	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	50	),	Ġthe	Ġapple	Ġwas	Ġin	Ġthe	Ġoffice	Ġbefore	ĠDaniel	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

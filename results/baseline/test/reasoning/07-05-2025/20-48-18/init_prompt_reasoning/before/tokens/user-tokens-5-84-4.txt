@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-34	.	ĠFred	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
-35	.	ĠJeff	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
-36	.	ĠJeff	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
-37	.	ĠFred	Ġhanded	Ġthe	Ġmilk	Ġto	ĠJeff	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠFred	Ġgive	Ġthe	Ġmilk	Ġto	?Ċ

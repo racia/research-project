@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSandra	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġhallway	,	Ġand	Ġthen	Ġthey	Ġtravelled	Ġto	Ġthe	Ġoffice	.	ĠThis	Ġimplies	Ġthat	ĠJohn	's	Ġlocation	Ġchanged	Ġfrom	Ġthe	Ġhallway	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

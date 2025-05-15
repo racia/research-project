@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġbathroom	Ġis	Ġeast	Ġof	Ġthe	Ġhallway	,	Ġand	Ġthe	Ġbedroom	Ġis	Ġwest	Ġof	Ġthe	Ġhallway	,	Ġthe	Ġhallway	Ġcannot	Ġbe	Ġeast	Ġof	Ġthe	Ġbedroom	.	ĠTherefore	,	Ġthe	Ġhallway	Ġis	Ġeast	Ġof	Ġnothing	,	Ġas	Ġit	Ġis	Ġnot	Ġlocated	Ġeast	Ġof	Ġany	Ġother	Ġroom	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

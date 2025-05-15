@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	's	Ġtravel	Ġto	Ġthe	Ġbedroom	Ġand	ĠJohn	's	Ġtravel	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġthey	Ġdon	't	Ġprovide	Ġany	Ġinformation	Ġabout	Ġthe	Ġapple	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

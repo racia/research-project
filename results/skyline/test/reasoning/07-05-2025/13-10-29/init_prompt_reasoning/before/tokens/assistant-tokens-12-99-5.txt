@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġlast	Ġmention	Ġof	ĠSandra	's	Ġlocation	Ġwas	Ġin	Ġcontext	Ġsentence	Ġ	11	,	Ġwhere	ĠMary	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġhallway	.	ĠThere	Ġis	Ġno	Ġsubsequent	Ġmention	Ġof	ĠSandra	Ġmoving	Ġto	Ġa	Ġdifferent	Ġlocation	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

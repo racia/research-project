@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġgiving	Ġanything	Ġto	ĠBill	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠBill	Ġputting	Ġdown	Ġthe	Ġfootball	Ġand	ĠFred	's	Ġmovement	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġdo	Ġnot	Ġmention	ĠMary	's	Ġinteraction	Ġwith	ĠBill	.ĊĊ	Answer	:	Ġnothing	<|eot_id|>

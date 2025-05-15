@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	4	,	ĠMary	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	.	ĠThen	,	Ġin	Ġsentence	Ġ	5	,	Ġit	Ġis	Ġmentioned	Ġthat	ĠMary	Ġand	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	.	ĠThis	Ġimplies	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġbathroom	,	Ġas	Ġshe	Ġwent	Ġthere	Ġwith	ĠJohn	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

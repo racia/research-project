@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġbedroom	Ġis	Ġsouth	Ġof	Ġthe	Ġhallway	Ġ(	sentence	Ġ	2	),	Ġand	Ġthe	Ġgarden	Ġis	Ġsouth	Ġof	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	1	),	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġthe	Ġgarden	Ġis	Ġsouth	Ġof	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

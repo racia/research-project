@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSum	it	's	Ġprevious	Ġstate	Ġwas	Ġbeing	Ġtired	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwent	Ġto	Ġthe	Ġbedroom	Ġto	Ġrest	.ĊĊ	Answer	:	Ġtired	<|eot_id|>

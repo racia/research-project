@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġsentence	Ġ	11	Ġas	Ġjourney	ing	Ġto	Ġthe	Ġbathroom	Ġwith	ĠSandra	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġmoving	Ġaway	Ġfrom	Ġthe	Ġbathroom	Ġor	Ġgoing	Ġto	Ġa	Ġdifferent	Ġlocation	.	ĠTherefore	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

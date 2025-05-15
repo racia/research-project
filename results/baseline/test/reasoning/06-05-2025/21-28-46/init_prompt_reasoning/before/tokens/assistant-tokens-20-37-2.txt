@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġis	Ġbored	,	Ġhe	Ġmight	Ġwant	Ġto	Ġdo	Ġsomething	Ġto	Ġalleviate	Ġhis	Ġboredom	.	ĠHowever	,	Ġin	Ġthe	Ġprevious	Ġcontext	,	ĠJason	Ġwas	Ġthirsty	Ġand	Ġwent	Ġto	Ġthe	Ġkitchen	.	ĠThis	Ġsuggests	Ġthat	ĠJason	Ġmight	Ġgo	Ġto	Ġa	Ġplace	Ġwhere	Ġhe	Ġcan	Ġfind	Ġsomething	Ġto	Ġdo	Ġor	Ġengage	Ġin	Ġan	Ġactivity	Ġthat	Ġinterests	Ġhim	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

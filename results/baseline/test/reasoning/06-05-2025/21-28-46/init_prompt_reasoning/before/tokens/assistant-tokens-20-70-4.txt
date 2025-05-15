@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJason	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJason	Ġwent	Ġto	Ġthe	Ġkitchen	Ġbecause	Ġthey	Ġwere	Ġhungry	.	ĠThis	Ġis	Ġinferred	Ġfrom	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġthat	Ġstated	ĠJason	Ġwas	Ġhungry	.ĊĊ	Answer	:	Ġhungry	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġmoving	Ġor	Ġcarrying	Ġanything	.	ĠThey	Ġonly	Ġmention	ĠDaniel	Ġgoing	Ġback	Ġto	Ġthe	Ġgarden	Ġand	ĠMary	Ġtravelling	Ġto	Ġthe	Ġkitchen	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġis	Ġnot	Ġcarrying	Ġany	Ġobjects	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

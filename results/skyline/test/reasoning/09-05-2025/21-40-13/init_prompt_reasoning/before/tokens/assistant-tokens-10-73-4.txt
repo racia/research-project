@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	1	Ġ(	from	Ġthe	Ġprevious	Ġpart	)	Ġstated	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġcinema	,	Ġand	Ġsentence	Ġ	10	Ġupdated	ĠMary	's	Ġlocation	Ġto	Ġthe	Ġoffice	.	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	Ġbeing	Ġin	Ġthe	Ġschool	.ĊĊ	Answer	:	Ġno	<|eot_id|>

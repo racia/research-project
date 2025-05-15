@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠWe	Ġknow	Ġthat	Ġthe	Ġchest	Ġfits	Ġinside	Ġthe	Ġsuitcase	,	Ġwhich	Ġmeans	Ġthe	Ġsuitcase	Ġis	Ġbigger	Ġthan	Ġthe	Ġchest	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

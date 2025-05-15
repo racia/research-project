@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	4	,	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	,	Ġbut	Ġthen	Ġaccording	Ġto	Ġcontext	Ġsentence	Ġ	5	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġmeans	ĠMary	Ġhas	Ġmoved	Ġback	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

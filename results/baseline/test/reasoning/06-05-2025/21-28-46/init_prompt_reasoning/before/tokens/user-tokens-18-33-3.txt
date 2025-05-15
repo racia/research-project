@@ -1,3 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Does	Ġthe	Ġchest	Ġfit	Ġin	Ġthe	Ġbox	Ġof	Ġchocolates	?Ċ

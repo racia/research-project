@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-46	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
-47	.	ĠDaniel	Ġgrabbed	Ġthe	Ġapple	.Ċ
-48	.	ĠDaniel	Ġdropped	Ġthe	Ġapple	Ġthere	.Ċ
-49	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	Ġthe	Ġmilk	Ġbefore	Ġthe	Ġgarden	?Ċ

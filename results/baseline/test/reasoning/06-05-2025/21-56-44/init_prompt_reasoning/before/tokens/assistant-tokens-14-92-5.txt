@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠWe	Ġknow	Ġthat	ĠFred	Ġjourney	ed	Ġto	Ġthe	Ġoffice	Ġthis	Ġafternoon	Ġ(	from	Ġcontext	Ġsentence	Ġ	13	).	ĠSince	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġthis	Ġevening	,	Ġit	Ġimplies	Ġthat	Ġhe	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġgoing	Ġback	Ġto	Ġit	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

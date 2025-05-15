@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠDaniel	Ġwent	Ġto	Ġthe	Ġoffice	,	Ġand	Ġthen	Ġthey	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġwas	Ġin	Ġthe	Ġoffice	Ġinitially	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġbedroom	.	ĠSince	Ġthere	Ġis	Ġno	Ġinformation	Ġsuggesting	Ġshe	Ġleft	Ġthe	Ġbedroom	,	Ġit	Ġis	Ġlikely	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

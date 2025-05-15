@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbathroom	Ġin	Ġsentence	Ġ	13	,	Ġit	Ġimplies	Ġthat	ĠSandra	Ġwas	Ġthere	.	ĠHowever	,	Ġsentence	Ġ	14	Ġstates	Ġthat	ĠJohn	Ġand	ĠSandra	Ġwent	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġmeans	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

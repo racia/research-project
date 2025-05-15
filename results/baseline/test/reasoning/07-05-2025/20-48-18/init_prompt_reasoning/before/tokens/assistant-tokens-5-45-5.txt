@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġshow	Ġthat	ĠBill	Ġpassed	Ġthe	Ġapple	Ġto	ĠMary	Ġ(	sentence	Ġ	77	),	Ġwhich	Ġimplies	Ġthat	ĠBill	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	.ĊĊ	Answer	:	ĠThe	Ġapple	<|eot_id|>

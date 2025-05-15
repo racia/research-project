@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	Ġ	4	Ġand	Ġ	5	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠDaniel	's	Ġand	ĠMary	's	Ġmovements	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

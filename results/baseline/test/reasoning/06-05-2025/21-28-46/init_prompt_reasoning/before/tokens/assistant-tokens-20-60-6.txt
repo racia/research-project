@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠY	ann	Ġgrabbed	Ġthe	Ġfootball	Ġin	Ġthe	Ġgarden	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġgot	Ġthe	Ġfootball	Ġbecause	Ġhe	Ġwas	Ġbored	Ġand	Ġwanted	Ġto	Ġengage	Ġin	Ġan	Ġactivity	Ġto	Ġalleviate	Ġhis	Ġboredom	,	Ġas	Ġmentioned	Ġin	Ġthe	Ġprevious	Ġcontext	Ġsentence	Ġ(	5	.	ĠY	ann	Ġis	Ġbored	).ĊĊ	Answer	:	Ġbored	<|eot_id|>

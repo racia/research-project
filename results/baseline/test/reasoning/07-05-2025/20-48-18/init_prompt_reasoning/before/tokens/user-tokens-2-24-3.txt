@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-7	.	ĠJohn	Ġdropped	Ġthe	Ġfootball	.Ċ
-8	.	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
-9	.	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
-10	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
-11	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-12	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

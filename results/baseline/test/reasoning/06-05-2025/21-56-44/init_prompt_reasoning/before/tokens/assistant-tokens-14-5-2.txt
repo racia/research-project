@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠMary	's	Ġlocation	Ġor	Ġactions	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠFred	's	Ġand	ĠBill	's	Ġactions	,	Ġbut	Ġnot	ĠMary	's	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

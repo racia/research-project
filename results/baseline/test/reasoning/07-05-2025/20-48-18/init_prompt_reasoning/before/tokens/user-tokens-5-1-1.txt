@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠFred	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
-2	.	ĠFred	Ġgave	Ġthe	Ġfootball	Ġto	ĠJeff	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-What	Ġdid	ĠFred	Ġgive	Ġto	ĠJeff	?Ċ

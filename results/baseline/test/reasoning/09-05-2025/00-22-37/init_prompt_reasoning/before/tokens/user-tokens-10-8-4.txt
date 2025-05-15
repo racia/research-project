@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-10	.	ĠMary	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-11	.	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġschool	Ġor	Ġthe	Ġkitchen	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Is	ĠJulie	Ġin	Ġthe	Ġschool	?Ċ

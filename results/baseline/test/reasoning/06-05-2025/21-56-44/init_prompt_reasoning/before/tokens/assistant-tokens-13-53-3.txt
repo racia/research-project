@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġmeans	ĠJohn	Ġwas	Ġpresent	Ġin	Ġthe	Ġhallway	.	ĠAfter	Ġthat	,	Ġthey	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġthat	ĠJohn	Ġis	Ġlikely	Ġto	Ġbe	Ġin	Ġthe	Ġbathroom	Ġas	Ġwell	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,9 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-2	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġgarden	.Ċ
-3	.	ĠDaniel	Ġtravelled	Ġto	Ġthe	Ġbathroom	.Ċ
-4	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġhallway	.Ċ
-5	.	ĠSandra	Ġgot	Ġthe	Ġfootball	Ġthere	.Ċ
-6	.	ĠSandra	Ġput	Ġdown	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġfootball	?Ċ

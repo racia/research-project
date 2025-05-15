@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	Ġwhat	Ġis	Ġwest	Ġof	Ġthe	Ġkitchen	.	ĠSentence	Ġ	2	Ġstates	Ġthat	Ġthe	Ġgarden	Ġis	Ġwest	Ġof	Ġthe	Ġkitchen	,	Ġso	Ġthe	Ġanswer	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

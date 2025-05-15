@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġoffice	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	14	,	ĠJohn	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġit	Ġdoes	Ġnot	Ġmention	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

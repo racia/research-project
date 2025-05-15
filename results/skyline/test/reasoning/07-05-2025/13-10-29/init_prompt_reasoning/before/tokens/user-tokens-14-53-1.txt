@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠJulie	Ġjourney	ed	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	.Ċ
-2	.	ĠJulie	Ġwent	Ġto	Ġthe	Ġkitchen	Ġyesterday	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠJulie	Ġbefore	Ġthe	Ġschool	?Ċ

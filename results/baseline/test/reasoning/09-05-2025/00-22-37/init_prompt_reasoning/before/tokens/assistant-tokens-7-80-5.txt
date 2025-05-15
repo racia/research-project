@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠJohn	Ġand	ĠDaniel	,	Ġbut	Ġnot	ĠMary	.	ĠTherefore	,	Ġit	Ġis	Ġnot	Ġpossible	Ġto	Ġdetermine	Ġwhat	Ġobjects	ĠMary	Ġis	Ġcarrying	.ĊĊ	Answer	:	Ġnone	<|eot_id|>

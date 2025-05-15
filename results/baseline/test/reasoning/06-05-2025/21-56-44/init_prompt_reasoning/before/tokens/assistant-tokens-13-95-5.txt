@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġand	Ġthen	Ġthey	Ġwent	Ġto	Ġthe	Ġbedroom	.	ĠSince	ĠSandra	Ġis	Ġnot	Ġmentioned	Ġas	Ġmoving	Ġaway	Ġfrom	Ġthe	Ġbedroom	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠSandra	Ġis	Ġstill	Ġin	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

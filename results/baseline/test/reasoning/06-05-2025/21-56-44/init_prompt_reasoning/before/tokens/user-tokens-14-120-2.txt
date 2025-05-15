@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-6	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġpark	Ġthis	Ġmorning	.Ċ
-7	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġwas	ĠJulie	Ġbefore	Ġthe	Ġoffice	?Ċ

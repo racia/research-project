@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	10	Ġmentions	ĠSandra	Ġleaving	Ġthe	Ġapple	,	Ġwhich	Ġdoesn	't	Ġaffect	ĠMary	.	ĠSentence	Ġ	11	Ġmentions	ĠDaniel	Ġmoving	Ġto	Ġthe	Ġhallway	,	Ġwhich	Ġalso	Ġdoesn	't	Ġaffect	ĠMary	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠMary	Ġcarrying	Ġthe	Ġmilk	Ġ(	sentence	Ġ	7	)	Ġis	Ġstill	Ġvalid	.ĊĊ	Answer	:	Ġmilk	<|eot_id|>

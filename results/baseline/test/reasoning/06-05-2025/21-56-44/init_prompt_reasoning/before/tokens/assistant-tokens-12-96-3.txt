@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠJohn	Ġwent	Ġto	Ġthe	Ġkitchen	Ġwith	ĠSandra	,	Ġand	Ġthen	Ġhe	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	Ġwith	ĠMary	.	ĠThis	Ġimplies	Ġthat	ĠJohn	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

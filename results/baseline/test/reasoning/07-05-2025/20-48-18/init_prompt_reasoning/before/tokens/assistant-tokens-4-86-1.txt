@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	Ġthe	Ġoffice	Ġis	Ġwest	Ġof	Ġthe	Ġgarden	,	Ġand	Ġthe	Ġbathroom	Ġis	Ġwest	Ġof	Ġthe	Ġoffice	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġthe	Ġbathroom	Ġis	Ġalso	Ġwest	Ġof	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

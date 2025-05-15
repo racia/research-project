@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	Ġthe	Ġfootball	Ġbeing	Ġdropped	Ġor	Ġmoved	Ġto	Ġany	Ġlocation	Ġother	Ġthan	Ġthe	Ġhallway	.	ĠSandra	Ġgrabbed	Ġthe	Ġfootball	Ġthere	,	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġit	Ġbeing	Ġmoved	Ġor	Ġdropped	Ġelsewhere	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

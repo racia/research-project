@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠBill	Ġgoing	Ġto	Ġthe	Ġcinema	Ġor	Ġbeing	Ġin	Ġthe	Ġcinema	.	ĠBill	Ġwent	Ġback	Ġto	Ġthe	Ġschool	,	Ġwhich	Ġimplies	Ġhe	Ġis	Ġnot	Ġin	Ġthe	Ġcinema	.	ĠAdditionally	,	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠBill	Ġbeing	Ġin	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġno	<|eot_id|>

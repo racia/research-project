@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	10	,	Ġ"	Mary	Ġtravelled	Ġto	Ġthe	Ġhallway	",	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	Ġand	Ġis	Ġlikely	Ġto	Ġbe	Ġthere	Ġnow	.ĊĊ	Answer	:	Ġyes	<|eot_id|>

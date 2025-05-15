@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	5	,	ĠMary	Ġand	ĠSandra	Ġtravelled	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

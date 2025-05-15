@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSentence	Ġ	8	Ġstates	Ġthat	ĠJohn	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġbut	Ġsentence	Ġ	11	Ġindicates	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġhallway	,	Ġimplying	Ġthat	ĠJohn	Ġhas	Ġleft	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġno	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJulie	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	Ġyesterday	,	Ġit	Ġimplies	Ġthat	Ġshe	Ġwas	Ġsomewhere	Ġelse	Ġbefore	Ġreturning	Ġto	Ġthe	Ġoffice	.	ĠSince	Ġshe	Ġjourney	ed	Ġto	Ġthe	Ġcinema	Ġthis	Ġmorning	,	Ġit	Ġis	Ġlikely	Ġthat	Ġshe	Ġwas	Ġat	Ġthe	Ġoffice	Ġbefore	Ġthe	Ġcinema	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġprovide	Ġinformation	Ġabout	ĠMary	's	Ġpossible	Ġlocations	.	ĠSentence	Ġ	10	Ġstates	Ġthat	ĠMary	Ġis	Ġeither	Ġin	Ġthe	Ġpark	Ġor	Ġthe	Ġschool	,	Ġwhich	Ġimplies	Ġthat	ĠMary	's	Ġcurrent	Ġlocation	Ġis	Ġone	Ġof	Ġthese	Ġtwo	Ġplaces	.ĊĊ	Answer	:	Ġmaybe	<|eot_id|>

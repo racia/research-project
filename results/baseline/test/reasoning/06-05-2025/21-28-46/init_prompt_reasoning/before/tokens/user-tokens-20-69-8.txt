@@ -1,4 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-15	.	ĠAntoine	Ġgrabbed	Ġthe	Ġpaj	amas	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Why	Ġdid	Ġant	oine	Ġget	Ġthe	Ġpaj	amas	?Ċ

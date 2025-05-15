@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġmentioned	Ġin	Ġboth	Ġsentences	,	Ġand	Ġher	Ġlocation	Ġchanges	Ġfrom	Ġthe	Ġkitchen	Ġto	Ġthe	Ġhallway	.	ĠSince	Ġthe	Ġlast	Ġsentence	Ġmentioned	Ġis	Ġabout	Ġthe	Ġhallway	,	Ġit	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

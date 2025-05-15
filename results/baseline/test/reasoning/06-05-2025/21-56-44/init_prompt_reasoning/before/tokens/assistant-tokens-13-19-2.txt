@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġand	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġbathroom	,	Ġand	Ġthen	Ġthey	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.	ĠSince	ĠMary	Ġis	Ġnot	Ġmentioned	Ġas	Ġleaving	Ġthe	Ġhallway	,	Ġit	Ġis	Ġinferred	Ġthat	ĠMary	Ġis	Ġstill	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

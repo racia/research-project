@@ -1,1 +1,0 @@
-<|start_header_id|>	assistant	<|end_header_id|>	ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	2	,	ĠMary	Ġtravelled	Ġto	Ġthe	Ġbedroom	Ġyesterday	.	ĠSentence	Ġ	1	Ġstates	Ġthat	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	Ġthis	Ġmorning	.	ĠTherefore	,	ĠMary	Ġwas	Ġin	Ġthe	Ġbedroom	Ġbefore	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠDaniel	's	Ġmovement	Ġis	Ġtracked	Ġfrom	Ġthe	Ġoffice	Ġto	Ġthe	Ġbathroom	,	Ġindicating	Ġa	Ġchange	Ġin	Ġlocation	.	ĠSince	Ġthe	Ġlast	Ġknown	Ġlocation	Ġis	Ġthe	Ġbathroom	,	Ġit	Ġis	Ġinferred	Ġthat	ĠDaniel	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

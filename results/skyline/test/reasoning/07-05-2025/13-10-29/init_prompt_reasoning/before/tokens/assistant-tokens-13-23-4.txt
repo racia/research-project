@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġ(	10	Ġand	Ġ	11	)	Ġdo	Ġnot	Ġmention	ĠSandra	.	ĠThe	Ġprevious	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġwas	Ġthat	Ġshe	Ġwas	Ġin	Ġthe	Ġgarden	Ġ(	from	Ġsentences	Ġ	7	Ġand	Ġ	8	).	ĠThere	Ġis	Ġno	Ġnew	Ġinformation	Ġabout	ĠSandra	's	Ġmovement	,	Ġso	Ġher	Ġlocation	Ġremains	Ġthe	Ġsame	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

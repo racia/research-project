@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġbathroom	Ġis	Ġnorth	Ġof	Ġthe	Ġoffice	,	Ġand	Ġthere	Ġis	Ġno	Ġother	Ġentity	Ġmentioned	Ġas	Ġbeing	Ġnorth	Ġof	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	10	,	ĠBill	Ġhanded	Ġthe	Ġapple	Ġto	ĠMary	,	Ġwhich	Ġimplies	Ġthat	ĠBill	Ġgave	Ġthe	Ġapple	Ġto	ĠMary	.ĊĊ	Answer	:	ĠBill	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġbeing	Ġmoved	Ġor	Ġtaken	Ġto	Ġthe	Ġkitchen	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġprevious	Ġcontext	Ġsentences	Ġmentioned	Ġthe	Ġapple	Ġbeing	Ġgrabbed	Ġin	Ġthe	Ġbathroom	Ġand	Ġthen	Ġdropped	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġits	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

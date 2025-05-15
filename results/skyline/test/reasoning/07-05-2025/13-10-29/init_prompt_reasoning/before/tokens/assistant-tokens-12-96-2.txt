@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġcontext	Ġsentence	Ġ	5	,	ĠMary	Ġand	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	,	Ġwhich	Ġis	Ġthe	Ġmost	Ġrecent	Ġand	Ġrelevant	Ġinformation	Ġabout	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

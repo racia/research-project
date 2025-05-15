@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-17	.	ĠBill	Ġtravelled	Ġto	Ġthe	Ġoffice	.Ċ
-18	.	ĠFred	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
-19	.	ĠFred	Ġpassed	Ġthe	Ġfootball	Ġto	ĠMary	.Ċ
-20	.	ĠJeff	Ġtravelled	Ġto	Ġthe	Ġhallway	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġgave	Ġthe	Ġfootball	Ġto	ĠMary	?Ċ

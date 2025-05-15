@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġthe	Ġcontext	Ġsentences	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġschool	Ġthis	Ġmorning	,	Ġand	Ġthen	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġthis	Ġafternoon	.	ĠTherefore	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	ĠMary	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġgoing	Ġto	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġschool	<|eot_id|>

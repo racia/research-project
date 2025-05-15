@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	Ġin	Ġsentences	Ġ	10	Ġand	Ġ	11	.	ĠHowever	,	Ġsentence	Ġ	11	Ġmentions	Ġthat	ĠSandra	Ġand	ĠJohn	Ġmoved	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	ĠSandra	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

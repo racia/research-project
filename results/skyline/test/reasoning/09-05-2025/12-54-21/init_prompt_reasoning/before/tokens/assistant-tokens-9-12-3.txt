@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJohn	Ġbeing	Ġin	Ġthe	Ġhallway	Ġor	Ġnot	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġlocations	,	Ġwhich	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJohn	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

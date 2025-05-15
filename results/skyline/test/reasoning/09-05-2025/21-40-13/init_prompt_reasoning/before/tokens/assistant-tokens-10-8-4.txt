@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJulie	's	Ġlocation	Ġin	Ġthe	Ġcontext	Ġsentences	.	ĠSentence	Ġ	11	Ġonly	Ġprovides	Ġinformation	Ġabout	ĠMary	's	Ġpossible	Ġlocations	,	Ġwhich	Ġdoes	Ġnot	Ġimply	Ġanything	Ġabout	ĠJulie	's	Ġlocation	.ĊĊ	Answer	:	Ġunknown	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠMary	Ġbeing	Ġin	Ġthe	Ġbedroom	.	ĠMary	Ġhas	Ġtravelled	Ġto	Ġthe	Ġschool	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġher	Ġbeing	Ġin	Ġthe	Ġbedroom	.	ĠAdditionally	,	ĠJulie	Ġis	Ġmentioned	Ġas	Ġmoving	Ġto	Ġthe	Ġkitchen	,	Ġbut	Ġthis	Ġinformation	Ġdoes	Ġnot	Ġrelate	Ġto	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġno	<|eot_id|>

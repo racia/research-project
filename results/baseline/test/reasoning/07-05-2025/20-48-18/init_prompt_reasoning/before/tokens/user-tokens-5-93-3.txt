@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-35	.	ĠBill	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
-36	.	ĠJeff	Ġpassed	Ġthe	Ġfootball	Ġto	ĠBill	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Who	Ġdid	ĠJeff	Ġgive	Ġthe	Ġfootball	Ġto	?Ċ

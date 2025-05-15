@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFrom	Ġsentence	Ġ	10	,	Ġwe	Ġknow	ĠJohn	Ġand	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.	ĠHowever	,	Ġfrom	Ġsentence	Ġ	11	,	Ġwe	Ġknow	ĠSandra	Ġand	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġmeans	ĠMary	Ġmoved	Ġfrom	Ġthe	Ġbathroom	Ġto	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

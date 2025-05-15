@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠSentence	Ġ	5	Ġmentioned	ĠJohn	Ġmoving	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġthat	Ġinformation	Ġis	Ġnot	Ġrelevant	Ġto	Ġthe	Ġcurrent	Ġcontext	.ĊĊ	Answer	:	Ġunknown	<|eot_id|>

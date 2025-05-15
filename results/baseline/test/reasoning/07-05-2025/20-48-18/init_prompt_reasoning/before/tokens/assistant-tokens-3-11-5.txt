@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġdropped	Ġby	ĠSandra	Ġin	Ġsentence	Ġ	76	,	Ġand	Ġthen	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	Ġin	Ġsentence	Ġ	72	.	ĠSince	Ġthe	Ġapple	Ġwas	Ġdropped	Ġbefore	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	,	Ġthe	Ġapple	Ġwas	Ġin	Ġthe	Ġlocation	Ġwhere	ĠSandra	Ġdropped	Ġit	Ġbefore	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

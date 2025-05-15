@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġis	Ġnot	Ġmentioned	Ġin	Ġeither	Ġsentence	Ġ	7	Ġor	Ġ	8	.	ĠThe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġabout	ĠJohn	's	Ġmovements	Ġwith	ĠDaniel	Ġand	ĠSandra	.	ĠSince	ĠMary	's	Ġlocation	Ġis	Ġnot	Ġspecified	,	Ġit	Ġis	Ġnot	Ġpossible	Ġto	Ġdetermine	Ġwhere	Ġshe	Ġis	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

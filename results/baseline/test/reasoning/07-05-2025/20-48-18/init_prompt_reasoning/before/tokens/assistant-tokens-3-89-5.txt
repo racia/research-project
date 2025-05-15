@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġgrabbed	Ġby	ĠDaniel	Ġ(	sentence	Ġ	43	)	Ġand	Ġthen	Ġdiscarded	Ġby	ĠDaniel	Ġ(	sentence	Ġ	57	).	ĠBefore	Ġbeing	Ġdiscarded	,	Ġthe	Ġfootball	Ġwas	Ġin	Ġthe	Ġoffice	Ġ(	sentence	Ġ	56	).ĊĊ	Answer	:	Ġoffice	<|eot_id|>

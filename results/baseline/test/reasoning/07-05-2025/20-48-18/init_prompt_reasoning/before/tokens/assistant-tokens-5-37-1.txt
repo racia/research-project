@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠFred	Ġhanded	Ġthe	Ġmilk	Ġto	ĠJeff	,	Ġwhich	Ġimplies	Ġthat	ĠFred	Ġgave	Ġthe	Ġmilk	Ġto	ĠJeff	.ĊĊ	Answer	:	ĠFred	<|eot_id|>

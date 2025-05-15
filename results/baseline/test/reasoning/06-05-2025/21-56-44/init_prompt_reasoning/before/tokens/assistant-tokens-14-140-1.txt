@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠBill	Ġtravelled	Ġto	Ġthe	Ġschool	Ġyesterday	,	Ġand	Ġyesterday	ĠMary	Ġmoved	Ġto	Ġthe	Ġcinema	.	ĠThis	Ġimplies	Ġthat	ĠBill	Ġwas	Ġnot	Ġat	Ġthe	Ġcinema	.	ĠSince	ĠBill	Ġmoved	Ġto	Ġthe	Ġoffice	Ġthis	Ġmorning	,	Ġit	Ġis	Ġlikely	Ġthat	Ġhe	Ġwas	Ġat	Ġthe	Ġschool	Ġbefore	Ġmoving	Ġto	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġschool	<|eot_id|>
