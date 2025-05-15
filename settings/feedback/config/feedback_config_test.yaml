@@ -1,5 +1,5 @@
 teacher:
-  name: "meta-llama/Meta-Llama-3-8B-Instruct"
+  name: "meta-llama/Meta-Llama-3-70B-Instruct"
   max_new_tokens: 200
   temperature: 0.1
   to_continue: False
@@ -22,15 +22,16 @@ setting:
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
+  baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/06-05-2025/21-28-46/init_prompt_reasoning/joined_t_all_task_results.csv"
   # Order: train, valid, test
   splits:
     train: False
-    valid: True
-    test: False
+    valid: False
+    test: True
   # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  task_ids: [ 1, 2 ]
+  task_ids: [ 18, 19, 20 ]
   samples_per_task: 3
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
@@ -128,4 +129,4 @@ results:
     run:
       # the run directory with logs, plots, and csv results will be created here
       # use more folders if needed for distinguishing between different experiments
-      dir: "${oc.env:HOME}/research-project/outputs/test-encoding/FD/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+      dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/outputs/test-FD-run/${now:%d-%m-%Y}/${now:%H-%M-%S}"

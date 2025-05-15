@@ -6,23 +6,19 @@ We'll run it for:
 
 1. basic baseline
 2. advanced baseline +
-3. skyline
+3. skyline (++++)
 
 ## Reasoning
 
 We'll run it for:
 
 1. basic baseline
-2. advanced baseline +++
-3. skyline +
-4. feedback
+2. advanced baseline ++++
+3. skyline ++ +-
+4. feedback  `<- current goal`
 5. speculative decoding
 
-### Advanced Baseline
-
-Date: 06.05.2025
-
-Instruction:
+**General instructions:**
 
 0. log into the cluster
 1. make sure that all of your current work there is saved and commited to your branch, so you are not adding any code on
@@ -30,29 +26,47 @@ Instruction:
 2. `git fetch`
 3. `git checkout baseline-run`
 4. `git pull`
-5. run your sbatch script with all the possible partitions `sbatch --partition={partition_name} Baseline_{your_name}.sh`
 
-   > NB! Possible GPU partitions are:
-   > 1. gpu_h100
-   > 2. gpu_mi300
-   > 3. gpu_a100_il
-   > 4. gpu_h100_il
+Additional info:
 
-   You might also want to check the available partitions: `sinfo_t_idle`
+> NB! Possible GPU partitions are:
+>1. gpu_h100
+>2. gpu_mi300
+>3. gpu_a100_il
+>4. gpu_h100_il
 
-6. check job allocation with `squeue --start`
+You might also want to check the available partitions: `sinfo_t_idle`
 
-   > NB! Don't change the code until the job starts
+> NB! Don't change the code until the job starts
 
-7. once a job is started, cancel all other jobs with `scancel {job_id}`
+Check job allocations with `squeue --start`
 
-### Skyline
+### Advanced Baseline
 
-Date: 06.05.2025-07.05.2025
+Date: 06.05.2025
 
 Instruction:
 
-0. everything from the advanced baseline until step 5
-1. run your sbatch script with all the possible partitions `sbatch --partition={partition_name} Skyline_{your_name}.sh`
-2. finish the steps from the advanced baseline
+0. follow general instructions
+1. run your sbatch script with all the possible partitions `sbatch --partition={partition_name} Baseline_{your_name}.sh`
+2. once a job is started, cancel all other jobs with `scancel {job_id}`
 
+### Skyline
+
+Date: 06.05.2025-10.05.2025
+
+Instruction:
+
+0. follow general instructions
+1. run your sbatch script with all the possible partitions `sbatch --partition={partition_name} Skyline_{your_name}.sh`
+2. once a job is started, cancel all other jobs with `scancel {job_id}`
+
+### Feedback
+
+Date: 10.05.2025
+
+Instruction:
+
+0. follow general instructions
+1. run your sbatch script with all the possible partitions `sbatch --partition={partition_name} Feedback_{your_name}.sh`
+2. once a job is started, cancel all other jobs with `scancel {job_id}`

@@ -229,8 +229,9 @@ def run(
                         part_id=part.part_id,
                         split=split.name,
                     )
-                sample.add_silver_reasoning(part.silver_reasoning)
-                sample.add_golden_answers(part.golden_answer)
+                # TODO: make sure they are loaded with results
+                # sample.add_silver_reasoning(part.silver_reasoning)
+                # sample.add_golden_answers(part.golden_answer)
 
                 for version, result in zip(part.versions, part.results):
                     interpr_path = (
@@ -282,7 +283,7 @@ def run(
 
             if verbose:
                 sample.print_sample_predictions()
-                print_metrics(sample, table=True)
+                print_metrics(sample)
 
         task.set_results()
         task_accuracies = {
@@ -293,7 +294,7 @@ def run(
             evaluator.calculate_std()
 
         if verbose:
-            print_metrics(task, table=True)
+            print_metrics(task)
 
         split.add_task(task)
         saver.save_output(

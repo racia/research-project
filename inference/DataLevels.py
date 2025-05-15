@@ -548,10 +548,10 @@ class SamplePart:
             warnings.warn("New settings for preparing the task were applied.")
 
         if not interpretability:
-            warnings.warn("DEBUG: NO INTERPRETABILITY SCORES WERE CALCULATED.")
-            print(self)
-            print("version", version)
-            print("Model output:", model_output)
+            warnings.warn(
+                f"DEBUG: NO INTERPRETABILITY SCORES WERE CALCULATED "
+                f"for task {self.task_id}, sample {self.sample_id}, part {self.part_id}."
+            )
             interpretability = InterResult(np.ndarray([]), [], [], 0.0, 0.0)
 
         if version not in ["before", "after"]:
@@ -641,32 +641,6 @@ class Sample:
         )
         self.results = []
 
-    def add_golden_answers(self, golden_answer: str | list[str]) -> None:
-        """
-        Add the golden answers to the sample.
-
-        :param golden_answer: the golden answer(s) to add
-        :return: None
-        """
-        for evaluator in self.evaluators:
-            if type(golden_answer) is str:
-                evaluator.golden_answers.append(golden_answer)
-            else:
-                evaluator.golden_answers.extend(golden_answer)
-
-    def add_silver_reasoning(self, silver_reasoning: str | list[str]) -> None:
-        """
-        Add the silver reasoning to the sample.
-
-        :param silver_reasoning: the silver reasoning(s) to add
-        :return: None
-        """
-        for evaluator in self.evaluators:
-            if type(silver_reasoning) is str:
-                evaluator.silver_reasonings.append(silver_reasoning)
-            else:
-                evaluator.silver_reasonings.extend(silver_reasoning)
-
     def add_part(self, part: SamplePart) -> None:
         """
         Add a part to the sample.
@@ -676,12 +650,19 @@ class Sample:
         :return: None
         """
         self.parts.append(part)
-
+        if self.multi_system and len(part.results) != 2:
+            raise ValueError(
+                f"The part should have two results for the multi-system setting: {part.results}"
+            )
         for evaluator, result in zip(self.evaluators, part.results):
+            evaluator.golden_answers.append(part.golden_answer)
+            if part.silver_reasoning:
+                evaluator.silver_reasonings.append(part.silver_reasoning)
             evaluator.pred_answers.append(result.model_answer)
             evaluator.pred_reasonings.append(result.model_reasoning)
             if result.interpretability:
                 evaluator.max_supp_attn.add(result.max_supp_attn)
+                evaluator.attn_on_target.add(result.attn_on_target)
 
     def print_sample_predictions(self) -> None:
         """
@@ -888,12 +869,11 @@ class Split:
             evaluator.update(other_evaluator)
 
 
-def print_metrics(data_level: Sample | Task | Split, table: bool = True) -> None:
+def print_metrics(data_level: Sample | Task | Split) -> None:
     """
-    Print the metrics from the evaluator in a pretty table or with the usual statements.
+    Print the metrics from the evaluator in a pretty table.
 
     :param data_level: the data level to print the metrics for
-    :param table: if to print the metrics in a table
     :return: None
     """
     id_ = None
@@ -904,11 +884,7 @@ def print_metrics(data_level: Sample | Task | Split, table: bool = True) -> None
     elif type(data_level) is Split:
         id_ = data_level.name
 
-    if table:
-        print_metrics_table(
-            evaluators=data_level.evaluators,
-            id_=id_,
-        )
-    else:
-        for evaluator in data_level.evaluators:
-            evaluator.print_accuracies(id_=id_)
+    print_metrics_table(
+        evaluators=data_level.evaluators,
+        id_=id_,
+    )

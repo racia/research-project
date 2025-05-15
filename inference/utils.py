@@ -213,7 +213,7 @@ def flatten_message(message: dict) -> list[dict]:
     return flat_message
 
 
-def upd_span(span: tuple, offset: int) -> tuple[int, int]:
+def update_span(span: tuple, offset: int) -> tuple[int, int]:
     """
     Update the span by adding an offset.
 
@@ -227,7 +227,7 @@ def upd_span(span: tuple, offset: int) -> tuple[int, int]:
         raise ValueError(
             "Span must be a tuple of two integers representing the start and end indices."
         )
-    return span[0] + offset, span[1] + offset
+    return offset, span[1] - span[0] + offset
 
 
 def context_sentences(text: str) -> int:
@@ -284,10 +284,16 @@ def print_metrics_table(
             else evaluator.soft_match_accuracy.get_mean()
         )
         if evaluator.max_supp_attn:
-            metric_values["Max attention distribution"][version] = (
+            metric_values["Max attention ratio"][version] = (
                 f"{evaluator.max_supp_attn.get_mean()} ± {evaluator.max_supp_attn.get_std()}"
                 if len(evaluator.max_supp_attn) > 1
                 else evaluator.max_supp_attn.get_mean()
+            )
+        if evaluator.attn_on_target:
+            metric_values["Attention on Target"][version] = (
+                f"{evaluator.attn_on_target.get_mean()} ± {evaluator.attn_on_target.get_std()}"
+                if len(evaluator.attn_on_target) > 1
+                else evaluator.attn_on_target.get_mean()
             )
 
     for metric_name, values in metric_values.items():

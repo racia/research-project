@@ -23,6 +23,7 @@ setting:
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
+  baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
   # Order: train, valid, test
   splits:
     train: False
@@ -132,4 +133,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "${oc.env:HOME}/research-project/outputs/test-encoding/SD/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/outputs/test-encoding/SD/${now:%d-%m-%Y}/${now:%H-%M-%S}"

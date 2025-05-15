@@ -1,20 +1,20 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=skyline
+#SBATCH --job-name=feedback
 
-#SBATCH --time=8:00:00              # Job time limit (30 minutes)
+#SBATCH --time=14:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
 #SBATCH --mem=128G                    # Total memory requested
 
 # Output and error logs
-#SBATCH --output="skyline_out.txt"        # TODO: adjust standard output log
-#SBATCH --error="skyline_err.txt"         # TODO: adjust error log
+#SBATCH --output="feedback_out.txt"
+#SBATCH --error="feedback_err.txt"
 
 # Email notifications
-#SBATCH --mail-user=""              # TODO: Add your email address
+#SBATCH --mail-user=""
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
@@ -69,10 +69,7 @@ export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 
 # declare array of config paths and names, e.g. "/path/to/config config_name"
 declare -a CONFIGS=(
-  "$HOME/research-project/settings/skyline/config skyline_test_1_5"
-  "$HOME/research-project/settings/skyline/config skyline_test_6_10"
-  "$HOME/research-project/settings/skyline/config skyline_test_11_15"
-  "$HOME/research-project/settings/skyline/config skyline_test_16_20"
+  "$HOME/research-project/settings/feedback/config feedback_test_16_20"
 )
 
 for CONFIG in "${CONFIGS[@]}"
