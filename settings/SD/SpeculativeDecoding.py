@@ -39,7 +39,8 @@ class SpeculativeDecoding(Setting):
         The speculative decoding setting consists of a teacher model, a student model, and a tokenizer.
         The init_prompt is the initial prompt that is used to start the chain of thought of the student model.
         The resume_prompt is used to prompt the student model to resume the chain of thought with the corrections by
-        the teacher. The eval_prompt is used to prompt the teacher to evaluate the chain of thought of the student model.
+        the teacher. The eval_prompt is used to prompt the teacher to evaluate the chain of thought of the student
+        model.
 
         :param teacher: The teacher model
         :param student: The student model
@@ -701,7 +702,8 @@ class SpeculativeDecoding(Setting):
         :return: The decoded output, the number of revisions and the interpretability result
         """
         # TODO: teacher tokens in the student chat?
-        # TODO: the iterations is cut off at the middle of the message and teacher message is saved instead of the teacher one:
+        # TODO: the iterations is cut off at the middle of the message and teacher message is saved instead of the
+        #  teacher one:
         # The student's response was:
         #
         #

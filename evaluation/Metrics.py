@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import statistics
 
+import evaluate
+
 
 class Metric:
     def __init__(self, name: str, values: list[float] = None):
@@ -103,3 +105,39 @@ class AttnOnTarget(Metric):
         :param attn_on_target: the list of attention values on target tokens
         """
         super().__init__(name, attn_on_target)
+
+
+class BLEU(Metric):
+    def __init__(self, name: str, scores: list[float] = None):
+        """
+        Initialize the BLEU class.
+
+        :param name: the type of BLEU
+        :param scores: the list of BLEU values
+        """
+        super().__init__(name, scores)
+        self.bleu = evaluate.load("bleu")
+
+
+class ROUGE(Metric):
+    def __init__(self, name: str, scores: list[float] = None):
+        """
+        Initialize the ROUGE class.
+
+        :param name: the type of BLEURT
+        :param scores: the list of BLEURT values
+        """
+        super().__init__(name, scores)
+        self.rouge = evaluate.load("rouge")
+
+
+class Meteor(Metric):
+    def __init__(self, name: str, scores: list[float] = None):
+        """
+        Initialize the BLEU class.
+
+        :param name: the type of BLEU
+        :param scores: the list of BLEU values
+        """
+        super().__init__(name, scores)
+        self.meteor = evaluate.load("meteor")
