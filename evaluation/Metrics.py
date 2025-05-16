@@ -6,14 +6,16 @@ import evaluate
 
 
 class Metric:
-    def __init__(self, name: str, values: list[float] = None):
+    def __init__(self, name: str, var: str, values: list[float] = None):
         """
         Initialize the metric class.
 
         :param name: the name of the metric
+        :param var: the variable name
         :param values: the list of metric values
         """
         self.name: str = name
+        self.var: str = var
         self.all: list[float] = values if values else []
 
         self.mean: float = None
@@ -43,16 +45,17 @@ class Metric:
 
         :param metric: the metric values
         """
-        if metric:
-            type_ = type(metric)
-            if type_ is Metric or issubclass(type_, Metric):
-                self.all.append(metric.get_mean())
-            elif type_ is float:
-                self.all.append(metric)
-            elif type_ is list:
-                self.all.extend(metric)
-            else:
-                raise TypeError(f"{self.name} must be a float or a list of floats.")
+        type_ = type(metric)
+        if type_ is Metric or issubclass(type_, Metric):
+            self.all.append(metric.get_mean())
+        elif type_ is float:
+            self.all.append(metric)
+        elif type_ is list:
+            self.all.extend(metric)
+        else:
+            raise TypeError(
+                f"{self.name} must be a float or a list of floats, not {type_}"
+            )
 
     def get_mean(self) -> float:
         """
@@ -75,69 +78,75 @@ class Metric:
 
 
 class Accuracy(Metric):
-    def __init__(self, name: str, accuracies: list[float] = None):
+    def __init__(self, name: str, var: str, accuracies: list[float] = None):
         """
         Initialize the accuracy class.
 
         :param name: the type of accuracy
+        :param var: the variable name
         :param accuracies: the list of accuracy values
         """
-        super().__init__(name, accuracies)
+        super().__init__(name, var, accuracies)
 
 
 class AttnDistribution(Metric):
-    def __init__(self, name: str, max_supp_target: list[float] = None):
+    def __init__(self, name: str, var: str, max_supp_target: list[float] = None):
         """
         Initialize the attention distribution class for tracking the ratio of max attention on target tokens.
 
         :param name: the type of attention distribution
+        :param var: the variable name
         :param max_supp_target: the list of attention distribution values
         """
-        super().__init__(name, max_supp_target)
+        super().__init__(name, var, max_supp_target)
 
 
 class AttnOnTarget(Metric):
-    def __init__(self, name: str, attn_on_target: list[float] = None):
+    def __init__(self, name: str, var: str, attn_on_target: list[float] = None):
         """
         Initialize the class for tracking the attention on target tokens.
 
         :param name: the type of attention
+        :param var: the variable name
         :param attn_on_target: the list of attention values on target tokens
         """
-        super().__init__(name, attn_on_target)
+        super().__init__(name, var, attn_on_target)
 
 
 class BLEU(Metric):
-    def __init__(self, name: str, scores: list[float] = None):
+    def __init__(self, name: str, var: str, scores: list[float] = None):
         """
         Initialize the BLEU class.
 
         :param name: the type of BLEU
+        :param var: the variable name
         :param scores: the list of BLEU values
         """
-        super().__init__(name, scores)
+        super().__init__(name, var, scores)
         self.bleu = evaluate.load("bleu")
 
 
 class ROUGE(Metric):
-    def __init__(self, name: str, scores: list[float] = None):
+    def __init__(self, name: str, var: str, scores: list[float] = None):
         """
         Initialize the ROUGE class.
 
-        :param name: the type of BLEURT
-        :param scores: the list of BLEURT values
+        :param name: the type of ROUGE
+        :param var: the variable name
+        :param scores: the list of ROUGE values
         """
-        super().__init__(name, scores)
+        super().__init__(name, var, scores)
         self.rouge = evaluate.load("rouge")
 
 
 class Meteor(Metric):
-    def __init__(self, name: str, scores: list[float] = None):
+    def __init__(self, name: str, var: str, scores: list[float] = None):
         """
-        Initialize the BLEU class.
+        Initialize the Meteor class.
 
-        :param name: the type of BLEU
-        :param scores: the list of BLEU values
+        :param name: the type of Meteor
+        :param var: the variable name
+        :param scores: the list of Meteor values
         """
-        super().__init__(name, scores)
+        super().__init__(name, var, scores)
         self.meteor = evaluate.load("meteor")

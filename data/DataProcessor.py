@@ -39,7 +39,7 @@ class DataProcessor:
         :param data: data to process
         :param samples_per_task: number of samples to process and return per task
         :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
-        :param silver_reasoning: the silver reasoning to add to the data
+        :param silver_reasoning: the silver reasoning to addition to the data
         :return: processed data of type
         """
         from_zero = False

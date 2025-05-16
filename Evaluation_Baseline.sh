@@ -63,19 +63,13 @@ MONITOR_PID=$!#
 # Set the environment variable to allow PyTorch to allocate more memory
 export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 
-REP_DIR="$HOME/research-project"
+REP_DIR="/pfs/work9/workspace/scratch/hd_nc326-research-project"
 
-PATHS=(
-"$REP_DIR/results/baseline/test/reasoning/06-05-2025/21-28-46/init_prompt_reasoning"
-"$REP_DIR/results/baseline/test/reasoning/06-05-2025/21-56-44/init_prompt_reasoning"
-"$REP_DIR/results/baseline/test/reasoning/07-05-2025/20-48-18/init_prompt_reasoning"
-"$REP_DIR/results/baseline/test/reasoning/09-05-2025/00-22-37/init_prompt_reasoning"
-)
+# the data should already be joined!!!
+JOINED_DATA_PATH="$REP_DIR/baseline/test/reasoning/results_file.csv" # TODO: Adjust the path to your results file
+SAVE_PATH="$REP_DIR/baseline/test/reasoning/" # TODO: Adjust the path to your save directory (choose wisely!)
 
-JOINED_DATA_PATH="$REP_DIR/results/baseline/test/reasoning"
-
-python3 join_data.py --paths "${PATHS[@]}" --result_directory $JOINED_DATA_PATH --level "task"
-python3 evaluate_data.py --data_path $JOINED_DATA_PATH --save_path "" --samples_per_task 100 --create_heatmaps True --verbose False
+python3 evaluate_data.py --results_path $JOINED_DATA_PATH --save_path $SAVE_PATH --samples_per_task 100 --create_heatmaps --verbose
 
 # Verify if the script executed successfully
 if [ $? -eq 0 ]; then

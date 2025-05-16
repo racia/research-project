@@ -126,7 +126,7 @@ def process_sample(
 
         new_row = pd.DataFrame(
             [
-                {  # all counters should start at 1 -> add one to each
+                {  # all counters should start at 1 -> addition one to each
                     "id_": id_counter + 1,
                     "task_id": task_id,
                     "sample_id": sample_id + 1,

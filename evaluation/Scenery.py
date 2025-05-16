@@ -148,7 +148,7 @@ class Scenery:
                 if token.lemma_ in self.base_phrasal_verbs and particle:
                     relations.append((token.lemma_, particle[0].text))
                 else:
-                    # Otherwise add a normal relation.
+                    # Otherwise addition a normal relation.
                     relations.append(token.lemma_)
             # Extract the to-be relations: be, is, etc.
             elif token.dep_ == "ROOT" and token.lemma_ == "be":

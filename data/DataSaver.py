@@ -119,41 +119,36 @@ class DataSaver:
                 writer.writeheader()
             [writer.writerow(row) for row in data]
 
-    def save_split_accuracy(
+    def save_split_metrics(
         self,
         split,
-        accuracy_file_name: str,
+        metric_file_name: str,
     ) -> None:
         """
-        Save the accuracies for the split,
-        including the * mean accuracy * for all tasks.
+        Save the metrics for the split,
+        including the * mean * accuracies and metrics for all tasks.
 
         :param split: the split object of the data
-        :param accuracy_file_name: the name of the file to save the accuracies
+        :param metric_file_name: the name of the file to save the metrics
         :return: None
         """
-        accuracies_to_save = defaultdict(dict)
         for evaluator, version in zip(split.evaluators, split.versions):
-            accuracies = list(
-                format_accuracy_metrics(
-                    evaluator.exact_match_accuracy,
-                    evaluator.soft_match_accuracy,
-                    evaluator.exact_match_std,
-                    evaluator.soft_match_std,
-                    version=version,
-                ).values()
+            metrics_to_save = defaultdict(dict)
+            metrics = list(
+                format_metrics(evaluator.get_metrics(as_lists=True)).values()
             )
-            for acc in accuracies:
-                accuracies_to_save[acc["task_id"]].update(acc)
+            for metric in metrics:
+                metrics_to_save[metric["task_id"]].update(metric)
 
-        for acc in accuracies_to_save.values():
-            self.save_output(
-                data=[acc],
-                headers=list(acc.keys()),
-                file_name=accuracy_file_name,
-            )
+            for metric in metrics_to_save.values():
+                self.save_output(
+                    data=[metric],
+                    headers=list(metric.keys()),
+                    file_name=metric_file_name.replace("version", version),
+                    path_add=version,
+                )
 
-    def save_split_metrics(
+    def save_split_features(
         self, features: Features, metrics_file_name: str, version: str
     ) -> None:
         """
@@ -164,7 +159,7 @@ class DataSaver:
         :param version: the version of the features
         :return: None
         """
-        headers = ["metric", "count"]
+        headers = ["feature", "count"]
         features = [
             {h: m for h, m in zip(headers, metric)} for metric in features.get().items()
         ]
@@ -417,7 +412,7 @@ class DataSaver:
         # get accuracy for the last task
         task_accuracy = {"task_id": task_id}
         for evaluator in task_data.evaluators:
-            task_accuracy = {**task_accuracy, **evaluator.get_accuracies()}
+            task_accuracy = {**task_accuracy, **evaluator.get_metrics()}
 
         self.save_interpretability(task_data)
         self.save_output(
@@ -434,7 +429,7 @@ class DataSaver:
         split_name: str,
     ) -> None:
         """
-        Save the accuracies for the split run, including the mean accuracy for all tasks.
+        Save the metrics for the split run, including the mean accuracy for all tasks.
 
         :param task_ids: the task ids
         :param splits: the split objects of the data
@@ -453,10 +448,7 @@ class DataSaver:
                 run_metrics = format_task_accuracies(
                     accuracies_to_save=run_metrics,
                     task_ids=task_ids,
-                    exact_match_accuracies=evaluator.exact_match_accuracy,
-                    soft_match_accuracies=evaluator.soft_match_accuracy,
-                    exact_match_std=evaluator.exact_match_std,
-                    soft_match_std=evaluator.soft_match_std,
+                    evaluator=evaluator,
                     headers=prompt_headers,
                 )
 
