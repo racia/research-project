@@ -11,3 +11,5 @@ PyTurboJPEG
 ffmpeg
 pylib-openblas
 prettytable
+evaluate
+rouge_score

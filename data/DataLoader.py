@@ -273,24 +273,20 @@ class DataLoader:
         split: str = None,
         tasks: list[int] | None = None,
         sep: str = "\t",
-    ) -> (
-        dict[str, list[Union[int, float]]]
-        | dict[int, list[dict[str, Union[int, float, str]]]]
-        | dict[int, dict[int, list[SamplePart]]]
-    ):
+    ) -> tuple[dict | list, bool | None]:
         """
         Load the results or any csv file from the path.
         Please specify the headers to ensure the desired order of the data.
 
-        :param results_path: path to the results, if None, the data_path is used
-        :param data_path: path to the source data
+        :param results_path: path to the results, if None, the results_path is used
+        :param data_path: path to the source data (is required when loading results as parts)
         :param headers: list of headers in the file, if None, the headers are read from the file
         :param list_output: if the output should be a list of dictionaries instead of a dictionary of lists
         :param as_parts: if the output should be a list of SamplePart objects
         :param split: split of the data (to find the file)
         :param tasks: list of task ids to load
         :param sep: separator for the csv file
-        :return: result data
+        :return: result data and whether the data loaded is multi-system (if applicable)
         """
         if list_output and as_parts:
             raise ValueError(
@@ -347,61 +343,83 @@ class DataLoader:
         self.number_of_parts = len(data)
         self.number_of_tasks = len(tasks)
 
-        if as_parts:
-            parts = []
-            raw_parts = self.load_task_data(
-                path=data_path,
-                split=split,
-                tasks=tasks,
-                multi_system=True,
-                lookup=True,
-            )
-            for row in data:
-                if row["sample_id"] > self.samples_per_task:
+        if not as_parts:
+            return data, None
+
+        parts = []
+        raw_parts = self.load_task_data(
+            path=data_path,
+            split=split,
+            tasks=tasks,
+            multi_system=True,
+            lookup=True,
+        )
+        multi_system = False
+        for row in data:
+            if row["sample_id"] > self.samples_per_task:
+                continue
+
+            identifier = (row["task_id"], row["sample_id"], row["part_id"])
+
+            if identifier not in raw_parts.keys():
+                continue
+
+            raw_part = raw_parts[identifier]
+            for version in ["before", "after"]:
+                if not row.get(f"model_output_{version}", None):
+                    multi_system = False
                     continue
 
-                identifier = (row["task_id"], row["sample_id"], row["part_id"])
-                raw_part = raw_parts[identifier]
-                if not row["model_output_before"]:
+                if not row[f"model_output_{version}"]:
                     raise ValueError(
-                        f"Model output before is not found in row {row['id_']}: {row['model_output_before']}"
+                        f"Model output {version} is not found in row {row['id_']}: {row[f'model_output_{version}']}"
                     )
-                interpretability = InterpretabilityResult(
-                    np.array([]),
-                    [],
-                    [],
-                    row["max_supp_attn_before"],
-                    row["attn_on_target_before"],
+
+                multi_system = True
+                # TODO: remove "attn_scores" subfolder for newer results
+                attn_path = (
+                    Path(results_path).parent
+                    / version
+                    / "interpretability"
+                    / "attn_scores"
                 )
+                interpretability = self.load_interpretability(
+                    task_id=row["task_id"],
+                    sample_id=row["sample_id"],
+                    part_id=row["part_id"],
+                    attn_scores_path=str(attn_path),
+                )
+                interpretability.max_supp_attn = row[f"max_supp_attn_{version}"]
+                interpretability.attn_on_target = row[f"attn_on_target_{version}"]
                 raw_part.set_output(
-                    model_output=str(row["model_output_before"]),
-                    model_answer=str(row["model_answer_before"]),
-                    model_reasoning=str(row["model_reasoning_before"]),
+                    model_output=str(row[f"model_output_{version}"]),
+                    model_answer=str(row[f"model_answer_{version}"]),
+                    model_reasoning=str(row[f"model_reasoning_{version}"]),
                     interpretability=interpretability,
-                    full_task=row["task"],
-                    version="before",
+                    wrapped_task=row["task"],
+                    iterations=row.get("iterations", 0),
+                    version=version,
                 )
                 ids, tokens = self.load_ids_and_tokens(
                     run_directory=Path(results_path).parent,
                     task_id=row["task_id"],
                     sample_id=row["sample_id"],
                     part_id=row["part_id"],
+                    version=version,
                 )
                 raw_part.results[-1].ids, raw_part.results[-1].tokens = ids, tokens
-                parts.append(raw_part)
+            parts.append(raw_part)
 
-            if len(parts) != self.number_of_parts:
-                warnings.warn(
-                    "The number of parts does not match the number of loaded data: %d != %d"
-                    % (len(parts), self.number_of_parts)
-                )
-            return structure_parts(parts)
-
-        return data
+        if len(parts) != self.number_of_parts:
+            warnings.warn(
+                "The number of parts does not match the number of loaded data: %d != %d"
+                % (len(parts), self.number_of_parts)
+            )
+        return structure_parts(parts), multi_system
 
     @staticmethod
     def load_ids_and_tokens(
-        run_directory: Path, task_id: int, sample_id: int, part_id: int
+        run_directory: Path, task_id: int, sample_id: int, part_id: int, version: str
     ) -> tuple[dict[str, list[int] | list[str]], ...]:
         """
         Load the ids and tokens from the specified directory.
@@ -410,12 +428,13 @@ class DataLoader:
         :param task_id: task id
         :param sample_id: sample id
         :param part_id: part id
+        :param version: version of the data (before or after)
         :return: ids and tokens as dictionaries of roles and their respective values
         """
         ids, tokens = {}, {}
 
         for value, result_dict in zip(["ids", "tokens"], [ids, tokens]):
-            subdirectory = run_directory / "before" / value
+            subdirectory = run_directory / version / value
             file_identifier = f"{task_id}-{sample_id}-{part_id}"
 
             for role in ["user", "assistant"]:
@@ -460,7 +479,7 @@ class DataLoader:
         silver_reasoning_data = []
         for path in self.silver_reasoning_path.iterdir():
             if f"{split}_{task_id}." in path.name:
-                silver_reasoning_data = self.load_results(
+                silver_reasoning_data, _ = self.load_results(
                     Path.cwd() / path, list_output=True, sep=",", as_parts=False
                 )
                 break
@@ -497,6 +516,7 @@ class DataLoader:
             )
             return InterpretabilityResult(np.array([]), [], [], 0.0, 0.0)
 
+        # TODO: change to "interpretability"
         if path.name != "attn_scores":
             raise ValueError("The attention subdirectory is not located.")
 
@@ -507,8 +527,10 @@ class DataLoader:
                 attn_scores = [
                     list(map(float, row.split("\t"))) for row in attn_scores_rows
                 ]
+                attn_scores = np.array(attn_scores)
+
         except FileNotFoundError:
-            attn_scores = []
+            attn_scores = np.array([])
 
         try:
             x_tokens_file = f"x_tokens-{task_id}-{sample_id}-{part_id}.txt"
@@ -525,7 +547,7 @@ class DataLoader:
             y_tokens = []
 
         interpretability_result = InterpretabilityResult(
-            attn_scores=np.array(attn_scores),
+            attn_scores=attn_scores,
             x_tokens=x_tokens,
             y_tokens=y_tokens,
         )

@@ -1,7 +1,7 @@
-# Description: Plot the accuracies for multiple prompts  by given paths to compare them.
+# Description: Plot the metrics for multiple prompts  by given paths to compare them.
 # Furthermore, the accuracy files should be in the same format:
 # - The first line should contain the average accuracy for the "zero task".
-# - The following lines should contain the strict and soft-match accuracies for each task.
+# - The following lines should contain the strict and soft-match metrics for each task.
 
 from __future__ import annotations
 
@@ -22,10 +22,10 @@ def plot_from_paths(
     split: DataSplits = "valid",
 ) -> None:
     """
-    Plot the accuracies for multiple prompts to compare them.
+    Plot the metrics for multiple prompts to compare them.
     The accuracy files should be in the same format:
     - The first line should contain the average accuracy for the "zero task".
-    - The following lines should contain the strict and soft-match accuracies for each task.
+    - The following lines should contain the strict and soft-match metrics for each task.
 
     :param paths: list of paths to the accuracy files
     :param accuracy_types: list of accuracy types to plot (a plot for each type)
@@ -52,8 +52,8 @@ def plot_from_paths(
     for accuracy_type in getattr(accuracy_types, "exact_match", "soft_match"):
         accuracies = {}
         for path, disambiguator in zip(paths, disambiguators):
-            data = loader.load_results(
-                path=str(path),
+            data, _ = loader.load_results(
+                results_path=str(path),
                 headers=["task_id", "exact_match_accuracy", "soft_match_accuracy"],
             )
             prompt_name = Path(path).stem.replace("prompt_", f"{disambiguator}_", 1)
@@ -62,11 +62,11 @@ def plot_from_paths(
         plotter.plot_acc_per_task_and_prompt(
             acc_per_prompt_task=accuracies,
             y_label=accuracy_type,
-            plot_name_add=f"{split}_{prompt_type}_",
+            plot_name_add=[split, prompt_type],
         )
 
         print(
-            f"Plotted {prompt_type} accuracies for",
+            f"Plotted {prompt_type} metrics for",
             accuracy_type,
             "and",
             split,
@@ -82,10 +82,10 @@ def plot_from_directory(
     split: DataSplits = "valid",
 ) -> None:
     """
-    Plot the accuracies for multiple prompts to compare them.
+    Plot the metrics for multiple prompts to compare them.
     The accuracy files should be in the same format:
     - The first line should contain the average accuracy for the "zero task".
-    - The following lines should contain the strict and soft-match accuracies for each task.
+    - The following lines should contain the strict and soft-match metrics for each task.
 
     :param directory: directory with results that contain the runs with the desired accuracy files
     :param accuracy_types: list of accuracy types to plot (a plot for each type)
@@ -114,8 +114,8 @@ def run(
 ) -> None:
     """
     Run the plotting for multiple prompts.
-    The paths can be either directories or files. If directories are provided, the function will plot the accuracies
-    for each prompt in the directory. If files are provided, the function will plot the accuracies for each file.
+    The paths can be either directories or files. If directories are provided, the function will plot the metrics
+    for each prompt in the directory. If files are provided, the function will plot the metrics for each file.
     Paths should be either directories or files containing the accuracy files, *not mixed*.
 
     :param paths: list of paths to directories or files

@@ -49,7 +49,7 @@ def structure_part(
     Structures the lines into a readable format.
 
     :param part: part of the sample to structure
-    :param to_enumerate: if to add line numbers to the beginning of lines
+    :param to_enumerate: if to addition line numbers to the beginning of lines
     :return: structured context and question
     """
     context = []
@@ -218,7 +218,7 @@ def update_span(span: tuple, offset: int) -> tuple[int, int]:
     Update the span by adding an offset.
 
     :param span: span to update
-    :param offset: offset to add
+    :param offset: offset to addition
     :return: updated span
     """
     if len(span) == 0:
@@ -294,6 +294,24 @@ def print_metrics_table(
                 f"{evaluator.attn_on_target.get_mean()} ± {evaluator.attn_on_target.get_std()}"
                 if len(evaluator.attn_on_target) > 1
                 else evaluator.attn_on_target.get_mean()
+            )
+        if evaluator.bleu:
+            metric_values["BLEU score"][version] = (
+                f"{evaluator.bleu.get_mean()} ± {evaluator.bleu.get_std()}"
+                if len(evaluator.bleu) > 1
+                else evaluator.bleu.get_mean()
+            )
+        if evaluator.rouge:
+            metric_values["ROUGE score"][version] = (
+                f"{evaluator.rouge.get_mean()} ± {evaluator.rouge.get_std()}"
+                if len(evaluator.rouge) > 1
+                else evaluator.rouge.get_mean()
+            )
+        if evaluator.meteor:
+            metric_values["METEOR score"][version] = (
+                f"{evaluator.meteor.get_mean()} ± {evaluator.meteor.get_std()}"
+                if len(evaluator.meteor) > 1
+                else evaluator.meteor.get_mean()
             )
 
     for metric_name, values in metric_values.items():
