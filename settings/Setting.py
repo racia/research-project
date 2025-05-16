@@ -11,9 +11,9 @@ from data.DataSaver import DataSaver
 from inference.Chat import Chat
 from inference.DataLevels import Sample, SamplePart, Task, print_metrics
 from inference.Prompt import Prompt
+from inference.utils import Source
 from interpretability.utils import InterpretabilityResult
 from settings.Model import Model
-from settings.utils import parse_output
 
 
 class Setting(ABC):
@@ -55,17 +55,6 @@ class Setting(ABC):
 
         self.saver: DataSaver = saver
 
-    # @abstractmethod
-    # def prepare_prompt(self, chat: Chat, resume_gen: bool = False) -> str:
-    #     """
-    #     Prepares the prompt to include the current part of the sample.
-    #
-    #     :param resume_gen: whether to resume the generation
-    #     :param chat: the current chat
-    #     :return: prompt with the task and the current part
-    #     """
-    #     raise NotImplementedError
-
     def create_teacher_chat(
         self,
         teacher_sys: Prompt,
@@ -93,6 +82,27 @@ class Setting(ABC):
                 "The teacher prompt is still unformatted:\n", teacher_sys.text
             )
         return chat
+
+    def get_after_interpretability(self) -> InterpretabilityResult:
+        """
+        Get the interpretability result for the student after the setting is applied.
+        This is used for the multi-system setting when the final version of the chat is not available till the end.
+        :return: interpretability result
+        """
+        chat_ids = self.model.chat.convert_into_datatype("ids", identify_target=False)
+        output_tensor = self.model.model(
+            chat_ids,
+            return_dict=True,
+            output_attentions=True,
+            output_hidden_states=False,
+        )
+        interpretability = self.model.interpretability.process_attention(
+            # output tensor includes all the previous ids + the model output
+            output_tensor=output_tensor,
+            chat=self.model.chat,
+            chat_ids=chat_ids,
+        )
+        return interpretability
 
     @abstractmethod
     def apply_setting(
@@ -159,27 +169,50 @@ class Setting(ABC):
                     "*-",
                     end="\n\n\n",
                 )
-                sample.add_golden_answers(self.part.golden_answer)
-                sample.add_silver_reasoning(self.part.silver_reasoning)
-
                 # Only run the model if the results are not loaded
-                if not self.part.result_before.model_answer:
-                    print("QUERYING BEFORE")
-                    # formatted_prompt = self.prepare_prompt(chat=chat)
-                    # TODO optional: remove returning the decoded output => move printing to model.call and work only
-                    #  with chat
+                if not self.part.results or not any(
+                    [self.part.results[-1].ids, self.part.results[-1].tokens]
+                ):
+                    print("Calling the model...")
                     decoded_output, interpretability = self.model.call(self.part)
-                    answer, reasoning = parse_output(output=decoded_output)
                     self.part.set_output(
-                        model_output=decoded_output,
-                        model_answer=answer,
-                        model_reasoning=reasoning,
+                        messages=self.model.chat.messages[-2:],
                         interpretability=interpretability,
                         version="before" if self.multi_system else "after",
                     )
                     print(
                         f"The output of the {'student' if self.multi_system else 'model'}:",
                         decoded_output,
+                        end="\n\n\n",
+                        sep="\n",
+                        flush=True,
+                    )
+                    print(
+                        f"The output of the {'student' if self.multi_system else 'model'}:",
+                        decoded_output,
+                        end="\n\n\n",
+                        sep="\n",
+                        flush=True,
+                    )
+                else:
+                    print("The results are already loaded, skipping the model call...")
+                    self.model.chat.add_message(
+                        part=self.part,
+                        source=Source.user,
+                        ids=self.part.results[-1].ids[Source.user],
+                        tokens=self.part.results[-1].tokens[Source.user],
+                        wrapper=self.model.wrapper,
+                    )
+                    self.model.chat.add_message(
+                        part=self.part.results[-1].model_output,
+                        source=Source.assistant,
+                        ids=self.part.results[-1].ids[Source.assistant],
+                        tokens=self.part.results[-1].tokens[Source.assistant],
+                    )
+                    self.model.chat.identify_supp_sent_spans()
+                    print(
+                        "The output of the model:",
+                        self.part.results[-1].model_output,
                         end="\n\n\n",
                         sep="\n",
                         flush=True,
@@ -192,7 +225,7 @@ class Setting(ABC):
                     )
 
                     decoded_output, eval_dict, interpretability = self.apply_setting(
-                        decoded_output=self.part.result_before.model_output,
+                        decoded_output=self.part.results[-1].model_output,
                     )
                     self.saver.save_eval_dict(
                         task_id=task_id,
@@ -201,11 +234,8 @@ class Setting(ABC):
                         eval_dict=eval_dict,
                         file_name="eval_dict_sd.json",
                     )
-                    answer, reasoning = parse_output(output=decoded_output)
                     self.part.set_output(
-                        model_output=decoded_output,
-                        model_answer=answer,
-                        model_reasoning=reasoning,
+                        messages=self.model.chat.messages[-2:],
                         interpretability=interpretability,
                         iterations=eval_dict["iterations"],
                         version="after",
@@ -216,7 +246,6 @@ class Setting(ABC):
 
                 if self.saver:
                     print("Saving part result...")
-                    # TODO: save "before" ids (embedding)
                     self.saver.save_part_result(self.part)
 
                 sample.add_part(self.part)
@@ -225,7 +254,7 @@ class Setting(ABC):
 
             sample.print_sample_predictions()
             sample.calculate_metrics()
-            print_metrics(sample, table=True)
+            print_metrics(sample)
             task.add_sample(sample)
 
             # save the sample result
@@ -236,7 +265,7 @@ class Setting(ABC):
             #     )
 
         print("\n- TASK RESULTS -", end="\n\n")
-        print_metrics(task, table=True)
+        print_metrics(task)
         task.set_results()
 
         print(f"The work on task {task_id} is finished successfully")

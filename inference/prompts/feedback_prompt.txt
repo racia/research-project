@@ -44,10 +44,3 @@ Correct.
 This correctly tracks Mary's location through the sequence of events.
 """
 *end of example 2*
-
-Your student was given the following task:
-"""
-{init_prompt}
-
-{parts_so_far}
-"""

@@ -46,7 +46,7 @@ For more detailed information about the settings, please refer to this [README.m
 To run one of the settings, you can use the following command:
 
 ```bash
-bash <setting_name>.sh
+  bash <setting_name>.sh
 ```
 
 ## Results

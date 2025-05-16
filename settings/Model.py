@@ -1,6 +1,8 @@
-import os
+from __future__ import annotations
 
-import numpy as np
+import os
+import warnings
+
 import torch
 from torch.amp import autocast
 from transformers import (
@@ -11,11 +13,12 @@ from transformers import (
     PreTrainedTokenizerFast,
 )
 
-from inference.Chat import Chat
+from inference.Chat import Chat, Source
 from inference.DataLevels import SamplePart
 from interpretability.Interpretability import Interpretability
 from interpretability.utils import InterpretabilityResult
-from settings.config import Mode
+from settings.config import Mode, Wrapper
+from settings.utils import encode_wrapper
 
 
 class Model:
@@ -29,17 +32,31 @@ class Model:
         max_new_tokens: int,
         temperature: float,
         to_continue: bool,
+        role: str | None,
+        k: int | None = None,
+        p: float | None = None,
         mode: Mode = "eval",
-        interpretability: Interpretability = None,
+        wrapper: Wrapper = None,
+        interpretability: bool = None,
     ):
         self.token: str = os.getenv("HUGGINGFACE")
         self.name: str = name
+        self.role = role
         self.max_new_tokens: int = max_new_tokens
         self.temperature: float = temperature
         self.to_continue: bool = to_continue
         self.mode: Mode = mode
+
         self.model, self.tokenizer = self.load()
-        self.interpretability = interpretability
+
+        if interpretability:
+            self.interpretability = Interpretability()
+            self.interpretability.tokenizer = self.tokenizer
+
+        self.wrapper = encode_wrapper(wrapper, self.tokenizer) if wrapper else None
+        self.chat: Chat = None
+        self.k = k
+        self.p = p
 
     def load(self) -> tuple[OpenLlamaPreTrainedModel, PreTrainedTokenizerFast]:
         """
@@ -50,7 +67,7 @@ class Model:
         :return: tuple: model, tokenizer
         """
         print(
-            f"The model {self.name} is being loaded in mode '{self.mode}'",
+            f"The model {self.name} is being loaded in mode '{self.mode}'...",
             end="\n\n",
             flush=True,
         )
@@ -97,38 +114,48 @@ class Model:
         return model, tokenizer
 
     def call(
-        self, part: SamplePart, prompt: str, chat: Chat = None
+        self,
+        data: SamplePart | str = None,
+        from_chat: bool = False,
+        to_continue: bool = False,
     ) -> tuple[str, InterpretabilityResult]:
         """
-        Calls the model with memory optimizations and optionally with Interpretability.
-        :param part: The current sample part
-        :param prompt: The formatted prompt
-        :param chat: The current chat
+        Calls the model with memory optimizations and optionally with Interpretability (depends on config).
+        The user message is added to the chat if a part or a formatted prompt is provided.
+        Otherwise, the model is called on the current chat as is. The generated model message is added always.
+        Whenever a string message is added, it is encoded, so the chat assumes all the encoded ids to be in place.
+
+        :param data: The data to be used for the model call. It can be a SamplePart or a string.
+        :param from_chat: Whether the message is from the chat or not
+        :param to_continue: Whether the model should continue the last message or not
         :return: The decoded model output
         """
+        if not self.chat:
+            raise ValueError(
+                "Chat is not set. Please set the chat before calling the model."
+            )
+        if data and not from_chat:
+            self.chat.add_message(
+                part=data,
+                source=Source.user,
+                wrapper=self.wrapper,
+            )
+        elif not (data or from_chat):
+            raise ValueError(
+                "Either data or from_chat should be set. Please set one of them."
+            )
+
         with torch.no_grad():
-            device = next(self.model.parameters()).device
-
-            if chat:
-                chat_ids, context_sent_spans, sys_prompt_len = chat.convert_into_ids(
-                    chat_part=chat.messages,
-                    tokenizer=self.tokenizer,
-                )
-                inputs = {k: v.to(device) for k, v in chat_ids.items()}
-            else:
-                inputs = self.tokenizer(
-                    prompt,
-                    return_tensors="pt",
-                    padding="longest",
-                    truncation=True,
-                    max_length=2048,
-                    add_special_tokens=True,
-                )
-                inputs = {k: v.to(device) for k, v in inputs.items()}
-
+            call_from_part = type(data) is SamplePart and not from_chat
+            # includes flat ids for all the messages in the chat, including the wrapper
+            chat_ids = self.chat.convert_into_datatype(
+                datatype="ids", identify_target=True if call_from_part else False
+            )
+            inputs = {"input_ids": chat_ids.to("cuda")}
             torch.cuda.empty_cache()
 
             with autocast("cuda"):
+                # includes all the previous ids + the model output
                 outputs = self.model.generate(
                     **inputs,
                     max_new_tokens=self.max_new_tokens,
@@ -138,39 +165,52 @@ class Model:
                     use_cache=True,
                     num_beams=1,  # no beam search, reduce GPU memory usage
                 )
-
-                input_length = inputs["input_ids"].size(1)
-                encoded_output = outputs[0][input_length:]
-
+                encoded_output = outputs[0][inputs["input_ids"].size(1) :]
                 decoded_output = self.tokenizer.decode(
                     encoded_output, skip_special_tokens=True
-                ).lower()
+                ).strip()
 
-                interpretability_result = InterpretabilityResult(
-                    np.array([]), [], [], 0
-                )
-
-                # Controlled call (i.e. generate_student() in Feedback shouldn't call ?)
-                if chat and decoded_output:
-                    output_tensor = self.model(
-                        outputs,
-                        return_dict=True,
-                        output_attentions=True,
-                        output_hidden_states=False,
+                # the model expanded on the message, so we need to update it
+                if to_continue:
+                    self.chat.adjust_message(decoded_output, encoded_output)
+                else:
+                    self.chat.add_message(
+                        part=decoded_output, source=Source.assistant, ids=encoded_output
                     )
 
-                    interpretability_result = self.interpretability.calculate_attention(
-                        tokenizer=self.tokenizer,
-                        part=part,
-                        after=not part.multi_system,
-                        chat_ids=outputs,
-                        context_sent_spans=context_sent_spans,
-                        output_tensor=output_tensor,
-                        model_output_len=len(encoded_output),
-                        sys_prompt_len=sys_prompt_len,
-                    )
+                interpretability_result = None
 
-            torch.cuda.empty_cache()
+                if self.role == "student" and not self.interpretability:
+                    raise ValueError("Interpretability is not set for student model!")
+
+                if self.role == "student" and self.interpretability and decoded_output:
+                    try:
+                        # output tensor includes all the previous ids + the model output
+                        output_tensor = self.model(
+                            outputs,
+                            return_dict=True,
+                            output_attentions=True,
+                            output_hidden_states=False,
+                        )
+                        if type(data) is not SamplePart:
+                            raise TypeError(
+                                "For interpretability plotting, data should be of type SamplePart"
+                            )
+                        # for the settings, the final model output is currently not plotted
+                        interpretability_result = (
+                            self.interpretability.process_attention(
+                                output_tensor=output_tensor,
+                                chat=self.chat,
+                                chat_ids=outputs,
+                            )
+                        )
+                    except torch.OutOfMemoryError:
+                        warnings.warn(
+                            "DEBUG: Out of memory error while calculating interpretability scores * before *. "
+                            "Skipping this step."
+                        )
+
+        torch.cuda.empty_cache()
 
         return decoded_output, interpretability_result
 
@@ -184,9 +224,11 @@ class Model:
         :return: the probabilities of the model
         """
         with torch.no_grad():
-            teacher_outputs = self.model(input_ids)
-            teacher_logits = teacher_outputs.logits
-            teacher_probs = torch.nn.functional.softmax(
-                teacher_logits[:, -1, :], dim=-1
-            )
+            with autocast("cuda"):
+                teacher_outputs = self.model(input_ids)
+                teacher_logits = teacher_outputs.logits
+                teacher_probs = torch.nn.functional.softmax(
+                    teacher_logits[:, -1, :], dim=-1
+                )
+            torch.cuda.empty_cache()
         return teacher_probs

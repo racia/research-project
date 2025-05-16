@@ -4,13 +4,14 @@ import csv
 import json
 import sys
 import warnings
-from collections import defaultdict
 from typing import Iterable, TextIO, Union
 
+import pandas as pd
+
 from data.utils import *
-from evaluation.Evaluator import MetricEvaluator
 from inference.DataLevels import Features, Sample, SamplePart, Split, Task
 from inference.Prompt import Prompt
+from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits
 
 
@@ -19,7 +20,7 @@ class DataSaver:
     This class handles everything related to saving data.
     """
 
-    def __init__(self, save_to: str) -> None:
+    def __init__(self, save_to: str, loaded_baseline_results: bool) -> None:
         """
         Initialize the DataSaver.
         The datasaver handles everything related to saving data.
@@ -31,6 +32,8 @@ class DataSaver:
         self.results_path: Path = Path(save_to)
         self.run_path: Path = Path(save_to)
         self.prompt_name: str = ""
+
+        self.loaded_baseline_results: bool = loaded_baseline_results
 
     def create_result_paths(
         self,
@@ -118,26 +121,19 @@ class DataSaver:
 
     def save_split_accuracy(
         self,
-        evaluators: list[MetricEvaluator],
+        split,
         accuracy_file_name: str,
-        multi_system: bool = False,
     ) -> None:
         """
         Save the accuracies for the split,
         including the * mean accuracy * for all tasks.
 
-        :param evaluators: the evaluator
+        :param split: the split object of the data
         :param accuracy_file_name: the name of the file to save the accuracies
-        :param multi_system: if the setting uses two models
         :return: None
         """
-        if multi_system:
-            versions = ["before", "after"]
-        else:
-            versions = ["after"]
-
         accuracies_to_save = defaultdict(dict)
-        for evaluator, version in zip(evaluators, versions):
+        for evaluator, version in zip(split.evaluators, split.versions):
             accuracies = list(
                 format_accuracy_metrics(
                     evaluator.exact_match_accuracy,
@@ -189,6 +185,9 @@ class DataSaver:
         :param sep: the separator, a newline by default
         :return: None
         """
+        if not data:
+            warnings.warn("No data to save.")
+            return
         file_path.parent.mkdir(parents=True, exist_ok=True)
         with open(file_path, "w", encoding="UTF-8") as file:
             file.write(sep.join(map(lambda x: str(x).strip(), data)))
@@ -205,86 +204,101 @@ class DataSaver:
         with open(file_path, "w", encoding="UTF-8") as file:
             file.write(json.dumps(data, indent=2))
 
-    def save_part_interpretability(self, part: SamplePart) -> None:
+    def save_part_interpretability(
+        self,
+        result: InterpretabilityResult,
+        version: str,
+        part: SamplePart,
+        add: str = "",
+    ) -> None:
         """
         Save the interpretability result per sample part.
 
-        :param part: the part of the sample
+        :param result: the interpretability result
+        :param version: the version of the interpretability result (might also be an iteration)
+        :param part: the part of the sample (only for the ids)
+        :param add: the addition to the file name
         :return: None
         """
-        if part.result_after.interpretability:
-            for result in part.results:
-                if result.max_supp_target:
-                    attn_scores_subdir = (
-                        self.results_path
-                        / result.version
-                        / "interpretability"
-                        / "attn_scores"
+        if not (version in ["before", "after"] or version.isdigit()):
+            raise ValueError(
+                "Version should be either 'before', 'after' or an iteration number."
+            )
+        if result and not result.empty():
+            if version.isdigit():
+                add = f"{version}_"
+                version = "iterations"
+            else:
+                add = ""
+            attn_scores_subdir = self.results_path / version / "interpretability"
+            Path.mkdir(attn_scores_subdir, exist_ok=True, parents=True)
+
+            try:
+                file_name = f"{add}attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
+
+                if result.attn_scores.size != 0:
+                    attn_scores = [
+                        "\t".join(map(str, row)) for row in result.attn_scores.tolist()
+                    ]
+                    self.save_with_separator(
+                        file_path=attn_scores_subdir / file_name, data=attn_scores
                     )
-                    Path.mkdir(attn_scores_subdir, exist_ok=True, parents=True)
-
-                    try:
-                        file_name = f"attn_scores-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
-                        if result.interpretability.attn_scores.size > 1:
-                            attn_scores = [
-                                "\t".join(map(str, row))
-                                for row in result.interpretability.attn_scores.tolist()
-                            ]
-                            self.save_with_separator(
-                                file_path=attn_scores_subdir / file_name, data=attn_scores
-                            )
-                        else:
-                            warnings.warn(
-                                f"No attention scores found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
-                            )
-                        for tokens in ("x_tokens", "y_tokens"):
-                            if not hasattr(result.interpretability, tokens):
-                                warnings.warn(
-                                    f"No {tokens} for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
-                                )
-                                continue
-                            file_name = f"{tokens}-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
-                            self.save_with_separator(
-                                file_path=attn_scores_subdir / file_name,
-                                data=getattr(result.interpretability, tokens),
-                            )
-                        else:
-                            warnings.warn(
-                                f"No max attention distribution found for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
-                            )
-
-                    except AttributeError as e:
-                        print(f"AttributeError: {e} in {result.interpretability}")
-
-                    print(
-                        f"Interpretability results for task {part.task_id} saved to {attn_scores_subdir}"
+                else:
+                    warnings.warn(
+                        f"No attention scores found for task {part.task_id}, sample {part.sample_id}, "
+                        f"part {part.part_id}."
                     )
+                for tokens in ("x_tokens", "y_tokens"):
+                    if not hasattr(result, tokens):
+                        warnings.warn(
+                            f"No {tokens} for task {part.task_id}, sample {part.sample_id}, part {part.part_id}."
+                        )
+                        continue
+                    file_name = f"{add}{tokens}-{part.task_id}-{part.sample_id}-{part.part_id}.txt"
+                    self.save_with_separator(
+                        file_path=attn_scores_subdir / file_name,
+                        data=getattr(result, tokens),
+                    )
+
+                print(
+                    f"Interpretability results for task {part.task_id} saved to {attn_scores_subdir}"
+                )
+
+            except AttributeError as e:
+                warnings.warn(f"AttributeError: {e} in {result}")
+
         else:
-            warnings.warn("No interpretability results found.")
+            warnings.warn("No interpretability results found and saved.")
 
-    def save_interpretability(
-        self, task_data: Task, multi_system: bool = False
-    ) -> None:
+    def save_interpretability(self, task_data: Task) -> None:
         """
         Save the interpretability result per sample part.
 
         :param task_data: the task instance with the results
-        :param multi_system: if the setting uses two models
         :return: None
         """
         for part in task_data.parts:
-            self.save_part_interpretability(part)
+            for result, version in zip(part.results, part.versions):
+                self.save_part_interpretability(result.interpretability, version, part)
 
     def save_feedback_iteration(
-        self, part, iteration, student_message, teacher_message
+        self,
+        part: SamplePart,
+        iteration: int,
+        student_message: str,
+        teacher_message: str,
+        interpretability: InterpretabilityResult = None,
     ) -> None:
         """
-        Save both student's output and teacher's feedback in a single operation.
+        Save student's output, teacher's feedback, and interpretability result of the student output in a single
+        operation.
 
         :param part: The SamplePart object containing IDs
         :param iteration: The iteration number
         :param student_message: The student's message
         :param teacher_message: The teacher's feedback
+        :param interpretability: The interpretability result
+        :return: None
         """
         iterations_dir = self.results_path / "iterations"
         iterations_dir.mkdir(exist_ok=True, parents=True)
@@ -295,18 +309,49 @@ class DataSaver:
         student_file = iterations_dir / f"{iteration}_student_{part_identifier}.txt"
         teacher_file = iterations_dir / f"{iteration}_teacher_{part_identifier}.txt"
 
-        with open(student_file, "w", encoding="UTF-8") as sf, open(
-            teacher_file, "w", encoding="UTF-8"
-        ) as tf:
-            sf.write(student_message)
+        if iteration > 0:
+            with open(student_file, "w", encoding="UTF-8") as sf:
+                sf.write(student_message)
+
+        with open(teacher_file, "w", encoding="UTF-8") as tf:
             tf.write(teacher_message)
 
-    def save_part_result(self, part: SamplePart, interpretability_enabled: bool = False) -> None:
+        if interpretability:
+            self.save_part_interpretability(interpretability, str(iteration), part)
+
+    def save_sd_iteration(
+        self,
+        part: SamplePart,
+        iteration: int,
+        student_message: str,
+        interpretability: InterpretabilityResult = None,
+    ) -> None:
+        """
+        Save student's output and its interpretability result in a single operation.
+
+        :param part: The SamplePart object containing IDs
+        :param iteration: The iteration number
+        :param student_message: The student's message
+        :param interpretability: The interpretability result
+        :return: None
+        """
+        iterations_dir = self.results_path / "iterations"
+        iterations_dir.mkdir(exist_ok=True, parents=True)
+
+        part_identifier = f"{part.task_id}-{part.sample_id}-{part.part_id}"
+        student_file = iterations_dir / f"{iteration}_student_{part_identifier}.txt"
+
+        with open(student_file, "w", encoding="UTF-8") as f:
+            f.write(student_message)
+
+        if interpretability:
+            self.save_part_interpretability(interpretability, str(iteration), part)
+
+    def save_part_result(self, part: SamplePart) -> None:
         """
         Save the result of a part of a sample.
 
         :param part: the part of the sample
-        :param interpretability_enabled: whether the interpretability is used in this run
         :return: None
         """
         result = part.get_result()
@@ -314,9 +359,27 @@ class DataSaver:
             data=[result],
             headers=list(result.keys()),
             file_name=f"t_{part.task_id}_s_{part.sample_id}_results.csv",
+            path_add="sample_results",
         )
-        if interpretability_enabled:
-            self.save_part_interpretability(part)
+        for result, version in zip(part.results, part.versions):
+            if version == "before" and self.loaded_baseline_results:
+                continue
+
+            self.save_part_interpretability(result.interpretability, version, part)
+
+            part_identifier = f"{part.task_id}-{part.sample_id}-{part.part_id}"
+            folder = self.results_path / version
+
+            for role, ids in result.ids.items():
+                self.save_with_separator(
+                    folder / "ids" / f"{role}-ids-{part_identifier}.txt",
+                    ["\t".join(map(str, i)) for i in ids],
+                )
+            for role, tokens in result.tokens.items():
+                self.save_with_separator(
+                    folder / "tokens" / f"{role}-tokens-{part_identifier}.txt",
+                    ["\t".join(t) for t in tokens],
+                )
 
     def save_sample_result(self, sample: Sample) -> None:
         """
@@ -335,8 +398,6 @@ class DataSaver:
         headers: list[str],
         results_file_name: str,
         metrics_file_name: str,
-        multi_system: bool = False,
-        interpretability_enabled: bool = False,
     ) -> None:
         """
         Save the results for the task and the accuracy for the task to the separate files.
@@ -346,8 +407,6 @@ class DataSaver:
         :param headers: the headers for the results
         :param results_file_name: the name of the file to save the results specific to the split
         :param metrics_file_name: the name of the file to save the accuracy specific to the split
-        :param multi_system: if the setting uses two models
-        :param interpretability_enabled: if the interpretability is enabled
         :return: None
         """
         self.save_output(
@@ -356,14 +415,11 @@ class DataSaver:
             file_name=results_file_name,
         )
         # get accuracy for the last task
-        task_accuracy = {
-            "task_id": task_id,
-            **task_data.evaluator_after.get_accuracies(),
-        }
+        task_accuracy = {"task_id": task_id}
+        for evaluator in task_data.evaluators:
+            task_accuracy = {**task_accuracy, **evaluator.get_accuracies()}
 
-        if interpretability_enabled:
-            self.save_interpretability(task_data, multi_system=multi_system)
-
+        self.save_interpretability(task_data)
         self.save_output(
             data=[task_accuracy],
             headers=list(task_accuracy.keys()),
@@ -376,7 +432,6 @@ class DataSaver:
         task_ids: list[int],
         splits: dict[Prompt, Split],
         split_name: str,
-        version: str = "after",
     ) -> None:
         """
         Save the accuracies for the split run, including the mean accuracy for all tasks.
@@ -384,55 +439,45 @@ class DataSaver:
         :param task_ids: the task ids
         :param splits: the split objects of the data
         :param split_name: the name of the split
-        :param version: if to save the accuracy for after the setting was applied
         :return: None
         """
         run_metrics = {}
         run_headers = ["task_id"]
 
         for prompt, split in splits.items():
-            prompt_headers = prepare_accuracy_headers(prompt.name, version=version)
+            for version, evaluator, features in zip(
+                split.versions, split.evaluators, split.features
+            ):
+                prompt_headers = prepare_accuracy_headers(prompt.name, version=version)
 
-            if version == "after":
-                evaluator = split.evaluator_after
-            elif version == "before":
-                evaluator = split.evaluator_before
-            else:
-                raise ValueError(
-                    f"Version should be either 'before' or 'after', not {version}."
+                run_metrics = format_task_accuracies(
+                    accuracies_to_save=run_metrics,
+                    task_ids=task_ids,
+                    exact_match_accuracies=evaluator.exact_match_accuracy,
+                    soft_match_accuracies=evaluator.soft_match_accuracy,
+                    exact_match_std=evaluator.exact_match_std,
+                    soft_match_std=evaluator.soft_match_std,
+                    headers=prompt_headers,
                 )
 
-            run_metrics = format_task_accuracies(
-                accuracies_to_save=run_metrics,
-                task_ids=task_ids,
-                exact_match_accuracies=evaluator.exact_match_accuracy,
-                soft_match_accuracies=evaluator.soft_match_accuracy,
-                exact_match_std=evaluator.exact_match_std,
-                soft_match_std=evaluator.soft_match_std,
-                headers=prompt_headers,
-            )
-            if version == "after":
-                features = split.features_after
-            elif version == "before":
-                features = split.features_before
-            else:
-                raise ValueError("Version should be either 'before' or 'after'.")
+                run_metrics = format_split_metrics(
+                    features, prompt_headers, run_metrics, version
+                )
+                run_headers.extend(prompt_headers.values())
 
-            run_metrics = format_split_metrics(
-                features, prompt_headers, run_metrics, version
-            )
-            run_headers.extend(prompt_headers.values())
+                mean_headers = prepare_accuracy_headers("mean")
+                run_headers.extend(mean_headers.values())
+                run_metrics = calculate_mean_accuracies(
+                    run_metrics, mean_headers, version
+                )
 
-        mean_headers = prepare_accuracy_headers("mean")
-        run_headers.extend(mean_headers.values())
-        run_metrics = calculate_mean_accuracies(run_metrics, mean_headers, version)
-
-        self.save_output(
-            data=list(run_metrics.values()),
-            headers=run_headers,
-            file_name=self.run_path / f"{split_name}_accuracies.csv",
-            path_add=version,
-        )
+                # TODO: check if it should be one level back before running two-model settings
+                self.save_output(
+                    data=list(run_metrics.values()),
+                    headers=run_headers,
+                    file_name=self.run_path / f"{split_name}_accuracies.csv",
+                    path_add=version,
+                )
 
     def redirect_printing_to_log_file(self, file_name: str) -> TextIO:
         """
@@ -456,3 +501,35 @@ class DataSaver:
         """
         file_to_close.close()
         sys.stdout = self.old_stdout
+
+    def save_eval_dict(
+        self,
+        task_id: int,
+        sample_id: int,
+        part_id: int,
+        eval_dict: dict,
+        file_name: str,
+    ) -> None:
+        """
+        Save the evaluation dictionary to a file.
+
+        :param task_id: the task id
+        :param sample_id: the sample id
+        :param part_id: the part id
+        :param eval_dict: the evaluation dictionary
+        :param file_name: the name of the file to save the evaluation dictionary
+        :return: None
+        """
+        res_path = self.results_path / file_name
+        meta_dict = {
+            "task_id": task_id,
+            "sample_id": sample_id,
+            "part_id": part_id,
+        }
+        combined = [{**meta_dict, **eval_dict}]
+        df = pd.DataFrame(combined)
+
+        if res_path.exists():
+            df.to_csv(res_path, mode="a", header=False, index=False)
+        else:
+            df.to_csv(res_path, mode="w", header=True, index=False)

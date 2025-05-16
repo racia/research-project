@@ -10,7 +10,7 @@ from typing import Union
 import numpy as np
 
 from data.DataProcessor import DataProcessor
-from data.utils import get_real_value, get_samples_per_task, structure_parts
+from data.utils import get_real_value, structure_parts
 from inference.DataLevels import SamplePart
 from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits, Enumerate, Wrapper
@@ -211,6 +211,7 @@ class DataLoader:
         split: Union[DataSplits.train, DataSplits.valid, DataSplits.test],
         multi_system: bool,
         tasks: list[int] = None,
+        flat: bool = False,
         lookup: bool = False,
     ) -> (
         list[SamplePart]
@@ -224,6 +225,7 @@ class DataLoader:
         :param split: should be of type DataSplits ("train", "valid", or "test")
         :param multi_system: if as_parts is True, the multi_system parameter should be specified
         :param tasks: list of task numbers to read, use None to read all tasks
+        :param flat: if the data should be returned flat or in a nested structure of tasks and samples
         :param lookup: if the data should be returned as a lookup dictionary
         :return: processed data
         """
@@ -245,13 +247,21 @@ class DataLoader:
         if self.number_of_tasks == 0:
             self.number_of_parts = len(processed_data)
 
-        if lookup:
-            lookup_data = {}
-            for part in processed_data:
-                lookup_data[(part.task_id, part.sample_id, part.part_id)] = part
-            return lookup_data
+        if flat and lookup:
+            raise ValueError(
+                "The 'flat' and 'lookup' parameters cannot be used together."
+            )
+        if not (flat or lookup):
+            return structure_parts(processed_data)
 
-        return processed_data
+        if flat:
+            return processed_data
+
+        lookup_data = {}
+        for part in processed_data:
+            lookup_data[(part.task_id, part.sample_id, part.part_id)] = part
+
+        return lookup_data
 
     def load_results(
         self,
@@ -339,7 +349,6 @@ class DataLoader:
 
         if as_parts:
             parts = []
-            self.samples_per_task = get_samples_per_task(data)
             raw_parts = self.load_task_data(
                 path=data_path,
                 split=split,
@@ -348,19 +357,37 @@ class DataLoader:
                 lookup=True,
             )
             for row in data:
-                raw_part = raw_parts[(row["task_id"], row["sample_id"], row["part_id"])]
+                if row["sample_id"] > self.samples_per_task:
+                    continue
+
+                identifier = (row["task_id"], row["sample_id"], row["part_id"])
+                raw_part = raw_parts[identifier]
                 if not row["model_output_before"]:
                     raise ValueError(
                         f"Model output before is not found in row {row['id_']}: {row['model_output_before']}"
                     )
+                interpretability = InterpretabilityResult(
+                    np.array([]),
+                    [],
+                    [],
+                    row["max_supp_attn_before"],
+                    row["attn_on_target_before"],
+                )
                 raw_part.set_output(
                     model_output=str(row["model_output_before"]),
                     model_answer=str(row["model_answer_before"]),
                     model_reasoning=str(row["model_reasoning_before"]),
-                    interpretability=None,
+                    interpretability=interpretability,
                     full_task=row["task"],
                     version="before",
                 )
+                ids, tokens = self.load_ids_and_tokens(
+                    run_directory=Path(results_path).parent,
+                    task_id=row["task_id"],
+                    sample_id=row["sample_id"],
+                    part_id=row["part_id"],
+                )
+                raw_part.results[-1].ids, raw_part.results[-1].tokens = ids, tokens
                 parts.append(raw_part)
 
             if len(parts) != self.number_of_parts:
@@ -373,33 +400,47 @@ class DataLoader:
         return data
 
     @staticmethod
-    def load_scenery(
-        word_types: tuple[str, ...] = (
-            "attr",
-            "loc",
-            "nh-subj",
-            "obj",
-            "part",
-            "rel",
-            "subj-attr",
-            "subj",
-            "other",
-            "base_phrasal_verbs",
-        ),
-    ) -> set:
+    def load_ids_and_tokens(
+        run_directory: Path, task_id: int, sample_id: int, part_id: int
+    ) -> tuple[dict[str, list[int] | list[str]], ...]:
         """
-        Get scenery words from the scenery_words folder and the Scenery base phrases verbs.
-        Additionally, adds Scenery base phrasal words.
+        Load the ids and tokens from the specified directory.
 
-        :return: set of scenery words for filtering attention scores
+        :param run_directory: path to the run directory
+        :param task_id: task id
+        :param sample_id: sample id
+        :param part_id: part id
+        :return: ids and tokens as dictionaries of roles and their respective values
         """
-        scenery_words = set()
-        for entry in os.scandir("data/scenery_words"):
-            word_type = entry.name.strip(".txt")
-            if word_type in word_types:
-                with open(entry.path, "r", encoding="UTF-8") as f:
-                    scenery_words.update(f.read().splitlines())
-        return scenery_words
+        ids, tokens = {}, {}
+
+        for value, result_dict in zip(["ids", "tokens"], [ids, tokens]):
+            subdirectory = run_directory / "before" / value
+            file_identifier = f"{task_id}-{sample_id}-{part_id}"
+
+            for role in ["user", "assistant"]:
+                file_path = subdirectory / f"{role}-{value}-{file_identifier}.txt"
+
+                if file_path.exists():
+                    with open(file_path, "r", encoding="UTF-8") as f:
+                        lines = f.read().splitlines()
+                        structured_lines = [
+                            [int(v) if value == "ids" else v for v in line.split("\t")]
+                            for line in lines
+                        ]
+                        if type(structured_lines[0]) in [int, str]:
+                            structured_lines = [structured_lines]
+                        if not all([type(line) is list for line in structured_lines]):
+                            raise ValueError(
+                                f"Invalid format of data in file {file_path}:\n{structured_lines}"
+                            )
+                        result_dict[role] = structured_lines
+
+                else:
+                    warnings.warn("Path does not exist: %s" % file_path)
+                    return ids, tokens
+
+        return ids, tokens
 
     def load_reasoning_data(
         self, task_id: int, split: str = DataSplits.valid

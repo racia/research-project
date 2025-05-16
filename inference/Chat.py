@@ -11,9 +11,9 @@ from inference.Prompt import Prompt
 from inference.utils import (
     Source,
     flatten,
-    get_generation_tokens,
+    get_generation_token_ids,
     sents_to_ids,
-    upd_span,
+    update_span,
 )
 
 
@@ -39,8 +39,10 @@ class Chat:
         self.model_role = model_role
         self.tokenizer = tokenizer
 
-        sys_prompt_spans_types = {span: "sys" for span in system_prompt.orig_sent_spans}
-        example_spans_types = {span: "ex" for span in system_prompt.ex_sent_spans}
+        sys_prompt_spans_with_types = {
+            span: "sys" for span in system_prompt.orig_sent_spans
+        }
+        example_spans_with_types = {span: "ex" for span in system_prompt.ex_sent_spans}
 
         self.system_message = {
             "role": Source.system,
@@ -48,7 +50,10 @@ class Chat:
             "original_content": system_prompt.original_text,
             "tokens": system_prompt.tokens,
             "ids": system_prompt.ids,
-            "spans_types": {**sys_prompt_spans_types, **example_spans_types},
+            "spans_with_types": {
+                **sys_prompt_spans_with_types,
+                **example_spans_with_types,
+            },
         }
         self.offset = len(flatten(system_prompt.ids))
         self.messages = [self.system_message]
@@ -77,10 +82,7 @@ class Chat:
                 "Removing messages other than the last one is not supported."
             )
         deleted_message = self.messages.pop(i)
-        print("REMOVED MESSAGE", deleted_message)
         self.offset -= len(flatten(deleted_message["ids"]))
-        if deleted_message["role"] == Source.assistant:
-            self.supp_sent_spans = []
 
     def adjust_message(
         self, partial_output: str, partial_ids: int | list[int] | torch.Tensor
@@ -95,46 +97,52 @@ class Chat:
         """
         if not self.messages:
             raise ValueError("No messages to adjust.")
-        if not isinstance(partial_ids, (int, list)):
-            raise ValueError("ids must be an int or a list.")
 
-        if type(self.messages[-1]["tokens"][0]) is str:
+        if type(partial_ids) is torch.Tensor:
+            partial_ids = partial_ids.tolist()
+        if type(partial_ids) is int:
+            partial_ids = [partial_ids]
+        else:
+            partial_ids = flatten(partial_ids)
+
+        assert type(partial_ids[0]) is int
+
+        if type(self.messages[-1]["tokens"]) is str:
             raise ValueError(
                 "Detected tokens instead of token lists. Please check the input."
             )
-        if type(self.messages[-1]["ids"][0]) is int:
-            raise ValueError(
-                "Detected ids instead of ids lists. Please check the input."
-            )
-
-        if isinstance(partial_ids, torch.Tensor):
-            partial_ids = partial_ids.tolist()
-        elif not isinstance(partial_ids, int):
-            partial_ids = [partial_ids]
 
         self.messages[-1]["content"] += partial_output
         self.messages[-1]["original_content"] += partial_output
-        self.messages[-1]["tokens"][-1].extend(
-            self.tokenizer.convert_ids_to_tokens(partial_ids)
-        )
-        self.messages[-1]["ids"].extend(partial_ids)
+        try:
+            self.messages[-1]["tokens"][-1].extend(
+                self.tokenizer.convert_ids_to_tokens(partial_ids)
+            )
+            self.messages[-1]["ids"][-1].extend(partial_ids)
+        except TypeError:
+            print("DEBUG: content", self.messages[-1]["content"])
+            print("DEBUG: ids", self.messages[-1]["ids"])
+            print("DEBUG: tokens", self.messages[-1]["tokens"])
+            raise TypeError()
         spans_with_types = self.messages[-1]["spans_with_types"]
         model_output_span = list(spans_with_types.keys())[-1]
         model_output_span_type = {
             (model_output_span[0], model_output_span[1] + len(partial_ids)): "ans"
         }
         self.messages[-1]["spans_with_types"] = {
-            **list(spans_with_types.items())[:-1],
+            **dict(list(spans_with_types.items())[:-1]),
             **model_output_span_type,
         }
         self.offset += len(partial_ids)
 
     def add_message(
         self,
-        part: SamplePart | str,
-        source: Union[Source.user, Source.assistant],
+        part: SamplePart | str | dict,
+        source: Union[Source.user, Source.assistant] = None,
         ids: torch.Tensor | list[int] = None,
+        tokens: list[str] = None,
         wrapper: dict[str, dict] = None,
+        **kwargs,
     ) -> None:
         """
         Add a message to the messages list. It can add either a message from the part task or assistant output.
@@ -146,23 +154,47 @@ class Chat:
         :param part: part of a sample as a string or a list of strings
         :param source: the producer of the message
         :param ids: the ids of the message, if None, the ids are generated from the message
+        :param tokens: the tokens of the message, if None, the tokens are generated from the message
         :param wrapper: the wrapper ids and sentence spans of the message
         :return: None
         """
+        if kwargs:
+            warnings.warn("Unused keyword arguments: " + ", ".join(kwargs.keys()))
         if (
             wrapper
-            and (ids is not None or type(part) is str)
+            and (ids is not None or type(part) in [str, dict])
             and source == Source.assistant
         ):
             raise ValueError(
                 "Wrapper can only be used for the messages created from scratch, and now, ids are passed."
             )
-        self.part = part
-        spans_types = {}
+        message_fields = (
+            "role",
+            "content",
+            "original_content",
+            "tokens",
+            "ids",
+            "spans_with_types",
+        )
+        spans_with_types = {}
+        part_dict = {}
+        # it is a pre-created message (used in SD and Feedback)
+        if isinstance(part, dict):
+            if all(key in part for key in message_fields):
+                part["spans_with_types"] = {
+                    update_span(span, self.offset): f"{type_}_"
+                    for span, type_ in part["spans_with_types"].items()
+                }
+                self.offset += len(flatten(["ids"]))
+                part_dict = part
+            else:
+                raise ValueError(
+                    f"The part is a dictionary, but not all required fields are present: {part}"
+                )
         # it is certainly a task
-        if isinstance(part, SamplePart):
+        elif isinstance(part, SamplePart):
+            self.part = part
             if wrapper:
-                print("DEBUG: case SamplePart and Wrapper")
                 tokens, ids = [], []
                 for key, wrap in wrapper.items():
                     intro, outro = wrap["before"], wrap.get("after", wrap["before"])
@@ -178,117 +210,147 @@ class Chat:
                     task_tokens, task_ids, task_spans = sents_to_ids(
                         to_encode, self.tokenizer
                     )
-                    print("encoded message", *zip(task_spans, task_ids), sep="\n")
+                    task_chunks = [
+                        {
+                            "tokens": tokens,
+                            "ids": ids,
+                            "sent_spans": spans,
+                            "type": type_,
+                        }
+                        for tokens, ids, spans in zip(task_tokens, task_ids, task_spans)
+                        if ids
+                    ]
+                    chunks = [intro, *task_chunks, outro]
+                    last_span = ()
+                    for i, chunk in enumerate(chunks):
+                        if chunk.get("ids", None):
+                            tokens.append(chunk["tokens"])
+                            ids.append(chunk["ids"])
+                            type_ = chunk["type"] if chunk.get("type", None) else "wrap"
+                            upd_span = update_span(chunk["sent_spans"], self.offset)
+                            if last_span and last_span[1] != upd_span[0]:
+                                print("DEBUG: chunks", *chunks)
+                                raise ValueError(
+                                    f"Span mismatch: {last_span} vs {upd_span}"
+                                )
+                            last_span = upd_span
+                            spans_with_types[upd_span] = type_
+                            flat_chunk_ids = flatten(chunk["ids"])
+                            self.offset += len(flat_chunk_ids)
 
-                    if task_ids:
-                        ids_ = [intro["ids"], *task_ids, outro["ids"]]
-                        tokens_ = [intro["tokens"], *task_tokens, outro["tokens"]]
-                        for chunk_ids, chunk_tok in zip(ids_, tokens_):
-                            if chunk_ids:
-                                print(chunk_tok)
-                                tokens.append(chunk_tok)
-                                ids.append(chunk_ids)
-
-                        # add before wrapper spans/ids
-                        print("intro spans", intro["sent_spans"])
-                        if intro["sent_spans"]:
-                            spans_types[upd_span(intro["sent_spans"], self.offset)] = (
-                                "wrap"
-                            )
-                            print(
-                                "upd intro spans",
-                                upd_span(intro["sent_spans"], self.offset),
-                            )
-
-                            self.offset += len(intro["ids"])
-
-                        # add context and question spans/ids
-                        for ids_, span in zip(task_ids, task_spans):
-                            print("task span", span)
-                            spans_types[upd_span(span, self.offset)] = type_
-                            print("upd task spans", upd_span(span, self.offset))
-
-                            self.offset += len(flatten(ids_))
-
-                        # add after wrapper spans/ids
-                        if outro["sent_spans"]:
-                            print("outro spans", outro["sent_spans"])
-                            spans_types[upd_span(outro["sent_spans"], self.offset)] = (
-                                "wrap"
-                            )
-                            print(
-                                "upd outro spans",
-                                upd_span(outro["sent_spans"], self.offset),
-                            )
-
-                            self.offset += len(outro["ids"])
-                    else:
-                        # if the key is not context or question, we just add the before ids
-                        # (no after because there's no formatting for reasoning nor answer)
-                        ids.extend(intro["ids"])
-                        tokens.extend(intro["tokens"])
-                        spans_types[upd_span(intro["sent_spans"], self.offset)] = "wrap"
-
-                        self.offset += len(intro["ids"])
+                            if len(flat_chunk_ids) != upd_span[1] - upd_span[0]:
+                                print("DEBUG chunks:", *chunks)
+                                print(
+                                    "DEBUG upd_span difference:",
+                                    upd_span[1] - upd_span[0],
+                                )
+                                raise ValueError(
+                                    f"Span length mismatch: {len(flat_chunk_ids)} {flat_chunk_ids}:\n{chunk['sent_spans']} vs {upd_span}"
+                                )
 
             else:
-                print("DEBUG: case SamplePart and NO Wrapper")
                 tokens, ids, sent_spans = sents_to_ids(
                     part.unwrapped_task.split("\n"), self.tokenizer
                 )
-                spans_types.update(
-                    {upd_span(span, self.offset): "task" for span in sent_spans}
-                )
+                for span, i in zip(sent_spans, ids):
+                    upd_span = update_span(span, self.offset)
+                    spans_with_types[upd_span] = "task"
+                    self.offset += len(flatten(i))
         else:
             # it is a string
             if ids is None:
-                print("DEBUG: case str and NO ids")
                 # it is a formatted prompt (string prompt) => task
                 tokens, ids, sent_spans = sents_to_ids(part.split("\n"), self.tokenizer)
-                spans_types.update(
-                    {upd_span(span, self.offset): "teacher task" for span in sent_spans}
-                )
+                for span, i in zip(sent_spans, ids):
+                    upd_span = update_span(span, self.offset)
+                    spans_with_types[upd_span] = "teacher task"
+                    self.offset += len(flatten(i))
             else:
-                print("DEBUG: case str and ids")
                 # it is certainly an assistant output
-                # TODO: optionally divide it into reasoning and answer
                 ids = ids.tolist() if not isinstance(ids, list) else ids
-                print("REASON IDs", ids)
-                # TODO: possibly just store tokens?
-                tokens = [
-                    self.tokenizer.convert_ids_to_tokens(id_list) for id_list in ids
-                ]
-                label = "ans" if source == Source.assistant else "task"
-                spans_types[upd_span((0, len(ids)), self.offset)] = label
-                self.offset += len(ids)
+                # not flat because they count as "one sentence"
+                if type(ids[0]) is int:
+                    ids = [ids]
+                if not tokens:
+                    tokens = [
+                        self.tokenizer.convert_ids_to_tokens(id_list) for id_list in ids
+                    ]
+                elif type(tokens[0]) is str:
+                    tokens = [tokens]
+                type_ = "ans" if source == Source.assistant else "task"
+                upd_span = update_span((0, len(ids)), self.offset)
+                spans_with_types[upd_span] = type_
+                self.offset += len(flatten(ids))
 
-        print("ids", len(ids), ids)
-        print("spans_types", spans_types)
-
-        part_dict = {
+        part_dict = part_dict or {
             "role": source,
             "content": part if isinstance(part, str) else part.task,
             "original_content": part if isinstance(part, str) else part.unwrapped_task,
             "tokens": tokens,
             "ids": ids,
-            "spans_types": spans_types,
+            "spans_with_types": spans_with_types,
         }
         self.messages.append(part_dict)
 
-    def move_approved_message(self, other_chat: Chat) -> None:
+    def move_approved_message(self, other_chat: Chat, wrapper: dict = None) -> None:
         """
         Move the last message from another chat to the current chat.
 
         :param other_chat: the chat to move the message from
+        :param wrapper: the wrapper for the moved message
         :return: None
         """
         approved_message = other_chat.messages[-1]
+        offset_difference = other_chat.offset - self.offset
+        self.part = other_chat.part
+        assert type(self.part) is not None
+        self.identify_supp_sent_spans()
         spans_with_types = {}
-        for span, type_ in approved_message["spans_with_types"].items():
-            offset_difference = other_chat.offset - self.offset
-            spans_upd = (span[0] - offset_difference, span[1] - offset_difference)
-            spans_with_types[spans_upd] = type_
-        approved_message["spans_with_types"] = spans_with_types
+
+        if "The student's response was:" in approved_message["original_content"]:
+            raise ValueError(
+                f"The message contains teacher wrapper: {approved_message}"
+            )
+
+        content, original_content = "", ""
+        message_ids, message_tokens = [], []
+        if wrapper:
+            for key, wrap in wrapper.items():
+                intro, outro = wrap["before"], wrap.get("after", wrap["before"])
+                chunks = [intro, approved_message, outro]
+                for chunk in chunks:
+                    assert type(chunk) is dict
+                    if not chunk["ids"]:
+                        continue
+
+                    content += chunk.get("original_content", chunk["content"])
+                    original_content += chunk.get("original_content", "")
+
+                    if type(chunk["ids"][0]) is int:
+                        message_ids.append(chunk["ids"])
+                        message_tokens.append(chunk["tokens"])
+                    else:
+                        message_ids.extend(chunk["ids"])
+                        message_tokens.extend(chunk["tokens"])
+
+                    orig_span = list(chunk["spans_with_types"].keys())[0]
+                    updated_span = update_span(orig_span, self.offset)
+                    spans_with_types[updated_span] = chunk.get("type", "wrap")
+                    self.offset += len(flatten(chunk["ids"]))
+            approved_message = {
+                "role": approved_message["role"],
+                "content": content,
+                "original_content": original_content,
+                "tokens": message_tokens,
+                "ids": message_ids,
+                "spans_with_types": spans_with_types,
+            }
+        else:
+            for span, type_ in approved_message["spans_with_types"].items():
+                spans_upd = (span[0] - offset_difference, span[1] - offset_difference)
+                spans_with_types[spans_upd] = type_
+            approved_message["spans_with_types"] = spans_with_types
+            approved_message["content"] = approved_message["original_content"]
         self.messages.append(approved_message)
 
     def get_sentence_spans(
@@ -297,13 +359,13 @@ class Chat:
         """
         Get the all sentence spans of the chat messages for only a specified type of them.
 
-        :param span_type: "sys" (system prompt),
-                          "ex" (example),
+        :param span_type: "sys"  (system prompt),
+                          "ex"   (example),
                           "wrap" (wrappers),
                           "task" (context sentences and questions),
                           "cont" (context sentences),
                           "ques" (questions),
-                          "ans" (model output)
+                          "ans"  (model output)
         :param remove_last: whether to remove the last message span from the list
         :return: returns list of sentence spans if span type is specified otherwise returns all the spans with their
         types
@@ -316,16 +378,15 @@ class Chat:
         spans = []
         spans_dict = {}
         for message in self.messages[:-1] if remove_last else self.messages:
-            # message["spans_types"] = {span: type}
+            # message["spans_with_types"] = {span: type}
             if span_type:
-                for span, type_ in message["spans_types"].items():
+                for span, type_ in message["spans_with_types"].items():
                     if type_ == span_type or (
                         span_type == "task" and type_ in ["cont", "ques"]
                     ):
-                        print("span", span_type, "type_", type_)
                         spans.append(span)
             else:
-                spans_dict.update(message["spans_types"])
+                spans_dict.update(message["spans_with_types"])
 
         if span_type:
             return spans
@@ -342,7 +403,11 @@ class Chat:
                 self.supp_sent_spans.append(span)
 
     def convert_into_datatype(
-        self, datatype: str, max_length: int = 2048, identify_target: bool = True
+        self,
+        datatype: str,
+        max_length: int = 2048,
+        identify_target: bool = True,
+        to_continue: bool = False,
     ) -> torch.Tensor:
         """
         Converts the chat into 'ids' or 'tokens' using the tokenizer.
@@ -350,7 +415,8 @@ class Chat:
         :param datatype: what to convert chat into ('ids' or 'tokens')
         :param max_length: the maximum length of the input
         :param identify_target: whether to identify the supporting sentence spans
-        :return: list of ids
+        :param to_continue: whether the last message has to be continued (no generation token will be added)
+        :return: list of ids or tokens as a tensor
         """
         if datatype not in ("ids", "tokens"):
             raise ValueError(
@@ -363,11 +429,7 @@ class Chat:
         chat_ids = [self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")]
         # including the system prompt
         for i, message in enumerate(self.messages):
-            message_ids = get_generation_tokens(self.tokenizer, message["role"])
-            if type(message[datatype][0]) is str:
-                raise ValueError(
-                    "Detected tokens instead of ids. Please check the input."
-                )
+            message_ids = get_generation_token_ids(self.tokenizer, message["role"])
             message_ids.extend(flatten(message[datatype]))
             conversation_length = len(chat_ids) + len(message_ids)
             if conversation_length > max_length:
@@ -378,7 +440,7 @@ class Chat:
 
             chat_ids.extend(message_ids)
 
-        chat_ids.extend(get_generation_tokens(self.tokenizer, "assistant"))
-        print("chat_ids", len(chat_ids), chat_ids)
+        if not to_continue:
+            chat_ids.extend(get_generation_token_ids(self.tokenizer, "assistant"))
 
         return torch.as_tensor([chat_ids])

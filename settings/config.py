@@ -18,6 +18,7 @@ class Model:
     temperature: float
     to_continue: bool
     mode: Mode
+    interpretability: bool
 
 
 @dataclass
@@ -27,6 +28,7 @@ class Student(Model):
     temperature: float
     to_continue: bool
     mode: Mode
+    interpretability: bool
 
 
 @dataclass
@@ -36,12 +38,14 @@ class Teacher(Model):
     temperature: float
     to_continue: bool
     mode: Mode
+    p: float
+    k: int
+    interpretability: bool
 
 
 @dataclass
 class Setting:
     name: str
-    interpretability: bool
 
 
 @dataclass
@@ -137,7 +141,7 @@ class CSVHeaders:
     pronouns_after: str = "pronouns_after"
     not_mentioned_after: str = "not_mentioned_after"
     context_sents_hall_after: str = "context_sents_hall_after"
-    feedback_iterations: str = "feedback_iterations"
+    iterations: str = "iterations"
     model_answer_before: str = "model_answer_before"
     answer_correct_before: str = "answer_correct_before"
     model_reasoning_before: str = "model_reasoning_before"
@@ -145,8 +149,10 @@ class CSVHeaders:
     model_output_before: str = "model_output_before"
     exact_match_accuracy_before: str = "exact_match_accuracy_before"
     soft_match_accuracy_before: str = "soft_match_accuracy_before"
-    max_supp_target_before: str = "max_supp_target_before"
-    max_supp_target_after: str = "max_supp_target_after"
+    max_supp_attn_before: str = "max_supp_attn_before"
+    max_supp_attn_after: str = "max_supp_attn_after"
+    attn_on_target_before: str = "attn_on_target_before"
+    attn_on_target_after: str = "attn_on_target_after"
     there_before: str = "there_before"
     verbs_before: str = "verbs_before"
     pronouns_before: str = "pronouns_before"

@@ -8,7 +8,7 @@
 #SBATCH --gres=gpu:1                 # Request 1 GPU
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
 #SBATCH --mem=32G                    # Total memory requested
-#SBATCH --partition=dev_gpu_4
+#SBATCH --partition=dev_gpu_h100
 
 # Output and error logs
 #SBATCH --output="baseline_out.txt"        # TODO: adjust standard output log
@@ -71,7 +71,7 @@ export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 # declare array of config paths and names, e.g. "/path/to/config config_name"
 # TODO: add config(s) to array
 declare -a CONFIGS=(
-  "$HOME/research-project/settings/baseline/config baseline_config"
+  "$HOME/research-project/settings/baseline/config baseline_override"
 )
 
 for CONFIG in "${CONFIGS[@]}"

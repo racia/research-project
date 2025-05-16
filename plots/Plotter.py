@@ -8,6 +8,7 @@ import seaborn as sns
 
 from evaluation.Metrics import Accuracy, Metric
 from inference.Prompt import Prompt
+from interpretability.utils import InterpretabilityResult
 
 
 class Plotter:
@@ -112,35 +113,38 @@ class Plotter:
 
     def draw_heat(
         self,
-        x: list[str | int],
+        interpretability_result: InterpretabilityResult,
         x_label: str,
-        y: list[str],
-        scores: np.ndarray,
         task_id: int,
         sample_id: int,
         part_id: int,
-        after: bool = True,
+        version: str = "after",
         title: str = "",
+        add: str = "",
     ) -> None:
         """
         Draw a heat map with the interpretability attention scores for the current task.
         (Partly taken from https://arxiv.org/abs/2402.18344)
 
-        :param x: the current task tokens
+        :param interpretability_result: interpretability result with the attention scores, x and y tokens
         :param x_label: label for the x-axis
-        :param y: the model output tokens
-        :param scores: attention scores
         :param task_id: task id
         :param sample_id: sample id
         :param part_id: part id
-        :param after: whether the plot is created after the setting was applied to the model output
+        :param version: whether the plot is created after the setting was applied to the model output
         :param title: title of the plot
         :return: None
         """
-        plt.figure(figsize=(12, 6))
-        axis = sns.heatmap(scores[2:], cmap="RdBu_r", center=0)
+        x = interpretability_result.x_tokens
+        y = interpretability_result.y_tokens
+        scores = interpretability_result.attn_scores
 
-        y = y[2:]
+        plt.figure(figsize=(12, 6))
+        # to get comparable heatmaps, the max value of all plots should be the same (as much as possible)
+        max_score = np.max(scores[1:]) if np.max(scores[1:]) > 0.25 else 0.25
+        axis = sns.heatmap(scores[1:], cmap="rocket_r", vmin=0, vmax=max_score)
+
+        y = y[1:]
         x_ticks = [i + 0.5 for i in range(len(x))]
         y_ticks = [i + 0.5 for i in range(len(y))]
 
@@ -158,14 +162,14 @@ class Plotter:
         if title:
             plt.title(title)
 
-        plot_subdirectory = (
-            self.results_path
-            / ("after" if after else "before")
-            / "interpretability"
-            / "plots"
-        )
+        plot_subdirectory = self.results_path / version / "interpretability" / "plots"
         Path.mkdir(plot_subdirectory, exist_ok=True, parents=True)
-        plt.savefig(plot_subdirectory / f"attn_map-{task_id}-{sample_id}-{part_id}.pdf")
+        verbosity = "aggr" if "Indices" in x_label else "ver"
+        add = f"{add}_" if add else ""
+        plt.savefig(
+            plot_subdirectory
+            / f"{add}attn_map-{task_id}-{sample_id}-{part_id}-{verbosity}.pdf"
+        )
 
         plt.close()
 
@@ -225,15 +229,19 @@ class Plotter:
 
             x_data = range(1, len(acc.all) + 1)
             y_data = acc.all
+
             if len(x_data) != len(y_data):
                 raise ValueError(
                     f"x and y must have the same first dimension, but have shapes {len(x_data)} and {len(y_data)}"
                 )
 
+            if not y_data:
+                raise ValueError("y_data is empty")
+
             plt.plot(
                 x_data,
                 y_data,
-                label=prompt if type(prompt) is str else prompt.name,
+                label=prompt if isinstance(prompt, str) else prompt.name,
                 color=color,
             )
 
@@ -245,46 +253,3 @@ class Plotter:
             number_of_prompts=number_of_prompts,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
-
-    def plot_accuracies(
-        self,
-        exact_match_accuracies: Accuracy | Metric | dict[Prompt, Accuracy | Metric],
-        soft_match_accuracies: Accuracy | Metric | dict[Prompt, Accuracy | Metric],
-        additional_info: list[str] = None,
-        compare_prompts: bool = False,
-        label: str = "",
-    ) -> None:
-        """
-        Plot the accuracies or standard deviations.
-
-        :param exact_match_accuracies: the exact-match accuracies or standard deviations
-        :param soft_match_accuracies: the soft-match accuracies or standard deviations
-        :param additional_info: additional information for the plot name
-        :param compare_prompts: whether to compare the prompts
-        :param label: label for the plot
-        :return: None
-        """
-        if compare_prompts:
-            # Save accuracies of all prompts
-            self.plot_acc_per_task_and_prompt(
-                acc_per_prompt_task=exact_match_accuracies,
-                y_label=f"Exact-Match {label}",
-                plot_name_add=additional_info,
-            )
-            self.plot_acc_per_task_and_prompt(
-                acc_per_prompt_task=soft_match_accuracies,
-                y_label=f"Soft Match {label}",
-                plot_name_add=additional_info,
-            )
-        else:
-            # Save accuracies of one prompts
-            self.plot_acc_per_task(
-                acc_per_task=exact_match_accuracies,
-                y_label=f"Exact-Match {label}",
-                plot_name_add=additional_info,
-            )
-            self.plot_acc_per_task(
-                acc_per_task=soft_match_accuracies,
-                y_label=f"Soft Match {label}",
-                plot_name_add=additional_info,
-            )

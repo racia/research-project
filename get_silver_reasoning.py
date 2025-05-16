@@ -6,10 +6,10 @@ from pathlib import Path
 import pandas as pd
 
 from data.DataLoader import DataLoader
-from inference.Chat import Chat, Source
+from inference.Chat import Chat
 from inference.Prompt import Prompt
+from inference.utils import numerate_lines
 from settings.Model import Model
-from settings.utils import numerate_lines
 
 home = Path.home()
 
@@ -28,10 +28,12 @@ def main():
 
     # Load the data
     data_loader = DataLoader()
+    # without any flags should receive data structured in levels
     valid_data = data_loader.load_task_data(
         path=f"{home}/tasks_1-20_v1-2/en-valid/",
         split=split,
         tasks=[15],
+        multi_system=False,
     )
 
     model = Model(
@@ -39,6 +41,7 @@ def main():
         max_new_tokens=100,
         temperature=0.1,
         to_continue=False,
+        role="model",
     )
 
     # Load the prompt
@@ -90,7 +93,9 @@ def process_sample(
     :param output_file: the output file
     :param id_counter: the ID counter
     """
-    chat = Chat(system_prompt=prompt)
+    model.chat = Chat(
+        system_prompt=prompt, model_role=model.role, tokenizer=model.tokenizer
+    )
 
     for sample_part_idx, sample_part in enumerate(sample_parts):
         # Format prompt components
@@ -109,22 +114,11 @@ def process_sample(
             question=formatted_questions,
             answer=formatted_answers,
         )
-
-        chat.add_message(part=formatted_prompt_str, source=Source.user)
-
-        # Generate tokenized prompt
-        formatted_prompt = model.tokenizer.apply_chat_template(
-            chat.messages, tokenize=False, add_generation_prompt=True
-        )
-
-        with torch.no_grad():
-            decoded_output = model.call(prompt=formatted_prompt)
+        decoded_output = model.call(formatted_prompt=formatted_prompt_str)
 
         reasoning_pattern = re.compile(r"(?i)reasoning:[\s ]*(.+)")
         reasoning_search = reasoning_pattern.search(decoded_output)
         reasoning = reasoning_search[1].strip() if reasoning_search else decoded_output
-
-        chat.add_message(part=decoded_output, source=Source.assistant)
 
         print(
             f"Task {task_id}, Sample {sample_id}, Part {sample_part_idx}: Reasoning extracted"
