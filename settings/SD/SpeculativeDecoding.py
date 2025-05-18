@@ -669,7 +669,7 @@ class SpeculativeDecoding(Setting):
                 last_err_inx=error_id,
             )
 
-            # # only add teacher intervention to chat if the teacher disagrees
+            # # only addition teacher intervention to chat if the teacher disagrees
             # # otherwise the teacher doesn't propose anything
             # if not is_valid:
             #     if teacher_intervention:
@@ -773,7 +773,7 @@ class SpeculativeDecoding(Setting):
 
         interpretability = None
         if not is_valid:
-            # # if teacher suggests a token, add it to its chat
+            # # if teacher suggests a token, addition it to its chat
             # self.teacher.chat.add_message(
             #     part=teacher_intervention, source=Source.assistant
             # )

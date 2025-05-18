@@ -145,7 +145,7 @@ class Chat:
         **kwargs,
     ) -> None:
         """
-        Add a message to the messages list. It can add either a message from the part task or assistant output.
+        Add a message to the messages list. It can addition either a message from the part task or assistant output.
         The message is converted into ids using the tokenizer, but the ids can also be provided for the assistant
         output.
         If the wrapper is present, it takes into account its ids and spans to offset the sentence spans and adds it

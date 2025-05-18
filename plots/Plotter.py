@@ -120,7 +120,6 @@ class Plotter:
         part_id: int,
         version: str = "after",
         title: str = "",
-        add: str = "",
     ) -> None:
         """
         Draw a heat map with the interpretability attention scores for the current task.
@@ -139,9 +138,9 @@ class Plotter:
         y = interpretability_result.y_tokens
         scores = interpretability_result.attn_scores
 
-        plt.figure(figsize=(12, 6))
+        plt.figure(figsize=(12, 8))
         # to get comparable heatmaps, the max value of all plots should be the same (as much as possible)
-        max_score = np.max(scores[1:]) if np.max(scores[1:]) > 0.25 else 0.25
+        max_score = max(np.max(scores[1:]), 0.25)
         axis = sns.heatmap(scores[1:], cmap="rocket_r", vmin=0, vmax=max_score)
 
         y = y[1:]
@@ -154,21 +153,21 @@ class Plotter:
         plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=60, ha="right")
         plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
 
-        plt.subplots_adjust(left=0.15, right=0.99, top=0.98, bottom=0.15)
-
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
 
         if title:
-            plt.title(title)
+            plt.title(title, fontsize=10)
+            plt.subplots_adjust(top=0.92)
 
-        plot_subdirectory = self.results_path / version / "interpretability" / "plots"
+        plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
+
+        plot_subdirectory = self.results_path / version / "interpretability"
         Path.mkdir(plot_subdirectory, exist_ok=True, parents=True)
-        verbosity = "aggr" if "Indices" in x_label else "ver"
-        add = f"{add}_" if add else ""
+        verbosity = "aggr" if "sentence" in x_label.lower() else "ver"
         plt.savefig(
             plot_subdirectory
-            / f"{add}attn_map-{task_id}-{sample_id}-{part_id}-{verbosity}.pdf"
+            / f"attn_map-{task_id}-{sample_id}-{part_id}-{verbosity}.pdf"
         )
 
         plt.close()
@@ -184,7 +183,7 @@ class Plotter:
         """
         Plot the accuracy per task.
 
-        :param acc_per_task: list of accuracies per task. We assume that the list is ordered ascending by task.
+        :param acc_per_task: list of metrics per task. We assume that the list is ordered ascending by task.
         :param x_label: label for the x-axis
         :param y_label: label for the y-axis
         :param file_name: name of the plot
@@ -209,7 +208,7 @@ class Plotter:
         """
         Plot the accuracy per task and prompt.
 
-        :param acc_per_prompt_task: dict of accuracies. The keys are the prompts, the values a list of accuracies per
+        :param acc_per_prompt_task: dict of metrics. The keys are the prompts, the values a list of metrics per
         task.
         :param x_label: label for the x-axis
         :param y_label: label for the y-axis
@@ -224,11 +223,10 @@ class Plotter:
         max_x_len = 0
         for (prompt, acc), color in zip(acc_per_prompt_task.items(), colors):
             number_of_prompts += 1
-            if len(acc) > max_x_len:
-                max_x_len = len(acc)
+            if len(acc.all) > max_x_len:
+                max_x_len = len(acc.all)
 
-            x_data = range(1, len(acc.all) + 1)
-            y_data = acc.all
+            x_data, y_data = range(1, len(acc.all) + 1), acc.all
 
             if len(x_data) != len(y_data):
                 raise ValueError(

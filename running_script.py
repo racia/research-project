@@ -87,7 +87,7 @@ def run_setting(cfg: DictConfig) -> None:
 
     for split in data_splits:
         if cfg.data.get("baseline_results", None):
-            parts_per_split[split] = loader.load_results(
+            parts_per_split[split], _ = loader.load_results(
                 results_path=cfg.data.baseline_results,
                 data_path=cfg.data.path,
                 split=split,
@@ -128,8 +128,6 @@ def run_setting(cfg: DictConfig) -> None:
         )
     else:
         raise ValueError("No base model is provided in the config.")
-
-    print(f"The model {model.name} was loaded successfully.", flush=True)
 
     if cfg.setting.name.lower() == "baseline":
         setting = Baseline(
@@ -295,20 +293,21 @@ def run_setting(cfg: DictConfig) -> None:
                     cfg.init_prompt.get("examples", None)
                     and cfg.init_prompt.examples.add
                 ):
+                    assert type(task_id) is int
                     setting.init_prompt.add_examples(
-                        task_id=int(task_id), example_config=cfg.init_prompt.examples
+                        task_id=task_id, example_config=cfg.init_prompt.examples
                     )
                 else:
                     setting.init_prompt.use_original_prompt()
 
                 task_result = setting.iterate_task(
-                    task_id=int(task_id),
+                    task_id=task_id,
                     task_data=task,
                     prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.init_prompt.paths)}",
                 )
                 split.add_task(task_result)
                 saver.save_task_result(
-                    task_id=int(task_id),
+                    task_id=task_id,
                     task_data=task_result,
                     headers=cfg.results.headers,
                     results_file_name=results_file_names[split.name],
@@ -336,13 +335,13 @@ def run_setting(cfg: DictConfig) -> None:
             for version, features, split_eval, prompt_eval in items:
                 print(f"The features {version} applying the setting:")
                 print(features, end="\n\n")
-                saver.save_split_metrics(
+                saver.save_split_features(
                     features=features,
                     metrics_file_name=metrics_file_names[split.name],
                     version=version,
                 )
                 prompt_eval.update(split_eval)
-                # Plot the prompt accuracies for the split
+                # Plot the prompt metrics for the split
                 # plotter.plot_acc_per_task_and_prompt(
                 #     acc_per_prompt_task=split_eval.get_accuracies(as_lists=True),
                 #     y_label="Accuracies and Standard Deviations",
@@ -350,9 +349,9 @@ def run_setting(cfg: DictConfig) -> None:
                 # )
 
             print_metrics(split)
-            saver.save_split_accuracy(
+            saver.save_split_metrics(
                 split=split,
-                accuracy_file_name=metrics_file_names[split.name],
+                metric_file_name=metrics_file_names[split.name],
             )
             run_splits[split.name][init_prompt] = split
 

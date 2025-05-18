@@ -278,7 +278,7 @@ def run(
 
     for path in flat_paths:
         print(f"Loading data from {Path(*Path(path).parts[-6:])}")
-        data[path] = loader.load_results(path)
+        data[path], _ = loader.load_results(path)
 
     print("Number of files:", len(data))
 
@@ -317,7 +317,7 @@ def run(
         log_differences = find_difference_in_paths(flat_logs)
         if "" in log_differences:
             raise NameError(
-                "The structure or log file names is not uniform. Please add distinctions to standard log files."
+                "The structure or log file names is not uniform. Please addition distinctions to standard log files."
             )
 
         print("\nCopying log files found:")
@@ -463,7 +463,7 @@ def run(
 
 
 if __name__ == "__main__":
-    # TODO: add paths of result directories that should be all_samples
+    # TODO: addition paths of result directories that should be all_samples
     paths = [
         "results/skyline/valid/with_examples/reasoning/tasks_1_2",
         "results/skyline/valid/with_examples/reasoning/tasks_3/all_samples",

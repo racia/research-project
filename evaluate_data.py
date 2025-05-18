@@ -4,8 +4,8 @@
 # 3) It extracts the split from the data path.
 # 4) It iterates over the data and creates the data levels.
 # 5) It loads the silver reasoning and interpretability results.
-# 5) It calculates the accuracies for the split and the tasks.
-# 6) It plots the accuracies and interpretability heat.
+# 5) It calculates the metrics for the split and the tasks.
+# 6) It plots the metrics and interpretability heat.
 # 7) It saves the results to the specified path.
 # 8) It prints the metrics table.
 # 9) It categorizes the results into different cases.
@@ -14,17 +14,13 @@ from __future__ import annotations
 
 import argparse
 import re
-import warnings
-from collections import defaultdict
 from pathlib import Path
 
-from data.DataLoader import DataLoader, SilverReasoning
+from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
-from data.utils import structure_parts
 from inference.DataLevels import Results, Sample, Split, Task, print_metrics
 from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
-from settings.config import DataSplits
 
 PREFIX = Path.cwd()
 while PREFIX.name != "research-project":
@@ -109,7 +105,7 @@ def get_result(
 
 
 def run(
-    data_path: str,
+    results_path: str,
     save_path: str,
     samples_per_task: int,
     create_heatmaps: bool = True,
@@ -118,7 +114,7 @@ def run(
     """
     Run the evaluation pipeline.
 
-    :param data_path: Path to the data for evaluation
+    :param results_path: Path to the data for evaluation
     :param save_path: Path to save the results
     :param samples_per_task: Number of samples per task the results were ran with
     :param create_heatmaps: Whether to create heatmaps for the interpretability results
@@ -127,158 +123,68 @@ def run(
     """
     print("You are running the evaluation pipeline.", end="\n\n")
 
-    if not data_path:
+    if not results_path:
         raise ValueError("Please provide a path to the data for evaluation.")
 
-    headers = {
-        "general": [
-            "id_",
-            "task_id",
-            "sample_id",
-            "part_id",
-            "task",
-            "golden_answer",
-            "silver_reasoning",
-        ],
-        "results": [  # for both before and after
-            "model_answer",
-            "model_reasoning",
-            "model_output",
-        ],
-    }
-    loader = DataLoader(prefix=PREFIX, samples_per_task=samples_per_task)
-    silver_reasoning = SilverReasoning(loader)
-    saver = DataSaver(save_to=save_path)
-    plotter = Plotter(results_path=saver.run_path)
-    results_file_name = f"{Path(data_path).stem}_upd.csv"
-
     print("Loading data...", end="\n\n")
-
-    multi_system = False
-    samples_per_task = defaultdict(list)
-    results_data = loader.load_results(results_path=data_path, list_output=True)
-
-    for row in results_data:
-        samples_per_task[row["task_id"]].append(row["sample_id"])
-        remove_unnecessary_columns(row, headers)
-        if "model_answer_before" in row:
-            multi_system = True
-
-    for task_id, sample_ids in samples_per_task.items():
-        print(f"Found {len(set(sample_ids))} samples for task ID {task_id}.")
-
-    task_ids = sorted(list(set([row["task_id"] for row in results_data])))
-    raw_parts = loader.load_task_data(
-        path="../tasks_1-20_v1-2/en-valid/",
-        split=DataSplits.valid,
-        tasks=task_ids,
-        multi_system=multi_system,
-        flat=True,
+    loader = DataLoader(prefix=PREFIX, samples_per_task=samples_per_task)
+    # loaded results in parts with original data, tokens-ids, and interpretability results
+    results_data, multi_system = loader.load_results(
+        results_path=results_path,
+        data_path="../tasks_1-20_v1-2/en-valid/",
+        split=extract_split(results_path),
+        as_parts=True,
     )
+    # maybe loaded_baseline_results is not needed for evaluation
+    saver = DataSaver(
+        save_to=str(Path(save_path) / "eval"),
+        loaded_baseline_results=True if multi_system else False,
+    )
+    results_file_name = f"{Path(results_path).stem}_upd.csv"
+    plotter = Plotter(results_path=saver.run_path)
 
     print(f"\nLoaded results data for {len(results_data)} tasks.")
-    print(f"Loaded {len(raw_parts)} sample parts created from raw data.")
+    print(f"Loaded {loader.number_of_parts} sample parts created from raw data.")
 
-    data_split = extract_split(data_path)
+    data_split = extract_split(results_path)
     sample, task, split = None, None, Split(name=data_split, multi_system=multi_system)
-    structured_levels = structure_parts(raw_parts)
-
-    for task_id, samples in structured_levels.items():
+    for task_id, samples in results_data.items():
+        assert type(task_id) is int
         task = Task(task_id, multi_system=multi_system)
 
-        for sample_id, parts in samples.items():
+        for sample_id, parts in list(samples.items())[:5]:
+            assert type(sample_id) is int
             sample = Sample(
                 task_id=task_id,
                 sample_id=sample_id,
                 multi_system=multi_system,
             )
             for part in parts:
-                row = get_result(
-                    results_data=results_data,
-                    task_id=part.task_id,
-                    sample_id=part.sample_id,
-                    part_id=part.part_id,
-                )
-
-                if not row:
-                    warnings.warn(
-                        f"Skipping part {part.id_}: task {part.task_id}, "
-                        f"sample {part.sample_id}, part {part.part_id} (not found in results data)."
-                    )
-                    continue
-
-                if (
-                    part.sample_id != sample.sample_id
-                    or part.sample_id != row["sample_id"]
-                ):
-                    raise ValueError(
-                        f"Sample ID {part.sample_id} does not match with the row sample ID "
-                        f"{row['sample_id']}: row {row['id_']}."
-                    )
-
-                if part.task_id != task.task_id or part.task_id != row["task_id"]:
-                    raise ValueError(
-                        f"Task ID {part.task_id} does not match with the task ID "
-                        f"{task.task_id}: row {row['id_']}."
-                    )
-
-                if not part.silver_reasoning:
-                    part.silver_reasoning = silver_reasoning.get(
-                        task_id=part.task_id,
-                        sample_id=part.sample_id,
-                        part_id=part.part_id,
-                        split=split.name,
-                    )
-                # TODO: make sure they are loaded with results
-                # sample.add_silver_reasoning(part.silver_reasoning)
-                # sample.add_golden_answers(part.golden_answer)
-
                 for version, result in zip(part.versions, part.results):
-                    interpr_path = (
-                        Path(data_path).parent
-                        / version
-                        / "interpretability"
-                        / "attn_scores"
-                    )
-                    interpretability_result = loader.load_interpretability(
-                        task_id=part.task_id,
-                        sample_id=part.sample_id,
-                        part_id=part.part_id,
-                        attn_scores_path=str(interpr_path),
-                    )
-                    part.set_output(
-                        **structure_result(headers["results"], row, version),
-                        interpretability=interpretability_result,
-                        version=version,
-                    )
-                    attn_plots_path = interpr_path / "plots"
-                    plots_present = attn_plots_path.exists() and not any(
-                        Path(attn_plots_path).iterdir()
-                    )
-                    if not plots_present and create_heatmaps:
+                    # TODO: add reasoning judgment to part results for it to be saved in the results table
+
+                    if create_heatmaps and not result.interpretability.empty():
                         plotter.draw_heat(
-                            x=interpretability_result.x_tokens,
-                            y=interpretability_result.y_tokens,
-                            x_label=interpretability_result.x_label,
-                            scores=interpretability_result.attn_scores,
+                            result.interpretability,
+                            x_label="Sentence Indices",
                             task_id=part.task_id,
                             sample_id=part.sample_id,
                             part_id=part.part_id,
                             title=f"Attention Map for Task {part.task_id} Sample {part.sample_id} "
-                            f"Part {part.part_id} ({version}, {result.category})",
+                            f"Part {part.part_id} (version: {version}, case: {result.category})",
                         )
 
                 sample.add_part(part)
-
                 result = part.get_result()
+                # necessary only if we want to addition more columns to our original results
+                # otherwise we can just create separate tables or files
                 saver.save_output(
                     data=[result],
                     headers=list(result.keys()),
                     file_name=results_file_name,
                 )
 
-            for evaluator in sample.evaluators:
-                evaluator.calculate_accuracies()
+            sample.calculate_metrics()
             task.add_sample(sample)
 
             if verbose:
@@ -286,46 +192,45 @@ def run(
                 print_metrics(sample)
 
         task.set_results()
-        task_accuracies = {
-            "task_id": task.task_id,
-        }
-        for evaluator in task.evaluators:
-            task_accuracies.update(**evaluator.get_accuracies())
-            evaluator.calculate_std()
+        task.calculate_metrics()
+        # TODO: save metrics series in separate files for each task
 
         if verbose:
             print_metrics(task)
 
         split.add_task(task)
-        saver.save_output(
-            data=[task_accuracies],
-            headers=list(task_accuracies.keys()),
-            file_name="eval_script_accuracies.csv",
-            path_add="",
-        )
+        for version, metrics in zip(task.versions, task.metrics):
+            saver.save_output(
+                data=[metrics],
+                headers=list(metrics.keys()),
+                file_name=f"eval_script_metrics_{version}.csv",
+                path_add=version,
+            )
 
     if verbose:
         print_metrics_table(evaluators=split.evaluators, id_=data_split)
 
-    saver.save_split_accuracy(
+    saver.save_split_metrics(
         split=split,
-        accuracy_file_name="eval_script_accuracies.csv",
+        metric_file_name="eval_script_metrics_version.csv",
     )
+    # TODO: save metrics series in separate files for each split
 
     for version, evaluator, features in zip(
         split.versions, split.evaluators, split.features
     ):
-        saver.save_split_metrics(
+        saver.save_split_features(
             features=features,
-            metrics_file_name="eval_script_metrics.csv",
+            metrics_file_name="eval_script_features.csv",
             version=version,
         )
         print(
-            f"\nPlotting accuracies and standard deviation for results '{version}'...",
+            f"\nPlotting metrics and standard deviation for results '{version}'...",
             end="\n\n",
         )
+        # TODO: fix the plots and plot more fine-grained metrics instead of all together
         plotter.plot_acc_per_task_and_prompt(
-            acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
+            acc_per_prompt_task=evaluator.get_metrics(as_lists=True),
             y_label="Accuracies and Standard Deviations",
             plot_name_add=[split.name, version],
         )
@@ -339,9 +244,9 @@ def run(
                     [headers] + case_list,
                     sep="\n",
                 )
-                print(f"Saved {len(case_list)} cases for {case}.")
+                print(f"Case {case}: detected {len(case_list)} occurrences.")
             else:
-                print(f"No cases for {case}.")
+                print(f"Case {case}: detected 0 occurrences. Nothing!")
 
     print("\nThe evaluation pipeline has finished successfully.")
 
@@ -355,7 +260,7 @@ def parse_args():
 
     parser = argparse.ArgumentParser(description="Evaluate the results of the model.")
     parser.add_argument(
-        "--data_path",
+        "--results_path",
         type=str,
         required=True,
         help="Path to the data.",
@@ -370,8 +275,9 @@ def parse_args():
         "--samples_per_task",
         type=int,
         default=50,
-        help="Number of samples per task the results were ran with.",
+        help="Number of samples per task the results were ran with (check your config for the run).",
     )
+    # Shouldn't always be True?
     parser.add_argument(
         "--create_heatmaps",
         action="store_true",
@@ -388,10 +294,10 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
-
+    # python3.12 evaluate_data.py --results_path results/test-feedback-run/test/reasoning/08-05-2025/22-02-41/init_prompt_reasoning/test_init_prompt_reasoning_results.csv --save_path results/test-feedback-run/test/reasoning/08-05-2025/22-02-41/init_prompt_reasoning --samples_per_task 100 --create_heatmaps --verbose
     run(
-        data_path=args.data_path,
-        save_path=args.save_directory,
+        results_path=args.results_path,
+        save_path=args.save_path,
         samples_per_task=args.samples_per_task,
         create_heatmaps=args.create_heatmaps,
         verbose=args.verbose,

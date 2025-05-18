@@ -46,7 +46,9 @@ class InterpretabilityResult:
         Check if the result is empty.
         :return: True if the result is empty, False otherwise
         """
-        if not (self.x_tokens or self.y_tokens or self.attn_scores.shape != ()):
+        if not (
+            self.x_tokens or self.y_tokens or self.attn_scores.shape not in [(), (0,)]
+        ):
             return True
         return False
 
