@@ -9,12 +9,12 @@ model:
   # than create a separate answer
   to_continue: False
   mode: "eval"
-  interpretability:
-    use: True
-    aggregate: True
 
 setting:
   name: "Baseline"
+  interpretability:
+    use: True
+    aggregate: True
 
 data:
   # small data with validation
@@ -68,6 +68,7 @@ logging:
   print_to_file: True
 
 results:
+  save_heatmaps: False
   headers:
     - id_
     - task_id
@@ -96,4 +97,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "${oc.env:HOME}/research-project/outputs/${now:%d-%m-%Y}/${now:%H-%M-%S}"

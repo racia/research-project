@@ -1,27 +1,100 @@
-defaults:
-  # running this script will pull the prompt in this file over the prompt in baseline_config file
-  - baseline_config
-  - _self_
+model:
+  name: "meta-llama/Meta-Llama-3-8B-Instruct"
+  max_new_tokens: 100
+  # with temperature==0.0 the model will use log probability
+  # to automatically increase the temperature until certain thresholds are hit.
+  # I.e., in need of lowest temperature, set it to something like 0.00000001
+  temperature: 0.1
+  # if we want the model to continue on the last message rather
+  # than create a separate answer
+  to_continue: False
+  mode: "eval"
+
+setting:
+  name: "Baseline"
+  interpretability:
+    use: True
+    aggregate: True
 
 data:
+  # small data with validation
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  task_ids: [ 1, 2, 3, 4, 5 ]
-  samples_per_task: 2
+  baseline_results: ""
+  # Order: train, valid, test
   splits:
     train: False
-    valid: False
-    test: True
+    valid: True
+    test: False
+  # to get all tasks use ~ (will be converted to None)
+  # to get specific tasks use:
+  # task_ids: [1, 2, ...]
+  task_ids: [ 3, 4, 5, 6, 7, 8, 10, 11, 13, 15, 18, 20 ]
+  # to get all samples use ~ (will be converted to None)
+  # to set a specific number of samples use an int
+  samples_per_task: 3
+  # if to add line numbers to the sentences in the prompt
+  # Order: context, question
+  to_enumerate:
+    context: True
+    question: False
+  wrapper:
+    # if to wrap the part prompt with the task description
+    context: |
+      *TASK*
+      Here are the context sentences:
+      {context}
+    question: |
+      Now, answer the following question:
+      {question}
+    reasoning: ""
+    answer: ""
 
 init_prompt:
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
+  examples:
+    add: True
+    enumerated: True
+    handpicked: True
+    not_mentioned: True
+    number: 1
+    wrapper: |
+      *EXAMPLE*
+      {example}
+      *END OF EXAMPLE*
 
 logging:
   # if to print the results to a log file, otherwise will print to console
-  print_to_file: True
+  print_to_file: False
+
+results:
+  save_heatmaps: True
+  headers:
+    - id_
+    - task_id
+    - sample_id
+    - part_id
+    - task
+    - answer_lies_in_self
+    - golden_answer
+    - silver_reasoning
+    - model_output_before
+    - model_answer_before
+    - model_reasoning_before
+    - answer_correct_before
+    - reasoning_correct_before
+    - exact_match_accuracy_before
+    - soft_match_accuracy_before
+    - max_supp_attn_before
+    - attn_on_target_before
+    - verbs_before
+    - there_before
+    - pronouns_before
+    - not_mentioned_before
+    - context_sents_hall_before
 
 hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/outputs/test-baseline-run/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "${oc.env:HOME}/research-project/outputs/test-encoding/${now:%d-%m-%Y}/${now:%H-%M-%S}"

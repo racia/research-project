@@ -149,6 +149,7 @@ def sents_to_ids(
         if type(sentence) == Span:
             sentence = sentence.text
         sentence = sentence.strip() + "\n"
+        print("sentence", sentence)
         # \n\n in source produces empty sentences
         if not sentence or sentence.isspace():
             if output_empty:
@@ -224,6 +225,7 @@ def update_span(span: tuple, offset: int) -> tuple[int, int]:
     if len(span) == 0:
         return offset, offset
     if len(span) != 2:
+        print("DEBUG: upd span", span)
         raise ValueError(
             "Span must be a tuple of two integers representing the start and end indices."
         )
@@ -288,12 +290,6 @@ def print_metrics_table(
                 f"{evaluator.max_supp_attn.get_mean()} ± {evaluator.max_supp_attn.get_std()}"
                 if len(evaluator.max_supp_attn) > 1
                 else evaluator.max_supp_attn.get_mean()
-            )
-        if evaluator.attn_on_target:
-            metric_values["Attention on Target"][version] = (
-                f"{evaluator.attn_on_target.get_mean()} ± {evaluator.attn_on_target.get_std()}"
-                if len(evaluator.attn_on_target) > 1
-                else evaluator.attn_on_target.get_mean()
             )
 
     for metric_name, values in metric_values.items():

@@ -1,45 +1,42 @@
 teacher:
-  name: "meta-llama/Meta-Llama-3-70B-Instruct"
-  max_new_tokens: 150
+  name: "meta-llama/Meta-Llama-3-8B-Instruct"
+  max_new_tokens: 200
   temperature: 0.1
-  to_continue: False
+  to_continue: false
   mode: "eval"
-  interpretability:
-    use: False
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 150
+  max_new_tokens: 200
   temperature: 0.1
-  to_continue: False
+  to_continue: false
   mode: "eval"
+
+setting:
+  name: 'Feedback'
   interpretability:
     use: True
     aggregate: True
 
-setting:
-  name: 'Feedback'
-
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
+  baseline_results: "${oc.env:HOME}/research-project/results/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
   # Order: train, valid, test
   splits:
     train: False
     valid: True
     test: False
-  # to get all tasks use ~ (will be converted to None)
+  # to get all tasks use (will be converted to None)
+  task_ids: ~
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  task_ids: ~
   samples_per_task: 5
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
     context: True
     question: False
-  # if to wrap the part prompt with the task description
-  wrapper:
+  wrapper: # Added this section to align with SD
     context: |
       *TASK*
       Here are the context sentences:
@@ -53,7 +50,8 @@ data:
 init_prompt:
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
-  examples:
+  # name of the prompt files serves as a basis for logging and result files
+  examples: # Added this section to align with SD
     add: True
     enumerated: True
     handpicked: True
@@ -65,6 +63,7 @@ init_prompt:
       *END OF EXAMPLE*
 
 feedback_prompt:
+  # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/feedback_prompt.txt"
   history: |
@@ -86,6 +85,7 @@ logging:
   print_to_file: True
 
 results:
+  save_heatmaps: False
   headers:
     - id_
     - task_id
@@ -129,4 +129,4 @@ results:
     run:
       # the run directory with logs, plots, and csv results will be created here
       # use more folders if needed for distinguishing between different experiments
-      dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+      dir: "${oc.env:HOME}/research-project/outputs/${now:%d-%m-%Y}/${now:%H-%M-%S}"

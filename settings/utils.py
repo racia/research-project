@@ -87,22 +87,24 @@ def encode_wrapper(
     wrapper_dict = defaultdict(lambda: defaultdict(dict))
     for key, value in wrapper.items():
         if value:
-            no_insert_values = re.split(r" *\{.+?} *", value.strip())
+            no_insert_values = re.split(r" *\{.+?} *", value)
             if len(no_insert_values) > 2:
                 raise ValueError(
                     f"The wrapper value '{value}' is not in the correct format. "
                     f"It should be 'wrapper text {{inserted_value}} wrapper text'."
                 )
+            # for i, no_insert_value in enumerate(no_insert_values):
+            #     no_insert_values[i] = re.sub(r"\n+", " ", no_insert_value)
+
             tokens, ids, sent_spans = sents_to_ids(
                 no_insert_values, tokenizer, output_empty=True
             )
+            print("Wrapper values:")
+            print(*zip(sent_spans, tokens, ids, no_insert_values), sep="\n")
             for i, order in enumerate(("before", "after")):
                 wrapper_dict[key][order]["content"] = no_insert_values[i]
                 wrapper_dict[key][order]["tokens"] = tokens[i]
                 wrapper_dict[key][order]["ids"] = ids[i]
                 wrapper_dict[key][order]["sent_spans"] = sent_spans[i]
-                wrapper_dict[key][order]["spans_with_types"] = (
-                    {sent_spans[i]: "wrap"} if sent_spans[i] else {}
-                )
 
     return wrapper_dict
