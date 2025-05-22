@@ -812,6 +812,10 @@ class Task:
             self.results[0][f"exact_match_accuracy_{version}"] = mean_em_acc
             mean_sm_acc = evaluator.soft_match_accuracy.get_mean()
             self.results[0][f"soft_match_accuracy_{version}"] = mean_sm_acc
+            max_supp_attn_corr = evaluator.max_supp_attn_corr.get_mean()
+            self.results[0][f"max_supp_attn_corr_{version}"] = max_supp_attn_corr
+            attn_on_target_corr = evaluator.attn_on_target_corr.get_mean()
+            self.results[0][f"attn_on_target_corr_{version}"] = attn_on_target_corr  
 
     def calculate_metrics(self) -> None:
         """
@@ -821,8 +825,9 @@ class Task:
         initial = {"task_id": self.task_id}
         for evaluator in self.evaluators:
             evaluator.calculate_std()
+            evaluator.calculate_correlation(evaluator.exact_match_accuracy.all, evaluator.max_supp_attn.all, evaluator.attn_on_target.all)
             self.metrics.append({**initial, **evaluator.get_metrics()})
-
+            
 
 class Split:
     """

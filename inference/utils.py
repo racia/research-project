@@ -313,6 +313,18 @@ def print_metrics_table(
                 if len(evaluator.meteor) > 1
                 else evaluator.meteor.get_mean()
             )
+        if evaluator.max_supp_attn_corr:
+            metric_values["Max Attn Ratio Correlation"][version] = (
+                f"{evaluator.max_supp_attn_corr.get_mean()} ± {evaluator.max_supp_attn_corr.get_std()}"
+                if len(evaluator.max_supp_attn_corr) > 1
+                else evaluator.max_supp_attn_corr.get_mean()
+            )
+        if evaluator.attn_on_target_corr:
+            metric_values["Attn on Target Correlation"][version] = (
+                f"{evaluator.attn_on_target_corr.get_mean()} ± {evaluator.attn_on_target_corr.get_std()}"
+                if len(evaluator.attn_on_target_corr) > 1
+                else evaluator.attn_on_target_corr.get_mean()
+            )
 
     for metric_name, values in metric_values.items():
         row = [metric_name]

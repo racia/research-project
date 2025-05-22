@@ -101,6 +101,17 @@ class AttnDistribution(Metric):
         super().__init__(name, var, max_supp_target)
 
 
+class Correlation(Metric):
+    """
+    Class for tracking the correlation between two metrics.
+    :param name: the type of correlation
+    :param var: the variable name
+    :param correlations: the list of correlation values
+    """
+    def __init__(self, name, var: str, correlations: list[float] = None):
+        super().__init__(name, var, correlations)
+
+
 class AttnOnTarget(Metric):
     def __init__(self, name: str, var: str, attn_on_target: list[float] = None):
         """
