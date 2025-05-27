@@ -18,7 +18,7 @@ def add_part_ids(parts: list[SamplePart]) -> list[SamplePart]:
     """
     Add part ids to the parts.
 
-    :param parts: The parts to add the path ids to.
+    :param parts: The parts to addition the path ids to.
     :return: The parts with the path ids.
     """
     print("Adding part IDs to the data...")
@@ -68,7 +68,7 @@ def run(data_path: str) -> None:
     headers_results_after = [f"{result}_after" for result in headers["results"]]
     print("Using long list of headers to load the data.")
 
-    data = loader.load_results(data_path, list_output=True)
+    data, _ = loader.load_results(data_path, list_output=True)
     silver_reasoning = SilverReasoning(loader)
 
     header_mapping = {
@@ -213,7 +213,7 @@ def run(data_path: str) -> None:
 if __name__ == "__main__":
     # TODO: Add the link to the data
     data_path = ""
-    # TODO: specify the path to silver reasoning if you wish to add it
+    # TODO: specify the path to silver reasoning if you wish to addition it
     silver_reasoning_path = "data/silver_reasoning/silver_reasoning_test.csv"
     run(
         data_path=data_path,

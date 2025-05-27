@@ -65,7 +65,7 @@ class Features:
         """
         if self.version != other.version:
             raise ValueError(
-                f"Cannot add features with different versions: {self.version} and {other.version}"
+                f"Cannot addition features with different versions: {self.version} and {other.version}"
             )
         return Features(
             **{attr: getattr(self, attr) + getattr(other, attr) for attr in self.attrs},
@@ -222,7 +222,7 @@ class Results:
         Categorize the part results into types in the CASE_COUNTERS.
         Reasoning is considered to be incorrect unless it was explicitly defined as correct.
 
-        :param ids: the ids of the part to add to the category
+        :param ids: the ids of the part to addition to the category
         """
         if self.model_answer == "None":
             self.model_answer = ""
@@ -361,7 +361,8 @@ class SamplePart:
         self.structured_question: str = ""
         self.unwrapped_task: str = ""
         self.task: str = self.prepare_task()
-        self.full_task = ""
+        # self.wrapped_task is only used when loading the results
+        self.wrapped_task = ""
 
         self.golden_answer: str = golden_answer
         self.silver_reasoning: str = silver_reasoning
@@ -501,7 +502,7 @@ class SamplePart:
         model_answer: str = None,
         model_reasoning: str = None,
         version: str = "after",
-        full_task: str = None,
+        wrapped_task: str = None,
         iterations: int = 0,
     ) -> None:
         """
@@ -513,7 +514,7 @@ class SamplePart:
         :param model_reasoning: the reasoning for the answer
         :param interpretability: the interpretability result
         :param version: "after" if the setting was already applied to the model's output else "before"
-        :param full_task: the full task for the model (when loading results)
+        :param wrapped_task: the full task for the model (when loading results)
         :param iterations: the number of iterations (feedback or speculative decoding)
 
         :return: None
@@ -524,7 +525,9 @@ class SamplePart:
             raise ValueError(
                 "Either a message or model_output, model_answer, and model_reasoning should be provided."
             )
-        if not messages and not (model_output and model_answer and model_reasoning):
+        if not messages and not any(
+            [model_output and model_answer and model_reasoning]
+        ):
             raise ValueError(
                 "When no message, a model_output, model_answer, and model_reasoning should be provided."
             )
@@ -539,17 +542,13 @@ class SamplePart:
         if type(model_answer) is not str:
             model_answer = str(model_answer)
 
-        self.full_task = full_task if full_task is not None else self.task
-        if full_task and full_task != self.task:
-            print("full_task", full_task)
-            print("self.task", self.task)
-            warnings.warn("New settings for preparing the task were applied.")
+        self.wrapped_task = wrapped_task if wrapped_task is not None else self.task
 
         if not interpretability:
-            warnings.warn("DEBUG: NO INTERPRETABILITY SCORES WERE CALCULATED.")
-            print(self)
-            print("version", version)
-            print("Model output:", model_output)
+            warnings.warn(
+                f"DEBUG: NO INTERPRETABILITY SCORES WERE CALCULATED "
+                f"for task {self.task_id}, sample {self.sample_id}, part {self.part_id}."
+            )
             interpretability = InterResult(np.ndarray([]), [], [], 0.0, 0.0)
 
         if version not in ["before", "after"]:
@@ -621,7 +620,7 @@ class Sample:
         self.versions: list[str] = (
             ["before", "after"] if self.multi_system else ["before"]
         )
-
+        self.run_with_reasoning: bool = False
         self.parts: list[SamplePart] = []
 
         evaluator_before = AnswerEvaluator(level="sample", version="before")
@@ -639,48 +638,30 @@ class Sample:
         )
         self.results = []
 
-    def add_golden_answers(self, golden_answer: str | list[str]) -> None:
-        """
-        Add the golden answers to the sample.
-
-        :param golden_answer: the golden answer(s) to add
-        :return: None
-        """
-        for evaluator in self.evaluators:
-            if type(golden_answer) is str:
-                evaluator.golden_answers.append(golden_answer)
-            else:
-                evaluator.golden_answers.extend(golden_answer)
-
-    def add_silver_reasoning(self, silver_reasoning: str | list[str]) -> None:
-        """
-        Add the silver reasoning to the sample.
-
-        :param silver_reasoning: the silver reasoning(s) to add
-        :return: None
-        """
-        for evaluator in self.evaluators:
-            if type(silver_reasoning) is str:
-                evaluator.silver_reasonings.append(silver_reasoning)
-            else:
-                evaluator.silver_reasonings.extend(silver_reasoning)
-
     def add_part(self, part: SamplePart) -> None:
         """
         Add a part to the sample.
         Should be called after the output of the part is set with SamplePart.set_output().
 
-        :param part: the part to add
+        :param part: the part to addition
         :return: None
         """
         self.parts.append(part)
-
+        if self.multi_system and len(part.results) != 2:
+            raise ValueError(
+                f"The part should have two results for the multi-system setting: {part.results}"
+            )
         for evaluator, result in zip(self.evaluators, part.results):
+            evaluator.golden_answers.append(part.golden_answer)
             evaluator.pred_answers.append(result.model_answer)
             evaluator.pred_reasonings.append(result.model_reasoning)
+            if part.silver_reasoning:
+                evaluator.silver_reasonings.append(part.silver_reasoning)
+            if result.model_reasoning:
+                self.run_with_reasoning = True
             if result.interpretability:
-                print("DEBUG: max_supp_attn", result.max_supp_attn)
                 evaluator.max_supp_attn.add(result.max_supp_attn)
+                evaluator.attn_on_target.add(result.attn_on_target)
 
     def print_sample_predictions(self) -> None:
         """
@@ -755,6 +736,11 @@ class Sample:
         """
         for evaluator in self.evaluators:
             evaluator.calculate_accuracies()
+            evaluator.calculate_attention()
+            if self.run_with_reasoning:
+                evaluator.calculate_bleu()
+                evaluator.calculate_rouge()
+                evaluator.calculate_meteor()
 
 
 class Task:
@@ -792,13 +778,13 @@ class Task:
             else [features_before]
         )
         self.results: list[dict[str, str | int | float]] = []
-        self.accuracies: dict = {}
+        self.metrics: list = []
 
     def add_sample(self, sample: Sample) -> None:
         """
         Add a sample to the task.
 
-        :param sample: the sample to add
+        :param sample: the sample to addition
         :return: None
         """
         self.samples.append(sample)
@@ -808,7 +794,7 @@ class Task:
     def set_results(self) -> None:
         """
         Set the results for the task by combining the results from the parts of all samples.
-        Additionally, calculate the mean of the accuracy metrics and add them to the results.
+        Additionally, calculate the mean of the accuracy metrics and addition them to the results.
 
         :return: None
         """
@@ -832,11 +818,10 @@ class Task:
         Calculate the metrics for the task.
         :return: None
         """
-        accuracies = {"task_id": self.task_id}
+        initial = {"task_id": self.task_id}
         for evaluator in self.evaluators:
             evaluator.calculate_std()
-            accuracies.update(**evaluator.get_accuracies())
-        self.accuracies = accuracies
+            self.metrics.append({**initial, **evaluator.get_metrics()})
 
 
 class Split:
@@ -877,7 +862,7 @@ class Split:
         """
         Add a task to the prompt level data.
 
-        :param task: the task to add
+        :param task: the task to addition
         :return: None
         """
         self.tasks.append(task)
@@ -887,12 +872,11 @@ class Split:
             evaluator.update(other_evaluator)
 
 
-def print_metrics(data_level: Sample | Task | Split, table: bool = True) -> None:
+def print_metrics(data_level: Sample | Task | Split) -> None:
     """
-    Print the metrics from the evaluator in a pretty table or with the usual statements.
+    Print the metrics from the evaluator in a pretty table.
 
     :param data_level: the data level to print the metrics for
-    :param table: if to print the metrics in a table
     :return: None
     """
     id_ = None
@@ -903,11 +887,7 @@ def print_metrics(data_level: Sample | Task | Split, table: bool = True) -> None
     elif type(data_level) is Split:
         id_ = data_level.name
 
-    if table:
-        print_metrics_table(
-            evaluators=data_level.evaluators,
-            id_=id_,
-        )
-    else:
-        for evaluator in data_level.evaluators:
-            evaluator.print_accuracies(id_=id_)
+    print_metrics_table(
+        evaluators=data_level.evaluators,
+        id_=id_,
+    )
