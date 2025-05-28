@@ -14,6 +14,7 @@ from inference.utils import (
     get_generation_token_ids,
     sents_to_ids,
     update_span,
+    type_is_task,
 )
 
 
@@ -60,6 +61,8 @@ class Chat:
 
         self.supp_sent_spans = []
         self.part = None
+        # in tokens
+        self.conversation_length = len(flatten(system_prompt.ids))
 
     def __repr__(self) -> str:
         return "\n".join(
@@ -83,6 +86,7 @@ class Chat:
             )
         deleted_message = self.messages.pop(i)
         self.offset -= len(flatten(deleted_message["ids"]))
+        self.conversation_length -= len(flatten(deleted_message["ids"]))
 
     def adjust_message(
         self, partial_output: str, partial_ids: int | list[int] | torch.Tensor
@@ -134,6 +138,7 @@ class Chat:
             **model_output_span_type,
         }
         self.offset += len(partial_ids)
+        self.conversation_length += len(partial_ids)
 
     def add_message(
         self,
@@ -291,6 +296,7 @@ class Chat:
             "spans_with_types": spans_with_types,
         }
         self.messages.append(part_dict)
+        self.conversation_length += len(flatten(ids))
 
     def move_approved_message(self, other_chat: Chat, wrapper: dict = None) -> None:
         """
@@ -302,6 +308,7 @@ class Chat:
         """
         approved_message = other_chat.messages[-1]
         offset_difference = other_chat.offset - self.offset
+        self.conversation_length += len(flatten(approved_message["ids"]))
         self.part = other_chat.part
         assert type(self.part) is not None
         self.identify_supp_sent_spans()
@@ -312,6 +319,7 @@ class Chat:
                 f"The message contains teacher wrapper: {approved_message}"
             )
 
+        st_resp_wrapper = ["The", "Ġstudent", "'s", "Ġresponse", "Ġwas", ":Ċ"]
         content, original_content = "", ""
         message_ids, message_tokens = [], []
         if wrapper:
@@ -330,8 +338,11 @@ class Chat:
                         message_ids.append(chunk["ids"])
                         message_tokens.append(chunk["tokens"])
                     else:
-                        message_ids.extend(chunk["ids"])
-                        message_tokens.extend(chunk["tokens"])
+                        for ids, tokens in zip(chunk["ids"], chunk["tokens"]):
+                            if st_resp_wrapper == tokens:
+                                continue
+                            message_ids.extend(ids)
+                            message_tokens.extend(tokens)
 
                     orig_span = list(chunk["spans_with_types"].keys())[0]
                     updated_span = update_span(orig_span, self.offset)
@@ -379,14 +390,19 @@ class Chat:
         spans_dict = {}
         for message in self.messages[:-1] if remove_last else self.messages:
             # message["spans_with_types"] = {span: type}
-            if span_type:
-                for span, type_ in message["spans_with_types"].items():
-                    if type_ == span_type or (
-                        span_type == "task" and type_ in ["cont", "ques"]
-                    ):
-                        spans.append(span)
-            else:
-                spans_dict.update(message["spans_with_types"])
+            for span, type_ in message["spans_with_types"].items():
+                if span[-1] <= self.conversation_length:
+                    if span_type:
+                        if type_ == span_type or type_is_task(span_type, type_):
+                            spans.append(span)
+                    else:
+                        spans_dict[span] = type_
+                else:
+                    warnings.warn(
+                        f"Span {span} exceeds conversation length = {self.conversation_length}. "
+                        f"Ignoring it and the rest."
+                    )
+                    break
 
         if span_type:
             return spans
@@ -423,24 +439,27 @@ class Chat:
                 f"Value {datatype} is not supported. Must be either 'ids' or 'tokens'."
             )
 
-        if identify_target:
-            self.identify_supp_sent_spans()
-
+        chat_tokens = []
         chat_ids = [self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")]
+        self.conversation_length = len(chat_ids)
         # including the system prompt
         for i, message in enumerate(self.messages):
             message_ids = get_generation_token_ids(self.tokenizer, message["role"])
             message_ids.extend(flatten(message[datatype]))
-            conversation_length = len(chat_ids) + len(message_ids)
-            if conversation_length > max_length:
-                warnings.warn(
-                    f"Exceeded max length with {conversation_length}. Truncating the input."
-                )
+            message_tokens = flatten(message["tokens"])
+            self.conversation_length += len(message_ids)
+            if self.conversation_length > max_length:
+                print(f"Exceeded max length with {self.conversation_length}.")
+                warnings.warn("Exceeded max length. Truncating the input.")
                 break
 
             chat_ids.extend(message_ids)
+            chat_tokens.extend(message_tokens)
 
         if not to_continue:
             chat_ids.extend(get_generation_token_ids(self.tokenizer, "assistant"))
+
+        if identify_target:
+            self.identify_supp_sent_spans()
 
         return torch.as_tensor([chat_ids])

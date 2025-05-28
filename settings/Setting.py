@@ -77,6 +77,7 @@ class Setting(ABC):
             system_prompt=teacher_sys,
             tokenizer=tokenizer,
         )
+        chat.supp_sent_spans = self.model.chat.supp_sent_spans
         if "{" in teacher_sys.text:
             raise FormatError(
                 "The teacher prompt is still unformatted:\n", teacher_sys.text
@@ -89,7 +90,7 @@ class Setting(ABC):
         This is used for the multi-system setting when the final version of the chat is not available till the end.
         :return: interpretability result
         """
-        chat_ids = self.model.chat.convert_into_datatype("ids", identify_target=False)
+        chat_ids = self.model.chat.convert_into_datatype("ids", identify_target=True)
         output_tensor = self.model.model(
             chat_ids,
             return_dict=True,
