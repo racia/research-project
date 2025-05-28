@@ -323,3 +323,10 @@ def print_metrics_table(
     if id_:
         print(f"\nMetrics for {evaluators[0].level} {id_}:")
     print(table)
+
+
+def type_is_task(target_type: str, type_: str) -> bool:
+    """
+    Check if the type is task.
+    """
+    return target_type == "task" and type_ in ["cont", "ques"]

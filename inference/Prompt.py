@@ -214,7 +214,8 @@ class Prompt:
                     continue
 
                 teacher_string += chunk.get("content", "")
-                orig_teacher_string += chunk.get("original_content", "")
+                if "wrap" not in chunk["spans_with_types"].values():
+                    orig_teacher_string += chunk.get("original_content", "")
 
                 # this is a flat message
                 if chunk["ids"] and type(chunk["ids"][0]) is int:
@@ -226,9 +227,8 @@ class Prompt:
                     teacher_tokens.extend(chunk["tokens"])
 
                 spans_types = chunk.get("spans_with_types", {})
-                print("Spans with types:", spans_types)
+
                 for span, type_ in spans_types.items():
-                    print(f"Span {span}: {type_}")
                     upd_span = update_span(span, offset)
                     spans_with_types[upd_span] = type_
                     offset += span[1] - span[0]

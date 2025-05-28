@@ -62,8 +62,9 @@ class Metric:
         Return the mean of the metric values.
         """
         if len(self.all) == 0:
-            return 0.0
-        self.mean = round(statistics.mean(self.all), 2)
+            self.mean = 0.0
+        else:
+            self.mean = round(statistics.mean(self.all), 2)
         return self.mean
 
     def get_std(self) -> float:

@@ -24,12 +24,12 @@ setting:
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  baseline_results: "${oc.env:HOME}/research-project/results/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
+  baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/06-05-2025/21-28-46/init_prompt_reasoning/joined_t_all_task_results.csv"
   # Order: train, valid, test
   splits:
     train: False
-    valid: True
-    test: False
+    valid: False
+    test: True
   # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
@@ -69,7 +69,6 @@ init_prompt:
 eval_prompt:
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/eval_prompt.txt"
-  baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
   history: |
     Your student was given the following task:
     """
@@ -89,7 +88,7 @@ resume_prompt:
 
 logging:
   # if to print the results to a log file, otherwise will print to console
-  print_to_file: True
+  print_to_file: False
 
 results:
   headers:
