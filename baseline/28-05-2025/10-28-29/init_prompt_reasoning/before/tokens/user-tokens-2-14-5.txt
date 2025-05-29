@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+15	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
+16	.	ĠJohn	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
+17	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
+18	.	ĠJohn	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
+19	.	ĠMary	Ġtravelled	Ġto	Ġthe	Ġgarden	.Ċ
+20	.	ĠJohn	Ġmoved	Ġto	Ġthe	Ġbathroom	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġapple	?Ċ

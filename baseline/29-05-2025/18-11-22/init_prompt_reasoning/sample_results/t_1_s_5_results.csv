@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+21	1	5	1	"*TASK*
+Here are the context sentences:
+1. John went to the office.
+2. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"according to context sentence 2, ""daniel journeyed to the kitchen"", which explicitly states that daniel's destination is the kitchen. therefore, it can be logically concluded that daniel is currently in the kitchen."	fully	kitchen	True	The question asks about Daniel's location, and the only information provided is that Daniel journeyed to the kitchen. This implies that Daniel is currently in the kitchen.		"Reasoning: The question asks about Daniel's location, and the only information provided is that Daniel journeyed to the kitchen. This implies that Daniel is currently in the kitchen.
+
+Answer: kitchen"	0.0	0.0256	False	False	False	True	0
+22	1	5	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the bedroom.
+5. John moved to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"the question asks about daniel's location, but the provided context sentences (4 and 5) only mention john's movements, which do not provide any new information about daniel's location. therefore, we need to refer to the previous context sentences (1 and 2) to find the answer. according to context sentence 2, ""daniel journeyed to the kitchen"", which explicitly states that daniel's destination is the kitchen. this information is still valid, and there is no new information"	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only talk about John's movements, but Daniel's location is not specified.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only talk about John's movements, but Daniel's location is not specified.
+
+Answer: not mentioned"	0.027	0.027	False	False	False	True	0
+23	1	5	3	"*TASK*
+Here are the context sentences:
+7. Daniel journeyed to the bathroom.
+8. John journeyed to the bedroom.
+
+Now, answer the following question:
+Where is John?"	bedroom	"according to context sentence 8, ""john journeyed to the bedroom"", which explicitly states that john's destination is the bedroom. therefore, it can be logically concluded that john is currently in the bedroom."	fully	bedroom	True	The question asks about John's location, and the only information provided is that John journeyed to the bedroom. This implies that John is currently in the bedroom.		"Reasoning: The question asks about John's location, and the only information provided is that John journeyed to the bedroom. This implies that John is currently in the bedroom.
+
+Answer: bedroom"	0.0	0.0256	False	False	False	True	0
+24	1	5	4	"*TASK*
+Here are the context sentences:
+10. Sandra journeyed to the kitchen.
+11. Mary moved to the garden.
+
+Now, answer the following question:
+Where is John?"	bedroom	"the question asks about john's location, but the provided context sentences (10 and 11) do not mention john at all. they only talk about sandra and mary's movements. therefore, we need to refer to the previous context sentences to find the answer. according to context sentence 8, ""john journeyed to the bedroom"", which explicitly states that john's destination is the bedroom. this information is still valid, and there is no new information that would change john's location"	none	not mentioned	False	There is no mention of John in the given context sentences. The sentences only talk about Sandra's and Mary's movements, but John's location is not specified.		"Reasoning: There is no mention of John in the given context sentences. The sentences only talk about Sandra's and Mary's movements, but John's location is not specified.
+
+Answer: not mentioned"	0.075	0.025	False	False	False	True	0
+25	1	5	5	"*TASK*
+Here are the context sentences:
+13. Sandra journeyed to the bathroom.
+14. Sandra went back to the bedroom.
+
+Now, answer the following question:
+Where is Sandra?"	bedroom	"according to context sentence 13, ""sandra journeyed to the bathroom"", which means sandra was in the bathroom. however, context sentence 14, ""sandra went back to the bedroom"", indicates that sandra moved from the bathroom to the bedroom. therefore, it can be logically concluded that sandra is currently in the bedroom."	fully	bedroom	True	The question asks about Sandra's location, and the information provided is that Sandra journeyed to the bathroom and then went back to the bedroom. This implies that Sandra is currently in the bedroom.		"Reasoning: The question asks about Sandra's location, and the information provided is that Sandra journeyed to the bathroom and then went back to the bedroom. This implies that Sandra is currently in the bedroom.
+
+Answer: bedroom"	0.0222	0.0222	False	False	False	True	0

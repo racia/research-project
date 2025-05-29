@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+146	2	15	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the kitchen.
+2. Mary journeyed to the bedroom.
+3. Sandra travelled to the office.
+4. John went to the bedroom.
+5. John journeyed to the office.
+6. Sandra journeyed to the bedroom.
+7. John journeyed to the hallway.
+8. John journeyed to the office.
+9. Mary travelled to the hallway.
+10. Daniel moved to the hallway.
+11. Daniel grabbed the apple there.
+12. Mary journeyed to the bathroom.
+13. Daniel discarded the apple.
+14. Sandra journeyed to the kitchen.
+
+Now, answer the following question:
+Where is the apple?"	hallway	from the context sentences, we can track the movements of each person and the apple. in sentence 11, daniel grabbed the apple in the hallway. there is no sentence indicating that the apple was moved from the hallway after that. although daniel discarded the apple in sentence 13, it doesn't imply that the apple was removed from the hallway. therefore, the apple is still in the hallway.	fully		False	The apple was grabbed by Daniel in the hallway (sentence 11), and then discarded by Daniel (sentence 13). Since the apple was discarded, it is not in any of the locations mentioned in the context sentences. However,		Reasoning: The apple was grabbed by Daniel in the hallway (sentence 11), and then discarded by Daniel (sentence 13). Since the apple was discarded, it is not in any of the locations mentioned in the context sentences. However,	0.0816	0.0408	False	False	False	True	0
+147	2	15	2	"*TASK*
+Here are the context sentences:
+16. Sandra went back to the office.
+17. Mary went back to the kitchen.
+
+Now, answer the following question:
+Where is the apple?"	hallway	the context sentences 16 and 17 do not provide any new information about the apple's location. the last mention of the apple was in sentence 13, where daniel discarded the apple, and it was still in the hallway (as inferred from sentence 11). there is no information that suggests the apple was moved from the hallway. therefore, the apple is still in the hallway.	none	not mentioned	False	There is no mention of the apple in the new context sentences. The previous context sentences mentioned that Daniel discarded the apple, but there is no information about its current location.		"Reasoning: There is no mention of the apple in the new context sentences. The previous context sentences mentioned that Daniel discarded the apple, but there is no information about its current location.
+
+Answer: not mentioned"	0.0238	0.0476	False	False	False	True	0
+148	2	15	3	"*TASK*
+Here are the context sentences:
+19. Daniel took the apple there.
+20. Daniel grabbed the milk there.
+21. Sandra went to the bedroom.
+22. Daniel dropped the milk.
+
+Now, answer the following question:
+Where is the milk?"	hallway	"from sentence 20, we know that daniel grabbed the milk in the hallway (since ""there"" refers to the hallway, which is the location where daniel was last mentioned, in sentence 11, where he grabbed the apple). then, in sentence 22, daniel dropped the milk. there is no information suggesting that daniel moved to a different location before dropping the milk, so it is logical to assume that he dropped the milk in the same location where he grabbed it, which"	partially		False	The milk was grabbed by Daniel in the same location where he took the apple (sentence 19). Since the milk was dropped by Daniel, it is likely that it is still in the same location where it was grabbed.		"Reasoning: The milk was grabbed by Daniel in the same location where he took the apple (sentence 19). Since the milk was dropped by Daniel, it is likely that it is still in the same location where it was grabbed.
+
+Answer:"	0.1224	0.0408	False	False	False	False	0
+149	2	15	4	"*TASK*
+Here are the context sentences:
+24. Sandra moved to the kitchen.
+25. Daniel discarded the apple.
+
+Now, answer the following question:
+Where is the apple?"	hallway	sentence 25 mentions that daniel discarded the apple, but it doesn't change the location of the apple. previously, in sentence 19, daniel took the apple in the hallway, and there is no information suggesting that the apple was moved from the hallway. therefore, the apple is still in the hallway.	partially		False	The apple was discarded by Daniel (sentence 25), but there is no information about its current location. However, the apple was previously mentioned to be discarded, which implies that it is no longer in any of the locations mentioned in		Reasoning: The apple was discarded by Daniel (sentence 25), but there is no information about its current location. However, the apple was previously mentioned to be discarded, which implies that it is no longer in any of the locations mentioned in	0.0408	0.0408	False	False	False	True	0
+150	2	15	5	"*TASK*
+Here are the context sentences:
+27. Daniel grabbed the apple there.
+28. Sandra went back to the hallway.
+
+Now, answer the following question:
+Where is the milk?"	hallway	the question asks about the location of the milk, but the context sentences 27 and 28 do not provide any new information about the milk. we need to refer to the previous context sentences to find the answer. in sentence 22, daniel dropped the milk, and there is no information suggesting that the milk was moved from the hallway. therefore, the milk is still in the hallway.	none	not mentioned	False	There is no mention of the milk in the new context sentences. The previous context sentences mentioned that Daniel dropped the milk, but there is no information about its current location.		"Reasoning: There is no mention of the milk in the new context sentences. The previous context sentences mentioned that Daniel dropped the milk, but there is no information about its current location.
+
+Answer: not mentioned"	0.0238	0.0476	False	False	False	True	0

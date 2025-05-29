@@ -1,0 +1,9 @@
+*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
+23	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġkitchen	.Ċ
+24	.	ĠSandra	Ġpicked	Ġup	Ġthe	Ġapple	Ġthere	.Ċ
+25	.	ĠMary	Ġdiscarded	Ġthe	Ġfootball	.Ċ
+26	.	ĠJohn	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
+27	.	ĠJohn	Ġdiscarded	Ġthe	Ġfootball	Ġthere	.Ċ
+28	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġoffice	.Ċ
+Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
+Where	Ġis	Ġthe	Ġfootball	?Ċ

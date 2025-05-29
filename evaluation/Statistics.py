@@ -99,9 +99,9 @@ class Statistics:
         :param metrics_list2: The other metric list of floats
         :return: The spearman correlation score
         """
-        corr_score, _ = spearmanr(metrics_list1, metrics_list2)
+        corr_score, p_value = spearmanr(metrics_list1, metrics_list2)
         #print("CORR", corr_score, float(corr_score))
-        return float(corr_score)
+        return float(corr_score), float(p_value)
     
 
     def soft_match_accuracy_score(

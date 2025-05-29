@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠMary	Ġgrabbed	Ġthe	Ġapple	Ġin	Ġthe	Ġbedroom	Ġ(	sentence	Ġ	4	),	Ġand	Ġthen	Ġleft	Ġit	Ġsomewhere	.	ĠSince	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	Ġ(	sentence	Ġ	7	),	Ġit	's	Ġlikely	Ġthat	Ġshe	Ġleft	Ġthe	Ġapple	Ġthere	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

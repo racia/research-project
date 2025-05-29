@@ -1,0 +1,52 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+96	2	5	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the bathroom.
+2. Mary picked up the football there.
+3. Mary travelled to the hallway.
+4. Sandra moved to the garden.
+
+Now, answer the following question:
+Where is the football?"	hallway	from context line 2, we know that mary picked up the football in the bathroom, as that is where daniel was before mary picked up the football (context line 1). then, from context line 3, we know that mary travelled to the hallway. since mary had the football when she travelled to the hallway, it can be logically inferred that the football is now in the hallway with mary.	fully		False	The football was picked up in the bathroom, and Mary travelled to the hallway, but there is no information about what Mary did with the football after that. Since Sandra moved to the garden, it's possible that Mary could have gone		Reasoning: The football was picked up in the bathroom, and Mary travelled to the hallway, but there is no information about what Mary did with the football after that. Since Sandra moved to the garden, it's possible that Mary could have gone	0.1837	0.0408	False	False	False	True	0
+97	2	5	2	"*TASK*
+Here are the context sentences:
+6. Daniel journeyed to the kitchen.
+7. Mary travelled to the bedroom.
+
+Now, answer the following question:
+Where is the football?"	bedroom	from the previous context (context lines 1-4), we know that the football was in the hallway with mary (context line 3). now, in the new context (context lines 6-7), we see that mary travelled to the bedroom (context line 7). since mary had the football when she travelled to the bedroom, it can be logically inferred that the football is now in the bedroom with mary.	partially		False	There is no mention of the football in these context sentences, and the previous sentences didn't mention the football's location after it was picked up in the bathroom. Since the football's location is not specified, it's unknown where it		Reasoning: There is no mention of the football in these context sentences, and the previous sentences didn't mention the football's location after it was picked up in the bathroom. Since the football's location is not specified, it's unknown where it	0.1224	0.0408	False	False	False	True	0
+98	2	5	3	"*TASK*
+Here are the context sentences:
+9. Mary got the apple there.
+10. John went back to the bathroom.
+11. Daniel went back to the office.
+12. John moved to the hallway.
+13. John journeyed to the bathroom.
+14. Sandra moved to the bathroom.
+15. Sandra moved to the kitchen.
+16. John travelled to the kitchen.
+17. Mary left the apple.
+18. Mary travelled to the garden.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	from the previous context (context lines 1-8), we know that mary was in the bedroom (context line 7). in the new context (context lines 9-18), we see that mary got the apple in the bedroom (context line 9) and later left the apple (context line 17). since mary left the apple, it can be logically inferred that the apple is still in the bedroom where mary left it.	partially		False	"The apple was mentioned in sentence 9, where Mary got it ""there"", which implies it was in the bathroom. Later, Mary left the apple (sentence 17), and then travelled to the garden (sentence 18)."		"Reasoning: The apple was mentioned in sentence 9, where Mary got it ""there"", which implies it was in the bathroom. Later, Mary left the apple (sentence 17), and then travelled to the garden (sentence 18)."	0.0204	0.0408	False	False	False	True	0
+99	2	5	4	"*TASK*
+Here are the context sentences:
+20. Sandra travelled to the bedroom.
+21. Daniel journeyed to the bedroom.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	from the previous context (context lines 1-19), we know that mary left the apple in the bedroom (context line 17). there is no information about the apple being moved or taken by anyone after mary left it. now, in the new context (context lines 20-21), we see that sandra and daniel travelled to the bedroom, but there is no mention of them taking the apple. therefore, it can be logically inferred that the apple is still	none		False	There is no mention of the apple in these context sentences, and the previous sentences didn't specify what happened to the apple after Mary left it. Since the apple's location is not specified, it's unknown where it is.		"Reasoning: There is no mention of the apple in these context sentences, and the previous sentences didn't specify what happened to the apple after Mary left it. Since the apple's location is not specified, it's unknown where it is.
+
+Answer"	0.1224	0.0408	False	False	False	True	0
+100	2	5	5	"*TASK*
+Here are the context sentences:
+23. Mary went back to the kitchen.
+24. Sandra picked up the apple there.
+25. Mary discarded the football.
+26. John took the football there.
+27. John discarded the football there.
+28. John went to the office.
+
+Now, answer the following question:
+Where is the football?"	kitchen	from the previous context (context lines 1-22), we know that the football was in the bedroom with mary (context line 7). then, in the new context (context lines 23-28), we see that mary discarded the football in the kitchen (context line 25), and john took the football there (context line 26). although john discarded the football again (context line 27), it was still in the kitchen. therefore, it can be logically	partially		False	The football was discarded twice, first by Mary (sentence 25) and then by John (sentence 27). Since it was discarded, it's likely that the football is no longer in a specific location. However, John went		Reasoning: The football was discarded twice, first by Mary (sentence 25) and then by John (sentence 27). Since it was discarded, it's likely that the football is no longer in a specific location. However, John went	0.0408	0.0408	False	False	False	False	0

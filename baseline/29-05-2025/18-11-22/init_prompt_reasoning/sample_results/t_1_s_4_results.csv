@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+16	1	4	1	"*TASK*
+Here are the context sentences:
+1. Daniel moved to the garden.
+2. Mary went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"according to context sentence 1, ""daniel moved to the garden"", which explicitly states daniel's current location as the garden. therefore, the answer to the question ""where is daniel?"" is indeed ""garden""."	fully	garden	True	The question asks about Daniel's location, and the only sentence that mentions Daniel is sentence 1, which states that Daniel moved to the garden. This implies that Daniel is currently in the garden.		"Reasoning: The question asks about Daniel's location, and the only sentence that mentions Daniel is sentence 1, which states that Daniel moved to the garden. This implies that Daniel is currently in the garden.
+
+Answer: garden"	0.1087	0.0217	False	False	False	True	0
+17	1	4	2	"*TASK*
+Here are the context sentences:
+4. Daniel travelled to the kitchen.
+5. Sandra went to the kitchen.
+
+Now, answer the following question:
+Where is Sandra?"	kitchen	"according to context sentence 5, ""sandra went to the kitchen"", which explicitly states sandra's current location as the kitchen. therefore, the answer to the question ""where is sandra?"" is indeed ""kitchen""."	fully	kitchen	True	The question asks about Sandra's location, and the only sentence that mentions Sandra is sentence 5, which states that Sandra went to the kitchen. This implies that Sandra is currently in the kitchen.		"Reasoning: The question asks about Sandra's location, and the only sentence that mentions Sandra is sentence 5, which states that Sandra went to the kitchen. This implies that Sandra is currently in the kitchen.
+
+Answer: kitchen"	0.1087	0.0217	False	False	False	True	0
+18	1	4	3	"*TASK*
+Here are the context sentences:
+7. Daniel journeyed to the garden.
+8. Mary journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Mary?"	kitchen	"according to context sentence 8, ""mary journeyed to the kitchen"", which explicitly states mary's current location as the kitchen. therefore, the answer to the question ""where is mary?"" is indeed ""kitchen""."	fully	kitchen	True	The question asks about Mary's location, and the only sentence that mentions Mary is sentence 8, which states that Mary journeyed to the kitchen. This implies that Mary is currently in the kitchen.		"Reasoning: The question asks about Mary's location, and the only sentence that mentions Mary is sentence 8, which states that Mary journeyed to the kitchen. This implies that Mary is currently in the kitchen.
+
+Answer: kitchen"	0.0213	0.0213	False	False	False	True	0
+19	1	4	4	"*TASK*
+Here are the context sentences:
+10. Mary moved to the hallway.
+11. John went back to the bedroom.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"according to context sentence 10, ""mary moved to the hallway"", which explicitly states mary's current location as the hallway. therefore, the answer to the question ""where is mary?"" is indeed ""hallway""."	fully	hallway	True	The question asks about Mary's location, and the only sentence that mentions Mary is sentence 10, which states that Mary moved to the hallway. This implies that Mary is currently in the hallway.		"Reasoning: The question asks about Mary's location, and the only sentence that mentions Mary is sentence 10, which states that Mary moved to the hallway. This implies that Mary is currently in the hallway.
+
+Answer: hallway"	0.0	0.0217	False	False	False	True	0
+20	1	4	5	"*TASK*
+Here are the context sentences:
+13. John moved to the office.
+14. John travelled to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	hallway	"the question asks about mary's location, but the provided context sentences (13 and 14) only mention john's movements. however, we can infer that mary's location is still in the hallway because there is no information provided about mary's movement after she moved to the hallway (context sentence 10). therefore, the answer to the question ""where is mary?"" is still ""hallway""."	none	not mentioned	False	The question asks about Mary's location, but Mary is not mentioned in either of the given sentences. Therefore, we cannot determine Mary's location based on the provided information.		"Reasoning: The question asks about Mary's location, but Mary is not mentioned in either of the given sentences. Therefore, we cannot determine Mary's location based on the provided information.
+
+Answer: not mentioned"	0.0	0.0238	False	False	False	True	0

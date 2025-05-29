@@ -825,7 +825,9 @@ class Task:
         initial = {"task_id": self.task_id}
         for evaluator in self.evaluators:
             evaluator.calculate_std()
-            evaluator.calculate_correlation(evaluator.exact_match_accuracy.all, evaluator.max_supp_attn.all, evaluator.attn_on_target.all)
+            print("Calculating metrics on level:", evaluator.level, evaluator.version)
+            evaluator.calculate_correlation("exact_match_accuracy", "max_supp_attn")
+            evaluator.calculate_correlation("exact_match_accuracy", "attn_on_target")
             self.metrics.append({**initial, **evaluator.get_metrics()})
             
 

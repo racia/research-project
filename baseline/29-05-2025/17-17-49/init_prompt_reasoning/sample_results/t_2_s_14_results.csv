@@ -1,0 +1,44 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+141	2	14	1	"*TASK*
+Here are the context sentences:
+1. Mary grabbed the apple there.
+2. Mary grabbed the football there.
+3. Mary went back to the hallway.
+4. Sandra went back to the office.
+
+Now, answer the following question:
+Where is the apple?"	hallway	"from context line 1, we know that mary grabbed the apple ""there"", which implies that the apple is in the same location as mary. in context line 3, mary goes back to the hallway, which means she moves to the hallway. since mary had the apple, it is logical to assume that the apple is also in the hallway with mary. therefore, the apple is in the hallway."	fully		False	Since Mary grabbed the apple in sentence 1, and there is no mention of her putting it down or moving it, it is likely that the apple is still in the same location where Mary grabbed it. Sentence 3 mentions Mary		Reasoning: Since Mary grabbed the apple in sentence 1, and there is no mention of her putting it down or moving it, it is likely that the apple is still in the same location where Mary grabbed it. Sentence 3 mentions Mary	0.2041	0.0408	False	False	False	True	0
+142	2	14	2	"*TASK*
+Here are the context sentences:
+6. Sandra travelled to the kitchen.
+7. Mary dropped the football there.
+
+Now, answer the following question:
+Where is the football?"	hallway	"from context line 2, we know that mary grabbed the football ""there"", which implies that the football is in the same location as mary. in context line 3, mary went back to the hallway, which means she moves to the hallway. since mary had the football, it is logical to assume that the football is also in the hallway with mary. in context line 7, mary drops the football ""there"", which refers to the same location as mary, which is the"	partially	kitchen	False	According to sentence 7, Mary dropped the football in the kitchen, which means the football is currently in the kitchen.		"Reasoning: According to sentence 7, Mary dropped the football in the kitchen, which means the football is currently in the kitchen.
+Answer: kitchen"	0.129	0.0645	False	False	False	False	0
+143	2	14	3	"*TASK*
+Here are the context sentences:
+9. Mary left the apple there.
+10. Mary moved to the kitchen.
+
+Now, answer the following question:
+Where is the apple?"	hallway	"from context line 3, we know that mary went back to the hallway. in context line 1, mary grabbed the apple ""there"", which implies that the apple is in the same location as mary. since mary went back to the hallway, it is logical to assume that the apple is also in the hallway with mary. in context line 9, mary left the apple ""there"", which refers to the same location as mary, which is the hallway. therefore, the apple"	partially		False	Sentence 9 states that Mary left the apple in a location, but it doesn't specify where. However, sentence 10 mentions Mary moving to the kitchen, which implies that the apple is likely still in the same location where Mary		Reasoning: Sentence 9 states that Mary left the apple in a location, but it doesn't specify where. However, sentence 10 mentions Mary moving to the kitchen, which implies that the apple is likely still in the same location where Mary	0.102	0.0408	False	False	False	True	0
+144	2	14	4	"*TASK*
+Here are the context sentences:
+12. Mary went to the bedroom.
+13. Mary got the milk there.
+
+Now, answer the following question:
+Where is the apple?"	hallway	"the question asks about the location of the apple, but the provided context lines (12 and 13) do not mention the apple. however, we can refer to the previous context lines to find the answer. from context line 3, we know that mary went back to the hallway. in context line 1, mary grabbed the apple ""there"", which implies that the apple is in the same location as mary. since mary went back to the hallway, it is logical to assume"	none		False	There is no mention of the apple in these sentences, and the previous sentences didn't mention the apple being moved or placed in a new location. Therefore, it's likely that the apple is still in the same location where it was		Reasoning: There is no mention of the apple in these sentences, and the previous sentences didn't mention the apple being moved or placed in a new location. Therefore, it's likely that the apple is still in the same location where it was	0.0612	0.0408	False	False	False	True	0
+145	2	14	5	"*TASK*
+Here are the context sentences:
+15. John journeyed to the hallway.
+16. John picked up the football there.
+17. Daniel went to the bathroom.
+18. John grabbed the apple there.
+19. Mary travelled to the garden.
+20. John moved to the bathroom.
+
+Now, answer the following question:
+Where is the apple?"	bathroom	"from context line 18, we know that john grabbed the apple ""there"", which implies that the apple is in the same location as john. at that point, john was in the hallway (context line 15). however, in context line 20, john moves to the bathroom. since john had the apple, it is logical to assume that the apple is also in the bathroom with john. therefore, the apple is in the bathroom."	fully	bathroom	True	Sentence 18 states that John grabbed the apple in the bathroom, and there is no mention of him putting it down or moving it. Therefore, it's likely that the apple is still in the bathroom.		"Reasoning: Sentence 18 states that John grabbed the apple in the bathroom, and there is no mention of him putting it down or moving it. Therefore, it's likely that the apple is still in the bathroom.
+Answer: bathroom"	0.0208	0.0417	False	False	False	True	0

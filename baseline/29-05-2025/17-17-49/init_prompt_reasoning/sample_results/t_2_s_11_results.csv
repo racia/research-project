@@ -1,0 +1,56 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+126	2	11	1	"*TASK*
+Here are the context sentences:
+1. John moved to the bathroom.
+2. Daniel journeyed to the bathroom.
+3. Daniel went back to the bedroom.
+4. John travelled to the bedroom.
+5. Daniel moved to the bathroom.
+6. Daniel travelled to the office.
+7. Daniel got the milk there.
+8. Mary went back to the bedroom.
+9. John went back to the hallway.
+10. Daniel dropped the milk there.
+
+Now, answer the following question:
+Where is the milk?"	office	from the context sentences, we can track daniel's movements and actions. in sentence 6, daniel travelled to the office, and in sentence 7, daniel got the milk there. this implies that daniel obtained the milk in the office. then, in sentence 10, daniel dropped the milk there, which means daniel dropped the milk in the office, where he previously got it. therefore, the milk is in the office.	fully		False	The milk was obtained by Daniel in the office (sentence 7). After that, Daniel dropped the milk in the hallway (sentence 10). Since John went back to the hallway (sentence 9), it is likely that John		Reasoning: The milk was obtained by Daniel in the office (sentence 7). After that, Daniel dropped the milk in the hallway (sentence 10). Since John went back to the hallway (sentence 9), it is likely that John	0.2041	0.0408	False	False	False	False	0
+127	2	11	2	"*TASK*
+Here are the context sentences:
+12. Mary travelled to the bathroom.
+13. Daniel went back to the kitchen.
+
+Now, answer the following question:
+Where is the milk?"	office	the context sentences provided (12 and 13) do not mention the milk at all. however, we can look back at the previous context sentences (1-10) to find the relevant information. from sentence 7, we know that daniel got the milk in the office, and in sentence 10, daniel dropped the milk there. therefore, the milk is still in the office, as there is no information suggesting it has been moved since then.	none	not mentioned	False	There is no mention of the milk in these context sentences. The previous conversation did not mention the milk's location after it was dropped in the hallway. Therefore, we cannot determine the current location of the milk.		"Reasoning: There is no mention of the milk in these context sentences. The previous conversation did not mention the milk's location after it was dropped in the hallway. Therefore, we cannot determine the current location of the milk.
+
+Answer: not mentioned"	0.0408	0.0408	False	False	False	True	0
+128	2	11	3	"*TASK*
+Here are the context sentences:
+15. John picked up the football there.
+16. Sandra went back to the hallway.
+
+Now, answer the following question:
+Where is the milk?"	office	the context sentences provided (15 and 16) do not mention the milk at all. however, we can look back at the previous context sentences (1-14) to find the relevant information. from sentence 7, we know that daniel got the milk in the office, and in sentence 10, daniel dropped the milk there. there is no information suggesting the milk has been moved since then, so it is still in the office.	none	not mentioned	False	There is no mention of the milk in these context sentences. The previous conversation did not mention the milk's location after it was dropped in the hallway. Therefore, we cannot determine the current location of the milk.		"Reasoning: There is no mention of the milk in these context sentences. The previous conversation did not mention the milk's location after it was dropped in the hallway. Therefore, we cannot determine the current location of the milk.
+
+Answer: not mentioned"	0.0204	0.0408	False	False	False	True	0
+129	2	11	4	"*TASK*
+Here are the context sentences:
+18. Daniel went to the garden.
+19. Mary went to the garden.
+20. Sandra journeyed to the bathroom.
+21. John left the football.
+
+Now, answer the following question:
+Where is the football?"	hallway	"from sentence 15, we know that john picked up the football there, but the location ""there"" is not specified. however, we can look back at the previous context sentences (1-14) to find the relevant information. in sentence 9, john went back to the hallway. since john picked up the football ""there"" and we don't have any information about john moving to a different location after that, it is logical to assume that ""there"" refers to"	partially	not mentioned	False	There is no mention of the football's location in these context sentences. The previous conversation mentioned that John picked up the football, but its current location is unknown.		"Reasoning: There is no mention of the football's location in these context sentences. The previous conversation mentioned that John picked up the football, but its current location is unknown.
+
+Answer: not mentioned"	0.1	0.05	False	False	False	True	0
+130	2	11	5	"*TASK*
+Here are the context sentences:
+23. Mary travelled to the bathroom.
+24. John got the football there.
+25. Mary journeyed to the office.
+26. Sandra got the apple there.
+27. John dropped the football.
+28. Daniel moved to the hallway.
+
+Now, answer the following question:
+Where is the football?"	hallway	"from sentence 24, we know that john got the football ""there"", but the location ""there"" is not specified. however, in sentence 27, john dropped the football, and we can infer that john dropped the football in the same location where he got it. since john went back to the hallway in sentence 9, and we don't have any information about john moving to a different location after getting the football, it is logical to assume that ""there"" refers"	partially		False	The football was picked up by John in the bathroom (sentence 24) and then dropped by John. Since John dropped the football, it is likely that the football is in the same location where it was dropped, which is not		Reasoning: The football was picked up by John in the bathroom (sentence 24) and then dropped by John. Since John dropped the football, it is likely that the football is in the same location where it was dropped, which is not	0.0	0.0408	False	False	False	False	0

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import statistics
+from typing import Tuple
 
 import evaluate
 
@@ -48,7 +49,7 @@ class Metric:
         type_ = type(metric)
         if type_ is Metric or issubclass(type_, Metric):
             self.all.append(metric.get_mean())
-        elif type_ is float:
+        elif type_ is float or type_ is tuple:
             self.all.append(metric)
         elif type_ is list:
             self.all.extend(metric)
@@ -108,9 +109,9 @@ class Correlation(Metric):
     :param var: the variable name
     :param correlations: the list of correlation values
     """
-    def __init__(self, name, var: str, correlations: list[float] = None):
+    def __init__(self, name, var: str, correlations: list[float] = None , p_values: list[float] = None):
         super().__init__(name, var, correlations)
-        self.pvalue: float = None
+        self.p_values: list[float] = p_values if p_values else []
 
 
 class AttnOnTarget(Metric):

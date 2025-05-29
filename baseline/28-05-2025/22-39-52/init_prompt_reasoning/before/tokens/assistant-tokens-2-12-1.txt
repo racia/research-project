@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġis	Ġlast	Ġmentioned	Ġto	Ġbe	Ġgrabbed	Ġby	ĠJohn	Ġin	Ġthe	Ġhallway	Ġ(	sentence	Ġ	7	).	ĠSince	ĠJohn	Ġtravels	Ġto	Ġthe	Ġoffice	Ġ(	sentence	Ġ	8	),	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġfootball	Ġis	Ġstill	Ġwith	ĠJohn	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice

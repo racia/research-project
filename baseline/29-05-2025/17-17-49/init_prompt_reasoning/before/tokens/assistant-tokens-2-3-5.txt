@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	17	Ġstates	Ġthat	ĠJohn	Ġpicked	Ġup	Ġthe	Ġmilk	Ġ"	there	",	Ġand	Ġcontext	Ġsentence	Ġ	18	Ġstates	Ġthat	ĠJohn	Ġdropped	Ġthe	Ġmilk	.	ĠSince	ĠJohn	Ġtravelled	Ġto	Ġthe	Ġgarden	Ġin	Ġcontext	Ġsentence	Ġ	15	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġ"	there

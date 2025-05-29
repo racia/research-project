@@ -191,8 +191,8 @@ def run(
                 sample.print_sample_predictions()
                 print_metrics(sample)
 
-        task.set_results()
         task.calculate_metrics()
+        task.set_results()
         # TODO: save metrics series in separate files for each task
 
         if verbose:
@@ -294,7 +294,7 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
-    # python3.12 evaluate_data.py --results_path results/test-feedback-run/test/reasoning/08-05-2025/22-02-41/init_prompt_reasoning/test_init_prompt_reasoning_results.csv --save_path results/test-feedback-run/test/reasoning/08-05-2025/22-02-41/init_prompt_reasoning --samples_per_task 100 --create_heatmaps --verbose
+    # python3.12 evaluate_data.py --results_path baseline/28-05-2025/22-39-52/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv --save_path results/here --samples_per_task 15 --create_heatmaps --verbose
     run(
         results_path=args.results_path,
         save_path=args.save_path,

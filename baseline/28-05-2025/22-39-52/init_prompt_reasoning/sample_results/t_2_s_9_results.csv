@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+116	2	9	1	"*TASK*
+Here are the context sentences:
+1. Daniel grabbed the football there.
+2. Sandra moved to the office.
+3. Sandra went to the garden.
+4. Sandra moved to the bathroom.
+5. Mary grabbed the milk there.
+6. John went to the kitchen.
+7. Mary went to the bathroom.
+8. Sandra went to the bedroom.
+
+Now, answer the following question:
+Where is the milk?"	bathroom	from sentence 5, we know that mary grabbed the milk in a certain location, which is not specified. however, in sentence 7, we know that mary went to the bathroom. since mary already had the milk (from sentence 5), it is logical to assume that she took the milk with her to the bathroom. therefore, the milk is in the bathroom.	fully		False	"The context sentences mention Mary grabbing the milk, but they don't specify where she grabbed it. However, sentence 5 mentions ""there"", which implies that Mary grabbed the milk somewhere. Since Mary went to the bathroom in sentence"		"Reasoning: The context sentences mention Mary grabbing the milk, but they don't specify where she grabbed it. However, sentence 5 mentions ""there"", which implies that Mary grabbed the milk somewhere. Since Mary went to the bathroom in sentence"	0.102	0.0408	False	False	False	True	0
+117	2	9	2	"*TASK*
+Here are the context sentences:
+10. John went to the hallway.
+11. Daniel went to the garden.
+12. Daniel discarded the football.
+13. John moved to the garden.
+
+Now, answer the following question:
+Where is the football?"	garden	from sentence 12, we know that daniel discarded the football. since daniel was in the garden at that time (sentence 11), it is logical to assume that he discarded the football in the garden. therefore, the football is in the garden.	fully		False	The context sentences mention that Daniel discarded the football, but they don't specify where he discarded it. However, sentence 11 mentions that Daniel went to the garden, and sentence 13 mentions that John moved to the garden, which		Reasoning: The context sentences mention that Daniel discarded the football, but they don't specify where he discarded it. However, sentence 11 mentions that Daniel went to the garden, and sentence 13 mentions that John moved to the garden, which	0.0204	0.0408	False	False	False	True	0
+118	2	9	3	"*TASK*
+Here are the context sentences:
+15. Mary put down the milk.
+16. Mary went back to the bedroom.
+
+Now, answer the following question:
+Where is the milk?"	bathroom	from the previous conversation, we know that mary had the milk and went to the bathroom (sentence 7). there is no information about mary taking the milk back to the bedroom or any other location. in sentence 15, mary put down the milk, which implies that she put it down in the location where she was, which is the bathroom. therefore, the milk is still in the bathroom.	partially		False	The context sentences mention Mary putting down the milk, but they don't specify where she put it down. However, sentence 15 mentions Mary putting down the milk, and sentence 16 mentions Mary going back to the bedroom, which		Reasoning: The context sentences mention Mary putting down the milk, but they don't specify where she put it down. However, sentence 15 mentions Mary putting down the milk, and sentence 16 mentions Mary going back to the bedroom, which	0.1429	0.0408	False	False	False	True	0
+119	2	9	4	"*TASK*
+Here are the context sentences:
+18. John journeyed to the hallway.
+19. Daniel journeyed to the bedroom.
+
+Now, answer the following question:
+Where is the milk?"	bathroom	this question refers to a previous part of the conversation history. from the previous conversation, we know that mary had the milk and went to the bathroom (sentence 7). there is no information about the milk being moved or taken by anyone else. the current context sentences (18 and 19) do not provide any new information about the milk's location. therefore, we can conclude that the milk is still in the bathroom, where mary left it.	none	Not mentioned	False	There is no mention of the milk in the given context sentences. The sentences only mention John and Daniel journeying to different locations, but they don't provide any information about the milk.		"Reasoning: There is no mention of the milk in the given context sentences. The sentences only mention John and Daniel journeying to different locations, but they don't provide any information about the milk.
+
+Answer: Not mentioned"	0.0	0.0444	False	False	False	True	0
+120	2	9	5	"*TASK*
+Here are the context sentences:
+21. Daniel got the apple there.
+22. John went to the bathroom.
+23. Sandra travelled to the bathroom.
+24. Daniel discarded the apple.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	from sentence 21, we know that daniel got the apple in a certain location, which is not specified. however, in sentence 24, we know that daniel discarded the apple. since daniel was in the bedroom at some point (sentence 8), and there is no information about daniel taking the apple to any other location, it is logical to assume that daniel discarded the apple in the bedroom. therefore, the apple is in the bedroom.	partially		False	The context sentences mention Daniel getting the apple, but they don't specify where he got it. However, sentence 24 mentions Daniel discarding the apple, and since Daniel discarded the apple, it's likely that the apple is no		Reasoning: The context sentences mention Daniel getting the apple, but they don't specify where he got it. However, sentence 24 mentions Daniel discarding the apple, and since Daniel discarded the apple, it's likely that the apple is no	0.0	0.0408	False	False	False	True	0

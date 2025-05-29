@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠJohn	's	Ġmovement	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	Ġhis	Ġcurrent	Ġlocation	Ġafter	Ġthat	.	ĠTherefore	,	Ġit	Ġis	Ġlikely	Ġthat	ĠJohn	Ġis	Ġstill	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

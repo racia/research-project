@@ -1,0 +1,41 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+71	1	15	1	"*TASK*
+Here are the context sentences:
+1. Daniel went to the bedroom.
+2. Mary travelled to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"according to context sentence 1, ""daniel went to the bedroom"", which explicitly states daniel's location as the bedroom. therefore, the answer to the question ""where is daniel?"" is indeed the bedroom."	fully	bedroom	True	According to sentence 1, Daniel went to the bedroom, which implies that he is currently in the bedroom.		"Reasoning: According to sentence 1, Daniel went to the bedroom, which implies that he is currently in the bedroom.
+Answer: bedroom"	0.069	0.0345	False	False	False	False	0
+72	1	15	2	"*TASK*
+Here are the context sentences:
+4. John went back to the kitchen.
+5. John travelled to the hallway.
+
+Now, answer the following question:
+Where is Daniel?"	bedroom	"the question asks about daniel's location, but the provided context sentences (4 and 5) only mention john's movements. there is no new information about daniel's location. to answer the question, we need to refer to the previous parts of the conversation history. in the previous context sentences (1 and 2), we learned that ""daniel went to the bedroom"" (sentence 1). this information is still valid, and there is no indication that daniel has moved. therefore,"	none	not mentioned	False	There is no mention of Daniel in the given context sentences, so we cannot determine his location.		"Reasoning: There is no mention of Daniel in the given context sentences, so we cannot determine his location.
+Answer: not mentioned"	0.1481	0.037	False	False	False	True	0
+73	1	15	3	"*TASK*
+Here are the context sentences:
+7. Mary travelled to the hallway.
+8. John travelled to the garden.
+
+Now, answer the following question:
+Where is John?"	garden	"according to context sentence 8, ""john travelled to the garden"", which explicitly states john's location as the garden. therefore, the answer to the question ""where is john?"" is indeed the garden."	fully	garden	True	According to sentence 8, John travelled to the garden, which implies that he is currently in the garden.		"Reasoning: According to sentence 8, John travelled to the garden, which implies that he is currently in the garden.
+Answer: garden"	0.0	0.0345	False	False	False	False	0
+74	1	15	4	"*TASK*
+Here are the context sentences:
+10. Sandra went to the office.
+11. Mary moved to the bathroom.
+
+Now, answer the following question:
+Where is Mary?"	bathroom	"according to context sentence 11, ""mary moved to the bathroom"", which explicitly states mary's location as the bathroom. therefore, the answer to the question ""where is mary?"" is indeed the bathroom."	fully	bathroom	True	According to sentence 11, Mary moved to the bathroom, which implies that she is currently in the bathroom.		"Reasoning: According to sentence 11, Mary moved to the bathroom, which implies that she is currently in the bathroom.
+Answer: bathroom"	0.069	0.0345	False	False	False	False	0
+75	1	15	5	"*TASK*
+Here are the context sentences:
+13. Mary journeyed to the garden.
+14. John went to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	"according to context sentence 14, ""john went to the hallway"", which explicitly states john's location as the hallway. therefore, the answer to the question ""where is john?"" is indeed the hallway."	fully	hallway	True	According to sentence 14, John went to the hallway, which implies that he is currently in the hallway.		"Reasoning: According to sentence 14, John went to the hallway, which implies that he is currently in the hallway.
+Answer: hallway"	0.0	0.0345	False	False	False	False	0

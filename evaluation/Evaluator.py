@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Union
 
 from evaluation.Metrics import Accuracy, Correlation, BLEU, Meteor, Metric, ROUGE
 from evaluation.Metrics import AttnDistribution, AttnOnTarget
@@ -39,14 +40,6 @@ class Evaluator:
             "soft_match_std",
         )
 
-        self.max_supp_attn_corr: Correlation = Correlation(
-            f"Correlation of Accuracy with Max Attn Distribution {self.version.capitalize()}", "max_supp_attn_corr"
-        )
-
-        self.attn_on_target_corr: Correlation = Correlation(
-            f"Correlation of Accuracy with Attn on Target Distribution {self.version.capitalize()}", "attn_on_target_corr"
-        )
-
         self.max_supp_attn: AttnDistribution = AttnDistribution(
             f"Max Attention Distribution {self.version.capitalize()}", "max_supp_attn"
         )
@@ -61,6 +54,14 @@ class Evaluator:
         self.attn_on_target_std: Metric = Metric(
             f"Standard Deviation for Attention on Target Tokens {self.version.capitalize()}",
             "attn_on_target_std",
+        )
+
+        self.max_supp_attn_corr: Correlation = Correlation(
+            f"Correlation of Accuracy with Max Attn Distribution {self.version.capitalize()}", "max_supp_attn_corr"
+        )
+
+        self.attn_on_target_corr: Correlation = Correlation(
+            f"Correlation of Accuracy with Attn on Target Distribution {self.version.capitalize()}", "attn_on_target_corr"
         )
 
         self.bleu = BLEU(f"BLEU {self.version.capitalize()}", "bleu")
@@ -195,8 +196,8 @@ class MetricEvaluator(Evaluator):
             f"rouge_std_{self.version}": self.rouge.get_std(),
             f"meteor_{self.version}": self.meteor.get_mean(),
             f"meteor_std_{self.version}": self.meteor.get_std(),
-            f"max_supp_attn_corr_pval{self.version}": self.max_supp_attn_corr.get_pvalue(),
-            f"attn_on_target_corr_pval{self.version}": self.attn_on_target_corr.get_pvalue(),
+            f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr.get_mean(),
+            f"attn_on_target_corr_{self.version}": self.attn_on_target_corr.get_mean(),
         }
 
     def get_accuracies(self, as_lists: bool = False) -> dict[str, float | Metric]:
@@ -266,33 +267,31 @@ class MetricEvaluator(Evaluator):
         }
 
 
-    def calculate_correlation(self, exact_match_accuracy: list[tuple] = None, 
-                              max_supp_attn: list[tuple] = None, 
-                              attn_on_target: list[tuple] = None,
-                              soft_match_accuracy: list[tuple] = None, ) -> tuple[float, ...]:
+    def calculate_correlation(self, metric_scores1: Union[list[tuple], str] = None, 
+                              metric_scores2: Union[list[tuple], str] = None,
+                            ) -> tuple[float, ...]:
         """
-        Calculate the correlation score between sample accuracies and attention scores on the task level
-        :param exact_match_accuracy: The list of exact-match accuracy scores
-        :param max_supp_attn: The list of max supporting attention scores
-        :param attn_on_target: The list of attention on target scores
-        :param soft_match_accuracy: The list of soft-match accuracy scores
+        Calculate the correlation score between two lists of metrics scores on task level, e.g. sample accuracies and attention scores
+        :param metrics_scores1: One list of metric scores, e.g. exact_match_accuracy or soft_match_accuracy scores
+        :param metrics_scores2: One list of metric scores, e.g. max_supp_attn or attn_on_target scores
+        [!] Note that the correlation_score gets assigned the metrics_scores2 variable name  
         :return: The correlation score
         """
-        if not exact_match_accuracy and not soft_match_accuracy:
-            raise ValueError(f"No accuracy scores available for level {self.level}.")
-        if not max_supp_attn or not attn_on_target:
-            raise ValueError(f"No attention scores available for level {self.level}.")
-        
-        accuracies = exact_match_accuracy if not soft_match_accuracy else soft_match_accuracy
-        max_supp_attn_corr = self.stats.corr_score(
-            accuracies, max_supp_attn
+        evaluator_metric_scores = getattr(self, metric_scores1) if isinstance(metric_scores1, str) else metric_scores1
+        evaluator_metric_scores2 = getattr(self, metric_scores2) if isinstance(metric_scores2, str) else metric_scores2
+        #print("Calculating accuracy for metrics: ", evaluator_metric_scores, evaluator_metric_scores2)
+        #assert isinstance(evaluator_metric_scores.all, list) and isinstance(evaluator_metric_scores2.all, list)
+        corr_score, p_value = self.stats.corr_score(
+            evaluator_metric_scores.all, evaluator_metric_scores2.all
         )
-        attn_on_target_corr = self.stats.corr_score(
-            accuracies, attn_on_target
-        )
-        self.max_supp_attn_corr.add(max_supp_attn_corr)
-        self.attn_on_target_corr.add(attn_on_target_corr)
-        return max_supp_attn_corr, attn_on_target_corr
+        setattr(self, f"{metric_scores2}_corr", Correlation(
+            f"Correlation of {metric_scores1} with {metric_scores2} {self.version.capitalize()}",
+            f"{metric_scores1}_corr", correlations=[corr_score], p_values=[p_value]
+        ))
+        #getattr(self, f"{metric_scores2}_corr").add((corr_score, p_value))
+        print("Resulting data", getattr(self, f"{metric_scores2}_corr").all)
+        #print(f"Correlation score {corr_score} for: ", self.attn_on_, p_values=[p_value]target_corr, self.max_supp_attn_corr)
+        return corr_score, p_value
 
     def get_correlations(self, as_lists: bool = False) -> dict[str, float | Metric]:
         """
@@ -304,6 +303,7 @@ class MetricEvaluator(Evaluator):
             return {
                 f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr,
                 f"attn_on_target_corr_{self.version}": self.attn_on_target_corr,
+                f"attn_on_target_std_{self.version}": self.attn_on_target_corr.get_std(),
             }
         return {
             f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr.get_mean(),

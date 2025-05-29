@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġsuggest	Ġthat	ĠJohn	Ġgrabbed	Ġthe	Ġfootball	Ġin	Ġthe	Ġhallway	Ġ(	sentence	Ġ	7	).	ĠSince	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġmoving	Ġor	Ġputting	Ġthe	Ġfootball	Ġanywhere	Ġelse	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġfootball	Ġis	Ġstill	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:

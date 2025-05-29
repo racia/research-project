@@ -1,0 +1,60 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+41	2	4	1	"*TASK*
+Here are the context sentences:
+1. Mary went back to the bathroom.
+2. John travelled to the office.
+3. Mary moved to the bedroom.
+4. Daniel travelled to the bathroom.
+5. Daniel went to the hallway.
+6. Mary got the milk there.
+7. John went to the garden.
+8. John travelled to the bedroom.
+9. Mary left the milk.
+10. John went back to the garden.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	"from the context sentences, we can track mary's movements and actions. in sentence 3, mary moved to the bedroom. in sentence 6, mary got the milk there, implying that ""there"" refers to the bedroom. then, in sentence 9, mary left the milk, which means the milk was left in the bedroom. there is no subsequent action or movement of the milk, so it remains in the bedroom. therefore, the milk is in the bedroom."	fully		False	The milk was obtained by Mary in the hallway (sentence 6), and then Mary left the milk (sentence 9). Since Mary left the milk, it is likely that the milk is no longer in the hallway. However,		Reasoning: The milk was obtained by Mary in the hallway (sentence 6), and then Mary left the milk (sentence 9). Since Mary left the milk, it is likely that the milk is no longer in the hallway. However,	0.0	0.0408	False	False	False	False	0
+42	2	4	2	"*TASK*
+Here are the context sentences:
+12. Daniel travelled to the bathroom.
+13. Sandra grabbed the milk there.
+14. Sandra left the milk.
+15. John travelled to the kitchen.
+16. Daniel got the apple there.
+17. Mary got the milk there.
+18. Mary went to the office.
+19. Daniel moved to the bedroom.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	"from the context sentences, we can track daniel's movements and actions. in sentence 12, daniel travelled to the bathroom. in sentence 16, daniel got the apple there, implying that ""there"" refers to the bathroom. however, there is no subsequent action or movement of the apple, but we need to consider daniel's further movements. in sentence 19, daniel moved to the bedroom. since daniel got the apple in the bathroom and then moved to the bedroom, it"	fully	kitchen	False	The apple was obtained by Daniel in the kitchen (sentence 16). Since there is no mention of Daniel leaving the kitchen or the apple being moved, it is likely that the apple is still in the kitchen.		"Reasoning: The apple was obtained by Daniel in the kitchen (sentence 16). Since there is no mention of Daniel leaving the kitchen or the apple being moved, it is likely that the apple is still in the kitchen.
+
+Answer: kitchen"	0.0612	0.0408	False	False	False	True	0
+43	2	4	3	"*TASK*
+Here are the context sentences:
+21. John went to the bathroom.
+22. Daniel dropped the apple.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	there is not enough information in the provided context sentences to conclude that the apple is in the bedroom. sentence 22 states that daniel dropped the apple, but it does not specify where he dropped it. the previous sentences do not provide any connection between daniel and the bedroom. therefore, it is not possible to logically conclude that the apple is in the bedroom based on the provided information.	partially	bathroom	False	There is no mention of the apple being picked up or moved after it was dropped. Therefore, it is likely that the apple is still in the same location where it was dropped, which is the bathroom.		"Reasoning: There is no mention of the apple being picked up or moved after it was dropped. Therefore, it is likely that the apple is still in the same location where it was dropped, which is the bathroom.
+
+Answer: bathroom"	0.0625	0.0417	False	False	False	True	0
+44	2	4	4	"*TASK*
+Here are the context sentences:
+24. Daniel picked up the apple there.
+25. Mary went back to the garden.
+26. Daniel moved to the kitchen.
+27. Sandra journeyed to the bathroom.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	from the context sentences, we can track daniel's movements and actions. in sentence 24, daniel picked up the apple there, implying that daniel had access to the apple at that location. then, in sentence 26, daniel moved to the kitchen. since daniel had the apple and moved to the kitchen, it is logical to conclude that the apple was taken to the kitchen with daniel. there is no subsequent action or movement of the apple, so	fully	kitchen	True	The apple was picked up by Daniel in the kitchen (sentence 24). Since there is no mention of Daniel leaving the kitchen or the apple being moved, it is likely that the apple is still in the kitchen.		"Reasoning: The apple was picked up by Daniel in the kitchen (sentence 24). Since there is no mention of Daniel leaving the kitchen or the apple being moved, it is likely that the apple is still in the kitchen.
+
+Answer: kitchen"	0.0204	0.0408	False	False	False	True	0
+45	2	4	5	"*TASK*
+Here are the context sentences:
+29. Mary got the football there.
+30. Daniel dropped the apple.
+
+Now, answer the following question:
+Where is the apple?"	kitchen	"there is no connection between the provided context sentences and the answer ""kitchen"". sentence 29 mentions mary getting the football, but it does not provide any information about the apple. sentence 30 states that daniel dropped the apple, but it does not specify where he dropped it. there is no previous context or information that would logically lead to the conclusion that the apple is in the kitchen."	partially	not mentioned	False	The context sentences do not mention the apple being picked up or moved after it was dropped. Therefore, it is likely that the apple is still in the same location where it was dropped, which is not specified.		"Reasoning: The context sentences do not mention the apple being picked up or moved after it was dropped. Therefore, it is likely that the apple is still in the same location where it was dropped, which is not specified.
+
+Answer: not mentioned"	0.0	0.0408	False	False	False	True	0

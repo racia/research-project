@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	's	Ġaction	Ġof	Ġmoving	Ġto	Ġthe	Ġoffice	,	Ġwhich	Ġimplies	Ġthat	Ġhe	Ġis	Ġcurrently	Ġin	Ġthe	Ġoffice	.ĊĊ	Answer	:	Ġoffice	<|eot_id|>

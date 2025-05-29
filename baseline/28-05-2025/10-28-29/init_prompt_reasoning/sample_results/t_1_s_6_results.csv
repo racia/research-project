@@ -1,0 +1,46 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+26	1	6	1	"*TASK*
+Here are the context sentences:
+1. Daniel travelled to the kitchen.
+2. Daniel journeyed to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	the context sentences provide a sequence of actions performed by daniel. in sentence 1, daniel travelled to the kitchen, which means he was in the kitchen at some point. however, sentence 2 states that daniel journeyed to the garden, which implies that he left the kitchen and moved to the garden. since there is no further information about daniel's movements, it can be logically concluded that daniel is currently in the garden.	fully	garden	True	Since Daniel travelled to the kitchen and then journeyed to the garden, it is likely that he is currently in the garden.		"Reasoning: Since Daniel travelled to the kitchen and then journeyed to the garden, it is likely that he is currently in the garden.
+
+Answer: garden"	0.1562	0.0312	False	False	False	False	0
+27	1	6	2	"*TASK*
+Here are the context sentences:
+4. John journeyed to the office.
+5. John travelled to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	garden	"the context sentences only mention john's movements, but the question asks about daniel's location. since there is no information about daniel's movements or location, it is not possible to logically conclude that daniel is in the garden. the answer ""garden"" seems to be incorrect, as the context only talks about john's movements, not daniel's."	none	not mentioned	False	There is no mention of Daniel in the given context sentences. The sentences only mention John's movements, but do not provide any information about Daniel's location.		"Reasoning: There is no mention of Daniel in the given context sentences. The sentences only mention John's movements, but do not provide any information about Daniel's location.
+
+Answer: not mentioned"	0.0513	0.0256	False	False	False	True	0
+28	1	6	3	"*TASK*
+Here are the context sentences:
+7. Daniel moved to the office.
+8. John went to the hallway.
+
+Now, answer the following question:
+Where is John?"	hallway	the context sentences provide information about the movements of two individuals, daniel and john. sentence 7 states that daniel moved to the office, but this information is not relevant to the question about john's location. sentence 8 explicitly states that john went to the hallway, which directly answers the question about john's location. therefore, it can be logically concluded that john is in the hallway.	fully	hallway	True	The context sentences do not mention John's location after he went to the hallway. There is no additional information about his movement or current location.		"Reasoning: The context sentences do not mention John's location after he went to the hallway. There is no additional information about his movement or current location.
+
+Answer: hallway"	0.0286	0.0286	False	False	False	True	0
+29	1	6	4	"*TASK*
+Here are the context sentences:
+10. John moved to the office.
+11. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+Where is John?"	office	the context sentences provide information about the movements of two individuals, john and daniel. sentence 10 explicitly states that john moved to the office, which directly answers the question about john's location. the information about daniel's movement to the kitchen in sentence 11 is not relevant to the question about john's location. therefore, it can be logically concluded that john is in the office.	fully	office	True	The context sentences mention John's movement to the office, but do not provide any information about his current location after that. Therefore, it is likely that John is still in the office.		"Reasoning: The context sentences mention John's movement to the office, but do not provide any information about his current location after that. Therefore, it is likely that John is still in the office.
+
+Answer: office"	0.0227	0.0227	False	False	False	True	0
+30	1	6	5	"*TASK*
+Here are the context sentences:
+13. Daniel went to the garden.
+14. John went back to the bathroom.
+
+Now, answer the following question:
+Where is Daniel?"	garden	the context sentences provide information about the movements of two individuals, daniel and john. sentence 13 explicitly states that daniel went to the garden, which directly answers the question about daniel's location. the information about john's movement to the bathroom in sentence 14 is not relevant to the question about daniel's location. therefore, it can be logically concluded that daniel is in the garden.	fully	garden	True	The context sentences mention Daniel's movement to the garden, but do not provide any information about his current location after that. Therefore, it is likely that Daniel is still in the garden.		"Reasoning: The context sentences mention Daniel's movement to the garden, but do not provide any information about his current location after that. Therefore, it is likely that Daniel is still in the garden.
+
+Answer: garden"	0.1136	0.0227	False	False	False	True	0

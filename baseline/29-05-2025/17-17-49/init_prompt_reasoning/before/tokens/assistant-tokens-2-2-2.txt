@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġabout	ĠJohn	Ġjourney	ing	Ġto	Ġthe	Ġhallway	Ġand	ĠMary	Ġgoing	Ġback	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġno	Ġinformation	Ġabout	Ġthe	Ġapple	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned

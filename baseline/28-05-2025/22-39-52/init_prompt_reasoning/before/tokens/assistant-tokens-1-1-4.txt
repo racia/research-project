@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠSandra	's	Ġlocation	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	's	Ġmovements	,	Ġwhich	Ġdo	Ġnot	Ġaffect	ĠSandra	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

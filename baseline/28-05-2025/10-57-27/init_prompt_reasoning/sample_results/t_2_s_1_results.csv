@@ -1,0 +1,48 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+11	2	1	1	"*TASK*
+Here are the context sentences:
+1. John travelled to the office.
+2. Daniel travelled to the office.
+3. Mary grabbed the football there.
+4. Daniel went back to the hallway.
+5. Mary left the football.
+6. Sandra grabbed the apple there.
+7. Mary went to the bedroom.
+8. Sandra journeyed to the bedroom.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	"from sentence 6, we know that sandra grabbed the apple in the office (since it says ""there"", which refers to the office, the last location mentioned). then, in sentence 8, sandra journeyed to the bedroom. since sandra was holding the apple, it is logical to assume that she took the apple with her to the bedroom. therefore, the apple is in the bedroom."	fully		False	The question asks about the apple, and the only mention of the apple is in sentence 6, where Sandra grabbed the apple in the office. Since Sandra journeyed to the bedroom in sentence 8, it is likely that she		Reasoning: The question asks about the apple, and the only mention of the apple is in sentence 6, where Sandra grabbed the apple in the office. Since Sandra journeyed to the bedroom in sentence 8, it is likely that she	0.0816	0.0408	False	False	False	True	0
+12	2	1	2	"*TASK*
+Here are the context sentences:
+10. Daniel journeyed to the bathroom.
+11. Mary went back to the office.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	"the question asks about the location of the apple, which was previously mentioned in sentence 6: ""sandra grabbed the apple there."" since ""there"" refers to the office, sandra grabbed the apple in the office. then, in sentence 8, ""sandra journeyed to the bedroom."" it is logical to assume that sandra took the apple with her to the bedroom. the new context lines (10 and 11) do not provide any information about the apple or the"	none	not mentioned	False	There is no mention of the apple in the given context sentences. The previous context sentences mentioned the apple, but this new set of sentences does not provide any information about the apple's location.		"Reasoning: There is no mention of the apple in the given context sentences. The previous context sentences mentioned the apple, but this new set of sentences does not provide any information about the apple's location.
+
+Answer: not mentioned"	0.0217	0.0435	False	False	False	True	0
+13	2	1	3	"*TASK*
+Here are the context sentences:
+13. Sandra took the milk there.
+14. Sandra dropped the milk.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	"from the previous context, we know that sandra was in the bedroom (sentence 8). in sentence 13, ""sandra took the milk there"", ""there"" refers to the bedroom, since that's where sandra was last mentioned. then, in sentence 14, ""sandra dropped the milk"", which implies that the milk is now in the same location where sandra dropped it, which is the bedroom. therefore, the milk is in the bedroom."	partially		False	"The question asks about the milk, and the only mention of the milk is in sentences 13 and 14. Sentence 13 states that Sandra took the milk there, but it doesn't specify where ""there"" is. Sentence"		"Reasoning: The question asks about the milk, and the only mention of the milk is in sentences 13 and 14. Sentence 13 states that Sandra took the milk there, but it doesn't specify where ""there"" is. Sentence"	0.0204	0.0408	False	False	False	True	0
+14	2	1	4	"*TASK*
+Here are the context sentences:
+16. Mary went back to the bathroom.
+17. Daniel took the football there.
+
+Now, answer the following question:
+Where is the milk?"	bedroom	the question asks about the location of the milk, which was previously mentioned in sentences 13 and 14. sentences 16 and 17 do not provide any new information about the milk. we can infer that the milk is still in the bedroom, where it was dropped by sandra in sentence 14. the actions of mary and daniel in sentences 16 and 17 do not affect the location of the milk. therefore, the milk is still in the bedroom.	none	not mentioned	False	There is no mention of the milk in the given context sentences. The previous context sentences mentioned the milk, but this new set of sentences does not provide any information about the milk's location.		"Reasoning: There is no mention of the milk in the given context sentences. The previous context sentences mentioned the milk, but this new set of sentences does not provide any information about the milk's location.
+
+Answer: not mentioned"	0.0652	0.0435	False	False	False	True	0
+15	2	1	5	"*TASK*
+Here are the context sentences:
+19. Sandra picked up the milk there.
+20. Mary went back to the bedroom.
+21. John moved to the bedroom.
+22. Daniel discarded the football there.
+
+Now, answer the following question:
+Where is the football?"	bathroom	"from sentence 17, we know that daniel took the football in the bathroom (since ""there"" refers to the bathroom, where mary went back to in sentence 16). then, in sentence 22, ""daniel discarded the football there"", ""there"" still refers to the bathroom, since daniel didn't move to a different location. therefore, the football was discarded in the bathroom, where it remains."	partially		False	"The question asks about the football, and the only mention of the football is in sentences 17 and 22. Sentence 17 states that Daniel took the football there, but it doesn't specify where ""there"" is. Sentence"		"Reasoning: The question asks about the football, and the only mention of the football is in sentences 17 and 22. Sentence 17 states that Daniel took the football there, but it doesn't specify where ""there"" is. Sentence"	0.0	0.0408	False	False	False	True	0

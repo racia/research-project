@@ -1,0 +1,3 @@
+task_id	exact_match_accuracy_before	exact_match_std_before	soft_match_accuracy_before	soft_match_std_before	max_attn_dist_before	max_attn_dist_std_before	max_attn_on_target_before	attn_on_target_std_before	bleu_before	bleu_std_before	rouge_before	rouge_std_before	meteor_before	meteor_std_before	max_supp_attn_corrbefore	attn_on_target_corrbefore
+1	0.52	0.22	0.52	0.22	0.05	0.02	0.03	0.01	0.06	0.03	0.32	0.05	0.27	0.06	0.32	0.09
+2	0.08	0.13	0.08	0.13	0.07	0.02	0.04	0.0	0.05	0.04	0.3	0.04	0.26	0.05	-0.23	0.11

@@ -1,0 +1,19 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+21	1	5	1	"*TASK*
+Here are the context sentences:
+1. John went to the office.
+2. Daniel journeyed to the kitchen.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"according to context sentence 2, ""daniel journeyed to the kitchen"", which explicitly states that daniel's destination is the kitchen. therefore, it can be logically concluded that daniel is currently in the kitchen."	fully	kitchen	True	The question asks about Daniel's location, and the only information provided is that Daniel journeyed to the kitchen. This implies that Daniel is currently in the kitchen.		"Reasoning: The question asks about Daniel's location, and the only information provided is that Daniel journeyed to the kitchen. This implies that Daniel is currently in the kitchen.
+
+Answer: kitchen"	0.0	0.0256	False	False	False	True	0
+22	1	5	2	"*TASK*
+Here are the context sentences:
+4. John travelled to the bedroom.
+5. John moved to the garden.
+
+Now, answer the following question:
+Where is Daniel?"	kitchen	"the question asks about daniel's location, but the provided context sentences (4 and 5) only mention john's movements, which do not provide any new information about daniel's location. therefore, we need to refer to the previous context sentences (1 and 2) to find the answer. according to context sentence 2, ""daniel journeyed to the kitchen"", which explicitly states that daniel's destination is the kitchen. this information is still valid, and there is no new information"	none	not mentioned	False	The question asks about Daniel's location, but there is no information provided about Daniel's movement or location. The context sentences only mention John's movements, which do not affect Daniel's location.		"Reasoning: The question asks about Daniel's location, but there is no information provided about Daniel's movement or location. The context sentences only mention John's movements, which do not affect Daniel's location.
+
+Answer: not mentioned"	0.0	0.0217	False	False	False	True	0

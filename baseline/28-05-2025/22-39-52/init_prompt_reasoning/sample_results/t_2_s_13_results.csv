@@ -1,0 +1,58 @@
+id_	task_id	sample_id	part_id	task	golden_answer	silver_reasoning	answer_lies_in_self	model_answer_before	answer_correct_before	model_reasoning_before	reasoning_correct_before	model_output_before	max_supp_attn_before	attn_on_target_before	there_before	verbs_before	pronouns_before	not_mentioned_before	context_sents_hall_before
+136	2	13	1	"*TASK*
+Here are the context sentences:
+1. Mary travelled to the hallway.
+2. Daniel journeyed to the kitchen.
+3. Daniel went to the bedroom.
+4. Mary went back to the garden.
+5. Mary moved to the office.
+6. Mary travelled to the garden.
+7. Daniel journeyed to the bathroom.
+8. Daniel travelled to the bedroom.
+9. John picked up the apple there.
+10. John put down the apple.
+11. Sandra travelled to the garden.
+12. Daniel moved to the garden.
+13. Sandra journeyed to the bathroom.
+14. Sandra travelled to the garden.
+15. John grabbed the apple there.
+16. John went to the bedroom.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	from sentence 9, we know john picked up the apple in the garden. then, in sentence 10, john put down the apple, so the apple is still in the garden. however, in sentence 15, john grabbed the apple again in the garden. after that, in sentence 16, john went to the bedroom. since john grabbed the apple and then went to the bedroom, it can be logically inferred that john took the apple with him to the bedroom.	fully		False	The apple was picked up by John in the bathroom (sentence 9), and then put down by John (sentence 10). After that, Sandra travelled to the garden (sentence 11), and Daniel moved to the garden (		Reasoning: The apple was picked up by John in the bathroom (sentence 9), and then put down by John (sentence 10). After that, Sandra travelled to the garden (sentence 11), and Daniel moved to the garden (	0.0816	0.0408	False	False	False	False	0
+137	2	13	2	"*TASK*
+Here are the context sentences:
+18. John journeyed to the hallway.
+19. John journeyed to the bedroom.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	from the previous conversation, we know the apple is in the bedroom (sentence 16). the new context sentences (18 and 19) only provide information about john's movements, but they do not mention the apple. therefore, the location of the apple remains unchanged, and it is still in the bedroom.	partially	not mentioned	False	There is no mention of the apple in the given context sentences. The previous sentences only mentioned John's journey to the hallway and bedroom, but not the apple.		"Reasoning: There is no mention of the apple in the given context sentences. The previous sentences only mentioned John's journey to the hallway and bedroom, but not the apple.
+
+Answer: not mentioned"	0.05	0.05	False	False	False	True	0
+138	2	13	3	"*TASK*
+Here are the context sentences:
+21. Daniel moved to the hallway.
+22. John left the apple.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	from the previous conversation, we know the apple is in the bedroom (sentence 16). in sentence 22, it is stated that john left the apple, but it does not specify that john took the apple out of the bedroom. logically, if john left the apple, it means he let go of the apple, but it does not change the location of the apple. therefore, the apple is still in the bedroom.	partially	not mentioned	False	The apple was left by John, but there is no information about where John left the apple. However, the previous sentences mentioned John leaving the apple, but not where.		"Reasoning: The apple was left by John, but there is no information about where John left the apple. However, the previous sentences mentioned John leaving the apple, but not where.
+
+Answer: not mentioned"	0.0714	0.0476	False	False	False	True	0
+139	2	13	4	"*TASK*
+Here are the context sentences:
+24. John moved to the garden.
+25. John moved to the office.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	the context sentences (24 and 25) only provide information about john's movements, but they do not mention the apple. from the previous conversation, we know the apple is in the bedroom (sentence 16 and confirmed in sentence 22). john's movements do not affect the location of the apple, so the apple remains in the bedroom.	none	not mentioned	False	There is no mention of the apple in the given context sentences. The previous sentences only mentioned John's movement to the garden and office, but not the apple.		"Reasoning: There is no mention of the apple in the given context sentences. The previous sentences only mentioned John's movement to the garden and office, but not the apple.
+
+Answer: not mentioned"	0.075	0.05	False	False	False	True	0
+140	2	13	5	"*TASK*
+Here are the context sentences:
+27. John took the football there.
+28. John left the football.
+
+Now, answer the following question:
+Where is the apple?"	bedroom	the context sentences (27 and 28) only provide information about the football, which is a different object from the apple. the sentences do not mention the apple at all. from the previous conversation, we know the apple is in the bedroom (sentence 16 and confirmed in sentence 22). the information about the football does not affect the location of the apple, so the apple remains in the bedroom.	none	not mentioned	False	There is no mention of the apple in the given context sentences. The sentences only mention John taking and leaving a football, but not the apple.		"Reasoning: There is no mention of the apple in the given context sentences. The sentences only mention John taking and leaving a football, but not the apple.
+
+Answer: not mentioned"	0.0811	0.0541	False	False	False	True	0

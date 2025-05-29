@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	,	Ġso	Ġwe	Ġcannot	Ġdetermine	Ġher	Ġlocation	.	ĠThe	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠJohn	Ġand	ĠDaniel	's	Ġmovements	,	Ġbut	Ġdo	Ġnot	Ġmention	ĠMary	Ġat	Ġall	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

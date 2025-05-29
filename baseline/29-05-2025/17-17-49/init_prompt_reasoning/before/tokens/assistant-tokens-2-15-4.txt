@@ -1,0 +1,1 @@
+ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġdiscarded	Ġby	ĠDaniel	Ġ(	sentence	Ġ	25	),	Ġand	Ġthere	Ġis	Ġno	Ġmention	Ġof	Ġits	Ġcurrent	Ġlocation	.	ĠHowever	,	Ġthe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	Ġthe	Ġapple	's	Ġnew	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>
