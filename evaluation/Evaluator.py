@@ -195,8 +195,8 @@ class MetricEvaluator(Evaluator):
             f"rouge_std_{self.version}": self.rouge.get_std(),
             f"meteor_{self.version}": self.meteor.get_mean(),
             f"meteor_std_{self.version}": self.meteor.get_std(),
-            f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr.get_mean(),
-            f"attn_on_target_corr_{self.version}": self.attn_on_target_corr.get_mean(),
+            f"max_supp_attn_corr_pval{self.version}": self.max_supp_attn_corr.get_pvalue(),
+            f"attn_on_target_corr_pval{self.version}": self.attn_on_target_corr.get_pvalue(),
         }
 
     def get_accuracies(self, as_lists: bool = False) -> dict[str, float | Metric]:

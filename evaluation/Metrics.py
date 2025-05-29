@@ -110,6 +110,7 @@ class Correlation(Metric):
     """
     def __init__(self, name, var: str, correlations: list[float] = None):
         super().__init__(name, var, correlations)
+        self.pvalue: float = None
 
 
 class AttnOnTarget(Metric):
