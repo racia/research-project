@@ -6,7 +6,6 @@ from typing import Any
 import torch
 
 from data.DataSaver import DataSaver
-from inference.Chat import Chat
 from inference.Prompt import Prompt
 from inference.utils import Source, flatten
 from interpretability.utils import InterpretabilityResult
@@ -94,18 +93,33 @@ class SpeculativeDecoding(Setting):
         Generate some candidates using the student model.
 
         The student model generates a chain of thought based on the input string.
-        The maximum length of this chain of thought is handled by the max_length parameter.
+        The maximum length of chain of thought is handled by the max_length parameter.
 
         :return: The output of the student model
         """
         print("GENERATE STUDENT IS CALLED")
-        self.student.chat.remove_message(-1)
-        self.student.chat.add_message(
-            part=self.resume_prompt.text, source=Source.user, ids=self.resume_prompt.ids
-        )
+        print("STUDENT CHAT BEFORE UPDATE", self.student.chat)
+        # message order: sys prompt + ex - part task - (stud out) - ! resume mes ! - (stud out iter)
+        # removing previous student output
+        # self.student.chat.remove_message(-1)
+        if (
+            "Here is the improved version of the previous output"
+            in self.student.chat.messages[-1]["content"]
+        ):
+            print("Remove the message with previous iteration!")
+            self.student.chat.remove_message(-1)
+        if self.resume_prompt.text not in self.student.chat.messages[-1]["content"]:
+            print("No resume message!")
+            self.student.chat.add_message(
+                part=self.resume_prompt.text,
+                source=Source.user,
+                ids=self.resume_prompt.ids,
+            )
+
         self.student.chat.move_approved_message(
             self.teacher.chat, wrapper=self.resume_prompt.wrapper
         )
+        print("STUDENT CHAT AFTER UPDATE", self.student.chat)
         print(
             "\n--------------\n",
             "Evaluation prompt of the user: ",
@@ -165,6 +179,7 @@ class SpeculativeDecoding(Setting):
         print('student_message["tokens"]', student_message["tokens"])
         flat_student_tokens = flatten(student_message["tokens"])
         print("flat_student_tokens", flat_student_tokens)
+        print("last_err_inx", last_err_inx)
 
         for inx, student_token in enumerate(flat_student_tokens[last_err_inx + 1 :]):
             # handle empty tokens by setting it to whitespace
@@ -191,7 +206,7 @@ class SpeculativeDecoding(Setting):
             #     )
             # else:
             print(
-                f"Verifying token '{student_token}' at index {inx}",
+                f"Verifying token '{student_token}' at index {inx + last_err_inx + 1}",
                 end="\n\n",
                 flush=True,
             )
@@ -260,8 +275,8 @@ class SpeculativeDecoding(Setting):
             st_id_is_probable = student_token_id in top_tokens_encoded
             if not (st_token_is_probable or st_id_is_probable):
 
-                # if the student token was considered as an affix and is not in the top tokens,
-                # return the suggested token of the previous step
+                # # if the student token was considered as an affix and is not in the top tokens,
+                # # return the suggested token of the previous step
                 if self.affix and suggested_token_affix:
                     self.affix = False
                     return False, inx - 1, suggested_token_affix
@@ -280,6 +295,15 @@ class SpeculativeDecoding(Setting):
 
                 # student token is not in top tokens and is not an affix
                 break
+
+            if last_err_inx > inx:
+                print("Flat student tokens:", flat_student_tokens)
+                raise ValueError(
+                    "Last error index is greater than current index:",
+                    last_err_inx,
+                    ">",
+                    inx,
+                )
 
             approved_tokens.append(student_token)
             print(
@@ -320,10 +344,11 @@ class SpeculativeDecoding(Setting):
                 top_tokens_decoded_probs[suggested_token]
             )
 
-        self.teacher.chat.adjust_message(
-            self.tokenizer.convert_tokens_to_string([suggested_token]),
-            top_tokens_encoded[0],
-        )
+        # ADDS WEIRD INITIAL TOKENS
+        # self.teacher.chat.adjust_message(
+        #     self.tokenizer.convert_tokens_to_string([suggested_token]),
+        #     top_tokens_encoded[0],
+        # )
 
         return False, inx, suggested_token
 
@@ -499,25 +524,25 @@ class SpeculativeDecoding(Setting):
             return True
         return False
 
-    def prepare_prompt(self, chat: Chat, resume_gen: bool = False) -> str:
-        """
-        Prepares the prompt to include the current part of the sample.
-
-        :param chat: the current chat
-        :param resume_gen: whether to resume generation from the last message
-
-        :return: prompt with the task and the current part
-        """
-        if self.model.to_continue or resume_gen:
-            formatted_prompt = self.model.tokenizer.apply_chat_template(
-                chat.messages, tokenize=False, continue_final_message=True
-            )
-        else:
-            formatted_prompt = self.model.tokenizer.apply_chat_template(
-                chat.messages, tokenize=False, add_generation_prompt=True
-            )
-
-        return formatted_prompt
+    # def prepare_prompt(self, chat: Chat, resume_gen: bool = False) -> str:
+    #     """
+    #     Prepares the prompt to include the current part of the sample.
+    #
+    #     :param chat: the current chat
+    #     :param resume_gen: whether to resume generation from the last message
+    #
+    #     :return: prompt with the task and the current part
+    #     """
+    #     if self.model.to_continue or resume_gen:
+    #         formatted_prompt = self.model.tokenizer.apply_chat_template(
+    #             chat.messages, tokenize=False, continue_final_message=True
+    #         )
+    #     else:
+    #         formatted_prompt = self.model.tokenizer.apply_chat_template(
+    #             chat.messages, tokenize=False, add_generation_prompt=True
+    #         )
+    #
+    #     return formatted_prompt
 
     def get_previous_approved_output(
         self,
@@ -633,7 +658,7 @@ class SpeculativeDecoding(Setting):
                     self.curr_eval_dict["early_stop"] = True
                     break
 
-            print("TEACHER CHAT", self.teacher.chat, end="\n\n", flush=True)
+            # print("TEACHER CHAT", self.teacher.chat, end="\n\n", flush=True)
 
             student_out, interpretability = self.generate_student()
             if type(student_out) is not str:
@@ -697,6 +722,12 @@ class SpeculativeDecoding(Setting):
         if not is_valid:
             self.student.chat.remove_message(-1)
             self.student.chat.move_approved_message(self.teacher.chat)
+        else:
+            print(
+                f"Teacher approved the output '{student_out}' after {revs - 1} iterations.",
+                end="\n\n",
+                flush=True,
+            )
 
     def apply_setting(
         self, decoded_output: str
@@ -771,7 +802,6 @@ class SpeculativeDecoding(Setting):
             flush=True,
         )
 
-        interpretability = None
         if not is_valid:
             # # if teacher suggests a token, addition it to its chat
             # self.teacher.chat.add_message(
@@ -784,15 +814,22 @@ class SpeculativeDecoding(Setting):
                 error_id=error_id,
             )
 
-        if self.use_fallback:
-            decoded_output = self.initial_student_output
-
         teacher_wrapper = "The student's response was:"
         last_message = self.student.chat.messages[-1]
         if teacher_wrapper in last_message["content"]:
             raise ValueError(
                 f"Teacher wrapper found in the last message of the student: {last_message['content']}"
             )
+
+        if self.use_fallback:
+            print(
+                "Using fallback solution for the student output.",
+                end="\n\n",
+                flush=True,
+            )
+            decoded_output = self.initial_student_output
+        else:
+            decoded_output = last_message
 
         # change the last message of the student to the refined output
         original_student_chat.remove_message(-1)
