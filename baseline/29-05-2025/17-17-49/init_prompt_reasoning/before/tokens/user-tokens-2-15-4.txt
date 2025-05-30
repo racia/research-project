@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-24	.	ĠSandra	Ġmoved	Ġto	Ġthe	Ġkitchen	.Ċ
-25	.	ĠDaniel	Ġdiscarded	Ġthe	Ġapple	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

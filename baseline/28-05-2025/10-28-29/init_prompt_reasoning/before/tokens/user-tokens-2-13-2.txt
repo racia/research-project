@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-18	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
-19	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

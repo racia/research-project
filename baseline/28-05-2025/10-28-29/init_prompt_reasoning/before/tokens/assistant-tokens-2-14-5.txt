@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	18	,	ĠJohn	Ġgrabbed	Ġthe	Ġapple	Ġin	Ġthe	Ġbathroom	,	Ġwhich	Ġmeans	Ġthe	Ġapple	Ġis	Ġcurrently	Ġin	Ġthe	Ġbathroom	.Ċ	Answer	:	Ġbathroom	<|eot_id|>

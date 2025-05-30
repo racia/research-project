@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġprovide	Ġinformation	Ġabout	ĠJohn	's	Ġmovement	Ġto	Ġthe	Ġgarden	Ġand	ĠDaniel	's	Ġmovement	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġdo	Ġnot	Ġmention	ĠDaniel	's	Ġcurrent	Ġlocation	.	ĠHowever	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠDaniel	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway

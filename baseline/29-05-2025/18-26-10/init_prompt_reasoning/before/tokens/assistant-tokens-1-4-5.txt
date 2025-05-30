@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġbut	ĠMary	Ġis	Ġnot	Ġmentioned	Ġin	Ġeither	Ġof	Ġthe	Ġgiven	Ġsentences	.	ĠTherefore	,	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	ĠMary	's	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-21	.	ĠJohn	Ġwent	Ġto	Ġthe	Ġbathroom	.Ċ
-22	.	ĠDaniel	Ġdropped	Ġthe	Ġapple	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

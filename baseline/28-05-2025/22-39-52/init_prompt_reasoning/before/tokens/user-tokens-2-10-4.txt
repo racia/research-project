@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-20	.	ĠDaniel	Ġpicked	Ġup	Ġthe	Ġmilk	Ġthere	.Ċ
-21	.	ĠDaniel	Ġleft	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġfootball	?Ċ

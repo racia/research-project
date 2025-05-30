@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġan	Ġapple	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġprevious	Ġconversation	Ġdidn	't	Ġmention	Ġthe	Ġapple	's	Ġlocation	Ġafter	ĠMary	Ġleft	Ġit	Ġin	Ġthe	Ġbathroom	.ĊĊ	Answer	:	Ġbathroom	<|eot_id|>

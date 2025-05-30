@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġthe	Ġonly	Ġsentence	Ġthat	Ġmentions	ĠMary	Ġis	Ġsentence	Ġ	8	,	Ġwhich	Ġstates	Ġthat	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

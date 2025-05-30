@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġgrabbed	Ġby	ĠJohn	Ġ(	sentence	Ġ	10	),	Ġand	Ġthen	Ġdiscarded	Ġby	ĠJohn	Ġ(	sentence	Ġ	14	).	ĠSince	ĠJohn	Ġdiscarded	Ġthe	Ġapple	,	Ġit	Ġis	Ġno	Ġlonger	Ġin	Ġthe	Ġsame	Ġlocation	Ġwhere	ĠJohn	Ġgrabbed	Ġit	.	ĠHowever	,	Ġthe	Ġcontext	Ġdoes	Ġnot

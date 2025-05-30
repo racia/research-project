@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	's	Ġlocations	Ġ(	k	itchen	Ġand	Ġhallway	),	Ġbut	Ġdo	Ġnot	Ġmention	ĠMary	Ġat	Ġall	.	ĠTherefore	,	Ġwe	Ġcannot	Ġinfer	ĠMary	's	Ġlocation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

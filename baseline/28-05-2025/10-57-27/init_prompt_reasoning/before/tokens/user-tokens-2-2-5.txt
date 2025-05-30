@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-17	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġoffice	.Ċ
-18	.	ĠDaniel	Ġtook	Ġthe	Ġfootball	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

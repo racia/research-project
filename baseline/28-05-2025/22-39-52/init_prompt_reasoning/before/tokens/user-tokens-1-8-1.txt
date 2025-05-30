@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-1	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	.Ċ
-2	.	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	ĠJohn	?Ċ

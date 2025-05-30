@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-27	.	ĠDaniel	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
-28	.	ĠSandra	Ġwent	Ġback	Ġto	Ġthe	Ġhallway	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

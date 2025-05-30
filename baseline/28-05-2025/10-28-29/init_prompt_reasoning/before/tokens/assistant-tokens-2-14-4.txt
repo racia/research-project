@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġin	Ġthese	Ġsentences	,	Ġand	Ġthe	Ġprevious	Ġsentences	Ġdid	Ġnot	Ġmention	Ġthe	Ġapple	Ġbeing	Ġmoved	Ġto	Ġthe	Ġbedroom	.	ĠTherefore	,	Ġthe	Ġlocation	Ġof	Ġthe	Ġapple	Ġis	Ġstill	Ġunknown	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

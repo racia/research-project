@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġthe	Ġonly	Ġsentence	Ġthat	Ġmentions	ĠMary	Ġis	Ġsentence	Ġ	10	,	Ġwhich	Ġstates	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġhallway	.	ĠThis	Ġimplies	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġhallway	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

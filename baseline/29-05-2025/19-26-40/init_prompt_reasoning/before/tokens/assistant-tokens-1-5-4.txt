@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠJohn	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġtalk	Ġabout	ĠSandra	's	Ġand	ĠMary	's	Ġmovements	,	Ġbut	ĠJohn	's	Ġlocation	Ġis	Ġnot	Ġspecified	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

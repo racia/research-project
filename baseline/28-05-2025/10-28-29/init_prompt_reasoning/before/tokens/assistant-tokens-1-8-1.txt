@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠJohn	Ġjourney	ed	Ġto	Ġthe	Ġkitchen	Ġand	Ġthen	Ġto	Ġthe	Ġgarden	,	Ġit	Ġis	Ġnot	Ġspecified	Ġwhich	Ġlocation	Ġhe	Ġis	Ġcurrently	Ġat	.	ĠHowever	,	Ġwe	Ġcan	Ġinfer	Ġthat	Ġhe	Ġhas	Ġbeen	Ġto	Ġboth	Ġthe	Ġkitchen	Ġand	Ġthe	Ġgarden	,	Ġbut	Ġthe	Ġquestion	Ġasks	Ġabout

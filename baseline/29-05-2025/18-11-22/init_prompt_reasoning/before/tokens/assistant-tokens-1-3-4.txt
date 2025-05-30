@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠDaniel	Ġmoving	Ġto	Ġthe	Ġhallway	,	Ġbut	Ġnot	ĠMary	.	ĠThen	,	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġshe	Ġwas	Ġpreviously	Ġsomewhere	Ġelse	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġis	Ġcurrently	Ġin	Ġthe	Ġgarden	.ĊĊ	Answer	:

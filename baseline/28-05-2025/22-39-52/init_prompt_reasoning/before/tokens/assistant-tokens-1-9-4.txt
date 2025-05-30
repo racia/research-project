@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġtravelling	Ġto	Ġthe	Ġgarden	Ġand	ĠDaniel	Ġgoing	Ġback	Ġto	Ġthe	Ġoffice	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJohn	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

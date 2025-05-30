@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	's	Ġlocation	Ġafter	Ġhe	Ġwent	Ġto	Ġthe	Ġhallway	.	ĠThere	Ġis	Ġno	Ġadditional	Ġinformation	Ġabout	Ġhis	Ġmovement	Ġor	Ġcurrent	Ġlocation	.ĊĊ	Answer	:	Ġhallway	<|eot_id|>

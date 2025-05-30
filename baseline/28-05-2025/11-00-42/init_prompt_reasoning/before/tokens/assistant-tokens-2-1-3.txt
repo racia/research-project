@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġspecify	Ġwhere	Ġ"	there	"	Ġrefers	Ġto	.	ĠHowever	,	Ġsince	ĠSandra	Ġdropped	Ġthe	Ġmilk	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġmilk	Ġis	Ġon	Ġthe	Ġfloor	Ġor	Ġin	Ġa	Ġlocation	Ġwhere	Ġit	Ġwas	Ġdropped	.ĊĊ	Answer	:	Ġnot	Ġspecified	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	ĠJohn	's	Ġlocation	.	ĠThe	Ġinformation	Ġprovided	Ġonly	Ġtalks	Ġabout	ĠSandra	Ġand	ĠMary	's	Ġmovements	.Ċ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

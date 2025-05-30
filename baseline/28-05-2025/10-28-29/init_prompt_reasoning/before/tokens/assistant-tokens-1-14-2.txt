@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġtalk	Ġabout	ĠMary	's	Ġmovements	,	Ġand	ĠDaniel	Ġis	Ġnot	Ġmentioned	Ġat	Ġall	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

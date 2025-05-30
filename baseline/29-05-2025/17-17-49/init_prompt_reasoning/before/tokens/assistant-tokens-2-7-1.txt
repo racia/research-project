@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġfootball	Ġwas	Ġpicked	Ġup	Ġby	ĠMary	Ġin	Ġthe	Ġgarden	Ġ(	sentence	Ġ	1	),	Ġand	Ġthen	ĠMary	Ġput	Ġit	Ġdown	Ġin	Ġthe	Ġhallway	Ġ(	sentence	Ġ	10	).	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġfootball	Ġbeing	Ġmoved	Ġor	Ġtaken	Ġanywhere	Ġelse	.ĊĊ	Answer	:	Ġhallway

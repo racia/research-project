@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġpicked	Ġup	Ġby	ĠDaniel	Ġin	Ġthe	Ġkitchen	Ġ(	sentence	Ġ	24	).	ĠSince	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠDaniel	Ġleaving	Ġthe	Ġkitchen	Ġor	Ġthe	Ġapple	Ġbeing	Ġmoved	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġapple	Ġis	Ġstill	Ġin	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen

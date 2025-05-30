@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠSince	ĠSandra	Ġgrabbed	Ġthe	Ġmilk	Ġ"	there	",	Ġand	Ġthen	Ġmoved	Ġto	Ġthe	Ġgarden	,	Ġit	Ġis	Ġlikely	Ġthat	Ġ"	there	"	Ġrefers	Ġto	Ġthe	Ġlocation	Ġwhere	ĠSandra	Ġmoved	Ġfrom	,	Ġwhich	Ġis	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

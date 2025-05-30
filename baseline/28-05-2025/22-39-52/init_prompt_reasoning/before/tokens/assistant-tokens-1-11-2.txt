@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJohn	's	Ġlocation	,	Ġand	Ġthe	Ġcontext	Ġsentences	Ġprovide	Ġtwo	Ġlocations	Ġwhere	ĠJohn	Ġhas	Ġbeen	:	Ġthe	Ġgarden	Ġand	Ġthe	Ġhallway	.	ĠSince	Ġthe	Ġquestion	Ġasks	Ġabout	ĠJohn	's	Ġcurrent	Ġlocation	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠJohn	Ġis	Ġin	Ġthe	Ġhallway	,

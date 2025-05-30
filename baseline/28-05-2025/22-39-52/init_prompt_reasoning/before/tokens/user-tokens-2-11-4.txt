@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-18	.	ĠDaniel	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
-19	.	ĠMary	Ġwent	Ġto	Ġthe	Ġgarden	.Ċ
-20	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġbathroom	.Ċ
-21	.	ĠJohn	Ġleft	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġfootball	?Ċ

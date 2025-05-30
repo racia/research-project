@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentence	Ġ	1	Ġstates	Ġthat	ĠSandra	Ġgrabbed	Ġthe	Ġmilk	Ġ"	there	",	Ġbut	Ġit	Ġdoesn	't	Ġspecify	Ġwhere	Ġ"	there	"	Ġis	.	ĠHowever	,	Ġcontext	Ġsentence	Ġ	2	Ġreveals	Ġthat	ĠSandra	Ġmoved	Ġto	Ġthe	Ġgarden	,	Ġwhich	Ġimplies	Ġthat	Ġ"	there	"	Ġis

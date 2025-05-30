@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbathroom	,	Ġwhich	Ġimplies	Ġshe	Ġwas	Ġpreviously	Ġsomewhere	Ġelse	.	ĠHowever	,	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġher	Ġcurrent	Ġlocation	.Ċ	Answer	:	Ġbathroom	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	Ġthe	Ġapple	Ġbeing	Ġpicked	Ġup	Ġor	Ġmoved	Ġafter	Ġit	Ġwas	Ġdropped	.	ĠTherefore	,	Ġit	Ġis	Ġlikely	Ġthat	Ġthe	Ġapple	Ġis	Ġstill	Ġin	Ġthe	Ġsame	Ġlocation	Ġwhere	Ġit	Ġwas	Ġdropped	,	Ġwhich	Ġis	Ġnot	Ġspecified	.ĊĊ	Answer	:	Ġnot	Ġmentioned

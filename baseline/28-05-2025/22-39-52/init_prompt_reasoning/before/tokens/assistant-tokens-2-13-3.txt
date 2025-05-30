@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġleft	Ġby	ĠJohn	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġabout	Ġwhere	ĠJohn	Ġleft	Ġthe	Ġapple	.	ĠHowever	,	Ġthe	Ġprevious	Ġsentences	Ġmentioned	ĠJohn	Ġleaving	Ġthe	Ġapple	,	Ġbut	Ġnot	Ġwhere	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

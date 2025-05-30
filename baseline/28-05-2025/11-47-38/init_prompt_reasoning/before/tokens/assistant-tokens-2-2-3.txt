@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġapple	Ġwas	Ġgrabbed	Ġand	Ġdropped	,	Ġbut	Ġthe	Ġlocation	Ġis	Ġnot	Ġspecified	.	ĠHowever	,	Ġthe	Ġcontext	Ġsentences	Ġdo	Ġnot	Ġmention	Ġany	Ġother	Ġlocation	Ġwhere	Ġthe	Ġapple	Ġwas	Ġtaken	Ġor	Ġmoved	.	ĠTherefore	,	Ġit	Ġcan	Ġbe	Ġinferred	Ġthat	Ġthe	Ġapple	Ġis	Ġstill	Ġat	Ġthe

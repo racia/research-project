@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-14	.	ĠDaniel	Ġgrabbed	Ġthe	Ġfootball	Ġthere	.Ċ
-15	.	ĠDaniel	Ġdiscarded	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

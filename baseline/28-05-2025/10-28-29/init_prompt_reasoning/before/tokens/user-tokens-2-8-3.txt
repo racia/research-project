@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-13	.	ĠMary	Ġput	Ġdown	Ġthe	Ġmilk	.Ċ
-14	.	ĠMary	Ġwent	Ġback	Ġto	Ġthe	Ġbedroom	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

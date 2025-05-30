@@ -13,11 +13,13 @@
 from __future__ import annotations
 
 import argparse
+from collections import defaultdict
 import re
 from pathlib import Path
 
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
+from data.utils import format_metrics
 from inference.DataLevels import Results, Sample, Split, Task, print_metrics
 from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
@@ -197,15 +199,23 @@ def run(
 
         if verbose:
             print_metrics(task)
+        for evaluator, version in zip(task.evaluators, task.versions):
+            metrics_to_save = defaultdict(dict)
+            metrics = list(
+                format_metrics(evaluator.get_metrics(as_lists=True)).values()
+            )
+            for metric in metrics:
+                metrics_to_save[metric["task_id"]].update(metric)
+
+            for metric in metrics_to_save.values():
+                saver.save_output(
+                    data=[metric],
+                    headers=list(metric.keys()),
+                    file_name=f"eval_script_metrics_{version}.csv",
+                    path_add=Path(version, f"t{task_id}"),
+                )
 
         split.add_task(task)
-        for version, metrics in zip(task.versions, task.metrics):
-            saver.save_output(
-                data=[metrics],
-                headers=list(metrics.keys()),
-                file_name=f"eval_script_metrics_{version}.csv",
-                path_add=version,
-            )
 
     if verbose:
         print_metrics_table(evaluators=split.evaluators, id_=data_split)

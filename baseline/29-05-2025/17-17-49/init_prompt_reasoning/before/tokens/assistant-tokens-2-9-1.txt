@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠMary	Ġgrabbing	Ġthe	Ġmilk	,	Ġbut	Ġthey	Ġdon	't	Ġspecify	Ġwhere	Ġshe	Ġgrabbed	Ġit	.	ĠHowever	,	Ġsentence	Ġ	5	Ġmentions	Ġ"	there	",	Ġwhich	Ġimplies	Ġthat	ĠMary	Ġgrabbed	Ġthe	Ġmilk	Ġsomewhere	.	ĠSince	ĠMary	Ġwent	Ġto	Ġthe	Ġbathroom	Ġin	Ġsentence	Ġ

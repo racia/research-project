@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠMary	's	Ġlocation	,	Ġand	Ġthe	Ġonly	Ġinformation	Ġprovided	Ġis	Ġthat	ĠMary	Ġmoved	Ġto	Ġthe	Ġbathroom	.	ĠTherefore	,	Ġwe	Ġcan	Ġinfer	Ġthat	ĠMary	Ġis	Ġin	Ġthe	Ġbathroom	.Ċ	Answer	:	Ġbathroom	<|eot_id|>

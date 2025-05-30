@@ -85,7 +85,7 @@ class DataSaver:
         data: list[dict[str, str | int | float]],
         headers: list | tuple,
         file_name: str | Path,
-        path_add: str = "",
+        path_add: str | Path = "",
         flag: str = "a+",
     ) -> None:
         """
@@ -101,7 +101,7 @@ class DataSaver:
         :param data: one row as list of strings or multiple such rows
         :param headers: the headers for the csv file
         :param file_name: the name of the file to save the data
-        :param path_add: an addition to the results path (goes between results_path and file_name)
+        :param path_add: String or - in case of multiple - Path addition(s) to the results path (goes between results_path and file_name)
         :param flag: the flag to open the file
         :return: None
         """

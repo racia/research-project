@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠJohn	's	Ġlocation	,	Ġbut	Ġthere	Ġis	Ġno	Ġinformation	Ġprovided	Ġabout	ĠJohn	's	Ġmovement	Ġor	Ġcurrent	Ġlocation	.	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠSandra	Ġtravelling	Ġto	Ġthe	Ġbathroom	Ġand	ĠMary	Ġtravelling	Ġto	Ġthe	Ġkitchen	,	Ġbut	ĠJohn	Ġis	Ġnot	Ġmentioned	.ĊĊ	Answer

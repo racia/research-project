@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-15	.	ĠJohn	Ġdiscarded	Ġthe	Ġapple	.Ċ
-16	.	ĠSandra	Ġdiscarded	Ġthe	Ġmilk	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

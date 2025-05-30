@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġmilk	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġprevious	Ġmention	Ġof	Ġthe	Ġmilk	Ġwas	Ġin	Ġsentences	Ġ	13	Ġand	Ġ	14	,	Ġbut	Ġthere	Ġis	Ġno	Ġupdate	Ġon	Ġits	Ġlocation	.	ĠTherefore	,	Ġit	Ġis	Ġnot	Ġpossible	Ġto	Ġdetermine	Ġthe

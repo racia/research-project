@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġinformation	Ġabout	ĠJohn	's	Ġlocation	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	Ġand	ĠSandra	Ġgoing	Ġto	Ġthe	Ġgarden	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	ĠJohn	's	Ġwhereabouts	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

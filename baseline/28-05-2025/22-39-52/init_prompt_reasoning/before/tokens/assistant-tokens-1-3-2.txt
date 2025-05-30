@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	's	Ġlocation	Ġ(	office	)	Ġand	ĠMary	's	Ġlocation	Ġ(	bed	room	),	Ġbut	Ġdo	Ġnot	Ġmention	Ġany	Ġother	Ġperson	Ġor	Ġlocation	.	ĠTherefore	,	Ġwe	Ġcan	Ġonly	Ġinfer	ĠMary	's	Ġlocation	Ġas	Ġthe	Ġbedroom	.ĊĊ	Answer	:	Ġbedroom	<|eot_id|>

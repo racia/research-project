@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġmention	ĠDaniel	's	Ġlocation	Ġ(	hall	way	)	Ġand	ĠMary	's	Ġlocation	Ġ(	g	arden	),	Ġbut	Ġdo	Ġnot	Ġmention	Ġany	Ġother	Ġperson	Ġor	Ġlocation	.	ĠTherefore	,	Ġwe	Ġcan	Ġonly	Ġinfer	ĠMary	's	Ġlocation	Ġas	Ġthe	Ġgarden	.ĊĊ	Answer	:	Ġgarden	<|eot_id|>

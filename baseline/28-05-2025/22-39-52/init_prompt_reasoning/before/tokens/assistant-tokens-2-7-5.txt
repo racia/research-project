@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġfootball	Ġin	Ġthese	Ġsentences	,	Ġand	Ġthe	Ġprevious	Ġsentences	Ġdid	Ġnot	Ġmention	Ġthe	Ġfootball	Ġbeing	Ġmoved	Ġor	Ġtaken	Ġto	Ġthe	Ġbathroom	Ġor	Ġhallway	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġquestion	Ġasks	Ġabout	ĠSandra	's	Ġlocation	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠSandra	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠDaniel	,	ĠJohn	,	Ġand	Ġtheir	Ġmovements	.	ĠTherefore	,	Ġwe	Ġcannot	Ġdetermine	ĠSandra	's	Ġlocation	Ġbased	Ġon	Ġthe	Ġprovided	Ġinformation

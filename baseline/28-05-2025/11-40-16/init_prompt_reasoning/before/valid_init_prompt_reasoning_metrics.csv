@@ -1,8 +1,0 @@
-feature	count
-there_before	0
-verbs_before	0
-pronouns_before	0
-not_mentioned_before	14
-context_sents_hall_before	0
-mean	0.3	0.0	0.3	0.0	0.06	0.03	0.04	0.0	0.05	0.01	0.3	0.03	0.25	0.03	0.0	0.0
-std	0.42		0.42		0.03		0.01		0.01		0.02		0.01		0.0	0.0

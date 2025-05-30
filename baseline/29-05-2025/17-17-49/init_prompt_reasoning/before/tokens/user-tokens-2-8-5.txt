@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-19	.	ĠMary	Ġjourney	ed	Ġto	Ġthe	Ġgarden	.Ċ
-20	.	ĠJohn	Ġdiscarded	Ġthe	Ġfootball	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġfootball	?Ċ

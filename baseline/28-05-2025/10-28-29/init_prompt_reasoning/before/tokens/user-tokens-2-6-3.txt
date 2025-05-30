@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-17	.	ĠJohn	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
-18	.	ĠJohn	Ġdropped	Ġthe	Ġapple	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-12	.	ĠMary	Ġpicked	Ġup	Ġthe	Ġfootball	Ġthere	.Ċ
-13	.	ĠSandra	Ġjourney	ed	Ġto	Ġthe	Ġhallway	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

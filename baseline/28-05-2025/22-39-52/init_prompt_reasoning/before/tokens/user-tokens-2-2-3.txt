@@ -1,5 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-11	.	ĠSandra	Ġgrabbed	Ġthe	Ġapple	Ġthere	.Ċ
-12	.	ĠSandra	Ġdropped	Ġthe	Ġapple	Ġthere	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġapple	?Ċ

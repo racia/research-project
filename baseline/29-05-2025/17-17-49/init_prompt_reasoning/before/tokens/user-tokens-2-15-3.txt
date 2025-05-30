@@ -1,7 +1,0 @@
-*T	ASK	*Ċ	Here	Ġare	Ġthe	Ġcontext	Ġsentences	:Ċ
-19	.	ĠDaniel	Ġtook	Ġthe	Ġapple	Ġthere	.Ċ
-20	.	ĠDaniel	Ġgrabbed	Ġthe	Ġmilk	Ġthere	.Ċ
-21	.	ĠSandra	Ġwent	Ġto	Ġthe	Ġbedroom	.Ċ
-22	.	ĠDaniel	Ġdropped	Ġthe	Ġmilk	.Ċ
-Now	,	Ġanswer	Ġthe	Ġfollowing	Ġquestion	:Ċ
-Where	Ġis	Ġthe	Ġmilk	?Ċ

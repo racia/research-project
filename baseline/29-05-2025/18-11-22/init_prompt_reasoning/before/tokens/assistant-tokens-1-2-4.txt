@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠAccording	Ġto	Ġsentence	Ġ	11	,	ĠMary	Ġwent	Ġto	Ġthe	Ġkitchen	,	Ġwhich	Ġimplies	Ġthat	Ġher	Ġcurrent	Ġlocation	Ġis	Ġthe	Ġkitchen	.ĊĊ	Answer	:	Ġkitchen	<|eot_id|>

@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	Ġthe	Ġapple	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġmention	ĠMary	's	Ġmovements	,	Ġbut	Ġdo	Ġnot	Ġprovide	Ġany	Ġinformation	Ġabout	Ġthe	Ġapple	's	Ġlocation	.ĊĊ	Answer	:	ĠNot	Ġmentioned	<|eot_id|>

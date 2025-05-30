@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThe	Ġcontext	Ġsentences	Ġonly	Ġmention	ĠJohn	's	Ġmovements	,	Ġbut	Ġthere	Ġis	Ġno	Ġmention	Ġof	ĠMary	.	ĠTherefore	,	Ġwe	Ġcan	't	Ġdetermine	ĠMary	's	Ġlocation	Ġbased	Ġon	Ġthe	Ġgiven	Ġinformation	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>

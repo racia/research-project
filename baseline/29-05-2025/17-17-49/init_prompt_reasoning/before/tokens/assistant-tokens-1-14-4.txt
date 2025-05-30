@@ -1,1 +1,0 @@
-ĊĊ	Reason	ing	:	ĠThere	Ġis	Ġno	Ġmention	Ġof	ĠMary	Ġin	Ġthe	Ġgiven	Ġcontext	Ġsentences	.	ĠThe	Ġsentences	Ġonly	Ġtalk	Ġabout	ĠJohn	's	Ġmovement	Ġto	Ġthe	Ġgarden	Ġand	ĠSandra	's	Ġmovement	Ġto	Ġthe	Ġbathroom	,	Ġand	ĠMary	Ġis	Ġnot	Ġmentioned	Ġat	Ġall	.ĊĊ	Answer	:	Ġnot	Ġmentioned	<|eot_id|>
