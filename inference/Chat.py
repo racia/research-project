@@ -421,7 +421,7 @@ class Chat:
     def convert_into_datatype(
         self,
         datatype: str,
-        max_length: int = 2048,
+        max_length: int = 8000,
         identify_target: bool = True,
         to_continue: bool = False,
     ) -> torch.Tensor:

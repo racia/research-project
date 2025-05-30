@@ -655,10 +655,10 @@ class Sample:
             evaluator.golden_answers.append(part.golden_answer)
             evaluator.pred_answers.append(result.model_answer)
             evaluator.pred_reasonings.append(result.model_reasoning)
-            if part.silver_reasoning:
-                evaluator.silver_reasonings.append(part.silver_reasoning)
             if result.model_reasoning:
                 self.run_with_reasoning = True
+                if part.silver_reasoning:
+                    evaluator.silver_reasonings.append(part.silver_reasoning)
             if result.interpretability:
                 evaluator.max_supp_attn.add(result.max_supp_attn)
                 evaluator.attn_on_target.add(result.attn_on_target)
