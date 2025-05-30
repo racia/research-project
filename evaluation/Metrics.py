@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import statistics
+import warnings
 
 import evaluate
 
@@ -51,7 +52,18 @@ class Metric:
         elif type_ is float:
             self.all.append(metric)
         elif type_ is list:
-            self.all.extend(metric)
+            for m in metric:
+                if isinstance(m, float) or isinstance(m, int):
+                    self.all.append(m)
+                elif isinstance(m, str) and m.lower() == "nan":
+                    self.all.append(0.0)
+                    warnings.warn(
+                        f"Found 'nan' in metric values, treating as 0.0: {metric}"
+                    )
+                else:
+                    warnings.warn(
+                        f"Found invalid metric value (skipping): {type(m)} {m}"
+                    )
         else:
             raise TypeError(
                 f"{self.name} must be a float or a list of floats, not {type_}"
