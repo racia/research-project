@@ -49,7 +49,7 @@ class Metric:
         type_ = type(metric)
         if type_ is Metric or issubclass(type_, Metric):
             self.all.append(metric.get_mean())
-        elif type_ is float or type_ is tuple:
+        elif type_ is float:
             self.all.append(metric)
         elif type_ is list:
             self.all.extend(metric)
@@ -63,7 +63,7 @@ class Metric:
         Return the mean of the metric values.
         """
         if len(self.all) == 0:
-            self.mean = 0.0
+            return 0.0
         else:
             self.mean = round(statistics.mean(self.all), 2)
         return self.mean
