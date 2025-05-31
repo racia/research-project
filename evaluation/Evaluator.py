@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import warnings
+
 from evaluation.Metrics import Accuracy, BLEU, Meteor, Metric, ROUGE
 from evaluation.Metrics import AttnDistribution, AttnOnTarget
 from evaluation.Statistics import Statistics
@@ -144,7 +146,9 @@ class MetricEvaluator(Evaluator):
         meteor_std = self.meteor.get_std()
         self.meteor_std.add(meteor_std)
 
-    def get_metrics(self, as_lists: bool = False) -> dict[str, Accuracy | Metric]:
+    def get_metrics(
+        self, as_lists: bool = False
+    ) -> dict[str, Accuracy | Metric | float]:
         """
         Get the metrics for the evaluator.
 
@@ -300,8 +304,18 @@ class AnswerEvaluator(Evaluator):
 
         :return: tuple of max attention distribution and attention on target
         """
-        if not self.max_supp_attn.all:
-            raise ValueError(f"No attention scores available for level {self.level}.")
+        attn_metrics = (self.attn_on_target.all, self.max_supp_attn.all)
+        if not all(attn_metrics):
+            raise ValueError(
+                f"No attention scores available for level {self.level}: "
+                f"{attn_metrics}."
+            )
+        if any(type(attn) is not list for attn in attn_metrics):
+            raise TypeError(
+                f"Expected list of attention scores, got "
+                f"{type(self.max_supp_attn.all)} ({self.max_supp_attn.all}) "
+                f"and {type(self.attn_on_target.all)} ({self.attn_on_target.all})"
+            )
         self.max_supp_attn_std.add(self.max_supp_attn.get_std())
         self.attn_on_target_std.add(self.attn_on_target.get_std())
         return self.max_supp_attn.get_mean(), self.attn_on_target.get_mean()
@@ -313,6 +327,13 @@ class AnswerEvaluator(Evaluator):
         :return: the BLEU score
         """
         for silver, pred in zip(self.silver_reasonings, self.pred_reasonings):
+            if not all((silver, pred)):
+                self.bleu.add(0.0)
+                warnings.warn(
+                    f"Both silver reasoning and prediction must be provided for BLEU calculation. "
+                    f"Got silver: '{silver}', pred: '{pred}'."
+                )
+                continue
             bleu_score = self.bleu.bleu.compute(references=[silver], predictions=[pred])
             # Example of return
             # {'bleu': 0.07169190876271075,
@@ -333,6 +354,13 @@ class AnswerEvaluator(Evaluator):
         :return: the ROUGE-L score
         """
         for silver, pred in zip(self.silver_reasonings, self.pred_reasonings):
+            if not all((silver, pred)):
+                self.rouge.add(0.0)
+                warnings.warn(
+                    f"Both silver reasoning and prediction must be provided for ROUGE calculation. "
+                    f"Got silver: '{silver}', pred: '{pred}'."
+                )
+                continue
             rouge_score = self.rouge.rouge.compute(
                 references=[silver], predictions=[pred]
             )
@@ -352,6 +380,13 @@ class AnswerEvaluator(Evaluator):
         :return: the Meteor score
         """
         for silver, pred in zip(self.silver_reasonings, self.pred_reasonings):
+            if not all((silver, pred)):
+                self.meteor.add(0.0)
+                warnings.warn(
+                    f"Both silver reasoning and prediction must be provided for METEOR calculation. "
+                    f"Got silver: '{silver}', pred: '{pred}'."
+                )
+                continue
             meteor_score = self.meteor.meteor.compute(
                 references=[silver], predictions=[pred]
             )
