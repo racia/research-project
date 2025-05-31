@@ -280,12 +280,14 @@ class MetricEvaluator(Evaluator):
         [!] Note that the correlation_score gets assigned the metrics_scores2 variable name  
         :return: The correlation score
         """
-        evaluator_metric_scores = getattr(self, metric_scores1) if isinstance(metric_scores1, str) else metric_scores1
-        evaluator_metric_scores2 = getattr(self, metric_scores2) if isinstance(metric_scores2, str) else metric_scores2
+        if isinstance(metric_scores1, str):
+            metric_scores1 = getattr(self, metric_scores1).all
+        if isinstance(metric_scores2, str):
+            metric_scores2 = getattr(self, metric_scores2).all
         #print("Calculating accuracy for metrics: ", evaluator_metric_scores, evaluator_metric_scores2)
         #assert isinstance(evaluator_metric_scores.all, list) and isinstance(evaluator_metric_scores2.all, list)
         corr_score, p_value = self.stats.corr_score(
-            evaluator_metric_scores.all, evaluator_metric_scores2.all
+            metric_scores1, metric_scores2
         )
         setattr(self, f"{metric_scores2}_corr", Correlation(
             f"Correlation of {metric_scores1} with {metric_scores2} {self.version.capitalize()}",
@@ -316,7 +318,7 @@ class MetricEvaluator(Evaluator):
         }
     
 
-class AnswerEvaluator(Evaluator):
+class AnswerEvaluator(MetricEvaluator):
     """
     This class handles everything related to evaluation on the sample level.
     """

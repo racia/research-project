@@ -729,7 +729,7 @@ class Sample:
                 features,
             )
 
-    def calculate_metrics(self) -> None:
+    def calculate_metrics(self, **kwargs) -> None:
         """
         Calls all the individual metric calculating functions.
         :return: None
@@ -737,6 +737,14 @@ class Sample:
         for evaluator in self.evaluators:
             evaluator.calculate_accuracies()
             evaluator.calculate_attention()
+            # Caculate correlation on sample level
+            print("Calculating metrics on level:", evaluator.level, evaluator.version)
+            sample_correct_answers = kwargs["sample_correct_answers"]
+            evaluator.calculate_correlation(
+                sample_correct_answers, "max_supp_attn")
+            evaluator.calculate_correlation(
+                sample_correct_answers, "attn_on_target"
+            )
             if self.run_with_reasoning:
                 evaluator.calculate_bleu()
                 evaluator.calculate_rouge()

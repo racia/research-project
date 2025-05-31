@@ -1,6 +1,6 @@
 model:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 50
+  max_new_tokens: 12
   # with temperature==0.0 the model will use log probability
   # to automatically increase the temperature until certain thresholds are hit.
   # I.e., in need of lowest temperature, set it to something like 0.00000001
@@ -28,7 +28,7 @@ data:
   # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  task_ids: [1,2]
+  task_ids: ~
   # to get all samples use ~ (will be converted to None)
   # to set a specific number of samples use an int
   samples_per_task: 5
@@ -51,7 +51,7 @@ data:
 
 init_prompt:
   paths:
-    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
+    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_direct_answer.txt"
   examples:
     add: True
     enumerated: True

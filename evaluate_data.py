@@ -161,6 +161,8 @@ def run(
                 sample_id=sample_id,
                 multi_system=multi_system,
             )
+            # Used to store the correct answers for each sample for later evaluation
+            sample_correct_answers = []
             for part in parts:
                 for version, result in zip(part.versions, part.results):
                     # TODO: add reasoning judgment to part results for it to be saved in the results table
@@ -178,6 +180,7 @@ def run(
 
                 sample.add_part(part)
                 result = part.get_result()
+                sample_correct_answers.append(int(result["answer_correct_before"]))
                 # necessary only if we want to addition more columns to our original results
                 # otherwise we can just create separate tables or files
                 saver.save_output(
@@ -186,7 +189,7 @@ def run(
                     file_name=results_file_name,
                 )
 
-            sample.calculate_metrics()
+            sample.calculate_metrics(sample_correct_answers=sample_correct_answers)
             task.add_sample(sample)
 
             if verbose:
