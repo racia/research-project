@@ -216,6 +216,12 @@ class Feedback(Setting):
         refine_message = self.refine_prompt.format_refine_message(
             self.student.chat.messages[-1], self.teacher.chat.messages[-1]
         )
+        if (
+            "Your teacher evaluated your answer and reasoning and found them to be flawed."
+            in self.student.chat.messages[-1]["content"]
+        ):
+            # If there are numerous iterations, the chat length grows beyond the model's context window.
+            self.student.chat.remove_message(-1)
         self.student.chat.add_message(**refine_message)
         return self.student.call(
             # subfolder will be removed as no plotting is done during the main run

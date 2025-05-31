@@ -12,7 +12,7 @@ student:
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
   baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/06-05-2025/21-28-46/init_prompt_reasoning/joined_t_all_task_results.csv"
-  task_ids: [ 18, 19, 20 ] # task 17 is done only till sample 64
+  task_ids: [ 20 ] # task 17 is done only till sample 64 | task 19 is done only till sample 77
   samples_per_task: 100
   splits:
     train: False

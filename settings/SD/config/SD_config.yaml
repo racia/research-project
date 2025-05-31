@@ -2,44 +2,46 @@ teacher:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
   max_new_tokens: 12
   temperature: 0.1
-  to_continue: false
+  to_continue: False
   mode: "eval"
   k: 15
   p: 0.9
+  interpretability:
+    use: False
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
   max_new_tokens: 100
   temperature: 0.1
-  to_continue: false
+  to_continue: False
   mode: "eval"
-
-setting:
-  name: 'SD'
   interpretability:
     use: True
     aggregate: True
 
+setting:
+  name: 'SD'
+
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  baseline_results: "${oc.env:HOME}/research-project/results/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
+  baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/06-05-2025/21-28-46/init_prompt_reasoning/joined_t_all_task_results.csv"
   # Order: train, valid, test
   splits:
     train: False
-    valid: True
-    test: False
-  # to get all tasks use (will be converted to None)
-  task_ids: ~
+    valid: False
+    test: True
+  # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
+  task_ids: ~
   samples_per_task: 50
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
     context: True
     question: False
+  # if to wrap the part prompt with the task description
   wrapper:
-    # if to wrap the part prompt with the task description
     context: |
       *TASK*
       Here are the context sentences:
@@ -51,7 +53,6 @@ data:
     answer: ""
 
 init_prompt:
-  # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
   examples:
@@ -66,7 +67,6 @@ init_prompt:
       *END OF EXAMPLE*
 
 eval_prompt:
-  # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/eval_prompt.txt"
   history: |
@@ -88,10 +88,9 @@ resume_prompt:
 
 logging:
   # if to print the results to a log file, otherwise will print to console
-  print_to_file: True
+  print_to_file: False
 
 results:
-  save_heatmaps: False
   headers:
     - id_
     - task_id
@@ -135,4 +134,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "${oc.env:HOME}/research-project/outputs/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/${now:%d-%m-%Y}/${now:%H-%M-%S}"
