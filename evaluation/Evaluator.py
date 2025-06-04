@@ -288,11 +288,11 @@ class MetricEvaluator(Evaluator):
         #assert isinstance(evaluator_metric_scores.all, list) and isinstance(evaluator_metric_scores2.all, list)
         corr_score, p_value = self.stats.corr_score(
             metric_scores1, metric_scores2
-        )
-        setattr(self, f"{metric_scores2}_corr", Correlation(
-            f"Correlation of {metric_scores1} with {metric_scores2} {self.version.capitalize()}",
-            f"{metric_scores1}_corr", correlations=[corr_score], p_values=[p_value]
-        ))
+        )        
+        var = f"{metric_scores2}_corr"
+        name = f"Correlation of {metric_scores1} with {metric_scores2} {self.version.capitalize()}"
+        setattr(self, var, Correlation(name, var, correlations=[corr_score], p_values=[p_value]))
+
         #getattr(self, f"{metric_scores2}_corr").add((corr_score, p_value))
         print("Resulting data", getattr(self, f"{metric_scores2}_corr").all)
         #print(f"Correlation score {corr_score} for: ", self.attn_on_, p_values=[p_value]target_corr, self.max_supp_attn_corr)

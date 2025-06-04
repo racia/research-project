@@ -97,7 +97,7 @@ class Statistics:
         E.g. may be for accuracy scores with max supporting attention scores.
         :param metrics_list1: One metric list of floats
         :param metrics_list2: The other metric list of floats
-        :return: The spearman correlation score
+        :return: The spearman correlation score and p-value
         """
         corr_score, p_value = spearmanr(metrics_list1, metrics_list2)
         #print("CORR", corr_score, float(corr_score))
