@@ -8,7 +8,7 @@ model:
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  task_ids: [ 1, 2, 3, 4, 5 ]
+  task_ids: [ 3, 4, 5 ]
   samples_per_task: 100
   splits:
     train: False
@@ -17,7 +17,7 @@ data:
 
 init_prompt:
   paths:
-    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
+    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_direct_answer.txt"
 
 logging:
   # if to print the results to a log file, otherwise will print to console

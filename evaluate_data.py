@@ -153,7 +153,7 @@ def run(
     for task_id, samples in results_data.items():
         assert type(task_id) is int
         task = Task(task_id, multi_system=multi_system)
-
+        #sample_lengths = []
         for sample_id, parts in list(samples.items())[:5]:
             assert type(sample_id) is int
             sample = Sample(
@@ -163,6 +163,9 @@ def run(
             )
             # Used to store the correct answers for each sample for later evaluation
             sample_correct_answers = []
+            sample_part_lengths = []
+            # part_lengths = []
+            part_length_sum, sample_length = 0, 0
             for part in parts:
                 for version, result in zip(part.versions, part.results):
                     # TODO: add reasoning judgment to part results for it to be saved in the results table
@@ -177,10 +180,14 @@ def run(
                             title=f"Attention Map for Task {part.task_id} Sample {part.sample_id} "
                             f"Part {part.part_id} (version: {version}, case: {result.category})",
                         )
+                part_length_sum = sum([len(raw_part) for raw_part in part.raw["context"].values()])
+                sample_length += part_length_sum
+                sample_part_lengths.append(sample_length)
 
                 sample.add_part(part)
                 result = part.get_result()
                 sample_correct_answers.append(int(result["answer_correct_before"]))
+                
                 # necessary only if we want to addition more columns to our original results
                 # otherwise we can just create separate tables or files
                 saver.save_output(
@@ -188,13 +195,16 @@ def run(
                     headers=list(result.keys()),
                     file_name=results_file_name,
                 )
-
-            sample.calculate_metrics(sample_correct_answers=sample_correct_answers)
+            # avg_part_length = sum(part_lengths) / len(part_lengths)
+            # sample_lengths.append(avg_part_length)
+            
+            sample.calculate_metrics(sample_correct_answers=sample_correct_answers, sample_part_lengths=sample_part_lengths)
             task.add_sample(sample)
 
             if verbose:
                 sample.print_sample_predictions()
                 print_metrics(sample)
+        #avg_sample_length = sum(sample_lengths) / len(sample_lengths)
 
         task.calculate_metrics()
         task.set_results()
@@ -219,7 +229,8 @@ def run(
                 )
 
         split.add_task(task)
-
+    split.calculate_metrics()
+    
     if verbose:
         print_metrics_table(evaluators=split.evaluators, id_=data_split)
 

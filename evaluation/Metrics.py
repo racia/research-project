@@ -122,10 +122,11 @@ class Correlation(Metric):
     :param name: the type of correlation
     :param var: the variable name
     :param correlations: the list of correlation values
+    :param p_value: the p-value of the correlation
     """
-    def __init__(self, name, var: str, correlations: list[float] = None , p_values: list[float] = None):
+    def __init__(self, name, var: str, correlations: list[float] = None , p_value: float = None):
         super().__init__(name, var, correlations)
-        self.p_values: list[float] = p_values if p_values else []
+        self.p_value: float = p_value if p_value else 0.0
 
 
 class AttnOnTarget(Metric):

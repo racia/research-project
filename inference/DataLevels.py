@@ -739,12 +739,13 @@ class Sample:
             evaluator.calculate_attention()
             # Caculate correlation on sample level
             print("Calculating metrics on level:", evaluator.level, evaluator.version)
-            sample_correct_answers = kwargs["sample_correct_answers"]
+            # Calculate correlation between accuracy and each kwarg
             evaluator.calculate_correlation(
-                sample_correct_answers, "max_supp_attn")
-            evaluator.calculate_correlation(
-                sample_correct_answers, "attn_on_target"
-            )
+                kwargs["sample_correct_answers"], 
+                max_supp_attn="max_supp_attn", 
+                attn_on_target="attn_on_target", 
+                sample_part_lengths=kwargs["sample_part_lengths"])
+            
             if self.run_with_reasoning:
                 evaluator.calculate_bleu()
                 evaluator.calculate_rouge()
@@ -834,8 +835,11 @@ class Task:
         for evaluator in self.evaluators:
             evaluator.calculate_std()
             print("Calculating metrics on level:", evaluator.level, evaluator.version)
-            evaluator.calculate_correlation("exact_match_accuracy", "max_supp_attn")
-            evaluator.calculate_correlation("exact_match_accuracy", "attn_on_target")
+            evaluator.calculate_correlation(
+                "exact_match_accuracy", 
+                max_supp_attn="max_supp_attn",
+                attn_on_target="attn_on_target",
+                )
             self.metrics.append({**initial, **evaluator.get_metrics()})
             
 
@@ -885,6 +889,21 @@ class Split:
             features += other_features
         for evaluator, other_evaluator in zip(self.evaluators, task.evaluators):
             evaluator.update(other_evaluator)
+    
+    
+    def calculate_metrics(self) -> None:
+        """
+        Calculate the metrics for the split.
+        :return: None
+        """
+        for evaluator in self.evaluators:
+            evaluator.calculate_std()
+            print("Calculating metrics on level:", evaluator.level, evaluator.version)
+            evaluator.calculate_correlation(
+                "exact_match_accuracy", 
+                max_supp_attn="max_supp_attn",
+                attn_on_target="attn_on_target",
+                )
 
 
 def print_metrics(data_level: Sample | Task | Split) -> None:

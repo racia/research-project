@@ -125,14 +125,14 @@ def format_metrics(
     metrics = {
         "mean": {},
         "std": {},
-        "p_values": {},
+        "p_value": {},
     }
     for header, metric in kwags.items():
         if not isinstance(metric, (Accuracy, Metric)):
             raise TypeError(f"Expected Accuracy or Metric, got {type(metric)} instead.")
         metrics["mean"][header] = metric.get_mean()
         metrics["std"][header] = metric.get_std() if "std" not in metric.var else None
-        metrics["p_values"][header] = metric.p_values if hasattr(metric, "p_values") else None
+        metrics["p_value"][header] = metric.p_value if hasattr(metric, "p_value") else None
     
     accuracies_to_save = metrics_to_save if metrics_to_save else {}
     for task, metrics in metrics.items():

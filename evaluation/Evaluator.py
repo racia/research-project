@@ -65,6 +65,10 @@ class Evaluator:
             f"Correlation of Accuracy with Attn on Target Distribution {self.version.capitalize()}", "attn_on_target_corr"
         )
 
+        self.sample_part_lengths_corr: Correlation = Correlation(
+            f"Correlation of Accuracy with Sample Part Lengths {self.version.capitalize()}", "sample_part_lengths_corr"        
+        )
+        
         self.bleu = BLEU(f"BLEU {self.version.capitalize()}", "bleu")
         self.bleu_std = Metric(
             f"Standard Deviation for BLEU {self.version.capitalize()}", "bleu_std"
@@ -97,6 +101,7 @@ class Evaluator:
             f"meteor_std={self.meteor.get_std()}>,"
             f"max_supp_attn_corr={self.max_supp_attn_corr.get_mean()}>, "
             f"attn_on_target_corr={self.attn_on_target_corr.get_mean()}>, "
+            f"sample_part_lengths_corr={self.sample_part_lengths_corr.get_mean()}>, "
         )
 
 
@@ -183,6 +188,7 @@ class MetricEvaluator(Evaluator):
                 f"meteor_std_{self.version}": self.meteor_std,
                 f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr,
                 f"attn_on_target_corr_{self.version}": self.attn_on_target_corr,
+                f"sample_part_lengths_corr_{self.version}": self.sample_part_lengths_corr,
             }
         return {
             f"exact_match_accuracy_{self.version}": self.exact_match_accuracy.get_mean(),
@@ -201,6 +207,7 @@ class MetricEvaluator(Evaluator):
             f"meteor_std_{self.version}": self.meteor.get_std(),
             f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr.get_mean(),
             f"attn_on_target_corr_{self.version}": self.attn_on_target_corr.get_mean(),
+            f"sample_part_lengths_corr_{self.version}": self.sample_part_lengths_corr.get_mean(),
         }
 
     def get_accuracies(self, as_lists: bool = False) -> dict[str, float | Metric]:
@@ -270,33 +277,35 @@ class MetricEvaluator(Evaluator):
         }
 
 
-    def calculate_correlation(self, metric_scores1: Union[list[tuple], str] = None, 
-                              metric_scores2: Union[list[tuple], str] = None,
+    def calculate_correlation(self, *args: Union[list[tuple], str], 
+                              **kwargs: Union[list[tuple], str],
                             ) -> tuple[float, ...]:
         """
-        Calculate the correlation score between two lists of metrics scores on task level, e.g. sample accuracies and attention scores
-        :param metrics_scores1: One list of metric scores, e.g. exact_match_accuracy or soft_match_accuracy scores
-        :param metrics_scores2: One list of metric scores, e.g. max_supp_attn or attn_on_target scores
-        [!] Note that the correlation_score gets assigned the metrics_scores2 variable name  
-        :return: The correlation score
+        Calculate the correlation score between each arg metric1 scores list with each kwarg metric2 scores list on task level.
+        :param args: One or more str metric or list of scores, e.g. exact_match_accuracy or soft_match_accuracy scores
+        :param kwargs: One or more str metric or list of scores, e.g. max_supp_attn or attn_on_target scores
+        [!] Note that the correlation_score gets assigned the metric2 scores variable name  
         """
-        if isinstance(metric_scores1, str):
-            metric_scores1 = getattr(self, metric_scores1).all
-        if isinstance(metric_scores2, str):
-            metric_scores2 = getattr(self, metric_scores2).all
-        #print("Calculating accuracy for metrics: ", evaluator_metric_scores, evaluator_metric_scores2)
-        #assert isinstance(evaluator_metric_scores.all, list) and isinstance(evaluator_metric_scores2.all, list)
-        corr_score, p_value = self.stats.corr_score(
-            metric_scores1, metric_scores2
-        )        
-        var = f"{metric_scores2}_corr"
-        name = f"Correlation of {metric_scores1} with {metric_scores2} {self.version.capitalize()}"
-        setattr(self, var, Correlation(name, var, correlations=[corr_score], p_values=[p_value]))
+        for metr1_scores in args:    
+            if isinstance(metr1_scores, str):
+                metr1_scores = getattr(self, metr1_scores)
+        
+            for k, metr2_scores in kwargs.items():
+                print(k, metr2_scores)
+                if isinstance(metr2_scores, str):
+                    metr2_scores = getattr(self, metr2_scores).all
+                    
+                corr_score, p_value = self.stats.corr_score(
+                    metr1_scores.all if isinstance(metr1_scores, str) else metr1_scores,
+                    metr2_scores
+                )
+                var = f"{k}_corr"
+                print("Variable name for correlation:", var)
+                name = f"Correlation of {metr1_scores} with {metr2_scores} {self.version.capitalize()}"
+                setattr(self, var, Correlation(name, var, correlations=[corr_score], p_value=round(p_value, 2)))
 
-        #getattr(self, f"{metric_scores2}_corr").add((corr_score, p_value))
-        print("Resulting data", getattr(self, f"{metric_scores2}_corr").all)
-        #print(f"Correlation score {corr_score} for: ", self.attn_on_, p_values=[p_value]target_corr, self.max_supp_attn_corr)
-        return corr_score, p_value
+                print("Resulting data", getattr(self, var).get_mean(),)
+
 
     def get_correlations(self, as_lists: bool = False) -> dict[str, float | Metric]:
         """
