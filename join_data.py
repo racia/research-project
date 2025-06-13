@@ -112,23 +112,6 @@ def define_sources(
     return items
 
 
-def join_headers(all_headers: list[list[str]]) -> tuple:
-    """
-    Get all unique headers from the data in one tuple
-
-    :param all_headers: list of headers from the data files
-    :return: list of unique headers
-    """
-    headers = []
-    lengths = [len(headers) for headers in all_headers]
-
-    for i in range(max(lengths)):
-        for header_list in all_headers:
-            if len(header_list) >= i and header_list[i] not in headers:
-                headers.append(header_list[i])
-    return tuple(headers)
-
-
 def get_headers(data: dict[Path, dict[str, list]]) -> tuple:
     """
     Check if the headers match in the data files and get all unique headers.
@@ -145,25 +128,23 @@ def get_headers(data: dict[Path, dict[str, list]]) -> tuple:
         header for header in set_headers if len(header) == fewest_headers_no
     ][0]
 
+    all_unique_headers = set(flatten(set_headers))
+
     if max(set_lengths) != fewest_headers_no:
         print("Headers do not match:", *set_headers, sep="\n", end="\n\n")
-
-        all_headers = set(flatten(set_headers))
         for headers, path in zip(set_headers, data.keys()):
             if len(headers) > fewest_headers_no:
                 surplus_headers = headers - fewest_headers
                 warnings.warn(
                     f"* Surplus * headers in {Path(*Path(path).parts[-6:])}:\n{surplus_headers}\n\n",
                 )
-            if len(headers) < len(all_headers):
-                missing_headers = all_headers - headers
+            if len(headers) < len(all_unique_headers):
+                missing_headers = all_unique_headers - headers
                 warnings.warn(
                     f"* Missing * headers in {Path(*Path(path).parts[-6:])}:\n{missing_headers}\n\n",
                 )
 
-    all_unique_headers = join_headers(all_headers)
-
-    return all_unique_headers
+    return tuple(all_unique_headers)
 
 
 def get_level_result(
@@ -278,7 +259,7 @@ def run(
 
     for path in flat_paths:
         print(f"Loading data from {Path(*Path(path).parts[-6:])}")
-        data[path], _ = loader.load_results(path)
+        data[path], _ = loader.load_results(path, list_output=False)
 
     print("Number of files:", len(data))
 
@@ -303,7 +284,7 @@ def run(
             f"Directory {result_directory} is not empty. Please provide an empty directory."
         )
 
-    saver = DataSaver(save_to=full_result_directory)
+    saver = DataSaver(save_to=full_result_directory, loaded_baseline_results=False)
     saver.save_output(
         data=joined_data,
         headers=tuple(headers),
@@ -349,12 +330,11 @@ def run(
 
         attn_scores = [path / "attn_scores" for path in flat_interpretability]
         plots = [path / "plots" for path in flat_interpretability]
-
-        if not (
-            len(attn_scores) == len(plots) == len(flat_paths) == len(sources_items)
-        ):
+        # TODO: add a check for plots is necessary
+        if not (len(attn_scores) == len(flat_paths) == len(sources_items)):
             raise ValueError(
-                "The number of paths for attention scores and plots do not match."
+                f"The number of paths for attention scores does not match the sources: "
+                f"attn_scores:{len(attn_scores)} != flat_paths:{len(flat_paths)} != sources_items:{len(sources_items)}"
             )
         for (source_path, item_ids), attn_scores_path, plots_path, path in zip(
             sources_items.items(), attn_scores, plots, flat_paths
@@ -372,17 +352,10 @@ def run(
             plots_count = 0
 
             for item_id in item_ids:
-                (
-                    attn_scores_pattern,
-                    x_tokens_pattern,
-                    y_tokens_pattern,
-                    attn_map_pattern,
-                ) = (
-                    None,
-                    None,
-                    None,
-                    None,
-                )
+                attn_scores_pattern = None
+                x_tokens_pattern = None
+                y_tokens_pattern = None
+                attn_map_pattern = None
                 if level == "task":
                     attn_scores_pattern = re.compile(
                         rf"attn_scores-{item_id}-\d+-\d+\.txt"
@@ -464,12 +437,18 @@ def run(
 
 if __name__ == "__main__":
     # TODO: addition paths of result directories that should be all_samples
+    # (TODO) Important: ensure that the paths include information about the task/sample IDs
     paths = [
-        "results/skyline/valid/with_examples/reasoning/tasks_1_2",
-        "results/skyline/valid/with_examples/reasoning/tasks_3/all_samples",
-        "results/skyline/valid/with_examples/reasoning/tasks_4_10",
-        "results/skyline/valid/with_examples/reasoning/tasks_11_20",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/07-05-2025/tasks_1_5",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/09-05-2025/tasks_10_15",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/06-05-2025/tasks_11_15",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/06-05-2025/tasks_16_20",
     ]
     # TODO: path to save the all_samples data
-    result_directory = "results/skyline/valid/with_examples/reasoning/all_tasks"
-    run(paths=paths, result_directory=result_directory, level="task")
+    result_directory = "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks"
+    run(
+        paths=paths,
+        result_directory=result_directory,
+        level="task",
+        keyword="reasoning_results",
+    )
