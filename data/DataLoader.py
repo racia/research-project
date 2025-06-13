@@ -332,13 +332,16 @@ class DataLoader:
         if tasks is None:
             tasks = list(range(1, 21))
 
-        for i, row in enumerate(data):
-            if type(row["task_id"]) is not int:
-                raise ValueError(
-                    f"Task id in row {i} is not an integer: {row['task_id']}"
-                )
-            if row["task_id"] not in tasks:
-                data.pop(i)
+        # TODO: turn this back on when the results include badly formatted task ids (e.g. strings)
+        # for i, row in enumerate(data):
+        #     if type(row["task_id"]) is not int:
+        #         if not list_output:
+        #             raise AttributeError("Unexpected format of loaded results. Try running with 'list_output=True'.")
+        #         raise ValueError(
+        #             f"Task id in row {i} is not an integer: {row['task_id']}"
+        #         )
+        #     if row["task_id"] not in tasks:
+        #         data.pop(i)
 
         self.number_of_parts = len(data)
         self.number_of_tasks = len(tasks)
