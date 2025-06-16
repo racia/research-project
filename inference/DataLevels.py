@@ -739,7 +739,6 @@ class Sample:
             evaluator.calculate_attention()
             # Caculate correlation on sample level
             print("Calculating metrics on level:", evaluator.level, evaluator.version)
-            # Calculate correlation between accuracy and each kwarg
             evaluator.calculate_correlation(
                 kwargs["sample_correct_answers"], 
                 max_supp_attn="max_supp_attn", 

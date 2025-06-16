@@ -180,9 +180,7 @@ def run(
                             title=f"Attention Map for Task {part.task_id} Sample {part.sample_id} "
                             f"Part {part.part_id} (version: {version}, case: {result.category})",
                         )
-                part_length_sum = sum([len(raw_part) for raw_part in part.raw["context"].values()])
-                sample_length += part_length_sum
-                sample_part_lengths.append(sample_length)
+                sample_part_lengths.append(len(part.raw["context"]))
 
                 sample.add_part(part)
                 result = part.get_result()
