@@ -663,6 +663,7 @@ class Sample:
                 evaluator.max_supp_attn.add(result.max_supp_attn)
                 evaluator.attn_on_target.add(result.attn_on_target)
 
+
     def print_sample_predictions(self) -> None:
         """
         Print the model's predictions to compare with true values as a table.

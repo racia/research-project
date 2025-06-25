@@ -24,6 +24,12 @@ class Metric:
         self.mean: float = None
         self.std: float = None
 
+    def __repr__(self):
+        """
+        Return a string representation of the metric.
+        """
+        return f"{self.name} Metric: {self.get_mean()} ± {self.get_std()}"
+
     def __getitem__(self, slice_: slice) -> float | list[float]:
         """
         Return the metric at the given index.

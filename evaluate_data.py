@@ -13,8 +13,8 @@
 from __future__ import annotations
 
 import argparse
-from collections import defaultdict
 import re
+from collections import defaultdict
 from pathlib import Path
 
 from data.DataLoader import DataLoader
@@ -153,7 +153,7 @@ def run(
     for task_id, samples in results_data.items():
         assert type(task_id) is int
         task = Task(task_id, multi_system=multi_system)
-        #sample_lengths = []
+        # sample_lengths = []
         for sample_id, parts in list(samples.items())[:5]:
             assert type(sample_id) is int
             sample = Sample(
@@ -180,14 +180,16 @@ def run(
                             title=f"Attention Map for Task {part.task_id} Sample {part.sample_id} "
                             f"Part {part.part_id} (version: {version}, case: {result.category})",
                         )
-                part_length_sum = sum([len(raw_part) for raw_part in part.raw["context"].values()])
+                part_length_sum = sum(
+                    [len(raw_part) for raw_part in part.raw["context"].values()]
+                )
                 sample_length += part_length_sum
                 sample_part_lengths.append(sample_length)
 
                 sample.add_part(part)
                 result = part.get_result()
                 sample_correct_answers.append(int(result["answer_correct_before"]))
-                
+
                 # necessary only if we want to addition more columns to our original results
                 # otherwise we can just create separate tables or files
                 saver.save_output(
@@ -197,14 +199,17 @@ def run(
                 )
             # avg_part_length = sum(part_lengths) / len(part_lengths)
             # sample_lengths.append(avg_part_length)
-            
-            sample.calculate_metrics(sample_correct_answers=sample_correct_answers, sample_part_lengths=sample_part_lengths)
+
+            sample.calculate_metrics(
+                sample_correct_answers=sample_correct_answers,
+                sample_part_lengths=sample_part_lengths,
+            )
             task.add_sample(sample)
 
             if verbose:
                 sample.print_sample_predictions()
                 print_metrics(sample)
-        #avg_sample_length = sum(sample_lengths) / len(sample_lengths)
+        # avg_sample_length = sum(sample_lengths) / len(sample_lengths)
 
         task.calculate_metrics()
         task.set_results()
@@ -230,7 +235,7 @@ def run(
 
         split.add_task(task)
     split.calculate_metrics()
-    
+
     if verbose:
         print_metrics_table(evaluators=split.evaluators, id_=data_split)
 
@@ -249,13 +254,46 @@ def run(
             version=version,
         )
         print(
-            f"\nPlotting metrics and standard deviation for results '{version}'...",
+            f"\nPlotting accuracies and standard deviation for results '{version}'...",
             end="\n\n",
         )
-        # TODO: fix the plots and plot more fine-grained metrics instead of all together
         plotter.plot_acc_per_task_and_prompt(
-            acc_per_prompt_task=evaluator.get_metrics(as_lists=True),
+            acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
             y_label="Accuracies and Standard Deviations",
+            plot_name_add=[split.name, version],
+        )
+        plotter.plot_acc_with_std(
+            acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
+            y_label="Accuracies and Standard Deviations",
+            file_name="acc_std",
+            plot_name_add=[split.name, version],
+        )
+        print(
+            f"\nPlotting attentions for results '{version}'...",
+            end="\n\n",
+        )
+        plotter.plot_acc_per_task_and_prompt(
+            acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
+            y_label="Attentions",
+            plot_name_add=[split.name, version],
+        )
+        print(
+            f"\nPlotting reasoning scores for results '{version}'...",
+            end="\n\n",
+        )
+        plotter.plot_acc_per_task_and_prompt(
+            acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
+            y_label="Reasoning Scores",
+            plot_name_add=[split.name, version],
+        )
+        print(
+            f"\nPlotting correlations for results '{version}'...",
+            end="\n\n",
+        )
+        print("Correlations between metrics:", evaluator.get_correlations(as_lists=True))
+        plotter.plot_acc_per_task_and_prompt(
+            acc_per_prompt_task=evaluator.get_correlations(as_lists=True),
+            y_label="Correlations",
             plot_name_add=[split.name, version],
         )
         # TODO: plot attention distribution per task and sample
@@ -275,13 +313,12 @@ def run(
     print("\nThe evaluation pipeline has finished successfully.")
 
 
-def parse_args():
+def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace:
     """
     Parse the command line arguments.
 
     :return: None
     """
-
     parser = argparse.ArgumentParser(description="Evaluate the results of the model.")
     parser.add_argument(
         "--results_path",
@@ -312,12 +349,22 @@ def parse_args():
         action="store_true",
         help="Whether to print the results to the console.",
     )
-
+    if script_args is not None:
+        if isinstance(script_args, str):
+            script_args = script_args.split()
+        args, unexpected = parser.parse_known_args(
+            script_args, namespace=argparse.Namespace()
+        )
+        if unexpected:
+            print(f"Unexpected arguments: {unexpected}")
+        return args
     return parser.parse_args()
 
 
 if __name__ == "__main__":
-    args = parse_args()
+    path = "--results_path outputs/test-baseline-run/06-05-2025/21-11-36/init_prompt_reasoning/test_init_prompt_reasoning_results.csv"
+    args = " --save_path outputs/test-baseline-run/06-05-2025/21-11-36/init_prompt_reasoning/ --samples_per_task 2 --verbose"
+    args = parse_args(path + args)
     # python3.12 evaluate_data.py --results_path baseline/28-05-2025/22-39-52/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv --save_path results/here --samples_per_task 15 --create_heatmaps --verbose
     run(
         results_path=args.results_path,

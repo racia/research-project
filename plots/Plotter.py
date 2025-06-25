@@ -251,3 +251,63 @@ class Plotter:
             number_of_prompts=number_of_prompts,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
+
+    def plot_acc_with_std(
+        self,
+        acc_per_prompt_task: dict[str | Prompt, Accuracy | Metric],
+        x_label: str = "Task",
+        y_label: str = "Accuracy",
+        file_name=None,
+        plot_name_add: list[str] = None,
+    ) -> None:
+        plt.figure(figsize=(15, 5))
+        colors = self.cmap(np.linspace(0, 1, len(acc_per_prompt_task)))
+
+        number_of_prompts = 0
+        max_x_len = 0
+
+        means = [
+            np.array(v.all)
+            for k, v in acc_per_prompt_task.items()
+            if "std" not in k.lower()
+        ]
+        stds = [
+            np.array(v.all)
+            for k, v in acc_per_prompt_task.items()
+            if "std" in k.lower()
+        ]
+
+        for prompt, mean, std, color in zip(
+            acc_per_prompt_task.keys(), means, stds, colors
+        ):
+            number_of_prompts += 1
+
+            if len(mean) > max_x_len:
+                max_x_len = len(mean)
+
+            x_data = np.arange(1, len(mean) + 1)
+
+            plt.plot(
+                x_data,
+                mean,
+                label=prompt if isinstance(prompt, str) else prompt.name,
+                color=color,
+            )
+            # TODO: stds are shorter than means
+            # Add standard deviation shading
+            plt.fill_between(
+                x_data,
+                mean - std,
+                mean + std,
+                color=color,
+                alpha=0.25,
+            )
+
+        self._plot_general_details(
+            x_label,
+            y_label,
+            max_x_len,
+            plot_name_add,
+            number_of_prompts=number_of_prompts,
+        )
+        self._save_plot(y_label, x_label, file_name, plot_name_add)
