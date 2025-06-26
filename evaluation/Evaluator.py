@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import warnings
+from collections import defaultdict
 from typing import Union
 
 from evaluation.Metrics import Accuracy, Correlation, BLEU, Meteor, Metric, ROUGE
@@ -253,7 +254,7 @@ class MetricEvaluator(Evaluator):
             f"max_supp_attn_{self.version}": self.max_supp_attn.get_mean(),
             f"max_supp_attn_std_{self.version}": self.max_supp_attn.get_std(),
             f"attn_on_target_{self.version}": self.attn_on_target.get_mean(),
-            f"attn_on_target_std_{self.version}": self.attn_on_target_std.get_std(),
+            f"attn_on_target_std_{self.version}": self.attn_on_target.get_std(),
         }
 
     def get_reasoning_scores(self, as_lists: bool = False) -> dict[str, float | Metric]:
@@ -282,7 +283,7 @@ class MetricEvaluator(Evaluator):
 
     def calculate_correlation(
         self,
-        *args: Union[list[tuple], str],
+        # *args: Union[list[tuple], str],
         **kwargs: Union[list[tuple], str],
     ) -> tuple[float, ...]:
         """
@@ -291,35 +292,30 @@ class MetricEvaluator(Evaluator):
         :param kwargs: One or more str metric or list of scores, e.g. max_supp_attn or attn_on_target scores
         [!] Note that the correlation_score gets assigned the metric2 scores variable name
         """
-        for metr1_scores in args:
-            if isinstance(metr1_scores, str):
-                metr1_scores = (
-                    getattr(self, metr1_scores).all
-                    if isinstance(metr1_scores, str)
-                    else metr1_scores
+        for key, value in kwargs.items():
+            if isinstance(value, str):
+                kwargs[key] = (
+                    getattr(self, value).all if isinstance(value, str) else value
                 )
 
-            for k, metr2_scores in kwargs.items():
-                print(k, metr2_scores)
-                if isinstance(metr2_scores, str):
-                    metr2_scores = getattr(self, metr2_scores).all
-
-                assert len(metr1_scores) == len(metr2_scores), (
-                    f"Length of {metr1_scores} ({len(metr1_scores)}) and {metr2_scores} ({len(metr2_scores)}) "
+        corr_matrix = defaultdict(dict)
+        for base_name, base_values in kwargs.items():
+            for add_name, add_values in kwargs.items():
+                if base_name == add_name:
+                    continue
+                assert len(base_values) == len(add_values), (
+                    f"Length of {base_values} ({len(base_values)}) and {add_values} ({len(add_values)}) "
                     f"must be equal for correlation calculation."
                 )
-
-                corr_score, p_value = self.stats.corr_score(metr1_scores, metr2_scores)
-                var = f"{k}_corr"
+                corr_score, p_value = self.stats.corr_score(base_values, add_values)
+                corr_matrix[base_name][add_name] = corr_score, p_value
+                var = f"{base_name}_{add_name}_corr"
                 print("Variable name for correlation:", var)
-                name = f"Correlation of {metr1_scores} with {metr2_scores} {self.version.capitalize()}"
-                setattr(
-                    self,
-                    var,
-                    Correlation(
-                        name, var, correlations=[corr_score], p_value=round(p_value, 2)
-                    ),
+                name = f"Correlation of {base_name} with {add_name} {self.version.capitalize()}"
+                corr = Correlation(
+                    name, var, correlations=corr_score, p_value=round(p_value, 2)
                 )
+                setattr(self, var, corr)
 
                 print(
                     "Resulting data",
