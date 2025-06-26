@@ -311,3 +311,58 @@ class Plotter:
             number_of_prompts=number_of_prompts,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
+
+    def plot_correlation(
+        self,
+        acc_per_prompt_task: dict[str | Prompt, Accuracy | Metric],
+        y_data: list[float],
+        x_label: str = "X",
+        y_label: str = "Y",
+        file_name=None,
+        plot_name_add: list[str] = None,
+    ) -> None:
+        """
+        Plot the correlation between two variables.
+
+        :param acc_per_prompt_task
+        :param y_data: data for the y-axis, e.g. length of sentences
+        :param x_label: label for the x-axis
+        :param y_label: label for the y-axis
+        :param file_name: name of the plot
+        :param plot_name_add: addition to the plot name
+        :return: None
+        """
+        plt.figure(figsize=(15, 5))
+        colors = self.cmap(np.linspace(0, 1, len(acc_per_prompt_task)))
+
+        number_of_prompts = 0
+        max_x_len = 0
+
+        for (prompt, acc), color in zip(acc_per_prompt_task.items(), colors):
+            number_of_prompts += 1
+            if len(acc.all) > max_x_len:
+                max_x_len = len(acc.all)
+
+            if len(acc) != len(y_data):
+                raise ValueError(
+                    f"x and y must have the same first dimension, but have shapes {len(acc)} and {len(y_data)}"
+                )
+
+            if not y_data:
+                raise ValueError("y_data is empty")
+
+            plt.scatter(
+                acc,
+                y_data,
+                label=prompt if isinstance(prompt, str) else prompt.name,
+                color=color,
+            )
+
+        self._plot_general_details(
+            x_label,
+            y_label,
+            max_x_len,
+            plot_name_add,
+            number_of_prompts=number_of_prompts,
+        )
+        self._save_plot(y_label, x_label, file_name, plot_name_add)

@@ -290,13 +290,16 @@ def run(
             f"\nPlotting correlations for results '{version}'...",
             end="\n\n",
         )
-        print("Correlations between metrics:", evaluator.get_correlations(as_lists=True))
+        print(
+            "Correlations between metrics:", evaluator.get_correlations(as_lists=True)
+        )
         plotter.plot_acc_per_task_and_prompt(
             acc_per_prompt_task=evaluator.get_correlations(as_lists=True),
             y_label="Correlations",
             plot_name_add=[split.name, version],
         )
         # TODO: plot attention distribution per task and sample
+        # TODO: add scatter plots
         print("Saving result categories...")
         for case, case_list in Results.CASE_COUNTERS[version].items():
             headers = "id_\ttask_id\tsample_id\tpart_id"
