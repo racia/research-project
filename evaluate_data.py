@@ -202,22 +202,27 @@ def run(
             if verbose:
                 sample.print_sample_predictions()
                 print_metrics(sample)
+            for evaluator, version in zip(sample.evaluators, sample.versions):
+                #metrics_to_save = defaultdict(dict)
+                metrics = list(format_metrics(evaluator.get_metrics(as_lists=True)).values())
+                # Get the 
+                #metrics_to_save[f"{sample_id}"] = evaluator.get_metrics(as_lists=True).values()
+                print(f"{evaluator} Metrics for {version}:", metrics, end="\n\n")
         #avg_sample_length = sum(sample_lengths) / len(sample_lengths)
-
-        task.calculate_metrics()
+        task.calculate_metrics()   
         task.set_results()
         # TODO: save metrics series in separate files for each task
 
         if verbose:
             print_metrics(task)
         for evaluator, version in zip(task.evaluators, task.versions):
-            metrics_to_save = defaultdict(dict)
+
             metrics = list(
                 format_metrics(evaluator.get_metrics(as_lists=True)).values()
             )
             for metric in metrics:
+                metrics_to_save = defaultdict(dict)
                 metrics_to_save[metric["task_id"]].update(metric)
-
             for metric in metrics_to_save.values():
                 saver.save_output(
                     data=[metric],

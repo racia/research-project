@@ -288,23 +288,24 @@ class MetricEvaluator(Evaluator):
         """
         for metr1_scores in args:    
             if isinstance(metr1_scores, str):
-                metr1_scores = getattr(self, metr1_scores).all
+                metr1_scores = getattr(self, metr1_scores).all #TODO: Add name
+                #metr1_scores_name = getattr(self, metr1_scores).name
         
-            for k, metr2_scores in kwargs.items():
-                print(k, metr2_scores)
+            for k2, metr2_scores in kwargs.items():
                 if isinstance(metr2_scores, str):
                     metr2_scores = getattr(self, metr2_scores).all
+                    print(k2, metr2_scores)
                     
                 corr_score, p_value = self.stats.corr_score(
                     metr1_scores,
                     metr2_scores
                 )
-                var = f"{k}_corr"
+                var = f"{k2}_corr"
                 print("Variable name for correlation:", var)
-                name = f"Correlation of {metr1_scores} with {metr2_scores} {self.version.capitalize()}"
+                name = f"Correlation of {metr1_scores} with {k2} {self.version.capitalize()}"
                 setattr(self, var, Correlation(name, var, correlations=[corr_score], p_values=[round(p_value, 2)]))
 
-                print("Resulting data", getattr(self, var).get_mean(),)
+                print("Resulting data", getattr(self, var).get_mean())
 
 
     def get_correlations(self, as_lists: bool = False) -> dict[str, float | Metric]:

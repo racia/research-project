@@ -824,6 +824,8 @@ class Task:
             self.results[0][f"max_supp_attn_corr_{version}"] = max_supp_attn_corr
             attn_on_target_corr = evaluator.attn_on_target_corr.get_mean()
             self.results[0][f"attn_on_target_corr_{version}"] = attn_on_target_corr  
+            sample_part_lengths_corr = evaluator.sample_part_lengths_corr.get_mean()
+            self.results[0][f"sample_part_lengths_corr_{version}"] = sample_part_lengths_corr
 
     def calculate_metrics(self) -> None:
         """
@@ -832,8 +834,35 @@ class Task:
         """
         initial = {"task_id": self.task_id}
         for evaluator in self.evaluators:
+            # Create lists of sample part attributes for correlation calculation
+            parts_answer_correct = []
+            parts_max_supp_attn = []
+            parts_attn_on_target = []
+            sample_part_lengths = []
+
+            for part in self.parts:
+                parts_answer_correct.append(part.result["answer_correct_before"])
+                parts_max_supp_attn.append(part.result["max_supp_attn_before"])
+                parts_attn_on_target.append(part.result["attn_on_target_before"])
+                # Get number of context sentences in the part
+                sample_part_lengths.append(len(part.structured_context.split()))
+            
+            evaluator.calculate_correlation(
+                parts_answer_correct, 
+                max_supp_attn=parts_max_supp_attn, 
+                attn_on_target=parts_attn_on_target,
+                sample_part_lengths=sample_part_lengths,  # Not applicable on task level
+
+            )
+
+
+
+
+        for evaluator in self.evaluators:
+
             evaluator.calculate_std()
             print("Calculating metrics on level:", evaluator.level, evaluator.version)
+            # Calculates correlation using mean part attention scores for samples
             evaluator.calculate_correlation(
                 "exact_match_accuracy", 
                 max_supp_attn="max_supp_attn",
