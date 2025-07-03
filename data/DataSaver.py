@@ -187,16 +187,22 @@ class DataSaver:
         with open(file_path, "w", encoding="UTF-8") as file:
             file.write(sep.join(map(lambda x: str(x).strip(), data)))
 
-    @staticmethod
-    def save_json(file_path: Path, data: Iterable) -> None:
+
+    def save_json(self, file_path: str | Path, data: Iterable, path_add: str | Path = "",) -> None:
         """
         Save json data
 
         :param file_path: the path to the file
         :param data: the data to save
+        :param add: the addition to the file path
         :return: None
         """
-        with open(file_path, "w", encoding="UTF-8") as file:
+        if isinstance(file_path, str):
+            file_name = self.results_path / path_add / file_path
+            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+        else:
+            Path(file_name)
+        with open(file_name, "w", encoding="UTF-8") as file:
             file.write(json.dumps(data, indent=2))
 
     def save_part_interpretability(

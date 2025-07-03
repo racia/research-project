@@ -202,6 +202,12 @@ def run(
             )
             task.add_sample(sample)
 
+            saver.save_json(
+                data=sample_corr_matrix,
+                file_path=f"sample_corr_matrix_{sample_id}.json",
+                path_add=Path(version, f"t{task_id}",),
+            )
+
             if verbose:
                 sample.print_sample_predictions()
                 print_metrics(sample)
@@ -211,31 +217,25 @@ def run(
                 # Get the metrics_to_save[f"{sample_id}"] = evaluator.get_metrics(as_lists=True).values()
                 print(f"{evaluator} Metrics for {version}:", metrics, end="\n\n")
         #avg_sample_length = sum(sample_lengths) / len(sample_lengths)
+        
         task.set_results()
         task_corr_matrix = task.calculate_metrics()
-        headers = [""] + list(task_corr_matrix.keys())
-        for row_header, base_name in zip(list(task_corr_matrix.keys()),task_corr_matrix):
-            d = task_corr_matrix[base_name] # Get the dictionary for the base name
-            d[""] = row_header 
-            saver.save_output(
-                data=[d],
-                headers=headers,
-                file_name=f"results_{version}.csv",
-                path_add=Path(version, f"t{task_id}"),
-            )
-
-        # TODO: save metrics series in separate files for each task
+        saver.save_json(
+            data=task_corr_matrix,
+            file_path=f"task_corr_matrix_{task_id}.json",
+            path_add=Path(version, f"t{task_id}"),
+        )
 
         if verbose:
             print_metrics(task)
         for evaluator, version in zip(task.evaluators, task.versions):
-
+            metrics_to_save = defaultdict(dict)
             metrics = list(
                 format_metrics(evaluator.get_metrics(as_lists=True)).values()
             )
             for metric in metrics:
-                metrics_to_save = defaultdict(dict)
                 metrics_to_save[metric["task_id"]].update(metric)
+                
             for metric in metrics_to_save.values():
                 saver.save_output(
                     data=[metric],
