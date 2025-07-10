@@ -305,12 +305,10 @@ class MetricEvaluator(Evaluator):
                     f"Length of {base_values} ({len(base_values)}) and {add_values} ({len(add_values)}) "
                     f"must be equal for correlation calculation."
                 )
-                print("Base values:", base_values)
-                print("Add values:", add_values)
+
                 corr_score, p_value = self.stats.corr_score(base_values, add_values)
                 corr_matrix[base_name][add_name] = corr_score, p_value
                 var = f"{base_name}_{add_name}_corr"
-                print("Variable name for correlation:", var)
                 name = f"Correlation of {base_name} with {add_name} {self.version.capitalize()}"
                 corr = Correlation(
                     name, var
@@ -319,13 +317,6 @@ class MetricEvaluator(Evaluator):
                 corr.p_values.append(round(p_value, 2))
                 setattr(self, var, corr)
 
-                print(
-                    "Resulting data",
-                    getattr(self, var),
-                    type(getattr(self, var)),
-                    getattr(self, var).get_mean(),
-    
-                )
         return corr_matrix
 
     def get_correlations(self, as_lists: bool = False) -> dict[str, float | Metric]:

@@ -153,7 +153,7 @@ def run(
     for task_id, samples in results_data.items():
         assert type(task_id) is int
         task = Task(task_id, multi_system=multi_system)
-        # sample_lengths = []
+
         for sample_id, parts in list(samples.items())[:5]:
             assert type(sample_id) is int
             sample = Sample(
@@ -162,10 +162,7 @@ def run(
                 multi_system=multi_system,
             )
             # Used to store the correct answers for each sample for later evaluation
-            sample_correct_answers = []
-            sample_part_lengths = []
-            # part_lengths = []
-            part_length_sum, sample_length = 0, 0
+            
             for part in parts:
                 for version, result in zip(part.versions, part.results):
                     # TODO: add reasoning judgment to part results for it to be saved in the results table
@@ -180,11 +177,9 @@ def run(
                             title=f"Attention Map for Task {part.task_id} Sample {part.sample_id} "
                             f"Part {part.part_id} (version: {version}, case: {result.category})",
                         )
-                sample_part_lengths.append(len(part.raw["context"]))
 
                 sample.add_part(part)
                 result = part.get_result()
-                sample_correct_answers.append(int(result["answer_correct_before"]))
 
                 # necessary only if we want to addition more columns to our original results
                 # otherwise we can just create separate tables or files
@@ -193,20 +188,8 @@ def run(
                     headers=list(result.keys()),
                     file_name=results_file_name,
                 )
-            # avg_part_length = sum(part_lengths) / len(part_lengths)
-            # sample_lengths.append(avg_part_length)
 
-            sample_corr_matrix = sample.calculate_metrics(
-                sample_correct_answers=sample_correct_answers,
-                sample_part_lengths=sample_part_lengths,
-            )
             task.add_sample(sample)
-
-            saver.save_json(
-                data=sample_corr_matrix,
-                file_path=f"sample_corr_matrix_{sample_id}.json",
-                path_add=Path(version, f"t{task_id}",),
-            )
 
             if verbose:
                 sample.print_sample_predictions()
@@ -216,7 +199,7 @@ def run(
                 metrics = list(format_metrics(evaluator.get_metrics(as_lists=True)).values())
                 # Get the metrics_to_save[f"{sample_id}"] = evaluator.get_metrics(as_lists=True).values()
                 print(f"{evaluator} Metrics for {version}:", metrics, end="\n\n")
-        #avg_sample_length = sum(sample_lengths) / len(sample_lengths)
+
         
         task.set_results()
         task_corr_matrix = task.calculate_metrics()
@@ -244,11 +227,18 @@ def run(
                     path_add=Path(version, f"t{task_id}"),
                 )
 
-        split.add_task(task)
-    split.calculate_metrics()
+        print(f"Added task {task_id} with {len(sample.parts)} parts to split {data_split}.")
+    split_corr_matrix = split.calculate_metrics()
+
+    saver.save_json(
+        data=split_corr_matrix,
+        file_path="split_corr_matrix.json",
+        path_add=Path(data_split),
+    )
 
     if verbose:
         print_metrics_table(evaluators=split.evaluators, id_=data_split)
+
 
     saver.save_split_metrics(
         split=split,
