@@ -284,7 +284,7 @@ class MetricEvaluator(Evaluator):
     def calculate_correlation(
         self,
         **kwargs: Union[list[tuple], str],
-    ) -> tuple[float, ...]:
+    ) -> dict:
         """
         Calculate the correlation score between each arg metric1 scores list with each kwarg metric2 scores list on task level.
         :param kwargs: One or more str metric or list of scores, e.g. max_supp_attn or attn_on_target scores
@@ -310,9 +310,7 @@ class MetricEvaluator(Evaluator):
                 corr_matrix[base_name][add_name] = corr_score, p_value
                 var = f"{base_name}_{add_name}_corr"
                 name = f"Correlation of {base_name} with {add_name} {self.version.capitalize()}"
-                corr = Correlation(
-                    name, var
-                )
+                corr = Correlation(name, var)
                 corr.add(corr_score)
                 corr.p_values.append(round(p_value, 2))
                 setattr(self, var, corr)
