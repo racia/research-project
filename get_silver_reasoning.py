@@ -32,13 +32,13 @@ def main():
     valid_data = data_loader.load_task_data(
         path=f"{home}/tasks_1-20_v1-2/en-valid/",
         split=split,
-        tasks=[15],
+        tasks=[3, 17, 20],
         multi_system=False,
     )
 
     model = Model(
         "meta-llama/Meta-Llama-3-70B-Instruct",
-        max_new_tokens=100,
+        max_new_tokens=300,
         temperature=0.1,
         to_continue=False,
         role="model",
