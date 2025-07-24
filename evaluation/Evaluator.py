@@ -310,9 +310,7 @@ class MetricEvaluator(Evaluator):
                 corr_matrix[base_name][add_name] = corr_score, p_value
                 var = f"{base_name}_{add_name}_corr"
                 name = f"Correlation of {base_name} with {add_name} {self.version.capitalize()}"
-                corr = Correlation(
-                    name, var
-                )
+                corr = Correlation(name, var)
                 corr.add(corr_score)
                 corr.p_values.append(round(p_value, 2))
                 setattr(self, var, corr)
