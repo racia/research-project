@@ -225,7 +225,7 @@ class Plotter:
             number_of_prompts += 1
             if len(acc.all) > max_x_len:
                 max_x_len = len(acc.all)
-
+            print("Accuracy for prompt:", prompt, "is", acc.mean)
             x_data, y_data = range(1, len(acc.all) + 1), acc.all
 
             if len(x_data) != len(y_data):

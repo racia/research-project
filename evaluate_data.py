@@ -258,6 +258,10 @@ def run(
             f"\nPlotting accuracies and standard deviation for results '{version}'...",
             end="\n\n",
         )
+        print(
+            "Accuracies and standard deviations per task and prompt:",
+            evaluator.get_accuracies(as_lists=True),
+        )
         plotter.plot_acc_per_task_and_prompt(
             acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
             y_label="Accuracies and Standard Deviations",

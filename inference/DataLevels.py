@@ -729,7 +729,7 @@ class Sample:
                 features,
             )
 
-    def calculate_metrics(self, **kwargs) -> None:
+    def calculate_metrics(self, **kwargs) -> dict:
         """
         Calls all the individual metric calculating functions.
         :return: None
@@ -747,7 +747,7 @@ class Sample:
                 evaluator.calculate_bleu()
                 evaluator.calculate_rouge()
                 evaluator.calculate_meteor()
-            return corr_matrix
+        return corr_matrix
 
 
 class Task:
