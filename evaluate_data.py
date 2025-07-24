@@ -188,7 +188,7 @@ def run(
                     headers=list(result.keys()),
                     file_name=results_file_name,
                 )
-
+            sample.calculate_metrics()
             task.add_sample(sample)
 
             if verbose:
@@ -200,7 +200,7 @@ def run(
                     format_metrics(evaluator.get_metrics(as_lists=True)).values()
                 )
                 # Get the metrics_to_save[f"{sample_id}"] = evaluator.get_metrics(as_lists=True).values()
-                print(f"{evaluator} Metrics for {version}:", metrics, end="\n\n")
+                print(f"Metrics for {evaluator.level} {version}:", metrics, end="\n\n")
 
         task.set_results()
         split.add_task(task)
@@ -213,7 +213,7 @@ def run(
             saver.save_json(
                 data=task_corr_matrix[version],
                 file_path=f"task_corr_matrix_{task_id}.json",
-                path_add=Path(version, f"t{task_id}"),
+                path_add=Path(version),
             )
             metrics_to_save = defaultdict(dict)
             metrics = list(
@@ -227,7 +227,7 @@ def run(
                     data=[metric],
                     headers=list(metric.keys()),
                     file_name=f"eval_script_metrics_{version}.csv",
-                    path_add=Path(version, f"t{task_id}"),
+                    path_add=Path(version),
                 )
 
         print(
@@ -238,7 +238,6 @@ def run(
     saver.save_json(
         data=split_corr_matrix,
         file_path="split_corr_matrix.json",
-        path_add=Path(data_split),
     )
 
     if verbose:
@@ -262,22 +261,21 @@ def run(
             f"\nPlotting accuracies and standard deviation for results '{version}'...",
             end="\n\n",
         )
-        plotter.plot_acc_per_task_and_prompt(
-            acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
-            y_label="Accuracies and Standard Deviations",
-            plot_name_add=[split.name, version],
-        )
         plotter.plot_acc_with_std(
             acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
-            y_label="Accuracies and Standard Deviations",
-            file_name="acc_std",
+            y_label="Accuracies with Standard Deviations",
             plot_name_add=[split.name, version],
         )
         print(
             f"\nPlotting attentions for results '{version}'...",
             end="\n\n",
         )
-        plotter.plot_acc_per_task_and_prompt(
+        # plotter.plot_acc_per_task_and_prompt(
+        #     acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
+        #     y_label="Attentions",
+        #     plot_name_add=[split.name, version],
+        # )
+        plotter.plot_acc_with_std(
             acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
             y_label="Attentions",
             plot_name_add=[split.name, version],
@@ -286,7 +284,12 @@ def run(
             f"\nPlotting reasoning scores for results '{version}'...",
             end="\n\n",
         )
-        plotter.plot_acc_per_task_and_prompt(
+        # plotter.plot_acc_per_task_and_prompt(
+        #     acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
+        #     y_label="Reasoning Scores",
+        #     plot_name_add=[split.name, version],
+        # )
+        plotter.plot_acc_with_std(
             acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
             y_label="Reasoning Scores",
             plot_name_add=[split.name, version],
@@ -370,9 +373,9 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
 
 
 if __name__ == "__main__":
-    # path = "--results_path outputs/test-baseline-run/06-05-2025/21-11-36/init_prompt_reasoning/test_init_prompt_reasoning_results.csv"
-    # args = " --save_path outputs/test-baseline-run/06-05-2025/21-11-36/init_prompt_reasoning/ --samples_per_task 2 --verbose"
-    args = parse_args()  # path + args
+    path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
+    args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
+    args = parse_args(path + args)
     # python3.12 evaluate_data.py --results_path baseline/28-05-2025/22-39-52/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv --save_path results/here --samples_per_task 15 --create_heatmaps --verbose
     run(
         results_path=args.results_path,

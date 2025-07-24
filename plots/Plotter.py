@@ -50,15 +50,12 @@ class Plotter:
 
         :return: None
         """
-        if file_name is not None:
-            plt.savefig(file_name, bbox_inches="tight")
+        if not plot_name_add:
+            plt.savefig(self.results_path /  file_name, bbox_inches="tight")
         else:
             label = y_label.lower().replace(" ", "_")
-            plt.savefig(
-                self.results_path
-                / f"{'_'.join(plot_name_add)}_{label}_per_{x_label.lower()}_no_{self.plot_counter_task}.png",
-                bbox_inches="tight",
-            )
+            file_name = f"{'_'.join(plot_name_add)}_{label}_per_{x_label.lower()}_no_{self.plot_counter_task}.png"
+            plt.savefig(self.results_path / file_name, bbox_inches="tight")
 
         self.plot_counter_prompt += 1
         plt.close()
@@ -85,11 +82,25 @@ class Plotter:
         plt.xticks(range(1, max_x_len + 1))
         plt.xlabel(x_label)
 
-        y_ticks = np.arange(0, 1.1, 0.1)
-        plt.yticks(y_ticks)
-        plt.ylim(bottom=0, top=1.1)
+        if "accurac" in y_label.lower():
+            y_ticks = np.arange(0, 1.1, 0.1)
+            plt.ylim(bottom=0, top=1.1)
+            plt.ylim(bottom=0, top=1)
+        elif "attention" in y_label.lower():
+            y_ticks = np.arange(0, 0.6, 0.1)
+            plt.ylim(bottom=0, top=0.6)
+            plt.ylim(bottom=0, top=0.5)
+        elif "reasoning" in y_label.lower():
+            y_ticks = np.arange(0, 1.1, 0.1)
+            plt.ylim(bottom=0, top=1.1)
+            plt.ylim(bottom=0, top=1)
+        else:
+            y_ticks = np.arange(0, 1.1, 0.1)
+            plt.ylim(bottom=0, top=1.1)
+            plt.ylim(bottom=0, top=1)
 
-        plt.ylim(bottom=0, top=1)
+        plt.yticks(y_ticks)
+
         type_of_data = " ".join([part.capitalize() for part in y_label.split("_")])
         plt.ylabel(type_of_data)
 
@@ -105,11 +116,16 @@ class Plotter:
         plt.title(title)
 
         if number_of_prompts > 6:
-            plt.legend(
+            legend = plt.legend(
                 loc="center left", bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True
             )
         else:
-            plt.legend(bbox_to_anchor=(1.1, 1.05))
+            legend = plt.legend(bbox_to_anchor=(1.1, 1.05))
+
+        leg_lines = legend.get_lines()
+        leg_texts = legend.get_texts()
+        plt.setp(leg_lines, linewidth=3)
+        plt.setp(leg_texts, fontsize="x-large")
 
     def draw_heat(
         self,
@@ -261,8 +277,6 @@ class Plotter:
         plot_name_add: list[str] = None,
     ) -> None:
         plt.figure(figsize=(15, 5))
-        colors = self.cmap(np.linspace(0, 1, len(acc_per_prompt_task)))
-
         number_of_prompts = 0
         max_x_len = 0
 
@@ -276,12 +290,11 @@ class Plotter:
             for k, v in acc_per_prompt_task.items()
             if "std" in k.lower()
         ]
+        labels = [key for key in acc_per_prompt_task.keys() if not "std" in key.lower()]
+        colors = self.cmap(np.linspace(0, 1, len(labels)))
 
-        for prompt, mean, std, color in zip(
-            acc_per_prompt_task.keys(), means, stds, colors
-        ):
+        for prompt, mean, std, color in zip(labels, means, stds, colors):
             number_of_prompts += 1
-
             if len(mean) > max_x_len:
                 max_x_len = len(mean)
 
@@ -293,7 +306,6 @@ class Plotter:
                 label=prompt if isinstance(prompt, str) else prompt.name,
                 color=color,
             )
-            # TODO: stds are shorter than means
             # Add standard deviation shading
             plt.fill_between(
                 x_data,
@@ -308,7 +320,7 @@ class Plotter:
             y_label,
             max_x_len,
             plot_name_add,
-            number_of_prompts=number_of_prompts,
+            number_of_prompts,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
 

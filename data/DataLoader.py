@@ -308,8 +308,8 @@ class DataLoader:
 
             for row in reader:
                 # to make sure we are reading a row containing task data, not metrics
-                if not row[list(row.keys())[0]].isdigit():
-                    continue
+                # if not row[list(row.keys())[0]].isdigit():
+                #     continue
                 # to make sure we are reading a row containing data
                 if list_output or as_parts:
                     row_ = {}
