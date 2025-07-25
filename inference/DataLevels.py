@@ -729,26 +729,18 @@ class Sample:
                 features,
             )
 
-    def calculate_metrics(self, **kwargs) -> dict:
+    def calculate_metrics(self, **kwargs) -> None:
         """
         Calls all the individual metric calculating functions.
         :return: None
         """
-        corr_matrix = None
         for evaluator in self.evaluators:
             evaluator.calculate_accuracies()
             evaluator.calculate_attention()
-            # Calculate correlation on sample level
-            print("Calculating metrics on level:", evaluator.level, evaluator.version)
-            corr_matrix = evaluator.calculate_correlation(
-                **kwargs, max_supp_attn="max_supp_attn", attn_on_target="attn_on_target"
-            )
-
             if self.run_with_reasoning:
                 evaluator.calculate_bleu()
                 evaluator.calculate_rouge()
                 evaluator.calculate_meteor()
-        return corr_matrix
 
 
 class Task:
@@ -917,7 +909,7 @@ class Split:
         """
         corr_matrix = None
         for evaluator in self.evaluators:
-            evaluator.calculate_std()
+            # evaluator.calculate_std()
             print("Calculating metrics on level:", evaluator.level, evaluator.version)
             corr_matrix = evaluator.calculate_correlation(
                 exact_match_accuracy="exact_match_accuracy",
