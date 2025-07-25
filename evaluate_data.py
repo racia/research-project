@@ -162,7 +162,7 @@ def run(
                 multi_system=multi_system,
             )
             # Used to store the correct answers for each sample for later evaluation
-
+            
             for part in parts:
                 for version, result in zip(part.versions, part.results):
                     # TODO: add reasoning judgment to part results for it to be saved in the results table
@@ -195,33 +195,33 @@ def run(
                 sample.print_sample_predictions()
                 print_metrics(sample)
             for evaluator, version in zip(sample.evaluators, sample.versions):
-                # metrics_to_save = defaultdict(dict)
-                metrics = list(
-                    format_metrics(evaluator.get_metrics(as_lists=True)).values()
-                )
+                #metrics_to_save = defaultdict(dict)
+                metrics = list(format_metrics(evaluator.get_metrics(as_lists=True)).values())
                 # Get the metrics_to_save[f"{sample_id}"] = evaluator.get_metrics(as_lists=True).values()
                 print(f"{evaluator} Metrics for {version}:", metrics, end="\n\n")
 
+        
         task.set_results()
-        split.add_task(task)
         task_corr_matrix = task.calculate_metrics()
+        split.add_task(task)
 
         if verbose:
             print_metrics(task)
-
         for evaluator, version in zip(task.evaluators, task.versions):
-            saver.save_json(
-                data=task_corr_matrix[version],
-                file_path=f"task_corr_matrix_{task_id}.json",
-                path_add=Path(version, f"t{task_id}"),
-            )
             metrics_to_save = defaultdict(dict)
+            
+            saver.save_json(
+            data=task_corr_matrix,
+            file_path=f"task_corr_matrix_{task_id}.json",
+            path_add=Path(version, f"t{task_id}"),
+            )
+
             metrics = list(
                 format_metrics(evaluator.get_metrics(as_lists=True)).values()
             )
             for metric in metrics:
                 metrics_to_save[metric["task_id"]].update(metric)
-
+                
             for metric in metrics_to_save.values():
                 saver.save_output(
                     data=[metric],
@@ -230,9 +230,7 @@ def run(
                     path_add=Path(version, f"t{task_id}"),
                 )
 
-        print(
-            f"Added task {task_id} with {len(sample.parts)} parts to split {data_split}."
-        )
+        print(f"Added task {task_id} with {len(sample.parts)} parts to split {data_split}.")
     split_corr_matrix = split.calculate_metrics()
 
     saver.save_json(
@@ -243,6 +241,7 @@ def run(
 
     if verbose:
         print_metrics_table(evaluators=split.evaluators, id_=data_split)
+
 
     saver.save_split_metrics(
         split=split,
@@ -376,7 +375,7 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
 if __name__ == "__main__":
     # path = "--results_path outputs/test-baseline-run/06-05-2025/21-11-36/init_prompt_reasoning/test_init_prompt_reasoning_results.csv"
     # args = " --save_path outputs/test-baseline-run/06-05-2025/21-11-36/init_prompt_reasoning/ --samples_per_task 2 --verbose"
-    args = parse_args()  # path + args
+    args = parse_args() #path + args
     # python3.12 evaluate_data.py --results_path baseline/28-05-2025/22-39-52/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv --save_path results/here --samples_per_task 15 --create_heatmaps --verbose
     run(
         results_path=args.results_path,
