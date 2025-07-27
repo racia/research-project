@@ -195,32 +195,31 @@ def run(
                 sample.print_sample_predictions()
                 print_metrics(sample)
             for evaluator, version in zip(sample.evaluators, sample.versions):
-                #metrics_to_save = defaultdict(dict)
                 metrics = list(format_metrics(evaluator.get_metrics(as_lists=True)).values())
-                # Get the metrics_to_save[f"{sample_id}"] = evaluator.get_metrics(as_lists=True).values()
+                # Get the metrics_to_save
                 print(f"Metrics for {evaluator.level} {version}:", metrics, end="\n\n")
 
         
         task.set_results()
-        task_corr_matrix = task.calculate_metrics()
-        split.add_task(task)
 
         if verbose:
             print_metrics(task)
         for evaluator, version in zip(task.evaluators, task.versions):
+            task_corr_matrix = task.calculate_metrics()
+            plotter.heat_map(
+                data=task_corr_matrix,
+                level=evaluator.level,
+                version=version,
+                file_name=f"task_corr_matrix_{task_id}.pdf",
+            )
+            
             saver.save_json(
-                data=task_corr_matrix[version],
+                data=task_corr_matrix,
                 file_path=f"task_corr_matrix_{task_id}.json",
                 path_add=Path(version),
             )
             metrics_to_save = defaultdict(dict)
             
-            saver.save_json(
-            data=task_corr_matrix,
-            file_path=f"task_corr_matrix_{task_id}.json",
-            path_add=Path(version, f"t{task_id}"),
-            )
-
             metrics = list(
                 format_metrics(evaluator.get_metrics(as_lists=True)).values()
             )
@@ -235,14 +234,9 @@ def run(
                     path_add=Path(version),
                 )
 
-        print(f"Added task {task_id} with {len(sample.parts)} parts to split {data_split}.")
-    split_corr_matrix = split.calculate_metrics()
-
-    saver.save_json(
-        data=split_corr_matrix,
-        file_path="split_corr_matrix.json",
-    )
-
+    split.add_task(task)
+    print(f"Added task {task_id} with {len(sample.parts)} parts to split {data_split}.")
+        
     if verbose:
         print_metrics_table(evaluators=split.evaluators, id_=data_split)
 
@@ -305,10 +299,17 @@ def run(
         print(
             "Correlations between metrics:", evaluator.get_correlations(as_lists=True)
         )
-        plotter.plot_acc_per_task_and_prompt(
-            acc_per_prompt_task=evaluator.get_correlations(as_lists=True),
-            y_label="Correlations",
-            plot_name_add=[split.name, version],
+        split_corr_matrix = split.calculate_metrics()
+        plotter.heat_map(
+            data=split_corr_matrix,
+            level=evaluator.level,
+            version=version,
+            file_name=f"split_corr_matrix_{split}.pdf",
+        )
+
+        saver.save_json(
+            data=split_corr_matrix,
+            file_path=f"split_corr_matrix_{split}.json",
         )
         # TODO: plot attention distribution per task and sample
         # TODO: add scatter plots
@@ -377,9 +378,9 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
 
 
 if __name__ == "__main__":
-    path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
-    args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
-    args = parse_args(path + args)
+    #path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
+    #args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
+    args = parse_args()
     # python3.12 evaluate_data.py --results_path baseline/28-05-2025/22-39-52/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv --save_path results/here --samples_per_task 15 --create_heatmaps --verbose
     run(
         results_path=args.results_path,

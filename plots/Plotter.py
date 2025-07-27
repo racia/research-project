@@ -5,6 +5,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+import pandas as pd
 
 from evaluation.Metrics import Accuracy, Metric
 from inference.Prompt import Prompt
@@ -126,6 +127,35 @@ class Plotter:
         leg_texts = legend.get_texts()
         plt.setp(leg_lines, linewidth=3)
         plt.setp(leg_texts, fontsize="x-large")
+
+
+    def heat_map(
+        self,
+        data: np.ndarray,
+        level: str,
+        version: str = None,
+        file_name: str = None,
+    ) -> None:
+        """
+        Draw a heat map with the given data.
+        :param data: 2D numpy array with the data to plot
+        :param level: level of the data, e.g. "task", "sample", "part"
+        :param version: version of the data, e.g. "before", "after"
+        :param file_name: name of the file to save the plot
+        :return: None
+        """
+        plt.figure(figsize=(12, 8))
+        data = pd.DataFrame({k: {k2:v2[0] for k2,v2 in v.items()} for k,v in data.items()}, index=data.keys())
+        axis = sns.heatmap(data, annot=True)
+        cbar = axis.collections[0].colorbar
+        cbar.ax.tick_params(labelsize=5)
+        plt.title(f"Attention Map for {level} ({version})", fontsize=10)
+        plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
+        plot_subdirectory = self.results_path / "interpretability"
+        Path.mkdir(plot_subdirectory, exist_ok=True, parents=True)
+        plt.savefig(plot_subdirectory / file_name)
+        plt.close()
+    
 
     def draw_heat(
         self,

@@ -299,8 +299,8 @@ class MetricEvaluator(Evaluator):
         corr_matrix = defaultdict(dict)
         for base_name, base_values in kwargs.items():
             for add_name, add_values in kwargs.items():
-                if base_name == add_name:
-                    continue
+                # if base_name == add_name:
+                #     continue
                 assert len(base_values) == len(add_values), (
                     f"Length of {base_values} ({len(base_values)}) and {add_values} ({len(add_values)}) "
                     f"must be equal for correlation calculation."
