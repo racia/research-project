@@ -304,12 +304,12 @@ def run(
             data=split_corr_matrix,
             level=evaluator.level,
             version=version,
-            file_name=f"split_corr_matrix_{split}.pdf",
+            file_name=f"split_corr_matrix_{split.name}.pdf",
         )
 
         saver.save_json(
             data=split_corr_matrix,
-            file_path=f"split_corr_matrix_{split}.json",
+            file_path=f"split_corr_matrix_{split.name}.json",
         )
         # TODO: plot attention distribution per task and sample
         # TODO: add scatter plots
