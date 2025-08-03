@@ -43,5 +43,6 @@ test
 inference/prompts/*reasoning.txt
 interpretability/residual_decoding.py
 *.log
-*_out.txt
-*_err.txt
+
+baseline/
+results/

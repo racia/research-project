@@ -17,6 +17,7 @@ from inference.utils import (
     print_metrics_table,
     structure_part,
     wrap_text,
+    is_nan,
 )
 from interpretability.utils import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
@@ -660,8 +661,18 @@ class Sample:
                 if part.silver_reasoning:
                     evaluator.silver_reasonings.append(part.silver_reasoning)
             if result.interpretability:
-                evaluator.max_supp_attn.add(result.max_supp_attn)
-                evaluator.attn_on_target.add(result.attn_on_target)
+                if is_nan(result.max_supp_attn):
+                    warnings.warn(
+                        f"Found 'nan' in result.max_supp_attn results for part {part.ids}. Skipping."
+                    )
+                else:
+                    evaluator.max_supp_attn.add(result.max_supp_attn)
+                if is_nan(result.attn_on_target):
+                    warnings.warn(
+                        f"Found 'nan' in result.attn_on_target results for part {part.ids}. Skipping."
+                    )
+                else:
+                    evaluator.attn_on_target.add(result.attn_on_target)
 
     def print_sample_predictions(self) -> None:
         """

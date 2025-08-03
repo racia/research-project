@@ -19,19 +19,19 @@
 
 ### JOB STEPS START HERE ###
 
-if command -v module >/dev/null 2>&1; then
-    echo "Module util is available. Loading python and CUDA..."
-    module load devel/python/3.12.3-gnu-14.2
-    module load devel/cuda/12.8
-else
-    echo "Module util is not available. Using manually installed python and CUDA..."
-fi
+# if command -v module >/dev/null 2>&1; then
+#     echo "Module util is available. Loading python and CUDA..."
+#     module load devel/python/3.12.3-gnu-14.2
+#     module load devel/cuda/12.8
+# else
+#     echo "Module util is not available. Using manually installed python and CUDA..."
+# fi
 
 # initialize shell to work with bash
 source ~/.bashrc 2>/dev/null
 
 # Activate the conda environment
-ENV_NAME=".env"
+ENV_NAME="venv"
 echo "Activating the project environment: $ENV_NAME"
 if ! source $ENV_NAME/bin/activate; then
     echo "Error: Failed to activate the project environment '$ENV_NAME'."
@@ -77,7 +77,7 @@ do
   CONFIG_PATH=$(echo $CONFIG | cut -d ' ' -f 1)
   CONFIG_NAME=$(echo $CONFIG | cut -d ' ' -f 2)
   echo "Running the script with config: CONFIG_PATH=$CONFIG_PATH, CONFIG_NAME=$CONFIG_NAME"
-  python3 "$SCRIPT" --config-path $CONFIG_PATH --config-name $CONFIG_NAME hydra/job_logging=none
+  python3.9 "$SCRIPT" --config-path $CONFIG_PATH --config-name $CONFIG_NAME hydra/job_logging=none
 done
 
 # Verify if the script executed successfully

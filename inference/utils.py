@@ -342,3 +342,23 @@ def type_is_task(target_type: str, type_: str) -> bool:
     Check if the type is task.
     """
     return target_type == "task" and type_ in ["cont", "ques"]
+
+
+def is_nan(value: Any) -> bool:
+    """
+    Check if the value is NaN.
+
+    :param value: value to check
+    :return: True if the value is NaN, False otherwise
+    """
+    if value is None:
+        return True
+    elif isinstance(value, (float, int)):
+        return False
+    elif isinstance(value, (list, tuple)):
+        return any(is_nan(v) for v in value)
+    elif isinstance(value, torch.Tensor):
+        return torch.isnan(value).any().item()
+    elif isinstance(value, str):
+        return value.lower() == "nan"
+    return False

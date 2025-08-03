@@ -41,6 +41,7 @@ def find_difference_in_paths(paths: list[Path]) -> list[str]:
 
     :return: difference in the paths
     """
+    paths = [Path(path) if isinstance(path, str) else path for path in paths]
     names = [path.stem for path in paths]
     names_set = set(names)
     if "" in names_set:
