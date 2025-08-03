@@ -268,11 +268,6 @@ def run(
             f"\nPlotting attentions for results '{version}'...",
             end="\n\n",
         )
-        # plotter.plot_acc_per_task_and_prompt(
-        #     acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
-        #     y_label="Attentions",
-        #     plot_name_add=[split.name, version],
-        # )
         plotter.plot_acc_with_std(
             acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
             y_label="Attentions",
@@ -282,11 +277,6 @@ def run(
             f"\nPlotting reasoning scores for results '{version}'...",
             end="\n\n",
         )
-        # plotter.plot_acc_per_task_and_prompt(
-        #     acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
-        #     y_label="Reasoning Scores",
-        #     plot_name_add=[split.name, version],
-        # )
         plotter.plot_acc_with_std(
             acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
             y_label="Reasoning Scores",

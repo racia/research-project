@@ -822,12 +822,6 @@ class Task:
             self.results[0][f"exact_match_accuracy_{version}"] = mean_em_acc
             mean_sm_acc = evaluator.soft_match_accuracy.get_mean()
             self.results[0][f"soft_match_accuracy_{version}"] = mean_sm_acc
-            # max_supp_attn_corr = evaluator.max_supp_attn_corr.get_mean()
-            # self.results[0][f"max_supp_attn_corr_{version}"] = max_supp_attn_corr
-            # attn_on_target_corr = evaluator.attn_on_target_corr.get_mean()
-            # self.results[0][f"attn_on_target_corr_{version}"] = attn_on_target_corr
-            # sample_part_lengths_corr = evaluator.sample_part_lengths_corr.get_mean()
-            # self.results[0][f"sample_part_lengths_corr_{version}"] = sample_part_lengths_corr
 
     def calculate_metrics(self) -> dict:
         """

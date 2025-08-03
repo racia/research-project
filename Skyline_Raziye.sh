@@ -14,7 +14,7 @@
 #SBATCH --error="skyline_err.txt"         # TODO: adjust error log
 
 # Email notifications
-#SBATCH --mail-user="sari@cl.uni-heidelberg.de"              # TODO: Add your email address
+#SBATCH --mail-user=""              # TODO: Add your email address
 #SBATCH --mail-type=BEGIN,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###

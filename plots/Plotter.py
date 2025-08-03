@@ -83,7 +83,7 @@ class Plotter:
         plt.xticks(range(1, max_x_len + 1))
         plt.xlabel(x_label)
 
-        if "accurac" in y_label.lower():
+        if "accuracy" in y_label.lower():
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
             plt.ylim(bottom=0, top=1)

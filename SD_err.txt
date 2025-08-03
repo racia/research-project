@@ -1,0 +1,100 @@
+/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/data/DataLoader.py:414: UserWarning: The number of parts does not match the number of loaded data: 42 != 1000
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:05,  1.68s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:03<00:03,  1.70s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:05<00:01,  1.68s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.31s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.45s/it]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:05,  1.68s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:03<00:03,  1.70s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:05<00:01,  1.68s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.18s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.36s/it]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[nltk_data] Downloading package wordnet to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package omw-1.4 to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package omw-1.4 is already up-to-date!
+[nltk_data] Downloading package wordnet to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package omw-1.4 to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package omw-1.4 is already up-to-date!
+[nltk_data] Downloading package wordnet to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package omw-1.4 to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package omw-1.4 is already up-to-date!
+[nltk_data] Downloading package wordnet to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package omw-1.4 to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package omw-1.4 is already up-to-date!
+[nltk_data] Downloading package wordnet to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package omw-1.4 to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package omw-1.4 is already up-to-date!
+[nltk_data] Downloading package wordnet to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package omw-1.4 to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package omw-1.4 is already up-to-date!
+[nltk_data] Downloading package wordnet to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package omw-1.4 to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package omw-1.4 is already up-to-date!
+[nltk_data] Downloading package wordnet to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package omw-1.4 to
+[nltk_data]     /home/hd/hd_hd/hd_ea226/nltk_data...
+[nltk_data]   Package omw-1.4 is already up-to-date!
+`sdpa` attention does not support `output_attentions=True` or `head_mask`. Please set your attention to `eager` if you want any of these features.
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/running_script.py", line 293, in run_setting
+    task_result = setting.iterate_task(
+  File "/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/settings/Setting.py", line 228, in iterate_task
+    decoded_output, eval_dict, interpretability = self.apply_setting(
+  File "/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/settings/SD/SpeculativeDecoding.py", line 739, in apply_setting
+    return decoded_output, self.curr_eval_dict, self.get_after_interpretability()
+  File "/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/settings/Setting.py", line 107, in get_after_interpretability
+    interpretability = self.model.interpretability.process_attention(
+  File "/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/interpretability/Interpretability.py", line 188, in process_attention
+    attn_scores = self.get_attention_scores(
+  File "/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/interpretability/Interpretability.py", line 89, in get_attention_scores
+    [att.cpu().half() for att in output_tensor["attentions"]], dim=0
+  File "/pfs/data6/home/hd/hd_hd/hd_ea226/research-project/interpretability/Interpretability.py", line 89, in <listcomp>
+    [att.cpu().half() for att in output_tensor["attentions"]], dim=0
+AttributeError: 'NoneType' object has no attribute 'cpu'
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
