@@ -194,7 +194,7 @@ class DataSaver:
 
         :param file_path: the path to the file
         :param data: the data to save
-        :param add: the addition to the file path
+        :param path_add: the addition to the file path
         :return: None
         """
         if isinstance(file_path, str):

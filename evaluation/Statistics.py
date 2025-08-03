@@ -100,7 +100,6 @@ class Statistics:
         :return: The spearman correlation score and p-value
         """
         corr_score, p_value = spearmanr(metrics_list1, metrics_list2)
-        #print("CORR", corr_score, float(corr_score))
         return float(corr_score), float(p_value)
     
 

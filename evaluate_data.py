@@ -202,6 +202,10 @@ def run(
         
         task.set_results()
 
+        split.add_task(task)
+        print(f"Added task {task_id} with {len(sample.parts)} parts to split {data_split}.")
+     
+
         if verbose:
             print_metrics(task)
         for evaluator, version in zip(task.evaluators, task.versions):
@@ -233,10 +237,7 @@ def run(
                     file_name=f"eval_script_metrics_{version}.csv",
                     path_add=Path(version),
                 )
-
-    split.add_task(task)
-    print(f"Added task {task_id} with {len(sample.parts)} parts to split {data_split}.")
-        
+   
     if verbose:
         print_metrics_table(evaluators=split.evaluators, id_=data_split)
 
