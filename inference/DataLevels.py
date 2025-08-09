@@ -828,36 +828,39 @@ class Task:
         Calculate the metrics for the task.
         :return: None
         """
-        corr_matrix = {}
-        for evaluator in self.evaluators:
+        corr_matrices = {}
+        for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
             # Create lists of sample part attributes for correlation calculation
             parts_answer_correct = []
             parts_max_supp_attn = []
             parts_attn_on_target = []
             sample_part_lengths = []
 
-        for part in self.parts:
-            for result in part.results:
-                parts_answer_correct.append(result.answer_correct)
-                parts_max_supp_attn.append(result.interpretability.max_supp_attn)
-                parts_attn_on_target.append(result.interpretability.attn_on_target)
-                # Get number of context sentences in the part
-                sample_part_lengths.append(len(part.structured_context.split()))
+            for part in self.parts:
+                parts_answer_correct.append(part.results[i].answer_correct)
+                parts_max_supp_attn.append(
+                    part.results[i].interpretability.max_supp_attn
+                )
+                parts_attn_on_target.append(
+                    part.results[i].interpretability.attn_on_target
+                )
+                # Get number of context sentences in the part (excluding the question)
+                sample_part_lengths.append(len(part.context_line_nums) - 1)
 
-        assert bool(parts_answer_correct)
-        assert bool(parts_max_supp_attn)
-        assert bool(parts_attn_on_target)
-        assert bool(sample_part_lengths)
+            assert bool(parts_answer_correct)
+            assert bool(parts_max_supp_attn)
+            assert bool(parts_attn_on_target)
+            assert bool(sample_part_lengths)
 
-        # Calculate correlation using mean part attention scores for samples
-        # +parts_max_supp_attn+parts_attn_on_target+sample_part_lengths)
-        corr_matrix = evaluator.calculate_correlation(
-            parts_answer_correct=parts_answer_correct,
-            max_supp_attn=parts_max_supp_attn,
-            attn_on_target=parts_attn_on_target,
-            sample_part_lengths=sample_part_lengths,
-        )
-        return corr_matrix
+            # Calculate correlation using mean part attention scores for samples
+            # +parts_max_supp_attn+parts_attn_on_target+sample_part_lengths)
+            corr_matrices[version] = evaluator.calculate_correlation(
+                parts_answer_correct=parts_answer_correct,
+                max_supp_attn=parts_max_supp_attn,
+                attn_on_target=parts_attn_on_target,
+                sample_part_lengths=sample_part_lengths,
+            )
+        return corr_matrices
 
 
 class Split:
@@ -912,16 +915,16 @@ class Split:
         Calculate the metrics for the split.
         :return: The correlation matrix of the metrics.
         """
-        corr_matrix = None
-        for evaluator in self.evaluators:
+        corr_matrices = {}
+        for version, evaluator in zip(self.versions, self.evaluators):
             # evaluator.calculate_std()
             print("Calculating metrics on level:", evaluator.level, evaluator.version)
-            corr_matrix = evaluator.calculate_correlation(
+            corr_matrices[version] = evaluator.calculate_correlation(
                 exact_match_accuracy="exact_match_accuracy",
                 max_supp_attn="max_supp_attn",
                 attn_on_target="attn_on_target",
             )
-        return corr_matrix
+        return corr_matrices
 
 
 def print_metrics(data_level: Sample | Task | Split) -> None:

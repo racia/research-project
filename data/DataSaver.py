@@ -121,7 +121,7 @@ class DataSaver:
 
     def save_split_metrics(
         self,
-        split,
+        split: Split,
         metric_file_name: str,
     ) -> None:
         """
@@ -144,7 +144,7 @@ class DataSaver:
                 self.save_output(
                     data=[metric],
                     headers=list(metric.keys()),
-                    file_name=metric_file_name.replace("version", version),
+                    file_name=metric_file_name,
                     path_add=version,
                 )
 
@@ -187,8 +187,12 @@ class DataSaver:
         with open(file_path, "w", encoding="UTF-8") as file:
             file.write(sep.join(map(lambda x: str(x).strip(), data)))
 
-
-    def save_json(self, file_path: str | Path, data: Iterable, path_add: str | Path = "",) -> None:
+    def save_json(
+        self,
+        file_path: str | Path,
+        data: Iterable,
+        path_add: str | Path = "",
+    ) -> None:
         """
         Save json data
 
@@ -201,7 +205,7 @@ class DataSaver:
             file_name = self.results_path / path_add / file_path
             Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
         else:
-            Path(file_name)
+            file_name = Path(file_path)
         with open(file_name, "w", encoding="UTF-8") as file:
             file.write(json.dumps(data, indent=2))
 

@@ -4,8 +4,8 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
-import seaborn as sns
 import pandas as pd
+import seaborn as sns
 
 from evaluation.Metrics import Accuracy, Metric
 from inference.Prompt import Prompt
@@ -52,7 +52,7 @@ class Plotter:
         :return: None
         """
         if not plot_name_add:
-            plt.savefig(self.results_path /  file_name, bbox_inches="tight")
+            plt.savefig(self.results_path / file_name, bbox_inches="tight")
         else:
             label = y_label.lower().replace(" ", "_")
             file_name = f"{'_'.join(plot_name_add)}_{label}_per_{x_label.lower()}_no_{self.plot_counter_task}.png"
@@ -128,12 +128,11 @@ class Plotter:
         plt.setp(leg_lines, linewidth=3)
         plt.setp(leg_texts, fontsize="x-large")
 
-
     def heat_map(
         self,
-        data: np.ndarray,
+        data: dict[str, dict[str, tuple]],
         level: str,
-        version: str = None,
+        version: str,
         file_name: str = None,
     ) -> None:
         """
@@ -145,17 +144,18 @@ class Plotter:
         :return: None
         """
         plt.figure(figsize=(12, 8))
-        data = pd.DataFrame({k: {k2:v2[0] for k2,v2 in v.items()} for k,v in data.items()}, index=data.keys())
+        data = pd.DataFrame(
+            {k: {k2: v2[0] for k2, v2 in v.items()} for k, v in data.items()},
+            index=data.keys(),
+        )
         axis = sns.heatmap(data, annot=True)
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
         plt.title(f"Attention Map for {level} ({version})", fontsize=10)
         plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
-        plot_subdirectory = self.results_path / "interpretability"
-        Path.mkdir(plot_subdirectory, exist_ok=True, parents=True)
-        plt.savefig(plot_subdirectory / file_name)
+        Path.mkdir(self.results_path / version, exist_ok=True, parents=True)
+        plt.savefig(self.results_path / version / file_name)
         plt.close()
-    
 
     def draw_heat(
         self,
