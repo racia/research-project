@@ -210,7 +210,23 @@ def run(
             print_metrics(task)
         for evaluator, version in zip(task.evaluators, task.versions):
             task_corr_matrix = task.calculate_metrics()
-            plotter.heat_map(
+  
+            plotter.plot_correlation(
+                acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
+                y_data=evaluator.attn_on_target.all,
+                x_label="Accuracy",
+                y_label="Attention on Target Tokens",
+                file_name=f"attn_on_target_{task_id}_{version}.pdf",
+                )
+            plotter.plot_correlation(
+                acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
+                y_data=evaluator.max_supp_attn.all,
+                x_label="Accuracy",
+                y_label="Attention on Target Tokens",
+                file_name=f"attn_on_target_{task_id}_{version}.pdf",
+                )
+            
+            plotter.correlation_map(
                 data=task_corr_matrix,
                 level=evaluator.level,
                 version=version,
@@ -222,21 +238,6 @@ def run(
                 file_path=f"task_corr_matrix_{task_id}.json",
                 path_add=Path(version),
             )
-            metrics_to_save = defaultdict(dict)
-            
-            metrics = list(
-                format_metrics(evaluator.get_metrics(as_lists=True)).values()
-            )
-            for metric in metrics:
-                metrics_to_save[metric["task_id"]].update(metric)
-                
-            for metric in metrics_to_save.values():
-                saver.save_output(
-                    data=[metric],
-                    headers=list(metric.keys()),
-                    file_name=f"eval_script_metrics_{version}.csv",
-                    path_add=Path(version),
-                )
    
     if verbose:
         print_metrics_table(evaluators=split.evaluators, id_=data_split)
@@ -291,7 +292,7 @@ def run(
             "Correlations between metrics:", evaluator.get_correlations(as_lists=True)
         )
         split_corr_matrix = split.calculate_metrics()
-        plotter.heat_map(
+        plotter.correlation_map(
             data=split_corr_matrix,
             level=evaluator.level,
             version=version,

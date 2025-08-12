@@ -65,9 +65,11 @@ class Plotter:
     def _plot_general_details(
         x_label: str,
         y_label: str,
-        max_x_len: int,
         plot_name_add: list[str],
+        max_x_len: int = None,
+        max_x_val: int = None,
         number_of_prompts: int = 1,
+        step: float = 1,
     ) -> None:
         """
         Plot the general details of the plot, e.g. labels, title, and legend.
@@ -80,17 +82,19 @@ class Plotter:
                                   the legend is placed outside the plot
         :return: None
         """
-        plt.xticks(range(1, max_x_len + 1))
+        plt.xticks(np.linspace(0, 
+                               max_x_len + 1 if max_x_len else max_x_val, 
+                               max_x_len + 1 if max_x_len else int(max_x_val/step)))
         plt.xlabel(x_label)
 
-        if "accuracy" in y_label.lower():
+        if "accurac" in y_label.lower():
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
-            y_ticks = np.arange(0, 0.6, 0.1)
-            plt.ylim(bottom=0, top=0.6)
-            plt.ylim(bottom=0, top=0.5)
+            y_ticks = np.arange(0, 1.1, 0.1)
+            plt.ylim(bottom=0, top=1.1)
+            plt.ylim(bottom=0, top=1)
         elif "reasoning" in y_label.lower():
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
@@ -129,7 +133,7 @@ class Plotter:
         plt.setp(leg_texts, fontsize="x-large")
 
 
-    def heat_map(
+    def correlation_map(
         self,
         data: np.ndarray,
         level: str,
@@ -240,7 +244,7 @@ class Plotter:
         colors = self.cmap(np.linspace(0, 1, len(acc_per_task)))
         plt.plot(range(1, len(acc_per_task) + 1), acc_per_task.all, color=colors[0])
 
-        self._plot_general_details(x_label, y_label, len(acc_per_task), plot_name_add)
+        self._plot_general_details(x_label, y_label, max_x_len=len(acc_per_task), plot_name_add=plot_name_add)
         self._save_plot(y_label, x_label, file_name, plot_name_add)
 
     def plot_acc_per_task_and_prompt(
@@ -292,8 +296,8 @@ class Plotter:
         self._plot_general_details(
             x_label,
             y_label,
-            max_x_len,
-            plot_name_add,
+            max_x_len=max_x_len,
+            plot_name_add=plot_name_add,
             number_of_prompts=number_of_prompts,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
@@ -348,9 +352,9 @@ class Plotter:
         self._plot_general_details(
             x_label,
             y_label,
-            max_x_len,
-            plot_name_add,
-            number_of_prompts,
+            max_x_len=max_x_len,
+            plot_name_add=plot_name_add,
+            number_of_prompts=number_of_prompts,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
 
@@ -378,13 +382,11 @@ class Plotter:
         colors = self.cmap(np.linspace(0, 1, len(acc_per_prompt_task)))
 
         number_of_prompts = 0
-        max_x_len = 0
 
         for (prompt, acc), color in zip(acc_per_prompt_task.items(), colors):
             number_of_prompts += 1
-            if len(acc.all) > max_x_len:
-                max_x_len = len(acc.all)
-
+            max_x_val = 1 # Take the maximum value of the x-axis data, i.e. the accuracy
+            print("Accuracy for prompt:", prompt, "is", acc.mean, acc.all)
             if len(acc) != len(y_data):
                 raise ValueError(
                     f"x and y must have the same first dimension, but have shapes {len(acc)} and {len(y_data)}"
@@ -403,8 +405,9 @@ class Plotter:
         self._plot_general_details(
             x_label,
             y_label,
-            max_x_len,
             plot_name_add,
             number_of_prompts=number_of_prompts,
+            max_x_val=max_x_val,
+            step=0.5
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)

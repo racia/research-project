@@ -213,6 +213,9 @@ class MetricEvaluator(Evaluator):
             f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr.get_mean(),
             f"attn_on_target_corr_{self.version}": self.attn_on_target_corr.get_mean(),
             f"sample_part_lengths_corr_{self.version}": self.sample_part_lengths_corr.get_mean(),
+            f"max_supp_attn_corr_std_{self.version}": self.max_supp_attn_corr.get_std(),
+            f"attn_on_target_corr_std_{self.version}": self.attn_on_target_corr.get_std(),
+            f"sample_part_lengths_corr_std_{self.version}": self.sample_part_lengths_corr.get_std(),
         }
 
     def get_accuracies(self, as_lists: bool = False) -> dict[str, float | Metric]:
@@ -226,8 +229,8 @@ class MetricEvaluator(Evaluator):
             return {
                 f"exact_match_accuracy_{self.version}": self.exact_match_accuracy,
                 f"exact_match_std_{self.version}": self.exact_match_std,
-                f"soft_match_accuracy_{self.version}": self.soft_match_accuracy,
-                f"soft_match_std_{self.version}": self.soft_match_std,
+                # f"soft_match_accuracy_{self.version}": self.soft_match_accuracy,
+                # f"soft_match_std_{self.version}": self.soft_match_std,
             }
         return {
             f"exact_match_accuracy_{self.version}": self.exact_match_accuracy.get_mean(),
@@ -288,14 +291,13 @@ class MetricEvaluator(Evaluator):
         """
         Calculate the correlation score between each arg metric1 scores list with each kwarg metric2 scores list on task level.
         :param kwargs: One or more str metric or list of scores, e.g. max_supp_attn or attn_on_target scores
-        [!] Note that the correlation_score gets assigned the metric2 scores variable name
+        :return: correlation matrix of the metrics
         """
         for key, value in kwargs.items():
-            if isinstance(value, str):
-                kwargs[key] = (
-                    getattr(self, value).all if isinstance(value, str) else value
-                )
-
+            kwargs[key] = (
+                getattr(self, value).all if isinstance(value, str) else value
+            )
+                
         corr_matrix = defaultdict(dict)
         for base_name, base_values in kwargs.items():
             for add_name, add_values in kwargs.items():
@@ -326,14 +328,15 @@ class MetricEvaluator(Evaluator):
         if as_lists:
             return {
                 f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr,
+                f"max_supp_att_corr_std{self.version}": self.max_supp_attn_corr.get_std(),
                 f"attn_on_target_corr_{self.version}": self.attn_on_target_corr,
-                # f"attn_on_target_std_{self.version}": self.attn_on_target_corr.get_std(),
+                f"attn_on_target_corr_std_{self.version}": self.attn_on_target_corr.get_std(),
             }
         return {
             f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr.get_mean(),
-            f"max_supp_attn_std_{self.version}": self.max_supp_attn_corr.get_std(),
+            f"max_supp_attn_corr_std_{self.version}": self.max_supp_attn_corr.get_std(),
             f"attn_on_target_corr_{self.version}": self.attn_on_target_corr.get_mean(),
-            f"attn_on_target_std_{self.version}": self.attn_on_target_corr.get_std(),
+            f"attn_on_target_corr_std_{self.version}": self.attn_on_target_corr.get_std(),
         }
 
 
