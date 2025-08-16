@@ -286,7 +286,7 @@ class MetricEvaluator(Evaluator):
 
     def calculate_correlation(
         self,
-        **kwargs: Union[list[tuple], str],
+        **kwargs: Union[list[float | int | bool], str],
     ) -> dict:
         """
         Calculate the correlation score between each arg metric1 scores list with each kwarg metric2 scores list on task level.
@@ -301,13 +301,20 @@ class MetricEvaluator(Evaluator):
         corr_matrix = defaultdict(dict)
         for base_name, base_values in kwargs.items():
             for add_name, add_values in kwargs.items():
-                # if base_name == add_name:
-                #     continue
+                assert (
+                    base_values
+                    and isinstance(base_values, list)
+                    and isinstance(base_values[0], (float, int, bool))
+                ), f"The base values must be a list of floats, integers or booleans, given {base_values}."
+                assert (
+                    add_values
+                    and isinstance(add_values, list)
+                    and isinstance(add_values[0], (float, int, bool))
+                ), f"The base values must be a list of floats, integers or booleans, given {add_values}."
                 assert len(base_values) == len(add_values), (
                     f"Length of {base_values} ({len(base_values)}) and {add_values} ({len(add_values)}) "
                     f"must be equal for correlation calculation."
                 )
-
                 corr_score, p_value = self.stats.corr_score(base_values, add_values)
                 corr_matrix[base_name][add_name] = corr_score, p_value
                 var = f"{base_name}_{add_name}_corr"

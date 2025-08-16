@@ -4,8 +4,8 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
-import seaborn as sns
 import pandas as pd
+import seaborn as sns
 
 from evaluation.Metrics import Accuracy, Metric
 from inference.Prompt import Prompt
@@ -52,7 +52,7 @@ class Plotter:
         :return: None
         """
         if not plot_name_add:
-            plt.savefig(self.results_path /  file_name, bbox_inches="tight")
+            plt.savefig(self.results_path / file_name, bbox_inches="tight")
         else:
             label = y_label.lower().replace(" ", "_")
             file_name = f"{'_'.join(plot_name_add)}_{label}_per_{x_label.lower()}_no_{self.plot_counter_task}.png"
@@ -65,10 +65,10 @@ class Plotter:
     def _plot_general_details(
         x_label: str,
         y_label: str,
+        max_x_len: int,
         plot_name_add: list[str],
-        max_x_len: int = None,
+        number_of_prompts: int,
         max_x_val: int = None,
-        number_of_prompts: int = 1,
         step: float = 1,
     ) -> None:
         """
@@ -82,9 +82,8 @@ class Plotter:
                                   the legend is placed outside the plot
         :return: None
         """
-        plt.xticks(np.linspace(0, 
-                               max_x_len + 1 if max_x_len else max_x_val, 
-                               max_x_len + 1 if max_x_len else int(max_x_val/step)))
+        plt.xticks(range(1, max_x_len + 1) if not max_x_val else np.arange(0, max_x_val + step, step))
+
         plt.xlabel(x_label)
 
         if "accurac" in y_label.lower():
@@ -135,9 +134,9 @@ class Plotter:
 
     def correlation_map(
         self,
-        data: np.ndarray,
+        data: dict[str, dict[str, tuple]],
         level: str,
-        version: str = None,
+        version: str,
         file_name: str = None,
     ) -> None:
         """
@@ -149,17 +148,18 @@ class Plotter:
         :return: None
         """
         plt.figure(figsize=(12, 8))
-        data = pd.DataFrame({k: {k2:v2[0] for k2,v2 in v.items()} for k,v in data.items()}, index=data.keys())
+        data = pd.DataFrame(
+            {k: {k2: v2[0] for k2, v2 in v.items()} for k, v in data.items()},
+            index=data.keys(),
+        )
         axis = sns.heatmap(data, annot=True)
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
         plt.title(f"Attention Map for {level} ({version})", fontsize=10)
         plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
-        plot_subdirectory = self.results_path / "interpretability"
-        Path.mkdir(plot_subdirectory, exist_ok=True, parents=True)
-        plt.savefig(plot_subdirectory / file_name)
+        Path.mkdir(self.results_path / version, exist_ok=True, parents=True)
+        plt.savefig(self.results_path / version / file_name)
         plt.close()
-    
 
     def draw_heat(
         self,
@@ -275,7 +275,6 @@ class Plotter:
             number_of_prompts += 1
             if len(acc.all) > max_x_len:
                 max_x_len = len(acc.all)
-            print("Accuracy for prompt:", prompt, "is", acc.mean)
             x_data, y_data = range(1, len(acc.all) + 1), acc.all
 
             if len(x_data) != len(y_data):
@@ -378,15 +377,19 @@ class Plotter:
         :param plot_name_add: addition to the plot name
         :return: None
         """
+
         plt.figure(figsize=(15, 5))
         colors = self.cmap(np.linspace(0, 1, len(acc_per_prompt_task)))
 
         number_of_prompts = 0
+        max_x_len = 0
 
         for (prompt, acc), color in zip(acc_per_prompt_task.items(), colors):
             number_of_prompts += 1
-            max_x_val = 1 # Take the maximum value of the x-axis data, i.e. the accuracy
-            print("Accuracy for prompt:", prompt, "is", acc.mean, acc.all)
+            if len(acc.all) > max_x_len:
+                max_x_len = len(acc.all)
+                max_x_val = max(acc.all)
+
             if len(acc) != len(y_data):
                 raise ValueError(
                     f"x and y must have the same first dimension, but have shapes {len(acc)} and {len(y_data)}"
@@ -405,9 +408,10 @@ class Plotter:
         self._plot_general_details(
             x_label,
             y_label,
+            max_x_len,
             plot_name_add,
             number_of_prompts=number_of_prompts,
-            max_x_val=max_x_val,
-            step=0.5
+            max_x_val=max_x_val if "accuracy" in x_label.lower() else None,
+            step=0.1 if "accuracy" in x_label.lower() else 1,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)

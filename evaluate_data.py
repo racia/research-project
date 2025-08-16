@@ -162,7 +162,7 @@ def run(
                 multi_system=multi_system,
             )
             # Used to store the correct answers for each sample for later evaluation
-            
+
             for part in parts:
                 for version, result in zip(part.versions, part.results):
                     # TODO: add reasoning judgment to part results for it to be saved in the results table
@@ -195,22 +195,26 @@ def run(
                 sample.print_sample_predictions()
                 print_metrics(sample)
             for evaluator, version in zip(sample.evaluators, sample.versions):
-                metrics = list(format_metrics(evaluator.get_metrics(as_lists=True)).values())
+                metrics = list(
+                    format_metrics(evaluator.get_metrics(as_lists=True)).values()
+                )
                 # Get the metrics_to_save
                 print(f"Metrics for {evaluator.level} {version}:", metrics, end="\n\n")
 
-        
+
         task.set_results()
 
         split.add_task(task)
-        print(f"Added task {task_id} with {len(sample.parts)} parts to split {data_split}.")
-     
+        print(
+            f"Added task {task_id} with {len(sample.parts)} parts to split {data_split}."
+        )
 
         if verbose:
             print_metrics(task)
-        for evaluator, version in zip(task.evaluators, task.versions):
-            task_corr_matrix = task.calculate_metrics()
-  
+        task_corr_matrices = task.calculate_metrics()
+        for version, evaluator, corr_matrix in zip(
+            task.versions, task.evaluators, task_corr_matrices.values()
+        ):
             plotter.plot_correlation(
                 acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
                 y_data=evaluator.attn_on_target.all,
@@ -218,45 +222,73 @@ def run(
                 y_label="Attention on Target Tokens",
                 file_name=f"attn_on_target_{task_id}_{version}.pdf",
                 )
-            plotter.plot_correlation(
-                acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
-                y_data=evaluator.max_supp_attn.all,
-                x_label="Accuracy",
-                y_label="Attention on Target Tokens",
-                file_name=f"attn_on_target_{task_id}_{version}.pdf",
-                )
+            # plotter.plot_correlation(
+            #     acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
+            #     y_data=evaluator.max_supp_attn.all,
+            #     x_label="Accuracy",
+            #     y_label="Attention on Target Tokens",
+            #     file_name=f"attn_on_target_{task_id}_{version}.pdf",
+            #     )
             
             plotter.correlation_map(
-                data=task_corr_matrix,
+                data=corr_matrix,
                 level=evaluator.level,
                 version=version,
-                file_name=f"task_corr_matrix_{task_id}.pdf",
+                file_name=f"corr_matrix_task_{task_id}.pdf",
             )
-            
+
             saver.save_json(
-                data=task_corr_matrix,
-                file_path=f"task_corr_matrix_{task_id}.json",
+                data=corr_matrix,
+                file_path=f"corr_matrix_task_{task_id}.json",
                 path_add=Path(version),
             )
    
+            metrics_to_save = defaultdict(dict)
+            metrics = list(
+                format_metrics(evaluator.get_metrics(as_lists=True)).values()
+            )
+            for metric in metrics:
+                metrics_to_save[metric["task_id"]].update(metric)
+
+            for metric in metrics_to_save.values():
+                saver.save_output(
+                    data=[metric],
+                    headers=list(metric.keys()),
+                    file_name=f"eval_script_metrics_{version}.csv",
+                    path_add=Path(version),
+                )
+
     if verbose:
         print_metrics_table(evaluators=split.evaluators, id_=data_split)
 
-
     saver.save_split_metrics(
         split=split,
-        metric_file_name="eval_script_metrics_version.csv",
+        metric_file_name="eval_script_metrics.csv",
     )
-    # TODO: save metrics series in separate files for each split
 
-    for version, evaluator, features in zip(
-        split.versions, split.evaluators, split.features
+    split_corr_matrices = split.calculate_metrics()
+    for version, evaluator, features, corr_matrix in zip(
+        split.versions, split.evaluators, split.features, split_corr_matrices.values()
     ):
+        # SAVING
+        plotter.correlation_map(
+            data=corr_matrix,
+            level=evaluator.level,
+            version=version,
+            file_name=f"corr_matrix_split_{split.name}.pdf",
+        )
+
+        saver.save_json(
+            data=corr_matrix,
+            file_path=f"corr_matrix_split_{split.name}.json",
+            path_add=version,
+        )
         saver.save_split_features(
             features=features,
             metrics_file_name="eval_script_features.csv",
             version=version,
         )
+        # PLOTTING
         print(
             f"\nPlotting accuracies and standard deviation for results '{version}'...",
             end="\n\n",
@@ -285,26 +317,14 @@ def run(
             plot_name_add=[split.name, version],
         )
         print(
-            f"\nPlotting correlations for results '{version}'...",
+            f"\nPlotting correlations for results '{version}' between metrics:",
+            evaluator.get_correlations(as_lists=True),
             end="\n\n",
         )
-        print(
-            "Correlations between metrics:", evaluator.get_correlations(as_lists=True)
-        )
-        split_corr_matrix = split.calculate_metrics()
-        plotter.correlation_map(
-            data=split_corr_matrix,
-            level=evaluator.level,
-            version=version,
-            file_name=f"split_corr_matrix_{split.name}.pdf",
-        )
 
-        saver.save_json(
-            data=split_corr_matrix,
-            file_path=f"split_corr_matrix_{split.name}.json",
-        )
         # TODO: plot attention distribution per task and sample
         # TODO: add scatter plots
+        # ERROR CASES
         print("Saving result categories...")
         for case, case_list in Results.CASE_COUNTERS[version].items():
             headers = "id_\ttask_id\tsample_id\tpart_id"
