@@ -68,8 +68,6 @@ class Plotter:
         max_x_len: int,
         plot_name_add: list[str],
         number_of_prompts: int,
-        max_x_val: int = None,
-        step: float = 1,
     ) -> None:
         """
         Plot the general details of the plot, e.g. labels, title, and legend.
@@ -82,7 +80,7 @@ class Plotter:
                                   the legend is placed outside the plot
         :return: None
         """
-        plt.xticks(range(1, max_x_len + 1) if not max_x_val else np.arange(0, max_x_val + step, step))
+        plt.xticks(range(1, max_x_len + 1))
 
         plt.xlabel(x_label)
 
@@ -91,9 +89,9 @@ class Plotter:
             plt.ylim(bottom=0, top=1.1)
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
-            y_ticks = np.arange(0, 1.1, 0.1)
-            plt.ylim(bottom=0, top=1.1)
-            plt.ylim(bottom=0, top=1)
+            y_ticks = np.arange(0, 0.6, 0.1)
+            plt.ylim(bottom=0, top=0.6)
+            plt.ylim(bottom=0, top=0.5)
         elif "reasoning" in y_label.lower():
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
@@ -102,9 +100,7 @@ class Plotter:
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
             plt.ylim(bottom=0, top=1)
-
-        plt.yticks(y_ticks)
-
+            
         type_of_data = " ".join([part.capitalize() for part in y_label.split("_")])
         plt.ylabel(type_of_data)
 
@@ -388,7 +384,6 @@ class Plotter:
             number_of_prompts += 1
             if len(acc.all) > max_x_len:
                 max_x_len = len(acc.all)
-                max_x_val = max(acc.all)
 
             if len(acc) != len(y_data):
                 raise ValueError(
@@ -411,7 +406,5 @@ class Plotter:
             max_x_len,
             plot_name_add,
             number_of_prompts=number_of_prompts,
-            max_x_val=max_x_val if "accuracy" in x_label.lower() else None,
-            step=0.1 if "accuracy" in x_label.lower() else 1,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)

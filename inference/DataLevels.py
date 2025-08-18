@@ -6,6 +6,7 @@ from dataclasses import dataclass
 import numpy as np
 from prettytable import HRuleStyle, PrettyTable
 
+from evaluation.Metrics import Metric
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
 from inference.utils import (
@@ -745,6 +746,18 @@ class Sample:
         Calls all the individual metric calculating functions.
         :return: None
         """
+        sample_part_lengths = [0]  # Initialize with 0 for the first part
+        for part in self.parts:
+            context_length = len(part.context_line_nums)
+            if bool(part.context_line_nums):
+                if part.context_line_nums[0] != 1:
+                    sample_part_lengths.append(sample_part_lengths[-1] + context_length)
+                else:
+                    sample_part_lengths.append(context_length)
+            else:
+                # If there are no context sentences, just add the previous length
+                sample_part_lengths.append(sample_part_lengths[-1])
+        self.sample_part_lengths = Metric(f"Sample Part Context Lengths", "sample_part_lengths", sample_part_lengths[1:])  # Exclude the first element (0)
         for evaluator in self.evaluators:
             evaluator.calculate_accuracies()
             evaluator.calculate_attention()

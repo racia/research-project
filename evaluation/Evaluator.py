@@ -229,8 +229,8 @@ class MetricEvaluator(Evaluator):
             return {
                 f"exact_match_accuracy_{self.version}": self.exact_match_accuracy,
                 f"exact_match_std_{self.version}": self.exact_match_std,
-                # f"soft_match_accuracy_{self.version}": self.soft_match_accuracy,
-                # f"soft_match_std_{self.version}": self.soft_match_std,
+                f"soft_match_accuracy_{self.version}": self.soft_match_accuracy,
+                f"soft_match_std_{self.version}": self.soft_match_std,
             }
         return {
             f"exact_match_accuracy_{self.version}": self.exact_match_accuracy.get_mean(),

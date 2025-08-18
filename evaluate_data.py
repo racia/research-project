@@ -198,6 +198,13 @@ def run(
                 metrics = list(
                     format_metrics(evaluator.get_metrics(as_lists=True)).values()
                 )
+                plotter.plot_correlation(
+                    acc_per_prompt_task={"sample_part_lengths": sample.sample_part_lengths},
+                    y_data=evaluator.attn_on_target.all,
+                    x_label="Sample Part Lengths",
+                    y_label="Attention on Target Tokens",
+                    file_name=f"attn_on_target_{sample_id}_{version}.pdf",
+                )
                 # Get the metrics_to_save
                 print(f"Metrics for {evaluator.level} {version}:", metrics, end="\n\n")
 
