@@ -229,14 +229,7 @@ def run(
                 y_label="Attention on Target Tokens",
                 file_name=f"attn_on_target_{task_id}_{version}.pdf",
                 )
-            # plotter.plot_correlation(
-            #     acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
-            #     y_data=evaluator.max_supp_attn.all,
-            #     x_label="Accuracy",
-            #     y_label="Attention on Target Tokens",
-            #     file_name=f"attn_on_target_{task_id}_{version}.pdf",
-            #     )
-            
+
             plotter.correlation_map(
                 data=corr_matrix,
                 level=evaluator.level,

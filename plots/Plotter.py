@@ -68,6 +68,7 @@ class Plotter:
         max_x_len: int,
         plot_name_add: list[str],
         number_of_prompts: int,
+        step: int|float = 1,
     ) -> None:
         """
         Plot the general details of the plot, e.g. labels, title, and legend.
@@ -80,7 +81,10 @@ class Plotter:
                                   the legend is placed outside the plot
         :return: None
         """
-        plt.xticks(range(1, max_x_len + 1))
+        if step >= 1:
+            plt.xticks(range(1, max_x_len + 1, step))
+        else:  
+            plt.xticks(np.arange(0, max_x_len + 0.1, step))
 
         plt.xlabel(x_label)
 
@@ -89,9 +93,9 @@ class Plotter:
             plt.ylim(bottom=0, top=1.1)
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
-            y_ticks = np.arange(0, 0.6, 0.1)
-            plt.ylim(bottom=0, top=0.6)
-            plt.ylim(bottom=0, top=0.5)
+            y_ticks = np.arange(0, 1.1, 0.1)
+            plt.ylim(bottom=0, top=1.1)
+            plt.ylim(bottom=0, top=1)
         elif "reasoning" in y_label.lower():
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
@@ -361,6 +365,7 @@ class Plotter:
         y_label: str = "Y",
         file_name=None,
         plot_name_add: list[str] = None,
+        steop: int = 1,
     ) -> None:
         """
         Plot the correlation between two variables.
@@ -378,12 +383,13 @@ class Plotter:
         colors = self.cmap(np.linspace(0, 1, len(acc_per_prompt_task)))
 
         number_of_prompts = 0
-        max_x_len = 0
+        max_x_len = 1.0 # 0
 
         for (prompt, acc), color in zip(acc_per_prompt_task.items(), colors):
             number_of_prompts += 1
-            if len(acc.all) > max_x_len:
-                max_x_len = len(acc.all)
+            # We wouldn't need this anymore, as we use the actual accuracy values on the x-axis
+            # if max(acc.all) > max_x_len:
+            #     max_x_len = max(acc.all)
 
             if len(acc) != len(y_data):
                 raise ValueError(
@@ -406,5 +412,6 @@ class Plotter:
             max_x_len,
             plot_name_add,
             number_of_prompts=number_of_prompts,
+            step=0.1,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
