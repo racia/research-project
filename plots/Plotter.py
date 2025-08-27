@@ -364,8 +364,7 @@ class Plotter:
         x_label: str = "X",
         y_label: str = "Y",
         file_name=None,
-        plot_name_add: list[str] = None,
-        steop: int = 1,
+        plot_name_add: list[str] = None
     ) -> None:
         """
         Plot the correlation between two variables.
