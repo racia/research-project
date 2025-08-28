@@ -672,6 +672,7 @@ class Sample:
                     warnings.warn(
                         f"Found 'nan' in result.attn_on_target results for part {part.ids}. Skipping."
                     )
+                    evaluator.attn_on_target.add(0.0) 
                 else:
                     evaluator.attn_on_target.add(result.attn_on_target)
 
@@ -823,7 +824,6 @@ class Task:
         """
         self.parts = [part for sample in self.samples for part in sample.parts]
         self.results: list[dict] = [part.get_result() for part in self.parts]
-
         for i, features in enumerate(self.features):
             self.features[i] = sum(
                 [part.results[i].features for part in self.parts],
@@ -849,7 +849,7 @@ class Task:
             parts_attn_on_target = []
             sample_part_lengths = [0]
 
-            for y, part in enumerate(self.parts):
+            for part in self.parts:
                 parts_answer_correct.append(part.results[i].answer_correct)
                 parts_max_supp_attn.append(
                     part.results[i].interpretability.max_supp_attn
@@ -866,9 +866,16 @@ class Task:
                 else:
                     # If there are no context sentences, just add the previous length
                     sample_part_lengths.append(sample_part_lengths[-1])
-                    
-            self.sample_part_lengths = sample_part_lengths[1:] # Exclude the first element (0)
-
+               
+            self.sample_lengths = [sample.sample_part_lengths for sample in self.samples] # Exclude the first element (0)
+            # self.sample_lengths_all = [sample.]
+            # sample_length = len(self.sample_part_lengths) // len(self.samples)
+            # self.sample_part_length = Metric(
+            #     "Mean length of sample parts", 
+            #     "mean_sample_part_lengths", 
+            #     self.sample_part_lengths[:sample_length]
+            #     )
+            # print("HEREE, Sample count: ", sample_length, self.mean_sample_part_length)
             assert bool(parts_answer_correct)
             assert bool(parts_max_supp_attn)
             assert bool(parts_attn_on_target)

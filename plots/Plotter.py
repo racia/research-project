@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import warnings
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -69,6 +70,8 @@ class Plotter:
         plot_name_add: list[str],
         number_of_prompts: int,
         step: int|float = 1,
+        max_y_len: int = 1,
+        min_y_len: int = 0,
     ) -> None:
         """
         Plot the general details of the plot, e.g. labels, title, and legend.
@@ -82,7 +85,7 @@ class Plotter:
         :return: None
         """
         if step >= 1:
-            plt.xticks(range(1, max_x_len + 1, step))
+            plt.xticks(range(1, max_x_len + 1))
         else:  
             plt.xticks(np.arange(0, max_x_len + 0.1, step))
 
@@ -100,6 +103,10 @@ class Plotter:
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
             plt.ylim(bottom=0, top=1)
+        elif "length" in y_label.lower():
+            y_ticks = range(min_y_len, max_y_len)
+            plt.ylim(bottom=min_y_len, top=max_y_len + 1)
+            plt.ylim(bottom=min_y_len, top=max_y_len)
         else:
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
@@ -359,37 +366,42 @@ class Plotter:
 
     def plot_correlation(
         self,
-        acc_per_prompt_task: dict[str | Prompt, Accuracy | Metric],
+        x_data: dict[str | Prompt, Accuracy | Metric],
         y_data: list[float],
         x_label: str = "X",
         y_label: str = "Y",
         file_name=None,
-        plot_name_add: list[str] = None
+        plot_name_add: list[str] = None,
+        path_add: str = None,
     ) -> None:
         """
         Plot the correlation between two variables.
 
-        :param acc_per_prompt_task
-        :param y_data: data for the y-axis, e.g. length of sentences
+        :param x_data: Either acc_per_prompt_task or sample_part_lengths
+        :param y_data: data for the y-axis, e.g. attention scores
         :param x_label: label for the x-axis
         :param y_label: label for the y-axis
         :param file_name: name of the plot
         :param plot_name_add: addition to the plot name
+        :param path_add: addition to the path where the plot is saved
         :return: None
         """
 
         plt.figure(figsize=(15, 5))
-        colors = self.cmap(np.linspace(0, 1, len(acc_per_prompt_task)))
+        colors = self.cmap(np.linspace(0, 1, len(x_data)))
 
         number_of_prompts = 0
-        max_x_len = 1.0 # 0
-
-        for (prompt, acc), color in zip(acc_per_prompt_task.items(), colors):
+        max_x_len = 1 # 0
+        
+        for (prompt, acc), color in zip(x_data.items(), colors):
             number_of_prompts += 1
-            # We wouldn't need this anymore, as we use the actual accuracy values on the x-axis
-            # if max(acc.all) > max_x_len:
-            #     max_x_len = max(acc.all)
-
+            # This covers both cases: Metric (i.e. length of sentences) and Accuracy 
+            try:
+                if max(acc.all) > max_x_len:
+                    max_x_len = max(acc.all) # Case sample_part_lenghts: Set to max value
+                    print("ACC ALL:", acc.all, y_data)
+            except TypeError:
+                warnings.warn(f"Working with mean acc {acc}")
             if len(acc) != len(y_data):
                 raise ValueError(
                     f"x and y must have the same first dimension, but have shapes {len(acc)} and {len(y_data)}"
@@ -397,10 +409,10 @@ class Plotter:
 
             if not y_data:
                 raise ValueError("y_data is empty")
-
+        
             plt.scatter(
                 acc,
-                y_data,
+                y=[y.get_mean() for y in y_data] if isinstance(y_data[0], Metric) else y_data,
                 label=prompt if isinstance(prompt, str) else prompt.name,
                 color=color,
             )
@@ -411,6 +423,11 @@ class Plotter:
             max_x_len,
             plot_name_add,
             number_of_prompts=number_of_prompts,
-            step=0.1,
+            step=0.1 if max_x_len==1 else 1,
+            min_y_len = min(y_data[0]) if isinstance(y_data[0], Metric) else 0,
+            max_y_len = max(y_data[0]) if isinstance(y_data[0], Metric) else 1
         )
+        if path_add:
+            file_name = path_add / file_name
+            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
         self._save_plot(y_label, x_label, file_name, plot_name_add)

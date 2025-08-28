@@ -199,11 +199,12 @@ def run(
                     format_metrics(evaluator.get_metrics(as_lists=True)).values()
                 )
                 plotter.plot_correlation(
-                    acc_per_prompt_task={"sample_part_lengths": sample.sample_part_lengths},
+                    x_data={"sample_part_lengths": sample.sample_part_lengths},
                     y_data=evaluator.attn_on_target.all,
                     x_label="Sample Part Lengths",
                     y_label="Attention on Target Tokens",
                     file_name=f"attn_on_target_{sample_id}_{version}.pdf",
+                    path_add=Path(f"Task {task_id}"),
                 )
                 # Get the metrics_to_save
                 print(f"Metrics for {evaluator.level} {version}:", metrics, end="\n\n")
@@ -223,13 +224,21 @@ def run(
             task.versions, task.evaluators, task_corr_matrices.values()
         ):
             plotter.plot_correlation(
-                acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
+                x_data=evaluator.get_accuracies(as_lists=True),
                 y_data=evaluator.attn_on_target.all,
                 x_label="Accuracy",
                 y_label="Attention on Target Tokens",
                 file_name=f"attn_on_target_{task_id}_{version}.pdf",
                 )
-
+                
+            plotter.plot_correlation(
+                x_data=evaluator.get_accuracies(as_lists=True),
+                y_data=task.sample_lengths,
+                x_label="Accuracy",
+                y_label="Sample Part Lengths",
+                file_name=f"mean_sample_part_length_{task_id}_{version}.pdf",
+                )
+            
             plotter.correlation_map(
                 data=corr_matrix,
                 level=evaluator.level,
