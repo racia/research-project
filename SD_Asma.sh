@@ -1,21 +1,20 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=SD
+#SBATCH --job-name=sd
 
-#SBATCH --time=00:30:00              # Job time limit (30 minutes)
+#SBATCH --time=14:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
 #SBATCH --mem=128G                    # Total memory requested
-#SBATCH --partition=dev_gpu_h100
 
 # Output and error logs
-#SBATCH --output="SD_out.txt"        # TODO: adjust standard output log
-#SBATCH --error="SD_err.txt"         # TODO: adjust error log
+#SBATCH --output="sd_out.txt"
+#SBATCH --error="sd_err.txt"
 
 # Email notifications
-#SBATCH --mail-user=""              # TODO: Add your email address
+#SBATCH --mail-user=""
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
@@ -69,9 +68,8 @@ export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 
 
 # declare array of config paths and names, e.g. "/path/to/config config_name"
-# TODO: add config(s) to array
 declare -a CONFIGS=(
-  "$HOME/research-project/settings/SD/config SD_config_test"
+  "$HOME/research-project/settings/SD/config SD_test_6_10"
 )
 
 for CONFIG in "${CONFIGS[@]}"

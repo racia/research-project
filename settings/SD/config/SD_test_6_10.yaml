@@ -4,35 +4,31 @@ defaults:
   - _self_
 
 teacher:
-  name: "meta-llama/Meta-Llama-3-70B-Instruct"
-  max_new_tokens: 30
-  p: 0.95
+  max_new_tokens: 150
 
 student:
-  max_new_tokens: 30
+  max_new_tokens: 250
 
 data:
-  # small data with validation
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  # Order: train, valid, test
+  baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
+  task_ids: [ 6, 7, 8, 9, 10 ]
+  samples_per_task: 100
   splits:
     train: False
     valid: False
     test: True
-  # to get all tasks use ~ (will be converted to None)
-  # to get specific tasks use:
-  # task_ids: [1, 2, ...]
-  task_ids: ~
-  # to get all samples use ~ (will be converted to None)
-  # to set a specific number of samples use an int
-  samples_per_task: 100
 
 init_prompt:
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
 
+logging:
+  # if to print the results to a log file, otherwise will print to console
+  print_to_file: True
+
 hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/${now:%d-%m-%Y}/${now:%H-%M-%S}"
