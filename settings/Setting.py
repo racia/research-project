@@ -90,7 +90,9 @@ class Setting(ABC):
         This is used for the multi-system setting when the final version of the chat is not available till the end.
         :return: interpretability result
         """
-        chat_ids = self.model.chat.convert_into_datatype("ids", identify_target=True)
+        chat_ids = self.model.chat.convert_into_datatype(
+            "ids", identify_target=True
+        ).to("cuda")
         output_tensor = self.model.model(
             chat_ids,
             return_dict=True,
@@ -150,7 +152,7 @@ class Setting(ABC):
                  one call to the model and will end up as one row of the table
         """
         task = Task(task_id, self.multi_system)
-        for sample_id, sample_parts in task_data.items():
+        for sample_id, sample_parts in list(task_data.items())[:]:
             sample = Sample(task_id, sample_id, self.multi_system)
             # each sample is a new conversation
             self.model.chat = Chat(
@@ -251,16 +253,10 @@ class Setting(ABC):
             print_metrics(sample)
             task.add_sample(sample)
 
-            # save the sample result
-            # if self.saver:
-            #     sample.set_results()
-            #     self.saver.save_sample_result(
-            #         sample_data=sample,
-            #     )
-
+        task.set_results()
+        task.calculate_metrics()
         print("\n- TASK RESULTS -", end="\n\n")
         print_metrics(task)
-        task.set_results()
 
         print(f"The work on task {task_id} is finished successfully")
 

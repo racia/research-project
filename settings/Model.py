@@ -89,6 +89,7 @@ class Model:
             "device_map": "auto",
             "torch_dtype": torch.bfloat16,
             "quantization_config": quantization_config,
+            "attn_implementation": "eager",
             "low_cpu_mem_usage": True,
             "offload_folder": "offload_folder",
             "offload_state_dict": True,
@@ -166,13 +167,13 @@ class Model:
                     num_beams=1,  # no beam search, reduce GPU memory usage
                 )
                 encoded_output = outputs[0][inputs["input_ids"].size(1) :]
-                decoded_output = self.tokenizer.decode(
-                    encoded_output, skip_special_tokens=True
-                ).strip()
+                decoded_output = self.tokenizer.decode(encoded_output).strip()
 
                 # the model expanded on the message, so we need to update it
                 if to_continue:
-                    self.chat.adjust_message(decoded_output, encoded_output)
+                    self.chat.adjust_message(
+                        decoded_output, encoded_output, full_output=True
+                    )
                 else:
                     self.chat.add_message(
                         part=decoded_output, source=Source.assistant, ids=encoded_output
