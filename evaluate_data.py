@@ -154,7 +154,7 @@ def run(
         assert type(task_id) is int
         task = Task(task_id, multi_system=multi_system)
 
-        for sample_id, parts in list(samples.items())[:5]:
+        for sample_id, parts in list(samples.items())[:15]:
             assert type(sample_id) is int
             sample = Sample(
                 task_id=task_id,
