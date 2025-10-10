@@ -748,6 +748,7 @@ class Sample:
         :return: None
         """
         sample_part_lengths = [0]  # Initialize with 0 for the first part
+        target_sent_dist = []
         for part in self.parts:
             context_length = len(part.context_line_nums)
             if bool(part.context_line_nums):
@@ -758,7 +759,12 @@ class Sample:
             else:
                 # If there are no context sentences, just add the previous length
                 sample_part_lengths.append(sample_part_lengths[-1])
+            # How far the target is from the question
+            target_sent_dist.append(part.context_line_nums[-1] - np.mean(part.supporting_sent_inx))
+        self.target_sent_dist = Metric(f"Target Sentence Distances", "target_sent_distances", target_sent_dist)
         self.sample_part_lengths = Metric(f"Sample Part Context Lengths", "sample_part_lengths", sample_part_lengths[1:])  # Exclude the first element (0)
+        self.sample_length = sample_part_lengths[-1]
+
         for evaluator in self.evaluators:
             evaluator.calculate_accuracies()
             evaluator.calculate_attention()
@@ -844,50 +850,40 @@ class Task:
         corr_matrices = {}
         for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
             # Create lists of sample part attributes for correlation calculation
-            parts_answer_correct = []
-            parts_max_supp_attn = []
-            parts_attn_on_target = []
-            sample_part_lengths = [0]
+            self.parts_answer_correct = Metric("Parts Answer Correct", "part_answer_correct")
+            self.parts_target_distances = []
+            self.parts_max_supp_attn = []
+            self.parts_attn_on_target = []
+            self.sample_part_lengths = Metric("Sample Part Lengths", "sample_part_lengths")
+            self.sample_lengths = []
+
+            for sample in self.samples:
+                self.sample_part_lengths.add(sample.sample_part_lengths.all)
+                self.sample_lengths.append(sample.sample_length)
+                self.parts_target_distances.extend(sample.target_sent_dist)
 
             for part in self.parts:
-                parts_answer_correct.append(part.results[i].answer_correct)
-                parts_max_supp_attn.append(
+                self.parts_answer_correct.add(part.results[i].answer_correct)
+                self.parts_max_supp_attn.append(
                     part.results[i].interpretability.max_supp_attn
                 )
-                parts_attn_on_target.append(
+                self.parts_attn_on_target.append(
                     part.results[i].interpretability.attn_on_target
                 )
-                # Increment by number of context sentences in the part (excluding the question)
-                if bool(part.context_line_nums):
-                    if part.context_line_nums[0] != 1:
-                        sample_part_lengths.append(sample_part_lengths[-1]+len(part.context_line_nums))
-                    else:
-                        sample_part_lengths.append(len(part.context_line_nums))
-                else:
-                    # If there are no context sentences, just add the previous length
-                    sample_part_lengths.append(sample_part_lengths[-1])
-               
-            self.sample_lengths = [sample.sample_part_lengths for sample in self.samples] # Exclude the first element (0)
-            # self.sample_lengths_all = [sample.]
-            # sample_length = len(self.sample_part_lengths) // len(self.samples)
-            # self.sample_part_length = Metric(
-            #     "Mean length of sample parts", 
-            #     "mean_sample_part_lengths", 
-            #     self.sample_part_lengths[:sample_length]
-            #     )
-            # print("HEREE, Sample count: ", sample_length, self.mean_sample_part_length)
-            assert bool(parts_answer_correct)
-            assert bool(parts_max_supp_attn)
-            assert bool(parts_attn_on_target)
-            assert bool(sample_part_lengths)
+
+            assert(len(self.parts_answer_correct) ==
+                    len(self.parts_max_supp_attn) ==
+                    len(self.parts_attn_on_target) ==
+                    len(self.sample_part_lengths)
+                    )
 
             # Calculate correlation using mean part attention scores for samples
-            # +parts_max_supp_attn+parts_attn_on_target+sample_part_lengths)
             corr_matrices[version] = evaluator.calculate_correlation(
-                parts_answer_correct=parts_answer_correct,
-                max_supp_attn=parts_max_supp_attn,
-                attn_on_target=parts_attn_on_target,
-                sample_part_lengths=sample_part_lengths[1:],
+                parts_answer_correct=self.parts_answer_correct.all,
+                max_supp_attn=self.parts_max_supp_attn,
+                attn_on_target=self.parts_attn_on_target,
+                sample_part_lengths=self.sample_part_lengths.all,
+                target_sent_distances=self.part_target_distances
             )
         return corr_matrices
 
@@ -945,13 +941,22 @@ class Split:
         :return: The correlation matrix of the metrics.
         """
         corr_matrices = {}
-        for version, evaluator in zip(self.versions, self.evaluators):
+        for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
+            exact_match_accuracies = []
+            max_supp_attns = []
+            attn_on_targets = []
+            sample_lengths = []
             # evaluator.calculate_std()
-            print("Calculating metrics on level:", evaluator.level, evaluator.version)
+            for task in self.tasks:
+                exact_match_accuracies.extend(task.evaluators[i].exact_match_accuracy.all)
+                max_supp_attns.extend(task.evaluators[i].max_supp_attn.all)
+                attn_on_targets.extend(task.evaluators[i].attn_on_target.all)
+                sample_lengths.extend(task.sample_lengths)
             corr_matrices[version] = evaluator.calculate_correlation(
-                exact_match_accuracy="exact_match_accuracy",
-                max_supp_attn="max_supp_attn",
-                attn_on_target="attn_on_target",
+                exact_match_accuracy=exact_match_accuracies,
+                max_supp_attn=max_supp_attns,
+                attn_on_target=attn_on_targets,
+                sample_part_lengths=sample_lengths,
             )
         return corr_matrices
 

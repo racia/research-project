@@ -228,15 +228,15 @@ def run(
                 y_data=evaluator.attn_on_target.all,
                 x_label="Accuracy",
                 y_label="Attention on Target Tokens",
-                file_name=f"attn_on_target_{task_id}_{version}.pdf",
+                file_name=f"Task_{task_id}_attn_on_target_{version}.pdf",
                 )
                 
             plotter.plot_correlation(
-                x_data=evaluator.get_accuracies(as_lists=True),
-                y_data=task.sample_lengths,
-                x_label="Accuracy",
-                y_label="Sample Part Lengths",
-                file_name=f"mean_sample_part_length_{task_id}_{version}.pdf",
+                x_data={"sample_part_lengths": task.sample_part_lengths},
+                y_data=task.parts_answer_correct.all,
+                x_label="Sample Part Lengths",
+                y_label="Parts Answer Correct",
+                file_name=f"Task_{task_id}_sample_part_lengths_{version}.pdf",
                 )
             
             plotter.correlation_map(
@@ -244,6 +244,7 @@ def run(
                 level=evaluator.level,
                 version=version,
                 file_name=f"corr_matrix_task_{task_id}.pdf",
+                id=task_id,
             )
 
             saver.save_json(

@@ -69,9 +69,9 @@ class Plotter:
         max_x_len: int,
         plot_name_add: list[str],
         number_of_prompts: int,
+        metr_types: int = 1,
         step: int|float = 1,
-        max_y_len: int = 1,
-        min_y_len: int = 0,
+        min_x_len: int = 0,
     ) -> None:
         """
         Plot the general details of the plot, e.g. labels, title, and legend.
@@ -82,31 +82,30 @@ class Plotter:
         :param plot_name_add: addition to the plot name
         :param number_of_prompts: number of prompts to plot, if more than 6,
                                   the legend is placed outside the plot
+        :param metr_types: number of metrics to plot, if more than 6,
+                                  the legend is placed outside the plot
+        :param min_x_len: minimum length of the x-axis
         :return: None
         """
         if step >= 1:
-            plt.xticks(range(1, max_x_len + 1))
+            plt.xticks(range(min_x_len, max_x_len + 1, step))
         else:  
             plt.xticks(np.arange(0, max_x_len + 0.1, step))
 
         plt.xlabel(x_label)
 
-        if "accurac" in y_label.lower():
+        if y_label.lower() in ["accurac", "correct"]:
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
-            y_ticks = np.arange(0, 1.1, 0.1)
-            plt.ylim(bottom=0, top=1.1)
-            plt.ylim(bottom=0, top=1)
+            y_ticks = np.arange(0, 0.5, 0.1)
+            plt.ylim(bottom=0, top=0.5)
+            plt.ylim(bottom=0, top=0.6)
         elif "reasoning" in y_label.lower():
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
             plt.ylim(bottom=0, top=1)
-        elif "length" in y_label.lower():
-            y_ticks = range(min_y_len, max_y_len)
-            plt.ylim(bottom=min_y_len, top=max_y_len + 1)
-            plt.ylim(bottom=min_y_len, top=max_y_len)
         else:
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
@@ -120,13 +119,15 @@ class Plotter:
         title = f"{type_of_data} per {x_label}"
         if number_of_prompts > 1:
             title += " and prompt"
+        elif metr_types > 1:
+            title += " and metric"
 
         if plot_name_add:
             title += f" ({'; '.join(plot_name_add)})"
 
         plt.title(title)
 
-        if number_of_prompts > 6:
+        if (number_of_prompts > 6 or metr_types > 6):
             legend = plt.legend(
                 loc="center left", bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True
             )
@@ -145,6 +146,7 @@ class Plotter:
         level: str,
         version: str,
         file_name: str = None,
+        id: int = 1
     ) -> None:
         """
         Draw a heat map with the given data.
@@ -152,6 +154,7 @@ class Plotter:
         :param level: level of the data, e.g. "task", "sample", "part"
         :param version: version of the data, e.g. "before", "after"
         :param file_name: name of the file to save the plot
+        :param id: int id of the level
         :return: None
         """
         plt.figure(figsize=(12, 8))
@@ -159,10 +162,11 @@ class Plotter:
             {k: {k2: v2[0] for k2, v2 in v.items()} for k, v in data.items()},
             index=data.keys(),
         )
+        data.fillna(0) # To display 0 instead of empty block
         axis = sns.heatmap(data, annot=True)
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
-        plt.title(f"Attention Map for {level} ({version})", fontsize=10)
+        plt.title(f"Attention Map for {level} {id} ({version})", fontsize=10)
         plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
         Path.mkdir(self.results_path / version, exist_ok=True, parents=True)
         plt.savefig(self.results_path / version / file_name)
@@ -391,29 +395,28 @@ class Plotter:
         colors = self.cmap(np.linspace(0, 1, len(x_data)))
 
         number_of_prompts = 0
-        max_x_len = 1 # 0
+        max_x_len = 1
+        metr_types = 0
         
-        for (prompt, acc), color in zip(x_data.items(), colors):
-            number_of_prompts += 1
+        for (metr_type, metr), color in zip(x_data.items(), colors):
+            # number_of_prompts += 1
+            metr_types+=1
             # This covers both cases: Metric (i.e. length of sentences) and Accuracy 
-            try:
-                if max(acc.all) > max_x_len:
-                    max_x_len = max(acc.all) # Case sample_part_lenghts: Set to max value
-                    print("ACC ALL:", acc.all, y_data)
-            except TypeError:
-                warnings.warn(f"Working with mean acc {acc}")
-            if len(acc) != len(y_data):
+            if max(metr.all) > max_x_len:
+                max_x_len = max(metr.all) # Case sample_part_lenghts: Set to max value
+            min_x_len = min(metr.all) if min(metr.all) > 2 else 0
+            if len(metr) != len(y_data):
                 raise ValueError(
-                    f"x and y must have the same first dimension, but have shapes {len(acc)} and {len(y_data)}"
+                    f"x and y must have the same first dimension, but have shapes {len(metr)} and {len(y_data)}"
                 )
 
             if not y_data:
                 raise ValueError("y_data is empty")
         
             plt.scatter(
-                acc,
+                metr,
                 y=[y.get_mean() for y in y_data] if isinstance(y_data[0], Metric) else y_data,
-                label=prompt if isinstance(prompt, str) else prompt.name,
+                label=metr_type if isinstance(metr_type, str) else metr_type.name,
                 color=color,
             )
 
@@ -423,9 +426,9 @@ class Plotter:
             max_x_len,
             plot_name_add,
             number_of_prompts=number_of_prompts,
+            metr_types=metr_types,
             step=0.1 if max_x_len==1 else 1,
-            min_y_len = min(y_data[0]) if isinstance(y_data[0], Metric) else 0,
-            max_y_len = max(y_data[0]) if isinstance(y_data[0], Metric) else 1
+            min_x_len=min_x_len,
         )
         if path_add:
             file_name = path_add / file_name

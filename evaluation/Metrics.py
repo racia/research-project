@@ -59,6 +59,8 @@ class Metric:
             self.all.append(metric.get_mean())
         elif type_ is float:
             self.all.append(metric)
+        elif type_ is bool:
+            self.all.append(int(metric))
         elif type_ is list:
             for m in metric:
                 if isinstance(m, float) or isinstance(m, int):
