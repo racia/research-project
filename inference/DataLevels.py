@@ -955,7 +955,7 @@ class Split:
             max_supp_attns = []
             attn_on_targets = []
             sample_lengths = []
-            # evaluator.calculate_std()
+            evaluator.calculate_std()
             for task in self.tasks:
                 exact_match_accuracies.extend(task.evaluators[i].exact_match_accuracy.all)
                 max_supp_attns.extend(task.evaluators[i].max_supp_attn.all)
