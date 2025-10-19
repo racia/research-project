@@ -154,7 +154,7 @@ def run(
         assert type(task_id) is int
         task = Task(task_id, multi_system=multi_system)
 
-        for sample_id, parts in list(samples.items())[:15]:
+        for sample_id, parts in list(samples.items())[:10]:
             assert type(sample_id) is int
             sample = Sample(
                 task_id=task_id,
@@ -230,14 +230,16 @@ def run(
                 y_label="Attention on Target Tokens",
                 file_name=f"Task_{task_id}_attn_on_target_{version}.pdf",
                 )
-                
-            plotter.plot_correlation(
+            
+            plotter.plot_correlation_hist(
                 x_data={"sample_part_lengths": task.sample_part_lengths},
-                y_data=task.parts_answer_correct.all,
+                y_data={"parts_answer_correct": task.parts_answer_correct.all,
+                        "parts_answer_in_self": task.parts_answer_in_self},
                 x_label="Sample Part Lengths",
                 y_label="Parts Answer Correct",
+                displ_percentage=True,
                 file_name=f"Task_{task_id}_sample_part_lengths_{version}.pdf",
-                )
+            )
             
             plotter.correlation_map(
                 data=corr_matrix,

@@ -6,6 +6,7 @@ from typing import Tuple
 import warnings
 
 import evaluate
+import numpy as np
 
 
 class Metric:
@@ -30,12 +31,21 @@ class Metric:
         """
         return f"{self.name} Metric: {self.get_mean()} ± {self.get_std()}"
 
-    def __getitem__(self, slice_: slice) -> float | list[float]:
+    def __getitem__(self, slice_):
         """
-        Return the metric at the given index.
+        Support int, slice, and numpy.ndarray indexing.
         """
-        return self.all[slice_]
-
+        if isinstance(slice_, np.ndarray):
+            # NumPy array of indices
+            # Convert to a list of ints, then use standard Python indexing
+            return [self.all[int(i)] for i in slice_]
+        elif isinstance(slice_, (list, tuple)):
+            # Allow list or tuple of indices (assuming (index,) is at position 0)
+            return [self.all[i[0]] for i in slice_]
+        else:
+            # Normal indexing or slicing
+            return self.all[slice_]
+        
     def __iter__(self) -> iter:
         """
         Return an iterator over all metric values.

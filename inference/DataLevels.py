@@ -139,6 +139,7 @@ class Results:
     result_attrs: list[str] = [
         "model_answer",
         "answer_correct",
+        "answer_in_self",
         "model_reasoning",
         "reasoning_correct",
         "model_output",
@@ -150,6 +151,7 @@ class Results:
         self,
         model_output: str,
         model_answer: str,
+        answer_in_self: str,
         model_reasoning: str,
         answer_correct: bool = None,
         reasoning_correct: bool = None,
@@ -174,6 +176,7 @@ class Results:
 
         self.model_output: str = model_output
         self.model_answer: str = model_answer
+        self.answer_in_self: str = answer_in_self
         self.model_reasoning: str = model_reasoning
 
         self.answer_correct: bool = answer_correct
@@ -562,6 +565,7 @@ class SamplePart:
             model_output=model_output,
             model_answer=model_answer,
             model_reasoning=model_reasoning,
+            answer_in_self=self.answer_lies_in_self,
             answer_correct=stats.are_identical(model_answer, self.golden_answer),
             interpretability=interpretability,
             version=version,
@@ -850,6 +854,7 @@ class Task:
         corr_matrices = {}
         for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
             # Create lists of sample part attributes for correlation calculation
+            self.parts_answer_in_self = []
             self.parts_answer_correct = Metric("Parts Answer Correct", "part_answer_correct")
             self.parts_target_distances = []
             self.parts_max_supp_attn = []
@@ -863,6 +868,9 @@ class Task:
                 self.parts_target_distances.extend(sample.target_sent_dist)
 
             for part in self.parts:
+                self.parts_answer_in_self.append(
+                    part.results[i].answer_in_self
+                )
                 self.parts_answer_correct.add(part.results[i].answer_correct)
                 self.parts_max_supp_attn.append(
                     part.results[i].interpretability.max_supp_attn
@@ -874,7 +882,8 @@ class Task:
             assert(len(self.parts_answer_correct) ==
                     len(self.parts_max_supp_attn) ==
                     len(self.parts_attn_on_target) ==
-                    len(self.sample_part_lengths)
+                    len(self.sample_part_lengths) ==
+                    len(self.parts_answer_in_self)
                     )
 
             # Calculate correlation using mean part attention scores for samples
@@ -883,7 +892,7 @@ class Task:
                 max_supp_attn=self.parts_max_supp_attn,
                 attn_on_target=self.parts_attn_on_target,
                 sample_part_lengths=self.sample_part_lengths.all,
-                target_sent_distances=self.part_target_distances
+                target_sent_distances=self.parts_target_distances
             )
         return corr_matrices
 

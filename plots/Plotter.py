@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+from collections import defaultdict
 from pathlib import Path
 import warnings
 
 import matplotlib.pyplot as plt
+from matplotlib.ticker import PercentFormatter
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -40,7 +42,7 @@ class Plotter:
         y_label: str,
         x_label: str,
         file_name: str,
-        plot_name_add: list[str],
+        plot_name_add: list[str] = None,
     ) -> None:
         """
         Save the plot to a file.
@@ -69,8 +71,9 @@ class Plotter:
         max_x_len: int,
         plot_name_add: list[str],
         number_of_prompts: int,
+        displ_percentage: bool = False,
         metr_types: int = 1,
-        step: int|float = 1,
+        step: int|float = None,
         min_x_len: int = 0,
     ) -> None:
         """
@@ -87,10 +90,11 @@ class Plotter:
         :param min_x_len: minimum length of the x-axis
         :return: None
         """
-        if step >= 1:
-            plt.xticks(range(min_x_len, max_x_len + 1, step))
-        else:  
-            plt.xticks(np.arange(0, max_x_len + 0.1, step))
+        if step:
+            if step >= 1:
+                plt.xticks(range(min_x_len, max_x_len + 1, step))
+            elif step < 1:  
+                plt.xticks(np.arange(0, max_x_len + 0.1, step))
 
         plt.xlabel(x_label)
 
@@ -107,9 +111,10 @@ class Plotter:
             plt.ylim(bottom=0, top=1.1)
             plt.ylim(bottom=0, top=1)
         else:
-            y_ticks = np.arange(0, 1.1, 0.1)
-            plt.ylim(bottom=0, top=1.1)
-            plt.ylim(bottom=0, top=1)
+            if not displ_percentage:
+                y_ticks = np.arange(0, 1.1, 0.1)
+                plt.ylim(bottom=0, top=1.1)
+                plt.ylim(bottom=0, top=1)
             
         type_of_data = " ".join([part.capitalize() for part in y_label.split("_")])
         plt.ylabel(type_of_data)
@@ -126,8 +131,10 @@ class Plotter:
             title += f" ({'; '.join(plot_name_add)})"
 
         plt.title(title)
+        if displ_percentage:
+            plt.gca().yaxis.set_major_formatter(PercentFormatter(1))  # 1 = scale of data (0–1 range)
 
-        if (number_of_prompts > 6 or metr_types > 6):
+        if (number_of_prompts > 6 or metr_types > 6 or "attributes" in y_label.lower()):
             legend = plt.legend(
                 loc="center left", bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True
             )
@@ -255,7 +262,7 @@ class Plotter:
         colors = self.cmap(np.linspace(0, 1, len(acc_per_task)))
         plt.plot(range(1, len(acc_per_task) + 1), acc_per_task.all, color=colors[0])
 
-        self._plot_general_details(x_label, y_label, max_x_len=len(acc_per_task), plot_name_add=plot_name_add)
+        self._plot_general_details(x_label, y_label, max_x_len=len(acc_per_task), plot_name_add=plot_name_add, step=1,)
         self._save_plot(y_label, x_label, file_name, plot_name_add)
 
     def plot_acc_per_task_and_prompt(
@@ -309,6 +316,7 @@ class Plotter:
             max_x_len=max_x_len,
             plot_name_add=plot_name_add,
             number_of_prompts=number_of_prompts,
+            step=1
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
 
@@ -365,6 +373,7 @@ class Plotter:
             max_x_len=max_x_len,
             plot_name_add=plot_name_add,
             number_of_prompts=number_of_prompts,
+            step=1,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
 
@@ -434,3 +443,70 @@ class Plotter:
             file_name = path_add / file_name
             Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
         self._save_plot(y_label, x_label, file_name, plot_name_add)
+
+
+    def plot_correlation_hist(
+        self,
+        x_data: dict[str | Prompt, Accuracy | Metric],
+        y_data: dict[str: list[float]|np.array] = None,
+        x_label: str = "X",
+        y_label: str = "Y",
+        displ_percentage: bool = False,
+        file_name: str = None,
+        plot_name_add: str = None,
+    ) -> None:
+        """
+        Plots the (sum/count) values of y_data labels into categories from x_data.
+        :param x_data: The x data to plot as bar categories, i.e. sample_part_lengths
+        :param y_data: The y_data of labels, corresponding to categories from x_data, i.e. parts_answer_correct 
+        :param x_label: The label for x-axis
+        :param y_label: The label for y-axis
+        :param file_name: name of the file
+        """
+        for metr_type, metr in x_data.items():
+            y_cats_data = defaultdict(dict)
+            for label_name, labels in y_data.items():
+                total = len(labels)
+                labels_arr = np.array(labels)
+                # parts_corr[1,0,1,1,...], part_lengths[1,2,3,4…]
+                x_cats = np.unique(metr)
+                x_cats_indices = [np.where(metr == unq) for unq in x_cats]
+                # y_data_indices = [.sum() for parts_lengths_index in parts_lengths_indices]
+                # Obtain list of arrays with True/False if value is label
+                print("labels_arr", labels_arr)
+                for label in set(labels_arr):
+                    y_cats_data[label_name][label] = [float(sum(labels_arr[indices]==label)/total) for indices in x_cats_indices]
+                    print("label",label,"y_cats_data", y_cats_data)
+
+            # Ensure sum of values by label add up to total amount of y values
+            # assert np.sum(list(y_cats_data.values())) == len(y_data)
+
+            fig, ax = plt.subplots()
+            width = 0.6
+            num_groups = len(y_cats_data)
+            offset = np.linspace(-width, width, num_groups)
+            for i, (label_name, labels) in enumerate(y_cats_data.items()):
+                bottom = np.zeros(len(x_cats))
+                for label, values in labels.items():
+                    print(x_cats.shape, values)
+                    try:
+                        label = str(bool(int(label))).lower()
+                    except ValueError:
+                        pass
+                    label_name = label_name.split("parts_")[-1]
+                    p = ax.bar(x_cats + offset[i]/2, values, width=width, label=f"{label_name}-{label}", bottom=bottom)
+                    bottom += values
+
+            y_label = "Parts Attributes" if len(y_data)>1 else y_label
+            
+            self._plot_general_details(
+                x_label=x_label,
+                y_label=y_label,
+                max_x_len=len(x_cats),
+                number_of_prompts=1,
+                displ_percentage=displ_percentage,
+                plot_name_add=plot_name_add,
+                )
+            self._save_plot(y_label=y_label, x_label=x_label, file_name=file_name)
+    
+        
