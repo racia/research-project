@@ -161,7 +161,7 @@ class MetricEvaluator(Evaluator):
                 f"exact_match_std_{self.version}": self.exact_match_std,
                 f"soft_match_accuracy_{self.version}": self.soft_match_accuracy,
                 f"soft_match_std_{self.version}": self.soft_match_std,
-                f"max_attn_dist_{self.version}": self.max_supp_attn,
+                f"max_supp_attn_{self.version}": self.max_supp_attn,
                 f"max_attn_dist_std_{self.version}": self.max_supp_attn_std,
                 f"max_attn_on_target_{self.version}": self.attn_on_target,
                 f"attn_on_target_std_{self.version}": self.attn_on_target_std,
