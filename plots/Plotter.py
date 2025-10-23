@@ -1,14 +1,25 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Sized
 
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+from matplotlib.colors import ListedColormap
 
 from evaluation.Metrics import Accuracy, Metric
+from evaluation.utils import CASES_2_LABELS
 from inference.Prompt import Prompt
 from interpretability.utils import InterpretabilityResult
+from plots.utils import (
+    Identifiers,
+    determine_colour_scheme,
+    prepare_for_display_pie,
+    simple_case,
+    match_cases,
+    plot_task_map_grid,
+)
 
 
 class Plotter:
@@ -28,6 +39,14 @@ class Plotter:
         else:
             self.cmap = plt.get_cmap(color_map)
 
+        self.case_color_map = {
+            item: color
+            for item, color in zip(
+                CASES_2_LABELS.keys(),
+                self.cmap(np.linspace(0, 1, len(CASES_2_LABELS))),
+            )
+        }
+
         self.results_path: Path = results_path
 
         self.plot_counter_task: int = 0
@@ -35,29 +54,33 @@ class Plotter:
 
     def _save_plot(
         self,
-        y_label: str,
-        x_label: str,
-        file_name: str,
-        plot_name_add: list[str],
+        x_label: str = None,
+        y_label: str = None,
+        plot_name_add: list[str] = None,
+        file_name: str = None,
     ) -> None:
         """
         Save the plot to a file.
 
-        :param y_label: label for the y-axis, i.e. the type of data
         :param x_label: label for the x-axis, i.e. the data for testing
-        :param file_name: name of the file
+        :param y_label: label for the y-axis, i.e. the type of data
         :param plot_name_add: addition to the plot name
+        :param file_name: name of the file without the path and extension
 
         :return: None
         """
-        if file_name is not None:
-            plt.savefig(file_name, bbox_inches="tight")
-        else:
+        if file_name:
+            plt.savefig(self.results_path / file_name, bbox_inches="tight")
+        elif x_label and y_label and plot_name_add:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
                 self.results_path
                 / f"{'_'.join(plot_name_add)}_{label}_per_{x_label.lower()}_no_{self.plot_counter_task}.png",
                 bbox_inches="tight",
+            )
+        else:
+            raise ValueError(
+                "Either 'file_name' should be provided or 'x_label', 'y_label', and 'plot_name_add'."
             )
 
         self.plot_counter_prompt += 1
@@ -195,7 +218,7 @@ class Plotter:
         plt.plot(range(1, len(acc_per_task) + 1), acc_per_task.all, color=colors[0])
 
         self._plot_general_details(x_label, y_label, len(acc_per_task), plot_name_add)
-        self._save_plot(y_label, x_label, file_name, plot_name_add)
+        self._save_plot(x_label, y_label, plot_name_add, file_name)
 
     def plot_acc_per_task_and_prompt(
         self,
@@ -250,4 +273,340 @@ class Plotter:
             plot_name_add,
             number_of_prompts=number_of_prompts,
         )
-        self._save_plot(y_label, x_label, file_name, plot_name_add)
+        self._save_plot(x_label, y_label, plot_name_add, file_name)
+
+    def plot_answer_type_per_part(
+        self,
+        error_cases_ids: dict[str, str],
+        specification: str | list[str],
+    ):
+        """
+        For each setting, plot a 'heatmap' of answer types per sample and part of each task.
+
+        :param error_cases_ids: {(task, sample, part): answer_type}
+        :param specification: description of the setting(s) for the title
+        """
+        answer_types = list(self.case_color_map.keys())
+        ids_cases = {}
+        for case, indices in error_cases_ids.items():
+            for idx in indices:
+                idx = idx.split("\t")
+                # drop the strike-through id
+                ids_cases[tuple(idx[1:])] = case
+        present_cases = set(error_cases_ids.keys())
+        simple_cases = (
+            True if all(simple_case(case) for case in present_cases) else False
+        )
+
+        tasks = sorted(set(i[0] for i in ids_cases.keys()))
+        n_tasks = len(tasks)
+        if n_tasks % 4 == 0:
+            n_cols = min(4, n_tasks)
+        elif n_tasks % 3 == 0:
+            n_cols = min(3, n_tasks)
+        elif n_tasks % 2 == 0:
+            n_cols = min(2, n_tasks)
+        else:
+            n_cols = 1
+        n_rows = int(np.ceil(n_tasks / n_cols))
+
+        # Calculate max samples/parts per task
+        task_samples = {task: set() for task in tasks}
+        task_parts = {task: set() for task in tasks}
+        for t, s, p in ids_cases.keys():
+            if t in task_samples:
+                task_samples[t].add(s)
+                task_parts[t].add(p)
+
+        # Calculate subplot sizes
+        subplot_widths = [len(task_parts[task]) * 0.2 for task in tasks]
+        subplot_heights = [len(task_samples[task]) * 1.0 for task in tasks]
+
+        # Calculate figure size
+        fig_width = sum(subplot_widths[i] for i in range(n_cols)) + 2
+        fig_height = sum(subplot_heights[i] for i in range(0, n_tasks, n_cols))
+        fig, axes = plt.subplots(
+            n_rows, n_cols, figsize=(fig_width + 1, fig_height), squeeze=False
+        )
+        colors = [
+            color
+            for case, color in self.case_color_map.items()
+            if case in present_cases
+        ]
+
+        for i, task in enumerate(tasks):
+            ax = axes[i // n_cols][i % n_cols]
+            samples = sorted(task_samples[task])
+            parts = sorted(task_parts[task])
+            heatmap = np.zeros((len(samples), len(parts)), dtype=int)
+            mask = np.zeros_like(heatmap, dtype=bool)
+            if not samples:
+                ax.set_visible(False)
+                continue
+            for s_idx, sample in enumerate(samples):
+                for p_idx, part in enumerate(parts):
+                    idx = (task, sample, part)
+                    if idx not in ids_cases.keys():
+                        mask[s_idx, p_idx] = True
+                    else:
+                        atype = ids_cases[idx]
+                        heatmap[s_idx, p_idx] = answer_types.index(atype)
+
+            ax.imshow(heatmap, cmap=ListedColormap(colors), aspect="auto")
+            plot_task_map_grid(plt, ax, task, samples, parts, mask)
+
+        filtered_ans_types = [
+            CASES_2_LABELS[ans].replace(", ", ",\n")
+            for ans in answer_types
+            if match_cases(simple_cases, ans)
+        ]
+        # Legend
+        handles = []
+        for i, atype in enumerate(filtered_ans_types):
+            line = plt.Line2D(
+                [0],
+                [0],
+                marker="s",
+                color="w",
+                label=atype,
+                markerfacecolor=colors[i],
+                markersize=10,
+            )
+            handles.append(line)
+        fig.subplots_adjust(right=0.9)
+        fig.legend(
+            handles,
+            filtered_ans_types,
+            loc="center left",
+            # (horizontal: left-right, vertical: bottom-top)
+            bbox_to_anchor=(1.02, 0.5),
+        )
+        fig.suptitle(f"Error Cases {' '.join(specification)}", fontsize=14, y=0.9)
+        fig.tight_layout(rect=(0, 0, 0.9, 0.9))
+        fig.savefig(
+            self.results_path / f"error_case_map_{'_'.join(specification)}.png",
+            bbox_inches="tight",
+        )
+
+    def plot_case_heatmap(
+        self,
+        ids_settings: dict[tuple, list[str]],
+        case_type: str,
+        all_indices: set[tuple] = None,
+    ) -> None:
+        """
+        Plots a grid of subplots, one per task. Each subplot is a heatmap of samples x parts.
+        Subplot size adapts to the max number of samples/parts for each task.
+        Gray color for indices that are not present in all_indices.
+        :param ids_settings: {identifier: [settings]}
+        :param case_type: "incorrect" or "correct" (for color)
+        :param all_indices: set of all possible (task, sample, part) tuples
+        :return: None
+        """
+        ids = list(ids_settings.keys())
+        if not ids:
+            raise ValueError("No cases to plot, pass non-empty 'ids_settings'.")
+
+        # Get all tasks
+        tasks = (
+            sorted(set(i[0] for i in all_indices))
+            if all_indices
+            else sorted(set(i[0] for i in ids))
+        )
+        n_tasks = len(tasks)
+        n_cols = min(4, n_tasks)
+        n_rows = int(np.ceil(n_tasks / n_cols))
+
+        # Calculate max samples/parts per task
+        task_samples = {task: set() for task in tasks}
+        task_parts = {task: set() for task in tasks}
+        indices = all_indices if all_indices else ids
+        for t, s, p in indices:
+            if t in task_samples:
+                task_samples[t].add(s)
+                task_parts[t].add(p)
+
+        # Calculate subplot sizes
+        square_size = 0.5
+        subplot_widths = [len(task_parts[task]) * square_size for task in tasks]
+        subplot_heights = [len(task_samples[task]) * square_size for task in tasks]
+
+        # Calculate figure size
+        fig_width = sum(subplot_widths[i] for i in range(n_cols))
+        fig_height = sum(subplot_heights[i] for i in range(0, n_tasks, n_cols))
+        fig, axes = plt.subplots(
+            n_rows, n_cols, figsize=(fig_width, fig_height), squeeze=False
+        )
+        cmap = plt.cm.get_cmap(determine_colour_scheme(case_type), 5)
+        cmap = cmap(np.arange(cmap.N))
+        cmap[0] = np.array([1, 1, 1, 1])  # White for 0 settings
+        cmap = ListedColormap(cmap)
+
+        im_4, ax_4 = None, None
+        for i, task in enumerate(tasks):
+            ax = axes[i // n_cols][i % n_cols]
+            samples = sorted(task_samples[task])
+            parts = sorted(task_parts[task])
+            heatmap = np.zeros((len(samples), len(parts)), dtype=int)
+            mask = np.zeros_like(heatmap, dtype=bool)
+            for s_idx, sample in enumerate(samples):
+                for p_idx, part in enumerate(parts):
+                    idx = (task, sample, part)
+                    if all_indices and idx not in all_indices:
+                        mask[s_idx, p_idx] = True
+                    else:
+                        heatmap[s_idx, p_idx] = len(ids_settings.get(idx, []))
+            im = ax.imshow(heatmap, cmap=cmap, aspect="equal", vmin=0, vmax=4)
+            plot_task_map_grid(plt, ax, task, samples, parts, mask)
+            if i == 3:
+                im_4 = im
+                ax_4 = ax
+
+        cbar = fig.colorbar(im_4 or im, ax=ax_4 or ax, pad=0.04, cmap=cmap.name)
+        cbar.set_label("Number of Settings", fontsize=8)
+        cbar.set_ticks([0, 1, 2, 3, 4])
+
+        fig.suptitle(
+            f"[{CASES_2_LABELS[case_type]}] Number of Settings for Case",
+            fontsize=14,
+        )
+        fig.tight_layout(rect=(0, 0, 1, 0.96))
+        self._save_plot(file_name=f"error_case_heatmap_{case_type}")
+
+    def plot_error_histogram(
+        self,
+        cases: dict[str, list[tuple] | set[tuple]],
+        group_by: str | bool,
+        normalize: bool = False,
+        setting: str = None,
+    ) -> None:
+        """
+        Plots a histogram for the number of items in each group (task/sample/part),
+        divided by error category using different colors.
+        :param cases: dict of {error_case: indices}
+        :param group_by: 'task', 'sample', or 'part'
+        :param normalize: if True, normalize counts to percentages per group
+        :param setting: the setting name for the title
+        :return: None
+        """
+        if group_by not in ("task", "sample", "part", None):
+            raise ValueError("group_by must be 'task', 'sample', or 'part'")
+        error_categories = list(cases.keys())
+        # Collect all group ids
+        all_group_ids = set()
+        group_counts = {cat: {} for cat in error_categories}
+        for case, indices in cases.items():
+            identifiers = Identifiers(list(indices), case)
+            grouped_ids = identifiers.group_by(
+                task=(group_by == "task"),
+                sample=(group_by == "sample"),
+                part=(group_by == "part"),
+            )
+            group_counts[case] = {
+                group_id: len(identifiers)
+                for group_id, identifiers in grouped_ids.items()
+            }
+            [all_group_ids.add(id_) for id_ in grouped_ids.keys()]
+        all_group_ids = sorted(all_group_ids)
+        # Prepare data for stacked bar plot
+        data = []
+        for case in error_categories:
+            data.append([group_counts[case].get(gid, 0) for gid in all_group_ids])
+
+        if normalize:
+            # Normalize to percentages per group
+            totals = [
+                sum(data[j][i] for j in range(len(error_categories)))
+                for i in range(len(all_group_ids))
+            ]
+            for j in range(len(error_categories)):
+                data[j] = [
+                    (data[j][i] / totals[i] * 100 if totals[i] > 0 else 0)
+                    for i in range(len(all_group_ids))
+                ]
+        fig, ax = plt.subplots(figsize=(10, 6))
+        bottom = [0] * len(all_group_ids)
+        for i, case in enumerate(error_categories):
+            ax.bar(
+                all_group_ids,
+                data[i],
+                bottom=bottom,
+                color=self.case_color_map[case],
+                label=CASES_2_LABELS[case],
+            )
+            bottom = [b + d for b, d in zip(bottom, data[i])]
+        ax.set_xticks(all_group_ids)
+        ax.set_xlabel(f"{group_by.capitalize()} ID")
+        ax.set_ylabel("Percentage of Items (%)" if normalize else "Number of Items")
+        setting = setting.upper() if setting else "ALL SETTINGS"
+        ax.set_title(
+            f"Histogram of Items per {group_by.capitalize()} by Error Category [{setting}]"
+        )
+        ax.legend()
+        plt.tight_layout()
+        normalization = "normalized" if normalize else "absolute"
+        self._save_plot(
+            file_name=f"error_histogram_{normalization}_{setting.title().replace(' ', '_')}"
+        )
+
+    def plot_case_pie(
+        self,
+        cases_indices: dict,
+        setting: str = None,
+        unique: bool = False,
+    ) -> None:
+        """
+        Plots a pie chart for always correct/incorrect answer/reasoning cases.
+        :param cases_indices: dict with keys like 'always_corr_answer', 'always_incorr_answer', etc., values are counts
+        :param setting: optional, name of the setting for the title
+        :param unique: if True, indicates that the cases are always correct/incorrect ones
+        :return: None
+        """
+        labels, sizes, colors_to_use = [], [], []
+        for case, indices in cases_indices.items():
+            labels.append(CASES_2_LABELS[case])
+            sizes.append(len(indices) if isinstance(indices, Sized) else indices)
+            colors_to_use.append(self.case_color_map[case])
+
+        def autopct_func(pct):
+            """Custom autopct to show percentage only if > 0"""
+            return f"{pct:.1f}%" if pct > 0 else ""
+
+        fig, ax = plt.subplots(figsize=(12, 6))
+        wedges, _, _ = ax.pie(
+            sizes,
+            labels=prepare_for_display_pie(labels, sizes),
+            autopct=autopct_func,
+            startangle=90,
+            counterclock=False,
+            labeldistance=1.05,
+            # rotatelabels=True,
+            colors=colors_to_use,
+        )
+        # add the lines between the slices
+        fractions = np.array(sizes) / np.sum(sizes)
+        angles = np.cumsum(fractions) * 2 * np.pi
+        for angle in angles:
+            ax.plot(
+                [0, np.sin(angle)],
+                [0, np.cos(angle)],
+                color="black",
+                linestyle="-",
+                linewidth=0.4,
+            )
+
+        cases_str = "Always Correct/Incorrect Cases" if unique else "Cases"
+        setting = setting.upper() if setting else "ALL SETTINGS"
+        ax.set_title(f"Proportion of {cases_str} [{setting}]")
+        ax.legend(
+            wedges,
+            labels,
+            loc="center left",
+            bbox_to_anchor=(1.2, 0.55),
+        )
+        # Shrink plot area to make space for legend
+        fig.subplots_adjust(right=0.9 if len(sizes) < 5 else 0.8)
+        plt.tight_layout(rect=(0, 0, 0.8, 1))
+        uniqueness = "_unique" if unique else "_all"
+        setting = setting.title().replace(" ", "_")
+        self._save_plot(file_name=f"error_case_pie{uniqueness}_{setting}")

@@ -108,6 +108,8 @@ def run(
     results_path: str,
     save_path: str,
     samples_per_task: int,
+    experiment: str,
+    setting: str = "baseline",
     create_heatmaps: bool = True,
     verbose: bool = False,
 ) -> None:
@@ -117,12 +119,24 @@ def run(
     :param results_path: Path to the data for evaluation
     :param save_path: Path to save the results
     :param samples_per_task: Number of samples per task the results were ran with
-    :param create_heatmaps: Whether to create heatmaps for the interpretability results
+    :param experiment: The experiment to evaluate (e.g., "reasoning_answer", "direct_answer")
+    :param setting: The setting of the experiment (e.g., "baseline", "feedback")
     :param verbose: Whether to print the results to the console
+    :param create_heatmaps: Whether to create heatmaps for the interpretability results
     :return: None
     """
     print("You are running the evaluation pipeline.", end="\n\n")
 
+    experiment = experiment.lower()
+    if experiment not in ["reasoning_answer", "direct_answer"]:
+        raise ValueError(
+            f"Experiment '{experiment}' is not supported. Please choose either 'reasoning_answer' or 'direct_answer'."
+        )
+    setting = setting.lower()
+    if setting not in ["baseline", "feedback", "skyline", "speculative_decoding", "sd"]:
+        raise ValueError(
+            "Setting not recognized, expected one of: 'baseline', 'feedback', 'skyline', 'speculative_decoding', 'sd'"
+        )
     if not results_path:
         raise ValueError("Please provide a path to the data for evaluation.")
 
@@ -141,7 +155,7 @@ def run(
         loaded_baseline_results=True if multi_system else False,
     )
     results_file_name = f"{Path(results_path).stem}_upd.csv"
-    plotter = Plotter(results_path=saver.run_path)
+    plotter = Plotter(results_path=saver.run_path, color_map="tab20")
 
     print(f"\nLoaded results data for {len(results_data)} tasks.")
     print(f"Loaded {loader.number_of_parts} sample parts created from raw data.")
@@ -236,6 +250,9 @@ def run(
         )
         # TODO: plot attention distribution per task and sample
         print("Saving result categories...")
+        plotter.plot_answer_type_per_part(
+            Results.CASE_COUNTERS[version], specification=[setting, experiment, version]
+        )
         for case, case_list in Results.CASE_COUNTERS[version].items():
             headers = "id_\ttask_id\tsample_id\tpart_id"
             if case_list:
@@ -248,6 +265,7 @@ def run(
             else:
                 print(f"Case {case}: detected 0 occurrences. Nothing!")
 
+    print(f"Plots produced: {plotter.plot_counter_prompt}")
     print("\nThe evaluation pipeline has finished successfully.")
 
 
@@ -281,7 +299,7 @@ def parse_args():
     parser.add_argument(
         "--create_heatmaps",
         action="store_true",
-        help="Whether to create heatmaps for the interpretability results.",
+        help="Whether to create attention heatmaps for the interpretability results.",
     )
     parser.add_argument(
         "--verbose",
@@ -299,6 +317,8 @@ if __name__ == "__main__":
         results_path=args.results_path,
         save_path=args.save_path,
         samples_per_task=args.samples_per_task,
+        setting="baseline",
+        experiment="reasoning_answer",
         create_heatmaps=args.create_heatmaps,
         verbose=args.verbose,
     )
