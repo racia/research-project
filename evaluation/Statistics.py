@@ -1,6 +1,7 @@
 from typing import List
 
 from nltk.stem import WordNetLemmatizer
+from scipy.stats import spearmanr
 
 from evaluation.utils import *
 
@@ -86,6 +87,21 @@ class Statistics:
                 true_in_predicted += 1
 
         return true_in_predicted / len(true_values) if true_in_predicted else 0.0
+    
+
+    def corr_score(
+            self, metrics_list1: list[float], metrics_list2: list[float] 
+    ) -> float:
+        """
+        Calculates the spearman correlation between the provided two lists of float metrics. 
+        E.g. may be for accuracy scores with max supporting attention scores.
+        :param metrics_list1: One metric list of floats
+        :param metrics_list2: The other metric list of floats
+        :return: The spearman correlation score and p-value
+        """
+        corr_score, p_value = spearmanr(metrics_list1, metrics_list2)
+        return float(corr_score), float(p_value)
+    
 
     def soft_match_accuracy_score(
         self, true_values: List[str], predicted_values: List[str]

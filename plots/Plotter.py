@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+from collections import defaultdict
 from pathlib import Path
+import warnings
 from typing import Sized
 
 import matplotlib.pyplot as plt
+from matplotlib.ticker import PercentFormatter
 import numpy as np
+import pandas as pd
 import seaborn as sns
 from matplotlib.colors import ListedColormap
 
@@ -98,10 +102,10 @@ class Plotter:
 
     def _save_plot(
         self,
-        x_label: str = None,
-        y_label: str = None,
+        y_label: str,
+        x_label: str,
+        file_name: str,
         plot_name_add: list[str] = None,
-        file_name: str = None,
     ) -> None:
         """
         Save the plot to a file.
@@ -136,7 +140,11 @@ class Plotter:
         y_label: str,
         max_x_len: int,
         plot_name_add: list[str],
-        number_of_prompts: int = 1,
+        number_of_prompts: int,
+        displ_percentage: bool = False,
+        metr_types: int = 1,
+        step: int|float = None,
+        min_x_len: int = 0,
     ) -> None:
         """
         Plot the general details of the plot, e.g. labels, title, and legend.
@@ -147,16 +155,37 @@ class Plotter:
         :param plot_name_add: addition to the plot name
         :param number_of_prompts: number of prompts to plot, if more than 6,
                                   the legend is placed outside the plot
+        :param metr_types: number of metrics to plot, if more than 6,
+                                  the legend is placed outside the plot
+        :param min_x_len: minimum length of the x-axis
         :return: None
         """
-        plt.xticks(range(1, max_x_len + 1))
+        if step:
+            if step >= 1:
+                plt.xticks(range(min_x_len, max_x_len + 1, step))
+            elif step < 1:
+                plt.xticks(np.arange(0, max_x_len + 0.1, step))
+
         plt.xlabel(x_label)
 
-        y_ticks = np.arange(0, 1.1, 0.1)
-        plt.yticks(y_ticks)
-        plt.ylim(bottom=0, top=1.1)
+        if y_label.lower() in ["accurac", "correct"]:
+            y_ticks = np.arange(0, 1.1, 0.1)
+            plt.ylim(bottom=0, top=1.1)
+            plt.ylim(bottom=0, top=1)
+        elif "attention" in y_label.lower():
+            y_ticks = np.arange(0, 0.5, 0.1)
+            plt.ylim(bottom=0, top=0.5)
+            plt.ylim(bottom=0, top=0.6)
+        elif "reasoning" in y_label.lower():
+            y_ticks = np.arange(0, 1.1, 0.1)
+            plt.ylim(bottom=0, top=1.1)
+            plt.ylim(bottom=0, top=1)
+        else:
+            if not displ_percentage:
+                y_ticks = np.arange(0, 1.1, 0.1)
+                plt.ylim(bottom=0, top=1.1)
+                plt.ylim(bottom=0, top=1)
 
-        plt.ylim(bottom=0, top=1)
         type_of_data = " ".join([part.capitalize() for part in y_label.split("_")])
         plt.ylabel(type_of_data)
 
@@ -165,18 +194,60 @@ class Plotter:
         title = f"{type_of_data} per {x_label}"
         if number_of_prompts > 1:
             title += " and prompt"
+        elif metr_types > 1:
+            title += " and metric"
 
         if plot_name_add:
             title += f" ({'; '.join(plot_name_add)})"
 
         plt.title(title)
+        if displ_percentage:
+            plt.gca().yaxis.set_major_formatter(PercentFormatter(1))  # 1 = scale of data (0–1 range)
 
-        if number_of_prompts > 6:
-            plt.legend(
+        if (number_of_prompts > 6 or metr_types > 6 or "attributes" in y_label.lower()):
+            legend = plt.legend(
                 loc="center left", bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True
             )
         else:
-            plt.legend(bbox_to_anchor=(1.1, 1.05))
+            legend = plt.legend(bbox_to_anchor=(1.1, 1.05))
+
+        leg_lines = legend.get_lines()
+        leg_texts = legend.get_texts()
+        plt.setp(leg_lines, linewidth=3)
+        plt.setp(leg_texts, fontsize="x-large")
+
+
+    def correlation_map(
+        self,
+        data: dict[str, dict[str, tuple]],
+        level: str,
+        version: str,
+        file_name: str = None,
+        id: int = 1
+    ) -> None:
+        """
+        Draw a heat map with the given data.
+        :param data: 2D numpy array with the data to plot
+        :param level: level of the data, e.g. "task", "sample", "part"
+        :param version: version of the data, e.g. "before", "after"
+        :param file_name: name of the file to save the plot
+        :param id: int id of the level
+        :return: None
+        """
+        plt.figure(figsize=(12, 8))
+        data = pd.DataFrame(
+            {k: {k2: v2[0] for k2, v2 in v.items()} for k, v in data.items()},
+            index=data.keys(),
+        )
+        data.fillna(0) # To display 0 instead of empty block
+        axis = sns.heatmap(data, annot=True)
+        cbar = axis.collections[0].colorbar
+        cbar.ax.tick_params(labelsize=5)
+        plt.title(f"Attention Map for {level} {id} ({version})", fontsize=10)
+        plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
+        Path.mkdir(self.results_path / version, exist_ok=True, parents=True)
+        plt.savefig(self.results_path / version / file_name)
+        plt.close()
 
     def draw_heat(
         self,
@@ -261,7 +332,7 @@ class Plotter:
         colors = self.cmap(np.linspace(0, 1, len(acc_per_task)))
         plt.plot(range(1, len(acc_per_task) + 1), acc_per_task.all, color=colors[0])
 
-        self._plot_general_details(x_label, y_label, len(acc_per_task), plot_name_add)
+        self._plot_general_details(x_label, y_label, len(acc_per_task), plot_name_add, step=1)
         self._save_plot(x_label, y_label, plot_name_add, file_name)
 
     def plot_acc_per_task_and_prompt(
@@ -292,7 +363,6 @@ class Plotter:
             number_of_prompts += 1
             if len(acc.all) > max_x_len:
                 max_x_len = len(acc.all)
-
             x_data, y_data = range(1, len(acc.all) + 1), acc.all
 
             if len(x_data) != len(y_data):
@@ -313,11 +383,136 @@ class Plotter:
         self._plot_general_details(
             x_label,
             y_label,
+            max_x_len=max_x_len,
+            plot_name_add=plot_name_add,
+            number_of_prompts=number_of_prompts,
+            step=1
+        )
+        self._save_plot(y_label, x_label, file_name, plot_name_add)
+
+    def plot_acc_with_std(
+        self,
+        acc_per_prompt_task: dict[str | Prompt, Accuracy | Metric],
+        x_label: str = "Task",
+        y_label: str = "Accuracy",
+        file_name=None,
+        plot_name_add: list[str] = None,
+    ) -> None:
+        plt.figure(figsize=(15, 5))
+        number_of_prompts = 0
+        max_x_len = 0
+
+        means = [
+            np.array(v.all)
+            for k, v in acc_per_prompt_task.items()
+            if "std" not in k.lower()
+        ]
+        stds = [
+            np.array(v.all)
+            for k, v in acc_per_prompt_task.items()
+            if "std" in k.lower()
+        ]
+        labels = [key for key in acc_per_prompt_task.keys() if not "std" in key.lower()]
+        colors = self.cmap(np.linspace(0, 1, len(labels)))
+
+        for prompt, mean, std, color in zip(labels, means, stds, colors):
+            number_of_prompts += 1
+            if len(mean) > max_x_len:
+                max_x_len = len(mean)
+
+            x_data = np.arange(1, len(mean) + 1)
+
+            plt.plot(
+                x_data,
+                mean,
+                label=prompt if isinstance(prompt, str) else prompt.name,
+                color=color,
+            )
+            # Add standard deviation shading
+            plt.fill_between(
+                x_data,
+                mean - std,
+                mean + std,
+                color=color,
+                alpha=0.25,
+            )
+
+        self._plot_general_details(
+            x_label,
+            y_label,
+            max_x_len=max_x_len,
+            plot_name_add=plot_name_add,
+            number_of_prompts=number_of_prompts,
+            step=1,
+        )
+        self._save_plot(y_label, x_label, file_name, plot_name_add)
+
+    def plot_correlation(
+        self,
+        x_data: dict[str | Prompt, Accuracy | Metric],
+        y_data: list[float],
+        x_label: str = "X",
+        y_label: str = "Y",
+        file_name=None,
+        plot_name_add: list[str] = None,
+        path_add: str = None,
+    ) -> None:
+        """
+        Plot the correlation between two variables.
+
+        :param x_data: Either acc_per_prompt_task or sample_part_lengths
+        :param y_data: data for the y-axis, e.g. attention scores
+        :param x_label: label for the x-axis
+        :param y_label: label for the y-axis
+        :param file_name: name of the plot
+        :param plot_name_add: addition to the plot name
+        :param path_add: addition to the path where the plot is saved
+        :return: None
+        """
+
+        plt.figure(figsize=(15, 5))
+        colors = self.cmap(np.linspace(0, 1, len(x_data)))
+
+        number_of_prompts = 0
+        max_x_len = 1
+        metr_types = 0
+
+        for (metr_type, metr), color in zip(x_data.items(), colors):
+            # number_of_prompts += 1
+            metr_types+=1
+            # This covers both cases: Metric (i.e. length of sentences) and Accuracy
+            if max(metr.all) > max_x_len:
+                max_x_len = max(metr.all) # Case sample_part_lenghts: Set to max value
+            min_x_len = min(metr.all) if min(metr.all) > 2 else 0
+            if len(metr) != len(y_data):
+                raise ValueError(
+                    f"x and y must have the same first dimension, but have shapes {len(metr)} and {len(y_data)}"
+                )
+
+            if not y_data:
+                raise ValueError("y_data is empty")
+
+            plt.scatter(
+                metr,
+                y=[y.get_mean() for y in y_data] if isinstance(y_data[0], Metric) else y_data,
+                label=metr_type if isinstance(metr_type, str) else metr_type.name,
+                color=color,
+            )
+
+        self._plot_general_details(
+            x_label,
+            y_label,
             max_x_len,
             plot_name_add,
             number_of_prompts=number_of_prompts,
+            metr_types=metr_types,
+            step=0.1 if max_x_len==1 else 1,
+            min_x_len=min_x_len,
         )
-        self._save_plot(x_label, y_label, plot_name_add, file_name)
+        if path_add:
+            file_name = path_add / file_name
+            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+        self._save_plot(y_label, x_label, file_name, plot_name_add)
 
     def plot_answer_type_per_part(
         self,
@@ -668,3 +863,69 @@ class Plotter:
         uniqueness = "_unique" if unique else "_all"
         setting = setting.title().replace(" ", "_")
         self._save_plot(file_name=f"error_case_pie{uniqueness}_{setting}")
+
+
+    def plot_correlation_hist(
+        self,
+        x_data: dict[str | Prompt, Accuracy | Metric],
+        y_data: dict[str: list[float]|np.array] = None,
+        x_label: str = "X",
+        y_label: str = "Y",
+        displ_percentage: bool = False,
+        file_name: str = None,
+        plot_name_add: str = None,
+    ) -> None:
+        """
+        Plots the (sum/count) values of y_data labels into categories from x_data.
+        :param x_data: The x data to plot as bar categories, i.e. sample_part_lengths
+        :param y_data: The y_data of labels, corresponding to categories from x_data, i.e. parts_answer_correct
+        :param x_label: The label for x-axis
+        :param y_label: The label for y-axis
+        :param file_name: name of the file
+        """
+        for metr_type, metr in x_data.items():
+            y_cats_data = defaultdict(dict)
+            for label_name, labels in y_data.items():
+                total = len(labels)
+                labels_arr = np.array(labels)
+                # parts_corr[1,0,1,1,...], part_lengths[1,2,3,4…]
+                x_cats = np.unique(metr)
+                x_cats_indices = [np.where(metr == unq) for unq in x_cats]
+                # y_data_indices = [.sum() for parts_lengths_index in parts_lengths_indices]
+                # Obtain list of arrays with True/False if value is label
+                print("labels_arr", labels_arr)
+                for label in set(labels_arr):
+                    y_cats_data[label_name][label] = [float(sum(labels_arr[indices]==label)/total) for indices in x_cats_indices]
+                    print("label",label,"y_cats_data", y_cats_data)
+
+            # Ensure sum of values by label add up to total amount of y values
+            # assert np.sum(list(y_cats_data.values())) == len(y_data)
+
+            fig, ax = plt.subplots()
+            width = 0.6
+            num_groups = len(y_cats_data)
+            offset = np.linspace(-width, width, num_groups)
+            for i, (label_name, labels) in enumerate(y_cats_data.items()):
+                bottom = np.zeros(len(x_cats))
+                for label, values in labels.items():
+                    print(x_cats.shape, values)
+                    try:
+                        label = str(bool(int(label))).lower()
+                    except ValueError:
+                        pass
+                    label_name = label_name.split("parts_")[-1]
+                    p = ax.bar(x_cats + offset[i]/2, values, width=width, label=f"{label_name}-{label}", bottom=bottom)
+                    bottom += values
+
+            y_label = "Parts Attributes" if len(y_data)>1 else y_label
+
+            self._plot_general_details(
+                x_label=x_label,
+                y_label=y_label,
+                max_x_len=len(x_cats),
+                number_of_prompts=1,
+                displ_percentage=displ_percentage,
+                plot_name_add=plot_name_add,
+                )
+            self._save_plot(y_label=y_label, x_label=x_label, file_name=file_name)
+

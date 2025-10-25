@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import statistics
+from typing import Tuple
+
 import warnings
 
 import evaluate
+import numpy as np
 
 
 class Metric:
@@ -22,12 +25,27 @@ class Metric:
         self.mean: float = None
         self.std: float = None
 
-    def __getitem__(self, slice_: slice) -> float | list[float]:
+    def __repr__(self):
         """
-        Return the metric at the given index.
+        Return a string representation of the metric.
         """
-        return self.all[slice_]
+        return f"{self.name} Metric: {self.get_mean()} ± {self.get_std()}"
 
+    def __getitem__(self, slice_):
+        """
+        Support int, slice, and numpy.ndarray indexing.
+        """
+        if isinstance(slice_, np.ndarray):
+            # NumPy array of indices
+            # Convert to a list of ints, then use standard Python indexing
+            return [self.all[int(i)] for i in slice_]
+        elif isinstance(slice_, (list, tuple)):
+            # Allow list or tuple of indices (assuming (index,) is at position 0)
+            return [self.all[i[0]] for i in slice_]
+        else:
+            # Normal indexing or slicing
+            return self.all[slice_]
+        
     def __iter__(self) -> iter:
         """
         Return an iterator over all metric values.
@@ -51,6 +69,8 @@ class Metric:
             self.all.append(metric.get_mean())
         elif type_ is float:
             self.all.append(metric)
+        elif type_ is bool:
+            self.all.append(int(metric))
         elif type_ is list:
             for m in metric:
                 if isinstance(m, float) or isinstance(m, int):
@@ -112,6 +132,19 @@ class AttnDistribution(Metric):
         :param max_supp_target: the list of attention distribution values
         """
         super().__init__(name, var, max_supp_target)
+
+
+class Correlation(Metric):
+    """
+    Class for tracking the correlation between two metrics.
+    :param name: the type of correlation
+    :param var: the variable name
+    :param correlations: the list of correlation values
+    :param p_values: the list of correlation p-values
+    """
+    def __init__(self, name, var: str, correlations: list[float] = None , p_values: list[float] = None):
+        super().__init__(name, var, correlations)
+        self.p_values: list[float] = p_values if p_values else []
 
 
 class AttnOnTarget(Metric):

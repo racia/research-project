@@ -6,6 +6,7 @@ from dataclasses import dataclass
 import numpy as np
 from prettytable import HRuleStyle, PrettyTable
 
+from evaluation.Metrics import Metric
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Statistics import Statistics
 from inference.utils import (
@@ -138,6 +139,7 @@ class Results:
     result_attrs: list[str] = [
         "model_answer",
         "answer_correct",
+        "answer_in_self",
         "model_reasoning",
         "reasoning_correct",
         "model_output",
@@ -149,6 +151,7 @@ class Results:
         self,
         model_output: str,
         model_answer: str,
+        answer_in_self: str,
         model_reasoning: str,
         answer_correct: bool = None,
         reasoning_correct: bool = None,
@@ -173,6 +176,7 @@ class Results:
 
         self.model_output: str = model_output
         self.model_answer: str = model_answer
+        self.answer_in_self: str = answer_in_self
         self.model_reasoning: str = model_reasoning
 
         self.answer_correct: bool = answer_correct
@@ -561,6 +565,7 @@ class SamplePart:
             model_output=model_output,
             model_answer=model_answer,
             model_reasoning=model_reasoning,
+            answer_in_self=self.answer_lies_in_self,
             answer_correct=stats.are_identical(model_answer, self.golden_answer),
             interpretability=interpretability,
             version=version,
@@ -671,6 +676,7 @@ class Sample:
                     warnings.warn(
                         f"Found 'nan' in result.attn_on_target results for part {part.ids}. Skipping."
                     )
+                    evaluator.attn_on_target.add(0.0) 
                 else:
                     evaluator.attn_on_target.add(result.attn_on_target)
 
@@ -740,11 +746,29 @@ class Sample:
                 features,
             )
 
-    def calculate_metrics(self) -> None:
+    def calculate_metrics(self, **kwargs) -> None:
         """
         Calls all the individual metric calculating functions.
         :return: None
         """
+        sample_part_lengths = [0]  # Initialize with 0 for the first part
+        target_sent_dist = []
+        for part in self.parts:
+            context_length = len(part.context_line_nums)
+            if bool(part.context_line_nums):
+                if part.context_line_nums[0] != 1:
+                    sample_part_lengths.append(sample_part_lengths[-1] + context_length)
+                else:
+                    sample_part_lengths.append(context_length)
+            else:
+                # If there are no context sentences, just add the previous length
+                sample_part_lengths.append(sample_part_lengths[-1])
+            # How far the target is from the question
+            target_sent_dist.append(part.context_line_nums[-1] - np.mean(part.supporting_sent_inx))
+        self.target_sent_dist = Metric(f"Target Sentence Distances", "target_sent_distances", target_sent_dist)
+        self.sample_part_lengths = Metric(f"Sample Part Context Lengths", "sample_part_lengths", sample_part_lengths[1:])  # Exclude the first element (0)
+        self.sample_length = sample_part_lengths[-1]
+
         for evaluator in self.evaluators:
             evaluator.calculate_accuracies()
             evaluator.calculate_attention()
@@ -789,7 +813,6 @@ class Task:
             else [features_before]
         )
         self.results: list[dict[str, str | int | float]] = []
-        self.metrics: list = []
 
     def add_sample(self, sample: Sample) -> None:
         """
@@ -811,7 +834,6 @@ class Task:
         """
         self.parts = [part for sample in self.samples for part in sample.parts]
         self.results: list[dict] = [part.get_result() for part in self.parts]
-
         for i, features in enumerate(self.features):
             self.features[i] = sum(
                 [part.results[i].features for part in self.parts],
@@ -824,15 +846,55 @@ class Task:
             mean_sm_acc = evaluator.soft_match_accuracy.get_mean()
             self.results[0][f"soft_match_accuracy_{version}"] = mean_sm_acc
 
-    def calculate_metrics(self) -> None:
+    def calculate_metrics(self) -> dict:
         """
         Calculate the metrics for the task.
-        :return: None
+        :return: correlation matrix of the metrics.
         """
-        initial = {"task_id": self.task_id}
-        for evaluator in self.evaluators:
-            evaluator.calculate_std()
-            self.metrics.append({**initial, **evaluator.get_metrics()})
+        corr_matrices = {}
+        for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
+            # Create lists of sample part attributes for correlation calculation
+            self.parts_answer_in_self = []
+            self.parts_answer_correct = Metric("Parts Answer Correct", "part_answer_correct")
+            self.parts_target_distances = []
+            self.parts_max_supp_attn = []
+            self.parts_attn_on_target = []
+            self.sample_part_lengths = Metric("Sample Part Lengths", "sample_part_lengths")
+            self.sample_lengths = []
+
+            for sample in self.samples:
+                self.sample_part_lengths.add(sample.sample_part_lengths.all)
+                self.sample_lengths.append(sample.sample_length)
+                self.parts_target_distances.extend(sample.target_sent_dist)
+
+            for part in self.parts:
+                self.parts_answer_in_self.append(
+                    part.results[i].answer_in_self
+                )
+                self.parts_answer_correct.add(part.results[i].answer_correct)
+                self.parts_max_supp_attn.append(
+                    part.results[i].interpretability.max_supp_attn
+                )
+                self.parts_attn_on_target.append(
+                    part.results[i].interpretability.attn_on_target
+                )
+
+            assert(len(self.parts_answer_correct) ==
+                    len(self.parts_max_supp_attn) ==
+                    len(self.parts_attn_on_target) ==
+                    len(self.sample_part_lengths) ==
+                    len(self.parts_answer_in_self)
+                    )
+
+            # Calculate correlation using mean part attention scores for samples
+            corr_matrices[version] = evaluator.calculate_correlation(
+                parts_answer_correct=self.parts_answer_correct.all,
+                max_supp_attn=self.parts_max_supp_attn,
+                attn_on_target=self.parts_attn_on_target,
+                sample_part_lengths=self.sample_part_lengths.all,
+                target_sent_distances=self.parts_target_distances
+            )
+        return corr_matrices
 
 
 class Split:
@@ -881,6 +943,31 @@ class Split:
             features += other_features
         for evaluator, other_evaluator in zip(self.evaluators, task.evaluators):
             evaluator.update(other_evaluator)
+
+    def calculate_metrics(self) -> dict:
+        """
+        Calculate the metrics for the split.
+        :return: The correlation matrix of the metrics.
+        """
+        corr_matrices = {}
+        for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
+            exact_match_accuracies = []
+            max_supp_attns = []
+            attn_on_targets = []
+            sample_lengths = []
+            evaluator.calculate_std()
+            for task in self.tasks:
+                exact_match_accuracies.extend(task.evaluators[i].exact_match_accuracy.all)
+                max_supp_attns.extend(task.evaluators[i].max_supp_attn.all)
+                attn_on_targets.extend(task.evaluators[i].attn_on_target.all)
+                sample_lengths.extend(task.sample_lengths)
+            corr_matrices[version] = evaluator.calculate_correlation(
+                exact_match_accuracy=exact_match_accuracies,
+                max_supp_attn=max_supp_attns,
+                attn_on_target=attn_on_targets,
+                sample_part_lengths=sample_lengths,
+            )
+        return corr_matrices
 
 
 def print_metrics(data_level: Sample | Task | Split) -> None:

@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import warnings
+from collections import defaultdict
+from typing import Union
 
-from evaluation.Metrics import Accuracy, BLEU, Meteor, Metric, ROUGE
+from evaluation.Metrics import Accuracy, Correlation, BLEU, Meteor, Metric, ROUGE
 from evaluation.Metrics import AttnDistribution, AttnOnTarget
 from evaluation.Statistics import Statistics
 
@@ -57,6 +59,21 @@ class Evaluator:
             "attn_on_target_std",
         )
 
+        self.max_supp_attn_corr: Correlation = Correlation(
+            f"Correlation of Accuracy with Max Attn Distribution {self.version.capitalize()}",
+            "max_supp_attn_corr",
+        )
+
+        self.attn_on_target_corr: Correlation = Correlation(
+            f"Correlation of Accuracy with Attn on Target Distribution {self.version.capitalize()}",
+            "attn_on_target_corr",
+        )
+
+        self.sample_part_lengths_corr: Correlation = Correlation(
+            f"Correlation of Accuracy with Sample Part Lengths {self.version.capitalize()}",
+            "sample_part_lengths_corr",
+        )
+
         self.bleu = BLEU(f"BLEU {self.version.capitalize()}", "bleu")
         self.bleu_std = Metric(
             f"Standard Deviation for BLEU {self.version.capitalize()}", "bleu_std"
@@ -86,7 +103,10 @@ class Evaluator:
             f"rouge={self.rouge.get_mean()}>, "
             f"rouge_std={self.rouge.get_std()}>, "
             f"meteor={self.meteor.get_mean()}>, "
-            f"meteor_std={self.meteor.get_std()}>"
+            f"meteor_std={self.meteor.get_std()}>,"
+            f"max_supp_attn_corr={self.max_supp_attn_corr.get_mean()}>, "
+            f"attn_on_target_corr={self.attn_on_target_corr.get_mean()}>, "
+            f"sample_part_lengths_corr={self.sample_part_lengths_corr.get_mean()}>, "
         )
 
 
@@ -171,6 +191,9 @@ class MetricEvaluator(Evaluator):
                 f"rouge_std_{self.version}": self.rouge_std,
                 f"meteor_{self.version}": self.meteor,
                 f"meteor_std_{self.version}": self.meteor_std,
+                f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr,
+                f"attn_on_target_corr_{self.version}": self.attn_on_target_corr,
+                f"sample_part_lengths_corr_{self.version}": self.sample_part_lengths_corr,
             }
         return {
             f"exact_match_accuracy_{self.version}": self.exact_match_accuracy.get_mean(),
@@ -187,6 +210,12 @@ class MetricEvaluator(Evaluator):
             f"rouge_std_{self.version}": self.rouge.get_std(),
             f"meteor_{self.version}": self.meteor.get_mean(),
             f"meteor_std_{self.version}": self.meteor.get_std(),
+            f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr.get_mean(),
+            f"attn_on_target_corr_{self.version}": self.attn_on_target_corr.get_mean(),
+            f"sample_part_lengths_corr_{self.version}": self.sample_part_lengths_corr.get_mean(),
+            f"max_supp_attn_corr_std_{self.version}": self.max_supp_attn_corr.get_std(),
+            f"attn_on_target_corr_std_{self.version}": self.attn_on_target_corr.get_std(),
+            f"sample_part_lengths_corr_std_{self.version}": self.sample_part_lengths_corr.get_std(),
         }
 
     def get_accuracies(self, as_lists: bool = False) -> dict[str, float | Metric]:
@@ -219,16 +248,16 @@ class MetricEvaluator(Evaluator):
         """
         if as_lists:
             return {
-                f"max_attn_dist_{self.version}": self.max_supp_attn,
-                f"max_attn_dist_std_{self.version}": self.max_supp_attn_std,
-                f"max_attn_on_target_{self.version}": self.attn_on_target,
+                f"max_supp_attn_{self.version}": self.max_supp_attn,
+                f"max_supp_attn_std_{self.version}": self.max_supp_attn_std,
+                f"attn_on_target_{self.version}": self.attn_on_target,
                 f"attn_on_target_std_{self.version}": self.attn_on_target_std,
             }
         return {
             f"max_supp_attn_{self.version}": self.max_supp_attn.get_mean(),
             f"max_supp_attn_std_{self.version}": self.max_supp_attn.get_std(),
             f"attn_on_target_{self.version}": self.attn_on_target.get_mean(),
-            f"attn_on_target_std_{self.version}": self.attn_on_target_std.get_std(),
+            f"attn_on_target_std_{self.version}": self.attn_on_target.get_std(),
         }
 
     def get_reasoning_scores(self, as_lists: bool = False) -> dict[str, float | Metric]:
@@ -255,8 +284,70 @@ class MetricEvaluator(Evaluator):
             f"meteor_std_{self.version}": self.meteor.get_std(),
         }
 
+    def calculate_correlation(
+        self,
+        **kwargs: Union[list[float | int | bool], str],
+    ) -> dict:
+        """
+        Calculate the correlation score between each arg metric1 scores list with each kwarg metric2 scores list on task level.
+        :param kwargs: One or more str metric or list of scores, e.g. max_supp_attn or attn_on_target scores
+        :return: correlation matrix of the metrics
+        """
+        for key, value in kwargs.items():
+            kwargs[key] = (
+                getattr(self, value).all if isinstance(value, str) else value
+            )
+                
+        corr_matrix = defaultdict(dict)
+        for base_name, base_values in kwargs.items():
+            for add_name, add_values in kwargs.items():
+                assert (
+                    base_values
+                    and isinstance(base_values, list)
+                    and isinstance(base_values[0], (float, int, bool))
+                ), f"The base values must be a list of floats, integers or booleans, given {base_values}."
+                assert (
+                    add_values
+                    and isinstance(add_values, list)
+                    and isinstance(add_values[0], (float, int, bool))
+                ), f"The base values must be a list of floats, integers or booleans, given {add_values}."
+                assert len(base_values) == len(add_values), (
+                    f"Length of {base_values} ({len(base_values)}) and {add_values} ({len(add_values)}) "
+                    f"must be equal for correlation calculation."
+                )
+                corr_score, p_value = self.stats.corr_score(base_values, add_values)
+                corr_matrix[base_name][add_name] = corr_score, p_value
+                var = f"{base_name}_{add_name}_corr"
+                name = f"Correlation of {base_name} with {add_name} {self.version.capitalize()}"
+                corr = Correlation(name, var)
+                corr.add(corr_score)
+                corr.p_values.append(round(p_value, 2))
+                setattr(self, var, corr)
 
-class AnswerEvaluator(Evaluator):
+        return corr_matrix
+
+    def get_correlations(self, as_lists: bool = False) -> dict[str, float | Metric]:
+        """
+        Get the correlation scores for the evaluator.
+
+        :return: the correlation scores
+        """
+        if as_lists:
+            return {
+                f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr,
+                f"max_supp_att_corr_std{self.version}": self.max_supp_attn_corr.get_std(),
+                f"attn_on_target_corr_{self.version}": self.attn_on_target_corr,
+                f"attn_on_target_corr_std_{self.version}": self.attn_on_target_corr.get_std(),
+            }
+        return {
+            f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr.get_mean(),
+            f"max_supp_attn_corr_std_{self.version}": self.max_supp_attn_corr.get_std(),
+            f"attn_on_target_corr_{self.version}": self.attn_on_target_corr.get_mean(),
+            f"attn_on_target_corr_std_{self.version}": self.attn_on_target_corr.get_std(),
+        }
+
+
+class AnswerEvaluator(MetricEvaluator):
     """
     This class handles everything related to evaluation on the sample level.
     """
