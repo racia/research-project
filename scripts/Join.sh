@@ -14,6 +14,8 @@
 #SBATCH --error="join_err.txt"         # TODO: adjust error log
 
 ### JOB STEPS START HERE ###
+# fix working directory
+cd ~/research-project || exit 1
 
 if command -v module >/dev/null 2>&1; then
     echo "Module util is available. Loading python"

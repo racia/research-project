@@ -19,6 +19,8 @@
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
+# fix working directory
+cd ~/research-project || exit 1
 
 if command -v module >/dev/null 2>&1; then
     echo "Module util is available. Loading python and CUDA..."
