@@ -120,8 +120,8 @@ def determine_colour_scheme(case: str) -> str:
 
     :return: colour scheme
     """
-    correct = re.search(r"\bcorr", case.lower())
-    incorrect = re.search(r"\bincorr", case.lower())
+    correct = re.search(r"_corr", case.lower())
+    incorrect = re.search(r"_incorr", case.lower())
     if correct and incorrect:
         return "YlOrBr"
     elif correct:

@@ -46,7 +46,51 @@ class Plotter:
                 self.cmap(np.linspace(0, 1, len(CASES_2_LABELS))),
             )
         }
-
+        self.case_color_map = {  # GPT version
+            "ans_corr": "#FF6E19",  # pure orange
+            "ans_incorr": "#F5CBA7",  # light orange
+            "reas_corr": "#2874A6",  # pure blue
+            "reas_incorr": "#AED6F1",  # light blue
+            "ans_null_reas_null": "#D3D3D3",  # pure gray
+            "ans_corr_reas_null": "#E67E22",  # grayish orange
+            "ans_incorr_reas_null": "#F5CBA7",  # light grayish orange
+            "ans_null_reas_corr": "#2874A6",  # grayish blue
+            "ans_null_reas_incorr": "#AED6F1",  # grayish light blue
+            "ans_corr_reas_corr": "#A56B2E",  # strong brown
+            "ans_corr_reas_incorr": "#D49F7A",  # brownish orange
+            "ans_incorr_reas_corr": "#6B8FA4",  # brownish blue
+            "ans_incorr_reas_incorr": "#D7CEC3",  # light brown
+        }
+        self.case_color_map = {  # mathematical
+            "ans_corr": "#FF6F1B",  # pure orange (255, 110, 25)
+            "ans_incorr": "#FFAF6E",  # light orange (255, 175, 110)
+            "reas_corr": "#196EFF",  # pure blue (25, 110, 255)
+            "reas_incorr": "#6EAFFF",  # light blue (110, 175, 255)
+            "ans_null_reas_null": "#6E6E6E",  # pure gray (110, 110, 110)
+            "ans_corr_reas_null": "#8C6E64",  # grayish orange (140, 110, 100)
+            "ans_incorr_reas_null": "#B49664",  # light grayish orange (180, 150, 100)
+            "ans_null_reas_corr": "#646E8C",  # grayish blue (100, 110, 140)
+            "ans_null_reas_incorr": "#6496B4",  # grayish light blue (100, 150, 180)
+            "ans_corr_reas_corr": "#966E78",  # strong brown (150, 110, 120)
+            "ans_corr_reas_incorr": "#B48C8C",  # brownish orange (180, 140, 140)
+            "ans_incorr_reas_corr": "#918CB4",  # brownish blue (145, 140, 180)
+            "ans_incorr_reas_incorr": "#BEAFAA",  # light brown (190, 175, 170)
+        }
+        self.case_color_map = {  # with green and red as a basis?
+            "ans_corr": "#FF6F1B",
+            "ans_incorr": "#FFAF6E",
+            "reas_corr": "#196EFF",
+            "reas_incorr": "#6EAFFF",
+            "ans_null_reas_null": "#6E6E6E",  # pure gray (110, 110, 110)
+            "ans_corr_reas_null": "#6E6E96",  # grayish purple (110, 110, 150)
+            "ans_incorr_reas_null": "#B49664",  # grayish blue (110, 140, 175)
+            "ans_null_reas_corr": "#6E7864",  # grayish green (110, 120, 100)
+            "ans_null_reas_incorr": "#78646E",  # grayish purple (120, 100, 110)
+            "ans_corr_reas_corr": "#4B964B",  # dark green (75, 150, 75)
+            "ans_corr_reas_incorr": "#966EAF",  # purple (150, 110, 175)
+            "ans_incorr_reas_corr": "#508CAF",  # blue (80, 140, 175)
+            "ans_incorr_reas_incorr": "#964B4B",  # dark red (150, 75, 75)
+        }
         self.results_path: Path = results_path
 
         self.plot_counter_task: int = 0
@@ -70,7 +114,7 @@ class Plotter:
         :return: None
         """
         if file_name:
-            plt.savefig(self.results_path / file_name, bbox_inches="tight")
+            plt.savefig(self.results_path / file_name.lower(), bbox_inches="tight")
         elif x_label and y_label and plot_name_add:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
@@ -279,12 +323,15 @@ class Plotter:
         self,
         error_cases_ids: dict[str, str],
         specification: str | list[str],
-    ):
+        reasoning_scores: dict[tuple, float] = None,
+    ) -> None:
         """
         For each setting, plot a 'heatmap' of answer types per sample and part of each task.
 
         :param error_cases_ids: {(task, sample, part): answer_type}
         :param specification: description of the setting(s) for the title
+        :param reasoning_scores: optional, reasoning scores per (task, sample, part)
+        to plot as text on each cell
         """
         answer_types = list(self.case_color_map.keys())
         ids_cases = {}
@@ -351,6 +398,17 @@ class Plotter:
                     else:
                         atype = ids_cases[idx]
                         heatmap[s_idx, p_idx] = answer_types.index(atype)
+                        if reasoning_scores and idx in reasoning_scores:
+                            score = reasoning_scores[idx]
+                            ax.text(
+                                p_idx,
+                                s_idx,
+                                f"{score:.2f}",
+                                ha="center",
+                                va="center",
+                                color="black",
+                                fontsize=8,
+                            )
 
             ax.imshow(heatmap, cmap=ListedColormap(colors), aspect="auto")
             plot_task_map_grid(plt, ax, task, samples, parts, mask)
