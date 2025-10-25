@@ -2,15 +2,14 @@ from __future__ import annotations
 
 from collections import defaultdict
 from pathlib import Path
-import warnings
 from typing import Sized
 
 import matplotlib.pyplot as plt
-from matplotlib.ticker import PercentFormatter
 import numpy as np
 import pandas as pd
 import seaborn as sns
 from matplotlib.colors import ListedColormap
+from matplotlib.ticker import PercentFormatter
 
 from evaluation.Metrics import Accuracy, Metric
 from evaluation.utils import CASES_2_LABELS
@@ -143,7 +142,7 @@ class Plotter:
         number_of_prompts: int,
         displ_percentage: bool = False,
         metr_types: int = 1,
-        step: int|float = None,
+        step: int | float = None,
         min_x_len: int = 0,
     ) -> None:
         """
@@ -202,9 +201,11 @@ class Plotter:
 
         plt.title(title)
         if displ_percentage:
-            plt.gca().yaxis.set_major_formatter(PercentFormatter(1))  # 1 = scale of data (0–1 range)
+            plt.gca().yaxis.set_major_formatter(
+                PercentFormatter(1)
+            )  # 1 = scale of data (0–1 range)
 
-        if (number_of_prompts > 6 or metr_types > 6 or "attributes" in y_label.lower()):
+        if number_of_prompts > 6 or metr_types > 6 or "attributes" in y_label.lower():
             legend = plt.legend(
                 loc="center left", bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True
             )
@@ -216,14 +217,13 @@ class Plotter:
         plt.setp(leg_lines, linewidth=3)
         plt.setp(leg_texts, fontsize="x-large")
 
-
     def correlation_map(
         self,
         data: dict[str, dict[str, tuple]],
         level: str,
         version: str,
         file_name: str = None,
-        id: int = 1
+        id: int = 1,
     ) -> None:
         """
         Draw a heat map with the given data.
@@ -239,7 +239,7 @@ class Plotter:
             {k: {k2: v2[0] for k2, v2 in v.items()} for k, v in data.items()},
             index=data.keys(),
         )
-        data.fillna(0) # To display 0 instead of empty block
+        data.fillna(0)  # To display 0 instead of empty block
         axis = sns.heatmap(data, annot=True)
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
@@ -332,7 +332,9 @@ class Plotter:
         colors = self.cmap(np.linspace(0, 1, len(acc_per_task)))
         plt.plot(range(1, len(acc_per_task) + 1), acc_per_task.all, color=colors[0])
 
-        self._plot_general_details(x_label, y_label, len(acc_per_task), plot_name_add, step=1)
+        self._plot_general_details(
+            x_label, y_label, len(acc_per_task), plot_name_add, step=1
+        )
         self._save_plot(x_label, y_label, plot_name_add, file_name)
 
     def plot_acc_per_task_and_prompt(
@@ -386,7 +388,7 @@ class Plotter:
             max_x_len=max_x_len,
             plot_name_add=plot_name_add,
             number_of_prompts=number_of_prompts,
-            step=1
+            step=1,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
 
@@ -479,10 +481,10 @@ class Plotter:
 
         for (metr_type, metr), color in zip(x_data.items(), colors):
             # number_of_prompts += 1
-            metr_types+=1
+            metr_types += 1
             # This covers both cases: Metric (i.e. length of sentences) and Accuracy
             if max(metr.all) > max_x_len:
-                max_x_len = max(metr.all) # Case sample_part_lenghts: Set to max value
+                max_x_len = max(metr.all)  # Case sample_part_lenghts: Set to max value
             min_x_len = min(metr.all) if min(metr.all) > 2 else 0
             if len(metr) != len(y_data):
                 raise ValueError(
@@ -494,7 +496,11 @@ class Plotter:
 
             plt.scatter(
                 metr,
-                y=[y.get_mean() for y in y_data] if isinstance(y_data[0], Metric) else y_data,
+                y=(
+                    [y.get_mean() for y in y_data]
+                    if isinstance(y_data[0], Metric)
+                    else y_data
+                ),
                 label=metr_type if isinstance(metr_type, str) else metr_type.name,
                 color=color,
             )
@@ -506,11 +512,11 @@ class Plotter:
             plot_name_add,
             number_of_prompts=number_of_prompts,
             metr_types=metr_types,
-            step=0.1 if max_x_len==1 else 1,
+            step=0.1 if max_x_len == 1 else 1,
             min_x_len=min_x_len,
         )
         if path_add:
-            file_name = path_add / file_name
+            file_name = f"{path_add}_{file_name}"
             Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
         self._save_plot(y_label, x_label, file_name, plot_name_add)
 
@@ -523,12 +529,14 @@ class Plotter:
         """
         For each setting, plot a 'heatmap' of answer types per sample and part of each task.
 
-        :param error_cases_ids: {(task, sample, part): answer_type}
+        :param error_cases_ids: {answer_type: [(task, sample, part)]}
         :param specification: description of the setting(s) for the title
         :param reasoning_scores: optional, reasoning scores per (task, sample, part)
         to plot as text on each cell
         """
         answer_types = list(self.case_color_map.keys())
+        if reasoning_scores:
+            answer_types = ["ans_corr", "ans_incorr", "ans_null"]
         ids_cases = {}
         for case, indices in error_cases_ids.items():
             for idx in indices:
@@ -575,6 +583,8 @@ class Plotter:
             for case, color in self.case_color_map.items()
             if case in present_cases
         ]
+        if reasoning_scores:
+            colors = [self.case_color_map[case] for case in answer_types]
 
         for i, task in enumerate(tasks):
             ax = axes[i // n_cols][i % n_cols]
@@ -593,7 +603,26 @@ class Plotter:
                     else:
                         atype = ids_cases[idx]
                         heatmap[s_idx, p_idx] = answer_types.index(atype)
-                        if reasoning_scores and idx in reasoning_scores:
+                        # if reasoning_scores and idx in reasoning_scores:
+                        #     score = reasoning_scores[idx]
+                        #     ax.text(
+                        #         p_idx,
+                        #         s_idx,
+                        #         f"{score:.2f}",
+                        #         ha="center",
+                        #         va="center",
+                        #         color="black",
+                        #         fontsize=8,
+                        #     )
+
+            ax.imshow(heatmap, cmap=ListedColormap(colors), aspect="auto")
+            plot_task_map_grid(plt, ax, task, samples, parts, mask)
+            # Annotate reasoning scores
+            if reasoning_scores:
+                for s_idx, sample in enumerate(samples):
+                    for p_idx, part in enumerate(parts):
+                        idx = (task, sample, part)
+                        if idx in reasoning_scores and not mask[s_idx, p_idx]:
                             score = reasoning_scores[idx]
                             ax.text(
                                 p_idx,
@@ -604,9 +633,6 @@ class Plotter:
                                 color="black",
                                 fontsize=8,
                             )
-
-            ax.imshow(heatmap, cmap=ListedColormap(colors), aspect="auto")
-            plot_task_map_grid(plt, ax, task, samples, parts, mask)
 
         filtered_ans_types = [
             CASES_2_LABELS[ans].replace(", ", ",\n")
@@ -636,6 +662,10 @@ class Plotter:
         )
         fig.suptitle(f"Error Cases {' '.join(specification)}", fontsize=14, y=0.9)
         fig.tight_layout(rect=(0, 0, 0.9, 0.9))
+        print(
+            "saving error case map in",
+            self.results_path / f"error_case_map_{'_'.join(specification)}.png",
+        )
         fig.savefig(
             self.results_path / f"error_case_map_{'_'.join(specification)}.png",
             bbox_inches="tight",
@@ -864,11 +894,10 @@ class Plotter:
         setting = setting.title().replace(" ", "_")
         self._save_plot(file_name=f"error_case_pie{uniqueness}_{setting}")
 
-
     def plot_correlation_hist(
         self,
         x_data: dict[str | Prompt, Accuracy | Metric],
-        y_data: dict[str: list[float]|np.array] = None,
+        y_data: dict[str : list[float] | np.array] = None,
         x_label: str = "X",
         y_label: str = "Y",
         displ_percentage: bool = False,
@@ -895,8 +924,11 @@ class Plotter:
                 # Obtain list of arrays with True/False if value is label
                 print("labels_arr", labels_arr)
                 for label in set(labels_arr):
-                    y_cats_data[label_name][label] = [float(sum(labels_arr[indices]==label)/total) for indices in x_cats_indices]
-                    print("label",label,"y_cats_data", y_cats_data)
+                    y_cats_data[label_name][label] = [
+                        float(sum(labels_arr[indices] == label) / total)
+                        for indices in x_cats_indices
+                    ]
+                    print("label", label, "y_cats_data", y_cats_data)
 
             # Ensure sum of values by label add up to total amount of y values
             # assert np.sum(list(y_cats_data.values())) == len(y_data)
@@ -914,10 +946,16 @@ class Plotter:
                     except ValueError:
                         pass
                     label_name = label_name.split("parts_")[-1]
-                    p = ax.bar(x_cats + offset[i]/2, values, width=width, label=f"{label_name}-{label}", bottom=bottom)
+                    p = ax.bar(
+                        x_cats + offset[i] / 2,
+                        values,
+                        width=width,
+                        label=f"{label_name}-{label}",
+                        bottom=bottom,
+                    )
                     bottom += values
 
-            y_label = "Parts Attributes" if len(y_data)>1 else y_label
+            y_label = "Parts Attributes" if len(y_data) > 1 else y_label
 
             self._plot_general_details(
                 x_label=x_label,
@@ -926,6 +964,5 @@ class Plotter:
                 number_of_prompts=1,
                 displ_percentage=displ_percentage,
                 plot_name_add=plot_name_add,
-                )
+            )
             self._save_plot(y_label=y_label, x_label=x_label, file_name=file_name)
-

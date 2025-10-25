@@ -124,6 +124,17 @@ class MetricEvaluator(Evaluator):
         """
         super().__init__(level, version)
 
+        self.parts_answer_correct = Metric(
+            "Parts Answer Correct", "part_answer_correct"
+        )
+        self.parts_max_supp_attn = Metric("Parts Max Supp Attn", "part_max_supp_attn")
+        self.parts_attn_on_target = Metric(
+            "Parts Attn on Target", "part_attn_on_target"
+        )
+        self.ids_with_bleu = defaultdict(dict)
+        self.ids_with_rouge = defaultdict(dict)
+        self.ids_with_meteor = defaultdict(dict)
+
     def update(self, smaller_evaluator: Evaluator) -> None:
         """
         Update the evaluator with the information from a lower-level evaluator.
@@ -294,10 +305,8 @@ class MetricEvaluator(Evaluator):
         :return: correlation matrix of the metrics
         """
         for key, value in kwargs.items():
-            kwargs[key] = (
-                getattr(self, value).all if isinstance(value, str) else value
-            )
-                
+            kwargs[key] = getattr(self, value).all if isinstance(value, str) else value
+
         corr_matrix = defaultdict(dict)
         for base_name, base_values in kwargs.items():
             for add_name, add_values in kwargs.items():

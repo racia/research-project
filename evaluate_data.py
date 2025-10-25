@@ -218,11 +218,10 @@ def run(
                     x_label="Sample Part Lengths",
                     y_label="Attention on Target Tokens",
                     file_name=f"attn_on_target_{sample_id}_{version}.pdf",
-                    path_add=Path(f"Task {task_id}"),
+                    path_add=f"Task {task_id}",
                 )
                 # Get the metrics_to_save
                 print(f"Metrics for {evaluator.level} {version}:", metrics, end="\n\n")
-
 
         task.set_results()
 
@@ -243,18 +242,20 @@ def run(
                 x_label="Accuracy",
                 y_label="Attention on Target Tokens",
                 file_name=f"Task_{task_id}_attn_on_target_{version}.pdf",
-                )
-            
+            )
+
             plotter.plot_correlation_hist(
                 x_data={"sample_part_lengths": task.sample_part_lengths},
-                y_data={"parts_answer_correct": task.parts_answer_correct.all,
-                        "parts_answer_in_self": task.parts_answer_in_self},
+                y_data={
+                    "parts_answer_correct": evaluator.parts_answer_correct.all,
+                    "parts_answer_in_self": task.parts_answer_in_self,
+                },
                 x_label="Sample Part Lengths",
                 y_label="Parts Answer Correct",
                 displ_percentage=True,
                 file_name=f"Task_{task_id}_sample_part_lengths_{version}.pdf",
             )
-            
+
             plotter.correlation_map(
                 data=corr_matrix,
                 level=evaluator.level,
@@ -268,7 +269,7 @@ def run(
                 file_path=f"corr_matrix_task_{task_id}.json",
                 path_add=Path(version),
             )
-   
+
             metrics_to_save = defaultdict(dict)
             metrics = list(
                 format_metrics(evaluator.get_metrics(as_lists=True)).values()
@@ -319,29 +320,29 @@ def run(
             f"\nPlotting accuracies and standard deviation for results '{version}'...",
             end="\n\n",
         )
-        plotter.plot_acc_with_std(
-            acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
-            y_label="Accuracies with Standard Deviations",
-            plot_name_add=[split.name, version],
-        )
+        # plotter.plot_acc_with_std(
+        #     acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
+        #     y_label="Accuracies with Standard Deviations",
+        #     plot_name_add=[split.name, version],
+        # )
         print(
             f"\nPlotting attentions for results '{version}'...",
             end="\n\n",
         )
-        plotter.plot_acc_with_std(
-            acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
-            y_label="Attentions",
-            plot_name_add=[split.name, version],
-        )
+        # plotter.plot_acc_with_std(
+        #     acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
+        #     y_label="Attentions",
+        #     plot_name_add=[split.name, version],
+        # )
         print(
             f"\nPlotting reasoning scores for results '{version}'...",
             end="\n\n",
         )
-        plotter.plot_acc_with_std(
-            acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
-            y_label="Reasoning Scores",
-            plot_name_add=[split.name, version],
-        )
+        # plotter.plot_acc_with_std(
+        #     acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
+        #     y_label="Reasoning Scores",
+        #     plot_name_add=[split.name, version],
+        # )
         print(
             f"\nPlotting correlations for results '{version}' between metrics:",
             evaluator.get_correlations(as_lists=True),
@@ -355,6 +356,12 @@ def run(
         plotter.plot_answer_type_per_part(
             Results.CASE_COUNTERS[version], specification=[setting, experiment, version]
         )
+        for score in ("bleu", "rouge", "meteor"):
+            plotter.plot_answer_type_per_part(
+                Results.CASE_COUNTERS[version],
+                specification=[setting, experiment, version, score],
+                reasoning_scores=evaluator.__getattribute__(f"ids_with_{score}"),
+            )
         for case, case_list in Results.CASE_COUNTERS[version].items():
             headers = "id_\ttask_id\tsample_id\tpart_id"
             if case_list:
@@ -420,8 +427,8 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
 
 
 if __name__ == "__main__":
-    #path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
-    #args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
+    # path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
+    # args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
     args = parse_args()
     # python3.12 evaluate_data.py --results_path baseline/28-05-2025/22-39-52/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv --save_path results/here --samples_per_task 15 --create_heatmaps --verbose
     run(
