@@ -20,6 +20,7 @@ class Baseline(Setting):
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
         saver: DataSaver = None,
+        name: str = "baseline",
     ):
         """
         Baseline class manages model runs and data flows around it.
@@ -38,6 +39,7 @@ class Baseline(Setting):
             samples_per_task=samples_per_task,
             init_prompt=init_prompt,
             saver=saver,
+            name=name,
         )
         self.question_id: int = 0
 

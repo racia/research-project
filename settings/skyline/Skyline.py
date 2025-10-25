@@ -19,6 +19,7 @@ class Skyline(Baseline):
         samples_per_task: int = 5,
         init_prompt: Prompt = None,
         saver: DataSaver = None,
+        name: str = "skyline",
     ):
         """
         Class Skyline manages the experiment with the big model. It is a subclass of Baseline, as the needs are similar.
@@ -39,4 +40,5 @@ class Skyline(Baseline):
             samples_per_task=samples_per_task,
             init_prompt=init_prompt,
             saver=saver,
+            name=name,
         )

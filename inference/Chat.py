@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import warnings
 from typing import Union
 
@@ -310,7 +311,7 @@ class Chat:
         :param source: the source of the message, if not provided, it will be taken from the other chat
         :return: None
         """
-        approved_message = other_chat.messages[-1]
+        approved_message = copy.deepcopy(other_chat.messages[-1])
         offset_difference = other_chat.offset - self.offset
         self.part = other_chat.part
         assert type(self.part) is not None
