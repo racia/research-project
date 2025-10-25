@@ -1,17 +1,17 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=sd
+#SBATCH --job-name=sd_asma
 
-#SBATCH --time=14:00:00              # Job time limit (30 minutes)
+#SBATCH --time=8:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
 #SBATCH --mem=128G                    # Total memory requested
 
 # Output and error logs
-#SBATCH --output="sd_out.txt"
-#SBATCH --error="sd_err.txt"
+#SBATCH --output="sd_out_asma.txt"
+#SBATCH --error="sd_err_asma.txt"
 
 # Email notifications
 #SBATCH --mail-user=""

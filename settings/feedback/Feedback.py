@@ -61,6 +61,7 @@ class Feedback(Setting):
         student_max_new_tokens: int = 200,
         multi_system: bool = True,
         saver: DataSaver = None,
+        name: str = "feedback",
     ):
         """
         Create a feedback setting.
@@ -86,6 +87,7 @@ class Feedback(Setting):
             samples_per_task=samples_per_task,
             multi_system=multi_system,
             saver=saver,
+            name=name,
         )
 
         # Additional attributes specific to Feedback

@@ -290,10 +290,20 @@ def run_setting(cfg: DictConfig) -> None:
                 else:
                     setting.init_prompt.use_original_prompt()
 
+                start_from_sample = (
+                    cfg.data.get("start_from_sample", 0)
+                    if task_id == cfg.data.get("task_ids", [None])[0]
+                    else None
+                )
+                print(
+                    f"start_from_sample: {start_from_sample}, task_id: {cfg.data.get('tasks', [None])[0]}"
+                )
+
                 task_result = setting.iterate_task(
                     task_id=task_id,
                     task_data=task,
                     prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.init_prompt.paths)}",
+                    start_from_sample=start_from_sample,
                 )
                 split.add_task(task_result)
                 saver.save_task_result(
