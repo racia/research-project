@@ -5,7 +5,7 @@ from pathlib import Path
 import warnings
 
 import matplotlib.pyplot as plt
-from matplotlib.ticker import PercentFormatter
+from matplotlib.ticker import MultipleLocator, PercentFormatter
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -85,27 +85,36 @@ class Plotter:
         :param plot_name_add: addition to the plot name
         :param number_of_prompts: number of prompts to plot, if more than 6,
                                   the legend is placed outside the plot
+        :param displ_percentage: whether to display the y-axis as percentage
         :param metr_types: number of metrics to plot, if more than 6,
                                   the legend is placed outside the plot
         :param min_x_len: minimum length of the x-axis
+        :step: step size for x-ticks
+        :min_x_len: minimum length of the x-axis
         :return: None
         """
-        if step:
+        try:    
             if step >= 1:
                 plt.xticks(range(min_x_len, max_x_len + 1, step))
-            elif step < 1:  
+            elif step > 0:  
                 plt.xticks(np.arange(0, max_x_len + 0.1, step))
+            elif step == 0:
+                pass
+            elif step < 0: # negative step
+                raise ValueError(f"Step size must be non-negative, got <step={step}>")
+        except TypeError:
+            pass  # step is None
 
         plt.xlabel(x_label)
 
-        if y_label.lower() in ["accurac", "correct"]:
+        if y_label.lower() in ["accurac"]:
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
-            y_ticks = np.arange(0, 0.5, 0.1)
-            plt.ylim(bottom=0, top=0.5)
-            plt.ylim(bottom=0, top=0.6)
+            y_ticks = np.arange(0, 0.09, 0.01)
+            # plt.ylim(bottom=0, top=0.5)
+            plt.ylim(bottom=0, top=0.1)
         elif "reasoning" in y_label.lower():
             y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.1)
@@ -173,8 +182,10 @@ class Plotter:
         axis = sns.heatmap(data, annot=True)
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
-        plt.title(f"Attention Map for {level} {id} ({version})", fontsize=10)
+
+        plt.title(f"Correlation Map for {level} {id} ({version})", fontsize=10)
         plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
+
         Path.mkdir(self.results_path / version, exist_ok=True, parents=True)
         plt.savefig(self.results_path / version / file_name)
         plt.close()
@@ -390,7 +401,7 @@ class Plotter:
         """
         Plot the correlation between two variables.
 
-        :param x_data: Either acc_per_prompt_task or sample_part_lengths
+        :param x_data: Either acc_per_prompt_task or seen_context_lengths
         :param y_data: data for the y-axis, e.g. attention scores
         :param x_label: label for the x-axis
         :param y_label: label for the y-axis
@@ -443,9 +454,10 @@ class Plotter:
             file_name = path_add / file_name
             Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
         self._save_plot(y_label, x_label, file_name, plot_name_add)
+        plt.close()
 
 
-    def plot_correlation_hist(
+    def plot_corr_hist(
         self,
         x_data: dict[str | Prompt, Accuracy | Metric],
         y_data: dict[str: list[float]|np.array] = None,
@@ -454,59 +466,144 @@ class Plotter:
         displ_percentage: bool = False,
         file_name: str = None,
         plot_name_add: str = None,
+        level: str = None,
+        id: int = 1,
+        path_add: str = None,
     ) -> None:
         """
-        Plots the (sum/count) values of y_data labels into categories from x_data.
-        :param x_data: The x data to plot as bar categories, i.e. sample_part_lengths
+        Plot the correlation between two variables as histogram, i.e. parts attributes per part lengths.
+        Categories are obtained from x_data unique values, e.g. part lengths 1,2,3,4,...
+        Values for each category are obtained from y_data values, e.g. parts_answer_correct [1,0,1,1,...],
+        which are finally summed/averaged to display per label.
+        :param x_data: The x data to plot as bar categories, i.e. seen_context_lengths
         :param y_data: The y_data of labels, corresponding to categories from x_data, i.e. parts_answer_correct 
         :param x_label: The label for x-axis
         :param y_label: The label for y-axis
+        :param displ_percentage: whether to display the y-axis as percentage
         :param file_name: name of the file
+        :param plot_name_add: addition to the plot name
+        :param path_add: addition to the path where the plot is saved
+        :param level: level of the data, e.g. "task", "sample", "part"
+        :param id: int id of the level
+        :return: None
         """
-        for metr_type, metr in x_data.items():
-            y_cats_data = defaultdict(dict)
-            for label_name, labels in y_data.items():
-                total = len(labels)
-                labels_arr = np.array(labels)
-                # parts_corr[1,0,1,1,...], part_lengths[1,2,3,4…]
-                x_cats = np.unique(metr)
-                x_cats_indices = [np.where(metr == unq) for unq in x_cats]
-                # y_data_indices = [.sum() for parts_lengths_index in parts_lengths_indices]
-                # Obtain list of arrays with True/False if value is label
-                print("labels_arr", labels_arr)
-                for label in set(labels_arr):
-                    y_cats_data[label_name][label] = [float(sum(labels_arr[indices]==label)/total) for indices in x_cats_indices]
-                    print("label",label,"y_cats_data", y_cats_data)
+        print("y_data", y_data)
+        df_data = {}
+        for k, v in y_data.items():
+            if isinstance(v, dict):
+                df_data.update(v)
+            df_data[k] = v
 
-            # Ensure sum of values by label add up to total amount of y values
-            # assert np.sum(list(y_cats_data.values())) == len(y_data)
+        if level == "split": # bigger plots for splits
+            plt.figure(figsize=(12, 8))
+        else:
+            plt.figure(figsize=(10, 5))
 
-            fig, ax = plt.subplots()
-            width = 0.6
-            num_groups = len(y_cats_data)
-            offset = np.linspace(-width, width, num_groups)
-            for i, (label_name, labels) in enumerate(y_cats_data.items()):
-                bottom = np.zeros(len(x_cats))
-                for label, values in labels.items():
-                    print(x_cats.shape, values)
-                    try:
-                        label = str(bool(int(label))).lower()
-                    except ValueError:
-                        pass
-                    label_name = label_name.split("parts_")[-1]
-                    p = ax.bar(x_cats + offset[i]/2, values, width=width, label=f"{label_name}-{label}", bottom=bottom)
-                    bottom += values
+        # fig, ax = plt.subplots()
+        df = pd.DataFrame(list(zip(*x_data.values(), *df_data.values())), columns=[x_label]+list(df_data.keys()))
+        print("df", df)
+        df[x_label] = df[x_label].round()
+        for col_name in [f"parts_{feat}" for feat in ["attn_on_target", "max_supp_attn"] if f"parts_{feat}" in df.columns]:
+            df[col_name] = df[col_name].round(2)  # Ensure numeric values are rounded if needed
+        # assert type(df[y_data.keys()[0]][0]) in [int, float], "y_data values must be numeric to plot histogram"
+        sns.barplot(data=df, x=x_label, y=df.columns[1], hue=df.columns[2] if len(df.columns)>2 else None)
 
-            y_label = "Parts Attributes" if len(y_data)>1 else y_label
-            
-            self._plot_general_details(
-                x_label=x_label,
-                y_label=y_label,
-                max_x_len=len(x_cats),
-                number_of_prompts=1,
-                displ_percentage=displ_percentage,
-                plot_name_add=plot_name_add,
-                )
-            self._save_plot(y_label=y_label, x_label=x_label, file_name=file_name)
+        self._plot_general_details(
+            x_label=x_label,
+            y_label=y_label,
+            max_x_len=len(x_data),
+            number_of_prompts=1,
+            displ_percentage=displ_percentage,
+            plot_name_add=plot_name_add,
+            )
+        if path_add:
+            file_name = path_add / file_name
+            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+        self._save_plot(y_label=y_label, x_label=x_label, file_name=file_name)
+        # plt.savefig(self.results_path / file_name)
+        plt.close()
+        
+
+    def plot_corr_boxplot(
+        self,
+        x_data: dict[str | Prompt, Accuracy | Metric],
+        y_data: dict[str: list[float]|np.array] = None,
+        x_label: str = "X",
+        y_label: str = "Y",
+        displ_percentage: bool = False,
+        file_name: str = None,
+        plot_name_add: str = None,
+        path_add: str = None,
+        level: str = None,
+        id: int = 1,
+    ) -> None:
+        """
+        Plot the correlation between two variables as boxplot, i.e. parts attributes per part lengths.
+        Categories are obtained from x_data unique values, e.g. part lengths 1,2,3,4,...
+        Values for each category are obtained from y_data values, e.g. parts_answer_correct [1,0,1,1,...],
+        which are finally summed/averaged to display per label.
+        :param x_data: The x data to plot as boxplot categories, i.e. seen_context_lengths
+        :param y_data: The y_data of labels, corresponding to categories from x_data, i.e. parts_answer_correct 
+        :param x_label: The label for x-axis
+        :param y_label: The label for y-axis
+        :param displ_percentage: whether to display the y-axis as percentage
+        :param file_name: name of the file
+        :param plot_name_add: addition to the plot name
+        :param path_add: addition to the path where the plot is saved
+        :param level: level of the data, e.g. "task", "sample", "part"
+        :param id: int id of the level
+        :return: None
+        """
+        if level == "split": # bigger plots for splits
+            plt.figure(figsize=(12, 8))
+        else: # Automatically handled by seaborn
+            plt.figure(figsize=(10, 5))
+
+        df_data = {}
+        # print("df_data", df_data)
+        for y_keys, y_vals in y_data.items():
+            if isinstance(y_vals, dict):
+                df_data.update(y_vals)
+            else:
+                df_data[y_keys] = y_vals
+
+        df = pd.DataFrame(list(zip(*x_data.values(), *df_data.values())), columns=[x_label]+list(df_data.keys()))
+
+        def _feat_mapping(x: str) -> str:
+            mapping = dict(map(lambda x: (x[0], x[1]), zip(range(5), y_data["parts_features"].keys())))
+            feat_str = [mapping.get(i, "False") for i, part in enumerate(x.split("-")) if part in ["True", "1"]]
+            return "-".join(feat_str) if feat_str else None
+
+        # Combine parts features to single column
+        if "parts_features" in y_data:
+            df["features_combined"] = ""
+            for col in y_data["parts_features"].keys():
+                df["features_combined"] += df[col].astype(str) + "-"
+            df["features_present"] = df["features_combined"].apply(lambda x: _feat_mapping(x))
+            df["features_present"] = df["features_present"].fillna("No Features")
+        label_column = df.columns[-1] if "features_combined" in df.columns else df.columns[2] 
+
+        print(df)
+        ax = sns.boxplot(data=df, x=x_label, y=df.columns[1], hue=label_column if len(df.columns)>2 else None)
+        # Add vertical lines separating x categories
+        ax.xaxis.set_minor_locator(MultipleLocator(0.5))
+        ax.xaxis.grid(True, which='minor', color='black', lw=2)
+        
+        self._plot_general_details(
+            x_label=x_label,
+            y_label=y_label,
+            max_x_len=len(x_data),
+            number_of_prompts=1,
+            displ_percentage=displ_percentage,
+            plot_name_add=plot_name_add,
+            )
+
+        if path_add:
+            file_name = path_add / file_name
+            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+        self._save_plot(y_label=y_label, x_label=x_label, file_name=file_name)
+        plt.close()
+
+
     
         

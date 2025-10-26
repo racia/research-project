@@ -57,6 +57,20 @@ class Metric:
         Return the number of metric values.
         """
         return len(self.all)
+    
+    def map_to_float(self, value: str) -> float:
+        """
+        Map string values to float.
+
+        :param value: the string value
+        :return: the mapped float value
+        """
+        mapping = {
+            "fully": 1.0,
+            "partially": 0.5,
+            "none": 0.0
+        }
+        return mapping.get(value.lower(), 0.0)
 
     def add(self, metric: Metric | float | list[float] | None) -> None:
         """
@@ -71,6 +85,14 @@ class Metric:
             self.all.append(metric)
         elif type_ is bool:
             self.all.append(int(metric))
+        elif type_ is str:
+            try:
+                value = self.map_to_float(metric)
+            except KeyError:
+                raise KeyError(
+                    f"Found invalid string metric value: {metric}"
+                )
+            self.all.append(value)
         elif type_ is list:
             for m in metric:
                 if isinstance(m, float) or isinstance(m, int):

@@ -69,9 +69,9 @@ class Evaluator:
             "attn_on_target_corr",
         )
 
-        self.sample_part_lengths_corr: Correlation = Correlation(
-            f"Correlation of Accuracy with Sample Part Lengths {self.version.capitalize()}",
-            "sample_part_lengths_corr",
+        self.seen_context_lengths_corr: Correlation = Correlation(
+            f"Correlation of Accuracy with Seen Context Lengths {self.version.capitalize()}",
+            "seen_context_lengths_corr",
         )
 
         self.bleu = BLEU(f"BLEU {self.version.capitalize()}", "bleu")
@@ -106,7 +106,7 @@ class Evaluator:
             f"meteor_std={self.meteor.get_std()}>,"
             f"max_supp_attn_corr={self.max_supp_attn_corr.get_mean()}>, "
             f"attn_on_target_corr={self.attn_on_target_corr.get_mean()}>, "
-            f"sample_part_lengths_corr={self.sample_part_lengths_corr.get_mean()}>, "
+            f"seen_context_lengths_corr={self.seen_context_lengths_corr.get_mean()}>, "
         )
 
 
@@ -193,7 +193,7 @@ class MetricEvaluator(Evaluator):
                 f"meteor_std_{self.version}": self.meteor_std,
                 f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr,
                 f"attn_on_target_corr_{self.version}": self.attn_on_target_corr,
-                f"sample_part_lengths_corr_{self.version}": self.sample_part_lengths_corr,
+                f"seen_context_lengths_corr_{self.version}": self.seen_context_lengths_corr,
             }
         return {
             f"exact_match_accuracy_{self.version}": self.exact_match_accuracy.get_mean(),
@@ -212,10 +212,10 @@ class MetricEvaluator(Evaluator):
             f"meteor_std_{self.version}": self.meteor.get_std(),
             f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr.get_mean(),
             f"attn_on_target_corr_{self.version}": self.attn_on_target_corr.get_mean(),
-            f"sample_part_lengths_corr_{self.version}": self.sample_part_lengths_corr.get_mean(),
+            f"seen_context_lengths_corr_{self.version}": self.seen_context_lengths_corr.get_mean(),
             f"max_supp_attn_corr_std_{self.version}": self.max_supp_attn_corr.get_std(),
             f"attn_on_target_corr_std_{self.version}": self.attn_on_target_corr.get_std(),
-            f"sample_part_lengths_corr_std_{self.version}": self.sample_part_lengths_corr.get_std(),
+            f"seen_context_lengths_corr_std_{self.version}": self.seen_context_lengths_corr.get_std(),
         }
 
     def get_accuracies(self, as_lists: bool = False) -> dict[str, float | Metric]:
@@ -335,7 +335,7 @@ class MetricEvaluator(Evaluator):
         if as_lists:
             return {
                 f"max_supp_attn_corr_{self.version}": self.max_supp_attn_corr,
-                f"max_supp_att_corr_std{self.version}": self.max_supp_attn_corr.get_std(),
+                f"max_supp_attn_corr_std{self.version}": self.max_supp_attn_corr.get_std(),
                 f"attn_on_target_corr_{self.version}": self.attn_on_target_corr,
                 f"attn_on_target_corr_std_{self.version}": self.attn_on_target_corr.get_std(),
             }
