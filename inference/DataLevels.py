@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import defaultdict
 import warnings
 from dataclasses import dataclass
 
@@ -749,30 +750,24 @@ class Sample:
         Calls all the individual metric calculating functions.
         :return: None
         """
-        sample_part_lengths = [0]  # Initialize with 0 for the first part
         self.target_sent_dist = Metric(
             f"Target Sentence Distances", "target_sent_distances"
         )
+        self.seen_context_lengths = Metric(f"Seen Context Lengths", "seen_context_lengths")
+        sample_part_lengths = []
         for part in self.parts:
             context_length = len(part.context_line_nums)
-            if bool(part.context_line_nums):
-                if part.context_line_nums[0] != 1:
-                    sample_part_lengths.append(sample_part_lengths[-1] + context_length)
-                else:
-                    sample_part_lengths.append(context_length)
-            else:
-                # If there are no context sentences, just add the previous length
-                sample_part_lengths.append(sample_part_lengths[-1])
+            if context_length:
+                if part.context_line_nums[0] == 1:
+                    sample_part_lengths = []
+                sample_part_lengths.append(context_length)
+            self.seen_context_lengths.add(sum(sample_part_lengths))
             # How far the target is from the question
             self.target_sent_dist.add(
-                int(part.context_line_nums[-1] - np.mean(part.supporting_sent_inx))
+                round(part.context_line_nums[-1] - np.mean(part.supporting_sent_inx), 2)
             )
-        self.sample_part_lengths = Metric(
-            f"Sample Part Context Lengths",
-            "sample_part_lengths",
-            sample_part_lengths[1:],
-        )  # Exclude the first element (0)
-        self.sample_length = sample_part_lengths[-1]
+        # TODO: double-check
+        self.sample_length = self.seen_context_lengths.all[-1]
 
         for evaluator in self.evaluators:
             evaluator.calculate_accuracies()
@@ -857,19 +852,20 @@ class Task:
         :return: correlation matrix of the metrics.
         """
         corr_matrices = {}
-        self.sample_part_lengths = Metric("Sample Part Lengths", "sample_part_lengths")
-        self.parts_target_distances = Metric(
-            "Parts Target Sentence Distances", "parts_target_distances"
-        )
+        self.seen_context_lengths = Metric("Seen Context Lengths", "seen_context_lengths")
+        self.parts_target_distances = Metric("Parts Target Sentence Distances", "parts_target_distances")
         # sample_lengths and parts_answer_in_self are used on the split level
         self.sample_lengths = Metric("Sample Lengths", "sample_lengths")
-        self.parts_answer_in_self = []
+        self.parts_answer_in_self = Metric("Parts Answer in Self", "part_answer_in_self")
+        # dict.fromkeys(self.features[i].get().keys(), [])
+        self.parts_features = {version: defaultdict(list) for version in self.versions}
         for sample in self.samples:
-            self.sample_part_lengths.add(sample.sample_part_lengths.all)
+            self.seen_context_lengths.add(sample.seen_context_lengths.all)
             self.sample_lengths.add(sample.sample_length)
             self.parts_target_distances.add(sample.target_sent_dist.all)
             for part in sample.parts:
-                self.parts_answer_in_self.append(part.answer_lies_in_self)
+                # TODO: map to float (in Metrics?)
+                self.parts_answer_in_self.add(part.answer_lies_in_self)
 
         for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
             # map the reasoning scores to the identifiers
@@ -893,21 +889,35 @@ class Task:
                 evaluator.parts_attn_on_target.add(
                     part.results[i].interpretability.attn_on_target
                 )
+                for k, v in part.results[i].features.get().items():
+                    self.parts_features[version][k].append(v)
 
-            assert (
-                len(evaluator.parts_answer_correct)
-                == len(evaluator.parts_max_supp_attn)
-                == len(evaluator.parts_attn_on_target)
-                == len(self.sample_part_lengths)
-                == len(self.parts_answer_in_self)
-            )
+            try:
+                assert (
+                    len(evaluator.parts_answer_correct)
+                    == len(evaluator.parts_max_supp_attn)
+                    == len(evaluator.parts_attn_on_target)
+                    == len(self.seen_context_lengths)
+                    == len(self.parts_answer_in_self)
+                    == len(self.parts_target_distances)
+                    == len(self.parts_features[list(self.parts_features.keys())[0]])
+                )
+            except AssertionError:
+                print("Length mismatch in task metrics calculation:")
+                print(f"parts_answer_correct: {len(evaluator.parts_answer_correct)}")
+                print(f"parts_max_supp_attn: {len(evaluator.parts_max_supp_attn)}")
+                print(f"parts_attn_on_target: {len(evaluator.parts_attn_on_target)}")
+                print(f"seen_context_lengths: {len(self.seen_context_lengths)}")
+                print(f"parts_answer_in_self: {len(self.parts_answer_in_self)}")
+                print(f"parts_target_distances: {len(self.parts_target_distances)}")
+                print(f"parts_features: {len(self.parts_features)}")
 
             # Calculate correlation using mean part attention scores for samples
             corr_matrices[version] = evaluator.calculate_correlation(
                 parts_answer_correct=evaluator.parts_answer_correct.all,
                 max_supp_attn=evaluator.parts_max_supp_attn.all,
                 attn_on_target=evaluator.parts_attn_on_target.all,
-                sample_part_lengths=self.sample_part_lengths.all,
+                seen_context_lengths=self.seen_context_lengths.all,
                 target_sent_distances=self.parts_target_distances.all,
             )
         return corr_matrices
@@ -969,13 +979,37 @@ class Split:
         for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
             exact_match_accuracies = []
             max_supp_attns = []
+            self.attn_on_targets = []
             attn_on_targets = []
             sample_lengths = []
             evaluator.calculate_std()
+
+            self.seen_context_lengths = []
+            self.parts_target_distances = []
+            self.parts_answer_in_self = []
+            self.parts_answer_correct = []
+            # self.task_features = dict.fromkeys(self.features[i].get().keys(), [])
+
             for task in self.tasks:
-                exact_match_accuracies.extend(
-                    task.evaluators[i].exact_match_accuracy.all
-                )
+                exact_match_accuracies.extend(task.evaluators[i].exact_match_accuracy.all)
+                self.seen_context_lengths.extend(task.seen_context_lengths.all)
+                self.parts_target_distances.extend(task.parts_target_distances.all)
+                self.parts_answer_in_self.extend(task.parts_answer_in_self.all)
+                for s_eval, t_eval in zip(self.evaluators, task.evaluators):
+                    s_eval.parts_answer_correct.add(t_eval.parts_answer_correct.all)
+                    # TODO: fix the name
+                    s_eval.attn_on_targets.add(t_eval.parts_attn_on_target.all)
+                # self.task_features.extend(task.parts_features)
+
+                assert(len(self.parts_answer_correct) ==
+                    len(self.attn_on_targets) ==
+                    len(self.seen_context_lengths) ==
+                    len(self.parts_target_distances) ==
+                    len(self.parts_answer_in_self)
+                    )
+                # print(self.task_features)
+                exact_match_accuracies.extend(task.evaluators[i].exact_match_accuracy.all)
+                print(len(exact_match_accuracies))
                 max_supp_attns.extend(task.evaluators[i].max_supp_attn.all)
                 attn_on_targets.extend(task.evaluators[i].attn_on_target.all)
                 sample_lengths.extend(task.sample_lengths)
@@ -993,8 +1027,11 @@ class Split:
                 exact_match_accuracy=exact_match_accuracies,
                 max_supp_attn=max_supp_attns,
                 attn_on_target=attn_on_targets,
-                sample_part_lengths=sample_lengths,
+                sample_lengths=sample_lengths,
+                # task_features=self.task_features,
             )
+
+            # evaluator.calculate_accuracies()
         return corr_matrices
 
 

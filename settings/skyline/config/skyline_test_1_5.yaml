@@ -4,7 +4,7 @@ defaults:
   - _self_
 
 model:
-  max_new_tokens: 150
+  max_new_tokens: 300
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
