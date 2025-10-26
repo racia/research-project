@@ -12,15 +12,13 @@ from matplotlib.colors import ListedColormap
 from matplotlib.ticker import PercentFormatter
 
 from evaluation.Metrics import Accuracy, Metric
-from evaluation.utils import CASES_2_LABELS
+from evaluation.utils import CASES_2_LABELS, CASES_TO_SIMPLE_ANS
 from inference.Prompt import Prompt
 from interpretability.utils import InterpretabilityResult
 from plots.utils import (
     Identifiers,
     determine_colour_scheme,
     prepare_for_display_pie,
-    simple_case,
-    match_cases,
     plot_task_map_grid,
 )
 
@@ -54,6 +52,8 @@ class Plotter:
             "ans_incorr": "#F5CBA7",  # light orange
             "reas_corr": "#2874A6",  # pure blue
             "reas_incorr": "#AED6F1",  # light blue
+            "ans_null": "#6E6E6E",
+            "reas_null": "#6E6E6E",
             "ans_null_reas_null": "#D3D3D3",  # pure gray
             "ans_corr_reas_null": "#E67E22",  # grayish orange
             "ans_incorr_reas_null": "#F5CBA7",  # light grayish orange
@@ -69,6 +69,8 @@ class Plotter:
             "ans_incorr": "#FFAF6E",  # light orange (255, 175, 110)
             "reas_corr": "#196EFF",  # pure blue (25, 110, 255)
             "reas_incorr": "#6EAFFF",  # light blue (110, 175, 255)
+            "ans_null": "#6E6E6E",
+            "reas_null": "#6E6E6E",
             "ans_null_reas_null": "#6E6E6E",  # pure gray (110, 110, 110)
             "ans_corr_reas_null": "#8C6E64",  # grayish orange (140, 110, 100)
             "ans_incorr_reas_null": "#B49664",  # light grayish orange (180, 150, 100)
@@ -84,6 +86,8 @@ class Plotter:
             "ans_incorr": "#FFAF6E",
             "reas_corr": "#196EFF",
             "reas_incorr": "#6EAFFF",
+            "ans_null": "#6E6E6E",
+            "reas_null": "#6E6E6E",
             "ans_null_reas_null": "#6E6E6E",  # pure gray (110, 110, 110)
             "ans_corr_reas_null": "#6E6E96",  # grayish purple (110, 110, 150)
             "ans_incorr_reas_null": "#B49664",  # grayish blue (110, 140, 175)
@@ -101,9 +105,9 @@ class Plotter:
 
     def _save_plot(
         self,
-        y_label: str,
-        x_label: str,
-        file_name: str,
+        y_label: str = None,
+        x_label: str = None,
+        file_name: str = None,
         plot_name_add: list[str] = None,
     ) -> None:
         """
@@ -523,30 +527,39 @@ class Plotter:
     def plot_answer_type_per_part(
         self,
         error_cases_ids: dict[str, str],
-        specification: str | list[str],
+        specification: dict[str, str],
         reasoning_scores: dict[tuple, float] = None,
     ) -> None:
         """
-        For each setting, plot a 'heatmap' of answer types per sample and part of each task.
+        Plot a map of answer types (and optionally reasoning scores) per sample and part of each task.
 
-        :param error_cases_ids: {answer_type: [(task, sample, part)]}
-        :param specification: description of the setting(s) for the title
-        :param reasoning_scores: optional, reasoning scores per (task, sample, part)
-        to plot as text on each cell
+        - Default: color encodes combined answer+reasoning type.
+        - If reasoning_scores provided: color encodes only answer, and reasoning score is written as text.
         """
-        answer_types = list(self.case_color_map.keys())
-        if reasoning_scores:
+        # === Setup ===
+        use_reasoning_scores = reasoning_scores is not None
+
+        # Determine which answer categories to use
+        if use_reasoning_scores:
             answer_types = ["ans_corr", "ans_incorr", "ans_null"]
-        ids_cases = {}
+        else:
+            # exclude simple answer/reasoning types
+            answer_types = [
+                key for key in self.case_color_map.keys() if key.count("_") > 1
+            ]
+        colors = [self.case_color_map[c] for c in answer_types]
+
+        # Parse case IDs
+        ids_cases = {}  # dict[tuple[int, int, int], str]
         for case, indices in error_cases_ids.items():
             for idx in indices:
-                idx = idx.split("\t")
-                # drop the strike-through id
-                ids_cases[tuple(idx[1:])] = case
-        present_cases = set(error_cases_ids.keys())
-        simple_cases = (
-            True if all(simple_case(case) for case in present_cases) else False
-        )
+                t, s, p = tuple(
+                    map(int, idx.split("\t")[1:])
+                )  # drop the strike-through id and convert to int
+                if use_reasoning_scores:
+                    ids_cases[(t, s, p)] = CASES_TO_SIMPLE_ANS[case]
+                else:
+                    ids_cases[(t, s, p)] = case
 
         tasks = sorted(set(i[0] for i in ids_cases.keys()))
         n_tasks = len(tasks)
@@ -560,70 +573,45 @@ class Plotter:
             n_cols = 1
         n_rows = int(np.ceil(n_tasks / n_cols))
 
-        # Calculate max samples/parts per task
-        task_samples = {task: set() for task in tasks}
-        task_parts = {task: set() for task in tasks}
-        for t, s, p in ids_cases.keys():
-            if t in task_samples:
-                task_samples[t].add(s)
-                task_parts[t].add(p)
-
-        # Calculate subplot sizes
-        subplot_widths = [len(task_parts[task]) * 0.2 for task in tasks]
-        subplot_heights = [len(task_samples[task]) * 1.0 for task in tasks]
-
-        # Calculate figure size
-        fig_width = sum(subplot_widths[i] for i in range(n_cols)) + 2
-        fig_height = sum(subplot_heights[i] for i in range(0, n_tasks, n_cols))
-        fig, axes = plt.subplots(
-            n_rows, n_cols, figsize=(fig_width + 1, fig_height), squeeze=False
-        )
-        colors = [
-            color
-            for case, color in self.case_color_map.items()
-            if case in present_cases
-        ]
-        if reasoning_scores:
-            colors = [self.case_color_map[case] for case in answer_types]
+        # === Figure setup ===
+        fig, axes = plt.subplots(n_rows, n_cols, figsize=(12, 8), squeeze=False)
 
         for i, task in enumerate(tasks):
             ax = axes[i // n_cols][i % n_cols]
-            samples = sorted(task_samples[task])
-            parts = sorted(task_parts[task])
-            heatmap = np.zeros((len(samples), len(parts)), dtype=int)
-            mask = np.zeros_like(heatmap, dtype=bool)
+
+            # Collect unique samples and parts
+            samples = sorted({s for t, s, _ in ids_cases if t == task})
+            parts = sorted({p for t, _, p in ids_cases if t == task})
+
             if not samples:
                 ax.set_visible(False)
                 continue
-            for s_idx, sample in enumerate(samples):
-                for p_idx, part in enumerate(parts):
-                    idx = (task, sample, part)
-                    if idx not in ids_cases.keys():
+
+            # Build heatmap
+            heatmap = np.zeros((len(samples), len(parts)), dtype=int)
+            mask = np.zeros_like(heatmap, dtype=bool)
+
+            for s_idx, s in enumerate(samples):
+                for p_idx, p in enumerate(parts):
+                    idx = (task, s, p)
+                    if idx not in ids_cases:
                         mask[s_idx, p_idx] = True
                     else:
-                        atype = ids_cases[idx]
-                        heatmap[s_idx, p_idx] = answer_types.index(atype)
-                        # if reasoning_scores and idx in reasoning_scores:
-                        #     score = reasoning_scores[idx]
-                        #     ax.text(
-                        #         p_idx,
-                        #         s_idx,
-                        #         f"{score:.2f}",
-                        #         ha="center",
-                        #         va="center",
-                        #         color="black",
-                        #         fontsize=8,
-                        #     )
+                        case = ids_cases[idx]
+                        heatmap[s_idx, p_idx] = answer_types.index(case)
 
             ax.imshow(heatmap, cmap=ListedColormap(colors), aspect="auto")
+
+            # Draw grid and labels
             plot_task_map_grid(plt, ax, task, samples, parts, mask)
-            # Annotate reasoning scores
-            if reasoning_scores:
-                for s_idx, sample in enumerate(samples):
-                    for p_idx, part in enumerate(parts):
-                        idx = (task, sample, part)
+
+            # Overlay reasoning scores if provided
+            if use_reasoning_scores:
+                for s_idx, s in enumerate(samples):
+                    for p_idx, p in enumerate(parts):
+                        idx = (task, s, p)
                         if idx in reasoning_scores and not mask[s_idx, p_idx]:
-                            score = reasoning_scores[idx]
+                            score = round(reasoning_scores[idx], 2)
                             ax.text(
                                 p_idx,
                                 s_idx,
@@ -632,44 +620,38 @@ class Plotter:
                                 va="center",
                                 color="black",
                                 fontsize=8,
+                                fontweight="medium",
+                                zorder=5,
                             )
 
-        filtered_ans_types = [
-            CASES_2_LABELS[ans].replace(", ", ",\n")
-            for ans in answer_types
-            if match_cases(simple_cases, ans)
-        ]
-        # Legend
-        handles = []
-        for i, atype in enumerate(filtered_ans_types):
-            line = plt.Line2D(
+        # === Legend ===
+        legend_labels = [CASES_2_LABELS[a].replace(", ", ",\n") for a in answer_types]
+        handles = [
+            plt.Line2D(
                 [0],
                 [0],
                 marker="s",
                 color="w",
-                label=atype,
-                markerfacecolor=colors[i],
+                label=label,
+                markerfacecolor=color,
                 markersize=10,
             )
-            handles.append(line)
-        fig.subplots_adjust(right=0.9)
+            for label, color in zip(legend_labels, colors)
+        ]
         fig.legend(
-            handles,
-            filtered_ans_types,
-            loc="center left",
-            # (horizontal: left-right, vertical: bottom-top)
-            bbox_to_anchor=(1.02, 0.5),
+            handles, legend_labels, loc="center left", bbox_to_anchor=(1.02, 0.5)
         )
-        fig.suptitle(f"Error Cases {' '.join(specification)}", fontsize=14, y=0.9)
+        fig.suptitle(
+            f"Error Cases {' '.join(specification.values())}", fontsize=14, y=0.95
+        )
         fig.tight_layout(rect=(0, 0, 0.9, 0.9))
-        print(
-            "saving error case map in",
-            self.results_path / f"error_case_map_{'_'.join(specification)}.png",
+
+        out_path = (
+            self.results_path
+            / specification.pop("version", "")
+            / f"error_case_map_{'_'.join(specification.values())}.png"
         )
-        fig.savefig(
-            self.results_path / f"error_case_map_{'_'.join(specification)}.png",
-            bbox_inches="tight",
-        )
+        fig.savefig(out_path, bbox_inches="tight")
 
     def plot_case_heatmap(
         self,

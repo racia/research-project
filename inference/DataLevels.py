@@ -19,6 +19,7 @@ from inference.utils import (
     structure_part,
     wrap_text,
     is_nan,
+    REASONING_SCORE_MAP,
 )
 from interpretability.utils import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
@@ -860,7 +861,7 @@ class Task:
         self.parts_target_distances = Metric(
             "Parts Target Sentence Distances", "parts_target_distances"
         )
-        # used on the split level
+        # sample_lengths and parts_answer_in_self are used on the split level
         self.sample_lengths = Metric("Sample Lengths", "sample_lengths")
         self.parts_answer_in_self = []
         for sample in self.samples:
@@ -872,19 +873,17 @@ class Task:
 
         for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
             # map the reasoning scores to the identifiers
-            reasoning_score_map = {
-                "bleu": evaluator.ids_with_bleu,
-                "rouge": evaluator.ids_with_rouge,
-                "meteor": evaluator.ids_with_meteor,
-            }
-            for score_name, flat_score in reasoning_score_map.items():
+            for score_name, flat_score_name in REASONING_SCORE_MAP.items():
                 for sample in self.samples:
                     score = sample.evaluators[i].__getattribute__(score_name).all
                     ids_with_scores = {
-                        (j, sample.sample_id, self.task_id): value
+                        (j + 1, sample.sample_id, self.task_id): value
                         for j, value in enumerate(score)
                     }
-                    flat_score.update(ids_with_scores)
+                    flat_score = evaluator.__getattribute__(flat_score_name)
+                    evaluator.__setattr__(
+                        flat_score_name, {**flat_score, **ids_with_scores}
+                    )
 
             for part in self.parts:
                 evaluator.parts_answer_correct.add(part.results[i].answer_correct)
@@ -981,14 +980,15 @@ class Split:
                 attn_on_targets.extend(task.evaluators[i].attn_on_target.all)
                 sample_lengths.extend(task.sample_lengths)
                 # get the reasoning scores
-                reasoning_score_map = {
-                    "ids_with_bleu": evaluator.ids_with_bleu,
-                    "ids_with_rouge": evaluator.ids_with_rouge,
-                    "ids_with_meteor": evaluator.ids_with_meteor,
-                }
-                for score_name, flat_score in reasoning_score_map.items():
-                    ids_with_scores = evaluator.__getattribute__(score_name)
-                    flat_score.update(ids_with_scores)
+                for flat_score_name in REASONING_SCORE_MAP.values():
+                    task_ids_with_scores = task.evaluators[i].__getattribute__(
+                        flat_score_name
+                    )
+                    split_ids_with_scores = evaluator.__getattribute__(flat_score_name)
+                    evaluator.__setattr__(
+                        flat_score_name,
+                        {**split_ids_with_scores, **task_ids_with_scores},
+                    )
             corr_matrices[version] = evaluator.calculate_correlation(
                 exact_match_accuracy=exact_match_accuracies,
                 max_supp_attn=max_supp_attns,

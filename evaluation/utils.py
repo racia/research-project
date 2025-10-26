@@ -17,8 +17,10 @@ ERROR_CASES = {
 CASES_2_LABELS = {
     "ans_corr": "Answer: correct",
     "ans_incorr": "Answer: incorrect",
+    "ans_null": "Answer: null",
     "reas_corr": "Reasoning: correct",
     "reas_incorr": "Reasoning: incorrect",
+    "reas_null": "Reasoning: null",
     "ans_null_reas_null": "Answer: null, Reasoning: null",
     "ans_corr_reas_null": "Answer: correct, Reasoning: null",
     "ans_incorr_reas_null": "Answer: incorrect, Reasoning: null",
@@ -31,20 +33,20 @@ CASES_2_LABELS = {
 }
 
 CASES_TO_SIMPLE_ANS = {
-    "ans_null_reas_null": "",
+    "ans_null_reas_null": "ans_null",
     "ans_corr_reas_null": "ans_corr",
     "ans_incorr_reas_null": "ans_incorr",
-    "ans_null_reas_corr": "",
-    "ans_null_reas_incorr": "",
+    "ans_null_reas_corr": "ans_null",
+    "ans_null_reas_incorr": "ans_null",
     "ans_corr_reas_corr": "ans_corr",
     "ans_corr_reas_incorr": "ans_corr",
     "ans_incorr_reas_corr": "ans_incorr",
     "ans_incorr_reas_incorr": "ans_incorr",
 }
 CASES_TO_SIMPLE_REAS = {
-    "ans_null_reas_null": "",
+    "ans_null_reas_null": "reas_null",
     "ans_corr_reas_null": "ans_corr",
-    "ans_incorr_reas_null": "",
+    "ans_incorr_reas_null": "reas_null",
     "ans_null_reas_corr": "reas_corr",
     "ans_null_reas_incorr": "reas_incorr",
     "ans_corr_reas_corr": "reas_corr",

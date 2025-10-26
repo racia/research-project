@@ -320,29 +320,29 @@ def run(
             f"\nPlotting accuracies and standard deviation for results '{version}'...",
             end="\n\n",
         )
-        # plotter.plot_acc_with_std(
-        #     acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
-        #     y_label="Accuracies with Standard Deviations",
-        #     plot_name_add=[split.name, version],
-        # )
+        plotter.plot_acc_with_std(
+            acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
+            y_label="Accuracies with Standard Deviations",
+            plot_name_add=[split.name, version],
+        )
         print(
             f"\nPlotting attentions for results '{version}'...",
             end="\n\n",
         )
-        # plotter.plot_acc_with_std(
-        #     acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
-        #     y_label="Attentions",
-        #     plot_name_add=[split.name, version],
-        # )
+        plotter.plot_acc_with_std(
+            acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
+            y_label="Attentions",
+            plot_name_add=[split.name, version],
+        )
         print(
             f"\nPlotting reasoning scores for results '{version}'...",
             end="\n\n",
         )
-        # plotter.plot_acc_with_std(
-        #     acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
-        #     y_label="Reasoning Scores",
-        #     plot_name_add=[split.name, version],
-        # )
+        plotter.plot_acc_with_std(
+            acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
+            y_label="Reasoning Scores",
+            plot_name_add=[split.name, version],
+        )
         print(
             f"\nPlotting correlations for results '{version}' between metrics:",
             evaluator.get_correlations(as_lists=True),
@@ -354,12 +354,22 @@ def run(
         # ERROR CASES
         print("Saving result categories...")
         plotter.plot_answer_type_per_part(
-            Results.CASE_COUNTERS[version], specification=[setting, experiment, version]
+            Results.CASE_COUNTERS[version],
+            specification={
+                "setting": setting,
+                "experiment": experiment,
+                "version": version,
+            },
         )
         for score in ("bleu", "rouge", "meteor"):
             plotter.plot_answer_type_per_part(
                 Results.CASE_COUNTERS[version],
-                specification=[setting, experiment, version, score],
+                specification={
+                    "setting": setting,
+                    "experiment": experiment,
+                    "version": version,
+                    "score": score.upper(),
+                },
                 reasoning_scores=evaluator.__getattribute__(f"ids_with_{score}"),
             )
         for case, case_list in Results.CASE_COUNTERS[version].items():

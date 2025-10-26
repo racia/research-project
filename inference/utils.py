@@ -18,6 +18,13 @@ from settings.config import Enumerate
 nlp = en_core_web_sm.load()
 
 
+REASONING_SCORE_MAP = {
+    "bleu": "ids_with_bleu",
+    "rouge": "ids_with_rouge",
+    "meteor": "ids_with_meteor",
+}
+
+
 @dataclass
 class Source:
     """
