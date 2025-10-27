@@ -1009,7 +1009,6 @@ class Split:
                 # task_features=self.task_features,
             )
             
-            # evaluator.calculate_accuracies()
         return corr_matrices
 
 

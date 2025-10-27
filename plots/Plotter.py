@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from pathlib import Path
+import re
 import warnings
 
 import matplotlib.pyplot as plt
@@ -103,29 +104,25 @@ class Plotter:
             elif step < 0: # negative step
                 raise ValueError(f"Step size must be non-negative, got <step={step}>")
         except TypeError:
-            pass  # step is None
+            print(f"No step size provided, defaulting to automatic ticks.")
 
         plt.xlabel(x_label)
 
-        if y_label.lower() in ["accurac"]:
-            y_ticks = np.arange(0, 1.1, 0.1)
-            plt.ylim(bottom=0, top=1.1)
-            plt.ylim(bottom=0, top=1)
-        elif "attention" in y_label.lower():
-            y_ticks = np.arange(0, 0.09, 0.01)
-            # plt.ylim(bottom=0, top=0.5)
-            plt.ylim(bottom=0, top=0.1)
-        elif "reasoning" in y_label.lower():
-            y_ticks = np.arange(0, 1.1, 0.1)
-            plt.ylim(bottom=0, top=1.1)
-            plt.ylim(bottom=0, top=1)
-        else:
-            if not displ_percentage:
+        if not displ_percentage:
+            if y_label.lower() in ["accurac"]:
                 y_ticks = np.arange(0, 1.1, 0.1)
-                plt.ylim(bottom=0, top=1.1)
+                plt.ylim(bottom=0, top=1)
+            elif "attention" in y_label.lower():
+                y_ticks = np.arange(0, 0.09, 0.01)
+                plt.ylim(bottom=0, top=0.1)
+            elif "reasoning" in y_label.lower():
+                y_ticks = np.arange(0, 1.1, 0.1)
+                plt.ylim(bottom=0, top=1)
+            else:
+                y_ticks = np.arange(0, 1.1, 0.1)
                 plt.ylim(bottom=0, top=1)
             
-        type_of_data = " ".join([part.capitalize() for part in y_label.split("_")])
+        type_of_data = " ".join([part.capitalize() for part in re.split(r"[\s_]", y_label)])
         plt.ylabel(type_of_data)
 
         plt.grid(which="both", linewidth=0.5, axis="y", linestyle="--")

@@ -72,7 +72,7 @@ class Metric:
         }
         return mapping.get(value.lower(), 0.0)
 
-    def add(self, metric: Metric | float | list[float] | None) -> None:
+    def add(self, metric: Metric | float | bool | list[float] | None) -> None:
         """
         Add metric values to the list of all metric values.
 
