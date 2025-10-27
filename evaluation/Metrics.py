@@ -70,7 +70,7 @@ class Metric:
         }
         return mapping.get(value.lower(), 0.0)
 
-    def add(self, metric: Metric | int | float | list[int | float] | None) -> None:
+    def add(self, metric: Metric | int | float | np.float64 | list[int | float] | None) -> None:
         """
         Add metric values to the list of all metric values.
 
@@ -79,7 +79,7 @@ class Metric:
         type_ = type(metric)
         if type_ is Metric or issubclass(type_, Metric):
             self.all.append(metric.get_mean())
-        elif type_ in [int, float]:
+        elif type_ in [int, float, np.float64]:
             self.all.append(metric)
         elif type_ is bool:
             self.all.append(int(metric))
@@ -93,7 +93,7 @@ class Metric:
             self.all.append(value)
         elif type_ is list:
             for m in metric:
-                if type(m) in [int, float]:
+                if type(m) in [int, float, np.float64]:
                     self.all.append(m)
                 elif isinstance(m, str) and m.lower() == "nan":
                     self.all.append(0.0)

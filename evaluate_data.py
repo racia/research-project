@@ -212,14 +212,14 @@ def run(
                 metrics = list(
                     format_metrics(evaluator.get_metrics(as_lists=True)).values()
                 )
-                plotter.plot_correlation(
-                    x_data={"seen_context_lengths": sample.seen_context_lengths},
-                    y_data=evaluator.attn_on_target.all,
-                    x_label="Sample Part Lengths",
-                    y_label="Attention on Target Tokens",
-                    file_name=f"attn_on_target_{sample_id}_{version}.pdf",
-                    path_add=f"Task {task_id}",
-                )
+                # plotter.plot_correlation(
+                #     x_data={"seen_context_lengths": sample.seen_context_lengths},
+                #     y_data=evaluator.attn_on_target.all,
+                #     x_label="Sample Part Lengths",
+                #     y_label="Attention on Target Tokens",
+                #     file_name=f"attn_on_target_{sample_id}_{version}.pdf",
+                #     path_add=f"Task {task_id}",
+                # )
                 # Get the metrics_to_save
                 print(f"Metrics for {evaluator.level} {version}:", metrics, end="\n\n")
 
@@ -236,6 +236,15 @@ def run(
         for version, evaluator, corr_matrix in zip(
             task.versions, task.evaluators, task_corr_matrices.values()
         ):
+            # Plot Accuracy vs Attn on Target for the Task
+            plotter.plot_correlation(
+                    x_data={"seen_context_lengths": task.seen_context_lengths},
+                    y_data=evaluator.parts_attn_on_target.all,
+                    x_label="Sample Part Lengths",
+                    y_label="Attention on Target Tokens",
+                    file_name=f"attn_on_target_{version}.pdf",
+                    path_add=f"Task {task_id}",
+                )
             # Attn on Target for Accuracy
             plotter.plot_correlation(
                 x_data=evaluator.get_accuracies(as_lists=True),
@@ -244,14 +253,15 @@ def run(
                 y_label="Attention on Target Tokens",
                 file_name=f"acc-attn_on_target_{version}.pdf",
                 path_add=Path(f"Task {task_id}"),
+                include_soft=False,
                 )
-
             # Attn on Target for Target Distances by Answer Correct
             plotter.plot_corr_boxplot(
-                x_data={"parts_target_distances": task.parts_target_distances.all}, # why is .all not neeeded here?
-                y_data={"parts_attn_on_target": task.parts_attn_on_target,
-                        "parts_answer_correct": task.parts_answer_correct.all,
-                        "parts_features": task.parts_features},
+                x_data={"parts_target_distances": task.parts_target_distances}, # why is .all not neeeded here?
+                y_data={"parts_attn_on_target": evaluator.parts_attn_on_target,
+                        "parts_answer_correct": evaluator.parts_answer_correct.all,
+                        "parts_features": task.parts_features[version],
+                },
                 x_label="Target Sentence Distances",
                 y_label="Attention On Target",
                 displ_percentage=False,
@@ -260,9 +270,9 @@ def run(
             )
             # Attn on Target for Answer Correct by Parts Features
             plotter.plot_corr_boxplot(
-                x_data={"parts_answer_correct": task.parts_answer_correct.all,}, # why is .all not neeeded here?
-                y_data={"parts_attn_on_target": task.parts_attn_on_target,
-                        "parts_features": task.parts_features,
+                x_data={"parts_answer_correct": evaluator.parts_answer_correct.all,}, # why is .all not neeeded here?
+                y_data={"parts_attn_on_target": evaluator.parts_attn_on_target,
+                        "parts_features": task.parts_features[version],
                 },
                 x_label="Answer Correct",
                 y_label="Attention On Target",
@@ -270,12 +280,11 @@ def run(
                 file_name=f"attn-ans_correct_{version}.pdf",
                 path_add=Path(f"Task {task_id}"),
             )
-
             # Attn on target for Anwer in Self by Answer Correct
             plotter.plot_corr_boxplot(
                 x_data={"parts_answer_in_self": task.parts_answer_in_self}, # why is .all not neeeded here?
-                y_data={"parts_attn_on_target": task.parts_attn_on_target,
-                        "parts_answer_correct": task.parts_answer_correct.all},
+                y_data={"parts_attn_on_target": evaluator.parts_attn_on_target.all,
+                        "parts_answer_correct": evaluator.parts_answer_correct.all},
                 x_label="Answer In Self",
                 y_label="Attention On Target",
                 displ_percentage=False,
@@ -285,8 +294,8 @@ def run(
             # Attn on Target for Seen Context Lengths by Answer Correct
             plotter.plot_corr_boxplot(
                 x_data={"parts_seen_context_lengths": task.seen_context_lengths}, # why is .all not neeeded here?
-                y_data={"parts_attn_on_target": task.parts_attn_on_target,
-                        "parts_answer_correct": task.parts_answer_correct.all},
+                y_data={"parts_attn_on_target": evaluator.parts_attn_on_target.all,
+                        "parts_answer_correct": evaluator.parts_answer_correct.all},
                 x_label="Seen Context Lengths",
                 y_label="Attention On Target",
                 displ_percentage=False,
@@ -296,7 +305,7 @@ def run(
             # Answer Correct for Seen Context Lengths by Answer In Self
             plotter.plot_corr_hist(
                 x_data={"parts_seen_context_lengths": task.seen_context_lengths}, # why is .all not neeeded here?
-                y_data={"parts_answer_correct": task.parts_answer_correct.all,
+                y_data={"parts_answer_correct": evaluator.parts_answer_correct.all,
                         "parts_answer_in_self": task.parts_answer_in_self},
                 x_label="Seen Context Lengths",
                 y_label="Parts Answer Correct",
@@ -359,11 +368,22 @@ def run(
             file_path=f"corr_matrix_split_{split.name}.json",
             path_add=version,
         )
+        # Plot Accuracy vs Attn on Target for the Split
+        plotter.plot_correlation(
+                x_data=evaluator.get_accuracies(as_lists=True),
+                y_data=evaluator.attn_on_target.all,
+                x_label="Accuracy",
+                y_label="Attention on Target Tokens",
+                file_name=f"acc-attn_on_target_{version}.pdf",
+                path_add=Path(f"Split {split.name}"),
+                include_soft=False,
+            )
+
         # Attn on Target for Seen Context Lengths by Answer Correct
         plotter.plot_corr_boxplot(
             x_data={"seen_context_lengths": split.seen_context_lengths},
-            y_data={"parts_attn_on_targets": split.attn_on_targets,
-                    "parts_answer_correct": split.parts_answer_correct},
+            y_data={"parts_attn_on_targets": evaluator.parts_attn_on_target.all,
+                    "parts_answer_correct": evaluator.parts_answer_correct.all},
             x_label="Seen Context Lengths",
             y_label="Attention On Target",
             displ_percentage=False,
@@ -374,8 +394,8 @@ def run(
         # Attn on Target for Target Distances by Answer Correct
         plotter.plot_corr_boxplot(
             x_data={"parts_target_distances": split.parts_target_distances},
-            y_data={"parts_attn_on_targets": split.attn_on_targets,
-                    "parts_answer_correct": split.parts_answer_correct},
+            y_data={"parts_attn_on_targets": evaluator.parts_attn_on_target.all,
+                    "parts_answer_correct": evaluator.parts_answer_correct.all,},
             x_label="Target Sentence Distances",
             y_label="Attention On Target",
             level="split",
@@ -386,7 +406,7 @@ def run(
         # Answer Correct for Seen Context Lengths by Answer In Self
         plotter.plot_corr_hist(
             x_data={"parts_seen_context_lengths": split.seen_context_lengths},
-            y_data={"parts_answer_correct": split.parts_answer_correct,
+            y_data={"parts_answer_correct": evaluator.parts_answer_correct.all,
                     "parts_answer_in_self": split.parts_answer_in_self},
             x_label="Parts Seen Context Lengths",
             y_label="Parts Answer Correct",

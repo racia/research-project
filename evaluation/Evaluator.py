@@ -127,7 +127,9 @@ class MetricEvaluator(Evaluator):
         self.parts_answer_correct = Metric(
             "Parts Answer Correct", "part_answer_correct"
         )
-        self.parts_max_supp_attn = Metric("Parts Max Supp Attn", "part_max_supp_attn")
+        self.parts_max_supp_attn = Metric(
+            "Parts Max Supp Attn", "part_max_supp_attn"
+        )
         self.parts_attn_on_target = Metric(
             "Parts Attn on Target", "part_attn_on_target"
         )

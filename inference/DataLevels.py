@@ -900,7 +900,7 @@ class Task:
                     == len(self.seen_context_lengths)
                     == len(self.parts_answer_in_self)
                     == len(self.parts_target_distances)
-                    == len(self.parts_features[list(self.parts_features.keys())[0]])
+                    == len(self.parts_features[version][list(self.parts_features[version].keys())[0]])
                 )
             except AssertionError:
                 print("Length mismatch in task metrics calculation:")
@@ -910,7 +910,7 @@ class Task:
                 print(f"seen_context_lengths: {len(self.seen_context_lengths)}")
                 print(f"parts_answer_in_self: {len(self.parts_answer_in_self)}")
                 print(f"parts_target_distances: {len(self.parts_target_distances)}")
-                print(f"parts_features: {len(self.parts_features)}")
+                print(f"parts_features: {len(self.parts_features[version][list(self.parts_features[version].keys())[0]])}")
 
             # Calculate correlation using mean part attention scores for samples
             corr_matrices[version] = evaluator.calculate_correlation(
@@ -979,40 +979,31 @@ class Split:
         for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
             exact_match_accuracies = []
             max_supp_attns = []
-            self.attn_on_targets = []
             attn_on_targets = []
             sample_lengths = []
-            evaluator.calculate_std()
 
             self.seen_context_lengths = []
             self.parts_target_distances = []
             self.parts_answer_in_self = []
             self.parts_answer_correct = []
-            # self.task_features = dict.fromkeys(self.features[i].get().keys(), [])
 
             for task in self.tasks:
-                exact_match_accuracies.extend(task.evaluators[i].exact_match_accuracy.all)
-                self.seen_context_lengths.extend(task.seen_context_lengths.all)
-                self.parts_target_distances.extend(task.parts_target_distances.all)
+                self.seen_context_lengths.extend(task.seen_context_lengths)
+                self.parts_target_distances.extend(task.parts_target_distances)
                 self.parts_answer_in_self.extend(task.parts_answer_in_self.all)
                 for s_eval, t_eval in zip(self.evaluators, task.evaluators):
                     s_eval.parts_answer_correct.add(t_eval.parts_answer_correct.all)
                     # TODO: fix the name
-                    s_eval.attn_on_targets.add(t_eval.parts_attn_on_target.all)
-                # self.task_features.extend(task.parts_features)
+                    print(len(s_eval.parts_answer_correct.all), len(t_eval.parts_answer_correct.all))
+                    s_eval.parts_attn_on_target.add(t_eval.parts_attn_on_target.all)
+                    s_eval.parts_max_supp_attn.add(t_eval.parts_max_supp_attn.all)
 
-                assert(len(self.parts_answer_correct) ==
-                    len(self.attn_on_targets) ==
-                    len(self.seen_context_lengths) ==
-                    len(self.parts_target_distances) ==
-                    len(self.parts_answer_in_self)
-                    )
-                # print(self.task_features)
                 exact_match_accuracies.extend(task.evaluators[i].exact_match_accuracy.all)
-                print(len(exact_match_accuracies))
+                # print(len(exact_match_accuracies), exact_match_accuracies)
                 max_supp_attns.extend(task.evaluators[i].max_supp_attn.all)
                 attn_on_targets.extend(task.evaluators[i].attn_on_target.all)
                 sample_lengths.extend(task.sample_lengths)
+
                 # get the reasoning scores
                 for flat_score_name in REASONING_SCORE_MAP.values():
                     task_ids_with_scores = task.evaluators[i].__getattribute__(
@@ -1023,15 +1014,38 @@ class Split:
                         flat_score_name,
                         {**split_ids_with_scores, **task_ids_with_scores},
                     )
+            try:
+                assert(len(evaluator.parts_answer_correct) ==
+                len(self.seen_context_lengths) ==
+                len(self.parts_target_distances) ==
+                len(self.parts_answer_in_self)
+                )
+            except AssertionError:
+                print("Length mismatch in split metrics calculation:")
+                print(f"parts_answer_correct: {len(self.parts_answer_correct)}")
+                print(f"seen_context_lengths: {len(self.seen_context_lengths)}")
+                print(f"parts_target_distances: {len(self.parts_target_distances)}")
+                print(f"parts_answer_in_self: {len(self.parts_answer_in_self)}")
+            try:
+                assert(len(exact_match_accuracies) == 
+                len(max_supp_attns) == 
+                len(attn_on_targets) == 
+                len(sample_lengths)
+                )
+            except AssertionError:
+                print("Length mismatch in split metrics calculation:")
+                print(f"exact_match_accuracies: {len(exact_match_accuracies)}")
+                print(f"max_supp_attns: {len(max_supp_attns)}")
+                print(f"attn_on_targets: {len(attn_on_targets)}")
+                print(f"sample_lengths: {len(sample_lengths)}")
+
             corr_matrices[version] = evaluator.calculate_correlation(
                 exact_match_accuracy=exact_match_accuracies,
                 max_supp_attn=max_supp_attns,
                 attn_on_target=attn_on_targets,
                 sample_lengths=sample_lengths,
-                # task_features=self.task_features,
             )
 
-            # evaluator.calculate_accuracies()
         return corr_matrices
 
 

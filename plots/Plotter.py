@@ -122,7 +122,7 @@ class Plotter:
         :return: None
         """
         if file_name:
-            plt.savefig(self.results_path / file_name.lower(), bbox_inches="tight")
+            plt.savefig(self.results_path / file_name, bbox_inches="tight")
         elif x_label and y_label and plot_name_add:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
@@ -474,6 +474,7 @@ class Plotter:
         file_name=None,
         plot_name_add: list[str] = None,
         path_add: str = None,
+        include_soft: bool = True,
     ) -> None:
         """
         Plot the correlation between two variables.
@@ -485,19 +486,23 @@ class Plotter:
         :param file_name: name of the plot
         :param plot_name_add: addition to the plot name
         :param path_add: addition to the path where the plot is saved
+        :param include_soft: whether to include soft metrics in the plot
         :return: None
         """
 
         plt.figure(figsize=(15, 5))
-        colors = self.cmap(np.linspace(0, 1, len(x_data)))
+        colors = self.cmap(np.linspace(0, 1, len(x_data)), alpha=0.7)
 
         number_of_prompts = 0
         max_x_len = 1
         metr_types = 0
 
+        x_data = {k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()}
+
         for (metr_type, metr), color in zip(x_data.items(), colors):
             # number_of_prompts += 1
             metr_types += 1
+            print(metr_type, len(metr.all), metr.all, len(y_data))
             # This covers both cases: Metric (i.e. length of sentences) and Accuracy
             if max(metr.all) > max_x_len:
                 max_x_len = max(metr.all)  # Case sample_part_lenghts: Set to max value
@@ -506,7 +511,7 @@ class Plotter:
                 raise ValueError(
                     f"x and y must have the same first dimension, but have shapes {len(metr)} and {len(y_data)}"
                 )
-
+            
             if not y_data:
                 raise ValueError("y_data is empty")
 
@@ -532,7 +537,7 @@ class Plotter:
             min_x_len=min_x_len,
         )
         if path_add:
-            file_name = f"{path_add}_{file_name}"
+            file_name = f"{path_add}_{file_name}".lower()
             Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
         self._save_plot(y_label, x_label, file_name, plot_name_add)
         plt.close()
@@ -949,7 +954,7 @@ class Plotter:
             plot_name_add=plot_name_add,
             )
         if path_add:
-            file_name = path_add / file_name
+            file_name = path_add / file_name.lower()
             Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
         self._save_plot(y_label=y_label, x_label=x_label, file_name=file_name)
         # plt.savefig(self.results_path / file_name)
@@ -994,7 +999,7 @@ class Plotter:
         df_data = {}
         # print("df_data", df_data)
         for y_keys, y_vals in y_data.items():
-            if isinstance(y_vals, dict):
+            if any(isinstance(y_vals, dict_type) for dict_type in [dict, defaultdict]):
                 df_data.update(y_vals)
             else:
                 df_data[y_keys] = y_vals
@@ -1002,6 +1007,7 @@ class Plotter:
         df = pd.DataFrame(list(zip(*x_data.values(), *df_data.values())), columns=[x_label]+list(df_data.keys()))
 
         def _feat_mapping(x: str) -> str:
+            # Map feature indices to feature names
             mapping = dict(map(lambda x: (x[0], x[1]), zip(range(5), y_data["parts_features"].keys())))
             feat_str = [mapping.get(i, "False") for i, part in enumerate(x.split("-")) if part in ["True", "1"]]
             return "-".join(feat_str) if feat_str else None
@@ -1031,7 +1037,7 @@ class Plotter:
             )
 
         if path_add:
-            file_name = path_add / file_name
+            file_name = path_add / file_name.lower()
             Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
         self._save_plot(y_label=y_label, x_label=x_label, file_name=file_name)
         plt.close()
