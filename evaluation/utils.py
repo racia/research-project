@@ -2,6 +2,59 @@ from __future__ import annotations
 
 from pathlib import Path
 
+ERROR_CASES = {
+    "ans_null_reas_null": [],
+    "ans_corr_reas_null": [],
+    "ans_incorr_reas_null": [],
+    "ans_null_reas_corr": [],
+    "ans_null_reas_incorr": [],
+    "ans_corr_reas_corr": [],
+    "ans_corr_reas_incorr": [],
+    "ans_incorr_reas_corr": [],
+    "ans_incorr_reas_incorr": [],
+}
+
+CASES_2_LABELS = {
+    "ans_corr": "Answer: correct",
+    "ans_incorr": "Answer: incorrect",
+    "ans_null": "Answer: null",
+    "reas_corr": "Reasoning: correct",
+    "reas_incorr": "Reasoning: incorrect",
+    "reas_null": "Reasoning: null",
+    "ans_null_reas_null": "Answer: null, Reasoning: null",
+    "ans_corr_reas_null": "Answer: correct, Reasoning: null",
+    "ans_incorr_reas_null": "Answer: incorrect, Reasoning: null",
+    "ans_null_reas_corr": "Answer: null, Reasoning: correct",
+    "ans_null_reas_incorr": "Answer: null, Reasoning: incorrect",
+    "ans_corr_reas_corr": "Answer: correct, Reasoning: correct",
+    "ans_corr_reas_incorr": "Answer: correct, Reasoning: incorrect",
+    "ans_incorr_reas_corr": "Answer: incorrect, Reasoning: correct",
+    "ans_incorr_reas_incorr": "Answer: incorrect, Reasoning: incorrect",
+}
+
+CASES_TO_SIMPLE_ANS = {
+    "ans_null_reas_null": "ans_null",
+    "ans_corr_reas_null": "ans_corr",
+    "ans_incorr_reas_null": "ans_incorr",
+    "ans_null_reas_corr": "ans_null",
+    "ans_null_reas_incorr": "ans_null",
+    "ans_corr_reas_corr": "ans_corr",
+    "ans_corr_reas_incorr": "ans_corr",
+    "ans_incorr_reas_corr": "ans_incorr",
+    "ans_incorr_reas_incorr": "ans_incorr",
+}
+CASES_TO_SIMPLE_REAS = {
+    "ans_null_reas_null": "reas_null",
+    "ans_corr_reas_null": "ans_corr",
+    "ans_incorr_reas_null": "reas_null",
+    "ans_null_reas_corr": "reas_corr",
+    "ans_null_reas_incorr": "reas_incorr",
+    "ans_corr_reas_corr": "reas_corr",
+    "ans_corr_reas_incorr": "reas_incorr",
+    "ans_incorr_reas_corr": "reas_corr",
+    "ans_incorr_reas_incorr": "reas_incorr",
+}
+
 
 def check_or_create_directory(path: str | Path) -> None:
     """

@@ -371,16 +371,33 @@ def run(
 
 
 if __name__ == "__main__":
-    # (TODO) Important: ensure that the source_paths include information about the task/sample IDs
-    # The paths should be the directories containing the result files for each task.
     paths = [
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/01-06-2025/t_8_10/init_prompt_reasoning",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_1",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_2",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_3",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/16-10-2025/task_4/task_4",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_5",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_6",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_7",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_8",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_9",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_10",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_11",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_12",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_13",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_14",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/19-10-2025/task_15/task_15",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/15-09-2025/task_16/task_16",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_17",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_18",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/16-10-2025/task_19/task_19",
+        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_20",
     ]
-    # TODO: path to save the all_samples data
-    result_directory = "/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/all_tasks_joined"
+
+    result_directory = "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/all_tasks_joined"
     run(
         source_paths=paths,
         target_directory=result_directory,
         level="task",
-        keyword="reasoning_results",  # example: "t_20" for a specific task, "reasoning_results" for generally saved results
+        keyword="_results",  # example: "t_20" for a specific task, "reasoning_results" for generally saved results
     )  # might not work if too general!

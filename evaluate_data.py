@@ -110,6 +110,8 @@ def run(
     results_path: str,
     save_path: str,
     samples_per_task: int,
+    experiment: str,
+    setting: str = "baseline",
     create_heatmaps: bool = True,
     verbose: bool = False,
 ) -> None:
@@ -119,12 +121,24 @@ def run(
     :param results_path: Path to the data for evaluation
     :param save_path: Path to save the results
     :param samples_per_task: Number of samples per task the results were ran with
-    :param create_heatmaps: Whether to create heatmaps for the interpretability results
+    :param experiment: The experiment to evaluate (e.g., "reasoning_answer", "direct_answer")
+    :param setting: The setting of the experiment (e.g., "baseline", "feedback")
     :param verbose: Whether to print the results to the console
+    :param create_heatmaps: Whether to create heatmaps for the interpretability results
     :return: None
     """
     print("You are running the evaluation pipeline.", end="\n\n")
 
+    experiment = experiment.lower()
+    if experiment not in ["reasoning_answer", "direct_answer"]:
+        raise ValueError(
+            f"Experiment '{experiment}' is not supported. Please choose either 'reasoning_answer' or 'direct_answer'."
+        )
+    setting = setting.lower()
+    if setting not in ["baseline", "feedback", "skyline", "speculative_decoding", "sd"]:
+        raise ValueError(
+            "Setting not recognized, expected one of: 'baseline', 'feedback', 'skyline', 'speculative_decoding', 'sd'"
+        )
     if not results_path:
         raise ValueError("Please provide a path to the data for evaluation.")
 
@@ -143,7 +157,7 @@ def run(
         loaded_baseline_results=True if multi_system else False,
     )
     results_file_name = f"{Path(results_path).stem}_upd.csv"
-    plotter = Plotter(results_path=saver.run_path)
+    plotter = Plotter(results_path=saver.run_path, color_map="tab20")
 
     print(f"\nLoaded results data for {len(results_data)} tasks.")
     print(f"Loaded {loader.number_of_parts} sample parts created from raw data.")
@@ -198,17 +212,7 @@ def run(
                 metrics = list(
                     format_metrics(evaluator.get_metrics(as_lists=True)).values()
                 )
-                plotter.plot_correlation(
-                    x_data={"seen_context_lengths": sample.seen_context_lengths},
-                    y_data=evaluator.attn_on_target.all,
-                    x_label="Sample Part Lengths",
-                    y_label="Attention on Target Tokens",
-                    file_name=f"attn_on_target_{sample_id}_{version}.pdf",
-                    path_add=Path(f"Task {task_id}"),
-                )
-                # Get the metrics_to_save
                 print(f"Metrics for {evaluator.level} {version}:", metrics, end="\n\n")
-
 
         task.set_results()
 
@@ -223,74 +227,85 @@ def run(
         for version, evaluator, corr_matrix in zip(
             task.versions, task.evaluators, task_corr_matrices.values()
         ):
+            # Plot Attention vs Seen Context Lengths for the Task
+            plotter.plot_correlation(
+                    x_data={"seen_context_lengths": task.seen_context_lengths},
+                    y_data=evaluator.parts_attn_on_target.all,
+                    x_label="Seen Context Lengths",
+                    y_label="Attention on Target Tokens",
+                    file_name=f"attn_on_target.pdf",
+                    path_add=Path(version, f"Task-{task_id}"),
+                )
             # Attn on Target for Accuracy
             plotter.plot_correlation(
                 x_data=evaluator.get_accuracies(as_lists=True),
                 y_data=evaluator.attn_on_target.all,
                 x_label="Accuracy",
                 y_label="Attention on Target Tokens",
-                file_name=f"acc-attn_on_target_{version}.pdf",
-                path_add=Path(f"Task {task_id}"),
+                file_name=f"acc-attn_on_target.pdf",
+                path_add=Path(version, f"Task-{task_id}"),
+                include_soft=False,
                 )
-
             # Attn on Target for Target Distances by Answer Correct
             plotter.plot_corr_boxplot(
-                x_data={"parts_target_distances": task.parts_target_distances.all}, # why is .all not neeeded here?
-                y_data={"parts_attn_on_target": task.parts_attn_on_target,
-                        "parts_answer_correct": task.parts_answer_correct.all,
-                        "parts_features": task.parts_features},
+                x_data={"parts_target_distances": task.parts_target_distances}, # why is .all not neeeded here?
+                y_data={"parts_attn_on_target": evaluator.parts_attn_on_target,
+                        "parts_answer_correct": evaluator.parts_answer_correct.all,
+                        "parts_features": task.parts_features[version],
+                },
                 x_label="Target Sentence Distances",
                 y_label="Attention On Target",
                 displ_percentage=False,
-                file_name=f"attn-target_distances_{version}.pdf",
-                path_add=Path(f"Task {task_id}"),
+                file_name=f"attn-target_distances.pdf",
+                path_add=Path(version, f"Task-{task_id}"),
             )
             # Attn on Target for Answer Correct by Parts Features
             plotter.plot_corr_boxplot(
-                x_data={"parts_answer_correct": task.parts_answer_correct.all,}, # why is .all not neeeded here?
-                y_data={"parts_attn_on_target": task.parts_attn_on_target,
-                        "parts_features": task.parts_features,
+                x_data={"parts_answer_correct": evaluator.parts_answer_correct.all,}, # why is .all not neeeded here?
+                y_data={"parts_attn_on_target": evaluator.parts_attn_on_target,
+                        "parts_features": task.parts_features[version],
                 },
                 x_label="Answer Correct",
                 y_label="Attention On Target",
                 displ_percentage=False,
-                file_name=f"attn-ans_correct_{version}.pdf",
-                path_add=Path(f"Task {task_id}"),
+                file_name=f"attn-ans_correct.pdf",
+                path_add=Path(version, f"Task-{task_id}"),
             )
-
             # Attn on target for Anwer in Self by Answer Correct
             plotter.plot_corr_boxplot(
                 x_data={"parts_answer_in_self": task.parts_answer_in_self}, # why is .all not neeeded here?
-                y_data={"parts_attn_on_target": task.parts_attn_on_target,
-                        "parts_answer_correct": task.parts_answer_correct.all},
+                y_data={"parts_attn_on_target": evaluator.parts_attn_on_target.all,
+                        "parts_answer_correct": evaluator.parts_answer_correct.all},
                 x_label="Answer In Self",
                 y_label="Attention On Target",
                 displ_percentage=False,
-                file_name=f"attn-ans_in_self_{version}.pdf",
-                path_add=Path(f"Task {task_id}"),
+                file_name=f"attn-ans_in_self.pdf",
+                path_add=Path(version, f"Task-{task_id}"),
             )
             # Attn on Target for Seen Context Lengths by Answer Correct
             plotter.plot_corr_boxplot(
                 x_data={"parts_seen_context_lengths": task.seen_context_lengths}, # why is .all not neeeded here?
-                y_data={"parts_attn_on_target": task.parts_attn_on_target,
-                        "parts_answer_correct": task.parts_answer_correct.all},
+                y_data={"parts_attn_on_target": evaluator.parts_attn_on_target.all,
+                        "parts_answer_correct": evaluator.parts_answer_correct.all},
                 x_label="Seen Context Lengths",
                 y_label="Attention On Target",
                 displ_percentage=False,
-                file_name=f"attn-seen_context_lengths_{version}.pdf",
-                path_add=Path(f"Task {task_id}"),
+                version=version,
+                file_name=f"attn-seen_context_lengths.pdf",
+                path_add=Path(version, f"Task-{task_id}"),
             )
-            # Answer Correct for Seen Context Lengths by Answer In Self          
+            # Answer Correct for Seen Context Lengths by Answer In Self
             plotter.plot_corr_hist(
                 x_data={"parts_seen_context_lengths": task.seen_context_lengths}, # why is .all not neeeded here?
-                y_data={"parts_answer_correct": task.parts_answer_correct.all,
+                y_data={"parts_answer_correct": evaluator.parts_answer_correct.all,
                         "parts_answer_in_self": task.parts_answer_in_self},
                 x_label="Seen Context Lengths",
                 y_label="Parts Answer Correct",
                 displ_percentage=True,
-                file_name=f"parts_answer_correct_{version}.pdf",
-                path_add=Path(f"Task {task_id}"),
-            )   
+                version=version,
+                file_name=f"parts_answer_correct.pdf",
+                path_add=Path(version, f"Task-{task_id}"),
+            )
 
             plotter.correlation_map(
                 data=corr_matrix,
@@ -305,7 +320,7 @@ def run(
                 file_path=f"corr_matrix_task_{task_id}.json",
                 path_add=Path(version),
             )
-   
+
             metrics_to_save = defaultdict(dict)
             metrics = list(
                 format_metrics(evaluator.get_metrics(as_lists=True)).values()
@@ -346,41 +361,54 @@ def run(
             file_path=f"corr_matrix_split_{split.name}.json",
             path_add=version,
         )
+        # Plot Accuracy vs Attn on Target for the Split
+        plotter.plot_correlation(
+                x_data=evaluator.get_accuracies(as_lists=True),
+                y_data=evaluator.attn_on_target.all,
+                x_label="Accuracy",
+                y_label="Attention on Target Tokens",
+                file_name=f"acc-attn_on_target_{split.name}.pdf",
+                version=version,
+                path_add=Path(version),
+                include_soft=False,
+            )
+
         # Attn on Target for Seen Context Lengths by Answer Correct
         plotter.plot_corr_boxplot(
             x_data={"seen_context_lengths": split.seen_context_lengths},
-            y_data={"parts_attn_on_targets": split.attn_on_targets,
-                    "parts_answer_correct": split.parts_answer_correct},
+            y_data={"parts_attn_on_targets": evaluator.parts_attn_on_target.all,
+                    "parts_answer_correct": evaluator.parts_answer_correct.all},
             x_label="Seen Context Lengths",
             y_label="Attention On Target",
             displ_percentage=False,
             level="split",
-            file_name=f"attn-seen_context_lengths_{version}.pdf",
-            path_add=Path(f"Split {split.name}"),
+            version=version,
+            file_name=f"attn-seen_context_lengths_{split.name}.pdf",
+            path_add=Path(version),
         )
         # Attn on Target for Target Distances by Answer Correct
         plotter.plot_corr_boxplot(
             x_data={"parts_target_distances": split.parts_target_distances},
-            y_data={"parts_attn_on_targets": split.attn_on_targets,
-                    "parts_answer_correct": split.parts_answer_correct},
+            y_data={"parts_attn_on_targets": evaluator.parts_attn_on_target.all,
+                    "parts_answer_correct": evaluator.parts_answer_correct.all,},
             x_label="Target Sentence Distances",
             y_label="Attention On Target",
             level="split",
             displ_percentage=False,
-        file_name=f"attn-target_distances_{version}.pdf",
-            path_add=Path(f"Split {split.name}"),
+            file_name=f"attn-target_distances_{split.name}.pdf",
+            path_add=Path(version),
         )
         # Answer Correct for Seen Context Lengths by Answer In Self
         plotter.plot_corr_hist(
             x_data={"parts_seen_context_lengths": split.seen_context_lengths},
-            y_data={"parts_answer_correct": split.parts_answer_correct,
+            y_data={"parts_answer_correct": evaluator.parts_answer_correct.all,
                     "parts_answer_in_self": split.parts_answer_in_self},
             x_label="Parts Seen Context Lengths",
             y_label="Parts Answer Correct",
             level="split",
             displ_percentage=True,
-            file_name=f"parts_answer_correct_{version}.pdf",
-            path_add=Path(f"Split {split.name}"),
+            file_name=f"parts_answer_correct_{split.name}.pdf",
+            path_add=Path(version),
         )
 
         saver.save_split_features(
@@ -426,6 +454,25 @@ def run(
         # TODO: add scatter plots
         # ERROR CASES
         print("Saving result categories...")
+        plotter.plot_answer_type_per_part(
+            Results.CASE_COUNTERS[version],
+            specification={
+                "setting": setting,
+                "experiment": experiment,
+                "version": version,
+            },
+        )
+        for score in ("bleu", "rouge", "meteor"):
+            plotter.plot_answer_type_per_part(
+                Results.CASE_COUNTERS[version],
+                specification={
+                    "setting": setting,
+                    "experiment": experiment,
+                    "version": version,
+                    "score": score.upper(),
+                },
+                reasoning_scores=evaluator.__getattribute__(f"ids_with_{score}"),
+            )
         for case, case_list in Results.CASE_COUNTERS[version].items():
             headers = "id_\ttask_id\tsample_id\tpart_id"
             if case_list:
@@ -438,6 +485,7 @@ def run(
             else:
                 print(f"Case {case}: detected 0 occurrences. Nothing!")
 
+    print(f"Plots produced: {plotter.plot_counter_prompt}")
     print("\nThe evaluation pipeline has finished successfully.")
 
 
@@ -470,7 +518,7 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
     parser.add_argument(
         "--create_heatmaps",
         action="store_true",
-        help="Whether to create heatmaps for the interpretability results.",
+        help="Whether to create attention heatmaps for the interpretability results.",
     )
     parser.add_argument(
         "--verbose",
@@ -490,14 +538,16 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
 
 
 if __name__ == "__main__":
-    #path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
-    #args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
+    # path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
+    # args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
     args = parse_args()
     # python3.12 evaluate_data.py --results_path baseline/28-05-2025/22-39-52/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv --save_path results/here --samples_per_task 15 --create_heatmaps --verbose
     run(
         results_path=args.results_path,
         save_path=args.save_path,
         samples_per_task=args.samples_per_task,
+        setting="baseline",
+        experiment="reasoning_answer",
         create_heatmaps=args.create_heatmaps,
         verbose=args.verbose,
     )

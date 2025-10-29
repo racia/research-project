@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 import statistics
-from typing import Tuple
-
 import warnings
 
 import evaluate
@@ -45,7 +43,7 @@ class Metric:
         else:
             # Normal indexing or slicing
             return self.all[slice_]
-        
+
     def __iter__(self) -> iter:
         """
         Return an iterator over all metric values.
@@ -72,7 +70,7 @@ class Metric:
         }
         return mapping.get(value.lower(), 0.0)
 
-    def add(self, metric: Metric | float | bool | list[float] | None) -> None:
+    def add(self, metric: Metric | int | float | np.float64 | list[int | float] | None) -> None:
         """
         Add metric values to the list of all metric values.
 
@@ -81,7 +79,7 @@ class Metric:
         type_ = type(metric)
         if type_ is Metric or issubclass(type_, Metric):
             self.all.append(metric.get_mean())
-        elif type_ is float:
+        elif type_ in [int, float, np.float64]:
             self.all.append(metric)
         elif type_ is bool:
             self.all.append(int(metric))
@@ -95,7 +93,7 @@ class Metric:
             self.all.append(value)
         elif type_ is list:
             for m in metric:
-                if isinstance(m, float) or isinstance(m, int):
+                if type(m) in [int, float, np.float64]:
                     self.all.append(m)
                 elif isinstance(m, str) and m.lower() == "nan":
                     self.all.append(0.0)
@@ -164,7 +162,14 @@ class Correlation(Metric):
     :param correlations: the list of correlation values
     :param p_values: the list of correlation p-values
     """
-    def __init__(self, name, var: str, correlations: list[float] = None , p_values: list[float] = None):
+
+    def __init__(
+        self,
+        name,
+        var: str,
+        correlations: list[float] = None,
+        p_values: list[float] = None,
+    ):
         super().__init__(name, var, correlations)
         self.p_values: list[float] = p_values if p_values else []
 
