@@ -22,6 +22,7 @@ REASONING_SCORE_MAP = {
     "bleu": "ids_with_bleu",
     "rouge": "ids_with_rouge",
     "meteor": "ids_with_meteor",
+    "parts_attn_on_target": "ids_with_attn_on_target",
 }
 
 
