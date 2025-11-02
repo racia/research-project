@@ -8,12 +8,14 @@ import re
 from typing import Sized
 import warnings
 
+import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
-from matplotlib.ticker import MultipleLocator, PercentFormatter
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from matplotlib import cm
 from matplotlib.colors import ListedColormap
+from matplotlib.ticker import MultipleLocator, PercentFormatter
 
 from evaluation.Metrics import Accuracy, Metric
 from evaluation.utils import CASES_2_LABELS, CASES_TO_SIMPLE_ANS
@@ -86,11 +88,11 @@ class Plotter:
             "ans_incorr_reas_incorr": "#BEAFAA",  # light brown (190, 175, 170)
         }
         self.case_color_map = {  # with green and red as a basis?
-            "ans_corr": "#FF6F1B",
-            "ans_incorr": "#FFAF6E",
+            "ans_corr": "Greens",
+            "ans_incorr": "Reds",
+            "ans_null": "Greys",
             "reas_corr": "#196EFF",
             "reas_incorr": "#6EAFFF",
-            "ans_null": "#6E6E6E",
             "reas_null": "#6E6E6E",
             "ans_null_reas_null": "#6E6E6E",  # pure gray (110, 110, 110)
             "ans_corr_reas_null": "#6E6E96",  # grayish purple (110, 110, 150)
@@ -119,8 +121,8 @@ class Plotter:
 
         :param x_label: label for the x-axis, i.e. the data for testing
         :param y_label: label for the y-axis, i.e. the type of data
-        :param plot_name_add: addition to the plot name
         :param file_name: name of the file without the path and extension
+        :param plot_name_add: addition to the plot name
 
         :return: None
         """
@@ -147,11 +149,11 @@ class Plotter:
         y_label: str,
         max_x_len: int,
         plot_name_add: list[str],
-        number_of_prompts: int,
+        num_of_data_arrays: int,
         displ_percentage: bool = False,
         metr_types: int = 1,
         step: int | float = None,
-        min_x_len: int = 0, 
+        min_x_len: int = 0,
         legend_title: str = None,
     ) -> None:
         """
@@ -161,7 +163,7 @@ class Plotter:
         :param y_label: label for the y-axis
         :param max_x_len: maximum length of the x-axis
         :param plot_name_add: addition to the plot name
-        :param number_of_prompts: number of prompts to plot, if more than 6,
+        :param num_of_data_arrays: number of arrays to plot, if more than 6,
                                   the legend is placed outside the plot
         :param displ_percentage: whether to display the y-axis as percentage
         :param metr_types: number of metrics to plot, if more than 6,
@@ -178,33 +180,35 @@ class Plotter:
                 plt.xticks(np.arange(0, max_x_len + 0.1, step))
             elif step == 0:
                 pass
-            elif step < 0: # negative step
+            elif step < 0:  # negative step
                 raise ValueError(f"Step size must be non-negative, got <step={step}>")
         except TypeError:
             warnings.warn(f"No step size provided, defaulting to automatic ticks.")
 
         plt.xlabel(x_label)
 
-        if y_label.lower() in ["accurac"]:
-            y_ticks = np.arange(0, 1.1, 0.1)
+        y_ticks = np.arange(0, 1.1, 0.1)
+        if "accurac" in y_label.lower():
+            # plt.ylim(bottom=0, top=1.1)
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
             y_ticks = np.arange(0, 0.09, 0.01)
             plt.ylim(bottom=0, top=0.1)
         elif "reasoning" in y_label.lower():
-            y_ticks = np.arange(0, 1.1, 0.1)
+            # y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1)
         else:
-            y_ticks = np.arange(0, 1.1, 0.1)
+            # y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1.01)
-            
+
+        plt.yticks(y_ticks)
         type_of_data = " ".join([part.capitalize() for part in y_label.split(" ")])
         plt.ylabel(type_of_data)
 
         plt.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
 
         title = f"{type_of_data} per {x_label}"
-        if number_of_prompts > 1:
+        if num_of_data_arrays > 1:
             title += " and prompt"
         elif metr_types > 1:
             title += " and metric"
@@ -218,13 +222,12 @@ class Plotter:
                 PercentFormatter(1)
             )  # 1 = scale of data (data range)
 
-        if number_of_prompts > 6 or metr_types > 6 or "attributes" in y_label.lower():
+        if num_of_data_arrays > 6 or metr_types > 6 or "attributes" in y_label.lower():
             plt.legend(
                 loc="center left", bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True, title=legend_title
             )
         else:
             plt.legend(bbox_to_anchor=(1.1, 1.05), title=legend_title)
-
 
     def correlation_map(
         self,
@@ -347,7 +350,12 @@ class Plotter:
         plt.plot(range(1, len(acc_per_task) + 1), acc_per_task.all, color=colors[0])
 
         self._plot_general_details(
-            x_label, y_label, len(acc_per_task), plot_name_add, step=1
+            x_label,
+            y_label,
+            len(acc_per_task),
+            plot_name_add,
+            num_of_data_arrays=1,
+            step=1,
         )
         self._save_plot(x_label, y_label, plot_name_add, file_name)
 
@@ -373,10 +381,10 @@ class Plotter:
         plt.figure(figsize=(15, 5))
         colors = self.cmap(np.linspace(0, 1, len(acc_per_prompt_task)))
 
-        number_of_prompts = 0
+        num_of_data_arrays = 0
         max_x_len = 0
         for (prompt, acc), color in zip(acc_per_prompt_task.items(), colors):
-            number_of_prompts += 1
+            num_of_data_arrays += 1
             if len(acc.all) > max_x_len:
                 max_x_len = len(acc.all)
             x_data, y_data = range(1, len(acc.all) + 1), acc.all
@@ -401,7 +409,7 @@ class Plotter:
             y_label,
             max_x_len=max_x_len,
             plot_name_add=plot_name_add,
-            number_of_prompts=number_of_prompts,
+            num_of_data_arrays=num_of_data_arrays,
             step=1,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
@@ -415,7 +423,7 @@ class Plotter:
         plot_name_add: list[str] = None,
     ) -> None:
         plt.figure(figsize=(15, 5))
-        number_of_prompts = 0
+        num_of_data_arrays = 0
         max_x_len = 0
 
         means = [
@@ -432,7 +440,7 @@ class Plotter:
         colors = self.cmap(np.linspace(0, 1, len(labels)))
 
         for prompt, mean, std, color in zip(labels, means, stds, colors):
-            number_of_prompts += 1
+            num_of_data_arrays += 1
             if len(mean) > max_x_len:
                 max_x_len = len(mean)
 
@@ -458,7 +466,7 @@ class Plotter:
             y_label,
             max_x_len=max_x_len,
             plot_name_add=plot_name_add,
-            number_of_prompts=number_of_prompts,
+            num_of_data_arrays=num_of_data_arrays,
             step=1,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
@@ -487,29 +495,31 @@ class Plotter:
         :param include_soft: whether to include soft metrics in the plot
         :return: None
         """
-
         plt.figure(figsize=(15, 5))
         colors = self.cmap(np.linspace(0, 1, len(x_data)), alpha=0.7)
 
-        number_of_prompts = 0
+        num_of_data_arrays = 0
         max_x_len = 1
         metr_types = 0
 
-        x_data = {k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()}
+        x_data = {
+            k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()
+        }
+        min_x_len = 0
 
         for (metr_type, metr), color in zip(x_data.items(), colors):
-            # number_of_prompts += 1
+            num_of_data_arrays += 1
             metr_types += 1
             # This covers both cases: Metric (i.e. length of sentences) and Accuracy
             if max(metr.all) > max_x_len:
                 max_x_len = max(metr.all)  # Case sample_part_lenghts: Set to max value
-                step_size = 5 if max_x_len > 30 else 1 
-            min_x_len = min(metr.all) if min(metr.all) > 2 else 0
+                # step_size = 5 if max_x_len > 30 else 1
+            min_x_len = min(metr.all) if min(metr.all) > 2 else min_x_len
             if len(metr) != len(y_data):
                 raise ValueError(
                     f"x and y must have the same first dimension, but have shapes {len(metr)} and {len(y_data)}"
                 )
-            
+
             if not y_data:
                 raise ValueError("y_data is empty")
 
@@ -529,7 +539,7 @@ class Plotter:
             y_label,
             max_x_len,
             plot_name_add,
-            number_of_prompts=number_of_prompts,
+            num_of_data_arrays=num_of_data_arrays,
             metr_types=metr_types,
             step=0.1 if max_x_len == 1 else step_size,
             min_x_len=min_x_len,
@@ -540,6 +550,18 @@ class Plotter:
         self._save_plot(y_label, x_label, file_name, plot_name_add)
         plt.close()
 
+    def get_color_or_map(self, c: str):
+        """
+        Get the color or colormap for a given case.
+        :param c: case string
+        """
+        color = self.case_color_map[c]
+        if color.startswith("#"):
+            return color
+        else:
+            cmap = cm.get_cmap(color)
+            return cmap
+
     def plot_answer_type_per_part(
         self,
         error_cases_ids: dict[str, str],
@@ -547,10 +569,12 @@ class Plotter:
         reasoning_scores: dict[tuple, float] = None,
     ) -> None:
         """
-        Plot a map of answer types (and optionally reasoning scores) per sample and part of each task.
+        Plot a map of answer types (and optionally reasoning scores) per sample
+        and part of each task.
 
         - Default: color encodes combined answer+reasoning type.
-        - If reasoning_scores provided: color encodes only answer, and reasoning score is written as text.
+        - If reasoning_scores provided: color encodes only answer, and reasoning score is
+        written as text.
         """
         # === Setup ===
         use_reasoning_scores = reasoning_scores is not None
@@ -558,12 +582,14 @@ class Plotter:
         # Determine which answer categories to use
         if use_reasoning_scores:
             answer_types = ["ans_corr", "ans_incorr", "ans_null"]
+            max_score = max(reasoning_scores.values()) if reasoning_scores else 1.0
+            min_score = min(reasoning_scores.values()) if reasoning_scores else 0.0
         else:
             # exclude simple answer/reasoning types
             answer_types = [
                 key for key in self.case_color_map.keys() if key.count("_") > 1
             ]
-        colors = [self.case_color_map[c] for c in answer_types]
+        colors = [self.get_color_or_map(c) for c in answer_types]
 
         # Parse case IDs
         ids_cases = {}  # dict[tuple[int, int, int], str]
@@ -596,28 +622,77 @@ class Plotter:
             ax = axes[i // n_cols][i % n_cols]
 
             # Collect unique samples and parts
-            samples = sorted({s for t, s, _ in ids_cases if t == task})
+            # resert order: samples descending, parts ascending
+            samples = sorted({s for t, s, _ in ids_cases if t == task}, reverse=True)
             parts = sorted({p for t, _, p in ids_cases if t == task})
 
             if not samples:
                 ax.set_visible(False)
                 continue
 
-            # Build heatmap
-            heatmap = np.zeros((len(samples), len(parts)), dtype=int)
-            mask = np.zeros_like(heatmap, dtype=bool)
+            # Build either an integer heatmap or an RGBA image depending on mode
+            if use_reasoning_scores:
+                rgba_img = np.ones(
+                    (len(samples), len(parts), 4), dtype=float
+                )  # default white
+                mask = np.zeros((len(samples), len(parts)), dtype=bool)
+            else:
+                heatmap = np.zeros((len(samples), len(parts)), dtype=int)
+                mask = np.zeros_like(heatmap, dtype=bool)
 
             for s_idx, s in enumerate(samples):
                 for p_idx, p in enumerate(parts):
                     idx = (task, s, p)
                     if idx not in ids_cases:
                         mask[s_idx, p_idx] = True
+                        if use_reasoning_scores:
+                            rgba_img[s_idx, p_idx] = (1, 1, 1, 1)
                     else:
                         case = ids_cases[idx]
-                        heatmap[s_idx, p_idx] = answer_types.index(case)
+                        if use_reasoning_scores and idx in reasoning_scores:
+                            score = reasoning_scores[idx]
+                            # Normalize score to [0, 1]
+                            norm_score = (
+                                (score - min_score) / (max_score - min_score)
+                                if max_score > min_score
+                                else 0
+                            )
+                            colormap = colors[answer_types.index(case)]
+                            # Resolve colormap object
+                            if isinstance(colormap, str) and colormap.startswith("#"):
+                                rgba = mcolors.to_rgba(colormap)
+                            else:
+                                cmap_obj = (
+                                    colormap
+                                    if hasattr(colormap, "__call__")
+                                    else cm.get_cmap(colormap)
+                                )
+                                # Avoid sampling the absolute minimal value (pure white) for colormaps
+                                # that start from white (e.g. 'Greys'). Reserve pure white for absent values.
+                                cmap_name = getattr(cmap_obj, "name", "").lower()
+                                # min_sample = 0.15 if "grey" in cmap_name else 0.0
+                                min_sample = 0.15
+                                sample = min_sample + norm_score * (1.0 - min_sample)
+                                rgba = cmap_obj(sample)
+                            rgba_img[s_idx, p_idx] = rgba
+                        else:
+                            # store integer index for categorical mapping
+                            heatmap[s_idx, p_idx] = answer_types.index(case)
 
-            ax.imshow(heatmap, cmap=ListedColormap(colors), aspect="auto")
-
+            # Display appropriately
+            if use_reasoning_scores:
+                ax.imshow(rgba_img, aspect="auto")
+            else:
+                # build a list of displayable colors for ListedColormap
+                cmap_colors = []
+                for col in colors:
+                    if isinstance(col, str) and col.startswith("#"):
+                        cmap_colors.append(col)
+                    elif hasattr(col, "__call__"):
+                        cmap_colors.append(col(0.5))
+                    else:
+                        cmap_colors.append(col)
+                ax.imshow(heatmap, cmap=ListedColormap(cmap_colors), aspect="auto")
             # Draw grid and labels
             plot_task_map_grid(plt, ax, task, samples, parts, mask)
 
@@ -642,6 +717,28 @@ class Plotter:
 
         # === Legend ===
         legend_labels = [CASES_2_LABELS[a].replace(", ", ",\n") for a in answer_types]
+        # Resolve any colormap objects/names to a concrete RGBA color for legend markers
+        legend_colors = []
+        for col in colors:
+            if isinstance(col, str):
+                if col.startswith("#"):
+                    legend_colors.append(col)
+                else:
+                    # treat as named color or colormap name
+                    try:
+                        legend_colors.append(mcolors.to_rgba(col))
+                    except Exception:
+                        legend_colors.append(cm.get_cmap(col)(0.5))
+            elif callable(col):
+                # colormap object or function-like; sample at midpoint
+                legend_colors.append(col(0.5))
+            else:
+                # fallback: try to convert to RGBA
+                try:
+                    legend_colors.append(mcolors.to_rgba(col))
+                except Exception:
+                    legend_colors.append((0.5, 0.5, 0.5, 1.0))
+
         handles = [
             plt.Line2D(
                 [0],
@@ -649,10 +746,10 @@ class Plotter:
                 marker="s",
                 color="w",
                 label=label,
-                markerfacecolor=color,
+                markerfacecolor=lc,
                 markersize=10,
             )
-            for label, color in zip(legend_labels, colors)
+            for label, lc in zip(legend_labels, legend_colors)
         ]
         fig.legend(
             handles, legend_labels, loc="center left", bbox_to_anchor=(1.02, 0.5)
@@ -726,7 +823,8 @@ class Plotter:
         im_4, ax_4 = None, None
         for i, task in enumerate(tasks):
             ax = axes[i // n_cols][i % n_cols]
-            samples = sorted(task_samples[task])
+            # resert order: samples descending, parts ascending
+            samples = sorted(task_samples[task], reverse=True)
             parts = sorted(task_parts[task])
             heatmap = np.zeros((len(samples), len(parts)), dtype=int)
             mask = np.zeros_like(heatmap, dtype=bool)
@@ -900,7 +998,7 @@ class Plotter:
         y_label: str = "Y",
         displ_percentage: bool = False,
         file_name: str = None,
-        plot_name_add: str = None,
+        plot_name_add: list[str] = None,
         level: str = None,
         id: int = 1,
         path_add: str = None,
@@ -911,7 +1009,7 @@ class Plotter:
         Values for each category are obtained from y_data values, e.g. parts_answer_correct [1,0,1,1,...],
         which are finally summed/averaged to display per label.
         :param x_data: The x data to plot as bar categories, i.e. seen_context_lengths
-        :param y_data: The y_data of labels, corresponding to categories from x_data, i.e. parts_answer_correct 
+        :param y_data: The y_data of labels, corresponding to categories from x_data, i.e. parts_answer_correct
         :param x_label: The label for x-axis
         :param y_label: The label for y-axis
         :param displ_percentage: whether to display the y-axis as percentage
@@ -928,51 +1026,66 @@ class Plotter:
                 df_data.update(v)
             df_data[k] = v
 
-        if level == "split": # bigger plots for splits
+        if level == "split":  # bigger plots for splits
             plt.figure(figsize=(12, 8))
         else:
             plt.figure(figsize=(10, 5))
 
         # fig, ax = plt.subplots()
-        df = pd.DataFrame(list(zip(*x_data.values(), *df_data.values())), columns=[x_label]+list(df_data.keys()))
+
+        df = pd.DataFrame(
+            list(zip(*x_data.values(), *df_data.values())),
+            columns=[x_label] + list(df_data.keys()),
+        )
         if "correct" in y_label.lower(): # e.g. parts_answer_correct
             # Add column for ratio of correct answers per category and label
             y_col_mean = f"{df.columns[1]}_Ratio"
             df[y_col_mean] = df.groupby([df.columns[0],df.columns[2]])[df.columns[1]].transform("mean")
         else: # e.g. seen_context_lengths
             df[x_label] = df[x_label].round()
-        for col_name in [f"parts_{feat}" for feat in ["attn_on_target", "max_supp_attn"] if f"parts_{feat}" in df.columns]:
-            df[col_name] = df[col_name].round(2)  # Ensure numeric values are rounded if needed
+        parts = [
+            f"parts_{feat}" for feat in ("attn_on_target", "max_supp_attn")
+            if f"parts_{feat}" in df.columns
+        ]
+        for col_name in parts:
+            # Ensure numeric values are rounded if needed
+            df[col_name] = df[col_name].round(2)
         label_column = df.columns[2] if len(df.columns)>2 else None
         # assert type(df[y_data.keys()[0]][0]) in [int, float], "y_data values must be numeric to plot histogram"
-        sns.barplot(data=df, x=x_label, y=y_col_mean if y_col_mean else df.columns[1], hue=label_column)
+        sns.barplot(
+            data=df,
+            x=x_label,
+            y=y_col_mean if y_col_mean else df.columns[1],
+            hue=label_column
+        )
 
         self._plot_general_details(
             x_label=x_label,
             y_label=y_label,
             max_x_len=len(x_data),
-            number_of_prompts=1,
+            num_of_data_arrays=1,
             displ_percentage=displ_percentage,
             plot_name_add=plot_name_add,
             legend_title=label_column
             )
 
         if path_add:
-            file_name = path_add / file_name.lower()
-            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        self._save_plot(y_label=y_label, x_label=x_label, file_name=file_name)
+            (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+        self._save_plot(
+            y_label=y_label,
+            x_label=x_label,
+            file_name=f"{path_add}/{file_name.lower()}")
         plt.close()
-
 
     def plot_corr_boxplot(
         self,
         x_data: dict[str | Prompt, Accuracy | Metric],
-        y_data: dict[str: list[float]|np.array] = None,
+        y_data: dict[str : list[float] | np.array] = None,
         x_label: str = "X",
         y_label: str = "Y",
         displ_percentage: bool = False,
         file_name: str = None,
-        plot_name_add: str = None,
+        plot_name_add: list[str] = None,
         path_add: str = None,
         level: str = None,
         id: int = 1,
@@ -994,9 +1107,9 @@ class Plotter:
         :param id: int id of the level
         :return: None
         """
-        if level == "split": # bigger plots for splits
+        if level == "split":  # bigger plots for splits
             plt.figure(figsize=(12, 8))
-        else: # Automatically handled by seaborn
+        else:  # Automatically handled by seaborn
             plt.figure(figsize=(10, 5))
 
         df_data = {}
@@ -1006,12 +1119,24 @@ class Plotter:
             else:
                 df_data[y_keys] = y_vals
 
-        df = pd.DataFrame(list(zip(*x_data.values(), *df_data.values())), columns=[x_label]+list(df_data.keys()))
+        df = pd.DataFrame(
+            list(zip(*x_data.values(), *df_data.values())),
+            columns=[x_label] + list(df_data.keys()),
+        )
 
         def _feat_mapping(x: str) -> str:
             # Map feature indices to feature names
-            mapping = dict(map(lambda x: (x[0], x[1]), zip(range(5), y_data["parts_features"].keys())))
-            feat_str = [mapping.get(i, "False") for i, part in enumerate(x.split("-")) if part in ["True", "1"]]
+            mapping = dict(
+                map(
+                    lambda x: (x[0], x[1]),
+                    zip(range(5), y_data["parts_features"].keys())
+                )
+            )
+            feat_str = [
+                mapping.get(i, "False")
+                for i, part in enumerate(x.split("-"))
+                if part in ["True", "1"]
+            ]
             feat_str = [f.rstrip("_before") for f in feat_str]
             return "-".join(feat_str) if feat_str else None
 
@@ -1020,31 +1145,39 @@ class Plotter:
             df["features_combined"] = ""
             for col in y_data["parts_features"].keys():
                 df["features_combined"] += df[col].astype(str) + "-"
-            df["features_present"] = df["features_combined"].apply(lambda x: _feat_mapping(x))
+            df["features_present"] = df["features_combined"].apply(
+                lambda x: _feat_mapping(x)
+            )
             df["features_present"] = df["features_present"].fillna("No Features")
-        label_column = df.columns[-1] if "features_combined" in df.columns else df.columns[2]
+        label_column = (
+            df.columns[-1] if "features_combined" in df.columns else df.columns[2]
+        )
         df[x_label] = df[x_label].round()
-        ax = sns.boxplot(data=df, x=x_label, y=df.columns[1], hue=label_column if len(df.columns)>2 else None)
+        ax = sns.boxplot(
+            data=df,
+            x=x_label,
+            y=df.columns[1],
+            hue=label_column if len(df.columns) > 2 else None
+        )
         # Add vertical lines separating x categories
         ax.xaxis.set_minor_locator(MultipleLocator(0.5))
-        ax.xaxis.grid(True, which='minor', color='black', lw=2)
+        ax.xaxis.grid(True, which="minor", color="black", lw=2)
 
         self._plot_general_details(
             x_label=x_label,
             y_label=y_label,
             max_x_len=len(x_data),
-            number_of_prompts=1,
+            num_of_data_arrays=1,
             displ_percentage=displ_percentage,
             plot_name_add=plot_name_add,
             legend_title=label_column,
-            )
+        )
 
         if path_add:
-            file_name = path_add / file_name.lower()
             Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        self._save_plot(y_label=y_label, x_label=x_label, file_name=file_name)
+        self._save_plot(
+            y_label=y_label,
+            x_label=x_label,
+            file_name=f"{path_add}/{file_name.lower()}",
+        )
         plt.close()
-
-
-    
-        
