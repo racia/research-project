@@ -127,19 +127,20 @@ class MetricEvaluator(Evaluator):
         self.parts_answer_correct = Metric(
             "Parts Answer Correct", "part_answer_correct"
         )
-        self.parts_max_supp_attn = Metric(
-            "Parts Max Supp Attn", "part_max_supp_attn"
-        )
+        self.parts_max_supp_attn = Metric("Parts Max Supp Attn", "part_max_supp_attn")
         self.parts_attn_on_target = Metric(
             "Parts Attn on Target", "part_attn_on_target"
         )
         self.ids_with_bleu = defaultdict(dict)
         self.ids_with_rouge = defaultdict(dict)
         self.ids_with_meteor = defaultdict(dict)
+        self.ids_with_attn_on_target = defaultdict(dict)
 
     def update(self, smaller_evaluator: Evaluator) -> None:
         """
         Update the evaluator with the information from a lower-level evaluator.
+        NB: calculating std is not necessary and will break the logic,
+            since it's done implicitly here.
 
         :param smaller_evaluator: the lower-level evaluator, e.g. a sample
         """
@@ -159,25 +160,6 @@ class MetricEvaluator(Evaluator):
         self.bleu_std.add(smaller_evaluator.bleu.get_std())
         self.rouge_std.add(smaller_evaluator.rouge.get_std())
         self.meteor_std.add(smaller_evaluator.meteor.get_std())
-
-    def calculate_std(self):
-        """
-        Calculate the standard deviations for the metric.
-        """
-        exact_match_std = self.exact_match_accuracy.get_std()
-        self.exact_match_std.add(exact_match_std)
-        soft_match_std = self.soft_match_accuracy.get_std()
-        self.soft_match_std.add(soft_match_std)
-        max_supp_attn_std = self.max_supp_attn.get_std()
-        self.max_supp_attn_std.add(max_supp_attn_std)
-        attn_on_target_std = self.attn_on_target.get_std()
-        self.attn_on_target_std.add(attn_on_target_std)
-        bleu_std = self.bleu.get_std()
-        self.bleu_std.add(bleu_std)
-        rouge_std = self.rouge.get_std()
-        self.rouge_std.add(rouge_std)
-        meteor_std = self.meteor.get_std()
-        self.meteor_std.add(meteor_std)
 
     def get_metrics(
         self, as_lists: bool = False
@@ -389,14 +371,11 @@ class AnswerEvaluator(MetricEvaluator):
             self.golden_answers, self.pred_answers
         )
         self.exact_match_accuracy.add(exact_match_acc)
-        self.exact_match_std.add(self.exact_match_accuracy.get_std())
 
         soft_match_acc = self.stats.soft_match_accuracy_score(
             self.golden_answers, self.pred_answers
         )
         self.soft_match_accuracy.add(soft_match_acc)
-        self.soft_match_std.add(self.soft_match_accuracy.get_std())
-
         return exact_match_acc, soft_match_acc
 
     def calculate_attention(self) -> tuple[float, ...]:
@@ -418,8 +397,6 @@ class AnswerEvaluator(MetricEvaluator):
                 f"{type(self.max_supp_attn.all)} ({self.max_supp_attn.all}) "
                 f"and {type(self.attn_on_target.all)} ({self.attn_on_target.all})"
             )
-        self.max_supp_attn_std.add(self.max_supp_attn.get_std())
-        self.attn_on_target_std.add(self.attn_on_target.get_std())
         return self.max_supp_attn.get_mean(), self.attn_on_target.get_mean()
 
     def calculate_bleu(self) -> float:
@@ -445,7 +422,6 @@ class AnswerEvaluator(MetricEvaluator):
             #  'translation_length': 90,
             #  'reference_length': 47}
             self.bleu.add(bleu_score["bleu"])
-        self.bleu_std.add(self.bleu.get_std())
         return self.bleu.get_mean()
 
     def calculate_rouge(self) -> float:
@@ -472,7 +448,6 @@ class AnswerEvaluator(MetricEvaluator):
             #  'rougeL': np.float64(0.2564102564102564),
             #  'rougeLsum': np.float64(0.2564102564102564)}
             self.rouge.add(float(rouge_score["rougeL"]))
-        self.rouge_std.add(self.rouge.get_std())
         return self.rouge.get_mean()
 
     def calculate_meteor(self):
@@ -495,5 +470,4 @@ class AnswerEvaluator(MetricEvaluator):
             # Example of return
             # {'meteor': np.float64(0.4749067889809824)}
             self.meteor.add(float(meteor_score["meteor"]))
-        self.meteor_std.add(self.meteor.get_std())
         return self.meteor.get_mean()
