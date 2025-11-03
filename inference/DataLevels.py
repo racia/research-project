@@ -994,7 +994,6 @@ class Split:
                 for s_eval, t_eval in zip(self.evaluators, task.evaluators):
                     s_eval.parts_answer_correct.add(t_eval.parts_answer_correct.all)
                     # TODO: fix the name
-                    print(len(s_eval.parts_answer_correct.all), len(t_eval.parts_answer_correct.all))
                     s_eval.parts_attn_on_target.add(t_eval.parts_attn_on_target.all)
                     s_eval.parts_max_supp_attn.add(t_eval.parts_max_supp_attn.all)
 

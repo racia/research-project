@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from itertools import zip_longest
 from pathlib import Path
 
 import re
@@ -16,7 +17,7 @@ import seaborn as sns
 from matplotlib.colors import ListedColormap
 
 from evaluation.Metrics import Accuracy, Metric
-from evaluation.utils import CASES_2_LABELS, CASES_TO_SIMPLE_ANS
+from evaluation.utils import CASES_2_LABELS, CASES_TO_SIMPLE_ANS, FLOAT_2_STR
 from inference.Prompt import Prompt
 from interpretability.utils import InterpretabilityResult
 from plots.utils import (
@@ -196,8 +197,9 @@ class Plotter:
             plt.ylim(bottom=0, top=1)
         else:
             y_ticks = np.arange(0, 1.1, 0.1)
-            plt.ylim(bottom=0, top=1.01)
-            
+            plt.ylim(bottom=0, top=1.1)
+        
+        plt.yticks = y_ticks
         type_of_data = " ".join([part.capitalize() for part in y_label.split(" ")])
         plt.ylabel(type_of_data)
 
@@ -223,7 +225,7 @@ class Plotter:
                 loc="center left", bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True, title=legend_title
             )
         else:
-            plt.legend(bbox_to_anchor=(1.1, 1.05), title=legend_title)
+            plt.legend(loc="upper left", bbox_to_anchor=(1, 1), title=legend_title)
 
 
     def correlation_map(
@@ -472,6 +474,7 @@ class Plotter:
         file_name=None,
         plot_name_add: list[str] = None,
         path_add: str = None,
+        level: str = None,
         include_soft: bool = True,
     ) -> None:
         """
@@ -484,20 +487,24 @@ class Plotter:
         :param file_name: name of the plot
         :param plot_name_add: addition to the plot name
         :param path_add: addition to the path where the plot is saved
+        :param level: level of the data, e.g. "task", "sample", "part"
         :param include_soft: whether to include soft metrics in the plot
         :return: None
         """
-
-        plt.figure(figsize=(15, 5))
-        colors = self.cmap(np.linspace(0, 1, len(x_data)), alpha=0.7)
+        if level == "split":
+            plt.figure(figsize=(15, 5))
+        else:
+            plt.figure(figsize=(10, 5))
 
         number_of_prompts = 0
         max_x_len = 1
         metr_types = 0
 
-        x_data = {k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()}
+        x_data_points = {k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()}
+        x_err = [x_data_points.pop(k) for k in x_data if "std" in k.lower() and k in x_data_points]
+        colors = self.cmap(np.linspace(0, 1, len(x_data_points)), alpha=0.7)
 
-        for (metr_type, metr), color in zip(x_data.items(), colors):
+        for (metr_type, metr), std_dev, color in zip_longest(x_data_points.items(), x_err, colors):
             # number_of_prompts += 1
             metr_types += 1
             # This covers both cases: Metric (i.e. length of sentences) and Accuracy
@@ -513,14 +520,20 @@ class Plotter:
             if not y_data:
                 raise ValueError("y_data is empty")
 
-            plt.scatter(
+            plt.errorbar(
                 metr,
                 y=(
                     [y.get_mean() for y in y_data]
                     if isinstance(y_data[0], Metric)
                     else y_data
                 ),
-                label=metr_type if isinstance(metr_type, str) else metr_type.name,
+                xerr=std_dev,
+                fmt='o', 
+                capsize=4,
+                label="{}{}".format(
+                    " ".join(metr_type.split("_")).title(),
+                    "\nwith Std Dev" if x_err else ""
+                    ) if isinstance(metr_type, str) else metr_type.name,
                 color=color,
                 zorder=3,
             )
@@ -930,31 +943,45 @@ class Plotter:
 
         if level == "split": # bigger plots for splits
             plt.figure(figsize=(12, 8))
+            width = 0.6
         else:
             plt.figure(figsize=(10, 5))
+            width = 0.35
 
-        # fig, ax = plt.subplots()
+        fig, ax = plt.subplots()
         df = pd.DataFrame(list(zip(*x_data.values(), *df_data.values())), columns=[x_label]+list(df_data.keys()))
         if "correct" in y_label.lower(): # e.g. parts_answer_correct
+            # Store sum of answers correct per seen context length
+            parts_per_class = df.groupby([df.columns[0]])[df.columns[1]].transform("count")
             # Add column for ratio of correct answers per category and label
-            y_col_mean = f"{df.columns[1]}_Ratio"
-            df[y_col_mean] = df.groupby([df.columns[0],df.columns[2]])[df.columns[1]].transform("mean")
-        else: # e.g. seen_context_lengths
+            correct_per_label = df.groupby([df.columns[0],df.columns[2]])[df.columns[1]].transform("sum")
+            y_col_ratio = f"{df.columns[1]}_Ratio"
+            df[y_col_ratio] = correct_per_label / parts_per_class
+            if "answer_in_self" in df.columns[2]:
+                df["parts_answer_in_self"] = df["parts_answer_in_self"].apply(lambda x: FLOAT_2_STR[x].capitalize())
+        else: # e.g. attn_on_target
             df[x_label] = df[x_label].round()
         for col_name in [f"parts_{feat}" for feat in ["attn_on_target", "max_supp_attn"] if f"parts_{feat}" in df.columns]:
             df[col_name] = df[col_name].round(2)  # Ensure numeric values are rounded if needed
-        label_column = df.columns[2] if len(df.columns)>2 else None
-        # assert type(df[y_data.keys()[0]][0]) in [int, float], "y_data values must be numeric to plot histogram"
-        sns.barplot(data=df, x=x_label, y=y_col_mean if y_col_mean else df.columns[1], hue=label_column)
+        label_column = " ".join(df.columns[2].split("_")).title() if len(df.columns)>2 else None
+        max_x_len = max(df[x_label])
+        step_size = 5 if max_x_len > 30 else 1
+        pivot_ratios = df.pivot_table(values=y_col_ratio, index=x_label, columns=df.columns[2])
+
+        bottom = np.zeros(len(pivot_ratios.index))
+        for col in pivot_ratios:
+            ax.bar(pivot_ratios.index, pivot_ratios[col], width=width, label=col, bottom=bottom)
+            bottom += pivot_ratios[col]
 
         self._plot_general_details(
             x_label=x_label,
             y_label=y_label,
-            max_x_len=len(x_data),
+            max_x_len=max_x_len,
             number_of_prompts=1,
             displ_percentage=displ_percentage,
             plot_name_add=plot_name_add,
-            legend_title=label_column
+            legend_title=label_column,
+            step=step_size,
             )
 
         if path_add:
@@ -975,7 +1002,6 @@ class Plotter:
         plot_name_add: str = None,
         path_add: str = None,
         level: str = None,
-        id: int = 1,
     ) -> None:
         """
         Plot the correlation between two variables as boxplot, i.e. parts attributes per part lengths.
@@ -991,12 +1017,11 @@ class Plotter:
         :param plot_name_add: addition to the plot name
         :param path_add: addition to the path where the plot is saved
         :param level: level of the data, e.g. "task", "sample", "part"
-        :param id: int id of the level
         :return: None
         """
         if level == "split": # bigger plots for splits
             plt.figure(figsize=(12, 8))
-        else: # Automatically handled by seaborn
+        else:
             plt.figure(figsize=(10, 5))
 
         df_data = {}
@@ -1012,7 +1037,7 @@ class Plotter:
             # Map feature indices to feature names
             mapping = dict(map(lambda x: (x[0], x[1]), zip(range(5), y_data["parts_features"].keys())))
             feat_str = [mapping.get(i, "False") for i, part in enumerate(x.split("-")) if part in ["True", "1"]]
-            feat_str = [f.rstrip("_before") for f in feat_str]
+            feat_str = [" ".join(f.rstrip("_before").split("_")).join('""') for f in feat_str]
             return "-".join(feat_str) if feat_str else None
 
         # Combine parts features to single column
@@ -1020,14 +1045,17 @@ class Plotter:
             df["features_combined"] = ""
             for col in y_data["parts_features"].keys():
                 df["features_combined"] += df[col].astype(str) + "-"
-            df["features_present"] = df["features_combined"].apply(lambda x: _feat_mapping(x))
-            df["features_present"] = df["features_present"].fillna("No Features")
+            df["Features present"] = df["features_combined"].apply(lambda x: _feat_mapping(x))
+            df["Features present"] = df["Features present"].fillna("No Features")
+        elif "correct" in df.columns[2]:
+            df["parts_answer_correct"] = df["parts_answer_correct"].map({1: "True", 0: "False"})
         label_column = df.columns[-1] if "features_combined" in df.columns else df.columns[2]
         df[x_label] = df[x_label].round()
+        
         ax = sns.boxplot(data=df, x=x_label, y=df.columns[1], hue=label_column if len(df.columns)>2 else None)
         # Add vertical lines separating x categories
         ax.xaxis.set_minor_locator(MultipleLocator(0.5))
-        ax.xaxis.grid(True, which='minor', color='black', lw=2)
+        ax.xaxis.grid(True, which='minor', color='black', lw=1, ls=":")
 
         self._plot_general_details(
             x_label=x_label,
@@ -1036,7 +1064,7 @@ class Plotter:
             number_of_prompts=1,
             displ_percentage=displ_percentage,
             plot_name_add=plot_name_add,
-            legend_title=label_column,
+            legend_title=" ".join(label_column.split("_")).title(),
             )
 
         if path_add:

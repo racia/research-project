@@ -236,6 +236,7 @@ def run(
                     file_name=f"attn_on_target.pdf",
                     plot_name_add=[f"Task-{task_id}"],
                     path_add=Path(version, f"Task-{task_id}"),
+                    level="task",
                 )
             # Attn on Target for Accuracy
             plotter.plot_correlation(
@@ -246,6 +247,7 @@ def run(
                 file_name=f"acc-attn_on_target.pdf",
                 plot_name_add=[f"Task-{task_id}"],
                 path_add=Path(version, f"Task-{task_id}"),
+                level="task",
                 include_soft=False,
                 )
             # Attn on Target for Target Distances by Answer Correct
@@ -376,6 +378,7 @@ def run(
                 file_name=f"acc-attn_on_target_{split.name}.pdf",
                 plot_name_add=[f"Split-{split.name}"],
                 path_add=Path(version, f"Split-{split.name}"),
+                level="split",
                 include_soft=False,
             )
 

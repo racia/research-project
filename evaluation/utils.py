@@ -55,6 +55,12 @@ CASES_TO_SIMPLE_REAS = {
     "ans_incorr_reas_incorr": "reas_incorr",
 }
 
+FLOAT_2_STR = {
+    1.0: "fully",
+    0.5: "partially",
+    0.0: "none",
+}
+
 
 def check_or_create_directory(path: str | Path) -> None:
     """
