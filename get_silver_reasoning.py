@@ -46,12 +46,15 @@ def main():
 
     # Load the prompt
     prompt = Prompt(
-        prompt_path=f"{home}/research-project/inference/prompts/skyline_reasoning.txt"
+        prompt_path=f"{home}/research-project/inference/prompts/skyline_reasoning.txt",
+        tokenizer=model.tokenizer,
     )
 
     # Process only tasks assigned to this GPU
     for task_id, task in sorted(valid_data.items()):
-        output_file = f"{home}/research-project/silver_reasoning_{split}_{task_id}.csv"
+        output_file = (
+            f"{home}/research-project/data/silver_reasoning_{split}_{task_id}.csv"
+        )
 
         if not os.path.exists(output_file):
             result_df = pd.DataFrame(
