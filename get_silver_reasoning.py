@@ -1,6 +1,7 @@
 import gc
 import os.path
 import re
+import warnings
 from pathlib import Path
 
 import pandas as pd
@@ -140,7 +141,25 @@ def process_sample(
                 num_beams=1,  # no beam search, reduce GPU memory usage
             )
 
-            encoded_output = outputs[0][inputs["input_ids"].size(1) :]
+            eot = model.tokenizer.convert_tokens_to_ids("<|eot_id|>")
+
+            # remove trailing spaces at the end of the output
+            while (
+                len(encoded_output) > 0
+                and model.tokenizer.decode([encoded_output[-1]]).isspace()
+            ):
+                encoded_output = encoded_output[:-1]
+
+            # remove eot token if it is at the end of the output
+            if len(encoded_output) > 0 and encoded_output[-1] == eot:
+                encoded_output = encoded_output[:-1]
+
+            if len(encoded_output) == 0:
+                warnings.warn(
+                    "DEBUG: The model output is empty after filtering the <|eot_id|> token. Using empty string as output."
+                )
+                encoded_output = []
+
         decoded_output = model.tokenizer.decode(encoded_output).strip()
 
         reasoning_pattern = re.compile(r"(?i)reasoning:[\s ]*(.+)")
