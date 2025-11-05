@@ -130,8 +130,7 @@ def process_sample(
         ).to("cuda")
 
         with autocast("cuda"):
-            # includes all the previous ids + the model output
-            outputs = model.generate(
+            outputs = model.model.generate(
                 **inputs,
                 max_new_tokens=model.max_new_tokens,
                 temperature=model.temperature,
@@ -159,9 +158,9 @@ def process_sample(
                     "task_id": task_id,
                     "sample_id": sample_id + 1,
                     "part_id": sample_part_idx + 1,
-                    "context": formatted_context,
-                    "question": formatted_questions,
-                    "golden_answer": formatted_answers,
+                    "context": sample_part.structured_context,
+                    "question": sample_part.structured_question,
+                    "golden_answer": sample_part.golden_answer,
                     "silver_reasoning": reasoning,
                 }
             ]
