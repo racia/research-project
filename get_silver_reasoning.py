@@ -4,6 +4,7 @@ import re
 from pathlib import Path
 
 import pandas as pd
+from torch import autocast
 
 from data.DataLoader import DataLoader
 from inference.Chat import Chat
@@ -122,7 +123,26 @@ def process_sample(
             question=sample_part.structured_question,
             answer=sample_part.golden_answer,
         )
-        decoded_output = model.call(formatted_prompt=formatted_prompt_str)
+
+        inputs = model.tokenizer(
+            formatted_prompt_str,
+            return_tensors="pt",
+        ).to("cuda")
+
+        with autocast("cuda"):
+            # includes all the previous ids + the model output
+            outputs = model.generate(
+                **inputs,
+                max_new_tokens=model.max_new_tokens,
+                temperature=model.temperature,
+                pad_token_id=model.tokenizer.eos_token_id,
+                do_sample=True if model.temperature > 0 else False,
+                use_cache=True,
+                num_beams=1,  # no beam search, reduce GPU memory usage
+            )
+
+            encoded_output = outputs[0][inputs["input_ids"].size(1) :]
+        decoded_output = model.tokenizer.decode(encoded_output).strip()
 
         reasoning_pattern = re.compile(r"(?i)reasoning:[\s ]*(.+)")
         reasoning_search = reasoning_pattern.search(decoded_output)
