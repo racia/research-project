@@ -56,6 +56,9 @@ def main():
             f"{home}/research-project/data/silver_reasoning_{split}_{task_id}.csv"
         )
 
+        print(f"Writing to {output_file}")
+        print(f"Processing Task {task_id}...")
+
         if not os.path.exists(output_file):
             result_df = pd.DataFrame(
                 columns=[
