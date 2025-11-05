@@ -141,6 +141,7 @@ def process_sample(
                 num_beams=1,  # no beam search, reduce GPU memory usage
             )
 
+            encoded_output = outputs[0][inputs["input_ids"].size(1) :]
             eot = model.tokenizer.convert_tokens_to_ids("<|eot_id|>")
 
             # remove trailing spaces at the end of the output
