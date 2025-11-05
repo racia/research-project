@@ -8,7 +8,6 @@ import pandas as pd
 from data.DataLoader import DataLoader
 from inference.Chat import Chat
 from inference.Prompt import Prompt
-from inference.utils import numerate_lines
 from settings.Model import Model
 
 home = Path.home()
@@ -107,21 +106,21 @@ def process_sample(
     for sample_part_idx, sample_part in enumerate(sample_parts):
         print(f"Sample Part: {sample_part}")
 
-        # Format prompt components
-        context = numerate_lines(sample_part["context"])
-        formatted_context = "\n".join(context)
-
-        questions = list(sample_part["question"].values())
-        formatted_questions = "\n".join(questions)
-
-        answers = [" ".join(ans) for ans in sample_part["answer"].values()]
-        formatted_answers = "\n".join(answers)
+        # # Format prompt components
+        # context = numerate_lines(sample_part["context"])
+        # formatted_context = "\n".join(context)
+        #
+        # questions = list(sample_part["question"].values())
+        # formatted_questions = "\n".join(questions)
+        #
+        # answers = [" ".join(ans) for ans in sample_part["answer"].values()]
+        # formatted_answers = "\n".join(answers)
 
         # Format the prompt
         formatted_prompt_str = prompt.text.format(
-            context=formatted_context,
-            question=formatted_questions,
-            answer=formatted_answers,
+            context=sample_part.structured_context,
+            question=sample_part.structured_question,
+            answer=sample_part.golden_answer,
         )
         decoded_output = model.call(formatted_prompt=formatted_prompt_str)
 
