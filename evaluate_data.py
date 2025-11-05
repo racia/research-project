@@ -258,13 +258,14 @@ def run(
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
                 include_soft=False,
+                label_add=[f"s{sample.sample_id}" for sample in task.samples],
             )
 
             # Attn on Target for Target Distances by Answer Correct
             plotter.plot_corr_boxplot(
                 x_data={
                     "parts_target_distances": task.parts_target_distances.all
-                },  # why is .all not needed here?
+                }, 
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -281,7 +282,7 @@ def run(
             plotter.plot_corr_boxplot(
                 x_data={
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
-                },  # why is .all not needed here?
+                }, 
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target,
                     "parts_features": task.parts_features[version],
@@ -298,7 +299,7 @@ def run(
             plotter.plot_corr_boxplot(
                 x_data={
                     "parts_answer_in_self": task.parts_answer_in_self
-                },  # why is .all not needed here?
+                }, 
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -314,7 +315,7 @@ def run(
             plotter.plot_corr_boxplot(
                 x_data={
                     "parts_seen_context_lengths": task.seen_context_lengths
-                },  # why is .all not needed here?
+                }, 
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -330,7 +331,7 @@ def run(
             plotter.plot_corr_hist(
                 x_data={
                     "parts_seen_context_lengths": task.seen_context_lengths
-                },  # why is .all not needed here?
+                },
                 y_data={
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
                     "parts_answer_in_self": task.parts_answer_in_self,
@@ -415,6 +416,7 @@ def run(
                 path_add=Path(version, f"Split-{split.name}"),
                 level="split",
                 include_soft=False,
+                label_add=[f"t{task.task_id}" for task in split.tasks],
             )
 
         # Attn on Target for Seen Context Lengths by Answer Correct
@@ -446,8 +448,6 @@ def run(
             file_name=f"attn-target_distances_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}"],
             path_add=Path(version, f"Split-{split.name}"),
-            file_name=f"attn-target_distances_{version}.pdf",
-            path_add=f"Split {split.name}",
         )
         # Answer Correct for Seen Context Lengths by Answer In Self
         plotter.plot_corr_hist(

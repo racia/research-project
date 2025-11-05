@@ -189,17 +189,14 @@ class Plotter:
 
         y_ticks = np.arange(0, 1.1, 0.1)
         if "accurac" in y_label.lower():
-            # plt.ylim(bottom=0, top=1.1)
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
             y_ticks = np.arange(0, 0.09, 0.01)
             plt.ylim(bottom=0, top=0.1)
         elif "reasoning" in y_label.lower():
-            # y_ticks = np.arange(0, 1.1, 0.1)
             plt.ylim(bottom=0, top=1)
-        else:
-            y_ticks = np.arange(0, 1.1, 0.1)
-            plt.ylim(bottom=0, top=1.1)
+        elif displ_percentage:
+            plt.ylim(bottom=0, top=1.01)
         
         plt.yticks = y_ticks
 
@@ -483,6 +480,7 @@ class Plotter:
         path_add: str = None,
         level: str = None,
         include_soft: bool = True,
+        label_add: list[str] = [],
     ) -> None:
         """
         Plot the correlation between two variables.
@@ -496,6 +494,7 @@ class Plotter:
         :param path_add: addition to the path where the plot is saved
         :param level: level of the data, e.g. "task", "sample", "part"
         :param include_soft: whether to include soft metrics in the plot
+        :param label_add: addition to the data labels
         :return: None
         """
         if level == "split":
@@ -519,7 +518,7 @@ class Plotter:
             # This covers both cases: Metric (i.e. length of sentences) and Accuracy
             if max(metr.all) > max_x_len:
                 max_x_len = max(metr.all)  # Case sample_part_lenghts: Set to max value
-                # step_size = 5 if max_x_len > 30 else 1
+                step_size = 5 if max_x_len > 30 else 1
             min_x_len = min(metr.all) if min(metr.all) > 2 else min_x_len
             if len(metr) != len(y_data):
                 raise ValueError(
@@ -546,6 +545,9 @@ class Plotter:
                 color=color,
                 zorder=3,
             )
+            for i, label in enumerate(label_add):
+                plt.annotate(label, (metr[i]+.001, y_data[i]+.001))
+
         self._plot_general_details(
             x_label,
             y_label,
@@ -1039,13 +1041,11 @@ class Plotter:
             df_data[k] = v
 
         if level == "split":  # bigger plots for splits
-            plt.figure(figsize=(12, 8))
+            fig, ax = plt.subplots(figsize=(12, 8))
             width = 0.6
         else:
-            plt.figure(figsize=(10, 5))
+            fig, ax = plt.subplots(figsize=(10, 5))
             width = 0.35
-
-        fig, ax = plt.subplots()
 
         df = pd.DataFrame(
             list(zip(*x_data.values(), *df_data.values())),
@@ -1053,11 +1053,11 @@ class Plotter:
         )
         if "correct" in y_label.lower(): # e.g. parts_answer_correct
             # Store sum of answers correct per seen context length
-            parts_per_class = df.groupby([df.columns[0]])[df.columns[1]].transform("count")
+            parts_per_class = df.groupby([df.columns[0]], group_keys=True)[df.columns[1]].transform("count")
             # Add column for ratio of correct answers per category and label
-            correct_per_label = df.groupby([df.columns[0],df.columns[2]])[df.columns[1]].transform("sum")
-            y_col_ratio = f"{df.columns[1]}_Ratio"
-            df[y_col_ratio] = correct_per_label / parts_per_class
+            correct_per_label = df.groupby([df.columns[0],df.columns[2]], group_keys=True)[df.columns[1]].transform("sum")
+            corr_ratio = f"{df.columns[1]}_Ratio"
+            df[corr_ratio] = correct_per_label / parts_per_class
             if "answer_in_self" in df.columns[2]:
                 df["parts_answer_in_self"] = df["parts_answer_in_self"].apply(lambda x: FLOAT_2_STR[x].capitalize())
         else: # e.g. attn_on_target
@@ -1068,12 +1068,15 @@ class Plotter:
         label_column = " ".join(df.columns[2].split("_")).title() if len(df.columns)>2 else None
         max_x_len = max(df[x_label])
         step_size = 5 if max_x_len > 30 else 1
-        pivot_ratios = df.pivot_table(values=y_col_ratio, index=x_label, columns=df.columns[2])
 
+        pivot_ratios = df.pivot_table(values=corr_ratio, index=x_label, columns=df.columns[2])
+        incorr_ratios = 1 - pivot_ratios.sum(axis=1)
+        assert (pivot_ratios.sum(axis=1) + incorr_ratios == 1).all()
         bottom = np.zeros(len(pivot_ratios.index))
         for col in pivot_ratios:
             ax.bar(pivot_ratios.index, pivot_ratios[col], width=width, label=col, bottom=bottom)
             bottom += pivot_ratios[col]
+        ax.bar(incorr_ratios.index, incorr_ratios, width=width, label="Incorrect Cases", bottom=bottom, color="lightgrey")
 
         self._plot_general_details(
             x_label=x_label,
