@@ -29,7 +29,7 @@ def main():
     # Load the data
     data_loader = DataLoader()
     # without any flags should receive data structured in levels
-    valid_data = data_loader.load_task_data(
+    data = data_loader.load_task_data(
         path=f"{home}/tasks_1-20_v1-2/en-valid/",
         split=split,
         tasks=[3, 17, 20],
@@ -51,7 +51,7 @@ def main():
     )
 
     # Process only tasks assigned to this GPU
-    for task_id, task in sorted(valid_data.items()):
+    for task_id, task in sorted(data.items()):
         output_file = (
             f"{home}/research-project/data/silver_reasoning_{split}_{task_id}.csv"
         )
@@ -77,6 +77,7 @@ def main():
         id_counter = 0
         safety_length = min(len(task), max_samples)
         for sample_id, sample_parts in list(task.items())[:safety_length]:
+
             id_counter = process_sample(
                 task_id, sample_id, sample_parts, prompt, model, output_file, id_counter
             )
@@ -104,6 +105,8 @@ def process_sample(
     )
 
     for sample_part_idx, sample_part in enumerate(sample_parts):
+        print(f"Sample Part: {sample_part}")
+
         # Format prompt components
         context = numerate_lines(sample_part["context"])
         formatted_context = "\n".join(context)
