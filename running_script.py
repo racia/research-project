@@ -293,7 +293,7 @@ def run_setting(cfg: DictConfig) -> None:
                 start_from_sample = (
                     cfg.data.get("start_from_sample", 0)
                     if task_id == cfg.data.get("task_ids", [None])[0]
-                    else None
+                    else 0
                 )
                 print(
                     f"start_from_sample: {start_from_sample}, task_id: {cfg.data.get('tasks', [None])[0]}"

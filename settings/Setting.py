@@ -159,6 +159,8 @@ class Setting(ABC):
 
         if start_from_sample != 0:
             print(f"Skipping samples 1-{start_from_sample-1}...")
+        else:
+            start_from_sample = 1
 
         for sample_id, sample_parts in list(task_data.items())[start_from_sample - 1 :]:
 
