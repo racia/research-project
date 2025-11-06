@@ -125,6 +125,8 @@ def process_sample(
             answer=sample_part.golden_answer,
         )
 
+        print(f"Formatted Prompt: {formatted_prompt_str}")
+
         inputs = model.tokenizer(
             formatted_prompt_str,
             return_tensors="pt",
@@ -155,6 +157,8 @@ def process_sample(
                 encoded_output = []
 
         decoded_output = model.tokenizer.decode(encoded_output).strip()
+
+        print(f"Decoded Output: {decoded_output}")
 
         reasoning_pattern = re.compile(r"(?i)reasoning:[\s ]*(.+)")
         reasoning_search = reasoning_pattern.search(decoded_output)
