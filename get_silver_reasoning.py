@@ -10,6 +10,7 @@ from torch import autocast
 from data.DataLoader import DataLoader
 from inference.Chat import Chat
 from inference.Prompt import Prompt
+from inference.utils import Source
 from settings.Model import Model
 
 home = Path.home()
@@ -108,16 +109,6 @@ def process_sample(
     for sample_part_idx, sample_part in enumerate(sample_parts):
         print(f"Sample Part: {sample_part}")
 
-        # # Format prompt components
-        # context = numerate_lines(sample_part["context"])
-        # formatted_context = "\n".join(context)
-        #
-        # questions = list(sample_part["question"].values())
-        # formatted_questions = "\n".join(questions)
-        #
-        # answers = [" ".join(ans) for ans in sample_part["answer"].values()]
-        # formatted_answers = "\n".join(answers)
-
         # Format the prompt
         formatted_prompt_str = prompt.text.format(
             context=sample_part.structured_context,
@@ -127,12 +118,21 @@ def process_sample(
 
         print(f"Formatted Prompt: {formatted_prompt_str}")
 
-        inputs = model.tokenizer(
-            formatted_prompt_str,
-            return_tensors="pt",
-        ).to("cuda")
+        model.chat.add_message(
+            part=formatted_prompt_str,
+            source=Source.user,
+        )
 
-        with autocast("cuda"):
+        chat_ids = model.chat.convert_into_datatype(
+            datatype="ids",
+            identify_target=False,
+            to_continue=False,
+        )
+
+        inputs = {"input_ids": chat_ids.to("cuda")}
+        torch.cuda.empty_cache()
+
+        with torch.no_grad(), autocast("cuda"):
             outputs = model.model.generate(
                 **inputs,
                 max_new_tokens=model.max_new_tokens,
