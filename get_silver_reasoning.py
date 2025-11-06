@@ -144,13 +144,6 @@ def process_sample(
             encoded_output = outputs[0][inputs["input_ids"].size(1) :]
             eot = model.tokenizer.convert_tokens_to_ids("<|eot_id|>")
 
-            # remove trailing spaces at the end of the output
-            while (
-                len(encoded_output) > 0
-                and model.tokenizer.decode([encoded_output[-1]]).isspace()
-            ):
-                encoded_output = encoded_output[:-1]
-
             # remove eot token if it is at the end of the output
             if len(encoded_output) > 0 and encoded_output[-1] == eot:
                 encoded_output = encoded_output[:-1]
