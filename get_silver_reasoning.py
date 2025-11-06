@@ -54,9 +54,7 @@ def main():
 
     # Process only tasks assigned to this GPU
     for task_id, task in sorted(data.items()):
-        output_file = (
-            f"{home}/research-project/data/silver_reasoning_{split}_{task_id}.csv"
-        )
+        output_file = f"{home}/research-project/data/silver_reasoning/silver_reasoning_{split}_{task_id}.csv"
 
         print(f"Writing to {output_file}")
         print(f"Processing Task {task_id}...", flush=True)
