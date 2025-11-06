@@ -58,7 +58,7 @@ def main():
         )
 
         print(f"Writing to {output_file}")
-        print(f"Processing Task {task_id}...")
+        print(f"Processing Task {task_id}...", flush=True)
 
         if not os.path.exists(output_file):
             result_df = pd.DataFrame(
@@ -165,7 +165,8 @@ def process_sample(
         reasoning = reasoning_search[1].strip() if reasoning_search else decoded_output
 
         print(
-            f"Task {task_id}, Sample {sample_id}, Part {sample_part_idx}: Reasoning extracted"
+            f"Task {task_id}, Sample {sample_id}, Part {sample_part_idx}: Reasoning extracted",
+            flush=True,
         )
 
         new_row = pd.DataFrame(
