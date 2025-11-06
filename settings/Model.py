@@ -119,7 +119,7 @@ class Model:
         data: SamplePart | str = None,
         from_chat: bool = False,
         to_continue: bool = False,
-        filter_eot: bool = False,
+        filter_eot: bool = True,
     ) -> tuple[str, InterpretabilityResult]:
         """
         Calls the model with memory optimizations and optionally with Interpretability (depends on config).
