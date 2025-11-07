@@ -226,7 +226,8 @@ class Plotter:
             )
         else:
             plt.legend(loc="upper left", bbox_to_anchor=(1, 1), title=legend_title)
-
+                
+            
     def correlation_map(
         self,
         data: dict[str, dict[str, tuple]],
@@ -1034,6 +1035,11 @@ class Plotter:
         :param id: int id of the level
         :return: None
         """
+        colors = self.cmap(np.linspace(
+            0, 
+            0.2, 
+            len(set(list(y_data.values())[-1]))))[::-1] # Colors according to length of label data
+        
         df_data = {}
         for k, v in y_data.items():
             if isinstance(v, dict):
@@ -1051,15 +1057,21 @@ class Plotter:
             list(zip(*x_data.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
         )
+
         if "correct" in y_label.lower(): # e.g. parts_answer_correct
+            if "answer_in_self" in df.columns[2]:
+                df["parts_answer_in_self"] = df["parts_answer_in_self"].apply(lambda x: FLOAT_2_STR[x].capitalize())
             # Store sum of answers correct per seen context length
             parts_per_class = df.groupby([df.columns[0]], group_keys=True)[df.columns[1]].transform("count")
             # Add column for ratio of correct answers per category and label
-            correct_per_label = df.groupby([df.columns[0],df.columns[2]], group_keys=True)[df.columns[1]].transform("sum")
+            correct_per_label = df.groupby([df.columns[0],df.columns[2]], group_keys=True)[df.columns[1]].transform(lambda x: np.sum(x==1))
+            incorr_per_label = df.groupby([df.columns[0],df.columns[2]], group_keys=True)[df.columns[1]].transform(lambda x: np.sum(x==0))
+            
             corr_ratio = f"{df.columns[1]}_Ratio"
+            incorr_ratio = "Incorr_Ratio"
             df[corr_ratio] = correct_per_label / parts_per_class
-            if "answer_in_self" in df.columns[2]:
-                df["parts_answer_in_self"] = df["parts_answer_in_self"].apply(lambda x: FLOAT_2_STR[x].capitalize())
+            df[incorr_ratio] = incorr_per_label / parts_per_class
+
         else: # e.g. attn_on_target
             df[x_label] = df[x_label].round()
 
@@ -1069,14 +1081,28 @@ class Plotter:
         max_x_len = max(df[x_label])
         step_size = 5 if max_x_len > 30 else 1
 
-        pivot_ratios = df.pivot_table(values=corr_ratio, index=x_label, columns=df.columns[2])
-        incorr_ratios = 1 - pivot_ratios.sum(axis=1)
-        assert (pivot_ratios.sum(axis=1) + incorr_ratios == 1).all()
+        pivot_ratios = df.pivot_table(values=[corr_ratio, incorr_ratio], index=x_label, columns=df.columns[2])
+        assert (correct_per_label + incorr_per_label == df.groupby([df.columns[0],df.columns[2]], group_keys=True)[df.columns[1]].transform("count")).all()
+        
         bottom = np.zeros(len(pivot_ratios.index))
-        for col in pivot_ratios:
-            ax.bar(pivot_ratios.index, pivot_ratios[col], width=width, label=col, bottom=bottom)
-            bottom += pivot_ratios[col]
-        ax.bar(incorr_ratios.index, incorr_ratios, width=width, label="Incorrect Cases", bottom=bottom, color="lightgrey")
+        hists = defaultdict(dict)
+        for label_col, color in zip(pivot_ratios.columns.get_level_values(1).unique(), colors):
+            for class_col in pivot_ratios.xs(label_col, axis=1, level=1, drop_level=False):
+                hists[class_col[0]][label_col] = ax.bar(
+                    pivot_ratios.index, 
+                       pivot_ratios[class_col], 
+                       width=width, 
+                       bottom=bottom,
+                       label=label_col if "incorr" not in class_col[0].lower() else None, 
+                       color=color, 
+                       alpha=0.4 if "incorr" in class_col[0].lower() else None
+                    )
+                bottom += pivot_ratios[class_col]
+                
+        for k, v in hists.items():
+            if "incorr" in k.lower():
+                legend1 = plt.legend(list(v.values()), tuple(v.keys()), title="Incorrect Cases", loc="upper left", bbox_to_anchor=[1, 0.5])
+                plt.gca().add_artist(legend1)
 
         self._plot_general_details(
             x_label=x_label,
