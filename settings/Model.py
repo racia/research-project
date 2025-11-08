@@ -157,13 +157,11 @@ class Model:
                 to_continue=to_continue,
             )
 
-            print(f"DEBUG: Chat before model call: {self.chat}", flush=True)
+            inputs = {"input_ids": chat_ids.to("cuda")}
             print(
-                f"DEBUG: Chat messages before model call: {self.chat.messages}",
+                f"DEBUG: Input IDs: {inputs['input_ids']}, \ndecoded: {self.tokenizer.decode(inputs['input_ids'])}",
                 flush=True,
             )
-
-            inputs = {"input_ids": chat_ids.to("cuda")}
             torch.cuda.empty_cache()
 
             with autocast("cuda"):
