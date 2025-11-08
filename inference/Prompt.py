@@ -204,9 +204,12 @@ class Prompt:
                     print(
                         "Empty chunk when formatting teacher message, adding generation token ids..."
                     )
+                    gen_ids, gen_tokens = get_generation_token_ids(
+                        self.tokenizer, Source.assistant
+                    )
                     generation_token_ids = [
                         self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")
-                    ] + get_generation_token_ids(self.tokenizer, Source.assistant)
+                    ] + gen_ids
                     teacher_ids.append(generation_token_ids)
                     teacher_tokens.append([])
                     continue

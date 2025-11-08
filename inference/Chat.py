@@ -446,11 +446,11 @@ class Chat:
         conversation_length = len(chat_ids)
         # including the system prompt
         for i, message in enumerate(self.messages):
-            message_ids = get_generation_token_ids(
+            message_ids, message_tokens = get_generation_token_ids(
                 self.tokenizer, message["role"], start=i == 0
             )
             message_ids.extend(flatten(message[datatype]))
-            message_tokens = flatten(message["tokens"])
+            message_tokens.extend(flatten(message["tokens"]))
             conversation_length += len(message_ids)
             if conversation_length > max_length:
                 warnings.warn(
@@ -462,7 +462,8 @@ class Chat:
             chat_tokens.extend(message_tokens)
 
         if not to_continue:
-            chat_ids.extend(get_generation_token_ids(self.tokenizer, "assistant"))
+            gen_ids, _ = get_generation_token_ids(self.tokenizer, "assistant")
+            chat_ids.extend(gen_ids)
 
         if identify_target:
             self.identify_supp_sent_spans()
