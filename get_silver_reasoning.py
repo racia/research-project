@@ -104,6 +104,8 @@ def process_sample(
         system_prompt=prompt, model_role=model.role, tokenizer=model.tokenizer
     )
 
+    eot = model.tokenizer.convert_tokens_to_ids("<|eot_id|>")
+
     for sample_part_idx, sample_part in enumerate(sample_parts):
         print(f"Sample Part: {sample_part}")
 
@@ -142,7 +144,6 @@ def process_sample(
             )
 
             encoded_output = outputs[0][inputs["input_ids"].size(1) :]
-            eot = model.tokenizer.convert_tokens_to_ids("<|eot_id|>")
 
             # remove eot token if it is at the end of the output
             if len(encoded_output) > 0 and encoded_output[-1] == eot:
