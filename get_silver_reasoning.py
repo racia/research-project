@@ -26,6 +26,7 @@ def main():
     split = "test"
     max_samples = 100
     torch.cuda.empty_cache()
+    overwrite = True
     gc.collect()
 
     # Load the data
@@ -59,7 +60,7 @@ def main():
         print(f"Writing to {output_file}")
         print(f"Processing Task {task_id}...", flush=True)
 
-        if not os.path.exists(output_file):
+        if not os.path.exists(output_file) or overwrite is True:
             result_df = pd.DataFrame(
                 columns=[
                     "id_",
