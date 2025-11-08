@@ -461,6 +461,7 @@ class Chat:
             chat_ids.extend(message_ids)
             chat_tokens.extend(message_tokens)
 
+            print(f"DEBUG: chat_ids as str: {self.tokenizer.decode(chat_ids)}")
         if not to_continue:
             gen_ids, _ = get_generation_token_ids(self.tokenizer, "assistant")
             chat_ids.extend(gen_ids)

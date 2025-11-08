@@ -157,8 +157,6 @@ class Model:
                 to_continue=to_continue,
             )
 
-            print(f"DEBUG: Chat: {self.chat}", flush=True)
-            print(f"DEBUG: Chat messages: {self.chat.messages}", flush=True)
             inputs = {"input_ids": chat_ids.to("cuda")}
             torch.cuda.empty_cache()
 
