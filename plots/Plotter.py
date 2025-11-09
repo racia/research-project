@@ -1057,6 +1057,7 @@ class Plotter:
             list(zip(*x_data.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
         )
+        label_column = " ".join(df.columns[2].split("_")).title() if len(df.columns)>2 else None
 
         if "correct" in y_label.lower(): # e.g. parts_answer_correct
             if "answer_in_self" in df.columns[2]:
@@ -1071,39 +1072,30 @@ class Plotter:
             incorr_ratio = "Incorr_Ratio"
             df[corr_ratio] = correct_per_label / parts_per_class
             df[incorr_ratio] = incorr_per_label / parts_per_class
-
+            label_column += " and Answer is [In]Correct"
         else: # e.g. attn_on_target
             df[x_label] = df[x_label].round()
 
         for col_name in [f"parts_{feat}" for feat in ["attn_on_target", "max_supp_attn"] if f"parts_{feat}" in df.columns]:
             df[col_name] = df[col_name].round(2)  # Ensure numeric values are rounded if needed
-        label_column = " ".join(df.columns[2].split("_")).title() if len(df.columns)>2 else None
         max_x_len = max(df[x_label])
         step_size = 5 if max_x_len > 30 else 1
 
-        pivot_ratios = df.pivot_table(values=[corr_ratio, incorr_ratio], index=x_label, columns=df.columns[2])
-        assert (correct_per_label + incorr_per_label == df.groupby([df.columns[0],df.columns[2]], group_keys=True)[df.columns[1]].transform("count")).all()
-        
+        pivot_ratios = df.pivot_table(values=[corr_ratio, incorr_ratio], sort=False, index=x_label, columns=df.columns[2])
+        pivot_ratios.sort_index(axis=1, level=1, inplace=True, sort_remaining=False)
         bottom = np.zeros(len(pivot_ratios.index))
-        hists = defaultdict(dict)
-        for label_col, color in zip(pivot_ratios.columns.get_level_values(1).unique(), colors):
-            for class_col in pivot_ratios.xs(label_col, axis=1, level=1, drop_level=False):
-                hists[class_col[0]][label_col] = ax.bar(
-                    pivot_ratios.index, 
-                       pivot_ratios[class_col], 
-                       width=width, 
-                       bottom=bottom,
-                       label=label_col if "incorr" not in class_col[0].lower() else None, 
-                       color=color, 
-                       alpha=0.4 if "incorr" in class_col[0].lower() else None
-                    )
-                bottom += pivot_ratios[class_col]
-                
-        for k, v in hists.items():
-            if "incorr" in k.lower():
-                legend1 = plt.legend(list(v.values()), tuple(v.keys()), title="Incorrect Cases", loc="upper left", bbox_to_anchor=[1, 0.5])
-                plt.gca().add_artist(legend1)
-
+        for class_lab_col, color in zip(pivot_ratios, [x for x in colors for _ in range(2)]):
+            ax.bar(
+                pivot_ratios.index, 
+                    pivot_ratios[class_lab_col],
+                    width=width, 
+                    bottom=bottom,
+                    label="(Incorrect) "+class_lab_col[1] if "incorr" in class_lab_col[0].lower() else class_lab_col[1], 
+                    color=color, 
+                    alpha=0.4 if "incorr" in class_lab_col[0].lower() else None
+                )
+            bottom += pivot_ratios[class_lab_col]
+            
         self._plot_general_details(
             x_label=x_label,
             y_label=y_label,
