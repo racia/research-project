@@ -219,6 +219,8 @@ class Plotter:
             plt.gca().yaxis.set_major_formatter(
                 PercentFormatter(1)
             )  # 1 = scale of data (data range)
+            plt.gca().yaxis.set_ticks(y_ticks)
+
 
         if num_of_data_arrays > 6 or metr_types > 6 or "attributes" in y_label.lower():
             plt.legend(
@@ -1047,7 +1049,7 @@ class Plotter:
             df_data[k] = v
 
         if level == "split":  # bigger plots for splits
-            fig, ax = plt.subplots(figsize=(12, 8))
+            fig, ax = plt.subplots(figsize=(15, 8))
             width = 0.6
         else:
             fig, ax = plt.subplots(figsize=(10, 5))
@@ -1079,9 +1081,9 @@ class Plotter:
         for col_name in [f"parts_{feat}" for feat in ["attn_on_target", "max_supp_attn"] if f"parts_{feat}" in df.columns]:
             df[col_name] = df[col_name].round(2)  # Ensure numeric values are rounded if needed
         max_x_len = max(df[x_label])
-        step_size = 5 if max_x_len > 30 else 1
+        step_size = 2 if max_x_len > 30 else 1
 
-        pivot_ratios = df.pivot_table(values=[corr_ratio, incorr_ratio], sort=False, index=x_label, columns=df.columns[2])
+        pivot_ratios = df.pivot_table(values=[corr_ratio, incorr_ratio], sort=False, index=x_label, columns=df.columns[2], fill_value=0)
         pivot_ratios.sort_index(axis=1, level=1, inplace=True, sort_remaining=False)
         bottom = np.zeros(len(pivot_ratios.index))
         for class_lab_col, color in zip(pivot_ratios, [x for x in colors for _ in range(2)]):
@@ -1090,7 +1092,7 @@ class Plotter:
                     pivot_ratios[class_lab_col],
                     width=width, 
                     bottom=bottom,
-                    label="(Incorrect) "+class_lab_col[1] if "incorr" in class_lab_col[0].lower() else class_lab_col[1], 
+                    label="[Incorrect] "+class_lab_col[1] if "incorr" in class_lab_col[0].lower() else "[Correct] "+class_lab_col[1], 
                     color=color, 
                     alpha=0.4 if "incorr" in class_lab_col[0].lower() else None
                 )
@@ -1122,6 +1124,7 @@ class Plotter:
         x_label: str = "X",
         y_label: str = "Y",
         displ_percentage: bool = False,
+        version: str = False,
         file_name: str = None,
         plot_name_add: list[str] = None,
         path_add: str = None,
@@ -1137,6 +1140,7 @@ class Plotter:
         :param x_label: The label for x-axis
         :param y_label: The label for y-axis
         :param displ_percentage: whether to display the y-axis as percentage
+        :param version: version of the data, e.g. "before", "after"
         :param file_name: name of the file
         :param plot_name_add: addition to the plot name
         :param path_add: addition to the path where the plot is saved
@@ -1174,7 +1178,7 @@ class Plotter:
                 for i, part in enumerate(x.split("-"))
                 if part in ["True", "1"]
             ]
-            feat_str = [" ".join(f.rstrip("_before").split("_")).join('""')
+            feat_str = [" ".join(f.rstrip(f"_{version}").split("_")).capitalize().join('""')
                         for f in feat_str]
             return "-".join(feat_str) if feat_str else None
 
