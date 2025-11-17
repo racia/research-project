@@ -117,7 +117,7 @@ def contains_not_mentioned(answer) -> bool:
 
 def get_generation_token_ids(
     tokenizer: PreTrainedTokenizerFast, role: str, start: bool = False
-) -> list[float]:
+) -> list[int]:
     """
     Returns the token id for the role of the message.
 
@@ -127,7 +127,7 @@ def get_generation_token_ids(
     :return: token id and special tokens
     """
     tokens = [
-        "<|eot_id|>" if not start else "<|begin_of_text|>",
+        "<|begin_of_text|>" if start else "<|eot_id|>",
         "<|start_header_id|>",
         role,
         "<|end_header_id|>",

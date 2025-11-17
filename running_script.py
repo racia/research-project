@@ -290,11 +290,12 @@ def run_setting(cfg: DictConfig) -> None:
                 else:
                     setting.init_prompt.use_original_prompt()
 
-                start_from_sample = (
-                    cfg.data.get("start_from_sample", 0)
-                    if task_id == cfg.data.get("task_ids", [None])[0]
-                    else 0
-                )
+                start_from_sample = 0
+                if task_id in loader.tasks and cfg.data.get("for_all_tasks", False):
+                    start_from_sample = cfg.data.get("start_from_sample", 0)
+                elif task_id == loader.tasks[0]:
+                    start_from_sample = cfg.data.get("start_from_sample", 0)
+
                 print(
                     f"start_from_sample: {start_from_sample}, task_id: {cfg.data.get('tasks', [None])[0]}"
                 )
