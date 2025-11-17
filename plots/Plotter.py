@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from itertools import zip_longest
+import itertools
 from pathlib import Path
 
 
@@ -19,6 +20,7 @@ from matplotlib.ticker import MultipleLocator, PercentFormatter
 
 from evaluation.Metrics import Accuracy, Metric
 from evaluation.utils import CASES_2_LABELS, CASES_TO_SIMPLE_ANS, FLOAT_2_STR
+from inference.DataLevels import Features
 from inference.Prompt import Prompt
 from interpretability.utils import InterpretabilityResult
 from plots.utils import (
@@ -1037,11 +1039,12 @@ class Plotter:
         :param id: int id of the level
         :return: None
         """
-        colors = self.cmap(np.linspace(
+        color_map = {v:color for v, color in zip(FLOAT_2_STR.values(), self.cmap(np.linspace(
             0, 
-            0.2, 
-            len(set(list(y_data.values())[-1]))))[::-1] # Colors according to length of label data
-        
+            0.2,
+            len(FLOAT_2_STR)))[::-1])
+            } # Colors according to length of label data
+
         df_data = {}
         for k, v in y_data.items():
             if isinstance(v, dict):
@@ -1083,21 +1086,21 @@ class Plotter:
         max_x_len = max(df[x_label])
         step_size = 2 if max_x_len > 30 else 1
 
-        pivot_ratios = df.pivot_table(values=[corr_ratio, incorr_ratio], sort=False, index=x_label, columns=df.columns[2], fill_value=0)
-        pivot_ratios.sort_index(axis=1, level=1, inplace=True, sort_remaining=False)
+        pivot_ratios = df.pivot_table(values=[corr_ratio, incorr_ratio], sort=False, index=x_label, columns=df.columns[2], fill_value=0) #parts_answer_correct first
+        pivot_ratios.sort_index(axis=1, level=1, inplace=True, sort_remaining=False) # sort for labels
         bottom = np.zeros(len(pivot_ratios.index))
-        for class_lab_col, color in zip(pivot_ratios, [x for x in colors for _ in range(2)]):
+        
+        for class_lab_col in pivot_ratios:
             ax.bar(
                 pivot_ratios.index, 
                     pivot_ratios[class_lab_col],
                     width=width, 
                     bottom=bottom,
                     label="[Incorrect] "+class_lab_col[1] if "incorr" in class_lab_col[0].lower() else "[Correct] "+class_lab_col[1], 
-                    color=color, 
+                    color=color_map[class_lab_col[1].lower()], 
                     alpha=0.4 if "incorr" in class_lab_col[0].lower() else None
                 )
             bottom += pivot_ratios[class_lab_col]
-            
         self._plot_general_details(
             x_label=x_label,
             y_label=y_label,
@@ -1151,6 +1154,10 @@ class Plotter:
             plt.figure(figsize=(12, 8))
         else:
             plt.figure(figsize=(10, 5))
+        colors = self.cmap(np.linspace(0, 
+                                       0.2, 
+                                       len(y_data[list(y_data)[-1]]))
+                                        )
 
         df_data = {}
         for y_keys, y_vals in y_data.items():
@@ -1178,12 +1185,14 @@ class Plotter:
                 for i, part in enumerate(x.split("-"))
                 if part in ["True", "1"]
             ]
-            feat_str = [" ".join(f.rstrip(f"_{version}").split("_")).capitalize().join('""')
+            feat_str = [f.rstrip(f"_{version}")
                         for f in feat_str]
             return "-".join(feat_str) if feat_str else None
 
         # Combine parts features to single column
         if "parts_features" in y_data:
+            label_order = [" ".join("-".join(comb).split("_")).capitalize().join('""') for L in range(1, 3) for comb in itertools.combinations(Features.attrs, L)]
+            label_order.insert(0, "No Features")
             df["features_combined"] = ""
             for col in y_data["parts_features"].keys():
                 df["features_combined"] += df[col].astype(str) + "-"
@@ -1191,14 +1200,17 @@ class Plotter:
             df["Features present"] = df["Features present"].fillna("No Features")
         elif "correct" in df.columns[2]:
             df["parts_answer_correct"] = df["parts_answer_correct"].map({1: "True", 0: "False"})
+            label_order = ["True", "False"]
         label_column = df.columns[-1] if "features_combined" in df.columns else df.columns[2]
+        df[f"{label_column}_"] = df[label_column].apply(lambda x: " ".join(x.split("_")).capitalize().join('""') if x not in ["No Features", "True", "False"] else x)
         df[x_label] = df[x_label].round()
-        
+
         ax = sns.boxplot(
             data=df, 
             x=x_label, 
             y=df.columns[1], 
-            hue=label_column if len(df.columns)>2 else None)
+            hue=f"{label_column}_" if len(df.columns)>2 else None,
+            hue_order=label_order if len(df.columns)>2 else None)
         # Add vertical lines separating x categories
         ax.xaxis.set_minor_locator(MultipleLocator(0.5))
         ax.xaxis.grid(True, which='minor', color='black', lw=1, ls=":")
