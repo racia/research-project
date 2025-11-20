@@ -219,6 +219,7 @@ class Model:
                             output_attentions=True,
                             output_hidden_states=False,
                         )
+                        print("Output tensor attentions:", output_tensor["attentions"])
                         if type(data) is not SamplePart:
                             raise TypeError(
                                 "For interpretability plotting, data should be of type SamplePart"

@@ -69,7 +69,6 @@ def save_indices(
     :param header: header for the file, defaults to "task_id\tsample_id\tpart_id\n"
     """
     results_path = Path(results_path) if isinstance(results_path, str) else results_path
-    results_path.mkdir(parents=True, exist_ok=True)
     # save the indices to a file
     with open(results_path / f"{name}.txt", "w", encoding="utf-8") as f:
         f.write(header)
@@ -87,6 +86,7 @@ def analyse(**kwargs):
     # Placeholder for analysis logic
     print("Analyzing with parameters:", kwargs)
     results_path = kwargs.pop("results_path", "reasoning-project/outputs/error_cases")
+    Path(results_path).mkdir(parents=True, exist_ok=True)
 
     print("Results will be saved to:", results_path)
     plotter = Plotter(Path(results_path), color_map="tab20")
