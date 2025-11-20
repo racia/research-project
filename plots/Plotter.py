@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import itertools
-import warnings
 from collections import defaultdict
 from itertools import zip_longest
 from pathlib import Path
 from typing import Sized
+import warnings
 
 import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt

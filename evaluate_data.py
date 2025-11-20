@@ -272,9 +272,10 @@ def run(
             f"Added task {task_id} with {len(sample.parts)} parts to split {data_split}."
         )
 
+        task_corr_matrices = task.calculate_metrics()
         if verbose:
             print_metrics(task)
-        task_corr_matrices = task.calculate_metrics()
+
         for version, evaluator, corr_matrix in zip(
             task.versions, task.evaluators, task_corr_matrices.values()
         ):
