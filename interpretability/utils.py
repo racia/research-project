@@ -128,4 +128,5 @@ def get_attn_on_target(
     attn_on_supp = attn_scores[:, supp_sent_idx]
     total_attn_per_token = attn_on_supp.sum(axis=1)
     avg_attn_on_supp = total_attn_per_token.mean()
+    print(f"Average attention on supporting sentences: {avg_attn_on_supp}")
     return round(float(avg_attn_on_supp), 4)
