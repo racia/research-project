@@ -8,7 +8,7 @@ model:
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  task_ids: [ 6, 7 ]
+  task_ids: [ 20 ]
   samples_per_task: 100
   splits:
     train: False
@@ -27,4 +27,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/da/tasks_6_7_v2_kim_${now:%d-%m-%Y}_${now:%H-%M-%S}/tasks_6_7_v2"
+    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/da/task_20_v5_kim_${now:%d-%m-%Y}_${now:%H-%M-%S}/task_20_v5"

@@ -1,18 +1,18 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=skyline_v4
+#SBATCH --job-name=sky_v4
 
 #SBATCH --time=15:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
-#SBATCH --mem=64G                    # Total memory requested
+#SBATCH --mem=128G                    # Total memory requested
 #SBATCH --partition=dev_gpu_4
 
 # Output and error logs
-#SBATCH --output="skyline_out.txt"        # TODO: adjust standard output log
-#SBATCH --error="skyline_err.txt"         # TODO: adjust error log
+#SBATCH --output="skyline_v4_out.txt"        # TODO: adjust standard output log
+#SBATCH --error="skyline_v4_err.txt"         # TODO: adjust error log
 
 # Email notifications
 #SBATCH --mail-user=""              # TODO: Add your email address

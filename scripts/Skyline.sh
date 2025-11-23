@@ -1,13 +1,13 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=skyline_v2
+#SBATCH --job-name=skyline
 
 #SBATCH --time=7:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
-#SBATCH --mem=64G                    # Total memory requested
+#SBATCH --mem=128G                    # Total memory requested
 #SBATCH --partition=dev_gpu_4
 
 # Output and error logs
