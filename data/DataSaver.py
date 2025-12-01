@@ -83,7 +83,7 @@ class DataSaver:
         data: list[dict[str, str | int | float]],
         headers: list | tuple,
         file_name: str | Path,
-        path_add: str = "",
+        path_add: str | Path = "",
         flag: str = "a+",
     ) -> None:
         """
@@ -99,7 +99,7 @@ class DataSaver:
         :param data: one row as list of strings or multiple such rows
         :param headers: the headers for the csv file
         :param file_name: the name of the file to save the data
-        :param path_add: an addition to the results path (goes between results_path and file_name)
+        :param path_add: String or - in case of multiple - Path addition(s) to the results path (goes between results_path and file_name)
         :param flag: the flag to open the file
         :return: None
         """
@@ -119,7 +119,7 @@ class DataSaver:
 
     def save_split_metrics(
         self,
-        split,
+        split: Split,
         metric_file_name: str,
     ) -> None:
         """
@@ -142,7 +142,7 @@ class DataSaver:
                 self.save_output(
                     data=[metric],
                     headers=list(metric.keys()),
-                    file_name=metric_file_name.replace("version", version),
+                    file_name=metric_file_name,
                     path_add=version,
                 )
 
@@ -185,16 +185,26 @@ class DataSaver:
         with open(file_path, "w", encoding="UTF-8") as file:
             file.write(sep.join(map(lambda x: str(x).strip(), data)))
 
-    @staticmethod
-    def save_json(file_path: Path, data: Iterable) -> None:
+    def save_json(
+        self,
+        file_path: str | Path,
+        data: Iterable,
+        path_add: str | Path = "",
+    ) -> None:
         """
         Save json data
 
         :param file_path: the path to the file
         :param data: the data to save
+        :param path_add: the addition to the file path
         :return: None
         """
-        with open(file_path, "w", encoding="UTF-8") as file:
+        if isinstance(file_path, str):
+            file_name = self.results_path / path_add / file_path
+            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+        else:
+            file_name = Path(file_path)
+        with open(file_name, "w", encoding="UTF-8") as file:
             file.write(json.dumps(data, indent=2))
 
     def save_part_interpretability(

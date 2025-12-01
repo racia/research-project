@@ -5,6 +5,8 @@ teacher:
   to_continue: False
   mode: "eval"
   k: 15
+  interpretability:
+    use: False
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
@@ -12,32 +14,33 @@ student:
   temperature: 0.1
   to_continue: False
   mode: "eval"
-
-setting:
-  name: 'SD'
   interpretability:
     use: True
     aggregate: True
 
+setting:
+  name: 'SD'
+
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
+  baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/07-05-2025/tasks_1_5/init_prompt_reasoning/test_init_prompt_reasoning_results.csv"
   # Order: train, valid, test
   splits:
     train: False
-    valid: True
-    test: False
-  # to get all tasks use (will be converted to None)
-  task_ids: [ 1, 2 ]
+    valid: False
+    test: True
+  # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  samples_per_task: 3
+  task_ids: ~
+  samples_per_task: 100
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
     context: True
     question: False
+  # if to wrap the part prompt with the task description
   wrapper:
-    # if to wrap the part prompt with the task description
     context: |
       *TASK*
       Here are the context sentences:
@@ -49,7 +52,6 @@ data:
     answer: ""
 
 init_prompt:
-  # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
   examples:
@@ -64,7 +66,6 @@ init_prompt:
       *END OF EXAMPLE*
 
 eval_prompt:
-  # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/eval_prompt.txt"
   history: |
@@ -89,7 +90,6 @@ logging:
   print_to_file: False
 
 results:
-  save_heatmaps: True
   headers:
     - id_
     - task_id
@@ -133,4 +133,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "${oc.env:HOME}/research-project/outputs/test-encoding/SD/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD_debug/test/${now:%d-%m-%Y}/${now:%H-%M-%S}"

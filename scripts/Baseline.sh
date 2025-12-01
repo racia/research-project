@@ -3,21 +3,24 @@
 # Job name
 #SBATCH --job-name=baseline
 
-#SBATCH --time=4:30:00              # Job time limit (30 minutes)
+#SBATCH --time=00:30:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:1                 # Request 1 GPU
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
-#SBATCH --mem=128G                    # Total memory requested
+#SBATCH --mem=32G                    # Total memory requested
+#SBATCH --partition=dev_gpu_h100
 
 # Output and error logs
-#SBATCH --output="baseline_out.txt"
-#SBATCH --error="baseline_err.txt"
+#SBATCH --output="baseline_out.txt"        # TODO: adjust standard output log
+#SBATCH --error="baseline_err.txt"         # TODO: adjust error log
 
 # Email notifications
 #SBATCH --mail-user=""              # TODO: Add your email address
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
+# fix working directory
+cd ~/research-project || exit 1
 
 if command -v module >/dev/null 2>&1; then
     echo "Module util is available. Loading python and CUDA..."
@@ -68,8 +71,9 @@ export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 
 
 # declare array of config paths and names, e.g. "/path/to/config config_name"
+# TODO: add config(s) to array
 declare -a CONFIGS=(
-  "/home/hd/hd_hd/hd_ip303/research-project/settings/baseline/config baseline_test_6_10"
+  "$HOME/research-project/settings/baseline/config baseline_override"
 )
 
 for CONFIG in "${CONFIGS[@]}"

@@ -112,23 +112,6 @@ def define_sources(
     return items
 
 
-def join_headers(all_headers: list[list[str]]) -> tuple:
-    """
-    Get all unique headers from the data in one tuple
-
-    :param all_headers: list of headers from the data files
-    :return: list of unique headers
-    """
-    headers = []
-    lengths = [len(headers) for headers in all_headers]
-
-    for i in range(max(lengths)):
-        for header_list in all_headers:
-            if len(header_list) >= i and header_list[i] not in headers:
-                headers.append(header_list[i])
-    return tuple(headers)
-
-
 def get_headers(data: dict[Path, dict[str, list]]) -> tuple:
     """
     Check if the headers match in the data files and get all unique headers.
@@ -137,33 +120,15 @@ def get_headers(data: dict[Path, dict[str, list]]) -> tuple:
     :return: tuple of unique headers
     """
     all_headers = [[header for header in results.keys()] for results in data.values()]
-
     set_headers = [set(headers) for headers in all_headers]
     set_lengths = [len(headers) for headers in set_headers]
     fewest_headers_no = min(set_lengths)
-    fewest_headers = [
-        header for header in set_headers if len(header) == fewest_headers_no
-    ][0]
+    all_unique_headers = set(flatten(set_headers))
 
     if max(set_lengths) != fewest_headers_no:
-        print("Headers do not match:", *set_headers, sep="\n", end="\n\n")
+        warnings.warn("Headers do not match!")
 
-        all_headers = set(flatten(set_headers))
-        for headers, path in zip(set_headers, data.keys()):
-            if len(headers) > fewest_headers_no:
-                surplus_headers = headers - fewest_headers
-                warnings.warn(
-                    f"* Surplus * headers in {Path(*Path(path).parts[-6:])}:\n{surplus_headers}\n\n",
-                )
-            if len(headers) < len(all_headers):
-                missing_headers = all_headers - headers
-                warnings.warn(
-                    f"* Missing * headers in {Path(*Path(path).parts[-6:])}:\n{missing_headers}\n\n",
-                )
-
-    all_unique_headers = join_headers(all_headers)
-
-    return all_unique_headers
+    return tuple(all_unique_headers)
 
 
 def get_level_result(
@@ -182,6 +147,40 @@ def get_level_result(
         header: [value[j] for j in indices] for header, value in run_result.items()
     }
     return task_results
+
+
+def copy_folder_files(
+    source_path: Path, dest_path: Path, filter_pattern: re.Pattern = None
+) -> None:
+    """
+    Copy interpretability files from the source path to the destination path.
+    Does not disambiguate the source paths, so the files should be unique.
+    Filtering is only applied to files, not directories.
+    """
+    dest_path = dest_path / source_path.name
+    path_counter = 0
+    dest_path.mkdir(parents=True, exist_ok=True)
+    for path in source_path.iterdir():
+        if path.is_dir():
+            copy_folder_files(path, dest_path, filter_pattern)
+        elif path.is_file():
+            if "metrics" in path.name:
+                continue
+            if filter_pattern and not filter_pattern.search(path.name):
+                continue
+            try:
+                shutil.copy2(path, dest_path / path.name)
+                path_counter += 1
+            except shutil.SameFileError:
+                warnings.warn(
+                    f"File '{path.name}' already exists in the destination: {dest_path}"
+                )
+        else:
+            warnings.warn(f"'{path}' is not a not a directory, nor a file. Skipping..")
+            continue
+    print(
+        f"{Path(*Path(source_path).parts[-4:])} ==> {dest_path} ({path_counter} files copied)"
+    )
 
 
 def join_data(
@@ -245,16 +244,16 @@ def join_data(
 
 
 def run(
-    paths: list[str],
-    result_directory: str,
+    source_paths: list[str],
+    target_directory: str,
     level: str = "task",
     keyword: str = "results",
 ) -> None:
     """
     Run the data join.
 
-    :param paths: list of paths to the result files
-    :param result_directory: path to save the all_samples data
+    :param source_paths: list of paths to the result files to move
+    :param target_directory: path to save the all_samples data
     :param level: level of the data to join, either 'task' or 'sample'
     :param keyword: type_ to search for in the paths
     :return:
@@ -266,19 +265,33 @@ def run(
             f"Level '{level}' not recognized. Please choose 'task' or 'sample''."
         )
 
-    if len(paths) < 2:
+    if len(source_paths) < 2:
         raise ValueError(
-            "Please provide at least two paths to join. Now provided:", len(paths)
+            "Please provide at least two source_paths to join. Now provided:",
+            len(source_paths),
+        )
+
+    full_result_directory = PREFIX / target_directory
+    full_result_directory.mkdir(parents=True, exist_ok=True)
+    if next(full_result_directory.iterdir(), None):
+        raise FileExistsError(
+            f"Directory {target_directory} is not empty. Please provide an empty directory."
         )
 
     data = {}
     loader = DataLoader()
-    data_paths = [get_paths(PREFIX / path, keyword=keyword) for path in paths]
+    data_paths = [get_paths(PREFIX / path, keyword=keyword) for path in source_paths]
     flat_paths = list(flatten(data_paths))
 
     for path in flat_paths:
-        print(f"Loading data from {Path(*Path(path).parts[-6:])}")
-        data[path], _ = loader.load_results(path)
+        results, _ = loader.load_results(path, list_output=False)
+        if not results:
+            warnings.warn(
+                f"No data found in {Path(*Path(path).parts[-6:])}. Skipping this path."
+            )
+            continue
+        print(f"Loaded data from {Path(*Path(path).parts[-6:])}")
+        data[path] = results
 
     print("Number of files:", len(data))
 
@@ -291,185 +304,126 @@ def run(
     print("\nHeaders:")
     print(*headers)
 
-    print(f"\n{level.capitalize()}s saved from each path:")
-    for path, item_ids in zip(flat_paths, sources_items.values()):
-        print("Path:", Path(*path.parts[-4:]))
-        print(f"{level.capitalize()}s:", *item_ids, end="\n\n")
-
-    full_result_directory = PREFIX / result_directory
-    full_result_directory.mkdir(parents=True, exist_ok=True)
-    if next(full_result_directory.iterdir(), None):
-        raise FileExistsError(
-            f"Directory {result_directory} is not empty. Please provide an empty directory."
-        )
-
-    saver = DataSaver(save_to=full_result_directory)
+    saver = DataSaver(save_to=full_result_directory, loaded_baseline_results=False)
     saver.save_output(
         data=joined_data,
         headers=tuple(headers),
-        file_name=f"joined_{level}_results.csv",
+        file_name=f"joined_{keyword}_{level}_results.csv",
     )
 
-    logs = [get_paths(PREFIX / path, keyword="", file_format="log") for path in paths]
-
-    if logs:
-        flat_logs = list(flatten(logs))
-        log_differences = find_difference_in_paths(flat_logs)
-        if "" in log_differences:
-            raise NameError(
-                "The structure or log file names is not uniform. Please addition distinctions to standard log files."
-            )
-
-        print("\nCopying log files found:")
-
-        unique_logs = []
-        for log, difference in zip(flat_logs, log_differences):
-            if difference != log.stem:
-                unique_logs.append(
-                    full_result_directory / f"{log.stem}_{difference}{log.suffix}"
+    folders_to_move = ["iterations", "sample_results", "before", "after"]
+    source_paths = set(
+        [
+            path.parent if level == "task" else path.parent.parent
+            for path in sources_items.keys()
+        ]
+    )
+    differences = find_difference_in_paths(list(source_paths))
+    ids = "|".join(map(str, flatten(list(sources_items.values()))))
+    assert len(differences) == len(source_paths), (
+        f"The number of differences in the source paths does not match the number of source paths: "
+        f"{len(differences)} != {len(source_paths)}."
+    )
+    if re.search(r"\d+", keyword):
+        key = re.search(r"\d+", keyword).group(0)
+    else:
+        key = r"\d+"
+    for source_path, diff in zip(source_paths, differences):
+        path_counter = 0
+        if not diff:
+            diff = f"path_{path_counter}"
+        if level == "task":
+            filter_pattern = re.compile(rf"(?:{ids})-\d+-\d+|t_(?:{ids})_s_\d+")
+        elif level == "sample":
+            filter_pattern = re.compile(rf"{key}-(?:{ids})-\d+|t_{key}_s_(?:{ids})")
+        else:
+            filter_pattern = re.compile(r"")
+        for path in Path(source_path).iterdir():
+            if path.is_file() and "results" in path.name and path.name.endswith(".csv"):
+                # skip the results files, they are already joined and saved
+                continue
+            if path.is_dir() and path.name in folders_to_move:
+                copy_folder_files(path, full_result_directory, filter_pattern)
+            if path.is_dir() and path.name.startswith("."):
+                file_name = f"{path.stem}_{diff}{path.suffix}"
+                copy_folder_files(
+                    path, full_result_directory / file_name, filter_pattern
                 )
-            else:
-                unique_logs.append(full_result_directory / log.name)
-
-        for f_log, u_log in zip(flat_logs, unique_logs):
-            shutil.copy2(f_log, u_log)
-            if u_log.exists():
-                print(
-                    f"{Path(*f_log.parts[-4:])} ==> {Path(result_directory) / u_log.name}"
-                )
-            else:
-                raise FileNotFoundError(f"Not copied: {Path(*f_log.parts[-4:])}")
-
-    interpretability = [
-        get_paths(PREFIX / path.parent, keyword="interpretability", file_format="")
-        for path in flat_paths
-    ]
-    if interpretability:
-        flat_interpretability = list(flatten(interpretability))
-
-        attn_scores = [path / "attn_scores" for path in flat_interpretability]
-        plots = [path / "plots" for path in flat_interpretability]
-
-        if not (
-            len(attn_scores) == len(plots) == len(flat_paths) == len(sources_items)
-        ):
-            raise ValueError(
-                "The number of paths for attention scores and plots do not match."
-            )
-        for (source_path, item_ids), attn_scores_path, plots_path, path in zip(
-            sources_items.items(), attn_scores, plots, flat_paths
-        ):
-            assert str(source_path.parent.name) in str(
-                attn_scores_path
-            ), f"Path {source_path.parent.name} not found in {attn_scores_path}"
-
-            if "before" in str(attn_scores_path):
-                attn_path_add = Path("before", "interpretability")
-            else:
-                attn_path_add = Path("after", "interpretability")
-
-            attn_scores_count = 0
-            plots_count = 0
-
-            for item_id in item_ids:
-                (
-                    attn_scores_pattern,
-                    x_tokens_pattern,
-                    y_tokens_pattern,
-                    attn_map_pattern,
-                ) = (
-                    None,
-                    None,
-                    None,
-                    None,
-                )
-                if level == "task":
-                    attn_scores_pattern = re.compile(
-                        rf"attn_scores-{item_id}-\d+-\d+\.txt"
-                    )
-                    x_tokens_pattern = re.compile(rf"x_tokens-{item_id}-\d+-\d+\.txt")
-                    y_tokens_pattern = re.compile(rf"y_tokens-{item_id}-\d+-\d+\.txt")
-                    attn_map_pattern = re.compile(rf"attn_map-{item_id}-\d+-\d+\.pdf")
-                elif level == "sample":
-                    attn_scores_pattern = re.compile(
-                        rf"attn_scores-\d+-{item_id}-\d+\.txt"
-                    )
-                    x_tokens_pattern = re.compile(rf"x_tokens-\d+-{item_id}-\d+\.txt")
-                    y_tokens_pattern = re.compile(rf"y_tokens-\d+-{item_id}-\d+\.txt")
-                    attn_map_pattern = re.compile(rf"attn_map-\d+-{item_id}-\d+\.pdf")
-
-                for attn_scores_file in attn_scores_path.iterdir():
-                    if (
-                        attn_scores_pattern.match(attn_scores_file.name)
-                        or x_tokens_pattern.match(attn_scores_file.name)
-                        or y_tokens_pattern.match(attn_scores_file.name)
-                    ):
-                        attn_scores_count += 1
-                        dest_path = (
-                            full_result_directory / attn_path_add / "attn_scores"
-                        )
-                        dest_path.mkdir(parents=True, exist_ok=True)
-                        try:
-                            shutil.copy2(
-                                attn_scores_file, dest_path / attn_scores_file.name
-                            )
-                        except shutil.SameFileError:
-                            warnings.warn(
-                                f"File {attn_scores_file.name} already exists in the destination: {dest_path}"
-                            )
-                if attn_scores_count == 0:
+            if path.is_file():
+                try:
+                    file_name = f"{path.stem}_{diff}{path.suffix}"
+                    shutil.copy2(path, full_result_directory / file_name)
+                    path_counter += 1
+                except shutil.SameFileError:
                     warnings.warn(
-                        f"No attention scores found for {item_id} in {attn_scores_path}"
+                        f"File '{path.name}' already exists in the destination: {target_directory}"
                     )
+        print(
+            f"{Path(*Path(source_path).parts[-4:])} ==> {Path(target_directory)} ({path_counter} files copied)"
+        )
 
-                if plots_path.exists():
-                    for plot_file in plots_path.iterdir():
-                        if attn_map_pattern.match(plot_file.name):
-                            plots_count += 1
-                            dest_path = (
-                                PREFIX / result_directory / attn_path_add / "plots"
-                            )
-                            dest_path.mkdir(parents=True, exist_ok=True)
-                            try:
-                                shutil.copy2(plot_file, dest_path / plot_file.name)
-                            except shutil.SameFileError:
-                                warnings.warn(
-                                    f"File {plot_file.name} already exists in the destination: {dest_path}"
-                                )
-                else:
-                    warnings.warn(f"No plots found in {plots_path}")
-
-            print(
-                f"\n\nCopied interpretability files for {level} {', '.join(map(str, item_ids))} "
-                f"in the following directories:"
-            )
-            print(
-                f"{Path(*Path(path, attn_scores_path).parts[-6:])} "
-                f"==> {Path(*Path(result_directory / attn_path_add / 'attn_scores').parts[-6:])}"
-                f"\t\t({attn_scores_count} files)"
-            )
-            print(
-                f"{Path(*Path(path, plots_path).parts[-6:])} "
-                f"==> {Path(*Path(result_directory / attn_path_add / 'plots').parts[-6:])}"
-                f"\t\t({plots_count} files)"
-            )
+    print("\nData join completed successfully.")
 
     print(
-        "\nTo obtain the accuracy of the all_samples data, run the evaluation script.",
+        "To obtain the accuracy of the all_samples data, run the evaluation script.",
         end="\n\n",
     )
 
-    print("Data join completed successfully.")
-
 
 if __name__ == "__main__":
-    # TODO: addition paths of result directories that should be all_samples
-    paths = [
-        "results/skyline/valid/with_examples/reasoning/tasks_1_2",
-        "results/skyline/valid/with_examples/reasoning/tasks_3/all_samples",
-        "results/skyline/valid/with_examples/reasoning/tasks_4_10",
-        "results/skyline/valid/with_examples/reasoning/tasks_11_20",
-    ]
-    # TODO: path to save the all_samples data
-    result_directory = "results/skyline/valid/with_examples/reasoning/all_tasks"
-    run(paths=paths, result_directory=result_directory, level="task")
+    paths_baseline_da = {
+        # "task_1_2_v1": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_1_2",
+        # "task_1_2_v2": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_1_2_v2",
+        "task_1_5_v1": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_1_5_v1",
+        # "task_1_5_v2": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_1_5_v2",
+        # "task_1_5_v3": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_1_5_v3",
+        # "task_6": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_6",
+        # "task_6_v2": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_6_v2_task_7_part",
+        "task_6_10": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_6_10",
+        # "task_10_15_v1": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_10_15_v1",
+        # "task_10_15_v2": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_10_15_v2",
+        # "task_10_15_v3": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_10_15_v3",
+        "task_11_15": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_11_15",
+        "task_16_20": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_16_20",
+    }
+    paths_skyline_reas = {
+        "tasks_1_2": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/tasks_1_2",
+        "tasks_3_5": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/tasks_3_5",
+        "tasks_6_9": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/tasks_6_9",
+        "task_10": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/task_10",
+        "tasks_11_14": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/tasks_11_14",
+        "task_15": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/task_15",
+        "tasks_16_19": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/tasks_16_19",
+        "task_20": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/task_20",
+    }
+    paths_sd = {
+        "task_1": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_1",
+        "task_2": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_2",
+        "task_3": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_3",
+        "task_4": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning//task_4",
+        "task_5": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_5",
+        "task_6": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_6",
+        "task_7": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_7",
+        "task_8": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_8",
+        "task_9": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_9",
+        "task_10": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_10",
+        "task_11": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_11",
+        "task_12": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_12",
+        "task_13": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_13",
+        "task_14": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_14",
+        "task_15": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_15",
+        "task_16": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_16",
+        "task_17": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_17",
+        "task_18": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_18",
+        "task_19": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_19",
+        "task_20": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_20",
+    }
+
+    paths = []
+    result_directory = "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/all_tasks_joined"
+    run(
+        source_paths=paths,
+        target_directory=result_directory,
+        level="task",
+        keyword="reasoning_results",  # example: "t_20" for a specific task, "reasoning_results" for generally saved results
+    )  # might not work if too general!

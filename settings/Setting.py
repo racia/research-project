@@ -11,6 +11,7 @@ from data.DataSaver import DataSaver
 from inference.Chat import Chat
 from inference.DataLevels import Sample, SamplePart, Task, print_metrics
 from inference.Prompt import Prompt
+from inference.utils import Source
 from interpretability.utils import InterpretabilityResult
 from settings.Model import Model
 
@@ -30,6 +31,7 @@ class Setting(ABC):
         init_prompt: Prompt = None,
         multi_system: bool = False,
         saver: DataSaver = None,
+        name: str = "setting",
     ):
         """
          The setting class is an abstract class for all settings.
@@ -42,6 +44,7 @@ class Setting(ABC):
         :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
         :param saver: data saver to use
         """
+        self.name: str = name
         self.model: Model = model
         self.init_prompt: Prompt = init_prompt
         self.multi_system: bool = multi_system
@@ -89,7 +92,9 @@ class Setting(ABC):
         This is used for the multi-system setting when the final version of the chat is not available till the end.
         :return: interpretability result
         """
-        chat_ids = self.model.chat.convert_into_datatype("ids", identify_target=True)
+        chat_ids = self.model.chat.convert_into_datatype(
+            "ids", identify_target=True
+        ).to("cuda")
         output_tensor = self.model.model(
             chat_ids,
             return_dict=True,
@@ -101,8 +106,6 @@ class Setting(ABC):
             output_tensor=output_tensor,
             chat=self.model.chat,
             chat_ids=chat_ids,
-            part=self.part,
-            keyword="after",
         )
         return interpretability
 
@@ -126,6 +129,7 @@ class Setting(ABC):
         task_id: int,
         task_data: dict[int, list[SamplePart]],
         prompt_name: str,
+        start_from_sample: int = 0,
     ) -> Task:
         """
         Manages the data flow in and out of the model, iteratively going through
@@ -147,11 +151,17 @@ class Setting(ABC):
         :param task_data: task data as a dict of task ids and samples,
                           which themselves are dicts of sample ids and lists of SampleParts
         :param prompt_name: name of the prompt
+        :param start_from_sample: start from this sample for the first given task
         :return: results for the task in a list of dicts with each dict representing
                  one call to the model and will end up as one row of the table
         """
         task = Task(task_id, self.multi_system)
-        for sample_id, sample_parts in task_data.items():
+
+        if start_from_sample != 0:
+            print(f"Skipping samples 1-{start_from_sample-1}...")
+
+        for sample_id, sample_parts in list(task_data.items())[start_from_sample - 1 :]:
+
             sample = Sample(task_id, sample_id, self.multi_system)
             # each sample is a new conversation
             self.model.chat = Chat(
@@ -171,11 +181,11 @@ class Setting(ABC):
                     "*-",
                     end="\n\n\n",
                 )
-                sample.add_golden_answers(self.part.golden_answer)
-                sample.add_silver_reasoning(self.part.silver_reasoning)
-
                 # Only run the model if the results are not loaded
-                if not self.part.results:
+                if not self.part.results or not any(
+                    [self.part.results[-1].ids, self.part.results[-1].tokens]
+                ):
+                    print("Calling the model...")
                     decoded_output, interpretability = self.model.call(self.part)
                     self.part.set_output(
                         messages=self.model.chat.messages[-2:],
@@ -185,6 +195,29 @@ class Setting(ABC):
                     print(
                         f"The output of the {'student' if self.multi_system else 'model'}:",
                         decoded_output,
+                        end="\n\n\n",
+                        sep="\n",
+                        flush=True,
+                    )
+                else:
+                    print("The results are already loaded, skipping the model call...")
+                    self.model.chat.add_message(
+                        part=self.part,
+                        source=Source.user,
+                        ids=self.part.results[-1].ids[Source.user],
+                        tokens=self.part.results[-1].tokens[Source.user],
+                        wrapper=self.model.wrapper,
+                    )
+                    self.model.chat.add_message(
+                        part=self.part.results[-1].model_output,
+                        source=Source.assistant,
+                        ids=self.part.results[-1].ids[Source.assistant],
+                        tokens=self.part.results[-1].tokens[Source.assistant],
+                    )
+                    self.model.chat.identify_supp_sent_spans()
+                    print(
+                        "The output of the model:",
+                        self.part.results[-1].model_output,
                         end="\n\n\n",
                         sep="\n",
                         flush=True,
@@ -204,7 +237,7 @@ class Setting(ABC):
                         sample_id=sample_id,
                         part_id=self.part.part_id,
                         eval_dict=eval_dict,
-                        file_name="eval_dict_sd.json",
+                        file_name=f"eval_dict_{self.name}.json",
                     )
                     self.part.set_output(
                         messages=self.model.chat.messages[-2:],
@@ -226,7 +259,7 @@ class Setting(ABC):
 
             sample.print_sample_predictions()
             sample.calculate_metrics()
-            print_metrics(sample, table=True)
+            print_metrics(sample)
             task.add_sample(sample)
 
             # save the sample result
@@ -236,9 +269,10 @@ class Setting(ABC):
             #         sample_data=sample,
             #     )
 
-        print("\n- TASK RESULTS -", end="\n\n")
-        print_metrics(task, table=True)
         task.set_results()
+        task.calculate_metrics()
+        print("\n- TASK RESULTS -", end="\n\n")
+        print_metrics(task)
 
         print(f"The work on task {task_id} is finished successfully")
 

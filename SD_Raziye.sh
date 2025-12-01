@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=feedback
+#SBATCH --job-name=sd
 
 #SBATCH --time=14:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
@@ -10,8 +10,8 @@
 #SBATCH --mem=128G                    # Total memory requested
 
 # Output and error logs
-#SBATCH --output="feedback_out.txt"
-#SBATCH --error="feedback_err.txt"
+#SBATCH --output="sd_out.txt"
+#SBATCH --error="sd_err.txt"
 
 # Email notifications
 #SBATCH --mail-user=""
@@ -19,19 +19,19 @@
 
 ### JOB STEPS START HERE ###
 
-if command -v module >/dev/null 2>&1; then
-    echo "Module util is available. Loading python and CUDA..."
-    module load devel/python/3.12.3-gnu-14.2
-    module load devel/cuda/12.8
-else
-    echo "Module util is not available. Using manually installed python and CUDA..."
-fi
+# if command -v module >/dev/null 2>&1; then
+#     echo "Module util is available. Loading python and CUDA..."
+#     module load devel/python/3.12.3-gnu-14.2
+#     module load devel/cuda/12.8
+# else
+#     echo "Module util is not available. Using manually installed python and CUDA..."
+# fi
 
 # initialize shell to work with bash
 source ~/.bashrc 2>/dev/null
 
 # Activate the conda environment
-ENV_NAME=".env"
+ENV_NAME="venv"
 echo "Activating the project environment: $ENV_NAME"
 if ! source $ENV_NAME/bin/activate; then
     echo "Error: Failed to activate the project environment '$ENV_NAME'."
@@ -69,7 +69,7 @@ export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 
 # declare array of config paths and names, e.g. "/path/to/config config_name"
 declare -a CONFIGS=(
-  "$HOME/research-project/settings/feedback/config feedback_test_6_10"
+  "$HOME/research-project/settings/SD/config SD_test_1_5"
 )
 
 for CONFIG in "${CONFIGS[@]}"
@@ -77,7 +77,7 @@ do
   CONFIG_PATH=$(echo $CONFIG | cut -d ' ' -f 1)
   CONFIG_NAME=$(echo $CONFIG | cut -d ' ' -f 2)
   echo "Running the script with config: CONFIG_PATH=$CONFIG_PATH, CONFIG_NAME=$CONFIG_NAME"
-  python3 "$SCRIPT" --config-path $CONFIG_PATH --config-name $CONFIG_NAME hydra/job_logging=none
+  python3.9 "$SCRIPT" --config-path $CONFIG_PATH --config-name $CONFIG_NAME hydra/job_logging=none
 done
 
 # Verify if the script executed successfully

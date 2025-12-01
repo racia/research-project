@@ -1,25 +1,25 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=SD
+#SBATCH --job-name=feedback
 
-#SBATCH --time=00:30:00              # Job time limit (30 minutes)
-#SBATCH --time=10:00:00              # Job time limit (30 minutes)
+#SBATCH --time=09:30:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
 #SBATCH --mem=128G                    # Total memory requested
-#SBATCH --partition=gpu_h100
 
 # Output and error logs
-#SBATCH --output="SD_out.txt"        # TODO: adjust standard output log
-#SBATCH --error="SD_err.txt"         # TODO: adjust error log
+#SBATCH --output="feedback_out.txt"        # TODO: adjust standard output log
+#SBATCH --error="feedback_err.txt"         # TODO: adjust error log
 
 # Email notifications
 #SBATCH --mail-user=""              # TODO: Add your email address
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
+# fix working directory
+cd ~/research-project || exit 1
 
 if command -v module >/dev/null 2>&1; then
     echo "Module util is available. Loading python and CUDA..."
@@ -70,9 +70,8 @@ export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 
 
 # declare array of config paths and names, e.g. "/path/to/config config_name"
-# TODO: add config(s) to array
 declare -a CONFIGS=(
-  "$HOME/research-project/settings/SD/config final_SD_run_p"
+  "$HOME/research-project/settings/feedback/config feedback_config"
 )
 
 for CONFIG in "${CONFIGS[@]}"
