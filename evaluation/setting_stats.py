@@ -378,7 +378,10 @@ def analyse_intervention_probs(
 
 
 def analyse_overall_iterations(
-    overall_iterations: dict[str, pd.Series], result_path: str, setting: str
+    overall_iterations: dict[str, pd.Series],
+    result_path: str,
+    setting: str,
+    colourmap="tab10",
 ):
     """
     Analyse overall interactions across all tasks.
@@ -386,22 +389,22 @@ def analyse_overall_iterations(
     :param overall_iterations: dict[str, pd.Series], keys are task names, values are iterations
     :param result_path: str, path to save the results
     :param setting: str, the setting
+    :param colourmap: str, the colourmap, default "tab10"
     """
     vals_hist = pd.concat(overall_iterations.values(), ignore_index=True)
     vals_box = list(overall_iterations.values())
 
-    fig, ax = plt.subplots()
-    ax.hist(
-        vals_hist, bins=range(1, int(vals_hist.max()) + 2), align="left", rwidth=0.8
-    )
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.hist(vals_hist, bins=range(1, int(vals_hist.max()) + 2), align="left", log=True)
     ax.set_title("Overall Histogram of Iterations per Part")
     plt.suptitle(f"{setting}: Overall")
     ax.set_xlabel("Number of Iterations")
-    ax.set_ylabel("Frequency")
+    ax.set_ylabel("Frequency (log)")
+    plt.set_cmap(colourmap)
     plt.savefig(os.path.join(result_path, "overall_iterations_hist.png"))
     plt.close()
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(10, 5))
     ax.boxplot(vals_box, tick_labels=list(overall_iterations.keys()), manage_ticks=True)
     plt.xticks(rotation=45, ha="right")
     ax.set_title("Overall Boxplot of Iterations per Part")
@@ -422,7 +425,10 @@ def analyse_overall_iterations(
 
 
 def analyse_overall_interventions(
-    overall_interventions: dict[str, pd.Series], result_path: str, setting: str
+    overall_interventions: dict[str, pd.Series],
+    result_path: str,
+    setting: str,
+    colourmap="tab10",
 ):
     """
     Analyse overall interventions across all tasks.
@@ -430,17 +436,17 @@ def analyse_overall_interventions(
     :param overall_interventions: dict[str, pd.Series], keys are task names, values are interventions
     :param result_path: str, path to save the results
     :param setting: str, the setting
+    :param colourmap: str, the colourmap, default "tab10"
     """
     vals_hist = pd.concat(overall_interventions.values(), ignore_index=True)
 
-    fig, ax = plt.subplots()
-    ax.hist(
-        vals_hist, bins=range(0, int(vals_hist.max()) + 2), align="left", rwidth=0.8
-    )
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.hist(vals_hist, bins=range(0, int(vals_hist.max()) + 2), align="left", log=True)
     ax.set_title("Overall Histogram of Number of Interventions per Part")
     plt.suptitle(f"{setting}: Overall")
     ax.set_xlabel("Number of Interventions")
-    ax.set_ylabel("Frequency")
+    ax.set_ylabel("Frequency (log)")
+    plt.set_cmap(colourmap)
     plt.savefig(os.path.join(result_path, "overall_num_interventions_hist.png"))
     plt.close()
 
@@ -459,7 +465,10 @@ def analyse_overall_interventions(
 
 
 def analyse_overall_approved_tokens(
-    overall_approved_tokens: dict[str, pd.Series], result_path: str, setting: str
+    overall_approved_tokens: dict[str, pd.Series],
+    result_path: str,
+    setting: str,
+    colourmap="tab10",
 ):
     """
     Analyse overall approved token probabilities across all tasks.
@@ -467,6 +476,7 @@ def analyse_overall_approved_tokens(
     :param overall_approved_tokens: dict[str, pd.Series], keys are task names, values are approved token probabilities
     :param result_path: str, path to save the results
     :param setting: str, the setting
+    :param colourmap: str, the colourmap, default "tab10"
     """
     vals_hist = []
     vals_box = []
@@ -480,16 +490,17 @@ def analyse_overall_approved_tokens(
 
     vals_hist = pd.Series(vals_hist)
 
-    fig, ax = plt.subplots()
-    ax.hist(vals_hist, bins=100)
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.hist(vals_hist, bins=100, log=True)
     ax.set_title("Overall Histogram of Approved Token Probabilities")
     plt.suptitle(f"{setting}: Overall")
     ax.set_xlabel("Probability")
-    ax.set_ylabel("Frequency")
+    ax.set_ylabel("Frequency (log)")
+    plt.set_cmap(colourmap)
     plt.savefig(os.path.join(result_path, "overall_approved_token_probs_hist.png"))
     plt.close()
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(10, 5))
     ax.boxplot(
         vals_box, tick_labels=list(overall_approved_tokens.keys()), manage_ticks=True
     )
@@ -497,12 +508,16 @@ def analyse_overall_approved_tokens(
     ax.set_title("Overall Boxplot of Approved Token Probabilities")
     plt.suptitle(f"{setting}: Overall")
     ax.set_ylabel("Probability")
+    plt.set_cmap(colourmap)
     plt.savefig(os.path.join(result_path, "overall_approved_token_probs_boxplot.png"))
     plt.close()
 
 
 def analyse_overall_intervention_probs(
-    overall_intervention_probs: dict[str, pd.Series], result_path: str, setting: str
+    overall_intervention_probs: dict[str, pd.Series],
+    result_path: str,
+    setting: str,
+    colourmap="tab10",
 ):
     """
     Analyse overall intervention token probabilities across all tasks.
@@ -510,6 +525,7 @@ def analyse_overall_intervention_probs(
     :param overall_intervention_probs: dict[str, pd.Series], keys are task names, values are intervention token probabilities
     :param result_path: str, path to save the results
     :param setting: str, the setting
+    :param colourmap: str, the colourmap, default "tab10"
     """
     vals_hist = []
     vals_box = []
@@ -523,16 +539,17 @@ def analyse_overall_intervention_probs(
 
     vals_hist = pd.Series(vals_hist)
 
-    fig, ax = plt.subplots()
-    ax.hist(vals_hist, bins=100)
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.hist(vals_hist, bins=100, log=True)
     ax.set_title("Overall Histogram of Intervention Token Probabilities")
     plt.suptitle(f"{setting}: Overall")
     ax.set_xlabel("Probability")
-    ax.set_ylabel("Frequency")
+    ax.set_ylabel("Frequency (log)")
+    plt.set_cmap(colourmap)
     plt.savefig(os.path.join(result_path, "overall_intervention_token_probs_hist.png"))
     plt.close()
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(10, 5))
     ax.boxplot(
         vals_box, tick_labels=list(overall_intervention_probs.keys()), manage_ticks=True
     )
@@ -540,6 +557,7 @@ def analyse_overall_intervention_probs(
     ax.set_title("Overall Boxplot of Intervention Token Probabilities")
     plt.suptitle(f"{setting}: Overall")
     ax.set_ylabel("Probability")
+    plt.set_cmap(colourmap)
     plt.savefig(
         os.path.join(result_path, "overall_intervention_token_probs_boxplot.png")
     )
