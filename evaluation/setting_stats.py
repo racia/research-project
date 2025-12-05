@@ -113,42 +113,50 @@ def process_eval_dicts(path: str) -> dict[str, pd.DataFrame]:
     return clean_dfs
 
 
-def overall_stats(dfs: dict[str, pd.DataFrame], result_path: str):
+def overall_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
     """
     Compute overall statistics across all tasks and save the results.
 
     :param dfs: dict[str, pd.DataFrame], keys are task names, values are cleaned dataframes
     :param result_path: str, path to save the overall statistics results
+    :param setting: str, the setting
     """
     pass
 
 
-def analyse_iterations(task: str, df: pd.DataFrame, result_path: str):
+def analyse_iterations(
+    task: str, df: pd.DataFrame, result_path: str, setting: str
+) -> pd.Series:
     """
     Analyse the amount of iterations per part.
 
     :param task: str, the task name
     :param df: pd.DataFrame, the evaluation dataframe
     :param result_path: str, path to save the results
-    :return:
+    :param setting: str, the setting
+    :return: pd.Series, the amount of iterations
     """
     # histogram
-    plt.hist(
+    fig, ax = plt.subplots()
+    ax.hist(
         df["iterations"],
         bins=range(1, df["iterations"].max() + 2),
         align="left",
         rwidth=0.8,
     )
-    plt.title("Histogram of Iterations per Part")
-    plt.xlabel("Number of Iterations")
-    plt.ylabel("Frequency")
+    ax.set_title("Histogram of Iterations per Part")
+    plt.suptitle(f"{setting}: {task}")
+    ax.set_xlabel("Number of Iterations")
+    ax.set_ylabel("Frequency")
     plt.savefig(os.path.join(result_path, "iterations_hist.png"))
     plt.close()
 
     # boxplot
-    plt.boxplot(df["iterations"])
-    plt.title("Boxplot of Iterations per Part")
-    plt.ylabel("Number of Iterations")
+    fig, ax = plt.subplots()
+    ax.boxplot(df["iterations"], label=[task])
+    ax.set_title("Boxplot of Iterations per Part")
+    plt.suptitle(f"{setting}: {task}")
+    ax.set_ylabel("Number of Iterations")
     plt.savefig(os.path.join(result_path, "iterations_boxplot.png"))
     plt.close()
 
@@ -163,8 +171,12 @@ def analyse_iterations(task: str, df: pd.DataFrame, result_path: str):
         for k, v in dist.items():
             f.write(f"  {k} -> {v}\n")
 
+    return df["iterations"]
 
-def analyse_interventions(task: str, df: pd.DataFrame, result_path: str):
+
+def analyse_interventions(
+    task: str, df: pd.DataFrame, result_path: str, setting: str
+) -> (pd.Series, pd.Series):
     """
     Analyse the amount of interventions per part.
     TODO: should be normalised by length of part?
@@ -172,7 +184,8 @@ def analyse_interventions(task: str, df: pd.DataFrame, result_path: str):
     :param task: str, the task name
     :param df: pd.DataFrame, the evaluation dataframe
     :param result_path: str, path to save the results
-    :return:
+    :param setting: str, the setting
+    :return: (pd.Series, pd.Series), the intervention indices and the amount of interventions
     """
     # safety
     df = df.copy()
@@ -187,10 +200,12 @@ def analyse_interventions(task: str, df: pd.DataFrame, result_path: str):
     max_interv = df["num_interventions"].max()
     bins = range(0, max_interv + 2)  # one bin per integer count
 
-    plt.hist(df["num_interventions"], bins=bins, align="left", rwidth=0.8)
-    plt.title("Histogram of Number of Interventions per Part")
-    plt.xlabel("Number of Interventions")
-    plt.ylabel("Frequency")
+    fig, ax = plt.subplots()
+    ax.hist(df["num_interventions"], bins=bins, align="left", rwidth=0.8)
+    ax.set_title("Histogram of Number of Interventions per Part")
+    plt.suptitle(f"{setting}: {task}")
+    ax.set_xlabel("Number of Interventions")
+    ax.set_ylabel("Frequency")
     plt.savefig(os.path.join(result_path, "num_interventions_hist.png"))
     plt.close()
 
@@ -212,15 +227,20 @@ def analyse_interventions(task: str, df: pd.DataFrame, result_path: str):
         else:
             f.write("No interventions found.\n")
 
+    return df["intervention_ix"], df["num_interventions"]
 
-def analyse_early_stops(task: str, df: pd.DataFrame, result_path: str):
+
+def analyse_early_stops(
+    task: str, df: pd.DataFrame, result_path: str, setting: str
+) -> pd.Series:
     """
     Analyse how often early stopping occurred.
 
     :param task: str, the task name
     :param df: pd.DataFrame, the evaluation dataframe
     :param result_path: str, path to save the results
-    :return:
+    :param setting: str, the setting
+    :return: pd.Series, the amount of early stops
     """
     df = df.copy()
     early_stops = df["early_stop"] == True
@@ -235,15 +255,20 @@ def analyse_early_stops(task: str, df: pd.DataFrame, result_path: str):
         else:
             f.write("No parts found.\n")
 
+    return df["early_stop"]
 
-def analyse_empty_suggestions(task: str, df: pd.DataFrame, result_path: str):
+
+def analyse_empty_suggestions(
+    task: str, df: pd.DataFrame, result_path: str, setting: str
+) -> pd.Series:
     """
     Analyse how often empty suggestions were made.
 
     :param task: str, the task name
     :param df: pd.DataFrame, the evaluation dataframe
     :param result_path: str, path to save the results
-    :return:
+    :param setting: str, the setting
+    :return: pd.Series, the empty suggestion counts
     """
     df = df.copy()
 
@@ -263,15 +288,20 @@ def analyse_empty_suggestions(task: str, df: pd.DataFrame, result_path: str):
         else:
             f.write("No parts found.\n")
 
+    return df["teacher_empty_suggestion"]
 
-def analyse_approved_tokens(task: str, df: pd.DataFrame, result_path: str):
+
+def analyse_approved_tokens(
+    task: str, df: pd.DataFrame, result_path: str, setting: str
+) -> pd.Series:
     """
     Analyse the probabilities of the approved tokens.
 
     :param task: str, the task name
     :param df: pd.DataFrame, the evaluation dataframe
     :param result_path: str, path to save the results
-    :return:
+    :param setting: str, the setting
+    :return: pd.Series, the approved token probabilities
     """
     df = df.copy()
 
@@ -284,28 +314,37 @@ def analyse_approved_tokens(task: str, df: pd.DataFrame, result_path: str):
     for prob_dict in df["teacher_prob_floats"]:
         all_probs.extend(prob_dict.values())
 
-    plt.hist(all_probs, bins=100)
-    plt.title("Histogram of Approved Token Probabilities")
-    plt.xlabel("Probability")
-    plt.ylabel("Frequency")
+    fig, ax = plt.subplots()
+    ax.hist(all_probs, bins=100)
+    ax.set_title("Histogram of Approved Token Probabilities")
+    plt.suptitle(f"{setting}: {task}")
+    ax.set_xlabel("Probability")
+    ax.set_ylabel("Frequency")
     plt.savefig(os.path.join(result_path, "approved_token_probs_hist.png"))
     plt.close()
 
-    plt.boxplot(all_probs)
-    plt.title("Boxplot of Approved Token Probabilities")
-    plt.ylabel("Probability")
+    fig, ax = plt.subplots()
+    ax.boxplot(all_probs, label=[task])
+    ax.set_title("Boxplot of Approved Token Probabilities")
+    plt.suptitle(f"{setting}: {task}")
+    ax.set_ylabel("Probability")
     plt.savefig(os.path.join(result_path, "approved_token_probs_boxplot.png"))
     plt.close()
 
+    return df["teacher_prob_floats"]
 
-def analyse_intervention_probs(task: str, df: pd.DataFrame, result_path: str):
+
+def analyse_intervention_probs(
+    task: str, df: pd.DataFrame, result_path: str, setting: str
+) -> pd.Series:
     """
     Analyse the probabilities of the intervention tokens.
 
     :param task: str, the task name
     :param df: pd.DataFrame, the evaluation dataframe
     :param result_path: str, path to save the results
-    :return:
+    :param setting: str, the setting
+    :return: pd.Series, the intervention probabilities per part
     """
     df = df.copy()
 
@@ -318,51 +357,284 @@ def analyse_intervention_probs(task: str, df: pd.DataFrame, result_path: str):
     for prob_dict in df["intervention_with_prob_floats"]:
         all_intervention_probs.extend(prob_dict.values())
 
-    plt.hist(all_intervention_probs, bins=100)
-    plt.title("Histogram of Intervention Token Probabilities")
-    plt.xlabel("Probability")
-    plt.ylabel("Frequency")
+    fig, ax = plt.subplots()
+    ax.hist(all_intervention_probs, bins=100)
+    ax.set_title("Histogram of Intervention Token Probabilities")
+    plt.suptitle(f"{setting}: {task}")
+    ax.set_xlabel("Probability")
+    ax.set_ylabel("Frequency")
     plt.savefig(os.path.join(result_path, "intervention_token_probs_hist.png"))
     plt.close()
 
-    plt.boxplot(all_intervention_probs)
-    plt.title("Boxplot of Intervention Token Probabilities")
-    plt.ylabel("Probability")
+    fig, ax = plt.subplots()
+    ax.boxplot(all_intervention_probs, label=[task])
+    ax.set_title("Boxplot of Intervention Token Probabilities")
+    plt.suptitle(f"{setting}: {task}")
+    ax.set_ylabel("Probability")
     plt.savefig(os.path.join(result_path, "intervention_token_probs_boxplot.png"))
     plt.close()
 
+    return df["intervention_with_prob_floats"]
 
-def run_stats(dfs: dict[str, pd.DataFrame], result_path: str):
+
+def analyse_overall_iterations(
+    overall_iterations: dict[str, pd.Series], result_path: str, setting: str
+):
+    """
+    Analyse overall interactions across all tasks.
+
+    :param overall_iterations: dict[str, pd.Series], keys are task names, values are iterations
+    :param result_path: str, path to save the results
+    :param setting: str, the setting
+    """
+    vals_hist = pd.concat(overall_iterations.values(), ignore_index=True)
+    vals_box = list(overall_iterations.values())
+
+    fig, ax = plt.subplots()
+    ax.hist(
+        vals_hist, bins=range(1, int(vals_hist.max()) + 2), align="left", rwidth=0.8
+    )
+    ax.set_title("Overall Histogram of Iterations per Part")
+    plt.suptitle(f"{setting}: Overall")
+    ax.set_xlabel("Number of Iterations")
+    ax.set_ylabel("Frequency")
+    plt.savefig(os.path.join(result_path, "overall_iterations_hist.png"))
+    plt.close()
+
+    fig, ax = plt.subplots()
+    ax.boxplot(vals_box, tick_labels=list(overall_iterations.keys()), manage_ticks=True)
+    plt.xticks(rotation=45, ha="right")
+    ax.set_title("Overall Boxplot of Iterations per Part")
+    plt.suptitle(f"{setting}: Overall")
+    ax.set_ylabel("Number of Iterations")
+    plt.savefig(os.path.join(result_path, "overall_iterations_boxplot.png"))
+    plt.close()
+
+    with open(os.path.join(result_path, "overall_iterations_stats.txt"), "w") as f:
+        f.write(f"Overall Mean iterations: {vals_hist.mean()}\n")
+        f.write(f"Overall Median iterations: {vals_hist.median()}\n")
+        f.write(f"Overall Max iterations: {vals_hist.max()}\n")
+        f.write(f"Overall Min iterations: {vals_hist.min()}\n")
+        f.write(f"Overall Distribution:\n")
+        dist = vals_hist.value_counts().sort_index()
+        for k, v in dist.items():
+            f.write(f"  {k} -> {v}\n")
+
+
+def analyse_overall_interventions(
+    overall_interventions: dict[str, pd.Series], result_path: str, setting: str
+):
+    """
+    Analyse overall interventions across all tasks.
+
+    :param overall_interventions: dict[str, pd.Series], keys are task names, values are interventions
+    :param result_path: str, path to save the results
+    :param setting: str, the setting
+    """
+    vals_hist = pd.concat(overall_interventions.values(), ignore_index=True)
+
+    fig, ax = plt.subplots()
+    ax.hist(
+        vals_hist, bins=range(0, int(vals_hist.max()) + 2), align="left", rwidth=0.8
+    )
+    ax.set_title("Overall Histogram of Number of Interventions per Part")
+    plt.suptitle(f"{setting}: Overall")
+    ax.set_xlabel("Number of Interventions")
+    ax.set_ylabel("Frequency")
+    plt.savefig(os.path.join(result_path, "overall_num_interventions_hist.png"))
+    plt.close()
+
+    with open(
+        os.path.join(result_path, "overall_num_interventions_stats.txt"), "w"
+    ) as f:
+        f.write(
+            f"Overall Mean interventions (with interventions): {vals_hist.mean():.3f}\n"
+        )
+        f.write(f"Overall Median interventions: {vals_hist.median():.3f}\n")
+        f.write(f"Overall Max interventions: {vals_hist.max()}\n")
+        f.write(f"Overall Distribution:\n")
+        dist = vals_hist.value_counts().sort_index()
+        for k, v in dist.items():
+            f.write(f"  {k} -> {v}\n")
+
+
+def analyse_overall_approved_tokens(
+    overall_approved_tokens: dict[str, pd.Series], result_path: str, setting: str
+):
+    """
+    Analyse overall approved token probabilities across all tasks.
+
+    :param overall_approved_tokens: dict[str, pd.Series], keys are task names, values are approved token probabilities
+    :param result_path: str, path to save the results
+    :param setting: str, the setting
+    """
+    vals_hist = []
+    vals_box = []
+    for task in overall_approved_tokens:
+        probs_list = overall_approved_tokens[task].apply(
+            lambda d: list(d.values()) if isinstance(d, dict) else []
+        )
+        flattened = [prob for sublist in probs_list for prob in sublist]
+        vals_hist.extend(flattened)
+        vals_box.append(flattened)
+
+    vals_hist = pd.Series(vals_hist)
+
+    fig, ax = plt.subplots()
+    ax.hist(vals_hist, bins=100)
+    ax.set_title("Overall Histogram of Approved Token Probabilities")
+    plt.suptitle(f"{setting}: Overall")
+    ax.set_xlabel("Probability")
+    ax.set_ylabel("Frequency")
+    plt.savefig(os.path.join(result_path, "overall_approved_token_probs_hist.png"))
+    plt.close()
+
+    fig, ax = plt.subplots()
+    ax.boxplot(
+        vals_box, tick_labels=list(overall_approved_tokens.keys()), manage_ticks=True
+    )
+    plt.xticks(rotation=45, ha="right")
+    ax.set_title("Overall Boxplot of Approved Token Probabilities")
+    plt.suptitle(f"{setting}: Overall")
+    ax.set_ylabel("Probability")
+    plt.savefig(os.path.join(result_path, "overall_approved_token_probs_boxplot.png"))
+    plt.close()
+
+
+def analyse_overall_intervention_probs(
+    overall_intervention_probs: dict[str, pd.Series], result_path: str, setting: str
+):
+    """
+    Analyse overall intervention token probabilities across all tasks.
+
+    :param overall_intervention_probs: dict[str, pd.Series], keys are task names, values are intervention token probabilities
+    :param result_path: str, path to save the results
+    :param setting: str, the setting
+    """
+    vals_hist = []
+    vals_box = []
+    for task in overall_intervention_probs:
+        probs_list = overall_intervention_probs[task].apply(
+            lambda d: list(d.values()) if isinstance(d, dict) else []
+        )
+        flattened = [prob for sublist in probs_list for prob in sublist]
+        vals_hist.extend(flattened)
+        vals_box.append(flattened)
+
+    vals_hist = pd.Series(vals_hist)
+
+    fig, ax = plt.subplots()
+    ax.hist(vals_hist, bins=100)
+    ax.set_title("Overall Histogram of Intervention Token Probabilities")
+    plt.suptitle(f"{setting}: Overall")
+    ax.set_xlabel("Probability")
+    ax.set_ylabel("Frequency")
+    plt.savefig(os.path.join(result_path, "overall_intervention_token_probs_hist.png"))
+    plt.close()
+
+    fig, ax = plt.subplots()
+    ax.boxplot(
+        vals_box, tick_labels=list(overall_intervention_probs.keys()), manage_ticks=True
+    )
+    plt.xticks(rotation=45, ha="right")
+    ax.set_title("Overall Boxplot of Intervention Token Probabilities")
+    plt.suptitle(f"{setting}: Overall")
+    ax.set_ylabel("Probability")
+    plt.savefig(
+        os.path.join(result_path, "overall_intervention_token_probs_boxplot.png")
+    )
+    plt.close()
+
+
+def run_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
     """
     Run statistics on the processed evaluation dataframes and save the results.
 
     :param dfs: dict[str, pd.DataFrame], keys are task names, values are cleaned dataframes
     :param result_path: str, path to save the statistics results
+    :param setting: str, the setting
     """
     if not os.path.exists(result_path):
         os.makedirs(result_path)
 
-    # do overall stats
-    # TODO
+    overall_iterations = {}
+
+    if setting in ["Speculative decoding", "SD"]:
+        overall_interventions = {}
+        overall_early_stops = {}
+        overall_empty_suggestions = {}
+        overall_approved_tokens = {}
+        overall_intervention_probs = {}
 
     # do task-specific stats
     for task, df in dfs.items():
         task_result_path = os.path.join(result_path, f"{task}")
         if not os.path.exists(task_result_path):
             os.makedirs(task_result_path)
-        analyse_iterations(task, df, task_result_path)
-        analyse_interventions(task, df, task_result_path)
-        analyse_early_stops(task, df, task_result_path)
-        analyse_empty_suggestions(task, df, task_result_path)
-        analyse_approved_tokens(task, df, task_result_path)
-        analyse_intervention_probs(task, df, task_result_path)
+
+        iterations = analyse_iterations(task, df, task_result_path, setting)
+        overall_iterations[task] = iterations
+
+        if setting in ["Speculative decoding", "SD"]:
+            intervention_ixs, interventions = analyse_interventions(
+                task, df, task_result_path, setting
+            )
+            overall_interventions[task] = interventions
+            early_stops = analyse_early_stops(task, df, task_result_path, setting)
+            overall_early_stops[task] = early_stops
+            emtpy_suggestions = analyse_empty_suggestions(
+                task, df, task_result_path, setting
+            )
+            overall_empty_suggestions[task] = emtpy_suggestions
+            approved_tokens = analyse_approved_tokens(
+                task, df, task_result_path, setting
+            )
+            overall_approved_tokens[task] = approved_tokens
+            intervention_probs = analyse_intervention_probs(
+                task, df, task_result_path, setting
+            )
+            overall_intervention_probs[task] = intervention_probs
+        if setting in ["Feedback"]:
+            pass
+
+    sort_by_task_number = lambda item: int(item[0].split("_")[1])
+    # overall stats
+    analyse_overall_iterations(
+        dict(sorted(overall_iterations.items(), key=sort_by_task_number)),
+        result_path,
+        setting,
+    )
+
+    if setting in ["Speculative decoding", "SD"]:
+        analyse_overall_interventions(
+            dict(sorted(overall_interventions.items(), key=sort_by_task_number)),
+            result_path,
+            setting,
+        )
+        analyse_overall_approved_tokens(
+            dict(sorted(overall_approved_tokens.items(), key=sort_by_task_number)),
+            result_path,
+            setting,
+        )
+        analyse_overall_intervention_probs(
+            dict(sorted(overall_intervention_probs.items(), key=sort_by_task_number)),
+            result_path,
+            setting,
+        )
 
 
 def main():
+    setting = "SD"
     data_path = "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/v1/all_tasks_joined"
     dfs = process_eval_dicts(data_path)
     result_path = f"/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/v1/all_tasks_stats"
-    run_stats(dfs=dfs, result_path=result_path)
+    run_stats(dfs=dfs, result_path=result_path, setting=setting)
+
+    setting = "Feedback"
+    data_path = "/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/v1/all_tasks_joined"
+    dfs = process_eval_dicts(data_path)
+    result_path = f"/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/v1/all_tasks_stats"
+    run_stats(dfs=dfs, result_path=result_path, setting=setting)
 
 
 if __name__ == "__main__":
