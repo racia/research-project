@@ -119,7 +119,7 @@ class Model:
         data: SamplePart | str = None,
         from_chat: bool = False,
         to_continue: bool = False,
-        filter_eot: bool = False,
+        filter_eot: bool = True,
     ) -> tuple[str, InterpretabilityResult]:
         """
         Calls the model with memory optimizations and optionally with Interpretability (depends on config).
@@ -156,6 +156,7 @@ class Model:
                 identify_target=True if call_from_part else False,
                 to_continue=to_continue,
             )
+
             inputs = {"input_ids": chat_ids.to("cuda")}
             torch.cuda.empty_cache()
 
@@ -194,6 +195,8 @@ class Model:
                         encoded_output = self.tokenizer.convert_tokens_to_ids("''")
 
                 decoded_output = self.tokenizer.decode(encoded_output).strip()
+
+                print(f"DEBUG: Model output (decoded): {decoded_output}", flush=True)
 
                 # the model expanded on the message, so we need to update it
                 if to_continue:
