@@ -86,7 +86,7 @@ def run_setting(cfg: DictConfig) -> None:
     for split in data_splits:
         if cfg.data.get("baseline_results", None):
             parts_per_split[split], _ = loader.load_results(
-                results_paths=[cfg.data.baseline_results],
+                results_path=cfg.data.baseline_results,
                 data_path=cfg.data.path,
                 split=split,
                 tasks=cfg.data.task_ids,
@@ -289,11 +289,11 @@ def run_setting(cfg: DictConfig) -> None:
                 else:
                     setting.init_prompt.use_original_prompt()
 
-                start_from_sample = 0
-                if task_id in loader.tasks and cfg.data.get("for_all_tasks", False):
+                # if the current task is the first specified task, start from the specified sample if given
+                if task_id == cfg.data.get("task_ids", [None])[0]:
                     start_from_sample = cfg.data.get("start_from_sample", 0)
-                elif task_id == loader.tasks[0]:
-                    start_from_sample = cfg.data.get("start_from_sample", 0)
+                else:
+                    start_from_sample = 0
 
                 print(
                     f"start_from_sample: {start_from_sample}, task_id: {cfg.data.get('tasks', [None])[0]}"
@@ -317,7 +317,7 @@ def run_setting(cfg: DictConfig) -> None:
                 print("______________________________", end="\n\n")
 
             number_of_accuracies = [
-                len(e[0].exact_match_accuracy) for e in split.evaluators
+                len(e.exact_match_accuracy) for e in split.evaluators
             ]
             if len(tasks) not in number_of_accuracies:
                 raise ValueError(
@@ -330,10 +330,7 @@ def run_setting(cfg: DictConfig) -> None:
                 end="\n\n",
             )
             items = zip(
-                split.versions,
-                split.features,
-                [e[0] for e in split.evaluators],
-                prompt_evaluators,
+                split.versions, split.features, split.evaluators, prompt_evaluators
             )
             for version, features, split_eval, prompt_eval in items:
                 print(f"The features {version} applying the setting:")
@@ -403,10 +400,4 @@ def run_setting(cfg: DictConfig) -> None:
 
 
 if __name__ == "__main__":
-    # module load devel/python/3.12.3-gnu-14.2
-    # module load devel/cuda/12.8
-    # source ~/.bashrc 2>/dev/null
-    # source .env/bin/activate
-    # export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
-    # python3 running_script.py --config-path settings/feedback/config --config-name feedback_test_3 hydra/job_logging=none
     run_setting()
