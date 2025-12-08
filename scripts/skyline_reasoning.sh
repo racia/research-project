@@ -1,27 +1,30 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=skyline
+#SBATCH --job-name=skyline_reasoning
 
-#SBATCH --time=8:00:00              # Job time limit (30 minutes)
+#SBATCH --time=4:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
-#SBATCH --gres=gpu:2                 # Request 2 GPUs
+#SBATCH --gres=gpu:2                # Request 4 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
-#SBATCH --mem=128G                    # Total memory requested
+#SBATCH --partition=gpu_h100
+#SBATCH --mem=64GB
 
 # Output and error logs
-#SBATCH --output="skyline_out.txt"        # TODO: adjust standard output log
-#SBATCH --error="skyline_err.txt"         # TODO: adjust error log
+#SBATCH --output="sky_reason_out.txt"
+#SBATCH --error="sky_reason_err.txt"
 
 # Email notifications
-#SBATCH --mail-user=""              # TODO: Add your email address
+#SBATCH --mail-user=""
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
+# fix working directory
+cd ~/research-project || exit 1
 
 if command -v module >/dev/null 2>&1; then
     echo "Module util is available. Loading python and CUDA..."
-    module load devel/python/3.12.3-gnu-14.2
+    module load devel/python/3.13.1-gnu-14.2
     module load devel/cuda/12.8
 else
     echo "Module util is not available. Using manually installed python and CUDA..."
@@ -58,30 +61,16 @@ fi
         sleep 30
     done
 ) > gpu_monitor.log &
-MONITOR_PID=$!#
+MONITOR_PID=$!
 
 # Run the Python script
-SCRIPT="running_script.py"
+SCRIPT="get_silver_reasoning.py"
 
 # Set the environment variable to allow PyTorch to allocate more memory
 export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 
 
-# declare array of config paths and names, e.g. "/path/to/config config_name"
-declare -a CONFIGS=(
-  "$HOME/research-project/settings/skyline/config skyline_test_1_5"
-  "$HOME/research-project/settings/skyline/config skyline_test_6_10"
-  "$HOME/research-project/settings/skyline/config skyline_test_11_15"
-  "$HOME/research-project/settings/skyline/config skyline_test_16_20"
-)
-
-for CONFIG in "${CONFIGS[@]}"
-do
-  CONFIG_PATH=$(echo $CONFIG | cut -d ' ' -f 1)
-  CONFIG_NAME=$(echo $CONFIG | cut -d ' ' -f 2)
-  echo "Running the script with config: CONFIG_PATH=$CONFIG_PATH, CONFIG_NAME=$CONFIG_NAME"
-  python3 "$SCRIPT" --config-path $CONFIG_PATH --config-name $CONFIG_NAME hydra/job_logging=none
-done
+python3 "$SCRIPT"
 
 # Verify if the script executed successfully
 if [ $? -eq 0 ]; then

@@ -1,23 +1,25 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=feedback
+#SBATCH --job-name=eval_baseline
 
-#SBATCH --time=14:00:00              # Job time limit (30 minutes)
+#SBATCH --time=5:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
-#SBATCH --gres=gpu:2                 # Request 2 GPUs
+#SBATCH --gres=gpu:1                 # Request 1 GPU
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
 #SBATCH --mem=128G                    # Total memory requested
 
 # Output and error logs
-#SBATCH --output="feedback_out.txt"
-#SBATCH --error="feedback_err.txt"
+#SBATCH --output="eval_baseline.txt"
+#SBATCH --error="eval_baseline_err.txt"
 
 # Email notifications
-#SBATCH --mail-user=""
+#SBATCH --mail-user=""              # TODO: Add your email address
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
+# fix working directory
+cd ~/research-project || exit 1
 
 if command -v module >/dev/null 2>&1; then
     echo "Module util is available. Loading python and CUDA..."
@@ -60,25 +62,16 @@ fi
 ) > gpu_monitor.log &
 MONITOR_PID=$!#
 
-# Run the Python script
-SCRIPT="running_script.py"
-
 # Set the environment variable to allow PyTorch to allocate more memory
 export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 
+REP_DIR="/pfs/work9/workspace/scratch/hd_nc326-research-project"
 
-# declare array of config paths and names, e.g. "/path/to/config config_name"
-declare -a CONFIGS=(
-  "$HOME/research-project/settings/feedback/config feedback_test_16_20"
-)
+# the data should already be joined!!!
+JOINED_DATA_PATH="$REP_DIR/baseline/test/reasoning/results_file.csv" # TODO: Adjust the path to your results file
+SAVE_PATH="$REP_DIR/baseline/test/reasoning/" # TODO: Adjust the path to your save directory (choose wisely!)
 
-for CONFIG in "${CONFIGS[@]}"
-do
-  CONFIG_PATH=$(echo $CONFIG | cut -d ' ' -f 1)
-  CONFIG_NAME=$(echo $CONFIG | cut -d ' ' -f 2)
-  echo "Running the script with config: CONFIG_PATH=$CONFIG_PATH, CONFIG_NAME=$CONFIG_NAME"
-  python3 "$SCRIPT" --config-path $CONFIG_PATH --config-name $CONFIG_NAME hydra/job_logging=none
-done
+python3 evaluate_data.py --results_path $JOINED_DATA_PATH --save_path $SAVE_PATH --samples_per_task 100 --create_heatmaps --verbose
 
 # Verify if the script executed successfully
 if [ $? -eq 0 ]; then

@@ -32,6 +32,7 @@ class SpeculativeDecoding(Setting):
         samples_per_task: int = 5,
         multi_system: bool = True,
         saver: DataSaver = None,
+        name: str = "sd",
     ):
         """
         Initialize the speculative decoding setting.
@@ -60,6 +61,7 @@ class SpeculativeDecoding(Setting):
             samples_per_task=samples_per_task,
             multi_system=multi_system,
             saver=saver,
+            name=name,
         )
         self.teacher: Model = teacher
         self.student: Model = student
@@ -134,7 +136,7 @@ class SpeculativeDecoding(Setting):
 
         # Call with the whole chat
         decoded_output, interpretability = self.student.call(
-            self.part, from_chat=True, to_continue=True
+            self.part, from_chat=True, to_continue=True, filter_eot=True
         )
 
         return decoded_output, interpretability
@@ -156,6 +158,13 @@ class SpeculativeDecoding(Setting):
         :return: A tuple containing a boolean indicating whether the current CoT is valid,
         an integer or None indicating the error index and the teacher's intervention or None
         """
+        print(
+            f"TEACHER CHAT BEFORE VERIFICATION",
+            self.teacher.chat,
+            end="\nEND OF TEACHER CHAT\n\n",
+            flush=True,
+        )
+
         approved_tokens = (
             list(self.curr_eval_dict["teacher_prob_approved_tokens"].keys()) or []
         )
@@ -166,7 +175,7 @@ class SpeculativeDecoding(Setting):
         suggested_token_backup_encoded = None
         top_tokens_decoded_probs = None
         inx = 0
-        print('student_message["tokens"]', student_message["tokens"])
+        print("student_message", student_message)
         if type(student_message["tokens"][0]) is not list:
             raise TypeError(
                 f"Student message tokens are not a list of lists: {student_message['tokens']}"
@@ -179,7 +188,16 @@ class SpeculativeDecoding(Setting):
         )
 
         for inx, student_token in enumerate(flat_student_tokens[last_err_inx + 1 :]):
-            is_eos_token = student_token == self.tokenizer.eos_token
+            print(
+                f"TEACHER MESSAGES BEFORE VERIFICATION",
+                self.teacher.chat.messages[-1],
+                end="\nEND OF TEACHER MESSAGES\n\n",
+                flush=True,
+            )
+
+            is_eos_token = (student_token == self.tokenizer.eos_token) or (
+                student_token == "<|eot_id|>"
+            )
             is_last_token = inx == len(flat_student_tokens)
             if is_eos_token or is_last_token:
                 self.student_eos = True
@@ -191,8 +209,11 @@ class SpeculativeDecoding(Setting):
             )
 
             input_ids = self.teacher.chat.convert_into_datatype(
-                datatype="ids", identify_target=False, to_continue=True
+                datatype="ids",
+                identify_target=False,
+                to_continue=True,
             )
+
             teacher_probs = self.teacher.call_probs(input_ids.to("cuda"))
 
             if self.teacher.p:
@@ -235,9 +256,7 @@ class SpeculativeDecoding(Setting):
                     suggested_token_backup = str(top_tokens_decoded[0])
                     suggested_token_backup_encoded = top_tokens_encoded[0]
 
-            student_token_id = (
-                self.tokenizer.convert_tokens_to_ids(student_token) or None
-            )
+            student_token_id = self.tokenizer.convert_tokens_to_ids(student_token)
 
             print(
                 "Student's token and id:",
@@ -271,7 +290,7 @@ class SpeculativeDecoding(Setting):
             print(f"Teacher approved token {student_token}", end="\n\n", flush=True)
 
         # student's CoT is not empty and no disagreement was found
-        on_last_token = inx == len(flatten(student_message["tokens"])) - 1
+        on_last_token = inx == len(flat_student_tokens[last_err_inx + 1 :]) - 1
         if self.teacher_suggests_eos(suggested_token):
             if on_last_token:
                 print(f"Teacher generated EOS", end="\n\n\n", flush=True)
@@ -282,11 +301,13 @@ class SpeculativeDecoding(Setting):
                     end="\n\n\n",
                     flush=True,
                 )
-                if suggested_token_backup is None:
-                    suggested_token_backup = ""
+                if suggested_token_backup is None or self.special_tokens_in(
+                    [suggested_token_backup]
+                ):
+                    suggested_token_backup = student_token
                     suggested_token_backup_encoded = self.tokenizer.encode("")
                     print(
-                        "Using empty token as backup as the backup token is None",
+                        f"Using student token {student_token} as backup as the backup token is None or a special token",
                         end="\n\n\n",
                         flush=True,
                     )
@@ -563,8 +584,6 @@ class SpeculativeDecoding(Setting):
             if self.check_repetition():
                 break
 
-            print("TEACHER CHAT", self.teacher.chat, end="\n\n", flush=True)
-
             student_out, interpretability = self.generate_student()
             if type(student_out) is not str:
                 raise ValueError(f"Student output is not a string: {student_out}")
@@ -621,7 +640,7 @@ class SpeculativeDecoding(Setting):
             )
         else:
             print(
-                f"Teacher approved the output '{student_out}' after {revs - 1} iterations.",
+                f"Teacher approved the students output after {revs - 1} iterations.",
                 end="\n\n",
                 flush=True,
             )
@@ -686,6 +705,10 @@ class SpeculativeDecoding(Setting):
         )
 
         if not is_valid:
+            self.student.chat.remove_message(-1)
+            self.student.chat.move_approved_message(
+                self.teacher.chat, wrapper=self.resume_prompt.wrapper
+            )
 
             self.speculative_decode(
                 student_out=decoded_output,
@@ -709,11 +732,8 @@ class SpeculativeDecoding(Setting):
             decoded_output = self.initial_student_output
             # the initial output does not contain special tokens, so filtering is not necessary
         else:
-            decoded_output = last_message
             # remove special tokens from output
-            decoded_output = self.tokenizer.convert_tokens_to_string(
-                last_message["tokens"]
-            )
+            decoded_output = last_message["content"]
 
         # change the last message of the student to the refined output
         original_student_chat.remove_message(-1)

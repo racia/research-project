@@ -88,8 +88,8 @@ class Model:
         model_kwargs = {
             "device_map": "auto",
             "torch_dtype": torch.bfloat16,
-            #"quantization_config": quantization_config,
-            "attn_implementation": eager,
+            "quantization_config": quantization_config,
+            "attn_implementation": "eager",
             "low_cpu_mem_usage": True,
             "offload_folder": "offload_folder",
             "offload_state_dict": True,
@@ -119,6 +119,7 @@ class Model:
         data: SamplePart | str = None,
         from_chat: bool = False,
         to_continue: bool = False,
+        filter_eot: bool = False,
     ) -> tuple[str, InterpretabilityResult]:
         """
         Calls the model with memory optimizations and optionally with Interpretability (depends on config).
@@ -129,6 +130,7 @@ class Model:
         :param data: The data to be used for the model call. It can be a SamplePart or a string.
         :param from_chat: Whether the message is from the chat or not
         :param to_continue: Whether the model should continue the last message or not
+        :param filter_eot: Whether to filter the <|eot_id|> token from the end of the output or not
         :return: The decoded model output
         """
         if not self.chat:
@@ -150,7 +152,9 @@ class Model:
             call_from_part = type(data) is SamplePart and not from_chat
             # includes flat ids for all the messages in the chat, including the wrapper
             chat_ids = self.chat.convert_into_datatype(
-                datatype="ids", identify_target=True if call_from_part else False
+                datatype="ids",
+                identify_target=True if call_from_part else False,
+                to_continue=to_continue,
             )
             inputs = {"input_ids": chat_ids.to("cuda")}
             torch.cuda.empty_cache()
@@ -167,12 +171,34 @@ class Model:
                     num_beams=1,  # no beam search, reduce GPU memory usage
                 )
                 encoded_output = outputs[0][inputs["input_ids"].size(1) :]
+
+                # remove eot token if it is at the end of the output
+                if filter_eot:
+                    eot = self.tokenizer.convert_tokens_to_ids("<|eot_id|>")
+                    # remove trailing spaces at the end of the output
+                    while (
+                        len(encoded_output) > 0
+                        and self.tokenizer.decode([encoded_output[-1]]).isspace()
+                    ):
+                        encoded_output = encoded_output[:-1]
+
+                    # remove eot token if it is at the end of the output
+                    if len(encoded_output) > 0 and encoded_output[-1] == eot:
+                        encoded_output = encoded_output[:-1]
+
+                    if len(encoded_output) == 0:
+                        warnings.warn(
+                            "DEBUG: The model output is empty after filtering the <|eot_id|> token. Using empty string as output."
+                        )
+                        # TODO: encoded_output = [] instead?
+                        encoded_output = self.tokenizer.convert_tokens_to_ids("''")
+
                 decoded_output = self.tokenizer.decode(encoded_output).strip()
 
                 # the model expanded on the message, so we need to update it
                 if to_continue:
                     self.chat.adjust_message(
-                        decoded_output, encoded_output, full_output=True
+                        decoded_output, encoded_output, full_output=False
                     )
                 else:
                     self.chat.add_message(
@@ -193,6 +219,7 @@ class Model:
                             output_attentions=True,
                             output_hidden_states=False,
                         )
+                        print("Output tensor attentions:", output_tensor["attentions"])
                         if type(data) is not SamplePart:
                             raise TypeError(
                                 "For interpretability plotting, data should be of type SamplePart"

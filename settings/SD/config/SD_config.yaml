@@ -34,6 +34,7 @@ data:
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
   task_ids: ~
+  start_from_sample: 0
   samples_per_task: 100
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
@@ -129,6 +130,9 @@ results:
     - not_mentioned_before
     - iterations
     - context_sents_hall_before
+    - max_supp_attn_corr_before
+    - attn_on_target_corr_before
+    - seen_context_lengths_corr_before
 
 hydra:
   run:
