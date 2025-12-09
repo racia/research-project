@@ -7,7 +7,7 @@
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
-#SBATCH --mem=32G                    # Total memory requested
+#SBATCH --mem=128G                    # Total memory requested
 #SBATCH --partition=dev_gpu_4
 
 # Output and error logs
@@ -72,7 +72,7 @@ export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 
 # declare array of config paths and names, e.g. "/path/to/config config_name"
 declare -a CONFIGS=(
-  "$HOME/research-project/settings/skyline/config skyline_config"
+  "$HOME/research-project/settings/skyline/config skyline_test_da"
 )
 
 for CONFIG in "${CONFIGS[@]}"
