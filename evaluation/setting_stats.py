@@ -415,6 +415,7 @@ def analyse_overall_iterations(
     plt.xticks(rotation=45, ha="right")
     ax.set_title("Overall Boxplot of Iterations per Part")
     plt.suptitle(f"{setting}: Overall")
+    ax.set_xlabel("Task")
     ax.set_ylabel("Number of Iterations")
     plt.savefig(os.path.join(result_path, "overall_iterations_boxplot.png"))
     plt.close()
@@ -513,6 +514,7 @@ def analyse_overall_approved_tokens(
     plt.xticks(rotation=45, ha="right")
     ax.set_title("Overall Boxplot of Approved Token Probabilities")
     plt.suptitle(f"{setting}: Overall")
+    ax.set_xlabel("Task")
     ax.set_ylabel("Token Probability of Student")
     plt.set_cmap(colourmap)
     plt.savefig(os.path.join(result_path, "overall_approved_token_probs_boxplot.png"))
@@ -574,6 +576,7 @@ def analyse_overall_intervention_probs(
     plt.xticks(rotation=45, ha="right")
     ax.set_title("Overall Boxplot of Intervention Token Probabilities")
     plt.suptitle(f"{setting}: Overall")
+    ax.set_xlabel("Task")
     ax.set_ylabel("Token Probability of Teacher")
     plt.set_cmap(colourmap)
     plt.savefig(
