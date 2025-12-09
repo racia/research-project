@@ -67,50 +67,46 @@ def get_eval_dicts(path: str):
     return eval_paths
 
 
-def read_eval_dicts(eval_paths: dict) -> dict[str, pd.DataFrame]:
+def read_eval_dicts(eval_paths: dict) -> pd.DataFrame:
     """
     Process the evaluation dictionaries.
 
     :param eval_paths: dict, keys are task names, values are lists of eval dict paths
-    :return: dict[str, pd.DataFrame], keys are task names, values are dataframes
+    :return: pd.DataFrame, concatenated dataframe
     """
-    eval_dfs = {}
+    dfs = []
     for task, paths in eval_paths.items():
         print(f"Task: {task}, Number of eval dicts: {len(paths)}")
         for path in paths:
             df = pd.read_csv(path)
-            if task not in eval_dfs:
-                eval_dfs[task] = df
-            else:
-                eval_dfs[task] = pd.concat([eval_dfs[task], df], ignore_index=True)
-    return eval_dfs
+            df["task"] = task
+            dfs.append(df)
+    combined_df = pd.concat(dfs, ignore_index=True) if dfs else pd.DataFrame()
+    return combined_df
 
 
-def clean_eval_dfs(eval_dfs: dict) -> dict[str, pd.DataFrame]:
+def clean_eval_dfs(eval_df: pd.DataFrame) -> pd.DataFrame:
     """
-    Process the evaluation dataframes.
+    Process the evaluation dataframe.
 
-    :param eval_dfs: dict, keys are task names, values are dataframes
-    :return: dict[str, pd.DataFrame], keys are task names, values are cleaned dataframes
+    :param eval_df: pd.DataFrame, concatenated dataframe
+    :return: pd.DataFrame, cleaned dataframe
     """
-    for task, df in eval_dfs.items():
-        print(f"Processing task: {task}, dataframe: {df.head()}")
-        df.drop_duplicates(inplace=True, subset=["task_id", "sample_id", "part_id"])
-    return eval_dfs
+    eval_df.drop_duplicates(inplace=True, subset=["task_id", "sample_id", "part_id"])
+    return eval_df
 
 
-def process_eval_dicts(path: str) -> dict[str, pd.DataFrame]:
+def process_eval_dicts(path: str) -> pd.DataFrame:
     """
     Get the paths for all evaluation dictionaries at the given paths, read them, and clean them.
 
     :param path: str, path to the joined results for one setting
-    :return: dict[str, pd.DataFrame], keys are task names, values are cleaned dataframes
+    :return: pd.DataFrame, cleaned concatenated dataframe
     """
     paths = get_eval_dicts(path)
-    eval_dfs = read_eval_dicts(paths)
-    clean_dfs = clean_eval_dfs(eval_dfs)
-
-    return clean_dfs
+    eval_df = read_eval_dicts(paths)
+    clean_df = clean_eval_dfs(eval_df)
+    return clean_df
 
 
 def analyse_iterations(
@@ -598,11 +594,11 @@ def analyse_overall_intervention_probs(
             f.write(f"  {k} -> {v}\n")
 
 
-def run_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
+def run_stats(df: pd.DataFrame, result_path: str, setting: str):
     """
-    Run statistics on the processed evaluation dataframes and save the results.
+    Run statistics on the processed evaluation dataframe and save the results.
 
-    :param dfs: dict[str, pd.DataFrame], keys are task names, values are cleaned dataframes
+    :param df: pd.DataFrame, cleaned concatenated dataframe
     :param result_path: str, path to save the statistics results
     :param setting: str, the setting
     """
@@ -610,8 +606,6 @@ def run_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
         os.makedirs(result_path)
 
     overall_iterations = {}
-    complete_eval_df = pd.DataFrame()
-
     if setting in ["Speculative decoding", "SD"]:
         overall_interventions = {}
         overall_early_stops = {}
@@ -619,41 +613,35 @@ def run_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
         overall_approved_tokens = {}
         overall_intervention_probs = {}
 
-    # do task-specific stats
-    for task, df in dfs.items():
+    for task, task_df in df.groupby("task"):
         task_result_path = os.path.join(result_path, f"{task}")
         if not os.path.exists(task_result_path):
             os.makedirs(task_result_path)
-        df["task"] = task
-        complete_eval_df = pd.concat([complete_eval_df, df], ignore_index=True)
 
-        iterations = analyse_iterations(task, df, task_result_path, setting)
+        iterations = analyse_iterations(task, task_df, task_result_path, setting)
         overall_iterations[task] = iterations
 
         if setting in ["Speculative decoding", "SD"]:
-            df["intervention_ix"], flat_ix = analyse_interventions(
-                task, df, task_result_path, setting
+            task_df["intervention_ix"], flat_ix = analyse_interventions(
+                task, task_df, task_result_path, setting
             )
             overall_interventions[task] = flat_ix
-            early_stops = analyse_early_stops(task, df, task_result_path, setting)
+            early_stops = analyse_early_stops(task, task_df, task_result_path, setting)
             overall_early_stops[task] = early_stops
-            emtpy_suggestions = analyse_empty_suggestions(
-                task, df, task_result_path, setting
+            empty_suggestions = analyse_empty_suggestions(
+                task, task_df, task_result_path, setting
             )
-            overall_empty_suggestions[task] = emtpy_suggestions
+            overall_empty_suggestions[task] = empty_suggestions
             approved_tokens = analyse_approved_tokens(
-                task, df, task_result_path, setting
+                task, task_df, task_result_path, setting
             )
             overall_approved_tokens[task] = approved_tokens
             intervention_probs = analyse_intervention_probs(
-                task, df, task_result_path, setting
+                task, task_df, task_result_path, setting
             )
             overall_intervention_probs[task] = intervention_probs
-        if setting in ["Feedback"]:
-            pass
 
     sort_by_task_number = lambda item: int(item[0].split("_")[1])
-    # overall stats
     analyse_overall_iterations(
         dict(sorted(overall_iterations.items(), key=sort_by_task_number)),
         result_path,
@@ -677,7 +665,7 @@ def run_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
             setting,
         )
 
-    complete_eval_df.to_csv(
+    df.to_csv(
         os.path.join(result_path, "complete_evaluation_dataframe.csv"),
         index=False,
         sep=",",
@@ -685,22 +673,17 @@ def run_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
 
 
 def create_complete_eval_df(
-    eval_df: dict[str, pd.DataFrame], result_df: pd.DataFrame, result_path: str
+    eval_df: pd.DataFrame, result_df: pd.DataFrame, result_path: str
 ):
     """
-    Create a complete evaluation dataframe by merging the eval dataframes with the result dataframe.
+    Create a complete evaluation dataframe by merging the eval dataframe with the result dataframe.
 
-    :param eval_df: dict[str, pd.DataFrame], keys are task names, values are cleaned dataframes
+    :param eval_df: pd.DataFrame, cleaned concatenated dataframe
     :param result_df: pd.DataFrame, the result dataframe
     :param result_path: str, path to save the complete evaluation dataframe
     """
-    complete_eval_df = pd.DataFrame()
-    for task, df in eval_df.items():
-        df["task"] = task
-        complete_eval_df = pd.concat([complete_eval_df, df], ignore_index=True)
-
     merged_df = pd.merge(
-        complete_eval_df,
+        eval_df,
         result_df,
         on=["task_id", "sample_id", "part_id"],
         suffixes=("_eval", "_result"),
@@ -716,18 +699,18 @@ def create_complete_eval_df(
 def main():
     setting = "SD"
     data_path = "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/v1/all_tasks_joined"
-    dfs = process_eval_dicts(data_path)
+    df = process_eval_dicts(data_path)
     result_path = f"/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/v1/all_tasks_stats"
-    run_stats(dfs=dfs, result_path=result_path, setting=setting)
-    res_df = pd.read_csv(os.path.join(data_path, "joined__result_task_results.csv"))
-    create_complete_eval_df(eval_df=dfs, result_df=res_df, result_path=result_path)
+    run_stats(df=df, result_path=result_path, setting=setting)
+    res_df = pd.read_csv(os.path.join(data_path, "joined__results_task_results.csv"))
+    create_complete_eval_df(eval_df=df, result_df=res_df, result_path=result_path)
 
     setting = "Feedback"
     data_path = "/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/v1/all_tasks_joined"
-    dfs = process_eval_dicts(data_path)
+    df = process_eval_dicts(data_path)
     result_path = f"/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/v1/all_tasks_stats"
-    run_stats(dfs=dfs, result_path=result_path, setting=setting)
-    res_df = pd.read_csv(os.path.join(data_path, "joined__result_task_results.csv"))
+    run_stats(df=df, result_path=result_path, setting=setting)
+    res_df = pd.read_csv(os.path.join(data_path, "joined__results_task_results.csv"))
 
 
 if __name__ == "__main__":
