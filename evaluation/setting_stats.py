@@ -701,7 +701,7 @@ def main():
     data_path = "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/v1/all_tasks_joined"
     df = process_eval_dicts(data_path)
     res_df = pd.read_csv(
-        os.path.join(data_path, "joined__results_task_results.csv"),
+        os.path.join(data_path, "joined__results_task_results.csv"), sep="\t"
     )
     merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=data_path)
     result_path = f"/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/v1/all_tasks_stats"
@@ -711,7 +711,7 @@ def main():
     data_path = "/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/v1/all_tasks_joined"
     df = process_eval_dicts(data_path)
     res_df = pd.read_csv(
-        os.path.join(data_path, "joined__results_task_results.csv"),
+        os.path.join(data_path, "joined__results_task_results.csv"), sep="\t"
     )
     merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=data_path)
     result_path = f"/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/v1/all_tasks_stats"
