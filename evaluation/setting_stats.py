@@ -125,7 +125,7 @@ def analyse_iterations(
     fig, ax = plt.subplots()
     ax.hist(
         df["iterations_eval"],
-        bins=range(1, df["iterations"].max() + 2),
+        bins=range(1, df["iterations_eval"].max() + 2),
         align="left",
         rwidth=0.8,
     )
