@@ -138,7 +138,7 @@ def analyse_iterations(
 
     # boxplot
     fig, ax = plt.subplots()
-    ax.boxplot(df["iterations"], label=[task])
+    ax.boxplot(df["iterations_eval"], label=[task])
     ax.set_title("Boxplot of Iterations per Part")
     plt.suptitle(f"{setting}: {task}")
     ax.set_ylabel("Number of Iterations")
@@ -147,16 +147,16 @@ def analyse_iterations(
 
     with open(os.path.join(result_path, "iterations_stats.txt"), "w") as f:
         f.write(f"Task: {task}\n")
-        f.write(f"Mean iterations: {df['iterations'].mean()}\n")
-        f.write(f"Median iterations: {df['iterations'].median()}\n")
-        f.write(f"Max iterations: {df['iterations'].max()}\n")
-        f.write(f"Min iterations: {df['iterations'].min()}\n")
+        f.write(f"Mean iterations: {df['iterations_eval'].mean()}\n")
+        f.write(f"Median iterations: {df['iterations_eval'].median()}\n")
+        f.write(f"Max iterations: {df['iterations_eval'].max()}\n")
+        f.write(f"Min iterations: {df['iterations_eval'].min()}\n")
         f.write(f"Distribution:\n")
-        dist = df["iterations"].value_counts().sort_index()
+        dist = df["iterations_eval"].value_counts().sort_index()
         for k, v in dist.items():
             f.write(f"  {k} -> {v}\n")
 
-    return df["iterations"]
+    return df["iterations_eval"]
 
 
 def analyse_interventions(
