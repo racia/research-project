@@ -113,17 +113,6 @@ def process_eval_dicts(path: str) -> dict[str, pd.DataFrame]:
     return clean_dfs
 
 
-def overall_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
-    """
-    Compute overall statistics across all tasks and save the results.
-
-    :param dfs: dict[str, pd.DataFrame], keys are task names, values are cleaned dataframes
-    :param result_path: str, path to save the overall statistics results
-    :param setting: str, the setting
-    """
-    pass
-
-
 def analyse_iterations(
     task: str, df: pd.DataFrame, result_path: str, setting: str
 ) -> pd.Series:
@@ -191,43 +180,38 @@ def analyse_interventions(
     df = df.copy()
 
     df["intervention_ix"] = df["intervention_ix"].apply(normalize_intervention_ix)
-    df["num_interventions"] = df["intervention_ix"].apply(len)
 
-    no_interventions = df["num_interventions"] == 0
-    has_interventions = df["num_interventions"] > 0
-
-    # Histogram: number of interventions per part
-    max_interv = df["num_interventions"].max()
-    bins = range(0, max_interv + 2)  # one bin per integer count
+    flat_ix = [ix for seq in df["intervention_ix"] for ix in seq]
+    flat_ix = pd.Series(flat_ix)
 
     fig, ax = plt.subplots()
-    ax.hist(df["num_interventions"], bins=bins, align="left", rwidth=0.8)
-    ax.set_title("Histogram of Number of Interventions per Part")
+    ax.hist(flat_ix, bins=50)
+    ax.set_title("Histogram of Intervention Indices")
     plt.suptitle(f"{setting}: {task}")
-    ax.set_xlabel("Number of Interventions")
+    ax.set_xlabel("Intervention Index")
     ax.set_ylabel("Frequency")
-    plt.savefig(os.path.join(result_path, "num_interventions_hist.png"))
+    plt.savefig(os.path.join(result_path, "intervention_ix_hist.png"))
     plt.close()
 
-    # Stats
-    with open(os.path.join(result_path, "interventions_stats.txt"), "w") as f:
-        f.write(f"Task: {task}\n")
-        f.write(f"Number of parts without interventions: {no_interventions.sum()}\n")
-        f.write(f"Number of parts with interventions: {has_interventions.sum()}\n")
+    fig, ax = plt.subplots()
+    ax.boxplot(flat_ix)
+    ax.set_title("Boxplot of Intervention Indices")
+    plt.suptitle(f"{setting}: {task}")
+    ax.set_ylabel("Intervention Index")
+    plt.savefig(os.path.join(result_path, "intervention_ix_boxplot.png"))
+    plt.close()
 
-        if has_interventions.any():
-            vals = df.loc[has_interventions, "num_interventions"]
-            f.write(f"Mean interventions (with interventions): {vals.mean():.3f}\n")
-            f.write(f"Median interventions: {vals.median():.3f}\n")
-            f.write(f"Max interventions: {vals.max()}\n")
-            f.write(f"Distribution:\n")
-            dist = vals.value_counts().sort_index()
-            for k, v in dist.items():
-                f.write(f"  {k} -> {v}\n")
-        else:
-            f.write("No interventions found.\n")
+    with open(os.path.join(result_path, "intervention_ix_stats.txt"), "w") as f:
+        f.write(f"Mean: {flat_ix.mean():.3f}\n")
+        f.write(f"Median: {flat_ix.median():.3f}\n")
+        f.write(f"Max: {flat_ix.max()}\n")
+        f.write(f"Min: {flat_ix.min()}\n")
+        f.write(f"Distribution:\n")
+        dist = flat_ix.value_counts().sort_index()
+        for k, v in dist.items():
+            f.write(f"  {k} -> {v}\n")
 
-    return df["intervention_ix"], df["num_interventions"]
+    return df["intervention_ix"], flat_ix
 
 
 def analyse_early_stops(
@@ -314,22 +298,34 @@ def analyse_approved_tokens(
     for prob_dict in df["teacher_prob_floats"]:
         all_probs.extend(prob_dict.values())
 
+    all_probs = pd.Series(all_probs)
+
     fig, ax = plt.subplots()
     ax.hist(all_probs, bins=100)
-    ax.set_title("Histogram of Approved Token Probabilities")
+    ax.set_title("Histogram of Approved Student Token Probabilities")
     plt.suptitle(f"{setting}: {task}")
-    ax.set_xlabel("Probability")
+    ax.set_xlabel("Token Probability of Student")
     ax.set_ylabel("Frequency")
     plt.savefig(os.path.join(result_path, "approved_token_probs_hist.png"))
     plt.close()
 
     fig, ax = plt.subplots()
     ax.boxplot(all_probs, label=[task])
-    ax.set_title("Boxplot of Approved Token Probabilities")
+    ax.set_title("Boxplot of Approved Student Token Probabilities")
     plt.suptitle(f"{setting}: {task}")
-    ax.set_ylabel("Probability")
+    ax.set_ylabel("Token Probability of Student")
     plt.savefig(os.path.join(result_path, "approved_token_probs_boxplot.png"))
     plt.close()
+
+    with open(os.path.join(result_path, "approved_token_probs_stats.txt"), "w") as f:
+        f.write(f"Mean: {all_probs.mean():.6f}\n")
+        f.write(f"Median: {all_probs.median():.6f}\n")
+        f.write(f"Max: {all_probs.max()}\n")
+        f.write(f"Min: {all_probs.min()}\n")
+        f.write("Distribution:\n")
+        dist = all_probs.value_counts().sort_index()
+        for k, v in dist.items():
+            f.write(f"  {k} -> {v}\n")
 
     return df["teacher_prob_floats"]
 
@@ -357,22 +353,36 @@ def analyse_intervention_probs(
     for prob_dict in df["intervention_with_prob_floats"]:
         all_intervention_probs.extend(prob_dict.values())
 
+    all_intervention_probs = pd.Series(all_intervention_probs)
+
     fig, ax = plt.subplots()
     ax.hist(all_intervention_probs, bins=100)
-    ax.set_title("Histogram of Intervention Token Probabilities")
+    ax.set_title("Histogram of Teacher Intervention Token Probabilities")
     plt.suptitle(f"{setting}: {task}")
-    ax.set_xlabel("Probability")
+    ax.set_xlabel("Token Probability of Teacher")
     ax.set_ylabel("Frequency")
     plt.savefig(os.path.join(result_path, "intervention_token_probs_hist.png"))
     plt.close()
 
     fig, ax = plt.subplots()
     ax.boxplot(all_intervention_probs, label=[task])
-    ax.set_title("Boxplot of Intervention Token Probabilities")
+    ax.set_title("Boxplot of Teacher Intervention Token Probabilities")
     plt.suptitle(f"{setting}: {task}")
-    ax.set_ylabel("Probability")
+    ax.set_ylabel("Token Probability of Teacher")
     plt.savefig(os.path.join(result_path, "intervention_token_probs_boxplot.png"))
     plt.close()
+
+    with open(
+        os.path.join(result_path, "intervention_token_probs_stats.txt"), "w"
+    ) as f:
+        f.write(f"Mean: {all_intervention_probs.mean():.6f}\n")
+        f.write(f"Median: {all_intervention_probs.median():.6f}\n")
+        f.write(f"Max: {all_intervention_probs.max()}\n")
+        f.write(f"Min: {all_intervention_probs.min()}\n")
+        f.write("Distribution:\n")
+        dist = all_intervention_probs.value_counts().sort_index()
+        for k, v in dist.items():
+            f.write(f"  {k} -> {v}\n")
 
     return df["intervention_with_prob_floats"]
 
@@ -442,9 +452,9 @@ def analyse_overall_interventions(
 
     fig, ax = plt.subplots(figsize=(10, 5))
     ax.hist(vals_hist, bins=range(0, int(vals_hist.max()) + 2), align="left", log=True)
-    ax.set_title("Overall Histogram of Number of Interventions per Part")
+    ax.set_title("Overall Histogram of Intervention Indices")
     plt.suptitle(f"{setting}: Overall")
-    ax.set_xlabel("Number of Interventions")
+    ax.set_xlabel("Intervention Index")
     ax.set_ylabel("Frequency (log)")
     plt.set_cmap(colourmap)
     plt.savefig(os.path.join(result_path, "overall_num_interventions_hist.png"))
@@ -492,9 +502,9 @@ def analyse_overall_approved_tokens(
 
     fig, ax = plt.subplots(figsize=(10, 5))
     ax.hist(vals_hist, bins=100, log=True)
-    ax.set_title("Overall Histogram of Approved Token Probabilities")
+    ax.set_title("Overall Histogram of Approved Student Token Probabilities")
     plt.suptitle(f"{setting}: Overall")
-    ax.set_xlabel("Probability")
+    ax.set_xlabel("Token Probability of Student")
     ax.set_ylabel("Frequency (log)")
     plt.set_cmap(colourmap)
     plt.savefig(os.path.join(result_path, "overall_approved_token_probs_hist.png"))
@@ -507,10 +517,22 @@ def analyse_overall_approved_tokens(
     plt.xticks(rotation=45, ha="right")
     ax.set_title("Overall Boxplot of Approved Token Probabilities")
     plt.suptitle(f"{setting}: Overall")
-    ax.set_ylabel("Probability")
+    ax.set_ylabel("Token Probability of Student")
     plt.set_cmap(colourmap)
     plt.savefig(os.path.join(result_path, "overall_approved_token_probs_boxplot.png"))
     plt.close()
+
+    with open(
+        os.path.join(result_path, "overall_approved_token_probs_stats.txt"), "w"
+    ) as f:
+        f.write(f"Mean: {vals_hist.mean():.6f}\n")
+        f.write(f"Median: {vals_hist.median():.6f}\n")
+        f.write(f"Max: {vals_hist.max()}\n")
+        f.write(f"Min: {vals_hist.min()}\n")
+        f.write("Distribution:\n")
+        dist = vals_hist.value_counts().sort_index()
+        for k, v in dist.items():
+            f.write(f"  {k} -> {v}\n")
 
 
 def analyse_overall_intervention_probs(
@@ -543,7 +565,7 @@ def analyse_overall_intervention_probs(
     ax.hist(vals_hist, bins=100, log=True)
     ax.set_title("Overall Histogram of Intervention Token Probabilities")
     plt.suptitle(f"{setting}: Overall")
-    ax.set_xlabel("Probability")
+    ax.set_xlabel("Token Probability of Teacher")
     ax.set_ylabel("Frequency (log)")
     plt.set_cmap(colourmap)
     plt.savefig(os.path.join(result_path, "overall_intervention_token_probs_hist.png"))
@@ -556,12 +578,24 @@ def analyse_overall_intervention_probs(
     plt.xticks(rotation=45, ha="right")
     ax.set_title("Overall Boxplot of Intervention Token Probabilities")
     plt.suptitle(f"{setting}: Overall")
-    ax.set_ylabel("Probability")
+    ax.set_ylabel("Token Probability of Teacher")
     plt.set_cmap(colourmap)
     plt.savefig(
         os.path.join(result_path, "overall_intervention_token_probs_boxplot.png")
     )
     plt.close()
+
+    with open(
+        os.path.join(result_path, "overall_intervention_token_probs_stats.txt"), "w"
+    ) as f:
+        f.write(f"Mean: {vals_hist.mean():.6f}\n")
+        f.write(f"Median: {vals_hist.median():.6f}\n")
+        f.write(f"Max: {vals_hist.max()}\n")
+        f.write(f"Min: {vals_hist.min()}\n")
+        f.write("Distribution:\n")
+        dist = vals_hist.value_counts().sort_index()
+        for k, v in dist.items():
+            f.write(f"  {k} -> {v}\n")
 
 
 def run_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
@@ -594,10 +628,10 @@ def run_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
         overall_iterations[task] = iterations
 
         if setting in ["Speculative decoding", "SD"]:
-            intervention_ixs, interventions = analyse_interventions(
+            df["intervention_ix"], flat_ix = analyse_interventions(
                 task, df, task_result_path, setting
             )
-            overall_interventions[task] = interventions
+            overall_interventions[task] = flat_ix
             early_stops = analyse_early_stops(task, df, task_result_path, setting)
             overall_early_stops[task] = early_stops
             emtpy_suggestions = analyse_empty_suggestions(
