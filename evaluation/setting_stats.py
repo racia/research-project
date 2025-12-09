@@ -672,9 +672,7 @@ def run_stats(df: pd.DataFrame, result_path: str, setting: str):
     )
 
 
-def create_complete_eval_df(
-    eval_df: pd.DataFrame, result_df: pd.DataFrame, result_path: str
-):
+def combine_eval_dfs(eval_df: pd.DataFrame, result_df: pd.DataFrame, result_path: str):
     """
     Create a complete evaluation dataframe by merging the eval dataframe with the result dataframe.
 
@@ -695,22 +693,29 @@ def create_complete_eval_df(
         sep=",",
     )
 
+    return merged_df
+
 
 def main():
     setting = "SD"
     data_path = "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/v1/all_tasks_joined"
     df = process_eval_dicts(data_path)
+    res_df = pd.read_csv(
+        os.path.join(data_path, "joined__results_task_results.csv"),
+    )
+    merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=data_path)
     result_path = f"/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/v1/all_tasks_stats"
     run_stats(df=df, result_path=result_path, setting=setting)
-    res_df = pd.read_csv(os.path.join(data_path, "joined__results_task_results.csv"))
-    create_complete_eval_df(eval_df=df, result_df=res_df, result_path=result_path)
 
     setting = "Feedback"
     data_path = "/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/v1/all_tasks_joined"
     df = process_eval_dicts(data_path)
+    res_df = pd.read_csv(
+        os.path.join(data_path, "joined__results_task_results.csv"),
+    )
+    merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=data_path)
     result_path = f"/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/v1/all_tasks_stats"
     run_stats(df=df, result_path=result_path, setting=setting)
-    res_df = pd.read_csv(os.path.join(data_path, "joined__results_task_results.csv"))
 
 
 if __name__ == "__main__":
