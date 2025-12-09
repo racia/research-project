@@ -684,18 +684,50 @@ def run_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
     )
 
 
+def create_complete_eval_df(
+    eval_df: dict[str, pd.DataFrame], result_df: pd.DataFrame, result_path: str
+):
+    """
+    Create a complete evaluation dataframe by merging the eval dataframes with the result dataframe.
+
+    :param eval_df: dict[str, pd.DataFrame], keys are task names, values are cleaned dataframes
+    :param result_df: pd.DataFrame, the result dataframe
+    :param result_path: str, path to save the complete evaluation dataframe
+    """
+    complete_eval_df = pd.DataFrame()
+    for task, df in eval_df.items():
+        df["task"] = task
+        complete_eval_df = pd.concat([complete_eval_df, df], ignore_index=True)
+
+    merged_df = pd.merge(
+        complete_eval_df,
+        result_df,
+        on=["task_id", "sample_id", "part_id"],
+        suffixes=("_eval", "_result"),
+    )
+
+    merged_df.to_csv(
+        os.path.join(result_path, "complete_evaluation_with_results_dataframe.csv"),
+        index=False,
+        sep=",",
+    )
+
+
 def main():
     setting = "SD"
     data_path = "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/v1/all_tasks_joined"
     dfs = process_eval_dicts(data_path)
     result_path = f"/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/v1/all_tasks_stats"
     run_stats(dfs=dfs, result_path=result_path, setting=setting)
+    res_df = pd.read_csv(os.path.join(data_path, "joined__result_task_results.csv"))
+    create_complete_eval_df(eval_df=dfs, result_df=res_df, result_path=result_path)
 
     setting = "Feedback"
     data_path = "/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/v1/all_tasks_joined"
     dfs = process_eval_dicts(data_path)
     result_path = f"/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/v1/all_tasks_stats"
     run_stats(dfs=dfs, result_path=result_path, setting=setting)
+    res_df = pd.read_csv(os.path.join(data_path, "joined__result_task_results.csv"))
 
 
 if __name__ == "__main__":
