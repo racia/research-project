@@ -610,6 +610,7 @@ def run_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
         os.makedirs(result_path)
 
     overall_iterations = {}
+    complete_eval_df = pd.DataFrame()
 
     if setting in ["Speculative decoding", "SD"]:
         overall_interventions = {}
@@ -623,6 +624,8 @@ def run_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
         task_result_path = os.path.join(result_path, f"{task}")
         if not os.path.exists(task_result_path):
             os.makedirs(task_result_path)
+        df["task"] = task
+        complete_eval_df = pd.concat([complete_eval_df, df], ignore_index=True)
 
         iterations = analyse_iterations(task, df, task_result_path, setting)
         overall_iterations[task] = iterations
@@ -673,6 +676,12 @@ def run_stats(dfs: dict[str, pd.DataFrame], result_path: str, setting: str):
             result_path,
             setting,
         )
+
+    complete_eval_df.to_csv(
+        os.path.join(result_path, "complete_evaluation_dataframe.csv"),
+        index=False,
+        sep=",",
+    )
 
 
 def main():
