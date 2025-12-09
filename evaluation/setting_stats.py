@@ -124,7 +124,7 @@ def analyse_iterations(
     # histogram
     fig, ax = plt.subplots()
     ax.hist(
-        df["iterations"],
+        df["iterations_eval"],
         bins=range(1, df["iterations"].max() + 2),
         align="left",
         rwidth=0.8,
