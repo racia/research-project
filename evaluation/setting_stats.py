@@ -641,26 +641,25 @@ def run_stats(df: pd.DataFrame, result_path: str, setting: str):
             )
             overall_intervention_probs[task] = intervention_probs
 
-    sort_by_task_number = lambda item: int(item[0].split("_")[1])
     analyse_overall_iterations(
-        dict(sorted(overall_iterations.items(), key=sort_by_task_number)),
+        dict(sorted(overall_iterations.items())),
         result_path,
         setting,
     )
 
     if setting in ["Speculative decoding", "SD"]:
         analyse_overall_interventions(
-            dict(sorted(overall_interventions.items(), key=sort_by_task_number)),
+            dict(sorted(overall_interventions.items())),
             result_path,
             setting,
         )
         analyse_overall_approved_tokens(
-            dict(sorted(overall_approved_tokens.items(), key=sort_by_task_number)),
+            dict(sorted(overall_approved_tokens.items())),
             result_path,
             setting,
         )
         analyse_overall_intervention_probs(
-            dict(sorted(overall_intervention_probs.items(), key=sort_by_task_number)),
+            dict(sorted(overall_intervention_probs.items())),
             result_path,
             setting,
         )
