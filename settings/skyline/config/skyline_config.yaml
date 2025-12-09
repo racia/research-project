@@ -93,6 +93,9 @@ results:
     - pronouns_before
     - not_mentioned_before
     - context_sents_hall_before
+    - max_supp_attn_corr_before
+    - attn_on_target_corr_before
+    - seen_context_lengths_corr_before
 
 hydra:
   run:
