@@ -613,7 +613,7 @@ def run_stats(df: pd.DataFrame, result_path: str, setting: str):
         overall_approved_tokens = {}
         overall_intervention_probs = {}
 
-    for task, task_df in df.groupby("task"):
+    for task, task_df in df.groupby("task_id"):
         task_result_path = os.path.join(result_path, f"{task}")
         if not os.path.exists(task_result_path):
             os.makedirs(task_result_path)
