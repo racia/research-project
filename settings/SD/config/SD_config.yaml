@@ -1,15 +1,21 @@
 teacher:
-  name: "meta-llama/Meta-Llama-3-8B-Instruct"
+  name: "meta-llama/Meta-Llama-3-70B-Instruct"
   max_new_tokens: 12
   temperature: 0.1
   to_continue: false
   mode: "eval"
   k: 15
+<<<<<<< HEAD
   p: 0.9
+=======
+  # p: 0.9
+  interpretability:
+    use: False
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 100
+  max_new_tokens: 200
   temperature: 0.1
   to_continue: false
   mode: "eval"
@@ -22,10 +28,11 @@ setting:
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  baseline_results: "${oc.env:HOME}/research-project/results/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv"
+  baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/06-05-2025/21-28-46/init_prompt_reasoning/joined_t_all_task_results.csv"
   # Order: train, valid, test
   splits:
     train: False
+<<<<<<< HEAD
     valid: True
     test: False
   # to get all tasks use (will be converted to None)
@@ -33,6 +40,16 @@ data:
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
   samples_per_task: 50
+=======
+    valid: False
+    test: True
+  # to get all tasks use ~ (will be converted to None)
+  # to get specific tasks use:
+  # task_ids: [1, 2, ...]
+  task_ids: ~
+  start_from_sample: 0
+  samples_per_task: 100
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
@@ -88,7 +105,7 @@ resume_prompt:
 
 logging:
   # if to print the results to a log file, otherwise will print to console
-  print_to_file: True
+  print_to_file: False
 
 results:
   save_heatmaps: False
@@ -130,6 +147,9 @@ results:
     - not_mentioned_before
     - iterations
     - context_sents_hall_before
+    - max_supp_attn_corr_before
+    - attn_on_target_corr_before
+    - seen_context_lengths_corr_before
 
 hydra:
   run:

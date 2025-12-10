@@ -1,0 +1,27 @@
+Module util is available. Loading python and CUDA...
+Activating the project environment: .env
+The project environment '.env' activated successfully.
+Checking for data directory: /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2
+Data directory '/home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2' exists.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa3_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa20_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa17_test.txt is read.
+The model meta-llama/Meta-Llama-3-70B-Instruct is being loaded in mode 'eval'...
+
+The model meta-llama/Meta-Llama-3-70B-Instruct was loaded successfully
+Error: Python script 'get_silver_reasoning.py' failed.
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc3n073
+Job ID: 741717
+Cluster: uc3
+User/Group: hd_ip303/hd_hd
+State: FAILED (exit code 1)
+Nodes: 1
+Cores per node: 2
+CPU Utilized: 00:01:32
+CPU Efficiency: 33.33% of 00:04:36 core-walltime
+Job Wall-clock time: 00:02:18
+Memory Utilized: 5.54 GB
+Memory Efficiency: 8.65% of 64.00 GB (64.00 GB/node)

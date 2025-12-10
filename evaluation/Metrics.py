@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import statistics
+import warnings
 
 import evaluate
+import numpy as np
 
 
 class Metric:
@@ -21,11 +23,26 @@ class Metric:
         self.mean: float = None
         self.std: float = None
 
-    def __getitem__(self, slice_: slice) -> float | list[float]:
+    def __repr__(self):
         """
-        Return the metric at the given index.
+        Return a string representation of the metric.
         """
-        return self.all[slice_]
+        return f"{self.name} Metric: {self.get_mean()} ± {self.get_std()}"
+
+    def __getitem__(self, slice_):
+        """
+        Support int, slice, and numpy.ndarray indexing.
+        """
+        if isinstance(slice_, np.ndarray):
+            # NumPy array of indices
+            # Convert to a list of ints, then use standard Python indexing
+            return [self.all[int(i)] for i in slice_]
+        elif isinstance(slice_, (list, tuple)):
+            # Allow list or tuple of indices (assuming (index,) is at position 0)
+            return [self.all[i[0]] for i in slice_]
+        else:
+            # Normal indexing or slicing
+            return self.all[slice_]
 
     def __iter__(self) -> iter:
         """
@@ -39,7 +56,23 @@ class Metric:
         """
         return len(self.all)
 
-    def add(self, metric: Metric | float | list[float] | None) -> None:
+    def map_to_float(self, value: str) -> float:
+        """
+        Map string values to float.
+
+        :param value: the string value
+        :return: the mapped float value
+        """
+        mapping = {
+            "fully": 1.0,
+            "partially": 0.5,
+            "none": 0.0
+        }
+        return mapping.get(value.lower(), 0.0)
+
+    def add(
+        self, metric: Metric | str | int | float | list[int | float] | None
+    ) -> None:
         """
         Add metric values to the list of all metric values.
 
@@ -48,10 +81,29 @@ class Metric:
         type_ = type(metric)
         if type_ is Metric or issubclass(type_, Metric):
             self.all.append(metric.get_mean())
-        elif type_ is float:
+        elif type_ in [int, float]:
             self.all.append(metric)
+        elif type_ is bool:
+            self.all.append(int(metric))
+        elif type_ is str:
+            try:
+                value = self.map_to_float(metric)
+            except KeyError:
+                raise KeyError(f"Found invalid string metric value: {metric}")
+            self.all.append(value)
         elif type_ is list:
-            self.all.extend(metric)
+            for m in metric:
+                if type(m) in [int, float]:
+                    self.all.append(m)
+                elif isinstance(m, str) and m.lower() == "nan":
+                    self.all.append(0.0)
+                    warnings.warn(
+                        f"Found 'nan' in metric values, treating as 0.0: {metric}"
+                    )
+                else:
+                    warnings.warn(
+                        f"Found invalid metric value (skipping): {type(m)} {m}"
+                    )
         else:
             raise TypeError(
                 f"{self.name} must be a float or a list of floats, not {type_}"
@@ -62,8 +114,9 @@ class Metric:
         Return the mean of the metric values.
         """
         if len(self.all) == 0:
-            return 0.0
-        self.mean = round(statistics.mean(self.all), 2)
+            self.mean = 0.0
+        else:
+            self.mean = round(statistics.mean(self.all), 2)
         return self.mean
 
     def get_std(self) -> float:
@@ -99,6 +152,26 @@ class AttnDistribution(Metric):
         :param max_supp_target: the list of attention distribution values
         """
         super().__init__(name, var, max_supp_target)
+
+
+class Correlation(Metric):
+    """
+    Class for tracking the correlation between two metrics.
+    :param name: the type of correlation
+    :param var: the variable name
+    :param correlations: the list of correlation values
+    :param p_values: the list of correlation p-values
+    """
+
+    def __init__(
+        self,
+        name,
+        var: str,
+        correlations: list[float] = None,
+        p_values: list[float] = None,
+    ):
+        super().__init__(name, var, correlations)
+        self.p_values: list[float] = p_values if p_values else []
 
 
 class AttnOnTarget(Metric):

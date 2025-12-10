@@ -90,6 +90,7 @@ class Data:
     splits: DataSplits
     task_ids: bool | list[int]
     samples_per_task: int
+    start_from_sample: int
     to_enumerate: Enumerate
     wrapper: Wrapper
 

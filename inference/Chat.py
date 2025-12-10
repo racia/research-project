@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import warnings
 from typing import Union
 
@@ -13,6 +14,7 @@ from inference.utils import (
     flatten,
     get_generation_token_ids,
     sents_to_ids,
+    type_is_task,
     update_span,
 )
 
@@ -88,31 +90,48 @@ class Chat:
         self.offset -= len(flatten(deleted_message["ids"]))
 
     def adjust_message(
-        self, partial_output: str, partial_ids: int | list[int] | torch.Tensor
+        self,
+        output: str,
+        ids: int | list[int] | torch.Tensor,
+        full_output: bool = False,
     ) -> None:
         """
         Adjust the *last* message of the chat.
         This is mostly used in SD to update the last message with the partial output of the model.
 
-        :param partial_output: the partial output of the model
-        :param partial_ids: the ids of the partial output
+        :param output: the partial output of the model
+        :param ids: the ids of the partial output
+        :param full_output: whether the output is the full output or just a partial one
         :return: None
         """
         if not self.messages:
             raise ValueError("No messages to adjust.")
 
+<<<<<<< HEAD
         if type(partial_ids) == torch.Tensor:
             partial_ids = partial_ids.tolist()
         elif type(partial_ids) == int:
             partial_ids = [partial_ids]
+=======
+        if type(ids) is torch.Tensor:
+            ids = ids.tolist()
+        if type(ids) is int:
+            ids = [ids]
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
         else:
-            partial_ids = flatten(partial_ids)
+            ids = flatten(ids)
 
+<<<<<<< HEAD
+=======
+        assert type(ids[0]) is int
+
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
         if type(self.messages[-1]["tokens"]) is str:
             raise ValueError(
                 "Detected tokens instead of token lists. Please check the input."
             )
 
+<<<<<<< HEAD
         self.messages[-1]["content"] += partial_output
         self.messages[-1]["original_content"] += partial_output
         print("self.messages[-1]", self.messages[-1])
@@ -124,16 +143,32 @@ class Chat:
             self.tokenizer.convert_ids_to_tokens(partial_ids)
         )
         self.messages[-1]["ids"][-1].extend(partial_ids)
+=======
+        if not full_output:
+            self.messages[-1]["content"] += output
+            self.messages[-1]["original_content"] += output
+            self.messages[-1]["tokens"][-1].extend(
+                self.tokenizer.convert_ids_to_tokens(ids)
+            )
+            self.messages[-1]["ids"][-1].extend(ids)
+            self.offset += len(ids)
+        else:
+            self.messages[-1]["content"] = output
+            self.messages[-1]["original_content"] = output
+            self.messages[-1]["tokens"][-1] = self.tokenizer.convert_ids_to_tokens(ids)
+            self.messages[-1]["ids"][-1] = ids
+            self.offset = len(ids)
+
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
         spans_with_types = self.messages[-1]["spans_with_types"]
         model_output_span = list(spans_with_types.keys())[-1]
         model_output_span_type = {
-            (model_output_span[0], model_output_span[1] + len(partial_ids)): "ans"
+            (model_output_span[0], model_output_span[1] + len(ids)): "ans"
         }
         self.messages[-1]["spans_with_types"] = {
             **dict(list(spans_with_types.items())[:-1]),
             **model_output_span_type,
         }
-        self.offset += len(partial_ids)
 
     def add_message(
         self,
@@ -304,16 +339,23 @@ class Chat:
         print("spans_with_types", part_dict["spans_with_types"])
         self.messages.append(part_dict)
 
-    def move_approved_message(self, other_chat: Chat, wrapper: dict = None) -> None:
+    def move_approved_message(
+        self, other_chat: Chat, wrapper: dict = None, source: str = ""
+    ) -> None:
         """
         Move the last message from another chat to the current chat.
 
         :param other_chat: the chat to move the message from
         :param wrapper: the wrapper for the moved message
+        :param source: the source of the message, if not provided, it will be taken from the other chat
         :return: None
         """
+<<<<<<< HEAD
         approved_message = other_chat.messages[-1]
         print("MOVING MESSAGE", approved_message, sep="\n")
+=======
+        approved_message = copy.deepcopy(other_chat.messages[-1])
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
         offset_difference = other_chat.offset - self.offset
         spans_with_types = {}
 
@@ -322,6 +364,7 @@ class Chat:
                 f"The message contains teacher wrapper: {approved_message}"
             )
 
+        st_resp_wrapper = ["The", "Ġstudent", "'s", "Ġresponse", "Ġwas", ":Ċ"]
         content, original_content = "", ""
         message_ids, message_tokens = [], []
         if wrapper:
@@ -336,14 +379,17 @@ class Chat:
                         message_ids.append(chunk["ids"])
                         message_tokens.append(chunk["tokens"])
                     else:
-                        message_ids.extend(chunk["ids"])
-                        message_tokens.extend(chunk["tokens"])
+                        for ids, tokens in zip(chunk["ids"], chunk["tokens"]):
+                            if st_resp_wrapper == tokens:
+                                continue
+                            message_ids.append(ids)
+                            message_tokens.append(tokens)
 
                     updated_span = update_span(chunk["sent_spans"], self.offset)
                     spans_with_types[updated_span] = chunk.get("type", "wrap")
                     self.offset += len(flatten(chunk["ids"]))
             approved_message = {
-                "role": approved_message["role"],
+                "role": source or approved_message["role"],
                 "content": content,
                 "original_content": original_content,
                 "tokens": message_tokens,
@@ -383,6 +429,7 @@ class Chat:
         spans = []
         spans_dict = {}
         for message in self.messages[:-1] if remove_last else self.messages:
+<<<<<<< HEAD
             # message["spans_with_types"] = {span: type}
             if span_type:
                 for span, type_ in message["spans_with_types"].items():
@@ -390,9 +437,14 @@ class Chat:
                         span_type == "task" and type_ in ["cont", "ques"]
                     ):
                         print("span", span_type, "type_", type_)
+=======
+            for span, type_ in message["spans_with_types"].items():
+                if span_type:
+                    if type_ == span_type or type_is_task(span_type, type_):
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
                         spans.append(span)
-            else:
-                spans_dict.update(message["spans_with_types"])
+                else:
+                    spans_dict[span] = type_
 
         if span_type:
             return spans
@@ -407,11 +459,17 @@ class Chat:
         for inx, span in enumerate(all_task_spans, 1):
             if inx in self.part.supporting_sent_inx:
                 self.supp_sent_spans.append(span)
+        if len(self.supp_sent_spans) != len(self.part.supporting_sent_inx):
+            warnings.warn(
+                f"Number of supporting sentence spans ({len(self.supp_sent_spans)}) "
+                f"does not match the number of supporting sentences in the part "
+                f"({len(self.part.supporting_sent_inx)})."
+            )
 
     def convert_into_datatype(
         self,
         datatype: str,
-        max_length: int = 2048,
+        max_length: int = 8000,
         identify_target: bool = True,
         to_continue: bool = False,
     ) -> torch.Tensor:
@@ -429,29 +487,45 @@ class Chat:
                 f"Value {datatype} is not supported. Must be either 'ids' or 'tokens'."
             )
 
-        if identify_target:
-            self.identify_supp_sent_spans()
-
-        chat_ids = [self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")]
+        chat_tokens = []
+        chat_ids = []
+        conversation_length = len(chat_ids)
         # including the system prompt
         for i, message in enumerate(self.messages):
+<<<<<<< HEAD
             message_ids = get_generation_token_ids(self.tokenizer, message["role"])
             if type(message[datatype][0]) is str:
                 raise ValueError(
                     "Detected tokens instead of ids. Please check the input."
                 )
+=======
+            message_ids, message_tokens = get_generation_token_ids(
+                self.tokenizer, message["role"], start=i == 0
+            )
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
             message_ids.extend(flatten(message[datatype]))
-            conversation_length = len(chat_ids) + len(message_ids)
+            message_tokens.extend(flatten(message["tokens"]))
+            conversation_length += len(message_ids)
             if conversation_length > max_length:
                 warnings.warn(
-                    f"Exceeded max length with {conversation_length}. Truncating the input."
+                    f"Exceeded max length {conversation_length}. Truncating the input."
                 )
                 break
 
             chat_ids.extend(message_ids)
+            chat_tokens.extend(message_tokens)
 
+            print(f"DEBUG: chat_ids as str: {self.tokenizer.decode(chat_ids)}")
         if not to_continue:
+<<<<<<< HEAD
             chat_ids.extend(get_generation_token_ids(self.tokenizer, "assistant"))
         print("chat_ids", len(chat_ids), chat_ids)
+=======
+            gen_ids, _ = get_generation_token_ids(self.tokenizer, "assistant")
+            chat_ids.extend(gen_ids)
+
+        if identify_target:
+            self.identify_supp_sent_spans()
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
 
         return torch.as_tensor([chat_ids])

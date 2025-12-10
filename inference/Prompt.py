@@ -3,7 +3,6 @@ import warnings
 from dataclasses import dataclass
 from pathlib import Path
 
-import en_core_web_sm
 from transformers import PreTrainedTokenizerFast
 
 from data.TaskExamples import Task, TaskExample, TaskExamples
@@ -16,8 +15,6 @@ from inference.utils import (
 )
 from settings.config import Examples
 from settings.utils import encode_wrapper
-
-nlp = en_core_web_sm.load()
 
 
 @dataclass
@@ -204,6 +201,7 @@ class Prompt:
             for chunk in chunks:
                 assert type(chunk) is dict
                 # this is an empty message
+<<<<<<< HEAD
                 if not chunk.get("content", False):
                     generation_token_ids = [
                         self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")
@@ -239,6 +237,42 @@ class Prompt:
                 # otherwise, empty message
 
         print("DEBUG: spans_with_types", spans_with_types)
+=======
+                if not chunk.get("content", False):  # NEVER DELETE THIS LINE!!!!
+                    print(
+                        "Empty chunk when formatting teacher message, adding generation token ids..."
+                    )
+                    gen_ids, gen_tokens = get_generation_token_ids(
+                        self.tokenizer, Source.assistant
+                    )
+                    generation_token_ids = [
+                        self.tokenizer.convert_tokens_to_ids("<|begin_of_text|>")
+                    ] + gen_ids
+                    teacher_ids.append(generation_token_ids)
+                    teacher_tokens.append([])
+                    continue
+
+                teacher_string += chunk.get("content", "")
+                spans_types = chunk.get("spans_with_types", {})
+
+                if "wrap" not in spans_types.values():
+                    orig_teacher_string += chunk.get("original_content", "")
+
+                if chunk.get("ids", False):
+                    # this is a flat message
+                    if chunk["ids"] and type(chunk["ids"][0]) is int:
+                        teacher_ids.append(chunk["ids"])
+                        teacher_tokens.append(chunk["tokens"])
+                    else:
+                        # this is a list of lists
+                        teacher_ids.extend(chunk["ids"])
+                        teacher_tokens.extend(chunk["tokens"])
+
+                for span, type_ in spans_types.items():
+                    upd_span = update_span(span, offset)
+                    spans_with_types[upd_span] = type_
+                    offset += span[1] - span[0]
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
 
         print(
             "Teacher's message:",

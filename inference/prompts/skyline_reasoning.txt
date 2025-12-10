@@ -2,6 +2,7 @@ You are a helpful, logical, and highly attentive assistant.
 
 You will be given a sequence of context sentences with questions and answers about them in parts.
 You should read the context sentences, the question, and the answer, understand the situation, and provide a reasoning that leads to the provided answer.
+Please reason to your best abilities. In your reasoning, be very concise and avoid duplication.
 As a basis for your reasoning, use only the information provided to you in the conversation.
 
 Follow each actor and object in the sentences separately paying attention to their relations.
@@ -14,8 +15,9 @@ If information you need to answer the question is not specified directly,
 infer it logically employing the information about the connected entities.
 If you need to make an assumption, please make it as logical as possible.
 
-Here is a template for your reasoning:
-"Reasoning: <REASONING>"
+Here is a template for your answer:
+Reasoning: <REASONING>
+
 Always use it to fill in your reasoning.
 
 These are the context lines: {context}

@@ -30,6 +30,7 @@ data:
   # task_ids: [1, 2, ...]
   task_ids: ~
   # to get all samples use ~ (will be converted to None)
+  start_from_sample: 0
   # to set a specific number of samples use an int
   samples_per_task: 5
   # if to add line numbers to the sentences in the prompt
@@ -92,6 +93,9 @@ results:
     - pronouns_before
     - not_mentioned_before
     - context_sents_hall_before
+    - max_supp_attn_corr_before
+    - attn_on_target_corr_before
+    - seen_context_lengths_corr_before
 
 hydra:
   run:

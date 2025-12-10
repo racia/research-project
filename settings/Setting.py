@@ -30,6 +30,7 @@ class Setting(ABC):
         init_prompt: Prompt = None,
         multi_system: bool = False,
         saver: DataSaver = None,
+        name: str = "setting",
     ):
         """
          The setting class is an abstract class for all settings.
@@ -42,6 +43,7 @@ class Setting(ABC):
         :param multi_system: whether the chat for one sample consists of multiple systems, i.e. a teacher and a student
         :param saver: data saver to use
         """
+        self.name: str = name
         self.model: Model = model
         self.init_prompt: Prompt = init_prompt
         self.multi_system: bool = multi_system
@@ -76,6 +78,7 @@ class Setting(ABC):
             system_prompt=teacher_sys,
             tokenizer=tokenizer,
         )
+        chat.supp_sent_spans = self.model.chat.supp_sent_spans
         if "{" in teacher_sys.text:
             raise FormatError(
                 "The teacher prompt is still unformatted:\n", teacher_sys.text
@@ -88,7 +91,9 @@ class Setting(ABC):
         This is used for the multi-system setting when the final version of the chat is not available till the end.
         :return: interpretability result
         """
-        chat_ids = self.model.chat.convert_into_datatype("ids", identify_target=False)
+        chat_ids = self.model.chat.convert_into_datatype(
+            "ids", identify_target=True
+        ).to("cuda")
         output_tensor = self.model.model(
             chat_ids,
             return_dict=True,
@@ -125,6 +130,7 @@ class Setting(ABC):
         task_id: int,
         task_data: dict[int, list[SamplePart]],
         prompt_name: str,
+        start_from_sample: int = 0,
     ) -> Task:
         """
         Manages the data flow in and out of the model, iteratively going through
@@ -146,11 +152,19 @@ class Setting(ABC):
         :param task_data: task data as a dict of task ids and samples,
                           which themselves are dicts of sample ids and lists of SampleParts
         :param prompt_name: name of the prompt
+        :param start_from_sample: start from this sample for the first given task
         :return: results for the task in a list of dicts with each dict representing
                  one call to the model and will end up as one row of the table
         """
         task = Task(task_id, self.multi_system)
-        for sample_id, sample_parts in task_data.items():
+
+        if start_from_sample != 0:
+            print(f"Skipping samples 1-{start_from_sample-1}...")
+        else:
+            start_from_sample = 1
+
+        for sample_id, sample_parts in list(task_data.items())[start_from_sample - 1 :]:
+
             sample = Sample(task_id, sample_id, self.multi_system)
             # each sample is a new conversation
             self.model.chat = Chat(
@@ -203,7 +217,7 @@ class Setting(ABC):
                         sample_id=sample_id,
                         part_id=self.part.part_id,
                         eval_dict=eval_dict,
-                        file_name="eval_dict_sd.json",
+                        file_name=f"eval_dict_{self.name}.json",
                     )
                     self.part.set_output(
                         messages=self.model.chat.messages[-2:],
@@ -235,9 +249,15 @@ class Setting(ABC):
             #         sample_data=sample,
             #     )
 
+        task.set_results()
+        task.calculate_metrics()
         print("\n- TASK RESULTS -", end="\n\n")
+<<<<<<< HEAD
         print_metrics(task, table=True)
         task.set_results()
+=======
+        print_metrics(task)
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
 
         print(f"The work on task {task_id} is finished successfully")
 

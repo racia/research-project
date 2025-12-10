@@ -1,0 +1,21 @@
+Module util is available. Loading python and CUDA...
+Activating the project environment: .env
+The project environment '.env' activated successfully.
+Checking for data directory: /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2
+Data directory '/home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2' exists.
+Running the script with config: CONFIG_PATH=/home/hd/hd_hd/hd_ip303/research-project/settings/feedback/config, CONFIG_NAME=feedback_config
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n901
+Job ID: 163608
+Cluster: uc3
+User/Group: hd_ip303/hd_hd
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 2
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:01:56 core-walltime
+Job Wall-clock time: 00:00:58
+Memory Utilized: 302.91 MB
+Memory Efficiency: 0.92% of 32.00 GB (32.00 GB/node)

@@ -1,0 +1,146 @@
+Module util is available. Loading python and CUDA...
+Activating the project environment: .env
+The project environment '.env' activated successfully.
+Checking for data directory: /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2
+Data directory '/home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2' exists.
+Running the script with config: CONFIG_PATH=/home/hd/hd_hd/hd_ip303/research-project/settings/baseline/config, CONFIG_NAME=baseline_test_6_10
+Torch version:  2.8.0.dev20250408+cu128
+CUDA version:  12.8
+CUDA available:  True
+Device: cuda
+Config data for the run:
+model:
+  name: meta-llama/Meta-Llama-3-8B-Instruct
+  max_new_tokens: 150
+  temperature: 0.1
+  to_continue: false
+  mode: eval
+  interpretability:
+    use: true
+    aggregate: true
+setting:
+  name: Baseline
+data:
+  path: /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/
+  baseline_results: ''
+  splits:
+    train: false
+    valid: false
+    test: true
+  task_ids:
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  samples_per_task: 100
+  to_enumerate:
+    context: true
+    question: false
+  wrapper:
+    context: '*TASK*
+
+      Here are the context sentences:
+
+      {context}
+
+      '
+    question: 'Now, answer the following question:
+
+      {question}
+
+      '
+    reasoning: ''
+    answer: ''
+init_prompt:
+  paths:
+  - /home/hd/hd_hd/hd_ip303/research-project/inference/prompts/init_prompt_reasoning.txt
+  examples:
+    add: true
+    enumerated: true
+    handpicked: true
+    not_mentioned: true
+    number: 1
+    wrapper: '*EXAMPLE*
+
+      {example}
+
+      *END OF EXAMPLE*
+
+      '
+logging:
+  print_to_file: true
+results:
+  headers:
+  - id_
+  - task_id
+  - sample_id
+  - part_id
+  - task
+  - answer_lies_in_self
+  - golden_answer
+  - silver_reasoning
+  - model_output_before
+  - model_answer_before
+  - model_reasoning_before
+  - answer_correct_before
+  - reasoning_correct_before
+  - exact_match_accuracy_before
+  - soft_match_accuracy_before
+  - max_supp_attn_before
+  - attn_on_target_before
+  - verbs_before
+  - there_before
+  - pronouns_before
+  - not_mentioned_before
+  - context_sents_hall_before
+
+
+Running the script...
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa9_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa10_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa7_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa6_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa8_test.txt is read.
+Results will be saved to: /home/hd/hd_hd/hd_ip303/research-project/results/baseline/test/reasoning/09-05-2025/00-22-37
+The model meta-llama/Meta-Llama-3-8B-Instruct is being loaded in mode 'eval'...
+
+[2025-05-09 00:22:38,536][HYDRA] We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+The model meta-llama/Meta-Llama-3-8B-Instruct was  loaded successfully
+Wrapper values:
+((0, 9), ['*T', 'ASK', '*Ċ', 'Here', 'Ġare', 'Ġthe', 'Ġcontext', 'Ġsentences', ':Ċ'], [61734, 7536, 5736, 8586, 527, 279, 2317, 23719, 512], '*TASK*\nHere are the context sentences:\n')
+((), [], [], '\n')
+Wrapper values:
+((0, 7), ['Now', ',', 'Ġanswer', 'Ġthe', 'Ġfollowing', 'Ġquestion', ':Ċ'], [7184, 11, 4320, 279, 2768, 3488, 512], 'Now, answer the following question:\n')
+((), [], [], '\n')
+The model meta-llama/Meta-Llama-3-8B-Instruct was loaded successfully.
+
+The results will be saved to /home/hd/hd_hd/hd_ip303/research-project/results/baseline/test/reasoning/09-05-2025/00-22-37/init_prompt_reasoning
+
+Starting to query with the prompt: init_prompt_reasoning
+Prompt path: /home/hd/hd_hd/hd_ip303/research-project/inference/prompts/init_prompt_reasoning.txt
+
+Redirecting the system output to: /home/hd/hd_hd/hd_ip303/research-project/results/baseline/test/reasoning/09-05-2025/00-22-37/init_prompt_reasoning/init_prompt_reasoning.log
+The run is finished successfully
+______________________________
+Plots are saved successfully and general accuracies are saved
+
+The script has finished running successfully
+Python script 'running_script.py' executed successfully.
+Job completed successfully.
+Deactivating the environment: .env
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc3n071
+Job ID: 172747
+Cluster: uc3
+User/Group: hd_ip303/hd_hd
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 2
+CPU Utilized: 01:53:05
+CPU Efficiency: 49.29% of 03:49:26 core-walltime
+Job Wall-clock time: 01:54:43
+Memory Utilized: 9.70 GB
+Memory Efficiency: 7.58% of 128.00 GB (128.00 GB/node)

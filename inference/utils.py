@@ -18,6 +18,14 @@ from settings.config import Enumerate
 nlp = en_core_web_sm.load()
 
 
+REASONING_SCORE_MAP = {
+    "bleu": "ids_with_bleu",
+    "rouge": "ids_with_rouge",
+    "meteor": "ids_with_meteor",
+    "parts_attn_on_target": "ids_with_attn_on_target",
+}
+
+
 @dataclass
 class Source:
     """
@@ -116,17 +124,23 @@ def contains_not_mentioned(answer) -> bool:
 
 
 def get_generation_token_ids(
-    tokenizer: PreTrainedTokenizerFast, role: str
-) -> list[float]:
+    tokenizer: PreTrainedTokenizerFast, role: str, start: bool = False
+) -> tuple[int | list[int], list[str]]:
     """
     Returns the token id for the role of the message.
 
     :param tokenizer: tokenizer to use
     :param role: role of the message
-    :return: token id and special tokens
+    :param start: whether to add the start token
+    :return: token id and special tokens, generation tokens as string
     """
-    tokens = ["<|eot_id|>", "<|start_header_id|>", role, "<|end_header_id|>"]
-    return tokenizer.convert_tokens_to_ids(tokens)
+    tokens = [
+        "<|eot_id|>" if not start else "<|begin_of_text|>",
+        "<|start_header_id|>",
+        role,
+        "<|end_header_id|>",
+    ]
+    return tokenizer.convert_tokens_to_ids(tokens), tokens
 
 
 def sents_to_ids(
@@ -313,6 +327,18 @@ def print_metrics_table(
                 if len(evaluator.meteor) > 1
                 else evaluator.meteor.get_mean()
             )
+        if evaluator.max_supp_attn_corr:
+            metric_values["Max Attn Ratio Correlation"][version] = (
+                f"{evaluator.max_supp_attn_corr.get_mean()} ± {evaluator.max_supp_attn_corr.get_std()}"
+                if len(evaluator.max_supp_attn_corr) > 1
+                else evaluator.max_supp_attn_corr.get_mean()
+            )
+        if evaluator.attn_on_target_corr:
+            metric_values["Attn on Target Correlation"][version] = (
+                f"{evaluator.attn_on_target_corr.get_mean()} ± {evaluator.attn_on_target_corr.get_std()}"
+                if len(evaluator.attn_on_target_corr) > 1
+                else evaluator.attn_on_target_corr.get_mean()
+            )
 
     for metric_name, values in metric_values.items():
         row = [metric_name]
@@ -323,3 +349,30 @@ def print_metrics_table(
     if id_:
         print(f"\nMetrics for {evaluators[0].level} {id_}:")
     print(table)
+
+
+def type_is_task(target_type: str, type_: str) -> bool:
+    """
+    Check if the type is task.
+    """
+    return target_type == "task" and type_ in ["cont", "ques"]
+
+
+def is_nan(value: Any) -> bool:
+    """
+    Check if the value is NaN.
+
+    :param value: value to check
+    :return: True if the value is NaN, False otherwise
+    """
+    if value is None:
+        return True
+    elif isinstance(value, (float, int)):
+        return False
+    elif isinstance(value, (list, tuple)):
+        return any(is_nan(v) for v in value)
+    elif isinstance(value, torch.Tensor):
+        return torch.isnan(value).any().item()
+    elif isinstance(value, str):
+        return value.lower() == "nan"
+    return False

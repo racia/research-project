@@ -13,9 +13,8 @@ from omegaconf import DictConfig, OmegaConf
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from evaluation.Evaluator import MetricEvaluator
-from inference.DataLevels import Split, print_metrics
+from inference.DataLevels import Split
 from inference.Prompt import Prompt
-from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
 from settings.Model import Model
 from settings.SD.SpeculativeDecoding import SpeculativeDecoding
@@ -290,10 +289,21 @@ def run_setting(cfg: DictConfig) -> None:
                 else:
                     setting.init_prompt.use_original_prompt()
 
+                # if the current task is the first specified task, start from the specified sample if given
+                if task_id == cfg.data.get("task_ids", [None])[0]:
+                    start_from_sample = cfg.data.get("start_from_sample", 0)
+                else:
+                    start_from_sample = 0
+
+                print(
+                    f"start_from_sample: {start_from_sample}, task_id: {cfg.data.get('tasks', [None])[0]}"
+                )
+
                 task_result = setting.iterate_task(
                     task_id=task_id,
                     task_data=task,
                     prompt_name=f"'{prompt_name}' {prompt_num}/{len(cfg.init_prompt.paths)}",
+                    start_from_sample=start_from_sample,
                 )
                 split.add_task(task_result)
                 saver.save_task_result(
@@ -357,7 +367,6 @@ def run_setting(cfg: DictConfig) -> None:
 
         print("\n- RUN RESULTS -", end="\n\n")
 
-        [prompt_eval.calculate_std() for prompt_eval in prompt_evaluators]
         print_metrics_table(evaluators=prompt_evaluators, id_=init_prompt.name)
 
         print(
