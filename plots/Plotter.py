@@ -1191,7 +1191,7 @@ class Plotter:
 
         # Combine parts features to single column
         if "parts_features" in y_data:
-            label_order = [" ".join("-".join(comb).split("_")).capitalize().join('""') for L in range(1, 3) for comb in itertools.combinations(Features.attrs, L)]
+            label_order = [" ".join('"-"'.join(comb).split("_")).title().join('""') for L in range(1, 3) for comb in itertools.combinations(Features.attrs, L)]
             label_order.insert(0, "No Features")
             df["features_combined"] = ""
             for col in y_data["parts_features"].keys():
