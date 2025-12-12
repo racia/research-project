@@ -1,0 +1,970 @@
+Module util is available. Loading python and CUDA...
+Activating the project environment: .env
+The project environment '.env' activated successfully.
+Checking for data directory: /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2
+Data directory '/home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2' exists.
+Running the script with config: CONFIG_PATH=/home/hd/hd_hd/hd_ip303/research-project/settings/SD/config, CONFIG_NAME=SD_test_6_10
+Torch version:  2.8.0.dev20250408+cu128
+CUDA version:  12.8
+CUDA available:  True
+Device: cuda
+Config data for the run:
+teacher:
+  name: meta-llama/Meta-Llama-3-70B-Instruct
+  max_new_tokens: 150
+  temperature: 0.1
+  to_continue: false
+  mode: eval
+  k: 15
+  interpretability:
+    use: false
+student:
+  name: meta-llama/Meta-Llama-3-8B-Instruct
+  max_new_tokens: 250
+  temperature: 0.1
+  to_continue: false
+  mode: eval
+  interpretability:
+    use: true
+    aggregate: true
+setting:
+  name: SD
+data:
+  path: /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/
+  baseline_results: /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv
+  splits:
+    train: false
+    valid: false
+    test: true
+  task_ids:
+  - 9
+  - 10
+  samples_per_task: 100
+  to_enumerate:
+    context: true
+    question: false
+  wrapper:
+    context: '*TASK*
+
+      Here are the context sentences:
+
+      {context}
+
+      '
+    question: 'Now, answer the following question:
+
+      {question}
+
+      '
+    reasoning: ''
+    answer: ''
+init_prompt:
+  paths:
+  - /home/hd/hd_hd/hd_ip303/research-project/inference/prompts/init_prompt_reasoning.txt
+  examples:
+    add: true
+    enumerated: true
+    handpicked: true
+    not_mentioned: true
+    number: 1
+    wrapper: '*EXAMPLE*
+
+      {example}
+
+      *END OF EXAMPLE*
+
+      '
+eval_prompt:
+  paths:
+  - /home/hd/hd_hd/hd_ip303/research-project/inference/prompts/eval_prompt.txt
+  history: 'Your student was given the following task:
+
+    """
+
+    {chat_history}
+
+    """
+
+    '
+  wrapper: 'The student''s response was:
+
+    {student_output}
+
+    '
+resume_prompt:
+  paths:
+  - /home/hd/hd_hd/hd_ip303/research-project/inference/prompts/resume_prompt.txt
+  wrapper: 'Here is the improved version of the previous output:
+
+    {to_continue}
+
+    '
+logging:
+  print_to_file: true
+results:
+  headers:
+  - id_
+  - task_id
+  - sample_id
+  - part_id
+  - task
+  - answer_lies_in_self
+  - golden_answer
+  - silver_reasoning
+  - model_answer_after
+  - answer_correct_after
+  - reasoning_correct_after
+  - model_reasoning_after
+  - model_output_after
+  - exact_match_accuracy_after
+  - soft_match_accuracy_after
+  - max_supp_attn_after
+  - attn_on_target_after
+  - there_after
+  - verbs_after
+  - pronouns_after
+  - not_mentioned_after
+  - context_sents_hall_after
+  - model_answer_before
+  - answer_correct_before
+  - reasoning_correct_before
+  - model_reasoning_before
+  - model_output_before
+  - exact_match_accuracy_before
+  - soft_match_accuracy_before
+  - max_supp_attn_before
+  - attn_on_target_before
+  - there_before
+  - verbs_before
+  - pronouns_before
+  - not_mentioned_before
+  - iterations
+  - context_sents_hall_before
+
+
+Running the script...
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa9_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa10_test.txt is read.
+Results will be saved to: /pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/14-10-2025/02-06-20
+The model meta-llama/Meta-Llama-3-8B-Instruct is being loaded in mode 'eval'...
+
+The model meta-llama/Meta-Llama-3-8B-Instruct was loaded successfully
+The model meta-llama/Meta-Llama-3-70B-Instruct is being loaded in mode 'eval'...
+
+The model meta-llama/Meta-Llama-3-70B-Instruct was loaded successfully
+- THE EVAL PROMPT -
+______________________________
+You are a strict, logical, and highly attentive teacher.
+
+Check if the student is on the right track by evaluating their response.
+The student's response should be logical and follow the instructions and formatting of the task.
+Please help the student by suggesting the next token.
+Respond only with the token you would add next and nothing else.
+______________________________
+
+- THE RESUME PROMPT -
+______________________________
+Your teacher evaluated your answer and reasoning and found them to be flawed.
+
+You will receive the correct part of your previous answer and the next token the teacher proposes.
+Continue the reasoning and answer of the question from this point on.
+Follow the instructions and formatting of the task you received earlier.
+Here is a template for your answer:
+Reasoning: <REASONING>
+Answer: <ANSWER>
+
+Always use it to fill in your answer.
+______________________________
+
+
+The results will be saved to /pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/14-10-2025/02-06-20/init_prompt_reasoning
+
+Starting to query with the prompt: init_prompt_reasoning
+Prompt path: /home/hd/hd_hd/hd_ip303/research-project/inference/prompts/init_prompt_reasoning.txt
+
+Redirecting the system output to: /pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/14-10-2025/02-06-20/init_prompt_reasoning/init_prompt_reasoning.log
+[2025-10-14 02:20:37,530][HYDRA] Using default tokenizer.
+[2025-10-14 02:20:37,674][HYDRA] Using default tokenizer.
+[2025-10-14 02:20:37,786][HYDRA] Using default tokenizer.
+[2025-10-14 02:20:37,900][HYDRA] Using default tokenizer.
+[2025-10-14 02:20:38,016][HYDRA] Using default tokenizer.
+[2025-10-14 02:20:38,474][HYDRA] Using default tokenizer.
+[2025-10-14 02:20:38,592][HYDRA] Using default tokenizer.
+[2025-10-14 02:20:38,703][HYDRA] Using default tokenizer.
+[2025-10-14 02:20:38,815][HYDRA] Using default tokenizer.
+[2025-10-14 02:20:38,926][HYDRA] Using default tokenizer.
+[2025-10-14 02:24:17,985][HYDRA] Using default tokenizer.
+[2025-10-14 02:24:18,098][HYDRA] Using default tokenizer.
+[2025-10-14 02:24:18,210][HYDRA] Using default tokenizer.
+[2025-10-14 02:24:18,319][HYDRA] Using default tokenizer.
+[2025-10-14 02:24:18,432][HYDRA] Using default tokenizer.
+[2025-10-14 02:24:18,746][HYDRA] Using default tokenizer.
+[2025-10-14 02:24:18,857][HYDRA] Using default tokenizer.
+[2025-10-14 02:24:18,974][HYDRA] Using default tokenizer.
+[2025-10-14 02:24:19,085][HYDRA] Using default tokenizer.
+[2025-10-14 02:24:19,195][HYDRA] Using default tokenizer.
+[2025-10-14 02:29:04,813][HYDRA] Using default tokenizer.
+[2025-10-14 02:29:04,926][HYDRA] Using default tokenizer.
+[2025-10-14 02:29:05,036][HYDRA] Using default tokenizer.
+[2025-10-14 02:29:05,149][HYDRA] Using default tokenizer.
+[2025-10-14 02:29:05,260][HYDRA] Using default tokenizer.
+[2025-10-14 02:29:05,582][HYDRA] Using default tokenizer.
+[2025-10-14 02:29:05,699][HYDRA] Using default tokenizer.
+[2025-10-14 02:29:05,811][HYDRA] Using default tokenizer.
+[2025-10-14 02:29:05,921][HYDRA] Using default tokenizer.
+[2025-10-14 02:29:06,033][HYDRA] Using default tokenizer.
+[2025-10-14 02:34:41,345][HYDRA] Using default tokenizer.
+[2025-10-14 02:34:41,458][HYDRA] Using default tokenizer.
+[2025-10-14 02:34:41,569][HYDRA] Using default tokenizer.
+[2025-10-14 02:34:41,678][HYDRA] Using default tokenizer.
+[2025-10-14 02:34:41,788][HYDRA] Using default tokenizer.
+[2025-10-14 02:34:42,097][HYDRA] Using default tokenizer.
+[2025-10-14 02:34:42,207][HYDRA] Using default tokenizer.
+[2025-10-14 02:34:42,325][HYDRA] Using default tokenizer.
+[2025-10-14 02:34:42,434][HYDRA] Using default tokenizer.
+[2025-10-14 02:34:42,543][HYDRA] Using default tokenizer.
+[2025-10-14 02:42:40,155][HYDRA] Using default tokenizer.
+[2025-10-14 02:42:40,266][HYDRA] Using default tokenizer.
+[2025-10-14 02:42:40,377][HYDRA] Using default tokenizer.
+[2025-10-14 02:42:40,488][HYDRA] Using default tokenizer.
+[2025-10-14 02:42:40,599][HYDRA] Using default tokenizer.
+[2025-10-14 02:42:40,917][HYDRA] Using default tokenizer.
+[2025-10-14 02:42:41,028][HYDRA] Using default tokenizer.
+[2025-10-14 02:42:41,144][HYDRA] Using default tokenizer.
+[2025-10-14 02:42:41,256][HYDRA] Using default tokenizer.
+[2025-10-14 02:42:41,366][HYDRA] Using default tokenizer.
+[2025-10-14 02:48:45,786][HYDRA] Using default tokenizer.
+[2025-10-14 02:48:45,897][HYDRA] Using default tokenizer.
+[2025-10-14 02:48:46,009][HYDRA] Using default tokenizer.
+[2025-10-14 02:48:46,124][HYDRA] Using default tokenizer.
+[2025-10-14 02:48:46,235][HYDRA] Using default tokenizer.
+[2025-10-14 02:48:46,544][HYDRA] Using default tokenizer.
+[2025-10-14 02:48:46,661][HYDRA] Using default tokenizer.
+[2025-10-14 02:48:46,790][HYDRA] Using default tokenizer.
+[2025-10-14 02:48:46,902][HYDRA] Using default tokenizer.
+[2025-10-14 02:48:47,012][HYDRA] Using default tokenizer.
+[2025-10-14 02:54:25,123][HYDRA] Using default tokenizer.
+[2025-10-14 02:54:25,233][HYDRA] Using default tokenizer.
+[2025-10-14 02:54:25,343][HYDRA] Using default tokenizer.
+[2025-10-14 02:54:25,454][HYDRA] Using default tokenizer.
+[2025-10-14 02:54:25,570][HYDRA] Using default tokenizer.
+[2025-10-14 02:54:25,889][HYDRA] Using default tokenizer.
+[2025-10-14 02:54:26,005][HYDRA] Using default tokenizer.
+[2025-10-14 02:54:26,121][HYDRA] Using default tokenizer.
+[2025-10-14 02:54:26,233][HYDRA] Using default tokenizer.
+[2025-10-14 02:54:26,346][HYDRA] Using default tokenizer.
+[2025-10-14 03:03:27,097][HYDRA] Using default tokenizer.
+[2025-10-14 03:03:27,217][HYDRA] Using default tokenizer.
+[2025-10-14 03:03:27,327][HYDRA] Using default tokenizer.
+[2025-10-14 03:03:27,438][HYDRA] Using default tokenizer.
+[2025-10-14 03:03:27,547][HYDRA] Using default tokenizer.
+[2025-10-14 03:03:27,862][HYDRA] Using default tokenizer.
+[2025-10-14 03:03:27,974][HYDRA] Using default tokenizer.
+[2025-10-14 03:03:28,093][HYDRA] Using default tokenizer.
+[2025-10-14 03:03:28,206][HYDRA] Using default tokenizer.
+[2025-10-14 03:03:28,317][HYDRA] Using default tokenizer.
+[2025-10-14 03:06:36,700][HYDRA] Using default tokenizer.
+[2025-10-14 03:06:36,813][HYDRA] Using default tokenizer.
+[2025-10-14 03:06:36,924][HYDRA] Using default tokenizer.
+[2025-10-14 03:06:37,034][HYDRA] Using default tokenizer.
+[2025-10-14 03:06:37,145][HYDRA] Using default tokenizer.
+[2025-10-14 03:06:37,457][HYDRA] Using default tokenizer.
+[2025-10-14 03:06:37,581][HYDRA] Using default tokenizer.
+[2025-10-14 03:06:37,698][HYDRA] Using default tokenizer.
+[2025-10-14 03:06:37,810][HYDRA] Using default tokenizer.
+[2025-10-14 03:06:37,921][HYDRA] Using default tokenizer.
+[2025-10-14 03:21:41,583][HYDRA] Using default tokenizer.
+[2025-10-14 03:21:41,729][HYDRA] Using default tokenizer.
+[2025-10-14 03:21:41,840][HYDRA] Using default tokenizer.
+[2025-10-14 03:21:41,957][HYDRA] Using default tokenizer.
+[2025-10-14 03:21:42,073][HYDRA] Using default tokenizer.
+[2025-10-14 03:21:42,401][HYDRA] Using default tokenizer.
+[2025-10-14 03:21:42,513][HYDRA] Using default tokenizer.
+[2025-10-14 03:21:42,633][HYDRA] Using default tokenizer.
+[2025-10-14 03:21:42,745][HYDRA] Using default tokenizer.
+[2025-10-14 03:21:42,856][HYDRA] Using default tokenizer.
+[2025-10-14 03:26:06,042][HYDRA] Using default tokenizer.
+[2025-10-14 03:26:06,153][HYDRA] Using default tokenizer.
+[2025-10-14 03:26:06,264][HYDRA] Using default tokenizer.
+[2025-10-14 03:26:06,375][HYDRA] Using default tokenizer.
+[2025-10-14 03:26:06,488][HYDRA] Using default tokenizer.
+[2025-10-14 03:26:06,801][HYDRA] Using default tokenizer.
+[2025-10-14 03:26:06,917][HYDRA] Using default tokenizer.
+[2025-10-14 03:26:07,032][HYDRA] Using default tokenizer.
+[2025-10-14 03:26:07,150][HYDRA] Using default tokenizer.
+[2025-10-14 03:26:07,263][HYDRA] Using default tokenizer.
+[2025-10-14 03:31:13,418][HYDRA] Using default tokenizer.
+[2025-10-14 03:31:13,529][HYDRA] Using default tokenizer.
+[2025-10-14 03:31:13,639][HYDRA] Using default tokenizer.
+[2025-10-14 03:31:13,751][HYDRA] Using default tokenizer.
+[2025-10-14 03:31:13,866][HYDRA] Using default tokenizer.
+[2025-10-14 03:31:14,179][HYDRA] Using default tokenizer.
+[2025-10-14 03:31:14,297][HYDRA] Using default tokenizer.
+[2025-10-14 03:31:14,411][HYDRA] Using default tokenizer.
+[2025-10-14 03:31:14,523][HYDRA] Using default tokenizer.
+[2025-10-14 03:31:14,634][HYDRA] Using default tokenizer.
+[2025-10-14 03:37:13,124][HYDRA] Using default tokenizer.
+[2025-10-14 03:37:13,239][HYDRA] Using default tokenizer.
+[2025-10-14 03:37:13,350][HYDRA] Using default tokenizer.
+[2025-10-14 03:37:13,469][HYDRA] Using default tokenizer.
+[2025-10-14 03:37:13,581][HYDRA] Using default tokenizer.
+[2025-10-14 03:37:13,911][HYDRA] Using default tokenizer.
+[2025-10-14 03:37:14,032][HYDRA] Using default tokenizer.
+[2025-10-14 03:37:14,145][HYDRA] Using default tokenizer.
+[2025-10-14 03:37:14,256][HYDRA] Using default tokenizer.
+[2025-10-14 03:37:14,368][HYDRA] Using default tokenizer.
+[2025-10-14 03:46:18,242][HYDRA] Using default tokenizer.
+[2025-10-14 03:46:18,355][HYDRA] Using default tokenizer.
+[2025-10-14 03:46:18,468][HYDRA] Using default tokenizer.
+[2025-10-14 03:46:18,580][HYDRA] Using default tokenizer.
+[2025-10-14 03:46:18,692][HYDRA] Using default tokenizer.
+[2025-10-14 03:46:19,006][HYDRA] Using default tokenizer.
+[2025-10-14 03:46:19,126][HYDRA] Using default tokenizer.
+[2025-10-14 03:46:19,241][HYDRA] Using default tokenizer.
+[2025-10-14 03:46:19,352][HYDRA] Using default tokenizer.
+[2025-10-14 03:46:19,464][HYDRA] Using default tokenizer.
+[2025-10-14 03:50:39,009][HYDRA] Using default tokenizer.
+[2025-10-14 03:50:39,125][HYDRA] Using default tokenizer.
+[2025-10-14 03:50:39,235][HYDRA] Using default tokenizer.
+[2025-10-14 03:50:39,347][HYDRA] Using default tokenizer.
+[2025-10-14 03:50:39,459][HYDRA] Using default tokenizer.
+[2025-10-14 03:50:39,779][HYDRA] Using default tokenizer.
+[2025-10-14 03:50:39,900][HYDRA] Using default tokenizer.
+[2025-10-14 03:50:40,013][HYDRA] Using default tokenizer.
+[2025-10-14 03:50:40,126][HYDRA] Using default tokenizer.
+[2025-10-14 03:50:40,239][HYDRA] Using default tokenizer.
+[2025-10-14 03:55:33,407][HYDRA] Using default tokenizer.
+[2025-10-14 03:55:33,521][HYDRA] Using default tokenizer.
+[2025-10-14 03:55:33,643][HYDRA] Using default tokenizer.
+[2025-10-14 03:55:33,754][HYDRA] Using default tokenizer.
+[2025-10-14 03:55:33,868][HYDRA] Using default tokenizer.
+[2025-10-14 03:55:34,177][HYDRA] Using default tokenizer.
+[2025-10-14 03:55:34,293][HYDRA] Using default tokenizer.
+[2025-10-14 03:55:34,406][HYDRA] Using default tokenizer.
+[2025-10-14 03:55:34,516][HYDRA] Using default tokenizer.
+[2025-10-14 03:55:34,627][HYDRA] Using default tokenizer.
+[2025-10-14 04:02:12,426][HYDRA] Using default tokenizer.
+[2025-10-14 04:02:12,539][HYDRA] Using default tokenizer.
+[2025-10-14 04:02:12,651][HYDRA] Using default tokenizer.
+[2025-10-14 04:02:12,764][HYDRA] Using default tokenizer.
+[2025-10-14 04:02:12,877][HYDRA] Using default tokenizer.
+[2025-10-14 04:02:13,198][HYDRA] Using default tokenizer.
+[2025-10-14 04:02:13,311][HYDRA] Using default tokenizer.
+[2025-10-14 04:02:13,425][HYDRA] Using default tokenizer.
+[2025-10-14 04:02:13,539][HYDRA] Using default tokenizer.
+[2025-10-14 04:02:13,652][HYDRA] Using default tokenizer.
+[2025-10-14 04:07:17,064][HYDRA] Using default tokenizer.
+[2025-10-14 04:07:17,182][HYDRA] Using default tokenizer.
+[2025-10-14 04:07:17,293][HYDRA] Using default tokenizer.
+[2025-10-14 04:07:17,403][HYDRA] Using default tokenizer.
+[2025-10-14 04:07:17,515][HYDRA] Using default tokenizer.
+[2025-10-14 04:07:17,830][HYDRA] Using default tokenizer.
+[2025-10-14 04:07:17,940][HYDRA] Using default tokenizer.
+[2025-10-14 04:07:18,059][HYDRA] Using default tokenizer.
+[2025-10-14 04:07:18,172][HYDRA] Using default tokenizer.
+[2025-10-14 04:07:18,283][HYDRA] Using default tokenizer.
+[2025-10-14 04:15:25,827][HYDRA] Using default tokenizer.
+[2025-10-14 04:15:25,944][HYDRA] Using default tokenizer.
+[2025-10-14 04:15:26,058][HYDRA] Using default tokenizer.
+[2025-10-14 04:15:26,177][HYDRA] Using default tokenizer.
+[2025-10-14 04:15:26,289][HYDRA] Using default tokenizer.
+[2025-10-14 04:15:26,606][HYDRA] Using default tokenizer.
+[2025-10-14 04:15:26,721][HYDRA] Using default tokenizer.
+[2025-10-14 04:15:26,833][HYDRA] Using default tokenizer.
+[2025-10-14 04:15:26,948][HYDRA] Using default tokenizer.
+[2025-10-14 04:15:27,060][HYDRA] Using default tokenizer.
+[2025-10-14 04:25:22,685][HYDRA] Using default tokenizer.
+[2025-10-14 04:25:22,797][HYDRA] Using default tokenizer.
+[2025-10-14 04:25:22,908][HYDRA] Using default tokenizer.
+[2025-10-14 04:25:23,018][HYDRA] Using default tokenizer.
+[2025-10-14 04:25:23,128][HYDRA] Using default tokenizer.
+[2025-10-14 04:25:23,433][HYDRA] Using default tokenizer.
+[2025-10-14 04:25:23,543][HYDRA] Using default tokenizer.
+[2025-10-14 04:25:23,660][HYDRA] Using default tokenizer.
+[2025-10-14 04:25:23,777][HYDRA] Using default tokenizer.
+[2025-10-14 04:25:23,906][HYDRA] Using default tokenizer.
+[2025-10-14 04:35:35,711][HYDRA] Using default tokenizer.
+[2025-10-14 04:35:35,853][HYDRA] Using default tokenizer.
+[2025-10-14 04:35:35,963][HYDRA] Using default tokenizer.
+[2025-10-14 04:35:36,076][HYDRA] Using default tokenizer.
+[2025-10-14 04:35:36,189][HYDRA] Using default tokenizer.
+[2025-10-14 04:35:36,520][HYDRA] Using default tokenizer.
+[2025-10-14 04:35:36,632][HYDRA] Using default tokenizer.
+[2025-10-14 04:35:36,745][HYDRA] Using default tokenizer.
+[2025-10-14 04:35:36,855][HYDRA] Using default tokenizer.
+[2025-10-14 04:35:36,968][HYDRA] Using default tokenizer.
+[2025-10-14 04:41:40,176][HYDRA] Using default tokenizer.
+[2025-10-14 04:41:40,289][HYDRA] Using default tokenizer.
+[2025-10-14 04:41:40,401][HYDRA] Using default tokenizer.
+[2025-10-14 04:41:40,511][HYDRA] Using default tokenizer.
+[2025-10-14 04:41:40,622][HYDRA] Using default tokenizer.
+[2025-10-14 04:41:40,966][HYDRA] Using default tokenizer.
+[2025-10-14 04:41:41,078][HYDRA] Using default tokenizer.
+[2025-10-14 04:41:41,190][HYDRA] Using default tokenizer.
+[2025-10-14 04:41:41,302][HYDRA] Using default tokenizer.
+[2025-10-14 04:41:41,412][HYDRA] Using default tokenizer.
+[2025-10-14 04:50:38,629][HYDRA] Using default tokenizer.
+[2025-10-14 04:50:38,740][HYDRA] Using default tokenizer.
+[2025-10-14 04:50:38,851][HYDRA] Using default tokenizer.
+[2025-10-14 04:50:38,962][HYDRA] Using default tokenizer.
+[2025-10-14 04:50:39,072][HYDRA] Using default tokenizer.
+[2025-10-14 04:50:39,388][HYDRA] Using default tokenizer.
+[2025-10-14 04:50:39,498][HYDRA] Using default tokenizer.
+[2025-10-14 04:50:39,618][HYDRA] Using default tokenizer.
+[2025-10-14 04:50:39,729][HYDRA] Using default tokenizer.
+[2025-10-14 04:50:39,840][HYDRA] Using default tokenizer.
+[2025-10-14 04:58:25,010][HYDRA] Using default tokenizer.
+[2025-10-14 04:58:25,121][HYDRA] Using default tokenizer.
+[2025-10-14 04:58:25,233][HYDRA] Using default tokenizer.
+[2025-10-14 04:58:25,343][HYDRA] Using default tokenizer.
+[2025-10-14 04:58:25,453][HYDRA] Using default tokenizer.
+[2025-10-14 04:58:25,764][HYDRA] Using default tokenizer.
+[2025-10-14 04:58:25,875][HYDRA] Using default tokenizer.
+[2025-10-14 04:58:25,994][HYDRA] Using default tokenizer.
+[2025-10-14 04:58:26,105][HYDRA] Using default tokenizer.
+[2025-10-14 04:58:26,216][HYDRA] Using default tokenizer.
+[2025-10-14 05:10:20,412][HYDRA] Using default tokenizer.
+[2025-10-14 05:10:20,525][HYDRA] Using default tokenizer.
+[2025-10-14 05:10:20,637][HYDRA] Using default tokenizer.
+[2025-10-14 05:10:20,749][HYDRA] Using default tokenizer.
+[2025-10-14 05:10:20,867][HYDRA] Using default tokenizer.
+[2025-10-14 05:10:21,184][HYDRA] Using default tokenizer.
+[2025-10-14 05:10:21,297][HYDRA] Using default tokenizer.
+[2025-10-14 05:10:21,417][HYDRA] Using default tokenizer.
+[2025-10-14 05:10:21,529][HYDRA] Using default tokenizer.
+[2025-10-14 05:10:21,643][HYDRA] Using default tokenizer.
+[2025-10-14 05:24:05,750][HYDRA] Using default tokenizer.
+[2025-10-14 05:24:05,864][HYDRA] Using default tokenizer.
+[2025-10-14 05:24:05,976][HYDRA] Using default tokenizer.
+[2025-10-14 05:24:06,087][HYDRA] Using default tokenizer.
+[2025-10-14 05:24:06,204][HYDRA] Using default tokenizer.
+[2025-10-14 05:24:06,527][HYDRA] Using default tokenizer.
+[2025-10-14 05:24:06,647][HYDRA] Using default tokenizer.
+[2025-10-14 05:24:06,759][HYDRA] Using default tokenizer.
+[2025-10-14 05:24:06,870][HYDRA] Using default tokenizer.
+[2025-10-14 05:24:06,982][HYDRA] Using default tokenizer.
+[2025-10-14 05:44:26,136][HYDRA] Using default tokenizer.
+[2025-10-14 05:44:26,265][HYDRA] Using default tokenizer.
+[2025-10-14 05:44:26,377][HYDRA] Using default tokenizer.
+[2025-10-14 05:44:26,487][HYDRA] Using default tokenizer.
+[2025-10-14 05:44:26,599][HYDRA] Using default tokenizer.
+[2025-10-14 05:44:26,944][HYDRA] Using default tokenizer.
+[2025-10-14 05:44:27,061][HYDRA] Using default tokenizer.
+[2025-10-14 05:44:27,175][HYDRA] Using default tokenizer.
+[2025-10-14 05:44:27,288][HYDRA] Using default tokenizer.
+[2025-10-14 05:44:27,400][HYDRA] Using default tokenizer.
+[2025-10-14 05:51:25,105][HYDRA] Using default tokenizer.
+[2025-10-14 05:51:25,217][HYDRA] Using default tokenizer.
+[2025-10-14 05:51:25,330][HYDRA] Using default tokenizer.
+[2025-10-14 05:51:25,440][HYDRA] Using default tokenizer.
+[2025-10-14 05:51:25,550][HYDRA] Using default tokenizer.
+[2025-10-14 05:51:25,873][HYDRA] Using default tokenizer.
+[2025-10-14 05:51:25,983][HYDRA] Using default tokenizer.
+[2025-10-14 05:51:26,096][HYDRA] Using default tokenizer.
+[2025-10-14 05:51:26,211][HYDRA] Using default tokenizer.
+[2025-10-14 05:51:26,321][HYDRA] Using default tokenizer.
+[2025-10-14 05:59:29,277][HYDRA] Using default tokenizer.
+[2025-10-14 05:59:29,391][HYDRA] Using default tokenizer.
+[2025-10-14 05:59:29,503][HYDRA] Using default tokenizer.
+[2025-10-14 05:59:29,615][HYDRA] Using default tokenizer.
+[2025-10-14 05:59:29,726][HYDRA] Using default tokenizer.
+[2025-10-14 05:59:30,057][HYDRA] Using default tokenizer.
+[2025-10-14 05:59:30,170][HYDRA] Using default tokenizer.
+[2025-10-14 05:59:30,287][HYDRA] Using default tokenizer.
+[2025-10-14 05:59:30,399][HYDRA] Using default tokenizer.
+[2025-10-14 05:59:30,512][HYDRA] Using default tokenizer.
+[2025-10-14 06:08:59,009][HYDRA] Using default tokenizer.
+[2025-10-14 06:08:59,125][HYDRA] Using default tokenizer.
+[2025-10-14 06:08:59,235][HYDRA] Using default tokenizer.
+[2025-10-14 06:08:59,347][HYDRA] Using default tokenizer.
+[2025-10-14 06:08:59,458][HYDRA] Using default tokenizer.
+[2025-10-14 06:08:59,782][HYDRA] Using default tokenizer.
+[2025-10-14 06:08:59,893][HYDRA] Using default tokenizer.
+[2025-10-14 06:09:00,010][HYDRA] Using default tokenizer.
+[2025-10-14 06:09:00,124][HYDRA] Using default tokenizer.
+[2025-10-14 06:09:00,235][HYDRA] Using default tokenizer.
+[2025-10-14 06:16:39,604][HYDRA] Using default tokenizer.
+[2025-10-14 06:16:39,717][HYDRA] Using default tokenizer.
+[2025-10-14 06:16:39,837][HYDRA] Using default tokenizer.
+[2025-10-14 06:16:39,954][HYDRA] Using default tokenizer.
+[2025-10-14 06:16:40,067][HYDRA] Using default tokenizer.
+[2025-10-14 06:16:40,401][HYDRA] Using default tokenizer.
+[2025-10-14 06:16:40,513][HYDRA] Using default tokenizer.
+[2025-10-14 06:16:40,626][HYDRA] Using default tokenizer.
+[2025-10-14 06:16:40,738][HYDRA] Using default tokenizer.
+[2025-10-14 06:16:40,858][HYDRA] Using default tokenizer.
+[2025-10-14 06:23:10,971][HYDRA] Using default tokenizer.
+[2025-10-14 06:23:11,083][HYDRA] Using default tokenizer.
+[2025-10-14 06:23:11,203][HYDRA] Using default tokenizer.
+[2025-10-14 06:23:11,315][HYDRA] Using default tokenizer.
+[2025-10-14 06:23:11,429][HYDRA] Using default tokenizer.
+[2025-10-14 06:23:11,786][HYDRA] Using default tokenizer.
+[2025-10-14 06:23:11,898][HYDRA] Using default tokenizer.
+[2025-10-14 06:23:12,015][HYDRA] Using default tokenizer.
+[2025-10-14 06:23:12,130][HYDRA] Using default tokenizer.
+[2025-10-14 06:23:12,243][HYDRA] Using default tokenizer.
+[2025-10-14 06:29:43,323][HYDRA] Using default tokenizer.
+[2025-10-14 06:29:43,434][HYDRA] Using default tokenizer.
+[2025-10-14 06:29:43,549][HYDRA] Using default tokenizer.
+[2025-10-14 06:29:43,659][HYDRA] Using default tokenizer.
+[2025-10-14 06:29:43,769][HYDRA] Using default tokenizer.
+[2025-10-14 06:29:44,084][HYDRA] Using default tokenizer.
+[2025-10-14 06:29:44,203][HYDRA] Using default tokenizer.
+[2025-10-14 06:29:44,319][HYDRA] Using default tokenizer.
+[2025-10-14 06:29:44,430][HYDRA] Using default tokenizer.
+[2025-10-14 06:29:44,540][HYDRA] Using default tokenizer.
+[2025-10-14 06:36:47,128][HYDRA] Using default tokenizer.
+[2025-10-14 06:36:47,260][HYDRA] Using default tokenizer.
+[2025-10-14 06:36:47,375][HYDRA] Using default tokenizer.
+[2025-10-14 06:36:47,489][HYDRA] Using default tokenizer.
+[2025-10-14 06:36:47,603][HYDRA] Using default tokenizer.
+[2025-10-14 06:36:47,924][HYDRA] Using default tokenizer.
+[2025-10-14 06:36:48,043][HYDRA] Using default tokenizer.
+[2025-10-14 06:36:48,156][HYDRA] Using default tokenizer.
+[2025-10-14 06:36:48,267][HYDRA] Using default tokenizer.
+[2025-10-14 06:36:48,378][HYDRA] Using default tokenizer.
+[2025-10-14 06:43:32,783][HYDRA] Using default tokenizer.
+[2025-10-14 06:43:32,894][HYDRA] Using default tokenizer.
+[2025-10-14 06:43:33,004][HYDRA] Using default tokenizer.
+[2025-10-14 06:43:33,122][HYDRA] Using default tokenizer.
+[2025-10-14 06:43:33,233][HYDRA] Using default tokenizer.
+[2025-10-14 06:43:33,557][HYDRA] Using default tokenizer.
+[2025-10-14 06:43:33,675][HYDRA] Using default tokenizer.
+[2025-10-14 06:43:33,795][HYDRA] Using default tokenizer.
+[2025-10-14 06:43:33,912][HYDRA] Using default tokenizer.
+[2025-10-14 06:43:34,024][HYDRA] Using default tokenizer.
+[2025-10-14 06:52:04,831][HYDRA] Using default tokenizer.
+[2025-10-14 06:52:04,957][HYDRA] Using default tokenizer.
+[2025-10-14 06:52:05,067][HYDRA] Using default tokenizer.
+[2025-10-14 06:52:05,178][HYDRA] Using default tokenizer.
+[2025-10-14 06:52:05,290][HYDRA] Using default tokenizer.
+[2025-10-14 06:52:05,609][HYDRA] Using default tokenizer.
+[2025-10-14 06:52:05,727][HYDRA] Using default tokenizer.
+[2025-10-14 06:52:05,839][HYDRA] Using default tokenizer.
+[2025-10-14 06:52:05,953][HYDRA] Using default tokenizer.
+[2025-10-14 06:52:06,065][HYDRA] Using default tokenizer.
+[2025-10-14 06:56:43,324][HYDRA] Using default tokenizer.
+[2025-10-14 06:56:43,434][HYDRA] Using default tokenizer.
+[2025-10-14 06:56:43,545][HYDRA] Using default tokenizer.
+[2025-10-14 06:56:43,656][HYDRA] Using default tokenizer.
+[2025-10-14 06:56:43,766][HYDRA] Using default tokenizer.
+[2025-10-14 06:56:44,089][HYDRA] Using default tokenizer.
+[2025-10-14 06:56:44,207][HYDRA] Using default tokenizer.
+[2025-10-14 06:56:44,320][HYDRA] Using default tokenizer.
+[2025-10-14 06:56:44,430][HYDRA] Using default tokenizer.
+[2025-10-14 06:56:44,540][HYDRA] Using default tokenizer.
+[2025-10-14 07:10:03,608][HYDRA] Using default tokenizer.
+[2025-10-14 07:10:03,718][HYDRA] Using default tokenizer.
+[2025-10-14 07:10:03,829][HYDRA] Using default tokenizer.
+[2025-10-14 07:10:03,944][HYDRA] Using default tokenizer.
+[2025-10-14 07:10:04,056][HYDRA] Using default tokenizer.
+[2025-10-14 07:10:04,375][HYDRA] Using default tokenizer.
+[2025-10-14 07:10:04,498][HYDRA] Using default tokenizer.
+[2025-10-14 07:10:04,613][HYDRA] Using default tokenizer.
+[2025-10-14 07:10:04,725][HYDRA] Using default tokenizer.
+[2025-10-14 07:10:04,840][HYDRA] Using default tokenizer.
+[2025-10-14 07:21:40,125][HYDRA] Using default tokenizer.
+[2025-10-14 07:21:40,242][HYDRA] Using default tokenizer.
+[2025-10-14 07:21:40,353][HYDRA] Using default tokenizer.
+[2025-10-14 07:21:40,465][HYDRA] Using default tokenizer.
+[2025-10-14 07:21:40,576][HYDRA] Using default tokenizer.
+[2025-10-14 07:21:40,896][HYDRA] Using default tokenizer.
+[2025-10-14 07:21:41,006][HYDRA] Using default tokenizer.
+[2025-10-14 07:21:41,124][HYDRA] Using default tokenizer.
+[2025-10-14 07:21:41,237][HYDRA] Using default tokenizer.
+[2025-10-14 07:21:41,349][HYDRA] Using default tokenizer.
+[2025-10-14 07:30:07,505][HYDRA] Using default tokenizer.
+[2025-10-14 07:30:07,618][HYDRA] Using default tokenizer.
+[2025-10-14 07:30:07,730][HYDRA] Using default tokenizer.
+[2025-10-14 07:30:07,842][HYDRA] Using default tokenizer.
+[2025-10-14 07:30:07,953][HYDRA] Using default tokenizer.
+[2025-10-14 07:30:08,286][HYDRA] Using default tokenizer.
+[2025-10-14 07:30:08,397][HYDRA] Using default tokenizer.
+[2025-10-14 07:30:08,516][HYDRA] Using default tokenizer.
+[2025-10-14 07:30:08,628][HYDRA] Using default tokenizer.
+[2025-10-14 07:30:08,741][HYDRA] Using default tokenizer.
+[2025-10-14 07:39:49,948][HYDRA] Using default tokenizer.
+[2025-10-14 07:39:50,060][HYDRA] Using default tokenizer.
+[2025-10-14 07:39:50,173][HYDRA] Using default tokenizer.
+[2025-10-14 07:39:50,285][HYDRA] Using default tokenizer.
+[2025-10-14 07:39:50,398][HYDRA] Using default tokenizer.
+[2025-10-14 07:39:50,721][HYDRA] Using default tokenizer.
+[2025-10-14 07:39:50,840][HYDRA] Using default tokenizer.
+[2025-10-14 07:39:50,952][HYDRA] Using default tokenizer.
+[2025-10-14 07:39:51,064][HYDRA] Using default tokenizer.
+[2025-10-14 07:39:51,177][HYDRA] Using default tokenizer.
+[2025-10-14 07:46:27,577][HYDRA] Using default tokenizer.
+[2025-10-14 07:46:27,689][HYDRA] Using default tokenizer.
+[2025-10-14 07:46:27,799][HYDRA] Using default tokenizer.
+[2025-10-14 07:46:27,916][HYDRA] Using default tokenizer.
+[2025-10-14 07:46:28,028][HYDRA] Using default tokenizer.
+[2025-10-14 07:46:28,348][HYDRA] Using default tokenizer.
+[2025-10-14 07:46:28,459][HYDRA] Using default tokenizer.
+[2025-10-14 07:46:28,579][HYDRA] Using default tokenizer.
+[2025-10-14 07:46:28,691][HYDRA] Using default tokenizer.
+[2025-10-14 07:46:28,802][HYDRA] Using default tokenizer.
+[2025-10-14 07:54:42,541][HYDRA] Using default tokenizer.
+[2025-10-14 07:54:42,653][HYDRA] Using default tokenizer.
+[2025-10-14 07:54:42,766][HYDRA] Using default tokenizer.
+[2025-10-14 07:54:42,878][HYDRA] Using default tokenizer.
+[2025-10-14 07:54:42,990][HYDRA] Using default tokenizer.
+[2025-10-14 07:54:43,314][HYDRA] Using default tokenizer.
+[2025-10-14 07:54:43,431][HYDRA] Using default tokenizer.
+[2025-10-14 07:54:43,543][HYDRA] Using default tokenizer.
+[2025-10-14 07:54:43,661][HYDRA] Using default tokenizer.
+[2025-10-14 07:54:43,773][HYDRA] Using default tokenizer.
+[2025-10-14 08:00:45,134][HYDRA] Using default tokenizer.
+[2025-10-14 08:00:45,285][HYDRA] Using default tokenizer.
+[2025-10-14 08:00:45,397][HYDRA] Using default tokenizer.
+[2025-10-14 08:00:45,511][HYDRA] Using default tokenizer.
+[2025-10-14 08:00:45,622][HYDRA] Using default tokenizer.
+[2025-10-14 08:00:45,947][HYDRA] Using default tokenizer.
+[2025-10-14 08:00:46,061][HYDRA] Using default tokenizer.
+[2025-10-14 08:00:46,171][HYDRA] Using default tokenizer.
+[2025-10-14 08:00:46,282][HYDRA] Using default tokenizer.
+[2025-10-14 08:00:46,393][HYDRA] Using default tokenizer.
+[2025-10-14 08:14:54,490][HYDRA] Using default tokenizer.
+[2025-10-14 08:14:54,602][HYDRA] Using default tokenizer.
+[2025-10-14 08:14:54,713][HYDRA] Using default tokenizer.
+[2025-10-14 08:14:54,830][HYDRA] Using default tokenizer.
+[2025-10-14 08:14:54,942][HYDRA] Using default tokenizer.
+[2025-10-14 08:14:55,260][HYDRA] Using default tokenizer.
+[2025-10-14 08:14:55,371][HYDRA] Using default tokenizer.
+[2025-10-14 08:14:55,489][HYDRA] Using default tokenizer.
+[2025-10-14 08:14:55,603][HYDRA] Using default tokenizer.
+[2025-10-14 08:14:55,716][HYDRA] Using default tokenizer.
+[2025-10-14 08:26:32,472][HYDRA] Using default tokenizer.
+[2025-10-14 08:26:32,585][HYDRA] Using default tokenizer.
+[2025-10-14 08:26:32,698][HYDRA] Using default tokenizer.
+[2025-10-14 08:26:32,810][HYDRA] Using default tokenizer.
+[2025-10-14 08:26:32,923][HYDRA] Using default tokenizer.
+[2025-10-14 08:26:33,237][HYDRA] Using default tokenizer.
+[2025-10-14 08:26:33,347][HYDRA] Using default tokenizer.
+[2025-10-14 08:26:33,463][HYDRA] Using default tokenizer.
+[2025-10-14 08:26:33,573][HYDRA] Using default tokenizer.
+[2025-10-14 08:26:33,683][HYDRA] Using default tokenizer.
+[2025-10-14 08:39:09,319][HYDRA] Using default tokenizer.
+[2025-10-14 08:39:09,431][HYDRA] Using default tokenizer.
+[2025-10-14 08:39:09,543][HYDRA] Using default tokenizer.
+[2025-10-14 08:39:09,654][HYDRA] Using default tokenizer.
+[2025-10-14 08:39:09,765][HYDRA] Using default tokenizer.
+[2025-10-14 08:39:10,078][HYDRA] Using default tokenizer.
+[2025-10-14 08:39:10,190][HYDRA] Using default tokenizer.
+[2025-10-14 08:39:10,307][HYDRA] Using default tokenizer.
+[2025-10-14 08:39:10,419][HYDRA] Using default tokenizer.
+[2025-10-14 08:39:10,529][HYDRA] Using default tokenizer.
+[2025-10-14 08:48:10,654][HYDRA] Using default tokenizer.
+[2025-10-14 08:48:10,765][HYDRA] Using default tokenizer.
+[2025-10-14 08:48:10,875][HYDRA] Using default tokenizer.
+[2025-10-14 08:48:10,984][HYDRA] Using default tokenizer.
+[2025-10-14 08:48:11,096][HYDRA] Using default tokenizer.
+[2025-10-14 08:48:11,431][HYDRA] Using default tokenizer.
+[2025-10-14 08:48:11,543][HYDRA] Using default tokenizer.
+[2025-10-14 08:48:11,661][HYDRA] Using default tokenizer.
+[2025-10-14 08:48:11,773][HYDRA] Using default tokenizer.
+[2025-10-14 08:48:11,885][HYDRA] Using default tokenizer.
+[2025-10-14 08:54:54,188][HYDRA] Using default tokenizer.
+[2025-10-14 08:54:54,299][HYDRA] Using default tokenizer.
+[2025-10-14 08:54:54,417][HYDRA] Using default tokenizer.
+[2025-10-14 08:54:54,532][HYDRA] Using default tokenizer.
+[2025-10-14 08:54:54,645][HYDRA] Using default tokenizer.
+[2025-10-14 08:54:55,038][HYDRA] Using default tokenizer.
+[2025-10-14 08:54:55,155][HYDRA] Using default tokenizer.
+[2025-10-14 08:54:55,271][HYDRA] Using default tokenizer.
+[2025-10-14 08:54:55,382][HYDRA] Using default tokenizer.
+[2025-10-14 08:54:55,492][HYDRA] Using default tokenizer.
+[2025-10-14 09:02:19,580][HYDRA] Using default tokenizer.
+[2025-10-14 09:02:19,696][HYDRA] Using default tokenizer.
+[2025-10-14 09:02:19,807][HYDRA] Using default tokenizer.
+[2025-10-14 09:02:19,919][HYDRA] Using default tokenizer.
+[2025-10-14 09:02:20,032][HYDRA] Using default tokenizer.
+[2025-10-14 09:02:20,347][HYDRA] Using default tokenizer.
+[2025-10-14 09:02:20,458][HYDRA] Using default tokenizer.
+[2025-10-14 09:02:20,574][HYDRA] Using default tokenizer.
+[2025-10-14 09:02:20,685][HYDRA] Using default tokenizer.
+[2025-10-14 09:02:20,796][HYDRA] Using default tokenizer.
+[2025-10-14 09:11:53,667][HYDRA] Using default tokenizer.
+[2025-10-14 09:11:53,820][HYDRA] Using default tokenizer.
+[2025-10-14 09:11:53,937][HYDRA] Using default tokenizer.
+[2025-10-14 09:11:54,051][HYDRA] Using default tokenizer.
+[2025-10-14 09:11:54,165][HYDRA] Using default tokenizer.
+[2025-10-14 09:11:54,488][HYDRA] Using default tokenizer.
+[2025-10-14 09:11:54,608][HYDRA] Using default tokenizer.
+[2025-10-14 09:11:54,722][HYDRA] Using default tokenizer.
+[2025-10-14 09:11:54,835][HYDRA] Using default tokenizer.
+[2025-10-14 09:11:54,948][HYDRA] Using default tokenizer.
+[2025-10-14 09:16:25,638][HYDRA] Using default tokenizer.
+[2025-10-14 09:16:25,749][HYDRA] Using default tokenizer.
+[2025-10-14 09:16:25,860][HYDRA] Using default tokenizer.
+[2025-10-14 09:16:25,970][HYDRA] Using default tokenizer.
+[2025-10-14 09:16:26,091][HYDRA] Using default tokenizer.
+[2025-10-14 09:16:26,410][HYDRA] Using default tokenizer.
+[2025-10-14 09:16:26,528][HYDRA] Using default tokenizer.
+[2025-10-14 09:16:26,648][HYDRA] Using default tokenizer.
+[2025-10-14 09:16:26,775][HYDRA] Using default tokenizer.
+[2025-10-14 09:16:26,887][HYDRA] Using default tokenizer.
+[2025-10-14 09:22:47,347][HYDRA] Using default tokenizer.
+[2025-10-14 09:22:47,460][HYDRA] Using default tokenizer.
+[2025-10-14 09:22:47,579][HYDRA] Using default tokenizer.
+[2025-10-14 09:22:47,691][HYDRA] Using default tokenizer.
+[2025-10-14 09:22:47,802][HYDRA] Using default tokenizer.
+[2025-10-14 09:22:48,120][HYDRA] Using default tokenizer.
+[2025-10-14 09:22:48,231][HYDRA] Using default tokenizer.
+[2025-10-14 09:22:48,347][HYDRA] Using default tokenizer.
+[2025-10-14 09:22:48,459][HYDRA] Using default tokenizer.
+[2025-10-14 09:22:48,569][HYDRA] Using default tokenizer.
+[2025-10-14 09:27:58,776][HYDRA] Using default tokenizer.
+[2025-10-14 09:27:58,891][HYDRA] Using default tokenizer.
+[2025-10-14 09:27:59,007][HYDRA] Using default tokenizer.
+[2025-10-14 09:27:59,134][HYDRA] Using default tokenizer.
+[2025-10-14 09:27:59,261][HYDRA] Using default tokenizer.
+[2025-10-14 09:27:59,577][HYDRA] Using default tokenizer.
+[2025-10-14 09:27:59,709][HYDRA] Using default tokenizer.
+[2025-10-14 09:27:59,821][HYDRA] Using default tokenizer.
+[2025-10-14 09:27:59,935][HYDRA] Using default tokenizer.
+[2025-10-14 09:28:00,047][HYDRA] Using default tokenizer.
+[2025-10-14 09:35:22,019][HYDRA] Using default tokenizer.
+[2025-10-14 09:35:22,132][HYDRA] Using default tokenizer.
+[2025-10-14 09:35:22,245][HYDRA] Using default tokenizer.
+[2025-10-14 09:35:22,357][HYDRA] Using default tokenizer.
+[2025-10-14 09:35:22,468][HYDRA] Using default tokenizer.
+[2025-10-14 09:35:22,797][HYDRA] Using default tokenizer.
+[2025-10-14 09:35:22,915][HYDRA] Using default tokenizer.
+[2025-10-14 09:35:23,026][HYDRA] Using default tokenizer.
+[2025-10-14 09:35:23,137][HYDRA] Using default tokenizer.
+[2025-10-14 09:35:23,247][HYDRA] Using default tokenizer.
+[2025-10-14 09:42:21,598][HYDRA] Using default tokenizer.
+[2025-10-14 09:42:21,710][HYDRA] Using default tokenizer.
+[2025-10-14 09:42:21,827][HYDRA] Using default tokenizer.
+[2025-10-14 09:42:21,941][HYDRA] Using default tokenizer.
+[2025-10-14 09:42:22,054][HYDRA] Using default tokenizer.
+[2025-10-14 09:42:22,423][HYDRA] Using default tokenizer.
+[2025-10-14 09:42:22,536][HYDRA] Using default tokenizer.
+[2025-10-14 09:42:22,656][HYDRA] Using default tokenizer.
+[2025-10-14 09:42:22,769][HYDRA] Using default tokenizer.
+[2025-10-14 09:42:22,880][HYDRA] Using default tokenizer.
+[2025-10-14 09:48:12,457][HYDRA] Using default tokenizer.
+[2025-10-14 09:48:12,568][HYDRA] Using default tokenizer.
+[2025-10-14 09:48:12,678][HYDRA] Using default tokenizer.
+[2025-10-14 09:48:12,788][HYDRA] Using default tokenizer.
+[2025-10-14 09:48:12,899][HYDRA] Using default tokenizer.
+[2025-10-14 09:48:13,226][HYDRA] Using default tokenizer.
+[2025-10-14 09:48:13,336][HYDRA] Using default tokenizer.
+[2025-10-14 09:48:13,446][HYDRA] Using default tokenizer.
+[2025-10-14 09:48:13,563][HYDRA] Using default tokenizer.
+[2025-10-14 09:48:13,676][HYDRA] Using default tokenizer.
+[2025-10-14 10:06:09,320][HYDRA] Using default tokenizer.
+[2025-10-14 10:06:09,439][HYDRA] Using default tokenizer.
+[2025-10-14 10:06:09,565][HYDRA] Using default tokenizer.
+[2025-10-14 10:06:09,677][HYDRA] Using default tokenizer.
+[2025-10-14 10:06:09,787][HYDRA] Using default tokenizer.
+[2025-10-14 10:06:10,102][HYDRA] Using default tokenizer.
+[2025-10-14 10:06:10,213][HYDRA] Using default tokenizer.
+[2025-10-14 10:06:10,326][HYDRA] Using default tokenizer.
+[2025-10-14 10:06:10,435][HYDRA] Using default tokenizer.
+[2025-10-14 10:06:10,548][HYDRA] Using default tokenizer.
+[2025-10-14 10:22:36,935][HYDRA] Using default tokenizer.
+[2025-10-14 10:22:37,056][HYDRA] Using default tokenizer.
+[2025-10-14 10:22:37,167][HYDRA] Using default tokenizer.
+[2025-10-14 10:22:37,278][HYDRA] Using default tokenizer.
+[2025-10-14 10:22:37,392][HYDRA] Using default tokenizer.
+[2025-10-14 10:22:37,706][HYDRA] Using default tokenizer.
+[2025-10-14 10:22:37,817][HYDRA] Using default tokenizer.
+[2025-10-14 10:22:37,936][HYDRA] Using default tokenizer.
+[2025-10-14 10:22:38,050][HYDRA] Using default tokenizer.
+[2025-10-14 10:22:38,162][HYDRA] Using default tokenizer.
+[2025-10-14 10:37:41,518][HYDRA] Using default tokenizer.
+[2025-10-14 10:37:41,666][HYDRA] Using default tokenizer.
+[2025-10-14 10:37:41,784][HYDRA] Using default tokenizer.
+[2025-10-14 10:37:41,897][HYDRA] Using default tokenizer.
+[2025-10-14 10:37:42,014][HYDRA] Using default tokenizer.
+[2025-10-14 10:37:42,356][HYDRA] Using default tokenizer.
+[2025-10-14 10:37:42,475][HYDRA] Using default tokenizer.
+[2025-10-14 10:37:42,589][HYDRA] Using default tokenizer.
+[2025-10-14 10:37:42,701][HYDRA] Using default tokenizer.
+[2025-10-14 10:37:42,814][HYDRA] Using default tokenizer.
+[2025-10-14 13:09:09,591][HYDRA] Using default tokenizer.
+[2025-10-14 13:09:09,745][HYDRA] Using default tokenizer.
+[2025-10-14 13:09:09,856][HYDRA] Using default tokenizer.
+[2025-10-14 13:09:09,968][HYDRA] Using default tokenizer.
+[2025-10-14 13:09:10,078][HYDRA] Using default tokenizer.
+[2025-10-14 13:09:10,401][HYDRA] Using default tokenizer.
+[2025-10-14 13:09:10,513][HYDRA] Using default tokenizer.
+[2025-10-14 13:09:10,625][HYDRA] Using default tokenizer.
+[2025-10-14 13:09:10,737][HYDRA] Using default tokenizer.
+[2025-10-14 13:09:10,849][HYDRA] Using default tokenizer.
+[2025-10-14 13:22:41,272][HYDRA] Using default tokenizer.
+[2025-10-14 13:22:41,384][HYDRA] Using default tokenizer.
+[2025-10-14 13:22:41,497][HYDRA] Using default tokenizer.
+[2025-10-14 13:22:41,609][HYDRA] Using default tokenizer.
+[2025-10-14 13:22:41,719][HYDRA] Using default tokenizer.
+[2025-10-14 13:22:42,030][HYDRA] Using default tokenizer.
+[2025-10-14 13:22:42,143][HYDRA] Using default tokenizer.
+[2025-10-14 13:22:42,294][HYDRA] Using default tokenizer.
+[2025-10-14 13:22:42,406][HYDRA] Using default tokenizer.
+[2025-10-14 13:22:42,518][HYDRA] Using default tokenizer.
+[2025-10-14 13:33:41,913][HYDRA] Using default tokenizer.
+[2025-10-14 13:33:42,024][HYDRA] Using default tokenizer.
+[2025-10-14 13:33:42,137][HYDRA] Using default tokenizer.
+[2025-10-14 13:33:42,248][HYDRA] Using default tokenizer.
+[2025-10-14 13:33:42,361][HYDRA] Using default tokenizer.
+[2025-10-14 13:33:42,706][HYDRA] Using default tokenizer.
+[2025-10-14 13:33:42,819][HYDRA] Using default tokenizer.
+[2025-10-14 13:33:42,929][HYDRA] Using default tokenizer.
+[2025-10-14 13:33:43,041][HYDRA] Using default tokenizer.
+[2025-10-14 13:33:43,152][HYDRA] Using default tokenizer.
+[2025-10-14 13:49:45,318][HYDRA] Using default tokenizer.
+[2025-10-14 13:49:45,430][HYDRA] Using default tokenizer.
+[2025-10-14 13:49:45,542][HYDRA] Using default tokenizer.
+[2025-10-14 13:49:45,654][HYDRA] Using default tokenizer.
+[2025-10-14 13:49:45,764][HYDRA] Using default tokenizer.
+[2025-10-14 13:49:46,077][HYDRA] Using default tokenizer.
+[2025-10-14 13:49:46,189][HYDRA] Using default tokenizer.
+[2025-10-14 13:49:46,300][HYDRA] Using default tokenizer.
+[2025-10-14 13:49:46,413][HYDRA] Using default tokenizer.
+[2025-10-14 13:49:46,523][HYDRA] Using default tokenizer.
+[2025-10-14 13:56:21,128][HYDRA] Using default tokenizer.
+[2025-10-14 13:56:21,239][HYDRA] Using default tokenizer.
+[2025-10-14 13:56:21,350][HYDRA] Using default tokenizer.
+[2025-10-14 13:56:21,463][HYDRA] Using default tokenizer.
+[2025-10-14 13:56:21,573][HYDRA] Using default tokenizer.
+[2025-10-14 13:56:21,883][HYDRA] Using default tokenizer.
+[2025-10-14 13:56:21,995][HYDRA] Using default tokenizer.
+[2025-10-14 13:56:22,108][HYDRA] Using default tokenizer.
+[2025-10-14 13:56:22,221][HYDRA] Using default tokenizer.
+[2025-10-14 13:56:22,333][HYDRA] Using default tokenizer.
+[2025-10-14 14:05:27,691][HYDRA] Using default tokenizer.
+[2025-10-14 14:05:27,803][HYDRA] Using default tokenizer.
+[2025-10-14 14:05:27,915][HYDRA] Using default tokenizer.
+[2025-10-14 14:05:28,027][HYDRA] Using default tokenizer.
+[2025-10-14 14:05:28,138][HYDRA] Using default tokenizer.
+[2025-10-14 14:05:28,447][HYDRA] Using default tokenizer.
+[2025-10-14 14:05:28,558][HYDRA] Using default tokenizer.
+[2025-10-14 14:05:28,669][HYDRA] Using default tokenizer.
+[2025-10-14 14:05:28,780][HYDRA] Using default tokenizer.
+[2025-10-14 14:05:28,892][HYDRA] Using default tokenizer.
+[2025-10-14 14:13:49,609][HYDRA] Using default tokenizer.
+[2025-10-14 14:13:49,719][HYDRA] Using default tokenizer.
+[2025-10-14 14:13:49,829][HYDRA] Using default tokenizer.
+[2025-10-14 14:13:49,939][HYDRA] Using default tokenizer.
+[2025-10-14 14:13:50,050][HYDRA] Using default tokenizer.
+[2025-10-14 14:13:50,386][HYDRA] Using default tokenizer.
+[2025-10-14 14:13:50,497][HYDRA] Using default tokenizer.
+[2025-10-14 14:13:50,609][HYDRA] Using default tokenizer.
+[2025-10-14 14:13:50,720][HYDRA] Using default tokenizer.
+[2025-10-14 14:13:50,831][HYDRA] Using default tokenizer.
+[2025-10-14 14:25:03,502][HYDRA] Using default tokenizer.
+[2025-10-14 14:25:03,643][HYDRA] Using default tokenizer.
+[2025-10-14 14:25:03,755][HYDRA] Using default tokenizer.
+[2025-10-14 14:25:03,869][HYDRA] Using default tokenizer.
+[2025-10-14 14:25:03,979][HYDRA] Using default tokenizer.
+[2025-10-14 14:25:04,289][HYDRA] Using default tokenizer.
+[2025-10-14 14:25:04,399][HYDRA] Using default tokenizer.
+[2025-10-14 14:25:04,512][HYDRA] Using default tokenizer.
+[2025-10-14 14:25:04,623][HYDRA] Using default tokenizer.
+[2025-10-14 14:25:04,735][HYDRA] Using default tokenizer.
+[2025-10-14 14:33:03,110][HYDRA] Using default tokenizer.
+[2025-10-14 14:33:03,221][HYDRA] Using default tokenizer.
+[2025-10-14 14:33:03,333][HYDRA] Using default tokenizer.
+[2025-10-14 14:33:03,445][HYDRA] Using default tokenizer.
+[2025-10-14 14:33:03,555][HYDRA] Using default tokenizer.
+[2025-10-14 14:33:03,859][HYDRA] Using default tokenizer.
+[2025-10-14 14:33:03,969][HYDRA] Using default tokenizer.
+[2025-10-14 14:33:04,081][HYDRA] Using default tokenizer.
+[2025-10-14 14:33:04,190][HYDRA] Using default tokenizer.
+[2025-10-14 14:33:04,308][HYDRA] Using default tokenizer.
+[2025-10-14 14:43:48,302][HYDRA] Using default tokenizer.
+[2025-10-14 14:43:48,411][HYDRA] Using default tokenizer.
+[2025-10-14 14:43:48,521][HYDRA] Using default tokenizer.
+[2025-10-14 14:43:48,631][HYDRA] Using default tokenizer.
+[2025-10-14 14:43:48,741][HYDRA] Using default tokenizer.
+[2025-10-14 14:43:49,054][HYDRA] Using default tokenizer.
+[2025-10-14 14:43:49,165][HYDRA] Using default tokenizer.
+[2025-10-14 14:43:49,276][HYDRA] Using default tokenizer.
+[2025-10-14 14:43:49,416][HYDRA] Using default tokenizer.
+[2025-10-14 14:43:49,526][HYDRA] Using default tokenizer.
+[2025-10-14 14:52:30,805][HYDRA] Using default tokenizer.
+[2025-10-14 14:52:30,914][HYDRA] Using default tokenizer.
+[2025-10-14 14:52:31,023][HYDRA] Using default tokenizer.
+[2025-10-14 14:52:31,135][HYDRA] Using default tokenizer.
+[2025-10-14 14:52:31,246][HYDRA] Using default tokenizer.
+[2025-10-14 14:52:31,584][HYDRA] Using default tokenizer.
+[2025-10-14 14:52:31,697][HYDRA] Using default tokenizer.
+[2025-10-14 14:52:31,808][HYDRA] Using default tokenizer.
+[2025-10-14 14:52:31,921][HYDRA] Using default tokenizer.
+[2025-10-14 14:52:32,034][HYDRA] Using default tokenizer.
+[2025-10-14 15:03:18,208][HYDRA] Using default tokenizer.
+[2025-10-14 15:03:18,323][HYDRA] Using default tokenizer.
+[2025-10-14 15:03:18,437][HYDRA] Using default tokenizer.
+[2025-10-14 15:03:18,550][HYDRA] Using default tokenizer.
+[2025-10-14 15:03:18,663][HYDRA] Using default tokenizer.
+[2025-10-14 15:03:18,996][HYDRA] Using default tokenizer.
+[2025-10-14 15:03:19,107][HYDRA] Using default tokenizer.
+[2025-10-14 15:03:19,222][HYDRA] Using default tokenizer.
+[2025-10-14 15:03:19,336][HYDRA] Using default tokenizer.
+[2025-10-14 15:03:19,451][HYDRA] Using default tokenizer.
+[2025-10-14 15:20:46,290][HYDRA] Using default tokenizer.
+[2025-10-14 15:20:46,406][HYDRA] Using default tokenizer.
+[2025-10-14 15:20:46,520][HYDRA] Using default tokenizer.
+[2025-10-14 15:20:46,633][HYDRA] Using default tokenizer.
+[2025-10-14 15:20:46,747][HYDRA] Using default tokenizer.
+[2025-10-14 15:20:47,085][HYDRA] Using default tokenizer.
+[2025-10-14 15:20:47,197][HYDRA] Using default tokenizer.
+[2025-10-14 15:20:47,328][HYDRA] Using default tokenizer.
+[2025-10-14 15:20:47,443][HYDRA] Using default tokenizer.
+[2025-10-14 15:20:47,557][HYDRA] Using default tokenizer.
+[2025-10-14 15:32:18,920][HYDRA] Using default tokenizer.
+[2025-10-14 15:32:19,069][HYDRA] Using default tokenizer.
+[2025-10-14 15:32:19,184][HYDRA] Using default tokenizer.
+[2025-10-14 15:32:19,297][HYDRA] Using default tokenizer.
+[2025-10-14 15:32:19,412][HYDRA] Using default tokenizer.
+[2025-10-14 15:32:19,769][HYDRA] Using default tokenizer.
+[2025-10-14 15:32:19,882][HYDRA] Using default tokenizer.
+[2025-10-14 15:32:19,995][HYDRA] Using default tokenizer.
+[2025-10-14 15:32:20,111][HYDRA] Using default tokenizer.
+[2025-10-14 15:32:20,226][HYDRA] Using default tokenizer.
+[2025-10-14 15:42:39,217][HYDRA] Using default tokenizer.
+[2025-10-14 15:42:39,331][HYDRA] Using default tokenizer.
+[2025-10-14 15:42:39,444][HYDRA] Using default tokenizer.
+[2025-10-14 15:42:39,556][HYDRA] Using default tokenizer.
+[2025-10-14 15:42:39,669][HYDRA] Using default tokenizer.
+[2025-10-14 15:42:39,999][HYDRA] Using default tokenizer.
+[2025-10-14 15:42:40,114][HYDRA] Using default tokenizer.
+[2025-10-14 15:42:40,229][HYDRA] Using default tokenizer.
+[2025-10-14 15:42:40,341][HYDRA] Using default tokenizer.
+[2025-10-14 15:42:40,452][HYDRA] Using default tokenizer.
+[2025-10-14 15:50:00,422][HYDRA] Using default tokenizer.
+[2025-10-14 15:50:00,535][HYDRA] Using default tokenizer.
+[2025-10-14 15:50:00,646][HYDRA] Using default tokenizer.
+[2025-10-14 15:50:00,757][HYDRA] Using default tokenizer.
+[2025-10-14 15:50:00,870][HYDRA] Using default tokenizer.
+[2025-10-14 15:50:01,197][HYDRA] Using default tokenizer.
+[2025-10-14 15:50:01,308][HYDRA] Using default tokenizer.
+[2025-10-14 15:50:01,422][HYDRA] Using default tokenizer.
+[2025-10-14 15:50:01,534][HYDRA] Using default tokenizer.
+[2025-10-14 15:50:01,647][HYDRA] Using default tokenizer.
+[2025-10-14 15:58:59,240][HYDRA] Using default tokenizer.
+[2025-10-14 15:58:59,352][HYDRA] Using default tokenizer.
+[2025-10-14 15:58:59,461][HYDRA] Using default tokenizer.
+[2025-10-14 15:58:59,573][HYDRA] Using default tokenizer.
+[2025-10-14 15:58:59,684][HYDRA] Using default tokenizer.
+[2025-10-14 15:59:00,041][HYDRA] Using default tokenizer.
+[2025-10-14 15:59:00,182][HYDRA] Using default tokenizer.
+[2025-10-14 15:59:00,293][HYDRA] Using default tokenizer.
+[2025-10-14 15:59:00,404][HYDRA] Using default tokenizer.
+[2025-10-14 15:59:00,515][HYDRA] Using default tokenizer.
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n916
+Job ID: 1728493
+Cluster: uc3
+User/Group: hd_ip303/hd_hd
+State: TIMEOUT (exit code 0)
+Nodes: 1
+Cores per node: 2
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 1-04:00:40 core-walltime
+Job Wall-clock time: 14:00:20
+Memory Utilized: 82.81 GB
+Memory Efficiency: 64.70% of 128.00 GB (128.00 GB/node)

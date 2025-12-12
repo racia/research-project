@@ -2,25 +2,29 @@ teacher:
   name: "meta-llama/Meta-Llama-3-70B-Instruct"
   max_new_tokens: 12
   temperature: 0.1
-  to_continue: False
+  to_continue: false
   mode: "eval"
   k: 15
+<<<<<<< HEAD
+  p: 0.9
+=======
   # p: 0.9
   interpretability:
     use: False
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
   max_new_tokens: 200
   temperature: 0.1
-  to_continue: False
+  to_continue: false
   mode: "eval"
-  interpretability:
-    use: True
-    aggregate: True
 
 setting:
   name: 'SD'
+  interpretability:
+    use: True
+    aggregate: True
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
@@ -28,6 +32,15 @@ data:
   # Order: train, valid, test
   splits:
     train: False
+<<<<<<< HEAD
+    valid: True
+    test: False
+  # to get all tasks use (will be converted to None)
+  task_ids: ~
+  # to get specific tasks use:
+  # task_ids: [1, 2, ...]
+  samples_per_task: 50
+=======
     valid: False
     test: True
   # to get all tasks use ~ (will be converted to None)
@@ -36,13 +49,14 @@ data:
   task_ids: ~
   start_from_sample: 0
   samples_per_task: 100
+>>>>>>> fdbf27c13f1d77bbff65723971ae2f88be973c3e
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
     context: True
     question: False
-  # if to wrap the part prompt with the task description
   wrapper:
+    # if to wrap the part prompt with the task description
     context: |
       *TASK*
       Here are the context sentences:
@@ -54,6 +68,7 @@ data:
     answer: ""
 
 init_prompt:
+  # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
   examples:
@@ -68,6 +83,7 @@ init_prompt:
       *END OF EXAMPLE*
 
 eval_prompt:
+  # name of the prompt files serves as a basis for logging and result files
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/eval_prompt.txt"
   history: |
@@ -92,6 +108,7 @@ logging:
   print_to_file: False
 
 results:
+  save_heatmaps: False
   headers:
     - id_
     - task_id
@@ -138,4 +155,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "${oc.env:HOME}/research-project/outputs/${now:%d-%m-%Y}/${now:%H-%M-%S}"

@@ -1,0 +1,208 @@
+Module util is available. Loading python and CUDA...
+Activating the project environment: .env
+The project environment '.env' activated successfully.
+Checking for data directory: /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2
+Data directory '/home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2' exists.
+Running the script with config: CONFIG_PATH=/home/hd/hd_hd/hd_ip303/research-project/settings/SD/config, CONFIG_NAME=final_SD_run_p
+Torch version:  2.8.0.dev20250408+cu128
+CUDA version:  12.8
+CUDA available:  True
+Device: cuda
+Config data for the run:
+teacher:
+  name: meta-llama/Meta-Llama-3-70B-Instruct
+  max_new_tokens: 30
+  temperature: 0.1
+  to_continue: false
+  mode: eval
+  k: 15
+  p: 0.95
+student:
+  name: meta-llama/Meta-Llama-3-8B-Instruct
+  max_new_tokens: 30
+  temperature: 0.1
+  to_continue: false
+  mode: eval
+setting:
+  name: SD
+  interpretability: true
+data:
+  path: /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/
+  baseline_results: /home/hd/hd_hd/hd_ip303/research-project/results/baseline/valid/basic_baseline/baseline_prompt/valid_baseline_prompt_results.csv
+  splits:
+    train: false
+    valid: false
+    test: true
+  task_ids: null
+  samples_per_task: 100
+  to_enumerate:
+    context: true
+    question: false
+  wrapper:
+    context: 'Here are the context sentences:
+
+      {context}
+
+      '
+    question: 'Now, answer the following question:
+
+      {question}
+
+      '
+    reasoning: ''
+    answer: ''
+init_prompt:
+  paths:
+  - /home/hd/hd_hd/hd_ip303/research-project/inference/prompts/init_prompt_reasoning.txt
+  examples:
+    add: true
+    enumerated: true
+    handpicked: true
+    not_mentioned: true
+    number: 1
+    wrapper: '*EXAMPLE{number}*
+
+      {example}
+
+      '
+eval_prompt:
+  paths:
+  - /home/hd/hd_hd/hd_ip303/research-project/inference/prompts/eval_prompt.txt
+  wrapper: 'The student''s response was:
+
+    {student_output}
+
+    '
+resume_prompt:
+  paths:
+  - /home/hd/hd_hd/hd_ip303/research-project/inference/prompts/resume_prompt.txt
+  wrapper: 'Here is the improved version of the previous output:
+
+    {to_continue}
+
+    '
+logging:
+  print_to_file: true
+results:
+  save_heatmaps: false
+  headers:
+  - id_
+  - task_id
+  - sample_id
+  - part_id
+  - task
+  - answer_lies_in_self
+  - golden_answer
+  - silver_reasoning
+  - model_answer_after
+  - answer_correct_after
+  - reasoning_correct_after
+  - model_reasoning_after
+  - model_output_after
+  - exact_match_accuracy_after
+  - soft_match_accuracy_after
+  - max_supp_target_after
+  - there_after
+  - verbs_after
+  - pronouns_after
+  - not_mentioned_after
+  - context_sents_hall_after
+  - model_answer_before
+  - answer_correct_before
+  - reasoning_correct_before
+  - model_reasoning_before
+  - model_output_before
+  - exact_match_accuracy_before
+  - soft_match_accuracy_before
+  - max_supp_target_before
+  - there_before
+  - verbs_before
+  - pronouns_before
+  - not_mentioned_before
+  - context_sents_hall_before
+
+
+Running the script...
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa3_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa9_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa20_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa12_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa19_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa5_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa11_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa4_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa10_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa13_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa15_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa17_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa7_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa2_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa14_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa16_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa1_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa6_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa8_test.txt is read.
+File /home/hd/hd_hd/hd_ip303/tasks_1-20_v1-2/en-valid/qa18_test.txt is read.
+Results will be saved to: /home/hd/hd_hd/hd_ip303/research-project/results/speculative_decoding/test/01-05-2025/10-10-10
+The model is being loaded...
+
+The model meta-llama/Meta-Llama-3-8B-Instruct is being loaded in mode 'eval'
+
+The model meta-llama/Meta-Llama-3-8B-Instruct was  loaded successfully
+The model meta-llama/Meta-Llama-3-8B-Instruct is loaded successfully
+- THE EVAL PROMPT -
+______________________________
+You are a strict, logical, and highly attentive teacher.
+Your student was given the following task:
+"""
+{init_prompt}
+
+{parts_so_far}
+"""
+
+Check if the student is on the right track by evaluating their response.
+The student's response should be logical and follow the instructions and formatting of the task.
+Please help the student by suggesting the next token.
+Respond only with the token you would add next and nothing else.
+______________________________
+
+- THE RESUME PROMPT -
+______________________________
+Your teacher evaluated your answer and reasoning and found them to be flawed.
+
+You will receive the correct part of your previous answer and the next token the teacher proposes.
+Continue the reasoning and answer of the question from this point on.
+Follow the instructions and formatting of the task you received earlier.
+Here is a template for your answer:
+Reasoning: <REASONING>
+Answer: <ANSWER>
+
+Always use it to fill in your answer.
+______________________________
+
+The model meta-llama/Meta-Llama-3-70B-Instruct is being loaded in mode 'eval'
+
+The model meta-llama/Meta-Llama-3-70B-Instruct was  loaded successfully
+
+The results will be saved to /home/hd/hd_hd/hd_ip303/research-project/results/speculative_decoding/test/01-05-2025/10-10-10/init_prompt_reasoning
+
+Starting to query with the prompt: init_prompt_reasoning
+Prompt path: /home/hd/hd_hd/hd_ip303/research-project/inference/prompts/init_prompt_reasoning.txt
+
+Redirecting the system output to: /home/hd/hd_hd/hd_ip303/research-project/results/speculative_decoding/test/01-05-2025/10-10-10/init_prompt_reasoning/init_prompt_reasoning.log
+Error: Python script 'running_script.py' failed.
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n906
+Job ID: 103439
+Cluster: uc3
+User/Group: hd_ip303/hd_hd
+State: FAILED (exit code 1)
+Nodes: 1
+Cores per node: 2
+CPU Utilized: 00:04:35
+CPU Efficiency: 32.97% of 00:13:54 core-walltime
+Job Wall-clock time: 00:06:57
+Memory Utilized: 23.53 GB
+Memory Efficiency: 18.38% of 128.00 GB (128.00 GB/node)
