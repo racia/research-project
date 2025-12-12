@@ -23,6 +23,8 @@ from data.utils import format_metrics
 from inference.DataLevels import Results, Sample, Split, Task, print_metrics
 from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
+from evaluation.feedback_anaylsis import FeedbackAnalysis
+from evaluation.setting_analysis import SettingAnalysis
 
 PREFIX = Path.cwd()
 while PREFIX.name != "research-project":
@@ -151,6 +153,19 @@ def run(
     if not results_path:
         raise ValueError("Please provide a path to the data for evaluation.")
 
+    if setting == "feedback":
+        feedback_result_path = str(Path(save_path) / "feedback_analysis")
+        teacher_dfs = DataLoader.load_iteration_data(results_path, 'teacher', 'feedback')
+        student_dfs = DataLoader.load_iteration_data(results_path, 'student', 'feedback')
+        # run feedback analysis
+
+        feedback = FeedbackAnalysis(teacher_dfs, student_dfs, feedback_result_path)
+        feedback.run_all()
+
+        shared = SettingAnalysis(student_dfs, feedback_result_path, teacher_dfs)
+        difficulty_df = shared.analyse_task_difficulty()
+        shared.cluster_errors(n_clusters=5)
+
     print("Loading data...", end="\n\n")
     loader = DataLoader(prefix=PREFIX, samples_per_task=samples_per_task)
     # loaded results in parts with original data, tokens-ids, and interpretability results
@@ -265,7 +280,7 @@ def run(
             plotter.plot_corr_boxplot(
                 x_data={
                     "parts_target_distances": task.parts_target_distances.all
-                }, 
+                },
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -283,7 +298,7 @@ def run(
             plotter.plot_corr_boxplot(
                 x_data={
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
-                }, 
+                },
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target,
                     "parts_features": task.parts_features[version],
@@ -301,7 +316,7 @@ def run(
             plotter.plot_corr_boxplot(
                 x_data={
                     "parts_answer_in_self": task.parts_answer_in_self
-                }, 
+                },
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -318,7 +333,7 @@ def run(
             plotter.plot_corr_boxplot(
                 x_data={
                     "parts_seen_context_lengths": task.seen_context_lengths
-                }, 
+                },
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -586,6 +601,12 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
         action="store_true",
         help="Whether to print the results to the console.",
     )
+
+    parser.add_argument(
+        "--setting",
+        type=str,
+        default="baseline")
+
     if script_args is not None:
         if isinstance(script_args, str):
             script_args = script_args.split()
@@ -604,10 +625,10 @@ if __name__ == "__main__":
     args = parse_args()
     # python3.12 evaluate_data.py --results_path baseline/28-05-2025/22-39-52/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv --save_path results/here --samples_per_task 15 --create_heatmaps --verbose
     run(
-        results_path=args.results_path,
-        save_path=args.save_path,
+        results_path="/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/all_tasks_joined_old/iterations", #args.results_path,
+        save_path="/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test1",#args.save_path,
         samples_per_task=args.samples_per_task,
-        setting="baseline",
+        setting=args.setting,
         experiment="reasoning_answer",
         create_heatmaps=args.create_heatmaps,
         verbose=args.verbose,
