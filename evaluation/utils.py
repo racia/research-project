@@ -175,3 +175,75 @@ def normalize_numbers(number_s: int | str | list[int | str]) -> str | list[str]:
         raise TypeError(
             f"Expected int, str or list of int or str, got {type(number_s)}"
         )
+
+
+def parse_iteration_content(file_path: Path, setting: str) -> dict:
+    """
+    Parse iteration file content based on setting.
+
+    :param file_path: Path to file
+    :param setting: 'feedback' or 'sd'
+    :return: Parsed content dict
+    """
+    with open(file_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    if setting == 'feedback':
+        return _parse_feedback(content)
+    elif setting in ['sd', 'speculative_decoding']:
+        return _parse_sd(content)
+    else:
+        raise ValueError(f"Unknown setting: {setting}")
+
+
+def _parse_feedback(content: str) -> dict:
+    """Parse feedback file."""
+    lines = content.strip().split('\n')
+    if not lines:
+        return {
+            'is_malformed': True,
+            'error_type': 'Empty_file',
+            'full_content': content,
+            'is_correct': None,
+            'body': ''
+        }
+
+    first_line = lines[0].strip().lower()
+    valid_patterns = ['correct', 'incorrect', 'reason', 'answer']
+
+    if not any(p in first_line for p in valid_patterns):
+        return {
+            'is_malformed': True,
+            'error_type': 'Hallucination',
+            'full_content': content,
+            'is_correct': None,
+            'body': ''
+        }
+
+    is_correct = None
+    if first_line.startswith('correct.'):
+        is_correct = True
+        body = '\n'.join(lines[1:]).strip()
+    elif first_line.startswith('incorrect.'):
+        is_correct = False
+        body = '\n'.join(lines[1:]).strip()
+    else:
+        body = content.strip()
+
+    return {
+        'is_malformed': False,
+        'is_correct': is_correct,
+        'body': body,
+        'full_content': content,
+        'error_type': None
+    }
+
+
+def _parse_sd(content: str) -> dict:
+    """Parse SD file - implement based on your SD format."""
+    # TODO: implement SD parsing
+    return {
+        'is_malformed': False,
+        'content': content,
+        'full_content': content
+    }

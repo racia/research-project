@@ -6,8 +6,10 @@ import warnings
 from collections import defaultdict
 from pathlib import Path
 from typing import Union
-
+import pandas as pd
+import re
 import numpy as np
+from evaluation.utils import parse_iteration_content
 
 from data.DataProcessor import DataProcessor
 from data.utils import get_real_value, structure_parts
@@ -557,6 +559,47 @@ class DataLoader:
                 f"sample {sample_id}, part {part_id}."
             )
         return interpretability_result
+
+    @staticmethod
+    def load_iteration_data(path: str, source: str, setting: str) -> dict[str, pd.DataFrame]:
+        """Load  setting iteration files into dataframes."""
+
+        file_pattern = rf'(\d+)_{source}_(\d+)-(\d+)-(\d+)\.txt'
+        pattern = re.compile(file_pattern)
+
+        files_by_task = {}
+        for dirpath, _, filenames in os.walk(path):
+            for file in filenames:
+                match = pattern.match(file)
+                if match:
+                    task_key = f"task_{match.group(2)}"
+                    if task_key not in files_by_task:
+                        files_by_task[task_key] = []
+                    files_by_task[task_key].append(os.path.join(dirpath, file))
+
+        dataframes = {}
+        for task, paths in files_by_task.items():
+            records = []
+            for file_path in paths:
+                match = pattern.match(Path(file_path).name)
+                if match:
+                    # Load and parse
+                    parsed = parse_iteration_content(Path(file_path), setting)
+                    records.append({
+                        'iteration': int(match.group(1)),
+                        'task_id': int(match.group(2)),
+                        'sample_id': int(match.group(3)),
+                        'part_id': int(match.group(4)),
+                        'source': source,
+                        **parsed
+                    })
+
+            if records:
+                df = pd.DataFrame(records)
+                df.drop_duplicates(inplace=True, subset=['iteration', 'task_id', 'sample_id', 'part_id'])
+                dataframes[task] = df
+
+        return dataframes
 
 
 if __name__ == "__main__":
