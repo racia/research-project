@@ -695,6 +695,11 @@ class Plotter:
                                 rgba = cmap_obj(sample)
                             rgba_img[s_idx, p_idx] = rgba
                         else:
+                            if use_reasoning_scores:
+                                warnings.warn(
+                                    f"No reasoning score for index {idx}, cannot color."
+                                )
+                                continue
                             # store integer index for categorical mapping
                             heatmap[s_idx, p_idx] = answer_types.index(case)
 
@@ -1084,6 +1089,7 @@ class Plotter:
         for col_name in [f"parts_{feat}" for feat in ["attn_on_target", "max_supp_attn"] if f"parts_{feat}" in df.columns]:
             df[col_name] = df[col_name].round(2)  # Ensure numeric values are rounded if needed
         max_x_len = max(df[x_label])
+        min_x_len = min(df[x_label])
         step_size = 2 if max_x_len > 30 else 1
 
         pivot_ratios = df.pivot_table(values=[corr_ratio, incorr_ratio], sort=False, index=x_label, columns=df.columns[2], fill_value=0) #parts_answer_correct first
@@ -1105,6 +1111,7 @@ class Plotter:
             x_label=x_label,
             y_label=y_label,
             max_x_len=max_x_len,
+            min_x_len=min_x_len,
             num_of_data_arrays=1,
             displ_percentage=displ_percentage,
             plot_name_add=plot_name_add,
@@ -1180,15 +1187,17 @@ class Plotter:
                     zip(range(5), y_data["parts_features"].keys())
                 )
             )
+            print(mapping)
             feat_str = [
                 mapping.get(i, "False")
                 for i, part in enumerate(x.split("-"))
                 if part in ["True", "1"]
             ]
-            feat_str = [f.rstrip(f"_{version}")
+            print("feat_str before:", feat_str, version)
+            feat_str = [f.removesuffix(f"_{version}")
                         for f in feat_str]
+            print("feat_str after:", feat_str)
             return "-".join(feat_str) if feat_str else None
-
         # Combine parts features to single column
         if "parts_features" in y_data:
             label_order = [" ".join('"-"'.join(comb).split("_")).title().join('""') for L in range(1, 3) for comb in itertools.combinations(Features.attrs, L)]
@@ -1200,17 +1209,18 @@ class Plotter:
             df["Features present"] = df["Features present"].fillna("No Features")
         elif "correct" in df.columns[2]:
             df["parts_answer_correct"] = df["parts_answer_correct"].map({1: "True", 0: "False"})
-            label_order = ["True", "False"]
-        label_column = df.columns[-1] if "features_combined" in df.columns else df.columns[2]
-        df[f"{label_column}_"] = df[label_column].apply(lambda x: " ".join(x.split("_")).capitalize().join('""') if x not in ["No Features", "True", "False"] else x)
+        label_column = df.columns[-1] if "features_combined" in df.columns else df.columns[2] # Take "Features Present" as label if exists
+        # Formatting
+        special = ["No Features", "True", "False"]
+        mask = ~df[label_column].isin(special)
+        df.loc[mask, label_column] = df.loc[mask, label_column].apply(lambda x: " ".join(x.split("_")).capitalize().join('""'))
         df[x_label] = df[x_label].round()
-
         ax = sns.boxplot(
             data=df, 
             x=x_label, 
             y=df.columns[1], 
-            hue=f"{label_column}_" if len(df.columns)>2 else None,
-            hue_order=label_order if len(df.columns)>2 else None)
+            hue=label_column if len(df.columns)>2 else None,
+            )
         # Add vertical lines separating x categories
         ax.xaxis.set_minor_locator(MultipleLocator(0.5))
         ax.xaxis.grid(True, which='minor', color='black', lw=1, ls=":")

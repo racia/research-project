@@ -258,7 +258,6 @@ def run(
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
                 include_soft=False,
-                label_add=[f"s{sample.sample_id}" for sample in task.samples],
             )
 
             # Attn on Target for Target Distances by Answer Correct
