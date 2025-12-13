@@ -300,7 +300,6 @@ def run(
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
                 include_soft=False,
-                label_add=[f"s{sample.sample_id}" for sample in task.samples],
             )
 
             # Attn on Target for Target Distances by Answer Correct
@@ -454,6 +453,7 @@ def run(
             path_add=Path(version, f"Split-{split.name}"),
             level="split",
             include_soft=False,
+            swap_axes=True,
             label_add=[f"t{task.task_id}" for task in split.tasks],
         )
 
