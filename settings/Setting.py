@@ -217,8 +217,8 @@ class Setting(ABC):
                     )
                     self.model.chat.identify_supp_sent_spans()
                     print(
-                        "The output of the model:",
-                        self.part.results[-1].model_output,
+                        f"Loaded output of the {'student' if self.multi_system else 'model'}:",
+                        self.part.results[0][-1].model_output,
                         end="\n\n\n",
                         sep="\n",
                         flush=True,

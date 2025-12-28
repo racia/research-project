@@ -53,7 +53,7 @@ def plot_from_paths(
         accuracies = {}
         for path, disambiguator in zip(paths, disambiguators):
             data, _ = loader.load_results(
-                results_path=str(path),
+                results_paths=[str(path)],
                 headers=["task_id", "exact_match_accuracy", "soft_match_accuracy"],
             )
             prompt_name = Path(path).stem.replace("prompt_", f"{disambiguator}_", 1)
