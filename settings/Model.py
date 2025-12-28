@@ -181,6 +181,7 @@ class Model:
                 identify_target=True if call_from_part else False,
                 to_continue=to_continue,
             )
+
             inputs = {"input_ids": chat_ids.to("cuda")}
             torch.cuda.empty_cache()
 
@@ -220,6 +221,8 @@ class Model:
 
                 decoded_output = self.tokenizer.decode(encoded_output).strip()
 
+                print(f"DEBUG: Model output (decoded): {decoded_output}", flush=True)
+
                 # the model expanded on the message, so we need to update it
                 if to_continue:
                     self.chat.adjust_message(
@@ -244,6 +247,7 @@ class Model:
                             output_attentions=True,
                             output_hidden_states=False,
                         )
+                        print("Output tensor attentions:", output_tensor["attentions"])
                         if type(data) is not SamplePart:
                             raise TypeError(
                                 "For interpretability plotting, data should be of type SamplePart"

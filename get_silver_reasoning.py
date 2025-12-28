@@ -10,6 +10,7 @@ from torch import autocast
 from data.DataLoader import DataLoader
 from inference.Chat import Chat
 from inference.Prompt import Prompt
+from inference.utils import Source
 from settings.Model import Model
 
 home = Path.home()
@@ -25,6 +26,7 @@ def main():
     split = "test"
     max_samples = 100
     torch.cuda.empty_cache()
+    overwrite = True
     gc.collect()
 
     # Load the data
@@ -53,14 +55,12 @@ def main():
 
     # Process only tasks assigned to this GPU
     for task_id, task in sorted(data.items()):
-        output_file = (
-            f"{home}/research-project/data/silver_reasoning_{split}_{task_id}.csv"
-        )
+        output_file = f"{home}/research-project/data/silver_reasoning/silver_reasoning_{split}_{task_id}.csv"
 
         print(f"Writing to {output_file}")
-        print(f"Processing Task {task_id}...")
+        print(f"Processing Task {task_id}...", flush=True)
 
-        if not os.path.exists(output_file):
+        if not os.path.exists(output_file) or overwrite is True:
             result_df = pd.DataFrame(
                 columns=[
                     "id_",
@@ -105,18 +105,10 @@ def process_sample(
         system_prompt=prompt, model_role=model.role, tokenizer=model.tokenizer
     )
 
+    eot = model.tokenizer.convert_tokens_to_ids("<|eot_id|>")
+
     for sample_part_idx, sample_part in enumerate(sample_parts):
         print(f"Sample Part: {sample_part}")
-
-        # # Format prompt components
-        # context = numerate_lines(sample_part["context"])
-        # formatted_context = "\n".join(context)
-        #
-        # questions = list(sample_part["question"].values())
-        # formatted_questions = "\n".join(questions)
-        #
-        # answers = [" ".join(ans) for ans in sample_part["answer"].values()]
-        # formatted_answers = "\n".join(answers)
 
         # Format the prompt
         formatted_prompt_str = prompt.text.format(
@@ -125,12 +117,23 @@ def process_sample(
             answer=sample_part.golden_answer,
         )
 
-        inputs = model.tokenizer(
-            formatted_prompt_str,
-            return_tensors="pt",
-        ).to("cuda")
+        print(f"Formatted Prompt: {formatted_prompt_str}")
 
-        with autocast("cuda"):
+        model.chat.add_message(
+            part=formatted_prompt_str,
+            source=Source.user,
+        )
+
+        chat_ids = model.chat.convert_into_datatype(
+            datatype="ids",
+            identify_target=False,
+            to_continue=False,
+        )
+
+        inputs = {"input_ids": chat_ids.to("cuda")}
+        torch.cuda.empty_cache()
+
+        with torch.no_grad(), autocast("cuda"):
             outputs = model.model.generate(
                 **inputs,
                 max_new_tokens=model.max_new_tokens,
@@ -142,14 +145,6 @@ def process_sample(
             )
 
             encoded_output = outputs[0][inputs["input_ids"].size(1) :]
-            eot = model.tokenizer.convert_tokens_to_ids("<|eot_id|>")
-
-            # remove trailing spaces at the end of the output
-            while (
-                len(encoded_output) > 0
-                and model.tokenizer.decode([encoded_output[-1]]).isspace()
-            ):
-                encoded_output = encoded_output[:-1]
 
             # remove eot token if it is at the end of the output
             if len(encoded_output) > 0 and encoded_output[-1] == eot:
@@ -163,12 +158,15 @@ def process_sample(
 
         decoded_output = model.tokenizer.decode(encoded_output).strip()
 
+        print(f"Decoded Output: {decoded_output}")
+
         reasoning_pattern = re.compile(r"(?i)reasoning:[\s ]*(.+)")
         reasoning_search = reasoning_pattern.search(decoded_output)
         reasoning = reasoning_search[1].strip() if reasoning_search else decoded_output
 
         print(
-            f"Task {task_id}, Sample {sample_id}, Part {sample_part_idx}: Reasoning extracted"
+            f"Task {task_id}, Sample {sample_id}, Part {sample_part_idx}: Reasoning extracted",
+            flush=True,
         )
 
         new_row = pd.DataFrame(

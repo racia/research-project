@@ -19,6 +19,14 @@ from settings.config import Enumerate
 nlp = en_core_web_sm.load()
 
 
+REASONING_SCORE_MAP = {
+    "bleu": "ids_with_bleu",
+    "rouge": "ids_with_rouge",
+    "meteor": "ids_with_meteor",
+    "parts_attn_on_target": "ids_with_attn_on_target",
+}
+
+
 @dataclass
 class Source:
     """
@@ -118,14 +126,14 @@ def contains_not_mentioned(answer) -> bool:
 
 def get_generation_token_ids(
     tokenizer: PreTrainedTokenizerFast, role: str, start: bool = False
-) -> list[int]:
+) -> tuple[int | list[int], list[str]]:
     """
     Returns the token id for the role of the message.
 
     :param tokenizer: tokenizer to use
     :param role: role of the message
     :param start: whether to add the start token
-    :return: token id and special tokens
+    :return: token id and special tokens, generation tokens as string
     """
     tokens = [
         "<|begin_of_text|>" if start else "<|eot_id|>",
@@ -133,7 +141,7 @@ def get_generation_token_ids(
         role,
         "<|end_header_id|>",
     ]
-    return tokenizer.convert_tokens_to_ids(tokens)
+    return tokenizer.convert_tokens_to_ids(tokens), tokens
 
 
 def sents_to_ids(
@@ -279,6 +287,7 @@ def print_metrics_table(
 
     metric_values = defaultdict(dict)
 
+    # TODO: to integrate!
     for evaluator, version in zip(evaluators, versions):
         metric_values["Exact-match accuracy"][version] = (
             f"{evaluator.exact_match_accuracy.get_mean()} ± {evaluator.exact_match_accuracy.get_std()}"
@@ -319,6 +328,18 @@ def print_metrics_table(
                 f"{evaluator.meteor.get_mean()} ± {evaluator.meteor.get_std()}"
                 if len(evaluator.meteor) > 1
                 else evaluator.meteor.get_mean()
+            )
+        if evaluator.max_supp_attn_corr:
+            metric_values["Max Attn Ratio Correlation"][version] = (
+                f"{evaluator.max_supp_attn_corr.get_mean()} ± {evaluator.max_supp_attn_corr.get_std()}"
+                if len(evaluator.max_supp_attn_corr) > 1
+                else evaluator.max_supp_attn_corr.get_mean()
+            )
+        if evaluator.attn_on_target_corr:
+            metric_values["Attn on Target Correlation"][version] = (
+                f"{evaluator.attn_on_target_corr.get_mean()} ± {evaluator.attn_on_target_corr.get_std()}"
+                if len(evaluator.attn_on_target_corr) > 1
+                else evaluator.attn_on_target_corr.get_mean()
             )
 
     for metric_name, values in metric_values.items():
