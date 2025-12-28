@@ -26,6 +26,9 @@ while PREFIX.name != "research-project":
     PREFIX = PREFIX.parent
 
 
+FOLDERS_TO_MOVE = ["iterations", "sample_results", "before", "after"]
+
+
 def flatten(items: list) -> Generator:
     """
     Flatten a list of items.
@@ -99,6 +102,7 @@ def define_sources(
 
     :param id_counts: dictionary of task IDs and counts of parts
     :param paths: list of paths to the result files
+    :param level: level of the data to count, either 'task' or 'sample'
     :return: dictionary of paths and task IDs for each path
     """
     items = defaultdict(list)
@@ -157,12 +161,11 @@ def copy_folder_files(
     Does not disambiguate the source paths, so the files should be unique.
     Filtering is only applied to files, not directories.
     """
-    dest_path = dest_path / source_path.name
     path_counter = 0
     dest_path.mkdir(parents=True, exist_ok=True)
     for path in source_path.iterdir():
         if path.is_dir():
-            copy_folder_files(path, dest_path, filter_pattern)
+            copy_folder_files(path, dest_path / path.name, filter_pattern)
         elif path.is_file():
             if "metrics" in path.name:
                 continue
@@ -243,11 +246,50 @@ def join_data(
     return filtered_joined_data, all_headers
 
 
+def process_path(
+    path, diff, full_result_directory, filter_pattern, target_directory, path_counter
+):
+    print("Inspecting path:", path)
+    if path.is_file() and "results" in path.name and path.name.endswith(".csv"):
+        # skip the results files, they are already joined and saved
+        return path_counter
+    elif path.is_dir() and path.name in FOLDERS_TO_MOVE:
+        copy_folder_files(path, full_result_directory / path.name, filter_pattern)
+        return path_counter
+    elif path.is_dir() and path.name.startswith("."):  # hidden folders
+        file_name = f"{path.stem}_{diff}{path.suffix}"
+        copy_folder_files(path, full_result_directory / file_name)
+        return path_counter
+    elif path.is_file():
+        try:
+            file_name = f"{path.stem}_{diff}{path.suffix}"
+            shutil.copy2(path, full_result_directory / file_name)
+            path_counter += 1
+        except shutil.SameFileError:
+            warnings.warn(
+                f"File '{path.name}' already exists in the destination: {target_directory}"
+            )
+        return path_counter
+    else:
+        print("Going one level deeper...")
+        for path in path.iterdir():
+            path_counter = process_path(
+                path,
+                diff,
+                full_result_directory,
+                filter_pattern,
+                target_directory,
+                path_counter,
+            )
+        return path_counter
+
+
 def run(
     source_paths: list[str],
     target_directory: str,
     level: str = "task",
     keyword: str = "results",
+    task: str = "evaluation",
 ) -> None:
     """
     Run the data join.
@@ -256,9 +298,10 @@ def run(
     :param target_directory: path to save the all_samples data
     :param level: level of the data to join, either 'task' or 'sample'
     :param keyword: type_ to search for in the paths
-    :return:
+    :param task: task type, either 'reasoning' or 'direct_answer', used in the results file name
+    :return: None
     """
-    print("You are running the data join script.", end="\n\n")
+    print("You are running the data joining script.", end="\n\n")
 
     if level not in ["task", "sample"]:
         raise ValueError(
@@ -305,13 +348,13 @@ def run(
     print(*headers)
 
     saver = DataSaver(save_to=full_result_directory, loaded_baseline_results=False)
+    additions = [keyword.strip("_"), f"{task}_results"]
     saver.save_output(
         data=joined_data,
         headers=tuple(headers),
-        file_name=f"joined_{keyword}_{level}_results.csv",
+        file_name=f"joined_{additions[0] if additions[0]==additions[1] else '_'.join(additions)}.csv",
     )
 
-    folders_to_move = ["iterations", "sample_results", "before", "after"]
     source_paths = set(
         [
             path.parent if level == "task" else path.parent.parent
@@ -319,45 +362,47 @@ def run(
         ]
     )
     differences = find_difference_in_paths(list(source_paths))
-    ids = "|".join(map(str, flatten(list(sources_items.values()))))
-    assert len(differences) == len(source_paths), (
-        f"The number of differences in the source paths does not match the number of source paths: "
-        f"{len(differences)} != {len(source_paths)}."
+    trimmed_source_paths = []
+    for path in source_paths:
+        while path.name not in differences:
+            path = path.parent
+        trimmed_source_paths.append(path)
+
+    print(
+        "\nFound the following differences in the paths:",
+        *differences,
+        sep="\n- ",
+        end="\n\n",
     )
+    assert len(differences) == len(trimmed_source_paths), (
+        f"The number of differences in the source paths does not match the number of source paths: "
+        f"{len(differences)} != {len(trimmed_source_paths)}."
+    )
+    ids = "|".join(map(str, flatten(list(sources_items.values()))))
     if re.search(r"\d+", keyword):
         key = re.search(r"\d+", keyword).group(0)
     else:
         key = r"\d+"
-    for source_path, diff in zip(source_paths, differences):
+    for source_path, diff in zip(trimmed_source_paths, differences):
         path_counter = 0
         if not diff:
+            warnings.warn("Path diff is empty string for", source_path)
             diff = f"path_{path_counter}"
         if level == "task":
-            filter_pattern = re.compile(rf"(?:{ids})-\d+-\d+|t_(?:{ids})_s_\d+")
+            filter_pattern = re.compile(rf"[-_](?:{ids})-\d+-\d+|t_(?:{ids})_s_\d+")
         elif level == "sample":
-            filter_pattern = re.compile(rf"{key}-(?:{ids})-\d+|t_{key}_s_(?:{ids})")
+            filter_pattern = re.compile(rf"[-_]{key}-(?:{ids})-\d+|t_{key}_s_(?:{ids})")
         else:
             filter_pattern = re.compile(r"")
         for path in Path(source_path).iterdir():
-            if path.is_file() and "results" in path.name and path.name.endswith(".csv"):
-                # skip the results files, they are already joined and saved
-                continue
-            if path.is_dir() and path.name in folders_to_move:
-                copy_folder_files(path, full_result_directory, filter_pattern)
-            if path.is_dir() and path.name.startswith("."):
-                file_name = f"{path.stem}_{diff}{path.suffix}"
-                copy_folder_files(
-                    path, full_result_directory / file_name, filter_pattern
-                )
-            if path.is_file():
-                try:
-                    file_name = f"{path.stem}_{diff}{path.suffix}"
-                    shutil.copy2(path, full_result_directory / file_name)
-                    path_counter += 1
-                except shutil.SameFileError:
-                    warnings.warn(
-                        f"File '{path.name}' already exists in the destination: {target_directory}"
-                    )
+            path_counter = process_path(
+                path,
+                diff,
+                full_result_directory,
+                filter_pattern,
+                target_directory,
+                path_counter,
+            )
         print(
             f"{Path(*Path(source_path).parts[-4:])} ==> {Path(target_directory)} ({path_counter} files copied)"
         )
@@ -371,59 +416,305 @@ def run(
 
 
 if __name__ == "__main__":
-    paths_baseline_da = {
-        # "task_1_2_v1": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_1_2",
-        # "task_1_2_v2": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_1_2_v2",
-        "task_1_5_v1": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_1_5_v1",
-        # "task_1_5_v2": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_1_5_v2",
-        # "task_1_5_v3": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_1_5_v3",
-        # "task_6": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_6",
-        # "task_6_v2": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_6_v2_task_7_part",
-        "task_6_10": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_6_10",
-        # "task_10_15_v1": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_10_15_v1",
-        # "task_10_15_v2": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_10_15_v2",
-        # "task_10_15_v3": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_10_15_v3",
-        "task_11_15": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_11_15",
-        "task_16_20": "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/da/task_16_20",
-    }
-    paths_skyline_reas = {
-        "tasks_1_2": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/tasks_1_2",
-        "tasks_3_5": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/tasks_3_5",
-        "tasks_6_9": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/tasks_6_9",
-        "task_10": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/task_10",
-        "tasks_11_14": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/tasks_11_14",
-        "task_15": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/task_15",
-        "tasks_16_19": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/tasks_16_19",
-        "task_20": "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/task_20",
-    }
-    paths_sd = {
-        "task_1": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_1",
-        "task_2": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_2",
-        "task_3": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_3",
-        "task_4": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning//task_4",
-        "task_5": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_5",
-        "task_6": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_6",
-        "task_7": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_7",
-        "task_8": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_8",
-        "task_9": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_9",
-        "task_10": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_10",
-        "task_11": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_11",
-        "task_12": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_12",
-        "task_13": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_13",
-        "task_14": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_14",
-        "task_15": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_15",
-        "task_16": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_16",
-        "task_17": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_17",
-        "task_18": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_18",
-        "task_19": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_19",
-        "task_20": "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_20",
-    }
+    baseline_da_v1 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v1/tasks_1_2",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v1/tasks_3_15",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v1/tasks_16_19_full_task_20_s_1_91",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v1/task_20",
+        # "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v1/task_20_s_91_93",
+    ]
+    baseline_da_v2 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v2/tasks_1_2",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v2/tasks_3_15",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v2/tasks_16_20",
+    ]
+    baseline_da_v3 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v3/tasks_1_5",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v3/task_6",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v3/tasks_7_12_full_13_s_1_30",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v3/tasks_13_20",
+    ]
+    baseline_da_v4 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v4/tasks_1_5",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v4/tasks_6_10",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v4/tasks_11_15",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v4/tasks_16_20",
+    ]
+    baseline_da_v5 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v5/tasks_1_5",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v5/tasks_3_15",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v5/tasks_16_20",
+    ]
+    baseline_reasoning_v1 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v1/tasks_1_5",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v1/tasks_6_10",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v1/tasks_11_15",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v1/tasks_16_20",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v1/task_20",
+        # "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v1/task_20_s_90_93",
+    ]
+    baseline_reasoning_v2 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v2/tasks_1_11_full_12_s_1_33",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v2/task_12",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v2/task_12_s_33_100_tasks_13_20_full",
+    ]
+    baseline_reasoning_v3 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v3/tasks_1_11_full_12_s_1_41",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v3/task_12",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v3/task_12_s_33_100_tasks_13_19_full_task_20_s_1_72",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v3/task_20",
+        # "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v3/task_20_s_72_93",
+    ]
+    baseline_reasoning_v4 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v4/tasks_1_2_full_3_s_1_68",
+        # "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v4/task_3_19_s_1_68",
+        # "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v4/tasks_3_19_s_68_100",
+        *[
+            f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v4/task_{i}"
+            for i in range(3, 21)
+        ],
+    ]
+    baseline_reasoning_v5 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v5/tasks_1_2_full_3_s_1_15",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v5/task_3",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v5/tasks_3_s_15_100_t_4_9_full_t_10_s_1_4",
+        # "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v5/tasks_10_11_s_5_100",
+        # "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v5/task_11_s_1_5",
+        # "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v5/tasks_12_20_s_1_33",
+        # "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v5/tasks_12_20_s_33_100",
+        *[
+            f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v5/task_{i}"
+            for i in range(10, 21)
+        ],
+    ]
+    skyline_da_v1 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v1/tasks_1_2",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v1/tasks_3_5",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v1/tasks_6_7_full_8_s_1_77",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v1/tasks_8_10",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v1/tasks_11_15",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v1/tasks_16_20",
+    ]
+    skyline_da_v2_t_16_20 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v2/tasks_16_20_s_1_65",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v2/tasks_16_20_s_66_100",
+    ]
+    skyline_da_v2 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v2/tasks_1_2",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v2/tasks_3_5",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v2/tasks_6_7",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v2/tasks_8_10",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v2/tasks_11_15",
+        *[
+            f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v2/task_{i}"
+            for i in range(16, 21)
+        ],
+    ]
+    skyline_da_v3_t_3 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v3/unjoined/task_3_s_1_27",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v3/unjoined/task_3_s_25_100",
+    ]
+    skyline_da_v3 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v3/tasks_1_2",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v3/task_3",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v3/tasks_4_10",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v3/tasks_11_15",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v3/tasks_16_20",
+    ]
+    skyline_da_v4_t_3 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v4/unjoined/task_3_s_1_22",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v4/unjoined/task_3_s_23_100",
+    ]
+    skyline_da_v4_t_14 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v4/tasks_4_13_full_14_s_1_26",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v4/task_14_s_25_100_task_15_full",
+    ]
+    skyline_da_v4 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v4/tasks_1_2",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v4/tasks_4_13_full_14_s_1_26",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v4/task_14_s_25_100_task_15_full",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v4/tasks_16_20",
+    ]
+    skyline_da_v5_t_3 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_3_s_1_28",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_3_s_23_99",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_3_s_99_100",
+    ]
+    skyline_da_v5_t_14 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/tasks_4_13_full_task_14_s_1_49",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_14_s_49_100_task_15_full",
+    ]
+    skyline_da_v5_t_20 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_20_s_1_15",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_20_s_15_69",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_20_s_69_89",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_20_s_89_93",
+    ]
+    skyline_da_v5 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_1",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_2",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_3",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/tasks_4_13_full_task_14_s_1_49",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_14",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_14_s_49_100_task_15_full",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/tasks_16_19",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_20",
+    ]
 
+    skyline_reasoning = {
+        "tasks_1_2": "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/reasoning/tasks_1_2",
+        "tasks_3_5": "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/reasoning/tasks_3_5",
+        "tasks_6_9": "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/reasoning/tasks_6_9",
+        "task_10": "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/reasoning/task_10",
+        "tasks_11_14": "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/reasoning/tasks_11_14",
+        "task_15": "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/reasoning/task_15",
+        "tasks_16_19": "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/reasoning/tasks_16_19",
+        "task_20": "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/reasoning/task_20",
+    }
+    sd_reasoning_v1_t_1 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_1/task_1_s_1_84",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_1/task_1_s_84_100",
+    ]
+    sd_reasoning_v1_t_2 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_2/task_2_s_1_76",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_2/task_2_s_76_100",
+    ]
+    sd_reasoning_v1_t_3 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_3/task_3_s_1_51",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_3/task_3_s_51_59",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_3/task_3_s_59_86",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_3/task_3_s_86_100",
+    ]
+    sd_reasoning_v1_t_5 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_5/task_5_s_61_89",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_5/task_5_s_89_100",
+    ]
+    sd_reasoning_v1_t_6 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_6/task_6_s_1_21",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_6/task_6_s_21_100",
+    ]
+    sd_reasoning_v1_t_7 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_7/task_7_s_1_92",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_7/task_7_s_92_100",
+    ]
+    # TODO: unfinished!
+    sd_reasoning_v1_t_8 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_8/task_8_s_1_59__s_59_unfinished",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_8/task_8_s_60_100",
+    ]
+    # TODO: unfinished!
+    sd_reasoning_v1_t_9 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_9/task_9_s_1_78__s_78_unfinished",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_9/task_9_s_78_83",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_9/task_9_s_83_100",
+    ]
+    sd_reasoning_v1_t_10 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_10/task_10_s_1_88",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_10/task_10_s_88_100",
+    ]
+    sd_reasoning_v1_t_11 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_11/task_11_s_1_89",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_11/task_11_s_89_100",
+    ]
+    sd_reasoning_v1_t_12 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_12/task_12_s_1_93",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_12/task_12_s_93_100",
+    ]
+    sd_reasoning_v1_t_13 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_13/task_13_s_1_89",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_13/task_13_s_89_93",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_13/task_13_s_93_100",
+    ]
+    sd_reasoning_v1_t_14 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_14/task_14_s_1_60",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_14/task_14_s_59_100",
+    ]
+    sd_reasoning_v1_t_17 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_17/task_17_s_1_43",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_17/task_17_s_43_84",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_17/task_17_s_84_97",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_17/task_17_s_97_100",
+    ]
+    sd_reasoning_v1_t_18 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_18/task_18_s_1_84",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_18/task_18_s_84_100",
+    ]
+    # TODO: unfinished!
+    sd_reasoning_v1_t_20 = [
+        # samples 1-27 unfinished
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_27_62",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_62_91",
+        # samples 92-93 unfinished
+    ]
+    sd_reasoning = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_1",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_2",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_3",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning//task_4",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_5",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_6",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_7",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_8",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_9",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_10",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_11",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_12",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_13",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_14",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_15",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_16",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_17",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_18",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_19",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/task_20",
+    ]
+    feedback_reasoning_v1_t_3 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/task_3/t_3_s_1_9",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/task_3/t_3_s_10_32",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/task_3/t_3_s_32_56",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/task_3/t_3_s_56_77",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/task_3/t_3_s_77_96",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/task_3/t_3_s_96_100",
+    ]
+    feedback_reasoning_v1_t_4 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/task_4/t_4_s_1_63",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/task_4/t_4_s_64_100",
+    ]
+    feedback_reasoning_v1_t_5 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/task_5/t_5_s_1_33__s_33_unfinished",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/task_5/t_5_s_56_79__s_79_unfinished",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/task_5/t_5_s_34_56_s_80_89",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/task_5/t_5_s_90_100",
+    ]
+    feedback_reasoning_v1_t_20 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/tasks_19_20/t_20_1_15",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/tasks_19_20/t_20_s_14_67",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/unjoined/tasks_19_20/t_19_20_s_66_100_v1",
+    ]
+    feedback_reasoning_v1 = [
+        *[
+            f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/task_{i}"
+            for i in range(1, 8)
+        ],
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/tasks_8_10",
+        *[
+            f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/task_{i}"
+            for i in range(11, 17)
+        ],
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/tasks_17|19",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/task_18",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/task_20",
+    ]
+    # TODO: NB! The difference in paths the script should detect must be on the same level in the file tree!
     paths = []
-    result_directory = "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/reasoning/all_tasks_joined"
+    result = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v1/all_tasks_joined"
     run(
-        source_paths=paths,
-        target_directory=result_directory,
-        level="task",
-        keyword="reasoning_results",  # example: "t_20" for a specific task, "reasoning_results" for generally saved results
-    )  # might not work if too general!
+        source_paths=skyline_da_v1,
+        target_directory=result,
+        level="task",  # 'task' or 'sample'
+        # might not work if too general! try "_results"
+        keyword=f"direct_answer_results",  # example: "t_20" for a specific task,
+        # "reasoning_results", "direct_answer_results", for generally saved results
+        task="da",  # 'reasoning' or 'da' (direct answer)
+    )
+    # TODO: once finished, check the attention scores! They all should be saved in the same folder
