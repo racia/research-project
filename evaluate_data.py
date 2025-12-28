@@ -105,7 +105,7 @@ def get_result(
 
 
 def run(
-    results_path: str,
+    results_paths: list[str],
     save_path: str,
     samples_per_task: int,
     experiment: str,
@@ -116,7 +116,7 @@ def run(
     """
     Run the evaluation pipeline.
 
-    :param results_path: Path to the data for evaluation
+    :param results_paths: Paths to the data for evaluation (one or more for multiple versions)
     :param save_path: Path to save the results
     :param samples_per_task: Number of samples per task the results were ran with
     :param experiment: The experiment to evaluate (e.g., "reasoning_answer", "direct_answer")
@@ -137,16 +137,17 @@ def run(
         raise ValueError(
             "Setting not recognized, expected one of: 'baseline', 'feedback', 'skyline', 'speculative_decoding', 'sd'"
         )
-    if not results_path:
-        raise ValueError("Please provide a path to the data for evaluation.")
+    if not results_paths:
+        raise ValueError("Please provide at least one path to the data for evaluation.")
 
     print("Loading data...", end="\n\n")
     loader = DataLoader(prefix=PREFIX, samples_per_task=samples_per_task)
     # loaded results in parts with original data, tokens-ids, and interpretability results
+    data_split = extract_split(results_paths[0])
     results_data, multi_system = loader.load_results(
-        results_path=results_path,
+        results_paths=results_paths,
         data_path="../tasks_1-20_v1-2/en-valid/",
-        split=extract_split(results_path),
+        split=data_split,
         as_parts=True,
     )
     # maybe loaded_baseline_results is not needed for evaluation
@@ -154,13 +155,12 @@ def run(
         save_to=str(Path(save_path) / "eval"),
         loaded_baseline_results=True if multi_system else False,
     )
-    results_file_name = f"{Path(results_path).stem}_upd.csv"
+    results_file_name = f"{Path(results_paths[0]).stem}_upd.csv"
     plotter = Plotter(results_path=saver.run_path, color_map="tab20")
 
     print(f"\nLoaded results data for {len(results_data)} tasks.")
     print(f"Loaded {loader.number_of_parts} sample parts created from raw data.")
 
-    data_split = extract_split(results_path)
     sample, task, split = None, None, Split(name=data_split, multi_system=multi_system)
     for task_id, samples in results_data.items():
         assert type(task_id) is int
@@ -222,7 +222,8 @@ def run(
             )
 
     if verbose:
-        print_metrics_table(evaluators=split.evaluators, id_=data_split)
+        # NB! Prints only for the first duplicate version
+        print_metrics_table(evaluators=[e[0] for e in split.evaluators], id_=data_split)
 
     saver.save_split_metrics(
         split=split,
@@ -230,11 +231,12 @@ def run(
     )
     # TODO: save metrics series in separate files for each split
 
-    for version, evaluator, features in zip(
+    # Features are averaged, while evaluators are individual for each duplicate version
+    for version, version_evaluators, version_features in zip(
         split.versions, split.evaluators, split.features
     ):
         saver.save_split_features(
-            features=features,
+            features=version_features,
             metrics_file_name="eval_script_features.csv",
             version=version,
         )
@@ -242,12 +244,13 @@ def run(
             f"\nPlotting metrics and standard deviation for results '{version}'...",
             end="\n\n",
         )
-        # TODO: fix the plots and plot more fine-grained metrics instead of all together
-        plotter.plot_acc_per_task_and_prompt(
-            acc_per_prompt_task=evaluator.get_metrics(as_lists=True),
-            y_label="Accuracies and Standard Deviations",
-            plot_name_add=[split.name, version],
-        )
+        for evaluator in version_evaluators:
+            # TODO: fix the plots and plot more fine-grained metrics instead of all together
+            plotter.plot_acc_per_task_and_prompt(
+                acc_per_prompt_task=evaluator.get_metrics(as_lists=True),
+                y_label="Accuracies and Standard Deviations",
+                plot_name_add=[split.name, version],
+            )
         # TODO: plot attention distribution per task and sample
         print("Saving result categories...")
         plotter.plot_answer_type_per_part(
@@ -275,13 +278,13 @@ def parse_args():
 
     :return: None
     """
-
     parser = argparse.ArgumentParser(description="Evaluate the results of the model.")
     parser.add_argument(
-        "--results_path",
+        "--results_paths",
         type=str,
+        nargs="+",  # accept one or more paths (depends on the number of versions to evaluate)
         required=True,
-        help="Path to the data.",
+        help="Path or paths to the data.",
     )
     parser.add_argument(
         "--save_path",
@@ -311,10 +314,11 @@ def parse_args():
 
 
 if __name__ == "__main__":
+    results_paths = []
     args = parse_args()
     # python3.12 evaluate_data.py --results_path results/test-feedback-run/test/reasoning/08-05-2025/22-02-41/init_prompt_reasoning/test_init_prompt_reasoning_results.csv --save_path results/test-feedback-run/test/reasoning/08-05-2025/22-02-41/init_prompt_reasoning --samples_per_task 100 --create_heatmaps --verbose
     run(
-        results_path=args.results_path,
+        results_paths=args.results_paths,
         save_path=args.save_path,
         samples_per_task=args.samples_per_task,
         setting="baseline",

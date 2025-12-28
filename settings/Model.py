@@ -20,6 +20,23 @@ from interpretability.utils import InterpretabilityResult
 from settings.config import Mode, Wrapper
 from settings.utils import encode_wrapper
 
+os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
+
+
+def print_cuda_status(model):
+    warnings.warn(
+        f"MODEL {model} IS CALLED\n"
+        f" cuda_available: {torch.cuda.is_available()}\n"
+        f" device_count: {torch.cuda.device_count()}"
+    )
+    if torch.cuda.is_available():
+        dev = torch.cuda.current_device()
+        warnings.warn(
+            f" current_device: {dev} - {torch.cuda.get_device_name(dev)}\n"
+            f" memory_summary: {torch.cuda.memory_summary(dev)}\n"
+            f" max_memory_allocated: {torch.cuda.max_memory_allocated(dev)}\n"
+        )
+
 
 class Model:
     """
@@ -58,6 +75,13 @@ class Model:
         self.k = k
         self.p = p
 
+    def __repr__(self) -> str:
+        return (
+            f"Model(name='{self.name}', max_new_tokens={self.max_new_tokens}, "
+            f"temperature={self.temperature}, to_continue={self.to_continue}, "
+            f"role='{self.role}', mode='{self.mode}')"
+        )
+
     def load(self) -> tuple[OpenLlamaPreTrainedModel, PreTrainedTokenizerFast]:
         """
         Load the model and the tokenizer.
@@ -68,7 +92,6 @@ class Model:
         """
         print(
             f"The model {self.name} is being loaded in mode '{self.mode}'...",
-            end="\n\n",
             flush=True,
         )
 
@@ -110,7 +133,7 @@ class Model:
 
         torch.cuda.empty_cache()
 
-        print(f"The model {self.name} was loaded successfully", flush=True)
+        print(f"The model {self.name} was loaded successfully", end="\n\n", flush=True)
 
         return model, tokenizer
 
@@ -148,6 +171,8 @@ class Model:
                 "Either data or from_chat should be set. Please set one of them."
             )
 
+        # print_cuda_status(self)
+
         with torch.no_grad():
             call_from_part = type(data) is SamplePart and not from_chat
             # includes flat ids for all the messages in the chat, including the wrapper
@@ -167,7 +192,7 @@ class Model:
                     temperature=self.temperature,
                     pad_token_id=self.tokenizer.eos_token_id,
                     do_sample=True if self.temperature > 0 else False,
-                    use_cache=True,
+                    use_cache=False,
                     num_beams=1,  # no beam search, reduce GPU memory usage
                 )
                 encoded_output = outputs[0][inputs["input_ids"].size(1) :]

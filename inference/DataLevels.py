@@ -18,6 +18,9 @@ from inference.utils import (
     structure_part,
     wrap_text,
     is_nan,
+    update_attributes,
+    majority_vote,
+    only_none,
 )
 from interpretability.utils import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
@@ -344,6 +347,11 @@ class SamplePart:
         )
 
         self.multi_system = multi_system
+
+        self.version_map = {
+            "before": 0,
+            "after": 1,
+        }
         self.versions: list[str] = (
             ["before", "after"] if self.multi_system else ["before"]
         )
@@ -368,7 +376,7 @@ class SamplePart:
         self.golden_answer: str = golden_answer
         self.silver_reasoning: str = silver_reasoning
 
-        self.results = []
+        self.results = [[], []]
         self.iterations: int = 0
 
     def set_wrapper(self, wrapper: Wrapper = None) -> Wrapper:
@@ -497,12 +505,12 @@ class SamplePart:
 
     def set_output(
         self,
+        version: str,
         interpretability: InterResult | None,
         messages: list[dict] = None,
         model_output: str = None,
         model_answer: str = None,
         model_reasoning: str = None,
-        version: str = "after",
         wrapped_task: str = None,
         iterations: int = 0,
     ) -> None:
@@ -552,7 +560,7 @@ class SamplePart:
             )
             interpretability = InterResult(np.ndarray([]), [], [], 0.0, 0.0)
 
-        if version not in ["before", "after"]:
+        if version not in self.version_map:
             raise ValueError(
                 f"Version should be either 'before' or 'after', currently: {version}"
             )
@@ -574,15 +582,16 @@ class SamplePart:
             self.iterations = iterations or SamplePart.current_iteration_count
 
         result.categorize(ids=self.ids)
-        self.results.append(result)
+        self.results[self.version_map[version]].append(result)
 
-    def get_result(self) -> dict[str, int | str]:
+    def get_result(self, average: bool = True) -> dict[str, int | str]:
         """
         Get the result of the part.
 
         :return: the result of the part
         """
         try:
+            # these are not relevant for duplicated answers
             attributes = {
                 attr: getattr(self, attr)
                 for attr in self.result_attrs
@@ -598,9 +607,61 @@ class SamplePart:
         if not self.results:
             raise ValueError("No results found for the part.")
 
-        for result in self.results:
-            attributes = {**attributes, **result.dict}
-        return attributes
+        # attributes: list[str] = [
+        #     "id_",
+        #     "task_id",
+        #     "sample_id",
+        #     "part_id",
+        #     "task",
+        #     "golden_answer",
+        #     "silver_reasoning",
+        #     "answer_lies_in_self",
+        #     "iterations",
+        # ]
+        dupl_attributes = {
+            attr: [] for attr in SamplePart.result_attrs + Features.attrs
+        }
+        for version_results in self.results:
+            for i, duplicate_result in enumerate(version_results):
+                dupl_attributes = update_attributes(
+                    dupl_attributes, duplicate_result.dict
+                )
+                # result_attr: list[str] = [
+                #     "model_answer",
+                #     "answer_correct",
+                #     "model_reasoning",
+                #     "reasoning_correct",
+                #     "model_output",
+                #     "max_supp_attn",
+                #     "attn_on_target",
+                # ]
+                # features_attrs = [
+                #     "there",
+                #     "verbs",
+                #     "pronouns",
+                #     "not_mentioned",
+                #     "context_sents_hall",
+                # ]
+        averaged_attrs = {}
+        for attr in dupl_attributes:
+            if dupl_attributes[attr] and type(dupl_attributes[attr][0]) is str:
+                averaged_attrs[attr] = "\n".join(dupl_attributes[attr])
+            elif only_none(dupl_attributes[attr]):
+                averaged_attrs[attr] = None
+            else:
+                average = sum(dupl_attributes[attr]) / len(dupl_attributes[attr])
+                averaged_attrs[attr] = round(average, 4)
+        return {**attributes, **averaged_attrs}
+
+    def number_of_duplicates(self) -> int:
+        """
+        Get the number of duplicates for the part.
+
+        :return: the number of duplicates for the part
+        """
+        if not self.results:
+            raise ValueError("No results found for the part.")
+        return len(self.results[0])
 
 
 class Sample:
@@ -624,11 +685,23 @@ class Sample:
         self.run_with_reasoning: bool = False
         self.parts: list[SamplePart] = []
 
-        evaluator_before = AnswerEvaluator(level="sample", version="before")
-        self.evaluators: list[AnswerEvaluator] = (
-            [evaluator_before, AnswerEvaluator(level="sample", version="after")]
+        self.num_dupl = self.parts[0].number_of_duplicates() if self.parts else 1
+        evaluator_before = [
+            AnswerEvaluator(level="sample", version="before")
+        ] * self.num_dupl
+        self.evaluators: list[list[AnswerEvaluator]] = (
+            [
+                evaluator_before,
+                [AnswerEvaluator(level="sample", version="after")] * self.num_dupl,
+            ]
             if self.multi_system
             else [evaluator_before]
+        )
+        majority_eval_before = AnswerEvaluator(level="sample", version="before")
+        self.majority_evaluators: list[AnswerEvaluator] = (
+            [majority_eval_before, AnswerEvaluator(level="sample", version="after")]
+            if self.multi_system
+            else [majority_eval_before]
         )
 
         features_before = Features(0, 0, 0, 0, 0, version="before")
@@ -649,30 +722,51 @@ class Sample:
         """
         self.parts.append(part)
         if self.multi_system and len(part.results) != 2:
+            results_before = "\n".join(part.results[0])
+            results_after = "\n".join(part.results[1])
             raise ValueError(
-                f"The part should have two results for the multi-system setting: {part.results}"
+                f"The part should have two results for the multi-system setting, "
+                f"got {len(part.results)}:\n{results_before}\n{results_after}"
             )
-        for evaluator, result in zip(self.evaluators, part.results):
-            evaluator.golden_answers.append(part.golden_answer)
-            evaluator.pred_answers.append(result.model_answer)
-            evaluator.pred_reasonings.append(result.model_reasoning)
-            if result.model_reasoning:
-                self.run_with_reasoning = True
-                if part.silver_reasoning:
-                    evaluator.silver_reasonings.append(part.silver_reasoning)
-            if result.interpretability:
-                if is_nan(result.max_supp_attn):
-                    warnings.warn(
-                        f"Found 'nan' in result.max_supp_attn results for part {part.ids}. Skipping."
-                    )
-                else:
-                    evaluator.max_supp_attn.add(result.max_supp_attn)
-                if is_nan(result.attn_on_target):
-                    warnings.warn(
-                        f"Found 'nan' in result.attn_on_target results for part {part.ids}. Skipping."
-                    )
-                else:
-                    evaluator.attn_on_target.add(result.attn_on_target)
+        for i, (version_evaluators, version_results) in enumerate(
+            zip(self.evaluators, part.results)
+        ):
+            model_answers, max_supp_attns, attns_on_target = [], [], []
+            for j, (evaluator, result) in enumerate(
+                zip(version_evaluators, version_results)
+            ):
+                answer = result.model_answer
+                evaluator.golden_answers.append(part.golden_answer)
+                evaluator.pred_answers.append(answer)
+                model_answers.append(answer)
+                evaluator.pred_reasonings.append(result.model_reasoning)
+                if result.model_reasoning:
+                    self.run_with_reasoning = True
+                    if part.silver_reasoning:
+                        evaluator.silver_reasonings.append(part.silver_reasoning)
+                if result.interpretability:
+                    if is_nan(result.max_supp_attn):
+                        warnings.warn(
+                            f"Found 'nan' in result.max_supp_attn results for part {part.ids}. Skipping."
+                        )
+                    else:
+                        evaluator.max_supp_attn.add(result.max_supp_attn)
+                        max_supp_attns.append(result.max_supp_attn)
+                    if is_nan(result.attn_on_target):
+                        warnings.warn(
+                            f"Found 'nan' in result.attn_on_target results for part {part.ids}. Skipping."
+                        )
+                    else:
+                        evaluator.attn_on_target.add(result.attn_on_target)
+                        attns_on_target.append(result.attn_on_target)
+
+            majority_answer = majority_vote(model_answers)
+            self.majority_evaluators[i].pred_answers.append(majority_answer)
+            self.majority_evaluators[i].golden_answers.append(part.golden_answer)
+            average_max_supp_attn = float(np.mean(max_supp_attns))
+            average_attn_on_target = float(np.mean(attns_on_target))
+            self.majority_evaluators[i].max_supp_attn.add(average_max_supp_attn)
+            self.majority_evaluators[i].attn_on_target.add(average_attn_on_target)
 
     def print_sample_predictions(self) -> None:
         """
@@ -680,20 +774,44 @@ class Sample:
 
         :return: None
         """
+        ans_bef = (
+            [f"PREDICTED-Bef {i}" for i in range(1, self.num_dupl + 1)]
+            if self.num_dupl > 1
+            else ["PREDICTED-Bef"]
+        )
+        reas_bef = (
+            [f"REASONING-Bef {i}" for i in range(1, self.num_dupl + 1)]
+            if self.num_dupl > 1
+            else ["REASONING-Bef"]
+        )
+        answers = [
+            evaluator.pred_answers
+            for version_evaluators in self.evaluators
+            for evaluator in version_evaluators
+        ]
+        reasonings = [
+            evaluator.pred_reasonings
+            for version_evaluators in self.evaluators
+            for evaluator in version_evaluators
+        ]
         if self.multi_system:
             table = PrettyTable()
-            table.field_names = [
-                "GOLDEN",
-                "PREDICTED-Bef",
-                "PREDICTED-Aft",
-                "REASONING-Bef",
-                "REASONING-Aft",
-            ]
+            ans_aft = (
+                [f"PREDICTED-Aft {i}" for i in range(1, self.num_dupl + 1)]
+                if self.num_dupl > 1
+                else ["PREDICTED-Aft"]
+            )
+            reas_aft = (
+                [f"REASONING-Aft {i}" for i in range(1, self.num_dupl + 1)]
+                if self.num_dupl > 1
+                else ["REASONING-Aft"]
+            )
+            table.field_names = ["GOLDEN", *ans_bef, *ans_aft, *reas_bef, *reas_aft]
 
             attributes = zip(
-                self.evaluators[0].golden_answers,
-                *[evaluator.pred_answers for evaluator in self.evaluators],
-                *[evaluator.pred_reasonings for evaluator in self.evaluators],
+                self.majority_evaluators[0].golden_answers,
+                *answers,
+                *reasonings,
             )
 
             for golden, pred_bef, pred_aft, reas_bef, reas_aft in attributes:
@@ -709,12 +827,11 @@ class Sample:
 
         else:
             table = PrettyTable()
-            table.field_names = ["GOLDEN", "PREDICTED-Bef", "REASONING-Bef"]
-
+            table.field_names = ["GOLDEN", *ans_bef, *reas_bef]
             attributes = zip(
-                self.evaluators[0].golden_answers,
-                self.evaluators[0].pred_answers,
-                self.evaluators[0].pred_reasonings,
+                self.majority_evaluators[0].golden_answers,
+                *answers,
+                *reasonings,
             )
 
             for golden, pred_bef, reas_bef in attributes:
@@ -736,7 +853,10 @@ class Sample:
         self.results = [part.get_result() for part in self.parts]
         for i, features in enumerate(self.features):
             self.features[i] = sum(
-                [part.results[i].features for part in self.parts],
+                [
+                    float(np.mean([result.features for result in part.results[i]]))
+                    for part in self.parts
+                ],
                 features,
             )
 
@@ -745,13 +865,14 @@ class Sample:
         Calls all the individual metric calculating functions.
         :return: None
         """
-        for evaluator in self.evaluators:
-            evaluator.calculate_accuracies()
-            evaluator.calculate_attention()
-            if self.run_with_reasoning:
-                evaluator.calculate_bleu()
-                evaluator.calculate_rouge()
-                evaluator.calculate_meteor()
+        for version_evaluators in self.evaluators:
+            for evaluator in version_evaluators:
+                evaluator.calculate_accuracies()
+                evaluator.calculate_attention()
+                if self.run_with_reasoning:
+                    evaluator.calculate_bleu()
+                    evaluator.calculate_rouge()
+                    evaluator.calculate_meteor()
 
 
 class Task:
@@ -775,9 +896,15 @@ class Task:
             ["before", "after"] if self.multi_system else ["before"]
         )
 
-        evaluator_before = MetricEvaluator(level="task", version="before")
-        self.evaluators: list[MetricEvaluator] = (
-            [evaluator_before, MetricEvaluator(level="task", version="after")]
+        self.num_dupl: int = self.parts[0].number_of_duplicates() if self.parts else 1
+        evaluator_before = [
+            MetricEvaluator(level="task", version="before")
+        ] * self.num_dupl
+        self.evaluators: list[list[MetricEvaluator]] = (
+            [
+                evaluator_before,
+                [MetricEvaluator(level="task", version="after")] * self.num_dupl,
+            ]
             if self.multi_system
             else [evaluator_before]
         )
@@ -799,8 +926,13 @@ class Task:
         :return: None
         """
         self.samples.append(sample)
-        for task_evaluator, sample_evaluator in zip(self.evaluators, sample.evaluators):
-            task_evaluator.update(sample_evaluator)
+        for task_evaluators, sample_evaluators in zip(
+            self.evaluators, sample.evaluators
+        ):
+            for task_evaluator, sample_evaluator in zip(
+                task_evaluators, sample_evaluators
+            ):
+                task_evaluator.update(sample_evaluator)
 
     def set_results(self) -> None:
         """
@@ -814,15 +946,20 @@ class Task:
 
         for i, features in enumerate(self.features):
             self.features[i] = sum(
-                [part.results[i].features for part in self.parts],
+                [
+                    float(np.mean([result.features for result in part.results[i]]))
+                    for part in self.parts
+                ],
                 features,
             )
 
-        for evaluator, version in zip(self.evaluators, self.versions):
-            mean_em_acc = evaluator.exact_match_accuracy.get_mean()
-            self.results[0][f"exact_match_accuracy_{version}"] = mean_em_acc
-            mean_sm_acc = evaluator.soft_match_accuracy.get_mean()
-            self.results[0][f"soft_match_accuracy_{version}"] = mean_sm_acc
+        for version_evaluators, version in zip(self.evaluators, self.versions):
+            mean_em_accuracies, mean_sm_accuracies = [], []
+            for evaluator in version_evaluators:
+                mean_em_accuracies.append(evaluator.exact_match_accuracy.get_mean())
+                mean_sm_accuracies.append(evaluator.soft_match_accuracy.get_mean())
+            self.results[0][f"exact_match_accuracy_{version}"] = mean_em_accuracies
+            self.results[0][f"soft_match_accuracy_{version}"] = mean_sm_accuracies
 
     def calculate_metrics(self) -> None:
         """
@@ -830,9 +967,10 @@ class Task:
         :return: None
         """
         initial = {"task_id": self.task_id}
-        for evaluator in self.evaluators:
-            evaluator.calculate_std()
-            self.metrics.append({**initial, **evaluator.get_metrics()})
+        for version_evaluators in self.evaluators:
+            for evaluator in version_evaluators:
+                evaluator.calculate_std()
+                self.metrics.append({**initial, **evaluator.get_metrics()})
 
 
 class Split:
@@ -862,9 +1000,15 @@ class Split:
             else [features_before]
         )
 
-        evaluator_before = MetricEvaluator(level="split", version="before")
-        self.evaluators: list[MetricEvaluator] = (
-            [evaluator_before, MetricEvaluator(level="split", version="after")]
+        self.num_dupl: int = self.tasks[0].num_dupl if self.tasks else 1
+        evaluator_before = [
+            MetricEvaluator(level="split", version="before")
+        ] * self.num_dupl
+        self.evaluators: list[list[MetricEvaluator]] = (
+            [
+                evaluator_before,
+                [MetricEvaluator(level="split", version="after")] * self.num_dupl,
+            ]
             if self.multi_system
             else [evaluator_before]
         )
@@ -879,8 +1023,9 @@ class Split:
         self.tasks.append(task)
         for features, other_features in zip(self.features, task.features):
             features += other_features
-        for evaluator, other_evaluator in zip(self.evaluators, task.evaluators):
-            evaluator.update(other_evaluator)
+        for evaluators, other_evaluators in zip(self.evaluators, task.evaluators):
+            for evaluator, other_evaluator in zip(evaluators, other_evaluators):
+                evaluator.update(other_evaluator)
 
 
 def print_metrics(data_level: Sample | Task | Split) -> None:
@@ -899,6 +1044,8 @@ def print_metrics(data_level: Sample | Task | Split) -> None:
         id_ = data_level.name
 
     print_metrics_table(
-        evaluators=data_level.evaluators,
+        evaluators=[
+            evaluators[0] for evaluators in data_level.evaluators if evaluators
+        ],
         id_=id_,
     )

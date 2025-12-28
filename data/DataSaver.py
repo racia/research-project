@@ -356,21 +356,31 @@ class DataSaver:
             file_name=f"t_{part.task_id}_s_{part.sample_id}_results.csv",
             path_add="sample_results",
         )
-        for result, version in zip(part.results, part.versions):
+        for version_results, version in zip(part.results, part.versions):
             if version == "before" and self.loaded_baseline_results:
                 continue
 
-            self.save_part_interpretability(result.interpretability, version, part)
+            # it's not expected to have multiple results for 'before' and 'after' in inference
+            if len(version_results) > 1:
+                warnings.warn(
+                    f"Multiple results found for version '{version}' in task {part.task_id}, "
+                    f"sample {part.sample_id}, part {part.part_id}. "
+                    f"Only the first result will be saved."
+                )
+
+            self.save_part_interpretability(
+                version_results[0].interpretability, version, part
+            )
 
             part_identifier = f"{part.task_id}-{part.sample_id}-{part.part_id}"
             folder = self.results_path / version
 
-            for role, ids in result.ids.items():
+            for role, ids in version_results[0].ids.items():
                 self.save_with_separator(
                     folder / "ids" / f"{role}-ids-{part_identifier}.txt",
                     ["\t".join(map(str, i)) for i in ids],
                 )
-            for role, tokens in result.tokens.items():
+            for role, tokens in version_results[0].tokens.items():
                 self.save_with_separator(
                     folder / "tokens" / f"{role}-tokens-{part_identifier}.txt",
                     ["\t".join(t) for t in tokens],

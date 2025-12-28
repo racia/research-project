@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 import textwrap
+import warnings
 from collections import defaultdict
 from dataclasses import dataclass
 from typing import Any
@@ -12,7 +13,7 @@ from prettytable import PrettyTable
 from spacy.tokens.span import Span
 from transformers import PreTrainedTokenizerFast
 
-from evaluation.Evaluator import MetricEvaluator
+from evaluation.Evaluator import MetricEvaluator, AnswerEvaluator
 from settings.config import Enumerate
 
 nlp = en_core_web_sm.load()
@@ -255,7 +256,7 @@ def wrap_text(text, width=40):
 
 
 def print_metrics_table(
-    evaluators: list[MetricEvaluator],
+    evaluators: list[MetricEvaluator | AnswerEvaluator],
     id_: Any = None,
 ) -> None:
     """
@@ -356,3 +357,53 @@ def is_nan(value: Any) -> bool:
     elif isinstance(value, str):
         return value.lower() == "nan"
     return False
+
+
+def update_attributes(all_attributes: dict, new_attributes: dict) -> dict:
+    """
+    Update the attributes dictionary with new attributes to collect multiple values for the same key.
+
+    :param all_attributes: existing attributes
+    :param new_attributes: new attributes to add
+    :return: updated attributes
+    """
+    for key, value in new_attributes.items():
+        if key not in all_attributes:
+            all_attributes[key] = [value]
+        else:
+            if isinstance(all_attributes[key], list):
+                if isinstance(value, list):
+                    warnings.warn(f"Adding list of values for key {key}: {value}")
+                    all_attributes[key].extend(value)
+                else:
+                    all_attributes[key].append(value)
+            else:
+                if isinstance(value, list):
+                    all_attributes[key] = [all_attributes[key]] + value
+                else:
+                    all_attributes[key] = [all_attributes[key], value]
+    return all_attributes
+
+
+def majority_vote(labels: list[Any]) -> Any:
+    """
+    Perform majority voting on a list of labels.
+
+    :param labels: list of labels
+    :return: label with the highest count
+    """
+    label_counts = defaultdict(int)
+    for label in labels:
+        label_counts[label] += 1
+    majority_label = max(label_counts, key=label_counts.get)
+    return majority_label
+
+
+def only_none(lst: list[Any]) -> bool:
+    """
+    Check if all values in the list are None.
+
+    :param lst: list to check
+    :return: True if all values are None, False otherwise
+    """
+    return all(value is None for value in lst)

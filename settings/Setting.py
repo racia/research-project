@@ -184,8 +184,8 @@ class Setting(ABC):
                     end="\n\n\n",
                 )
                 # Only run the model if the results are not loaded
-                if not self.part.results or not any(
-                    [self.part.results[-1].ids, self.part.results[-1].tokens]
+                if not self.part.results[0] or not any(
+                    [self.part.results[0][-1].ids, self.part.results[0][-1].tokens]
                 ):
                     print("Calling the model...")
                     decoded_output, interpretability = self.model.call(self.part)
@@ -206,20 +206,20 @@ class Setting(ABC):
                     self.model.chat.add_message(
                         part=self.part,
                         source=Source.user,
-                        ids=self.part.results[-1].ids[Source.user],
-                        tokens=self.part.results[-1].tokens[Source.user],
+                        ids=self.part.results[0][-1].ids[Source.user],
+                        tokens=self.part.results[0][-1].tokens[Source.user],
                         wrapper=self.model.wrapper,
                     )
                     self.model.chat.add_message(
-                        part=self.part.results[-1].model_output,
+                        part=self.part.results[0][-1].model_output,
                         source=Source.assistant,
-                        ids=self.part.results[-1].ids[Source.assistant],
-                        tokens=self.part.results[-1].tokens[Source.assistant],
+                        ids=self.part.results[0][-1].ids[Source.assistant],
+                        tokens=self.part.results[0][-1].tokens[Source.assistant],
                     )
                     self.model.chat.identify_supp_sent_spans()
                     print(
-                        "The output of the model:",
-                        self.part.results[-1].model_output,
+                        f"Loaded output of the {'student' if self.multi_system else 'model'}:",
+                        self.part.results[0][-1].model_output,
                         end="\n\n\n",
                         sep="\n",
                         flush=True,
@@ -232,7 +232,7 @@ class Setting(ABC):
                     )
 
                     decoded_output, eval_dict, interpretability = self.apply_setting(
-                        decoded_output=self.part.results[-1].model_output,
+                        decoded_output=self.part.results[0][-1].model_output,
                     )
                     self.saver.save_eval_dict(
                         task_id=task_id,

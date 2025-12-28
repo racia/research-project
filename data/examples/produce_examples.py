@@ -83,7 +83,7 @@ def produce_example_files(directory: str) -> None:
     """
     data_loader = DataLoader()
     data, _ = data_loader.load_results(
-        str(Path(directory) / "task_examples.csv"),
+        [str(Path(directory) / "task_examples.csv")],
         headers=["line_id", "context/question", "golden_answer"],
         list_output=True,
     )

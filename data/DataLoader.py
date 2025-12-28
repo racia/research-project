@@ -263,35 +263,26 @@ class DataLoader:
 
         return lookup_data
 
-    def load_results(
+    def load_data_from_path(
         self,
         results_path: str | Path,
-        data_path: str | Path = None,
         headers: list[str] = None,
         list_output: bool = False,
         as_parts: bool = False,
         split: str = None,
-        tasks: list[int] | None = None,
         sep: str = "\t",
-    ) -> tuple[dict | list, bool | None]:
+    ) -> dict | list:
         """
         Load the results or any csv file from the path.
         Please specify the headers to ensure the desired order of the data.
-
         :param results_path: path to the results, if None, the results_path is used
-        :param data_path: path to the source data (is required when loading results as parts)
-        :param headers: list of headers in the file, if None, the headers are read from the file
+        :param headers: list of headers in the file, if None, the headers are read
         :param list_output: if the output should be a list of dictionaries instead of a dictionary of lists
         :param as_parts: if the output should be a list of SamplePart objects
         :param split: split of the data (to find the file)
-        :param tasks: list of task ids to load
         :param sep: separator for the csv file
-        :return: result data and whether the data loaded is multi-system (if applicable)
+        :return: result data
         """
-        if list_output and as_parts:
-            raise ValueError(
-                "The 'list_output' and 'as_parts' parameters cannot be used together."
-            )
         path = Path(results_path)
         if not path.is_file():
             for p in path.iterdir():
@@ -326,6 +317,59 @@ class DataLoader:
                             print(f"Header '{header}' not found in row.")
                             printed.append(header)
 
+        return data
+
+    def load_results(
+        self,
+        results_paths: list[str | Path],
+        data_path: str | Path = None,
+        headers: list[str] = None,
+        list_output: bool = False,
+        as_parts: bool = False,
+        split: str = None,
+        tasks: list[int] | None = None,
+        sep: str = "\t",
+    ) -> tuple[dict | list, bool | None]:
+        """
+        Load the results or any csv file from the path.
+        Please specify the headers to ensure the desired order of the data.
+
+        :param results_path: path to the results, if None, the results_path is used
+        :param data_path: path to the source data (is required when loading results as parts)
+        :param headers: list of headers in the file, if None, the headers are read from the file
+        :param list_output: if the output should be a list of dictionaries instead of a dictionary of lists
+        :param as_parts: if the output should be a list of SamplePart objects
+        :param split: split of the data (to find the file)
+        :param tasks: list of task ids to load
+        :param sep: separator for the csv file
+        :return: result data and whether the data loaded is multi-system (if applicable)
+        """
+        if list_output and as_parts:
+            raise ValueError(
+                "The 'list_output' and 'as_parts' parameters cannot be used together."
+            )
+
+        if not results_paths:
+            raise ValueError("No results paths provided to load results from.")
+
+        data_from_paths = [
+            self.load_data_from_path(
+                path,
+                headers=headers,
+                list_output=list_output,
+                as_parts=as_parts,
+                split=split,
+                sep=sep,
+            )
+            for path in results_paths
+        ]
+        nums_of_data = [len(data) for data in data_from_paths]
+        if min(nums_of_data) != max(nums_of_data):
+            warnings.warn(
+                "The number of loaded data from different paths do not match: %s"
+                % nums_of_data
+            )
+
         if tasks is None:
             tasks = list(range(1, 21))
 
@@ -340,11 +384,11 @@ class DataLoader:
         #     if row["task_id"] not in tasks:
         #         data.pop(i)
 
-        self.number_of_parts = len(data)
+        self.number_of_parts = len(data_from_paths[0])
         self.number_of_tasks = len(tasks)
 
         if not as_parts:
-            return data, None
+            return data_from_paths, None
 
         parts = []
         raw_parts = self.load_task_data(
@@ -355,59 +399,62 @@ class DataLoader:
             lookup=True,
         )
         multi_system = False
-        for row in data:
-            if row["sample_id"] > self.samples_per_task:
+        for i, rows in enumerate(zip(*data_from_paths)):
+            if rows[0]["sample_id"] > self.samples_per_task:
                 continue
 
-            identifier = (row["task_id"], row["sample_id"], row["part_id"])
-
+            identifier = (rows[0]["task_id"], rows[0]["sample_id"], rows[0]["part_id"])
             if identifier not in raw_parts.keys():
                 continue
 
             raw_part = raw_parts[identifier]
-            for version in ["before", "after"]:
-                if not row.get(f"model_output_{version}", None):
-                    multi_system = False
-                    continue
+            for j, row in enumerate(rows):
+                for version in ["before", "after"]:
+                    if not row.get(f"model_output_{version}", None):
+                        multi_system = False
+                        continue
 
-                if not row[f"model_output_{version}"]:
-                    raise ValueError(
-                        f"Model output {version} is not found in row {row['id_']}: {row[f'model_output_{version}']}"
+                    if not row[f"model_output_{version}"]:
+                        raise ValueError(
+                            f"Model output {version} is not found in row {row['id_']}: {row[f'model_output_{version}']}"
+                        )
+
+                    multi_system = True
+                    # TODO: remove "attn_scores" subfolder for newer results
+                    attn_path = (
+                        Path(results_paths[j]).parent
+                        / version
+                        / "interpretability"
+                        / "attn_scores"
                     )
-
-                multi_system = True
-                # TODO: remove "attn_scores" subfolder for newer results
-                attn_path = (
-                    Path(results_path).parent
-                    / version
-                    / "interpretability"
-                    / "attn_scores"
-                )
-                interpretability = self.load_interpretability(
-                    task_id=row["task_id"],
-                    sample_id=row["sample_id"],
-                    part_id=row["part_id"],
-                    attn_scores_path=str(attn_path),
-                )
-                interpretability.max_supp_attn = row[f"max_supp_attn_{version}"]
-                interpretability.attn_on_target = row[f"attn_on_target_{version}"]
-                raw_part.set_output(
-                    model_output=str(row[f"model_output_{version}"]),
-                    model_answer=str(row[f"model_answer_{version}"]),
-                    model_reasoning=str(row[f"model_reasoning_{version}"]),
-                    interpretability=interpretability,
-                    wrapped_task=row["task"],
-                    iterations=row.get("iterations", 0),
-                    version=version,
-                )
-                ids, tokens = self.load_ids_and_tokens(
-                    run_directory=Path(results_path).parent,
-                    task_id=row["task_id"],
-                    sample_id=row["sample_id"],
-                    part_id=row["part_id"],
-                    version=version,
-                )
-                raw_part.results[-1].ids, raw_part.results[-1].tokens = ids, tokens
+                    interpretability = self.load_interpretability(
+                        task_id=row["task_id"],
+                        sample_id=row["sample_id"],
+                        part_id=row["part_id"],
+                        attn_scores_path=str(attn_path),
+                    )
+                    interpretability.max_supp_attn = row[f"max_supp_attn_{version}"]
+                    interpretability.attn_on_target = row[f"attn_on_target_{version}"]
+                    raw_part.set_output(
+                        model_output=str(row[f"model_output_{version}"]),
+                        model_answer=str(row[f"model_answer_{version}"]),
+                        model_reasoning=str(row[f"model_reasoning_{version}"]),
+                        interpretability=interpretability,
+                        wrapped_task=row["task"],
+                        iterations=row.get("iterations", 0),
+                        version=version,
+                    )
+                    ids, tokens = self.load_ids_and_tokens(
+                        run_directory=Path(results_paths[j]).parent,
+                        task_id=row["task_id"],
+                        sample_id=row["sample_id"],
+                        part_id=row["part_id"],
+                        version=version,
+                    )
+                    raw_part.results[j][-1].ids, raw_part.results[j][-1].tokens = (
+                        ids,
+                        tokens,
+                    )
             parts.append(raw_part)
 
         if len(parts) != self.number_of_parts:
@@ -479,9 +526,9 @@ class DataLoader:
         silver_reasoning_data = []
         for path in self.silver_reasoning_path.iterdir():
             if f"{split}_{task_id}." in path.name:
-                silver_reasoning_data, _ = self.load_results(
-                    Path.cwd() / path, list_output=True, sep=",", as_parts=False
-                )
+                silver_reasoning_data = self.load_results(
+                    [Path.cwd() / path], list_output=True, sep=",", as_parts=False
+                )[0][0]
                 break
 
         if not silver_reasoning_data:
@@ -489,10 +536,9 @@ class DataLoader:
                 f"Silver reasoning data for task {task_id} and split {split} is "
                 f"not found in the path: {self.silver_reasoning_path}"
             )
-
         silver_reasoning_data = {
-            (int(row["task_id"]), int(row["sample_id"]), int(row["part_id"])): row
-            for row in silver_reasoning_data
+            (r["task_id"], r["sample_id"], r["part_id"]): r
+            for r in silver_reasoning_data
         }
         return silver_reasoning_data
 
