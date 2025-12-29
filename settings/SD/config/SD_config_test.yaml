@@ -23,7 +23,7 @@ setting:
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/07-05-2025/tasks_1_5/init_prompt_reasoning/test_init_prompt_reasoning_results.csv"
+  baseline_results: "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv"
   # Order: train, valid, test
   splits:
     train: False
@@ -33,7 +33,8 @@ data:
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
   task_ids: ~
-  samples_per_task: 100
+  samples_per_task: 59
+  start_from_sample: 59
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
@@ -133,4 +134,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD_debug/test/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: /pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_8/task_8_s_59
