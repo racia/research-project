@@ -18,31 +18,6 @@
 #SBATCH --mail-user=""              # TODO: Add your email address
 #SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
 
-### TASKS STILL NEEDED ###
-
-# V1 #
-# task 8 - samples 77-100
-# task 9, 10 - all samples
-#
-
-# V2 #
-# tasks 6 - samples 49-100
-# 7 - all samples
-#
-
-# V3 #
-# tasks 3-7 - all samples
-#
-
-# V4 #
-# tasks 3-15 - all samples
-#
-
-# V5 #
-# tasks 3-15 - all samples
-# task 20 - 69-100
-#
-
 ### JOB STEPS START HERE ###
 # fix working directory
 cd ~/research-project || exit 1

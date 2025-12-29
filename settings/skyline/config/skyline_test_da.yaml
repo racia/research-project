@@ -10,6 +10,7 @@ data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
   task_ids: [ 6, 7, 8, 9, 10 ]
   samples_per_task: 100
+  start_from_sample: 0
   for_all_tasks: false # whether to start from a specific sample for all tasks (will start from 0 otherwise)
   splits:
     train: False
