@@ -32,7 +32,7 @@ data:
   # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  task_ids: ~
+  task_ids: [ 8 ]
   samples_per_task: 59
   start_from_sample: 59
   # if to add line numbers to the sentences in the prompt
