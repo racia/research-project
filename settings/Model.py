@@ -167,7 +167,7 @@ class Model:
                     temperature=self.temperature,
                     pad_token_id=self.tokenizer.eos_token_id,
                     do_sample=True if self.temperature > 0 else False,
-                    use_cache=True,
+                    use_cache=False,
                     num_beams=1,  # no beam search, reduce GPU memory usage
                 )
                 encoded_output = outputs[0][inputs["input_ids"].size(1) :]

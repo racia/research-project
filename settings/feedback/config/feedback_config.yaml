@@ -126,8 +126,8 @@ results:
     - iterations
     - context_sents_hall_before
 
-  hydra:
-    run:
-      # the run directory with logs, plots, and csv results will be created here
-      # use more folders if needed for distinguishing between different experiments
-      dir: "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+hydra:
+  run:
+    # the run directory with logs, plots, and csv results will be created here
+    # use more folders if needed for distinguishing between different experiments
+    dir: "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/${now:%d-%m-%Y}/${now:%H-%M-%S}"

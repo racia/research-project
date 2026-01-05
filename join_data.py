@@ -734,6 +734,56 @@ if __name__ == "__main__":
         "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/task_18",
         "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v1/task_20",
     ]
+    feedback_reasoning_v2_t_2 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_2__s_100_unfinished",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_2_s_99_100",
+    ]
+    feedback_reasoning_v2_t_3 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_3_s_1_89",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_3_s_89_100",
+    ]
+    feedback_reasoning_v2_t_5 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_5_s_1_60",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_5_s_60_100",
+    ]
+    feedback_reasoning_v2_t_7 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_7_s_1_37",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_7_s_37_100",
+    ]
+    feedback_reasoning_v2_t_8 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_8_s_1_53",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_8_s_53_98",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_8_s_98_100",
+    ]
+    feedback_reasoning_v2_t_9 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_9_s_1_38",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_9_s_38_100",
+    ]
+    feedback_reasoning_v2_t_10 = []
+    feedback_reasoning_v2_t_11 = []
+    feedback_reasoning_v2_t_12 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_12_s_1_52",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_12_s_51_100",
+    ]
+    feedback_reasoning_v2_t_13 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_13_s_1_59",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_13_s_59_100",
+    ]
+    feedback_reasoning_v2_t_14 = []
+    feedback_reasoning_v2_t_15 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_15_s_1_99",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_15_s_98_100",
+    ]
+    feedback_reasoning_v2_t_17 = []
+    feedback_reasoning_v2_t_18 = []
+    feedback_reasoning_v2_t_19 = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_19_s_1_40",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_19_s_40_91",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_19_s_91_100",
+    ]
+    feedback_reasoning_v2_t_20 = []
+
+    feedback_reasoning_v2 = []
     # TODO: NB! The difference in paths the script should detect must be on the same level in the file tree!
     paths = []
     result = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_9"
