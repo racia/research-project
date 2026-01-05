@@ -264,6 +264,13 @@ class Setting(ABC):
             print_metrics(sample)
             task.add_sample(sample)
 
+            # save the sample result
+            # if self.saver:
+            #     sample.set_results()
+            #     self.saver.save_sample_result(
+            #         sample_data=sample,
+            #     )
+
         task.set_results()
         task.calculate_metrics()
         print("\n- TASK RESULTS -", end="\n\n")

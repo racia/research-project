@@ -122,8 +122,8 @@ def determine_colour_scheme(case: str) -> str:
 
     :return: colour scheme
     """
-    correct = re.search(r"\bcorr", case.lower())
-    incorrect = re.search(r"\bincorr", case.lower())
+    correct = re.search(r"_corr", case.lower())
+    incorrect = re.search(r"_incorr", case.lower())
     if correct and incorrect:
         return "YlOrBr"
     elif correct:
@@ -204,12 +204,21 @@ def plot_task_map_grid(
     # Gray overlay for missing indices
     ax.imshow(mask, cmap="binary", alpha=0.3, aspect="auto")
     ax.set_title(f"Task {task}")
-    ax.set_xticks(np.arange(-0.5, len(parts) - 1, 1))
-    ax.set_yticks(np.arange(-0.5, len(samples) - 1, 1))
-    ax.grid(color="black", linewidth=0.4)
+
+    # Center the ticks to point to the middle of each cell
+    ax.set_xticks(np.arange(len(parts)))
+    ax.set_yticks(np.arange(len(samples)))
+
     ax.set_xticklabels([f"P{p}" for p in parts], fontsize=8)
     ax.set_yticklabels([f"S{s}" for s in samples], fontsize=8)
     plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
-    # Set axis limits to crop unused space
+
+    # Draw grid *between* cells
+    ax.set_xticks(np.arange(-0.5, len(parts), 1), minor=True)
+    ax.set_yticks(np.arange(-0.5, len(samples), 1), minor=True)
+    ax.grid(which="minor", color="black", linewidth=0.4)
+    ax.tick_params(which="minor", bottom=False, left=False)
+
+    # Adjust limits to crop unused space
     ax.set_xlim(-0.5, len(parts) - 0.5)
     ax.set_ylim(-0.5, len(samples) - 0.5)

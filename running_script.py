@@ -13,9 +13,8 @@ from omegaconf import DictConfig, OmegaConf
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from evaluation.Evaluator import MetricEvaluator
-from inference.DataLevels import Split, print_metrics
+from inference.DataLevels import Split
 from inference.Prompt import Prompt
-from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
 from settings.Model import Model
 from settings.SD.SpeculativeDecoding import SpeculativeDecoding
@@ -368,7 +367,6 @@ def run_setting(cfg: DictConfig) -> None:
 
         print("\n- RUN RESULTS -", end="\n\n")
 
-        [prompt_eval.calculate_std() for prompt_eval in prompt_evaluators]
         print_metrics_table(evaluators=prompt_evaluators, id_=init_prompt.name)
 
         print(
