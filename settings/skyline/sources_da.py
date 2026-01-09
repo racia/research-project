@@ -47,29 +47,21 @@ skyline_da_v4 = [
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v4/tasks_16_20",
 ]
 skyline_da_v5_t_3 = [
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_3_s_1_28",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_3_s_23_99",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_3_s_99_100",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_3/task_3_s_1_28",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_3/task_3_s_23_99",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_3/task_3_s_99_100",
 ]
 skyline_da_v5_t_14 = [
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/tasks_4_13_full_task_14_s_1_49",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_14_s_49_100_task_15_full",
 ]
 skyline_da_v5_t_20 = [
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_20_s_1_15",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_20_s_15_69",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_20_s_69_89",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_20_s_89_93",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_20/task_20_s_1_15",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_20/task_20_s_15_69",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_20/task_20_s_69_89",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/unjoined/task_20/task_20_s_89_93",
 ]
 skyline_da_v5 = [
-    # Found the following differences in the paths:
-    # - tasks_4_13_full_task_14_s_1_49
-    # - task_2
-    # - task_20
-    # - tasks_16_19
-    # - task_14_s_49_100_task_15_full
-    # - task_14
-    # - task_3
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_1",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_2",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v5/task_3",

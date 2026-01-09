@@ -424,8 +424,6 @@ if __name__ == "__main__":
 
     # from settings.SD.sources_reasoning import *
 
-    # feedback v2 unjoined paths
-    # skyline da v5 unjoined paths
     # SD v1 missing task 20
 
     # TODO: NB! The difference in paths the script should detect must be on the same level in the file tree!

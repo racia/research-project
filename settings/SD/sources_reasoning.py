@@ -70,27 +70,10 @@ sd_reasoning_v1_t_20 = [
     # samples 1-27 unfinished
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_27_62",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_62_91",
-    # samples 92-93 unfinished
+    # sample 91 unfinished
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_92_93",
 ]
 sd_reasoning_v1 = [
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_1",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_2",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_3",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_4",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_5",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_6",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_7",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_8",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_9",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_10",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_11",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_12",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_13",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_14",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_15",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_16",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_17",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_18",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_19",
-    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_20",
+    f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_{i}"
+    for i in range(1, 21)
 ]

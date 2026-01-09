@@ -1,4 +1,4 @@
-skyline_reasoning = [
+skyline_reasoning_v1 = [
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/reasoning/v1/tasks_1_2",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/reasoning/v1/tasks_3_5",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/reasoning/v1/tasks_6_9",

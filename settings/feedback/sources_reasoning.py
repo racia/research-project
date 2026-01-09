@@ -87,7 +87,14 @@ feedback_reasoning_v2_t_15 = [
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_15/task_15_s_1_99",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_15/task_15_s_98_100",
 ]
-feedback_reasoning_v2_t_17 = []
+feedback_reasoning_v2_t_17 = [
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_17/task_17_s_1_20",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_17/task_17_s_20_43",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_17/task_17_s_43_66",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_17/task_17_s_66_71",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_17/task_17_s_71_87",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_17/task_17_s_87_100",
+]
 feedback_reasoning_v2_t_18 = [
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_18/task_18_s_1_36",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/task_18/task_18_s_36_86",
