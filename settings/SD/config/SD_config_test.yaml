@@ -34,7 +34,7 @@ data:
   # task_ids: [1, 2, ...]
   task_ids: [ 20 ]
   samples_per_task: 27
-  start_from_sample: 1
+  start_from_sample: 10
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
