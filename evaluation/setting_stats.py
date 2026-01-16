@@ -713,11 +713,11 @@ def analyse_effects(df: pd.DataFrame, res_path: str):
 
     df = df.copy()
 
-    df["intervention_present"] = df["iterations"] > 0
+    df["intervention_present"] = df["iterations_result"] > 0
 
     grouped = (
-        df.groupby(["answer_before_correct", "intervention_present"])[
-            "answer_correct_after"
+        df.groupby(["answer_before_correct_result", "intervention_present"])[
+            "answer_correct_after_result"
         ]
         .agg(["count", "mean"])
         .reset_index()
@@ -733,11 +733,11 @@ def analyse_effects(df: pd.DataFrame, res_path: str):
 
     for prev_corr in [0, 1]:
         no_int_row = grouped[
-            (grouped["answer_before_correct"] == prev_corr)
+            (grouped["answer_before_correct_result"] == prev_corr)
             & (grouped["intervention_present"] == False)
         ]
         int_row = grouped[
-            (grouped["answer_before_correct"] == prev_corr)
+            (grouped["answer_before_correct_result"] == prev_corr)
             & (grouped["intervention_present"] == True)
         ]
 
@@ -813,7 +813,7 @@ def analyse_iterations_vs_correctness(
     df = df.copy()
 
     stats = (
-        df.groupby("iterations")["answer_correct_after"]
+        df.groupby("iterations_result")["answer_correct_after_result"]
         .agg(["count", "mean"])
         .rename(columns={"mean": "mean_correctness"})
     )
