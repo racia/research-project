@@ -780,8 +780,12 @@ def analyse_effects(df: pd.DataFrame, res_path: str) -> None:
             ax.set_xticks(x)
             ax.set_xticklabels(labels)
             ax.set_xlabel(f"Previous {ans_res}")
-            ax.set_ylabel(f"Count {ans_res} after {'correct' if b else 'incorrect'}")
-            ax.set_title(f"{ans_res} after = {'correct' if b else 'incorrect'}")
+            ax.set_ylabel(
+                f"Count {ans_res}.capitalize() after {'correct' if b else 'incorrect'}"
+            )
+            ax.set_title(
+                f"{ans_res}.capitalize() after == {'correct' if b else 'incorrect'}"
+            )
             ax.legend()
             ax.grid(axis="y", linestyle="--", alpha=0.6)
 
@@ -798,72 +802,123 @@ def analyse_iterations_vs_correctness_answer(df: pd.DataFrame, result_path: str)
     """
     Analyse the relationship between the number of iterations and correctness of the answer after intervention.
 
-    :param df: pd.DataFrame, the evaluation dataframe containing 'iterations' and 'answer_correct_after'
-    :param result_path: str, path to save the results
-    :return: pd.DataFrame with iteration counts as index and columns ['count', 'mean_correctness']
+    Saves plots and stats of both raw counts and accuracy per iteration count.
+
+    :param df: pd.DataFrame, containing 'iterations_eval' and 'answer_correct_after'
+    :param result_path: str, folder to save plots and stats
     """
     df = df.copy()
 
-    correct_df = df[df["answer_correct_after"] == True]
+    # Group by iterations_eval
+    group = df.groupby("iterations_eval")
 
-    counts = correct_df["iterations_eval"].value_counts().sort_index()
+    total_counts = group.size()  # total cases per iteration count
+    correct_counts = group[
+        "answer_correct_after"
+    ].sum()  # number correct per iteration count
 
-    x = counts.index.tolist()
-    y = counts.values.tolist()
+    accuracy = correct_counts / total_counts
 
+    if not os.path.exists(result_path):
+        os.makedirs(result_path)
+
+    # Plot raw counts of correct answers
     fig, ax = plt.subplots(figsize=(8, 5))
-    ax.bar(x, y, color="mediumseagreen", alpha=0.8)
+    ax.bar(
+        correct_counts.index, correct_counts.values, color="mediumseagreen", alpha=0.8
+    )
     ax.set_xlabel("Number of iterations")
     ax.set_ylabel("Count of correct answers")
     ax.set_title("Count of Correct Answers vs Iterations")
     ax.grid(axis="y", linestyle="--", alpha=0.6)
     plt.tight_layout()
-
-    plt.savefig(os.path.join(result_path, "correct_answers_vs_iterations.png"))
+    plt.savefig(os.path.join(result_path, "correct_answers_vs_iterations_counts.png"))
     plt.close()
 
+    # Plot accuracy (proportion correct) vs iterations
+    fig, ax = plt.subplots(figsize=(8, 5))
+    ax.plot(
+        accuracy.index, accuracy.values, marker="o", linestyle="-", color="royalblue"
+    )
+    ax.set_xlabel("Number of iterations")
+    ax.set_ylabel("Accuracy (Proportion Correct)")
+    ax.set_title("Answer Accuracy vs Iterations")
+    ax.set_ylim(0, 1)
+    ax.grid(True, linestyle="--", alpha=0.6)
+    plt.tight_layout()
+    plt.savefig(os.path.join(result_path, "correct_answers_vs_iterations_accuracy.png"))
+    plt.close()
+
+    # Save counts and accuracy to text file
     with open(
         os.path.join(result_path, "correct_answers_vs_iterations_stats.txt"), "w"
     ) as f:
-        f.write("Iterations -> Count of correct answers\n")
-        for iteration, count in counts.items():
-            f.write(f"{iteration} -> {count}\n")
+        f.write("Iterations\tTotal Cases\tCorrect Cases\tAccuracy\n")
+        for iteration in total_counts.index:
+            f.write(
+                f"{iteration}\t{total_counts[iteration]}\t{correct_counts.get(iteration,0)}\t{accuracy[iteration]:.4f}\n"
+            )
 
 
 def analyse_iterations_vs_correctness_reasoning(df: pd.DataFrame, result_path: str):
     """
     Analyse the relationship between the number of iterations and correctness of the reasoning after intervention.
 
-    :param df: pd.DataFrame, the evaluation dataframe containing 'iterations' and 'reasoning_correct_after'
-    :param result_path: str, path to save the results
-    :return: pd.DataFrame with iteration counts as index and columns ['count', 'mean_correctness']
+    Saves plots and stats of both raw counts and accuracy per iteration count.
+
+    :param df: pd.DataFrame, containing 'iterations_eval' and 'reasoning_correct_after'
+    :param result_path: str, folder to save plots and stats
     """
     df = df.copy()
 
-    correct_df = df[df["reasoning_correct_after"] == True]
+    group = df.groupby("iterations_eval")
 
-    counts = correct_df["iterations_eval"].value_counts().sort_index()
+    total_counts = group.size()
+    correct_counts = group["reasoning_correct_after"].sum()
 
-    x = counts.index.tolist()
-    y = counts.values.tolist()
+    accuracy = correct_counts / total_counts
 
+    if not os.path.exists(result_path):
+        os.makedirs(result_path)
+
+    # Plot raw counts of correct reasoning
     fig, ax = plt.subplots(figsize=(8, 5))
-    ax.bar(x, y, color="mediumseagreen", alpha=0.8)
+    ax.bar(
+        correct_counts.index, correct_counts.values, color="mediumseagreen", alpha=0.8
+    )
     ax.set_xlabel("Number of iterations")
     ax.set_ylabel("Count of correct reasoning")
     ax.set_title("Count of Correct Reasoning vs Iterations")
     ax.grid(axis="y", linestyle="--", alpha=0.6)
     plt.tight_layout()
-
-    plt.savefig(os.path.join(result_path, "correct_reasoning_vs_iterations.png"))
+    plt.savefig(os.path.join(result_path, "correct_reasoning_vs_iterations_counts.png"))
     plt.close()
 
+    # Plot accuracy (proportion correct) vs iterations
+    fig, ax = plt.subplots(figsize=(8, 5))
+    ax.plot(
+        accuracy.index, accuracy.values, marker="o", linestyle="-", color="royalblue"
+    )
+    ax.set_xlabel("Number of iterations")
+    ax.set_ylabel("Accuracy (Proportion Correct)")
+    ax.set_title("Reasoning Accuracy vs Iterations")
+    ax.set_ylim(0, 1)
+    ax.grid(True, linestyle="--", alpha=0.6)
+    plt.tight_layout()
+    plt.savefig(
+        os.path.join(result_path, "correct_reasoning_vs_iterations_accuracy.png")
+    )
+    plt.close()
+
+    # Save counts and accuracy to text file
     with open(
         os.path.join(result_path, "correct_reasoning_vs_iterations_stats.txt"), "w"
     ) as f:
-        f.write("Iterations -> Count of correct Reasoning\n")
-        for iteration, count in counts.items():
-            f.write(f"{iteration} -> {count}\n")
+        f.write("Iterations\tTotal Cases\tCorrect Cases\tAccuracy\n")
+        for iteration in total_counts.index:
+            f.write(
+                f"{iteration}\t{total_counts[iteration]}\t{correct_counts.get(iteration,0)}\t{accuracy[iteration]:.4f}\n"
+            )
 
 
 def main():
