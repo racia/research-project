@@ -851,8 +851,8 @@ def main():
     res_df = pd.read_csv(
         os.path.join(data_path, "joined__results_task_results.csv"), sep="\t"
     )
-    run_stats(df=df, result_path=result_path, setting=setting)
     merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=result_path)
+    run_stats(df=merged_df, result_path=result_path, setting=setting)
     analyse_effects(merged_df, res_path=result_path)
     analyse_iterations_vs_correctness(merged_df, result_path=result_path)
 
@@ -863,8 +863,8 @@ def main():
     res_df = pd.read_csv(
         os.path.join(data_path, "joined_reasoning_results.csv"), sep="\t"
     )
-    run_stats(df=df, result_path=result_path, setting=setting)
     merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=result_path)
+    run_stats(df=merged_df, result_path=result_path, setting=setting)
     analyse_effects(merged_df, res_path=result_path)
     analyse_iterations_vs_correctness(merged_df, result_path=result_path)
 
