@@ -701,6 +701,148 @@ def combine_eval_dfs(eval_df: pd.DataFrame, result_df: pd.DataFrame, result_path
     return merged_df
 
 
+def analyse_effects(df: pd.DataFrame, res_path: str):
+    """
+    Analyse the effects of interventions on the results.
+
+    :param df: pd.DataFrame, the complete evaluation dataframe
+    :param res_path: str, path to save the effects analysis
+    """
+    if not os.path.exists(res_path):
+        os.makedirs(res_path)
+
+    df = df.copy()
+
+    df["intervention_present"] = df["iterations"] > 0
+
+    grouped = (
+        df.groupby(["answer_before_correct", "intervention_present"])[
+            "answer_correct_after"
+        ]
+        .agg(["count", "mean"])
+        .reset_index()
+    )
+
+    labels = ["Incorrect", "Correct"]
+    x = [0, 1]
+
+    means_no_int = []
+    counts_no_int = []
+    means_int = []
+    counts_int = []
+
+    for prev_corr in [0, 1]:
+        no_int_row = grouped[
+            (grouped["answer_before_correct"] == prev_corr)
+            & (grouped["intervention_present"] == False)
+        ]
+        int_row = grouped[
+            (grouped["answer_before_correct"] == prev_corr)
+            & (grouped["intervention_present"] == True)
+        ]
+
+        means_no_int.append(no_int_row["mean"].values[0] if not no_int_row.empty else 0)
+        counts_no_int.append(
+            no_int_row["count"].values[0] if not no_int_row.empty else 0
+        )
+
+        means_int.append(int_row["mean"].values[0] if not int_row.empty else 0)
+        counts_int.append(int_row["count"].values[0] if not int_row.empty else 0)
+
+    width = 0.35
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    ax.bar(
+        [p - width / 2 for p in x],
+        means_no_int,
+        width,
+        label="No Intervention",
+        color="skyblue",
+    )
+    ax.bar(
+        [p + width / 2 for p in x],
+        means_int,
+        width,
+        label="Intervention",
+        color="salmon",
+    )
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.set_ylim(0, 1)
+    ax.set_ylabel("Proportion Correct After Intervention")
+    ax.set_xlabel("Previous Answer Correct")
+    ax.set_title(
+        "Correctness After Intervention\nGrouped by Previous Correctness & Intervention Presence"
+    )
+    ax.legend()
+    ax.grid(axis="y", linestyle="--", alpha=0.7)
+
+    plt.tight_layout()
+    plt.savefig(
+        os.path.join(res_path, "correctness_by_intervention_and_prev_correct.png")
+    )
+    plt.close()
+
+    with open(os.path.join(res_path, "intervention_effects_raw_numbers.txt"), "w") as f:
+        f.write("Intervention Effects (Raw Numbers)\n")
+        f.write(
+            f"{'Prev Correct':<15}{'Intervention':<15}{'Count':<10}{'Mean Correctness':<20}\n"
+        )
+        for idx in range(2):
+            for intervention_state in [False, True]:
+                count = counts_int[idx] if intervention_state else counts_no_int[idx]
+                mean_corr = means_int[idx] if intervention_state else means_no_int[idx]
+                f.write(
+                    f"{labels[idx]:<15}{str(intervention_state):<15}{count:<10}{mean_corr:<20.3f}\n"
+                )
+
+
+def analyse_iterations_vs_correctness(
+    df: pd.DataFrame, result_path: str
+) -> pd.DataFrame:
+    """
+    Analyse the relationship between the number of iterations and correctness after intervention.
+
+    :param df: pd.DataFrame, the evaluation dataframe containing 'iterations' and 'answer_correct_after'
+    :param result_path: str, path to save the results
+    :return: pd.DataFrame with iteration counts as index and columns ['count', 'mean_correctness']
+    """
+    if not os.path.exists(result_path):
+        os.makedirs(result_path)
+
+    df = df.copy()
+
+    stats = (
+        df.groupby("iterations")["answer_correct_after"]
+        .agg(["count", "mean"])
+        .rename(columns={"mean": "mean_correctness"})
+    )
+
+    fig, ax = plt.subplots(figsize=(8, 5))
+    ax.plot(stats.index, stats["mean_correctness"], marker="o", linestyle="-")
+    ax.set_title(f"Correctness After Intervention vs Number of Iterations")
+    ax.set_xlabel("Number of Iterations")
+    ax.set_ylabel("Mean Correctness After Intervention")
+    ax.set_xticks(stats.index)
+    ax.set_ylim(0, 1)
+    ax.grid(True, linestyle="--", alpha=0.7)
+    plt.tight_layout()
+    plt.savefig(os.path.join(result_path, "iterations_vs_correctness.png"))
+    plt.close()
+
+    with open(
+        os.path.join(result_path, "iterations_vs_correctness_stats.txt"), "w"
+    ) as f:
+        f.write(f"Correctness After Intervention vs Number of Iterations\n")
+        f.write(f"{'Iterations':<12}{'Count':<10}{'Mean Correctness':<20}\n")
+        for iterations, row in stats.iterrows():
+            f.write(
+                f"{iterations:<12}{row['count']:<10}{row['mean_correctness']:<20.3f}\n"
+            )
+
+    return stats
+
+
 def main():
     setting = "SD"
     data_path = "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined_old"
@@ -709,8 +851,10 @@ def main():
     res_df = pd.read_csv(
         os.path.join(data_path, "joined__results_task_results.csv"), sep="\t"
     )
+    run_stats(df=df, result_path=result_path, setting=setting)
     merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=result_path)
-    run_stats(df=merged_df, result_path=result_path, setting=setting)
+    analyse_effects(merged_df, res_path=result_path)
+    analyse_iterations_vs_correctness(merged_df, result_path=result_path)
 
     setting = "Feedback"
     data_path = "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/all_tasks_joined"
@@ -719,8 +863,10 @@ def main():
     res_df = pd.read_csv(
         os.path.join(data_path, "joined_reasoning_results.csv"), sep="\t"
     )
+    run_stats(df=df, result_path=result_path, setting=setting)
     merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=result_path)
-    run_stats(df=merged_df, result_path=result_path, setting=setting)
+    analyse_effects(merged_df, res_path=result_path)
+    analyse_iterations_vs_correctness(merged_df, result_path=result_path)
 
 
 if __name__ == "__main__":
