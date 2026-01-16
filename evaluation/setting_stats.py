@@ -6,6 +6,19 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
+def adjust_for_iteration_counting(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Adjust the iteration counting in the df.
+    If no intervention took place, iterations should be 1 instead of 0.
+
+    :param df: pd.DataFrame, the evaluation dataframe
+    :return: df with adjusted iteration counting
+    """
+    df = df.copy()
+    df.loc[df["iterations"] == 0, "iterations"] = 1
+    return df
+
+
 def normalize_intervention_ix(x):
     """
     Normalise an entry in the dataframe to be an integer or a list of integers.
@@ -107,14 +120,15 @@ def process_eval_dicts(path: str, res_path: str) -> pd.DataFrame:
     paths = get_eval_dicts(path)
     eval_df = read_eval_dicts(paths)
     clean_df = clean_eval_dfs(eval_df)
+    adjusted_df = adjust_for_iteration_counting(clean_df)
 
-    clean_df.to_csv(
+    adjusted_df.to_csv(
         os.path.join(res_path, "evaluation_df.csv"),
         index=False,
         sep=",",
     )
 
-    return clean_df
+    return adjusted_df
 
 
 def analyse_iterations(
@@ -710,7 +724,7 @@ def analyse_effects(df: pd.DataFrame, res_path: str) -> None:
     :param res_path: str, path to save the results
     """
     df = df.copy()
-    df["intervention"] = df["iterations_result"] > 0
+    df["intervention"] = df["iterations_eval"] > 1
     for b in [True, False]:
         counts = {
             "correct": {"intervention": 0, "no_intervention": 0},
@@ -754,7 +768,7 @@ def analyse_effects(df: pd.DataFrame, res_path: str) -> None:
         ax.set_xticks(x)
         ax.set_xticklabels(labels)
         ax.set_xlabel("Previous answer")
-        ax.set_ylabel("Count answer after correct")
+        ax.set_ylabel(f"Count answer after {'correct' if b else 'incorrect'}")
         ax.set_title(f"Answer after = {'correct' if b else 'incorrect'}")
         ax.legend()
         ax.grid(axis="y", linestyle="--", alpha=0.6)
@@ -784,7 +798,7 @@ def analyse_iterations_vs_correctness(
     df = df.copy()
 
     stats = (
-        df.groupby("iterations_result")["answer_correct_after"]
+        df.groupby("iterations_eval")["answer_correct_after"]
         .agg(["count", "mean"])
         .rename(columns={"mean": "mean_correctness"})
     )
