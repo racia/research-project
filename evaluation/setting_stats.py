@@ -720,112 +720,150 @@ def combine_eval_dfs(eval_df: pd.DataFrame, result_df: pd.DataFrame, result_path
 def analyse_effects(df: pd.DataFrame, res_path: str) -> None:
     """
     Analyse the effects of interventions on correctness before and after.
+
     :param df: pd.DataFrame, the evaluation dataframe
     :param res_path: str, path to save the results
     """
     df = df.copy()
     df["intervention"] = df["iterations_eval"] > 1
-    for b in [True, False]:
-        counts = {
-            "correct": {"intervention": 0, "no_intervention": 0},
-            "incorrect": {"intervention": 0, "no_intervention": 0},
-        }
+    for ans_res in ["answer", "reasoning"]:
+        for b in [True, False]:
+            counts = {
+                "correct": {"intervention": 0, "no_intervention": 0},
+                "incorrect": {"intervention": 0, "no_intervention": 0},
+            }
 
-        # Previous answer = correct
-        subset = df[df["answer_correct_before"] == True]
-        counts["correct"]["intervention"] = len(
-            subset[(subset["answer_correct_after"] == b) & (subset["intervention"])]
-        )
-        counts["correct"]["no_intervention"] = len(
-            subset[(subset["answer_correct_after"] == b) & (~subset["intervention"])]
-        )
+            # Previous answer = correct
+            subset = df[df[f"{ans_res}_correct_before"] == True]
+            counts["correct"]["intervention"] = len(
+                subset[
+                    (subset[f"{ans_res}_correct_after"] == b) & (subset["intervention"])
+                ]
+            )
+            counts["correct"]["no_intervention"] = len(
+                subset[
+                    (subset[f"{ans_res}_correct_after"] == b)
+                    & (~subset["intervention"])
+                ]
+            )
 
-        # Previous answer = incorrect
-        subset = df[df["answer_correct_before"] == False]
-        counts["incorrect"]["intervention"] = len(
-            subset[(subset["answer_correct_after"] == b) & (subset["intervention"])]
-        )
-        counts["incorrect"]["no_intervention"] = len(
-            subset[(subset["answer_correct_after"] == b) & (~subset["intervention"])]
-        )
+            # Previous answer = incorrect
+            subset = df[df[f"{ans_res}_correct_before"] == False]
+            counts["incorrect"]["intervention"] = len(
+                subset[
+                    (subset[f"{ans_res}_correct_after"] == b) & (subset["intervention"])
+                ]
+            )
+            counts["incorrect"]["no_intervention"] = len(
+                subset[
+                    (subset[f"{ans_res}_correct_after"] == b)
+                    & (~subset["intervention"])
+                ]
+            )
 
-        x = [0, 1]
-        labels = ["correct", "incorrect"]
+            x = [0, 1]
+            labels = ["correct", "incorrect"]
 
-        no_int = [
-            counts["correct"]["no_intervention"],
-            counts["incorrect"]["no_intervention"],
-        ]
-        intv = [
-            counts["correct"]["intervention"],
-            counts["incorrect"]["intervention"],
-        ]
+            no_int = [
+                counts["correct"]["no_intervention"],
+                counts["incorrect"]["no_intervention"],
+            ]
+            intv = [
+                counts["correct"]["intervention"],
+                counts["incorrect"]["intervention"],
+            ]
 
-        fig, ax = plt.subplots(figsize=(7, 5))
-        ax.bar(x, no_int, label="No intervention", color="skyblue")
-        ax.bar(x, intv, bottom=no_int, label="Intervention", color="salmon")
+            fig, ax = plt.subplots(figsize=(7, 5))
+            ax.bar(x, no_int, label="No intervention", color="skyblue")
+            ax.bar(x, intv, bottom=no_int, label="Intervention", color="salmon")
 
-        ax.set_xticks(x)
-        ax.set_xticklabels(labels)
-        ax.set_xlabel("Previous answer")
-        ax.set_ylabel(f"Count answer after {'correct' if b else 'incorrect'}")
-        ax.set_title(f"Answer after = {'correct' if b else 'incorrect'}")
-        ax.legend()
-        ax.grid(axis="y", linestyle="--", alpha=0.6)
+            ax.set_xticks(x)
+            ax.set_xticklabels(labels)
+            ax.set_xlabel(f"Previous {ans_res}")
+            ax.set_ylabel(f"Count {ans_res} after {'correct' if b else 'incorrect'}")
+            ax.set_title(f"{ans_res} after = {'correct' if b else 'incorrect'}")
+            ax.legend()
+            ax.grid(axis="y", linestyle="--", alpha=0.6)
 
-        plt.tight_layout()
-        plt.savefig(
-            os.path.join(res_path, f"effect_analysis_after_{str(b).lower()}.png")
-        )
-        plt.close()
-        # further analysis and plotting logic would go here
-    pass
+            plt.tight_layout()
+            plt.savefig(
+                os.path.join(
+                    res_path, f"effect_analysis_{ans_res}_after_{str(b).lower()}.png"
+                )
+            )
+            plt.close()
 
 
-def analyse_iterations_vs_correctness(
-    df: pd.DataFrame, result_path: str
-) -> pd.DataFrame:
+def analyse_iterations_vs_correctness_answer(df: pd.DataFrame, result_path: str):
     """
-    Analyse the relationship between the number of iterations and correctness after intervention.
+    Analyse the relationship between the number of iterations and correctness of the answer after intervention.
 
     :param df: pd.DataFrame, the evaluation dataframe containing 'iterations' and 'answer_correct_after'
     :param result_path: str, path to save the results
     :return: pd.DataFrame with iteration counts as index and columns ['count', 'mean_correctness']
     """
-    if not os.path.exists(result_path):
-        os.makedirs(result_path)
-
     df = df.copy()
 
-    stats = (
-        df.groupby("iterations_eval")["answer_correct_after"]
-        .agg(["count", "mean"])
-        .rename(columns={"mean": "mean_correctness"})
-    )
+    correct_df = df[df["answer_correct_after"] == True]
+
+    counts = correct_df["iterations_eval"].value_counts().sort_index()
+
+    x = counts.index.tolist()
+    y = counts.values.tolist()
 
     fig, ax = plt.subplots(figsize=(8, 5))
-    ax.plot(stats.index, stats["mean_correctness"], marker="o", linestyle="-")
-    ax.set_title(f"Correctness After Intervention vs Number of Iterations")
-    ax.set_xlabel("Number of Iterations")
-    ax.set_ylabel("Mean Correctness After Intervention")
-    ax.set_xticks(stats.index)
-    ax.set_ylim(0, 1)
-    ax.grid(True, linestyle="--", alpha=0.7)
+    ax.bar(x, y, color="mediumseagreen", alpha=0.8)
+    ax.set_xlabel("Number of iterations")
+    ax.set_ylabel("Count of correct answers")
+    ax.set_title("Count of Correct Answers vs Iterations")
+    ax.grid(axis="y", linestyle="--", alpha=0.6)
     plt.tight_layout()
-    plt.savefig(os.path.join(result_path, "iterations_vs_correctness.png"))
+
+    plt.savefig(os.path.join(result_path, "correct_answers_vs_iterations.png"))
     plt.close()
 
     with open(
-        os.path.join(result_path, "iterations_vs_correctness_stats.txt"), "w"
+        os.path.join(result_path, "correct_answers_vs_iterations_stats.txt"), "w"
     ) as f:
-        f.write(f"Correctness After Intervention vs Number of Iterations\n")
-        f.write(f"{'Iterations':<12}{'Count':<10}{'Mean Correctness':<20}\n")
-        for iterations, row in stats.iterrows():
-            f.write(
-                f"{iterations:<12}{row['count']:<10}{row['mean_correctness']:<20.3f}\n"
-            )
+        f.write("Iterations -> Count of correct answers\n")
+        for iteration, count in counts.items():
+            f.write(f"{iteration} -> {count}\n")
 
-    return stats
+
+def analyse_iterations_vs_correctness_reasoning(df: pd.DataFrame, result_path: str):
+    """
+    Analyse the relationship between the number of iterations and correctness of the reasoning after intervention.
+
+    :param df: pd.DataFrame, the evaluation dataframe containing 'iterations' and 'reasoning_correct_after'
+    :param result_path: str, path to save the results
+    :return: pd.DataFrame with iteration counts as index and columns ['count', 'mean_correctness']
+    """
+    df = df.copy()
+
+    correct_df = df[df["reasoning_correct_after"] == True]
+
+    counts = correct_df["iterations_eval"].value_counts().sort_index()
+
+    x = counts.index.tolist()
+    y = counts.values.tolist()
+
+    fig, ax = plt.subplots(figsize=(8, 5))
+    ax.bar(x, y, color="mediumseagreen", alpha=0.8)
+    ax.set_xlabel("Number of iterations")
+    ax.set_ylabel("Count of correct reasoning")
+    ax.set_title("Count of Correct Reasoning vs Iterations")
+    ax.grid(axis="y", linestyle="--", alpha=0.6)
+    plt.tight_layout()
+
+    plt.savefig(os.path.join(result_path, "correct_reasoning_vs_iterations.png"))
+    plt.close()
+
+    with open(
+        os.path.join(result_path, "correct_reasoning_vs_iterations_stats.txt"), "w"
+    ) as f:
+        f.write("Iterations -> Count of correct Reasoning\n")
+        for iteration, count in counts.items():
+            f.write(f"{iteration} -> {count}\n")
 
 
 def main():
@@ -839,7 +877,8 @@ def main():
     merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=result_path)
     run_stats(df=merged_df, result_path=result_path, setting=setting)
     analyse_effects(merged_df, res_path=result_path)
-    analyse_iterations_vs_correctness(merged_df, result_path=result_path)
+    analyse_iterations_vs_correctness_answer(merged_df, result_path=result_path)
+    analyse_iterations_vs_correctness_reasoning(merged_df, result_path=result_path)
 
     setting = "Feedback"
     data_path = "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/all_tasks_joined"
@@ -851,7 +890,8 @@ def main():
     merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=result_path)
     run_stats(df=merged_df, result_path=result_path, setting=setting)
     analyse_effects(merged_df, res_path=result_path)
-    analyse_iterations_vs_correctness(merged_df, result_path=result_path)
+    analyse_iterations_vs_correctness_answer(merged_df, result_path=result_path)
+    analyse_iterations_vs_correctness_reasoning(merged_df, result_path=result_path)
 
 
 if __name__ == "__main__":
