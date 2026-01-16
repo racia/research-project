@@ -851,6 +851,8 @@ def main():
     res_df = pd.read_csv(
         os.path.join(data_path, "joined__results_task_results.csv"), sep="\t"
     )
+    print(df.head())
+    print(res_df.head())
     merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=result_path)
     run_stats(df=merged_df, result_path=result_path, setting=setting)
     analyse_effects(merged_df, res_path=result_path)
