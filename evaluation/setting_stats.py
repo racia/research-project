@@ -682,6 +682,9 @@ def combine_eval_dfs(eval_df: pd.DataFrame, result_df: pd.DataFrame, result_path
     :param result_df: pd.DataFrame, the result dataframe
     :param result_path: str, path to save the complete evaluation dataframe
     """
+    if not os.path.exists(result_path):
+        os.makedirs(result_path)
+        ‚
     merged_df = pd.merge(
         eval_df,
         result_df,
