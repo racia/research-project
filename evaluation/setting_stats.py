@@ -698,6 +698,7 @@ def combine_eval_dfs(eval_df: pd.DataFrame, result_df: pd.DataFrame, result_path
         sep=",",
     )
 
+    print(f"Merged dataframe: {merged_df}")
     return merged_df
 
 
@@ -852,7 +853,6 @@ def main():
         os.path.join(data_path, "joined__results_task_results.csv"), sep="\t"
     )
     merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=result_path)
-    print(merged_df)
     run_stats(df=merged_df, result_path=result_path, setting=setting)
     analyse_effects(merged_df, res_path=result_path)
     analyse_iterations_vs_correctness(merged_df, result_path=result_path)
