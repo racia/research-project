@@ -684,7 +684,7 @@ def combine_eval_dfs(eval_df: pd.DataFrame, result_df: pd.DataFrame, result_path
     """
     if not os.path.exists(result_path):
         os.makedirs(result_path)
-        ‚
+
     merged_df = pd.merge(
         eval_df,
         result_df,
