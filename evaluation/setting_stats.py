@@ -714,7 +714,7 @@ def main():
     result_path = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/all_tasks_stats"
     df = process_eval_dicts(data_path)
     res_df = pd.read_csv(
-        os.path.join(data_path, "joined__results_task_results.csv"), sep="\t"
+        os.path.join(data_path, "joined_reasoning_results.csv"), sep="\t"
     )
     merged_df = combine_eval_dfs(eval_df=df, result_df=res_df, result_path=result_path)
     run_stats(df=merged_df, result_path=result_path, setting=setting)
