@@ -841,7 +841,7 @@ def analyse_iterations_vs_correctness_answer(df: pd.DataFrame, result_path: str)
         accuracy.index, accuracy.values, marker="o", linestyle="-", color="royalblue"
     )
     ax.set_xlabel("Number of iterations")
-    ax.set_ylabel("Accuracy (Proportion Correct)")
+    ax.set_ylabel("Accuracy")
     ax.set_title("Answer Accuracy vs Iterations")
     ax.set_ylim(0, 1)
     ax.grid(True, linestyle="--", alpha=0.6)
@@ -900,7 +900,7 @@ def analyse_iterations_vs_correctness_reasoning(df: pd.DataFrame, result_path: s
         accuracy.index, accuracy.values, marker="o", linestyle="-", color="royalblue"
     )
     ax.set_xlabel("Number of iterations")
-    ax.set_ylabel("Accuracy (Proportion Correct)")
+    ax.set_ylabel("Accuracy")
     ax.set_title("Reasoning Accuracy vs Iterations")
     ax.set_ylim(0, 1)
     ax.grid(True, linestyle="--", alpha=0.6)
