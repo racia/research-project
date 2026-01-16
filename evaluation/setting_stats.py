@@ -718,7 +718,7 @@ def analyse_effects(df: pd.DataFrame, res_path: str):
     df["intervention_present"] = df["iterations_result"] > 0
 
     grouped = (
-        df.groupby(["answer_before_correct", "intervention_present"])[
+        df.groupby(["answer_correct_before", "intervention_present"])[
             "answer_correct_after"
         ]
         .agg(["count", "mean"])
@@ -735,11 +735,11 @@ def analyse_effects(df: pd.DataFrame, res_path: str):
 
     for prev_corr in [0, 1]:
         no_int_row = grouped[
-            (grouped["answer_before_correct"] == prev_corr)
+            (grouped["answer_correct_before"] == prev_corr)
             & (grouped["intervention_present"] == False)
         ]
         int_row = grouped[
-            (grouped["answer_before_correct_result"] == prev_corr)
+            (grouped["answer_correct_before"] == prev_corr)
             & (grouped["intervention_present"] == True)
         ]
 
