@@ -96,16 +96,24 @@ def clean_eval_dfs(eval_df: pd.DataFrame) -> pd.DataFrame:
     return eval_df
 
 
-def process_eval_dicts(path: str) -> pd.DataFrame:
+def process_eval_dicts(path: str, res_path: str) -> pd.DataFrame:
     """
     Get the paths for all evaluation dictionaries at the given paths, read them, and clean them.
 
     :param path: str, path to the joined results for one setting
+    :param res_path: str, path to save the cleaned concatenated dataframe
     :return: pd.DataFrame, cleaned concatenated dataframe
     """
     paths = get_eval_dicts(path)
     eval_df = read_eval_dicts(paths)
     clean_df = clean_eval_dfs(eval_df)
+
+    clean_df.to_csv(
+        os.path.join(res_path, "evaluation_df.csv"),
+        index=False,
+        sep=",",
+    )
+
     return clean_df
 
 
@@ -667,12 +675,6 @@ def run_stats(df: pd.DataFrame, result_path: str, setting: str):
             setting,
         )
 
-    df.to_csv(
-        os.path.join(result_path, "complete_evaluation_dataframe.csv"),
-        index=False,
-        sep=",",
-    )
-
 
 def combine_eval_dfs(eval_df: pd.DataFrame, result_df: pd.DataFrame, result_path: str):
     """
@@ -693,12 +695,11 @@ def combine_eval_dfs(eval_df: pd.DataFrame, result_df: pd.DataFrame, result_path
     )
 
     merged_df.to_csv(
-        os.path.join(result_path, "complete_evaluation_with_results_dataframe.csv"),
+        os.path.join(result_path, "combined_results_with_eval_dicts.csv"),
         index=False,
         sep=",",
     )
 
-    print(f"Merged dataframe: {merged_df}")
     return merged_df
 
 
