@@ -861,7 +861,7 @@ def main():
     setting = "Feedback"
     data_path = "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/all_tasks_joined"
     result_path = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/all_tasks_stats"
-    df = process_eval_dicts(data_path, res_path=result_path‚)
+    df = process_eval_dicts(data_path, res_path=result_path)
     res_df = pd.read_csv(
         os.path.join(data_path, "joined_reasoning_results.csv"), sep="\t"
     )
