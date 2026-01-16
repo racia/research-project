@@ -710,7 +710,7 @@ def analyse_effects(df: pd.DataFrame, res_path: str) -> None:
     :param res_path: str, path to save the results
     """
     df = df.copy()
-    df["intervention"] = df["iterations"] > 0
+    df["intervention"] = df["iterations_result"] > 0
     for b in [True, False]:
         counts = {
             "correct": {"intervention": 0, "no_intervention": 0},
