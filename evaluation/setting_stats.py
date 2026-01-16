@@ -718,7 +718,7 @@ def analyse_effects(df: pd.DataFrame, res_path: str) -> None:
         }
 
         # Previous answer = correct
-        subset = df[df["answer_before_correct"] == True]
+        subset = df[df["answer_correct_before"] == True]
         counts["correct"]["intervention"] = len(
             subset[(subset["answer_correct_after"] == b) & (subset["intervention"])]
         )
@@ -727,7 +727,7 @@ def analyse_effects(df: pd.DataFrame, res_path: str) -> None:
         )
 
         # Previous answer = incorrect
-        subset = df[df["answer_before_correct"] == False]
+        subset = df[df["answer_correct_before"] == False]
         counts["incorrect"]["intervention"] = len(
             subset[(subset["answer_correct_after"] == b) & (subset["intervention"])]
         )
