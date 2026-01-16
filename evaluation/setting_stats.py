@@ -703,100 +703,69 @@ def combine_eval_dfs(eval_df: pd.DataFrame, result_df: pd.DataFrame, result_path
     return merged_df
 
 
-def analyse_effects(df: pd.DataFrame, res_path: str):
+def analyse_effects(df: pd.DataFrame, res_path: str) -> None:
     """
-    Analyse the effects of interventions on the results.
-
-    :param df: pd.DataFrame, the complete evaluation dataframe
-    :param res_path: str, path to save the effects analysis
+    Analyse the effects of interventions on correctness before and after.
+    :param df: pd.DataFrame, the evaluation dataframe
+    :param res_path: str, path to save the results
     """
-    if not os.path.exists(res_path):
-        os.makedirs(res_path)
-
     df = df.copy()
+    df["intervention"] = df["iterations"] > 0
+    for b in [True, False]:
+        counts = {
+            "correct": {"intervention": 0, "no_intervention": 0},
+            "incorrect": {"intervention": 0, "no_intervention": 0},
+        }
 
-    df["intervention_present"] = df["iterations_result"] > 0
-
-    grouped = (
-        df.groupby(["answer_correct_before", "intervention_present"])[
-            "answer_correct_after"
-        ]
-        .agg(["count", "mean"])
-        .reset_index()
-    )
-
-    labels = ["Incorrect", "Correct"]
-    x = [0, 1]
-
-    means_no_int = []
-    counts_no_int = []
-    means_int = []
-    counts_int = []
-
-    for prev_corr in [0, 1]:
-        no_int_row = grouped[
-            (grouped["answer_correct_before"] == prev_corr)
-            & (grouped["intervention_present"] == False)
-        ]
-        int_row = grouped[
-            (grouped["answer_correct_before"] == prev_corr)
-            & (grouped["intervention_present"] == True)
-        ]
-
-        means_no_int.append(no_int_row["mean"].values[0] if not no_int_row.empty else 0)
-        counts_no_int.append(
-            no_int_row["count"].values[0] if not no_int_row.empty else 0
+        # Previous answer = correct
+        subset = df[df["answer_before_correct"] == True]
+        counts["correct"]["intervention"] = len(
+            subset[(subset["answer_correct_after"] == b) & (subset["intervention"])]
+        )
+        counts["correct"]["no_intervention"] = len(
+            subset[(subset["answer_correct_after"] == b) & (~subset["intervention"])]
         )
 
-        means_int.append(int_row["mean"].values[0] if not int_row.empty else 0)
-        counts_int.append(int_row["count"].values[0] if not int_row.empty else 0)
-
-    width = 0.35
-
-    fig, ax = plt.subplots(figsize=(8, 6))
-    ax.bar(
-        [p - width / 2 for p in x],
-        means_no_int,
-        width,
-        label="No Intervention",
-        color="skyblue",
-    )
-    ax.bar(
-        [p + width / 2 for p in x],
-        means_int,
-        width,
-        label="Intervention",
-        color="salmon",
-    )
-    ax.set_xticks(x)
-    ax.set_xticklabels(labels)
-    ax.set_ylim(0, 1)
-    ax.set_ylabel("Proportion Correct After Intervention")
-    ax.set_xlabel("Previous Answer Correct")
-    ax.set_title(
-        "Correctness After Intervention\nGrouped by Previous Correctness & Intervention Presence"
-    )
-    ax.legend()
-    ax.grid(axis="y", linestyle="--", alpha=0.7)
-
-    plt.tight_layout()
-    plt.savefig(
-        os.path.join(res_path, "correctness_by_intervention_and_prev_correct.png")
-    )
-    plt.close()
-
-    with open(os.path.join(res_path, "intervention_effects_raw_numbers.txt"), "w") as f:
-        f.write("Intervention Effects (Raw Numbers)\n")
-        f.write(
-            f"{'Prev Correct':<15}{'Intervention':<15}{'Count':<10}{'Mean Correctness':<20}\n"
+        # Previous answer = incorrect
+        subset = df[df["answer_before_correct"] == False]
+        counts["incorrect"]["intervention"] = len(
+            subset[(subset["answer_correct_after"] == b) & (subset["intervention"])]
         )
-        for idx in range(2):
-            for intervention_state in [False, True]:
-                count = counts_int[idx] if intervention_state else counts_no_int[idx]
-                mean_corr = means_int[idx] if intervention_state else means_no_int[idx]
-                f.write(
-                    f"{labels[idx]:<15}{str(intervention_state):<15}{count:<10}{mean_corr:<20.3f}\n"
-                )
+        counts["incorrect"]["no_intervention"] = len(
+            subset[(subset["answer_correct_after"] == b) & (~subset["intervention"])]
+        )
+
+        x = [0, 1]
+        labels = ["correct", "incorrect"]
+
+        no_int = [
+            counts["correct"]["no_intervention"],
+            counts["incorrect"]["no_intervention"],
+        ]
+        intv = [
+            counts["correct"]["intervention"],
+            counts["incorrect"]["intervention"],
+        ]
+
+        fig, ax = plt.subplots(figsize=(7, 5))
+        ax.bar(x, no_int, label="No intervention", color="skyblue")
+        ax.bar(x, intv, bottom=no_int, label="Intervention", color="salmon")
+
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels)
+        ax.set_xlabel("Previous answer")
+        ax.set_ylabel("Count answer after correct")
+        ax.set_title(f"Answer after = {'correct' if b else 'incorrect'}")
+        ax.legend()
+        ax.grid(axis="y", linestyle="--", alpha=0.6)
+
+        plt.tight_layout()
+        plt.savefig(
+            os.path.join(res_path, f"effect_analysis_after_{str(b).lower()}.png")
+        )
+        plt.close()
+        # further analysis and plotting logic would go here
+    pass
 
 
 def analyse_iterations_vs_correctness(
