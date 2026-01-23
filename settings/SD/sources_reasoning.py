@@ -13,6 +13,7 @@ sd_reasoning_v1_t_3 = [
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_3/task_3_s_86_100",
 ]
 sd_reasoning_v1_t_5 = [
+    # TODO: samples 1-60 are absent
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_5/task_5_s_61_89",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_5/task_5_s_89_100",
 ]
@@ -65,12 +66,13 @@ sd_reasoning_v1_t_18 = [
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_18/task_18_s_1_84",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_18/task_18_s_84_100",
 ]
-# TODO: unfinished!
 sd_reasoning_v1_t_20 = [
-    # samples 1-27 unfinished
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_1_12",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_10_21",
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_20_27",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_27_62",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_62_91",
-    # sample 91 unfinished
+    "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_91",
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_92_93",
 ]
 sd_reasoning_v1 = [
