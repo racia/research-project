@@ -5,7 +5,6 @@
 
 #SBATCH --time=6:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
-#SBATCH --cpus-per-task=2            # Number of CPU cores per task
 
 # Output and error logs
 #SBATCH --output="zip_out.txt"
