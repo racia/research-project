@@ -12,6 +12,7 @@ from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Metrics import Metric
 from evaluation.Statistics import Statistics
 from inference.utils import (
+    REASONING_SCORE_MAP,
     contains_not_mentioned,
     contains_pronouns,
     contains_there,
@@ -21,7 +22,6 @@ from inference.utils import (
     structure_part,
     wrap_text,
     is_nan,
-    REASONING_SCORE_MAP,
     update_attributes,
     majority_vote,
     only_none,
@@ -310,8 +310,13 @@ class SamplePart:
         "silver_reasoning",
         "answer_lies_in_self",
         "iterations",
+        # if there are duplicates:
+        # "consistency",
+        # "horizontal_std",
+        # "majority_model_answer",
     ]
     current_iteration_count = 0
+    num_dupl = 1
 
     def __init__(
         self,
@@ -381,8 +386,21 @@ class SamplePart:
         self.golden_answer: str = golden_answer
         self.silver_reasoning: str = silver_reasoning
 
-        self.results = [[], []]
         self.iterations: int = 0
+
+        self.results = [[], []]  # duplicates for "before", duplicates for "after"
+        self.consistency: dict[str, float | None] = {
+            "before": None,
+            "after": None,
+        }
+        self.majority_model_answer = {
+            "before": None,
+            "after": None,
+        }
+        self.horizontal_std: dict[str, float | None] = {
+            "before": None,
+            "after": None,
+        }
 
     def set_wrapper(self, wrapper: Wrapper = None) -> Wrapper:
         """
@@ -602,6 +620,17 @@ class SamplePart:
                 for attr in self.result_attrs
                 if hasattr(self, attr)
             }
+            attributes["consistency_before"] = self.consistency["before"]
+            attributes["horizontal_std_before"] = self.horizontal_std["before"]
+            attributes["majority_model_answer_before"] = self.majority_model_answer[
+                "before"
+            ]
+            if self.multi_system:
+                attributes["consistency_after"] = self.consistency["after"]
+                attributes["horizontal_std_after"] = self.horizontal_std["after"]
+                attributes["majority_model_answer_after"] = self.majority_model_answer[
+                    "after"
+                ]
         except AttributeError as error:
             print(f"Error accessing attribute: {error}")
             attributes = {}
@@ -612,7 +641,7 @@ class SamplePart:
         if not self.results:
             raise ValueError("No results found for the part.")
 
-        # attributes: list[str] = [
+        # (general) ATTRIBUTES: list[str] = [
         #     "id_",
         #     "task_id",
         #     "sample_id",
@@ -623,15 +652,13 @@ class SamplePart:
         #     "answer_lies_in_self",
         #     "iterations",
         # ]
-        dupl_attributes = {
-            attr: [] for attr in SamplePart.result_attrs + Features.attrs
-        }
+        dupl_attributes = {}
         for version_results in self.results:
             for i, duplicate_result in enumerate(version_results):
                 dupl_attributes = update_attributes(
                     dupl_attributes, duplicate_result.dict
                 )
-                # result_attr: list[str] = [
+                # RESULT_ATTR: list[str] = [
                 #     "model_answer",
                 #     "answer_correct",
                 #     "model_reasoning",
@@ -640,7 +667,7 @@ class SamplePart:
                 #     "max_supp_attn",
                 #     "attn_on_target",
                 # ]
-                # features_attrs = [
+                # FEATURES_ATTRS = [
                 #     "there",
                 #     "verbs",
                 #     "pronouns",
@@ -649,8 +676,11 @@ class SamplePart:
                 # ]
         averaged_attrs = {}
         for attr in dupl_attributes:
-            if dupl_attributes[attr] and type(dupl_attributes[attr][0]) is str:
-                averaged_attrs[attr] = "\n".join(dupl_attributes[attr])
+            list_of_str = type(dupl_attributes[attr]) is list and all(
+                type(item) is str for item in dupl_attributes[attr]
+            )
+            if dupl_attributes[attr] and list_of_str:
+                averaged_attrs[attr] = dupl_attributes[attr]
             elif only_none(dupl_attributes[attr]):
                 averaged_attrs[attr] = None
             else:
@@ -666,7 +696,40 @@ class SamplePart:
         """
         if not self.results:
             raise ValueError("No results found for the part.")
-        return len(self.results[0])
+        num_dupl_factual = len(self.results[0])
+        if SamplePart.num_dupl != num_dupl_factual:
+            warnings.warn(
+                f"The number of duplicates has changed from {SamplePart.num_dupl} to {num_dupl_factual}. Updating."
+            )
+            SamplePart.num_dupl = num_dupl_factual
+        return num_dupl_factual
+
+    def analyse_consistency(self):
+        """
+        Analyse the consistency of the answers for the part.
+
+        :return: the consistency score
+        """
+        for version, version_results in zip(self.versions, self.results):
+            horizontal_accuracy = Metric("Horizontal Accuracy", "h_acc")
+            version_answers = defaultdict(int)
+            for duplicate_result in version_results:
+                print("duplicate_result.model_answer", duplicate_result.model_answer)
+                version_answers[duplicate_result.model_answer] += 1
+                horizontal_accuracy.add(int(duplicate_result.answer_correct))
+            sorted_answers = sorted(
+                version_answers.items(), key=lambda x: x[1], reverse=True
+            )
+            print("sorted_answers", sorted_answers)
+            if sorted_answers:
+                max_answer, max_freq = list(version_answers.items())[0]
+                self.majority_model_answer[version] = max_answer
+                print("max_answer", max_answer)
+                self.consistency[version] = max_freq / SamplePart.num_dupl
+            else:
+                print("no answers found for version", version)
+            self.horizontal_std[version] = horizontal_accuracy.get_std()
+        return mean([v for v in self.consistency.values() if v])
 
 
 class Sample:
@@ -690,31 +753,34 @@ class Sample:
         self.run_with_reasoning: bool = False
         self.parts: list[SamplePart] = []
 
-        self.num_dupl = self.parts[0].number_of_duplicates() if self.parts else 1
-        evaluator_before = [
+        evaluators_before = [
             AnswerEvaluator(level="sample", version="before")
-        ] * self.num_dupl
-        self.evaluators: list[list[AnswerEvaluator]] = (
-            [
-                evaluator_before,
-                [AnswerEvaluator(level="sample", version="after")] * self.num_dupl,
+            for _ in range(SamplePart.num_dupl)
+        ]
+        self.evaluators: list[list[AnswerEvaluator]] = [evaluators_before]
+        if self.multi_system:
+            evaluators_after = [
+                AnswerEvaluator(level="sample", version="after")
+                for _ in range(SamplePart.num_dupl)
             ]
-            if self.multi_system
-            else [evaluator_before]
-        )
-        majority_eval_before = AnswerEvaluator(level="sample", version="before")
-        self.majority_evaluators: list[AnswerEvaluator] = (
-            [majority_eval_before, AnswerEvaluator(level="sample", version="after")]
-            if self.multi_system
-            else [majority_eval_before]
-        )
+            self.evaluators.append(evaluators_after)
 
-        features_before = Features(0, 0, 0, 0, 0, version="before")
-        self.features: list[Features] = (
-            [features_before, Features(0, 0, 0, 0, 0, version="after")]
-            if self.multi_system
-            else [features_before]
-        )
+        self.majority_evaluators: list[AnswerEvaluator] = [
+            AnswerEvaluator(level="sample", version="before")
+        ]
+        if self.multi_system:
+            self.majority_evaluators.append(
+                AnswerEvaluator(level="sample", version="after")
+            )
+
+        self.consistency: list[Metric] = [Metric("Consistency Before", "cons_before")]
+        if self.multi_system:
+            self.consistency.append(Metric("Consistency After", "cons_after"))
+
+        self.features: list[Features] = [Features(0, 0, 0, 0, 0, version="before")]
+        if self.multi_system:
+            self.features.append(Features(0, 0, 0, 0, 0, version="after"))
+
         self.results = []
 
     def add_part(self, part: SamplePart) -> None:
@@ -773,6 +839,7 @@ class Sample:
             average_attn_on_target = float(np.mean(attns_on_target))
             self.majority_evaluators[i].max_supp_attn.add(average_max_supp_attn)
             self.majority_evaluators[i].attn_on_target.add(average_attn_on_target)
+            self.consistency[i].add(part.consistency[self.versions[i]])
 
     def print_sample_predictions(self) -> None:
         """
@@ -781,13 +848,13 @@ class Sample:
         :return: None
         """
         ans_bef = (
-            [f"PREDICTED-Bef {i}" for i in range(1, self.num_dupl + 1)]
-            if self.num_dupl > 1
+            [f"PREDICTED-Bef {i}" for i in range(1, SamplePart.num_dupl + 1)]
+            if SamplePart.num_dupl > 1
             else ["PREDICTED-Bef"]
         )
         reas_bef = (
-            [f"REASONING-Bef {i}" for i in range(1, self.num_dupl + 1)]
-            if self.num_dupl > 1
+            [f"REASONING-Bef {i}" for i in range(1, SamplePart.num_dupl + 1)]
+            if SamplePart.num_dupl > 1
             else ["REASONING-Bef"]
         )
         answers = [
@@ -803,16 +870,18 @@ class Sample:
         if self.multi_system:
             table = PrettyTable()
             ans_aft = (
-                [f"PREDICTED-Aft {i}" for i in range(1, self.num_dupl + 1)]
-                if self.num_dupl > 1
+                [f"PREDICTED-Aft {i}" for i in range(1, SamplePart.num_dupl + 1)]
+                if SamplePart.num_dupl > 1
                 else ["PREDICTED-Aft"]
             )
             reas_aft = (
-                [f"REASONING-Aft {i}" for i in range(1, self.num_dupl + 1)]
-                if self.num_dupl > 1
+                [f"REASONING-Aft {i}" for i in range(1, SamplePart.num_dupl + 1)]
+                if SamplePart.num_dupl > 1
                 else ["REASONING-Aft"]
             )
-            table.field_names = ["GOLDEN", *ans_bef, *ans_aft, *reas_bef, *reas_aft]
+            table.field_names = ["GOLDEN", *ans_bef, *ans_aft]
+            if self.run_with_reasoning:
+                table.field_names += [*reas_bef, *reas_aft]
 
             attributes = zip(
                 self.majority_evaluators[0].golden_answers,
@@ -821,29 +890,37 @@ class Sample:
             )
 
             for golden, pred_bef, pred_aft, reas_bef, reas_aft in attributes:
-                table.add_row(
-                    [
-                        golden,
-                        pred_bef.replace("\n", " "),
-                        pred_aft.replace("\n", " "),
-                        wrap_text(reas_bef),
-                        wrap_text(reas_aft),
+                row = [
+                    golden,
+                    pred_bef.replace("\n", " "),
+                    pred_aft.replace("\n", " "),
+                ]
+                if self.run_with_reasoning:
+                    row += [
+                        wrap_text(reas_bef.replace("\n", " ")),
+                        wrap_text(reas_aft.replace("\n", " ")),
                     ]
-                )
+                table.add_row(row)
 
         else:
             table = PrettyTable()
-            table.field_names = ["GOLDEN", *ans_bef, *reas_bef]
-            attributes = zip(
-                self.majority_evaluators[0].golden_answers,
-                *answers,
-                *reasonings,
-            )
-
-            for golden, pred_bef, reas_bef in attributes:
-                table.add_row(
-                    [golden, pred_bef.replace("\n", " "), wrap_text(reas_bef)]
+            table.field_names = ["GOLDEN", *ans_bef]
+            if self.run_with_reasoning:
+                table.field_names += reas_bef
+                attributes = zip(
+                    self.majority_evaluators[0].golden_answers,
+                    *answers,
+                    *reasonings,
                 )
+            else:
+                attributes = zip(
+                    self.majority_evaluators[0].golden_answers,
+                    *answers,
+                )
+
+            for attrs in attributes:
+                prepared_attrs = [wrap_text(attr.replace("\n", " ")) for attr in attrs]
+                table.add_row(prepared_attrs)
 
         table.hrules = HRuleStyle.ALL
         table.padding_width = 2  # Adds more space inside each cell
@@ -877,14 +954,13 @@ class Sample:
         self.seen_context_lengths = Metric(
             f"Seen Context Lengths", "seen_context_lengths"
         )
-        sample_part_lengths = []
+        # part.context_line_nums[0] == 1 -- we are starting from a new sample
+        part_lengths_so_far = []
         for part in self.parts:
             context_length = len(part.context_line_nums)
-            if context_length:
-                if part.context_line_nums[0] == 1:
-                    sample_part_lengths = []
-                sample_part_lengths.append(context_length)
-            self.seen_context_lengths.add(sum(sample_part_lengths))
+            # adding zero will not change the sum
+            part_lengths_so_far.append(context_length)
+            self.seen_context_lengths.add(sum(part_lengths_so_far))
             # How far the target is from the question
             target_sent_dist = round(
                 part.context_line_nums[-1] - mean(part.supporting_sent_inx), 2
@@ -924,25 +1000,26 @@ class Task:
             ["before", "after"] if self.multi_system else ["before"]
         )
 
-        self.num_dupl: int = self.parts[0].number_of_duplicates() if self.parts else 1
-        evaluator_before = [
+        evaluators_before = [
             MetricEvaluator(level="task", version="before")
-        ] * self.num_dupl
-        self.evaluators: list[list[MetricEvaluator]] = (
-            [
-                evaluator_before,
-                [MetricEvaluator(level="task", version="after")] * self.num_dupl,
+            for _ in range(SamplePart.num_dupl)
+        ]
+        self.evaluators: list[list[MetricEvaluator]] = [evaluators_before]
+        if self.multi_system:
+            evaluators_after = [
+                MetricEvaluator(level="task", version="after")
+                for _ in range(SamplePart.num_dupl)
             ]
-            if self.multi_system
-            else [evaluator_before]
-        )
+            self.evaluators.append(evaluators_after)
 
-        features_before = Features(0, 0, 0, 0, 0, version="before")
-        self.features: list[Features] = (
-            [features_before, Features(0, 0, 0, 0, 0, version="after")]
-            if self.multi_system
-            else [features_before]
-        )
+        self.consistency: list[Metric] = [Metric("Consistency Before", "cons_before")]
+        if self.multi_system:
+            self.consistency.append(Metric("Consistency After", "cons_after"))
+
+        self.features: list[Features] = [Features(0, 0, 0, 0, 0, version="before")]
+        if self.multi_system:
+            self.features.append(Features(0, 0, 0, 0, 0, version="after"))
+
         self.results: list[dict[str, str | int | float]] = []
 
     def add_sample(self, sample: Sample) -> None:
@@ -953,13 +1030,13 @@ class Task:
         :return: None
         """
         self.samples.append(sample)
-        for task_evaluators, sample_evaluators in zip(
-            self.evaluators, sample.evaluators
-        ):
+        level_evaluators = zip(self.evaluators, sample.evaluators)
+        for i, (task_evaluators, sample_evaluators) in enumerate(level_evaluators):
             for task_evaluator, sample_evaluator in zip(
                 task_evaluators, sample_evaluators
             ):
                 task_evaluator.update(sample_evaluator)
+            self.consistency[i].add(sample.consistency[i].get_mean())
 
     def set_results(self) -> None:
         """
@@ -971,13 +1048,11 @@ class Task:
         self.parts = [part for sample in self.samples for part in sample.parts]
         self.results: list[dict] = [part.get_result() for part in self.parts]
         for i, features in enumerate(self.features):
-            self.features[i] = sum(
-                [
-                    float(np.mean([result.features for result in part.results[i]]))
-                    for part in self.parts
-                ],
-                features,
-            )
+            f = []
+            for part in self.parts:
+                f += [result.features for result in part.results[i]]
+                print("debug f", f)
+            self.features[i] = sum([float(np.mean(f)), features])
 
         for version_evaluators, version in zip(self.evaluators, self.versions):
             mean_em_accuracies, mean_sm_accuracies = [], []
@@ -992,7 +1067,10 @@ class Task:
         Calculate the metrics for the task.
         :return: correlation matrix of the metrics.
         """
-        corr_matrices = {}
+        corr_matrices = {
+            "before": [],
+            "after": [],
+        }
         self.seen_context_lengths = Metric(
             "Seen Context Lengths", "seen_context_lengths"
         )
@@ -1012,74 +1090,84 @@ class Task:
             self.parts_target_distances.add(sample.target_sent_dist.all)
             for part in sample.parts:
                 self.parts_answer_in_self.add(part.answer_lies_in_self)
-            for i, evaluator in enumerate(self.evaluators):
-                sample_id_attn = {
-                    (self.task_id, part.sample_id, part.part_id): part.results[
-                        i
-                    ].interpretability.attn_on_target
-                    for part in sample.parts
-                }
-                evaluator.ids_with_attn_on_target.update(sample_id_attn)
+            for i, version_evaluators in enumerate(self.evaluators):
+                for j, evaluator in version_evaluators:
+                    sample_id_attn = {}
+                    for part in sample.parts:
+                        id = (self.task_id, part.sample_id, part.part_id)
+                        result = part.results[i][j]
+                        sample_id_attn[id] = result.interpretability.attn_on_target
+                    evaluator.ids_with_attn_on_target.update(sample_id_attn)
 
-        for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
-            for part in self.parts:
-                evaluator.parts_answer_correct.add(part.results[i].answer_correct)
-                evaluator.parts_max_supp_attn.add(
-                    part.results[i].interpretability.max_supp_attn
-                )
-                evaluator.parts_attn_on_target.add(
-                    part.results[i].interpretability.attn_on_target
-                )
-                for k, v in part.results[i].features.get().items():
-                    self.parts_features[version][k].append(v)
-
-            try:
-                assert (
-                    len(evaluator.parts_answer_correct)
-                    == len(evaluator.parts_max_supp_attn)
-                    == len(evaluator.parts_attn_on_target)
-                    == len(self.seen_context_lengths)
-                    == len(self.parts_answer_in_self)
-                    == len(self.parts_target_distances)
-                    == len(
-                        self.parts_features[version][
-                            list(self.parts_features[version].keys())[0]
-                        ]
+        for i, (version, version_evaluators) in enumerate(
+            zip(self.versions, self.evaluators)
+        ):
+            for j, evaluator in enumerate(version_evaluators):
+                for part in self.parts:
+                    evaluator.parts_answer_correct.add(
+                        part.results[i][j].answer_correct
                     )
-                )
-            except AssertionError:
-                print("Length mismatch in task metrics calculation:")
-                print(f"parts_answer_correct: {len(evaluator.parts_answer_correct)}")
-                print(f"parts_max_supp_attn: {len(evaluator.parts_max_supp_attn)}")
-                print(f"parts_attn_on_target: {len(evaluator.parts_attn_on_target)}")
-                print(f"seen_context_lengths: {len(self.seen_context_lengths)}")
-                print(f"parts_answer_in_self: {len(self.parts_answer_in_self)}")
-                print(f"parts_target_distances: {len(self.parts_target_distances)}")
-                print(
-                    f"parts_features: {len(self.parts_features[version][list(self.parts_features[version].keys())[0]])}"
-                )
+                    evaluator.parts_max_supp_attn.add(
+                        part.results[i][j].interpretability.max_supp_attn
+                    )
+                    evaluator.parts_attn_on_target.add(
+                        part.results[i][j].interpretability.attn_on_target
+                    )
+                    for k, v in part.results[i][j].features.get().items():
+                        self.parts_features[version][k].append(v)
 
-            # map the reasoning scores to the identifiers
-            for score_name, flat_score_name in REASONING_SCORE_MAP.items():
-                for sample in self.samples:
-                    score = sample.evaluators[i].__getattribute__(score_name).all
-                    ids_with_scores = {
-                        (self.task_id, sample.sample_id, j + 1): value
-                        for j, value in enumerate(score)
-                    }
-                    flat_score = evaluator.__getattribute__(flat_score_name)
-                    evaluator.__setattr__(
-                        flat_score_name, {**flat_score, **ids_with_scores}
+                try:
+                    assert (
+                        len(evaluator.parts_answer_correct)
+                        == len(evaluator.parts_max_supp_attn)
+                        == len(evaluator.parts_attn_on_target)
+                        == len(self.seen_context_lengths)
+                        == len(self.parts_answer_in_self)
+                        == len(self.parts_target_distances)
+                        == len(
+                            self.parts_features[version][
+                                list(self.parts_features[version].keys())[0]
+                            ]
+                        )
+                    )
+                except AssertionError:
+                    print("Length mismatch in task metrics calculation:")
+                    print(
+                        f"parts_answer_correct: {len(evaluator.parts_answer_correct)}"
+                    )
+                    print(f"parts_max_supp_attn: {len(evaluator.parts_max_supp_attn)}")
+                    print(
+                        f"parts_attn_on_target: {len(evaluator.parts_attn_on_target)}"
+                    )
+                    print(f"seen_context_lengths: {len(self.seen_context_lengths)}")
+                    print(f"parts_answer_in_self: {len(self.parts_answer_in_self)}")
+                    print(f"parts_target_distances: {len(self.parts_target_distances)}")
+                    print(
+                        f"parts_features: {len(self.parts_features[version][list(self.parts_features[version].keys())[0]])}"
                     )
 
-            # Calculate correlation using mean part attention scores for samples
-            corr_matrices[version] = evaluator.calculate_correlation(
-                parts_answer_correct=evaluator.parts_answer_correct.all,
-                max_supp_attn=evaluator.parts_max_supp_attn.all,
-                attn_on_target=evaluator.parts_attn_on_target.all,
-                seen_context_lengths=self.seen_context_lengths.all,
-                target_sent_distances=self.parts_target_distances.all,
-            )
+                # map the reasoning scores to the identifiers
+                for score_name, flat_score_name in REASONING_SCORE_MAP.items():
+                    for sample in self.samples:
+                        score = sample.evaluators[i].__getattribute__(score_name).all
+                        ids_with_scores = {
+                            (self.task_id, sample.sample_id, j + 1): value
+                            for j, value in enumerate(score)
+                        }
+                        flat_score = evaluator.__getattribute__(flat_score_name)
+                        evaluator.__setattr__(
+                            flat_score_name, {**flat_score, **ids_with_scores}
+                        )
+
+                # Calculate correlation using mean part attention scores for samples
+                correlation_dict = evaluator.calculate_correlation(
+                    parts_answer_correct=evaluator.parts_answer_correct.all,
+                    max_supp_attn=evaluator.parts_max_supp_attn.all,
+                    attn_on_target=evaluator.parts_attn_on_target.all,
+                    seen_context_lengths=self.seen_context_lengths.all,
+                    target_sent_distances=self.parts_target_distances.all,
+                )
+                corr_matrices[version].append(correlation_dict)
         # TODO: to integrate!
         # initial = {"task_id": self.task_id}
         # for version_evaluators in self.evaluators:
@@ -1109,25 +1197,25 @@ class Split:
             ["before", "after"] if self.multi_system else ["before"]
         )
 
-        features_before = Features(0, 0, 0, 0, 0, version="before")
-        self.features: list[Features] = (
-            [features_before, Features(0, 0, 0, 0, 0, version="after")]
-            if self.multi_system
-            else [features_before]
-        )
+        self.features: list[Features] = [Features(0, 0, 0, 0, 0, version="before")]
+        if self.multi_system:
+            self.features.append(Features(0, 0, 0, 0, 0, version="after"))
 
-        self.num_dupl: int = self.tasks[0].num_dupl if self.tasks else 1
-        evaluator_before = [
+        evaluators_before = [
             MetricEvaluator(level="split", version="before")
-        ] * self.num_dupl
-        self.evaluators: list[list[MetricEvaluator]] = (
-            [
-                evaluator_before,
-                [MetricEvaluator(level="split", version="after")] * self.num_dupl,
+            for _ in range(SamplePart.num_dupl)
+        ]
+        self.evaluators: list[list[MetricEvaluator]] = [evaluators_before]
+        if self.multi_system:
+            evaluators_after = [
+                MetricEvaluator(level="split", version="after")
+                for _ in range(SamplePart.num_dupl)
             ]
-            if self.multi_system
-            else [evaluator_before]
-        )
+            self.evaluators.append(evaluators_after)
+
+        self.consistency: list[Metric] = [Metric("Consistency Before", "cons_before")]
+        if self.multi_system:
+            self.consistency.append(Metric("Consistency After", "cons_after"))
 
     def add_task(self, task: Task) -> None:
         """
@@ -1139,9 +1227,12 @@ class Split:
         self.tasks.append(task)
         for features, other_features in zip(self.features, task.features):
             features += other_features
-        for evaluators, other_evaluators in zip(self.evaluators, task.evaluators):
+        for i, (evaluators, other_evaluators) in enumerate(
+            zip(self.evaluators, task.evaluators)
+        ):
             for evaluator, other_evaluator in zip(evaluators, other_evaluators):
                 evaluator.update(other_evaluator)
+            self.consistency[i].add(task.consistency[i].get_mean())
 
     def calculate_metrics(self) -> dict:
         """
@@ -1149,86 +1240,95 @@ class Split:
         :return: The correlation matrix of the metrics.
         """
         # TODO: to integrate!
-        corr_matrices = {}
-        for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
-            exact_match_accuracies = []
-            max_supp_attns = []
-            attn_on_targets = []
-            sample_lengths = []
+        corr_matrices = {
+            "before": [],
+            "after": [],
+        }
 
-            self.seen_context_lengths = []
-            self.parts_target_distances = []
-            self.parts_answer_in_self = []
+        self.seen_context_lengths = [
+            task.seen_context_lengths.all for task in self.tasks
+        ]
+        self.parts_target_distances = [
+            task.parts_target_distances.all for task in self.tasks
+        ]
+        self.parts_answer_in_self = [
+            task.parts_answer_in_self.all for task in self.tasks
+        ]
 
-            for task in self.tasks:
-                exact_match_accuracies.extend(
-                    task.evaluators[i].exact_match_accuracy.all
-                )
-                max_supp_attns.extend(task.evaluators[i].max_supp_attn.all)
-                attn_on_targets.extend(task.evaluators[i].attn_on_target.all)
-                sample_lengths.extend(task.sample_lengths)
+        for i, (version, version_evaluators) in enumerate(
+            zip(self.versions, self.evaluators)
+        ):
+            for j, evaluator in enumerate(version_evaluators):
+                exact_match_accuracies = []
+                max_supp_attns = []
+                attn_on_targets = []
+                sample_lengths = []
 
-                self.seen_context_lengths.extend(task.seen_context_lengths.all)
-                self.parts_target_distances.extend(task.parts_target_distances.all)
-                self.parts_answer_in_self.extend(task.parts_answer_in_self.all)
-
-                evaluator.parts_answer_correct.add(
-                    task.evaluators[i].parts_answer_correct.all
-                )
-                evaluator.parts_attn_on_target.add(
-                    task.evaluators[i].parts_attn_on_target.all
-                )
-                evaluator.parts_max_supp_attn.add(
-                    task.evaluators[i].parts_max_supp_attn.all
-                )
-                evaluator.ids_with_attn_on_target.update(
-                    task.evaluators[i].ids_with_attn_on_target
-                )
-                # self.task_features.extend(task.parts_features)
-
-                # get the reasoning scores
-                for flat_score_name in REASONING_SCORE_MAP.values():
-                    task_ids_with_scores = task.evaluators[i].__getattribute__(
-                        flat_score_name
+                for task in self.tasks:
+                    exact_match_accuracies.extend(
+                        task.evaluators[i][j].exact_match_accuracy.all
                     )
-                    split_ids_with_scores = evaluator.__getattribute__(flat_score_name)
-                    evaluator.__setattr__(
-                        flat_score_name,
-                        {**split_ids_with_scores, **task_ids_with_scores},
-                    )
-            try:
-                assert (
-                    len(evaluator.parts_answer_correct)
-                    == len(self.seen_context_lengths)
-                    == len(self.parts_target_distances)
-                    == len(self.parts_answer_in_self)
-                )
-            except AssertionError:
-                print("Length mismatch in split metrics calculation:")
-                print(f"parts_answer_correct: {len(evaluator.parts_answer_correct)}")
-                print(f"seen_context_lengths: {len(self.seen_context_lengths)}")
-                print(f"parts_target_distances: {len(self.parts_target_distances)}")
-                print(f"parts_answer_in_self: {len(self.parts_answer_in_self)}")
-            try:
-                assert (
-                    len(exact_match_accuracies)
-                    == len(max_supp_attns)
-                    == len(attn_on_targets)
-                    == len(sample_lengths)
-                )
-            except AssertionError:
-                print("Length mismatch in split metrics calculation:")
-                print(f"exact_match_accuracies: {len(exact_match_accuracies)}")
-                print(f"max_supp_attns: {len(max_supp_attns)}")
-                print(f"attn_on_targets: {len(attn_on_targets)}")
-                print(f"sample_lengths: {len(sample_lengths)}")
+                    max_supp_attns.extend(task.evaluators[i][j].max_supp_attn.all)
+                    attn_on_targets.extend(task.evaluators[i][j].attn_on_target.all)
+                    sample_lengths.extend(task.sample_lengths)
 
-            corr_matrices[version] = evaluator.calculate_correlation(
-                exact_match_accuracy=exact_match_accuracies,
-                max_supp_attn=max_supp_attns,
-                attn_on_target=attn_on_targets,
-                sample_lengths=sample_lengths,
-            )
+                    evaluator.parts_answer_correct.add(
+                        task.evaluators[i][j].parts_answer_correct.all
+                    )
+                    evaluator.parts_attn_on_target.add(
+                        task.evaluators[i][j].parts_attn_on_target.all
+                    )
+                    evaluator.parts_max_supp_attn.add(
+                        task.evaluators[i][j].parts_max_supp_attn.all
+                    )
+                    evaluator.ids_with_attn_on_target.update(
+                        task.evaluators[i][j].ids_with_attn_on_target
+                    )
+                    # self.task_features.extend(task.parts_features)
+
+                    # get the reasoning scores
+                    for flat_score_name in REASONING_SCORE_MAP.values():
+                        task_ids_with_scores = task.evaluators[i].__getattribute__(
+                            flat_score_name
+                        )
+                        split_ids_with_scores = evaluator.__getattribute__(
+                            flat_score_name
+                        )
+                        evaluator.__setattr__(
+                            flat_score_name,
+                            {**split_ids_with_scores, **task_ids_with_scores},
+                        )
+                try:
+                    assert len(evaluator.parts_answer_correct) == len(
+                        self.seen_context_lengths
+                    )
+                except AssertionError:
+                    print("Length mismatch in split metrics calculation:")
+                    print(
+                        f"parts_answer_correct: {len(evaluator.parts_answer_correct)}"
+                    )
+                    print(f"seen_context_lengths: {len(self.seen_context_lengths)}")
+                try:
+                    assert (
+                        len(exact_match_accuracies)
+                        == len(max_supp_attns)
+                        == len(attn_on_targets)
+                        == len(sample_lengths)
+                    )
+                except AssertionError:
+                    print("Length mismatch in split metrics calculation:")
+                    print(f"exact_match_accuracies: {len(exact_match_accuracies)}")
+                    print(f"max_supp_attns: {len(max_supp_attns)}")
+                    print(f"attn_on_targets: {len(attn_on_targets)}")
+                    print(f"sample_lengths: {len(sample_lengths)}")
+
+                correlation_dict = evaluator.calculate_correlation(
+                    exact_match_accuracy=exact_match_accuracies,
+                    max_supp_attn=max_supp_attns,
+                    attn_on_target=attn_on_targets,
+                    sample_lengths=sample_lengths,
+                )
+                corr_matrices[version].append(correlation_dict)
         return corr_matrices
 
 
@@ -1247,9 +1347,6 @@ def print_metrics(data_level: Sample | Task | Split) -> None:
     elif type(data_level) is Split:
         id_ = data_level.name
 
-    print_metrics_table(
-        evaluators=[
-            evaluators[0] for evaluators in data_level.evaluators if evaluators
-        ],
-        id_=id_,
-    )
+    print_metrics_table(evaluators=data_level.evaluators, id_=id_)
+    for i, version in enumerate(data_level.versions):
+        print(f"Consistency {version}:", data_level.consistency[i].get_mean())

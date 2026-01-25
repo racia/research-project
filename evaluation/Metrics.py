@@ -63,11 +63,7 @@ class Metric:
         :param value: the string value
         :return: the mapped float value
         """
-        mapping = {
-            "fully": 1.0,
-            "partially": 0.5,
-            "none": 0.0
-        }
+        mapping = {"fully": 1.0, "partially": 0.5, "none": 0.0}
         return mapping.get(value.lower(), 0.0)
 
     def add(

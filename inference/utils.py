@@ -264,7 +264,7 @@ def wrap_text(text, width=40):
 
 
 def print_metrics_table(
-    evaluators: list[MetricEvaluator | AnswerEvaluator],
+    evaluators: list[list[MetricEvaluator | AnswerEvaluator]],
     id_: Any = None,
 ) -> None:
     """
@@ -276,72 +276,70 @@ def print_metrics_table(
     """
     table = PrettyTable()
 
+    num_duplications = len(evaluators[0])
+    versions = [[f"Before {i}" for i in range(1, num_duplications + 1)]]
     if len(evaluators) == 2:
-        versions = ["Before", "After"]
-        table.field_names = ["Metric", *versions]
-    elif len(evaluators) == 1:
-        versions = ["Before"]
-        table.field_names = ["Metric", *versions]
-    else:
-        raise ValueError("Only one or two MetricEvaluators can be provided.")
+        versions += [[f"After {i}" for i in range(1, num_duplications + 1)]]
 
+    table.field_names = ["Metric", *flatten(versions)]
     metric_values = defaultdict(dict)
 
-    # TODO: to integrate!
-    for evaluator, version in zip(evaluators, versions):
-        metric_values["Exact-match accuracy"][version] = (
-            f"{evaluator.exact_match_accuracy.get_mean()} ± {evaluator.exact_match_accuracy.get_std()}"
-            if len(evaluator.exact_match_accuracy) > 1
-            else evaluator.exact_match_accuracy.get_mean()
-        )
-        metric_values["Soft-match accuracy"][version] = (
-            f"{evaluator.soft_match_accuracy.get_mean()} ± {evaluator.soft_match_accuracy.get_std()}"
-            if len(evaluator.soft_match_accuracy) > 1
-            else evaluator.soft_match_accuracy.get_mean()
-        )
-        if evaluator.max_supp_attn:
-            metric_values["Max attention ratio"][version] = (
-                f"{evaluator.max_supp_attn.get_mean()} ± {evaluator.max_supp_attn.get_std()}"
-                if len(evaluator.max_supp_attn) > 1
-                else evaluator.max_supp_attn.get_mean()
+    for version_evaluators, dupl_versions in zip(evaluators, versions):
+        for evaluator, version in zip(version_evaluators, dupl_versions):
+            metric_values["Exact-match accuracy"][version] = (
+                f"{evaluator.exact_match_accuracy.get_mean()} ± {evaluator.exact_match_accuracy.get_std()}"
+                if len(evaluator.exact_match_accuracy) > 1
+                else evaluator.exact_match_accuracy.get_mean()
             )
-        if evaluator.attn_on_target:
-            metric_values["Attention on Target"][version] = (
-                f"{evaluator.attn_on_target.get_mean()} ± {evaluator.attn_on_target.get_std()}"
-                if len(evaluator.attn_on_target) > 1
-                else evaluator.attn_on_target.get_mean()
+            metric_values["Soft-match accuracy"][version] = (
+                f"{evaluator.soft_match_accuracy.get_mean()} ± {evaluator.soft_match_accuracy.get_std()}"
+                if len(evaluator.soft_match_accuracy) > 1
+                else evaluator.soft_match_accuracy.get_mean()
             )
-        if evaluator.bleu:
-            metric_values["BLEU score"][version] = (
-                f"{evaluator.bleu.get_mean()} ± {evaluator.bleu.get_std()}"
-                if len(evaluator.bleu) > 1
-                else evaluator.bleu.get_mean()
-            )
-        if evaluator.rouge:
-            metric_values["ROUGE score"][version] = (
-                f"{evaluator.rouge.get_mean()} ± {evaluator.rouge.get_std()}"
-                if len(evaluator.rouge) > 1
-                else evaluator.rouge.get_mean()
-            )
-        if evaluator.meteor:
-            metric_values["METEOR score"][version] = (
-                f"{evaluator.meteor.get_mean()} ± {evaluator.meteor.get_std()}"
-                if len(evaluator.meteor) > 1
-                else evaluator.meteor.get_mean()
-            )
-        if evaluator.max_supp_attn_corr:
-            metric_values["Max Attn Ratio Correlation"][version] = (
-                f"{evaluator.max_supp_attn_corr.get_mean()} ± {evaluator.max_supp_attn_corr.get_std()}"
-                if len(evaluator.max_supp_attn_corr) > 1
-                else evaluator.max_supp_attn_corr.get_mean()
-            )
-        if evaluator.attn_on_target_corr:
-            metric_values["Attn on Target Correlation"][version] = (
-                f"{evaluator.attn_on_target_corr.get_mean()} ± {evaluator.attn_on_target_corr.get_std()}"
-                if len(evaluator.attn_on_target_corr) > 1
-                else evaluator.attn_on_target_corr.get_mean()
-            )
+            if evaluator.max_supp_attn:
+                metric_values["Max attention ratio"][version] = (
+                    f"{evaluator.max_supp_attn.get_mean()} ± {evaluator.max_supp_attn.get_std()}"
+                    if len(evaluator.max_supp_attn) > 1
+                    else evaluator.max_supp_attn.get_mean()
+                )
+            if evaluator.attn_on_target:
+                metric_values["Attention on Target"][version] = (
+                    f"{evaluator.attn_on_target.get_mean()} ± {evaluator.attn_on_target.get_std()}"
+                    if len(evaluator.attn_on_target) > 1
+                    else evaluator.attn_on_target.get_mean()
+                )
+            if evaluator.bleu:
+                metric_values["BLEU score"][version] = (
+                    f"{evaluator.bleu.get_mean()} ± {evaluator.bleu.get_std()}"
+                    if len(evaluator.bleu) > 1
+                    else evaluator.bleu.get_mean()
+                )
+            if evaluator.rouge:
+                metric_values["ROUGE score"][version] = (
+                    f"{evaluator.rouge.get_mean()} ± {evaluator.rouge.get_std()}"
+                    if len(evaluator.rouge) > 1
+                    else evaluator.rouge.get_mean()
+                )
+            if evaluator.meteor:
+                metric_values["METEOR score"][version] = (
+                    f"{evaluator.meteor.get_mean()} ± {evaluator.meteor.get_std()}"
+                    if len(evaluator.meteor) > 1
+                    else evaluator.meteor.get_mean()
+                )
+            if hasattr(evaluator, "max_supp_attn_corr"):
+                metric_values["Max Attn Ratio Correlation"][version] = (
+                    f"{evaluator.max_supp_attn_corr.get_mean()} ± {evaluator.max_supp_attn_corr.get_std()}"
+                    if len(evaluator.max_supp_attn_corr) > 1
+                    else evaluator.max_supp_attn_corr.get_mean()
+                )
+            if hasattr(evaluator, "attn_on_target_corr"):
+                metric_values["Attn on Target Correlation"][version] = (
+                    f"{evaluator.attn_on_target_corr.get_mean()} ± {evaluator.attn_on_target_corr.get_std()}"
+                    if len(evaluator.attn_on_target_corr) > 1
+                    else evaluator.attn_on_target_corr.get_mean()
+                )
 
+    versions = flatten(versions)
     for metric_name, values in metric_values.items():
         row = [metric_name]
         for version in versions:
@@ -349,7 +347,7 @@ def print_metrics_table(
         table.add_row(row)
 
     if id_:
-        print(f"\nMetrics for {evaluators[0].level} {id_}:")
+        print(f"\nMetrics for {evaluators[0][0].level} {id_}:")
     print(table)
 
 
@@ -382,7 +380,7 @@ def is_nan(value: Any) -> bool:
 
 def update_attributes(all_attributes: dict, new_attributes: dict) -> dict:
     """
-    Update the attributes dictionary with new attributes to collect multiple values for the same key.
+    Update the attribute dictionary with new attributes to collect multiple values for the same key.
 
     :param all_attributes: existing attributes
     :param new_attributes: new attributes to add

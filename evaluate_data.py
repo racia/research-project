@@ -13,6 +13,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from collections import defaultdict
 from pathlib import Path
@@ -202,9 +203,17 @@ def run(
                         )
 
                 sample.add_part(part)
+                part.analyse_consistency()
+                print(
+                    "self.consistency:",
+                    json.dumps(part.consistency, indent=4),
+                    sep="\n",
+                )
+                # TODO: find objects from distractor sentences and check whether inconsistent answers contain them
                 result = part.get_result()
+                print("result", json.dumps(result, indent=4), sep="\n")
 
-                # necessary only if we want to addition more columns to our original results
+                # necessary only if we want to add more columns to our original results
                 # otherwise we can just create separate tables or files
                 saver.save_output(
                     data=[result],
@@ -212,18 +221,27 @@ def run(
                     file_name=results_file_name,
                 )
             sample.calculate_metrics()
-            task.add_sample(sample)
 
             if verbose:
                 sample.print_sample_predictions()
                 print_metrics(sample)
-            for evaluator, version in zip(sample.evaluators, sample.versions):
-                metrics = list(
-                    format_metrics(evaluator.get_metrics(as_lists=True)).values()
-                )
-                print(f"Metrics for {evaluator.level} {version}:", metrics, end="\n\n")
+
+            task.add_sample(sample)
+
+            for version, version_evaluators in zip(sample.versions, sample.evaluators):
+                for i, evaluator in enumerate(version_evaluators, start=1):
+                    metrics = list(
+                        format_metrics(evaluator.get_metrics(as_lists=True)).values()
+                    )
+                    print(
+                        f"[v{i}] Metrics for {evaluator.level} {version}:",
+                        metrics,
+                        end="\n\n",
+                    )
 
         task.set_results()
+
+        raise ValueError("Stopping for debug")
 
         split.add_task(task)
         print(
@@ -233,149 +251,142 @@ def run(
         if verbose:
             print_metrics(task)
         task_corr_matrices = task.calculate_metrics()
-        for version, evaluator, corr_matrix in zip(
+        for version, version_evaluators, corr_matrix in zip(
             task.versions, task.evaluators, task_corr_matrices.values()
         ):
-            # Plot Attention vs Seen Context Lengths for the Task
-            plotter.plot_correlation(
+            for i, evaluator in enumerate(version_evaluators):
+                # Plot Attention vs Seen Context Lengths for the Task
+                plotter.plot_correlation(
                     x_data={"seen_context_lengths": task.seen_context_lengths},
                     y_data=evaluator.parts_attn_on_target.all,
                     x_label="Seen Context Lengths",
                     y_label="Attention on Target Tokens",
                     file_name=f"attn_on_target.pdf",
                     plot_name_add=[f"Task-{task_id}"],
-                    path_add=Path(version, f"Task-{task_id}"),
+                    path_add=Path(version, f"task_{task_id}"),
                     level="task",
                 )
-            # Attn on Target for Accuracy
-            plotter.plot_correlation(
-                x_data=evaluator.get_accuracies(as_lists=True),
-                y_data=evaluator.attn_on_target.all,
-                x_label="Accuracy",
-                y_label="Attention on Target Tokens",
-                file_name=f"acc-attn_on_target.pdf",
-                plot_name_add=[f"Task-{task_id}"],
-                path_add=Path(version, f"Task-{task_id}"),
-                level="task",
-                include_soft=False,
-                label_add=[f"s{sample.sample_id}" for sample in task.samples],
-            )
+                # Attn on Target for Accuracy
+                plotter.plot_correlation(
+                    x_data=evaluator.get_accuracies(as_lists=True),
+                    y_data=evaluator.attn_on_target.all,
+                    x_label="Accuracy",
+                    y_label="Attention on Target Tokens",
+                    file_name=f"acc-attn_on_target.pdf",
+                    plot_name_add=[f"Task-{task_id}"],
+                    path_add=Path(version, f"task_{task_id}"),
+                    level="task",
+                    include_soft=False,
+                    label_add=[f"s{sample.sample_id}" for sample in task.samples],
+                )
 
-            # Attn on Target for Target Distances by Answer Correct
-            plotter.plot_corr_boxplot(
-                x_data={
-                    "parts_target_distances": task.parts_target_distances.all
-                },
-                y_data={
-                    "parts_attn_on_target": evaluator.parts_attn_on_target.all,
-                    "parts_answer_correct": evaluator.parts_answer_correct.all,
-                    "parts_features": task.parts_features[version],
-                },
-                x_label="Target Sentence Distances",
-                y_label="Attention On Target",
-                displ_percentage=False,
-                version=version,
-                file_name=f"attn-target_distances.pdf",
-                plot_name_add=[f"Task-{task_id}"],
-                path_add=Path(version, f"Task-{task_id}"),
-            )
-            # Attn on Target for Answer Correct by Parts Features
-            plotter.plot_corr_boxplot(
-                x_data={
-                    "parts_answer_correct": evaluator.parts_answer_correct.all,
-                },
-                y_data={
-                    "parts_attn_on_target": evaluator.parts_attn_on_target,
-                    "parts_features": task.parts_features[version],
-                },
-                x_label="Answer Correct",
-                y_label="Attention On Target",
-                displ_percentage=False,
-                version=version,
-                file_name=f"attn-ans_correct.pdf",
-                plot_name_add=[f"Task-{task_id}"],
-                path_add=Path(version, f"Task-{task_id}"),
-            )
+                # Attn on Target for Target Distances by Answer Correct
+                plotter.plot_corr_boxplot(
+                    x_data={"parts_target_distances": task.parts_target_distances.all},
+                    y_data={
+                        "parts_attn_on_target": evaluator.parts_attn_on_target.all,
+                        "parts_answer_correct": evaluator.parts_answer_correct.all,
+                        "parts_features": task.parts_features[version],
+                    },
+                    x_label="Target Sentence Distances",
+                    y_label="Attention On Target",
+                    displ_percentage=False,
+                    version=version,
+                    file_name=f"attn-target_distances.pdf",
+                    plot_name_add=[f"Task-{task_id}"],
+                    path_add=Path(version, f"task_{task_id}"),
+                )
+                # Attn on Target for Answer Correct by Parts Features
+                plotter.plot_corr_boxplot(
+                    x_data={
+                        "parts_answer_correct": evaluator.parts_answer_correct.all,
+                    },
+                    y_data={
+                        "parts_attn_on_target": evaluator.parts_attn_on_target,
+                        "parts_features": task.parts_features[version],
+                    },
+                    x_label="Answer Correct",
+                    y_label="Attention On Target",
+                    displ_percentage=False,
+                    version=version,
+                    file_name=f"attn-ans_correct.pdf",
+                    plot_name_add=[f"Task-{task_id}"],
+                    path_add=Path(version, f"task_{task_id}"),
+                )
 
-            # Attn on target for Anwer in Self by Answer Correct
-            plotter.plot_corr_boxplot(
-                x_data={
-                    "parts_answer_in_self": task.parts_answer_in_self
-                },
-                y_data={
-                    "parts_attn_on_target": evaluator.parts_attn_on_target.all,
-                    "parts_answer_correct": evaluator.parts_answer_correct.all,
-                },
-                x_label="Answer In Self",
-                y_label="Attention On Target",
-                displ_percentage=False,
-                version=version,
-                file_name=f"attn-ans_in_self.pdf",
-                plot_name_add=[f"Task-{task_id}"],
-                path_add=Path(version, f"Task-{task_id}"),
-            )
-            # Attn on Target for Seen Context Lengths by Answer Correct
-            plotter.plot_corr_boxplot(
-                x_data={
-                    "parts_seen_context_lengths": task.seen_context_lengths
-                },
-                y_data={
-                    "parts_attn_on_target": evaluator.parts_attn_on_target.all,
-                    "parts_answer_correct": evaluator.parts_answer_correct.all,
-                },
-                x_label="Seen Context Lengths",
-                y_label="Attention On Target",
-                displ_percentage=False,
-                version=version,
-                file_name=f"attn-seen_context_lengths.pdf",
-                plot_name_add=[f"Task-{task_id}"],
-                path_add=Path(version, f"Task-{task_id}"),
-            )
-            # Answer Correct for Seen Context Lengths by Answer In Self
-            plotter.plot_corr_hist(
-                x_data={
-                    "parts_seen_context_lengths": task.seen_context_lengths
-                },
-                y_data={
-                    "parts_answer_correct": evaluator.parts_answer_correct.all,
-                    "parts_answer_in_self": task.parts_answer_in_self,
-                },
-                x_label="Seen Context Lengths",
-                y_label="Parts Answer In[Correct]",
-                displ_percentage=True,
-                file_name=f"parts_answer_correct.pdf",
-                plot_name_add=[f"Task-{task_id}"],
-                path_add=Path(version, f"Task-{task_id}"),
-            )
+                # Attn on target for Anwer in Self by Answer Correct
+                plotter.plot_corr_boxplot(
+                    x_data={"parts_answer_in_self": task.parts_answer_in_self},
+                    y_data={
+                        "parts_attn_on_target": evaluator.parts_attn_on_target.all,
+                        "parts_answer_correct": evaluator.parts_answer_correct.all,
+                    },
+                    x_label="Answer In Self",
+                    y_label="Attention On Target",
+                    displ_percentage=False,
+                    version=version,
+                    file_name=f"attn-ans_in_self.pdf",
+                    plot_name_add=[f"Task-{task_id}"],
+                    path_add=Path(version, f"task_{task_id}"),
+                )
+                # Attn on Target for Seen Context Lengths by Answer Correct
+                plotter.plot_corr_boxplot(
+                    x_data={"parts_seen_context_lengths": task.seen_context_lengths},
+                    y_data={
+                        "parts_attn_on_target": evaluator.parts_attn_on_target.all,
+                        "parts_answer_correct": evaluator.parts_answer_correct.all,
+                    },
+                    x_label="Seen Context Lengths",
+                    y_label="Attention On Target",
+                    displ_percentage=False,
+                    version=version,
+                    file_name=f"attn-seen_context_lengths.pdf",
+                    plot_name_add=[f"Task-{task_id}"],
+                    path_add=Path(version, f"task_{task_id}"),
+                )
+                # Answer Correct for Seen Context Lengths by Answer In Self
+                plotter.plot_corr_hist(
+                    x_data={"parts_seen_context_lengths": task.seen_context_lengths},
+                    y_data={
+                        "parts_answer_correct": evaluator.parts_answer_correct.all,
+                        "parts_answer_in_self": task.parts_answer_in_self,
+                    },
+                    x_label="Seen Context Lengths",
+                    y_label="Parts Answer In[Correct]",
+                    displ_percentage=True,
+                    file_name=f"parts_answer_correct.pdf",
+                    plot_name_add=[f"Task-{task_id}"],
+                    path_add=Path(version, f"task_{task_id}"),
+                )
 
-            plotter.correlation_map(
-                data=corr_matrix,
-                level=evaluator.level,
-                version=version,
-                file_name=f"corr_matrix_task_{task_id}.pdf",
-                id=task_id,
-            )
+                plotter.correlation_map(
+                    data=corr_matrix,
+                    level=evaluator.level,
+                    version=version,
+                    file_name=f"corr_matrix_task_{task_id}.pdf",
+                    id=task_id,
+                )
 
-            saver.save_json(
-                data=corr_matrix,
-                file_path=f"corr_matrix_task_{task_id}.json",
-                path_add=Path(version),
-            )
-
-            metrics_to_save = defaultdict(dict)
-            metrics = list(
-                format_metrics(evaluator.get_metrics(as_lists=True)).values()
-            )
-            for metric in metrics:
-                metrics_to_save[metric["task_id"]].update(metric)
-
-            for metric in metrics_to_save.values():
-                saver.save_output(
-                    data=[metric],
-                    headers=list(metric.keys()),
-                    file_name=f"eval_script_metrics_{version}.csv",
+                saver.save_json(
+                    data=corr_matrix,
+                    file_path=f"corr_matrix_task_{task_id}.json",
                     path_add=Path(version),
                 )
+
+                metrics_to_save = defaultdict(dict)
+                metrics = list(
+                    format_metrics(evaluator.get_metrics(as_lists=True)).values()
+                )
+                for metric in metrics:
+                    metrics_to_save[metric["task_id"]].update(metric)
+
+                for metric in metrics_to_save.values():
+                    saver.save_output(
+                        data=[metric],
+                        headers=list(metric.keys()),
+                        file_name=f"eval_script_metrics_{version}.csv",
+                        path_add=Path(version),
+                    )
 
     if verbose:
         # NB! Prints only for the first duplicate version
@@ -387,31 +398,32 @@ def run(
     )
 
     split_corr_matrices = split.calculate_metrics()
-    for version, evaluator, features, corr_matrix in zip(
+    for version, version_evaluators, features, corr_matrix in zip(
         split.versions, split.evaluators, split.features, split_corr_matrices.values()
     ):
-        # SAVING
-        saver.save_json(
-            data=corr_matrix,
-            file_path=f"corr_matrix_split_{split.name}.json",
-            path_add=version,
-        )
-        saver.save_split_features(
-            features=features,
-            metrics_file_name="eval_script_features.csv",
-            version=version,
-        )
+        for i, evaluator in enumerate(version_evaluators):
+            # SAVING
+            saver.save_json(
+                data=corr_matrix,
+                file_path=f"corr_matrix_split_{split.name}.json",
+                path_add=version,
+            )
+            saver.save_split_features(
+                features=features,
+                metrics_file_name="eval_script_features.csv",
+                version=version,
+            )
 
-        # PLOTTING
-        plotter.correlation_map(
-            data=corr_matrix,
-            level=evaluator.level,
-            version=version,
-            split_name=split.name,
-            file_name=f"corr_matrix_split_{split.name}.pdf",
-        )
-        # Plot Accuracy vs Attn on Target for the Split
-        plotter.plot_correlation(
+            # PLOTTING
+            plotter.correlation_map(
+                data=corr_matrix,
+                level=evaluator.level,
+                version=version,
+                split_name=split.name,
+                file_name=f"corr_matrix_split_{split.name}.pdf",
+            )
+            # Plot Accuracy vs Attn on Target for the Split
+            plotter.plot_correlation(
                 x_data=evaluator.get_accuracies(as_lists=True),
                 y_data=evaluator.attn_on_target.all,
                 x_label="Accuracy",
@@ -424,128 +436,128 @@ def run(
                 label_add=[f"t{task.task_id}" for task in split.tasks],
             )
 
-        # Attn on Target for Seen Context Lengths by Answer Correct
-        plotter.plot_corr_boxplot(
-            x_data={"seen_context_lengths": split.seen_context_lengths},
-            y_data={
-                "parts_attn_on_targets": evaluator.parts_attn_on_target.all,
-                "parts_answer_correct": evaluator.parts_answer_correct.all,
-            },
-            x_label="Seen Context Lengths",
-            y_label="Attention On Target",
-            displ_percentage=False,
-            version=version,
-            level="split",
-            file_name=f"attn-seen_context_lengths_{split.name}.pdf",
-            plot_name_add=[f"Split-{split.name}"],
-            path_add=Path(version, f"Split-{split.name}"),
-        )
-        # Attn on Target for Target Distances by Answer Correct
-        plotter.plot_corr_boxplot(
-            x_data={"parts_target_distances": split.parts_target_distances},
-            y_data={
-                "parts_attn_on_targets": evaluator.parts_attn_on_target.all,
-                "parts_answer_correct": evaluator.parts_answer_correct.all,
-            },
-            x_label="Target Sentence Distances",
-            y_label="Attention On Target",
-            level="split",
-            displ_percentage=False,
-            version=version,
-            file_name=f"attn-target_distances_{split.name}.pdf",
-            plot_name_add=[f"Split-{split.name}"],
-            path_add=Path(version, f"Split-{split.name}"),
-        )
-        # Answer Correct for Seen Context Lengths by Answer In Self
-        plotter.plot_corr_hist(
-            x_data={"parts_seen_context_lengths": split.seen_context_lengths},
-            y_data={
-                "parts_answer_correct": evaluator.parts_answer_correct.all,
-                "parts_answer_in_self": split.parts_answer_in_self,
-            },
-            x_label="Parts Seen Context Lengths",
-            y_label="Parts Answer [In]Correct",
-            level="split",
-            displ_percentage=True,
-            file_name=f"parts_answer_correct_{split.name}.pdf",
-            plot_name_add=[f"Split-{split.name}"],
-            path_add=Path(version, f"Split-{split.name}"),
-        )
-        print(
-            f"\nPlotting accuracies and standard deviation for results '{version}'...",
-            end="\n\n",
-        )
-        plotter.plot_acc_with_std(
-            acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
-            y_label="Accuracies with Standard Deviations",
-            plot_name_add=[split.name, version],
-        )
-        print(
-            f"\nPlotting attentions for results '{version}'...",
-            end="\n\n",
-        )
-        plotter.plot_acc_with_std(
-            acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
-            y_label="Attentions",
-            plot_name_add=[split.name, version],
-        )
-        print(
-            f"\nPlotting reasoning scores for results '{version}'...",
-            end="\n\n",
-        )
-        plotter.plot_acc_with_std(
-            acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
-            y_label="Reasoning Scores",
-            plot_name_add=[split.name, version],
-        )
-        print(
-            f"\nPlotting correlations for results '{version}' between metrics:",
-            evaluator.get_correlations(as_lists=True),
-            end="\n\n",
-        )
+            # Attn on Target for Seen Context Lengths by Answer Correct
+            plotter.plot_corr_boxplot(
+                x_data={"seen_context_lengths": split.seen_context_lengths},
+                y_data={
+                    "parts_attn_on_targets": evaluator.parts_attn_on_target.all,
+                    "parts_answer_correct": evaluator.parts_answer_correct.all,
+                },
+                x_label="Seen Context Lengths",
+                y_label="Attention On Target",
+                displ_percentage=False,
+                version=version,
+                level="split",
+                file_name=f"attn-seen_context_lengths_{split.name}.pdf",
+                plot_name_add=[f"Split-{split.name}"],
+                path_add=Path(version, f"Split-{split.name}"),
+            )
+            # Attn on Target for Target Distances by Answer Correct
+            plotter.plot_corr_boxplot(
+                x_data={"parts_target_distances": split.parts_target_distances},
+                y_data={
+                    "parts_attn_on_targets": evaluator.parts_attn_on_target.all,
+                    "parts_answer_correct": evaluator.parts_answer_correct.all,
+                },
+                x_label="Target Sentence Distances",
+                y_label="Attention On Target",
+                level="split",
+                displ_percentage=False,
+                version=version,
+                file_name=f"attn-target_distances_{split.name}.pdf",
+                plot_name_add=[f"Split-{split.name}"],
+                path_add=Path(version, f"Split-{split.name}"),
+            )
+            # Answer Correct for Seen Context Lengths by Answer In Self
+            plotter.plot_corr_hist(
+                x_data={"parts_seen_context_lengths": split.seen_context_lengths},
+                y_data={
+                    "parts_answer_correct": evaluator.parts_answer_correct.all,
+                    "parts_answer_in_self": split.parts_answer_in_self,
+                },
+                x_label="Parts Seen Context Lengths",
+                y_label="Parts Answer [In]Correct",
+                level="split",
+                displ_percentage=True,
+                file_name=f"parts_answer_correct_{split.name}.pdf",
+                plot_name_add=[f"Split-{split.name}"],
+                path_add=Path(version, f"Split-{split.name}"),
+            )
+            print(
+                f"\nPlotting accuracies and standard deviation for results '{version}'...",
+                end="\n\n",
+            )
+            plotter.plot_acc_with_std(
+                acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
+                y_label="Accuracies with Standard Deviations",
+                plot_name_add=[split.name, version],
+            )
+            print(
+                f"\nPlotting attentions for results '{version}'...",
+                end="\n\n",
+            )
+            plotter.plot_acc_with_std(
+                acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
+                y_label="Attentions",
+                plot_name_add=[split.name, version],
+            )
+            print(
+                f"\nPlotting reasoning scores for results '{version}'...",
+                end="\n\n",
+            )
+            plotter.plot_acc_with_std(
+                acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
+                y_label="Reasoning Scores",
+                plot_name_add=[split.name, version],
+            )
+            print(
+                f"\nPlotting correlations for results '{version}' between metrics:",
+                evaluator.get_correlations(as_lists=True),
+                end="\n\n",
+            )
 
-        # ERROR CASES
-        print("Saving result categories...")
-        plotter.plot_answer_type_per_part(
-            Results.CASE_COUNTERS[version],
-            specification={
-                "setting": setting,
-                "experiment": experiment,
-                "version": version,
-            },
-        )
-        for score in ("bleu", "rouge", "meteor"):
+            # ERROR CASES
+            print("Saving result categories...")
             plotter.plot_answer_type_per_part(
                 Results.CASE_COUNTERS[version],
                 specification={
                     "setting": setting,
                     "experiment": experiment,
                     "version": version,
-                    "score": score.upper(),
                 },
-                reasoning_scores=evaluator.__getattribute__(f"ids_with_{score}"),
             )
-        plotter.plot_answer_type_per_part(
-            Results.CASE_COUNTERS[version],
-            specification={
-                "setting": setting,
-                "experiment": experiment,
-                "version": version,
-                "score": "ATTN_ON_TARGET",
-            },
-            reasoning_scores=evaluator.ids_with_attn_on_target,
-        )
-        for case, case_list in Results.CASE_COUNTERS[version].items():
-            headers = "id_\ttask_id\tsample_id\tpart_id"
-            if case_list:
-                saver.save_with_separator(
-                    saver.run_path / version / f"{case}.txt",
-                    [headers] + case_list,
-                    sep="\n",
+            for score in ("bleu", "rouge", "meteor"):
+                plotter.plot_answer_type_per_part(
+                    Results.CASE_COUNTERS[version],
+                    specification={
+                        "setting": setting,
+                        "experiment": experiment,
+                        "version": version,
+                        "score": score.upper(),
+                    },
+                    reasoning_scores=evaluator.__getattribute__(f"ids_with_{score}"),
                 )
-                print(f"Case {case}: detected {len(case_list)} occurrences.")
-            else:
-                print(f"Case {case}: detected 0 occurrences. Nothing!")
+            plotter.plot_answer_type_per_part(
+                Results.CASE_COUNTERS[version],
+                specification={
+                    "setting": setting,
+                    "experiment": experiment,
+                    "version": version,
+                    "score": "ATTN_ON_TARGET",
+                },
+                reasoning_scores=evaluator.ids_with_attn_on_target,
+            )
+            for case, case_list in Results.CASE_COUNTERS[version].items():
+                headers = "id_\ttask_id\tsample_id\tpart_id"
+                if case_list:
+                    saver.save_with_separator(
+                        saver.run_path / version / f"{case}.txt",
+                        [headers] + case_list,
+                        sep="\n",
+                    )
+                    print(f"Case {case}: detected {len(case_list)} occurrences.")
+                else:
+                    print(f"Case {case}: detected 0 occurrences. Nothing!")
 
     print(f"Plots produced: {plotter.plot_counter_prompt}")
     print("\nThe evaluation pipeline has finished successfully.")
@@ -601,17 +613,27 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
 
 
 if __name__ == "__main__":
-    results_paths = []
+    results_paths = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v2/all_tasks_joined/joined_direct_answer_results.csv",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v3/all_tasks_joined/joined_direct_answer_results.csv",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v4/all_tasks_joined/joined_direct_answer_results.csv",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
+    ]
+    save_path = "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/test-eval/"
     # path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
     # args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
-    args = parse_args()
+
+    # args = parse_args()
+
     # python3.12 evaluate_data.py --results_path baseline/28-05-2025/22-39-52/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv --save_path results/here --samples_per_task 15 --create_heatmaps --verbose
+
     run(
-        results_paths=args.results_paths,
-        save_path=args.save_path,
-        samples_per_task=args.samples_per_task,
+        results_paths=results_paths,
+        save_path=save_path,
+        samples_per_task=1,  # args.samples_per_task,
         setting="baseline",
-        experiment="reasoning_answer",
-        create_heatmaps=args.create_heatmaps,
-        verbose=args.verbose,
+        experiment="direct_answer",
+        create_heatmaps=False,  # args.create_heatmaps,
+        verbose=True,  # args.verbose,
     )

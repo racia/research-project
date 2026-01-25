@@ -398,10 +398,15 @@ class DataLoader:
             multi_system=True,
             lookup=True,
         )
-        multi_system = False
+        multi_system = True
+        duplicates_checked = False
         for i, rows in enumerate(zip(*data_from_paths)):
             if rows[0]["sample_id"] > self.samples_per_task:
                 continue
+
+            if not duplicates_checked:
+                SamplePart.num_dupl = len(rows)
+                duplicates_checked = True
 
             identifier = (rows[0]["task_id"], rows[0]["sample_id"], rows[0]["part_id"])
             if identifier not in raw_parts.keys():
@@ -412,20 +417,17 @@ class DataLoader:
                 for version in ["before", "after"]:
                     if not row.get(f"model_output_{version}", None):
                         multi_system = False
+                        raw_part.multi_system = False
                         continue
 
                     if not row[f"model_output_{version}"]:
                         raise ValueError(
-                            f"Model output {version} is not found in row {row['id_']}: {row[f'model_output_{version}']}"
+                            f"Model output {version} is not found in row {row['id_']}: "
+                            f"{row[f'model_output_{version}']}"
                         )
 
-                    multi_system = True
-                    # TODO: remove "attn_scores" subfolder for newer results
                     attn_path = (
-                        Path(results_paths[j]).parent
-                        / version
-                        / "interpretability"
-                        / "attn_scores"
+                        Path(results_paths[j]).parent / version / "interpretability"
                     )
                     interpretability = self.load_interpretability(
                         task_id=row["task_id"],
@@ -451,10 +453,8 @@ class DataLoader:
                         part_id=row["part_id"],
                         version=version,
                     )
-                    raw_part.results[j][-1].ids, raw_part.results[j][-1].tokens = (
-                        ids,
-                        tokens,
-                    )
+                    raw_part.results[raw_part.version_map[version]][j].ids = ids
+                    raw_part.results[raw_part.version_map[version]][j].tokens = tokens
             parts.append(raw_part)
 
         if len(parts) != self.number_of_parts:
@@ -562,8 +562,7 @@ class DataLoader:
             )
             return InterpretabilityResult(np.array([]), [], [], 0.0, 0.0)
 
-        # TODO: change to "interpretability"
-        if path.name != "attn_scores":
+        if path.name != "interpretability":
             raise ValueError("The attention subdirectory is not located.")
 
         try:
