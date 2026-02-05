@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 
 from data.DataLoader import DataLoader
 from evaluation.utils import check_or_create_directory
+from settings.config import Enumerate
 
 
 def run(data_path: str):
@@ -22,7 +23,8 @@ def run(data_path: str):
     :param data_path: path to the data
     :return: None
     """
-    loader = DataLoader()
+    enum = Enumerate(context=True, question=False)
+    loader = DataLoader(samples_per_task=100, to_enumerate=enum)
     path = f"{PREFIX}/data/{data_path}"
     data = loader.load_task_data(path=path, split="test", multi_system=False)
     check_or_create_directory(f"{PREFIX}/plots")
@@ -31,6 +33,7 @@ def run(data_path: str):
     c_before_q = {}
     amount_of_samples = {}
     questions_per_sample = {}
+    print(data)
     for task in data.keys():
         amount_of_samples[task] = 0
         questions_per_sample[task] = []
