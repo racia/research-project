@@ -145,4 +145,4 @@ def write_stats_to_txt(
 
 
 if __name__ == "__main__":
-    run(data_path="tasks_1-20_v1-2/en-valid")
+    run(data_path="./tasks_1-20_v1-2/en-valid")
