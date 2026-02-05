@@ -1,18 +1,17 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=master_results
+#SBATCH --job-name=evaluate
 
-#SBATCH --time=6:00:00              # Job time limit (30 minutes)
+#SBATCH --time=01:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
+#SBATCH --cpus-per-task=2            # Number of CPU cores per task
+#SBATCH --mem=1GB                    # Total memory requested
+#SBATCH --partition=cpu
 
 # Output and error logs
-#SBATCH --output="master_res_out.txt"
-#SBATCH --error="master_res_err.txt"
-
-# Email notifications
-#SBATCH --mail-user=""
-#SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
+#SBATCH --output="eval_out.txt"        # TODO: adjust standard output log
+#SBATCH --error="eval_err.txt"         # TODO: adjust error log
 
 ### JOB STEPS START HERE ###
 # fix working directory
@@ -38,10 +37,24 @@ else
     echo "The project environment '$ENV_NAME' activated successfully."
 fi
 
-# Run the Python script
-SCRIPT="scripts/create_master_result_file.py"
+# Toggle args here
+VERBOSE=true
+HEATMAPS=false
+RES_PATH="path/to/results"
+SAVE_PATH="path/to/save"
+SAMPLES_PER_TASK=100
 
-python3 "$SCRIPT"
+ARGS=(
+  --results_path "$RES_PATH"
+  --save_path "$SAVE_PATH"
+  --samples_per_task "$SAMPLES_PER_TASK"
+)
+
+[ "$VERBOSE" = true ] && ARGS+=(--verbose)
+[ "$HEATMAPS" = true ] && ARGS+=(--create_heatmaps)
+
+python "$SCRIPT" "${ARGS[@]}"
+
 
 # Verify if the script executed successfully
 if [ $? -eq 0 ]; then
