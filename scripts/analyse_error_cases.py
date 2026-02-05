@@ -9,11 +9,7 @@ import warnings
 from collections import defaultdict
 from pathlib import Path
 
-from evaluation.utils import (
-    ERROR_CASES,
-    CASES_TO_SIMPLE_ANS,
-    CASES_TO_SIMPLE_REAS,
-)
+from evaluation.utils import CASES_TO_SIMPLE_ANS, CASES_TO_SIMPLE_REAS, ERROR_CASES
 from inference.utils import flatten
 from plots.Plotter import Plotter
 from plots.utils import get_paths
