@@ -3,19 +3,16 @@
 # - the total number of questions;
 # - the total number of lines of context for each task;
 # - the number of lines of context before each question.
-
 from pathlib import Path
-
-import matplotlib.pyplot as plt
-
-from data.DataLoader import DataLoader
-from evaluation.utils import check_or_create_directory
 
 PREFIX = Path.cwd()
 while PREFIX.name != "research-project":
     PREFIX = PREFIX.parent
 
-print(PREFIX)
+import matplotlib.pyplot as plt
+
+from data.DataLoader import DataLoader
+from evaluation.utils import check_or_create_directory
 
 
 def run(data_path: str):
