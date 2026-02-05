@@ -15,6 +15,8 @@ PREFIX = Path.cwd()
 while PREFIX.name != "research-project":
     PREFIX = PREFIX.parent
 
+print(PREFIX)
+
 
 def run(data_path: str):
     """
@@ -25,7 +27,7 @@ def run(data_path: str):
     """
     loader = DataLoader()
     path = f"{PREFIX}/data/{data_path}"
-    data = loader.load_task_data(path=path, split="test")
+    data = loader.load_task_data(path=path, split="test", multi_system=False)
     check_or_create_directory(f"{PREFIX}/plots")
     q_stats = {}
     c_stats = {}
