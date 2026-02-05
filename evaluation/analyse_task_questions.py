@@ -3,7 +3,6 @@
 # - the total number of questions;
 # - the total number of lines of context for each task;
 # - the number of lines of context before each question.
-from pathlib import Path
 
 from pathlib import Path
 
@@ -106,6 +105,41 @@ def run(data_path: str):
     plt.ylabel("Amount of Questions per Sample")
     plt.title("Amount of Questions per Sample")
     plt.savefig("plots/questions_per_sample.png")
+
+    write_stats_to_txt(
+        output_path=f"{PREFIX}/plots/task_statistics.txt",
+        q_stats=q_stats,
+        c_stats=c_stats,
+        c_before_q=c_before_q,
+        amount_of_samples=amount_of_samples,
+        questions_per_sample=questions_per_sample,
+    )
+
+
+def write_stats_to_txt(
+    output_path: str,
+    q_stats: dict,
+    c_stats: dict,
+    c_before_q: dict,
+    amount_of_samples: dict,
+    questions_per_sample: dict,
+):
+    with open(output_path, "w") as f:
+        for task in q_stats.keys():
+            f.write(f"Task: {task}\n")
+            f.write("-" * 50 + "\n")
+
+            f.write(f"Number of samples: {amount_of_samples[task]}\n")
+            f.write(f"Total number of questions: {sum(q_stats[task])}\n")
+            f.write(f"Questions per sample: {q_stats[task]}\n")
+            f.write(f"Questions per sample (counted): {questions_per_sample[task]}\n")
+
+            f.write(f"Total lines of context: {sum(c_stats[task])}\n")
+            f.write(f"Lines of context per sample: {c_stats[task]}\n")
+
+            f.write(f"Lines of context before each question: {c_before_q[task]}\n")
+
+            f.write("\n\n")
 
 
 if __name__ == "__main__":
