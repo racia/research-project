@@ -8,6 +8,7 @@
 
 from __future__ import annotations
 
+import argparse
 import re
 import shutil
 import warnings
@@ -372,32 +373,38 @@ def run(
 
 if __name__ == "__main__":
     paths = [
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_1",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_2",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_3",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/16-10-2025/task_4/task_4",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_5",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_6",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_7",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_8",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_9",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_10",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_11",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_12",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_13",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_14",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/19-10-2025/task_15/task_15",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/15-09-2025/task_16/task_16",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_17",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_18",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/16-10-2025/task_19/task_19",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_20",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_1",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_2",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_3",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_4",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined_unfinished/task_5_all",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_6",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_7",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_8",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_9",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_10",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_11",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_12",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_13",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_14",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_15",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_16",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_17",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_18",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_19",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_20",
     ]
 
-    result_directory = "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/all_tasks_joined"
+    result_directory = "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined_new"
+    
+    parser = argparse.ArgumentParser(description="Join data from multiple sources.")
+    parser.add_argument("--paths", nargs="+", default=paths, help="List of source paths.")
+    parser.add_argument("--result_dir", type=str, default=result_directory, help="Target result directory.")
+    args = parser.parse_args()
+    
     run(
-        source_paths=paths,
-        target_directory=result_directory,
-        level="task",
-        keyword="_results",  # example: "t_20" for a specific task, "reasoning_results" for generally saved results
+        source_paths=args.paths,
+        target_directory=args.result_dir,
+        level="task",  # choose either "task" or "sample"
+        keyword="reasoning",  # example: "t_20" for a specific task, "reasoning_results" for generally saved results
     )  # might not work if too general!

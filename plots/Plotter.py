@@ -178,7 +178,7 @@ class Plotter:
         try:
             if step >= 1:
                 plt.xticks(range(min_x_len, max_x_len + 1, step))
-            elif step > 0:
+            elif step > 0 and step < 1:
                 plt.xticks(np.arange(0, max_x_len + 0.1, step))
             elif step == 0:
                 pass
@@ -193,16 +193,16 @@ class Plotter:
         if "accurac" in y_label.lower():
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
-            y_ticks = np.arange(0, 0.09, 0.01)
-            plt.ylim(bottom=0, top=0.1)
+            y_ticks = np.arange(0, 0.7, 0.1)
+            plt.ylim(bottom=0, top=0.6)
         elif "reasoning" in y_label.lower():
             plt.ylim(bottom=0, top=1)
         elif displ_percentage:
             plt.ylim(bottom=0, top=1.01)
         
-        plt.yticks = y_ticks
+        plt.yticks(y_ticks)
 
-        type_of_data = " ".join([part.capitalize() for part in y_label.split(" ")])
+        type_of_data = " ".join([part.capitalize() if part not in ["Per", "Of", "On"] else part for part in y_label.split(" ")])
         plt.ylabel(type_of_data)
 
         plt.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
@@ -261,6 +261,7 @@ class Plotter:
         cbar.ax.tick_params(labelsize=5)
         # Display x labels diagonally
         plt.xticks(rotation=25, ha="right")
+        plt.yticks(rotation=25, ha="right")
 
         plt.title(f"Correlation Map for {level} {split_name if split_name else id} ({version})", fontsize=12)
         plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
@@ -309,8 +310,10 @@ class Plotter:
         plt.ylabel("Model Output Tokens", fontdict={"size": 10})
 
         plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=60, ha="right")
-        plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
-
+        try:
+            plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
+        except TypeError as e:
+            print(str(e))
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
 
@@ -601,8 +604,8 @@ class Plotter:
         # Determine which answer categories to use
         if use_reasoning_scores:
             answer_types = ["ans_corr", "ans_incorr", "ans_null"]
-            max_score = max(reasoning_scores.values()) if reasoning_scores else 1.0
-            min_score = min(reasoning_scores.values()) if reasoning_scores else 0.0
+            max_score = max([val for val in reasoning_scores.values() if not isinstance(val, str)]) if reasoning_scores else 1.0
+            min_score = min([val for val in reasoning_scores.values() if not isinstance(val, str)]) if reasoning_scores else 0.0
         else:
             # exclude simple answer/reasoning types
             answer_types = [
@@ -670,12 +673,21 @@ class Plotter:
                         case = ids_cases[idx]
                         if use_reasoning_scores and idx in reasoning_scores:
                             score = reasoning_scores[idx]
+                            try:
+                                assert isinstance(score, (int, float))
+                            except AssertionError:
+                                print(f"Non-numeric reasoning score for index {idx}: {score}")
+                                warnings.warn(
+                                    f"Non-numeric reasoning score for index {idx}, cannot color."
+                                )
+                                continue
                             # Normalize score to [0, 1]
                             norm_score = (
                                 (score - min_score) / (max_score - min_score)
                                 if max_score > min_score
                                 else 0
                             )
+
                             colormap = colors[answer_types.index(case)]
                             # Resolve colormap object
                             if isinstance(colormap, str) and colormap.startswith("#"):
@@ -726,6 +738,11 @@ class Plotter:
                     for p_idx, p in enumerate(parts):
                         idx = (task, s, p)
                         if idx in reasoning_scores and not mask[s_idx, p_idx]:
+                            try:
+                                assert isinstance(reasoning_scores[idx], (int, float))
+                            except AssertionError:
+                                print(f"Non-numeric reasoning score for index {idx}: {score}")
+                                continue
                             score = round(reasoning_scores[idx], 2)
                             ax.text(
                                 p_idx,
@@ -1067,6 +1084,15 @@ class Plotter:
             list(zip(*x_data.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
         )
+        max_x_len = max(df[x_label])
+        min_x_len = min(df[x_label])
+        if max_x_len > 100:
+            step_size = 5
+        elif max_x_len > 30:
+            step_size = 2
+        else:
+            step_size = 1
+
         label_column = " ".join(df.columns[2].split("_")).title() if len(df.columns)>2 else None
 
         if "correct" in y_label.lower(): # e.g. parts_answer_correct
@@ -1088,9 +1114,6 @@ class Plotter:
 
         for col_name in [f"parts_{feat}" for feat in ["attn_on_target", "max_supp_attn"] if f"parts_{feat}" in df.columns]:
             df[col_name] = df[col_name].round(2)  # Ensure numeric values are rounded if needed
-        max_x_len = max(df[x_label])
-        min_x_len = min(df[x_label])
-        step_size = 2 if max_x_len > 30 else 1
 
         pivot_ratios = df.pivot_table(values=[corr_ratio, incorr_ratio], sort=False, index=x_label, columns=df.columns[2], fill_value=0) #parts_answer_correct first
         pivot_ratios.sort_index(axis=1, level=1, inplace=True, sort_remaining=False) # sort for labels
@@ -1187,17 +1210,19 @@ class Plotter:
                     zip(range(5), y_data["parts_features"].keys())
                 )
             )
-            print(mapping)
             feat_str = [
                 mapping.get(i, "False")
                 for i, part in enumerate(x.split("-"))
                 if part in ["True", "1"]
             ]
-            print("feat_str before:", feat_str, version)
             feat_str = [f.removesuffix(f"_{version}")
                         for f in feat_str]
-            print("feat_str after:", feat_str)
             return "-".join(feat_str) if feat_str else None
+
+        if any(lab in x_label.lower() for lab in ["correct", "in self"]):
+            df[x_label] = df[x_label].map({0.0: "Not in Self", 1.0: "In Self", 0: "Incorrect", 1: "Correct"})
+        else:
+            df[x_label] = df[x_label].round()
         # Combine parts features to single column
         if "parts_features" in y_data:
             label_order = [" ".join('"-"'.join(comb).split("_")).title().join('""') for L in range(1, 3) for comb in itertools.combinations(Features.attrs, L)]
@@ -1214,7 +1239,7 @@ class Plotter:
         special = ["No Features", "True", "False"]
         mask = ~df[label_column].isin(special)
         df.loc[mask, label_column] = df.loc[mask, label_column].apply(lambda x: " ".join(x.split("_")).capitalize().join('""'))
-        df[x_label] = df[x_label].round()
+        
         ax = sns.boxplot(
             data=df, 
             x=x_label, 
