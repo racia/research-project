@@ -420,21 +420,20 @@ if __name__ == "__main__":
     # from settings.baseline.sources_reasoning import *
     # from settings.skyline.sources_da import *
     # from settings.skyline.sources_reasoning import *
-    from settings.feedback.sources_reasoning import *
-
-    # from settings.SD.sources_reasoning import *
-
-    # SD v1 missing task 20
+    # from settings.feedback.sources_reasoning import *
 
     # TODO: NB! The difference in paths the script should detect must be on the same level in the file tree!
-    paths = []
-    result = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_9"
+    paths = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined_old",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_5",
+    ]
+    result = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_5_full?"
     run(
-        source_paths=sd_reasoning_v1_t_9,
+        source_paths=paths,
         target_directory=result,
         level="sample",  # 'task' or 'sample'
         # might not work if too general! try "_results"
-        keyword=f"t_9",  # example: "t_20" for a specific task,
+        keyword=f"t_5",  # example: "t_20" for a specific task,
         # "reasoning_results", "direct_answer_results", for generally saved results
         task="reasoning",  # 'reasoning' or 'direct_answer' (direct answer)
     )
