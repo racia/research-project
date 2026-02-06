@@ -1220,7 +1220,7 @@ class Plotter:
             return "-".join(feat_str) if feat_str else None
 
         if any(lab in x_label.lower() for lab in ["correct", "in self"]):
-            df[x_label] = df[x_label].map({0.0: "Not in Self", 1.0: "In Self", 0: "Incorrect", 1: "Correct"})
+            df[x_label] = df[x_label].map({0.0: "In previous parts", 1.0: "In current part", 0: "Incorrect", 1: "Correct"})
         else:
             df[x_label] = df[x_label].round()
         # Combine parts features to single column
