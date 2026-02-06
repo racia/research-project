@@ -659,6 +659,12 @@ class Sample:
             )
         for evaluator, result in zip(self.evaluators, part.results):
             evaluator.golden_answers.append(part.golden_answer)
+            try:
+                assert "<|eot_id|>" not in result.model_answer.lower(), (
+                    f"Model answer contains 'eot': {result.model_answer}"
+                )
+            except AssertionError as e:
+                warnings.warn(str(e))
             evaluator.pred_answers.append(result.model_answer)
             evaluator.pred_reasonings.append(result.model_reasoning)
             if result.model_reasoning:

@@ -238,6 +238,7 @@ def run(
                             task_id=part.task_id,
                             sample_id=part.sample_id,
                             part_id=part.part_id,
+                            version=version,
                             title=f"Attention Map for Task {part.task_id} Sample {part.sample_id} "
                             f"Part {part.part_id} (version: {version}, case: {result.category}, "
                             f"{', '.join(conditions_add)})",
@@ -289,6 +290,7 @@ def run(
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
             )
+
             # Attn on Target for Accuracy
             plotter.plot_correlation(
                 x_data=evaluator.get_accuracies(as_lists=True),
