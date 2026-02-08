@@ -758,19 +758,21 @@ class Sample:
             f"Seen Context Lengths", "seen_context_lengths"
         )
         sample_part_lengths = []
+        sample_context_line_nums = []
         for part in self.parts:
             context_length = len(part.context_line_nums)
             if context_length:
                 if part.context_line_nums[0] == 1:
                     sample_part_lengths = []
+                    sample_context_line_nums = []
                 sample_part_lengths.append(context_length)
+                sample_context_line_nums.extend(part.context_line_nums)
             self.seen_context_lengths.add(sum(sample_part_lengths))
             # How far the target is from the question
             target_sent_dist = round(
-                part.context_line_nums[-1] - mean(part.supporting_sent_inx), 2
+                sample_context_line_nums[-1] - mean(part.supporting_sent_inx), 2
             )
             self.target_sent_dist.add(target_sent_dist)
-        # TODO: double-check
         self.sample_length = self.seen_context_lengths.all[-1]
 
         for evaluator in self.evaluators:

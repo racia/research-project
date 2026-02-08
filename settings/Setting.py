@@ -184,9 +184,7 @@ class Setting(ABC):
                     end="\n\n\n",
                 )
                 # Only run the model if the results are not loaded
-                if not self.part.results or not any(
-                    [self.part.results[-1].ids, self.part.results[-1].tokens]
-                ):
+                if not self.part.results:
                     print("Calling the model...")
                     decoded_output, interpretability = self.model.call(self.part)
                     self.part.set_output(
@@ -203,6 +201,7 @@ class Setting(ABC):
                     )
                 else:
                     print("The results are already loaded, skipping the model call...")
+                    print("self.part.results", self.part.results)
                     self.model.chat.add_message(
                         part=self.part,
                         source=Source.user,

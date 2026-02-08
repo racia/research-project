@@ -445,7 +445,7 @@ class Chat:
         conversation_length = len(chat_ids)
         # including the system prompt
         for i, message in enumerate(self.messages):
-            message_ids = get_generation_token_ids(
+            message_ids, message_tokens = get_generation_token_ids(
                 self.tokenizer, message["role"], start=i == 0
             )
             message_ids.extend(flatten(message[datatype]))

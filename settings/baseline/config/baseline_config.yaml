@@ -23,8 +23,8 @@ data:
   # Order: train, valid, test
   splits:
     train: False
-    valid: True
-    test: False
+    valid: False
+    test: True
   # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]

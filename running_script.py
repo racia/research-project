@@ -13,7 +13,7 @@ from omegaconf import DictConfig, OmegaConf
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from evaluation.Evaluator import MetricEvaluator
-from inference.DataLevels import Split
+from inference.DataLevels import Split, print_metrics, print_metrics_table
 from inference.Prompt import Prompt
 from plots.Plotter import Plotter
 from settings.Model import Model

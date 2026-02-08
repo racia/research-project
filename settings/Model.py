@@ -128,7 +128,7 @@ class Model:
         Whenever a string message is added, it is encoded, so the chat assumes all the encoded ids to be in place.
 
         :param data: The data to be used for the model call. It can be a SamplePart or a string.
-        :param from_chat: Whether the message is from the chat or not
+        :param from_chat: Whether the message is from the chat or not; when True, data is ignored
         :param to_continue: Whether the model should continue the last message or not
         :param filter_eot: Whether to filter the <|eot_id|> token from the end of the output or not
         :return: The decoded model output
@@ -168,9 +168,10 @@ class Model:
                     temperature=self.temperature,
                     pad_token_id=self.tokenizer.eos_token_id,
                     do_sample=True if self.temperature > 0 else False,
-                    use_cache=False,
+                    use_cache=True,
                     num_beams=1,  # no beam search, reduce GPU memory usage
                 )
+                torch.cuda.empty_cache()
                 encoded_output = outputs[0][inputs["input_ids"].size(1) :]
 
                 # remove eot token if it is at the end of the output
@@ -222,7 +223,6 @@ class Model:
                             output_attentions=True,
                             output_hidden_states=False,
                         )
-                        print("Output tensor attentions:", output_tensor["attentions"])
                         if type(data) is not SamplePart:
                             raise TypeError(
                                 "For interpretability plotting, data should be of type SamplePart"
