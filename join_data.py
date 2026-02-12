@@ -418,6 +418,8 @@ def run(
 if __name__ == "__main__":
     # from settings.baseline.sources_da import *
     # from settings.baseline.sources_reasoning import *
+    # from settings.baseline.sources_basic_da import *
+    # from settings.baseline.sources_basic_reasoning import *
     # from settings.skyline.sources_da import *
     # from settings.skyline.sources_reasoning import *
     # from settings.feedback.sources_reasoning import *
