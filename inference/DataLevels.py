@@ -12,16 +12,16 @@ from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
 from evaluation.Metrics import Metric
 from evaluation.Statistics import Statistics
 from inference.utils import (
+    REASONING_SCORE_MAP,
     contains_not_mentioned,
     contains_pronouns,
     contains_there,
     contains_verb,
     context_sentences,
+    is_nan,
     print_metrics_table,
     structure_part,
     wrap_text,
-    is_nan,
-    REASONING_SCORE_MAP,
 )
 from interpretability.utils import InterpretabilityResult as InterResult
 from settings.config import Enumerate, Wrapper
@@ -322,6 +322,7 @@ class SamplePart:
         wrapper: Wrapper = None,
         to_enumerate: Enumerate = None,
         multi_system: bool = False,
+        keywords: dict = None,
     ):
         """
         Initialize the part.
@@ -336,6 +337,7 @@ class SamplePart:
         :param wrapper: the wrapper for the task
         :param to_enumerate: if to enumerate the context sentences and the question
         :param multi_system: whether the part is for the setting with two models
+        :param keywords: dict, the scenery keywords that occur in the line
         """
         self.id_: int = id_
         self.task_id: int = task_id
@@ -375,6 +377,8 @@ class SamplePart:
 
         self.results = []
         self.iterations: int = 0
+
+        self.keywords: dict = keywords
 
     def set_wrapper(self, wrapper: Wrapper = None) -> Wrapper:
         """
