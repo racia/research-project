@@ -1,17 +1,18 @@
 #!/bin/bash
 #
 # Job name
-#SBATCH --job-name=eval_baseline
+#SBATCH --job-name=bbase
 
-#SBATCH --time=5:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:1                 # Request 1 GPU
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
-#SBATCH --mem=128G                    # Total memory requested
+#SBATCH --time=1:10:00              # Time limit hrs:min:sec
+#SBATCH --mem=64G                    # Total memory requested
+#SBATCH --partition=gpu_a100_il  # gpu_a100_short dev_gpu_h100
 
 # Output and error logs
-#SBATCH --output="eval_baseline.txt"
-#SBATCH --error="eval_baseline_err.txt"
+#SBATCH --output="basic_baseline_out.txt"        # TODO: adjust standard output log
+#SBATCH --error="basic_baseline_err.txt"         # TODO: adjust error log
 
 # Email notifications
 #SBATCH --mail-user=""              # TODO: Add your email address
@@ -29,10 +30,21 @@ else
     echo "Module util is not available. Using manually installed python and CUDA..."
 fi
 
+# conda install nvidia::cuda==12.4.0
+# conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
+
 # initialize shell to work with bash
 source ~/.bashrc 2>/dev/null
 
 # Activate the conda environment
+#ENV_NAME="research-project-3"
+#echo "Activating the project environment: $ENV_NAME"
+#if ! conda activate $ENV_NAME; then
+#    echo "Error: Failed to activate the project environment '$ENV_NAME'."
+#    exit 1
+#else
+#    echo "The project environment '$ENV_NAME' activated successfully."
+#fi
 ENV_NAME=".env"
 echo "Activating the project environment: $ENV_NAME"
 if ! source $ENV_NAME/bin/activate; then
@@ -62,16 +74,46 @@ fi
 ) > gpu_monitor.log &
 MONITOR_PID=$!#
 
+# Run the Python script
+SCRIPT="running_script.py"
+
 # Set the environment variable to allow PyTorch to allocate more memory
 export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 
-REP_DIR="/pfs/work9/workspace/scratch/hd_nc326-research-project"
 
-# the data should already be joined!!!
-JOINED_DATA_PATH="$REP_DIR/baseline/test/reasoning/results_file.csv" # TODO: Adjust the path to your results file
-SAVE_PATH="$REP_DIR/baseline/test/reasoning/" # TODO: Adjust the path to your save directory (choose wisely!)
+# declare array of config paths and names, e.g. "/path/to/config config_name"
+# TODO: add config(s) to array
+#declare -a CONFIGS=(
+#  "$HOME/research-project/settings/baseline/config basic_baseline_test_da"
+#)
+#
+#for CONFIG in "${CONFIGS[@]}"
+#do
+#  CONFIG_PATH=$(echo $CONFIG | cut -d ' ' -f 1)
+#  CONFIG_NAME=$(echo $CONFIG | cut -d ' ' -f 2)
+#  echo "Running the script for DA with config: CONFIG_PATH=$CONFIG_PATH, CONFIG_NAME=$CONFIG_NAME"
+#  srun python3 "$SCRIPT" --config-path $CONFIG_PATH --config-name $CONFIG_NAME hydra/job_logging=none
+#done
+#
+## Verify if the script executed successfully
+#if [ $? -eq 0 ]; then
+#    echo "Python script '$SCRIPT' executed successfully."
+#else
+#    echo "Error: Python script '$SCRIPT' failed."
+#    exit 1
+#fi
 
-python3 evaluate_data.py --results_path $JOINED_DATA_PATH --save_path $SAVE_PATH --samples_per_task 100 --create_heatmaps --verbose
+declare -a CONFIGS=(
+  "$HOME/research-project/settings/baseline/config basic_baseline_test_reasoning"
+)
+
+for CONFIG in "${CONFIGS[@]}"
+do
+  CONFIG_PATH=$(echo $CONFIG | cut -d ' ' -f 1)
+  CONFIG_NAME=$(echo $CONFIG | cut -d ' ' -f 2)
+  echo "Running the script for Reasoning with config: CONFIG_PATH=$CONFIG_PATH, CONFIG_NAME=$CONFIG_NAME"
+  srun python3 "$SCRIPT" --config-path $CONFIG_PATH --config-name $CONFIG_NAME hydra/job_logging=none
+done
 
 # Verify if the script executed successfully
 if [ $? -eq 0 ]; then

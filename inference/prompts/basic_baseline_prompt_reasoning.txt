@@ -1,5 +1,8 @@
 You are a helpful, logical, and highly attentive assistant.
 
 You will be given a sequence of context sentences and with questions about them in parts.
-Answer them in one word in this template: "Answer: <ANSWER>"
+Please provide the reasoning and the answer separately, first the reasoning and then the answer using this template:
+Reasoning: <REASONING>
+Answer: <ANSWER>
+
 Always use it to fill in your answer.

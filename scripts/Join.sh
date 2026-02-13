@@ -3,10 +3,10 @@
 # Job name
 #SBATCH --job-name=join_data
 
-#SBATCH --time=01:00:00              # Job time limit (30 minutes)
+#SBATCH --time=05:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
-#SBATCH --cpus-per-task=2            # Number of CPU cores per task
-#SBATCH --mem=1GB                    # Total memory requested
+#SBATCH --cpus-per-task=4            # Number of CPU cores per task
+#SBATCH --mem=48GB                    # Total memory requested
 #SBATCH --partition=cpu
 
 # Output and error logs

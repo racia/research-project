@@ -16,7 +16,7 @@
 
 # Email notifications
 #SBATCH --mail-user=""
-#SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
+#SBATCH --mail-type=BEGIN,END,FAIL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
 # fix working directory

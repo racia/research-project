@@ -26,6 +26,9 @@ while PREFIX.name != "research-project":
     PREFIX = PREFIX.parent
 
 
+FOLDERS_TO_MOVE = ["iterations", "sample_results", "before", "after"]
+
+
 def flatten(items: list) -> Generator:
     """
     Flatten a list of items.
@@ -99,6 +102,7 @@ def define_sources(
 
     :param id_counts: dictionary of task IDs and counts of parts
     :param paths: list of paths to the result files
+    :param level: level of the data to count, either 'task' or 'sample'
     :return: dictionary of paths and task IDs for each path
     """
     items = defaultdict(list)
@@ -157,12 +161,11 @@ def copy_folder_files(
     Does not disambiguate the source paths, so the files should be unique.
     Filtering is only applied to files, not directories.
     """
-    dest_path = dest_path / source_path.name
     path_counter = 0
     dest_path.mkdir(parents=True, exist_ok=True)
     for path in source_path.iterdir():
         if path.is_dir():
-            copy_folder_files(path, dest_path, filter_pattern)
+            copy_folder_files(path, dest_path / path.name, filter_pattern)
         elif path.is_file():
             if "metrics" in path.name:
                 continue
@@ -243,11 +246,50 @@ def join_data(
     return filtered_joined_data, all_headers
 
 
+def process_path(
+    path, diff, full_result_directory, filter_pattern, target_directory, path_counter
+):
+    print("Inspecting path:", path)
+    if path.is_file() and "results" in path.name and path.name.endswith(".csv"):
+        # skip the results files, they are already joined and saved
+        return path_counter
+    elif path.is_dir() and path.name in FOLDERS_TO_MOVE:
+        copy_folder_files(path, full_result_directory / path.name, filter_pattern)
+        return path_counter
+    elif path.is_dir() and path.name.startswith("."):  # hidden folders
+        file_name = f"{path.stem}_{diff}{path.suffix}"
+        copy_folder_files(path, full_result_directory / file_name)
+        return path_counter
+    elif path.is_file():
+        try:
+            file_name = f"{path.stem}_{diff}{path.suffix}"
+            shutil.copy2(path, full_result_directory / file_name)
+            path_counter += 1
+        except shutil.SameFileError:
+            warnings.warn(
+                f"File '{path.name}' already exists in the destination: {target_directory}"
+            )
+        return path_counter
+    else:
+        print("Going one level deeper...")
+        for path in path.iterdir():
+            path_counter = process_path(
+                path,
+                diff,
+                full_result_directory,
+                filter_pattern,
+                target_directory,
+                path_counter,
+            )
+        return path_counter
+
+
 def run(
     source_paths: list[str],
     target_directory: str,
     level: str = "task",
     keyword: str = "results",
+    task: str = "evaluation",
 ) -> None:
     """
     Run the data join.
@@ -256,9 +298,10 @@ def run(
     :param target_directory: path to save the all_samples data
     :param level: level of the data to join, either 'task' or 'sample'
     :param keyword: type_ to search for in the paths
-    :return:
+    :param task: task type, either 'reasoning' or 'direct_answer', used in the results file name
+    :return: None
     """
-    print("You are running the data join script.", end="\n\n")
+    print("You are running the data joining script.", end="\n\n")
 
     if level not in ["task", "sample"]:
         raise ValueError(
@@ -305,13 +348,13 @@ def run(
     print(*headers)
 
     saver = DataSaver(save_to=full_result_directory, loaded_baseline_results=False)
+    additions = [keyword.strip("_"), f"{task}_results"]
     saver.save_output(
         data=joined_data,
         headers=tuple(headers),
-        file_name=f"joined_{keyword}_{level}_results.csv",
+        file_name=f"joined_{additions[0] if additions[0]==additions[1] else '_'.join(additions)}.csv",
     )
 
-    folders_to_move = ["iterations", "sample_results", "before", "after"]
     source_paths = set(
         [
             path.parent if level == "task" else path.parent.parent
@@ -319,45 +362,47 @@ def run(
         ]
     )
     differences = find_difference_in_paths(list(source_paths))
-    ids = "|".join(map(str, flatten(list(sources_items.values()))))
-    assert len(differences) == len(source_paths), (
-        f"The number of differences in the source paths does not match the number of source paths: "
-        f"{len(differences)} != {len(source_paths)}."
+    trimmed_source_paths = []
+    for path in source_paths:
+        while path.name not in differences:
+            path = path.parent
+        trimmed_source_paths.append(path)
+
+    print(
+        "\nFound the following differences in the paths:",
+        *differences,
+        sep="\n- ",
+        end="\n\n",
     )
+    assert len(differences) == len(trimmed_source_paths), (
+        f"The number of differences in the source paths does not match the number of source paths: "
+        f"{len(differences)} != {len(trimmed_source_paths)}."
+    )
+    ids = "|".join(map(str, flatten(list(sources_items.values()))))
     if re.search(r"\d+", keyword):
         key = re.search(r"\d+", keyword).group(0)
     else:
         key = r"\d+"
-    for source_path, diff in zip(source_paths, differences):
+    for source_path, diff in zip(trimmed_source_paths, differences):
         path_counter = 0
         if not diff:
+            warnings.warn("Path diff is empty string for", source_path)
             diff = f"path_{path_counter}"
         if level == "task":
-            filter_pattern = re.compile(rf"(?:{ids})-\d+-\d+|t_(?:{ids})_s_\d+")
+            filter_pattern = re.compile(rf"[-_](?:{ids})-\d+-\d+|t_(?:{ids})_s_\d+")
         elif level == "sample":
-            filter_pattern = re.compile(rf"{key}-(?:{ids})-\d+|t_{key}_s_(?:{ids})")
+            filter_pattern = re.compile(rf"[-_]{key}-(?:{ids})-\d+|t_{key}_s_(?:{ids})")
         else:
             filter_pattern = re.compile(r"")
         for path in Path(source_path).iterdir():
-            if path.is_file() and "results" in path.name and path.name.endswith(".csv"):
-                # skip the results files, they are already joined and saved
-                continue
-            if path.is_dir() and path.name in folders_to_move:
-                copy_folder_files(path, full_result_directory, filter_pattern)
-            if path.is_dir() and path.name.startswith("."):
-                file_name = f"{path.stem}_{diff}{path.suffix}"
-                copy_folder_files(
-                    path, full_result_directory / file_name, filter_pattern
-                )
-            if path.is_file():
-                try:
-                    file_name = f"{path.stem}_{diff}{path.suffix}"
-                    shutil.copy2(path, full_result_directory / file_name)
-                    path_counter += 1
-                except shutil.SameFileError:
-                    warnings.warn(
-                        f"File '{path.name}' already exists in the destination: {target_directory}"
-                    )
+            path_counter = process_path(
+                path,
+                diff,
+                full_result_directory,
+                filter_pattern,
+                target_directory,
+                path_counter,
+            )
         print(
             f"{Path(*Path(source_path).parts[-4:])} ==> {Path(target_directory)} ({path_counter} files copied)"
         )
@@ -371,33 +416,25 @@ def run(
 
 
 if __name__ == "__main__":
-    paths = [
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_1",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_2",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_3",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/16-10-2025/task_4/task_4",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_5",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_6",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_7",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_8",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_9",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_10",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_11",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_12",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_13",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_14",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/19-10-2025/task_15/task_15",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/15-09-2025/task_16/task_16",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_17",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_18",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/16-10-2025/task_19/task_19",
-        "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/task_20",
-    ]
+    # from settings.baseline.sources_da import *
+    # from settings.baseline.sources_reasoning import *
+    # from settings.skyline.sources_da import *
+    # from settings.skyline.sources_reasoning import *
+    # from settings.feedback.sources_reasoning import *
 
-    result_directory = "/pfs/work9/workspace/scratch/hd_nc326-research-project/SD/test/reasoning/all_tasks_joined"
+    # TODO: NB! The difference in paths the script should detect must be on the same level in the file tree!
+    paths = [
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined_old",
+        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_5",
+    ]
+    result = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_5_full?"
     run(
         source_paths=paths,
-        target_directory=result_directory,
-        level="task",
-        keyword="_results",  # example: "t_20" for a specific task, "reasoning_results" for generally saved results
-    )  # might not work if too general!
+        target_directory=result,
+        level="sample",  # 'task' or 'sample'
+        # might not work if too general! try "_results"
+        keyword=f"t_5",  # example: "t_20" for a specific task,
+        # "reasoning_results", "direct_answer_results", for generally saved results
+        task="reasoning",  # 'reasoning' or 'direct_answer' (direct answer)
+    )
+    # TODO: once finished, check the attention scores! They all should be saved in the same folder
