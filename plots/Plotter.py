@@ -199,7 +199,7 @@ class Plotter:
             plt.ylim(bottom=0, top=1)
         elif displ_percentage:
             plt.ylim(bottom=0, top=1.01)
-        
+
         plt.yticks = y_ticks
 
         type_of_data = " ".join([part.capitalize() for part in y_label.split(" ")])
@@ -230,8 +230,8 @@ class Plotter:
             )
         else:
             plt.legend(loc="upper left", bbox_to_anchor=(1, 1), title=legend_title)
-                
-            
+
+
     def correlation_map(
         self,
         data: dict[str, dict[str, tuple]],
@@ -541,7 +541,7 @@ class Plotter:
                     else y_data
                 ),
                 xerr=std_dev,
-                fmt='o', 
+                fmt='o',
                 capsize=4,
                 label="{}{}".format(
                     " ".join(metr_type.split("_")).title(),
@@ -1040,7 +1040,7 @@ class Plotter:
         :return: None
         """
         color_map = {v:color for v, color in zip(FLOAT_2_STR.values(), self.cmap(np.linspace(
-            0, 
+            0,
             0.2,
             len(FLOAT_2_STR)))[::-1])
             } # Colors according to length of label data
@@ -1072,7 +1072,7 @@ class Plotter:
             # Add column for ratio of correct answers per category and label
             correct_per_label = df.groupby([df.columns[0],df.columns[2]], group_keys=True)[df.columns[1]].transform(lambda x: np.sum(x==1))
             incorr_per_label = df.groupby([df.columns[0],df.columns[2]], group_keys=True)[df.columns[1]].transform(lambda x: np.sum(x==0))
-            
+
             corr_ratio = f"{df.columns[1]}_Ratio"
             incorr_ratio = "Incorr_Ratio"
             df[corr_ratio] = correct_per_label / parts_per_class
@@ -1089,15 +1089,15 @@ class Plotter:
         pivot_ratios = df.pivot_table(values=[corr_ratio, incorr_ratio], sort=False, index=x_label, columns=df.columns[2], fill_value=0) #parts_answer_correct first
         pivot_ratios.sort_index(axis=1, level=1, inplace=True, sort_remaining=False) # sort for labels
         bottom = np.zeros(len(pivot_ratios.index))
-        
+
         for class_lab_col in pivot_ratios:
             ax.bar(
-                pivot_ratios.index, 
+                pivot_ratios.index,
                     pivot_ratios[class_lab_col],
-                    width=width, 
+                    width=width,
                     bottom=bottom,
-                    label="[Incorrect] "+class_lab_col[1] if "incorr" in class_lab_col[0].lower() else "[Correct] "+class_lab_col[1], 
-                    color=color_map[class_lab_col[1].lower()], 
+                    label="[Incorrect] "+class_lab_col[1] if "incorr" in class_lab_col[0].lower() else "[Correct] "+class_lab_col[1],
+                    color=color_map[class_lab_col[1].lower()],
                     alpha=0.4 if "incorr" in class_lab_col[0].lower() else None
                 )
             bottom += pivot_ratios[class_lab_col]
@@ -1154,8 +1154,8 @@ class Plotter:
             plt.figure(figsize=(12, 8))
         else:
             plt.figure(figsize=(10, 5))
-        colors = self.cmap(np.linspace(0, 
-                                       0.2, 
+        colors = self.cmap(np.linspace(0,
+                                       0.2,
                                        len(y_data[list(y_data)[-1]]))
                                         )
 
@@ -1206,9 +1206,9 @@ class Plotter:
         df[x_label] = df[x_label].round()
 
         ax = sns.boxplot(
-            data=df, 
-            x=x_label, 
-            y=df.columns[1], 
+            data=df,
+            x=x_label,
+            y=df.columns[1],
             hue=f"{label_column}_" if len(df.columns)>2 else None,
             hue_order=label_order if len(df.columns)>2 else None)
         # Add vertical lines separating x categories

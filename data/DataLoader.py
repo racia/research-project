@@ -106,6 +106,7 @@ class DataLoader:
         prefix: str | Path = "",
         wrapper: Wrapper = None,
         to_enumerate: Enumerate = None,
+        filtering_conditions: dict = None,
     ):
         """
         Initialize the DataLoader.
@@ -116,6 +117,7 @@ class DataLoader:
         :param prefix: path to the data
         :param wrapper: wrapper for the data
         :param to_enumerate: enumeration for the data
+        :param filtering_conditions: conditions to filter the data, e.g. only return samples with correct answers
         """
         self.number_of_parts: int = 0
         self.samples_per_task: int = samples_per_task
@@ -127,6 +129,8 @@ class DataLoader:
 
         self.wrapper: Wrapper = wrapper
         self.to_enumerate: Enumerate = to_enumerate
+
+        self.filtering_conditions = filtering_conditions
 
     @staticmethod
     def get_task_mapping(path: Path) -> dict[int, list[Path]]:
@@ -277,6 +281,11 @@ class DataLoader:
         """
         Load the results or any csv file from the path.
         Please specify the headers to ensure the desired order of the data.
+        When loading results as parts, the data is loaded as a list of SamplePart objects
+        with the outputs and interpretability results added to the respective parts.
+        In this case, the data can be filtered according to the filtering conditions specified in
+        the DataLoader initialization (e.g. only return samples with correct answers).
+        The method returns loaded results and whether they feature a multi-system run.
 
         :param results_path: path to the results, if None, the results_path is used
         :param data_path: path to the source data (is required when loading results as parts)
@@ -408,6 +417,15 @@ class DataLoader:
                     version=version,
                 )
                 raw_part.results[-1].ids, raw_part.results[-1].tokens = ids, tokens
+
+            for attr, desired_value in self.filtering_conditions.items():
+                part_value = getattr(raw_part, attr)
+                if part_value != desired_value:
+                    print(
+                        "Filtering out part with identifier %s due to condition on attribute '%s': %s != %s"
+                    )
+                    continue
+
             parts.append(raw_part)
 
         if len(parts) != self.number_of_parts:
