@@ -197,6 +197,7 @@ def run(
                             task_id=part.task_id,
                             sample_id=part.sample_id,
                             part_id=part.part_id,
+                            version=version,
                             title=f"Attention Map for Task {part.task_id} Sample {part.sample_id} "
                             f"Part {part.part_id} (version: {version}, case: {result.category})",
                         )
@@ -243,7 +244,7 @@ def run(
                     x_label="Seen Context Lengths",
                     y_label="Attention on Target Tokens",
                     file_name=f"attn_on_target.pdf",
-                    plot_name_add=[f"Task-{task_id}"],
+                    plot_name_add=[f"Task-{task_id}", version],
                     path_add=Path(version, f"Task-{task_id}"),
                     level="task",
                 )
@@ -254,11 +255,10 @@ def run(
                 x_label="Accuracy",
                 y_label="Attention on Target Tokens",
                 file_name=f"acc-attn_on_target.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", version],
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
                 include_soft=False,
-                label_add=[f"s{sample.sample_id}" for sample in task.samples],
             )
 
             # Attn on Target for Target Distances by Answer Correct
@@ -276,7 +276,7 @@ def run(
                 displ_percentage=False,
                 version=version,
                 file_name=f"attn-target_distances.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", version],
                 path_add=Path(version, f"Task-{task_id}"),
             )
             # Attn on Target for Answer Correct by Parts Features
@@ -293,7 +293,7 @@ def run(
                 displ_percentage=False,
                 version=version,
                 file_name=f"attn-ans_correct.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", version],
                 path_add=Path(version, f"Task-{task_id}"),
             )
 
@@ -311,7 +311,7 @@ def run(
                 displ_percentage=False,
                 version=version,
                 file_name=f"attn-ans_in_self.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", version],
                 path_add=Path(version, f"Task-{task_id}"),
             )
             # Attn on Target for Seen Context Lengths by Answer Correct
@@ -328,7 +328,7 @@ def run(
                 displ_percentage=False,
                 version=version,
                 file_name=f"attn-seen_context_lengths.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", version],
                 path_add=Path(version, f"Task-{task_id}"),
             )
             # Answer Correct for Seen Context Lengths by Answer In Self
@@ -344,7 +344,7 @@ def run(
                 y_label="Parts Answer In[Correct]",
                 displ_percentage=True,
                 file_name=f"parts_answer_correct.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", version],
                 path_add=Path(version, f"Task-{task_id}"),
             )
 
@@ -436,7 +436,7 @@ def run(
             version=version,
             level="split",
             file_name=f"attn-seen_context_lengths_{split.name}.pdf",
-            plot_name_add=[f"Split-{split.name}"],
+            plot_name_add=[f"Split-{split.name}", version],
             path_add=Path(version, f"Split-{split.name}"),
         )
         # Attn on Target for Target Distances by Answer Correct
@@ -452,7 +452,7 @@ def run(
             displ_percentage=False,
             version=version,
             file_name=f"attn-target_distances_{split.name}.pdf",
-            plot_name_add=[f"Split-{split.name}"],
+            plot_name_add=[f"Split-{split.name}", version],
             path_add=Path(version, f"Split-{split.name}"),
         )
         # Answer Correct for Seen Context Lengths by Answer In Self
@@ -467,7 +467,7 @@ def run(
             level="split",
             displ_percentage=True,
             file_name=f"parts_answer_correct_{split.name}.pdf",
-            plot_name_add=[f"Split-{split.name}"],
+            plot_name_add=[f"Split-{split.name}", version],
             path_add=Path(version, f"Split-{split.name}"),
         )
         print(

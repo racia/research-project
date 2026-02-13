@@ -393,7 +393,7 @@ class DataLoader:
                 interpretability.attn_on_target = row[f"attn_on_target_{version}"]
                 raw_part.set_output(
                     model_output=str(row[f"model_output_{version}"]),
-                    model_answer=str(row[f"model_answer_{version}"]),
+                    model_answer=str(row[f"model_answer_{version}"]).replace("<|eot_id|>", ""),
                     model_reasoning=str(row[f"model_reasoning_{version}"]),
                     interpretability=interpretability,
                     wrapped_task=row["task"],
