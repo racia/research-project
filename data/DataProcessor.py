@@ -103,7 +103,7 @@ class DataProcessor:
                         line_num = int(question_match.group(1))
 
                         raw_part["question"][line_num] = question_match.group(2)
-                        naive_tokens = question_match.group(2).split(" ")
+                        naive_tokens = question_match.group(2).replace("?", "").split(" ")
 
                         supporting_list = [
                             int(x) for x in question_match.group(4).split(" ")
@@ -149,8 +149,7 @@ class DataProcessor:
                     elif context_match:
                         line_num = int(context_match.group(1))
                         raw_part["context"][line_num] = context_match.group(2)
-                        naive_tokens = context_match.group(2).split(" ")
-
+                        naive_tokens = context_match.group(2).strip(".").split(" ")
                         for c_keyword in self.keywords:
                             if any(c_keyword == naive for naive in naive_tokens):
                                 if line_num not in keywords["context"]:
@@ -205,6 +204,6 @@ class DataProcessor:
                 setattr(curr_part, "distractors", [])
 
             print(
-                f"Part ID: {curr_part.part_id}, Supporting facts: {curr_part.supporting_sent_inx}, Distractors: {getattr(curr_part, 'distractors', set())}"
+                f"Task/Sample ID: {curr_part.task_id}/{curr_part.sample_id}, Part ID: {curr_part.part_id}, Supporting facts: {curr_part.supporting_sent_inx}, Distractors: {getattr(curr_part, 'distractors', set())}, Keywords in question: {curr_part.keywords['questions']}, Keywords in context: {curr_part.keywords['context']}"
             )
         return parts
