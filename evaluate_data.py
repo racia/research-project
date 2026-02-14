@@ -17,6 +17,8 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
+import pandas as pd
+
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from data.utils import format_metrics
@@ -238,15 +240,15 @@ def run(
         ):
             # Plot Attention vs Seen Context Lengths for the Task
             plotter.plot_correlation(
-                    x_data={"seen_context_lengths": task.seen_context_lengths},
-                    y_data=evaluator.parts_attn_on_target.all,
-                    x_label="Seen Context Lengths",
-                    y_label="Attention on Target Tokens",
-                    file_name=f"attn_on_target.pdf",
-                    plot_name_add=[f"Task-{task_id}"],
-                    path_add=Path(version, f"Task-{task_id}"),
-                    level="task",
-                )
+                x_data={"seen_context_lengths": task.seen_context_lengths},
+                y_data=evaluator.parts_attn_on_target.all,
+                x_label="Seen Context Lengths",
+                y_label="Attention on Target Tokens",
+                file_name=f"attn_on_target.pdf",
+                plot_name_add=[f"Task-{task_id}"],
+                path_add=Path(version, f"Task-{task_id}"),
+                level="task",
+            )
             # Attn on Target for Accuracy
             plotter.plot_correlation(
                 x_data=evaluator.get_accuracies(as_lists=True),
@@ -263,9 +265,7 @@ def run(
 
             # Attn on Target for Target Distances by Answer Correct
             plotter.plot_corr_boxplot(
-                x_data={
-                    "parts_target_distances": task.parts_target_distances.all
-                }, 
+                x_data={"parts_target_distances": task.parts_target_distances.all},
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -283,7 +283,7 @@ def run(
             plotter.plot_corr_boxplot(
                 x_data={
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
-                }, 
+                },
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target,
                     "parts_features": task.parts_features[version],
@@ -299,9 +299,7 @@ def run(
 
             # Attn on target for Anwer in Self by Answer Correct
             plotter.plot_corr_boxplot(
-                x_data={
-                    "parts_answer_in_self": task.parts_answer_in_self
-                }, 
+                x_data={"parts_answer_in_self": task.parts_answer_in_self},
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -316,9 +314,7 @@ def run(
             )
             # Attn on Target for Seen Context Lengths by Answer Correct
             plotter.plot_corr_boxplot(
-                x_data={
-                    "parts_seen_context_lengths": task.seen_context_lengths
-                }, 
+                x_data={"parts_seen_context_lengths": task.seen_context_lengths},
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -333,9 +329,7 @@ def run(
             )
             # Answer Correct for Seen Context Lengths by Answer In Self
             plotter.plot_corr_hist(
-                x_data={
-                    "parts_seen_context_lengths": task.seen_context_lengths
-                },
+                x_data={"parts_seen_context_lengths": task.seen_context_lengths},
                 y_data={
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
                     "parts_answer_in_self": task.parts_answer_in_self,
@@ -411,17 +405,17 @@ def run(
         )
         # Plot Accuracy vs Attn on Target for the Split
         plotter.plot_correlation(
-                x_data=evaluator.get_accuracies(as_lists=True),
-                y_data=evaluator.attn_on_target.all,
-                x_label="Accuracy",
-                y_label="Attention on Target Tokens",
-                file_name=f"acc-attn_on_target_{split.name}.pdf",
-                plot_name_add=[f"Split-{split.name}"],
-                path_add=Path(version, f"Split-{split.name}"),
-                level="split",
-                include_soft=False,
-                label_add=[f"t{task.task_id}" for task in split.tasks],
-            )
+            x_data=evaluator.get_accuracies(as_lists=True),
+            y_data=evaluator.attn_on_target.all,
+            x_label="Accuracy",
+            y_label="Attention on Target Tokens",
+            file_name=f"acc-attn_on_target_{split.name}.pdf",
+            plot_name_add=[f"Split-{split.name}"],
+            path_add=Path(version, f"Split-{split.name}"),
+            level="split",
+            include_soft=False,
+            label_add=[f"t{task.task_id}" for task in split.tasks],
+        )
 
         # Attn on Target for Seen Context Lengths by Answer Correct
         plotter.plot_corr_boxplot(
@@ -596,6 +590,40 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
             print(f"Unexpected arguments: {unexpected}")
         return args
     return parser.parse_args()
+
+
+def add_completeness_column(path: str, da: bool = False, before: bool = False) -> None:
+    """
+    Add a column to indicate whether the answer/reasoning is complete.
+
+
+    :param path: str, path to the results file to update
+    :param da: bool, indicates whether the setting is DA. Default: False
+    :param before: bool, indicates whether to check the "before" or "after" columns. Default: False (i.e., check "after" columns)
+    :return:
+    """
+    df = pd.read_csv(path)
+    if before:
+        suffix = "before"
+    else:
+        suffix = "after"
+
+    if da:
+        df["completeness"] = df[f"model_answer_{suffix}"].apply(
+            lambda x: True if pd.notna(x) and x.strip() != "" else False
+        )
+    else:
+        # answer is considered complete if both the answer and reasoning are non-empty and non-NA
+        reasoning_complete = df[f"model_reasoning_{suffix}"].apply(
+            lambda x: True if pd.notna(x) and x.strip() != "" else False
+        )
+        answer_complete = df[f"model_answer_{suffix}"].apply(
+            lambda x: True if pd.notna(x) and x.strip() != "" else False
+        )
+
+        df["completeness"] = reasoning_complete & answer_complete
+
+    df.to_csv(f"{path.split('.')[0]}_with_completeness.csv", index=False)
 
 
 if __name__ == "__main__":
