@@ -76,6 +76,10 @@ sd_reasoning_v1_t_20 = [
     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/unjoined/task_20/task_20_s_92_93",
 ]
 sd_reasoning_v1 = [
-    f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_{i}"
+    (
+        f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_{i}"
+        if i != 5
+        else f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_{i}_full"
+    )
     for i in range(1, 21)
 ]

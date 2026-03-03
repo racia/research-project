@@ -290,6 +290,7 @@ def run(
     level: str = "task",
     keyword: str = "results",
     task: str = "evaluation",
+    difference: str = None,
 ) -> None:
     """
     Run the data join.
@@ -299,6 +300,8 @@ def run(
     :param level: level of the data to join, either 'task' or 'sample'
     :param keyword: type_ to search for in the paths
     :param task: task type, either 'reasoning' or 'direct_answer', used in the results file name
+    :param difference: a disambiguating keyword for a single provided source path
+                       (when more, the script finds them automatically)
     :return: None
     """
     print("You are running the data joining script.", end="\n\n")
@@ -308,10 +311,13 @@ def run(
             f"Level '{level}' not recognized. Please choose 'task' or 'sample''."
         )
 
-    if len(source_paths) < 2:
+    if len(source_paths) < 2 and difference is None:
         raise ValueError(
-            "Please provide at least two source_paths to join. Now provided:",
+            "Please provide at least two source_paths to join, or a difference to find. "
+            "Now provided:",
             len(source_paths),
+            "paths and difference:",
+            difference,
         )
 
     full_result_directory = PREFIX / target_directory
@@ -324,6 +330,11 @@ def run(
     data = {}
     loader = DataLoader()
     data_paths = [get_paths(PREFIX / path, keyword=keyword) for path in source_paths]
+    if len(data_paths) != len(source_paths):
+        raise ValueError(
+            f"Number of data paths found does not match the number of source paths provided: "
+            f"{len(data_paths)} != {len(source_paths)}."
+        )
     flat_paths = list(flatten(data_paths))
 
     for path in flat_paths:
@@ -361,7 +372,10 @@ def run(
             for path in sources_items.keys()
         ]
     )
-    differences = find_difference_in_paths(list(source_paths))
+    if difference:
+        differences = [difference]
+    else:
+        differences = find_difference_in_paths(list(source_paths))
     trimmed_source_paths = []
     for path in source_paths:
         while path.name not in differences:
@@ -418,25 +432,28 @@ def run(
 if __name__ == "__main__":
     # from settings.baseline.sources_da import *
     # from settings.baseline.sources_reasoning import *
+
     # from settings.baseline.sources_basic_da import *
     # from settings.baseline.sources_basic_reasoning import *
+
     # from settings.skyline.sources_da import *
     # from settings.skyline.sources_reasoning import *
+
     # from settings.feedback.sources_reasoning import *
+    # from settings.SD.sources_reasoning import *
 
     # TODO: NB! The difference in paths the script should detect must be on the same level in the file tree!
-    paths = [
-        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined_old",
-        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_5",
-    ]
-    result = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/task_5_full?"
+    paths = []
+
+    result = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined"
     run(
         source_paths=paths,
         target_directory=result,
-        level="sample",  # 'task' or 'sample'
+        level="task",  # 'task' or 'sample'
         # might not work if too general! try "_results"
-        keyword=f"t_5",  # example: "t_20" for a specific task,
+        keyword=f"reasoning_results",  # example: "t_20" for a specific task,
         # "reasoning_results", "direct_answer_results", for generally saved results
         task="reasoning",  # 'reasoning' or 'direct_answer' (direct answer)
+        # difference="all_tasks_joined_old",
+        # 'difference' only necessary when extracting a subset of results from a single source path
     )
-    # TODO: once finished, check the attention scores! They all should be saved in the same folder
