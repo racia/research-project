@@ -117,7 +117,12 @@ class DataLoader:
         :param prefix: path to the data
         :param wrapper: wrapper for the data
         :param to_enumerate: enumeration for the data
-        :param filtering_conditions: conditions to filter the data, e.g. only return samples with correct answers
+        :param filtering_conditions: conditions to filter the data, e.g. only return samples with
+                                     correct answers. These conditions can be specified by providing
+                                     a dictionary with the attribute as key and the desired value as
+                                     value, e.g. {"model_answer": "correct"}.
+                                     Multiple conditions are possible,
+                                     e.g. {"model_answer": "correct", "attn_on_target": 0.5}.
         """
         self.number_of_parts: int = 0
         self.samples_per_task: int = samples_per_task
@@ -129,6 +134,16 @@ class DataLoader:
 
         self.wrapper: Wrapper = wrapper
         self.to_enumerate: Enumerate = to_enumerate
+
+        if filtering_conditions:
+            absent_attributes = []
+            for attr in filtering_conditions:
+                if not hasattr(SamplePart, attr):
+                    absent_attributes.append(attr)
+            if absent_attributes:
+                raise AttributeError(
+                    f"Filtering conditions contain attributes that are not present in the SamplePart class: {absent_attributes}"
+                )
 
         self.filtering_conditions = filtering_conditions
 
