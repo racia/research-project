@@ -92,8 +92,8 @@ class Interpretability:
         # Mean over model layers
         attn_tensor = attn_tensor.mean(dim=0)
 
-        # Takes mean over the attention heads: dimensions, model_output, current task (w/o model output, as it is in
-        # y axis)
+        # Takes mean over the attention heads: dimensions, model_output, current task
+        # (w/o model output, as it is in y-axis)
         attn_tensor = attn_tensor[
             :, -model_output_len:-1, sys_prompt_len:-model_output_len
         ].mean(dim=0)
@@ -114,10 +114,9 @@ class Interpretability:
             if attn_scores.size > 0 and attn_scores.ndim == 2:
                 attn_scores_T = attn_scores.transpose(1, 0)
             elif attn_scores.ndim == 1:
-                warnings.warn(f"DEBUG: Single row of attention scores:\n{attn_scores}")
-                attn_scores_T = attn_scores.reshape(1, -1).T
-            elif attn_scores.ndim == 0:
-                warnings.warn(f"DEBUG: Empty attention scores:\n{attn_scores}")
+                warnings.warn(
+                    f"DEBUG: Single row of attention scores:\n{attn_scores.shape}"
+                )
                 attn_scores_T = attn_scores.reshape(1, -1)
             else:
                 warnings.warn(
@@ -132,7 +131,7 @@ class Interpretability:
             assert attn_scores_T.shape == (
                 attn_scores_T.shape[0],
                 len(sent_spans),
-            )
+            ), f"Unexpected shape of attention scores: {attn_scores_T.shape}, expected (_, {len(sent_spans)})"
             return attn_scores_T
 
         return attn_scores

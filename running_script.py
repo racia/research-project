@@ -13,7 +13,7 @@ from omegaconf import DictConfig, OmegaConf
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from evaluation.Evaluator import MetricEvaluator
-from inference.DataLevels import Split
+from inference.DataLevels import Split, print_metrics, print_metrics_table
 from inference.Prompt import Prompt
 from plots.Plotter import Plotter
 from settings.Model import Model
@@ -289,11 +289,11 @@ def run_setting(cfg: DictConfig) -> None:
                 else:
                     setting.init_prompt.use_original_prompt()
 
-                # if the current task is the first specified task, start from the specified sample if given
-                if task_id == cfg.data.get("task_ids", [None])[0]:
+                start_from_sample = 0
+                if task_id in loader.tasks and cfg.data.get("for_all_tasks", False):
                     start_from_sample = cfg.data.get("start_from_sample", 0)
-                else:
-                    start_from_sample = 0
+                elif task_id == loader.tasks[0]:
+                    start_from_sample = cfg.data.get("start_from_sample", 0)
 
                 print(
                     f"start_from_sample: {start_from_sample}, task_id: {cfg.data.get('tasks', [None])[0]}"
