@@ -156,7 +156,6 @@ class DataLoader:
         :return: None
         """
         task_map = {}
-
         for dir_path, dir_names, files in os.walk(path):
             for file in files:
                 if file.startswith("qa"):
