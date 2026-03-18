@@ -50,14 +50,15 @@ class DataSaver:
         """
         self.results_path = self.run_path / prompt_name
 
-        try:
-            os.makedirs(self.results_path)
-        except FileExistsError:
-            print(
-                f"Directory {self.results_path} already exists and is not empty. "
-                "Please choose another results_path or empty the directory."
+        i = 1
+        while self.results_path.exists():
+            print(f"Directory {self.results_path} already exists and is not empty. ")
+            self.results_path = (
+                self.results_path.parent / f"{self.results_path.name}_{i}"
             )
-            self.results_path = Path("./outputs") / prompt_name
+            i += 1
+
+        try:
             os.makedirs(self.results_path)
         except OSError:
             print(
@@ -65,7 +66,6 @@ class DataSaver:
                 f"to lack of writing rights. Please check the path."
             )
             self.results_path = Path("./outputs") / prompt_name
-            os.makedirs(self.results_path)
 
         print(f"\nThe results will be saved to {self.results_path}\n")
 

@@ -106,6 +106,7 @@ class DataLoader:
         prefix: str | Path = "",
         wrapper: Wrapper = None,
         to_enumerate: Enumerate = None,
+        filtering_conditions: dict = None,
     ):
         """
         Initialize the DataLoader.
@@ -116,6 +117,12 @@ class DataLoader:
         :param prefix: path to the data
         :param wrapper: wrapper for the data
         :param to_enumerate: enumeration for the data
+        :param filtering_conditions: conditions to filter the data, e.g. only return samples with
+                                     correct answers. These conditions can be specified by providing
+                                     a dictionary with the attribute as key and the desired value as
+                                     value, e.g. {"model_answer": "correct"}.
+                                     Multiple conditions are possible,
+                                     e.g. {"model_answer": "correct", "attn_on_target": 0.5}.
         """
         self.number_of_parts: int = 0
         self.samples_per_task: int = samples_per_task
@@ -127,6 +134,18 @@ class DataLoader:
 
         self.wrapper: Wrapper = wrapper
         self.to_enumerate: Enumerate = to_enumerate
+
+        if filtering_conditions:
+            absent_attributes = []
+            for attr in filtering_conditions:
+                if not hasattr(SamplePart, attr):
+                    absent_attributes.append(attr)
+            if absent_attributes:
+                raise AttributeError(
+                    f"Filtering conditions contain attributes that are not present in the SamplePart class: {absent_attributes}"
+                )
+
+        self.filtering_conditions = filtering_conditions
 
     @staticmethod
     def get_task_mapping(path: Path) -> dict[int, list[Path]]:
@@ -229,7 +248,7 @@ class DataLoader:
         :return: processed data
         """
         processor = DataProcessor(wrapper=self.wrapper, to_enumerate=self.to_enumerate)
-        self.tasks = list(tasks) if bool(tasks) else list(range(1, 21))
+        self.tasks = sorted(list(tasks)) if bool(tasks) else list(range(1, 21))
         raw_data = self.load_raw_task_data(
             path=Path(path), split=split, tasks=self.tasks
         )
@@ -276,6 +295,11 @@ class DataLoader:
         """
         Load the results or any csv file from the path.
         Please specify the headers to ensure the desired order of the data.
+        When loading results as parts, the data is loaded as a list of SamplePart objects
+        with the outputs and interpretability results added to the respective parts.
+        In this case, the data can be filtered according to the filtering conditions specified in
+        the DataLoader initialization (e.g. only return samples with correct answers).
+        The method returns loaded results and whether they feature a multi-system run.
 
         :param results_path: path to the results, if None, the results_path is used
         :param data_path: path to the source data (is required when loading results as parts)
@@ -407,6 +431,15 @@ class DataLoader:
                     version=version,
                 )
                 raw_part.results[-1].ids, raw_part.results[-1].tokens = ids, tokens
+
+            for attr, desired_value in self.filtering_conditions.items():
+                part_value = getattr(raw_part, attr)
+                if part_value != desired_value:
+                    print(
+                        "Filtering out part with identifier %s due to condition on attribute '%s': %s != %s"
+                    )
+                    continue
+
             parts.append(raw_part)
 
         if len(parts) != self.number_of_parts:

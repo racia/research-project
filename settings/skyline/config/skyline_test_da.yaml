@@ -10,6 +10,8 @@ data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
   task_ids: [ 20 ]
   samples_per_task: 100
+  start_from_sample: 0
+  for_all_tasks: false # whether to start from a specific sample for all tasks (will start from 0 otherwise)
   splits:
     train: False
     valid: False
@@ -27,4 +29,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/skyline/test/da/task_20_v5_kim_${now:%d-%m-%Y}_${now:%H-%M-%S}/task_20_v5"
+    dir: "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/${now:%d-%m-%Y}/${now:%H-%M-%S}"

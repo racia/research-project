@@ -1,6 +1,6 @@
 teacher:
   name: "meta-llama/Meta-Llama-3-70B-Instruct"
-  max_new_tokens: 200
+  max_new_tokens: 300
   temperature: 0.1
   to_continue: False
   mode: "eval"
@@ -9,7 +9,7 @@ teacher:
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 200
+  max_new_tokens: 300
   temperature: 0.1
   to_continue: False
   mode: "eval"
@@ -22,7 +22,7 @@ setting:
 
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  baseline_results: "/pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/06-05-2025/21-28-46/init_prompt_reasoning/joined_t_all_task_results.csv"
+  baseline_results: "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv"
   # Order: train, valid, test
   splits:
     train: False
@@ -31,8 +31,9 @@ data:
   # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  task_ids: [ 18, 19, 20 ]
-  samples_per_task: 3
+  task_ids: [ 6 ]
+  start_from_sample: 0
+  samples_per_task: 100
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
@@ -83,7 +84,7 @@ refine_prompt:
 
 logging:
   # if to print the results to a log file, otherwise will print to console
-  print_to_file: False
+  print_to_file: True
 
 results:
   headers:
@@ -125,8 +126,8 @@ results:
     - iterations
     - context_sents_hall_before
 
-  hydra:
-    run:
-      # the run directory with logs, plots, and csv results will be created here
-      # use more folders if needed for distinguishing between different experiments
-      dir: "/pfs/work9/workspace/scratch/hd_nc326-research-project/outputs/test-FD-run/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+hydra:
+  run:
+    # the run directory with logs, plots, and csv results will be created here
+    # use more folders if needed for distinguishing between different experiments
+    dir: "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/unjoined/${now:%d-%m-%Y}/${now:%H-%M-%S}"

@@ -22,7 +22,7 @@ import pandas as pd
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from data.utils import format_metrics
-from inference.DataLevels import Results, Sample, Split, Task, print_metrics
+from inference.DataLevels import Results, Sample, SamplePart, Split, Task, print_metrics
 from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
 
@@ -108,12 +108,59 @@ def get_result(
     return None
 
 
+def validate_inputs(run_fn):
+    """Validate the inputs for the evaluation pipeline."""
+
+    def validation_wrapper(**kwargs):
+        experiment = kwargs.get("experiment", "").lower()
+        supported_experiments = ["reasoning_answer", "direct_answer"]
+        if not experiment:
+            raise ValueError(
+                f"Please provide an experiment to evaluate from {supported_experiments}"
+            )
+        if experiment not in supported_experiments:
+            raise ValueError(
+                f"Experiment '{experiment}' is not supported. "
+                f"Please choose either of {supported_experiments}"
+            )
+        setting = kwargs.get("setting", "").lower()
+        supported_settings = [
+            "baseline",
+            "feedback",
+            "skyline",
+            "speculative_decoding",
+            "sd",
+        ]
+        if not setting:
+            raise ValueError(
+                f"Please provide an experiment setting from {supported_settings}"
+            )
+        if setting not in supported_settings:
+            raise ValueError(
+                f"Setting not recognized, expected one of: {supported_settings}"
+            )
+        if not kwargs.get("results_path", ""):
+            raise ValueError("Please provide a path to the data for evaluation.")
+
+        filtering_conditions = kwargs.get("filtering_condition", {})
+        if filtering_conditions:
+            for attr in filtering_conditions.keys():
+                assert hasattr(
+                    SamplePart, attr
+                ), f"SamplePart does not have the attribute specified in the filtering condition: {attr}"
+        return run_fn(**kwargs)
+
+    return validation_wrapper
+
+
+@validate_inputs
 def run(
     results_path: str,
     save_path: str,
     samples_per_task: int,
     experiment: str,
     setting: str = "baseline",
+    filtering_conditions: dict = None,
     create_heatmaps: bool = True,
     verbose: bool = False,
 ) -> None:
@@ -125,36 +172,26 @@ def run(
     :param samples_per_task: Number of samples per task the results were ran with
     :param experiment: The experiment to evaluate (e.g., "reasoning_answer", "direct_answer")
     :param setting: The setting of the experiment (e.g., "baseline", "feedback")
+    :param filtering_conditions: a dictionary of conditions (SamplePart attributes) and values;
+                                 all the parts having an attribute with such value will be preserved;
+                                 if you need a function result, create a new attribute in
+                                 SamplePart __init__ and use it as a filtering condition
     :param verbose: Whether to print the results to the console
     :param create_heatmaps: Whether to create heatmaps for the interpretability results
     :return: None
     """
     print("You are running the evaluation pipeline.", end="\n\n")
 
-    experiment = experiment.lower()
-    supported_experiments = ["reasoning_answer", "direct_answer"]
-    if experiment not in supported_experiments:
-        raise ValueError(
-            f"Experiment '{experiment}' is not supported. "
-            f"Please choose either of {supported_experiments}"
-        )
-    setting = setting.lower()
-    supported_settings = [
-        "baseline",
-        "feedback",
-        "skyline",
-        "speculative_decoding",
-        "sd",
-    ]
-    if setting not in supported_settings:
-        raise ValueError(
-            f"Setting not recognized, expected one of: {supported_settings}"
-        )
-    if not results_path:
-        raise ValueError("Please provide a path to the data for evaluation.")
-
     print("Loading data...", end="\n\n")
-    loader = DataLoader(prefix=PREFIX, samples_per_task=samples_per_task)
+    if filtering_conditions:
+        print("Employing the following filtering conditions for the evaluation:")
+        for attr, value in filtering_conditions.items():
+            print(f"- {attr} = {value}")
+    loader = DataLoader(
+        prefix=PREFIX,
+        samples_per_task=samples_per_task,
+        filtering_conditions=filtering_conditions,
+    )
     # loaded results in parts with original data, tokens-ids, and interpretability results
     results_data, multi_system = loader.load_results(
         results_path=results_path,
@@ -169,6 +206,10 @@ def run(
     )
     results_file_name = f"{Path(results_path).stem}_upd.csv"
     plotter = Plotter(results_path=saver.run_path, color_map="tab20")
+    if filtering_conditions:
+        conditions_add = [f"{a}={v}" for a, v in filtering_conditions.items()]
+    else:
+        conditions_add = []
 
     print(f"\nLoaded results data for {len(results_data)} tasks.")
     print(f"Loaded {loader.number_of_parts} sample parts created from raw data.")
@@ -179,7 +220,7 @@ def run(
         assert type(task_id) is int
         task = Task(task_id, multi_system=multi_system)
 
-        for sample_id, parts in samples.items():
+        for sample_id, parts in list(samples.items())[:samples_per_task]:
             assert type(sample_id) is int
             sample = Sample(
                 task_id=task_id,
@@ -200,7 +241,8 @@ def run(
                             sample_id=part.sample_id,
                             part_id=part.part_id,
                             title=f"Attention Map for Task {part.task_id} Sample {part.sample_id} "
-                            f"Part {part.part_id} (version: {version}, case: {result.category})",
+                            f"Part {part.part_id} (version: {version}, case: {result.category}, "
+                            f"{', '.join(conditions_add)})",
                         )
 
                 sample.add_part(part)
@@ -245,7 +287,7 @@ def run(
                 x_label="Seen Context Lengths",
                 y_label="Attention on Target Tokens",
                 file_name=f"attn_on_target.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
             )
@@ -256,7 +298,7 @@ def run(
                 x_label="Accuracy",
                 y_label="Attention on Target Tokens",
                 file_name=f"acc-attn_on_target.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
                 include_soft=False,
@@ -276,7 +318,7 @@ def run(
                 displ_percentage=False,
                 version=version,
                 file_name=f"attn-target_distances.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
             # Attn on Target for Answer Correct by Parts Features
@@ -293,7 +335,7 @@ def run(
                 displ_percentage=False,
                 version=version,
                 file_name=f"attn-ans_correct.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
 
@@ -309,7 +351,7 @@ def run(
                 displ_percentage=False,
                 version=version,
                 file_name=f"attn-ans_in_self.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
             # Attn on Target for Seen Context Lengths by Answer Correct
@@ -324,7 +366,7 @@ def run(
                 displ_percentage=False,
                 version=version,
                 file_name=f"attn-seen_context_lengths.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
             # Answer Correct for Seen Context Lengths by Answer In Self
@@ -338,7 +380,7 @@ def run(
                 y_label="Parts Answer In[Correct]",
                 displ_percentage=True,
                 file_name=f"parts_answer_correct.pdf",
-                plot_name_add=[f"Task-{task_id}"],
+                plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
 
@@ -410,7 +452,7 @@ def run(
             x_label="Accuracy",
             y_label="Attention on Target Tokens",
             file_name=f"acc-attn_on_target_{split.name}.pdf",
-            plot_name_add=[f"Split-{split.name}"],
+            plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version, f"Split-{split.name}"),
             level="split",
             include_soft=False,
@@ -430,7 +472,7 @@ def run(
             version=version,
             level="split",
             file_name=f"attn-seen_context_lengths_{split.name}.pdf",
-            plot_name_add=[f"Split-{split.name}"],
+            plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version, f"Split-{split.name}"),
         )
         # Attn on Target for Target Distances by Answer Correct
@@ -446,7 +488,7 @@ def run(
             displ_percentage=False,
             version=version,
             file_name=f"attn-target_distances_{split.name}.pdf",
-            plot_name_add=[f"Split-{split.name}"],
+            plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version, f"Split-{split.name}"),
         )
         # Answer Correct for Seen Context Lengths by Answer In Self
@@ -461,7 +503,7 @@ def run(
             level="split",
             displ_percentage=True,
             file_name=f"parts_answer_correct_{split.name}.pdf",
-            plot_name_add=[f"Split-{split.name}"],
+            plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version, f"Split-{split.name}"),
         )
         print(
@@ -471,7 +513,7 @@ def run(
         plotter.plot_acc_with_std(
             acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
             y_label="Accuracies with Standard Deviations",
-            plot_name_add=[split.name, version],
+            plot_name_add=[split.name, version, *conditions_add],
         )
         print(
             f"\nPlotting attentions for results '{version}'...",
@@ -480,7 +522,7 @@ def run(
         plotter.plot_acc_with_std(
             acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
             y_label="Attentions",
-            plot_name_add=[split.name, version],
+            plot_name_add=[split.name, version, *conditions_add],
         )
         print(
             f"\nPlotting reasoning scores for results '{version}'...",
@@ -489,7 +531,7 @@ def run(
         plotter.plot_acc_with_std(
             acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
             y_label="Reasoning Scores",
-            plot_name_add=[split.name, version],
+            plot_name_add=[split.name, version, *conditions_add],
         )
         print(
             f"\nPlotting correlations for results '{version}' between metrics:",
@@ -637,6 +679,7 @@ if __name__ == "__main__":
         samples_per_task=args.samples_per_task,
         setting="baseline",
         experiment="reasoning_answer",
+        filtering_conditions={},
         create_heatmaps=args.create_heatmaps,
         verbose=args.verbose,
     )

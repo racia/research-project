@@ -441,8 +441,7 @@ class Chat:
                 f"Value {datatype} is not supported. Must be either 'ids' or 'tokens'."
             )
 
-        chat_tokens = []
-        chat_ids = []
+        chat_tokens, chat_ids = [], []
         conversation_length = len(chat_ids)
         # including the system prompt
         for i, message in enumerate(self.messages):
