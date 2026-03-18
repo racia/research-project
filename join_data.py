@@ -247,8 +247,36 @@ def join_data(
 
 
 def process_path(
-    path, diff, full_result_directory, filter_pattern, target_directory, path_counter
-):
+    path: Path,
+    diff: str,
+    full_result_directory: Path,
+    filter_pattern: re.Pattern,
+    target_directory: str,
+    path_counter: int,
+) -> int:
+    """
+    Process a path to copy the relevant files to the result directory.
+
+    If the path is a file, it is copied to the result directory with a new name containing
+        the difference in the path.
+    If the path is a directory, the function is called recursively on the directory.
+    If the directory is in the FOLDERS_TO_MOVE list, all files in the directory
+        are copied to the result directory without disambiguating the file names,
+        because they should be unique.
+    If the directory is a hidden folder, the files are copied with a new name containing the
+        difference in the path, because they are likely to have the same name across different
+        sources.
+    If the directory is not in the FOLDERS_TO_MOVE list, the function is called recursively
+        on the directory, because it may contain files that need to be copied with a new name
+        containing the difference in the path.
+    :param path: the path to process
+    :param diff: the difference in the path to disambiguate the file names
+    :param full_result_directory: the directory to copy the files to
+    :param filter_pattern: the pattern to filter the files to copy
+    :param target_directory: the target directory name to check for warnings
+    :param path_counter: the counter for the number of files copied from this path
+    :return: the updated path counter
+    """
     print("Inspecting path:", path)
     if path.is_file() and "results" in path.name and path.name.endswith(".csv"):
         # skip the results files, they are already joined and saved
