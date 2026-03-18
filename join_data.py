@@ -358,11 +358,6 @@ def run(
     data = {}
     loader = DataLoader()
     data_paths = [get_paths(PREFIX / path, keyword=keyword) for path in source_paths]
-    if len(data_paths) != len(source_paths):
-        raise ValueError(
-            f"Number of data paths found does not match the number of source paths provided: "
-            f"{len(data_paths)} != {len(source_paths)}."
-        )
     flat_paths = list(flatten(data_paths))
 
     for path in flat_paths:
