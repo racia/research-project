@@ -16,7 +16,7 @@ import argparse
 import re
 from collections import defaultdict
 from pathlib import Path
-
+import os
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from data.utils import format_metrics
@@ -114,6 +114,7 @@ def run(
     samples_per_task: int,
     experiment: str,
     setting: str = "baseline",
+    iterations_path: str = None,
     create_heatmaps: bool = True,
     verbose: bool = False,
 ) -> None:
@@ -154,17 +155,24 @@ def run(
         raise ValueError("Please provide a path to the data for evaluation.")
 
     if setting == "feedback":
-        feedback_result_path = str(Path(save_path) / "feedback_analysis")
-        teacher_dfs = DataLoader.load_iteration_data(results_path, 'teacher', 'feedback')
-        student_dfs = DataLoader.load_iteration_data(results_path, 'student', 'feedback')
+        if not iterations_path:
+            raise ValueError("iterations_path is required when setting='feedback'")
+
+        feedback_result_path = str(Path(save_path) / "eval" / "feedback_analysis")
+        os.makedirs(feedback_result_path, exist_ok=True)
+
+        teacher_dfs = DataLoader.load_iteration_data(iterations_path, 'teacher', 'feedback')
+        student_dfs = DataLoader.load_iteration_data(iterations_path, 'student', 'feedback')
         # run feedback analysis
 
         feedback = FeedbackAnalysis(teacher_dfs, student_dfs, feedback_result_path)
         feedback.run_all()
 
         shared = SettingAnalysis(student_dfs, feedback_result_path, teacher_dfs)
-        difficulty_df = shared.analyse_task_difficulty()
+        shared.analyse_semantic_similarity()
         shared.cluster_errors(n_clusters=5)
+        shared.analyse_edge_cases()
+        return
 
     print("Loading data...", end="\n\n")
     loader = DataLoader(prefix=PREFIX, samples_per_task=samples_per_task)
@@ -622,14 +630,28 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
 if __name__ == "__main__":
     # path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
     # args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
-    args = parse_args()
+    #args = parse_args()
     # python3.12 evaluate_data.py --results_path baseline/28-05-2025/22-39-52/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv --save_path results/here --samples_per_task 15 --create_heatmaps --verbose
+    # run(
+    #     results_path=args.results_path,
+    #     save_path=args.save_path,
+    #     samples_per_task=args.samples_per_task,
+    #     setting=args.setting,
+    #     experiment="reasoning_answer",
+    #     create_heatmaps=args.create_heatmaps,
+    #     verbose=args.verbose,
+    # )
+    #        results_path="/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/all_tasks_joined_old/joined_reasoning_results_task_results.csv",
+
+
     run(
-        results_path="/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/all_tasks_joined_old/iterations", #args.results_path,
-        save_path="/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test1",#args.save_path,
-        samples_per_task=args.samples_per_task,
-        setting=args.setting,
+        results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/all_tasks_joined/joined_reasoning_results.csv",
+        save_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test_eval_all_tasks/",
+        iterations_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/feedback/test/reasoning/v2/all_tasks_joined/iterations",#"/pfs/work9/workspace/scratch/hd_nc326-research-project/feedback/test/reasoning/all_tasks_joined_old/iterations",
+        samples_per_task=100,
+        setting="feedback",
         experiment="reasoning_answer",
-        create_heatmaps=args.create_heatmaps,
-        verbose=args.verbose,
+        create_heatmaps=False,
+        verbose=True,
     )
+
