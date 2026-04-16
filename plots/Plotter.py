@@ -1247,6 +1247,7 @@ class Plotter:
             return "-".join(feat_str) if feat_str else None
 
         # Combine parts features to single column
+        label_order = None
         if "parts_features" in y_data:
             label_order = [
                 " ".join('"-"'.join(comb).split("_")).title().join('""')
@@ -1278,12 +1279,25 @@ class Plotter:
         )
         df[x_label] = df[x_label].round()
 
+        # this sns.boxplot returns an error:
+        # UnboundLocalError: cannot access local variable 'boxprops' where it is not associated with a value
+        # when the input is all-NaN/empty after filtering
+        # ax = sns.boxplot(
+        #     data=df,
+        #     x=x_label,
+        #     y=df.columns[1],
+        #     hue=f"{label_column}_" if len(df.columns) > 2 else None,
+        #     hue_order=label_order if len(df.columns) > 2 else None,
+        # )
+        hue_col = f"{label_column}_"
+        use_hue = hue_col in df.columns and df[hue_col].nunique(dropna=True) > 1
+
         ax = sns.boxplot(
             data=df,
             x=x_label,
             y=df.columns[1],
-            hue=f"{label_column}_" if len(df.columns) > 2 else None,
-            hue_order=label_order if len(df.columns) > 2 else None,
+            hue=hue_col if use_hue else None,
+            hue_order=label_order if use_hue else None,
         )
         # Add vertical lines separating x categories
         ax.xaxis.set_minor_locator(MultipleLocator(0.5))

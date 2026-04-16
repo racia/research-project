@@ -14,7 +14,7 @@ from data.utils import get_real_value, structure_parts
 from inference.DataLevels import SamplePart
 from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits, Enumerate, Wrapper
-from settings.utils import clean_not_mentioned, clean
+from settings.utils import clean
 
 
 class SilverReasoning:
