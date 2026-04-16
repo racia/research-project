@@ -556,7 +556,7 @@ def run(
                     "version": version,
                     "score": score.upper(),
                 },
-                reasoning_scores=evaluator.__getattribute__(f"ids_with_{score}"),
+                reasoning_scores=getattr(evaluator, f"ids_with_{score}"),
             )
         plotter.plot_answer_type_per_part(
             Results.CASE_COUNTERS[version],

@@ -927,14 +927,14 @@ class Task:
             # map the reasoning scores to the identifiers
             for score_name, flat_score_name in REASONING_SCORE_MAP.items():
                 for sample in self.samples:
-                    score = sample.evaluators[i].__getattribute__(score_name).all
+                    score = getattr(sample.evaluators[i], score_name).all
                     ids_with_scores = {
                         (self.task_id, sample.sample_id, j + 1): value
                         for j, value in enumerate(score)
                     }
-                    flat_score = evaluator.__getattribute__(flat_score_name)
-                    evaluator.__setattr__(
-                        flat_score_name, {**flat_score, **ids_with_scores}
+                    flat_score = getattr(evaluator, flat_score_name)
+                    setattr(
+                        evaluator, flat_score_name, {**flat_score, **ids_with_scores}
                     )
 
             # Calculate correlation using mean part attention scores for samples
@@ -1039,11 +1039,10 @@ class Split:
 
                 # get the reasoning scores
                 for flat_score_name in REASONING_SCORE_MAP.values():
-                    task_ids_with_scores = task.evaluators[i].__getattribute__(
-                        flat_score_name
-                    )
-                    split_ids_with_scores = evaluator.__getattribute__(flat_score_name)
-                    evaluator.__setattr__(
+                    task_ids_with_scores = getattr(task.evaluators[i], flat_score_name)
+                    split_ids_with_scores = getattr(evaluator, flat_score_name)
+                    setattr(
+                        evaluator,
                         flat_score_name,
                         {**split_ids_with_scores, **task_ids_with_scores},
                     )

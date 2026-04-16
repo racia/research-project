@@ -1,13 +1,11 @@
 from __future__ import annotations
 
+import itertools
+import warnings
 from collections import defaultdict
 from itertools import zip_longest
-import itertools
 from pathlib import Path
-
-
 from typing import Sized
-import warnings
 
 import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
@@ -111,6 +109,8 @@ class Plotter:
         self.plot_counter_task: int = 0
         self.plot_counter_prompt: int = 0
 
+        self.warning_counter = 0
+
     def _save_plot(
         self,
         y_label: str = None,
@@ -145,8 +145,8 @@ class Plotter:
         self.plot_counter_prompt += 1
         plt.close()
 
-    @staticmethod
     def _plot_general_details(
+        self,
         x_label: str,
         y_label: str,
         max_x_len: int,
@@ -185,7 +185,9 @@ class Plotter:
             elif step < 0:  # negative step
                 raise ValueError(f"Step size must be non-negative, got <step={step}>")
         except TypeError:
-            warnings.warn(f"No step size provided, defaulting to automatic ticks.")
+            if not self.warning_counter:
+                warnings.warn(f"No step size provided, defaulting to automatic ticks.")
+            self.warning_counter += 1
 
         plt.xlabel(x_label)
 
@@ -223,14 +225,16 @@ class Plotter:
             )  # 1 = scale of data (data range)
             plt.gca().yaxis.set_ticks(y_ticks)
 
-
         if num_of_data_arrays > 6 or metr_types > 6 or "attributes" in y_label.lower():
             plt.legend(
-                loc="center left", bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True, title=legend_title
+                loc="center left",
+                bbox_to_anchor=(1, 0.5),
+                fancybox=True,
+                shadow=True,
+                title=legend_title,
             )
         else:
             plt.legend(loc="upper left", bbox_to_anchor=(1, 1), title=legend_title)
-
 
     def correlation_map(
         self,
@@ -262,7 +266,10 @@ class Plotter:
         # Display x labels diagonally
         plt.xticks(rotation=25, ha="right")
 
-        plt.title(f"Correlation Map for {level} {split_name if split_name else id} ({version})", fontsize=12)
+        plt.title(
+            f"Correlation Map for {level} {split_name if split_name else id} ({version})",
+            fontsize=12,
+        )
         plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
 
         Path.mkdir(self.results_path / version, exist_ok=True, parents=True)
@@ -512,11 +519,19 @@ class Plotter:
         metr_types = 0
         min_x_len = 0
 
-        x_data_points = {k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()}
-        x_err = [x_data_points.pop(k) for k in x_data if "std" in k.lower() and k in x_data_points]
+        x_data_points = {
+            k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()
+        }
+        x_err = [
+            x_data_points.pop(k)
+            for k in x_data
+            if "std" in k.lower() and k in x_data_points
+        ]
         colors = self.cmap(np.linspace(0, 1, len(x_data_points)), alpha=0.7)
 
-        for (metr_type, metr), std_dev, color in zip_longest(x_data_points.items(), x_err, colors):
+        for (metr_type, metr), std_dev, color in zip_longest(
+            x_data_points.items(), x_err, colors
+        ):
             # number_of_prompts += 1
             num_of_data_arrays += 1
             metr_types += 1
@@ -541,17 +556,21 @@ class Plotter:
                     else y_data
                 ),
                 xerr=std_dev,
-                fmt='o',
+                fmt="o",
                 capsize=4,
-                label="{}{}".format(
-                    " ".join(metr_type.split("_")).title(),
-                    "\nwith Std Dev" if x_err else ""
-                    ) if isinstance(metr_type, str) else metr_type.name,
+                label=(
+                    "{}{}".format(
+                        " ".join(metr_type.split("_")).title(),
+                        "\nwith Std Dev" if x_err else "",
+                    )
+                    if isinstance(metr_type, str)
+                    else metr_type.name
+                ),
                 color=color,
                 zorder=3,
             )
             for i, label in enumerate(label_add):
-                plt.annotate(label, (metr[i]+.001, y_data[i]+.001))
+                plt.annotate(label, (metr[i] + 0.001, y_data[i] + 0.001))
 
         self._plot_general_details(
             x_label,
@@ -1050,11 +1069,13 @@ class Plotter:
         :param id: int id of the level
         :return: None
         """
-        color_map = {v:color for v, color in zip(FLOAT_2_STR.values(), self.cmap(np.linspace(
-            0,
-            0.2,
-            len(FLOAT_2_STR)))[::-1])
-            } # Colors according to length of label data
+        color_map = {
+            v: color
+            for v, color in zip(
+                FLOAT_2_STR.values(),
+                self.cmap(np.linspace(0, 0.2, len(FLOAT_2_STR)))[::-1],
+            )
+        }  # Colors according to length of label data
 
         df_data = {}
         for k, v in y_data.items():
@@ -1073,44 +1094,72 @@ class Plotter:
             list(zip(*x_data.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
         )
-        label_column = " ".join(df.columns[2].split("_")).title() if len(df.columns)>2 else None
+        label_column = (
+            " ".join(df.columns[2].split("_")).title() if len(df.columns) > 2 else None
+        )
 
-        if "correct" in y_label.lower(): # e.g. parts_answer_correct
+        if "correct" in y_label.lower():  # e.g. parts_answer_correct
             if "answer_in_self" in df.columns[2]:
-                df["parts_answer_in_self"] = df["parts_answer_in_self"].apply(lambda x: FLOAT_2_STR[x].capitalize())
+                df["parts_answer_in_self"] = df["parts_answer_in_self"].apply(
+                    lambda x: FLOAT_2_STR[x].capitalize()
+                )
             # Store sum of answers correct per seen context length
-            parts_per_class = df.groupby([df.columns[0]], group_keys=True)[df.columns[1]].transform("count")
+            parts_per_class = df.groupby([df.columns[0]], group_keys=True)[
+                df.columns[1]
+            ].transform("count")
             # Add column for ratio of correct answers per category and label
-            correct_per_label = df.groupby([df.columns[0],df.columns[2]], group_keys=True)[df.columns[1]].transform(lambda x: np.sum(x==1))
-            incorr_per_label = df.groupby([df.columns[0],df.columns[2]], group_keys=True)[df.columns[1]].transform(lambda x: np.sum(x==0))
+            correct_per_label = df.groupby(
+                [df.columns[0], df.columns[2]], group_keys=True
+            )[df.columns[1]].transform(lambda x: np.sum(x == 1))
+            incorr_per_label = df.groupby(
+                [df.columns[0], df.columns[2]], group_keys=True
+            )[df.columns[1]].transform(lambda x: np.sum(x == 0))
 
             corr_ratio = f"{df.columns[1]}_Ratio"
             incorr_ratio = "Incorr_Ratio"
             df[corr_ratio] = correct_per_label / parts_per_class
             df[incorr_ratio] = incorr_per_label / parts_per_class
             label_column += " and Answer is [In]Correct"
-        else: # e.g. attn_on_target
+        else:  # e.g. attn_on_target
             df[x_label] = df[x_label].round()
 
-        for col_name in [f"parts_{feat}" for feat in ["attn_on_target", "max_supp_attn"] if f"parts_{feat}" in df.columns]:
-            df[col_name] = df[col_name].round(2)  # Ensure numeric values are rounded if needed
+        for col_name in [
+            f"parts_{feat}"
+            for feat in ["attn_on_target", "max_supp_attn"]
+            if f"parts_{feat}" in df.columns
+        ]:
+            df[col_name] = df[col_name].round(
+                2
+            )  # Ensure numeric values are rounded if needed
         max_x_len = max(df[x_label])
         step_size = 2 if max_x_len > 30 else 1
 
-        pivot_ratios = df.pivot_table(values=[corr_ratio, incorr_ratio], sort=False, index=x_label, columns=df.columns[2], fill_value=0) #parts_answer_correct first
-        pivot_ratios.sort_index(axis=1, level=1, inplace=True, sort_remaining=False) # sort for labels
+        pivot_ratios = df.pivot_table(
+            values=[corr_ratio, incorr_ratio],
+            sort=False,
+            index=x_label,
+            columns=df.columns[2],
+            fill_value=0,
+        )  # parts_answer_correct first
+        pivot_ratios.sort_index(
+            axis=1, level=1, inplace=True, sort_remaining=False
+        )  # sort for labels
         bottom = np.zeros(len(pivot_ratios.index))
 
         for class_lab_col in pivot_ratios:
             ax.bar(
                 pivot_ratios.index,
-                    pivot_ratios[class_lab_col],
-                    width=width,
-                    bottom=bottom,
-                    label="[Incorrect] "+class_lab_col[1] if "incorr" in class_lab_col[0].lower() else "[Correct] "+class_lab_col[1],
-                    color=color_map[class_lab_col[1].lower()],
-                    alpha=0.4 if "incorr" in class_lab_col[0].lower() else None
-                )
+                pivot_ratios[class_lab_col],
+                width=width,
+                bottom=bottom,
+                label=(
+                    "[Incorrect] " + class_lab_col[1]
+                    if "incorr" in class_lab_col[0].lower()
+                    else "[Correct] " + class_lab_col[1]
+                ),
+                color=color_map[class_lab_col[1].lower()],
+                alpha=0.4 if "incorr" in class_lab_col[0].lower() else None,
+            )
             bottom += pivot_ratios[class_lab_col]
         self._plot_general_details(
             x_label=x_label,
@@ -1121,14 +1170,15 @@ class Plotter:
             plot_name_add=plot_name_add,
             legend_title=label_column,
             step=step_size,
-            )
+        )
 
         if path_add:
             (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
         self._save_plot(
             y_label=y_label,
             x_label=x_label,
-            file_name=f"{path_add}/{file_name.lower()}")
+            file_name=f"{path_add}/{file_name.lower()}",
+        )
         plt.close()
 
     def plot_corr_boxplot(
@@ -1165,10 +1215,7 @@ class Plotter:
             plt.figure(figsize=(12, 8))
         else:
             plt.figure(figsize=(10, 5))
-        colors = self.cmap(np.linspace(0,
-                                       0.2,
-                                       len(y_data[list(y_data)[-1]]))
-                                        )
+        colors = self.cmap(np.linspace(0, 0.2, len(y_data[list(y_data)[-1]])))
 
         df_data = {}
         for y_keys, y_vals in y_data.items():
@@ -1188,7 +1235,7 @@ class Plotter:
             mapping = dict(
                 map(
                     lambda x: (x[0], x[1]),
-                    zip(range(5), y_data["parts_features"].keys())
+                    zip(range(5), y_data["parts_features"].keys()),
                 )
             )
             feat_str = [
@@ -1196,35 +1243,51 @@ class Plotter:
                 for i, part in enumerate(x.split("-"))
                 if part in ["True", "1"]
             ]
-            feat_str = [f.rstrip(f"_{version}")
-                        for f in feat_str]
+            feat_str = [f.rstrip(f"_{version}") for f in feat_str]
             return "-".join(feat_str) if feat_str else None
 
         # Combine parts features to single column
         if "parts_features" in y_data:
-            label_order = [" ".join('"-"'.join(comb).split("_")).title().join('""') for L in range(1, 3) for comb in itertools.combinations(Features.attrs, L)]
+            label_order = [
+                " ".join('"-"'.join(comb).split("_")).title().join('""')
+                for L in range(1, 3)
+                for comb in itertools.combinations(Features.attrs, L)
+            ]
             label_order.insert(0, "No Features")
             df["features_combined"] = ""
             for col in y_data["parts_features"].keys():
                 df["features_combined"] += df[col].astype(str) + "-"
-            df["Features present"] = df["features_combined"].apply(lambda x: _feat_mapping(x))
+            df["Features present"] = df["features_combined"].apply(
+                lambda x: _feat_mapping(x)
+            )
             df["Features present"] = df["Features present"].fillna("No Features")
         elif "correct" in df.columns[2]:
-            df["parts_answer_correct"] = df["parts_answer_correct"].map({1: "True", 0: "False"})
+            df["parts_answer_correct"] = df["parts_answer_correct"].map(
+                {1: "True", 0: "False"}
+            )
             label_order = ["True", "False"]
-        label_column = df.columns[-1] if "features_combined" in df.columns else df.columns[2]
-        df[f"{label_column}_"] = df[label_column].apply(lambda x: " ".join(x.split("_")).capitalize().join('""') if x not in ["No Features", "True", "False"] else x)
+        label_column = (
+            df.columns[-1] if "features_combined" in df.columns else df.columns[2]
+        )
+        df[f"{label_column}_"] = df[label_column].apply(
+            lambda x: (
+                " ".join(x.split("_")).capitalize().join('""')
+                if x not in ["No Features", "True", "False"]
+                else x
+            )
+        )
         df[x_label] = df[x_label].round()
 
         ax = sns.boxplot(
             data=df,
             x=x_label,
             y=df.columns[1],
-            hue=f"{label_column}_" if len(df.columns)>2 else None,
-            hue_order=label_order if len(df.columns)>2 else None)
+            hue=f"{label_column}_" if len(df.columns) > 2 else None,
+            hue_order=label_order if len(df.columns) > 2 else None,
+        )
         # Add vertical lines separating x categories
         ax.xaxis.set_minor_locator(MultipleLocator(0.5))
-        ax.xaxis.grid(True, which='minor', color='black', lw=1, ls=":")
+        ax.xaxis.grid(True, which="minor", color="black", lw=1, ls=":")
 
         self._plot_general_details(
             x_label=x_label,
@@ -1234,7 +1297,7 @@ class Plotter:
             displ_percentage=displ_percentage,
             plot_name_add=plot_name_add,
             legend_title=" ".join(label_column.split("_")).title(),
-            )
+        )
 
         if path_add:
             Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)

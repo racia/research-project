@@ -14,6 +14,7 @@ from data.utils import get_real_value, structure_parts
 from inference.DataLevels import SamplePart
 from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits, Enumerate, Wrapper
+from settings.utils import clean_not_mentioned, clean
 
 
 class SilverReasoning:
@@ -416,9 +417,9 @@ class DataLoader:
                 interpretability.max_supp_attn = row[f"max_supp_attn_{version}"]
                 interpretability.attn_on_target = row[f"attn_on_target_{version}"]
                 raw_part.set_output(
-                    model_output=str(row[f"model_output_{version}"]),
-                    model_answer=str(row[f"model_answer_{version}"]),
-                    model_reasoning=str(row[f"model_reasoning_{version}"]),
+                    model_output=row[f"model_output_{version}"],
+                    model_answer=clean(row[f"model_answer_{version}"]),
+                    model_reasoning=clean(row[f"model_reasoning_{version}"]),
                     interpretability=interpretability,
                     wrapped_task=row["task"],
                     iterations=row.get("iterations", 0),

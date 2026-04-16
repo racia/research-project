@@ -32,6 +32,28 @@ def set_device() -> torch.device:
     return device
 
 
+def clean(answer) -> str:
+    """
+    Cleans the answer if it starts with "not mentioned" but contains additional text.
+    This is a common hallucination of the model.
+    If the answer starts with "not mentioned" but contains additional text, we will remove the additional text and keep only "not mentioned".
+    If the answer does not start with "not mentioned", we will return the answer as is.
+    In addition, we will remove the end of text token if it is present in the answer.
+
+    :param answer: the answer to clean
+    :return: cleaned answer
+    """
+    answer = str(answer)
+    lower_answer = answer.lower()
+    if lower_answer.startswith("not mentioned") and len(answer) > len("not mentioned"):
+        addition = answer[len("not mentioned") :].strip()
+        answer = lower_answer[: len("not mentioned")]
+        warnings.warn(
+            f"Hallucinated 'not mentioned' answer contains additional text. Removing: '{addition}'"
+        )
+    return answer.removesuffix("<|eot_id|>")
+
+
 def parse_output(output: str) -> tuple:
     """
     Parses the output of the model to extract the answer and reasoning.
@@ -44,6 +66,7 @@ def parse_output(output: str) -> tuple:
 
     answer_search = answer_pattern.search(output)
     answer = answer_search[1].strip() if answer_search else ""
+    answer = clean(answer)
     if not answer:
         print("DEBUG: Answer not found in the output")
 
