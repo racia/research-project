@@ -597,12 +597,18 @@ class Plotter:
         """
         # === Setup ===
         use_reasoning_scores = reasoning_scores is not None
+        if not reasoning_scores:
+            warnings.warn(
+                "No reasoning scores provided, plotting answer types without scores. To include reasoning scores, pass a dict of {(task, sample, part): score} to the 'reasoning_scores' argument."
+            )
+            use_reasoning_scores = False
 
         # Determine which answer categories to use
+        min_score, max_score = 0.0, 1.0
         if use_reasoning_scores:
             answer_types = ["ans_corr", "ans_incorr", "ans_null"]
-            max_score = max(reasoning_scores.values()) if reasoning_scores else 1.0
-            min_score = min(reasoning_scores.values()) if reasoning_scores else 0.0
+            max_score = max(reasoning_scores.values())
+            min_score = min(reasoning_scores.values())
         else:
             # exclude simple answer/reasoning types
             answer_types = [
@@ -650,6 +656,7 @@ class Plotter:
                 continue
 
             # Build either an integer heatmap or an RGBA image depending on mode
+            rgba_img, heatmap = None, None
             if use_reasoning_scores:
                 rgba_img = np.ones(
                     (len(samples), len(parts), 4), dtype=float
@@ -668,7 +675,11 @@ class Plotter:
                             rgba_img[s_idx, p_idx] = (1, 1, 1, 1)
                     else:
                         case = ids_cases[idx]
-                        if use_reasoning_scores and idx in reasoning_scores:
+                        if use_reasoning_scores:
+                            if idx not in reasoning_scores:
+                                raise ValueError(
+                                    f"Reasoning score missing for index {idx} in reasoning_scores dict: {reasoning_scores.keys()}"
+                                )
                             score = reasoning_scores[idx]
                             # Normalize score to [0, 1]
                             norm_score = (
