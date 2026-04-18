@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:1                 # Request 1 GPU
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
-#SBATCH --time=1:10:00              # Time limit hrs:min:sec
+#SBATCH --time=4:00:00              # Time limit hrs:min:sec
 #SBATCH --mem=64G                    # Total memory requested
 #SBATCH --partition=gpu_a100_il  # gpu_a100_short dev_gpu_h100
 
