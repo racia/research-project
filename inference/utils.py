@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import re
 import textwrap
-import warnings
 from collections import defaultdict
 from dataclasses import dataclass
 from typing import Any
@@ -136,7 +135,7 @@ def get_generation_token_ids(
     :return: token id and special tokens, generation tokens as string
     """
     tokens = [
-        "<|eot_id|>" if not start else "<|begin_of_text|>",
+        "<|begin_of_text|>" if start else "<|eot_id|>",
         "<|start_header_id|>",
         role,
         "<|end_header_id|>",

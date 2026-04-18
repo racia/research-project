@@ -113,6 +113,8 @@ class DataSaver:
         else:
             file_name = Path(file_name)
 
+        Path.mkdir(file_name.parent, parents=True, exist_ok=True)
+
         with open(file_name, flag, encoding="UTF-8") as file:
             writer = csv.DictWriter(file, fieldnames=headers, delimiter="\t")
             if is_empty_file(file_name):

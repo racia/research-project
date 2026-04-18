@@ -20,6 +20,7 @@ from pathlib import Path
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from data.utils import format_metrics
+from evaluation.utils import extract_split
 from inference.DataLevels import Results, Sample, Split, Task, SamplePart, print_metrics
 from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
@@ -56,19 +57,6 @@ def remove_unnecessary_columns(
         del row["silver_reasoning"]
         if "silver_reasoning" in headers["general"]:
             del headers["general"][headers["general"].index("silver_reasoning")]
-
-
-def extract_split(path) -> str:
-    """
-    Extract the split from the data path. If the split is not found, return "split".
-
-    :param path: The path to the data.
-    :return: The split.
-    """
-    for split in ["valid", "test", "train"]:
-        if split in path:
-            return split
-    return "split"
 
 
 def structure_result(headers_results: list[str], row: dict, version) -> dict[str, list]:
