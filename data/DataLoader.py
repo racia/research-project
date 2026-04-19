@@ -400,13 +400,15 @@ class DataLoader:
                     )
 
                 multi_system = True
-                # TODO: remove "attn_scores" subfolder for newer results
                 attn_path = (
                     Path(results_path).parent
                     / version
                     / "interpretability"
                     / "attn_scores"
                 )
+                if not attn_path.exists():
+                    # attn_scores subfolder is not present in newer results
+                    attn_path = attn_path.parent
                 interpretability = self.load_interpretability(
                     task_id=row["task_id"],
                     sample_id=row["sample_id"],
@@ -445,7 +447,8 @@ class DataLoader:
 
         if len(parts) != self.number_of_parts:
             warnings.warn(
-                "The number of parts does not match the number of loaded data: %d != %d"
+                "The number of raw loaded parts does not match the number of loaded results parts: "
+                "%d != %d"
                 % (len(parts), self.number_of_parts)
             )
         return structure_parts(parts), multi_system
@@ -549,8 +552,7 @@ class DataLoader:
             )
             return InterpretabilityResult(np.array([]), [], [], 0.0, 0.0)
 
-        # TODO: change to "interpretability"
-        if path.name != "attn_scores":
+        if path.name != "interpretability":
             raise ValueError("The attention subdirectory is not located.")
 
         try:

@@ -1296,13 +1296,26 @@ class Plotter:
         hue_col = f"{label_column}_"
         use_hue = hue_col in df.columns and df[hue_col].nunique(dropna=True) > 1
 
-        ax = sns.boxplot(
-            data=df,
-            x=x_label,
-            y=df.columns[1],
-            hue=hue_col if use_hue else None,
-            hue_order=label_order if use_hue else None,
-        )
+        try:
+            ax = sns.boxplot(
+                data=df,
+                x=x_label,
+                y=df.columns[1],
+                hue=hue_col if use_hue else None,
+                hue_order=label_order if use_hue else None,
+            )
+        except UnboundLocalError:
+            # If error occurs (e.g. due to all-NaN data), plot without hue as fallback
+            warnings.warn(
+                "Boxplot with hue failed (possibly due to all-NaN data), plotting without hue as fallback."
+            )
+            print("Data for boxplot:\n", df)
+            ax = sns.boxplot(
+                data=df,
+                x=x_label,
+                y=df.columns[1],
+                hue=None,
+            )
         # Add vertical lines separating x categories
         ax.xaxis.set_minor_locator(MultipleLocator(0.5))
         ax.xaxis.grid(True, which="minor", color="black", lw=1, ls=":")
