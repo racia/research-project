@@ -17,10 +17,12 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
+import pandas as pd
+
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from data.utils import format_metrics
-from inference.DataLevels import Results, Sample, Split, Task, SamplePart, print_metrics
+from inference.DataLevels import Results, Sample, SamplePart, Split, Task, print_metrics
 from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
 
@@ -630,6 +632,40 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
             print(f"Unexpected arguments: {unexpected}")
         return args
     return parser.parse_args()
+
+
+def add_completeness_column(path: str, da: bool = False, before: bool = False) -> None:
+    """
+    Add a column to indicate whether the answer/reasoning is complete.
+
+
+    :param path: str, path to the results file to update
+    :param da: bool, indicates whether the setting is DA. Default: False
+    :param before: bool, indicates whether to check the "before" or "after" columns. Default: False (i.e., check "after" columns)
+    :return:
+    """
+    df = pd.read_csv(path)
+    if before:
+        suffix = "before"
+    else:
+        suffix = "after"
+
+    if da:
+        df["completeness"] = df[f"model_answer_{suffix}"].apply(
+            lambda x: True if pd.notna(x) and x.strip() != "" else False
+        )
+    else:
+        # answer is considered complete if both the answer and reasoning are non-empty and non-NA
+        reasoning_complete = df[f"model_reasoning_{suffix}"].apply(
+            lambda x: True if pd.notna(x) and x.strip() != "" else False
+        )
+        answer_complete = df[f"model_answer_{suffix}"].apply(
+            lambda x: True if pd.notna(x) and x.strip() != "" else False
+        )
+
+        df["completeness"] = reasoning_complete & answer_complete
+
+    df.to_csv(f"{path.split('.')[0]}_with_completeness.csv", index=False)
 
 
 if __name__ == "__main__":

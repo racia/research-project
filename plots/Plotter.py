@@ -24,8 +24,8 @@ from interpretability.utils import InterpretabilityResult
 from plots.utils import (
     Identifiers,
     determine_colour_scheme,
-    prepare_for_display_pie,
     plot_task_map_grid,
+    prepare_for_display_pie,
 )
 
 
@@ -696,9 +696,12 @@ class Plotter:
                         case = ids_cases[idx]
                         if use_reasoning_scores:
                             if idx not in reasoning_scores:
-                                raise ValueError(
+                                warnings.warn(
                                     f"Reasoning score missing for index {idx} in reasoning_scores dict: {reasoning_scores.keys()}"
                                 )
+                                rgba_img[s_idx, p_idx] = (0, 0, 0, 0)
+                                continue
+                        
                             score = reasoning_scores[idx]
                             # Normalize score to [0, 1]
                             norm_score = (
@@ -1270,6 +1273,7 @@ class Plotter:
         label_column = (
             df.columns[-1] if "features_combined" in df.columns else df.columns[2]
         )
+        assert label_column in df.columns, f"Label column '{label_column}' not found in DataFrame columns: {df.columns}"
         df[f"{label_column}_"] = df[label_column].apply(
             lambda x: (
                 " ".join(x.split("_")).capitalize().join('""')
