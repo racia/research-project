@@ -103,7 +103,9 @@ class DataProcessor:
                         line_num = int(question_match.group(1))
 
                         raw_part["question"][line_num] = question_match.group(2)
-                        naive_tokens = question_match.group(2).replace("?", "").split(" ")
+                        naive_tokens = (
+                            question_match.group(2).replace("?", "").split(" ")
+                        )
 
                         supporting_list = [
                             int(x) for x in question_match.group(4).split(" ")
@@ -181,9 +183,10 @@ class DataProcessor:
             if consider_prev_parts:
                 j = ix - 1
                 while j >= 0:
-                    prev_part = parts[j]
-                    context_keywords_with_line.update(prev_part.keywords["context"])
-                    j -= 1
+                    if len(set(p.sample_id for p in parts)) == 1:
+                        prev_part = parts[j]
+                        context_keywords_with_line.update(prev_part.keywords["context"])
+                        j -= 1
 
             curr_distractors = set()
             question_keywords_with_line = curr_part.keywords["questions"]
