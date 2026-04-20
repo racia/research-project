@@ -244,6 +244,7 @@ class Plotter:
         file_name: str = None,
         id: int = 1,
         split_name: str = None,
+        path_add: str = "",
     ) -> None:
         """
         Draw a heat map with the given data.
@@ -272,8 +273,8 @@ class Plotter:
         )
         plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
 
-        Path.mkdir(self.results_path / version, exist_ok=True, parents=True)
-        plt.savefig(self.results_path / version / file_name)
+        (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+        plt.savefig(self.results_path / path_add / file_name)
         plt.close()
 
     def draw_heat(
@@ -299,26 +300,31 @@ class Plotter:
         :param title: title of the plot
         :return: None
         """
-        x = interpretability_result.x_tokens
-        y = interpretability_result.y_tokens
+        x_labels = interpretability_result.x_tokens
+        y_labels = interpretability_result.y_tokens
         scores = interpretability_result.attn_scores
 
         plt.figure(figsize=(12, 8))
         # to get comparable heatmaps, the max value of all plots should be the same (as much as possible)
         max_score = max(np.max(scores[1:]), 0.25)
-        axis = sns.heatmap(scores[1:], cmap="rocket_r", vmin=0, vmax=max_score)
+        ax = sns.heatmap(scores[1:], cmap="rocket_r", vmin=0, vmax=max_score)
 
-        y = y[1:]
-        x_ticks = [i + 0.5 for i in range(len(x))]
-        y_ticks = [i + 0.5 for i in range(len(y))]
+        # x_labels = x
+        # y_labels = y[1:]
+        x_tick_values = [i + 0.5 for i in range(len(x_labels))]
+        y_tick_values = [i + 0.5 for i in range(len(y_labels))]
 
         plt.xlabel(x_label, fontdict={"size": 10})
         plt.ylabel("Model Output Tokens", fontdict={"size": 10})
 
-        plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=60, ha="right")
-        plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
+        # plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=60, ha="right")
+        # plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
+        ax.set_xticks(x_tick_values)
+        ax.set_xticklabels(x_labels, fontsize=5, rotation=60, ha="right")
+        ax.set_yticks(y_tick_values[1:])
+        ax.set_yticklabels(y_labels[1:], fontsize=5, rotation=0)
 
-        cbar = axis.collections[0].colorbar
+        cbar = ax.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
 
         if title:
@@ -489,7 +495,7 @@ class Plotter:
         y_label: str = "Y",
         file_name=None,
         plot_name_add: list[str] = None,
-        path_add: str = None,
+        path_add: str = "",
         level: str = None,
         include_soft: bool = True,
         label_add: list[str] = [],
@@ -694,11 +700,7 @@ class Plotter:
                             rgba_img[s_idx, p_idx] = (1, 1, 1, 1)
                     else:
                         case = ids_cases[idx]
-                        if use_reasoning_scores:
-                            if idx not in reasoning_scores:
-                                raise ValueError(
-                                    f"Reasoning score missing for index {idx} in reasoning_scores dict: {reasoning_scores.keys()}"
-                                )
+                        if use_reasoning_scores and idx in reasoning_scores:
                             score = reasoning_scores[idx]
                             # Normalize score to [0, 1]
                             norm_score = (
@@ -724,7 +726,12 @@ class Plotter:
                                 sample = min_sample + norm_score * (1.0 - min_sample)
                                 rgba = cmap_obj(sample)
                             rgba_img[s_idx, p_idx] = rgba
-                        else:
+                        if use_reasoning_scores and idx not in reasoning_scores:
+                            warnings.warn(
+                                f"Reasoning score missing for index {idx} in reasoning_scores dict: {reasoning_scores.keys()}"
+                            )
+                            rgba_img[s_idx, p_idx] = (0, 0, 0, 0)
+                        elif not use_reasoning_scores:
                             # store integer index for categorical mapping
                             heatmap[s_idx, p_idx] = answer_types.index(case)
 
@@ -1172,8 +1179,7 @@ class Plotter:
             step=step_size,
         )
 
-        if path_add:
-            (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+        (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
         self._save_plot(
             y_label=y_label,
             x_label=x_label,
@@ -1191,7 +1197,7 @@ class Plotter:
         version: str = False,
         file_name: str = None,
         plot_name_add: list[str] = None,
-        path_add: str = None,
+        path_add: str = "",
         level: str = None,
     ) -> None:
         """
