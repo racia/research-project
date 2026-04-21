@@ -531,8 +531,8 @@ class SamplePart:
             raise ValueError(
                 "Either a message or model_output, model_answer, and model_reasoning should be provided."
             )
-        if not messages and not any(
-            [model_output and model_answer and model_reasoning]
+        if not messages and all(
+            e is None for e in [model_output and model_answer and model_reasoning]
         ):
             raise ValueError(
                 "When no message, a model_output, model_answer, and model_reasoning should be provided."
