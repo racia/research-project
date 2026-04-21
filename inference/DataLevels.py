@@ -731,7 +731,7 @@ class Sample:
         table.hrules = HRuleStyle.ALL
         table.padding_width = 2  # Adds more space inside each cell
 
-        print(f"Model's predictions for the sample {self.sample_id}:\n")
+        print(f"Model's predictions for the task {self.task_id}, sample {self.sample_id}:\n")
         print(table)
 
     def set_results(self) -> None:
@@ -928,6 +928,12 @@ class Task:
             for score_name, flat_score_name in REASONING_SCORE_MAP.items():
                 for sample in self.samples:
                     score = getattr(sample.evaluators[i], score_name).all
+                    if len(score) != len(sample.parts):
+                        warnings.warn(
+                            f"Length mismatch between reasoning {score_name} scores and parts "
+                            f"for sample {sample.sample_id}, task {sample.task_id}: "
+                            f"{len(score)} scores vs {len(sample.parts)} parts."
+                        )
                     ids_with_scores = {
                         (self.task_id, sample.sample_id, j + 1): value
                         for j, value in enumerate(score)

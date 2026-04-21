@@ -624,7 +624,9 @@ class Plotter:
         use_reasoning_scores = reasoning_scores is not None
         if not reasoning_scores:
             warnings.warn(
-                "No reasoning scores provided, plotting answer types without scores. To include reasoning scores, pass a dict of {(task, sample, part): score} to the 'reasoning_scores' argument."
+                "No reasoning scores provided, plotting answer types without scores. "
+                "To include reasoning scores, "
+                "pass a dict of {(task, sample, part): score} to the 'reasoning_scores' argument."
             )
             use_reasoning_scores = False
 
@@ -691,6 +693,7 @@ class Plotter:
                 heatmap = np.zeros((len(samples), len(parts)), dtype=int)
                 mask = np.zeros_like(heatmap, dtype=bool)
 
+            missing_scores = set()
             for s_idx, s in enumerate(samples):
                 for p_idx, p in enumerate(parts):
                     idx = (task, s, p)
@@ -727,13 +730,18 @@ class Plotter:
                                 rgba = cmap_obj(sample)
                             rgba_img[s_idx, p_idx] = rgba
                         if use_reasoning_scores and idx not in reasoning_scores:
-                            warnings.warn(
-                                f"Reasoning score missing for index {idx} in reasoning_scores dict: {reasoning_scores.keys()}"
-                            )
+                            missing_scores.add(idx)
                             rgba_img[s_idx, p_idx] = (0, 0, 0, 0)
                         elif not use_reasoning_scores:
                             # store integer index for categorical mapping
                             heatmap[s_idx, p_idx] = answer_types.index(case)
+
+            if missing_scores:
+                warnings.warn(
+                    f"When plotting for {specification['score']}, reasoning score missing "
+                    f"the following indices in reasoning_scores dict: "
+                    f"{missing_scores}"
+                )
 
             # Display appropriately
             if use_reasoning_scores:
