@@ -394,7 +394,7 @@ def run(
             saver.save_json(
                 data=corr_matrix,
                 file_path=f"corr_matrix_task_{task_id}.json",
-                path_add=Path(version),
+                path_add=Path(version, f"Task-{task_id}"),
             )
 
             metrics_to_save = defaultdict(dict)

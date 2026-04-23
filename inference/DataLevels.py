@@ -531,8 +531,8 @@ class SamplePart:
             raise ValueError(
                 "Either a message or model_output, model_answer, and model_reasoning should be provided."
             )
-        if not messages and not any(
-            [model_output and model_answer and model_reasoning]
+        if not messages and all(
+            e is None for e in [model_output and model_answer and model_reasoning]
         ):
             raise ValueError(
                 "When no message, a model_output, model_answer, and model_reasoning should be provided."
@@ -731,7 +731,7 @@ class Sample:
         table.hrules = HRuleStyle.ALL
         table.padding_width = 2  # Adds more space inside each cell
 
-        print(f"Model's predictions for the sample {self.sample_id}:\n")
+        print(f"Model's predictions for the task {self.task_id}, sample {self.sample_id}:\n")
         print(table)
 
     def set_results(self) -> None:
@@ -928,6 +928,12 @@ class Task:
             for score_name, flat_score_name in REASONING_SCORE_MAP.items():
                 for sample in self.samples:
                     score = getattr(sample.evaluators[i], score_name).all
+                    if len(score) != len(sample.parts):
+                        warnings.warn(
+                            f"Length mismatch between reasoning {score_name} scores and parts "
+                            f"for sample {sample.sample_id}, task {sample.task_id}: "
+                            f"{len(score)} scores vs {len(sample.parts)} parts."
+                        )
                     ids_with_scores = {
                         (self.task_id, sample.sample_id, j + 1): value
                         for j, value in enumerate(score)

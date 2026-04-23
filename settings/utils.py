@@ -43,7 +43,7 @@ def clean(answer) -> str:
     :param answer: the answer to clean
     :return: cleaned answer
     """
-    answer = str(answer)
+    answer = str(answer).removesuffix("<|eot_id|>")
     lower_answer = answer.lower()
     if lower_answer.startswith("not mentioned") and len(answer) > len("not mentioned"):
         addition = answer[len("not mentioned") :].strip()
@@ -51,7 +51,33 @@ def clean(answer) -> str:
         warnings.warn(
             f"Hallucinated 'not mentioned' answer contains additional text. Removing: '{addition}'"
         )
-    return answer.removesuffix("<|eot_id|>")
+        return answer
+    bracket_pattern = re.compile(r"\([\s\S]+?\)$")
+    if bracket_pattern.search(answer):
+        answer = bracket_pattern.sub("", answer).strip()
+        warnings.warn(
+            f"The answer contains additional text in brackets. Removing: '{answer}'"
+        )
+    return answer
+
+
+def not_mentioned_detected(reasoning: str) -> bool:
+    """
+    Detects if the reasoning contains "not mentioned" which is a common hallucination of the model.
+    If "not mentioned" is detected in the reasoning, we will return True.
+
+    :param reasoning: the reasoning to check
+    :return: True if "not mentioned" is detected, False otherwise
+    """
+    phrasings = [
+        "not mention",
+        "no mention",
+        "not specified",
+        "not specify",
+        "not provide",
+        # "no information",  # "no information that would contradict..." does not necessarily indicate "not mentioned"
+    ]
+    return any(phrase in reasoning.lower() for phrase in phrasings)
 
 
 def parse_output(output: str) -> tuple:
@@ -69,11 +95,17 @@ def parse_output(output: str) -> tuple:
     answer = clean(answer)
     if not answer:
         print("DEBUG: Answer not found in the output")
+    if len(answer) < 2:
+        print(
+            f"DEBUG: Too short answer: '{answer}', setting to empty string"
+        )
+        answer = ""
 
     reasoning_search = reasoning_pattern.search(output)
     reasoning = reasoning_search[1].strip() if reasoning_search else ""
-    if not reasoning:
+    if not reasoning or reasoning.lower().startswith("answer:"):
         print("DEBUG: Reasoning not found in the output")
+        reasoning = ""
 
     if not (answer or reasoning):
         if len(output.split()) <= 3:
@@ -86,6 +118,14 @@ def parse_output(output: str) -> tuple:
             sep="\n",
             end="\n\n",
         )
+        if "not mention" in reasoning:
+            answer = "not mentioned"
+            print(
+                "DEBUG: Extracted 'not mentioned' from the reasoning:",
+                reasoning,
+                sep="\n",
+                end="\n\n",
+            )
 
     return answer, reasoning
 
