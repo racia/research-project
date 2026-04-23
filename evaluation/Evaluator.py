@@ -399,7 +399,9 @@ class AnswerEvaluator(MetricEvaluator):
             )
         return self.max_supp_attn.get_mean(), self.attn_on_target.get_mean()
 
-    def problems_with_reasoning(self, silver: list[str], pred: list[str], score: str) -> bool:
+    def problems_with_reasoning(
+        self, silver: list[str], pred: list[str], score: str
+    ) -> bool:
         """
         Check if there are problems with the reasonings that would prevent calculating the BLEU score.
         Namely, if there are no reasonings or if the lengths of the reasonings and references do not match.
@@ -421,9 +423,10 @@ class AnswerEvaluator(MetricEvaluator):
             return True
         if len(pred) != len(silver):
             warnings.warn(
-                f"Length of predicted reasoning ({len(pred)}) and silver reasoning ({len(silver)}) must be equal for reasoning check. "
-                f"Got pred: '{pred}', silver: '{silver}'. The longer reasoning will be truncated to match the shorter one for the check."
-                )
+                f"List length of predicted reasoning ({len(pred)}) and silver reasoning ({len(silver)}) must be equal for reasoning check. "
+                f"The entries from the longer reasoning list exceeding the shorted one will be disregarded for the check."
+                f"Pred:\n{pred}\nSilver:\n{silver}"
+            )
         return False
 
     def calculate_bleu(self) -> float | None:
@@ -432,7 +435,9 @@ class AnswerEvaluator(MetricEvaluator):
 
         :return: the BLEU score
         """
-        if self.problems_with_reasoning(self.silver_reasonings, self.pred_reasonings, "BLEU"):
+        if self.problems_with_reasoning(
+            self.silver_reasonings, self.pred_reasonings, "BLEU"
+        ):
             return None
 
         for silver, pred in zip(self.silver_reasonings, self.pred_reasonings):
@@ -461,7 +466,9 @@ class AnswerEvaluator(MetricEvaluator):
 
         :return: the ROUGE-L score
         """
-        if self.problems_with_reasoning(self.silver_reasonings, self.pred_reasonings, "ROUGE"):
+        if self.problems_with_reasoning(
+            self.silver_reasonings, self.pred_reasonings, "ROUGE"
+        ):
             return None
 
         for silver, pred in zip(self.silver_reasonings, self.pred_reasonings):
@@ -489,7 +496,9 @@ class AnswerEvaluator(MetricEvaluator):
 
         :return: the Meteor score
         """
-        if self.problems_with_reasoning(self.silver_reasonings, self.pred_reasonings, "METEOR"):
+        if self.problems_with_reasoning(
+            self.silver_reasonings, self.pred_reasonings, "METEOR"
+        ):
             return None
 
         for silver, pred in zip(self.silver_reasonings, self.pred_reasonings):
