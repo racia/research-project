@@ -57,7 +57,7 @@ def run(data_path: str) -> None:
         "results": [  # for both before and after
             "model_answer",
             "model_reasoning",
-            "model_output",  # TODO: make sure it's not 'model_result'
+            "model_output",
             "correct",
         ],
     }
@@ -68,7 +68,7 @@ def run(data_path: str) -> None:
     headers_results_after = [f"{result}_after" for result in headers["results"]]
     print("Using long list of headers to load the data.")
 
-    data, _ = loader.load_results([data_path], list_output=True)
+    data, _ = loader.load_results(data_path, list_output=True)
     silver_reasoning = SilverReasoning(loader)
 
     header_mapping = {

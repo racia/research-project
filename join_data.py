@@ -361,7 +361,7 @@ def run(
     flat_paths = list(flatten(data_paths))
 
     for path in flat_paths:
-        results = loader.load_results([path], list_output=False)[0][0]
+        results, _ = loader.load_results(path, list_output=False)
         if not results:
             warnings.warn(
                 f"No data found in {Path(*Path(path).parts[-6:])}. Skipping this path."

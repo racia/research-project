@@ -193,7 +193,7 @@ class Model:
                     temperature=self.temperature,
                     pad_token_id=self.tokenizer.eos_token_id,
                     do_sample=True if self.temperature > 0 else False,
-                    use_cache=False,
+                    use_cache=True,
                     num_beams=1,  # no beam search, reduce GPU memory usage
                 )
                 torch.cuda.empty_cache()
@@ -248,7 +248,6 @@ class Model:
                             output_attentions=True,
                             output_hidden_states=False,
                         )
-                        print("Output tensor attentions:", output_tensor["attentions"])
                         if type(data) is not SamplePart:
                             raise TypeError(
                                 "For interpretability plotting, data should be of type SamplePart"
