@@ -376,3 +376,19 @@ def is_nan(value: Any) -> bool:
     elif isinstance(value, str):
         return value.lower() == "nan"
     return False
+
+
+def majority_vote(values: list) -> Any:
+    """
+    Return the majority value from a list of values.
+
+    :param values: list of values to vote on
+    :return: majority value
+    """
+    from collections import Counter
+
+    if not values:
+        return None
+    value_counts = Counter(values)
+    majority_value, _ = value_counts.most_common(1)[0]
+    return majority_value

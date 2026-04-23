@@ -80,12 +80,12 @@ def aggregate(rows: list[dict]) -> dict:
     data_attrs = ["golden_answer", "task", "answer_lies_in_self"]
 
     averaged_row = {}
-    for attr in rows[0].keys():
+    for attr in rows[0].keys(): # All rows should have the same keys, so we can just take the keys from the first row to iterate over.
         values = [r.get(attr, "") for r in rows]
         if attr in irrelevant_columns:
             continue
         if attr in [*data_attrs, *id_columns]:
-            averaged_row[attr] = rows[0][attr]
+            averaged_row[attr] = rows[0][attr] # Store the first value for these columns, as they should be the same across duplicates
             continue
         if all(is_number(v) for v in values):
             numeric_values = [safe_float(v) if is_number(v) else 0 for v in values]
@@ -127,16 +127,20 @@ def run(
             f"Output file already exists and is not empty: {output_path}. Please choose a different save path or remove the existing file."
         )
 
-    duplicated_results = [
-        loader.load_results(
-            results_paths=[path],
+    duplicated_results = []
+    for path in results_paths:
+        loaded = loader.load_results(
+            results_path=path,
             data_path="../tasks_1-20_v1-2/en-valid/",
             split=data_split,
             as_parts=False,
             list_output=True,
-        )[0][0]
-        for path in results_paths
-    ]
+        )
+        if not loaded or not isinstance(loaded, tuple) or not loaded[0] or not isinstance(loaded[0], list) or not loaded[0][0] or not isinstance(loaded[0][0], dict):
+            raise ValueError(f"Unexpected format in loaded results from {path}. Expected a list of lists of dicts. Got: {type(loaded)} with content: {loaded[0][0]}")
+        
+        duplicated_results.append(loaded[0]) # Assuming the structure is ( [ {result dict}, ... ] ) and we want the inner list of dicts for each path
+
     all_ids = set()
     for i, result in enumerate(duplicated_results):
         assert (
@@ -171,7 +175,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--save_path", required=True, help="Output base directory.")
     parser.add_argument("--samples_per_task", type=int, default=1)
-    parser.add_argument(
+    parser.add_argument( # This argument is currently not used in the code, but it can be implemented in the future to handle reasoning texts according to the specified mode.
         "--reasoning_mode",
         choices=["remove", "join", "majority"],
         default="remove",
@@ -188,7 +192,7 @@ def parse_args() -> argparse.Namespace:
 if __name__ == "__main__":
     # This script doesn't calculate metrics!
     # It should therefore be run after the initial evaluation of the duplicating runs to record them correctly.
-    # python average_runs.py --results_paths run1.csv run2.csv run3.csv run4.csv --save_path /your/output/dir --samples_per_task 1 --reasoning_mode remove
+    # python average_runs.py --results_paths run1.csv run2.csv run3.csv run4.csv --save_path /your/output/dir --samples_per_task 1
     # args = parse_args()
     results_paths = [
         "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
@@ -197,7 +201,7 @@ if __name__ == "__main__":
         "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v4/all_tasks_joined/joined_direct_answer_results.csv",
         "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
     ]
-    save_path = "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/test-average/"
+    save_path = "outputs/test-average/" #"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/test-average/"
     samples_per_task = 3
     output_path = run(
         results_paths=results_paths,
