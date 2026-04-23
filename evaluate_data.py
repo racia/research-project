@@ -387,13 +387,14 @@ def run(
                 level=evaluator.level,
                 version=version,
                 file_name=f"corr_matrix_task_{task_id}.pdf",
+                path_add=Path(version, f"Task-{task_id}"),
                 id=task_id,
             )
 
             saver.save_json(
                 data=corr_matrix,
                 file_path=f"corr_matrix_task_{task_id}.json",
-                path_add=Path(version),
+                path_add=Path(version, f"Task-{task_id}"),
             )
 
             metrics_to_save = defaultdict(dict)
@@ -451,7 +452,7 @@ def run(
             y_label="Attention on Target Tokens",
             file_name=f"acc-attn_on_target_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
-            path_add=Path(version, f"Split-{split.name}"),
+            path_add=Path(version),
             level="split",
             include_soft=False,
             label_add=[f"t{task.task_id}" for task in split.tasks],
@@ -471,7 +472,7 @@ def run(
             level="split",
             file_name=f"attn-seen_context_lengths_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
-            path_add=Path(version, f"Split-{split.name}"),
+            path_add=Path(version),
         )
         # Attn on Target for Target Distances by Answer Correct
         plotter.plot_corr_boxplot(
@@ -487,7 +488,7 @@ def run(
             version=version,
             file_name=f"attn-target_distances_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
-            path_add=Path(version, f"Split-{split.name}"),
+            path_add=Path(version),
         )
         # Answer Correct for Seen Context Lengths by Answer In Self
         plotter.plot_corr_hist(
@@ -502,7 +503,7 @@ def run(
             displ_percentage=True,
             file_name=f"parts_answer_correct_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
-            path_add=Path(version, f"Split-{split.name}"),
+            path_add=Path(version),
         )
         print(
             f"\nPlotting accuracies and standard deviation for results '{version}'...",
@@ -556,7 +557,7 @@ def run(
                     "version": version,
                     "score": score.upper(),
                 },
-                reasoning_scores=evaluator.__getattribute__(f"ids_with_{score}"),
+                reasoning_scores=getattr(evaluator, f"ids_with_{score}"),
             )
         plotter.plot_answer_type_per_part(
             Results.CASE_COUNTERS[version],
@@ -636,12 +637,12 @@ if __name__ == "__main__":
     # path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
     # args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
     args = parse_args()
-    # python3.12 evaluate_data.py --results_path baseline/28-05-2025/22-39-52/init_prompt_reasoning/valid_init_prompt_reasoning_results.csv --save_path results/here --samples_per_task 15 --create_heatmaps --verbose
+    # python3.12 evaluate_data.py --results_path /pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv --save_path outputs/test-eval/SD --samples_per_task 2 --create_heatmaps --verbose
     run(
         results_path=args.results_path,
         save_path=args.save_path,
         samples_per_task=args.samples_per_task,
-        setting="baseline",
+        setting="SD",
         experiment="reasoning_answer",
         filtering_conditions={},
         create_heatmaps=args.create_heatmaps,

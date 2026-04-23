@@ -14,6 +14,7 @@ from data.utils import get_real_value, structure_parts
 from inference.DataLevels import SamplePart
 from interpretability.utils import InterpretabilityResult
 from settings.config import DataSplits, Enumerate, Wrapper
+from settings.utils import parse_output
 
 
 class SilverReasoning:
@@ -400,13 +401,15 @@ class DataLoader:
                     )
 
                 multi_system = True
-                # TODO: remove "attn_scores" subfolder for newer results
                 attn_path = (
                     Path(results_path).parent
                     / version
                     / "interpretability"
                     / "attn_scores"
                 )
+                if not attn_path.exists():
+                    # attn_scores subfolder is not present in newer results
+                    attn_path = attn_path.parent
                 interpretability = self.load_interpretability(
                     task_id=row["task_id"],
                     sample_id=row["sample_id"],
@@ -415,10 +418,11 @@ class DataLoader:
                 )
                 interpretability.max_supp_attn = row[f"max_supp_attn_{version}"]
                 interpretability.attn_on_target = row[f"attn_on_target_{version}"]
+                answer, reasoning = parse_output(row[f"model_output_{version}"])
                 raw_part.set_output(
-                    model_output=str(row[f"model_output_{version}"]),
-                    model_answer=str(row[f"model_answer_{version}"]),
-                    model_reasoning=str(row[f"model_reasoning_{version}"]),
+                    model_output=row[f"model_output_{version}"],
+                    model_answer=answer,
+                    model_reasoning=reasoning,
                     interpretability=interpretability,
                     wrapped_task=row["task"],
                     iterations=row.get("iterations", 0),
@@ -445,7 +449,8 @@ class DataLoader:
 
         if len(parts) != self.number_of_parts:
             warnings.warn(
-                "The number of parts does not match the number of loaded data: %d != %d"
+                "The number of raw loaded parts does not match the number of loaded results parts: "
+                "%d != %d"
                 % (len(parts), self.number_of_parts)
             )
         return structure_parts(parts), multi_system
@@ -549,8 +554,7 @@ class DataLoader:
             )
             return InterpretabilityResult(np.array([]), [], [], 0.0, 0.0)
 
-        # TODO: change to "interpretability"
-        if path.name != "attn_scores":
+        if path.name != "interpretability":
             raise ValueError("The attention subdirectory is not located.")
 
         try:
